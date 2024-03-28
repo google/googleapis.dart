@@ -31,7 +31,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230726",
+    "revision": "20240201",
     "rootUrl": "https://dfareporting.googleapis.com/",
     "servicePath": "dfareporting/v4/",
     "title": "Campaign Manager 360 API",
@@ -2683,9 +2683,13 @@
                                 "OBJECT_TARGETING_TEMPLATE",
                                 "OBJECT_SEARCH_LIFT_STUDY",
                                 "OBJECT_FLOODLIGHT_DV360_LINK",
-                                "OBJECT_ADVERTISER_CUSTOMER_LINK"
+                                "OBJECT_ADVERTISER_CUSTOMER_LINK",
+                                "OBJECT_CONVERSION_DOMAIN",
+                                "OBJECT_ACCOUNT_CONVERSION_DOMAIN"
                             ],
                             "enumDescriptions": [
+                                "",
+                                "",
                                 "",
                                 "",
                                 "",
@@ -12091,6 +12095,18 @@
             "description": "A Conversion represents when a user successfully performs a desired action after seeing an ad.",
             "id": "Conversion",
             "properties": {
+                "adUserDataConsent": {
+                    "description": "This represents consent for ad user data.",
+                    "enum": [
+                        "GRANTED",
+                        "DENIED"
+                    ],
+                    "enumDescriptions": [
+                        "Granted.",
+                        "Denied."
+                    ],
+                    "type": "string"
+                },
                 "childDirectedTreatment": {
                     "description": "Whether this particular request may come from a user under the age of 13, under COPPA compliance.",
                     "type": "boolean"
@@ -17858,6 +17874,10 @@
                     "format": "int64",
                     "type": "string"
                 },
+                "conversionDomainOverride": {
+                    "$ref": "PlacementConversionDomainOverride",
+                    "description": "Optional. Conversion domain overrides for a placement."
+                },
                 "createInfo": {
                     "$ref": "LastModifiedInfo",
                     "description": "Information about the creation of this placement. This is a read-only field."
@@ -18102,6 +18122,18 @@
             },
             "type": "object"
         },
+        "PlacementConversionDomainOverride": {
+            "id": "PlacementConversionDomainOverride",
+            "properties": {
+                "conversionDomains": {
+                    "items": {
+                        "$ref": "PlacementSingleConversionDomain"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "PlacementGroup": {
             "description": "Contains properties of a package or roadblock.",
             "id": "PlacementGroup",
@@ -18267,6 +18299,19 @@
                         "$ref": "PlacementGroup"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "PlacementSingleConversionDomain": {
+            "id": "PlacementSingleConversionDomain",
+            "properties": {
+                "conversionDomainId": {
+                    "format": "int64",
+                    "type": "string"
+                },
+                "conversionDomainValue": {
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -19768,7 +19813,7 @@
                     "description": "Default lookback windows for new advertisers in this account."
                 },
                 "reportGenerationTimeZoneId": {
-                    "description": "Report generation time zone ID of this account. This is a required field that can only be changed by a superuser. Acceptable values are: - \"1\" for \"America/New_York\" - \"2\" for \"Europe/London\" - \"3\" for \"Europe/Paris\" - \"4\" for \"Africa/Johannesburg\" - \"5\" for \"Asia/Jerusalem\" - \"6\" for \"Asia/Shanghai\" - \"7\" for \"Asia/Hong_Kong\" - \"8\" for \"Asia/Tokyo\" - \"9\" for \"Australia/Sydney\" - \"10\" for \"Asia/Dubai\" - \"11\" for \"America/Los_Angeles\" - \"12\" for \"Pacific/Auckland\" - \"13\" for \"America/Sao_Paulo\" - \"16\" for \"America/Asuncion\" - \"17\" for \"America/Chicago\" - \"18\" for \"America/Denver\" - \"19\" for \"America/St_Johns\" - \"20\" for \"Asia/Dhaka\" - \"21\" for \"Asia/Jakarta\" - \"22\" for \"Asia/Kabul\" - \"23\" for \"Asia/Karachi\" - \"24\" for \"Asia/Calcutta\" - \"25\" for \"Asia/Pyongyang\" - \"26\" for \"Asia/Rangoon\" - \"27\" for \"Atlantic/Cape_Verde\" - \"28\" for \"Atlantic/South_Georgia\" - \"29\" for \"Australia/Adelaide\" - \"30\" for \"Australia/Lord_Howe\" - \"31\" for \"Europe/Moscow\" - \"32\" for \"Pacific/Kiritimati\" - \"35\" for \"Pacific/Norfolk\" - \"36\" for \"Pacific/Tongatapu\" ",
+                    "description": "Report generation time zone ID of this account. This is a required field that cannot be changed on update. Acceptable values are: - \"1\" for \"America/New_York\" - \"2\" for \"Europe/London\" - \"3\" for \"Europe/Paris\" - \"4\" for \"Africa/Johannesburg\" - \"5\" for \"Asia/Jerusalem\" - \"6\" for \"Asia/Shanghai\" - \"7\" for \"Asia/Hong_Kong\" - \"8\" for \"Asia/Tokyo\" - \"9\" for \"Australia/Sydney\" - \"10\" for \"Asia/Dubai\" - \"11\" for \"America/Los_Angeles\" - \"12\" for \"Pacific/Auckland\" - \"13\" for \"America/Sao_Paulo\" - \"16\" for \"America/Asuncion\" - \"17\" for \"America/Chicago\" - \"18\" for \"America/Denver\" - \"19\" for \"America/St_Johns\" - \"20\" for \"Asia/Dhaka\" - \"21\" for \"Asia/Jakarta\" - \"22\" for \"Asia/Kabul\" - \"23\" for \"Asia/Karachi\" - \"24\" for \"Asia/Calcutta\" - \"25\" for \"Asia/Pyongyang\" - \"26\" for \"Asia/Rangoon\" - \"27\" for \"Atlantic/Cape_Verde\" - \"28\" for \"Atlantic/South_Georgia\" - \"29\" for \"Australia/Adelaide\" - \"30\" for \"Australia/Lord_Howe\" - \"31\" for \"Europe/Moscow\" - \"32\" for \"Pacific/Kiritimati\" - \"35\" for \"Pacific/Norfolk\" - \"36\" for \"Pacific/Tongatapu\" ",
                     "format": "int64",
                     "type": "string"
                 }
@@ -20348,7 +20393,7 @@
                     "type": "string"
                 },
                 "includeClickThroughUrls": {
-                    "description": "Whether static landing page URLs should be included in the tags. This setting applies only to placements.",
+                    "description": "Whether static landing page URLs should be included in the tags. New placements will default to the value set on their site.",
                     "type": "boolean"
                 },
                 "includeClickTracking": {
@@ -20756,9 +20801,11 @@
                         "OTHER",
                         "AD_ID_OFFICIAL",
                         "CLEARCAST",
-                        "DCM"
+                        "DCM",
+                        "ARPP"
                     ],
                     "enumDescriptions": [
+                        "",
                         "",
                         "",
                         "",

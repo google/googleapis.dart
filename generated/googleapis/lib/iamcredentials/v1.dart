@@ -8,13 +8,13 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// IAM Service Account Credentials API - v1
 ///
-/// Creates short-lived credentials for impersonating IAM service accounts. To
-/// enable this API, you must enable the IAM API (iam.googleapis.com).
+/// Creates short-lived credentials for impersonating IAM service accounts.
+/// Disabling this API also disables the IAM API (iam.googleapis.com). However,
+/// enabling this API doesn't enable the IAM API.
 ///
 /// For more information, see
 /// <https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials>
@@ -23,7 +23,7 @@
 ///
 /// - [ProjectsResource]
 ///   - [ProjectsServiceAccountsResource]
-library iamcredentials_v1;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -39,7 +39,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// Creates short-lived credentials for impersonating IAM service accounts.
 ///
-/// To enable this API, you must enable the IAM API (iam.googleapis.com).
+/// Disabling this API also disables the IAM API (iam.googleapis.com). However,
+/// enabling this API doesn't enable the IAM API.
 class IAMCredentialsApi {
   /// See, edit, configure, and delete your Google Cloud data and see the email
   /// address for your Google Account.

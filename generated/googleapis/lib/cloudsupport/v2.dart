@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Google Cloud Support API - v2
@@ -25,7 +24,7 @@
 ///   - [CasesAttachmentsResource]
 ///   - [CasesCommentsResource]
 /// - [MediaResource]
-library cloudsupport_v2;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -76,30 +75,34 @@ class CaseClassificationsResource {
   CaseClassificationsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Retrieve valid classifications to be used when creating a support case.
+  /// Retrieve valid classifications to use when creating a support case.
   ///
-  /// The classications are hierarchical, with each classification containing
-  /// all levels of the hierarchy, separated by `" > "`. For example `"Technical
-  /// Issue > Compute > Compute Engine"`. Classification IDs returned by
-  /// `caseClassifications.search` are guaranteed to be valid for at least six
-  /// months. If a given classification is deactivated, it immediately stops
-  /// being returned. After six months, `case.create` requests using the
-  /// classification ID will fail. Here is an example of calling this endpoint
-  /// using cURL: ```shell curl \ --header "Authorization: Bearer $(gcloud auth
-  /// print-access-token)" \
+  /// Classifications are hierarchical. Each classification is a string
+  /// containing all levels of the hierarchy separated by `" > "`. For example,
+  /// `"Technical Issue > Compute > Compute Engine"`. Classification IDs
+  /// returned by this endpoint are valid for at least six months. When a
+  /// classification is deactivated, this endpoint immediately stops returning
+  /// it. After six months, `case.create` requests using the classification will
+  /// fail. EXAMPLES: cURL: ```shell curl \ --header "Authorization: Bearer
+  /// $(gcloud auth print-access-token)" \
   /// 'https://cloudsupport.googleapis.com/v2/caseClassifications:search?query=display_name:"*Compute%20Engine*"'
-  /// ```
+  /// ``` Python: ```python import googleapiclient.discovery supportApiService =
+  /// googleapiclient.discovery.build( serviceName="cloudsupport", version="v2",
+  /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version=v2",
+  /// ) request = supportApiService.caseClassifications().search(
+  /// query='display_name:"*Compute Engine*"' ) print(request.execute()) ```
   ///
   /// Request parameters:
   ///
-  /// [pageSize] - The maximum number of cases fetched with each request.
+  /// [pageSize] - The maximum number of classifications fetched with each
+  /// request.
   ///
   /// [pageToken] - A token identifying the page of results to return. If
   /// unspecified, the first page is retrieved.
   ///
-  /// [query] - An expression written in the Google Cloud filter language. If
-  /// non-empty, then only cases whose fields match the filter are returned. If
-  /// empty, then no messages are filtered out.
+  /// [query] - An expression used to filter case classifications. If it's an
+  /// empty string, then no filtering happens. Otherwise, case classifications
+  /// will be returned that match the filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -145,19 +148,24 @@ class CasesResource {
 
   CasesResource(commons.ApiRequester client) : _requester = client;
 
-  /// Close the specified case.
+  /// Close a case.
   ///
-  /// Here is an example of calling this endpoint using cURL: ```shell
-  /// case="projects/some-project/cases/43595344" curl \ --request POST \
-  /// --header "Authorization: Bearer $(gcloud auth print-access-token)" \
-  /// "https://cloudsupport.googleapis.com/v2/$case:close" ```
+  /// EXAMPLES: cURL: ```shell case="projects/some-project/cases/43595344" curl
+  /// \ --request POST \ --header "Authorization: Bearer $(gcloud auth
+  /// print-access-token)" \
+  /// "https://cloudsupport.googleapis.com/v2/$case:close" ``` Python: ```python
+  /// import googleapiclient.discovery api_version = "v2" supportApiService =
+  /// googleapiclient.discovery.build( serviceName="cloudsupport",
+  /// version=api_version,
+  /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}",
+  /// ) request = supportApiService.cases().close(
+  /// name="projects/some-project/cases/43595344" ) print(request.execute()) ```
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The fully qualified name of the case resource to be
-  /// closed.
+  /// [name] - Required. The name of the case to close.
   /// Value must have pattern `^\[^/\]+/\[^/\]+/cases/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -191,26 +199,37 @@ class CasesResource {
     return Case.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Create a new case and associate it with the given Google Cloud Resource.
+  /// Create a new case and associate it with a parent.
   ///
-  /// The case object must have the following fields set: `display_name`,
-  /// `description`, `classification`, and `priority`. Here is an example of
-  /// calling this endpoint using cURL: ```shell parent="projects/some-project"
-  /// curl \ --request POST \ --header "Authorization: Bearer $(gcloud auth
-  /// print-access-token)" \ --header 'Content-Type: application/json' \ --data
-  /// '{ "display_name": "Test case created by me.", "description": "a random
-  /// test case, feel free to close", "classification": { "id":
+  /// It must have the following fields set: `display_name`, `description`,
+  /// `classification`, and `priority`. If you're just testing the API and don't
+  /// want to route your case to an agent, set `testCase=true`. EXAMPLES: cURL:
+  /// ```shell parent="projects/some-project" curl \ --request POST \ --header
+  /// "Authorization: Bearer $(gcloud auth print-access-token)" \ --header
+  /// 'Content-Type: application/json' \ --data '{ "display_name": "Test case
+  /// created by me.", "description": "a random test case, feel free to close",
+  /// "classification": { "id":
   /// "100IK2AKCLHMGRJ9CDGMOCGP8DM6UTB4BT262T31BT1M2T31DHNMENPO6KS36CPJ786L2TBFEHGN6NPI64R3CDHN8880G08I1H3MURR7DHII0GRCDTQM8"
   /// }, "time_zone": "-07:00", "subscriber_email_addresses": [
   /// "foo@domain.com", "bar@domain.com" ], "testCase": true, "priority": "P3"
-  /// }' \ "https://cloudsupport.googleapis.com/v2/$parent/cases" ```
+  /// }' \ "https://cloudsupport.googleapis.com/v2/$parent/cases" ``` Python:
+  /// ```python import googleapiclient.discovery api_version = "v2"
+  /// supportApiService = googleapiclient.discovery.build(
+  /// serviceName="cloudsupport", version=api_version,
+  /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}",
+  /// ) request = supportApiService.cases().create(
+  /// parent="projects/some-project", body={ "displayName": "A Test Case",
+  /// "description": "This is a test case.", "testCase": True, "priority": "P2",
+  /// "classification": { "id":
+  /// "100IK2AKCLHMGRJ9CDGMOCGP8DM6UTB4BT262T31BT1M2T31DHNMENPO6KS36CPJ786L2TBFEHGN6NPI64R3CDHN8880G08I1H3MURR7DHII0GRCDTQM8"
+  /// }, }, ) print(request.execute()) ```
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The name of the Google Cloud Resource under which the
-  /// case should be created.
+  /// [parent] - Required. The name of the parent under which the case should be
+  /// created.
   /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -244,26 +263,32 @@ class CasesResource {
     return Case.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Escalate a case.
+  /// Escalate a case, starting the Google Cloud Support escalation management
+  /// process.
   ///
-  /// Escalating a case initiates the Google Cloud Support escalation management
-  /// process. This operation is only available to certain Customer Care support
-  /// services. Go to https://cloud.google.com/support and look for 'Technical
-  /// support escalations' in the feature list to find out which support
-  /// services let you perform escalations. Here is an example of calling this
-  /// endpoint using cURL: ```shell case="projects/some-project/cases/43595344"
-  /// curl \ --request POST \ --header "Authorization: Bearer $(gcloud auth
+  /// This operation is only available for some support services. Go to
+  /// https://cloud.google.com/support and look for 'Technical support
+  /// escalations' in the feature list to find out which ones let you do that.
+  /// EXAMPLES: cURL: ```shell case="projects/some-project/cases/43595344" curl
+  /// \ --request POST \ --header "Authorization: Bearer $(gcloud auth
   /// print-access-token)" \ --header "Content-Type: application/json" \ --data
   /// '{ "escalation": { "reason": "BUSINESS_IMPACT", "justification": "This is
   /// a test escalation." } }' \
-  /// "https://cloudsupport.googleapis.com/v2/$case:escalate" ```
+  /// "https://cloudsupport.googleapis.com/v2/$case:escalate" ``` Python:
+  /// ```python import googleapiclient.discovery api_version = "v2"
+  /// supportApiService = googleapiclient.discovery.build(
+  /// serviceName="cloudsupport", version=api_version,
+  /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}",
+  /// ) request = supportApiService.cases().escalate(
+  /// name="projects/some-project/cases/43595344", body={ "escalation": {
+  /// "reason": "BUSINESS_IMPACT", "justification": "This is a test
+  /// escalation.", }, }, ) print(request.execute()) ```
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The fully qualified name of the Case resource to be
-  /// escalated.
+  /// [name] - Required. The name of the case to be escalated.
   /// Value must have pattern `^\[^/\]+/\[^/\]+/cases/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -297,16 +322,22 @@ class CasesResource {
     return Case.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Retrieve the specified case.
+  /// Retrieve a case.
   ///
-  /// Here is an example of calling this endpoint using cURL: ```shell
-  /// case="projects/some-project/cases/16033687" curl \ --header
-  /// "Authorization: Bearer $(gcloud auth print-access-token)" \
-  /// "https://cloudsupport.googleapis.com/v2/$case" ```
+  /// EXAMPLES: cURL: ```shell case="projects/some-project/cases/16033687" curl
+  /// \ --header "Authorization: Bearer $(gcloud auth print-access-token)" \
+  /// "https://cloudsupport.googleapis.com/v2/$case" ``` Python: ```python
+  /// import googleapiclient.discovery api_version = "v2" supportApiService =
+  /// googleapiclient.discovery.build( serviceName="cloudsupport",
+  /// version=api_version,
+  /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}",
+  /// ) request = supportApiService.cases().get(
+  /// name="projects/some-project/cases/43595344", ) print(request.execute())
+  /// ```
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The fully qualified name of a case to be retrieved.
+  /// [name] - Required. The full name of a case to be retrieved.
   /// Value must have pattern `^\[^/\]+/\[^/\]+/cases/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -337,32 +368,36 @@ class CasesResource {
     return Case.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Retrieve all cases under the specified parent.
+  /// Retrieve all cases under a parent, but not its children.
   ///
-  /// Note: Listing cases under an organization returns only the cases directly
-  /// parented by that organization. To retrieve all cases under an
-  /// organization, including cases parented by projects under that
-  /// organization, use `cases.search`. Here is an example of calling this
-  /// endpoint using cURL: ```shell parent="projects/some-project" curl \
-  /// --header "Authorization: Bearer $(gcloud auth print-access-token)" \
-  /// "https://cloudsupport.googleapis.com/v2/$parent/cases" ```
+  /// For example, listing cases under an organization only returns the cases
+  /// that are directly parented by that organization. To retrieve cases under
+  /// an organization and its projects, use `cases.search`. EXAMPLES: cURL:
+  /// ```shell parent="projects/some-project" curl \ --header "Authorization:
+  /// Bearer $(gcloud auth print-access-token)" \
+  /// "https://cloudsupport.googleapis.com/v2/$parent/cases" ``` Python:
+  /// ```python import googleapiclient.discovery api_version = "v2"
+  /// supportApiService = googleapiclient.discovery.build(
+  /// serviceName="cloudsupport", version=api_version,
+  /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}",
+  /// ) request = supportApiService.cases().list(parent="projects/some-project")
+  /// print(request.execute()) ```
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The fully qualified name of parent resource to list
-  /// cases under.
+  /// [parent] - Required. The name of a parent to list cases under.
   /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
   ///
-  /// [filter] - An expression written in filter language. If non-empty, the
-  /// query returns the cases that match the filter. Else, the query doesn't
-  /// filter the cases. Filter expressions use the following fields with the
-  /// operators equals (`=`) and `AND`: - `state`: The accepted values are
-  /// `OPEN` or `CLOSED`. - `priority`: The accepted values are `P0`, `P1`,
-  /// `P2`, `P3`, or `P4`. You can specify multiple values for priority using
-  /// the `OR` operator. For example, `priority=P1 OR priority=P2`. -
-  /// `creator.email`: The email address of the case creator. Examples: -
-  /// `state=CLOSED` - `state=OPEN AND creator.email="tester@example.com"` -
-  /// `state=OPEN AND (priority=P0 OR priority=P1)`
+  /// [filter] - An expression used to filter cases. If it's an empty string,
+  /// then no filtering happens. Otherwise, the endpoint returns the cases that
+  /// match the filter. Expressions use the following fields separated by `AND`
+  /// and specified with `=`: - `state`: Can be `OPEN` or `CLOSED`. -
+  /// `priority`: Can be `P0`, `P1`, `P2`, `P3`, or `P4`. You can specify
+  /// multiple values for priority using the `OR` operator. For example,
+  /// `priority=P1 OR priority=P2`. - `creator.email`: The email address of the
+  /// case creator. EXAMPLES: - `state=CLOSED` - `state=OPEN AND
+  /// creator.email="tester@example.com"` - `state=OPEN AND (priority=P0 OR
+  /// priority=P1)`
   ///
   /// [pageSize] - The maximum number of cases fetched with each request.
   /// Defaults to 10.
@@ -405,14 +440,20 @@ class CasesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Update the specified case.
+  /// Update a case.
   ///
-  /// Only a subset of fields can be updated. Here is an example of calling this
-  /// endpoint using cURL: ```shell case="projects/some-project/cases/43595344"
-  /// curl \ --request PATCH \ --header "Authorization: Bearer $(gcloud auth
-  /// print-access-token)" \ --header "Content-Type: application/json" \ --data
-  /// '{ "priority": "P1" }' \
-  /// "https://cloudsupport.googleapis.com/v2/$case?updateMask=priority" ```
+  /// Only some fields can be updated. EXAMPLES: cURL: ```shell
+  /// case="projects/some-project/cases/43595344" curl \ --request PATCH \
+  /// --header "Authorization: Bearer $(gcloud auth print-access-token)" \
+  /// --header "Content-Type: application/json" \ --data '{ "priority": "P1" }'
+  /// \ "https://cloudsupport.googleapis.com/v2/$case?updateMask=priority" ```
+  /// Python: ```python import googleapiclient.discovery api_version = "v2"
+  /// supportApiService = googleapiclient.discovery.build(
+  /// serviceName="cloudsupport", version=api_version,
+  /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}",
+  /// ) request = supportApiService.cases().patch(
+  /// name="projects/some-project/cases/43112854", body={ "displayName": "This
+  /// is Now a New Title", "priority": "P2", }, ) print(request.execute()) ```
   ///
   /// [request] - The metadata request object.
   ///
@@ -421,12 +462,12 @@ class CasesResource {
   /// [name] - The resource name for the case.
   /// Value must have pattern `^\[^/\]+/\[^/\]+/cases/\[^/\]+$`.
   ///
-  /// [updateMask] - A list of attributes of the case object that should be
-  /// updated as part of this request. Supported values are `priority`,
-  /// `display_name`, and `subscriber_email_addresses`. If no fields are
-  /// specified, all supported fields are updated. WARNING: If you do not
-  /// provide a field mask, then you might accidentally clear some fields. For
-  /// example, if you leave the field mask empty and do not provide a value for
+  /// [updateMask] - A list of attributes of the case that should be updated.
+  /// Supported values are `priority`, `display_name`, and
+  /// `subscriber_email_addresses`. If no fields are specified, all supported
+  /// fields are updated. Be careful - if you do not provide a field mask, then
+  /// you might accidentally clear some fields. For example, if you leave the
+  /// field mask empty and do not provide a value for
   /// `subscriber_email_addresses`, then `subscriber_email_addresses` is updated
   /// to empty.
   ///
@@ -463,17 +504,22 @@ class CasesResource {
     return Case.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Search cases using the specified query.
+  /// Search for cases using a query.
   ///
-  /// Here is an example of calling this endpoint using cURL: ```shell
-  /// parent="projects/some-project" curl \ --header "Authorization: Bearer
-  /// $(gcloud auth print-access-token)" \
-  /// "https://cloudsupport.googleapis.com/v2/$parent/cases:search" ```
+  /// EXAMPLES: cURL: ```shell parent="projects/some-project" curl \ --header
+  /// "Authorization: Bearer $(gcloud auth print-access-token)" \
+  /// "https://cloudsupport.googleapis.com/v2/$parent/cases:search" ``` Python:
+  /// ```python import googleapiclient.discovery api_version = "v2"
+  /// supportApiService = googleapiclient.discovery.build(
+  /// serviceName="cloudsupport", version=api_version,
+  /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}",
+  /// ) request = supportApiService.cases().search(
+  /// parent="projects/some-project", query="state=OPEN" )
+  /// print(request.execute()) ```
   ///
   /// Request parameters:
   ///
-  /// [parent] - The fully qualified name of parent resource to search cases
-  /// under.
+  /// [parent] - The name of the parent resource to search for cases under.
   /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of cases fetched with each request. The
@@ -482,25 +528,23 @@ class CasesResource {
   /// [pageToken] - A token identifying the page of results to return. If
   /// unspecified, the first page is retrieved.
   ///
-  /// [query] - An expression written in filter language. A query uses the
-  /// following fields with the operators equals (`=`) and `AND`: -
+  /// [query] - An expression used to filter cases. Expressions use the
+  /// following fields separated by `AND` and specified with `=`: -
   /// `organization`: An organization name in the form `organizations/`. -
-  /// `project`: A project name in the form `projects/`. - `state`: The accepted
-  /// values are `OPEN` or `CLOSED`. - `priority`: The accepted values are `P0`,
-  /// `P1`, `P2`, `P3`, or `P4`. You can specify multiple values for priority
-  /// using the `OR` operator. For example, `priority=P1 OR priority=P2`. -
-  /// `creator.email`: The email address of the case creator. -
-  /// `billingAccount`: A billing account in the form `billingAccounts/` You
-  /// must specify either `organization` or `project`. To search across
-  /// `displayName`, `description`, and comments, use a global restriction with
-  /// no keyword or operator. For example, `"my search"`. To search only cases
-  /// updated after a certain date, use `update_time` restricted with that
-  /// particular date, time, and timezone in ISO datetime format. For example,
+  /// `project`: A project name in the form `projects/`. - `state`: Can be
+  /// `OPEN` or `CLOSED`. - `priority`: Can be `P0`, `P1`, `P2`, `P3`, or `P4`.
+  /// You can specify multiple values for priority using the `OR` operator. For
+  /// example, `priority=P1 OR priority=P2`. - `creator.email`: The email
+  /// address of the case creator. You must specify either `organization` or
+  /// `project`. To search across `displayName`, `description`, and comments,
+  /// use a global restriction with no keyword or operator. For example, `"my
+  /// search"`. To search only cases updated after a certain date, use
+  /// `update_time` restricted with that particular date, time, and timezone in
+  /// ISO datetime format. For example,
   /// `update_time>"2020-01-01T00:00:00-05:00"`. `update_time` only supports the
   /// greater than operator (`>`). Examples: -
   /// `organization="organizations/123456789"` -
   /// `project="projects/my-project-id"` - `project="projects/123456789"` -
-  /// `billing_account="billingAccounts/123456-A0B0C0-CUZ789"` -
   /// `organization="organizations/123456789" AND state=CLOSED` -
   /// `project="projects/my-project-id" AND creator.email="tester@example.com"`
   /// - `project="projects/my-project-id" AND (priority=P0 OR priority=P1)`
@@ -546,17 +590,23 @@ class CasesAttachmentsResource {
 
   CasesAttachmentsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Retrieve all attachments associated with a support case.
+  /// List all the attachments associated with a support case.
   ///
-  /// Here is an example of calling this endpoint using cURL: ```shell
-  /// case="projects/some-project/cases/23598314" curl \ --header
-  /// "Authorization: Bearer $(gcloud auth print-access-token)" \
-  /// "https://cloudsupport.googleapis.com/v2/$case/attachments" ```
+  /// EXAMPLES: cURL: ```shell case="projects/some-project/cases/23598314" curl
+  /// \ --header "Authorization: Bearer $(gcloud auth print-access-token)" \
+  /// "https://cloudsupport.googleapis.com/v2/$case/attachments" ``` Python:
+  /// ```python import googleapiclient.discovery api_version = "v2"
+  /// supportApiService = googleapiclient.discovery.build(
+  /// serviceName="cloudsupport", version=api_version,
+  /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}",
+  /// ) request = ( supportApiService.cases() .attachments()
+  /// .list(parent="projects/some-project/cases/43595344") )
+  /// print(request.execute()) ```
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The resource name of Case object for which
-  /// attachments should be listed.
+  /// [parent] - Required. The name of the case for which attachments should be
+  /// listed.
   /// Value must have pattern `^\[^/\]+/\[^/\]+/cases/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of attachments fetched with each request.
@@ -605,22 +655,28 @@ class CasesCommentsResource {
 
   CasesCommentsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Add a new comment to the specified Case.
+  /// Add a new comment to a case.
   ///
-  /// The comment object must have the following fields set: body. Here is an
-  /// example of calling this endpoint using cURL: ```shell
-  /// case="projects/some-project/cases/43591344" curl \ --request POST \
-  /// --header "Authorization: Bearer $(gcloud auth print-access-token)" \
+  /// The comment must have the following fields set: `body`. EXAMPLES: cURL:
+  /// ```shell case="projects/some-project/cases/43591344" curl \ --request POST
+  /// \ --header "Authorization: Bearer $(gcloud auth print-access-token)" \
   /// --header 'Content-Type: application/json' \ --data '{ "body": "This is a
   /// test comment." }' \
-  /// "https://cloudsupport.googleapis.com/v2/$case/comments" ```
+  /// "https://cloudsupport.googleapis.com/v2/$case/comments" ``` Python:
+  /// ```python import googleapiclient.discovery api_version = "v2"
+  /// supportApiService = googleapiclient.discovery.build(
+  /// serviceName="cloudsupport", version=api_version,
+  /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}",
+  /// ) request = ( supportApiService.cases() .comments() .create(
+  /// parent="projects/some-project/cases/43595344", body={"body": "This is a
+  /// test comment."}, ) ) print(request.execute()) ```
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The resource name of Case to which this comment
-  /// should be added.
+  /// [parent] - Required. The name of the case to which the comment should be
+  /// added.
   /// Value must have pattern `^\[^/\]+/\[^/\]+/cases/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -654,24 +710,28 @@ class CasesCommentsResource {
     return Comment.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Retrieve all comments associated with the Case object.
+  /// List all the comments associated with a case.
   ///
-  /// Here is an example of calling this endpoint using cURL: ```shell
-  /// case="projects/cloud-support-qa-premium/cases/43595344" curl \ --header
-  /// "Authorization: Bearer $(gcloud auth print-access-token)" \
-  /// "https://cloudsupport.googleapis.com/v2/$case/comments" ```
+  /// EXAMPLES: cURL: ```shell case="projects/some-project/cases/43595344" curl
+  /// \ --header "Authorization: Bearer $(gcloud auth print-access-token)" \
+  /// "https://cloudsupport.googleapis.com/v2/$case/comments" ``` Python:
+  /// ```python import googleapiclient.discovery api_version = "v2"
+  /// supportApiService = googleapiclient.discovery.build(
+  /// serviceName="cloudsupport", version=api_version,
+  /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}",
+  /// ) request = ( supportApiService.cases() .comments()
+  /// .list(parent="projects/some-project/cases/43595344") )
+  /// print(request.execute()) ```
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The resource name of Case object for which comments
-  /// should be listed.
+  /// [parent] - Required. The name of the case for which to list comments.
   /// Value must have pattern `^\[^/\]+/\[^/\]+/cases/\[^/\]+$`.
   ///
-  /// [pageSize] - The maximum number of comments fetched with each request.
-  /// Defaults to 10.
+  /// [pageSize] - The maximum number of comments to fetch. Defaults to 10.
   ///
   /// [pageToken] - A token identifying the page of results to return. If
-  /// unspecified, the first page is retrieved.
+  /// unspecified, the first page is returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -712,17 +772,25 @@ class MediaResource {
 
   MediaResource(commons.ApiRequester client) : _requester = client;
 
-  /// Download a file attachment on a case.
+  /// Download a file attached to a case.
   ///
-  /// Note: HTTP requests must append "?alt=media" to the URL. Here is an
-  /// example of calling this endpoint using cURL: ```shell
+  /// Note: HTTP requests must append "?alt=media" to the URL. EXAMPLES: cURL:
+  /// ```shell
   /// name="projects/some-project/cases/43594844/attachments/0674M00000WijAnZAJ"
   /// curl \ --header "Authorization: Bearer $(gcloud auth print-access-token)"
   /// \ "https://cloudsupport.googleapis.com/v2/$name:download?alt=media" ```
+  /// Python: ```python import googleapiclient.discovery api_version = "v2"
+  /// supportApiService = googleapiclient.discovery.build(
+  /// serviceName="cloudsupport", version=api_version,
+  /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}",
+  /// ) request = supportApiService.media().download(
+  /// name="projects/some-project/cases/43595344/attachments/0684M00000Pw6pHQAR"
+  /// ) request.uri = request.uri.split("?")[0] + "?alt=media"
+  /// print(request.execute()) ```
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name of the attachment to be downloaded.
+  /// [name] - The name of the file attachment to download.
   /// Value must have pattern
   /// `^\[^/\]+/\[^/\]+/cases/\[^/\]+/attachments/\[^/\]+$`.
   ///
@@ -770,21 +838,30 @@ class MediaResource {
 
   /// Create a file attachment on a case or Cloud resource.
   ///
-  /// The attachment object must have the following fields set: filename. Here
-  /// is an example of calling this endpoint using cURL: ```shell echo "This
-  /// text is in a file I'm uploading using CSAPI." \ > "./example_file.txt"
-  /// case="projects/some-project/cases/43594844" curl \ --header
-  /// "Authorization: Bearer $(gcloud auth print-access-token)" \ --data-binary
-  /// @"./example_file.txt" \
+  /// The attachment must have the following fields set: `filename`. EXAMPLES:
+  /// cURL: ```shell echo "This text is in a file I'm uploading using CSAPI." \
+  /// > "./example_file.txt" case="projects/some-project/cases/43594844" curl \
+  /// --header "Authorization: Bearer $(gcloud auth print-access-token)" \
+  /// --data-binary @"./example_file.txt" \
   /// "https://cloudsupport.googleapis.com/upload/v2beta/$case/attachments?attachment.filename=uploaded_via_curl.txt"
+  /// ``` Python: ```python import googleapiclient.discovery api_version = "v2"
+  /// supportApiService = googleapiclient.discovery.build(
+  /// serviceName="cloudsupport", version=api_version,
+  /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}",
+  /// ) file_path = "./example_file.txt" with open(file_path, "w") as file:
+  /// file.write( "This text is inside a file I'm going to upload using the
+  /// Cloud Support API.", ) request = supportApiService.media().upload(
+  /// parent="projects/some-project/cases/43595344", media_body=file_path )
+  /// request.uri = request.uri.split("?")[0] +
+  /// "?attachment.filename=uploaded_via_python.txt" print(request.execute())
   /// ```
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The resource name of the case (or case parent) to
-  /// which the attachment should be attached.
+  /// [parent] - Required. The name of the case or Cloud resource to which the
+  /// attachment should be attached.
   /// Value must have pattern `^\[^/\]+/\[^/\]+/cases/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -830,8 +907,11 @@ class MediaResource {
   }
 }
 
-/// An object containing information about the effective user and authenticated
-/// principal responsible for an action.
+/// An Actor represents an entity that performed an action.
+///
+/// For example, an actor could be a user who posted a comment on a support
+/// case, a user who uploaded an attachment, or a service account that created a
+/// support case.
 class Actor {
   /// The name to display for the actor.
   ///
@@ -842,10 +922,13 @@ class Actor {
 
   /// The email address of the actor.
   ///
-  /// If not provided, it is inferred from credentials supplied during case
-  /// creation. If the authenticated principal does not have an email address,
-  /// one must be provided. When a name is provided, an email must also be
-  /// provided. This will be obfuscated if the user is a Google Support agent.
+  /// If not provided, it is inferred from the credentials supplied during case
+  /// creation. When a name is provided, an email must also be provided. If the
+  /// user is a Google Support agent, this is obfuscated. This field is
+  /// deprecated. Use **username** field instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? email;
 
   /// Whether the actor is a Google support actor.
@@ -853,10 +936,21 @@ class Actor {
   /// Output only.
   core.bool? googleSupport;
 
+  /// The username of the actor.
+  ///
+  /// It may look like an email or other format provided by the identity
+  /// provider. If not provided, it is inferred from the credentials supplied.
+  /// When a name is provided, a username must also be provided. If the user is
+  /// a Google Support agent, this will not be set.
+  ///
+  /// Output only.
+  core.String? username;
+
   Actor({
     this.displayName,
     this.email,
     this.googleSupport,
+    this.username,
   });
 
   Actor.fromJson(core.Map json_)
@@ -869,16 +963,26 @@ class Actor {
           googleSupport: json_.containsKey('googleSupport')
               ? json_['googleSupport'] as core.bool
               : null,
+          username: json_.containsKey('username')
+              ? json_['username'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
         if (email != null) 'email': email!,
         if (googleSupport != null) 'googleSupport': googleSupport!,
+        if (username != null) 'username': username!,
       };
 }
 
-/// Represents a file attached to a support case.
+/// An Attachment contains metadata about a file that was uploaded to a case -
+/// it is NOT a file itself.
+///
+/// That being said, the name of an Attachment object can be used to download
+/// its accompanying file through the `media.download` endpoint. While
+/// attachments can be uploaded in the console at the same time as a comment,
+/// they're associated on a "case" level, not a "comment" level.
 class Attachment {
   /// The time at which the attachment was created.
   ///
@@ -1020,7 +1124,18 @@ class Blobstore2Info {
       };
 }
 
-/// A support case.
+/// A Case is an object that contains the details of a support case.
+///
+/// It contains fields for the time it was created, its priority, its
+/// classification, and more. Cases can also have comments and attachments that
+/// get added over time. A case is parented by a Google Cloud organization or
+/// project. Organizations are identified by a number, so the name of a case
+/// parented by an organization would look like this: ```
+/// organizations/123/cases/456 ``` Projects have two unique identifiers, an ID
+/// and a number, and they look like this: ``` projects/abc/cases/456 ``` ```
+/// projects/123/cases/456 ``` You can use either of them when calling the API.
+/// To learn more about project identifiers, see
+/// \[AIP-2510\](https://google.aip.dev/cloud/2510).
 class Case {
   /// The issue classification applicable to this case.
   CaseClassification? classification;
@@ -1200,7 +1315,12 @@ class Case {
       };
 }
 
-/// A classification object with a product type and value.
+/// A Case Classification represents the topic that a case is about.
+///
+/// It's very important to use accurate classifications, because they're used to
+/// route your cases to specialists who can help you. A classification always
+/// has an ID that is its unique identifier. A valid ID is required when
+/// creating a case.
 class CaseClassification {
   /// A display name for the classification.
   ///
@@ -1241,7 +1361,11 @@ class CaseClassification {
 /// The request message for the CloseCase endpoint.
 typedef CloseCaseRequest = $Empty;
 
-/// A comment associated with a support case.
+/// Case comments are the main way Google Support communicates with a user who
+/// has opened a case.
+///
+/// When a user responds to Google Support, the user's responses also appear as
+/// comments.
 class Comment {
   /// The full comment body.
   ///
@@ -1729,7 +1853,7 @@ class DownloadParameters {
 
 /// The request message for the EscalateCase endpoint.
 class EscalateCaseRequest {
-  /// The escalation object to be sent with the escalation request.
+  /// The escalation information to be sent with the escalation request.
   Escalation? escalation;
 
   EscalateCaseRequest({
@@ -1793,14 +1917,13 @@ class Escalation {
 
 /// The response message for the ListAttachments endpoint.
 class ListAttachmentsResponse {
-  /// The list of attachments associated with the given case.
+  /// The list of attachments associated with a case.
   core.List<Attachment>? attachments;
 
   /// A token to retrieve the next page of results.
   ///
-  /// This should be set in the `page_token` field of subsequent
-  /// `cases.attachments.list` requests. If unspecified, there are no more
-  /// results to retrieve.
+  /// Set this in the `page_token` field of subsequent `cases.attachments.list`
+  /// requests. If unspecified, there are no more results to retrieve.
   core.String? nextPageToken;
 
   ListAttachmentsResponse({
@@ -1829,15 +1952,14 @@ class ListAttachmentsResponse {
 
 /// The response message for the ListCases endpoint.
 class ListCasesResponse {
-  /// The list of cases associated with the Google Cloud Resource, after any
-  /// filters have been applied.
+  /// The list of cases associated with the parent after any filters have been
+  /// applied.
   core.List<Case>? cases;
 
   /// A token to retrieve the next page of results.
   ///
-  /// This should be set in the `page_token` field of the subsequent
-  /// `ListCasesRequest` message that is issued. If unspecified, there are no
-  /// more results to retrieve.
+  /// Set this in the `page_token` field of subsequent `cases.list` requests. If
+  /// unspecified, there are no more results to retrieve.
   core.String? nextPageToken;
 
   ListCasesResponse({
@@ -1866,14 +1988,13 @@ class ListCasesResponse {
 
 /// The response message for the ListComments endpoint.
 class ListCommentsResponse {
-  /// The list of Comments associated with the given Case.
+  /// List of the comments associated with the case.
   core.List<Comment>? comments;
 
   /// A token to retrieve the next page of results.
   ///
-  /// This should be set in the `page_token` field of subsequent
-  /// `ListCommentsRequest` message that is issued. If unspecified, there are no
-  /// more results to retrieve.
+  /// Set this in the `page_token` field of subsequent `cases.comments.list`
+  /// requests. If unspecified, there are no more results to retrieve.
   core.String? nextPageToken;
 
   ListCommentsResponse({
@@ -2295,9 +2416,9 @@ class SearchCaseClassificationsResponse {
 
   /// A token to retrieve the next page of results.
   ///
-  /// This should be set in the `page_token` field of subsequent
-  /// `SearchCaseClassificationsRequest` message that is issued. If unspecified,
-  /// there are no more results to retrieve.
+  /// Set this in the `page_token` field of subsequent
+  /// `caseClassifications.list` requests. If unspecified, there are no more
+  /// results to retrieve.
   core.String? nextPageToken;
 
   SearchCaseClassificationsResponse({
@@ -2327,15 +2448,14 @@ class SearchCaseClassificationsResponse {
 
 /// The response message for the SearchCases endpoint.
 class SearchCasesResponse {
-  /// The list of cases associated with the Google Cloud Resource, after any
-  /// filters have been applied.
+  /// The list of cases associated with the parent after any filters have been
+  /// applied.
   core.List<Case>? cases;
 
   /// A token to retrieve the next page of results.
   ///
-  /// This should be set in the `page_token` field of subsequent
-  /// `SearchCaseRequest` message that is issued. If unspecified, there are no
-  /// more results to retrieve.
+  /// Set this in the `page_token` field of subsequent `cases.search` requests.
+  /// If unspecified, there are no more results to retrieve.
   core.String? nextPageToken;
 
   SearchCasesResponse({

@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Travel Impact Model API - v1
@@ -21,7 +20,7 @@
 /// Create an instance of [TravelImpactModelApi] to access these resources:
 ///
 /// - [FlightsResource]
-library travelimpactmodel_v1;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -305,6 +304,9 @@ class FlightWithEmissions {
   ///
   /// Will not be present if emissions could not be computed. For the list of
   /// reasons why emissions could not be computed, see ComputeFlightEmissions.
+  /// Note this field is currently equivalent to ttw_emissions_grams_per_pax
+  /// until TIM version 1.X.0 which will update this to be total wtw emissions
+  /// aka wtt_emissions_grams_per_pax + ttw_emissions_grams_per_pax.
   ///
   /// Optional.
   EmissionsGramsPerPax? emissionsGramsPerPax;

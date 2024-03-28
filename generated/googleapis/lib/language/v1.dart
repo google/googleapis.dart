@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Cloud Natural Language API - v1
@@ -22,7 +21,7 @@
 /// Create an instance of [CloudNaturalLanguageApi] to access these resources:
 ///
 /// - [DocumentsResource]
-library language_v1;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -694,7 +693,7 @@ class AnnotateTextRequest {
   /// The enabled features.
   ///
   /// Required.
-  Features? features;
+  AnnotateTextRequestFeatures? features;
 
   AnnotateTextRequest({
     this.document,
@@ -712,7 +711,7 @@ class AnnotateTextRequest {
               ? json_['encodingType'] as core.String
               : null,
           features: json_.containsKey('features')
-              ? Features.fromJson(
+              ? AnnotateTextRequestFeatures.fromJson(
                   json_['features'] as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -721,6 +720,89 @@ class AnnotateTextRequest {
         if (document != null) 'document': document!,
         if (encodingType != null) 'encodingType': encodingType!,
         if (features != null) 'features': features!,
+      };
+}
+
+/// All available features for sentiment, syntax, and semantic analysis.
+///
+/// Setting each one to true will enable that specific analysis for the input.
+class AnnotateTextRequestFeatures {
+  /// The model options to use for classification.
+  ///
+  /// Defaults to v1 options if not specified. Only used if `classify_text` is
+  /// set to true.
+  ///
+  /// Optional.
+  ClassificationModelOptions? classificationModelOptions;
+
+  /// Classify the full document into categories.
+  core.bool? classifyText;
+
+  /// Extract document-level sentiment.
+  core.bool? extractDocumentSentiment;
+
+  /// Extract entities.
+  core.bool? extractEntities;
+
+  /// Extract entities and their associated sentiment.
+  core.bool? extractEntitySentiment;
+
+  /// Extract syntax information.
+  core.bool? extractSyntax;
+
+  /// Moderate the document for harmful and sensitive categories.
+  core.bool? moderateText;
+
+  AnnotateTextRequestFeatures({
+    this.classificationModelOptions,
+    this.classifyText,
+    this.extractDocumentSentiment,
+    this.extractEntities,
+    this.extractEntitySentiment,
+    this.extractSyntax,
+    this.moderateText,
+  });
+
+  AnnotateTextRequestFeatures.fromJson(core.Map json_)
+      : this(
+          classificationModelOptions:
+              json_.containsKey('classificationModelOptions')
+                  ? ClassificationModelOptions.fromJson(
+                      json_['classificationModelOptions']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          classifyText: json_.containsKey('classifyText')
+              ? json_['classifyText'] as core.bool
+              : null,
+          extractDocumentSentiment:
+              json_.containsKey('extractDocumentSentiment')
+                  ? json_['extractDocumentSentiment'] as core.bool
+                  : null,
+          extractEntities: json_.containsKey('extractEntities')
+              ? json_['extractEntities'] as core.bool
+              : null,
+          extractEntitySentiment: json_.containsKey('extractEntitySentiment')
+              ? json_['extractEntitySentiment'] as core.bool
+              : null,
+          extractSyntax: json_.containsKey('extractSyntax')
+              ? json_['extractSyntax'] as core.bool
+              : null,
+          moderateText: json_.containsKey('moderateText')
+              ? json_['moderateText'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (classificationModelOptions != null)
+          'classificationModelOptions': classificationModelOptions!,
+        if (classifyText != null) 'classifyText': classifyText!,
+        if (extractDocumentSentiment != null)
+          'extractDocumentSentiment': extractDocumentSentiment!,
+        if (extractEntities != null) 'extractEntities': extractEntities!,
+        if (extractEntitySentiment != null)
+          'extractEntitySentiment': extractEntitySentiment!,
+        if (extractSyntax != null) 'extractSyntax': extractSyntax!,
+        if (moderateText != null) 'moderateText': moderateText!,
       };
 }
 
@@ -824,34 +906,7 @@ class AnnotateTextResponse {
 }
 
 /// Represents a category returned from the text classifier.
-class ClassificationCategory {
-  /// The classifier's confidence of the category.
-  ///
-  /// Number represents how certain the classifier is that this category
-  /// represents the given text.
-  core.double? confidence;
-
-  /// The name of the category representing the document.
-  core.String? name;
-
-  ClassificationCategory({
-    this.confidence,
-    this.name,
-  });
-
-  ClassificationCategory.fromJson(core.Map json_)
-      : this(
-          confidence: json_.containsKey('confidence')
-              ? (json_['confidence'] as core.num).toDouble()
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (confidence != null) 'confidence': confidence!,
-        if (name != null) 'name': name!,
-      };
-}
+typedef ClassificationCategory = $ClassificationCategory;
 
 /// Model options available for classification requests.
 class ClassificationModelOptions {
@@ -860,13 +915,13 @@ class ClassificationModelOptions {
   ///
   /// The V1 model is a legacy model; support for this will be discontinued in
   /// the future.
-  V1Model? v1Model;
+  ClassificationModelOptionsV1Model? v1Model;
 
   /// Setting this field will use the V2 model with the appropriate content
   /// categories version.
   ///
   /// The V2 model is a better performing model.
-  V2Model? v2Model;
+  ClassificationModelOptionsV2Model? v2Model;
 
   ClassificationModelOptions({
     this.v1Model,
@@ -876,11 +931,11 @@ class ClassificationModelOptions {
   ClassificationModelOptions.fromJson(core.Map json_)
       : this(
           v1Model: json_.containsKey('v1Model')
-              ? V1Model.fromJson(
+              ? ClassificationModelOptionsV1Model.fromJson(
                   json_['v1Model'] as core.Map<core.String, core.dynamic>)
               : null,
           v2Model: json_.containsKey('v2Model')
-              ? V2Model.fromJson(
+              ? ClassificationModelOptionsV2Model.fromJson(
                   json_['v2Model'] as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -891,11 +946,44 @@ class ClassificationModelOptions {
       };
 }
 
+/// Options for the V1 model.
+typedef ClassificationModelOptionsV1Model = $Empty;
+
+/// Options for the V2 model.
+class ClassificationModelOptionsV2Model {
+  /// The content categories used for classification.
+  /// Possible string values are:
+  /// - "CONTENT_CATEGORIES_VERSION_UNSPECIFIED" : If `ContentCategoriesVersion`
+  /// is not specified, this option will default to `V1`.
+  /// - "V1" : Legacy content categories of our initial launch in 2017.
+  /// - "V2" : Updated content categories in 2022.
+  core.String? contentCategoriesVersion;
+
+  ClassificationModelOptionsV2Model({
+    this.contentCategoriesVersion,
+  });
+
+  ClassificationModelOptionsV2Model.fromJson(core.Map json_)
+      : this(
+          contentCategoriesVersion:
+              json_.containsKey('contentCategoriesVersion')
+                  ? json_['contentCategoriesVersion'] as core.String
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (contentCategoriesVersion != null)
+          'contentCategoriesVersion': contentCategoriesVersion!,
+      };
+}
+
 /// The document classification request message.
 class ClassifyTextRequest {
   /// Model options to use for classification.
   ///
   /// Defaults to v1 options if not specified.
+  ///
+  /// Optional.
   ClassificationModelOptions? classificationModelOptions;
 
   /// Input document.
@@ -1295,87 +1383,6 @@ class EntityMention {
       };
 }
 
-/// All available features for sentiment, syntax, and semantic analysis.
-///
-/// Setting each one to true will enable that specific analysis for the input.
-class Features {
-  /// The model options to use for classification.
-  ///
-  /// Defaults to v1 options if not specified. Only used if `classify_text` is
-  /// set to true.
-  ClassificationModelOptions? classificationModelOptions;
-
-  /// Classify the full document into categories.
-  core.bool? classifyText;
-
-  /// Extract document-level sentiment.
-  core.bool? extractDocumentSentiment;
-
-  /// Extract entities.
-  core.bool? extractEntities;
-
-  /// Extract entities and their associated sentiment.
-  core.bool? extractEntitySentiment;
-
-  /// Extract syntax information.
-  core.bool? extractSyntax;
-
-  /// Moderate the document for harmful and sensitive categories.
-  core.bool? moderateText;
-
-  Features({
-    this.classificationModelOptions,
-    this.classifyText,
-    this.extractDocumentSentiment,
-    this.extractEntities,
-    this.extractEntitySentiment,
-    this.extractSyntax,
-    this.moderateText,
-  });
-
-  Features.fromJson(core.Map json_)
-      : this(
-          classificationModelOptions:
-              json_.containsKey('classificationModelOptions')
-                  ? ClassificationModelOptions.fromJson(
-                      json_['classificationModelOptions']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          classifyText: json_.containsKey('classifyText')
-              ? json_['classifyText'] as core.bool
-              : null,
-          extractDocumentSentiment:
-              json_.containsKey('extractDocumentSentiment')
-                  ? json_['extractDocumentSentiment'] as core.bool
-                  : null,
-          extractEntities: json_.containsKey('extractEntities')
-              ? json_['extractEntities'] as core.bool
-              : null,
-          extractEntitySentiment: json_.containsKey('extractEntitySentiment')
-              ? json_['extractEntitySentiment'] as core.bool
-              : null,
-          extractSyntax: json_.containsKey('extractSyntax')
-              ? json_['extractSyntax'] as core.bool
-              : null,
-          moderateText: json_.containsKey('moderateText')
-              ? json_['moderateText'] as core.bool
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (classificationModelOptions != null)
-          'classificationModelOptions': classificationModelOptions!,
-        if (classifyText != null) 'classifyText': classifyText!,
-        if (extractDocumentSentiment != null)
-          'extractDocumentSentiment': extractDocumentSentiment!,
-        if (extractEntities != null) 'extractEntities': extractEntities!,
-        if (extractEntitySentiment != null)
-          'extractEntitySentiment': extractEntitySentiment!,
-        if (extractSyntax != null) 'extractSyntax': extractSyntax!,
-        if (moderateText != null) 'moderateText': moderateText!,
-      };
-}
-
 /// The document moderation request message.
 class ModerateTextRequest {
   /// Input document.
@@ -1668,66 +1675,10 @@ class Sentence {
 
 /// Represents the feeling associated with the entire text or entities in the
 /// text.
-class Sentiment {
-  /// A non-negative number in the \[0, +inf) range, which represents the
-  /// absolute magnitude of sentiment regardless of score (positive or
-  /// negative).
-  core.double? magnitude;
-
-  /// Sentiment score between -1.0 (negative sentiment) and 1.0 (positive
-  /// sentiment).
-  core.double? score;
-
-  Sentiment({
-    this.magnitude,
-    this.score,
-  });
-
-  Sentiment.fromJson(core.Map json_)
-      : this(
-          magnitude: json_.containsKey('magnitude')
-              ? (json_['magnitude'] as core.num).toDouble()
-              : null,
-          score: json_.containsKey('score')
-              ? (json_['score'] as core.num).toDouble()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (magnitude != null) 'magnitude': magnitude!,
-        if (score != null) 'score': score!,
-      };
-}
+typedef Sentiment = $Sentiment;
 
 /// Represents a text span in the input document.
-class TextSpan {
-  /// The API calculates the beginning offset of the content in the original
-  /// document according to the EncodingType specified in the API request.
-  core.int? beginOffset;
-
-  /// The content of the text span, which is a substring of the document.
-  core.String? content;
-
-  TextSpan({
-    this.beginOffset,
-    this.content,
-  });
-
-  TextSpan.fromJson(core.Map json_)
-      : this(
-          beginOffset: json_.containsKey('beginOffset')
-              ? json_['beginOffset'] as core.int
-              : null,
-          content: json_.containsKey('content')
-              ? json_['content'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (beginOffset != null) 'beginOffset': beginOffset!,
-        if (content != null) 'content': content!,
-      };
-}
+typedef TextSpan = $TextSpan;
 
 /// Represents the smallest syntactic building block of the text.
 class Token {
@@ -1774,36 +1725,5 @@ class Token {
         if (lemma != null) 'lemma': lemma!,
         if (partOfSpeech != null) 'partOfSpeech': partOfSpeech!,
         if (text != null) 'text': text!,
-      };
-}
-
-/// Options for the V1 model.
-typedef V1Model = $Empty;
-
-/// Options for the V2 model.
-class V2Model {
-  /// The content categories used for classification.
-  /// Possible string values are:
-  /// - "CONTENT_CATEGORIES_VERSION_UNSPECIFIED" : If `ContentCategoriesVersion`
-  /// is not specified, this option will default to `V1`.
-  /// - "V1" : Legacy content categories of our initial launch in 2017.
-  /// - "V2" : Updated content categories in 2022.
-  core.String? contentCategoriesVersion;
-
-  V2Model({
-    this.contentCategoriesVersion,
-  });
-
-  V2Model.fromJson(core.Map json_)
-      : this(
-          contentCategoriesVersion:
-              json_.containsKey('contentCategoriesVersion')
-                  ? json_['contentCategoriesVersion'] as core.String
-                  : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (contentCategoriesVersion != null)
-          'contentCategoriesVersion': contentCategoriesVersion!,
       };
 }

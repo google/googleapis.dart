@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Google Drive API - v3
@@ -20,6 +19,7 @@
 /// Create an instance of [DriveApi] to access these resources:
 ///
 /// - [AboutResource]
+/// - [AppsResource]
 /// - [ChangesResource]
 /// - [ChannelsResource]
 /// - [CommentsResource]
@@ -29,7 +29,7 @@
 /// - [RepliesResource]
 /// - [RevisionsResource]
 /// - [TeamdrivesResource]
-library drive_v3;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -61,6 +61,10 @@ class DriveApi {
   static const driveAppdataScope =
       'https://www.googleapis.com/auth/drive.appdata';
 
+  /// View your Google Drive apps
+  static const driveAppsReadonlyScope =
+      'https://www.googleapis.com/auth/drive.apps.readonly';
+
   /// See, edit, create, and delete only the specific Google Drive files you use
   /// with this app
   static const driveFileScope = 'https://www.googleapis.com/auth/drive.file';
@@ -88,6 +92,7 @@ class DriveApi {
   final commons.ApiRequester _requester;
 
   AboutResource get about => AboutResource(_requester);
+  AppsResource get apps => AppsResource(_requester);
   ChangesResource get changes => ChangesResource(_requester);
   ChannelsResource get channels => ChannelsResource(_requester);
   CommentsResource get comments => CommentsResource(_requester);
@@ -140,6 +145,101 @@ class AboutResource {
       queryParams: queryParams_,
     );
     return About.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class AppsResource {
+  final commons.ApiRequester _requester;
+
+  AppsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Gets a specific app.
+  ///
+  /// Request parameters:
+  ///
+  /// [appId] - The ID of the app.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [App].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<App> get(
+    core.String appId, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'apps/' + commons.escapeVariable('$appId');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return App.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists a user's installed apps.
+  ///
+  /// Request parameters:
+  ///
+  /// [appFilterExtensions] - A comma-separated list of file extensions to limit
+  /// returned results. All results within the given app query scope which can
+  /// open any of the given file extensions are included in the response. If
+  /// `appFilterMimeTypes` are provided as well, the result is a union of the
+  /// two resulting app lists.
+  ///
+  /// [appFilterMimeTypes] - A comma-separated list of file extensions to limit
+  /// returned results. All results within the given app query scope which can
+  /// open any of the given MIME types will be included in the response. If
+  /// `appFilterExtensions` are provided as well, the result is a union of the
+  /// two resulting app lists.
+  ///
+  /// [languageCode] - A language or locale code, as defined by BCP 47, with
+  /// some extensions from Unicode's LDML format
+  /// (http://www.unicode.org/reports/tr35/).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AppList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AppList> list({
+    core.String? appFilterExtensions,
+    core.String? appFilterMimeTypes,
+    core.String? languageCode,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (appFilterExtensions != null)
+        'appFilterExtensions': [appFilterExtensions],
+      if (appFilterMimeTypes != null)
+        'appFilterMimeTypes': [appFilterMimeTypes],
+      if (languageCode != null) 'languageCode': [languageCode],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const url_ = 'apps';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AppList.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -751,7 +851,7 @@ class DrivesResource {
     return Drive.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Permanently deletes a shared drive for which the user is an organizer.
+  /// Permanently deletes a shared drive for which the user is an `organizer`.
   ///
   /// The shared drive cannot contain any untrashed items.
   ///
@@ -1236,9 +1336,9 @@ class FilesResource {
   /// Permanently deletes a file owned by the user without moving it to the
   /// trash.
   ///
-  /// If the file belongs to a shared drive the user must be an organizer on the
-  /// parent. If the target is a folder, all descendants owned by the user are
-  /// also deleted.
+  /// If the file belongs to a shared drive, the user must be an `organizer` on
+  /// the parent folder. If the target is a folder, all descendants owned by the
+  /// user are also deleted.
   ///
   /// Request parameters:
   ///
@@ -1642,7 +1742,7 @@ class FilesResource {
   ///
   /// Request parameters:
   ///
-  /// [fileId] - The ID for the file or shared drive.
+  /// [fileId] - The ID for the file.
   ///
   /// [maxResults] - The maximum number of labels to return per page. When not
   /// set, defaults to 100.
@@ -3250,6 +3350,336 @@ class About {
       };
 }
 
+/// The `apps` resource provides a list of apps that a user has installed, with
+/// information about each app's supported MIME types, file extensions, and
+/// other details.
+///
+/// Some resource methods (such as `apps.get`) require an `appId`. Use the
+/// `apps.list` method to retrieve the ID for an installed application.
+class App {
+  /// Whether the app is authorized to access data on the user's Drive.
+  core.bool? authorized;
+
+  /// The template URL to create a file with this app in a given folder.
+  ///
+  /// The template contains the {folderId} to be replaced by the folder ID house
+  /// the new file.
+  core.String? createInFolderTemplate;
+
+  /// The URL to create a file with this app.
+  core.String? createUrl;
+
+  /// Whether the app has Drive-wide scope.
+  ///
+  /// An app with Drive-wide scope can access all files in the user's Drive.
+  core.bool? hasDriveWideScope;
+
+  /// The various icons for the app.
+  core.List<AppIcons>? icons;
+
+  /// The ID of the app.
+  core.String? id;
+
+  /// Whether the app is installed.
+  core.bool? installed;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "drive#app".
+  ///
+  /// Output only.
+  core.String? kind;
+
+  /// A long description of the app.
+  core.String? longDescription;
+
+  /// The name of the app.
+  core.String? name;
+
+  /// The type of object this app creates such as a Chart.
+  ///
+  /// If empty, the app name should be used instead.
+  core.String? objectType;
+
+  /// The template URL for opening files with this app.
+  ///
+  /// The template contains {ids} or {exportIds} to be replaced by the actual
+  /// file IDs. For more information, see Open Files for the full documentation.
+  core.String? openUrlTemplate;
+
+  /// The list of primary file extensions.
+  core.List<core.String>? primaryFileExtensions;
+
+  /// The list of primary MIME types.
+  core.List<core.String>? primaryMimeTypes;
+
+  /// The ID of the product listing for this app.
+  core.String? productId;
+
+  /// A link to the product listing for this app.
+  core.String? productUrl;
+
+  /// The list of secondary file extensions.
+  core.List<core.String>? secondaryFileExtensions;
+
+  /// The list of secondary MIME types.
+  core.List<core.String>? secondaryMimeTypes;
+
+  /// A short description of the app.
+  core.String? shortDescription;
+
+  /// Whether this app supports creating objects.
+  core.bool? supportsCreate;
+
+  /// Whether this app supports importing from Google Docs.
+  core.bool? supportsImport;
+
+  /// Whether this app supports opening more than one file.
+  core.bool? supportsMultiOpen;
+
+  /// Whether this app supports creating files when offline.
+  core.bool? supportsOfflineCreate;
+
+  /// Whether the app is selected as the default handler for the types it
+  /// supports.
+  core.bool? useByDefault;
+
+  App({
+    this.authorized,
+    this.createInFolderTemplate,
+    this.createUrl,
+    this.hasDriveWideScope,
+    this.icons,
+    this.id,
+    this.installed,
+    this.kind,
+    this.longDescription,
+    this.name,
+    this.objectType,
+    this.openUrlTemplate,
+    this.primaryFileExtensions,
+    this.primaryMimeTypes,
+    this.productId,
+    this.productUrl,
+    this.secondaryFileExtensions,
+    this.secondaryMimeTypes,
+    this.shortDescription,
+    this.supportsCreate,
+    this.supportsImport,
+    this.supportsMultiOpen,
+    this.supportsOfflineCreate,
+    this.useByDefault,
+  });
+
+  App.fromJson(core.Map json_)
+      : this(
+          authorized: json_.containsKey('authorized')
+              ? json_['authorized'] as core.bool
+              : null,
+          createInFolderTemplate: json_.containsKey('createInFolderTemplate')
+              ? json_['createInFolderTemplate'] as core.String
+              : null,
+          createUrl: json_.containsKey('createUrl')
+              ? json_['createUrl'] as core.String
+              : null,
+          hasDriveWideScope: json_.containsKey('hasDriveWideScope')
+              ? json_['hasDriveWideScope'] as core.bool
+              : null,
+          icons: json_.containsKey('icons')
+              ? (json_['icons'] as core.List)
+                  .map((value) => AppIcons.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          installed: json_.containsKey('installed')
+              ? json_['installed'] as core.bool
+              : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          longDescription: json_.containsKey('longDescription')
+              ? json_['longDescription'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          objectType: json_.containsKey('objectType')
+              ? json_['objectType'] as core.String
+              : null,
+          openUrlTemplate: json_.containsKey('openUrlTemplate')
+              ? json_['openUrlTemplate'] as core.String
+              : null,
+          primaryFileExtensions: json_.containsKey('primaryFileExtensions')
+              ? (json_['primaryFileExtensions'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          primaryMimeTypes: json_.containsKey('primaryMimeTypes')
+              ? (json_['primaryMimeTypes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          productId: json_.containsKey('productId')
+              ? json_['productId'] as core.String
+              : null,
+          productUrl: json_.containsKey('productUrl')
+              ? json_['productUrl'] as core.String
+              : null,
+          secondaryFileExtensions: json_.containsKey('secondaryFileExtensions')
+              ? (json_['secondaryFileExtensions'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          secondaryMimeTypes: json_.containsKey('secondaryMimeTypes')
+              ? (json_['secondaryMimeTypes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          shortDescription: json_.containsKey('shortDescription')
+              ? json_['shortDescription'] as core.String
+              : null,
+          supportsCreate: json_.containsKey('supportsCreate')
+              ? json_['supportsCreate'] as core.bool
+              : null,
+          supportsImport: json_.containsKey('supportsImport')
+              ? json_['supportsImport'] as core.bool
+              : null,
+          supportsMultiOpen: json_.containsKey('supportsMultiOpen')
+              ? json_['supportsMultiOpen'] as core.bool
+              : null,
+          supportsOfflineCreate: json_.containsKey('supportsOfflineCreate')
+              ? json_['supportsOfflineCreate'] as core.bool
+              : null,
+          useByDefault: json_.containsKey('useByDefault')
+              ? json_['useByDefault'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (authorized != null) 'authorized': authorized!,
+        if (createInFolderTemplate != null)
+          'createInFolderTemplate': createInFolderTemplate!,
+        if (createUrl != null) 'createUrl': createUrl!,
+        if (hasDriveWideScope != null) 'hasDriveWideScope': hasDriveWideScope!,
+        if (icons != null) 'icons': icons!,
+        if (id != null) 'id': id!,
+        if (installed != null) 'installed': installed!,
+        if (kind != null) 'kind': kind!,
+        if (longDescription != null) 'longDescription': longDescription!,
+        if (name != null) 'name': name!,
+        if (objectType != null) 'objectType': objectType!,
+        if (openUrlTemplate != null) 'openUrlTemplate': openUrlTemplate!,
+        if (primaryFileExtensions != null)
+          'primaryFileExtensions': primaryFileExtensions!,
+        if (primaryMimeTypes != null) 'primaryMimeTypes': primaryMimeTypes!,
+        if (productId != null) 'productId': productId!,
+        if (productUrl != null) 'productUrl': productUrl!,
+        if (secondaryFileExtensions != null)
+          'secondaryFileExtensions': secondaryFileExtensions!,
+        if (secondaryMimeTypes != null)
+          'secondaryMimeTypes': secondaryMimeTypes!,
+        if (shortDescription != null) 'shortDescription': shortDescription!,
+        if (supportsCreate != null) 'supportsCreate': supportsCreate!,
+        if (supportsImport != null) 'supportsImport': supportsImport!,
+        if (supportsMultiOpen != null) 'supportsMultiOpen': supportsMultiOpen!,
+        if (supportsOfflineCreate != null)
+          'supportsOfflineCreate': supportsOfflineCreate!,
+        if (useByDefault != null) 'useByDefault': useByDefault!,
+      };
+}
+
+class AppIcons {
+  /// Category of the icon.
+  ///
+  /// Allowed values are: * `application` - The icon for the application. *
+  /// `document` - The icon for a file associated with the app. *
+  /// `documentShared` - The icon for a shared file associated with the app.
+  core.String? category;
+
+  /// URL for the icon.
+  core.String? iconUrl;
+
+  /// Size of the icon.
+  ///
+  /// Represented as the maximum of the width and height.
+  core.int? size;
+
+  AppIcons({
+    this.category,
+    this.iconUrl,
+    this.size,
+  });
+
+  AppIcons.fromJson(core.Map json_)
+      : this(
+          category: json_.containsKey('category')
+              ? json_['category'] as core.String
+              : null,
+          iconUrl: json_.containsKey('iconUrl')
+              ? json_['iconUrl'] as core.String
+              : null,
+          size: json_.containsKey('size') ? json_['size'] as core.int : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (category != null) 'category': category!,
+        if (iconUrl != null) 'iconUrl': iconUrl!,
+        if (size != null) 'size': size!,
+      };
+}
+
+/// A list of third-party applications which the user has installed or given
+/// access to Google Drive.
+class AppList {
+  /// The list of app IDs that the user has specified to use by default.
+  ///
+  /// The list is in reverse-priority order (lowest to highest).
+  core.List<core.String>? defaultAppIds;
+
+  /// The list of apps.
+  core.List<App>? items;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "drive#appList".
+  ///
+  /// Output only.
+  core.String? kind;
+
+  /// A link back to this list.
+  core.String? selfLink;
+
+  AppList({
+    this.defaultAppIds,
+    this.items,
+    this.kind,
+    this.selfLink,
+  });
+
+  AppList.fromJson(core.Map json_)
+      : this(
+          defaultAppIds: json_.containsKey('defaultAppIds')
+              ? (json_['defaultAppIds'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          items: json_.containsKey('items')
+              ? (json_['items'] as core.List)
+                  .map((value) => App.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          selfLink: json_.containsKey('selfLink')
+              ? json_['selfLink'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (defaultAppIds != null) 'defaultAppIds': defaultAppIds!,
+        if (items != null) 'items': items!,
+        if (kind != null) 'kind': kind!,
+        if (selfLink != null) 'selfLink': selfLink!,
+      };
+}
+
 /// A change to a file or shared drive.
 class Change {
   /// The type of the change.
@@ -3465,6 +3895,9 @@ class CommentQuotedFileContent {
 }
 
 /// A comment on a file.
+///
+/// Some resource methods (such as `comments.update`) require a `commentId`. Use
+/// the `comments.list` method to retrieve the ID for a comment in a file.
 class Comment {
   /// A region of the document represented as a JSON string.
   ///
@@ -3690,6 +4123,14 @@ class ContentRestriction {
   /// Only populated if readOnly is true.
   core.DateTime? restrictionTime;
 
+  /// Whether the content restriction was applied by the system, for example due
+  /// to an esignature.
+  ///
+  /// Users cannot modify or remove system restricted content restrictions.
+  ///
+  /// Output only.
+  core.bool? systemRestricted;
+
   /// The type of the content restriction.
   ///
   /// Currently the only possible value is `globalContentRestriction`.
@@ -3703,6 +4144,7 @@ class ContentRestriction {
     this.reason,
     this.restrictingUser,
     this.restrictionTime,
+    this.systemRestricted,
     this.type,
   });
 
@@ -3724,6 +4166,9 @@ class ContentRestriction {
           restrictionTime: json_.containsKey('restrictionTime')
               ? core.DateTime.parse(json_['restrictionTime'] as core.String)
               : null,
+          systemRestricted: json_.containsKey('systemRestricted')
+              ? json_['systemRestricted'] as core.bool
+              : null,
           type: json_.containsKey('type') ? json_['type'] as core.String : null,
         );
 
@@ -3734,6 +4179,7 @@ class ContentRestriction {
         if (restrictingUser != null) 'restrictingUser': restrictingUser!,
         if (restrictionTime != null)
           'restrictionTime': restrictionTime!.toUtc().toIso8601String(),
+        if (systemRestricted != null) 'systemRestricted': systemRestricted!,
         if (type != null) 'type': type!,
       };
 }
@@ -4052,6 +4498,10 @@ class DriveCapabilities {
 
 /// A set of restrictions that apply to this shared drive or items inside this
 /// shared drive.
+///
+/// Note that restrictions can't be set when creating a shared drive. To add a
+/// restriction, first create a shared drive and then use `drives.update` to add
+/// restrictions.
 class DriveRestrictions {
   /// Whether administrative privileges on this shared drive are required to
   /// modify restrictions.
@@ -4125,6 +4575,9 @@ class DriveRestrictions {
 }
 
 /// Representation of a shared drive.
+///
+/// Some resource methods (such as `drives.update`) require a `driveId`. Use the
+/// `drives.list` method to retrieve the ID for a shared drive.
 class Drive {
   /// An image file and cropping parameters from which a background image for
   /// this shared drive is set.
@@ -4182,6 +4635,10 @@ class Drive {
 
   /// A set of restrictions that apply to this shared drive or items inside this
   /// shared drive.
+  ///
+  /// Note that restrictions can't be set when creating a shared drive. To add a
+  /// restriction, first create a shared drive and then use `drives.update` to
+  /// add restrictions.
   DriveRestrictions? restrictions;
 
   /// The ID of the theme from which the background image and color will be set.
@@ -5362,6 +5819,9 @@ class FileVideoMediaMetadata {
 }
 
 /// The metadata for a file.
+///
+/// Some resource methods (such as `files.update`) require a `fileId`. Use the
+/// `files.list` method to retrieve the ID for a file.
 class File {
   /// A collection of arbitrary key-value pairs which are private to the
   /// requesting app.
@@ -6737,8 +7197,10 @@ class PermissionTeamDrivePermissionDetails {
 
 /// A permission for a file.
 ///
-/// A permission grants a user, group, domain or the world access to a file or a
-/// folder hierarchy.
+/// A permission grants a user, group, domain, or the world access to a file or
+/// a folder hierarchy. Some resource methods (such as `permissions.update`)
+/// require a `permissionId`. Use the `permissions.list` method to retrieve the
+/// ID for a file, folder, or shared drive.
 class Permission {
   /// Whether the permission allows the file to be discovered through search.
   ///
@@ -6978,6 +7440,9 @@ class PermissionList {
 }
 
 /// A reply to a comment on a file.
+///
+/// Some resource methods (such as `replies.update`) require a `replyId`. Use
+/// the `replies.list` method to retrieve the ID for a reply.
 class Reply {
   /// The action the reply performed to the parent comment.
   ///
@@ -7132,6 +7597,9 @@ class ReplyList {
 }
 
 /// The metadata for a revision to a file.
+///
+/// Some resource methods (such as `revisions.update`) require a `revisionId`.
+/// Use the `revisions.list` method to retrieve the ID for a revision.
 class Revision {
   /// Links for exporting Docs Editors files to specific formats.
   ///

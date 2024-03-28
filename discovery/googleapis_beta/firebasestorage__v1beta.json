@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230717",
+    "revision": "20240301",
     "rootUrl": "https://firebasestorage.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Storage for Firebase API",
@@ -254,7 +254,8 @@
             "id": "Bucket",
             "properties": {
                 "name": {
-                    "description": "Resource name of the bucket.",
+                    "description": "Output only. Resource name of the bucket.",
+                    "readOnly": true,
                     "type": "string"
                 }
             },

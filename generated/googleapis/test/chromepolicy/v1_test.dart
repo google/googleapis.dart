@@ -10,7 +10,6 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 // ignore_for_file: unreachable_from_main
 // ignore_for_file: unused_local_variable
@@ -24,56 +23,6 @@ import 'package:http/http.dart' as http;
 import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
-
-core.List<core.String> buildUnnamed0() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed0(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.int buildCounterChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle = 0;
-api.ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle
-    buildChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle() {
-  final o = api.ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle();
-  buildCounterChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle++;
-  if (buildCounterChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle < 3) {
-    o.deprecatedInFavorOf = buildUnnamed0();
-    o.description = 'foo';
-    o.endSupport = buildGoogleTypeDate();
-    o.policyApiLifecycleStage = 'foo';
-  }
-  buildCounterChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle--;
-  return o;
-}
-
-void checkChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle(
-    api.ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle o) {
-  buildCounterChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle++;
-  if (buildCounterChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle < 3) {
-    checkUnnamed0(o.deprecatedInFavorOf!);
-    unittest.expect(
-      o.description!,
-      unittest.equals('foo'),
-    );
-    checkGoogleTypeDate(o.endSupport!);
-    unittest.expect(
-      o.policyApiLifecycleStage!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle--;
-}
 
 core.int buildCounterGoogleChromePolicyVersionsV1AdditionalTargetKeyName = 0;
 api.GoogleChromePolicyVersionsV1AdditionalTargetKeyName
@@ -105,12 +54,12 @@ void checkGoogleChromePolicyVersionsV1AdditionalTargetKeyName(
 }
 
 core.List<api.GoogleChromePolicyVersionsV1DeleteGroupPolicyRequest>
-    buildUnnamed1() => [
+    buildUnnamed0() => [
           buildGoogleChromePolicyVersionsV1DeleteGroupPolicyRequest(),
           buildGoogleChromePolicyVersionsV1DeleteGroupPolicyRequest(),
         ];
 
-void checkUnnamed1(
+void checkUnnamed0(
     core.List<api.GoogleChromePolicyVersionsV1DeleteGroupPolicyRequest> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleChromePolicyVersionsV1DeleteGroupPolicyRequest(o[0]);
@@ -125,7 +74,7 @@ api.GoogleChromePolicyVersionsV1BatchDeleteGroupPoliciesRequest
   buildCounterGoogleChromePolicyVersionsV1BatchDeleteGroupPoliciesRequest++;
   if (buildCounterGoogleChromePolicyVersionsV1BatchDeleteGroupPoliciesRequest <
       3) {
-    o.requests = buildUnnamed1();
+    o.requests = buildUnnamed0();
   }
   buildCounterGoogleChromePolicyVersionsV1BatchDeleteGroupPoliciesRequest--;
   return o;
@@ -136,18 +85,18 @@ void checkGoogleChromePolicyVersionsV1BatchDeleteGroupPoliciesRequest(
   buildCounterGoogleChromePolicyVersionsV1BatchDeleteGroupPoliciesRequest++;
   if (buildCounterGoogleChromePolicyVersionsV1BatchDeleteGroupPoliciesRequest <
       3) {
-    checkUnnamed1(o.requests!);
+    checkUnnamed0(o.requests!);
   }
   buildCounterGoogleChromePolicyVersionsV1BatchDeleteGroupPoliciesRequest--;
 }
 
 core.List<api.GoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequest>
-    buildUnnamed2() => [
+    buildUnnamed1() => [
           buildGoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequest(),
           buildGoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequest(),
         ];
 
-void checkUnnamed2(
+void checkUnnamed1(
     core.List<api.GoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequest> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequest(o[0]);
@@ -164,7 +113,7 @@ api.GoogleChromePolicyVersionsV1BatchInheritOrgUnitPoliciesRequest
   buildCounterGoogleChromePolicyVersionsV1BatchInheritOrgUnitPoliciesRequest++;
   if (buildCounterGoogleChromePolicyVersionsV1BatchInheritOrgUnitPoliciesRequest <
       3) {
-    o.requests = buildUnnamed2();
+    o.requests = buildUnnamed1();
   }
   buildCounterGoogleChromePolicyVersionsV1BatchInheritOrgUnitPoliciesRequest--;
   return o;
@@ -175,18 +124,18 @@ void checkGoogleChromePolicyVersionsV1BatchInheritOrgUnitPoliciesRequest(
   buildCounterGoogleChromePolicyVersionsV1BatchInheritOrgUnitPoliciesRequest++;
   if (buildCounterGoogleChromePolicyVersionsV1BatchInheritOrgUnitPoliciesRequest <
       3) {
-    checkUnnamed2(o.requests!);
+    checkUnnamed1(o.requests!);
   }
   buildCounterGoogleChromePolicyVersionsV1BatchInheritOrgUnitPoliciesRequest--;
 }
 
 core.List<api.GoogleChromePolicyVersionsV1ModifyGroupPolicyRequest>
-    buildUnnamed3() => [
+    buildUnnamed2() => [
           buildGoogleChromePolicyVersionsV1ModifyGroupPolicyRequest(),
           buildGoogleChromePolicyVersionsV1ModifyGroupPolicyRequest(),
         ];
 
-void checkUnnamed3(
+void checkUnnamed2(
     core.List<api.GoogleChromePolicyVersionsV1ModifyGroupPolicyRequest> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleChromePolicyVersionsV1ModifyGroupPolicyRequest(o[0]);
@@ -201,7 +150,7 @@ api.GoogleChromePolicyVersionsV1BatchModifyGroupPoliciesRequest
   buildCounterGoogleChromePolicyVersionsV1BatchModifyGroupPoliciesRequest++;
   if (buildCounterGoogleChromePolicyVersionsV1BatchModifyGroupPoliciesRequest <
       3) {
-    o.requests = buildUnnamed3();
+    o.requests = buildUnnamed2();
   }
   buildCounterGoogleChromePolicyVersionsV1BatchModifyGroupPoliciesRequest--;
   return o;
@@ -212,18 +161,18 @@ void checkGoogleChromePolicyVersionsV1BatchModifyGroupPoliciesRequest(
   buildCounterGoogleChromePolicyVersionsV1BatchModifyGroupPoliciesRequest++;
   if (buildCounterGoogleChromePolicyVersionsV1BatchModifyGroupPoliciesRequest <
       3) {
-    checkUnnamed3(o.requests!);
+    checkUnnamed2(o.requests!);
   }
   buildCounterGoogleChromePolicyVersionsV1BatchModifyGroupPoliciesRequest--;
 }
 
 core.List<api.GoogleChromePolicyVersionsV1ModifyOrgUnitPolicyRequest>
-    buildUnnamed4() => [
+    buildUnnamed3() => [
           buildGoogleChromePolicyVersionsV1ModifyOrgUnitPolicyRequest(),
           buildGoogleChromePolicyVersionsV1ModifyOrgUnitPolicyRequest(),
         ];
 
-void checkUnnamed4(
+void checkUnnamed3(
     core.List<api.GoogleChromePolicyVersionsV1ModifyOrgUnitPolicyRequest> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleChromePolicyVersionsV1ModifyOrgUnitPolicyRequest(o[0]);
@@ -239,7 +188,7 @@ api.GoogleChromePolicyVersionsV1BatchModifyOrgUnitPoliciesRequest
   buildCounterGoogleChromePolicyVersionsV1BatchModifyOrgUnitPoliciesRequest++;
   if (buildCounterGoogleChromePolicyVersionsV1BatchModifyOrgUnitPoliciesRequest <
       3) {
-    o.requests = buildUnnamed4();
+    o.requests = buildUnnamed3();
   }
   buildCounterGoogleChromePolicyVersionsV1BatchModifyOrgUnitPoliciesRequest--;
   return o;
@@ -250,17 +199,17 @@ void checkGoogleChromePolicyVersionsV1BatchModifyOrgUnitPoliciesRequest(
   buildCounterGoogleChromePolicyVersionsV1BatchModifyOrgUnitPoliciesRequest++;
   if (buildCounterGoogleChromePolicyVersionsV1BatchModifyOrgUnitPoliciesRequest <
       3) {
-    checkUnnamed4(o.requests!);
+    checkUnnamed3(o.requests!);
   }
   buildCounterGoogleChromePolicyVersionsV1BatchModifyOrgUnitPoliciesRequest--;
 }
 
-core.List<api.GoogleChromePolicyVersionsV1NetworkSetting> buildUnnamed5() => [
+core.List<api.GoogleChromePolicyVersionsV1NetworkSetting> buildUnnamed4() => [
       buildGoogleChromePolicyVersionsV1NetworkSetting(),
       buildGoogleChromePolicyVersionsV1NetworkSetting(),
     ];
 
-void checkUnnamed5(
+void checkUnnamed4(
     core.List<api.GoogleChromePolicyVersionsV1NetworkSetting> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleChromePolicyVersionsV1NetworkSetting(o[0]);
@@ -275,7 +224,7 @@ api.GoogleChromePolicyVersionsV1DefineCertificateRequest
   if (buildCounterGoogleChromePolicyVersionsV1DefineCertificateRequest < 3) {
     o.ceritificateName = 'foo';
     o.certificate = 'foo';
-    o.settings = buildUnnamed5();
+    o.settings = buildUnnamed4();
     o.targetResource = 'foo';
   }
   buildCounterGoogleChromePolicyVersionsV1DefineCertificateRequest--;
@@ -294,7 +243,7 @@ void checkGoogleChromePolicyVersionsV1DefineCertificateRequest(
       o.certificate!,
       unittest.equals('foo'),
     );
-    checkUnnamed5(o.settings!);
+    checkUnnamed4(o.settings!);
     unittest.expect(
       o.targetResource!,
       unittest.equals('foo'),
@@ -303,12 +252,12 @@ void checkGoogleChromePolicyVersionsV1DefineCertificateRequest(
   buildCounterGoogleChromePolicyVersionsV1DefineCertificateRequest--;
 }
 
-core.List<api.GoogleChromePolicyVersionsV1NetworkSetting> buildUnnamed6() => [
+core.List<api.GoogleChromePolicyVersionsV1NetworkSetting> buildUnnamed5() => [
       buildGoogleChromePolicyVersionsV1NetworkSetting(),
       buildGoogleChromePolicyVersionsV1NetworkSetting(),
     ];
 
-void checkUnnamed6(
+void checkUnnamed5(
     core.List<api.GoogleChromePolicyVersionsV1NetworkSetting> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleChromePolicyVersionsV1NetworkSetting(o[0]);
@@ -322,7 +271,7 @@ api.GoogleChromePolicyVersionsV1DefineCertificateResponse
   buildCounterGoogleChromePolicyVersionsV1DefineCertificateResponse++;
   if (buildCounterGoogleChromePolicyVersionsV1DefineCertificateResponse < 3) {
     o.networkId = 'foo';
-    o.settings = buildUnnamed6();
+    o.settings = buildUnnamed5();
     o.targetResource = 'foo';
   }
   buildCounterGoogleChromePolicyVersionsV1DefineCertificateResponse--;
@@ -337,7 +286,7 @@ void checkGoogleChromePolicyVersionsV1DefineCertificateResponse(
       o.networkId!,
       unittest.equals('foo'),
     );
-    checkUnnamed6(o.settings!);
+    checkUnnamed5(o.settings!);
     unittest.expect(
       o.targetResource!,
       unittest.equals('foo'),
@@ -346,12 +295,12 @@ void checkGoogleChromePolicyVersionsV1DefineCertificateResponse(
   buildCounterGoogleChromePolicyVersionsV1DefineCertificateResponse--;
 }
 
-core.List<api.GoogleChromePolicyVersionsV1NetworkSetting> buildUnnamed7() => [
+core.List<api.GoogleChromePolicyVersionsV1NetworkSetting> buildUnnamed6() => [
       buildGoogleChromePolicyVersionsV1NetworkSetting(),
       buildGoogleChromePolicyVersionsV1NetworkSetting(),
     ];
 
-void checkUnnamed7(
+void checkUnnamed6(
     core.List<api.GoogleChromePolicyVersionsV1NetworkSetting> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleChromePolicyVersionsV1NetworkSetting(o[0]);
@@ -365,7 +314,7 @@ api.GoogleChromePolicyVersionsV1DefineNetworkRequest
   buildCounterGoogleChromePolicyVersionsV1DefineNetworkRequest++;
   if (buildCounterGoogleChromePolicyVersionsV1DefineNetworkRequest < 3) {
     o.name = 'foo';
-    o.settings = buildUnnamed7();
+    o.settings = buildUnnamed6();
     o.targetResource = 'foo';
   }
   buildCounterGoogleChromePolicyVersionsV1DefineNetworkRequest--;
@@ -380,7 +329,7 @@ void checkGoogleChromePolicyVersionsV1DefineNetworkRequest(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed7(o.settings!);
+    checkUnnamed6(o.settings!);
     unittest.expect(
       o.targetResource!,
       unittest.equals('foo'),
@@ -389,12 +338,12 @@ void checkGoogleChromePolicyVersionsV1DefineNetworkRequest(
   buildCounterGoogleChromePolicyVersionsV1DefineNetworkRequest--;
 }
 
-core.List<api.GoogleChromePolicyVersionsV1NetworkSetting> buildUnnamed8() => [
+core.List<api.GoogleChromePolicyVersionsV1NetworkSetting> buildUnnamed7() => [
       buildGoogleChromePolicyVersionsV1NetworkSetting(),
       buildGoogleChromePolicyVersionsV1NetworkSetting(),
     ];
 
-void checkUnnamed8(
+void checkUnnamed7(
     core.List<api.GoogleChromePolicyVersionsV1NetworkSetting> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleChromePolicyVersionsV1NetworkSetting(o[0]);
@@ -408,7 +357,7 @@ api.GoogleChromePolicyVersionsV1DefineNetworkResponse
   buildCounterGoogleChromePolicyVersionsV1DefineNetworkResponse++;
   if (buildCounterGoogleChromePolicyVersionsV1DefineNetworkResponse < 3) {
     o.networkId = 'foo';
-    o.settings = buildUnnamed8();
+    o.settings = buildUnnamed7();
     o.targetResource = 'foo';
   }
   buildCounterGoogleChromePolicyVersionsV1DefineNetworkResponse--;
@@ -423,7 +372,7 @@ void checkGoogleChromePolicyVersionsV1DefineNetworkResponse(
       o.networkId!,
       unittest.equals('foo'),
     );
-    checkUnnamed8(o.settings!);
+    checkUnnamed7(o.settings!);
     unittest.expect(
       o.targetResource!,
       unittest.equals('foo'),
@@ -466,6 +415,8 @@ api.GoogleChromePolicyVersionsV1FieldConstraints
   if (buildCounterGoogleChromePolicyVersionsV1FieldConstraints < 3) {
     o.numericRangeConstraint =
         buildGoogleChromePolicyVersionsV1NumericRangeConstraint();
+    o.uploadedFileConstraints =
+        buildGoogleChromePolicyVersionsV1UploadedFileConstraints();
   }
   buildCounterGoogleChromePolicyVersionsV1FieldConstraints--;
   return o;
@@ -477,6 +428,8 @@ void checkGoogleChromePolicyVersionsV1FieldConstraints(
   if (buildCounterGoogleChromePolicyVersionsV1FieldConstraints < 3) {
     checkGoogleChromePolicyVersionsV1NumericRangeConstraint(
         o.numericRangeConstraint!);
+    checkGoogleChromePolicyVersionsV1UploadedFileConstraints(
+        o.uploadedFileConstraints!);
   }
   buildCounterGoogleChromePolicyVersionsV1FieldConstraints--;
 }
@@ -543,12 +496,12 @@ void checkGoogleChromePolicyVersionsV1ListGroupPriorityOrderingRequest(
   buildCounterGoogleChromePolicyVersionsV1ListGroupPriorityOrderingRequest--;
 }
 
-core.List<core.String> buildUnnamed9() => [
+core.List<core.String> buildUnnamed8() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed9(core.List<core.String> o) {
+void checkUnnamed8(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -569,7 +522,7 @@ api.GoogleChromePolicyVersionsV1ListGroupPriorityOrderingResponse
   buildCounterGoogleChromePolicyVersionsV1ListGroupPriorityOrderingResponse++;
   if (buildCounterGoogleChromePolicyVersionsV1ListGroupPriorityOrderingResponse <
       3) {
-    o.groupIds = buildUnnamed9();
+    o.groupIds = buildUnnamed8();
     o.policyNamespace = 'foo';
     o.policySchema = 'foo';
     o.policyTargetKey = buildGoogleChromePolicyVersionsV1PolicyTargetKey();
@@ -583,7 +536,7 @@ void checkGoogleChromePolicyVersionsV1ListGroupPriorityOrderingResponse(
   buildCounterGoogleChromePolicyVersionsV1ListGroupPriorityOrderingResponse++;
   if (buildCounterGoogleChromePolicyVersionsV1ListGroupPriorityOrderingResponse <
       3) {
-    checkUnnamed9(o.groupIds!);
+    checkUnnamed8(o.groupIds!);
     unittest.expect(
       o.policyNamespace!,
       unittest.equals('foo'),
@@ -597,12 +550,12 @@ void checkGoogleChromePolicyVersionsV1ListGroupPriorityOrderingResponse(
   buildCounterGoogleChromePolicyVersionsV1ListGroupPriorityOrderingResponse--;
 }
 
-core.List<api.GoogleChromePolicyVersionsV1PolicySchema> buildUnnamed10() => [
+core.List<api.GoogleChromePolicyVersionsV1PolicySchema> buildUnnamed9() => [
       buildGoogleChromePolicyVersionsV1PolicySchema(),
       buildGoogleChromePolicyVersionsV1PolicySchema(),
     ];
 
-void checkUnnamed10(core.List<api.GoogleChromePolicyVersionsV1PolicySchema> o) {
+void checkUnnamed9(core.List<api.GoogleChromePolicyVersionsV1PolicySchema> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleChromePolicyVersionsV1PolicySchema(o[0]);
   checkGoogleChromePolicyVersionsV1PolicySchema(o[1]);
@@ -615,7 +568,7 @@ api.GoogleChromePolicyVersionsV1ListPolicySchemasResponse
   buildCounterGoogleChromePolicyVersionsV1ListPolicySchemasResponse++;
   if (buildCounterGoogleChromePolicyVersionsV1ListPolicySchemasResponse < 3) {
     o.nextPageToken = 'foo';
-    o.policySchemas = buildUnnamed10();
+    o.policySchemas = buildUnnamed9();
   }
   buildCounterGoogleChromePolicyVersionsV1ListPolicySchemasResponse--;
   return o;
@@ -629,7 +582,7 @@ void checkGoogleChromePolicyVersionsV1ListPolicySchemasResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed10(o.policySchemas!);
+    checkUnnamed9(o.policySchemas!);
   }
   buildCounterGoogleChromePolicyVersionsV1ListPolicySchemasResponse--;
 }
@@ -690,7 +643,7 @@ void checkGoogleChromePolicyVersionsV1ModifyOrgUnitPolicyRequest(
   buildCounterGoogleChromePolicyVersionsV1ModifyOrgUnitPolicyRequest--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed11() => {
+core.Map<core.String, core.Object?> buildUnnamed10() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -703,7 +656,7 @@ core.Map<core.String, core.Object?> buildUnnamed11() => {
       },
     };
 
-void checkUnnamed11(core.Map<core.String, core.Object?> o) {
+void checkUnnamed10(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -742,7 +695,7 @@ api.GoogleChromePolicyVersionsV1NetworkSetting
   buildCounterGoogleChromePolicyVersionsV1NetworkSetting++;
   if (buildCounterGoogleChromePolicyVersionsV1NetworkSetting < 3) {
     o.policySchema = 'foo';
-    o.value = buildUnnamed11();
+    o.value = buildUnnamed10();
   }
   buildCounterGoogleChromePolicyVersionsV1NetworkSetting--;
   return o;
@@ -756,7 +709,7 @@ void checkGoogleChromePolicyVersionsV1NetworkSetting(
       o.policySchema!,
       unittest.equals('foo'),
     );
-    checkUnnamed11(o.value!);
+    checkUnnamed10(o.value!);
   }
   buildCounterGoogleChromePolicyVersionsV1NetworkSetting--;
 }
@@ -790,6 +743,23 @@ void checkGoogleChromePolicyVersionsV1NumericRangeConstraint(
   buildCounterGoogleChromePolicyVersionsV1NumericRangeConstraint--;
 }
 
+core.List<core.String> buildUnnamed11() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed11(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.List<core.String> buildUnnamed12() => [
       'foo',
       'foo',
@@ -807,13 +777,65 @@ void checkUnnamed12(core.List<core.String> o) {
   );
 }
 
+core.int buildCounterGoogleChromePolicyVersionsV1PolicyApiLifecycle = 0;
+api.GoogleChromePolicyVersionsV1PolicyApiLifecycle
+    buildGoogleChromePolicyVersionsV1PolicyApiLifecycle() {
+  final o = api.GoogleChromePolicyVersionsV1PolicyApiLifecycle();
+  buildCounterGoogleChromePolicyVersionsV1PolicyApiLifecycle++;
+  if (buildCounterGoogleChromePolicyVersionsV1PolicyApiLifecycle < 3) {
+    o.deprecatedInFavorOf = buildUnnamed11();
+    o.description = 'foo';
+    o.endSupport = buildGoogleTypeDate();
+    o.policyApiLifecycleStage = 'foo';
+    o.scheduledToDeprecatePolicies = buildUnnamed12();
+  }
+  buildCounterGoogleChromePolicyVersionsV1PolicyApiLifecycle--;
+  return o;
+}
+
+void checkGoogleChromePolicyVersionsV1PolicyApiLifecycle(
+    api.GoogleChromePolicyVersionsV1PolicyApiLifecycle o) {
+  buildCounterGoogleChromePolicyVersionsV1PolicyApiLifecycle++;
+  if (buildCounterGoogleChromePolicyVersionsV1PolicyApiLifecycle < 3) {
+    checkUnnamed11(o.deprecatedInFavorOf!);
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    checkGoogleTypeDate(o.endSupport!);
+    unittest.expect(
+      o.policyApiLifecycleStage!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed12(o.scheduledToDeprecatePolicies!);
+  }
+  buildCounterGoogleChromePolicyVersionsV1PolicyApiLifecycle--;
+}
+
+core.List<core.String> buildUnnamed13() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed13(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.List<api.GoogleChromePolicyVersionsV1AdditionalTargetKeyName>
-    buildUnnamed13() => [
+    buildUnnamed14() => [
           buildGoogleChromePolicyVersionsV1AdditionalTargetKeyName(),
           buildGoogleChromePolicyVersionsV1AdditionalTargetKeyName(),
         ];
 
-void checkUnnamed13(
+void checkUnnamed14(
     core.List<api.GoogleChromePolicyVersionsV1AdditionalTargetKeyName> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleChromePolicyVersionsV1AdditionalTargetKeyName(o[0]);
@@ -821,12 +843,12 @@ void checkUnnamed13(
 }
 
 core.List<api.GoogleChromePolicyVersionsV1PolicySchemaFieldDescription>
-    buildUnnamed14() => [
+    buildUnnamed15() => [
           buildGoogleChromePolicyVersionsV1PolicySchemaFieldDescription(),
           buildGoogleChromePolicyVersionsV1PolicySchemaFieldDescription(),
         ];
 
-void checkUnnamed14(
+void checkUnnamed15(
     core.List<api.GoogleChromePolicyVersionsV1PolicySchemaFieldDescription> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleChromePolicyVersionsV1PolicySchemaFieldDescription(o[0]);
@@ -834,12 +856,12 @@ void checkUnnamed14(
 }
 
 core.List<api.GoogleChromePolicyVersionsV1PolicySchemaNoticeDescription>
-    buildUnnamed15() => [
+    buildUnnamed16() => [
           buildGoogleChromePolicyVersionsV1PolicySchemaNoticeDescription(),
           buildGoogleChromePolicyVersionsV1PolicySchemaNoticeDescription(),
         ];
 
-void checkUnnamed15(
+void checkUnnamed16(
     core.List<api.GoogleChromePolicyVersionsV1PolicySchemaNoticeDescription>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -847,12 +869,29 @@ void checkUnnamed15(
   checkGoogleChromePolicyVersionsV1PolicySchemaNoticeDescription(o[1]);
 }
 
-core.List<core.String> buildUnnamed16() => [
+core.List<core.String> buildUnnamed17() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed16(core.List<core.String> o) {
+void checkUnnamed17(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed18() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed18(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -870,19 +909,20 @@ api.GoogleChromePolicyVersionsV1PolicySchema
   final o = api.GoogleChromePolicyVersionsV1PolicySchema();
   buildCounterGoogleChromePolicyVersionsV1PolicySchema++;
   if (buildCounterGoogleChromePolicyVersionsV1PolicySchema < 3) {
-    o.accessRestrictions = buildUnnamed12();
-    o.additionalTargetKeyNames = buildUnnamed13();
+    o.accessRestrictions = buildUnnamed13();
+    o.additionalTargetKeyNames = buildUnnamed14();
     o.categoryTitle = 'foo';
     o.definition = buildProto2FileDescriptorProto();
-    o.fieldDescriptions = buildUnnamed14();
+    o.fieldDescriptions = buildUnnamed15();
     o.name = 'foo';
-    o.notices = buildUnnamed15();
+    o.notices = buildUnnamed16();
     o.policyApiLifecycle =
-        buildChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle();
+        buildGoogleChromePolicyVersionsV1PolicyApiLifecycle();
     o.policyDescription = 'foo';
     o.schemaName = 'foo';
     o.supportUri = 'foo';
-    o.validTargetResources = buildUnnamed16();
+    o.supportedPlatforms = buildUnnamed17();
+    o.validTargetResources = buildUnnamed18();
   }
   buildCounterGoogleChromePolicyVersionsV1PolicySchema--;
   return o;
@@ -892,21 +932,20 @@ void checkGoogleChromePolicyVersionsV1PolicySchema(
     api.GoogleChromePolicyVersionsV1PolicySchema o) {
   buildCounterGoogleChromePolicyVersionsV1PolicySchema++;
   if (buildCounterGoogleChromePolicyVersionsV1PolicySchema < 3) {
-    checkUnnamed12(o.accessRestrictions!);
-    checkUnnamed13(o.additionalTargetKeyNames!);
+    checkUnnamed13(o.accessRestrictions!);
+    checkUnnamed14(o.additionalTargetKeyNames!);
     unittest.expect(
       o.categoryTitle!,
       unittest.equals('foo'),
     );
     checkProto2FileDescriptorProto(o.definition!);
-    checkUnnamed14(o.fieldDescriptions!);
+    checkUnnamed15(o.fieldDescriptions!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed15(o.notices!);
-    checkChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle(
-        o.policyApiLifecycle!);
+    checkUnnamed16(o.notices!);
+    checkGoogleChromePolicyVersionsV1PolicyApiLifecycle(o.policyApiLifecycle!);
     unittest.expect(
       o.policyDescription!,
       unittest.equals('foo'),
@@ -919,7 +958,8 @@ void checkGoogleChromePolicyVersionsV1PolicySchema(
       o.supportUri!,
       unittest.equals('foo'),
     );
-    checkUnnamed16(o.validTargetResources!);
+    checkUnnamed17(o.supportedPlatforms!);
+    checkUnnamed18(o.validTargetResources!);
   }
   buildCounterGoogleChromePolicyVersionsV1PolicySchema--;
 }
@@ -957,12 +997,12 @@ void checkGoogleChromePolicyVersionsV1PolicySchemaFieldDependencies(
 }
 
 core.List<api.GoogleChromePolicyVersionsV1PolicySchemaFieldDependencies>
-    buildUnnamed17() => [
+    buildUnnamed19() => [
           buildGoogleChromePolicyVersionsV1PolicySchemaFieldDependencies(),
           buildGoogleChromePolicyVersionsV1PolicySchemaFieldDependencies(),
         ];
 
-void checkUnnamed17(
+void checkUnnamed19(
     core.List<api.GoogleChromePolicyVersionsV1PolicySchemaFieldDependencies>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -972,12 +1012,12 @@ void checkUnnamed17(
 
 core.List<
         api.GoogleChromePolicyVersionsV1PolicySchemaFieldKnownValueDescription>
-    buildUnnamed18() => [
+    buildUnnamed20() => [
           buildGoogleChromePolicyVersionsV1PolicySchemaFieldKnownValueDescription(),
           buildGoogleChromePolicyVersionsV1PolicySchemaFieldKnownValueDescription(),
         ];
 
-void checkUnnamed18(
+void checkUnnamed20(
     core.List<
             api
             .GoogleChromePolicyVersionsV1PolicySchemaFieldKnownValueDescription>
@@ -988,12 +1028,12 @@ void checkUnnamed18(
 }
 
 core.List<api.GoogleChromePolicyVersionsV1PolicySchemaFieldDescription>
-    buildUnnamed19() => [
+    buildUnnamed21() => [
           buildGoogleChromePolicyVersionsV1PolicySchemaFieldDescription(),
           buildGoogleChromePolicyVersionsV1PolicySchemaFieldDescription(),
         ];
 
-void checkUnnamed19(
+void checkUnnamed21(
     core.List<api.GoogleChromePolicyVersionsV1PolicySchemaFieldDescription> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleChromePolicyVersionsV1PolicySchemaFieldDescription(o[0]);
@@ -1001,12 +1041,12 @@ void checkUnnamed19(
 }
 
 core.List<api.GoogleChromePolicyVersionsV1PolicySchemaRequiredItems>
-    buildUnnamed20() => [
+    buildUnnamed22() => [
           buildGoogleChromePolicyVersionsV1PolicySchemaRequiredItems(),
           buildGoogleChromePolicyVersionsV1PolicySchemaRequiredItems(),
         ];
 
-void checkUnnamed20(
+void checkUnnamed22(
     core.List<api.GoogleChromePolicyVersionsV1PolicySchemaRequiredItems> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleChromePolicyVersionsV1PolicySchemaRequiredItems(o[0]);
@@ -1029,13 +1069,13 @@ api.GoogleChromePolicyVersionsV1PolicySchemaFieldDescription
     o.description = 'foo';
     o.field = 'foo';
     o.fieldConstraints = buildGoogleChromePolicyVersionsV1FieldConstraints();
-    o.fieldDependencies = buildUnnamed17();
+    o.fieldDependencies = buildUnnamed19();
     o.fieldDescription = 'foo';
     o.inputConstraint = 'foo';
-    o.knownValueDescriptions = buildUnnamed18();
+    o.knownValueDescriptions = buildUnnamed20();
     o.name = 'foo';
-    o.nestedFieldDescriptions = buildUnnamed19();
-    o.requiredItems = buildUnnamed20();
+    o.nestedFieldDescriptions = buildUnnamed21();
+    o.requiredItems = buildUnnamed22();
   }
   buildCounterGoogleChromePolicyVersionsV1PolicySchemaFieldDescription--;
   return o;
@@ -1069,7 +1109,7 @@ void checkGoogleChromePolicyVersionsV1PolicySchemaFieldDescription(
       unittest.equals('foo'),
     );
     checkGoogleChromePolicyVersionsV1FieldConstraints(o.fieldConstraints!);
-    checkUnnamed17(o.fieldDependencies!);
+    checkUnnamed19(o.fieldDependencies!);
     unittest.expect(
       o.fieldDescription!,
       unittest.equals('foo'),
@@ -1078,24 +1118,24 @@ void checkGoogleChromePolicyVersionsV1PolicySchemaFieldDescription(
       o.inputConstraint!,
       unittest.equals('foo'),
     );
-    checkUnnamed18(o.knownValueDescriptions!);
+    checkUnnamed20(o.knownValueDescriptions!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed19(o.nestedFieldDescriptions!);
-    checkUnnamed20(o.requiredItems!);
+    checkUnnamed21(o.nestedFieldDescriptions!);
+    checkUnnamed22(o.requiredItems!);
   }
   buildCounterGoogleChromePolicyVersionsV1PolicySchemaFieldDescription--;
 }
 
 core.List<api.GoogleChromePolicyVersionsV1PolicySchemaFieldDependencies>
-    buildUnnamed21() => [
+    buildUnnamed23() => [
           buildGoogleChromePolicyVersionsV1PolicySchemaFieldDependencies(),
           buildGoogleChromePolicyVersionsV1PolicySchemaFieldDependencies(),
         ];
 
-void checkUnnamed21(
+void checkUnnamed23(
     core.List<api.GoogleChromePolicyVersionsV1PolicySchemaFieldDependencies>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1114,7 +1154,7 @@ api.GoogleChromePolicyVersionsV1PolicySchemaFieldKnownValueDescription
   if (buildCounterGoogleChromePolicyVersionsV1PolicySchemaFieldKnownValueDescription <
       3) {
     o.description = 'foo';
-    o.fieldDependencies = buildUnnamed21();
+    o.fieldDependencies = buildUnnamed23();
     o.value = 'foo';
   }
   buildCounterGoogleChromePolicyVersionsV1PolicySchemaFieldKnownValueDescription--;
@@ -1130,7 +1170,7 @@ void checkGoogleChromePolicyVersionsV1PolicySchemaFieldKnownValueDescription(
       o.description!,
       unittest.equals('foo'),
     );
-    checkUnnamed21(o.fieldDependencies!);
+    checkUnnamed23(o.fieldDependencies!);
     unittest.expect(
       o.value!,
       unittest.equals('foo'),
@@ -1178,12 +1218,12 @@ void checkGoogleChromePolicyVersionsV1PolicySchemaNoticeDescription(
   buildCounterGoogleChromePolicyVersionsV1PolicySchemaNoticeDescription--;
 }
 
-core.List<core.String> buildUnnamed22() => [
+core.List<core.String> buildUnnamed24() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed22(core.List<core.String> o) {
+void checkUnnamed24(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1195,12 +1235,12 @@ void checkUnnamed22(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed23() => [
+core.List<core.String> buildUnnamed25() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed23(core.List<core.String> o) {
+void checkUnnamed25(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1218,8 +1258,8 @@ api.GoogleChromePolicyVersionsV1PolicySchemaRequiredItems
   final o = api.GoogleChromePolicyVersionsV1PolicySchemaRequiredItems();
   buildCounterGoogleChromePolicyVersionsV1PolicySchemaRequiredItems++;
   if (buildCounterGoogleChromePolicyVersionsV1PolicySchemaRequiredItems < 3) {
-    o.fieldConditions = buildUnnamed22();
-    o.requiredFields = buildUnnamed23();
+    o.fieldConditions = buildUnnamed24();
+    o.requiredFields = buildUnnamed25();
   }
   buildCounterGoogleChromePolicyVersionsV1PolicySchemaRequiredItems--;
   return o;
@@ -1229,18 +1269,18 @@ void checkGoogleChromePolicyVersionsV1PolicySchemaRequiredItems(
     api.GoogleChromePolicyVersionsV1PolicySchemaRequiredItems o) {
   buildCounterGoogleChromePolicyVersionsV1PolicySchemaRequiredItems++;
   if (buildCounterGoogleChromePolicyVersionsV1PolicySchemaRequiredItems < 3) {
-    checkUnnamed22(o.fieldConditions!);
-    checkUnnamed23(o.requiredFields!);
+    checkUnnamed24(o.fieldConditions!);
+    checkUnnamed25(o.requiredFields!);
   }
   buildCounterGoogleChromePolicyVersionsV1PolicySchemaRequiredItems--;
 }
 
-core.Map<core.String, core.String> buildUnnamed24() => {
+core.Map<core.String, core.String> buildUnnamed26() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed24(core.Map<core.String, core.String> o) {
+void checkUnnamed26(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -1258,7 +1298,7 @@ api.GoogleChromePolicyVersionsV1PolicyTargetKey
   final o = api.GoogleChromePolicyVersionsV1PolicyTargetKey();
   buildCounterGoogleChromePolicyVersionsV1PolicyTargetKey++;
   if (buildCounterGoogleChromePolicyVersionsV1PolicyTargetKey < 3) {
-    o.additionalTargetKeys = buildUnnamed24();
+    o.additionalTargetKeys = buildUnnamed26();
     o.targetResource = 'foo';
   }
   buildCounterGoogleChromePolicyVersionsV1PolicyTargetKey--;
@@ -1269,7 +1309,7 @@ void checkGoogleChromePolicyVersionsV1PolicyTargetKey(
     api.GoogleChromePolicyVersionsV1PolicyTargetKey o) {
   buildCounterGoogleChromePolicyVersionsV1PolicyTargetKey++;
   if (buildCounterGoogleChromePolicyVersionsV1PolicyTargetKey < 3) {
-    checkUnnamed24(o.additionalTargetKeys!);
+    checkUnnamed26(o.additionalTargetKeys!);
     unittest.expect(
       o.targetResource!,
       unittest.equals('foo'),
@@ -1278,7 +1318,7 @@ void checkGoogleChromePolicyVersionsV1PolicyTargetKey(
   buildCounterGoogleChromePolicyVersionsV1PolicyTargetKey--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed25() => {
+core.Map<core.String, core.Object?> buildUnnamed27() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -1291,7 +1331,7 @@ core.Map<core.String, core.Object?> buildUnnamed25() => {
       },
     };
 
-void checkUnnamed25(core.Map<core.String, core.Object?> o) {
+void checkUnnamed27(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted4 = (o['x']!) as core.Map;
   unittest.expect(casted4, unittest.hasLength(3));
@@ -1330,7 +1370,7 @@ api.GoogleChromePolicyVersionsV1PolicyValue
   buildCounterGoogleChromePolicyVersionsV1PolicyValue++;
   if (buildCounterGoogleChromePolicyVersionsV1PolicyValue < 3) {
     o.policySchema = 'foo';
-    o.value = buildUnnamed25();
+    o.value = buildUnnamed27();
   }
   buildCounterGoogleChromePolicyVersionsV1PolicyValue--;
   return o;
@@ -1344,7 +1384,7 @@ void checkGoogleChromePolicyVersionsV1PolicyValue(
       o.policySchema!,
       unittest.equals('foo'),
     );
-    checkUnnamed25(o.value!);
+    checkUnnamed27(o.value!);
   }
   buildCounterGoogleChromePolicyVersionsV1PolicyValue--;
 }
@@ -1477,12 +1517,12 @@ void checkGoogleChromePolicyVersionsV1ResolveRequest(
   buildCounterGoogleChromePolicyVersionsV1ResolveRequest--;
 }
 
-core.List<api.GoogleChromePolicyVersionsV1ResolvedPolicy> buildUnnamed26() => [
+core.List<api.GoogleChromePolicyVersionsV1ResolvedPolicy> buildUnnamed28() => [
       buildGoogleChromePolicyVersionsV1ResolvedPolicy(),
       buildGoogleChromePolicyVersionsV1ResolvedPolicy(),
     ];
 
-void checkUnnamed26(
+void checkUnnamed28(
     core.List<api.GoogleChromePolicyVersionsV1ResolvedPolicy> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleChromePolicyVersionsV1ResolvedPolicy(o[0]);
@@ -1496,7 +1536,7 @@ api.GoogleChromePolicyVersionsV1ResolveResponse
   buildCounterGoogleChromePolicyVersionsV1ResolveResponse++;
   if (buildCounterGoogleChromePolicyVersionsV1ResolveResponse < 3) {
     o.nextPageToken = 'foo';
-    o.resolvedPolicies = buildUnnamed26();
+    o.resolvedPolicies = buildUnnamed28();
   }
   buildCounterGoogleChromePolicyVersionsV1ResolveResponse--;
   return o;
@@ -1510,7 +1550,7 @@ void checkGoogleChromePolicyVersionsV1ResolveResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed26(o.resolvedPolicies!);
+    checkUnnamed28(o.resolvedPolicies!);
   }
   buildCounterGoogleChromePolicyVersionsV1ResolveResponse--;
 }
@@ -1542,12 +1582,12 @@ void checkGoogleChromePolicyVersionsV1ResolvedPolicy(
   buildCounterGoogleChromePolicyVersionsV1ResolvedPolicy--;
 }
 
-core.List<core.String> buildUnnamed27() => [
+core.List<core.String> buildUnnamed29() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed27(core.List<core.String> o) {
+void checkUnnamed29(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1569,7 +1609,7 @@ api.GoogleChromePolicyVersionsV1UpdateGroupPriorityOrderingRequest
   buildCounterGoogleChromePolicyVersionsV1UpdateGroupPriorityOrderingRequest++;
   if (buildCounterGoogleChromePolicyVersionsV1UpdateGroupPriorityOrderingRequest <
       3) {
-    o.groupIds = buildUnnamed27();
+    o.groupIds = buildUnnamed29();
     o.policyNamespace = 'foo';
     o.policySchema = 'foo';
     o.policyTargetKey = buildGoogleChromePolicyVersionsV1PolicyTargetKey();
@@ -1583,7 +1623,7 @@ void checkGoogleChromePolicyVersionsV1UpdateGroupPriorityOrderingRequest(
   buildCounterGoogleChromePolicyVersionsV1UpdateGroupPriorityOrderingRequest++;
   if (buildCounterGoogleChromePolicyVersionsV1UpdateGroupPriorityOrderingRequest <
       3) {
-    checkUnnamed27(o.groupIds!);
+    checkUnnamed29(o.groupIds!);
     unittest.expect(
       o.policyNamespace!,
       unittest.equals('foo'),
@@ -1645,6 +1685,49 @@ void checkGoogleChromePolicyVersionsV1UploadPolicyFileResponse(
   buildCounterGoogleChromePolicyVersionsV1UploadPolicyFileResponse--;
 }
 
+core.List<core.String> buildUnnamed30() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed30(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterGoogleChromePolicyVersionsV1UploadedFileConstraints = 0;
+api.GoogleChromePolicyVersionsV1UploadedFileConstraints
+    buildGoogleChromePolicyVersionsV1UploadedFileConstraints() {
+  final o = api.GoogleChromePolicyVersionsV1UploadedFileConstraints();
+  buildCounterGoogleChromePolicyVersionsV1UploadedFileConstraints++;
+  if (buildCounterGoogleChromePolicyVersionsV1UploadedFileConstraints < 3) {
+    o.sizeLimitBytes = 'foo';
+    o.supportedContentTypes = buildUnnamed30();
+  }
+  buildCounterGoogleChromePolicyVersionsV1UploadedFileConstraints--;
+  return o;
+}
+
+void checkGoogleChromePolicyVersionsV1UploadedFileConstraints(
+    api.GoogleChromePolicyVersionsV1UploadedFileConstraints o) {
+  buildCounterGoogleChromePolicyVersionsV1UploadedFileConstraints++;
+  if (buildCounterGoogleChromePolicyVersionsV1UploadedFileConstraints < 3) {
+    unittest.expect(
+      o.sizeLimitBytes!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed30(o.supportedContentTypes!);
+  }
+  buildCounterGoogleChromePolicyVersionsV1UploadedFileConstraints--;
+}
+
 core.int buildCounterGoogleProtobufEmpty = 0;
 api.GoogleProtobufEmpty buildGoogleProtobufEmpty() {
   final o = api.GoogleProtobufEmpty();
@@ -1692,45 +1775,45 @@ void checkGoogleTypeDate(api.GoogleTypeDate o) {
   buildCounterGoogleTypeDate--;
 }
 
-core.List<api.Proto2EnumDescriptorProto> buildUnnamed28() => [
+core.List<api.Proto2EnumDescriptorProto> buildUnnamed31() => [
       buildProto2EnumDescriptorProto(),
       buildProto2EnumDescriptorProto(),
     ];
 
-void checkUnnamed28(core.List<api.Proto2EnumDescriptorProto> o) {
+void checkUnnamed31(core.List<api.Proto2EnumDescriptorProto> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProto2EnumDescriptorProto(o[0]);
   checkProto2EnumDescriptorProto(o[1]);
 }
 
-core.List<api.Proto2FieldDescriptorProto> buildUnnamed29() => [
+core.List<api.Proto2FieldDescriptorProto> buildUnnamed32() => [
       buildProto2FieldDescriptorProto(),
       buildProto2FieldDescriptorProto(),
     ];
 
-void checkUnnamed29(core.List<api.Proto2FieldDescriptorProto> o) {
+void checkUnnamed32(core.List<api.Proto2FieldDescriptorProto> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProto2FieldDescriptorProto(o[0]);
   checkProto2FieldDescriptorProto(o[1]);
 }
 
-core.List<api.Proto2DescriptorProto> buildUnnamed30() => [
+core.List<api.Proto2DescriptorProto> buildUnnamed33() => [
       buildProto2DescriptorProto(),
       buildProto2DescriptorProto(),
     ];
 
-void checkUnnamed30(core.List<api.Proto2DescriptorProto> o) {
+void checkUnnamed33(core.List<api.Proto2DescriptorProto> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProto2DescriptorProto(o[0]);
   checkProto2DescriptorProto(o[1]);
 }
 
-core.List<api.Proto2OneofDescriptorProto> buildUnnamed31() => [
+core.List<api.Proto2OneofDescriptorProto> buildUnnamed34() => [
       buildProto2OneofDescriptorProto(),
       buildProto2OneofDescriptorProto(),
     ];
 
-void checkUnnamed31(core.List<api.Proto2OneofDescriptorProto> o) {
+void checkUnnamed34(core.List<api.Proto2OneofDescriptorProto> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProto2OneofDescriptorProto(o[0]);
   checkProto2OneofDescriptorProto(o[1]);
@@ -1741,11 +1824,11 @@ api.Proto2DescriptorProto buildProto2DescriptorProto() {
   final o = api.Proto2DescriptorProto();
   buildCounterProto2DescriptorProto++;
   if (buildCounterProto2DescriptorProto < 3) {
-    o.enumType = buildUnnamed28();
-    o.field = buildUnnamed29();
+    o.enumType = buildUnnamed31();
+    o.field = buildUnnamed32();
     o.name = 'foo';
-    o.nestedType = buildUnnamed30();
-    o.oneofDecl = buildUnnamed31();
+    o.nestedType = buildUnnamed33();
+    o.oneofDecl = buildUnnamed34();
   }
   buildCounterProto2DescriptorProto--;
   return o;
@@ -1754,24 +1837,24 @@ api.Proto2DescriptorProto buildProto2DescriptorProto() {
 void checkProto2DescriptorProto(api.Proto2DescriptorProto o) {
   buildCounterProto2DescriptorProto++;
   if (buildCounterProto2DescriptorProto < 3) {
-    checkUnnamed28(o.enumType!);
-    checkUnnamed29(o.field!);
+    checkUnnamed31(o.enumType!);
+    checkUnnamed32(o.field!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed30(o.nestedType!);
-    checkUnnamed31(o.oneofDecl!);
+    checkUnnamed33(o.nestedType!);
+    checkUnnamed34(o.oneofDecl!);
   }
   buildCounterProto2DescriptorProto--;
 }
 
-core.List<api.Proto2EnumValueDescriptorProto> buildUnnamed32() => [
+core.List<api.Proto2EnumValueDescriptorProto> buildUnnamed35() => [
       buildProto2EnumValueDescriptorProto(),
       buildProto2EnumValueDescriptorProto(),
     ];
 
-void checkUnnamed32(core.List<api.Proto2EnumValueDescriptorProto> o) {
+void checkUnnamed35(core.List<api.Proto2EnumValueDescriptorProto> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProto2EnumValueDescriptorProto(o[0]);
   checkProto2EnumValueDescriptorProto(o[1]);
@@ -1783,7 +1866,7 @@ api.Proto2EnumDescriptorProto buildProto2EnumDescriptorProto() {
   buildCounterProto2EnumDescriptorProto++;
   if (buildCounterProto2EnumDescriptorProto < 3) {
     o.name = 'foo';
-    o.value = buildUnnamed32();
+    o.value = buildUnnamed35();
   }
   buildCounterProto2EnumDescriptorProto--;
   return o;
@@ -1796,7 +1879,7 @@ void checkProto2EnumDescriptorProto(api.Proto2EnumDescriptorProto o) {
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed32(o.value!);
+    checkUnnamed35(o.value!);
   }
   buildCounterProto2EnumDescriptorProto--;
 }
@@ -1887,23 +1970,23 @@ void checkProto2FieldDescriptorProto(api.Proto2FieldDescriptorProto o) {
   buildCounterProto2FieldDescriptorProto--;
 }
 
-core.List<api.Proto2EnumDescriptorProto> buildUnnamed33() => [
+core.List<api.Proto2EnumDescriptorProto> buildUnnamed36() => [
       buildProto2EnumDescriptorProto(),
       buildProto2EnumDescriptorProto(),
     ];
 
-void checkUnnamed33(core.List<api.Proto2EnumDescriptorProto> o) {
+void checkUnnamed36(core.List<api.Proto2EnumDescriptorProto> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProto2EnumDescriptorProto(o[0]);
   checkProto2EnumDescriptorProto(o[1]);
 }
 
-core.List<api.Proto2DescriptorProto> buildUnnamed34() => [
+core.List<api.Proto2DescriptorProto> buildUnnamed37() => [
       buildProto2DescriptorProto(),
       buildProto2DescriptorProto(),
     ];
 
-void checkUnnamed34(core.List<api.Proto2DescriptorProto> o) {
+void checkUnnamed37(core.List<api.Proto2DescriptorProto> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProto2DescriptorProto(o[0]);
   checkProto2DescriptorProto(o[1]);
@@ -1914,8 +1997,9 @@ api.Proto2FileDescriptorProto buildProto2FileDescriptorProto() {
   final o = api.Proto2FileDescriptorProto();
   buildCounterProto2FileDescriptorProto++;
   if (buildCounterProto2FileDescriptorProto < 3) {
-    o.enumType = buildUnnamed33();
-    o.messageType = buildUnnamed34();
+    o.editionDeprecated = 'foo';
+    o.enumType = buildUnnamed36();
+    o.messageType = buildUnnamed37();
     o.name = 'foo';
     o.package = 'foo';
     o.syntax = 'foo';
@@ -1927,8 +2011,12 @@ api.Proto2FileDescriptorProto buildProto2FileDescriptorProto() {
 void checkProto2FileDescriptorProto(api.Proto2FileDescriptorProto o) {
   buildCounterProto2FileDescriptorProto++;
   if (buildCounterProto2FileDescriptorProto < 3) {
-    checkUnnamed33(o.enumType!);
-    checkUnnamed34(o.messageType!);
+    unittest.expect(
+      o.editionDeprecated!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed36(o.enumType!);
+    checkUnnamed37(o.messageType!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -1968,18 +2056,6 @@ void checkProto2OneofDescriptorProto(api.Proto2OneofDescriptorProto o) {
 }
 
 void main() {
-  unittest.group(
-      'obj-schema-ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle.fromJson(
-              oJson as core.Map<core.String, core.dynamic>);
-      checkChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle(od);
-    });
-  });
-
   unittest.group(
       'obj-schema-GoogleChromePolicyVersionsV1AdditionalTargetKeyName', () {
     unittest.test('to-json--from-json', () async {
@@ -2212,6 +2288,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-GoogleChromePolicyVersionsV1PolicyApiLifecycle',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleChromePolicyVersionsV1PolicyApiLifecycle();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleChromePolicyVersionsV1PolicyApiLifecycle.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleChromePolicyVersionsV1PolicyApiLifecycle(od);
+    });
+  });
+
   unittest.group('obj-schema-GoogleChromePolicyVersionsV1PolicySchema', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleChromePolicyVersionsV1PolicySchema();
@@ -2419,6 +2506,18 @@ void main() {
           api.GoogleChromePolicyVersionsV1UploadPolicyFileResponse.fromJson(
               oJson as core.Map<core.String, core.dynamic>);
       checkGoogleChromePolicyVersionsV1UploadPolicyFileResponse(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleChromePolicyVersionsV1UploadedFileConstraints', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleChromePolicyVersionsV1UploadedFileConstraints();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleChromePolicyVersionsV1UploadedFileConstraints.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleChromePolicyVersionsV1UploadedFileConstraints(od);
     });
   });
 

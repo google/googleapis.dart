@@ -10,7 +10,6 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 // ignore_for_file: unreachable_from_main
 // ignore_for_file: unused_local_variable
@@ -313,6 +312,7 @@ api.BitbucketServerConfig buildBitbucketServerConfig() {
     o.hostUri = 'foo';
     o.name = 'foo';
     o.peeredNetwork = 'foo';
+    o.peeredNetworkIpRange = 'foo';
     o.secrets = buildBitbucketServerSecrets();
     o.sslCa = 'foo';
     o.username = 'foo';
@@ -344,6 +344,10 @@ void checkBitbucketServerConfig(api.BitbucketServerConfig o) {
     );
     unittest.expect(
       o.peeredNetwork!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.peeredNetworkIpRange!,
       unittest.equals('foo'),
     );
     checkBitbucketServerSecrets(o.secrets!);
@@ -1321,6 +1325,38 @@ void checkCancelOperationRequest(api.CancelOperationRequest o) {
   buildCounterCancelOperationRequest--;
 }
 
+core.int buildCounterConnectedRepository = 0;
+api.ConnectedRepository buildConnectedRepository() {
+  final o = api.ConnectedRepository();
+  buildCounterConnectedRepository++;
+  if (buildCounterConnectedRepository < 3) {
+    o.dir = 'foo';
+    o.repository = 'foo';
+    o.revision = 'foo';
+  }
+  buildCounterConnectedRepository--;
+  return o;
+}
+
+void checkConnectedRepository(api.ConnectedRepository o) {
+  buildCounterConnectedRepository++;
+  if (buildCounterConnectedRepository < 3) {
+    unittest.expect(
+      o.dir!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.repository!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.revision!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterConnectedRepository--;
+}
+
 core.int buildCounterCreateBitbucketServerConnectedRepositoryRequest = 0;
 api.CreateBitbucketServerConnectedRepositoryRequest
     buildCreateBitbucketServerConnectedRepositoryRequest() {
@@ -1373,6 +1409,33 @@ void checkCreateGitLabConnectedRepositoryRequest(
     );
   }
   buildCounterCreateGitLabConnectedRepositoryRequest--;
+}
+
+core.int buildCounterDefaultServiceAccount = 0;
+api.DefaultServiceAccount buildDefaultServiceAccount() {
+  final o = api.DefaultServiceAccount();
+  buildCounterDefaultServiceAccount++;
+  if (buildCounterDefaultServiceAccount < 3) {
+    o.name = 'foo';
+    o.serviceAccountEmail = 'foo';
+  }
+  buildCounterDefaultServiceAccount--;
+  return o;
+}
+
+void checkDefaultServiceAccount(api.DefaultServiceAccount o) {
+  buildCounterDefaultServiceAccount++;
+  if (buildCounterDefaultServiceAccount < 3) {
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.serviceAccountEmail!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterDefaultServiceAccount--;
 }
 
 core.int buildCounterEmpty = 0;
@@ -3288,6 +3351,7 @@ api.Source buildSource() {
   final o = api.Source();
   buildCounterSource++;
   if (buildCounterSource < 3) {
+    o.connectedRepository = buildConnectedRepository();
     o.gitSource = buildGitSource();
     o.repoSource = buildRepoSource();
     o.storageSource = buildStorageSource();
@@ -3300,6 +3364,7 @@ api.Source buildSource() {
 void checkSource(api.Source o) {
   buildCounterSource++;
   if (buildCounterSource < 3) {
+    checkConnectedRepository(o.connectedRepository!);
     checkGitSource(o.gitSource!);
     checkRepoSource(o.repoSource!);
     checkStorageSource(o.storageSource!);
@@ -3325,6 +3390,8 @@ api.SourceProvenance buildSourceProvenance() {
   buildCounterSourceProvenance++;
   if (buildCounterSourceProvenance < 3) {
     o.fileHashes = buildUnnamed55();
+    o.resolvedConnectedRepository = buildConnectedRepository();
+    o.resolvedGitSource = buildGitSource();
     o.resolvedRepoSource = buildRepoSource();
     o.resolvedStorageSource = buildStorageSource();
     o.resolvedStorageSourceManifest = buildStorageSourceManifest();
@@ -3337,6 +3404,8 @@ void checkSourceProvenance(api.SourceProvenance o) {
   buildCounterSourceProvenance++;
   if (buildCounterSourceProvenance < 3) {
     checkUnnamed55(o.fileHashes!);
+    checkConnectedRepository(o.resolvedConnectedRepository!);
+    checkGitSource(o.resolvedGitSource!);
     checkRepoSource(o.resolvedRepoSource!);
     checkStorageSource(o.resolvedStorageSource!);
     checkStorageSourceManifest(o.resolvedStorageSourceManifest!);
@@ -3437,6 +3506,7 @@ api.StorageSource buildStorageSource() {
     o.bucket = 'foo';
     o.generation = 'foo';
     o.object = 'foo';
+    o.sourceFetcher = 'foo';
   }
   buildCounterStorageSource--;
   return o;
@@ -3455,6 +3525,10 @@ void checkStorageSource(api.StorageSource o) {
     );
     unittest.expect(
       o.object!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.sourceFetcher!,
       unittest.equals('foo'),
     );
   }
@@ -3998,6 +4072,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-ConnectedRepository', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildConnectedRepository();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ConnectedRepository.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkConnectedRepository(od);
+    });
+  });
+
   unittest.group('obj-schema-CreateBitbucketServerConnectedRepositoryRequest',
       () {
     unittest.test('to-json--from-json', () async {
@@ -4016,6 +4100,16 @@ void main() {
       final od = api.CreateGitLabConnectedRepositoryRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkCreateGitLabConnectedRepositoryRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-DefaultServiceAccount', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDefaultServiceAccount();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DefaultServiceAccount.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkDefaultServiceAccount(od);
     });
   });
 
@@ -5688,6 +5782,61 @@ void main() {
       final response = await res.patch(arg_request, arg_name,
           updateMask: arg_updateMask, $fields: arg_$fields);
       checkOperation(response as api.Operation);
+    });
+  });
+
+  unittest.group('resource-ProjectsLocationsResource', () {
+    unittest.test('method--getDefaultServiceAccount', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudBuildApi(mock).projects.locations;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildDefaultServiceAccount());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.getDefaultServiceAccount(arg_name, $fields: arg_$fields);
+      checkDefaultServiceAccount(response as api.DefaultServiceAccount);
     });
   });
 

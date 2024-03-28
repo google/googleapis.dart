@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// GKE Hub API - v1
@@ -31,7 +30,7 @@
 ///     - [ProjectsLocationsScopesResource]
 ///       - [ProjectsLocationsScopesNamespacesResource]
 ///       - [ProjectsLocationsScopesRbacrolebindingsResource]
-library gkehub_v1;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -2677,7 +2676,7 @@ class ProjectsLocationsScopesRbacrolebindingsResource {
   /// Request parameters:
   ///
   /// [name] - The resource name for the rbacrolebinding
-  /// `projects/{project}/locations/{location}/namespaces/{namespace}/rbacrolebindings/{rbacrolebinding}`
+  /// `projects/{project}/locations/{location}/scopes/{scope}/rbacrolebindings/{rbacrolebinding}`
   /// or
   /// `projects/{project}/locations/{location}/memberships/{membership}/rbacrolebindings/{rbacrolebinding}`
   /// Value must have pattern
@@ -2846,9 +2845,10 @@ class Authority {
   /// A JSON Web Token (JWT) issuer URI.
   ///
   /// `issuer` must start with `https://` and be a valid URL with length \<2000
-  /// characters. If set, then Google will allow valid OIDC tokens from this
-  /// issuer to authenticate within the workload_identity_pool. OIDC discovery
-  /// will be performed on this URI to validate tokens from the issuer. Clearing
+  /// characters, it must use `location` rather than `zone` for GKE clusters. If
+  /// set, then Google will allow valid OIDC tokens from this issuer to
+  /// authenticate within the workload_identity_pool. OIDC discovery will be
+  /// performed on this URI to validate tokens from the issuer. Clearing
   /// `issuer` disables Workload Identity. `issuer` cannot be directly modified;
   /// it must be cleared (and Workload Identity disabled) before using a new
   /// issuer (and re-enabling Workload Identity).
@@ -2913,6 +2913,48 @@ class Authority {
       };
 }
 
+/// BinaryAuthorizationConfig defines the fleet level configuration of binary
+/// authorization feature.
+class BinaryAuthorizationConfig {
+  /// Mode of operation for binauthz policy evaluation.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "EVALUATION_MODE_UNSPECIFIED" : Default value
+  /// - "DISABLED" : Disable BinaryAuthorization
+  /// - "POLICY_BINDINGS" : Use Binary Authorization with the policies specified
+  /// in policy_bindings.
+  core.String? evaluationMode;
+
+  /// Binauthz policies that apply to this cluster.
+  ///
+  /// Optional.
+  core.List<PolicyBinding>? policyBindings;
+
+  BinaryAuthorizationConfig({
+    this.evaluationMode,
+    this.policyBindings,
+  });
+
+  BinaryAuthorizationConfig.fromJson(core.Map json_)
+      : this(
+          evaluationMode: json_.containsKey('evaluationMode')
+              ? json_['evaluationMode'] as core.String
+              : null,
+          policyBindings: json_.containsKey('policyBindings')
+              ? (json_['policyBindings'] as core.List)
+                  .map((value) => PolicyBinding.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (evaluationMode != null) 'evaluationMode': evaluationMode!,
+        if (policyBindings != null) 'policyBindings': policyBindings!,
+      };
+}
+
 /// Associates `members`, or principals, with a `role`.
 class Binding {
   /// The condition that is associated with this binding.
@@ -2945,14 +2987,31 @@ class Binding {
   /// `group:{emailid}`: An email address that represents a Google group. For
   /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
   /// (primary) that represents all the users of that domain. For example,
-  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a user that has
-  /// been recently deleted. For example,
-  /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
-  /// this value reverts to `user:{emailid}` and the recovered user retains the
-  /// role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a service account
-  /// that has been recently deleted. For example,
+  /// `google.com` or `example.com`. *
+  /// `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workforce identity pool. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`:
+  /// All workforce identities in a group. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All workforce identities with a specific attribute value. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}
+  /// / * `: All identities in a workforce identity pool. *
+  /// `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workload identity pool. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`:
+  /// A workload identity pool group. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All identities in a workload identity pool with a certain attribute. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}
+  /// / * `: All identities in a workload identity pool. *
+  /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
+  /// identifier) representing a user that has been recently deleted. For
+  /// example, `alice@example.com?uid=123456789012345678901`. If the user is
+  /// recovered, this value reverts to `user:{emailid}` and the recovered user
+  /// retains the role in the binding. *
+  /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus
+  /// unique identifier) representing a service account that has been recently
+  /// deleted. For example,
   /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If
   /// the service account is undeleted, this value reverts to
   /// `serviceAccount:{emailid}` and the undeleted service account retains the
@@ -2961,12 +3020,19 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding.
+  /// the role in the binding. *
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// Deleted single identity in a workforce identity pool. For example,
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
   ///
-  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an
+  /// overview of the IAM roles and permissions, see the
+  /// [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For
+  /// a list of the available pre-defined roles, see
+  /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
   Binding({
@@ -2999,10 +3065,499 @@ class Binding {
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
 
+/// **ClusterUpgrade**: The configuration for the fleet-level ClusterUpgrade
+/// feature.
+class ClusterUpgradeFleetSpec {
+  /// Allow users to override some properties of each GKE upgrade.
+  core.List<ClusterUpgradeGKEUpgradeOverride>? gkeUpgradeOverrides;
+
+  /// Post conditions to evaluate to mark an upgrade COMPLETE.
+  ///
+  /// Required.
+  ///
+  /// Required.
+  ClusterUpgradePostConditions? postConditions;
+
+  /// This fleet consumes upgrades that have COMPLETE status code in the
+  /// upstream fleets.
+  ///
+  /// See UpgradeStatus.Code for code definitions. The fleet name should be
+  /// either fleet project number or id. This is defined as repeated for future
+  /// proof reasons. Initial implementation will enforce at most one upstream
+  /// fleet.
+  core.List<core.String>? upstreamFleets;
+
+  ClusterUpgradeFleetSpec({
+    this.gkeUpgradeOverrides,
+    this.postConditions,
+    this.upstreamFleets,
+  });
+
+  ClusterUpgradeFleetSpec.fromJson(core.Map json_)
+      : this(
+          gkeUpgradeOverrides: json_.containsKey('gkeUpgradeOverrides')
+              ? (json_['gkeUpgradeOverrides'] as core.List)
+                  .map((value) => ClusterUpgradeGKEUpgradeOverride.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          postConditions: json_.containsKey('postConditions')
+              ? ClusterUpgradePostConditions.fromJson(json_['postConditions']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          upstreamFleets: json_.containsKey('upstreamFleets')
+              ? (json_['upstreamFleets'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (gkeUpgradeOverrides != null)
+          'gkeUpgradeOverrides': gkeUpgradeOverrides!,
+        if (postConditions != null) 'postConditions': postConditions!,
+        if (upstreamFleets != null) 'upstreamFleets': upstreamFleets!,
+      };
+}
+
+/// **ClusterUpgrade**: The state for the fleet-level ClusterUpgrade feature.
+class ClusterUpgradeFleetState {
+  /// This fleets whose upstream_fleets contain the current fleet.
+  ///
+  /// The fleet name should be either fleet project number or id.
+  core.List<core.String>? downstreamFleets;
+
+  /// Feature state for GKE clusters.
+  ClusterUpgradeGKEUpgradeFeatureState? gkeState;
+
+  /// A list of memberships ignored by the feature.
+  ///
+  /// For example, manually upgraded clusters can be ignored if they are newer
+  /// than the default versions of its release channel. The membership resource
+  /// is in the format: `projects/{p}/locations/{l}/membership/{m}`.
+  core.Map<core.String, ClusterUpgradeIgnoredMembership>? ignored;
+
+  ClusterUpgradeFleetState({
+    this.downstreamFleets,
+    this.gkeState,
+    this.ignored,
+  });
+
+  ClusterUpgradeFleetState.fromJson(core.Map json_)
+      : this(
+          downstreamFleets: json_.containsKey('downstreamFleets')
+              ? (json_['downstreamFleets'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          gkeState: json_.containsKey('gkeState')
+              ? ClusterUpgradeGKEUpgradeFeatureState.fromJson(
+                  json_['gkeState'] as core.Map<core.String, core.dynamic>)
+              : null,
+          ignored: json_.containsKey('ignored')
+              ? (json_['ignored'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    ClusterUpgradeIgnoredMembership.fromJson(
+                        value as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (downstreamFleets != null) 'downstreamFleets': downstreamFleets!,
+        if (gkeState != null) 'gkeState': gkeState!,
+        if (ignored != null) 'ignored': ignored!,
+      };
+}
+
+/// GKEUpgrade represents a GKE provided upgrade, e.g., control plane upgrade.
+class ClusterUpgradeGKEUpgrade {
+  /// Name of the upgrade, e.g., "k8s_control_plane".
+  ///
+  /// It should be a valid upgrade name. It must not exceet 99 characters.
+  core.String? name;
+
+  /// Version of the upgrade, e.g., "1.22.1-gke.100".
+  ///
+  /// It should be a valid version. It must not exceet 99 characters.
+  core.String? version;
+
+  ClusterUpgradeGKEUpgrade({
+    this.name,
+    this.version,
+  });
+
+  ClusterUpgradeGKEUpgrade.fromJson(core.Map json_)
+      : this(
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          version: json_.containsKey('version')
+              ? json_['version'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (version != null) 'version': version!,
+      };
+}
+
+/// GKEUpgradeFeatureCondition describes the condition of the feature for GKE
+/// clusters at a certain point of time.
+class ClusterUpgradeGKEUpgradeFeatureCondition {
+  /// Reason why the feature is in this status.
+  core.String? reason;
+
+  /// Status of the condition, one of True, False, Unknown.
+  core.String? status;
+
+  /// Type of the condition, for example, "ready".
+  core.String? type;
+
+  /// Last timestamp the condition was updated.
+  core.String? updateTime;
+
+  ClusterUpgradeGKEUpgradeFeatureCondition({
+    this.reason,
+    this.status,
+    this.type,
+    this.updateTime,
+  });
+
+  ClusterUpgradeGKEUpgradeFeatureCondition.fromJson(core.Map json_)
+      : this(
+          reason: json_.containsKey('reason')
+              ? json_['reason'] as core.String
+              : null,
+          status: json_.containsKey('status')
+              ? json_['status'] as core.String
+              : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (reason != null) 'reason': reason!,
+        if (status != null) 'status': status!,
+        if (type != null) 'type': type!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// GKEUpgradeFeatureState contains feature states for GKE clusters in the
+/// scope.
+class ClusterUpgradeGKEUpgradeFeatureState {
+  /// Current conditions of the feature.
+  core.List<ClusterUpgradeGKEUpgradeFeatureCondition>? conditions;
+
+  /// Upgrade state.
+  ///
+  /// It will eventually replace `state`.
+  core.List<ClusterUpgradeGKEUpgradeState>? upgradeState;
+
+  ClusterUpgradeGKEUpgradeFeatureState({
+    this.conditions,
+    this.upgradeState,
+  });
+
+  ClusterUpgradeGKEUpgradeFeatureState.fromJson(core.Map json_)
+      : this(
+          conditions: json_.containsKey('conditions')
+              ? (json_['conditions'] as core.List)
+                  .map((value) =>
+                      ClusterUpgradeGKEUpgradeFeatureCondition.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          upgradeState: json_.containsKey('upgradeState')
+              ? (json_['upgradeState'] as core.List)
+                  .map((value) => ClusterUpgradeGKEUpgradeState.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (conditions != null) 'conditions': conditions!,
+        if (upgradeState != null) 'upgradeState': upgradeState!,
+      };
+}
+
+/// Properties of a GKE upgrade that can be overridden by the user.
+///
+/// For example, a user can skip soaking by overriding the soaking to 0.
+class ClusterUpgradeGKEUpgradeOverride {
+  /// Post conditions to override for the specified upgrade (name + version).
+  ///
+  /// Required.
+  ///
+  /// Required.
+  ClusterUpgradePostConditions? postConditions;
+
+  /// Which upgrade to override.
+  ///
+  /// Required.
+  ///
+  /// Required.
+  ClusterUpgradeGKEUpgrade? upgrade;
+
+  ClusterUpgradeGKEUpgradeOverride({
+    this.postConditions,
+    this.upgrade,
+  });
+
+  ClusterUpgradeGKEUpgradeOverride.fromJson(core.Map json_)
+      : this(
+          postConditions: json_.containsKey('postConditions')
+              ? ClusterUpgradePostConditions.fromJson(json_['postConditions']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          upgrade: json_.containsKey('upgrade')
+              ? ClusterUpgradeGKEUpgrade.fromJson(
+                  json_['upgrade'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (postConditions != null) 'postConditions': postConditions!,
+        if (upgrade != null) 'upgrade': upgrade!,
+      };
+}
+
+/// GKEUpgradeState is a GKEUpgrade and its state at the scope and fleet level.
+class ClusterUpgradeGKEUpgradeState {
+  /// Number of GKE clusters in each status code.
+  core.Map<core.String, core.String>? stats;
+
+  /// Status of the upgrade.
+  ClusterUpgradeUpgradeStatus? status;
+
+  /// Which upgrade to track the state.
+  ClusterUpgradeGKEUpgrade? upgrade;
+
+  ClusterUpgradeGKEUpgradeState({
+    this.stats,
+    this.status,
+    this.upgrade,
+  });
+
+  ClusterUpgradeGKEUpgradeState.fromJson(core.Map json_)
+      : this(
+          stats: json_.containsKey('stats')
+              ? (json_['stats'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          status: json_.containsKey('status')
+              ? ClusterUpgradeUpgradeStatus.fromJson(
+                  json_['status'] as core.Map<core.String, core.dynamic>)
+              : null,
+          upgrade: json_.containsKey('upgrade')
+              ? ClusterUpgradeGKEUpgrade.fromJson(
+                  json_['upgrade'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (stats != null) 'stats': stats!,
+        if (status != null) 'status': status!,
+        if (upgrade != null) 'upgrade': upgrade!,
+      };
+}
+
+/// IgnoredMembership represents a membership ignored by the feature.
+///
+/// A membership can be ignored because it was manually upgraded to a newer
+/// version than RC default.
+class ClusterUpgradeIgnoredMembership {
+  /// Time when the membership was first set to ignored.
+  core.String? ignoredTime;
+
+  /// Reason why the membership is ignored.
+  core.String? reason;
+
+  ClusterUpgradeIgnoredMembership({
+    this.ignoredTime,
+    this.reason,
+  });
+
+  ClusterUpgradeIgnoredMembership.fromJson(core.Map json_)
+      : this(
+          ignoredTime: json_.containsKey('ignoredTime')
+              ? json_['ignoredTime'] as core.String
+              : null,
+          reason: json_.containsKey('reason')
+              ? json_['reason'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (ignoredTime != null) 'ignoredTime': ignoredTime!,
+        if (reason != null) 'reason': reason!,
+      };
+}
+
+/// ScopeGKEUpgradeState is a GKEUpgrade and its state per-membership.
+class ClusterUpgradeMembershipGKEUpgradeState {
+  /// Status of the upgrade.
+  ClusterUpgradeUpgradeStatus? status;
+
+  /// Which upgrade to track the state.
+  ClusterUpgradeGKEUpgrade? upgrade;
+
+  ClusterUpgradeMembershipGKEUpgradeState({
+    this.status,
+    this.upgrade,
+  });
+
+  ClusterUpgradeMembershipGKEUpgradeState.fromJson(core.Map json_)
+      : this(
+          status: json_.containsKey('status')
+              ? ClusterUpgradeUpgradeStatus.fromJson(
+                  json_['status'] as core.Map<core.String, core.dynamic>)
+              : null,
+          upgrade: json_.containsKey('upgrade')
+              ? ClusterUpgradeGKEUpgrade.fromJson(
+                  json_['upgrade'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (status != null) 'status': status!,
+        if (upgrade != null) 'upgrade': upgrade!,
+      };
+}
+
+/// Per-membership state for this feature.
+class ClusterUpgradeMembershipState {
+  /// Whether this membership is ignored by the feature.
+  ///
+  /// For example, manually upgraded clusters can be ignored if they are newer
+  /// than the default versions of its release channel.
+  ClusterUpgradeIgnoredMembership? ignored;
+
+  /// Actual upgrade state against desired.
+  core.List<ClusterUpgradeMembershipGKEUpgradeState>? upgrades;
+
+  ClusterUpgradeMembershipState({
+    this.ignored,
+    this.upgrades,
+  });
+
+  ClusterUpgradeMembershipState.fromJson(core.Map json_)
+      : this(
+          ignored: json_.containsKey('ignored')
+              ? ClusterUpgradeIgnoredMembership.fromJson(
+                  json_['ignored'] as core.Map<core.String, core.dynamic>)
+              : null,
+          upgrades: json_.containsKey('upgrades')
+              ? (json_['upgrades'] as core.List)
+                  .map((value) =>
+                      ClusterUpgradeMembershipGKEUpgradeState.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (ignored != null) 'ignored': ignored!,
+        if (upgrades != null) 'upgrades': upgrades!,
+      };
+}
+
+/// Post conditional checks after an upgrade has been applied on all eligible
+/// clusters.
+class ClusterUpgradePostConditions {
+  /// Amount of time to "soak" after a rollout has been finished before marking
+  /// it COMPLETE.
+  ///
+  /// Cannot exceed 30 days. Required.
+  ///
+  /// Required.
+  core.String? soaking;
+
+  ClusterUpgradePostConditions({
+    this.soaking,
+  });
+
+  ClusterUpgradePostConditions.fromJson(core.Map json_)
+      : this(
+          soaking: json_.containsKey('soaking')
+              ? json_['soaking'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (soaking != null) 'soaking': soaking!,
+      };
+}
+
+/// UpgradeStatus provides status information for each upgrade.
+class ClusterUpgradeUpgradeStatus {
+  /// Status code of the upgrade.
+  /// Possible string values are:
+  /// - "CODE_UNSPECIFIED" : Required by https://linter.aip.dev/126/unspecified.
+  /// - "INELIGIBLE" : The upgrade is ineligible. At the scope level, this means
+  /// the upgrade is ineligible for all the clusters in the scope.
+  /// - "PENDING" : The upgrade is pending. At the scope level, this means the
+  /// upgrade is pending for all the clusters in the scope.
+  /// - "IN_PROGRESS" : The upgrade is in progress. At the scope level, this
+  /// means the upgrade is in progress for at least one cluster in the scope.
+  /// - "SOAKING" : The upgrade has finished and is soaking until the soaking
+  /// time is up. At the scope level, this means at least one cluster is in
+  /// soaking while the rest are either soaking or complete.
+  /// - "FORCED_SOAKING" : A cluster will be forced to enter soaking if an
+  /// upgrade doesn't finish within a certain limit, despite it's actual status.
+  /// - "COMPLETE" : The upgrade has passed all post conditions (soaking). At
+  /// the scope level, this means all eligible clusters are in COMPLETE status.
+  core.String? code;
+
+  /// Reason for this status.
+  core.String? reason;
+
+  /// Last timestamp the status was updated.
+  core.String? updateTime;
+
+  ClusterUpgradeUpgradeStatus({
+    this.code,
+    this.reason,
+    this.updateTime,
+  });
+
+  ClusterUpgradeUpgradeStatus.fromJson(core.Map json_)
+      : this(
+          code: json_.containsKey('code') ? json_['code'] as core.String : null,
+          reason: json_.containsKey('reason')
+              ? json_['reason'] as core.String
+              : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (code != null) 'code': code!,
+        if (reason != null) 'reason': reason!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
 /// CommonFeatureSpec contains Hub-wide configuration information
 class CommonFeatureSpec {
   /// Appdevexperience specific spec.
   AppDevExperienceFeatureSpec? appdevexperience;
+
+  /// ClusterUpgrade (fleet-based) feature spec.
+  ClusterUpgradeFleetSpec? clusterupgrade;
+
+  /// DataplaneV2 feature spec.
+  DataplaneV2FeatureSpec? dataplanev2;
 
   /// FleetObservability feature spec.
   FleetObservabilityFeatureSpec? fleetobservability;
@@ -3012,6 +3567,8 @@ class CommonFeatureSpec {
 
   CommonFeatureSpec({
     this.appdevexperience,
+    this.clusterupgrade,
+    this.dataplanev2,
     this.fleetobservability,
     this.multiclusteringress,
   });
@@ -3021,6 +3578,14 @@ class CommonFeatureSpec {
           appdevexperience: json_.containsKey('appdevexperience')
               ? AppDevExperienceFeatureSpec.fromJson(json_['appdevexperience']
                   as core.Map<core.String, core.dynamic>)
+              : null,
+          clusterupgrade: json_.containsKey('clusterupgrade')
+              ? ClusterUpgradeFleetSpec.fromJson(json_['clusterupgrade']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          dataplanev2: json_.containsKey('dataplanev2')
+              ? DataplaneV2FeatureSpec.fromJson(
+                  json_['dataplanev2'] as core.Map<core.String, core.dynamic>)
               : null,
           fleetobservability: json_.containsKey('fleetobservability')
               ? FleetObservabilityFeatureSpec.fromJson(
@@ -3036,6 +3601,8 @@ class CommonFeatureSpec {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (appdevexperience != null) 'appdevexperience': appdevexperience!,
+        if (clusterupgrade != null) 'clusterupgrade': clusterupgrade!,
+        if (dataplanev2 != null) 'dataplanev2': dataplanev2!,
         if (fleetobservability != null)
           'fleetobservability': fleetobservability!,
         if (multiclusteringress != null)
@@ -3048,6 +3615,9 @@ class CommonFeatureState {
   /// Appdevexperience specific state.
   AppDevExperienceFeatureState? appdevexperience;
 
+  /// ClusterUpgrade fleet-level state.
+  ClusterUpgradeFleetState? clusterupgrade;
+
   /// FleetObservability feature state.
   FleetObservabilityFeatureState? fleetobservability;
 
@@ -3058,6 +3628,7 @@ class CommonFeatureState {
 
   CommonFeatureState({
     this.appdevexperience,
+    this.clusterupgrade,
     this.fleetobservability,
     this.state,
   });
@@ -3066,6 +3637,10 @@ class CommonFeatureState {
       : this(
           appdevexperience: json_.containsKey('appdevexperience')
               ? AppDevExperienceFeatureState.fromJson(json_['appdevexperience']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          clusterupgrade: json_.containsKey('clusterupgrade')
+              ? ClusterUpgradeFleetState.fromJson(json_['clusterupgrade']
                   as core.Map<core.String, core.dynamic>)
               : null,
           fleetobservability: json_.containsKey('fleetobservability')
@@ -3081,6 +3656,7 @@ class CommonFeatureState {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (appdevexperience != null) 'appdevexperience': appdevexperience!,
+        if (clusterupgrade != null) 'clusterupgrade': clusterupgrade!,
         if (fleetobservability != null)
           'fleetobservability': fleetobservability!,
         if (state != null) 'state': state!,
@@ -3089,7 +3665,55 @@ class CommonFeatureState {
 
 /// CommonFleetDefaultMemberConfigSpec contains default configuration
 /// information for memberships of a fleet
-typedef CommonFleetDefaultMemberConfigSpec = $Empty;
+class CommonFleetDefaultMemberConfigSpec {
+  /// Config Management-specific spec.
+  ConfigManagementMembershipSpec? configmanagement;
+
+  /// Identity Service-specific spec.
+  IdentityServiceMembershipSpec? identityservice;
+
+  /// Anthos Service Mesh-specific spec
+  ServiceMeshMembershipSpec? mesh;
+
+  /// Policy Controller spec.
+  PolicyControllerMembershipSpec? policycontroller;
+
+  CommonFleetDefaultMemberConfigSpec({
+    this.configmanagement,
+    this.identityservice,
+    this.mesh,
+    this.policycontroller,
+  });
+
+  CommonFleetDefaultMemberConfigSpec.fromJson(core.Map json_)
+      : this(
+          configmanagement: json_.containsKey('configmanagement')
+              ? ConfigManagementMembershipSpec.fromJson(
+                  json_['configmanagement']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          identityservice: json_.containsKey('identityservice')
+              ? IdentityServiceMembershipSpec.fromJson(json_['identityservice']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          mesh: json_.containsKey('mesh')
+              ? ServiceMeshMembershipSpec.fromJson(
+                  json_['mesh'] as core.Map<core.String, core.dynamic>)
+              : null,
+          policycontroller: json_.containsKey('policycontroller')
+              ? PolicyControllerMembershipSpec.fromJson(
+                  json_['policycontroller']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (configmanagement != null) 'configmanagement': configmanagement!,
+        if (identityservice != null) 'identityservice': identityservice!,
+        if (mesh != null) 'mesh': mesh!,
+        if (policycontroller != null) 'policycontroller': policycontroller!,
+      };
+}
 
 /// Configuration for Config Sync
 class ConfigManagementConfigSync {
@@ -3121,8 +3745,7 @@ class ConfigManagementConfigSync {
   /// The GSA should have the Monitoring Metric Writer
   /// (roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount
   /// `default` in the namespace `config-management-monitoring` should be bound
-  /// to the GSA. This field is required when automatic Feature management is
-  /// enabled.
+  /// to the GSA.
   core.String? metricsGcpServiceAccountEmail;
 
   /// OCI repo configuration for the cluster
@@ -3138,13 +3761,6 @@ class ConfigManagementConfigSync {
   /// "unstructured" mode.
   core.String? sourceFormat;
 
-  /// Set to true to stop syncing configs for a single cluster when automatic
-  /// Feature management is enabled.
-  ///
-  /// Default to false. The field will be ignored when automatic Feature
-  /// management is disabled.
-  core.bool? stopSyncing;
-
   ConfigManagementConfigSync({
     this.allowVerticalScale,
     this.enabled,
@@ -3153,7 +3769,6 @@ class ConfigManagementConfigSync {
     this.oci,
     this.preventDrift,
     this.sourceFormat,
-    this.stopSyncing,
   });
 
   ConfigManagementConfigSync.fromJson(core.Map json_)
@@ -3182,9 +3797,6 @@ class ConfigManagementConfigSync {
           sourceFormat: json_.containsKey('sourceFormat')
               ? json_['sourceFormat'] as core.String
               : null,
-          stopSyncing: json_.containsKey('stopSyncing')
-              ? json_['stopSyncing'] as core.bool
-              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3197,7 +3809,6 @@ class ConfigManagementConfigSync {
         if (oci != null) 'oci': oci!,
         if (preventDrift != null) 'preventDrift': preventDrift!,
         if (sourceFormat != null) 'sourceFormat': sourceFormat!,
-        if (stopSyncing != null) 'stopSyncing': stopSyncing!,
       };
 }
 
@@ -3209,6 +3820,7 @@ class ConfigManagementConfigSyncDeploymentState {
   /// - "NOT_INSTALLED" : Deployment is not installed
   /// - "INSTALLED" : Deployment is installed
   /// - "ERROR" : Deployment was attempted to be installed, but has errors
+  /// - "PENDING" : Deployment is installing or terminating
   core.String? admissionWebhook;
 
   /// Deployment state of the git-sync pod
@@ -3217,6 +3829,7 @@ class ConfigManagementConfigSyncDeploymentState {
   /// - "NOT_INSTALLED" : Deployment is not installed
   /// - "INSTALLED" : Deployment is installed
   /// - "ERROR" : Deployment was attempted to be installed, but has errors
+  /// - "PENDING" : Deployment is installing or terminating
   core.String? gitSync;
 
   /// Deployment state of the importer pod
@@ -3225,6 +3838,7 @@ class ConfigManagementConfigSyncDeploymentState {
   /// - "NOT_INSTALLED" : Deployment is not installed
   /// - "INSTALLED" : Deployment is installed
   /// - "ERROR" : Deployment was attempted to be installed, but has errors
+  /// - "PENDING" : Deployment is installing or terminating
   core.String? importer;
 
   /// Deployment state of the monitor pod
@@ -3233,6 +3847,7 @@ class ConfigManagementConfigSyncDeploymentState {
   /// - "NOT_INSTALLED" : Deployment is not installed
   /// - "INSTALLED" : Deployment is installed
   /// - "ERROR" : Deployment was attempted to be installed, but has errors
+  /// - "PENDING" : Deployment is installing or terminating
   core.String? monitor;
 
   /// Deployment state of reconciler-manager pod
@@ -3241,6 +3856,7 @@ class ConfigManagementConfigSyncDeploymentState {
   /// - "NOT_INSTALLED" : Deployment is not installed
   /// - "INSTALLED" : Deployment is installed
   /// - "ERROR" : Deployment was attempted to be installed, but has errors
+  /// - "PENDING" : Deployment is installing or terminating
   core.String? reconcilerManager;
 
   /// Deployment state of root-reconciler
@@ -3249,6 +3865,7 @@ class ConfigManagementConfigSyncDeploymentState {
   /// - "NOT_INSTALLED" : Deployment is not installed
   /// - "INSTALLED" : Deployment is installed
   /// - "ERROR" : Deployment was attempted to be installed, but has errors
+  /// - "PENDING" : Deployment is installing or terminating
   core.String? rootReconciler;
 
   /// Deployment state of the syncer pod
@@ -3257,6 +3874,7 @@ class ConfigManagementConfigSyncDeploymentState {
   /// - "NOT_INSTALLED" : Deployment is not installed
   /// - "INSTALLED" : Deployment is installed
   /// - "ERROR" : Deployment was attempted to be installed, but has errors
+  /// - "PENDING" : Deployment is installing or terminating
   core.String? syncer;
 
   ConfigManagementConfigSyncDeploymentState({
@@ -3317,6 +3935,36 @@ class ConfigManagementConfigSyncState {
   /// Errors pertaining to the installation of Config Sync.
   core.List<ConfigManagementConfigSyncError>? errors;
 
+  /// The state of the Reposync CRD
+  /// Possible string values are:
+  /// - "CRD_STATE_UNSPECIFIED" : CRD's state cannot be determined
+  /// - "NOT_INSTALLED" : CRD is not installed
+  /// - "INSTALLED" : CRD is installed
+  /// - "TERMINATING" : CRD is terminating (i.e., it has been deleted and is
+  /// cleaning up)
+  /// - "INSTALLING" : CRD is installing
+  core.String? reposyncCrd;
+
+  /// The state of the RootSync CRD
+  /// Possible string values are:
+  /// - "CRD_STATE_UNSPECIFIED" : CRD's state cannot be determined
+  /// - "NOT_INSTALLED" : CRD is not installed
+  /// - "INSTALLED" : CRD is installed
+  /// - "TERMINATING" : CRD is terminating (i.e., it has been deleted and is
+  /// cleaning up)
+  /// - "INSTALLING" : CRD is installing
+  core.String? rootsyncCrd;
+
+  /// The state of CS This field summarizes the other fields in this message.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : CS's state cannot be determined.
+  /// - "CONFIG_SYNC_NOT_INSTALLED" : CS is not installed.
+  /// - "CONFIG_SYNC_INSTALLED" : The expected CS version is installed
+  /// successfully.
+  /// - "CONFIG_SYNC_ERROR" : CS encounters errors.
+  /// - "CONFIG_SYNC_PENDING" : CS is installing or terminating.
+  core.String? state;
+
   /// The state of ConfigSync's process to sync configs to a cluster
   ConfigManagementSyncState? syncState;
 
@@ -3326,6 +3974,9 @@ class ConfigManagementConfigSyncState {
   ConfigManagementConfigSyncState({
     this.deploymentState,
     this.errors,
+    this.reposyncCrd,
+    this.rootsyncCrd,
+    this.state,
     this.syncState,
     this.version,
   });
@@ -3343,6 +3994,14 @@ class ConfigManagementConfigSyncState {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          reposyncCrd: json_.containsKey('reposyncCrd')
+              ? json_['reposyncCrd'] as core.String
+              : null,
+          rootsyncCrd: json_.containsKey('rootsyncCrd')
+              ? json_['rootsyncCrd'] as core.String
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
           syncState: json_.containsKey('syncState')
               ? ConfigManagementSyncState.fromJson(
                   json_['syncState'] as core.Map<core.String, core.dynamic>)
@@ -3356,6 +4015,9 @@ class ConfigManagementConfigSyncState {
   core.Map<core.String, core.dynamic> toJson() => {
         if (deploymentState != null) 'deploymentState': deploymentState!,
         if (errors != null) 'errors': errors!,
+        if (reposyncCrd != null) 'reposyncCrd': reposyncCrd!,
+        if (rootsyncCrd != null) 'rootsyncCrd': rootsyncCrd!,
+        if (state != null) 'state': state!,
         if (syncState != null) 'syncState': syncState!,
         if (version != null) 'version': version!,
       };
@@ -3484,6 +4146,7 @@ class ConfigManagementGatekeeperDeploymentState {
   /// - "NOT_INSTALLED" : Deployment is not installed
   /// - "INSTALLED" : Deployment is installed
   /// - "ERROR" : Deployment was attempted to be installed, but has errors
+  /// - "PENDING" : Deployment is installing or terminating
   core.String? gatekeeperAudit;
 
   /// Status of gatekeeper-controller-manager pod.
@@ -3492,6 +4155,7 @@ class ConfigManagementGatekeeperDeploymentState {
   /// - "NOT_INSTALLED" : Deployment is not installed
   /// - "INSTALLED" : Deployment is installed
   /// - "ERROR" : Deployment was attempted to be installed, but has errors
+  /// - "PENDING" : Deployment is installing or terminating
   core.String? gatekeeperControllerManagerState;
 
   /// Status of the pod serving the mutation webhook.
@@ -3500,6 +4164,7 @@ class ConfigManagementGatekeeperDeploymentState {
   /// - "NOT_INSTALLED" : Deployment is not installed
   /// - "INSTALLED" : Deployment is installed
   /// - "ERROR" : Deployment was attempted to be installed, but has errors
+  /// - "PENDING" : Deployment is installing or terminating
   core.String? gatekeeperMutation;
 
   ConfigManagementGatekeeperDeploymentState({
@@ -3704,6 +4369,7 @@ class ConfigManagementHierarchyControllerDeploymentState {
   /// - "NOT_INSTALLED" : Deployment is not installed
   /// - "INSTALLED" : Deployment is installed
   /// - "ERROR" : Deployment was attempted to be installed, but has errors
+  /// - "PENDING" : Deployment is installing or terminating
   core.String? extension;
 
   /// The deployment state for open source HNC (e.g. v0.7.0-hc.0)
@@ -3712,6 +4378,7 @@ class ConfigManagementHierarchyControllerDeploymentState {
   /// - "NOT_INSTALLED" : Deployment is not installed
   /// - "INSTALLED" : Deployment is installed
   /// - "ERROR" : Deployment was attempted to be installed, but has errors
+  /// - "PENDING" : Deployment is installing or terminating
   core.String? hnc;
 
   ConfigManagementHierarchyControllerDeploymentState({
@@ -4022,6 +4689,7 @@ class ConfigManagementOperatorState {
   /// - "NOT_INSTALLED" : Deployment is not installed
   /// - "INSTALLED" : Deployment is installed
   /// - "ERROR" : Deployment was attempted to be installed, but has errors
+  /// - "PENDING" : Deployment is installing or terminating
   core.String? deploymentState;
 
   /// Install errors.
@@ -4203,29 +4871,7 @@ class ConfigManagementPolicyControllerMigration {
 ///
 /// For example, to specify metrics should be exported to Cloud Monitoring and
 /// Prometheus, specify backends: \["cloudmonitoring", "prometheus"\]
-class ConfigManagementPolicyControllerMonitoring {
-  /// Specifies the list of backends Policy Controller will export to.
-  ///
-  /// An empty list would effectively disable metrics export.
-  core.List<core.String>? backends;
-
-  ConfigManagementPolicyControllerMonitoring({
-    this.backends,
-  });
-
-  ConfigManagementPolicyControllerMonitoring.fromJson(core.Map json_)
-      : this(
-          backends: json_.containsKey('backends')
-              ? (json_['backends'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (backends != null) 'backends': backends!,
-      };
-}
+typedef ConfigManagementPolicyControllerMonitoring = $Shared09;
 
 /// State for PolicyControllerState.
 class ConfigManagementPolicyControllerState {
@@ -4332,14 +4978,13 @@ class ConfigManagementSyncError {
 class ConfigManagementSyncState {
   /// Sync status code
   /// Possible string values are:
-  /// - "SYNC_CODE_UNSPECIFIED" : ACM cannot determine a sync code
-  /// - "SYNCED" : ACM successfully synced the git Repo with the cluster
-  /// - "PENDING" : ACM is in the progress of syncing a new change
-  /// - "ERROR" : Indicates an error configuring ACM, and user action is
+  /// - "SYNC_CODE_UNSPECIFIED" : Config Sync cannot determine a sync code
+  /// - "SYNCED" : Config Sync successfully synced the git Repo with the cluster
+  /// - "PENDING" : Config Sync is in the progress of syncing a new change
+  /// - "ERROR" : Indicates an error configuring Config Sync, and user action is
   /// required
-  /// - "NOT_CONFIGURED" : ACM has been installed (operator manifest deployed),
-  /// but not configured.
-  /// - "NOT_INSTALLED" : ACM has not been installed (no operator pod found)
+  /// - "NOT_CONFIGURED" : Config Sync has been installed but not configured
+  /// - "NOT_INSTALLED" : Config Sync has not been installed
   /// - "UNAUTHORIZED" : Error authorizing with the cluster
   /// - "UNREACHABLE" : Cluster could not be reached
   core.String? code;
@@ -4446,6 +5091,65 @@ class ConnectAgentResource {
   core.Map<core.String, core.dynamic> toJson() => {
         if (manifest != null) 'manifest': manifest!,
         if (type != null) 'type': type!,
+      };
+}
+
+/// **Dataplane V2**: Spec
+class DataplaneV2FeatureSpec {
+  /// Enable dataplane-v2 based encryption for multiple clusters.
+  core.bool? enableEncryption;
+
+  DataplaneV2FeatureSpec({
+    this.enableEncryption,
+  });
+
+  DataplaneV2FeatureSpec.fromJson(core.Map json_)
+      : this(
+          enableEncryption: json_.containsKey('enableEncryption')
+              ? json_['enableEncryption'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enableEncryption != null) 'enableEncryption': enableEncryption!,
+      };
+}
+
+/// DefaultClusterConfig describes the default cluster configurations to be
+/// applied to all clusters born-in-fleet.
+class DefaultClusterConfig {
+  /// Enable/Disable binary authorization features for the cluster.
+  ///
+  /// Optional.
+  BinaryAuthorizationConfig? binaryAuthorizationConfig;
+
+  /// Enable/Disable Security Posture features for the cluster.
+  SecurityPostureConfig? securityPostureConfig;
+
+  DefaultClusterConfig({
+    this.binaryAuthorizationConfig,
+    this.securityPostureConfig,
+  });
+
+  DefaultClusterConfig.fromJson(core.Map json_)
+      : this(
+          binaryAuthorizationConfig:
+              json_.containsKey('binaryAuthorizationConfig')
+                  ? BinaryAuthorizationConfig.fromJson(
+                      json_['binaryAuthorizationConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          securityPostureConfig: json_.containsKey('securityPostureConfig')
+              ? SecurityPostureConfig.fromJson(json_['securityPostureConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (binaryAuthorizationConfig != null)
+          'binaryAuthorizationConfig': binaryAuthorizationConfig!,
+        if (securityPostureConfig != null)
+          'securityPostureConfig': securityPostureConfig!,
       };
 }
 
@@ -4815,6 +5519,11 @@ class Fleet {
   /// Output only.
   core.String? createTime;
 
+  /// The default cluster configurations to apply across the fleet.
+  ///
+  /// Optional.
+  DefaultClusterConfig? defaultClusterConfig;
+
   /// When the Fleet was deleted.
   ///
   /// Output only.
@@ -4864,6 +5573,7 @@ class Fleet {
 
   Fleet({
     this.createTime,
+    this.defaultClusterConfig,
     this.deleteTime,
     this.displayName,
     this.labels,
@@ -4877,6 +5587,10 @@ class Fleet {
       : this(
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
+              : null,
+          defaultClusterConfig: json_.containsKey('defaultClusterConfig')
+              ? DefaultClusterConfig.fromJson(json_['defaultClusterConfig']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           deleteTime: json_.containsKey('deleteTime')
               ? json_['deleteTime'] as core.String
@@ -4905,6 +5619,8 @@ class Fleet {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
+        if (defaultClusterConfig != null)
+          'defaultClusterConfig': defaultClusterConfig!,
         if (deleteTime != null) 'deleteTime': deleteTime!,
         if (displayName != null) 'displayName': displayName!,
         if (labels != null) 'labels': labels!,
@@ -5276,12 +5992,16 @@ class IdentityServiceAuthMethod {
   /// Proxy server address to use for auth method.
   core.String? proxy;
 
+  /// SAML specific configuration.
+  IdentityServiceSamlConfig? samlConfig;
+
   IdentityServiceAuthMethod({
     this.azureadConfig,
     this.googleConfig,
     this.name,
     this.oidcConfig,
     this.proxy,
+    this.samlConfig,
   });
 
   IdentityServiceAuthMethod.fromJson(core.Map json_)
@@ -5301,6 +6021,10 @@ class IdentityServiceAuthMethod {
               : null,
           proxy:
               json_.containsKey('proxy') ? json_['proxy'] as core.String : null,
+          samlConfig: json_.containsKey('samlConfig')
+              ? IdentityServiceSamlConfig.fromJson(
+                  json_['samlConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5309,6 +6033,7 @@ class IdentityServiceAuthMethod {
         if (name != null) 'name': name!,
         if (oidcConfig != null) 'oidcConfig': oidcConfig!,
         if (proxy != null) 'proxy': proxy!,
+        if (samlConfig != null) 'samlConfig': samlConfig!,
       };
 }
 
@@ -5335,6 +6060,11 @@ class IdentityServiceAzureADConfig {
         convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
+  /// Format of the AzureAD groups that the client wants for auth.
+  ///
+  /// Optional.
+  core.String? groupFormat;
+
   /// The redirect URL that kubectl uses for authorization.
   core.String? kubectlRedirectUri;
 
@@ -5343,12 +6073,19 @@ class IdentityServiceAzureADConfig {
   /// Supported values are or for accounts belonging to a specific tenant.
   core.String? tenant;
 
+  /// Claim in the AzureAD ID Token that holds the user details.
+  ///
+  /// Optional.
+  core.String? userClaim;
+
   IdentityServiceAzureADConfig({
     this.clientId,
     this.clientSecret,
     this.encryptedClientSecret,
+    this.groupFormat,
     this.kubectlRedirectUri,
     this.tenant,
+    this.userClaim,
   });
 
   IdentityServiceAzureADConfig.fromJson(core.Map json_)
@@ -5362,11 +6099,17 @@ class IdentityServiceAzureADConfig {
           encryptedClientSecret: json_.containsKey('encryptedClientSecret')
               ? json_['encryptedClientSecret'] as core.String
               : null,
+          groupFormat: json_.containsKey('groupFormat')
+              ? json_['groupFormat'] as core.String
+              : null,
           kubectlRedirectUri: json_.containsKey('kubectlRedirectUri')
               ? json_['kubectlRedirectUri'] as core.String
               : null,
           tenant: json_.containsKey('tenant')
               ? json_['tenant'] as core.String
+              : null,
+          userClaim: json_.containsKey('userClaim')
+              ? json_['userClaim'] as core.String
               : null,
         );
 
@@ -5375,9 +6118,11 @@ class IdentityServiceAzureADConfig {
         if (clientSecret != null) 'clientSecret': clientSecret!,
         if (encryptedClientSecret != null)
           'encryptedClientSecret': encryptedClientSecret!,
+        if (groupFormat != null) 'groupFormat': groupFormat!,
         if (kubectlRedirectUri != null)
           'kubectlRedirectUri': kubectlRedirectUri!,
         if (tenant != null) 'tenant': tenant!,
+        if (userClaim != null) 'userClaim': userClaim!,
       };
 }
 
@@ -5621,6 +6366,126 @@ class IdentityServiceOidcConfig {
           'kubectlRedirectUri': kubectlRedirectUri!,
         if (scopes != null) 'scopes': scopes!,
         if (userClaim != null) 'userClaim': userClaim!,
+        if (userPrefix != null) 'userPrefix': userPrefix!,
+      };
+}
+
+/// Configuration for the SAML Auth flow.
+class IdentityServiceSamlConfig {
+  /// The mapping of additional user attributes like nickname, birthday and
+  /// address etc..
+  ///
+  /// `key` is the name of this additional attribute. `value` is a string
+  /// presenting as CEL(common expression language, go/cel) used for getting the
+  /// value from the resources. Take nickname as an example, in this case, `key`
+  /// is "attribute.nickname" and `value` is "assertion.nickname".
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? attributeMapping;
+
+  /// Prefix to prepend to group name.
+  ///
+  /// Optional.
+  core.String? groupPrefix;
+
+  /// The SAML attribute to read groups from.
+  ///
+  /// This value is expected to be a string and will be passed along as-is (with
+  /// the option of being prefixed by the `group_prefix`).
+  ///
+  /// Optional.
+  core.String? groupsAttribute;
+
+  /// The list of IdP certificates to validate the SAML response against.
+  ///
+  /// Required.
+  core.List<core.String>? identityProviderCertificates;
+
+  /// The entity ID of the SAML IdP.
+  ///
+  /// Required.
+  core.String? identityProviderId;
+
+  /// The URI where the SAML IdP exposes the SSO service.
+  ///
+  /// Required.
+  core.String? identityProviderSsoUri;
+
+  /// The SAML attribute to read username from.
+  ///
+  /// If unspecified, the username will be read from the NameID element of the
+  /// assertion in SAML response. This value is expected to be a string and will
+  /// be passed along as-is (with the option of being prefixed by the
+  /// `user_prefix`).
+  ///
+  /// Optional.
+  core.String? userAttribute;
+
+  /// Prefix to prepend to user name.
+  ///
+  /// Optional.
+  core.String? userPrefix;
+
+  IdentityServiceSamlConfig({
+    this.attributeMapping,
+    this.groupPrefix,
+    this.groupsAttribute,
+    this.identityProviderCertificates,
+    this.identityProviderId,
+    this.identityProviderSsoUri,
+    this.userAttribute,
+    this.userPrefix,
+  });
+
+  IdentityServiceSamlConfig.fromJson(core.Map json_)
+      : this(
+          attributeMapping: json_.containsKey('attributeMapping')
+              ? (json_['attributeMapping']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          groupPrefix: json_.containsKey('groupPrefix')
+              ? json_['groupPrefix'] as core.String
+              : null,
+          groupsAttribute: json_.containsKey('groupsAttribute')
+              ? json_['groupsAttribute'] as core.String
+              : null,
+          identityProviderCertificates:
+              json_.containsKey('identityProviderCertificates')
+                  ? (json_['identityProviderCertificates'] as core.List)
+                      .map((value) => value as core.String)
+                      .toList()
+                  : null,
+          identityProviderId: json_.containsKey('identityProviderId')
+              ? json_['identityProviderId'] as core.String
+              : null,
+          identityProviderSsoUri: json_.containsKey('identityProviderSsoUri')
+              ? json_['identityProviderSsoUri'] as core.String
+              : null,
+          userAttribute: json_.containsKey('userAttribute')
+              ? json_['userAttribute'] as core.String
+              : null,
+          userPrefix: json_.containsKey('userPrefix')
+              ? json_['userPrefix'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (attributeMapping != null) 'attributeMapping': attributeMapping!,
+        if (groupPrefix != null) 'groupPrefix': groupPrefix!,
+        if (groupsAttribute != null) 'groupsAttribute': groupsAttribute!,
+        if (identityProviderCertificates != null)
+          'identityProviderCertificates': identityProviderCertificates!,
+        if (identityProviderId != null)
+          'identityProviderId': identityProviderId!,
+        if (identityProviderSsoUri != null)
+          'identityProviderSsoUri': identityProviderSsoUri!,
+        if (userAttribute != null) 'userAttribute': userAttribute!,
         if (userPrefix != null) 'userPrefix': userPrefix!,
       };
 }
@@ -6313,10 +7178,6 @@ class MembershipBinding {
   /// Output only.
   core.String? deleteTime;
 
-  /// Whether the membershipbinding is Fleet-wide; true means that this
-  /// Membership should be bound to all Namespaces in this entire Fleet.
-  core.bool? fleet;
-
   /// Labels for this MembershipBinding.
   ///
   /// Optional.
@@ -6352,7 +7213,6 @@ class MembershipBinding {
   MembershipBinding({
     this.createTime,
     this.deleteTime,
-    this.fleet,
     this.labels,
     this.name,
     this.scope,
@@ -6369,8 +7229,6 @@ class MembershipBinding {
           deleteTime: json_.containsKey('deleteTime')
               ? json_['deleteTime'] as core.String
               : null,
-          fleet:
-              json_.containsKey('fleet') ? json_['fleet'] as core.bool : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -6395,7 +7253,6 @@ class MembershipBinding {
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (deleteTime != null) 'deleteTime': deleteTime!,
-        if (fleet != null) 'fleet': fleet!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (scope != null) 'scope': scope!,
@@ -6568,12 +7425,16 @@ class MembershipFeatureSpec {
   /// config (updated to USER implicitly) or setting to FLEET explicitly.
   Origin? origin;
 
+  /// Policy Controller spec.
+  PolicyControllerMembershipSpec? policycontroller;
+
   MembershipFeatureSpec({
     this.configmanagement,
     this.fleetobservability,
     this.identityservice,
     this.mesh,
     this.origin,
+    this.policycontroller,
   });
 
   MembershipFeatureSpec.fromJson(core.Map json_)
@@ -6600,6 +7461,11 @@ class MembershipFeatureSpec {
               ? Origin.fromJson(
                   json_['origin'] as core.Map<core.String, core.dynamic>)
               : null,
+          policycontroller: json_.containsKey('policycontroller')
+              ? PolicyControllerMembershipSpec.fromJson(
+                  json_['policycontroller']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6609,6 +7475,7 @@ class MembershipFeatureSpec {
         if (identityservice != null) 'identityservice': identityservice!,
         if (mesh != null) 'mesh': mesh!,
         if (origin != null) 'origin': origin!,
+        if (policycontroller != null) 'policycontroller': policycontroller!,
       };
 }
 
@@ -6617,6 +7484,9 @@ class MembershipFeatureSpec {
 class MembershipFeatureState {
   /// Appdevexperience specific state.
   AppDevExperienceFeatureState? appdevexperience;
+
+  /// ClusterUpgrade state.
+  ClusterUpgradeMembershipState? clusterupgrade;
 
   /// Config Management-specific state.
   ConfigManagementMembershipState? configmanagement;
@@ -6627,6 +7497,9 @@ class MembershipFeatureState {
   /// Identity Service-specific state.
   IdentityServiceMembershipState? identityservice;
 
+  /// Policycontroller-specific state.
+  PolicyControllerMembershipState? policycontroller;
+
   /// Service Mesh-specific state.
   ServiceMeshMembershipState? servicemesh;
 
@@ -6635,9 +7508,11 @@ class MembershipFeatureState {
 
   MembershipFeatureState({
     this.appdevexperience,
+    this.clusterupgrade,
     this.configmanagement,
     this.fleetobservability,
     this.identityservice,
+    this.policycontroller,
     this.servicemesh,
     this.state,
   });
@@ -6646,6 +7521,10 @@ class MembershipFeatureState {
       : this(
           appdevexperience: json_.containsKey('appdevexperience')
               ? AppDevExperienceFeatureState.fromJson(json_['appdevexperience']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          clusterupgrade: json_.containsKey('clusterupgrade')
+              ? ClusterUpgradeMembershipState.fromJson(json_['clusterupgrade']
                   as core.Map<core.String, core.dynamic>)
               : null,
           configmanagement: json_.containsKey('configmanagement')
@@ -6662,6 +7541,11 @@ class MembershipFeatureState {
               ? IdentityServiceMembershipState.fromJson(json_['identityservice']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          policycontroller: json_.containsKey('policycontroller')
+              ? PolicyControllerMembershipState.fromJson(
+                  json_['policycontroller']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           servicemesh: json_.containsKey('servicemesh')
               ? ServiceMeshMembershipState.fromJson(
                   json_['servicemesh'] as core.Map<core.String, core.dynamic>)
@@ -6674,10 +7558,12 @@ class MembershipFeatureState {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (appdevexperience != null) 'appdevexperience': appdevexperience!,
+        if (clusterupgrade != null) 'clusterupgrade': clusterupgrade!,
         if (configmanagement != null) 'configmanagement': configmanagement!,
         if (fleetobservability != null)
           'fleetobservability': fleetobservability!,
         if (identityservice != null) 'identityservice': identityservice!,
+        if (policycontroller != null) 'policycontroller': policycontroller!,
         if (servicemesh != null) 'servicemesh': servicemesh!,
         if (state != null) 'state': state!,
       };
@@ -6711,42 +7597,44 @@ class MembershipState {
       };
 }
 
-/// This field informs Fleet-based applications/services/UIs with the necessary
-/// information for where each underlying Cluster reports its metrics.
+/// MonitoringConfig informs Fleet-based applications/services/UIs how the
+/// metrics for the underlying cluster is reported to cloud monitoring services.
+///
+/// It can be set from empty to non-empty, but can't be mutated directly to
+/// prevent accidentally breaking the constinousty of metrics.
 class MonitoringConfig {
   /// Cluster name used to report metrics.
   ///
-  /// For Anthos on VMWare/Baremetal, it would be in format
-  /// `memberClusters/cluster_name`; And for Anthos on MultiCloud, it would be
-  /// in format `{azureClusters, awsClusters}/cluster_name`.
+  /// For Anthos on VMWare/Baremetal/MultiCloud clusters, it would be in format
+  /// {cluster_type}/{cluster_name}, e.g., "awsClusters/cluster_1".
   ///
-  /// Immutable.
+  /// Optional.
   core.String? cluster;
 
-  /// Cluster hash, this is a unique string generated by google code, which does
-  /// not contain any PII, which we can use to reference the cluster.
+  /// For GKE and Multicloud clusters, this is the UUID of the cluster resource.
   ///
-  /// This is expected to be created by the monitoring stack and persisted into
-  /// the Cluster object as well as to GKE-Hub.
+  /// For VMWare and Baremetal clusters, this is the kube-system UID.
   ///
-  /// Immutable.
+  /// Optional.
   core.String? clusterHash;
 
   /// Kubernetes system metrics, if available, are written to this prefix.
   ///
   /// This defaults to kubernetes.io for GKE, and kubernetes.io/anthos for
   /// Anthos eventually. Noted: Anthos MultiCloud will have kubernetes.io prefix
-  /// today but will migration to be under kubernetes.io/anthos
+  /// today but will migration to be under kubernetes.io/anthos.
+  ///
+  /// Optional.
   core.String? kubernetesMetricsPrefix;
 
   /// Location used to report Metrics
   ///
-  /// Immutable.
+  /// Optional.
   core.String? location;
 
   /// Project used to report Metrics
   ///
-  /// Immutable.
+  /// Optional.
   core.String? projectId;
 
   MonitoringConfig({
@@ -7091,7 +7979,7 @@ class Operation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard
@@ -7144,6 +8032,8 @@ class Origin {
   /// - "TYPE_UNSPECIFIED" : Type is unknown or not set.
   /// - "FLEET" : Per-Membership spec was inherited from the fleet-level
   /// default.
+  /// - "FLEET_OUT_OF_SYNC" : Per-Membership spec was inherited from the
+  /// fleet-level default but is now out of sync with the current default.
   /// - "USER" : Per-Membership spec was inherited from a user specification.
   core.String? type;
 
@@ -7175,23 +8065,23 @@ class Origin {
 /// request, the resource, or both. To learn which resources support conditions
 /// in their IAM policies, see the
 /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": \[ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": \[
+/// **JSON example:** ``` { "bindings": [ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": [
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": \[
-/// "user:eve@example.com" \], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": [
+/// "user:eve@example.com" ], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time \< timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
-/// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
-/// user:mike@example.com - group:admins@example.com - domain:google.com -
-/// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
-/// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
-/// role: roles/resourcemanager.organizationViewer condition: title: expirable
-/// access description: Does not grant access after Sep 2020 expression:
-/// request.time \< timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
-/// version: 3 For a description of IAM and its features, see the
-/// [IAM documentation](https://cloud.google.com/iam/docs/).
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: -
+/// members: - user:mike@example.com - group:admins@example.com -
+/// domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+/// role: roles/resourcemanager.organizationAdmin - members: -
+/// user:eve@example.com role: roles/resourcemanager.organizationViewer
+/// condition: title: expirable access description: Does not grant access after
+/// Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+/// etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features,
+/// see the [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig>? auditConfigs;
@@ -7282,6 +8172,679 @@ class Policy {
       };
 }
 
+/// Binauthz policy that applies to this cluster.
+class PolicyBinding {
+  /// The relative resource name of the binauthz platform policy to audit.
+  ///
+  /// GKE platform policies have the following format:
+  /// `projects/{project_number}/platforms/gke/policies/{policy_id}`.
+  core.String? name;
+
+  PolicyBinding({
+    this.name,
+  });
+
+  PolicyBinding.fromJson(core.Map json_)
+      : this(
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+      };
+}
+
+/// BundleInstallSpec is the specification configuration for a single managed
+/// bundle.
+class PolicyControllerBundleInstallSpec {
+  /// The set of namespaces to be exempted from the bundle.
+  core.List<core.String>? exemptedNamespaces;
+
+  PolicyControllerBundleInstallSpec({
+    this.exemptedNamespaces,
+  });
+
+  PolicyControllerBundleInstallSpec.fromJson(core.Map json_)
+      : this(
+          exemptedNamespaces: json_.containsKey('exemptedNamespaces')
+              ? (json_['exemptedNamespaces'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (exemptedNamespaces != null)
+          'exemptedNamespaces': exemptedNamespaces!,
+      };
+}
+
+/// Configuration for Policy Controller
+class PolicyControllerHubConfig {
+  /// Sets the interval for Policy Controller Audit Scans (in seconds).
+  ///
+  /// When set to 0, this disables audit functionality altogether.
+  core.String? auditIntervalSeconds;
+
+  /// The maximum number of audit violations to be stored in a constraint.
+  ///
+  /// If not set, the internal default (currently 20) will be used.
+  core.String? constraintViolationLimit;
+
+  /// Map of deployment configs to deployments ("admission", "audit",
+  /// "mutation').
+  core.Map<core.String, PolicyControllerPolicyControllerDeploymentConfig>?
+      deploymentConfigs;
+
+  /// The set of namespaces that are excluded from Policy Controller checks.
+  ///
+  /// Namespaces do not need to currently exist on the cluster.
+  core.List<core.String>? exemptableNamespaces;
+
+  /// The install_spec represents the intended state specified by the latest
+  /// request that mutated install_spec in the feature spec, not the lifecycle
+  /// state of the feature observed by the Hub feature controller that is
+  /// reported in the feature state.
+  /// Possible string values are:
+  /// - "INSTALL_SPEC_UNSPECIFIED" : Spec is unknown.
+  /// - "INSTALL_SPEC_NOT_INSTALLED" : Request to uninstall Policy Controller.
+  /// - "INSTALL_SPEC_ENABLED" : Request to install and enable Policy
+  /// Controller.
+  /// - "INSTALL_SPEC_SUSPENDED" : Request to suspend Policy Controller i.e. its
+  /// webhooks. If Policy Controller is not installed, it will be installed but
+  /// suspended.
+  /// - "INSTALL_SPEC_DETACHED" : Request to stop all reconciliation actions by
+  /// PoCo Hub controller. This is a breakglass mechanism to stop PoCo Hub from
+  /// affecting cluster resources.
+  core.String? installSpec;
+
+  /// Logs all denies and dry run failures.
+  core.bool? logDeniesEnabled;
+
+  /// Monitoring specifies the configuration of monitoring.
+  PolicyControllerMonitoringConfig? monitoring;
+
+  /// Enables the ability to mutate resources using Policy Controller.
+  core.bool? mutationEnabled;
+
+  /// Specifies the desired policy content on the cluster
+  PolicyControllerPolicyContentSpec? policyContent;
+
+  /// Enables the ability to use Constraint Templates that reference to objects
+  /// other than the object currently being evaluated.
+  core.bool? referentialRulesEnabled;
+
+  PolicyControllerHubConfig({
+    this.auditIntervalSeconds,
+    this.constraintViolationLimit,
+    this.deploymentConfigs,
+    this.exemptableNamespaces,
+    this.installSpec,
+    this.logDeniesEnabled,
+    this.monitoring,
+    this.mutationEnabled,
+    this.policyContent,
+    this.referentialRulesEnabled,
+  });
+
+  PolicyControllerHubConfig.fromJson(core.Map json_)
+      : this(
+          auditIntervalSeconds: json_.containsKey('auditIntervalSeconds')
+              ? json_['auditIntervalSeconds'] as core.String
+              : null,
+          constraintViolationLimit:
+              json_.containsKey('constraintViolationLimit')
+                  ? json_['constraintViolationLimit'] as core.String
+                  : null,
+          deploymentConfigs: json_.containsKey('deploymentConfigs')
+              ? (json_['deploymentConfigs']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    PolicyControllerPolicyControllerDeploymentConfig.fromJson(
+                        value as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+          exemptableNamespaces: json_.containsKey('exemptableNamespaces')
+              ? (json_['exemptableNamespaces'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          installSpec: json_.containsKey('installSpec')
+              ? json_['installSpec'] as core.String
+              : null,
+          logDeniesEnabled: json_.containsKey('logDeniesEnabled')
+              ? json_['logDeniesEnabled'] as core.bool
+              : null,
+          monitoring: json_.containsKey('monitoring')
+              ? PolicyControllerMonitoringConfig.fromJson(
+                  json_['monitoring'] as core.Map<core.String, core.dynamic>)
+              : null,
+          mutationEnabled: json_.containsKey('mutationEnabled')
+              ? json_['mutationEnabled'] as core.bool
+              : null,
+          policyContent: json_.containsKey('policyContent')
+              ? PolicyControllerPolicyContentSpec.fromJson(
+                  json_['policyContent'] as core.Map<core.String, core.dynamic>)
+              : null,
+          referentialRulesEnabled: json_.containsKey('referentialRulesEnabled')
+              ? json_['referentialRulesEnabled'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (auditIntervalSeconds != null)
+          'auditIntervalSeconds': auditIntervalSeconds!,
+        if (constraintViolationLimit != null)
+          'constraintViolationLimit': constraintViolationLimit!,
+        if (deploymentConfigs != null) 'deploymentConfigs': deploymentConfigs!,
+        if (exemptableNamespaces != null)
+          'exemptableNamespaces': exemptableNamespaces!,
+        if (installSpec != null) 'installSpec': installSpec!,
+        if (logDeniesEnabled != null) 'logDeniesEnabled': logDeniesEnabled!,
+        if (monitoring != null) 'monitoring': monitoring!,
+        if (mutationEnabled != null) 'mutationEnabled': mutationEnabled!,
+        if (policyContent != null) 'policyContent': policyContent!,
+        if (referentialRulesEnabled != null)
+          'referentialRulesEnabled': referentialRulesEnabled!,
+      };
+}
+
+/// **Policy Controller**: Configuration for a single cluster.
+///
+/// Intended to parallel the PolicyController CR.
+class PolicyControllerMembershipSpec {
+  /// Policy Controller configuration for the cluster.
+  PolicyControllerHubConfig? policyControllerHubConfig;
+
+  /// Version of Policy Controller installed.
+  core.String? version;
+
+  PolicyControllerMembershipSpec({
+    this.policyControllerHubConfig,
+    this.version,
+  });
+
+  PolicyControllerMembershipSpec.fromJson(core.Map json_)
+      : this(
+          policyControllerHubConfig:
+              json_.containsKey('policyControllerHubConfig')
+                  ? PolicyControllerHubConfig.fromJson(
+                      json_['policyControllerHubConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          version: json_.containsKey('version')
+              ? json_['version'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (policyControllerHubConfig != null)
+          'policyControllerHubConfig': policyControllerHubConfig!,
+        if (version != null) 'version': version!,
+      };
+}
+
+/// **Policy Controller**: State for a single cluster.
+class PolicyControllerMembershipState {
+  /// Currently these include (also serving as map keys): 1.
+  ///
+  /// "admission" 2. "audit" 3. "mutation"
+  core.Map<core.String, PolicyControllerOnClusterState>? componentStates;
+
+  /// The overall content state observed by the Hub Feature controller.
+  PolicyControllerPolicyContentState? policyContentState;
+
+  /// The overall Policy Controller lifecycle state observed by the Hub Feature
+  /// controller.
+  /// Possible string values are:
+  /// - "LIFECYCLE_STATE_UNSPECIFIED" : The lifecycle state is unspecified.
+  /// - "NOT_INSTALLED" : The PC does not exist on the given cluster, and no k8s
+  /// resources of any type that are associated with the PC should exist there.
+  /// The cluster does not possess a membership with the PCH.
+  /// - "INSTALLING" : The PCH possesses a Membership, however the PC is not
+  /// fully installed on the cluster. In this state the hub can be expected to
+  /// be taking actions to install the PC on the cluster.
+  /// - "ACTIVE" : The PC is fully installed on the cluster and in an
+  /// operational mode. In this state PCH will be reconciling state with the PC,
+  /// and the PC will be performing it's operational tasks per that software.
+  /// Entering a READY state requires that the hub has confirmed the PC is
+  /// installed and its pods are operational with the version of the PC the PCH
+  /// expects.
+  /// - "UPDATING" : The PC is fully installed, but in the process of changing
+  /// the configuration (including changing the version of PC either up and
+  /// down, or modifying the manifests of PC) of the resources running on the
+  /// cluster. The PCH has a Membership, is aware of the version the cluster
+  /// should be running in, but has not confirmed for itself that the PC is
+  /// running with that version.
+  /// - "DECOMMISSIONING" : The PC may have resources on the cluster, but the
+  /// PCH wishes to remove the Membership. The Membership still exists.
+  /// - "CLUSTER_ERROR" : The PC is not operational, and the PCH is unable to
+  /// act to make it operational. Entering a CLUSTER_ERROR state happens
+  /// automatically when the PCH determines that a PC installed on the cluster
+  /// is non-operative or that the cluster does not meet requirements set for
+  /// the PCH to administer the cluster but has nevertheless been given an
+  /// instruction to do so (such as 'install').
+  /// - "HUB_ERROR" : In this state, the PC may still be operational, and only
+  /// the PCH is unable to act. The hub should not issue instructions to change
+  /// the PC state, or otherwise interfere with the on-cluster resources.
+  /// Entering a HUB_ERROR state happens automatically when the PCH determines
+  /// the hub is in an unhealthy state and it wishes to 'take hands off' to
+  /// avoid corrupting the PC or other data.
+  /// - "SUSPENDED" : Policy Controller (PC) is installed but suspended. This
+  /// means that the policies are not enforced, but violations are still
+  /// recorded (through audit).
+  /// - "DETACHED" : PoCo Hub is not taking any action to reconcile cluster
+  /// objects. Changes to those objects will not be overwritten by PoCo Hub.
+  core.String? state;
+
+  PolicyControllerMembershipState({
+    this.componentStates,
+    this.policyContentState,
+    this.state,
+  });
+
+  PolicyControllerMembershipState.fromJson(core.Map json_)
+      : this(
+          componentStates: json_.containsKey('componentStates')
+              ? (json_['componentStates']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    PolicyControllerOnClusterState.fromJson(
+                        value as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+          policyContentState: json_.containsKey('policyContentState')
+              ? PolicyControllerPolicyContentState.fromJson(
+                  json_['policyContentState']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (componentStates != null) 'componentStates': componentStates!,
+        if (policyContentState != null)
+          'policyContentState': policyContentState!,
+        if (state != null) 'state': state!,
+      };
+}
+
+/// MonitoringConfig specifies the backends Policy Controller should export
+/// metrics to.
+///
+/// For example, to specify metrics should be exported to Cloud Monitoring and
+/// Prometheus, specify backends: \["cloudmonitoring", "prometheus"\]
+typedef PolicyControllerMonitoringConfig = $Shared09;
+
+/// OnClusterState represents the state of a sub-component of Policy Controller.
+class PolicyControllerOnClusterState {
+  /// Surface potential errors or information logs.
+  core.String? details;
+
+  /// The lifecycle state of this component.
+  /// Possible string values are:
+  /// - "LIFECYCLE_STATE_UNSPECIFIED" : The lifecycle state is unspecified.
+  /// - "NOT_INSTALLED" : The PC does not exist on the given cluster, and no k8s
+  /// resources of any type that are associated with the PC should exist there.
+  /// The cluster does not possess a membership with the PCH.
+  /// - "INSTALLING" : The PCH possesses a Membership, however the PC is not
+  /// fully installed on the cluster. In this state the hub can be expected to
+  /// be taking actions to install the PC on the cluster.
+  /// - "ACTIVE" : The PC is fully installed on the cluster and in an
+  /// operational mode. In this state PCH will be reconciling state with the PC,
+  /// and the PC will be performing it's operational tasks per that software.
+  /// Entering a READY state requires that the hub has confirmed the PC is
+  /// installed and its pods are operational with the version of the PC the PCH
+  /// expects.
+  /// - "UPDATING" : The PC is fully installed, but in the process of changing
+  /// the configuration (including changing the version of PC either up and
+  /// down, or modifying the manifests of PC) of the resources running on the
+  /// cluster. The PCH has a Membership, is aware of the version the cluster
+  /// should be running in, but has not confirmed for itself that the PC is
+  /// running with that version.
+  /// - "DECOMMISSIONING" : The PC may have resources on the cluster, but the
+  /// PCH wishes to remove the Membership. The Membership still exists.
+  /// - "CLUSTER_ERROR" : The PC is not operational, and the PCH is unable to
+  /// act to make it operational. Entering a CLUSTER_ERROR state happens
+  /// automatically when the PCH determines that a PC installed on the cluster
+  /// is non-operative or that the cluster does not meet requirements set for
+  /// the PCH to administer the cluster but has nevertheless been given an
+  /// instruction to do so (such as 'install').
+  /// - "HUB_ERROR" : In this state, the PC may still be operational, and only
+  /// the PCH is unable to act. The hub should not issue instructions to change
+  /// the PC state, or otherwise interfere with the on-cluster resources.
+  /// Entering a HUB_ERROR state happens automatically when the PCH determines
+  /// the hub is in an unhealthy state and it wishes to 'take hands off' to
+  /// avoid corrupting the PC or other data.
+  /// - "SUSPENDED" : Policy Controller (PC) is installed but suspended. This
+  /// means that the policies are not enforced, but violations are still
+  /// recorded (through audit).
+  /// - "DETACHED" : PoCo Hub is not taking any action to reconcile cluster
+  /// objects. Changes to those objects will not be overwritten by PoCo Hub.
+  core.String? state;
+
+  PolicyControllerOnClusterState({
+    this.details,
+    this.state,
+  });
+
+  PolicyControllerOnClusterState.fromJson(core.Map json_)
+      : this(
+          details: json_.containsKey('details')
+              ? json_['details'] as core.String
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (details != null) 'details': details!,
+        if (state != null) 'state': state!,
+      };
+}
+
+/// PolicyContentSpec defines the user's desired content configuration on the
+/// cluster.
+class PolicyControllerPolicyContentSpec {
+  /// map of bundle name to BundleInstallSpec.
+  ///
+  /// The bundle name maps to the `bundleName` key in the
+  /// `policycontroller.gke.io/constraintData` annotation on a constraint.
+  core.Map<core.String, PolicyControllerBundleInstallSpec>? bundles;
+
+  /// Configures the installation of the Template Library.
+  PolicyControllerTemplateLibraryConfig? templateLibrary;
+
+  PolicyControllerPolicyContentSpec({
+    this.bundles,
+    this.templateLibrary,
+  });
+
+  PolicyControllerPolicyContentSpec.fromJson(core.Map json_)
+      : this(
+          bundles: json_.containsKey('bundles')
+              ? (json_['bundles'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    PolicyControllerBundleInstallSpec.fromJson(
+                        value as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+          templateLibrary: json_.containsKey('templateLibrary')
+              ? PolicyControllerTemplateLibraryConfig.fromJson(
+                  json_['templateLibrary']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bundles != null) 'bundles': bundles!,
+        if (templateLibrary != null) 'templateLibrary': templateLibrary!,
+      };
+}
+
+/// The state of the policy controller policy content
+class PolicyControllerPolicyContentState {
+  /// The state of the any bundles included in the chosen version of the
+  /// manifest
+  core.Map<core.String, PolicyControllerOnClusterState>? bundleStates;
+
+  /// The state of the referential data sync configuration.
+  ///
+  /// This could represent the state of either the syncSet object(s) or the
+  /// config object, depending on the version of PoCo configured by the user.
+  PolicyControllerOnClusterState? referentialSyncConfigState;
+
+  /// The state of the template library
+  PolicyControllerOnClusterState? templateLibraryState;
+
+  PolicyControllerPolicyContentState({
+    this.bundleStates,
+    this.referentialSyncConfigState,
+    this.templateLibraryState,
+  });
+
+  PolicyControllerPolicyContentState.fromJson(core.Map json_)
+      : this(
+          bundleStates: json_.containsKey('bundleStates')
+              ? (json_['bundleStates'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    PolicyControllerOnClusterState.fromJson(
+                        value as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+          referentialSyncConfigState:
+              json_.containsKey('referentialSyncConfigState')
+                  ? PolicyControllerOnClusterState.fromJson(
+                      json_['referentialSyncConfigState']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          templateLibraryState: json_.containsKey('templateLibraryState')
+              ? PolicyControllerOnClusterState.fromJson(
+                  json_['templateLibraryState']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bundleStates != null) 'bundleStates': bundleStates!,
+        if (referentialSyncConfigState != null)
+          'referentialSyncConfigState': referentialSyncConfigState!,
+        if (templateLibraryState != null)
+          'templateLibraryState': templateLibraryState!,
+      };
+}
+
+/// Deployment-specific configuration.
+class PolicyControllerPolicyControllerDeploymentConfig {
+  /// Container resource requirements.
+  PolicyControllerResourceRequirements? containerResources;
+
+  /// Pod affinity configuration.
+  /// Possible string values are:
+  /// - "AFFINITY_UNSPECIFIED" : No affinity configuration has been specified.
+  /// - "NO_AFFINITY" : Affinity configurations will be removed from the
+  /// deployment.
+  /// - "ANTI_AFFINITY" : Anti-affinity configuration will be applied to this
+  /// deployment. Default for admissions deployment.
+  core.String? podAffinity;
+
+  /// Pod anti-affinity enablement.
+  ///
+  /// Deprecated: use `pod_affinity` instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.bool? podAntiAffinity;
+
+  /// Pod tolerations of node taints.
+  core.List<PolicyControllerToleration>? podTolerations;
+
+  /// Pod replica count.
+  core.String? replicaCount;
+
+  PolicyControllerPolicyControllerDeploymentConfig({
+    this.containerResources,
+    this.podAffinity,
+    this.podAntiAffinity,
+    this.podTolerations,
+    this.replicaCount,
+  });
+
+  PolicyControllerPolicyControllerDeploymentConfig.fromJson(core.Map json_)
+      : this(
+          containerResources: json_.containsKey('containerResources')
+              ? PolicyControllerResourceRequirements.fromJson(
+                  json_['containerResources']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          podAffinity: json_.containsKey('podAffinity')
+              ? json_['podAffinity'] as core.String
+              : null,
+          podAntiAffinity: json_.containsKey('podAntiAffinity')
+              ? json_['podAntiAffinity'] as core.bool
+              : null,
+          podTolerations: json_.containsKey('podTolerations')
+              ? (json_['podTolerations'] as core.List)
+                  .map((value) => PolicyControllerToleration.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          replicaCount: json_.containsKey('replicaCount')
+              ? json_['replicaCount'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (containerResources != null)
+          'containerResources': containerResources!,
+        if (podAffinity != null) 'podAffinity': podAffinity!,
+        if (podAntiAffinity != null) 'podAntiAffinity': podAntiAffinity!,
+        if (podTolerations != null) 'podTolerations': podTolerations!,
+        if (replicaCount != null) 'replicaCount': replicaCount!,
+      };
+}
+
+/// ResourceList contains container resource requirements.
+class PolicyControllerResourceList {
+  /// CPU requirement expressed in Kubernetes resource units.
+  core.String? cpu;
+
+  /// Memory requirement expressed in Kubernetes resource units.
+  core.String? memory;
+
+  PolicyControllerResourceList({
+    this.cpu,
+    this.memory,
+  });
+
+  PolicyControllerResourceList.fromJson(core.Map json_)
+      : this(
+          cpu: json_.containsKey('cpu') ? json_['cpu'] as core.String : null,
+          memory: json_.containsKey('memory')
+              ? json_['memory'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cpu != null) 'cpu': cpu!,
+        if (memory != null) 'memory': memory!,
+      };
+}
+
+/// ResourceRequirements describes the compute resource requirements.
+class PolicyControllerResourceRequirements {
+  /// Limits describes the maximum amount of compute resources allowed for use
+  /// by the running container.
+  PolicyControllerResourceList? limits;
+
+  /// Requests describes the amount of compute resources reserved for the
+  /// container by the kube-scheduler.
+  PolicyControllerResourceList? requests;
+
+  PolicyControllerResourceRequirements({
+    this.limits,
+    this.requests,
+  });
+
+  PolicyControllerResourceRequirements.fromJson(core.Map json_)
+      : this(
+          limits: json_.containsKey('limits')
+              ? PolicyControllerResourceList.fromJson(
+                  json_['limits'] as core.Map<core.String, core.dynamic>)
+              : null,
+          requests: json_.containsKey('requests')
+              ? PolicyControllerResourceList.fromJson(
+                  json_['requests'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (limits != null) 'limits': limits!,
+        if (requests != null) 'requests': requests!,
+      };
+}
+
+/// The config specifying which default library templates to install.
+class PolicyControllerTemplateLibraryConfig {
+  /// Configures the manner in which the template library is installed on the
+  /// cluster.
+  /// Possible string values are:
+  /// - "INSTALLATION_UNSPECIFIED" : No installation strategy has been
+  /// specified.
+  /// - "NOT_INSTALLED" : Do not install the template library.
+  /// - "ALL" : Install the entire template library.
+  core.String? installation;
+
+  PolicyControllerTemplateLibraryConfig({
+    this.installation,
+  });
+
+  PolicyControllerTemplateLibraryConfig.fromJson(core.Map json_)
+      : this(
+          installation: json_.containsKey('installation')
+              ? json_['installation'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (installation != null) 'installation': installation!,
+      };
+}
+
+/// Toleration of a node taint.
+class PolicyControllerToleration {
+  /// Matches a taint effect.
+  core.String? effect;
+
+  /// Matches a taint key (not necessarily unique).
+  core.String? key;
+
+  /// Matches a taint operator.
+  core.String? operator;
+
+  /// Matches a taint value.
+  core.String? value;
+
+  PolicyControllerToleration({
+    this.effect,
+    this.key,
+    this.operator,
+    this.value,
+  });
+
+  PolicyControllerToleration.fromJson(core.Map json_)
+      : this(
+          effect: json_.containsKey('effect')
+              ? json_['effect'] as core.String
+              : null,
+          key: json_.containsKey('key') ? json_['key'] as core.String : null,
+          operator: json_.containsKey('operator')
+              ? json_['operator'] as core.String
+              : null,
+          value:
+              json_.containsKey('value') ? json_['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (effect != null) 'effect': effect!,
+        if (key != null) 'key': key!,
+        if (operator != null) 'operator': operator!,
+        if (value != null) 'value': value!,
+      };
+}
+
 /// RBACRoleBinding represents a rbacrolebinding across the Fleet
 class RBACRoleBinding {
   /// When the rbacrolebinding was created.
@@ -7303,7 +8866,7 @@ class RBACRoleBinding {
   core.Map<core.String, core.String>? labels;
 
   /// The resource name for the rbacrolebinding
-  /// `projects/{project}/locations/{location}/namespaces/{namespace}/rbacrolebindings/{rbacrolebinding}`
+  /// `projects/{project}/locations/{location}/scopes/{scope}/rbacrolebindings/{rbacrolebinding}`
   /// or
   /// `projects/{project}/locations/{location}/memberships/{membership}/rbacrolebindings/{rbacrolebinding}`
   core.String? name;
@@ -7542,9 +9105,6 @@ class Role {
 
 /// Scope represents a Scope in a Fleet.
 class Scope {
-  /// If true, all Memberships in the Fleet bind to this Scope.
-  core.bool? allMemberships;
-
   /// When the scope was created.
   ///
   /// Output only.
@@ -7595,7 +9155,6 @@ class Scope {
   core.String? updateTime;
 
   Scope({
-    this.allMemberships,
     this.createTime,
     this.deleteTime,
     this.labels,
@@ -7608,9 +9167,6 @@ class Scope {
 
   Scope.fromJson(core.Map json_)
       : this(
-          allMemberships: json_.containsKey('allMemberships')
-              ? json_['allMemberships'] as core.bool
-              : null,
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
               : null,
@@ -7647,7 +9203,6 @@ class Scope {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (allMemberships != null) 'allMemberships': allMemberships!,
         if (createTime != null) 'createTime': createTime!,
         if (deleteTime != null) 'deleteTime': deleteTime!,
         if (labels != null) 'labels': labels!,
@@ -7712,6 +9267,10 @@ class ScopeLifecycleState {
         if (code != null) 'code': code!,
       };
 }
+
+/// SecurityPostureConfig defines the flags needed to enable/disable features
+/// for the Security Posture API.
+typedef SecurityPostureConfig = $SecurityPostureConfig;
 
 /// Status of control plane management.
 class ServiceMeshControlPlaneManagement {

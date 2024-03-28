@@ -10,7 +10,6 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 // ignore_for_file: unreachable_from_main
 // ignore_for_file: unused_local_variable
@@ -475,6 +474,7 @@ api.DnsAuthorization buildDnsAuthorization() {
     o.domain = 'foo';
     o.labels = buildUnnamed7();
     o.name = 'foo';
+    o.type = 'foo';
     o.updateTime = 'foo';
   }
   buildCounterDnsAuthorization--;
@@ -500,6 +500,10 @@ void checkDnsAuthorization(api.DnsAuthorization o) {
     checkUnnamed7(o.labels!);
     unittest.expect(
       o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.type!,
       unittest.equals('foo'),
     );
     unittest.expect(

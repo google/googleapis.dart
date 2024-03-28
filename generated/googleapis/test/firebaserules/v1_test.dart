@@ -10,7 +10,6 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 // ignore_for_file: unreachable_from_main
 // ignore_for_file: unused_local_variable
@@ -523,6 +522,7 @@ api.Ruleset buildRuleset() {
   final o = api.Ruleset();
   buildCounterRuleset++;
   if (buildCounterRuleset < 3) {
+    o.attachmentPoint = 'foo';
     o.createTime = 'foo';
     o.metadata = buildMetadata();
     o.name = 'foo';
@@ -535,6 +535,10 @@ api.Ruleset buildRuleset() {
 void checkRuleset(api.Ruleset o) {
   buildCounterRuleset++;
   if (buildCounterRuleset < 3) {
+    unittest.expect(
+      o.attachmentPoint!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.createTime!,
       unittest.equals('foo'),

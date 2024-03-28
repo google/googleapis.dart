@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Workflows API - v1
@@ -24,7 +23,7 @@
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsWorkflowsResource]
-library workflows_v1;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -458,7 +457,9 @@ class ProjectsLocationsWorkflowsResource {
   /// be listed. Format: projects/{project}/locations/{location}
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [filter] - Filter to restrict results to specific workflows.
+  /// [filter] - Filter to restrict results to specific workflows. For details,
+  /// see AIP-160. For example, if you are using the Google APIs Explorer:
+  /// `state="SUCCEEDED"` or `createTime>"2023-08-01" AND state="FAILED"`
   ///
   /// [orderBy] - Comma-separated list of fields that specify the order of the
   /// results. Default sorting order for a field is ascending. To specify
@@ -513,6 +514,55 @@ class ProjectsLocationsWorkflowsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Lists revisions for a given workflow.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Workflow for which the revisions should be listed.
+  /// Format: projects/{project}/locations/{location}/workflows/{workflow}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workflows/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of revisions to return per page. If a
+  /// value is not specified, a default value of 20 is used. The maximum
+  /// permitted value is 100. Values greater than 100 are coerced down to 100.
+  ///
+  /// [pageToken] - The page token, received from a previous
+  /// ListWorkflowRevisions call. Provide this to retrieve the subsequent page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListWorkflowRevisionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListWorkflowRevisionsResponse> listRevisions(
+    core.String name, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':listRevisions';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListWorkflowRevisionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Updates an existing workflow.
   ///
   /// Running this method has no impact on already running executions of the
@@ -525,7 +575,8 @@ class ProjectsLocationsWorkflowsResource {
   /// Request parameters:
   ///
   /// [name] - The resource name of the workflow. Format:
-  /// projects/{project}/locations/{location}/workflows/{workflow}
+  /// projects/{project}/locations/{location}/workflows/{workflow}. This is a
+  /// workflow-wide field and is not tied to a specific revision.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/workflows/\[^/\]+$`.
   ///
@@ -638,6 +689,40 @@ class ListOperationsResponse {
       };
 }
 
+/// Response for the ListWorkflowRevisions method.
+class ListWorkflowRevisionsResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// The revisions of the workflow, ordered in reverse chronological order.
+  core.List<Workflow>? workflows;
+
+  ListWorkflowRevisionsResponse({
+    this.nextPageToken,
+    this.workflows,
+  });
+
+  ListWorkflowRevisionsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          workflows: json_.containsKey('workflows')
+              ? (json_['workflows'] as core.List)
+                  .map((value) => Workflow.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (workflows != null) 'workflows': workflows!,
+      };
+}
+
 /// Response for the ListWorkflows method.
 class ListWorkflowsResponse {
   /// A token, which can be sent as `page_token` to retrieve the next page.
@@ -715,7 +800,7 @@ class Operation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard
@@ -793,6 +878,8 @@ class Workflow {
 
   /// The timestamp for when the workflow was created.
   ///
+  /// This is a workflow-wide field and is not tied to a specific revision.
+  ///
   /// Output only.
   core.String? createTime;
 
@@ -810,7 +897,8 @@ class Workflow {
 
   /// Description of the workflow provided by the user.
   ///
-  /// Must be at most 1000 unicode characters long.
+  /// Must be at most 1000 Unicode characters long. This is a workflow-wide
+  /// field and is not tied to a specific revision.
   core.String? description;
 
   /// Labels associated with this workflow.
@@ -818,12 +906,14 @@ class Workflow {
   /// Labels can contain at most 64 entries. Keys and values can be no longer
   /// than 63 characters and can only contain lowercase letters, numeric
   /// characters, underscores, and dashes. Label keys must start with a letter.
-  /// International characters are allowed.
+  /// International characters are allowed. This is a workflow-wide field and is
+  /// not tied to a specific revision.
   core.Map<core.String, core.String>? labels;
 
   /// The resource name of the workflow.
   ///
-  /// Format: projects/{project}/locations/{location}/workflows/{workflow}
+  /// Format: projects/{project}/locations/{location}/workflows/{workflow}. This
+  /// is a workflow-wide field and is not tied to a specific revision.
   core.String? name;
 
   /// The timestamp for the latest revision of the workflow's creation.
@@ -879,14 +969,15 @@ class Workflow {
 
   /// The timestamp for when the workflow was last updated.
   ///
+  /// This is a workflow-wide field and is not tied to a specific revision.
+  ///
   /// Output only.
   core.String? updateTime;
 
   /// User-defined environment variables associated with this workflow revision.
   ///
-  /// This map has a maximum length of 20. Each string can take up to 40KiB.
-  /// Keys cannot be empty strings and cannot start with “GOOGLE” or
-  /// “WORKFLOWS".
+  /// This map has a maximum length of 20. Each string can take up to 4KiB. Keys
+  /// cannot be empty strings and cannot start with "GOOGLE" or "WORKFLOWS".
   ///
   /// Optional.
   core.Map<core.String, core.String>? userEnvVars;

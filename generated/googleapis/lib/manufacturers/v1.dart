@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Manufacturer Center API - v1
@@ -23,7 +22,7 @@
 ///   - [AccountsLanguagesResource]
 ///     - [AccountsLanguagesProductCertificationsResource]
 ///   - [AccountsProductsResource]
-library manufacturers_v1;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -535,6 +534,11 @@ class Attributes {
   /// https://support.google.com/manufacturers/answer/6124116#capacity.
   Capacity? capacity;
 
+  /// List of certifications claimed by this product.
+  ///
+  /// Optional.
+  core.List<GoogleShoppingManufacturersV1ProductCertification>? certification;
+
   /// The color of the product.
   ///
   /// For more information, see
@@ -755,6 +759,7 @@ class Attributes {
     this.ageGroup,
     this.brand,
     this.capacity,
+    this.certification,
     this.color,
     this.count,
     this.description,
@@ -809,6 +814,14 @@ class Attributes {
           capacity: json_.containsKey('capacity')
               ? Capacity.fromJson(
                   json_['capacity'] as core.Map<core.String, core.dynamic>)
+              : null,
+          certification: json_.containsKey('certification')
+              ? (json_['certification'] as core.List)
+                  .map((value) =>
+                      GoogleShoppingManufacturersV1ProductCertification
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
               : null,
           color:
               json_.containsKey('color') ? json_['color'] as core.String : null,
@@ -945,6 +958,7 @@ class Attributes {
         if (ageGroup != null) 'ageGroup': ageGroup!,
         if (brand != null) 'brand': brand!,
         if (capacity != null) 'capacity': capacity!,
+        if (certification != null) 'certification': certification!,
         if (color != null) 'color': color!,
         if (count != null) 'count': count!,
         if (description != null) 'description': description!,
@@ -1025,6 +1039,11 @@ class Certification {
   /// Required.
   core.String? authority;
 
+  /// A unique code to identify the certification.
+  ///
+  /// Required.
+  core.String? code;
+
   /// A URL link to the certification.
   ///
   /// Optional.
@@ -1047,11 +1066,12 @@ class Certification {
 
   /// A custom value of the certification.
   ///
-  /// Required.
+  /// Optional.
   core.String? value;
 
   Certification({
     this.authority,
+    this.code,
     this.link,
     this.logo,
     this.name,
@@ -1064,6 +1084,7 @@ class Certification {
           authority: json_.containsKey('authority')
               ? json_['authority'] as core.String
               : null,
+          code: json_.containsKey('code') ? json_['code'] as core.String : null,
           link: json_.containsKey('link') ? json_['link'] as core.String : null,
           logo: json_.containsKey('logo') ? json_['logo'] as core.String : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
@@ -1076,6 +1097,7 @@ class Certification {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (authority != null) 'authority': authority!,
+        if (code != null) 'code': code!,
         if (link != null) 'link': link!,
         if (logo != null) 'logo': logo!,
         if (name != null) 'name': name!,
@@ -1218,6 +1240,45 @@ class FloatUnit {
   core.Map<core.String, core.dynamic> toJson() => {
         if (amount != null) 'amount': amount!,
         if (unit != null) 'unit': unit!,
+      };
+}
+
+/// Description of a certification.
+class GoogleShoppingManufacturersV1ProductCertification {
+  /// Name of the certification body.
+  ///
+  /// Required.
+  core.String? authority;
+
+  /// A unique code to identify the certification.
+  ///
+  /// Required.
+  core.String? code;
+
+  /// Name of the certification.
+  ///
+  /// Required.
+  core.String? name;
+
+  GoogleShoppingManufacturersV1ProductCertification({
+    this.authority,
+    this.code,
+    this.name,
+  });
+
+  GoogleShoppingManufacturersV1ProductCertification.fromJson(core.Map json_)
+      : this(
+          authority: json_.containsKey('authority')
+              ? json_['authority'] as core.String
+              : null,
+          code: json_.containsKey('code') ? json_['code'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (authority != null) 'authority': authority!,
+        if (code != null) 'code': code!,
+        if (name != null) 'name': name!,
       };
 }
 

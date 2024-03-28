@@ -8,6 +8,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 import '../access_credentials.dart';
+import '../auth_endpoints.dart';
 import '../crypto/rsa.dart';
 import '../crypto/rsa_sign.dart';
 import '../known_uris.dart';
@@ -47,7 +48,7 @@ class JwtFlow extends BaseFlow {
       'aud': googleOauth2TokenEndpoint.toString(),
       'exp': timestamp + 3600,
       'iat': timestamp,
-      if (_user != null) 'sub': _user!,
+      if (_user != null) 'sub': _user,
     };
     final jwtClaimSetBase64 = _base64url(utf8.encode(jsonEncode(jwtClaimSet)));
 
@@ -58,10 +59,13 @@ class JwtFlow extends BaseFlow {
     final jwt = '$jwtSignatureInput.${_base64url(signature)}';
 
     // https://developers.google.com/identity/protocols/oauth2/service-account#authorizingrequests
-    final response = await _client.oauthTokenRequest({
-      'grant_type': _uri,
-      'assertion': jwt,
-    });
+    final response = await _client.oauthTokenRequest(
+      {
+        'grant_type': _uri,
+        'assertion': jwt,
+      },
+      authEndpoints: const GoogleAuthEndpoints(),
+    );
     final accessToken = parseAccessToken(response);
     return AccessCredentials(accessToken, null, _scopes);
   }

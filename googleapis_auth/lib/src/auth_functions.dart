@@ -8,6 +8,7 @@ import 'package:http/http.dart';
 
 import 'access_credentials.dart';
 import 'auth_client.dart';
+import 'auth_endpoints.dart';
 import 'auth_http_utils.dart';
 import 'client_id.dart';
 import 'http_client_base.dart';
@@ -84,15 +85,16 @@ AuthClient authenticatedClient(
 AutoRefreshingAuthClient autoRefreshingClient(
   ClientId clientId,
   AccessCredentials credentials,
-  Client baseClient,
-) {
+  Client baseClient, {
+  AuthEndpoints authEndpoints = const GoogleAuthEndpoints(),
+}) {
   if (credentials.accessToken.type != 'Bearer') {
     throw ArgumentError('Only Bearer access tokens are accepted.');
   }
   if (credentials.refreshToken == null) {
     throw ArgumentError('Refresh token in AccessCredentials was `null`.');
   }
-  return AutoRefreshingClient(baseClient, clientId, credentials);
+  return AutoRefreshingClient(baseClient, authEndpoints, clientId, credentials);
 }
 
 /// Obtains refreshed [AccessCredentials] for [clientId] and [credentials].
@@ -103,25 +105,26 @@ AutoRefreshingAuthClient autoRefreshingClient(
 Future<AccessCredentials> refreshCredentials(
   ClientId clientId,
   AccessCredentials credentials,
-  Client client,
-) async {
-  final secret = clientId.secret;
-  if (secret == null) {
-    throw ArgumentError('clientId.secret cannot be null.');
-  }
-
+  Client client, {
+  AuthEndpoints authEndpoints = const GoogleAuthEndpoints(),
+}) async {
   final refreshToken = credentials.refreshToken;
   if (refreshToken == null) {
     throw ArgumentError('clientId.refreshToken cannot be null.');
   }
 
   // https://developers.google.com/identity/protocols/oauth2/native-app#offline
-  final jsonMap = await client.oauthTokenRequest({
-    'client_id': clientId.identifier,
-    'client_secret': secret,
-    'refresh_token': refreshToken,
-    'grant_type': 'refresh_token',
-  });
+  final jsonMap = await client.oauthTokenRequest(
+    {
+      'client_id': clientId.identifier,
+      // Not all providers require a client secret,
+      // e.g. https://learn.microsoft.com/en-us/entra/identity-platform/v2-oauth2-auth-code-flow#refresh-the-access-token
+      if (clientId.secret != null) 'client_secret': clientId.secret!,
+      'refresh_token': refreshToken,
+      'grant_type': 'refresh_token',
+    },
+    authEndpoints: authEndpoints,
+  );
 
   final accessToken = parseAccessToken(jsonMap);
 

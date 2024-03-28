@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Cloud Logging API - v2
@@ -27,6 +26,8 @@
 ///       - [BillingAccountsLocationsBucketsViewsResource]
 ///         - [BillingAccountsLocationsBucketsViewsLogsResource]
 ///     - [BillingAccountsLocationsOperationsResource]
+///     - [BillingAccountsLocationsRecentQueriesResource]
+///     - [BillingAccountsLocationsSavedQueriesResource]
 ///   - [BillingAccountsLogsResource]
 ///   - [BillingAccountsSinksResource]
 /// - [EntriesResource]
@@ -39,6 +40,8 @@
 ///       - [FoldersLocationsBucketsViewsResource]
 ///         - [FoldersLocationsBucketsViewsLogsResource]
 ///     - [FoldersLocationsOperationsResource]
+///     - [FoldersLocationsRecentQueriesResource]
+///     - [FoldersLocationsSavedQueriesResource]
 ///   - [FoldersLogsResource]
 ///   - [FoldersSinksResource]
 /// - [LocationsResource]
@@ -56,6 +59,8 @@
 ///       - [OrganizationsLocationsBucketsViewsResource]
 ///         - [OrganizationsLocationsBucketsViewsLogsResource]
 ///     - [OrganizationsLocationsOperationsResource]
+///     - [OrganizationsLocationsRecentQueriesResource]
+///     - [OrganizationsLocationsSavedQueriesResource]
 ///   - [OrganizationsLogsResource]
 ///   - [OrganizationsSinksResource]
 /// - [ProjectsResource]
@@ -66,12 +71,14 @@
 ///       - [ProjectsLocationsBucketsViewsResource]
 ///         - [ProjectsLocationsBucketsViewsLogsResource]
 ///     - [ProjectsLocationsOperationsResource]
+///     - [ProjectsLocationsRecentQueriesResource]
+///     - [ProjectsLocationsSavedQueriesResource]
 ///   - [ProjectsLogsResource]
 ///   - [ProjectsMetricsResource]
 ///   - [ProjectsSinksResource]
 /// - [SinksResource]
 /// - [V2Resource]
-library logging_v2;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -149,7 +156,7 @@ class BillingAccountsResource {
 
   /// Gets the Logging CMEK settings for the given resource.Note: CMEK for the
   /// Log Router can be configured for Google Cloud projects, folders,
-  /// organizations and billing accounts.
+  /// organizations, and billing accounts.
   ///
   /// Once configured for an organization, it applies to all projects and
   /// folders in the Google Cloud organization.See Enabling CMEK for Log Router
@@ -164,7 +171,7 @@ class BillingAccountsResource {
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/cmekSettings"
   /// "folders/\[FOLDER_ID\]/cmekSettings" For
   /// example:"organizations/12345/cmekSettings"Note: CMEK for the Log Router
-  /// can be configured for Google Cloud projects, folders, organizations and
+  /// can be configured for Google Cloud projects, folders, organizations, and
   /// billing accounts. Once configured for an organization, it applies to all
   /// projects and folders in the Google Cloud organization.
   /// Value must have pattern `^billingAccounts/\[^/\]+$`.
@@ -198,15 +205,11 @@ class BillingAccountsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets the Log Router settings for the given resource.Note: Settings for the
-  /// Log Router can be get for Google Cloud projects, folders, organizations
-  /// and billing accounts.
-  ///
-  /// Currently it can only be configured for organizations. Once configured for
-  /// an organization, it applies to all projects and folders in the Google
-  /// Cloud organization.See Enabling CMEK for Log Router
-  /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for
-  /// more information.
+  /// Gets the settings for the given resource.Note: Settings can be retrieved
+  /// for Google Cloud projects, folders, organizations, and billing
+  /// accounts.See View default resource settings for Logging
+  /// (https://cloud.google.com/logging/docs/default-settings#view-org-settings)
+  /// for more information.
   ///
   /// Request parameters:
   ///
@@ -215,11 +218,8 @@ class BillingAccountsResource {
   /// "organizations/\[ORGANIZATION_ID\]/settings"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/settings"
   /// "folders/\[FOLDER_ID\]/settings" For
-  /// example:"organizations/12345/settings"Note: Settings for the Log Router
-  /// can be get for Google Cloud projects, folders, organizations and billing
-  /// accounts. Currently it can only be configured for organizations. Once
-  /// configured for an organization, it applies to all projects and folders in
-  /// the Google Cloud organization.
+  /// example:"organizations/12345/settings"Note: Settings can be retrieved for
+  /// Google Cloud projects, folders, organizations, and billing accounts.
   /// Value must have pattern `^billingAccounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -501,6 +501,10 @@ class BillingAccountsLocationsResource {
       BillingAccountsLocationsBucketsResource(_requester);
   BillingAccountsLocationsOperationsResource get operations =>
       BillingAccountsLocationsOperationsResource(_requester);
+  BillingAccountsLocationsRecentQueriesResource get recentQueries =>
+      BillingAccountsLocationsRecentQueriesResource(_requester);
+  BillingAccountsLocationsSavedQueriesResource get savedQueries =>
+      BillingAccountsLocationsSavedQueriesResource(_requester);
 
   BillingAccountsLocationsResource(commons.ApiRequester client)
       : _requester = client;
@@ -619,7 +623,8 @@ class BillingAccountsLocationsBucketsResource {
   ///
   /// [bucketId] - Required. A client-assigned identifier such as "my-bucket".
   /// Identifiers are limited to 100 characters and can include only letters,
-  /// digits, underscores, hyphens, and periods.
+  /// digits, underscores, hyphens, and periods. Bucket identifiers must start
+  /// with an alphanumeric character.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -669,7 +674,8 @@ class BillingAccountsLocationsBucketsResource {
   ///
   /// [bucketId] - Required. A client-assigned identifier such as "my-bucket".
   /// Identifiers are limited to 100 characters and can include only letters,
-  /// digits, underscores, hyphens, and periods.
+  /// digits, underscores, hyphens, and periods. Bucket identifiers must start
+  /// with an alphanumeric character.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1077,11 +1083,11 @@ class BillingAccountsLocationsBucketsLinksResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The full resource name of the link to
-  /// delete."projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-  /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-  /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-  /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
+  /// [name] - Required. The full resource name of the link to delete.
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
   /// Value must have pattern
   /// `^billingAccounts/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+/links/\[^/\]+$`.
   ///
@@ -1117,11 +1123,11 @@ class BillingAccountsLocationsBucketsLinksResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The resource name of the
-  /// link:"projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-  /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-  /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-  /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID
+  /// [name] - Required. The resource name of the link:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
   /// Value must have pattern
   /// `^billingAccounts/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+/links/\[^/\]+$`.
   ///
@@ -1157,11 +1163,11 @@ class BillingAccountsLocationsBucketsLinksResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent resource whose links are to be
-  /// listed:"projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/"
-  /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/"
-  /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/"
-  /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/
+  /// [parent] - Required. The parent resource whose links are to be listed:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
   /// Value must have pattern
   /// `^billingAccounts/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
@@ -1309,7 +1315,7 @@ class BillingAccountsLocationsBucketsViewsResource {
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets a view on a log bucket..
+  /// Gets a view on a log bucket.
   ///
   /// Request parameters:
   ///
@@ -1401,10 +1407,10 @@ class BillingAccountsLocationsBucketsViewsResource {
 
   /// Updates a view on a log bucket.
   ///
-  /// This method replaces the following fields in the existing view with values
-  /// from the new view: filter. If an UNAVAILABLE error is returned, this
-  /// indicates that system is not in a state where it can update the view. If
-  /// this occurs, please try again in a few minutes.
+  /// This method replaces the value of the filter field from the existing view
+  /// with the corresponding value from the new view. If an UNAVAILABLE error is
+  /// returned, this indicates that system is not in a state where it can update
+  /// the view. If this occurs, please try again in a few minutes.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1677,6 +1683,232 @@ class BillingAccountsLocationsOperationsResource {
   }
 }
 
+class BillingAccountsLocationsRecentQueriesResource {
+  final commons.ApiRequester _requester;
+
+  BillingAccountsLocationsRecentQueriesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists the RecentQueries that were created by the user making the request.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource to which the listed queries belong.
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]" For
+  /// example:projects/my-project/locations/us-central1Note: The location
+  /// portion of the resource must be specified, but supplying the character -
+  /// in place of LOCATION_ID will return all recent queries.
+  /// Value must have pattern `^billingAccounts/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
+  ///
+  /// [pageToken] - Optional. If present, then retrieve the next batch of
+  /// results from the preceding call to this method. pageToken must be the
+  /// value of nextPageToken from the previous response. The values of other
+  /// method parameters should be identical to those in the previous call.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListRecentQueriesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListRecentQueriesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/recentQueries';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListRecentQueriesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class BillingAccountsLocationsSavedQueriesResource {
+  final commons.ApiRequester _requester;
+
+  BillingAccountsLocationsSavedQueriesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new SavedQuery for the user making the request.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource in which to create the saved
+  /// query: "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]" For example:
+  /// "projects/my-project/locations/global"
+  /// "organizations/123456789/locations/us-central1"
+  /// Value must have pattern `^billingAccounts/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [savedQueryId] - Optional. The ID to use for the saved query, which will
+  /// become the final component of the saved query's resource name.If the
+  /// saved_query_id is not provided, the system will generate an alphanumeric
+  /// ID.The saved_query_id is limited to 100 characters and can include only
+  /// the following characters: upper and lower-case alphanumeric characters,
+  /// underscores, hyphens, periods.First character has to be alphanumeric.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SavedQuery].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SavedQuery> create(
+    SavedQuery request,
+    core.String parent, {
+    core.String? savedQueryId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (savedQueryId != null) 'savedQueryId': [savedQueryId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/savedQueries';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return SavedQuery.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes an existing SavedQuery that was created by the user making the
+  /// request.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The full resource name of the saved query to delete.
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/savedQueries/\[QUERY_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/savedQueries/\[QUERY_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/savedQueries/\[QUERY_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/savedQueries/\[QUERY_ID\]"
+  /// For example:
+  /// "projects/my-project/locations/global/savedQueries/my-saved-query"
+  /// Value must have pattern
+  /// `^billingAccounts/\[^/\]+/locations/\[^/\]+/savedQueries/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists the SavedQueries that were created by the user making the request.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource to which the listed queries belong.
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]" For example:
+  /// "projects/my-project/locations/us-central1" Note: The locations portion of
+  /// the resource must be specified. To get a list of all saved queries, a
+  /// wildcard character - can be used for LOCATION_ID, for example:
+  /// "projects/my-project/locations/-"
+  /// Value must have pattern `^billingAccounts/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request.Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
+  ///
+  /// [pageToken] - Optional. If present, then retrieve the next batch of
+  /// results from the preceding call to this method. pageToken must be the
+  /// value of nextPageToken from the previous response. The values of other
+  /// method parameters should be identical to those in the previous call.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListSavedQueriesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListSavedQueriesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/savedQueries';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListSavedQueriesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class BillingAccountsLogsResource {
   final commons.ApiRequester _requester;
 
@@ -1832,8 +2064,10 @@ class BillingAccountsSinksResource {
   /// sink's destination must be in the same project as the sink itself.If this
   /// field is set to true, or if the sink is owned by a non-project resource
   /// such as an organization, then the value of writer_identity will be a
-  /// unique service account used only for exports from the new sink. For more
-  /// information, see writer_identity in LogSink.
+  /// service agent
+  /// (https://cloud.google.com/iam/docs/service-account-types#service-agents)
+  /// used by the sinks with the same parent. For more information, see
+  /// writer_identity in LogSink.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2009,9 +2243,10 @@ class BillingAccountsSinksResource {
 
   /// Updates a sink.
   ///
-  /// This method replaces the following fields in the existing sink with values
-  /// from the new sink: destination, and filter.The updated sink might also
-  /// have a new writer_identity; see the unique_writer_identity field.
+  /// This method replaces the values of the destination and filter fields of
+  /// the existing sink with the corresponding values from the new sink.The
+  /// updated sink might also have a new writer_identity; see the
+  /// unique_writer_identity field.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2027,10 +2262,10 @@ class BillingAccountsSinksResource {
   /// Value must have pattern `^billingAccounts/\[^/\]+/sinks/\[^/\]+$`.
   ///
   /// [customWriterIdentity] - Optional. A service account provided by the
-  /// caller that will be used to write the log entries. Must be of format
-  /// serviceAccount:some@email. This can only be specified if writing to a
-  /// destination outside the sink's project. If not specified, a p4 service
-  /// account will automatically be generated.
+  /// caller that will be used to write the log entries. The format must be
+  /// serviceAccount:some@email. This field can only be specified if you are
+  /// routing logs to a destination outside this sink's project. If not
+  /// specified, a Logging service account will automatically be generated.
   ///
   /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
   /// this field. When updating a sink, the effect of this field on the value of
@@ -2038,8 +2273,10 @@ class BillingAccountsSinksResource {
   /// of this field: If the old and new values of this field are both false or
   /// both true, then there is no change to the sink's writer_identity. If the
   /// old value is false and the new value is true, then writer_identity is
-  /// changed to a unique service account. It is an error if the old value is
-  /// true and the new value is set to false or defaulted to false.
+  /// changed to a service agent
+  /// (https://cloud.google.com/iam/docs/service-account-types#service-agents)
+  /// owned by Cloud Logging. It is an error if the old value is true and the
+  /// new value is set to false or defaulted to false.
   ///
   /// [updateMask] - Optional. Field mask that specifies the fields in sink that
   /// need an update. A sink field will be overwritten if, and only if, it is in
@@ -2092,9 +2329,10 @@ class BillingAccountsSinksResource {
 
   /// Updates a sink.
   ///
-  /// This method replaces the following fields in the existing sink with values
-  /// from the new sink: destination, and filter.The updated sink might also
-  /// have a new writer_identity; see the unique_writer_identity field.
+  /// This method replaces the values of the destination and filter fields of
+  /// the existing sink with the corresponding values from the new sink.The
+  /// updated sink might also have a new writer_identity; see the
+  /// unique_writer_identity field.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2110,10 +2348,10 @@ class BillingAccountsSinksResource {
   /// Value must have pattern `^billingAccounts/\[^/\]+/sinks/\[^/\]+$`.
   ///
   /// [customWriterIdentity] - Optional. A service account provided by the
-  /// caller that will be used to write the log entries. Must be of format
-  /// serviceAccount:some@email. This can only be specified if writing to a
-  /// destination outside the sink's project. If not specified, a p4 service
-  /// account will automatically be generated.
+  /// caller that will be used to write the log entries. The format must be
+  /// serviceAccount:some@email. This field can only be specified if you are
+  /// routing logs to a destination outside this sink's project. If not
+  /// specified, a Logging service account will automatically be generated.
   ///
   /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
   /// this field. When updating a sink, the effect of this field on the value of
@@ -2121,8 +2359,10 @@ class BillingAccountsSinksResource {
   /// of this field: If the old and new values of this field are both false or
   /// both true, then there is no change to the sink's writer_identity. If the
   /// old value is false and the new value is true, then writer_identity is
-  /// changed to a unique service account. It is an error if the old value is
-  /// true and the new value is set to false or defaulted to false.
+  /// changed to a service agent
+  /// (https://cloud.google.com/iam/docs/service-account-types#service-agents)
+  /// owned by Cloud Logging. It is an error if the old value is true and the
+  /// new value is set to false or defaulted to false.
   ///
   /// [updateMask] - Optional. Field mask that specifies the fields in sink that
   /// need an update. A sink field will be overwritten if, and only if, it is in
@@ -2257,52 +2497,14 @@ class EntriesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Streaming read of log entries as they are received.
-  ///
-  /// Until the stream is terminated, it will continue reading logs.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [TailLogEntriesResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<TailLogEntriesResponse> tail(
-    TailLogEntriesRequest request, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    const url_ = 'v2/entries:tail';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return TailLogEntriesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-
   /// Writes log entries to Logging.
   ///
   /// This API method is the only way to send log entries to Logging. This
   /// method is used, directly or indirectly, by the Logging agent (fluentd) and
   /// all logging libraries configured to use Logging. A single request may
-  /// contain log entries for a maximum of 1000 different resources (projects,
-  /// organizations, billing accounts or folders)
+  /// contain log entries for a maximum of 1000 different resource names
+  /// (projects, organizations, billing accounts or folders), where the resource
+  /// name for a log entry is determined from its logName field.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2596,7 +2798,7 @@ class FoldersResource {
 
   /// Gets the Logging CMEK settings for the given resource.Note: CMEK for the
   /// Log Router can be configured for Google Cloud projects, folders,
-  /// organizations and billing accounts.
+  /// organizations, and billing accounts.
   ///
   /// Once configured for an organization, it applies to all projects and
   /// folders in the Google Cloud organization.See Enabling CMEK for Log Router
@@ -2611,7 +2813,7 @@ class FoldersResource {
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/cmekSettings"
   /// "folders/\[FOLDER_ID\]/cmekSettings" For
   /// example:"organizations/12345/cmekSettings"Note: CMEK for the Log Router
-  /// can be configured for Google Cloud projects, folders, organizations and
+  /// can be configured for Google Cloud projects, folders, organizations, and
   /// billing accounts. Once configured for an organization, it applies to all
   /// projects and folders in the Google Cloud organization.
   /// Value must have pattern `^folders/\[^/\]+$`.
@@ -2645,15 +2847,11 @@ class FoldersResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets the Log Router settings for the given resource.Note: Settings for the
-  /// Log Router can be get for Google Cloud projects, folders, organizations
-  /// and billing accounts.
-  ///
-  /// Currently it can only be configured for organizations. Once configured for
-  /// an organization, it applies to all projects and folders in the Google
-  /// Cloud organization.See Enabling CMEK for Log Router
-  /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for
-  /// more information.
+  /// Gets the settings for the given resource.Note: Settings can be retrieved
+  /// for Google Cloud projects, folders, organizations, and billing
+  /// accounts.See View default resource settings for Logging
+  /// (https://cloud.google.com/logging/docs/default-settings#view-org-settings)
+  /// for more information.
   ///
   /// Request parameters:
   ///
@@ -2662,11 +2860,8 @@ class FoldersResource {
   /// "organizations/\[ORGANIZATION_ID\]/settings"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/settings"
   /// "folders/\[FOLDER_ID\]/settings" For
-  /// example:"organizations/12345/settings"Note: Settings for the Log Router
-  /// can be get for Google Cloud projects, folders, organizations and billing
-  /// accounts. Currently it can only be configured for organizations. Once
-  /// configured for an organization, it applies to all projects and folders in
-  /// the Google Cloud organization.
+  /// example:"organizations/12345/settings"Note: Settings can be retrieved for
+  /// Google Cloud projects, folders, organizations, and billing accounts.
   /// Value must have pattern `^folders/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2697,18 +2892,19 @@ class FoldersResource {
     return Settings.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates the Log Router settings for the given resource.Note: Settings for
-  /// the Log Router can currently only be configured for Google Cloud
-  /// organizations.
+  /// Updates the settings for the given resource.
   ///
-  /// Once configured, it applies to all projects and folders in the Google
-  /// Cloud organization.UpdateSettings will fail if 1) kms_key_name is invalid,
-  /// or 2) the associated service account does not have the required
-  /// roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the key, or
-  /// 3) access to the key is disabled. 4) location_id is not supported by
-  /// Logging. 5) location_id violate OrgPolicy.See Enabling CMEK for Log Router
-  /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for
-  /// more information.
+  /// This method applies to all feature configurations for organization and
+  /// folders.UpdateSettings fails when any of the following are true: The value
+  /// of storage_location either isn't supported by Logging or violates the
+  /// location OrgPolicy. The default_sink_config field is set, but it has an
+  /// unspecified filter write mode. The value of kms_key_name is invalid. The
+  /// associated service account doesn't have the required
+  /// roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the key.
+  /// Access to the key is disabled.See Configure default settings for
+  /// organizations and folders
+  /// (https://cloud.google.com/logging/docs/default-settings) for more
+  /// information.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2716,10 +2912,7 @@ class FoldersResource {
   ///
   /// [name] - Required. The resource name for the settings to update.
   /// "organizations/\[ORGANIZATION_ID\]/settings" For
-  /// example:"organizations/12345/settings"Note: Settings for the Log Router
-  /// can currently only be configured for Google Cloud organizations. Once
-  /// configured, it applies to all projects and folders in the Google Cloud
-  /// organization.
+  /// example:"organizations/12345/settings"
   /// Value must have pattern `^folders/\[^/\]+$`.
   ///
   /// [updateMask] - Optional. Field mask identifying which fields from settings
@@ -3010,6 +3203,10 @@ class FoldersLocationsResource {
       FoldersLocationsBucketsResource(_requester);
   FoldersLocationsOperationsResource get operations =>
       FoldersLocationsOperationsResource(_requester);
+  FoldersLocationsRecentQueriesResource get recentQueries =>
+      FoldersLocationsRecentQueriesResource(_requester);
+  FoldersLocationsSavedQueriesResource get savedQueries =>
+      FoldersLocationsSavedQueriesResource(_requester);
 
   FoldersLocationsResource(commons.ApiRequester client) : _requester = client;
 
@@ -3127,7 +3324,8 @@ class FoldersLocationsBucketsResource {
   ///
   /// [bucketId] - Required. A client-assigned identifier such as "my-bucket".
   /// Identifiers are limited to 100 characters and can include only letters,
-  /// digits, underscores, hyphens, and periods.
+  /// digits, underscores, hyphens, and periods. Bucket identifiers must start
+  /// with an alphanumeric character.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3177,7 +3375,8 @@ class FoldersLocationsBucketsResource {
   ///
   /// [bucketId] - Required. A client-assigned identifier such as "my-bucket".
   /// Identifiers are limited to 100 characters and can include only letters,
-  /// digits, underscores, hyphens, and periods.
+  /// digits, underscores, hyphens, and periods. Bucket identifiers must start
+  /// with an alphanumeric character.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3585,11 +3784,11 @@ class FoldersLocationsBucketsLinksResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The full resource name of the link to
-  /// delete."projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-  /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-  /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-  /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
+  /// [name] - Required. The full resource name of the link to delete.
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
   /// Value must have pattern
   /// `^folders/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+/links/\[^/\]+$`.
   ///
@@ -3625,11 +3824,11 @@ class FoldersLocationsBucketsLinksResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The resource name of the
-  /// link:"projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-  /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-  /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-  /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID
+  /// [name] - Required. The resource name of the link:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
   /// Value must have pattern
   /// `^folders/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+/links/\[^/\]+$`.
   ///
@@ -3665,11 +3864,11 @@ class FoldersLocationsBucketsLinksResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent resource whose links are to be
-  /// listed:"projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/"
-  /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/"
-  /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/"
-  /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/
+  /// [parent] - Required. The parent resource whose links are to be listed:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
   /// Value must have pattern
   /// `^folders/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
@@ -3817,7 +4016,7 @@ class FoldersLocationsBucketsViewsResource {
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets a view on a log bucket..
+  /// Gets a view on a log bucket.
   ///
   /// Request parameters:
   ///
@@ -3909,10 +4108,10 @@ class FoldersLocationsBucketsViewsResource {
 
   /// Updates a view on a log bucket.
   ///
-  /// This method replaces the following fields in the existing view with values
-  /// from the new view: filter. If an UNAVAILABLE error is returned, this
-  /// indicates that system is not in a state where it can update the view. If
-  /// this occurs, please try again in a few minutes.
+  /// This method replaces the value of the filter field from the existing view
+  /// with the corresponding value from the new view. If an UNAVAILABLE error is
+  /// returned, this indicates that system is not in a state where it can update
+  /// the view. If this occurs, please try again in a few minutes.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4185,6 +4384,232 @@ class FoldersLocationsOperationsResource {
   }
 }
 
+class FoldersLocationsRecentQueriesResource {
+  final commons.ApiRequester _requester;
+
+  FoldersLocationsRecentQueriesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists the RecentQueries that were created by the user making the request.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource to which the listed queries belong.
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]" For
+  /// example:projects/my-project/locations/us-central1Note: The location
+  /// portion of the resource must be specified, but supplying the character -
+  /// in place of LOCATION_ID will return all recent queries.
+  /// Value must have pattern `^folders/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
+  ///
+  /// [pageToken] - Optional. If present, then retrieve the next batch of
+  /// results from the preceding call to this method. pageToken must be the
+  /// value of nextPageToken from the previous response. The values of other
+  /// method parameters should be identical to those in the previous call.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListRecentQueriesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListRecentQueriesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/recentQueries';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListRecentQueriesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class FoldersLocationsSavedQueriesResource {
+  final commons.ApiRequester _requester;
+
+  FoldersLocationsSavedQueriesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new SavedQuery for the user making the request.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource in which to create the saved
+  /// query: "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]" For example:
+  /// "projects/my-project/locations/global"
+  /// "organizations/123456789/locations/us-central1"
+  /// Value must have pattern `^folders/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [savedQueryId] - Optional. The ID to use for the saved query, which will
+  /// become the final component of the saved query's resource name.If the
+  /// saved_query_id is not provided, the system will generate an alphanumeric
+  /// ID.The saved_query_id is limited to 100 characters and can include only
+  /// the following characters: upper and lower-case alphanumeric characters,
+  /// underscores, hyphens, periods.First character has to be alphanumeric.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SavedQuery].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SavedQuery> create(
+    SavedQuery request,
+    core.String parent, {
+    core.String? savedQueryId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (savedQueryId != null) 'savedQueryId': [savedQueryId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/savedQueries';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return SavedQuery.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes an existing SavedQuery that was created by the user making the
+  /// request.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The full resource name of the saved query to delete.
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/savedQueries/\[QUERY_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/savedQueries/\[QUERY_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/savedQueries/\[QUERY_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/savedQueries/\[QUERY_ID\]"
+  /// For example:
+  /// "projects/my-project/locations/global/savedQueries/my-saved-query"
+  /// Value must have pattern
+  /// `^folders/\[^/\]+/locations/\[^/\]+/savedQueries/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists the SavedQueries that were created by the user making the request.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource to which the listed queries belong.
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]" For example:
+  /// "projects/my-project/locations/us-central1" Note: The locations portion of
+  /// the resource must be specified. To get a list of all saved queries, a
+  /// wildcard character - can be used for LOCATION_ID, for example:
+  /// "projects/my-project/locations/-"
+  /// Value must have pattern `^folders/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request.Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
+  ///
+  /// [pageToken] - Optional. If present, then retrieve the next batch of
+  /// results from the preceding call to this method. pageToken must be the
+  /// value of nextPageToken from the previous response. The values of other
+  /// method parameters should be identical to those in the previous call.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListSavedQueriesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListSavedQueriesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/savedQueries';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListSavedQueriesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class FoldersLogsResource {
   final commons.ApiRequester _requester;
 
@@ -4338,8 +4763,10 @@ class FoldersSinksResource {
   /// sink's destination must be in the same project as the sink itself.If this
   /// field is set to true, or if the sink is owned by a non-project resource
   /// such as an organization, then the value of writer_identity will be a
-  /// unique service account used only for exports from the new sink. For more
-  /// information, see writer_identity in LogSink.
+  /// service agent
+  /// (https://cloud.google.com/iam/docs/service-account-types#service-agents)
+  /// used by the sinks with the same parent. For more information, see
+  /// writer_identity in LogSink.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4515,9 +4942,10 @@ class FoldersSinksResource {
 
   /// Updates a sink.
   ///
-  /// This method replaces the following fields in the existing sink with values
-  /// from the new sink: destination, and filter.The updated sink might also
-  /// have a new writer_identity; see the unique_writer_identity field.
+  /// This method replaces the values of the destination and filter fields of
+  /// the existing sink with the corresponding values from the new sink.The
+  /// updated sink might also have a new writer_identity; see the
+  /// unique_writer_identity field.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4533,10 +4961,10 @@ class FoldersSinksResource {
   /// Value must have pattern `^folders/\[^/\]+/sinks/\[^/\]+$`.
   ///
   /// [customWriterIdentity] - Optional. A service account provided by the
-  /// caller that will be used to write the log entries. Must be of format
-  /// serviceAccount:some@email. This can only be specified if writing to a
-  /// destination outside the sink's project. If not specified, a p4 service
-  /// account will automatically be generated.
+  /// caller that will be used to write the log entries. The format must be
+  /// serviceAccount:some@email. This field can only be specified if you are
+  /// routing logs to a destination outside this sink's project. If not
+  /// specified, a Logging service account will automatically be generated.
   ///
   /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
   /// this field. When updating a sink, the effect of this field on the value of
@@ -4544,8 +4972,10 @@ class FoldersSinksResource {
   /// of this field: If the old and new values of this field are both false or
   /// both true, then there is no change to the sink's writer_identity. If the
   /// old value is false and the new value is true, then writer_identity is
-  /// changed to a unique service account. It is an error if the old value is
-  /// true and the new value is set to false or defaulted to false.
+  /// changed to a service agent
+  /// (https://cloud.google.com/iam/docs/service-account-types#service-agents)
+  /// owned by Cloud Logging. It is an error if the old value is true and the
+  /// new value is set to false or defaulted to false.
   ///
   /// [updateMask] - Optional. Field mask that specifies the fields in sink that
   /// need an update. A sink field will be overwritten if, and only if, it is in
@@ -4598,9 +5028,10 @@ class FoldersSinksResource {
 
   /// Updates a sink.
   ///
-  /// This method replaces the following fields in the existing sink with values
-  /// from the new sink: destination, and filter.The updated sink might also
-  /// have a new writer_identity; see the unique_writer_identity field.
+  /// This method replaces the values of the destination and filter fields of
+  /// the existing sink with the corresponding values from the new sink.The
+  /// updated sink might also have a new writer_identity; see the
+  /// unique_writer_identity field.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4616,10 +5047,10 @@ class FoldersSinksResource {
   /// Value must have pattern `^folders/\[^/\]+/sinks/\[^/\]+$`.
   ///
   /// [customWriterIdentity] - Optional. A service account provided by the
-  /// caller that will be used to write the log entries. Must be of format
-  /// serviceAccount:some@email. This can only be specified if writing to a
-  /// destination outside the sink's project. If not specified, a p4 service
-  /// account will automatically be generated.
+  /// caller that will be used to write the log entries. The format must be
+  /// serviceAccount:some@email. This field can only be specified if you are
+  /// routing logs to a destination outside this sink's project. If not
+  /// specified, a Logging service account will automatically be generated.
   ///
   /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
   /// this field. When updating a sink, the effect of this field on the value of
@@ -4627,8 +5058,10 @@ class FoldersSinksResource {
   /// of this field: If the old and new values of this field are both false or
   /// both true, then there is no change to the sink's writer_identity. If the
   /// old value is false and the new value is true, then writer_identity is
-  /// changed to a unique service account. It is an error if the old value is
-  /// true and the new value is set to false or defaulted to false.
+  /// changed to a service agent
+  /// (https://cloud.google.com/iam/docs/service-account-types#service-agents)
+  /// owned by Cloud Logging. It is an error if the old value is true and the
+  /// new value is set to false or defaulted to false.
   ///
   /// [updateMask] - Optional. Field mask that specifies the fields in sink that
   /// need an update. A sink field will be overwritten if, and only if, it is in
@@ -4802,7 +5235,8 @@ class LocationsBucketsResource {
   ///
   /// [bucketId] - Required. A client-assigned identifier such as "my-bucket".
   /// Identifiers are limited to 100 characters and can include only letters,
-  /// digits, underscores, hyphens, and periods.
+  /// digits, underscores, hyphens, and periods. Bucket identifiers must start
+  /// with an alphanumeric character.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4852,7 +5286,8 @@ class LocationsBucketsResource {
   ///
   /// [bucketId] - Required. A client-assigned identifier such as "my-bucket".
   /// Identifiers are limited to 100 characters and can include only letters,
-  /// digits, underscores, hyphens, and periods.
+  /// digits, underscores, hyphens, and periods. Bucket identifiers must start
+  /// with an alphanumeric character.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5260,11 +5695,11 @@ class LocationsBucketsLinksResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The full resource name of the link to
-  /// delete."projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-  /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-  /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-  /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
+  /// [name] - Required. The full resource name of the link to delete.
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
   /// Value must have pattern
   /// `^\[^/\]+/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+/links/\[^/\]+$`.
   ///
@@ -5300,11 +5735,11 @@ class LocationsBucketsLinksResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The resource name of the
-  /// link:"projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-  /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-  /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-  /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID
+  /// [name] - Required. The resource name of the link:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
   /// Value must have pattern
   /// `^\[^/\]+/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+/links/\[^/\]+$`.
   ///
@@ -5340,11 +5775,11 @@ class LocationsBucketsLinksResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent resource whose links are to be
-  /// listed:"projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/"
-  /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/"
-  /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/"
-  /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/
+  /// [parent] - Required. The parent resource whose links are to be listed:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
   /// Value must have pattern
   /// `^\[^/\]+/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
@@ -5489,7 +5924,7 @@ class LocationsBucketsViewsResource {
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets a view on a log bucket..
+  /// Gets a view on a log bucket.
   ///
   /// Request parameters:
   ///
@@ -5581,10 +6016,10 @@ class LocationsBucketsViewsResource {
 
   /// Updates a view on a log bucket.
   ///
-  /// This method replaces the following fields in the existing view with values
-  /// from the new view: filter. If an UNAVAILABLE error is returned, this
-  /// indicates that system is not in a state where it can update the view. If
-  /// this occurs, please try again in a few minutes.
+  /// This method replaces the value of the filter field from the existing view
+  /// with the corresponding value from the new view. If an UNAVAILABLE error is
+  /// returned, this indicates that system is not in a state where it can update
+  /// the view. If this occurs, please try again in a few minutes.
   ///
   /// [request] - The metadata request object.
   ///
@@ -5969,7 +6404,7 @@ class OrganizationsResource {
 
   /// Gets the Logging CMEK settings for the given resource.Note: CMEK for the
   /// Log Router can be configured for Google Cloud projects, folders,
-  /// organizations and billing accounts.
+  /// organizations, and billing accounts.
   ///
   /// Once configured for an organization, it applies to all projects and
   /// folders in the Google Cloud organization.See Enabling CMEK for Log Router
@@ -5984,7 +6419,7 @@ class OrganizationsResource {
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/cmekSettings"
   /// "folders/\[FOLDER_ID\]/cmekSettings" For
   /// example:"organizations/12345/cmekSettings"Note: CMEK for the Log Router
-  /// can be configured for Google Cloud projects, folders, organizations and
+  /// can be configured for Google Cloud projects, folders, organizations, and
   /// billing accounts. Once configured for an organization, it applies to all
   /// projects and folders in the Google Cloud organization.
   /// Value must have pattern `^organizations/\[^/\]+$`.
@@ -6018,15 +6453,11 @@ class OrganizationsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets the Log Router settings for the given resource.Note: Settings for the
-  /// Log Router can be get for Google Cloud projects, folders, organizations
-  /// and billing accounts.
-  ///
-  /// Currently it can only be configured for organizations. Once configured for
-  /// an organization, it applies to all projects and folders in the Google
-  /// Cloud organization.See Enabling CMEK for Log Router
-  /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for
-  /// more information.
+  /// Gets the settings for the given resource.Note: Settings can be retrieved
+  /// for Google Cloud projects, folders, organizations, and billing
+  /// accounts.See View default resource settings for Logging
+  /// (https://cloud.google.com/logging/docs/default-settings#view-org-settings)
+  /// for more information.
   ///
   /// Request parameters:
   ///
@@ -6035,11 +6466,8 @@ class OrganizationsResource {
   /// "organizations/\[ORGANIZATION_ID\]/settings"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/settings"
   /// "folders/\[FOLDER_ID\]/settings" For
-  /// example:"organizations/12345/settings"Note: Settings for the Log Router
-  /// can be get for Google Cloud projects, folders, organizations and billing
-  /// accounts. Currently it can only be configured for organizations. Once
-  /// configured for an organization, it applies to all projects and folders in
-  /// the Google Cloud organization.
+  /// example:"organizations/12345/settings"Note: Settings can be retrieved for
+  /// Google Cloud projects, folders, organizations, and billing accounts.
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -6075,10 +6503,11 @@ class OrganizationsResource {
   /// organizations.
   ///
   /// Once configured, it applies to all projects and folders in the Google
-  /// Cloud organization.UpdateCmekSettings will fail if 1) kms_key_name is
-  /// invalid, or 2) the associated service account does not have the required
-  /// roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the key, or
-  /// 3) access to the key is disabled.See Enabling CMEK for Log Router
+  /// Cloud organization.UpdateCmekSettings fails when any of the following are
+  /// true: The value of kms_key_name is invalid. The associated service account
+  /// doesn't have the required roles/cloudkms.cryptoKeyEncrypterDecrypter role
+  /// assigned for the key. Access to the key is disabled.See Enabling CMEK for
+  /// Log Router
   /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for
   /// more information.
   ///
@@ -6136,18 +6565,19 @@ class OrganizationsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates the Log Router settings for the given resource.Note: Settings for
-  /// the Log Router can currently only be configured for Google Cloud
-  /// organizations.
+  /// Updates the settings for the given resource.
   ///
-  /// Once configured, it applies to all projects and folders in the Google
-  /// Cloud organization.UpdateSettings will fail if 1) kms_key_name is invalid,
-  /// or 2) the associated service account does not have the required
-  /// roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the key, or
-  /// 3) access to the key is disabled. 4) location_id is not supported by
-  /// Logging. 5) location_id violate OrgPolicy.See Enabling CMEK for Log Router
-  /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for
-  /// more information.
+  /// This method applies to all feature configurations for organization and
+  /// folders.UpdateSettings fails when any of the following are true: The value
+  /// of storage_location either isn't supported by Logging or violates the
+  /// location OrgPolicy. The default_sink_config field is set, but it has an
+  /// unspecified filter write mode. The value of kms_key_name is invalid. The
+  /// associated service account doesn't have the required
+  /// roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the key.
+  /// Access to the key is disabled.See Configure default settings for
+  /// organizations and folders
+  /// (https://cloud.google.com/logging/docs/default-settings) for more
+  /// information.
   ///
   /// [request] - The metadata request object.
   ///
@@ -6155,10 +6585,7 @@ class OrganizationsResource {
   ///
   /// [name] - Required. The resource name for the settings to update.
   /// "organizations/\[ORGANIZATION_ID\]/settings" For
-  /// example:"organizations/12345/settings"Note: Settings for the Log Router
-  /// can currently only be configured for Google Cloud organizations. Once
-  /// configured, it applies to all projects and folders in the Google Cloud
-  /// organization.
+  /// example:"organizations/12345/settings"
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [updateMask] - Optional. Field mask identifying which fields from settings
@@ -6450,6 +6877,10 @@ class OrganizationsLocationsResource {
       OrganizationsLocationsBucketsResource(_requester);
   OrganizationsLocationsOperationsResource get operations =>
       OrganizationsLocationsOperationsResource(_requester);
+  OrganizationsLocationsRecentQueriesResource get recentQueries =>
+      OrganizationsLocationsRecentQueriesResource(_requester);
+  OrganizationsLocationsSavedQueriesResource get savedQueries =>
+      OrganizationsLocationsSavedQueriesResource(_requester);
 
   OrganizationsLocationsResource(commons.ApiRequester client)
       : _requester = client;
@@ -6568,7 +6999,8 @@ class OrganizationsLocationsBucketsResource {
   ///
   /// [bucketId] - Required. A client-assigned identifier such as "my-bucket".
   /// Identifiers are limited to 100 characters and can include only letters,
-  /// digits, underscores, hyphens, and periods.
+  /// digits, underscores, hyphens, and periods. Bucket identifiers must start
+  /// with an alphanumeric character.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6618,7 +7050,8 @@ class OrganizationsLocationsBucketsResource {
   ///
   /// [bucketId] - Required. A client-assigned identifier such as "my-bucket".
   /// Identifiers are limited to 100 characters and can include only letters,
-  /// digits, underscores, hyphens, and periods.
+  /// digits, underscores, hyphens, and periods. Bucket identifiers must start
+  /// with an alphanumeric character.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7026,11 +7459,11 @@ class OrganizationsLocationsBucketsLinksResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The full resource name of the link to
-  /// delete."projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-  /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-  /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-  /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
+  /// [name] - Required. The full resource name of the link to delete.
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
   /// Value must have pattern
   /// `^organizations/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+/links/\[^/\]+$`.
   ///
@@ -7066,11 +7499,11 @@ class OrganizationsLocationsBucketsLinksResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The resource name of the
-  /// link:"projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-  /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-  /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-  /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID
+  /// [name] - Required. The resource name of the link:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
   /// Value must have pattern
   /// `^organizations/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+/links/\[^/\]+$`.
   ///
@@ -7106,11 +7539,11 @@ class OrganizationsLocationsBucketsLinksResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent resource whose links are to be
-  /// listed:"projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/"
-  /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/"
-  /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/"
-  /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/
+  /// [parent] - Required. The parent resource whose links are to be listed:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
   /// Value must have pattern
   /// `^organizations/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
@@ -7258,7 +7691,7 @@ class OrganizationsLocationsBucketsViewsResource {
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets a view on a log bucket..
+  /// Gets a view on a log bucket.
   ///
   /// Request parameters:
   ///
@@ -7350,10 +7783,10 @@ class OrganizationsLocationsBucketsViewsResource {
 
   /// Updates a view on a log bucket.
   ///
-  /// This method replaces the following fields in the existing view with values
-  /// from the new view: filter. If an UNAVAILABLE error is returned, this
-  /// indicates that system is not in a state where it can update the view. If
-  /// this occurs, please try again in a few minutes.
+  /// This method replaces the value of the filter field from the existing view
+  /// with the corresponding value from the new view. If an UNAVAILABLE error is
+  /// returned, this indicates that system is not in a state where it can update
+  /// the view. If this occurs, please try again in a few minutes.
   ///
   /// [request] - The metadata request object.
   ///
@@ -7626,6 +8059,232 @@ class OrganizationsLocationsOperationsResource {
   }
 }
 
+class OrganizationsLocationsRecentQueriesResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsRecentQueriesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists the RecentQueries that were created by the user making the request.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource to which the listed queries belong.
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]" For
+  /// example:projects/my-project/locations/us-central1Note: The location
+  /// portion of the resource must be specified, but supplying the character -
+  /// in place of LOCATION_ID will return all recent queries.
+  /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
+  ///
+  /// [pageToken] - Optional. If present, then retrieve the next batch of
+  /// results from the preceding call to this method. pageToken must be the
+  /// value of nextPageToken from the previous response. The values of other
+  /// method parameters should be identical to those in the previous call.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListRecentQueriesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListRecentQueriesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/recentQueries';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListRecentQueriesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class OrganizationsLocationsSavedQueriesResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsSavedQueriesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new SavedQuery for the user making the request.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource in which to create the saved
+  /// query: "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]" For example:
+  /// "projects/my-project/locations/global"
+  /// "organizations/123456789/locations/us-central1"
+  /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [savedQueryId] - Optional. The ID to use for the saved query, which will
+  /// become the final component of the saved query's resource name.If the
+  /// saved_query_id is not provided, the system will generate an alphanumeric
+  /// ID.The saved_query_id is limited to 100 characters and can include only
+  /// the following characters: upper and lower-case alphanumeric characters,
+  /// underscores, hyphens, periods.First character has to be alphanumeric.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SavedQuery].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SavedQuery> create(
+    SavedQuery request,
+    core.String parent, {
+    core.String? savedQueryId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (savedQueryId != null) 'savedQueryId': [savedQueryId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/savedQueries';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return SavedQuery.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes an existing SavedQuery that was created by the user making the
+  /// request.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The full resource name of the saved query to delete.
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/savedQueries/\[QUERY_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/savedQueries/\[QUERY_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/savedQueries/\[QUERY_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/savedQueries/\[QUERY_ID\]"
+  /// For example:
+  /// "projects/my-project/locations/global/savedQueries/my-saved-query"
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/savedQueries/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists the SavedQueries that were created by the user making the request.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource to which the listed queries belong.
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]" For example:
+  /// "projects/my-project/locations/us-central1" Note: The locations portion of
+  /// the resource must be specified. To get a list of all saved queries, a
+  /// wildcard character - can be used for LOCATION_ID, for example:
+  /// "projects/my-project/locations/-"
+  /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request.Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
+  ///
+  /// [pageToken] - Optional. If present, then retrieve the next batch of
+  /// results from the preceding call to this method. pageToken must be the
+  /// value of nextPageToken from the previous response. The values of other
+  /// method parameters should be identical to those in the previous call.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListSavedQueriesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListSavedQueriesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/savedQueries';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListSavedQueriesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class OrganizationsLogsResource {
   final commons.ApiRequester _requester;
 
@@ -7779,8 +8438,10 @@ class OrganizationsSinksResource {
   /// sink's destination must be in the same project as the sink itself.If this
   /// field is set to true, or if the sink is owned by a non-project resource
   /// such as an organization, then the value of writer_identity will be a
-  /// unique service account used only for exports from the new sink. For more
-  /// information, see writer_identity in LogSink.
+  /// service agent
+  /// (https://cloud.google.com/iam/docs/service-account-types#service-agents)
+  /// used by the sinks with the same parent. For more information, see
+  /// writer_identity in LogSink.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7956,9 +8617,10 @@ class OrganizationsSinksResource {
 
   /// Updates a sink.
   ///
-  /// This method replaces the following fields in the existing sink with values
-  /// from the new sink: destination, and filter.The updated sink might also
-  /// have a new writer_identity; see the unique_writer_identity field.
+  /// This method replaces the values of the destination and filter fields of
+  /// the existing sink with the corresponding values from the new sink.The
+  /// updated sink might also have a new writer_identity; see the
+  /// unique_writer_identity field.
   ///
   /// [request] - The metadata request object.
   ///
@@ -7974,10 +8636,10 @@ class OrganizationsSinksResource {
   /// Value must have pattern `^organizations/\[^/\]+/sinks/\[^/\]+$`.
   ///
   /// [customWriterIdentity] - Optional. A service account provided by the
-  /// caller that will be used to write the log entries. Must be of format
-  /// serviceAccount:some@email. This can only be specified if writing to a
-  /// destination outside the sink's project. If not specified, a p4 service
-  /// account will automatically be generated.
+  /// caller that will be used to write the log entries. The format must be
+  /// serviceAccount:some@email. This field can only be specified if you are
+  /// routing logs to a destination outside this sink's project. If not
+  /// specified, a Logging service account will automatically be generated.
   ///
   /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
   /// this field. When updating a sink, the effect of this field on the value of
@@ -7985,8 +8647,10 @@ class OrganizationsSinksResource {
   /// of this field: If the old and new values of this field are both false or
   /// both true, then there is no change to the sink's writer_identity. If the
   /// old value is false and the new value is true, then writer_identity is
-  /// changed to a unique service account. It is an error if the old value is
-  /// true and the new value is set to false or defaulted to false.
+  /// changed to a service agent
+  /// (https://cloud.google.com/iam/docs/service-account-types#service-agents)
+  /// owned by Cloud Logging. It is an error if the old value is true and the
+  /// new value is set to false or defaulted to false.
   ///
   /// [updateMask] - Optional. Field mask that specifies the fields in sink that
   /// need an update. A sink field will be overwritten if, and only if, it is in
@@ -8039,9 +8703,10 @@ class OrganizationsSinksResource {
 
   /// Updates a sink.
   ///
-  /// This method replaces the following fields in the existing sink with values
-  /// from the new sink: destination, and filter.The updated sink might also
-  /// have a new writer_identity; see the unique_writer_identity field.
+  /// This method replaces the values of the destination and filter fields of
+  /// the existing sink with the corresponding values from the new sink.The
+  /// updated sink might also have a new writer_identity; see the
+  /// unique_writer_identity field.
   ///
   /// [request] - The metadata request object.
   ///
@@ -8057,10 +8722,10 @@ class OrganizationsSinksResource {
   /// Value must have pattern `^organizations/\[^/\]+/sinks/\[^/\]+$`.
   ///
   /// [customWriterIdentity] - Optional. A service account provided by the
-  /// caller that will be used to write the log entries. Must be of format
-  /// serviceAccount:some@email. This can only be specified if writing to a
-  /// destination outside the sink's project. If not specified, a p4 service
-  /// account will automatically be generated.
+  /// caller that will be used to write the log entries. The format must be
+  /// serviceAccount:some@email. This field can only be specified if you are
+  /// routing logs to a destination outside this sink's project. If not
+  /// specified, a Logging service account will automatically be generated.
   ///
   /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
   /// this field. When updating a sink, the effect of this field on the value of
@@ -8068,8 +8733,10 @@ class OrganizationsSinksResource {
   /// of this field: If the old and new values of this field are both false or
   /// both true, then there is no change to the sink's writer_identity. If the
   /// old value is false and the new value is true, then writer_identity is
-  /// changed to a unique service account. It is an error if the old value is
-  /// true and the new value is set to false or defaulted to false.
+  /// changed to a service agent
+  /// (https://cloud.google.com/iam/docs/service-account-types#service-agents)
+  /// owned by Cloud Logging. It is an error if the old value is true and the
+  /// new value is set to false or defaulted to false.
   ///
   /// [updateMask] - Optional. Field mask that specifies the fields in sink that
   /// need an update. A sink field will be overwritten if, and only if, it is in
@@ -8136,7 +8803,7 @@ class ProjectsResource {
 
   /// Gets the Logging CMEK settings for the given resource.Note: CMEK for the
   /// Log Router can be configured for Google Cloud projects, folders,
-  /// organizations and billing accounts.
+  /// organizations, and billing accounts.
   ///
   /// Once configured for an organization, it applies to all projects and
   /// folders in the Google Cloud organization.See Enabling CMEK for Log Router
@@ -8151,7 +8818,7 @@ class ProjectsResource {
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/cmekSettings"
   /// "folders/\[FOLDER_ID\]/cmekSettings" For
   /// example:"organizations/12345/cmekSettings"Note: CMEK for the Log Router
-  /// can be configured for Google Cloud projects, folders, organizations and
+  /// can be configured for Google Cloud projects, folders, organizations, and
   /// billing accounts. Once configured for an organization, it applies to all
   /// projects and folders in the Google Cloud organization.
   /// Value must have pattern `^projects/\[^/\]+$`.
@@ -8185,15 +8852,11 @@ class ProjectsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets the Log Router settings for the given resource.Note: Settings for the
-  /// Log Router can be get for Google Cloud projects, folders, organizations
-  /// and billing accounts.
-  ///
-  /// Currently it can only be configured for organizations. Once configured for
-  /// an organization, it applies to all projects and folders in the Google
-  /// Cloud organization.See Enabling CMEK for Log Router
-  /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for
-  /// more information.
+  /// Gets the settings for the given resource.Note: Settings can be retrieved
+  /// for Google Cloud projects, folders, organizations, and billing
+  /// accounts.See View default resource settings for Logging
+  /// (https://cloud.google.com/logging/docs/default-settings#view-org-settings)
+  /// for more information.
   ///
   /// Request parameters:
   ///
@@ -8202,11 +8865,8 @@ class ProjectsResource {
   /// "organizations/\[ORGANIZATION_ID\]/settings"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/settings"
   /// "folders/\[FOLDER_ID\]/settings" For
-  /// example:"organizations/12345/settings"Note: Settings for the Log Router
-  /// can be get for Google Cloud projects, folders, organizations and billing
-  /// accounts. Currently it can only be configured for organizations. Once
-  /// configured for an organization, it applies to all projects and folders in
-  /// the Google Cloud organization.
+  /// example:"organizations/12345/settings"Note: Settings can be retrieved for
+  /// Google Cloud projects, folders, organizations, and billing accounts.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -8487,6 +9147,10 @@ class ProjectsLocationsResource {
       ProjectsLocationsBucketsResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
       ProjectsLocationsOperationsResource(_requester);
+  ProjectsLocationsRecentQueriesResource get recentQueries =>
+      ProjectsLocationsRecentQueriesResource(_requester);
+  ProjectsLocationsSavedQueriesResource get savedQueries =>
+      ProjectsLocationsSavedQueriesResource(_requester);
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
@@ -8604,7 +9268,8 @@ class ProjectsLocationsBucketsResource {
   ///
   /// [bucketId] - Required. A client-assigned identifier such as "my-bucket".
   /// Identifiers are limited to 100 characters and can include only letters,
-  /// digits, underscores, hyphens, and periods.
+  /// digits, underscores, hyphens, and periods. Bucket identifiers must start
+  /// with an alphanumeric character.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8654,7 +9319,8 @@ class ProjectsLocationsBucketsResource {
   ///
   /// [bucketId] - Required. A client-assigned identifier such as "my-bucket".
   /// Identifiers are limited to 100 characters and can include only letters,
-  /// digits, underscores, hyphens, and periods.
+  /// digits, underscores, hyphens, and periods. Bucket identifiers must start
+  /// with an alphanumeric character.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9062,11 +9728,11 @@ class ProjectsLocationsBucketsLinksResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The full resource name of the link to
-  /// delete."projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-  /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-  /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-  /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
+  /// [name] - Required. The full resource name of the link to delete.
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+/links/\[^/\]+$`.
   ///
@@ -9102,11 +9768,11 @@ class ProjectsLocationsBucketsLinksResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The resource name of the
-  /// link:"projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-  /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-  /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-  /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID
+  /// [name] - Required. The resource name of the link:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+/links/\[^/\]+$`.
   ///
@@ -9142,11 +9808,11 @@ class ProjectsLocationsBucketsLinksResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent resource whose links are to be
-  /// listed:"projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/"
-  /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/"
-  /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/"
-  /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/
+  /// [parent] - Required. The parent resource whose links are to be listed:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
@@ -9294,7 +9960,7 @@ class ProjectsLocationsBucketsViewsResource {
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets a view on a log bucket..
+  /// Gets a view on a log bucket.
   ///
   /// Request parameters:
   ///
@@ -9386,10 +10052,10 @@ class ProjectsLocationsBucketsViewsResource {
 
   /// Updates a view on a log bucket.
   ///
-  /// This method replaces the following fields in the existing view with values
-  /// from the new view: filter. If an UNAVAILABLE error is returned, this
-  /// indicates that system is not in a state where it can update the view. If
-  /// this occurs, please try again in a few minutes.
+  /// This method replaces the value of the filter field from the existing view
+  /// with the corresponding value from the new view. If an UNAVAILABLE error is
+  /// returned, this indicates that system is not in a state where it can update
+  /// the view. If this occurs, please try again in a few minutes.
   ///
   /// [request] - The metadata request object.
   ///
@@ -9658,6 +10324,232 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsRecentQueriesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsRecentQueriesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists the RecentQueries that were created by the user making the request.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource to which the listed queries belong.
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]" For
+  /// example:projects/my-project/locations/us-central1Note: The location
+  /// portion of the resource must be specified, but supplying the character -
+  /// in place of LOCATION_ID will return all recent queries.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
+  ///
+  /// [pageToken] - Optional. If present, then retrieve the next batch of
+  /// results from the preceding call to this method. pageToken must be the
+  /// value of nextPageToken from the previous response. The values of other
+  /// method parameters should be identical to those in the previous call.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListRecentQueriesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListRecentQueriesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/recentQueries';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListRecentQueriesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsSavedQueriesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsSavedQueriesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new SavedQuery for the user making the request.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource in which to create the saved
+  /// query: "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]" For example:
+  /// "projects/my-project/locations/global"
+  /// "organizations/123456789/locations/us-central1"
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [savedQueryId] - Optional. The ID to use for the saved query, which will
+  /// become the final component of the saved query's resource name.If the
+  /// saved_query_id is not provided, the system will generate an alphanumeric
+  /// ID.The saved_query_id is limited to 100 characters and can include only
+  /// the following characters: upper and lower-case alphanumeric characters,
+  /// underscores, hyphens, periods.First character has to be alphanumeric.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SavedQuery].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SavedQuery> create(
+    SavedQuery request,
+    core.String parent, {
+    core.String? savedQueryId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (savedQueryId != null) 'savedQueryId': [savedQueryId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/savedQueries';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return SavedQuery.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes an existing SavedQuery that was created by the user making the
+  /// request.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The full resource name of the saved query to delete.
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/savedQueries/\[QUERY_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/savedQueries/\[QUERY_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/savedQueries/\[QUERY_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/savedQueries/\[QUERY_ID\]"
+  /// For example:
+  /// "projects/my-project/locations/global/savedQueries/my-saved-query"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/savedQueries/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists the SavedQueries that were created by the user making the request.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource to which the listed queries belong.
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]" For example:
+  /// "projects/my-project/locations/us-central1" Note: The locations portion of
+  /// the resource must be specified. To get a list of all saved queries, a
+  /// wildcard character - can be used for LOCATION_ID, for example:
+  /// "projects/my-project/locations/-"
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request.Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
+  ///
+  /// [pageToken] - Optional. If present, then retrieve the next batch of
+  /// results from the preceding call to this method. pageToken must be the
+  /// value of nextPageToken from the previous response. The values of other
+  /// method parameters should be identical to those in the previous call.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListSavedQueriesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListSavedQueriesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/savedQueries';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListSavedQueriesResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -10029,8 +10921,10 @@ class ProjectsSinksResource {
   /// sink's destination must be in the same project as the sink itself.If this
   /// field is set to true, or if the sink is owned by a non-project resource
   /// such as an organization, then the value of writer_identity will be a
-  /// unique service account used only for exports from the new sink. For more
-  /// information, see writer_identity in LogSink.
+  /// service agent
+  /// (https://cloud.google.com/iam/docs/service-account-types#service-agents)
+  /// used by the sinks with the same parent. For more information, see
+  /// writer_identity in LogSink.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -10206,9 +11100,10 @@ class ProjectsSinksResource {
 
   /// Updates a sink.
   ///
-  /// This method replaces the following fields in the existing sink with values
-  /// from the new sink: destination, and filter.The updated sink might also
-  /// have a new writer_identity; see the unique_writer_identity field.
+  /// This method replaces the values of the destination and filter fields of
+  /// the existing sink with the corresponding values from the new sink.The
+  /// updated sink might also have a new writer_identity; see the
+  /// unique_writer_identity field.
   ///
   /// [request] - The metadata request object.
   ///
@@ -10224,10 +11119,10 @@ class ProjectsSinksResource {
   /// Value must have pattern `^projects/\[^/\]+/sinks/\[^/\]+$`.
   ///
   /// [customWriterIdentity] - Optional. A service account provided by the
-  /// caller that will be used to write the log entries. Must be of format
-  /// serviceAccount:some@email. This can only be specified if writing to a
-  /// destination outside the sink's project. If not specified, a p4 service
-  /// account will automatically be generated.
+  /// caller that will be used to write the log entries. The format must be
+  /// serviceAccount:some@email. This field can only be specified if you are
+  /// routing logs to a destination outside this sink's project. If not
+  /// specified, a Logging service account will automatically be generated.
   ///
   /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
   /// this field. When updating a sink, the effect of this field on the value of
@@ -10235,8 +11130,10 @@ class ProjectsSinksResource {
   /// of this field: If the old and new values of this field are both false or
   /// both true, then there is no change to the sink's writer_identity. If the
   /// old value is false and the new value is true, then writer_identity is
-  /// changed to a unique service account. It is an error if the old value is
-  /// true and the new value is set to false or defaulted to false.
+  /// changed to a service agent
+  /// (https://cloud.google.com/iam/docs/service-account-types#service-agents)
+  /// owned by Cloud Logging. It is an error if the old value is true and the
+  /// new value is set to false or defaulted to false.
   ///
   /// [updateMask] - Optional. Field mask that specifies the fields in sink that
   /// need an update. A sink field will be overwritten if, and only if, it is in
@@ -10289,9 +11186,10 @@ class ProjectsSinksResource {
 
   /// Updates a sink.
   ///
-  /// This method replaces the following fields in the existing sink with values
-  /// from the new sink: destination, and filter.The updated sink might also
-  /// have a new writer_identity; see the unique_writer_identity field.
+  /// This method replaces the values of the destination and filter fields of
+  /// the existing sink with the corresponding values from the new sink.The
+  /// updated sink might also have a new writer_identity; see the
+  /// unique_writer_identity field.
   ///
   /// [request] - The metadata request object.
   ///
@@ -10307,10 +11205,10 @@ class ProjectsSinksResource {
   /// Value must have pattern `^projects/\[^/\]+/sinks/\[^/\]+$`.
   ///
   /// [customWriterIdentity] - Optional. A service account provided by the
-  /// caller that will be used to write the log entries. Must be of format
-  /// serviceAccount:some@email. This can only be specified if writing to a
-  /// destination outside the sink's project. If not specified, a p4 service
-  /// account will automatically be generated.
+  /// caller that will be used to write the log entries. The format must be
+  /// serviceAccount:some@email. This field can only be specified if you are
+  /// routing logs to a destination outside this sink's project. If not
+  /// specified, a Logging service account will automatically be generated.
   ///
   /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
   /// this field. When updating a sink, the effect of this field on the value of
@@ -10318,8 +11216,10 @@ class ProjectsSinksResource {
   /// of this field: If the old and new values of this field are both false or
   /// both true, then there is no change to the sink's writer_identity. If the
   /// old value is false and the new value is true, then writer_identity is
-  /// changed to a unique service account. It is an error if the old value is
-  /// true and the new value is set to false or defaulted to false.
+  /// changed to a service agent
+  /// (https://cloud.google.com/iam/docs/service-account-types#service-agents)
+  /// owned by Cloud Logging. It is an error if the old value is true and the
+  /// new value is set to false or defaulted to false.
   ///
   /// [updateMask] - Optional. Field mask that specifies the fields in sink that
   /// need an update. A sink field will be overwritten if, and only if, it is in
@@ -10406,8 +11306,10 @@ class SinksResource {
   /// sink's destination must be in the same project as the sink itself.If this
   /// field is set to true, or if the sink is owned by a non-project resource
   /// such as an organization, then the value of writer_identity will be a
-  /// unique service account used only for exports from the new sink. For more
-  /// information, see writer_identity in LogSink.
+  /// service agent
+  /// (https://cloud.google.com/iam/docs/service-account-types#service-agents)
+  /// used by the sinks with the same parent. For more information, see
+  /// writer_identity in LogSink.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -10583,9 +11485,10 @@ class SinksResource {
 
   /// Updates a sink.
   ///
-  /// This method replaces the following fields in the existing sink with values
-  /// from the new sink: destination, and filter.The updated sink might also
-  /// have a new writer_identity; see the unique_writer_identity field.
+  /// This method replaces the values of the destination and filter fields of
+  /// the existing sink with the corresponding values from the new sink.The
+  /// updated sink might also have a new writer_identity; see the
+  /// unique_writer_identity field.
   ///
   /// [request] - The metadata request object.
   ///
@@ -10601,10 +11504,10 @@ class SinksResource {
   /// Value must have pattern `^\[^/\]+/\[^/\]+/sinks/\[^/\]+$`.
   ///
   /// [customWriterIdentity] - Optional. A service account provided by the
-  /// caller that will be used to write the log entries. Must be of format
-  /// serviceAccount:some@email. This can only be specified if writing to a
-  /// destination outside the sink's project. If not specified, a p4 service
-  /// account will automatically be generated.
+  /// caller that will be used to write the log entries. The format must be
+  /// serviceAccount:some@email. This field can only be specified if you are
+  /// routing logs to a destination outside this sink's project. If not
+  /// specified, a Logging service account will automatically be generated.
   ///
   /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
   /// this field. When updating a sink, the effect of this field on the value of
@@ -10612,8 +11515,10 @@ class SinksResource {
   /// of this field: If the old and new values of this field are both false or
   /// both true, then there is no change to the sink's writer_identity. If the
   /// old value is false and the new value is true, then writer_identity is
-  /// changed to a unique service account. It is an error if the old value is
-  /// true and the new value is set to false or defaulted to false.
+  /// changed to a service agent
+  /// (https://cloud.google.com/iam/docs/service-account-types#service-agents)
+  /// owned by Cloud Logging. It is an error if the old value is true and the
+  /// new value is set to false or defaulted to false.
   ///
   /// [updateMask] - Optional. Field mask that specifies the fields in sink that
   /// need an update. A sink field will be overwritten if, and only if, it is in
@@ -10672,7 +11577,7 @@ class V2Resource {
 
   /// Gets the Logging CMEK settings for the given resource.Note: CMEK for the
   /// Log Router can be configured for Google Cloud projects, folders,
-  /// organizations and billing accounts.
+  /// organizations, and billing accounts.
   ///
   /// Once configured for an organization, it applies to all projects and
   /// folders in the Google Cloud organization.See Enabling CMEK for Log Router
@@ -10687,7 +11592,7 @@ class V2Resource {
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/cmekSettings"
   /// "folders/\[FOLDER_ID\]/cmekSettings" For
   /// example:"organizations/12345/cmekSettings"Note: CMEK for the Log Router
-  /// can be configured for Google Cloud projects, folders, organizations and
+  /// can be configured for Google Cloud projects, folders, organizations, and
   /// billing accounts. Once configured for an organization, it applies to all
   /// projects and folders in the Google Cloud organization.
   /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
@@ -10721,15 +11626,11 @@ class V2Resource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets the Log Router settings for the given resource.Note: Settings for the
-  /// Log Router can be get for Google Cloud projects, folders, organizations
-  /// and billing accounts.
-  ///
-  /// Currently it can only be configured for organizations. Once configured for
-  /// an organization, it applies to all projects and folders in the Google
-  /// Cloud organization.See Enabling CMEK for Log Router
-  /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for
-  /// more information.
+  /// Gets the settings for the given resource.Note: Settings can be retrieved
+  /// for Google Cloud projects, folders, organizations, and billing
+  /// accounts.See View default resource settings for Logging
+  /// (https://cloud.google.com/logging/docs/default-settings#view-org-settings)
+  /// for more information.
   ///
   /// Request parameters:
   ///
@@ -10738,11 +11639,8 @@ class V2Resource {
   /// "organizations/\[ORGANIZATION_ID\]/settings"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/settings"
   /// "folders/\[FOLDER_ID\]/settings" For
-  /// example:"organizations/12345/settings"Note: Settings for the Log Router
-  /// can be get for Google Cloud projects, folders, organizations and billing
-  /// accounts. Currently it can only be configured for organizations. Once
-  /// configured for an organization, it applies to all projects and folders in
-  /// the Google Cloud organization.
+  /// example:"organizations/12345/settings"Note: Settings can be retrieved for
+  /// Google Cloud projects, folders, organizations, and billing accounts.
   /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -10778,10 +11676,11 @@ class V2Resource {
   /// organizations.
   ///
   /// Once configured, it applies to all projects and folders in the Google
-  /// Cloud organization.UpdateCmekSettings will fail if 1) kms_key_name is
-  /// invalid, or 2) the associated service account does not have the required
-  /// roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the key, or
-  /// 3) access to the key is disabled.See Enabling CMEK for Log Router
+  /// Cloud organization.UpdateCmekSettings fails when any of the following are
+  /// true: The value of kms_key_name is invalid. The associated service account
+  /// doesn't have the required roles/cloudkms.cryptoKeyEncrypterDecrypter role
+  /// assigned for the key. Access to the key is disabled.See Enabling CMEK for
+  /// Log Router
   /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for
   /// more information.
   ///
@@ -10839,18 +11738,19 @@ class V2Resource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates the Log Router settings for the given resource.Note: Settings for
-  /// the Log Router can currently only be configured for Google Cloud
-  /// organizations.
+  /// Updates the settings for the given resource.
   ///
-  /// Once configured, it applies to all projects and folders in the Google
-  /// Cloud organization.UpdateSettings will fail if 1) kms_key_name is invalid,
-  /// or 2) the associated service account does not have the required
-  /// roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the key, or
-  /// 3) access to the key is disabled. 4) location_id is not supported by
-  /// Logging. 5) location_id violate OrgPolicy.See Enabling CMEK for Log Router
-  /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for
-  /// more information.
+  /// This method applies to all feature configurations for organization and
+  /// folders.UpdateSettings fails when any of the following are true: The value
+  /// of storage_location either isn't supported by Logging or violates the
+  /// location OrgPolicy. The default_sink_config field is set, but it has an
+  /// unspecified filter write mode. The value of kms_key_name is invalid. The
+  /// associated service account doesn't have the required
+  /// roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the key.
+  /// Access to the key is disabled.See Configure default settings for
+  /// organizations and folders
+  /// (https://cloud.google.com/logging/docs/default-settings) for more
+  /// information.
   ///
   /// [request] - The metadata request object.
   ///
@@ -10858,10 +11758,7 @@ class V2Resource {
   ///
   /// [name] - Required. The resource name for the settings to update.
   /// "organizations/\[ORGANIZATION_ID\]/settings" For
-  /// example:"organizations/12345/settings"Note: Settings for the Log Router
-  /// can currently only be configured for Google Cloud organizations. Once
-  /// configured, it applies to all projects and folders in the Google Cloud
-  /// organization.
+  /// example:"organizations/12345/settings"
   /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
   ///
   /// [updateMask] - Optional. Field mask identifying which fields from settings
@@ -11067,6 +11964,8 @@ class CmekSettings {
   /// field to an empty string.See Enabling CMEK for Log Router
   /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for
   /// more information.
+  ///
+  /// Optional.
   core.String? kmsKeyName;
 
   /// The CryptoKeyVersion resource name for the configured Cloud KMS key.KMS
@@ -11080,6 +11979,8 @@ class CmekSettings {
   /// It will be populated in cases where the CMEK settings are bound to a
   /// single key version.If this field is populated, the kms_key is tied to a
   /// specific CryptoKeyVersion.
+  ///
+  /// Output only.
   core.String? kmsKeyVersionName;
 
   /// The resource name of the CMEK settings.
@@ -11171,6 +12072,71 @@ class CopyLogEntriesRequest {
         if (destination != null) 'destination': destination!,
         if (filter != null) 'filter': filter!,
         if (name != null) 'name': name!,
+      };
+}
+
+/// Describes the custom _Default sink configuration that is used to override
+/// the built-in _Default sink configuration in newly created resource
+/// containers, such as projects or folders.
+class DefaultSinkConfig {
+  /// Specifies the set of exclusions to be added to the _Default sink in newly
+  /// created resource containers.
+  ///
+  /// Optional.
+  core.List<LogExclusion>? exclusions;
+
+  /// An advanced logs filter
+  /// (https://cloud.google.com/logging/docs/view/advanced-queries).
+  ///
+  /// The only exported log entries are those that are in the resource owning
+  /// the sink and that match the filter.For
+  /// example:logName="projects/\[PROJECT_ID\]/logs/\[LOG_ID\]" AND
+  /// severity\>=ERRORTo match all logs, don't add exclusions and use the
+  /// following line as the value of filter:logName:*Cannot be empty or unset
+  /// when the value of mode is OVERWRITE.
+  ///
+  /// Optional.
+  core.String? filter;
+
+  /// Determines the behavior to apply to the built-in _Default sink inclusion
+  /// filter.Exclusions are always appended, as built-in _Default sinks have no
+  /// exclusions.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "FILTER_WRITE_MODE_UNSPECIFIED" : The filter's write mode is
+  /// unspecified. This mode must not be used.
+  /// - "APPEND" : The contents of filter will be appended to the built-in
+  /// _Default sink filter. Using the append mode with an empty filter will keep
+  /// the sink inclusion filter unchanged.
+  /// - "OVERWRITE" : The contents of filter will overwrite the built-in
+  /// _Default sink filter.
+  core.String? mode;
+
+  DefaultSinkConfig({
+    this.exclusions,
+    this.filter,
+    this.mode,
+  });
+
+  DefaultSinkConfig.fromJson(core.Map json_)
+      : this(
+          exclusions: json_.containsKey('exclusions')
+              ? (json_['exclusions'] as core.List)
+                  .map((value) => LogExclusion.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          filter: json_.containsKey('filter')
+              ? json_['filter'] as core.String
+              : null,
+          mode: json_.containsKey('mode') ? json_['mode'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (exclusions != null) 'exclusions': exclusions!,
+        if (filter != null) 'filter': filter!,
+        if (mode != null) 'mode': mode!,
       };
 }
 
@@ -11438,6 +12404,8 @@ class Link {
   /// When a link is created, a BigQuery dataset is created along with it, in
   /// the same project as the LogBucket it's linked to. This dataset will also
   /// have BigQuery Views corresponding to the LogViews in the bucket.
+  ///
+  /// Optional.
   BigQueryDataset? bigqueryDataset;
 
   /// The creation timestamp of the link.
@@ -11447,6 +12415,8 @@ class Link {
 
   /// Describes this link.The maximum length of the description is 8000
   /// characters.
+  ///
+  /// Optional.
   core.String? description;
 
   /// The resource lifecycle state.
@@ -11477,6 +12447,8 @@ class Link {
   /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
   /// For
   /// example:\`projects/my-project/locations/global/buckets/my-bucket/links/my_link
+  ///
+  /// Output only.
   core.String? name;
 
   Link({
@@ -11681,9 +12653,9 @@ class ListLogEntriesRequest {
 
   /// The maximum number of results to return from this request.
   ///
-  /// Default is 50. If the value is negative or exceeds 1000, the request is
-  /// rejected. The presence of next_page_token in the response indicates that
-  /// more results might be available.
+  /// Default is 50. If the value is negative, the request is rejected.The
+  /// presence of next_page_token in the response indicates that more results
+  /// might be available.
   ///
   /// Optional.
   core.int? pageSize;
@@ -11957,6 +12929,116 @@ class ListOperationsResponse {
       };
 }
 
+/// The response from ListRecentQueries.
+class ListRecentQueriesResponse {
+  /// If there might be more results than appear in this response, then
+  /// nextPageToken is included.
+  ///
+  /// To get the next set of results, call the same method again using the value
+  /// of nextPageToken as pageToken.
+  core.String? nextPageToken;
+
+  /// A list of recent queries.
+  core.List<RecentQuery>? recentQueries;
+
+  /// The unreachable resources.
+  ///
+  /// Each resource can be either 1) a saved query if a specific query is
+  /// unreachable or 2) a location if a specific location is unreachable.
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/recentQueries/\[QUERY_ID\]"
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]" For
+  /// example:"projects/my-project/locations/global/recentQueries/12345678"
+  /// "projects/my-project/locations/global"If there are unreachable resources,
+  /// the response will first return pages that contain recent queries, and then
+  /// return pages that contain the unreachable resources.
+  core.List<core.String>? unreachable;
+
+  ListRecentQueriesResponse({
+    this.nextPageToken,
+    this.recentQueries,
+    this.unreachable,
+  });
+
+  ListRecentQueriesResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          recentQueries: json_.containsKey('recentQueries')
+              ? (json_['recentQueries'] as core.List)
+                  .map((value) => RecentQuery.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (recentQueries != null) 'recentQueries': recentQueries!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
+/// The response from ListSavedQueries.
+class ListSavedQueriesResponse {
+  /// If there might be more results than appear in this response, then
+  /// nextPageToken is included.
+  ///
+  /// To get the next set of results, call the same method again using the value
+  /// of nextPageToken as pageToken.
+  core.String? nextPageToken;
+
+  /// A list of saved queries.
+  core.List<SavedQuery>? savedQueries;
+
+  /// The unreachable resources.
+  ///
+  /// It can be either 1) a saved query if a specific query is unreachable or 2)
+  /// a location if a specific location is unreachabe.
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/savedQueries/\[QUERY_ID\]"
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]" For example:
+  /// "projects/my-project/locations/global/savedQueries/12345678"
+  /// "projects/my-project/locations/global" If there are unreachable resources,
+  /// the response will first return pages that contain saved queries, and then
+  /// return pages that contain the unreachable resources.
+  core.List<core.String>? unreachable;
+
+  ListSavedQueriesResponse({
+    this.nextPageToken,
+    this.savedQueries,
+    this.unreachable,
+  });
+
+  ListSavedQueriesResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          savedQueries: json_.containsKey('savedQueries')
+              ? (json_['savedQueries'] as core.List)
+                  .map((value) => SavedQuery.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (savedQueries != null) 'savedQueries': savedQueries!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
 /// Result returned from ListSinks.
 class ListSinksResponse {
   /// If there might be more results than appear in this response, then
@@ -12044,6 +13126,8 @@ class LogBucket {
   /// the CMEK key provided in this configuration. If a log bucket has CMEK
   /// settings, the CMEK settings cannot be disabled later by updating the log
   /// bucket. Changing the KMS key is allowed.
+  ///
+  /// Optional.
   CmekSettings? cmekSettings;
 
   /// The creation timestamp of the bucket.
@@ -12054,9 +13138,13 @@ class LogBucket {
   core.String? createTime;
 
   /// Describes this bucket.
+  ///
+  /// Optional.
   core.String? description;
 
   /// A list of indexed fields and related configuration data.
+  ///
+  /// Optional.
   core.List<IndexConfig>? indexConfigs;
 
   /// The bucket lifecycle state.
@@ -12080,6 +13168,8 @@ class LogBucket {
   /// cannot be changed.
   ///
   /// Locked buckets may only be deleted if they are empty.
+  ///
+  /// Optional.
   core.bool? locked;
 
   /// The resource name of the bucket.For
@@ -12099,6 +13189,8 @@ class LogBucket {
   ///
   /// Adding a parent will block all child fields. (e.g. foo.bar will block
   /// foo.bar.baz)
+  ///
+  /// Optional.
   core.List<core.String>? restrictedFields;
 
   /// Logs will be retained by default for this amount of time, after which they
@@ -12106,6 +13198,8 @@ class LogBucket {
   ///
   /// The minimum retention period is 1 day. If this value is set to zero at
   /// bucket creation time, the default time of 30 days will be used.
+  ///
+  /// Optional.
   core.int? retentionDays;
 
   /// The last update timestamp of the bucket.
@@ -12184,6 +13278,18 @@ class LogBucket {
 
 /// An individual entry in a log.
 class LogEntry {
+  /// The Error Reporting (https://cloud.google.com/error-reporting) error
+  /// groups associated with this LogEntry.
+  ///
+  /// Error Reporting sets the values for this field during error group
+  /// creation.For more information, see View error details(
+  /// https://cloud.google.com/error-reporting/docs/viewing-errors#view_error_details)This
+  /// field isn't available during log routing
+  /// (https://cloud.google.com/logging/docs/routing/overview)
+  ///
+  /// Output only.
+  core.List<LogErrorGroup>? errorGroups;
+
   /// Information about the HTTP request associated with this log entry, if
   /// applicable.
   ///
@@ -12366,19 +13472,18 @@ class LogEntry {
   /// For example, if your trace data is stored in the Cloud project
   /// "my-trace-project" and if the service that is creating the log entry
   /// receives a trace header that includes the trace ID "12345", then the
-  /// service should use "projects/my-tracing-project/traces/12345".The trace
+  /// service should use "projects/my-trace-project/traces/12345".The trace
   /// field provides the link between logs and traces. By using this field, you
   /// can navigate from a log entry to a trace.
   ///
   /// Optional.
   core.String? trace;
 
-  /// The sampling decision of the trace associated with the log entry.True
-  /// means that the trace resource name in the trace field was sampled for
-  /// storage in a trace backend.
+  /// The sampling decision of the span associated with the log entry at the
+  /// time the log entry was created.
   ///
-  /// False means that the trace was not sampled for storage when this log entry
-  /// was written, or the sampling decision was unknown at the time. A
+  /// This field corresponds to the sampled flag in the W3C trace-context
+  /// specification (https://www.w3.org/TR/trace-context/#sampled-flag). A
   /// non-sampled trace value is still useful as a request correlation
   /// identifier. The default is False.
   ///
@@ -12386,6 +13491,7 @@ class LogEntry {
   core.bool? traceSampled;
 
   LogEntry({
+    this.errorGroups,
     this.httpRequest,
     this.insertId,
     this.jsonPayload,
@@ -12408,6 +13514,12 @@ class LogEntry {
 
   LogEntry.fromJson(core.Map json_)
       : this(
+          errorGroups: json_.containsKey('errorGroups')
+              ? (json_['errorGroups'] as core.List)
+                  .map((value) => LogErrorGroup.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           httpRequest: json_.containsKey('httpRequest')
               ? HttpRequest.fromJson(
                   json_['httpRequest'] as core.Map<core.String, core.dynamic>)
@@ -12475,6 +13587,7 @@ class LogEntry {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (errorGroups != null) 'errorGroups': errorGroups!,
         if (httpRequest != null) 'httpRequest': httpRequest!,
         if (insertId != null) 'insertId': insertId!,
         if (jsonPayload != null) 'jsonPayload': jsonPayload!,
@@ -12603,6 +13716,33 @@ class LogEntrySourceLocation {
       };
 }
 
+/// Contains metadata that associates the LogEntry to Error Reporting error
+/// groups.
+class LogErrorGroup {
+  /// The id is a unique identifier for a particular error group; it is the last
+  /// part of the error group resource name:
+  /// /project/\[PROJECT_ID\]/errors/\[ERROR_GROUP_ID\].
+  ///
+  /// Example: COShysOX0r_51QE. The id is derived from key parts of the
+  /// error-log content and is treated as Service Data. For information about
+  /// how Service Data is handled, see Google Cloud Privacy Notice
+  /// (https://cloud.google.com/terms/cloud-privacy-notice).
+  core.String? id;
+
+  LogErrorGroup({
+    this.id,
+  });
+
+  LogErrorGroup.fromJson(core.Map json_)
+      : this(
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (id != null) 'id': id!,
+      };
+}
+
 /// Specifies a set of log entries that are filtered out by a sink.
 ///
 /// If your Google Cloud resource receives a large volume of log entries, you
@@ -12649,7 +13789,7 @@ class LogExclusion {
   /// digits, underscores, hyphens, and periods. First character has to be
   /// alphanumeric.
   ///
-  /// Required.
+  /// Output only.
   core.String? name;
 
   /// The last update timestamp of the exclusion.This field may not be present
@@ -12919,11 +14059,12 @@ class LogMetric {
 }
 
 /// Describes a sink used to export log entries to one of the following
-/// destinations in any project: a Cloud Storage bucket, a BigQuery dataset, a
-/// Pub/Sub topic or a Cloud Logging log bucket.
+/// destinations: a Cloud Logging log bucket, a Cloud Storage bucket, a BigQuery
+/// dataset, a Pub/Sub topic, a Cloud project.A logs filter controls which log
+/// entries are exported.
 ///
-/// A logs filter controls which log entries are exported. The sink must be
-/// created within a project, organization, billing account, or folder.
+/// The sink must be created within a project, organization, billing account, or
+/// folder.
 class LogSink {
   /// Options that affect sinks exporting data to BigQuery.
   ///
@@ -12999,13 +14140,12 @@ class LogSink {
   core.bool? includeChildren;
 
   /// The client-assigned sink identifier, unique within the project.For
-  /// example: "my-syslog-errors-to-pubsub".
+  /// example: "my-syslog-errors-to-pubsub".Sink identifiers are limited to 100
+  /// characters and can include only the following characters: upper and
+  /// lower-case alphanumeric characters, underscores, hyphens, periods.First
+  /// character has to be alphanumeric.
   ///
-  /// Sink identifiers are limited to 100 characters and can include only the
-  /// following characters: upper and lower-case alphanumeric characters,
-  /// underscores, hyphens, and periods. First character has to be alphanumeric.
-  ///
-  /// Required.
+  /// Output only.
   core.String? name;
 
   /// This field is unused.
@@ -13169,18 +14309,27 @@ class LogView {
   core.String? createTime;
 
   /// Describes this view.
+  ///
+  /// Optional.
   core.String? description;
 
   /// Filter that restricts which log entries in a bucket are visible in this
-  /// view.Filters are restricted to be a logical AND of ==/!= of any of the
-  /// following: originating project/folder/organization/billing account.
+  /// view.Filters must be logical conjunctions that use the AND operator, and
+  /// they can use any of the following qualifiers: SOURCE(), which specifies a
+  /// project, folder, organization, or billing account of origin.
   ///
-  /// resource type log idFor example:SOURCE("projects/myproject") AND
-  /// resource.type = "gce_instance" AND LOG_ID("stdout")
+  /// resource.type, which specifies the resource type. LOG_ID(), which
+  /// identifies the log.They can also use the negations of these qualifiers
+  /// with the NOT operator.For example:SOURCE("projects/myproject") AND
+  /// resource.type = "gce_instance" AND NOT LOG_ID("stdout")
+  ///
+  /// Optional.
   core.String? filter;
 
   /// The resource name of the view.For
   /// example:projects/my-project/locations/global/buckets/my-bucket/views/my-view
+  ///
+  /// Output only.
   core.String? name;
 
   /// The last update timestamp of the view.
@@ -13219,6 +14368,64 @@ class LogView {
         if (filter != null) 'filter': filter!,
         if (name != null) 'name': name!,
         if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// Describes a Cloud Logging query that can be run in Logs Explorer UI or via
+/// the logging API.In addition to the query itself, additional information may
+/// be stored to capture the display configuration and other UI state used in
+/// association with analysis of query results.
+class LoggingQuery {
+  /// An advanced query using the Logging Query Language
+  /// (https://cloud.google.com/logging/docs/view/logging-query-language).
+  ///
+  /// The maximum length of the filter is 20000 characters.
+  ///
+  /// Required.
+  core.String? filter;
+
+  /// Characters will be counted from the end of the string.
+  core.int? summaryFieldEnd;
+
+  /// Characters will be counted from the start of the string.
+  core.int? summaryFieldStart;
+
+  /// The set of summary fields to display for this saved query.
+  ///
+  /// Optional.
+  core.List<SummaryField>? summaryFields;
+
+  LoggingQuery({
+    this.filter,
+    this.summaryFieldEnd,
+    this.summaryFieldStart,
+    this.summaryFields,
+  });
+
+  LoggingQuery.fromJson(core.Map json_)
+      : this(
+          filter: json_.containsKey('filter')
+              ? json_['filter'] as core.String
+              : null,
+          summaryFieldEnd: json_.containsKey('summaryFieldEnd')
+              ? json_['summaryFieldEnd'] as core.int
+              : null,
+          summaryFieldStart: json_.containsKey('summaryFieldStart')
+              ? json_['summaryFieldStart'] as core.int
+              : null,
+          summaryFields: json_.containsKey('summaryFields')
+              ? (json_['summaryFields'] as core.List)
+                  .map((value) => SummaryField.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (filter != null) 'filter': filter!,
+        if (summaryFieldEnd != null) 'summaryFieldEnd': summaryFieldEnd!,
+        if (summaryFieldStart != null) 'summaryFieldStart': summaryFieldStart!,
+        if (summaryFields != null) 'summaryFields': summaryFields!,
       };
 }
 
@@ -13598,7 +14805,7 @@ class MonitoredResourceDescriptor {
   /// The monitored resource type.
   ///
   /// For example, the type "cloudsql_database" represents databases in Google
-  /// Cloud SQL. For a list of types, see Monitoring resource types
+  /// Cloud SQL. For a list of types, see Monitored resource types
   /// (https://cloud.google.com/monitoring/api/resources) and Logging resource
   /// types (https://cloud.google.com/logging/docs/api/v2/resource-list).
   ///
@@ -13684,7 +14891,7 @@ class Operation {
   /// ending with operations/{unique_id}.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as Delete, the
   /// response is google.protobuf.Empty. If the original method is standard
@@ -13730,9 +14937,193 @@ class Operation {
       };
 }
 
-/// Describes the settings associated with a project, folder, organization,
-/// billing account, or flexible resource.
+/// Describes an analytics query that can be run in the Log Analytics page of
+/// Google Cloud console.Preview: This is a preview feature and may be subject
+/// to change before final release.
+class OpsAnalyticsQuery {
+  /// A logs analytics SQL query, which generally follows BigQuery format.This
+  /// is the SQL query that appears in the Log Analytics UI's query editor.
+  ///
+  /// Required.
+  core.String? sqlQueryText;
+
+  OpsAnalyticsQuery({
+    this.sqlQueryText,
+  });
+
+  OpsAnalyticsQuery.fromJson(core.Map json_)
+      : this(
+          sqlQueryText: json_.containsKey('sqlQueryText')
+              ? json_['sqlQueryText'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (sqlQueryText != null) 'sqlQueryText': sqlQueryText!,
+      };
+}
+
+/// Describes a recent query executed on the Logs Explorer or Log Analytics page
+/// within the last ~ 30 days.
+class RecentQuery {
+  /// The timestamp when this query was last run.
+  ///
+  /// Output only.
+  core.String? lastRunTime;
+
+  /// Logging query that can be executed in Logs Explorer or via Logging API.
+  LoggingQuery? loggingQuery;
+
+  /// Resource name of the recent query.In the format:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/recentQueries/\[QUERY_ID\]"
+  /// For a list of supported locations, see Supported Regions
+  /// (https://cloud.google.com/logging/docs/region-support)The QUERY_ID is a
+  /// system generated alphanumeric ID.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Analytics query that can be executed in Log Analytics.
+  OpsAnalyticsQuery? opsAnalyticsQuery;
+
+  RecentQuery({
+    this.lastRunTime,
+    this.loggingQuery,
+    this.name,
+    this.opsAnalyticsQuery,
+  });
+
+  RecentQuery.fromJson(core.Map json_)
+      : this(
+          lastRunTime: json_.containsKey('lastRunTime')
+              ? json_['lastRunTime'] as core.String
+              : null,
+          loggingQuery: json_.containsKey('loggingQuery')
+              ? LoggingQuery.fromJson(
+                  json_['loggingQuery'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          opsAnalyticsQuery: json_.containsKey('opsAnalyticsQuery')
+              ? OpsAnalyticsQuery.fromJson(json_['opsAnalyticsQuery']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (lastRunTime != null) 'lastRunTime': lastRunTime!,
+        if (loggingQuery != null) 'loggingQuery': loggingQuery!,
+        if (name != null) 'name': name!,
+        if (opsAnalyticsQuery != null) 'opsAnalyticsQuery': opsAnalyticsQuery!,
+      };
+}
+
+/// Describes a query that has been saved by a user.
+class SavedQuery {
+  /// The timestamp when the saved query was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// A human readable description of the saved query.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// The user specified title for the SavedQuery.
+  ///
+  /// Required.
+  core.String? displayName;
+
+  /// Logging query that can be executed in Logs Explorer or via Logging API.
+  LoggingQuery? loggingQuery;
+
+  /// Resource name of the saved query.In the format:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/savedQueries/\[QUERY_ID\]"
+  /// For a list of supported locations, see Supported Regions
+  /// (https://cloud.google.com/logging/docs/region-support#bucket-regions)After
+  /// the saved query is created, the location cannot be changed.If the user
+  /// doesn't provide a QUERY_ID, the system will generate an alphanumeric ID.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Analytics query that can be executed in Log Analytics.
+  OpsAnalyticsQuery? opsAnalyticsQuery;
+
+  /// The timestamp when the saved query was last updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  /// The visibility status of this query, which determines its ownership.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "VISIBILITY_UNSPECIFIED" : The saved query visibility is unspecified. A
+  /// CreateSavedQuery request with an unspecified visibility will be rejected.
+  /// - "PRIVATE" : The saved query is only visible to the user that created it.
+  /// - "SHARED" : The saved query is visible to anyone in the project.
+  core.String? visibility;
+
+  SavedQuery({
+    this.createTime,
+    this.description,
+    this.displayName,
+    this.loggingQuery,
+    this.name,
+    this.opsAnalyticsQuery,
+    this.updateTime,
+    this.visibility,
+  });
+
+  SavedQuery.fromJson(core.Map json_)
+      : this(
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          loggingQuery: json_.containsKey('loggingQuery')
+              ? LoggingQuery.fromJson(
+                  json_['loggingQuery'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          opsAnalyticsQuery: json_.containsKey('opsAnalyticsQuery')
+              ? OpsAnalyticsQuery.fromJson(json_['opsAnalyticsQuery']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+          visibility: json_.containsKey('visibility')
+              ? json_['visibility'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
+        if (loggingQuery != null) 'loggingQuery': loggingQuery!,
+        if (name != null) 'name': name!,
+        if (opsAnalyticsQuery != null) 'opsAnalyticsQuery': opsAnalyticsQuery!,
+        if (updateTime != null) 'updateTime': updateTime!,
+        if (visibility != null) 'visibility': visibility!,
+      };
+}
+
+/// Describes the settings associated with a project, folder, organization, or
+/// billing account.
 class Settings {
+  /// Overrides the built-in configuration for _Default sink.
+  ///
+  /// Optional.
+  DefaultSinkConfig? defaultSinkConfig;
+
   /// If set to true, the _Default sink in newly created projects and folders
   /// will created in a disabled state.
   ///
@@ -13747,17 +15138,12 @@ class Settings {
   /// "projects/\[PROJECT_ID\]/locations/\[LOCATION\]/keyRings/\[KEYRING\]/cryptoKeys/\[KEY\]"
   /// For
   /// example:"projects/my-project/locations/us-central1/keyRings/my-ring/cryptoKeys/my-key"To
-  /// enable CMEK for the Log Router, set this field to a valid kms_key_name for
-  /// which the associated service account has the required
+  /// enable CMEK, set this field to a valid kms_key_name for which the
+  /// associated service account has the required
   /// roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the key.The
   /// Cloud KMS key used by the Log Router can be updated by changing the
-  /// kms_key_name to a new valid key name.
-  ///
-  /// Encryption operations that are in progress will be completed with the key
-  /// that was in use when they started. Decryption operations will be completed
-  /// using the key that was used at the time of encryption unless access to
-  /// that key has been revoked.To disable CMEK for the Log Router, set this
-  /// field to an empty string.See Enabling CMEK for Log Router
+  /// kms_key_name to a new valid key name.To disable CMEK for the Log Router,
+  /// set this field to an empty string.See Enabling CMEK for Log Router
   /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for
   /// more information.
   ///
@@ -13765,9 +15151,9 @@ class Settings {
   core.String? kmsKeyName;
 
   /// The service account that will be used by the Log Router to access your
-  /// Cloud KMS key.Before enabling CMEK for Log Router, you must first assign
-  /// the role roles/cloudkms.cryptoKeyEncrypterDecrypter to the service account
-  /// that the Log Router will use to access your Cloud KMS key.
+  /// Cloud KMS key.Before enabling CMEK, you must first assign the role
+  /// roles/cloudkms.cryptoKeyEncrypterDecrypter to the service account that
+  /// will be used to access your Cloud KMS key.
   ///
   /// Use GetSettings to obtain the service account ID.See Enabling CMEK for Log
   /// Router (https://cloud.google.com/logging/docs/routing/managed-encryption)
@@ -13776,10 +15162,12 @@ class Settings {
   /// Output only.
   core.String? kmsServiceAccountId;
 
-  /// The service account for the given container.
+  /// The service account for the given resource container, such as project or
+  /// folder.
   ///
-  /// Sinks use this service account as their writer_identity if no custom
-  /// service account is provided.
+  /// Log sinks use this service account as their writer_identity if no custom
+  /// service account is provided in the request when calling the create sink
+  /// method.
   ///
   /// Output only.
   core.String? loggingServiceAccountId;
@@ -13789,18 +15177,17 @@ class Settings {
   /// Output only.
   core.String? name;
 
-  /// The storage location that Cloud Logging will use to create new resources
-  /// when a location is needed but not explicitly provided.
-  ///
-  /// The use cases includes: The location of _Default and _Required log bucket
-  /// for newly created projects and folders.Example value: europe-west1.Note:
-  /// this setting does not affect the location of resources where a location is
-  /// explicitly provided when created, such as custom log buckets.
+  /// The storage location for the _Default and _Required log buckets of newly
+  /// created projects and folders, unless the storage location is explicitly
+  /// provided.Example value: europe-west1.Note: this setting does not affect
+  /// the location of resources where a location is explicitly provided when
+  /// created, such as custom log buckets.
   ///
   /// Optional.
   core.String? storageLocation;
 
   Settings({
+    this.defaultSinkConfig,
     this.disableDefaultSink,
     this.kmsKeyName,
     this.kmsServiceAccountId,
@@ -13811,6 +15198,10 @@ class Settings {
 
   Settings.fromJson(core.Map json_)
       : this(
+          defaultSinkConfig: json_.containsKey('defaultSinkConfig')
+              ? DefaultSinkConfig.fromJson(json_['defaultSinkConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           disableDefaultSink: json_.containsKey('disableDefaultSink')
               ? json_['disableDefaultSink'] as core.bool
               : null,
@@ -13830,6 +15221,7 @@ class Settings {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (defaultSinkConfig != null) 'defaultSinkConfig': defaultSinkConfig!,
         if (disableDefaultSink != null)
           'disableDefaultSink': disableDefaultSink!,
         if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
@@ -13851,145 +15243,28 @@ class Settings {
 /// Design Guide (https://cloud.google.com/apis/design/errors).
 typedef Status = $Status;
 
-/// Information about entries that were omitted from the session.
-class SuppressionInfo {
-  /// The reason that entries were omitted from the session.
-  /// Possible string values are:
-  /// - "REASON_UNSPECIFIED" : Unexpected default.
-  /// - "RATE_LIMIT" : Indicates suppression occurred due to relevant entries
-  /// being received in excess of rate limits. For quotas and limits, see
-  /// Logging API quotas and limits
-  /// (https://cloud.google.com/logging/quotas#api-limits).
-  /// - "NOT_CONSUMED" : Indicates suppression occurred due to the client not
-  /// consuming responses quickly enough.
-  core.String? reason;
-
-  /// A lower bound on the count of entries omitted due to reason.
-  core.int? suppressedCount;
-
-  SuppressionInfo({
-    this.reason,
-    this.suppressedCount,
-  });
-
-  SuppressionInfo.fromJson(core.Map json_)
-      : this(
-          reason: json_.containsKey('reason')
-              ? json_['reason'] as core.String
-              : null,
-          suppressedCount: json_.containsKey('suppressedCount')
-              ? json_['suppressedCount'] as core.int
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (reason != null) 'reason': reason!,
-        if (suppressedCount != null) 'suppressedCount': suppressedCount!,
-      };
-}
-
-/// The parameters to TailLogEntries.
-class TailLogEntriesRequest {
-  /// The amount of time to buffer log entries at the server before being
-  /// returned to prevent out of order results due to late arriving log entries.
-  ///
-  /// Valid values are between 0-60000 milliseconds. Defaults to 2000
-  /// milliseconds.
+/// A field from the LogEntry that is added to the summary line
+/// (https://cloud.google.com/logging/docs/view/logs-explorer-interface#add-summary-fields)
+/// for a query in the Logs Explorer.
+class SummaryField {
+  /// The field from the LogEntry to include in the summary line, for example
+  /// resource.type or jsonPayload.name.
   ///
   /// Optional.
-  core.String? bufferWindow;
+  core.String? field;
 
-  /// Only log entries that match the filter are returned.
-  ///
-  /// An empty filter matches all log entries in the resources listed in
-  /// resource_names. Referencing a parent resource that is not listed in
-  /// resource_names will cause the filter to return no results. The maximum
-  /// length of a filter is 20,000 characters.
-  ///
-  /// Optional.
-  core.String? filter;
-
-  /// Name of a parent resource from which to retrieve log entries:
-  /// projects/\[PROJECT_ID\] organizations/\[ORGANIZATION_ID\]
-  /// billingAccounts/\[BILLING_ACCOUNT_ID\] folders/\[FOLDER_ID\]May
-  /// alternatively be one or more views:
-  /// projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
-  /// organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
-  /// billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
-  /// folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
-  ///
-  /// Required.
-  core.List<core.String>? resourceNames;
-
-  TailLogEntriesRequest({
-    this.bufferWindow,
-    this.filter,
-    this.resourceNames,
+  SummaryField({
+    this.field,
   });
 
-  TailLogEntriesRequest.fromJson(core.Map json_)
+  SummaryField.fromJson(core.Map json_)
       : this(
-          bufferWindow: json_.containsKey('bufferWindow')
-              ? json_['bufferWindow'] as core.String
-              : null,
-          filter: json_.containsKey('filter')
-              ? json_['filter'] as core.String
-              : null,
-          resourceNames: json_.containsKey('resourceNames')
-              ? (json_['resourceNames'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
+          field:
+              json_.containsKey('field') ? json_['field'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bufferWindow != null) 'bufferWindow': bufferWindow!,
-        if (filter != null) 'filter': filter!,
-        if (resourceNames != null) 'resourceNames': resourceNames!,
-      };
-}
-
-/// Result returned from TailLogEntries.
-class TailLogEntriesResponse {
-  /// A list of log entries.
-  ///
-  /// Each response in the stream will order entries with increasing values of
-  /// LogEntry.timestamp. Ordering is not guaranteed between separate responses.
-  core.List<LogEntry>? entries;
-
-  /// If entries that otherwise would have been included in the session were not
-  /// sent back to the client, counts of relevant entries omitted from the
-  /// session with the reason that they were not included.
-  ///
-  /// There will be at most one of each reason per response. The counts
-  /// represent the number of suppressed entries since the last streamed
-  /// response.
-  core.List<SuppressionInfo>? suppressionInfo;
-
-  TailLogEntriesResponse({
-    this.entries,
-    this.suppressionInfo,
-  });
-
-  TailLogEntriesResponse.fromJson(core.Map json_)
-      : this(
-          entries: json_.containsKey('entries')
-              ? (json_['entries'] as core.List)
-                  .map((value) => LogEntry.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          suppressionInfo: json_.containsKey('suppressionInfo')
-              ? (json_['suppressionInfo'] as core.List)
-                  .map((value) => SuppressionInfo.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (entries != null) 'entries': entries!,
-        if (suppressionInfo != null) 'suppressionInfo': suppressionInfo!,
+        if (field != null) 'field': field!,
       };
 }
 

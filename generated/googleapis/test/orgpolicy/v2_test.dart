@@ -10,7 +10,6 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 // ignore_for_file: unreachable_from_main
 // ignore_for_file: unused_local_variable
@@ -342,6 +341,7 @@ api.GoogleCloudOrgpolicyV2Policy buildGoogleCloudOrgpolicyV2Policy() {
   if (buildCounterGoogleCloudOrgpolicyV2Policy < 3) {
     o.alternate = buildGoogleCloudOrgpolicyV2AlternatePolicySpec();
     o.dryRunSpec = buildGoogleCloudOrgpolicyV2PolicySpec();
+    o.etag = 'foo';
     o.name = 'foo';
     o.spec = buildGoogleCloudOrgpolicyV2PolicySpec();
   }
@@ -354,6 +354,10 @@ void checkGoogleCloudOrgpolicyV2Policy(api.GoogleCloudOrgpolicyV2Policy o) {
   if (buildCounterGoogleCloudOrgpolicyV2Policy < 3) {
     checkGoogleCloudOrgpolicyV2AlternatePolicySpec(o.alternate!);
     checkGoogleCloudOrgpolicyV2PolicySpec(o.dryRunSpec!);
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -828,6 +832,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.OrgPolicyApi(mock).folders.policies;
       final arg_name = 'foo';
+      final arg_etag = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -862,6 +867,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['etag']!.first,
+          unittest.equals(arg_etag),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -872,7 +881,8 @@ void main() {
         final resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      final response = await res.delete(arg_name, $fields: arg_$fields);
+      final response =
+          await res.delete(arg_name, etag: arg_etag, $fields: arg_$fields);
       checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
@@ -1543,6 +1553,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.OrgPolicyApi(mock).organizations.policies;
       final arg_name = 'foo';
+      final arg_etag = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -1577,6 +1588,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['etag']!.first,
+          unittest.equals(arg_etag),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -1587,7 +1602,8 @@ void main() {
         final resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      final response = await res.delete(arg_name, $fields: arg_$fields);
+      final response =
+          await res.delete(arg_name, etag: arg_etag, $fields: arg_$fields);
       checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
@@ -1963,6 +1979,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.OrgPolicyApi(mock).projects.policies;
       final arg_name = 'foo';
+      final arg_etag = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -1997,6 +2014,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['etag']!.first,
+          unittest.equals(arg_etag),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -2007,7 +2028,8 @@ void main() {
         final resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      final response = await res.delete(arg_name, $fields: arg_$fields);
+      final response =
+          await res.delete(arg_name, etag: arg_etag, $fields: arg_$fields);
       checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 

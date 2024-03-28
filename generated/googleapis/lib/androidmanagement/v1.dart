@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Android Management API - v1
@@ -25,12 +24,13 @@
 ///   - [EnterprisesDevicesResource]
 ///     - [EnterprisesDevicesOperationsResource]
 ///   - [EnterprisesEnrollmentTokensResource]
+///   - [EnterprisesMigrationTokensResource]
 ///   - [EnterprisesPoliciesResource]
 ///   - [EnterprisesWebAppsResource]
 ///   - [EnterprisesWebTokensResource]
 /// - [ProvisioningInfoResource]
 /// - [SignupUrlsResource]
-library androidmanagement_v1;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -75,6 +75,8 @@ class EnterprisesResource {
       EnterprisesDevicesResource(_requester);
   EnterprisesEnrollmentTokensResource get enrollmentTokens =>
       EnterprisesEnrollmentTokensResource(_requester);
+  EnterprisesMigrationTokensResource get migrationTokens =>
+      EnterprisesMigrationTokensResource(_requester);
   EnterprisesPoliciesResource get policies =>
       EnterprisesPoliciesResource(_requester);
   EnterprisesWebAppsResource get webApps =>
@@ -156,9 +158,12 @@ class EnterprisesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Deletes an enterprise.
+  /// Permanently deletes an enterprise and all accounts and data associated
+  /// with it.
   ///
-  /// Only available for EMM-managed enterprises.
+  /// Warning: this will result in a cascaded deletion of all AM API devices
+  /// associated with the deleted enterprise. Only available for EMM-managed
+  /// enterprises.
   ///
   /// Request parameters:
   ///
@@ -676,46 +681,6 @@ class EnterprisesDevicesOperationsResource {
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Deletes a long-running operation.
-  ///
-  /// This method indicates that the client is no longer interested in the
-  /// operation result. It does not cancel the operation. If the server doesn't
-  /// support this method, it returns google.rpc.Code.UNIMPLEMENTED.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - The name of the operation resource to be deleted.
-  /// Value must have pattern
-  /// `^enterprises/\[^/\]+/devices/\[^/\]+/operations/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Empty].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$name');
-
-    final response_ = await _requester.request(
-      url_,
-      'DELETE',
-      queryParams: queryParams_,
-    );
-    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-
   /// Gets the latest state of a long-running operation.
   ///
   /// Clients can use this method to poll the operation result at intervals as
@@ -993,6 +958,145 @@ class EnterprisesEnrollmentTokensResource {
       queryParams: queryParams_,
     );
     return ListEnrollmentTokensResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class EnterprisesMigrationTokensResource {
+  final commons.ApiRequester _requester;
+
+  EnterprisesMigrationTokensResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a migration token, to migrate an existing device from being
+  /// managed by the EMM's Device Policy Controller (DPC) to being managed by
+  /// the Android Management API.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The enterprise in which this migration token will be
+  /// created. Format: enterprises/{enterprise}
+  /// Value must have pattern `^enterprises/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [MigrationToken].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<MigrationToken> create(
+    MigrationToken request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/migrationTokens';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return MigrationToken.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a migration token.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the migration token to retrieve. Format:
+  /// enterprises/{enterprise}/migrationTokens/{migration_token}
+  /// Value must have pattern `^enterprises/\[^/\]+/migrationTokens/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [MigrationToken].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<MigrationToken> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return MigrationToken.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists migration tokens.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The enterprise which the migration tokens belong to.
+  /// Format: enterprises/{enterprise}
+  /// Value must have pattern `^enterprises/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of migration tokens to return. Fewer
+  /// migration tokens may be returned. If unspecified, at most 100 migration
+  /// tokens will be returned. The maximum value is 100; values above 100 will
+  /// be coerced to 100.
+  ///
+  /// [pageToken] - A page token, received from a previous ListMigrationTokens
+  /// call. Provide this to retrieve the subsequent page.When paginating, all
+  /// other parameters provided to ListMigrationTokens must match the call that
+  /// provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListMigrationTokensResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListMigrationTokensResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/migrationTokens';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListMigrationTokensResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -1438,7 +1542,7 @@ class ProvisioningInfoResource {
 
   ProvisioningInfoResource(commons.ApiRequester client) : _requester = client;
 
-  /// Get the device provisioning info by the identifier provided via the
+  /// Get the device provisioning information by the identifier provided in the
   /// sign-in url.
   ///
   /// Request parameters:
@@ -1528,10 +1632,9 @@ class SignupUrlsResource {
   }
 }
 
-/// Security policies set to secure values by default.
+/// Advanced security settings.
 ///
-/// To maintain the security posture of a device, we don't recommend overriding
-/// any of the default values.
+/// In most cases, setting these is not needed.
 class AdvancedSecurityOverrides {
   /// Controls Common Criteria Mode—security standards defined in the Common
   /// Criteria for Information Technology Security Evaluation
@@ -1576,6 +1679,34 @@ class AdvancedSecurityOverrides {
   /// app verification.
   core.String? googlePlayProtectVerifyApps;
 
+  /// Controls Memory Tagging Extension (MTE)
+  /// (https://source.android.com/docs/security/test/memory-safety/arm-mte) on
+  /// the device.
+  ///
+  /// The device needs to be rebooted to apply changes to the MTE policy.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "MTE_POLICY_UNSPECIFIED" : Unspecified. Defaults to MTE_USER_CHOICE.
+  /// - "MTE_USER_CHOICE" : The user can choose to enable or disable MTE on the
+  /// device if the device supports this.
+  /// - "MTE_ENFORCED" : MTE is enabled on the device and the user is not
+  /// allowed to change this setting. This can be set on fully managed devices
+  /// and work profiles on company-owned devices. A nonComplianceDetail with
+  /// MANAGEMENT_MODE is reported for other management modes. A
+  /// nonComplianceDetail with DEVICE_INCOMPATIBLE is reported if the device
+  /// does not support MTE.Supported on Android 14 and above. A
+  /// nonComplianceDetail with API_LEVEL is reported if the Android version is
+  /// less than 14.
+  /// - "MTE_DISABLED" : MTE is disabled on the device and the user is not
+  /// allowed to change this setting. This applies only on fully managed
+  /// devices. In other cases, a nonComplianceDetail with MANAGEMENT_MODE is
+  /// reported. A nonComplianceDetail with DEVICE_INCOMPATIBLE is reported if
+  /// the device does not support MTE.Supported on Android 14 and above. A
+  /// nonComplianceDetail with API_LEVEL is reported if the Android version is
+  /// less than 14.
+  core.String? mtePolicy;
+
   /// Personal apps that can read work profile notifications using a
   /// NotificationListenerService
   /// (https://developer.android.com/reference/android/service/notification/NotificationListenerService).
@@ -1604,6 +1735,7 @@ class AdvancedSecurityOverrides {
     this.commonCriteriaMode,
     this.developerSettings,
     this.googlePlayProtectVerifyApps,
+    this.mtePolicy,
     this.personalAppsThatCanReadWorkNotifications,
     this.untrustedAppsPolicy,
   });
@@ -1620,6 +1752,9 @@ class AdvancedSecurityOverrides {
               json_.containsKey('googlePlayProtectVerifyApps')
                   ? json_['googlePlayProtectVerifyApps'] as core.String
                   : null,
+          mtePolicy: json_.containsKey('mtePolicy')
+              ? json_['mtePolicy'] as core.String
+              : null,
           personalAppsThatCanReadWorkNotifications: json_
                   .containsKey('personalAppsThatCanReadWorkNotifications')
               ? (json_['personalAppsThatCanReadWorkNotifications'] as core.List)
@@ -1637,6 +1772,7 @@ class AdvancedSecurityOverrides {
         if (developerSettings != null) 'developerSettings': developerSettings!,
         if (googlePlayProtectVerifyApps != null)
           'googlePlayProtectVerifyApps': googlePlayProtectVerifyApps!,
+        if (mtePolicy != null) 'mtePolicy': mtePolicy!,
         if (personalAppsThatCanReadWorkNotifications != null)
           'personalAppsThatCanReadWorkNotifications':
               personalAppsThatCanReadWorkNotifications!,
@@ -2116,7 +2252,8 @@ class ApplicationPermission {
 /// Policy for an individual app.
 ///
 /// Note: Application availability on a given device cannot be changed using
-/// this policy if installAppsDisabled is enabled.
+/// this policy if installAppsDisabled is enabled. The maximum number of
+/// applications that you can specify per policy is 3,000.
 class ApplicationPolicy {
   /// List of the app’s track IDs that a device belonging to the enterprise can
   /// access.
@@ -2152,10 +2289,11 @@ class ApplicationPolicy {
   /// Possible string values are:
   /// - "AUTO_UPDATE_MODE_UNSPECIFIED" : Unspecified. Defaults to
   /// AUTO_UPDATE_DEFAULT.
-  /// - "AUTO_UPDATE_DEFAULT" : The app is automatically updated with low
-  /// priority to minimize the impact on the user.The app is updated when all of
-  /// the following constraints are met: The device is not actively used. The
-  /// device is connected to an unmetered network. The device is charging.The
+  /// - "AUTO_UPDATE_DEFAULT" : The default update mode.The app is automatically
+  /// updated with low priority to minimize the impact on the user.The app is
+  /// updated when all of the following constraints are met: The device is not
+  /// actively used. The device is connected to an unmetered network. The device
+  /// is charging. The app to be updated is not running in the foreground.The
   /// device is notified about a new update within 24 hours after it is
   /// published by the developer, after which the app is updated the next time
   /// the constraints above are met.
@@ -2182,6 +2320,17 @@ class ApplicationPolicy {
   /// communicate across profiles after receiving user consent.
   core.String? connectedWorkAndPersonalApp;
 
+  /// Whether the app is allowed to act as a credential provider on Android 14
+  /// and above.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "CREDENTIAL_PROVIDER_POLICY_UNSPECIFIED" : Unspecified. The behaviour is
+  /// governed by credentialProviderPolicyDefault.
+  /// - "CREDENTIAL_PROVIDER_ALLOWED" : App is allowed to act as a credential
+  /// provider.
+  core.String? credentialProviderPolicy;
+
   /// The default policy for all permissions requested by the app.
   ///
   /// If specified, this overrides the policy-level default_permission_policy
@@ -2192,11 +2341,31 @@ class ApplicationPolicy {
   /// specified for a permission at any level, then the PROMPT behavior is used
   /// by default.
   /// - "PROMPT" : Prompt the user to grant a permission.
-  /// - "GRANT" : Automatically grant a permission.
+  /// - "GRANT" : Automatically grant a permission.On Android 12 and above,
+  /// Manifest.permission.READ_SMS
+  /// (https://developer.android.com/reference/android/Manifest.permission#READ_SMS)
+  /// and following sensor-related permissions can only be granted on fully
+  /// managed devices: Manifest.permission.ACCESS_FINE_LOCATION
+  /// (https://developer.android.com/reference/android/Manifest.permission#ACCESS_FINE_LOCATION)
+  /// Manifest.permission.ACCESS_BACKGROUND_LOCATION
+  /// (https://developer.android.com/reference/android/Manifest.permission#ACCESS_BACKGROUND_LOCATION)
+  /// Manifest.permission.ACCESS_COARSE_LOCATION
+  /// (https://developer.android.com/reference/android/Manifest.permission#ACCESS_COARSE_LOCATION)
+  /// Manifest.permission.CAMERA
+  /// (https://developer.android.com/reference/android/Manifest.permission#CAMERA)
+  /// Manifest.permission.RECORD_AUDIO
+  /// (https://developer.android.com/reference/android/Manifest.permission#RECORD_AUDIO)
+  /// Manifest.permission.ACTIVITY_RECOGNITION
+  /// (https://developer.android.com/reference/android/Manifest.permission#ACTIVITY_RECOGNITION)
+  /// Manifest.permission.BODY_SENSORS
+  /// (https://developer.android.com/reference/android/Manifest.permission#BODY_SENSORS)
   /// - "DENY" : Automatically deny a permission.
   core.String? defaultPermissionPolicy;
 
   /// The scopes delegated to the app from Android Device Policy.
+  ///
+  /// These provide additional privileges for the applications they are applied
+  /// to.
   core.List<core.String>? delegatedScopes;
 
   /// Whether the app is disabled.
@@ -2209,15 +2378,34 @@ class ApplicationPolicy {
   /// for at most one app.
   ExtensionConfig? extensionConfig;
 
+  /// The constraints for installing the app.
+  ///
+  /// You can specify a maximum of one InstallConstraint. Multiple constraints
+  /// are rejected.
+  ///
+  /// Optional.
+  core.List<InstallConstraint>? installConstraint;
+
+  /// Amongst apps with installType set to: FORCE_INSTALLED PREINSTALLEDthis
+  /// controls the relative priority of installation.
+  ///
+  /// A value of 0 (default) means this app has no priority over other apps. For
+  /// values between 1 and 10,000, a lower value means a higher priority. Values
+  /// outside of the range 0 to 10,000 inclusive are rejected.
+  ///
+  /// Optional.
+  core.int? installPriority;
+
   /// The type of installation to perform.
   /// Possible string values are:
   /// - "INSTALL_TYPE_UNSPECIFIED" : Unspecified. Defaults to AVAILABLE.
   /// - "PREINSTALLED" : The app is automatically installed and can be removed
   /// by the user.
-  /// - "FORCE_INSTALLED" : The app is automatically installed and can't be
-  /// removed by the user.
+  /// - "FORCE_INSTALLED" : The app is automatically installed regardless of a
+  /// set maintenance window and can't be removed by the user.
   /// - "BLOCKED" : The app is blocked and can't be installed. If the app was
-  /// installed under a previous policy, it will be uninstalled.
+  /// installed under a previous policy, it will be uninstalled. This also
+  /// blocks its instant app functionality.
   /// - "AVAILABLE" : The app is available to install.
   /// - "REQUIRED_FOR_SETUP" : The app is automatically installed and can't be
   /// removed by the user and will prevent setup from completion until
@@ -2296,10 +2484,13 @@ class ApplicationPolicy {
     this.alwaysOnVpnLockdownExemption,
     this.autoUpdateMode,
     this.connectedWorkAndPersonalApp,
+    this.credentialProviderPolicy,
     this.defaultPermissionPolicy,
     this.delegatedScopes,
     this.disabled,
     this.extensionConfig,
+    this.installConstraint,
+    this.installPriority,
     this.installType,
     this.lockTaskAllowed,
     this.managedConfiguration,
@@ -2328,6 +2519,10 @@ class ApplicationPolicy {
               json_.containsKey('connectedWorkAndPersonalApp')
                   ? json_['connectedWorkAndPersonalApp'] as core.String
                   : null,
+          credentialProviderPolicy:
+              json_.containsKey('credentialProviderPolicy')
+                  ? json_['credentialProviderPolicy'] as core.String
+                  : null,
           defaultPermissionPolicy: json_.containsKey('defaultPermissionPolicy')
               ? json_['defaultPermissionPolicy'] as core.String
               : null,
@@ -2342,6 +2537,15 @@ class ApplicationPolicy {
           extensionConfig: json_.containsKey('extensionConfig')
               ? ExtensionConfig.fromJson(json_['extensionConfig']
                   as core.Map<core.String, core.dynamic>)
+              : null,
+          installConstraint: json_.containsKey('installConstraint')
+              ? (json_['installConstraint'] as core.List)
+                  .map((value) => InstallConstraint.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          installPriority: json_.containsKey('installPriority')
+              ? json_['installPriority'] as core.int
               : null,
           installType: json_.containsKey('installType')
               ? json_['installType'] as core.String
@@ -2384,11 +2588,15 @@ class ApplicationPolicy {
         if (autoUpdateMode != null) 'autoUpdateMode': autoUpdateMode!,
         if (connectedWorkAndPersonalApp != null)
           'connectedWorkAndPersonalApp': connectedWorkAndPersonalApp!,
+        if (credentialProviderPolicy != null)
+          'credentialProviderPolicy': credentialProviderPolicy!,
         if (defaultPermissionPolicy != null)
           'defaultPermissionPolicy': defaultPermissionPolicy!,
         if (delegatedScopes != null) 'delegatedScopes': delegatedScopes!,
         if (disabled != null) 'disabled': disabled!,
         if (extensionConfig != null) 'extensionConfig': extensionConfig!,
+        if (installConstraint != null) 'installConstraint': installConstraint!,
+        if (installPriority != null) 'installPriority': installPriority!,
         if (installType != null) 'installType': installType!,
         if (lockTaskAllowed != null) 'lockTaskAllowed': lockTaskAllowed!,
         if (managedConfiguration != null)
@@ -2783,6 +2991,10 @@ class Command {
 
   /// For commands of type RESET_PASSWORD, optionally specifies the new
   /// password.
+  ///
+  /// Note: The new password must be at least 6 characters long if it is numeric
+  /// in case of Android 14 devices. Else the command will fail with
+  /// INVALID_VALUE.
   core.String? newPassword;
 
   /// For commands of type RESET_PASSWORD, optionally specifies flags.
@@ -3166,7 +3378,11 @@ class ContentProviderEndpoint {
       };
 }
 
-/// Cross-profile policies applied on the device.
+/// Controls the data from the work profile that can be accessed from the
+/// personal profile and vice versa.
+///
+/// A nonComplianceDetail with MANAGEMENT_MODE is reported if the device does
+/// not have a work profile.
 class CrossProfilePolicies {
   /// Whether text copied from one profile (personal or work) can be pasted in
   /// the other profile.
@@ -3200,17 +3416,52 @@ class CrossProfilePolicies {
   /// shared with the other profile.
   core.String? crossProfileDataSharing;
 
-  /// Whether contacts stored in the work profile can be shown in personal
-  /// profile contact searches and incoming calls.
+  /// List of apps which are excluded from the ShowWorkContactsInPersonalProfile
+  /// setting.
+  ///
+  /// For this to be set, ShowWorkContactsInPersonalProfile must be set to one
+  /// of the following values: SHOW_WORK_CONTACTS_IN_PERSONAL_PROFILE_ALLOWED.
+  /// In this case, these exemptions act as a blocklist.
+  /// SHOW_WORK_CONTACTS_IN_PERSONAL_PROFILE_DISALLOWED. In this case, these
+  /// exemptions act as an allowlist.
+  /// SHOW_WORK_CONTACTS_IN_PERSONAL_PROFILE_DISALLOWED_EXCEPT_SYSTEM. In this
+  /// case, these exemptions act as an allowlist, in addition to the already
+  /// allowlisted system apps.Supported on Android 14 and above. A
+  /// nonComplianceDetail with API_LEVEL is reported if the Android version is
+  /// less than 14.
+  PackageNameList? exemptionsToShowWorkContactsInPersonalProfile;
+
+  /// Whether personal apps can access contacts stored in the work profile.See
+  /// also exemptions_to_show_work_contacts_in_personal_profile.
   /// Possible string values are:
   /// - "SHOW_WORK_CONTACTS_IN_PERSONAL_PROFILE_UNSPECIFIED" : Unspecified.
-  /// Defaults to SHOW_WORK_CONTACTS_IN_PERSONAL_PROFILE_ALLOWED.
-  /// - "SHOW_WORK_CONTACTS_IN_PERSONAL_PROFILE_DISALLOWED" : Prevents work
-  /// profile contacts from appearing in personal profile contact searches and
-  /// incoming calls
-  /// - "SHOW_WORK_CONTACTS_IN_PERSONAL_PROFILE_ALLOWED" : Default. Allows work
-  /// profile contacts to appear in personal profile contact searches and
-  /// incoming calls
+  /// Defaults to SHOW_WORK_CONTACTS_IN_PERSONAL_PROFILE_ALLOWED.When this is
+  /// set, exemptions_to_show_work_contacts_in_personal_profile must not be set.
+  /// - "SHOW_WORK_CONTACTS_IN_PERSONAL_PROFILE_DISALLOWED" : Prevents personal
+  /// apps from accessing work profile contacts and looking up work
+  /// contacts.When this is set, personal apps specified in
+  /// exemptions_to_show_work_contacts_in_personal_profile are allowlisted and
+  /// can access work profile contacts directly.Supported on Android 7.0 and
+  /// above. A nonComplianceDetail with API_LEVEL is reported if the Android
+  /// version is less than 7.0.
+  /// - "SHOW_WORK_CONTACTS_IN_PERSONAL_PROFILE_ALLOWED" : Default. Allows apps
+  /// in the personal profile to access work profile contacts including contact
+  /// searches and incoming calls.When this is set, personal apps specified in
+  /// exemptions_to_show_work_contacts_in_personal_profile are blocklisted and
+  /// can not access work profile contacts directly.Supported on Android 7.0 and
+  /// above. A nonComplianceDetail with API_LEVEL is reported if the Android
+  /// version is less than 7.0.
+  /// - "SHOW_WORK_CONTACTS_IN_PERSONAL_PROFILE_DISALLOWED_EXCEPT_SYSTEM" :
+  /// Prevents most personal apps from accessing work profile contacts including
+  /// contact searches and incoming calls, except for the OEM default Dialer,
+  /// Messages, and Contacts apps. Neither user-configured Dialer, Messages, and
+  /// Contacts apps, nor any other system or play installed apps, will be able
+  /// to query work contacts directly.When this is set, personal apps specified
+  /// in exemptions_to_show_work_contacts_in_personal_profile are allowlisted
+  /// and can access work profile contacts.Supported on Android 14 and above. If
+  /// this is set on a device with Android version less than 14, the behaviour
+  /// falls back to SHOW_WORK_CONTACTS_IN_PERSONAL_PROFILE_DISALLOWED and a
+  /// nonComplianceDetail with API_LEVEL is reported.
   core.String? showWorkContactsInPersonalProfile;
 
   /// Specifies the default behaviour for work profile widgets.
@@ -3233,6 +3484,7 @@ class CrossProfilePolicies {
   CrossProfilePolicies({
     this.crossProfileCopyPaste,
     this.crossProfileDataSharing,
+    this.exemptionsToShowWorkContactsInPersonalProfile,
     this.showWorkContactsInPersonalProfile,
     this.workProfileWidgetsDefault,
   });
@@ -3245,6 +3497,12 @@ class CrossProfilePolicies {
           crossProfileDataSharing: json_.containsKey('crossProfileDataSharing')
               ? json_['crossProfileDataSharing'] as core.String
               : null,
+          exemptionsToShowWorkContactsInPersonalProfile:
+              json_.containsKey('exemptionsToShowWorkContactsInPersonalProfile')
+                  ? PackageNameList.fromJson(
+                      json_['exemptionsToShowWorkContactsInPersonalProfile']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           showWorkContactsInPersonalProfile:
               json_.containsKey('showWorkContactsInPersonalProfile')
                   ? json_['showWorkContactsInPersonalProfile'] as core.String
@@ -3260,6 +3518,9 @@ class CrossProfilePolicies {
           'crossProfileCopyPaste': crossProfileCopyPaste!,
         if (crossProfileDataSharing != null)
           'crossProfileDataSharing': crossProfileDataSharing!,
+        if (exemptionsToShowWorkContactsInPersonalProfile != null)
+          'exemptionsToShowWorkContactsInPersonalProfile':
+              exemptionsToShowWorkContactsInPersonalProfile!,
         if (showWorkContactsInPersonalProfile != null)
           'showWorkContactsInPersonalProfile':
               showWorkContactsInPersonalProfile!,
@@ -3320,6 +3581,9 @@ class Device {
   /// are in this state until they have a policy applied.
   /// - "LOST" : The device is lost. This state is only possible on
   /// organization-owned devices.
+  /// - "PREPARING_FOR_MIGRATION" : The device is preparing for migrating to
+  /// Android Management API. No further action is needed for the migration to
+  /// continue.
   core.String? appliedState;
 
   /// Information about Common Criteria Mode—security standards defined in the
@@ -3346,6 +3610,12 @@ class Device {
   /// This information is only available if displayInfoEnabled is true in the
   /// device's policy.
   core.List<Display>? displays;
+
+  /// Information related to whether this device was migrated from being managed
+  /// by another Device Policy Controller (DPC).
+  ///
+  /// Output only.
+  DpcMigrationInfo? dpcMigrationInfo;
 
   /// The time of device enrollment.
   core.String? enrollmentTime;
@@ -3393,7 +3663,8 @@ class Device {
   /// Events related to memory and storage measurements in chronological order.
   ///
   /// This information is only available if memoryInfoEnabled is true in the
-  /// device's policy.
+  /// device's policy.Events are retained for a certain period of time and old
+  /// events are deleted.
   core.List<MemoryEvent>? memoryEvents;
 
   /// Memory information: contains information about device memory and storage.
@@ -3473,6 +3744,9 @@ class Device {
   /// are in this state until they have a policy applied.
   /// - "LOST" : The device is lost. This state is only possible on
   /// organization-owned devices.
+  /// - "PREPARING_FOR_MIGRATION" : The device is preparing for migrating to
+  /// Android Management API. No further action is needed for the migration to
+  /// continue.
   core.String? state;
 
   /// Map of selected system properties name and value related to the device.
@@ -3499,6 +3773,7 @@ class Device {
     this.deviceSettings,
     this.disabledReason,
     this.displays,
+    this.dpcMigrationInfo,
     this.enrollmentTime,
     this.enrollmentTokenData,
     this.enrollmentTokenName,
@@ -3569,6 +3844,10 @@ class Device {
                   .map((value) => Display.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
+              : null,
+          dpcMigrationInfo: json_.containsKey('dpcMigrationInfo')
+              ? DpcMigrationInfo.fromJson(json_['dpcMigrationInfo']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           enrollmentTime: json_.containsKey('enrollmentTime')
               ? json_['enrollmentTime'] as core.String
@@ -3687,6 +3966,7 @@ class Device {
         if (deviceSettings != null) 'deviceSettings': deviceSettings!,
         if (disabledReason != null) 'disabledReason': disabledReason!,
         if (displays != null) 'displays': displays!,
+        if (dpcMigrationInfo != null) 'dpcMigrationInfo': dpcMigrationInfo!,
         if (enrollmentTime != null) 'enrollmentTime': enrollmentTime!,
         if (enrollmentTokenData != null)
           'enrollmentTokenData': enrollmentTokenData!,
@@ -3848,16 +4128,59 @@ class DeviceConnectivityManagement {
 
 /// Controls for device radio settings.
 class DeviceRadioState {
-  /// Controls whether airplane mode can be toggled by the user or not
+  /// Controls whether airplane mode can be toggled by the user or not.
   /// Possible string values are:
   /// - "AIRPLANE_MODE_STATE_UNSPECIFIED" : Unspecified. Defaults to
-  /// AIRPLANE_MODE_USER_CHOICE
+  /// AIRPLANE_MODE_USER_CHOICE.
   /// - "AIRPLANE_MODE_USER_CHOICE" : The user is allowed to toggle airplane
   /// mode on or off.
   /// - "AIRPLANE_MODE_DISABLED" : Airplane mode is disabled. The user is not
   /// allowed to toggle airplane mode on. A nonComplianceDetail with API_LEVEL
   /// is reported if the Android version is less than 9.
   core.String? airplaneModeState;
+
+  /// Controls whether cellular 2G setting can be toggled by the user or not.
+  /// Possible string values are:
+  /// - "CELLULAR_TWO_G_STATE_UNSPECIFIED" : Unspecified. Defaults to
+  /// CELLULAR_TWO_G_USER_CHOICE.
+  /// - "CELLULAR_TWO_G_USER_CHOICE" : The user is allowed to toggle cellular 2G
+  /// on or off.
+  /// - "CELLULAR_TWO_G_DISABLED" : Cellular 2G is disabled. The user is not
+  /// allowed to toggle cellular 2G on via settings. A nonComplianceDetail with
+  /// API_LEVEL is reported if the Android version is less than 14.
+  core.String? cellularTwoGState;
+
+  /// The minimum required security level of Wi-Fi networks that the device can
+  /// connect to.
+  /// Possible string values are:
+  /// - "MINIMUM_WIFI_SECURITY_LEVEL_UNSPECIFIED" : Defaults to
+  /// OPEN_NETWORK_SECURITY, which means the device will be able to connect to
+  /// all types of Wi-Fi networks.
+  /// - "OPEN_NETWORK_SECURITY" : The device will be able to connect to all
+  /// types of Wi-Fi networks.
+  /// - "PERSONAL_NETWORK_SECURITY" : A personal network such as WEP, WPA2-PSK
+  /// is the minimum required security. The device will not be able to connect
+  /// to open wifi networks. This is stricter than OPEN_NETWORK_SECURITY. A
+  /// nonComplianceDetail with API_LEVEL is reported if the Android version is
+  /// less than 13.
+  /// - "ENTERPRISE_NETWORK_SECURITY" : An enterprise EAP network is the minimum
+  /// required security level. The device will not be able to connect to Wi-Fi
+  /// network below this security level. This is stricter than
+  /// PERSONAL_NETWORK_SECURITY. A nonComplianceDetail with API_LEVEL is
+  /// reported if the Android version is less than 13.
+  core.String? minimumWifiSecurityLevel;
+
+  /// Controls the state of the ultra wideband setting and whether the user can
+  /// toggle it on or off.
+  /// Possible string values are:
+  /// - "ULTRA_WIDEBAND_STATE_UNSPECIFIED" : Unspecified. Defaults to
+  /// ULTRA_WIDEBAND_USER_CHOICE.
+  /// - "ULTRA_WIDEBAND_USER_CHOICE" : The user is allowed to toggle ultra
+  /// wideband on or off.
+  /// - "ULTRA_WIDEBAND_DISABLED" : Ultra wideband is disabled. The user is not
+  /// allowed to toggle ultra wideband on via settings. A nonComplianceDetail
+  /// with API_LEVEL is reported if the Android version is less than 14.
+  core.String? ultraWidebandState;
 
   /// Controls current state of Wi-Fi and if user can change its state.
   /// Possible string values are:
@@ -3874,6 +4197,9 @@ class DeviceRadioState {
 
   DeviceRadioState({
     this.airplaneModeState,
+    this.cellularTwoGState,
+    this.minimumWifiSecurityLevel,
+    this.ultraWidebandState,
     this.wifiState,
   });
 
@@ -3882,6 +4208,16 @@ class DeviceRadioState {
           airplaneModeState: json_.containsKey('airplaneModeState')
               ? json_['airplaneModeState'] as core.String
               : null,
+          cellularTwoGState: json_.containsKey('cellularTwoGState')
+              ? json_['cellularTwoGState'] as core.String
+              : null,
+          minimumWifiSecurityLevel:
+              json_.containsKey('minimumWifiSecurityLevel')
+                  ? json_['minimumWifiSecurityLevel'] as core.String
+                  : null,
+          ultraWidebandState: json_.containsKey('ultraWidebandState')
+              ? json_['ultraWidebandState'] as core.String
+              : null,
           wifiState: json_.containsKey('wifiState')
               ? json_['wifiState'] as core.String
               : null,
@@ -3889,6 +4225,11 @@ class DeviceRadioState {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (airplaneModeState != null) 'airplaneModeState': airplaneModeState!,
+        if (cellularTwoGState != null) 'cellularTwoGState': cellularTwoGState!,
+        if (minimumWifiSecurityLevel != null)
+          'minimumWifiSecurityLevel': minimumWifiSecurityLevel!,
+        if (ultraWidebandState != null)
+          'ultraWidebandState': ultraWidebandState!,
         if (wifiState != null) 'wifiState': wifiState!,
       };
 }
@@ -4047,6 +4388,43 @@ class Display {
         if (refreshRate != null) 'refreshRate': refreshRate!,
         if (state != null) 'state': state!,
         if (width != null) 'width': width!,
+      };
+}
+
+/// Information related to whether this device was migrated from being managed
+/// by another Device Policy Controller (DPC).
+class DpcMigrationInfo {
+  /// If this device was migrated from another DPC, the additionalData field of
+  /// the migration token is populated here.
+  ///
+  /// Output only.
+  core.String? additionalData;
+
+  /// If this device was migrated from another DPC, this is its package name.
+  ///
+  /// Not populated otherwise.
+  ///
+  /// Output only.
+  core.String? previousDpc;
+
+  DpcMigrationInfo({
+    this.additionalData,
+    this.previousDpc,
+  });
+
+  DpcMigrationInfo.fromJson(core.Map json_)
+      : this(
+          additionalData: json_.containsKey('additionalData')
+              ? json_['additionalData'] as core.String
+              : null,
+          previousDpc: json_.containsKey('previousDpc')
+              ? json_['previousDpc'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (additionalData != null) 'additionalData': additionalData!,
+        if (previousDpc != null) 'previousDpc': previousDpc!,
       };
 }
 
@@ -4427,17 +4805,17 @@ class ExternalData {
 /// A system freeze period.
 ///
 /// When a device’s clock is within the freeze period, all incoming system
-/// updates (including security patches) are blocked and won’t be installed.
-/// When a device is outside the freeze period, normal update behavior applies.
-/// Leap years are ignored in freeze period calculations, in particular: * If
-/// Feb. 29th is set as the start or end date of a freeze period, the freeze
-/// period will start or end on Feb. 28th instead. * When a device’s system
-/// clock reads Feb. 29th, it’s treated as Feb. 28th. * When calculating the
-/// number of days in a freeze period or the time between two freeze periods,
-/// Feb. 29th is ignored and not counted as a day.Note: For Freeze Periods to
-/// take effect, SystemUpdateType cannot be specified as
-/// SYSTEM_UPDATE_TYPE_UNSPECIFIED, because freeze periods require a defined
-/// policy to be specified.
+/// updates (including security patches) are blocked and won’t be installed.When
+/// the device is outside any set freeze periods, the normal policy behavior
+/// (automatic, windowed, or postponed) applies.Leap years are ignored in freeze
+/// period calculations, in particular: If Feb. 29th is set as the start or end
+/// date of a freeze period, the freeze period will start or end on Feb. 28th
+/// instead. When a device’s system clock reads Feb. 29th, it’s treated as Feb.
+/// 28th. When calculating the number of days in a freeze period or the time
+/// between two freeze periods, Feb. 29th is ignored and not counted as a
+/// day.Note: For Freeze Periods to take effect, SystemUpdateType cannot be
+/// specified as SYSTEM_UPDATE_TYPE_UNSPECIFIED, because freeze periods require
+/// a defined policy to be specified.
 class FreezePeriod {
   /// The end date (inclusive) of the freeze period.
   ///
@@ -4754,6 +5132,73 @@ class HardwareStatus {
       };
 }
 
+/// Amongst apps with InstallType set to: FORCE_INSTALLED PREINSTALLEDthis
+/// defines a set of restrictions for the app installation.
+///
+/// At least one of the fields must be set. When multiple fields are set, then
+/// all the constraints need to be satisfied for the app to be installed.
+class InstallConstraint {
+  /// Charging constraint.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "CHARGING_CONSTRAINT_UNSPECIFIED" : Unspecified. Default to
+  /// CHARGING_NOT_REQUIRED.
+  /// - "CHARGING_NOT_REQUIRED" : Device doesn't have to be charging.
+  /// - "INSTALL_ONLY_WHEN_CHARGING" : Device has to be charging.
+  core.String? chargingConstraint;
+
+  /// Device idle constraint.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "DEVICE_IDLE_CONSTRAINT_UNSPECIFIED" : Unspecified. Default to
+  /// DEVICE_IDLE_NOT_REQUIRED.
+  /// - "DEVICE_IDLE_NOT_REQUIRED" : Device doesn't have to be idle, app can be
+  /// installed while the user is interacting with the device.
+  /// - "INSTALL_ONLY_WHEN_DEVICE_IDLE" : Device has to be idle.
+  core.String? deviceIdleConstraint;
+
+  /// Network type constraint.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "NETWORK_TYPE_CONSTRAINT_UNSPECIFIED" : Unspecified. Default to
+  /// INSTALL_ON_ANY_NETWORK.
+  /// - "INSTALL_ON_ANY_NETWORK" : Any active networks (Wi-Fi, cellular, etc.).
+  /// - "INSTALL_ONLY_ON_UNMETERED_NETWORK" : Any unmetered network (e.g.
+  /// Wi-FI).
+  core.String? networkTypeConstraint;
+
+  InstallConstraint({
+    this.chargingConstraint,
+    this.deviceIdleConstraint,
+    this.networkTypeConstraint,
+  });
+
+  InstallConstraint.fromJson(core.Map json_)
+      : this(
+          chargingConstraint: json_.containsKey('chargingConstraint')
+              ? json_['chargingConstraint'] as core.String
+              : null,
+          deviceIdleConstraint: json_.containsKey('deviceIdleConstraint')
+              ? json_['deviceIdleConstraint'] as core.String
+              : null,
+          networkTypeConstraint: json_.containsKey('networkTypeConstraint')
+              ? json_['networkTypeConstraint'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (chargingConstraint != null)
+          'chargingConstraint': chargingConstraint!,
+        if (deviceIdleConstraint != null)
+          'deviceIdleConstraint': deviceIdleConstraint!,
+        if (networkTypeConstraint != null)
+          'networkTypeConstraint': networkTypeConstraint!,
+      };
+}
+
 /// Keyed app state reported by the app.
 class KeyedAppState {
   /// The creation time of the app state on the device.
@@ -5049,6 +5494,40 @@ class ListEnterprisesResponse {
       };
 }
 
+/// Response to a request to list migration tokens for a given enterprise.
+class ListMigrationTokensResponse {
+  /// The migration tokens from the specified enterprise.
+  core.List<MigrationToken>? migrationTokens;
+
+  /// A token, which can be sent as page_token to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  ListMigrationTokensResponse({
+    this.migrationTokens,
+    this.nextPageToken,
+  });
+
+  ListMigrationTokensResponse.fromJson(core.Map json_)
+      : this(
+          migrationTokens: json_.containsKey('migrationTokens')
+              ? (json_['migrationTokens'] as core.List)
+                  .map((value) => MigrationToken.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (migrationTokens != null) 'migrationTokens': migrationTokens!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
 /// The response message for Operations.ListOperations.
 class ListOperationsResponse {
   /// The standard List next-page token.
@@ -5309,7 +5788,8 @@ class ManagedPropertyEntry {
       };
 }
 
-/// An event related to memory and storage measurements.
+/// An event related to memory and storage measurements.To distinguish between
+/// new and old events, we recommend using the createTime field.
 class MemoryEvent {
   /// The number of free bytes in the medium, or for EXTERNAL_STORAGE_DETECTED,
   /// the total capacity in bytes of the storage medium.
@@ -5386,6 +5866,158 @@ class MemoryInfo {
         if (totalInternalStorage != null)
           'totalInternalStorage': totalInternalStorage!,
         if (totalRam != null) 'totalRam': totalRam!,
+      };
+}
+
+/// A token to initiate the migration of a device from being managed by a
+/// third-party DPC to being managed by Android Management API.
+///
+/// A migration token is valid only for a single device.
+class MigrationToken {
+  /// Optional EMM-specified additional data.
+  ///
+  /// Once the device is migrated this will be populated in the
+  /// migrationAdditionalData field of the Device resource. This must be at most
+  /// 1024 characters.
+  ///
+  /// Immutable.
+  core.String? additionalData;
+
+  /// Time when this migration token was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Once this migration token is used to migrate a device, the name of the
+  /// resulting Device resource will be populated here, in the form
+  /// enterprises/{enterprise}/devices/{device}.
+  ///
+  /// Output only.
+  core.String? device;
+
+  /// The id of the device, as in the Play EMM API.
+  ///
+  /// This corresponds to the deviceId parameter in Play EMM API's Devices.get
+  /// (https://developers.google.com/android/work/play/emm-api/v1/devices/get#parameters)
+  /// call.
+  ///
+  /// Required. Immutable.
+  core.String? deviceId;
+
+  /// The time when this migration token expires.
+  ///
+  /// This can be at most seven days from the time of creation. The migration
+  /// token is deleted seven days after it expires.
+  ///
+  /// Immutable.
+  core.String? expireTime;
+
+  /// The management mode of the device or profile being migrated.
+  ///
+  /// Required. Immutable.
+  /// Possible string values are:
+  /// - "MANAGEMENT_MODE_UNSPECIFIED" : This value must not be used.
+  /// - "WORK_PROFILE_PERSONALLY_OWNED" : A work profile on a personally owned
+  /// device. Supported only on devices running Android 9 and above.
+  /// - "WORK_PROFILE_COMPANY_OWNED" : A work profile on a company-owned device.
+  /// Supported only on devices running Android 11 and above.
+  /// - "FULLY_MANAGED" : A fully-managed device. Supported only on devices
+  /// running Android 9 and above.
+  core.String? managementMode;
+
+  /// The name of the migration token, which is generated by the server during
+  /// creation, in the form
+  /// enterprises/{enterprise}/migrationTokens/{migration_token}.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The name of the policy initially applied to the enrolled device, in the
+  /// form enterprises/{enterprise}/policies/{policy}.
+  ///
+  /// Required. Immutable.
+  core.String? policy;
+
+  /// Input only.
+  ///
+  /// The time that this migration token is valid for. This is input-only, and
+  /// for returning a migration token the server will populate the expireTime
+  /// field. This can be at most seven days. The default is seven days.
+  core.String? ttl;
+
+  /// The user id of the Managed Google Play account on the device, as in the
+  /// Play EMM API.
+  ///
+  /// This corresponds to the userId parameter in Play EMM API's Devices.get
+  /// (https://developers.google.com/android/work/play/emm-api/v1/devices/get#parameters)
+  /// call.
+  ///
+  /// Required. Immutable.
+  core.String? userId;
+
+  /// The value of the migration token.
+  ///
+  /// Output only.
+  core.String? value;
+
+  MigrationToken({
+    this.additionalData,
+    this.createTime,
+    this.device,
+    this.deviceId,
+    this.expireTime,
+    this.managementMode,
+    this.name,
+    this.policy,
+    this.ttl,
+    this.userId,
+    this.value,
+  });
+
+  MigrationToken.fromJson(core.Map json_)
+      : this(
+          additionalData: json_.containsKey('additionalData')
+              ? json_['additionalData'] as core.String
+              : null,
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          device: json_.containsKey('device')
+              ? json_['device'] as core.String
+              : null,
+          deviceId: json_.containsKey('deviceId')
+              ? json_['deviceId'] as core.String
+              : null,
+          expireTime: json_.containsKey('expireTime')
+              ? json_['expireTime'] as core.String
+              : null,
+          managementMode: json_.containsKey('managementMode')
+              ? json_['managementMode'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          policy: json_.containsKey('policy')
+              ? json_['policy'] as core.String
+              : null,
+          ttl: json_.containsKey('ttl') ? json_['ttl'] as core.String : null,
+          userId: json_.containsKey('userId')
+              ? json_['userId'] as core.String
+              : null,
+          value:
+              json_.containsKey('value') ? json_['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (additionalData != null) 'additionalData': additionalData!,
+        if (createTime != null) 'createTime': createTime!,
+        if (device != null) 'device': device!,
+        if (deviceId != null) 'deviceId': deviceId!,
+        if (expireTime != null) 'expireTime': expireTime!,
+        if (managementMode != null) 'managementMode': managementMode!,
+        if (name != null) 'name': name!,
+        if (policy != null) 'policy': policy!,
+        if (ttl != null) 'ttl': ttl!,
+        if (userId != null) 'userId': userId!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -5503,6 +6135,18 @@ class NonComplianceDetail {
   /// Terms of Service.
   /// - "USER_INVALID" : The user is no longer valid. The user may have been
   /// deleted or disabled.
+  /// - "NETWORK_ERROR_UNRELIABLE_CONNECTION" : A network error on the user's
+  /// device has prevented the install from succeeding. This usually happens
+  /// when the device's internet connectivity is degraded, unavailable or
+  /// there's a network configuration issue. Please ensure the device has access
+  /// to full internet connectivity on a network that meets Android Enterprise
+  /// Network Requirements
+  /// (https://support.google.com/work/android/answer/10513641). App install or
+  /// update will automatically resume once this is the case.
+  /// - "INSUFFICIENT_STORAGE" : The user's device does not have sufficient
+  /// storage space to install the app. This can be resolved by clearing up
+  /// storage space on the device. App install or update will automatically
+  /// resume once the device has sufficient storage.
   core.String? installationFailureReason;
 
   /// The reason the device is not in compliance with the setting.
@@ -5568,6 +6212,15 @@ class NonComplianceDetail {
   /// - "ONC_WIFI_INVALID_ENTERPRISE_CONFIG" : The enterprise Wi-Fi network is
   /// missing either the root CA or domain name. nonComplianceReason is set to
   /// INVALID_VALUE.
+  /// - "ONC_WIFI_USER_SHOULD_REMOVE_NETWORK" : User needs to remove the
+  /// configured Wi-Fi network manually. This is applicable only on work
+  /// profiles on personally-owned devices. nonComplianceReason is set to
+  /// USER_ACTION.
+  /// - "ONC_WIFI_KEY_PAIR_ALIAS_NOT_CORRESPONDING_TO_EXISTING_KEY" : Key pair
+  /// alias specified via ClientCertKeyPairAlias
+  /// (https://chromium.googlesource.com/chromium/src/+/main/components/onc/docs/onc_spec.md#eap-type)
+  /// field in openNetworkConfiguration does not correspond to an existing key
+  /// installed on the device. nonComplianceReason is set to INVALID_VALUE.
   core.String? specificNonComplianceReason;
 
   NonComplianceDetail({
@@ -5788,7 +6441,7 @@ class Operation {
   /// ending with operations/{unique_id}.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as Delete, the
   /// response is google.protobuf.Empty. If the original method is standard
@@ -6185,7 +6838,24 @@ class PermissionGrant {
   /// specified for a permission at any level, then the PROMPT behavior is used
   /// by default.
   /// - "PROMPT" : Prompt the user to grant a permission.
-  /// - "GRANT" : Automatically grant a permission.
+  /// - "GRANT" : Automatically grant a permission.On Android 12 and above,
+  /// Manifest.permission.READ_SMS
+  /// (https://developer.android.com/reference/android/Manifest.permission#READ_SMS)
+  /// and following sensor-related permissions can only be granted on fully
+  /// managed devices: Manifest.permission.ACCESS_FINE_LOCATION
+  /// (https://developer.android.com/reference/android/Manifest.permission#ACCESS_FINE_LOCATION)
+  /// Manifest.permission.ACCESS_BACKGROUND_LOCATION
+  /// (https://developer.android.com/reference/android/Manifest.permission#ACCESS_BACKGROUND_LOCATION)
+  /// Manifest.permission.ACCESS_COARSE_LOCATION
+  /// (https://developer.android.com/reference/android/Manifest.permission#ACCESS_COARSE_LOCATION)
+  /// Manifest.permission.CAMERA
+  /// (https://developer.android.com/reference/android/Manifest.permission#CAMERA)
+  /// Manifest.permission.RECORD_AUDIO
+  /// (https://developer.android.com/reference/android/Manifest.permission#RECORD_AUDIO)
+  /// Manifest.permission.ACTIVITY_RECOGNITION
+  /// (https://developer.android.com/reference/android/Manifest.permission#ACTIVITY_RECOGNITION)
+  /// Manifest.permission.BODY_SENSORS
+  /// (https://developer.android.com/reference/android/Manifest.permission#BODY_SENSORS)
   /// - "DENY" : Automatically deny a permission.
   core.String? policy;
 
@@ -6276,7 +6946,8 @@ class PersonalApplicationPolicy {
   /// Possible string values are:
   /// - "INSTALL_TYPE_UNSPECIFIED" : Unspecified. Defaults to AVAILABLE.
   /// - "BLOCKED" : The app is blocked and can't be installed in the personal
-  /// profile.
+  /// profile. If the app was previously installed in the device, it will be
+  /// uninstalled.
   /// - "AVAILABLE" : The app is available to install in the personal profile.
   core.String? installType;
 
@@ -6315,7 +6986,12 @@ class PersonalUsagePolicies {
 
   /// Controls how long the work profile can stay off.
   ///
-  /// The duration must be at least 3 days.
+  /// The minimum duration must be at least 3 days. Other details are as
+  /// follows: - If the duration is set to 0, the feature is turned off. - If
+  /// the duration is set to a value smaller than the minimum duration, the
+  /// feature returns an error. *Note:* If you want to avoid personal profiles
+  /// being suspended during long periods of off-time, you can temporarily set a
+  /// large value for this parameter.
   core.int? maxDaysWithWorkOff;
 
   /// Policy applied to applications in the personal profile.
@@ -6406,10 +7082,9 @@ class Policy {
   /// Also mutes the device.
   core.bool? adjustVolumeDisabled;
 
-  /// Security policies set to secure values by default.
+  /// Advanced security settings.
   ///
-  /// To maintain the security posture of a device, we don't recommend
-  /// overriding any of the default values.
+  /// In most cases, setting these is not needed.
   AdvancedSecurityOverrides? advancedSecurityOverrides;
 
   /// Configuration for an always-on VPN connection.
@@ -6417,10 +7092,12 @@ class Policy {
   /// Use with vpn_config_disabled to prevent modification of this setting.
   AlwaysOnVpnPackage? alwaysOnVpnPackage;
 
-  /// The app tracks for Android Device Policy the device can access.
+  /// This setting is not supported.
   ///
-  /// The device receives the latest version among all accessible tracks. If no
-  /// tracks are specified, then the device only uses the production track.
+  /// Any value is ignored.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<core.String>? androidDevicePolicyTracks;
 
   /// Recommended alternative: autoUpdateMode which is set per app, provides
@@ -6438,6 +7115,8 @@ class Policy {
   core.String? appAutoUpdatePolicy;
 
   /// Policy applied to apps.
+  ///
+  /// This can have at most 3,000 elements.
   core.List<ApplicationPolicy>? applications;
 
   /// Whether auto date, time, and time zone are enabled on a company-owned
@@ -6526,7 +7205,8 @@ class Policy {
 
   /// Rules for determining apps' access to private keys.
   ///
-  /// See ChoosePrivateKeyRule for details.
+  /// See ChoosePrivateKeyRule for details. This must be empty if any
+  /// application has CERT_SELECTION delegation scope.
   core.List<ChoosePrivateKeyRule>? choosePrivateKeyRules;
 
   /// Rules declaring which mitigating actions to take when a device is not
@@ -6542,6 +7222,26 @@ class Policy {
 
   /// Whether creating windows besides app windows is disabled.
   core.bool? createWindowsDisabled;
+
+  /// Controls which apps are allowed to act as credential providers on Android
+  /// 14 and above.
+  ///
+  /// These apps store credentials, see this
+  /// (https://developer.android.com/training/sign-in/passkeys) and this
+  /// (https://developer.android.com/reference/androidx/credentials/CredentialManager)
+  /// for details. See also credentialProviderPolicy.
+  /// Possible string values are:
+  /// - "CREDENTIAL_PROVIDER_POLICY_DEFAULT_UNSPECIFIED" : Unspecified. Defaults
+  /// to CREDENTIAL_PROVIDER_DEFAULT_DISALLOWED.
+  /// - "CREDENTIAL_PROVIDER_DEFAULT_DISALLOWED" : Apps with
+  /// credentialProviderPolicy unspecified are not allowed to act as a
+  /// credential provider.
+  /// - "CREDENTIAL_PROVIDER_DEFAULT_DISALLOWED_EXCEPT_SYSTEM" : Apps with
+  /// credentialProviderPolicy unspecified are not allowed to act as a
+  /// credential provider except for the OEM default credential providers. OEM
+  /// default credential providers are always allowed to act as credential
+  /// providers.
+  core.String? credentialProviderPolicyDefault;
 
   /// Whether configuring user credentials is disabled.
   core.bool? credentialsConfigDisabled;
@@ -6564,7 +7264,24 @@ class Policy {
   /// specified for a permission at any level, then the PROMPT behavior is used
   /// by default.
   /// - "PROMPT" : Prompt the user to grant a permission.
-  /// - "GRANT" : Automatically grant a permission.
+  /// - "GRANT" : Automatically grant a permission.On Android 12 and above,
+  /// Manifest.permission.READ_SMS
+  /// (https://developer.android.com/reference/android/Manifest.permission#READ_SMS)
+  /// and following sensor-related permissions can only be granted on fully
+  /// managed devices: Manifest.permission.ACCESS_FINE_LOCATION
+  /// (https://developer.android.com/reference/android/Manifest.permission#ACCESS_FINE_LOCATION)
+  /// Manifest.permission.ACCESS_BACKGROUND_LOCATION
+  /// (https://developer.android.com/reference/android/Manifest.permission#ACCESS_BACKGROUND_LOCATION)
+  /// Manifest.permission.ACCESS_COARSE_LOCATION
+  /// (https://developer.android.com/reference/android/Manifest.permission#ACCESS_COARSE_LOCATION)
+  /// Manifest.permission.CAMERA
+  /// (https://developer.android.com/reference/android/Manifest.permission#CAMERA)
+  /// Manifest.permission.RECORD_AUDIO
+  /// (https://developer.android.com/reference/android/Manifest.permission#RECORD_AUDIO)
+  /// Manifest.permission.ACTIVITY_RECOGNITION
+  /// (https://developer.android.com/reference/android/Manifest.permission#ACTIVITY_RECOGNITION)
+  /// Manifest.permission.BODY_SENSORS
+  /// (https://developer.android.com/reference/android/Manifest.permission#BODY_SENSORS)
   /// - "DENY" : Automatically deny a permission.
   core.String? defaultPermissionPolicy;
 
@@ -6822,11 +7539,25 @@ class Policy {
   /// enabled on the work profile.
   core.String? preferentialNetworkService;
 
+  /// Controls whether printing is allowed.
+  ///
+  /// This is supported on devices running Android 9 and above. .
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "PRINTING_POLICY_UNSPECIFIED" : Unspecified. Defaults to
+  /// PRINTING_ALLOWED.
+  /// - "PRINTING_DISALLOWED" : Printing is disallowed. A nonComplianceDetail
+  /// with API_LEVEL is reported if the Android version is less than 9.
+  /// - "PRINTING_ALLOWED" : Printing is allowed.
+  core.String? printingPolicy;
+
   /// Allows showing UI on a device for a user to choose a private key alias if
   /// there are no matching rules in ChoosePrivateKeyRules.
   ///
   /// For devices below Android P, setting this may leave enterprise keys
-  /// vulnerable.
+  /// vulnerable. This value will have no effect if any application has
+  /// CERT_SELECTION delegation scope.
   core.bool? privateKeySelectionEnabled;
 
   /// The network-independent global HTTP proxy.
@@ -7006,6 +7737,7 @@ class Policy {
     this.choosePrivateKeyRules,
     this.complianceRules,
     this.createWindowsDisabled,
+    this.credentialProviderPolicyDefault,
     this.credentialsConfigDisabled,
     this.crossProfilePolicies,
     this.dataRoamingDisabled,
@@ -7050,6 +7782,7 @@ class Policy {
     this.playStoreMode,
     this.policyEnforcementRules,
     this.preferentialNetworkService,
+    this.printingPolicy,
     this.privateKeySelectionEnabled,
     this.recommendedGlobalProxy,
     this.removeUserDisabled,
@@ -7162,6 +7895,10 @@ class Policy {
           createWindowsDisabled: json_.containsKey('createWindowsDisabled')
               ? json_['createWindowsDisabled'] as core.bool
               : null,
+          credentialProviderPolicyDefault:
+              json_.containsKey('credentialProviderPolicyDefault')
+                  ? json_['credentialProviderPolicyDefault'] as core.String
+                  : null,
           credentialsConfigDisabled:
               json_.containsKey('credentialsConfigDisabled')
                   ? json_['credentialsConfigDisabled'] as core.bool
@@ -7337,6 +8074,9 @@ class Policy {
               json_.containsKey('preferentialNetworkService')
                   ? json_['preferentialNetworkService'] as core.String
                   : null,
+          printingPolicy: json_.containsKey('printingPolicy')
+              ? json_['printingPolicy'] as core.String
+              : null,
           privateKeySelectionEnabled:
               json_.containsKey('privateKeySelectionEnabled')
                   ? json_['privateKeySelectionEnabled'] as core.bool
@@ -7467,6 +8207,8 @@ class Policy {
         if (complianceRules != null) 'complianceRules': complianceRules!,
         if (createWindowsDisabled != null)
           'createWindowsDisabled': createWindowsDisabled!,
+        if (credentialProviderPolicyDefault != null)
+          'credentialProviderPolicyDefault': credentialProviderPolicyDefault!,
         if (credentialsConfigDisabled != null)
           'credentialsConfigDisabled': credentialsConfigDisabled!,
         if (crossProfilePolicies != null)
@@ -7542,6 +8284,7 @@ class Policy {
           'policyEnforcementRules': policyEnforcementRules!,
         if (preferentialNetworkService != null)
           'preferentialNetworkService': preferentialNetworkService!,
+        if (printingPolicy != null) 'printingPolicy': printingPolicy!,
         if (privateKeySelectionEnabled != null)
           'privateKeySelectionEnabled': privateKeySelectionEnabled!,
         if (recommendedGlobalProxy != null)
@@ -7655,14 +8398,14 @@ class PostureDetail {
   /// the device.
   /// Possible string values are:
   /// - "SECURITY_RISK_UNSPECIFIED" : Unspecified.
-  /// - "UNKNOWN_OS" : SafetyNet detects that the device is running an unknown
-  /// OS (basicIntegrity check succeeds but ctsProfileMatch fails).
-  /// - "COMPROMISED_OS" : SafetyNet detects that the device is running a
-  /// compromised OS (basicIntegrity check fails).
-  /// - "HARDWARE_BACKED_EVALUATION_FAILED" : SafetyNet detects that the device
-  /// does not have a strong guarantee of system integrity, such as a
-  /// hardware-backed keystore
-  /// (https://developer.android.com/training/articles/security-key-attestation).
+  /// - "UNKNOWN_OS" : Play Integrity API detects that the device is running an
+  /// unknown OS (basicIntegrity check succeeds but ctsProfileMatch fails).
+  /// - "COMPROMISED_OS" : Play Integrity API detects that the device is running
+  /// a compromised OS (basicIntegrity check fails).
+  /// - "HARDWARE_BACKED_EVALUATION_FAILED" : Play Integrity API detects that
+  /// the device does not have a strong guarantee of system integrity, if the
+  /// MEETS_STRONG_INTEGRITY label doesn't show in the device integrity field
+  /// (https://developer.android.com/google/play/integrity/verdicts#device-integrity-field).
   core.String? securityRisk;
 
   PostureDetail({
@@ -7741,7 +8484,7 @@ class ProvisioningInfo {
   /// The API level of the Android platform version running on the device.
   core.int? apiLevel;
 
-  /// Brand of the device.
+  /// The brand of the device.
   ///
   /// For example, Google.
   core.String? brand;
@@ -7953,6 +8696,23 @@ class SetupAction {
 }
 
 /// A resource containing sign in details for an enterprise.
+///
+/// Use enterprises to manage SigninDetails for a given enterprise.For an
+/// enterprise, we can have any number of SigninDetails that is uniquely
+/// identified by combination of the following three fields (signin_url,
+/// allow_personal_usage, token_tag). One cannot create two SigninDetails with
+/// the same (signin_url, allow_personal_usage, token_tag). (token_tag is an
+/// optional field).Patch: The operation updates the current list of
+/// SigninDetails with the new list of SigninDetails. If the stored SigninDetail
+/// configuration is passed, it returns the same signin_enrollment_token and
+/// qr_code. If we pass multiple identical SigninDetail configurations that are
+/// not stored, it will store the first one amongst those SigninDetail
+/// configurations. if the configuration already exists we cannot request it
+/// more than once in a particular patch API call, otherwise it will give a
+/// duplicate key error and the whole operation will fail. If we remove certain
+/// SigninDetail configuration from the request then it will get removed from
+/// the storage. We can then request another signin_enrollment_token and qr_code
+/// for the same SigninDetail configuration.
 class SigninDetail {
   /// Controls whether personal usage is allowed on a device provisioned with
   /// this enrollment token.For company-owned devices: Enabling personal usage
@@ -7992,11 +8752,16 @@ class SigninDetail {
   /// failed login.
   core.String? signinUrl;
 
+  /// An EMM-specified metadata to distinguish between instances of
+  /// SigninDetail.
+  core.String? tokenTag;
+
   SigninDetail({
     this.allowPersonalUsage,
     this.qrCode,
     this.signinEnrollmentToken,
     this.signinUrl,
+    this.tokenTag,
   });
 
   SigninDetail.fromJson(core.Map json_)
@@ -8013,6 +8778,9 @@ class SigninDetail {
           signinUrl: json_.containsKey('signinUrl')
               ? json_['signinUrl'] as core.String
               : null,
+          tokenTag: json_.containsKey('tokenTag')
+              ? json_['tokenTag'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8022,6 +8790,7 @@ class SigninDetail {
         if (signinEnrollmentToken != null)
           'signinEnrollmentToken': signinEnrollmentToken!,
         if (signinUrl != null) 'signinUrl': signinUrl!,
+        if (tokenTag != null) 'tokenTag': tokenTag!,
       };
 }
 
@@ -8509,7 +9278,8 @@ class SystemUpdate {
   /// autoUpdateMode is set to AUTO_UPDATE_HIGH_PRIORITY for an app, then the
   /// maintenance window is ignored for that app and it is updated as soon as
   /// possible even outside of the maintenance window.
-  /// - "POSTPONE" : Postpone automatic install up to a maximum of 30 days.
+  /// - "POSTPONE" : Postpone automatic install up to a maximum of 30 days. This
+  /// policy does not affect security updates (e.g. monthly security patches).
   core.String? type;
 
   SystemUpdate({

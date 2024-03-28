@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// My Business Verifications API - v1
@@ -23,8 +22,7 @@
 ///
 /// - [LocationsResource]
 ///   - [LocationsVerificationsResource]
-/// - [VerificationTokensResource]
-library mybusinessverifications_v1;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -45,8 +43,6 @@ class MyBusinessVerificationsApi {
   final commons.ApiRequester _requester;
 
   LocationsResource get locations => LocationsResource(_requester);
-  VerificationTokensResource get verificationTokens =>
-      VerificationTokensResource(_requester);
 
   MyBusinessVerificationsApi(http.Client client,
       {core.String rootUrl = 'https://mybusinessverifications.googleapis.com/',
@@ -281,53 +277,6 @@ class LocationsVerificationsResource {
   }
 }
 
-class VerificationTokensResource {
-  final commons.ApiRequester _requester;
-
-  VerificationTokensResource(commons.ApiRequester client) : _requester = client;
-
-  /// Generates a token for the provided location data as a vetted
-  /// [partner](https://support.google.com/business/answer/7674102).
-  ///
-  /// Throws PERMISSION_DENIED if the caller is not a vetted partner account.
-  /// Throws FAILED_PRECONDITION if the caller's VettedStatus is INVALID.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GenerateVerificationTokenResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GenerateVerificationTokenResponse> generate(
-    GenerateVerificationTokenRequest request, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    const url_ = 'v1/verificationTokens:generate';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return GenerateVerificationTokenResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-}
-
 /// Display data for verifications through postcard.
 class AddressVerificationData {
   /// Address that a postcard can be sent to.
@@ -550,56 +499,6 @@ class FetchVerificationOptionsResponse {
       };
 }
 
-/// Request message for Verifications.GenerateVerificationToken.
-class GenerateVerificationTokenRequest {
-  /// The target location.
-  ///
-  /// Note: The location information should exactly match the target Location,
-  /// otherwise the generated verification token won't be able to verify the
-  /// target Location.
-  ///
-  /// Required.
-  Location? location;
-
-  GenerateVerificationTokenRequest({
-    this.location,
-  });
-
-  GenerateVerificationTokenRequest.fromJson(core.Map json_)
-      : this(
-          location: json_.containsKey('location')
-              ? Location.fromJson(
-                  json_['location'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (location != null) 'location': location!,
-      };
-}
-
-/// Response message for Verifications.GenerateVerificationToken.
-class GenerateVerificationTokenResponse {
-  /// The generated token to verify the location.
-  VerificationToken? token;
-
-  GenerateVerificationTokenResponse({
-    this.token,
-  });
-
-  GenerateVerificationTokenResponse.fromJson(core.Map json_)
-      : this(
-          token: json_.containsKey('token')
-              ? VerificationToken.fromJson(
-                  json_['token'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (token != null) 'token': token!,
-      };
-}
-
 /// Response message for Verifications.ListVerifications.
 class ListVerificationsResponse {
   /// If the number of verifications exceeded the requested page size, this
@@ -634,100 +533,6 @@ class ListVerificationsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (verifications != null) 'verifications': verifications!,
-      };
-}
-
-/// A subset of location info.
-///
-/// See the
-/// [help center article](https://support.google.com/business/answer/3038177)
-/// for a detailed description of these fields, or the \[category
-/// endpoint\](/my-business/reference/rest/v4/categories) for a list of valid
-/// business categories.
-class Location {
-  /// A precise, accurate address to describe your business location.
-  ///
-  /// PO boxes or mailboxes located at remote locations are not acceptable. At
-  /// this time, you can specify a maximum of five `address_lines` values in the
-  /// address.
-  ///
-  /// Required.
-  PostalAddress? address;
-
-  /// Location name should reflect your business's real-world name, as used
-  /// consistently on your storefront, website, and stationery, and as known to
-  /// customers.
-  ///
-  /// Any additional information, when relevant, can be included in other fields
-  /// of the resource (for example, `Address`, `Categories`). Don't add
-  /// unnecessary information to your name (for example, prefer "Google" over
-  /// "Google Inc. - Mountain View Corporate Headquarters"). Don't include
-  /// marketing taglines, store codes, special characters, hours or closed/open
-  /// status, phone numbers, website URLs, service/product information,
-  /// location/address or directions, or containment information (for example,
-  /// "Chase ATM in Duane Reade").
-  ///
-  /// Required.
-  core.String? name;
-
-  /// Id of the category that best describes the core business this location
-  /// engages in.
-  ///
-  /// e.g. gcid:bakery.
-  ///
-  /// Required.
-  core.String? primaryCategoryId;
-
-  /// A phone number that connects to your individual business location as
-  /// directly as possible.
-  ///
-  /// Use a local phone number instead of a central, call center helpline number
-  /// whenever possible.
-  ///
-  /// Optional.
-  core.String? primaryPhone;
-
-  /// A URL for this business.
-  ///
-  /// If possible, use a URL that represents this individual business location
-  /// instead of a generic website/URL that represents all locations, or the
-  /// brand.
-  ///
-  /// Optional.
-  core.String? websiteUri;
-
-  Location({
-    this.address,
-    this.name,
-    this.primaryCategoryId,
-    this.primaryPhone,
-    this.websiteUri,
-  });
-
-  Location.fromJson(core.Map json_)
-      : this(
-          address: json_.containsKey('address')
-              ? PostalAddress.fromJson(
-                  json_['address'] as core.Map<core.String, core.dynamic>)
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          primaryCategoryId: json_.containsKey('primaryCategoryId')
-              ? json_['primaryCategoryId'] as core.String
-              : null,
-          primaryPhone: json_.containsKey('primaryPhone')
-              ? json_['primaryPhone'] as core.String
-              : null,
-          websiteUri: json_.containsKey('websiteUri')
-              ? json_['websiteUri'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (address != null) 'address': address!,
-        if (name != null) 'name': name!,
-        if (primaryCategoryId != null) 'primaryCategoryId': primaryCategoryId!,
-        if (primaryPhone != null) 'primaryPhone': primaryPhone!,
-        if (websiteUri != null) 'websiteUri': websiteUri!,
       };
 }
 

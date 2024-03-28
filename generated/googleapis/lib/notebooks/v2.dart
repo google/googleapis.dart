@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Notebooks API - v2
@@ -23,7 +22,7 @@
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsInstancesResource]
 ///     - [ProjectsLocationsOperationsResource]
-library notebooks_v2;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -378,6 +377,46 @@ class ProjectsLocationsInstancesResource {
     return Instance.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Gets general backend configurations that might also affect the frontend.
+  ///
+  /// Location is required by CCFE. Although we could bypass it to send
+  /// location- less request directly to the backend job, we would need CPE
+  /// (go/cloud-cpe). Having the location might also be useful depending on the
+  /// query.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Format: `projects/{project_id}/locations/{location}`
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Config].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Config> getConfig(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + '/instances:getConfig';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Config.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets the access control policy for a resource.
   ///
   /// Returns an empty policy if the resource exists and does not have a policy
@@ -443,6 +482,11 @@ class ProjectsLocationsInstancesResource {
   /// `parent=projects/{project_id}/locations/{location}`
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
+  /// [filter] - Optional. List filter.
+  ///
+  /// [orderBy] - Optional. Sort results. Supported values are "name", "name
+  /// desc" or "" (unsorted).
+  ///
   /// [pageSize] - Optional. Maximum return size of the list call.
   ///
   /// [pageToken] - Optional. A previous returned page token that can be used to
@@ -460,11 +504,15 @@ class ProjectsLocationsInstancesResource {
   /// this method will complete with the same error.
   async.Future<ListInstancesResponse> list(
     core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -609,6 +657,49 @@ class ProjectsLocationsInstancesResource {
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':reset';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Resize a notebook instance disk to a higher capacity.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [notebookInstance] - Required. Format:
+  /// `projects/{project_id}/locations/{location}/instances/{instance_id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> resizeDisk(
+    ResizeDiskRequest request,
+    core.String notebookInstance, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v2/' + core.Uri.encodeFull('$notebookInstance') + ':resizeDisk';
 
     final response_ = await _requester.request(
       url_,
@@ -1200,14 +1291,31 @@ class Binding {
   /// `group:{emailid}`: An email address that represents a Google group. For
   /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
   /// (primary) that represents all the users of that domain. For example,
-  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a user that has
-  /// been recently deleted. For example,
-  /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
-  /// this value reverts to `user:{emailid}` and the recovered user retains the
-  /// role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a service account
-  /// that has been recently deleted. For example,
+  /// `google.com` or `example.com`. *
+  /// `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workforce identity pool. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`:
+  /// All workforce identities in a group. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All workforce identities with a specific attribute value. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}
+  /// / * `: All identities in a workforce identity pool. *
+  /// `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workload identity pool. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`:
+  /// A workload identity pool group. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All identities in a workload identity pool with a certain attribute. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}
+  /// / * `: All identities in a workload identity pool. *
+  /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
+  /// identifier) representing a user that has been recently deleted. For
+  /// example, `alice@example.com?uid=123456789012345678901`. If the user is
+  /// recovered, this value reverts to `user:{emailid}` and the recovered user
+  /// retains the role in the binding. *
+  /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus
+  /// unique identifier) representing a service account that has been recently
+  /// deleted. For example,
   /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If
   /// the service account is undeleted, this value reverts to
   /// `serviceAccount:{emailid}` and the undeleted service account retains the
@@ -1216,7 +1324,10 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding.
+  /// the role in the binding. *
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// Deleted single identity in a workforce identity pool. For example,
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
@@ -1330,6 +1441,54 @@ typedef CancelOperationRequest = $Empty;
 /// Response for checking if a notebook instance is upgradeable.
 typedef CheckInstanceUpgradabilityResponse = $Response;
 
+/// Response for getting WbI configurations in a location
+class Config {
+  /// The list of available images to create a WbI.
+  ///
+  /// Output only.
+  core.List<ImageRelease>? availableImages;
+
+  /// The default values for configuration.
+  ///
+  /// Output only.
+  DefaultValues? defaultValues;
+
+  /// The supported values for configuration.
+  ///
+  /// Output only.
+  SupportedValues? supportedValues;
+
+  Config({
+    this.availableImages,
+    this.defaultValues,
+    this.supportedValues,
+  });
+
+  Config.fromJson(core.Map json_)
+      : this(
+          availableImages: json_.containsKey('availableImages')
+              ? (json_['availableImages'] as core.List)
+                  .map((value) => ImageRelease.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          defaultValues: json_.containsKey('defaultValues')
+              ? DefaultValues.fromJson(
+                  json_['defaultValues'] as core.Map<core.String, core.dynamic>)
+              : null,
+          supportedValues: json_.containsKey('supportedValues')
+              ? SupportedValues.fromJson(json_['supportedValues']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (availableImages != null) 'availableImages': availableImages!,
+        if (defaultValues != null) 'defaultValues': defaultValues!,
+        if (supportedValues != null) 'supportedValues': supportedValues!,
+      };
+}
+
 /// Definition of a container image for starting a notebook instance with the
 /// environment installed in a container.
 class ContainerImage {
@@ -1438,6 +1597,29 @@ class DataDisk {
         if (diskSizeGb != null) 'diskSizeGb': diskSizeGb!,
         if (diskType != null) 'diskType': diskType!,
         if (kmsKey != null) 'kmsKey': kmsKey!,
+      };
+}
+
+/// DefaultValues represents the default configuration values.
+class DefaultValues {
+  /// The default machine type used by the backend if not provided by the user.
+  ///
+  /// Output only.
+  core.String? machineType;
+
+  DefaultValues({
+    this.machineType,
+  });
+
+  DefaultValues.fromJson(core.Map json_)
+      : this(
+          machineType: json_.containsKey('machineType')
+              ? json_['machineType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (machineType != null) 'machineType': machineType!,
       };
 }
 
@@ -1879,6 +2061,39 @@ class GceSetup {
       };
 }
 
+/// ConfigImage represents an image release available to create a WbI
+class ImageRelease {
+  /// The name of the image of the form workbench-instances-vYYYYmmdd--
+  ///
+  /// Output only.
+  core.String? imageName;
+
+  /// The release of the image of the form m123
+  ///
+  /// Output only.
+  core.String? releaseName;
+
+  ImageRelease({
+    this.imageName,
+    this.releaseName,
+  });
+
+  ImageRelease.fromJson(core.Map json_)
+      : this(
+          imageName: json_.containsKey('imageName')
+              ? json_['imageName'] as core.String
+              : null,
+          releaseName: json_.containsKey('releaseName')
+              ? json_['releaseName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (imageName != null) 'imageName': imageName!,
+        if (releaseName != null) 'releaseName': releaseName!,
+      };
+}
+
 /// The definition of a notebook instance.
 class Instance {
   /// Instance creation time.
@@ -1979,6 +2194,12 @@ class Instance {
   /// - "SUSPENDED" : The instance is suspended.
   core.String? state;
 
+  /// The workforce pools proxy endpoint that is used to access the Jupyter
+  /// notebook.
+  ///
+  /// Output only.
+  core.String? thirdPartyProxyUrl;
+
   /// Instance update time.
   ///
   /// Output only.
@@ -2002,6 +2223,7 @@ class Instance {
     this.name,
     this.proxyUri,
     this.state,
+    this.thirdPartyProxyUrl,
     this.updateTime,
     this.upgradeHistory,
   });
@@ -2053,6 +2275,9 @@ class Instance {
               : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
+          thirdPartyProxyUrl: json_.containsKey('thirdPartyProxyUrl')
+              ? json_['thirdPartyProxyUrl'] as core.String
+              : null,
           updateTime: json_.containsKey('updateTime')
               ? json_['updateTime'] as core.String
               : null,
@@ -2078,6 +2303,8 @@ class Instance {
         if (name != null) 'name': name!,
         if (proxyUri != null) 'proxyUri': proxyUri!,
         if (state != null) 'state': state!,
+        if (thirdPartyProxyUrl != null)
+          'thirdPartyProxyUrl': thirdPartyProxyUrl!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (upgradeHistory != null) 'upgradeHistory': upgradeHistory!,
       };
@@ -2280,7 +2507,7 @@ class Operation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard
@@ -2340,23 +2567,23 @@ class Operation {
 /// request, the resource, or both. To learn which resources support conditions
 /// in their IAM policies, see the
 /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": \[ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": \[
+/// **JSON example:** ``` { "bindings": [ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": [
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": \[
-/// "user:eve@example.com" \], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": [
+/// "user:eve@example.com" ], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time \< timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
-/// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
-/// user:mike@example.com - group:admins@example.com - domain:google.com -
-/// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
-/// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
-/// role: roles/resourcemanager.organizationViewer condition: title: expirable
-/// access description: Does not grant access after Sep 2020 expression:
-/// request.time \< timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
-/// version: 3 For a description of IAM and its features, see the
-/// [IAM documentation](https://cloud.google.com/iam/docs/).
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: -
+/// members: - user:mike@example.com - group:admins@example.com -
+/// domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+/// role: roles/resourcemanager.organizationAdmin - members: -
+/// user:eve@example.com role: roles/resourcemanager.organizationViewer
+/// condition: title: expirable access description: Does not grant access after
+/// Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+/// etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features,
+/// see the [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Associates a list of `members`, or principals, with a `role`.
   ///
@@ -2472,6 +2699,45 @@ class ReportInstanceInfoSystemRequest {
 
 /// Request for resetting a notebook instance
 typedef ResetInstanceRequest = $Empty;
+
+/// Request for resizing the notebook instance disks
+class ResizeDiskRequest {
+  /// The boot disk to be resized.
+  ///
+  /// Only disk_size_gb will be used.
+  ///
+  /// Required.
+  BootDisk? bootDisk;
+
+  /// The data disk to be resized.
+  ///
+  /// Only disk_size_gb will be used.
+  ///
+  /// Required.
+  DataDisk? dataDisk;
+
+  ResizeDiskRequest({
+    this.bootDisk,
+    this.dataDisk,
+  });
+
+  ResizeDiskRequest.fromJson(core.Map json_)
+      : this(
+          bootDisk: json_.containsKey('bootDisk')
+              ? BootDisk.fromJson(
+                  json_['bootDisk'] as core.Map<core.String, core.dynamic>)
+              : null,
+          dataDisk: json_.containsKey('dataDisk')
+              ? DataDisk.fromJson(
+                  json_['dataDisk'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bootDisk != null) 'bootDisk': bootDisk!,
+        if (dataDisk != null) 'dataDisk': dataDisk!,
+      };
+}
 
 /// Request for rollbacking a notebook instance
 class RollbackInstanceRequest {
@@ -2645,6 +2911,43 @@ typedef Status = $Status;
 /// Request for stopping a notebook instance
 typedef StopInstanceRequest = $Empty;
 
+/// SupportedValues represents the values supported by the configuration.
+class SupportedValues {
+  /// The accelerator types supported by WbI.
+  ///
+  /// Output only.
+  core.List<core.String>? acceleratorTypes;
+
+  /// The machine types supported by WbI.
+  ///
+  /// Output only.
+  core.List<core.String>? machineTypes;
+
+  SupportedValues({
+    this.acceleratorTypes,
+    this.machineTypes,
+  });
+
+  SupportedValues.fromJson(core.Map json_)
+      : this(
+          acceleratorTypes: json_.containsKey('acceleratorTypes')
+              ? (json_['acceleratorTypes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          machineTypes: json_.containsKey('machineTypes')
+              ? (json_['machineTypes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (acceleratorTypes != null) 'acceleratorTypes': acceleratorTypes!,
+        if (machineTypes != null) 'machineTypes': machineTypes!,
+      };
+}
+
 /// Request message for `TestIamPermissions` method.
 typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
@@ -2768,7 +3071,7 @@ class UpgradeHistoryEntry {
 typedef UpgradeInstanceRequest = $Empty;
 
 /// Request for upgrading a notebook instance from within the VM
-typedef UpgradeInstanceSystemRequest = $Request08;
+typedef UpgradeInstanceSystemRequest = $Request09;
 
 /// Definition of a custom Compute Engine virtual machine image for starting a
 /// notebook instance with the environment installed directly on the VM.

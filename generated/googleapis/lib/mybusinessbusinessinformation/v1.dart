@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// My Business Business Information API - v1
@@ -30,7 +29,7 @@
 /// - [GoogleLocationsResource]
 /// - [LocationsResource]
 ///   - [LocationsAttributesResource]
-library mybusinessbusinessinformation_v1;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -1702,6 +1701,8 @@ class ListLocationsResponse {
 
   /// The approximate number of Locations in the list irrespective of
   /// pagination.
+  ///
+  /// This field will only be returned if `filter` is used as a query parameter.
   core.int? totalSize;
 
   ListLocationsResponse({
@@ -1860,7 +1861,7 @@ class Location {
   /// this time, you can specify a maximum of five `address_lines` values in the
   /// address. This field should only be set for businesses that have a
   /// storefront. This field should not be set for locations of type
-  /// `CUSTOMER_LOCATION_ONLY`.
+  /// `CUSTOMER_LOCATION_ONLY` but if set, any value provided will be discarded.
   ///
   /// Optional.
   PostalAddress? storefrontAddress;

@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Google Play Integrity API - v1
@@ -24,7 +23,7 @@
 /// Create an instance of [PlayIntegrityApi] to access these resources:
 ///
 /// - [V1Resource]
-library playintegrity_v1;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -108,29 +107,23 @@ class V1Resource {
   }
 }
 
-/// Contains a signal helping apps differentiating between likely genuine users
-/// and likely non-genuine traffic (such as accounts being used for fraud,
-/// accounts used by automated traffic, or accounts used in device farms) based
-/// on the presence and volume of Play store activity.
+/// (Restricted Access) Contains a signal helping apps differentiating between
+/// likely genuine and likely non-genuine user traffic.
 class AccountActivity {
   /// Indicates the activity level of the account.
   ///
   /// Required.
   /// Possible string values are:
   /// - "ACTIVITY_LEVEL_UNSPECIFIED" : Activity level has not been set.
-  /// - "UNEVALUATED" : Account activity level is not evaluated because one of
-  /// the prerequisite conditions is not met (e.g., device is not trusted, the
-  /// user does not have Play app license)
-  /// - "UNUSUAL" : Google Play store activity is unusual for at least one of
-  /// the user accounts on the device. Google Play recommends checking that this
-  /// is a real user.
-  /// - "UNKNOWN" : Google Play does not have sufficient activity for the user
-  /// account on the device. The account may be new, or it may lack activity on
-  /// Google Play.
-  /// - "TYPICAL_BASIC" : Google Play store activity is typical for the user
-  /// account or accounts on the device.
-  /// - "TYPICAL_STRONG" : Google Play store activity is typical for the user
-  /// account or accounts on the device, with harder to replicate signals.
+  /// - "UNEVALUATED" : Account activity level is not evaluated.
+  /// - "UNUSUAL" : Unusual activity for at least one of the user accounts on
+  /// the device.
+  /// - "UNKNOWN" : Insufficient activity to verify the user account on the
+  /// device.
+  /// - "TYPICAL_BASIC" : Typical activity for the user account or accounts on
+  /// the device.
+  /// - "TYPICAL_STRONG" : Typical for the user account or accounts on the
+  /// device, with harder to replicate signals.
   core.String? activityLevel;
 
   AccountActivity({
@@ -152,7 +145,8 @@ class AccountActivity {
 /// Contains the account information such as the licensing status for the user
 /// in the scope.
 class AccountDetails {
-  /// Details about the account activity for the user in the scope.
+  /// (Restricted Access) Details about the account activity for the user in the
+  /// scope.
   AccountActivity? accountActivity;
 
   /// Details about the licensing status of the user for the app in the scope.
@@ -190,6 +184,72 @@ class AccountDetails {
         if (accountActivity != null) 'accountActivity': accountActivity!,
         if (appLicensingVerdict != null)
           'appLicensingVerdict': appLicensingVerdict!,
+      };
+}
+
+/// Contains signals about others apps on the device which could be used to
+/// access or control the requesting app.
+class AppAccessRiskVerdict {
+  /// App access risk verdict related to apps that are not installed by Google
+  /// Play, and are not preloaded on the system image by the device
+  /// manufacturer.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "UNKNOWN" : Risk type is unknown.
+  /// - "UNEVALUATED" : App access risk was not evaluated because a requirement
+  /// was missed, such as the device not being trusted enough.
+  /// - "NOT_INSTALLED" : No apps under this field are installed on the device.
+  /// This is only valid for the other apps field.
+  /// - "INSTALLED" : One or more apps under this field are installed on the
+  /// device.
+  /// - "CAPTURING" : Apps under this field are running that could be used to
+  /// read or capture inputs and outputs of the requesting app, such as screen
+  /// recording apps.
+  /// - "CONTROLLING" : Apps under this field are running that could be used to
+  /// control the device and inputs and outputs of the requesting app, such as
+  /// remote controlling apps.
+  core.String? otherApps;
+
+  /// App access risk verdict related to apps that are not installed by the
+  /// Google Play Store, and are not preloaded on the system image by the device
+  /// manufacturer.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "UNKNOWN" : Risk type is unknown.
+  /// - "UNEVALUATED" : App access risk was not evaluated because a requirement
+  /// was missed, such as the device not being trusted enough.
+  /// - "NOT_INSTALLED" : No apps under this field are installed on the device.
+  /// This is only valid for the other apps field.
+  /// - "INSTALLED" : One or more apps under this field are installed on the
+  /// device.
+  /// - "CAPTURING" : Apps under this field are running that could be used to
+  /// read or capture inputs and outputs of the requesting app, such as screen
+  /// recording apps.
+  /// - "CONTROLLING" : Apps under this field are running that could be used to
+  /// control the device and inputs and outputs of the requesting app, such as
+  /// remote controlling apps.
+  core.String? playOrSystemApps;
+
+  AppAccessRiskVerdict({
+    this.otherApps,
+    this.playOrSystemApps,
+  });
+
+  AppAccessRiskVerdict.fromJson(core.Map json_)
+      : this(
+          otherApps: json_.containsKey('otherApps')
+              ? json_['otherApps'] as core.String
+              : null,
+          playOrSystemApps: json_.containsKey('playOrSystemApps')
+              ? json_['playOrSystemApps'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (otherApps != null) 'otherApps': otherApps!,
+        if (playOrSystemApps != null) 'playOrSystemApps': playOrSystemApps!,
       };
 }
 
@@ -307,11 +367,15 @@ class DecodeIntegrityTokenResponse {
 
 /// Contains the device attestation information.
 class DeviceIntegrity {
-  /// Details about the integrity of the device the app is running on
+  /// Details about the integrity of the device the app is running on.
   core.List<core.String>? deviceRecognitionVerdict;
+
+  /// Details about the device activity of the device the app is running on.
+  RecentDeviceActivity? recentDeviceActivity;
 
   DeviceIntegrity({
     this.deviceRecognitionVerdict,
+    this.recentDeviceActivity,
   });
 
   DeviceIntegrity.fromJson(core.Map json_)
@@ -322,36 +386,99 @@ class DeviceIntegrity {
                       .map((value) => value as core.String)
                       .toList()
                   : null,
+          recentDeviceActivity: json_.containsKey('recentDeviceActivity')
+              ? RecentDeviceActivity.fromJson(json_['recentDeviceActivity']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (deviceRecognitionVerdict != null)
           'deviceRecognitionVerdict': deviceRecognitionVerdict!,
+        if (recentDeviceActivity != null)
+          'recentDeviceActivity': recentDeviceActivity!,
       };
 }
 
-/// Contains guidance details about the Integrity API response, providing
-/// additional context to the integrity verdicts.
-class GuidanceDetails {
-  /// This shows when there is an issue with at least one of the integrity
-  /// verdicts, and provides user remediation guidance.
-  core.List<core.String>? userRemediation;
+/// Contains information about the environment Play Integrity API runs in, e.g.
+/// Play Protect verdict.
+class EnvironmentDetails {
+  /// The evaluation of the App Access Risk verdicts.
+  AppAccessRiskVerdict? appAccessRiskVerdict;
 
-  GuidanceDetails({
-    this.userRemediation,
+  /// The evaluation of Play Protect verdict.
+  /// Possible string values are:
+  /// - "PLAY_PROTECT_VERDICT_UNSPECIFIED" : Play Protect verdict has not been
+  /// set.
+  /// - "UNEVALUATED" : Play Protect state was not evaluated. Device may not be
+  /// trusted.
+  /// - "NO_ISSUES" : Play Protect is on and no issues found.
+  /// - "NO_DATA" : Play Protect is on but no scan has been performed yet. The
+  /// device or Play Store app may have been reset.
+  /// - "MEDIUM_RISK" : Play Protect is on and warnings found.
+  /// - "HIGH_RISK" : Play Protect is on and high severity issues found.
+  /// - "POSSIBLE_RISK" : Play Protect is turned off. Turn on Play Protect.
+  core.String? playProtectVerdict;
+
+  EnvironmentDetails({
+    this.appAccessRiskVerdict,
+    this.playProtectVerdict,
   });
 
-  GuidanceDetails.fromJson(core.Map json_)
+  EnvironmentDetails.fromJson(core.Map json_)
       : this(
-          userRemediation: json_.containsKey('userRemediation')
-              ? (json_['userRemediation'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
+          appAccessRiskVerdict: json_.containsKey('appAccessRiskVerdict')
+              ? AppAccessRiskVerdict.fromJson(json_['appAccessRiskVerdict']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          playProtectVerdict: json_.containsKey('playProtectVerdict')
+              ? json_['playProtectVerdict'] as core.String
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (userRemediation != null) 'userRemediation': userRemediation!,
+        if (appAccessRiskVerdict != null)
+          'appAccessRiskVerdict': appAccessRiskVerdict!,
+        if (playProtectVerdict != null)
+          'playProtectVerdict': playProtectVerdict!,
+      };
+}
+
+/// Recent device activity can help developers identify devices that have
+/// exhibited hyperactive attestation activity, which could be a sign of an
+/// attack or token farming.
+class RecentDeviceActivity {
+  /// Indicates the activity level of the device.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "DEVICE_ACTIVITY_LEVEL_UNSPECIFIED" : Device activity level has not been
+  /// set.
+  /// - "UNEVALUATED" : Device activity level has not been evaluated.
+  /// - "LEVEL_1" : Indicates the amount of used tokens. See the documentation
+  /// for details.
+  /// - "LEVEL_2" : Indicates the amount of used tokens. See the documentation
+  /// for details.
+  /// - "LEVEL_3" : Indicates the amount of used tokens. See the documentation
+  /// for details.
+  /// - "LEVEL_4" : Indicates the amount of used tokens. See the documentation
+  /// for details.
+  core.String? deviceActivityLevel;
+
+  RecentDeviceActivity({
+    this.deviceActivityLevel,
+  });
+
+  RecentDeviceActivity.fromJson(core.Map json_)
+      : this(
+          deviceActivityLevel: json_.containsKey('deviceActivityLevel')
+              ? json_['deviceActivityLevel'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deviceActivityLevel != null)
+          'deviceActivityLevel': deviceActivityLevel!,
       };
 }
 
@@ -449,8 +576,8 @@ class TokenPayloadExternal {
   /// Required.
   DeviceIntegrity? deviceIntegrity;
 
-  /// Additional guidance related to the integrity API response.
-  GuidanceDetails? guidanceDetails;
+  /// Details of the environment Play Integrity API runs in.
+  EnvironmentDetails? environmentDetails;
 
   /// Details about the integrity request.
   ///
@@ -465,7 +592,7 @@ class TokenPayloadExternal {
     this.accountDetails,
     this.appIntegrity,
     this.deviceIntegrity,
-    this.guidanceDetails,
+    this.environmentDetails,
     this.requestDetails,
     this.testingDetails,
   });
@@ -484,8 +611,8 @@ class TokenPayloadExternal {
               ? DeviceIntegrity.fromJson(json_['deviceIntegrity']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          guidanceDetails: json_.containsKey('guidanceDetails')
-              ? GuidanceDetails.fromJson(json_['guidanceDetails']
+          environmentDetails: json_.containsKey('environmentDetails')
+              ? EnvironmentDetails.fromJson(json_['environmentDetails']
                   as core.Map<core.String, core.dynamic>)
               : null,
           requestDetails: json_.containsKey('requestDetails')
@@ -502,7 +629,8 @@ class TokenPayloadExternal {
         if (accountDetails != null) 'accountDetails': accountDetails!,
         if (appIntegrity != null) 'appIntegrity': appIntegrity!,
         if (deviceIntegrity != null) 'deviceIntegrity': deviceIntegrity!,
-        if (guidanceDetails != null) 'guidanceDetails': guidanceDetails!,
+        if (environmentDetails != null)
+          'environmentDetails': environmentDetails!,
         if (requestDetails != null) 'requestDetails': requestDetails!,
         if (testingDetails != null) 'testingDetails': testingDetails!,
       };

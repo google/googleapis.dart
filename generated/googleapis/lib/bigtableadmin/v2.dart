@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Cloud Bigtable Admin API - v2
@@ -30,7 +29,7 @@
 ///       - [ProjectsInstancesClustersHotTabletsResource]
 ///     - [ProjectsInstancesTablesResource]
 ///   - [ProjectsLocationsResource]
-library bigtableadmin_v2;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -104,89 +103,6 @@ class OperationsResource {
       OperationsProjectsResource(_requester);
 
   OperationsResource(commons.ApiRequester client) : _requester = client;
-
-  /// Starts asynchronous cancellation on a long-running operation.
-  ///
-  /// The server makes a best effort to cancel the operation, but success is not
-  /// guaranteed. If the server doesn't support this method, it returns
-  /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
-  /// or other methods to check whether the cancellation succeeded or whether
-  /// the operation completed despite cancellation. On successful cancellation,
-  /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - The name of the operation resource to be cancelled.
-  /// Value must have pattern `^operations/.*$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Empty].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Empty> cancel(
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':cancel';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      queryParams: queryParams_,
-    );
-    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Deletes a long-running operation.
-  ///
-  /// This method indicates that the client is no longer interested in the
-  /// operation result. It does not cancel the operation. If the server doesn't
-  /// support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - The name of the operation resource to be deleted.
-  /// Value must have pattern `^operations/.*$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Empty].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v2/' + core.Uri.encodeFull('$name');
-
-    final response_ = await _requester.request(
-      url_,
-      'DELETE',
-      queryParams: queryParams_,
-    );
-    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
 
   /// Gets the latest state of a long-running operation.
   ///
@@ -1427,7 +1343,7 @@ class ProjectsInstancesClustersBackupsResource {
     return Backup.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets the access control policy for a Table resource.
+  /// Gets the access control policy for a Table or Backup resource.
   ///
   /// Returns an empty policy if the resource exists but does not have a policy
   /// set.
@@ -1620,7 +1536,7 @@ class ProjectsInstancesClustersBackupsResource {
     return Backup.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Sets the access control policy on a Table resource.
+  /// Sets the access control policy on a Table or Backup resource.
   ///
   /// Replaces any existing policy.
   ///
@@ -1666,7 +1582,8 @@ class ProjectsInstancesClustersBackupsResource {
     return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Returns permissions that the caller has on the specified table resource.
+  /// Returns permissions that the caller has on the specified Table or Backup
+  /// resource.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1925,7 +1842,10 @@ class ProjectsInstancesTablesResource {
   /// Permanently drop/delete a row range from a specified table.
   ///
   /// The request can specify whether to delete all rows in a table, or only
-  /// those that match a particular prefix.
+  /// those that match a particular prefix. Note that row key prefixes used here
+  /// are treated as service data. For more information about how service data
+  /// is handled, see the
+  /// [Google Cloud Privacy Notice](https://cloud.google.com/terms/cloud-privacy-notice).
   ///
   /// [request] - The metadata request object.
   ///
@@ -2073,7 +1993,7 @@ class ProjectsInstancesTablesResource {
     return Table.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets the access control policy for a Table resource.
+  /// Gets the access control policy for a Table or Backup resource.
   ///
   /// Returns an empty policy if the resource exists but does not have a policy
   /// set.
@@ -2338,7 +2258,7 @@ class ProjectsInstancesTablesResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Sets the access control policy on a Table resource.
+  /// Sets the access control policy on a Table or Backup resource.
   ///
   /// Replaces any existing policy.
   ///
@@ -2384,7 +2304,8 @@ class ProjectsInstancesTablesResource {
     return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Returns permissions that the caller has on the specified table resource.
+  /// Returns permissions that the caller has on the specified Table or Backup
+  /// resource.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2478,41 +2399,6 @@ class ProjectsLocationsResource {
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Gets information about a location.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Resource name for the location.
-  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Location].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Location> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v2/' + core.Uri.encodeFull('$name');
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return Location.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-
   /// Lists information about the supported locations for this service.
   ///
   /// Request parameters:
@@ -2592,15 +2478,36 @@ class AppProfile {
   /// `projects/{project}/instances/{instance}/appProfiles/_a-zA-Z0-9*`.
   core.String? name;
 
+  /// This field has been deprecated in favor of `standard_isolation.priority`.
+  ///
+  /// If you set this field, `standard_isolation.priority` will be set instead.
+  /// The priority of requests sent using this app profile.
+  /// Possible string values are:
+  /// - "PRIORITY_UNSPECIFIED" : Default value. Mapped to PRIORITY_HIGH (the
+  /// legacy behavior) on creation.
+  /// - "PRIORITY_LOW"
+  /// - "PRIORITY_MEDIUM"
+  /// - "PRIORITY_HIGH"
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.String? priority;
+
   /// Use a single-cluster routing policy.
   SingleClusterRouting? singleClusterRouting;
+
+  /// The standard options used for isolating this app profile's traffic from
+  /// other use cases.
+  StandardIsolation? standardIsolation;
 
   AppProfile({
     this.description,
     this.etag,
     this.multiClusterRoutingUseAny,
     this.name,
+    this.priority,
     this.singleClusterRouting,
+    this.standardIsolation,
   });
 
   AppProfile.fromJson(core.Map json_)
@@ -2616,8 +2523,15 @@ class AppProfile {
                           as core.Map<core.String, core.dynamic>)
                   : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          priority: json_.containsKey('priority')
+              ? json_['priority'] as core.String
+              : null,
           singleClusterRouting: json_.containsKey('singleClusterRouting')
               ? SingleClusterRouting.fromJson(json_['singleClusterRouting']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          standardIsolation: json_.containsKey('standardIsolation')
+              ? StandardIsolation.fromJson(json_['standardIsolation']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -2628,8 +2542,10 @@ class AppProfile {
         if (multiClusterRoutingUseAny != null)
           'multiClusterRoutingUseAny': multiClusterRoutingUseAny!,
         if (name != null) 'name': name!,
+        if (priority != null) 'priority': priority!,
         if (singleClusterRouting != null)
           'singleClusterRouting': singleClusterRouting!,
+        if (standardIsolation != null) 'standardIsolation': standardIsolation!,
       };
 }
 
@@ -2691,6 +2607,43 @@ class AuditConfig {
 /// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
 typedef AuditLogConfig = $AuditLogConfig;
+
+/// Defines an automated backup policy for a table
+class AutomatedBackupPolicy {
+  /// How frequently automated backups should occur.
+  ///
+  /// The only supported value at this time is 24 hours.
+  ///
+  /// Required.
+  core.String? frequency;
+
+  /// How long the automated backups should be retained.
+  ///
+  /// The only supported value at this time is 3 days.
+  ///
+  /// Required.
+  core.String? retentionPeriod;
+
+  AutomatedBackupPolicy({
+    this.frequency,
+    this.retentionPeriod,
+  });
+
+  AutomatedBackupPolicy.fromJson(core.Map json_)
+      : this(
+          frequency: json_.containsKey('frequency')
+              ? json_['frequency'] as core.String
+              : null,
+          retentionPeriod: json_.containsKey('retentionPeriod')
+              ? json_['retentionPeriod'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (frequency != null) 'frequency': frequency!,
+        if (retentionPeriod != null) 'retentionPeriod': retentionPeriod!,
+      };
+}
 
 /// Limits for the number of nodes a Cluster can autoscale up/down to.
 class AutoscalingLimits {
@@ -2811,7 +2764,7 @@ class Backup {
   /// Name of the backup from which this backup was copied.
   ///
   /// If a backup is not created by copying a backup, this field will be empty.
-  /// Values are of the form: projects//instances//backups/.
+  /// Values are of the form: projects//instances//clusters//backups/
   ///
   /// Output only.
   core.String? sourceBackup;
@@ -2913,7 +2866,7 @@ class BackupInfo {
   /// Name of the backup from which this backup was copied.
   ///
   /// If a backup is not created by copying a backup, this field will be empty.
-  /// Values are of the form: projects//instances//backups/.
+  /// Values are of the form: projects//instances//clusters//backups/
   ///
   /// Output only.
   core.String? sourceBackup;
@@ -2998,14 +2951,31 @@ class Binding {
   /// `group:{emailid}`: An email address that represents a Google group. For
   /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
   /// (primary) that represents all the users of that domain. For example,
-  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a user that has
-  /// been recently deleted. For example,
-  /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
-  /// this value reverts to `user:{emailid}` and the recovered user retains the
-  /// role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a service account
-  /// that has been recently deleted. For example,
+  /// `google.com` or `example.com`. *
+  /// `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workforce identity pool. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`:
+  /// All workforce identities in a group. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All workforce identities with a specific attribute value. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}
+  /// / * `: All identities in a workforce identity pool. *
+  /// `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workload identity pool. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`:
+  /// A workload identity pool group. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All identities in a workload identity pool with a certain attribute. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}
+  /// / * `: All identities in a workload identity pool. *
+  /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
+  /// identifier) representing a user that has been recently deleted. For
+  /// example, `alice@example.com?uid=123456789012345678901`. If the user is
+  /// recovered, this value reverts to `user:{emailid}` and the recovered user
+  /// retains the role in the binding. *
+  /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus
+  /// unique identifier) representing a service account that has been recently
+  /// deleted. For example,
   /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If
   /// the service account is undeleted, this value reverts to
   /// `serviceAccount:{emailid}` and the undeleted service account retains the
@@ -3014,12 +2984,19 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding.
+  /// the role in the binding. *
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// Deleted single identity in a workforce identity pool. For example,
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
   ///
-  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an
+  /// overview of the IAM roles and permissions, see the
+  /// [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For
+  /// a list of the available pre-defined roles, see
+  /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
   Binding({
@@ -3159,9 +3136,10 @@ class Cluster {
   /// `projects/{project}/instances/{instance}/clusters/a-z*`.
   core.String? name;
 
-  /// The number of nodes allocated to this cluster.
+  /// The number of nodes in the cluster.
   ///
-  /// More nodes enable higher throughput and more consistent performance.
+  /// If no value is set, Cloud Bigtable automatically allocates nodes based on
+  /// your data footprint and optimized for 50% storage utilization.
   core.int? serveNodes;
 
   /// The current state of the cluster.
@@ -3360,6 +3338,8 @@ class ColumnFamily {
   /// column family contents.
   ///
   /// For statistics over an entire table, see TableStats above.
+  ///
+  /// Output only.
   ColumnFamilyStats? stats;
 
   ColumnFamily({
@@ -4462,11 +4442,21 @@ class Modification {
   /// column family exists with the given ID.
   ColumnFamily? update;
 
+  /// A mask specifying which fields (e.g. `gc_rule`) in the `update` mod should
+  /// be updated, ignored for other modification types.
+  ///
+  /// If unset or empty, we treat it as updating `gc_rule` to be backward
+  /// compatible.
+  ///
+  /// Optional.
+  core.String? updateMask;
+
   Modification({
     this.create,
     this.drop,
     this.id,
     this.update,
+    this.updateMask,
   });
 
   Modification.fromJson(core.Map json_)
@@ -4481,6 +4471,9 @@ class Modification {
               ? ColumnFamily.fromJson(
                   json_['update'] as core.Map<core.String, core.dynamic>)
               : null,
+          updateMask: json_.containsKey('updateMask')
+              ? json_['updateMask'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4488,6 +4481,7 @@ class Modification {
         if (drop != null) 'drop': drop!,
         if (id != null) 'id': id!,
         if (update != null) 'update': update!,
+        if (updateMask != null) 'updateMask': updateMask!,
       };
 }
 
@@ -4495,6 +4489,8 @@ class Modification {
 /// google.bigtable.admin.v2.BigtableTableAdmin.ModifyColumnFamilies
 class ModifyColumnFamiliesRequest {
   /// If true, ignore safety checks when modifying the column families.
+  ///
+  /// Optional.
   core.bool? ignoreWarnings;
 
   /// Modifications to be atomically applied to the specified table's families.
@@ -4591,7 +4587,7 @@ class Operation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard
@@ -4651,23 +4647,23 @@ class Operation {
 /// request, the resource, or both. To learn which resources support conditions
 /// in their IAM policies, see the
 /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": \[ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": \[
+/// **JSON example:** ``` { "bindings": [ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": [
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": \[
-/// "user:eve@example.com" \], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": [
+/// "user:eve@example.com" ], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time \< timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
-/// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
-/// user:mike@example.com - group:admins@example.com - domain:google.com -
-/// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
-/// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
-/// role: roles/resourcemanager.organizationViewer condition: title: expirable
-/// access description: Does not grant access after Sep 2020 expression:
-/// request.time \< timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
-/// version: 3 For a description of IAM and its features, see the
-/// [IAM documentation](https://cloud.google.com/iam/docs/).
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: -
+/// members: - user:mike@example.com - group:admins@example.com -
+/// domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+/// role: roles/resourcemanager.organizationAdmin - members: -
+/// user:eve@example.com role: roles/resourcemanager.organizationViewer
+/// condition: title: expirable access description: Does not grant access after
+/// Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+/// etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features,
+/// see the [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig>? auditConfigs;
@@ -4929,6 +4925,34 @@ class Split {
       };
 }
 
+/// Standard options for isolating this app profile's traffic from other use
+/// cases.
+class StandardIsolation {
+  /// The priority of requests sent using this app profile.
+  /// Possible string values are:
+  /// - "PRIORITY_UNSPECIFIED" : Default value. Mapped to PRIORITY_HIGH (the
+  /// legacy behavior) on creation.
+  /// - "PRIORITY_LOW"
+  /// - "PRIORITY_MEDIUM"
+  /// - "PRIORITY_HIGH"
+  core.String? priority;
+
+  StandardIsolation({
+    this.priority,
+  });
+
+  StandardIsolation.fromJson(core.Map json_)
+      : this(
+          priority: json_.containsKey('priority')
+              ? json_['priority'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (priority != null) 'priority': priority!,
+      };
+}
+
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.
 ///
@@ -4942,6 +4966,11 @@ typedef Status = $Status;
 ///
 /// Each table is served using the resources of its parent cluster.
 class Table {
+  /// If specified, automated backups are enabled for this table.
+  ///
+  /// Otherwise, automated backups are disabled.
+  AutomatedBackupPolicy? automatedBackupPolicy;
+
   /// If specified, enable the change stream on this table.
   ///
   /// Otherwise, the change stream is disabled and the change stream is not
@@ -5004,9 +5033,12 @@ class Table {
   ///
   /// For statistics about a specific column family, see ColumnFamilyStats in
   /// the mapped ColumnFamily collection above.
+  ///
+  /// Output only.
   TableStats? stats;
 
   Table({
+    this.automatedBackupPolicy,
     this.changeStreamConfig,
     this.clusterStates,
     this.columnFamilies,
@@ -5019,6 +5051,10 @@ class Table {
 
   Table.fromJson(core.Map json_)
       : this(
+          automatedBackupPolicy: json_.containsKey('automatedBackupPolicy')
+              ? AutomatedBackupPolicy.fromJson(json_['automatedBackupPolicy']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           changeStreamConfig: json_.containsKey('changeStreamConfig')
               ? ChangeStreamConfig.fromJson(json_['changeStreamConfig']
                   as core.Map<core.String, core.dynamic>)
@@ -5061,6 +5097,8 @@ class Table {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (automatedBackupPolicy != null)
+          'automatedBackupPolicy': automatedBackupPolicy!,
         if (changeStreamConfig != null)
           'changeStreamConfig': changeStreamConfig!,
         if (clusterStates != null) 'clusterStates': clusterStates!,

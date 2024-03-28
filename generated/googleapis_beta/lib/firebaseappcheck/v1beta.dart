@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Firebase App Check API - v1beta
@@ -33,7 +32,8 @@
 ///     - [ProjectsAppsRecaptchaV3ConfigResource]
 ///     - [ProjectsAppsSafetyNetConfigResource]
 ///   - [ProjectsServicesResource]
-library firebaseappcheck_v1beta;
+///     - [ProjectsServicesResourcePoliciesResource]
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -138,7 +138,15 @@ class OauthClientsResource {
   /// format: ``` projects/{project_number}/apps/{app_id} ``` If necessary, the
   /// `project_number` element can be replaced with the project ID of the
   /// Firebase project. Learn more about using project identifiers in Google's
-  /// [AIP 2510](https://google.aip.dev/cloud/2510) standard.
+  /// [AIP 2510](https://google.aip.dev/cloud/2510) standard. Alternatively, if
+  /// this method is being called for an OAuth client protected by App Check,
+  /// this field can also be in the format: ``` oauthClients/{oauth_client_id}
+  /// ``` You can view the OAuth client ID for your OAuth clients in the Google
+  /// Cloud console. Note that only iOS OAuth clients are supported at this
+  /// time, and they must be linked to corresponding iOS Firebase apps. Please
+  /// see
+  /// [the documentation](https://developers.google.com/identity/sign-in/ios/appcheck/get-started#project-setup)
+  /// for more information.
   /// Value must have pattern `^oauthClients/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -191,7 +199,15 @@ class OauthClientsResource {
   /// format: ``` projects/{project_number}/apps/{app_id} ``` If necessary, the
   /// `project_number` element can be replaced with the project ID of the
   /// Firebase project. Learn more about using project identifiers in Google's
-  /// [AIP 2510](https://google.aip.dev/cloud/2510) standard.
+  /// [AIP 2510](https://google.aip.dev/cloud/2510) standard. Alternatively, if
+  /// this method is being called for an OAuth client protected by App Check,
+  /// this field can also be in the format: ``` oauthClients/{oauth_client_id}
+  /// ``` You can view the OAuth client ID for your OAuth clients in the Google
+  /// Cloud console. Note that only iOS OAuth clients are supported at this
+  /// time, and they must be linked to corresponding iOS Firebase apps. Please
+  /// see
+  /// [the documentation](https://developers.google.com/identity/sign-in/ios/appcheck/get-started#project-setup)
+  /// for more information.
   /// Value must have pattern `^oauthClients/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -230,6 +246,65 @@ class OauthClientsResource {
         .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Validates a debug token secret that you have previously created using
+  /// CreateDebugToken.
+  ///
+  /// If valid, returns an AppCheckToken. Note that a restrictive quota is
+  /// enforced on this method to prevent accidental exposure of the app to
+  /// abuse.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [app] - Required. The relative resource name of the app, in the format:
+  /// ``` projects/{project_number}/apps/{app_id} ``` If necessary, the
+  /// `project_number` element can be replaced with the project ID of the
+  /// Firebase project. Learn more about using project identifiers in Google's
+  /// [AIP 2510](https://google.aip.dev/cloud/2510) standard. Alternatively, if
+  /// this method is being called for an OAuth client protected by App Check,
+  /// this field can also be in the format: ``` oauthClients/{oauth_client_id}
+  /// ``` You can view the OAuth client ID for your OAuth clients in the Google
+  /// Cloud console. Note that only iOS OAuth clients are supported at this
+  /// time, and they must be linked to corresponding iOS Firebase apps. Please
+  /// see
+  /// [the documentation](https://developers.google.com/identity/sign-in/ios/appcheck/get-started#project-setup)
+  /// for more information.
+  /// Value must have pattern `^oauthClients/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleFirebaseAppcheckV1betaAppCheckToken].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirebaseAppcheckV1betaAppCheckToken> exchangeDebugToken(
+    GoogleFirebaseAppcheckV1betaExchangeDebugTokenRequest request,
+    core.String app, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1beta/' + core.Uri.encodeFull('$app') + ':exchangeDebugToken';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleFirebaseAppcheckV1betaAppCheckToken.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Generates a challenge that protects the integrity of an immediately
   /// following call to ExchangeAppAttestAttestation or
   /// ExchangeAppAttestAssertion.
@@ -244,7 +319,15 @@ class OauthClientsResource {
   /// format: ``` projects/{project_number}/apps/{app_id} ``` If necessary, the
   /// `project_number` element can be replaced with the project ID of the
   /// Firebase project. Learn more about using project identifiers in Google's
-  /// [AIP 2510](https://google.aip.dev/cloud/2510) standard.
+  /// [AIP 2510](https://google.aip.dev/cloud/2510) standard. Alternatively, if
+  /// this method is being called for an OAuth client protected by App Check,
+  /// this field can also be in the format: ``` oauthClients/{oauth_client_id}
+  /// ``` You can view the OAuth client ID for your OAuth clients in the Google
+  /// Cloud console. Note that only iOS OAuth clients are supported at this
+  /// time, and they must be linked to corresponding iOS Firebase apps. Please
+  /// see
+  /// [the documentation](https://developers.google.com/identity/sign-in/ios/appcheck/get-started#project-setup)
+  /// for more information.
   /// Value must have pattern `^oauthClients/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -397,7 +480,15 @@ class ProjectsAppsResource {
   /// format: ``` projects/{project_number}/apps/{app_id} ``` If necessary, the
   /// `project_number` element can be replaced with the project ID of the
   /// Firebase project. Learn more about using project identifiers in Google's
-  /// [AIP 2510](https://google.aip.dev/cloud/2510) standard.
+  /// [AIP 2510](https://google.aip.dev/cloud/2510) standard. Alternatively, if
+  /// this method is being called for an OAuth client protected by App Check,
+  /// this field can also be in the format: ``` oauthClients/{oauth_client_id}
+  /// ``` You can view the OAuth client ID for your OAuth clients in the Google
+  /// Cloud console. Note that only iOS OAuth clients are supported at this
+  /// time, and they must be linked to corresponding iOS Firebase apps. Please
+  /// see
+  /// [the documentation](https://developers.google.com/identity/sign-in/ios/appcheck/get-started#project-setup)
+  /// for more information.
   /// Value must have pattern `^projects/\[^/\]+/apps/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -450,7 +541,15 @@ class ProjectsAppsResource {
   /// format: ``` projects/{project_number}/apps/{app_id} ``` If necessary, the
   /// `project_number` element can be replaced with the project ID of the
   /// Firebase project. Learn more about using project identifiers in Google's
-  /// [AIP 2510](https://google.aip.dev/cloud/2510) standard.
+  /// [AIP 2510](https://google.aip.dev/cloud/2510) standard. Alternatively, if
+  /// this method is being called for an OAuth client protected by App Check,
+  /// this field can also be in the format: ``` oauthClients/{oauth_client_id}
+  /// ``` You can view the OAuth client ID for your OAuth clients in the Google
+  /// Cloud console. Note that only iOS OAuth clients are supported at this
+  /// time, and they must be linked to corresponding iOS Firebase apps. Please
+  /// see
+  /// [the documentation](https://developers.google.com/identity/sign-in/ios/appcheck/get-started#project-setup)
+  /// for more information.
   /// Value must have pattern `^projects/\[^/\]+/apps/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -553,7 +652,15 @@ class ProjectsAppsResource {
   /// ``` projects/{project_number}/apps/{app_id} ``` If necessary, the
   /// `project_number` element can be replaced with the project ID of the
   /// Firebase project. Learn more about using project identifiers in Google's
-  /// [AIP 2510](https://google.aip.dev/cloud/2510) standard.
+  /// [AIP 2510](https://google.aip.dev/cloud/2510) standard. Alternatively, if
+  /// this method is being called for an OAuth client protected by App Check,
+  /// this field can also be in the format: ``` oauthClients/{oauth_client_id}
+  /// ``` You can view the OAuth client ID for your OAuth clients in the Google
+  /// Cloud console. Note that only iOS OAuth clients are supported at this
+  /// time, and they must be linked to corresponding iOS Firebase apps. Please
+  /// see
+  /// [the documentation](https://developers.google.com/identity/sign-in/ios/appcheck/get-started#project-setup)
+  /// for more information.
   /// Value must have pattern `^projects/\[^/\]+/apps/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -911,7 +1018,15 @@ class ProjectsAppsResource {
   /// format: ``` projects/{project_number}/apps/{app_id} ``` If necessary, the
   /// `project_number` element can be replaced with the project ID of the
   /// Firebase project. Learn more about using project identifiers in Google's
-  /// [AIP 2510](https://google.aip.dev/cloud/2510) standard.
+  /// [AIP 2510](https://google.aip.dev/cloud/2510) standard. Alternatively, if
+  /// this method is being called for an OAuth client protected by App Check,
+  /// this field can also be in the format: ``` oauthClients/{oauth_client_id}
+  /// ``` You can view the OAuth client ID for your OAuth clients in the Google
+  /// Cloud console. Note that only iOS OAuth clients are supported at this
+  /// time, and they must be linked to corresponding iOS Firebase apps. Please
+  /// see
+  /// [the documentation](https://developers.google.com/identity/sign-in/ios/appcheck/get-started#project-setup)
+  /// for more information.
   /// Value must have pattern `^projects/\[^/\]+/apps/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2340,6 +2455,9 @@ class ProjectsAppsSafetyNetConfigResource {
 class ProjectsServicesResource {
   final commons.ApiRequester _requester;
 
+  ProjectsServicesResourcePoliciesResource get resourcePolicies =>
+      ProjectsServicesResourcePoliciesResource(_requester);
+
   ProjectsServicesResource(commons.ApiRequester client) : _requester = client;
 
   /// Atomically updates the specified Service configurations.
@@ -2541,6 +2659,320 @@ class ProjectsServicesResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1betaService.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsServicesResourcePoliciesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsServicesResourcePoliciesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Atomically updates the specified ResourcePolicy configurations.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent project name and the service, in the
+  /// format ``` projects/{project_number}/services/{service_id} ``` The parent
+  /// collection in the `name` field of any resource being updated must match
+  /// this field, or the entire batch fails.
+  /// Value must have pattern `^projects/\[^/\]+/services/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleFirebaseAppcheckV1betaBatchUpdateResourcePoliciesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirebaseAppcheckV1betaBatchUpdateResourcePoliciesResponse>
+      batchUpdate(
+    GoogleFirebaseAppcheckV1betaBatchUpdateResourcePoliciesRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1beta/' +
+        core.Uri.encodeFull('$parent') +
+        '/resourcePolicies:batchUpdate';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleFirebaseAppcheckV1betaBatchUpdateResourcePoliciesResponse
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Creates the specified ResourcePolicy configuration.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The relative resource name of the parent service in
+  /// which the specified ResourcePolicy will be created, in the format: ```
+  /// projects/{project_number}/services/{service_id} ``` Note that the
+  /// `service_id` element must be a supported service ID. Currently, the
+  /// following service IDs are supported: * `oauth2.googleapis.com` (Google
+  /// Identity for iOS)
+  /// Value must have pattern `^projects/\[^/\]+/services/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleFirebaseAppcheckV1betaResourcePolicy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirebaseAppcheckV1betaResourcePolicy> create(
+    GoogleFirebaseAppcheckV1betaResourcePolicy request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1beta/' + core.Uri.encodeFull('$parent') + '/resourcePolicies';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleFirebaseAppcheckV1betaResourcePolicy.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes the specified ResourcePolicy configuration.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The relative resource name of the ResourcePolicy to
+  /// delete, in the format: ```
+  /// projects/{project_number}/services/{service_id}/resourcePolicies/{resource_name}
+  /// ```
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/services/\[^/\]+/resourcePolicies/\[^/\]+$`.
+  ///
+  /// [etag] - The checksum to be validated against the current ResourcePolicy,
+  /// to ensure the client has an up-to-date value before proceeding. The user
+  /// can obtain this from the ResourcePolicy object that they last received.
+  /// This etag is strongly validated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? etag,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (etag != null) 'etag': [etag],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the requested ResourcePolicy configuration.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The relative resource name of the ResourcePolicy to
+  /// retrieve, in the format: ```
+  /// projects/{project_number}/services/{service_id}/resourcePolicies/{resource_policy_id}
+  /// ``` Note that the `service_id` element must be a supported service ID.
+  /// Currently, the following service IDs are supported: *
+  /// `oauth2.googleapis.com` (Google Identity for iOS) `resource_policy_id` is
+  /// a system-generated UID used as the resource ID for the policy.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/services/\[^/\]+/resourcePolicies/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleFirebaseAppcheckV1betaResourcePolicy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirebaseAppcheckV1betaResourcePolicy> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleFirebaseAppcheckV1betaResourcePolicy.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all ResourcePolicy configurations for the specified project and
+  /// service.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The relative resource name of the parent project and
+  /// service for which to list each associated ResourcePolicy, in the format:
+  /// ``` projects/{project_number}/services/{service_name} ```
+  /// Value must have pattern `^projects/\[^/\]+/services/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filters the results by the specified rule. For the
+  /// exact syntax of this field, please consult the
+  /// \[AIP-160\](https://google.aip.dev/160) standard. Currently, since the
+  /// only fields in the ResourcePolicy resource are the scalar fields
+  /// `enforcement_mode` and `target_resource`, this method does not support the
+  /// traversal operator (`.`) or the has operator (`:`). Here are some examples
+  /// of valid filters: * `enforcement_mode = ENFORCED` * `target_resource =
+  /// "//oauth2.googleapis.com/projects/12345/oauthClients/"` *
+  /// `enforcement_mode = ENFORCED AND target_resource =
+  /// "//oauth2.googleapis.com/projects/12345/oauthClients/"`
+  ///
+  /// [pageSize] - The maximum number of ResourcePolicys to return in the
+  /// response. Only explicitly configured policies are returned. The server may
+  /// return fewer than this at its own discretion. If no value is specified (or
+  /// too large a value is specified), the server will impose its own limit.
+  ///
+  /// [pageToken] - Token returned from a previous call to ListResourcePolicies
+  /// indicating where in the set of ResourcePolicys to resume listing. Provide
+  /// this to retrieve the subsequent page. When paginating, all other
+  /// parameters provided to ListResourcePolicies must match the call that
+  /// provided the page token; if they do not match, the result is undefined.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleFirebaseAppcheckV1betaListResourcePoliciesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirebaseAppcheckV1betaListResourcePoliciesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1beta/' + core.Uri.encodeFull('$parent') + '/resourcePolicies';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleFirebaseAppcheckV1betaListResourcePoliciesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the specified ResourcePolicy configuration.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The relative name of the resource configuration object,
+  /// in the format: ```
+  /// projects/{project_number}/services/{service_id}/resourcePolicies/{resource_policy_id}
+  /// ``` Note that the `service_id` element must be a supported service ID.
+  /// Currently, the following service IDs are supported: *
+  /// `oauth2.googleapis.com` (Google Identity for iOS) `resource_policy_id` is
+  /// a system-generated UID used as the resource ID for the policy.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/services/\[^/\]+/resourcePolicies/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. A comma-separated list of names of fields in the
+  /// ResourcePolicy to update. Example: `enforcement_mode`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleFirebaseAppcheckV1betaResourcePolicy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirebaseAppcheckV1betaResourcePolicy> patch(
+    GoogleFirebaseAppcheckV1betaResourcePolicy request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleFirebaseAppcheckV1betaResourcePolicy.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -2855,6 +3287,78 @@ class GoogleFirebaseAppcheckV1betaBatchGetSafetyNetConfigsResponse {
       };
 }
 
+/// Request message for the BatchUpdateResourcePolicies method.
+class GoogleFirebaseAppcheckV1betaBatchUpdateResourcePoliciesRequest {
+  /// The request messages specifying the ResourcePolicys to update.
+  ///
+  /// A maximum of 100 objects can be updated in a batch.
+  ///
+  /// Required.
+  core.List<GoogleFirebaseAppcheckV1betaUpdateResourcePolicyRequest>? requests;
+
+  /// A comma-separated list of names of fields in the ResourcePolicy objects to
+  /// update.
+  ///
+  /// Example: `enforcement_mode`. If this field is present, the `update_mask`
+  /// field in the UpdateResourcePolicyRequest messages must all match this
+  /// field, or the entire batch fails and no updates will be committed.
+  ///
+  /// Optional.
+  core.String? updateMask;
+
+  GoogleFirebaseAppcheckV1betaBatchUpdateResourcePoliciesRequest({
+    this.requests,
+    this.updateMask,
+  });
+
+  GoogleFirebaseAppcheckV1betaBatchUpdateResourcePoliciesRequest.fromJson(
+      core.Map json_)
+      : this(
+          requests: json_.containsKey('requests')
+              ? (json_['requests'] as core.List)
+                  .map((value) =>
+                      GoogleFirebaseAppcheckV1betaUpdateResourcePolicyRequest
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          updateMask: json_.containsKey('updateMask')
+              ? json_['updateMask'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (requests != null) 'requests': requests!,
+        if (updateMask != null) 'updateMask': updateMask!,
+      };
+}
+
+/// Response message for the BatchUpdateResourcePolicies method.
+class GoogleFirebaseAppcheckV1betaBatchUpdateResourcePoliciesResponse {
+  /// ResourcePolicy objects after the updates have been applied.
+  core.List<GoogleFirebaseAppcheckV1betaResourcePolicy>? resourcePolicies;
+
+  GoogleFirebaseAppcheckV1betaBatchUpdateResourcePoliciesResponse({
+    this.resourcePolicies,
+  });
+
+  GoogleFirebaseAppcheckV1betaBatchUpdateResourcePoliciesResponse.fromJson(
+      core.Map json_)
+      : this(
+          resourcePolicies: json_.containsKey('resourcePolicies')
+              ? (json_['resourcePolicies'] as core.List)
+                  .map((value) =>
+                      GoogleFirebaseAppcheckV1betaResourcePolicy.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (resourcePolicies != null) 'resourcePolicies': resourcePolicies!,
+      };
+}
+
 /// Request message for the BatchUpdateServices method.
 class GoogleFirebaseAppcheckV1betaBatchUpdateServicesRequest {
   /// The request messages specifying the Services to update.
@@ -3090,10 +3594,11 @@ class GoogleFirebaseAppcheckV1betaExchangeAppAttestAssertionRequest {
         convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// Forces a short-lived token with a 5 minute TTL.
+  /// Specifies whether this attestation is for use in a *limited use* (`true`)
+  /// or *session based* (`false`) context.
   ///
-  /// Useful when the client wishes to impose stricter TTL requirements for this
-  /// exchange. Default: false.
+  /// To enable this attestation to be used with the *replay protection*
+  /// feature, set this to `true`. The default value is `false`.
   core.bool? limitedUse;
 
   GoogleFirebaseAppcheckV1betaExchangeAppAttestAssertionRequest({
@@ -3167,10 +3672,11 @@ class GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationRequest {
         convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// Forces a short-lived token with a 5 minute TTL.
+  /// Specifies whether this attestation is for use in a *limited use* (`true`)
+  /// or *session based* (`false`) context.
   ///
-  /// Useful when the client wishes to impose stricter TTL requirements for this
-  /// exchange. Default: false.
+  /// To enable this attestation to be used with the *replay protection*
+  /// feature, set this to `true`. The default value is `false`.
   core.bool? limitedUse;
 
   GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationRequest({
@@ -3264,10 +3770,11 @@ class GoogleFirebaseAppcheckV1betaExchangeCustomTokenRequest {
   /// Required.
   core.String? customToken;
 
-  /// Forces a short-lived token with a 5 minute TTL.
+  /// Specifies whether this attestation is for use in a *limited use* (`true`)
+  /// or *session based* (`false`) context.
   ///
-  /// Useful when the client wishes to impose stricter TTL requirements for this
-  /// exchange. Default: false.
+  /// To enable this attestation to be used with the *replay protection*
+  /// feature, set this to `true`. The default value is `false`.
   core.bool? limitedUse;
 
   GoogleFirebaseAppcheckV1betaExchangeCustomTokenRequest({
@@ -3302,10 +3809,11 @@ class GoogleFirebaseAppcheckV1betaExchangeDebugTokenRequest {
   /// Required.
   core.String? debugToken;
 
-  /// Forces a short-lived token with a 5 minute TTL.
+  /// Specifies whether this attestation is for use in a *limited use* (`true`)
+  /// or *session based* (`false`) context.
   ///
-  /// Useful when the client wishes to impose stricter TTL requirements for this
-  /// exchange. Default: false.
+  /// To enable this attestation to be used with the *replay protection*
+  /// feature, set this to `true`. The default value is `false`.
   core.bool? limitedUse;
 
   GoogleFirebaseAppcheckV1betaExchangeDebugTokenRequest({
@@ -3339,10 +3847,11 @@ class GoogleFirebaseAppcheckV1betaExchangeDeviceCheckTokenRequest {
   /// Required.
   core.String? deviceToken;
 
-  /// Forces a short-lived token with a 5 minute TTL.
+  /// Specifies whether this attestation is for use in a *limited use* (`true`)
+  /// or *session based* (`false`) context.
   ///
-  /// Useful when the client wishes to impose stricter TTL requirements for this
-  /// exchange. Default: false.
+  /// To enable this attestation to be used with the *replay protection*
+  /// feature, set this to `true`. The default value is `false`.
   core.bool? limitedUse;
 
   GoogleFirebaseAppcheckV1betaExchangeDeviceCheckTokenRequest({
@@ -3369,10 +3878,11 @@ class GoogleFirebaseAppcheckV1betaExchangeDeviceCheckTokenRequest {
 
 /// Request message for the ExchangePlayIntegrityToken method.
 class GoogleFirebaseAppcheckV1betaExchangePlayIntegrityTokenRequest {
-  /// Forces a short-lived token with a 5 minute TTL.
+  /// Specifies whether this attestation is for use in a *limited use* (`true`)
+  /// or *session based* (`false`) context.
   ///
-  /// Useful when the client wishes to impose stricter TTL requirements for this
-  /// exchange. Default: false.
+  /// To enable this attestation to be used with the *replay protection*
+  /// feature, set this to `true`. The default value is `false`.
   core.bool? limitedUse;
 
   /// The
@@ -3407,10 +3917,11 @@ class GoogleFirebaseAppcheckV1betaExchangePlayIntegrityTokenRequest {
 
 /// Request message for the ExchangeRecaptchaEnterpriseToken method.
 class GoogleFirebaseAppcheckV1betaExchangeRecaptchaEnterpriseTokenRequest {
-  /// Forces a short-lived token with a 5 minute TTL.
+  /// Specifies whether this attestation is for use in a *limited use* (`true`)
+  /// or *session based* (`false`) context.
   ///
-  /// Useful when the client wishes to impose stricter TTL requirements for this
-  /// exchange. Default: false.
+  /// To enable this attestation to be used with the *replay protection*
+  /// feature, set this to `true`. The default value is `false`.
   core.bool? limitedUse;
 
   /// The reCAPTCHA token as returned by the
@@ -3470,10 +3981,11 @@ class GoogleFirebaseAppcheckV1betaExchangeRecaptchaTokenRequest {
 
 /// Request message for the ExchangeRecaptchaV3Token method.
 class GoogleFirebaseAppcheckV1betaExchangeRecaptchaV3TokenRequest {
-  /// Forces a short-lived token with a 5 minute TTL.
+  /// Specifies whether this attestation is for use in a *limited use* (`true`)
+  /// or *session based* (`false`) context.
   ///
-  /// Useful when the client wishes to impose stricter TTL requirements for this
-  /// exchange. Default: false.
+  /// To enable this attestation to be used with the *replay protection*
+  /// feature, set this to `true`. The default value is `false`.
   core.bool? limitedUse;
 
   /// The reCAPTCHA token as returned by the
@@ -3645,6 +4157,46 @@ class GoogleFirebaseAppcheckV1betaListDebugTokensResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (debugTokens != null) 'debugTokens': debugTokens!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Response message for the ListResourcePolicies method.
+class GoogleFirebaseAppcheckV1betaListResourcePoliciesResponse {
+  /// If the result list is too large to fit in a single response, then a token
+  /// is returned.
+  ///
+  /// If the string is empty or omitted, then this response is the last page of
+  /// results. This token can be used in a subsequent call to
+  /// ListResourcePolicies to find the next group of ResourcePolicy objects.
+  /// Page tokens are short-lived and should not be persisted.
+  core.String? nextPageToken;
+
+  /// The ResourcePolicys retrieved.
+  core.List<GoogleFirebaseAppcheckV1betaResourcePolicy>? resourcePolicies;
+
+  GoogleFirebaseAppcheckV1betaListResourcePoliciesResponse({
+    this.nextPageToken,
+    this.resourcePolicies,
+  });
+
+  GoogleFirebaseAppcheckV1betaListResourcePoliciesResponse.fromJson(
+      core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          resourcePolicies: json_.containsKey('resourcePolicies')
+              ? (json_['resourcePolicies'] as core.List)
+                  .map((value) =>
+                      GoogleFirebaseAppcheckV1betaResourcePolicy.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (resourcePolicies != null) 'resourcePolicies': resourcePolicies!,
       };
 }
 
@@ -4004,6 +4556,126 @@ class GoogleFirebaseAppcheckV1betaRecaptchaV3Config {
       };
 }
 
+/// App Check enforcement policy for a specific resource of a Firebase service
+/// supported by App Check.
+///
+/// Note that this policy will override the Service level enforcement mode
+/// configuration.
+class GoogleFirebaseAppcheckV1betaResourcePolicy {
+  /// The App Check enforcement mode for this resource.
+  ///
+  /// This will override the EnforcementMode setting on the service. For new
+  /// resources that you are creating, you should consider setting an override
+  /// and enable enforcement on the resource immediately, if there are no
+  /// outdated clients that can use it.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "OFF" : Firebase App Check is not enforced for the service, nor are App
+  /// Check metrics collected. Though the service is not protected by App Check
+  /// in this mode, other applicable protections, such as user authorization,
+  /// are still enforced. An unconfigured service is in this mode by default.
+  /// Note that resource policies behave slightly differently as an unconfigured
+  /// resource policy means that the resource will inherit the EnforcementMode
+  /// configured for the service it belongs to and will not be considered as
+  /// being in OFF mode by default.
+  /// - "UNENFORCED" : Firebase App Check is not enforced for the service. App
+  /// Check metrics are collected to help you decide when to turn on enforcement
+  /// for the service. Though the service is not protected by App Check in this
+  /// mode, other applicable protections, such as user authorization, are still
+  /// enforced. Some services require certain conditions to be met before they
+  /// will work with App Check, such as requiring you to upgrade to a specific
+  /// service tier. Until those requirements are met for a service, this
+  /// `UNENFORCED` setting will have no effect and App Check will not work with
+  /// that service.
+  /// - "ENFORCED" : Firebase App Check is enforced for the service. The service
+  /// will reject any request that attempts to access your project's resources
+  /// if it does not have valid App Check token attached, with some exceptions
+  /// depending on the service; for example, some services will still allow
+  /// requests bearing the developer's privileged service account credentials
+  /// without an App Check token. App Check metrics continue to be collected to
+  /// help you detect issues with your App Check integration and monitor the
+  /// composition of your callers. While the service is protected by App Check,
+  /// other applicable protections, such as user authorization, continue to be
+  /// enforced at the same time. Use caution when choosing to enforce App Check
+  /// on a Firebase service. If your users have not updated to an App Check
+  /// capable version of your app, their apps will no longer be able to use your
+  /// Firebase services that are enforcing App Check. App Check metrics can help
+  /// you decide whether to enforce App Check on your Firebase services. If your
+  /// app has not launched yet, you should enable enforcement immediately, since
+  /// there are no outdated clients in use. Some services require certain
+  /// conditions to be met before they will work with App Check, such as
+  /// requiring you to upgrade to a specific service tier. Until those
+  /// requirements are met for a service, this `ENFORCED` setting will have no
+  /// effect and App Check will not work with that service.
+  core.String? enforcementMode;
+
+  /// This checksum is computed by the server based on the value of other
+  /// fields, and may be sent on update and delete requests to ensure the client
+  /// has an up-to-date value before proceeding.
+  ///
+  /// This etag is strongly validated.
+  core.String? etag;
+
+  /// The relative name of the resource configuration object, in the format: ```
+  /// projects/{project_number}/services/{service_id}/resourcePolicies/{resource_policy_id}
+  /// ``` Note that the `service_id` element must be a supported service ID.
+  ///
+  /// Currently, the following service IDs are supported: *
+  /// `oauth2.googleapis.com` (Google Identity for iOS) `resource_policy_id` is
+  /// a system-generated UID used as the resource ID for the policy.
+  ///
+  /// Required.
+  core.String? name;
+
+  /// Service specific name of the resource object to which this policy applies,
+  /// in the format: *
+  /// `//oauth2.googleapis.com/projects/{project}/oauthClients/{oauth_client_id}`
+  /// (Google Identity for iOS) NOTE that the resource must belong to the
+  /// service specified in the `name` and be from the same project as this
+  /// policy, but it may or may not exist at the time of creation of the policy.
+  ///
+  /// Required.
+  core.String? targetResource;
+
+  /// Timestamp when this service configuration object was most recently
+  /// updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GoogleFirebaseAppcheckV1betaResourcePolicy({
+    this.enforcementMode,
+    this.etag,
+    this.name,
+    this.targetResource,
+    this.updateTime,
+  });
+
+  GoogleFirebaseAppcheckV1betaResourcePolicy.fromJson(core.Map json_)
+      : this(
+          enforcementMode: json_.containsKey('enforcementMode')
+              ? json_['enforcementMode'] as core.String
+              : null,
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          targetResource: json_.containsKey('targetResource')
+              ? json_['targetResource'] as core.String
+              : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enforcementMode != null) 'enforcementMode': enforcementMode!,
+        if (etag != null) 'etag': etag!,
+        if (name != null) 'name': name!,
+        if (targetResource != null) 'targetResource': targetResource!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
 /// An app's SafetyNet configuration object.
 ///
 /// This configuration controls certain properties of the `AppCheckToken`
@@ -4141,6 +4813,55 @@ class GoogleFirebaseAppcheckV1betaService {
         if (etag != null) 'etag': etag!,
         if (name != null) 'name': name!,
         if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// Request message for the UpdateResourcePolicy method as well as an individual
+/// update message for the BatchUpdateResourcePolicies method.
+class GoogleFirebaseAppcheckV1betaUpdateResourcePolicyRequest {
+  /// The ResourcePolicy to update.
+  ///
+  /// The ResourcePolicy's `name` field is used to identify the ResourcePolicy
+  /// to be updated, in the format: ```
+  /// projects/{project_number}/services/{service_id}/resourcePolicies/{resource_name}
+  /// ``` Note that the `service_id` element must be a supported service ID.
+  /// Currently, the following service IDs are supported: *
+  /// `oauth2.googleapis.com` (Google Identity for iOS) Only the top-level
+  /// resources are supported for each of the services. The resources must
+  /// belong to the service specified and `resource_name` should be formatted
+  /// as: * `oauthClients/{oauth_client_id}` (Google Identity for iOS)
+  ///
+  /// Required.
+  GoogleFirebaseAppcheckV1betaResourcePolicy? resourcePolicy;
+
+  /// A comma-separated list of names of fields in the ResourcePolicy to update.
+  ///
+  /// Example: `enforcement_mode`.
+  ///
+  /// Required.
+  core.String? updateMask;
+
+  GoogleFirebaseAppcheckV1betaUpdateResourcePolicyRequest({
+    this.resourcePolicy,
+    this.updateMask,
+  });
+
+  GoogleFirebaseAppcheckV1betaUpdateResourcePolicyRequest.fromJson(
+      core.Map json_)
+      : this(
+          resourcePolicy: json_.containsKey('resourcePolicy')
+              ? GoogleFirebaseAppcheckV1betaResourcePolicy.fromJson(
+                  json_['resourcePolicy']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          updateMask: json_.containsKey('updateMask')
+              ? json_['updateMask'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (resourcePolicy != null) 'resourcePolicy': resourcePolicy!,
+        if (updateMask != null) 'updateMask': updateMask!,
       };
 }
 

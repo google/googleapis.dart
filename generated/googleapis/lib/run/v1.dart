@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Cloud Run Admin API - v1
@@ -39,10 +38,11 @@
 ///     - [ProjectsLocationsConfigurationsResource]
 ///     - [ProjectsLocationsDomainmappingsResource]
 ///     - [ProjectsLocationsJobsResource]
+///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsRevisionsResource]
 ///     - [ProjectsLocationsRoutesResource]
 ///     - [ProjectsLocationsServicesResource]
-library run_v1;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -1795,6 +1795,8 @@ class ProjectsLocationsResource {
       ProjectsLocationsDomainmappingsResource(_requester);
   ProjectsLocationsJobsResource get jobs =>
       ProjectsLocationsJobsResource(_requester);
+  ProjectsLocationsOperationsResource get operations =>
+      ProjectsLocationsOperationsResource(_requester);
   ProjectsLocationsRevisionsResource get revisions =>
       ProjectsLocationsRevisionsResource(_requester);
   ProjectsLocationsRoutesResource get routes =>
@@ -2403,6 +2405,201 @@ class ProjectsLocationsJobsResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsOperationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsOperationsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Deletes a long-running operation.
+  ///
+  /// This method indicates that the client is no longer interested in the
+  /// operation result. It does not cancel the operation. If the server doesn't
+  /// support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be deleted.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists operations that match the specified filter in the request.
+  ///
+  /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. To query for all of the operations for a project.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. A filter for matching the completed or in-progress
+  /// operations. The supported formats of *filter* are: To query for only
+  /// completed operations: done:true To query for only ongoing operations:
+  /// done:false Must be empty to query for all of the latest operations for the
+  /// given parent project.
+  ///
+  /// [pageSize] - The maximum number of records that should be returned.
+  /// Requested page size cannot exceed 100. If not set or set to less than or
+  /// equal to 0, the default page size is 100. .
+  ///
+  /// [pageToken] - Token identifying which result to start with, which is
+  /// returned by a previous list call.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningListOperationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningListOperationsResponse> list(
+    core.String name, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/operations';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningListOperationsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Waits until the specified long-running operation is done or reaches at
+  /// most a specified timeout, returning the latest state.
+  ///
+  /// If the operation is already done, the latest state is immediately
+  /// returned. If the timeout specified is greater than the default HTTP/RPC
+  /// timeout, the HTTP/RPC timeout is used. If the server does not support this
+  /// method, it returns `google.rpc.Code.UNIMPLEMENTED`. Note that this method
+  /// is on a best-effort basis. It may return the latest state before the
+  /// specified timeout (including immediately), meaning even an immediate
+  /// response is no guarantee that the operation is done.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to wait on.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> wait(
+    GoogleLongrunningWaitOperationRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':wait';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -3290,14 +3487,31 @@ class Binding {
   /// `group:{emailid}`: An email address that represents a Google group. For
   /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
   /// (primary) that represents all the users of that domain. For example,
-  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a user that has
-  /// been recently deleted. For example,
-  /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
-  /// this value reverts to `user:{emailid}` and the recovered user retains the
-  /// role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a service account
-  /// that has been recently deleted. For example,
+  /// `google.com` or `example.com`. *
+  /// `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workforce identity pool. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`:
+  /// All workforce identities in a group. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All workforce identities with a specific attribute value. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}
+  /// / * `: All identities in a workforce identity pool. *
+  /// `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workload identity pool. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`:
+  /// A workload identity pool group. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All identities in a workload identity pool with a certain attribute. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}
+  /// / * `: All identities in a workload identity pool. *
+  /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
+  /// identifier) representing a user that has been recently deleted. For
+  /// example, `alice@example.com?uid=123456789012345678901`. If the user is
+  /// recovered, this value reverts to `user:{emailid}` and the recovered user
+  /// retains the role in the binding. *
+  /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus
+  /// unique identifier) representing a service account that has been recently
+  /// deleted. For example,
   /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If
   /// the service account is undeleted, this value reverts to
   /// `serviceAccount:{emailid}` and the undeleted service account retains the
@@ -3306,12 +3520,19 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding.
+  /// the role in the binding. *
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// Deleted single identity in a workforce identity pool. For example,
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
   ///
-  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an
+  /// overview of the IAM roles and permissions, see the
+  /// [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For
+  /// a list of the available pre-defined roles, see
+  /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
   Binding({
@@ -3338,6 +3559,59 @@ class Binding {
         if (condition != null) 'condition': condition!,
         if (members != null) 'members': members!,
         if (role != null) 'role': role!,
+      };
+}
+
+/// Storage volume source using the Container Storage Interface.
+class CSIVolumeSource {
+  /// name of the CSI driver for the requested storage system.
+  ///
+  /// Cloud Run supports the following drivers: * gcsfuse.run.googleapis.com :
+  /// Mount a Cloud Storage Bucket as a volume.
+  core.String? driver;
+
+  /// If true, mount the volume as read only.
+  ///
+  /// Defaults to false.
+  core.bool? readOnly;
+
+  /// stores driver specific attributes.
+  ///
+  /// For Google Cloud Storage volumes, the following attributes are supported:
+  /// * bucketName: the name of the Cloud Storage bucket to mount. The Cloud Run
+  /// Service identity must have access to this bucket.
+  core.Map<core.String, core.String>? volumeAttributes;
+
+  CSIVolumeSource({
+    this.driver,
+    this.readOnly,
+    this.volumeAttributes,
+  });
+
+  CSIVolumeSource.fromJson(core.Map json_)
+      : this(
+          driver: json_.containsKey('driver')
+              ? json_['driver'] as core.String
+              : null,
+          readOnly: json_.containsKey('readOnly')
+              ? json_['readOnly'] as core.bool
+              : null,
+          volumeAttributes: json_.containsKey('volumeAttributes')
+              ? (json_['volumeAttributes']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (driver != null) 'driver': driver!,
+        if (readOnly != null) 'readOnly': readOnly!,
+        if (volumeAttributes != null) 'volumeAttributes': volumeAttributes!,
       };
 }
 
@@ -4159,6 +4433,14 @@ class DomainMappingStatus {
       };
 }
 
+/// A generic empty message that you can re-use to avoid defining duplicated
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); }
+typedef Empty = $Empty;
+
 /// In memory (tmpfs) ephemeral storage.
 ///
 /// It is ephemeral in the sense that when the sandbox is taken down, the data
@@ -4250,8 +4532,6 @@ class EnvFromSource {
 class EnvVar {
   /// Name of the environment variable.
   ///
-  /// Must be a C_IDENTIFIER.
-  ///
   /// Required.
   core.String? name;
 
@@ -4325,33 +4605,7 @@ class EnvVarSource {
 /// Not supported by Cloud Run.
 ///
 /// ExecAction describes a "run in container" action.
-class ExecAction {
-  /// Command is the command line to execute inside the container, the working
-  /// directory for the command is root ('/') in the container's filesystem.
-  ///
-  /// The command is simply exec'd, it is not run inside a shell, so traditional
-  /// shell instructions ('|', etc) won't work. To use a shell, you need to
-  /// explicitly call out to that shell. Exit status of 0 is treated as
-  /// live/healthy and non-zero is unhealthy.
-  core.List<core.String>? command;
-
-  ExecAction({
-    this.command,
-  });
-
-  ExecAction.fromJson(core.Map json_)
-      : this(
-          command: json_.containsKey('command')
-              ? (json_['command'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (command != null) 'command': command!,
-      };
-}
+typedef ExecAction = $ExecAction;
 
 /// Execution represents the configuration of a single execution.
 ///
@@ -4839,6 +5093,117 @@ class GoogleCloudRunV1Condition {
         if (type != null) 'type': type!,
       };
 }
+
+/// The response message for Operations.ListOperations.
+class GoogleLongrunningListOperationsResponse {
+  /// The standard List next-page token.
+  core.String? nextPageToken;
+
+  /// A list of operations that matches the specified filter in the request.
+  core.List<GoogleLongrunningOperation>? operations;
+
+  GoogleLongrunningListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+  });
+
+  GoogleLongrunningListOperationsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          operations: json_.containsKey('operations')
+              ? (json_['operations'] as core.List)
+                  .map((value) => GoogleLongrunningOperation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (operations != null) 'operations': operations!,
+      };
+}
+
+/// This resource represents a long-running operation that is the result of a
+/// network API call.
+class GoogleLongrunningOperation {
+  /// If the value is `false`, it means the operation is still in progress.
+  ///
+  /// If `true`, the operation is completed, and either `error` or `response` is
+  /// available.
+  core.bool? done;
+
+  /// The error result of the operation in case of failure or cancellation.
+  GoogleRpcStatus? error;
+
+  /// Service-specific metadata associated with the operation.
+  ///
+  /// It typically contains progress information and common metadata such as
+  /// create time. Some services might not provide such metadata. Any method
+  /// that returns a long-running operation should document the metadata type,
+  /// if any.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? metadata;
+
+  /// The server-assigned name, which is only unique within the same service
+  /// that originally returns it.
+  ///
+  /// If you use the default HTTP mapping, the `name` should be a resource name
+  /// ending with `operations/{unique_id}`.
+  core.String? name;
+
+  /// The normal, successful response of the operation.
+  ///
+  /// If the original method returns no data on success, such as `Delete`, the
+  /// response is `google.protobuf.Empty`. If the original method is standard
+  /// `Get`/`Create`/`Update`, the response should be the resource. For other
+  /// methods, the response should have the type `XxxResponse`, where `Xxx` is
+  /// the original method name. For example, if the original method name is
+  /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? response;
+
+  GoogleLongrunningOperation({
+    this.done,
+    this.error,
+    this.metadata,
+    this.name,
+    this.response,
+  });
+
+  GoogleLongrunningOperation.fromJson(core.Map json_)
+      : this(
+          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          error: json_.containsKey('error')
+              ? GoogleRpcStatus.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>)
+              : null,
+          metadata: json_.containsKey('metadata')
+              ? json_['metadata'] as core.Map<core.String, core.dynamic>
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          response: json_.containsKey('response')
+              ? json_['response'] as core.Map<core.String, core.dynamic>
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!,
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (response != null) 'response': response!,
+      };
+}
+
+/// The request message for Operations.WaitOperation.
+typedef GoogleLongrunningWaitOperationRequest = $WaitOperationRequest;
 
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.
@@ -5705,8 +6070,48 @@ class LocalObjectReference {
 /// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
-/// k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all
-/// persisted resources must have, which includes all objects users must create.
+/// Represents a persistent volume that will be mounted using NFS.
+///
+/// This volume will be shared between all instances of the Service and data
+/// will not be deleted when the instance is shut down.
+class NFSVolumeSource {
+  /// Path that is exported by the NFS server.
+  core.String? path;
+
+  /// If true, mount the NFS volume as read only.
+  ///
+  /// Defaults to false.
+  core.bool? readOnly;
+
+  /// Hostname or IP address of the NFS server.
+  core.String? server;
+
+  NFSVolumeSource({
+    this.path,
+    this.readOnly,
+    this.server,
+  });
+
+  NFSVolumeSource.fromJson(core.Map json_)
+      : this(
+          path: json_.containsKey('path') ? json_['path'] as core.String : null,
+          readOnly: json_.containsKey('readOnly')
+              ? json_['readOnly'] as core.bool
+              : null,
+          server: json_.containsKey('server')
+              ? json_['server'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (path != null) 'path': path!,
+        if (readOnly != null) 'readOnly': readOnly!,
+        if (server != null) 'server': server!,
+      };
+}
+
+/// google.cloud.run.meta.v1.ObjectMeta is metadata that all persisted resources
+/// must have, which includes all objects users must create.
 class ObjectMeta {
   /// Unstructured key value map stored with a resource that may be set by
   /// external tools to store and retrieve arbitrary metadata.
@@ -5721,9 +6126,10 @@ class ObjectMeta {
   /// `run.googleapis.com/binary-authorization`: Service, Job, Execution. *
   /// `run.googleapis.com/client-name`: All resources. *
   /// `run.googleapis.com/cloudsql-instances`: Revision, Execution. *
-  /// `run.googleapis.com/container-dependencies`: Revision. *
+  /// `run.googleapis.com/container-dependencies`: Revision . *
   /// `run.googleapis.com/cpu-throttling`: Revision. *
   /// `run.googleapis.com/custom-audiences`: Service. *
+  /// `run.googleapis.com/default-url-disabled`: Service. *
   /// `run.googleapis.com/description`: Service. *
   /// `run.googleapis.com/encryption-key-shutdown-hours`: Revision *
   /// `run.googleapis.com/encryption-key`: Revision, Execution. *
@@ -5731,6 +6137,7 @@ class ObjectMeta {
   /// `run.googleapis.com/gc-traffic-tags`: Service. *
   /// `run.googleapis.com/ingress`: Service. *
   /// `run.googleapis.com/launch-stage`: Service, Job. *
+  /// `run.googleapis.com/minScale`: Service (ALPHA) *
   /// `run.googleapis.com/network-interfaces`: Revision, Execution. *
   /// `run.googleapis.com/post-key-revocation-action-type`: Revision. *
   /// `run.googleapis.com/secrets`: Revision, Execution. *
@@ -6024,23 +6431,23 @@ class OwnerReference {
 /// request, the resource, or both. To learn which resources support conditions
 /// in their IAM policies, see the
 /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": \[ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": \[
+/// **JSON example:** ``` { "bindings": [ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": [
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": \[
-/// "user:eve@example.com" \], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": [
+/// "user:eve@example.com" ], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time \< timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
-/// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
-/// user:mike@example.com - group:admins@example.com - domain:google.com -
-/// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
-/// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
-/// role: roles/resourcemanager.organizationViewer condition: title: expirable
-/// access description: Does not grant access after Sep 2020 expression:
-/// request.time \< timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
-/// version: 3 For a description of IAM and its features, see the
-/// [IAM documentation](https://cloud.google.com/iam/docs/).
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: -
+/// members: - user:mike@example.com - group:admins@example.com -
+/// domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+/// role: roles/resourcemanager.organizationAdmin - members: -
+/// user:eve@example.com role: roles/resourcemanager.organizationViewer
+/// condition: title: expirable access description: Does not grant access after
+/// Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+/// etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features,
+/// see the [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig>? auditConfigs;
@@ -6410,6 +6817,8 @@ class RevisionSpec {
   /// In the context of a Revision, we disallow a number of fields on this
   /// Container, including: name and lifecycle. In Cloud Run, only a single
   /// container may be provided.
+  ///
+  /// Required.
   core.List<Container>? containers;
 
   /// Not supported by Cloud Run.
@@ -6506,6 +6915,14 @@ class RevisionStatus {
   /// Revision may receive traffic.
   core.List<GoogleCloudRunV1Condition>? conditions;
 
+  /// The configured number of instances running this revision.
+  ///
+  /// For Cloud Run, this only includes instances provisioned using the minScale
+  /// annotation. It does not include instances created by autoscaling.
+  ///
+  /// Output only.
+  core.int? desiredReplicas;
+
   /// ImageDigest holds the resolved digest for the image specified within
   /// .Spec.Container.Image.
   ///
@@ -6533,6 +6950,7 @@ class RevisionStatus {
 
   RevisionStatus({
     this.conditions,
+    this.desiredReplicas,
     this.imageDigest,
     this.logUrl,
     this.observedGeneration,
@@ -6546,6 +6964,9 @@ class RevisionStatus {
                   .map((value) => GoogleCloudRunV1Condition.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
+              : null,
+          desiredReplicas: json_.containsKey('desiredReplicas')
+              ? json_['desiredReplicas'] as core.int
               : null,
           imageDigest: json_.containsKey('imageDigest')
               ? json_['imageDigest'] as core.String
@@ -6563,6 +6984,7 @@ class RevisionStatus {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (conditions != null) 'conditions': conditions!,
+        if (desiredReplicas != null) 'desiredReplicas': desiredReplicas!,
         if (imageDigest != null) 'imageDigest': imageDigest!,
         if (logUrl != null) 'logUrl': logUrl!,
         if (observedGeneration != null)
@@ -6739,7 +7161,7 @@ class RouteStatus {
   /// targets.
   ///
   /// It generally has the form:
-  /// https://{route-hash}-{project-hash}-{cluster-level-suffix}.a.run.app
+  /// `https://{route-hash}-{project-hash}-{cluster-level-suffix}.a.run.app`
   core.String? url;
 
   RouteStatus({
@@ -6786,11 +7208,9 @@ class RouteStatus {
 
 /// Request message for creating a new execution of a job.
 class RunJobRequest {
-  /// Private preview feature.
-  ///
-  /// Currently only available by invitation. Overrides specification for a
-  /// given execution of a job. The specified values update the specification of
-  /// the created execution.
+  /// Overrides existing job configuration for one specific new job execution
+  /// only, using the specified values to update the job configuration for the
+  /// new execution.
   ///
   /// Optional.
   Overrides? overrides;
@@ -7062,6 +7482,7 @@ class Service {
   /// `run.googleapis.com/binary-authorization-breakglass` *
   /// `run.googleapis.com/binary-authorization` *
   /// `run.googleapis.com/client-name` * `run.googleapis.com/custom-audiences` *
+  /// `run.googleapis.com/default-url-disabled`: Service. *
   /// `run.googleapis.com/description` * `run.googleapis.com/gc-traffic-tags` *
   /// `run.googleapis.com/ingress` * `run.googleapis.com/ingress` sets the
   /// ingress settings for the Service. See \[the ingress settings
@@ -7181,9 +7602,8 @@ class ServiceStatus {
   /// its `Ready` condition become `True`.
   core.String? latestReadyRevisionName;
 
-  /// Returns the generation last fully processed by the system.
+  /// Returns the generation last seen by the system.
   ///
-  /// This will only match metadata.generation when reconciliation is complete.
   /// Clients polling for completed reconciliation should poll until
   /// observedGeneration = metadata.generation and the Ready condition's status
   /// is True or False.
@@ -7199,7 +7619,7 @@ class ServiceStatus {
   /// URL that will distribute traffic over the provided traffic targets.
   ///
   /// It generally has the form
-  /// https://{route-hash}-{project-hash}-{cluster-level-suffix}.a.run.app
+  /// `https://{route-hash}-{project-hash}-{cluster-level-suffix}.a.run.app`
   core.String? url;
 
   ServiceStatus({
@@ -7632,8 +8052,7 @@ class TaskAttemptResult {
 class TaskSpec {
   /// List of containers belonging to the task.
   ///
-  /// We disallow a number of fields on this Container. Only a single container
-  /// may be provided.
+  /// We disallow a number of fields on this Container.
   ///
   /// Optional.
   core.List<Container>? containers;
@@ -7941,6 +8360,9 @@ class Volume {
   /// Not supported in Cloud Run.
   ConfigMapVolumeSource? configMap;
 
+  /// Volume specified by the Container Storage Interface driver
+  CSIVolumeSource? csi;
+
   /// Ephemeral storage used as a shared volume.
   EmptyDirVolumeSource? emptyDir;
 
@@ -7948,6 +8370,7 @@ class Volume {
   ///
   /// In Cloud Run Fully Managed, the name 'cloudsql' is reserved.
   core.String? name;
+  NFSVolumeSource? nfs;
 
   /// The secret's value will be presented as the content of a file whose name
   /// is defined in the item path.
@@ -7957,8 +8380,10 @@ class Volume {
 
   Volume({
     this.configMap,
+    this.csi,
     this.emptyDir,
     this.name,
+    this.nfs,
     this.secret,
   });
 
@@ -7968,11 +8393,19 @@ class Volume {
               ? ConfigMapVolumeSource.fromJson(
                   json_['configMap'] as core.Map<core.String, core.dynamic>)
               : null,
+          csi: json_.containsKey('csi')
+              ? CSIVolumeSource.fromJson(
+                  json_['csi'] as core.Map<core.String, core.dynamic>)
+              : null,
           emptyDir: json_.containsKey('emptyDir')
               ? EmptyDirVolumeSource.fromJson(
                   json_['emptyDir'] as core.Map<core.String, core.dynamic>)
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          nfs: json_.containsKey('nfs')
+              ? NFSVolumeSource.fromJson(
+                  json_['nfs'] as core.Map<core.String, core.dynamic>)
+              : null,
           secret: json_.containsKey('secret')
               ? SecretVolumeSource.fromJson(
                   json_['secret'] as core.Map<core.String, core.dynamic>)
@@ -7981,8 +8414,10 @@ class Volume {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (configMap != null) 'configMap': configMap!,
+        if (csi != null) 'csi': csi!,
         if (emptyDir != null) 'emptyDir': emptyDir!,
         if (name != null) 'name': name!,
+        if (nfs != null) 'nfs': nfs!,
         if (secret != null) 'secret': secret!,
       };
 }
@@ -8003,9 +8438,9 @@ class VolumeMount {
   /// Required.
   core.String? name;
 
-  /// Only true is accepted for Secret Volumes.
+  /// Sets the mount to be read-only or read-write.
   ///
-  /// Defaults to true for Secrets Volumes.
+  /// Not used by Cloud Run.
   core.bool? readOnly;
 
   /// Path within the volume from which the container's volume should be

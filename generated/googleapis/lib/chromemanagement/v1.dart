@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Chrome Management API - v1
@@ -30,10 +29,12 @@
 ///   - [CustomersTelemetryResource]
 ///     - [CustomersTelemetryDevicesResource]
 ///     - [CustomersTelemetryEventsResource]
+///     - [CustomersTelemetryNotificationConfigsResource]
 ///     - [CustomersTelemetryUsersResource]
-library chromemanagement_v1;
+library;
 
 import 'dart:async' as async;
+import 'dart:convert' as convert;
 import 'dart:core' as core;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
@@ -651,6 +652,222 @@ class CustomersReportsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Get a summary of printing done by each printer.
+  ///
+  /// Request parameters:
+  ///
+  /// [customer] - Required. Customer ID prefixed with "customers/" or
+  /// "customers/my_customer" to use the customer associated to the account
+  /// making the request.
+  /// Value must have pattern `^customers/\[^/\]+$`.
+  ///
+  /// [filter] - Query string to filter results, AND-separated fields in EBNF
+  /// syntax. Note: OR operations are not supported in this filter. Note: Only
+  /// \>= and \<= comparators are supported in this filter. Supported filter
+  /// fields: * complete_time
+  ///
+  /// [orderBy] - Field used to order results. If omitted, results will be
+  /// ordered in ascending order of the 'printer' field. Supported order_by
+  /// fields: * printer * job_count * device_count * user_count
+  ///
+  /// [pageSize] - Maximum number of results to return. Maximum and default are
+  /// 100.
+  ///
+  /// [pageToken] - Token to specify the page of the response to be returned.
+  ///
+  /// [printerOrgUnitId] - The ID of the organizational unit for printers. If
+  /// specified, only data for printers from the specified organizational unit
+  /// will be returned. If omitted, data for printers from all organizational
+  /// units will be returned.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleChromeManagementV1CountPrintJobsByPrinterResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleChromeManagementV1CountPrintJobsByPrinterResponse>
+      countPrintJobsByPrinter(
+    core.String customer, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? printerOrgUnitId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (printerOrgUnitId != null) 'printerOrgUnitId': [printerOrgUnitId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$customer') +
+        '/reports:countPrintJobsByPrinter';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleChromeManagementV1CountPrintJobsByPrinterResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Get a summary of printing done by each user.
+  ///
+  /// Request parameters:
+  ///
+  /// [customer] - Required. Customer ID prefixed with "customers/" or
+  /// "customers/my_customer" to use the customer associated to the account
+  /// making the request.
+  /// Value must have pattern `^customers/\[^/\]+$`.
+  ///
+  /// [filter] - Query string to filter results, AND-separated fields in EBNF
+  /// syntax. Note: OR operations are not supported in this filter. Note: Only
+  /// \>= and \<= comparators are supported in this filter. Supported filter
+  /// fields: * complete_time
+  ///
+  /// [orderBy] - Field used to order results. If omitted, results will be
+  /// ordered in ascending order of the 'user_email' field. Supported order_by
+  /// fields: * user_email * job_count * printer_count * device_count
+  ///
+  /// [pageSize] - Maximum number of results to return. Maximum and default are
+  /// 100.
+  ///
+  /// [pageToken] - Token to specify the page of the response to be returned.
+  ///
+  /// [printerOrgUnitId] - The ID of the organizational unit for printers. If
+  /// specified, only print jobs initiated with printers from the specified
+  /// organizational unit will be counted. If omitted, all print jobs will be
+  /// counted.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleChromeManagementV1CountPrintJobsByUserResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleChromeManagementV1CountPrintJobsByUserResponse>
+      countPrintJobsByUser(
+    core.String customer, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? printerOrgUnitId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (printerOrgUnitId != null) 'printerOrgUnitId': [printerOrgUnitId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$customer') +
+        '/reports:countPrintJobsByUser';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleChromeManagementV1CountPrintJobsByUserResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Get a list of print jobs.
+  ///
+  /// Request parameters:
+  ///
+  /// [customer] - Required. Customer ID prefixed with "customers/" or
+  /// "customers/my_customer" to use the customer associated to the account
+  /// making the request.
+  /// Value must have pattern `^customers/\[^/\]+$`.
+  ///
+  /// [filter] - Query string to filter results, AND-separated fields in EBNF
+  /// syntax. Note: OR operations are not supported in this filter. Note: Only
+  /// \>= and \<= comparators are supported for `complete_time`. Note: Only =
+  /// comparator supported for `user_id` and `printer_id`. Supported filter
+  /// fields: * complete_time * printer_id * user_id
+  ///
+  /// [orderBy] - Field used to order results. If not specified, results will be
+  /// ordered in descending order of the `complete_time` field. Supported order
+  /// by fields: * title * state * create_time * complete_time *
+  /// document_page_count * color_mode * duplex_mode * printer * user_email
+  ///
+  /// [pageSize] - The number of print jobs in the page from 0 to 100 inclusive,
+  /// if page_size is not specified or zero, the size will be 50.
+  ///
+  /// [pageToken] - A page token received from a previous `EnumeratePrintJobs`
+  /// call. Provide this to retrieve the subsequent page. If omitted, the first
+  /// page of results will be returned. When paginating, all other parameters
+  /// provided to `EnumeratePrintJobs` must match the call that provided the
+  /// page token.
+  ///
+  /// [printerOrgUnitId] - The ID of the organizational unit for printers. If
+  /// specified, only print jobs submitted to printers from the specified
+  /// organizational unit will be returned.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleChromeManagementV1EnumeratePrintJobsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleChromeManagementV1EnumeratePrintJobsResponse>
+      enumeratePrintJobs(
+    core.String customer, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? printerOrgUnitId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (printerOrgUnitId != null) 'printerOrgUnitId': [printerOrgUnitId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$customer') +
+        '/reports:enumeratePrintJobs';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleChromeManagementV1EnumeratePrintJobsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Generate report of managed Chrome browser devices that have a specified
   /// app installed.
   ///
@@ -742,6 +959,8 @@ class CustomersTelemetryResource {
       CustomersTelemetryDevicesResource(_requester);
   CustomersTelemetryEventsResource get events =>
       CustomersTelemetryEventsResource(_requester);
+  CustomersTelemetryNotificationConfigsResource get notificationConfigs =>
+      CustomersTelemetryNotificationConfigsResource(_requester);
   CustomersTelemetryUsersResource get users =>
       CustomersTelemetryUsersResource(_requester);
 
@@ -762,6 +981,15 @@ class CustomersTelemetryDevicesResource {
   /// Value must have pattern `^customers/\[^/\]+/telemetry/devices/\[^/\]+$`.
   ///
   /// [readMask] - Required. Read mask to specify which fields to return.
+  /// Supported read_mask paths are: - name - org_unit_id - device_id -
+  /// serial_number - cpu_info - cpu_status_report - memory_info -
+  /// memory_status_report - network_info - network_diagnostics_report -
+  /// network_status_report - os_update_status - graphics_info -
+  /// graphics_status_report - battery_info - battery_status_report -
+  /// storage_info - storage_status_report - thunderbolt_info -
+  /// audio_status_report - boot_performance_report - heartbeat_status_report -
+  /// network_bandwidth_report - peripherals_report - kiosk_app_status_report -
+  /// app_report - runtime_counters_report
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -816,6 +1044,15 @@ class CustomersTelemetryDevicesResource {
   /// [pageToken] - Token to specify next page in the list.
   ///
   /// [readMask] - Required. Read mask to specify which fields to return.
+  /// Supported read_mask paths are: - name - org_unit_id - device_id -
+  /// serial_number - cpu_info - cpu_status_report - memory_info -
+  /// memory_status_report - network_info - network_diagnostics_report -
+  /// network_status_report - os_update_status - graphics_info -
+  /// graphics_status_report - battery_info - battery_status_report -
+  /// storage_info - storage_status_report - thunderbolt_info -
+  /// audio_status_report - boot_performance_report - heartbeat_status_report -
+  /// network_bandwidth_report - peripherals_report - kiosk_app_status_report -
+  /// app_report - runtime_counters_report
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -886,7 +1123,12 @@ class CustomersTelemetryEventsResource {
   ///
   /// [readMask] - Required. Read mask to specify which fields to return.
   /// Although currently required, this field will become optional, while the
-  /// filter parameter with an event type will be come required.
+  /// filter parameter with an event type will be come required. Supported
+  /// read_mask paths are: - device - user - audio_severe_underrun_event -
+  /// usb_peripherals_event - https_latency_change_event -
+  /// network_state_change_event - wifi_signal_strength_event -
+  /// vpn_connection_state_change_event - app_install_event -
+  /// app_uninstall_event - app_launch_event
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -926,6 +1168,150 @@ class CustomersTelemetryEventsResource {
   }
 }
 
+class CustomersTelemetryNotificationConfigsResource {
+  final commons.ApiRequester _requester;
+
+  CustomersTelemetryNotificationConfigsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Create a telemetry notification config.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource where this notification config
+  /// will be created. Format: `customers/{customer}`
+  /// Value must have pattern `^customers/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleChromeManagementV1TelemetryNotificationConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleChromeManagementV1TelemetryNotificationConfig> create(
+    GoogleChromeManagementV1TelemetryNotificationConfig request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/telemetry/notificationConfigs';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleChromeManagementV1TelemetryNotificationConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Delete a telemetry notification config.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the notification config to delete. Format:
+  /// `customers/{customer}/telemetry/notificationConfigs/{notification_config}`
+  /// Value must have pattern
+  /// `^customers/\[^/\]+/telemetry/notificationConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// List all telemetry notification configs.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent which owns the notification configs.
+  /// Value must have pattern `^customers/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of notification configs to return. The
+  /// service may return fewer than this value. If unspecified, at most 100
+  /// notification configs will be returned. The maximum value is 100; values
+  /// above 100 will be coerced to 100.
+  ///
+  /// [pageToken] - A page token, received from a previous
+  /// `ListTelemetryNotificationConfigs` call. Provide this to retrieve the
+  /// subsequent page. When paginating, all other parameters provided to
+  /// `ListTelemetryNotificationConfigs` must match the call that provided the
+  /// page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleChromeManagementV1ListTelemetryNotificationConfigsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleChromeManagementV1ListTelemetryNotificationConfigsResponse>
+      list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/telemetry/notificationConfigs';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleChromeManagementV1ListTelemetryNotificationConfigsResponse
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class CustomersTelemetryUsersResource {
   final commons.ApiRequester _requester;
 
@@ -939,7 +1325,11 @@ class CustomersTelemetryUsersResource {
   /// [name] - Required. Name of the `TelemetryUser` to return.
   /// Value must have pattern `^customers/\[^/\]+/telemetry/users/\[^/\]+$`.
   ///
-  /// [readMask] - Read mask to specify which fields to return.
+  /// [readMask] - Read mask to specify which fields to return. Supported
+  /// read_mask paths are: - name - org_unit_id - user_id - user_email -
+  /// user_device.device_id - user_device.audio_status_report -
+  /// user_device.device_activity_report - user_device.network_bandwidth_report
+  /// - user_device.peripherals_report
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -988,7 +1378,11 @@ class CustomersTelemetryUsersResource {
   ///
   /// [pageToken] - Token to specify next page in the list.
   ///
-  /// [readMask] - Read mask to specify which fields to return.
+  /// [readMask] - Read mask to specify which fields to return. Supported
+  /// read_mask paths are: - name - org_unit_id - user_id - user_email -
+  /// user_device.device_id - user_device.audio_status_report -
+  /// user_device.device_activity_report - user_device.network_bandwidth_report
+  /// - user_device.peripherals_report
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1600,10 +1994,12 @@ class GoogleChromeManagementV1BatteryStatusReport {
   /// Output only.
   /// Possible string values are:
   /// - "BATTERY_HEALTH_UNSPECIFIED" : Health unknown.
-  /// - "BATTERY_HEALTH_NORMAL" : Battery is healthy.
-  /// - "BATTERY_REPLACE_SOON" : Battery is moderately unhealthy and should be
-  /// replaced soon.
-  /// - "BATTERY_REPLACE_NOW" : Battery is unhealthy and should be replaced.
+  /// - "BATTERY_HEALTH_NORMAL" : Battery is healthy, full charge capacity /
+  /// design capacity \> 80%
+  /// - "BATTERY_REPLACE_SOON" : Battery is moderately unhealthy and suggested
+  /// to be replaced soon, full charge capacity / design capacity 75% - 80%
+  /// - "BATTERY_REPLACE_NOW" : Battery is unhealthy and suggested to be
+  /// replaced, full charge capacity / design capacity \< 75%
   core.String? batteryHealth;
 
   /// Cycle count.
@@ -2461,6 +2857,92 @@ class GoogleChromeManagementV1CountInstalledAppsResponse {
       };
 }
 
+/// Response containing a summary printing report for each printer from the
+/// specified organizational unit for the requested time interval.
+class GoogleChromeManagementV1CountPrintJobsByPrinterResponse {
+  /// Pagination token for requesting the next page.
+  core.String? nextPageToken;
+
+  /// List of PrinterReports matching request.
+  core.List<GoogleChromeManagementV1PrinterReport>? printerReports;
+
+  /// Total number of printers matching request.
+  core.String? totalSize;
+
+  GoogleChromeManagementV1CountPrintJobsByPrinterResponse({
+    this.nextPageToken,
+    this.printerReports,
+    this.totalSize,
+  });
+
+  GoogleChromeManagementV1CountPrintJobsByPrinterResponse.fromJson(
+      core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          printerReports: json_.containsKey('printerReports')
+              ? (json_['printerReports'] as core.List)
+                  .map((value) =>
+                      GoogleChromeManagementV1PrinterReport.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          totalSize: json_.containsKey('totalSize')
+              ? json_['totalSize'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (printerReports != null) 'printerReports': printerReports!,
+        if (totalSize != null) 'totalSize': totalSize!,
+      };
+}
+
+/// Response containing a summary printing report for each user that has
+/// initiated a print job with a printer from the specified organizational unit
+/// during the requested time interval.
+class GoogleChromeManagementV1CountPrintJobsByUserResponse {
+  /// Pagination token for requesting the next page.
+  core.String? nextPageToken;
+
+  /// Total number of users matching request.
+  core.String? totalSize;
+
+  /// List of UserPrintReports matching request.
+  core.List<GoogleChromeManagementV1UserPrintReport>? userPrintReports;
+
+  GoogleChromeManagementV1CountPrintJobsByUserResponse({
+    this.nextPageToken,
+    this.totalSize,
+    this.userPrintReports,
+  });
+
+  GoogleChromeManagementV1CountPrintJobsByUserResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          totalSize: json_.containsKey('totalSize')
+              ? json_['totalSize'] as core.String
+              : null,
+          userPrintReports: json_.containsKey('userPrintReports')
+              ? (json_['userPrintReports'] as core.List)
+                  .map((value) =>
+                      GoogleChromeManagementV1UserPrintReport.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (totalSize != null) 'totalSize': totalSize!,
+        if (userPrintReports != null) 'userPrintReports': userPrintReports!,
+      };
+}
+
 /// CPU specifications for the device * This field provides device information,
 /// which is static and will not change over time.
 ///
@@ -2691,6 +3173,48 @@ class GoogleChromeManagementV1Device {
   core.Map<core.String, core.dynamic> toJson() => {
         if (deviceId != null) 'deviceId': deviceId!,
         if (machine != null) 'machine': machine!,
+      };
+}
+
+/// Device activity report.
+///
+/// * Granular permission needed: TELEMETRY_API_DEVICE_ACTIVITY_REPORT
+class GoogleChromeManagementV1DeviceActivityReport {
+  /// Device activity state.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "DEVICE_ACTIVITY_STATE_UNSPECIFIED" : Device activity state is
+  /// unspecified.
+  /// - "ACTIVE" : Device is currently being used.
+  /// - "IDLE" : Device is currently idle.
+  /// - "LOCKED" : Device is currently locked.
+  core.String? deviceActivityState;
+
+  /// Timestamp of when the report was collected.
+  ///
+  /// Output only.
+  core.String? reportTime;
+
+  GoogleChromeManagementV1DeviceActivityReport({
+    this.deviceActivityState,
+    this.reportTime,
+  });
+
+  GoogleChromeManagementV1DeviceActivityReport.fromJson(core.Map json_)
+      : this(
+          deviceActivityState: json_.containsKey('deviceActivityState')
+              ? json_['deviceActivityState'] as core.String
+              : null,
+          reportTime: json_.containsKey('reportTime')
+              ? json_['reportTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deviceActivityState != null)
+          'deviceActivityState': deviceActivityState!,
+        if (reportTime != null) 'reportTime': reportTime!,
       };
 }
 
@@ -3099,6 +3623,49 @@ class GoogleChromeManagementV1DisplayInfo {
         if (refreshRate != null) 'refreshRate': refreshRate!,
         if (resolutionHeight != null) 'resolutionHeight': resolutionHeight!,
         if (resolutionWidth != null) 'resolutionWidth': resolutionWidth!,
+      };
+}
+
+/// Response containing a list of print jobs.
+class GoogleChromeManagementV1EnumeratePrintJobsResponse {
+  /// A token, which can be used in a subsequent request to retrieve the next
+  /// page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// List of requested print jobs.
+  core.List<GoogleChromeManagementV1PrintJob>? printJobs;
+
+  /// Total number of print jobs matching request.
+  core.String? totalSize;
+
+  GoogleChromeManagementV1EnumeratePrintJobsResponse({
+    this.nextPageToken,
+    this.printJobs,
+    this.totalSize,
+  });
+
+  GoogleChromeManagementV1EnumeratePrintJobsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          printJobs: json_.containsKey('printJobs')
+              ? (json_['printJobs'] as core.List)
+                  .map((value) => GoogleChromeManagementV1PrintJob.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          totalSize: json_.containsKey('totalSize')
+              ? json_['totalSize'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (printJobs != null) 'printJobs': printJobs!,
+        if (totalSize != null) 'totalSize': totalSize!,
       };
 }
 
@@ -3653,6 +4220,46 @@ class GoogleChromeManagementV1ListTelemetryEventsResponse {
       };
 }
 
+/// Response message for listing notification configs for a customer.
+class GoogleChromeManagementV1ListTelemetryNotificationConfigsResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// The telemetry notification configs from the specified customer.
+  core.List<GoogleChromeManagementV1TelemetryNotificationConfig>?
+      telemetryNotificationConfigs;
+
+  GoogleChromeManagementV1ListTelemetryNotificationConfigsResponse({
+    this.nextPageToken,
+    this.telemetryNotificationConfigs,
+  });
+
+  GoogleChromeManagementV1ListTelemetryNotificationConfigsResponse.fromJson(
+      core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          telemetryNotificationConfigs:
+              json_.containsKey('telemetryNotificationConfigs')
+                  ? (json_['telemetryNotificationConfigs'] as core.List)
+                      .map((value) =>
+                          GoogleChromeManagementV1TelemetryNotificationConfig
+                              .fromJson(
+                                  value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (telemetryNotificationConfigs != null)
+          'telemetryNotificationConfigs': telemetryNotificationConfigs!,
+      };
+}
+
 /// Response message for listing telemetry users for a customer.
 class GoogleChromeManagementV1ListTelemetryUsersResponse {
   /// Token to specify next page in the list.
@@ -3808,6 +4415,41 @@ class GoogleChromeManagementV1MemoryStatusReport {
         if (sampleFrequency != null) 'sampleFrequency': sampleFrequency!,
         if (systemRamFreeBytes != null)
           'systemRamFreeBytes': systemRamFreeBytes!,
+      };
+}
+
+/// Network bandwidth report.
+///
+/// * Granular permission needed: TELEMETRY_API_NETWORK_REPORT
+class GoogleChromeManagementV1NetworkBandwidthReport {
+  /// Download speed in kilobits per second.
+  ///
+  /// Output only.
+  core.String? downloadSpeedKbps;
+
+  /// Timestamp of when the report was collected.
+  ///
+  /// Output only.
+  core.String? reportTime;
+
+  GoogleChromeManagementV1NetworkBandwidthReport({
+    this.downloadSpeedKbps,
+    this.reportTime,
+  });
+
+  GoogleChromeManagementV1NetworkBandwidthReport.fromJson(core.Map json_)
+      : this(
+          downloadSpeedKbps: json_.containsKey('downloadSpeedKbps')
+              ? json_['downloadSpeedKbps'] as core.String
+              : null,
+          reportTime: json_.containsKey('reportTime')
+              ? json_['reportTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (downloadSpeedKbps != null) 'downloadSpeedKbps': downloadSpeedKbps!,
+        if (reportTime != null) 'reportTime': reportTime!,
       };
 }
 
@@ -4282,6 +4924,267 @@ class GoogleChromeManagementV1PeripheralsReport {
       };
 }
 
+/// Represents a request to print a document that has been submitted to a
+/// printer.
+class GoogleChromeManagementV1PrintJob {
+  /// Color mode.
+  /// Possible string values are:
+  /// - "COLOR_MODE_UNSPECIFIED" : Unspecified.
+  /// - "BLACK_AND_WHITE" : Black and white.
+  /// - "COLOR" : Color.
+  core.String? colorMode;
+
+  /// Print job completion timestamp.
+  core.String? completeTime;
+
+  /// Number of copies.
+  core.int? copyCount;
+
+  /// Print job creation timestamp.
+  core.String? createTime;
+
+  /// Number of pages in the document.
+  core.int? documentPageCount;
+
+  /// Duplex mode.
+  /// Possible string values are:
+  /// - "DUPLEX_MODE_UNSPECIFIED" : Unspecified.
+  /// - "ONE_SIDED" : One-sided.
+  /// - "TWO_SIDED_LONG_EDGE" : Two-sided flipping over long edge.
+  /// - "TWO_SIDED_SHORT_EDGE" : Two-sided flipping over short edge.
+  core.String? duplexMode;
+
+  /// Unique ID of the print job.
+  core.String? id;
+
+  /// Name of the printer used for printing.
+  core.String? printer;
+
+  /// API ID of the printer used for printing.
+  core.String? printerId;
+
+  /// The final state of the job.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Print job is in an unspecified state.
+  /// - "PRINTED" : The document was successfully printed.
+  /// - "CANCELLED" : Print job was cancelled.
+  /// - "FAILED" : Print job failed.
+  core.String? state;
+
+  /// The title of the document.
+  core.String? title;
+
+  /// The primary e-mail address of the user who submitted the print job.
+  core.String? userEmail;
+
+  /// The unique Directory API ID of the user who submitted the print job.
+  core.String? userId;
+
+  GoogleChromeManagementV1PrintJob({
+    this.colorMode,
+    this.completeTime,
+    this.copyCount,
+    this.createTime,
+    this.documentPageCount,
+    this.duplexMode,
+    this.id,
+    this.printer,
+    this.printerId,
+    this.state,
+    this.title,
+    this.userEmail,
+    this.userId,
+  });
+
+  GoogleChromeManagementV1PrintJob.fromJson(core.Map json_)
+      : this(
+          colorMode: json_.containsKey('colorMode')
+              ? json_['colorMode'] as core.String
+              : null,
+          completeTime: json_.containsKey('completeTime')
+              ? json_['completeTime'] as core.String
+              : null,
+          copyCount: json_.containsKey('copyCount')
+              ? json_['copyCount'] as core.int
+              : null,
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          documentPageCount: json_.containsKey('documentPageCount')
+              ? json_['documentPageCount'] as core.int
+              : null,
+          duplexMode: json_.containsKey('duplexMode')
+              ? json_['duplexMode'] as core.String
+              : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          printer: json_.containsKey('printer')
+              ? json_['printer'] as core.String
+              : null,
+          printerId: json_.containsKey('printerId')
+              ? json_['printerId'] as core.String
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          title:
+              json_.containsKey('title') ? json_['title'] as core.String : null,
+          userEmail: json_.containsKey('userEmail')
+              ? json_['userEmail'] as core.String
+              : null,
+          userId: json_.containsKey('userId')
+              ? json_['userId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (colorMode != null) 'colorMode': colorMode!,
+        if (completeTime != null) 'completeTime': completeTime!,
+        if (copyCount != null) 'copyCount': copyCount!,
+        if (createTime != null) 'createTime': createTime!,
+        if (documentPageCount != null) 'documentPageCount': documentPageCount!,
+        if (duplexMode != null) 'duplexMode': duplexMode!,
+        if (id != null) 'id': id!,
+        if (printer != null) 'printer': printer!,
+        if (printerId != null) 'printerId': printerId!,
+        if (state != null) 'state': state!,
+        if (title != null) 'title': title!,
+        if (userEmail != null) 'userEmail': userEmail!,
+        if (userId != null) 'userId': userId!,
+      };
+}
+
+/// Report for CountPrintJobsByPrinter, contains statistics on printer usage.
+///
+/// Contains the total number of print jobs initiated with this printer, the
+/// number of users and the number of devices that have initiated at least one
+/// print job with this printer.
+class GoogleChromeManagementV1PrinterReport {
+  /// Number of chrome devices that have been used to send print jobs to the
+  /// specified printer.
+  core.String? deviceCount;
+
+  /// Number of print jobs sent to the printer.
+  core.String? jobCount;
+
+  /// Printer name.
+  core.String? printer;
+
+  /// Printer API ID.
+  core.String? printerId;
+
+  /// Printer model.
+  core.String? printerModel;
+
+  /// Number of users that have sent print jobs to the printer.
+  core.String? userCount;
+
+  GoogleChromeManagementV1PrinterReport({
+    this.deviceCount,
+    this.jobCount,
+    this.printer,
+    this.printerId,
+    this.printerModel,
+    this.userCount,
+  });
+
+  GoogleChromeManagementV1PrinterReport.fromJson(core.Map json_)
+      : this(
+          deviceCount: json_.containsKey('deviceCount')
+              ? json_['deviceCount'] as core.String
+              : null,
+          jobCount: json_.containsKey('jobCount')
+              ? json_['jobCount'] as core.String
+              : null,
+          printer: json_.containsKey('printer')
+              ? json_['printer'] as core.String
+              : null,
+          printerId: json_.containsKey('printerId')
+              ? json_['printerId'] as core.String
+              : null,
+          printerModel: json_.containsKey('printerModel')
+              ? json_['printerModel'] as core.String
+              : null,
+          userCount: json_.containsKey('userCount')
+              ? json_['userCount'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deviceCount != null) 'deviceCount': deviceCount!,
+        if (jobCount != null) 'jobCount': jobCount!,
+        if (printer != null) 'printer': printer!,
+        if (printerId != null) 'printerId': printerId!,
+        if (printerModel != null) 'printerModel': printerModel!,
+        if (userCount != null) 'userCount': userCount!,
+      };
+}
+
+/// Runtime counters retrieved from CPU.
+///
+/// Currently the runtime counters telemetry is only supported by Intel vPro PSR
+/// on Gen 14+.
+class GoogleChromeManagementV1RuntimeCountersReport {
+  /// Number of times that the device has entered into the hibernation state.
+  ///
+  /// Currently obtained via the PSR, count from S0-\>S4.
+  core.String? enterHibernationCount;
+
+  /// Number of times that the device has entered into the power-off state.
+  ///
+  /// Currently obtained via the PSR, count from S0-\>S5.
+  core.String? enterPoweroffCount;
+
+  /// Number of times that the device has entered into the sleep state.
+  ///
+  /// Currently obtained via the PSR, count from S0-\>S3.
+  core.String? enterSleepCount;
+
+  /// Timestamp when the report was collected.
+  core.String? reportTime;
+
+  /// Total lifetime runtime.
+  ///
+  /// Currently always S0 runtime from Intel vPro PSR.
+  core.String? uptimeRuntimeDuration;
+
+  GoogleChromeManagementV1RuntimeCountersReport({
+    this.enterHibernationCount,
+    this.enterPoweroffCount,
+    this.enterSleepCount,
+    this.reportTime,
+    this.uptimeRuntimeDuration,
+  });
+
+  GoogleChromeManagementV1RuntimeCountersReport.fromJson(core.Map json_)
+      : this(
+          enterHibernationCount: json_.containsKey('enterHibernationCount')
+              ? json_['enterHibernationCount'] as core.String
+              : null,
+          enterPoweroffCount: json_.containsKey('enterPoweroffCount')
+              ? json_['enterPoweroffCount'] as core.String
+              : null,
+          enterSleepCount: json_.containsKey('enterSleepCount')
+              ? json_['enterSleepCount'] as core.String
+              : null,
+          reportTime: json_.containsKey('reportTime')
+              ? json_['reportTime'] as core.String
+              : null,
+          uptimeRuntimeDuration: json_.containsKey('uptimeRuntimeDuration')
+              ? json_['uptimeRuntimeDuration'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enterHibernationCount != null)
+          'enterHibernationCount': enterHibernationCount!,
+        if (enterPoweroffCount != null)
+          'enterPoweroffCount': enterPoweroffCount!,
+        if (enterSleepCount != null) 'enterSleepCount': enterSleepCount!,
+        if (reportTime != null) 'reportTime': reportTime!,
+        if (uptimeRuntimeDuration != null)
+          'uptimeRuntimeDuration': uptimeRuntimeDuration!,
+      };
+}
+
 /// Status data for storage.
 ///
 /// * This field is telemetry information and this will change over time as the
@@ -4509,6 +5412,13 @@ class GoogleChromeManagementV1TelemetryDevice {
   /// Output only.
   core.String? name;
 
+  /// Network bandwidth reports collected periodically sorted in a decreasing
+  /// order of report_time.
+  ///
+  /// Output only.
+  core.List<GoogleChromeManagementV1NetworkBandwidthReport>?
+      networkBandwidthReport;
+
   /// Network diagnostics collected periodically.
   ///
   /// Output only.
@@ -4540,6 +5450,14 @@ class GoogleChromeManagementV1TelemetryDevice {
   ///
   /// Output only.
   core.List<GoogleChromeManagementV1PeripheralsReport>? peripheralsReport;
+
+  /// Runtime counters reports collected device lifetime runtime, as well as the
+  /// counts of S0-\>S3, S0-\>S4, and S0-\>S5 transitions, meaning entering into
+  /// sleep, hibernation, and power-off states
+  ///
+  /// Output only.
+  core.List<GoogleChromeManagementV1RuntimeCountersReport>?
+      runtimeCountersReport;
 
   /// Device serial number.
   ///
@@ -4580,12 +5498,14 @@ class GoogleChromeManagementV1TelemetryDevice {
     this.memoryInfo,
     this.memoryStatusReport,
     this.name,
+    this.networkBandwidthReport,
     this.networkDiagnosticsReport,
     this.networkInfo,
     this.networkStatusReport,
     this.orgUnitId,
     this.osUpdateStatus,
     this.peripheralsReport,
+    this.runtimeCountersReport,
     this.serialNumber,
     this.storageInfo,
     this.storageStatusReport,
@@ -4677,6 +5597,13 @@ class GoogleChromeManagementV1TelemetryDevice {
                   .toList()
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          networkBandwidthReport: json_.containsKey('networkBandwidthReport')
+              ? (json_['networkBandwidthReport'] as core.List)
+                  .map((value) =>
+                      GoogleChromeManagementV1NetworkBandwidthReport.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           networkDiagnosticsReport: json_
                   .containsKey('networkDiagnosticsReport')
               ? (json_['networkDiagnosticsReport'] as core.List)
@@ -4710,6 +5637,13 @@ class GoogleChromeManagementV1TelemetryDevice {
               ? (json_['peripheralsReport'] as core.List)
                   .map((value) =>
                       GoogleChromeManagementV1PeripheralsReport.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          runtimeCountersReport: json_.containsKey('runtimeCountersReport')
+              ? (json_['runtimeCountersReport'] as core.List)
+                  .map((value) =>
+                      GoogleChromeManagementV1RuntimeCountersReport.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4758,6 +5692,8 @@ class GoogleChromeManagementV1TelemetryDevice {
         if (memoryStatusReport != null)
           'memoryStatusReport': memoryStatusReport!,
         if (name != null) 'name': name!,
+        if (networkBandwidthReport != null)
+          'networkBandwidthReport': networkBandwidthReport!,
         if (networkDiagnosticsReport != null)
           'networkDiagnosticsReport': networkDiagnosticsReport!,
         if (networkInfo != null) 'networkInfo': networkInfo!,
@@ -4766,6 +5702,8 @@ class GoogleChromeManagementV1TelemetryDevice {
         if (orgUnitId != null) 'orgUnitId': orgUnitId!,
         if (osUpdateStatus != null) 'osUpdateStatus': osUpdateStatus!,
         if (peripheralsReport != null) 'peripheralsReport': peripheralsReport!,
+        if (runtimeCountersReport != null)
+          'runtimeCountersReport': runtimeCountersReport!,
         if (serialNumber != null) 'serialNumber': serialNumber!,
         if (storageInfo != null) 'storageInfo': storageInfo!,
         if (storageStatusReport != null)
@@ -4832,11 +5770,18 @@ class GoogleChromeManagementV1TelemetryEvent {
   /// - "EVENT_TYPE_UNSPECIFIED" : Event type unknown.
   /// - "AUDIO_SEVERE_UNDERRUN" : Triggered when a audio devices run out of
   /// buffer data for more than 5 seconds.
+  /// - "NETWORK_STATE_CHANGE" : Triggered immediately on any changes to a
+  /// network connection.
   /// - "USB_ADDED" : Triggered when USB devices are added.
   /// - "USB_REMOVED" : Triggered when USB devices are removed.
   /// - "NETWORK_HTTPS_LATENCY_CHANGE" : Triggered when a new HTTPS latency
   /// problem was detected or the device has recovered form an existing HTTPS
   /// latency problem.
+  /// - "WIFI_SIGNAL_STRENGTH_LOW" : Triggered when connected WiFi network
+  /// signal strength drops below -70dBm.
+  /// - "WIFI_SIGNAL_STRENGTH_RECOVERED" : Triggered when connected WiFi network
+  /// signal strength is recovered from a signal drop.
+  /// - "VPN_CONNECTION_STATE_CHANGE" : Triggered on changes to VPN connections.
   core.String? eventType;
 
   /// Payload for HTTPS latency change event.
@@ -4851,6 +5796,14 @@ class GoogleChromeManagementV1TelemetryEvent {
   ///
   /// Output only.
   core.String? name;
+
+  /// Payload for network connection state change event.
+  ///
+  /// Present only when `event_type` is `NETWORK_STATE_CHANGE`.
+  ///
+  /// Output only.
+  GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent?
+      networkStateChangeEvent;
 
   /// Timestamp that represents when the event was reported.
   core.String? reportTime;
@@ -4868,15 +5821,35 @@ class GoogleChromeManagementV1TelemetryEvent {
   /// Output only.
   GoogleChromeManagementV1TelemetryUserInfo? user;
 
+  /// Payload for VPN connection state change event.
+  ///
+  /// Present only when `event_type` is `VPN_CONNECTION_STATE_CHANGE`.
+  ///
+  /// Output only.
+  GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent?
+      vpnConnectionStateChangeEvent;
+
+  /// Payload for WiFi signal strength events.
+  ///
+  /// Present only when `event_type` is `WIFI_SIGNAL_STRENGTH_LOW` or
+  /// `WIFI_SIGNAL_STRENGTH_RECOVERED`.
+  ///
+  /// Output only.
+  GoogleChromeManagementV1TelemetryNetworkSignalStrengthEvent?
+      wifiSignalStrengthEvent;
+
   GoogleChromeManagementV1TelemetryEvent({
     this.audioSevereUnderrunEvent,
     this.device,
     this.eventType,
     this.httpsLatencyChangeEvent,
     this.name,
+    this.networkStateChangeEvent,
     this.reportTime,
     this.usbPeripheralsEvent,
     this.user,
+    this.vpnConnectionStateChangeEvent,
+    this.wifiSignalStrengthEvent,
   });
 
   GoogleChromeManagementV1TelemetryEvent.fromJson(core.Map json_)
@@ -4900,6 +5873,11 @@ class GoogleChromeManagementV1TelemetryEvent {
                       as core.Map<core.String, core.dynamic>)
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          networkStateChangeEvent: json_.containsKey('networkStateChangeEvent')
+              ? GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent
+                  .fromJson(json_['networkStateChangeEvent']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           reportTime: json_.containsKey('reportTime')
               ? json_['reportTime'] as core.String
               : null,
@@ -4912,6 +5890,17 @@ class GoogleChromeManagementV1TelemetryEvent {
               ? GoogleChromeManagementV1TelemetryUserInfo.fromJson(
                   json_['user'] as core.Map<core.String, core.dynamic>)
               : null,
+          vpnConnectionStateChangeEvent: json_
+                  .containsKey('vpnConnectionStateChangeEvent')
+              ? GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent
+                  .fromJson(json_['vpnConnectionStateChangeEvent']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          wifiSignalStrengthEvent: json_.containsKey('wifiSignalStrengthEvent')
+              ? GoogleChromeManagementV1TelemetryNetworkSignalStrengthEvent
+                  .fromJson(json_['wifiSignalStrengthEvent']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4922,10 +5911,42 @@ class GoogleChromeManagementV1TelemetryEvent {
         if (httpsLatencyChangeEvent != null)
           'httpsLatencyChangeEvent': httpsLatencyChangeEvent!,
         if (name != null) 'name': name!,
+        if (networkStateChangeEvent != null)
+          'networkStateChangeEvent': networkStateChangeEvent!,
         if (reportTime != null) 'reportTime': reportTime!,
         if (usbPeripheralsEvent != null)
           'usbPeripheralsEvent': usbPeripheralsEvent!,
         if (user != null) 'user': user!,
+        if (vpnConnectionStateChangeEvent != null)
+          'vpnConnectionStateChangeEvent': vpnConnectionStateChangeEvent!,
+        if (wifiSignalStrengthEvent != null)
+          'wifiSignalStrengthEvent': wifiSignalStrengthEvent!,
+      };
+}
+
+/// Configures how the telemetry events should be filtered.
+class GoogleChromeManagementV1TelemetryEventNotificationFilter {
+  /// Only sends the notifications for events of these types.
+  ///
+  /// Must not be empty.
+  core.List<core.String>? eventTypes;
+
+  GoogleChromeManagementV1TelemetryEventNotificationFilter({
+    this.eventTypes,
+  });
+
+  GoogleChromeManagementV1TelemetryEventNotificationFilter.fromJson(
+      core.Map json_)
+      : this(
+          eventTypes: json_.containsKey('eventTypes')
+              ? (json_['eventTypes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (eventTypes != null) 'eventTypes': eventTypes!,
       };
 }
 
@@ -4967,6 +5988,190 @@ class GoogleChromeManagementV1TelemetryHttpsLatencyChangeEvent {
         if (httpsLatencyRoutineData != null)
           'httpsLatencyRoutineData': httpsLatencyRoutineData!,
         if (httpsLatencyState != null) 'httpsLatencyState': httpsLatencyState!,
+      };
+}
+
+/// `TelemetryNetworkConnectionStateChangeEvent` is triggered on network
+/// connection state changes.
+///
+/// * Granular permission needed: TELEMETRY_API_NETWORK_REPORT
+class GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent {
+  /// Current connection state of the network.
+  /// Possible string values are:
+  /// - "NETWORK_CONNECTION_STATE_UNSPECIFIED" : Network connection state
+  /// unspecified.
+  /// - "ONLINE" : The network is connected and internet connectivity is
+  /// available.
+  /// - "CONNECTED" : The network is connected and not in a detected portal
+  /// state, but internet connectivity may not be available.
+  /// - "PORTAL" : The network is connected but a portal state was detected.
+  /// Internet connectivity may be limited.
+  /// - "CONNECTING" : The network is in the process of connecting.
+  /// - "NOT_CONNECTED" : The network is not connected.
+  core.String? connectionState;
+
+  /// Unique identifier of the network.
+  core.String? guid;
+
+  GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent({
+    this.connectionState,
+    this.guid,
+  });
+
+  GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent.fromJson(
+      core.Map json_)
+      : this(
+          connectionState: json_.containsKey('connectionState')
+              ? json_['connectionState'] as core.String
+              : null,
+          guid: json_.containsKey('guid') ? json_['guid'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (connectionState != null) 'connectionState': connectionState!,
+        if (guid != null) 'guid': guid!,
+      };
+}
+
+/// `TelemetryNetworkSignalStrengthEvent` is triggered on WiFi signal strength
+/// events.
+///
+/// * Granular permission needed: TELEMETRY_API_NETWORK_REPORT
+class GoogleChromeManagementV1TelemetryNetworkSignalStrengthEvent {
+  /// Unique identifier of the network.
+  core.String? guid;
+
+  /// Signal strength RSSI value.
+  core.int? signalStrengthDbm;
+
+  GoogleChromeManagementV1TelemetryNetworkSignalStrengthEvent({
+    this.guid,
+    this.signalStrengthDbm,
+  });
+
+  GoogleChromeManagementV1TelemetryNetworkSignalStrengthEvent.fromJson(
+      core.Map json_)
+      : this(
+          guid: json_.containsKey('guid') ? json_['guid'] as core.String : null,
+          signalStrengthDbm: json_.containsKey('signalStrengthDbm')
+              ? json_['signalStrengthDbm'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (guid != null) 'guid': guid!,
+        if (signalStrengthDbm != null) 'signalStrengthDbm': signalStrengthDbm!,
+      };
+}
+
+/// Configuration to receive notifications of telemetry data.
+class GoogleChromeManagementV1TelemetryNotificationConfig {
+  /// Google Workspace customer that owns the resource.
+  ///
+  /// Output only.
+  core.String? customer;
+
+  /// Only send notifications for telemetry data matching this filter.
+  GoogleChromeManagementV1TelemetryNotificationFilter? filter;
+
+  /// The pubsub topic to which notifications are published to.
+  core.String? googleCloudPubsubTopic;
+
+  /// Resource name of the notification configuration.
+  ///
+  /// Output only.
+  core.String? name;
+
+  GoogleChromeManagementV1TelemetryNotificationConfig({
+    this.customer,
+    this.filter,
+    this.googleCloudPubsubTopic,
+    this.name,
+  });
+
+  GoogleChromeManagementV1TelemetryNotificationConfig.fromJson(core.Map json_)
+      : this(
+          customer: json_.containsKey('customer')
+              ? json_['customer'] as core.String
+              : null,
+          filter: json_.containsKey('filter')
+              ? GoogleChromeManagementV1TelemetryNotificationFilter.fromJson(
+                  json_['filter'] as core.Map<core.String, core.dynamic>)
+              : null,
+          googleCloudPubsubTopic: json_.containsKey('googleCloudPubsubTopic')
+              ? json_['googleCloudPubsubTopic'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (customer != null) 'customer': customer!,
+        if (filter != null) 'filter': filter!,
+        if (googleCloudPubsubTopic != null)
+          'googleCloudPubsubTopic': googleCloudPubsubTopic!,
+        if (name != null) 'name': name!,
+      };
+}
+
+/// Configures how the telemetry data should be filtered.
+class GoogleChromeManagementV1TelemetryNotificationFilter {
+  /// If set, only sends notifications for telemetry data coming from this
+  /// device.
+  core.String? deviceId;
+
+  /// If set, only sends notifications for telemetry data coming from devices in
+  /// this org unit.
+  core.String? deviceOrgUnitId;
+
+  /// Only sends notifications for the telemetry events matching this filter.
+  GoogleChromeManagementV1TelemetryEventNotificationFilter?
+      telemetryEventNotificationFilter;
+
+  /// If set, only sends notifications for telemetry data coming from devices
+  /// owned by this user.
+  core.String? userEmail;
+
+  /// If set, only sends notifications for telemetry data coming from devices
+  /// owned by users in this org unit.
+  core.String? userOrgUnitId;
+
+  GoogleChromeManagementV1TelemetryNotificationFilter({
+    this.deviceId,
+    this.deviceOrgUnitId,
+    this.telemetryEventNotificationFilter,
+    this.userEmail,
+    this.userOrgUnitId,
+  });
+
+  GoogleChromeManagementV1TelemetryNotificationFilter.fromJson(core.Map json_)
+      : this(
+          deviceId: json_.containsKey('deviceId')
+              ? json_['deviceId'] as core.String
+              : null,
+          deviceOrgUnitId: json_.containsKey('deviceOrgUnitId')
+              ? json_['deviceOrgUnitId'] as core.String
+              : null,
+          telemetryEventNotificationFilter:
+              json_.containsKey('telemetryEventNotificationFilter')
+                  ? GoogleChromeManagementV1TelemetryEventNotificationFilter
+                      .fromJson(json_['telemetryEventNotificationFilter']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          userEmail: json_.containsKey('userEmail')
+              ? json_['userEmail'] as core.String
+              : null,
+          userOrgUnitId: json_.containsKey('userOrgUnitId')
+              ? json_['userOrgUnitId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deviceId != null) 'deviceId': deviceId!,
+        if (deviceOrgUnitId != null) 'deviceOrgUnitId': deviceOrgUnitId!,
+        if (telemetryEventNotificationFilter != null)
+          'telemetryEventNotificationFilter': telemetryEventNotificationFilter!,
+        if (userEmail != null) 'userEmail': userEmail!,
+        if (userOrgUnitId != null) 'userOrgUnitId': userOrgUnitId!,
       };
 }
 
@@ -5074,11 +6279,24 @@ class GoogleChromeManagementV1TelemetryUserDevice {
   /// Output only.
   core.List<GoogleChromeManagementV1AudioStatusReport>? audioStatusReport;
 
+  /// Device activity reports collected periodically sorted in a decreasing
+  /// order of report_time.
+  ///
+  /// Output only.
+  core.List<GoogleChromeManagementV1DeviceActivityReport>? deviceActivityReport;
+
   /// The unique Directory API ID of the device.
   ///
   /// This value is the same as the Admin Console's Directory API ID in the
   /// ChromeOS Devices tab.
   core.String? deviceId;
+
+  /// Network bandwidth reports collected periodically sorted in a decreasing
+  /// order of report_time.
+  ///
+  /// Output only.
+  core.List<GoogleChromeManagementV1NetworkBandwidthReport>?
+      networkBandwidthReport;
 
   /// Peripherals reports collected periodically sorted in a decreasing order of
   /// report_time.
@@ -5088,7 +6306,9 @@ class GoogleChromeManagementV1TelemetryUserDevice {
 
   GoogleChromeManagementV1TelemetryUserDevice({
     this.audioStatusReport,
+    this.deviceActivityReport,
     this.deviceId,
+    this.networkBandwidthReport,
     this.peripheralsReport,
   });
 
@@ -5101,8 +6321,22 @@ class GoogleChromeManagementV1TelemetryUserDevice {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          deviceActivityReport: json_.containsKey('deviceActivityReport')
+              ? (json_['deviceActivityReport'] as core.List)
+                  .map((value) =>
+                      GoogleChromeManagementV1DeviceActivityReport.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           deviceId: json_.containsKey('deviceId')
               ? json_['deviceId'] as core.String
+              : null,
+          networkBandwidthReport: json_.containsKey('networkBandwidthReport')
+              ? (json_['networkBandwidthReport'] as core.List)
+                  .map((value) =>
+                      GoogleChromeManagementV1NetworkBandwidthReport.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
               : null,
           peripheralsReport: json_.containsKey('peripheralsReport')
               ? (json_['peripheralsReport'] as core.List)
@@ -5115,7 +6349,11 @@ class GoogleChromeManagementV1TelemetryUserDevice {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (audioStatusReport != null) 'audioStatusReport': audioStatusReport!,
+        if (deviceActivityReport != null)
+          'deviceActivityReport': deviceActivityReport!,
         if (deviceId != null) 'deviceId': deviceId!,
+        if (networkBandwidthReport != null)
+          'networkBandwidthReport': networkBandwidthReport!,
         if (peripheralsReport != null) 'peripheralsReport': peripheralsReport!,
       };
 }
@@ -5445,6 +6683,71 @@ class GoogleChromeManagementV1UsbPeripheralReport {
         if (vid != null) 'vid': vid!,
       };
 }
+
+/// Report for CountPrintJobsByUser, contains printing statistics for a user.
+///
+/// Contains the number of printers, the number of devices used to initiate
+/// print jobs, and the number of print jobs initiated.
+class GoogleChromeManagementV1UserPrintReport {
+  /// Number of chrome devices that have been used to initiate print jobs by the
+  /// user.
+  core.String? deviceCount;
+
+  /// Number of print jobs initiated by the user.
+  core.String? jobCount;
+
+  /// Number of printers used by the user.
+  core.String? printerCount;
+
+  /// The primary e-mail address of the user.
+  core.String? userEmail;
+
+  /// The unique Directory API ID of the user.
+  core.String? userId;
+
+  GoogleChromeManagementV1UserPrintReport({
+    this.deviceCount,
+    this.jobCount,
+    this.printerCount,
+    this.userEmail,
+    this.userId,
+  });
+
+  GoogleChromeManagementV1UserPrintReport.fromJson(core.Map json_)
+      : this(
+          deviceCount: json_.containsKey('deviceCount')
+              ? json_['deviceCount'] as core.String
+              : null,
+          jobCount: json_.containsKey('jobCount')
+              ? json_['jobCount'] as core.String
+              : null,
+          printerCount: json_.containsKey('printerCount')
+              ? json_['printerCount'] as core.String
+              : null,
+          userEmail: json_.containsKey('userEmail')
+              ? json_['userEmail'] as core.String
+              : null,
+          userId: json_.containsKey('userId')
+              ? json_['userId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deviceCount != null) 'deviceCount': deviceCount!,
+        if (jobCount != null) 'jobCount': jobCount!,
+        if (printerCount != null) 'printerCount': printerCount!,
+        if (userEmail != null) 'userEmail': userEmail!,
+        if (userId != null) 'userId': userId!,
+      };
+}
+
+/// A generic empty message that you can re-use to avoid defining duplicated
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); }
+typedef GoogleProtobufEmpty = $Empty;
 
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.

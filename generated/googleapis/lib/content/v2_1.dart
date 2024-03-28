@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Content API for Shopping - v2.1
@@ -37,6 +36,7 @@
 ///   - [FreelistingsprogramCheckoutsettingsResource]
 /// - [LiasettingsResource]
 /// - [LocalinventoryResource]
+/// - [MerchantsupportResource]
 /// - [OrderinvoicesResource]
 /// - [OrderreportsResource]
 /// - [OrderreturnsResource]
@@ -47,7 +47,6 @@
 /// - [ProductdeliverytimeResource]
 /// - [ProductsResource]
 /// - [ProductstatusesResource]
-///   - [ProductstatusesRepricingreportsResource]
 /// - [PromotionsResource]
 /// - [PubsubnotificationsettingsResource]
 /// - [QuotasResource]
@@ -55,8 +54,6 @@
 /// - [RegionalinventoryResource]
 /// - [RegionsResource]
 /// - [ReportsResource]
-/// - [RepricingrulesResource]
-///   - [RepricingrulesRepricingreportsResource]
 /// - [ReturnaddressResource]
 /// - [ReturnpolicyResource]
 /// - [ReturnpolicyonlineResource]
@@ -64,7 +61,7 @@
 /// - [SettlementtransactionsResource]
 /// - [ShippingsettingsResource]
 /// - [ShoppingadsprogramResource]
-library content_v2_1;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -106,6 +103,8 @@ class ShoppingContentApi {
   LiasettingsResource get liasettings => LiasettingsResource(_requester);
   LocalinventoryResource get localinventory =>
       LocalinventoryResource(_requester);
+  MerchantsupportResource get merchantsupport =>
+      MerchantsupportResource(_requester);
   OrderinvoicesResource get orderinvoices => OrderinvoicesResource(_requester);
   OrderreportsResource get orderreports => OrderreportsResource(_requester);
   OrderreturnsResource get orderreturns => OrderreturnsResource(_requester);
@@ -128,8 +127,6 @@ class ShoppingContentApi {
       RegionalinventoryResource(_requester);
   RegionsResource get regions => RegionsResource(_requester);
   ReportsResource get reports => ReportsResource(_requester);
-  RepricingrulesResource get repricingrules =>
-      RepricingrulesResource(_requester);
   ReturnaddressResource get returnaddress => ReturnaddressResource(_requester);
   ReturnpolicyResource get returnpolicy => ReturnpolicyResource(_requester);
   ReturnpolicyonlineResource get returnpolicyonline =>
@@ -3010,7 +3007,8 @@ class FreelistingsprogramResource {
 
   /// Requests a review of free listings in a specific region.
   ///
-  /// This method is only available to selected merchants.
+  /// This method deprecated. Use the `MerchantSupportService` to view product
+  /// and account issues and request a review.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3538,6 +3536,73 @@ class LiasettingsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Sets the omnichannel experience for the specified country.
+  ///
+  /// Only supported for merchants whose POS data provider is trusted to enable
+  /// the corresponding experience. For more context, see these help articles
+  /// [about LFP](https://support.google.com/merchants/answer/7676652) and
+  /// [how to get started](https://support.google.com/merchants/answer/7676578)
+  /// with it.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - The ID of the managing account. If this parameter is not
+  /// the same as accountId, then this account must be a multi-client account
+  /// and `accountId` must be the ID of a sub-account of this account.
+  ///
+  /// [accountId] - The ID of the account for which to retrieve accessible
+  /// Business Profiles.
+  ///
+  /// [country] - The CLDR country code (for example, "US") for which the
+  /// omnichannel experience is selected.
+  ///
+  /// [lsfType] - The Local Store Front (LSF) type for this country. Acceptable
+  /// values are: - "`ghlsf`" (Google-Hosted Local Store Front) - "`mhlsfBasic`"
+  /// (Merchant-Hosted Local Store Front Basic) - "`mhlsfFull`" (Merchant-Hosted
+  /// Local Store Front Full) More details about these types can be found here.
+  ///
+  /// [pickupTypes] - The Pickup types for this country. Acceptable values are:
+  /// - "`pickupToday`" - "`pickupLater`"
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LiaOmnichannelExperience].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LiaOmnichannelExperience> setomnichannelexperience(
+    core.String merchantId,
+    core.String accountId, {
+    core.String? country,
+    core.String? lsfType,
+    core.List<core.String>? pickupTypes,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (country != null) 'country': [country],
+      if (lsfType != null) 'lsfType': [lsfType],
+      if (pickupTypes != null) 'pickupTypes': pickupTypes,
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = commons.escapeVariable('$merchantId') +
+        '/liasettings/' +
+        commons.escapeVariable('$accountId') +
+        '/setomnichannelexperience';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+    );
+    return LiaOmnichannelExperience.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Sets the POS data provider for the specified country.
   ///
   /// Request parameters:
@@ -3735,6 +3800,134 @@ class LocalinventoryResource {
       queryParams: queryParams_,
     );
     return LocalInventory.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class MerchantsupportResource {
+  final commons.ApiRequester _requester;
+
+  MerchantsupportResource(commons.ApiRequester client) : _requester = client;
+
+  /// Provide a list of merchant's issues with a support content and available
+  /// actions.
+  ///
+  /// This content and actions are meant to be rendered and shown in third-party
+  /// applications.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - Required. The ID of the account to fetch issues for.
+  ///
+  /// [languageCode] - Optional. The \[IETF
+  /// BCP-47\](https://tools.ietf.org/html/bcp47) language code used to localize
+  /// support content. If not set, the result will be in default language
+  /// `en-US`.
+  ///
+  /// [timeZone] - Optional. The [IANA](https://www.iana.org/time-zones)
+  /// timezone used to localize times in support content. For example
+  /// 'America/Los_Angeles'. If not set, results will use as a default UTC.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RenderAccountIssuesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RenderAccountIssuesResponse> renderaccountissues(
+    RenderAccountIssuesRequestPayload request,
+    core.String merchantId, {
+    core.String? languageCode,
+    core.String? timeZone,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (languageCode != null) 'languageCode': [languageCode],
+      if (timeZone != null) 'timeZone': [timeZone],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = commons.escapeVariable('$merchantId') +
+        '/merchantsupport/renderaccountissues';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return RenderAccountIssuesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Provide a list of issues for merchant's product with a support content and
+  /// available actions.
+  ///
+  /// This content and actions are meant to be rendered and shown in third-party
+  /// applications.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - Required. The ID of the account that contains the product.
+  ///
+  /// [productId] - Required. The
+  /// [REST_ID](https://developers.google.com/shopping-content/reference/rest/v2.1/products#Product.FIELDS.id)
+  /// of the product to fetch issues for.
+  ///
+  /// [languageCode] - Optional. The \[IETF
+  /// BCP-47\](https://tools.ietf.org/html/bcp47) language code used to localize
+  /// support content. If not set, the result will be in default language
+  /// `en-US`.
+  ///
+  /// [timeZone] - Optional. The [IANA](https://www.iana.org/time-zones)
+  /// timezone used to localize times in support content. For example
+  /// 'America/Los_Angeles'. If not set, results will use as a default UTC.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RenderProductIssuesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RenderProductIssuesResponse> renderproductissues(
+    RenderProductIssuesRequestPayload request,
+    core.String merchantId,
+    core.String productId, {
+    core.String? languageCode,
+    core.String? timeZone,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (languageCode != null) 'languageCode': [languageCode],
+      if (timeZone != null) 'timeZone': [timeZone],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = commons.escapeVariable('$merchantId') +
+        '/merchantsupport/renderproductissues/' +
+        commons.escapeVariable('$productId');
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return RenderProductIssuesResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -6101,7 +6294,7 @@ class ProductsResource {
   /// account cannot be a multi-client account.
   ///
   /// [maxResults] - The maximum number of products to return in the response,
-  /// used for paging.
+  /// used for paging. The default value is 25. The maximum value is 250.
   ///
   /// [pageToken] - The token returned by the previous request.
   ///
@@ -6199,9 +6392,6 @@ class ProductsResource {
 class ProductstatusesResource {
   final commons.ApiRequester _requester;
 
-  ProductstatusesRepricingreportsResource get repricingreports =>
-      ProductstatusesRepricingreportsResource(_requester);
-
   ProductstatusesResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets the statuses of multiple products in a single request.
@@ -6298,7 +6488,8 @@ class ProductstatusesResource {
   /// returned, otherwise only issues for the Shopping destination.
   ///
   /// [maxResults] - The maximum number of product statuses to return in the
-  /// response, used for paging.
+  /// response, used for paging. The default value is 25. The maximum value is
+  /// 250.
   ///
   /// [pageToken] - The token returned by the previous request.
   ///
@@ -6334,88 +6525,6 @@ class ProductstatusesResource {
       queryParams: queryParams_,
     );
     return ProductstatusesListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-}
-
-class ProductstatusesRepricingreportsResource {
-  final commons.ApiRequester _requester;
-
-  ProductstatusesRepricingreportsResource(commons.ApiRequester client)
-      : _requester = client;
-
-  /// Lists the metrics report for a given Repricing product.
-  ///
-  /// Request parameters:
-  ///
-  /// [merchantId] - Required. Id of the merchant who owns the Repricing rule.
-  ///
-  /// [productId] - Required. Id of the Repricing product. Also known as the
-  /// [REST_ID](https://developers.google.com/shopping-content/reference/rest/v2.1/products#Product.FIELDS.id)
-  ///
-  /// [endDate] - Gets Repricing reports on and before this date in the
-  /// merchant's timezone. You can only retrieve data up to 7 days ago (default)
-  /// or earlier. Format is YYYY-MM-DD.
-  ///
-  /// [pageSize] - Maximum number of days of reports to return. There can be
-  /// more than one rule report returned per day. For example, if 3 rule types
-  /// got applied to the same product within a 24-hour period, then a page_size
-  /// of 1 will return 3 rule reports. The page size defaults to 50 and values
-  /// above 1000 are coerced to 1000. This service may return fewer days of
-  /// reports than this value, for example, if the time between your start and
-  /// end date is less than the page size.
-  ///
-  /// [pageToken] - Token (if provided) to retrieve the subsequent page. All
-  /// other parameters must match the original call that provided the page
-  /// token.
-  ///
-  /// [ruleId] - Id of the Repricing rule. If specified, only gets this rule's
-  /// reports.
-  ///
-  /// [startDate] - Gets Repricing reports on and after this date in the
-  /// merchant's timezone, up to one year ago. Do not use a start date later
-  /// than 7 days ago (default). Format is YYYY-MM-DD.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ListRepricingProductReportsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ListRepricingProductReportsResponse> list(
-    core.String merchantId,
-    core.String productId, {
-    core.String? endDate,
-    core.int? pageSize,
-    core.String? pageToken,
-    core.String? ruleId,
-    core.String? startDate,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (endDate != null) 'endDate': [endDate],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (ruleId != null) 'ruleId': [ruleId],
-      if (startDate != null) 'startDate': [startDate],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = commons.escapeVariable('$merchantId') +
-        '/productstatuses/' +
-        commons.escapeVariable('$productId') +
-        '/repricingreports';
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return ListRepricingProductReportsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -7141,7 +7250,7 @@ class ReportsResource {
 
   ReportsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Retrieves merchant performance mertrics matching the search query and
+  /// Retrieves merchant performance metrics matching the search query and
   /// optionally segmented by selected dimensions.
   ///
   /// [request] - The metadata request object.
@@ -7180,325 +7289,6 @@ class ReportsResource {
       queryParams: queryParams_,
     );
     return SearchResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-}
-
-class RepricingrulesResource {
-  final commons.ApiRequester _requester;
-
-  RepricingrulesRepricingreportsResource get repricingreports =>
-      RepricingrulesRepricingreportsResource(_requester);
-
-  RepricingrulesResource(commons.ApiRequester client) : _requester = client;
-
-  /// Creates a repricing rule for your Merchant Center account.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [merchantId] - Required. The id of the merchant who owns the repricing
-  /// rule.
-  ///
-  /// [ruleId] - Required. The id of the rule to create.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [RepricingRule].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<RepricingRule> create(
-    RepricingRule request,
-    core.String merchantId, {
-    core.String? ruleId,
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (ruleId != null) 'ruleId': [ruleId],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = commons.escapeVariable('$merchantId') + '/repricingrules';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return RepricingRule.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Deletes a repricing rule in your Merchant Center account.
-  ///
-  /// Request parameters:
-  ///
-  /// [merchantId] - Required. The id of the merchant who owns the repricing
-  /// rule.
-  ///
-  /// [ruleId] - Required. The id of the rule to Delete.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<void> delete(
-    core.String merchantId,
-    core.String ruleId, {
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = commons.escapeVariable('$merchantId') +
-        '/repricingrules/' +
-        commons.escapeVariable('$ruleId');
-
-    await _requester.request(
-      url_,
-      'DELETE',
-      queryParams: queryParams_,
-      downloadOptions: null,
-    );
-  }
-
-  /// Retrieves a repricing rule from your Merchant Center account.
-  ///
-  /// Request parameters:
-  ///
-  /// [merchantId] - Required. The id of the merchant who owns the repricing
-  /// rule.
-  ///
-  /// [ruleId] - Required. The id of the rule to retrieve.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [RepricingRule].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<RepricingRule> get(
-    core.String merchantId,
-    core.String ruleId, {
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = commons.escapeVariable('$merchantId') +
-        '/repricingrules/' +
-        commons.escapeVariable('$ruleId');
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return RepricingRule.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Lists the repricing rules in your Merchant Center account.
-  ///
-  /// Request parameters:
-  ///
-  /// [merchantId] - Required. The id of the merchant who owns the repricing
-  /// rule.
-  ///
-  /// [countryCode] -
-  /// [CLDR country code](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml)
-  /// (e.g. "US"), used as a filter on repricing rules.
-  ///
-  /// [languageCode] - The two-letter ISO 639-1 language code associated with
-  /// the repricing rule, used as a filter.
-  ///
-  /// [pageSize] - The maximum number of repricing rules to return. The service
-  /// may return fewer than this value. If unspecified, at most 50 rules will be
-  /// returned. The maximum value is 1000; values above 1000 will be coerced to
-  /// 1000.
-  ///
-  /// [pageToken] - A page token, received from a previous `ListRepricingRules`
-  /// call. Provide this to retrieve the subsequent page. When paginating, all
-  /// other parameters provided to `ListRepricingRules` must match the call that
-  /// provided the page token.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ListRepricingRulesResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ListRepricingRulesResponse> list(
-    core.String merchantId, {
-    core.String? countryCode,
-    core.String? languageCode,
-    core.int? pageSize,
-    core.String? pageToken,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (countryCode != null) 'countryCode': [countryCode],
-      if (languageCode != null) 'languageCode': [languageCode],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = commons.escapeVariable('$merchantId') + '/repricingrules';
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return ListRepricingRulesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Updates a repricing rule in your Merchant Center account.
-  ///
-  /// All mutable fields will be overwritten in each update request. In each
-  /// update, you must provide all required mutable fields, or an error will be
-  /// thrown. If you do not provide an optional field in the update request, if
-  /// that field currently exists, it will be deleted from the rule.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [merchantId] - Required. The id of the merchant who owns the repricing
-  /// rule.
-  ///
-  /// [ruleId] - Required. The id of the rule to update.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [RepricingRule].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<RepricingRule> patch(
-    RepricingRule request,
-    core.String merchantId,
-    core.String ruleId, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = commons.escapeVariable('$merchantId') +
-        '/repricingrules/' +
-        commons.escapeVariable('$ruleId');
-
-    final response_ = await _requester.request(
-      url_,
-      'PATCH',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return RepricingRule.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-}
-
-class RepricingrulesRepricingreportsResource {
-  final commons.ApiRequester _requester;
-
-  RepricingrulesRepricingreportsResource(commons.ApiRequester client)
-      : _requester = client;
-
-  /// Lists the metrics report for a given Repricing rule.
-  ///
-  /// Request parameters:
-  ///
-  /// [merchantId] - Required. Id of the merchant who owns the Repricing rule.
-  ///
-  /// [ruleId] - Required. Id of the Repricing rule.
-  ///
-  /// [endDate] - Gets Repricing reports on and before this date in the
-  /// merchant's timezone. You can only retrieve data up to 7 days ago (default)
-  /// or earlier. Format: YYYY-MM-DD.
-  ///
-  /// [pageSize] - Maximum number of daily reports to return. Each report
-  /// includes data from a single 24-hour period. The page size defaults to 50
-  /// and values above 1000 are coerced to 1000. This service may return fewer
-  /// days than this value, for example, if the time between your start and end
-  /// date is less than page size.
-  ///
-  /// [pageToken] - Token (if provided) to retrieve the subsequent page. All
-  /// other parameters must match the original call that provided the page
-  /// token.
-  ///
-  /// [startDate] - Gets Repricing reports on and after this date in the
-  /// merchant's timezone, up to one year ago. Do not use a start date later
-  /// than 7 days ago (default). Format: YYYY-MM-DD.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ListRepricingRuleReportsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ListRepricingRuleReportsResponse> list(
-    core.String merchantId,
-    core.String ruleId, {
-    core.String? endDate,
-    core.int? pageSize,
-    core.String? pageToken,
-    core.String? startDate,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (endDate != null) 'endDate': [endDate],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (startDate != null) 'startDate': [startDate],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = commons.escapeVariable('$merchantId') +
-        '/repricingrules/' +
-        commons.escapeVariable('$ruleId') +
-        '/repricingreports';
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return ListRepricingRuleReportsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -8622,7 +8412,8 @@ class ShoppingadsprogramResource {
 
   /// Requests a review of Shopping ads in a specific region.
   ///
-  /// This method is only available to selected merchants.
+  /// This method deprecated. Use the `MerchantSupportService` to view product
+  /// and account issues and request a review.
   ///
   /// [request] - The metadata request object.
   ///
@@ -8695,6 +8486,10 @@ class Account {
   /// Center.
   core.List<core.String>? automaticLabelIds;
 
+  /// The business identity attributes can be used to self-declare attributes
+  /// that let customers know more about your business.
+  AccountBusinessIdentity? businessIdentity;
+
   /// The business information of the account.
   AccountBusinessInformation? businessInformation;
 
@@ -8751,6 +8546,7 @@ class Account {
     this.adultContent,
     this.automaticImprovements,
     this.automaticLabelIds,
+    this.businessIdentity,
     this.businessInformation,
     this.conversionSettings,
     this.cssId,
@@ -8788,6 +8584,10 @@ class Account {
               ? (json_['automaticLabelIds'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
+              : null,
+          businessIdentity: json_.containsKey('businessIdentity')
+              ? AccountBusinessIdentity.fromJson(json_['businessIdentity']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           businessInformation: json_.containsKey('businessInformation')
               ? AccountBusinessInformation.fromJson(json_['businessInformation']
@@ -8839,6 +8639,7 @@ class Account {
         if (automaticImprovements != null)
           'automaticImprovements': automaticImprovements!,
         if (automaticLabelIds != null) 'automaticLabelIds': automaticLabelIds!,
+        if (businessIdentity != null) 'businessIdentity': businessIdentity!,
         if (businessInformation != null)
           'businessInformation': businessInformation!,
         if (conversionSettings != null)
@@ -9025,6 +8826,104 @@ class AccountAutomaticImprovements {
         if (itemUpdates != null) 'itemUpdates': itemUpdates!,
         if (shippingImprovements != null)
           'shippingImprovements': shippingImprovements!,
+      };
+}
+
+/// The
+/// [business identity attributes](https://support.google.com/merchants/answer/10342414)
+/// can be used to self-declare attributes that let customers know more about
+/// your business.
+class AccountBusinessIdentity {
+  /// Specifies whether the business identifies itself as being black-owned.
+  ///
+  /// This optional field is only available for merchants with a business
+  /// country set to "US". This field is not allowed for marketplaces or
+  /// marketplace sellers.
+  AccountIdentityType? blackOwned;
+
+  /// By setting this field, your business may be included in promotions for all
+  /// the selected attributes.
+  ///
+  /// If you clear this option, it won't affect your identification with any of
+  /// the attributes. For this field to be set, the merchant must self identify
+  /// with at least one of the `AccountIdentityType`. If none are included, the
+  /// request will be considered invalid.
+  ///
+  /// Required.
+  core.bool? includeForPromotions;
+
+  /// Specifies whether the business identifies itself as being latino-owned.
+  ///
+  /// This optional field is only available for merchants with a business
+  /// country set to "US". This field is not allowed for marketplaces or
+  /// marketplace sellers.
+  AccountIdentityType? latinoOwned;
+
+  /// Specifies whether the business identifies itself as a small business.
+  ///
+  /// This optional field is only available for merchants with a business
+  /// country set to "US". It is also not allowed for marketplaces, but it is
+  /// allowed to marketplace sellers.
+  AccountIdentityType? smallBusiness;
+
+  /// Specifies whether the business identifies itself as being veteran-owned.
+  ///
+  /// This optional field is only available for merchants with a business
+  /// country set to "US". This field is not allowed for marketplaces or
+  /// marketplace sellers.
+  AccountIdentityType? veteranOwned;
+
+  /// Specifies whether the business identifies itself as being women-owned.
+  ///
+  /// This optional field is only available for merchants with a business
+  /// country set to "US". This field is not allowed for marketplaces or
+  /// marketplace sellers.
+  AccountIdentityType? womenOwned;
+
+  AccountBusinessIdentity({
+    this.blackOwned,
+    this.includeForPromotions,
+    this.latinoOwned,
+    this.smallBusiness,
+    this.veteranOwned,
+    this.womenOwned,
+  });
+
+  AccountBusinessIdentity.fromJson(core.Map json_)
+      : this(
+          blackOwned: json_.containsKey('blackOwned')
+              ? AccountIdentityType.fromJson(
+                  json_['blackOwned'] as core.Map<core.String, core.dynamic>)
+              : null,
+          includeForPromotions: json_.containsKey('includeForPromotions')
+              ? json_['includeForPromotions'] as core.bool
+              : null,
+          latinoOwned: json_.containsKey('latinoOwned')
+              ? AccountIdentityType.fromJson(
+                  json_['latinoOwned'] as core.Map<core.String, core.dynamic>)
+              : null,
+          smallBusiness: json_.containsKey('smallBusiness')
+              ? AccountIdentityType.fromJson(
+                  json_['smallBusiness'] as core.Map<core.String, core.dynamic>)
+              : null,
+          veteranOwned: json_.containsKey('veteranOwned')
+              ? AccountIdentityType.fromJson(
+                  json_['veteranOwned'] as core.Map<core.String, core.dynamic>)
+              : null,
+          womenOwned: json_.containsKey('womenOwned')
+              ? AccountIdentityType.fromJson(
+                  json_['womenOwned'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (blackOwned != null) 'blackOwned': blackOwned!,
+        if (includeForPromotions != null)
+          'includeForPromotions': includeForPromotions!,
+        if (latinoOwned != null) 'latinoOwned': latinoOwned!,
+        if (smallBusiness != null) 'smallBusiness': smallBusiness!,
+        if (veteranOwned != null) 'veteranOwned': veteranOwned!,
+        if (womenOwned != null) 'womenOwned': womenOwned!,
       };
 }
 
@@ -9278,6 +9177,31 @@ class AccountIdentifier {
       };
 }
 
+/// The account identity type used to specify attributes.
+class AccountIdentityType {
+  /// Indicates that the business identifies itself with a given identity type.
+  ///
+  /// Setting this field does not automatically mean eligibility for promotions.
+  ///
+  /// Optional.
+  core.bool? selfIdentified;
+
+  AccountIdentityType({
+    this.selfIdentified,
+  });
+
+  AccountIdentityType.fromJson(core.Map json_)
+      : this(
+          selfIdentified: json_.containsKey('selfIdentified')
+              ? json_['selfIdentified'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (selfIdentified != null) 'selfIdentified': selfIdentified!,
+      };
+}
+
 /// This improvement will attempt to automatically correct submitted images if
 /// they don't meet the
 /// [image requirements](https://support.google.com/merchants/answer/6324350),
@@ -9350,6 +9274,169 @@ class AccountImageImprovementsSettings {
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowAutomaticImageImprovements != null)
           'allowAutomaticImageImprovements': allowAutomaticImageImprovements!,
+      };
+}
+
+/// An issue affecting specific merchant.
+class AccountIssue {
+  /// A list of actionable steps that can be executed to solve the issue.
+  ///
+  /// An example is requesting a re-review or providing arguments when merchant
+  /// disagrees with the issue. Actions that are supported in (your) third-party
+  /// application can be rendered as buttons and should be available to merchant
+  /// when they expand the issue.
+  core.List<Action>? actions;
+
+  /// Clarifies the severity of the issue.
+  ///
+  /// The summarizing message, if present, should be shown right under the title
+  /// for each issue. It helps merchants to quickly understand the impact of the
+  /// issue. The detailed breakdown helps the merchant to fully understand the
+  /// impact of the issue. It can be rendered as dialog that opens when the
+  /// merchant mouse over the summarized impact statement. Issues with different
+  /// severity can be styled differently. They may use a different color or icon
+  /// to signal the difference between `ERROR`, `WARNING` and `INFO`.
+  AccountIssueImpact? impact;
+
+  /// Details of the issue as a pre-rendered HTML.
+  ///
+  /// HTML elements contain CSS classes that can be used to customize the style
+  /// of the content. Always sanitize the HTML before embedding it directly to
+  /// your application. The sanitizer needs to allow basic HTML tags, such as:
+  /// `div`, `span`, `p`, `a`, `ul`, `li`, `table`, `tr`, `td`. For example, you
+  /// can use [DOMPurify](https://www.npmjs.com/package/dompurify). CSS classes:
+  /// * `issue-detail` - top level container for the detail of the issue *
+  /// `callout-banners` - section of the `issue-detail` with callout banners *
+  /// `callout-banner` - single callout banner, inside `callout-banners` *
+  /// `callout-banner-info` - callout with important information (default) *
+  /// `callout-banner-warning` - callout with a warning * `callout-banner-error`
+  /// - callout informing about an error (most severe) * `issue-content` -
+  /// section of the `issue-detail`, contains multiple `content-element` *
+  /// `content-element` - content element such as a list, link or paragraph,
+  /// inside `issue-content` * `root-causes` - unordered list with items
+  /// describing root causes of the issue, inside `issue-content` *
+  /// `root-causes-intro` - intro text before the `root-causes` list, inside
+  /// `issue-content` * `segment` - section of the text, `span` inside paragraph
+  /// * `segment-attribute` - section of the text that represents a product
+  /// attribute, for example 'image\_link' * `segment-literal` - section of the
+  /// text that contains a special value, for example '0-1000 kg' *
+  /// `segment-bold` - section of the text that should be rendered as bold *
+  /// `segment-italic` - section of the text that should be rendered as italic *
+  /// `tooltip` - used on paragraphs that should be rendered with a tooltip. A
+  /// section of the text in such a paragraph will have a class `tooltip-text`
+  /// and is intended to be shown in a mouse over dialog. If the style is not
+  /// used, the `tooltip-text` section would be shown on a new line, after the
+  /// main part of the text. * `tooltip-text` - marks a section of the text
+  /// within a `tooltip`, that is intended to be shown in a mouse over dialog. *
+  /// `tooltip-icon` - marks a section of the text within a `tooltip`, that can
+  /// be replaced with a tooltip icon, for example '?' or 'i'. By default, this
+  /// section contains a `br` tag, that is separating the main text and the
+  /// tooltip text when the style is not used. * `tooltip-style-question` - the
+  /// tooltip shows helpful information, can use the '?' as an icon. *
+  /// `tooltip-style-info` - the tooltip adds additional information fitting to
+  /// the context, can use the 'i' as an icon. * `content-moderation` - marks
+  /// the paragraph that explains how the issue was identified. * `new-element`
+  /// - Present for new elements added to the pre-rendered content in the
+  /// future. To make sure that a new content element does not break your style,
+  /// you can hide everything with this class.
+  core.String? prerenderedContent;
+
+  /// Title of the issue.
+  core.String? title;
+
+  AccountIssue({
+    this.actions,
+    this.impact,
+    this.prerenderedContent,
+    this.title,
+  });
+
+  AccountIssue.fromJson(core.Map json_)
+      : this(
+          actions: json_.containsKey('actions')
+              ? (json_['actions'] as core.List)
+                  .map((value) => Action.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          impact: json_.containsKey('impact')
+              ? AccountIssueImpact.fromJson(
+                  json_['impact'] as core.Map<core.String, core.dynamic>)
+              : null,
+          prerenderedContent: json_.containsKey('prerenderedContent')
+              ? json_['prerenderedContent'] as core.String
+              : null,
+          title:
+              json_.containsKey('title') ? json_['title'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (actions != null) 'actions': actions!,
+        if (impact != null) 'impact': impact!,
+        if (prerenderedContent != null)
+          'prerenderedContent': prerenderedContent!,
+        if (title != null) 'title': title!,
+      };
+}
+
+/// Overall impact of the issue.
+class AccountIssueImpact {
+  /// Detailed impact breakdown.
+  ///
+  /// Explains the types of restriction the issue has in different shopping
+  /// destinations and territory. If present, it should be rendered to the
+  /// merchant. Can be shown as a mouse over dropdown or a dialog. Each
+  /// breakdown item represents a group of regions with the same impact details.
+  core.List<Breakdown>? breakdowns;
+
+  /// Message summarizing the overall impact of the issue.
+  ///
+  /// If present, it should be rendered to the merchant. For example:
+  /// "Disapproves 90k offers in 25 countries"
+  ///
+  /// Optional.
+  core.String? message;
+
+  /// The severity of the issue.
+  /// Possible string values are:
+  /// - "SEVERITY_UNSPECIFIED" : Default value. Will never be provided by the
+  /// API.
+  /// - "ERROR" : Causes either an account suspension or an item disapproval.
+  /// Errors should be resolved as soon as possible to ensure items are eligible
+  /// to appear in results again.
+  /// - "WARNING" : Warnings can negatively impact the performance of ads and
+  /// can lead to item or account suspensions in the future unless the issue is
+  /// resolved.
+  /// - "INFO" : Infos are suggested optimizations to increase data quality.
+  /// Resolving these issues is recommended, but not required.
+  core.String? severity;
+
+  AccountIssueImpact({
+    this.breakdowns,
+    this.message,
+    this.severity,
+  });
+
+  AccountIssueImpact.fromJson(core.Map json_)
+      : this(
+          breakdowns: json_.containsKey('breakdowns')
+              ? (json_['breakdowns'] as core.List)
+                  .map((value) => Breakdown.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          message: json_.containsKey('message')
+              ? json_['message'] as core.String
+              : null,
+          severity: json_.containsKey('severity')
+              ? json_['severity'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (breakdowns != null) 'breakdowns': breakdowns!,
+        if (message != null) 'message': message!,
+        if (severity != null) 'severity': severity!,
       };
 }
 
@@ -10393,7 +10480,7 @@ class AccountsCustomBatchRequestEntryLinkRequest {
   /// Type of the link between the two accounts.
   ///
   /// Acceptable values are: - "`channelPartner`" - "`eCommercePlatform`" -
-  /// "`paymentServiceProvider`"
+  /// "`paymentServiceProvider`" - "`localProductManager`"
   core.String? linkType;
 
   /// The ID of the linked account.
@@ -10403,7 +10490,7 @@ class AccountsCustomBatchRequestEntryLinkRequest {
   ///
   /// Acceptable values are: - "`shoppingAdsProductManagement`" -
   /// "`shoppingActionsProductManagement`" - "`shoppingActionsOrderManagement`"
-  /// - "`paymentProcessing`"
+  /// - "`paymentProcessing`" - "`localProductManagement`"
   core.List<core.String>? services;
 
   AccountsCustomBatchRequestEntryLinkRequest({
@@ -11129,6 +11216,135 @@ class AccounttaxListResponse {
       };
 }
 
+/// An actionable step that can be executed to solve the issue.
+class Action {
+  /// Action implemented and performed in (your) third-party application.
+  ///
+  /// The application should point the merchant to the place, where they can
+  /// access the corresponding functionality or provide instructions, if the
+  /// specific functionality is not available.
+  BuiltInSimpleAction? builtinSimpleAction;
+
+  /// Label of the action button.
+  core.String? buttonLabel;
+
+  /// Action that is implemented and performed outside of (your) third-party
+  /// application.
+  ///
+  /// The application needs to redirect the merchant to the external location
+  /// where they can perform the action.
+  ExternalAction? externalAction;
+
+  /// Controlling whether the button is active or disabled.
+  ///
+  /// The value is 'false' when the action was already requested or is not
+  /// available. If the action is not available then a reason will be present.
+  /// If (your) third-party application shows a disabled button for action that
+  /// is not available, then it should also show reasons.
+  core.bool? isAvailable;
+
+  /// List of reasons why the action is not available.
+  ///
+  /// The list of reasons is empty if the action is available. If there is only
+  /// one reason, it can be displayed next to the disabled button. If there are
+  /// more reasons, all of them should be displayed, for example in a pop-up
+  /// dialog.
+  core.List<ActionReason>? reasons;
+
+  Action({
+    this.builtinSimpleAction,
+    this.buttonLabel,
+    this.externalAction,
+    this.isAvailable,
+    this.reasons,
+  });
+
+  Action.fromJson(core.Map json_)
+      : this(
+          builtinSimpleAction: json_.containsKey('builtinSimpleAction')
+              ? BuiltInSimpleAction.fromJson(json_['builtinSimpleAction']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          buttonLabel: json_.containsKey('buttonLabel')
+              ? json_['buttonLabel'] as core.String
+              : null,
+          externalAction: json_.containsKey('externalAction')
+              ? ExternalAction.fromJson(json_['externalAction']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          isAvailable: json_.containsKey('isAvailable')
+              ? json_['isAvailable'] as core.bool
+              : null,
+          reasons: json_.containsKey('reasons')
+              ? (json_['reasons'] as core.List)
+                  .map((value) => ActionReason.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (builtinSimpleAction != null)
+          'builtinSimpleAction': builtinSimpleAction!,
+        if (buttonLabel != null) 'buttonLabel': buttonLabel!,
+        if (externalAction != null) 'externalAction': externalAction!,
+        if (isAvailable != null) 'isAvailable': isAvailable!,
+        if (reasons != null) 'reasons': reasons!,
+      };
+}
+
+/// A single reason why the action is not available.
+class ActionReason {
+  /// An action that needs to be performed to solve the problem represented by
+  /// this reason.
+  ///
+  /// This action will always be available. Should be rendered as a link or
+  /// button next to the summarizing message. For example, the review may be
+  /// available only once merchant configure all required attributes. In such a
+  /// situation this action can be a link to the form, where they can fill the
+  /// missing attribute to unblock the main action.
+  ///
+  /// Optional.
+  Action? action;
+
+  /// Detailed explanation of the reason.
+  ///
+  /// Should be displayed as a hint if present.
+  core.String? detail;
+
+  /// Messages summarizing the reason, why the action is not available.
+  ///
+  /// For example: "Review requested on Jan 03. Review requests can take a few
+  /// days to complete."
+  core.String? message;
+
+  ActionReason({
+    this.action,
+    this.detail,
+    this.message,
+  });
+
+  ActionReason.fromJson(core.Map json_)
+      : this(
+          action: json_.containsKey('action')
+              ? Action.fromJson(
+                  json_['action'] as core.Map<core.String, core.dynamic>)
+              : null,
+          detail: json_.containsKey('detail')
+              ? json_['detail'] as core.String
+              : null,
+          message: json_.containsKey('message')
+              ? json_['message'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (action != null) 'action': action!,
+        if (detail != null) 'detail': detail!,
+        if (message != null) 'message': message!,
+      };
+}
+
 /// Request message for the ActivateProgram method.
 typedef ActivateBuyOnGoogleProgramRequest = $Empty;
 
@@ -11200,6 +11416,37 @@ class Address {
       };
 }
 
+/// The Alternate Dispute Resolution (ADR) that may be available to merchants in
+/// some regions.
+///
+/// If present, the link should be shown on the same page as the list of issues.
+class AlternateDisputeResolution {
+  /// The label for the alternate dispute resolution link.
+  core.String? label;
+
+  /// The URL pointing to a page, where merchant can request alternative dispute
+  /// resolution with an
+  /// [external body](https://support.google.com/european-union-digital-services-act-redress-options/answer/13535501).
+  core.String? uri;
+
+  AlternateDisputeResolution({
+    this.label,
+    this.uri,
+  });
+
+  AlternateDisputeResolution.fromJson(core.Map json_)
+      : this(
+          label:
+              json_.containsKey('label') ? json_['label'] as core.String : null,
+          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (label != null) 'label': label!,
+        if (uri != null) 'uri': uri!,
+      };
+}
+
 class Amount {
   /// The pre-tax or post-tax price depending on the location of the order.
   ///
@@ -11239,7 +11486,7 @@ class Amount {
 class AttributionSettings {
   /// Lookback windows (in days) used for attribution in this source.
   ///
-  /// Supported values are 7, 30, 60, 90.
+  /// Supported values are 7, 30, 40.
   ///
   /// Required.
   core.int? attributionLookbackWindowInDays;
@@ -11495,6 +11742,186 @@ class Brand {
       };
 }
 
+/// A detailed impact breakdown for a group of regions where the impact of the
+/// issue on different shopping destinations is the same.
+class Breakdown {
+  /// Human readable, localized description of issue's effect on different
+  /// targets.
+  ///
+  /// Should be rendered as a list. For example: * "Products not showing in ads"
+  /// * "Products not showing organically"
+  core.List<core.String>? details;
+
+  /// Lists of regions.
+  ///
+  /// Should be rendered as a title for this group of details. The full list
+  /// should be shown to merchant. If the list is too long, it is recommended to
+  /// make it expandable.
+  core.List<BreakdownRegion>? regions;
+
+  Breakdown({
+    this.details,
+    this.regions,
+  });
+
+  Breakdown.fromJson(core.Map json_)
+      : this(
+          details: json_.containsKey('details')
+              ? (json_['details'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          regions: json_.containsKey('regions')
+              ? (json_['regions'] as core.List)
+                  .map((value) => BreakdownRegion.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (details != null) 'details': details!,
+        if (regions != null) 'regions': regions!,
+      };
+}
+
+/// Region with code and localized name.
+class BreakdownRegion {
+  /// The
+  /// [CLDR territory code](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml)
+  core.String? code;
+
+  /// The localized name of the region.
+  ///
+  /// For region with code='001' the value is 'All countries' or the equivalent
+  /// in other languages.
+  core.String? name;
+
+  BreakdownRegion({
+    this.code,
+    this.name,
+  });
+
+  BreakdownRegion.fromJson(core.Map json_)
+      : this(
+          code: json_.containsKey('code') ? json_['code'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (code != null) 'code': code!,
+        if (name != null) 'name': name!,
+      };
+}
+
+/// Action that is implemented and performed in (your) third-party application.
+///
+/// Represents various functionality that is expected to be available to
+/// merchant and will help them with resolving the issue. The application should
+/// point the merchant to the place, where they can access the corresponding
+/// functionality. If the functionality is not supported, it is recommended to
+/// explain the situation to merchant and provide them with instructions how to
+/// solve the issue.
+class BuiltInSimpleAction {
+  /// Long text from an external source that should be available to the
+  /// merchant.
+  ///
+  /// Present when the type is `SHOW_ADDITIONAL_CONTENT`.
+  BuiltInSimpleActionAdditionalContent? additionalContent;
+
+  /// The attribute that needs to be updated.
+  ///
+  /// Present when the type is `EDIT_ITEM_ATTRIBUTE`. This field contains a code
+  /// for attribute, represented in snake_case. You can find a list of product's
+  /// attributes, with their codes
+  /// [here](https://support.google.com/merchants/answer/7052112).
+  core.String? attributeCode;
+
+  /// The type of action that represents a functionality that is expected to be
+  /// available in third-party application.
+  /// Possible string values are:
+  /// - "BUILT_IN_SIMPLE_ACTION_TYPE_UNSPECIFIED" : Default value. Will never be
+  /// provided by the API.
+  /// - "VERIFY_PHONE" : Redirect merchant to the part of your application where
+  /// they can verify their phone.
+  /// - "CLAIM_WEBSITE" : Redirect merchant to the part of your application
+  /// where they can claim their website.
+  /// - "ADD_PRODUCTS" : Redirect merchant to the part of your application where
+  /// they can add products.
+  /// - "ADD_CONTACT_INFO" : Open a form where the merchant can edit their
+  /// contact information.
+  /// - "LINK_ADS_ACCOUNT" : Redirect merchant to the part of your application
+  /// where they can link ads account.
+  /// - "ADD_BUSINESS_REGISTRATION_NUMBER" : Open a form where the merchant can
+  /// add their business registration number.
+  /// - "EDIT_ITEM_ATTRIBUTE" : Open a form where the merchant can edit an
+  /// attribute. The attribute that needs to be updated is specified in
+  /// attribute_code field of the action.
+  /// - "FIX_ACCOUNT_ISSUE" : Redirect merchant from the product issues to the
+  /// diagnostic page with their account issues in your application. This action
+  /// will be returned only for product issues that are caused by an account
+  /// issue and thus merchant should resolve the problem on the account level.
+  /// - "SHOW_ADDITIONAL_CONTENT" : Show additional content to the merchant.
+  /// This action will be used for example to deliver a justification from
+  /// national authority.
+  core.String? type;
+
+  BuiltInSimpleAction({
+    this.additionalContent,
+    this.attributeCode,
+    this.type,
+  });
+
+  BuiltInSimpleAction.fromJson(core.Map json_)
+      : this(
+          additionalContent: json_.containsKey('additionalContent')
+              ? BuiltInSimpleActionAdditionalContent.fromJson(
+                  json_['additionalContent']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          attributeCode: json_.containsKey('attributeCode')
+              ? json_['attributeCode'] as core.String
+              : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (additionalContent != null) 'additionalContent': additionalContent!,
+        if (attributeCode != null) 'attributeCode': attributeCode!,
+        if (type != null) 'type': type!,
+      };
+}
+
+/// Long text from external source.
+class BuiltInSimpleActionAdditionalContent {
+  /// Long text organized into paragraphs.
+  core.List<core.String>? paragraphs;
+
+  /// Title of the additional content;
+  core.String? title;
+
+  BuiltInSimpleActionAdditionalContent({
+    this.paragraphs,
+    this.title,
+  });
+
+  BuiltInSimpleActionAdditionalContent.fromJson(core.Map json_)
+      : this(
+          paragraphs: json_.containsKey('paragraphs')
+              ? (json_['paragraphs'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          title:
+              json_.containsKey('title') ? json_['title'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (paragraphs != null) 'paragraphs': paragraphs!,
+        if (title != null) 'title': title!,
+      };
+}
+
 class BusinessDayConfig {
   /// Regular business days, such as '"monday"'.
   ///
@@ -11598,6 +12025,9 @@ class BuyOnGoogleProgramStatus {
   /// - "ACTIVE" : Merchant's program participation is active for a specific
   /// region code.
   /// - "PAUSED" : Participation has been paused.
+  /// - "DEPRECATED" : The program cannot be further reactivated or paused. See
+  /// more about
+  /// [Buy on Google](https://support.google.com/merchants/answer/7679273).
   core.String? participationStage;
 
   BuyOnGoogleProgramStatus({
@@ -11857,6 +12287,8 @@ class CheckoutSettings {
   /// - "INACTIVE" : Merchant has not enrolled into the feature.
   /// - "ENROLLED" : Merchant has enrolled into the feature by providing either
   /// an account level URL or checkout URLs as part of their feed.
+  /// - "OPT_OUT" : Merchant has previously enrolled but opted out of the
+  /// feature.
   core.String? effectiveEnrollmentState;
 
   /// The effective value of review state for a given merchant ID.
@@ -11893,6 +12325,8 @@ class CheckoutSettings {
   /// - "INACTIVE" : Merchant has not enrolled into the feature.
   /// - "ENROLLED" : Merchant has enrolled into the feature by providing either
   /// an account level URL or checkout URLs as part of their feed.
+  /// - "OPT_OUT" : Merchant has previously enrolled but opted out of the
+  /// feature.
   core.String? enrollmentState;
 
   /// The ID of the account.
@@ -12501,7 +12935,8 @@ class CompetitiveVisibility {
   /// to organic traffic.
   ///
   /// The number is rounded and bucketed. Available only in
-  /// `CompetitiveVisibilityTopMerchantView`. Cannot be filtered on in the
+  /// `CompetitiveVisibilityTopMerchantView` and
+  /// `CompetitiveVisibilityCompetitorView`. Cannot be filtered on in the
   /// 'WHERE' clause.
   core.double? adsOrganicRatio;
 
@@ -12529,51 +12964,66 @@ class CompetitiveVisibility {
 
   /// Date of this row.
   ///
-  /// Available only in `CompetitiveVisibilityBenchmarkView`. Required in the
-  /// `SELECT` clause for `CompetitiveVisibilityMarketBenchmarkView`.
+  /// Available only in `CompetitiveVisibilityBenchmarkView` and
+  /// `CompetitiveVisibilityCompetitorView`. Required in the `SELECT` clause for
+  /// `CompetitiveVisibilityMarketBenchmarkView`.
   Date? date;
 
   /// Domain of your competitor or your domain, if 'is_your_domain' is true.
   ///
-  /// Available only in `CompetitiveVisibilityTopMerchantView`. Required in the
-  /// `SELECT` clause for `CompetitiveVisibilityTopMerchantView`. Cannot be
-  /// filtered on in the 'WHERE' clause.
+  /// Available only in `CompetitiveVisibilityTopMerchantView` and
+  /// `CompetitiveVisibilityCompetitorView`. Required in the `SELECT` clause for
+  /// `CompetitiveVisibilityTopMerchantView` and
+  /// `CompetitiveVisibilityCompetitorView`. Cannot be filtered on in the
+  /// 'WHERE' clause.
   core.String? domain;
 
   /// Higher position rate shows how often a competitor’s offer got placed in a
   /// higher position on the page than your offer.
   ///
-  /// Available only in `CompetitiveVisibilityTopMerchantView`. Cannot be
-  /// filtered on in the 'WHERE' clause.
+  /// Available only in `CompetitiveVisibilityTopMerchantView` and
+  /// `CompetitiveVisibilityCompetitorView`. Cannot be filtered on in the
+  /// 'WHERE' clause.
   core.double? higherPositionRate;
 
   /// True if this row contains data for your domain.
   ///
-  /// Available only in `CompetitiveVisibilityTopMerchantView`. Cannot be
-  /// filtered on in the 'WHERE' clause.
+  /// Available only in `CompetitiveVisibilityTopMerchantView` and
+  /// `CompetitiveVisibilityCompetitorView`. Cannot be filtered on in the
+  /// 'WHERE' clause.
   core.bool? isYourDomain;
 
   /// Page overlap rate describes how frequently competing retailers’ offers are
   /// shown together with your offers on the same page.
   ///
-  /// Available only in `CompetitiveVisibilityTopMerchantView`. Cannot be
-  /// filtered on in the 'WHERE' clause.
+  /// Available only in `CompetitiveVisibilityTopMerchantView` and
+  /// `CompetitiveVisibilityCompetitorView`. Cannot be filtered on in the
+  /// 'WHERE' clause.
   core.double? pageOverlapRate;
 
   /// Position of the domain in the top merchants ranking for the selected keys
   /// (`date`, `category_id`, `country_code`, `listing_type`) based on
   /// impressions.
   ///
-  /// 1 is the highest. Available only in
-  /// `CompetitiveVisibilityTopMerchantView`. Cannot be filtered on in the
+  /// 1 is the highest. Available only in `CompetitiveVisibilityTopMerchantView`
+  /// and `CompetitiveVisibilityCompetitorView`. Cannot be filtered on in the
   /// 'WHERE' clause.
   core.String? rank;
 
+  /// Relative visibility shows how often your competitors’ offers are shown
+  /// compared to your offers.
+  ///
+  /// In other words, this is the number of displayed impressions of a
+  /// competitor retailer divided by the number of your displayed impressions
+  /// during a selected time range for a selected product category and country.
+  /// Available only in `CompetitiveVisibilityCompetitorView`. Cannot be
+  /// filtered on in the 'WHERE' clause.
+  core.double? relativeVisibility;
+
   /// Type of impression listing.
   ///
-  /// Required in the `SELECT` clause for `CompetitiveVisibilityTopMerchantView`
-  /// and `CompetitiveVisibilityMarketBenchmarkView`. Cannot be filtered on in
-  /// the 'WHERE' clause.
+  /// Required in the `SELECT` clause. Cannot be filtered on in the 'WHERE'
+  /// clause.
   /// Possible string values are:
   /// - "UNKNOWN" : Traffic source is unknown.
   /// - "ORGANIC" : Organic traffic.
@@ -12600,6 +13050,7 @@ class CompetitiveVisibility {
     this.isYourDomain,
     this.pageOverlapRate,
     this.rank,
+    this.relativeVisibility,
     this.trafficSource,
     this.yourDomainVisibilityTrend,
   });
@@ -12637,6 +13088,9 @@ class CompetitiveVisibility {
               ? (json_['pageOverlapRate'] as core.num).toDouble()
               : null,
           rank: json_.containsKey('rank') ? json_['rank'] as core.String : null,
+          relativeVisibility: json_.containsKey('relativeVisibility')
+              ? (json_['relativeVisibility'] as core.num).toDouble()
+              : null,
           trafficSource: json_.containsKey('trafficSource')
               ? json_['trafficSource'] as core.String
               : null,
@@ -12659,6 +13113,8 @@ class CompetitiveVisibility {
         if (isYourDomain != null) 'isYourDomain': isYourDomain!,
         if (pageOverlapRate != null) 'pageOverlapRate': pageOverlapRate!,
         if (rank != null) 'rank': rank!,
+        if (relativeVisibility != null)
+          'relativeVisibility': relativeVisibility!,
         if (trafficSource != null) 'trafficSource': trafficSource!,
         if (yourDomainVisibilityTrend != null)
           'yourDomainVisibilityTrend': yourDomainVisibilityTrend!,
@@ -14414,6 +14870,50 @@ class Errors {
       };
 }
 
+/// Action that is implemented and performed outside of the third-party
+/// application.
+///
+/// It should redirect the merchant to the provided URL of an external system
+/// where they can perform the action. For example to request a review in the
+/// Merchant Center.
+class ExternalAction {
+  /// The type of external action.
+  /// Possible string values are:
+  /// - "EXTERNAL_ACTION_TYPE_UNSPECIFIED" : Default value. Will never be
+  /// provided by the API.
+  /// - "REVIEW_PRODUCT_ISSUE_IN_MERCHANT_CENTER" : Redirect to Merchant Center
+  /// where the merchant can request a review for issue related to their
+  /// product.
+  /// - "REVIEW_ACCOUNT_ISSUE_IN_MERCHANT_CENTER" : Redirect to Merchant Center
+  /// where the merchant can request a review for issue related to their
+  /// account.
+  /// - "LEGAL_APPEAL_IN_HELP_CENTER" : Redirect to the form in Help Center
+  /// where the merchant can request a legal appeal for the issue.
+  /// - "VERIFY_IDENTITY_IN_MERCHANT_CENTER" : Redirect to Merchant Center where
+  /// the merchant can perform identity verification.
+  core.String? type;
+
+  /// URL to external system, for example Merchant Center, where the merchant
+  /// can perform the action.
+  core.String? uri;
+
+  ExternalAction({
+    this.type,
+    this.uri,
+  });
+
+  ExternalAction.fromJson(core.Map json_)
+      : this(
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (type != null) 'type': type!,
+        if (uri != null) 'uri': uri!,
+      };
+}
+
 /// Response message for GetFreeListingsProgramStatus.
 class FreeListingsProgramStatus {
   /// State of the program.
@@ -15001,54 +15501,6 @@ class HolidaysHoliday {
       };
 }
 
-/// Map of inapplicability details.
-class InapplicabilityDetails {
-  /// Count of this inapplicable reason code.
-  core.String? inapplicableCount;
-
-  /// Reason code this rule was not applicable.
-  /// Possible string values are:
-  /// - "INAPPLICABLE_REASON_UNSPECIFIED" : Default value. Should not be used.
-  /// - "CANNOT_BEAT_BUYBOX_WINNER" : The rule set for this product cannot beat
-  /// the buybox winner.
-  /// - "ALREADY_WINNING_BUYBOX" : This product can already win the buybox
-  /// without rule.
-  /// - "TRIUMPHED_OVER_BY_SAME_TYPE_RULE" : Another rule of the same type takes
-  /// precedence over this one.
-  /// - "TRIUMPHED_OVER_BY_OTHER_RULE_ON_OFFER" : Another rule of a different
-  /// type takes precedence over this one.
-  /// - "RESTRICTIONS_NOT_MET" : The rule restrictions are not met. For example,
-  /// this may be the case if the calculated rule price is lower than floor
-  /// price in the restriction.
-  /// - "UNCATEGORIZED" : The reason is not categorized to any known reason.
-  /// - "INVALID_AUTO_PRICE_MIN" : The auto_pricing_min_price is invalid. For
-  /// example, it is missing or \< 0.
-  /// - "INVALID_FLOOR_CONFIG" : The floor defined in the rule is invalid. For
-  /// example, it has the wrong sign which results in a floor \< 0.
-  core.String? inapplicableReason;
-
-  InapplicabilityDetails({
-    this.inapplicableCount,
-    this.inapplicableReason,
-  });
-
-  InapplicabilityDetails.fromJson(core.Map json_)
-      : this(
-          inapplicableCount: json_.containsKey('inapplicableCount')
-              ? json_['inapplicableCount'] as core.String
-              : null,
-          inapplicableReason: json_.containsKey('inapplicableReason')
-              ? json_['inapplicableReason'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (inapplicableCount != null) 'inapplicableCount': inapplicableCount!,
-        if (inapplicableReason != null)
-          'inapplicableReason': inapplicableReason!,
-      };
-}
-
 /// Request message for the `InsertCheckoutSettings` method.
 class InsertCheckoutSettingsRequest {
   /// The `UrlSettings` for the request.
@@ -15240,6 +15692,9 @@ class LiaCountrySettings {
   /// LIA inventory verification settings.
   LiaInventorySettings? inventory;
 
+  /// The omnichannel experience configured for this country.
+  LiaOmnichannelExperience? omnichannelExperience;
+
   /// LIA "On Display To Order" settings.
   LiaOnDisplayToOrderSettings? onDisplayToOrder;
 
@@ -15254,6 +15709,7 @@ class LiaCountrySettings {
     this.country,
     this.hostedLocalStorefrontActive,
     this.inventory,
+    this.omnichannelExperience,
     this.onDisplayToOrder,
     this.posDataProvider,
     this.storePickupActive,
@@ -15276,6 +15732,10 @@ class LiaCountrySettings {
               ? LiaInventorySettings.fromJson(
                   json_['inventory'] as core.Map<core.String, core.dynamic>)
               : null,
+          omnichannelExperience: json_.containsKey('omnichannelExperience')
+              ? LiaOmnichannelExperience.fromJson(json_['omnichannelExperience']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           onDisplayToOrder: json_.containsKey('onDisplayToOrder')
               ? LiaOnDisplayToOrderSettings.fromJson(json_['onDisplayToOrder']
                   as core.Map<core.String, core.dynamic>)
@@ -15295,6 +15755,8 @@ class LiaCountrySettings {
         if (hostedLocalStorefrontActive != null)
           'hostedLocalStorefrontActive': hostedLocalStorefrontActive!,
         if (inventory != null) 'inventory': inventory!,
+        if (omnichannelExperience != null)
+          'omnichannelExperience': omnichannelExperience!,
         if (onDisplayToOrder != null) 'onDisplayToOrder': onDisplayToOrder!,
         if (posDataProvider != null) 'posDataProvider': posDataProvider!,
         if (storePickupActive != null) 'storePickupActive': storePickupActive!,
@@ -15354,6 +15816,52 @@ class LiaInventorySettings {
           'inventoryVerificationContactStatus':
               inventoryVerificationContactStatus!,
         if (status != null) 'status': status!,
+      };
+}
+
+/// Omnichannel experience details.
+class LiaOmnichannelExperience {
+  /// The CLDR country code (for example, "US").
+  core.String? country;
+
+  /// The Local Store Front (LSF) type for this country.
+  ///
+  /// Acceptable values are: - "`ghlsf`" (Google-Hosted Local Store Front) -
+  /// "`mhlsfBasic`" (Merchant-Hosted Local Store Front Basic) - "`mhlsfFull`"
+  /// (Merchant-Hosted Local Store Front Full) More details about these types
+  /// can be found here.
+  core.String? lsfType;
+
+  /// The Pickup types for this country.
+  ///
+  /// Acceptable values are: - "`pickupToday`" - "`pickupLater`"
+  core.List<core.String>? pickupTypes;
+
+  LiaOmnichannelExperience({
+    this.country,
+    this.lsfType,
+    this.pickupTypes,
+  });
+
+  LiaOmnichannelExperience.fromJson(core.Map json_)
+      : this(
+          country: json_.containsKey('country')
+              ? json_['country'] as core.String
+              : null,
+          lsfType: json_.containsKey('lsfType')
+              ? json_['lsfType'] as core.String
+              : null,
+          pickupTypes: json_.containsKey('pickupTypes')
+              ? (json_['pickupTypes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (country != null) 'country': country!,
+        if (lsfType != null) 'lsfType': lsfType!,
+        if (pickupTypes != null) 'pickupTypes': pickupTypes!,
       };
 }
 
@@ -15526,6 +16034,11 @@ class LiasettingsCustomBatchRequestEntry {
   /// "`setInventoryVerificationContact`" - "`update`"
   core.String? method;
 
+  /// The omnichannel experience for a country.
+  ///
+  /// Required only for SetOmnichannelExperience.
+  LiaOmnichannelExperience? omnichannelExperience;
+
   /// The ID of POS data provider.
   ///
   /// Required only for SetPosProvider.
@@ -15544,6 +16057,7 @@ class LiasettingsCustomBatchRequestEntry {
     this.liaSettings,
     this.merchantId,
     this.method,
+    this.omnichannelExperience,
     this.posDataProviderId,
     this.posExternalAccountId,
   });
@@ -15578,6 +16092,10 @@ class LiasettingsCustomBatchRequestEntry {
           method: json_.containsKey('method')
               ? json_['method'] as core.String
               : null,
+          omnichannelExperience: json_.containsKey('omnichannelExperience')
+              ? LiaOmnichannelExperience.fromJson(json_['omnichannelExperience']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           posDataProviderId: json_.containsKey('posDataProviderId')
               ? json_['posDataProviderId'] as core.String
               : null,
@@ -15596,6 +16114,8 @@ class LiasettingsCustomBatchRequestEntry {
         if (liaSettings != null) 'liaSettings': liaSettings!,
         if (merchantId != null) 'merchantId': merchantId!,
         if (method != null) 'method': method!,
+        if (omnichannelExperience != null)
+          'omnichannelExperience': omnichannelExperience!,
         if (posDataProviderId != null) 'posDataProviderId': posDataProviderId!,
         if (posExternalAccountId != null)
           'posExternalAccountId': posExternalAccountId!,
@@ -15651,6 +16171,9 @@ class LiasettingsCustomBatchResponseEntry {
   /// The retrieved or updated Lia settings.
   LiaSettings? liaSettings;
 
+  /// The updated omnichannel experience for a country.
+  LiaOmnichannelExperience? omnichannelExperience;
+
   /// The list of POS data providers.
   core.List<PosDataProviders>? posDataProviders;
 
@@ -15660,6 +16183,7 @@ class LiasettingsCustomBatchResponseEntry {
     this.gmbAccounts,
     this.kind,
     this.liaSettings,
+    this.omnichannelExperience,
     this.posDataProviders,
   });
 
@@ -15681,6 +16205,10 @@ class LiasettingsCustomBatchResponseEntry {
               ? LiaSettings.fromJson(
                   json_['liaSettings'] as core.Map<core.String, core.dynamic>)
               : null,
+          omnichannelExperience: json_.containsKey('omnichannelExperience')
+              ? LiaOmnichannelExperience.fromJson(json_['omnichannelExperience']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           posDataProviders: json_.containsKey('posDataProviders')
               ? (json_['posDataProviders'] as core.List)
                   .map((value) => PosDataProviders.fromJson(
@@ -15695,6 +16223,8 @@ class LiasettingsCustomBatchResponseEntry {
         if (gmbAccounts != null) 'gmbAccounts': gmbAccounts!,
         if (kind != null) 'kind': kind!,
         if (liaSettings != null) 'liaSettings': liaSettings!,
+        if (omnichannelExperience != null)
+          'omnichannelExperience': omnichannelExperience!,
         if (posDataProviders != null) 'posDataProviders': posDataProviders!,
       };
 }
@@ -16249,110 +16779,6 @@ class ListRegionsResponse {
       };
 }
 
-/// Response message for the ListRepricingProductReports method.
-class ListRepricingProductReportsResponse {
-  /// A token for retrieving the next page.
-  ///
-  /// Its absence means there is no subsequent page.
-  core.String? nextPageToken;
-
-  /// Periodic reports for the given Repricing product.
-  core.List<RepricingProductReport>? repricingProductReports;
-
-  ListRepricingProductReportsResponse({
-    this.nextPageToken,
-    this.repricingProductReports,
-  });
-
-  ListRepricingProductReportsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
-          repricingProductReports: json_.containsKey('repricingProductReports')
-              ? (json_['repricingProductReports'] as core.List)
-                  .map((value) => RepricingProductReport.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (repricingProductReports != null)
-          'repricingProductReports': repricingProductReports!,
-      };
-}
-
-/// Response message for the ListRepricingRuleReports method.
-class ListRepricingRuleReportsResponse {
-  /// A token for retrieving the next page.
-  ///
-  /// Its absence means there is no subsequent page.
-  core.String? nextPageToken;
-
-  /// Daily reports for the given Repricing rule.
-  core.List<RepricingRuleReport>? repricingRuleReports;
-
-  ListRepricingRuleReportsResponse({
-    this.nextPageToken,
-    this.repricingRuleReports,
-  });
-
-  ListRepricingRuleReportsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
-          repricingRuleReports: json_.containsKey('repricingRuleReports')
-              ? (json_['repricingRuleReports'] as core.List)
-                  .map((value) => RepricingRuleReport.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (repricingRuleReports != null)
-          'repricingRuleReports': repricingRuleReports!,
-      };
-}
-
-/// Response message for the `ListRepricingRules` method.
-class ListRepricingRulesResponse {
-  /// A token, which can be sent as `page_token` to retrieve the next page.
-  ///
-  /// If this field is omitted, there are no subsequent pages.
-  core.String? nextPageToken;
-
-  /// The rules from the specified merchant.
-  core.List<RepricingRule>? repricingRules;
-
-  ListRepricingRulesResponse({
-    this.nextPageToken,
-    this.repricingRules,
-  });
-
-  ListRepricingRulesResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
-          repricingRules: json_.containsKey('repricingRules')
-              ? (json_['repricingRules'] as core.List)
-                  .map((value) => RepricingRule.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (repricingRules != null) 'repricingRules': repricingRules!,
-      };
-}
-
 /// Response message for the `ListReturnPolicyOnline` method.
 class ListReturnPolicyOnlineResponse {
   /// The retrieved return policies.
@@ -16382,7 +16808,7 @@ class ListReturnPolicyOnlineResponse {
 /// For accepted attribute values, see the local product inventory feed
 /// specification.
 class LocalInventory {
-  /// Availability of the product.
+  /// The availability of the product.
   ///
   /// For accepted attribute values, see the local product inventory feed
   /// specification.
@@ -16394,7 +16820,7 @@ class LocalInventory {
   /// generic form, for example, `{ "name": "size type", "value": "regular" }`.
   core.List<CustomAttribute>? customAttributes;
 
-  /// In-store product location.
+  /// The in-store product location.
   core.String? instoreProductLocation;
 
   /// Identifies what kind of resource this is.
@@ -16402,29 +16828,29 @@ class LocalInventory {
   /// Value: the fixed string "`content#localInventory`"
   core.String? kind;
 
-  /// Supported pickup method for this offer.
+  /// The supported pickup method for this offer.
   ///
   /// Unless the value is "not supported", this field must be submitted together
   /// with `pickupSla`. For accepted attribute values, see the local product
   /// inventory feed specification.
   core.String? pickupMethod;
 
-  /// Expected date that an order will be ready for pickup relative to the order
-  /// date.
+  /// The expected date that an order will be ready for pickup relative to the
+  /// order date.
   ///
   /// Must be submitted together with `pickupMethod`. For accepted attribute
   /// values, see the local product inventory feed specification.
   core.String? pickupSla;
 
-  /// Price of the product.
+  /// The price of the product.
   Price? price;
 
-  /// Quantity of the product.
+  /// The quantity of the product.
   ///
   /// Must be nonnegative.
   core.int? quantity;
 
-  /// Sale price of the product.
+  /// The sale price of the product.
   ///
   /// Mandatory if `sale_price_effective_date` is defined.
   Price? salePrice;
@@ -16435,7 +16861,7 @@ class LocalInventory {
   /// Both dates may be specified as 'null' if undecided.
   core.String? salePriceEffectiveDate;
 
-  /// Store code of this local inventory resource.
+  /// The store code of this local inventory resource.
   ///
   /// Required.
   core.String? storeCode;
@@ -23508,6 +23934,42 @@ class PosStore {
   /// Value: the fixed string "`content#posStore`"
   core.String? kind;
 
+  /// The matching status of POS store and Google Business Profile store.
+  ///
+  /// Possible values are: - "`matched`": The POS store is successfully matched
+  /// with the Google Business Profile store. - "`failed`": The POS store is not
+  /// matched with the Google Business Profile store. See matching_status_hint
+  /// for further details. Note that there is up to 48 hours propagation delay
+  /// for changes in Merchant Center (e.g. creation of new account, accounts
+  /// linking) and Google Business Profile (e.g. store address update) which may
+  /// affect the matching status. In such cases, after a delay call
+  /// [pos.list](https://developers.google.com/shopping-content/reference/rest/v2.1/pos/list)
+  /// to retrieve the updated matching status.
+  ///
+  /// Output only.
+  core.String? matchingStatus;
+
+  /// The hint of why the matching has failed.
+  ///
+  /// This is only set when matching_status=failed. Possible values are: -
+  /// "`linked-store-not-found`": There aren't any Google Business Profile
+  /// stores available for matching. Connect your Merchant Center account with
+  /// the Google Business Profile account. Or add a new Google Business Profile
+  /// store corresponding to the POS store. - "`store-match-not-found`": The
+  /// provided POS store couldn't be matched to any of the connected Google
+  /// Business Profile stores. Merchant Center account is connected correctly
+  /// and stores are available on Google Business Profile, but POS store
+  /// location address does not match with Google Business Profile stores'
+  /// addresses. Update POS store address or Google Business Profile store
+  /// address to match correctly. - "`store-match-unverified`": The provided POS
+  /// store couldn't be matched to any of the connected Google Business Profile
+  /// stores, as the matched Google Business Profile store is unverified. Go
+  /// through the Google Business Profile verification process to match
+  /// correctly.
+  ///
+  /// Output only.
+  core.String? matchingStatusHint;
+
   /// The store phone number.
   core.String? phoneNumber;
 
@@ -23533,6 +23995,8 @@ class PosStore {
   PosStore({
     this.gcidCategory,
     this.kind,
+    this.matchingStatus,
+    this.matchingStatusHint,
     this.phoneNumber,
     this.placeId,
     this.storeAddress,
@@ -23549,6 +24013,12 @@ class PosStore {
                   .toList()
               : null,
           kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          matchingStatus: json_.containsKey('matchingStatus')
+              ? json_['matchingStatus'] as core.String
+              : null,
+          matchingStatusHint: json_.containsKey('matchingStatusHint')
+              ? json_['matchingStatusHint'] as core.String
+              : null,
           phoneNumber: json_.containsKey('phoneNumber')
               ? json_['phoneNumber'] as core.String
               : null,
@@ -23572,6 +24042,9 @@ class PosStore {
   core.Map<core.String, core.dynamic> toJson() => {
         if (gcidCategory != null) 'gcidCategory': gcidCategory!,
         if (kind != null) 'kind': kind!,
+        if (matchingStatus != null) 'matchingStatus': matchingStatus!,
+        if (matchingStatusHint != null)
+          'matchingStatusHint': matchingStatusHint!,
         if (phoneNumber != null) 'phoneNumber': phoneNumber!,
         if (placeId != null) 'placeId': placeId!,
         if (storeAddress != null) 'storeAddress': storeAddress!,
@@ -23665,10 +24138,10 @@ class PostalCodeRange {
       };
 }
 
-typedef Price = $Shared04;
+typedef Price = $Shared07;
 
 /// The price represented as a number and currency.
-typedef PriceAmount = $Shared04;
+typedef PriceAmount = $Shared07;
 
 /// Price competitiveness fields requested by the merchant in the query.
 ///
@@ -23734,10 +24207,12 @@ class PriceInsights {
   /// For example, 0.05 is a 5% predicted increase in conversions).
   core.double? predictedConversionsChangeFraction;
 
-  /// The predicted change in gross profit as a fraction after introducing the
-  /// suggested price compared to current active price.
+  /// *Deprecated*: This field is no longer supported and will start returning
+  /// 0.
   ///
-  /// For example, 0.05 is a 5% predicted increase in gross profit.
+  /// The predicted change in gross profit as a fraction after introducing the
+  /// suggested price compared to current active price. For example, 0.05 is a
+  /// 5% predicted increase in gross profit.
   core.double? predictedGrossProfitChangeFraction;
 
   /// The predicted change in impressions as a fraction after introducing the
@@ -23746,9 +24221,15 @@ class PriceInsights {
   /// For example, 0.05 is a 5% predicted increase in impressions.
   core.double? predictedImpressionsChangeFraction;
 
+  /// *Deprecated*: This field is no longer supported and will start returning
+  /// USD for all requests.
+  ///
   /// The predicted monthly gross profit change currency (ISO 4217 code).
   core.String? predictedMonthlyGrossProfitChangeCurrencyCode;
 
+  /// *Deprecated*: This field is no longer supported and will start returning
+  /// 0.
+  ///
   /// The predicted change in gross profit in micros (1 millionth of a standard
   /// unit, 1 USD = 1000000 micros) after introducing the suggested price for a
   /// month compared to current active price.
@@ -25228,6 +25709,169 @@ class ProductId {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (productId != null) 'productId': productId!,
+      };
+}
+
+/// An issue affecting specific product.
+class ProductIssue {
+  /// A list of actionable steps that can be executed to solve the issue.
+  ///
+  /// An example is requesting a re-review or providing arguments when merchant
+  /// disagrees with the issue. Actions that are supported in (your) third-party
+  /// application can be rendered as buttons and should be available to merchant
+  /// when they expand the issue.
+  core.List<Action>? actions;
+
+  /// Clarifies the severity of the issue.
+  ///
+  /// The summarizing message, if present, should be shown right under the title
+  /// for each issue. It helps merchants to quickly understand the impact of the
+  /// issue. The detailed breakdown helps the merchant to fully understand the
+  /// impact of the issue. It can be rendered as dialog that opens when the
+  /// merchant mouse over the summarized impact statement. Issues with different
+  /// severity can be styled differently. They may use a different color or icon
+  /// to signal the difference between `ERROR`, `WARNING` and `INFO`.
+  ProductIssueImpact? impact;
+
+  /// Details of the issue as a pre-rendered HTML.
+  ///
+  /// HTML elements contain CSS classes that can be used to customize the style
+  /// of the content. Always sanitize the HTML before embedding it directly to
+  /// your application. The sanitizer needs to allow basic HTML tags, such as:
+  /// `div`, `span`, `p`, `a`, `ul`, `li`, `table`, `tr`, `td`. For example, you
+  /// can use [DOMPurify](https://www.npmjs.com/package/dompurify). CSS classes:
+  /// * `issue-detail` - top level container for the detail of the issue *
+  /// `callout-banners` - section of the `issue-detail` with callout banners *
+  /// `callout-banner` - single callout banner, inside `callout-banners` *
+  /// `callout-banner-info` - callout with important information (default) *
+  /// `callout-banner-warning` - callout with a warning * `callout-banner-error`
+  /// - callout informing about an error (most severe) * `issue-content` -
+  /// section of the `issue-detail`, contains multiple `content-element` *
+  /// `content-element` - content element such as a list, link or paragraph,
+  /// inside `issue-content` * `root-causes` - unordered list with items
+  /// describing root causes of the issue, inside `issue-content` *
+  /// `root-causes-intro` - intro text before the `root-causes` list, inside
+  /// `issue-content` * `segment` - section of the text, `span` inside paragraph
+  /// * `segment-attribute` - section of the text that represents a product
+  /// attribute, for example 'image\_link' * `segment-literal` - section of the
+  /// text that contains a special value, for example '0-1000 kg' *
+  /// `segment-bold` - section of the text that should be rendered as bold *
+  /// `segment-italic` - section of the text that should be rendered as italic *
+  /// `tooltip` - used on paragraphs that should be rendered with a tooltip. A
+  /// section of the text in such a paragraph will have a class `tooltip-text`
+  /// and is intended to be shown in a mouse over dialog. If the style is not
+  /// used, the `tooltip-text` section would be shown on a new line, after the
+  /// main part of the text. * `tooltip-text` - marks a section of the text
+  /// within a `tooltip`, that is intended to be shown in a mouse over dialog. *
+  /// `tooltip-icon` - marks a section of the text within a `tooltip`, that can
+  /// be replaced with a tooltip icon, for example '?' or 'i'. By default, this
+  /// section contains a `br` tag, that is separating the main text and the
+  /// tooltip text when the style is not used. * `tooltip-style-question` - the
+  /// tooltip shows helpful information, can use the '?' as an icon. *
+  /// `tooltip-style-info` - the tooltip adds additional information fitting to
+  /// the context, can use the 'i' as an icon. * `content-moderation` - marks
+  /// the paragraph that explains how the issue was identified. * `new-element`
+  /// - Present for new elements added to the pre-rendered content in the
+  /// future. To make sure that a new content element does not break your style,
+  /// you can hide everything with this class.
+  core.String? prerenderedContent;
+
+  /// Title of the issue.
+  core.String? title;
+
+  ProductIssue({
+    this.actions,
+    this.impact,
+    this.prerenderedContent,
+    this.title,
+  });
+
+  ProductIssue.fromJson(core.Map json_)
+      : this(
+          actions: json_.containsKey('actions')
+              ? (json_['actions'] as core.List)
+                  .map((value) => Action.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          impact: json_.containsKey('impact')
+              ? ProductIssueImpact.fromJson(
+                  json_['impact'] as core.Map<core.String, core.dynamic>)
+              : null,
+          prerenderedContent: json_.containsKey('prerenderedContent')
+              ? json_['prerenderedContent'] as core.String
+              : null,
+          title:
+              json_.containsKey('title') ? json_['title'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (actions != null) 'actions': actions!,
+        if (impact != null) 'impact': impact!,
+        if (prerenderedContent != null)
+          'prerenderedContent': prerenderedContent!,
+        if (title != null) 'title': title!,
+      };
+}
+
+/// Overall impact of product issue.
+class ProductIssueImpact {
+  /// Detailed impact breakdown.
+  ///
+  /// Explains the types of restriction the issue has in different shopping
+  /// destinations and territory. If present, it should be rendered to the
+  /// merchant. Can be shown as a mouse over dropdown or a dialog. Each
+  /// breakdown item represents a group of regions with the same impact details.
+  core.List<Breakdown>? breakdowns;
+
+  /// Message summarizing the overall impact of the issue.
+  ///
+  /// If present, it should be rendered to the merchant. For example: "Limits
+  /// visibility in France"
+  ///
+  /// Optional.
+  core.String? message;
+
+  /// The severity of the issue.
+  /// Possible string values are:
+  /// - "SEVERITY_UNSPECIFIED" : Default value. Will never be provided by the
+  /// API.
+  /// - "ERROR" : Causes either an account suspension or an item disapproval.
+  /// Errors should be resolved as soon as possible to ensure items are eligible
+  /// to appear in results again.
+  /// - "WARNING" : Warnings can negatively impact the performance of ads and
+  /// can lead to item or account suspensions in the future unless the issue is
+  /// resolved.
+  /// - "INFO" : Infos are suggested optimizations to increase data quality.
+  /// Resolving these issues is recommended, but not required.
+  core.String? severity;
+
+  ProductIssueImpact({
+    this.breakdowns,
+    this.message,
+    this.severity,
+  });
+
+  ProductIssueImpact.fromJson(core.Map json_)
+      : this(
+          breakdowns: json_.containsKey('breakdowns')
+              ? (json_['breakdowns'] as core.List)
+                  .map((value) => Breakdown.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          message: json_.containsKey('message')
+              ? json_['message'] as core.String
+              : null,
+          severity: json_.containsKey('severity')
+              ? json_['severity'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (breakdowns != null) 'breakdowns': breakdowns!,
+        if (message != null) 'message': message!,
+        if (severity != null) 'severity': severity!,
       };
 }
 
@@ -26830,7 +27474,7 @@ class Promotion {
   /// channel:contentLanguage:targetCountry:promotionId The `channel` field has
   /// a value of `"online"`, `"in_store"`, or `"online_in_store"`.
   ///
-  /// Required. Output only.
+  /// Output only.
   core.String? id;
 
   /// Product filter by item group ID for the promotion.
@@ -28281,6 +28925,104 @@ class RegionalinventoryCustomBatchResponseEntry {
       };
 }
 
+/// The payload for configuring how the content should be rendered.
+typedef RenderAccountIssuesRequestPayload = $IssuesRequestPayload;
+
+/// Response containing support content and actions for listed account issues.
+class RenderAccountIssuesResponse {
+  /// The Alternate Dispute Resolution (ADR) contains a link to a page where
+  /// merchant can bring their appeal to an
+  /// [external body](https://support.google.com/european-union-digital-services-act-redress-options/answer/13535501).
+  ///
+  /// If the ADR is present, it MUST be available to the merchant on the page
+  /// that shows the list with their account issues.
+  AlternateDisputeResolution? alternateDisputeResolution;
+
+  /// List of account issues for a given account.
+  ///
+  /// This list can be shown with compressed, expandable items. In the
+  /// compressed form, the title and impact should be shown for each issue. Once
+  /// the issue is expanded, the detailed content and available actions should
+  /// be rendered.
+  core.List<AccountIssue>? issues;
+
+  RenderAccountIssuesResponse({
+    this.alternateDisputeResolution,
+    this.issues,
+  });
+
+  RenderAccountIssuesResponse.fromJson(core.Map json_)
+      : this(
+          alternateDisputeResolution:
+              json_.containsKey('alternateDisputeResolution')
+                  ? AlternateDisputeResolution.fromJson(
+                      json_['alternateDisputeResolution']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          issues: json_.containsKey('issues')
+              ? (json_['issues'] as core.List)
+                  .map((value) => AccountIssue.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (alternateDisputeResolution != null)
+          'alternateDisputeResolution': alternateDisputeResolution!,
+        if (issues != null) 'issues': issues!,
+      };
+}
+
+/// The payload for configuring how the content should be rendered.
+typedef RenderProductIssuesRequestPayload = $IssuesRequestPayload;
+
+/// Response containing support content and actions for listed product issues.
+class RenderProductIssuesResponse {
+  /// The Alternate Dispute Resolution (ADR) contains a link to a page where
+  /// merchant can bring their appeal to an
+  /// [external body](https://support.google.com/european-union-digital-services-act-redress-options/answer/13535501).
+  ///
+  /// If present, the link should be shown on the same page as the list of
+  /// issues.
+  AlternateDisputeResolution? alternateDisputeResolution;
+
+  /// List of issues for a given product.
+  ///
+  /// This list can be shown with compressed, expandable items. In the
+  /// compressed form, the title and impact should be shown for each issue. Once
+  /// the issue is expanded, the detailed content and available actions should
+  /// be rendered.
+  core.List<ProductIssue>? issues;
+
+  RenderProductIssuesResponse({
+    this.alternateDisputeResolution,
+    this.issues,
+  });
+
+  RenderProductIssuesResponse.fromJson(core.Map json_)
+      : this(
+          alternateDisputeResolution:
+              json_.containsKey('alternateDisputeResolution')
+                  ? AlternateDisputeResolution.fromJson(
+                      json_['alternateDisputeResolution']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          issues: json_.containsKey('issues')
+              ? (json_['issues'] as core.List)
+                  .map((value) => ProductIssue.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (alternateDisputeResolution != null)
+          'alternateDisputeResolution': alternateDisputeResolution!,
+        if (issues != null) 'issues': issues!,
+      };
+}
+
 /// Request to report interactions on a recommendation.
 class ReportInteractionRequest {
   /// Type of the interaction that is reported, for example INTERACTION_CLICK.
@@ -28360,8 +29102,9 @@ class ReportRow {
   /// Competitive visibility fields requested by the merchant in the query.
   ///
   /// Field values are only set if the merchant queries
-  /// `CompetitiveVisibilityTopMerchantView` or
-  /// `CompetitiveVisibilityBenchmarkView`.
+  /// `CompetitiveVisibilityTopMerchantView`,
+  /// `CompetitiveVisibilityBenchmarkView` or
+  /// `CompetitiveVisibilityCompetitorView`.
   CompetitiveVisibility? competitiveVisibility;
 
   /// Metrics requested by the merchant in the query.
@@ -28465,810 +29208,6 @@ class ReportRow {
       };
 }
 
-/// Resource that represents a daily Repricing product report.
-///
-/// Each report contains stats for a single type of Repricing rule for a single
-/// product on a given day. If there are multiple rules of the same type for the
-/// product on that day, the report lists all the rules by rule ids, combines
-/// the stats, and paginates the results by date. To retrieve the stats of a
-/// particular rule, provide the rule_id in the request.
-class RepricingProductReport {
-  /// Total count of Repricer applications.
-  ///
-  /// This value captures how many times the rule of this type was applied to
-  /// this product during this reporting period.
-  core.String? applicationCount;
-
-  /// Stats specific to buybox winning rules for product report (deprecated).
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  RepricingProductReportBuyboxWinningProductStats? buyboxWinningProductStats;
-
-  /// Date of the stats in this report.
-  ///
-  /// The report starts and ends according to the merchant's timezone.
-  Date? date;
-
-  /// Maximum displayed price after repriced during this reporting period.
-  PriceAmount? highWatermark;
-
-  /// List of all reasons the rule did not apply to the product during the
-  /// specified reporting period.
-  core.List<InapplicabilityDetails>? inapplicabilityDetails;
-
-  /// Minimum displayed price after repriced during this reporting period.
-  PriceAmount? lowWatermark;
-
-  /// Total unit count of impacted products ordered while the rule was active on
-  /// the date of the report.
-  ///
-  /// This count includes all orders that were started while the rule was
-  /// active, even if the rule was no longer active when the order was
-  /// completed.
-  core.int? orderItemCount;
-
-  /// Ids of the Repricing rule for this report.
-  core.List<core.String>? ruleIds;
-
-  /// Total GMV generated by impacted products while the rule was active on the
-  /// date of the report.
-  ///
-  /// This value includes all orders that were started while the rule was
-  /// active, even if the rule was no longer active when the order was
-  /// completed.
-  PriceAmount? totalGmv;
-
-  /// Type of the rule.
-  /// Possible string values are:
-  /// - "REPRICING_RULE_TYPE_UNSPECIFIED" : Unused.
-  /// - "TYPE_STATS_BASED" : Statistical measurement based rules among Google SA
-  /// merchants. If this rule is chosen, repricer will adjust the offer price
-  /// based on statistical metrics (currently only min is available) among other
-  /// merchants who sell the same product. Details need to be provdided in the
-  /// RuleDefinition.
-  /// - "TYPE_COGS_BASED" : Cost of goods sale based rule. Repricer will adjust
-  /// the offer price based on the offer's sale cost which is provided by the
-  /// merchant.
-  /// - "TYPE_SALES_VOLUME_BASED" : Sales volume based rule. Repricer will
-  /// adjust the offer price based on the offer's sales volume in the past
-  /// period of time defined within the rule.
-  /// - "TYPE_COMPETITIVE_PRICE" : Competitive price rule. Repricer will adjust
-  /// the offer price based on the min price from a list of unnamed big
-  /// competitors.
-  core.String? type;
-
-  RepricingProductReport({
-    this.applicationCount,
-    this.buyboxWinningProductStats,
-    this.date,
-    this.highWatermark,
-    this.inapplicabilityDetails,
-    this.lowWatermark,
-    this.orderItemCount,
-    this.ruleIds,
-    this.totalGmv,
-    this.type,
-  });
-
-  RepricingProductReport.fromJson(core.Map json_)
-      : this(
-          applicationCount: json_.containsKey('applicationCount')
-              ? json_['applicationCount'] as core.String
-              : null,
-          buyboxWinningProductStats:
-              json_.containsKey('buyboxWinningProductStats')
-                  ? RepricingProductReportBuyboxWinningProductStats.fromJson(
-                      json_['buyboxWinningProductStats']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          date: json_.containsKey('date')
-              ? Date.fromJson(
-                  json_['date'] as core.Map<core.String, core.dynamic>)
-              : null,
-          highWatermark: json_.containsKey('highWatermark')
-              ? PriceAmount.fromJson(
-                  json_['highWatermark'] as core.Map<core.String, core.dynamic>)
-              : null,
-          inapplicabilityDetails: json_.containsKey('inapplicabilityDetails')
-              ? (json_['inapplicabilityDetails'] as core.List)
-                  .map((value) => InapplicabilityDetails.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          lowWatermark: json_.containsKey('lowWatermark')
-              ? PriceAmount.fromJson(
-                  json_['lowWatermark'] as core.Map<core.String, core.dynamic>)
-              : null,
-          orderItemCount: json_.containsKey('orderItemCount')
-              ? json_['orderItemCount'] as core.int
-              : null,
-          ruleIds: json_.containsKey('ruleIds')
-              ? (json_['ruleIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          totalGmv: json_.containsKey('totalGmv')
-              ? PriceAmount.fromJson(
-                  json_['totalGmv'] as core.Map<core.String, core.dynamic>)
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (applicationCount != null) 'applicationCount': applicationCount!,
-        if (buyboxWinningProductStats != null)
-          'buyboxWinningProductStats': buyboxWinningProductStats!,
-        if (date != null) 'date': date!,
-        if (highWatermark != null) 'highWatermark': highWatermark!,
-        if (inapplicabilityDetails != null)
-          'inapplicabilityDetails': inapplicabilityDetails!,
-        if (lowWatermark != null) 'lowWatermark': lowWatermark!,
-        if (orderItemCount != null) 'orderItemCount': orderItemCount!,
-        if (ruleIds != null) 'ruleIds': ruleIds!,
-        if (totalGmv != null) 'totalGmv': totalGmv!,
-        if (type != null) 'type': type!,
-      };
-}
-
-/// Stats specific to buybox winning rules for product report.
-class RepricingProductReportBuyboxWinningProductStats {
-  /// Number of times this product won the buybox with these rules during this
-  /// time period.
-  core.int? buyboxWinsCount;
-
-  RepricingProductReportBuyboxWinningProductStats({
-    this.buyboxWinsCount,
-  });
-
-  RepricingProductReportBuyboxWinningProductStats.fromJson(core.Map json_)
-      : this(
-          buyboxWinsCount: json_.containsKey('buyboxWinsCount')
-              ? json_['buyboxWinsCount'] as core.int
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (buyboxWinsCount != null) 'buyboxWinsCount': buyboxWinsCount!,
-      };
-}
-
-/// Represents a repricing rule.
-///
-/// A repricing rule is used by shopping serving to adjust transactable offer
-/// prices if conditions are met.
-class RepricingRule {
-  /// The rule definition for TYPE_COGS_BASED.
-  ///
-  /// Required when the rule type is TYPE_COGS_BASED.
-  RepricingRuleCostOfGoodsSaleRule? cogsBasedRule;
-
-  /// [CLDR country code](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml)
-  /// (e.g. "US").
-  ///
-  /// Required. Immutable.
-  core.String? countryCode;
-
-  /// Time period when the rule should take effect.
-  ///
-  /// Required.
-  RepricingRuleEffectiveTime? effectiveTimePeriod;
-
-  /// Match criteria for the eligible offers.
-  ///
-  /// Required.
-  RepricingRuleEligibleOfferMatcher? eligibleOfferMatcher;
-
-  /// The two-letter ISO 639-1 language code associated with the repricing rule.
-  ///
-  /// Required. Immutable.
-  core.String? languageCode;
-
-  /// Merchant that owns the repricing rule.
-  ///
-  /// Output only. Immutable.
-  core.String? merchantId;
-
-  /// Represents whether a rule is paused.
-  ///
-  /// A paused rule will behave like a non-paused rule within CRUD operations,
-  /// with the major difference that a paused rule will not be evaluated and
-  /// will have no effect on offers.
-  core.bool? paused;
-
-  /// Restriction of the rule appliance.
-  ///
-  /// Required.
-  RepricingRuleRestriction? restriction;
-
-  /// The ID to uniquely identify each repricing rule.
-  ///
-  /// Output only. Immutable.
-  core.String? ruleId;
-
-  /// The rule definition for TYPE_STATS_BASED.
-  ///
-  /// Required when the rule type is TYPE_STATS_BASED.
-  RepricingRuleStatsBasedRule? statsBasedRule;
-
-  /// The title for the rule.
-  core.String? title;
-
-  /// The type of the rule.
-  ///
-  /// Required. Immutable.
-  /// Possible string values are:
-  /// - "REPRICING_RULE_TYPE_UNSPECIFIED" : Unused.
-  /// - "TYPE_STATS_BASED" : Statistical measurement based rules among Google SA
-  /// merchants. If this rule is chosen, repricer will adjust the offer price
-  /// based on statistical metrics (currently only min is available) among other
-  /// merchants who sell the same product. Details need to be provdided in the
-  /// RuleDefinition.
-  /// - "TYPE_COGS_BASED" : Cost of goods sale based rule. Repricer will adjust
-  /// the offer price based on the offer's sale cost which is provided by the
-  /// merchant.
-  /// - "TYPE_SALES_VOLUME_BASED" : Sales volume based rule. Repricer will
-  /// adjust the offer price based on the offer's sales volume in the past
-  /// period of time defined within the rule.
-  /// - "TYPE_COMPETITIVE_PRICE" : Competitive price rule. Repricer will adjust
-  /// the offer price based on the min price from a list of unnamed big
-  /// competitors.
-  core.String? type;
-
-  RepricingRule({
-    this.cogsBasedRule,
-    this.countryCode,
-    this.effectiveTimePeriod,
-    this.eligibleOfferMatcher,
-    this.languageCode,
-    this.merchantId,
-    this.paused,
-    this.restriction,
-    this.ruleId,
-    this.statsBasedRule,
-    this.title,
-    this.type,
-  });
-
-  RepricingRule.fromJson(core.Map json_)
-      : this(
-          cogsBasedRule: json_.containsKey('cogsBasedRule')
-              ? RepricingRuleCostOfGoodsSaleRule.fromJson(
-                  json_['cogsBasedRule'] as core.Map<core.String, core.dynamic>)
-              : null,
-          countryCode: json_.containsKey('countryCode')
-              ? json_['countryCode'] as core.String
-              : null,
-          effectiveTimePeriod: json_.containsKey('effectiveTimePeriod')
-              ? RepricingRuleEffectiveTime.fromJson(json_['effectiveTimePeriod']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          eligibleOfferMatcher: json_.containsKey('eligibleOfferMatcher')
-              ? RepricingRuleEligibleOfferMatcher.fromJson(
-                  json_['eligibleOfferMatcher']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          languageCode: json_.containsKey('languageCode')
-              ? json_['languageCode'] as core.String
-              : null,
-          merchantId: json_.containsKey('merchantId')
-              ? json_['merchantId'] as core.String
-              : null,
-          paused:
-              json_.containsKey('paused') ? json_['paused'] as core.bool : null,
-          restriction: json_.containsKey('restriction')
-              ? RepricingRuleRestriction.fromJson(
-                  json_['restriction'] as core.Map<core.String, core.dynamic>)
-              : null,
-          ruleId: json_.containsKey('ruleId')
-              ? json_['ruleId'] as core.String
-              : null,
-          statsBasedRule: json_.containsKey('statsBasedRule')
-              ? RepricingRuleStatsBasedRule.fromJson(json_['statsBasedRule']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          title:
-              json_.containsKey('title') ? json_['title'] as core.String : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (cogsBasedRule != null) 'cogsBasedRule': cogsBasedRule!,
-        if (countryCode != null) 'countryCode': countryCode!,
-        if (effectiveTimePeriod != null)
-          'effectiveTimePeriod': effectiveTimePeriod!,
-        if (eligibleOfferMatcher != null)
-          'eligibleOfferMatcher': eligibleOfferMatcher!,
-        if (languageCode != null) 'languageCode': languageCode!,
-        if (merchantId != null) 'merchantId': merchantId!,
-        if (paused != null) 'paused': paused!,
-        if (restriction != null) 'restriction': restriction!,
-        if (ruleId != null) 'ruleId': ruleId!,
-        if (statsBasedRule != null) 'statsBasedRule': statsBasedRule!,
-        if (title != null) 'title': title!,
-        if (type != null) 'type': type!,
-      };
-}
-
-/// A repricing rule that changes the sale price based on cost of goods sale.
-class RepricingRuleCostOfGoodsSaleRule {
-  /// The percent change against the COGS.
-  ///
-  /// Ex: 20 would mean to set the adjusted price 1.2X of the COGS data.
-  core.int? percentageDelta;
-
-  /// The price delta against the COGS.
-  ///
-  /// E.g. 2 means $2 more of the COGS.
-  core.String? priceDelta;
-
-  RepricingRuleCostOfGoodsSaleRule({
-    this.percentageDelta,
-    this.priceDelta,
-  });
-
-  RepricingRuleCostOfGoodsSaleRule.fromJson(core.Map json_)
-      : this(
-          percentageDelta: json_.containsKey('percentageDelta')
-              ? json_['percentageDelta'] as core.int
-              : null,
-          priceDelta: json_.containsKey('priceDelta')
-              ? json_['priceDelta'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (percentageDelta != null) 'percentageDelta': percentageDelta!,
-        if (priceDelta != null) 'priceDelta': priceDelta!,
-      };
-}
-
-class RepricingRuleEffectiveTime {
-  /// A list of fixed time periods combined with OR.
-  ///
-  /// The maximum number of entries is limited to 5.
-  core.List<RepricingRuleEffectiveTimeFixedTimePeriod>? fixedTimePeriods;
-
-  RepricingRuleEffectiveTime({
-    this.fixedTimePeriods,
-  });
-
-  RepricingRuleEffectiveTime.fromJson(core.Map json_)
-      : this(
-          fixedTimePeriods: json_.containsKey('fixedTimePeriods')
-              ? (json_['fixedTimePeriods'] as core.List)
-                  .map((value) =>
-                      RepricingRuleEffectiveTimeFixedTimePeriod.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (fixedTimePeriods != null) 'fixedTimePeriods': fixedTimePeriods!,
-      };
-}
-
-/// Definition of a fixed time period.
-class RepricingRuleEffectiveTimeFixedTimePeriod {
-  /// The end time (exclusive) of the period.
-  ///
-  /// It can only be hour granularity.
-  core.String? endTime;
-
-  /// The start time (inclusive) of the period.
-  ///
-  /// It can only be hour granularity.
-  core.String? startTime;
-
-  RepricingRuleEffectiveTimeFixedTimePeriod({
-    this.endTime,
-    this.startTime,
-  });
-
-  RepricingRuleEffectiveTimeFixedTimePeriod.fromJson(core.Map json_)
-      : this(
-          endTime: json_.containsKey('endTime')
-              ? json_['endTime'] as core.String
-              : null,
-          startTime: json_.containsKey('startTime')
-              ? json_['startTime'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (endTime != null) 'endTime': endTime!,
-        if (startTime != null) 'startTime': startTime!,
-      };
-}
-
-/// Matcher that specifies eligible offers.
-///
-/// When the USE_FEED_ATTRIBUTE option is selected, only the repricing_rule_id
-/// attribute on the product feed is used to specify offer-rule mapping. When
-/// the CUSTOM_FILTER option is selected, only the *_matcher fields are used to
-/// filter the offers for offer-rule mapping. If the CUSTOM_FILTER option is
-/// selected, an offer needs to satisfy each custom filter matcher to be
-/// eligible for a rule. Size limit: the sum of the number of entries in all the
-/// matchers should not exceed 20. For example, there can be 15 product ids and
-/// 5 brands, but not 10 product ids and 11 brands.
-class RepricingRuleEligibleOfferMatcher {
-  /// Filter by the brand.
-  RepricingRuleEligibleOfferMatcherStringMatcher? brandMatcher;
-
-  /// Filter by the item group id.
-  RepricingRuleEligibleOfferMatcherStringMatcher? itemGroupIdMatcher;
-
-  /// Determines whether to use the custom matchers or the product feed
-  /// attribute "repricing_rule_id" to specify offer-rule mapping.
-  /// Possible string values are:
-  /// - "MATCHER_OPTION_UNSPECIFIED" : Unused.
-  /// - "MATCHER_OPTION_CUSTOM_FILTER" : Use custom filters.
-  /// - "MATCHER_OPTION_USE_FEED_ATTRIBUTE" : Use repricing_rule_id feed
-  /// attribute on the product resource to specify offer-rule mapping.
-  /// - "MATCHER_OPTION_ALL_PRODUCTS" : Matching all products.
-  core.String? matcherOption;
-
-  /// Filter by the offer id.
-  RepricingRuleEligibleOfferMatcherStringMatcher? offerIdMatcher;
-
-  /// When true, the rule won't be applied to offers with active promotions.
-  core.bool? skipWhenOnPromotion;
-
-  RepricingRuleEligibleOfferMatcher({
-    this.brandMatcher,
-    this.itemGroupIdMatcher,
-    this.matcherOption,
-    this.offerIdMatcher,
-    this.skipWhenOnPromotion,
-  });
-
-  RepricingRuleEligibleOfferMatcher.fromJson(core.Map json_)
-      : this(
-          brandMatcher: json_.containsKey('brandMatcher')
-              ? RepricingRuleEligibleOfferMatcherStringMatcher.fromJson(
-                  json_['brandMatcher'] as core.Map<core.String, core.dynamic>)
-              : null,
-          itemGroupIdMatcher: json_.containsKey('itemGroupIdMatcher')
-              ? RepricingRuleEligibleOfferMatcherStringMatcher.fromJson(
-                  json_['itemGroupIdMatcher']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          matcherOption: json_.containsKey('matcherOption')
-              ? json_['matcherOption'] as core.String
-              : null,
-          offerIdMatcher: json_.containsKey('offerIdMatcher')
-              ? RepricingRuleEligibleOfferMatcherStringMatcher.fromJson(
-                  json_['offerIdMatcher']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          skipWhenOnPromotion: json_.containsKey('skipWhenOnPromotion')
-              ? json_['skipWhenOnPromotion'] as core.bool
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (brandMatcher != null) 'brandMatcher': brandMatcher!,
-        if (itemGroupIdMatcher != null)
-          'itemGroupIdMatcher': itemGroupIdMatcher!,
-        if (matcherOption != null) 'matcherOption': matcherOption!,
-        if (offerIdMatcher != null) 'offerIdMatcher': offerIdMatcher!,
-        if (skipWhenOnPromotion != null)
-          'skipWhenOnPromotion': skipWhenOnPromotion!,
-      };
-}
-
-/// Matcher by string attributes.
-class RepricingRuleEligibleOfferMatcherStringMatcher {
-  /// String attributes, as long as such attribute of an offer is one of the
-  /// string attribute values, the offer is considered as passing the matcher.
-  ///
-  /// The string matcher checks an offer for inclusivity in the string
-  /// attributes, not equality. Only literal string matching is supported, no
-  /// regex.
-  core.List<core.String>? strAttributes;
-
-  RepricingRuleEligibleOfferMatcherStringMatcher({
-    this.strAttributes,
-  });
-
-  RepricingRuleEligibleOfferMatcherStringMatcher.fromJson(core.Map json_)
-      : this(
-          strAttributes: json_.containsKey('strAttributes')
-              ? (json_['strAttributes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (strAttributes != null) 'strAttributes': strAttributes!,
-      };
-}
-
-/// Resource that represents a daily Repricing rule report.
-///
-/// Next ID: 11
-class RepricingRuleReport {
-  /// Stats specific to buybox winning rules for rule report (deprecated).
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  RepricingRuleReportBuyboxWinningRuleStats? buyboxWinningRuleStats;
-
-  /// Date of the stats in this report.
-  ///
-  /// The report starts and ends according to the merchant's timezone.
-  Date? date;
-
-  /// List of product ids that are impacted by this rule during this reporting
-  /// period.
-  ///
-  /// Out of stock products and products not searched for by customers are
-  /// examples of non-impacted products.
-  core.List<core.String>? impactedProducts;
-
-  /// List of all reasons the rule did not apply to the inapplicable products
-  /// during the specified reporting period.
-  core.List<InapplicabilityDetails>? inapplicabilityDetails;
-
-  /// List of product ids that are inapplicable to this rule during this
-  /// reporting period.
-  ///
-  /// To get the inapplicable reason for a specific product, see
-  /// RepricingProductReport.
-  core.List<core.String>? inapplicableProducts;
-
-  /// Total unit count of impacted products ordered while the rule was active on
-  /// the date of the report.
-  ///
-  /// This count includes all orders that were started while the rule was
-  /// active, even if the rule was no longer active when the order was
-  /// completed.
-  core.int? orderItemCount;
-
-  /// Id of the Repricing rule for this report.
-  core.String? ruleId;
-
-  /// Total GMV generated by impacted products while the rule was active on the
-  /// date of the report.
-  ///
-  /// This value includes all orders that were started while the rule was
-  /// active, even if the rule was no longer active when the order was
-  /// completed.
-  PriceAmount? totalGmv;
-
-  /// Type of the rule.
-  /// Possible string values are:
-  /// - "REPRICING_RULE_TYPE_UNSPECIFIED" : Unused.
-  /// - "TYPE_STATS_BASED" : Statistical measurement based rules among Google SA
-  /// merchants. If this rule is chosen, repricer will adjust the offer price
-  /// based on statistical metrics (currently only min is available) among other
-  /// merchants who sell the same product. Details need to be provdided in the
-  /// RuleDefinition.
-  /// - "TYPE_COGS_BASED" : Cost of goods sale based rule. Repricer will adjust
-  /// the offer price based on the offer's sale cost which is provided by the
-  /// merchant.
-  /// - "TYPE_SALES_VOLUME_BASED" : Sales volume based rule. Repricer will
-  /// adjust the offer price based on the offer's sales volume in the past
-  /// period of time defined within the rule.
-  /// - "TYPE_COMPETITIVE_PRICE" : Competitive price rule. Repricer will adjust
-  /// the offer price based on the min price from a list of unnamed big
-  /// competitors.
-  core.String? type;
-
-  RepricingRuleReport({
-    this.buyboxWinningRuleStats,
-    this.date,
-    this.impactedProducts,
-    this.inapplicabilityDetails,
-    this.inapplicableProducts,
-    this.orderItemCount,
-    this.ruleId,
-    this.totalGmv,
-    this.type,
-  });
-
-  RepricingRuleReport.fromJson(core.Map json_)
-      : this(
-          buyboxWinningRuleStats: json_.containsKey('buyboxWinningRuleStats')
-              ? RepricingRuleReportBuyboxWinningRuleStats.fromJson(
-                  json_['buyboxWinningRuleStats']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          date: json_.containsKey('date')
-              ? Date.fromJson(
-                  json_['date'] as core.Map<core.String, core.dynamic>)
-              : null,
-          impactedProducts: json_.containsKey('impactedProducts')
-              ? (json_['impactedProducts'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          inapplicabilityDetails: json_.containsKey('inapplicabilityDetails')
-              ? (json_['inapplicabilityDetails'] as core.List)
-                  .map((value) => InapplicabilityDetails.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          inapplicableProducts: json_.containsKey('inapplicableProducts')
-              ? (json_['inapplicableProducts'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          orderItemCount: json_.containsKey('orderItemCount')
-              ? json_['orderItemCount'] as core.int
-              : null,
-          ruleId: json_.containsKey('ruleId')
-              ? json_['ruleId'] as core.String
-              : null,
-          totalGmv: json_.containsKey('totalGmv')
-              ? PriceAmount.fromJson(
-                  json_['totalGmv'] as core.Map<core.String, core.dynamic>)
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (buyboxWinningRuleStats != null)
-          'buyboxWinningRuleStats': buyboxWinningRuleStats!,
-        if (date != null) 'date': date!,
-        if (impactedProducts != null) 'impactedProducts': impactedProducts!,
-        if (inapplicabilityDetails != null)
-          'inapplicabilityDetails': inapplicabilityDetails!,
-        if (inapplicableProducts != null)
-          'inapplicableProducts': inapplicableProducts!,
-        if (orderItemCount != null) 'orderItemCount': orderItemCount!,
-        if (ruleId != null) 'ruleId': ruleId!,
-        if (totalGmv != null) 'totalGmv': totalGmv!,
-        if (type != null) 'type': type!,
-      };
-}
-
-/// Stats specific to buybox winning rules for rule report.
-class RepricingRuleReportBuyboxWinningRuleStats {
-  /// Number of unique products that won the buybox with this rule during this
-  /// period of time.
-  core.int? buyboxWonProductCount;
-
-  RepricingRuleReportBuyboxWinningRuleStats({
-    this.buyboxWonProductCount,
-  });
-
-  RepricingRuleReportBuyboxWinningRuleStats.fromJson(core.Map json_)
-      : this(
-          buyboxWonProductCount: json_.containsKey('buyboxWonProductCount')
-              ? json_['buyboxWonProductCount'] as core.int
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (buyboxWonProductCount != null)
-          'buyboxWonProductCount': buyboxWonProductCount!,
-      };
-}
-
-/// Definition of a rule restriction.
-///
-/// At least one of the following needs to be true: (1)
-/// use_auto_pricing_min_price is true (2) floor.price_delta exists (3)
-/// floor.percentage_delta exists If floor.price_delta and
-/// floor.percentage_delta are both set on a rule, the highest value will be
-/// chosen by the Repricer. In other words, for a product with a price of $50,
-/// if the `floor.percentage_delta` is "-10" and the floor.price_delta is "-12",
-/// the offer price will only be lowered $5 (10% lower than the original offer
-/// price).
-class RepricingRuleRestriction {
-  /// The inclusive floor lower bound.
-  ///
-  /// The repricing rule only applies when new price \>= floor.
-  RepricingRuleRestrictionBoundary? floor;
-
-  /// If true, use the AUTO_PRICING_MIN_PRICE offer attribute as the lower bound
-  /// of the rule.
-  ///
-  /// If use_auto_pricing_min_price is true, then only offers with
-  /// `AUTO_PRICING_MIN_PRICE` existing on the offer will get Repricer
-  /// treatment, even if a floor value is set on the rule. Also, if
-  /// use_auto_pricing_min_price is true, the floor restriction will be ignored.
-  core.bool? useAutoPricingMinPrice;
-
-  RepricingRuleRestriction({
-    this.floor,
-    this.useAutoPricingMinPrice,
-  });
-
-  RepricingRuleRestriction.fromJson(core.Map json_)
-      : this(
-          floor: json_.containsKey('floor')
-              ? RepricingRuleRestrictionBoundary.fromJson(
-                  json_['floor'] as core.Map<core.String, core.dynamic>)
-              : null,
-          useAutoPricingMinPrice: json_.containsKey('useAutoPricingMinPrice')
-              ? json_['useAutoPricingMinPrice'] as core.bool
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (floor != null) 'floor': floor!,
-        if (useAutoPricingMinPrice != null)
-          'useAutoPricingMinPrice': useAutoPricingMinPrice!,
-      };
-}
-
-/// Definition of a boundary.
-class RepricingRuleRestrictionBoundary {
-  /// The percentage delta relative to the offer selling price.
-  ///
-  /// This field is signed. It must be negative in floor. When it is used in
-  /// floor, it should be \> -100. For example, if an offer is selling at $10
-  /// and this field is -30 in floor, the repricing rule only applies if the
-  /// calculated new price is \>= $7.
-  core.int? percentageDelta;
-
-  /// The price micros relative to the offer selling price.
-  ///
-  /// This field is signed. It must be negative in floor. For example, if an
-  /// offer is selling at $10 and this field is -$2 in floor, the repricing rule
-  /// only applies if the calculated new price is \>= $8.
-  core.String? priceDelta;
-
-  RepricingRuleRestrictionBoundary({
-    this.percentageDelta,
-    this.priceDelta,
-  });
-
-  RepricingRuleRestrictionBoundary.fromJson(core.Map json_)
-      : this(
-          percentageDelta: json_.containsKey('percentageDelta')
-              ? json_['percentageDelta'] as core.int
-              : null,
-          priceDelta: json_.containsKey('priceDelta')
-              ? json_['priceDelta'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (percentageDelta != null) 'percentageDelta': percentageDelta!,
-        if (priceDelta != null) 'priceDelta': priceDelta!,
-      };
-}
-
-/// Definition of stats based rule.
-class RepricingRuleStatsBasedRule {
-  /// The percent change against the price target.
-  ///
-  /// Valid from 0 to 100 inclusively.
-  core.int? percentageDelta;
-
-  /// The price delta against the above price target.
-  ///
-  /// A positive value means the price should be adjusted to be above
-  /// statistical measure, and a negative value means below. Currency code must
-  /// not be included.
-  core.String? priceDelta;
-
-  RepricingRuleStatsBasedRule({
-    this.percentageDelta,
-    this.priceDelta,
-  });
-
-  RepricingRuleStatsBasedRule.fromJson(core.Map json_)
-      : this(
-          percentageDelta: json_.containsKey('percentageDelta')
-              ? json_['percentageDelta'] as core.int
-              : null,
-          priceDelta: json_.containsKey('priceDelta')
-              ? json_['priceDelta'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (percentageDelta != null) 'percentageDelta': percentageDelta!,
-        if (priceDelta != null) 'priceDelta': priceDelta!,
-      };
-}
-
 /// Request message for the RequestPhoneVerification method.
 class RequestPhoneVerificationRequest {
   /// Language code [IETF BCP 47 syntax](https://tools.ietf.org/html/bcp47) (for
@@ -29355,10 +29294,10 @@ class RequestPhoneVerificationResponse {
 typedef RequestReviewBuyOnGoogleProgramRequest = $Empty;
 
 /// Request message for the RequestReviewFreeListings Program method.
-typedef RequestReviewFreeListingsRequest = $Request06;
+typedef RequestReviewFreeListingsRequest = $Request07;
 
 /// Request message for the RequestReviewShoppingAds program method.
-typedef RequestReviewShoppingAdsRequest = $Request06;
+typedef RequestReviewShoppingAdsRequest = $Request07;
 
 /// Return address resource.
 class ReturnAddress {
@@ -30604,7 +30543,7 @@ class Row {
 class SearchRequest {
   /// Number of ReportRows to retrieve in a single page.
   ///
-  /// Defaults to the maximum of 1000. Values above 1000 are coerced to 1000.
+  /// Defaults to 1000. Values above 5000 are coerced to 5000.
   core.int? pageSize;
 
   /// Token of the page to retrieve.
@@ -30979,7 +30918,8 @@ class Service {
 
   /// Type of locations this service ships orders to.
   ///
-  /// Acceptable values are: - "`delivery`" - "`pickup`" - "`local_delivery`"
+  /// Acceptable values are: - "`delivery`" - "`pickup` (deprecated)" -
+  /// "`local_delivery`" - "`collection_point`"
   core.String? shipmentType;
 
   /// A list of stores your products are delivered from.

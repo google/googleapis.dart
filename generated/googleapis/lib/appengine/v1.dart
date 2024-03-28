@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// App Engine Admin API - v1
@@ -31,7 +30,11 @@
 ///   - [AppsServicesResource]
 ///     - [AppsServicesVersionsResource]
 ///       - [AppsServicesVersionsInstancesResource]
-library appengine_v1;
+/// - [ProjectsResource]
+///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsApplicationsResource]
+///       - [ProjectsLocationsApplicationsAuthorizedDomainsResource]
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -65,6 +68,7 @@ class AppengineApi {
   final commons.ApiRequester _requester;
 
   AppsResource get apps => AppsResource(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   AppengineApi(http.Client client,
       {core.String rootUrl = 'https://appengine.googleapis.com/',
@@ -139,6 +143,14 @@ class AppsResource {
   /// [appsId] - Part of `name`. Name of the Application resource to get.
   /// Example: apps/myapp.
   ///
+  /// [includeExtraData] - Options to include extra data
+  /// Possible string values are:
+  /// - "INCLUDE_EXTRA_DATA_UNSPECIFIED" : Unspecified: No extra data will be
+  /// returned
+  /// - "INCLUDE_EXTRA_DATA_NONE" : Do not return any extra data
+  /// - "INCLUDE_GOOGLE_GENERATED_METADATA" : Return GGCM associated with the
+  /// resources
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -151,9 +163,11 @@ class AppsResource {
   /// this method will complete with the same error.
   async.Future<Application> get(
     core.String appsId, {
+    core.String? includeExtraData,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (includeExtraData != null) 'includeExtraData': [includeExtraData],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -165,6 +179,51 @@ class AppsResource {
       queryParams: queryParams_,
     );
     return Application.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all the available runtimes for the application.
+  ///
+  /// Request parameters:
+  ///
+  /// [appsId] - Part of `parent`. Required. Name of the parent Application
+  /// resource. Example: apps/myapp.
+  ///
+  /// [environment] - Optional. The environment of the Application.
+  /// Possible string values are:
+  /// - "ENVIRONMENT_UNSPECIFIED" : Default value.
+  /// - "STANDARD" : App Engine Standard.
+  /// - "FLEXIBLE" : App Engine Flexible
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListRuntimesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListRuntimesResponse> listRuntimes(
+    core.String appsId, {
+    core.String? environment,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (environment != null) 'environment': [environment],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/apps/' + commons.escapeVariable('$appsId') + ':listRuntimes';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListRuntimesResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 
@@ -2079,6 +2138,99 @@ class AppsServicesVersionsInstancesResource {
   }
 }
 
+class ProjectsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsResource get locations =>
+      ProjectsLocationsResource(_requester);
+
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsLocationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsApplicationsResource get applications =>
+      ProjectsLocationsApplicationsResource(_requester);
+
+  ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsLocationsApplicationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsApplicationsAuthorizedDomainsResource
+      get authorizedDomains =>
+          ProjectsLocationsApplicationsAuthorizedDomainsResource(_requester);
+
+  ProjectsLocationsApplicationsResource(commons.ApiRequester client)
+      : _requester = client;
+}
+
+class ProjectsLocationsApplicationsAuthorizedDomainsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsApplicationsAuthorizedDomainsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists all domains the user is authorized to administer.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectsId] - Part of `parent`. Name of the parent Application resource.
+  /// Example: apps/myapp.
+  ///
+  /// [locationsId] - Part of `parent`. See documentation of `projectsId`.
+  ///
+  /// [applicationsId] - Part of `parent`. See documentation of `projectsId`.
+  ///
+  /// [pageSize] - Maximum results to return per page.
+  ///
+  /// [pageToken] - Continuation token for fetching the next page of results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAuthorizedDomainsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAuthorizedDomainsResponse> list(
+    core.String projectsId,
+    core.String locationsId,
+    core.String applicationsId, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/projects/' +
+        commons.escapeVariable('$projectsId') +
+        '/locations/' +
+        commons.escapeVariable('$locationsId') +
+        '/applications/' +
+        commons.escapeVariable('$applicationsId') +
+        '/authorizedDomains';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListAuthorizedDomainsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 /// Google Cloud Endpoints (https://cloud.google.com/endpoints) configuration
 /// for API handlers.
 class ApiConfigHandler {
@@ -2221,6 +2373,14 @@ class Application {
   ///
   /// Output only.
   core.String? gcrDomain;
+
+  /// Additional Google Generated Customer Metadata, this field won't be
+  /// provided by default and can be requested by setting the IncludeExtraData
+  /// field in GetApplicationRequest
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? generatedCustomerMetadata;
   IdentityAwareProxy? iap;
 
   /// Identifier of the Application resource.
@@ -2269,6 +2429,7 @@ class Application {
     this.dispatchRules,
     this.featureSettings,
     this.gcrDomain,
+    this.generatedCustomerMetadata,
     this.iap,
     this.id,
     this.locationId,
@@ -2310,6 +2471,11 @@ class Application {
           gcrDomain: json_.containsKey('gcrDomain')
               ? json_['gcrDomain'] as core.String
               : null,
+          generatedCustomerMetadata:
+              json_.containsKey('generatedCustomerMetadata')
+                  ? json_['generatedCustomerMetadata']
+                      as core.Map<core.String, core.dynamic>
+                  : null,
           iap: json_.containsKey('iap')
               ? IdentityAwareProxy.fromJson(
                   json_['iap'] as core.Map<core.String, core.dynamic>)
@@ -2338,6 +2504,8 @@ class Application {
         if (dispatchRules != null) 'dispatchRules': dispatchRules!,
         if (featureSettings != null) 'featureSettings': featureSettings!,
         if (gcrDomain != null) 'gcrDomain': gcrDomain!,
+        if (generatedCustomerMetadata != null)
+          'generatedCustomerMetadata': generatedCustomerMetadata!,
         if (iap != null) 'iap': iap!,
         if (id != null) 'id': id!,
         if (locationId != null) 'locationId': locationId!,
@@ -2868,6 +3036,17 @@ class CpuUtilization {
         if (targetUtilization != null) 'targetUtilization': targetUtilization!,
       };
 }
+
+/// Represents a whole or partial calendar date, such as a birthday.
+///
+/// The time of day and time zone are either specified elsewhere or are
+/// insignificant. The date is relative to the Gregorian Calendar. This can
+/// represent one of the following: A full date, with non-zero year, month, and
+/// day values. A month and day, with a zero year (for example, an anniversary).
+/// A year on its own, with a zero month and a zero day. A year and month, with
+/// a zero day (for example, a credit card expiration date).Related types:
+/// google.type.TimeOfDay google.type.DateTime google.protobuf.Timestamp
+typedef Date = $Date;
 
 /// Request message for Instances.DebugInstance.
 class DebugInstanceRequest {
@@ -3990,6 +4169,38 @@ class ListOperationsResponse {
       };
 }
 
+/// Response message for Applications.ListRuntimes.
+class ListRuntimesResponse {
+  /// Continuation token for fetching the next page of results.
+  core.String? nextPageToken;
+
+  /// The runtimes available to the requested application.
+  core.List<Runtime>? runtimes;
+
+  ListRuntimesResponse({
+    this.nextPageToken,
+    this.runtimes,
+  });
+
+  ListRuntimesResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          runtimes: json_.containsKey('runtimes')
+              ? (json_['runtimes'] as core.List)
+                  .map((value) => Runtime.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (runtimes != null) 'runtimes': runtimes!,
+      };
+}
+
 /// Response message for Services.ListServices.
 class ListServicesResponse {
   /// Continuation token for fetching the next page of results.
@@ -4420,7 +4631,7 @@ class Operation {
   /// ending with operations/{unique_id}.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as Delete, the
   /// response is google.protobuf.Empty. If the original method is standard
@@ -4678,6 +4889,111 @@ class Resources {
       };
 }
 
+/// Runtime versions for App Engine.
+class Runtime {
+  /// Date when Runtime is decommissioned.
+  Date? decommissionedDate;
+
+  /// Date when Runtime is deprecated.
+  Date? deprecationDate;
+
+  /// User-friendly display name, e.g. 'Node.js 12', etc.
+  core.String? displayName;
+
+  /// Date when Runtime is end of support.
+  Date? endOfSupportDate;
+
+  /// The environment of the runtime.
+  /// Possible string values are:
+  /// - "ENVIRONMENT_UNSPECIFIED" : Default value.
+  /// - "STANDARD" : App Engine Standard.
+  /// - "FLEXIBLE" : App Engine Flexible
+  core.String? environment;
+
+  /// The name of the runtime, e.g., 'go113', 'nodejs12', etc.
+  core.String? name;
+
+  /// The stage of life this runtime is in, e.g., BETA, GA, etc.
+  /// Possible string values are:
+  /// - "RUNTIME_STAGE_UNSPECIFIED" : Not specified.
+  /// - "DEVELOPMENT" : The runtime is in development.
+  /// - "ALPHA" : The runtime is in the Alpha stage.
+  /// - "BETA" : The runtime is in the Beta stage.
+  /// - "GA" : The runtime is generally available.
+  /// - "DEPRECATED" : The runtime is deprecated.
+  /// - "DECOMMISSIONED" : The runtime is no longer supported.
+  /// - "END_OF_SUPPORT" : The runtime is end of support.
+  core.String? stage;
+
+  /// Supported operating systems for the runtime, e.g., 'ubuntu22', etc.
+  core.List<core.String>? supportedOperatingSystems;
+
+  /// Warning messages, e.g., a deprecation warning.
+  core.List<core.String>? warnings;
+
+  Runtime({
+    this.decommissionedDate,
+    this.deprecationDate,
+    this.displayName,
+    this.endOfSupportDate,
+    this.environment,
+    this.name,
+    this.stage,
+    this.supportedOperatingSystems,
+    this.warnings,
+  });
+
+  Runtime.fromJson(core.Map json_)
+      : this(
+          decommissionedDate: json_.containsKey('decommissionedDate')
+              ? Date.fromJson(json_['decommissionedDate']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          deprecationDate: json_.containsKey('deprecationDate')
+              ? Date.fromJson(json_['deprecationDate']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          endOfSupportDate: json_.containsKey('endOfSupportDate')
+              ? Date.fromJson(json_['endOfSupportDate']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          environment: json_.containsKey('environment')
+              ? json_['environment'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          stage:
+              json_.containsKey('stage') ? json_['stage'] as core.String : null,
+          supportedOperatingSystems:
+              json_.containsKey('supportedOperatingSystems')
+                  ? (json_['supportedOperatingSystems'] as core.List)
+                      .map((value) => value as core.String)
+                      .toList()
+                  : null,
+          warnings: json_.containsKey('warnings')
+              ? (json_['warnings'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (decommissionedDate != null)
+          'decommissionedDate': decommissionedDate!,
+        if (deprecationDate != null) 'deprecationDate': deprecationDate!,
+        if (displayName != null) 'displayName': displayName!,
+        if (endOfSupportDate != null) 'endOfSupportDate': endOfSupportDate!,
+        if (environment != null) 'environment': environment!,
+        if (name != null) 'name': name!,
+        if (stage != null) 'stage': stage!,
+        if (supportedOperatingSystems != null)
+          'supportedOperatingSystems': supportedOperatingSystems!,
+        if (warnings != null) 'warnings': warnings!,
+      };
+}
+
 /// Executes a script to handle the request that matches the URL pattern.
 typedef ScriptHandler = $Handler;
 
@@ -4690,6 +5006,14 @@ typedef ScriptHandler = $Handler;
 /// define a specific set of code used to implement the functionality of that
 /// service.
 class Service {
+  /// Additional Google Generated Customer Metadata, this field won't be
+  /// provided by default and can be requested by setting the IncludeExtraData
+  /// field in GetServiceRequest
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? generatedCustomerMetadata;
+
   /// Relative name of the service within the application.
   ///
   /// Example: default.@OutputOnly
@@ -4724,6 +5048,7 @@ class Service {
   TrafficSplit? split;
 
   Service({
+    this.generatedCustomerMetadata,
     this.id,
     this.labels,
     this.name,
@@ -4733,6 +5058,11 @@ class Service {
 
   Service.fromJson(core.Map json_)
       : this(
+          generatedCustomerMetadata:
+              json_.containsKey('generatedCustomerMetadata')
+                  ? json_['generatedCustomerMetadata']
+                      as core.Map<core.String, core.dynamic>
+                  : null,
           id: json_.containsKey('id') ? json_['id'] as core.String : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
@@ -4754,6 +5084,8 @@ class Service {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (generatedCustomerMetadata != null)
+          'generatedCustomerMetadata': generatedCustomerMetadata!,
         if (id != null) 'id': id!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
@@ -5226,6 +5558,9 @@ class Version {
   /// Serving configuration for Google Cloud Endpoints
   /// (https://cloud.google.com/endpoints).Only returned in GET requests if
   /// view=FULL is set.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   ApiConfigHandler? apiConfig;
 
   /// Allows App Engine second generation runtimes to access the legacy bundled
@@ -5300,6 +5635,14 @@ class Version {
   /// Settings for App Engine flexible runtimes.
   FlexibleRuntimeSettings? flexibleRuntimeSettings;
 
+  /// Additional Google Generated Customer Metadata, this field won't be
+  /// provided by default and can be requested by setting the IncludeExtraData
+  /// field in GetVersionRequest
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? generatedCustomerMetadata;
+
   /// An ordered list of URL-matching patterns that should be applied to
   /// incoming requests.
   ///
@@ -5310,8 +5653,7 @@ class Version {
   /// Configures health checking for instances.
   ///
   /// Unhealthy instances are stopped and replaced with new instances. Only
-  /// applicable in the App Engine flexible environment.Only returned in GET
-  /// requests if view=FULL is set.
+  /// applicable in the App Engine flexible environment.
   HealthCheck? healthCheck;
 
   /// Relative name of the version within the service.
@@ -5338,8 +5680,7 @@ class Version {
 
   /// Configures liveness health checking for instances.
   ///
-  /// Unhealthy instances are stopped and replaced with new instancesOnly
-  /// returned in GET requests if view=FULL is set.
+  /// Unhealthy instances are stopped and replaced with new instances
   LivenessCheck? livenessCheck;
 
   /// A service with manual scaling runs continuously, allowing you to perform
@@ -5366,8 +5707,7 @@ class Version {
 
   /// Configures readiness health checking for instances.
   ///
-  /// Unhealthy instances are not put into the backend traffic rotation.Only
-  /// returned in GET requests if view=FULL is set.
+  /// Unhealthy instances are not put into the backend traffic rotation.
   ReadinessCheck? readinessCheck;
 
   /// Machine resources for this version.
@@ -5452,6 +5792,7 @@ class Version {
     this.envVariables,
     this.errorHandlers,
     this.flexibleRuntimeSettings,
+    this.generatedCustomerMetadata,
     this.handlers,
     this.healthCheck,
     this.id,
@@ -5559,6 +5900,11 @@ class Version {
                   json_['flexibleRuntimeSettings']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          generatedCustomerMetadata:
+              json_.containsKey('generatedCustomerMetadata')
+                  ? json_['generatedCustomerMetadata']
+                      as core.Map<core.String, core.dynamic>
+                  : null,
           handlers: json_.containsKey('handlers')
               ? (json_['handlers'] as core.List)
                   .map((value) => UrlMap.fromJson(
@@ -5665,6 +6011,8 @@ class Version {
         if (errorHandlers != null) 'errorHandlers': errorHandlers!,
         if (flexibleRuntimeSettings != null)
           'flexibleRuntimeSettings': flexibleRuntimeSettings!,
+        if (generatedCustomerMetadata != null)
+          'generatedCustomerMetadata': generatedCustomerMetadata!,
         if (handlers != null) 'handlers': handlers!,
         if (healthCheck != null) 'healthCheck': healthCheck!,
         if (id != null) 'id': id!,
@@ -5744,7 +6092,7 @@ class VpcAccessConnector {
   core.String? egressSetting;
 
   /// Full Serverless VPC Access Connector name e.g.
-  /// /projects/my-project/locations/us-central1/connectors/c1.
+  /// projects/my-project/locations/us-central1/connectors/c1.
   core.String? name;
 
   VpcAccessConnector({

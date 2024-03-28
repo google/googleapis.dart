@@ -10,7 +10,6 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 // ignore_for_file: unreachable_from_main
 // ignore_for_file: unused_local_variable
@@ -409,6 +408,7 @@ api.Instance buildInstance() {
     o.availableVersion = buildUnnamed4();
     o.createTime = 'foo';
     o.cryptoKeyConfig = buildCryptoKeyConfig();
+    o.dataplexDataLineageIntegrationEnabled = true;
     o.dataprocServiceAccount = 'foo';
     o.description = 'foo';
     o.disabledReason = buildUnnamed5();
@@ -424,6 +424,7 @@ api.Instance buildInstance() {
     o.networkConfig = buildNetworkConfig();
     o.options = buildUnnamed7();
     o.p4ServiceAccount = 'foo';
+    o.patchRevision = 'foo';
     o.privateInstance = true;
     o.satisfiesPzs = true;
     o.serviceAccount = 'foo';
@@ -434,6 +435,7 @@ api.Instance buildInstance() {
     o.type = 'foo';
     o.updateTime = 'foo';
     o.version = 'foo';
+    o.workforceIdentityServiceEndpoint = 'foo';
     o.zone = 'foo';
   }
   buildCounterInstance--;
@@ -454,6 +456,7 @@ void checkInstance(api.Instance o) {
       unittest.equals('foo'),
     );
     checkCryptoKeyConfig(o.cryptoKeyConfig!);
+    unittest.expect(o.dataplexDataLineageIntegrationEnabled!, unittest.isTrue);
     unittest.expect(
       o.dataprocServiceAccount!,
       unittest.equals('foo'),
@@ -485,6 +488,10 @@ void checkInstance(api.Instance o) {
     checkUnnamed7(o.options!);
     unittest.expect(
       o.p4ServiceAccount!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.patchRevision!,
       unittest.equals('foo'),
     );
     unittest.expect(o.privateInstance!, unittest.isTrue);
@@ -519,6 +526,10 @@ void checkInstance(api.Instance o) {
     );
     unittest.expect(
       o.version!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.workforceIdentityServiceEndpoint!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -826,8 +837,10 @@ api.NetworkConfig buildNetworkConfig() {
   final o = api.NetworkConfig();
   buildCounterNetworkConfig++;
   if (buildCounterNetworkConfig < 3) {
+    o.connectionType = 'foo';
     o.ipAllocation = 'foo';
     o.network = 'foo';
+    o.privateServiceConnectConfig = buildPrivateServiceConnectConfig();
   }
   buildCounterNetworkConfig--;
   return o;
@@ -837,6 +850,10 @@ void checkNetworkConfig(api.NetworkConfig o) {
   buildCounterNetworkConfig++;
   if (buildCounterNetworkConfig < 3) {
     unittest.expect(
+      o.connectionType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.ipAllocation!,
       unittest.equals('foo'),
     );
@@ -844,6 +861,7 @@ void checkNetworkConfig(api.NetworkConfig o) {
       o.network!,
       unittest.equals('foo'),
     );
+    checkPrivateServiceConnectConfig(o.privateServiceConnectConfig!);
   }
   buildCounterNetworkConfig--;
 }
@@ -1019,6 +1037,38 @@ void checkPolicy(api.Policy o) {
     );
   }
   buildCounterPolicy--;
+}
+
+core.int buildCounterPrivateServiceConnectConfig = 0;
+api.PrivateServiceConnectConfig buildPrivateServiceConnectConfig() {
+  final o = api.PrivateServiceConnectConfig();
+  buildCounterPrivateServiceConnectConfig++;
+  if (buildCounterPrivateServiceConnectConfig < 3) {
+    o.effectiveUnreachableCidrBlock = 'foo';
+    o.networkAttachment = 'foo';
+    o.unreachableCidrBlock = 'foo';
+  }
+  buildCounterPrivateServiceConnectConfig--;
+  return o;
+}
+
+void checkPrivateServiceConnectConfig(api.PrivateServiceConnectConfig o) {
+  buildCounterPrivateServiceConnectConfig++;
+  if (buildCounterPrivateServiceConnectConfig < 3) {
+    unittest.expect(
+      o.effectiveUnreachableCidrBlock!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.networkAttachment!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.unreachableCidrBlock!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterPrivateServiceConnectConfig--;
 }
 
 core.int buildCounterRestartInstanceRequest = 0;
@@ -1463,6 +1513,16 @@ void main() {
       final od =
           api.Policy.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkPolicy(od);
+    });
+  });
+
+  unittest.group('obj-schema-PrivateServiceConnectConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPrivateServiceConnectConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PrivateServiceConnectConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkPrivateServiceConnectConfig(od);
     });
   });
 

@@ -64,7 +64,7 @@ class _ScriptLoader {
       return _pendingInitialization!;
     }
 
-    final completer = Completer();
+    final completer = Completer<void>();
 
     final timeout = Timer(callbackTimeout, () {
       _pendingInitialization = null;

@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Storage Transfer API - v1
@@ -25,7 +24,7 @@
 ///   - [ProjectsAgentPoolsResource]
 /// - [TransferJobsResource]
 /// - [TransferOperationsResource]
-library storagetransfer_v1;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -737,12 +736,18 @@ class TransferOperationsResource {
   ///
   /// [filter] - Required. A list of query parameters specified as JSON text in
   /// the form of: `{"projectId":"my_project_id",
-  /// "jobNames":["jobid1","jobid2",...],
-  /// "operationNames":["opid1","opid2",...],
+  /// "jobNames":["jobid1","jobid2",...], "jobNamePattern": "job_name_pattern",
+  /// "operationNames":["opid1","opid2",...], "operationNamePattern":
+  /// "operation_name_pattern", "minCreationTime": "min_creation_time",
+  /// "maxCreationTime": "max_creation_time",
   /// "transferStatuses":["status1","status2",...]}` Since `jobNames`,
   /// `operationNames`, and `transferStatuses` support multiple values, they
-  /// must be specified with array notation. `projectId` is required.
-  /// `jobNames`, `operationNames`, and `transferStatuses` are optional. The
+  /// must be specified with array notation. `projectId` is the only argument
+  /// that is required. If specified, `jobNamePattern` and
+  /// `operationNamePattern` must match the full job or operation name
+  /// respectively. '*' is a wildcard matching 0 or more characters.
+  /// `minCreationTime` and `maxCreationTime` should be timestamps encoded as a
+  /// string in the [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format. The
   /// valid values for `transferStatuses` are case-insensitive: IN_PROGRESS,
   /// PAUSED, SUCCESS, FAILED, and ABORTED.
   ///
@@ -1047,16 +1052,27 @@ class AwsS3Data {
   /// Required.
   core.String? bucketName;
 
+  /// The CloudFront distribution domain name pointing to this bucket, to use
+  /// when fetching.
+  ///
+  /// See
+  /// [Transfer from S3 via CloudFront](https://cloud.google.com/storage-transfer/docs/s3-cloudfront)
+  /// for more information. Format: `https://{id}.cloudfront.net` or any valid
+  /// custom domain. Must begin with `https://`.
+  ///
+  /// Optional.
+  core.String? cloudfrontDomain;
+
   /// The Resource name of a secret in Secret Manager.
   ///
-  /// The Azure SAS token must be stored in Secret Manager in JSON format: {
-  /// "sas_token" : "SAS_TOKEN" } GoogleServiceAccount must be granted
+  /// AWS credentials must be stored in Secret Manager in JSON format: {
+  /// "access_key_id": "ACCESS_KEY_ID", "secret_access_key": "SECRET_ACCESS_KEY"
+  /// } GoogleServiceAccount must be granted
   /// `roles/secretmanager.secretAccessor` for the resource. See \[Configure
-  /// access to a source: Microsoft Azure Blob
-  /// Storage\](https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#secret_manager)
+  /// access to a source: Amazon
+  /// S3\](https://cloud.google.com/storage-transfer/docs/source-amazon-s3#secret_manager)
   /// for more information. If `credentials_secret` is specified, do not specify
-  /// azure_credentials. This feature is in
-  /// [preview](https://cloud.google.com/terms/service-terms#1). Format:
+  /// role_arn or aws_access_key. Format:
   /// `projects/{project_number}/secrets/{secret_name}`
   ///
   /// Optional.
@@ -1082,6 +1098,7 @@ class AwsS3Data {
   AwsS3Data({
     this.awsAccessKey,
     this.bucketName,
+    this.cloudfrontDomain,
     this.credentialsSecret,
     this.path,
     this.roleArn,
@@ -1096,6 +1113,9 @@ class AwsS3Data {
           bucketName: json_.containsKey('bucketName')
               ? json_['bucketName'] as core.String
               : null,
+          cloudfrontDomain: json_.containsKey('cloudfrontDomain')
+              ? json_['cloudfrontDomain'] as core.String
+              : null,
           credentialsSecret: json_.containsKey('credentialsSecret')
               ? json_['credentialsSecret'] as core.String
               : null,
@@ -1108,6 +1128,7 @@ class AwsS3Data {
   core.Map<core.String, core.dynamic> toJson() => {
         if (awsAccessKey != null) 'awsAccessKey': awsAccessKey!,
         if (bucketName != null) 'bucketName': bucketName!,
+        if (cloudfrontDomain != null) 'cloudfrontDomain': cloudfrontDomain!,
         if (credentialsSecret != null) 'credentialsSecret': credentialsSecret!,
         if (path != null) 'path': path!,
         if (roleArn != null) 'roleArn': roleArn!,
@@ -1144,8 +1165,7 @@ class AzureBlobStorageData {
   /// access to a source: Microsoft Azure Blob
   /// Storage\](https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#secret_manager)
   /// for more information. If `credentials_secret` is specified, do not specify
-  /// azure_credentials. This feature is in
-  /// [preview](https://cloud.google.com/terms/service-terms#1). Format:
+  /// azure_credentials. Format:
   /// `projects/{project_number}/secrets/{secret_name}`
   ///
   /// Optional.
@@ -1336,6 +1356,16 @@ class GcsData {
   /// Required.
   core.String? bucketName;
 
+  /// Preview.
+  ///
+  /// Enables the transfer of managed folders between Cloud Storage buckets. Set
+  /// this option on the gcs_data_source. If set to true: - Managed folders in
+  /// the source bucket are transferred to the destination bucket. - Managed
+  /// folders in the destination bucket are overwritten. Other OVERWRITE options
+  /// are not supported. See \[Transfer Cloud Storage managed
+  /// folders\](/storage-transfer/docs/managed-folders).
+  core.bool? managedFolderTransferEnabled;
+
   /// Root path to transfer objects.
   ///
   /// Must be an empty string or full path name that ends with a '/'. This field
@@ -1346,6 +1376,7 @@ class GcsData {
 
   GcsData({
     this.bucketName,
+    this.managedFolderTransferEnabled,
     this.path,
   });
 
@@ -1354,11 +1385,17 @@ class GcsData {
           bucketName: json_.containsKey('bucketName')
               ? json_['bucketName'] as core.String
               : null,
+          managedFolderTransferEnabled:
+              json_.containsKey('managedFolderTransferEnabled')
+                  ? json_['managedFolderTransferEnabled'] as core.bool
+                  : null,
           path: json_.containsKey('path') ? json_['path'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bucketName != null) 'bucketName': bucketName!,
+        if (managedFolderTransferEnabled != null)
+          'managedFolderTransferEnabled': managedFolderTransferEnabled!,
         if (path != null) 'path': path!,
       };
 }
@@ -1389,6 +1426,30 @@ class GoogleServiceAccount {
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountEmail != null) 'accountEmail': accountEmail!,
         if (subjectId != null) 'subjectId': subjectId!,
+      };
+}
+
+/// An HdfsData resource specifies a path within an HDFS entity (e.g. a
+/// cluster).
+///
+/// All cluster-specific settings, such as namenodes and ports, are configured
+/// on the transfer agents servicing requests, so HdfsData only contains the
+/// root path to the data in our transfer.
+class HdfsData {
+  /// Root path to transfer files.
+  core.String? path;
+
+  HdfsData({
+    this.path,
+  });
+
+  HdfsData.fromJson(core.Map json_)
+      : this(
+          path: json_.containsKey('path') ? json_['path'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (path != null) 'path': path!,
       };
 }
 
@@ -1694,7 +1755,7 @@ class MetadataOptions {
   core.String? temporaryHold;
 
   /// Specifies how each object's `timeCreated` metadata is preserved for
-  /// transfers between Google Cloud Storage buckets.
+  /// transfers.
   ///
   /// If unspecified, the default behavior is the same as TIME_CREATED_SKIP.
   /// Possible string values are:
@@ -1702,9 +1763,9 @@ class MetadataOptions {
   /// - "TIME_CREATED_SKIP" : Do not preserve the `timeCreated` metadata from
   /// the source object.
   /// - "TIME_CREATED_PRESERVE_AS_CUSTOM_TIME" : Preserves the source object's
-  /// `timeCreated` metadata in the `customTime` field in the destination
-  /// object. Note that any value stored in the source object's `customTime`
-  /// field will not be propagated to the destination object.
+  /// `timeCreated` or `lastModified` metadata in the `customTime` field in the
+  /// destination object. Note that any value stored in the source object's
+  /// `customTime` field will not be propagated to the destination object.
   core.String? timeCreated;
 
   /// Specifies how each file's POSIX user ID (UID) attribute should be handled
@@ -1997,7 +2058,7 @@ class Operation {
   /// The format of `name` is `transferOperations/some/unique/name`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard
@@ -2593,6 +2654,9 @@ class TransferSpec {
   /// for more information.
   GcsData? gcsIntermediateDataLocation;
 
+  /// An HDFS cluster data source.
+  HdfsData? hdfsDataSource;
+
   /// An HTTP URL data source.
   HttpData? httpDataSource;
 
@@ -2638,6 +2702,7 @@ class TransferSpec {
     this.gcsDataSink,
     this.gcsDataSource,
     this.gcsIntermediateDataLocation,
+    this.hdfsDataSource,
     this.httpDataSource,
     this.objectConditions,
     this.posixDataSink,
@@ -2678,6 +2743,10 @@ class TransferSpec {
                   ? GcsData.fromJson(json_['gcsIntermediateDataLocation']
                       as core.Map<core.String, core.dynamic>)
                   : null,
+          hdfsDataSource: json_.containsKey('hdfsDataSource')
+              ? HdfsData.fromJson(json_['hdfsDataSource']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           httpDataSource: json_.containsKey('httpDataSource')
               ? HttpData.fromJson(json_['httpDataSource']
                   as core.Map<core.String, core.dynamic>)
@@ -2720,6 +2789,7 @@ class TransferSpec {
         if (gcsDataSource != null) 'gcsDataSource': gcsDataSource!,
         if (gcsIntermediateDataLocation != null)
           'gcsIntermediateDataLocation': gcsIntermediateDataLocation!,
+        if (hdfsDataSource != null) 'hdfsDataSource': hdfsDataSource!,
         if (httpDataSource != null) 'httpDataSource': httpDataSource!,
         if (objectConditions != null) 'objectConditions': objectConditions!,
         if (posixDataSink != null) 'posixDataSink': posixDataSink!,

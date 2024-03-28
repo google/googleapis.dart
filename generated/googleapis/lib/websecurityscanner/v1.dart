@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Web Security Scanner API - v1
@@ -26,7 +25,7 @@
 ///       - [ProjectsScanConfigsScanRunsCrawledUrlsResource]
 ///       - [ProjectsScanConfigsScanRunsFindingTypeStatsResource]
 ///       - [ProjectsScanConfigsScanRunsFindingsResource]
-library websecurityscanner_v1;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -1650,6 +1649,8 @@ class ScanConfigError {
   /// For example, we do not provide findings of the given finding type.
   /// - "UNSUPPORTED_URL_SCHEME" : The URL scheme of one or more of the supplied
   /// URLs is not supported.
+  /// - "CLOUD_ASSET_INVENTORY_ASSET_NOT_FOUND" : CAI is not able to list
+  /// assets.
   core.String? code;
 
   /// Indicates the full name of the ScanConfig field that triggers this error,

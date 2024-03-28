@@ -334,7 +334,8 @@ void main() {
         expect(media.length, equals(_data256.length));
 
         expect(
-          await media.stream.fold([], (List b, d) => b..addAll(d)),
+          await media.stream
+              .fold<List<int>>([], (List<int> b, d) => b..addAll(d)),
           equals(_data256),
         );
       });
@@ -365,7 +366,8 @@ void main() {
         expect(media.length, equals(data64.length));
 
         expect(
-          await media.stream.fold([], (List b, d) => b..addAll(d)),
+          await media.stream
+              .fold<List<int>>(<int>[], (List<int> b, d) => b..addAll(d)),
           equals(data64),
         );
       });
@@ -394,7 +396,8 @@ void main() {
         expect(media.contentType, equals('foobar'));
         expect(media.length, equals(_data256.length));
 
-        final d = await media.stream.fold([], (List b, d) => b..addAll(d));
+        final d = await media.stream
+            .fold<List<int>>([], (List<int> b, d) => b..addAll(d));
         expect(d, equals(_data256));
       });
     });
@@ -529,7 +532,7 @@ void main() {
             {
               'url': 'http://example.com/xyz?uploadType=resumable&alt=json',
               'method': 'POST',
-              'data': [],
+              'data': <int>[],
               'headers': {
                 'content-length': '0',
                 'content-type': 'application/json; charset=utf-8',

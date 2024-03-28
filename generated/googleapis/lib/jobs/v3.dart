@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Cloud Talent Solution API - v3
@@ -25,7 +24,7 @@
 ///   - [ProjectsClientEventsResource]
 ///   - [ProjectsCompaniesResource]
 ///   - [ProjectsJobsResource]
-library jobs_v3;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -1306,6 +1305,9 @@ class Company {
   /// searchable, and those keyword queries need to be surrounded by quotes.
   ///
   /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<core.String>? keywordSearchableJobCustomAttributes;
 
   /// Required during company update.
@@ -2722,6 +2724,9 @@ class Job {
   /// visible to other applications and processes at Google.
   /// - "SHARED_WITH_PUBLIC" : The resource is visible to the owner and may be
   /// visible to all other API clients.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? visibility;
 
   Job({
@@ -4033,6 +4038,9 @@ class SearchJobsRequest {
   RequestMetadata? requestMetadata;
 
   /// This field is deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? requirePreciseResultSize;
 
   /// Mode of a search.

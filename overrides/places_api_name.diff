@@ -6,7 +6,7 @@ index 77d009fe0..c73f7887e 100644
      "basePath": "",
      "baseUrl": "https://places.googleapis.com/",
      "batchPath": "batch",
--    "canonicalName": "Places API (New)",
+-    "canonicalName": "Maps Places",
 +    "canonicalName": "Places",
      "description": "",
      "discoveryVersion": "v1",

@@ -132,7 +132,7 @@ $stack
                     '    Trying again in $tryAgainLag second(s) – '
                     '${item.discoveryRestUrl}',
                   );
-                  await Future.delayed(Duration(seconds: tryAgainLag));
+                  await Future<void>.delayed(Duration(seconds: tryAgainLag));
                   continue;
                 }
               }

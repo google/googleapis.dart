@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Cloud Search API - v1
@@ -50,7 +49,7 @@
 ///   - [StatsUserResource]
 ///     - [StatsUserSearchapplicationsResource]
 /// - [V1Resource]
-library cloudsearch_v1;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -6482,7 +6481,7 @@ class Operation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard
@@ -8709,8 +8708,8 @@ class Snippet {
 
   /// The snippet of the document.
   ///
-  /// The snippet of the document. May contain escaped HTML character that
-  /// should be unescaped prior to rendering.
+  /// May contain escaped HTML character that should be unescaped prior to
+  /// rendering.
   core.String? snippet;
 
   Snippet({

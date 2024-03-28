@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Cloud Memorystore for Memcached API - v1
@@ -25,7 +24,7 @@
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsInstancesResource]
 ///     - [ProjectsLocationsOperationsResource]
-library memcache_v1;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -543,6 +542,50 @@ class ProjectsLocationsInstancesResource {
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
+
+  /// Upgrades the Memcache instance to a newer memcached engine version
+  /// specified in the request.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Memcache instance resource name using the form:
+  /// `projects/{project}/locations/{location}/instances/{instance}` where
+  /// `location_id` refers to a GCP region.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> upgrade(
+    GoogleCloudMemcacheV1UpgradeInstanceRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':upgrade';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsLocationsOperationsResource {
@@ -837,6 +880,34 @@ class GoogleCloudMemcacheV1MaintenancePolicy {
       };
 }
 
+/// Request for UpgradeInstance.
+class GoogleCloudMemcacheV1UpgradeInstanceRequest {
+  /// Specifies the target version of memcached engine to upgrade to.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "MEMCACHE_VERSION_UNSPECIFIED" : Memcache version is not specified by
+  /// customer
+  /// - "MEMCACHE_1_5" : Memcached 1.5 version.
+  /// - "MEMCACHE_1_6_15" : Memcached 1.6.15 version.
+  core.String? memcacheVersion;
+
+  GoogleCloudMemcacheV1UpgradeInstanceRequest({
+    this.memcacheVersion,
+  });
+
+  GoogleCloudMemcacheV1UpgradeInstanceRequest.fromJson(core.Map json_)
+      : this(
+          memcacheVersion: json_.containsKey('memcacheVersion')
+              ? json_['memcacheVersion'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (memcacheVersion != null) 'memcacheVersion': memcacheVersion!,
+      };
+}
+
 /// A Memorystore for Memcached instance
 class Instance {
   /// The full name of the Google Compute Engine
@@ -909,6 +980,7 @@ class Instance {
   /// - "MEMCACHE_VERSION_UNSPECIFIED" : Memcache version is not specified by
   /// customer
   /// - "MEMCACHE_1_5" : Memcached 1.5 version.
+  /// - "MEMCACHE_1_6_15" : Memcached 1.6.15 version.
   core.String? memcacheVersion;
 
   /// Unique name of the resource in this scope including project and location
@@ -956,6 +1028,8 @@ class Instance {
   /// - "DELETING" : Memcached instance is being deleted.
   /// - "PERFORMING_MAINTENANCE" : Memcached instance is going through
   /// maintenance, e.g. data plane rollout.
+  /// - "MEMCACHE_VERSION_UPGRADING" : Memcached instance is undergoing
+  /// memcached engine version upgrade.
   core.String? state;
 
   /// The time the instance was updated.
@@ -1329,6 +1403,23 @@ class Node {
   /// Output only.
   core.String? host;
 
+  /// The full version of memcached server running on this node.
+  ///
+  /// e.g. - memcached-1.5.16
+  ///
+  /// Output only.
+  core.String? memcacheFullVersion;
+
+  /// Major version of memcached server running on this node, e.g. MEMCACHE_1_5
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "MEMCACHE_VERSION_UNSPECIFIED" : Memcache version is not specified by
+  /// customer
+  /// - "MEMCACHE_1_5" : Memcached 1.5 version.
+  /// - "MEMCACHE_1_6_15" : Memcached 1.6.15 version.
+  core.String? memcacheVersion;
+
   /// Identifier of the Memcached node.
   ///
   /// The node id does not include project or location like the Memcached
@@ -1363,6 +1454,8 @@ class Node {
 
   Node({
     this.host,
+    this.memcacheFullVersion,
+    this.memcacheVersion,
     this.nodeId,
     this.parameters,
     this.port,
@@ -1373,6 +1466,12 @@ class Node {
   Node.fromJson(core.Map json_)
       : this(
           host: json_.containsKey('host') ? json_['host'] as core.String : null,
+          memcacheFullVersion: json_.containsKey('memcacheFullVersion')
+              ? json_['memcacheFullVersion'] as core.String
+              : null,
+          memcacheVersion: json_.containsKey('memcacheVersion')
+              ? json_['memcacheVersion'] as core.String
+              : null,
           nodeId: json_.containsKey('nodeId')
               ? json_['nodeId'] as core.String
               : null,
@@ -1388,6 +1487,9 @@ class Node {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (host != null) 'host': host!,
+        if (memcacheFullVersion != null)
+          'memcacheFullVersion': memcacheFullVersion!,
+        if (memcacheVersion != null) 'memcacheVersion': memcacheVersion!,
         if (nodeId != null) 'nodeId': nodeId!,
         if (parameters != null) 'parameters': parameters!,
         if (port != null) 'port': port!,
@@ -1459,7 +1561,7 @@ class Operation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard

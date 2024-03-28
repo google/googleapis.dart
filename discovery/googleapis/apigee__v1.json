@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230715",
+    "revision": "20240305",
     "rootUrl": "https://apigee.googleapis.com/",
     "servicePath": "",
     "title": "Apigee API",
@@ -169,7 +169,7 @@
                     ]
                 },
                 "delete": {
-                    "description": "Delete an Apigee organization. For organizations with BillingType EVALUATION, an immediate deletion is performed. For paid organizations, a soft-deletion is performed. The organization can be restored within the soft-deletion period which can be controlled using the retention field in the request.",
+                    "description": "Delete an Apigee organization. For organizations with BillingType EVALUATION, an immediate deletion is performed. For paid organizations (Subscription or Pay-as-you-go), a soft-deletion is performed. The organization can be restored within the soft-deletion period, which is specified using the `retention` field in the request or by filing a support ticket with Apigee. During the data retention period specified in the request, the Apigee organization cannot be recreated in the same Google Cloud project. **IMPORTANT: The default data retention setting for this operation is 7 days. To permanently delete the organization in 24 hours, set the retention parameter to `MINIMUM`.**",
                     "flatPath": "v1/organizations/{organizationsId}",
                     "httpMethod": "DELETE",
                     "id": "apigee.organizations.delete",
@@ -185,7 +185,7 @@
                             "type": "string"
                         },
                         "retention": {
-                            "description": "Optional. This setting is applicable only for organizations that are soft-deleted (i.e., BillingType is not EVALUATION). It controls how long Organization data will be retained after the initial delete operation completes. During this period, the Organization may be restored to its last known state. After this period, the Organization will no longer be able to be restored.",
+                            "description": "Optional. This setting is applicable only for organizations that are soft-deleted (i.e., BillingType is not EVALUATION). It controls how long Organization data will be retained after the initial delete operation completes. During this period, the Organization may be restored to its last known state. After this period, the Organization will no longer be able to be restored. **Note: During the data retention period specified using this field, the Apigee organization cannot be recreated in the same GCP project.**",
                             "enum": [
                                 "DELETION_RETENTION_UNSPECIFIED",
                                 "MINIMUM"
@@ -316,6 +316,31 @@
                     "path": "v1/{+name}",
                     "response": {
                         "$ref": "GoogleCloudApigeeV1RuntimeConfig"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                    ]
+                },
+                "getSecuritySettings": {
+                    "description": "GetSecuritySettings gets the security settings for API Security.",
+                    "flatPath": "v1/organizations/{organizationsId}/securitySettings",
+                    "httpMethod": "GET",
+                    "id": "apigee.organizations.getSecuritySettings",
+                    "parameterOrder": [
+                        "name"
+                    ],
+                    "parameters": {
+                        "name": {
+                            "description": "Required. The name of the SecuritySettings to retrieve. This will always be: 'organizations/{org}/securitySettings'.",
+                            "location": "path",
+                            "pattern": "^organizations/[^/]+/securitySettings$",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1/{+name}",
+                    "response": {
+                        "$ref": "GoogleCloudApigeeV1SecuritySettings"
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform"
@@ -453,6 +478,40 @@
                     },
                     "response": {
                         "$ref": "GoogleCloudApigeeV1Organization"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                    ]
+                },
+                "updateSecuritySettings": {
+                    "description": "UpdateSecuritySettings updates the current security settings for API Security.",
+                    "flatPath": "v1/organizations/{organizationsId}/securitySettings",
+                    "httpMethod": "PATCH",
+                    "id": "apigee.organizations.updateSecuritySettings",
+                    "parameterOrder": [
+                        "name"
+                    ],
+                    "parameters": {
+                        "name": {
+                            "description": "Identifier. Full resource name is always `organizations/{org}/securitySettings`.",
+                            "location": "path",
+                            "pattern": "^organizations/[^/]+/securitySettings$",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "updateMask": {
+                            "description": "Optional. The list of fields to update. Allowed fields are: - ml_retraining_feedback_enabled",
+                            "format": "google-fieldmask",
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1/{+name}",
+                    "request": {
+                        "$ref": "GoogleCloudApigeeV1SecuritySettings"
+                    },
+                    "response": {
+                        "$ref": "GoogleCloudApigeeV1SecuritySettings"
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform"
@@ -1468,6 +1527,34 @@
                                             "scopes": [
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
+                                        },
+                                        "update": {
+                                            "description": "Update key value entry scoped to an organization, environment, or API proxy for an existing key.",
+                                            "flatPath": "v1/organizations/{organizationsId}/apis/{apisId}/keyvaluemaps/{keyvaluemapsId}/entries/{entriesId}",
+                                            "httpMethod": "PUT",
+                                            "id": "apigee.organizations.apis.keyvaluemaps.entries.update",
+                                            "parameterOrder": [
+                                                "name"
+                                            ],
+                                            "parameters": {
+                                                "name": {
+                                                    "description": "Required. Scope as indicated by the URI in which to create the key value map entry. Use **one** of the following structures in your request: * `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}`. * `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}` * `organizations/{organization}/keyvaluemaps/{keyvaluemap}`.",
+                                                    "location": "path",
+                                                    "pattern": "^organizations/[^/]+/apis/[^/]+/keyvaluemaps/[^/]+/entries/[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "v1/{+name}",
+                                            "request": {
+                                                "$ref": "GoogleCloudApigeeV1KeyValueEntry"
+                                            },
+                                            "response": {
+                                                "$ref": "GoogleCloudApigeeV1KeyValueEntry"
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-platform"
+                                            ]
                                         }
                                     }
                                 }
@@ -1601,7 +1688,7 @@
                 "appgroups": {
                     "methods": {
                         "create": {
-                            "description": "Creates an AppGroup. Once created, user can register apps under the AppGroup to obtain secret key and password. At creation time, the AppGroup's state is set as `active`. The attribute `Attribute` with key `attribute_name` as `__apigee_reserved__developer_details` can be used to store developers and their roles. The JSON format expected is: [ { \"developer_id\":\"\", \"roles\":[ \"\" ] } ] and is dealt in base64encoded format. Etag will be available in attribute `Attribute` with key `attribute_name` as `__apigee_reserved__developer_details_etag` for that AppGroup.",
+                            "description": "Creates an AppGroup. Once created, user can register apps under the AppGroup to obtain secret key and password. At creation time, the AppGroup's state is set as `active`.",
                             "flatPath": "v1/organizations/{organizationsId}/appgroups",
                             "httpMethod": "POST",
                             "id": "apigee.organizations.appgroups.create",
@@ -1688,7 +1775,7 @@
                             ],
                             "parameters": {
                                 "filter": {
-                                    "description": "The filter expression to be used to get the list of AppGroups, where filtering can be done on name, correlationID or channelID of the app group. Example: filter = \"name = foobar\"",
+                                    "description": "The filter expression to be used to get the list of AppGroups, where filtering can be done on status, channelId or channelUri of the app group. Examples: filter=status=active\", filter=channelId=, filter=channelUri=",
                                     "location": "query",
                                     "type": "string"
                                 },
@@ -1720,7 +1807,7 @@
                             ]
                         },
                         "update": {
-                            "description": "Updates an appGroup. This API replaces the existing appGroup details with those specified in the request. Include or exclude any existing details that you want to retain or delete, respectively. Note that the state of the AppGroup should be updated using `action`, and not via AppGroup. The custom attribute limit is 1000, and is how `__apigee_reserved__developer_details` can be updated. **Note**: OAuth access tokens and Key Management Service (KMS) entities (apps, developers, and API products) are cached for 180 seconds (current default). Any custom attributes associated with these entities are cached for at least 180 seconds after the entity is accessed at runtime. Therefore, an `ExpiresIn` element on the OAuthV2 policy won't be able to expire an access token in less than 180 seconds.",
+                            "description": "Updates an AppGroup. This API replaces the existing AppGroup details with those specified in the request. Include or exclude any existing details that you want to retain or delete, respectively. Note that the state of the AppGroup should be updated using `action`, and not via AppGroup.",
                             "flatPath": "v1/organizations/{organizationsId}/appgroups/{appgroupsId}",
                             "httpMethod": "PUT",
                             "id": "apigee.organizations.appgroups.update",
@@ -1729,7 +1816,7 @@
                             ],
                             "parameters": {
                                 "action": {
-                                    "description": "Activate or de-activate the appGroup by setting the action as `active` or `inactive`. The `Content-Type` header must be set to `application/octet-stream`, with empty body.",
+                                    "description": "Activate or de-activate the AppGroup by setting the action as `active` or `inactive`. The `Content-Type` header must be set to `application/octet-stream`, with empty body.",
                                     "location": "query",
                                     "type": "string"
                                 },
@@ -2132,7 +2219,7 @@
                                     "type": "boolean"
                                 },
                                 "filter": {
-                                    "description": "Optional. The filter expression to be used to get the list of apps, where filtering can be done on developerEmail, apiProduct, consumerKey, status, appId, appName and appType. Examples: \"developerEmail=foo@bar.com\", \"appType=AppGroup\", or \"appType=Developer\" \"filter\" is supported from ver 1.10.0 and above.",
+                                    "description": "Optional. The filter expression to be used to get the list of apps, where filtering can be done on developerEmail, apiProduct, consumerKey, status, appId, appName, appType and appGroup. Examples: \"developerEmail=foo@bar.com\", \"appType=AppGroup\", or \"appType=Developer\" \"filter\" is supported from ver 1.10.0 and above.",
                                     "location": "query",
                                     "type": "string"
                                 },
@@ -3040,7 +3127,7 @@
                                             ],
                                             "parameters": {
                                                 "parent": {
-                                                    "description": "Parent of the developer app key. Use the following structure in your request: `organizations/{org}/developers/{developer_email}/apps`",
+                                                    "description": "Parent of the developer app key. Use the following structure in your request: 'organizations/{org}/developers/{developerEmail}/apps/{appName}'",
                                                     "location": "path",
                                                     "pattern": "^organizations/[^/]+/developers/[^/]+/apps/[^/]+$",
                                                     "required": true,
@@ -3242,7 +3329,7 @@
                                                     ],
                                                     "parameters": {
                                                         "parent": {
-                                                            "description": "Parent of the developer app key. Use the following structure in your request: `organizations/{org}/developers/{developer_email}/apps`",
+                                                            "description": "Parent of the developer app key. Use the following structure in your request: 'organizations/{org}/developers/{developerEmail}/apps/{appName}'",
                                                             "location": "path",
                                                             "pattern": "^organizations/[^/]+/developers/[^/]+/apps/[^/]+$",
                                                             "required": true,
@@ -3691,7 +3778,7 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "ID of the environment group. Overrides any ID in the environment_group resource.",
+                                    "description": "Optional. ID of the environment group. Overrides any ID in the environment_group resource.",
                                     "location": "query",
                                     "type": "string"
                                 },
@@ -3857,7 +3944,7 @@
                                     "type": "string"
                                 },
                                 "updateMask": {
-                                    "description": "List of fields to be updated.",
+                                    "description": "Optional. List of fields to be updated.",
                                     "format": "google-fieldmask",
                                     "location": "query",
                                     "type": "string"
@@ -4081,6 +4168,31 @@
                                 "https://www.googleapis.com/auth/cloud-platform"
                             ]
                         },
+                        "getAddonsConfig": {
+                            "description": "Gets the add-ons config of an environment.",
+                            "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/addonsConfig",
+                            "httpMethod": "GET",
+                            "id": "apigee.organizations.environments.getAddonsConfig",
+                            "parameterOrder": [
+                                "name"
+                            ],
+                            "parameters": {
+                                "name": {
+                                    "description": "Required. Name of the add-ons config. Must be in the format of `/organizations/{org}/environments/{env}/addonsConfig`",
+                                    "location": "path",
+                                    "pattern": "^organizations/[^/]+/environments/[^/]+/addonsConfig$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+name}",
+                            "response": {
+                                "$ref": "GoogleCloudApigeeV1AddonsConfig"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
+                        },
                         "getApiSecurityRuntimeConfig": {
                             "description": "Gets the API Security runtime configuration for an environment. This named ApiSecurityRuntimeConfig to prevent conflicts with ApiSecurityConfig from addon config.",
                             "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/apiSecurityRuntimeConfig",
@@ -4182,6 +4294,31 @@
                             "path": "v1/{+resource}:getIamPolicy",
                             "response": {
                                 "$ref": "GoogleIamV1Policy"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
+                        },
+                        "getSecurityActionsConfig": {
+                            "description": "GetSecurityActionConfig returns the current SecurityActions configuration.",
+                            "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/securityActionsConfig",
+                            "httpMethod": "GET",
+                            "id": "apigee.organizations.environments.getSecurityActionsConfig",
+                            "parameterOrder": [
+                                "name"
+                            ],
+                            "parameters": {
+                                "name": {
+                                    "description": "Required. The name of the SecurityActionsConfig to retrieve. This will always be: `organizations/{org}/environments/{env}/security_actions_config`",
+                                    "location": "path",
+                                    "pattern": "^organizations/[^/]+/environments/[^/]+/securityActionsConfig$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+name}",
+                            "response": {
+                                "$ref": "GoogleCloudApigeeV1SecurityActionsConfig"
                             },
                             "scopes": [
                                 "https://www.googleapis.com/auth/cloud-platform"
@@ -4450,6 +4587,40 @@
                                 "https://www.googleapis.com/auth/cloud-platform"
                             ]
                         },
+                        "updateSecurityActionsConfig": {
+                            "description": "UpdateSecurityActionConfig updates the current SecurityActions configuration. This method is used to enable/disable the feature at the environment level.",
+                            "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/securityActionsConfig",
+                            "httpMethod": "PATCH",
+                            "id": "apigee.organizations.environments.updateSecurityActionsConfig",
+                            "parameterOrder": [
+                                "name"
+                            ],
+                            "parameters": {
+                                "name": {
+                                    "description": "This is a singleton resource, the name will always be set by SecurityActions and any user input will be ignored. The name is always: `organizations/{org}/environments/{env}/security_actions_config`",
+                                    "location": "path",
+                                    "pattern": "^organizations/[^/]+/environments/[^/]+/securityActionsConfig$",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "updateMask": {
+                                    "description": "The list of fields to update.",
+                                    "format": "google-fieldmask",
+                                    "location": "query",
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+name}",
+                            "request": {
+                                "$ref": "GoogleCloudApigeeV1SecurityActionsConfig"
+                            },
+                            "response": {
+                                "$ref": "GoogleCloudApigeeV1SecurityActionsConfig"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
+                        },
                         "updateTraceConfig": {
                             "description": "Updates the trace configurations in an environment. Note that the repeated fields have replace semantics when included in the field mask and that they will be overwritten by the value of the fields in the request body.",
                             "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/traceConfig",
@@ -4486,6 +4657,38 @@
                         }
                     },
                     "resources": {
+                        "addonsConfig": {
+                            "methods": {
+                                "setAddonEnablement": {
+                                    "description": "Updates an add-on enablement status of an environment.",
+                                    "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/addonsConfig:setAddonEnablement",
+                                    "httpMethod": "POST",
+                                    "id": "apigee.organizations.environments.addonsConfig.setAddonEnablement",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Required. Name of the add-ons config. Must be in the format of `/organizations/{org}/environments/{env}/addonsConfig`",
+                                            "location": "path",
+                                            "pattern": "^organizations/[^/]+/environments/[^/]+/addonsConfig$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+name}:setAddonEnablement",
+                                    "request": {
+                                        "$ref": "GoogleCloudApigeeV1SetAddonEnablementRequest"
+                                    },
+                                    "response": {
+                                        "$ref": "GoogleLongrunningOperation"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                }
+                            }
+                        },
                         "analytics": {
                             "resources": {
                                 "admin": {
@@ -4666,7 +4869,7 @@
                                                     "type": "boolean"
                                                 },
                                                 "sequencedRollout": {
-                                                    "description": "Flag that specifies whether to enable sequenced rollout. If set to `true`, the routing rules for this deployment and the environment changes to add the deployment will be rolled out in a safe order. This reduces the risk of downtime that could be caused by changing the environment group's routing before the new destination for the affected traffic is ready to receive it. This should only be necessary if the new deployment will be capturing traffic from another environment under a shared environment group or if traffic will be rerouted to a different environment due to a base path removal. The [generateDeployChangeReport API](generateDeployChangeReport) may be used to examine routing changes before issuing the deployment request, and its response will indicate if a sequenced rollout is recommended for the deployment.",
+                                                    "description": "Flag that specifies whether to enable sequenced rollout. If set to `true`, the routing rules for this deployment and the environment changes to add the deployment will be rolled out in a safe order. This reduces the risk of downtime that could be caused by changing the environment group's routing before the new destination for the affected traffic is ready to receive it. This should only be necessary if the new deployment will be capturing traffic from another environment under a shared environment group or if traffic will be rerouted to a different environment due to a base path removal. The generateDeployChangeReport API may be used to examine routing changes before issuing the deployment request, and its response will indicate if a sequenced rollout is recommended for the deployment.",
                                                     "location": "query",
                                                     "type": "boolean"
                                                 },
@@ -4726,7 +4929,7 @@
                                                     "type": "string"
                                                 },
                                                 "sequencedRollout": {
-                                                    "description": "Flag that specifies whether to enable sequenced rollout. If set to `true`, the environment group routing rules corresponding to this deployment will be removed before removing the deployment from the runtime. This is likely to be a rare use case; it is only needed when the intended effect of undeploying this proxy is to cause the traffic it currently handles to be rerouted to some other existing proxy in the environment group. The [GenerateUndeployChangeReport API](GenerateUndeployChangeReport) may be used to examine routing changes before issuing the undeployment request, and its response will indicate if a sequenced rollout is recommended for the undeployment.",
+                                                    "description": "Flag that specifies whether to enable sequenced rollout. If set to `true`, the environment group routing rules corresponding to this deployment will be removed before removing the deployment from the runtime. This is likely to be a rare use case; it is only needed when the intended effect of undeploying this proxy is to cause the traffic it currently handles to be rerouted to some other existing proxy in the environment group. The GenerateUndeployChangeReport API may be used to examine routing changes before issuing the undeployment request, and its response will indicate if a sequenced rollout is recommended for the undeployment.",
                                                     "location": "query",
                                                     "type": "boolean"
                                                 }
@@ -5773,6 +5976,34 @@
                                             "scopes": [
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
+                                        },
+                                        "update": {
+                                            "description": "Update key value entry scoped to an organization, environment, or API proxy for an existing key.",
+                                            "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/keyvaluemaps/{keyvaluemapsId}/entries/{entriesId}",
+                                            "httpMethod": "PUT",
+                                            "id": "apigee.organizations.environments.keyvaluemaps.entries.update",
+                                            "parameterOrder": [
+                                                "name"
+                                            ],
+                                            "parameters": {
+                                                "name": {
+                                                    "description": "Required. Scope as indicated by the URI in which to create the key value map entry. Use **one** of the following structures in your request: * `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}`. * `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}` * `organizations/{organization}/keyvaluemaps/{keyvaluemap}`.",
+                                                    "location": "path",
+                                                    "pattern": "^organizations/[^/]+/environments/[^/]+/keyvaluemaps/[^/]+/entries/[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "v1/{+name}",
+                                            "request": {
+                                                "$ref": "GoogleCloudApigeeV1KeyValueEntry"
+                                            },
+                                            "response": {
+                                                "$ref": "GoogleCloudApigeeV1KeyValueEntry"
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-platform"
+                                            ]
                                         }
                                     }
                                 }
@@ -6378,8 +6609,195 @@
                                 }
                             }
                         },
+                        "securityActions": {
+                            "methods": {
+                                "create": {
+                                    "description": "CreateSecurityAction creates a SecurityAction.",
+                                    "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/securityActions",
+                                    "httpMethod": "POST",
+                                    "id": "apigee.organizations.environments.securityActions.create",
+                                    "parameterOrder": [
+                                        "parent"
+                                    ],
+                                    "parameters": {
+                                        "parent": {
+                                            "description": "Required. The organization and environment that this SecurityAction applies to. Format: organizations/{org}/environments/{env}",
+                                            "location": "path",
+                                            "pattern": "^organizations/[^/]+/environments/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "securityActionId": {
+                                            "description": "Required. The ID to use for the SecurityAction, which will become the final component of the action's resource name. This value should be 0-61 characters, and valid format is (^[a-z]([a-z0-9-]{​0,61}[a-z0-9])?$).",
+                                            "location": "query",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+parent}/securityActions",
+                                    "request": {
+                                        "$ref": "GoogleCloudApigeeV1SecurityAction"
+                                    },
+                                    "response": {
+                                        "$ref": "GoogleCloudApigeeV1SecurityAction"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "disable": {
+                                    "description": "Disable a SecurityAction. The `state` of the SecurityAction after disabling is `DISABLED`. `DisableSecurityAction` can be called on SecurityActions in the state `ENABLED`; SecurityActions in a different state (including `DISABLED`) return an error.",
+                                    "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/securityActions/{securityActionsId}:disable",
+                                    "httpMethod": "POST",
+                                    "id": "apigee.organizations.environments.securityActions.disable",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Required. The name of the SecurityAction to disable. Format: organizations/{org}/environments/{env}/securityActions/{security_action}",
+                                            "location": "path",
+                                            "pattern": "^organizations/[^/]+/environments/[^/]+/securityActions/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+name}:disable",
+                                    "request": {
+                                        "$ref": "GoogleCloudApigeeV1DisableSecurityActionRequest"
+                                    },
+                                    "response": {
+                                        "$ref": "GoogleCloudApigeeV1SecurityAction"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "enable": {
+                                    "description": "Enable a SecurityAction. The `state` of the SecurityAction after enabling is `ENABLED`. `EnableSecurityAction` can be called on SecurityActions in the state `DISABLED`; SecurityActions in a different state (including `ENABLED) return an error.",
+                                    "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/securityActions/{securityActionsId}:enable",
+                                    "httpMethod": "POST",
+                                    "id": "apigee.organizations.environments.securityActions.enable",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Required. The name of the SecurityAction to enable. Format: organizations/{org}/environments/{env}/securityActions/{security_action}",
+                                            "location": "path",
+                                            "pattern": "^organizations/[^/]+/environments/[^/]+/securityActions/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+name}:enable",
+                                    "request": {
+                                        "$ref": "GoogleCloudApigeeV1EnableSecurityActionRequest"
+                                    },
+                                    "response": {
+                                        "$ref": "GoogleCloudApigeeV1SecurityAction"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "get": {
+                                    "description": "Get a SecurityAction by name.",
+                                    "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/securityActions/{securityActionsId}",
+                                    "httpMethod": "GET",
+                                    "id": "apigee.organizations.environments.securityActions.get",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Required. The fully qualified name of the SecurityAction to retrieve. Format: organizations/{org}/environments/{env}/securityActions/{security_action}",
+                                            "location": "path",
+                                            "pattern": "^organizations/[^/]+/environments/[^/]+/securityActions/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+name}",
+                                    "response": {
+                                        "$ref": "GoogleCloudApigeeV1SecurityAction"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "list": {
+                                    "description": "Returns a list of SecurityActions. This returns both enabled and disabled actions.",
+                                    "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/securityActions",
+                                    "httpMethod": "GET",
+                                    "id": "apigee.organizations.environments.securityActions.list",
+                                    "parameterOrder": [
+                                        "parent"
+                                    ],
+                                    "parameters": {
+                                        "filter": {
+                                            "description": "The filter expression to filter List results. https://google.aip.dev/160. Allows for filtering over: state and api_proxies. E.g.: state = ACTIVE AND apiProxies:foo. Filtering by action is not supported https://github.com/aip-dev/google.aip.dev/issues/624",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "pageSize": {
+                                            "description": "The maximum number of SecurityActions to return. If unspecified, at most 50 SecurityActions will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.",
+                                            "format": "int32",
+                                            "location": "query",
+                                            "type": "integer"
+                                        },
+                                        "pageToken": {
+                                            "description": "A page token, received from a previous `ListSecurityActions` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListSecurityActions` must match the call that provided the page token.",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "parent": {
+                                            "description": "Required. The parent, which owns this collection of SecurityActions. Format: organizations/{org}/environments/{env}",
+                                            "location": "path",
+                                            "pattern": "^organizations/[^/]+/environments/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+parent}/securityActions",
+                                    "response": {
+                                        "$ref": "GoogleCloudApigeeV1ListSecurityActionsResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                }
+                            }
+                        },
                         "securityIncidents": {
                             "methods": {
+                                "batchUpdate": {
+                                    "description": "BatchUpdateSecurityIncident updates multiple existing security incidents.",
+                                    "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/securityIncidents:batchUpdate",
+                                    "httpMethod": "POST",
+                                    "id": "apigee.organizations.environments.securityIncidents.batchUpdate",
+                                    "parameterOrder": [
+                                        "parent"
+                                    ],
+                                    "parameters": {
+                                        "parent": {
+                                            "description": "Optional. The parent resource shared by all security incidents being updated. If this is set, the parent field in the UpdateSecurityIncidentRequest messages must either be empty or match this field.",
+                                            "location": "path",
+                                            "pattern": "^organizations/[^/]+/environments/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+parent}/securityIncidents:batchUpdate",
+                                    "request": {
+                                        "$ref": "GoogleCloudApigeeV1BatchUpdateSecurityIncidentsRequest"
+                                    },
+                                    "response": {
+                                        "$ref": "GoogleCloudApigeeV1BatchUpdateSecurityIncidentsResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
                                 "get": {
                                     "description": "GetSecurityIncident gets the specified security incident. Returns NOT_FOUND if security incident is not present for the specified organization and environment.",
                                     "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/securityIncidents/{securityIncidentsId}",
@@ -6420,13 +6838,13 @@
                                             "type": "string"
                                         },
                                         "pageSize": {
-                                            "description": "The maximum number of incidents to return. The service may return fewer than this value. If unspecified, at most 50 incidents will be returned.",
+                                            "description": "Optional. The maximum number of incidents to return. The service may return fewer than this value. If unspecified, at most 50 incidents will be returned.",
                                             "format": "int32",
                                             "location": "query",
                                             "type": "integer"
                                         },
                                         "pageToken": {
-                                            "description": "A page token, received from a previous `ListSecurityIncident` call. Provide this to retrieve the subsequent page.",
+                                            "description": "Optional. A page token, received from a previous `ListSecurityIncident` call. Provide this to retrieve the subsequent page.",
                                             "location": "query",
                                             "type": "string"
                                         },
@@ -6441,6 +6859,40 @@
                                     "path": "v1/{+parent}/securityIncidents",
                                     "response": {
                                         "$ref": "GoogleCloudApigeeV1ListSecurityIncidentsResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "patch": {
+                                    "description": "UpdateSecurityIncidents updates an existing security incident.",
+                                    "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/securityIncidents/{securityIncidentsId}",
+                                    "httpMethod": "PATCH",
+                                    "id": "apigee.organizations.environments.securityIncidents.patch",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Immutable. Name of the security incident resource. Format: organizations/{org}/environments/{environment}/securityIncidents/{incident} Example: organizations/apigee-org/environments/dev/securityIncidents/1234-5678-9101-1111",
+                                            "location": "path",
+                                            "pattern": "^organizations/[^/]+/environments/[^/]+/securityIncidents/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "updateMask": {
+                                            "description": "Required. The list of fields to update. Allowed fields are: LINT.IfChange(allowed_update_fields_comment) - observability LINT.ThenChange()",
+                                            "format": "google-fieldmask",
+                                            "location": "query",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+name}",
+                                    "request": {
+                                        "$ref": "GoogleCloudApigeeV1SecurityIncident"
+                                    },
+                                    "response": {
+                                        "$ref": "GoogleCloudApigeeV1SecurityIncident"
                                     },
                                     "scopes": [
                                         "https://www.googleapis.com/auth/cloud-platform"
@@ -8289,6 +8741,34 @@
                                     "scopes": [
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
+                                },
+                                "update": {
+                                    "description": "Update key value entry scoped to an organization, environment, or API proxy for an existing key.",
+                                    "flatPath": "v1/organizations/{organizationsId}/keyvaluemaps/{keyvaluemapsId}/entries/{entriesId}",
+                                    "httpMethod": "PUT",
+                                    "id": "apigee.organizations.keyvaluemaps.entries.update",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Required. Scope as indicated by the URI in which to create the key value map entry. Use **one** of the following structures in your request: * `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}`. * `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}` * `organizations/{organization}/keyvaluemaps/{keyvaluemap}`.",
+                                            "location": "path",
+                                            "pattern": "^organizations/[^/]+/keyvaluemaps/[^/]+/entries/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+name}",
+                                    "request": {
+                                        "$ref": "GoogleCloudApigeeV1KeyValueEntry"
+                                    },
+                                    "response": {
+                                        "$ref": "GoogleCloudApigeeV1KeyValueEntry"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
                                 }
                             }
                         }
@@ -8605,6 +9085,64 @@
                 },
                 "securityProfiles": {
                     "methods": {
+                        "create": {
+                            "description": "CreateSecurityProfile create a new custom security profile.",
+                            "flatPath": "v1/organizations/{organizationsId}/securityProfiles",
+                            "httpMethod": "POST",
+                            "id": "apigee.organizations.securityProfiles.create",
+                            "parameterOrder": [
+                                "parent"
+                            ],
+                            "parameters": {
+                                "parent": {
+                                    "description": "Required. Name of organization. Format: organizations/{org}",
+                                    "location": "path",
+                                    "pattern": "^organizations/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "securityProfileId": {
+                                    "description": "Required. The ID to use for the SecurityProfile, which will become the final component of the action's resource name. This value should be 1-63 characters and validated by \"(^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$)\".",
+                                    "location": "query",
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+parent}/securityProfiles",
+                            "request": {
+                                "$ref": "GoogleCloudApigeeV1SecurityProfile"
+                            },
+                            "response": {
+                                "$ref": "GoogleCloudApigeeV1SecurityProfile"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
+                        },
+                        "delete": {
+                            "description": "DeleteSecurityProfile delete a profile with all its revisions.",
+                            "flatPath": "v1/organizations/{organizationsId}/securityProfiles/{securityProfilesId}",
+                            "httpMethod": "DELETE",
+                            "id": "apigee.organizations.securityProfiles.delete",
+                            "parameterOrder": [
+                                "name"
+                            ],
+                            "parameters": {
+                                "name": {
+                                    "description": "Required. Name of profile. Format: organizations/{org}/securityProfiles/{profile}",
+                                    "location": "path",
+                                    "pattern": "^organizations/[^/]+/securityProfiles/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+name}",
+                            "response": {
+                                "$ref": "GoogleProtobufEmpty"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
+                        },
                         "get": {
                             "description": "GetSecurityProfile gets the specified security profile. Returns NOT_FOUND if security profile is not present for the specified organization.",
                             "flatPath": "v1/organizations/{organizationsId}/securityProfiles/{securityProfilesId}",
@@ -8697,6 +9235,40 @@
                             "path": "v1/{+name}:listRevisions",
                             "response": {
                                 "$ref": "GoogleCloudApigeeV1ListSecurityProfileRevisionsResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
+                        },
+                        "patch": {
+                            "description": "UpdateSecurityProfile update the metadata of security profile.",
+                            "flatPath": "v1/organizations/{organizationsId}/securityProfiles/{securityProfilesId}",
+                            "httpMethod": "PATCH",
+                            "id": "apigee.organizations.securityProfiles.patch",
+                            "parameterOrder": [
+                                "name"
+                            ],
+                            "parameters": {
+                                "name": {
+                                    "description": "Immutable. Name of the security profile resource. Format: organizations/{org}/securityProfiles/{profile}",
+                                    "location": "path",
+                                    "pattern": "^organizations/[^/]+/securityProfiles/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "updateMask": {
+                                    "description": "Required. The list of fields to update.",
+                                    "format": "google-fieldmask",
+                                    "location": "query",
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+name}",
+                            "request": {
+                                "$ref": "GoogleCloudApigeeV1SecurityProfile"
+                            },
+                            "response": {
+                                "$ref": "GoogleCloudApigeeV1SecurityProfile"
                             },
                             "scopes": [
                                 "https://www.googleapis.com/auth/cloud-platform"
@@ -9077,7 +9649,7 @@
                         "apicategories": {
                             "methods": {
                                 "create": {
-                                    "description": "Creates a new category on the portal.",
+                                    "description": "Creates a new API category.",
                                     "flatPath": "v1/organizations/{organizationsId}/sites/{sitesId}/apicategories",
                                     "httpMethod": "POST",
                                     "id": "apigee.organizations.sites.apicategories.create",
@@ -9095,17 +9667,17 @@
                                     },
                                     "path": "v1/{+parent}/apicategories",
                                     "request": {
-                                        "$ref": "GoogleCloudApigeeV1ApiCategoryData"
+                                        "$ref": "GoogleCloudApigeeV1ApiCategory"
                                     },
                                     "response": {
-                                        "$ref": "GoogleCloudApigeeV1ApiCategory"
+                                        "$ref": "GoogleCloudApigeeV1ApiCategoryResponse"
                                     },
                                     "scopes": [
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
                                 },
                                 "delete": {
-                                    "description": "Deletes a category from the portal.",
+                                    "description": "Deletes an API category.",
                                     "flatPath": "v1/organizations/{organizationsId}/sites/{sitesId}/apicategories/{apicategoriesId}",
                                     "httpMethod": "DELETE",
                                     "id": "apigee.organizations.sites.apicategories.delete",
@@ -9130,7 +9702,7 @@
                                     ]
                                 },
                                 "get": {
-                                    "description": "Gets a category on the portal.",
+                                    "description": "Gets an API category.",
                                     "flatPath": "v1/organizations/{organizationsId}/sites/{sitesId}/apicategories/{apicategoriesId}",
                                     "httpMethod": "GET",
                                     "id": "apigee.organizations.sites.apicategories.get",
@@ -9148,14 +9720,14 @@
                                     },
                                     "path": "v1/{+name}",
                                     "response": {
-                                        "$ref": "GoogleCloudApigeeV1ApiCategory"
+                                        "$ref": "GoogleCloudApigeeV1ApiCategoryResponse"
                                     },
                                     "scopes": [
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
                                 },
                                 "list": {
-                                    "description": "Lists the categories on the portal.",
+                                    "description": "Returns the API categories associated with a portal.",
                                     "flatPath": "v1/organizations/{organizationsId}/sites/{sitesId}/apicategories",
                                     "httpMethod": "GET",
                                     "id": "apigee.organizations.sites.apicategories.list",
@@ -9180,7 +9752,7 @@
                                     ]
                                 },
                                 "patch": {
-                                    "description": "Updates a category on the portal.",
+                                    "description": "Updates an API category.",
                                     "flatPath": "v1/organizations/{organizationsId}/sites/{sitesId}/apicategories/{apicategoriesId}",
                                     "httpMethod": "PATCH",
                                     "id": "apigee.organizations.sites.apicategories.patch",
@@ -9198,10 +9770,209 @@
                                     },
                                     "path": "v1/{+name}",
                                     "request": {
-                                        "$ref": "GoogleCloudApigeeV1ApiCategoryData"
+                                        "$ref": "GoogleCloudApigeeV1ApiCategory"
                                     },
                                     "response": {
-                                        "$ref": "GoogleCloudApigeeV1ApiCategory"
+                                        "$ref": "GoogleCloudApigeeV1ApiCategoryResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                }
+                            }
+                        },
+                        "apidocs": {
+                            "methods": {
+                                "create": {
+                                    "description": "Creates a new catalog item.",
+                                    "flatPath": "v1/organizations/{organizationsId}/sites/{sitesId}/apidocs",
+                                    "httpMethod": "POST",
+                                    "id": "apigee.organizations.sites.apidocs.create",
+                                    "parameterOrder": [
+                                        "parent"
+                                    ],
+                                    "parameters": {
+                                        "parent": {
+                                            "description": "Required. Name of the portal. Use the following structure in your request: `organizations/{org}/sites/{site}`",
+                                            "location": "path",
+                                            "pattern": "^organizations/[^/]+/sites/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+parent}/apidocs",
+                                    "request": {
+                                        "$ref": "GoogleCloudApigeeV1ApiDoc"
+                                    },
+                                    "response": {
+                                        "$ref": "GoogleCloudApigeeV1ApiDocResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "delete": {
+                                    "description": "Deletes a catalog item.",
+                                    "flatPath": "v1/organizations/{organizationsId}/sites/{sitesId}/apidocs/{apidocsId}",
+                                    "httpMethod": "DELETE",
+                                    "id": "apigee.organizations.sites.apidocs.delete",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Required. Name of the catalog item. Use the following structure in your request: `organizations/{org}/sites/{site}/apidocs/{apidoc}`",
+                                            "location": "path",
+                                            "pattern": "^organizations/[^/]+/sites/[^/]+/apidocs/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+name}",
+                                    "response": {
+                                        "$ref": "GoogleCloudApigeeV1DeleteResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "get": {
+                                    "description": "Gets a catalog item.",
+                                    "flatPath": "v1/organizations/{organizationsId}/sites/{sitesId}/apidocs/{apidocsId}",
+                                    "httpMethod": "GET",
+                                    "id": "apigee.organizations.sites.apidocs.get",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Required. Name of the catalog item. Use the following structure in your request: `organizations/{org}/sites/{site}/apidocs/{apidoc}`",
+                                            "location": "path",
+                                            "pattern": "^organizations/[^/]+/sites/[^/]+/apidocs/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+name}",
+                                    "response": {
+                                        "$ref": "GoogleCloudApigeeV1ApiDocResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "getDocumentation": {
+                                    "description": "Gets the documentation for the specified catalog item.",
+                                    "flatPath": "v1/organizations/{organizationsId}/sites/{sitesId}/apidocs/{apidocsId}/documentation",
+                                    "httpMethod": "GET",
+                                    "id": "apigee.organizations.sites.apidocs.getDocumentation",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Required. Resource name of the catalog item documentation. Use the following structure in your request: `organizations/{org}/sites/{site}/apidocs/{apidoc}/documentation`",
+                                            "location": "path",
+                                            "pattern": "^organizations/[^/]+/sites/[^/]+/apidocs/[^/]+/documentation$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+name}",
+                                    "response": {
+                                        "$ref": "GoogleCloudApigeeV1ApiDocDocumentationResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "list": {
+                                    "description": "Returns the catalog items associated with a portal.",
+                                    "flatPath": "v1/organizations/{organizationsId}/sites/{sitesId}/apidocs",
+                                    "httpMethod": "GET",
+                                    "id": "apigee.organizations.sites.apidocs.list",
+                                    "parameterOrder": [
+                                        "parent"
+                                    ],
+                                    "parameters": {
+                                        "pageSize": {
+                                            "description": "Optional. The maximum number of items to return. The service may return fewer than this value. If unspecified, at most 25 books will be returned. The maximum value is 100; values above 100 will be coerced to 100.",
+                                            "format": "int32",
+                                            "location": "query",
+                                            "type": "integer"
+                                        },
+                                        "pageToken": {
+                                            "description": "Optional. A page token, received from a previous `ListApiDocs` call. Provide this to retrieve the subsequent page.",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "parent": {
+                                            "description": "Required. Name of the portal. Use the following structure in your request: `organizations/{org}/sites/{site}`",
+                                            "location": "path",
+                                            "pattern": "^organizations/[^/]+/sites/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+parent}/apidocs",
+                                    "response": {
+                                        "$ref": "GoogleCloudApigeeV1ListApiDocsResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "update": {
+                                    "description": "Updates a catalog item.",
+                                    "flatPath": "v1/organizations/{organizationsId}/sites/{sitesId}/apidocs/{apidocsId}",
+                                    "httpMethod": "PUT",
+                                    "id": "apigee.organizations.sites.apidocs.update",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Required. Name of the catalog item. Use the following structure in your request: `organizations/{org}/sites/{site}/apidocs/{apidoc}`",
+                                            "location": "path",
+                                            "pattern": "^organizations/[^/]+/sites/[^/]+/apidocs/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+name}",
+                                    "request": {
+                                        "$ref": "GoogleCloudApigeeV1ApiDoc"
+                                    },
+                                    "response": {
+                                        "$ref": "GoogleCloudApigeeV1ApiDocResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "updateDocumentation": {
+                                    "description": "Updates the documentation for the specified catalog item. Note that the documentation file contents will not be populated in the return message.",
+                                    "flatPath": "v1/organizations/{organizationsId}/sites/{sitesId}/apidocs/{apidocsId}/documentation",
+                                    "httpMethod": "PATCH",
+                                    "id": "apigee.organizations.sites.apidocs.updateDocumentation",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Required. Resource name of the catalog item documentation. Use the following structure in your request: `organizations/{org}/sites/{site}/apidocs/{apidoc}/documentation`",
+                                            "location": "path",
+                                            "pattern": "^organizations/[^/]+/sites/[^/]+/apidocs/[^/]+/documentation$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+name}",
+                                    "request": {
+                                        "$ref": "GoogleCloudApigeeV1ApiDocDocumentation"
+                                    },
+                                    "response": {
+                                        "$ref": "GoogleCloudApigeeV1ApiDocDocumentationResponse"
                                     },
                                     "scopes": [
                                         "https://www.googleapis.com/auth/cloud-platform"
@@ -9389,6 +10160,10 @@
                     "$ref": "GoogleCloudApigeeV1AdvancedApiOpsConfig",
                     "description": "Configuration for the Advanced API Ops add-on."
                 },
+                "analyticsConfig": {
+                    "$ref": "GoogleCloudApigeeV1AnalyticsConfig",
+                    "description": "Configuration for the Analytics add-on."
+                },
                 "apiSecurityConfig": {
                     "$ref": "GoogleCloudApigeeV1ApiSecurityConfig",
                     "description": "Configuration for the API Security add-on."
@@ -9486,41 +10261,52 @@
             },
             "type": "object"
         },
-        "GoogleCloudApigeeV1ApiCategory": {
-            "description": "the Api category resource wrapped with response status, error_code etc.",
-            "id": "GoogleCloudApigeeV1ApiCategory",
+        "GoogleCloudApigeeV1AnalyticsConfig": {
+            "description": "Configuration for the Analytics add-on.",
+            "id": "GoogleCloudApigeeV1AnalyticsConfig",
             "properties": {
-                "data": {
-                    "$ref": "GoogleCloudApigeeV1ApiCategoryData",
-                    "description": "Details of category."
+                "enabled": {
+                    "description": "Whether the Analytics add-on is enabled.",
+                    "type": "boolean"
                 },
-                "errorCode": {
-                    "description": "ID that can be used to find errors in the log files.",
+                "expireTimeMillis": {
+                    "description": "Output only. Time at which the Analytics add-on expires in milliseconds since epoch. If unspecified, the add-on will never expire.",
+                    "format": "int64",
+                    "readOnly": true,
                     "type": "string"
                 },
-                "message": {
-                    "description": "Description of the operation.",
+                "state": {
+                    "description": "Output only. The state of the Analytics add-on.",
+                    "enum": [
+                        "ADDON_STATE_UNSPECIFIED",
+                        "ENABLING",
+                        "ENABLED",
+                        "DISABLING",
+                        "DISABLED"
+                    ],
+                    "enumDescriptions": [
+                        "Default value.",
+                        "Add-on is in progress of enabling.",
+                        "Add-on is fully enabled and ready to use.",
+                        "Add-on is in progress of disabling.",
+                        "Add-on is fully disabled."
+                    ],
+                    "readOnly": true,
                     "type": "string"
                 },
-                "requestId": {
-                    "description": "ID that can be used to find request details in the log files.",
-                    "type": "string"
-                },
-                "status": {
-                    "description": "Status of the operation.",
+                "updateTime": {
+                    "description": "Output only. The latest update time.",
+                    "format": "google-datetime",
+                    "readOnly": true,
                     "type": "string"
                 }
             },
             "type": "object"
         },
-        "GoogleCloudApigeeV1ApiCategoryData": {
-            "description": "the Api category resource.",
-            "id": "GoogleCloudApigeeV1ApiCategoryData",
+        "GoogleCloudApigeeV1ApiCategory": {
+            "description": "`ApiCategory` represents an API category. [Catalog items](/apigee/docs/reference/apis/apigee/rest/v1/organizations.sites.apidocs) can be tagged with API categories; users viewing the API catalog in the portal will have the option to browse the catalog by category.",
+            "id": "GoogleCloudApigeeV1ApiCategory",
             "properties": {
-                "gcpResource": {
-                    "description": "GCP name of api category resource.",
-                    "type": "string"
-                },
                 "id": {
                     "description": "ID of the category (a UUID).",
                     "type": "string"
@@ -9536,6 +10322,194 @@
                 "updateTime": {
                     "description": "Time the category was last modified in milliseconds since epoch.",
                     "format": "int64",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudApigeeV1ApiCategoryResponse": {
+            "description": "The API category resource wrapped with response status, error_code, etc.",
+            "id": "GoogleCloudApigeeV1ApiCategoryResponse",
+            "properties": {
+                "data": {
+                    "$ref": "GoogleCloudApigeeV1ApiCategory",
+                    "description": "The API category resource."
+                },
+                "errorCode": {
+                    "description": "Unique error code for the request, if any.",
+                    "type": "string"
+                },
+                "message": {
+                    "description": "Description of the operation.",
+                    "type": "string"
+                },
+                "requestId": {
+                    "description": "Unique ID of the request.",
+                    "type": "string"
+                },
+                "status": {
+                    "description": "Status of the operation.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudApigeeV1ApiDoc": {
+            "description": "`ApiDoc` represents an API catalog item. Catalog items are used in two ways in a portal: - Users can browse and interact with a visual representation of the API documentation - The `api_product_name` field provides a link to a backing [API product] (/apigee/docs/reference/apis/apigee/rest/v1/organizations.apiproducts). Through this link, portal users can create and manage developer apps linked to one or more API products.",
+            "id": "GoogleCloudApigeeV1ApiDoc",
+            "properties": {
+                "anonAllowed": {
+                    "description": "Optional. Boolean flag that manages user access to the catalog item. When true, the catalog item can be viewed anonymously; otherwise, only registered users may view it. Note: when the parent portal is enrolled in the [audience management feature](https://cloud.google.com/apigee/docs/api-platform/publish/portal/portal-audience#enrolling_in_the_beta_release_of_the_audience_management_feature), this flag is ignored; instead visibility must be further managed in the management UI (see [Manage the visibility of an API in your portal](https://cloud.google.com/apigee/docs/api-platform/publish/portal/publish-apis#visibility)).",
+                    "type": "boolean"
+                },
+                "apiProductName": {
+                    "description": "Required. Immutable. The `name` field of the associated [API product](/apigee/docs/reference/apis/apigee/rest/v1/organizations.apiproducts). A portal may have only one catalog item associated with a given API product.",
+                    "type": "string"
+                },
+                "categoryIds": {
+                    "description": "Optional. The IDs of the API categories to which this catalog item belongs.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "description": {
+                    "description": "Optional. Description of the catalog item. Max length is 10,000 characters.",
+                    "type": "string"
+                },
+                "edgeAPIProductName": {
+                    "description": "Optional. Immutable. DEPRECATED: use the `apiProductName` field instead",
+                    "type": "string"
+                },
+                "graphqlEndpointUrl": {
+                    "deprecated": true,
+                    "description": "Optional. DEPRECATED: manage documentation through the `getDocumentation` and `updateDocumentation` methods",
+                    "type": "string"
+                },
+                "graphqlSchema": {
+                    "deprecated": true,
+                    "description": "Optional. DEPRECATED: manage documentation through the `getDocumentation` and `updateDocumentation` methods",
+                    "type": "string"
+                },
+                "graphqlSchemaDisplayName": {
+                    "deprecated": true,
+                    "description": "Optional. DEPRECATED: manage documentation through the `getDocumentation` and `updateDocumentation` methods",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "Output only. The ID of the catalog item.",
+                    "format": "int64",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "imageUrl": {
+                    "description": "Optional. Location of the image used for the catalog item in the catalog. For portal files, this can have the format `/files/{filename}`. Max length is 2,083 characters.",
+                    "type": "string"
+                },
+                "modified": {
+                    "description": "Output only. Time the catalog item was last modified in milliseconds since epoch.",
+                    "format": "int64",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "published": {
+                    "description": "Optional. Denotes whether the catalog item is published to the portal or is in a draft state. When the parent portal is enrolled in the [audience management feature](https://cloud.google.com/apigee/docs/api-platform/publish/portal/portal-audience#enrolling_in_the_beta_release_of_the_audience_management_feature), the visibility must be further managed in the management UI (see [Manage the visibility of an API in your portal](https://cloud.google.com/apigee/docs/api-platform/publish/portal/publish-apis#visibility)) before it can be visible to any users. If not enrolled in the audience management feature, the visibility is further managed by the `anonAllowed` flag.",
+                    "type": "boolean"
+                },
+                "requireCallbackUrl": {
+                    "description": "Optional. Whether a callback URL is required when this catalog item's API product is enabled in a developer app. When true, a portal user will be required to input a URL when managing the app (this is typically used for the app's OAuth flow).",
+                    "type": "boolean"
+                },
+                "siteId": {
+                    "description": "Output only. The ID of the parent portal.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "specId": {
+                    "deprecated": true,
+                    "description": "Optional. DEPRECATED: DO NOT USE",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Required. The user-facing name of the catalog item. `title` must be a non-empty string with a max length of 255 characters.",
+                    "type": "string"
+                },
+                "visibility": {
+                    "description": "Optional. DEPRECATED: use the `published` field instead",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudApigeeV1ApiDocDocumentation": {
+            "description": "The documentation for a catalog item.",
+            "id": "GoogleCloudApigeeV1ApiDocDocumentation",
+            "properties": {
+                "graphqlDocumentation": {
+                    "$ref": "GoogleCloudApigeeV1GraphqlDocumentation",
+                    "description": "Optional. GraphQL documentation."
+                },
+                "oasDocumentation": {
+                    "$ref": "GoogleCloudApigeeV1OASDocumentation",
+                    "description": "Optional. OpenAPI Specification documentation."
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudApigeeV1ApiDocDocumentationResponse": {
+            "description": "The catalog item documentation wrapped with response status, error_code, etc.",
+            "id": "GoogleCloudApigeeV1ApiDocDocumentationResponse",
+            "properties": {
+                "data": {
+                    "$ref": "GoogleCloudApigeeV1ApiDocDocumentation",
+                    "description": "Output only. The documentation resource.",
+                    "readOnly": true
+                },
+                "errorCode": {
+                    "description": "Output only. Unique error code for the request, if any.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "message": {
+                    "description": "Output only. Description of the operation.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "requestId": {
+                    "description": "Output only. Unique ID of the request.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "status": {
+                    "description": "Output only. Status of the operation.",
+                    "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudApigeeV1ApiDocResponse": {
+            "description": "The catalog item resource wrapped with response status, error_code, etc.",
+            "id": "GoogleCloudApigeeV1ApiDocResponse",
+            "properties": {
+                "data": {
+                    "$ref": "GoogleCloudApigeeV1ApiDoc",
+                    "description": "The catalog item resource."
+                },
+                "errorCode": {
+                    "description": "Unique error code for the request, if any.",
+                    "type": "string"
+                },
+                "message": {
+                    "description": "Description of the operation.",
+                    "type": "string"
+                },
+                "requestId": {
+                    "description": "Unique ID of the request.",
+                    "type": "string"
+                },
+                "status": {
+                    "description": "Status of the operation.",
                     "type": "string"
                 }
             },
@@ -9760,6 +10734,11 @@
                     },
                     "description": "Metadata describing the API proxy revision as a key-value map.",
                     "type": "object"
+                },
+                "hasExtensiblePolicy": {
+                    "description": "Output only. This field will be marked as true if revision contains any policies marked as extensible.",
+                    "readOnly": true,
+                    "type": "boolean"
                 },
                 "integrationEndpoints": {
                     "description": "List of IntegrationEndpoints in the '/integration-endpoints' directory of the API proxy. This is a 'manifest' setting designed to provide visibility into the contents of the API proxy.",
@@ -10343,6 +11322,35 @@
                     "items": {
                         "$ref": "GoogleCloudApigeeV1Attribute"
                     },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudApigeeV1BatchUpdateSecurityIncidentsRequest": {
+            "description": "Request for BatchUpdateSecurityIncident.",
+            "id": "GoogleCloudApigeeV1BatchUpdateSecurityIncidentsRequest",
+            "properties": {
+                "requests": {
+                    "description": "Optional. Required. The request message specifying the resources to update. A maximum of 1000 can be modified in a batch.",
+                    "items": {
+                        "$ref": "GoogleCloudApigeeV1UpdateSecurityIncidentRequest"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudApigeeV1BatchUpdateSecurityIncidentsResponse": {
+            "description": "Response for BatchUpdateSecurityIncident.",
+            "id": "GoogleCloudApigeeV1BatchUpdateSecurityIncidentsResponse",
+            "properties": {
+                "securityIncidents": {
+                    "description": "Output only. Updated security incidents",
+                    "items": {
+                        "$ref": "GoogleCloudApigeeV1SecurityIncident"
+                    },
+                    "readOnly": true,
                     "type": "array"
                 }
             },
@@ -11110,11 +12118,11 @@
             "id": "GoogleCloudApigeeV1DeleteResponse",
             "properties": {
                 "errorCode": {
-                    "description": "ID that can be used to find errors in the log files.",
+                    "description": "Unique error code for the request, if any.",
                     "type": "string"
                 },
                 "gcpResource": {
-                    "description": "GCP name of deleted resource.",
+                    "description": "Google Cloud name of deleted resource.",
                     "type": "string"
                 },
                 "message": {
@@ -11122,7 +12130,7 @@
                     "type": "string"
                 },
                 "requestId": {
-                    "description": "ID that can be used to find request details in the log files.",
+                    "description": "Unique ID of the request.",
                     "type": "string"
                 },
                 "status": {
@@ -11168,6 +12176,21 @@
                         "$ref": "GoogleCloudApigeeV1PodStatus"
                     },
                     "type": "array"
+                },
+                "proxyDeploymentType": {
+                    "description": "Output only. The type of the deployment (standard or extensible) Deployed proxy revision will be marked as extensible in following 2 cases. 1. The deployed proxy revision uses extensible policies. 2. If a environment supports flowhooks and flow hook is configured.",
+                    "enum": [
+                        "PROXY_DEPLOYMENT_TYPE_UNSPECIFIED",
+                        "STANDARD",
+                        "EXTENSIBLE"
+                    ],
+                    "enumDescriptions": [
+                        "Default value till public preview. After public preview this value should not be returned.",
+                        "Deployment will be of type Standard if only Standard proxies are used",
+                        "Proxy will be of type Extensible if deployments uses one or more Extensible proxies"
+                    ],
+                    "readOnly": true,
+                    "type": "string"
                 },
                 "revision": {
                     "description": "API proxy revision.",
@@ -11707,6 +12730,34 @@
             },
             "type": "object"
         },
+        "GoogleCloudApigeeV1DisableSecurityActionRequest": {
+            "description": "Message to disable an enabled SecurityAction.",
+            "id": "GoogleCloudApigeeV1DisableSecurityActionRequest",
+            "properties": {},
+            "type": "object"
+        },
+        "GoogleCloudApigeeV1DocumentationFile": {
+            "description": "Documentation file contents for a catalog item.",
+            "id": "GoogleCloudApigeeV1DocumentationFile",
+            "properties": {
+                "contents": {
+                    "description": "Required. The file contents. The max size is 4 MB.",
+                    "format": "byte",
+                    "type": "string"
+                },
+                "displayName": {
+                    "description": "Required. A display name for the file, shown in the management UI. Max length is 255 characters.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudApigeeV1EnableSecurityActionRequest": {
+            "description": "Message to enable a disabled SecurityAction.",
+            "id": "GoogleCloudApigeeV1EnableSecurityActionRequest",
+            "properties": {},
+            "type": "object"
+        },
         "GoogleCloudApigeeV1EndpointAttachment": {
             "description": "Apigee endpoint attachment. For more information, see [Southbound networking patterns] (https://cloud.google.com/apigee/docs/api-platform/architecture/southbound-networking-patterns-endpoints).",
             "id": "GoogleCloudApigeeV1EndpointAttachment",
@@ -11860,7 +12911,7 @@
                     "type": "string"
                 },
                 "forwardProxyUri": {
-                    "description": "Optional. Url of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that scheme must be one of \"http\" or \"https\", and port must be supplied.",
+                    "description": "Optional. URI of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that the scheme must be one of \"http\" or \"https\", and the port must be supplied. To remove a forward proxy setting, update the field to an empty value. Note: At this time, PUT operations to add forwardProxyUri to an existing environment fail if the environment has nodeConfig set up. To successfully add the forwardProxyUri setting in this case, include the NodeConfig details with the request.",
                     "type": "string"
                 },
                 "hasAttachedFlowHooks": {
@@ -11902,6 +12953,22 @@
                     ],
                     "readOnly": true,
                     "type": "string"
+                },
+                "type": {
+                    "description": "Optional. EnvironmentType selected for the environment.",
+                    "enum": [
+                        "ENVIRONMENT_TYPE_UNSPECIFIED",
+                        "BASE",
+                        "INTERMEDIATE",
+                        "COMPREHENSIVE"
+                    ],
+                    "enumDescriptions": [
+                        "Environment type not specified.",
+                        "This is the default type. Base environment has limited capacity and capabilities and are usually used when you are getting started with Apigee or while experimenting. Refer to Apigee's public documentation for more details.",
+                        "Intermediate environment supports API management features and higher capacity than Base environment. Refer to Apigee's public documentation for more details.",
+                        "Comprehensive environment supports advanced capabilites and even higher capacity than Intermediate environment. Refer to Apigee's public documentation for more details."
+                    ],
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -11909,6 +12976,10 @@
         "GoogleCloudApigeeV1EnvironmentConfig": {
             "id": "GoogleCloudApigeeV1EnvironmentConfig",
             "properties": {
+                "addonsConfig": {
+                    "$ref": "GoogleCloudApigeeV1RuntimeAddonsConfig",
+                    "description": "The latest runtime configurations for add-ons."
+                },
                 "arcConfigLocation": {
                     "description": "The location for the config blob of API Runtime Control, aka Envoy Adapter, for op-based authentication as a URI, e.g. a Cloud Storage URI. This is only used by Envoy-based gateways.",
                     "type": "string"
@@ -12417,6 +13488,21 @@
             },
             "type": "object"
         },
+        "GoogleCloudApigeeV1GraphqlDocumentation": {
+            "description": "GraphQL documentation for a catalog item.",
+            "id": "GoogleCloudApigeeV1GraphqlDocumentation",
+            "properties": {
+                "endpointUri": {
+                    "description": "Required. The GraphQL endpoint URI to be queried by API consumers. Max length is 2,083 characters.",
+                    "type": "string"
+                },
+                "schema": {
+                    "$ref": "GoogleCloudApigeeV1DocumentationFile",
+                    "description": "Required. The documentation file contents for the GraphQL schema."
+                }
+            },
+            "type": "object"
+        },
         "GoogleCloudApigeeV1GrpcOperationConfig": {
             "description": "Binds the resources in a proxy or remote service with the gRPC operation and its associated quota enforcement.",
             "id": "GoogleCloudApigeeV1GrpcOperationConfig",
@@ -12788,18 +13874,18 @@
             "type": "object"
         },
         "GoogleCloudApigeeV1ListApiCategoriesResponse": {
-            "description": "the response for ListApiCategoriesRequest.",
+            "description": "The response for `ListApiCategoriesRequest`. Next ID: 6",
             "id": "GoogleCloudApigeeV1ListApiCategoriesResponse",
             "properties": {
                 "data": {
-                    "description": "Details of categories.",
+                    "description": "The API category resources.",
                     "items": {
-                        "$ref": "GoogleCloudApigeeV1ApiCategoryData"
+                        "$ref": "GoogleCloudApigeeV1ApiCategory"
                     },
                     "type": "array"
                 },
                 "errorCode": {
-                    "description": "ID that can be used to find errors in the log files.",
+                    "description": "Unique error code for the request, if any.",
                     "type": "string"
                 },
                 "message": {
@@ -12807,7 +13893,40 @@
                     "type": "string"
                 },
                 "requestId": {
-                    "description": "ID that can be used to find request details in the log files.",
+                    "description": "Unique ID of the request.",
+                    "type": "string"
+                },
+                "status": {
+                    "description": "Status of the operation.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudApigeeV1ListApiDocsResponse": {
+            "id": "GoogleCloudApigeeV1ListApiDocsResponse",
+            "properties": {
+                "data": {
+                    "description": "The catalog item resources.",
+                    "items": {
+                        "$ref": "GoogleCloudApigeeV1ApiDoc"
+                    },
+                    "type": "array"
+                },
+                "errorCode": {
+                    "description": "Unique error code for the request, if any.",
+                    "type": "string"
+                },
+                "message": {
+                    "description": "Description of the operation.",
+                    "type": "string"
+                },
+                "nextPageToken": {
+                    "description": "A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages.",
+                    "type": "string"
+                },
+                "requestId": {
+                    "description": "Unique ID of the request.",
                     "type": "string"
                 },
                 "status": {
@@ -13254,6 +14373,24 @@
             },
             "type": "object"
         },
+        "GoogleCloudApigeeV1ListSecurityActionsResponse": {
+            "description": "Contains a list of SecurityActions in response to a ListSecurityActionRequest.",
+            "id": "GoogleCloudApigeeV1ListSecurityActionsResponse",
+            "properties": {
+                "nextPageToken": {
+                    "description": "A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages.",
+                    "type": "string"
+                },
+                "securityActions": {
+                    "description": "The SecurityActions for the specified environment.",
+                    "items": {
+                        "$ref": "GoogleCloudApigeeV1SecurityAction"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "GoogleCloudApigeeV1ListSecurityIncidentsResponse": {
             "description": "Response for ListSecurityIncidents.",
             "id": "GoogleCloudApigeeV1ListSecurityIncidentsResponse",
@@ -13506,6 +14643,32 @@
                     "description": "Optional. The minimum total number of gateway nodes that the is reserved for all instances that has the specified environment. If not specified, the default is determined by the recommended minimum number of nodes for that gateway.",
                     "format": "int64",
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudApigeeV1OASDocumentation": {
+            "description": "OpenAPI Specification documentation for a catalog item.",
+            "id": "GoogleCloudApigeeV1OASDocumentation",
+            "properties": {
+                "format": {
+                    "description": "Output only. The format of the input specification file contents.",
+                    "enum": [
+                        "FORMAT_UNSPECIFIED",
+                        "YAML",
+                        "JSON"
+                    ],
+                    "enumDescriptions": [
+                        "The format is not available.",
+                        "YAML format.",
+                        "JSON format."
+                    ],
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "spec": {
+                    "$ref": "GoogleCloudApigeeV1DocumentationFile",
+                    "description": "Required. The documentation file contents for the OpenAPI Specification. JSON and YAML file formats are supported."
                 }
             },
             "type": "object"
@@ -13764,7 +14927,7 @@
                     "enumDescriptions": [
                         "Billing type not specified.",
                         "A pre-paid subscription to Apigee.",
-                        "Free and limited access to Apigee for evaluation purposes only. only.",
+                        "Free and limited access to Apigee for evaluation purposes only.",
                         "Access to Apigee using a Pay-As-You-Go plan."
                     ],
                     "type": "string"
@@ -13872,6 +15035,21 @@
                         "Resource is provisioned and ready to use.",
                         "The resource is being deleted.",
                         "The resource is being updated."
+                    ],
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "subscriptionPlan": {
+                    "description": "Output only. Subscription plan that the customer has purchased. Output only.",
+                    "enum": [
+                        "SUBSCRIPTION_PLAN_UNSPECIFIED",
+                        "SUBSCRIPTION_2021",
+                        "SUBSCRIPTION_2024"
+                    ],
+                    "enumDescriptions": [
+                        "Subscription plan not specified.",
+                        "Traditional subscription plan.",
+                        "New subscription plan that provides standard proxy and scaled proxy implementation."
                     ],
                     "readOnly": true,
                     "type": "string"
@@ -13999,6 +15177,87 @@
                     "type": "array"
                 }
             },
+            "type": "object"
+        },
+        "GoogleCloudApigeeV1ProfileConfig": {
+            "description": "ProfileConfig defines a set of categories and policies which will be used to compute security score.",
+            "id": "GoogleCloudApigeeV1ProfileConfig",
+            "properties": {
+                "categories": {
+                    "description": "List of categories of profile config.",
+                    "items": {
+                        "$ref": "GoogleCloudApigeeV1ProfileConfigCategory"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudApigeeV1ProfileConfigAbuse": {
+            "description": "Checks for abuse, which includes any requests sent to the API for purposes other than what it is intended for, such as high volumes of requests, data scraping, and abuse related to authorization.",
+            "id": "GoogleCloudApigeeV1ProfileConfigAbuse",
+            "properties": {},
+            "type": "object"
+        },
+        "GoogleCloudApigeeV1ProfileConfigAuthorization": {
+            "description": "By default, following policies will be included: - JWS - JWT - OAuth - BasicAuth - APIKey",
+            "id": "GoogleCloudApigeeV1ProfileConfigAuthorization",
+            "properties": {},
+            "type": "object"
+        },
+        "GoogleCloudApigeeV1ProfileConfigCORS": {
+            "description": "Checks to see if you have CORS policy in place.",
+            "id": "GoogleCloudApigeeV1ProfileConfigCORS",
+            "properties": {},
+            "type": "object"
+        },
+        "GoogleCloudApigeeV1ProfileConfigCategory": {
+            "description": "Advanced API Security provides security profile that scores the following categories.",
+            "id": "GoogleCloudApigeeV1ProfileConfigCategory",
+            "properties": {
+                "abuse": {
+                    "$ref": "GoogleCloudApigeeV1ProfileConfigAbuse",
+                    "description": "Checks for abuse, which includes any requests sent to the API for purposes other than what it is intended for, such as high volumes of requests, data scraping, and abuse related to authorization."
+                },
+                "authorization": {
+                    "$ref": "GoogleCloudApigeeV1ProfileConfigAuthorization",
+                    "description": "Checks to see if you have an authorization policy in place."
+                },
+                "cors": {
+                    "$ref": "GoogleCloudApigeeV1ProfileConfigCORS",
+                    "description": "Checks to see if you have CORS policy in place."
+                },
+                "mediation": {
+                    "$ref": "GoogleCloudApigeeV1ProfileConfigMediation",
+                    "description": "Checks to see if you have a mediation policy in place."
+                },
+                "mtls": {
+                    "$ref": "GoogleCloudApigeeV1ProfileConfigMTLS",
+                    "description": "Checks to see if you have configured mTLS for the target server."
+                },
+                "threat": {
+                    "$ref": "GoogleCloudApigeeV1ProfileConfigThreat",
+                    "description": "Checks to see if you have a threat protection policy in place."
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudApigeeV1ProfileConfigMTLS": {
+            "description": "Checks to see if you have configured mTLS for the target server.",
+            "id": "GoogleCloudApigeeV1ProfileConfigMTLS",
+            "properties": {},
+            "type": "object"
+        },
+        "GoogleCloudApigeeV1ProfileConfigMediation": {
+            "description": "By default, following policies will be included: - OASValidation - SOAPMessageValidation",
+            "id": "GoogleCloudApigeeV1ProfileConfigMediation",
+            "properties": {},
+            "type": "object"
+        },
+        "GoogleCloudApigeeV1ProfileConfigThreat": {
+            "description": "By default, following policies will be included: - XMLThreatProtection - JSONThreatProtection",
+            "id": "GoogleCloudApigeeV1ProfileConfigThreat",
+            "properties": {},
             "type": "object"
         },
         "GoogleCloudApigeeV1Properties": {
@@ -14844,6 +16103,59 @@
             },
             "type": "object"
         },
+        "GoogleCloudApigeeV1RuntimeAddonsConfig": {
+            "description": "RuntimeAddonsConfig defines the runtime configurations for add-ons in an environment.",
+            "id": "GoogleCloudApigeeV1RuntimeAddonsConfig",
+            "properties": {
+                "analyticsConfig": {
+                    "$ref": "GoogleCloudApigeeV1RuntimeAnalyticsConfig",
+                    "description": "Runtime configuration for Analytics add-on."
+                },
+                "apiSecurityConfig": {
+                    "$ref": "GoogleCloudApigeeV1RuntimeApiSecurityConfig",
+                    "description": "Runtime configuration for API Security add-on."
+                },
+                "name": {
+                    "description": "Name of the addons config in the format: `organizations/{org}/environments/{env}/addonsConfig`",
+                    "type": "string"
+                },
+                "revisionId": {
+                    "description": "Revision number used by the runtime to detect config changes.",
+                    "type": "string"
+                },
+                "uid": {
+                    "description": "UID is to detect if config is recreated after deletion. The add-on config will only be deleted when the environment itself gets deleted, thus it will always be the same as the UID of EnvironmentConfig.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudApigeeV1RuntimeAnalyticsConfig": {
+            "description": "Runtime configuration for the Analytics add-on.",
+            "id": "GoogleCloudApigeeV1RuntimeAnalyticsConfig",
+            "properties": {
+                "billingPipelineEnabled": {
+                    "description": "If Runtime should send billing data to AX or not.",
+                    "type": "boolean"
+                },
+                "enabled": {
+                    "description": "If the Analytics is enabled or not.",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudApigeeV1RuntimeApiSecurityConfig": {
+            "description": "Runtime configuration for the API Security add-on.",
+            "id": "GoogleCloudApigeeV1RuntimeApiSecurityConfig",
+            "properties": {
+                "enabled": {
+                    "description": "If the API Security is enabled or not.",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
         "GoogleCloudApigeeV1RuntimeConfig": {
             "description": "Runtime configuration for the organization. Response for GetRuntimeConfig.",
             "id": "GoogleCloudApigeeV1RuntimeConfig",
@@ -15152,6 +16464,204 @@
             },
             "type": "object"
         },
+        "GoogleCloudApigeeV1SecurityAction": {
+            "description": "A SecurityAction is rule that can be enforced at an environment level. The result is one of: - A denied API call - An explicitly allowed API call - A flagged API call (HTTP headers added before the target receives it) At least one condition is required to create a SecurityAction.",
+            "id": "GoogleCloudApigeeV1SecurityAction",
+            "properties": {
+                "allow": {
+                    "$ref": "GoogleCloudApigeeV1SecurityActionAllow",
+                    "description": "Allow a request through if it matches this SecurityAction."
+                },
+                "conditionConfig": {
+                    "$ref": "GoogleCloudApigeeV1SecurityActionConditionConfig",
+                    "description": "Required. A valid SecurityAction must contain at least one condition."
+                },
+                "createTime": {
+                    "description": "Output only. The create time for this SecurityAction.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "deny": {
+                    "$ref": "GoogleCloudApigeeV1SecurityActionDeny",
+                    "description": "Deny a request through if it matches this SecurityAction."
+                },
+                "description": {
+                    "description": "Optional. An optional user provided description of the SecurityAction.",
+                    "type": "string"
+                },
+                "expireTime": {
+                    "description": "The expiration for this SecurityAction.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "flag": {
+                    "$ref": "GoogleCloudApigeeV1SecurityActionFlag",
+                    "description": "Flag a request through if it matches this SecurityAction."
+                },
+                "name": {
+                    "description": "Immutable. This field is ignored during creation as per AIP-133. Please set the `security_action_id` field in the CreateSecurityActionRequest when creating a new SecurityAction. Format: organizations/{org}/environments/{env}/securityActions/{security_action}",
+                    "type": "string"
+                },
+                "state": {
+                    "description": "Required. Only an ENABLED SecurityAction is enforced. An ENABLED SecurityAction past its expiration time will not be enforced.",
+                    "enum": [
+                        "STATE_UNSPECIFIED",
+                        "ENABLED",
+                        "DISABLED"
+                    ],
+                    "enumDescriptions": [
+                        "The default value. This only exists for forward compatibility. A create request with this value will be rejected.",
+                        "An ENABLED SecurityAction is actively enforced if the `expiration_time` is in the future.",
+                        "A disabled SecurityAction is never enforced."
+                    ],
+                    "type": "string"
+                },
+                "ttl": {
+                    "description": "Input only. The TTL for this SecurityAction.",
+                    "format": "google-duration",
+                    "type": "string"
+                },
+                "updateTime": {
+                    "description": "Output only. The update time for this SecurityAction. This reflects when this SecurityAction changed states.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudApigeeV1SecurityActionAllow": {
+            "description": "Message that should be set in case of an Allow Action. This does not have any fields.",
+            "id": "GoogleCloudApigeeV1SecurityActionAllow",
+            "properties": {},
+            "type": "object"
+        },
+        "GoogleCloudApigeeV1SecurityActionConditionConfig": {
+            "description": "The following are a list of conditions. A valid SecurityAction must contain at least one condition. Within a condition, each element is ORed. Across conditions elements are ANDed. For example if a SecurityAction has the following: ip_address_ranges: [\"ip1\", \"ip2\"] and bot_reasons: [\"Flooder\", \"Robot Abuser\"] then this is interpreted as: enforce the action if the incoming request has ((ip_address_ranges = \"ip1\" OR ip_address_ranges = \"ip2\") AND (bot_reasons=\"Flooder\" OR bot_reasons=\"Robot Abuser\")). Conditions other than ip_address_ranges and bot_reasons cannot be ANDed.",
+            "id": "GoogleCloudApigeeV1SecurityActionConditionConfig",
+            "properties": {
+                "accessTokens": {
+                    "description": "Optional. A list of access_tokens. Limit 1000 per action.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "apiKeys": {
+                    "description": "Optional. A list of API keys. Limit 1000 per action.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "apiProducts": {
+                    "description": "Optional. A list of API Products. Limit 1000 per action.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "botReasons": {
+                    "description": "Optional. A list of Bot Reasons. Current options: Flooder, Brute Guessor, Static Content Scraper, OAuth Abuser, Robot Abuser, TorListRule, Advanced Anomaly Detection, Advanced API Scraper, Search Engine Crawlers, Public Clouds, Public Cloud AWS, Public Cloud Azure, and Public Cloud Google.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "developerApps": {
+                    "description": "Optional. A list of developer apps. Limit 1000 per action.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "developers": {
+                    "description": "Optional. A list of developers. Limit 1000 per action.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "ipAddressRanges": {
+                    "description": "Optional. A list of IP addresses. This could be either IPv4 or IPv6. Limited to 100 per action.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "userAgents": {
+                    "description": "Optional. A list of user agents to deny. We look for exact matches. Limit 50 per action.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudApigeeV1SecurityActionDeny": {
+            "description": "Message that should be set in case of a Deny Action.",
+            "id": "GoogleCloudApigeeV1SecurityActionDeny",
+            "properties": {
+                "responseCode": {
+                    "description": "Optional. The HTTP response code if the Action = DENY.",
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudApigeeV1SecurityActionFlag": {
+            "description": "The message that should be set in the case of a Flag action.",
+            "id": "GoogleCloudApigeeV1SecurityActionFlag",
+            "properties": {
+                "headers": {
+                    "description": "Optional. A list of HTTP headers to be sent to the target in case of a FLAG SecurityAction. Limit 5 headers per SecurityAction. At least one is mandatory.",
+                    "items": {
+                        "$ref": "GoogleCloudApigeeV1SecurityActionHttpHeader"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudApigeeV1SecurityActionHttpHeader": {
+            "description": "An HTTP header.",
+            "id": "GoogleCloudApigeeV1SecurityActionHttpHeader",
+            "properties": {
+                "name": {
+                    "description": "The header name to be sent to the target.",
+                    "type": "string"
+                },
+                "value": {
+                    "description": "The header value to be sent to the target.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudApigeeV1SecurityActionsConfig": {
+            "description": "SecurityActionsConfig reflects the current state of the SecurityActions feature. This is a singleton resource: https://google.aip.dev/156",
+            "id": "GoogleCloudApigeeV1SecurityActionsConfig",
+            "properties": {
+                "enabled": {
+                    "description": "The flag that controls whether this feature is enabled. This is `unset` by default. When this flag is `false`, even if individual rules are enabled, no SecurityActions will be enforced.",
+                    "type": "boolean"
+                },
+                "name": {
+                    "description": "This is a singleton resource, the name will always be set by SecurityActions and any user input will be ignored. The name is always: `organizations/{org}/environments/{env}/security_actions_config`",
+                    "type": "string"
+                },
+                "updateTime": {
+                    "description": "Output only. The update time for configuration.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "GoogleCloudApigeeV1SecurityIncident": {
             "description": "Represents an SecurityIncident resource.",
             "id": "GoogleCloudApigeeV1SecurityIncident",
@@ -15165,7 +16675,7 @@
                     "type": "array"
                 },
                 "displayName": {
-                    "description": "Display name of the security incident.",
+                    "description": "Optional. Display name of the security incident.",
                     "type": "string"
                 },
                 "firstDetectedTime": {
@@ -15180,8 +16690,28 @@
                     "readOnly": true,
                     "type": "string"
                 },
+                "lastObservabilityChangeTime": {
+                    "description": "Output only. The time when the incident observability was last changed.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                },
                 "name": {
                     "description": "Immutable. Name of the security incident resource. Format: organizations/{org}/environments/{environment}/securityIncidents/{incident} Example: organizations/apigee-org/environments/dev/securityIncidents/1234-5678-9101-1111",
+                    "type": "string"
+                },
+                "observability": {
+                    "description": "Optional. Indicates if the user archived this incident.",
+                    "enum": [
+                        "OBSERVABILITY_UNSPECIFIED",
+                        "ACTIVE",
+                        "ARCHIVED"
+                    ],
+                    "enumDescriptions": [
+                        "The incident observability is unspecified.",
+                        "The incident is currently active. Can change to this status from archived.",
+                        "The incident is currently archived and was archived by the customer."
+                    ],
                     "type": "string"
                 },
                 "riskLevel": {
@@ -15218,7 +16748,8 @@
                     "type": "string"
                 },
                 "displayName": {
-                    "description": "Display name of the security profile.",
+                    "deprecated": true,
+                    "description": "DEPRECATED: DO NOT USE Display name of the security profile.",
                     "type": "string"
                 },
                 "environments": {
@@ -15244,6 +16775,10 @@
                     "description": "Immutable. Name of the security profile resource. Format: organizations/{org}/securityProfiles/{profile}",
                     "type": "string"
                 },
+                "profileConfig": {
+                    "$ref": "GoogleCloudApigeeV1ProfileConfig",
+                    "description": "Required. Customized profile configuration that computes the security score."
+                },
                 "revisionCreateTime": {
                     "description": "Output only. The time when revision was created.",
                     "format": "google-datetime",
@@ -15257,7 +16792,8 @@
                     "type": "string"
                 },
                 "revisionPublishTime": {
-                    "description": "Output only. The time when revision was published. Once published, the security profile revision cannot be updated further and can be attached to environments.",
+                    "deprecated": true,
+                    "description": "Output only. DEPRECATED: DO NOT USE The time when revision was published. Once published, the security profile revision cannot be updated further and can be attached to environments.",
                     "format": "google-datetime",
                     "readOnly": true,
                     "type": "string"
@@ -15307,11 +16843,12 @@
                     "type": "string"
                 },
                 "name": {
-                    "description": "Immutable. Name of the profile-environment association resource. Format: organizations/{org}/securityProfiles/{profile}/environments/{env}",
+                    "description": "Immutable. Name of the environment that the profile is attached to.",
                     "type": "string"
                 },
                 "securityProfileRevisionId": {
-                    "description": "Revision ID of the security profile.",
+                    "deprecated": true,
+                    "description": "DEPRECATED: DO NOT USE Revision ID of the security profile.",
                     "format": "int64",
                     "type": "string"
                 }
@@ -15569,6 +17106,21 @@
             },
             "type": "object"
         },
+        "GoogleCloudApigeeV1SecuritySettings": {
+            "description": "SecuritySettings reflects the current state of the SecuritySettings feature.",
+            "id": "GoogleCloudApigeeV1SecuritySettings",
+            "properties": {
+                "mlRetrainingFeedbackEnabled": {
+                    "description": "Optional. If true the user consents to the use of ML models for Abuse detection.",
+                    "type": "boolean"
+                },
+                "name": {
+                    "description": "Identifier. Full resource name is always `organizations/{org}/securitySettings`.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "GoogleCloudApigeeV1ServiceIssuersMapping": {
             "id": "GoogleCloudApigeeV1ServiceIssuersMapping",
             "properties": {
@@ -15598,6 +17150,21 @@
                     "description": "The first transaction creation timestamp in millisecond, recorded by UAP.",
                     "format": "int64",
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudApigeeV1SetAddonEnablementRequest": {
+            "description": "Request for SetAddonEnablement.",
+            "id": "GoogleCloudApigeeV1SetAddonEnablementRequest",
+            "properties": {
+                "analyticsEnabled": {
+                    "description": "If the Analytics should be enabled in the environment.",
+                    "type": "boolean"
+                },
+                "apiSecurityEnabled": {
+                    "description": "If the API Security should be enabled in the environment.",
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -16204,6 +17771,22 @@
             },
             "type": "object"
         },
+        "GoogleCloudApigeeV1UpdateSecurityIncidentRequest": {
+            "description": "Request for UpdateSecurityIncident.",
+            "id": "GoogleCloudApigeeV1UpdateSecurityIncidentRequest",
+            "properties": {
+                "securityIncident": {
+                    "$ref": "GoogleCloudApigeeV1SecurityIncident",
+                    "description": "Required. The security incident to update. Must contain all existing populated fields of the current incident."
+                },
+                "updateMask": {
+                    "description": "Required. The list of fields to update. Allowed fields are: LINT.IfChange(allowed_update_fields_comment) - observability LINT.ThenChange()",
+                    "format": "google-fieldmask",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "GoogleIamV1AuditConfig": {
             "description": "Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { \"audit_configs\": [ { \"service\": \"allServices\", \"audit_log_configs\": [ { \"log_type\": \"DATA_READ\", \"exempted_members\": [ \"user:jose@example.com\" ] }, { \"log_type\": \"DATA_WRITE\" }, { \"log_type\": \"ADMIN_READ\" } ] }, { \"service\": \"sampleservice.googleapis.com\", \"audit_log_configs\": [ { \"log_type\": \"DATA_READ\" }, { \"log_type\": \"DATA_WRITE\", \"exempted_members\": [ \"user:aliya@example.com\" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.",
             "id": "GoogleIamV1AuditConfig",
@@ -16261,21 +17844,21 @@
                     "description": "The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies)."
                 },
                 "members": {
-                    "description": "Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.",
+                    "description": "Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.",
                     "items": {
                         "type": "string"
                     },
                     "type": "array"
                 },
                 "role": {
-                    "description": "Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.",
+                    "description": "Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).",
                     "type": "string"
                 }
             },
             "type": "object"
         },
         "GoogleIamV1Policy": {
-            "description": "An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { \"bindings\": [ { \"role\": \"roles/resourcemanager.organizationAdmin\", \"members\": [ \"user:mike@example.com\", \"group:admins@example.com\", \"domain:google.com\", \"serviceAccount:my-project-id@appspot.gserviceaccount.com\" ] }, { \"role\": \"roles/resourcemanager.organizationViewer\", \"members\": [ \"user:eve@example.com\" ], \"condition\": { \"title\": \"expirable access\", \"description\": \"Does not grant access after Sep 2020\", \"expression\": \"request.time < timestamp('2020-10-01T00:00:00.000Z')\", } } ], \"etag\": \"BwWWja0YfJA=\", \"version\": 3 } **YAML example:** bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).",
+            "description": "An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { \"bindings\": [ { \"role\": \"roles/resourcemanager.organizationAdmin\", \"members\": [ \"user:mike@example.com\", \"group:admins@example.com\", \"domain:google.com\", \"serviceAccount:my-project-id@appspot.gserviceaccount.com\" ] }, { \"role\": \"roles/resourcemanager.organizationViewer\", \"members\": [ \"user:eve@example.com\" ], \"condition\": { \"title\": \"expirable access\", \"description\": \"Does not grant access after Sep 2020\", \"expression\": \"request.time < timestamp('2020-10-01T00:00:00.000Z')\", } } ], \"etag\": \"BwWWja0YfJA=\", \"version\": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).",
             "id": "GoogleIamV1Policy",
             "properties": {
                 "auditConfigs": {
@@ -16396,7 +17979,7 @@
                         "description": "Properties of the object. Contains field @type with type URL.",
                         "type": "any"
                     },
-                    "description": "The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
+                    "description": "The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
                     "type": "object"
                 }
             },

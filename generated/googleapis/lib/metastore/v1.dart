@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Dataproc Metastore API - v1
@@ -27,7 +26,8 @@
 ///     - [ProjectsLocationsServicesResource]
 ///       - [ProjectsLocationsServicesBackupsResource]
 ///       - [ProjectsLocationsServicesMetadataImportsResource]
-library metastore_v1;
+///       - [ProjectsLocationsServicesMigrationExecutionsResource]
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -802,6 +802,9 @@ class ProjectsLocationsServicesResource {
       ProjectsLocationsServicesBackupsResource(_requester);
   ProjectsLocationsServicesMetadataImportsResource get metadataImports =>
       ProjectsLocationsServicesMetadataImportsResource(_requester);
+  ProjectsLocationsServicesMigrationExecutionsResource
+      get migrationExecutions =>
+          ProjectsLocationsServicesMigrationExecutionsResource(_requester);
 
   ProjectsLocationsServicesResource(commons.ApiRequester client)
       : _requester = client;
@@ -844,6 +847,51 @@ class ProjectsLocationsServicesResource {
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$service') + ':alterLocation';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Alter metadata table properties.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [service] - Required. The relative resource name of the Dataproc Metastore
+  /// service that's being used to mutate metadata table properties, in the
+  /// following
+  /// format:projects/{project_id}/locations/{location_id}/services/{service_id}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> alterTableProperties(
+    AlterTablePropertiesRequest request,
+    core.String service, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$service') + ':alterTableProperties';
 
     final response_ = await _requester.request(
       url_,
@@ -2026,6 +2074,64 @@ class ProjectsLocationsServicesMetadataImportsResource {
   }
 }
 
+class ProjectsLocationsServicesMigrationExecutionsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsServicesMigrationExecutionsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Deletes a single migration execution.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The relative resource name of the migrationExecution to
+  /// delete, in the following
+  /// form:projects/{project_number}/locations/{location_id}/services/{service_id}/migrationExecutions/{migration_execution_id}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+/migrationExecutions/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. A request ID. Specify a unique request ID to allow
+  /// the server to ignore the request if it has completed. The server will
+  /// ignore subsequent requests that provide a duplicate request ID for at
+  /// least 60 minutes after the first request.For example, if an initial
+  /// request times out, followed by another request with the same request ID,
+  /// the server ignores the second request to prevent the creation of duplicate
+  /// commitments.The request ID must be a valid UUID
+  /// (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A
+  /// zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 /// Request message for DataprocMetastore.AlterMetadataResourceLocation.
 class AlterMetadataResourceLocationRequest {
   /// The new location URI for the metadata resource.
@@ -2059,6 +2165,64 @@ class AlterMetadataResourceLocationRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (locationUri != null) 'locationUri': locationUri!,
         if (resourceName != null) 'resourceName': resourceName!,
+      };
+}
+
+/// Request message for DataprocMetastore.AlterTableProperties.
+class AlterTablePropertiesRequest {
+  /// A map that describes the desired values to mutate.
+  ///
+  /// If update_mask is empty, the properties will not update. Otherwise, the
+  /// properties only alters the value whose associated paths exist in the
+  /// update mask
+  core.Map<core.String, core.String>? properties;
+
+  /// The name of the table containing the properties you're altering in the
+  /// following format.databases/{database_id}/tables/{table_id}
+  ///
+  /// Required.
+  core.String? tableName;
+
+  /// A field mask that specifies the metadata table properties that are
+  /// overwritten by the update.
+  ///
+  /// Fields specified in the update_mask are relative to the resource (not to
+  /// the full request). A field is overwritten if it is in the mask.For
+  /// example, given the target properties: properties { a: 1 b: 2 } And an
+  /// update properties: properties { a: 2 b: 3 c: 4 } then if the field mask
+  /// is:paths: "properties.b", "properties.c"then the result will be:
+  /// properties { a: 1 b: 3 c: 4 }
+  core.String? updateMask;
+
+  AlterTablePropertiesRequest({
+    this.properties,
+    this.tableName,
+    this.updateMask,
+  });
+
+  AlterTablePropertiesRequest.fromJson(core.Map json_)
+      : this(
+          properties: json_.containsKey('properties')
+              ? (json_['properties'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          tableName: json_.containsKey('tableName')
+              ? json_['tableName'] as core.String
+              : null,
+          updateMask: json_.containsKey('updateMask')
+              ? json_['updateMask'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (properties != null) 'properties': properties!,
+        if (tableName != null) 'tableName': tableName!,
+        if (updateMask != null) 'updateMask': updateMask!,
       };
 }
 
@@ -2332,8 +2496,25 @@ class Binding {
   /// group:{emailid}: An email address that represents a Google group. For
   /// example, admins@example.com. domain:{domain}: The G Suite domain (primary)
   /// that represents all the users of that domain. For example, google.com or
-  /// example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus
-  /// unique identifier) representing a user that has been recently deleted. For
+  /// example.com.
+  /// principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}:
+  /// A single identity in a workforce identity pool.
+  /// principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}:
+  /// All workforce identities in a group.
+  /// principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}:
+  /// All workforce identities with a specific attribute value.
+  /// principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}
+  /// / * : All identities in a workforce identity pool.
+  /// principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}:
+  /// A single identity in a workload identity pool.
+  /// principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}:
+  /// A workload identity pool group.
+  /// principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}:
+  /// All identities in a workload identity pool with a certain attribute.
+  /// principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}
+  /// / * : All identities in a workload identity pool.
+  /// deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique
+  /// identifier) representing a user that has been recently deleted. For
   /// example, alice@example.com?uid=123456789012345678901. If the user is
   /// recovered, this value reverts to user:{emailid} and the recovered user
   /// retains the role in the binding.
@@ -2349,11 +2530,18 @@ class Binding {
   /// admins@example.com?uid=123456789012345678901. If the group is recovered,
   /// this value reverts to group:{emailid} and the recovered group retains the
   /// role in the binding.
+  /// deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}:
+  /// Deleted single identity in a workforce identity pool. For example,
+  /// deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of members, or principals.
   ///
-  /// For example, roles/viewer, roles/editor, or roles/owner.
+  /// For example, roles/viewer, roles/editor, or roles/owner.For an overview of
+  /// the IAM roles and permissions, see the IAM documentation
+  /// (https://cloud.google.com/iam/docs/roles-overview). For a list of the
+  /// available pre-defined roles, see here
+  /// (https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
   Binding({
@@ -2386,9 +2574,15 @@ class Binding {
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
 
-/// Contains information of the customer's network configurations.Next available
-/// ID: 5
+/// Contains information of the customer's network configurations.
 class Consumer {
+  /// The location of the endpoint URI.
+  ///
+  /// Format: projects/{project}/locations/{location}.
+  ///
+  /// Output only.
+  core.String? endpointLocation;
+
   /// The URI of the endpoint used to access the metastore service.
   ///
   /// Output only.
@@ -2407,12 +2601,16 @@ class Consumer {
   core.String? subnetwork;
 
   Consumer({
+    this.endpointLocation,
     this.endpointUri,
     this.subnetwork,
   });
 
   Consumer.fromJson(core.Map json_)
       : this(
+          endpointLocation: json_.containsKey('endpointLocation')
+              ? json_['endpointLocation'] as core.String
+              : null,
           endpointUri: json_.containsKey('endpointUri')
               ? json_['endpointUri'] as core.String
               : null,
@@ -2422,8 +2620,36 @@ class Consumer {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (endpointLocation != null) 'endpointLocation': endpointLocation!,
         if (endpointUri != null) 'endpointUri': endpointUri!,
         if (subnetwork != null) 'subnetwork': subnetwork!,
+      };
+}
+
+/// Specifies how metastore metadata should be integrated with the Data Catalog
+/// service.
+class DataCatalogConfig {
+  /// Defines whether the metastore metadata should be synced to Data Catalog.
+  ///
+  /// The default value is to disable syncing metastore metadata to Data
+  /// Catalog.
+  ///
+  /// Optional.
+  core.bool? enabled;
+
+  DataCatalogConfig({
+    this.enabled,
+  });
+
+  DataCatalogConfig.fromJson(core.Map json_)
+      : this(
+          enabled: json_.containsKey('enabled')
+              ? json_['enabled'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
       };
 }
 
@@ -2888,6 +3114,65 @@ class KerberosConfig {
       };
 }
 
+/// The details of the latest scheduled backup.
+class LatestBackup {
+  /// The ID of an in-progress scheduled backup.
+  ///
+  /// Empty if no backup is in progress.
+  ///
+  /// Output only.
+  core.String? backupId;
+
+  /// The duration of the backup completion.
+  ///
+  /// Output only.
+  core.String? duration;
+
+  /// The time when the backup was started.
+  ///
+  /// Output only.
+  core.String? startTime;
+
+  /// The current state of the backup.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The state of the backup is unknown.
+  /// - "IN_PROGRESS" : The backup is in progress.
+  /// - "SUCCEEDED" : The backup completed.
+  /// - "FAILED" : The backup failed.
+  core.String? state;
+
+  LatestBackup({
+    this.backupId,
+    this.duration,
+    this.startTime,
+    this.state,
+  });
+
+  LatestBackup.fromJson(core.Map json_)
+      : this(
+          backupId: json_.containsKey('backupId')
+              ? json_['backupId'] as core.String
+              : null,
+          duration: json_.containsKey('duration')
+              ? json_['duration'] as core.String
+              : null,
+          startTime: json_.containsKey('startTime')
+              ? json_['startTime'] as core.String
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (backupId != null) 'backupId': backupId!,
+        if (duration != null) 'duration': duration!,
+        if (startTime != null) 'startTime': startTime!,
+        if (state != null) 'state': state!,
+      };
+}
+
 /// Response message for DataprocMetastore.ListBackups.
 class ListBackupsResponse {
   /// The backups of the specified service.
@@ -3332,6 +3617,31 @@ class MetadataImport {
       };
 }
 
+/// Specifies how metastore metadata should be integrated with external
+/// services.
+class MetadataIntegration {
+  /// The integration config for the Data Catalog service.
+  ///
+  /// Optional.
+  DataCatalogConfig? dataCatalogConfig;
+
+  MetadataIntegration({
+    this.dataCatalogConfig,
+  });
+
+  MetadataIntegration.fromJson(core.Map json_)
+      : this(
+          dataCatalogConfig: json_.containsKey('dataCatalogConfig')
+              ? DataCatalogConfig.fromJson(json_['dataCatalogConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dataCatalogConfig != null) 'dataCatalogConfig': dataCatalogConfig!,
+      };
+}
+
 /// The metadata management activities of the metastore service.
 class MetadataManagementActivity {
   /// The latest metadata exports of the metastore service.
@@ -3414,8 +3724,7 @@ class MoveTableToDatabaseRequest {
       };
 }
 
-/// Network configuration for the Dataproc Metastore service.Next available ID:
-/// 4
+/// Network configuration for the Dataproc Metastore service.
 class NetworkConfig {
   /// The consumer-side network configuration for the Dataproc Metastore
   /// instance.
@@ -3472,7 +3781,7 @@ class Operation {
   /// ending with operations/{unique_id}.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as Delete, the
   /// response is google.protobuf.Empty. If the original method is standard
@@ -3670,6 +3979,12 @@ class Restore {
   /// Output only.
   core.String? backup;
 
+  /// A Cloud Storage URI specifying where the backup artifacts are stored, in
+  /// the format gs:///.
+  ///
+  /// Optional.
+  core.String? backupLocation;
+
   /// The restore details containing the revision of the service to be restored
   /// to, in format of JSON.
   ///
@@ -3708,6 +4023,7 @@ class Restore {
 
   Restore({
     this.backup,
+    this.backupLocation,
     this.details,
     this.endTime,
     this.startTime,
@@ -3719,6 +4035,9 @@ class Restore {
       : this(
           backup: json_.containsKey('backup')
               ? json_['backup'] as core.String
+              : null,
+          backupLocation: json_.containsKey('backupLocation')
+              ? json_['backupLocation'] as core.String
               : null,
           details: json_.containsKey('details')
               ? json_['details'] as core.String
@@ -3736,6 +4055,7 @@ class Restore {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (backup != null) 'backup': backup!,
+        if (backupLocation != null) 'backupLocation': backupLocation!,
         if (details != null) 'details': details!,
         if (endTime != null) 'endTime': endTime!,
         if (startTime != null) 'startTime': startTime!,
@@ -3750,8 +4070,20 @@ class RestoreServiceRequest {
   /// from, in the following
   /// form:projects/{project_id}/locations/{location_id}/services/{service_id}/backups/{backup_id}.
   ///
-  /// Required.
+  /// Mutually exclusive with backup_location, and exactly one of the two must
+  /// be set.
+  ///
+  /// Optional.
   core.String? backup;
+
+  /// A Cloud Storage URI specifying the location of the backup artifacts,
+  /// namely - backup avro files under "avro/", backup_metastore.json and
+  /// service.json, in the following form:gs://.
+  ///
+  /// Mutually exclusive with backup, and exactly one of the two must be set.
+  ///
+  /// Optional.
+  core.String? backupLocation;
 
   /// A request ID.
   ///
@@ -3780,6 +4112,7 @@ class RestoreServiceRequest {
 
   RestoreServiceRequest({
     this.backup,
+    this.backupLocation,
     this.requestId,
     this.restoreType,
   });
@@ -3788,6 +4121,9 @@ class RestoreServiceRequest {
       : this(
           backup: json_.containsKey('backup')
               ? json_['backup'] as core.String
+              : null,
+          backupLocation: json_.containsKey('backupLocation')
+              ? json_['backupLocation'] as core.String
               : null,
           requestId: json_.containsKey('requestId')
               ? json_['requestId'] as core.String
@@ -3799,6 +4135,7 @@ class RestoreServiceRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (backup != null) 'backup': backup!,
+        if (backupLocation != null) 'backupLocation': backupLocation!,
         if (requestId != null) 'requestId': requestId!,
         if (restoreType != null) 'restoreType': restoreType!,
       };
@@ -3841,6 +4178,93 @@ class ScalingConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (instanceSize != null) 'instanceSize': instanceSize!,
         if (scalingFactor != null) 'scalingFactor': scalingFactor!,
+      };
+}
+
+/// This specifies the configuration of scheduled backup.
+class ScheduledBackup {
+  /// A Cloud Storage URI of a folder, in the format gs:///.
+  ///
+  /// A sub-folder containing backup files will be stored below it.
+  ///
+  /// Optional.
+  core.String? backupLocation;
+
+  /// The scheduled interval in Cron format, see
+  /// https://en.wikipedia.org/wiki/Cron The default is empty: scheduled backup
+  /// is not enabled.
+  ///
+  /// Must be specified to enable scheduled backups.
+  ///
+  /// Optional.
+  core.String? cronSchedule;
+
+  /// Defines whether the scheduled backup is enabled.
+  ///
+  /// The default value is false.
+  ///
+  /// Optional.
+  core.bool? enabled;
+
+  /// The details of the latest scheduled backup.
+  ///
+  /// Output only.
+  LatestBackup? latestBackup;
+
+  /// The time when the next backups execution is scheduled to start.
+  ///
+  /// Output only.
+  core.String? nextScheduledTime;
+
+  /// Specifies the time zone to be used when interpreting cron_schedule.
+  ///
+  /// Must be a time zone name from the time zone database
+  /// (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones), e.g.
+  /// America/Los_Angeles or Africa/Abidjan. If left unspecified, the default is
+  /// UTC.
+  ///
+  /// Optional.
+  core.String? timeZone;
+
+  ScheduledBackup({
+    this.backupLocation,
+    this.cronSchedule,
+    this.enabled,
+    this.latestBackup,
+    this.nextScheduledTime,
+    this.timeZone,
+  });
+
+  ScheduledBackup.fromJson(core.Map json_)
+      : this(
+          backupLocation: json_.containsKey('backupLocation')
+              ? json_['backupLocation'] as core.String
+              : null,
+          cronSchedule: json_.containsKey('cronSchedule')
+              ? json_['cronSchedule'] as core.String
+              : null,
+          enabled: json_.containsKey('enabled')
+              ? json_['enabled'] as core.bool
+              : null,
+          latestBackup: json_.containsKey('latestBackup')
+              ? LatestBackup.fromJson(
+                  json_['latestBackup'] as core.Map<core.String, core.dynamic>)
+              : null,
+          nextScheduledTime: json_.containsKey('nextScheduledTime')
+              ? json_['nextScheduledTime'] as core.String
+              : null,
+          timeZone: json_.containsKey('timeZone')
+              ? json_['timeZone'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (backupLocation != null) 'backupLocation': backupLocation!,
+        if (cronSchedule != null) 'cronSchedule': cronSchedule!,
+        if (enabled != null) 'enabled': enabled!,
+        if (latestBackup != null) 'latestBackup': latestBackup!,
+        if (nextScheduledTime != null) 'nextScheduledTime': nextScheduledTime!,
+        if (timeZone != null) 'timeZone': timeZone!,
       };
 }
 
@@ -3916,6 +4340,12 @@ class Service {
   /// SPANNER database type.
   MaintenanceWindow? maintenanceWindow;
 
+  /// The setting that defines how metastore metadata should be integrated with
+  /// external services and systems.
+  ///
+  /// Optional.
+  MetadataIntegration? metadataIntegration;
+
   /// The metadata management activities of the metastore service.
   ///
   /// Output only.
@@ -3962,6 +4392,11 @@ class Service {
 
   /// Scaling configuration of the metastore service.
   ScalingConfig? scalingConfig;
+
+  /// The configuration of scheduled backup for the metastore service.
+  ///
+  /// Optional.
+  ScheduledBackup? scheduledBackup;
 
   /// The current state of the metastore service.
   ///
@@ -4023,6 +4458,7 @@ class Service {
     this.hiveMetastoreConfig,
     this.labels,
     this.maintenanceWindow,
+    this.metadataIntegration,
     this.metadataManagementActivity,
     this.name,
     this.network,
@@ -4030,6 +4466,7 @@ class Service {
     this.port,
     this.releaseChannel,
     this.scalingConfig,
+    this.scheduledBackup,
     this.state,
     this.stateMessage,
     this.telemetryConfig,
@@ -4072,6 +4509,10 @@ class Service {
               ? MaintenanceWindow.fromJson(json_['maintenanceWindow']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          metadataIntegration: json_.containsKey('metadataIntegration')
+              ? MetadataIntegration.fromJson(json_['metadataIntegration']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           metadataManagementActivity:
               json_.containsKey('metadataManagementActivity')
                   ? MetadataManagementActivity.fromJson(
@@ -4093,6 +4534,10 @@ class Service {
           scalingConfig: json_.containsKey('scalingConfig')
               ? ScalingConfig.fromJson(
                   json_['scalingConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          scheduledBackup: json_.containsKey('scheduledBackup')
+              ? ScheduledBackup.fromJson(json_['scheduledBackup']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
@@ -4120,6 +4565,8 @@ class Service {
           'hiveMetastoreConfig': hiveMetastoreConfig!,
         if (labels != null) 'labels': labels!,
         if (maintenanceWindow != null) 'maintenanceWindow': maintenanceWindow!,
+        if (metadataIntegration != null)
+          'metadataIntegration': metadataIntegration!,
         if (metadataManagementActivity != null)
           'metadataManagementActivity': metadataManagementActivity!,
         if (name != null) 'name': name!,
@@ -4128,6 +4575,7 @@ class Service {
         if (port != null) 'port': port!,
         if (releaseChannel != null) 'releaseChannel': releaseChannel!,
         if (scalingConfig != null) 'scalingConfig': scalingConfig!,
+        if (scheduledBackup != null) 'scheduledBackup': scheduledBackup!,
         if (state != null) 'state': state!,
         if (stateMessage != null) 'stateMessage': stateMessage!,
         if (telemetryConfig != null) 'telemetryConfig': telemetryConfig!,

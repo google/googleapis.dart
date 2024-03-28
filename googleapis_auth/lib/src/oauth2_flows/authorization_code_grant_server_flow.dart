@@ -28,6 +28,7 @@ class AuthorizationCodeGrantServerFlow
   final String? customPostAuthPage;
 
   AuthorizationCodeGrantServerFlow(
+    super.authEndpoints,
     super.clientId,
     super.scopes,
     super.client,
@@ -91,6 +92,7 @@ class AuthorizationCodeGrantServerFlow
         final credentials = await obtainAccessCredentialsUsingCodeImpl(
           code,
           redirectionUri,
+          authEndpoints: authEndpoints,
           codeVerifier: codeVerifier,
         );
 

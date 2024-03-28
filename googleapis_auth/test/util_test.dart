@@ -65,7 +65,7 @@ void main() {
   });
 
   test('not a map', () async {
-    final body = [];
+    final body = <void>[];
     final client = mockClient(
       (request) async =>
           Response(jsonEncode(body), 200, headers: jsonContentType),

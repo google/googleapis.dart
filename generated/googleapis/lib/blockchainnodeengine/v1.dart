@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Blockchain Node Engine API - v1
@@ -21,7 +20,7 @@
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsBlockchainNodesResource]
 ///     - [ProjectsLocationsOperationsResource]
-library blockchainnodeengine_v1;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -656,6 +655,19 @@ class BlockchainNode {
   /// Output only.
   core.String? name;
 
+  /// When true, the node is only accessible via Private Service Connect; no
+  /// public endpoints are exposed.
+  ///
+  /// Otherwise, the node is only accessible via public endpoints. Warning:
+  /// Private Service Connect enabled nodes may require a manual migration
+  /// effort to remain compatible with future versions of the product. If this
+  /// feature is enabled, you will be notified of these changes along with any
+  /// required action to avoid disruption. See
+  /// https://cloud.google.com/vpc/docs/private-service-connect.
+  ///
+  /// Optional.
+  core.bool? privateServiceConnectEnabled;
+
   /// A status representing the state of the node.
   ///
   /// Output only.
@@ -684,6 +696,7 @@ class BlockchainNode {
     this.ethereumDetails,
     this.labels,
     this.name,
+    this.privateServiceConnectEnabled,
     this.state,
     this.updateTime,
   });
@@ -713,6 +726,10 @@ class BlockchainNode {
                 )
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          privateServiceConnectEnabled:
+              json_.containsKey('privateServiceConnectEnabled')
+                  ? json_['privateServiceConnectEnabled'] as core.bool
+                  : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
           updateTime: json_.containsKey('updateTime')
@@ -727,6 +744,8 @@ class BlockchainNode {
         if (ethereumDetails != null) 'ethereumDetails': ethereumDetails!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
+        if (privateServiceConnectEnabled != null)
+          'privateServiceConnectEnabled': privateServiceConnectEnabled!,
         if (state != null) 'state': state!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
@@ -742,8 +761,15 @@ class ConnectionInfo {
   /// Output only.
   EndpointInfo? endpointInfo;
 
+  /// A service attachment that exposes a node, and has the following format:
+  /// projects/{project}/regions/{region}/serviceAttachments/{service_attachment_name}
+  ///
+  /// Output only.
+  core.String? serviceAttachment;
+
   ConnectionInfo({
     this.endpointInfo,
+    this.serviceAttachment,
   });
 
   ConnectionInfo.fromJson(core.Map json_)
@@ -752,10 +778,14 @@ class ConnectionInfo {
               ? EndpointInfo.fromJson(
                   json_['endpointInfo'] as core.Map<core.String, core.dynamic>)
               : null,
+          serviceAttachment: json_.containsKey('serviceAttachment')
+              ? json_['serviceAttachment'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (endpointInfo != null) 'endpointInfo': endpointInfo!,
+        if (serviceAttachment != null) 'serviceAttachment': serviceAttachment!,
       };
 }
 
@@ -857,7 +887,9 @@ class EthereumDetails {
   /// - "MAINNET" : The Ethereum Mainnet.
   /// - "TESTNET_GOERLI_PRATER" : The Ethereum Testnet based on Goerli protocol.
   /// - "TESTNET_SEPOLIA" : The Ethereum Testnet based on Sepolia/Bepolia
-  /// protocol.
+  /// protocol. See https://github.com/eth-clients/sepolia.
+  /// - "TESTNET_HOLESKY" : The Ethereum Testnet based on Holesky specification.
+  /// See https://github.com/eth-clients/holesky.
   core.String? network;
 
   /// The type of Ethereum node.
@@ -873,6 +905,10 @@ class EthereumDetails {
   /// blockchain's history state data dating back to the Genesis Block.
   core.String? nodeType;
 
+  /// Configuration for validator-related parameters on the beacon client, and
+  /// for any GCP-managed validator client.
+  ValidatorConfig? validatorConfig;
+
   EthereumDetails({
     this.additionalEndpoints,
     this.apiEnableAdmin,
@@ -882,6 +918,7 @@ class EthereumDetails {
     this.gethDetails,
     this.network,
     this.nodeType,
+    this.validatorConfig,
   });
 
   EthereumDetails.fromJson(core.Map json_)
@@ -912,6 +949,10 @@ class EthereumDetails {
           nodeType: json_.containsKey('nodeType')
               ? json_['nodeType'] as core.String
               : null,
+          validatorConfig: json_.containsKey('validatorConfig')
+              ? ValidatorConfig.fromJson(json_['validatorConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -924,6 +965,7 @@ class EthereumDetails {
         if (gethDetails != null) 'gethDetails': gethDetails!,
         if (network != null) 'network': network!,
         if (nodeType != null) 'nodeType': nodeType!,
+        if (validatorConfig != null) 'validatorConfig': validatorConfig!,
       };
 }
 
@@ -1169,7 +1211,7 @@ class Operation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard
@@ -1223,3 +1265,58 @@ class Operation {
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef Status = $Status;
+
+/// Configuration for validator-related parameters on the beacon client, and for
+/// any GCP-managed validator client.
+class ValidatorConfig {
+  /// An Ethereum address which the beacon client will send fee rewards to if no
+  /// recipient is configured in the validator client.
+  ///
+  /// See https://lighthouse-book.sigmaprime.io/suggested-fee-recipient.html or
+  /// https://docs.prylabs.network/docs/execution-node/fee-recipient for
+  /// examples of how this is used. Note that while this is often described as
+  /// "suggested", as we run the execution node we can trust the execution node,
+  /// and therefore this is considered enforced.
+  core.String? beaconFeeRecipient;
+
+  /// When true, deploys a GCP-managed validator client alongside the beacon
+  /// client.
+  ///
+  /// Immutable.
+  core.bool? managedValidatorClient;
+
+  /// URLs for MEV-relay services to use for block building.
+  ///
+  /// When set, a GCP-managed MEV-boost service is configured on the beacon
+  /// client.
+  core.List<core.String>? mevRelayUrls;
+
+  ValidatorConfig({
+    this.beaconFeeRecipient,
+    this.managedValidatorClient,
+    this.mevRelayUrls,
+  });
+
+  ValidatorConfig.fromJson(core.Map json_)
+      : this(
+          beaconFeeRecipient: json_.containsKey('beaconFeeRecipient')
+              ? json_['beaconFeeRecipient'] as core.String
+              : null,
+          managedValidatorClient: json_.containsKey('managedValidatorClient')
+              ? json_['managedValidatorClient'] as core.bool
+              : null,
+          mevRelayUrls: json_.containsKey('mevRelayUrls')
+              ? (json_['mevRelayUrls'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (beaconFeeRecipient != null)
+          'beaconFeeRecipient': beaconFeeRecipient!,
+        if (managedValidatorClient != null)
+          'managedValidatorClient': managedValidatorClient!,
+        if (mevRelayUrls != null) 'mevRelayUrls': mevRelayUrls!,
+      };
+}

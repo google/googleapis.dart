@@ -8,6 +8,7 @@ import 'package:http/http.dart';
 
 import 'access_credentials.dart';
 import 'auth_client.dart';
+import 'auth_endpoints.dart';
 import 'auth_functions.dart';
 import 'client_id.dart';
 import 'exceptions.dart';
@@ -40,7 +41,7 @@ class AuthenticatedClient extends DelegatingClient implements AuthClient {
     final response = await baseClient.send(modifiedRequest);
     final wwwAuthenticate = response.headers['www-authenticate'];
     if (wwwAuthenticate != null) {
-      await response.stream.drain();
+      await response.stream.drain<void>();
       throw AccessDeniedException(
         'Access was denied '
         '(www-authenticate header was: $wwwAuthenticate).',
@@ -91,9 +92,11 @@ class AutoRefreshingClient extends AutoRefreshDelegatingClient {
   @override
   AccessCredentials credentials;
   late Client authClient;
+  final AuthEndpoints authEndpoints;
 
   AutoRefreshingClient(
     super.client,
+    this.authEndpoints,
     this.clientId,
     this.credentials, {
     super.closeUnderlyingClient,
@@ -114,7 +117,12 @@ class AutoRefreshingClient extends AutoRefreshDelegatingClient {
       // If so, we should handle it.
       return authClient.send(request);
     } else {
-      final cred = await refreshCredentials(clientId, credentials, baseClient);
+      final cred = await refreshCredentials(
+        clientId,
+        credentials,
+        baseClient,
+        authEndpoints: authEndpoints,
+      );
       notifyAboutNewCredentials(cred);
       credentials = cred;
       authClient = AuthenticatedClient(

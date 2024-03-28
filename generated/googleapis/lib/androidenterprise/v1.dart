@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Google Play EMM API - v1
@@ -36,7 +35,7 @@
 /// - [StorelayoutpagesResource]
 /// - [UsersResource]
 /// - [WebappsResource]
-library androidenterprise_v1;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -4502,7 +4501,8 @@ class AutoInstallPolicy {
 
   /// The auto-install mode.
   ///
-  /// If unset defaults to "doNotAutoInstall".
+  /// If unset, defaults to "doNotAutoInstall". An app is automatically
+  /// installed regardless of a set maintenance window.
   /// Possible string values are:
   /// - "autoInstallModeUnspecified"
   /// - "doNotAutoInstall" : The product is not installed automatically, the
@@ -4680,7 +4680,7 @@ class Device {
 
   /// Retail brand for the device, if set.
   ///
-  /// See https://developer.android.com/reference/android/os/Build.html#BRAND
+  /// See android.os.Build.BRAND
   core.String? retailBrand;
 
   /// API compatibility version.
@@ -6250,14 +6250,15 @@ class Permission {
 
 /// The device policy for a given managed device.
 class Policy {
-  /// Recommended alternative: autoUpdateMode which is set per app, provides
-  /// greater flexibility around update frequency.
+  /// Controls when automatic app updates on the device can be applied.
   ///
-  /// When autoUpdateMode is set to AUTO_UPDATE_POSTPONED or
-  /// AUTO_UPDATE_HIGH_PRIORITY, this field has no effect. "choiceToTheUser"
-  /// allows the device's user to configure the app update policy. "always"
-  /// enables auto updates. "never" disables auto updates. "wifiOnly" enables
-  /// auto updates only when the device is connected to wifi.
+  /// Recommended alternative: autoUpdateMode which is set per app, provides
+  /// greater flexibility around update frequency. When autoUpdateMode is set to
+  /// AUTO_UPDATE_POSTPONED or AUTO_UPDATE_HIGH_PRIORITY, autoUpdatePolicy has
+  /// no effect. "choiceToTheUser" allows the device's user to configure the app
+  /// update policy. "always" enables auto updates. "never" disables auto
+  /// updates. "wifiOnly" enables auto updates only when the device is connected
+  /// to wifi.
   /// Possible string values are:
   /// - "autoUpdatePolicyUnspecified" : The auto update policy is not set.
   /// - "choiceToTheUser" : The user can control auto-updates.
@@ -6795,6 +6796,10 @@ class ProductPolicy {
   AutoInstallPolicy? autoInstallPolicy;
 
   /// The auto-update mode for the product.
+  ///
+  /// When autoUpdateMode is used, it always takes precedence over the user's
+  /// choice. So when a user makes changes to the device settings manually,
+  /// these changes are ignored.
   /// Possible string values are:
   /// - "autoUpdateModeUnspecified" : Unspecified. Defaults to
   /// AUTO_UPDATE_DEFAULT.
@@ -6822,9 +6827,8 @@ class ProductPolicy {
   ///
   /// This helps to launch the identity provider's authenticator app during the
   /// authentication happening in a private app using Android WebView.
-  /// Authenticator app should already be the
-  /// [default handler](https://developer.android.com/training/app-links/verify-site-associations)
-  /// for the authentication url on the device.
+  /// Authenticator app should already be the default handler for the
+  /// authentication url on the device.
   core.List<EnterpriseAuthenticationAppLinkConfig>?
       enterpriseAuthenticationAppLinkConfigs;
 

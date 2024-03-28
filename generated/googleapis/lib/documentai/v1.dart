@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Cloud Document AI API - v1
@@ -31,7 +30,7 @@
 ///       - [ProjectsLocationsProcessorsProcessorVersionsResource]
 ///         - [ProjectsLocationsProcessorsProcessorVersionsEvaluationsResource]
 ///   - [ProjectsOperationsResource]
-library documentai_v1;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -1551,6 +1550,16 @@ class GoogleCloudDocumentaiV1BatchProcessRequest {
   /// The input documents for the BatchProcessDocuments method.
   GoogleCloudDocumentaiV1BatchDocumentsInputConfig? inputDocuments;
 
+  /// The labels with user-defined metadata for the request.
+  ///
+  /// Label keys and values can be no longer than 63 characters (Unicode
+  /// codepoints) and can only contain lowercase letters, numeric characters,
+  /// underscores, and dashes. International characters are allowed. Label
+  /// values are optional. Label keys must start with a letter.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
   /// Inference-time options for the process API
   GoogleCloudDocumentaiV1ProcessOptions? processOptions;
 
@@ -1562,6 +1571,7 @@ class GoogleCloudDocumentaiV1BatchProcessRequest {
   GoogleCloudDocumentaiV1BatchProcessRequest({
     this.documentOutputConfig,
     this.inputDocuments,
+    this.labels,
     this.processOptions,
     this.skipHumanReview,
   });
@@ -1578,6 +1588,14 @@ class GoogleCloudDocumentaiV1BatchProcessRequest {
                   json_['inputDocuments']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
           processOptions: json_.containsKey('processOptions')
               ? GoogleCloudDocumentaiV1ProcessOptions.fromJson(
                   json_['processOptions']
@@ -1592,6 +1610,7 @@ class GoogleCloudDocumentaiV1BatchProcessRequest {
         if (documentOutputConfig != null)
           'documentOutputConfig': documentOutputConfig!,
         if (inputDocuments != null) 'inputDocuments': inputDocuments!,
+        if (labels != null) 'labels': labels!,
         if (processOptions != null) 'processOptions': processOptions!,
         if (skipHumanReview != null) 'skipHumanReview': skipHumanReview!,
       };
@@ -2412,6 +2431,9 @@ class GoogleCloudDocumentaiV1DocumentPageAnchor {
 /// Represents a weak reference to a page element within a document.
 class GoogleCloudDocumentaiV1DocumentPageAnchorPageRef {
   /// Identifies the bounding polygon of a layout element on the page.
+  ///
+  /// If `layout_type` is set, the bounding polygon must be exactly the same to
+  /// the layout element it's referring to.
   ///
   /// Optional.
   GoogleCloudDocumentaiV1BoundingPoly? boundingPoly;
@@ -3647,6 +3669,9 @@ class GoogleCloudDocumentaiV1DocumentSchemaEntityTypeEnumValues {
 
 /// Defines properties that can be part of the entity type.
 class GoogleCloudDocumentaiV1DocumentSchemaEntityTypeProperty {
+  /// User defined name for the property.
+  core.String? displayName;
+
   /// The name of the property.
   ///
   /// Follows the same guidelines as the EntityType name.
@@ -3672,6 +3697,7 @@ class GoogleCloudDocumentaiV1DocumentSchemaEntityTypeProperty {
   core.String? valueType;
 
   GoogleCloudDocumentaiV1DocumentSchemaEntityTypeProperty({
+    this.displayName,
     this.name,
     this.occurrenceType,
     this.valueType,
@@ -3680,6 +3706,9 @@ class GoogleCloudDocumentaiV1DocumentSchemaEntityTypeProperty {
   GoogleCloudDocumentaiV1DocumentSchemaEntityTypeProperty.fromJson(
       core.Map json_)
       : this(
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           occurrenceType: json_.containsKey('occurrenceType')
               ? json_['occurrenceType'] as core.String
@@ -3690,6 +3719,7 @@ class GoogleCloudDocumentaiV1DocumentSchemaEntityTypeProperty {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
         if (name != null) 'name': name!,
         if (occurrenceType != null) 'occurrenceType': occurrenceType!,
         if (valueType != null) 'valueType': valueType!,
@@ -4711,8 +4741,19 @@ class GoogleCloudDocumentaiV1OcrConfig {
   /// algorithm based on their situation.
   core.List<core.String>? advancedOcrOptions;
 
-  /// Turn on font id model and returns font style information.
+  /// Turn on font identification model and return font style information.
+  ///
+  /// Deprecated, use PremiumFeatures.compute_style_info instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? computeStyleInfo;
+
+  /// Turn off character box detector in OCR engine.
+  ///
+  /// Character box detection is enabled by default in OCR 2.0 (and later)
+  /// processors.
+  core.bool? disableCharacterBoxesDetection;
 
   /// Enables intelligent document quality scores after OCR.
   ///
@@ -4732,13 +4773,18 @@ class GoogleCloudDocumentaiV1OcrConfig {
   /// Hints for the OCR model.
   GoogleCloudDocumentaiV1OcrConfigHints? hints;
 
+  /// Configurations for premium OCR features.
+  GoogleCloudDocumentaiV1OcrConfigPremiumFeatures? premiumFeatures;
+
   GoogleCloudDocumentaiV1OcrConfig({
     this.advancedOcrOptions,
     this.computeStyleInfo,
+    this.disableCharacterBoxesDetection,
     this.enableImageQualityScores,
     this.enableNativePdfParsing,
     this.enableSymbol,
     this.hints,
+    this.premiumFeatures,
   });
 
   GoogleCloudDocumentaiV1OcrConfig.fromJson(core.Map json_)
@@ -4751,6 +4797,10 @@ class GoogleCloudDocumentaiV1OcrConfig {
           computeStyleInfo: json_.containsKey('computeStyleInfo')
               ? json_['computeStyleInfo'] as core.bool
               : null,
+          disableCharacterBoxesDetection:
+              json_.containsKey('disableCharacterBoxesDetection')
+                  ? json_['disableCharacterBoxesDetection'] as core.bool
+                  : null,
           enableImageQualityScores:
               json_.containsKey('enableImageQualityScores')
                   ? json_['enableImageQualityScores'] as core.bool
@@ -4765,18 +4815,26 @@ class GoogleCloudDocumentaiV1OcrConfig {
               ? GoogleCloudDocumentaiV1OcrConfigHints.fromJson(
                   json_['hints'] as core.Map<core.String, core.dynamic>)
               : null,
+          premiumFeatures: json_.containsKey('premiumFeatures')
+              ? GoogleCloudDocumentaiV1OcrConfigPremiumFeatures.fromJson(
+                  json_['premiumFeatures']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (advancedOcrOptions != null)
           'advancedOcrOptions': advancedOcrOptions!,
         if (computeStyleInfo != null) 'computeStyleInfo': computeStyleInfo!,
+        if (disableCharacterBoxesDetection != null)
+          'disableCharacterBoxesDetection': disableCharacterBoxesDetection!,
         if (enableImageQualityScores != null)
           'enableImageQualityScores': enableImageQualityScores!,
         if (enableNativePdfParsing != null)
           'enableNativePdfParsing': enableNativePdfParsing!,
         if (enableSymbol != null) 'enableSymbol': enableSymbol!,
         if (hints != null) 'hints': hints!,
+        if (premiumFeatures != null) 'premiumFeatures': premiumFeatures!,
       };
 }
 
@@ -4809,27 +4867,139 @@ class GoogleCloudDocumentaiV1OcrConfigHints {
       };
 }
 
+/// Configurations for premium OCR features.
+class GoogleCloudDocumentaiV1OcrConfigPremiumFeatures {
+  /// Turn on font identification model and return font style information.
+  core.bool? computeStyleInfo;
+
+  /// Turn on the model that can extract LaTeX math formulas.
+  core.bool? enableMathOcr;
+
+  /// Turn on selection mark detector in OCR engine.
+  ///
+  /// Only available in OCR 2.0 (and later) processors.
+  core.bool? enableSelectionMarkDetection;
+
+  GoogleCloudDocumentaiV1OcrConfigPremiumFeatures({
+    this.computeStyleInfo,
+    this.enableMathOcr,
+    this.enableSelectionMarkDetection,
+  });
+
+  GoogleCloudDocumentaiV1OcrConfigPremiumFeatures.fromJson(core.Map json_)
+      : this(
+          computeStyleInfo: json_.containsKey('computeStyleInfo')
+              ? json_['computeStyleInfo'] as core.bool
+              : null,
+          enableMathOcr: json_.containsKey('enableMathOcr')
+              ? json_['enableMathOcr'] as core.bool
+              : null,
+          enableSelectionMarkDetection:
+              json_.containsKey('enableSelectionMarkDetection')
+                  ? json_['enableSelectionMarkDetection'] as core.bool
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (computeStyleInfo != null) 'computeStyleInfo': computeStyleInfo!,
+        if (enableMathOcr != null) 'enableMathOcr': enableMathOcr!,
+        if (enableSelectionMarkDetection != null)
+          'enableSelectionMarkDetection': enableSelectionMarkDetection!,
+      };
+}
+
 /// Options for Process API
 class GoogleCloudDocumentaiV1ProcessOptions {
-  /// Only applicable to `OCR_PROCESSOR`.
+  /// Only process certain pages from the end, same as above.
+  core.int? fromEnd;
+
+  /// Only process certain pages from the start.
+  ///
+  /// Process all if the document has fewer pages.
+  core.int? fromStart;
+
+  /// Which pages to process (1-indexed).
+  GoogleCloudDocumentaiV1ProcessOptionsIndividualPageSelector?
+      individualPageSelector;
+
+  /// Only applicable to `OCR_PROCESSOR` and `FORM_PARSER_PROCESSOR`.
   ///
   /// Returns error if set on other processor types.
   GoogleCloudDocumentaiV1OcrConfig? ocrConfig;
 
+  /// Override the schema of the ProcessorVersion.
+  ///
+  /// Will return an Invalid Argument error if this field is set when the
+  /// underlying ProcessorVersion doesn't support schema override.
+  ///
+  /// Optional.
+  GoogleCloudDocumentaiV1DocumentSchema? schemaOverride;
+
   GoogleCloudDocumentaiV1ProcessOptions({
+    this.fromEnd,
+    this.fromStart,
+    this.individualPageSelector,
     this.ocrConfig,
+    this.schemaOverride,
   });
 
   GoogleCloudDocumentaiV1ProcessOptions.fromJson(core.Map json_)
       : this(
+          fromEnd: json_.containsKey('fromEnd')
+              ? json_['fromEnd'] as core.int
+              : null,
+          fromStart: json_.containsKey('fromStart')
+              ? json_['fromStart'] as core.int
+              : null,
+          individualPageSelector: json_.containsKey('individualPageSelector')
+              ? GoogleCloudDocumentaiV1ProcessOptionsIndividualPageSelector
+                  .fromJson(json_['individualPageSelector']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           ocrConfig: json_.containsKey('ocrConfig')
               ? GoogleCloudDocumentaiV1OcrConfig.fromJson(
                   json_['ocrConfig'] as core.Map<core.String, core.dynamic>)
               : null,
+          schemaOverride: json_.containsKey('schemaOverride')
+              ? GoogleCloudDocumentaiV1DocumentSchema.fromJson(
+                  json_['schemaOverride']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (fromEnd != null) 'fromEnd': fromEnd!,
+        if (fromStart != null) 'fromStart': fromStart!,
+        if (individualPageSelector != null)
+          'individualPageSelector': individualPageSelector!,
         if (ocrConfig != null) 'ocrConfig': ocrConfig!,
+        if (schemaOverride != null) 'schemaOverride': schemaOverride!,
+      };
+}
+
+/// A list of individual page numbers.
+class GoogleCloudDocumentaiV1ProcessOptionsIndividualPageSelector {
+  /// Indices of the pages (starting from 1).
+  ///
+  /// Optional.
+  core.List<core.int>? pages;
+
+  GoogleCloudDocumentaiV1ProcessOptionsIndividualPageSelector({
+    this.pages,
+  });
+
+  GoogleCloudDocumentaiV1ProcessOptionsIndividualPageSelector.fromJson(
+      core.Map json_)
+      : this(
+          pages: json_.containsKey('pages')
+              ? (json_['pages'] as core.List)
+                  .map((value) => value as core.int)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (pages != null) 'pages': pages!,
       };
 }
 
@@ -4847,6 +5017,16 @@ class GoogleCloudDocumentaiV1ProcessRequest {
   /// An inline document proto.
   GoogleCloudDocumentaiV1Document? inlineDocument;
 
+  /// The labels with user-defined metadata for the request.
+  ///
+  /// Label keys and values can be no longer than 63 characters (Unicode
+  /// codepoints) and can only contain lowercase letters, numeric characters,
+  /// underscores, and dashes. International characters are allowed. Label
+  /// values are optional. Label keys must start with a letter.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
   /// Inference-time options for the process API
   GoogleCloudDocumentaiV1ProcessOptions? processOptions;
 
@@ -4862,6 +5042,7 @@ class GoogleCloudDocumentaiV1ProcessRequest {
     this.fieldMask,
     this.gcsDocument,
     this.inlineDocument,
+    this.labels,
     this.processOptions,
     this.rawDocument,
     this.skipHumanReview,
@@ -4879,6 +5060,14 @@ class GoogleCloudDocumentaiV1ProcessRequest {
           inlineDocument: json_.containsKey('inlineDocument')
               ? GoogleCloudDocumentaiV1Document.fromJson(json_['inlineDocument']
                   as core.Map<core.String, core.dynamic>)
+              : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
               : null,
           processOptions: json_.containsKey('processOptions')
               ? GoogleCloudDocumentaiV1ProcessOptions.fromJson(
@@ -4898,6 +5087,7 @@ class GoogleCloudDocumentaiV1ProcessRequest {
         if (fieldMask != null) 'fieldMask': fieldMask!,
         if (gcsDocument != null) 'gcsDocument': gcsDocument!,
         if (inlineDocument != null) 'inlineDocument': inlineDocument!,
+        if (labels != null) 'labels': labels!,
         if (processOptions != null) 'processOptions': processOptions!,
         if (rawDocument != null) 'rawDocument': rawDocument!,
         if (skipHumanReview != null) 'skipHumanReview': skipHumanReview!,
@@ -5230,6 +5420,17 @@ class GoogleCloudDocumentaiV1ProcessorVersion {
   /// The most recently invoked evaluation for the processor version.
   GoogleCloudDocumentaiV1EvaluationReference? latestEvaluation;
 
+  /// The model type of this processor version.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "MODEL_TYPE_UNSPECIFIED" : The processor version has unspecified model
+  /// type.
+  /// - "MODEL_TYPE_GENERATIVE" : The processor version has generative model
+  /// type.
+  /// - "MODEL_TYPE_CUSTOM" : The processor version has custom model type.
+  core.String? modelType;
+
   /// The resource name of the processor version.
   ///
   /// Format:
@@ -5261,6 +5462,7 @@ class GoogleCloudDocumentaiV1ProcessorVersion {
     this.kmsKeyName,
     this.kmsKeyVersionName,
     this.latestEvaluation,
+    this.modelType,
     this.name,
     this.state,
   });
@@ -5297,6 +5499,9 @@ class GoogleCloudDocumentaiV1ProcessorVersion {
                   json_['latestEvaluation']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          modelType: json_.containsKey('modelType')
+              ? json_['modelType'] as core.String
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
@@ -5311,6 +5516,7 @@ class GoogleCloudDocumentaiV1ProcessorVersion {
         if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
         if (kmsKeyVersionName != null) 'kmsKeyVersionName': kmsKeyVersionName!,
         if (latestEvaluation != null) 'latestEvaluation': latestEvaluation!,
+        if (modelType != null) 'modelType': modelType!,
         if (name != null) 'name': name!,
         if (state != null) 'state': state!,
       };
@@ -5391,7 +5597,7 @@ class GoogleCloudDocumentaiV1RawDocument {
   /// except the following: `*`, `?`, `[`, `]`, `%`, `{`, `}`,`'`, `\"`, `,`
   /// `~`, `=` and `:` are reserved.
   ///
-  /// If not specified, a default ID will be generated.
+  /// If not specified, a default ID is generated.
   core.String? displayName;
 
   /// An IANA MIME type (RFC6838) indicating the nature and format of the
@@ -5747,7 +5953,7 @@ class GoogleLongrunningOperation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard

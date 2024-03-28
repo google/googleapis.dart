@@ -10,7 +10,6 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 // ignore_for_file: unreachable_from_main
 // ignore_for_file: unused_local_variable
@@ -80,14 +79,58 @@ void checkAvroConfig(api.AvroConfig o) {
   buildCounterAvroConfig--;
 }
 
+core.int buildCounterAwsKinesis = 0;
+api.AwsKinesis buildAwsKinesis() {
+  final o = api.AwsKinesis();
+  buildCounterAwsKinesis++;
+  if (buildCounterAwsKinesis < 3) {
+    o.awsRoleArn = 'foo';
+    o.consumerArn = 'foo';
+    o.gcpServiceAccount = 'foo';
+    o.state = 'foo';
+    o.streamArn = 'foo';
+  }
+  buildCounterAwsKinesis--;
+  return o;
+}
+
+void checkAwsKinesis(api.AwsKinesis o) {
+  buildCounterAwsKinesis++;
+  if (buildCounterAwsKinesis < 3) {
+    unittest.expect(
+      o.awsRoleArn!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.consumerArn!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.gcpServiceAccount!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.state!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.streamArn!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterAwsKinesis--;
+}
+
 core.int buildCounterBigQueryConfig = 0;
 api.BigQueryConfig buildBigQueryConfig() {
   final o = api.BigQueryConfig();
   buildCounterBigQueryConfig++;
   if (buildCounterBigQueryConfig < 3) {
     o.dropUnknownFields = true;
+    o.serviceAccountEmail = 'foo';
     o.state = 'foo';
     o.table = 'foo';
+    o.useTableSchema = true;
     o.useTopicSchema = true;
     o.writeMetadata = true;
   }
@@ -100,6 +143,10 @@ void checkBigQueryConfig(api.BigQueryConfig o) {
   if (buildCounterBigQueryConfig < 3) {
     unittest.expect(o.dropUnknownFields!, unittest.isTrue);
     unittest.expect(
+      o.serviceAccountEmail!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.state!,
       unittest.equals('foo'),
     );
@@ -107,6 +154,7 @@ void checkBigQueryConfig(api.BigQueryConfig o) {
       o.table!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.useTableSchema!, unittest.isTrue);
     unittest.expect(o.useTopicSchema!, unittest.isTrue);
     unittest.expect(o.writeMetadata!, unittest.isTrue);
   }
@@ -167,6 +215,7 @@ api.CloudStorageConfig buildCloudStorageConfig() {
     o.filenameSuffix = 'foo';
     o.maxBytes = 'foo';
     o.maxDuration = 'foo';
+    o.serviceAccountEmail = 'foo';
     o.state = 'foo';
     o.textConfig = buildTextConfig();
   }
@@ -196,6 +245,10 @@ void checkCloudStorageConfig(api.CloudStorageConfig o) {
     );
     unittest.expect(
       o.maxDuration!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.serviceAccountEmail!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -381,6 +434,25 @@ void checkExpr(api.Expr o) {
     );
   }
   buildCounterExpr--;
+}
+
+core.int buildCounterIngestionDataSourceSettings = 0;
+api.IngestionDataSourceSettings buildIngestionDataSourceSettings() {
+  final o = api.IngestionDataSourceSettings();
+  buildCounterIngestionDataSourceSettings++;
+  if (buildCounterIngestionDataSourceSettings < 3) {
+    o.awsKinesis = buildAwsKinesis();
+  }
+  buildCounterIngestionDataSourceSettings--;
+  return o;
+}
+
+void checkIngestionDataSourceSettings(api.IngestionDataSourceSettings o) {
+  buildCounterIngestionDataSourceSettings++;
+  if (buildCounterIngestionDataSourceSettings < 3) {
+    checkAwsKinesis(o.awsKinesis!);
+  }
+  buildCounterIngestionDataSourceSettings--;
 }
 
 core.List<api.Schema> buildUnnamed3() => [
@@ -663,6 +735,7 @@ api.MessageStoragePolicy buildMessageStoragePolicy() {
   buildCounterMessageStoragePolicy++;
   if (buildCounterMessageStoragePolicy < 3) {
     o.allowedPersistenceRegions = buildUnnamed10();
+    o.enforceInTransit = true;
   }
   buildCounterMessageStoragePolicy--;
   return o;
@@ -672,6 +745,7 @@ void checkMessageStoragePolicy(api.MessageStoragePolicy o) {
   buildCounterMessageStoragePolicy++;
   if (buildCounterMessageStoragePolicy < 3) {
     checkUnnamed10(o.allowedPersistenceRegions!);
+    unittest.expect(o.enforceInTransit!, unittest.isTrue);
   }
   buildCounterMessageStoragePolicy--;
 }
@@ -1529,6 +1603,7 @@ api.Topic buildTopic() {
   final o = api.Topic();
   buildCounterTopic++;
   if (buildCounterTopic < 3) {
+    o.ingestionDataSourceSettings = buildIngestionDataSourceSettings();
     o.kmsKeyName = 'foo';
     o.labels = buildUnnamed22();
     o.messageRetentionDuration = 'foo';
@@ -1536,6 +1611,7 @@ api.Topic buildTopic() {
     o.name = 'foo';
     o.satisfiesPzs = true;
     o.schemaSettings = buildSchemaSettings();
+    o.state = 'foo';
   }
   buildCounterTopic--;
   return o;
@@ -1544,6 +1620,7 @@ api.Topic buildTopic() {
 void checkTopic(api.Topic o) {
   buildCounterTopic++;
   if (buildCounterTopic < 3) {
+    checkIngestionDataSourceSettings(o.ingestionDataSourceSettings!);
     unittest.expect(
       o.kmsKeyName!,
       unittest.equals('foo'),
@@ -1560,6 +1637,10 @@ void checkTopic(api.Topic o) {
     );
     unittest.expect(o.satisfiesPzs!, unittest.isTrue);
     checkSchemaSettings(o.schemaSettings!);
+    unittest.expect(
+      o.state!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterTopic--;
 }
@@ -1740,6 +1821,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-AwsKinesis', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAwsKinesis();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.AwsKinesis.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkAwsKinesis(od);
+    });
+  });
+
   unittest.group('obj-schema-BigQueryConfig', () {
     unittest.test('to-json--from-json', () async {
       final o = buildBigQueryConfig();
@@ -1837,6 +1928,16 @@ void main() {
       final od =
           api.Expr.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkExpr(od);
+    });
+  });
+
+  unittest.group('obj-schema-IngestionDataSourceSettings', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildIngestionDataSourceSettings();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.IngestionDataSourceSettings.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkIngestionDataSourceSettings(od);
     });
   });
 

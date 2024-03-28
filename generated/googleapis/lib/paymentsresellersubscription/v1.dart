@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Payments Reseller Subscription API - v1
@@ -23,7 +22,7 @@
 ///   - [PartnersProductsResource]
 ///   - [PartnersPromotionsResource]
 ///   - [PartnersSubscriptionsResource]
-library paymentsresellersubscription_v1;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -39,6 +38,9 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 class PaymentsResellerSubscriptionApi {
+  /// Associate you with your personal info on Google
+  static const openidScope = 'openid';
+
   final commons.ApiRequester _requester;
 
   PartnersResource get partners => PartnersResource(_requester);
@@ -80,11 +82,11 @@ class PartnersProductsResource {
   ///
   /// [filter] - Optional. Specifies the filters for the product results. The
   /// syntax is defined in https://google.aip.dev/160 with the following
-  /// caveats: - Only the following features are supported: - Logical operator
+  /// caveats: 1. Only the following features are supported: - Logical operator
   /// `AND` - Comparison operator `=` (no wildcards `*`) - Traversal operator
-  /// `.` - Has operator `:` (no wildcards `*`) - Only the following fields are
+  /// `.` - Has operator `:` (no wildcards `*`) 2. Only the following fields are
   /// supported: - `regionCodes` - `youtubePayload.partnerEligibilityId` -
-  /// `youtubePayload.postalCode` - Unless explicitly mentioned above, other
+  /// `youtubePayload.postalCode` 3. Unless explicitly mentioned above, other
   /// features are not supported. Example: `regionCodes:US AND
   /// youtubePayload.postalCode=94043 AND
   /// youtubePayload.partnerEligibilityId=eligibility-id`
@@ -144,8 +146,8 @@ class PartnersPromotionsResource {
 
   /// To find eligible promotions for the current user.
   ///
-  /// The API requires user authorization via OAuth. The user is inferred from
-  /// the authenticated OAuth credential.
+  /// The API requires user authorization via OAuth. The bare minimum oauth
+  /// scope `openid` is sufficient, which will skip the consent screen.
   ///
   /// [request] - The metadata request object.
   ///
@@ -205,11 +207,11 @@ class PartnersPromotionsResource {
   ///
   /// [filter] - Optional. Specifies the filters for the promotion results. The
   /// syntax is defined in https://google.aip.dev/160 with the following
-  /// caveats: - Only the following features are supported: - Logical operator
+  /// caveats: 1. Only the following features are supported: - Logical operator
   /// `AND` - Comparison operator `=` (no wildcards `*`) - Traversal operator
-  /// `.` - Has operator `:` (no wildcards `*`) - Only the following fields are
+  /// `.` - Has operator `:` (no wildcards `*`) 2. Only the following fields are
   /// supported: - `applicableProducts` - `regionCodes` -
-  /// `youtubePayload.partnerEligibilityId` - `youtubePayload.postalCode` -
+  /// `youtubePayload.partnerEligibilityId` - `youtubePayload.postalCode` 3.
   /// Unless explicitly mentioned above, other features are not supported.
   /// Example: `applicableProducts:partners/partner1/products/product1 AND
   /// regionCodes:US AND youtubePayload.postalCode=94043 AND
@@ -654,6 +656,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1Amount {
       };
 }
 
+/// Request to cancel a subscription.
 class GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionRequest {
   /// If true, Google will cancel the subscription immediately, and may or may
   /// not (based on the contract) issue a prorated refund for the remainder of
@@ -672,14 +675,17 @@ class GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionRequest {
   /// - "CANCELLATION_REASON_REMORSE" : Buyer's remorse.
   /// - "CANCELLATION_REASON_ACCIDENTAL_PURCHASE" : Accidential purchase.
   /// - "CANCELLATION_REASON_PAST_DUE" : Payment is past due.
-  /// - "CANCELLATION_REASON_ACCOUNT_CLOSED" : User account closed.
+  /// - "CANCELLATION_REASON_ACCOUNT_CLOSED" : Used for notification only, do
+  /// not use in Cancel API. User account closed.
   /// - "CANCELLATION_REASON_UPGRADE_DOWNGRADE" : Used for notification only, do
   /// not use in Cancel API. Cancellation due to upgrade or downgrade.
   /// - "CANCELLATION_REASON_USER_DELINQUENCY" : Cancellation due to user
   /// delinquency
-  /// - "CANCELLATION_REASON_SYSTEM_ERROR" : Cancellation due to an
-  /// unrecoverable system error.
-  /// - "CANCELLATION_REASON_SYSTEM_CANCEL" : Cancellation by a system.
+  /// - "CANCELLATION_REASON_SYSTEM_ERROR" : Used for notification only, do not
+  /// use in Cancel API. Cancellation due to an unrecoverable system error.
+  /// - "CANCELLATION_REASON_SYSTEM_CANCEL" : Used for notification only, do not
+  /// use in Cancel API. The subscription is cancelled by Google automatically
+  /// since it is no longer valid.
   /// - "CANCELLATION_REASON_OTHER" : Other reason.
   core.String? cancellationReason;
 
@@ -706,6 +712,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionRequest {
       };
 }
 
+/// Response that contains the cancelled subscription resource.
 class GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionResponse {
   /// The cancelled subscription resource.
   GoogleCloudPaymentsResellerSubscriptionV1Subscription? subscription;
@@ -735,9 +742,11 @@ class GoogleCloudPaymentsResellerSubscriptionV1Duration {
 
   /// The unit used for the duration
   /// Possible string values are:
-  /// - "UNIT_UNSPECIFIED" : Default value.
+  /// - "UNIT_UNSPECIFIED" : Default value, reserved as an invalid or an
+  /// unexpected value.
   /// - "MONTH" : Unit of a calendar month.
   /// - "DAY" : Unit of a day.
+  /// - "HOUR" : Unit of an hour. It is used for testing.
   core.String? unit;
 
   GoogleCloudPaymentsResellerSubscriptionV1Duration({
@@ -761,9 +770,81 @@ class GoogleCloudPaymentsResellerSubscriptionV1Duration {
 /// end user.
 ///
 /// The end user identity is inferred from the request OAuth context.
-typedef GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequest
-    = $Empty;
+class GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequest {
+  /// The line items to be entitled.
+  ///
+  /// If unspecified, all line items will be entitled.
+  ///
+  /// Optional.
+  core.List<
+          GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequestLineItemEntitlementDetails>?
+      lineItemEntitlementDetails;
 
+  GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequest({
+    this.lineItemEntitlementDetails,
+  });
+
+  GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequest.fromJson(
+      core.Map json_)
+      : this(
+          lineItemEntitlementDetails: json_
+                  .containsKey('lineItemEntitlementDetails')
+              ? (json_['lineItemEntitlementDetails'] as core.List)
+                  .map((value) =>
+                      GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequestLineItemEntitlementDetails
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (lineItemEntitlementDetails != null)
+          'lineItemEntitlementDetails': lineItemEntitlementDetails!,
+      };
+}
+
+/// The details of the line item to be entitled.
+class GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequestLineItemEntitlementDetails {
+  /// The index of the line item to be entitled.
+  ///
+  /// Required.
+  core.int? lineItemIndex;
+
+  /// Only applicable if the line item corresponds to a hard bundle.
+  ///
+  /// Product resource names that identify the bundle elements to be entitled in
+  /// the line item. If unspecified, all bundle elements will be entitled. The
+  /// format is 'partners/{partner_id}/products/{product_id}'.
+  ///
+  /// Optional.
+  core.List<core.String>? products;
+
+  GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequestLineItemEntitlementDetails({
+    this.lineItemIndex,
+    this.products,
+  });
+
+  GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequestLineItemEntitlementDetails.fromJson(
+      core.Map json_)
+      : this(
+          lineItemIndex: json_.containsKey('lineItemIndex')
+              ? json_['lineItemIndex'] as core.int
+              : null,
+          products: json_.containsKey('products')
+              ? (json_['products'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (lineItemIndex != null) 'lineItemIndex': lineItemIndex!,
+        if (products != null) 'products': products!,
+      };
+}
+
+/// Response that contains the entitled subscription resource.
 class GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionResponse {
   /// The subscription that has user linked to it.
   GoogleCloudPaymentsResellerSubscriptionV1Subscription? subscription;
@@ -804,7 +885,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1ExtendSubscriptionRequest {
   /// A random UUID is recommended. The idempotency key for the request. The ID
   /// generation logic is controlled by the partner. request_id should be the
   /// same as on retries of the same request. A different request_id must be
-  /// used for a extension of a different cycle. A random UUID is recommended.
+  /// used for a extension of a different cycle.
   ///
   /// Required.
   core.String? requestId;
@@ -832,6 +913,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1ExtendSubscriptionRequest {
       };
 }
 
+/// Response that contains the timestamps after the extension.
 class GoogleCloudPaymentsResellerSubscriptionV1ExtendSubscriptionResponse {
   /// The time at which the subscription is expected to be extended, in ISO 8061
   /// format.
@@ -886,6 +968,8 @@ class GoogleCloudPaymentsResellerSubscriptionV1ExtendSubscriptionResponse {
 /// Describes the details of an extension request.
 class GoogleCloudPaymentsResellerSubscriptionV1Extension {
   /// Specifies the period of access the subscription should grant.
+  ///
+  /// Required.
   GoogleCloudPaymentsResellerSubscriptionV1Duration? duration;
 
   /// Identifier of the end-user in partner’s system.
@@ -915,15 +999,16 @@ class GoogleCloudPaymentsResellerSubscriptionV1Extension {
       };
 }
 
+/// Request to find eligible promotions for the current user.
 class GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsRequest {
   /// Specifies the filters for the promotion results.
   ///
   /// The syntax is defined in https://google.aip.dev/160 with the following
-  /// caveats: - Only the following features are supported: - Logical operator
+  /// caveats: 1. Only the following features are supported: - Logical operator
   /// `AND` - Comparison operator `=` (no wildcards `*`) - Traversal operator
-  /// `.` - Has operator `:` (no wildcards `*`) - Only the following fields are
+  /// `.` - Has operator `:` (no wildcards `*`) 2. Only the following fields are
   /// supported: - `applicableProducts` - `regionCodes` -
-  /// `youtubePayload.partnerEligibilityId` - `youtubePayload.postalCode` -
+  /// `youtubePayload.partnerEligibilityId` - `youtubePayload.postalCode` 3.
   /// Unless explicitly mentioned above, other features are not supported.
   /// Example: `applicableProducts:partners/partner1/products/product1 AND
   /// regionCodes:US AND youtubePayload.postalCode=94043 AND
@@ -1014,6 +1099,32 @@ class GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsResponse {
       };
 }
 
+/// Details for a subscriptiin line item with finite billing cycles.
+class GoogleCloudPaymentsResellerSubscriptionV1FiniteBillingCycleDetails {
+  /// The number of a subscription line item billing cycles after which billing
+  /// will stop automatically.
+  ///
+  /// Required.
+  core.String? billingCycleCountLimit;
+
+  GoogleCloudPaymentsResellerSubscriptionV1FiniteBillingCycleDetails({
+    this.billingCycleCountLimit,
+  });
+
+  GoogleCloudPaymentsResellerSubscriptionV1FiniteBillingCycleDetails.fromJson(
+      core.Map json_)
+      : this(
+          billingCycleCountLimit: json_.containsKey('billingCycleCountLimit')
+              ? json_['billingCycleCountLimit'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (billingCycleCountLimit != null)
+          'billingCycleCountLimit': billingCycleCountLimit!,
+      };
+}
+
 /// Payload specific to Google One products.
 class GoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload {
   /// Campaign attributed to sales of this subscription.
@@ -1083,6 +1194,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload {
       };
 }
 
+/// Response that contains the products.
 class GoogleCloudPaymentsResellerSubscriptionV1ListProductsResponse {
   /// A token, which can be sent as `page_token` to retrieve the next page.
   ///
@@ -1118,6 +1230,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1ListProductsResponse {
       };
 }
 
+/// Response that contains the promotions.
 class GoogleCloudPaymentsResellerSubscriptionV1ListPromotionsResponse {
   /// A token, which can be sent as `page_token` to retrieve the next page.
   ///
@@ -1189,12 +1302,23 @@ class GoogleCloudPaymentsResellerSubscriptionV1Location {
 
 /// A Product resource that defines a subscription service that can be resold.
 class GoogleCloudPaymentsResellerSubscriptionV1Product {
-  /// Response only.
-  ///
-  /// Resource name of the product. It will have the format of
-  /// "partners/{partner_id}/products/{product_id}"
+  /// Specifies the details for a bundle product.
   ///
   /// Output only.
+  ProductBundleDetails? bundleDetails;
+
+  /// Details for a subscription line item with finite billing cycles.
+  ///
+  /// If unset, the line item will be charged indefinitely.
+  ///
+  /// Optional.
+  GoogleCloudPaymentsResellerSubscriptionV1FiniteBillingCycleDetails?
+      finiteBillingCycleDetails;
+
+  /// Identifier.
+  ///
+  /// Response only. Resource name of the product. It will have the format of
+  /// "partners/{partner_id}/products/{product_id}"
   core.String? name;
 
   /// Price configs for the product in the available regions.
@@ -1202,6 +1326,17 @@ class GoogleCloudPaymentsResellerSubscriptionV1Product {
   /// Output only.
   core.List<GoogleCloudPaymentsResellerSubscriptionV1ProductPriceConfig>?
       priceConfigs;
+
+  /// Specifies the type of the product.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "PRODUCT_TYPE_UNSPECIFIED" : Unspecified. It's reserved as an unexpected
+  /// value, should not be used.
+  /// - "PRODUCT_TYPE_SUBSCRIPTION" : The product is a subscription.
+  /// - "PRODUCT_TYPE_BUNDLE_SUBSCRIPTION" : The product is a bundled
+  /// subscription plan, which includes multiple subscription elements.
+  core.String? productType;
 
   /// 2-letter ISO region code where the product is available in.
   ///
@@ -1222,8 +1357,11 @@ class GoogleCloudPaymentsResellerSubscriptionV1Product {
   core.List<GoogleTypeLocalizedText>? titles;
 
   GoogleCloudPaymentsResellerSubscriptionV1Product({
+    this.bundleDetails,
+    this.finiteBillingCycleDetails,
     this.name,
     this.priceConfigs,
+    this.productType,
     this.regionCodes,
     this.subscriptionBillingCycleDuration,
     this.titles,
@@ -1231,6 +1369,16 @@ class GoogleCloudPaymentsResellerSubscriptionV1Product {
 
   GoogleCloudPaymentsResellerSubscriptionV1Product.fromJson(core.Map json_)
       : this(
+          bundleDetails: json_.containsKey('bundleDetails')
+              ? ProductBundleDetails.fromJson(
+                  json_['bundleDetails'] as core.Map<core.String, core.dynamic>)
+              : null,
+          finiteBillingCycleDetails: json_
+                  .containsKey('finiteBillingCycleDetails')
+              ? GoogleCloudPaymentsResellerSubscriptionV1FiniteBillingCycleDetails
+                  .fromJson(json_['finiteBillingCycleDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           priceConfigs: json_.containsKey('priceConfigs')
               ? (json_['priceConfigs'] as core.List)
@@ -1239,6 +1387,9 @@ class GoogleCloudPaymentsResellerSubscriptionV1Product {
                           .fromJson(
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
+              : null,
+          productType: json_.containsKey('productType')
+              ? json_['productType'] as core.String
               : null,
           regionCodes: json_.containsKey('regionCodes')
               ? (json_['regionCodes'] as core.List)
@@ -1260,12 +1411,42 @@ class GoogleCloudPaymentsResellerSubscriptionV1Product {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (bundleDetails != null) 'bundleDetails': bundleDetails!,
+        if (finiteBillingCycleDetails != null)
+          'finiteBillingCycleDetails': finiteBillingCycleDetails!,
         if (name != null) 'name': name!,
         if (priceConfigs != null) 'priceConfigs': priceConfigs!,
+        if (productType != null) 'productType': productType!,
         if (regionCodes != null) 'regionCodes': regionCodes!,
         if (subscriptionBillingCycleDuration != null)
           'subscriptionBillingCycleDuration': subscriptionBillingCycleDuration!,
         if (titles != null) 'titles': titles!,
+      };
+}
+
+/// The individual product that is included in the bundle.
+class GoogleCloudPaymentsResellerSubscriptionV1ProductBundleDetailsBundleElement {
+  /// Product resource name that identifies the bundle element.
+  ///
+  /// The format is 'partners/{partner_id}/products/{product_id}'.
+  ///
+  /// Required. Output only.
+  core.String? product;
+
+  GoogleCloudPaymentsResellerSubscriptionV1ProductBundleDetailsBundleElement({
+    this.product,
+  });
+
+  GoogleCloudPaymentsResellerSubscriptionV1ProductBundleDetailsBundleElement.fromJson(
+      core.Map json_)
+      : this(
+          product: json_.containsKey('product')
+              ? json_['product'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (product != null) 'product': product!,
       };
 }
 
@@ -1371,12 +1552,10 @@ class GoogleCloudPaymentsResellerSubscriptionV1Promotion {
   GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails?
       introductoryPricingDetails;
 
-  /// Response only.
+  /// Identifier.
   ///
-  /// Resource name of the subscription promotion. It will have the format of
-  /// "partners/{partner_id}/promotion/{promotion_id}"
-  ///
-  /// Output only.
+  /// Response only. Resource name of the subscription promotion. It will have
+  /// the format of "partners/{partner_id}/promotion/{promotion_id}"
   core.String? name;
 
   /// Specifies the type of the promotion.
@@ -1478,6 +1657,8 @@ class GoogleCloudPaymentsResellerSubscriptionV1Promotion {
 /// The details of a introductory pricing promotion.
 class GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails {
   /// Specifies the introductory pricing periods.
+  ///
+  /// Output only.
   core.List<
           GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec>?
       introductoryPricingSpecs;
@@ -1608,7 +1789,17 @@ class GoogleCloudPaymentsResellerSubscriptionV1ServicePeriod {
       };
 }
 
-/// A Subscription resource managed by 3P Partners.
+/// A subscription serves as a central billing entity between an external
+/// partner and Google.
+///
+/// The underlying Google services rely on the subscription state to grant or
+/// revoke the user's service entitlement. It's important to note that the
+/// subscription state may not always perfectly align with the user's service
+/// entitlement. For example, some Google services may continue providing access
+/// to the user until the current billing cycle ends, even if the subscription
+/// has been immediately canceled. However, other services may not do the same.
+/// To fully understand the specific details, please consult the relevant
+/// contract or product policy.
 class GoogleCloudPaymentsResellerSubscriptionV1Subscription {
   /// Describes the details of a cancelled subscription.
   ///
@@ -1652,13 +1843,11 @@ class GoogleCloudPaymentsResellerSubscriptionV1Subscription {
   core.List<GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem>?
       lineItems;
 
-  /// Resource name of the subscription.
+  /// Identifier.
   ///
-  /// It will have the format of
+  /// Resource name of the subscription. It will have the format of
   /// "partners/{partner_id}/subscriptions/{subscription_id}". This is available
   /// for authorizeAddon, but otherwise is response only.
-  ///
-  /// Optional.
   core.String? name;
 
   /// Identifier of the end-user in partner’s system.
@@ -1894,20 +2083,25 @@ class GoogleCloudPaymentsResellerSubscriptionV1Subscription {
 /// Describes the details of a cancelled or cancelling subscription.
 class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionCancellationDetails {
   /// The reason of the cancellation.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "CANCELLATION_REASON_UNSPECIFIED" : Reason is unspecified.
   /// - "CANCELLATION_REASON_FRAUD" : Fraudualant transaction.
   /// - "CANCELLATION_REASON_REMORSE" : Buyer's remorse.
   /// - "CANCELLATION_REASON_ACCIDENTAL_PURCHASE" : Accidential purchase.
   /// - "CANCELLATION_REASON_PAST_DUE" : Payment is past due.
-  /// - "CANCELLATION_REASON_ACCOUNT_CLOSED" : User account closed.
+  /// - "CANCELLATION_REASON_ACCOUNT_CLOSED" : Used for notification only, do
+  /// not use in Cancel API. User account closed.
   /// - "CANCELLATION_REASON_UPGRADE_DOWNGRADE" : Used for notification only, do
   /// not use in Cancel API. Cancellation due to upgrade or downgrade.
   /// - "CANCELLATION_REASON_USER_DELINQUENCY" : Cancellation due to user
   /// delinquency
-  /// - "CANCELLATION_REASON_SYSTEM_ERROR" : Cancellation due to an
-  /// unrecoverable system error.
-  /// - "CANCELLATION_REASON_SYSTEM_CANCEL" : Cancellation by a system.
+  /// - "CANCELLATION_REASON_SYSTEM_ERROR" : Used for notification only, do not
+  /// use in Cancel API. Cancellation due to an unrecoverable system error.
+  /// - "CANCELLATION_REASON_SYSTEM_CANCEL" : Used for notification only, do not
+  /// use in Cancel API. The subscription is cancelled by Google automatically
+  /// since it is no longer valid.
   /// - "CANCELLATION_REASON_OTHER" : Other reason.
   core.String? reason;
 
@@ -1938,10 +2132,26 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem {
   /// Output only.
   GoogleCloudPaymentsResellerSubscriptionV1Amount? amount;
 
+  /// The bundle details for the line item.
+  ///
+  /// Only populated if the line item corresponds to a hard bundle.
+  ///
+  /// Output only.
+  SubscriptionLineItemBundleDetails? bundleDetails;
+
   /// Description of this line item.
   ///
   /// Output only.
   core.String? description;
+
+  /// Details for a subscription line item with finite billing cycles.
+  ///
+  /// If unset, the line item will be charged indefinitely. Used only with
+  /// LINE_ITEM_RECURRENCE_TYPE_PERIODIC.
+  ///
+  /// Optional.
+  GoogleCloudPaymentsResellerSubscriptionV1FiniteBillingCycleDetails?
+      finiteBillingCycleDetails;
 
   /// The free trial end time will be populated after the line item is
   /// successfully processed.
@@ -2023,7 +2233,9 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem {
 
   GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem({
     this.amount,
+    this.bundleDetails,
     this.description,
+    this.finiteBillingCycleDetails,
     this.lineItemFreeTrialEndTime,
     this.lineItemIndex,
     this.lineItemPromotionSpecs,
@@ -2041,8 +2253,18 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem {
               ? GoogleCloudPaymentsResellerSubscriptionV1Amount.fromJson(
                   json_['amount'] as core.Map<core.String, core.dynamic>)
               : null,
+          bundleDetails: json_.containsKey('bundleDetails')
+              ? SubscriptionLineItemBundleDetails.fromJson(
+                  json_['bundleDetails'] as core.Map<core.String, core.dynamic>)
+              : null,
           description: json_.containsKey('description')
               ? json_['description'] as core.String
+              : null,
+          finiteBillingCycleDetails: json_
+                  .containsKey('finiteBillingCycleDetails')
+              ? GoogleCloudPaymentsResellerSubscriptionV1FiniteBillingCycleDetails
+                  .fromJson(json_['finiteBillingCycleDetails']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           lineItemFreeTrialEndTime:
               json_.containsKey('lineItemFreeTrialEndTime')
@@ -2082,7 +2304,10 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (amount != null) 'amount': amount!,
+        if (bundleDetails != null) 'bundleDetails': bundleDetails!,
         if (description != null) 'description': description!,
+        if (finiteBillingCycleDetails != null)
+          'finiteBillingCycleDetails': finiteBillingCycleDetails!,
         if (lineItemFreeTrialEndTime != null)
           'lineItemFreeTrialEndTime': lineItemFreeTrialEndTime!,
         if (lineItemIndex != null) 'lineItemIndex': lineItemIndex!,
@@ -2097,9 +2322,48 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem {
       };
 }
 
+/// The details for an element in the hard bundle.
+class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemBundleDetailsBundleElementDetails {
+  /// Product resource name that identifies the bundle element.
+  ///
+  /// The format is 'partners/{partner_id}/products/{product_id}'.
+  ///
+  /// Output only.
+  core.String? product;
+
+  /// The time when this product is linked to an end user.
+  ///
+  /// Output only.
+  core.String? userAccountLinkedTime;
+
+  GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemBundleDetailsBundleElementDetails({
+    this.product,
+    this.userAccountLinkedTime,
+  });
+
+  GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemBundleDetailsBundleElementDetails.fromJson(
+      core.Map json_)
+      : this(
+          product: json_.containsKey('product')
+              ? json_['product'] as core.String
+              : null,
+          userAccountLinkedTime: json_.containsKey('userAccountLinkedTime')
+              ? json_['userAccountLinkedTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (product != null) 'product': product!,
+        if (userAccountLinkedTime != null)
+          'userAccountLinkedTime': userAccountLinkedTime!,
+      };
+}
+
 /// Details for a ONE_TIME recurrence line item.
 class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemOneTimeRecurrenceDetails {
   /// The service period of the ONE_TIME line item.
+  ///
+  /// Output only.
   GoogleCloudPaymentsResellerSubscriptionV1ServicePeriod? servicePeriod;
 
   GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemOneTimeRecurrenceDetails({
@@ -2270,9 +2534,25 @@ class GoogleCloudPaymentsResellerSubscriptionV1YoutubePayload {
   /// The list of eligibility_ids which are applicable for the line item.
   core.List<core.String>? partnerEligibilityIds;
 
+  /// Specifies the plan type offered to the end user by the partner.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "PARTNER_PLAN_TYPE_UNSPECIFIED" : Unspecified. Should not use, reserved
+  /// as an invalid value.
+  /// - "PARTNER_PLAN_TYPE_STANDALONE" : This item is offered as a standalone
+  /// product to the user.
+  /// - "PARTNER_PLAN_TYPE_HARD_BUNDLE" : This item is bundled with another
+  /// partner offering, the item is provisioned at purchase time.
+  /// - "PARTNER_PLAN_TYPE_SOFT_BUNDLE" : This item is bundled with another
+  /// partner offering, the item is provisioned after puchase, when the user
+  /// opts in this Google service.
+  core.String? partnerPlanType;
+
   GoogleCloudPaymentsResellerSubscriptionV1YoutubePayload({
     this.accessEndTime,
     this.partnerEligibilityIds,
+    this.partnerPlanType,
   });
 
   GoogleCloudPaymentsResellerSubscriptionV1YoutubePayload.fromJson(
@@ -2286,14 +2566,92 @@ class GoogleCloudPaymentsResellerSubscriptionV1YoutubePayload {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          partnerPlanType: json_.containsKey('partnerPlanType')
+              ? json_['partnerPlanType'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accessEndTime != null) 'accessEndTime': accessEndTime!,
         if (partnerEligibilityIds != null)
           'partnerEligibilityIds': partnerEligibilityIds!,
+        if (partnerPlanType != null) 'partnerPlanType': partnerPlanType!,
       };
 }
 
 /// Localized variant of a text in a particular language.
 typedef GoogleTypeLocalizedText = $GoogleTypeLocalizedText;
+
+/// Details for a bundle product.
+class ProductBundleDetails {
+  /// The individual products that are included in the bundle.
+  core.List<
+          GoogleCloudPaymentsResellerSubscriptionV1ProductBundleDetailsBundleElement>?
+      bundleElements;
+
+  /// The entitlement mode of the bundle product.
+  /// Possible string values are:
+  /// - "ENTITLEMENT_MODE_UNSPECIFIED" : Unspecified. It's reserved as an
+  /// unexpected value, should not be used.
+  /// - "ENTITLEMENT_MODE_FULL" : All the bundle elements must be fully
+  /// activated in a single request.
+  /// - "ENTITLEMENT_MODE_INCREMENTAL" : The bundle elements could be
+  /// incrementally activated.
+  core.String? entitlementMode;
+
+  ProductBundleDetails({
+    this.bundleElements,
+    this.entitlementMode,
+  });
+
+  ProductBundleDetails.fromJson(core.Map json_)
+      : this(
+          bundleElements: json_.containsKey('bundleElements')
+              ? (json_['bundleElements'] as core.List)
+                  .map((value) =>
+                      GoogleCloudPaymentsResellerSubscriptionV1ProductBundleDetailsBundleElement
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          entitlementMode: json_.containsKey('entitlementMode')
+              ? json_['entitlementMode'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bundleElements != null) 'bundleElements': bundleElements!,
+        if (entitlementMode != null) 'entitlementMode': entitlementMode!,
+      };
+}
+
+/// The bundle details for a line item corresponding to a hard bundle.
+class SubscriptionLineItemBundleDetails {
+  /// The details for each element in the hard bundle.
+  ///
+  /// Output only.
+  core.List<
+          GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemBundleDetailsBundleElementDetails>?
+      bundleElementDetails;
+
+  SubscriptionLineItemBundleDetails({
+    this.bundleElementDetails,
+  });
+
+  SubscriptionLineItemBundleDetails.fromJson(core.Map json_)
+      : this(
+          bundleElementDetails: json_.containsKey('bundleElementDetails')
+              ? (json_['bundleElementDetails'] as core.List)
+                  .map((value) =>
+                      GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemBundleDetailsBundleElementDetails
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bundleElementDetails != null)
+          'bundleElementDetails': bundleElementDetails!,
+      };
+}

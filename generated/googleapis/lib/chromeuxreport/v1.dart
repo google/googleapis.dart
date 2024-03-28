@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Chrome UX Report API - v1
@@ -22,7 +21,7 @@
 /// Create an instance of [ChromeUXReportApi] to access these resources:
 ///
 /// - [RecordsResource]
-library chromeuxreport_v1;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -233,6 +232,31 @@ class CollectionPeriod {
 /// google.protobuf.Timestamp
 typedef Date = $Date;
 
+/// For enum metrics, provides fraction timeseries which add up to approximately
+/// 1.0 per entry (k-th element into the repeated fractions field for any k \<=
+/// len) across fraction_timeseries.
+class FractionTimeseries {
+  /// Values between 0.0 and 1.0 (inclusive) and NaN.
+  core.List<core.double>? fractions;
+
+  FractionTimeseries({
+    this.fractions,
+  });
+
+  FractionTimeseries.fromJson(core.Map json_)
+      : this(
+          fractions: json_.containsKey('fractions')
+              ? (json_['fractions'] as core.List)
+                  .map((value) => (value as core.num).toDouble())
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fractions != null) 'fractions': fractions!,
+      };
+}
+
 /// Key defines all the dimensions that identify this record as unique.
 class HistoryKey {
   /// The form factor is the device class that all users used to access the site
@@ -420,6 +444,9 @@ class Key {
 /// It contains a summary histogram of real world Chrome usage as a series of
 /// `bins`.
 class Metric {
+  /// For enum metrics, provides fractions which add up to approximately 1.0.
+  core.Map<core.String, core.double>? fractions;
+
   /// The histogram of user experiences for a metric.
   ///
   /// The histogram will have at least one bin and the densities of all bins
@@ -433,12 +460,21 @@ class Metric {
   Percentiles? percentiles;
 
   Metric({
+    this.fractions,
     this.histogram,
     this.percentiles,
   });
 
   Metric.fromJson(core.Map json_)
       : this(
+          fractions: json_.containsKey('fractions')
+              ? (json_['fractions'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    (value as core.num).toDouble(),
+                  ),
+                )
+              : null,
           histogram: json_.containsKey('histogram')
               ? (json_['histogram'] as core.List)
                   .map((value) => Bin.fromJson(
@@ -452,6 +488,7 @@ class Metric {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (fractions != null) 'fractions': fractions!,
         if (histogram != null) 'histogram': histogram!,
         if (percentiles != null) 'percentiles': percentiles!,
       };
@@ -463,6 +500,9 @@ class Metric {
 /// It contains a summary histogram of real world Chrome usage as a series of
 /// `bins`, where each bin has density values for a particular time period.
 class MetricTimeseries {
+  /// Mapping from labels to timeseries of fractions attributed to this label.
+  core.Map<core.String, FractionTimeseries>? fractionTimeseries;
+
   /// The histogram of user experiences for a metric.
   ///
   /// The histogram will have at least one bin and the densities of all bins
@@ -476,12 +516,24 @@ class MetricTimeseries {
   TimeseriesPercentiles? percentilesTimeseries;
 
   MetricTimeseries({
+    this.fractionTimeseries,
     this.histogramTimeseries,
     this.percentilesTimeseries,
   });
 
   MetricTimeseries.fromJson(core.Map json_)
       : this(
+          fractionTimeseries: json_.containsKey('fractionTimeseries')
+              ? (json_['fractionTimeseries']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    FractionTimeseries.fromJson(
+                        value as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
           histogramTimeseries: json_.containsKey('histogramTimeseries')
               ? (json_['histogramTimeseries'] as core.List)
                   .map((value) => TimeseriesBin.fromJson(
@@ -495,6 +547,8 @@ class MetricTimeseries {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (fractionTimeseries != null)
+          'fractionTimeseries': fractionTimeseries!,
         if (histogramTimeseries != null)
           'histogramTimeseries': histogramTimeseries!,
         if (percentilesTimeseries != null)

@@ -1,3 +1,34 @@
+## 13.1.0
+
+ - `logging` - removed (*BROKEN*) `tail()` function call.
+ - `dataportability` - new!
+ - `speech` - added `v2`
+
+## 13.0.0
+
+ - `apphub` - new!
+ - `bigqueryconnection` - new!
+ - `displayvideo` - Removed v1 (v2, v3 still exist)
+ - `walletobjects` - new!
+ - `workspaceevents` - new!
+
+## 12.0.0
+
+ - `alloydb` - new!
+ - `backupdr` - new!
+ - `biglake` - new!
+ - `bigquerydatapolicy` - new!
+ - `cloudbuild` - added `v2`
+ - `displayvideo` - added `v3`
+ - `gameservices` - Removed!
+ - `language` - added `v2`
+ - `looker` - new!
+ - `rapidmigrationassessment` - new!
+ - `safebrowsing` - added `v5`
+ - `trafficdirector` - added `v3`
+ - `vmwareengine` - new!
+ - `workstations` - new!
+
 ## 11.4.0
 
 - Deprecated APIs are now annotated with `@Deprecated`.

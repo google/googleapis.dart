@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Data Lineage API - v1
@@ -23,7 +22,7 @@
 ///     - [ProjectsLocationsProcessesResource]
 ///       - [ProjectsLocationsProcessesRunsResource]
 ///         - [ProjectsLocationsProcessesRunsLineageEventsResource]
-library datalineage_v1;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -125,6 +124,57 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesResponse
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Creates new lineage events together with their parents: process and run.
+  ///
+  /// Updates the process and run if they already exist. Mapped from Open
+  /// Lineage specification:
+  /// https://github.com/OpenLineage/OpenLineage/blob/main/spec/OpenLineage.json.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the project and its location that should
+  /// own the process, run, and lineage event.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [requestId] - A unique identifier for this request. Restricted to 36 ASCII
+  /// characters. A random UUID is recommended. This request is idempotent only
+  /// if a `request_id` is provided.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async
+      .Future<GoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse>
+      processOpenLineageRunEvent(
+    core.String parent, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + ':processOpenLineageRunEvent';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse
         .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
@@ -1624,6 +1674,52 @@ class GoogleCloudDatacatalogLineageV1ProcessLinks {
       };
 }
 
+/// Response message for ProcessOpenLineageRunEvent.
+class GoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse {
+  /// Created lineage event names.
+  ///
+  /// Format:
+  /// `projects/{project}/locations/{location}/processes/{process}/runs/{run}/lineageEvents/{lineage_event}`.
+  core.List<core.String>? lineageEvents;
+
+  /// Created process name.
+  ///
+  /// Format: `projects/{project}/locations/{location}/processes/{process}`.
+  core.String? process;
+
+  /// Created run name.
+  ///
+  /// Format:
+  /// `projects/{project}/locations/{location}/processes/{process}/runs/{run}`.
+  core.String? run;
+
+  GoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse({
+    this.lineageEvents,
+    this.process,
+    this.run,
+  });
+
+  GoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse.fromJson(
+      core.Map json_)
+      : this(
+          lineageEvents: json_.containsKey('lineageEvents')
+              ? (json_['lineageEvents'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          process: json_.containsKey('process')
+              ? json_['process'] as core.String
+              : null,
+          run: json_.containsKey('run') ? json_['run'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (lineageEvents != null) 'lineageEvents': lineageEvents!,
+        if (process != null) 'process': process!,
+        if (run != null) 'run': run!,
+      };
+}
+
 /// A lineage run represents an execution of a process that creates lineage
 /// events.
 class GoogleCloudDatacatalogLineageV1Run {
@@ -1885,7 +1981,7 @@ class GoogleLongrunningOperation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard

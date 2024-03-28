@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Cloud Storage JSON API - v1
@@ -20,17 +19,21 @@
 ///
 /// Create an instance of [StorageApi] to access these resources:
 ///
+/// - [AnywhereCachesResource]
 /// - [BucketAccessControlsResource]
 /// - [BucketsResource]
 /// - [ChannelsResource]
 /// - [DefaultObjectAccessControlsResource]
+/// - [FoldersResource]
+/// - [ManagedFoldersResource]
 /// - [NotificationsResource]
 /// - [ObjectAccessControlsResource]
 /// - [ObjectsResource]
+/// - [OperationsResource]
 /// - [ProjectsResource]
 ///   - [ProjectsHmacKeysResource]
 ///   - [ProjectsServiceAccountResource]
-library storage_v1;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -76,16 +79,22 @@ class StorageApi {
 
   final commons.ApiRequester _requester;
 
+  AnywhereCachesResource get anywhereCaches =>
+      AnywhereCachesResource(_requester);
   BucketAccessControlsResource get bucketAccessControls =>
       BucketAccessControlsResource(_requester);
   BucketsResource get buckets => BucketsResource(_requester);
   ChannelsResource get channels => ChannelsResource(_requester);
   DefaultObjectAccessControlsResource get defaultObjectAccessControls =>
       DefaultObjectAccessControlsResource(_requester);
+  FoldersResource get folders => FoldersResource(_requester);
+  ManagedFoldersResource get managedFolders =>
+      ManagedFoldersResource(_requester);
   NotificationsResource get notifications => NotificationsResource(_requester);
   ObjectAccessControlsResource get objectAccessControls =>
       ObjectAccessControlsResource(_requester);
   ObjectsResource get objects => ObjectsResource(_requester);
+  OperationsResource get operations => OperationsResource(_requester);
   ProjectsResource get projects => ProjectsResource(_requester);
 
   StorageApi(http.Client client,
@@ -93,6 +102,311 @@ class StorageApi {
       core.String servicePath = 'storage/v1/'})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+}
+
+class AnywhereCachesResource {
+  final commons.ApiRequester _requester;
+
+  AnywhereCachesResource(commons.ApiRequester client) : _requester = client;
+
+  /// Disables an Anywhere Cache instance.
+  ///
+  /// Request parameters:
+  ///
+  /// [bucket] - Name of the parent bucket.
+  ///
+  /// [anywhereCacheId] - The ID of requested Anywhere Cache instance.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AnywhereCache].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AnywhereCache> disable(
+    core.String bucket,
+    core.String anywhereCacheId, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'b/' +
+        commons.escapeVariable('$bucket') +
+        '/anywhereCaches/' +
+        commons.escapeVariable('$anywhereCacheId') +
+        '/disable';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+    );
+    return AnywhereCache.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns the metadata of an Anywhere Cache instance.
+  ///
+  /// Request parameters:
+  ///
+  /// [bucket] - Name of the parent bucket.
+  ///
+  /// [anywhereCacheId] - The ID of requested Anywhere Cache instance.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AnywhereCache].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AnywhereCache> get(
+    core.String bucket,
+    core.String anywhereCacheId, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'b/' +
+        commons.escapeVariable('$bucket') +
+        '/anywhereCaches/' +
+        commons.escapeVariable('$anywhereCacheId');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AnywhereCache.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Creates an Anywhere Cache instance.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [bucket] - Name of the parent bucket.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> insert(
+    AnywhereCache request,
+    core.String bucket, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'b/' + commons.escapeVariable('$bucket') + '/anywhereCaches';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns a list of Anywhere Cache instances of the bucket matching the
+  /// criteria.
+  ///
+  /// Request parameters:
+  ///
+  /// [bucket] - Name of the parent bucket.
+  ///
+  /// [pageSize] - Maximum number of items to return in a single page of
+  /// responses. Maximum 1000.
+  ///
+  /// [pageToken] - A previously-returned page token representing part of the
+  /// larger set of results to view.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AnywhereCaches].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AnywhereCaches> list(
+    core.String bucket, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'b/' + commons.escapeVariable('$bucket') + '/anywhereCaches';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AnywhereCaches.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Pauses an Anywhere Cache instance.
+  ///
+  /// Request parameters:
+  ///
+  /// [bucket] - Name of the parent bucket.
+  ///
+  /// [anywhereCacheId] - The ID of requested Anywhere Cache instance.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AnywhereCache].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AnywhereCache> pause(
+    core.String bucket,
+    core.String anywhereCacheId, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'b/' +
+        commons.escapeVariable('$bucket') +
+        '/anywhereCaches/' +
+        commons.escapeVariable('$anywhereCacheId') +
+        '/pause';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+    );
+    return AnywhereCache.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Resumes a paused or disabled Anywhere Cache instance.
+  ///
+  /// Request parameters:
+  ///
+  /// [bucket] - Name of the parent bucket.
+  ///
+  /// [anywhereCacheId] - The ID of requested Anywhere Cache instance.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AnywhereCache].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AnywhereCache> resume(
+    core.String bucket,
+    core.String anywhereCacheId, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'b/' +
+        commons.escapeVariable('$bucket') +
+        '/anywhereCaches/' +
+        commons.escapeVariable('$anywhereCacheId') +
+        '/resume';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+    );
+    return AnywhereCache.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the config(ttl and admissionPolicy) of an Anywhere Cache instance.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [bucket] - Name of the parent bucket.
+  ///
+  /// [anywhereCacheId] - The ID of requested Anywhere Cache instance.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> update(
+    AnywhereCache request,
+    core.String bucket,
+    core.String anywhereCacheId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'b/' +
+        commons.escapeVariable('$bucket') +
+        '/anywhereCaches/' +
+        commons.escapeVariable('$anywhereCacheId');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class BucketAccessControlsResource {
@@ -555,6 +869,9 @@ class BucketsResource {
   ///
   /// [project] - A valid API project identifier.
   ///
+  /// [enableObjectRetention] - When set to true, object retention is enabled
+  /// for this bucket.
+  ///
   /// [predefinedAcl] - Apply a predefined set of access controls to this
   /// bucket.
   /// Possible string values are:
@@ -605,6 +922,7 @@ class BucketsResource {
   async.Future<Bucket> insert(
     Bucket request,
     core.String project, {
+    core.bool? enableObjectRetention,
     core.String? predefinedAcl,
     core.String? predefinedDefaultObjectAcl,
     core.String? projection,
@@ -614,6 +932,8 @@ class BucketsResource {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       'project': [project],
+      if (enableObjectRetention != null)
+        'enableObjectRetention': ['${enableObjectRetention}'],
       if (predefinedAcl != null) 'predefinedAcl': [predefinedAcl],
       if (predefinedDefaultObjectAcl != null)
         'predefinedDefaultObjectAcl': [predefinedDefaultObjectAcl],
@@ -1379,6 +1699,657 @@ class DefaultObjectAccessControlsResource {
   }
 }
 
+class FoldersResource {
+  final commons.ApiRequester _requester;
+
+  FoldersResource(commons.ApiRequester client) : _requester = client;
+
+  /// Permanently deletes a folder.
+  ///
+  /// Only applicable to buckets with hierarchical namespace enabled.
+  ///
+  /// Request parameters:
+  ///
+  /// [bucket] - Name of the bucket in which the folder resides.
+  ///
+  /// [folder] - Name of a folder.
+  ///
+  /// [ifMetagenerationMatch] - If set, only deletes the folder if its
+  /// metageneration matches this value.
+  ///
+  /// [ifMetagenerationNotMatch] - If set, only deletes the folder if its
+  /// metageneration does not match this value.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<void> delete(
+    core.String bucket,
+    core.String folder, {
+    core.String? ifMetagenerationMatch,
+    core.String? ifMetagenerationNotMatch,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (ifMetagenerationMatch != null)
+        'ifMetagenerationMatch': [ifMetagenerationMatch],
+      if (ifMetagenerationNotMatch != null)
+        'ifMetagenerationNotMatch': [ifMetagenerationNotMatch],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'b/' +
+        commons.escapeVariable('$bucket') +
+        '/folders/' +
+        commons.escapeVariable('$folder');
+
+    await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+      downloadOptions: null,
+    );
+  }
+
+  /// Returns metadata for the specified folder.
+  ///
+  /// Only applicable to buckets with hierarchical namespace enabled.
+  ///
+  /// Request parameters:
+  ///
+  /// [bucket] - Name of the bucket in which the folder resides.
+  ///
+  /// [folder] - Name of a folder.
+  ///
+  /// [ifMetagenerationMatch] - Makes the return of the folder metadata
+  /// conditional on whether the folder's current metageneration matches the
+  /// given value.
+  ///
+  /// [ifMetagenerationNotMatch] - Makes the return of the folder metadata
+  /// conditional on whether the folder's current metageneration does not match
+  /// the given value.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Folder].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Folder> get(
+    core.String bucket,
+    core.String folder, {
+    core.String? ifMetagenerationMatch,
+    core.String? ifMetagenerationNotMatch,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (ifMetagenerationMatch != null)
+        'ifMetagenerationMatch': [ifMetagenerationMatch],
+      if (ifMetagenerationNotMatch != null)
+        'ifMetagenerationNotMatch': [ifMetagenerationNotMatch],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'b/' +
+        commons.escapeVariable('$bucket') +
+        '/folders/' +
+        commons.escapeVariable('$folder');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Folder.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Creates a new folder.
+  ///
+  /// Only applicable to buckets with hierarchical namespace enabled.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [bucket] - Name of the bucket in which the folder resides.
+  ///
+  /// [recursive] - If true, any parent folder which doesn’t exist will be
+  /// created automatically.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Folder].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Folder> insert(
+    Folder request,
+    core.String bucket, {
+    core.bool? recursive,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (recursive != null) 'recursive': ['${recursive}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'b/' + commons.escapeVariable('$bucket') + '/folders';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Folder.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves a list of folders matching the criteria.
+  ///
+  /// Only applicable to buckets with hierarchical namespace enabled.
+  ///
+  /// Request parameters:
+  ///
+  /// [bucket] - Name of the bucket in which to look for folders.
+  ///
+  /// [delimiter] - Returns results in a directory-like mode. The only supported
+  /// value is '/'. If set, items will only contain folders that either exactly
+  /// match the prefix, or are one level below the prefix.
+  ///
+  /// [endOffset] - Filter results to folders whose names are lexicographically
+  /// before endOffset. If startOffset is also set, the folders listed will have
+  /// names between startOffset (inclusive) and endOffset (exclusive).
+  ///
+  /// [pageSize] - Maximum number of items to return in a single page of
+  /// responses.
+  ///
+  /// [pageToken] - A previously-returned page token representing part of the
+  /// larger set of results to view.
+  ///
+  /// [prefix] - Filter results to folders whose paths begin with this prefix.
+  /// If set, the value must either be an empty string or end with a '/'.
+  ///
+  /// [startOffset] - Filter results to folders whose names are
+  /// lexicographically equal to or after startOffset. If endOffset is also set,
+  /// the folders listed will have names between startOffset (inclusive) and
+  /// endOffset (exclusive).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Folders].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Folders> list(
+    core.String bucket, {
+    core.String? delimiter,
+    core.String? endOffset,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? prefix,
+    core.String? startOffset,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (delimiter != null) 'delimiter': [delimiter],
+      if (endOffset != null) 'endOffset': [endOffset],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (prefix != null) 'prefix': [prefix],
+      if (startOffset != null) 'startOffset': [startOffset],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'b/' + commons.escapeVariable('$bucket') + '/folders';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Folders.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Renames a source folder to a destination folder.
+  ///
+  /// Only applicable to buckets with hierarchical namespace enabled.
+  ///
+  /// Request parameters:
+  ///
+  /// [bucket] - Name of the bucket in which the folders are in.
+  ///
+  /// [sourceFolder] - Name of the source folder.
+  ///
+  /// [destinationFolder] - Name of the destination folder.
+  ///
+  /// [ifSourceMetagenerationMatch] - Makes the operation conditional on whether
+  /// the source object's current metageneration matches the given value.
+  ///
+  /// [ifSourceMetagenerationNotMatch] - Makes the operation conditional on
+  /// whether the source object's current metageneration does not match the
+  /// given value.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> rename(
+    core.String bucket,
+    core.String sourceFolder,
+    core.String destinationFolder, {
+    core.String? ifSourceMetagenerationMatch,
+    core.String? ifSourceMetagenerationNotMatch,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (ifSourceMetagenerationMatch != null)
+        'ifSourceMetagenerationMatch': [ifSourceMetagenerationMatch],
+      if (ifSourceMetagenerationNotMatch != null)
+        'ifSourceMetagenerationNotMatch': [ifSourceMetagenerationNotMatch],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'b/' +
+        commons.escapeVariable('$bucket') +
+        '/folders/' +
+        commons.escapeVariable('$sourceFolder') +
+        '/renameTo/folders/' +
+        commons.escapeVariable('$destinationFolder');
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ManagedFoldersResource {
+  final commons.ApiRequester _requester;
+
+  ManagedFoldersResource(commons.ApiRequester client) : _requester = client;
+
+  /// Permanently deletes a managed folder.
+  ///
+  /// Request parameters:
+  ///
+  /// [bucket] - Name of the bucket containing the managed folder.
+  ///
+  /// [managedFolder] - The managed folder name/path.
+  ///
+  /// [ifMetagenerationMatch] - If set, only deletes the managed folder if its
+  /// metageneration matches this value.
+  ///
+  /// [ifMetagenerationNotMatch] - If set, only deletes the managed folder if
+  /// its metageneration does not match this value.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<void> delete(
+    core.String bucket,
+    core.String managedFolder, {
+    core.String? ifMetagenerationMatch,
+    core.String? ifMetagenerationNotMatch,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (ifMetagenerationMatch != null)
+        'ifMetagenerationMatch': [ifMetagenerationMatch],
+      if (ifMetagenerationNotMatch != null)
+        'ifMetagenerationNotMatch': [ifMetagenerationNotMatch],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'b/' +
+        commons.escapeVariable('$bucket') +
+        '/managedFolders/' +
+        commons.escapeVariable('$managedFolder');
+
+    await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+      downloadOptions: null,
+    );
+  }
+
+  /// Returns metadata of the specified managed folder.
+  ///
+  /// Request parameters:
+  ///
+  /// [bucket] - Name of the bucket containing the managed folder.
+  ///
+  /// [managedFolder] - The managed folder name/path.
+  ///
+  /// [ifMetagenerationMatch] - Makes the return of the managed folder metadata
+  /// conditional on whether the managed folder's current metageneration matches
+  /// the given value.
+  ///
+  /// [ifMetagenerationNotMatch] - Makes the return of the managed folder
+  /// metadata conditional on whether the managed folder's current
+  /// metageneration does not match the given value.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ManagedFolder].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ManagedFolder> get(
+    core.String bucket,
+    core.String managedFolder, {
+    core.String? ifMetagenerationMatch,
+    core.String? ifMetagenerationNotMatch,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (ifMetagenerationMatch != null)
+        'ifMetagenerationMatch': [ifMetagenerationMatch],
+      if (ifMetagenerationNotMatch != null)
+        'ifMetagenerationNotMatch': [ifMetagenerationNotMatch],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'b/' +
+        commons.escapeVariable('$bucket') +
+        '/managedFolders/' +
+        commons.escapeVariable('$managedFolder');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ManagedFolder.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns an IAM policy for the specified managed folder.
+  ///
+  /// Request parameters:
+  ///
+  /// [bucket] - Name of the bucket containing the managed folder.
+  ///
+  /// [managedFolder] - The managed folder name/path.
+  ///
+  /// [optionsRequestedPolicyVersion] - The IAM policy format version to be
+  /// returned. If the optionsRequestedPolicyVersion is for an older version
+  /// that doesn't support part of the requested IAM policy, the request fails.
+  ///
+  /// [userProject] - The project to be billed for this request. Required for
+  /// Requester Pays buckets.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(
+    core.String bucket,
+    core.String managedFolder, {
+    core.int? optionsRequestedPolicyVersion,
+    core.String? userProject,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (optionsRequestedPolicyVersion != null)
+        'optionsRequestedPolicyVersion': ['${optionsRequestedPolicyVersion}'],
+      if (userProject != null) 'userProject': [userProject],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'b/' +
+        commons.escapeVariable('$bucket') +
+        '/managedFolders/' +
+        commons.escapeVariable('$managedFolder') +
+        '/iam';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Creates a new managed folder.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [bucket] - Name of the bucket containing the managed folder.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ManagedFolder].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ManagedFolder> insert(
+    ManagedFolder request,
+    core.String bucket, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'b/' + commons.escapeVariable('$bucket') + '/managedFolders';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return ManagedFolder.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists managed folders in the given bucket.
+  ///
+  /// Request parameters:
+  ///
+  /// [bucket] - Name of the bucket containing the managed folder.
+  ///
+  /// [pageSize] - Maximum number of items to return in a single page of
+  /// responses.
+  ///
+  /// [pageToken] - A previously-returned page token representing part of the
+  /// larger set of results to view.
+  ///
+  /// [prefix] - The managed folder name/path prefix to filter the output list
+  /// of results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ManagedFolders].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ManagedFolders> list(
+    core.String bucket, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? prefix,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (prefix != null) 'prefix': [prefix],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'b/' + commons.escapeVariable('$bucket') + '/managedFolders';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ManagedFolders.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates an IAM policy for the specified managed folder.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [bucket] - Name of the bucket containing the managed folder.
+  ///
+  /// [managedFolder] - The managed folder name/path.
+  ///
+  /// [userProject] - The project to be billed for this request. Required for
+  /// Requester Pays buckets.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(
+    Policy request,
+    core.String bucket,
+    core.String managedFolder, {
+    core.String? userProject,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (userProject != null) 'userProject': [userProject],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'b/' +
+        commons.escapeVariable('$bucket') +
+        '/managedFolders/' +
+        commons.escapeVariable('$managedFolder') +
+        '/iam';
+
+    final response_ = await _requester.request(
+      url_,
+      'PUT',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Tests a set of permissions on the given managed folder to see which, if
+  /// any, are held by the caller.
+  ///
+  /// Request parameters:
+  ///
+  /// [bucket] - Name of the bucket containing the managed folder.
+  ///
+  /// [managedFolder] - The managed folder name/path.
+  ///
+  /// [permissions] - Permissions to test.
+  ///
+  /// [userProject] - The project to be billed for this request. Required for
+  /// Requester Pays buckets.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestIamPermissionsResponse> testIamPermissions(
+    core.String bucket,
+    core.String managedFolder,
+    core.List<core.String> permissions, {
+    core.String? userProject,
+    core.String? $fields,
+  }) async {
+    if (permissions.isEmpty) {
+      throw core.ArgumentError('Parameter permissions cannot be empty.');
+    }
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'permissions': permissions,
+      if (userProject != null) 'userProject': [userProject],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'b/' +
+        commons.escapeVariable('$bucket') +
+        '/managedFolders/' +
+        commons.escapeVariable('$managedFolder') +
+        '/iam/testPermissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return TestIamPermissionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class NotificationsResource {
   final commons.ApiRequester _requester;
 
@@ -1934,6 +2905,46 @@ class ObjectsResource {
 
   ObjectsResource(commons.ApiRequester client) : _requester = client;
 
+  /// Initiates a long-running bulk restore operation on the specified bucket.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [bucket] - Name of the bucket in which the object resides.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> bulkRestore(
+    BulkRestoreObjectsRequest request,
+    core.String bucket, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'b/' + commons.escapeVariable('$bucket') + '/o/bulkRestore';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Concatenates a list of existing objects into a new object in the same
   /// bucket.
   ///
@@ -2299,6 +3310,9 @@ class ObjectsResource {
   /// - "full" : Include all properties.
   /// - "noAcl" : Omit the owner, acl property.
   ///
+  /// [softDeleted] - If true, only soft-deleted object versions will be listed.
+  /// The default is false. For more information, see Soft Delete.
+  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -2329,6 +3343,7 @@ class ObjectsResource {
     core.String? ifMetagenerationMatch,
     core.String? ifMetagenerationNotMatch,
     core.String? projection,
+    core.bool? softDeleted,
     core.String? userProject,
     core.String? $fields,
     commons.DownloadOptions downloadOptions = commons.DownloadOptions.metadata,
@@ -2343,6 +3358,7 @@ class ObjectsResource {
       if (ifMetagenerationNotMatch != null)
         'ifMetagenerationNotMatch': [ifMetagenerationNotMatch],
       if (projection != null) 'projection': [projection],
+      if (softDeleted != null) 'softDeleted': ['${softDeleted}'],
       if (userProject != null) 'userProject': [userProject],
       if ($fields != null) 'fields': [$fields],
     };
@@ -2571,6 +3587,10 @@ class ObjectsResource {
   /// before endOffset. If startOffset is also set, the objects listed will have
   /// names between startOffset (inclusive) and endOffset (exclusive).
   ///
+  /// [includeFoldersAsPrefixes] - Only applicable if delimiter is set to '/'.
+  /// If true, will also include folders and managed folders (besides objects)
+  /// in the returned prefixes.
+  ///
   /// [includeTrailingDelimiter] - If true, objects that end in exactly one
   /// instance of delimiter will have their metadata included in items in
   /// addition to prefixes.
@@ -2592,6 +3612,9 @@ class ObjectsResource {
   /// Possible string values are:
   /// - "full" : Include all properties.
   /// - "noAcl" : Omit the owner, acl property.
+  ///
+  /// [softDeleted] - If true, only soft-deleted object versions will be listed.
+  /// The default is false. For more information, see Soft Delete.
   ///
   /// [startOffset] - Filter results to objects whose names are
   /// lexicographically equal to or after startOffset. If endOffset is also set,
@@ -2618,12 +3641,14 @@ class ObjectsResource {
     core.String bucket, {
     core.String? delimiter,
     core.String? endOffset,
+    core.bool? includeFoldersAsPrefixes,
     core.bool? includeTrailingDelimiter,
     core.String? matchGlob,
     core.int? maxResults,
     core.String? pageToken,
     core.String? prefix,
     core.String? projection,
+    core.bool? softDeleted,
     core.String? startOffset,
     core.String? userProject,
     core.bool? versions,
@@ -2632,6 +3657,8 @@ class ObjectsResource {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (delimiter != null) 'delimiter': [delimiter],
       if (endOffset != null) 'endOffset': [endOffset],
+      if (includeFoldersAsPrefixes != null)
+        'includeFoldersAsPrefixes': ['${includeFoldersAsPrefixes}'],
       if (includeTrailingDelimiter != null)
         'includeTrailingDelimiter': ['${includeTrailingDelimiter}'],
       if (matchGlob != null) 'matchGlob': [matchGlob],
@@ -2639,6 +3666,7 @@ class ObjectsResource {
       if (pageToken != null) 'pageToken': [pageToken],
       if (prefix != null) 'prefix': [prefix],
       if (projection != null) 'projection': [projection],
+      if (softDeleted != null) 'softDeleted': ['${softDeleted}'],
       if (startOffset != null) 'startOffset': [startOffset],
       if (userProject != null) 'userProject': [userProject],
       if (versions != null) 'versions': ['${versions}'],
@@ -2685,6 +3713,10 @@ class ObjectsResource {
   /// [ifMetagenerationNotMatch] - Makes the operation conditional on whether
   /// the object's current metageneration does not match the given value.
   ///
+  /// [overrideUnlockedRetention] - Must be true to remove the retention
+  /// configuration, reduce its unlocked retention period, or change its mode
+  /// from unlocked to locked.
+  ///
   /// [predefinedAcl] - Apply a predefined set of access controls to this
   /// object.
   /// Possible string values are:
@@ -2727,6 +3759,7 @@ class ObjectsResource {
     core.String? ifGenerationNotMatch,
     core.String? ifMetagenerationMatch,
     core.String? ifMetagenerationNotMatch,
+    core.bool? overrideUnlockedRetention,
     core.String? predefinedAcl,
     core.String? projection,
     core.String? userProject,
@@ -2742,6 +3775,8 @@ class ObjectsResource {
         'ifMetagenerationMatch': [ifMetagenerationMatch],
       if (ifMetagenerationNotMatch != null)
         'ifMetagenerationNotMatch': [ifMetagenerationNotMatch],
+      if (overrideUnlockedRetention != null)
+        'overrideUnlockedRetention': ['${overrideUnlockedRetention}'],
       if (predefinedAcl != null) 'predefinedAcl': [predefinedAcl],
       if (projection != null) 'projection': [projection],
       if (userProject != null) 'userProject': [userProject],
@@ -2756,6 +3791,100 @@ class ObjectsResource {
     final response_ = await _requester.request(
       url_,
       'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Object.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Restores a soft-deleted object.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [bucket] - Name of the bucket in which the object resides.
+  ///
+  /// [object] - Name of the object. For information about how to URL encode
+  /// object names to be path safe, see Encoding URI Path Parts.
+  ///
+  /// [generation] - Selects a specific revision of this object.
+  ///
+  /// [copySourceAcl] - If true, copies the source object's ACL; otherwise, uses
+  /// the bucket's default object ACL. The default is false.
+  ///
+  /// [ifGenerationMatch] - Makes the operation conditional on whether the
+  /// object's one live generation matches the given value. Setting to 0 makes
+  /// the operation succeed only if there are no live versions of the object.
+  ///
+  /// [ifGenerationNotMatch] - Makes the operation conditional on whether none
+  /// of the object's live generations match the given value. If no live object
+  /// exists, the precondition fails. Setting to 0 makes the operation succeed
+  /// only if there is a live version of the object.
+  ///
+  /// [ifMetagenerationMatch] - Makes the operation conditional on whether the
+  /// object's one live metageneration matches the given value.
+  ///
+  /// [ifMetagenerationNotMatch] - Makes the operation conditional on whether
+  /// none of the object's live metagenerations match the given value.
+  ///
+  /// [projection] - Set of properties to return. Defaults to full.
+  /// Possible string values are:
+  /// - "full" : Include all properties.
+  /// - "noAcl" : Omit the owner, acl property.
+  ///
+  /// [userProject] - The project to be billed for this request. Required for
+  /// Requester Pays buckets.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Object].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Object> restore(
+    Object request,
+    core.String bucket,
+    core.String object,
+    core.String generation, {
+    core.bool? copySourceAcl,
+    core.String? ifGenerationMatch,
+    core.String? ifGenerationNotMatch,
+    core.String? ifMetagenerationMatch,
+    core.String? ifMetagenerationNotMatch,
+    core.String? projection,
+    core.String? userProject,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'generation': [generation],
+      if (copySourceAcl != null) 'copySourceAcl': ['${copySourceAcl}'],
+      if (ifGenerationMatch != null) 'ifGenerationMatch': [ifGenerationMatch],
+      if (ifGenerationNotMatch != null)
+        'ifGenerationNotMatch': [ifGenerationNotMatch],
+      if (ifMetagenerationMatch != null)
+        'ifMetagenerationMatch': [ifMetagenerationMatch],
+      if (ifMetagenerationNotMatch != null)
+        'ifMetagenerationNotMatch': [ifMetagenerationNotMatch],
+      if (projection != null) 'projection': [projection],
+      if (userProject != null) 'userProject': [userProject],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'b/' +
+        commons.escapeVariable('$bucket') +
+        '/o/' +
+        commons.escapeVariable('$object') +
+        '/restore';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
       body: body_,
       queryParams: queryParams_,
     );
@@ -3092,6 +4221,10 @@ class ObjectsResource {
   /// [ifMetagenerationNotMatch] - Makes the operation conditional on whether
   /// the object's current metageneration does not match the given value.
   ///
+  /// [overrideUnlockedRetention] - Must be true to remove the retention
+  /// configuration, reduce its unlocked retention period, or change its mode
+  /// from unlocked to locked.
+  ///
   /// [predefinedAcl] - Apply a predefined set of access controls to this
   /// object.
   /// Possible string values are:
@@ -3134,6 +4267,7 @@ class ObjectsResource {
     core.String? ifGenerationNotMatch,
     core.String? ifMetagenerationMatch,
     core.String? ifMetagenerationNotMatch,
+    core.bool? overrideUnlockedRetention,
     core.String? predefinedAcl,
     core.String? projection,
     core.String? userProject,
@@ -3149,6 +4283,8 @@ class ObjectsResource {
         'ifMetagenerationMatch': [ifMetagenerationMatch],
       if (ifMetagenerationNotMatch != null)
         'ifMetagenerationNotMatch': [ifMetagenerationNotMatch],
+      if (overrideUnlockedRetention != null)
+        'overrideUnlockedRetention': ['${overrideUnlockedRetention}'],
       if (predefinedAcl != null) 'predefinedAcl': [predefinedAcl],
       if (projection != null) 'projection': [projection],
       if (userProject != null) 'userProject': [userProject],
@@ -3267,6 +4403,147 @@ class ObjectsResource {
       queryParams: queryParams_,
     );
     return Channel.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class OperationsResource {
+  final commons.ApiRequester _requester;
+
+  OperationsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Starts asynchronous cancellation on a long-running operation.
+  ///
+  /// The server makes a best effort to cancel the operation, but success is not
+  /// guaranteed.
+  ///
+  /// Request parameters:
+  ///
+  /// [bucket] - The parent bucket of the operation resource.
+  ///
+  /// [operationId] - The ID of the operation resource.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<void> cancel(
+    core.String bucket,
+    core.String operationId, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'b/' +
+        commons.escapeVariable('$bucket') +
+        '/operations/' +
+        commons.escapeVariable('$operationId') +
+        '/cancel';
+
+    await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+      downloadOptions: null,
+    );
+  }
+
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Request parameters:
+  ///
+  /// [bucket] - The parent bucket of the operation resource.
+  ///
+  /// [operationId] - The ID of the operation resource.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> get(
+    core.String bucket,
+    core.String operationId, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'b/' +
+        commons.escapeVariable('$bucket') +
+        '/operations/' +
+        commons.escapeVariable('$operationId');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists operations that match the specified filter in the request.
+  ///
+  /// Request parameters:
+  ///
+  /// [bucket] - Name of the bucket in which to look for operations.
+  ///
+  /// [filter] - A filter to narrow down results to a preferred subset. The
+  /// filtering language is documented in more detail in
+  /// \[AIP-160\](https://google.aip.dev/160).
+  ///
+  /// [pageSize] - Maximum number of items to return in a single page of
+  /// responses. Fewer total results may be returned than requested. The service
+  /// uses this parameter or 100 items, whichever is smaller.
+  ///
+  /// [pageToken] - A previously-returned page token representing part of the
+  /// larger set of results to view.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningListOperationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningListOperationsResponse> list(
+    core.String bucket, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'b/' + commons.escapeVariable('$bucket') + '/operations';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningListOperationsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3580,10 +4857,172 @@ class ProjectsServiceAccountResource {
   }
 }
 
+/// An Anywhere Cache instance.
+class AnywhereCache {
+  /// The cache-level entry admission policy.
+  core.String? admissionPolicy;
+
+  /// The ID of the Anywhere cache instance.
+  core.String? anywhereCacheId;
+
+  /// The name of the bucket containing this cache instance.
+  core.String? bucket;
+
+  /// The creation time of the cache instance in RFC 3339 format.
+  core.DateTime? createTime;
+
+  /// The ID of the resource, including the project number, bucket name and
+  /// anywhere cache ID.
+  core.String? id;
+
+  /// The kind of item this is.
+  ///
+  /// For Anywhere Cache, this is always storage#anywhereCache.
+  core.String? kind;
+
+  /// True if the cache instance has an active Update long-running operation.
+  core.bool? pendingUpdate;
+
+  /// The link to this cache instance.
+  core.String? selfLink;
+
+  /// The current state of the cache instance.
+  core.String? state;
+
+  /// The TTL of all cache entries in whole seconds.
+  ///
+  /// e.g., "7200s".
+  core.String? ttl;
+
+  /// The modification time of the cache instance metadata in RFC 3339 format.
+  core.DateTime? updateTime;
+
+  /// The zone in which the cache instance is running.
+  ///
+  /// For example, us-central1-a.
+  core.String? zone;
+
+  AnywhereCache({
+    this.admissionPolicy,
+    this.anywhereCacheId,
+    this.bucket,
+    this.createTime,
+    this.id,
+    this.kind,
+    this.pendingUpdate,
+    this.selfLink,
+    this.state,
+    this.ttl,
+    this.updateTime,
+    this.zone,
+  });
+
+  AnywhereCache.fromJson(core.Map json_)
+      : this(
+          admissionPolicy: json_.containsKey('admissionPolicy')
+              ? json_['admissionPolicy'] as core.String
+              : null,
+          anywhereCacheId: json_.containsKey('anywhereCacheId')
+              ? json_['anywhereCacheId'] as core.String
+              : null,
+          bucket: json_.containsKey('bucket')
+              ? json_['bucket'] as core.String
+              : null,
+          createTime: json_.containsKey('createTime')
+              ? core.DateTime.parse(json_['createTime'] as core.String)
+              : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          pendingUpdate: json_.containsKey('pendingUpdate')
+              ? json_['pendingUpdate'] as core.bool
+              : null,
+          selfLink: json_.containsKey('selfLink')
+              ? json_['selfLink'] as core.String
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          ttl: json_.containsKey('ttl') ? json_['ttl'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? core.DateTime.parse(json_['updateTime'] as core.String)
+              : null,
+          zone: json_.containsKey('zone') ? json_['zone'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (admissionPolicy != null) 'admissionPolicy': admissionPolicy!,
+        if (anywhereCacheId != null) 'anywhereCacheId': anywhereCacheId!,
+        if (bucket != null) 'bucket': bucket!,
+        if (createTime != null)
+          'createTime': createTime!.toUtc().toIso8601String(),
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (pendingUpdate != null) 'pendingUpdate': pendingUpdate!,
+        if (selfLink != null) 'selfLink': selfLink!,
+        if (state != null) 'state': state!,
+        if (ttl != null) 'ttl': ttl!,
+        if (updateTime != null)
+          'updateTime': updateTime!.toUtc().toIso8601String(),
+        if (zone != null) 'zone': zone!,
+      };
+}
+
+/// A list of Anywhere Caches.
+class AnywhereCaches {
+  /// The list of items.
+  core.List<AnywhereCache>? items;
+
+  /// The kind of item this is.
+  ///
+  /// For lists of Anywhere Caches, this is always storage#anywhereCaches.
+  core.String? kind;
+
+  /// The continuation token, used to page through large result sets.
+  ///
+  /// Provide this value in a subsequent request to return the next page of
+  /// results.
+  core.String? nextPageToken;
+
+  AnywhereCaches({
+    this.items,
+    this.kind,
+    this.nextPageToken,
+  });
+
+  AnywhereCaches.fromJson(core.Map json_)
+      : this(
+          items: json_.containsKey('items')
+              ? (json_['items'] as core.List)
+                  .map((value) => AnywhereCache.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (items != null) 'items': items!,
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
 /// The bucket's Autoclass configuration.
 class BucketAutoclass {
   /// Whether or not Autoclass is enabled on this bucket
   core.bool? enabled;
+
+  /// The storage class that objects in the bucket eventually transition to if
+  /// they are not read for a certain length of time.
+  ///
+  /// Valid values are NEARLINE and ARCHIVE.
+  core.String? terminalStorageClass;
+
+  /// A date and time in RFC 3339 format representing the time of the most
+  /// recent update to "terminalStorageClass".
+  core.DateTime? terminalStorageClassUpdateTime;
 
   /// A date and time in RFC 3339 format representing the instant at which
   /// "enabled" was last toggled.
@@ -3591,6 +5030,8 @@ class BucketAutoclass {
 
   BucketAutoclass({
     this.enabled,
+    this.terminalStorageClass,
+    this.terminalStorageClassUpdateTime,
     this.toggleTime,
   });
 
@@ -3599,6 +5040,14 @@ class BucketAutoclass {
           enabled: json_.containsKey('enabled')
               ? json_['enabled'] as core.bool
               : null,
+          terminalStorageClass: json_.containsKey('terminalStorageClass')
+              ? json_['terminalStorageClass'] as core.String
+              : null,
+          terminalStorageClassUpdateTime:
+              json_.containsKey('terminalStorageClassUpdateTime')
+                  ? core.DateTime.parse(
+                      json_['terminalStorageClassUpdateTime'] as core.String)
+                  : null,
           toggleTime: json_.containsKey('toggleTime')
               ? core.DateTime.parse(json_['toggleTime'] as core.String)
               : null,
@@ -3606,6 +5055,11 @@ class BucketAutoclass {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
+        if (terminalStorageClass != null)
+          'terminalStorageClass': terminalStorageClass!,
+        if (terminalStorageClassUpdateTime != null)
+          'terminalStorageClassUpdateTime':
+              terminalStorageClassUpdateTime!.toUtc().toIso8601String(),
         if (toggleTime != null)
           'toggleTime': toggleTime!.toUtc().toIso8601String(),
       };
@@ -3730,6 +5184,27 @@ class BucketEncryption {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (defaultKmsKeyName != null) 'defaultKmsKeyName': defaultKmsKeyName!,
+      };
+}
+
+/// The bucket's hierarchical namespace configuration.
+class BucketHierarchicalNamespace {
+  /// When set to true, hierarchical namespace is enabled for this bucket.
+  core.bool? enabled;
+
+  BucketHierarchicalNamespace({
+    this.enabled,
+  });
+
+  BucketHierarchicalNamespace.fromJson(core.Map json_)
+      : this(
+          enabled: json_.containsKey('enabled')
+              ? json_['enabled'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
       };
 }
 
@@ -4147,6 +5622,27 @@ class BucketLogging {
       };
 }
 
+/// The bucket's object retention config.
+class BucketObjectRetention {
+  /// The bucket's object retention mode.
+  ///
+  /// Can be Enabled.
+  core.String? mode;
+
+  BucketObjectRetention({
+    this.mode,
+  });
+
+  BucketObjectRetention.fromJson(core.Map json_)
+      : this(
+          mode: json_.containsKey('mode') ? json_['mode'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (mode != null) 'mode': mode!,
+      };
+}
+
 /// The owner of the bucket.
 ///
 /// This is always the project team's owner group.
@@ -4229,6 +5725,43 @@ class BucketRetentionPolicy {
           'effectiveTime': effectiveTime!.toUtc().toIso8601String(),
         if (isLocked != null) 'isLocked': isLocked!,
         if (retentionPeriod != null) 'retentionPeriod': retentionPeriod!,
+      };
+}
+
+/// The bucket's soft delete policy, which defines the period of time that
+/// soft-deleted objects will be retained, and cannot be permanently deleted.
+class BucketSoftDeletePolicy {
+  /// Server-determined value that indicates the time from which the policy, or
+  /// one with a greater retention, was effective.
+  ///
+  /// This value is in RFC 3339 format.
+  core.DateTime? effectiveTime;
+
+  /// The duration in seconds that soft-deleted objects in the bucket will be
+  /// retained and cannot be permanently deleted.
+  core.String? retentionDurationSeconds;
+
+  BucketSoftDeletePolicy({
+    this.effectiveTime,
+    this.retentionDurationSeconds,
+  });
+
+  BucketSoftDeletePolicy.fromJson(core.Map json_)
+      : this(
+          effectiveTime: json_.containsKey('effectiveTime')
+              ? core.DateTime.parse(json_['effectiveTime'] as core.String)
+              : null,
+          retentionDurationSeconds:
+              json_.containsKey('retentionDurationSeconds')
+                  ? json_['retentionDurationSeconds'] as core.String
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (effectiveTime != null)
+          'effectiveTime': effectiveTime!.toUtc().toIso8601String(),
+        if (retentionDurationSeconds != null)
+          'retentionDurationSeconds': retentionDurationSeconds!,
       };
 }
 
@@ -4335,6 +5868,9 @@ class Bucket {
   /// HTTP 1.1 Entity tag for the bucket.
   core.String? etag;
 
+  /// The bucket's hierarchical namespace configuration.
+  BucketHierarchicalNamespace? hierarchicalNamespace;
+
   /// The bucket's IAM configuration.
   BucketIamConfiguration? iamConfiguration;
 
@@ -4376,6 +5912,9 @@ class Bucket {
   /// The name of the bucket.
   core.String? name;
 
+  /// The bucket's object retention config.
+  BucketObjectRetention? objectRetention;
+
   /// The owner of the bucket.
   ///
   /// This is always the project team's owner group.
@@ -4406,6 +5945,10 @@ class Bucket {
 
   /// The URI of this bucket.
   core.String? selfLink;
+
+  /// The bucket's soft delete policy, which defines the period of time that
+  /// soft-deleted objects will be retained, and cannot be permanently deleted.
+  BucketSoftDeletePolicy? softDeletePolicy;
 
   /// The bucket's default storage class, used whenever no storageClass is
   /// specified for a newly-created object.
@@ -4442,6 +5985,7 @@ class Bucket {
     this.defaultObjectAcl,
     this.encryption,
     this.etag,
+    this.hierarchicalNamespace,
     this.iamConfiguration,
     this.id,
     this.kind,
@@ -4452,12 +5996,14 @@ class Bucket {
     this.logging,
     this.metageneration,
     this.name,
+    this.objectRetention,
     this.owner,
     this.projectNumber,
     this.retentionPolicy,
     this.rpo,
     this.satisfiesPZS,
     this.selfLink,
+    this.softDeletePolicy,
     this.storageClass,
     this.timeCreated,
     this.updated,
@@ -4506,6 +6052,11 @@ class Bucket {
                   json_['encryption'] as core.Map<core.String, core.dynamic>)
               : null,
           etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          hierarchicalNamespace: json_.containsKey('hierarchicalNamespace')
+              ? BucketHierarchicalNamespace.fromJson(
+                  json_['hierarchicalNamespace']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           iamConfiguration: json_.containsKey('iamConfiguration')
               ? BucketIamConfiguration.fromJson(json_['iamConfiguration']
                   as core.Map<core.String, core.dynamic>)
@@ -4538,6 +6089,10 @@ class Bucket {
               ? json_['metageneration'] as core.String
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          objectRetention: json_.containsKey('objectRetention')
+              ? BucketObjectRetention.fromJson(json_['objectRetention']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           owner: json_.containsKey('owner')
               ? BucketOwner.fromJson(
                   json_['owner'] as core.Map<core.String, core.dynamic>)
@@ -4555,6 +6110,10 @@ class Bucket {
               : null,
           selfLink: json_.containsKey('selfLink')
               ? json_['selfLink'] as core.String
+              : null,
+          softDeletePolicy: json_.containsKey('softDeletePolicy')
+              ? BucketSoftDeletePolicy.fromJson(json_['softDeletePolicy']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           storageClass: json_.containsKey('storageClass')
               ? json_['storageClass'] as core.String
@@ -4587,6 +6146,8 @@ class Bucket {
         if (defaultObjectAcl != null) 'defaultObjectAcl': defaultObjectAcl!,
         if (encryption != null) 'encryption': encryption!,
         if (etag != null) 'etag': etag!,
+        if (hierarchicalNamespace != null)
+          'hierarchicalNamespace': hierarchicalNamespace!,
         if (iamConfiguration != null) 'iamConfiguration': iamConfiguration!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
@@ -4597,12 +6158,14 @@ class Bucket {
         if (logging != null) 'logging': logging!,
         if (metageneration != null) 'metageneration': metageneration!,
         if (name != null) 'name': name!,
+        if (objectRetention != null) 'objectRetention': objectRetention!,
         if (owner != null) 'owner': owner!,
         if (projectNumber != null) 'projectNumber': projectNumber!,
         if (retentionPolicy != null) 'retentionPolicy': retentionPolicy!,
         if (rpo != null) 'rpo': rpo!,
         if (satisfiesPZS != null) 'satisfiesPZS': satisfiesPZS!,
         if (selfLink != null) 'selfLink': selfLink!,
+        if (softDeletePolicy != null) 'softDeletePolicy': softDeletePolicy!,
         if (storageClass != null) 'storageClass': storageClass!,
         if (timeCreated != null)
           'timeCreated': timeCreated!.toUtc().toIso8601String(),
@@ -4823,6 +6386,80 @@ class Buckets {
         if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// A bulk restore objects request.
+class BulkRestoreObjectsRequest {
+  /// If false (default), the restore will not overwrite live objects with the
+  /// same name at the destination.
+  ///
+  /// This means some deleted objects may be skipped. If true, live objects will
+  /// be overwritten resulting in a noncurrent object (if versioning is
+  /// enabled). If versioning is not enabled, overwriting the object will result
+  /// in a soft-deleted object. In either case, if a noncurrent object already
+  /// exists with the same name, a live version can be written without issue.
+  core.bool? allowOverwrite;
+
+  /// If true, copies the source object's ACL; otherwise, uses the bucket's
+  /// default object ACL.
+  ///
+  /// The default is false.
+  core.bool? copySourceAcl;
+
+  /// Restores only the objects matching any of the specified glob(s).
+  ///
+  /// If this parameter is not specified, all objects will be restored within
+  /// the specified time range.
+  core.List<core.String>? matchGlobs;
+
+  /// Restores only the objects that were soft-deleted after this time.
+  core.DateTime? softDeletedAfterTime;
+
+  /// Restores only the objects that were soft-deleted before this time.
+  core.DateTime? softDeletedBeforeTime;
+
+  BulkRestoreObjectsRequest({
+    this.allowOverwrite,
+    this.copySourceAcl,
+    this.matchGlobs,
+    this.softDeletedAfterTime,
+    this.softDeletedBeforeTime,
+  });
+
+  BulkRestoreObjectsRequest.fromJson(core.Map json_)
+      : this(
+          allowOverwrite: json_.containsKey('allowOverwrite')
+              ? json_['allowOverwrite'] as core.bool
+              : null,
+          copySourceAcl: json_.containsKey('copySourceAcl')
+              ? json_['copySourceAcl'] as core.bool
+              : null,
+          matchGlobs: json_.containsKey('matchGlobs')
+              ? (json_['matchGlobs'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          softDeletedAfterTime: json_.containsKey('softDeletedAfterTime')
+              ? core.DateTime.parse(
+                  json_['softDeletedAfterTime'] as core.String)
+              : null,
+          softDeletedBeforeTime: json_.containsKey('softDeletedBeforeTime')
+              ? core.DateTime.parse(
+                  json_['softDeletedBeforeTime'] as core.String)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (allowOverwrite != null) 'allowOverwrite': allowOverwrite!,
+        if (copySourceAcl != null) 'copySourceAcl': copySourceAcl!,
+        if (matchGlobs != null) 'matchGlobs': matchGlobs!,
+        if (softDeletedAfterTime != null)
+          'softDeletedAfterTime':
+              softDeletedAfterTime!.toUtc().toIso8601String(),
+        if (softDeletedBeforeTime != null)
+          'softDeletedBeforeTime':
+              softDeletedBeforeTime!.toUtc().toIso8601String(),
       };
 }
 
@@ -5091,6 +6728,323 @@ class Expr {
       };
 }
 
+/// Only present if the folder is part of an ongoing rename folder operation.
+///
+/// Contains information which can be used to query the operation status.
+class FolderPendingRenameInfo {
+  /// The ID of the rename folder operation.
+  core.String? operationId;
+
+  FolderPendingRenameInfo({
+    this.operationId,
+  });
+
+  FolderPendingRenameInfo.fromJson(core.Map json_)
+      : this(
+          operationId: json_.containsKey('operationId')
+              ? json_['operationId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (operationId != null) 'operationId': operationId!,
+      };
+}
+
+/// A folder.
+///
+/// Only available in buckets with hierarchical namespace enabled.
+class Folder {
+  /// The name of the bucket containing this folder.
+  core.String? bucket;
+
+  /// The creation time of the folder in RFC 3339 format.
+  core.DateTime? createTime;
+
+  /// The ID of the folder, including the bucket name, folder name.
+  core.String? id;
+
+  /// The kind of item this is.
+  ///
+  /// For folders, this is always storage#folder.
+  core.String? kind;
+
+  /// The version of the metadata for this folder.
+  ///
+  /// Used for preconditions and for detecting changes in metadata.
+  core.String? metageneration;
+
+  /// The name of the folder.
+  ///
+  /// Required if not specified by URL parameter.
+  core.String? name;
+
+  /// Only present if the folder is part of an ongoing rename folder operation.
+  ///
+  /// Contains information which can be used to query the operation status.
+  FolderPendingRenameInfo? pendingRenameInfo;
+
+  /// The link to this folder.
+  core.String? selfLink;
+
+  /// The modification time of the folder metadata in RFC 3339 format.
+  core.DateTime? updateTime;
+
+  Folder({
+    this.bucket,
+    this.createTime,
+    this.id,
+    this.kind,
+    this.metageneration,
+    this.name,
+    this.pendingRenameInfo,
+    this.selfLink,
+    this.updateTime,
+  });
+
+  Folder.fromJson(core.Map json_)
+      : this(
+          bucket: json_.containsKey('bucket')
+              ? json_['bucket'] as core.String
+              : null,
+          createTime: json_.containsKey('createTime')
+              ? core.DateTime.parse(json_['createTime'] as core.String)
+              : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          metageneration: json_.containsKey('metageneration')
+              ? json_['metageneration'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          pendingRenameInfo: json_.containsKey('pendingRenameInfo')
+              ? FolderPendingRenameInfo.fromJson(json_['pendingRenameInfo']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          selfLink: json_.containsKey('selfLink')
+              ? json_['selfLink'] as core.String
+              : null,
+          updateTime: json_.containsKey('updateTime')
+              ? core.DateTime.parse(json_['updateTime'] as core.String)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bucket != null) 'bucket': bucket!,
+        if (createTime != null)
+          'createTime': createTime!.toUtc().toIso8601String(),
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (metageneration != null) 'metageneration': metageneration!,
+        if (name != null) 'name': name!,
+        if (pendingRenameInfo != null) 'pendingRenameInfo': pendingRenameInfo!,
+        if (selfLink != null) 'selfLink': selfLink!,
+        if (updateTime != null)
+          'updateTime': updateTime!.toUtc().toIso8601String(),
+      };
+}
+
+/// A list of folders.
+class Folders {
+  /// The list of items.
+  core.List<Folder>? items;
+
+  /// The kind of item this is.
+  ///
+  /// For lists of folders, this is always storage#folders.
+  core.String? kind;
+
+  /// The continuation token, used to page through large result sets.
+  ///
+  /// Provide this value in a subsequent request to return the next page of
+  /// results.
+  core.String? nextPageToken;
+
+  Folders({
+    this.items,
+    this.kind,
+    this.nextPageToken,
+  });
+
+  Folders.fromJson(core.Map json_)
+      : this(
+          items: json_.containsKey('items')
+              ? (json_['items'] as core.List)
+                  .map((value) => Folder.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (items != null) 'items': items!,
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// The response message for storage.buckets.operations.list.
+class GoogleLongrunningListOperationsResponse {
+  /// The continuation token, used to page through large result sets.
+  ///
+  /// Provide this value in a subsequent request to return the next page of
+  /// results.
+  core.String? nextPageToken;
+
+  /// A list of operations that matches the specified filter in the request.
+  core.List<GoogleLongrunningOperation>? operations;
+
+  GoogleLongrunningListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+  });
+
+  GoogleLongrunningListOperationsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          operations: json_.containsKey('operations')
+              ? (json_['operations'] as core.List)
+                  .map((value) => GoogleLongrunningOperation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (operations != null) 'operations': operations!,
+      };
+}
+
+/// This resource represents a long-running operation that is the result of a
+/// network API call.
+class GoogleLongrunningOperation {
+  /// If the value is "false", it means the operation is still in progress.
+  ///
+  /// If "true", the operation is completed, and either "error" or "response" is
+  /// available.
+  core.bool? done;
+
+  /// The error result of the operation in case of failure or cancellation.
+  GoogleRpcStatus? error;
+
+  /// Service-specific metadata associated with the operation.
+  ///
+  /// It typically contains progress information and common metadata such as
+  /// create time. Some services might not provide such metadata. Any method
+  /// that returns a long-running operation should document the metadata type,
+  /// if any.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? metadata;
+
+  /// The server-assigned name, which is only unique within the same service
+  /// that originally returns it.
+  ///
+  /// If you use the default HTTP mapping, the "name" should be a resource name
+  /// ending with "operations/{operationId}".
+  core.String? name;
+
+  /// The normal response of the operation in case of success.
+  ///
+  /// If the original method returns no data on success, such as "Delete", the
+  /// response is google.protobuf.Empty. If the original method is standard
+  /// Get/Create/Update, the response should be the resource. For other methods,
+  /// the response should have the type "XxxResponse", where "Xxx" is the
+  /// original method name. For example, if the original method name is
+  /// "TakeSnapshot()", the inferred response type is "TakeSnapshotResponse".
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? response;
+
+  GoogleLongrunningOperation({
+    this.done,
+    this.error,
+    this.metadata,
+    this.name,
+    this.response,
+  });
+
+  GoogleLongrunningOperation.fromJson(core.Map json_)
+      : this(
+          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          error: json_.containsKey('error')
+              ? GoogleRpcStatus.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>)
+              : null,
+          metadata: json_.containsKey('metadata')
+              ? json_['metadata'] as core.Map<core.String, core.dynamic>
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          response: json_.containsKey('response')
+              ? json_['response'] as core.Map<core.String, core.dynamic>
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!,
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (response != null) 'response': response!,
+      };
+}
+
+/// The "Status" type defines a logical error model that is suitable for
+/// different programming environments, including REST APIs and RPC APIs.
+///
+/// It is used by [gRPC](https://github.com/grpc). Each "Status" message
+/// contains three pieces of data: error code, error message, and error details.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
+class GoogleRpcStatus {
+  /// The status code, which should be an enum value of google.rpc.Code.
+  core.int? code;
+
+  /// A list of messages that carry the error details.
+  ///
+  /// There is a common set of message types for APIs to use.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.List<core.Map<core.String, core.Object?>>? details;
+
+  /// A developer-facing error message, which should be in English.
+  core.String? message;
+
+  GoogleRpcStatus({
+    this.code,
+    this.details,
+    this.message,
+  });
+
+  GoogleRpcStatus.fromJson(core.Map json_)
+      : this(
+          code: json_.containsKey('code') ? json_['code'] as core.int : null,
+          details: json_.containsKey('details')
+              ? (json_['details'] as core.List)
+                  .map((value) => value as core.Map<core.String, core.dynamic>)
+                  .toList()
+              : null,
+          message: json_.containsKey('message')
+              ? json_['message'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
+      };
+}
+
 /// JSON template to produce a JSON-style HMAC Key resource for Create
 /// responses.
 class HmacKey {
@@ -5249,6 +7203,129 @@ class HmacKeysMetadata {
           items: json_.containsKey('items')
               ? (json_['items'] as core.List)
                   .map((value) => HmacKeyMetadata.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (items != null) 'items': items!,
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// A managed folder.
+class ManagedFolder {
+  /// The name of the bucket containing this managed folder.
+  core.String? bucket;
+
+  /// The creation time of the managed folder in RFC 3339 format.
+  core.DateTime? createTime;
+
+  /// The ID of the managed folder, including the bucket name and managed folder
+  /// name.
+  core.String? id;
+
+  /// The kind of item this is.
+  ///
+  /// For managed folders, this is always storage#managedFolder.
+  core.String? kind;
+
+  /// The version of the metadata for this managed folder.
+  ///
+  /// Used for preconditions and for detecting changes in metadata.
+  core.String? metageneration;
+
+  /// The name of the managed folder.
+  ///
+  /// Required if not specified by URL parameter.
+  core.String? name;
+
+  /// The link to this managed folder.
+  core.String? selfLink;
+
+  /// The last update time of the managed folder metadata in RFC 3339 format.
+  core.DateTime? updateTime;
+
+  ManagedFolder({
+    this.bucket,
+    this.createTime,
+    this.id,
+    this.kind,
+    this.metageneration,
+    this.name,
+    this.selfLink,
+    this.updateTime,
+  });
+
+  ManagedFolder.fromJson(core.Map json_)
+      : this(
+          bucket: json_.containsKey('bucket')
+              ? json_['bucket'] as core.String
+              : null,
+          createTime: json_.containsKey('createTime')
+              ? core.DateTime.parse(json_['createTime'] as core.String)
+              : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          metageneration: json_.containsKey('metageneration')
+              ? json_['metageneration'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          selfLink: json_.containsKey('selfLink')
+              ? json_['selfLink'] as core.String
+              : null,
+          updateTime: json_.containsKey('updateTime')
+              ? core.DateTime.parse(json_['updateTime'] as core.String)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bucket != null) 'bucket': bucket!,
+        if (createTime != null)
+          'createTime': createTime!.toUtc().toIso8601String(),
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (metageneration != null) 'metageneration': metageneration!,
+        if (name != null) 'name': name!,
+        if (selfLink != null) 'selfLink': selfLink!,
+        if (updateTime != null)
+          'updateTime': updateTime!.toUtc().toIso8601String(),
+      };
+}
+
+/// A list of managed folders.
+class ManagedFolders {
+  /// The list of items.
+  core.List<ManagedFolder>? items;
+
+  /// The kind of item this is.
+  ///
+  /// For lists of managed folders, this is always storage#managedFolders.
+  core.String? kind;
+
+  /// The continuation token, used to page through large result sets.
+  ///
+  /// Provide this value in a subsequent request to return the next page of
+  /// results.
+  core.String? nextPageToken;
+
+  ManagedFolders({
+    this.items,
+    this.kind,
+    this.nextPageToken,
+  });
+
+  ManagedFolders.fromJson(core.Map json_)
+      : this(
+          items: json_.containsKey('items')
+              ? (json_['items'] as core.List)
+                  .map((value) => ManagedFolder.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5455,6 +7532,35 @@ class ObjectOwner {
       };
 }
 
+/// A collection of object level retention parameters.
+class ObjectRetention {
+  /// The bucket's object retention mode, can only be Unlocked or Locked.
+  core.String? mode;
+
+  /// A time in RFC 3339 format until which object retention protects this
+  /// object.
+  core.DateTime? retainUntilTime;
+
+  ObjectRetention({
+    this.mode,
+    this.retainUntilTime,
+  });
+
+  ObjectRetention.fromJson(core.Map json_)
+      : this(
+          mode: json_.containsKey('mode') ? json_['mode'] as core.String : null,
+          retainUntilTime: json_.containsKey('retainUntilTime')
+              ? core.DateTime.parse(json_['retainUntilTime'] as core.String)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (mode != null) 'mode': mode!,
+        if (retainUntilTime != null)
+          'retainUntilTime': retainUntilTime!.toUtc().toIso8601String(),
+      };
+}
+
 /// An object.
 class Object {
   /// Access controls on the object.
@@ -5526,6 +7632,13 @@ class Object {
   /// Used for object versioning.
   core.String? generation;
 
+  /// This is the time (in the future) when the soft-deleted object will no
+  /// longer be restorable.
+  ///
+  /// It is equal to the soft delete time plus the current soft delete retention
+  /// duration of the bucket.
+  core.DateTime? hardDeleteTime;
+
   /// The ID of the object, including the bucket name, object name, and
   /// generation number.
   core.String? id;
@@ -5570,6 +7683,9 @@ class Object {
   /// This will always be the uploader of the object.
   ObjectOwner? owner;
 
+  /// A collection of object level retention parameters.
+  ObjectRetention? retention;
+
   /// A server-determined value that specifies the earliest time that the
   /// object's retention period expires.
   ///
@@ -5586,6 +7702,9 @@ class Object {
   /// Content-Length of the data in bytes.
   core.String? size;
 
+  /// The time at which the object became soft-deleted in RFC 3339 format.
+  core.DateTime? softDeleteTime;
+
   /// Storage class of the object.
   core.String? storageClass;
 
@@ -5601,7 +7720,7 @@ class Object {
   /// The creation time of the object in RFC 3339 format.
   core.DateTime? timeCreated;
 
-  /// The deletion time of the object in RFC 3339 format.
+  /// The time at which the object became noncurrent in RFC 3339 format.
   ///
   /// Will be returned if and only if this version of the object has been
   /// deleted.
@@ -5636,6 +7755,7 @@ class Object {
     this.etag,
     this.eventBasedHold,
     this.generation,
+    this.hardDeleteTime,
     this.id,
     this.kind,
     this.kmsKeyName,
@@ -5645,9 +7765,11 @@ class Object {
     this.metageneration,
     this.name,
     this.owner,
+    this.retention,
     this.retentionExpirationTime,
     this.selfLink,
     this.size,
+    this.softDeleteTime,
     this.storageClass,
     this.temporaryHold,
     this.timeCreated,
@@ -5702,6 +7824,9 @@ class Object {
           generation: json_.containsKey('generation')
               ? json_['generation'] as core.String
               : null,
+          hardDeleteTime: json_.containsKey('hardDeleteTime')
+              ? core.DateTime.parse(json_['hardDeleteTime'] as core.String)
+              : null,
           id: json_.containsKey('id') ? json_['id'] as core.String : null,
           kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
           kmsKeyName: json_.containsKey('kmsKeyName')
@@ -5729,6 +7854,10 @@ class Object {
               ? ObjectOwner.fromJson(
                   json_['owner'] as core.Map<core.String, core.dynamic>)
               : null,
+          retention: json_.containsKey('retention')
+              ? ObjectRetention.fromJson(
+                  json_['retention'] as core.Map<core.String, core.dynamic>)
+              : null,
           retentionExpirationTime: json_.containsKey('retentionExpirationTime')
               ? core.DateTime.parse(
                   json_['retentionExpirationTime'] as core.String)
@@ -5737,6 +7866,9 @@ class Object {
               ? json_['selfLink'] as core.String
               : null,
           size: json_.containsKey('size') ? json_['size'] as core.String : null,
+          softDeleteTime: json_.containsKey('softDeleteTime')
+              ? core.DateTime.parse(json_['softDeleteTime'] as core.String)
+              : null,
           storageClass: json_.containsKey('storageClass')
               ? json_['storageClass'] as core.String
               : null,
@@ -5776,6 +7908,8 @@ class Object {
         if (etag != null) 'etag': etag!,
         if (eventBasedHold != null) 'eventBasedHold': eventBasedHold!,
         if (generation != null) 'generation': generation!,
+        if (hardDeleteTime != null)
+          'hardDeleteTime': hardDeleteTime!.toUtc().toIso8601String(),
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
         if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
@@ -5785,11 +7919,14 @@ class Object {
         if (metageneration != null) 'metageneration': metageneration!,
         if (name != null) 'name': name!,
         if (owner != null) 'owner': owner!,
+        if (retention != null) 'retention': retention!,
         if (retentionExpirationTime != null)
           'retentionExpirationTime':
               retentionExpirationTime!.toUtc().toIso8601String(),
         if (selfLink != null) 'selfLink': selfLink!,
         if (size != null) 'size': size!,
+        if (softDeleteTime != null)
+          'softDeleteTime': softDeleteTime!.toUtc().toIso8601String(),
         if (storageClass != null) 'storageClass': storageClass!,
         if (temporaryHold != null) 'temporaryHold': temporaryHold!,
         if (timeCreated != null)
@@ -6132,7 +8269,7 @@ class PolicyBindings {
       };
 }
 
-/// A bucket/object IAM policy.
+/// A bucket/object/managedFolder IAM policy.
 class Policy {
   /// An association between a role, which comes with a set of permissions, and
   /// members who may assume that role.
@@ -6155,8 +8292,9 @@ class Policy {
 
   /// The ID of the resource to which this policy belongs.
   ///
-  /// Will be of the form projects/_/buckets/bucket for buckets, and
-  /// projects/_/buckets/bucket/objects/object for objects. A specific
+  /// Will be of the form projects/_/buckets/bucket for buckets,
+  /// projects/_/buckets/bucket/objects/object for objects, and
+  /// projects/_/buckets/bucket/managedFolders/managedFolder. A specific
   /// generation may be specified by appending #generationNumber to the end of
   /// the object name, e.g. projects/_/buckets/my-bucket/objects/data.txt#17.
   /// The current generation can be denoted with #0. This field is ignored on
@@ -6301,7 +8439,7 @@ class ServiceAccount {
       };
 }
 
-/// A storage.(buckets|objects).testIamPermissions response.
+/// A storage.(buckets|objects|managedFolders).testIamPermissions response.
 class TestIamPermissionsResponse {
   /// The kind of item this is.
   core.String? kind;
@@ -6309,8 +8447,8 @@ class TestIamPermissionsResponse {
   /// The permissions held by the caller.
   ///
   /// Permissions are always of the format storage.resource.capability, where
-  /// resource is one of buckets or objects. The supported permissions are as
-  /// follows:
+  /// resource is one of buckets, objects, or managedFolders. The supported
+  /// permissions are as follows:
   /// - storage.buckets.delete — Delete bucket.
   /// - storage.buckets.get — Read bucket metadata.
   /// - storage.buckets.getIamPolicy — Read bucket IAM policy.
@@ -6325,6 +8463,12 @@ class TestIamPermissionsResponse {
   /// - storage.objects.list — List objects.
   /// - storage.objects.setIamPolicy — Update object IAM policy.
   /// - storage.objects.update — Update object metadata.
+  /// - storage.managedFolders.delete — Delete managed folder.
+  /// - storage.managedFolders.get — Read managed folder metadata.
+  /// - storage.managedFolders.getIamPolicy — Read managed folder IAM policy.
+  /// - storage.managedFolders.create — Create managed folder.
+  /// - storage.managedFolders.list — List managed folders.
+  /// - storage.managedFolders.setIamPolicy — Update managed folder IAM policy.
   core.List<core.String>? permissions;
 
   TestIamPermissionsResponse({

@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Cloud Resource Manager API - v1
@@ -25,7 +24,7 @@
 /// - [OperationsResource]
 /// - [OrganizationsResource]
 /// - [ProjectsResource]
-library cloudresourcemanager_v1;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -874,7 +873,7 @@ class OrganizationsResource {
   /// This method returns Organizations in an unspecified order. New
   /// Organizations do not necessarily appear at the end of the results. Search
   /// will only return organizations on which the user has the permission
-  /// `resourcemanager.organizations.get`
+  /// `resourcemanager.organizations.get` or has super admin privileges.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1600,19 +1599,20 @@ class ProjectsResource {
   /// user cannot be granted the owner role using `setIamPolicy()`. The user
   /// must be granted the owner role using the Cloud Platform Console and must
   /// explicitly accept the invitation. + You can only grant ownership of a
-  /// project to a member by using the GCP Console. Inviting a member will
-  /// deliver an invitation email that they must accept. An invitation email is
-  /// not generated if you are granting a role other than owner, or if both the
-  /// member you are inviting and the project are part of your organization. +
-  /// If the project is not part of an organization, there must be at least one
-  /// owner who has accepted the Terms of Service (ToS) agreement in the policy.
-  /// Calling `setIamPolicy()` to remove the last ToS-accepted owner from the
-  /// policy will fail. This restriction also applies to legacy projects that no
-  /// longer have owners who have accepted the ToS. Edits to IAM policies will
-  /// be rejected until the lack of a ToS-accepting owner is rectified. If the
-  /// project is part of an organization, you can remove all owners, potentially
-  /// making the organization inaccessible. Authorization requires the Google
-  /// IAM permission `resourcemanager.projects.setIamPolicy` on the project
+  /// project to a member by using the Google Cloud console. Inviting a member
+  /// will deliver an invitation email that they must accept. An invitation
+  /// email is not generated if you are granting a role other than owner, or if
+  /// both the member you are inviting and the project are part of your
+  /// organization. + If the project is not part of an organization, there must
+  /// be at least one owner who has accepted the Terms of Service (ToS)
+  /// agreement in the policy. Calling `setIamPolicy()` to remove the last
+  /// ToS-accepted owner from the policy will fail. This restriction also
+  /// applies to legacy projects that no longer have owners who have accepted
+  /// the ToS. Edits to IAM policies will be rejected until the lack of a
+  /// ToS-accepting owner is rectified. If the project is part of an
+  /// organization, you can remove all owners, potentially making the
+  /// organization inaccessible. Authorization requires the Google IAM
+  /// permission `resourcemanager.projects.setIamPolicy` on the project
   ///
   /// [request] - The metadata request object.
   ///
@@ -1950,14 +1950,31 @@ class Binding {
   /// `group:{emailid}`: An email address that represents a Google group. For
   /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
   /// (primary) that represents all the users of that domain. For example,
-  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a user that has
-  /// been recently deleted. For example,
-  /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
-  /// this value reverts to `user:{emailid}` and the recovered user retains the
-  /// role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a service account
-  /// that has been recently deleted. For example,
+  /// `google.com` or `example.com`. *
+  /// `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workforce identity pool. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`:
+  /// All workforce identities in a group. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All workforce identities with a specific attribute value. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}
+  /// / * `: All identities in a workforce identity pool. *
+  /// `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workload identity pool. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`:
+  /// A workload identity pool group. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All identities in a workload identity pool with a certain attribute. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}
+  /// / * `: All identities in a workload identity pool. *
+  /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
+  /// identifier) representing a user that has been recently deleted. For
+  /// example, `alice@example.com?uid=123456789012345678901`. If the user is
+  /// recovered, this value reverts to `user:{emailid}` and the recovered user
+  /// retains the role in the binding. *
+  /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus
+  /// unique identifier) representing a service account that has been recently
+  /// deleted. For example,
   /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If
   /// the service account is undeleted, this value reverts to
   /// `serviceAccount:{emailid}` and the undeleted service account retains the
@@ -1966,12 +1983,19 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding.
+  /// the role in the binding. *
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// Deleted single identity in a workforce identity pool. For example,
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
   ///
-  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an
+  /// overview of the IAM roles and permissions, see the
+  /// [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For
+  /// a list of the available pre-defined roles, see
+  /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
   Binding({
@@ -2278,7 +2302,7 @@ typedef Lien = $Lien;
 
 /// The request sent to the `ListAvailableOrgPolicyConstraints` method on the
 /// project, folder, or organization.
-typedef ListAvailableOrgPolicyConstraintsRequest = $Request04;
+typedef ListAvailableOrgPolicyConstraintsRequest = $Request05;
 
 /// The response returned from the `ListAvailableOrgPolicyConstraints` method.
 ///
@@ -2389,7 +2413,7 @@ class ListLiensResponse {
 }
 
 /// The request sent to the ListOrgPolicies method.
-typedef ListOrgPoliciesRequest = $Request04;
+typedef ListOrgPoliciesRequest = $Request05;
 
 /// The response returned from the `ListOrgPolicies` method.
 ///
@@ -2679,8 +2703,8 @@ class Organization {
   /// Assigned by the server.
   core.String? creationTime;
 
-  /// A human-readable string that refers to the Organization in the GCP Console
-  /// UI.
+  /// A human-readable string that refers to the Organization in the Google
+  /// Cloud console.
   ///
   /// This string is set by the server and cannot be changed. The string will be
   /// set to the primary domain (for example, "google.com") of the G Suite
@@ -2957,6 +2981,15 @@ class Project {
   /// Example: `415104041262` Read-only.
   core.String? projectNumber;
 
+  /// Input only.
+  ///
+  /// Immutable. Tag keys/values directly bound to this project. Each item in
+  /// the map must be expressed as " : ". For example: "123/environment" :
+  /// "production", "123/costCenter" : "marketing"
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? tags;
+
   Project({
     this.createTime,
     this.labels,
@@ -2965,6 +2998,7 @@ class Project {
     this.parent,
     this.projectId,
     this.projectNumber,
+    this.tags,
   });
 
   Project.fromJson(core.Map json_)
@@ -2994,6 +3028,14 @@ class Project {
           projectNumber: json_.containsKey('projectNumber')
               ? json_['projectNumber'] as core.String
               : null,
+          tags: json_.containsKey('tags')
+              ? (json_['tags'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3004,6 +3046,7 @@ class Project {
         if (parent != null) 'parent': parent!,
         if (projectId != null) 'projectId': projectId!,
         if (projectNumber != null) 'projectNumber': projectNumber!,
+        if (tags != null) 'tags': tags!,
       };
 }
 

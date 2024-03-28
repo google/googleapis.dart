@@ -10,7 +10,6 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 // ignore_for_file: unreachable_from_main
 // ignore_for_file: unused_local_variable
@@ -1414,6 +1413,7 @@ api.ContentRestriction buildContentRestriction() {
     o.reason = 'foo';
     o.restrictingUser = buildUser();
     o.restrictionDate = core.DateTime.parse('2002-02-27T14:01:02Z');
+    o.systemRestricted = true;
     o.type = 'foo';
   }
   buildCounterContentRestriction--;
@@ -1434,6 +1434,7 @@ void checkContentRestriction(api.ContentRestriction o) {
       o.restrictionDate!,
       unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
+    unittest.expect(o.systemRestricted!, unittest.isTrue);
     unittest.expect(
       o.type!,
       unittest.equals('foo'),

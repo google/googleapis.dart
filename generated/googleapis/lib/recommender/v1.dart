@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Recommender API - v1
@@ -41,7 +40,7 @@
 ///       - [ProjectsLocationsInsightTypesInsightsResource]
 ///     - [ProjectsLocationsRecommendersResource]
 ///       - [ProjectsLocationsRecommendersRecommendationsResource]
-library recommender_v1;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -283,11 +282,13 @@ class BillingAccountsLocationsInsightTypesInsightsResource {
   ///
   /// [filter] - Optional. Filter expression to restrict the insights returned.
   /// Supported filter fields: * `stateInfo.state` * `insightSubtype` *
-  /// `severity` Examples: * `stateInfo.state = ACTIVE OR stateInfo.state =
-  /// DISMISSED` * `insightSubtype = PERMISSIONS_USAGE` * `severity = CRITICAL
-  /// OR severity = HIGH` * `stateInfo.state = ACTIVE AND (severity = CRITICAL
-  /// OR severity = HIGH)` (These expressions are based on the filter language
-  /// described at https://google.aip.dev/160)
+  /// `severity` * `targetResources` Examples: * `stateInfo.state = ACTIVE OR
+  /// stateInfo.state = DISMISSED` * `insightSubtype = PERMISSIONS_USAGE` *
+  /// `severity = CRITICAL OR severity = HIGH` * `targetResources :
+  /// //compute.googleapis.com/projects/1234/zones/us-central1-a/instances/instance-1`
+  /// * `stateInfo.state = ACTIVE AND (severity = CRITICAL OR severity = HIGH)`
+  /// The max allowed filter length is 500 characters. (These expressions are
+  /// based on the filter language described at https://google.aip.dev/160)
   ///
   /// [pageSize] - Optional. The maximum number of results to return from this
   /// request. Non-positive values are ignored. If not specified, the server
@@ -568,11 +569,14 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
   ///
   /// [filter] - Filter expression to restrict the recommendations returned.
   /// Supported filter fields: * `state_info.state` * `recommenderSubtype` *
-  /// `priority` Examples: * `stateInfo.state = ACTIVE OR stateInfo.state =
-  /// DISMISSED` * `recommenderSubtype = REMOVE_ROLE OR recommenderSubtype =
-  /// REPLACE_ROLE` * `priority = P1 OR priority = P2` * `stateInfo.state =
-  /// ACTIVE AND (priority = P1 OR priority = P2)` (These expressions are based
-  /// on the filter language described at https://google.aip.dev/160)
+  /// `priority` * `targetResources` Examples: * `stateInfo.state = ACTIVE OR
+  /// stateInfo.state = DISMISSED` * `recommenderSubtype = REMOVE_ROLE OR
+  /// recommenderSubtype = REPLACE_ROLE` * `priority = P1 OR priority = P2` *
+  /// `targetResources :
+  /// //compute.googleapis.com/projects/1234/zones/us-central1-a/instances/instance-1`
+  /// * `stateInfo.state = ACTIVE AND (priority = P1 OR priority = P2)` The max
+  /// allowed filter length is 500 characters. (These expressions are based on
+  /// the filter language described at https://google.aip.dev/160)
   ///
   /// [pageSize] - Optional. The maximum number of results to return from this
   /// request. Non-positive values are ignored. If not specified, the server
@@ -680,7 +684,7 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Name of the recommendation.
+  /// [name] - Required. Name of the recommendation.
   /// Value must have pattern
   /// `^billingAccounts/\[^/\]+/locations/\[^/\]+/recommenders/\[^/\]+/recommendations/\[^/\]+$`.
   ///
@@ -920,11 +924,13 @@ class FoldersLocationsInsightTypesInsightsResource {
   ///
   /// [filter] - Optional. Filter expression to restrict the insights returned.
   /// Supported filter fields: * `stateInfo.state` * `insightSubtype` *
-  /// `severity` Examples: * `stateInfo.state = ACTIVE OR stateInfo.state =
-  /// DISMISSED` * `insightSubtype = PERMISSIONS_USAGE` * `severity = CRITICAL
-  /// OR severity = HIGH` * `stateInfo.state = ACTIVE AND (severity = CRITICAL
-  /// OR severity = HIGH)` (These expressions are based on the filter language
-  /// described at https://google.aip.dev/160)
+  /// `severity` * `targetResources` Examples: * `stateInfo.state = ACTIVE OR
+  /// stateInfo.state = DISMISSED` * `insightSubtype = PERMISSIONS_USAGE` *
+  /// `severity = CRITICAL OR severity = HIGH` * `targetResources :
+  /// //compute.googleapis.com/projects/1234/zones/us-central1-a/instances/instance-1`
+  /// * `stateInfo.state = ACTIVE AND (severity = CRITICAL OR severity = HIGH)`
+  /// The max allowed filter length is 500 characters. (These expressions are
+  /// based on the filter language described at https://google.aip.dev/160)
   ///
   /// [pageSize] - Optional. The maximum number of results to return from this
   /// request. Non-positive values are ignored. If not specified, the server
@@ -1102,11 +1108,14 @@ class FoldersLocationsRecommendersRecommendationsResource {
   ///
   /// [filter] - Filter expression to restrict the recommendations returned.
   /// Supported filter fields: * `state_info.state` * `recommenderSubtype` *
-  /// `priority` Examples: * `stateInfo.state = ACTIVE OR stateInfo.state =
-  /// DISMISSED` * `recommenderSubtype = REMOVE_ROLE OR recommenderSubtype =
-  /// REPLACE_ROLE` * `priority = P1 OR priority = P2` * `stateInfo.state =
-  /// ACTIVE AND (priority = P1 OR priority = P2)` (These expressions are based
-  /// on the filter language described at https://google.aip.dev/160)
+  /// `priority` * `targetResources` Examples: * `stateInfo.state = ACTIVE OR
+  /// stateInfo.state = DISMISSED` * `recommenderSubtype = REMOVE_ROLE OR
+  /// recommenderSubtype = REPLACE_ROLE` * `priority = P1 OR priority = P2` *
+  /// `targetResources :
+  /// //compute.googleapis.com/projects/1234/zones/us-central1-a/instances/instance-1`
+  /// * `stateInfo.state = ACTIVE AND (priority = P1 OR priority = P2)` The max
+  /// allowed filter length is 500 characters. (These expressions are based on
+  /// the filter language described at https://google.aip.dev/160)
   ///
   /// [pageSize] - Optional. The maximum number of results to return from this
   /// request. Non-positive values are ignored. If not specified, the server
@@ -1214,7 +1223,7 @@ class FoldersLocationsRecommendersRecommendationsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Name of the recommendation.
+  /// [name] - Required. Name of the recommendation.
   /// Value must have pattern
   /// `^folders/\[^/\]+/locations/\[^/\]+/recommenders/\[^/\]+/recommendations/\[^/\]+$`.
   ///
@@ -1557,11 +1566,13 @@ class OrganizationsLocationsInsightTypesInsightsResource {
   ///
   /// [filter] - Optional. Filter expression to restrict the insights returned.
   /// Supported filter fields: * `stateInfo.state` * `insightSubtype` *
-  /// `severity` Examples: * `stateInfo.state = ACTIVE OR stateInfo.state =
-  /// DISMISSED` * `insightSubtype = PERMISSIONS_USAGE` * `severity = CRITICAL
-  /// OR severity = HIGH` * `stateInfo.state = ACTIVE AND (severity = CRITICAL
-  /// OR severity = HIGH)` (These expressions are based on the filter language
-  /// described at https://google.aip.dev/160)
+  /// `severity` * `targetResources` Examples: * `stateInfo.state = ACTIVE OR
+  /// stateInfo.state = DISMISSED` * `insightSubtype = PERMISSIONS_USAGE` *
+  /// `severity = CRITICAL OR severity = HIGH` * `targetResources :
+  /// //compute.googleapis.com/projects/1234/zones/us-central1-a/instances/instance-1`
+  /// * `stateInfo.state = ACTIVE AND (severity = CRITICAL OR severity = HIGH)`
+  /// The max allowed filter length is 500 characters. (These expressions are
+  /// based on the filter language described at https://google.aip.dev/160)
   ///
   /// [pageSize] - Optional. The maximum number of results to return from this
   /// request. Non-positive values are ignored. If not specified, the server
@@ -1841,11 +1852,14 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
   ///
   /// [filter] - Filter expression to restrict the recommendations returned.
   /// Supported filter fields: * `state_info.state` * `recommenderSubtype` *
-  /// `priority` Examples: * `stateInfo.state = ACTIVE OR stateInfo.state =
-  /// DISMISSED` * `recommenderSubtype = REMOVE_ROLE OR recommenderSubtype =
-  /// REPLACE_ROLE` * `priority = P1 OR priority = P2` * `stateInfo.state =
-  /// ACTIVE AND (priority = P1 OR priority = P2)` (These expressions are based
-  /// on the filter language described at https://google.aip.dev/160)
+  /// `priority` * `targetResources` Examples: * `stateInfo.state = ACTIVE OR
+  /// stateInfo.state = DISMISSED` * `recommenderSubtype = REMOVE_ROLE OR
+  /// recommenderSubtype = REPLACE_ROLE` * `priority = P1 OR priority = P2` *
+  /// `targetResources :
+  /// //compute.googleapis.com/projects/1234/zones/us-central1-a/instances/instance-1`
+  /// * `stateInfo.state = ACTIVE AND (priority = P1 OR priority = P2)` The max
+  /// allowed filter length is 500 characters. (These expressions are based on
+  /// the filter language described at https://google.aip.dev/160)
   ///
   /// [pageSize] - Optional. The maximum number of results to return from this
   /// request. Non-positive values are ignored. If not specified, the server
@@ -1953,7 +1967,7 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Name of the recommendation.
+  /// [name] - Required. Name of the recommendation.
   /// Value must have pattern
   /// `^organizations/\[^/\]+/locations/\[^/\]+/recommenders/\[^/\]+/recommendations/\[^/\]+$`.
   ///
@@ -2294,11 +2308,13 @@ class ProjectsLocationsInsightTypesInsightsResource {
   ///
   /// [filter] - Optional. Filter expression to restrict the insights returned.
   /// Supported filter fields: * `stateInfo.state` * `insightSubtype` *
-  /// `severity` Examples: * `stateInfo.state = ACTIVE OR stateInfo.state =
-  /// DISMISSED` * `insightSubtype = PERMISSIONS_USAGE` * `severity = CRITICAL
-  /// OR severity = HIGH` * `stateInfo.state = ACTIVE AND (severity = CRITICAL
-  /// OR severity = HIGH)` (These expressions are based on the filter language
-  /// described at https://google.aip.dev/160)
+  /// `severity` * `targetResources` Examples: * `stateInfo.state = ACTIVE OR
+  /// stateInfo.state = DISMISSED` * `insightSubtype = PERMISSIONS_USAGE` *
+  /// `severity = CRITICAL OR severity = HIGH` * `targetResources :
+  /// //compute.googleapis.com/projects/1234/zones/us-central1-a/instances/instance-1`
+  /// * `stateInfo.state = ACTIVE AND (severity = CRITICAL OR severity = HIGH)`
+  /// The max allowed filter length is 500 characters. (These expressions are
+  /// based on the filter language described at https://google.aip.dev/160)
   ///
   /// [pageSize] - Optional. The maximum number of results to return from this
   /// request. Non-positive values are ignored. If not specified, the server
@@ -2577,11 +2593,14 @@ class ProjectsLocationsRecommendersRecommendationsResource {
   ///
   /// [filter] - Filter expression to restrict the recommendations returned.
   /// Supported filter fields: * `state_info.state` * `recommenderSubtype` *
-  /// `priority` Examples: * `stateInfo.state = ACTIVE OR stateInfo.state =
-  /// DISMISSED` * `recommenderSubtype = REMOVE_ROLE OR recommenderSubtype =
-  /// REPLACE_ROLE` * `priority = P1 OR priority = P2` * `stateInfo.state =
-  /// ACTIVE AND (priority = P1 OR priority = P2)` (These expressions are based
-  /// on the filter language described at https://google.aip.dev/160)
+  /// `priority` * `targetResources` Examples: * `stateInfo.state = ACTIVE OR
+  /// stateInfo.state = DISMISSED` * `recommenderSubtype = REMOVE_ROLE OR
+  /// recommenderSubtype = REPLACE_ROLE` * `priority = P1 OR priority = P2` *
+  /// `targetResources :
+  /// //compute.googleapis.com/projects/1234/zones/us-central1-a/instances/instance-1`
+  /// * `stateInfo.state = ACTIVE AND (priority = P1 OR priority = P2)` The max
+  /// allowed filter length is 500 characters. (These expressions are based on
+  /// the filter language described at https://google.aip.dev/160)
   ///
   /// [pageSize] - Optional. The maximum number of results to return from this
   /// request. Non-positive values are ignored. If not specified, the server
@@ -2689,7 +2708,7 @@ class ProjectsLocationsRecommendersRecommendationsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Name of the recommendation.
+  /// [name] - Required. Name of the recommendation.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/recommenders/\[^/\]+/recommendations/\[^/\]+$`.
   ///
@@ -2836,11 +2855,15 @@ class GoogleCloudRecommenderV1CostProjection {
   /// prices or custom contract prices.
   GoogleTypeMoney? cost;
 
+  /// The approximate cost savings in the billing account's local currency.
+  GoogleTypeMoney? costInLocalCurrency;
+
   /// Duration for which this cost applies.
   core.String? duration;
 
   GoogleCloudRecommenderV1CostProjection({
     this.cost,
+    this.costInLocalCurrency,
     this.duration,
   });
 
@@ -2850,6 +2873,10 @@ class GoogleCloudRecommenderV1CostProjection {
               ? GoogleTypeMoney.fromJson(
                   json_['cost'] as core.Map<core.String, core.dynamic>)
               : null,
+          costInLocalCurrency: json_.containsKey('costInLocalCurrency')
+              ? GoogleTypeMoney.fromJson(json_['costInLocalCurrency']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           duration: json_.containsKey('duration')
               ? json_['duration'] as core.String
               : null,
@@ -2857,6 +2884,8 @@ class GoogleCloudRecommenderV1CostProjection {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cost != null) 'cost': cost!,
+        if (costInLocalCurrency != null)
+          'costInLocalCurrency': costInLocalCurrency!,
         if (duration != null) 'duration': duration!,
       };
 }
@@ -2882,7 +2911,7 @@ class GoogleCloudRecommenderV1Impact {
   /// Use with CategoryType.COST
   GoogleCloudRecommenderV1CostProjection? costProjection;
 
-  /// Use with CategoryType.RELAIBILITY
+  /// Use with CategoryType.RELIABILITY
   GoogleCloudRecommenderV1ReliabilityProjection? reliabilityProjection;
 
   /// Use with CategoryType.SECURITY
@@ -3387,7 +3416,7 @@ class GoogleCloudRecommenderV1MarkInsightAcceptedRequest {
 }
 
 /// Request for the `MarkRecommendationClaimed` Method.
-typedef GoogleCloudRecommenderV1MarkRecommendationClaimedRequest = $Request03;
+typedef GoogleCloudRecommenderV1MarkRecommendationClaimedRequest = $Request04;
 
 /// Request for the `MarkRecommendationDismissed` Method.
 class GoogleCloudRecommenderV1MarkRecommendationDismissedRequest {
@@ -3412,10 +3441,10 @@ class GoogleCloudRecommenderV1MarkRecommendationDismissedRequest {
 }
 
 /// Request for the `MarkRecommendationFailed` Method.
-typedef GoogleCloudRecommenderV1MarkRecommendationFailedRequest = $Request03;
+typedef GoogleCloudRecommenderV1MarkRecommendationFailedRequest = $Request04;
 
 /// Request for the `MarkRecommendationSucceeded` Method.
-typedef GoogleCloudRecommenderV1MarkRecommendationSucceededRequest = $Request03;
+typedef GoogleCloudRecommenderV1MarkRecommendationSucceededRequest = $Request04;
 
 /// Contains an operation for a resource loosely based on the JSON-PATCH format
 /// with support for: * Custom filters for describing partial array patch.
@@ -3661,6 +3690,9 @@ class GoogleCloudRecommenderV1Recommendation {
   /// Contains state and metadata.
   GoogleCloudRecommenderV1RecommendationStateInfo? stateInfo;
 
+  /// Fully qualified resource names that this recommendation is targeting.
+  core.List<core.String>? targetResources;
+
   /// Corresponds to a mutually exclusive group ID within a recommender.
   ///
   /// A non-empty ID indicates that the recommendation belongs to a mutually
@@ -3680,6 +3712,7 @@ class GoogleCloudRecommenderV1Recommendation {
     this.priority,
     this.recommenderSubtype,
     this.stateInfo,
+    this.targetResources,
     this.xorGroupId,
   });
 
@@ -3725,6 +3758,11 @@ class GoogleCloudRecommenderV1Recommendation {
               ? GoogleCloudRecommenderV1RecommendationStateInfo.fromJson(
                   json_['stateInfo'] as core.Map<core.String, core.dynamic>)
               : null,
+          targetResources: json_.containsKey('targetResources')
+              ? (json_['targetResources'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           xorGroupId: json_.containsKey('xorGroupId')
               ? json_['xorGroupId'] as core.String
               : null,
@@ -3744,6 +3782,7 @@ class GoogleCloudRecommenderV1Recommendation {
         if (recommenderSubtype != null)
           'recommenderSubtype': recommenderSubtype!,
         if (stateInfo != null) 'stateInfo': stateInfo!,
+        if (targetResources != null) 'targetResources': targetResources!,
         if (xorGroupId != null) 'xorGroupId': xorGroupId!,
       };
 }

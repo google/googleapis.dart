@@ -16,7 +16,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230806",
+    "revision": "20240306",
     "rootUrl": "https://versionhistory.googleapis.com/",
     "servicePath": "",
     "title": "versionhistory.googleapis.com API",
@@ -290,7 +290,9 @@
                         "CANARY",
                         "CANARY_ASAN",
                         "ALL",
-                        "EXTENDED"
+                        "EXTENDED",
+                        "LTS",
+                        "LTC"
                     ],
                     "enumDescriptions": [
                         "",
@@ -300,7 +302,9 @@
                         "",
                         "",
                         "",
-                        ""
+                        "",
+                        "The Long-term support channel for ChromeOS.",
+                        "The Long-term support candidate channel for ChromeOS."
                     ],
                     "type": "string"
                 },

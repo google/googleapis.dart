@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230801",
+    "revision": "20240306",
     "rootUrl": "https://doubleclicksearch.googleapis.com/",
     "servicePath": "",
     "title": "Search Ads 360 API",
@@ -619,6 +619,20 @@
                 "adId": {
                     "description": "DS ad ID.",
                     "format": "int64",
+                    "type": "string"
+                },
+                "adUserDataConsent": {
+                    "description": "Represents consent for core platform services (CPS) preferences in settings. No default value. Acceptable values are: GRANTED: The desired consent status is to grant. Read the CPS preferences from GTE settings. DENIED: The desired consent status is to deny; CPS list is empty.",
+                    "enum": [
+                        "UNKNOWN",
+                        "GRANTED",
+                        "DENIED"
+                    ],
+                    "enumDescriptions": [
+                        "Not specified.",
+                        "Granted.",
+                        "Denied."
+                    ],
                     "type": "string"
                 },
                 "advertiserId": {

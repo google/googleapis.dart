@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Migration Center API - v1
@@ -32,7 +31,7 @@
 ///       - [ProjectsLocationsReportConfigsReportsResource]
 ///     - [ProjectsLocationsSourcesResource]
 ///       - [ProjectsLocationsSourcesErrorFramesResource]
-library migrationcenter_v1;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -3875,9 +3874,23 @@ class ComputeEnginePreferences {
   /// Preferences concerning the machine types to consider on Compute Engine.
   MachinePreferences? machinePreferences;
 
+  /// Persistent disk type to use.
+  ///
+  /// If unspecified (default), all types are considered, based on available
+  /// usage data.
+  /// Possible string values are:
+  /// - "PERSISTENT_DISK_TYPE_UNSPECIFIED" : Unspecified (default value).
+  /// Selecting this value allows the system to use any disk type according to
+  /// reported usage. This a good value to start with.
+  /// - "PERSISTENT_DISK_TYPE_STANDARD" : Standard HDD Persistent Disk.
+  /// - "PERSISTENT_DISK_TYPE_BALANCED" : Balanced Persistent Disk.
+  /// - "PERSISTENT_DISK_TYPE_SSD" : SSD Persistent Disk.
+  core.String? persistentDiskType;
+
   ComputeEnginePreferences({
     this.licenseType,
     this.machinePreferences,
+    this.persistentDiskType,
   });
 
   ComputeEnginePreferences.fromJson(core.Map json_)
@@ -3889,12 +3902,17 @@ class ComputeEnginePreferences {
               ? MachinePreferences.fromJson(json_['machinePreferences']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          persistentDiskType: json_.containsKey('persistentDiskType')
+              ? json_['persistentDiskType'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (licenseType != null) 'licenseType': licenseType!,
         if (machinePreferences != null)
           'machinePreferences': machinePreferences!,
+        if (persistentDiskType != null)
+          'persistentDiskType': persistentDiskType!,
       };
 }
 
@@ -4540,6 +4558,8 @@ class ExecutionReport {
   core.int? framesReported;
 
   /// Total number of rows in the import job.
+  ///
+  /// Output only.
   core.int? totalRowsCount;
 
   ExecutionReport({
@@ -4780,6 +4800,59 @@ class FstabEntryList {
       };
 }
 
+/// A generic insight about an asset.
+class GenericInsight {
+  /// Additional information about the insight, each entry can be a logical
+  /// entry and must make sense if it is displayed with line breaks between each
+  /// entry.
+  ///
+  /// Text can contain md style links.
+  ///
+  /// Output only.
+  core.List<core.String>? additionalInformation;
+
+  /// In case message_code is not yet known by the client default_message will
+  /// be the message to be used instead.
+  ///
+  /// Output only.
+  core.String? defaultMessage;
+
+  /// Represents a globally unique message id for this insight, can be used for
+  /// localization purposes, in case message_code is not yet known by the client
+  /// use default_message instead.
+  ///
+  /// Output only.
+  core.String? messageId;
+
+  GenericInsight({
+    this.additionalInformation,
+    this.defaultMessage,
+    this.messageId,
+  });
+
+  GenericInsight.fromJson(core.Map json_)
+      : this(
+          additionalInformation: json_.containsKey('additionalInformation')
+              ? (json_['additionalInformation'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          defaultMessage: json_.containsKey('defaultMessage')
+              ? json_['defaultMessage'] as core.String
+              : null,
+          messageId: json_.containsKey('messageId')
+              ? json_['messageId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (additionalInformation != null)
+          'additionalInformation': additionalInformation!,
+        if (defaultMessage != null) 'defaultMessage': defaultMessage!,
+        if (messageId != null) 'messageId': messageId!,
+      };
+}
+
 /// Generic platform details.
 class GenericPlatformDetails {
   /// Free text representation of the machine location.
@@ -4815,10 +4888,14 @@ class Group {
   /// Output only.
   core.String? createTime;
 
-  /// The description of the resource.
+  /// The description of the group.
+  ///
+  /// Optional.
   core.String? description;
 
   /// User-friendly display name.
+  ///
+  /// Optional.
   core.String? displayName;
 
   /// Labels as key value pairs.
@@ -4946,6 +5023,9 @@ class GuestInstalledApplication {
   /// The time when the application was installed.
   core.String? installTime;
 
+  /// License strings associated with the installed application.
+  core.List<core.String>? licenses;
+
   /// Source path.
   core.String? path;
 
@@ -4958,6 +5038,7 @@ class GuestInstalledApplication {
   GuestInstalledApplication({
     this.applicationName,
     this.installTime,
+    this.licenses,
     this.path,
     this.vendor,
     this.version,
@@ -4971,6 +5052,11 @@ class GuestInstalledApplication {
           installTime: json_.containsKey('installTime')
               ? json_['installTime'] as core.String
               : null,
+          licenses: json_.containsKey('licenses')
+              ? (json_['licenses'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           path: json_.containsKey('path') ? json_['path'] as core.String : null,
           vendor: json_.containsKey('vendor')
               ? json_['vendor'] as core.String
@@ -4983,6 +5069,7 @@ class GuestInstalledApplication {
   core.Map<core.String, core.dynamic> toJson() => {
         if (applicationName != null) 'applicationName': applicationName!,
         if (installTime != null) 'installTime': installTime!,
+        if (licenses != null) 'licenses': licenses!,
         if (path != null) 'path': path!,
         if (vendor != null) 'vendor': vendor!,
         if (version != null) 'version': version!,
@@ -5346,7 +5433,9 @@ class ImportJob {
 
   /// User-friendly display name.
   ///
-  /// Maximum length is 63 characters.
+  /// Maximum length is 256 characters.
+  ///
+  /// Optional.
   core.String? displayName;
 
   /// The report with the results of running the import job.
@@ -5507,17 +5596,27 @@ class ImportRowError {
 
 /// An insight about an asset.
 class Insight {
+  /// A generic insight about an asset
+  ///
+  /// Output only.
+  GenericInsight? genericInsight;
+
   /// An insight about potential migrations for an asset.
   ///
   /// Output only.
   MigrationInsight? migrationInsight;
 
   Insight({
+    this.genericInsight,
     this.migrationInsight,
   });
 
   Insight.fromJson(core.Map json_)
       : this(
+          genericInsight: json_.containsKey('genericInsight')
+              ? GenericInsight.fromJson(json_['genericInsight']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           migrationInsight: json_.containsKey('migrationInsight')
               ? MigrationInsight.fromJson(json_['migrationInsight']
                   as core.Map<core.String, core.dynamic>)
@@ -5525,6 +5624,7 @@ class Insight {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (genericInsight != null) 'genericInsight': genericInsight!,
         if (migrationInsight != null) 'migrationInsight': migrationInsight!,
       };
 }
@@ -6853,7 +6953,7 @@ class Operation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard
@@ -6913,7 +7013,9 @@ class PerformanceSample {
   /// Network usage sample.
   NetworkUsageSample? network;
 
-  /// Time the sample was If omitted, the frame report time will be used.
+  /// Time the sample was collected.
+  ///
+  /// If omitted, the frame report time will be used.
   core.String? sampleTime;
 
   PerformanceSample({
@@ -7449,7 +7551,7 @@ class ReportSummaryAssetAggregateStats {
   /// Count of assets grouped by Operating System families.
   ReportSummaryChartData? operatingSystem;
 
-  /// Histogram showing a distribution of memory sizes.
+  /// Histogram showing a distribution of storage sizes.
   ReportSummaryHistogramChartData? storageBytesHistogram;
 
   /// Total memory split into Used/Free buckets.
@@ -7664,8 +7766,10 @@ class ReportSummaryGroupFinding {
   /// Display Name for the Group.
   core.String? displayName;
 
-  /// Count of the number of assets in this group which are also included in
-  /// another group within the same report.
+  /// This field is deprecated, do not rely on it having a value.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? overlappingAssetCount;
 
   /// Findings for each of the PreferenceSets for this group.
@@ -8163,7 +8267,7 @@ class ReportSummaryVmwareNodeAllocation {
 }
 
 /// A request to run an import job.
-typedef RunImportJobRequest = $ImportJobRequest;
+typedef RunImportJobRequest = $Request01;
 
 /// Guest OS running process details.
 class RunningProcess {
@@ -8372,6 +8476,11 @@ class RuntimeNetworkInfo {
 
 /// Describes the Migration Center settings related to the project.
 class Settings {
+  /// Disable Cloud Logging for the Migration Center API.
+  ///
+  /// Users are billed for the logs.
+  core.bool? disableCloudLogging;
+
   /// The name of the resource.
   ///
   /// Output only.
@@ -8381,12 +8490,16 @@ class Settings {
   core.String? preferenceSet;
 
   Settings({
+    this.disableCloudLogging,
     this.name,
     this.preferenceSet,
   });
 
   Settings.fromJson(core.Map json_)
       : this(
+          disableCloudLogging: json_.containsKey('disableCloudLogging')
+              ? json_['disableCloudLogging'] as core.bool
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           preferenceSet: json_.containsKey('preferenceSet')
               ? json_['preferenceSet'] as core.String
@@ -8394,6 +8507,8 @@ class Settings {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (disableCloudLogging != null)
+          'disableCloudLogging': disableCloudLogging!,
         if (name != null) 'name': name!,
         if (preferenceSet != null) 'preferenceSet': preferenceSet!,
       };
@@ -8735,7 +8850,7 @@ class UploadFileInfo {
 }
 
 /// A request to validate an import job.
-typedef ValidateImportJobRequest = $ImportJobRequest;
+typedef ValidateImportJobRequest = $Request01;
 
 /// A resource that aggregates errors across import job files.
 class ValidationReport {

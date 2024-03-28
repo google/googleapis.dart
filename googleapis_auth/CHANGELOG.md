@@ -1,7 +1,18 @@
+## 1.5.1
+
+- `auth_browser.dart`: handle pop-up closed errors correctly. 
+- Added support for custom post-auth html page
+
+## 1.5.0
+
+- Add support for non-Google OAuth 2.0 providers.
+
 ## 1.4.2
 
-- Require Dart 3.0 or later.
-- Added support for custom post-auth html page
+- Require Dart 3.2 or later.
+- Require 
+  - `google_identity_services_web: ^0.3.0`
+  - `http: ^1.0.0`
 
 ## 1.4.1
 

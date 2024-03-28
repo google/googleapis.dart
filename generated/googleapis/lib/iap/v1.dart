@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Cloud Identity-Aware Proxy API - v1
@@ -26,7 +25,7 @@
 ///     - [ProjectsIapTunnelLocationsResource]
 ///       - [ProjectsIapTunnelLocationsDestGroupsResource]
 /// - [V1Resource]
-library iap_v1;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -1286,14 +1285,31 @@ class Binding {
   /// `group:{emailid}`: An email address that represents a Google group. For
   /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
   /// (primary) that represents all the users of that domain. For example,
-  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a user that has
-  /// been recently deleted. For example,
-  /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
-  /// this value reverts to `user:{emailid}` and the recovered user retains the
-  /// role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a service account
-  /// that has been recently deleted. For example,
+  /// `google.com` or `example.com`. *
+  /// `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workforce identity pool. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`:
+  /// All workforce identities in a group. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All workforce identities with a specific attribute value. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}
+  /// / * `: All identities in a workforce identity pool. *
+  /// `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workload identity pool. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`:
+  /// A workload identity pool group. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All identities in a workload identity pool with a certain attribute. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}
+  /// / * `: All identities in a workload identity pool. *
+  /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
+  /// identifier) representing a user that has been recently deleted. For
+  /// example, `alice@example.com?uid=123456789012345678901`. If the user is
+  /// recovered, this value reverts to `user:{emailid}` and the recovered user
+  /// retains the role in the binding. *
+  /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus
+  /// unique identifier) representing a service account that has been recently
+  /// deleted. For example,
   /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If
   /// the service account is undeleted, this value reverts to
   /// `serviceAccount:{emailid}` and the undeleted service account retains the
@@ -1302,12 +1318,19 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding.
+  /// the role in the binding. *
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// Deleted single identity in a workforce identity pool. For example,
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
   ///
-  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an
+  /// overview of the IAM roles and permissions, see the
+  /// [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For
+  /// a list of the available pre-defined roles, see
+  /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
   Binding({
@@ -1720,8 +1743,12 @@ class OAuthSettings {
   /// since access behavior is managed by IAM policies.
   core.String? loginHint;
 
+  /// List of client ids allowed to use IAP programmatically.
+  core.List<core.String>? programmaticClients;
+
   OAuthSettings({
     this.loginHint,
+    this.programmaticClients,
   });
 
   OAuthSettings.fromJson(core.Map json_)
@@ -1729,10 +1756,17 @@ class OAuthSettings {
           loginHint: json_.containsKey('loginHint')
               ? json_['loginHint'] as core.String
               : null,
+          programmaticClients: json_.containsKey('programmaticClients')
+              ? (json_['programmaticClients'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (loginHint != null) 'loginHint': loginHint!,
+        if (programmaticClients != null)
+          'programmaticClients': programmaticClients!,
       };
 }
 
@@ -1750,23 +1784,23 @@ class OAuthSettings {
 /// request, the resource, or both. To learn which resources support conditions
 /// in their IAM policies, see the
 /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": \[ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": \[
+/// **JSON example:** ``` { "bindings": [ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": [
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": \[
-/// "user:eve@example.com" \], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": [
+/// "user:eve@example.com" ], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time \< timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
-/// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
-/// user:mike@example.com - group:admins@example.com - domain:google.com -
-/// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
-/// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
-/// role: roles/resourcemanager.organizationViewer condition: title: expirable
-/// access description: Does not grant access after Sep 2020 expression:
-/// request.time \< timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
-/// version: 3 For a description of IAM and its features, see the
-/// [IAM documentation](https://cloud.google.com/iam/docs/).
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: -
+/// members: - user:mike@example.com - group:admins@example.com -
+/// domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+/// role: roles/resourcemanager.organizationAdmin - members: -
+/// user:eve@example.com role: roles/resourcemanager.organizationViewer
+/// condition: title: expirable access description: Does not grant access after
+/// Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+/// etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features,
+/// see the [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Associates a list of `members`, or principals, with a `role`.
   ///
@@ -1965,7 +1999,7 @@ class ReauthSettings {
   /// - "ENROLLED_SECOND_FACTORS" : User can use any enabled 2nd factor.
   core.String? method;
 
-  /// How IAP determines the effective policy in cases of hierarchial policies.
+  /// How IAP determines the effective policy in cases of hierarchical policies.
   ///
   /// Policies are merged from higher in the hierarchy to lower in the
   /// hierarchy.
@@ -2007,6 +2041,26 @@ class ReauthSettings {
 typedef ResetIdentityAwareProxyClientSecretRequest = $Empty;
 
 class Resource {
+  /// The proto or JSON formatted expected next state of the resource, wrapped
+  /// in a google.protobuf.Any proto, against which the policy rules are
+  /// evaluated.
+  ///
+  /// Services not integrated with custom org policy can omit this field.
+  /// Services integrated with custom org policy must populate this field for
+  /// all requests where the API call changes the state of the resource. Custom
+  /// org policy backend uses these attributes to enforce custom org policies.
+  /// When a proto is wrapped, it is generally the One Platform API proto. When
+  /// a JSON string is wrapped, use `google.protobuf.StringValue` for the inner
+  /// value. For create operations, GCP service is expected to pass resource
+  /// from customer request as is. For update/patch operations, GCP service is
+  /// expected to compute the next state with the patch provided by the user.
+  /// See go/custom-constraints-org-policy-integration-guide for additional
+  /// details.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? expectedNextState;
+
   /// The service defined labels of the resource on which the conditions will be
   /// evaluated.
   ///
@@ -2056,6 +2110,7 @@ class Resource {
   core.String? type;
 
   Resource({
+    this.expectedNextState,
     this.labels,
     this.name,
     this.service,
@@ -2064,6 +2119,10 @@ class Resource {
 
   Resource.fromJson(core.Map json_)
       : this(
+          expectedNextState: json_.containsKey('expectedNextState')
+              ? json_['expectedNextState']
+                  as core.Map<core.String, core.dynamic>
+              : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -2080,6 +2139,7 @@ class Resource {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (expectedNextState != null) 'expectedNextState': expectedNextState!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (service != null) 'service': service!,

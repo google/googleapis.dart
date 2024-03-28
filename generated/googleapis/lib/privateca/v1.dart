@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Certificate Authority API - v1
@@ -31,7 +30,7 @@
 ///       - [ProjectsLocationsCaPoolsCertificatesResource]
 ///     - [ProjectsLocationsCertificateTemplatesResource]
 ///     - [ProjectsLocationsOperationsResource]
-library privateca_v1;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -308,8 +307,8 @@ class ProjectsLocationsCaPoolsResource {
 
   /// FetchCaCerts returns the current trust anchor for the CaPool.
   ///
-  /// This will include CA certificate chains for all ACTIVE
-  /// CertificateAuthority resources in the CaPool.
+  /// This will include CA certificate chains for all Certificate Authorities in
+  /// the ENABLED, DISABLED, or STAGED states.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2655,14 +2654,31 @@ class Binding {
   /// `group:{emailid}`: An email address that represents a Google group. For
   /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
   /// (primary) that represents all the users of that domain. For example,
-  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a user that has
-  /// been recently deleted. For example,
-  /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
-  /// this value reverts to `user:{emailid}` and the recovered user retains the
-  /// role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a service account
-  /// that has been recently deleted. For example,
+  /// `google.com` or `example.com`. *
+  /// `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workforce identity pool. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`:
+  /// All workforce identities in a group. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All workforce identities with a specific attribute value. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}
+  /// / * `: All identities in a workforce identity pool. *
+  /// `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workload identity pool. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`:
+  /// A workload identity pool group. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All identities in a workload identity pool with a certain attribute. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}
+  /// / * `: All identities in a workload identity pool. *
+  /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
+  /// identifier) representing a user that has been recently deleted. For
+  /// example, `alice@example.com?uid=123456789012345678901`. If the user is
+  /// recovered, this value reverts to `user:{emailid}` and the recovered user
+  /// retains the role in the binding. *
+  /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus
+  /// unique identifier) representing a service account that has been recently
+  /// deleted. For example,
   /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If
   /// the service account is undeleted, this value reverts to
   /// `serviceAccount:{emailid}` and the undeleted service account retains the
@@ -2671,12 +2687,19 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding.
+  /// the role in the binding. *
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// Deleted single identity in a workforce identity pool. For example,
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
   ///
-  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an
+  /// overview of the IAM roles and permissions, see the
+  /// [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For
+  /// a list of the available pre-defined roles, see
+  /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
   Binding({
@@ -2826,28 +2849,7 @@ class CaPool {
 
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
-
-class CertChain {
-  /// The certificates that form the CA chain, from leaf to root order.
-  core.List<core.String>? certificates;
-
-  CertChain({
-    this.certificates,
-  });
-
-  CertChain.fromJson(core.Map json_)
-      : this(
-          certificates: json_.containsKey('certificates')
-              ? (json_['certificates'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (certificates != null) 'certificates': certificates!,
-      };
-}
+typedef CertChain = $CertChain;
 
 /// A Certificate corresponds to a signed X.509 certificate issued by a
 /// CertificateAuthority.
@@ -3316,6 +3318,15 @@ class CertificateConfig {
   /// Required.
   SubjectConfig? subjectConfig;
 
+  /// When specified this provides a custom SKI to be used in the certificate.
+  ///
+  /// This should only be used to maintain a SKI of an existing CA originally
+  /// created outside CAS, which was not generated using method (1) described in
+  /// RFC 5280 section 4.2.1.2.
+  ///
+  /// Optional.
+  CertificateConfigKeyId? subjectKeyId;
+
   /// Describes how some of the technical X.509 fields in a certificate should
   /// be populated.
   ///
@@ -3325,6 +3336,7 @@ class CertificateConfig {
   CertificateConfig({
     this.publicKey,
     this.subjectConfig,
+    this.subjectKeyId,
     this.x509Config,
   });
 
@@ -3338,6 +3350,10 @@ class CertificateConfig {
               ? SubjectConfig.fromJson(
                   json_['subjectConfig'] as core.Map<core.String, core.dynamic>)
               : null,
+          subjectKeyId: json_.containsKey('subjectKeyId')
+              ? CertificateConfigKeyId.fromJson(
+                  json_['subjectKeyId'] as core.Map<core.String, core.dynamic>)
+              : null,
           x509Config: json_.containsKey('x509Config')
               ? X509Parameters.fromJson(
                   json_['x509Config'] as core.Map<core.String, core.dynamic>)
@@ -3347,9 +3363,13 @@ class CertificateConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (publicKey != null) 'publicKey': publicKey!,
         if (subjectConfig != null) 'subjectConfig': subjectConfig!,
+        if (subjectKeyId != null) 'subjectKeyId': subjectKeyId!,
         if (x509Config != null) 'x509Config': x509Config!,
       };
 }
+
+/// A KeyId identifies a specific public key, usually by hashing the public key.
+typedef CertificateConfigKeyId = $KeyId;
 
 /// A CertificateDescription describes an X.509 certificate or CSR that has been
 /// issued, as an alternative to using ASN.1 / X.509.
@@ -3731,6 +3751,18 @@ class CertificateTemplate {
   /// Optional.
   core.Map<core.String, core.String>? labels;
 
+  /// The maximum lifetime allowed for issued Certificates that use this
+  /// template.
+  ///
+  /// If the issuing CaPool's IssuancePolicy specifies a maximum_lifetime the
+  /// minimum of the two durations will be the maximum lifetime for issued
+  /// Certificates. Note that if the issuing CertificateAuthority expires before
+  /// a Certificate's requested maximum_lifetime, the effective lifetime will be
+  /// explicitly truncated to match it.
+  ///
+  /// Optional.
+  core.String? maximumLifetime;
+
   /// The resource name for this CertificateTemplate in the format `projects / *
   /// /locations / * /certificateTemplates / * `.
   ///
@@ -3772,6 +3804,7 @@ class CertificateTemplate {
     this.description,
     this.identityConstraints,
     this.labels,
+    this.maximumLifetime,
     this.name,
     this.passthroughExtensions,
     this.predefinedValues,
@@ -3799,6 +3832,9 @@ class CertificateTemplate {
                   ),
                 )
               : null,
+          maximumLifetime: json_.containsKey('maximumLifetime')
+              ? json_['maximumLifetime'] as core.String
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           passthroughExtensions: json_.containsKey('passthroughExtensions')
               ? CertificateExtensionConstraints.fromJson(
@@ -3820,6 +3856,7 @@ class CertificateTemplate {
         if (identityConstraints != null)
           'identityConstraints': identityConstraints!,
         if (labels != null) 'labels': labels!,
+        if (maximumLifetime != null) 'maximumLifetime': maximumLifetime!,
         if (name != null) 'name': name!,
         if (passthroughExtensions != null)
           'passthroughExtensions': passthroughExtensions!,
@@ -3924,7 +3961,7 @@ class EcKeyType {
 typedef Empty = $Empty;
 
 /// Request message for CertificateAuthorityService.EnableCertificateAuthority.
-typedef EnableCertificateAuthorityRequest = $Request02;
+typedef EnableCertificateAuthorityRequest = $Request03;
 
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.
@@ -4024,12 +4061,12 @@ class ExtendedKeyUsageOptions {
 }
 
 /// Request message for CertificateAuthorityService.FetchCaCerts.
-typedef FetchCaCertsRequest = $Request02;
+typedef FetchCaCertsRequest = $Request03;
 
 /// Response message for CertificateAuthorityService.FetchCaCerts.
 class FetchCaCertsResponse {
-  /// The PEM encoded CA certificate chains of all ACTIVE CertificateAuthority
-  /// resources in this CaPool.
+  /// The PEM encoded CA certificate chains of all Certificate Authorities in
+  /// this CaPool in the ENABLED, DISABLED, or STAGED states.
   core.List<CertChain>? caCerts;
 
   FetchCaCertsResponse({
@@ -4227,28 +4264,7 @@ class IssuancePolicy {
 }
 
 /// A KeyId identifies a specific public key, usually by hashing the public key.
-class KeyId {
-  /// The value of this KeyId encoded in lowercase hexadecimal.
-  ///
-  /// This is most likely the 160 bit SHA-1 hash of the public key.
-  ///
-  /// Optional.
-  core.String? keyId;
-
-  KeyId({
-    this.keyId,
-  });
-
-  KeyId.fromJson(core.Map json_)
-      : this(
-          keyId:
-              json_.containsKey('keyId') ? json_['keyId'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (keyId != null) 'keyId': keyId!,
-      };
-}
+typedef KeyId = $KeyId;
 
 /// A KeyUsage describes key usage values that may appear in an X.509
 /// certificate.
@@ -4930,7 +4946,7 @@ class Operation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard
@@ -4990,23 +5006,23 @@ class Operation {
 /// request, the resource, or both. To learn which resources support conditions
 /// in their IAM policies, see the
 /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": \[ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": \[
+/// **JSON example:** ``` { "bindings": [ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": [
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": \[
-/// "user:eve@example.com" \], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": [
+/// "user:eve@example.com" ], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time \< timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
-/// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
-/// user:mike@example.com - group:admins@example.com - domain:google.com -
-/// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
-/// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
-/// role: roles/resourcemanager.organizationViewer condition: title: expirable
-/// access description: Does not grant access after Sep 2020 expression:
-/// request.time \< timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
-/// version: 3 For a description of IAM and its features, see the
-/// [IAM documentation](https://cloud.google.com/iam/docs/).
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: -
+/// members: - user:mike@example.com - group:admins@example.com -
+/// domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+/// role: roles/resourcemanager.organizationAdmin - members: -
+/// user:eve@example.com role: roles/resourcemanager.organizationViewer
+/// condition: title: expirable access description: Does not grant access after
+/// Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+/// etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features,
+/// see the [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig>? auditConfigs;
@@ -5626,7 +5642,7 @@ class SubjectConfig {
   /// Contains distinguished name fields such as the common name, location and
   /// organization.
   ///
-  /// Required.
+  /// Optional.
   Subject? subject;
 
   /// The subject alternative name fields.
@@ -5805,7 +5821,7 @@ typedef TestIamPermissionsResponse = $PermissionsResponse;
 
 /// Request message for
 /// CertificateAuthorityService.UndeleteCertificateAuthority.
-typedef UndeleteCertificateAuthorityRequest = $Request02;
+typedef UndeleteCertificateAuthorityRequest = $Request03;
 
 /// An X509Extension specifies an X.509 extension, which may be used in
 /// different parts of X.509 objects like certificates, CSRs, and CRLs.

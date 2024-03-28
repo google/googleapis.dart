@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Local Services API - v1
@@ -19,7 +18,7 @@
 ///
 /// - [AccountReportsResource]
 /// - [DetailedLeadReportsResource]
-library localservices_v1;
+library;
 
 import 'dart:async' as async;
 import 'dart:core' as core;
@@ -542,12 +541,17 @@ class GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport {
   /// Location of the associated account's home city.
   core.String? geo;
 
+  /// Unique identifier of a Detailed Lead Report.
+  core.String? googleAdsLeadId;
+
   /// Lead category (e.g. hvac, plumber)
   core.String? leadCategory;
 
   /// Timestamp of when the lead was created.
   core.String? leadCreationTimestamp;
 
+  /// Deprecated in favor of google_ads_lead_id.
+  ///
   /// Unique identifier of a Detailed Lead Report.
   core.String? leadId;
 
@@ -580,6 +584,7 @@ class GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport {
     this.currencyCode,
     this.disputeStatus,
     this.geo,
+    this.googleAdsLeadId,
     this.leadCategory,
     this.leadCreationTimestamp,
     this.leadId,
@@ -618,6 +623,9 @@ class GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport {
               ? json_['disputeStatus'] as core.String
               : null,
           geo: json_.containsKey('geo') ? json_['geo'] as core.String : null,
+          googleAdsLeadId: json_.containsKey('googleAdsLeadId')
+              ? json_['googleAdsLeadId'] as core.String
+              : null,
           leadCategory: json_.containsKey('leadCategory')
               ? json_['leadCategory'] as core.String
               : null,
@@ -656,6 +664,7 @@ class GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport {
         if (currencyCode != null) 'currencyCode': currencyCode!,
         if (disputeStatus != null) 'disputeStatus': disputeStatus!,
         if (geo != null) 'geo': geo!,
+        if (googleAdsLeadId != null) 'googleAdsLeadId': googleAdsLeadId!,
         if (leadCategory != null) 'leadCategory': leadCategory!,
         if (leadCreationTimestamp != null)
           'leadCreationTimestamp': leadCreationTimestamp!,

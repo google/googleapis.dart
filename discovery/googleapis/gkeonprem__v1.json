@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230726",
+    "revision": "20240124",
     "rootUrl": "https://gkeonprem.googleapis.com/",
     "servicePath": "",
     "title": "Anthos On-Prem API",
@@ -3006,7 +3006,7 @@
             "id": "Authorization",
             "properties": {
                 "adminUsers": {
-                    "description": "Required. For VMware and bare metal user clusters, users will be granted the cluster-admin role on the cluster, which provides full administrative access to the cluster. For bare metal admin clusters, users will be granted the cluster-view role, which limits users to read-only access.",
+                    "description": "For VMware and bare metal user clusters, users will be granted the cluster-admin role on the cluster, which provides full administrative access to the cluster. For bare metal admin clusters, users will be granted the cluster-view role, which limits users to read-only access.",
                     "items": {
                         "$ref": "ClusterUser"
                     },
@@ -3031,7 +3031,7 @@
             "type": "object"
         },
         "BareMetalAdminCluster": {
-            "description": "## Resource that represents a bare metal admin cluster.",
+            "description": "Resource that represents a bare metal admin cluster.",
             "id": "BareMetalAdminCluster",
             "properties": {
                 "annotations": {
@@ -3044,6 +3044,10 @@
                 "bareMetalVersion": {
                     "description": "The Anthos clusters on bare metal version for the bare metal admin cluster.",
                     "type": "string"
+                },
+                "binaryAuthorization": {
+                    "$ref": "BinaryAuthorization",
+                    "description": "Binary Authorization related configurations."
                 },
                 "clusterOperations": {
                     "$ref": "BareMetalAdminClusterOperationsConfig",
@@ -3209,7 +3213,7 @@
                 },
                 "controlPlaneNodePoolConfig": {
                     "$ref": "BareMetalAdminControlPlaneNodePoolConfig",
-                    "description": "Configures the node pool running the control plane. If specified the corresponding NodePool will be created for the cluster's control plane. The NodePool will have the same name and namespace as the cluster."
+                    "description": "Required. Configures the node pool running the control plane. If specified the corresponding NodePool will be created for the cluster's control plane. The NodePool will have the same name and namespace as the cluster."
                 }
             },
             "type": "object"
@@ -3220,7 +3224,7 @@
             "properties": {
                 "nodePoolConfig": {
                     "$ref": "BareMetalNodePoolConfig",
-                    "description": "The generic configuration for a node pool running the control plane."
+                    "description": "Required. The generic configuration for a node pool running the control plane."
                 }
             },
             "type": "object"
@@ -3552,6 +3556,10 @@
                 "bareMetalVersion": {
                     "description": "Required. The Anthos clusters on bare metal version for your user cluster.",
                     "type": "string"
+                },
+                "binaryAuthorization": {
+                    "$ref": "BinaryAuthorization",
+                    "description": "Binary Authorization related configurations."
                 },
                 "clusterOperations": {
                     "$ref": "BareMetalClusterOperationsConfig",
@@ -4362,6 +4370,27 @@
             },
             "type": "object"
         },
+        "BinaryAuthorization": {
+            "description": "Configuration for Binary Authorization.",
+            "id": "BinaryAuthorization",
+            "properties": {
+                "evaluationMode": {
+                    "description": "Mode of operation for binauthz policy evaluation. If unspecified, defaults to DISABLED.",
+                    "enum": [
+                        "EVALUATION_MODE_UNSPECIFIED",
+                        "DISABLED",
+                        "PROJECT_SINGLETON_POLICY_ENFORCE"
+                    ],
+                    "enumDescriptions": [
+                        "Default value",
+                        "Disable BinaryAuthorization",
+                        "Enforce Kubernetes admission requests with BinaryAuthorization using the project's singleton policy."
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "Binding": {
             "description": "Associates `members`, or principals, with a `role`.",
             "id": "Binding",
@@ -4371,14 +4400,14 @@
                     "description": "The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies)."
                 },
                 "members": {
-                    "description": "Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.",
+                    "description": "Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.",
                     "items": {
                         "type": "string"
                     },
                     "type": "array"
                 },
                 "role": {
-                    "description": "Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.",
+                    "description": "Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).",
                     "type": "string"
                 }
             },
@@ -4877,7 +4906,7 @@
                         "description": "Properties of the object. Contains field @type with type URL.",
                         "type": "any"
                     },
-                    "description": "The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
+                    "description": "The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
                     "type": "object"
                 }
             },
@@ -4959,7 +4988,7 @@
             "type": "object"
         },
         "OperationProgress": {
-            "description": "Information about operation progress. LINT.IfChange",
+            "description": "Information about operation progress.",
             "id": "OperationProgress",
             "properties": {
                 "stages": {
@@ -5036,7 +5065,7 @@
             "type": "object"
         },
         "Policy": {
-            "description": "An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { \"bindings\": [ { \"role\": \"roles/resourcemanager.organizationAdmin\", \"members\": [ \"user:mike@example.com\", \"group:admins@example.com\", \"domain:google.com\", \"serviceAccount:my-project-id@appspot.gserviceaccount.com\" ] }, { \"role\": \"roles/resourcemanager.organizationViewer\", \"members\": [ \"user:eve@example.com\" ], \"condition\": { \"title\": \"expirable access\", \"description\": \"Does not grant access after Sep 2020\", \"expression\": \"request.time < timestamp('2020-10-01T00:00:00.000Z')\", } } ], \"etag\": \"BwWWja0YfJA=\", \"version\": 3 } **YAML example:** bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).",
+            "description": "An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { \"bindings\": [ { \"role\": \"roles/resourcemanager.organizationAdmin\", \"members\": [ \"user:mike@example.com\", \"group:admins@example.com\", \"domain:google.com\", \"serviceAccount:my-project-id@appspot.gserviceaccount.com\" ] }, { \"role\": \"roles/resourcemanager.organizationViewer\", \"members\": [ \"user:eve@example.com\" ], \"condition\": { \"title\": \"expirable access\", \"description\": \"Does not grant access after Sep 2020\", \"expression\": \"request.time < timestamp('2020-10-01T00:00:00.000Z')\", } } ], \"etag\": \"BwWWja0YfJA=\", \"version\": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).",
             "id": "Policy",
             "properties": {
                 "bindings": {
@@ -5233,8 +5262,8 @@
                     "description": "Current version of the dependency e.g. 1.15.0.",
                     "type": "string"
                 },
-                "localName": {
-                    "description": "Local name of the dependency.",
+                "membership": {
+                    "description": "Membership names are formatted as `projects//locations//memberships/`.",
                     "type": "string"
                 },
                 "resourceName": {
@@ -5392,6 +5421,20 @@
             },
             "type": "object"
         },
+        "VmwareAdminAuthorizationConfig": {
+            "description": "VmwareAdminAuthorizationConfig represents configuration for admin cluster authorization.",
+            "id": "VmwareAdminAuthorizationConfig",
+            "properties": {
+                "viewerUsers": {
+                    "description": "For VMware admin clusters, users will be granted the cluster-viewer role on the cluster.",
+                    "items": {
+                        "$ref": "ClusterUser"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "VmwareAdminCluster": {
             "description": "Resource that represents a VMware admin cluster.",
             "id": "VmwareAdminCluster",
@@ -5410,6 +5453,10 @@
                 "antiAffinityGroups": {
                     "$ref": "VmwareAAGConfig",
                     "description": "The VMware admin cluster anti affinity group configuration."
+                },
+                "authorization": {
+                    "$ref": "VmwareAdminAuthorizationConfig",
+                    "description": "The VMware admin cluster authorization configuration."
                 },
                 "autoRepairConfig": {
                     "$ref": "VmwareAutoRepairConfig",
@@ -5475,6 +5522,11 @@
                 "platformConfig": {
                     "$ref": "VmwarePlatformConfig",
                     "description": "The VMware platform configuration."
+                },
+                "preparedSecrets": {
+                    "$ref": "VmwareAdminPreparedSecretsConfig",
+                    "description": "Output only. The VMware admin cluster prepared secrets configuration. It should always be enabled by the Central API, instead of letting users set it.",
+                    "readOnly": true
                 },
                 "reconciling": {
                     "description": "Output only. If set, there are currently changes in flight to the VMware admin cluster.",
@@ -5685,6 +5737,17 @@
             },
             "type": "object"
         },
+        "VmwareAdminPreparedSecretsConfig": {
+            "description": "VmwareAdminPreparedSecretsConfig represents configuration for admin cluster prepared secrets.",
+            "id": "VmwareAdminPreparedSecretsConfig",
+            "properties": {
+                "enabled": {
+                    "description": "Whether prepared secrets is enabled.",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
         "VmwareAdminSeesawConfig": {
             "description": "VmwareSeesawConfig represents configuration parameters for an already existing Seesaw load balancer. IMPORTANT: Please note that the Anthos On-Prem API will not generate or update Seesaw configurations it can only bind a pre-existing configuration to a new user cluster. IMPORTANT: When attempting to create a user cluster with a pre-existing Seesaw load balancer you will need to follow some preparation steps before calling the 'CreateVmwareCluster' API method. First you will need to create the user cluster's namespace via kubectl. The namespace will need to use the following naming convention : -gke-onprem-mgmt or -gke-onprem-mgmt depending on whether you used the 'VmwareCluster.local_name' to disambiguate collisions; for more context see the documentation of 'VmwareCluster.local_name'. Once the namespace is created you will need to create a secret resource via kubectl. This secret will contain copies of your Seesaw credentials. The Secret must be called 'user-cluster-creds' and contain Seesaw's SSH and Cert credentials. The credentials must be keyed with the following names: 'seesaw-ssh-private-key', 'seesaw-ssh-public-key', 'seesaw-ssh-ca-key', 'seesaw-ssh-ca-cert'.",
             "id": "VmwareAdminSeesawConfig",
@@ -5706,6 +5769,10 @@
                 },
                 "masterIp": {
                     "description": "MasterIP is the IP announced by the master of Seesaw group.",
+                    "type": "string"
+                },
+                "stackdriverName": {
+                    "description": "Name to be used by Stackdriver.",
                     "type": "string"
                 },
                 "vms": {
@@ -5752,6 +5819,10 @@
                 },
                 "resourcePool": {
                     "description": "The name of the vCenter resource pool for the admin cluster.",
+                    "type": "string"
+                },
+                "storagePolicyName": {
+                    "description": "The name of the vCenter storage policy for the user cluster.",
                     "type": "string"
                 }
             },
@@ -5842,6 +5913,10 @@
                     "$ref": "VmwareAutoRepairConfig",
                     "description": "Configuration for auto repairing."
                 },
+                "binaryAuthorization": {
+                    "$ref": "BinaryAuthorization",
+                    "description": "Binary Authorization related configurations."
+                },
                 "controlPlaneNode": {
                     "$ref": "VmwareControlPlaneNodeConfig",
                     "description": "VMware user cluster control plane nodes must have either 1 or 3 replicas."
@@ -5865,6 +5940,10 @@
                 "description": {
                     "description": "A human readable description of this VMware user cluster.",
                     "type": "string"
+                },
+                "disableBundledIngress": {
+                    "description": "Disable bundled ingress.",
+                    "type": "boolean"
                 },
                 "enableControlPlaneV2": {
                     "description": "Enable control plane V2. Default to false.",
@@ -5953,6 +6032,10 @@
                     "readOnly": true,
                     "type": "string"
                 },
+                "upgradePolicy": {
+                    "$ref": "VmwareClusterUpgradePolicy",
+                    "description": "Specifies upgrade policy for the cluster."
+                },
                 "validationCheck": {
                     "$ref": "ValidationCheck",
                     "description": "Output only. ValidationCheck represents the result of the preflight check job.",
@@ -5960,11 +6043,21 @@
                 },
                 "vcenter": {
                     "$ref": "VmwareVCenterConfig",
-                    "description": "Output only. VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.",
-                    "readOnly": true
+                    "description": "VmwareVCenterConfig specifies vCenter config for the user cluster. If unspecified, it is inherited from the admin cluster."
                 },
                 "vmTrackingEnabled": {
                     "description": "Enable VM tracking.",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "VmwareClusterUpgradePolicy": {
+            "description": "VmwareClusterUpgradePolicy defines the cluster upgrade policy.",
+            "id": "VmwareClusterUpgradePolicy",
+            "properties": {
+                "controlPlaneOnly": {
+                    "description": "Controls whether the upgrade applies to the control plane only.",
                     "type": "boolean"
                 }
             },
@@ -6018,6 +6111,10 @@
                 "datastore": {
                     "description": "The Vsphere datastore used by the control plane Node.",
                     "type": "string"
+                },
+                "storagePolicyName": {
+                    "description": "The Vsphere storage policy used by the control plane Node.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -6033,6 +6130,10 @@
                 "dataplaneV2Enabled": {
                     "description": "Enables Dataplane V2.",
                     "type": "boolean"
+                },
+                "forwardMode": {
+                    "description": "Configure ForwardMode for Dataplane v2.",
+                    "type": "string"
                 },
                 "windowsDataplaneV2Enabled": {
                     "description": "Enable Dataplane V2 for clusters with Windows nodes.",
@@ -6152,6 +6253,11 @@
                     "$ref": "VmwareMetalLbConfig",
                     "description": "Configuration for MetalLB typed load balancers."
                 },
+                "seesawConfig": {
+                    "$ref": "VmwareSeesawConfig",
+                    "description": "Output only. Configuration for Seesaw typed load balancers.",
+                    "readOnly": true
+                },
                 "vipConfig": {
                     "$ref": "VmwareVipConfig",
                     "description": "The VIPs used by the load balancer."
@@ -6235,8 +6341,7 @@
                     "description": "Configuration settings for a static IP configuration."
                 },
                 "vcenterNetwork": {
-                    "description": "Output only. vcenter_network specifies vCenter network name. Inherited from the admin cluster.",
-                    "readOnly": true,
+                    "description": "vcenter_network specifies vCenter network name. Inherited from the admin cluster.",
                     "type": "string"
                 }
             },
@@ -6439,6 +6544,43 @@
             },
             "type": "object"
         },
+        "VmwareSeesawConfig": {
+            "description": "VmwareSeesawConfig represents configuration parameters for an already existing Seesaw load balancer. IMPORTANT: Please note that the Anthos On-Prem API will not generate or update Seesaw configurations it can only bind a pre-existing configuration to a new user cluster. IMPORTANT: When attempting to create a user cluster with a pre-existing Seesaw load balancer you will need to follow some preparation steps before calling the 'CreateVmwareCluster' API method. First you will need to create the user cluster's namespace via kubectl. The namespace will need to use the following naming convention : -gke-onprem-mgmt or -gke-onprem-mgmt depending on whether you used the 'VmwareCluster.local_name' to disambiguate collisions; for more context see the documentation of 'VmwareCluster.local_name'. Once the namespace is created you will need to create a secret resource via kubectl. This secret will contain copies of your Seesaw credentials. The Secret must be called 'user-cluster-creds' and contain Seesaw's SSH and Cert credentials. The credentials must be keyed with the following names: 'seesaw-ssh-private-key', 'seesaw-ssh-public-key', 'seesaw-ssh-ca-key', 'seesaw-ssh-ca-cert'.",
+            "id": "VmwareSeesawConfig",
+            "properties": {
+                "enableHa": {
+                    "description": "Enable two load balancer VMs to achieve a highly-available Seesaw load balancer.",
+                    "type": "boolean"
+                },
+                "group": {
+                    "description": "Required. In general the following format should be used for the Seesaw group name: seesaw-for-[cluster_name].",
+                    "type": "string"
+                },
+                "ipBlocks": {
+                    "description": "Required. The IP Blocks to be used by the Seesaw load balancer",
+                    "items": {
+                        "$ref": "VmwareIpBlock"
+                    },
+                    "type": "array"
+                },
+                "masterIp": {
+                    "description": "Required. MasterIP is the IP announced by the master of Seesaw group.",
+                    "type": "string"
+                },
+                "stackdriverName": {
+                    "description": "Name to be used by Stackdriver.",
+                    "type": "string"
+                },
+                "vms": {
+                    "description": "Names of the VMs created for this Seesaw group.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "VmwareStaticIpConfig": {
             "description": "Represents the network configuration required for the VMware user clusters with Static IP configurations.",
             "id": "VmwareStaticIpConfig",
@@ -6469,7 +6611,8 @@
             "id": "VmwareVCenterConfig",
             "properties": {
                 "address": {
-                    "description": "The vCenter IP address.",
+                    "description": "Output only. The vCenter IP address.",
+                    "readOnly": true,
                     "type": "string"
                 },
                 "caCertData": {
@@ -6495,6 +6638,10 @@
                 "resourcePool": {
                     "description": "The name of the vCenter resource pool for the user cluster.",
                     "type": "string"
+                },
+                "storagePolicyName": {
+                    "description": "The name of the vCenter storage policy for the user cluster.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -6503,6 +6650,13 @@
             "description": "Contains information about a specific Anthos on VMware version.",
             "id": "VmwareVersionInfo",
             "properties": {
+                "dependencies": {
+                    "description": "The list of upgrade dependencies for this version.",
+                    "items": {
+                        "$ref": "UpgradeDependency"
+                    },
+                    "type": "array"
+                },
                 "hasDependencies": {
                     "description": "If set, the cluster dependencies (e.g. the admin cluster, other user clusters managed by the same admin cluster) must be upgraded before this version can be installed or upgraded to.",
                     "type": "boolean"

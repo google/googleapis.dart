@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Google Drive API - v2
@@ -33,7 +32,7 @@
 /// - [RepliesResource]
 /// - [RevisionsResource]
 /// - [TeamdrivesResource]
-library drive_v2;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert_1;
@@ -1141,7 +1140,7 @@ class DrivesResource {
 
   DrivesResource(commons.ApiRequester client) : _requester = client;
 
-  /// Permanently deletes a shared drive for which the user is an organizer.
+  /// Permanently deletes a shared drive for which the user is an `organizer`.
   ///
   /// The shared drive cannot contain any untrashed items.
   ///
@@ -1553,10 +1552,12 @@ class FilesResource {
     return File.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Permanently deletes a file by ID.
+  /// Permanently deletes a file owned by the user without moving it to the
+  /// trash.
   ///
-  /// Skips the trash. The currently authenticated user must own the file or be
-  /// an organizer on the parent for shared drive files.
+  /// If the file belongs to a shared drive, the user must be an `organizer` on
+  /// the parent folder. If the target is a folder, all descendants owned by the
+  /// user are also deleted.
   ///
   /// Request parameters:
   ///
@@ -2124,7 +2125,7 @@ class FilesResource {
   ///
   /// Request parameters:
   ///
-  /// [fileId] - The ID for the file or shared drive.
+  /// [fileId] - The ID for the file.
   ///
   /// [maxResults] - The maximum number of labels to return per page. When not
   /// set, defaults to 100.
@@ -2418,16 +2419,10 @@ class FilesResource {
     return File.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  ///  Moves a file to the trash.
+  /// Moves a file to the trash.
   ///
   /// The currently authenticated user must own the file or be at least a
-  /// `fileOrganizer` on the parent for shared drive files. Only the owner may
-  /// trash a file. The trashed item is excluded from all `files.list` responses
-  /// returned for any user who doesn't own the file. However, all users with
-  /// access to the file can see the trashed item metadata in an API response.
-  /// All users with access can copy, download, export, and share the file.
-  /// *Note:* Files moved to the trash still appear by default in results from
-  /// the `files.list` method. To permanently remove a file, use `files.delete`.
+  /// `fileOrganizer` on the parent for shared drive files.
   ///
   /// Request parameters:
   ///
@@ -2486,8 +2481,7 @@ class FilesResource {
   /// Restores a file from the trash.
   ///
   /// The currently authenticated user must own the file or be at least a
-  /// `fileOrganizer` on the parent for shared drive files. Only the owner may
-  /// untrash a file.
+  /// `fileOrganizer` on the parent for shared drive files.
   ///
   /// Request parameters:
   ///
@@ -5096,6 +5090,9 @@ class AppIcons {
 /// The apps resource provides a list of the apps that a user has installed,
 /// with information about each app's supported MIME types, file extensions, and
 /// other details.
+///
+/// Some resource methods (such as `apps.get`) require an `appId`. Use the
+/// `apps.list` method to retrieve the ID for an installed application.
 class App {
   /// Whether the app is authorized to access data on the user's Drive.
   core.bool? authorized;
@@ -5668,6 +5665,9 @@ class ChildList {
 }
 
 /// A reference to a folder's child.
+///
+/// Some resource methods (such as `children.get`) require a `childId`. Use the
+/// `children.list` method to retrieve the ID of the child.
 class ChildReference {
   /// A link to the child.
   ///
@@ -5744,6 +5744,9 @@ class CommentContext {
 }
 
 /// A comment on a file in Google Drive.
+///
+/// Some resource methods (such as `comments.update`) require a `commentId`. Use
+/// the `comments.list` method to retrieve the ID for a comment in a file.
 class Comment {
   /// A region of the document represented as a JSON string.
   ///
@@ -5978,6 +5981,9 @@ class CommentList {
 }
 
 /// A comment on a file in Google Drive.
+///
+/// Some resource methods (such as `replies.update`) require a `replyId`. Use
+/// the `replies.list` method to retrieve the ID for a reply.
 class CommentReply {
   /// The author of the reply.
   ///
@@ -6179,6 +6185,14 @@ class ContentRestriction {
   /// Only populated if readOnly is true.
   core.DateTime? restrictionDate;
 
+  /// Whether the content restriction was applied by the system, for example due
+  /// to an esignature.
+  ///
+  /// Users cannot modify or remove system restricted content restrictions.
+  ///
+  /// Output only.
+  core.bool? systemRestricted;
+
   /// The type of the content restriction.
   ///
   /// Currently the only possible value is `globalContentRestriction`.
@@ -6192,6 +6206,7 @@ class ContentRestriction {
     this.reason,
     this.restrictingUser,
     this.restrictionDate,
+    this.systemRestricted,
     this.type,
   });
 
@@ -6213,6 +6228,9 @@ class ContentRestriction {
           restrictionDate: json_.containsKey('restrictionDate')
               ? core.DateTime.parse(json_['restrictionDate'] as core.String)
               : null,
+          systemRestricted: json_.containsKey('systemRestricted')
+              ? json_['systemRestricted'] as core.bool
+              : null,
           type: json_.containsKey('type') ? json_['type'] as core.String : null,
         );
 
@@ -6223,6 +6241,7 @@ class ContentRestriction {
         if (restrictingUser != null) 'restrictingUser': restrictingUser!,
         if (restrictionDate != null)
           'restrictionDate': restrictionDate!.toUtc().toIso8601String(),
+        if (systemRestricted != null) 'systemRestricted': systemRestricted!,
         if (type != null) 'type': type!,
       };
 }
@@ -6614,6 +6633,9 @@ class DriveRestrictions {
 }
 
 /// Representation of a shared drive.
+///
+/// Some resource methods (such as `drives.update`) require a `driveId`. Use the
+/// `drives.list` method to retrieve the ID for a shared drive.
 class Drive {
   /// An image file and cropping parameters from which a background image for
   /// this shared drive is set.
@@ -7911,6 +7933,9 @@ class FileVideoMediaMetadata {
 }
 
 /// The metadata for a file.
+///
+/// Some resource methods (such as `files.update`) require a `fileId`. Use the
+/// `files.list` method to retrieve the ID for a file.
 class File {
   /// A link for opening the file in a relevant Google editor or viewer.
   ///
@@ -9376,6 +9401,9 @@ class ParentList {
 }
 
 /// A reference to a file's parent.
+///
+/// Some resource methods (such as `parents.get`) require a `parentId`. Use the
+/// `parents.list` method to retrieve the ID for a parent.
 class ParentReference {
   /// The ID of the parent.
   core.String? id;
@@ -9585,6 +9613,11 @@ class PermissionTeamDrivePermissionDetails {
 }
 
 /// A permission for a file.
+///
+/// A permission grants a user, group, domain, or the world access to a file or
+/// a folder hierarchy. Some resource methods (such as `permissions.update`)
+/// require a `permissionId`. Use the `permissions.list` method to retrieve the
+/// ID for a file, folder, or shared drive.
 class Permission {
   /// Additional roles for this user.
   ///
@@ -9909,7 +9942,9 @@ class PermissionList {
 /// The following limits apply to file properties: * Maximum of 100 properties
 /// total per file * Maximum of 30 private properties per app * Maximum of 30
 /// public properties * Maximum of 124 bytes size limit on (key + value) string
-/// in UTF-8 encoding for a single property
+/// in UTF-8 encoding for a single property Some resource methods (such as
+/// `properties.update`) require a `propertyKey`. Use the `properties.list`
+/// method to retrieve the key for a property.
 class Property {
   /// ETag of the property.
   ///
@@ -10020,6 +10055,9 @@ class PropertyList {
 }
 
 /// A revision of a file.
+///
+/// Some resource methods (such as `revisions.update`) require a `revisionId`.
+/// Use the `revisions.list` method to retrieve the ID for a revision.
 class Revision {
   /// Short term download URL for the file.
   ///

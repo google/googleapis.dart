@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// YouTube Data API v3 - v3
@@ -37,6 +36,7 @@
 /// - [LiveStreamsResource]
 /// - [MembersResource]
 /// - [MembershipsLevelsResource]
+/// - [PlaylistImagesResource]
 /// - [PlaylistItemsResource]
 /// - [PlaylistsResource]
 /// - [SearchResource]
@@ -51,7 +51,7 @@
 /// - [WatermarksResource]
 /// - [YoutubeResource]
 ///   - [YoutubeV3Resource]
-library youtube_v3;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -133,6 +133,8 @@ class YouTubeApi {
   MembersResource get members => MembersResource(_requester);
   MembershipsLevelsResource get membershipsLevels =>
       MembershipsLevelsResource(_requester);
+  PlaylistImagesResource get playlistImages =>
+      PlaylistImagesResource(_requester);
   PlaylistItemsResource get playlistItems => PlaylistItemsResource(_requester);
   PlaylistsResource get playlists => PlaylistsResource(_requester);
   SearchResource get search => SearchResource(_requester);
@@ -1057,6 +1059,8 @@ class ChannelsResource {
   ///
   /// [categoryId] - Return the channels within the specified guide category ID.
   ///
+  /// [forHandle] - Return the channel associated with a YouTube handle.
+  ///
   /// [forUsername] - Return the channel associated with a YouTube username.
   ///
   /// [hl] - Stands for "host language". Specifies the localization language of
@@ -1105,6 +1109,7 @@ class ChannelsResource {
   async.Future<ChannelListResponse> list(
     core.List<core.String> part, {
     core.String? categoryId,
+    core.String? forHandle,
     core.String? forUsername,
     core.String? hl,
     core.List<core.String>? id,
@@ -1122,6 +1127,7 @@ class ChannelsResource {
     final queryParams_ = <core.String, core.List<core.String>>{
       'part': part,
       if (categoryId != null) 'categoryId': [categoryId],
+      if (forHandle != null) 'forHandle': [forHandle],
       if (forUsername != null) 'forUsername': [forUsername],
       if (hl != null) 'hl': [hl],
       if (id != null) 'id': id,
@@ -3226,6 +3232,315 @@ class MembershipsLevelsResource {
   }
 }
 
+class PlaylistImagesResource {
+  final commons.ApiRequester _requester;
+
+  PlaylistImagesResource(commons.ApiRequester client) : _requester = client;
+
+  /// Deletes a resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [id] - Id to identify this image. This is returned from by the List
+  /// method.
+  ///
+  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
+  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
+  /// indicates that the request's authorization credentials identify a YouTube
+  /// CMS user who is acting on behalf of the content owner specified in the
+  /// parameter value. This parameter is intended for YouTube content partners
+  /// that own and manage many different YouTube channels. It allows content
+  /// owners to authenticate once and get access to all their video and channel
+  /// data, without having to provide authentication credentials for each
+  /// individual channel. The CMS account that the user authenticates with must
+  /// be linked to the specified YouTube content owner.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<void> delete({
+    core.String? id,
+    core.String? onBehalfOfContentOwner,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (id != null) 'id': [id],
+      if (onBehalfOfContentOwner != null)
+        'onBehalfOfContentOwner': [onBehalfOfContentOwner],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const url_ = 'youtube/v3/playlistImages';
+
+    await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+      downloadOptions: null,
+    );
+  }
+
+  /// Inserts a new resource into this collection.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
+  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
+  /// indicates that the request's authorization credentials identify a YouTube
+  /// CMS user who is acting on behalf of the content owner specified in the
+  /// parameter value. This parameter is intended for YouTube content partners
+  /// that own and manage many different YouTube channels. It allows content
+  /// owners to authenticate once and get access to all their video and channel
+  /// data, without having to provide authentication credentials for each
+  /// individual channel. The CMS account that the user authenticates with must
+  /// be linked to the specified YouTube content owner.
+  ///
+  /// [onBehalfOfContentOwnerChannel] - This parameter can only be used in a
+  /// properly authorized request. *Note:* This parameter is intended
+  /// exclusively for YouTube content partners. The
+  /// *onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID
+  /// of the channel to which a video is being added. This parameter is required
+  /// when a request specifies a value for the onBehalfOfContentOwner parameter,
+  /// and it can only be used in conjunction with that parameter. In addition,
+  /// the request must be authorized using a CMS account that is linked to the
+  /// content owner that the onBehalfOfContentOwner parameter specifies.
+  /// Finally, the channel that the onBehalfOfContentOwnerChannel parameter
+  /// value specifies must be linked to the content owner that the
+  /// onBehalfOfContentOwner parameter specifies. This parameter is intended for
+  /// YouTube content partners that own and manage many different YouTube
+  /// channels. It allows content owners to authenticate once and perform
+  /// actions on behalf of the channel specified in the parameter value, without
+  /// having to provide authentication credentials for each separate channel.
+  ///
+  /// [part] - The *part* parameter specifies the properties that the API
+  /// response will include.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// [uploadMedia] - The media to upload.
+  ///
+  /// [uploadOptions] - Options for the media upload. Streaming Media without
+  /// the length being known ahead of time is only supported via resumable
+  /// uploads.
+  ///
+  /// Completes with a [PlaylistImage].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<PlaylistImage> insert(
+    PlaylistImage request, {
+    core.String? onBehalfOfContentOwner,
+    core.String? onBehalfOfContentOwnerChannel,
+    core.List<core.String>? part,
+    core.String? $fields,
+    commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
+    commons.Media? uploadMedia,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (onBehalfOfContentOwner != null)
+        'onBehalfOfContentOwner': [onBehalfOfContentOwner],
+      if (onBehalfOfContentOwnerChannel != null)
+        'onBehalfOfContentOwnerChannel': [onBehalfOfContentOwnerChannel],
+      if (part != null) 'part': part,
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    core.String url_;
+    if (uploadMedia == null) {
+      url_ = 'youtube/v3/playlistImages';
+    } else if (uploadOptions is commons.ResumableUploadOptions) {
+      url_ = '/resumable/upload/youtube/v3/playlistImages';
+    } else {
+      url_ = '/upload/youtube/v3/playlistImages';
+    }
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+      uploadMedia: uploadMedia,
+      uploadOptions: uploadOptions,
+    );
+    return PlaylistImage.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves a list of resources, possibly filtered.
+  ///
+  /// Request parameters:
+  ///
+  /// [maxResults] - The *maxResults* parameter specifies the maximum number of
+  /// items that should be returned in the result set.
+  /// Value must be between "0" and "50".
+  ///
+  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
+  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
+  /// indicates that the request's authorization credentials identify a YouTube
+  /// CMS user who is acting on behalf of the content owner specified in the
+  /// parameter value. This parameter is intended for YouTube content partners
+  /// that own and manage many different YouTube channels. It allows content
+  /// owners to authenticate once and get access to all their video and channel
+  /// data, without having to provide authentication credentials for each
+  /// individual channel. The CMS account that the user authenticates with must
+  /// be linked to the specified YouTube content owner.
+  ///
+  /// [onBehalfOfContentOwnerChannel] - This parameter can only be used in a
+  /// properly authorized request. *Note:* This parameter is intended
+  /// exclusively for YouTube content partners. The
+  /// *onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID
+  /// of the channel to which a video is being added. This parameter is required
+  /// when a request specifies a value for the onBehalfOfContentOwner parameter,
+  /// and it can only be used in conjunction with that parameter. In addition,
+  /// the request must be authorized using a CMS account that is linked to the
+  /// content owner that the onBehalfOfContentOwner parameter specifies.
+  /// Finally, the channel that the onBehalfOfContentOwnerChannel parameter
+  /// value specifies must be linked to the content owner that the
+  /// onBehalfOfContentOwner parameter specifies. This parameter is intended for
+  /// YouTube content partners that own and manage many different YouTube
+  /// channels. It allows content owners to authenticate once and perform
+  /// actions on behalf of the channel specified in the parameter value, without
+  /// having to provide authentication credentials for each separate channel.
+  ///
+  /// [pageToken] - The *pageToken* parameter identifies a specific page in the
+  /// result set that should be returned. In an API response, the nextPageToken
+  /// and prevPageToken properties identify other pages that could be retrieved.
+  ///
+  /// [parent] - Return PlaylistImages for this playlist id.
+  ///
+  /// [part] - The *part* parameter specifies a comma-separated list of one or
+  /// more playlistImage resource properties that the API response will include.
+  /// If the parameter identifies a property that contains child properties, the
+  /// child properties will be included in the response.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [PlaylistImageListResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<PlaylistImageListResponse> list({
+    core.int? maxResults,
+    core.String? onBehalfOfContentOwner,
+    core.String? onBehalfOfContentOwnerChannel,
+    core.String? pageToken,
+    core.String? parent,
+    core.List<core.String>? part,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (onBehalfOfContentOwner != null)
+        'onBehalfOfContentOwner': [onBehalfOfContentOwner],
+      if (onBehalfOfContentOwnerChannel != null)
+        'onBehalfOfContentOwnerChannel': [onBehalfOfContentOwnerChannel],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (parent != null) 'parent': [parent],
+      if (part != null) 'part': part,
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const url_ = 'youtube/v3/playlistImages';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return PlaylistImageListResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates an existing resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
+  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
+  /// indicates that the request's authorization credentials identify a YouTube
+  /// CMS user who is acting on behalf of the content owner specified in the
+  /// parameter value. This parameter is intended for YouTube content partners
+  /// that own and manage many different YouTube channels. It allows content
+  /// owners to authenticate once and get access to all their video and channel
+  /// data, without having to provide authentication credentials for each
+  /// individual channel. The CMS account that the user authenticates with must
+  /// be linked to the specified YouTube content owner.
+  ///
+  /// [part] - The *part* parameter specifies the properties that the API
+  /// response will include.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// [uploadMedia] - The media to upload.
+  ///
+  /// [uploadOptions] - Options for the media upload. Streaming Media without
+  /// the length being known ahead of time is only supported via resumable
+  /// uploads.
+  ///
+  /// Completes with a [PlaylistImage].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<PlaylistImage> update(
+    PlaylistImage request, {
+    core.String? onBehalfOfContentOwner,
+    core.List<core.String>? part,
+    core.String? $fields,
+    commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
+    commons.Media? uploadMedia,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (onBehalfOfContentOwner != null)
+        'onBehalfOfContentOwner': [onBehalfOfContentOwner],
+      if (part != null) 'part': part,
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    core.String url_;
+    if (uploadMedia == null) {
+      url_ = 'youtube/v3/playlistImages';
+    } else if (uploadOptions is commons.ResumableUploadOptions) {
+      url_ = '/resumable/upload/youtube/v3/playlistImages';
+    } else {
+      url_ = '/upload/youtube/v3/playlistImages';
+    }
+
+    final response_ = await _requester.request(
+      url_,
+      'PUT',
+      body: body_,
+      queryParams: queryParams_,
+      uploadMedia: uploadMedia,
+      uploadOptions: uploadOptions,
+    );
+    return PlaylistImage.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class PlaylistItemsResource {
   final commons.ApiRequester _requester;
 
@@ -3877,8 +4192,6 @@ class SearchResource {
   ///
   /// [regionCode] - Display the content as seen by viewers in this country.
   ///
-  /// [relatedToVideoId] - Search related to a resource.
-  ///
   /// [relevanceLanguage] - Return results relevant to this language.
   ///
   /// [safeSearch] - Indicates whether the search results should include
@@ -3946,6 +4259,12 @@ class SearchResource {
   /// license. Users can reuse videos with this license in other videos that
   /// they create. Learn more.
   ///
+  /// [videoPaidProductPlacement] - null
+  /// Possible string values are:
+  /// - "videoPaidProductPlacementUnspecified"
+  /// - "any" : Return all videos, paid product placement or not.
+  /// - "true" : Restrict results to only videos with paid product placement.
+  ///
   /// [videoSyndicated] - Filter on syndicated videos.
   /// Possible string values are:
   /// - "videoSyndicatedUnspecified"
@@ -3987,7 +4306,6 @@ class SearchResource {
     core.String? publishedBefore,
     core.String? q,
     core.String? regionCode,
-    core.String? relatedToVideoId,
     core.String? relevanceLanguage,
     core.String? safeSearch,
     core.String? topicId,
@@ -3999,6 +4317,7 @@ class SearchResource {
     core.String? videoDuration,
     core.String? videoEmbeddable,
     core.String? videoLicense,
+    core.String? videoPaidProductPlacement,
     core.String? videoSyndicated,
     core.String? videoType,
     core.String? $fields,
@@ -4025,7 +4344,6 @@ class SearchResource {
       if (publishedBefore != null) 'publishedBefore': [publishedBefore],
       if (q != null) 'q': [q],
       if (regionCode != null) 'regionCode': [regionCode],
-      if (relatedToVideoId != null) 'relatedToVideoId': [relatedToVideoId],
       if (relevanceLanguage != null) 'relevanceLanguage': [relevanceLanguage],
       if (safeSearch != null) 'safeSearch': [safeSearch],
       if (topicId != null) 'topicId': [topicId],
@@ -4037,6 +4355,8 @@ class SearchResource {
       if (videoDuration != null) 'videoDuration': [videoDuration],
       if (videoEmbeddable != null) 'videoEmbeddable': [videoEmbeddable],
       if (videoLicense != null) 'videoLicense': [videoLicense],
+      if (videoPaidProductPlacement != null)
+        'videoPaidProductPlacement': [videoPaidProductPlacement],
       if (videoSyndicated != null) 'videoSyndicated': [videoSyndicated],
       if (videoType != null) 'videoType': [videoType],
       if ($fields != null) 'fields': [$fields],
@@ -8071,6 +8391,9 @@ class ChannelStatus {
 /// Information specific to a store on a merchandising platform linked to a
 /// YouTube channel.
 class ChannelToStoreLinkDetails {
+  /// Information specific to billing (read-only).
+  ChannelToStoreLinkDetailsBillingDetails? billingDetails;
+
   /// Google Merchant Center id of the store.
   core.String? merchantId;
 
@@ -8081,6 +8404,7 @@ class ChannelToStoreLinkDetails {
   core.String? storeUrl;
 
   ChannelToStoreLinkDetails({
+    this.billingDetails,
     this.merchantId,
     this.storeName,
     this.storeUrl,
@@ -8088,6 +8412,11 @@ class ChannelToStoreLinkDetails {
 
   ChannelToStoreLinkDetails.fromJson(core.Map json_)
       : this(
+          billingDetails: json_.containsKey('billingDetails')
+              ? ChannelToStoreLinkDetailsBillingDetails.fromJson(
+                  json_['billingDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           merchantId: json_.containsKey('merchantId')
               ? json_['merchantId'] as core.String
               : null,
@@ -8100,9 +8429,36 @@ class ChannelToStoreLinkDetails {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (billingDetails != null) 'billingDetails': billingDetails!,
         if (merchantId != null) 'merchantId': merchantId!,
         if (storeName != null) 'storeName': storeName!,
         if (storeUrl != null) 'storeUrl': storeUrl!,
+      };
+}
+
+/// Information specific to billing.
+class ChannelToStoreLinkDetailsBillingDetails {
+  /// The current billing profile status.
+  /// Possible string values are:
+  /// - "billingStatusUnspecified"
+  /// - "billingStatusPending"
+  /// - "billingStatusActive"
+  /// - "billingStatusInactive"
+  core.String? billingStatus;
+
+  ChannelToStoreLinkDetailsBillingDetails({
+    this.billingStatus,
+  });
+
+  ChannelToStoreLinkDetailsBillingDetails.fromJson(core.Map json_)
+      : this(
+          billingStatus: json_.containsKey('billingStatus')
+              ? json_['billingStatus'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (billingStatus != null) 'billingStatus': billingStatus!,
       };
 }
 
@@ -8436,7 +8792,7 @@ class CommentSnippet {
 }
 
 /// The id of the author's YouTube channel, if any.
-typedef CommentSnippetAuthorChannelId = $Shared07;
+typedef CommentSnippetAuthorChannelId = $Shared11;
 
 /// A *comment thread* represents information that applies to a top level
 /// comment and all its replies.
@@ -10037,10 +10393,13 @@ class CuepointSchedule {
 
   /// If set, automatic cuepoint insertion is paused until this timestamp ("No
   /// Ad Zone").
+  ///
+  /// The value is specified in ISO 8601 format.
   core.String? pauseAdsUntil;
 
-  /// Interval frequency that api uses to insert cuepoints automatically.
-  core.String? repeatInterval;
+  /// Interval frequency in seconds that api uses to insert cuepoints
+  /// automatically.
+  core.int? repeatIntervalSecs;
 
   /// The strategy to use when scheduling cuepoints.
   /// Possible string values are:
@@ -10055,7 +10414,7 @@ class CuepointSchedule {
   CuepointSchedule({
     this.enabled,
     this.pauseAdsUntil,
-    this.repeatInterval,
+    this.repeatIntervalSecs,
     this.scheduleStrategy,
   });
 
@@ -10067,8 +10426,8 @@ class CuepointSchedule {
           pauseAdsUntil: json_.containsKey('pauseAdsUntil')
               ? json_['pauseAdsUntil'] as core.String
               : null,
-          repeatInterval: json_.containsKey('repeatInterval')
-              ? json_['repeatInterval'] as core.String
+          repeatIntervalSecs: json_.containsKey('repeatIntervalSecs')
+              ? json_['repeatIntervalSecs'] as core.int
               : null,
           scheduleStrategy: json_.containsKey('scheduleStrategy')
               ? json_['scheduleStrategy'] as core.String
@@ -10078,7 +10437,8 @@ class CuepointSchedule {
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
         if (pauseAdsUntil != null) 'pauseAdsUntil': pauseAdsUntil!,
-        if (repeatInterval != null) 'repeatInterval': repeatInterval!,
+        if (repeatIntervalSecs != null)
+          'repeatIntervalSecs': repeatIntervalSecs!,
         if (scheduleStrategy != null) 'scheduleStrategy': scheduleStrategy!,
       };
 }
@@ -10950,7 +11310,7 @@ class InvideoTiming {
       };
 }
 
-typedef LanguageTag = $Shared07;
+typedef LanguageTag = $Shared11;
 
 class LevelDetails {
   /// The name that should be used when referring to this level.
@@ -12212,7 +12572,7 @@ class LiveChatMessageRetractedDetails {
       };
 }
 
-/// Next ID: 33
+/// Next ID: 34
 class LiveChatMessageSnippet {
   /// The ID of the user that authored this message, this field is not always
   /// filled.
@@ -12226,7 +12586,7 @@ class LiveChatMessageSnippet {
   /// messageRetractedEvent - the author that retracted their message
   /// userBannedEvent - the moderator that took the action superChatEvent - the
   /// user that made the purchase superStickerEvent - the user that made the
-  /// purchase
+  /// purchase pollEvent - the user that created the poll
   core.String? authorChannelId;
 
   /// Contains a string that can be displayed to the user.
@@ -12266,6 +12626,9 @@ class LiveChatMessageSnippet {
   /// Please note that "member" is the new term for "sponsor".
   LiveChatNewSponsorDetails? newSponsorDetails;
 
+  /// Details about the poll event, this is only set if the type is 'pollEvent'.
+  LiveChatPollDetails? pollDetails;
+
   /// The date and time when the message was orignally published.
   core.DateTime? publishedAt;
 
@@ -12300,6 +12663,7 @@ class LiveChatMessageSnippet {
   /// - "userBannedEvent"
   /// - "superChatEvent"
   /// - "superStickerEvent"
+  /// - "pollEvent"
   core.String? type;
   LiveChatUserBannedMessageDetails? userBannedDetails;
 
@@ -12315,6 +12679,7 @@ class LiveChatMessageSnippet {
     this.messageDeletedDetails,
     this.messageRetractedDetails,
     this.newSponsorDetails,
+    this.pollDetails,
     this.publishedAt,
     this.superChatDetails,
     this.superStickerDetails,
@@ -12374,6 +12739,10 @@ class LiveChatMessageSnippet {
               ? LiveChatNewSponsorDetails.fromJson(json_['newSponsorDetails']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          pollDetails: json_.containsKey('pollDetails')
+              ? LiveChatPollDetails.fromJson(
+                  json_['pollDetails'] as core.Map<core.String, core.dynamic>)
+              : null,
           publishedAt: json_.containsKey('publishedAt')
               ? core.DateTime.parse(json_['publishedAt'] as core.String)
               : null,
@@ -12416,6 +12785,7 @@ class LiveChatMessageSnippet {
         if (messageRetractedDetails != null)
           'messageRetractedDetails': messageRetractedDetails!,
         if (newSponsorDetails != null) 'newSponsorDetails': newSponsorDetails!,
+        if (pollDetails != null) 'pollDetails': pollDetails!,
         if (publishedAt != null)
           'publishedAt': publishedAt!.toUtc().toIso8601String(),
         if (superChatDetails != null) 'superChatDetails': superChatDetails!,
@@ -12630,6 +13000,92 @@ class LiveChatNewSponsorDetails {
   core.Map<core.String, core.dynamic> toJson() => {
         if (isUpgrade != null) 'isUpgrade': isUpgrade!,
         if (memberLevelName != null) 'memberLevelName': memberLevelName!,
+      };
+}
+
+class LiveChatPollDetails {
+  LiveChatPollDetailsPollMetadata? metadata;
+
+  ///
+  /// Possible string values are:
+  /// - "unknown"
+  /// - "active"
+  /// - "closed"
+  core.String? status;
+
+  LiveChatPollDetails({
+    this.metadata,
+    this.status,
+  });
+
+  LiveChatPollDetails.fromJson(core.Map json_)
+      : this(
+          metadata: json_.containsKey('metadata')
+              ? LiveChatPollDetailsPollMetadata.fromJson(
+                  json_['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+          status: json_.containsKey('status')
+              ? json_['status'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (metadata != null) 'metadata': metadata!,
+        if (status != null) 'status': status!,
+      };
+}
+
+class LiveChatPollDetailsPollMetadata {
+  /// The options will be returned in the order that is displayed in 1P
+  core.List<LiveChatPollDetailsPollMetadataPollOption>? options;
+  core.String? questionText;
+
+  LiveChatPollDetailsPollMetadata({
+    this.options,
+    this.questionText,
+  });
+
+  LiveChatPollDetailsPollMetadata.fromJson(core.Map json_)
+      : this(
+          options: json_.containsKey('options')
+              ? (json_['options'] as core.List)
+                  .map((value) =>
+                      LiveChatPollDetailsPollMetadataPollOption.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          questionText: json_.containsKey('questionText')
+              ? json_['questionText'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (options != null) 'options': options!,
+        if (questionText != null) 'questionText': questionText!,
+      };
+}
+
+class LiveChatPollDetailsPollMetadataPollOption {
+  core.String? optionText;
+  core.String? tally;
+
+  LiveChatPollDetailsPollMetadataPollOption({
+    this.optionText,
+    this.tally,
+  });
+
+  LiveChatPollDetailsPollMetadataPollOption.fromJson(core.Map json_)
+      : this(
+          optionText: json_.containsKey('optionText')
+              ? json_['optionText'] as core.String
+              : null,
+          tally:
+              json_.containsKey('tally') ? json_['tally'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (optionText != null) 'optionText': optionText!,
+        if (tally != null) 'tally': tally!,
       };
 }
 
@@ -13933,6 +14389,152 @@ class PlaylistContentDetails {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (itemCount != null) 'itemCount': itemCount!,
+      };
+}
+
+class PlaylistImage {
+  /// Identifies this resource (playlist id and image type).
+  core.String? id;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "youtube#playlistImages".
+  core.String? kind;
+  PlaylistImageSnippet? snippet;
+
+  PlaylistImage({
+    this.id,
+    this.kind,
+    this.snippet,
+  });
+
+  PlaylistImage.fromJson(core.Map json_)
+      : this(
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          snippet: json_.containsKey('snippet')
+              ? PlaylistImageSnippet.fromJson(
+                  json_['snippet'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (snippet != null) 'snippet': snippet!,
+      };
+}
+
+class PlaylistImageListResponse {
+  core.List<PlaylistImage>? items;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "youtube#playlistImageListResponse".
+  core.String? kind;
+
+  /// The token that can be used as the value of the pageToken parameter to
+  /// retrieve the next page in the result set.
+  core.String? nextPageToken;
+
+  /// General pagination information.
+  PageInfo? pageInfo;
+
+  /// The token that can be used as the value of the pageToken parameter to
+  /// retrieve the previous page in the result set.
+  core.String? prevPageToken;
+
+  PlaylistImageListResponse({
+    this.items,
+    this.kind,
+    this.nextPageToken,
+    this.pageInfo,
+    this.prevPageToken,
+  });
+
+  PlaylistImageListResponse.fromJson(core.Map json_)
+      : this(
+          items: json_.containsKey('items')
+              ? (json_['items'] as core.List)
+                  .map((value) => PlaylistImage.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          pageInfo: json_.containsKey('pageInfo')
+              ? PageInfo.fromJson(
+                  json_['pageInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          prevPageToken: json_.containsKey('prevPageToken')
+              ? json_['prevPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (items != null) 'items': items!,
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (pageInfo != null) 'pageInfo': pageInfo!,
+        if (prevPageToken != null) 'prevPageToken': prevPageToken!,
+      };
+}
+
+/// A *playlistImage* resource identifies another resource, such as a image,
+/// that is associated with a playlist.
+///
+/// In addition, the playlistImage resource contains details about the included
+/// resource that pertain specifically to how that resource is used in that
+/// playlist. YouTube uses playlists to identify special collections of videos
+/// for a channel, such as: - uploaded videos - favorite videos - positively
+/// rated (liked) videos - watch history To be more specific, these lists are
+/// associated with a channel, which is a collection of a person, group, or
+/// company's videos, playlists, and other YouTube information. You can retrieve
+/// the playlist IDs for each of these lists from the channel resource for a
+/// given channel. You can then use the playlistImages.list method to retrieve
+/// image data for any of those playlists. You can also add or remove images
+/// from those lists by calling the playlistImages.insert and
+/// playlistImages.delete methods.
+class PlaylistImageSnippet {
+  /// The image height.
+  core.int? height;
+
+  /// The Playlist ID of the playlist this image is associated with.
+  core.String? playlistId;
+
+  /// The image type.
+  /// Possible string values are:
+  /// - "hero" : The main image that will be used for this playlist.
+  core.String? type;
+
+  /// The image width.
+  core.int? width;
+
+  PlaylistImageSnippet({
+    this.height,
+    this.playlistId,
+    this.type,
+    this.width,
+  });
+
+  PlaylistImageSnippet.fromJson(core.Map json_)
+      : this(
+          height:
+              json_.containsKey('height') ? json_['height'] as core.int : null,
+          playlistId: json_.containsKey('playlistId')
+              ? json_['playlistId'] as core.String
+              : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          width: json_.containsKey('width') ? json_['width'] as core.int : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (height != null) 'height': height!,
+        if (playlistId != null) 'playlistId': playlistId!,
+        if (type != null) 'type': type!,
+        if (width != null) 'width': width!,
       };
 }
 

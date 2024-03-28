@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Google Identity Toolkit API - v3
@@ -21,7 +20,7 @@
 /// Create an instance of [IdentityToolkitApi] to access these resources:
 ///
 /// - [RelyingpartyResource]
-library identitytoolkit_v3;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

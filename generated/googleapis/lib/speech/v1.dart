@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Cloud Speech-to-Text API - v1
@@ -26,7 +25,7 @@
 ///     - [ProjectsLocationsCustomClassesResource]
 ///     - [ProjectsLocationsPhraseSetsResource]
 /// - [SpeechResource]
-library speech_v1;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -762,24 +761,7 @@ class ABNFGrammar {
 }
 
 /// An item of the class.
-class ClassItem {
-  /// The class item's value.
-  core.String? value;
-
-  ClassItem({
-    this.value,
-  });
-
-  ClassItem.fromJson(core.Map json_)
-      : this(
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (value != null) 'value': value!,
-      };
-}
+typedef ClassItem = $ClassItem;
 
 /// Message sent by the client for the `CreateCustomClass` method.
 class CreateCustomClassRequest {
@@ -865,11 +847,49 @@ class CreatePhraseSetRequest {
 /// CustomClass items can be substituted into placeholders that you set in
 /// PhraseSet phrases.
 class CustomClass {
+  /// Allows users to store small amounts of arbitrary data.
+  ///
+  /// Both the key and the value must be 63 characters or less each. At most 100
+  /// annotations. This field is not used.
+  ///
+  /// Output only.
+  core.Map<core.String, core.String>? annotations;
+
   /// If this custom class is a resource, the custom_class_id is the resource id
   /// of the CustomClass.
   ///
   /// Case sensitive.
   core.String? customClassId;
+
+  /// The time at which this resource was requested for deletion.
+  ///
+  /// This field is not used.
+  ///
+  /// Output only.
+  core.String? deleteTime;
+
+  /// User-settable, human-readable name for the CustomClass.
+  ///
+  /// Must be 63 characters or less. This field is not used.
+  ///
+  /// Output only.
+  core.String? displayName;
+
+  /// This checksum is computed by the server based on the value of other
+  /// fields.
+  ///
+  /// This may be sent on update, undelete, and delete requests to ensure the
+  /// client has an up-to-date value before proceeding. This field is not used.
+  ///
+  /// Output only.
+  core.String? etag;
+
+  /// The time at which this resource will be purged.
+  ///
+  /// This field is not used.
+  ///
+  /// Output only.
+  core.String? expireTime;
 
   /// A collection of class items.
   core.List<ClassItem>? items;
@@ -897,18 +917,71 @@ class CustomClass {
   /// The resource name of the custom class.
   core.String? name;
 
+  /// Whether or not this CustomClass is in the process of being updated.
+  ///
+  /// This field is not used.
+  ///
+  /// Output only.
+  core.bool? reconciling;
+
+  /// The CustomClass lifecycle state.
+  ///
+  /// This field is not used.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Unspecified state. This is only used/useful for
+  /// distinguishing unset values.
+  /// - "ACTIVE" : The normal and active state.
+  /// - "DELETED" : This CustomClass has been deleted.
+  core.String? state;
+
+  /// System-assigned unique identifier for the CustomClass.
+  ///
+  /// This field is not used.
+  ///
+  /// Output only.
+  core.String? uid;
+
   CustomClass({
+    this.annotations,
     this.customClassId,
+    this.deleteTime,
+    this.displayName,
+    this.etag,
+    this.expireTime,
     this.items,
     this.kmsKeyName,
     this.kmsKeyVersionName,
     this.name,
+    this.reconciling,
+    this.state,
+    this.uid,
   });
 
   CustomClass.fromJson(core.Map json_)
       : this(
+          annotations: json_.containsKey('annotations')
+              ? (json_['annotations'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
           customClassId: json_.containsKey('customClassId')
               ? json_['customClassId'] as core.String
+              : null,
+          deleteTime: json_.containsKey('deleteTime')
+              ? json_['deleteTime'] as core.String
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          expireTime: json_.containsKey('expireTime')
+              ? json_['expireTime'] as core.String
               : null,
           items: json_.containsKey('items')
               ? (json_['items'] as core.List)
@@ -923,14 +996,28 @@ class CustomClass {
               ? json_['kmsKeyVersionName'] as core.String
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          reconciling: json_.containsKey('reconciling')
+              ? json_['reconciling'] as core.bool
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (annotations != null) 'annotations': annotations!,
         if (customClassId != null) 'customClassId': customClassId!,
+        if (deleteTime != null) 'deleteTime': deleteTime!,
+        if (displayName != null) 'displayName': displayName!,
+        if (etag != null) 'etag': etag!,
+        if (expireTime != null) 'expireTime': expireTime!,
         if (items != null) 'items': items!,
         if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
         if (kmsKeyVersionName != null) 'kmsKeyVersionName': kmsKeyVersionName!,
         if (name != null) 'name': name!,
+        if (reconciling != null) 'reconciling': reconciling!,
+        if (state != null) 'state': state!,
+        if (uid != null) 'uid': uid!,
       };
 }
 
@@ -941,6 +1028,9 @@ class CustomClass {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
+
+/// A single replacement configuration.
+typedef Entry = $Entry;
 
 /// Message returned to the client by the `ListCustomClasses` method.
 class ListCustomClassesResponse {
@@ -1120,7 +1210,7 @@ class Operation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard
@@ -1230,6 +1320,14 @@ class Phrase {
 /// Provides "hints" to the speech recognizer to favor specific words and
 /// phrases in the results.
 class PhraseSet {
+  /// Allows users to store small amounts of arbitrary data.
+  ///
+  /// Both the key and the value must be 63 characters or less each. At most 100
+  /// annotations. This field is not used.
+  ///
+  /// Output only.
+  core.Map<core.String, core.String>? annotations;
+
   /// Hint Boost.
   ///
   /// Positive value will increase the probability that a specific phrase will
@@ -1242,6 +1340,36 @@ class PhraseSet {
   /// search approach to finding the optimal value for your use case as well as
   /// adding phrases both with and without boost to your requests.
   core.double? boost;
+
+  /// The time at which this resource was requested for deletion.
+  ///
+  /// This field is not used.
+  ///
+  /// Output only.
+  core.String? deleteTime;
+
+  /// User-settable, human-readable name for the PhraseSet.
+  ///
+  /// Must be 63 characters or less. This field is not used.
+  ///
+  /// Output only.
+  core.String? displayName;
+
+  /// This checksum is computed by the server based on the value of other
+  /// fields.
+  ///
+  /// This may be sent on update, undelete, and delete requests to ensure the
+  /// client has an up-to-date value before proceeding. This field is not used.
+  ///
+  /// Output only.
+  core.String? etag;
+
+  /// The time at which this resource will be purged.
+  ///
+  /// This field is not used.
+  ///
+  /// Output only.
+  core.String? expireTime;
 
   /// The
   /// [KMS key name](https://cloud.google.com/kms/docs/resource-hierarchy#keys)
@@ -1269,18 +1397,71 @@ class PhraseSet {
   /// A list of word and phrases.
   core.List<Phrase>? phrases;
 
+  /// Whether or not this PhraseSet is in the process of being updated.
+  ///
+  /// This field is not used.
+  ///
+  /// Output only.
+  core.bool? reconciling;
+
+  /// The CustomClass lifecycle state.
+  ///
+  /// This field is not used.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Unspecified state. This is only used/useful for
+  /// distinguishing unset values.
+  /// - "ACTIVE" : The normal and active state.
+  /// - "DELETED" : This CustomClass has been deleted.
+  core.String? state;
+
+  /// System-assigned unique identifier for the PhraseSet.
+  ///
+  /// This field is not used.
+  ///
+  /// Output only.
+  core.String? uid;
+
   PhraseSet({
+    this.annotations,
     this.boost,
+    this.deleteTime,
+    this.displayName,
+    this.etag,
+    this.expireTime,
     this.kmsKeyName,
     this.kmsKeyVersionName,
     this.name,
     this.phrases,
+    this.reconciling,
+    this.state,
+    this.uid,
   });
 
   PhraseSet.fromJson(core.Map json_)
       : this(
+          annotations: json_.containsKey('annotations')
+              ? (json_['annotations'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
           boost: json_.containsKey('boost')
               ? (json_['boost'] as core.num).toDouble()
+              : null,
+          deleteTime: json_.containsKey('deleteTime')
+              ? json_['deleteTime'] as core.String
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          expireTime: json_.containsKey('expireTime')
+              ? json_['expireTime'] as core.String
               : null,
           kmsKeyName: json_.containsKey('kmsKeyName')
               ? json_['kmsKeyName'] as core.String
@@ -1295,14 +1476,28 @@ class PhraseSet {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          reconciling: json_.containsKey('reconciling')
+              ? json_['reconciling'] as core.bool
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (annotations != null) 'annotations': annotations!,
         if (boost != null) 'boost': boost!,
+        if (deleteTime != null) 'deleteTime': deleteTime!,
+        if (displayName != null) 'displayName': displayName!,
+        if (etag != null) 'etag': etag!,
+        if (expireTime != null) 'expireTime': expireTime!,
         if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
         if (kmsKeyVersionName != null) 'kmsKeyVersionName': kmsKeyVersionName!,
         if (name != null) 'name': name!,
         if (phrases != null) 'phrases': phrases!,
+        if (reconciling != null) 'reconciling': reconciling!,
+        if (state != null) 'state': state!,
+        if (uid != null) 'uid': uid!,
       };
 }
 
@@ -1484,9 +1679,13 @@ class RecognitionConfig {
   /// (octets) as specified in RFC 5574. In other words, each RTP header is
   /// replaced with a single byte containing the block length. Only Speex
   /// wideband is supported. `sample_rate_hertz` must be 16000.
+  /// - "MP3" : MP3 audio. MP3 encoding is a Beta feature and only available in
+  /// v1p1beta1. Support all standard MP3 bitrates (which range from 32-320
+  /// kbps). When using this encoding, `sample_rate_hertz` has to match the
+  /// sample rate of the file being used.
   /// - "WEBM_OPUS" : Opus encoded audio frames in WebM container
-  /// ([OggOpus](https://wiki.xiph.org/OggOpus)). `sample_rate_hertz` must be
-  /// one of 8000, 12000, 16000, 24000, or 48000.
+  /// ([WebM](https://www.webmproject.org/docs/container/)). `sample_rate_hertz`
+  /// must be one of 8000, 12000, 16000, 24000, or 48000.
   core.String? encoding;
 
   /// The language of the supplied audio as a
@@ -1555,6 +1754,15 @@ class RecognitionConfig {
   /// [speech adaptation](https://cloud.google.com/speech-to-text/docs/adaptation).
   core.List<SpeechContext>? speechContexts;
 
+  /// Use transcription normalization to automatically replace parts of the
+  /// transcript with phrases of your choosing.
+  ///
+  /// For StreamingRecognize, this normalization only applies to stable partial
+  /// transcripts (stability \> 0.8) and final transcripts.
+  ///
+  /// Optional.
+  TranscriptNormalization? transcriptNormalization;
+
   /// Set to true to use an enhanced model for speech recognition.
   ///
   /// If `use_enhanced` is set to true and the `model` field is not set, then an
@@ -1583,6 +1791,7 @@ class RecognitionConfig {
     this.profanityFilter,
     this.sampleRateHertz,
     this.speechContexts,
+    this.transcriptNormalization,
     this.useEnhanced,
   });
 
@@ -1652,6 +1861,11 @@ class RecognitionConfig {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          transcriptNormalization: json_.containsKey('transcriptNormalization')
+              ? TranscriptNormalization.fromJson(
+                  json_['transcriptNormalization']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           useEnhanced: json_.containsKey('useEnhanced')
               ? json_['useEnhanced'] as core.bool
               : null,
@@ -1684,6 +1898,8 @@ class RecognitionConfig {
         if (profanityFilter != null) 'profanityFilter': profanityFilter!,
         if (sampleRateHertz != null) 'sampleRateHertz': sampleRateHertz!,
         if (speechContexts != null) 'speechContexts': speechContexts!,
+        if (transcriptNormalization != null)
+          'transcriptNormalization': transcriptNormalization!,
         if (useEnhanced != null) 'useEnhanced': useEnhanced!,
       };
 }
@@ -1879,11 +2095,16 @@ class RecognizeResponse {
   /// When available, billed audio seconds for the corresponding request.
   core.String? totalBilledTime;
 
+  /// Whether request used legacy asr models (was not automatically migrated to
+  /// use conformer models).
+  core.bool? usingLegacyModels;
+
   RecognizeResponse({
     this.requestId,
     this.results,
     this.speechAdaptationInfo,
     this.totalBilledTime,
+    this.usingLegacyModels,
   });
 
   RecognizeResponse.fromJson(core.Map json_)
@@ -1904,6 +2125,9 @@ class RecognizeResponse {
           totalBilledTime: json_.containsKey('totalBilledTime')
               ? json_['totalBilledTime'] as core.String
               : null,
+          usingLegacyModels: json_.containsKey('usingLegacyModels')
+              ? json_['usingLegacyModels'] as core.bool
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1912,6 +2136,7 @@ class RecognizeResponse {
         if (speechAdaptationInfo != null)
           'speechAdaptationInfo': speechAdaptationInfo!,
         if (totalBilledTime != null) 'totalBilledTime': totalBilledTime!,
+        if (usingLegacyModels != null) 'usingLegacyModels': usingLegacyModels!,
       };
 }
 
@@ -2251,6 +2476,40 @@ class SpeechRecognitionResult {
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef Status = $Status;
+
+/// Transcription normalization configuration.
+///
+/// Use transcription normalization to automatically replace parts of the
+/// transcript with phrases of your choosing. For StreamingRecognize, this
+/// normalization only applies to stable partial transcripts (stability \> 0.8)
+/// and final transcripts.
+class TranscriptNormalization {
+  /// A list of replacement entries.
+  ///
+  /// We will perform replacement with one entry at a time. For example, the
+  /// second entry in \["cat" =\> "dog", "mountain cat" =\> "mountain dog"\]
+  /// will never be applied because we will always process the first entry
+  /// before it. At most 100 entries.
+  core.List<Entry>? entries;
+
+  TranscriptNormalization({
+    this.entries,
+  });
+
+  TranscriptNormalization.fromJson(core.Map json_)
+      : this(
+          entries: json_.containsKey('entries')
+              ? (json_['entries'] as core.List)
+                  .map((value) => Entry.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (entries != null) 'entries': entries!,
+      };
+}
 
 /// Specifies an optional destination for the recognition results.
 class TranscriptOutputConfig {

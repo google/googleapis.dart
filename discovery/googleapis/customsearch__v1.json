@@ -16,7 +16,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230806",
+    "revision": "20240307",
     "rootUrl": "https://customsearch.googleapis.com/",
     "servicePath": "",
     "title": "Custom Search API",
@@ -308,7 +308,8 @@
                             "type": "string"
                         },
                         "relatedSite": {
-                            "description": "Specifies that all search results should be pages that are related to the specified URL.",
+                            "deprecated": true,
+                            "description": "Deprecated.",
                             "location": "query",
                             "type": "string"
                         },
@@ -603,7 +604,8 @@
                                     "type": "string"
                                 },
                                 "relatedSite": {
-                                    "description": "Specifies that all search results should be pages that are related to the specified URL.",
+                                    "deprecated": true,
+                                    "description": "Deprecated.",
                                     "location": "query",
                                     "type": "string"
                                 },

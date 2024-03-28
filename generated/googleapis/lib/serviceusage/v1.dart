@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Service Usage API - v1
@@ -23,7 +22,7 @@
 ///
 /// - [OperationsResource]
 /// - [ServicesResource]
-library serviceusage_v1;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -1573,7 +1572,7 @@ class MonitoredResourceDescriptor {
   ///
   /// For example, the type `"cloudsql_database"` represents databases in Google
   /// Cloud SQL. For a list of types, see
-  /// [Monitoring resource types](https://cloud.google.com/monitoring/api/resources)
+  /// [Monitored resource types](https://cloud.google.com/monitoring/api/resources)
   /// and
   /// [Logging resource types](https://cloud.google.com/logging/docs/api/v2/resource-list).
   ///

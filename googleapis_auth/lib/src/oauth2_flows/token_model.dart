@@ -55,21 +55,35 @@ Future<AccessCredentials> requestAccessCredentials({
     }
 
     final token = AccessToken(
-      response.token_type,
-      response.access_token,
-      expiryDate(response.expires_in),
+      response.token_type!,
+      response.access_token!,
+      expiryDate(response.expires_in!),
     );
 
-    final creds = AccessCredentials(token, null, response.scope.split(' '));
+    final creds = AccessCredentials(token, null, response.scope);
 
     completer.complete(creds);
+  }
+
+  void errorCallback(gis.GoogleIdentityServicesError? error) {
+    if (error != null) {
+      completer.completeError(
+        AuthenticationException(
+          error.type.toString(),
+          errorDescription: error.message,
+          errorUri:
+              'https://developers.google.com/identity/oauth2/web/reference/js-reference#TokenClientConfig',
+        ),
+      );
+    }
   }
 
   final config = gis.TokenClientConfig(
     callback: allowInterop(callback),
     client_id: clientId,
-    scope: scopes.toSet().join(' '),
+    scope: scopes.toList(),
     prompt: prompt,
+    error_callback: allowInterop(errorCallback),
   );
 
   final client = gis.oauth2.initTokenClient(config);
@@ -119,19 +133,33 @@ Future<CodeResponse> requestAuthorizationCode({
     }
 
     completer.complete(CodeResponse._(
-      code: response.code,
-      scopes: response.scope.split(' '),
+      code: response.code!,
+      scopes: response.scope,
       state: response.state,
     ));
+  }
+
+  void errorCallback(gis.GoogleIdentityServicesError? error) {
+    if (error != null) {
+      completer.completeError(
+        AuthenticationException(
+          error.type.toString(),
+          errorDescription: error.message,
+          errorUri:
+              'https://developers.google.com/identity/oauth2/web/reference/js-reference#TokenClientConfig',
+        ),
+      );
+    }
   }
 
   final config = gis.CodeClientConfig(
     callback: allowInterop(callback),
     client_id: clientId,
-    scope: scopes.toSet().join(' '),
+    scope: scopes.toList(),
     state: state,
-    hint: hint,
-    hosted_domain: hostedDomain,
+    login_hint: hint,
+    hd: hostedDomain,
+    error_callback: allowInterop(errorCallback),
   );
 
   final client = gis.oauth2.initCodeClient(config);

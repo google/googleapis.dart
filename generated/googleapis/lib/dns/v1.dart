@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Cloud DNS API - v1
@@ -26,7 +25,7 @@
 /// - [ResourceRecordSetsResource]
 /// - [ResponsePoliciesResource]
 /// - [ResponsePolicyRulesResource]
-library dns_v1;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -2761,14 +2760,31 @@ class GoogleIamV1Binding {
   /// `group:{emailid}`: An email address that represents a Google group. For
   /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
   /// (primary) that represents all the users of that domain. For example,
-  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a user that has
-  /// been recently deleted. For example,
-  /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
-  /// this value reverts to `user:{emailid}` and the recovered user retains the
-  /// role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a service account
-  /// that has been recently deleted. For example,
+  /// `google.com` or `example.com`. *
+  /// `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workforce identity pool. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`:
+  /// All workforce identities in a group. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All workforce identities with a specific attribute value. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}
+  /// / * `: All identities in a workforce identity pool. *
+  /// `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workload identity pool. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`:
+  /// A workload identity pool group. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All identities in a workload identity pool with a certain attribute. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}
+  /// / * `: All identities in a workload identity pool. *
+  /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
+  /// identifier) representing a user that has been recently deleted. For
+  /// example, `alice@example.com?uid=123456789012345678901`. If the user is
+  /// recovered, this value reverts to `user:{emailid}` and the recovered user
+  /// retains the role in the binding. *
+  /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus
+  /// unique identifier) representing a service account that has been recently
+  /// deleted. For example,
   /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If
   /// the service account is undeleted, this value reverts to
   /// `serviceAccount:{emailid}` and the undeleted service account retains the
@@ -2777,12 +2793,19 @@ class GoogleIamV1Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding.
+  /// the role in the binding. *
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// Deleted single identity in a workforce identity pool. For example,
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
   ///
-  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an
+  /// overview of the IAM roles and permissions, see the
+  /// [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For
+  /// a list of the available pre-defined roles, see
+  /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
   GoogleIamV1Binding({
@@ -2852,23 +2875,23 @@ typedef GoogleIamV1GetPolicyOptions = $GetPolicyOptions;
 /// request, the resource, or both. To learn which resources support conditions
 /// in their IAM policies, see the
 /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": \[ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": \[
+/// **JSON example:** ``` { "bindings": [ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": [
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": \[
-/// "user:eve@example.com" \], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": [
+/// "user:eve@example.com" ], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time \< timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
-/// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
-/// user:mike@example.com - group:admins@example.com - domain:google.com -
-/// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
-/// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
-/// role: roles/resourcemanager.organizationViewer condition: title: expirable
-/// access description: Does not grant access after Sep 2020 expression:
-/// request.time \< timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
-/// version: 3 For a description of IAM and its features, see the
-/// [IAM documentation](https://cloud.google.com/iam/docs/).
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: -
+/// members: - user:mike@example.com - group:admins@example.com -
+/// domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+/// role: roles/resourcemanager.organizationAdmin - members: -
+/// user:eve@example.com role: roles/resourcemanager.organizationViewer
+/// condition: title: expirable access description: Does not grant access after
+/// Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+/// etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features,
+/// see the [IAM documentation](https://cloud.google.com/iam/docs/).
 class GoogleIamV1Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<GoogleIamV1AuditConfig>? auditConfigs;
@@ -4257,6 +4280,9 @@ class Quota {
   /// network.
   core.int? managedZonesPerNetwork;
 
+  /// Maximum number of nameservers per delegation, meant to prevent abuse
+  core.int? nameserversPerDelegation;
+
   /// Maximum allowed number of networks to which a privately scoped zone can be
   /// attached.
   core.int? networksPerManagedZone;
@@ -4317,6 +4343,7 @@ class Quota {
     this.managedZones,
     this.managedZonesPerGkeCluster,
     this.managedZonesPerNetwork,
+    this.nameserversPerDelegation,
     this.networksPerManagedZone,
     this.networksPerPolicy,
     this.networksPerResponsePolicy,
@@ -4364,6 +4391,10 @@ class Quota {
           managedZonesPerNetwork: json_.containsKey('managedZonesPerNetwork')
               ? json_['managedZonesPerNetwork'] as core.int
               : null,
+          nameserversPerDelegation:
+              json_.containsKey('nameserversPerDelegation')
+                  ? json_['nameserversPerDelegation'] as core.int
+                  : null,
           networksPerManagedZone: json_.containsKey('networksPerManagedZone')
               ? json_['networksPerManagedZone'] as core.int
               : null,
@@ -4437,6 +4468,8 @@ class Quota {
           'managedZonesPerGkeCluster': managedZonesPerGkeCluster!,
         if (managedZonesPerNetwork != null)
           'managedZonesPerNetwork': managedZonesPerNetwork!,
+        if (nameserversPerDelegation != null)
+          'nameserversPerDelegation': nameserversPerDelegation!,
         if (networksPerManagedZone != null)
           'networksPerManagedZone': networksPerManagedZone!,
         if (networksPerPolicy != null) 'networksPerPolicy': networksPerPolicy!,
@@ -4473,12 +4506,19 @@ class Quota {
 /// geolocation or by weighted random selection.
 class RRSetRoutingPolicy {
   RRSetRoutingPolicyGeoPolicy? geo;
+
+  /// The selfLink attribute of the HealthCheck resource to use for this
+  /// RRSetRoutingPolicy.
+  ///
+  /// https://cloud.google.com/compute/docs/reference/rest/v1/healthChecks
+  core.String? healthCheck;
   core.String? kind;
   RRSetRoutingPolicyPrimaryBackupPolicy? primaryBackup;
   RRSetRoutingPolicyWrrPolicy? wrr;
 
   RRSetRoutingPolicy({
     this.geo,
+    this.healthCheck,
     this.kind,
     this.primaryBackup,
     this.wrr,
@@ -4489,6 +4529,9 @@ class RRSetRoutingPolicy {
           geo: json_.containsKey('geo')
               ? RRSetRoutingPolicyGeoPolicy.fromJson(
                   json_['geo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          healthCheck: json_.containsKey('healthCheck')
+              ? json_['healthCheck'] as core.String
               : null,
           kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
           primaryBackup: json_.containsKey('primaryBackup')
@@ -4503,6 +4546,7 @@ class RRSetRoutingPolicy {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (geo != null) 'geo': geo!,
+        if (healthCheck != null) 'healthCheck': healthCheck!,
         if (kind != null) 'kind': kind!,
         if (primaryBackup != null) 'primaryBackup': primaryBackup!,
         if (wrr != null) 'wrr': wrr!,
@@ -4513,13 +4557,13 @@ class RRSetRoutingPolicy {
 /// querying user.
 class RRSetRoutingPolicyGeoPolicy {
   /// Without fencing, if health check fails for all configured items in the
-  /// current geo bucket, we'll failover to the next nearest geo bucket.
+  /// current geo bucket, we failover to the next nearest geo bucket.
   ///
-  /// With fencing, if health check is enabled, as long as some targets in the
-  /// current geo bucket are healthy, we'll return only the healthy targets.
-  /// However, if they're all unhealthy, we won't failover to the next nearest
-  /// bucket, we'll simply return all the items in the current bucket even
-  /// though they're unhealthy.
+  /// With fencing, if health checking is enabled, as long as some targets in
+  /// the current geo bucket are healthy, we return only the healthy targets.
+  /// However, if all targets are unhealthy, we don't failover to the next
+  /// nearest bucket; instead, we return all the items in the current bucket
+  /// even when all targets are unhealthy.
   core.bool? enableFencing;
 
   /// The primary geo routing configuration.
@@ -4575,8 +4619,8 @@ class RRSetRoutingPolicyGeoPolicyGeoPolicyItem {
 
   /// DNSSEC generated signatures for all the rrdata within this item.
   ///
-  /// Note that if health checked targets are provided for DNSSEC enabled zones,
-  /// there's a restriction of 1 ip per item. .
+  /// If health checked targets are provided for DNSSEC enabled zones, there's a
+  /// restriction of 1 IP address per item.
   core.List<core.String>? signatureRrdatas;
 
   RRSetRoutingPolicyGeoPolicyGeoPolicyItem({
@@ -4623,16 +4667,30 @@ class RRSetRoutingPolicyGeoPolicyGeoPolicyItem {
 /// HealthCheckTargets describes endpoints to health-check when responding to
 /// Routing Policy queries.
 ///
-/// Only the healthy endpoints will be included in the response.
+/// Only the healthy endpoints will be included in the response. Only one of
+/// internal_load_balancer and external_endpoints should be set.
 class RRSetRoutingPolicyHealthCheckTargets {
+  /// The Internet IP addresses to be health checked.
+  ///
+  /// The format matches the format of ResourceRecordSet.rrdata as defined in
+  /// RFC 1035 (section 5) and RFC 1034 (section 3.6.1)
+  core.List<core.String>? externalEndpoints;
+
+  /// Configuration for internal load balancers to be health checked.
   core.List<RRSetRoutingPolicyLoadBalancerTarget>? internalLoadBalancers;
 
   RRSetRoutingPolicyHealthCheckTargets({
+    this.externalEndpoints,
     this.internalLoadBalancers,
   });
 
   RRSetRoutingPolicyHealthCheckTargets.fromJson(core.Map json_)
       : this(
+          externalEndpoints: json_.containsKey('externalEndpoints')
+              ? (json_['externalEndpoints'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           internalLoadBalancers: json_.containsKey('internalLoadBalancers')
               ? (json_['internalLoadBalancers'] as core.List)
                   .map((value) => RRSetRoutingPolicyLoadBalancerTarget.fromJson(
@@ -4642,16 +4700,18 @@ class RRSetRoutingPolicyHealthCheckTargets {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (externalEndpoints != null) 'externalEndpoints': externalEndpoints!,
         if (internalLoadBalancers != null)
           'internalLoadBalancers': internalLoadBalancers!,
       };
 }
 
+/// The configuration for an individual load balancer to health check.
 class RRSetRoutingPolicyLoadBalancerTarget {
-  /// The frontend IP address of the Load Balancer to health check.
+  /// The frontend IP address of the load balancer to health check.
   core.String? ipAddress;
 
-  ///
+  /// The protocol of the load balancer to health check.
   /// Possible string values are:
   /// - "undefined"
   /// - "tcp"
@@ -4659,30 +4719,36 @@ class RRSetRoutingPolicyLoadBalancerTarget {
   core.String? ipProtocol;
   core.String? kind;
 
-  /// The type of Load Balancer specified by this target.
+  /// The type of load balancer specified by this target.
   ///
-  /// Must match the configuration of the Load Balancer located at the
-  /// LoadBalancerTarget's IP address/port and region.
+  /// This value must match the configuration of the load balancer located at
+  /// the LoadBalancerTarget's IP address, port, and region. Use the following:
+  /// - *regionalL4ilb*: for a regional internal passthrough Network Load
+  /// Balancer. - *regionalL7ilb*: for a regional internal Application Load
+  /// Balancer. - *globalL7ilb*: for a global internal Application Load
+  /// Balancer.
   /// Possible string values are:
   /// - "none"
-  /// - "globalL7ilb" : Cross-region internal Application Load Balancer
-  /// - "regionalL4ilb" : Regional internal passthrough Network Load Balancer
-  /// - "regionalL7ilb" : Regional internal Application Load Balancer
+  /// - "globalL7ilb"
+  /// - "regionalL4ilb"
+  /// - "regionalL7ilb"
   core.String? loadBalancerType;
 
-  /// The fully qualified url of the network on which the ILB is present.
+  /// The fully qualified URL of the network that the load balancer is attached
+  /// to.
   ///
   /// This should be formatted like
   /// https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
+  /// .
   core.String? networkUrl;
 
-  /// The configured port of the Load Balancer.
+  /// The configured port of the load balancer.
   core.String? port;
 
-  /// The project ID in which the ILB exists.
+  /// The project ID in which the load balancer is located.
   core.String? project;
 
-  /// The region in which the ILB exists.
+  /// The region in which the load balancer is located.
   core.String? region;
 
   RRSetRoutingPolicyLoadBalancerTarget({
@@ -4745,6 +4811,11 @@ class RRSetRoutingPolicyPrimaryBackupPolicy {
   /// routing policy.
   RRSetRoutingPolicyGeoPolicy? backupGeoTargets;
   core.String? kind;
+
+  /// Endpoints that are health checked before making the routing decision.
+  ///
+  /// Unhealthy endpoints are omitted from the results. If all endpoints are
+  /// unhealthy, we serve a response based on the backup_geo_targets.
   RRSetRoutingPolicyHealthCheckTargets? primaryTargets;
 
   /// When serving state is PRIMARY, this field provides the option of sending a
@@ -4814,13 +4885,12 @@ class RRSetRoutingPolicyWrrPolicy {
 
 /// A routing block which contains the routing information for one WRR item.
 class RRSetRoutingPolicyWrrPolicyWrrPolicyItem {
-  /// endpoints that need to be health checked before making the routing
-  /// decision.
+  /// Endpoints that are health checked before making the routing decision.
   ///
-  /// The unhealthy endpoints will be omitted from the result. If all endpoints
-  /// within a buckete are unhealthy, we'll choose a different bucket (sampled
-  /// w.r.t. its weight) for responding. Note that if DNSSEC is enabled for this
-  /// zone, only one of rrdata or health_checked_targets can be set.
+  /// The unhealthy endpoints are omitted from the result. If all endpoints
+  /// within a bucket are unhealthy, we choose a different bucket (sampled with
+  /// respect to its weight) for responding. If DNSSEC is enabled for this zone,
+  /// only one of rrdata or health_checked_targets can be set.
   RRSetRoutingPolicyHealthCheckTargets? healthCheckedTargets;
   core.String? kind;
   core.List<core.String>? rrdatas;
@@ -4828,15 +4898,15 @@ class RRSetRoutingPolicyWrrPolicyWrrPolicyItem {
   /// DNSSEC generated signatures for all the rrdata within this item.
   ///
   /// Note that if health checked targets are provided for DNSSEC enabled zones,
-  /// there's a restriction of 1 ip per item. .
+  /// there's a restriction of 1 IP address per item.
   core.List<core.String>? signatureRrdatas;
 
-  /// The weight corresponding to this subset of rrdata.
+  /// The weight corresponding to this WrrPolicyItem object.
   ///
-  /// When multiple WeightedRoundRobinPolicyItems are configured, the
-  /// probability of returning an rrset is proportional to its weight relative
-  /// to the sum of weights configured for all items. This weight should be
-  /// non-negative.
+  /// When multiple WrrPolicyItem objects are configured, the probability of
+  /// returning an WrrPolicyItem object's data is proportional to its weight
+  /// relative to the sum of weights configured for all items. This weight must
+  /// be non-negative.
   core.double? weight;
 
   RRSetRoutingPolicyWrrPolicyWrrPolicyItem({
@@ -4887,11 +4957,11 @@ class ResourceRecordSet {
   /// For example, www.example.com.
   core.String? name;
 
-  /// Configures dynamic query responses based on geo location of querying user
-  /// or a weighted round robin based routing policy.
+  /// Configures dynamic query responses based on either the geo location of the
+  /// querying user or a weighted round robin based routing policy.
   ///
-  /// A ResourceRecordSet should only have either rrdata (static) or
-  /// routing_policy (dynamic). An error is returned otherwise.
+  /// A valid ResourceRecordSet contains only rrdata (for static resolution) or
+  /// a routing_policy (for dynamic resolution).
   RRSetRoutingPolicy? routingPolicy;
 
   /// As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see
@@ -4964,12 +5034,11 @@ class ResourceRecordSetsListResponse {
   /// following your last page of results in pagination order.
   ///
   /// To fetch them, make another list request using this value as your
-  /// pagination token. This lets you retrieve complete contents of even larger
-  /// collections, one page at a time. However, if the contents of the
-  /// collection change between the first and last paginated list request, the
-  /// set of elements returned are an inconsistent view of the collection. You
-  /// cannot retrieve a consistent snapshot of a collection larger than the
-  /// maximum page size.
+  /// pagination token. This lets you retrieve the complete contents of even
+  /// larger collections, one page at a time. However, if the collection changes
+  /// between paginated list requests, the set of elements returned is an
+  /// inconsistent view of the collection. You cannot retrieve a consistent
+  /// snapshot of a collection larger than the maximum page size.
   core.String? nextPageToken;
 
   /// The resource record set resources.

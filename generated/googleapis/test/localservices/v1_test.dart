@@ -10,7 +10,6 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 // ignore_for_file: unreachable_from_main
 // ignore_for_file: unused_local_variable
@@ -210,6 +209,7 @@ api.GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport
     o.currencyCode = 'foo';
     o.disputeStatus = 'foo';
     o.geo = 'foo';
+    o.googleAdsLeadId = 'foo';
     o.leadCategory = 'foo';
     o.leadCreationTimestamp = 'foo';
     o.leadId = 'foo';
@@ -251,6 +251,10 @@ void checkGoogleAdsHomeservicesLocalservicesV1DetailedLeadReport(
     );
     unittest.expect(
       o.geo!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.googleAdsLeadId!,
       unittest.equals('foo'),
     );
     unittest.expect(

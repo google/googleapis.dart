@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Secret Manager API - v1
@@ -22,9 +21,11 @@
 ///
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsSecretsResource]
+///       - [ProjectsLocationsSecretsVersionsResource]
 ///   - [ProjectsSecretsResource]
 ///     - [ProjectsSecretsVersionsResource]
-library secretmanager_v1;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -71,6 +72,9 @@ class ProjectsResource {
 
 class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
+
+  ProjectsLocationsSecretsResource get secrets =>
+      ProjectsLocationsSecretsResource(_requester);
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
@@ -162,6 +166,741 @@ class ProjectsLocationsResource {
   }
 }
 
+class ProjectsLocationsSecretsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsSecretsVersionsResource get versions =>
+      ProjectsLocationsSecretsVersionsResource(_requester);
+
+  ProjectsLocationsSecretsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new SecretVersion containing secret data and attaches it to an
+  /// existing Secret.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the Secret to associate with the
+  /// SecretVersion in the format `projects / * /secrets / * ` or `projects / *
+  /// /locations / * /secrets / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/secrets/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SecretVersion].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SecretVersion> addVersion(
+    AddSecretVersionRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + ':addVersion';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return SecretVersion.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Creates a new Secret containing no SecretVersions.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the project to associate with
+  /// the Secret, in the format `projects / * ` or `projects / * /locations / *
+  /// `.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [secretId] - Required. This must be unique within the project. A secret ID
+  /// is a string with a maximum length of 255 characters and can contain
+  /// uppercase and lowercase letters, numerals, and the hyphen (`-`) and
+  /// underscore (`_`) characters.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Secret].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Secret> create(
+    Secret request,
+    core.String parent, {
+    core.String? secretId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (secretId != null) 'secretId': [secretId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/secrets';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Secret.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a Secret.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the Secret to delete in the format
+  /// `projects / * /secrets / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/secrets/\[^/\]+$`.
+  ///
+  /// [etag] - Optional. Etag of the Secret. The request succeeds if it matches
+  /// the etag of the currently stored secret object. If the etag is omitted,
+  /// the request succeeds.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? etag,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (etag != null) 'etag': [etag],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets metadata for a given Secret.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the Secret, in the format
+  /// `projects / * /secrets / * ` or `projects / * /locations / * /secrets / *
+  /// `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/secrets/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Secret].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Secret> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Secret.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the access control policy for a secret.
+  ///
+  /// Returns empty policy if the secret exists and does not have a policy set.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/secrets/\[^/\]+$`.
+  ///
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy. Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected. Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset. The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1. To learn which resources support
+  /// conditions in their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(
+    core.String resource, {
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (options_requestedPolicyVersion != null)
+        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists Secrets.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the project associated with the
+  /// Secrets, in the format `projects / * ` or `projects / * /locations / * `
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filter string, adhering to the rules in
+  /// \[List-operation
+  /// filtering\](https://cloud.google.com/secret-manager/docs/filtering). List
+  /// only secrets matching the filter. If filter is empty, all secrets are
+  /// listed.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to be returned in a
+  /// single page. If set to 0, the server decides the number of results to
+  /// return. If the number is greater than 25000, it is capped at 25000.
+  ///
+  /// [pageToken] - Optional. Pagination token, returned earlier via
+  /// ListSecretsResponse.next_page_token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListSecretsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListSecretsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/secrets';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListSecretsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates metadata of an existing Secret.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. The resource name of the Secret in the format
+  /// `projects / * /secrets / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/secrets/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. Specifies the fields to be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Secret].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Secret> patch(
+    Secret request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Secret.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Sets the access control policy on the specified secret.
+  ///
+  /// Replaces any existing policy. Permissions on SecretVersions are enforced
+  /// according to the policy set on the associated Secret.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/secrets/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(
+    SetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns permissions that a caller has for the specified secret.
+  ///
+  /// If the secret does not exist, this call returns an empty set of
+  /// permissions, not a NOT_FOUND error. Note: This operation is designed to be
+  /// used for building permission-aware UIs and command-line tools, not for
+  /// authorization checking. This operation may "fail open" without warning.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/secrets/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestIamPermissionsResponse> testIamPermissions(
+    TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return TestIamPermissionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsSecretsVersionsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsSecretsVersionsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Accesses a SecretVersion.
+  ///
+  /// This call returns the secret data. `projects / * /secrets / *
+  /// /versions/latest` is an alias to the most recently created SecretVersion.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the SecretVersion in the format
+  /// `projects / * /secrets / * /versions / * ` or `projects / * /locations / *
+  /// /secrets / * /versions / * `. `projects / * /secrets / * /versions/latest`
+  /// or `projects / * /locations / * /secrets / * /versions/latest` is an alias
+  /// to the most recently created SecretVersion.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/secrets/\[^/\]+/versions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AccessSecretVersionResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AccessSecretVersionResponse> access(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':access';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AccessSecretVersionResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Destroys a SecretVersion.
+  ///
+  /// Sets the state of the SecretVersion to DESTROYED and irrevocably destroys
+  /// the secret data.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the SecretVersion to destroy in
+  /// the format `projects / * /secrets / * /versions / * ` or `projects / *
+  /// /locations / * /secrets / * /versions / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/secrets/\[^/\]+/versions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SecretVersion].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SecretVersion> destroy(
+    DestroySecretVersionRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':destroy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return SecretVersion.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Disables a SecretVersion.
+  ///
+  /// Sets the state of the SecretVersion to DISABLED.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the SecretVersion to disable in
+  /// the format `projects / * /secrets / * /versions / * ` or `projects / *
+  /// /locations / * /secrets / * /versions / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/secrets/\[^/\]+/versions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SecretVersion].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SecretVersion> disable(
+    DisableSecretVersionRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':disable';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return SecretVersion.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Enables a SecretVersion.
+  ///
+  /// Sets the state of the SecretVersion to ENABLED.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the SecretVersion to enable in the
+  /// format `projects / * /secrets / * /versions / * ` or `projects / *
+  /// /locations / * /secrets / * /versions / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/secrets/\[^/\]+/versions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SecretVersion].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SecretVersion> enable(
+    EnableSecretVersionRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':enable';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return SecretVersion.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets metadata for a SecretVersion.
+  ///
+  /// `projects / * /secrets / * /versions/latest` is an alias to the most
+  /// recently created SecretVersion.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the SecretVersion in the format
+  /// `projects / * /secrets / * /versions / * ` or `projects / * /locations / *
+  /// /secrets / * /versions / * `. `projects / * /secrets / * /versions/latest`
+  /// or `projects / * /locations / * /secrets / * /versions/latest` is an alias
+  /// to the most recently created SecretVersion.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/secrets/\[^/\]+/versions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SecretVersion].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SecretVersion> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return SecretVersion.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists SecretVersions.
+  ///
+  /// This call does not return secret data.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the Secret associated with the
+  /// SecretVersions to list, in the format `projects / * /secrets / * ` or
+  /// `projects / * /locations / * /secrets / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/secrets/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filter string, adhering to the rules in
+  /// \[List-operation
+  /// filtering\](https://cloud.google.com/secret-manager/docs/filtering). List
+  /// only secret versions matching the filter. If filter is empty, all secret
+  /// versions are listed.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to be returned in a
+  /// single page. If set to 0, the server decides the number of results to
+  /// return. If the number is greater than 25000, it is capped at 25000.
+  ///
+  /// [pageToken] - Optional. Pagination token, returned earlier via
+  /// ListSecretVersionsResponse.next_page_token\]\[\].
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListSecretVersionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListSecretVersionsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/versions';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListSecretVersionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsSecretsResource {
   final commons.ApiRequester _requester;
 
@@ -178,7 +917,8 @@ class ProjectsSecretsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The resource name of the Secret to associate with the
-  /// SecretVersion in the format `projects / * /secrets / * `.
+  /// SecretVersion in the format `projects / * /secrets / * ` or `projects / *
+  /// /locations / * /secrets / * `.
   /// Value must have pattern `^projects/\[^/\]+/secrets/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -220,7 +960,8 @@ class ProjectsSecretsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The resource name of the project to associate with
-  /// the Secret, in the format `projects / * `.
+  /// the Secret, in the format `projects / * ` or `projects / * /locations / *
+  /// `.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [secretId] - Required. This must be unique within the project. A secret ID
@@ -308,7 +1049,8 @@ class ProjectsSecretsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of the Secret, in the format
-  /// `projects / * /secrets / * `.
+  /// `projects / * /secrets / * ` or `projects / * /locations / * /secrets / *
+  /// `.
   /// Value must have pattern `^projects/\[^/\]+/secrets/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -399,7 +1141,7 @@ class ProjectsSecretsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The resource name of the project associated with the
-  /// Secrets, in the format `projects / * `.
+  /// Secrets, in the format `projects / * ` or `projects / * /locations / * `
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - Optional. Filter string, adhering to the rules in
@@ -606,8 +1348,10 @@ class ProjectsSecretsVersionsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of the SecretVersion in the format
-  /// `projects / * /secrets / * /versions / * `. `projects / * /secrets / *
-  /// /versions/latest` is an alias to the most recently created SecretVersion.
+  /// `projects / * /secrets / * /versions / * ` or `projects / * /locations / *
+  /// /secrets / * /versions / * `. `projects / * /secrets / * /versions/latest`
+  /// or `projects / * /locations / * /secrets / * /versions/latest` is an alias
+  /// to the most recently created SecretVersion.
   /// Value must have pattern
   /// `^projects/\[^/\]+/secrets/\[^/\]+/versions/\[^/\]+$`.
   ///
@@ -650,7 +1394,8 @@ class ProjectsSecretsVersionsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of the SecretVersion to destroy in
-  /// the format `projects / * /secrets / * /versions / * `.
+  /// the format `projects / * /secrets / * /versions / * ` or `projects / *
+  /// /locations / * /secrets / * /versions / * `.
   /// Value must have pattern
   /// `^projects/\[^/\]+/secrets/\[^/\]+/versions/\[^/\]+$`.
   ///
@@ -695,7 +1440,8 @@ class ProjectsSecretsVersionsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of the SecretVersion to disable in
-  /// the format `projects / * /secrets / * /versions / * `.
+  /// the format `projects / * /secrets / * /versions / * ` or `projects / *
+  /// /locations / * /secrets / * /versions / * `.
   /// Value must have pattern
   /// `^projects/\[^/\]+/secrets/\[^/\]+/versions/\[^/\]+$`.
   ///
@@ -740,7 +1486,8 @@ class ProjectsSecretsVersionsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of the SecretVersion to enable in the
-  /// format `projects / * /secrets / * /versions / * `.
+  /// format `projects / * /secrets / * /versions / * ` or `projects / *
+  /// /locations / * /secrets / * /versions / * `.
   /// Value must have pattern
   /// `^projects/\[^/\]+/secrets/\[^/\]+/versions/\[^/\]+$`.
   ///
@@ -784,8 +1531,10 @@ class ProjectsSecretsVersionsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of the SecretVersion in the format
-  /// `projects / * /secrets / * /versions / * `. `projects / * /secrets / *
-  /// /versions/latest` is an alias to the most recently created SecretVersion.
+  /// `projects / * /secrets / * /versions / * ` or `projects / * /locations / *
+  /// /secrets / * /versions / * `. `projects / * /secrets / * /versions/latest`
+  /// or `projects / * /locations / * /secrets / * /versions/latest` is an alias
+  /// to the most recently created SecretVersion.
   /// Value must have pattern
   /// `^projects/\[^/\]+/secrets/\[^/\]+/versions/\[^/\]+$`.
   ///
@@ -825,7 +1574,8 @@ class ProjectsSecretsVersionsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The resource name of the Secret associated with the
-  /// SecretVersions to list, in the format `projects / * /secrets / * `.
+  /// SecretVersions to list, in the format `projects / * /secrets / * ` or
+  /// `projects / * /locations / * /secrets / * `.
   /// Value must have pattern `^projects/\[^/\]+/secrets/\[^/\]+$`.
   ///
   /// [filter] - Optional. Filter string, adhering to the rules in
@@ -880,7 +1630,8 @@ class ProjectsSecretsVersionsResource {
 /// Response message for SecretManagerService.AccessSecretVersion.
 class AccessSecretVersionResponse {
   /// The resource name of the SecretVersion in the format `projects / *
-  /// /secrets / * /versions / * `.
+  /// /secrets / * /versions / * ` or `projects / * /locations / * /secrets / *
+  /// /versions / * `.
   core.String? name;
 
   /// Secret payload
@@ -1085,14 +1836,31 @@ class Binding {
   /// `group:{emailid}`: An email address that represents a Google group. For
   /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
   /// (primary) that represents all the users of that domain. For example,
-  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a user that has
-  /// been recently deleted. For example,
-  /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
-  /// this value reverts to `user:{emailid}` and the recovered user retains the
-  /// role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a service account
-  /// that has been recently deleted. For example,
+  /// `google.com` or `example.com`. *
+  /// `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workforce identity pool. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`:
+  /// All workforce identities in a group. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All workforce identities with a specific attribute value. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}
+  /// / * `: All identities in a workforce identity pool. *
+  /// `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workload identity pool. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`:
+  /// A workload identity pool group. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All identities in a workload identity pool with a certain attribute. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}
+  /// / * `: All identities in a workload identity pool. *
+  /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
+  /// identifier) representing a user that has been recently deleted. For
+  /// example, `alice@example.com?uid=123456789012345678901`. If the user is
+  /// recovered, this value reverts to `user:{emailid}` and the recovered user
+  /// retains the role in the binding. *
+  /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus
+  /// unique identifier) representing a service account that has been recently
+  /// deleted. For example,
   /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If
   /// the service account is undeleted, this value reverts to
   /// `serviceAccount:{emailid}` and the undeleted service account retains the
@@ -1101,12 +1869,19 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding.
+  /// the role in the binding. *
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// Deleted single identity in a workforce identity pool. For example,
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
   ///
-  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an
+  /// overview of the IAM roles and permissions, see the
+  /// [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For
+  /// a list of the available pre-defined roles, see
+  /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
   Binding({
@@ -1367,23 +2142,23 @@ typedef Location = $Location00;
 /// request, the resource, or both. To learn which resources support conditions
 /// in their IAM policies, see the
 /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": \[ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": \[
+/// **JSON example:** ``` { "bindings": [ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": [
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": \[
-/// "user:eve@example.com" \], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": [
+/// "user:eve@example.com" ], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time \< timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
-/// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
-/// user:mike@example.com - group:admins@example.com - domain:google.com -
-/// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
-/// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
-/// role: roles/resourcemanager.organizationViewer condition: title: expirable
-/// access description: Does not grant access after Sep 2020 expression:
-/// request.time \< timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
-/// version: 3 For a description of IAM and its features, see the
-/// [IAM documentation](https://cloud.google.com/iam/docs/).
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: -
+/// members: - user:mike@example.com - group:admins@example.com -
+/// domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+/// role: roles/resourcemanager.organizationAdmin - members: -
+/// user:eve@example.com role: roles/resourcemanager.organizationViewer
+/// condition: title: expirable access description: Does not grant access after
+/// Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+/// etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features,
+/// see the [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig>? auditConfigs;
@@ -1727,7 +2502,7 @@ class Secret {
   /// The replication policy cannot be changed after the Secret has been
   /// created.
   ///
-  /// Required. Immutable.
+  /// Optional. Immutable.
   Replication? replication;
 
   /// Rotation policy attached to the Secret.
@@ -1755,8 +2530,8 @@ class Secret {
   /// and underscore ('_') characters. An alias string must start with a letter
   /// and cannot be the string 'latest' or 'NEW'. No more than 50 aliases can be
   /// assigned to a given secret. Version-Alias pairs will be viewable via
-  /// GetSecret and modifiable via UpdateSecret. At launch Access by Allias will
-  /// only be supported on GetSecretVersion and AccessSecretVersion.
+  /// GetSecret and modifiable via UpdateSecret. Access by alias is only be
+  /// supported on GetSecretVersion and AccessSecretVersion.
   ///
   /// Optional.
   core.Map<core.String, core.String>? versionAliases;

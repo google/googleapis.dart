@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Cloud Scheduler API - v1
@@ -22,7 +21,7 @@
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsJobsResource]
-library cloudscheduler_v1;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -573,18 +572,18 @@ class AppEngineHttpTarget {
   /// `X-CloudScheduler`: This header will be set to true. *
   /// `X-CloudScheduler-JobName`: This header will contain the job name. *
   /// `X-CloudScheduler-ScheduleTime`: For Cloud Scheduler jobs specified in the
-  /// unix-cron format, this header will contain the job schedule time in
-  /// RFC3339 UTC "Zulu" format. If the job has a body and the following headers
-  /// are not set by the user, Cloud Scheduler sets default values: *
-  /// `Content-Type`: This will be set to `"application/octet-stream"`. You can
-  /// override this default by explicitly setting `Content-Type` to a particular
-  /// media type when creating the job. For example, you can set `Content-Type`
-  /// to `"application/json"`. The headers below are output only. They cannot be
-  /// set or overridden: * `Content-Length`: This is computed by Cloud
-  /// Scheduler. * `X-Google-*`: For Google internal use only. *
-  /// `X-AppEngine-*`: For Google internal use only. In addition, some App
-  /// Engine headers, which contain job-specific information, are also be sent
-  /// to the job handler.
+  /// unix-cron format, this header will contain the job schedule as an offset
+  /// of UTC parsed according to RFC3339. If the job has a body and the
+  /// following headers are not set by the user, Cloud Scheduler sets default
+  /// values: * `Content-Type`: This will be set to
+  /// `"application/octet-stream"`. You can override this default by explicitly
+  /// setting `Content-Type` to a particular media type when creating the job.
+  /// For example, you can set `Content-Type` to `"application/json"`. The
+  /// headers below are output only. They cannot be set or overridden: *
+  /// `Content-Length`: This is computed by Cloud Scheduler. * `X-Google-*`: For
+  /// Google internal use only. * `X-AppEngine-*`: For Google internal use only.
+  /// In addition, some App Engine headers, which contain job-specific
+  /// information, are also be sent to the job handler.
   core.Map<core.String, core.String>? headers;
 
   /// The HTTP method to use for the request.
@@ -782,9 +781,9 @@ class HttpTarget {
   /// header will be set to true. * `X-CloudScheduler-JobName`: This header will
   /// contain the job name. * `X-CloudScheduler-ScheduleTime`: For Cloud
   /// Scheduler jobs specified in the unix-cron format, this header will contain
-  /// the job schedule time in RFC3339 UTC "Zulu" format. If the job has a body
-  /// and the following headers are not set by the user, Cloud Scheduler sets
-  /// default values: * `Content-Type`: This will be set to
+  /// the job schedule as an offset of UTC parsed according to RFC3339. If the
+  /// job has a body and the following headers are not set by the user, Cloud
+  /// Scheduler sets default values: * `Content-Type`: This will be set to
   /// `"application/octet-stream"`. You can override this default by explicitly
   /// setting `Content-Type` to a particular media type when creating the job.
   /// For example, you can set `Content-Type` to `"application/json"`. The total
@@ -949,7 +948,11 @@ class Job {
   /// scheduled start time will be delayed if the previous execution has not
   /// ended when its scheduled time occurs. If retry_count \> 0 and a job
   /// attempt fails, the job will be tried a total of retry_count times, with
-  /// exponential backoff, until the next scheduled start time.
+  /// exponential backoff, until the next scheduled start time. If retry_count
+  /// is 0, a job attempt will not be retried if it fails. Instead the Cloud
+  /// Scheduler system will wait for the next scheduled execution time. Setting
+  /// retry_count to 0 does not prevent failed jobs from running according to
+  /// schedule after the failure.
   core.String? schedule;
 
   /// The next time the job is scheduled.
@@ -1342,13 +1345,15 @@ class RetryConfig {
   /// The number of attempts that the system will make to run a job using the
   /// exponential backoff procedure described by max_doublings.
   ///
-  /// The default value of retry_count is zero. If retry_count is zero, a job
-  /// attempt will *not* be retried if it fails. Instead the Cloud Scheduler
-  /// system will wait for the next scheduled execution time. If retry_count is
-  /// set to a non-zero number then Cloud Scheduler will retry failed attempts,
-  /// using exponential backoff, retry_count times, or until the next scheduled
-  /// execution time, whichever comes first. Values greater than 5 and negative
-  /// values are not allowed.
+  /// The default value of retry_count is zero. If retry_count is 0, a job
+  /// attempt will not be retried if it fails. Instead the Cloud Scheduler
+  /// system will wait for the next scheduled execution time. Setting
+  /// retry_count to 0 does not prevent failed jobs from running according to
+  /// schedule after the failure. If retry_count is set to a non-zero number
+  /// then Cloud Scheduler will retry failed attempts, using exponential
+  /// backoff, retry_count times, or until the next scheduled execution time,
+  /// whichever comes first. Values greater than 5 and negative values are not
+  /// allowed.
   core.int? retryCount;
 
   RetryConfig({

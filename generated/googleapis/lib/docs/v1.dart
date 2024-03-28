@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Google Docs API - v1
@@ -20,7 +19,7 @@
 /// Create an instance of [DocsApi] to access these resources:
 ///
 /// - [DocumentsResource]
-library docs_v1;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -1665,6 +1664,12 @@ class DocumentStyle {
   /// set, there's no first page header. This property is read-only.
   core.String? firstPageHeaderId;
 
+  /// Indicates whether to flip the dimensions of the page_size, which allows
+  /// changing the page orientation between portrait and landscape.
+  ///
+  /// Optional.
+  core.bool? flipPageOrientation;
+
   /// The bottom page margin.
   ///
   /// Updating the bottom page margin on the document style clears the bottom
@@ -1728,6 +1733,7 @@ class DocumentStyle {
     this.evenPageHeaderId,
     this.firstPageFooterId,
     this.firstPageHeaderId,
+    this.flipPageOrientation,
     this.marginBottom,
     this.marginFooter,
     this.marginHeader,
@@ -1764,6 +1770,9 @@ class DocumentStyle {
               : null,
           firstPageHeaderId: json_.containsKey('firstPageHeaderId')
               ? json_['firstPageHeaderId'] as core.String
+              : null,
+          flipPageOrientation: json_.containsKey('flipPageOrientation')
+              ? json_['flipPageOrientation'] as core.bool
               : null,
           marginBottom: json_.containsKey('marginBottom')
               ? Dimension.fromJson(
@@ -1817,6 +1826,8 @@ class DocumentStyle {
         if (evenPageHeaderId != null) 'evenPageHeaderId': evenPageHeaderId!,
         if (firstPageFooterId != null) 'firstPageFooterId': firstPageFooterId!,
         if (firstPageHeaderId != null) 'firstPageHeaderId': firstPageHeaderId!,
+        if (flipPageOrientation != null)
+          'flipPageOrientation': flipPageOrientation!,
         if (marginBottom != null) 'marginBottom': marginBottom!,
         if (marginFooter != null) 'marginFooter': marginFooter!,
         if (marginHeader != null) 'marginHeader': marginHeader!,
@@ -1861,6 +1872,11 @@ class DocumentStyleSuggestionState {
   /// Indicates if there was a suggested change to first_page_header_id.
   core.bool? firstPageHeaderIdSuggested;
 
+  /// Indicates if there was a suggested change to flip_page_orientation.
+  ///
+  /// Optional.
+  core.bool? flipPageOrientationSuggested;
+
   /// Indicates if there was a suggested change to margin_bottom.
   core.bool? marginBottomSuggested;
 
@@ -1904,6 +1920,7 @@ class DocumentStyleSuggestionState {
     this.evenPageHeaderIdSuggested,
     this.firstPageFooterIdSuggested,
     this.firstPageHeaderIdSuggested,
+    this.flipPageOrientationSuggested,
     this.marginBottomSuggested,
     this.marginFooterSuggested,
     this.marginHeaderSuggested,
@@ -1948,6 +1965,10 @@ class DocumentStyleSuggestionState {
           firstPageHeaderIdSuggested:
               json_.containsKey('firstPageHeaderIdSuggested')
                   ? json_['firstPageHeaderIdSuggested'] as core.bool
+                  : null,
+          flipPageOrientationSuggested:
+              json_.containsKey('flipPageOrientationSuggested')
+                  ? json_['flipPageOrientationSuggested'] as core.bool
                   : null,
           marginBottomSuggested: json_.containsKey('marginBottomSuggested')
               ? json_['marginBottomSuggested'] as core.bool
@@ -2004,6 +2025,8 @@ class DocumentStyleSuggestionState {
           'firstPageFooterIdSuggested': firstPageFooterIdSuggested!,
         if (firstPageHeaderIdSuggested != null)
           'firstPageHeaderIdSuggested': firstPageHeaderIdSuggested!,
+        if (flipPageOrientationSuggested != null)
+          'flipPageOrientationSuggested': flipPageOrientationSuggested!,
         if (marginBottomSuggested != null)
           'marginBottomSuggested': marginBottomSuggested!,
         if (marginFooterSuggested != null)
@@ -6547,6 +6570,17 @@ class SectionStyle {
   /// first_page_header_id. This property is read-only.
   core.String? firstPageHeaderId;
 
+  /// Indicates whether to flip the dimensions of DocumentStyle's page_size for
+  /// this section, which allows changing the page orientation between portrait
+  /// and landscape.
+  ///
+  /// If unset, the value inherits from DocumentStyle's flip_page_orientation.
+  /// When updating this property, setting a concrete value is required.
+  /// Unsetting this property results in a 400 bad request error.
+  ///
+  /// Optional.
+  core.bool? flipPageOrientation;
+
   /// The bottom page margin of the section.
   ///
   /// If unset, the value defaults to margin_bottom from DocumentStyle. When
@@ -6638,6 +6672,7 @@ class SectionStyle {
     this.evenPageHeaderId,
     this.firstPageFooterId,
     this.firstPageHeaderId,
+    this.flipPageOrientation,
     this.marginBottom,
     this.marginFooter,
     this.marginHeader,
@@ -6680,6 +6715,9 @@ class SectionStyle {
               : null,
           firstPageHeaderId: json_.containsKey('firstPageHeaderId')
               ? json_['firstPageHeaderId'] as core.String
+              : null,
+          flipPageOrientation: json_.containsKey('flipPageOrientation')
+              ? json_['flipPageOrientation'] as core.bool
               : null,
           marginBottom: json_.containsKey('marginBottom')
               ? Dimension.fromJson(
@@ -6728,6 +6766,8 @@ class SectionStyle {
         if (evenPageHeaderId != null) 'evenPageHeaderId': evenPageHeaderId!,
         if (firstPageFooterId != null) 'firstPageFooterId': firstPageFooterId!,
         if (firstPageHeaderId != null) 'firstPageHeaderId': firstPageHeaderId!,
+        if (flipPageOrientation != null)
+          'flipPageOrientation': flipPageOrientation!,
         if (marginBottom != null) 'marginBottom': marginBottom!,
         if (marginFooter != null) 'marginFooter': marginFooter!,
         if (marginHeader != null) 'marginHeader': marginHeader!,

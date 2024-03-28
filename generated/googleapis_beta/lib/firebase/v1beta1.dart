@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Firebase Management API - v1beta1
@@ -30,7 +29,7 @@
 ///   - [ProjectsDefaultLocationResource]
 ///   - [ProjectsIosAppsResource]
 ///   - [ProjectsWebAppsResource]
-library firebase_v1beta1;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -1228,14 +1227,20 @@ class ProjectsAndroidAppsShaResource {
   }
 }
 
+@core.Deprecated(
+  'Not supported. Member documentation may have more information.',
+)
 class ProjectsAvailableLocationsResource {
   final commons.ApiRequester _requester;
 
   ProjectsAvailableLocationsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Lists the valid Google Cloud Platform (GCP) resource locations for the
-  /// specified Project (including a FirebaseProject).
+  /// **DEPRECATED.** _Instead, use the applicable resource-specific REST API
+  /// (or associated documentation, as needed) to determine valid locations for
+  /// each resource used in your Project._ Lists the valid Google Cloud Platform
+  /// (GCP) resource locations for the specified Project (including a
+  /// FirebaseProject).
   ///
   /// One of these locations can be selected as the Project's
   /// [_default_ GCP resource location](https://firebase.google.com/docs/projects/locations),
@@ -1282,6 +1287,9 @@ class ProjectsAvailableLocationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<ListAvailableLocationsResponse> list(
     core.String parent, {
     core.int? pageSize,
@@ -1307,14 +1315,19 @@ class ProjectsAvailableLocationsResource {
   }
 }
 
+@core.Deprecated(
+  'Not supported. Member documentation may have more information.',
+)
 class ProjectsDefaultLocationResource {
   final commons.ApiRequester _requester;
 
   ProjectsDefaultLocationResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Sets the default Google Cloud Platform (GCP) resource location for the
-  /// specified FirebaseProject.
+  /// **DEPRECATED.** _Instead, use the applicable resource-specific REST API to
+  /// set the location for each resource used in your Project._ Sets the default
+  /// Google Cloud Platform (GCP) resource location for the specified
+  /// FirebaseProject.
   ///
   /// This method creates an App Engine application with a
   /// [default Cloud Storage bucket](https://cloud.google.com/appengine/docs/standard/python/googlecloudstorageclient/setting-up-cloud-storage#activating_a_cloud_storage_bucket),
@@ -1364,6 +1377,9 @@ class ProjectsDefaultLocationResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<Operation> finalize(
     FinalizeDefaultLocationRequest request,
     core.String parent, {
@@ -2141,10 +2157,22 @@ class AddGoogleAnalyticsRequest {
 }
 
 class AdminSdkConfig {
-  /// The default Firebase Realtime Database URL.
+  /// **DEPRECATED.** _Instead, find the default Firebase Realtime Database
+  /// instance name using the
+  /// [list endpoint](https://firebase.google.com/docs/reference/rest/database/database-management/rest/v1beta/projects.locations.instances/list)
+  /// within the Firebase Realtime Database REST API.
+  ///
+  /// Note that the default instance for the Project might not yet be
+  /// provisioned, so the return might not contain a default instance._ The
+  /// default Firebase Realtime Database URL.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? databaseURL;
 
-  /// The ID of the Project's default GCP resource location.
+  /// **DEPRECATED.** _Instead, use product-specific REST APIs to find the
+  /// location of resources._ The ID of the Project's default GCP resource
+  /// location.
   ///
   /// The location is one of the available
   /// [GCP resource locations](https://firebase.google.com/docs/projects/locations).
@@ -2152,6 +2180,9 @@ class AdminSdkConfig {
   /// finalized yet. To set a Project's default GCP resource location, call
   /// \[`FinalizeDefaultLocation`\](../projects.defaultLocation/finalize) after
   /// you add Firebase resources to the Project.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? locationId;
 
   /// A user-assigned unique identifier for the `FirebaseProject`.
@@ -2163,7 +2194,17 @@ class AdminSdkConfig {
   /// Immutable.
   core.String? projectId;
 
-  /// The default Cloud Storage for Firebase storage bucket name.
+  /// **DEPRECATED.** _Instead, find the default Cloud Storage for Firebase
+  /// bucket using the
+  /// [list endpoint](https://firebase.google.com/docs/reference/rest/storage/rest/v1beta/projects.buckets/list)
+  /// within the Cloud Storage for Firebase REST API.
+  ///
+  /// Note that the default bucket for the Project might not yet be provisioned,
+  /// so the return might not contain a default bucket._ The default Cloud
+  /// Storage for Firebase storage bucket name.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? storageBucket;
 
   AdminSdkConfig({
@@ -2486,22 +2527,39 @@ class AndroidAppConfig {
       };
 }
 
-/// The default resources associated with the Project.
+/// **DEPRECATED.** _Auto-provisioning of these resources is changing, so this
+/// object no longer reliably provides information about the resources within
+/// the Project.
+///
+/// Instead, retrieve information about each resource directly from its
+/// resource-specific API._ The default auto-provisioned resources associated
+/// with the Project.
 class DefaultResources {
-  /// The default Firebase Hosting site name, in the format: PROJECT_ID Though
-  /// rare, your `projectId` might already be used as the name for an existing
-  /// Hosting site in another project (learn more about creating non-default,
-  /// [additional sites](https://firebase.google.com/docs/hosting/multisites)).
+  /// **DEPRECATED.** _Instead, find the default Firebase Hosting site name
+  /// using the
+  /// [ListSites](https://firebase.google.com/docs/reference/hosting/rest/v1beta1/projects.sites/list)
+  /// within the Firebase Hosting REST API.
   ///
+  /// Note that the default site for the Project might not yet be provisioned,
+  /// so the return might not contain a default site._ The default Firebase
+  /// Hosting site name, in the format: PROJECT_ID Though rare, your `projectId`
+  /// might already be used as the name for an existing Hosting site in another
+  /// project (learn more about creating non-default,
+  /// [additional sites](https://firebase.google.com/docs/hosting/multisites)).
   /// In these cases, your `projectId` is appended with a hyphen then five
   /// alphanumeric characters to create your default Hosting site name. For
   /// example, if your `projectId` is `myproject123`, your default Hosting site
   /// name might be: `myproject123-a5c16`
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? hostingSite;
 
-  /// The ID of the Project's default GCP resource location.
+  /// **DEPRECATED.** _Instead, use product-specific REST APIs to find the
+  /// location of resources._ The ID of the Project's default GCP resource
+  /// location.
   ///
   /// The location is one of the available
   /// [GCP resource locations](https://firebase.google.com/docs/projects/locations).
@@ -2511,26 +2569,47 @@ class DefaultResources {
   /// you add Firebase resources to the Project.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? locationId;
 
-  /// The default Firebase Realtime Database instance name, in the format:
+  /// **DEPRECATED.** _Instead, find the default Firebase Realtime Database
+  /// instance name using the
+  /// [list endpoint](https://firebase.google.com/docs/reference/rest/database/database-management/rest/v1beta/projects.locations.instances/list)
+  /// within the Firebase Realtime Database REST API.
+  ///
+  /// Note that the default instance for the Project might not yet be
+  /// provisioned, so the return might not contain a default instance._ The
+  /// default Firebase Realtime Database instance name, in the format:
   /// PROJECT_ID Though rare, your `projectId` might already be used as the name
   /// for an existing Realtime Database instance in another project (learn more
   /// about
   /// [database sharding](https://firebase.google.com/docs/database/usage/sharding)).
-  ///
   /// In these cases, your `projectId` is appended with a hyphen then five
   /// alphanumeric characters to create your default Realtime Database instance
   /// name. For example, if your `projectId` is `myproject123`, your default
   /// database instance name might be: `myproject123-a5c16`
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? realtimeDatabaseInstance;
 
-  /// The default Cloud Storage for Firebase storage bucket, in the format:
-  /// PROJECT_ID.appspot.com
+  /// **DEPRECATED.** _Instead, find the default Cloud Storage for Firebase
+  /// bucket using the
+  /// [list endpoint](https://firebase.google.com/docs/reference/rest/storage/rest/v1beta/projects.buckets/list)
+  /// within the Cloud Storage for Firebase REST API.
+  ///
+  /// Note that the default bucket for the Project might not yet be provisioned,
+  /// so the return might not contain a default bucket._ The default Cloud
+  /// Storage for Firebase storage bucket, in the format: PROJECT_ID.appspot.com
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? storageBucket;
 
   DefaultResources({
@@ -2785,9 +2864,17 @@ class FirebaseProject {
   /// Output only. Immutable.
   core.String? projectNumber;
 
-  /// The default Firebase resources associated with the Project.
+  /// **DEPRECATED.** _Auto-provisioning of these resources is changing, so this
+  /// object no longer reliably provides information about the Project.
+  ///
+  /// Instead, retrieve information about each resource directly from its
+  /// resource-specific API._ The default Firebase resources associated with the
+  /// Project.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   DefaultResources? resources;
 
   /// The lifecycle state of the Project.
@@ -3294,7 +3381,12 @@ class ListWebAppsResponse {
       };
 }
 
-/// A GCP resource location that can be selected for a FirebaseProject.
+/// **DEPRECATED.** _This Location is no longer used to determine Firebase
+/// resource locations.
+///
+/// Instead, consult product documentation to determine valid locations for each
+/// resource used in your Project._ A GCP resource location that can be selected
+/// for a FirebaseProject.
 class Location {
   /// Products and services that are available in the GCP resource location.
   core.List<core.String>? features;
@@ -4074,10 +4166,22 @@ class WebAppConfig {
   /// PROJECT_ID.firebaseapp.com
   core.String? authDomain;
 
-  /// The default Firebase Realtime Database URL.
+  /// **DEPRECATED.** _Instead, find the default Firebase Realtime Database
+  /// instance name using the
+  /// [list endpoint](https://firebase.google.com/docs/reference/rest/database/database-management/rest/v1beta/projects.locations.instances/list)
+  /// within the Firebase Realtime Database REST API.
+  ///
+  /// Note that the default instance for the Project might not yet be
+  /// provisioned, so the return might not contain a default instance._ The
+  /// default Firebase Realtime Database URL.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? databaseURL;
 
-  /// The ID of the Project's default GCP resource location.
+  /// **DEPRECATED.** _Instead, use product-specific REST APIs to find the
+  /// location of resources._ The ID of the Project's default GCP resource
+  /// location.
   ///
   /// The location is one of the available
   /// [GCP resource locations](https://firebase.google.com/docs/projects/locations).
@@ -4085,6 +4189,9 @@ class WebAppConfig {
   /// finalized yet. To set a Project's default GCP resource location, call
   /// \[`FinalizeDefaultLocation`\](../projects.defaultLocation/finalize) after
   /// you add Firebase resources to the Project.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? locationId;
 
   /// The unique Google-assigned identifier of the Google Analytics web stream
@@ -4112,7 +4219,17 @@ class WebAppConfig {
   /// Immutable.
   core.String? projectId;
 
-  /// The default Cloud Storage for Firebase storage bucket name.
+  /// **DEPRECATED.** _Instead, find the default Cloud Storage for Firebase
+  /// bucket using the
+  /// [list endpoint](https://firebase.google.com/docs/reference/rest/storage/rest/v1beta/projects.buckets/list)
+  /// within the Cloud Storage for Firebase REST API.
+  ///
+  /// Note that the default bucket for the Project might not yet be provisioned,
+  /// so the return might not contain a default bucket._ The default Cloud
+  /// Storage for Firebase storage bucket name.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? storageBucket;
 
   WebAppConfig({

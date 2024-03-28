@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Advisory Notifications API - v1
@@ -22,9 +21,13 @@
 /// - [OrganizationsResource]
 ///   - [OrganizationsLocationsResource]
 ///     - [OrganizationsLocationsNotificationsResource]
-library advisorynotifications_v1;
+/// - [ProjectsResource]
+///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsNotificationsResource]
+library;
 
 import 'dart:async' as async;
+import 'dart:convert' as convert;
 import 'dart:core' as core;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
@@ -45,6 +48,7 @@ class AdvisorynotificationsApi {
   final commons.ApiRequester _requester;
 
   OrganizationsResource get organizations => OrganizationsResource(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   AdvisorynotificationsApi(http.Client client,
       {core.String rootUrl = 'https://advisorynotifications.googleapis.com/',
@@ -70,6 +74,87 @@ class OrganizationsLocationsResource {
 
   OrganizationsLocationsResource(commons.ApiRequester client)
       : _requester = client;
+
+  /// Get notification settings.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the settings to retrieve. Format:
+  /// organizations/{organization}/locations/{location}/settings.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/settings$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudAdvisorynotificationsV1Settings].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudAdvisorynotificationsV1Settings> getSettings(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAdvisorynotificationsV1Settings.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Update notification settings.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The resource name of the settings to retrieve.
+  /// Format: organizations/{organization}/locations/{location}/settings.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/settings$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudAdvisorynotificationsV1Settings].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudAdvisorynotificationsV1Settings> updateSettings(
+    GoogleCloudAdvisorynotificationsV1Settings request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAdvisorynotificationsV1Settings.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class OrganizationsLocationsNotificationsResource {
@@ -83,7 +168,8 @@ class OrganizationsLocationsNotificationsResource {
   /// Request parameters:
   ///
   /// [name] - Required. A name of the notification to retrieve. Format:
-  /// organizations/{organization}/locations/{location}/notifications/{notification}.
+  /// organizations/{organization}/locations/{location}/notifications/{notification}
+  /// or projects/{projects}/locations/{location}/notifications/{notification}.
   /// Value must have pattern
   /// `^organizations/\[^/\]+/locations/\[^/\]+/notifications/\[^/\]+$`.
   ///
@@ -130,8 +216,155 @@ class OrganizationsLocationsNotificationsResource {
   ///
   /// [parent] - Required. The parent, which owns this collection of
   /// notifications. Must be of the form
-  /// "organizations/{organization}/locations/{location}".
+  /// "organizations/{organization}/locations/{location}" or
+  /// "projects/{project}/locations/{location}"
   /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [languageCode] - ISO code for requested localization language. If unset,
+  /// will be interpereted as "en". If the requested language is valid, but not
+  /// supported for this notification, English will be returned with an "Not
+  /// applicable" LocalizationState. If the ISO code is invalid (i.e. not a real
+  /// language), this RPC will throw an error.
+  ///
+  /// [pageSize] - The maximum number of notifications to return. The service
+  /// may return fewer than this value. If unspecified or equal to 0, at most 50
+  /// notifications will be returned. The maximum value is 50; values above 50
+  /// will be coerced to 50.
+  ///
+  /// [pageToken] - A page token returned from a previous request. When
+  /// paginating, all other parameters provided in the request must match the
+  /// call that returned the page token.
+  ///
+  /// [view] - Specifies which parts of the notification resource should be
+  /// returned in the response.
+  /// Possible string values are:
+  /// - "NOTIFICATION_VIEW_UNSPECIFIED" : Not specified, equivalent to BASIC.
+  /// - "BASIC" : Server responses only include title, creation time and
+  /// Notification ID. Note: for internal use responses also include the last
+  /// update time, the latest message text and whether notification has
+  /// attachments.
+  /// - "FULL" : Include everything.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudAdvisorynotificationsV1ListNotificationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudAdvisorynotificationsV1ListNotificationsResponse>
+      list(
+    core.String parent, {
+    core.String? languageCode,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? view,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (languageCode != null) 'languageCode': [languageCode],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (view != null) 'view': [view],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/notifications';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAdvisorynotificationsV1ListNotificationsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsResource get locations =>
+      ProjectsLocationsResource(_requester);
+
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsLocationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsNotificationsResource get notifications =>
+      ProjectsLocationsNotificationsResource(_requester);
+
+  ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsLocationsNotificationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsNotificationsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets a notification.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. A name of the notification to retrieve. Format:
+  /// organizations/{organization}/locations/{location}/notifications/{notification}
+  /// or projects/{projects}/locations/{location}/notifications/{notification}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/notifications/\[^/\]+$`.
+  ///
+  /// [languageCode] - ISO code for requested localization language. If unset,
+  /// will be interpereted as "en". If the requested language is valid, but not
+  /// supported for this notification, English will be returned with an "Not
+  /// applicable" LocalizationState. If the ISO code is invalid (i.e. not a real
+  /// language), this RPC will throw an error.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudAdvisorynotificationsV1Notification].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudAdvisorynotificationsV1Notification> get(
+    core.String name, {
+    core.String? languageCode,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (languageCode != null) 'languageCode': [languageCode],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAdvisorynotificationsV1Notification.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists notifications under a given parent.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent, which owns this collection of
+  /// notifications. Must be of the form
+  /// "organizations/{organization}/locations/{location}" or
+  /// "projects/{project}/locations/{location}"
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [languageCode] - ISO code for requested localization language. If unset,
   /// will be interpereted as "en". If the requested language is valid, but not
@@ -421,7 +654,8 @@ class GoogleCloudAdvisorynotificationsV1Notification {
   /// The resource name of the notification.
   ///
   /// Format:
-  /// organizations/{organization}/locations/{location}/notifications/{notification}.
+  /// organizations/{organization}/locations/{location}/notifications/{notification}
+  /// or projects/{project}/locations/{location}/notifications/{notification}.
   core.String? name;
 
   /// Type of notification
@@ -473,6 +707,85 @@ class GoogleCloudAdvisorynotificationsV1Notification {
         if (name != null) 'name': name!,
         if (notificationType != null) 'notificationType': notificationType!,
         if (subject != null) 'subject': subject!,
+      };
+}
+
+/// Settings for each NotificationType.
+class GoogleCloudAdvisorynotificationsV1NotificationSettings {
+  /// Whether the associated NotificationType is enabled.
+  core.bool? enabled;
+
+  GoogleCloudAdvisorynotificationsV1NotificationSettings({
+    this.enabled,
+  });
+
+  GoogleCloudAdvisorynotificationsV1NotificationSettings.fromJson(
+      core.Map json_)
+      : this(
+          enabled: json_.containsKey('enabled')
+              ? json_['enabled'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
+      };
+}
+
+/// Settings for Advisory Notifications.
+class GoogleCloudAdvisorynotificationsV1Settings {
+  /// Fingerprint for optimistic concurrency returned in Get requests.
+  ///
+  /// Must be provided for Update requests. If the value provided does not match
+  /// the value known to the server, ABORTED will be thrown, and the client
+  /// should retry the read-modify-write cycle.
+  ///
+  /// Required.
+  core.String? etag;
+
+  /// Identifier.
+  ///
+  /// The resource name of the settings to retrieve. Format:
+  /// organizations/{organization}/locations/{location}/settings.
+  core.String? name;
+
+  /// Map of each notification type and its settings to get/set all settings at
+  /// once.
+  ///
+  /// The server will validate the value for each notification type.
+  ///
+  /// Required.
+  core.Map<core.String, GoogleCloudAdvisorynotificationsV1NotificationSettings>?
+      notificationSettings;
+
+  GoogleCloudAdvisorynotificationsV1Settings({
+    this.etag,
+    this.name,
+    this.notificationSettings,
+  });
+
+  GoogleCloudAdvisorynotificationsV1Settings.fromJson(core.Map json_)
+      : this(
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          notificationSettings: json_.containsKey('notificationSettings')
+              ? (json_['notificationSettings']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    GoogleCloudAdvisorynotificationsV1NotificationSettings
+                        .fromJson(value as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (name != null) 'name': name!,
+        if (notificationSettings != null)
+          'notificationSettings': notificationSettings!,
       };
 }
 

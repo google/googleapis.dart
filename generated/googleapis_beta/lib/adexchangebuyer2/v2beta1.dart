@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Ad Exchange Buyer API II - v2beta1
@@ -56,7 +55,19 @@
 ///     - [BiddersFilterSetsImpressionMetricsResource]
 ///     - [BiddersFilterSetsLosingBidsResource]
 ///     - [BiddersFilterSetsNonBillableWinningBidsResource]
-library adexchangebuyer2_v2beta1;
+/// - [BuyersResource]
+///   - [BuyersFilterSetsResource]
+///     - [BuyersFilterSetsBidMetricsResource]
+///     - [BuyersFilterSetsBidResponseErrorsResource]
+///     - [BuyersFilterSetsBidResponsesWithoutBidsResource]
+///     - [BuyersFilterSetsFilteredBidRequestsResource]
+///     - [BuyersFilterSetsFilteredBidsResource]
+///       - [BuyersFilterSetsFilteredBidsCreativesResource]
+///       - [BuyersFilterSetsFilteredBidsDetailsResource]
+///     - [BuyersFilterSetsImpressionMetricsResource]
+///     - [BuyersFilterSetsLosingBidsResource]
+///     - [BuyersFilterSetsNonBillableWinningBidsResource]
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -83,6 +94,7 @@ class AdExchangeBuyerIIApi {
 
   AccountsResource get accounts => AccountsResource(_requester);
   BiddersResource get bidders => BiddersResource(_requester);
+  BuyersResource get buyers => BuyersResource(_requester);
 
   AdExchangeBuyerIIApi(http.Client client,
       {core.String rootUrl = 'https://adexchangebuyer.googleapis.com/',
@@ -3761,6 +3773,882 @@ class BiddersFilterSetsNonBillableWinningBidsResource {
   /// set for the child seat buyer account 456 whose bidder is 123:
   /// `bidders/123/accounts/456/filterSets/abc`
   /// Value must have pattern `^bidders/\[^/\]+/filterSets/\[^/\]+$`.
+  ///
+  /// [pageSize] - Requested page size. The server may return fewer results than
+  /// requested. If unspecified, the server will pick an appropriate default.
+  ///
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return. Typically, this is the value of
+  /// ListNonBillableWinningBidsResponse.nextPageToken returned from the
+  /// previous call to the nonBillableWinningBids.list method.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListNonBillableWinningBidsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListNonBillableWinningBidsResponse> list(
+    core.String filterSetName, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2beta1/' +
+        core.Uri.encodeFull('$filterSetName') +
+        '/nonBillableWinningBids';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListNonBillableWinningBidsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class BuyersResource {
+  final commons.ApiRequester _requester;
+
+  BuyersFilterSetsResource get filterSets =>
+      BuyersFilterSetsResource(_requester);
+
+  BuyersResource(commons.ApiRequester client) : _requester = client;
+}
+
+class BuyersFilterSetsResource {
+  final commons.ApiRequester _requester;
+
+  BuyersFilterSetsBidMetricsResource get bidMetrics =>
+      BuyersFilterSetsBidMetricsResource(_requester);
+  BuyersFilterSetsBidResponseErrorsResource get bidResponseErrors =>
+      BuyersFilterSetsBidResponseErrorsResource(_requester);
+  BuyersFilterSetsBidResponsesWithoutBidsResource get bidResponsesWithoutBids =>
+      BuyersFilterSetsBidResponsesWithoutBidsResource(_requester);
+  BuyersFilterSetsFilteredBidRequestsResource get filteredBidRequests =>
+      BuyersFilterSetsFilteredBidRequestsResource(_requester);
+  BuyersFilterSetsFilteredBidsResource get filteredBids =>
+      BuyersFilterSetsFilteredBidsResource(_requester);
+  BuyersFilterSetsImpressionMetricsResource get impressionMetrics =>
+      BuyersFilterSetsImpressionMetricsResource(_requester);
+  BuyersFilterSetsLosingBidsResource get losingBids =>
+      BuyersFilterSetsLosingBidsResource(_requester);
+  BuyersFilterSetsNonBillableWinningBidsResource get nonBillableWinningBids =>
+      BuyersFilterSetsNonBillableWinningBidsResource(_requester);
+
+  BuyersFilterSetsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Creates the specified filter set for the account with the given account
+  /// ID.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [ownerName] - Name of the owner (bidder or account) of the filter set to
+  /// be created. For example: - For a bidder-level filter set for bidder 123:
+  /// `bidders/123` - For an account-level filter set for the buyer account
+  /// representing bidder 123: `bidders/123/accounts/123` - For an account-level
+  /// filter set for the child seat buyer account 456 whose bidder is 123:
+  /// `bidders/123/accounts/456`
+  /// Value must have pattern `^buyers/\[^/\]+$`.
+  ///
+  /// [isTransient] - Whether the filter set is transient, or should be
+  /// persisted indefinitely. By default, filter sets are not transient. If
+  /// transient, it will be available for at least 1 hour after creation.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [FilterSet].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<FilterSet> create(
+    FilterSet request,
+    core.String ownerName, {
+    core.bool? isTransient,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (isTransient != null) 'isTransient': ['${isTransient}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2beta1/' + core.Uri.encodeFull('$ownerName') + '/filterSets';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return FilterSet.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes the requested filter set from the account with the given account
+  /// ID.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Full name of the resource to delete. For example: - For a
+  /// bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For
+  /// an account-level filter set for the buyer account representing bidder 123:
+  /// `bidders/123/accounts/123/filterSets/abc` - For an account-level filter
+  /// set for the child seat buyer account 456 whose bidder is 123:
+  /// `bidders/123/accounts/456/filterSets/abc`
+  /// Value must have pattern `^buyers/\[^/\]+/filterSets/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2beta1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves the requested filter set for the account with the given account
+  /// ID.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Full name of the resource being requested. For example: - For a
+  /// bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For
+  /// an account-level filter set for the buyer account representing bidder 123:
+  /// `bidders/123/accounts/123/filterSets/abc` - For an account-level filter
+  /// set for the child seat buyer account 456 whose bidder is 123:
+  /// `bidders/123/accounts/456/filterSets/abc`
+  /// Value must have pattern `^buyers/\[^/\]+/filterSets/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [FilterSet].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<FilterSet> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2beta1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return FilterSet.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all filter sets for the account with the given account ID.
+  ///
+  /// Request parameters:
+  ///
+  /// [ownerName] - Name of the owner (bidder or account) of the filter sets to
+  /// be listed. For example: - For a bidder-level filter set for bidder 123:
+  /// `bidders/123` - For an account-level filter set for the buyer account
+  /// representing bidder 123: `bidders/123/accounts/123` - For an account-level
+  /// filter set for the child seat buyer account 456 whose bidder is 123:
+  /// `bidders/123/accounts/456`
+  /// Value must have pattern `^buyers/\[^/\]+$`.
+  ///
+  /// [pageSize] - Requested page size. The server may return fewer results than
+  /// requested. If unspecified, the server will pick an appropriate default.
+  ///
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return. Typically, this is the value of
+  /// ListFilterSetsResponse.nextPageToken returned from the previous call to
+  /// the accounts.filterSets.list method.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListFilterSetsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListFilterSetsResponse> list(
+    core.String ownerName, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2beta1/' + core.Uri.encodeFull('$ownerName') + '/filterSets';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListFilterSetsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class BuyersFilterSetsBidMetricsResource {
+  final commons.ApiRequester _requester;
+
+  BuyersFilterSetsBidMetricsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists all metrics that are measured in terms of number of bids.
+  ///
+  /// Request parameters:
+  ///
+  /// [filterSetName] - Name of the filter set that should be applied to the
+  /// requested metrics. For example: - For a bidder-level filter set for bidder
+  /// 123: `bidders/123/filterSets/abc` - For an account-level filter set for
+  /// the buyer account representing bidder 123:
+  /// `bidders/123/accounts/123/filterSets/abc` - For an account-level filter
+  /// set for the child seat buyer account 456 whose bidder is 123:
+  /// `bidders/123/accounts/456/filterSets/abc`
+  /// Value must have pattern `^buyers/\[^/\]+/filterSets/\[^/\]+$`.
+  ///
+  /// [pageSize] - Requested page size. The server may return fewer results than
+  /// requested. If unspecified, the server will pick an appropriate default.
+  ///
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return. Typically, this is the value of
+  /// ListBidMetricsResponse.nextPageToken returned from the previous call to
+  /// the bidMetrics.list method.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListBidMetricsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListBidMetricsResponse> list(
+    core.String filterSetName, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v2beta1/' + core.Uri.encodeFull('$filterSetName') + '/bidMetrics';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListBidMetricsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class BuyersFilterSetsBidResponseErrorsResource {
+  final commons.ApiRequester _requester;
+
+  BuyersFilterSetsBidResponseErrorsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// List all errors that occurred in bid responses, with the number of bid
+  /// responses affected for each reason.
+  ///
+  /// Request parameters:
+  ///
+  /// [filterSetName] - Name of the filter set that should be applied to the
+  /// requested metrics. For example: - For a bidder-level filter set for bidder
+  /// 123: `bidders/123/filterSets/abc` - For an account-level filter set for
+  /// the buyer account representing bidder 123:
+  /// `bidders/123/accounts/123/filterSets/abc` - For an account-level filter
+  /// set for the child seat buyer account 456 whose bidder is 123:
+  /// `bidders/123/accounts/456/filterSets/abc`
+  /// Value must have pattern `^buyers/\[^/\]+/filterSets/\[^/\]+$`.
+  ///
+  /// [pageSize] - Requested page size. The server may return fewer results than
+  /// requested. If unspecified, the server will pick an appropriate default.
+  ///
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return. Typically, this is the value of
+  /// ListBidResponseErrorsResponse.nextPageToken returned from the previous
+  /// call to the bidResponseErrors.list method.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListBidResponseErrorsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListBidResponseErrorsResponse> list(
+    core.String filterSetName, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2beta1/' +
+        core.Uri.encodeFull('$filterSetName') +
+        '/bidResponseErrors';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListBidResponseErrorsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class BuyersFilterSetsBidResponsesWithoutBidsResource {
+  final commons.ApiRequester _requester;
+
+  BuyersFilterSetsBidResponsesWithoutBidsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// List all reasons for which bid responses were considered to have no
+  /// applicable bids, with the number of bid responses affected for each
+  /// reason.
+  ///
+  /// Request parameters:
+  ///
+  /// [filterSetName] - Name of the filter set that should be applied to the
+  /// requested metrics. For example: - For a bidder-level filter set for bidder
+  /// 123: `bidders/123/filterSets/abc` - For an account-level filter set for
+  /// the buyer account representing bidder 123:
+  /// `bidders/123/accounts/123/filterSets/abc` - For an account-level filter
+  /// set for the child seat buyer account 456 whose bidder is 123:
+  /// `bidders/123/accounts/456/filterSets/abc`
+  /// Value must have pattern `^buyers/\[^/\]+/filterSets/\[^/\]+$`.
+  ///
+  /// [pageSize] - Requested page size. The server may return fewer results than
+  /// requested. If unspecified, the server will pick an appropriate default.
+  ///
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return. Typically, this is the value of
+  /// ListBidResponsesWithoutBidsResponse.nextPageToken returned from the
+  /// previous call to the bidResponsesWithoutBids.list method.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListBidResponsesWithoutBidsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListBidResponsesWithoutBidsResponse> list(
+    core.String filterSetName, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2beta1/' +
+        core.Uri.encodeFull('$filterSetName') +
+        '/bidResponsesWithoutBids';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListBidResponsesWithoutBidsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class BuyersFilterSetsFilteredBidRequestsResource {
+  final commons.ApiRequester _requester;
+
+  BuyersFilterSetsFilteredBidRequestsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// List all reasons that caused a bid request not to be sent for an
+  /// impression, with the number of bid requests not sent for each reason.
+  ///
+  /// Request parameters:
+  ///
+  /// [filterSetName] - Name of the filter set that should be applied to the
+  /// requested metrics. For example: - For a bidder-level filter set for bidder
+  /// 123: `bidders/123/filterSets/abc` - For an account-level filter set for
+  /// the buyer account representing bidder 123:
+  /// `bidders/123/accounts/123/filterSets/abc` - For an account-level filter
+  /// set for the child seat buyer account 456 whose bidder is 123:
+  /// `bidders/123/accounts/456/filterSets/abc`
+  /// Value must have pattern `^buyers/\[^/\]+/filterSets/\[^/\]+$`.
+  ///
+  /// [pageSize] - Requested page size. The server may return fewer results than
+  /// requested. If unspecified, the server will pick an appropriate default.
+  ///
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return. Typically, this is the value of
+  /// ListFilteredBidRequestsResponse.nextPageToken returned from the previous
+  /// call to the filteredBidRequests.list method.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListFilteredBidRequestsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListFilteredBidRequestsResponse> list(
+    core.String filterSetName, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2beta1/' +
+        core.Uri.encodeFull('$filterSetName') +
+        '/filteredBidRequests';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListFilteredBidRequestsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class BuyersFilterSetsFilteredBidsResource {
+  final commons.ApiRequester _requester;
+
+  BuyersFilterSetsFilteredBidsCreativesResource get creatives =>
+      BuyersFilterSetsFilteredBidsCreativesResource(_requester);
+  BuyersFilterSetsFilteredBidsDetailsResource get details =>
+      BuyersFilterSetsFilteredBidsDetailsResource(_requester);
+
+  BuyersFilterSetsFilteredBidsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// List all reasons for which bids were filtered, with the number of bids
+  /// filtered for each reason.
+  ///
+  /// Request parameters:
+  ///
+  /// [filterSetName] - Name of the filter set that should be applied to the
+  /// requested metrics. For example: - For a bidder-level filter set for bidder
+  /// 123: `bidders/123/filterSets/abc` - For an account-level filter set for
+  /// the buyer account representing bidder 123:
+  /// `bidders/123/accounts/123/filterSets/abc` - For an account-level filter
+  /// set for the child seat buyer account 456 whose bidder is 123:
+  /// `bidders/123/accounts/456/filterSets/abc`
+  /// Value must have pattern `^buyers/\[^/\]+/filterSets/\[^/\]+$`.
+  ///
+  /// [pageSize] - Requested page size. The server may return fewer results than
+  /// requested. If unspecified, the server will pick an appropriate default.
+  ///
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return. Typically, this is the value of
+  /// ListFilteredBidsResponse.nextPageToken returned from the previous call to
+  /// the filteredBids.list method.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListFilteredBidsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListFilteredBidsResponse> list(
+    core.String filterSetName, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v2beta1/' + core.Uri.encodeFull('$filterSetName') + '/filteredBids';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListFilteredBidsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class BuyersFilterSetsFilteredBidsCreativesResource {
+  final commons.ApiRequester _requester;
+
+  BuyersFilterSetsFilteredBidsCreativesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// List all creatives associated with a specific reason for which bids were
+  /// filtered, with the number of bids filtered for each creative.
+  ///
+  /// Request parameters:
+  ///
+  /// [filterSetName] - Name of the filter set that should be applied to the
+  /// requested metrics. For example: - For a bidder-level filter set for bidder
+  /// 123: `bidders/123/filterSets/abc` - For an account-level filter set for
+  /// the buyer account representing bidder 123:
+  /// `bidders/123/accounts/123/filterSets/abc` - For an account-level filter
+  /// set for the child seat buyer account 456 whose bidder is 123:
+  /// `bidders/123/accounts/456/filterSets/abc`
+  /// Value must have pattern `^buyers/\[^/\]+/filterSets/\[^/\]+$`.
+  ///
+  /// [creativeStatusId] - The ID of the creative status for which to retrieve a
+  /// breakdown by creative. See
+  /// \[creative-status-codes\](https://developers.google.com/authorized-buyers/rtb/downloads/creative-status-codes).
+  ///
+  /// [pageSize] - Requested page size. The server may return fewer results than
+  /// requested. If unspecified, the server will pick an appropriate default.
+  ///
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return. Typically, this is the value of
+  /// ListCreativeStatusBreakdownByCreativeResponse.nextPageToken returned from
+  /// the previous call to the filteredBids.creatives.list method.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListCreativeStatusBreakdownByCreativeResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListCreativeStatusBreakdownByCreativeResponse> list(
+    core.String filterSetName,
+    core.int creativeStatusId, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2beta1/' +
+        core.Uri.encodeFull('$filterSetName') +
+        '/filteredBids/' +
+        commons.escapeVariable('$creativeStatusId') +
+        '/creatives';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListCreativeStatusBreakdownByCreativeResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class BuyersFilterSetsFilteredBidsDetailsResource {
+  final commons.ApiRequester _requester;
+
+  BuyersFilterSetsFilteredBidsDetailsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// List all details associated with a specific reason for which bids were
+  /// filtered, with the number of bids filtered for each detail.
+  ///
+  /// Request parameters:
+  ///
+  /// [filterSetName] - Name of the filter set that should be applied to the
+  /// requested metrics. For example: - For a bidder-level filter set for bidder
+  /// 123: `bidders/123/filterSets/abc` - For an account-level filter set for
+  /// the buyer account representing bidder 123:
+  /// `bidders/123/accounts/123/filterSets/abc` - For an account-level filter
+  /// set for the child seat buyer account 456 whose bidder is 123:
+  /// `bidders/123/accounts/456/filterSets/abc`
+  /// Value must have pattern `^buyers/\[^/\]+/filterSets/\[^/\]+$`.
+  ///
+  /// [creativeStatusId] - The ID of the creative status for which to retrieve a
+  /// breakdown by detail. See
+  /// \[creative-status-codes\](https://developers.google.com/authorized-buyers/rtb/downloads/creative-status-codes).
+  /// Details are only available for statuses 10, 14, 15, 17, 18, 19, 86, and
+  /// 87.
+  ///
+  /// [pageSize] - Requested page size. The server may return fewer results than
+  /// requested. If unspecified, the server will pick an appropriate default.
+  ///
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return. Typically, this is the value of
+  /// ListCreativeStatusBreakdownByDetailResponse.nextPageToken returned from
+  /// the previous call to the filteredBids.details.list method.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListCreativeStatusBreakdownByDetailResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListCreativeStatusBreakdownByDetailResponse> list(
+    core.String filterSetName,
+    core.int creativeStatusId, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2beta1/' +
+        core.Uri.encodeFull('$filterSetName') +
+        '/filteredBids/' +
+        commons.escapeVariable('$creativeStatusId') +
+        '/details';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListCreativeStatusBreakdownByDetailResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class BuyersFilterSetsImpressionMetricsResource {
+  final commons.ApiRequester _requester;
+
+  BuyersFilterSetsImpressionMetricsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists all metrics that are measured in terms of number of impressions.
+  ///
+  /// Request parameters:
+  ///
+  /// [filterSetName] - Name of the filter set that should be applied to the
+  /// requested metrics. For example: - For a bidder-level filter set for bidder
+  /// 123: `bidders/123/filterSets/abc` - For an account-level filter set for
+  /// the buyer account representing bidder 123:
+  /// `bidders/123/accounts/123/filterSets/abc` - For an account-level filter
+  /// set for the child seat buyer account 456 whose bidder is 123:
+  /// `bidders/123/accounts/456/filterSets/abc`
+  /// Value must have pattern `^buyers/\[^/\]+/filterSets/\[^/\]+$`.
+  ///
+  /// [pageSize] - Requested page size. The server may return fewer results than
+  /// requested. If unspecified, the server will pick an appropriate default.
+  ///
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return. Typically, this is the value of
+  /// ListImpressionMetricsResponse.nextPageToken returned from the previous
+  /// call to the impressionMetrics.list method.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListImpressionMetricsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListImpressionMetricsResponse> list(
+    core.String filterSetName, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2beta1/' +
+        core.Uri.encodeFull('$filterSetName') +
+        '/impressionMetrics';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListImpressionMetricsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class BuyersFilterSetsLosingBidsResource {
+  final commons.ApiRequester _requester;
+
+  BuyersFilterSetsLosingBidsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// List all reasons for which bids lost in the auction, with the number of
+  /// bids that lost for each reason.
+  ///
+  /// Request parameters:
+  ///
+  /// [filterSetName] - Name of the filter set that should be applied to the
+  /// requested metrics. For example: - For a bidder-level filter set for bidder
+  /// 123: `bidders/123/filterSets/abc` - For an account-level filter set for
+  /// the buyer account representing bidder 123:
+  /// `bidders/123/accounts/123/filterSets/abc` - For an account-level filter
+  /// set for the child seat buyer account 456 whose bidder is 123:
+  /// `bidders/123/accounts/456/filterSets/abc`
+  /// Value must have pattern `^buyers/\[^/\]+/filterSets/\[^/\]+$`.
+  ///
+  /// [pageSize] - Requested page size. The server may return fewer results than
+  /// requested. If unspecified, the server will pick an appropriate default.
+  ///
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return. Typically, this is the value of
+  /// ListLosingBidsResponse.nextPageToken returned from the previous call to
+  /// the losingBids.list method.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListLosingBidsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListLosingBidsResponse> list(
+    core.String filterSetName, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v2beta1/' + core.Uri.encodeFull('$filterSetName') + '/losingBids';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListLosingBidsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class BuyersFilterSetsNonBillableWinningBidsResource {
+  final commons.ApiRequester _requester;
+
+  BuyersFilterSetsNonBillableWinningBidsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// List all reasons for which winning bids were not billable, with the number
+  /// of bids not billed for each reason.
+  ///
+  /// Request parameters:
+  ///
+  /// [filterSetName] - Name of the filter set that should be applied to the
+  /// requested metrics. For example: - For a bidder-level filter set for bidder
+  /// 123: `bidders/123/filterSets/abc` - For an account-level filter set for
+  /// the buyer account representing bidder 123:
+  /// `bidders/123/accounts/123/filterSets/abc` - For an account-level filter
+  /// set for the child seat buyer account 456 whose bidder is 123:
+  /// `bidders/123/accounts/456/filterSets/abc`
+  /// Value must have pattern `^buyers/\[^/\]+/filterSets/\[^/\]+$`.
   ///
   /// [pageSize] - Requested page size. The server may return fewer results than
   /// requested. If unspecified, the server will pick an appropriate default.

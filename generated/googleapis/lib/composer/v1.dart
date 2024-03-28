@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Cloud Composer API - v1
@@ -22,9 +21,12 @@
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsEnvironmentsResource]
+///       - [ProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResource]
+///       - [ProjectsLocationsEnvironmentsUserWorkloadsSecretsResource]
+///       - [ProjectsLocationsEnvironmentsWorkloadsResource]
 ///     - [ProjectsLocationsImageVersionsResource]
 ///     - [ProjectsLocationsOperationsResource]
-library composer_v1;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -81,6 +83,16 @@ class ProjectsLocationsResource {
 
 class ProjectsLocationsEnvironmentsResource {
   final commons.ApiRequester _requester;
+
+  ProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResource
+      get userWorkloadsConfigMaps =>
+          ProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResource(
+              _requester);
+  ProjectsLocationsEnvironmentsUserWorkloadsSecretsResource
+      get userWorkloadsSecrets =>
+          ProjectsLocationsEnvironmentsUserWorkloadsSecretsResource(_requester);
+  ProjectsLocationsEnvironmentsWorkloadsResource get workloads =>
+      ProjectsLocationsEnvironmentsWorkloadsResource(_requester);
 
   ProjectsLocationsEnvironmentsResource(commons.ApiRequester client)
       : _requester = client;
@@ -678,6 +690,543 @@ class ProjectsLocationsEnvironmentsResource {
   }
 }
 
+class ProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a user workloads ConfigMap.
+  ///
+  /// This method is supported for Cloud Composer environments in versions
+  /// composer-3.*.*-airflow-*.*.* and newer.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The environment name to create a ConfigMap for, in
+  /// the form:
+  /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/environments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [UserWorkloadsConfigMap].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<UserWorkloadsConfigMap> create(
+    UserWorkloadsConfigMap request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/userWorkloadsConfigMaps';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return UserWorkloadsConfigMap.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a user workloads ConfigMap.
+  ///
+  /// This method is supported for Cloud Composer environments in versions
+  /// composer-3.*.*-airflow-*.*.* and newer.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The ConfigMap to delete, in the form:
+  /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}/userWorkloadsConfigMaps/{userWorkloadsConfigMapId}"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/environments/\[^/\]+/userWorkloadsConfigMaps/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets an existing user workloads ConfigMap.
+  ///
+  /// This method is supported for Cloud Composer environments in versions
+  /// composer-3.*.*-airflow-*.*.* and newer.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the ConfigMap to get, in the form:
+  /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}/userWorkloadsConfigMaps/{userWorkloadsConfigMapId}"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/environments/\[^/\]+/userWorkloadsConfigMaps/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [UserWorkloadsConfigMap].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<UserWorkloadsConfigMap> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return UserWorkloadsConfigMap.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists user workloads ConfigMaps.
+  ///
+  /// This method is supported for Cloud Composer environments in versions
+  /// composer-3.*.*-airflow-*.*.* and newer.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. List ConfigMaps in the given environment, in the
+  /// form:
+  /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/environments/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of ConfigMaps to return.
+  ///
+  /// [pageToken] - Optional. The next_page_token value returned from a previous
+  /// List request, if any.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListUserWorkloadsConfigMapsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListUserWorkloadsConfigMapsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/userWorkloadsConfigMaps';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListUserWorkloadsConfigMapsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a user workloads ConfigMap.
+  ///
+  /// This method is supported for Cloud Composer environments in versions
+  /// composer-3.*.*-airflow-*.*.* and newer.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The resource name of the ConfigMap, in the form:
+  /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}/userWorkloadsConfigMaps/{userWorkloadsConfigMapId}"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/environments/\[^/\]+/userWorkloadsConfigMaps/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [UserWorkloadsConfigMap].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<UserWorkloadsConfigMap> update(
+    UserWorkloadsConfigMap request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PUT',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return UserWorkloadsConfigMap.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsEnvironmentsUserWorkloadsSecretsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsEnvironmentsUserWorkloadsSecretsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a user workloads Secret.
+  ///
+  /// This method is supported for Cloud Composer environments in versions
+  /// composer-3.*.*-airflow-*.*.* and newer.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The environment name to create a Secret for, in the
+  /// form:
+  /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/environments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [UserWorkloadsSecret].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<UserWorkloadsSecret> create(
+    UserWorkloadsSecret request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/userWorkloadsSecrets';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return UserWorkloadsSecret.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a user workloads Secret.
+  ///
+  /// This method is supported for Cloud Composer environments in versions
+  /// composer-3.*.*-airflow-*.*.* and newer.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The Secret to delete, in the form:
+  /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}/userWorkloadsSecrets/{userWorkloadsSecretId}"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/environments/\[^/\]+/userWorkloadsSecrets/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets an existing user workloads Secret.
+  ///
+  /// Values of the "data" field in the response are cleared. This method is
+  /// supported for Cloud Composer environments in versions
+  /// composer-3.*.*-airflow-*.*.* and newer.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the Secret to get, in the form:
+  /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}/userWorkloadsSecrets/{userWorkloadsSecretId}"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/environments/\[^/\]+/userWorkloadsSecrets/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [UserWorkloadsSecret].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<UserWorkloadsSecret> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return UserWorkloadsSecret.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists user workloads Secrets.
+  ///
+  /// This method is supported for Cloud Composer environments in versions
+  /// composer-3.*.*-airflow-*.*.* and newer.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. List Secrets in the given environment, in the form:
+  /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/environments/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of Secrets to return.
+  ///
+  /// [pageToken] - Optional. The next_page_token value returned from a previous
+  /// List request, if any.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListUserWorkloadsSecretsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListUserWorkloadsSecretsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/userWorkloadsSecrets';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListUserWorkloadsSecretsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a user workloads Secret.
+  ///
+  /// This method is supported for Cloud Composer environments in versions
+  /// composer-3.*.*-airflow-*.*.* and newer.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The resource name of the Secret, in the form:
+  /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}/userWorkloadsSecrets/{userWorkloadsSecretId}"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/environments/\[^/\]+/userWorkloadsSecrets/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [UserWorkloadsSecret].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<UserWorkloadsSecret> update(
+    UserWorkloadsSecret request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PUT',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return UserWorkloadsSecret.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsEnvironmentsWorkloadsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsEnvironmentsWorkloadsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists workloads in a Cloud Composer environment.
+  ///
+  /// Workload is a unit that runs a single Composer component. This method is
+  /// supported for Cloud Composer environments in versions
+  /// composer-3.*.*-airflow-*.*.* and newer.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The environment name to get workloads for, in the
+  /// form:
+  /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/environments/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. The list filter. Currently only supports equality on
+  /// the type field. The value of a field specified in the filter expression
+  /// must be one ComposerWorkloadType enum option. It's possible to get
+  /// multiple types using "OR" operator, e.g.: "type=SCHEDULER OR
+  /// type=CELERY_WORKER". If not specified, all items are returned.
+  ///
+  /// [pageSize] - Optional. The maximum number of environments to return.
+  ///
+  /// [pageToken] - Optional. The next_page_token value returned from a previous
+  /// List request, if any.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListWorkloadsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListWorkloadsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/workloads';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListWorkloadsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsLocationsImageVersionsResource {
   final commons.ApiRequester _requester;
 
@@ -873,6 +1422,44 @@ class ProjectsLocationsOperationsResource {
   }
 }
 
+/// The policy for airflow metadata database retention.
+class AirflowMetadataRetentionPolicyConfig {
+  /// How many days data should be retained for.
+  ///
+  /// Optional.
+  core.int? retentionDays;
+
+  /// Retention can be either enabled or disabled.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "RETENTION_MODE_UNSPECIFIED" : Default mode doesn't change environment
+  /// parameters.
+  /// - "RETENTION_MODE_ENABLED" : Retention policy is enabled.
+  /// - "RETENTION_MODE_DISABLED" : Retention policy is disabled.
+  core.String? retentionMode;
+
+  AirflowMetadataRetentionPolicyConfig({
+    this.retentionDays,
+    this.retentionMode,
+  });
+
+  AirflowMetadataRetentionPolicyConfig.fromJson(core.Map json_)
+      : this(
+          retentionDays: json_.containsKey('retentionDays')
+              ? json_['retentionDays'] as core.int
+              : null,
+          retentionMode: json_.containsKey('retentionMode')
+              ? json_['retentionMode'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (retentionDays != null) 'retentionDays': retentionDays!,
+        if (retentionMode != null) 'retentionMode': retentionMode!,
+      };
+}
+
 /// Allowed IP range with user-provided description.
 class AllowedIpRange {
   /// User-provided description.
@@ -941,6 +1528,225 @@ class CidrBlock {
       };
 }
 
+/// Configuration for Cloud Data Lineage integration.
+class CloudDataLineageIntegration {
+  /// Whether or not Cloud Data Lineage integration is enabled.
+  ///
+  /// Optional.
+  core.bool? enabled;
+
+  CloudDataLineageIntegration({
+    this.enabled,
+  });
+
+  CloudDataLineageIntegration.fromJson(core.Map json_)
+      : this(
+          enabled: json_.containsKey('enabled')
+              ? json_['enabled'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
+      };
+}
+
+/// Information about a single workload.
+class ComposerWorkload {
+  /// Name of a workload.
+  core.String? name;
+
+  /// Status of a workload.
+  ///
+  /// Output only.
+  ComposerWorkloadStatus? status;
+
+  /// Type of a workload.
+  /// Possible string values are:
+  /// - "COMPOSER_WORKLOAD_TYPE_UNSPECIFIED" : Not able to determine the type of
+  /// the workload.
+  /// - "CELERY_WORKER" : Celery worker.
+  /// - "KUBERNETES_WORKER" : Kubernetes worker.
+  /// - "KUBERNETES_OPERATOR_POD" : Workload created by Kubernetes Pod Operator.
+  /// - "SCHEDULER" : Airflow scheduler.
+  /// - "DAG_PROCESSOR" : Airflow Dag processor.
+  /// - "TRIGGERER" : Airflow triggerer.
+  /// - "WEB_SERVER" : Airflow web server UI.
+  /// - "REDIS" : Redis.
+  core.String? type;
+
+  ComposerWorkload({
+    this.name,
+    this.status,
+    this.type,
+  });
+
+  ComposerWorkload.fromJson(core.Map json_)
+      : this(
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          status: json_.containsKey('status')
+              ? ComposerWorkloadStatus.fromJson(
+                  json_['status'] as core.Map<core.String, core.dynamic>)
+              : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (status != null) 'status': status!,
+        if (type != null) 'type': type!,
+      };
+}
+
+/// Workload status.
+class ComposerWorkloadStatus {
+  /// Detailed message of the status.
+  ///
+  /// Output only.
+  core.String? detailedStatusMessage;
+
+  /// Workload state.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "COMPOSER_WORKLOAD_STATE_UNSPECIFIED" : Not able to determine the status
+  /// of the workload.
+  /// - "PENDING" : Workload is in pending state and has not yet started.
+  /// - "OK" : Workload is running fine.
+  /// - "WARNING" : Workload is running but there are some non-critical
+  /// problems.
+  /// - "ERROR" : Workload is not running due to an error.
+  /// - "SUCCEEDED" : Workload has finished execution with success.
+  /// - "FAILED" : Workload has finished execution with failure.
+  core.String? state;
+
+  /// Text to provide more descriptive status.
+  ///
+  /// Output only.
+  core.String? statusMessage;
+
+  ComposerWorkloadStatus({
+    this.detailedStatusMessage,
+    this.state,
+    this.statusMessage,
+  });
+
+  ComposerWorkloadStatus.fromJson(core.Map json_)
+      : this(
+          detailedStatusMessage: json_.containsKey('detailedStatusMessage')
+              ? json_['detailedStatusMessage'] as core.String
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          statusMessage: json_.containsKey('statusMessage')
+              ? json_['statusMessage'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (detailedStatusMessage != null)
+          'detailedStatusMessage': detailedStatusMessage!,
+        if (state != null) 'state': state!,
+        if (statusMessage != null) 'statusMessage': statusMessage!,
+      };
+}
+
+/// Configuration for resources used by Airflow DAG processors.
+class DagProcessorResource {
+  /// The number of DAG processors.
+  ///
+  /// If not provided or set to 0, a single DAG processor instance will be
+  /// created.
+  ///
+  /// Optional.
+  core.int? count;
+
+  /// CPU request and limit for a single Airflow DAG processor replica.
+  ///
+  /// Optional.
+  core.double? cpu;
+
+  /// Memory (GB) request and limit for a single Airflow DAG processor replica.
+  ///
+  /// Optional.
+  core.double? memoryGb;
+
+  /// Storage (GB) request and limit for a single Airflow DAG processor replica.
+  ///
+  /// Optional.
+  core.double? storageGb;
+
+  DagProcessorResource({
+    this.count,
+    this.cpu,
+    this.memoryGb,
+    this.storageGb,
+  });
+
+  DagProcessorResource.fromJson(core.Map json_)
+      : this(
+          count: json_.containsKey('count') ? json_['count'] as core.int : null,
+          cpu: json_.containsKey('cpu')
+              ? (json_['cpu'] as core.num).toDouble()
+              : null,
+          memoryGb: json_.containsKey('memoryGb')
+              ? (json_['memoryGb'] as core.num).toDouble()
+              : null,
+          storageGb: json_.containsKey('storageGb')
+              ? (json_['storageGb'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (count != null) 'count': count!,
+        if (cpu != null) 'cpu': cpu!,
+        if (memoryGb != null) 'memoryGb': memoryGb!,
+        if (storageGb != null) 'storageGb': storageGb!,
+      };
+}
+
+/// The configuration setting for Airflow database data retention mechanism.
+class DataRetentionConfig {
+  /// The retention policy for airflow metadata database.
+  ///
+  /// Details: go/composer-database-retention-2
+  ///
+  /// Optional.
+  AirflowMetadataRetentionPolicyConfig? airflowMetadataRetentionConfig;
+
+  /// The configuration settings for task logs retention
+  ///
+  /// Optional.
+  TaskLogsRetentionConfig? taskLogsRetentionConfig;
+
+  DataRetentionConfig({
+    this.airflowMetadataRetentionConfig,
+    this.taskLogsRetentionConfig,
+  });
+
+  DataRetentionConfig.fromJson(core.Map json_)
+      : this(
+          airflowMetadataRetentionConfig:
+              json_.containsKey('airflowMetadataRetentionConfig')
+                  ? AirflowMetadataRetentionPolicyConfig.fromJson(
+                      json_['airflowMetadataRetentionConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          taskLogsRetentionConfig: json_.containsKey('taskLogsRetentionConfig')
+              ? TaskLogsRetentionConfig.fromJson(
+                  json_['taskLogsRetentionConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (airflowMetadataRetentionConfig != null)
+          'airflowMetadataRetentionConfig': airflowMetadataRetentionConfig!,
+        if (taskLogsRetentionConfig != null)
+          'taskLogsRetentionConfig': taskLogsRetentionConfig!,
+      };
+}
+
 /// The configuration of Cloud SQL instance that is used by the Apache Airflow
 /// software.
 class DatabaseConfig {
@@ -954,8 +1760,19 @@ class DatabaseConfig {
   /// Optional.
   core.String? machineType;
 
+  /// The Compute Engine zone where the Airflow database is created.
+  ///
+  /// If zone is provided, it must be in the region selected for the
+  /// environment. If zone is not provided, a zone is automatically selected.
+  /// The zone can only be set during environment creation. Supported for Cloud
+  /// Composer environments in versions composer-2.*.*-airflow-*.*.*.
+  ///
+  /// Optional.
+  core.String? zone;
+
   DatabaseConfig({
     this.machineType,
+    this.zone,
   });
 
   DatabaseConfig.fromJson(core.Map json_)
@@ -963,10 +1780,12 @@ class DatabaseConfig {
           machineType: json_.containsKey('machineType')
               ? json_['machineType'] as core.String
               : null,
+          zone: json_.containsKey('zone') ? json_['zone'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (machineType != null) 'machineType': machineType!,
+        if (zone != null) 'zone': zone!,
       };
 }
 
@@ -1049,6 +1868,11 @@ class Environment {
   /// lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
   core.String? name;
 
+  /// Reserved for future use.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzs;
+
   /// The current state of the environment.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : The state of the environment is unknown.
@@ -1060,6 +1884,11 @@ class Environment {
   /// - "DELETING" : The environment is undergoing deletion. It cannot be used.
   /// - "ERROR" : The environment has encountered an error and cannot be used.
   core.String? state;
+
+  /// Storage configuration for this environment.
+  ///
+  /// Optional.
+  StorageConfig? storageConfig;
 
   /// The time at which this environment was last modified.
   ///
@@ -1078,7 +1907,9 @@ class Environment {
     this.createTime,
     this.labels,
     this.name,
+    this.satisfiesPzs,
     this.state,
+    this.storageConfig,
     this.updateTime,
     this.uuid,
   });
@@ -1101,8 +1932,15 @@ class Environment {
                 )
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          satisfiesPzs: json_.containsKey('satisfiesPzs')
+              ? json_['satisfiesPzs'] as core.bool
+              : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
+          storageConfig: json_.containsKey('storageConfig')
+              ? StorageConfig.fromJson(
+                  json_['storageConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
           updateTime: json_.containsKey('updateTime')
               ? json_['updateTime'] as core.String
               : null,
@@ -1114,7 +1952,9 @@ class Environment {
         if (createTime != null) 'createTime': createTime!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (state != null) 'state': state!,
+        if (storageConfig != null) 'storageConfig': storageConfig!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (uuid != null) 'uuid': uuid!,
       };
@@ -1147,6 +1987,11 @@ class EnvironmentConfig {
   ///
   /// Output only.
   core.String? dagGcsPrefix;
+
+  /// The configuration setting for Airflow database data retention mechanism.
+  ///
+  /// Optional.
+  DataRetentionConfig? dataRetentionConfig;
 
   /// The configuration settings for Cloud SQL instance used internally by
   /// Apache Airflow software.
@@ -1268,6 +2113,7 @@ class EnvironmentConfig {
     this.airflowByoidUri,
     this.airflowUri,
     this.dagGcsPrefix,
+    this.dataRetentionConfig,
     this.databaseConfig,
     this.encryptionConfig,
     this.environmentSize,
@@ -1295,6 +2141,10 @@ class EnvironmentConfig {
               : null,
           dagGcsPrefix: json_.containsKey('dagGcsPrefix')
               ? json_['dagGcsPrefix'] as core.String
+              : null,
+          dataRetentionConfig: json_.containsKey('dataRetentionConfig')
+              ? DataRetentionConfig.fromJson(json_['dataRetentionConfig']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           databaseConfig: json_.containsKey('databaseConfig')
               ? DatabaseConfig.fromJson(json_['databaseConfig']
@@ -1364,6 +2214,8 @@ class EnvironmentConfig {
         if (airflowByoidUri != null) 'airflowByoidUri': airflowByoidUri!,
         if (airflowUri != null) 'airflowUri': airflowUri!,
         if (dagGcsPrefix != null) 'dagGcsPrefix': dagGcsPrefix!,
+        if (dataRetentionConfig != null)
+          'dataRetentionConfig': dataRetentionConfig!,
         if (databaseConfig != null) 'databaseConfig': databaseConfig!,
         if (encryptionConfig != null) 'encryptionConfig': encryptionConfig!,
         if (environmentSize != null) 'environmentSize': environmentSize!,
@@ -1840,6 +2692,104 @@ class ListOperationsResponse {
       };
 }
 
+/// The user workloads ConfigMaps for a given environment.
+class ListUserWorkloadsConfigMapsResponse {
+  /// The page token used to query for the next page if one exists.
+  core.String? nextPageToken;
+
+  /// The list of ConfigMaps returned by a ListUserWorkloadsConfigMapsRequest.
+  core.List<UserWorkloadsConfigMap>? userWorkloadsConfigMaps;
+
+  ListUserWorkloadsConfigMapsResponse({
+    this.nextPageToken,
+    this.userWorkloadsConfigMaps,
+  });
+
+  ListUserWorkloadsConfigMapsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          userWorkloadsConfigMaps: json_.containsKey('userWorkloadsConfigMaps')
+              ? (json_['userWorkloadsConfigMaps'] as core.List)
+                  .map((value) => UserWorkloadsConfigMap.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (userWorkloadsConfigMaps != null)
+          'userWorkloadsConfigMaps': userWorkloadsConfigMaps!,
+      };
+}
+
+/// The user workloads Secrets for a given environment.
+class ListUserWorkloadsSecretsResponse {
+  /// The page token used to query for the next page if one exists.
+  core.String? nextPageToken;
+
+  /// The list of Secrets returned by a ListUserWorkloadsSecretsRequest.
+  core.List<UserWorkloadsSecret>? userWorkloadsSecrets;
+
+  ListUserWorkloadsSecretsResponse({
+    this.nextPageToken,
+    this.userWorkloadsSecrets,
+  });
+
+  ListUserWorkloadsSecretsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          userWorkloadsSecrets: json_.containsKey('userWorkloadsSecrets')
+              ? (json_['userWorkloadsSecrets'] as core.List)
+                  .map((value) => UserWorkloadsSecret.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (userWorkloadsSecrets != null)
+          'userWorkloadsSecrets': userWorkloadsSecrets!,
+      };
+}
+
+/// Response to ListWorkloadsRequest.
+class ListWorkloadsResponse {
+  /// The page token used to query for the next page if one exists.
+  core.String? nextPageToken;
+
+  /// The list of environment workloads.
+  core.List<ComposerWorkload>? workloads;
+
+  ListWorkloadsResponse({
+    this.nextPageToken,
+    this.workloads,
+  });
+
+  ListWorkloadsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          workloads: json_.containsKey('workloads')
+              ? (json_['workloads'] as core.List)
+                  .map((value) => ComposerWorkload.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (workloads != null) 'workloads': workloads!,
+      };
+}
+
 /// Request to load a snapshot into a Cloud Composer environment.
 class LoadSnapshotRequest {
   /// Whether or not to skip setting Airflow overrides when loading the
@@ -2036,6 +2986,33 @@ class NetworkingConfig {
 /// The configuration information for the Kubernetes Engine nodes running the
 /// Apache Airflow software.
 class NodeConfig {
+  /// The IP range in CIDR notation to use internally by Cloud Composer.
+  ///
+  /// IP addresses are not reserved - and the same range can be used by multiple
+  /// Cloud Composer environments. In case of overlap, IPs from this range will
+  /// not be accessible in the user's VPC network. Cannot be updated. If not
+  /// specified, the default value of '100.64.128.0/20' is used. This field is
+  /// supported for Cloud Composer environments in versions
+  /// composer-3.*.*-airflow-*.*.* and newer.
+  ///
+  /// Optional.
+  core.String? composerInternalIpv4CidrBlock;
+
+  /// Network Attachment that Cloud Composer environment is connected to, which
+  /// provides connectivity with a user's VPC network.
+  ///
+  /// Takes precedence over network and subnetwork settings. If not provided,
+  /// but network and subnetwork are defined during environment, it will be
+  /// provisioned. If not provided and network and subnetwork are also empty,
+  /// then connectivity to user's VPC network is disabled. Network attachment
+  /// must be provided in format
+  /// projects/{project}/regions/{region}/networkAttachments/{networkAttachment}.
+  /// This field is supported for Cloud Composer environments in versions
+  /// composer-3.*.*-airflow-*.*.* and newer.
+  ///
+  /// Optional.
+  core.String? composerNetworkAttachment;
+
   /// The disk size in GB used for node VMs.
   ///
   /// Minimum size is 30GB. If unspecified, defaults to 100GB. Cannot be
@@ -2158,6 +3135,8 @@ class NodeConfig {
   core.List<core.String>? tags;
 
   NodeConfig({
+    this.composerInternalIpv4CidrBlock,
+    this.composerNetworkAttachment,
     this.diskSizeGb,
     this.enableIpMasqAgent,
     this.ipAllocationPolicy,
@@ -2172,6 +3151,14 @@ class NodeConfig {
 
   NodeConfig.fromJson(core.Map json_)
       : this(
+          composerInternalIpv4CidrBlock:
+              json_.containsKey('composerInternalIpv4CidrBlock')
+                  ? json_['composerInternalIpv4CidrBlock'] as core.String
+                  : null,
+          composerNetworkAttachment:
+              json_.containsKey('composerNetworkAttachment')
+                  ? json_['composerNetworkAttachment'] as core.String
+                  : null,
           diskSizeGb: json_.containsKey('diskSizeGb')
               ? json_['diskSizeGb'] as core.int
               : null,
@@ -2210,6 +3197,10 @@ class NodeConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (composerInternalIpv4CidrBlock != null)
+          'composerInternalIpv4CidrBlock': composerInternalIpv4CidrBlock!,
+        if (composerNetworkAttachment != null)
+          'composerNetworkAttachment': composerNetworkAttachment!,
         if (diskSizeGb != null) 'diskSizeGb': diskSizeGb!,
         if (enableIpMasqAgent != null) 'enableIpMasqAgent': enableIpMasqAgent!,
         if (ipAllocationPolicy != null)
@@ -2254,7 +3245,7 @@ class Operation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard
@@ -2478,6 +3469,19 @@ class PrivateEnvironmentConfig {
   /// Optional.
   core.String? cloudSqlIpv4CidrBlock;
 
+  /// If `true`, builds performed during operations that install Python packages
+  /// have only private connectivity to Google services (including Artifact
+  /// Registry) and VPC network (if either `NodeConfig.network` and
+  /// `NodeConfig.subnetwork` fields or `NodeConfig.composer_network_attachment`
+  /// field are specified).
+  ///
+  /// If `false`, the builds also have access to the internet. This field is
+  /// supported for Cloud Composer environments in versions
+  /// composer-3.*.*-airflow-*.*.* and newer.
+  ///
+  /// Optional.
+  core.bool? enablePrivateBuildsOnly;
+
   /// If `true`, a Private IP Cloud Composer environment is created.
   ///
   /// If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be
@@ -2528,6 +3532,7 @@ class PrivateEnvironmentConfig {
     this.cloudComposerNetworkIpv4CidrBlock,
     this.cloudComposerNetworkIpv4ReservedRange,
     this.cloudSqlIpv4CidrBlock,
+    this.enablePrivateBuildsOnly,
     this.enablePrivateEnvironment,
     this.enablePrivatelyUsedPublicIps,
     this.networkingConfig,
@@ -2552,6 +3557,9 @@ class PrivateEnvironmentConfig {
               : null,
           cloudSqlIpv4CidrBlock: json_.containsKey('cloudSqlIpv4CidrBlock')
               ? json_['cloudSqlIpv4CidrBlock'] as core.String
+              : null,
+          enablePrivateBuildsOnly: json_.containsKey('enablePrivateBuildsOnly')
+              ? json_['enablePrivateBuildsOnly'] as core.bool
               : null,
           enablePrivateEnvironment:
               json_.containsKey('enablePrivateEnvironment')
@@ -2590,6 +3598,8 @@ class PrivateEnvironmentConfig {
               cloudComposerNetworkIpv4ReservedRange!,
         if (cloudSqlIpv4CidrBlock != null)
           'cloudSqlIpv4CidrBlock': cloudSqlIpv4CidrBlock!,
+        if (enablePrivateBuildsOnly != null)
+          'enablePrivateBuildsOnly': enablePrivateBuildsOnly!,
         if (enablePrivateEnvironment != null)
           'enablePrivateEnvironment': enablePrivateEnvironment!,
         if (enablePrivatelyUsedPublicIps != null)
@@ -2784,6 +3794,11 @@ class SoftwareConfig {
   /// Optional.
   core.Map<core.String, core.String>? airflowConfigOverrides;
 
+  /// The configuration for Cloud Data Lineage integration.
+  ///
+  /// Optional.
+  CloudDataLineageIntegration? cloudDataLineageIntegration;
+
   /// Additional environment variables to provide to the Apache Airflow
   /// scheduler, worker, and webserver processes.
   ///
@@ -2853,13 +3868,28 @@ class SoftwareConfig {
   /// Optional.
   core.int? schedulerCount;
 
+  /// Whether or not the web server uses custom plugins.
+  ///
+  /// If unspecified, the field defaults to `PLUGINS_ENABLED`. This field is
+  /// supported for Cloud Composer environments in versions
+  /// composer-3.*.*-airflow-*.*.* and newer.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "WEB_SERVER_PLUGINS_MODE_UNSPECIFIED" : Default mode.
+  /// - "PLUGINS_DISABLED" : Web server plugins are not supported.
+  /// - "PLUGINS_ENABLED" : Web server plugins are supported.
+  core.String? webServerPluginsMode;
+
   SoftwareConfig({
     this.airflowConfigOverrides,
+    this.cloudDataLineageIntegration,
     this.envVariables,
     this.imageVersion,
     this.pypiPackages,
     this.pythonVersion,
     this.schedulerCount,
+    this.webServerPluginsMode,
   });
 
   SoftwareConfig.fromJson(core.Map json_)
@@ -2874,6 +3904,12 @@ class SoftwareConfig {
                   ),
                 )
               : null,
+          cloudDataLineageIntegration:
+              json_.containsKey('cloudDataLineageIntegration')
+                  ? CloudDataLineageIntegration.fromJson(
+                      json_['cloudDataLineageIntegration']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           envVariables: json_.containsKey('envVariables')
               ? (json_['envVariables'] as core.Map<core.String, core.dynamic>)
                   .map(
@@ -2901,16 +3937,23 @@ class SoftwareConfig {
           schedulerCount: json_.containsKey('schedulerCount')
               ? json_['schedulerCount'] as core.int
               : null,
+          webServerPluginsMode: json_.containsKey('webServerPluginsMode')
+              ? json_['webServerPluginsMode'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (airflowConfigOverrides != null)
           'airflowConfigOverrides': airflowConfigOverrides!,
+        if (cloudDataLineageIntegration != null)
+          'cloudDataLineageIntegration': cloudDataLineageIntegration!,
         if (envVariables != null) 'envVariables': envVariables!,
         if (imageVersion != null) 'imageVersion': imageVersion!,
         if (pypiPackages != null) 'pypiPackages': pypiPackages!,
         if (pythonVersion != null) 'pythonVersion': pythonVersion!,
         if (schedulerCount != null) 'schedulerCount': schedulerCount!,
+        if (webServerPluginsMode != null)
+          'webServerPluginsMode': webServerPluginsMode!,
       };
 }
 
@@ -2994,6 +4037,187 @@ class StopAirflowCommandResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (isDone != null) 'isDone': isDone!,
         if (output != null) 'output': output!,
+      };
+}
+
+/// The configuration for data storage in the environment.
+class StorageConfig {
+  /// The name of the Cloud Storage bucket used by the environment.
+  ///
+  /// No `gs://` prefix.
+  ///
+  /// Optional.
+  core.String? bucket;
+
+  StorageConfig({
+    this.bucket,
+  });
+
+  StorageConfig.fromJson(core.Map json_)
+      : this(
+          bucket: json_.containsKey('bucket')
+              ? json_['bucket'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bucket != null) 'bucket': bucket!,
+      };
+}
+
+/// The configuration setting for Task Logs.
+class TaskLogsRetentionConfig {
+  /// The mode of storage for Airflow workers task logs.
+  ///
+  /// For details, see
+  /// go/composer-store-task-logs-in-cloud-logging-only-design-doc
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "TASK_LOGS_STORAGE_MODE_UNSPECIFIED" : This configuration is not
+  /// specified by the user.
+  /// - "CLOUD_LOGGING_AND_CLOUD_STORAGE" : Store task logs in Cloud Logging and
+  /// in the environment's Cloud Storage bucket.
+  /// - "CLOUD_LOGGING_ONLY" : Store task logs in Cloud Logging only.
+  core.String? storageMode;
+
+  TaskLogsRetentionConfig({
+    this.storageMode,
+  });
+
+  TaskLogsRetentionConfig.fromJson(core.Map json_)
+      : this(
+          storageMode: json_.containsKey('storageMode')
+              ? json_['storageMode'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (storageMode != null) 'storageMode': storageMode!,
+      };
+}
+
+/// Configuration for resources used by Airflow triggerers.
+class TriggererResource {
+  /// The number of triggerers.
+  ///
+  /// Optional.
+  core.int? count;
+
+  /// CPU request and limit for a single Airflow triggerer replica.
+  ///
+  /// Optional.
+  core.double? cpu;
+
+  /// Memory (GB) request and limit for a single Airflow triggerer replica.
+  ///
+  /// Optional.
+  core.double? memoryGb;
+
+  TriggererResource({
+    this.count,
+    this.cpu,
+    this.memoryGb,
+  });
+
+  TriggererResource.fromJson(core.Map json_)
+      : this(
+          count: json_.containsKey('count') ? json_['count'] as core.int : null,
+          cpu: json_.containsKey('cpu')
+              ? (json_['cpu'] as core.num).toDouble()
+              : null,
+          memoryGb: json_.containsKey('memoryGb')
+              ? (json_['memoryGb'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (count != null) 'count': count!,
+        if (cpu != null) 'cpu': cpu!,
+        if (memoryGb != null) 'memoryGb': memoryGb!,
+      };
+}
+
+/// User workloads ConfigMap used by Airflow tasks that run with Kubernetes
+/// executor or KubernetesPodOperator.
+class UserWorkloadsConfigMap {
+  /// The "data" field of Kubernetes ConfigMap, organized in key-value pairs.
+  ///
+  /// For details see:
+  /// https://kubernetes.io/docs/concepts/configuration/configmap/
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? data;
+
+  /// Identifier.
+  ///
+  /// The resource name of the ConfigMap, in the form:
+  /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}/userWorkloadsConfigMaps/{userWorkloadsConfigMapId}"
+  core.String? name;
+
+  UserWorkloadsConfigMap({
+    this.data,
+    this.name,
+  });
+
+  UserWorkloadsConfigMap.fromJson(core.Map json_)
+      : this(
+          data: json_.containsKey('data')
+              ? (json_['data'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (data != null) 'data': data!,
+        if (name != null) 'name': name!,
+      };
+}
+
+/// User workloads Secret used by Airflow tasks that run with Kubernetes
+/// executor or KubernetesPodOperator.
+class UserWorkloadsSecret {
+  /// The "data" field of Kubernetes Secret, organized in key-value pairs, which
+  /// can contain sensitive values such as a password, a token, or a key.
+  ///
+  /// The values for all keys have to be base64-encoded strings. For details
+  /// see: https://kubernetes.io/docs/concepts/configuration/secret/
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? data;
+
+  /// Identifier.
+  ///
+  /// The resource name of the Secret, in the form:
+  /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}/userWorkloadsSecrets/{userWorkloadsSecretId}"
+  core.String? name;
+
+  UserWorkloadsSecret({
+    this.data,
+    this.name,
+  });
+
+  UserWorkloadsSecret.fromJson(core.Map json_)
+      : this(
+          data: json_.containsKey('data')
+              ? (json_['data'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (data != null) 'data': data!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -3164,10 +4388,23 @@ class WorkerResource {
 /// Supported for Cloud Composer environments in versions
 /// composer-2.*.*-airflow-*.*.* and newer.
 class WorkloadsConfig {
+  /// Resources used by Airflow DAG processors.
+  ///
+  /// This field is supported for Cloud Composer environments in versions
+  /// composer-3.*.*-airflow-*.*.* and newer.
+  ///
+  /// Optional.
+  DagProcessorResource? dagProcessor;
+
   /// Resources used by Airflow schedulers.
   ///
   /// Optional.
   SchedulerResource? scheduler;
+
+  /// Resources used by Airflow triggerers.
+  ///
+  /// Optional.
+  TriggererResource? triggerer;
 
   /// Resources used by Airflow web server.
   ///
@@ -3180,16 +4417,26 @@ class WorkloadsConfig {
   WorkerResource? worker;
 
   WorkloadsConfig({
+    this.dagProcessor,
     this.scheduler,
+    this.triggerer,
     this.webServer,
     this.worker,
   });
 
   WorkloadsConfig.fromJson(core.Map json_)
       : this(
+          dagProcessor: json_.containsKey('dagProcessor')
+              ? DagProcessorResource.fromJson(
+                  json_['dagProcessor'] as core.Map<core.String, core.dynamic>)
+              : null,
           scheduler: json_.containsKey('scheduler')
               ? SchedulerResource.fromJson(
                   json_['scheduler'] as core.Map<core.String, core.dynamic>)
+              : null,
+          triggerer: json_.containsKey('triggerer')
+              ? TriggererResource.fromJson(
+                  json_['triggerer'] as core.Map<core.String, core.dynamic>)
               : null,
           webServer: json_.containsKey('webServer')
               ? WebServerResource.fromJson(
@@ -3202,7 +4449,9 @@ class WorkloadsConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (dagProcessor != null) 'dagProcessor': dagProcessor!,
         if (scheduler != null) 'scheduler': scheduler!,
+        if (triggerer != null) 'triggerer': triggerer!,
         if (webServer != null) 'webServer': webServer!,
         if (worker != null) 'worker': worker!,
       };

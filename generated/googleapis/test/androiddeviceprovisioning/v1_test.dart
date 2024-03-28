@@ -10,7 +10,6 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 // ignore_for_file: unreachable_from_main
 // ignore_for_file: unused_local_variable
@@ -30,6 +29,7 @@ api.ClaimDeviceRequest buildClaimDeviceRequest() {
   final o = api.ClaimDeviceRequest();
   buildCounterClaimDeviceRequest++;
   if (buildCounterClaimDeviceRequest < 3) {
+    o.configurationId = 'foo';
     o.customerId = 'foo';
     o.deviceIdentifier = buildDeviceIdentifier();
     o.deviceMetadata = buildDeviceMetadata();
@@ -45,6 +45,10 @@ api.ClaimDeviceRequest buildClaimDeviceRequest() {
 void checkClaimDeviceRequest(api.ClaimDeviceRequest o) {
   buildCounterClaimDeviceRequest++;
   if (buildCounterClaimDeviceRequest < 3) {
+    unittest.expect(
+      o.configurationId!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.customerId!,
       unittest.equals('foo'),
@@ -940,6 +944,47 @@ void checkFindDevicesByOwnerResponse(api.FindDevicesByOwnerResponse o) {
   buildCounterFindDevicesByOwnerResponse--;
 }
 
+core.int buildCounterGetDeviceSimLockStateRequest = 0;
+api.GetDeviceSimLockStateRequest buildGetDeviceSimLockStateRequest() {
+  final o = api.GetDeviceSimLockStateRequest();
+  buildCounterGetDeviceSimLockStateRequest++;
+  if (buildCounterGetDeviceSimLockStateRequest < 3) {
+    o.deviceIdentifier = buildDeviceIdentifier();
+  }
+  buildCounterGetDeviceSimLockStateRequest--;
+  return o;
+}
+
+void checkGetDeviceSimLockStateRequest(api.GetDeviceSimLockStateRequest o) {
+  buildCounterGetDeviceSimLockStateRequest++;
+  if (buildCounterGetDeviceSimLockStateRequest < 3) {
+    checkDeviceIdentifier(o.deviceIdentifier!);
+  }
+  buildCounterGetDeviceSimLockStateRequest--;
+}
+
+core.int buildCounterGetDeviceSimLockStateResponse = 0;
+api.GetDeviceSimLockStateResponse buildGetDeviceSimLockStateResponse() {
+  final o = api.GetDeviceSimLockStateResponse();
+  buildCounterGetDeviceSimLockStateResponse++;
+  if (buildCounterGetDeviceSimLockStateResponse < 3) {
+    o.simLockState = 'foo';
+  }
+  buildCounterGetDeviceSimLockStateResponse--;
+  return o;
+}
+
+void checkGetDeviceSimLockStateResponse(api.GetDeviceSimLockStateResponse o) {
+  buildCounterGetDeviceSimLockStateResponse++;
+  if (buildCounterGetDeviceSimLockStateResponse < 3) {
+    unittest.expect(
+      o.simLockState!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGetDeviceSimLockStateResponse--;
+}
+
 core.List<core.String> buildUnnamed13() => [
       'foo',
       'foo',
@@ -1226,6 +1271,7 @@ api.PartnerClaim buildPartnerClaim() {
   final o = api.PartnerClaim();
   buildCounterPartnerClaim++;
   if (buildCounterPartnerClaim < 3) {
+    o.configurationId = 'foo';
     o.customerId = 'foo';
     o.deviceIdentifier = buildDeviceIdentifier();
     o.deviceMetadata = buildDeviceMetadata();
@@ -1241,6 +1287,10 @@ api.PartnerClaim buildPartnerClaim() {
 void checkPartnerClaim(api.PartnerClaim o) {
   buildCounterPartnerClaim++;
   if (buildCounterPartnerClaim < 3) {
+    unittest.expect(
+      o.configurationId!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.customerId!,
       unittest.equals('foo'),
@@ -1774,6 +1824,26 @@ void main() {
       final od = api.FindDevicesByOwnerResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkFindDevicesByOwnerResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-GetDeviceSimLockStateRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGetDeviceSimLockStateRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GetDeviceSimLockStateRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGetDeviceSimLockStateRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-GetDeviceSimLockStateResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGetDeviceSimLockStateResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GetDeviceSimLockStateResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGetDeviceSimLockStateResponse(od);
     });
   });
 
@@ -3072,6 +3142,65 @@ void main() {
       }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
       checkDevice(response as api.Device);
+    });
+
+    unittest.test('method--getSimLockState', () async {
+      final mock = HttpServerMock();
+      final res = api.AndroidProvisioningPartnerApi(mock).partners.devices;
+      final arg_request = buildGetDeviceSimLockStateRequest();
+      final arg_partnerId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GetDeviceSimLockStateRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGetDeviceSimLockStateRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals('v1/partners/'),
+        );
+        pathOffset += 12;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGetDeviceSimLockStateResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.getSimLockState(arg_request, arg_partnerId,
+          $fields: arg_$fields);
+      checkGetDeviceSimLockStateResponse(
+          response as api.GetDeviceSimLockStateResponse);
     });
 
     unittest.test('method--metadata', () async {

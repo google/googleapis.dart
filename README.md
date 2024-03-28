@@ -531,7 +531,7 @@ or [prediction](https://cloud.google.com/prediction/docs/developer-guide).
 * Update `config.yaml` with a new version number and generate again.
 
   ```console
-  $ dart bin/generate.dart run_config generate
+  $ dart generator/bin/generate.dart run_config generate
   ```
 
 * Run the tests.
@@ -547,6 +547,19 @@ or [prediction](https://cloud.google.com/prediction/docs/developer-guide).
   ```
 
 * Commit the downloaded discovery documents and generated packages.
+
+### Overrides
+
+If you ever need to ignore a specific API method or make a manual change to anything inside `discovery/`, 
+you should add the relevant diff to the `overrides/` directory.
+
+* Make changes to the `overrides/<desired-api>.json` file.
+* Run `git diff overrides/<desired-api>.json > overrides/<name>.diff` to create a diff file.
+
+**Note:**
+The name of the diff file is not important, but if possible, it is advised to associate the name
+with the relevant GitHub issue. For example, if your manual change is related to issue #123, 
+then the diff file should be named `i123.diff`.
 
 ## What next?
 

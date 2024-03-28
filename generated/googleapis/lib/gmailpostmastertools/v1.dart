@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Gmail Postmaster Tools API - v1
@@ -23,7 +22,7 @@
 ///
 /// - [DomainsResource]
 ///   - [DomainsTrafficStatsResource]
-library gmailpostmastertools_v1;
+library;
 
 import 'dart:async' as async;
 import 'dart:core' as core;
@@ -639,9 +638,32 @@ class TrafficStats {
 
   /// The ratio of user-report spam vs.
   ///
-  /// email that was sent to the inbox. This metric only pertains to emails
+  /// email that was sent to the inbox. This is potentially inexact -- users may
+  /// want to refer to the description of the interval fields
+  /// userReportedSpamRatioLowerBound and userReportedSpamRatioUpperBound for
+  /// more explicit accuracy guarantees. This metric only pertains to emails
   /// authenticated by [DKIM](http://www.dkim.org/).
   core.double? userReportedSpamRatio;
+
+  /// The lower bound of the confidence interval for the user reported spam
+  /// ratio.
+  ///
+  /// If this field is set, then the value of userReportedSpamRatio is set to
+  /// the midpoint of this interval and is thus inexact. However, the true ratio
+  /// is guaranteed to be in between this lower bound and the corresponding
+  /// upper bound 95% of the time. This metric only pertains to emails
+  /// authenticated by [DKIM](http://www.dkim.org/).
+  core.double? userReportedSpamRatioLowerBound;
+
+  /// The upper bound of the confidence interval for the user reported spam
+  /// ratio.
+  ///
+  /// If this field is set, then the value of userReportedSpamRatio is set to
+  /// the midpoint of this interval and is thus inexact. However, the true ratio
+  /// is guaranteed to be in between this upper bound and the corresponding
+  /// lower bound 95% of the time. This metric only pertains to emails
+  /// authenticated by [DKIM](http://www.dkim.org/).
+  core.double? userReportedSpamRatioUpperBound;
 
   TrafficStats({
     this.deliveryErrors,
@@ -655,6 +677,8 @@ class TrafficStats {
     this.spammyFeedbackLoops,
     this.spfSuccessRatio,
     this.userReportedSpamRatio,
+    this.userReportedSpamRatioLowerBound,
+    this.userReportedSpamRatioUpperBound,
   });
 
   TrafficStats.fromJson(core.Map json_)
@@ -699,6 +723,16 @@ class TrafficStats {
           userReportedSpamRatio: json_.containsKey('userReportedSpamRatio')
               ? (json_['userReportedSpamRatio'] as core.num).toDouble()
               : null,
+          userReportedSpamRatioLowerBound:
+              json_.containsKey('userReportedSpamRatioLowerBound')
+                  ? (json_['userReportedSpamRatioLowerBound'] as core.num)
+                      .toDouble()
+                  : null,
+          userReportedSpamRatioUpperBound:
+              json_.containsKey('userReportedSpamRatioUpperBound')
+                  ? (json_['userReportedSpamRatioUpperBound'] as core.num)
+                      .toDouble()
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -717,5 +751,9 @@ class TrafficStats {
         if (spfSuccessRatio != null) 'spfSuccessRatio': spfSuccessRatio!,
         if (userReportedSpamRatio != null)
           'userReportedSpamRatio': userReportedSpamRatio!,
+        if (userReportedSpamRatioLowerBound != null)
+          'userReportedSpamRatioLowerBound': userReportedSpamRatioLowerBound!,
+        if (userReportedSpamRatioUpperBound != null)
+          'userReportedSpamRatioUpperBound': userReportedSpamRatioUpperBound!,
       };
 }

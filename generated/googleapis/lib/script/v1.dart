@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Apps Script API - v1
@@ -24,7 +23,7 @@
 ///   - [ProjectsDeploymentsResource]
 ///   - [ProjectsVersionsResource]
 /// - [ScriptsResource]
-library script_v1;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -924,7 +923,10 @@ class ScriptsResource {
   /// Request parameters:
   ///
   /// [scriptId] - The script ID of the script to be executed. Find the script
-  /// ID on the **Project settings** page under "IDs."
+  /// ID on the **Project settings** page under "IDs." As multiple executable
+  /// APIs can be deployed in new IDE for same script, this field should be
+  /// populated with DeploymentID generated while deploying in new IDE instead
+  /// of script ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1544,6 +1546,7 @@ class GoogleAppsScriptTypeProcess {
   /// - "TIMED_OUT" : The process timed out.
   /// - "UNKNOWN" : Process status unknown.
   /// - "DELAYED" : The process is delayed, waiting for quota.
+  /// - "EXECUTION_DISABLED" : AppsScript executions are disabled by Admin.
   core.String? processStatus;
 
   /// The executions type.

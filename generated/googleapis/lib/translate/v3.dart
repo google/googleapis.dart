@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Cloud Translation API - v3
@@ -22,13 +21,18 @@
 ///
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsAdaptiveMtDatasetsResource]
+///       - [ProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesResource]
+/// -
+/// [ProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesAdaptiveMtSentencesResource]
+///       - [ProjectsLocationsAdaptiveMtDatasetsAdaptiveMtSentencesResource]
 ///     - [ProjectsLocationsDatasetsResource]
 ///       - [ProjectsLocationsDatasetsExamplesResource]
 ///     - [ProjectsLocationsGlossariesResource]
 ///       - [ProjectsLocationsGlossariesGlossaryEntriesResource]
 ///     - [ProjectsLocationsModelsResource]
 ///     - [ProjectsLocationsOperationsResource]
-library translate_v3;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -278,6 +282,8 @@ class ProjectsResource {
 class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsAdaptiveMtDatasetsResource get adaptiveMtDatasets =>
+      ProjectsLocationsAdaptiveMtDatasetsResource(_requester);
   ProjectsLocationsDatasetsResource get datasets =>
       ProjectsLocationsDatasetsResource(_requester);
   ProjectsLocationsGlossariesResource get glossaries =>
@@ -288,6 +294,49 @@ class ProjectsLocationsResource {
       ProjectsLocationsOperationsResource(_requester);
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Translate text using Adaptive MT.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Location to make a regional call. Format:
+  /// `projects/{project-number-or-id}/locations/{location-id}`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AdaptiveMtTranslateResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AdaptiveMtTranslateResponse> adaptiveMtTranslate(
+    AdaptiveMtTranslateRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v3/' + core.Uri.encodeFull('$parent') + ':adaptiveMtTranslate';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return AdaptiveMtTranslateResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 
   /// Translates a large volume of document in asynchronous batch mode.
   ///
@@ -723,6 +772,507 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return TranslateTextResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsAdaptiveMtDatasetsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesResource
+      get adaptiveMtFiles =>
+          ProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesResource(
+              _requester);
+  ProjectsLocationsAdaptiveMtDatasetsAdaptiveMtSentencesResource
+      get adaptiveMtSentences =>
+          ProjectsLocationsAdaptiveMtDatasetsAdaptiveMtSentencesResource(
+              _requester);
+
+  ProjectsLocationsAdaptiveMtDatasetsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates an Adaptive MT dataset.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the parent project. In form of
+  /// `projects/{project-number-or-id}/locations/{location-id}`
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AdaptiveMtDataset].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AdaptiveMtDataset> create(
+    AdaptiveMtDataset request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$parent') + '/adaptiveMtDatasets';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return AdaptiveMtDataset.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes an Adaptive MT dataset, including all its entries and associated
+  /// metadata.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the dataset. In the form of
+  /// `projects/{project-number-or-id}/locations/{location-id}/adaptiveMtDatasets/{adaptive-mt-dataset-id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/adaptiveMtDatasets/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the Adaptive MT dataset.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the dataset. In the form of
+  /// `projects/{project-number-or-id}/locations/{location-id}/adaptiveMtDatasets/{adaptive-mt-dataset-id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/adaptiveMtDatasets/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AdaptiveMtDataset].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AdaptiveMtDataset> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AdaptiveMtDataset.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Imports an AdaptiveMtFile and adds all of its sentences into the
+  /// AdaptiveMtDataset.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the file, in form of
+  /// `projects/{project-number-or-id}/locations/{location_id}/adaptiveMtDatasets/{dataset}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/adaptiveMtDatasets/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ImportAdaptiveMtFileResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ImportAdaptiveMtFileResponse> importAdaptiveMtFile(
+    ImportAdaptiveMtFileRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v3/' + core.Uri.encodeFull('$parent') + ':importAdaptiveMtFile';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return ImportAdaptiveMtFileResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all Adaptive MT datasets for which the caller has read permission.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the project from which to list
+  /// the Adaptive MT datasets.
+  /// `projects/{project-number-or-id}/locations/{location-id}`
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. An expression for filtering the results of the
+  /// request. Filter is not supported yet.
+  ///
+  /// [pageSize] - Optional. Requested page size. The server may return fewer
+  /// results than requested. If unspecified, the server picks an appropriate
+  /// default.
+  ///
+  /// [pageToken] - Optional. A token identifying a page of results the server
+  /// should return. Typically, this is the value of
+  /// ListAdaptiveMtDatasetsResponse.next_page_token returned from the previous
+  /// call to `ListAdaptiveMtDatasets` method. The first page is returned if
+  /// `page_token`is empty or missing.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAdaptiveMtDatasetsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAdaptiveMtDatasetsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$parent') + '/adaptiveMtDatasets';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListAdaptiveMtDatasetsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesAdaptiveMtSentencesResource
+      get adaptiveMtSentences =>
+          ProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesAdaptiveMtSentencesResource(
+              _requester);
+
+  ProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Deletes an AdaptiveMtFile along with its sentences.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the file to delete, in form of
+  /// `projects/{project-number-or-id}/locations/{location_id}/adaptiveMtDatasets/{dataset}/adaptiveMtFiles/{file}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/adaptiveMtDatasets/\[^/\]+/adaptiveMtFiles/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets and AdaptiveMtFile
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the file, in form of
+  /// `projects/{project-number-or-id}/locations/{location_id}/adaptiveMtDatasets/{dataset}/adaptiveMtFiles/{file}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/adaptiveMtDatasets/\[^/\]+/adaptiveMtFiles/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AdaptiveMtFile].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AdaptiveMtFile> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AdaptiveMtFile.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all AdaptiveMtFiles associated to an AdaptiveMtDataset.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the project from which to list
+  /// the Adaptive MT files.
+  /// `projects/{project}/locations/{location}/adaptiveMtDatasets/{dataset}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/adaptiveMtDatasets/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional.
+  ///
+  /// [pageToken] - Optional. A token identifying a page of results the server
+  /// should return. Typically, this is the value of
+  /// ListAdaptiveMtFilesResponse.next_page_token returned from the previous
+  /// call to `ListAdaptiveMtFiles` method. The first page is returned if
+  /// `page_token`is empty or missing.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAdaptiveMtFilesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAdaptiveMtFilesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$parent') + '/adaptiveMtFiles';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListAdaptiveMtFilesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesAdaptiveMtSentencesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesAdaptiveMtSentencesResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists all AdaptiveMtSentences under a given file/dataset.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the project from which to list
+  /// the Adaptive MT files. The following format lists all sentences under a
+  /// file.
+  /// `projects/{project}/locations/{location}/adaptiveMtDatasets/{dataset}/adaptiveMtFiles/{file}`
+  /// The following format lists all sentences within a dataset.
+  /// `projects/{project}/locations/{location}/adaptiveMtDatasets/{dataset}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/adaptiveMtDatasets/\[^/\]+/adaptiveMtFiles/\[^/\]+$`.
+  ///
+  /// [pageSize] - null
+  ///
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return. Typically, this is the value of
+  /// ListAdaptiveMtSentencesRequest.next_page_token returned from the previous
+  /// call to `ListTranslationMemories` method. The first page is returned if
+  /// `page_token` is empty or missing.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAdaptiveMtSentencesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAdaptiveMtSentencesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v3/' + core.Uri.encodeFull('$parent') + '/adaptiveMtSentences';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListAdaptiveMtSentencesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsAdaptiveMtDatasetsAdaptiveMtSentencesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsAdaptiveMtDatasetsAdaptiveMtSentencesResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists all AdaptiveMtSentences under a given file/dataset.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the project from which to list
+  /// the Adaptive MT files. The following format lists all sentences under a
+  /// file.
+  /// `projects/{project}/locations/{location}/adaptiveMtDatasets/{dataset}/adaptiveMtFiles/{file}`
+  /// The following format lists all sentences within a dataset.
+  /// `projects/{project}/locations/{location}/adaptiveMtDatasets/{dataset}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/adaptiveMtDatasets/\[^/\]+$`.
+  ///
+  /// [pageSize] - null
+  ///
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return. Typically, this is the value of
+  /// ListAdaptiveMtSentencesRequest.next_page_token returned from the previous
+  /// call to `ListTranslationMemories` method. The first page is returned if
+  /// `page_token` is empty or missing.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAdaptiveMtSentencesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAdaptiveMtSentencesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v3/' + core.Uri.encodeFull('$parent') + '/adaptiveMtSentences';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListAdaptiveMtSentencesResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -1920,6 +2470,303 @@ class ProjectsLocationsOperationsResource {
   }
 }
 
+/// An Adaptive MT Dataset.
+class AdaptiveMtDataset {
+  /// Timestamp when this dataset was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The name of the dataset to show in the interface.
+  ///
+  /// The name can be up to 32 characters long and can consist only of ASCII
+  /// Latin letters A-Z and a-z, underscores (_), and ASCII digits 0-9.
+  core.String? displayName;
+
+  /// The number of examples in the dataset.
+  core.int? exampleCount;
+
+  /// The resource name of the dataset, in form of
+  /// `projects/{project-number-or-id}/locations/{location_id}/adaptiveMtDatasets/{dataset_id}`
+  ///
+  /// Required.
+  core.String? name;
+
+  /// The BCP-47 language code of the source language.
+  core.String? sourceLanguageCode;
+
+  /// The BCP-47 language code of the target language.
+  core.String? targetLanguageCode;
+
+  /// Timestamp when this dataset was last updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  AdaptiveMtDataset({
+    this.createTime,
+    this.displayName,
+    this.exampleCount,
+    this.name,
+    this.sourceLanguageCode,
+    this.targetLanguageCode,
+    this.updateTime,
+  });
+
+  AdaptiveMtDataset.fromJson(core.Map json_)
+      : this(
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          exampleCount: json_.containsKey('exampleCount')
+              ? json_['exampleCount'] as core.int
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          sourceLanguageCode: json_.containsKey('sourceLanguageCode')
+              ? json_['sourceLanguageCode'] as core.String
+              : null,
+          targetLanguageCode: json_.containsKey('targetLanguageCode')
+              ? json_['targetLanguageCode'] as core.String
+              : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (displayName != null) 'displayName': displayName!,
+        if (exampleCount != null) 'exampleCount': exampleCount!,
+        if (name != null) 'name': name!,
+        if (sourceLanguageCode != null)
+          'sourceLanguageCode': sourceLanguageCode!,
+        if (targetLanguageCode != null)
+          'targetLanguageCode': targetLanguageCode!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// An AdaptiveMtFile.
+class AdaptiveMtFile {
+  /// Timestamp when this file was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The file's display name.
+  core.String? displayName;
+
+  /// The number of entries that the file contains.
+  core.int? entryCount;
+
+  /// The resource name of the file, in form of
+  /// `projects/{project-number-or-id}/locations/{location_id}/adaptiveMtDatasets/{dataset}/adaptiveMtFiles/{file}`
+  ///
+  /// Required.
+  core.String? name;
+
+  /// Timestamp when this file was last updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  AdaptiveMtFile({
+    this.createTime,
+    this.displayName,
+    this.entryCount,
+    this.name,
+    this.updateTime,
+  });
+
+  AdaptiveMtFile.fromJson(core.Map json_)
+      : this(
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          entryCount: json_.containsKey('entryCount')
+              ? json_['entryCount'] as core.int
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (displayName != null) 'displayName': displayName!,
+        if (entryCount != null) 'entryCount': entryCount!,
+        if (name != null) 'name': name!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// An AdaptiveMt sentence entry.
+class AdaptiveMtSentence {
+  /// Timestamp when this sentence was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The resource name of the file, in form of
+  /// `projects/{project-number-or-id}/locations/{location_id}/adaptiveMtDatasets/{dataset}/adaptiveMtFiles/{file}/adaptiveMtSentences/{sentence}`
+  ///
+  /// Required.
+  core.String? name;
+
+  /// The source sentence.
+  ///
+  /// Required.
+  core.String? sourceSentence;
+
+  /// The target sentence.
+  ///
+  /// Required.
+  core.String? targetSentence;
+
+  /// Timestamp when this sentence was last updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  AdaptiveMtSentence({
+    this.createTime,
+    this.name,
+    this.sourceSentence,
+    this.targetSentence,
+    this.updateTime,
+  });
+
+  AdaptiveMtSentence.fromJson(core.Map json_)
+      : this(
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          sourceSentence: json_.containsKey('sourceSentence')
+              ? json_['sourceSentence'] as core.String
+              : null,
+          targetSentence: json_.containsKey('targetSentence')
+              ? json_['targetSentence'] as core.String
+              : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (name != null) 'name': name!,
+        if (sourceSentence != null) 'sourceSentence': sourceSentence!,
+        if (targetSentence != null) 'targetSentence': targetSentence!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// The request for sending an AdaptiveMt translation query.
+class AdaptiveMtTranslateRequest {
+  /// The content of the input in string format.
+  ///
+  /// For now only one sentence per request is supported.
+  ///
+  /// Required.
+  core.List<core.String>? content;
+
+  /// The resource name for the dataset to use for adaptive MT.
+  ///
+  /// `projects/{project}/locations/{location-id}/adaptiveMtDatasets/{dataset}`
+  ///
+  /// Required.
+  core.String? dataset;
+
+  AdaptiveMtTranslateRequest({
+    this.content,
+    this.dataset,
+  });
+
+  AdaptiveMtTranslateRequest.fromJson(core.Map json_)
+      : this(
+          content: json_.containsKey('content')
+              ? (json_['content'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          dataset: json_.containsKey('dataset')
+              ? json_['dataset'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (content != null) 'content': content!,
+        if (dataset != null) 'dataset': dataset!,
+      };
+}
+
+/// An AdaptiveMtTranslate response.
+class AdaptiveMtTranslateResponse {
+  /// The translation's language code.
+  ///
+  /// Output only.
+  core.String? languageCode;
+
+  /// The translation.
+  ///
+  /// Output only.
+  core.List<AdaptiveMtTranslation>? translations;
+
+  AdaptiveMtTranslateResponse({
+    this.languageCode,
+    this.translations,
+  });
+
+  AdaptiveMtTranslateResponse.fromJson(core.Map json_)
+      : this(
+          languageCode: json_.containsKey('languageCode')
+              ? json_['languageCode'] as core.String
+              : null,
+          translations: json_.containsKey('translations')
+              ? (json_['translations'] as core.List)
+                  .map((value) => AdaptiveMtTranslation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (languageCode != null) 'languageCode': languageCode!,
+        if (translations != null) 'translations': translations!,
+      };
+}
+
+/// An AdaptiveMt translation.
+class AdaptiveMtTranslation {
+  /// The translated text.
+  ///
+  /// Output only.
+  core.String? translatedText;
+
+  AdaptiveMtTranslation({
+    this.translatedText,
+  });
+
+  AdaptiveMtTranslation.fromJson(core.Map json_)
+      : this(
+          translatedText: json_.containsKey('translatedText')
+              ? json_['translatedText'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (translatedText != null) 'translatedText': translatedText!,
+      };
+}
+
 /// Input configuration for BatchTranslateDocument request.
 class BatchDocumentInputConfig {
   /// Google Cloud Storage location for the source input.
@@ -1985,14 +2832,14 @@ class BatchDocumentOutputConfig {
   /// (https://cloud.google.com/storage/docs/bucket-lock#retention-policy) The
   /// naming format of translation output files follows (for target language
   /// code \[trg\]): `translation_output`:
-  /// gs://translation_output/a_b_c_\[trg\]_translation.\[extension\]
+  /// `gs://translation_output/a_b_c_[trg]_translation.[extension]`
   /// `glossary_translation_output`:
-  /// gs://translation_test/a_b_c_\[trg\]_glossary_translation.\[extension\] The
+  /// `gs://translation_test/a_b_c_[trg]_glossary_translation.[extension]`. The
   /// output document will maintain the same file format as the input document.
   /// The naming format of error output files follows (for target language code
-  /// \[trg\]): `error_output`: gs://translation_test/a_b_c_\[trg\]_errors.txt
+  /// \[trg\]): `error_output`: `gs://translation_test/a_b_c_[trg]_errors.txt`
   /// `glossary_error_output`:
-  /// gs://translation_test/a_b_c_\[trg\]_glossary_translation.txt The error
+  /// `gs://translation_test/a_b_c_[trg]_glossary_translation.txt`. The error
   /// output is a txt file containing error details.
   GcsDestination? gcsDestination;
 
@@ -2038,6 +2885,15 @@ class BatchTranslateDocumentRequest {
   /// Optional.
   core.bool? enableShadowRemovalNativePdf;
 
+  /// The file format conversion map that is applied to all input files.
+  ///
+  /// The map key is the original mime_type. The map value is the target
+  /// mime_type of translated documents. Supported file format conversion
+  /// includes: - `application/pdf` to
+  /// `application/vnd.openxmlformats-officedocument.wordprocessingml.document`
+  /// If nothing specified, output files will be in the same format as the
+  /// original file.
+  ///
   /// Optional.
   core.Map<core.String, core.String>? formatConversions;
 
@@ -2676,21 +3532,21 @@ class DocumentOutputConfig {
   /// to the translated file's extension according to its mime type. For a
   /// DocumentInputConfig.gcs_uri provided document, the output file will have a
   /// name according to its URI. For example: an input file with URI:
-  /// "gs://a/b/c.\[extension\]" stored in a gcs_destination bucket with name
+  /// `gs://a/b/c.[extension]` stored in a gcs_destination bucket with name
   /// "my_bucket" will have an output URI:
-  /// "gs://my_bucket/a_b_c_\[trg\]_translations.\[ext\]", where - \[trg\]
+  /// `gs://my_bucket/a_b_c_[trg]_translations.[ext]`, where - \[trg\]
   /// corresponds to the translated file's language code, - \[ext\] corresponds
   /// to the translated file's extension according to its mime type. If the
   /// document was directly provided through the request, then the output
   /// document will have the format:
-  /// "gs://my_bucket/translated_document_\[trg\]_translations.\[ext\], where -
+  /// `gs://my_bucket/translated_document_[trg]_translations.[ext]`, where -
   /// \[trg\] corresponds to the translated file's language code, - \[ext\]
   /// corresponds to the translated file's extension according to its mime type.
   /// If a glossary was provided, then the output URI for the glossary
   /// translation will be equal to the default output URI but have
   /// `glossary_translations` instead of `translations`. For the previous
   /// example, its glossary URI would be:
-  /// "gs://my_bucket/a_b_c_\[trg\]_glossary_translations.\[ext\]". Thus the max
+  /// `gs://my_bucket/a_b_c_[trg]_glossary_translations.[ext]`. Thus the max
   /// number of output files will be 2 (Translated document, Glossary translated
   /// document). Callers should expect no partial outputs. If there is any error
   /// during document translation, no output will be stored in the Cloud Storage
@@ -2859,6 +3715,55 @@ class ExportDataRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (outputConfig != null) 'outputConfig': outputConfig!,
+      };
+}
+
+/// An inlined file.
+class FileInputSource {
+  /// The file's byte contents.
+  ///
+  /// Required.
+  core.String? content;
+  core.List<core.int> get contentAsBytes => convert.base64.decode(content!);
+
+  set contentAsBytes(core.List<core.int> bytes_) {
+    content =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// The file's display name.
+  ///
+  /// Required.
+  core.String? displayName;
+
+  /// The file's mime type.
+  ///
+  /// Required.
+  core.String? mimeType;
+
+  FileInputSource({
+    this.content,
+    this.displayName,
+    this.mimeType,
+  });
+
+  FileInputSource.fromJson(core.Map json_)
+      : this(
+          content: json_.containsKey('content')
+              ? json_['content'] as core.String
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          mimeType: json_.containsKey('mimeType')
+              ? json_['mimeType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (content != null) 'content': content!,
+        if (displayName != null) 'displayName': displayName!,
+        if (mimeType != null) 'mimeType': mimeType!,
       };
 }
 
@@ -3191,6 +4096,61 @@ class GlossaryTermsSet {
       };
 }
 
+/// The request for importing an AdaptiveMt file along with its sentences.
+class ImportAdaptiveMtFileRequest {
+  /// Inline file source.
+  FileInputSource? fileInputSource;
+
+  /// Google Cloud Storage file source.
+  GcsInputSource? gcsInputSource;
+
+  ImportAdaptiveMtFileRequest({
+    this.fileInputSource,
+    this.gcsInputSource,
+  });
+
+  ImportAdaptiveMtFileRequest.fromJson(core.Map json_)
+      : this(
+          fileInputSource: json_.containsKey('fileInputSource')
+              ? FileInputSource.fromJson(json_['fileInputSource']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          gcsInputSource: json_.containsKey('gcsInputSource')
+              ? GcsInputSource.fromJson(json_['gcsInputSource']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fileInputSource != null) 'fileInputSource': fileInputSource!,
+        if (gcsInputSource != null) 'gcsInputSource': gcsInputSource!,
+      };
+}
+
+/// The response for importing an AdaptiveMtFile
+class ImportAdaptiveMtFileResponse {
+  /// The Adaptive MT file that was imported.
+  ///
+  /// Output only.
+  AdaptiveMtFile? adaptiveMtFile;
+
+  ImportAdaptiveMtFileResponse({
+    this.adaptiveMtFile,
+  });
+
+  ImportAdaptiveMtFileResponse.fromJson(core.Map json_)
+      : this(
+          adaptiveMtFile: json_.containsKey('adaptiveMtFile')
+              ? AdaptiveMtFile.fromJson(json_['adaptiveMtFile']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (adaptiveMtFile != null) 'adaptiveMtFile': adaptiveMtFile!,
+      };
+}
+
 /// Request message for ImportData.
 class ImportDataRequest {
   /// The config for the input content.
@@ -3362,6 +4322,124 @@ class LanguageCodesSet {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (languageCodes != null) 'languageCodes': languageCodes!,
+      };
+}
+
+/// A list of AdaptiveMtDatasets.
+class ListAdaptiveMtDatasetsResponse {
+  /// A list of Adaptive MT datasets.
+  ///
+  /// Output only.
+  core.List<AdaptiveMtDataset>? adaptiveMtDatasets;
+
+  /// A token to retrieve a page of results.
+  ///
+  /// Pass this value in the \[ListAdaptiveMtDatasetsRequest.page_token\] field
+  /// in the subsequent call to `ListAdaptiveMtDatasets` method to retrieve the
+  /// next page of results.
+  ///
+  /// Optional.
+  core.String? nextPageToken;
+
+  ListAdaptiveMtDatasetsResponse({
+    this.adaptiveMtDatasets,
+    this.nextPageToken,
+  });
+
+  ListAdaptiveMtDatasetsResponse.fromJson(core.Map json_)
+      : this(
+          adaptiveMtDatasets: json_.containsKey('adaptiveMtDatasets')
+              ? (json_['adaptiveMtDatasets'] as core.List)
+                  .map((value) => AdaptiveMtDataset.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (adaptiveMtDatasets != null)
+          'adaptiveMtDatasets': adaptiveMtDatasets!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// The response for listing all AdaptiveMt files under a given dataset.
+class ListAdaptiveMtFilesResponse {
+  /// The Adaptive MT files.
+  ///
+  /// Output only.
+  core.List<AdaptiveMtFile>? adaptiveMtFiles;
+
+  /// A token to retrieve a page of results.
+  ///
+  /// Pass this value in the ListAdaptiveMtFilesRequest.page_token field in the
+  /// subsequent call to `ListAdaptiveMtFiles` method to retrieve the next page
+  /// of results.
+  ///
+  /// Optional.
+  core.String? nextPageToken;
+
+  ListAdaptiveMtFilesResponse({
+    this.adaptiveMtFiles,
+    this.nextPageToken,
+  });
+
+  ListAdaptiveMtFilesResponse.fromJson(core.Map json_)
+      : this(
+          adaptiveMtFiles: json_.containsKey('adaptiveMtFiles')
+              ? (json_['adaptiveMtFiles'] as core.List)
+                  .map((value) => AdaptiveMtFile.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (adaptiveMtFiles != null) 'adaptiveMtFiles': adaptiveMtFiles!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// List AdaptiveMt sentences response.
+class ListAdaptiveMtSentencesResponse {
+  /// The list of AdaptiveMtSentences.
+  ///
+  /// Output only.
+  core.List<AdaptiveMtSentence>? adaptiveMtSentences;
+
+  ///
+  ///
+  /// Optional.
+  core.String? nextPageToken;
+
+  ListAdaptiveMtSentencesResponse({
+    this.adaptiveMtSentences,
+    this.nextPageToken,
+  });
+
+  ListAdaptiveMtSentencesResponse.fromJson(core.Map json_)
+      : this(
+          adaptiveMtSentences: json_.containsKey('adaptiveMtSentences')
+              ? (json_['adaptiveMtSentences'] as core.List)
+                  .map((value) => AdaptiveMtSentence.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (adaptiveMtSentences != null)
+          'adaptiveMtSentences': adaptiveMtSentences!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -3756,7 +4834,7 @@ class Operation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard
@@ -3842,9 +4920,9 @@ class OutputConfig {
   /// there is no glossary applied. If input file extension is a txt or html,
   /// the translation is directly written to the output file. If glossary is
   /// requested, a separate glossary_translations_file has format of
-  /// gs://translation_test/a_b_c_'trg'_glossary_translations.\[extension\] The
+  /// `gs://translation_test/a_b_c_'trg'_glossary_translations.[extension]` The
   /// format of errors file (for target language code 'trg') is:
-  /// gs://translation_test/a_b_c_'trg'_errors.\[extension\] If the input file
+  /// `gs://translation_test/a_b_c_'trg'_errors.[extension]` If the input file
   /// extension is tsv, errors_file contains the following: Column 1: ID of the
   /// request provided in the input, if it's not provided in the input, then the
   /// input row number is used (0-based). Column 2: source sentence. Column 3:
@@ -3852,7 +4930,7 @@ class OutputConfig {
   /// if a glossary is provided in the request): Error when applying the
   /// glossary. If the input file extension is txt or html, glossary_error_file
   /// will be generated that contains error details. glossary_error_file has
-  /// format of gs://translation_test/a_b_c_'trg'_glossary_errors.\[extension\]
+  /// format of `gs://translation_test/a_b_c_'trg'_glossary_errors.[extension]`
   GcsDestination? gcsDestination;
 
   OutputConfig({

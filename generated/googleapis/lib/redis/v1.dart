@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Google Cloud Memorystore for Redis API - v1
@@ -21,9 +20,10 @@
 ///
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsClustersResource]
 ///     - [ProjectsLocationsInstancesResource]
 ///     - [ProjectsLocationsOperationsResource]
-library redis_v1;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -68,6 +68,8 @@ class ProjectsResource {
 class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsClustersResource get clusters =>
+      ProjectsLocationsClustersResource(_requester);
   ProjectsLocationsInstancesResource get instances =>
       ProjectsLocationsInstancesResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
@@ -160,6 +162,310 @@ class ProjectsLocationsResource {
     );
     return ListLocationsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsClustersResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsClustersResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a Redis cluster based on the specified properties.
+  ///
+  /// The creation is executed asynchronously and callers may check the returned
+  /// operation to track its progress. Once the operation is completed the Redis
+  /// cluster will be fully functional. The completed longrunning.Operation will
+  /// contain the new cluster object in the response field. The returned
+  /// operation is automatically deleted after a few hours, so there is no need
+  /// to call DeleteOperation.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the cluster location using the
+  /// form: `projects/{project_id}/locations/{location_id}` where `location_id`
+  /// refers to a GCP region.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [clusterId] - Required. The logical name of the Redis cluster in the
+  /// customer project with the following restrictions: * Must contain only
+  /// lowercase letters, numbers, and hyphens. * Must start with a letter. *
+  /// Must be between 1-63 characters. * Must end with a number or a letter. *
+  /// Must be unique within the customer project / location
+  ///
+  /// [requestId] - Idempotent request UUID.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    Cluster request,
+    core.String parent, {
+    core.String? clusterId,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (clusterId != null) 'clusterId': [clusterId],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/clusters';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a specific Redis cluster.
+  ///
+  /// Cluster stops serving and data is deleted.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Redis cluster resource name using the form:
+  /// `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}`
+  /// where `location_id` refers to a GCP region.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/clusters/\[^/\]+$`.
+  ///
+  /// [requestId] - Idempotent request UUID.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the details of a specific Redis cluster.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Redis cluster resource name using the form:
+  /// `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}`
+  /// where `location_id` refers to a GCP region.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/clusters/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Cluster].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Cluster> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Cluster.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the details of certificate authority information for Redis cluster.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Redis cluster certificate authority resource name using
+  /// the form:
+  /// `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}/certificateAuthority`
+  /// where `location_id` refers to a GCP region.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/clusters/\[^/\]+/certificateAuthority$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CertificateAuthority].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CertificateAuthority> getCertificateAuthority(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return CertificateAuthority.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all Redis clusters owned by a project in either the specified
+  /// location (region) or all locations.
+  ///
+  /// The location should have the following format: *
+  /// `projects/{project_id}/locations/{location_id}` If `location_id` is
+  /// specified as `-` (wildcard), then all regions available to the project are
+  /// queried, and the results are aggregated.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the cluster location using the
+  /// form: `projects/{project_id}/locations/{location_id}` where `location_id`
+  /// refers to a GCP region.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of items to return. If not specified, a
+  /// default value of 1000 will be used by the service. Regardless of the
+  /// page_size value, the response may include a partial list and a caller
+  /// should only rely on response's `next_page_token` to determine if there are
+  /// more clusters left to be queried.
+  ///
+  /// [pageToken] - The `next_page_token` value returned from a previous
+  /// ListClusters request, if any.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListClustersResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListClustersResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/clusters';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListClustersResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the metadata and configuration of a specific Redis cluster.
+  ///
+  /// Completed longrunning.Operation will contain the new cluster object in the
+  /// response field. The returned operation is automatically deleted after a
+  /// few hours, so there is no need to call DeleteOperation.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Unique name of the resource in this scope including
+  /// project and location using the form:
+  /// `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/clusters/\[^/\]+$`.
+  ///
+  /// [requestId] - Idempotent request UUID.
+  ///
+  /// [updateMask] - Required. Mask of fields to update. At least one path must
+  /// be supplied in this field. The elements of the repeated paths field may
+  /// only include these fields from Cluster: * `size_gb` * `replica_count`
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    Cluster request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -874,6 +1180,266 @@ class ProjectsLocationsOperationsResource {
   }
 }
 
+typedef CertChain = $CertChain;
+
+/// Redis cluster certificate authority
+class CertificateAuthority {
+  ManagedCertificateAuthority? managedServerCa;
+
+  /// Identifier.
+  ///
+  /// Unique name of the resource in this scope including project, location and
+  /// cluster using the form:
+  /// `projects/{project}/locations/{location}/clusters/{cluster}/certificateAuthority`
+  core.String? name;
+
+  CertificateAuthority({
+    this.managedServerCa,
+    this.name,
+  });
+
+  CertificateAuthority.fromJson(core.Map json_)
+      : this(
+          managedServerCa: json_.containsKey('managedServerCa')
+              ? ManagedCertificateAuthority.fromJson(json_['managedServerCa']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (managedServerCa != null) 'managedServerCa': managedServerCa!,
+        if (name != null) 'name': name!,
+      };
+}
+
+/// A cluster instance.
+class Cluster {
+  /// The authorization mode of the Redis cluster.
+  ///
+  /// If not provided, auth feature is disabled for the cluster.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "AUTH_MODE_UNSPECIFIED" : Not set.
+  /// - "AUTH_MODE_IAM_AUTH" : IAM basic authorization mode
+  /// - "AUTH_MODE_DISABLED" : Authorization disabled mode
+  core.String? authorizationMode;
+
+  /// The timestamp associated with the cluster creation request.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Endpoints created on each given network, for Redis clients to connect to
+  /// the cluster.
+  ///
+  /// Currently only one discovery endpoint is supported.
+  ///
+  /// Output only.
+  core.List<DiscoveryEndpoint>? discoveryEndpoints;
+
+  /// Unique name of the resource in this scope including project and location
+  /// using the form:
+  /// `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}`
+  ///
+  /// Required.
+  core.String? name;
+
+  /// Each PscConfig configures the consumer network where IPs will be
+  /// designated to the cluster for client access through Private Service
+  /// Connect Automation.
+  ///
+  /// Currently, only one PscConfig is supported.
+  ///
+  /// Required.
+  core.List<PscConfig>? pscConfigs;
+
+  /// PSC connections for discovery of the cluster topology and accessing the
+  /// cluster.
+  ///
+  /// Output only.
+  core.List<PscConnection>? pscConnections;
+
+  /// The number of replica nodes per shard.
+  ///
+  /// Optional.
+  core.int? replicaCount;
+
+  /// Number of shards for the Redis cluster.
+  ///
+  /// Required.
+  core.int? shardCount;
+
+  /// Redis memory size in GB for the entire cluster rounded up to the next
+  /// integer.
+  ///
+  /// Output only.
+  core.int? sizeGb;
+
+  /// The current state of this cluster.
+  ///
+  /// Can be CREATING, READY, UPDATING, DELETING and SUSPENDED
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Not set.
+  /// - "CREATING" : Redis cluster is being created.
+  /// - "ACTIVE" : Redis cluster has been created and is fully usable.
+  /// - "UPDATING" : Redis cluster configuration is being updated.
+  /// - "DELETING" : Redis cluster is being deleted.
+  core.String? state;
+
+  /// Additional information about the current state of the cluster.
+  ///
+  /// Output only.
+  StateInfo? stateInfo;
+
+  /// The in-transit encryption for the Redis cluster.
+  ///
+  /// If not provided, encryption is disabled for the cluster.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "TRANSIT_ENCRYPTION_MODE_UNSPECIFIED" : In-transit encryption not set.
+  /// - "TRANSIT_ENCRYPTION_MODE_DISABLED" : In-transit encryption disabled.
+  /// - "TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION" : Use server managed
+  /// encryption for in-transit encryption.
+  core.String? transitEncryptionMode;
+
+  /// System assigned, unique identifier for the cluster.
+  ///
+  /// Output only.
+  core.String? uid;
+
+  Cluster({
+    this.authorizationMode,
+    this.createTime,
+    this.discoveryEndpoints,
+    this.name,
+    this.pscConfigs,
+    this.pscConnections,
+    this.replicaCount,
+    this.shardCount,
+    this.sizeGb,
+    this.state,
+    this.stateInfo,
+    this.transitEncryptionMode,
+    this.uid,
+  });
+
+  Cluster.fromJson(core.Map json_)
+      : this(
+          authorizationMode: json_.containsKey('authorizationMode')
+              ? json_['authorizationMode'] as core.String
+              : null,
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          discoveryEndpoints: json_.containsKey('discoveryEndpoints')
+              ? (json_['discoveryEndpoints'] as core.List)
+                  .map((value) => DiscoveryEndpoint.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          pscConfigs: json_.containsKey('pscConfigs')
+              ? (json_['pscConfigs'] as core.List)
+                  .map((value) => PscConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          pscConnections: json_.containsKey('pscConnections')
+              ? (json_['pscConnections'] as core.List)
+                  .map((value) => PscConnection.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          replicaCount: json_.containsKey('replicaCount')
+              ? json_['replicaCount'] as core.int
+              : null,
+          shardCount: json_.containsKey('shardCount')
+              ? json_['shardCount'] as core.int
+              : null,
+          sizeGb:
+              json_.containsKey('sizeGb') ? json_['sizeGb'] as core.int : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          stateInfo: json_.containsKey('stateInfo')
+              ? StateInfo.fromJson(
+                  json_['stateInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          transitEncryptionMode: json_.containsKey('transitEncryptionMode')
+              ? json_['transitEncryptionMode'] as core.String
+              : null,
+          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (authorizationMode != null) 'authorizationMode': authorizationMode!,
+        if (createTime != null) 'createTime': createTime!,
+        if (discoveryEndpoints != null)
+          'discoveryEndpoints': discoveryEndpoints!,
+        if (name != null) 'name': name!,
+        if (pscConfigs != null) 'pscConfigs': pscConfigs!,
+        if (pscConnections != null) 'pscConnections': pscConnections!,
+        if (replicaCount != null) 'replicaCount': replicaCount!,
+        if (shardCount != null) 'shardCount': shardCount!,
+        if (sizeGb != null) 'sizeGb': sizeGb!,
+        if (state != null) 'state': state!,
+        if (stateInfo != null) 'stateInfo': stateInfo!,
+        if (transitEncryptionMode != null)
+          'transitEncryptionMode': transitEncryptionMode!,
+        if (uid != null) 'uid': uid!,
+      };
+}
+
+/// Endpoints on each network, for Redis clients to connect to the cluster.
+class DiscoveryEndpoint {
+  /// Address of the exposed Redis endpoint used by clients to connect to the
+  /// service.
+  ///
+  /// The address could be either IP or hostname.
+  ///
+  /// Output only.
+  core.String? address;
+
+  /// The port number of the exposed Redis endpoint.
+  ///
+  /// Output only.
+  core.int? port;
+
+  /// Customer configuration for where the endpoint is created and accessed
+  /// from.
+  ///
+  /// Output only.
+  PscConfig? pscConfig;
+
+  DiscoveryEndpoint({
+    this.address,
+    this.port,
+    this.pscConfig,
+  });
+
+  DiscoveryEndpoint.fromJson(core.Map json_)
+      : this(
+          address: json_.containsKey('address')
+              ? json_['address'] as core.String
+              : null,
+          port: json_.containsKey('port') ? json_['port'] as core.int : null,
+          pscConfig: json_.containsKey('pscConfig')
+              ? PscConfig.fromJson(
+                  json_['pscConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (address != null) 'address': address!,
+        if (port != null) 'port': port!,
+        if (pscConfig != null) 'pscConfig': pscConfig!,
+      };
+}
+
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
 ///
@@ -1231,7 +1797,8 @@ class Instance {
   /// If not provided, latest supported version will be used. Currently, the
   /// supported values are: * `REDIS_3_2` for Redis 3.2 compatibility *
   /// `REDIS_4_0` for Redis 4.0 compatibility (default) * `REDIS_5_0` for Redis
-  /// 5.0 compatibility * `REDIS_6_X` for Redis 6.x compatibility
+  /// 5.0 compatibility * `REDIS_6_X` for Redis 6.x compatibility * `REDIS_7_0`
+  /// for Redis 7.0 compatibility
   ///
   /// Optional.
   core.String? redisVersion;
@@ -1258,6 +1825,16 @@ class Instance {
   ///
   /// Optional.
   core.String? reservedIpRange;
+
+  /// Reserved for future use.
+  ///
+  /// Optional. Output only.
+  core.bool? satisfiesPzi;
+
+  /// Reserved for future use.
+  ///
+  /// Optional. Output only.
+  core.bool? satisfiesPzs;
 
   /// Additional IP range for node placement.
   ///
@@ -1355,6 +1932,8 @@ class Instance {
     this.redisVersion,
     this.replicaCount,
     this.reservedIpRange,
+    this.satisfiesPzi,
+    this.satisfiesPzs,
     this.secondaryIpRange,
     this.serverCaCerts,
     this.state,
@@ -1464,6 +2043,12 @@ class Instance {
           reservedIpRange: json_.containsKey('reservedIpRange')
               ? json_['reservedIpRange'] as core.String
               : null,
+          satisfiesPzi: json_.containsKey('satisfiesPzi')
+              ? json_['satisfiesPzi'] as core.bool
+              : null,
+          satisfiesPzs: json_.containsKey('satisfiesPzs')
+              ? json_['satisfiesPzs'] as core.bool
+              : null,
           secondaryIpRange: json_.containsKey('secondaryIpRange')
               ? json_['secondaryIpRange'] as core.String
               : null,
@@ -1524,6 +2109,8 @@ class Instance {
         if (redisVersion != null) 'redisVersion': redisVersion!,
         if (replicaCount != null) 'replicaCount': replicaCount!,
         if (reservedIpRange != null) 'reservedIpRange': reservedIpRange!,
+        if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (secondaryIpRange != null) 'secondaryIpRange': secondaryIpRange!,
         if (serverCaCerts != null) 'serverCaCerts': serverCaCerts!,
         if (state != null) 'state': state!,
@@ -1553,6 +2140,59 @@ class InstanceAuthString {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (authString != null) 'authString': authString!,
+      };
+}
+
+/// Response for ListClusters.
+class ListClustersResponse {
+  /// A list of Redis clusters in the project in the specified location, or
+  /// across all locations.
+  ///
+  /// If the `location_id` in the parent field of the request is "-", all
+  /// regions available to the project are queried, and the results aggregated.
+  /// If in such an aggregated query a location is unavailable, a placeholder
+  /// Redis entry is included in the response with the `name` field set to a
+  /// value of the form
+  /// `projects/{project_id}/locations/{location_id}/clusters/`- and the
+  /// `status` field set to ERROR and `status_message` field set to "location
+  /// not available for ListClusters".
+  core.List<Cluster>? clusters;
+
+  /// Token to retrieve the next page of results, or empty if there are no more
+  /// results in the list.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListClustersResponse({
+    this.clusters,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListClustersResponse.fromJson(core.Map json_)
+      : this(
+          clusters: json_.containsKey('clusters')
+              ? (json_['clusters'] as core.List)
+                  .map((value) => Cluster.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (clusters != null) 'clusters': clusters!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
@@ -1867,6 +2507,30 @@ class MaintenanceSchedule {
       };
 }
 
+class ManagedCertificateAuthority {
+  /// The PEM encoded CA certificate chains for redis managed server
+  /// authentication
+  core.List<CertChain>? caCerts;
+
+  ManagedCertificateAuthority({
+    this.caCerts,
+  });
+
+  ManagedCertificateAuthority.fromJson(core.Map json_)
+      : this(
+          caCerts: json_.containsKey('caCerts')
+              ? (json_['caCerts'] as core.List)
+                  .map((value) => CertChain.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (caCerts != null) 'caCerts': caCerts!,
+      };
+}
+
 /// Node specific properties.
 class NodeInfo {
   /// Node identifying string.
@@ -1932,7 +2596,7 @@ class Operation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard
@@ -2078,6 +2742,96 @@ class PersistenceConfig {
       };
 }
 
+class PscConfig {
+  /// The network where the IP address of the discovery endpoint will be
+  /// reserved, in the form of
+  /// projects/{network_project}/global/networks/{network_id}.
+  ///
+  /// Required.
+  core.String? network;
+
+  PscConfig({
+    this.network,
+  });
+
+  PscConfig.fromJson(core.Map json_)
+      : this(
+          network: json_.containsKey('network')
+              ? json_['network'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (network != null) 'network': network!,
+      };
+}
+
+/// Details of consumer resources in a PSC connection.
+class PscConnection {
+  /// The IP allocated on the consumer network for the PSC forwarding rule.
+  ///
+  /// Output only.
+  core.String? address;
+
+  /// The URI of the consumer side forwarding rule.
+  ///
+  /// Example:
+  /// projects/{projectNumOrId}/regions/us-east1/forwardingRules/{resourceId}.
+  ///
+  /// Output only.
+  core.String? forwardingRule;
+
+  /// The consumer network where the IP address resides, in the form of
+  /// projects/{project_id}/global/networks/{network_id}.
+  core.String? network;
+
+  /// The consumer project_id where the forwarding rule is created from.
+  ///
+  /// Output only.
+  core.String? projectId;
+
+  /// The PSC connection id of the forwarding rule connected to the service
+  /// attachment.
+  ///
+  /// Output only.
+  core.String? pscConnectionId;
+
+  PscConnection({
+    this.address,
+    this.forwardingRule,
+    this.network,
+    this.projectId,
+    this.pscConnectionId,
+  });
+
+  PscConnection.fromJson(core.Map json_)
+      : this(
+          address: json_.containsKey('address')
+              ? json_['address'] as core.String
+              : null,
+          forwardingRule: json_.containsKey('forwardingRule')
+              ? json_['forwardingRule'] as core.String
+              : null,
+          network: json_.containsKey('network')
+              ? json_['network'] as core.String
+              : null,
+          projectId: json_.containsKey('projectId')
+              ? json_['projectId'] as core.String
+              : null,
+          pscConnectionId: json_.containsKey('pscConnectionId')
+              ? json_['pscConnectionId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (address != null) 'address': address!,
+        if (forwardingRule != null) 'forwardingRule': forwardingRule!,
+        if (network != null) 'network': network!,
+        if (projectId != null) 'projectId': projectId!,
+        if (pscConnectionId != null) 'pscConnectionId': pscConnectionId!,
+      };
+}
+
 /// Request for RescheduleMaintenance.
 class RescheduleMaintenanceRequest {
   /// If reschedule type is SPECIFIC_TIME, must set up schedule_time as well.
@@ -2118,6 +2872,28 @@ class RescheduleMaintenanceRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (rescheduleType != null) 'rescheduleType': rescheduleType!,
         if (scheduleTime != null) 'scheduleTime': scheduleTime!,
+      };
+}
+
+/// Represents additional information about the state of the cluster.
+class StateInfo {
+  /// Describes ongoing update on the cluster when cluster state is UPDATING.
+  UpdateInfo? updateInfo;
+
+  StateInfo({
+    this.updateInfo,
+  });
+
+  StateInfo.fromJson(core.Map json_)
+      : this(
+          updateInfo: json_.containsKey('updateInfo')
+              ? UpdateInfo.fromJson(
+                  json_['updateInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (updateInfo != null) 'updateInfo': updateInfo!,
       };
 }
 
@@ -2193,6 +2969,36 @@ class TlsCertificate {
         if (expireTime != null) 'expireTime': expireTime!,
         if (serialNumber != null) 'serialNumber': serialNumber!,
         if (sha1Fingerprint != null) 'sha1Fingerprint': sha1Fingerprint!,
+      };
+}
+
+/// Represents information about an updating cluster.
+class UpdateInfo {
+  /// Target number of replica nodes per shard.
+  core.int? targetReplicaCount;
+
+  /// Target number of shards for redis cluster
+  core.int? targetShardCount;
+
+  UpdateInfo({
+    this.targetReplicaCount,
+    this.targetShardCount,
+  });
+
+  UpdateInfo.fromJson(core.Map json_)
+      : this(
+          targetReplicaCount: json_.containsKey('targetReplicaCount')
+              ? json_['targetReplicaCount'] as core.int
+              : null,
+          targetShardCount: json_.containsKey('targetShardCount')
+              ? json_['targetShardCount'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (targetReplicaCount != null)
+          'targetReplicaCount': targetReplicaCount!,
+        if (targetShardCount != null) 'targetShardCount': targetShardCount!,
       };
 }
 

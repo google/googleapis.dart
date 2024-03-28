@@ -152,7 +152,7 @@ class ResumableMediaUploader {
 
     await validateResponse(response);
 
-    await response.stream.drain();
+    await response.stream.drain<void>();
 
     final uploadUri = response.headers['location'];
     if (response.statusCode != 200 || uploadUri == null) {
@@ -168,7 +168,7 @@ class ResumableMediaUploader {
   /// drained.
   Future _uploadChunkDrained(Uri uri, ResumableChunk chunk) async {
     final response = await _uploadChunkResumable(uri, chunk);
-    await response.stream.drain();
+    await response.stream.drain<void>();
   }
 
   /// Does repeated attempts to upload [chunk].
@@ -183,7 +183,7 @@ class ResumableMediaUploader {
       final status = response.statusCode;
       if (attemptsLeft > 0 &&
           (status == 500 || (502 <= status && status < 504))) {
-        await response.stream.drain();
+        await response.stream.drain<void>();
         // Delay the next attempt. Default backoff function is exponential
         final failedAttempts = _options.numberOfAttempts - attemptsLeft;
         final duration = _options.backoffFunction(failedAttempts);
@@ -194,17 +194,17 @@ class ResumableMediaUploader {
               '$status. Maximum number of retries reached.');
         }
 
-        await Future.delayed(duration);
+        await Future<void>.delayed(duration);
         return tryUpload(attemptsLeft - 1);
       } else if (!lastChunk && status != 308) {
-        await response.stream.drain();
+        await response.stream.drain<void>();
         throw client_requests.DetailedApiRequestError(
           status,
           'Resumable upload: Uploading a chunk resulted in status '
           '$status instead of 308.',
         );
       } else if (lastChunk && status != 201 && status != 200) {
-        await response.stream.drain();
+        await response.stream.drain<void>();
         throw client_requests.DetailedApiRequestError(
           status,
           'Resumable upload: Uploading a chunk resulted in status '

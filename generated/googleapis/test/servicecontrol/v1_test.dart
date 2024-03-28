@@ -10,7 +10,6 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 // ignore_for_file: unreachable_from_main
 // ignore_for_file: unused_local_variable
@@ -257,6 +256,7 @@ api.CheckInfo buildCheckInfo() {
   final o = api.CheckInfo();
   buildCounterCheckInfo++;
   if (buildCounterCheckInfo < 3) {
+    o.apiKeyUid = 'foo';
     o.consumerInfo = buildConsumerInfo();
     o.unusedArguments = buildUnnamed4();
   }
@@ -267,6 +267,10 @@ api.CheckInfo buildCheckInfo() {
 void checkCheckInfo(api.CheckInfo o) {
   buildCounterCheckInfo++;
   if (buildCounterCheckInfo < 3) {
+    unittest.expect(
+      o.apiKeyUid!,
+      unittest.equals('foo'),
+    );
     checkConsumerInfo(o.consumerInfo!);
     checkUnnamed4(o.unusedArguments!);
   }

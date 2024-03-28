@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Campaign Manager 360 API - v4
@@ -86,7 +85,7 @@
 /// - [UserRolePermissionsResource]
 /// - [UserRolesResource]
 /// - [VideoFormatsResource]
-library dfareporting_v4;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -3146,6 +3145,8 @@ class ChangeLogsResource {
   /// - "OBJECT_SEARCH_LIFT_STUDY"
   /// - "OBJECT_FLOODLIGHT_DV360_LINK"
   /// - "OBJECT_ADVERTISER_CUSTOMER_LINK"
+  /// - "OBJECT_CONVERSION_DOMAIN"
+  /// - "OBJECT_ACCOUNT_CONVERSION_DOMAIN"
   ///
   /// [pageToken] - Value of the nextPageToken from the previous result page.
   ///
@@ -15369,6 +15370,12 @@ class ContentCategory {
 /// A Conversion represents when a user successfully performs a desired action
 /// after seeing an ad.
 class Conversion {
+  /// This represents consent for ad user data.
+  /// Possible string values are:
+  /// - "GRANTED" : Granted.
+  /// - "DENIED" : Denied.
+  core.String? adUserDataConsent;
+
   /// Whether this particular request may come from a user under the age of 13,
   /// under COPPA compliance.
   core.bool? childDirectedTreatment;
@@ -15497,6 +15504,7 @@ class Conversion {
   core.double? value;
 
   Conversion({
+    this.adUserDataConsent,
     this.childDirectedTreatment,
     this.customVariables,
     this.dclid,
@@ -15521,6 +15529,9 @@ class Conversion {
 
   Conversion.fromJson(core.Map json_)
       : this(
+          adUserDataConsent: json_.containsKey('adUserDataConsent')
+              ? json_['adUserDataConsent'] as core.String
+              : null,
           childDirectedTreatment: json_.containsKey('childDirectedTreatment')
               ? json_['childDirectedTreatment'] as core.bool
               : null,
@@ -15590,6 +15601,7 @@ class Conversion {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (adUserDataConsent != null) 'adUserDataConsent': adUserDataConsent!,
         if (childDirectedTreatment != null)
           'childDirectedTreatment': childDirectedTreatment!,
         if (customVariables != null) 'customVariables': customVariables!,
@@ -24078,6 +24090,11 @@ class Placement {
   /// ID of the content category assigned to this placement.
   core.String? contentCategoryId;
 
+  /// Conversion domain overrides for a placement.
+  ///
+  /// Optional.
+  PlacementConversionDomainOverride? conversionDomainOverride;
+
   /// Information about the creation of this placement.
   ///
   /// This is a read-only field.
@@ -24282,6 +24299,7 @@ class Placement {
     this.comment,
     this.compatibility,
     this.contentCategoryId,
+    this.conversionDomainOverride,
     this.createInfo,
     this.directorySiteId,
     this.directorySiteIdDimensionValue,
@@ -24358,6 +24376,12 @@ class Placement {
           contentCategoryId: json_.containsKey('contentCategoryId')
               ? json_['contentCategoryId'] as core.String
               : null,
+          conversionDomainOverride:
+              json_.containsKey('conversionDomainOverride')
+                  ? PlacementConversionDomainOverride.fromJson(
+                      json_['conversionDomainOverride']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           createInfo: json_.containsKey('createInfo')
               ? LastModifiedInfo.fromJson(
                   json_['createInfo'] as core.Map<core.String, core.dynamic>)
@@ -24482,6 +24506,8 @@ class Placement {
         if (comment != null) 'comment': comment!,
         if (compatibility != null) 'compatibility': compatibility!,
         if (contentCategoryId != null) 'contentCategoryId': contentCategoryId!,
+        if (conversionDomainOverride != null)
+          'conversionDomainOverride': conversionDomainOverride!,
         if (createInfo != null) 'createInfo': createInfo!,
         if (directorySiteId != null) 'directorySiteId': directorySiteId!,
         if (directorySiteIdDimensionValue != null)
@@ -24579,6 +24605,28 @@ class PlacementAssignment {
         if (placementIdDimensionValue != null)
           'placementIdDimensionValue': placementIdDimensionValue!,
         if (sslRequired != null) 'sslRequired': sslRequired!,
+      };
+}
+
+class PlacementConversionDomainOverride {
+  core.List<PlacementSingleConversionDomain>? conversionDomains;
+
+  PlacementConversionDomainOverride({
+    this.conversionDomains,
+  });
+
+  PlacementConversionDomainOverride.fromJson(core.Map json_)
+      : this(
+          conversionDomains: json_.containsKey('conversionDomains')
+              ? (json_['conversionDomains'] as core.List)
+                  .map((value) => PlacementSingleConversionDomain.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (conversionDomains != null) 'conversionDomains': conversionDomains!,
       };
 }
 
@@ -24925,6 +24973,33 @@ class PlacementGroupsListResponse {
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (placementGroups != null) 'placementGroups': placementGroups!,
+      };
+}
+
+class PlacementSingleConversionDomain {
+  core.String? conversionDomainId;
+  core.String? conversionDomainValue;
+
+  PlacementSingleConversionDomain({
+    this.conversionDomainId,
+    this.conversionDomainValue,
+  });
+
+  PlacementSingleConversionDomain.fromJson(core.Map json_)
+      : this(
+          conversionDomainId: json_.containsKey('conversionDomainId')
+              ? json_['conversionDomainId'] as core.String
+              : null,
+          conversionDomainValue: json_.containsKey('conversionDomainValue')
+              ? json_['conversionDomainValue'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (conversionDomainId != null)
+          'conversionDomainId': conversionDomainId!,
+        if (conversionDomainValue != null)
+          'conversionDomainValue': conversionDomainValue!,
       };
 }
 
@@ -27631,22 +27706,21 @@ class ReportsConfiguration {
 
   /// Report generation time zone ID of this account.
   ///
-  /// This is a required field that can only be changed by a superuser.
-  /// Acceptable values are: - "1" for "America/New_York" - "2" for
-  /// "Europe/London" - "3" for "Europe/Paris" - "4" for "Africa/Johannesburg" -
-  /// "5" for "Asia/Jerusalem" - "6" for "Asia/Shanghai" - "7" for
-  /// "Asia/Hong_Kong" - "8" for "Asia/Tokyo" - "9" for "Australia/Sydney" -
-  /// "10" for "Asia/Dubai" - "11" for "America/Los_Angeles" - "12" for
-  /// "Pacific/Auckland" - "13" for "America/Sao_Paulo" - "16" for
-  /// "America/Asuncion" - "17" for "America/Chicago" - "18" for
-  /// "America/Denver" - "19" for "America/St_Johns" - "20" for "Asia/Dhaka" -
-  /// "21" for "Asia/Jakarta" - "22" for "Asia/Kabul" - "23" for "Asia/Karachi"
-  /// - "24" for "Asia/Calcutta" - "25" for "Asia/Pyongyang" - "26" for
-  /// "Asia/Rangoon" - "27" for "Atlantic/Cape_Verde" - "28" for
-  /// "Atlantic/South_Georgia" - "29" for "Australia/Adelaide" - "30" for
-  /// "Australia/Lord_Howe" - "31" for "Europe/Moscow" - "32" for
-  /// "Pacific/Kiritimati" - "35" for "Pacific/Norfolk" - "36" for
-  /// "Pacific/Tongatapu"
+  /// This is a required field that cannot be changed on update. Acceptable
+  /// values are: - "1" for "America/New_York" - "2" for "Europe/London" - "3"
+  /// for "Europe/Paris" - "4" for "Africa/Johannesburg" - "5" for
+  /// "Asia/Jerusalem" - "6" for "Asia/Shanghai" - "7" for "Asia/Hong_Kong" -
+  /// "8" for "Asia/Tokyo" - "9" for "Australia/Sydney" - "10" for "Asia/Dubai"
+  /// - "11" for "America/Los_Angeles" - "12" for "Pacific/Auckland" - "13" for
+  /// "America/Sao_Paulo" - "16" for "America/Asuncion" - "17" for
+  /// "America/Chicago" - "18" for "America/Denver" - "19" for
+  /// "America/St_Johns" - "20" for "Asia/Dhaka" - "21" for "Asia/Jakarta" -
+  /// "22" for "Asia/Kabul" - "23" for "Asia/Karachi" - "24" for "Asia/Calcutta"
+  /// - "25" for "Asia/Pyongyang" - "26" for "Asia/Rangoon" - "27" for
+  /// "Atlantic/Cape_Verde" - "28" for "Atlantic/South_Georgia" - "29" for
+  /// "Australia/Adelaide" - "30" for "Australia/Lord_Howe" - "31" for
+  /// "Europe/Moscow" - "32" for "Pacific/Kiritimati" - "35" for
+  /// "Pacific/Norfolk" - "36" for "Pacific/Tongatapu"
   core.String? reportGenerationTimeZoneId;
 
   ReportsConfiguration({
@@ -28672,7 +28746,7 @@ class TagSetting {
 
   /// Whether static landing page URLs should be included in the tags.
   ///
-  /// This setting applies only to placements.
+  /// New placements will default to the value set on their site.
   core.bool? includeClickThroughUrls;
 
   /// Whether click-tracking string should be included in the tags.
@@ -29410,6 +29484,7 @@ class UniversalAdId {
   /// - "AD_ID_OFFICIAL"
   /// - "CLEARCAST"
   /// - "DCM"
+  /// - "ARPP"
   core.String? registry;
 
   /// ID value for this creative.

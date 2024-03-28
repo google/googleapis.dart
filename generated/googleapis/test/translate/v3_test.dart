@@ -10,7 +10,6 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 // ignore_for_file: unreachable_from_main
 // ignore_for_file: unused_local_variable
@@ -24,6 +23,240 @@ import 'package:http/http.dart' as http;
 import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
+
+core.int buildCounterAdaptiveMtDataset = 0;
+api.AdaptiveMtDataset buildAdaptiveMtDataset() {
+  final o = api.AdaptiveMtDataset();
+  buildCounterAdaptiveMtDataset++;
+  if (buildCounterAdaptiveMtDataset < 3) {
+    o.createTime = 'foo';
+    o.displayName = 'foo';
+    o.exampleCount = 42;
+    o.name = 'foo';
+    o.sourceLanguageCode = 'foo';
+    o.targetLanguageCode = 'foo';
+    o.updateTime = 'foo';
+  }
+  buildCounterAdaptiveMtDataset--;
+  return o;
+}
+
+void checkAdaptiveMtDataset(api.AdaptiveMtDataset o) {
+  buildCounterAdaptiveMtDataset++;
+  if (buildCounterAdaptiveMtDataset < 3) {
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.displayName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.exampleCount!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.sourceLanguageCode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.targetLanguageCode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.updateTime!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterAdaptiveMtDataset--;
+}
+
+core.int buildCounterAdaptiveMtFile = 0;
+api.AdaptiveMtFile buildAdaptiveMtFile() {
+  final o = api.AdaptiveMtFile();
+  buildCounterAdaptiveMtFile++;
+  if (buildCounterAdaptiveMtFile < 3) {
+    o.createTime = 'foo';
+    o.displayName = 'foo';
+    o.entryCount = 42;
+    o.name = 'foo';
+    o.updateTime = 'foo';
+  }
+  buildCounterAdaptiveMtFile--;
+  return o;
+}
+
+void checkAdaptiveMtFile(api.AdaptiveMtFile o) {
+  buildCounterAdaptiveMtFile++;
+  if (buildCounterAdaptiveMtFile < 3) {
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.displayName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.entryCount!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.updateTime!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterAdaptiveMtFile--;
+}
+
+core.int buildCounterAdaptiveMtSentence = 0;
+api.AdaptiveMtSentence buildAdaptiveMtSentence() {
+  final o = api.AdaptiveMtSentence();
+  buildCounterAdaptiveMtSentence++;
+  if (buildCounterAdaptiveMtSentence < 3) {
+    o.createTime = 'foo';
+    o.name = 'foo';
+    o.sourceSentence = 'foo';
+    o.targetSentence = 'foo';
+    o.updateTime = 'foo';
+  }
+  buildCounterAdaptiveMtSentence--;
+  return o;
+}
+
+void checkAdaptiveMtSentence(api.AdaptiveMtSentence o) {
+  buildCounterAdaptiveMtSentence++;
+  if (buildCounterAdaptiveMtSentence < 3) {
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.sourceSentence!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.targetSentence!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.updateTime!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterAdaptiveMtSentence--;
+}
+
+core.List<core.String> buildUnnamed0() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed0(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterAdaptiveMtTranslateRequest = 0;
+api.AdaptiveMtTranslateRequest buildAdaptiveMtTranslateRequest() {
+  final o = api.AdaptiveMtTranslateRequest();
+  buildCounterAdaptiveMtTranslateRequest++;
+  if (buildCounterAdaptiveMtTranslateRequest < 3) {
+    o.content = buildUnnamed0();
+    o.dataset = 'foo';
+  }
+  buildCounterAdaptiveMtTranslateRequest--;
+  return o;
+}
+
+void checkAdaptiveMtTranslateRequest(api.AdaptiveMtTranslateRequest o) {
+  buildCounterAdaptiveMtTranslateRequest++;
+  if (buildCounterAdaptiveMtTranslateRequest < 3) {
+    checkUnnamed0(o.content!);
+    unittest.expect(
+      o.dataset!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterAdaptiveMtTranslateRequest--;
+}
+
+core.List<api.AdaptiveMtTranslation> buildUnnamed1() => [
+      buildAdaptiveMtTranslation(),
+      buildAdaptiveMtTranslation(),
+    ];
+
+void checkUnnamed1(core.List<api.AdaptiveMtTranslation> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkAdaptiveMtTranslation(o[0]);
+  checkAdaptiveMtTranslation(o[1]);
+}
+
+core.int buildCounterAdaptiveMtTranslateResponse = 0;
+api.AdaptiveMtTranslateResponse buildAdaptiveMtTranslateResponse() {
+  final o = api.AdaptiveMtTranslateResponse();
+  buildCounterAdaptiveMtTranslateResponse++;
+  if (buildCounterAdaptiveMtTranslateResponse < 3) {
+    o.languageCode = 'foo';
+    o.translations = buildUnnamed1();
+  }
+  buildCounterAdaptiveMtTranslateResponse--;
+  return o;
+}
+
+void checkAdaptiveMtTranslateResponse(api.AdaptiveMtTranslateResponse o) {
+  buildCounterAdaptiveMtTranslateResponse++;
+  if (buildCounterAdaptiveMtTranslateResponse < 3) {
+    unittest.expect(
+      o.languageCode!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed1(o.translations!);
+  }
+  buildCounterAdaptiveMtTranslateResponse--;
+}
+
+core.int buildCounterAdaptiveMtTranslation = 0;
+api.AdaptiveMtTranslation buildAdaptiveMtTranslation() {
+  final o = api.AdaptiveMtTranslation();
+  buildCounterAdaptiveMtTranslation++;
+  if (buildCounterAdaptiveMtTranslation < 3) {
+    o.translatedText = 'foo';
+  }
+  buildCounterAdaptiveMtTranslation--;
+  return o;
+}
+
+void checkAdaptiveMtTranslation(api.AdaptiveMtTranslation o) {
+  buildCounterAdaptiveMtTranslation++;
+  if (buildCounterAdaptiveMtTranslation < 3) {
+    unittest.expect(
+      o.translatedText!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterAdaptiveMtTranslation--;
+}
 
 core.int buildCounterBatchDocumentInputConfig = 0;
 api.BatchDocumentInputConfig buildBatchDocumentInputConfig() {
@@ -63,12 +296,12 @@ void checkBatchDocumentOutputConfig(api.BatchDocumentOutputConfig o) {
   buildCounterBatchDocumentOutputConfig--;
 }
 
-core.Map<core.String, core.String> buildUnnamed0() => {
+core.Map<core.String, core.String> buildUnnamed2() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed0(core.Map<core.String, core.String> o) {
+void checkUnnamed2(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -80,34 +313,34 @@ void checkUnnamed0(core.Map<core.String, core.String> o) {
   );
 }
 
-core.Map<core.String, api.TranslateTextGlossaryConfig> buildUnnamed1() => {
+core.Map<core.String, api.TranslateTextGlossaryConfig> buildUnnamed3() => {
       'x': buildTranslateTextGlossaryConfig(),
       'y': buildTranslateTextGlossaryConfig(),
     };
 
-void checkUnnamed1(core.Map<core.String, api.TranslateTextGlossaryConfig> o) {
+void checkUnnamed3(core.Map<core.String, api.TranslateTextGlossaryConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTranslateTextGlossaryConfig(o['x']!);
   checkTranslateTextGlossaryConfig(o['y']!);
 }
 
-core.List<api.BatchDocumentInputConfig> buildUnnamed2() => [
+core.List<api.BatchDocumentInputConfig> buildUnnamed4() => [
       buildBatchDocumentInputConfig(),
       buildBatchDocumentInputConfig(),
     ];
 
-void checkUnnamed2(core.List<api.BatchDocumentInputConfig> o) {
+void checkUnnamed4(core.List<api.BatchDocumentInputConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBatchDocumentInputConfig(o[0]);
   checkBatchDocumentInputConfig(o[1]);
 }
 
-core.Map<core.String, core.String> buildUnnamed3() => {
+core.Map<core.String, core.String> buildUnnamed5() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed3(core.Map<core.String, core.String> o) {
+void checkUnnamed5(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -119,12 +352,12 @@ void checkUnnamed3(core.Map<core.String, core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed4() => [
+core.List<core.String> buildUnnamed6() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed4(core.List<core.String> o) {
+void checkUnnamed6(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -144,13 +377,13 @@ api.BatchTranslateDocumentRequest buildBatchTranslateDocumentRequest() {
     o.customizedAttribution = 'foo';
     o.enableRotationCorrection = true;
     o.enableShadowRemovalNativePdf = true;
-    o.formatConversions = buildUnnamed0();
-    o.glossaries = buildUnnamed1();
-    o.inputConfigs = buildUnnamed2();
-    o.models = buildUnnamed3();
+    o.formatConversions = buildUnnamed2();
+    o.glossaries = buildUnnamed3();
+    o.inputConfigs = buildUnnamed4();
+    o.models = buildUnnamed5();
     o.outputConfig = buildBatchDocumentOutputConfig();
     o.sourceLanguageCode = 'foo';
-    o.targetLanguageCodes = buildUnnamed4();
+    o.targetLanguageCodes = buildUnnamed6();
   }
   buildCounterBatchTranslateDocumentRequest--;
   return o;
@@ -165,48 +398,48 @@ void checkBatchTranslateDocumentRequest(api.BatchTranslateDocumentRequest o) {
     );
     unittest.expect(o.enableRotationCorrection!, unittest.isTrue);
     unittest.expect(o.enableShadowRemovalNativePdf!, unittest.isTrue);
-    checkUnnamed0(o.formatConversions!);
-    checkUnnamed1(o.glossaries!);
-    checkUnnamed2(o.inputConfigs!);
-    checkUnnamed3(o.models!);
+    checkUnnamed2(o.formatConversions!);
+    checkUnnamed3(o.glossaries!);
+    checkUnnamed4(o.inputConfigs!);
+    checkUnnamed5(o.models!);
     checkBatchDocumentOutputConfig(o.outputConfig!);
     unittest.expect(
       o.sourceLanguageCode!,
       unittest.equals('foo'),
     );
-    checkUnnamed4(o.targetLanguageCodes!);
+    checkUnnamed6(o.targetLanguageCodes!);
   }
   buildCounterBatchTranslateDocumentRequest--;
 }
 
-core.Map<core.String, api.TranslateTextGlossaryConfig> buildUnnamed5() => {
+core.Map<core.String, api.TranslateTextGlossaryConfig> buildUnnamed7() => {
       'x': buildTranslateTextGlossaryConfig(),
       'y': buildTranslateTextGlossaryConfig(),
     };
 
-void checkUnnamed5(core.Map<core.String, api.TranslateTextGlossaryConfig> o) {
+void checkUnnamed7(core.Map<core.String, api.TranslateTextGlossaryConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTranslateTextGlossaryConfig(o['x']!);
   checkTranslateTextGlossaryConfig(o['y']!);
 }
 
-core.List<api.InputConfig> buildUnnamed6() => [
+core.List<api.InputConfig> buildUnnamed8() => [
       buildInputConfig(),
       buildInputConfig(),
     ];
 
-void checkUnnamed6(core.List<api.InputConfig> o) {
+void checkUnnamed8(core.List<api.InputConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInputConfig(o[0]);
   checkInputConfig(o[1]);
 }
 
-core.Map<core.String, core.String> buildUnnamed7() => {
+core.Map<core.String, core.String> buildUnnamed9() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed7(core.Map<core.String, core.String> o) {
+void checkUnnamed9(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -218,12 +451,12 @@ void checkUnnamed7(core.Map<core.String, core.String> o) {
   );
 }
 
-core.Map<core.String, core.String> buildUnnamed8() => {
+core.Map<core.String, core.String> buildUnnamed10() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed8(core.Map<core.String, core.String> o) {
+void checkUnnamed10(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -235,12 +468,12 @@ void checkUnnamed8(core.Map<core.String, core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed9() => [
+core.List<core.String> buildUnnamed11() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed9(core.List<core.String> o) {
+void checkUnnamed11(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -257,13 +490,13 @@ api.BatchTranslateTextRequest buildBatchTranslateTextRequest() {
   final o = api.BatchTranslateTextRequest();
   buildCounterBatchTranslateTextRequest++;
   if (buildCounterBatchTranslateTextRequest < 3) {
-    o.glossaries = buildUnnamed5();
-    o.inputConfigs = buildUnnamed6();
-    o.labels = buildUnnamed7();
-    o.models = buildUnnamed8();
+    o.glossaries = buildUnnamed7();
+    o.inputConfigs = buildUnnamed8();
+    o.labels = buildUnnamed9();
+    o.models = buildUnnamed10();
     o.outputConfig = buildOutputConfig();
     o.sourceLanguageCode = 'foo';
-    o.targetLanguageCodes = buildUnnamed9();
+    o.targetLanguageCodes = buildUnnamed11();
   }
   buildCounterBatchTranslateTextRequest--;
   return o;
@@ -272,16 +505,16 @@ api.BatchTranslateTextRequest buildBatchTranslateTextRequest() {
 void checkBatchTranslateTextRequest(api.BatchTranslateTextRequest o) {
   buildCounterBatchTranslateTextRequest++;
   if (buildCounterBatchTranslateTextRequest < 3) {
-    checkUnnamed5(o.glossaries!);
-    checkUnnamed6(o.inputConfigs!);
-    checkUnnamed7(o.labels!);
-    checkUnnamed8(o.models!);
+    checkUnnamed7(o.glossaries!);
+    checkUnnamed8(o.inputConfigs!);
+    checkUnnamed9(o.labels!);
+    checkUnnamed10(o.models!);
     checkOutputConfig(o.outputConfig!);
     unittest.expect(
       o.sourceLanguageCode!,
       unittest.equals('foo'),
     );
-    checkUnnamed9(o.targetLanguageCodes!);
+    checkUnnamed11(o.targetLanguageCodes!);
   }
   buildCounterBatchTranslateTextRequest--;
 }
@@ -368,12 +601,12 @@ void checkDataset(api.Dataset o) {
   buildCounterDataset--;
 }
 
-core.List<api.InputFile> buildUnnamed10() => [
+core.List<api.InputFile> buildUnnamed12() => [
       buildInputFile(),
       buildInputFile(),
     ];
 
-void checkUnnamed10(core.List<api.InputFile> o) {
+void checkUnnamed12(core.List<api.InputFile> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInputFile(o[0]);
   checkInputFile(o[1]);
@@ -384,7 +617,7 @@ api.DatasetInputConfig buildDatasetInputConfig() {
   final o = api.DatasetInputConfig();
   buildCounterDatasetInputConfig++;
   if (buildCounterDatasetInputConfig < 3) {
-    o.inputFiles = buildUnnamed10();
+    o.inputFiles = buildUnnamed12();
   }
   buildCounterDatasetInputConfig--;
   return o;
@@ -393,7 +626,7 @@ api.DatasetInputConfig buildDatasetInputConfig() {
 void checkDatasetInputConfig(api.DatasetInputConfig o) {
   buildCounterDatasetInputConfig++;
   if (buildCounterDatasetInputConfig < 3) {
-    checkUnnamed10(o.inputFiles!);
+    checkUnnamed12(o.inputFiles!);
   }
   buildCounterDatasetInputConfig--;
 }
@@ -417,12 +650,12 @@ void checkDatasetOutputConfig(api.DatasetOutputConfig o) {
   buildCounterDatasetOutputConfig--;
 }
 
-core.Map<core.String, core.String> buildUnnamed11() => {
+core.Map<core.String, core.String> buildUnnamed13() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed11(core.Map<core.String, core.String> o) {
+void checkUnnamed13(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -440,7 +673,7 @@ api.DetectLanguageRequest buildDetectLanguageRequest() {
   buildCounterDetectLanguageRequest++;
   if (buildCounterDetectLanguageRequest < 3) {
     o.content = 'foo';
-    o.labels = buildUnnamed11();
+    o.labels = buildUnnamed13();
     o.mimeType = 'foo';
     o.model = 'foo';
   }
@@ -455,7 +688,7 @@ void checkDetectLanguageRequest(api.DetectLanguageRequest o) {
       o.content!,
       unittest.equals('foo'),
     );
-    checkUnnamed11(o.labels!);
+    checkUnnamed13(o.labels!);
     unittest.expect(
       o.mimeType!,
       unittest.equals('foo'),
@@ -468,12 +701,12 @@ void checkDetectLanguageRequest(api.DetectLanguageRequest o) {
   buildCounterDetectLanguageRequest--;
 }
 
-core.List<api.DetectedLanguage> buildUnnamed12() => [
+core.List<api.DetectedLanguage> buildUnnamed14() => [
       buildDetectedLanguage(),
       buildDetectedLanguage(),
     ];
 
-void checkUnnamed12(core.List<api.DetectedLanguage> o) {
+void checkUnnamed14(core.List<api.DetectedLanguage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDetectedLanguage(o[0]);
   checkDetectedLanguage(o[1]);
@@ -484,7 +717,7 @@ api.DetectLanguageResponse buildDetectLanguageResponse() {
   final o = api.DetectLanguageResponse();
   buildCounterDetectLanguageResponse++;
   if (buildCounterDetectLanguageResponse < 3) {
-    o.languages = buildUnnamed12();
+    o.languages = buildUnnamed14();
   }
   buildCounterDetectLanguageResponse--;
   return o;
@@ -493,7 +726,7 @@ api.DetectLanguageResponse buildDetectLanguageResponse() {
 void checkDetectLanguageResponse(api.DetectLanguageResponse o) {
   buildCounterDetectLanguageResponse++;
   if (buildCounterDetectLanguageResponse < 3) {
-    checkUnnamed12(o.languages!);
+    checkUnnamed14(o.languages!);
   }
   buildCounterDetectLanguageResponse--;
 }
@@ -578,12 +811,12 @@ void checkDocumentOutputConfig(api.DocumentOutputConfig o) {
   buildCounterDocumentOutputConfig--;
 }
 
-core.List<core.String> buildUnnamed13() => [
+core.List<core.String> buildUnnamed15() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed13(core.List<core.String> o) {
+void checkUnnamed15(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -600,7 +833,7 @@ api.DocumentTranslation buildDocumentTranslation() {
   final o = api.DocumentTranslation();
   buildCounterDocumentTranslation++;
   if (buildCounterDocumentTranslation < 3) {
-    o.byteStreamOutputs = buildUnnamed13();
+    o.byteStreamOutputs = buildUnnamed15();
     o.detectedLanguageCode = 'foo';
     o.mimeType = 'foo';
   }
@@ -611,7 +844,7 @@ api.DocumentTranslation buildDocumentTranslation() {
 void checkDocumentTranslation(api.DocumentTranslation o) {
   buildCounterDocumentTranslation++;
   if (buildCounterDocumentTranslation < 3) {
-    checkUnnamed13(o.byteStreamOutputs!);
+    checkUnnamed15(o.byteStreamOutputs!);
     unittest.expect(
       o.detectedLanguageCode!,
       unittest.equals('foo'),
@@ -693,6 +926,38 @@ void checkExportDataRequest(api.ExportDataRequest o) {
     checkDatasetOutputConfig(o.outputConfig!);
   }
   buildCounterExportDataRequest--;
+}
+
+core.int buildCounterFileInputSource = 0;
+api.FileInputSource buildFileInputSource() {
+  final o = api.FileInputSource();
+  buildCounterFileInputSource++;
+  if (buildCounterFileInputSource < 3) {
+    o.content = 'foo';
+    o.displayName = 'foo';
+    o.mimeType = 'foo';
+  }
+  buildCounterFileInputSource--;
+  return o;
+}
+
+void checkFileInputSource(api.FileInputSource o) {
+  buildCounterFileInputSource++;
+  if (buildCounterFileInputSource < 3) {
+    unittest.expect(
+      o.content!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.displayName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.mimeType!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterFileInputSource--;
 }
 
 core.int buildCounterGcsDestination = 0;
@@ -929,12 +1194,12 @@ void checkGlossaryTermsPair(api.GlossaryTermsPair o) {
   buildCounterGlossaryTermsPair--;
 }
 
-core.List<api.GlossaryTerm> buildUnnamed14() => [
+core.List<api.GlossaryTerm> buildUnnamed16() => [
       buildGlossaryTerm(),
       buildGlossaryTerm(),
     ];
 
-void checkUnnamed14(core.List<api.GlossaryTerm> o) {
+void checkUnnamed16(core.List<api.GlossaryTerm> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGlossaryTerm(o[0]);
   checkGlossaryTerm(o[1]);
@@ -945,7 +1210,7 @@ api.GlossaryTermsSet buildGlossaryTermsSet() {
   final o = api.GlossaryTermsSet();
   buildCounterGlossaryTermsSet++;
   if (buildCounterGlossaryTermsSet < 3) {
-    o.terms = buildUnnamed14();
+    o.terms = buildUnnamed16();
   }
   buildCounterGlossaryTermsSet--;
   return o;
@@ -954,9 +1219,49 @@ api.GlossaryTermsSet buildGlossaryTermsSet() {
 void checkGlossaryTermsSet(api.GlossaryTermsSet o) {
   buildCounterGlossaryTermsSet++;
   if (buildCounterGlossaryTermsSet < 3) {
-    checkUnnamed14(o.terms!);
+    checkUnnamed16(o.terms!);
   }
   buildCounterGlossaryTermsSet--;
+}
+
+core.int buildCounterImportAdaptiveMtFileRequest = 0;
+api.ImportAdaptiveMtFileRequest buildImportAdaptiveMtFileRequest() {
+  final o = api.ImportAdaptiveMtFileRequest();
+  buildCounterImportAdaptiveMtFileRequest++;
+  if (buildCounterImportAdaptiveMtFileRequest < 3) {
+    o.fileInputSource = buildFileInputSource();
+    o.gcsInputSource = buildGcsInputSource();
+  }
+  buildCounterImportAdaptiveMtFileRequest--;
+  return o;
+}
+
+void checkImportAdaptiveMtFileRequest(api.ImportAdaptiveMtFileRequest o) {
+  buildCounterImportAdaptiveMtFileRequest++;
+  if (buildCounterImportAdaptiveMtFileRequest < 3) {
+    checkFileInputSource(o.fileInputSource!);
+    checkGcsInputSource(o.gcsInputSource!);
+  }
+  buildCounterImportAdaptiveMtFileRequest--;
+}
+
+core.int buildCounterImportAdaptiveMtFileResponse = 0;
+api.ImportAdaptiveMtFileResponse buildImportAdaptiveMtFileResponse() {
+  final o = api.ImportAdaptiveMtFileResponse();
+  buildCounterImportAdaptiveMtFileResponse++;
+  if (buildCounterImportAdaptiveMtFileResponse < 3) {
+    o.adaptiveMtFile = buildAdaptiveMtFile();
+  }
+  buildCounterImportAdaptiveMtFileResponse--;
+  return o;
+}
+
+void checkImportAdaptiveMtFileResponse(api.ImportAdaptiveMtFileResponse o) {
+  buildCounterImportAdaptiveMtFileResponse++;
+  if (buildCounterImportAdaptiveMtFileResponse < 3) {
+    checkAdaptiveMtFile(o.adaptiveMtFile!);
+  }
+  buildCounterImportAdaptiveMtFileResponse--;
 }
 
 core.int buildCounterImportDataRequest = 0;
@@ -1053,12 +1358,12 @@ void checkLanguageCodePair(api.LanguageCodePair o) {
   buildCounterLanguageCodePair--;
 }
 
-core.List<core.String> buildUnnamed15() => [
+core.List<core.String> buildUnnamed17() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed15(core.List<core.String> o) {
+void checkUnnamed17(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1075,7 +1380,7 @@ api.LanguageCodesSet buildLanguageCodesSet() {
   final o = api.LanguageCodesSet();
   buildCounterLanguageCodesSet++;
   if (buildCounterLanguageCodesSet < 3) {
-    o.languageCodes = buildUnnamed15();
+    o.languageCodes = buildUnnamed17();
   }
   buildCounterLanguageCodesSet--;
   return o;
@@ -1084,17 +1389,123 @@ api.LanguageCodesSet buildLanguageCodesSet() {
 void checkLanguageCodesSet(api.LanguageCodesSet o) {
   buildCounterLanguageCodesSet++;
   if (buildCounterLanguageCodesSet < 3) {
-    checkUnnamed15(o.languageCodes!);
+    checkUnnamed17(o.languageCodes!);
   }
   buildCounterLanguageCodesSet--;
 }
 
-core.List<api.Dataset> buildUnnamed16() => [
+core.List<api.AdaptiveMtDataset> buildUnnamed18() => [
+      buildAdaptiveMtDataset(),
+      buildAdaptiveMtDataset(),
+    ];
+
+void checkUnnamed18(core.List<api.AdaptiveMtDataset> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkAdaptiveMtDataset(o[0]);
+  checkAdaptiveMtDataset(o[1]);
+}
+
+core.int buildCounterListAdaptiveMtDatasetsResponse = 0;
+api.ListAdaptiveMtDatasetsResponse buildListAdaptiveMtDatasetsResponse() {
+  final o = api.ListAdaptiveMtDatasetsResponse();
+  buildCounterListAdaptiveMtDatasetsResponse++;
+  if (buildCounterListAdaptiveMtDatasetsResponse < 3) {
+    o.adaptiveMtDatasets = buildUnnamed18();
+    o.nextPageToken = 'foo';
+  }
+  buildCounterListAdaptiveMtDatasetsResponse--;
+  return o;
+}
+
+void checkListAdaptiveMtDatasetsResponse(api.ListAdaptiveMtDatasetsResponse o) {
+  buildCounterListAdaptiveMtDatasetsResponse++;
+  if (buildCounterListAdaptiveMtDatasetsResponse < 3) {
+    checkUnnamed18(o.adaptiveMtDatasets!);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterListAdaptiveMtDatasetsResponse--;
+}
+
+core.List<api.AdaptiveMtFile> buildUnnamed19() => [
+      buildAdaptiveMtFile(),
+      buildAdaptiveMtFile(),
+    ];
+
+void checkUnnamed19(core.List<api.AdaptiveMtFile> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkAdaptiveMtFile(o[0]);
+  checkAdaptiveMtFile(o[1]);
+}
+
+core.int buildCounterListAdaptiveMtFilesResponse = 0;
+api.ListAdaptiveMtFilesResponse buildListAdaptiveMtFilesResponse() {
+  final o = api.ListAdaptiveMtFilesResponse();
+  buildCounterListAdaptiveMtFilesResponse++;
+  if (buildCounterListAdaptiveMtFilesResponse < 3) {
+    o.adaptiveMtFiles = buildUnnamed19();
+    o.nextPageToken = 'foo';
+  }
+  buildCounterListAdaptiveMtFilesResponse--;
+  return o;
+}
+
+void checkListAdaptiveMtFilesResponse(api.ListAdaptiveMtFilesResponse o) {
+  buildCounterListAdaptiveMtFilesResponse++;
+  if (buildCounterListAdaptiveMtFilesResponse < 3) {
+    checkUnnamed19(o.adaptiveMtFiles!);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterListAdaptiveMtFilesResponse--;
+}
+
+core.List<api.AdaptiveMtSentence> buildUnnamed20() => [
+      buildAdaptiveMtSentence(),
+      buildAdaptiveMtSentence(),
+    ];
+
+void checkUnnamed20(core.List<api.AdaptiveMtSentence> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkAdaptiveMtSentence(o[0]);
+  checkAdaptiveMtSentence(o[1]);
+}
+
+core.int buildCounterListAdaptiveMtSentencesResponse = 0;
+api.ListAdaptiveMtSentencesResponse buildListAdaptiveMtSentencesResponse() {
+  final o = api.ListAdaptiveMtSentencesResponse();
+  buildCounterListAdaptiveMtSentencesResponse++;
+  if (buildCounterListAdaptiveMtSentencesResponse < 3) {
+    o.adaptiveMtSentences = buildUnnamed20();
+    o.nextPageToken = 'foo';
+  }
+  buildCounterListAdaptiveMtSentencesResponse--;
+  return o;
+}
+
+void checkListAdaptiveMtSentencesResponse(
+    api.ListAdaptiveMtSentencesResponse o) {
+  buildCounterListAdaptiveMtSentencesResponse++;
+  if (buildCounterListAdaptiveMtSentencesResponse < 3) {
+    checkUnnamed20(o.adaptiveMtSentences!);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterListAdaptiveMtSentencesResponse--;
+}
+
+core.List<api.Dataset> buildUnnamed21() => [
       buildDataset(),
       buildDataset(),
     ];
 
-void checkUnnamed16(core.List<api.Dataset> o) {
+void checkUnnamed21(core.List<api.Dataset> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDataset(o[0]);
   checkDataset(o[1]);
@@ -1105,7 +1516,7 @@ api.ListDatasetsResponse buildListDatasetsResponse() {
   final o = api.ListDatasetsResponse();
   buildCounterListDatasetsResponse++;
   if (buildCounterListDatasetsResponse < 3) {
-    o.datasets = buildUnnamed16();
+    o.datasets = buildUnnamed21();
     o.nextPageToken = 'foo';
   }
   buildCounterListDatasetsResponse--;
@@ -1115,7 +1526,7 @@ api.ListDatasetsResponse buildListDatasetsResponse() {
 void checkListDatasetsResponse(api.ListDatasetsResponse o) {
   buildCounterListDatasetsResponse++;
   if (buildCounterListDatasetsResponse < 3) {
-    checkUnnamed16(o.datasets!);
+    checkUnnamed21(o.datasets!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1124,12 +1535,12 @@ void checkListDatasetsResponse(api.ListDatasetsResponse o) {
   buildCounterListDatasetsResponse--;
 }
 
-core.List<api.Example> buildUnnamed17() => [
+core.List<api.Example> buildUnnamed22() => [
       buildExample(),
       buildExample(),
     ];
 
-void checkUnnamed17(core.List<api.Example> o) {
+void checkUnnamed22(core.List<api.Example> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkExample(o[0]);
   checkExample(o[1]);
@@ -1140,7 +1551,7 @@ api.ListExamplesResponse buildListExamplesResponse() {
   final o = api.ListExamplesResponse();
   buildCounterListExamplesResponse++;
   if (buildCounterListExamplesResponse < 3) {
-    o.examples = buildUnnamed17();
+    o.examples = buildUnnamed22();
     o.nextPageToken = 'foo';
   }
   buildCounterListExamplesResponse--;
@@ -1150,7 +1561,7 @@ api.ListExamplesResponse buildListExamplesResponse() {
 void checkListExamplesResponse(api.ListExamplesResponse o) {
   buildCounterListExamplesResponse++;
   if (buildCounterListExamplesResponse < 3) {
-    checkUnnamed17(o.examples!);
+    checkUnnamed22(o.examples!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1159,12 +1570,12 @@ void checkListExamplesResponse(api.ListExamplesResponse o) {
   buildCounterListExamplesResponse--;
 }
 
-core.List<api.Glossary> buildUnnamed18() => [
+core.List<api.Glossary> buildUnnamed23() => [
       buildGlossary(),
       buildGlossary(),
     ];
 
-void checkUnnamed18(core.List<api.Glossary> o) {
+void checkUnnamed23(core.List<api.Glossary> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGlossary(o[0]);
   checkGlossary(o[1]);
@@ -1175,7 +1586,7 @@ api.ListGlossariesResponse buildListGlossariesResponse() {
   final o = api.ListGlossariesResponse();
   buildCounterListGlossariesResponse++;
   if (buildCounterListGlossariesResponse < 3) {
-    o.glossaries = buildUnnamed18();
+    o.glossaries = buildUnnamed23();
     o.nextPageToken = 'foo';
   }
   buildCounterListGlossariesResponse--;
@@ -1185,7 +1596,7 @@ api.ListGlossariesResponse buildListGlossariesResponse() {
 void checkListGlossariesResponse(api.ListGlossariesResponse o) {
   buildCounterListGlossariesResponse++;
   if (buildCounterListGlossariesResponse < 3) {
-    checkUnnamed18(o.glossaries!);
+    checkUnnamed23(o.glossaries!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1194,12 +1605,12 @@ void checkListGlossariesResponse(api.ListGlossariesResponse o) {
   buildCounterListGlossariesResponse--;
 }
 
-core.List<api.GlossaryEntry> buildUnnamed19() => [
+core.List<api.GlossaryEntry> buildUnnamed24() => [
       buildGlossaryEntry(),
       buildGlossaryEntry(),
     ];
 
-void checkUnnamed19(core.List<api.GlossaryEntry> o) {
+void checkUnnamed24(core.List<api.GlossaryEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGlossaryEntry(o[0]);
   checkGlossaryEntry(o[1]);
@@ -1210,7 +1621,7 @@ api.ListGlossaryEntriesResponse buildListGlossaryEntriesResponse() {
   final o = api.ListGlossaryEntriesResponse();
   buildCounterListGlossaryEntriesResponse++;
   if (buildCounterListGlossaryEntriesResponse < 3) {
-    o.glossaryEntries = buildUnnamed19();
+    o.glossaryEntries = buildUnnamed24();
     o.nextPageToken = 'foo';
   }
   buildCounterListGlossaryEntriesResponse--;
@@ -1220,7 +1631,7 @@ api.ListGlossaryEntriesResponse buildListGlossaryEntriesResponse() {
 void checkListGlossaryEntriesResponse(api.ListGlossaryEntriesResponse o) {
   buildCounterListGlossaryEntriesResponse++;
   if (buildCounterListGlossaryEntriesResponse < 3) {
-    checkUnnamed19(o.glossaryEntries!);
+    checkUnnamed24(o.glossaryEntries!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1229,12 +1640,12 @@ void checkListGlossaryEntriesResponse(api.ListGlossaryEntriesResponse o) {
   buildCounterListGlossaryEntriesResponse--;
 }
 
-core.List<api.Location> buildUnnamed20() => [
+core.List<api.Location> buildUnnamed25() => [
       buildLocation(),
       buildLocation(),
     ];
 
-void checkUnnamed20(core.List<api.Location> o) {
+void checkUnnamed25(core.List<api.Location> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLocation(o[0]);
   checkLocation(o[1]);
@@ -1245,7 +1656,7 @@ api.ListLocationsResponse buildListLocationsResponse() {
   final o = api.ListLocationsResponse();
   buildCounterListLocationsResponse++;
   if (buildCounterListLocationsResponse < 3) {
-    o.locations = buildUnnamed20();
+    o.locations = buildUnnamed25();
     o.nextPageToken = 'foo';
   }
   buildCounterListLocationsResponse--;
@@ -1255,7 +1666,7 @@ api.ListLocationsResponse buildListLocationsResponse() {
 void checkListLocationsResponse(api.ListLocationsResponse o) {
   buildCounterListLocationsResponse++;
   if (buildCounterListLocationsResponse < 3) {
-    checkUnnamed20(o.locations!);
+    checkUnnamed25(o.locations!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1264,12 +1675,12 @@ void checkListLocationsResponse(api.ListLocationsResponse o) {
   buildCounterListLocationsResponse--;
 }
 
-core.List<api.Model> buildUnnamed21() => [
+core.List<api.Model> buildUnnamed26() => [
       buildModel(),
       buildModel(),
     ];
 
-void checkUnnamed21(core.List<api.Model> o) {
+void checkUnnamed26(core.List<api.Model> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkModel(o[0]);
   checkModel(o[1]);
@@ -1280,7 +1691,7 @@ api.ListModelsResponse buildListModelsResponse() {
   final o = api.ListModelsResponse();
   buildCounterListModelsResponse++;
   if (buildCounterListModelsResponse < 3) {
-    o.models = buildUnnamed21();
+    o.models = buildUnnamed26();
     o.nextPageToken = 'foo';
   }
   buildCounterListModelsResponse--;
@@ -1290,7 +1701,7 @@ api.ListModelsResponse buildListModelsResponse() {
 void checkListModelsResponse(api.ListModelsResponse o) {
   buildCounterListModelsResponse++;
   if (buildCounterListModelsResponse < 3) {
-    checkUnnamed21(o.models!);
+    checkUnnamed26(o.models!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1299,12 +1710,12 @@ void checkListModelsResponse(api.ListModelsResponse o) {
   buildCounterListModelsResponse--;
 }
 
-core.List<api.Operation> buildUnnamed22() => [
+core.List<api.Operation> buildUnnamed27() => [
       buildOperation(),
       buildOperation(),
     ];
 
-void checkUnnamed22(core.List<api.Operation> o) {
+void checkUnnamed27(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperation(o[0]);
   checkOperation(o[1]);
@@ -1316,7 +1727,7 @@ api.ListOperationsResponse buildListOperationsResponse() {
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.operations = buildUnnamed22();
+    o.operations = buildUnnamed27();
   }
   buildCounterListOperationsResponse--;
   return o;
@@ -1329,17 +1740,17 @@ void checkListOperationsResponse(api.ListOperationsResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed22(o.operations!);
+    checkUnnamed27(o.operations!);
   }
   buildCounterListOperationsResponse--;
 }
 
-core.Map<core.String, core.String> buildUnnamed23() => {
+core.Map<core.String, core.String> buildUnnamed28() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed23(core.Map<core.String, core.String> o) {
+void checkUnnamed28(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -1351,7 +1762,7 @@ void checkUnnamed23(core.Map<core.String, core.String> o) {
   );
 }
 
-core.Map<core.String, core.Object?> buildUnnamed24() => {
+core.Map<core.String, core.Object?> buildUnnamed29() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -1364,7 +1775,7 @@ core.Map<core.String, core.Object?> buildUnnamed24() => {
       },
     };
 
-void checkUnnamed24(core.Map<core.String, core.Object?> o) {
+void checkUnnamed29(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -1402,9 +1813,9 @@ api.Location buildLocation() {
   buildCounterLocation++;
   if (buildCounterLocation < 3) {
     o.displayName = 'foo';
-    o.labels = buildUnnamed23();
+    o.labels = buildUnnamed28();
     o.locationId = 'foo';
-    o.metadata = buildUnnamed24();
+    o.metadata = buildUnnamed29();
     o.name = 'foo';
   }
   buildCounterLocation--;
@@ -1418,12 +1829,12 @@ void checkLocation(api.Location o) {
       o.displayName!,
       unittest.equals('foo'),
     );
-    checkUnnamed23(o.labels!);
+    checkUnnamed28(o.labels!);
     unittest.expect(
       o.locationId!,
       unittest.equals('foo'),
     );
-    checkUnnamed24(o.metadata!);
+    checkUnnamed29(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -1499,7 +1910,7 @@ void checkModel(api.Model o) {
   buildCounterModel--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed25() => {
+core.Map<core.String, core.Object?> buildUnnamed30() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -1512,7 +1923,7 @@ core.Map<core.String, core.Object?> buildUnnamed25() => {
       },
     };
 
-void checkUnnamed25(core.Map<core.String, core.Object?> o) {
+void checkUnnamed30(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -1544,7 +1955,7 @@ void checkUnnamed25(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.Map<core.String, core.Object?> buildUnnamed26() => {
+core.Map<core.String, core.Object?> buildUnnamed31() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -1557,7 +1968,7 @@ core.Map<core.String, core.Object?> buildUnnamed26() => {
       },
     };
 
-void checkUnnamed26(core.Map<core.String, core.Object?> o) {
+void checkUnnamed31(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -1596,9 +2007,9 @@ api.Operation buildOperation() {
   if (buildCounterOperation < 3) {
     o.done = true;
     o.error = buildStatus();
-    o.metadata = buildUnnamed25();
+    o.metadata = buildUnnamed30();
     o.name = 'foo';
-    o.response = buildUnnamed26();
+    o.response = buildUnnamed31();
   }
   buildCounterOperation--;
   return o;
@@ -1609,12 +2020,12 @@ void checkOperation(api.Operation o) {
   if (buildCounterOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkStatus(o.error!);
-    checkUnnamed25(o.metadata!);
+    checkUnnamed30(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed26(o.response!);
+    checkUnnamed31(o.response!);
   }
   buildCounterOperation--;
 }
@@ -1665,12 +2076,12 @@ void checkRomanization(api.Romanization o) {
   buildCounterRomanization--;
 }
 
-core.List<core.String> buildUnnamed27() => [
+core.List<core.String> buildUnnamed32() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed27(core.List<core.String> o) {
+void checkUnnamed32(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1687,7 +2098,7 @@ api.RomanizeTextRequest buildRomanizeTextRequest() {
   final o = api.RomanizeTextRequest();
   buildCounterRomanizeTextRequest++;
   if (buildCounterRomanizeTextRequest < 3) {
-    o.contents = buildUnnamed27();
+    o.contents = buildUnnamed32();
     o.sourceLanguageCode = 'foo';
   }
   buildCounterRomanizeTextRequest--;
@@ -1697,7 +2108,7 @@ api.RomanizeTextRequest buildRomanizeTextRequest() {
 void checkRomanizeTextRequest(api.RomanizeTextRequest o) {
   buildCounterRomanizeTextRequest++;
   if (buildCounterRomanizeTextRequest < 3) {
-    checkUnnamed27(o.contents!);
+    checkUnnamed32(o.contents!);
     unittest.expect(
       o.sourceLanguageCode!,
       unittest.equals('foo'),
@@ -1706,12 +2117,12 @@ void checkRomanizeTextRequest(api.RomanizeTextRequest o) {
   buildCounterRomanizeTextRequest--;
 }
 
-core.List<api.Romanization> buildUnnamed28() => [
+core.List<api.Romanization> buildUnnamed33() => [
       buildRomanization(),
       buildRomanization(),
     ];
 
-void checkUnnamed28(core.List<api.Romanization> o) {
+void checkUnnamed33(core.List<api.Romanization> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRomanization(o[0]);
   checkRomanization(o[1]);
@@ -1722,7 +2133,7 @@ api.RomanizeTextResponse buildRomanizeTextResponse() {
   final o = api.RomanizeTextResponse();
   buildCounterRomanizeTextResponse++;
   if (buildCounterRomanizeTextResponse < 3) {
-    o.romanizations = buildUnnamed28();
+    o.romanizations = buildUnnamed33();
   }
   buildCounterRomanizeTextResponse--;
   return o;
@@ -1731,12 +2142,12 @@ api.RomanizeTextResponse buildRomanizeTextResponse() {
 void checkRomanizeTextResponse(api.RomanizeTextResponse o) {
   buildCounterRomanizeTextResponse++;
   if (buildCounterRomanizeTextResponse < 3) {
-    checkUnnamed28(o.romanizations!);
+    checkUnnamed33(o.romanizations!);
   }
   buildCounterRomanizeTextResponse--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed29() => {
+core.Map<core.String, core.Object?> buildUnnamed34() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -1749,7 +2160,7 @@ core.Map<core.String, core.Object?> buildUnnamed29() => {
       },
     };
 
-void checkUnnamed29(core.Map<core.String, core.Object?> o) {
+void checkUnnamed34(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o['x']!) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
@@ -1781,15 +2192,15 @@ void checkUnnamed29(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed30() => [
-      buildUnnamed29(),
-      buildUnnamed29(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed35() => [
+      buildUnnamed34(),
+      buildUnnamed34(),
     ];
 
-void checkUnnamed30(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed35(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed29(o[0]);
-  checkUnnamed29(o[1]);
+  checkUnnamed34(o[0]);
+  checkUnnamed34(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -1798,7 +2209,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed30();
+    o.details = buildUnnamed35();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -1812,7 +2223,7 @@ void checkStatus(api.Status o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed30(o.details!);
+    checkUnnamed35(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -1852,12 +2263,12 @@ void checkSupportedLanguage(api.SupportedLanguage o) {
   buildCounterSupportedLanguage--;
 }
 
-core.List<api.SupportedLanguage> buildUnnamed31() => [
+core.List<api.SupportedLanguage> buildUnnamed36() => [
       buildSupportedLanguage(),
       buildSupportedLanguage(),
     ];
 
-void checkUnnamed31(core.List<api.SupportedLanguage> o) {
+void checkUnnamed36(core.List<api.SupportedLanguage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSupportedLanguage(o[0]);
   checkSupportedLanguage(o[1]);
@@ -1868,7 +2279,7 @@ api.SupportedLanguages buildSupportedLanguages() {
   final o = api.SupportedLanguages();
   buildCounterSupportedLanguages++;
   if (buildCounterSupportedLanguages < 3) {
-    o.languages = buildUnnamed31();
+    o.languages = buildUnnamed36();
   }
   buildCounterSupportedLanguages--;
   return o;
@@ -1877,17 +2288,17 @@ api.SupportedLanguages buildSupportedLanguages() {
 void checkSupportedLanguages(api.SupportedLanguages o) {
   buildCounterSupportedLanguages++;
   if (buildCounterSupportedLanguages < 3) {
-    checkUnnamed31(o.languages!);
+    checkUnnamed36(o.languages!);
   }
   buildCounterSupportedLanguages--;
 }
 
-core.Map<core.String, core.String> buildUnnamed32() => {
+core.Map<core.String, core.String> buildUnnamed37() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed32(core.Map<core.String, core.String> o) {
+void checkUnnamed37(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -1911,7 +2322,7 @@ api.TranslateDocumentRequest buildTranslateDocumentRequest() {
     o.enableShadowRemovalNativePdf = true;
     o.glossaryConfig = buildTranslateTextGlossaryConfig();
     o.isTranslateNativePdfOnly = true;
-    o.labels = buildUnnamed32();
+    o.labels = buildUnnamed37();
     o.model = 'foo';
     o.sourceLanguageCode = 'foo';
     o.targetLanguageCode = 'foo';
@@ -1933,7 +2344,7 @@ void checkTranslateDocumentRequest(api.TranslateDocumentRequest o) {
     unittest.expect(o.enableShadowRemovalNativePdf!, unittest.isTrue);
     checkTranslateTextGlossaryConfig(o.glossaryConfig!);
     unittest.expect(o.isTranslateNativePdfOnly!, unittest.isTrue);
-    checkUnnamed32(o.labels!);
+    checkUnnamed37(o.labels!);
     unittest.expect(
       o.model!,
       unittest.equals('foo'),
@@ -2002,12 +2413,12 @@ void checkTranslateTextGlossaryConfig(api.TranslateTextGlossaryConfig o) {
   buildCounterTranslateTextGlossaryConfig--;
 }
 
-core.List<core.String> buildUnnamed33() => [
+core.List<core.String> buildUnnamed38() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed33(core.List<core.String> o) {
+void checkUnnamed38(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2019,12 +2430,12 @@ void checkUnnamed33(core.List<core.String> o) {
   );
 }
 
-core.Map<core.String, core.String> buildUnnamed34() => {
+core.Map<core.String, core.String> buildUnnamed39() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed34(core.Map<core.String, core.String> o) {
+void checkUnnamed39(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -2041,9 +2452,9 @@ api.TranslateTextRequest buildTranslateTextRequest() {
   final o = api.TranslateTextRequest();
   buildCounterTranslateTextRequest++;
   if (buildCounterTranslateTextRequest < 3) {
-    o.contents = buildUnnamed33();
+    o.contents = buildUnnamed38();
     o.glossaryConfig = buildTranslateTextGlossaryConfig();
-    o.labels = buildUnnamed34();
+    o.labels = buildUnnamed39();
     o.mimeType = 'foo';
     o.model = 'foo';
     o.sourceLanguageCode = 'foo';
@@ -2057,9 +2468,9 @@ api.TranslateTextRequest buildTranslateTextRequest() {
 void checkTranslateTextRequest(api.TranslateTextRequest o) {
   buildCounterTranslateTextRequest++;
   if (buildCounterTranslateTextRequest < 3) {
-    checkUnnamed33(o.contents!);
+    checkUnnamed38(o.contents!);
     checkTranslateTextGlossaryConfig(o.glossaryConfig!);
-    checkUnnamed34(o.labels!);
+    checkUnnamed39(o.labels!);
     unittest.expect(
       o.mimeType!,
       unittest.equals('foo'),
@@ -2081,23 +2492,23 @@ void checkTranslateTextRequest(api.TranslateTextRequest o) {
   buildCounterTranslateTextRequest--;
 }
 
-core.List<api.Translation> buildUnnamed35() => [
+core.List<api.Translation> buildUnnamed40() => [
       buildTranslation(),
       buildTranslation(),
     ];
 
-void checkUnnamed35(core.List<api.Translation> o) {
+void checkUnnamed40(core.List<api.Translation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTranslation(o[0]);
   checkTranslation(o[1]);
 }
 
-core.List<api.Translation> buildUnnamed36() => [
+core.List<api.Translation> buildUnnamed41() => [
       buildTranslation(),
       buildTranslation(),
     ];
 
-void checkUnnamed36(core.List<api.Translation> o) {
+void checkUnnamed41(core.List<api.Translation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTranslation(o[0]);
   checkTranslation(o[1]);
@@ -2108,8 +2519,8 @@ api.TranslateTextResponse buildTranslateTextResponse() {
   final o = api.TranslateTextResponse();
   buildCounterTranslateTextResponse++;
   if (buildCounterTranslateTextResponse < 3) {
-    o.glossaryTranslations = buildUnnamed35();
-    o.translations = buildUnnamed36();
+    o.glossaryTranslations = buildUnnamed40();
+    o.translations = buildUnnamed41();
   }
   buildCounterTranslateTextResponse--;
   return o;
@@ -2118,8 +2529,8 @@ api.TranslateTextResponse buildTranslateTextResponse() {
 void checkTranslateTextResponse(api.TranslateTextResponse o) {
   buildCounterTranslateTextResponse++;
   if (buildCounterTranslateTextResponse < 3) {
-    checkUnnamed35(o.glossaryTranslations!);
-    checkUnnamed36(o.translations!);
+    checkUnnamed40(o.glossaryTranslations!);
+    checkUnnamed41(o.translations!);
   }
   buildCounterTranslateTextResponse--;
 }
@@ -2200,6 +2611,66 @@ void checkWaitOperationRequest(api.WaitOperationRequest o) {
 }
 
 void main() {
+  unittest.group('obj-schema-AdaptiveMtDataset', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAdaptiveMtDataset();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AdaptiveMtDataset.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAdaptiveMtDataset(od);
+    });
+  });
+
+  unittest.group('obj-schema-AdaptiveMtFile', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAdaptiveMtFile();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AdaptiveMtFile.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAdaptiveMtFile(od);
+    });
+  });
+
+  unittest.group('obj-schema-AdaptiveMtSentence', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAdaptiveMtSentence();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AdaptiveMtSentence.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAdaptiveMtSentence(od);
+    });
+  });
+
+  unittest.group('obj-schema-AdaptiveMtTranslateRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAdaptiveMtTranslateRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AdaptiveMtTranslateRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAdaptiveMtTranslateRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-AdaptiveMtTranslateResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAdaptiveMtTranslateResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AdaptiveMtTranslateResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAdaptiveMtTranslateResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-AdaptiveMtTranslation', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAdaptiveMtTranslation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AdaptiveMtTranslation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAdaptiveMtTranslation(od);
+    });
+  });
+
   unittest.group('obj-schema-BatchDocumentInputConfig', () {
     unittest.test('to-json--from-json', () async {
       final o = buildBatchDocumentInputConfig();
@@ -2370,6 +2841,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-FileInputSource', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildFileInputSource();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.FileInputSource.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkFileInputSource(od);
+    });
+  });
+
   unittest.group('obj-schema-GcsDestination', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGcsDestination();
@@ -2470,6 +2951,26 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-ImportAdaptiveMtFileRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildImportAdaptiveMtFileRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ImportAdaptiveMtFileRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkImportAdaptiveMtFileRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-ImportAdaptiveMtFileResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildImportAdaptiveMtFileResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ImportAdaptiveMtFileResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkImportAdaptiveMtFileResponse(od);
+    });
+  });
+
   unittest.group('obj-schema-ImportDataRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildImportDataRequest();
@@ -2517,6 +3018,36 @@ void main() {
       final od = api.LanguageCodesSet.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkLanguageCodesSet(od);
+    });
+  });
+
+  unittest.group('obj-schema-ListAdaptiveMtDatasetsResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildListAdaptiveMtDatasetsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListAdaptiveMtDatasetsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkListAdaptiveMtDatasetsResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-ListAdaptiveMtFilesResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildListAdaptiveMtFilesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListAdaptiveMtFilesResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkListAdaptiveMtFilesResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-ListAdaptiveMtSentencesResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildListAdaptiveMtSentencesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListAdaptiveMtSentencesResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkListAdaptiveMtSentencesResponse(od);
     });
   });
 
@@ -3012,6 +3543,65 @@ void main() {
   });
 
   unittest.group('resource-ProjectsLocationsResource', () {
+    unittest.test('method--adaptiveMtTranslate', () async {
+      final mock = HttpServerMock();
+      final res = api.TranslateApi(mock).projects.locations;
+      final arg_request = buildAdaptiveMtTranslateRequest();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.AdaptiveMtTranslateRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAdaptiveMtTranslateRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v3/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildAdaptiveMtTranslateResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.adaptiveMtTranslate(arg_request, arg_parent,
+          $fields: arg_$fields);
+      checkAdaptiveMtTranslateResponse(
+          response as api.AdaptiveMtTranslateResponse);
+    });
+
     unittest.test('method--batchTranslateDocument', () async {
       final mock = HttpServerMock();
       final res = api.TranslateApi(mock).projects.locations;
@@ -3546,6 +4136,638 @@ void main() {
       final response = await res.translateText(arg_request, arg_parent,
           $fields: arg_$fields);
       checkTranslateTextResponse(response as api.TranslateTextResponse);
+    });
+  });
+
+  unittest.group('resource-ProjectsLocationsAdaptiveMtDatasetsResource', () {
+    unittest.test('method--create', () async {
+      final mock = HttpServerMock();
+      final res = api.TranslateApi(mock).projects.locations.adaptiveMtDatasets;
+      final arg_request = buildAdaptiveMtDataset();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.AdaptiveMtDataset.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAdaptiveMtDataset(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v3/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildAdaptiveMtDataset());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkAdaptiveMtDataset(response as api.AdaptiveMtDataset);
+    });
+
+    unittest.test('method--delete', () async {
+      final mock = HttpServerMock();
+      final res = api.TranslateApi(mock).projects.locations.adaptiveMtDatasets;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v3/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildEmpty());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
+    });
+
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.TranslateApi(mock).projects.locations.adaptiveMtDatasets;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v3/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildAdaptiveMtDataset());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkAdaptiveMtDataset(response as api.AdaptiveMtDataset);
+    });
+
+    unittest.test('method--importAdaptiveMtFile', () async {
+      final mock = HttpServerMock();
+      final res = api.TranslateApi(mock).projects.locations.adaptiveMtDatasets;
+      final arg_request = buildImportAdaptiveMtFileRequest();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.ImportAdaptiveMtFileRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkImportAdaptiveMtFileRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v3/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildImportAdaptiveMtFileResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.importAdaptiveMtFile(arg_request, arg_parent,
+          $fields: arg_$fields);
+      checkImportAdaptiveMtFileResponse(
+          response as api.ImportAdaptiveMtFileResponse);
+    });
+
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res = api.TranslateApi(mock).projects.locations.adaptiveMtDatasets;
+      final arg_parent = 'foo';
+      final arg_filter = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v3/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['filter']!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildListAdaptiveMtDatasetsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListAdaptiveMtDatasetsResponse(
+          response as api.ListAdaptiveMtDatasetsResponse);
+    });
+  });
+
+  unittest.group(
+      'resource-ProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesResource',
+      () {
+    unittest.test('method--delete', () async {
+      final mock = HttpServerMock();
+      final res = api.TranslateApi(mock)
+          .projects
+          .locations
+          .adaptiveMtDatasets
+          .adaptiveMtFiles;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v3/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildEmpty());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
+    });
+
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.TranslateApi(mock)
+          .projects
+          .locations
+          .adaptiveMtDatasets
+          .adaptiveMtFiles;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v3/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildAdaptiveMtFile());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkAdaptiveMtFile(response as api.AdaptiveMtFile);
+    });
+
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res = api.TranslateApi(mock)
+          .projects
+          .locations
+          .adaptiveMtDatasets
+          .adaptiveMtFiles;
+      final arg_parent = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v3/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildListAdaptiveMtFilesResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListAdaptiveMtFilesResponse(
+          response as api.ListAdaptiveMtFilesResponse);
+    });
+  });
+
+  unittest.group(
+      'resource-ProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesAdaptiveMtSentencesResource',
+      () {
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res = api.TranslateApi(mock)
+          .projects
+          .locations
+          .adaptiveMtDatasets
+          .adaptiveMtFiles
+          .adaptiveMtSentences;
+      final arg_parent = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v3/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildListAdaptiveMtSentencesResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListAdaptiveMtSentencesResponse(
+          response as api.ListAdaptiveMtSentencesResponse);
+    });
+  });
+
+  unittest.group(
+      'resource-ProjectsLocationsAdaptiveMtDatasetsAdaptiveMtSentencesResource',
+      () {
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res = api.TranslateApi(mock)
+          .projects
+          .locations
+          .adaptiveMtDatasets
+          .adaptiveMtSentences;
+      final arg_parent = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v3/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildListAdaptiveMtSentencesResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListAdaptiveMtSentencesResponse(
+          response as api.ListAdaptiveMtSentencesResponse);
     });
   });
 

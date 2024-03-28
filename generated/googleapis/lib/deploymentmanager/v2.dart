@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Cloud Deployment Manager V2 API - v2
@@ -26,7 +25,7 @@
 /// - [OperationsResource]
 /// - [ResourcesResource]
 /// - [TypesResource]
-library deploymentmanager_v2;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -352,17 +351,16 @@ class DeploymentsResource {
   /// [filter] - A filter expression that filters resources listed in the
   /// response. Most Compute resources support two types of filter expressions:
   /// expressions that support regular expressions and expressions that follow
-  /// API improvement proposal AIP-160. If you want to use AIP-160, your
+  /// API improvement proposal AIP-160. These two types of filter expressions
+  /// cannot be mixed in one request. If you want to use AIP-160, your
   /// expression must specify the field name, an operator, and the value that
   /// you want to use for filtering. The value must be a string, a number, or a
   /// boolean. The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or
   /// `:`. For example, if you are filtering Compute Engine instances, you can
   /// exclude instances named `example-instance` by specifying `name !=
-  /// example-instance`. The `:` operator can be used with string fields to
-  /// match substrings. For non-string fields it is equivalent to the `=`
-  /// operator. The `:*` comparison can be used to test whether a key has been
-  /// defined. For example, to find all objects with `owner` label use: ```
-  /// labels.owner:* ``` You can also filter nested fields. For example, you
+  /// example-instance`. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
   /// could specify `scheduling.automaticRestart = false` to include instances
   /// only if they are not scheduled for automatic restarts. You can use
   /// filtering on nested fields to filter based on resource labels. To filter
@@ -380,7 +378,8 @@ class DeploymentsResource {
   /// (fieldname2 ne "literal")` The literal value is interpreted as a regular
   /// expression using Google RE2 library syntax. The literal value must match
   /// the entire field. For example, to filter for instances that do not end
-  /// with name "instance", you would use `name ne .*instance`.
+  /// with name "instance", you would use `name ne .*instance`. You cannot
+  /// combine constraints on multiple fields using regular expressions.
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than `maxResults`,
@@ -816,17 +815,16 @@ class ManifestsResource {
   /// [filter] - A filter expression that filters resources listed in the
   /// response. Most Compute resources support two types of filter expressions:
   /// expressions that support regular expressions and expressions that follow
-  /// API improvement proposal AIP-160. If you want to use AIP-160, your
+  /// API improvement proposal AIP-160. These two types of filter expressions
+  /// cannot be mixed in one request. If you want to use AIP-160, your
   /// expression must specify the field name, an operator, and the value that
   /// you want to use for filtering. The value must be a string, a number, or a
   /// boolean. The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or
   /// `:`. For example, if you are filtering Compute Engine instances, you can
   /// exclude instances named `example-instance` by specifying `name !=
-  /// example-instance`. The `:` operator can be used with string fields to
-  /// match substrings. For non-string fields it is equivalent to the `=`
-  /// operator. The `:*` comparison can be used to test whether a key has been
-  /// defined. For example, to find all objects with `owner` label use: ```
-  /// labels.owner:* ``` You can also filter nested fields. For example, you
+  /// example-instance`. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
   /// could specify `scheduling.automaticRestart = false` to include instances
   /// only if they are not scheduled for automatic restarts. You can use
   /// filtering on nested fields to filter based on resource labels. To filter
@@ -844,7 +842,8 @@ class ManifestsResource {
   /// (fieldname2 ne "literal")` The literal value is interpreted as a regular
   /// expression using Google RE2 library syntax. The literal value must match
   /// the entire field. For example, to filter for instances that do not end
-  /// with name "instance", you would use `name ne .*instance`.
+  /// with name "instance", you would use `name ne .*instance`. You cannot
+  /// combine constraints on multiple fields using regular expressions.
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than `maxResults`,
@@ -966,17 +965,16 @@ class OperationsResource {
   /// [filter] - A filter expression that filters resources listed in the
   /// response. Most Compute resources support two types of filter expressions:
   /// expressions that support regular expressions and expressions that follow
-  /// API improvement proposal AIP-160. If you want to use AIP-160, your
+  /// API improvement proposal AIP-160. These two types of filter expressions
+  /// cannot be mixed in one request. If you want to use AIP-160, your
   /// expression must specify the field name, an operator, and the value that
   /// you want to use for filtering. The value must be a string, a number, or a
   /// boolean. The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or
   /// `:`. For example, if you are filtering Compute Engine instances, you can
   /// exclude instances named `example-instance` by specifying `name !=
-  /// example-instance`. The `:` operator can be used with string fields to
-  /// match substrings. For non-string fields it is equivalent to the `=`
-  /// operator. The `:*` comparison can be used to test whether a key has been
-  /// defined. For example, to find all objects with `owner` label use: ```
-  /// labels.owner:* ``` You can also filter nested fields. For example, you
+  /// example-instance`. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
   /// could specify `scheduling.automaticRestart = false` to include instances
   /// only if they are not scheduled for automatic restarts. You can use
   /// filtering on nested fields to filter based on resource labels. To filter
@@ -994,7 +992,8 @@ class OperationsResource {
   /// (fieldname2 ne "literal")` The literal value is interpreted as a regular
   /// expression using Google RE2 library syntax. The literal value must match
   /// the entire field. For example, to filter for instances that do not end
-  /// with name "instance", you would use `name ne .*instance`.
+  /// with name "instance", you would use `name ne .*instance`. You cannot
+  /// combine constraints on multiple fields using regular expressions.
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than `maxResults`,
@@ -1122,17 +1121,16 @@ class ResourcesResource {
   /// [filter] - A filter expression that filters resources listed in the
   /// response. Most Compute resources support two types of filter expressions:
   /// expressions that support regular expressions and expressions that follow
-  /// API improvement proposal AIP-160. If you want to use AIP-160, your
+  /// API improvement proposal AIP-160. These two types of filter expressions
+  /// cannot be mixed in one request. If you want to use AIP-160, your
   /// expression must specify the field name, an operator, and the value that
   /// you want to use for filtering. The value must be a string, a number, or a
   /// boolean. The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or
   /// `:`. For example, if you are filtering Compute Engine instances, you can
   /// exclude instances named `example-instance` by specifying `name !=
-  /// example-instance`. The `:` operator can be used with string fields to
-  /// match substrings. For non-string fields it is equivalent to the `=`
-  /// operator. The `:*` comparison can be used to test whether a key has been
-  /// defined. For example, to find all objects with `owner` label use: ```
-  /// labels.owner:* ``` You can also filter nested fields. For example, you
+  /// example-instance`. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
   /// could specify `scheduling.automaticRestart = false` to include instances
   /// only if they are not scheduled for automatic restarts. You can use
   /// filtering on nested fields to filter based on resource labels. To filter
@@ -1150,7 +1148,8 @@ class ResourcesResource {
   /// (fieldname2 ne "literal")` The literal value is interpreted as a regular
   /// expression using Google RE2 library syntax. The literal value must match
   /// the entire field. For example, to filter for instances that do not end
-  /// with name "instance", you would use `name ne .*instance`.
+  /// with name "instance", you would use `name ne .*instance`. You cannot
+  /// combine constraints on multiple fields using regular expressions.
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than `maxResults`,
@@ -1230,17 +1229,16 @@ class TypesResource {
   /// [filter] - A filter expression that filters resources listed in the
   /// response. Most Compute resources support two types of filter expressions:
   /// expressions that support regular expressions and expressions that follow
-  /// API improvement proposal AIP-160. If you want to use AIP-160, your
+  /// API improvement proposal AIP-160. These two types of filter expressions
+  /// cannot be mixed in one request. If you want to use AIP-160, your
   /// expression must specify the field name, an operator, and the value that
   /// you want to use for filtering. The value must be a string, a number, or a
   /// boolean. The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or
   /// `:`. For example, if you are filtering Compute Engine instances, you can
   /// exclude instances named `example-instance` by specifying `name !=
-  /// example-instance`. The `:` operator can be used with string fields to
-  /// match substrings. For non-string fields it is equivalent to the `=`
-  /// operator. The `:*` comparison can be used to test whether a key has been
-  /// defined. For example, to find all objects with `owner` label use: ```
-  /// labels.owner:* ``` You can also filter nested fields. For example, you
+  /// example-instance`. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
   /// could specify `scheduling.automaticRestart = false` to include instances
   /// only if they are not scheduled for automatic restarts. You can use
   /// filtering on nested fields to filter based on resource labels. To filter
@@ -1258,7 +1256,8 @@ class TypesResource {
   /// (fieldname2 ne "literal")` The literal value is interpreted as a regular
   /// expression using Google RE2 library syntax. The literal value must match
   /// the entire field. For example, to filter for instances that do not end
-  /// with name "instance", you would use `name ne .*instance`.
+  /// with name "instance", you would use `name ne .*instance`. You cannot
+  /// combine constraints on multiple fields using regular expressions.
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than `maxResults`,
@@ -1410,14 +1409,31 @@ class Binding {
   /// `group:{emailid}`: An email address that represents a Google group. For
   /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
   /// (primary) that represents all the users of that domain. For example,
-  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a user that has
-  /// been recently deleted. For example,
-  /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
-  /// this value reverts to `user:{emailid}` and the recovered user retains the
-  /// role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a service account
-  /// that has been recently deleted. For example,
+  /// `google.com` or `example.com`. *
+  /// `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workforce identity pool. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`:
+  /// All workforce identities in a group. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All workforce identities with a specific attribute value. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}
+  /// / * `: All identities in a workforce identity pool. *
+  /// `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workload identity pool. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`:
+  /// A workload identity pool group. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All identities in a workload identity pool with a certain attribute. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}
+  /// / * `: All identities in a workload identity pool. *
+  /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
+  /// identifier) representing a user that has been recently deleted. For
+  /// example, `alice@example.com?uid=123456789012345678901`. If the user is
+  /// recovered, this value reverts to `user:{emailid}` and the recovered user
+  /// retains the role in the binding. *
+  /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus
+  /// unique identifier) representing a service account that has been recently
+  /// deleted. For example,
   /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If
   /// the service account is undeleted, this value reverts to
   /// `serviceAccount:{emailid}` and the undeleted service account retains the
@@ -1426,12 +1442,19 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding.
+  /// the role in the binding. *
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// Deleted single identity in a workforce identity pool. For example,
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
   ///
-  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an
+  /// overview of the IAM roles and permissions, see the
+  /// [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For
+  /// a list of the available pre-defined roles, see
+  /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
   Binding({
@@ -1458,6 +1481,75 @@ class Binding {
         if (condition != null) 'condition': condition!,
         if (members != null) 'members': members!,
         if (role != null) 'role': role!,
+      };
+}
+
+class BulkInsertOperationStatus {
+  /// Count of VMs successfully created so far.
+  ///
+  /// Output only.
+  core.int? createdVmCount;
+
+  /// Count of VMs that got deleted during rollback.
+  ///
+  /// Output only.
+  core.int? deletedVmCount;
+
+  /// Count of VMs that started creating but encountered an error.
+  ///
+  /// Output only.
+  core.int? failedToCreateVmCount;
+
+  /// Creation status of BulkInsert operation - information if the flow is
+  /// rolling forward or rolling back.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATUS_UNSPECIFIED"
+  /// - "CREATING" : Rolling forward - creating VMs.
+  /// - "ROLLING_BACK" : Rolling back - cleaning up after an error.
+  /// - "DONE" : Done
+  core.String? status;
+
+  /// Count of VMs originally planned to be created.
+  ///
+  /// Output only.
+  core.int? targetVmCount;
+
+  BulkInsertOperationStatus({
+    this.createdVmCount,
+    this.deletedVmCount,
+    this.failedToCreateVmCount,
+    this.status,
+    this.targetVmCount,
+  });
+
+  BulkInsertOperationStatus.fromJson(core.Map json_)
+      : this(
+          createdVmCount: json_.containsKey('createdVmCount')
+              ? json_['createdVmCount'] as core.int
+              : null,
+          deletedVmCount: json_.containsKey('deletedVmCount')
+              ? json_['deletedVmCount'] as core.int
+              : null,
+          failedToCreateVmCount: json_.containsKey('failedToCreateVmCount')
+              ? json_['failedToCreateVmCount'] as core.int
+              : null,
+          status: json_.containsKey('status')
+              ? json_['status'] as core.String
+              : null,
+          targetVmCount: json_.containsKey('targetVmCount')
+              ? json_['targetVmCount'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createdVmCount != null) 'createdVmCount': createdVmCount!,
+        if (deletedVmCount != null) 'deletedVmCount': deletedVmCount!,
+        if (failedToCreateVmCount != null)
+          'failedToCreateVmCount': failedToCreateVmCount!,
+        if (status != null) 'status': status!,
+        if (targetVmCount != null) 'targetVmCount': targetVmCount!,
       };
 }
 
@@ -1900,6 +1992,36 @@ class ImportFile {
       };
 }
 
+class InstancesBulkInsertOperationMetadata {
+  /// Status information per location (location name is key).
+  ///
+  /// Example key: zones/us-central1-a
+  core.Map<core.String, BulkInsertOperationStatus>? perLocationStatus;
+
+  InstancesBulkInsertOperationMetadata({
+    this.perLocationStatus,
+  });
+
+  InstancesBulkInsertOperationMetadata.fromJson(core.Map json_)
+      : this(
+          perLocationStatus: json_.containsKey('perLocationStatus')
+              ? (json_['perLocationStatus']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    BulkInsertOperationStatus.fromJson(
+                        value as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (perLocationStatus != null) 'perLocationStatus': perLocationStatus!,
+      };
+}
+
 class Manifest {
   /// The YAML configuration for this manifest.
   ///
@@ -2269,8 +2391,9 @@ class OperationWarnings {
 /// information, read Handling API responses. Operations can be global, regional
 /// or zonal. - For global operations, use the `globalOperations` resource. -
 /// For regional operations, use the `regionOperations` resource. - For zonal
-/// operations, use the `zonalOperations` resource. For more information, read
-/// Global, Regional, and Zonal Resources.
+/// operations, use the `zoneOperations` resource. For more information, read
+/// Global, Regional, and Zonal Resources. Note that completed Operation
+/// resources have a limited retention period.
 class Operation {
   /// The value of `requestId` if you provided it in the request.
   ///
@@ -2330,6 +2453,7 @@ class Operation {
   ///
   /// Output only.
   core.String? insertTime;
+  InstancesBulkInsertOperationMetadata? instancesBulkInsertOperationMetadata;
 
   /// Type of the resource.
   ///
@@ -2376,6 +2500,13 @@ class Operation {
   /// Output only.
   core.String? selfLink;
 
+  /// If the operation is for projects.setCommonInstanceMetadata, this field
+  /// will contain information on all underlying zonal actions and their state.
+  ///
+  /// Output only.
+  SetCommonInstanceMetadataOperationMetadata?
+      setCommonInstanceMetadataOperationMetadata;
+
   /// The time that this operation was started by the server.
   ///
   /// This value is in RFC3339 text format.
@@ -2412,7 +2543,8 @@ class Operation {
   /// Output only.
   core.String? targetLink;
 
-  /// User who requested the operation, for example: `user@example.com`.
+  /// User who requested the operation, for example: `user@example.com` or
+  /// `alice_smith_identifier (global/workforcePools/example-com-us-employees)`.
   ///
   /// Output only.
   core.String? user;
@@ -2440,6 +2572,7 @@ class Operation {
     this.httpErrorStatusCode,
     this.id,
     this.insertTime,
+    this.instancesBulkInsertOperationMetadata,
     this.kind,
     this.name,
     this.operationGroupId,
@@ -2447,6 +2580,7 @@ class Operation {
     this.progress,
     this.region,
     this.selfLink,
+    this.setCommonInstanceMetadataOperationMetadata,
     this.startTime,
     this.status,
     this.statusMessage,
@@ -2485,6 +2619,12 @@ class Operation {
           insertTime: json_.containsKey('insertTime')
               ? json_['insertTime'] as core.String
               : null,
+          instancesBulkInsertOperationMetadata:
+              json_.containsKey('instancesBulkInsertOperationMetadata')
+                  ? InstancesBulkInsertOperationMetadata.fromJson(
+                      json_['instancesBulkInsertOperationMetadata']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           operationGroupId: json_.containsKey('operationGroupId')
@@ -2502,6 +2642,12 @@ class Operation {
           selfLink: json_.containsKey('selfLink')
               ? json_['selfLink'] as core.String
               : null,
+          setCommonInstanceMetadataOperationMetadata:
+              json_.containsKey('setCommonInstanceMetadataOperationMetadata')
+                  ? SetCommonInstanceMetadataOperationMetadata.fromJson(
+                      json_['setCommonInstanceMetadataOperationMetadata']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           startTime: json_.containsKey('startTime')
               ? json_['startTime'] as core.String
               : null,
@@ -2538,6 +2684,9 @@ class Operation {
           'httpErrorStatusCode': httpErrorStatusCode!,
         if (id != null) 'id': id!,
         if (insertTime != null) 'insertTime': insertTime!,
+        if (instancesBulkInsertOperationMetadata != null)
+          'instancesBulkInsertOperationMetadata':
+              instancesBulkInsertOperationMetadata!,
         if (kind != null) 'kind': kind!,
         if (name != null) 'name': name!,
         if (operationGroupId != null) 'operationGroupId': operationGroupId!,
@@ -2545,6 +2694,9 @@ class Operation {
         if (progress != null) 'progress': progress!,
         if (region != null) 'region': region!,
         if (selfLink != null) 'selfLink': selfLink!,
+        if (setCommonInstanceMetadataOperationMetadata != null)
+          'setCommonInstanceMetadataOperationMetadata':
+              setCommonInstanceMetadataOperationMetadata!,
         if (startTime != null) 'startTime': startTime!,
         if (status != null) 'status': status!,
         if (statusMessage != null) 'statusMessage': statusMessage!,
@@ -2607,23 +2759,23 @@ class OperationsListResponse {
 /// request, the resource, or both. To learn which resources support conditions
 /// in their IAM policies, see the
 /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": \[ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": \[
+/// **JSON example:** ``` { "bindings": [ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": [
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": \[
-/// "user:eve@example.com" \], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": [
+/// "user:eve@example.com" ], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time \< timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
-/// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
-/// user:mike@example.com - group:admins@example.com - domain:google.com -
-/// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
-/// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
-/// role: roles/resourcemanager.organizationViewer condition: title: expirable
-/// access description: Does not grant access after Sep 2020 expression:
-/// request.time \< timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
-/// version: 3 For a description of IAM and its features, see the
-/// [IAM documentation](https://cloud.google.com/iam/docs/).
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: -
+/// members: - user:mike@example.com - group:admins@example.com -
+/// domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+/// role: roles/resourcemanager.organizationAdmin - members: -
+/// user:eve@example.com role: roles/resourcemanager.organizationViewer
+/// condition: title: expirable access description: Does not grant access after
+/// Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+/// etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features,
+/// see the [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig>? auditConfigs;
@@ -3370,6 +3522,103 @@ class ResourcesListResponse {
         if (resources != null) 'resources': resources!,
       };
 }
+
+class SetCommonInstanceMetadataOperationMetadata {
+  /// The client operation id.
+  ///
+  /// Output only.
+  core.String? clientOperationId;
+
+  /// Status information per location (location name is key).
+  ///
+  /// Example key: zones/us-central1-a
+  ///
+  /// Output only.
+  core.Map<core.String,
+          SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo>?
+      perLocationOperations;
+
+  SetCommonInstanceMetadataOperationMetadata({
+    this.clientOperationId,
+    this.perLocationOperations,
+  });
+
+  SetCommonInstanceMetadataOperationMetadata.fromJson(core.Map json_)
+      : this(
+          clientOperationId: json_.containsKey('clientOperationId')
+              ? json_['clientOperationId'] as core.String
+              : null,
+          perLocationOperations: json_.containsKey('perLocationOperations')
+              ? (json_['perLocationOperations']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo
+                        .fromJson(value as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (clientOperationId != null) 'clientOperationId': clientOperationId!,
+        if (perLocationOperations != null)
+          'perLocationOperations': perLocationOperations!,
+      };
+}
+
+class SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo {
+  /// If state is `ABANDONED` or `FAILED`, this field is populated.
+  ///
+  /// Output only.
+  Status? error;
+
+  /// Status of the action, which can be one of the following: `PROPAGATING`,
+  /// `PROPAGATED`, `ABANDONED`, `FAILED`, or `DONE`.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "UNSPECIFIED"
+  /// - "PROPAGATING" : Operation is not yet confirmed to have been created in
+  /// the location.
+  /// - "PROPAGATED" : Operation is confirmed to be in the location.
+  /// - "ABANDONED" : Operation not tracked in this location e.g. zone is marked
+  /// as DOWN.
+  /// - "FAILED" : Operation is in an error state.
+  /// - "DONE" : Operation has completed successfully.
+  core.String? state;
+
+  SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo({
+    this.error,
+    this.state,
+  });
+
+  SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo.fromJson(
+      core.Map json_)
+      : this(
+          error: json_.containsKey('error')
+              ? Status.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>)
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (error != null) 'error': error!,
+        if (state != null) 'state': state!,
+      };
+}
+
+/// The `Status` type defines a logical error model that is suitable for
+/// different programming environments, including REST APIs and RPC APIs.
+///
+/// It is used by [gRPC](https://github.com/grpc). Each `Status` message
+/// contains three pieces of data: error code, error message, and error details.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
+typedef Status = $Status;
 
 class TargetConfiguration {
   /// The configuration to use for this deployment.

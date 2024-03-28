@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Serverless VPC Access API - v1
@@ -24,7 +23,7 @@
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsConnectorsResource]
 ///     - [ProjectsLocationsOperationsResource]
-library vpcaccess_v1;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -141,8 +140,9 @@ class ProjectsLocationsConnectorsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The project and location in which the configuration
-  /// should be created, specified in the format `projects / * /locations / * `.
+  /// [parent] - Required. The project ID and location in which the
+  /// configuration should be created, specified in the format `projects / *
+  /// /locations / * `.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [connectorId] - Required. The ID to use for this connector.
@@ -467,7 +467,12 @@ class Connector {
 
   /// Maximum throughput of the connector in Mbps.
   ///
-  /// Default is 300, max is 1000.
+  /// Refers to the expected throughput when using an `e2-micro` machine type.
+  /// Value must be a multiple of 100 from 300 through 1000. Must be higher than
+  /// the value specified by --min-throughput. If both max-throughput and
+  /// max-instances are provided, max-instances takes precedence over
+  /// max-throughput. The use of `max-throughput` is discouraged in favor of
+  /// `max-instances`.
   core.int? maxThroughput;
 
   /// Minimum value of instances in autoscaling group underlying the connector.
@@ -475,7 +480,12 @@ class Connector {
 
   /// Minimum throughput of the connector in Mbps.
   ///
-  /// Default and min is 200.
+  /// Refers to the expected throughput when using an `e2-micro` machine type.
+  /// Value must be a multiple of 100 from 200 through 900. Must be lower than
+  /// the value specified by --max-throughput. If both min-throughput and
+  /// min-instances are provided, min-instances takes precedence over
+  /// min-throughput. The use of `min-throughput` is discouraged in favor of
+  /// `min-instances`.
   core.int? minThroughput;
 
   /// The resource name in the format `projects / * /locations / * /connectors /
@@ -695,7 +705,7 @@ class Operation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard

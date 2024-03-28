@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Cloud Firestore API - v1
@@ -30,7 +29,7 @@
 ///     - [ProjectsDatabasesOperationsResource]
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsBackupsResource]
-library firestore_v1;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -404,7 +403,7 @@ class ProjectsDatabasesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Create a new database by restore from an existing backup.
+  /// Creates a new database by restoring from an existing backup.
   ///
   /// The new database must be in the same cloud region or multi-region location
   /// as the existing backup. This behaves similar to
@@ -415,8 +414,6 @@ class ProjectsDatabasesResource {
   /// Operation's metadata field type being the RestoreDatabaseMetadata. The
   /// response type is the Database if the restore was successful. The new
   /// database is not readable or writeable until the LRO has completed.
-  /// Cancelling the returned operation will stop the restore and delete the
-  /// in-progress database, if the restore is still active.
   ///
   /// [request] - The metadata request object.
   ///
@@ -734,7 +731,7 @@ class ProjectsDatabasesCollectionGroupsFieldsResource {
   /// Currently, FirestoreAdmin.ListFields only supports listing fields that
   /// have been explicitly overridden. To issue this query, call
   /// FirestoreAdmin.ListFields with the filter set to
-  /// \`indexConfig.usesAncestorConfig:false or \`ttlConfig:*\`.
+  /// `indexConfig.usesAncestorConfig:false` or `ttlConfig:*`.
   ///
   /// Request parameters:
   ///
@@ -2461,8 +2458,8 @@ class ArrayValue {
 ///
 /// * Only numeric values will be aggregated. All non-numeric values including
 /// `NULL` are skipped. * If the aggregated values contain `NaN`, returns `NaN`.
-/// * If the aggregated value set is empty, returns `NULL`. * Always returns the
-/// result as a double.
+/// Infinity math follows IEEE-754 standards. * If the aggregated value set is
+/// empty, returns `NULL`. * Always returns the result as a double.
 class Avg {
   /// The field to aggregate on.
   FieldReference? field;
@@ -2988,21 +2985,21 @@ class Document {
 
   /// The document's fields.
   ///
-  /// The map keys represent field names. A simple field name contains only
+  /// The map keys represent field names. Field names matching the regular
+  /// expression `__.*__` are reserved. Reserved field names are forbidden
+  /// except in certain documented contexts. The field names, represented as
+  /// UTF-8, must not exceed 1,500 bytes and cannot be empty. Field paths may be
+  /// used in other contexts to refer to structured fields defined here. For
+  /// `map_value`, the field path is represented by a dot-delimited (`.`) string
+  /// of segments. Each segment is either a simple field name (defined below) or
+  /// a quoted field name. For example, the structured field `"foo" : {
+  /// map_value: { "x&y" : { string_value: "hello" }}}` would be represented by
+  /// the field path `` foo.`x&y` ``. A simple field name contains only
   /// characters `a` to `z`, `A` to `Z`, `0` to `9`, or `_`, and must not start
-  /// with `0` to `9`. For example, `foo_bar_17`. Field names matching the
-  /// regular expression `__.*__` are reserved. Reserved field names are
-  /// forbidden except in certain documented contexts. The map keys, represented
-  /// as UTF-8, must not exceed 1,500 bytes and cannot be empty. Field paths may
-  /// be used in other contexts to refer to structured fields defined here. For
-  /// `map_value`, the field path is represented by the simple or quoted field
-  /// names of the containing fields, delimited by `.`. For example, the
-  /// structured field `"foo" : { map_value: { "x&y" : { string_value: "hello"
-  /// }}}` would be represented by the field path `foo.x&y`. Within a field
-  /// path, a quoted field name starts and ends with `` ` `` and may contain any
-  /// character. Some characters, including `` ` ``, must be escaped using a
-  /// `\`. For example, `` `x&y` `` represents `x&y` and `` `bak\`tik` ``
-  /// represents `` bak`tik ``.
+  /// with `0` to `9`. For example, `foo_bar_17`. A quoted field name starts and
+  /// ends with `` ` `` and may contain any character. Some characters,
+  /// including `` ` ``, must be escaped using a `\`. For example, `` `x&y` ``
+  /// represents `x&y` and `` `bak\`tik` `` represents `` bak`tik ``.
   core.Map<core.String, Value>? fields;
 
   /// The resource name of the document, for example
@@ -3193,9 +3190,10 @@ class FieldFilter {
 
 /// A reference to a field in a document, ex: `stats.operations`.
 class FieldReference {
-  /// The relative path of the document being referenced.
+  /// A reference to a field in a document.
   ///
-  /// Requires: * Conform to document field name limitations.
+  /// Requires: * MUST be a dot-delimited (`.`) string of segments, where each
+  /// segment conforms to document field name limitations.
   core.String? fieldPath;
 
   FieldReference({
@@ -3384,7 +3382,7 @@ class Filter {
 /// A Backup of a Cloud Firestore Database.
 ///
 /// The backup contains all documents and index configurations for the given
-/// database at specific point in time.
+/// database at a specific point in time.
 class GoogleFirestoreAdminV1Backup {
   /// Name of the Firestore database that the backup is from.
   ///
@@ -3568,9 +3566,6 @@ class GoogleFirestoreAdminV1BackupSchedule {
 typedef GoogleFirestoreAdminV1DailyRecurrence = $Empty;
 
 /// A Cloud Firestore Database.
-///
-/// Currently only one database is allowed per cloud project; this database must
-/// have a `database_id` of '(default)'.
 class GoogleFirestoreAdminV1Database {
   /// The App Engine integration mode to use for this database.
   /// Possible string values are:
@@ -3643,7 +3638,7 @@ class GoogleFirestoreAdminV1Database {
 
   /// The location of the database.
   ///
-  /// Available databases are listed at
+  /// Available locations are listed at
   /// https://cloud.google.com/firestore/docs/locations.
   core.String? locationId;
 
@@ -3779,6 +3774,41 @@ class GoogleFirestoreAdminV1Database {
       };
 }
 
+/// A consistent snapshot of a database at a specific point in time.
+class GoogleFirestoreAdminV1DatabaseSnapshot {
+  /// A name of the form `projects/{project_id}/databases/{database_id}`
+  ///
+  /// Required.
+  core.String? database;
+
+  /// The timestamp at which the database snapshot is taken.
+  ///
+  /// The requested timestamp must be a whole minute within the PITR window.
+  ///
+  /// Required.
+  core.String? snapshotTime;
+
+  GoogleFirestoreAdminV1DatabaseSnapshot({
+    this.database,
+    this.snapshotTime,
+  });
+
+  GoogleFirestoreAdminV1DatabaseSnapshot.fromJson(core.Map json_)
+      : this(
+          database: json_.containsKey('database')
+              ? json_['database'] as core.String
+              : null,
+          snapshotTime: json_.containsKey('snapshotTime')
+              ? json_['snapshotTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (database != null) 'database': database!,
+        if (snapshotTime != null) 'snapshotTime': snapshotTime!,
+      };
+}
+
 /// The request for FirestoreAdmin.ExportDocuments.
 class GoogleFirestoreAdminV1ExportDocumentsRequest {
   /// Which collection ids to export.
@@ -3809,10 +3839,11 @@ class GoogleFirestoreAdminV1ExportDocumentsRequest {
   /// The timestamp that corresponds to the version of the database to be
   /// exported.
   ///
-  /// The timestamp must be rounded to the minute, in the past, and not older
-  /// than 1 hour. If specified, then the exported documents will represent a
-  /// consistent view of the database at the provided time. Otherwise, there are
-  /// no guarantees about the consistency of the exported documents.
+  /// The timestamp must be in the past, rounded to the minute and not older
+  /// than earliestVersionTime. If specified, then the exported documents will
+  /// represent a consistent view of the database at the provided time.
+  /// Otherwise, there are no guarantees about the consistency of the exported
+  /// documents.
   core.String? snapshotTime;
 
   GoogleFirestoreAdminV1ExportDocumentsRequest({
@@ -3916,6 +3947,10 @@ class GoogleFirestoreAdminV1Field {
         if (ttlConfig != null) 'ttlConfig': ttlConfig!,
       };
 }
+
+/// An index that stores vectors in a flat data structure, and supports
+/// exhaustive search.
+typedef GoogleFirestoreAdminV1FlatIndex = $Empty;
 
 /// The request for FirestoreAdmin.ImportDocuments.
 class GoogleFirestoreAdminV1ImportDocumentsRequest {
@@ -4167,10 +4202,15 @@ class GoogleFirestoreAdminV1IndexField {
   /// - "DESCENDING" : The field is ordered by descending field value.
   core.String? order;
 
+  /// Indicates that this field supports nearest neighbors and distance
+  /// operations on vector.
+  GoogleFirestoreAdminV1VectorConfig? vectorConfig;
+
   GoogleFirestoreAdminV1IndexField({
     this.arrayConfig,
     this.fieldPath,
     this.order,
+    this.vectorConfig,
   });
 
   GoogleFirestoreAdminV1IndexField.fromJson(core.Map json_)
@@ -4183,12 +4223,17 @@ class GoogleFirestoreAdminV1IndexField {
               : null,
           order:
               json_.containsKey('order') ? json_['order'] as core.String : null,
+          vectorConfig: json_.containsKey('vectorConfig')
+              ? GoogleFirestoreAdminV1VectorConfig.fromJson(
+                  json_['vectorConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (arrayConfig != null) 'arrayConfig': arrayConfig!,
         if (fieldPath != null) 'fieldPath': fieldPath!,
         if (order != null) 'order': order!,
+        if (vectorConfig != null) 'vectorConfig': vectorConfig!,
       };
 }
 
@@ -4262,8 +4307,20 @@ class GoogleFirestoreAdminV1ListDatabasesResponse {
   /// The databases in the project.
   core.List<GoogleFirestoreAdminV1Database>? databases;
 
+  /// In the event that data about individual databases cannot be listed they
+  /// will be recorded here.
+  ///
+  /// An example entry might be: projects/some_project/locations/some_location
+  /// This can happen if the Cloud Region that the Database resides in is
+  /// currently unavailable. In this case we can't fetch all the details about
+  /// the database. You may be able to get a more detailed error message (or
+  /// possibly fetch the resource) by sending a 'Get' request for the resource
+  /// or a 'List' request for the specific location.
+  core.List<core.String>? unreachable;
+
   GoogleFirestoreAdminV1ListDatabasesResponse({
     this.databases,
+    this.unreachable,
   });
 
   GoogleFirestoreAdminV1ListDatabasesResponse.fromJson(core.Map json_)
@@ -4274,10 +4331,16 @@ class GoogleFirestoreAdminV1ListDatabasesResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (databases != null) 'databases': databases!,
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
@@ -4355,8 +4418,6 @@ class GoogleFirestoreAdminV1RestoreDatabaseRequest {
   ///
   /// Must be from the same project as the parent. Format is:
   /// `projects/{project_id}/locations/{location}/backups/{backup}`
-  ///
-  /// Required.
   core.String? backup;
 
   /// The ID to use for the database, which will become the final component of
@@ -4371,9 +4432,16 @@ class GoogleFirestoreAdminV1RestoreDatabaseRequest {
   /// Required.
   core.String? databaseId;
 
+  /// Database snapshot to restore from.
+  ///
+  /// The source database must exist and have enabled PITR. The restored
+  /// database will be created in the same location as the source database.
+  GoogleFirestoreAdminV1DatabaseSnapshot? databaseSnapshot;
+
   GoogleFirestoreAdminV1RestoreDatabaseRequest({
     this.backup,
     this.databaseId,
+    this.databaseSnapshot,
   });
 
   GoogleFirestoreAdminV1RestoreDatabaseRequest.fromJson(core.Map json_)
@@ -4384,11 +4452,17 @@ class GoogleFirestoreAdminV1RestoreDatabaseRequest {
           databaseId: json_.containsKey('databaseId')
               ? json_['databaseId'] as core.String
               : null,
+          databaseSnapshot: json_.containsKey('databaseSnapshot')
+              ? GoogleFirestoreAdminV1DatabaseSnapshot.fromJson(
+                  json_['databaseSnapshot']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (backup != null) 'backup': backup!,
         if (databaseId != null) 'databaseId': databaseId!,
+        if (databaseSnapshot != null) 'databaseSnapshot': databaseSnapshot!,
       };
 }
 
@@ -4474,6 +4548,41 @@ class GoogleFirestoreAdminV1TtlConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (state != null) 'state': state!,
+      };
+}
+
+/// The index configuration to support vector search operations
+class GoogleFirestoreAdminV1VectorConfig {
+  /// The vector dimension this configuration applies to.
+  ///
+  /// The resulting index will only include vectors of this dimension, and can
+  /// be used for vector search with the same dimension.
+  ///
+  /// Required.
+  core.int? dimension;
+
+  /// Indicates the vector index is a flat index.
+  GoogleFirestoreAdminV1FlatIndex? flat;
+
+  GoogleFirestoreAdminV1VectorConfig({
+    this.dimension,
+    this.flat,
+  });
+
+  GoogleFirestoreAdminV1VectorConfig.fromJson(core.Map json_)
+      : this(
+          dimension: json_.containsKey('dimension')
+              ? json_['dimension'] as core.int
+              : null,
+          flat: json_.containsKey('flat')
+              ? GoogleFirestoreAdminV1FlatIndex.fromJson(
+                  json_['flat'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dimension != null) 'dimension': dimension!,
+        if (flat != null) 'flat': flat!,
       };
 }
 
@@ -4574,7 +4683,7 @@ class GoogleLongrunningOperation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard
@@ -4940,7 +5049,8 @@ class PartitionQueryResponse {
   /// returns partition cursors A and B, running the following three queries
   /// will return the entire result set of the original query: * query, end_at A
   /// * query, start_at A, end_at B * query, start_at B An empty result may
-  /// indicate that the query has too few results to be partitioned.
+  /// indicate that the query has too few results to be partitioned, or that the
+  /// query is not yet supported for partitioning.
   core.List<Cursor>? partitions;
 
   PartitionQueryResponse({
@@ -5422,6 +5532,9 @@ class StructuredAggregationQuery {
 }
 
 /// A Firestore query.
+///
+/// The query stages are executed in the following order: 1. from 2. where 3.
+/// select 4. order_by + start_at + end_at 5. offset 6. limit
 class StructuredQuery {
   /// A potential prefix of a position in the result set to end the query at.
   ///
@@ -5553,16 +5666,17 @@ class StructuredQuery {
 ///
 /// * Only numeric values will be aggregated. All non-numeric values including
 /// `NULL` are skipped. * If the aggregated values contain `NaN`, returns `NaN`.
-/// * If the aggregated value set is empty, returns 0. * Returns a 64-bit
-/// integer if the sum result is an integer value and does not overflow.
-/// Otherwise, the result is returned as a double. Note that even if all the
-/// aggregated values are integers, the result is returned as a double if it
-/// cannot fit within a 64-bit signed integer. When this occurs, the returned
-/// value will lose precision. * When underflow occurs, floating-point
-/// aggregation is non-deterministic. This means that running the same query
-/// repeatedly without any changes to the underlying values could produce
-/// slightly different results each time. In those cases, values should be
-/// stored as integers over floating-point numbers.
+/// Infinity math follows IEEE-754 standards. * If the aggregated value set is
+/// empty, returns 0. * Returns a 64-bit integer if all aggregated numbers are
+/// integers and the sum result does not overflow. Otherwise, the result is
+/// returned as a double. Note that even if all the aggregated values are
+/// integers, the result is returned as a double if it cannot fit within a
+/// 64-bit signed integer. When this occurs, the returned value will lose
+/// precision. * When underflow occurs, floating-point aggregation is
+/// non-deterministic. This means that running the same query repeatedly without
+/// any changes to the underlying values could produce slightly different
+/// results each time. In those cases, values should be stored as integers over
+/// floating-point numbers.
 class Sum {
   /// The field to aggregate on.
   FieldReference? field;

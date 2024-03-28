@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Custom Search API - v1
@@ -22,7 +21,7 @@
 ///
 /// - [CseResource]
 ///   - [CseSiterestrictResource]
-library customsearch_v1;
+library;
 
 import 'dart:async' as async;
 import 'dart:core' as core;
@@ -216,8 +215,7 @@ class CseResource {
   ///
   /// [q] - Query
   ///
-  /// [relatedSite] - Specifies that all search results should be pages that are
-  /// related to the specified URL.
+  /// [relatedSite] - Deprecated.
   ///
   /// [rights] - Filters based on licensing. Supported values include:
   /// `cc_publicdomain`, `cc_attribute`, `cc_sharealike`, `cc_noncommercial`,
@@ -522,8 +520,7 @@ class CseSiterestrictResource {
   ///
   /// [q] - Query
   ///
-  /// [relatedSite] - Specifies that all search results should be pages that are
-  /// related to the specified URL.
+  /// [relatedSite] - Deprecated.
   ///
   /// [rights] - Filters based on licensing. Supported values include:
   /// `cc_publicdomain`, `cc_attribute`, `cc_sharealike`, `cc_noncommercial`,

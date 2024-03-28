@@ -10,7 +10,6 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 // ignore_for_file: unreachable_from_main
 // ignore_for_file: unused_local_variable
@@ -171,6 +170,7 @@ api.CseIdentity buildCseIdentity() {
   if (buildCounterCseIdentity < 3) {
     o.emailAddress = 'foo';
     o.primaryKeyPairId = 'foo';
+    o.signAndEncryptKeyPairs = buildSignAndEncryptKeyPairs();
   }
   buildCounterCseIdentity--;
   return o;
@@ -187,6 +187,7 @@ void checkCseIdentity(api.CseIdentity o) {
       o.primaryKeyPairId!,
       unittest.equals('foo'),
     );
+    checkSignAndEncryptKeyPairs(o.signAndEncryptKeyPairs!);
   }
   buildCounterCseIdentity--;
 }
@@ -270,6 +271,7 @@ api.CsePrivateKeyMetadata buildCsePrivateKeyMetadata() {
   final o = api.CsePrivateKeyMetadata();
   buildCounterCsePrivateKeyMetadata++;
   if (buildCounterCsePrivateKeyMetadata < 3) {
+    o.hardwareKeyMetadata = buildHardwareKeyMetadata();
     o.kaclsKeyMetadata = buildKaclsKeyMetadata();
     o.privateKeyMetadataId = 'foo';
   }
@@ -280,6 +282,7 @@ api.CsePrivateKeyMetadata buildCsePrivateKeyMetadata() {
 void checkCsePrivateKeyMetadata(api.CsePrivateKeyMetadata o) {
   buildCounterCsePrivateKeyMetadata++;
   if (buildCounterCsePrivateKeyMetadata < 3) {
+    checkHardwareKeyMetadata(o.hardwareKeyMetadata!);
     checkKaclsKeyMetadata(o.kaclsKeyMetadata!);
     unittest.expect(
       o.privateKeyMetadataId!,
@@ -537,6 +540,28 @@ void checkForwardingAddress(api.ForwardingAddress o) {
     );
   }
   buildCounterForwardingAddress--;
+}
+
+core.int buildCounterHardwareKeyMetadata = 0;
+api.HardwareKeyMetadata buildHardwareKeyMetadata() {
+  final o = api.HardwareKeyMetadata();
+  buildCounterHardwareKeyMetadata++;
+  if (buildCounterHardwareKeyMetadata < 3) {
+    o.description = 'foo';
+  }
+  buildCounterHardwareKeyMetadata--;
+  return o;
+}
+
+void checkHardwareKeyMetadata(api.HardwareKeyMetadata o) {
+  buildCounterHardwareKeyMetadata++;
+  if (buildCounterHardwareKeyMetadata < 3) {
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterHardwareKeyMetadata--;
 }
 
 core.List<api.HistoryLabelAdded> buildUnnamed8() => [
@@ -1753,6 +1778,33 @@ void checkSendAs(api.SendAs o) {
   buildCounterSendAs--;
 }
 
+core.int buildCounterSignAndEncryptKeyPairs = 0;
+api.SignAndEncryptKeyPairs buildSignAndEncryptKeyPairs() {
+  final o = api.SignAndEncryptKeyPairs();
+  buildCounterSignAndEncryptKeyPairs++;
+  if (buildCounterSignAndEncryptKeyPairs < 3) {
+    o.encryptionKeyPairId = 'foo';
+    o.signingKeyPairId = 'foo';
+  }
+  buildCounterSignAndEncryptKeyPairs--;
+  return o;
+}
+
+void checkSignAndEncryptKeyPairs(api.SignAndEncryptKeyPairs o) {
+  buildCounterSignAndEncryptKeyPairs++;
+  if (buildCounterSignAndEncryptKeyPairs < 3) {
+    unittest.expect(
+      o.encryptionKeyPairId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.signingKeyPairId!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterSignAndEncryptKeyPairs--;
+}
+
 core.int buildCounterSmimeInfo = 0;
 api.SmimeInfo buildSmimeInfo() {
   final o = api.SmimeInfo();
@@ -2241,6 +2293,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-HardwareKeyMetadata', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildHardwareKeyMetadata();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.HardwareKeyMetadata.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkHardwareKeyMetadata(od);
+    });
+  });
+
   unittest.group('obj-schema-History', () {
     unittest.test('to-json--from-json', () async {
       final o = buildHistory();
@@ -2558,6 +2620,16 @@ void main() {
       final od =
           api.SendAs.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkSendAs(od);
+    });
+  });
+
+  unittest.group('obj-schema-SignAndEncryptKeyPairs', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSignAndEncryptKeyPairs();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SignAndEncryptKeyPairs.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSignAndEncryptKeyPairs(od);
     });
   });
 

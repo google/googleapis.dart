@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Service Control API - v2
@@ -21,7 +20,7 @@
 /// Create an instance of [ServiceControlApi] to access these resources:
 ///
 /// - [ServicesResource]
-library servicecontrol_v2;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -650,8 +649,6 @@ class ReportRequest {
 }
 
 /// Response message for the Report method.
-///
-/// If the request contains any invalid data, the server returns an RPC error.
 typedef ReportResponse = $Empty;
 
 /// This message defines attributes for an HTTP request.
@@ -966,17 +963,17 @@ class ResourceInfo {
   /// The identifier of the container of this resource.
   ///
   /// For Google Cloud APIs, the resource container must be one of the following
-  /// formats: - `projects/` - `folders/` - `organizations/` For the policy
-  /// enforcement on the container level (VPCSC and Location Policy check), this
-  /// field takes precedence on the container extracted from name when presents.
+  /// formats: - `projects/` - `folders/` - `organizations/` Required for the
+  /// policy enforcement on the container level (e.g. VPCSC, Location Policy
+  /// check, Org Policy check).
   ///
   /// Optional.
   core.String? container;
 
-  /// The location of the resource.
+  /// The location of the resource, it must be a valid zone, region or
+  /// multiregion, for example: "europe-west4", "northamerica-northeast1-a".
   ///
-  /// The value must be a valid zone, region or multiregion. For example:
-  /// "europe-west4" or "northamerica-northeast1-a"
+  /// Required for location policy check.
   ///
   /// Optional.
   core.String? location;

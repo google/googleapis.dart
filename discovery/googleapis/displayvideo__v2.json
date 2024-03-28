@@ -34,7 +34,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230803",
+    "revision": "20240307",
     "rootUrl": "https://displayvideo.googleapis.com/",
     "servicePath": "",
     "title": "Display & Video 360 API",
@@ -153,7 +153,7 @@
                     ]
                 },
                 "create": {
-                    "description": "Creates a new advertiser. Returns the newly created advertiser if successful. This method can take up to 180 seconds to complete.",
+                    "description": "Creates a new advertiser. Returns the newly created advertiser if successful. **This method regularly experiences high latency.** We recommend [increasing your default timeout](/display-video/api/guides/best-practices/timeouts#client_library_timeout) to avoid errors.",
                     "flatPath": "v2/advertisers",
                     "httpMethod": "POST",
                     "id": "displayvideo.advertisers.create",
@@ -260,11 +260,6 @@
                     "parameters": {
                         "filter": {
                             "description": "Allows filtering by advertiser fields. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by `AND` or `OR` logical operators. * A restriction has the form of `{field} {operator} {value}`. * The `updateTime` field must use the `GREATER THAN OR EQUAL TO (>=)` or `LESS THAN OR EQUAL TO (<=)` operators. * All other fields must use the `EQUALS (=)` operator. Supported fields: * `advertiserId` * `displayName` * `entityStatus` * `updateTime` (input in ISO 8601 format, or `YYYY-MM-DDTHH:MM:SSZ`) Examples: * All active advertisers under a partner: `entityStatus=\"ENTITY_STATUS_ACTIVE\"` * All advertisers with an update time less than or equal to 2020-11-04T18:54:47Z (format of ISO 8601): `updateTime<=\"2020-11-04T18:54:47Z\"` * All advertisers with an update time greater than or equal to 2020-11-04T18:54:47Z (format of ISO 8601): `updateTime>=\"2020-11-04T18:54:47Z\"` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information.",
-                            "location": "query",
-                            "type": "string"
-                        },
-                        "internalDebuggingConfig": {
-                            "description": "The config used in internal debugging and manual testing. Use comma to separate multiple values. Examples: To allow entity search to go through tangle `searchUsingTangle` To get only the advertiser Ids use `idOnly`",
                             "location": "query",
                             "type": "string"
                         },
@@ -461,7 +456,7 @@
                             ]
                         },
                         "delete": {
-                            "description": "Permanently deletes a campaign. A deleted campaign cannot be recovered. The campaign should be archived first, i.e. set entity_status to `ENTITY_STATUS_ARCHIVED`, to be able to delete it.",
+                            "description": "Permanently deletes a campaign. A deleted campaign cannot be recovered. The campaign should be archived first, i.e. set entity_status to `ENTITY_STATUS_ARCHIVED`, to be able to delete it. **This method regularly experiences high latency.** We recommend [increasing your default timeout](/display-video/api/guides/best-practices/timeouts#client_library_timeout) to avoid errors.",
                             "flatPath": "v2/advertisers/{advertisersId}/campaigns/{campaignsId}",
                             "httpMethod": "DELETE",
                             "id": "displayvideo.advertisers.campaigns.delete",
@@ -1387,7 +1382,7 @@
                                     ]
                                 },
                                 "replace": {
-                                    "description": "Replaces all of the sites under a single channel. The operation will replace the sites under a channel with the sites provided in ReplaceSitesRequest.new_sites.",
+                                    "description": "Replaces all of the sites under a single channel. The operation will replace the sites under a channel with the sites provided in ReplaceSitesRequest.new_sites. **This method regularly experiences high latency.** We recommend [increasing your default timeout](/display-video/api/guides/best-practices/timeouts#client_library_timeout) to avoid errors.",
                                     "flatPath": "v2/advertisers/{advertiserId}/channels/{channelsId}/sites:replace",
                                     "httpMethod": "POST",
                                     "id": "displayvideo.advertisers.channels.sites.replace",
@@ -1430,7 +1425,7 @@
                 "creatives": {
                     "methods": {
                         "create": {
-                            "description": "Creates a new creative. Returns the newly created creative if successful.",
+                            "description": "Creates a new creative. Returns the newly created creative if successful. A [\"Standard\" user role](//support.google.com/displayvideo/answer/2723011) or greater for the parent advertiser or partner is required to make this request.",
                             "flatPath": "v2/advertisers/{advertisersId}/creatives",
                             "httpMethod": "POST",
                             "id": "displayvideo.advertisers.creatives.create",
@@ -1459,7 +1454,7 @@
                             ]
                         },
                         "delete": {
-                            "description": "Deletes a creative. Returns error code `NOT_FOUND` if the creative does not exist. The creative should be archived first, i.e. set entity_status to `ENTITY_STATUS_ARCHIVED`, before it can be deleted.",
+                            "description": "Deletes a creative. Returns error code `NOT_FOUND` if the creative does not exist. The creative should be archived first, i.e. set entity_status to `ENTITY_STATUS_ARCHIVED`, before it can be deleted. A [\"Standard\" user role](//support.google.com/displayvideo/answer/2723011) or greater for the parent advertiser or partner is required to make this request.",
                             "flatPath": "v2/advertisers/{advertisersId}/creatives/{creativesId}",
                             "httpMethod": "DELETE",
                             "id": "displayvideo.advertisers.creatives.delete",
@@ -1576,7 +1571,7 @@
                             ]
                         },
                         "patch": {
-                            "description": "Updates an existing creative. Returns the updated creative if successful.",
+                            "description": "Updates an existing creative. Returns the updated creative if successful. A [\"Standard\" user role](//support.google.com/displayvideo/answer/2723011) or greater for the parent advertiser or partner is required to make this request.",
                             "flatPath": "v2/advertisers/{advertisersId}/creatives/{creativesId}",
                             "httpMethod": "PATCH",
                             "id": "displayvideo.advertisers.creatives.patch",
@@ -2598,7 +2593,7 @@
                 "lineItems": {
                     "methods": {
                         "bulkEditAssignedTargetingOptions": {
-                            "description": "Bulk edits targeting options under multiple line items. The operation will delete the assigned targeting options provided in BulkEditAssignedTargetingOptionsRequest.delete_requests and then create the assigned targeting options provided in BulkEditAssignedTargetingOptionsRequest.create_requests. Requests to this endpoint cannot be made concurrently with the following requests updating the same line item: * BulkUpdate * UpdateLineItem * CreateLineItemAssignedTargetingOption * DeleteLineItemAssignedTargetingOption",
+                            "description": "Bulk edits targeting options under multiple line items. The operation will delete the assigned targeting options provided in BulkEditAssignedTargetingOptionsRequest.delete_requests and then create the assigned targeting options provided in BulkEditAssignedTargetingOptionsRequest.create_requests. Requests to this endpoint cannot be made concurrently with the following requests updating the same line item: * lineItems.bulkUpdate * lineItems.patch * assignedTargetingOptions.create * assignedTargetingOptions.delete YouTube & Partners line items cannot be created or updated using the API.",
                             "flatPath": "v2/advertisers/{advertisersId}/lineItems:bulkEditAssignedTargetingOptions",
                             "httpMethod": "POST",
                             "id": "displayvideo.advertisers.lineItems.bulkEditAssignedTargetingOptions",
@@ -2681,7 +2676,7 @@
                             ]
                         },
                         "bulkUpdate": {
-                            "description": "Updates multiple line items. Requests to this endpoint cannot be made concurrently with the following requests updating the same line item: * BulkEditAssignedTargetingOptions * UpdateLineItem * CreateLineItemAssignedTargetingOption * DeleteLineItemAssignedTargetingOption",
+                            "description": "Updates multiple line items. Requests to this endpoint cannot be made concurrently with the following requests updating the same line item: * BulkEditAssignedTargetingOptions * UpdateLineItem * assignedTargetingOptions.create * assignedTargetingOptions.delete YouTube & Partners line items cannot be created or updated using the API.",
                             "flatPath": "v2/advertisers/{advertisersId}/lineItems:bulkUpdate",
                             "httpMethod": "POST",
                             "id": "displayvideo.advertisers.lineItems.bulkUpdate",
@@ -2710,7 +2705,7 @@
                             ]
                         },
                         "create": {
-                            "description": "Creates a new line item. Returns the newly created line item if successful.",
+                            "description": "Creates a new line item. Returns the newly created line item if successful. YouTube & Partners line items cannot be created or updated using the API.",
                             "flatPath": "v2/advertisers/{advertisersId}/lineItems",
                             "httpMethod": "POST",
                             "id": "displayvideo.advertisers.lineItems.create",
@@ -2739,7 +2734,7 @@
                             ]
                         },
                         "delete": {
-                            "description": "Deletes a line item. Returns error code `NOT_FOUND` if the line item does not exist. The line item should be archived first, i.e. set entity_status to `ENTITY_STATUS_ARCHIVED`, to be able to delete it.",
+                            "description": "Deletes a line item. Returns error code `NOT_FOUND` if the line item does not exist. The line item should be archived first, i.e. set entity_status to `ENTITY_STATUS_ARCHIVED`, to be able to delete it. YouTube & Partners line items cannot be created or updated using the API.",
                             "flatPath": "v2/advertisers/{advertisersId}/lineItems/{lineItemsId}",
                             "httpMethod": "DELETE",
                             "id": "displayvideo.advertisers.lineItems.delete",
@@ -2774,7 +2769,7 @@
                             ]
                         },
                         "duplicate": {
-                            "description": "Duplicates a line item. Returns the ID of the created line item if successful.",
+                            "description": "Duplicates a line item. Returns the ID of the created line item if successful. YouTube & Partners line items cannot be created or updated using the API. **This method regularly experiences high latency.** We recommend [increasing your default timeout](/display-video/api/guides/best-practices/timeouts#client_library_timeout) to avoid errors.",
                             "flatPath": "v2/advertisers/{advertisersId}/lineItems/{lineItemsId}:duplicate",
                             "httpMethod": "POST",
                             "id": "displayvideo.advertisers.lineItems.duplicate",
@@ -2812,7 +2807,7 @@
                             ]
                         },
                         "generateDefault": {
-                            "description": "Creates a new line item with settings (including targeting) inherited from the insertion order and an `ENTITY_STATUS_DRAFT` entity_status. Returns the newly created line item if successful. There are default values based on the three fields: * The insertion order's insertion_order_type * The insertion order's automation_type * The given line_item_type",
+                            "description": "Creates a new line item with settings (including targeting) inherited from the insertion order and an `ENTITY_STATUS_DRAFT` entity_status. Returns the newly created line item if successful. There are default values based on the three fields: * The insertion order's insertion_order_type * The insertion order's automation_type * The given line_item_type YouTube & Partners line items cannot be created or updated using the API.",
                             "flatPath": "v2/advertisers/{advertisersId}/lineItems:generateDefault",
                             "httpMethod": "POST",
                             "id": "displayvideo.advertisers.lineItems.generateDefault",
@@ -2923,7 +2918,7 @@
                             ]
                         },
                         "patch": {
-                            "description": "Updates an existing line item. Returns the updated line item if successful. Requests to this endpoint cannot be made concurrently with the following requests updating the same line item: * BulkEditAssignedTargetingOptions * BulkUpdateLineItems * CreateLineItemAssignedTargetingOption * DeleteLineItemAssignedTargetingOption",
+                            "description": "Updates an existing line item. Returns the updated line item if successful. Requests to this endpoint cannot be made concurrently with the following requests updating the same line item: * BulkEditAssignedTargetingOptions * BulkUpdateLineItems * assignedTargetingOptions.create * assignedTargetingOptions.delete YouTube & Partners line items cannot be created or updated using the API. **This method regularly experiences high latency.** We recommend [increasing your default timeout](/display-video/api/guides/best-practices/timeouts#client_library_timeout) to avoid errors.",
                             "flatPath": "v2/advertisers/{advertisersId}/lineItems/{lineItemsId}",
                             "httpMethod": "PATCH",
                             "id": "displayvideo.advertisers.lineItems.patch",
@@ -2973,7 +2968,7 @@
                                 "assignedTargetingOptions": {
                                     "methods": {
                                         "create": {
-                                            "description": "Assigns a targeting option to a line item. Returns the assigned targeting option if successful. Requests to this endpoint cannot be made concurrently with the following requests updating the same line item: * BulkEditAssignedTargetingOptions * BulkUpdate * UpdateLineItem * DeleteLineItemAssignedTargetingOption",
+                                            "description": "Assigns a targeting option to a line item. Returns the assigned targeting option if successful. Requests to this endpoint cannot be made concurrently with the following requests updating the same line item: * lineItems.bulkEditAssignedTargetingOptions * lineItems.bulkUpdate * lineItems.patch * DeleteLineItemAssignedTargetingOption YouTube & Partners line items cannot be created or updated using the API.",
                                             "flatPath": "v2/advertisers/{advertisersId}/lineItems/{lineItemsId}/targetingTypes/{targetingTypesId}/assignedTargetingOptions",
                                             "httpMethod": "POST",
                                             "id": "displayvideo.advertisers.lineItems.targetingTypes.assignedTargetingOptions.create",
@@ -3121,7 +3116,7 @@
                                             ]
                                         },
                                         "delete": {
-                                            "description": "Deletes an assigned targeting option from a line item. Requests to this endpoint cannot be made concurrently with the following requests updating the same line item: * BulkEditAssignedTargetingOptions * BulkUpdate * UpdateLineItem * CreateLineItemAssignedTargetingOption",
+                                            "description": "Deletes an assigned targeting option from a line item. Requests to this endpoint cannot be made concurrently with the following requests updating the same line item: * lineItems.bulkEditAssignedTargetingOptions * lineItems.bulkUpdate * lineItems.patch * CreateLineItemAssignedTargetingOption YouTube & Partners line items cannot be created or updated using the API.",
                                             "flatPath": "v2/advertisers/{advertisersId}/lineItems/{lineItemsId}/targetingTypes/{targetingTypesId}/assignedTargetingOptions/{assignedTargetingOptionsId}",
                                             "httpMethod": "DELETE",
                                             "id": "displayvideo.advertisers.lineItems.targetingTypes.assignedTargetingOptions.delete",
@@ -3759,7 +3754,7 @@
                         "assignedLocations": {
                             "methods": {
                                 "bulkEdit": {
-                                    "description": "Bulk edits multiple assignments between locations and a single location list. The operation will delete the assigned locations provided in BulkEditAssignedLocationsRequest.deleted_assigned_locations and then create the assigned locations provided in BulkEditAssignedLocationsRequest.created_assigned_locations.",
+                                    "description": "Bulk edits multiple assignments between locations and a single location list. The operation will delete the assigned locations provided in deletedAssignedLocations and then create the assigned locations provided in createdAssignedLocations.",
                                     "flatPath": "v2/advertisers/{advertiserId}/locationLists/{locationListsId}/assignedLocations:bulkEdit",
                                     "httpMethod": "POST",
                                     "id": "displayvideo.advertisers.locationLists.assignedLocations.bulkEdit",
@@ -5245,7 +5240,7 @@
                 "youtubeAdGroups": {
                     "methods": {
                         "bulkListAdGroupAssignedTargetingOptions": {
-                            "description": "Lists assigned targeting options for multiple YouTube ad groups across targeting types. Inherieted assigned targeting options are not included.",
+                            "description": "Lists assigned targeting options for multiple YouTube ad groups across targeting types. Inherited assigned targeting options are not included.",
                             "flatPath": "v2/advertisers/{advertisersId}/youtubeAdGroups:bulkListAdGroupAssignedTargetingOptions",
                             "httpMethod": "GET",
                             "id": "displayvideo.advertisers.youtubeAdGroups.bulkListAdGroupAssignedTargetingOptions",
@@ -5262,23 +5257,23 @@
                                     "type": "string"
                                 },
                                 "filter": {
-                                    "description": "Allows filtering by assigned targeting option fields. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by the logical operator `OR`. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `EQUALS (=)` operator. Supported fields: * `targetingType` Examples: * `AssignedTargetingOption` resources of targeting type `TARGETING_TYPE_YOUTUBE_VIDEO` or `TARGETING_TYPE_YOUTUBE_CHANNEL`: `targetingType=\"TARGETING_TYPE_YOUTUBE_VIDEO\" OR targetingType=\"TARGETING_TYPE_YOUTUBE_CHANNEL\"` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information.",
+                                    "description": "Optional. Allows filtering by assigned targeting option fields. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by the logical operator `OR`. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `EQUALS (=)` operator. Supported fields: * `targetingType` Examples: * `AssignedTargetingOption` resources of targeting type `TARGETING_TYPE_YOUTUBE_VIDEO` or `TARGETING_TYPE_YOUTUBE_CHANNEL`: `targetingType=\"TARGETING_TYPE_YOUTUBE_VIDEO\" OR targetingType=\"TARGETING_TYPE_YOUTUBE_CHANNEL\"` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information.",
                                     "location": "query",
                                     "type": "string"
                                 },
                                 "orderBy": {
-                                    "description": "Field by which to sort the list. Acceptable values are: * `youtubeAdGroupId` (default) * `assignedTargetingOption.targetingType` The default sorting order is ascending. To specify descending order for a field, a suffix \"desc\" should be added to the field name. Example: `targetingType desc`.",
+                                    "description": "Optional. Field by which to sort the list. Acceptable values are: * `adGroupId` (default) * `assignedTargetingOption.targetingType` The default sorting order is ascending. To specify descending order for a field, a suffix \"desc\" should be added to the field name. Example: `targetingType desc`.",
                                     "location": "query",
                                     "type": "string"
                                 },
                                 "pageSize": {
-                                    "description": "Requested page size. The size must be an integer between `1` and `5000`. If unspecified, the default is `5000`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.",
+                                    "description": "Optional. Requested page size. The size must be an integer between `1` and `5000`. If unspecified, the default is `5000`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.",
                                     "format": "int32",
                                     "location": "query",
                                     "type": "integer"
                                 },
                                 "pageToken": {
-                                    "description": "A token that lets the client fetch the next page of results. Typically, this is the value of next_page_token returned from the previous call to the `BulkListAdGroupAssignedTargetingOptions` method. If not specified, the first page of results will be returned.",
+                                    "description": "Optional. A token that lets the client fetch the next page of results. Typically, this is the value of next_page_token returned from the previous call to the `BulkListAdGroupAssignedTargetingOptions` method. If not specified, the first page of results will be returned.",
                                     "location": "query",
                                     "type": "string"
                                 },
@@ -6473,6 +6468,101 @@
                         "https://www.googleapis.com/auth/display-video"
                     ]
                 }
+            },
+            "resources": {
+                "floodlightActivities": {
+                    "methods": {
+                        "get": {
+                            "description": "Gets a Floodlight activity.",
+                            "flatPath": "v2/floodlightGroups/{floodlightGroupsId}/floodlightActivities/{floodlightActivitiesId}",
+                            "httpMethod": "GET",
+                            "id": "displayvideo.floodlightGroups.floodlightActivities.get",
+                            "parameterOrder": [
+                                "floodlightGroupId",
+                                "floodlightActivityId"
+                            ],
+                            "parameters": {
+                                "floodlightActivityId": {
+                                    "description": "Required. The ID of the Floodlight activity to fetch.",
+                                    "format": "int64",
+                                    "location": "path",
+                                    "pattern": "^[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "floodlightGroupId": {
+                                    "description": "Required. The ID of the parent Floodlight group to which the requested Floodlight activity belongs.",
+                                    "format": "int64",
+                                    "location": "path",
+                                    "pattern": "^[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "partnerId": {
+                                    "description": "Required. The ID of the partner through which the Floodlight activity is being accessed.",
+                                    "format": "int64",
+                                    "location": "query",
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v2/floodlightGroups/{+floodlightGroupId}/floodlightActivities/{+floodlightActivityId}",
+                            "response": {
+                                "$ref": "FloodlightActivity"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/display-video"
+                            ]
+                        },
+                        "list": {
+                            "description": "Lists Floodlight activities in a Floodlight group.",
+                            "flatPath": "v2/floodlightGroups/{floodlightGroupsId}/floodlightActivities",
+                            "httpMethod": "GET",
+                            "id": "displayvideo.floodlightGroups.floodlightActivities.list",
+                            "parameterOrder": [
+                                "floodlightGroupId"
+                            ],
+                            "parameters": {
+                                "floodlightGroupId": {
+                                    "description": "Required. The ID of the parent Floodlight group to which the requested Floodlight activities belong.",
+                                    "format": "int64",
+                                    "location": "path",
+                                    "pattern": "^[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "orderBy": {
+                                    "description": "Optional. Field by which to sort the list. Acceptable values are: * `displayName` (default) * `floodlightActivityId` The default sorting order is ascending. To specify descending order for a field, a suffix \"desc\" should be added to the field name. Example: `displayName desc`.",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "pageSize": {
+                                    "description": "Optional. Requested page size. Must be between `1` and `100`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.",
+                                    "format": "int32",
+                                    "location": "query",
+                                    "type": "integer"
+                                },
+                                "pageToken": {
+                                    "description": "Optional. A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListFloodlightActivities` method. If not specified, the first page of results will be returned.",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "partnerId": {
+                                    "description": "Required. The ID of the partner through which the Floodlight activities are being accessed.",
+                                    "format": "int64",
+                                    "location": "query",
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v2/floodlightGroups/{+floodlightGroupId}/floodlightActivities",
+                            "response": {
+                                "$ref": "ListFloodlightActivitiesResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/display-video"
+                            ]
+                        }
+                    }
+                }
             }
         },
         "googleAudiences": {
@@ -7220,12 +7310,6 @@
                         "inventorySourceId"
                     ],
                     "parameters": {
-                        "advertiserId": {
-                            "description": "Optional. The advertiser_id is optional, when it is provided, the advertiser access is used.",
-                            "format": "int64",
-                            "location": "query",
-                            "type": "string"
-                        },
                         "inventorySourceId": {
                             "description": "Required. The ID of the inventory source to fetch.",
                             "format": "int64",
@@ -7890,7 +7974,7 @@
                                     ]
                                 },
                                 "replace": {
-                                    "description": "Replaces all of the sites under a single channel. The operation will replace the sites under a channel with the sites provided in ReplaceSitesRequest.new_sites.",
+                                    "description": "Replaces all of the sites under a single channel. The operation will replace the sites under a channel with the sites provided in ReplaceSitesRequest.new_sites. **This method regularly experiences high latency.** We recommend [increasing your default timeout](/display-video/api/guides/best-practices/timeouts#client_library_timeout) to avoid errors.",
                                     "flatPath": "v2/partners/{partnerId}/channels/{channelsId}/sites:replace",
                                     "httpMethod": "POST",
                                     "id": "displayvideo.partners.channels.sites.replace",
@@ -9390,7 +9474,7 @@
                 },
                 "billingConfig": {
                     "$ref": "AdvertiserBillingConfig",
-                    "description": "Billing related settings of the advertiser."
+                    "description": "Optional. Required. Billing related settings of the advertiser."
                 },
                 "creativeConfig": {
                     "$ref": "AdvertiserCreativeConfig",
@@ -9479,7 +9563,7 @@
             "id": "AdvertiserBillingConfig",
             "properties": {
                 "billingProfileId": {
-                    "description": "The ID of a billing profile assigned to the advertiser. This field will default to the default billing profile ID of the advertiser's parent partner if a value is not provided.",
+                    "description": "Optional. The ID of a billing profile assigned to the advertiser.",
                     "format": "int64",
                     "type": "string"
                 }
@@ -9500,7 +9584,7 @@
                     "type": "string"
                 },
                 "obaComplianceDisabled": {
-                    "description": "Whether or not to use DV360's Online Behavioral Advertising (OBA) compliance. Warning: Changing OBA settings may cause the audit status of your creatives to be reset by some ad exchanges, making them ineligible to serve until they are re-approved.",
+                    "description": "Whether or not to disable Google's About this Ad feature that adds badging (to identify the content as an ad) and transparency information (on interaction with About this Ad) to your ads for Online Behavioral Advertising (OBA) and regulatory requirements. About this Ad gives users greater control over the ads they see and helps you explain why they're seeing your ad. [Learn more](//support.google.com/displayvideo/answer/14315795). If you choose to set this field to `true`, note that ads served through Display & Video 360 must comply to the following: * Be Online Behavioral Advertising (OBA) compliant, as per your contract with Google Marketing Platform. * In the European Economic Area (EEA), include transparency information and a mechanism for users to report illegal content in ads. If using an alternative ad badging, transparency, and reporting solution, you must ensure it includes the required transparency information and illegal content flagging mechanism and that you notify Google of any illegal content reports using the appropriate [form](//support.google.com/legal/troubleshooter/1114905?sjid=6787484030557261960-EU#ts=2981967%2C2982031%2C12980091).",
                     "type": "boolean"
                 },
                 "videoCreativeDataSharingAuthorized": {
@@ -9572,7 +9656,7 @@
             "id": "AgeRangeAssignedTargetingOptionDetails",
             "properties": {
                 "ageRange": {
-                    "description": "The age range of an audience. We only support targeting a continuous age range of an audience. Thus, the age range represented in this field can be 1) targeted solely, or, 2) part of a larger continuous age range. The reach of a continuous age range targeting can be expanded by also targeting an audience of an unknown age. Output only in v1. Required in v2.",
+                    "description": "Required. The age range of an audience. We only support targeting a continuous age range of an audience. Thus, the age range represented in this field can be 1) targeted solely, or, 2) part of a larger continuous age range. The reach of a continuous age range targeting can be expanded by also targeting an audience of an unknown age.",
                     "enum": [
                         "AGE_RANGE_UNSPECIFIED",
                         "AGE_RANGE_18_24",
@@ -9844,7 +9928,7 @@
             "type": "object"
         },
         "AssignedLocation": {
-            "description": "An assignment between a location list and a relevant targeting option. Currently, geo region targeting options are the only supported option for assignment.",
+            "description": "An assignment between a location list and a relevant targeting option.",
             "id": "AssignedLocation",
             "properties": {
                 "assignedLocationId": {
@@ -9859,7 +9943,7 @@
                     "type": "string"
                 },
                 "targetingOptionId": {
-                    "description": "Required. The ID of the targeting option assigned to the location list. Must be of type TARGETING_TYPE_GEO_REGION.",
+                    "description": "Required. The ID of the targeting option assigned to the location list.",
                     "type": "string"
                 }
             },
@@ -10319,7 +10403,7 @@
             "id": "AudioContentTypeAssignedTargetingOptionDetails",
             "properties": {
                 "audioContentType": {
-                    "description": "The audio content type. Output only in v1. Required in v2.",
+                    "description": "Required. The audio content type.",
                     "enum": [
                         "AUDIO_CONTENT_TYPE_UNSPECIFIED",
                         "AUDIO_CONTENT_TYPE_UNKNOWN",
@@ -10643,14 +10727,14 @@
             "id": "BulkEditAssignedLocationsRequest",
             "properties": {
                 "createdAssignedLocations": {
-                    "description": "The assigned locations to create in bulk, specified as a list of AssignedLocations.",
+                    "description": "The assigned locations to create in bulk, specified as a list of AssignedLocation resources.",
                     "items": {
                         "$ref": "AssignedLocation"
                     },
                     "type": "array"
                 },
                 "deletedAssignedLocations": {
-                    "description": "The IDs of the assigned locations to delete in bulk, specified as a list of assigned_location_ids.",
+                    "description": "The IDs of the assigned locations to delete in bulk, specified as a list of assignedLocationId values.",
                     "items": {
                         "format": "int64",
                         "type": "string"
@@ -10661,7 +10745,6 @@
             "type": "object"
         },
         "BulkEditAssignedLocationsResponse": {
-            "description": "Response message for AssignedLocationService.BulkEditAssignedLocations.",
             "id": "BulkEditAssignedLocationsResponse",
             "properties": {
                 "assignedLocations": {
@@ -10886,7 +10969,7 @@
             "id": "BulkListAdGroupAssignedTargetingOptionsResponse",
             "properties": {
                 "nextPageToken": {
-                    "description": "A token identifying the next page of results. This value should be specified as the pageToken in a subsequent call to `BulkListAdGroupAssignedTargetingOptions` to fetch the next page of results. This token will be absent if there are no more youtube_ad_group_assigned_targeting_options to return.",
+                    "description": "A token identifying the next page of results. This value should be specified as the pageToken in a subsequent call to `BulkListAdGroupAssignedTargetingOptions` to fetch the next page of results. This token will be absent if there are no more AdGroupAssignedTargetingOption resources to return.",
                     "type": "string"
                 },
                 "youtubeAdGroupAssignedTargetingOptions": {
@@ -10934,7 +11017,6 @@
             "type": "object"
         },
         "BulkListCampaignAssignedTargetingOptionsResponse": {
-            "description": "Response message for BulkListCampaignAssignedTargetingOptions.",
             "id": "BulkListCampaignAssignedTargetingOptionsResponse",
             "properties": {
                 "assignedTargetingOptions": {
@@ -10952,7 +11034,6 @@
             "type": "object"
         },
         "BulkListInsertionOrderAssignedTargetingOptionsResponse": {
-            "description": "Response message for BulkListInsertionOrderAssignedTargetingOptions.",
             "id": "BulkListInsertionOrderAssignedTargetingOptionsResponse",
             "properties": {
                 "assignedTargetingOptions": {
@@ -11507,6 +11588,15 @@
                     "format": "int64",
                     "type": "string"
                 },
+                "cmAdvertiserIds": {
+                    "description": "Output only. The set of CM360 Advertiser IDs sharing the CM360 Floodlight configuration.",
+                    "items": {
+                        "format": "int64",
+                        "type": "string"
+                    },
+                    "readOnly": true,
+                    "type": "array"
+                },
                 "cmFloodlightConfigId": {
                     "description": "Required. Immutable. ID of the CM360 Floodlight configuration linked with the DV360 advertiser.",
                     "format": "int64",
@@ -11641,6 +11731,41 @@
             },
             "type": "object"
         },
+        "Consent": {
+            "description": "User consent status.",
+            "id": "Consent",
+            "properties": {
+                "adPersonalization": {
+                    "description": "Represents consent for ad personalization.",
+                    "enum": [
+                        "CONSENT_STATUS_UNSPECIFIED",
+                        "CONSENT_STATUS_GRANTED",
+                        "CONSENT_STATUS_DENIED"
+                    ],
+                    "enumDescriptions": [
+                        "Type value is not specified or is unknown in this version.",
+                        "Consent is granted.",
+                        "Consent is denied."
+                    ],
+                    "type": "string"
+                },
+                "adUserData": {
+                    "description": "Represents consent for ad user data.",
+                    "enum": [
+                        "CONSENT_STATUS_UNSPECIFIED",
+                        "CONSENT_STATUS_GRANTED",
+                        "CONSENT_STATUS_DENIED"
+                    ],
+                    "enumDescriptions": [
+                        "Type value is not specified or is unknown in this version.",
+                        "Consent is granted.",
+                        "Consent is denied."
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "ContactInfo": {
             "description": "Contact information defining a Customer Match audience member.",
             "id": "ContactInfo",
@@ -11685,6 +11810,10 @@
             "description": "Wrapper message for a list of contact information defining Customer Match audience members.",
             "id": "ContactInfoList",
             "properties": {
+                "consent": {
+                    "$ref": "Consent",
+                    "description": "Input only. The consent setting for the users in contact_infos. Leaving this field unset indicates that consent is not specified. If ad_user_data or ad_personalization fields are set to `CONSENT_STATUS_DENIED`, the request will return an error."
+                },
                 "contactInfos": {
                     "description": "A list of ContactInfo objects defining Customer Match audience members. The size of members after splitting the contact_infos mustn't be greater than 500,000.",
                     "items": {
@@ -11817,7 +11946,7 @@
                     "type": "string"
                 },
                 "contentInstreamPosition": {
-                    "description": "The content instream position for video or audio ads. Output only in v1. Required in v2.",
+                    "description": "Required. The content instream position for video or audio ads.",
                     "enum": [
                         "CONTENT_INSTREAM_POSITION_UNSPECIFIED",
                         "CONTENT_INSTREAM_POSITION_PRE_ROLL",
@@ -11885,7 +12014,7 @@
                     "type": "string"
                 },
                 "contentOutstreamPosition": {
-                    "description": "The content outstream position. Output only in v1. Required in v2.",
+                    "description": "Required. The content outstream position.",
                     "enum": [
                         "CONTENT_OUTSTREAM_POSITION_UNSPECIFIED",
                         "CONTENT_OUTSTREAM_POSITION_UNKNOWN",
@@ -12199,10 +12328,12 @@
                         "SDF_VERSION_5_3",
                         "SDF_VERSION_5_4",
                         "SDF_VERSION_5_5",
-                        "SDF_VERSION_6"
+                        "SDF_VERSION_6",
+                        "SDF_VERSION_7"
                     ],
                     "enumDeprecated": [
                         false,
+                        true,
                         true,
                         true,
                         true,
@@ -12227,7 +12358,8 @@
                         "SDF version 5.3",
                         "SDF version 5.4",
                         "SDF version 5.5",
-                        "SDF version 6"
+                        "SDF version 6",
+                        "SDF version 7. Read the [v7 migration guide](/display-video/api/structured-data-file/v7-migration-guide) before migrating to this version."
                     ],
                     "type": "string"
                 }
@@ -12804,7 +12936,7 @@
                     "type": "string"
                 },
                 "errors": {
-                    "description": "Output only. Error details of a rejected custom bidding script. This field will only be populated when Script.state is REJECTED.",
+                    "description": "Output only. Error details of a rejected custom bidding script. This field will only be populated when state is REJECTED.",
                     "items": {
                         "$ref": "ScriptError"
                     },
@@ -13186,7 +13318,7 @@
             "id": "DeviceTypeAssignedTargetingOptionDetails",
             "properties": {
                 "deviceType": {
-                    "description": "The display name of the device type. Output only in v1. Required in v2.",
+                    "description": "Required. The display name of the device type.",
                     "enum": [
                         "DEVICE_TYPE_UNSPECIFIED",
                         "DEVICE_TYPE_COMPUTER",
@@ -13196,10 +13328,10 @@
                     ],
                     "enumDescriptions": [
                         "Default value when device type is not specified in this version. This enum is a placeholder for default value and does not represent a real device type option.",
-                        "The device type is computer.",
-                        "The device type is connected TV.",
-                        "The device type is smart phone..",
-                        "The device type is tablet."
+                        "Computer.",
+                        "Connected TV.",
+                        "Smart phone.",
+                        "Tablet."
                     ],
                     "type": "string"
                 },
@@ -13227,10 +13359,10 @@
                     ],
                     "enumDescriptions": [
                         "Default value when device type is not specified in this version. This enum is a placeholder for default value and does not represent a real device type option.",
-                        "The device type is computer.",
-                        "The device type is connected TV.",
-                        "The device type is smart phone..",
-                        "The device type is tablet."
+                        "Computer.",
+                        "Connected TV.",
+                        "Smart phone.",
+                        "Tablet."
                     ],
                     "readOnly": true,
                     "type": "string"
@@ -13710,6 +13842,14 @@
                     "description": "Required. The ID of the owner advertiser of the updated Customer Match FirstAndThirdPartyAudience.",
                     "format": "int64",
                     "type": "string"
+                },
+                "removedContactInfoList": {
+                    "$ref": "ContactInfoList",
+                    "description": "Input only. A list of contact information to define the members to be removed."
+                },
+                "removedMobileDeviceIdList": {
+                    "$ref": "MobileDeviceIdList",
+                    "description": "Input only. A list of mobile device IDs to define the members to be removed."
                 }
             },
             "type": "object"
@@ -13830,7 +13970,7 @@
             "id": "EnvironmentAssignedTargetingOptionDetails",
             "properties": {
                 "environment": {
-                    "description": "The serving environment. Output only in v1. Required in v2.",
+                    "description": "Required. The serving environment.",
                     "enum": [
                         "ENVIRONMENT_UNSPECIFIED",
                         "ENVIRONMENT_WEB_OPTIMIZED",
@@ -13953,7 +14093,13 @@
                         "EXCHANGE_APPLOVIN",
                         "EXCHANGE_CONNATIX",
                         "EXCHANGE_RESET_DIGITAL",
-                        "EXCHANGE_HIVESTACK"
+                        "EXCHANGE_HIVESTACK",
+                        "EXCHANGE_APPLOVIN_GBID",
+                        "EXCHANGE_FYBER_GBID",
+                        "EXCHANGE_UNITY_GBID",
+                        "EXCHANGE_CHARTBOOST_GBID",
+                        "EXCHANGE_ADMOST_GBID",
+                        "EXCHANGE_TOPON_GBID"
                     ],
                     "enumDescriptions": [
                         "Exchange is not specified or is unknown in this version.",
@@ -14030,7 +14176,13 @@
                         "AppLovin.",
                         "Connatix.",
                         "Reset Digital.",
-                        "Hivestack."
+                        "Hivestack.",
+                        "AppLovin MAX.",
+                        "DT Fairbid.",
+                        "Unity LevelPlay.",
+                        "Chartboost Mediation.",
+                        "AdMost.",
+                        "TopOn."
                     ],
                     "type": "string"
                 }
@@ -14132,7 +14284,13 @@
                         "EXCHANGE_APPLOVIN",
                         "EXCHANGE_CONNATIX",
                         "EXCHANGE_RESET_DIGITAL",
-                        "EXCHANGE_HIVESTACK"
+                        "EXCHANGE_HIVESTACK",
+                        "EXCHANGE_APPLOVIN_GBID",
+                        "EXCHANGE_FYBER_GBID",
+                        "EXCHANGE_UNITY_GBID",
+                        "EXCHANGE_CHARTBOOST_GBID",
+                        "EXCHANGE_ADMOST_GBID",
+                        "EXCHANGE_TOPON_GBID"
                     ],
                     "enumDescriptions": [
                         "Exchange is not specified or is unknown in this version.",
@@ -14209,7 +14367,13 @@
                         "AppLovin.",
                         "Connatix.",
                         "Reset Digital.",
-                        "Hivestack."
+                        "Hivestack.",
+                        "AppLovin MAX.",
+                        "DT Fairbid.",
+                        "Unity LevelPlay.",
+                        "Chartboost Mediation.",
+                        "AdMost.",
+                        "TopOn."
                     ],
                     "type": "string"
                 },
@@ -14312,7 +14476,13 @@
                         "EXCHANGE_APPLOVIN",
                         "EXCHANGE_CONNATIX",
                         "EXCHANGE_RESET_DIGITAL",
-                        "EXCHANGE_HIVESTACK"
+                        "EXCHANGE_HIVESTACK",
+                        "EXCHANGE_APPLOVIN_GBID",
+                        "EXCHANGE_FYBER_GBID",
+                        "EXCHANGE_UNITY_GBID",
+                        "EXCHANGE_CHARTBOOST_GBID",
+                        "EXCHANGE_ADMOST_GBID",
+                        "EXCHANGE_TOPON_GBID"
                     ],
                     "enumDescriptions": [
                         "Exchange is not specified or is unknown in this version.",
@@ -14389,7 +14559,13 @@
                         "AppLovin.",
                         "Connatix.",
                         "Reset Digital.",
-                        "Hivestack."
+                        "Hivestack.",
+                        "AppLovin MAX.",
+                        "DT Fairbid.",
+                        "Unity LevelPlay.",
+                        "Chartboost Mediation.",
+                        "AdMost.",
+                        "TopOn."
                     ],
                     "type": "string"
                 },
@@ -14493,7 +14669,13 @@
                         "EXCHANGE_APPLOVIN",
                         "EXCHANGE_CONNATIX",
                         "EXCHANGE_RESET_DIGITAL",
-                        "EXCHANGE_HIVESTACK"
+                        "EXCHANGE_HIVESTACK",
+                        "EXCHANGE_APPLOVIN_GBID",
+                        "EXCHANGE_FYBER_GBID",
+                        "EXCHANGE_UNITY_GBID",
+                        "EXCHANGE_CHARTBOOST_GBID",
+                        "EXCHANGE_ADMOST_GBID",
+                        "EXCHANGE_TOPON_GBID"
                     ],
                     "enumDescriptions": [
                         "Exchange is not specified or is unknown in this version.",
@@ -14570,7 +14752,13 @@
                         "AppLovin.",
                         "Connatix.",
                         "Reset Digital.",
-                        "Hivestack."
+                        "Hivestack.",
+                        "AppLovin MAX.",
+                        "DT Fairbid.",
+                        "Unity LevelPlay.",
+                        "Chartboost Mediation.",
+                        "AdMost.",
+                        "TopOn."
                     ],
                     "readOnly": true,
                     "type": "string"
@@ -14876,6 +15064,69 @@
             },
             "type": "object"
         },
+        "FloodlightActivity": {
+            "description": "A single Floodlight activity.",
+            "id": "FloodlightActivity",
+            "properties": {
+                "advertiserIds": {
+                    "description": "Output only. IDs of the advertisers that have access to the parent Floodlight group. Only advertisers under the provided partner ID will be listed in this field.",
+                    "items": {
+                        "format": "int64",
+                        "type": "string"
+                    },
+                    "readOnly": true,
+                    "type": "array"
+                },
+                "displayName": {
+                    "description": "Required. The display name of the Floodlight activity.",
+                    "type": "string"
+                },
+                "floodlightActivityId": {
+                    "description": "Output only. The unique ID of the Floodlight activity. Assigned by the system.",
+                    "format": "int64",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "floodlightGroupId": {
+                    "description": "Required. Immutable. The ID of the parent Floodlight group.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Output only. The resource name of the Floodlight activity.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "remarketingConfigs": {
+                    "description": "Output only. A list of configuration objects designating whether remarketing for this Floodlight Activity is enabled and available for a specifc advertiser. If enabled, this Floodlight Activity generates a remarketing user list that is able to be used in targeting under the advertiser.",
+                    "items": {
+                        "$ref": "RemarketingConfig"
+                    },
+                    "readOnly": true,
+                    "type": "array"
+                },
+                "servingStatus": {
+                    "description": "Optional. Whether the Floodlight activity is served.",
+                    "enum": [
+                        "FLOODLIGHT_ACTIVITY_SERVING_STATUS_UNSPECIFIED",
+                        "FLOODLIGHT_ACTIVITY_SERVING_STATUS_ENABLED",
+                        "FLOODLIGHT_ACTIVITY_SERVING_STATUS_DISABLED"
+                    ],
+                    "enumDescriptions": [
+                        "Type value is not specified or is unknown in this version.",
+                        "Enabled.",
+                        "Disabled."
+                    ],
+                    "type": "string"
+                },
+                "sslRequired": {
+                    "description": "Output only. Whether tags are required to be compliant.",
+                    "readOnly": true,
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
         "FloodlightGroup": {
             "description": "A single Floodlight group.",
             "id": "FloodlightGroup",
@@ -14940,7 +15191,7 @@
                     "type": "integer"
                 },
                 "maxViews": {
-                    "description": "The maximum number of times a user may click-through or fully view an ad during this period until it is no longer served to them. Must be greater than 0. Only applicable to YouTube and Partners resources. Required when unlimited is `false` and max_impressions is not set.",
+                    "description": "Optional. The maximum number of times a user may click-through or fully view an ad during this period until it is no longer served to them. Must be greater than 0. Only applicable to YouTube and Partners resources. Required when unlimited is `false` and max_impressions is not set.",
                     "format": "int32",
                     "type": "integer"
                 },
@@ -14983,7 +15234,7 @@
             "id": "GenderAssignedTargetingOptionDetails",
             "properties": {
                 "gender": {
-                    "description": "The gender of the audience. Output only in v1. Required in v2.",
+                    "description": "Required. The gender of the audience.",
                     "enum": [
                         "GENDER_UNSPECIFIED",
                         "GENDER_MALE",
@@ -15059,7 +15310,10 @@
                         "LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_NON_SKIPPABLE_OVER_THE_TOP",
                         "LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_REACH_OVER_THE_TOP",
                         "LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_SIMPLE_OVER_THE_TOP",
-                        "LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_TARGET_FREQUENCY"
+                        "LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_TARGET_FREQUENCY",
+                        "LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIEW",
+                        "LINE_ITEM_TYPE_DISPLAY_OUT_OF_HOME",
+                        "LINE_ITEM_TYPE_VIDEO_OUT_OF_HOME"
                     ],
                     "enumDescriptions": [
                         "Type value is not specified or is unknown in this version. Line items of this type and their targeting cannot be created or updated using the API.",
@@ -15080,7 +15334,10 @@
                         "Connected TV youTube video ads (up to 15 seconds) that cannot be skipped. Line items of this type and their targeting cannot be created or updated using the API.",
                         "Connected TV youTube video ads that optimize reaching more unique users at lower cost. May include bumper ads, skippable in-stream ads, or a mix of types. Line items of this type and their targeting cannot be created or updated using the API.",
                         "Connected TV default YouTube video ads. Only include in-stream ad-format. Line items of this type and their targeting cannot be created or updated using the API.",
-                        "The goal of this line item type is to show the YouTube ads target number of times to the same person in a certain period of time. Line items of this type and their targeting cannot be created or updated using the API."
+                        "The goal of this line item type is to show the YouTube ads target number of times to the same person in a certain period of time. Line items of this type and their targeting cannot be created or updated using the API.",
+                        "YouTube video ads that aim to get more views with a variety of ad formats. Line items of this type and their targeting cannot be created or updated using the API.",
+                        "Display ads served on digital-out-of-home inventory. Line items of this type and their targeting cannot be created or updated using the API.",
+                        "Video ads served on digital-out-of-home inventory. Line items of this type and their targeting cannot be created or updated using the API."
                     ],
                     "type": "string"
                 },
@@ -15456,7 +15713,13 @@
                         "EXCHANGE_APPLOVIN",
                         "EXCHANGE_CONNATIX",
                         "EXCHANGE_RESET_DIGITAL",
-                        "EXCHANGE_HIVESTACK"
+                        "EXCHANGE_HIVESTACK",
+                        "EXCHANGE_APPLOVIN_GBID",
+                        "EXCHANGE_FYBER_GBID",
+                        "EXCHANGE_UNITY_GBID",
+                        "EXCHANGE_CHARTBOOST_GBID",
+                        "EXCHANGE_ADMOST_GBID",
+                        "EXCHANGE_TOPON_GBID"
                     ],
                     "enumDescriptions": [
                         "Exchange is not specified or is unknown in this version.",
@@ -15533,7 +15796,13 @@
                         "AppLovin.",
                         "Connatix.",
                         "Reset Digital.",
-                        "Hivestack."
+                        "Hivestack.",
+                        "AppLovin MAX.",
+                        "DT Fairbid.",
+                        "Unity LevelPlay.",
+                        "Chartboost Mediation.",
+                        "AdMost.",
+                        "TopOn."
                     ],
                     "type": "string"
                 },
@@ -15642,7 +15911,7 @@
             "id": "HouseholdIncomeAssignedTargetingOptionDetails",
             "properties": {
                 "householdIncome": {
-                    "description": "The household income of the audience. Output only in v1. Required in v2.",
+                    "description": "Required. The household income of the audience.",
                     "enum": [
                         "HOUSEHOLD_INCOME_UNSPECIFIED",
                         "HOUSEHOLD_INCOME_UNKNOWN",
@@ -15954,9 +16223,9 @@
                     ],
                     "enumDescriptions": [
                         "Insertion order automation option is not specified or is unknown in this version.",
-                        "Automatic budget allocation. Allow the system to automatically shift budget to owning line items to optimize performance defined by performance_goal. No automation on bid settings.",
+                        "Automatic budget allocation. Allow the system to automatically shift budget to owning line items to optimize performance defined by kpi. No automation on bid settings.",
                         "No automation of bid or budget on insertion order level. Bid and budget must be manually configured at the line item level.",
-                        "Allow the system to automatically adjust bids and shift budget to owning line items to optimize performance defined by performance_goal."
+                        "Allow the system to automatically adjust bids and shift budget to owning line items to optimize performance defined by kpi."
                     ],
                     "type": "string"
                 },
@@ -16353,7 +16622,13 @@
                         "EXCHANGE_APPLOVIN",
                         "EXCHANGE_CONNATIX",
                         "EXCHANGE_RESET_DIGITAL",
-                        "EXCHANGE_HIVESTACK"
+                        "EXCHANGE_HIVESTACK",
+                        "EXCHANGE_APPLOVIN_GBID",
+                        "EXCHANGE_FYBER_GBID",
+                        "EXCHANGE_UNITY_GBID",
+                        "EXCHANGE_CHARTBOOST_GBID",
+                        "EXCHANGE_ADMOST_GBID",
+                        "EXCHANGE_TOPON_GBID"
                     ],
                     "enumDescriptions": [
                         "Exchange is not specified or is unknown in this version.",
@@ -16430,7 +16705,13 @@
                         "AppLovin.",
                         "Connatix.",
                         "Reset Digital.",
-                        "Hivestack."
+                        "Hivestack.",
+                        "AppLovin MAX.",
+                        "DT Fairbid.",
+                        "Unity LevelPlay.",
+                        "Chartboost Mediation.",
+                        "AdMost.",
+                        "TopOn."
                     ],
                     "type": "string"
                 },
@@ -16999,7 +17280,10 @@
                         "LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_NON_SKIPPABLE_OVER_THE_TOP",
                         "LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_REACH_OVER_THE_TOP",
                         "LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_SIMPLE_OVER_THE_TOP",
-                        "LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_TARGET_FREQUENCY"
+                        "LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_TARGET_FREQUENCY",
+                        "LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIEW",
+                        "LINE_ITEM_TYPE_DISPLAY_OUT_OF_HOME",
+                        "LINE_ITEM_TYPE_VIDEO_OUT_OF_HOME"
                     ],
                     "enumDescriptions": [
                         "Type value is not specified or is unknown in this version. Line items of this type and their targeting cannot be created or updated using the API.",
@@ -17020,7 +17304,10 @@
                         "Connected TV youTube video ads (up to 15 seconds) that cannot be skipped. Line items of this type and their targeting cannot be created or updated using the API.",
                         "Connected TV youTube video ads that optimize reaching more unique users at lower cost. May include bumper ads, skippable in-stream ads, or a mix of types. Line items of this type and their targeting cannot be created or updated using the API.",
                         "Connected TV default YouTube video ads. Only include in-stream ad-format. Line items of this type and their targeting cannot be created or updated using the API.",
-                        "The goal of this line item type is to show the YouTube ads target number of times to the same person in a certain period of time. Line items of this type and their targeting cannot be created or updated using the API."
+                        "The goal of this line item type is to show the YouTube ads target number of times to the same person in a certain period of time. Line items of this type and their targeting cannot be created or updated using the API.",
+                        "YouTube video ads that aim to get more views with a variety of ad formats. Line items of this type and their targeting cannot be created or updated using the API.",
+                        "Display ads served on digital-out-of-home inventory. Line items of this type and their targeting cannot be created or updated using the API.",
+                        "Video ads served on digital-out-of-home inventory. Line items of this type and their targeting cannot be created or updated using the API."
                     ],
                     "type": "string"
                 },
@@ -17094,8 +17381,7 @@
                             "NO_VALID_CREATIVE",
                             "PARENT_INSERTION_ORDER_PAUSED",
                             "PARENT_INSERTION_ORDER_EXPIRED",
-                            "DEPRECATED_FIRST_PARTY_AUDIENCE_EXCLUSION",
-                            "NO_INPUT_REVENUE_MODEL_TYPE_SPECIFIED"
+                            "DEPRECATED_FIRST_PARTY_AUDIENCE_EXCLUSION"
                         ],
                         "enumDescriptions": [
                             "Not specified or is unknown.",
@@ -17109,8 +17395,7 @@
                             "This line item does not contain any valid creative. The line item will not run.",
                             "The insertion order of this line item is paused. The line item will not run.",
                             "The insertion order of this line item has its end date set in the past. The line item will not run.",
-                            "This line item uses the exclude_first_party_audience setting, which is deprecated and scheduled to sunset after **March 25, 2023**. Update your API integration to directly exclude any first-party audiences using audience targeting before **March 25, 2023** to account for the sunset of the exclude_first_party_audience field.",
-                            "The partner revenue model of the line item was updated without specifying the revenue model type, which is required for updating any of the revenue model fields."
+                            "This line item uses the exclude_first_party_audience setting, which is deprecated and scheduled to sunset after **March 25, 2023**. Update your API integration to directly exclude any first-party audiences using audience targeting before **March 25, 2023** to account for the sunset of the exclude_first_party_audience field."
                         ],
                         "type": "string"
                     },
@@ -17434,6 +17719,23 @@
             },
             "type": "object"
         },
+        "ListFloodlightActivitiesResponse": {
+            "id": "ListFloodlightActivitiesResponse",
+            "properties": {
+                "floodlightActivities": {
+                    "description": "The list of Floodlight activities. This list will be absent if empty.",
+                    "items": {
+                        "$ref": "FloodlightActivity"
+                    },
+                    "type": "array"
+                },
+                "nextPageToken": {
+                    "description": "A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListFloodlightActivities` method to retrieve the next page of results.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "ListGoogleAudiencesResponse": {
             "id": "ListGoogleAudiencesResponse",
             "properties": {
@@ -17469,7 +17771,6 @@
             "type": "object"
         },
         "ListInsertionOrderAssignedTargetingOptionsResponse": {
-            "description": "Response message for ListInsertionOrderAssignedTargetingOptions.",
             "id": "ListInsertionOrderAssignedTargetingOptionsResponse",
             "properties": {
                 "assignedTargetingOptions": {
@@ -18086,6 +18387,10 @@
             "description": "Wrapper message for a list of mobile device IDs defining Customer Match audience members.",
             "id": "MobileDeviceIdList",
             "properties": {
+                "consent": {
+                    "$ref": "Consent",
+                    "description": "Input only. The consent setting for the users in mobile_device_ids. Leaving this field unset indicates that consent is not specified. If ad_user_data or ad_personalization fields are set to `CONSENT_STATUS_DENIED`, the request will return an error."
+                },
                 "mobileDeviceIds": {
                     "description": "A list of mobile device IDs defining Customer Match audience members. The size of mobile_device_ids mustn't be greater than 500,000.",
                     "items": {
@@ -18122,7 +18427,7 @@
             "id": "NativeContentPositionAssignedTargetingOptionDetails",
             "properties": {
                 "contentPosition": {
-                    "description": "The content position. Output only in v1. Required in v2.",
+                    "description": "Required. The content position.",
                     "enum": [
                         "NATIVE_CONTENT_POSITION_UNSPECIFIED",
                         "NATIVE_CONTENT_POSITION_UNKNOWN",
@@ -18310,7 +18615,7 @@
             "id": "OmidAssignedTargetingOptionDetails",
             "properties": {
                 "omid": {
-                    "description": "The type of Open Measurement enabled inventory. Output only in v1. Required in v2.",
+                    "description": "Required. The type of Open Measurement enabled inventory.",
                     "enum": [
                         "OMID_UNSPECIFIED",
                         "OMID_FOR_MOBILE_DISPLAY_ADS"
@@ -18495,7 +18800,7 @@
                     "type": "string"
                 },
                 "pacingPeriod": {
-                    "description": "Required. The time period in which the pacing budget will be spent. When automatic budget allocation is enabled at the insertion order via auto_budget_allocation, this field is output only and defaults to `PACING_PERIOD_FLIGHT`.",
+                    "description": "Required. The time period in which the pacing budget will be spent. When automatic budget allocation is enabled at the insertion order via automationType, this field is output only and defaults to `PACING_PERIOD_FLIGHT`.",
                     "enum": [
                         "PACING_PERIOD_UNSPECIFIED",
                         "PACING_PERIOD_DAILY",
@@ -18594,7 +18899,7 @@
             "id": "ParentalStatusAssignedTargetingOptionDetails",
             "properties": {
                 "parentalStatus": {
-                    "description": "The parental status of the audience. Output only in v1. Required in v2.",
+                    "description": "Required. The parental status of the audience.",
                     "enum": [
                         "PARENTAL_STATUS_UNSPECIFIED",
                         "PARENTAL_STATUS_PARENT",
@@ -18748,7 +19053,8 @@
                         "PARTNER_COST_TYPE_CUSTOM_FEE_2",
                         "PARTNER_COST_TYPE_CUSTOM_FEE_3",
                         "PARTNER_COST_TYPE_CUSTOM_FEE_4",
-                        "PARTNER_COST_TYPE_CUSTOM_FEE_5"
+                        "PARTNER_COST_TYPE_CUSTOM_FEE_5",
+                        "PARTNER_COST_TYPE_SCIBIDS_FEE"
                     ],
                     "enumDescriptions": [
                         "Type value is not specified or is unknown in this version.",
@@ -18780,7 +19086,8 @@
                         "The cost is charged as custom fee 2. Billed by the partner.",
                         "The cost is charged as custom fee 3. Billed by the partner.",
                         "The cost is charged as custom fee 4. Billed by the partner.",
-                        "The cost is charged as custom fee 5. Billed by the partner."
+                        "The cost is charged as custom fee 5. Billed by the partner.",
+                        "The cost is charged for using Scibids. Billed through DV360. This type is currently only available to certain customers. Other customers attempting to use this type will receive an error."
                     ],
                     "type": "string"
                 },
@@ -18886,7 +19193,7 @@
             "type": "object"
         },
         "PerformanceGoal": {
-            "description": "Settings that control the performance goal of a campaign or insertion order.",
+            "description": "Settings that control the performance goal of a campaign.",
             "id": "PerformanceGoal",
             "properties": {
                 "performanceGoalAmountMicros": {
@@ -19031,7 +19338,7 @@
                     "type": "string"
                 },
                 "targetingOptionId": {
-                    "description": "Required. The targeting_option_id of a TargetingOption of type `TARGETING_TYPE_POI`. Accepted POI targeting option IDs can be retrieved using SearchTargetingOptions. If targeting a specific latitude/longitude coordinate removed from an address or POI name, you can generate the necessary targeting option ID by rounding the desired coordinate values to the 6th decimal place, removing the decimals, and concatenating the string values separated by a semicolon. For example, you can target the latitude/longitude pair of 40.7414691, -74.003387 using the targeting option ID \"40741469;-74003387\".",
+                    "description": "Required. The targeting_option_id of a TargetingOption of type `TARGETING_TYPE_POI`. Accepted POI targeting option IDs can be retrieved using `targetingTypes.targetingOptions.search`. If targeting a specific latitude/longitude coordinate removed from an address or POI name, you can generate the necessary targeting option ID by rounding the desired coordinate values to the 6th decimal place, removing the decimals, and concatenating the string values separated by a semicolon. For example, you can target the latitude/longitude pair of 40.7414691, -74.003387 using the targeting option ID \"40741469;-74003387\". **Upon** **creation, this field value will be updated to append a semicolon and** **alphanumerical hash value if only latitude/longitude coordinates are** **provided.**",
                     "type": "string"
                 }
             },
@@ -19290,6 +19597,24 @@
             },
             "type": "object"
         },
+        "RemarketingConfig": {
+            "description": "Settings that control the whether remarketing is enabled for the given identified advertiser.",
+            "id": "RemarketingConfig",
+            "properties": {
+                "advertiserId": {
+                    "description": "Output only. The ID of the advertiser.",
+                    "format": "int64",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "remarketingEnabled": {
+                    "description": "Output only. Whether the Floodlight activity remarketing user list is available to the identified advertiser.",
+                    "readOnly": true,
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
         "ReplaceNegativeKeywordsRequest": {
             "description": "Request message for NegativeKeywordService.ReplaceNegativeKeywords.",
             "id": "ReplaceNegativeKeywordsRequest",
@@ -19486,10 +19811,12 @@
                         "SDF_VERSION_5_3",
                         "SDF_VERSION_5_4",
                         "SDF_VERSION_5_5",
-                        "SDF_VERSION_6"
+                        "SDF_VERSION_6",
+                        "SDF_VERSION_7"
                     ],
                     "enumDeprecated": [
                         false,
+                        true,
                         true,
                         true,
                         true,
@@ -19514,7 +19841,8 @@
                         "SDF version 5.3",
                         "SDF version 5.4",
                         "SDF version 5.5",
-                        "SDF version 6"
+                        "SDF version 6",
+                        "SDF version 7. Read the [v7 migration guide](/display-video/api/structured-data-file/v7-migration-guide) before migrating to this version."
                     ],
                     "type": "string"
                 }
@@ -19560,10 +19888,12 @@
                         "SDF_VERSION_5_3",
                         "SDF_VERSION_5_4",
                         "SDF_VERSION_5_5",
-                        "SDF_VERSION_6"
+                        "SDF_VERSION_6",
+                        "SDF_VERSION_7"
                     ],
                     "enumDeprecated": [
                         false,
+                        true,
                         true,
                         true,
                         true,
@@ -19588,7 +19918,8 @@
                         "SDF version 5.3",
                         "SDF version 5.4",
                         "SDF version 5.5",
-                        "SDF version 6"
+                        "SDF version 6",
+                        "SDF version 7. Read the [v7 migration guide](/display-video/api/structured-data-file/v7-migration-guide) before migrating to this version."
                     ],
                     "type": "string"
                 }
@@ -20469,6 +20800,12 @@
                     "description": "Required. Immutable. The email address used to identify the user.",
                     "type": "string"
                 },
+                "lastLoginTime": {
+                    "description": "Output only. The timestamp when the user last logged in DV360 UI.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                },
                 "name": {
                     "description": "Output only. The resource name of the user.",
                     "readOnly": true,
@@ -20721,7 +21058,7 @@
             "id": "VideoPlayerSizeAssignedTargetingOptionDetails",
             "properties": {
                 "videoPlayerSize": {
-                    "description": "The video player size. Output only in v1. Required in v2.",
+                    "description": "Required. The video player size.",
                     "enum": [
                         "VIDEO_PLAYER_SIZE_UNSPECIFIED",
                         "VIDEO_PLAYER_SIZE_SMALL",
@@ -20772,7 +21109,7 @@
             "id": "ViewabilityAssignedTargetingOptionDetails",
             "properties": {
                 "viewability": {
-                    "description": "The predicted viewability percentage. Output only in v1. Required in v2.",
+                    "description": "Required. The predicted viewability percentage.",
                     "enum": [
                         "VIEWABILITY_UNSPECIFIED",
                         "VIEWABILITY_10_PERCENT_OR_MORE",
@@ -21024,7 +21361,7 @@
             "type": "object"
         },
         "YoutubeAdGroupAssignedTargetingOption": {
-            "description": "Wrapper object associating an assigned_targeting_option resource and the youtube ad group it is assigned to.",
+            "description": "Wrapper object associating an AssignedTargetingOption resource and the youtube ad group it is assigned to.",
             "id": "YoutubeAdGroupAssignedTargetingOption",
             "properties": {
                 "assignedTargetingOption": {
@@ -21044,7 +21381,7 @@
             "id": "YoutubeAndPartnersBiddingStrategy",
             "properties": {
                 "adGroupEffectiveTargetCpaSource": {
-                    "description": "Output only. Source of the effective targetCpa value for AdGroup.",
+                    "description": "Output only. Source of the effective target CPA value for ad group.",
                     "enum": [
                         "BIDDING_SOURCE_UNSPECIFIED",
                         "BIDDING_SOURCE_LINE_ITEM",
@@ -21053,13 +21390,13 @@
                     "enumDescriptions": [
                         "Bidding source is not specified or unknown.",
                         "Bidding value is inherited from the line item.",
-                        "Bidding value is defined on the ad group."
+                        "Bidding value is defined in the ad group."
                     ],
                     "readOnly": true,
                     "type": "string"
                 },
                 "adGroupEffectiveTargetCpaValue": {
-                    "description": "Output only. The effective targetCpa for AdGroup, in micros of advertiser's currency.",
+                    "description": "Output only. The effective target CPA for ad group, in micros of advertiser's currency.",
                     "format": "int64",
                     "readOnly": true,
                     "type": "string"
@@ -21073,7 +21410,10 @@
                         "YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_CPA",
                         "YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_CPM",
                         "YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_MAXIMIZE_LIFT",
-                        "YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_MAXIMIZE_CONVERSIONS"
+                        "YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_MAXIMIZE_CONVERSIONS",
+                        "YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_CPV",
+                        "YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_ROAS",
+                        "YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_MAXIMIZE_CONVERSION_VALUE"
                     ],
                     "enumDescriptions": [
                         "Type is not specified or unknown.",
@@ -21082,12 +21422,15 @@
                         "A bidding strategy that automatically optimizes conversions per dollar.",
                         "A bidding strategy that pays a configurable amount per impression.",
                         "An automated bidding strategy that sets bids to achieve maximum lift.",
-                        "A bidding strategy that automatically maximizes number of conversions given a daily budget."
+                        "A bidding strategy that automatically maximizes number of conversions given a daily budget.",
+                        "A bidding strategy that automatically optimizes cost per video view.",
+                        "A bidding strategy that automatically maximizes revenue while averaging a specific target Return On Ad Spend (ROAS).",
+                        "A bidding strategy that automatically sets bids to maximize revenue while spending your budget."
                     ],
                     "type": "string"
                 },
                 "value": {
-                    "description": "The value used by the bidding strategy. When the bidding strategy is assigned at the line item level, this field is only applicable for the following strategy types: * `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_CPA` * `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_ROAS` When the bidding strategy is assigned at the ad group level, this field is only applicable for the following strategy types: * `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_MANUAL_CPM` * `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_MANUAL_CPV` * `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_CPA` * `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_CPM` If not using an applicable strategy, the value of this field will be 0.",
+                    "description": "The value used by the bidding strategy. When the bidding strategy is assigned at the line item level, this field is only applicable for the following strategy types: * `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_CPA` * `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_ROAS` When the bidding strategy is assigned at the ad group level, this field is only applicable for the following strategy types: * `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_MANUAL_CPM` * `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_MANUAL_CPV` * `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_CPA` * `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_CPM` * `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_RESERVE_CPM` * `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_ROAS` If not using an applicable strategy, the value of this field will be 0.",
                     "format": "int64",
                     "type": "string"
                 }
@@ -21098,6 +21441,10 @@
             "description": "Settings that control what YouTube related inventories the YouTube and Partners line item will target.",
             "id": "YoutubeAndPartnersInventorySourceConfig",
             "properties": {
+                "includeGoogleTv": {
+                    "description": "Optional. Whether to target inventory in video apps available with Google TV.",
+                    "type": "boolean"
+                },
                 "includeYoutubeSearch": {
                     "description": "Whether to target inventory on the YouTube search results page.",
                     "type": "boolean"
@@ -21119,7 +21466,7 @@
             "properties": {
                 "biddingStrategy": {
                     "$ref": "YoutubeAndPartnersBiddingStrategy",
-                    "description": "The bidding strategy of the YouTube and Partners line item."
+                    "description": "Required. The bidding strategy of the YouTube and Partners line item."
                 },
                 "contentCategory": {
                     "description": "The kind of content on which the YouTube and Partners ads will be shown.",
@@ -21137,22 +21484,39 @@
                     ],
                     "type": "string"
                 },
+                "effectiveContentCategory": {
+                    "description": "Output only. The content category which takes effect when serving the line item. When content category is set in both line item and advertiser, the stricter one will take effect when serving the line item.",
+                    "enum": [
+                        "YOUTUBE_AND_PARTNERS_CONTENT_CATEGORY_UNSPECIFIED",
+                        "YOUTUBE_AND_PARTNERS_CONTENT_CATEGORY_STANDARD",
+                        "YOUTUBE_AND_PARTNERS_CONTENT_CATEGORY_EXPANDED",
+                        "YOUTUBE_AND_PARTNERS_CONTENT_CATEGORY_LIMITED"
+                    ],
+                    "enumDescriptions": [
+                        "Content category is not specified or is unknown in this version.",
+                        "A category consisting of a wide range of content appropriate for most brands. The content is based off of YouTube's [advertiser-friendly content guidelines](https://support.google.com/youtube/answer/6162278).",
+                        "A category including all content across YouTube and video partners that meets standards for monetization.",
+                        "A category consisting of a reduced range of content that meets heightened requirements, especially regarding inappropriate language and sexual suggestiveness."
+                    ],
+                    "readOnly": true,
+                    "type": "string"
+                },
                 "inventorySourceSettings": {
                     "$ref": "YoutubeAndPartnersInventorySourceConfig",
                     "description": "Settings that control what YouTube and Partners inventories the line item will target."
                 },
                 "leadFormId": {
-                    "description": "The ID of the form to generate leads.",
+                    "description": "Optional. The ID of the form to generate leads.",
                     "format": "int64",
                     "type": "string"
                 },
                 "linkedMerchantId": {
-                    "description": "The ID of the merchant which is linked to the line item for product feed.",
+                    "description": "Optional. The ID of the merchant which is linked to the line item for product feed.",
                     "format": "int64",
                     "type": "string"
                 },
                 "relatedVideoIds": {
-                    "description": "The IDs of the videos appear below the primary video ad when the ad is playing in the YouTube app on mobile devices.",
+                    "description": "Optional. The IDs of the videos appear below the primary video ad when the ad is playing in the YouTube app on mobile devices.",
                     "items": {
                         "type": "string"
                     },
@@ -21160,15 +21524,15 @@
                 },
                 "targetFrequency": {
                     "$ref": "TargetFrequency",
-                    "description": "The average number of times you want ads from this line item to show to the same person over a certain period of time."
+                    "description": "Optional. The average number of times you want ads from this line item to show to the same person over a certain period of time."
                 },
                 "thirdPartyMeasurementSettings": {
                     "$ref": "YoutubeAndPartnersThirdPartyMeasurementSettings",
-                    "description": "The third-party measurement settings of the line item."
+                    "description": "Optional. The third-party measurement settings of the line item."
                 },
                 "videoAdSequenceSettings": {
                     "$ref": "VideoAdSequenceSettings",
-                    "description": "The settings related to VideoAdSequence."
+                    "description": "Optional. The settings related to VideoAdSequence."
                 },
                 "viewFrequencyCap": {
                     "$ref": "FrequencyCap",

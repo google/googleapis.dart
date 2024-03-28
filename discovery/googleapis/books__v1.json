@@ -24,7 +24,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230803",
+    "revision": "20240304",
     "rootUrl": "https://books.googleapis.com/",
     "servicePath": "",
     "title": "Books API",
@@ -1243,6 +1243,11 @@
                                     "location": "query",
                                     "repeated": true,
                                     "required": true,
+                                    "type": "string"
+                                },
+                                "source": {
+                                    "description": "Optional. String to identify the originator of this request.",
+                                    "location": "query",
                                     "type": "string"
                                 },
                                 "volumeId": {

@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Firebase Hosting API - v1
@@ -23,7 +22,11 @@
 /// Create an instance of [FirebaseHostingApi] to access these resources:
 ///
 /// - [OperationsResource]
-library firebasehosting_v1;
+/// - [ProjectsResource]
+///   - [ProjectsSitesResource]
+///     - [ProjectsSitesCustomDomainsResource]
+///       - [ProjectsSitesCustomDomainsOperationsResource]
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -44,9 +47,18 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// Use this REST API to create and manage channels and sites as well as to
 /// deploy new or updated hosting configurations and content files.
 class FirebaseHostingApi {
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
+  static const cloudPlatformScope =
+      'https://www.googleapis.com/auth/cloud-platform';
+
+  /// View and administer all your Firebase data and settings
+  static const firebaseScope = 'https://www.googleapis.com/auth/firebase';
+
   final commons.ApiRequester _requester;
 
   OperationsResource get operations => OperationsResource(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   FirebaseHostingApi(http.Client client,
       {core.String rootUrl = 'https://firebasehosting.googleapis.com/',
@@ -199,6 +211,119 @@ class OperationsResource {
   }
 }
 
+class ProjectsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsSitesResource get sites => ProjectsSitesResource(_requester);
+
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsSitesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsSitesCustomDomainsResource get customDomains =>
+      ProjectsSitesCustomDomainsResource(_requester);
+
+  ProjectsSitesResource(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsSitesCustomDomainsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsSitesCustomDomainsOperationsResource get operations =>
+      ProjectsSitesCustomDomainsOperationsResource(_requester);
+
+  ProjectsSitesCustomDomainsResource(commons.ApiRequester client)
+      : _requester = client;
+}
+
+class ProjectsSitesCustomDomainsOperationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsSitesCustomDomainsOperationsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// CancelOperation is a part of the google.longrunning.Operations interface,
+  /// but is not implemented for CustomDomain resources.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be cancelled.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/sites/\[^/\]+/customDomains/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> cancel(
+    CancelOperationRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// DeleteOperation is a part of the google.longrunning.Operations interface,
+  /// but is not implemented for CustomDomain resources.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be deleted.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/sites/\[^/\]+/customDomains/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
 
@@ -272,7 +397,7 @@ class Operation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard

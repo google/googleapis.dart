@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Cloud Functions API - v1
@@ -23,7 +22,7 @@
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsFunctionsResource]
-library cloudfunctions_v1;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -106,21 +105,13 @@ class OperationsResource {
   ///
   /// Request parameters:
   ///
-  /// [filter] - Required. A filter for matching the requested operations. The
-  /// supported formats of *filter* are: To query for a specific function:
-  /// project:*,location:*,function:* To query for all of the latest operations
-  /// for a project: project:*,latest:true
+  /// [filter] - The standard list filter.
   ///
-  /// [name] - Must not be set.
+  /// [name] - The name of the operation's parent resource.
   ///
-  /// [pageSize] - The maximum number of records that should be returned.
-  /// Requested page size cannot exceed 100. If not set, the default page size
-  /// is 100. Pagination is only supported when querying for a specific
-  /// function.
+  /// [pageSize] - The standard list page size.
   ///
-  /// [pageToken] - Token identifying which result to start with, which is
-  /// returned by a previous list call. Pagination is only supported when
-  /// querying for a specific function.
+  /// [pageToken] - The standard list page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -479,6 +470,14 @@ class ProjectsLocationsFunctionsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/functions/\[^/\]+$`.
   ///
+  /// [versionId] - Optional. The optional version of the function whose details
+  /// should be obtained. The version of a 1st Gen function is an integer that
+  /// starts from 1 and gets incremented on redeployments. Each deployment
+  /// creates a config version of the underlying function. GCF may keep
+  /// historical configs for old versions. This field can be specified to fetch
+  /// the historical configs. Leave it blank or set to 0 to get the latest
+  /// version of the function.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -491,9 +490,11 @@ class ProjectsLocationsFunctionsResource {
   /// this method will complete with the same error.
   async.Future<CloudFunction> get(
     core.String name, {
+    core.String? versionId,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (versionId != null) 'versionId': [versionId],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -820,6 +821,10 @@ class AuditConfig {
 /// exempting jose@example.com from DATA_READ logging.
 typedef AuditLogConfig = $AuditLogConfig;
 
+/// Security patches are applied automatically to the runtime without requiring
+/// the function to be redeployed.
+typedef AutomaticUpdatePolicy = $Empty;
+
 /// Associates `members`, or principals, with a `role`.
 class Binding {
   /// The condition that is associated with this binding.
@@ -852,14 +857,31 @@ class Binding {
   /// `group:{emailid}`: An email address that represents a Google group. For
   /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
   /// (primary) that represents all the users of that domain. For example,
-  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a user that has
-  /// been recently deleted. For example,
-  /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
-  /// this value reverts to `user:{emailid}` and the recovered user retains the
-  /// role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a service account
-  /// that has been recently deleted. For example,
+  /// `google.com` or `example.com`. *
+  /// `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workforce identity pool. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`:
+  /// All workforce identities in a group. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All workforce identities with a specific attribute value. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}
+  /// / * `: All identities in a workforce identity pool. *
+  /// `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workload identity pool. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`:
+  /// A workload identity pool group. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All identities in a workload identity pool with a certain attribute. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}
+  /// / * `: All identities in a workload identity pool. *
+  /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
+  /// identifier) representing a user that has been recently deleted. For
+  /// example, `alice@example.com?uid=123456789012345678901`. If the user is
+  /// recovered, this value reverts to `user:{emailid}` and the recovered user
+  /// retains the role in the binding. *
+  /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus
+  /// unique identifier) representing a service account that has been recently
+  /// deleted. For example,
   /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If
   /// the service account is undeleted, this value reverts to
   /// `serviceAccount:{emailid}` and the undeleted service account retains the
@@ -868,12 +890,19 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding.
+  /// the role in the binding. *
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// Deleted single identity in a workforce identity pool. For example,
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
   ///
-  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an
+  /// overview of the IAM roles and permissions, see the
+  /// [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For
+  /// a list of the available pre-defined roles, see
+  /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
   Binding({
@@ -970,6 +999,8 @@ class CallFunctionResponse {
 ///
 /// It encapsulate function and triggers configurations.
 class CloudFunction {
+  AutomaticUpdatePolicy? automaticUpdatePolicy;
+
   /// The amount of memory in MB available for a function.
   ///
   /// Defaults to 256MB.
@@ -990,6 +1021,11 @@ class CloudFunction {
   /// Output only.
   core.String? buildName;
 
+  /// A service account the user provides for use with Cloud Build.
+  ///
+  /// Optional.
+  core.String? buildServiceAccount;
+
   /// Name of the Cloud Build Custom Worker Pool that should be used to build
   /// the function.
   ///
@@ -1009,10 +1045,9 @@ class CloudFunction {
 
   /// Docker Registry to use for this deployment.
   ///
-  /// If `docker_repository` field is specified, this field will be
-  /// automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently
-  /// defaults to `CONTAINER_REGISTRY`. This field may be overridden by the
-  /// backend for eligible deployments.
+  /// If unspecified, it defaults to `ARTIFACT_REGISTRY`. If `docker_repository`
+  /// field is specified, this field should either be left unspecified or set to
+  /// `ARTIFACT_REGISTRY`.
   /// Possible string values are:
   /// - "DOCKER_REGISTRY_UNSPECIFIED" : Unspecified.
   /// - "CONTAINER_REGISTRY" : Docker images will be stored in multi-regional
@@ -1114,19 +1149,12 @@ class CloudFunction {
   /// /locations / * /functions / * `
   core.String? name;
 
-  /// The VPC Network that this cloud function can connect to.
-  ///
-  /// It can be either the fully-qualified URI, or the short name of the network
-  /// resource. If the short network name is used, the network must belong to
-  /// the same project. Otherwise, it must belong to a project within the same
-  /// organization. The format of this field is either
-  /// `projects/{project}/global/networks/{network}` or `{network}`, where
-  /// `{project}` is a project id where the network is defined, and `{network}`
-  /// is the short name of the network. This field is mutually exclusive with
-  /// `vpc_connector` and will be replaced by it. See
-  /// [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for
-  /// more information on connecting Cloud projects.
+  /// Deprecated: use vpc_connector
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? network;
+  OnDeployUpdatePolicy? onDeployUpdatePolicy;
 
   /// The runtime in which to run the function.
   ///
@@ -1221,10 +1249,12 @@ class CloudFunction {
   core.String? vpcConnectorEgressSettings;
 
   CloudFunction({
+    this.automaticUpdatePolicy,
     this.availableMemoryMb,
     this.buildEnvironmentVariables,
     this.buildId,
     this.buildName,
+    this.buildServiceAccount,
     this.buildWorkerPool,
     this.description,
     this.dockerRegistry,
@@ -1240,6 +1270,7 @@ class CloudFunction {
     this.minInstances,
     this.name,
     this.network,
+    this.onDeployUpdatePolicy,
     this.runtime,
     this.secretEnvironmentVariables,
     this.secretVolumes,
@@ -1258,6 +1289,10 @@ class CloudFunction {
 
   CloudFunction.fromJson(core.Map json_)
       : this(
+          automaticUpdatePolicy: json_.containsKey('automaticUpdatePolicy')
+              ? AutomaticUpdatePolicy.fromJson(json_['automaticUpdatePolicy']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           availableMemoryMb: json_.containsKey('availableMemoryMb')
               ? json_['availableMemoryMb'] as core.int
               : null,
@@ -1277,6 +1312,9 @@ class CloudFunction {
               : null,
           buildName: json_.containsKey('buildName')
               ? json_['buildName'] as core.String
+              : null,
+          buildServiceAccount: json_.containsKey('buildServiceAccount')
+              ? json_['buildServiceAccount'] as core.String
               : null,
           buildWorkerPool: json_.containsKey('buildWorkerPool')
               ? json_['buildWorkerPool'] as core.String
@@ -1335,6 +1373,10 @@ class CloudFunction {
           network: json_.containsKey('network')
               ? json_['network'] as core.String
               : null,
+          onDeployUpdatePolicy: json_.containsKey('onDeployUpdatePolicy')
+              ? OnDeployUpdatePolicy.fromJson(json_['onDeployUpdatePolicy']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           runtime: json_.containsKey('runtime')
               ? json_['runtime'] as core.String
               : null,
@@ -1389,11 +1431,15 @@ class CloudFunction {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (automaticUpdatePolicy != null)
+          'automaticUpdatePolicy': automaticUpdatePolicy!,
         if (availableMemoryMb != null) 'availableMemoryMb': availableMemoryMb!,
         if (buildEnvironmentVariables != null)
           'buildEnvironmentVariables': buildEnvironmentVariables!,
         if (buildId != null) 'buildId': buildId!,
         if (buildName != null) 'buildName': buildName!,
+        if (buildServiceAccount != null)
+          'buildServiceAccount': buildServiceAccount!,
         if (buildWorkerPool != null) 'buildWorkerPool': buildWorkerPool!,
         if (description != null) 'description': description!,
         if (dockerRegistry != null) 'dockerRegistry': dockerRegistry!,
@@ -1410,6 +1456,8 @@ class CloudFunction {
         if (minInstances != null) 'minInstances': minInstances!,
         if (name != null) 'name': name!,
         if (network != null) 'network': network!,
+        if (onDeployUpdatePolicy != null)
+          'onDeployUpdatePolicy': onDeployUpdatePolicy!,
         if (runtime != null) 'runtime': runtime!,
         if (secretEnvironmentVariables != null)
           'secretEnvironmentVariables': secretEnvironmentVariables!,
@@ -1578,14 +1626,13 @@ typedef GenerateDownloadUrlResponse = $GenerateDownloadUrlResponse;
 /// Request of `GenerateSourceUploadUrl` method.
 class GenerateUploadUrlRequest {
   /// Resource name of a KMS crypto key (managed by the user) used to
-  /// encrypt/decrypt function source code objects in staging Cloud Storage
+  /// encrypt/decrypt function source code objects in intermediate Cloud Storage
   /// buckets.
   ///
   /// When you generate an upload url and upload your source code, it gets
-  /// copied to a staging Cloud Storage bucket in an internal regional project.
-  /// The source code is then copied to a versioned directory in the sources
-  /// bucket in the consumer project during the function deployment. It must
-  /// match the pattern
+  /// copied to an intermediate Cloud Storage bucket. The source code is then
+  /// copied to a versioned directory in the sources bucket in the consumer
+  /// project during the function deployment. It must match the pattern
   /// `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
   /// The Google Cloud Functions service account
   /// (service-{project_number}@gcf-admin-robot.iam.gserviceaccount.com) must be
@@ -1786,6 +1833,9 @@ class ListOperationsResponse {
 /// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
+/// Security patches are only applied when a function is redeployed.
+typedef OnDeployUpdatePolicy = $OnDeployUpdatePolicy;
+
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class Operation {
@@ -1816,7 +1866,7 @@ class Operation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard
@@ -1876,23 +1926,23 @@ class Operation {
 /// request, the resource, or both. To learn which resources support conditions
 /// in their IAM policies, see the
 /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": \[ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": \[
+/// **JSON example:** ``` { "bindings": [ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": [
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": \[
-/// "user:eve@example.com" \], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": [
+/// "user:eve@example.com" ], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time \< timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
-/// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
-/// user:mike@example.com - group:admins@example.com - domain:google.com -
-/// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
-/// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
-/// role: roles/resourcemanager.organizationViewer condition: title: expirable
-/// access description: Does not grant access after Sep 2020 expression:
-/// request.time \< timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
-/// version: 3 For a description of IAM and its features, see the
-/// [IAM documentation](https://cloud.google.com/iam/docs/).
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: -
+/// members: - user:mike@example.com - group:admins@example.com -
+/// domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+/// role: roles/resourcemanager.organizationAdmin - members: -
+/// user:eve@example.com role: roles/resourcemanager.organizationViewer
+/// condition: title: expirable access description: Does not grant access after
+/// Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+/// etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features,
+/// see the [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig>? auditConfigs;

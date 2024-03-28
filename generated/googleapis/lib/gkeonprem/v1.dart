@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Anthos On-Prem API - v1
@@ -33,7 +32,7 @@
 ///       - [ProjectsLocationsVmwareClustersOperationsResource]
 ///       - [ProjectsLocationsVmwareClustersVmwareNodePoolsResource]
 /// - [ProjectsLocationsVmwareClustersVmwareNodePoolsOperationsResource]
-library gkeonprem_v1;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -4385,8 +4384,6 @@ class Authorization {
   ///
   /// For bare metal admin clusters, users will be granted the cluster-view
   /// role, which limits users to read-only access.
-  ///
-  /// Required.
   core.List<ClusterUser>? adminUsers;
 
   Authorization({
@@ -4445,7 +4442,7 @@ class BareMetalAdminApiServerArgument {
       };
 }
 
-/// ## Resource that represents a bare metal admin cluster.
+/// Resource that represents a bare metal admin cluster.
 class BareMetalAdminCluster {
   /// Annotations on the bare metal admin cluster.
   ///
@@ -4460,6 +4457,9 @@ class BareMetalAdminCluster {
   /// The Anthos clusters on bare metal version for the bare metal admin
   /// cluster.
   core.String? bareMetalVersion;
+
+  /// Binary Authorization related configurations.
+  BinaryAuthorization? binaryAuthorization;
 
   /// Cluster operations configuration.
   BareMetalAdminClusterOperationsConfig? clusterOperations;
@@ -4598,6 +4598,7 @@ class BareMetalAdminCluster {
   BareMetalAdminCluster({
     this.annotations,
     this.bareMetalVersion,
+    this.binaryAuthorization,
     this.clusterOperations,
     this.controlPlane,
     this.createTime,
@@ -4639,6 +4640,10 @@ class BareMetalAdminCluster {
               : null,
           bareMetalVersion: json_.containsKey('bareMetalVersion')
               ? json_['bareMetalVersion'] as core.String
+              : null,
+          binaryAuthorization: json_.containsKey('binaryAuthorization')
+              ? BinaryAuthorization.fromJson(json_['binaryAuthorization']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           clusterOperations: json_.containsKey('clusterOperations')
               ? BareMetalAdminClusterOperationsConfig.fromJson(
@@ -4736,6 +4741,8 @@ class BareMetalAdminCluster {
   core.Map<core.String, core.dynamic> toJson() => {
         if (annotations != null) 'annotations': annotations!,
         if (bareMetalVersion != null) 'bareMetalVersion': bareMetalVersion!,
+        if (binaryAuthorization != null)
+          'binaryAuthorization': binaryAuthorization!,
         if (clusterOperations != null) 'clusterOperations': clusterOperations!,
         if (controlPlane != null) 'controlPlane': controlPlane!,
         if (createTime != null) 'createTime': createTime!,
@@ -4784,6 +4791,8 @@ class BareMetalAdminControlPlaneConfig {
   /// If specified the corresponding NodePool will be created for the cluster's
   /// control plane. The NodePool will have the same name and namespace as the
   /// cluster.
+  ///
+  /// Required.
   BareMetalAdminControlPlaneNodePoolConfig? controlPlaneNodePoolConfig;
 
   BareMetalAdminControlPlaneConfig({
@@ -4821,6 +4830,8 @@ class BareMetalAdminControlPlaneConfig {
 /// about supporting control plane specific fields in the future.
 class BareMetalAdminControlPlaneNodePoolConfig {
   /// The generic configuration for a node pool running the control plane.
+  ///
+  /// Required.
   BareMetalNodePoolConfig? nodePoolConfig;
 
   BareMetalAdminControlPlaneNodePoolConfig({
@@ -5418,6 +5429,9 @@ class BareMetalCluster {
   /// Required.
   core.String? bareMetalVersion;
 
+  /// Binary Authorization related configurations.
+  BinaryAuthorization? binaryAuthorization;
+
   /// Cluster operations configuration.
   BareMetalClusterOperationsConfig? clusterOperations;
 
@@ -5572,6 +5586,7 @@ class BareMetalCluster {
     this.adminClusterName,
     this.annotations,
     this.bareMetalVersion,
+    this.binaryAuthorization,
     this.clusterOperations,
     this.controlPlane,
     this.createTime,
@@ -5620,6 +5635,10 @@ class BareMetalCluster {
               : null,
           bareMetalVersion: json_.containsKey('bareMetalVersion')
               ? json_['bareMetalVersion'] as core.String
+              : null,
+          binaryAuthorization: json_.containsKey('binaryAuthorization')
+              ? BinaryAuthorization.fromJson(json_['binaryAuthorization']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           clusterOperations: json_.containsKey('clusterOperations')
               ? BareMetalClusterOperationsConfig.fromJson(
@@ -5721,6 +5740,8 @@ class BareMetalCluster {
         if (adminClusterName != null) 'adminClusterName': adminClusterName!,
         if (annotations != null) 'annotations': annotations!,
         if (bareMetalVersion != null) 'bareMetalVersion': bareMetalVersion!,
+        if (binaryAuthorization != null)
+          'binaryAuthorization': binaryAuthorization!,
         if (clusterOperations != null) 'clusterOperations': clusterOperations!,
         if (controlPlane != null) 'controlPlane': controlPlane!,
         if (createTime != null) 'createTime': createTime!,
@@ -6918,6 +6939,34 @@ class BareMetalWorkloadNodeConfig {
       };
 }
 
+/// Configuration for Binary Authorization.
+class BinaryAuthorization {
+  /// Mode of operation for binauthz policy evaluation.
+  ///
+  /// If unspecified, defaults to DISABLED.
+  /// Possible string values are:
+  /// - "EVALUATION_MODE_UNSPECIFIED" : Default value
+  /// - "DISABLED" : Disable BinaryAuthorization
+  /// - "PROJECT_SINGLETON_POLICY_ENFORCE" : Enforce Kubernetes admission
+  /// requests with BinaryAuthorization using the project's singleton policy.
+  core.String? evaluationMode;
+
+  BinaryAuthorization({
+    this.evaluationMode,
+  });
+
+  BinaryAuthorization.fromJson(core.Map json_)
+      : this(
+          evaluationMode: json_.containsKey('evaluationMode')
+              ? json_['evaluationMode'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (evaluationMode != null) 'evaluationMode': evaluationMode!,
+      };
+}
+
 /// Associates `members`, or principals, with a `role`.
 class Binding {
   /// The condition that is associated with this binding.
@@ -6950,14 +6999,31 @@ class Binding {
   /// `group:{emailid}`: An email address that represents a Google group. For
   /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
   /// (primary) that represents all the users of that domain. For example,
-  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a user that has
-  /// been recently deleted. For example,
-  /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
-  /// this value reverts to `user:{emailid}` and the recovered user retains the
-  /// role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a service account
-  /// that has been recently deleted. For example,
+  /// `google.com` or `example.com`. *
+  /// `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workforce identity pool. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`:
+  /// All workforce identities in a group. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All workforce identities with a specific attribute value. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}
+  /// / * `: All identities in a workforce identity pool. *
+  /// `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workload identity pool. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`:
+  /// A workload identity pool group. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All identities in a workload identity pool with a certain attribute. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}
+  /// / * `: All identities in a workload identity pool. *
+  /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
+  /// identifier) representing a user that has been recently deleted. For
+  /// example, `alice@example.com?uid=123456789012345678901`. If the user is
+  /// recovered, this value reverts to `user:{emailid}` and the recovered user
+  /// retains the role in the binding. *
+  /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus
+  /// unique identifier) representing a service account that has been recently
+  /// deleted. For example,
   /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If
   /// the service account is undeleted, this value reverts to
   /// `serviceAccount:{emailid}` and the undeleted service account retains the
@@ -6966,12 +7032,19 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding.
+  /// the role in the binding. *
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// Deleted single identity in a workforce identity pool. For example,
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
   ///
-  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an
+  /// overview of the IAM roles and permissions, see the
+  /// [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For
+  /// a list of the available pre-defined roles, see
+  /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
   Binding({
@@ -7761,7 +7834,7 @@ class Operation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard
@@ -7821,23 +7894,23 @@ class Operation {
 /// request, the resource, or both. To learn which resources support conditions
 /// in their IAM policies, see the
 /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": \[ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": \[
+/// **JSON example:** ``` { "bindings": [ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": [
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": \[
-/// "user:eve@example.com" \], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": [
+/// "user:eve@example.com" ], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time \< timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
-/// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
-/// user:mike@example.com - group:admins@example.com - domain:google.com -
-/// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
-/// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
-/// role: roles/resourcemanager.organizationViewer condition: title: expirable
-/// access description: Does not grant access after Sep 2020 expression:
-/// request.time \< timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
-/// version: 3 For a description of IAM and its features, see the
-/// [IAM documentation](https://cloud.google.com/iam/docs/).
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: -
+/// members: - user:mike@example.com - group:admins@example.com -
+/// domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+/// role: roles/resourcemanager.organizationAdmin - members: -
+/// user:eve@example.com role: roles/resourcemanager.organizationViewer
+/// condition: title: expirable access description: Does not grant access after
+/// Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+/// etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features,
+/// see the [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Associates a list of `members`, or principals, with a `role`.
   ///
@@ -8135,8 +8208,8 @@ class UpgradeDependency {
   /// Current version of the dependency e.g. 1.15.0.
   core.String? currentVersion;
 
-  /// Local name of the dependency.
-  core.String? localName;
+  /// Membership names are formatted as `projects//locations//memberships/`.
+  core.String? membership;
 
   /// Resource name of the dependency.
   core.String? resourceName;
@@ -8149,7 +8222,7 @@ class UpgradeDependency {
 
   UpgradeDependency({
     this.currentVersion,
-    this.localName,
+    this.membership,
     this.resourceName,
     this.targetVersion,
   });
@@ -8159,8 +8232,8 @@ class UpgradeDependency {
           currentVersion: json_.containsKey('currentVersion')
               ? json_['currentVersion'] as core.String
               : null,
-          localName: json_.containsKey('localName')
-              ? json_['localName'] as core.String
+          membership: json_.containsKey('membership')
+              ? json_['membership'] as core.String
               : null,
           resourceName: json_.containsKey('resourceName')
               ? json_['resourceName'] as core.String
@@ -8172,7 +8245,7 @@ class UpgradeDependency {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (currentVersion != null) 'currentVersion': currentVersion!,
-        if (localName != null) 'localName': localName!,
+        if (membership != null) 'membership': membership!,
         if (resourceName != null) 'resourceName': resourceName!,
         if (targetVersion != null) 'targetVersion': targetVersion!,
       };
@@ -8362,6 +8435,32 @@ class VmwareAdminAddonNodeConfig {
       };
 }
 
+/// VmwareAdminAuthorizationConfig represents configuration for admin cluster
+/// authorization.
+class VmwareAdminAuthorizationConfig {
+  /// For VMware admin clusters, users will be granted the cluster-viewer role
+  /// on the cluster.
+  core.List<ClusterUser>? viewerUsers;
+
+  VmwareAdminAuthorizationConfig({
+    this.viewerUsers,
+  });
+
+  VmwareAdminAuthorizationConfig.fromJson(core.Map json_)
+      : this(
+          viewerUsers: json_.containsKey('viewerUsers')
+              ? (json_['viewerUsers'] as core.List)
+                  .map((value) => ClusterUser.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (viewerUsers != null) 'viewerUsers': viewerUsers!,
+      };
+}
+
 /// Resource that represents a VMware admin cluster.
 class VmwareAdminCluster {
   /// The VMware admin cluster addon node configuration.
@@ -8379,6 +8478,9 @@ class VmwareAdminCluster {
 
   /// The VMware admin cluster anti affinity group configuration.
   VmwareAAGConfig? antiAffinityGroups;
+
+  /// The VMware admin cluster authorization configuration.
+  VmwareAdminAuthorizationConfig? authorization;
 
   /// The VMware admin cluster auto repair configuration.
   VmwareAutoRepairConfig? autoRepairConfig;
@@ -8448,6 +8550,14 @@ class VmwareAdminCluster {
   /// The VMware platform configuration.
   VmwarePlatformConfig? platformConfig;
 
+  /// The VMware admin cluster prepared secrets configuration.
+  ///
+  /// It should always be enabled by the Central API, instead of letting users
+  /// set it.
+  ///
+  /// Output only.
+  VmwareAdminPreparedSecretsConfig? preparedSecrets;
+
   /// If set, there are currently changes in flight to the VMware admin cluster.
   ///
   /// Output only.
@@ -8494,6 +8604,7 @@ class VmwareAdminCluster {
     this.addonNode,
     this.annotations,
     this.antiAffinityGroups,
+    this.authorization,
     this.autoRepairConfig,
     this.bootstrapClusterMembership,
     this.controlPlaneNode,
@@ -8509,6 +8620,7 @@ class VmwareAdminCluster {
     this.networkConfig,
     this.onPremVersion,
     this.platformConfig,
+    this.preparedSecrets,
     this.reconciling,
     this.state,
     this.status,
@@ -8535,6 +8647,10 @@ class VmwareAdminCluster {
           antiAffinityGroups: json_.containsKey('antiAffinityGroups')
               ? VmwareAAGConfig.fromJson(json_['antiAffinityGroups']
                   as core.Map<core.String, core.dynamic>)
+              : null,
+          authorization: json_.containsKey('authorization')
+              ? VmwareAdminAuthorizationConfig.fromJson(
+                  json_['authorization'] as core.Map<core.String, core.dynamic>)
               : null,
           autoRepairConfig: json_.containsKey('autoRepairConfig')
               ? VmwareAutoRepairConfig.fromJson(json_['autoRepairConfig']
@@ -8585,6 +8701,11 @@ class VmwareAdminCluster {
               ? VmwarePlatformConfig.fromJson(json_['platformConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          preparedSecrets: json_.containsKey('preparedSecrets')
+              ? VmwareAdminPreparedSecretsConfig.fromJson(
+                  json_['preparedSecrets']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           reconciling: json_.containsKey('reconciling')
               ? json_['reconciling'] as core.bool
               : null,
@@ -8609,6 +8730,7 @@ class VmwareAdminCluster {
         if (annotations != null) 'annotations': annotations!,
         if (antiAffinityGroups != null)
           'antiAffinityGroups': antiAffinityGroups!,
+        if (authorization != null) 'authorization': authorization!,
         if (autoRepairConfig != null) 'autoRepairConfig': autoRepairConfig!,
         if (bootstrapClusterMembership != null)
           'bootstrapClusterMembership': bootstrapClusterMembership!,
@@ -8625,6 +8747,7 @@ class VmwareAdminCluster {
         if (networkConfig != null) 'networkConfig': networkConfig!,
         if (onPremVersion != null) 'onPremVersion': onPremVersion!,
         if (platformConfig != null) 'platformConfig': platformConfig!,
+        if (preparedSecrets != null) 'preparedSecrets': preparedSecrets!,
         if (reconciling != null) 'reconciling': reconciling!,
         if (state != null) 'state': state!,
         if (status != null) 'status': status!,
@@ -8931,6 +9054,28 @@ class VmwareAdminNetworkConfig {
       };
 }
 
+/// VmwareAdminPreparedSecretsConfig represents configuration for admin cluster
+/// prepared secrets.
+class VmwareAdminPreparedSecretsConfig {
+  /// Whether prepared secrets is enabled.
+  core.bool? enabled;
+
+  VmwareAdminPreparedSecretsConfig({
+    this.enabled,
+  });
+
+  VmwareAdminPreparedSecretsConfig.fromJson(core.Map json_)
+      : this(
+          enabled: json_.containsKey('enabled')
+              ? json_['enabled'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
+      };
+}
+
 /// VmwareSeesawConfig represents configuration parameters for an already
 /// existing Seesaw load balancer.
 ///
@@ -8965,6 +9110,9 @@ class VmwareAdminSeesawConfig {
   /// MasterIP is the IP announced by the master of Seesaw group.
   core.String? masterIp;
 
+  /// Name to be used by Stackdriver.
+  core.String? stackdriverName;
+
   /// Names of the VMs created for this Seesaw group.
   core.List<core.String>? vms;
 
@@ -8973,6 +9121,7 @@ class VmwareAdminSeesawConfig {
     this.group,
     this.ipBlocks,
     this.masterIp,
+    this.stackdriverName,
     this.vms,
   });
 
@@ -8992,6 +9141,9 @@ class VmwareAdminSeesawConfig {
           masterIp: json_.containsKey('masterIp')
               ? json_['masterIp'] as core.String
               : null,
+          stackdriverName: json_.containsKey('stackdriverName')
+              ? json_['stackdriverName'] as core.String
+              : null,
           vms: json_.containsKey('vms')
               ? (json_['vms'] as core.List)
                   .map((value) => value as core.String)
@@ -9004,6 +9156,7 @@ class VmwareAdminSeesawConfig {
         if (group != null) 'group': group!,
         if (ipBlocks != null) 'ipBlocks': ipBlocks!,
         if (masterIp != null) 'masterIp': masterIp!,
+        if (stackdriverName != null) 'stackdriverName': stackdriverName!,
         if (vms != null) 'vms': vms!,
       };
 }
@@ -9035,6 +9188,9 @@ class VmwareAdminVCenterConfig {
   /// The name of the vCenter resource pool for the admin cluster.
   core.String? resourcePool;
 
+  /// The name of the vCenter storage policy for the user cluster.
+  core.String? storagePolicyName;
+
   VmwareAdminVCenterConfig({
     this.address,
     this.caCertData,
@@ -9044,6 +9200,7 @@ class VmwareAdminVCenterConfig {
     this.datastore,
     this.folder,
     this.resourcePool,
+    this.storagePolicyName,
   });
 
   VmwareAdminVCenterConfig.fromJson(core.Map json_)
@@ -9072,6 +9229,9 @@ class VmwareAdminVCenterConfig {
           resourcePool: json_.containsKey('resourcePool')
               ? json_['resourcePool'] as core.String
               : null,
+          storagePolicyName: json_.containsKey('storagePolicyName')
+              ? json_['storagePolicyName'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9083,6 +9243,7 @@ class VmwareAdminVCenterConfig {
         if (datastore != null) 'datastore': datastore!,
         if (folder != null) 'folder': folder!,
         if (resourcePool != null) 'resourcePool': resourcePool!,
+        if (storagePolicyName != null) 'storagePolicyName': storagePolicyName!,
       };
 }
 
@@ -9230,6 +9391,9 @@ class VmwareCluster {
   /// Configuration for auto repairing.
   VmwareAutoRepairConfig? autoRepairConfig;
 
+  /// Binary Authorization related configurations.
+  BinaryAuthorization? binaryAuthorization;
+
   /// VMware user cluster control plane nodes must have either 1 or 3 replicas.
   VmwareControlPlaneNodeConfig? controlPlaneNode;
 
@@ -9248,6 +9412,9 @@ class VmwareCluster {
 
   /// A human readable description of this VMware user cluster.
   core.String? description;
+
+  /// Disable bundled ingress.
+  core.bool? disableBundledIngress;
 
   /// Enable control plane V2.
   ///
@@ -9344,6 +9511,9 @@ class VmwareCluster {
   /// Output only.
   core.String? updateTime;
 
+  /// Specifies upgrade policy for the cluster.
+  VmwareClusterUpgradePolicy? upgradePolicy;
+
   /// ValidationCheck represents the result of the preflight check job.
   ///
   /// Output only.
@@ -9351,9 +9521,7 @@ class VmwareCluster {
 
   /// VmwareVCenterConfig specifies vCenter config for the user cluster.
   ///
-  /// Inherited from the admin cluster.
-  ///
-  /// Output only.
+  /// If unspecified, it is inherited from the admin cluster.
   VmwareVCenterConfig? vcenter;
 
   /// Enable VM tracking.
@@ -9366,11 +9534,13 @@ class VmwareCluster {
     this.antiAffinityGroups,
     this.authorization,
     this.autoRepairConfig,
+    this.binaryAuthorization,
     this.controlPlaneNode,
     this.createTime,
     this.dataplaneV2,
     this.deleteTime,
     this.description,
+    this.disableBundledIngress,
     this.enableControlPlaneV2,
     this.endpoint,
     this.etag,
@@ -9386,6 +9556,7 @@ class VmwareCluster {
     this.storage,
     this.uid,
     this.updateTime,
+    this.upgradePolicy,
     this.validationCheck,
     this.vcenter,
     this.vmTrackingEnabled,
@@ -9420,6 +9591,10 @@ class VmwareCluster {
               ? VmwareAutoRepairConfig.fromJson(json_['autoRepairConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          binaryAuthorization: json_.containsKey('binaryAuthorization')
+              ? BinaryAuthorization.fromJson(json_['binaryAuthorization']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           controlPlaneNode: json_.containsKey('controlPlaneNode')
               ? VmwareControlPlaneNodeConfig.fromJson(json_['controlPlaneNode']
                   as core.Map<core.String, core.dynamic>)
@@ -9436,6 +9611,9 @@ class VmwareCluster {
               : null,
           description: json_.containsKey('description')
               ? json_['description'] as core.String
+              : null,
+          disableBundledIngress: json_.containsKey('disableBundledIngress')
+              ? json_['disableBundledIngress'] as core.bool
               : null,
           enableControlPlaneV2: json_.containsKey('enableControlPlaneV2')
               ? json_['enableControlPlaneV2'] as core.bool
@@ -9480,6 +9658,10 @@ class VmwareCluster {
           updateTime: json_.containsKey('updateTime')
               ? json_['updateTime'] as core.String
               : null,
+          upgradePolicy: json_.containsKey('upgradePolicy')
+              ? VmwareClusterUpgradePolicy.fromJson(
+                  json_['upgradePolicy'] as core.Map<core.String, core.dynamic>)
+              : null,
           validationCheck: json_.containsKey('validationCheck')
               ? ValidationCheck.fromJson(json_['validationCheck']
                   as core.Map<core.String, core.dynamic>)
@@ -9502,11 +9684,15 @@ class VmwareCluster {
           'antiAffinityGroups': antiAffinityGroups!,
         if (authorization != null) 'authorization': authorization!,
         if (autoRepairConfig != null) 'autoRepairConfig': autoRepairConfig!,
+        if (binaryAuthorization != null)
+          'binaryAuthorization': binaryAuthorization!,
         if (controlPlaneNode != null) 'controlPlaneNode': controlPlaneNode!,
         if (createTime != null) 'createTime': createTime!,
         if (dataplaneV2 != null) 'dataplaneV2': dataplaneV2!,
         if (deleteTime != null) 'deleteTime': deleteTime!,
         if (description != null) 'description': description!,
+        if (disableBundledIngress != null)
+          'disableBundledIngress': disableBundledIngress!,
         if (enableControlPlaneV2 != null)
           'enableControlPlaneV2': enableControlPlaneV2!,
         if (endpoint != null) 'endpoint': endpoint!,
@@ -9523,9 +9709,31 @@ class VmwareCluster {
         if (storage != null) 'storage': storage!,
         if (uid != null) 'uid': uid!,
         if (updateTime != null) 'updateTime': updateTime!,
+        if (upgradePolicy != null) 'upgradePolicy': upgradePolicy!,
         if (validationCheck != null) 'validationCheck': validationCheck!,
         if (vcenter != null) 'vcenter': vcenter!,
         if (vmTrackingEnabled != null) 'vmTrackingEnabled': vmTrackingEnabled!,
+      };
+}
+
+/// VmwareClusterUpgradePolicy defines the cluster upgrade policy.
+class VmwareClusterUpgradePolicy {
+  /// Controls whether the upgrade applies to the control plane only.
+  core.bool? controlPlaneOnly;
+
+  VmwareClusterUpgradePolicy({
+    this.controlPlaneOnly,
+  });
+
+  VmwareClusterUpgradePolicy.fromJson(core.Map json_)
+      : this(
+          controlPlaneOnly: json_.containsKey('controlPlaneOnly')
+              ? json_['controlPlaneOnly'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (controlPlaneOnly != null) 'controlPlaneOnly': controlPlaneOnly!,
       };
 }
 
@@ -9616,8 +9824,12 @@ class VmwareControlPlaneVsphereConfig {
   /// The Vsphere datastore used by the control plane Node.
   core.String? datastore;
 
+  /// The Vsphere storage policy used by the control plane Node.
+  core.String? storagePolicyName;
+
   VmwareControlPlaneVsphereConfig({
     this.datastore,
+    this.storagePolicyName,
   });
 
   VmwareControlPlaneVsphereConfig.fromJson(core.Map json_)
@@ -9625,10 +9837,14 @@ class VmwareControlPlaneVsphereConfig {
           datastore: json_.containsKey('datastore')
               ? json_['datastore'] as core.String
               : null,
+          storagePolicyName: json_.containsKey('storagePolicyName')
+              ? json_['storagePolicyName'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (datastore != null) 'datastore': datastore!,
+        if (storagePolicyName != null) 'storagePolicyName': storagePolicyName!,
       };
 }
 
@@ -9645,12 +9861,16 @@ class VmwareDataplaneV2Config {
   /// Enables Dataplane V2.
   core.bool? dataplaneV2Enabled;
 
+  /// Configure ForwardMode for Dataplane v2.
+  core.String? forwardMode;
+
   /// Enable Dataplane V2 for clusters with Windows nodes.
   core.bool? windowsDataplaneV2Enabled;
 
   VmwareDataplaneV2Config({
     this.advancedNetworking,
     this.dataplaneV2Enabled,
+    this.forwardMode,
     this.windowsDataplaneV2Enabled,
   });
 
@@ -9661,6 +9881,9 @@ class VmwareDataplaneV2Config {
               : null,
           dataplaneV2Enabled: json_.containsKey('dataplaneV2Enabled')
               ? json_['dataplaneV2Enabled'] as core.bool
+              : null,
+          forwardMode: json_.containsKey('forwardMode')
+              ? json_['forwardMode'] as core.String
               : null,
           windowsDataplaneV2Enabled:
               json_.containsKey('windowsDataplaneV2Enabled')
@@ -9673,6 +9896,7 @@ class VmwareDataplaneV2Config {
           'advancedNetworking': advancedNetworking!,
         if (dataplaneV2Enabled != null)
           'dataplaneV2Enabled': dataplaneV2Enabled!,
+        if (forwardMode != null) 'forwardMode': forwardMode!,
         if (windowsDataplaneV2Enabled != null)
           'windowsDataplaneV2Enabled': windowsDataplaneV2Enabled!,
       };
@@ -9828,6 +10052,11 @@ class VmwareLoadBalancerConfig {
   /// Configuration for MetalLB typed load balancers.
   VmwareMetalLbConfig? metalLbConfig;
 
+  /// Configuration for Seesaw typed load balancers.
+  ///
+  /// Output only.
+  VmwareSeesawConfig? seesawConfig;
+
   /// The VIPs used by the load balancer.
   VmwareVipConfig? vipConfig;
 
@@ -9835,6 +10064,7 @@ class VmwareLoadBalancerConfig {
     this.f5Config,
     this.manualLbConfig,
     this.metalLbConfig,
+    this.seesawConfig,
     this.vipConfig,
   });
 
@@ -9852,6 +10082,10 @@ class VmwareLoadBalancerConfig {
               ? VmwareMetalLbConfig.fromJson(
                   json_['metalLbConfig'] as core.Map<core.String, core.dynamic>)
               : null,
+          seesawConfig: json_.containsKey('seesawConfig')
+              ? VmwareSeesawConfig.fromJson(
+                  json_['seesawConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
           vipConfig: json_.containsKey('vipConfig')
               ? VmwareVipConfig.fromJson(
                   json_['vipConfig'] as core.Map<core.String, core.dynamic>)
@@ -9862,6 +10096,7 @@ class VmwareLoadBalancerConfig {
         if (f5Config != null) 'f5Config': f5Config!,
         if (manualLbConfig != null) 'manualLbConfig': manualLbConfig!,
         if (metalLbConfig != null) 'metalLbConfig': metalLbConfig!,
+        if (seesawConfig != null) 'seesawConfig': seesawConfig!,
         if (vipConfig != null) 'vipConfig': vipConfig!,
       };
 }
@@ -9999,8 +10234,6 @@ class VmwareNetworkConfig {
   /// vcenter_network specifies vCenter network name.
   ///
   /// Inherited from the admin cluster.
-  ///
-  /// Output only.
   core.String? vcenterNetwork;
 
   VmwareNetworkConfig({
@@ -10447,6 +10680,97 @@ class VmwarePlatformConfig {
       };
 }
 
+/// VmwareSeesawConfig represents configuration parameters for an already
+/// existing Seesaw load balancer.
+///
+/// IMPORTANT: Please note that the Anthos On-Prem API will not generate or
+/// update Seesaw configurations it can only bind a pre-existing configuration
+/// to a new user cluster. IMPORTANT: When attempting to create a user cluster
+/// with a pre-existing Seesaw load balancer you will need to follow some
+/// preparation steps before calling the 'CreateVmwareCluster' API method. First
+/// you will need to create the user cluster's namespace via kubectl. The
+/// namespace will need to use the following naming convention :
+/// -gke-onprem-mgmt or -gke-onprem-mgmt depending on whether you used the
+/// 'VmwareCluster.local_name' to disambiguate collisions; for more context see
+/// the documentation of 'VmwareCluster.local_name'. Once the namespace is
+/// created you will need to create a secret resource via kubectl. This secret
+/// will contain copies of your Seesaw credentials. The Secret must be called
+/// 'user-cluster-creds' and contain Seesaw's SSH and Cert credentials. The
+/// credentials must be keyed with the following names:
+/// 'seesaw-ssh-private-key', 'seesaw-ssh-public-key', 'seesaw-ssh-ca-key',
+/// 'seesaw-ssh-ca-cert'.
+class VmwareSeesawConfig {
+  /// Enable two load balancer VMs to achieve a highly-available Seesaw load
+  /// balancer.
+  core.bool? enableHa;
+
+  /// In general the following format should be used for the Seesaw group name:
+  /// seesaw-for-\[cluster_name\].
+  ///
+  /// Required.
+  core.String? group;
+
+  /// The IP Blocks to be used by the Seesaw load balancer
+  ///
+  /// Required.
+  core.List<VmwareIpBlock>? ipBlocks;
+
+  /// MasterIP is the IP announced by the master of Seesaw group.
+  ///
+  /// Required.
+  core.String? masterIp;
+
+  /// Name to be used by Stackdriver.
+  core.String? stackdriverName;
+
+  /// Names of the VMs created for this Seesaw group.
+  core.List<core.String>? vms;
+
+  VmwareSeesawConfig({
+    this.enableHa,
+    this.group,
+    this.ipBlocks,
+    this.masterIp,
+    this.stackdriverName,
+    this.vms,
+  });
+
+  VmwareSeesawConfig.fromJson(core.Map json_)
+      : this(
+          enableHa: json_.containsKey('enableHa')
+              ? json_['enableHa'] as core.bool
+              : null,
+          group:
+              json_.containsKey('group') ? json_['group'] as core.String : null,
+          ipBlocks: json_.containsKey('ipBlocks')
+              ? (json_['ipBlocks'] as core.List)
+                  .map((value) => VmwareIpBlock.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          masterIp: json_.containsKey('masterIp')
+              ? json_['masterIp'] as core.String
+              : null,
+          stackdriverName: json_.containsKey('stackdriverName')
+              ? json_['stackdriverName'] as core.String
+              : null,
+          vms: json_.containsKey('vms')
+              ? (json_['vms'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enableHa != null) 'enableHa': enableHa!,
+        if (group != null) 'group': group!,
+        if (ipBlocks != null) 'ipBlocks': ipBlocks!,
+        if (masterIp != null) 'masterIp': masterIp!,
+        if (stackdriverName != null) 'stackdriverName': stackdriverName!,
+        if (vms != null) 'vms': vms!,
+      };
+}
+
 /// Represents the network configuration required for the VMware user clusters
 /// with Static IP configurations.
 class VmwareStaticIpConfig {
@@ -10501,6 +10825,8 @@ class VmwareStorageConfig {
 /// Represents configuration for the VMware VCenter for the user cluster.
 class VmwareVCenterConfig {
   /// The vCenter IP address.
+  ///
+  /// Output only.
   core.String? address;
 
   /// Contains the vCenter CA certificate public key for SSL verification.
@@ -10521,6 +10847,9 @@ class VmwareVCenterConfig {
   /// The name of the vCenter resource pool for the user cluster.
   core.String? resourcePool;
 
+  /// The name of the vCenter storage policy for the user cluster.
+  core.String? storagePolicyName;
+
   VmwareVCenterConfig({
     this.address,
     this.caCertData,
@@ -10529,6 +10858,7 @@ class VmwareVCenterConfig {
     this.datastore,
     this.folder,
     this.resourcePool,
+    this.storagePolicyName,
   });
 
   VmwareVCenterConfig.fromJson(core.Map json_)
@@ -10554,6 +10884,9 @@ class VmwareVCenterConfig {
           resourcePool: json_.containsKey('resourcePool')
               ? json_['resourcePool'] as core.String
               : null,
+          storagePolicyName: json_.containsKey('storagePolicyName')
+              ? json_['storagePolicyName'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10564,11 +10897,15 @@ class VmwareVCenterConfig {
         if (datastore != null) 'datastore': datastore!,
         if (folder != null) 'folder': folder!,
         if (resourcePool != null) 'resourcePool': resourcePool!,
+        if (storagePolicyName != null) 'storagePolicyName': storagePolicyName!,
       };
 }
 
 /// Contains information about a specific Anthos on VMware version.
 class VmwareVersionInfo {
+  /// The list of upgrade dependencies for this version.
+  core.List<UpgradeDependency>? dependencies;
+
   /// If set, the cluster dependencies (e.g. the admin cluster, other user
   /// clusters managed by the same admin cluster) must be upgraded before this
   /// version can be installed or upgraded to.
@@ -10584,6 +10921,7 @@ class VmwareVersionInfo {
   core.String? version;
 
   VmwareVersionInfo({
+    this.dependencies,
     this.hasDependencies,
     this.isInstalled,
     this.version,
@@ -10591,6 +10929,12 @@ class VmwareVersionInfo {
 
   VmwareVersionInfo.fromJson(core.Map json_)
       : this(
+          dependencies: json_.containsKey('dependencies')
+              ? (json_['dependencies'] as core.List)
+                  .map((value) => UpgradeDependency.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           hasDependencies: json_.containsKey('hasDependencies')
               ? json_['hasDependencies'] as core.bool
               : null,
@@ -10603,6 +10947,7 @@ class VmwareVersionInfo {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (dependencies != null) 'dependencies': dependencies!,
         if (hasDependencies != null) 'hasDependencies': hasDependencies!,
         if (isInstalled != null) 'isInstalled': isInstalled!,
         if (version != null) 'version': version!,

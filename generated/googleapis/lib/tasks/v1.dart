@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Google Tasks API - v1
@@ -21,7 +20,7 @@
 ///
 /// - [TasklistsResource]
 /// - [TasksResource]
-library tasks_v1;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -479,8 +478,8 @@ class TasksResource {
   /// [dueMin] - Lower bound for a task's due date (as a RFC 3339 timestamp) to
   /// filter by. Optional. The default is not to filter by due date.
   ///
-  /// [maxResults] - Maximum number of task lists returned on one page.
-  /// Optional. The default is 20 (max allowed: 100).
+  /// [maxResults] - Maximum number of tasks returned on one page. Optional. The
+  /// default is 20 (max allowed: 100).
   ///
   /// [pageToken] - Token specifying the result page to return. Optional.
   ///

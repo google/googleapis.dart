@@ -10,7 +10,6 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 // ignore_for_file: unreachable_from_main
 // ignore_for_file: unused_local_variable
@@ -69,6 +68,33 @@ void checkAccountDetails(api.AccountDetails o) {
     );
   }
   buildCounterAccountDetails--;
+}
+
+core.int buildCounterAppAccessRiskVerdict = 0;
+api.AppAccessRiskVerdict buildAppAccessRiskVerdict() {
+  final o = api.AppAccessRiskVerdict();
+  buildCounterAppAccessRiskVerdict++;
+  if (buildCounterAppAccessRiskVerdict < 3) {
+    o.otherApps = 'foo';
+    o.playOrSystemApps = 'foo';
+  }
+  buildCounterAppAccessRiskVerdict--;
+  return o;
+}
+
+void checkAppAccessRiskVerdict(api.AppAccessRiskVerdict o) {
+  buildCounterAppAccessRiskVerdict++;
+  if (buildCounterAppAccessRiskVerdict < 3) {
+    unittest.expect(
+      o.otherApps!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.playOrSystemApps!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterAppAccessRiskVerdict--;
 }
 
 core.List<core.String> buildUnnamed0() => [
@@ -186,6 +212,7 @@ api.DeviceIntegrity buildDeviceIntegrity() {
   buildCounterDeviceIntegrity++;
   if (buildCounterDeviceIntegrity < 3) {
     o.deviceRecognitionVerdict = buildUnnamed1();
+    o.recentDeviceActivity = buildRecentDeviceActivity();
   }
   buildCounterDeviceIntegrity--;
   return o;
@@ -195,44 +222,55 @@ void checkDeviceIntegrity(api.DeviceIntegrity o) {
   buildCounterDeviceIntegrity++;
   if (buildCounterDeviceIntegrity < 3) {
     checkUnnamed1(o.deviceRecognitionVerdict!);
+    checkRecentDeviceActivity(o.recentDeviceActivity!);
   }
   buildCounterDeviceIntegrity--;
 }
 
-core.List<core.String> buildUnnamed2() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed2(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.int buildCounterGuidanceDetails = 0;
-api.GuidanceDetails buildGuidanceDetails() {
-  final o = api.GuidanceDetails();
-  buildCounterGuidanceDetails++;
-  if (buildCounterGuidanceDetails < 3) {
-    o.userRemediation = buildUnnamed2();
+core.int buildCounterEnvironmentDetails = 0;
+api.EnvironmentDetails buildEnvironmentDetails() {
+  final o = api.EnvironmentDetails();
+  buildCounterEnvironmentDetails++;
+  if (buildCounterEnvironmentDetails < 3) {
+    o.appAccessRiskVerdict = buildAppAccessRiskVerdict();
+    o.playProtectVerdict = 'foo';
   }
-  buildCounterGuidanceDetails--;
+  buildCounterEnvironmentDetails--;
   return o;
 }
 
-void checkGuidanceDetails(api.GuidanceDetails o) {
-  buildCounterGuidanceDetails++;
-  if (buildCounterGuidanceDetails < 3) {
-    checkUnnamed2(o.userRemediation!);
+void checkEnvironmentDetails(api.EnvironmentDetails o) {
+  buildCounterEnvironmentDetails++;
+  if (buildCounterEnvironmentDetails < 3) {
+    checkAppAccessRiskVerdict(o.appAccessRiskVerdict!);
+    unittest.expect(
+      o.playProtectVerdict!,
+      unittest.equals('foo'),
+    );
   }
-  buildCounterGuidanceDetails--;
+  buildCounterEnvironmentDetails--;
+}
+
+core.int buildCounterRecentDeviceActivity = 0;
+api.RecentDeviceActivity buildRecentDeviceActivity() {
+  final o = api.RecentDeviceActivity();
+  buildCounterRecentDeviceActivity++;
+  if (buildCounterRecentDeviceActivity < 3) {
+    o.deviceActivityLevel = 'foo';
+  }
+  buildCounterRecentDeviceActivity--;
+  return o;
+}
+
+void checkRecentDeviceActivity(api.RecentDeviceActivity o) {
+  buildCounterRecentDeviceActivity++;
+  if (buildCounterRecentDeviceActivity < 3) {
+    unittest.expect(
+      o.deviceActivityLevel!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterRecentDeviceActivity--;
 }
 
 core.int buildCounterRequestDetails = 0;
@@ -299,7 +337,7 @@ api.TokenPayloadExternal buildTokenPayloadExternal() {
     o.accountDetails = buildAccountDetails();
     o.appIntegrity = buildAppIntegrity();
     o.deviceIntegrity = buildDeviceIntegrity();
-    o.guidanceDetails = buildGuidanceDetails();
+    o.environmentDetails = buildEnvironmentDetails();
     o.requestDetails = buildRequestDetails();
     o.testingDetails = buildTestingDetails();
   }
@@ -313,7 +351,7 @@ void checkTokenPayloadExternal(api.TokenPayloadExternal o) {
     checkAccountDetails(o.accountDetails!);
     checkAppIntegrity(o.appIntegrity!);
     checkDeviceIntegrity(o.deviceIntegrity!);
-    checkGuidanceDetails(o.guidanceDetails!);
+    checkEnvironmentDetails(o.environmentDetails!);
     checkRequestDetails(o.requestDetails!);
     checkTestingDetails(o.testingDetails!);
   }
@@ -338,6 +376,16 @@ void main() {
       final od = api.AccountDetails.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkAccountDetails(od);
+    });
+  });
+
+  unittest.group('obj-schema-AppAccessRiskVerdict', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAppAccessRiskVerdict();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AppAccessRiskVerdict.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAppAccessRiskVerdict(od);
     });
   });
 
@@ -381,13 +429,23 @@ void main() {
     });
   });
 
-  unittest.group('obj-schema-GuidanceDetails', () {
+  unittest.group('obj-schema-EnvironmentDetails', () {
     unittest.test('to-json--from-json', () async {
-      final o = buildGuidanceDetails();
+      final o = buildEnvironmentDetails();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GuidanceDetails.fromJson(
+      final od = api.EnvironmentDetails.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGuidanceDetails(od);
+      checkEnvironmentDetails(od);
+    });
+  });
+
+  unittest.group('obj-schema-RecentDeviceActivity', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRecentDeviceActivity();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RecentDeviceActivity.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRecentDeviceActivity(od);
     });
   });
 

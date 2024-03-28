@@ -10,7 +10,6 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 // ignore_for_file: unreachable_from_main
 // ignore_for_file: unused_local_variable
@@ -92,6 +91,7 @@ api.AccessApprovalSettings buildAccessApprovalSettings() {
     o.invalidKeyVersion = true;
     o.name = 'foo';
     o.notificationEmails = buildUnnamed1();
+    o.notificationPubsubTopic = 'foo';
     o.preferNoBroadApprovalRequests = true;
     o.preferredRequestExpirationDays = 42;
   }
@@ -115,6 +115,10 @@ void checkAccessApprovalSettings(api.AccessApprovalSettings o) {
       unittest.equals('foo'),
     );
     checkUnnamed1(o.notificationEmails!);
+    unittest.expect(
+      o.notificationPubsubTopic!,
+      unittest.equals('foo'),
+    );
     unittest.expect(o.preferNoBroadApprovalRequests!, unittest.isTrue);
     unittest.expect(
       o.preferredRequestExpirationDays!,
@@ -187,6 +191,7 @@ api.ApprovalRequest buildApprovalRequest() {
     o.dismiss = buildDismissDecision();
     o.name = 'foo';
     o.requestTime = 'foo';
+    o.requestedDuration = 'foo';
     o.requestedExpiration = 'foo';
     o.requestedLocations = buildAccessLocations();
     o.requestedReason = buildAccessReason();
@@ -208,6 +213,10 @@ void checkApprovalRequest(api.ApprovalRequest o) {
     );
     unittest.expect(
       o.requestTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.requestedDuration!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -440,7 +449,9 @@ api.SignatureInfo buildSignatureInfo() {
   buildCounterSignatureInfo++;
   if (buildCounterSignatureInfo < 3) {
     o.customerKmsKeyVersion = 'foo';
+    o.googleKeyAlgorithm = 'foo';
     o.googlePublicKeyPem = 'foo';
+    o.serializedApprovalRequest = 'foo';
     o.signature = 'foo';
   }
   buildCounterSignatureInfo--;
@@ -455,7 +466,15 @@ void checkSignatureInfo(api.SignatureInfo o) {
       unittest.equals('foo'),
     );
     unittest.expect(
+      o.googleKeyAlgorithm!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.googlePublicKeyPem!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.serializedApprovalRequest!,
       unittest.equals('foo'),
     );
     unittest.expect(

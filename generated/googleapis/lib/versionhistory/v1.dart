@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// versionhistory.googleapis.com API - v1
@@ -24,7 +23,7 @@
 ///   - [PlatformsChannelsResource]
 ///     - [PlatformsChannelsVersionsResource]
 ///       - [PlatformsChannelsVersionsReleasesResource]
-library versionhistory_v1;
+library;
 
 import 'dart:async' as async;
 import 'dart:core' as core;
@@ -356,6 +355,8 @@ class Channel {
   /// - "CANARY_ASAN"
   /// - "ALL"
   /// - "EXTENDED"
+  /// - "LTS" : The Long-term support channel for ChromeOS.
+  /// - "LTC" : The Long-term support candidate channel for ChromeOS.
   core.String? channelType;
 
   /// Channel name.

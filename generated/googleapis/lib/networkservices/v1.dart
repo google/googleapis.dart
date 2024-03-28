@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Network Services API - v1
@@ -26,12 +25,15 @@
 ///     - [ProjectsLocationsGatewaysResource]
 ///     - [ProjectsLocationsGrpcRoutesResource]
 ///     - [ProjectsLocationsHttpRoutesResource]
+///     - [ProjectsLocationsLbRouteExtensionsResource]
+///     - [ProjectsLocationsLbTrafficExtensionsResource]
 ///     - [ProjectsLocationsMeshesResource]
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsServiceBindingsResource]
+///     - [ProjectsLocationsServiceLbPoliciesResource]
 ///     - [ProjectsLocationsTcpRoutesResource]
 ///     - [ProjectsLocationsTlsRoutesResource]
-library networkservices_v1;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -89,12 +91,18 @@ class ProjectsLocationsResource {
       ProjectsLocationsGrpcRoutesResource(_requester);
   ProjectsLocationsHttpRoutesResource get httpRoutes =>
       ProjectsLocationsHttpRoutesResource(_requester);
+  ProjectsLocationsLbRouteExtensionsResource get lbRouteExtensions =>
+      ProjectsLocationsLbRouteExtensionsResource(_requester);
+  ProjectsLocationsLbTrafficExtensionsResource get lbTrafficExtensions =>
+      ProjectsLocationsLbTrafficExtensionsResource(_requester);
   ProjectsLocationsMeshesResource get meshes =>
       ProjectsLocationsMeshesResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
       ProjectsLocationsOperationsResource(_requester);
   ProjectsLocationsServiceBindingsResource get serviceBindings =>
       ProjectsLocationsServiceBindingsResource(_requester);
+  ProjectsLocationsServiceLbPoliciesResource get serviceLbPolicies =>
+      ProjectsLocationsServiceLbPoliciesResource(_requester);
   ProjectsLocationsTcpRoutesResource get tcpRoutes =>
       ProjectsLocationsTcpRoutesResource(_requester);
   ProjectsLocationsTlsRoutesResource get tlsRoutes =>
@@ -1886,6 +1894,571 @@ class ProjectsLocationsHttpRoutesResource {
   }
 }
 
+class ProjectsLocationsLbRouteExtensionsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsLbRouteExtensionsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new `LbRouteExtension` resource in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource of the `LbRouteExtension`
+  /// resource. Must be in the format `projects/{project}/locations/{location}`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [lbRouteExtensionId] - Required. User-provided ID of the
+  /// `LbRouteExtension` resource to be created.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server can ignore the request if it has already been completed. The server
+  /// guarantees that for at least 60 minutes since the first request. For
+  /// example, consider a situation where you make an initial request and the
+  /// request times out. If you make the request again with the same request ID,
+  /// the server can check if original operation with the same request ID was
+  /// received, and if so, ignores the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    LbRouteExtension request,
+    core.String parent, {
+    core.String? lbRouteExtensionId,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (lbRouteExtensionId != null)
+        'lbRouteExtensionId': [lbRouteExtensionId],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/lbRouteExtensions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes the specified `LbRouteExtension` resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the `LbRouteExtension` resource to delete.
+  /// Must be in the format
+  /// `projects/{project}/locations/{location}/lbRouteExtensions/{lb_route_extension}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/lbRouteExtensions/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server can ignore the request if it has already been completed. The server
+  /// guarantees that for at least 60 minutes after the first request. For
+  /// example, consider a situation where you make an initial request and the
+  /// request times out. If you make the request again with the same request ID,
+  /// the server can check if original operation with the same request ID was
+  /// received, and if so, ignores the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of the specified `LbRouteExtension` resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. A name of the `LbRouteExtension` resource to get. Must
+  /// be in the format
+  /// `projects/{project}/locations/{location}/lbRouteExtensions/{lb_route_extension}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/lbRouteExtensions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LbRouteExtension].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LbRouteExtension> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return LbRouteExtension.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists `LbRouteExtension` resources in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project and location from which the
+  /// `LbRouteExtension` resources are listed, specified in the following
+  /// format: `projects/{project}/locations/{location}`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filtering results.
+  ///
+  /// [orderBy] - Optional. Hint for how to order the results.
+  ///
+  /// [pageSize] - Optional. Requested page size. The server might return fewer
+  /// items than requested. If unspecified, the server picks an appropriate
+  /// default.
+  ///
+  /// [pageToken] - Optional. A token identifying a page of results that the
+  /// server returns.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListLbRouteExtensionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListLbRouteExtensionsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/lbRouteExtensions';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListLbRouteExtensionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the parameters of the specified `LbRouteExtension` resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Identifier. Name of the `LbRouteExtension` resource in
+  /// the following format:
+  /// `projects/{project}/locations/{location}/lbRouteExtensions/{lb_route_extension}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/lbRouteExtensions/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server can ignore the request if it has already been completed. The server
+  /// guarantees that for at least 60 minutes since the first request. For
+  /// example, consider a situation where you make an initial request and the
+  /// request times out. If you make the request again with the same request ID,
+  /// the server can check if original operation with the same request ID was
+  /// received, and if so, ignores the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [updateMask] - Required. Used to specify the fields to be overwritten in
+  /// the `LbRouteExtension` resource by the update. The fields specified in the
+  /// update_mask are relative to the resource, not the full request. A field is
+  /// overwritten if it is in the mask. If the user does not specify a mask,
+  /// then all fields are overwritten.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    LbRouteExtension request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsLbTrafficExtensionsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsLbTrafficExtensionsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new `LbTrafficExtension` resource in a given project and
+  /// location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource of the `LbTrafficExtension`
+  /// resource. Must be in the format `projects/{project}/locations/{location}`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [lbTrafficExtensionId] - Required. User-provided ID of the
+  /// `LbTrafficExtension` resource to be created.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server can ignore the request if it has already been completed. The server
+  /// guarantees that for at least 60 minutes since the first request. For
+  /// example, consider a situation where you make an initial request and the
+  /// request times out. If you make the request again with the same request ID,
+  /// the server can check if original operation with the same request ID was
+  /// received, and if so, ignores the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    LbTrafficExtension request,
+    core.String parent, {
+    core.String? lbTrafficExtensionId,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (lbTrafficExtensionId != null)
+        'lbTrafficExtensionId': [lbTrafficExtensionId],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/lbTrafficExtensions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes the specified `LbTrafficExtension` resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the `LbTrafficExtension` resource to
+  /// delete. Must be in the format
+  /// `projects/{project}/locations/{location}/lbTrafficExtensions/{lb_traffic_extension}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/lbTrafficExtensions/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server can ignore the request if it has already been completed. The server
+  /// guarantees that for at least 60 minutes after the first request. For
+  /// example, consider a situation where you make an initial request and the
+  /// request times out. If you make the request again with the same request ID,
+  /// the server can check if original operation with the same request ID was
+  /// received, and if so, ignores the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of the specified `LbTrafficExtension` resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. A name of the `LbTrafficExtension` resource to get.
+  /// Must be in the format
+  /// `projects/{project}/locations/{location}/lbTrafficExtensions/{lb_traffic_extension}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/lbTrafficExtensions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LbTrafficExtension].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LbTrafficExtension> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return LbTrafficExtension.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists `LbTrafficExtension` resources in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project and location from which the
+  /// `LbTrafficExtension` resources are listed, specified in the following
+  /// format: `projects/{project}/locations/{location}`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filtering results.
+  ///
+  /// [orderBy] - Optional. Hint for how to order the results.
+  ///
+  /// [pageSize] - Optional. Requested page size. The server might return fewer
+  /// items than requested. If unspecified, the server picks an appropriate
+  /// default.
+  ///
+  /// [pageToken] - Optional. A token identifying a page of results that the
+  /// server returns.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListLbTrafficExtensionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListLbTrafficExtensionsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/lbTrafficExtensions';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListLbTrafficExtensionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the parameters of the specified `LbTrafficExtension` resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Identifier. Name of the `LbTrafficExtension` resource
+  /// in the following format:
+  /// `projects/{project}/locations/{location}/lbTrafficExtensions/{lb_traffic_extension}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/lbTrafficExtensions/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server can ignore the request if it has already been completed. The server
+  /// guarantees that for at least 60 minutes since the first request. For
+  /// example, consider a situation where you make an initial request and the
+  /// request times out. If you make the request again with the same request ID,
+  /// the server can check if original operation with the same request ID was
+  /// received, and if so, ignores the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [updateMask] - Required. Used to specify the fields to be overwritten in
+  /// the `LbTrafficExtension` resource by the update. The fields specified in
+  /// the update_mask are relative to the resource, not the full request. A
+  /// field is overwritten if it is in the mask. If the user does not specify a
+  /// mask, then all fields are overwritten.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    LbTrafficExtension request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsLocationsMeshesResource {
   final commons.ApiRequester _requester;
 
@@ -2781,6 +3354,391 @@ class ProjectsLocationsServiceBindingsResource {
   }
 }
 
+class ProjectsLocationsServiceLbPoliciesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsServiceLbPoliciesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new ServiceLbPolicy in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource of the ServiceLbPolicy. Must be
+  /// in the format `projects/{project}/locations/{location}`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [serviceLbPolicyId] - Required. Short name of the ServiceLbPolicy resource
+  /// to be created. E.g. for resource name
+  /// `projects/{project}/locations/{location}/serviceLbPolicies/{service_lb_policy_name}`.
+  /// the id is value of {service_lb_policy_name}
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    ServiceLbPolicy request,
+    core.String parent, {
+    core.String? serviceLbPolicyId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (serviceLbPolicyId != null) 'serviceLbPolicyId': [serviceLbPolicyId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/serviceLbPolicies';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single ServiceLbPolicy.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. A name of the ServiceLbPolicy to delete. Must be in the
+  /// format `projects/{project}/locations/{location}/serviceLbPolicies / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/serviceLbPolicies/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single ServiceLbPolicy.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. A name of the ServiceLbPolicy to get. Must be in the
+  /// format `projects/{project}/locations/{location}/serviceLbPolicies / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/serviceLbPolicies/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ServiceLbPolicy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ServiceLbPolicy> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ServiceLbPolicy.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/serviceLbPolicies/\[^/\]+$`.
+  ///
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy. Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected. Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset. The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1. To learn which resources support
+  /// conditions in their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(
+    core.String resource, {
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (options_requestedPolicyVersion != null)
+        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists ServiceLbPolicies in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project and location from which the
+  /// ServiceLbPolicies should be listed, specified in the format
+  /// `projects/{project}/locations/{location}`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Maximum number of ServiceLbPolicies to return per call.
+  ///
+  /// [pageToken] - The value returned by the last
+  /// `ListServiceLbPoliciesResponse` Indicates that this is a continuation of a
+  /// prior `ListRouters` call, and that the system should return the next page
+  /// of data.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListServiceLbPoliciesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListServiceLbPoliciesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/serviceLbPolicies';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListServiceLbPoliciesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the parameters of a single ServiceLbPolicy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the ServiceLbPolicy resource. It matches
+  /// pattern
+  /// `projects/{project}/locations/{location}/serviceLbPolicies/{service_lb_policy_name}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/serviceLbPolicies/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. Field mask is used to specify the fields to be
+  /// overwritten in the ServiceLbPolicy resource by the update. The fields
+  /// specified in the update_mask are relative to the resource, not the full
+  /// request. A field will be overwritten if it is in the mask. If the user
+  /// does not provide a mask then all fields will be overwritten.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    ServiceLbPolicy request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
+  /// and `PERMISSION_DENIED` errors.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/serviceLbPolicies/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(
+    SetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a `NOT_FOUND` error. Note: This operation is designed to
+  /// be used for building permission-aware UIs and command-line tools, not for
+  /// authorization checking. This operation may "fail open" without warning.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/serviceLbPolicies/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestIamPermissionsResponse> testIamPermissions(
+    TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return TestIamPermissionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsLocationsTcpRoutesResource {
   final commons.ApiRequester _requester;
 
@@ -2798,7 +3756,7 @@ class ProjectsLocationsTcpRoutesResource {
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [tcpRouteId] - Required. Short name of the TcpRoute resource to be
-  /// created. E.g. TODO(Add an example).
+  /// created.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3023,7 +3981,7 @@ class ProjectsLocationsTlsRoutesResource {
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [tlsRouteId] - Required. Short name of the TlsRoute resource to be
-  /// created. E.g. TODO(Add an example).
+  /// created.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3322,14 +4280,31 @@ class Binding {
   /// `group:{emailid}`: An email address that represents a Google group. For
   /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
   /// (primary) that represents all the users of that domain. For example,
-  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a user that has
-  /// been recently deleted. For example,
-  /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
-  /// this value reverts to `user:{emailid}` and the recovered user retains the
-  /// role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a service account
-  /// that has been recently deleted. For example,
+  /// `google.com` or `example.com`. *
+  /// `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workforce identity pool. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`:
+  /// All workforce identities in a group. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All workforce identities with a specific attribute value. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}
+  /// / * `: All identities in a workforce identity pool. *
+  /// `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workload identity pool. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`:
+  /// A workload identity pool group. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All identities in a workload identity pool with a certain attribute. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}
+  /// / * `: All identities in a workload identity pool. *
+  /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
+  /// identifier) representing a user that has been recently deleted. For
+  /// example, `alice@example.com?uid=123456789012345678901`. If the user is
+  /// recovered, this value reverts to `user:{emailid}` and the recovered user
+  /// retains the role in the binding. *
+  /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus
+  /// unique identifier) representing a service account that has been recently
+  /// deleted. For example,
   /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If
   /// the service account is undeleted, this value reverts to
   /// `serviceAccount:{emailid}` and the undeleted service account retains the
@@ -3338,12 +4313,19 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding.
+  /// the role in the binding. *
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// Deleted single identity in a workforce identity pool. For example,
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
   ///
-  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an
+  /// overview of the IAM roles and permissions, see the
+  /// [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For
+  /// a list of the available pre-defined roles, see
+  /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
   Binding({
@@ -3423,8 +4405,8 @@ class EndpointMatcherMetadataLabelMatcher {
   /// selected. If a client with label connects, the config from P2 will be
   /// selected. If a client with label connects, the config from P3 will be
   /// selected. If there is more than one best match, (for example, if a config
-  /// P4 with selector exists and if a client with label connects), an error
-  /// will be thrown.
+  /// P4 with selector exists and if a client with label connects), pick up the
+  /// one with older creation time.
   /// Possible string values are:
   /// - "METADATA_LABEL_MATCH_CRITERIA_UNSPECIFIED" : Default value. Should not
   /// be used.
@@ -3686,11 +4668,215 @@ class EndpointPolicy {
 /// information.
 typedef Expr = $Expr;
 
+/// A single extension chain wrapper that contains the match conditions and
+/// extensions to execute.
+class ExtensionChain {
+  /// A set of extensions to execute for the matching request.
+  ///
+  /// At least one extension is required. Up to 3 extensions can be defined for
+  /// each extension chain for `LbTrafficExtension` resource. `LbRouteExtension`
+  /// chains are limited to 1 extension per extension chain.
+  ///
+  /// Required.
+  core.List<ExtensionChainExtension>? extensions;
+
+  /// Conditions under which this chain is invoked for a request.
+  ///
+  /// Required.
+  ExtensionChainMatchCondition? matchCondition;
+
+  /// The name for this extension chain.
+  ///
+  /// The name is logged as part of the HTTP request logs. The name must conform
+  /// with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
+  /// and can have a maximum length of 63 characters. Additionally, the first
+  /// character must be a letter and the last a letter or a number.
+  ///
+  /// Required.
+  core.String? name;
+
+  ExtensionChain({
+    this.extensions,
+    this.matchCondition,
+    this.name,
+  });
+
+  ExtensionChain.fromJson(core.Map json_)
+      : this(
+          extensions: json_.containsKey('extensions')
+              ? (json_['extensions'] as core.List)
+                  .map((value) => ExtensionChainExtension.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          matchCondition: json_.containsKey('matchCondition')
+              ? ExtensionChainMatchCondition.fromJson(json_['matchCondition']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (extensions != null) 'extensions': extensions!,
+        if (matchCondition != null) 'matchCondition': matchCondition!,
+        if (name != null) 'name': name!,
+      };
+}
+
+/// A single extension in the chain to execute for the matching request.
+class ExtensionChainExtension {
+  /// The `:authority` header in the gRPC request sent from Envoy to the
+  /// extension service.
+  ///
+  /// Required for Callout extensions.
+  ///
+  /// Optional.
+  core.String? authority;
+
+  /// Determines how the proxy behaves if the call to the extension fails or
+  /// times out.
+  ///
+  /// When set to `TRUE`, request or response processing continues without
+  /// error. Any subsequent extensions in the extension chain are also executed.
+  /// When set to `FALSE` or the default setting of `FALSE` is used, one of the
+  /// following happens: * If response headers have not been delivered to the
+  /// downstream client, a generic 500 error is returned to the client. The
+  /// error response can be tailored by configuring a custom error response in
+  /// the load balancer. * If response headers have been delivered, then the
+  /// HTTP stream to the downstream client is reset.
+  ///
+  /// Optional.
+  core.bool? failOpen;
+
+  /// List of the HTTP headers to forward to the extension (from the client or
+  /// backend).
+  ///
+  /// If omitted, all headers are sent. Each element is a string indicating the
+  /// header name.
+  ///
+  /// Optional.
+  core.List<core.String>? forwardHeaders;
+
+  /// The name for this extension.
+  ///
+  /// The name is logged as part of the HTTP request logs. The name must conform
+  /// with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
+  /// and can have a maximum length of 63 characters. Additionally, the first
+  /// character must be a letter and the last a letter or a number.
+  ///
+  /// Required.
+  core.String? name;
+
+  /// The reference to the service that runs the extension.
+  ///
+  /// Currently only callout extensions are supported here. To configure a
+  /// callout extension, `service` must be a fully-qualified reference to a
+  /// [backend service](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices)
+  /// in the format:
+  /// `https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/backendServices/{backendService}`
+  /// or
+  /// `https://www.googleapis.com/compute/v1/projects/{project}/global/backendServices/{backendService}`.
+  ///
+  /// Required.
+  core.String? service;
+
+  /// A set of events during request or response processing for which this
+  /// extension is called.
+  ///
+  /// This field is required for the `LbTrafficExtension` resource. It's not
+  /// relevant for the `LbRouteExtension` resource.
+  ///
+  /// Optional.
+  core.List<core.String>? supportedEvents;
+
+  /// Specifies the timeout for each individual message on the stream.
+  ///
+  /// The timeout must be between 10-1000 milliseconds. Required for Callout
+  /// extensions.
+  ///
+  /// Optional.
+  core.String? timeout;
+
+  ExtensionChainExtension({
+    this.authority,
+    this.failOpen,
+    this.forwardHeaders,
+    this.name,
+    this.service,
+    this.supportedEvents,
+    this.timeout,
+  });
+
+  ExtensionChainExtension.fromJson(core.Map json_)
+      : this(
+          authority: json_.containsKey('authority')
+              ? json_['authority'] as core.String
+              : null,
+          failOpen: json_.containsKey('failOpen')
+              ? json_['failOpen'] as core.bool
+              : null,
+          forwardHeaders: json_.containsKey('forwardHeaders')
+              ? (json_['forwardHeaders'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          service: json_.containsKey('service')
+              ? json_['service'] as core.String
+              : null,
+          supportedEvents: json_.containsKey('supportedEvents')
+              ? (json_['supportedEvents'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          timeout: json_.containsKey('timeout')
+              ? json_['timeout'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (authority != null) 'authority': authority!,
+        if (failOpen != null) 'failOpen': failOpen!,
+        if (forwardHeaders != null) 'forwardHeaders': forwardHeaders!,
+        if (name != null) 'name': name!,
+        if (service != null) 'service': service!,
+        if (supportedEvents != null) 'supportedEvents': supportedEvents!,
+        if (timeout != null) 'timeout': timeout!,
+      };
+}
+
+/// Conditions under which this chain is invoked for a request.
+class ExtensionChainMatchCondition {
+  /// A Common Expression Language (CEL) expression that is used to match
+  /// requests for which the extension chain is executed.
+  ///
+  /// For more information, see \[CEL matcher language
+  /// reference\](/service-extensions/docs/cel-matcher-language-reference).
+  ///
+  /// Required.
+  core.String? celExpression;
+
+  ExtensionChainMatchCondition({
+    this.celExpression,
+  });
+
+  ExtensionChainMatchCondition.fromJson(core.Map json_)
+      : this(
+          celExpression: json_.containsKey('celExpression')
+              ? json_['celExpression'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (celExpression != null) 'celExpression': celExpression!,
+      };
+}
+
 /// Gateway represents the configuration for a proxy, typically a load balancer.
 ///
 /// It captures the ip:port over which the services are exposed by the proxy,
 /// along with any policy configurations. Routes have reference to to Gateways
-/// to dictate how requests should be routed by this Gateway.
+/// to dictate how requests should be routed by this Gateway. Next id: 32
 class Gateway {
   /// Zero or one IPv4 or IPv6 address on which the Gateway will receive the
   /// traffic.
@@ -3723,6 +4909,22 @@ class Gateway {
   /// Optional.
   core.String? description;
 
+  /// Determines if envoy will insert internal debug headers into upstream
+  /// requests.
+  ///
+  /// Other Envoy headers may still be injected. By default, envoy will not
+  /// insert any debug headers.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "ENVOY_HEADERS_UNSPECIFIED" : Defaults to NONE.
+  /// - "NONE" : Suppress envoy debug headers.
+  /// - "DEBUG_HEADERS" : Envoy will insert default internal debug headers into
+  /// upstream requests: x-envoy-attempt-count x-envoy-is-timeout-retry
+  /// x-envoy-expected-rq-timeout-ms x-envoy-original-path
+  /// x-envoy-upstream-stream-duration-ms
+  core.String? envoyHeaders;
+
   /// A fully-qualified GatewaySecurityPolicy URL reference.
   ///
   /// Defines how a server should apply security policy to inbound (VM to Proxy)
@@ -3732,6 +4934,18 @@ class Gateway {
   ///
   /// Optional.
   core.String? gatewaySecurityPolicy;
+
+  /// The IP Version that will be used by this gateway.
+  ///
+  /// Valid options are IPV4 or IPV6. Default is IPV4.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "IP_VERSION_UNSPECIFIED" : The type when IP version is not specified.
+  /// Defaults to IPV4.
+  /// - "IPV4" : The type for IP version 4.
+  /// - "IPV6" : The type for IP version 6.
+  core.String? ipVersion;
 
   /// Set of label tags associated with the Gateway resource.
   ///
@@ -3822,7 +5036,9 @@ class Gateway {
     this.certificateUrls,
     this.createTime,
     this.description,
+    this.envoyHeaders,
     this.gatewaySecurityPolicy,
+    this.ipVersion,
     this.labels,
     this.name,
     this.network,
@@ -3853,8 +5069,14 @@ class Gateway {
           description: json_.containsKey('description')
               ? json_['description'] as core.String
               : null,
+          envoyHeaders: json_.containsKey('envoyHeaders')
+              ? json_['envoyHeaders'] as core.String
+              : null,
           gatewaySecurityPolicy: json_.containsKey('gatewaySecurityPolicy')
               ? json_['gatewaySecurityPolicy'] as core.String
+              : null,
+          ipVersion: json_.containsKey('ipVersion')
+              ? json_['ipVersion'] as core.String
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
@@ -3895,8 +5117,10 @@ class Gateway {
         if (certificateUrls != null) 'certificateUrls': certificateUrls!,
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
+        if (envoyHeaders != null) 'envoyHeaders': envoyHeaders!,
         if (gatewaySecurityPolicy != null)
           'gatewaySecurityPolicy': gatewaySecurityPolicy!,
+        if (ipVersion != null) 'ipVersion': ipVersion!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (network != null) 'network': network!,
@@ -4085,7 +5309,7 @@ class GrpcRouteDestination {
   /// Specifies the proportion of requests forwarded to the backend referenced
   /// by the serviceName field.
   ///
-  /// This is computed as: weight/Sum(weights in this destination list). For
+  /// This is computed as: - weight/Sum(weights in this destination list). For
   /// non-zero values, there may be some epsilon from the exact proportion
   /// defined here depending on the precision an implementation supports. If
   /// only one serviceName is specified and it has a weight greater than 0, 100%
@@ -4338,10 +5562,25 @@ class GrpcRouteRouteAction {
   /// Optional.
   GrpcRouteFaultInjectionPolicy? faultInjectionPolicy;
 
+  /// Specifies the idle timeout for the selected route.
+  ///
+  /// The idle timeout is defined as the period in which there are no bytes sent
+  /// or received on either the upstream or downstream connection. If not set,
+  /// the default idle timeout is 1 hour. If set to 0s, the timeout will be
+  /// disabled.
+  ///
+  /// Optional.
+  core.String? idleTimeout;
+
   /// Specifies the retry policy associated with this route.
   ///
   /// Optional.
   GrpcRouteRetryPolicy? retryPolicy;
+
+  /// Specifies cookie-based stateful session affinity.
+  ///
+  /// Optional.
+  GrpcRouteStatefulSessionAffinityPolicy? statefulSessionAffinity;
 
   /// Specifies the timeout for selected route.
   ///
@@ -4355,7 +5594,9 @@ class GrpcRouteRouteAction {
   GrpcRouteRouteAction({
     this.destinations,
     this.faultInjectionPolicy,
+    this.idleTimeout,
     this.retryPolicy,
+    this.statefulSessionAffinity,
     this.timeout,
   });
 
@@ -4372,9 +5613,17 @@ class GrpcRouteRouteAction {
                   json_['faultInjectionPolicy']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          idleTimeout: json_.containsKey('idleTimeout')
+              ? json_['idleTimeout'] as core.String
+              : null,
           retryPolicy: json_.containsKey('retryPolicy')
               ? GrpcRouteRetryPolicy.fromJson(
                   json_['retryPolicy'] as core.Map<core.String, core.dynamic>)
+              : null,
+          statefulSessionAffinity: json_.containsKey('statefulSessionAffinity')
+              ? GrpcRouteStatefulSessionAffinityPolicy.fromJson(
+                  json_['statefulSessionAffinity']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           timeout: json_.containsKey('timeout')
               ? json_['timeout'] as core.String
@@ -4385,7 +5634,10 @@ class GrpcRouteRouteAction {
         if (destinations != null) 'destinations': destinations!,
         if (faultInjectionPolicy != null)
           'faultInjectionPolicy': faultInjectionPolicy!,
+        if (idleTimeout != null) 'idleTimeout': idleTimeout!,
         if (retryPolicy != null) 'retryPolicy': retryPolicy!,
+        if (statefulSessionAffinity != null)
+          'statefulSessionAffinity': statefulSessionAffinity!,
         if (timeout != null) 'timeout': timeout!,
       };
 }
@@ -4474,6 +5726,18 @@ class GrpcRouteRouteRule {
         if (matches != null) 'matches': matches!,
       };
 }
+
+/// The specification for cookie-based stateful session affinity where the date
+/// plane supplies a “session cookie” with the name "GSSA" which encodes a
+/// specific destination host and each request containing that cookie will be
+/// directed to that host as long as the destination host remains up and
+/// healthy.
+///
+/// The gRPC proxyless mesh library or sidecar proxy will manage the session
+/// cookie but the client application code is responsible for copying the cookie
+/// from each RPC in the session to the next.
+typedef GrpcRouteStatefulSessionAffinityPolicy
+    = $RouteStatefulSessionAffinityPolicy;
 
 /// HttpRoute is the resource defining how HTTP traffic should be routed by a
 /// Mesh or Gateway resource.
@@ -4740,13 +6004,33 @@ class HttpRouteCorsPolicy {
 
 /// Specifications of a destination to which the request should be routed to.
 class HttpRouteDestination {
+  /// The specification for modifying the headers of a matching request prior to
+  /// delivery of the request to the destination.
+  ///
+  /// If HeaderModifiers are set on both the Destination and the RouteAction,
+  /// they will be merged. Conflicts between the two will not be resolved on the
+  /// configuration.
+  ///
+  /// Optional.
+  HttpRouteHeaderModifier? requestHeaderModifier;
+
+  /// The specification for modifying the headers of a response prior to sending
+  /// the response back to the client.
+  ///
+  /// If HeaderModifiers are set on both the Destination and the RouteAction,
+  /// they will be merged. Conflicts between the two will not be resolved on the
+  /// configuration.
+  ///
+  /// Optional.
+  HttpRouteHeaderModifier? responseHeaderModifier;
+
   /// The URL of a BackendService to route traffic to.
   core.String? serviceName;
 
   /// Specifies the proportion of requests forwarded to the backend referenced
   /// by the serviceName field.
   ///
-  /// This is computed as: weight/Sum(weights in this destination list). For
+  /// This is computed as: - weight/Sum(weights in this destination list). For
   /// non-zero values, there may be some epsilon from the exact proportion
   /// defined here depending on the precision an implementation supports. If
   /// only one serviceName is specified and it has a weight greater than 0, 100%
@@ -4757,12 +6041,22 @@ class HttpRouteDestination {
   core.int? weight;
 
   HttpRouteDestination({
+    this.requestHeaderModifier,
+    this.responseHeaderModifier,
     this.serviceName,
     this.weight,
   });
 
   HttpRouteDestination.fromJson(core.Map json_)
       : this(
+          requestHeaderModifier: json_.containsKey('requestHeaderModifier')
+              ? HttpRouteHeaderModifier.fromJson(json_['requestHeaderModifier']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          responseHeaderModifier: json_.containsKey('responseHeaderModifier')
+              ? HttpRouteHeaderModifier.fromJson(json_['responseHeaderModifier']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           serviceName: json_.containsKey('serviceName')
               ? json_['serviceName'] as core.String
               : null,
@@ -4771,6 +6065,10 @@ class HttpRouteDestination {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (requestHeaderModifier != null)
+          'requestHeaderModifier': requestHeaderModifier!,
+        if (responseHeaderModifier != null)
+          'responseHeaderModifier': responseHeaderModifier!,
         if (serviceName != null) 'serviceName': serviceName!,
         if (weight != null) 'weight': weight!,
       };
@@ -4985,6 +6283,60 @@ class HttpRouteHeaderModifier {
       };
 }
 
+/// Static HTTP response object to be returned.
+class HttpRouteHttpDirectResponse {
+  /// Response body as bytes.
+  ///
+  /// Maximum body size is 4096B.
+  ///
+  /// Optional.
+  core.String? bytesBody;
+  core.List<core.int> get bytesBodyAsBytes => convert.base64.decode(bytesBody!);
+
+  set bytesBodyAsBytes(core.List<core.int> bytes_) {
+    bytesBody =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// Status to return as part of HTTP Response.
+  ///
+  /// Must be a positive integer.
+  ///
+  /// Required.
+  core.int? status;
+
+  /// Response body as a string.
+  ///
+  /// Maximum body length is 1024 characters.
+  ///
+  /// Optional.
+  core.String? stringBody;
+
+  HttpRouteHttpDirectResponse({
+    this.bytesBody,
+    this.status,
+    this.stringBody,
+  });
+
+  HttpRouteHttpDirectResponse.fromJson(core.Map json_)
+      : this(
+          bytesBody: json_.containsKey('bytesBody')
+              ? json_['bytesBody'] as core.String
+              : null,
+          status:
+              json_.containsKey('status') ? json_['status'] as core.int : null,
+          stringBody: json_.containsKey('stringBody')
+              ? json_['stringBody'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bytesBody != null) 'bytesBody': bytesBody!,
+        if (status != null) 'status': status!,
+        if (stringBody != null) 'stringBody': stringBody!,
+      };
+}
+
 /// Specifications to match a query parameter in the request.
 class HttpRouteQueryParameterMatch {
   /// The value of the query parameter must exactly match the contents of
@@ -5148,8 +6500,14 @@ class HttpRouteRequestMirrorPolicy {
   /// The weight of the destination will be ignored.
   HttpRouteDestination? destination;
 
+  /// The percentage of requests to get mirrored to the desired destination.
+  ///
+  /// Optional.
+  core.double? mirrorPercent;
+
   HttpRouteRequestMirrorPolicy({
     this.destination,
+    this.mirrorPercent,
   });
 
   HttpRouteRequestMirrorPolicy.fromJson(core.Map json_)
@@ -5158,10 +6516,14 @@ class HttpRouteRequestMirrorPolicy {
               ? HttpRouteDestination.fromJson(
                   json_['destination'] as core.Map<core.String, core.dynamic>)
               : null,
+          mirrorPercent: json_.containsKey('mirrorPercent')
+              ? (json_['mirrorPercent'] as core.num).toDouble()
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (destination != null) 'destination': destination!,
+        if (mirrorPercent != null) 'mirrorPercent': mirrorPercent!,
       };
 }
 
@@ -5227,6 +6589,11 @@ class HttpRouteRouteAction {
   /// The destination to which traffic should be forwarded.
   core.List<HttpRouteDestination>? destinations;
 
+  /// Static HTTP Response object to be returned regardless of the request.
+  ///
+  /// Optional.
+  HttpRouteHttpDirectResponse? directResponse;
+
   /// The specification for fault injection introduced into traffic to test the
   /// resiliency of clients to backend service failure.
   ///
@@ -5237,6 +6604,16 @@ class HttpRouteRouteAction {
   /// retry_policy will be ignored by clients that are configured with a
   /// fault_injection_policy
   HttpRouteFaultInjectionPolicy? faultInjectionPolicy;
+
+  /// Specifies the idle timeout for the selected route.
+  ///
+  /// The idle timeout is defined as the period in which there are no bytes sent
+  /// or received on either the upstream or downstream connection. If not set,
+  /// the default idle timeout is 1 hour. If set to 0s, the timeout will be
+  /// disabled.
+  ///
+  /// Optional.
+  core.String? idleTimeout;
 
   /// If set, the request is directed as configured by this field.
   HttpRouteRedirect? redirect;
@@ -5268,6 +6645,11 @@ class HttpRouteRouteAction {
   /// Specifies the retry policy associated with this route.
   HttpRouteRetryPolicy? retryPolicy;
 
+  /// Specifies cookie-based stateful session affinity.
+  ///
+  /// Optional.
+  HttpRouteStatefulSessionAffinityPolicy? statefulSessionAffinity;
+
   /// Specifies the timeout for selected route.
   ///
   /// Timeout is computed from the time the request has been fully processed
@@ -5282,12 +6664,15 @@ class HttpRouteRouteAction {
   HttpRouteRouteAction({
     this.corsPolicy,
     this.destinations,
+    this.directResponse,
     this.faultInjectionPolicy,
+    this.idleTimeout,
     this.redirect,
     this.requestHeaderModifier,
     this.requestMirrorPolicy,
     this.responseHeaderModifier,
     this.retryPolicy,
+    this.statefulSessionAffinity,
     this.timeout,
     this.urlRewrite,
   });
@@ -5304,10 +6689,17 @@ class HttpRouteRouteAction {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          directResponse: json_.containsKey('directResponse')
+              ? HttpRouteHttpDirectResponse.fromJson(json_['directResponse']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           faultInjectionPolicy: json_.containsKey('faultInjectionPolicy')
               ? HttpRouteFaultInjectionPolicy.fromJson(
                   json_['faultInjectionPolicy']
                       as core.Map<core.String, core.dynamic>)
+              : null,
+          idleTimeout: json_.containsKey('idleTimeout')
+              ? json_['idleTimeout'] as core.String
               : null,
           redirect: json_.containsKey('redirect')
               ? HttpRouteRedirect.fromJson(
@@ -5330,6 +6722,11 @@ class HttpRouteRouteAction {
               ? HttpRouteRetryPolicy.fromJson(
                   json_['retryPolicy'] as core.Map<core.String, core.dynamic>)
               : null,
+          statefulSessionAffinity: json_.containsKey('statefulSessionAffinity')
+              ? HttpRouteStatefulSessionAffinityPolicy.fromJson(
+                  json_['statefulSessionAffinity']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           timeout: json_.containsKey('timeout')
               ? json_['timeout'] as core.String
               : null,
@@ -5342,8 +6739,10 @@ class HttpRouteRouteAction {
   core.Map<core.String, core.dynamic> toJson() => {
         if (corsPolicy != null) 'corsPolicy': corsPolicy!,
         if (destinations != null) 'destinations': destinations!,
+        if (directResponse != null) 'directResponse': directResponse!,
         if (faultInjectionPolicy != null)
           'faultInjectionPolicy': faultInjectionPolicy!,
+        if (idleTimeout != null) 'idleTimeout': idleTimeout!,
         if (redirect != null) 'redirect': redirect!,
         if (requestHeaderModifier != null)
           'requestHeaderModifier': requestHeaderModifier!,
@@ -5352,6 +6751,8 @@ class HttpRouteRouteAction {
         if (responseHeaderModifier != null)
           'responseHeaderModifier': responseHeaderModifier!,
         if (retryPolicy != null) 'retryPolicy': retryPolicy!,
+        if (statefulSessionAffinity != null)
+          'statefulSessionAffinity': statefulSessionAffinity!,
         if (timeout != null) 'timeout': timeout!,
         if (urlRewrite != null) 'urlRewrite': urlRewrite!,
       };
@@ -5485,6 +6886,18 @@ class HttpRouteRouteRule {
       };
 }
 
+/// The specification for cookie-based stateful session affinity where the date
+/// plane supplies a “session cookie” with the name "GSSA" which encodes a
+/// specific destination host and each request containing that cookie will be
+/// directed to that host as long as the destination host remains up and
+/// healthy.
+///
+/// The gRPC proxyless mesh library or sidecar proxy will manage the session
+/// cookie but the client application code is responsible for copying the cookie
+/// from each RPC in the session to the next.
+typedef HttpRouteStatefulSessionAffinityPolicy
+    = $RouteStatefulSessionAffinityPolicy;
+
 /// The specification for modifying the URL of the request, prior to forwarding
 /// the request to the destination.
 class HttpRouteURLRewrite {
@@ -5514,6 +6927,270 @@ class HttpRouteURLRewrite {
   core.Map<core.String, core.dynamic> toJson() => {
         if (hostRewrite != null) 'hostRewrite': hostRewrite!,
         if (pathPrefixRewrite != null) 'pathPrefixRewrite': pathPrefixRewrite!,
+      };
+}
+
+/// `LbRouteExtension` is a resource that lets you control where traffic is
+/// routed to for a given request.
+class LbRouteExtension {
+  /// The timestamp when the resource was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// A human-readable description of the resource.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// A set of ordered extension chains that contain the match conditions and
+  /// extensions to execute.
+  ///
+  /// Match conditions for each extension chain are evaluated in sequence for a
+  /// given request. The first extension chain that has a condition that matches
+  /// the request is executed. Any subsequent extension chains do not execute.
+  /// Limited to 5 extension chains per resource.
+  ///
+  /// Required.
+  core.List<ExtensionChain>? extensionChains;
+
+  /// A list of references to the forwarding rules to which this service
+  /// extension is attached to.
+  ///
+  /// At least one forwarding rule is required. There can be only one
+  /// `LbRouteExtension` resource per forwarding rule.
+  ///
+  /// Required.
+  core.List<core.String>? forwardingRules;
+
+  /// Set of labels associated with the `LbRouteExtension` resource.
+  ///
+  /// The format must comply with \[the requirements for
+  /// labels\](/compute/docs/labeling-resources#requirements) for Google Cloud
+  /// resources.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// All backend services and forwarding rules referenced by this extension
+  /// must share the same load balancing scheme.
+  ///
+  /// Supported values: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`. For more
+  /// information, refer to
+  /// [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "LOAD_BALANCING_SCHEME_UNSPECIFIED" : Default value. Do not use.
+  /// - "INTERNAL_MANAGED" : Signifies that this is used for Internal HTTP(S)
+  /// Load Balancing.
+  /// - "EXTERNAL_MANAGED" : Signifies that this is used for External Managed
+  /// HTTP(S) Load Balancing.
+  core.String? loadBalancingScheme;
+
+  /// Identifier.
+  ///
+  /// Name of the `LbRouteExtension` resource in the following format:
+  /// `projects/{project}/locations/{location}/lbRouteExtensions/{lb_route_extension}`.
+  ///
+  /// Required.
+  core.String? name;
+
+  /// The timestamp when the resource was updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  LbRouteExtension({
+    this.createTime,
+    this.description,
+    this.extensionChains,
+    this.forwardingRules,
+    this.labels,
+    this.loadBalancingScheme,
+    this.name,
+    this.updateTime,
+  });
+
+  LbRouteExtension.fromJson(core.Map json_)
+      : this(
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          extensionChains: json_.containsKey('extensionChains')
+              ? (json_['extensionChains'] as core.List)
+                  .map((value) => ExtensionChain.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          forwardingRules: json_.containsKey('forwardingRules')
+              ? (json_['forwardingRules'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          loadBalancingScheme: json_.containsKey('loadBalancingScheme')
+              ? json_['loadBalancingScheme'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (extensionChains != null) 'extensionChains': extensionChains!,
+        if (forwardingRules != null) 'forwardingRules': forwardingRules!,
+        if (labels != null) 'labels': labels!,
+        if (loadBalancingScheme != null)
+          'loadBalancingScheme': loadBalancingScheme!,
+        if (name != null) 'name': name!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// `LbTrafficExtension` is a resource that lets the extension service modify
+/// the headers and payloads of both requests and responses without impacting
+/// the choice of backend services or any other security policies associated
+/// with the backend service.
+class LbTrafficExtension {
+  /// The timestamp when the resource was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// A human-readable description of the resource.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// A set of ordered extension chains that contain the match conditions and
+  /// extensions to execute.
+  ///
+  /// Match conditions for each extension chain are evaluated in sequence for a
+  /// given request. The first extension chain that has a condition that matches
+  /// the request is executed. Any subsequent extension chains do not execute.
+  /// Limited to 5 extension chains per resource.
+  ///
+  /// Required.
+  core.List<ExtensionChain>? extensionChains;
+
+  /// A list of references to the forwarding rules to which this service
+  /// extension is attached to.
+  ///
+  /// At least one forwarding rule is required. There can be only one
+  /// `LBTrafficExtension` resource per forwarding rule.
+  ///
+  /// Required.
+  core.List<core.String>? forwardingRules;
+
+  /// Set of labels associated with the `LbTrafficExtension` resource.
+  ///
+  /// The format must comply with \[the requirements for
+  /// labels\](/compute/docs/labeling-resources#requirements) for Google Cloud
+  /// resources.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// All backend services and forwarding rules referenced by this extension
+  /// must share the same load balancing scheme.
+  ///
+  /// Supported values: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`. For more
+  /// information, refer to
+  /// [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "LOAD_BALANCING_SCHEME_UNSPECIFIED" : Default value. Do not use.
+  /// - "INTERNAL_MANAGED" : Signifies that this is used for Internal HTTP(S)
+  /// Load Balancing.
+  /// - "EXTERNAL_MANAGED" : Signifies that this is used for External Managed
+  /// HTTP(S) Load Balancing.
+  core.String? loadBalancingScheme;
+
+  /// Identifier.
+  ///
+  /// Name of the `LbTrafficExtension` resource in the following format:
+  /// `projects/{project}/locations/{location}/lbTrafficExtensions/{lb_traffic_extension}`.
+  ///
+  /// Required.
+  core.String? name;
+
+  /// The timestamp when the resource was updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  LbTrafficExtension({
+    this.createTime,
+    this.description,
+    this.extensionChains,
+    this.forwardingRules,
+    this.labels,
+    this.loadBalancingScheme,
+    this.name,
+    this.updateTime,
+  });
+
+  LbTrafficExtension.fromJson(core.Map json_)
+      : this(
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          extensionChains: json_.containsKey('extensionChains')
+              ? (json_['extensionChains'] as core.List)
+                  .map((value) => ExtensionChain.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          forwardingRules: json_.containsKey('forwardingRules')
+              ? (json_['forwardingRules'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          loadBalancingScheme: json_.containsKey('loadBalancingScheme')
+              ? json_['loadBalancingScheme'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (extensionChains != null) 'extensionChains': extensionChains!,
+        if (forwardingRules != null) 'forwardingRules': forwardingRules!,
+        if (labels != null) 'labels': labels!,
+        if (loadBalancingScheme != null)
+          'loadBalancingScheme': loadBalancingScheme!,
+        if (name != null) 'name': name!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -5671,6 +7348,91 @@ class ListHttpRoutesResponse {
       };
 }
 
+/// Message for response to listing `LbRouteExtension` resources.
+class ListLbRouteExtensionsResponse {
+  /// The list of `LbRouteExtension` resources.
+  core.List<LbRouteExtension>? lbRouteExtensions;
+
+  /// A token identifying a page of results that the server returns.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListLbRouteExtensionsResponse({
+    this.lbRouteExtensions,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListLbRouteExtensionsResponse.fromJson(core.Map json_)
+      : this(
+          lbRouteExtensions: json_.containsKey('lbRouteExtensions')
+              ? (json_['lbRouteExtensions'] as core.List)
+                  .map((value) => LbRouteExtension.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (lbRouteExtensions != null) 'lbRouteExtensions': lbRouteExtensions!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
+/// Message for response to listing `LbTrafficExtension` resources.
+class ListLbTrafficExtensionsResponse {
+  /// The list of `LbTrafficExtension` resources.
+  core.List<LbTrafficExtension>? lbTrafficExtensions;
+
+  /// A token identifying a page of results that the server returns.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListLbTrafficExtensionsResponse({
+    this.lbTrafficExtensions,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListLbTrafficExtensionsResponse.fromJson(core.Map json_)
+      : this(
+          lbTrafficExtensions: json_.containsKey('lbTrafficExtensions')
+              ? (json_['lbTrafficExtensions'] as core.List)
+                  .map((value) => LbTrafficExtension.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (lbTrafficExtensions != null)
+          'lbTrafficExtensions': lbTrafficExtensions!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
 /// The response message for Locations.ListLocations.
 class ListLocationsResponse {
   /// A list of locations that matches the specified filter in the request.
@@ -5807,6 +7569,42 @@ class ListServiceBindingsResponse {
       };
 }
 
+/// Response returned by the ListServiceLbPolicies method.
+class ListServiceLbPoliciesResponse {
+  /// If there might be more results than those appearing in this response, then
+  /// `next_page_token` is included.
+  ///
+  /// To get the next set of results, call this method again using the value of
+  /// `next_page_token` as `page_token`.
+  core.String? nextPageToken;
+
+  /// List of ServiceLbPolicy resources.
+  core.List<ServiceLbPolicy>? serviceLbPolicies;
+
+  ListServiceLbPoliciesResponse({
+    this.nextPageToken,
+    this.serviceLbPolicies,
+  });
+
+  ListServiceLbPoliciesResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          serviceLbPolicies: json_.containsKey('serviceLbPolicies')
+              ? (json_['serviceLbPolicies'] as core.List)
+                  .map((value) => ServiceLbPolicy.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (serviceLbPolicies != null) 'serviceLbPolicies': serviceLbPolicies!,
+      };
+}
+
 /// Response returned by the ListTcpRoutes method.
 class ListTcpRoutesResponse {
   /// If there might be more results than those appearing in this response, then
@@ -5900,6 +7698,22 @@ class Mesh {
   /// Optional.
   core.String? description;
 
+  /// Determines if envoy will insert internal debug headers into upstream
+  /// requests.
+  ///
+  /// Other Envoy headers may still be injected. By default, envoy will not
+  /// insert any debug headers.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "ENVOY_HEADERS_UNSPECIFIED" : Defaults to NONE.
+  /// - "NONE" : Suppress envoy debug headers.
+  /// - "DEBUG_HEADERS" : Envoy will insert default internal debug headers into
+  /// upstream requests: x-envoy-attempt-count x-envoy-is-timeout-retry
+  /// x-envoy-expected-rq-timeout-ms x-envoy-original-path
+  /// x-envoy-upstream-stream-duration-ms
+  core.String? envoyHeaders;
+
   /// If set to a valid TCP port (1-65535), instructs the SIDECAR proxy to
   /// listen on the specified port of localhost (127.0.0.1) address.
   ///
@@ -5936,6 +7750,7 @@ class Mesh {
   Mesh({
     this.createTime,
     this.description,
+    this.envoyHeaders,
     this.interceptionPort,
     this.labels,
     this.name,
@@ -5950,6 +7765,9 @@ class Mesh {
               : null,
           description: json_.containsKey('description')
               ? json_['description'] as core.String
+              : null,
+          envoyHeaders: json_.containsKey('envoyHeaders')
+              ? json_['envoyHeaders'] as core.String
               : null,
           interceptionPort: json_.containsKey('interceptionPort')
               ? json_['interceptionPort'] as core.int
@@ -5974,6 +7792,7 @@ class Mesh {
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
+        if (envoyHeaders != null) 'envoyHeaders': envoyHeaders!,
         if (interceptionPort != null) 'interceptionPort': interceptionPort!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
@@ -6012,7 +7831,7 @@ class Operation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard
@@ -6072,23 +7891,23 @@ class Operation {
 /// request, the resource, or both. To learn which resources support conditions
 /// in their IAM policies, see the
 /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": \[ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": \[
+/// **JSON example:** ``` { "bindings": [ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": [
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": \[
-/// "user:eve@example.com" \], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": [
+/// "user:eve@example.com" ], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time \< timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
-/// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
-/// user:mike@example.com - group:admins@example.com - domain:google.com -
-/// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
-/// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
-/// role: roles/resourcemanager.organizationViewer condition: title: expirable
-/// access description: Does not grant access after Sep 2020 expression:
-/// request.time \< timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
-/// version: 3 For a description of IAM and its features, see the
-/// [IAM documentation](https://cloud.google.com/iam/docs/).
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: -
+/// members: - user:mike@example.com - group:admins@example.com -
+/// domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+/// role: roles/resourcemanager.organizationAdmin - members: -
+/// user:eve@example.com role: roles/resourcemanager.organizationViewer
+/// condition: title: expirable access description: Does not grant access after
+/// Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+/// etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features,
+/// see the [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig>? auditConfigs;
@@ -6273,6 +8092,190 @@ class ServiceBinding {
         if (service != null) 'service': service!,
         if (serviceId != null) 'serviceId': serviceId!,
         if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// ServiceLbPolicy holds global load balancing and traffic distribution
+/// configuration that can be applied to a BackendService.
+class ServiceLbPolicy {
+  /// Configuration to automatically move traffic away for unhealthy IG/NEG for
+  /// the associated Backend Service.
+  ///
+  /// Optional.
+  ServiceLbPolicyAutoCapacityDrain? autoCapacityDrain;
+
+  /// The timestamp when this resource was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// A free-text description of the resource.
+  ///
+  /// Max length 1024 characters.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// Configuration related to health based failover.
+  ///
+  /// Optional.
+  ServiceLbPolicyFailoverConfig? failoverConfig;
+
+  /// Set of label tags associated with the ServiceLbPolicy resource.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// The type of load balancing algorithm to be used.
+  ///
+  /// The default behavior is WATERFALL_BY_REGION.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "LOAD_BALANCING_ALGORITHM_UNSPECIFIED" : The type of the loadbalancing
+  /// algorithm is unspecified.
+  /// - "SPRAY_TO_WORLD" : Balance traffic across all backends across the world
+  /// proportionally based on capacity.
+  /// - "SPRAY_TO_REGION" : Direct traffic to the nearest region with endpoints
+  /// and capacity before spilling over to other regions and spread the traffic
+  /// from each client to all the MIGs/NEGs in a region.
+  /// - "WATERFALL_BY_REGION" : Direct traffic to the nearest region with
+  /// endpoints and capacity before spilling over to other regions. All
+  /// MIGs/NEGs within a region are evenly loaded but each client might not
+  /// spread the traffic to all the MIGs/NEGs in the region.
+  /// - "WATERFALL_BY_ZONE" : Attempt to keep traffic in a single zone closest
+  /// to the client, before spilling over to other zones.
+  core.String? loadBalancingAlgorithm;
+
+  /// Name of the ServiceLbPolicy resource.
+  ///
+  /// It matches pattern
+  /// `projects/{project}/locations/{location}/serviceLbPolicies/{service_lb_policy_name}`.
+  ///
+  /// Required.
+  core.String? name;
+
+  /// The timestamp when this resource was last updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  ServiceLbPolicy({
+    this.autoCapacityDrain,
+    this.createTime,
+    this.description,
+    this.failoverConfig,
+    this.labels,
+    this.loadBalancingAlgorithm,
+    this.name,
+    this.updateTime,
+  });
+
+  ServiceLbPolicy.fromJson(core.Map json_)
+      : this(
+          autoCapacityDrain: json_.containsKey('autoCapacityDrain')
+              ? ServiceLbPolicyAutoCapacityDrain.fromJson(
+                  json_['autoCapacityDrain']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          failoverConfig: json_.containsKey('failoverConfig')
+              ? ServiceLbPolicyFailoverConfig.fromJson(json_['failoverConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          loadBalancingAlgorithm: json_.containsKey('loadBalancingAlgorithm')
+              ? json_['loadBalancingAlgorithm'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (autoCapacityDrain != null) 'autoCapacityDrain': autoCapacityDrain!,
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (failoverConfig != null) 'failoverConfig': failoverConfig!,
+        if (labels != null) 'labels': labels!,
+        if (loadBalancingAlgorithm != null)
+          'loadBalancingAlgorithm': loadBalancingAlgorithm!,
+        if (name != null) 'name': name!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// Option to specify if an unhealthy IG/NEG should be considered for global
+/// load balancing and traffic routing.
+class ServiceLbPolicyAutoCapacityDrain {
+  /// If set to 'True', an unhealthy IG/NEG will be set as drained.
+  ///
+  /// - An IG/NEG is considered unhealthy if less than 25% of the
+  /// instances/endpoints in the IG/NEG are healthy. - This option will never
+  /// result in draining more than 50% of the configured IGs/NEGs for the
+  /// Backend Service.
+  ///
+  /// Optional.
+  core.bool? enable;
+
+  ServiceLbPolicyAutoCapacityDrain({
+    this.enable,
+  });
+
+  ServiceLbPolicyAutoCapacityDrain.fromJson(core.Map json_)
+      : this(
+          enable:
+              json_.containsKey('enable') ? json_['enable'] as core.bool : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enable != null) 'enable': enable!,
+      };
+}
+
+/// Option to specify health based failover behavior.
+///
+/// This is not related to Network load balancer FailoverPolicy.
+class ServiceLbPolicyFailoverConfig {
+  /// The percentage threshold that a load balancer will begin to send traffic
+  /// to failover backends.
+  ///
+  /// If the percentage of endpoints in a MIG/NEG is smaller than this value,
+  /// traffic would be sent to failover backends if possible. This field should
+  /// be set to a value between 1 and 99. The default value is 50 for Global
+  /// external HTTP(S) load balancer (classic) and Proxyless service mesh, and
+  /// 70 for others.
+  ///
+  /// Optional.
+  core.int? failoverHealthThreshold;
+
+  ServiceLbPolicyFailoverConfig({
+    this.failoverHealthThreshold,
+  });
+
+  ServiceLbPolicyFailoverConfig.fromJson(core.Map json_)
+      : this(
+          failoverHealthThreshold: json_.containsKey('failoverHealthThreshold')
+              ? json_['failoverHealthThreshold'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (failoverHealthThreshold != null)
+          'failoverHealthThreshold': failoverHealthThreshold!,
       };
 }
 
@@ -6462,6 +8465,16 @@ class TcpRouteRouteAction {
   /// Optional.
   core.List<TcpRouteRouteDestination>? destinations;
 
+  /// Specifies the idle timeout for the selected route.
+  ///
+  /// The idle timeout is defined as the period in which there are no bytes sent
+  /// or received on either the upstream or downstream connection. If not set,
+  /// the default idle timeout is 30 seconds. If set to 0s, the timeout will be
+  /// disabled.
+  ///
+  /// Optional.
+  core.String? idleTimeout;
+
   /// If true, Router will use the destination IP and port of the original
   /// connection as the destination of the request.
   ///
@@ -6473,6 +8486,7 @@ class TcpRouteRouteAction {
 
   TcpRouteRouteAction({
     this.destinations,
+    this.idleTimeout,
     this.originalDestination,
   });
 
@@ -6484,6 +8498,9 @@ class TcpRouteRouteAction {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          idleTimeout: json_.containsKey('idleTimeout')
+              ? json_['idleTimeout'] as core.String
+              : null,
           originalDestination: json_.containsKey('originalDestination')
               ? json_['originalDestination'] as core.bool
               : null,
@@ -6491,6 +8508,7 @@ class TcpRouteRouteAction {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (destinations != null) 'destinations': destinations!,
+        if (idleTimeout != null) 'idleTimeout': idleTimeout!,
         if (originalDestination != null)
           'originalDestination': originalDestination!,
       };
@@ -6506,7 +8524,7 @@ class TcpRouteRouteDestination {
   /// Specifies the proportion of requests forwarded to the backend referenced
   /// by the serviceName field.
   ///
-  /// This is computed as: weight/Sum(weights in this destination list). For
+  /// This is computed as: - weight/Sum(weights in this destination list). For
   /// non-zero values, there may be some epsilon from the exact proportion
   /// defined here depending on the precision an implementation supports. If
   /// only one serviceName is specified and it has a weight greater than 0, 100%
@@ -6650,6 +8668,11 @@ class TlsRoute {
   /// Optional.
   core.List<core.String>? gateways;
 
+  /// Set of label tags associated with the TlsRoute resource.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
   /// Meshes defines a list of meshes this TlsRoute is attached to, as one of
   /// the routing rules to route the requests served by the mesh.
   ///
@@ -6689,6 +8712,7 @@ class TlsRoute {
     this.createTime,
     this.description,
     this.gateways,
+    this.labels,
     this.meshes,
     this.name,
     this.rules,
@@ -6708,6 +8732,14 @@ class TlsRoute {
               ? (json_['gateways'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
+              : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
               : null,
           meshes: json_.containsKey('meshes')
               ? (json_['meshes'] as core.List)
@@ -6733,6 +8765,7 @@ class TlsRoute {
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
         if (gateways != null) 'gateways': gateways!,
+        if (labels != null) 'labels': labels!,
         if (meshes != null) 'meshes': meshes!,
         if (name != null) 'name': name!,
         if (rules != null) 'rules': rules!,
@@ -6750,8 +8783,19 @@ class TlsRouteRouteAction {
   /// Required.
   core.List<TlsRouteRouteDestination>? destinations;
 
+  /// Specifies the idle timeout for the selected route.
+  ///
+  /// The idle timeout is defined as the period in which there are no bytes sent
+  /// or received on either the upstream or downstream connection. If not set,
+  /// the default idle timeout is 1 hour. If set to 0s, the timeout will be
+  /// disabled.
+  ///
+  /// Optional.
+  core.String? idleTimeout;
+
   TlsRouteRouteAction({
     this.destinations,
+    this.idleTimeout,
   });
 
   TlsRouteRouteAction.fromJson(core.Map json_)
@@ -6762,10 +8806,14 @@ class TlsRouteRouteAction {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          idleTimeout: json_.containsKey('idleTimeout')
+              ? json_['idleTimeout'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (destinations != null) 'destinations': destinations!,
+        if (idleTimeout != null) 'idleTimeout': idleTimeout!,
       };
 }
 
@@ -6779,7 +8827,7 @@ class TlsRouteRouteDestination {
   /// Specifies the proportion of requests forwareded to the backend referenced
   /// by the service_name field.
   ///
-  /// This is computed as: weight/Sum(weights in destinations) Weights in all
+  /// This is computed as: - weight/Sum(weights in destinations) Weights in all
   /// destinations does not need to sum up to 100.
   ///
   /// Optional.

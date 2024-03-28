@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Cloud Tasks API - v2
@@ -23,7 +22,7 @@
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsQueuesResource]
 ///       - [ProjectsLocationsQueuesTasksResource]
-library cloudtasks_v2;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -111,6 +110,46 @@ class ProjectsLocationsResource {
     return Location.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Gets the CMEK config.
+  ///
+  /// Gets the Customer Managed Encryption Key configured with the Cloud Tasks
+  /// lcoation. By default there is no kms_key configured.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The config. For example:
+  /// projects/PROJECT_ID/locations/LOCATION_ID/CmekConfig\`
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+/cmekConfig$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CmekConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CmekConfig> getCmekConfig(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return CmekConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Lists information about the supported locations for this service.
   ///
   /// Request parameters:
@@ -160,6 +199,58 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Creates or Updates a CMEK config.
+  ///
+  /// Updates the Customer Managed Encryption Key assotiated with the Cloud
+  /// Tasks location (Creates if the key does not already exist). All new tasks
+  /// created in the location will be encrypted at-rest with the KMS-key
+  /// provided in the config.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. The config resource name which includes the project
+  /// and location and must end in 'cmekConfig', in the format
+  /// projects/PROJECT_ID/locations/LOCATION_ID/cmekConfig\`
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+/cmekConfig$`.
+  ///
+  /// [updateMask] - List of fields to be updated in this request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CmekConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CmekConfig> updateCmekConfig(
+    CmekConfig request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return CmekConfig.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -227,10 +318,17 @@ class ProjectsLocationsQueuesResource {
   /// Deletes a queue.
   ///
   /// This command will delete the queue even if it has tasks in it. Note: If
-  /// you delete a queue, a queue with the same name can't be created for 7
-  /// days. WARNING: Using this method may have unintended side effects if you
-  /// are using an App Engine `queue.yaml` or `queue.xml` file to manage your
-  /// queues. Read
+  /// you delete a queue, you may be prevented from creating a new queue with
+  /// the same name as the deleted queue for a tombstone window of up to 3 days.
+  /// During this window, the CreateQueue operation may appear to recreate the
+  /// queue, but this can be misleading. If you attempt to create a queue with
+  /// the same name as one that is in the tombstone window, run GetQueue to
+  /// confirm that the queue creation was successful. If GetQueue returns 200
+  /// response code, your queue was successfully created with the name of the
+  /// previously deleted queue. Otherwise, your queue did not successfully
+  /// recreate. WARNING: Using this method may have unintended side effects if
+  /// you are using an App Engine `queue.yaml` or `queue.xml` file to manage
+  /// your queues. Read
   /// [Overview of Queue Management and queue.yaml](https://cloud.google.com/tasks/docs/queue-yaml)
   /// before using this method.
   ///
@@ -733,6 +831,66 @@ class ProjectsLocationsQueuesTasksResource {
 
   ProjectsLocationsQueuesTasksResource(commons.ApiRequester client)
       : _requester = client;
+
+  /// Creates and buffers a new task without the need to explicitly define a
+  /// Task message.
+  ///
+  /// The queue must have HTTP target. To create the task with a custom ID, use
+  /// the following format and set TASK_ID to your desired ID:
+  /// projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID:buffer
+  /// To create the task with an automatically generated ID, use the following
+  /// format:
+  /// projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks:buffer.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [queue] - Required. The parent queue name. For example:
+  /// projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID\` The queue must
+  /// already exist.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/queues/\[^/\]+$`.
+  ///
+  /// [taskId] - Optional. Task ID for the task being created. If not provided,
+  /// Cloud Tasks generates an ID for the task.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BufferTaskResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BufferTaskResponse> buffer(
+    BufferTaskRequest request,
+    core.String queue,
+    core.String taskId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' +
+        core.Uri.encodeFull('$queue') +
+        '/tasks/' +
+        commons.escapeVariable('$taskId') +
+        ':buffer';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return BufferTaskResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 
   /// Creates a task and adds it to a queue.
   ///
@@ -1347,14 +1505,31 @@ class Binding {
   /// `group:{emailid}`: An email address that represents a Google group. For
   /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
   /// (primary) that represents all the users of that domain. For example,
-  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a user that has
-  /// been recently deleted. For example,
-  /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
-  /// this value reverts to `user:{emailid}` and the recovered user retains the
-  /// role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a service account
-  /// that has been recently deleted. For example,
+  /// `google.com` or `example.com`. *
+  /// `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workforce identity pool. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`:
+  /// All workforce identities in a group. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All workforce identities with a specific attribute value. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}
+  /// / * `: All identities in a workforce identity pool. *
+  /// `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workload identity pool. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`:
+  /// A workload identity pool group. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All identities in a workload identity pool with a certain attribute. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}
+  /// / * `: All identities in a workload identity pool. *
+  /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
+  /// identifier) representing a user that has been recently deleted. For
+  /// example, `alice@example.com?uid=123456789012345678901`. If the user is
+  /// recovered, this value reverts to `user:{emailid}` and the recovered user
+  /// retains the role in the binding. *
+  /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus
+  /// unique identifier) representing a service account that has been recently
+  /// deleted. For example,
   /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If
   /// the service account is undeleted, this value reverts to
   /// `serviceAccount:{emailid}` and the undeleted service account retains the
@@ -1363,12 +1538,19 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding.
+  /// the role in the binding. *
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// Deleted single identity in a workforce identity pool. For example,
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
   ///
-  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an
+  /// overview of the IAM roles and permissions, see the
+  /// [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For
+  /// a list of the available pre-defined roles, see
+  /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
   Binding({
@@ -1395,6 +1577,91 @@ class Binding {
         if (condition != null) 'condition': condition!,
         if (members != null) 'members': members!,
         if (role != null) 'role': role!,
+      };
+}
+
+/// Request message for BufferTask.
+class BufferTaskRequest {
+  /// Body of the HTTP request.
+  ///
+  /// The body can take any generic value. The value is written to the
+  /// HttpRequest of the \[Task\].
+  ///
+  /// Optional.
+  HttpBody? body;
+
+  BufferTaskRequest({
+    this.body,
+  });
+
+  BufferTaskRequest.fromJson(core.Map json_)
+      : this(
+          body: json_.containsKey('body')
+              ? HttpBody.fromJson(
+                  json_['body'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (body != null) 'body': body!,
+      };
+}
+
+/// Response message for BufferTask.
+class BufferTaskResponse {
+  /// The created task.
+  Task? task;
+
+  BufferTaskResponse({
+    this.task,
+  });
+
+  BufferTaskResponse.fromJson(core.Map json_)
+      : this(
+          task: json_.containsKey('task')
+              ? Task.fromJson(
+                  json_['task'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (task != null) 'task': task!,
+      };
+}
+
+/// Describes the customer-managed encryption key (CMEK) configuration
+/// associated with a project and location.
+class CmekConfig {
+  /// Resource name of the Cloud KMS key, of the form
+  /// `projects/PROJECT_ID/locations/LOCATION_ID/keyRings/KEY_RING_ID/cryptoKeys/KEY_ID`,
+  /// that will be used to encrypt the Queues & Tasks in the region.
+  ///
+  /// Setting this as blank will turn off CMEK encryption.
+  core.String? kmsKey;
+
+  /// The config resource name which includes the project and location and must
+  /// end in 'cmekConfig', in the format
+  /// projects/PROJECT_ID/locations/LOCATION_ID/cmekConfig\`
+  ///
+  /// Output only.
+  core.String? name;
+
+  CmekConfig({
+    this.kmsKey,
+    this.name,
+  });
+
+  CmekConfig.fromJson(core.Map json_)
+      : this(
+          kmsKey: json_.containsKey('kmsKey')
+              ? json_['kmsKey'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kmsKey != null) 'kmsKey': kmsKey!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -1431,18 +1698,17 @@ class CreateTaskRequest {
   /// De-duplication: Explicitly specifying a task ID enables task
   /// de-duplication. If a task's ID is identical to that of an existing task or
   /// a task that was deleted or executed recently then the call will fail with
-  /// ALREADY_EXISTS. If the task's queue was created using Cloud Tasks, then
-  /// another task with the same name can't be created for ~1hour after the
-  /// original task was deleted or executed. If the task's queue was created
-  /// using queue.yaml or queue.xml, then another task with the same name can't
-  /// be created for ~9days after the original task was deleted or executed.
-  /// Because there is an extra lookup cost to identify duplicate task names,
-  /// these CreateTask calls have significantly increased latency. Using hashed
-  /// strings for the task id or for the prefix of the task id is recommended.
-  /// Choosing task ids that are sequential or have sequential prefixes, for
-  /// example using a timestamp, causes an increase in latency and error rates
-  /// in all task commands. The infrastructure relies on an approximately
-  /// uniform distribution of task ids to store and serve tasks efficiently.
+  /// ALREADY_EXISTS. The IDs of deleted tasks are not immediately available for
+  /// reuse. It can take up to 4 hours (or 9 days if the task's queue was
+  /// created using a queue.yaml or queue.xml) for the task ID to be released
+  /// and made available again. Because there is an extra lookup cost to
+  /// identify duplicate task names, these CreateTask calls have significantly
+  /// increased latency. Using hashed strings for the task id or for the prefix
+  /// of the task id is recommended. Choosing task ids that are sequential or
+  /// have sequential prefixes, for example using a timestamp, causes an
+  /// increase in latency and error rates in all task commands. The
+  /// infrastructure relies on an approximately uniform distribution of task ids
+  /// to store and serve tasks efficiently.
   ///
   /// Required.
   Task? task;
@@ -1522,6 +1788,81 @@ class GetIamPolicyRequest {
 
 /// Encapsulates settings provided to GetIamPolicy.
 typedef GetPolicyOptions = $GetPolicyOptions;
+
+/// Defines a header message.
+///
+/// A header can have a key and a value.
+class Header {
+  /// The Key of the header.
+  core.String? key;
+
+  /// The Value of the header.
+  core.String? value;
+
+  Header({
+    this.key,
+    this.value,
+  });
+
+  Header.fromJson(core.Map json_)
+      : this(
+          key: json_.containsKey('key') ? json_['key'] as core.String : null,
+          value:
+              json_.containsKey('value') ? json_['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (key != null) 'key': key!,
+        if (value != null) 'value': value!,
+      };
+}
+
+/// Wraps the Header object.
+class HeaderOverride {
+  /// Header embodying a key and a value.
+  ///
+  /// Do not put business sensitive or personally identifying data in the HTTP
+  /// Header Override Configuration or other similar fields in accordance with
+  /// Section 12 (Resource Fields) of the
+  /// [Service Specific Terms](https://cloud.google.com/terms/service-terms).
+  Header? header;
+
+  HeaderOverride({
+    this.header,
+  });
+
+  HeaderOverride.fromJson(core.Map json_)
+      : this(
+          header: json_.containsKey('header')
+              ? Header.fromJson(
+                  json_['header'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (header != null) 'header': header!,
+      };
+}
+
+/// Message that represents an arbitrary HTTP body.
+///
+/// It should only be used for payload formats that can't be represented as
+/// JSON, such as raw binary or an HTML page. This message can be used both in
+/// streaming and non-streaming API methods in the request as well as the
+/// response. It can be used as a top-level request field, which is convenient
+/// if one wants to extract parameters from either the URL or HTTP template into
+/// the request fields and also want access to the raw HTTP body. Example:
+/// message GetResourceRequest { // A unique request id. string request_id = 1;
+/// // The raw HTTP body is bound to this field. google.api.HttpBody http_body =
+/// 2; } service ResourceService { rpc GetResource(GetResourceRequest) returns
+/// (google.api.HttpBody); rpc UpdateResource(google.api.HttpBody) returns
+/// (google.protobuf.Empty); } Example with streaming methods: service
+/// CaldavService { rpc GetCalendar(stream google.api.HttpBody) returns (stream
+/// google.api.HttpBody); rpc UpdateCalendar(stream google.api.HttpBody) returns
+/// (stream google.api.HttpBody); } Use of this type only changes how the
+/// request and response bodies are handled, all other features will continue to
+/// work unchanged.
+typedef HttpBody = $HttpBody;
 
 /// HTTP request.
 ///
@@ -1660,6 +2001,118 @@ class HttpRequest {
         if (oauthToken != null) 'oauthToken': oauthToken!,
         if (oidcToken != null) 'oidcToken': oidcToken!,
         if (url != null) 'url': url!,
+      };
+}
+
+/// HTTP target.
+///
+/// When specified as a Queue, all the tasks with \[HttpRequest\] will be
+/// overridden according to the target.
+class HttpTarget {
+  /// HTTP target headers.
+  ///
+  /// This map contains the header field names and values. Headers will be set
+  /// when running the CreateTask and/or BufferTask. These headers represent a
+  /// subset of the headers that will be configured for the task's HTTP request.
+  /// Some HTTP request headers will be ignored or replaced. A partial list of
+  /// headers that will be ignored or replaced is: * Several predefined headers,
+  /// prefixed with "X-CloudTasks-", can be used to define properties of the
+  /// task. * Host: This will be computed by Cloud Tasks and derived from
+  /// HttpRequest.url. * Content-Length: This will be computed by Cloud Tasks.
+  /// \`Content-Type\` won't be set by Cloud Tasks. You can explicitly set
+  /// \`Content-Type\` to a media type when the task is created. For
+  /// example,\`Content-Type\` can be set to \`"application/octet-stream"\` or
+  /// \`"application/json"\`. The default value is set to "application/json"\`.
+  /// * User-Agent: This will be set to \`"Google-Cloud-Tasks"\`. Headers which
+  /// can have multiple values (according to RFC2616) can be specified using
+  /// comma-separated values. The size of the headers must be less than 80KB.
+  /// Queue-level headers to override headers of all the tasks in the queue. Do
+  /// not put business sensitive or personally identifying data in the HTTP
+  /// Header Override Configuration or other similar fields in accordance with
+  /// Section 12 (Resource Fields) of the
+  /// [Service Specific Terms](https://cloud.google.com/terms/service-terms).
+  core.List<HeaderOverride>? headerOverrides;
+
+  /// The HTTP method to use for the request.
+  ///
+  /// When specified, it overrides HttpRequest for the task. Note that if the
+  /// value is set to HttpMethod the HttpRequest of the task will be ignored at
+  /// execution time.
+  /// Possible string values are:
+  /// - "HTTP_METHOD_UNSPECIFIED" : HTTP method unspecified
+  /// - "POST" : HTTP POST
+  /// - "GET" : HTTP GET
+  /// - "HEAD" : HTTP HEAD
+  /// - "PUT" : HTTP PUT
+  /// - "DELETE" : HTTP DELETE
+  /// - "PATCH" : HTTP PATCH
+  /// - "OPTIONS" : HTTP OPTIONS
+  core.String? httpMethod;
+
+  /// If specified, an
+  /// [OAuth token](https://developers.google.com/identity/protocols/OAuth2)
+  /// will be generated and attached as the `Authorization` header in the HTTP
+  /// request.
+  ///
+  /// This type of authorization should generally only be used when calling
+  /// Google APIs hosted on *.googleapis.com.
+  OAuthToken? oauthToken;
+
+  /// If specified, an
+  /// [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect)
+  /// token will be generated and attached as an `Authorization` header in the
+  /// HTTP request.
+  ///
+  /// This type of authorization can be used for many scenarios, including
+  /// calling Cloud Run, or endpoints where you intend to validate the token
+  /// yourself.
+  OidcToken? oidcToken;
+
+  /// URI override.
+  ///
+  /// When specified, overrides the execution URI for all the tasks in the
+  /// queue.
+  UriOverride? uriOverride;
+
+  HttpTarget({
+    this.headerOverrides,
+    this.httpMethod,
+    this.oauthToken,
+    this.oidcToken,
+    this.uriOverride,
+  });
+
+  HttpTarget.fromJson(core.Map json_)
+      : this(
+          headerOverrides: json_.containsKey('headerOverrides')
+              ? (json_['headerOverrides'] as core.List)
+                  .map((value) => HeaderOverride.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          httpMethod: json_.containsKey('httpMethod')
+              ? json_['httpMethod'] as core.String
+              : null,
+          oauthToken: json_.containsKey('oauthToken')
+              ? OAuthToken.fromJson(
+                  json_['oauthToken'] as core.Map<core.String, core.dynamic>)
+              : null,
+          oidcToken: json_.containsKey('oidcToken')
+              ? OidcToken.fromJson(
+                  json_['oidcToken'] as core.Map<core.String, core.dynamic>)
+              : null,
+          uriOverride: json_.containsKey('uriOverride')
+              ? UriOverride.fromJson(
+                  json_['uriOverride'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (headerOverrides != null) 'headerOverrides': headerOverrides!,
+        if (httpMethod != null) 'httpMethod': httpMethod!,
+        if (oauthToken != null) 'oauthToken': oauthToken!,
+        if (oidcToken != null) 'oidcToken': oidcToken!,
+        if (uriOverride != null) 'uriOverride': uriOverride!,
       };
 }
 
@@ -1851,6 +2304,29 @@ class OidcToken {
       };
 }
 
+/// PathOverride.
+///
+/// Path message defines path override for HTTP targets.
+class PathOverride {
+  /// The URI path (e.g., /users/1234).
+  ///
+  /// Default is an empty string.
+  core.String? path;
+
+  PathOverride({
+    this.path,
+  });
+
+  PathOverride.fromJson(core.Map json_)
+      : this(
+          path: json_.containsKey('path') ? json_['path'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (path != null) 'path': path!,
+      };
+}
+
 /// Request message for PauseQueue.
 typedef PauseQueueRequest = $Empty;
 
@@ -1868,23 +2344,23 @@ typedef PauseQueueRequest = $Empty;
 /// request, the resource, or both. To learn which resources support conditions
 /// in their IAM policies, see the
 /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": \[ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": \[
+/// **JSON example:** ``` { "bindings": [ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": [
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": \[
-/// "user:eve@example.com" \], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": [
+/// "user:eve@example.com" ], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time \< timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
-/// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
-/// user:mike@example.com - group:admins@example.com - domain:google.com -
-/// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
-/// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
-/// role: roles/resourcemanager.organizationViewer condition: title: expirable
-/// access description: Does not grant access after Sep 2020 expression:
-/// request.time \< timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
-/// version: 3 For a description of IAM and its features, see the
-/// [IAM documentation](https://cloud.google.com/iam/docs/).
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: -
+/// members: - user:mike@example.com - group:admins@example.com -
+/// domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+/// role: roles/resourcemanager.organizationAdmin - members: -
+/// user:eve@example.com role: roles/resourcemanager.organizationViewer
+/// condition: title: expirable access description: Does not grant access after
+/// Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+/// etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features,
+/// see the [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Associates a list of `members`, or principals, with a `role`.
   ///
@@ -1967,6 +2443,31 @@ class Policy {
 /// Request message for PurgeQueue.
 typedef PurgeQueueRequest = $Empty;
 
+/// QueryOverride.
+///
+/// Query message defines query override for HTTP targets.
+class QueryOverride {
+  /// The query parameters (e.g., qparam1=123&qparam2=456).
+  ///
+  /// Default is an empty string.
+  core.String? queryParams;
+
+  QueryOverride({
+    this.queryParams,
+  });
+
+  QueryOverride.fromJson(core.Map json_)
+      : this(
+          queryParams: json_.containsKey('queryParams')
+              ? json_['queryParams'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (queryParams != null) 'queryParams': queryParams!,
+      };
+}
+
 /// A queue is a container of related tasks.
 ///
 /// Queues are configured to manage how those tasks are dispatched. Configurable
@@ -1979,6 +2480,9 @@ class Queue {
   /// App Engine tasks in the queue, no matter what the setting is for the
   /// task-level app_engine_routing.
   AppEngineRouting? appEngineRoutingOverride;
+
+  /// Modifies HTTP target for HTTP tasks.
+  HttpTarget? httpTarget;
 
   /// Caller-specified and required in CreateQueue, after which it becomes
   /// output only.
@@ -2069,6 +2573,7 @@ class Queue {
 
   Queue({
     this.appEngineRoutingOverride,
+    this.httpTarget,
     this.name,
     this.purgeTime,
     this.rateLimits,
@@ -2084,6 +2589,10 @@ class Queue {
                   ? AppEngineRouting.fromJson(json_['appEngineRoutingOverride']
                       as core.Map<core.String, core.dynamic>)
                   : null,
+          httpTarget: json_.containsKey('httpTarget')
+              ? HttpTarget.fromJson(
+                  json_['httpTarget'] as core.Map<core.String, core.dynamic>)
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           purgeTime: json_.containsKey('purgeTime')
               ? json_['purgeTime'] as core.String
@@ -2109,6 +2618,7 @@ class Queue {
   core.Map<core.String, core.dynamic> toJson() => {
         if (appEngineRoutingOverride != null)
           'appEngineRoutingOverride': appEngineRoutingOverride!,
+        if (httpTarget != null) 'httpTarget': httpTarget!,
         if (name != null) 'name': name!,
         if (purgeTime != null) 'purgeTime': purgeTime!,
         if (rateLimits != null) 'rateLimits': rateLimits!,
@@ -2219,8 +2729,12 @@ class RetryConfig {
   /// task should be retried.
   ///
   /// If unspecified when the queue is created, Cloud Tasks will pick the
-  /// default. `max_backoff` will be truncated to the nearest second. This field
-  /// has the same meaning as
+  /// default. The value must be given as a string that indicates the length of
+  /// time (in seconds) followed by `s` (for "seconds"). For more information on
+  /// the format, see the documentation for
+  /// [Duration](https://protobuf.dev/reference/protobuf/google.protobuf/#duration).
+  /// `max_backoff` will be truncated to the nearest second. This field has the
+  /// same meaning as
   /// [max_backoff_seconds in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
   core.String? maxBackoff;
 
@@ -2246,6 +2760,10 @@ class RetryConfig {
   /// attempted max_attempts times, no further attempts will be made and the
   /// task will be deleted. If zero, then the task age is unlimited. If
   /// unspecified when the queue is created, Cloud Tasks will pick the default.
+  /// The value must be given as a string that indicates the length of time (in
+  /// seconds) followed by `s` (for "seconds"). For the maximum possible value
+  /// or the format, see the documentation for
+  /// [Duration](https://protobuf.dev/reference/protobuf/google.protobuf/#duration).
   /// `max_retry_duration` will be truncated to the nearest second. This field
   /// has the same meaning as
   /// [task_age_limit in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
@@ -2256,8 +2774,12 @@ class RetryConfig {
   /// task should be retried.
   ///
   /// If unspecified when the queue is created, Cloud Tasks will pick the
-  /// default. `min_backoff` will be truncated to the nearest second. This field
-  /// has the same meaning as
+  /// default. The value must be given as a string that indicates the length of
+  /// time (in seconds) followed by `s` (for "seconds"). For more information on
+  /// the format, see the documentation for
+  /// [Duration](https://protobuf.dev/reference/protobuf/google.protobuf/#duration).
+  /// `min_backoff` will be truncated to the nearest second. This field has the
+  /// same meaning as
   /// [min_backoff_seconds in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
   core.String? minBackoff;
 
@@ -2441,6 +2963,10 @@ class Task {
   /// a few seconds more than the app handler's timeout. For more information
   /// see
   /// [Timeouts](https://cloud.google.com/tasks/docs/creating-appengine-handlers#timeouts).
+  /// The value must be given as a string that indicates the length of time (in
+  /// seconds) followed by `s` (for "seconds"). For more information on the
+  /// format, see the documentation for
+  /// [Duration](https://protobuf.dev/reference/protobuf/google.protobuf/#duration).
   /// `dispatch_deadline` will be truncated to the nearest millisecond. The
   /// deadline is an approximate deadline.
   core.String? dispatchDeadline;
@@ -2576,3 +3102,102 @@ typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;
+
+/// URI Override.
+///
+/// When specified, all the HTTP tasks inside the queue will be partially or
+/// fully overridden depending on the configured values.
+class UriOverride {
+  /// Host override.
+  ///
+  /// When specified, replaces the host part of the task URL. For example, if
+  /// the task URL is "https://www.google.com," and host value is set to
+  /// "example.net", the overridden URI will be changed to
+  /// "https://example.net." Host value cannot be an empty string
+  /// (INVALID_ARGUMENT).
+  core.String? host;
+
+  /// URI path.
+  ///
+  /// When specified, replaces the existing path of the task URL. Setting the
+  /// path value to an empty string clears the URI path segment.
+  PathOverride? pathOverride;
+
+  /// Port override.
+  ///
+  /// When specified, replaces the port part of the task URI. For instance, for
+  /// a URI http://www.google.com/foo and port=123, the overridden URI becomes
+  /// http://www.google.com:123/foo. Note that the port value must be a positive
+  /// integer. Setting the port to 0 (Zero) clears the URI port.
+  core.String? port;
+
+  /// URI query.
+  ///
+  /// When specified, replaces the query part of the task URI. Setting the query
+  /// value to an empty string clears the URI query segment.
+  QueryOverride? queryOverride;
+
+  /// Scheme override.
+  ///
+  /// When specified, the task URI scheme is replaced by the provided value
+  /// (HTTP or HTTPS).
+  /// Possible string values are:
+  /// - "SCHEME_UNSPECIFIED" : Scheme unspecified. Defaults to HTTPS.
+  /// - "HTTP" : Convert the scheme to HTTP, e.g., https://www.google.ca will
+  /// change to http://www.google.ca.
+  /// - "HTTPS" : Convert the scheme to HTTPS, e.g., http://www.google.ca will
+  /// change to https://www.google.ca.
+  core.String? scheme;
+
+  /// URI Override Enforce Mode When specified, determines the Target
+  /// UriOverride mode.
+  ///
+  /// If not specified, it defaults to ALWAYS.
+  /// Possible string values are:
+  /// - "URI_OVERRIDE_ENFORCE_MODE_UNSPECIFIED" : UriOverrideEnforceMode
+  /// Unspecified. Defaults to ALWAYS.
+  /// - "IF_NOT_EXISTS" : In the IF_NOT_EXISTS mode, queue-level configuration
+  /// is only applied where task-level configuration does not exist.
+  /// - "ALWAYS" : In the ALWAYS mode, queue-level configuration overrides all
+  /// task-level configuration
+  core.String? uriOverrideEnforceMode;
+
+  UriOverride({
+    this.host,
+    this.pathOverride,
+    this.port,
+    this.queryOverride,
+    this.scheme,
+    this.uriOverrideEnforceMode,
+  });
+
+  UriOverride.fromJson(core.Map json_)
+      : this(
+          host: json_.containsKey('host') ? json_['host'] as core.String : null,
+          pathOverride: json_.containsKey('pathOverride')
+              ? PathOverride.fromJson(
+                  json_['pathOverride'] as core.Map<core.String, core.dynamic>)
+              : null,
+          port: json_.containsKey('port') ? json_['port'] as core.String : null,
+          queryOverride: json_.containsKey('queryOverride')
+              ? QueryOverride.fromJson(
+                  json_['queryOverride'] as core.Map<core.String, core.dynamic>)
+              : null,
+          scheme: json_.containsKey('scheme')
+              ? json_['scheme'] as core.String
+              : null,
+          uriOverrideEnforceMode: json_.containsKey('uriOverrideEnforceMode')
+              ? json_['uriOverrideEnforceMode'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (host != null) 'host': host!,
+        if (pathOverride != null) 'pathOverride': pathOverride!,
+        if (port != null) 'port': port!,
+        if (queryOverride != null) 'queryOverride': queryOverride!,
+        if (scheme != null) 'scheme': scheme!,
+        if (uriOverrideEnforceMode != null)
+          'uriOverrideEnforceMode': uriOverrideEnforceMode!,
+      };
+}

@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Data Labeling API - v1beta1
@@ -37,7 +36,7 @@
 ///   - [ProjectsEvaluationsResource]
 ///   - [ProjectsInstructionsResource]
 ///   - [ProjectsOperationsResource]
-library datalabeling_v1beta1;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -5355,6 +5354,9 @@ class GoogleCloudDatalabelingV1beta1Instruction {
   /// should have exact two columns, in the following format: * The first column
   /// is labeled data, such as an image reference, text. * The second column is
   /// comma separated labels associated with data.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   GoogleCloudDatalabelingV1beta1CsvInstruction? csvInstruction;
 
   /// The data type of this instruction.
@@ -6790,6 +6792,9 @@ class GoogleCloudDatalabelingV1beta1TextClassificationConfig {
   /// incompatible with uCAIP.
   ///
   /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   GoogleCloudDatalabelingV1beta1SentimentConfig? sentimentConfig;
 
   GoogleCloudDatalabelingV1beta1TextClassificationConfig({
@@ -7303,7 +7308,7 @@ class GoogleLongrunningOperation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard

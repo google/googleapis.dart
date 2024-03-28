@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Google Play Android Developer API - v3
@@ -23,6 +22,7 @@
 ///
 /// - [ApplicationsResource]
 ///   - [ApplicationsDeviceTierConfigsResource]
+/// - [ApprecoveryResource]
 /// - [EditsResource]
 ///   - [EditsApksResource]
 ///   - [EditsBundlesResource]
@@ -53,7 +53,7 @@
 /// - [SystemapksResource]
 ///   - [SystemapksVariantsResource]
 /// - [UsersResource]
-library androidpublisher_v3;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -88,6 +88,7 @@ class AndroidPublisherApi {
   final commons.ApiRequester _requester;
 
   ApplicationsResource get applications => ApplicationsResource(_requester);
+  ApprecoveryResource get apprecovery => ApprecoveryResource(_requester);
   EditsResource get edits => EditsResource(_requester);
   ExternaltransactionsResource get externaltransactions =>
       ExternaltransactionsResource(_requester);
@@ -117,6 +118,48 @@ class ApplicationsResource {
       ApplicationsDeviceTierConfigsResource(_requester);
 
   ApplicationsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Writes the Safety Labels declaration of an app.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Required. Package name of the app.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SafetyLabelsUpdateResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SafetyLabelsUpdateResponse> dataSafety(
+    SafetyLabelsUpdateRequest request,
+    core.String packageName, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/dataSafety';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return SafetyLabelsUpdateResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ApplicationsDeviceTierConfigsResource {
@@ -262,6 +305,254 @@ class ApplicationsDeviceTierConfigsResource {
       queryParams: queryParams_,
     );
     return ListDeviceTierConfigsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ApprecoveryResource {
+  final commons.ApiRequester _requester;
+
+  ApprecoveryResource(commons.ApiRequester client) : _requester = client;
+
+  /// Incrementally update targeting for a recovery action.
+  ///
+  /// Note that only the criteria selected during the creation of recovery
+  /// action can be expanded.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Required. Package name of the app for which recovery
+  /// action is to be updated.
+  ///
+  /// [appRecoveryId] - Required. ID corresponding to the app recovery action.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AddTargetingResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AddTargetingResponse> addTargeting(
+    AddTargetingRequest request,
+    core.String packageName,
+    core.String appRecoveryId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/appRecoveries/' +
+        commons.escapeVariable('$appRecoveryId') +
+        ':addTargeting';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return AddTargetingResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// List all app recovery action resources associated with a particular
+  /// package name and app version.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Required. Package name of the app for which list of
+  /// recovery actions is requested.
+  ///
+  /// [versionCode] - Required. Version code targeted by the list of recovery
+  /// actions.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAppRecoveriesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAppRecoveriesResponse> appRecoveries(
+    core.String packageName, {
+    core.String? versionCode,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (versionCode != null) 'versionCode': [versionCode],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/appRecoveries';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+    );
+    return ListAppRecoveriesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Cancel an already executing app recovery action.
+  ///
+  /// Note that this action changes status of the recovery action to CANCELED.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Required. Package name of the app for which recovery
+  /// action cancellation is requested.
+  ///
+  /// [appRecoveryId] - Required. ID corresponding to the app recovery action.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CancelAppRecoveryResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CancelAppRecoveryResponse> cancel(
+    CancelAppRecoveryRequest request,
+    core.String packageName,
+    core.String appRecoveryId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/appRecoveries/' +
+        commons.escapeVariable('$appRecoveryId') +
+        ':cancel';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return CancelAppRecoveryResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Create an app recovery action with recovery status as DRAFT.
+  ///
+  /// Note that this action does not execute the recovery action.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Required. Package name of the app on which recovery action
+  /// is performed.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AppRecoveryAction].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AppRecoveryAction> create(
+    CreateDraftAppRecoveryRequest request,
+    core.String packageName, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/appRecoveries';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return AppRecoveryAction.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deploy an already created app recovery action with recovery status DRAFT.
+  ///
+  /// Note that this action activates the recovery action for all targeted users
+  /// and changes its status to ACTIVE.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Required. Package name of the app for which recovery
+  /// action is deployed.
+  ///
+  /// [appRecoveryId] - Required. ID corresponding to the app recovery action to
+  /// deploy.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [DeployAppRecoveryResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DeployAppRecoveryResponse> deploy(
+    DeployAppRecoveryRequest request,
+    core.String packageName,
+    core.String appRecoveryId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/appRecoveries/' +
+        commons.escapeVariable('$appRecoveryId') +
+        ':deploy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return DeployAppRecoveryResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -2105,6 +2396,52 @@ class EditsTracksResource {
 
   EditsTracksResource(commons.ApiRequester client) : _requester = client;
 
+  /// Creates a new track.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Required. Package name of the app.
+  ///
+  /// [editId] - Required. Identifier of the edit.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Track].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Track> create(
+    TrackConfig request,
+    core.String packageName,
+    core.String editId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/edits/' +
+        commons.escapeVariable('$editId') +
+        '/tracks';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Track.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets a track.
   ///
   /// Request parameters:
@@ -2680,6 +3017,148 @@ class InappproductsResource {
 
   InappproductsResource(commons.ApiRequester client) : _requester = client;
 
+  /// Deletes in-app products (managed products or subscriptions).
+  ///
+  /// Set the latencyTolerance field on nested requests to
+  /// PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT to achieve maximum
+  /// update throughput. This method should not be used to delete subscriptions.
+  /// See
+  /// [this article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html)
+  /// for more information.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Package name of the app.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<void> batchDelete(
+    InappproductsBatchDeleteRequest request,
+    core.String packageName, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/inappproducts:batchDelete';
+
+    await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+      downloadOptions: null,
+    );
+  }
+
+  /// Reads multiple in-app products, which can be managed products or
+  /// subscriptions.
+  ///
+  /// This method should not be used to retrieve subscriptions. See
+  /// [this article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html)
+  /// for more information.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Package name of the app.
+  ///
+  /// [sku] - Unique identifier for the in-app products.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [InappproductsBatchGetResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<InappproductsBatchGetResponse> batchGet(
+    core.String packageName, {
+    core.List<core.String>? sku,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (sku != null) 'sku': sku,
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/inappproducts:batchGet';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return InappproductsBatchGetResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates or inserts one or more in-app products (managed products or
+  /// subscriptions).
+  ///
+  /// Set the latencyTolerance field on nested requests to
+  /// PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT to achieve maximum
+  /// update throughput. This method should no longer be used to update
+  /// subscriptions. See
+  /// [this article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html)
+  /// for more information.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Package name of the app.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [InappproductsBatchUpdateResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<InappproductsBatchUpdateResponse> batchUpdate(
+    InappproductsBatchUpdateRequest request,
+    core.String packageName, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/inappproducts:batchUpdate';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return InappproductsBatchUpdateResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Deletes an in-app product (a managed product or a subscription).
   ///
   /// This method should no longer be used to delete subscriptions. See
@@ -2692,6 +3171,19 @@ class InappproductsResource {
   ///
   /// [sku] - Unique identifier for the in-app product.
   ///
+  /// [latencyTolerance] - Optional. The latency tolerance for the propagation
+  /// of this product update. Defaults to latency-sensitive.
+  /// Possible string values are:
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED" : Defaults to
+  /// PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE.
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE" : The update will
+  /// propagate to clients within several minutes on average and up to a few
+  /// hours in rare cases. Throughput is limited to 7,200 updates per app per
+  /// hour.
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT" : The update will
+  /// propagate to clients within 24 hours. Supports high throughput of up to
+  /// 720,000 updates per app per hour using batch modification methods.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2703,9 +3195,11 @@ class InappproductsResource {
   async.Future<void> delete(
     core.String packageName,
     core.String sku, {
+    core.String? latencyTolerance,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (latencyTolerance != null) 'latencyTolerance': [latencyTolerance],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -2899,6 +3393,19 @@ class InappproductsResource {
   /// product will be auto converted to the target currency based on the default
   /// price. Defaults to false.
   ///
+  /// [latencyTolerance] - Optional. The latency tolerance for the propagation
+  /// of this product update. Defaults to latency-sensitive.
+  /// Possible string values are:
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED" : Defaults to
+  /// PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE.
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE" : The update will
+  /// propagate to clients within several minutes on average and up to a few
+  /// hours in rare cases. Throughput is limited to 7,200 updates per app per
+  /// hour.
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT" : The update will
+  /// propagate to clients within 24 hours. Supports high throughput of up to
+  /// 720,000 updates per app per hour using batch modification methods.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2914,12 +3421,14 @@ class InappproductsResource {
     core.String packageName,
     core.String sku, {
     core.bool? autoConvertMissingPrices,
+    core.String? latencyTolerance,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       if (autoConvertMissingPrices != null)
         'autoConvertMissingPrices': ['${autoConvertMissingPrices}'],
+      if (latencyTolerance != null) 'latencyTolerance': [latencyTolerance],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -2960,6 +3469,19 @@ class InappproductsResource {
   /// product will be auto converted to the target currency based on the default
   /// price. Defaults to false.
   ///
+  /// [latencyTolerance] - Optional. The latency tolerance for the propagation
+  /// of this product update. Defaults to latency-sensitive.
+  /// Possible string values are:
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED" : Defaults to
+  /// PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE.
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE" : The update will
+  /// propagate to clients within several minutes on average and up to a few
+  /// hours in rare cases. Throughput is limited to 7,200 updates per app per
+  /// hour.
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT" : The update will
+  /// propagate to clients within 24 hours. Supports high throughput of up to
+  /// 720,000 updates per app per hour using batch modification methods.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2976,6 +3498,7 @@ class InappproductsResource {
     core.String sku, {
     core.bool? allowMissing,
     core.bool? autoConvertMissingPrices,
+    core.String? latencyTolerance,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
@@ -2983,6 +3506,7 @@ class InappproductsResource {
       if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
       if (autoConvertMissingPrices != null)
         'autoConvertMissingPrices': ['${autoConvertMissingPrices}'],
+      if (latencyTolerance != null) 'latencyTolerance': [latencyTolerance],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -3201,11 +3725,7 @@ class MonetizationSubscriptionsResource {
   MonetizationSubscriptionsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Archives a subscription.
-  ///
-  /// Can only be done if at least one base plan was active in the past, and no
-  /// base plan is available for new or existing subscribers currently. This
-  /// action is irreversible, and the subscription ID will remain reserved.
+  /// Deprecated: subscription archiving is not supported.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3227,6 +3747,9 @@ class MonetizationSubscriptionsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<Subscription> archive(
     ArchiveSubscriptionRequest request,
     core.String packageName,
@@ -3254,6 +3777,98 @@ class MonetizationSubscriptionsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Reads one or more subscriptions.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Required. The parent app (package name) for which the
+  /// subscriptions should be retrieved. Must be equal to the package_name field
+  /// on all the requests.
+  ///
+  /// [productIds] - Required. A list of up to 100 subscription product IDs to
+  /// retrieve. All the IDs must be different.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BatchGetSubscriptionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BatchGetSubscriptionsResponse> batchGet(
+    core.String packageName, {
+    core.List<core.String>? productIds,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (productIds != null) 'productIds': productIds,
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/subscriptions:batchGet';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return BatchGetSubscriptionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a batch of subscriptions.
+  ///
+  /// Set the latencyTolerance field on nested requests to
+  /// PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT to achieve maximum
+  /// update throughput.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Required. The parent app (package name) for which the
+  /// subscriptions should be updated. Must be equal to the package_name field
+  /// on all the Subscription resources.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BatchUpdateSubscriptionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BatchUpdateSubscriptionsResponse> batchUpdate(
+    BatchUpdateSubscriptionsRequest request,
+    core.String packageName, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/subscriptions:batchUpdate';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return BatchUpdateSubscriptionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Creates a new subscription.
   ///
   /// Newly added base plans will remain in draft state until activated.
@@ -3270,7 +3885,16 @@ class MonetizationSubscriptionsResource {
   /// requirements on this format, see the documentation of the product_id field
   /// on the Subscription resource.
   ///
-  /// [regionsVersion_version] - Required. The latest version is 2022/02.
+  /// [regionsVersion_version] - Required. A string representing the version of
+  /// available regions being used for the specified resource. Regional prices
+  /// for the resource have to be specified according to the information
+  /// published in
+  /// [this article](https://support.google.com/googleplay/android-developer/answer/10532353).
+  /// Each time the supported locations substantially change, the version will
+  /// be incremented. Using this field will ensure that creating and updating
+  /// the resource with an older region's version and set of regional prices and
+  /// currencies will succeed even though a new version is available. The latest
+  /// version is 2022/02.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3413,8 +4037,7 @@ class MonetizationSubscriptionsResource {
   /// other parameters provided to `ListSubscriptions` must match the call that
   /// provided the page token.
   ///
-  /// [showArchived] - Whether archived subscriptions should be included in the
-  /// response. Defaults to false.
+  /// [showArchived] - Deprecated: subscription archiving is not supported.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3467,7 +4090,33 @@ class MonetizationSubscriptionsResource {
   /// lower-case letter or number, and be between 1 and 40 (inclusive)
   /// characters in length.
   ///
-  /// [regionsVersion_version] - Required. The latest version is 2022/02.
+  /// [allowMissing] - Optional. If set to true, and the subscription with the
+  /// given package_name and product_id doesn't exist, the subscription will be
+  /// created. If a new subscription is created, update_mask is ignored.
+  ///
+  /// [latencyTolerance] - Optional. The latency tolerance for the propagation
+  /// of this product update. Defaults to latency-sensitive.
+  /// Possible string values are:
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED" : Defaults to
+  /// PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE.
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE" : The update will
+  /// propagate to clients within several minutes on average and up to a few
+  /// hours in rare cases. Throughput is limited to 7,200 updates per app per
+  /// hour.
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT" : The update will
+  /// propagate to clients within 24 hours. Supports high throughput of up to
+  /// 720,000 updates per app per hour using batch modification methods.
+  ///
+  /// [regionsVersion_version] - Required. A string representing the version of
+  /// available regions being used for the specified resource. Regional prices
+  /// for the resource have to be specified according to the information
+  /// published in
+  /// [this article](https://support.google.com/googleplay/android-developer/answer/10532353).
+  /// Each time the supported locations substantially change, the version will
+  /// be incremented. Using this field will ensure that creating and updating
+  /// the resource with an older region's version and set of regional prices and
+  /// currencies will succeed even though a new version is available. The latest
+  /// version is 2022/02.
   ///
   /// [updateMask] - Required. The list of fields to be updated.
   ///
@@ -3485,12 +4134,16 @@ class MonetizationSubscriptionsResource {
     Subscription request,
     core.String packageName,
     core.String productId, {
+    core.bool? allowMissing,
+    core.String? latencyTolerance,
     core.String? regionsVersion_version,
     core.String? updateMask,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
+      if (latencyTolerance != null) 'latencyTolerance': [latencyTolerance],
       if (regionsVersion_version != null)
         'regionsVersion.version': [regionsVersion_version],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -3576,6 +4229,115 @@ class MonetizationSubscriptionsBasePlansResource {
       queryParams: queryParams_,
     );
     return Subscription.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Batch variant of the MigrateBasePlanPrices endpoint.
+  ///
+  /// Set the latencyTolerance field on nested requests to
+  /// PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT to achieve maximum
+  /// update throughput.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Required. The parent app (package name) for which the
+  /// subscriptions should be created or updated. Must be equal to the
+  /// package_name field on all the Subscription resources.
+  ///
+  /// [productId] - Required. The product ID of the parent subscription, if all
+  /// updated offers belong to the same subscription. If this batch update spans
+  /// multiple subscriptions, set this field to "-". Must be set.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BatchMigrateBasePlanPricesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BatchMigrateBasePlanPricesResponse> batchMigratePrices(
+    BatchMigrateBasePlanPricesRequest request,
+    core.String packageName,
+    core.String productId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/subscriptions/' +
+        commons.escapeVariable('$productId') +
+        '/basePlans:batchMigratePrices';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return BatchMigrateBasePlanPricesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Activates or deactivates base plans across one or multiple subscriptions.
+  ///
+  /// Set the latencyTolerance field on nested requests to
+  /// PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT to achieve maximum
+  /// update throughput.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Required. The parent app (package name) of the updated
+  /// base plans.
+  ///
+  /// [productId] - Required. The product ID of the parent subscription, if all
+  /// updated base plans belong to the same subscription. If this batch update
+  /// spans multiple subscriptions, set this field to "-". Must be set.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BatchUpdateBasePlanStatesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BatchUpdateBasePlanStatesResponse> batchUpdateStates(
+    BatchUpdateBasePlanStatesRequest request,
+    core.String packageName,
+    core.String productId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/subscriptions/' +
+        commons.escapeVariable('$productId') +
+        '/basePlans:batchUpdateStates';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return BatchUpdateBasePlanStatesResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 
@@ -3814,6 +4576,188 @@ class MonetizationSubscriptionsBasePlansOffersResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Reads one or more subscription offers.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Required. The parent app (package name) for which the
+  /// subscriptions should be created or updated. Must be equal to the
+  /// package_name field on all the requests.
+  ///
+  /// [productId] - Required. The product ID of the parent subscription, if all
+  /// updated offers belong to the same subscription. If this request spans
+  /// multiple subscriptions, set this field to "-". Must be set.
+  ///
+  /// [basePlanId] - Required. The parent base plan (ID) for which the offers
+  /// should be read. May be specified as '-' to read offers from multiple base
+  /// plans.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BatchGetSubscriptionOffersResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BatchGetSubscriptionOffersResponse> batchGet(
+    BatchGetSubscriptionOffersRequest request,
+    core.String packageName,
+    core.String productId,
+    core.String basePlanId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/subscriptions/' +
+        commons.escapeVariable('$productId') +
+        '/basePlans/' +
+        commons.escapeVariable('$basePlanId') +
+        '/offers:batchGet';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return BatchGetSubscriptionOffersResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a batch of subscription offers.
+  ///
+  /// Set the latencyTolerance field on nested requests to
+  /// PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT to achieve maximum
+  /// update throughput.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Required. The parent app (package name) of the updated
+  /// subscription offers. Must be equal to the package_name field on all the
+  /// updated SubscriptionOffer resources.
+  ///
+  /// [productId] - Required. The product ID of the parent subscription, if all
+  /// updated offers belong to the same subscription. If this request spans
+  /// multiple subscriptions, set this field to "-". Must be set.
+  ///
+  /// [basePlanId] - Required. The parent base plan (ID) for which the offers
+  /// should be updated. May be specified as '-' to update offers from multiple
+  /// base plans.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BatchUpdateSubscriptionOffersResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BatchUpdateSubscriptionOffersResponse> batchUpdate(
+    BatchUpdateSubscriptionOffersRequest request,
+    core.String packageName,
+    core.String productId,
+    core.String basePlanId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/subscriptions/' +
+        commons.escapeVariable('$productId') +
+        '/basePlans/' +
+        commons.escapeVariable('$basePlanId') +
+        '/offers:batchUpdate';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return BatchUpdateSubscriptionOffersResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a batch of subscription offer states.
+  ///
+  /// Set the latencyTolerance field on nested requests to
+  /// PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT to achieve maximum
+  /// update throughput.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Required. The parent app (package name) of the updated
+  /// subscription offers. Must be equal to the package_name field on all the
+  /// updated SubscriptionOffer resources.
+  ///
+  /// [productId] - Required. The product ID of the parent subscription, if all
+  /// updated offers belong to the same subscription. If this request spans
+  /// multiple subscriptions, set this field to "-". Must be set.
+  ///
+  /// [basePlanId] - Required. The parent base plan (ID) for which the offers
+  /// should be updated. May be specified as '-' to update offers from multiple
+  /// base plans.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BatchUpdateSubscriptionOfferStatesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BatchUpdateSubscriptionOfferStatesResponse> batchUpdateStates(
+    BatchUpdateSubscriptionOfferStatesRequest request,
+    core.String packageName,
+    core.String productId,
+    core.String basePlanId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/subscriptions/' +
+        commons.escapeVariable('$productId') +
+        '/basePlans/' +
+        commons.escapeVariable('$basePlanId') +
+        '/offers:batchUpdateStates';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return BatchUpdateSubscriptionOfferStatesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Creates a new subscription offer.
   ///
   /// Only auto-renewing base plans can have subscription offers. The offer
@@ -3839,7 +4783,16 @@ class MonetizationSubscriptionsBasePlansOffersResource {
   /// this format, see the documentation of the offer_id field on the
   /// SubscriptionOffer resource.
   ///
-  /// [regionsVersion_version] - Required. The latest version is 2022/02.
+  /// [regionsVersion_version] - Required. A string representing the version of
+  /// available regions being used for the specified resource. Regional prices
+  /// for the resource have to be specified according to the information
+  /// published in
+  /// [this article](https://support.google.com/googleplay/android-developer/answer/10532353).
+  /// Each time the supported locations substantially change, the version will
+  /// be incremented. Using this field will ensure that creating and updating
+  /// the resource with an older region's version and set of regional prices and
+  /// currencies will succeed even though a new version is available. The latest
+  /// version is 2022/02.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4137,7 +5090,34 @@ class MonetizationSubscriptionsBasePlansOffersResource {
   /// [offerId] - Required. Immutable. Unique ID of this subscription offer.
   /// Must be unique within the base plan.
   ///
-  /// [regionsVersion_version] - Required. The latest version is 2022/02.
+  /// [allowMissing] - Optional. If set to true, and the subscription offer with
+  /// the given package_name, product_id, base_plan_id and offer_id doesn't
+  /// exist, an offer will be created. If a new offer is created, update_mask is
+  /// ignored.
+  ///
+  /// [latencyTolerance] - Optional. The latency tolerance for the propagation
+  /// of this product update. Defaults to latency-sensitive.
+  /// Possible string values are:
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED" : Defaults to
+  /// PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE.
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE" : The update will
+  /// propagate to clients within several minutes on average and up to a few
+  /// hours in rare cases. Throughput is limited to 7,200 updates per app per
+  /// hour.
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT" : The update will
+  /// propagate to clients within 24 hours. Supports high throughput of up to
+  /// 720,000 updates per app per hour using batch modification methods.
+  ///
+  /// [regionsVersion_version] - Required. A string representing the version of
+  /// available regions being used for the specified resource. Regional prices
+  /// for the resource have to be specified according to the information
+  /// published in
+  /// [this article](https://support.google.com/googleplay/android-developer/answer/10532353).
+  /// Each time the supported locations substantially change, the version will
+  /// be incremented. Using this field will ensure that creating and updating
+  /// the resource with an older region's version and set of regional prices and
+  /// currencies will succeed even though a new version is available. The latest
+  /// version is 2022/02.
   ///
   /// [updateMask] - Required. The list of fields to be updated.
   ///
@@ -4157,12 +5137,16 @@ class MonetizationSubscriptionsBasePlansOffersResource {
     core.String productId,
     core.String basePlanId,
     core.String offerId, {
+    core.bool? allowMissing,
+    core.String? latencyTolerance,
     core.String? regionsVersion_version,
     core.String? updateMask,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
+      if (latencyTolerance != null) 'latencyTolerance': [latencyTolerance],
       if (regionsVersion_version != null)
         'regionsVersion.version': [regionsVersion_version],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -4196,7 +5180,7 @@ class OrdersResource {
 
   /// Refunds a user's subscription or in-app purchase order.
   ///
-  /// Orders older than 1 year cannot be refunded.
+  /// Orders older than 3 years cannot be refunded.
   ///
   /// Request parameters:
   ///
@@ -4773,6 +5757,55 @@ class PurchasesSubscriptionsv2Resource {
       queryParams: queryParams_,
     );
     return SubscriptionPurchaseV2.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Revoke a subscription purchase for the user.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Required. The package of the application for which this
+  /// subscription was purchased (for example, 'com.some.thing').
+  ///
+  /// [token] - Required. The token provided to the user's device when the
+  /// subscription was purchased.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RevokeSubscriptionPurchaseResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RevokeSubscriptionPurchaseResponse> revoke(
+    RevokeSubscriptionPurchaseRequest request,
+    core.String packageName,
+    core.String token, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/purchases/subscriptionsv2/tokens/' +
+        commons.escapeVariable('$token') +
+        ':revoke';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return RevokeSubscriptionPurchaseResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -5408,6 +6441,7 @@ class Abi {
   /// - "ARM64_V8A" : ARM64_V8A abi.
   /// - "X86" : X86 abi.
   /// - "X86_64" : X86_64 abi.
+  /// - "RISCV64" : RISCV64 abi.
   core.String? alias;
 
   Abi({
@@ -5489,10 +6523,220 @@ class AcquisitionTargetingRule {
 }
 
 /// Request message for ActivateBasePlan.
-typedef ActivateBasePlanRequest = $Empty;
+class ActivateBasePlanRequest {
+  /// The unique base plan ID of the base plan to activate.
+  ///
+  /// Required.
+  core.String? basePlanId;
+
+  /// The latency tolerance for the propagation of this product update.
+  ///
+  /// Defaults to latency-sensitive.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED" : Defaults to
+  /// PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE.
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE" : The update will
+  /// propagate to clients within several minutes on average and up to a few
+  /// hours in rare cases. Throughput is limited to 7,200 updates per app per
+  /// hour.
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT" : The update will
+  /// propagate to clients within 24 hours. Supports high throughput of up to
+  /// 720,000 updates per app per hour using batch modification methods.
+  core.String? latencyTolerance;
+
+  /// The parent app (package name) of the base plan to activate.
+  ///
+  /// Required.
+  core.String? packageName;
+
+  /// The parent subscription (ID) of the base plan to activate.
+  ///
+  /// Required.
+  core.String? productId;
+
+  ActivateBasePlanRequest({
+    this.basePlanId,
+    this.latencyTolerance,
+    this.packageName,
+    this.productId,
+  });
+
+  ActivateBasePlanRequest.fromJson(core.Map json_)
+      : this(
+          basePlanId: json_.containsKey('basePlanId')
+              ? json_['basePlanId'] as core.String
+              : null,
+          latencyTolerance: json_.containsKey('latencyTolerance')
+              ? json_['latencyTolerance'] as core.String
+              : null,
+          packageName: json_.containsKey('packageName')
+              ? json_['packageName'] as core.String
+              : null,
+          productId: json_.containsKey('productId')
+              ? json_['productId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (basePlanId != null) 'basePlanId': basePlanId!,
+        if (latencyTolerance != null) 'latencyTolerance': latencyTolerance!,
+        if (packageName != null) 'packageName': packageName!,
+        if (productId != null) 'productId': productId!,
+      };
+}
 
 /// Request message for ActivateSubscriptionOffer.
-typedef ActivateSubscriptionOfferRequest = $Empty;
+class ActivateSubscriptionOfferRequest {
+  /// The parent base plan (ID) of the offer to activate.
+  ///
+  /// Required.
+  core.String? basePlanId;
+
+  /// The latency tolerance for the propagation of this product update.
+  ///
+  /// Defaults to latency-sensitive.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED" : Defaults to
+  /// PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE.
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE" : The update will
+  /// propagate to clients within several minutes on average and up to a few
+  /// hours in rare cases. Throughput is limited to 7,200 updates per app per
+  /// hour.
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT" : The update will
+  /// propagate to clients within 24 hours. Supports high throughput of up to
+  /// 720,000 updates per app per hour using batch modification methods.
+  core.String? latencyTolerance;
+
+  /// The unique offer ID of the offer to activate.
+  ///
+  /// Required.
+  core.String? offerId;
+
+  /// The parent app (package name) of the offer to activate.
+  ///
+  /// Required.
+  core.String? packageName;
+
+  /// The parent subscription (ID) of the offer to activate.
+  ///
+  /// Required.
+  core.String? productId;
+
+  ActivateSubscriptionOfferRequest({
+    this.basePlanId,
+    this.latencyTolerance,
+    this.offerId,
+    this.packageName,
+    this.productId,
+  });
+
+  ActivateSubscriptionOfferRequest.fromJson(core.Map json_)
+      : this(
+          basePlanId: json_.containsKey('basePlanId')
+              ? json_['basePlanId'] as core.String
+              : null,
+          latencyTolerance: json_.containsKey('latencyTolerance')
+              ? json_['latencyTolerance'] as core.String
+              : null,
+          offerId: json_.containsKey('offerId')
+              ? json_['offerId'] as core.String
+              : null,
+          packageName: json_.containsKey('packageName')
+              ? json_['packageName'] as core.String
+              : null,
+          productId: json_.containsKey('productId')
+              ? json_['productId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (basePlanId != null) 'basePlanId': basePlanId!,
+        if (latencyTolerance != null) 'latencyTolerance': latencyTolerance!,
+        if (offerId != null) 'offerId': offerId!,
+        if (packageName != null) 'packageName': packageName!,
+        if (productId != null) 'productId': productId!,
+      };
+}
+
+/// Request message for AddTargeting.
+class AddTargetingRequest {
+  /// Specifies targeting updates such as regions, android sdk versions etc.
+  TargetingUpdate? targetingUpdate;
+
+  AddTargetingRequest({
+    this.targetingUpdate,
+  });
+
+  AddTargetingRequest.fromJson(core.Map json_)
+      : this(
+          targetingUpdate: json_.containsKey('targetingUpdate')
+              ? TargetingUpdate.fromJson(json_['targetingUpdate']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (targetingUpdate != null) 'targetingUpdate': targetingUpdate!,
+      };
+}
+
+/// Response message for AddTargeting.
+typedef AddTargetingResponse = $Empty;
+
+/// Object representation to describe all set of users.
+class AllUsers {
+  /// Set to true if all set of users are needed.
+  ///
+  /// Required.
+  core.bool? isAllUsersRequested;
+
+  AllUsers({
+    this.isAllUsersRequested,
+  });
+
+  AllUsers.fromJson(core.Map json_)
+      : this(
+          isAllUsersRequested: json_.containsKey('isAllUsersRequested')
+              ? json_['isAllUsersRequested'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (isAllUsersRequested != null)
+          'isAllUsersRequested': isAllUsersRequested!,
+      };
+}
+
+/// Android api level targeting data for app recovery action targeting.
+class AndroidSdks {
+  /// Android api levels of devices targeted by recovery action.
+  ///
+  /// See
+  /// https://developer.android.com/guide/topics/manifest/uses-sdk-element#ApiLevels
+  /// for different api levels in android.
+  core.List<core.String>? sdkLevels;
+
+  AndroidSdks({
+    this.sdkLevels,
+  });
+
+  AndroidSdks.fromJson(core.Map json_)
+      : this(
+          sdkLevels: json_.containsKey('sdkLevels')
+              ? (json_['sdkLevels'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (sdkLevels != null) 'sdkLevels': sdkLevels!,
+      };
+}
 
 /// Information about an APK.
 ///
@@ -5888,8 +7132,165 @@ class AppEdit {
       };
 }
 
-/// Request message for ArchiveSubscription.
-typedef ArchiveSubscriptionRequest = $Empty;
+/// Information about an app recovery action.
+class AppRecoveryAction {
+  /// ID corresponding to the app recovery action.
+  core.String? appRecoveryId;
+
+  /// Timestamp of when the app recovery action is canceled by the developer.
+  ///
+  /// Only set if the recovery action has been canceled.
+  core.String? cancelTime;
+
+  /// Timestamp of when the app recovery action is created by the developer.
+  ///
+  /// It is always set after creation of the recovery action.
+  core.String? createTime;
+
+  /// Timestamp of when the app recovery action is deployed to the users.
+  ///
+  /// Only set if the recovery action has been deployed.
+  core.String? deployTime;
+
+  /// Timestamp of when the developer last updated recovery action.
+  ///
+  /// In case the action is cancelled, it corresponds to cancellation time. It
+  /// is always set after creation of the recovery action.
+  core.String? lastUpdateTime;
+
+  /// Data about the remote in-app update action such as such as recovered user
+  /// base, recoverable user base etc.
+  ///
+  /// Set only if the recovery action type is Remote In-App Update.
+  RemoteInAppUpdateData? remoteInAppUpdateData;
+
+  /// The status of the recovery action.
+  /// Possible string values are:
+  /// - "RECOVERY_STATUS_UNSPECIFIED" : RecoveryStatus is unspecified.
+  /// - "RECOVERY_STATUS_ACTIVE" : The app recovery action has not been canceled
+  /// since it has been created.
+  /// - "RECOVERY_STATUS_CANCELED" : The recovery action has been canceled. The
+  /// action cannot be resumed.
+  /// - "RECOVERY_STATUS_DRAFT" : The recovery action is in the draft state and
+  /// has not yet been deployed to users.
+  /// - "RECOVERY_STATUS_GENERATION_IN_PROGRESS" : The recovery action is
+  /// generating recovery apks.
+  /// - "RECOVERY_STATUS_GENERATION_FAILED" : The app recovery action generation
+  /// has failed.
+  core.String? status;
+
+  /// Specifies targeting criteria for the recovery action such as regions,
+  /// android sdk versions, app versions etc.
+  Targeting? targeting;
+
+  AppRecoveryAction({
+    this.appRecoveryId,
+    this.cancelTime,
+    this.createTime,
+    this.deployTime,
+    this.lastUpdateTime,
+    this.remoteInAppUpdateData,
+    this.status,
+    this.targeting,
+  });
+
+  AppRecoveryAction.fromJson(core.Map json_)
+      : this(
+          appRecoveryId: json_.containsKey('appRecoveryId')
+              ? json_['appRecoveryId'] as core.String
+              : null,
+          cancelTime: json_.containsKey('cancelTime')
+              ? json_['cancelTime'] as core.String
+              : null,
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          deployTime: json_.containsKey('deployTime')
+              ? json_['deployTime'] as core.String
+              : null,
+          lastUpdateTime: json_.containsKey('lastUpdateTime')
+              ? json_['lastUpdateTime'] as core.String
+              : null,
+          remoteInAppUpdateData: json_.containsKey('remoteInAppUpdateData')
+              ? RemoteInAppUpdateData.fromJson(json_['remoteInAppUpdateData']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          status: json_.containsKey('status')
+              ? json_['status'] as core.String
+              : null,
+          targeting: json_.containsKey('targeting')
+              ? Targeting.fromJson(
+                  json_['targeting'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (appRecoveryId != null) 'appRecoveryId': appRecoveryId!,
+        if (cancelTime != null) 'cancelTime': cancelTime!,
+        if (createTime != null) 'createTime': createTime!,
+        if (deployTime != null) 'deployTime': deployTime!,
+        if (lastUpdateTime != null) 'lastUpdateTime': lastUpdateTime!,
+        if (remoteInAppUpdateData != null)
+          'remoteInAppUpdateData': remoteInAppUpdateData!,
+        if (status != null) 'status': status!,
+        if (targeting != null) 'targeting': targeting!,
+      };
+}
+
+/// Data format for a list of app versions.
+class AppVersionList {
+  /// List of app version codes.
+  core.List<core.String>? versionCodes;
+
+  AppVersionList({
+    this.versionCodes,
+  });
+
+  AppVersionList.fromJson(core.Map json_)
+      : this(
+          versionCodes: json_.containsKey('versionCodes')
+              ? (json_['versionCodes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (versionCodes != null) 'versionCodes': versionCodes!,
+      };
+}
+
+/// Data format for a continuous range of app versions.
+class AppVersionRange {
+  /// Highest app version in the range, inclusive.
+  core.String? versionCodeEnd;
+
+  /// Lowest app version in the range, inclusive.
+  core.String? versionCodeStart;
+
+  AppVersionRange({
+    this.versionCodeEnd,
+    this.versionCodeStart,
+  });
+
+  AppVersionRange.fromJson(core.Map json_)
+      : this(
+          versionCodeEnd: json_.containsKey('versionCodeEnd')
+              ? json_['versionCodeEnd'] as core.String
+              : null,
+          versionCodeStart: json_.containsKey('versionCodeStart')
+              ? json_['versionCodeStart'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (versionCodeEnd != null) 'versionCodeEnd': versionCodeEnd!,
+        if (versionCodeStart != null) 'versionCodeStart': versionCodeStart!,
+      };
+}
+
+/// Deprecated: subscription archiving is not supported.
+typedef ArchiveSubscriptionRequest = $Shared01;
 
 /// Metadata of an asset module.
 class AssetModuleMetadata {
@@ -5965,6 +7366,14 @@ class AssetSliceSet {
 /// Represents a base plan that automatically renews at the end of its
 /// subscription period.
 class AutoRenewingBasePlanType {
+  /// Account hold period of the subscription, specified in ISO 8601 format.
+  ///
+  /// Acceptable values must be in DAYS and in the range P0D (zero days) to P30D
+  /// (30 days). If not specified, the default value is P30D (30 days).
+  ///
+  /// Optional.
+  core.String? accountHoldDuration;
+
   /// Subscription period, specified in ISO 8601 format.
   ///
   /// For a list of acceptable billing periods, refer to the help center.
@@ -6021,6 +7430,7 @@ class AutoRenewingBasePlanType {
   core.String? resubscribeState;
 
   AutoRenewingBasePlanType({
+    this.accountHoldDuration,
     this.billingPeriodDuration,
     this.gracePeriodDuration,
     this.legacyCompatible,
@@ -6031,6 +7441,9 @@ class AutoRenewingBasePlanType {
 
   AutoRenewingBasePlanType.fromJson(core.Map json_)
       : this(
+          accountHoldDuration: json_.containsKey('accountHoldDuration')
+              ? json_['accountHoldDuration'] as core.String
+              : null,
           billingPeriodDuration: json_.containsKey('billingPeriodDuration')
               ? json_['billingPeriodDuration'] as core.String
               : null,
@@ -6053,6 +7466,8 @@ class AutoRenewingBasePlanType {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (accountHoldDuration != null)
+          'accountHoldDuration': accountHoldDuration!,
         if (billingPeriodDuration != null)
           'billingPeriodDuration': billingPeriodDuration!,
         if (gracePeriodDuration != null)
@@ -6210,6 +7625,347 @@ class BasePlan {
       };
 }
 
+/// Request message for BatchGetSubscriptionOffers endpoint.
+class BatchGetSubscriptionOffersRequest {
+  /// A list of update requests of up to 100 elements.
+  ///
+  /// All requests must update different subscriptions.
+  ///
+  /// Required.
+  core.List<GetSubscriptionOfferRequest>? requests;
+
+  BatchGetSubscriptionOffersRequest({
+    this.requests,
+  });
+
+  BatchGetSubscriptionOffersRequest.fromJson(core.Map json_)
+      : this(
+          requests: json_.containsKey('requests')
+              ? (json_['requests'] as core.List)
+                  .map((value) => GetSubscriptionOfferRequest.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (requests != null) 'requests': requests!,
+      };
+}
+
+/// Response message for BatchGetSubscriptionOffers endpoint.
+class BatchGetSubscriptionOffersResponse {
+  core.List<SubscriptionOffer>? subscriptionOffers;
+
+  BatchGetSubscriptionOffersResponse({
+    this.subscriptionOffers,
+  });
+
+  BatchGetSubscriptionOffersResponse.fromJson(core.Map json_)
+      : this(
+          subscriptionOffers: json_.containsKey('subscriptionOffers')
+              ? (json_['subscriptionOffers'] as core.List)
+                  .map((value) => SubscriptionOffer.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (subscriptionOffers != null)
+          'subscriptionOffers': subscriptionOffers!,
+      };
+}
+
+/// Response message for BatchGetSubscriptions endpoint.
+class BatchGetSubscriptionsResponse {
+  /// The list of requested subscriptions, in the same order as the request.
+  core.List<Subscription>? subscriptions;
+
+  BatchGetSubscriptionsResponse({
+    this.subscriptions,
+  });
+
+  BatchGetSubscriptionsResponse.fromJson(core.Map json_)
+      : this(
+          subscriptions: json_.containsKey('subscriptions')
+              ? (json_['subscriptions'] as core.List)
+                  .map((value) => Subscription.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (subscriptions != null) 'subscriptions': subscriptions!,
+      };
+}
+
+/// Request message for BatchMigrateBasePlanPrices.
+class BatchMigrateBasePlanPricesRequest {
+  /// Up to 100 price migration requests.
+  ///
+  /// All requests must update different base plans.
+  ///
+  /// Required.
+  core.List<MigrateBasePlanPricesRequest>? requests;
+
+  BatchMigrateBasePlanPricesRequest({
+    this.requests,
+  });
+
+  BatchMigrateBasePlanPricesRequest.fromJson(core.Map json_)
+      : this(
+          requests: json_.containsKey('requests')
+              ? (json_['requests'] as core.List)
+                  .map((value) => MigrateBasePlanPricesRequest.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (requests != null) 'requests': requests!,
+      };
+}
+
+/// Response message for BatchMigrateBasePlanPrices.
+class BatchMigrateBasePlanPricesResponse {
+  /// Contains one response per requested price migration, in the same order as
+  /// the request.
+  core.List<MigrateBasePlanPricesResponse>? responses;
+
+  BatchMigrateBasePlanPricesResponse({
+    this.responses,
+  });
+
+  BatchMigrateBasePlanPricesResponse.fromJson(core.Map json_)
+      : this(
+          responses: json_.containsKey('responses')
+              ? (json_['responses'] as core.List)
+                  .map((value) => MigrateBasePlanPricesResponse.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (responses != null) 'responses': responses!,
+      };
+}
+
+/// Request message for BatchUpdateBasePlanStates.
+class BatchUpdateBasePlanStatesRequest {
+  /// The update request list of up to 100 elements.
+  ///
+  /// All requests must update different base plans.
+  ///
+  /// Required.
+  core.List<UpdateBasePlanStateRequest>? requests;
+
+  BatchUpdateBasePlanStatesRequest({
+    this.requests,
+  });
+
+  BatchUpdateBasePlanStatesRequest.fromJson(core.Map json_)
+      : this(
+          requests: json_.containsKey('requests')
+              ? (json_['requests'] as core.List)
+                  .map((value) => UpdateBasePlanStateRequest.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (requests != null) 'requests': requests!,
+      };
+}
+
+/// Response message for BatchUpdateBasePlanStates.
+class BatchUpdateBasePlanStatesResponse {
+  /// The list of updated subscriptions.
+  ///
+  /// This list will match the requests one to one, in the same order.
+  core.List<Subscription>? subscriptions;
+
+  BatchUpdateBasePlanStatesResponse({
+    this.subscriptions,
+  });
+
+  BatchUpdateBasePlanStatesResponse.fromJson(core.Map json_)
+      : this(
+          subscriptions: json_.containsKey('subscriptions')
+              ? (json_['subscriptions'] as core.List)
+                  .map((value) => Subscription.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (subscriptions != null) 'subscriptions': subscriptions!,
+      };
+}
+
+/// Request message for BatchUpdateSubscriptionOfferStates.
+class BatchUpdateSubscriptionOfferStatesRequest {
+  /// The update request list of up to 100 elements.
+  ///
+  /// All requests must update different offers.
+  ///
+  /// Required.
+  core.List<UpdateSubscriptionOfferStateRequest>? requests;
+
+  BatchUpdateSubscriptionOfferStatesRequest({
+    this.requests,
+  });
+
+  BatchUpdateSubscriptionOfferStatesRequest.fromJson(core.Map json_)
+      : this(
+          requests: json_.containsKey('requests')
+              ? (json_['requests'] as core.List)
+                  .map((value) => UpdateSubscriptionOfferStateRequest.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (requests != null) 'requests': requests!,
+      };
+}
+
+/// Response message for BatchUpdateSubscriptionOfferStates.
+class BatchUpdateSubscriptionOfferStatesResponse {
+  /// The updated subscription offers list.
+  core.List<SubscriptionOffer>? subscriptionOffers;
+
+  BatchUpdateSubscriptionOfferStatesResponse({
+    this.subscriptionOffers,
+  });
+
+  BatchUpdateSubscriptionOfferStatesResponse.fromJson(core.Map json_)
+      : this(
+          subscriptionOffers: json_.containsKey('subscriptionOffers')
+              ? (json_['subscriptionOffers'] as core.List)
+                  .map((value) => SubscriptionOffer.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (subscriptionOffers != null)
+          'subscriptionOffers': subscriptionOffers!,
+      };
+}
+
+/// Request message for BatchUpdateSubscriptionOffers.
+class BatchUpdateSubscriptionOffersRequest {
+  /// A list of update requests of up to 100 elements.
+  ///
+  /// All requests must update different subscription offers.
+  ///
+  /// Required.
+  core.List<UpdateSubscriptionOfferRequest>? requests;
+
+  BatchUpdateSubscriptionOffersRequest({
+    this.requests,
+  });
+
+  BatchUpdateSubscriptionOffersRequest.fromJson(core.Map json_)
+      : this(
+          requests: json_.containsKey('requests')
+              ? (json_['requests'] as core.List)
+                  .map((value) => UpdateSubscriptionOfferRequest.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (requests != null) 'requests': requests!,
+      };
+}
+
+/// Response message for BatchUpdateSubscriptionOffers.
+class BatchUpdateSubscriptionOffersResponse {
+  /// The updated subscription offers list.
+  core.List<SubscriptionOffer>? subscriptionOffers;
+
+  BatchUpdateSubscriptionOffersResponse({
+    this.subscriptionOffers,
+  });
+
+  BatchUpdateSubscriptionOffersResponse.fromJson(core.Map json_)
+      : this(
+          subscriptionOffers: json_.containsKey('subscriptionOffers')
+              ? (json_['subscriptionOffers'] as core.List)
+                  .map((value) => SubscriptionOffer.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (subscriptionOffers != null)
+          'subscriptionOffers': subscriptionOffers!,
+      };
+}
+
+/// Request message for BatchUpdateSubscription.
+class BatchUpdateSubscriptionsRequest {
+  /// A list of update requests of up to 100 elements.
+  ///
+  /// All requests must update different subscriptions.
+  ///
+  /// Required.
+  core.List<UpdateSubscriptionRequest>? requests;
+
+  BatchUpdateSubscriptionsRequest({
+    this.requests,
+  });
+
+  BatchUpdateSubscriptionsRequest.fromJson(core.Map json_)
+      : this(
+          requests: json_.containsKey('requests')
+              ? (json_['requests'] as core.List)
+                  .map((value) => UpdateSubscriptionRequest.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (requests != null) 'requests': requests!,
+      };
+}
+
+/// Response message for BatchUpdateSubscription.
+class BatchUpdateSubscriptionsResponse {
+  /// The updated subscriptions list.
+  core.List<Subscription>? subscriptions;
+
+  BatchUpdateSubscriptionsResponse({
+    this.subscriptions,
+  });
+
+  BatchUpdateSubscriptionsResponse.fromJson(core.Map json_)
+      : this(
+          subscriptions: json_.containsKey('subscriptions')
+              ? (json_['subscriptions'] as core.List)
+                  .map((value) => Subscription.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (subscriptions != null) 'subscriptions': subscriptions!,
+      };
+}
+
 /// Information about an app bundle.
 ///
 /// The resource for BundlesService.
@@ -6279,6 +8035,12 @@ class BundlesListResponse {
         if (kind != null) 'kind': kind!,
       };
 }
+
+/// Request message for CancelAppRecovery.
+typedef CancelAppRecoveryRequest = $Empty;
+
+/// Response message for CancelAppRecovery.
+typedef CancelAppRecoveryResponse = $Empty;
 
 /// Result of the cancel survey when the subscription was canceled by the user.
 class CancelSurveyResult {
@@ -6582,11 +8344,180 @@ class CountryTargeting {
       };
 }
 
+/// Request message for CreateDraftAppRecovery.
+class CreateDraftAppRecoveryRequest {
+  /// Action type is remote in-app update.
+  ///
+  /// As a consequence of this action, a downloadable recovery module is also
+  /// created for testing purposes.
+  RemoteInAppUpdate? remoteInAppUpdate;
+
+  /// Specifies targeting criteria for the recovery action such as regions,
+  /// android sdk versions, app versions etc.
+  Targeting? targeting;
+
+  CreateDraftAppRecoveryRequest({
+    this.remoteInAppUpdate,
+    this.targeting,
+  });
+
+  CreateDraftAppRecoveryRequest.fromJson(core.Map json_)
+      : this(
+          remoteInAppUpdate: json_.containsKey('remoteInAppUpdate')
+              ? RemoteInAppUpdate.fromJson(json_['remoteInAppUpdate']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          targeting: json_.containsKey('targeting')
+              ? Targeting.fromJson(
+                  json_['targeting'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (remoteInAppUpdate != null) 'remoteInAppUpdate': remoteInAppUpdate!,
+        if (targeting != null) 'targeting': targeting!,
+      };
+}
+
 /// Request message for DeactivateBasePlan.
-typedef DeactivateBasePlanRequest = $Empty;
+class DeactivateBasePlanRequest {
+  /// The unique base plan ID of the base plan to deactivate.
+  ///
+  /// Required.
+  core.String? basePlanId;
+
+  /// The latency tolerance for the propagation of this product update.
+  ///
+  /// Defaults to latency-sensitive.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED" : Defaults to
+  /// PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE.
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE" : The update will
+  /// propagate to clients within several minutes on average and up to a few
+  /// hours in rare cases. Throughput is limited to 7,200 updates per app per
+  /// hour.
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT" : The update will
+  /// propagate to clients within 24 hours. Supports high throughput of up to
+  /// 720,000 updates per app per hour using batch modification methods.
+  core.String? latencyTolerance;
+
+  /// The parent app (package name) of the base plan to deactivate.
+  ///
+  /// Required.
+  core.String? packageName;
+
+  /// The parent subscription (ID) of the base plan to deactivate.
+  ///
+  /// Required.
+  core.String? productId;
+
+  DeactivateBasePlanRequest({
+    this.basePlanId,
+    this.latencyTolerance,
+    this.packageName,
+    this.productId,
+  });
+
+  DeactivateBasePlanRequest.fromJson(core.Map json_)
+      : this(
+          basePlanId: json_.containsKey('basePlanId')
+              ? json_['basePlanId'] as core.String
+              : null,
+          latencyTolerance: json_.containsKey('latencyTolerance')
+              ? json_['latencyTolerance'] as core.String
+              : null,
+          packageName: json_.containsKey('packageName')
+              ? json_['packageName'] as core.String
+              : null,
+          productId: json_.containsKey('productId')
+              ? json_['productId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (basePlanId != null) 'basePlanId': basePlanId!,
+        if (latencyTolerance != null) 'latencyTolerance': latencyTolerance!,
+        if (packageName != null) 'packageName': packageName!,
+        if (productId != null) 'productId': productId!,
+      };
+}
 
 /// Request message for DeactivateSubscriptionOffer.
-typedef DeactivateSubscriptionOfferRequest = $Empty;
+class DeactivateSubscriptionOfferRequest {
+  /// The parent base plan (ID) of the offer to deactivate.
+  ///
+  /// Required.
+  core.String? basePlanId;
+
+  /// The latency tolerance for the propagation of this product update.
+  ///
+  /// Defaults to latency-sensitive.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED" : Defaults to
+  /// PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE.
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE" : The update will
+  /// propagate to clients within several minutes on average and up to a few
+  /// hours in rare cases. Throughput is limited to 7,200 updates per app per
+  /// hour.
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT" : The update will
+  /// propagate to clients within 24 hours. Supports high throughput of up to
+  /// 720,000 updates per app per hour using batch modification methods.
+  core.String? latencyTolerance;
+
+  /// The unique offer ID of the offer to deactivate.
+  ///
+  /// Required.
+  core.String? offerId;
+
+  /// The parent app (package name) of the offer to deactivate.
+  ///
+  /// Required.
+  core.String? packageName;
+
+  /// The parent subscription (ID) of the offer to deactivate.
+  ///
+  /// Required.
+  core.String? productId;
+
+  DeactivateSubscriptionOfferRequest({
+    this.basePlanId,
+    this.latencyTolerance,
+    this.offerId,
+    this.packageName,
+    this.productId,
+  });
+
+  DeactivateSubscriptionOfferRequest.fromJson(core.Map json_)
+      : this(
+          basePlanId: json_.containsKey('basePlanId')
+              ? json_['basePlanId'] as core.String
+              : null,
+          latencyTolerance: json_.containsKey('latencyTolerance')
+              ? json_['latencyTolerance'] as core.String
+              : null,
+          offerId: json_.containsKey('offerId')
+              ? json_['offerId'] as core.String
+              : null,
+          packageName: json_.containsKey('packageName')
+              ? json_['packageName'] as core.String
+              : null,
+          productId: json_.containsKey('productId')
+              ? json_['productId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (basePlanId != null) 'basePlanId': basePlanId!,
+        if (latencyTolerance != null) 'latencyTolerance': latencyTolerance!,
+        if (offerId != null) 'offerId': offerId!,
+        if (packageName != null) 'packageName': packageName!,
+        if (productId != null) 'productId': productId!,
+      };
+}
 
 /// Information related to deferred item replacement.
 class DeferredItemReplacement {
@@ -6656,6 +8587,12 @@ class DeobfuscationFilesUploadResponse {
         if (deobfuscationFile != null) 'deobfuscationFile': deobfuscationFile!,
       };
 }
+
+/// Request message for DeployAppRecovery.
+typedef DeployAppRecoveryRequest = $Empty;
+
+/// Response message for DeployAppRecovery.
+typedef DeployAppRecoveryResponse = $Empty;
 
 /// Developer entry from conversation between user and developer.
 class DeveloperComment {
@@ -7509,23 +9446,44 @@ class ExternalTransaction {
 
 /// User's address for the external transaction.
 class ExternalTransactionAddress {
+  /// Top-level administrative subdivision of the country/region.
+  ///
+  /// Only required for transactions in India. Valid values are "ANDAMAN AND
+  /// NICOBAR ISLANDS", "ANDHRA PRADESH", "ARUNACHAL PRADESH", "ASSAM", "BIHAR",
+  /// "CHANDIGARH", "CHHATTISGARH", "DADRA AND NAGAR HAVELI", "DADRA AND NAGAR
+  /// HAVELI AND DAMAN AND DIU", "DAMAN AND DIU", "DELHI", "GOA", "GUJARAT",
+  /// "HARYANA", "HIMACHAL PRADESH", "JAMMU AND KASHMIR", "JHARKHAND",
+  /// "KARNATAKA", "KERALA", "LADAKH", "LAKSHADWEEP", "MADHYA PRADESH",
+  /// "MAHARASHTRA", "MANIPUR", "MEGHALAYA", "MIZORAM", "NAGALAND", "ODISHA",
+  /// "PUDUCHERRY", "PUNJAB", "RAJASTHAN", "SIKKIM", "TAMIL NADU", "TELANGANA",
+  /// "TRIPURA", "UTTAR PRADESH", "UTTARAKHAND", and "WEST BENGAL".
+  ///
+  /// Optional.
+  core.String? administrativeArea;
+
   /// Two letter region code based on ISO-3166-1 Alpha-2 (UN region codes).
   ///
   /// Required.
   core.String? regionCode;
 
   ExternalTransactionAddress({
+    this.administrativeArea,
     this.regionCode,
   });
 
   ExternalTransactionAddress.fromJson(core.Map json_)
       : this(
+          administrativeArea: json_.containsKey('administrativeArea')
+              ? json_['administrativeArea'] as core.String
+              : null,
           regionCode: json_.containsKey('regionCode')
               ? json_['regionCode'] as core.String
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (administrativeArea != null)
+          'administrativeArea': administrativeArea!,
         if (regionCode != null) 'regionCode': regionCode!,
       };
 }
@@ -7724,6 +9682,14 @@ class GeneratedApksPerSigningKey {
   /// with a key corresponding to certificate_sha256_hash.
   core.List<GeneratedAssetPackSlice>? generatedAssetPackSlices;
 
+  /// Generated recovery apks for recovery actions signed with a key
+  /// corresponding to certificate_sha256_hash.
+  ///
+  /// This includes all generated recovery APKs, also those in draft or
+  /// cancelled state. This field is not set if no recovery actions were created
+  /// for this signing key.
+  core.List<GeneratedRecoveryApk>? generatedRecoveryModules;
+
   /// List of generated split APKs, signed with a key corresponding to
   /// certificate_sha256_hash.
   core.List<GeneratedSplitApk>? generatedSplitApks;
@@ -7745,6 +9711,7 @@ class GeneratedApksPerSigningKey {
   GeneratedApksPerSigningKey({
     this.certificateSha256Hash,
     this.generatedAssetPackSlices,
+    this.generatedRecoveryModules,
     this.generatedSplitApks,
     this.generatedStandaloneApks,
     this.generatedUniversalApk,
@@ -7760,6 +9727,13 @@ class GeneratedApksPerSigningKey {
               json_.containsKey('generatedAssetPackSlices')
                   ? (json_['generatedAssetPackSlices'] as core.List)
                       .map((value) => GeneratedAssetPackSlice.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+          generatedRecoveryModules:
+              json_.containsKey('generatedRecoveryModules')
+                  ? (json_['generatedRecoveryModules'] as core.List)
+                      .map((value) => GeneratedRecoveryApk.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                       .toList()
                   : null,
@@ -7790,6 +9764,8 @@ class GeneratedApksPerSigningKey {
           'certificateSha256Hash': certificateSha256Hash!,
         if (generatedAssetPackSlices != null)
           'generatedAssetPackSlices': generatedAssetPackSlices!,
+        if (generatedRecoveryModules != null)
+          'generatedRecoveryModules': generatedRecoveryModules!,
         if (generatedSplitApks != null)
           'generatedSplitApks': generatedSplitApks!,
         if (generatedStandaloneApks != null)
@@ -7844,6 +9820,65 @@ class GeneratedAssetPackSlice {
         if (moduleName != null) 'moduleName': moduleName!,
         if (sliceId != null) 'sliceId': sliceId!,
         if (version != null) 'version': version!,
+      };
+}
+
+/// Download metadata for an app recovery module.
+class GeneratedRecoveryApk {
+  /// Download ID, which uniquely identifies the APK to download.
+  ///
+  /// Should be supplied to `generatedapks.download` method.
+  core.String? downloadId;
+
+  /// Name of the module which recovery apk belongs to.
+  core.String? moduleName;
+
+  /// ID of the recovery action.
+  core.String? recoveryId;
+
+  /// The status of the recovery action corresponding to the recovery apk.
+  /// Possible string values are:
+  /// - "RECOVERY_STATUS_UNSPECIFIED" : RecoveryStatus is unspecified.
+  /// - "RECOVERY_STATUS_ACTIVE" : The app recovery action has not been canceled
+  /// since it has been created.
+  /// - "RECOVERY_STATUS_CANCELED" : The recovery action has been canceled. The
+  /// action cannot be resumed.
+  /// - "RECOVERY_STATUS_DRAFT" : The recovery action is in the draft state and
+  /// has not yet been deployed to users.
+  /// - "RECOVERY_STATUS_GENERATION_IN_PROGRESS" : The recovery action is
+  /// generating recovery apks.
+  /// - "RECOVERY_STATUS_GENERATION_FAILED" : The app recovery action generation
+  /// has failed.
+  core.String? recoveryStatus;
+
+  GeneratedRecoveryApk({
+    this.downloadId,
+    this.moduleName,
+    this.recoveryId,
+    this.recoveryStatus,
+  });
+
+  GeneratedRecoveryApk.fromJson(core.Map json_)
+      : this(
+          downloadId: json_.containsKey('downloadId')
+              ? json_['downloadId'] as core.String
+              : null,
+          moduleName: json_.containsKey('moduleName')
+              ? json_['moduleName'] as core.String
+              : null,
+          recoveryId: json_.containsKey('recoveryId')
+              ? json_['recoveryId'] as core.String
+              : null,
+          recoveryStatus: json_.containsKey('recoveryStatus')
+              ? json_['recoveryStatus'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (downloadId != null) 'downloadId': downloadId!,
+        if (moduleName != null) 'moduleName': moduleName!,
+        if (recoveryId != null) 'recoveryId': recoveryId!,
+        if (recoveryStatus != null) 'recoveryStatus': recoveryStatus!,
       };
 }
 
@@ -7947,6 +9982,59 @@ class GeneratedUniversalApk {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (downloadId != null) 'downloadId': downloadId!,
+      };
+}
+
+/// Request message for GetSubscriptionOffer.
+class GetSubscriptionOfferRequest {
+  /// The parent base plan (ID) of the offer to get.
+  ///
+  /// Required.
+  core.String? basePlanId;
+
+  /// The unique offer ID of the offer to get.
+  ///
+  /// Required.
+  core.String? offerId;
+
+  /// The parent app (package name) of the offer to get.
+  ///
+  /// Required.
+  core.String? packageName;
+
+  /// The parent subscription (ID) of the offer to get.
+  ///
+  /// Required.
+  core.String? productId;
+
+  GetSubscriptionOfferRequest({
+    this.basePlanId,
+    this.offerId,
+    this.packageName,
+    this.productId,
+  });
+
+  GetSubscriptionOfferRequest.fromJson(core.Map json_)
+      : this(
+          basePlanId: json_.containsKey('basePlanId')
+              ? json_['basePlanId'] as core.String
+              : null,
+          offerId: json_.containsKey('offerId')
+              ? json_['offerId'] as core.String
+              : null,
+          packageName: json_.containsKey('packageName')
+              ? json_['packageName'] as core.String
+              : null,
+          productId: json_.containsKey('productId')
+              ? json_['productId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (basePlanId != null) 'basePlanId': basePlanId!,
+        if (offerId != null) 'offerId': offerId!,
+        if (packageName != null) 'packageName': packageName!,
+        if (productId != null) 'productId': productId!,
       };
 }
 
@@ -8324,6 +10412,159 @@ class InAppProductListing {
       };
 }
 
+/// Request to delete multiple in-app products.
+class InappproductsBatchDeleteRequest {
+  /// Individual delete requests.
+  ///
+  /// At least one request is required. Can contain up to 100 requests. All
+  /// requests must correspond to different in-app products.
+  core.List<InappproductsDeleteRequest>? requests;
+
+  InappproductsBatchDeleteRequest({
+    this.requests,
+  });
+
+  InappproductsBatchDeleteRequest.fromJson(core.Map json_)
+      : this(
+          requests: json_.containsKey('requests')
+              ? (json_['requests'] as core.List)
+                  .map((value) => InappproductsDeleteRequest.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (requests != null) 'requests': requests!,
+      };
+}
+
+/// Response message for BatchGetSubscriptions endpoint.
+class InappproductsBatchGetResponse {
+  /// The list of requested in-app products, in the same order as the request.
+  core.List<InAppProduct>? inappproduct;
+
+  InappproductsBatchGetResponse({
+    this.inappproduct,
+  });
+
+  InappproductsBatchGetResponse.fromJson(core.Map json_)
+      : this(
+          inappproduct: json_.containsKey('inappproduct')
+              ? (json_['inappproduct'] as core.List)
+                  .map((value) => InAppProduct.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (inappproduct != null) 'inappproduct': inappproduct!,
+      };
+}
+
+/// Request to update or insert one or more in-app products.
+class InappproductsBatchUpdateRequest {
+  /// Individual update requests.
+  ///
+  /// At least one request is required. Can contain up to 100 requests. All
+  /// requests must correspond to different in-app products.
+  ///
+  /// Required.
+  core.List<InappproductsUpdateRequest>? requests;
+
+  InappproductsBatchUpdateRequest({
+    this.requests,
+  });
+
+  InappproductsBatchUpdateRequest.fromJson(core.Map json_)
+      : this(
+          requests: json_.containsKey('requests')
+              ? (json_['requests'] as core.List)
+                  .map((value) => InappproductsUpdateRequest.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (requests != null) 'requests': requests!,
+      };
+}
+
+/// Response for a batch in-app product update.
+class InappproductsBatchUpdateResponse {
+  /// The updated or inserted in-app products.
+  core.List<InAppProduct>? inappproducts;
+
+  InappproductsBatchUpdateResponse({
+    this.inappproducts,
+  });
+
+  InappproductsBatchUpdateResponse.fromJson(core.Map json_)
+      : this(
+          inappproducts: json_.containsKey('inappproducts')
+              ? (json_['inappproducts'] as core.List)
+                  .map((value) => InAppProduct.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (inappproducts != null) 'inappproducts': inappproducts!,
+      };
+}
+
+/// Request to delete an in-app product.
+class InappproductsDeleteRequest {
+  /// The latency tolerance for the propagation of this product update.
+  ///
+  /// Defaults to latency-sensitive.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED" : Defaults to
+  /// PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE.
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE" : The update will
+  /// propagate to clients within several minutes on average and up to a few
+  /// hours in rare cases. Throughput is limited to 7,200 updates per app per
+  /// hour.
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT" : The update will
+  /// propagate to clients within 24 hours. Supports high throughput of up to
+  /// 720,000 updates per app per hour using batch modification methods.
+  core.String? latencyTolerance;
+
+  /// Package name of the app.
+  core.String? packageName;
+
+  /// Unique identifier for the in-app product.
+  core.String? sku;
+
+  InappproductsDeleteRequest({
+    this.latencyTolerance,
+    this.packageName,
+    this.sku,
+  });
+
+  InappproductsDeleteRequest.fromJson(core.Map json_)
+      : this(
+          latencyTolerance: json_.containsKey('latencyTolerance')
+              ? json_['latencyTolerance'] as core.String
+              : null,
+          packageName: json_.containsKey('packageName')
+              ? json_['packageName'] as core.String
+              : null,
+          sku: json_.containsKey('sku') ? json_['sku'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (latencyTolerance != null) 'latencyTolerance': latencyTolerance!,
+        if (packageName != null) 'packageName': packageName!,
+        if (sku != null) 'sku': sku!,
+      };
+}
+
 /// Response listing all in-app products.
 class InappproductsListResponse {
   /// All in-app products.
@@ -8372,6 +10613,87 @@ class InappproductsListResponse {
         if (kind != null) 'kind': kind!,
         if (pageInfo != null) 'pageInfo': pageInfo!,
         if (tokenPagination != null) 'tokenPagination': tokenPagination!,
+      };
+}
+
+/// Request to update an in-app product.
+class InappproductsUpdateRequest {
+  /// If set to true, and the in-app product with the given package_name and sku
+  /// doesn't exist, the in-app product will be created.
+  core.bool? allowMissing;
+
+  /// If true the prices for all regions targeted by the parent app that don't
+  /// have a price specified for this in-app product will be auto converted to
+  /// the target currency based on the default price.
+  ///
+  /// Defaults to false.
+  core.bool? autoConvertMissingPrices;
+
+  /// The new in-app product.
+  InAppProduct? inappproduct;
+
+  /// The latency tolerance for the propagation of this product update.
+  ///
+  /// Defaults to latency-sensitive.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED" : Defaults to
+  /// PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE.
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE" : The update will
+  /// propagate to clients within several minutes on average and up to a few
+  /// hours in rare cases. Throughput is limited to 7,200 updates per app per
+  /// hour.
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT" : The update will
+  /// propagate to clients within 24 hours. Supports high throughput of up to
+  /// 720,000 updates per app per hour using batch modification methods.
+  core.String? latencyTolerance;
+
+  /// Package name of the app.
+  core.String? packageName;
+
+  /// Unique identifier for the in-app product.
+  core.String? sku;
+
+  InappproductsUpdateRequest({
+    this.allowMissing,
+    this.autoConvertMissingPrices,
+    this.inappproduct,
+    this.latencyTolerance,
+    this.packageName,
+    this.sku,
+  });
+
+  InappproductsUpdateRequest.fromJson(core.Map json_)
+      : this(
+          allowMissing: json_.containsKey('allowMissing')
+              ? json_['allowMissing'] as core.bool
+              : null,
+          autoConvertMissingPrices:
+              json_.containsKey('autoConvertMissingPrices')
+                  ? json_['autoConvertMissingPrices'] as core.bool
+                  : null,
+          inappproduct: json_.containsKey('inappproduct')
+              ? InAppProduct.fromJson(
+                  json_['inappproduct'] as core.Map<core.String, core.dynamic>)
+              : null,
+          latencyTolerance: json_.containsKey('latencyTolerance')
+              ? json_['latencyTolerance'] as core.String
+              : null,
+          packageName: json_.containsKey('packageName')
+              ? json_['packageName'] as core.String
+              : null,
+          sku: json_.containsKey('sku') ? json_['sku'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (allowMissing != null) 'allowMissing': allowMissing!,
+        if (autoConvertMissingPrices != null)
+          'autoConvertMissingPrices': autoConvertMissingPrices!,
+        if (inappproduct != null) 'inappproduct': inappproduct!,
+        if (latencyTolerance != null) 'latencyTolerance': latencyTolerance!,
+        if (packageName != null) 'packageName': packageName!,
+        if (sku != null) 'sku': sku!,
       };
 }
 
@@ -8511,6 +10833,32 @@ class LanguageTargeting {
   core.Map<core.String, core.dynamic> toJson() => {
         if (alternatives != null) 'alternatives': alternatives!,
         if (value != null) 'value': value!,
+      };
+}
+
+/// Response message for ListAppRecoveries.
+///
+/// -- api-linter: core::0158::response-next-page-token-field=disabled
+class ListAppRecoveriesResponse {
+  /// List of recovery actions associated with the requested package name.
+  core.List<AppRecoveryAction>? recoveryActions;
+
+  ListAppRecoveriesResponse({
+    this.recoveryActions,
+  });
+
+  ListAppRecoveriesResponse.fromJson(core.Map json_)
+      : this(
+          recoveryActions: json_.containsKey('recoveryActions')
+              ? (json_['recoveryActions'] as core.List)
+                  .map((value) => AppRecoveryAction.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (recoveryActions != null) 'recoveryActions': recoveryActions!,
       };
 }
 
@@ -8779,6 +11127,10 @@ class ManagedProductTaxAndComplianceSettings {
   /// - "WITHDRAWAL_RIGHT_SERVICE"
   core.String? eeaWithdrawalRightType;
 
+  /// Whether this in-app product is declared as a product representing a
+  /// tokenized digital asset.
+  core.bool? isTokenizedDigitalAsset;
+
   /// A mapping from region code to tax rate details.
   ///
   /// The keys are region codes as defined by Unicode's "CLDR".
@@ -8786,6 +11138,7 @@ class ManagedProductTaxAndComplianceSettings {
 
   ManagedProductTaxAndComplianceSettings({
     this.eeaWithdrawalRightType,
+    this.isTokenizedDigitalAsset,
     this.taxRateInfoByRegionCode,
   });
 
@@ -8793,6 +11146,9 @@ class ManagedProductTaxAndComplianceSettings {
       : this(
           eeaWithdrawalRightType: json_.containsKey('eeaWithdrawalRightType')
               ? json_['eeaWithdrawalRightType'] as core.String
+              : null,
+          isTokenizedDigitalAsset: json_.containsKey('isTokenizedDigitalAsset')
+              ? json_['isTokenizedDigitalAsset'] as core.bool
               : null,
           taxRateInfoByRegionCode: json_.containsKey('taxRateInfoByRegionCode')
               ? (json_['taxRateInfoByRegionCode']
@@ -8810,6 +11166,8 @@ class ManagedProductTaxAndComplianceSettings {
   core.Map<core.String, core.dynamic> toJson() => {
         if (eeaWithdrawalRightType != null)
           'eeaWithdrawalRightType': eeaWithdrawalRightType!,
+        if (isTokenizedDigitalAsset != null)
+          'isTokenizedDigitalAsset': isTokenizedDigitalAsset!,
         if (taxRateInfoByRegionCode != null)
           'taxRateInfoByRegionCode': taxRateInfoByRegionCode!,
       };
@@ -8817,6 +11175,42 @@ class ManagedProductTaxAndComplianceSettings {
 
 /// Request message for MigrateBasePlanPrices.
 class MigrateBasePlanPricesRequest {
+  /// The unique base plan ID of the base plan to update prices on.
+  ///
+  /// Required.
+  core.String? basePlanId;
+
+  /// The latency tolerance for the propagation of this product update.
+  ///
+  /// Defaults to latency-sensitive.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED" : Defaults to
+  /// PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE.
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE" : The update will
+  /// propagate to clients within several minutes on average and up to a few
+  /// hours in rare cases. Throughput is limited to 7,200 updates per app per
+  /// hour.
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT" : The update will
+  /// propagate to clients within 24 hours. Supports high throughput of up to
+  /// 720,000 updates per app per hour using batch modification methods.
+  core.String? latencyTolerance;
+
+  /// Package name of the parent app.
+  ///
+  /// Must be equal to the package_name field on the Subscription resource.
+  ///
+  /// Required.
+  core.String? packageName;
+
+  /// The ID of the subscription to update.
+  ///
+  /// Must be equal to the product_id field on the Subscription resource.
+  ///
+  /// Required.
+  core.String? productId;
+
   /// The regional prices to update.
   ///
   /// Required.
@@ -8829,12 +11223,28 @@ class MigrateBasePlanPricesRequest {
   RegionsVersion? regionsVersion;
 
   MigrateBasePlanPricesRequest({
+    this.basePlanId,
+    this.latencyTolerance,
+    this.packageName,
+    this.productId,
     this.regionalPriceMigrations,
     this.regionsVersion,
   });
 
   MigrateBasePlanPricesRequest.fromJson(core.Map json_)
       : this(
+          basePlanId: json_.containsKey('basePlanId')
+              ? json_['basePlanId'] as core.String
+              : null,
+          latencyTolerance: json_.containsKey('latencyTolerance')
+              ? json_['latencyTolerance'] as core.String
+              : null,
+          packageName: json_.containsKey('packageName')
+              ? json_['packageName'] as core.String
+              : null,
+          productId: json_.containsKey('productId')
+              ? json_['productId'] as core.String
+              : null,
           regionalPriceMigrations: json_.containsKey('regionalPriceMigrations')
               ? (json_['regionalPriceMigrations'] as core.List)
                   .map((value) => RegionalPriceMigrationConfig.fromJson(
@@ -8848,6 +11258,10 @@ class MigrateBasePlanPricesRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (basePlanId != null) 'basePlanId': basePlanId!,
+        if (latencyTolerance != null) 'latencyTolerance': latencyTolerance!,
+        if (packageName != null) 'packageName': packageName!,
+        if (productId != null) 'productId': productId!,
         if (regionalPriceMigrations != null)
           'regionalPriceMigrations': regionalPriceMigrations!,
         if (regionsVersion != null) 'regionsVersion': regionsVersion!,
@@ -9656,10 +12070,24 @@ class RecurringExternalTransaction {
   /// first payment. Required when creating recurring external transactions.
   core.String? initialExternalTransactionId;
 
+  /// Input only.
+  ///
+  /// Provided during the call to Create. Must only be used when migrating a
+  /// subscription from manual monthly reporting to automated reporting.
+  /// Possible string values are:
+  /// - "EXTERNAL_TRANSACTION_PROGRAM_UNSPECIFIED" : Unspecified transaction
+  /// program. Not used.
+  /// - "USER_CHOICE_BILLING" : User choice billing, where a user may choose
+  /// between Google Play Billing developer-managed billing.
+  /// - "ALTERNATIVE_BILLING_ONLY" : Alternative billing only, where users may
+  /// only use developer-manager billing.
+  core.String? migratedTransactionProgram;
+
   RecurringExternalTransaction({
     this.externalSubscription,
     this.externalTransactionToken,
     this.initialExternalTransactionId,
+    this.migratedTransactionProgram,
   });
 
   RecurringExternalTransaction.fromJson(core.Map json_)
@@ -9676,6 +12104,10 @@ class RecurringExternalTransaction {
               json_.containsKey('initialExternalTransactionId')
                   ? json_['initialExternalTransactionId'] as core.String
                   : null,
+          migratedTransactionProgram:
+              json_.containsKey('migratedTransactionProgram')
+                  ? json_['migratedTransactionProgram'] as core.String
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9685,6 +12117,8 @@ class RecurringExternalTransaction {
           'externalTransactionToken': externalTransactionToken!,
         if (initialExternalTransactionId != null)
           'initialExternalTransactionId': initialExternalTransactionId!,
+        if (migratedTransactionProgram != null)
+          'migratedTransactionProgram': migratedTransactionProgram!,
       };
 }
 
@@ -9783,8 +12217,9 @@ class RegionalBasePlanConfig {
 class RegionalPriceMigrationConfig {
   /// The cutoff time for historical prices that subscribers can remain paying.
   ///
-  /// Subscribers who are on a price that was created before this cutoff time
-  /// will be migrated to the currently-offered price. These subscribers will
+  /// Subscribers on prices which were available at this cutoff time or later
+  /// will stay on their existing price. Subscribers on older prices will be
+  /// migrated to the currently-offered price. The migrated subscribers will
   /// receive a notification that they will be paying a different price.
   /// Subscribers who do not agree to the new price will have their subscription
   /// ended at the next renewal.
@@ -9952,7 +12387,7 @@ class RegionalTaxRateInfo {
   /// You must tell us if your app contains streaming products to correctly
   /// charge US state and local sales tax.
   ///
-  /// Field only supported in United States.
+  /// Field only supported in the United States.
   core.bool? eligibleForStreamingServiceTaxRate;
 
   /// To collect communications or amusement taxes in the United States, choose
@@ -10021,14 +12456,47 @@ class RegionalTaxRateInfo {
       };
 }
 
+/// Region targeting data for app recovery action targeting.
+class Regions {
+  /// Regions targeted by the recovery action.
+  ///
+  /// Region codes are ISO 3166 Alpha-2 country codes. For example, US stands
+  /// for United States of America. See
+  /// https://www.iso.org/iso-3166-country-codes.html for the complete list of
+  /// country codes.
+  core.List<core.String>? regionCode;
+
+  Regions({
+    this.regionCode,
+  });
+
+  Regions.fromJson(core.Map json_)
+      : this(
+          regionCode: json_.containsKey('regionCode')
+              ? (json_['regionCode'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (regionCode != null) 'regionCode': regionCode!,
+      };
+}
+
 /// The version of the available regions being used for the specified resource.
-///
-/// A string representing the version of available regions being used for the
-/// specified resource. Regional prices for the resource have to be specified
-/// according to the information published in
-/// [this article](https://support.google.com/googleplay/android-developer/answer/10532353).
 class RegionsVersion {
-  /// The latest version is 2022/02.
+  /// A string representing the version of available regions being used for the
+  /// specified resource.
+  ///
+  /// Regional prices for the resource have to be specified according to the
+  /// information published in
+  /// [this article](https://support.google.com/googleplay/android-developer/answer/10532353).
+  /// Each time the supported locations substantially change, the version will
+  /// be incremented. Using this field will ensure that creating and updating
+  /// the resource with an older region's version and set of regional prices and
+  /// currencies will succeed even though a new version is available. The latest
+  /// version is 2022/02.
   ///
   /// Required.
   core.String? version;
@@ -10046,6 +12514,97 @@ class RegionsVersion {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (version != null) 'version': version!,
+      };
+}
+
+/// Object representation for Remote in-app update action type.
+class RemoteInAppUpdate {
+  /// Set to true if Remote In-App Update action type is needed.
+  ///
+  /// Required.
+  core.bool? isRemoteInAppUpdateRequested;
+
+  RemoteInAppUpdate({
+    this.isRemoteInAppUpdateRequested,
+  });
+
+  RemoteInAppUpdate.fromJson(core.Map json_)
+      : this(
+          isRemoteInAppUpdateRequested:
+              json_.containsKey('isRemoteInAppUpdateRequested')
+                  ? json_['isRemoteInAppUpdateRequested'] as core.bool
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (isRemoteInAppUpdateRequested != null)
+          'isRemoteInAppUpdateRequested': isRemoteInAppUpdateRequested!,
+      };
+}
+
+/// Data related to Remote In-App Update action such as recovered user count,
+/// affected user count etc.
+class RemoteInAppUpdateData {
+  /// Data related to the recovery action at bundle level.
+  core.List<RemoteInAppUpdateDataPerBundle>? remoteAppUpdateDataPerBundle;
+
+  RemoteInAppUpdateData({
+    this.remoteAppUpdateDataPerBundle,
+  });
+
+  RemoteInAppUpdateData.fromJson(core.Map json_)
+      : this(
+          remoteAppUpdateDataPerBundle:
+              json_.containsKey('remoteAppUpdateDataPerBundle')
+                  ? (json_['remoteAppUpdateDataPerBundle'] as core.List)
+                      .map((value) => RemoteInAppUpdateDataPerBundle.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (remoteAppUpdateDataPerBundle != null)
+          'remoteAppUpdateDataPerBundle': remoteAppUpdateDataPerBundle!,
+      };
+}
+
+/// Data related to the recovery action at bundle level.
+class RemoteInAppUpdateDataPerBundle {
+  /// Total number of devices which have been rescued.
+  core.String? recoveredDeviceCount;
+
+  /// Total number of devices affected by this recovery action associated with
+  /// bundle of the app.
+  core.String? totalDeviceCount;
+
+  /// Version Code corresponding to the target bundle.
+  core.String? versionCode;
+
+  RemoteInAppUpdateDataPerBundle({
+    this.recoveredDeviceCount,
+    this.totalDeviceCount,
+    this.versionCode,
+  });
+
+  RemoteInAppUpdateDataPerBundle.fromJson(core.Map json_)
+      : this(
+          recoveredDeviceCount: json_.containsKey('recoveredDeviceCount')
+              ? json_['recoveredDeviceCount'] as core.String
+              : null,
+          totalDeviceCount: json_.containsKey('totalDeviceCount')
+              ? json_['totalDeviceCount'] as core.String
+              : null,
+          versionCode: json_.containsKey('versionCode')
+              ? json_['versionCode'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (recoveredDeviceCount != null)
+          'recoveredDeviceCount': recoveredDeviceCount!,
+        if (totalDeviceCount != null) 'totalDeviceCount': totalDeviceCount!,
+        if (versionCode != null) 'versionCode': versionCode!,
       };
 }
 
@@ -10209,6 +12768,93 @@ class ReviewsReplyResponse {
         if (result != null) 'result': result!,
       };
 }
+
+/// Revocation context of the purchases.subscriptionsv2.revoke API.
+class RevocationContext {
+  /// Used when users should be refunded a prorated amount they paid for their
+  /// subscription based on the amount of time remaining in a subscription.
+  ///
+  /// Optional.
+  RevocationContextProratedRefund? proratedRefund;
+
+  RevocationContext({
+    this.proratedRefund,
+  });
+
+  RevocationContext.fromJson(core.Map json_)
+      : this(
+          proratedRefund: json_.containsKey('proratedRefund')
+              ? RevocationContextProratedRefund.fromJson(json_['proratedRefund']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (proratedRefund != null) 'proratedRefund': proratedRefund!,
+      };
+}
+
+/// Used to determine if the refund type in the RevocationContext is a prorated
+/// refund.
+typedef RevocationContextProratedRefund = $Empty;
+
+/// Request for the purchases.subscriptionsv2.revoke API.
+class RevokeSubscriptionPurchaseRequest {
+  /// Additional details around the subscription revocation.
+  ///
+  /// Required.
+  RevocationContext? revocationContext;
+
+  RevokeSubscriptionPurchaseRequest({
+    this.revocationContext,
+  });
+
+  RevokeSubscriptionPurchaseRequest.fromJson(core.Map json_)
+      : this(
+          revocationContext: json_.containsKey('revocationContext')
+              ? RevocationContext.fromJson(json_['revocationContext']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (revocationContext != null) 'revocationContext': revocationContext!,
+      };
+}
+
+/// Response for the purchases.subscriptionsv2.revoke API.
+typedef RevokeSubscriptionPurchaseResponse = $Empty;
+
+/// Request to update Safety Labels of an app.
+class SafetyLabelsUpdateRequest {
+  /// Contents of the CSV file containing Data Safety responses.
+  ///
+  /// For the format of this file, see the Help Center documentation at
+  /// https://support.google.com/googleplay/android-developer/answer/10787469?#zippy=%2Cunderstand-the-csv-format
+  /// To download an up to date template, follow the steps at
+  /// https://support.google.com/googleplay/android-developer/answer/10787469?#zippy=%2Cexport-to-a-csv-file
+  ///
+  /// Required.
+  core.String? safetyLabels;
+
+  SafetyLabelsUpdateRequest({
+    this.safetyLabels,
+  });
+
+  SafetyLabelsUpdateRequest.fromJson(core.Map json_)
+      : this(
+          safetyLabels: json_.containsKey('safetyLabels')
+              ? json_['safetyLabels'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (safetyLabels != null) 'safetyLabels': safetyLabels!,
+      };
+}
+
+/// Response for SafetyLabelsUpdate rpc.
+typedef SafetyLabelsUpdateResponse = $Empty;
 
 /// Represents a screen density.
 class ScreenDensity {
@@ -10497,13 +13143,12 @@ class SubscribeWithGoogleInfo {
 
 /// A single subscription for an app.
 class Subscription {
-  /// Whether this subscription is archived.
-  ///
-  /// Archived subscriptions are not available to any subscriber any longer,
-  /// cannot be updated, and are not returned in list requests unless the show
-  /// archived flag is passed in.
+  /// Deprecated: subscription archiving is not supported.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? archived;
 
   /// The set of base plans for this subscription.
@@ -10671,7 +13316,8 @@ class SubscriptionItemPriceChangeDetails {
   /// user.
   ///
   /// This is subject to change(to a future time) due to cases where the renewal
-  /// time shifts like pause.
+  /// time shifts like pause. This field is only populated if the price change
+  /// has not taken effect.
   core.String? expectedNewPriceChargeTime;
 
   /// New recurring price for the subscription item.
@@ -10684,6 +13330,8 @@ class SubscriptionItemPriceChangeDetails {
   /// - "PRICE_DECREASE" : If the subscription price is decreasing.
   /// - "PRICE_INCREASE" : If the subscription price is increasing and the user
   /// needs to accept it.
+  /// - "OPT_OUT_PRICE_INCREASE" : If the subscription price is increasing with
+  /// opt out mode.
   core.String? priceChangeMode;
 
   /// State the price change is currently in.
@@ -11735,6 +14383,10 @@ class SubscriptionTaxAndComplianceSettings {
   /// - "WITHDRAWAL_RIGHT_SERVICE"
   core.String? eeaWithdrawalRightType;
 
+  /// Whether this subscription is declared as a product representing a
+  /// tokenized digital asset.
+  core.bool? isTokenizedDigitalAsset;
+
   /// A mapping from region code to tax rate details.
   ///
   /// The keys are region codes as defined by Unicode's "CLDR".
@@ -11742,6 +14394,7 @@ class SubscriptionTaxAndComplianceSettings {
 
   SubscriptionTaxAndComplianceSettings({
     this.eeaWithdrawalRightType,
+    this.isTokenizedDigitalAsset,
     this.taxRateInfoByRegionCode,
   });
 
@@ -11749,6 +14402,9 @@ class SubscriptionTaxAndComplianceSettings {
       : this(
           eeaWithdrawalRightType: json_.containsKey('eeaWithdrawalRightType')
               ? json_['eeaWithdrawalRightType'] as core.String
+              : null,
+          isTokenizedDigitalAsset: json_.containsKey('isTokenizedDigitalAsset')
+              ? json_['isTokenizedDigitalAsset'] as core.bool
               : null,
           taxRateInfoByRegionCode: json_.containsKey('taxRateInfoByRegionCode')
               ? (json_['taxRateInfoByRegionCode']
@@ -11766,8 +14422,50 @@ class SubscriptionTaxAndComplianceSettings {
   core.Map<core.String, core.dynamic> toJson() => {
         if (eeaWithdrawalRightType != null)
           'eeaWithdrawalRightType': eeaWithdrawalRightType!,
+        if (isTokenizedDigitalAsset != null)
+          'isTokenizedDigitalAsset': isTokenizedDigitalAsset!,
         if (taxRateInfoByRegionCode != null)
           'taxRateInfoByRegionCode': taxRateInfoByRegionCode!,
+      };
+}
+
+/// Options for system APKs.
+class SystemApkOptions {
+  /// Whether to use the rotated key for signing the system APK.
+  core.bool? rotated;
+
+  /// Whether system APK was generated with uncompressed dex files.
+  core.bool? uncompressedDexFiles;
+
+  /// Whether system APK was generated with uncompressed native libraries.
+  core.bool? uncompressedNativeLibraries;
+
+  SystemApkOptions({
+    this.rotated,
+    this.uncompressedDexFiles,
+    this.uncompressedNativeLibraries,
+  });
+
+  SystemApkOptions.fromJson(core.Map json_)
+      : this(
+          rotated: json_.containsKey('rotated')
+              ? json_['rotated'] as core.bool
+              : null,
+          uncompressedDexFiles: json_.containsKey('uncompressedDexFiles')
+              ? json_['uncompressedDexFiles'] as core.bool
+              : null,
+          uncompressedNativeLibraries:
+              json_.containsKey('uncompressedNativeLibraries')
+                  ? json_['uncompressedNativeLibraries'] as core.bool
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (rotated != null) 'rotated': rotated!,
+        if (uncompressedDexFiles != null)
+          'uncompressedDexFiles': uncompressedDexFiles!,
+        if (uncompressedNativeLibraries != null)
+          'uncompressedNativeLibraries': uncompressedNativeLibraries!,
       };
 }
 
@@ -11816,6 +14514,65 @@ class SystemFeature {
 
 /// Information specific to cancellations initiated by Google system.
 typedef SystemInitiatedCancellation = $Empty;
+
+/// Targeting details for a recovery action such as regions, android sdk levels,
+/// app versions etc.
+class Targeting {
+  /// All users are targeted.
+  AllUsers? allUsers;
+
+  /// Targeting is based on android api levels of devices.
+  AndroidSdks? androidSdks;
+
+  /// Targeting is based on the user account region.
+  Regions? regions;
+
+  /// Target version codes as a list.
+  AppVersionList? versionList;
+
+  /// Target version codes as a range.
+  AppVersionRange? versionRange;
+
+  Targeting({
+    this.allUsers,
+    this.androidSdks,
+    this.regions,
+    this.versionList,
+    this.versionRange,
+  });
+
+  Targeting.fromJson(core.Map json_)
+      : this(
+          allUsers: json_.containsKey('allUsers')
+              ? AllUsers.fromJson(
+                  json_['allUsers'] as core.Map<core.String, core.dynamic>)
+              : null,
+          androidSdks: json_.containsKey('androidSdks')
+              ? AndroidSdks.fromJson(
+                  json_['androidSdks'] as core.Map<core.String, core.dynamic>)
+              : null,
+          regions: json_.containsKey('regions')
+              ? Regions.fromJson(
+                  json_['regions'] as core.Map<core.String, core.dynamic>)
+              : null,
+          versionList: json_.containsKey('versionList')
+              ? AppVersionList.fromJson(
+                  json_['versionList'] as core.Map<core.String, core.dynamic>)
+              : null,
+          versionRange: json_.containsKey('versionRange')
+              ? AppVersionRange.fromJson(
+                  json_['versionRange'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (allUsers != null) 'allUsers': allUsers!,
+        if (androidSdks != null) 'androidSdks': androidSdks!,
+        if (regions != null) 'regions': regions!,
+        if (versionList != null) 'versionList': versionList!,
+        if (versionRange != null) 'versionRange': versionRange!,
+      };
+}
 
 /// Targeting information about the generated apks.
 class TargetingInfo {
@@ -11884,6 +14641,48 @@ class TargetingRuleScope {
   core.Map<core.String, core.dynamic> toJson() => {
         if (specificSubscriptionInApp != null)
           'specificSubscriptionInApp': specificSubscriptionInApp!,
+      };
+}
+
+/// Update type for targeting.
+///
+/// Note it is always a subset Targeting.
+class TargetingUpdate {
+  /// All users are targeted.
+  AllUsers? allUsers;
+
+  /// Additional android sdk levels are targeted by the recovery action.
+  AndroidSdks? androidSdks;
+
+  /// Additional regions are targeted by the recovery action.
+  Regions? regions;
+
+  TargetingUpdate({
+    this.allUsers,
+    this.androidSdks,
+    this.regions,
+  });
+
+  TargetingUpdate.fromJson(core.Map json_)
+      : this(
+          allUsers: json_.containsKey('allUsers')
+              ? AllUsers.fromJson(
+                  json_['allUsers'] as core.Map<core.String, core.dynamic>)
+              : null,
+          androidSdks: json_.containsKey('androidSdks')
+              ? AndroidSdks.fromJson(
+                  json_['androidSdks'] as core.Map<core.String, core.dynamic>)
+              : null,
+          regions: json_.containsKey('regions')
+              ? Regions.fromJson(
+                  json_['regions'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (allUsers != null) 'allUsers': allUsers!,
+        if (androidSdks != null) 'androidSdks': androidSdks!,
+        if (regions != null) 'regions': regions!,
       };
 }
 
@@ -12070,6 +14869,64 @@ class Track {
       };
 }
 
+/// Configurations of the new track.
+class TrackConfig {
+  /// Form factor of the new track.
+  ///
+  /// Defaults to the default track.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "FORM_FACTOR_UNSPECIFIED" : Fallback value, do not use.
+  /// - "DEFAULT" : Default track.
+  /// - "WEAR" : Wear form factor track.
+  /// - "AUTOMOTIVE" : Automotive form factor track.
+  core.String? formFactor;
+
+  /// Identifier of the new track.
+  ///
+  /// For default tracks, this field consists of the track alias only. Form
+  /// factor tracks have a special prefix as an identifier, for example
+  /// `wear:production`, `automotive:production`. This prefix must match the
+  /// value of the `form_factor` field, if it is not a default track.
+  /// [More on track name](https://developers.google.com/android-publisher/tracks#ff-track-name)
+  ///
+  /// Required.
+  core.String? track;
+
+  /// Type of the new track.
+  ///
+  /// Currently, the only supported value is closedTesting.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "TRACK_TYPE_UNSPECIFIED" : Fallback value, do not use.
+  /// - "CLOSED_TESTING" : Closed testing track.
+  core.String? type;
+
+  TrackConfig({
+    this.formFactor,
+    this.track,
+    this.type,
+  });
+
+  TrackConfig.fromJson(core.Map json_)
+      : this(
+          formFactor: json_.containsKey('formFactor')
+              ? json_['formFactor'] as core.String
+              : null,
+          track:
+              json_.containsKey('track') ? json_['track'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (formFactor != null) 'formFactor': formFactor!,
+        if (track != null) 'track': track!,
+        if (type != null) 'type': type!,
+      };
+}
+
 /// Resource for per-track country availability information.
 class TrackCountryAvailability {
   /// A list of one or more countries where artifacts in this track are
@@ -12248,7 +15105,7 @@ class TracksListResponse {
   /// The kind of this response ("androidpublisher#tracksListResponse").
   core.String? kind;
 
-  /// All tracks.
+  /// All tracks (including tracks with no releases).
   core.List<Track>? tracks;
 
   TracksListResponse({
@@ -12270,6 +15127,252 @@ class TracksListResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (tracks != null) 'tracks': tracks!,
+      };
+}
+
+/// Request message to update the state of a subscription base plan.
+class UpdateBasePlanStateRequest {
+  /// Activates a base plan.
+  ///
+  /// Once activated, base plans will be available to new subscribers.
+  ActivateBasePlanRequest? activateBasePlanRequest;
+
+  /// Deactivates a base plan.
+  ///
+  /// Once deactivated, the base plan will become unavailable to new
+  /// subscribers, but existing subscribers will maintain their subscription
+  DeactivateBasePlanRequest? deactivateBasePlanRequest;
+
+  UpdateBasePlanStateRequest({
+    this.activateBasePlanRequest,
+    this.deactivateBasePlanRequest,
+  });
+
+  UpdateBasePlanStateRequest.fromJson(core.Map json_)
+      : this(
+          activateBasePlanRequest: json_.containsKey('activateBasePlanRequest')
+              ? ActivateBasePlanRequest.fromJson(
+                  json_['activateBasePlanRequest']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          deactivateBasePlanRequest:
+              json_.containsKey('deactivateBasePlanRequest')
+                  ? DeactivateBasePlanRequest.fromJson(
+                      json_['deactivateBasePlanRequest']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (activateBasePlanRequest != null)
+          'activateBasePlanRequest': activateBasePlanRequest!,
+        if (deactivateBasePlanRequest != null)
+          'deactivateBasePlanRequest': deactivateBasePlanRequest!,
+      };
+}
+
+/// Request message for UpdateSubscriptionOffer.
+class UpdateSubscriptionOfferRequest {
+  /// If set to true, and the subscription offer with the given package_name,
+  /// product_id, base_plan_id and offer_id doesn't exist, an offer will be
+  /// created.
+  ///
+  /// If a new offer is created, update_mask is ignored.
+  ///
+  /// Optional.
+  core.bool? allowMissing;
+
+  /// The latency tolerance for the propagation of this product update.
+  ///
+  /// Defaults to latency-sensitive.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED" : Defaults to
+  /// PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE.
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE" : The update will
+  /// propagate to clients within several minutes on average and up to a few
+  /// hours in rare cases. Throughput is limited to 7,200 updates per app per
+  /// hour.
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT" : The update will
+  /// propagate to clients within 24 hours. Supports high throughput of up to
+  /// 720,000 updates per app per hour using batch modification methods.
+  core.String? latencyTolerance;
+
+  /// The version of the available regions being used for the
+  /// subscription_offer.
+  ///
+  /// Required.
+  RegionsVersion? regionsVersion;
+
+  /// The subscription offer to update.
+  ///
+  /// Required.
+  SubscriptionOffer? subscriptionOffer;
+
+  /// The list of fields to be updated.
+  ///
+  /// Required.
+  core.String? updateMask;
+
+  UpdateSubscriptionOfferRequest({
+    this.allowMissing,
+    this.latencyTolerance,
+    this.regionsVersion,
+    this.subscriptionOffer,
+    this.updateMask,
+  });
+
+  UpdateSubscriptionOfferRequest.fromJson(core.Map json_)
+      : this(
+          allowMissing: json_.containsKey('allowMissing')
+              ? json_['allowMissing'] as core.bool
+              : null,
+          latencyTolerance: json_.containsKey('latencyTolerance')
+              ? json_['latencyTolerance'] as core.String
+              : null,
+          regionsVersion: json_.containsKey('regionsVersion')
+              ? RegionsVersion.fromJson(json_['regionsVersion']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          subscriptionOffer: json_.containsKey('subscriptionOffer')
+              ? SubscriptionOffer.fromJson(json_['subscriptionOffer']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          updateMask: json_.containsKey('updateMask')
+              ? json_['updateMask'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (allowMissing != null) 'allowMissing': allowMissing!,
+        if (latencyTolerance != null) 'latencyTolerance': latencyTolerance!,
+        if (regionsVersion != null) 'regionsVersion': regionsVersion!,
+        if (subscriptionOffer != null) 'subscriptionOffer': subscriptionOffer!,
+        if (updateMask != null) 'updateMask': updateMask!,
+      };
+}
+
+/// Request message to update the state of a subscription offer.
+class UpdateSubscriptionOfferStateRequest {
+  /// Activates an offer.
+  ///
+  /// Once activated, the offer will be available to new subscribers.
+  ActivateSubscriptionOfferRequest? activateSubscriptionOfferRequest;
+
+  /// Deactivates an offer.
+  ///
+  /// Once deactivated, the offer will become unavailable to new subscribers,
+  /// but existing subscribers will maintain their subscription
+  DeactivateSubscriptionOfferRequest? deactivateSubscriptionOfferRequest;
+
+  UpdateSubscriptionOfferStateRequest({
+    this.activateSubscriptionOfferRequest,
+    this.deactivateSubscriptionOfferRequest,
+  });
+
+  UpdateSubscriptionOfferStateRequest.fromJson(core.Map json_)
+      : this(
+          activateSubscriptionOfferRequest:
+              json_.containsKey('activateSubscriptionOfferRequest')
+                  ? ActivateSubscriptionOfferRequest.fromJson(
+                      json_['activateSubscriptionOfferRequest']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          deactivateSubscriptionOfferRequest:
+              json_.containsKey('deactivateSubscriptionOfferRequest')
+                  ? DeactivateSubscriptionOfferRequest.fromJson(
+                      json_['deactivateSubscriptionOfferRequest']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (activateSubscriptionOfferRequest != null)
+          'activateSubscriptionOfferRequest': activateSubscriptionOfferRequest!,
+        if (deactivateSubscriptionOfferRequest != null)
+          'deactivateSubscriptionOfferRequest':
+              deactivateSubscriptionOfferRequest!,
+      };
+}
+
+/// Request message for UpdateSubscription.
+class UpdateSubscriptionRequest {
+  /// If set to true, and the subscription with the given package_name and
+  /// product_id doesn't exist, the subscription will be created.
+  ///
+  /// If a new subscription is created, update_mask is ignored.
+  ///
+  /// Optional.
+  core.bool? allowMissing;
+
+  /// The latency tolerance for the propagation of this product update.
+  ///
+  /// Defaults to latency-sensitive.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED" : Defaults to
+  /// PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE.
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE" : The update will
+  /// propagate to clients within several minutes on average and up to a few
+  /// hours in rare cases. Throughput is limited to 7,200 updates per app per
+  /// hour.
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT" : The update will
+  /// propagate to clients within 24 hours. Supports high throughput of up to
+  /// 720,000 updates per app per hour using batch modification methods.
+  core.String? latencyTolerance;
+
+  /// The version of the available regions being used for the subscription.
+  ///
+  /// Required.
+  RegionsVersion? regionsVersion;
+
+  /// The subscription to update.
+  ///
+  /// Required.
+  Subscription? subscription;
+
+  /// The list of fields to be updated.
+  ///
+  /// Required.
+  core.String? updateMask;
+
+  UpdateSubscriptionRequest({
+    this.allowMissing,
+    this.latencyTolerance,
+    this.regionsVersion,
+    this.subscription,
+    this.updateMask,
+  });
+
+  UpdateSubscriptionRequest.fromJson(core.Map json_)
+      : this(
+          allowMissing: json_.containsKey('allowMissing')
+              ? json_['allowMissing'] as core.bool
+              : null,
+          latencyTolerance: json_.containsKey('latencyTolerance')
+              ? json_['latencyTolerance'] as core.String
+              : null,
+          regionsVersion: json_.containsKey('regionsVersion')
+              ? RegionsVersion.fromJson(json_['regionsVersion']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          subscription: json_.containsKey('subscription')
+              ? Subscription.fromJson(
+                  json_['subscription'] as core.Map<core.String, core.dynamic>)
+              : null,
+          updateMask: json_.containsKey('updateMask')
+              ? json_['updateMask'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (allowMissing != null) 'allowMissing': allowMissing!,
+        if (latencyTolerance != null) 'latencyTolerance': latencyTolerance!,
+        if (regionsVersion != null) 'regionsVersion': regionsVersion!,
+        if (subscription != null) 'subscription': subscription!,
+        if (updateMask != null) 'updateMask': updateMask!,
       };
 }
 
@@ -12688,6 +15791,11 @@ class Variant {
   /// The device spec used to generate the APK.
   DeviceSpec? deviceSpec;
 
+  /// Options applied to the generated APK.
+  ///
+  /// Optional.
+  SystemApkOptions? options;
+
   /// The ID of a previously created system APK variant.
   ///
   /// Output only.
@@ -12695,6 +15803,7 @@ class Variant {
 
   Variant({
     this.deviceSpec,
+    this.options,
     this.variantId,
   });
 
@@ -12704,6 +15813,10 @@ class Variant {
               ? DeviceSpec.fromJson(
                   json_['deviceSpec'] as core.Map<core.String, core.dynamic>)
               : null,
+          options: json_.containsKey('options')
+              ? SystemApkOptions.fromJson(
+                  json_['options'] as core.Map<core.String, core.dynamic>)
+              : null,
           variantId: json_.containsKey('variantId')
               ? json_['variantId'] as core.int
               : null,
@@ -12711,6 +15824,7 @@ class Variant {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (deviceSpec != null) 'deviceSpec': deviceSpec!,
+        if (options != null) 'options': options!,
         if (variantId != null) 'variantId': variantId!,
       };
 }

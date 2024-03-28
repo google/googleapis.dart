@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Cloud Healthcare API - v1
@@ -27,7 +26,11 @@
 ///         - [ProjectsLocationsDatasetsConsentStoresConsentArtifactsResource]
 ///         - [ProjectsLocationsDatasetsConsentStoresConsentsResource]
 ///         - [ProjectsLocationsDatasetsConsentStoresUserDataMappingsResource]
+///       - [ProjectsLocationsDatasetsDataMapperWorkspacesResource]
 ///       - [ProjectsLocationsDatasetsDicomStoresResource]
+///         - [ProjectsLocationsDatasetsDicomStoresDicomWebResource]
+///           - [ProjectsLocationsDatasetsDicomStoresDicomWebStudiesResource]
+/// - [ProjectsLocationsDatasetsDicomStoresDicomWebStudiesSeriesResource]
 ///         - [ProjectsLocationsDatasetsDicomStoresStudiesResource]
 ///           - [ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource]
 /// - [ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource]
@@ -39,7 +42,7 @@
 ///       - [ProjectsLocationsDatasetsOperationsResource]
 ///     - [ProjectsLocationsServicesResource]
 ///       - [ProjectsLocationsServicesNlpResource]
-library healthcare_v1;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -56,6 +59,10 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// Manage, store, and access healthcare data in Google Cloud Platform.
 class CloudHealthcareApi {
+  /// Read, write and manage healthcare data
+  static const cloudHealthcareScope =
+      'https://www.googleapis.com/auth/cloud-healthcare';
+
   /// See, edit, configure, and delete your Google Cloud data and see the email
   /// address for your Google Account.
   static const cloudPlatformScope =
@@ -184,6 +191,9 @@ class ProjectsLocationsDatasetsResource {
 
   ProjectsLocationsDatasetsConsentStoresResource get consentStores =>
       ProjectsLocationsDatasetsConsentStoresResource(_requester);
+  ProjectsLocationsDatasetsDataMapperWorkspacesResource
+      get dataMapperWorkspaces =>
+          ProjectsLocationsDatasetsDataMapperWorkspacesResource(_requester);
   ProjectsLocationsDatasetsDicomStoresResource get dicomStores =>
       ProjectsLocationsDatasetsDicomStoresResource(_requester);
   ProjectsLocationsDatasetsFhirStoresResource get fhirStores =>
@@ -206,12 +216,12 @@ class ProjectsLocationsDatasetsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The name of the project where the server creates the dataset.
-  /// For example, `projects/{project_id}/locations/{location_id}`.
+  /// [parent] - Required. The name of the project where the server creates the
+  /// dataset. For example, `projects/{project_id}/locations/{location_id}`.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [datasetId] - The ID of the dataset that is being created. The string must
-  /// match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
+  /// [datasetId] - Required. The ID of the dataset that is being created. The
+  /// string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -262,7 +272,7 @@ class ProjectsLocationsDatasetsResource {
   ///
   /// Request parameters:
   ///
-  /// [sourceDataset] - Source dataset resource name. For example,
+  /// [sourceDataset] - Required. Source dataset resource name. For example,
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+$`.
@@ -306,7 +316,7 @@ class ProjectsLocationsDatasetsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the dataset to delete. For example,
+  /// [name] - Required. The name of the dataset to delete. For example,
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+$`.
@@ -343,7 +353,7 @@ class ProjectsLocationsDatasetsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the dataset to read. For example,
+  /// [name] - Required. The name of the dataset to read. For example,
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+$`.
@@ -437,8 +447,8 @@ class ProjectsLocationsDatasetsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The name of the project whose datasets should be listed. For
-  /// example, `projects/{project_id}/locations/{location_id}`.
+  /// [parent] - Required. The name of the project whose datasets should be
+  /// listed. For example, `projects/{project_id}/locations/{location_id}`.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of items to return. If not specified, 100
@@ -486,12 +496,12 @@ class ProjectsLocationsDatasetsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Resource name of the dataset, of the form
+  /// [name] - Identifier. Resource name of the dataset, of the form
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+$`.
   ///
-  /// [updateMask] - The update mask applies to the resource. For the
+  /// [updateMask] - Required. The update mask applies to the resource. For the
   /// `FieldMask` definition, see
   /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
   ///
@@ -985,7 +995,7 @@ class ProjectsLocationsDatasetsConsentStoresResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Resource name of the consent store, of the form
+  /// [name] - Identifier. Resource name of the consent store, of the form
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}`.
   /// Cannot be changed after creation.
   /// Value must have pattern
@@ -1399,7 +1409,8 @@ class ProjectsLocationsDatasetsConsentStoresAttributeDefinitionsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Resource name of the Attribute definition, of the form
+  /// [name] - Identifier. Resource name of the Attribute definition, of the
+  /// form
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`.
   /// Cannot be changed after creation.
   /// Value must have pattern
@@ -2052,7 +2063,7 @@ class ProjectsLocationsDatasetsConsentStoresConsentsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Resource name of the Consent, of the form
+  /// [name] - Identifier. Resource name of the Consent, of the form
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`.
   /// Cannot be changed after creation.
   /// Value must have pattern
@@ -2490,9 +2501,174 @@ class ProjectsLocationsDatasetsConsentStoresUserDataMappingsResource {
   }
 }
 
+class ProjectsLocationsDatasetsDataMapperWorkspacesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsDatasetsDataMapperWorkspacesResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dataMapperWorkspaces/\[^/\]+$`.
+  ///
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy. Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected. Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset. The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1. To learn which resources support
+  /// conditions in their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(
+    core.String resource, {
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (options_requestedPolicyVersion != null)
+        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
+  /// and `PERMISSION_DENIED` errors.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dataMapperWorkspaces/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(
+    SetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a `NOT_FOUND` error. Note: This operation is designed to
+  /// be used for building permission-aware UIs and command-line tools, not for
+  /// authorization checking. This operation may "fail open" without warning.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dataMapperWorkspaces/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestIamPermissionsResponse> testIamPermissions(
+    TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return TestIamPermissionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsLocationsDatasetsDicomStoresResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsDatasetsDicomStoresDicomWebResource get dicomWeb =>
+      ProjectsLocationsDatasetsDicomStoresDicomWebResource(_requester);
   ProjectsLocationsDatasetsDicomStoresStudiesResource get studies =>
       ProjectsLocationsDatasetsDicomStoresStudiesResource(_requester);
 
@@ -2505,12 +2681,12 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The name of the dataset this DICOM store belongs to.
+  /// [parent] - Required. The name of the dataset this DICOM store belongs to.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+$`.
   ///
-  /// [dicomStoreId] - The ID of the DICOM store that is being created. Any
-  /// string value up to 256 characters in length.
+  /// [dicomStoreId] - Required. The ID of the DICOM store that is being
+  /// created. Any string value up to 256 characters in length.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2562,7 +2738,7 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   ///
   /// Request parameters:
   ///
-  /// [sourceStore] - Source DICOM store resource name. For example,
+  /// [sourceStore] - Required. Source DICOM store resource name. For example,
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+$`.
@@ -2603,7 +2779,7 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name of the DICOM store to delete.
+  /// [name] - Required. The resource name of the DICOM store to delete.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+$`.
   ///
@@ -2646,8 +2822,8 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The DICOM store resource name from which to export the data. For
-  /// example,
+  /// [name] - Required. The DICOM store resource name from which to export the
+  /// data. For example,
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+$`.
@@ -2687,7 +2863,7 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name of the DICOM store to get.
+  /// [name] - Required. The resource name of the DICOM store to get.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+$`.
   ///
@@ -2717,6 +2893,44 @@ class ProjectsLocationsDatasetsDicomStoresResource {
       queryParams: queryParams_,
     );
     return DicomStore.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets metrics associated with the DICOM store.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the DICOM store to get metrics
+  /// for.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [DicomStoreMetrics].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DicomStoreMetrics> getDICOMStoreMetrics(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':getDICOMStoreMetrics';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return DicomStoreMetrics.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 
@@ -2787,8 +3001,8 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the DICOM store resource into which the data is
-  /// imported. For example,
+  /// [name] - Required. The name of the DICOM store resource into which the
+  /// data is imported. For example,
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+$`.
@@ -2828,7 +3042,7 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Name of the dataset.
+  /// [parent] - Required. Name of the dataset.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+$`.
   ///
@@ -2904,12 +3118,12 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Resource name of the DICOM store, of the form
+  /// [name] - Identifier. Resource name of the DICOM store, of the form
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+$`.
   ///
-  /// [updateMask] - The update mask applies to the resource. For the
+  /// [updateMask] - Required. The update mask applies to the resource. For the
   /// `FieldMask` definition, see
   /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
   ///
@@ -2955,19 +3169,19 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   /// [Search transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction)
   /// in the Cloud Healthcare API conformance statement. For samples that show
   /// how to call SearchForInstances, see
-  /// [Searching for studies, series, instances, and frames](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#searching_for_studies_series_instances_and_frames).
+  /// [Search for DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#search-dicom).
   ///
   /// Request parameters:
   ///
-  /// [parent] - The name of the DICOM store that is being accessed. For
-  /// example,
+  /// [parent] - Required. The name of the DICOM store that is being accessed.
+  /// For example,
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+$`.
   ///
-  /// [dicomWebPath] - The path of the SearchForInstancesRequest DICOMweb
-  /// request. For example, `instances`, `series/{series_uid}/instances`, or
-  /// `studies/{study_uid}/instances`.
+  /// [dicomWebPath] - Required. The path of the SearchForInstancesRequest
+  /// DICOMweb request. For example, `instances`,
+  /// `series/{series_uid}/instances`, or `studies/{study_uid}/instances`.
   /// Value must have pattern `^instances$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3010,18 +3224,18 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   /// [Search transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction)
   /// in the Cloud Healthcare API conformance statement. For samples that show
   /// how to call SearchForSeries, see
-  /// [Searching for studies, series, instances, and frames](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#searching_for_studies_series_instances_and_frames).
+  /// [Search for DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#search-dicom).
   ///
   /// Request parameters:
   ///
-  /// [parent] - The name of the DICOM store that is being accessed. For
-  /// example,
+  /// [parent] - Required. The name of the DICOM store that is being accessed.
+  /// For example,
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+$`.
   ///
-  /// [dicomWebPath] - The path of the SearchForSeries DICOMweb request. For
-  /// example, `series` or `studies/{study_uid}/series`.
+  /// [dicomWebPath] - Required. The path of the SearchForSeries DICOMweb
+  /// request. For example, `series` or `studies/{study_uid}/series`.
   /// Value must have pattern `^series$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3064,18 +3278,18 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   /// [Search transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction)
   /// in the Cloud Healthcare API conformance statement. For samples that show
   /// how to call SearchForStudies, see
-  /// [Searching for studies, series, instances, and frames](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#searching_for_studies_series_instances_and_frames).
+  /// [Search for DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#search-dicom).
   ///
   /// Request parameters:
   ///
-  /// [parent] - The name of the DICOM store that is being accessed. For
-  /// example,
+  /// [parent] - Required. The name of the DICOM store that is being accessed.
+  /// For example,
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+$`.
   ///
-  /// [dicomWebPath] - The path of the SearchForStudies DICOMweb request. For
-  /// example, `studies`.
+  /// [dicomWebPath] - Required. The path of the SearchForStudies DICOMweb
+  /// request. For example, `studies`.
   /// Value must have pattern `^studies$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3166,20 +3380,21 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   /// [Store transaction](https://cloud.google.com/healthcare/docs/dicom#store_transaction)
   /// in the Cloud Healthcare API conformance statement. For samples that show
   /// how to call StoreInstances, see
-  /// [Storing DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#storing_dicom_data).
+  /// [Store DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#store-dicom).
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - The name of the DICOM store that is being accessed. For
-  /// example,
+  /// [parent] - Required. The name of the DICOM store that is being accessed.
+  /// For example,
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+$`.
   ///
-  /// [dicomWebPath] - The path of the StoreInstances DICOMweb request. For
-  /// example, `studies/[{study_uid}]`. Note that the `study_uid` is optional.
+  /// [dicomWebPath] - Required. The path of the StoreInstances DICOMweb
+  /// request. For example, `studies/[{study_uid}]`. Note that the `study_uid`
+  /// is optional.
   /// Value must have pattern `^studies$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3269,6 +3484,114 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   }
 }
 
+class ProjectsLocationsDatasetsDicomStoresDicomWebResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsDatasetsDicomStoresDicomWebStudiesResource get studies =>
+      ProjectsLocationsDatasetsDicomStoresDicomWebStudiesResource(_requester);
+
+  ProjectsLocationsDatasetsDicomStoresDicomWebResource(
+      commons.ApiRequester client)
+      : _requester = client;
+}
+
+class ProjectsLocationsDatasetsDicomStoresDicomWebStudiesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsDatasetsDicomStoresDicomWebStudiesSeriesResource
+      get series =>
+          ProjectsLocationsDatasetsDicomStoresDicomWebStudiesSeriesResource(
+              _requester);
+
+  ProjectsLocationsDatasetsDicomStoresDicomWebStudiesResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// GetStudyMetrics returns metrics for a study.
+  ///
+  /// Request parameters:
+  ///
+  /// [study] - Required. The study resource path. For example,
+  /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}/dicomWeb/studies/{study_uid}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+/dicomWeb/studies/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [StudyMetrics].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<StudyMetrics> getStudyMetrics(
+    core.String study, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$study') + ':getStudyMetrics';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return StudyMetrics.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsDatasetsDicomStoresDicomWebStudiesSeriesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsDatasetsDicomStoresDicomWebStudiesSeriesResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// GetSeriesMetrics returns metrics for a series.
+  ///
+  /// Request parameters:
+  ///
+  /// [series] - Required. The series resource path. For example,
+  /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}/dicomWeb/studies/{study_uid}/series/{series_uid}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+/dicomWeb/studies/\[^/\]+/series/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SeriesMetrics].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SeriesMetrics> getSeriesMetrics(
+    core.String series, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$series') + ':getSeriesMetrics';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return SeriesMetrics.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsLocationsDatasetsDicomStoresStudiesResource {
   final commons.ApiRequester _requester;
 
@@ -3286,7 +3609,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
   /// successful when the deletion is complete. Warning: Instances cannot be
   /// inserted into a study that is being deleted by an operation until the
   /// operation completes. For samples that show how to call DeleteStudy, see
-  /// [Deleting a study, series, or instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#deleting_a_study_series_or_instance).
+  /// [Delete a study, series, or instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#delete-dicom).
   ///
   /// Request parameters:
   ///
@@ -3294,8 +3617,8 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+$`.
   ///
-  /// [dicomWebPath] - The path of the DeleteStudy request. For example,
-  /// `studies/{study_uid}`.
+  /// [dicomWebPath] - Required. The path of the DeleteStudy request. For
+  /// example, `studies/{study_uid}`.
   /// Value must have pattern `^studies/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3339,18 +3662,18 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
   /// [Metadata resources](https://cloud.google.com/healthcare/docs/dicom#metadata_resources)
   /// in the Cloud Healthcare API conformance statement. For samples that show
   /// how to call RetrieveStudyMetadata, see
-  /// [Retrieving metadata](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_metadata).
+  /// [Retrieve metadata](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-metadata).
   ///
   /// Request parameters:
   ///
-  /// [parent] - The name of the DICOM store that is being accessed. For
-  /// example,
+  /// [parent] - Required. The name of the DICOM store that is being accessed.
+  /// For example,
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+$`.
   ///
-  /// [dicomWebPath] - The path of the RetrieveStudyMetadata DICOMweb request.
-  /// For example, `studies/{study_uid}/metadata`.
+  /// [dicomWebPath] - Required. The path of the RetrieveStudyMetadata DICOMweb
+  /// request. For example, `studies/{study_uid}/metadata`.
   /// Value must have pattern `^studies/\[^/\]+/metadata$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3393,18 +3716,18 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
   /// [DICOM study/series/instances](https://cloud.google.com/healthcare/docs/dicom#dicom_studyseriesinstances)
   /// in the Cloud Healthcare API conformance statement. For samples that show
   /// how to call RetrieveStudy, see
-  /// [Retrieving DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_dicom_data).
+  /// [Retrieve DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-dicom).
   ///
   /// Request parameters:
   ///
-  /// [parent] - The name of the DICOM store that is being accessed. For
-  /// example,
+  /// [parent] - Required. The name of the DICOM store that is being accessed.
+  /// For example,
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+$`.
   ///
-  /// [dicomWebPath] - The path of the RetrieveStudy DICOMweb request. For
-  /// example, `studies/{study_uid}`.
+  /// [dicomWebPath] - Required. The path of the RetrieveStudy DICOMweb request.
+  /// For example, `studies/{study_uid}`.
   /// Value must have pattern `^studies/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3447,19 +3770,19 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
   /// [Search transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction)
   /// in the Cloud Healthcare API conformance statement. For samples that show
   /// how to call SearchForInstances, see
-  /// [Searching for studies, series, instances, and frames](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#searching_for_studies_series_instances_and_frames).
+  /// [Search for DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#search-dicom).
   ///
   /// Request parameters:
   ///
-  /// [parent] - The name of the DICOM store that is being accessed. For
-  /// example,
+  /// [parent] - Required. The name of the DICOM store that is being accessed.
+  /// For example,
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+$`.
   ///
-  /// [dicomWebPath] - The path of the SearchForInstancesRequest DICOMweb
-  /// request. For example, `instances`, `series/{series_uid}/instances`, or
-  /// `studies/{study_uid}/instances`.
+  /// [dicomWebPath] - Required. The path of the SearchForInstancesRequest
+  /// DICOMweb request. For example, `instances`,
+  /// `series/{series_uid}/instances`, or `studies/{study_uid}/instances`.
   /// Value must have pattern `^studies/\[^/\]+/instances$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3502,18 +3825,18 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
   /// [Search transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction)
   /// in the Cloud Healthcare API conformance statement. For samples that show
   /// how to call SearchForSeries, see
-  /// [Searching for studies, series, instances, and frames](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#searching_for_studies_series_instances_and_frames).
+  /// [Search for DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#search-dicom).
   ///
   /// Request parameters:
   ///
-  /// [parent] - The name of the DICOM store that is being accessed. For
-  /// example,
+  /// [parent] - Required. The name of the DICOM store that is being accessed.
+  /// For example,
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+$`.
   ///
-  /// [dicomWebPath] - The path of the SearchForSeries DICOMweb request. For
-  /// example, `series` or `studies/{study_uid}/series`.
+  /// [dicomWebPath] - Required. The path of the SearchForSeries DICOMweb
+  /// request. For example, `series` or `studies/{study_uid}/series`.
   /// Value must have pattern `^studies/\[^/\]+/series$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3557,20 +3880,21 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
   /// [Store transaction](https://cloud.google.com/healthcare/docs/dicom#store_transaction)
   /// in the Cloud Healthcare API conformance statement. For samples that show
   /// how to call StoreInstances, see
-  /// [Storing DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#storing_dicom_data).
+  /// [Store DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#store-dicom).
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - The name of the DICOM store that is being accessed. For
-  /// example,
+  /// [parent] - Required. The name of the DICOM store that is being accessed.
+  /// For example,
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+$`.
   ///
-  /// [dicomWebPath] - The path of the StoreInstances DICOMweb request. For
-  /// example, `studies/[{study_uid}]`. Note that the `study_uid` is optional.
+  /// [dicomWebPath] - Required. The path of the StoreInstances DICOMweb
+  /// request. For example, `studies/[{study_uid}]`. Note that the `study_uid`
+  /// is optional.
   /// Value must have pattern `^studies/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3628,18 +3952,18 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
   /// successful when the deletion is complete. Warning: Instances cannot be
   /// inserted into a series that is being deleted by an operation until the
   /// operation completes. For samples that show how to call DeleteSeries, see
-  /// [Deleting a study, series, or instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#deleting_a_study_series_or_instance).
+  /// [Delete a study, series, or instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#delete-dicom).
   ///
   /// Request parameters:
   ///
-  /// [parent] - The name of the DICOM store that is being accessed. For
-  /// example,
+  /// [parent] - Required. The name of the DICOM store that is being accessed.
+  /// For example,
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+$`.
   ///
-  /// [dicomWebPath] - The path of the DeleteSeries request. For example,
-  /// `studies/{study_uid}/series/{series_uid}`.
+  /// [dicomWebPath] - Required. The path of the DeleteSeries request. For
+  /// example, `studies/{study_uid}/series/{series_uid}`.
   /// Value must have pattern `^studies/\[^/\]+/series/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3683,18 +4007,18 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
   /// [Metadata resources](https://cloud.google.com/healthcare/docs/dicom#metadata_resources)
   /// in the Cloud Healthcare API conformance statement. For samples that show
   /// how to call RetrieveSeriesMetadata, see
-  /// [Retrieving metadata](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_metadata).
+  /// [Retrieve metadata](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-metadata).
   ///
   /// Request parameters:
   ///
-  /// [parent] - The name of the DICOM store that is being accessed. For
-  /// example,
+  /// [parent] - Required. The name of the DICOM store that is being accessed.
+  /// For example,
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+$`.
   ///
-  /// [dicomWebPath] - The path of the RetrieveSeriesMetadata DICOMweb request.
-  /// For example, `studies/{study_uid}/series/{series_uid}/metadata`.
+  /// [dicomWebPath] - Required. The path of the RetrieveSeriesMetadata DICOMweb
+  /// request. For example, `studies/{study_uid}/series/{series_uid}/metadata`.
   /// Value must have pattern `^studies/\[^/\]+/series/\[^/\]+/metadata$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3737,18 +4061,18 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
   /// [DICOM study/series/instances](https://cloud.google.com/healthcare/docs/dicom#dicom_studyseriesinstances)
   /// in the Cloud Healthcare API conformance statement. For samples that show
   /// how to call RetrieveSeries, see
-  /// [Retrieving DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_dicom_data).
+  /// [Retrieve DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-dicom).
   ///
   /// Request parameters:
   ///
-  /// [parent] - The name of the DICOM store that is being accessed. For
-  /// example,
+  /// [parent] - Required. The name of the DICOM store that is being accessed.
+  /// For example,
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+$`.
   ///
-  /// [dicomWebPath] - The path of the RetrieveSeries DICOMweb request. For
-  /// example, `studies/{study_uid}/series/{series_uid}`.
+  /// [dicomWebPath] - Required. The path of the RetrieveSeries DICOMweb
+  /// request. For example, `studies/{study_uid}/series/{series_uid}`.
   /// Value must have pattern `^studies/\[^/\]+/series/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3791,19 +4115,19 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
   /// [Search transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction)
   /// in the Cloud Healthcare API conformance statement. For samples that show
   /// how to call SearchForInstances, see
-  /// [Searching for studies, series, instances, and frames](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#searching_for_studies_series_instances_and_frames).
+  /// [Search for DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#search-dicom).
   ///
   /// Request parameters:
   ///
-  /// [parent] - The name of the DICOM store that is being accessed. For
-  /// example,
+  /// [parent] - Required. The name of the DICOM store that is being accessed.
+  /// For example,
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+$`.
   ///
-  /// [dicomWebPath] - The path of the SearchForInstancesRequest DICOMweb
-  /// request. For example, `instances`, `series/{series_uid}/instances`, or
-  /// `studies/{study_uid}/instances`.
+  /// [dicomWebPath] - Required. The path of the SearchForInstancesRequest
+  /// DICOMweb request. For example, `instances`,
+  /// `series/{series_uid}/instances`, or `studies/{study_uid}/instances`.
   /// Value must have pattern `^studies/\[^/\]+/series/\[^/\]+/instances$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3858,17 +4182,18 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
   /// Retrieve transaction. Study and series search results can take a few
   /// seconds to be updated after an instance is deleted using DeleteInstance.
   /// For samples that show how to call DeleteInstance, see
-  /// [Deleting a study, series, or instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#deleting_a_study_series_or_instance).
+  /// [Delete a study, series, or instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#delete-dicom).
   ///
   /// Request parameters:
   ///
-  /// [parent] - The name of the DICOM store that is being accessed. For
-  /// example,
+  /// [parent] - Required. The name of the DICOM store that is being accessed.
+  /// For example,
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+$`.
   ///
-  /// [dicomWebPath] - The path of the DeleteInstance request. For example,
+  /// [dicomWebPath] - Required. The path of the DeleteInstance request. For
+  /// example,
   /// `studies/{study_uid}/series/{series_uid}/instances/{instance_uid}`.
   /// Value must have pattern
   /// `^studies/\[^/\]+/series/\[^/\]+/instances/\[^/\]+$`.
@@ -3916,18 +4241,18 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
   /// [DICOM instances](https://cloud.google.com/healthcare/docs/dicom#dicom_instances)
   /// in the Cloud Healthcare API conformance statement. For samples that show
   /// how to call RetrieveInstance, see
-  /// [Retrieving an instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_an_instance).
+  /// [Retrieve an instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-instance).
   ///
   /// Request parameters:
   ///
-  /// [parent] - The name of the DICOM store that is being accessed. For
-  /// example,
+  /// [parent] - Required. The name of the DICOM store that is being accessed.
+  /// For example,
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+$`.
   ///
-  /// [dicomWebPath] - The path of the RetrieveInstance DICOMweb request. For
-  /// example,
+  /// [dicomWebPath] - Required. The path of the RetrieveInstance DICOMweb
+  /// request. For example,
   /// `studies/{study_uid}/series/{series_uid}/instances/{instance_uid}`.
   /// Value must have pattern
   /// `^studies/\[^/\]+/series/\[^/\]+/instances/\[^/\]+$`.
@@ -3974,18 +4299,18 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
   /// [Metadata resources](https://cloud.google.com/healthcare/docs/dicom#metadata_resources)
   /// in the Cloud Healthcare API conformance statement. For samples that show
   /// how to call RetrieveInstanceMetadata, see
-  /// [Retrieving metadata](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_metadata).
+  /// [Retrieve metadata](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-metadata).
   ///
   /// Request parameters:
   ///
-  /// [parent] - The name of the DICOM store that is being accessed. For
-  /// example,
+  /// [parent] - Required. The name of the DICOM store that is being accessed.
+  /// For example,
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+$`.
   ///
-  /// [dicomWebPath] - The path of the RetrieveInstanceMetadata DICOMweb
-  /// request. For example,
+  /// [dicomWebPath] - Required. The path of the RetrieveInstanceMetadata
+  /// DICOMweb request. For example,
   /// `studies/{study_uid}/series/{series_uid}/instances/{instance_uid}/metadata`.
   /// Value must have pattern
   /// `^studies/\[^/\]+/series/\[^/\]+/instances/\[^/\]+/metadata$`.
@@ -4031,18 +4356,18 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
   /// [Rendered resources](https://cloud.google.com/healthcare/docs/dicom#rendered_resources)
   /// in the Cloud Healthcare API conformance statement. For samples that show
   /// how to call RetrieveRenderedInstance, see
-  /// [Retrieving consumer image formats](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_consumer_image_formats).
+  /// [Retrieve consumer image formats](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-consumer).
   ///
   /// Request parameters:
   ///
-  /// [parent] - The name of the DICOM store that is being accessed. For
-  /// example,
+  /// [parent] - Required. The name of the DICOM store that is being accessed.
+  /// For example,
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+$`.
   ///
-  /// [dicomWebPath] - The path of the RetrieveRenderedInstance DICOMweb
-  /// request. For example,
+  /// [dicomWebPath] - Required. The path of the RetrieveRenderedInstance
+  /// DICOMweb request. For example,
   /// `studies/{study_uid}/series/{series_uid}/instances/{instance_uid}/rendered`.
   /// Value must have pattern
   /// `^studies/\[^/\]+/series/\[^/\]+/instances/\[^/\]+/rendered$`.
@@ -4096,18 +4421,18 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResource {
   /// [DICOM frames](https://cloud.google.com/healthcare/docs/dicom#dicom_frames)
   /// in the Cloud Healthcare API conformance statement. For samples that show
   /// how to call RetrieveFrames, see
-  /// [Retrieving DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_dicom_data).
+  /// [Retrieve DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-dicom).
   ///
   /// Request parameters:
   ///
-  /// [parent] - The name of the DICOM store that is being accessed. For
-  /// example,
+  /// [parent] - Required. The name of the DICOM store that is being accessed.
+  /// For example,
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+$`.
   ///
-  /// [dicomWebPath] - The path of the RetrieveFrames DICOMweb request. For
-  /// example,
+  /// [dicomWebPath] - Required. The path of the RetrieveFrames DICOMweb
+  /// request. For example,
   /// `studies/{study_uid}/series/{series_uid}/instances/{instance_uid}/frames/{frame_list}`.
   /// Value must have pattern
   /// `^studies/\[^/\]+/series/\[^/\]+/instances/\[^/\]+/frames/\[^/\]+$`.
@@ -4154,18 +4479,18 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResource {
   /// [Rendered resources](https://cloud.google.com/healthcare/docs/dicom#rendered_resources)
   /// in the Cloud Healthcare API conformance statement. For samples that show
   /// how to call RetrieveRenderedFrames, see
-  /// [Retrieving consumer image formats](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_consumer_image_formats).
+  /// [Retrieve consumer image formats](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-consumer).
   ///
   /// Request parameters:
   ///
-  /// [parent] - The name of the DICOM store that is being accessed. For
-  /// example,
+  /// [parent] - Required. The name of the DICOM store that is being accessed.
+  /// For example,
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+$`.
   ///
-  /// [dicomWebPath] - The path of the RetrieveRenderedFrames DICOMweb request.
-  /// For example,
+  /// [dicomWebPath] - Required. The path of the RetrieveRenderedFrames DICOMweb
+  /// request. For example,
   /// `studies/{study_uid}/series/{series_uid}/instances/{instance_uid}/frames/{frame_list}/rendered`.
   /// Value must have pattern
   /// `^studies/\[^/\]+/series/\[^/\]+/instances/\[^/\]+/frames/\[^/\]+/rendered$`.
@@ -4218,12 +4543,12 @@ class ProjectsLocationsDatasetsFhirStoresResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The name of the dataset this FHIR store belongs to.
+  /// [parent] - Required. The name of the dataset this FHIR store belongs to.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+$`.
   ///
-  /// [fhirStoreId] - The ID of the FHIR store that is being created. The string
-  /// must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
+  /// [fhirStoreId] - Required. The ID of the FHIR store that is being created.
+  /// The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4271,7 +4596,7 @@ class ProjectsLocationsDatasetsFhirStoresResource {
   ///
   /// Request parameters:
   ///
-  /// [sourceStore] - Source FHIR store resource name. For example,
+  /// [sourceStore] - Required. Source FHIR store resource name. For example,
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+$`.
@@ -4311,7 +4636,7 @@ class ProjectsLocationsDatasetsFhirStoresResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name of the FHIR store to delete.
+  /// [name] - Required. The resource name of the FHIR store to delete.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+$`.
   ///
@@ -4357,8 +4682,8 @@ class ProjectsLocationsDatasetsFhirStoresResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the FHIR store to export resource from, in the format
-  /// of
+  /// [name] - Required. The name of the FHIR store to export resource from, in
+  /// the format of
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+$`.
@@ -4398,7 +4723,7 @@ class ProjectsLocationsDatasetsFhirStoresResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name of the FHIR store to get.
+  /// [name] - Required. The resource name of the FHIR store to get.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+$`.
   ///
@@ -4434,7 +4759,7 @@ class ProjectsLocationsDatasetsFhirStoresResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name of the FHIR store to get metrics for.
+  /// [name] - Required. The resource name of the FHIR store to get metrics for.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+$`.
   ///
@@ -4587,8 +4912,8 @@ class ProjectsLocationsDatasetsFhirStoresResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the FHIR store to import FHIR resources to, in the
-  /// format of
+  /// [name] - Required. The name of the FHIR store to import FHIR resources to,
+  /// in the format of
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+$`.
@@ -4628,7 +4953,7 @@ class ProjectsLocationsDatasetsFhirStoresResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Name of the dataset.
+  /// [parent] - Required. Name of the dataset.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+$`.
   ///
@@ -4703,12 +5028,13 @@ class ProjectsLocationsDatasetsFhirStoresResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. Resource name of the FHIR store, of the form
+  /// [name] - Output only. Identifier. Resource name of the FHIR store, of the
+  /// form
   /// `projects/{project_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+$`.
   ///
-  /// [updateMask] - The update mask applies to the resource. For the
+  /// [updateMask] - Required. The update mask applies to the resource. For the
   /// `FieldMask` definition, see
   /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
   ///
@@ -4743,6 +5069,57 @@ class ProjectsLocationsDatasetsFhirStoresResource {
       queryParams: queryParams_,
     );
     return FhirStore.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Rolls back resources from the FHIR store to the specified time.
+  ///
+  /// This method returns an Operation that can be used to track the status of
+  /// the rollback by calling GetOperation. Immediate fatal errors appear in the
+  /// error field, errors are also logged to Cloud Logging (see
+  /// [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
+  /// Otherwise, when the operation finishes, a detailed response of type
+  /// RollbackFhirResourcesResponse is returned in the response field. The
+  /// metadata field type for this operation is OperationMetadata.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the FHIR store to rollback, in the format
+  /// of "projects/{project_id}/locations/{location_id}/datasets/{dataset_id}
+  /// /fhirStores/{fhir_store_id}".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> rollback(
+    RollbackFhirResourcesRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':rollback';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -4875,13 +5252,13 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Name of the `Patient` resource for which the information is
-  /// required.
+  /// [name] - Required. Name of the `Patient` resource for which the
+  /// information is required.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+/fhir/Patient/\[^/\]+$`.
   ///
-  /// [P_count] - Maximum number of resources in a page. If not specified, 100
-  /// is used. May not be larger than 1000.
+  /// [P_count] - Optional. Maximum number of resources in a page. If not
+  /// specified, 100 is used. May not be larger than 1000.
   ///
   /// [P_pageToken] - Used to retrieve the next or previous page of results when
   /// using pagination. Set `_page_token` to the value of _page_token set in
@@ -4889,24 +5266,24 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// the response bundle's links field, where `link.relation` is "previous" or
   /// "next". Omit `_page_token` if no previous request has been made.
   ///
-  /// [P_since] - If provided, only resources updated after this time are
-  /// returned. The time uses the format YYYY-MM-DDThh:mm:ss.sss+zz:zz. For
+  /// [P_since] - Optional. If provided, only resources updated after this time
+  /// are returned. The time uses the format YYYY-MM-DDThh:mm:ss.sss+zz:zz. For
   /// example, `2015-02-07T13:28:17.239+02:00` or `2017-01-01T00:00:00Z`. The
   /// time must be specified to the second and include a time zone.
   ///
-  /// [P_type] - String of comma-delimited FHIR resource types. If provided,
-  /// only resources of the specified resource type(s) are returned. Specifying
-  /// multiple `_type` parameters isn't supported. For example, the result of
-  /// `_type=Observation&_type=Encounter` is undefined. Use
+  /// [P_type] - Optional. String of comma-delimited FHIR resource types. If
+  /// provided, only resources of the specified resource type(s) are returned.
+  /// Specifying multiple `_type` parameters isn't supported. For example, the
+  /// result of `_type=Observation&_type=Encounter` is undefined. Use
   /// `_type=Observation,Encounter` instead.
   ///
-  /// [end] - The response includes records prior to the end date. The date uses
-  /// the format YYYY-MM-DD. If no end date is provided, all records subsequent
-  /// to the start date are in scope.
+  /// [end] - Optional. The response includes records prior to the end date. The
+  /// date uses the format YYYY-MM-DD. If no end date is provided, all records
+  /// subsequent to the start date are in scope.
   ///
-  /// [start] - The response includes records subsequent to the start date. The
-  /// date uses the format YYYY-MM-DD. If no start date is provided, all records
-  /// prior to the end date are in scope.
+  /// [start] - Optional. The response includes records subsequent to the start
+  /// date. The date uses the format YYYY-MM-DD. If no start date is provided,
+  /// all records prior to the end date are in scope.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4958,7 +5335,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the resource to purge.
+  /// [name] - Required. The name of the resource to purge.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+/fhir/\[^/\]+/\[^/\]+$`.
   ///
@@ -5012,22 +5389,22 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The name of the FHIR store that holds the profiles being used
-  /// for validation.
+  /// [parent] - Required. The name of the FHIR store that holds the profiles
+  /// being used for validation.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+$`.
   ///
-  /// [type] - The FHIR resource type of the resource being validated. For a
-  /// complete list, see the FHIR Resource Index
+  /// [type] - Required. The FHIR resource type of the resource being validated.
+  /// For a complete list, see the FHIR Resource Index
   /// ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/resourcelist.html),
   /// [STU3](http://hl7.org/implement/standards/fhir/STU3/resourcelist.html), or
   /// [R4](http://hl7.org/implement/standards/fhir/R4/resourcelist.html)). Must
   /// match the resource type in the provided content.
   /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [profile] - The canonical URL of a profile that this resource should be
-  /// validated against. For example, to validate a Patient resource against the
-  /// US Core Patient profile this parameter would be
+  /// [profile] - Required. The canonical URL of a profile that this resource
+  /// should be validated against. For example, to validate a Patient resource
+  /// against the US Core Patient profile this parameter would be
   /// `http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient`. A
   /// StructureDefinition with this canonical URL must exist in the FHIR store.
   ///
@@ -5087,7 +5464,8 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Name of the FHIR store to retrieve the capabilities for.
+  /// [name] - Required. Name of the FHIR store to retrieve the capabilities
+  /// for.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+$`.
   ///
@@ -5119,13 +5497,233 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
     return HttpBody.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Deletes a FHIR resource that match an identifier search query.
+  ///
+  /// Implements the FHIR standard conditional delete interaction, limited to
+  /// searching by resource identifier. If multiple resources match, 412
+  /// Precondition Failed error will be returned. Search term for identifier
+  /// should be in the pattern `identifier=system|value` or `identifier=value` -
+  /// similar to the `search` method on resources with a specific identifier.
+  /// Note: Unless resource versioning is disabled by setting the
+  /// disable_resource_versioning flag on the FHIR store, the deleted resource
+  /// is moved to a history repository that can still be retrieved through vread
+  /// and related methods, unless they are removed by the purge method. For
+  /// samples that show how to call `conditionalDelete`, see
+  /// [Conditionally deleting a FHIR resource](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#conditionally_deleting_a_fhir_resource).
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the FHIR store this resource belongs to.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+$`.
+  ///
+  /// [type] - Required. The FHIR resource type to delete, such as Patient or
+  /// Observation. For a complete list, see the FHIR Resource Index
+  /// ([DSTU2](https://hl7.org/implement/standards/fhir/DSTU2/resourcelist.html),
+  /// [STU3](https://hl7.org/implement/standards/fhir/STU3/resourcelist.html),
+  /// [R4](https://hl7.org/implement/standards/fhir/R4/resourcelist.html)).
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> conditionalDelete(
+    core.String parent,
+    core.String type, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/fhir/' +
+        core.Uri.encodeFull('$type');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// If a resource is found with the identifier specified in the query
+  /// parameters, updates part of that resource by applying the operations
+  /// specified in a [JSON Patch](http://jsonpatch.com/) document.
+  ///
+  /// Implements the FHIR standard conditional patch interaction, limited to
+  /// searching by resource identifier. DSTU2 doesn't define a conditional patch
+  /// method, but the server supports it in the same way it supports STU3.
+  /// Search term for identifier should be in the pattern
+  /// `identifier=system|value` or `identifier=value` - similar to the `search`
+  /// method on resources with a specific identifier. If the search criteria
+  /// identify more than one match, the request returns a `412 Precondition
+  /// Failed` error. The request body must contain a JSON Patch document, and
+  /// the request headers must contain `Content-Type:
+  /// application/json-patch+json`. On success, the response body contains a
+  /// JSON-encoded representation of the updated resource, including the
+  /// server-assigned version ID. Errors generated by the FHIR store contain a
+  /// JSON-encoded `OperationOutcome` resource describing the reason for the
+  /// error. If the request cannot be mapped to a valid API method on a FHIR
+  /// store, a generic GCP error might be returned instead. For samples that
+  /// show how to call `conditionalPatch`, see
+  /// [Conditionally patching a FHIR resource](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#conditionally_patching_a_fhir_resource).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the FHIR store this resource belongs to.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+$`.
+  ///
+  /// [type] - Required. The FHIR resource type to update, such as Patient or
+  /// Observation. For a complete list, see the FHIR Resource Index
+  /// ([DSTU2](https://hl7.org/implement/standards/fhir/DSTU2/resourcelist.html),
+  /// [STU3](https://hl7.org/implement/standards/fhir/STU3/resourcelist.html),
+  /// [R4](https://hl7.org/implement/standards/fhir/R4/resourcelist.html)).
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [HttpBody].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<HttpBody> conditionalPatch(
+    HttpBody request,
+    core.String parent,
+    core.String type, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/fhir/' +
+        core.Uri.encodeFull('$type');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return HttpBody.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// If a resource is found with the identifier specified in the query
+  /// parameters, updates the entire contents of that resource.
+  ///
+  /// Implements the FHIR standard conditional update interaction, limited to
+  /// searching by resource identifier. Search term for identifier should be in
+  /// the pattern `identifier=system|value` or `identifier=value` - similar to
+  /// the `search` method on resources with a specific identifier. If the search
+  /// criteria identify more than one match, the request returns a `412
+  /// Precondition Failed` error. If the search criteria identify zero matches,
+  /// and the supplied resource body contains an `id`, and the FHIR store has
+  /// enable_update_create set, creates the resource with the client-specified
+  /// ID. It is strongly advised not to include or encode any sensitive data
+  /// such as patient identifiers in client-specified resource IDs. Those IDs
+  /// are part of the FHIR resource path recorded in Cloud Audit Logs and
+  /// Pub/Sub notifications. Those IDs can also be contained in reference fields
+  /// within other resources. If the search criteria identify zero matches, and
+  /// the supplied resource body does not contain an `id`, the resource is
+  /// created with a server-assigned ID as per the create method. The request
+  /// body must contain a JSON-encoded FHIR resource, and the request headers
+  /// must contain `Content-Type: application/fhir+json`. On success, the
+  /// response body contains a JSON-encoded representation of the updated
+  /// resource, including the server-assigned version ID. Errors generated by
+  /// the FHIR store contain a JSON-encoded `OperationOutcome` resource
+  /// describing the reason for the error. If the request cannot be mapped to a
+  /// valid API method on a FHIR store, a generic GCP error might be returned
+  /// instead. For samples that show how to call `conditionalUpdate`, see
+  /// [Conditionally updating a FHIR resource](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#conditionally_updating_a_fhir_resource).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the FHIR store this resource belongs to.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+$`.
+  ///
+  /// [type] - Required. The FHIR resource type to update, such as Patient or
+  /// Observation. For a complete list, see the FHIR Resource Index
+  /// ([DSTU2](https://hl7.org/implement/standards/fhir/DSTU2/resourcelist.html),
+  /// [STU3](https://hl7.org/implement/standards/fhir/STU3/resourcelist.html),
+  /// [R4](https://hl7.org/implement/standards/fhir/R4/resourcelist.html)). Must
+  /// match the resource type in the provided content.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [HttpBody].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<HttpBody> conditionalUpdate(
+    HttpBody request,
+    core.String parent,
+    core.String type, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/fhir/' +
+        core.Uri.encodeFull('$type');
+
+    final response_ = await _requester.request(
+      url_,
+      'PUT',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return HttpBody.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Creates a FHIR resource.
   ///
   /// Implements the FHIR standard create interaction
   /// ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/http.html#create),
   /// [STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#create),
   /// [R4](http://hl7.org/implement/standards/fhir/R4/http.html#create)), which
-  /// creates a new resource with a server-assigned resource ID. The request
+  /// creates a new resource with a server-assigned resource ID. Also supports
+  /// the FHIR standard conditional create interaction
+  /// ([DSTU2](https://hl7.org/implement/standards/fhir/DSTU2/http.html#ccreate),
+  /// [STU3](https://hl7.org/implement/standards/fhir/STU3/http.html#ccreate),
+  /// [R4](https://hl7.org/implement/standards/fhir/R4/http.html#ccreate)),
+  /// specified by supplying an `If-None-Exist` header containing a FHIR search
+  /// query, limited to searching by resource identifier. If no resources match
+  /// this search query, the server processes the create operation as normal.
+  /// When using conditional create, the search term for identifier should be in
+  /// the pattern `identifier=system|value` or `identifier=value` - similar to
+  /// the `search` method on resources with a specific identifier. The request
   /// body must contain a JSON-encoded FHIR resource, and the request headers
   /// must contain `Content-Type: application/fhir+json`. On success, the
   /// response body contains a JSON-encoded representation of the resource as it
@@ -5141,12 +5739,12 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The name of the FHIR store this resource belongs to.
+  /// [parent] - Required. The name of the FHIR store this resource belongs to.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+$`.
   ///
-  /// [type] - The FHIR resource type to create, such as Patient or Observation.
-  /// For a complete list, see the FHIR Resource Index
+  /// [type] - Required. The FHIR resource type to create, such as Patient or
+  /// Observation. For a complete list, see the FHIR Resource Index
   /// ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/resourcelist.html),
   /// [STU3](http://hl7.org/implement/standards/fhir/STU3/resourcelist.html),
   /// [R4](http://hl7.org/implement/standards/fhir/R4/resourcelist.html)). Must
@@ -5203,7 +5801,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the resource to delete.
+  /// [name] - Required. The name of the resource to delete.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+/fhir/\[^/\]+/\[^/\]+$`.
   ///
@@ -5276,7 +5874,8 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Name of the FHIR store in which this bundle will be executed.
+  /// [parent] - Required. Name of the FHIR store in which this bundle will be
+  /// executed.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+$`.
   ///
@@ -5329,7 +5928,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the resource to retrieve.
+  /// [name] - Required. The name of the resource to retrieve.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+/fhir/\[^/\]+/\[^/\]+$`.
   ///
@@ -5414,7 +6013,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the resource to update.
+  /// [name] - Required. The name of the resource to update.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+/fhir/\[^/\]+/\[^/\]+$`.
   ///
@@ -5471,7 +6070,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the resource to retrieve.
+  /// [name] - Required. The name of the resource to retrieve.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+/fhir/\[^/\]+/\[^/\]+$`.
   ///
@@ -5550,8 +6149,24 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// might not be fully searchable as the server might trim its generated
   /// search index in those cases. Note: FHIR resources are indexed
   /// asynchronously, so there might be a slight delay between the time a
-  /// resource is created or changes and when the change is reflected in search
-  /// results. For samples and detailed information, see
+  /// resource is created or changed, and the time when the change reflects in
+  /// search results. The only exception is resource identifier data, which is
+  /// indexed synchronously as a special index. As a result, searching using
+  /// resource identifier is not subject to indexing delay. To use the special
+  /// synchronous index, the search term for identifier should be in the pattern
+  /// `identifier=[system]|[value]` or `identifier=[value]`, and any of the
+  /// following search result parameters can be used: * `_count` * `_include` *
+  /// `_revinclude` * `_summary` * `_elements` If your query contains any other
+  /// search parameters, the standard asynchronous index will be used instead.
+  /// Note that searching against the special index is optimized for resolving a
+  /// small number of matches. The search isn't optimized if your identifier
+  /// search criteria matches a large number (i.e. more than 2,000) of
+  /// resources. For a search query that will match a large number of resources,
+  /// you can avoiding using the special synchronous index by including an
+  /// additional `_sort` parameter in your query. Use `_sort=-_lastUpdated` if
+  /// you want to keep the default sorting order. Note: The special synchronous
+  /// identifier index are currently disabled for DocumentReference and
+  /// DocumentManifest searches. For samples and detailed information, see
   /// [Searching for FHIR resources](https://cloud.google.com/healthcare/docs/how-tos/fhir-search)
   /// and
   /// [Advanced FHIR search features](https://cloud.google.com/healthcare/docs/how-tos/fhir-advanced-search).
@@ -5560,7 +6175,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Name of the FHIR store to retrieve resources from.
+  /// [parent] - Required. Name of the FHIR store to retrieve resources from.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+$`.
   ///
@@ -5642,8 +6257,24 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// might not be fully searchable as the server might trim its generated
   /// search index in those cases. Note: FHIR resources are indexed
   /// asynchronously, so there might be a slight delay between the time a
-  /// resource is created or changes and when the change is reflected in search
-  /// results. For samples and detailed information, see
+  /// resource is created or changed, and the time when the change reflects in
+  /// search results. The only exception is resource identifier data, which is
+  /// indexed synchronously as a special index. As a result, searching using
+  /// resource identifier is not subject to indexing delay. To use the special
+  /// synchronous index, the search term for identifier should be in the pattern
+  /// `identifier=[system]|[value]` or `identifier=[value]`, and any of the
+  /// following search result parameters can be used: * `_count` * `_include` *
+  /// `_revinclude` * `_summary` * `_elements` If your query contains any other
+  /// search parameters, the standard asynchronous index will be used instead.
+  /// Note that searching against the special index is optimized for resolving a
+  /// small number of matches. The search isn't optimized if your identifier
+  /// search criteria matches a large number (i.e. more than 2,000) of
+  /// resources. For a search query that will match a large number of resources,
+  /// you can avoiding using the special synchronous index by including an
+  /// additional `_sort` parameter in your query. Use `_sort=-_lastUpdated` if
+  /// you want to keep the default sorting order. Note: The special synchronous
+  /// identifier index are currently disabled for DocumentReference and
+  /// DocumentManifest searches. For samples and detailed information, see
   /// [Searching for FHIR resources](https://cloud.google.com/healthcare/docs/how-tos/fhir-search)
   /// and
   /// [Advanced FHIR search features](https://cloud.google.com/healthcare/docs/how-tos/fhir-advanced-search).
@@ -5652,12 +6283,12 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Name of the FHIR store to retrieve resources from.
+  /// [parent] - Required. Name of the FHIR store to retrieve resources from.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+$`.
   ///
-  /// [resourceType] - The FHIR resource type to search, such as Patient or
-  /// Observation. For a complete list, see the FHIR Resource Index
+  /// [resourceType] - Required. The FHIR resource type to search, such as
+  /// Patient or Observation. For a complete list, see the FHIR Resource Index
   /// ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/resourcelist.html),
   /// [STU3](http://hl7.org/implement/standards/fhir/STU3/resourcelist.html),
   /// [R4](http://hl7.org/implement/standards/fhir/R4/resourcelist.html)).
@@ -5726,7 +6357,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the resource to update.
+  /// [name] - Required. The name of the resource to update.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+/fhir/\[^/\]+/\[^/\]+$`.
   ///
@@ -5778,7 +6409,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the resource version to retrieve.
+  /// [name] - Required. The name of the resource version to retrieve.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+/fhir/\[^/\]+/\[^/\]+/_history/\[^/\]+$`.
   ///
@@ -5826,12 +6457,13 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The name of the dataset this HL7v2 store belongs to.
+  /// [parent] - Required. The name of the dataset this HL7v2 store belongs to.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+$`.
   ///
-  /// [hl7V2StoreId] - The ID of the HL7v2 store that is being created. The
-  /// string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
+  /// [hl7V2StoreId] - Required. The ID of the HL7v2 store that is being
+  /// created. The string must match the following regex:
+  /// `[\p{L}\p{N}_\-\.]{1,256}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5872,7 +6504,7 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name of the HL7v2 store to delete.
+  /// [name] - Required. The resource name of the HL7v2 store to delete.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/hl7V2Stores/\[^/\]+$`.
   ///
@@ -5918,7 +6550,7 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the source HL7v2 store, in the format
+  /// [name] - Required. The name of the source HL7v2 store, in the format
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7v2Stores/{hl7v2_store_id}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/hl7V2Stores/\[^/\]+$`.
@@ -5958,7 +6590,7 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name of the HL7v2 store to get.
+  /// [name] - Required. The resource name of the HL7v2 store to get.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/hl7V2Stores/\[^/\]+$`.
   ///
@@ -5988,6 +6620,45 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
       queryParams: queryParams_,
     );
     return Hl7V2Store.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets metrics associated with the HL7v2 store.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the HL7v2 store to get metrics
+  /// for, in the format
+  /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/hl7V2Stores/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Hl7V2StoreMetrics].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Hl7V2StoreMetrics> getHL7v2StoreMetrics(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':getHL7v2StoreMetrics';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Hl7V2StoreMetrics.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 
@@ -6080,7 +6751,7 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the target HL7v2 store, in the format
+  /// [name] - Required. The name of the target HL7v2 store, in the format
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7v2Stores/{hl7v2_store_id}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/hl7V2Stores/\[^/\]+$`.
@@ -6120,7 +6791,7 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Name of the dataset.
+  /// [parent] - Required. Name of the dataset.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+$`.
   ///
@@ -6196,12 +6867,12 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Resource name of the HL7v2 store, of the form
+  /// [name] - Identifier. Resource name of the HL7v2 store, of the form
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/hl7V2Stores/\[^/\]+$`.
   ///
-  /// [updateMask] - The update mask applies to the resource. For the
+  /// [updateMask] - Required. The update mask applies to the resource. For the
   /// `FieldMask` definition, see
   /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
   ///
@@ -6356,7 +7027,7 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The name of the HL7v2 store this message belongs to.
+  /// [parent] - Required. The name of the HL7v2 store this message belongs to.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/hl7V2Stores/\[^/\]+$`.
   ///
@@ -6395,7 +7066,7 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name of the HL7v2 message to delete.
+  /// [name] - Required. The resource name of the HL7v2 message to delete.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/hl7V2Stores/\[^/\]+/messages/\[^/\]+$`.
   ///
@@ -6431,7 +7102,7 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name of the HL7v2 message to retrieve.
+  /// [name] - Required. The resource name of the HL7v2 message to retrieve.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/hl7V2Stores/\[^/\]+/messages/\[^/\]+$`.
   ///
@@ -6494,7 +7165,7 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The name of the HL7v2 store this message belongs to.
+  /// [parent] - Required. The name of the HL7v2 store this message belongs to.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/hl7V2Stores/\[^/\]+$`.
   ///
@@ -6539,7 +7210,7 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Name of the HL7v2 store to retrieve messages from.
+  /// [parent] - Required. Name of the HL7v2 store to retrieve messages from.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/hl7V2Stores/\[^/\]+$`.
   ///
@@ -6660,13 +7331,13 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Resource name of the Message, of the form
+  /// [name] - Output only. Resource name of the Message, of the form
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`.
   /// Assigned by the server.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/hl7V2Stores/\[^/\]+/messages/\[^/\]+$`.
   ///
-  /// [updateMask] - The update mask applies to the resource. For the
+  /// [updateMask] - Required. The update mask applies to the resource. For the
   /// `FieldMask` definition, see
   /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
   ///
@@ -7165,9 +7836,10 @@ class AttributeDefinition {
   /// Optional.
   core.String? description;
 
+  /// Identifier.
+  ///
   /// Resource name of the Attribute definition, of the form
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`.
-  ///
   /// Cannot be changed after creation.
   core.String? name;
 
@@ -7307,14 +7979,31 @@ class Binding {
   /// `group:{emailid}`: An email address that represents a Google group. For
   /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
   /// (primary) that represents all the users of that domain. For example,
-  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a user that has
-  /// been recently deleted. For example,
-  /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
-  /// this value reverts to `user:{emailid}` and the recovered user retains the
-  /// role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a service account
-  /// that has been recently deleted. For example,
+  /// `google.com` or `example.com`. *
+  /// `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workforce identity pool. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`:
+  /// All workforce identities in a group. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All workforce identities with a specific attribute value. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}
+  /// / * `: All identities in a workforce identity pool. *
+  /// `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workload identity pool. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`:
+  /// A workload identity pool group. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All identities in a workload identity pool with a certain attribute. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}
+  /// / * `: All identities in a workload identity pool. *
+  /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
+  /// identifier) representing a user that has been recently deleted. For
+  /// example, `alice@example.com?uid=123456789012345678901`. If the user is
+  /// recovered, this value reverts to `user:{emailid}` and the recovered user
+  /// retains the role in the binding. *
+  /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus
+  /// unique identifier) representing a service account that has been recently
+  /// deleted. For example,
   /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If
   /// the service account is undeleted, this value reverts to
   /// `serviceAccount:{emailid}` and the undeleted service account retains the
@@ -7323,12 +8012,19 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding.
+  /// the role in the binding. *
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// Deleted single identity in a workforce identity pool. For example,
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
   ///
-  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an
+  /// overview of the IAM roles and permissions, see the
+  /// [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For
+  /// a list of the available pre-defined roles, see
+  /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
   Binding({
@@ -7528,9 +8224,10 @@ class Consent {
   /// Optional.
   core.Map<core.String, core.String>? metadata;
 
+  /// Identifier.
+  ///
   /// Resource name of the Consent, of the form
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`.
-  ///
   /// Cannot be changed after creation.
   core.String? name;
 
@@ -7673,9 +8370,10 @@ class ConsentArtifact {
   /// Optional.
   core.Map<core.String, core.String>? metadata;
 
+  /// Identifier.
+  ///
   /// Resource name of the Consent artifact, of the form
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
-  ///
   /// Cannot be changed after creation.
   core.String? name;
 
@@ -7848,9 +8546,10 @@ class ConsentStore {
   /// Optional.
   core.Map<core.String, core.String>? labels;
 
+  /// Identifier.
+  ///
   /// Resource name of the consent store, of the form
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}`.
-  ///
   /// Cannot be changed after creation.
   core.String? name;
 
@@ -7893,6 +8592,8 @@ class ConsentStore {
 /// Creates a new message.
 class CreateMessageRequest {
   /// HL7v2 message.
+  ///
+  /// Required.
   Message? message;
 
   CreateMessageRequest({
@@ -7964,6 +8665,8 @@ class CryptoHashConfig {
 /// one or more patients. This may include multiple modalities of healthcare
 /// data, such as electronic medical records or medical imaging data.
 class Dataset {
+  /// Identifier.
+  ///
   /// Resource name of the dataset, of the form
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.
   core.String? name;
@@ -8098,8 +8801,8 @@ class DeidentifyConfig {
   ///
   /// Using this option results in a significant reduction of throughput, and is
   /// not compatible with `LOCATION` or `ORGANIZATION_NAME` infoTypes.
-  /// `LOCATION` must be excluded within `TextConfig`, and must also be excluded
-  /// within `ImageConfig` if image redaction is required.
+  /// `LOCATION` must be excluded within TextConfig, and must also be excluded
+  /// within ImageConfig if image redaction is required.
   core.bool? useRegionalDataProcessing;
 
   DeidentifyConfig({
@@ -8156,6 +8859,8 @@ class DeidentifyDatasetRequest {
   /// * The destination dataset must not exist. * The destination dataset must
   /// be in the same location as the source dataset. De-identifying data across
   /// multiple locations is not supported.
+  ///
+  /// Required.
   core.String? destinationDataset;
 
   /// Cloud Storage location to read the JSON
@@ -8212,6 +8917,8 @@ class DeidentifyDicomStoreRequest {
   /// multiple locations is not supported. * The destination DICOM store must
   /// not exist. * The caller must have the necessary permissions to create the
   /// destination DICOM store.
+  ///
+  /// Required.
   core.String? destinationStore;
 
   /// Filter configuration.
@@ -8276,6 +8983,8 @@ class DeidentifyFhirStoreRequest {
   /// multiple locations is not supported. * The destination FHIR store must
   /// exist. * The caller must have the healthcare.fhirResources.update
   /// permission to write to the destination FHIR store.
+  ///
+  /// Required.
   core.String? destinationStore;
 
   /// Cloud Storage location to read the JSON
@@ -8453,6 +9162,8 @@ class DicomStore {
   /// with a given store.
   core.Map<core.String, core.String>? labels;
 
+  /// Identifier.
+  ///
   /// Resource name of the DICOM store, of the form
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
   core.String? name;
@@ -8510,6 +9221,69 @@ class DicomStore {
         if (notificationConfig != null)
           'notificationConfig': notificationConfig!,
         if (streamConfigs != null) 'streamConfigs': streamConfigs!,
+      };
+}
+
+/// DicomStoreMetrics contains metrics describing a DICOM store.
+class DicomStoreMetrics {
+  /// Total blob storage bytes for all instances in the store.
+  core.String? blobStorageSizeBytes;
+
+  /// Number of instances in the store.
+  core.String? instanceCount;
+
+  /// Resource name of the DICOM store, of the form
+  /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
+  core.String? name;
+
+  /// Number of series in the store.
+  core.String? seriesCount;
+
+  /// Total structured storage bytes for all instances in the store.
+  core.String? structuredStorageSizeBytes;
+
+  /// Number of studies in the store.
+  core.String? studyCount;
+
+  DicomStoreMetrics({
+    this.blobStorageSizeBytes,
+    this.instanceCount,
+    this.name,
+    this.seriesCount,
+    this.structuredStorageSizeBytes,
+    this.studyCount,
+  });
+
+  DicomStoreMetrics.fromJson(core.Map json_)
+      : this(
+          blobStorageSizeBytes: json_.containsKey('blobStorageSizeBytes')
+              ? json_['blobStorageSizeBytes'] as core.String
+              : null,
+          instanceCount: json_.containsKey('instanceCount')
+              ? json_['instanceCount'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          seriesCount: json_.containsKey('seriesCount')
+              ? json_['seriesCount'] as core.String
+              : null,
+          structuredStorageSizeBytes:
+              json_.containsKey('structuredStorageSizeBytes')
+                  ? json_['structuredStorageSizeBytes'] as core.String
+                  : null,
+          studyCount: json_.containsKey('studyCount')
+              ? json_['studyCount'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (blobStorageSizeBytes != null)
+          'blobStorageSizeBytes': blobStorageSizeBytes!,
+        if (instanceCount != null) 'instanceCount': instanceCount!,
+        if (name != null) 'name': name!,
+        if (seriesCount != null) 'seriesCount': seriesCount!,
+        if (structuredStorageSizeBytes != null)
+          'structuredStorageSizeBytes': structuredStorageSizeBytes!,
+        if (studyCount != null) 'studyCount': studyCount!,
       };
 }
 
@@ -8936,7 +9710,7 @@ class ExportMessagesRequest {
   core.String? endTime;
 
   /// Restricts messages exported to those matching a filter, only applicable to
-  /// PubsubDestination and GcsDestination.
+  /// PubsubDestination.
   ///
   /// The following syntax is available: * A string field value can be written
   /// as text inside quotation marks, for example `"query text"`. The only valid
@@ -9361,6 +10135,8 @@ class FhirStore {
   /// with a given store.
   core.Map<core.String, core.String>? labels;
 
+  /// Identifier.
+  ///
   /// Resource name of the FHIR store, of the form
   /// `projects/{project_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
   ///
@@ -9409,7 +10185,7 @@ class FhirStore {
   /// they contain FHIR resources of a different version. Version is required
   /// for every FHIR store.
   ///
-  /// Immutable.
+  /// Required. Immutable.
   /// Possible string values are:
   /// - "VERSION_UNSPECIFIED" : Users must specify a version on store creation
   /// or an error is returned.
@@ -10309,6 +11085,8 @@ class Hl7V2Store {
   /// with a given store.
   core.Map<core.String, core.String>? labels;
 
+  /// Identifier.
+  ///
   /// Resource name of the HL7v2 store, of the form
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.
   core.String? name;
@@ -10380,6 +11158,76 @@ class Hl7V2Store {
         if (parserConfig != null) 'parserConfig': parserConfig!,
         if (rejectDuplicateMessage != null)
           'rejectDuplicateMessage': rejectDuplicateMessage!,
+      };
+}
+
+/// Count of messages and total storage size by type for a given HL7 store.
+class Hl7V2StoreMetric {
+  /// The total count of HL7v2 messages in the store for the given message type.
+  core.String? count;
+
+  /// The Hl7v2 message type this metric applies to, such as `ADT` or `ORU`.
+  core.String? messageType;
+
+  /// The total amount of structured storage used by HL7v2 messages of this
+  /// message type in the store.
+  core.String? structuredStorageSizeBytes;
+
+  Hl7V2StoreMetric({
+    this.count,
+    this.messageType,
+    this.structuredStorageSizeBytes,
+  });
+
+  Hl7V2StoreMetric.fromJson(core.Map json_)
+      : this(
+          count:
+              json_.containsKey('count') ? json_['count'] as core.String : null,
+          messageType: json_.containsKey('messageType')
+              ? json_['messageType'] as core.String
+              : null,
+          structuredStorageSizeBytes:
+              json_.containsKey('structuredStorageSizeBytes')
+                  ? json_['structuredStorageSizeBytes'] as core.String
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (count != null) 'count': count!,
+        if (messageType != null) 'messageType': messageType!,
+        if (structuredStorageSizeBytes != null)
+          'structuredStorageSizeBytes': structuredStorageSizeBytes!,
+      };
+}
+
+/// List of metrics for a given HL7v2 store.
+class Hl7V2StoreMetrics {
+  /// List of HL7v2 store metrics by message type.
+  core.List<Hl7V2StoreMetric>? metrics;
+
+  /// The resource name of the HL7v2 store to get metrics for, in the format
+  /// `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.
+  core.String? name;
+
+  Hl7V2StoreMetrics({
+    this.metrics,
+    this.name,
+  });
+
+  Hl7V2StoreMetrics.fromJson(core.Map json_)
+      : this(
+          metrics: json_.containsKey('metrics')
+              ? (json_['metrics'] as core.List)
+                  .map((value) => Hl7V2StoreMetric.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (metrics != null) 'metrics': metrics!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -10660,6 +11508,8 @@ class InfoTypeTransformation {
 /// Ingests a message into the specified HL7v2 store.
 class IngestMessageRequest {
   /// HL7v2 message to ingest.
+  ///
+  /// Required.
   Message? message;
 
   IngestMessageRequest({
@@ -11258,6 +12108,8 @@ class Message {
   core.String? createTime;
 
   /// Raw message bytes.
+  ///
+  /// Required.
   core.String? data;
   core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
 
@@ -11286,6 +12138,8 @@ class Message {
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`.
   ///
   /// Assigned by the server.
+  ///
+  /// Output only.
   core.String? name;
 
   /// The parsed version of the raw message data.
@@ -11457,7 +12311,7 @@ class Operation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard
@@ -11647,23 +12501,23 @@ class PatientId {
 /// request, the resource, or both. To learn which resources support conditions
 /// in their IAM policies, see the
 /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": \[ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": \[
+/// **JSON example:** ``` { "bindings": [ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": [
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": \[
-/// "user:eve@example.com" \], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": [
+/// "user:eve@example.com" ], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time \< timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
-/// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
-/// user:mike@example.com - group:admins@example.com - domain:google.com -
-/// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
-/// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
-/// role: roles/resourcemanager.organizationViewer condition: title: expirable
-/// access description: Does not grant access after Sep 2020 expression:
-/// request.time \< timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
-/// version: 3 For a description of IAM and its features, see the
-/// [IAM documentation](https://cloud.google.com/iam/docs/).
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: -
+/// members: - user:mike@example.com - group:admins@example.com -
+/// domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+/// role: roles/resourcemanager.organizationAdmin - members: -
+/// user:eve@example.com role: roles/resourcemanager.organizationViewer
+/// condition: title: expirable access description: Does not grant access after
+/// Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+/// etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features,
+/// see the [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig>? auditConfigs;
@@ -12003,6 +12857,148 @@ class RevokeConsentRequest {
       };
 }
 
+class RollbackFhirResourceFilteringFields {
+  /// A filter expression that matches data in the `Resource.meta` element.
+  ///
+  /// Supports all filters in \[AIP-160\](https://google.aip.dev/160) except the
+  /// "has" (`:`) operator. Supports the following custom functions: * `tag("")
+  /// = ""` for tag filtering. * `extension_value_ts("") = ` for filtering
+  /// extensions with a timestamp, where `` is a Unix timestamp. Supports the
+  /// `>`, `<`, `<=`, `>=`, and `!=` comparison operators.
+  ///
+  /// Optional.
+  core.String? metadataFilter;
+
+  /// A list of operation IDs to roll back.
+  ///
+  /// Optional.
+  core.List<core.String>? operationIds;
+
+  RollbackFhirResourceFilteringFields({
+    this.metadataFilter,
+    this.operationIds,
+  });
+
+  RollbackFhirResourceFilteringFields.fromJson(core.Map json_)
+      : this(
+          metadataFilter: json_.containsKey('metadataFilter')
+              ? json_['metadataFilter'] as core.String
+              : null,
+          operationIds: json_.containsKey('operationIds')
+              ? (json_['operationIds'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (metadataFilter != null) 'metadataFilter': metadataFilter!,
+        if (operationIds != null) 'operationIds': operationIds!,
+      };
+}
+
+class RollbackFhirResourcesRequest {
+  /// CREATE/UPDATE/DELETE/ALL for reverting all txns of a certain type.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "CHANGE_TYPE_UNSPECIFIED" : When unspecified, revert all transactions
+  /// - "ALL" : All transactions
+  /// - "CREATE" : Revert only CREATE transactions
+  /// - "UPDATE" : Revert only Update transactions
+  /// - "DELETE" : Revert only Delete transactions
+  core.String? changeType;
+
+  /// Specifies whether to exclude earlier rollbacks.
+  ///
+  /// Optional.
+  core.bool? excludeRollbacks;
+
+  /// Parameters for filtering resources
+  ///
+  /// Optional.
+  RollbackFhirResourceFilteringFields? filteringFields;
+
+  /// When enabled, changes will be reverted without explicit confirmation
+  ///
+  /// Optional.
+  core.bool? force;
+
+  /// GCS object containing list of {resourceType}/{resourceId} lines,
+  /// identifying resources to be reverted
+  ///
+  /// Optional.
+  core.String? inputGcsObject;
+
+  /// Bucket to deposit result
+  ///
+  /// Required.
+  core.String? resultGcsBucket;
+
+  /// Time point to rollback to.
+  ///
+  /// Required.
+  core.String? rollbackTime;
+
+  /// If specified, revert only resources of these types
+  ///
+  /// Optional.
+  core.List<core.String>? type;
+
+  RollbackFhirResourcesRequest({
+    this.changeType,
+    this.excludeRollbacks,
+    this.filteringFields,
+    this.force,
+    this.inputGcsObject,
+    this.resultGcsBucket,
+    this.rollbackTime,
+    this.type,
+  });
+
+  RollbackFhirResourcesRequest.fromJson(core.Map json_)
+      : this(
+          changeType: json_.containsKey('changeType')
+              ? json_['changeType'] as core.String
+              : null,
+          excludeRollbacks: json_.containsKey('excludeRollbacks')
+              ? json_['excludeRollbacks'] as core.bool
+              : null,
+          filteringFields: json_.containsKey('filteringFields')
+              ? RollbackFhirResourceFilteringFields.fromJson(
+                  json_['filteringFields']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          force:
+              json_.containsKey('force') ? json_['force'] as core.bool : null,
+          inputGcsObject: json_.containsKey('inputGcsObject')
+              ? json_['inputGcsObject'] as core.String
+              : null,
+          resultGcsBucket: json_.containsKey('resultGcsBucket')
+              ? json_['resultGcsBucket'] as core.String
+              : null,
+          rollbackTime: json_.containsKey('rollbackTime')
+              ? json_['rollbackTime'] as core.String
+              : null,
+          type: json_.containsKey('type')
+              ? (json_['type'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (changeType != null) 'changeType': changeType!,
+        if (excludeRollbacks != null) 'excludeRollbacks': excludeRollbacks!,
+        if (filteringFields != null) 'filteringFields': filteringFields!,
+        if (force != null) 'force': force!,
+        if (inputGcsObject != null) 'inputGcsObject': inputGcsObject!,
+        if (resultGcsBucket != null) 'resultGcsBucket': resultGcsBucket!,
+        if (rollbackTime != null) 'rollbackTime': rollbackTime!,
+        if (type != null) 'type': type!,
+      };
+}
+
 /// Configuration for the FHIR BigQuery schema.
 ///
 /// Determines how the server generates the schema.
@@ -12296,6 +13292,8 @@ class SearchResourcesRequest {
   /// ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/resourcelist.html),
   /// [STU3](http://hl7.org/implement/standards/fhir/STU3/resourcelist.html),
   /// [R4](http://hl7.org/implement/standards/fhir/R4/resourcelist.html)).
+  ///
+  /// Required.
   core.String? resourceType;
 
   SearchResourcesRequest({
@@ -12366,6 +13364,57 @@ class Segment {
         if (fields != null) 'fields': fields!,
         if (segmentId != null) 'segmentId': segmentId!,
         if (setId != null) 'setId': setId!,
+      };
+}
+
+/// SeriesMetrics contains metrics describing a DICOM series.
+class SeriesMetrics {
+  /// Total blob storage bytes for all instances in the series.
+  core.String? blobStorageSizeBytes;
+
+  /// Number of instances in the series.
+  core.String? instanceCount;
+
+  /// The series resource path.
+  ///
+  /// For example,
+  /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}/dicomWeb/studies/{study_uid}/series/{series_uid}`.
+  core.String? series;
+
+  /// Total structured storage bytes for all instances in the series.
+  core.String? structuredStorageSizeBytes;
+
+  SeriesMetrics({
+    this.blobStorageSizeBytes,
+    this.instanceCount,
+    this.series,
+    this.structuredStorageSizeBytes,
+  });
+
+  SeriesMetrics.fromJson(core.Map json_)
+      : this(
+          blobStorageSizeBytes: json_.containsKey('blobStorageSizeBytes')
+              ? json_['blobStorageSizeBytes'] as core.String
+              : null,
+          instanceCount: json_.containsKey('instanceCount')
+              ? json_['instanceCount'] as core.String
+              : null,
+          series: json_.containsKey('series')
+              ? json_['series'] as core.String
+              : null,
+          structuredStorageSizeBytes:
+              json_.containsKey('structuredStorageSizeBytes')
+                  ? json_['structuredStorageSizeBytes'] as core.String
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (blobStorageSizeBytes != null)
+          'blobStorageSizeBytes': blobStorageSizeBytes!,
+        if (instanceCount != null) 'instanceCount': instanceCount!,
+        if (series != null) 'series': series!,
+        if (structuredStorageSizeBytes != null)
+          'structuredStorageSizeBytes': structuredStorageSizeBytes!,
       };
 }
 
@@ -12569,6 +13618,64 @@ class StreamConfig {
         if (deidentifiedStoreDestination != null)
           'deidentifiedStoreDestination': deidentifiedStoreDestination!,
         if (resourceTypes != null) 'resourceTypes': resourceTypes!,
+      };
+}
+
+/// StudyMetrics contains metrics describing a DICOM study.
+class StudyMetrics {
+  /// Total blob storage bytes for all instances in the study.
+  core.String? blobStorageSizeBytes;
+
+  /// Number of instances in the study.
+  core.String? instanceCount;
+
+  /// Number of series in the study.
+  core.String? seriesCount;
+
+  /// Total structured storage bytes for all instances in the study.
+  core.String? structuredStorageSizeBytes;
+
+  /// The study resource path.
+  ///
+  /// For example,
+  /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}/dicomWeb/studies/{study_uid}`.
+  core.String? study;
+
+  StudyMetrics({
+    this.blobStorageSizeBytes,
+    this.instanceCount,
+    this.seriesCount,
+    this.structuredStorageSizeBytes,
+    this.study,
+  });
+
+  StudyMetrics.fromJson(core.Map json_)
+      : this(
+          blobStorageSizeBytes: json_.containsKey('blobStorageSizeBytes')
+              ? json_['blobStorageSizeBytes'] as core.String
+              : null,
+          instanceCount: json_.containsKey('instanceCount')
+              ? json_['instanceCount'] as core.String
+              : null,
+          seriesCount: json_.containsKey('seriesCount')
+              ? json_['seriesCount'] as core.String
+              : null,
+          structuredStorageSizeBytes:
+              json_.containsKey('structuredStorageSizeBytes')
+                  ? json_['structuredStorageSizeBytes'] as core.String
+                  : null,
+          study:
+              json_.containsKey('study') ? json_['study'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (blobStorageSizeBytes != null)
+          'blobStorageSizeBytes': blobStorageSizeBytes!,
+        if (instanceCount != null) 'instanceCount': instanceCount!,
+        if (seriesCount != null) 'seriesCount': seriesCount!,
+        if (structuredStorageSizeBytes != null)
+          'structuredStorageSizeBytes': structuredStorageSizeBytes!,
+        if (study != null) 'study': study!,
       };
 }
 

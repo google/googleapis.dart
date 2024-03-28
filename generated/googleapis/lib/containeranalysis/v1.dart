@@ -8,13 +8,15 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Container Analysis API - v1
 ///
-/// An implementation of the Grafeas API, which stores, and enables querying and
-/// retrieval of critical metadata about all of your software artifacts.
+/// This API is a prerequisite for leveraging Artifact Analysis scanning
+/// capabilities in both Artifact Registry and with Advanced Vulnerability
+/// Insights (runtime scanning) in GKE. In addition, the Container Analysis API
+/// is an implementation of the Grafeas API, which enables storing, querying,
+/// and retrieval of critical metadata about all of your software artifacts.
 ///
 /// For more information, see
 /// <https://cloud.google.com/container-analysis/api/reference/rest/>
@@ -22,10 +24,16 @@
 /// Create an instance of [ContainerAnalysisApi] to access these resources:
 ///
 /// - [ProjectsResource]
+///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsNotesResource]
+///       - [ProjectsLocationsNotesOccurrencesResource]
+///     - [ProjectsLocationsOccurrencesResource]
+///     - [ProjectsLocationsResourcesResource]
 ///   - [ProjectsNotesResource]
 ///     - [ProjectsNotesOccurrencesResource]
 ///   - [ProjectsOccurrencesResource]
-library containeranalysis_v1;
+///   - [ProjectsResourcesResource]
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -40,8 +48,13 @@ import '../src/user_agent.dart';
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-/// An implementation of the Grafeas API, which stores, and enables querying and
-/// retrieval of critical metadata about all of your software artifacts.
+/// This API is a prerequisite for leveraging Artifact Analysis scanning
+/// capabilities in both Artifact Registry and with Advanced Vulnerability
+/// Insights (runtime scanning) in GKE.
+///
+/// In addition, the Container Analysis API is an implementation of the Grafeas
+/// API, which enables storing, querying, and retrieval of critical metadata
+/// about all of your software artifacts.
 class ContainerAnalysisApi {
   /// See, edit, configure, and delete your Google Cloud data and see the email
   /// address for your Google Account.
@@ -62,11 +75,414 @@ class ContainerAnalysisApi {
 class ProjectsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsResource get locations =>
+      ProjectsLocationsResource(_requester);
   ProjectsNotesResource get notes => ProjectsNotesResource(_requester);
   ProjectsOccurrencesResource get occurrences =>
       ProjectsOccurrencesResource(_requester);
+  ProjectsResourcesResource get resources =>
+      ProjectsResourcesResource(_requester);
 
   ProjectsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsLocationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsNotesResource get notes =>
+      ProjectsLocationsNotesResource(_requester);
+  ProjectsLocationsOccurrencesResource get occurrences =>
+      ProjectsLocationsOccurrencesResource(_requester);
+  ProjectsLocationsResourcesResource get resources =>
+      ProjectsLocationsResourcesResource(_requester);
+
+  ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsLocationsNotesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsNotesOccurrencesResource get occurrences =>
+      ProjectsLocationsNotesOccurrencesResource(_requester);
+
+  ProjectsLocationsNotesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the specified note.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the note in the form of
+  /// `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/notes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Note].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Note> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Note.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists notes for the specified project.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the project to list notes for in the form
+  /// of `projects/[PROJECT_ID]`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - The filter expression.
+  ///
+  /// [pageSize] - Number of notes to return in the list. Must be positive. Max
+  /// allowed page size is 1000. If not specified, page size defaults to 20.
+  ///
+  /// [pageToken] - Token to provide to skip to a particular spot in the list.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListNotesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListNotesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/notes';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListNotesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsNotesOccurrencesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsNotesOccurrencesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists occurrences referencing the specified note.
+  ///
+  /// Provider projects can use this method to get all occurrences across
+  /// consumer projects referencing the specified note.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the note to list occurrences for in the
+  /// form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/notes/\[^/\]+$`.
+  ///
+  /// [filter] - The filter expression.
+  ///
+  /// [pageSize] - Number of occurrences to return in the list.
+  ///
+  /// [pageToken] - Token to provide to skip to a particular spot in the list.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListNoteOccurrencesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListNoteOccurrencesResponse> list(
+    core.String name, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/occurrences';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListNoteOccurrencesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsOccurrencesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsOccurrencesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the specified occurrence.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the occurrence in the form of
+  /// `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/occurrences/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Occurrence].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Occurrence> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Occurrence.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the note attached to the specified occurrence.
+  ///
+  /// Consumer projects can use this method to get a note that belongs to a
+  /// provider project.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the occurrence in the form of
+  /// `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/occurrences/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Note].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Note> getNotes(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/notes';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Note.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a summary of the number and severity of occurrences.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the project to get a vulnerability
+  /// summary for in the form of `projects/[PROJECT_ID]`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - The filter expression.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [VulnerabilityOccurrencesSummary].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<VulnerabilityOccurrencesSummary> getVulnerabilitySummary(
+    core.String parent, {
+    core.String? filter,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/occurrences:vulnerabilitySummary';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return VulnerabilityOccurrencesSummary.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists occurrences for the specified project.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the project to list occurrences for in
+  /// the form of `projects/[PROJECT_ID]`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - The filter expression.
+  ///
+  /// [pageSize] - Number of occurrences to return in the list. Must be
+  /// positive. Max allowed page size is 1000. If not specified, page size
+  /// defaults to 20.
+  ///
+  /// [pageToken] - Token to provide to skip to a particular spot in the list.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListOccurrencesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListOccurrencesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/occurrences';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListOccurrencesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsResourcesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsResourcesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Generates an SBOM for the given resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the resource in the form of
+  /// `projects/[PROJECT_ID]/resources/[RESOURCE_URL]`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/resources/.*$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ExportSBOMResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ExportSBOMResponse> exportSBOM(
+    ExportSBOMRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':exportSBOM';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return ExportSBOMResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsNotesResource {
@@ -1036,6 +1452,54 @@ class ProjectsOccurrencesResource {
   }
 }
 
+class ProjectsResourcesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsResourcesResource(commons.ApiRequester client) : _requester = client;
+
+  /// Generates an SBOM for the given resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the resource in the form of
+  /// `projects/[PROJECT_ID]/resources/[RESOURCE_URL]`.
+  /// Value must have pattern `^projects/\[^/\]+/resources/.*$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ExportSBOMResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ExportSBOMResponse> exportSBOM(
+    ExportSBOMRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':exportSBOM';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return ExportSBOMResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 /// An alias to a repo revision.
 typedef AliasContext = $AliasContext;
 
@@ -1403,14 +1867,31 @@ class Binding {
   /// `group:{emailid}`: An email address that represents a Google group. For
   /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
   /// (primary) that represents all the users of that domain. For example,
-  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a user that has
-  /// been recently deleted. For example,
-  /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
-  /// this value reverts to `user:{emailid}` and the recovered user retains the
-  /// role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a service account
-  /// that has been recently deleted. For example,
+  /// `google.com` or `example.com`. *
+  /// `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workforce identity pool. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`:
+  /// All workforce identities in a group. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All workforce identities with a specific attribute value. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}
+  /// / * `: All identities in a workforce identity pool. *
+  /// `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workload identity pool. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`:
+  /// A workload identity pool group. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All identities in a workload identity pool with a certain attribute. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}
+  /// / * `: All identities in a workload identity pool. *
+  /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
+  /// identifier) representing a user that has been recently deleted. For
+  /// example, `alice@example.com?uid=123456789012345678901`. If the user is
+  /// recovered, this value reverts to `user:{emailid}` and the recovered user
+  /// retains the role in the binding. *
+  /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus
+  /// unique identifier) representing a service account that has been recently
+  /// deleted. For example,
   /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If
   /// the service account is undeleted, this value reverts to
   /// `serviceAccount:{emailid}` and the undeleted service account retains the
@@ -1419,12 +1900,19 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding.
+  /// the role in the binding. *
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// Deleted single identity in a workforce identity pool. For example,
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
   ///
-  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an
+  /// overview of the IAM roles and permissions, see the
+  /// [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For
+  /// a list of the available pre-defined roles, see
+  /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
   Binding({
@@ -1981,6 +2469,10 @@ class CloudRepoSourceContext {
       };
 }
 
+/// Empty placeholder to denote that this is a Google Cloud Storage export
+/// request.
+typedef CloudStorageLocation = $Empty;
+
 /// Command describes a step performed as part of the build pipeline.
 typedef Command = $Command;
 
@@ -1993,6 +2485,7 @@ class ComplianceNote {
 
   /// A description about this compliance check.
   core.String? description;
+  core.String? impact;
 
   /// A rationale for the existence of this compliance check.
   core.String? rationale;
@@ -2019,6 +2512,7 @@ class ComplianceNote {
   ComplianceNote({
     this.cisBenchmark,
     this.description,
+    this.impact,
     this.rationale,
     this.remediation,
     this.scanInstructions,
@@ -2034,6 +2528,9 @@ class ComplianceNote {
               : null,
           description: json_.containsKey('description')
               ? json_['description'] as core.String
+              : null,
+          impact: json_.containsKey('impact')
+              ? json_['impact'] as core.String
               : null,
           rationale: json_.containsKey('rationale')
               ? json_['rationale'] as core.String
@@ -2057,6 +2554,7 @@ class ComplianceNote {
   core.Map<core.String, core.dynamic> toJson() => {
         if (cisBenchmark != null) 'cisBenchmark': cisBenchmark!,
         if (description != null) 'description': description!,
+        if (impact != null) 'impact': impact!,
         if (rationale != null) 'rationale': rationale!,
         if (remediation != null) 'remediation': remediation!,
         if (scanInstructions != null) 'scanInstructions': scanInstructions!,
@@ -2731,6 +3229,56 @@ class Envelope {
 }
 
 typedef EnvelopeSignature = $EnvelopeSignature;
+
+/// The request to generate and export SBOM.
+///
+/// Target must be specified for the request.
+class ExportSBOMRequest {
+  /// Empty placeholder to denote that this is a Google Cloud Storage export
+  /// request.
+  CloudStorageLocation? cloudStorageLocation;
+
+  ExportSBOMRequest({
+    this.cloudStorageLocation,
+  });
+
+  ExportSBOMRequest.fromJson(core.Map json_)
+      : this(
+          cloudStorageLocation: json_.containsKey('cloudStorageLocation')
+              ? CloudStorageLocation.fromJson(json_['cloudStorageLocation']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cloudStorageLocation != null)
+          'cloudStorageLocation': cloudStorageLocation!,
+      };
+}
+
+/// The response from a call to ExportSBOM.
+class ExportSBOMResponse {
+  /// The name of the discovery occurrence in the form
+  /// "projects/{project_id}/occurrences/{OCCURRENCE_ID} It can be used to track
+  /// the progress of the SBOM export.
+  core.String? discoveryOccurrence;
+
+  ExportSBOMResponse({
+    this.discoveryOccurrence,
+  });
+
+  ExportSBOMResponse.fromJson(core.Map json_)
+      : this(
+          discoveryOccurrence: json_.containsKey('discoveryOccurrence')
+              ? json_['discoveryOccurrence'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (discoveryOccurrence != null)
+          'discoveryOccurrence': discoveryOccurrence!,
+      };
+}
 
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.
@@ -4368,23 +4916,23 @@ class PackageOccurrence {
 /// request, the resource, or both. To learn which resources support conditions
 /// in their IAM policies, see the
 /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": \[ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": \[
+/// **JSON example:** ``` { "bindings": [ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": [
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": \[
-/// "user:eve@example.com" \], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": [
+/// "user:eve@example.com" ], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time \< timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
-/// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
-/// user:mike@example.com - group:admins@example.com - domain:google.com -
-/// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
-/// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
-/// role: roles/resourcemanager.organizationViewer condition: title: expirable
-/// access description: Does not grant access after Sep 2020 expression:
-/// request.time \< timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
-/// version: 3 For a description of IAM and its features, see the
-/// [IAM documentation](https://cloud.google.com/iam/docs/).
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: -
+/// members: - user:mike@example.com - group:admins@example.com -
+/// domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+/// role: roles/resourcemanager.organizationAdmin - members: -
+/// user:eve@example.com role: roles/resourcemanager.organizationViewer
+/// condition: title: expirable access description: Does not grant access after
+/// Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+/// etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features,
+/// see the [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Associates a list of `members`, or principals, with a `role`.
   ///
@@ -5728,6 +6276,9 @@ class VulnerabilityOccurrence {
   /// - "CRITICAL" : Critical severity.
   core.String? effectiveSeverity;
 
+  /// Occurrence-specific extra details about the vulnerability.
+  core.String? extraDetails;
+
   /// Whether at least one of the affected packages has a fix available.
   ///
   /// Output only.
@@ -5777,6 +6328,7 @@ class VulnerabilityOccurrence {
     this.cvssVersion,
     this.cvssv3,
     this.effectiveSeverity,
+    this.extraDetails,
     this.fixAvailable,
     this.longDescription,
     this.packageIssue,
@@ -5805,6 +6357,9 @@ class VulnerabilityOccurrence {
               : null,
           effectiveSeverity: json_.containsKey('effectiveSeverity')
               ? json_['effectiveSeverity'] as core.String
+              : null,
+          extraDetails: json_.containsKey('extraDetails')
+              ? json_['extraDetails'] as core.String
               : null,
           fixAvailable: json_.containsKey('fixAvailable')
               ? json_['fixAvailable'] as core.bool
@@ -5843,6 +6398,7 @@ class VulnerabilityOccurrence {
         if (cvssVersion != null) 'cvssVersion': cvssVersion!,
         if (cvssv3 != null) 'cvssv3': cvssv3!,
         if (effectiveSeverity != null) 'effectiveSeverity': effectiveSeverity!,
+        if (extraDetails != null) 'extraDetails': extraDetails!,
         if (fixAvailable != null) 'fixAvailable': fixAvailable!,
         if (longDescription != null) 'longDescription': longDescription!,
         if (packageIssue != null) 'packageIssue': packageIssue!,

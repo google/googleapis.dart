@@ -13,7 +13,6 @@ library;
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 import 'dart:convert' as convert;
@@ -137,6 +136,29 @@ class $DimensionOrderBy {
   core.Map<core.String, core.dynamic> toJson() => {
         if (dimensionName != null) 'dimensionName': dimensionName!,
         if (orderType != null) 'orderType': orderType!,
+      };
+}
+
+/// Used by:
+///
+/// - analyticsdata:v1beta : DimensionValue
+/// - analyticsdata:v1beta : V1betaAudienceDimensionValue
+class $DimensionValue {
+  /// Value as a string if the dimension type is a string.
+  core.String? value;
+
+  $DimensionValue({
+    this.value,
+  });
+
+  $DimensionValue.fromJson(core.Map json_)
+      : this(
+          value:
+              json_.containsKey('value') ? json_['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (value != null) 'value': value!,
       };
 }
 
@@ -472,32 +494,6 @@ class $SasPortalAssignment {
   core.Map<core.String, core.dynamic> toJson() => {
         if (members != null) 'members': members!,
         if (role != null) 'role': role!,
-      };
-}
-
-/// Used by:
-///
-/// - prod_tt_sasportal:v1alpha1 : SasPortalCheckHasProvisionedDeploymentResponse
-/// - sasportal:v1alpha1 : SasPortalCheckHasProvisionedDeploymentResponse
-class $SasPortalCheckHasProvisionedDeploymentResponse {
-  /// Whether a SAS deployment for the authentication context exists.
-  core.bool? hasProvisionedDeployment;
-
-  $SasPortalCheckHasProvisionedDeploymentResponse({
-    this.hasProvisionedDeployment,
-  });
-
-  $SasPortalCheckHasProvisionedDeploymentResponse.fromJson(core.Map json_)
-      : this(
-          hasProvisionedDeployment:
-              json_.containsKey('hasProvisionedDeployment')
-                  ? json_['hasProvisionedDeployment'] as core.bool
-                  : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (hasProvisionedDeployment != null)
-          'hasProvisionedDeployment': hasProvisionedDeployment!,
       };
 }
 
@@ -868,9 +864,6 @@ class $SasPortalInstallationParams {
   /// inclusive.
   core.int? antennaGain;
 
-  /// As above, but as a DoubleValue.
-  core.double? antennaGainNewField;
-
   /// If an external antenna is used, the antenna model is optionally provided
   /// in this field.
   ///
@@ -887,9 +880,6 @@ class $SasPortalInstallationParams {
   /// If not included, SAS interprets it as maximum allowable EIRP in units of
   /// dBm/10MHz for device category.
   core.int? eirpCapability;
-
-  /// As above, but as a DoubleValue.
-  core.double? eirpCapabilityNewField;
 
   /// Device antenna height in meters.
   ///
@@ -946,11 +936,9 @@ class $SasPortalInstallationParams {
     this.antennaBeamwidth,
     this.antennaDowntilt,
     this.antennaGain,
-    this.antennaGainNewField,
     this.antennaModel,
     this.cpeCbsdIndication,
     this.eirpCapability,
-    this.eirpCapabilityNewField,
     this.height,
     this.heightType,
     this.horizontalAccuracy,
@@ -974,9 +962,6 @@ class $SasPortalInstallationParams {
           antennaGain: json_.containsKey('antennaGain')
               ? json_['antennaGain'] as core.int
               : null,
-          antennaGainNewField: json_.containsKey('antennaGainNewField')
-              ? (json_['antennaGainNewField'] as core.num).toDouble()
-              : null,
           antennaModel: json_.containsKey('antennaModel')
               ? json_['antennaModel'] as core.String
               : null,
@@ -985,9 +970,6 @@ class $SasPortalInstallationParams {
               : null,
           eirpCapability: json_.containsKey('eirpCapability')
               ? json_['eirpCapability'] as core.int
-              : null,
-          eirpCapabilityNewField: json_.containsKey('eirpCapabilityNewField')
-              ? (json_['eirpCapabilityNewField'] as core.num).toDouble()
               : null,
           height: json_.containsKey('height')
               ? (json_['height'] as core.num).toDouble()
@@ -1017,13 +999,9 @@ class $SasPortalInstallationParams {
         if (antennaBeamwidth != null) 'antennaBeamwidth': antennaBeamwidth!,
         if (antennaDowntilt != null) 'antennaDowntilt': antennaDowntilt!,
         if (antennaGain != null) 'antennaGain': antennaGain!,
-        if (antennaGainNewField != null)
-          'antennaGainNewField': antennaGainNewField!,
         if (antennaModel != null) 'antennaModel': antennaModel!,
         if (cpeCbsdIndication != null) 'cpeCbsdIndication': cpeCbsdIndication!,
         if (eirpCapability != null) 'eirpCapability': eirpCapability!,
-        if (eirpCapabilityNewField != null)
-          'eirpCapabilityNewField': eirpCapabilityNewField!,
         if (height != null) 'height': height!,
         if (heightType != null) 'heightType': heightType!,
         if (horizontalAccuracy != null)
@@ -1244,6 +1222,36 @@ class $SasPortalNrqzValidation {
 
 /// Used by:
 ///
+/// - prod_tt_sasportal:v1alpha1 : SasPortalOrganization
+/// - sasportal:v1alpha1 : SasPortalOrganization
+class $SasPortalOrganization {
+  /// Name of organization
+  core.String? displayName;
+
+  /// Id of organization
+  core.String? id;
+
+  $SasPortalOrganization({
+    this.displayName,
+    this.id,
+  });
+
+  $SasPortalOrganization.fromJson(core.Map json_)
+      : this(
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (id != null) 'id': id!,
+      };
+}
+
+/// Used by:
+///
 /// - prod_tt_sasportal:v1alpha1 : SasPortalProvisionDeploymentRequest
 /// - sasportal:v1alpha1 : SasPortalProvisionDeploymentRequest
 class $SasPortalProvisionDeploymentRequest {
@@ -1318,6 +1326,35 @@ class $SasPortalProvisionDeploymentResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (errorMessage != null) 'errorMessage': errorMessage!,
+      };
+}
+
+/// Used by:
+///
+/// - prod_tt_sasportal:v1alpha1 : SasPortalSetupSasAnalyticsRequest
+/// - sasportal:v1alpha1 : SasPortalSetupSasAnalyticsRequest
+class $SasPortalSetupSasAnalyticsRequest {
+  /// User id to setup analytics for, if not provided the user id associated
+  /// with the project is used.
+  ///
+  /// optional
+  ///
+  /// Optional.
+  core.String? userId;
+
+  $SasPortalSetupSasAnalyticsRequest({
+    this.userId,
+  });
+
+  $SasPortalSetupSasAnalyticsRequest.fromJson(core.Map json_)
+      : this(
+          userId: json_.containsKey('userId')
+              ? json_['userId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (userId != null) 'userId': userId!,
       };
 }
 
@@ -1482,6 +1519,7 @@ class $SasPortalValidateInstallerRequest {
 /// Used by:
 ///
 /// - alertcenter:v1beta1 : Status
+/// - analyticsdata:v1beta : Status
 /// - dataflow:v1b3 : Status
 /// - datalabeling:v1beta1 : GoogleRpcStatus
 /// - datastream:v1alpha1 : Status

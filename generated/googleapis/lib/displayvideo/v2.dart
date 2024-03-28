@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Display & Video 360 API - v2
@@ -53,6 +52,7 @@
 /// - [CustomListsResource]
 /// - [FirstAndThirdPartyAudiencesResource]
 /// - [FloodlightGroupsResource]
+///   - [FloodlightGroupsFloodlightActivitiesResource]
 /// - [GoogleAudiencesResource]
 /// - [GuaranteedOrdersResource]
 /// - [InventorySourceGroupsResource]
@@ -69,7 +69,7 @@
 /// - [TargetingTypesResource]
 ///   - [TargetingTypesTargetingOptionsResource]
 /// - [UsersResource]
-library displayvideo_v2;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -232,8 +232,11 @@ class AdvertisersResource {
 
   /// Creates a new advertiser.
   ///
-  /// Returns the newly created advertiser if successful. This method can take
-  /// up to 180 seconds to complete.
+  /// Returns the newly created advertiser if successful. **This method
+  /// regularly experiences high latency.** We recommend \[increasing your
+  /// default
+  /// timeout\](/display-video/api/guides/best-practices/timeouts#client_library_timeout)
+  /// to avoid errors.
   ///
   /// [request] - The metadata request object.
   ///
@@ -419,11 +422,6 @@ class AdvertisersResource {
   /// requests\](/display-video/api/guides/how-tos/filters) guide for more
   /// information.
   ///
-  /// [internalDebuggingConfig] - The config used in internal debugging and
-  /// manual testing. Use comma to separate multiple values. Examples: To allow
-  /// entity search to go through tangle `searchUsingTangle` To get only the
-  /// advertiser Ids use `idOnly`
-  ///
   /// [orderBy] - Field by which to sort the list. Acceptable values are: *
   /// `displayName` (default) * `entityStatus` * `updateTime` The default
   /// sorting order is ascending. To specify descending order for a field, a
@@ -454,7 +452,6 @@ class AdvertisersResource {
   /// this method will complete with the same error.
   async.Future<ListAdvertisersResponse> list({
     core.String? filter,
-    core.String? internalDebuggingConfig,
     core.String? orderBy,
     core.int? pageSize,
     core.String? pageToken,
@@ -463,8 +460,6 @@ class AdvertisersResource {
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
-      if (internalDebuggingConfig != null)
-        'internalDebuggingConfig': [internalDebuggingConfig],
       if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -729,7 +724,10 @@ class AdvertisersCampaignsResource {
   ///
   /// A deleted campaign cannot be recovered. The campaign should be archived
   /// first, i.e. set entity_status to `ENTITY_STATUS_ARCHIVED`, to be able to
-  /// delete it.
+  /// delete it. **This method regularly experiences high latency.** We
+  /// recommend \[increasing your default
+  /// timeout\](/display-video/api/guides/best-practices/timeouts#client_library_timeout)
+  /// to avoid errors.
   ///
   /// Request parameters:
   ///
@@ -1930,7 +1928,10 @@ class AdvertisersChannelsSitesResource {
   /// Replaces all of the sites under a single channel.
   ///
   /// The operation will replace the sites under a channel with the sites
-  /// provided in ReplaceSitesRequest.new_sites.
+  /// provided in ReplaceSitesRequest.new_sites. **This method regularly
+  /// experiences high latency.** We recommend \[increasing your default
+  /// timeout\](/display-video/api/guides/best-practices/timeouts#client_library_timeout)
+  /// to avoid errors.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1988,7 +1989,9 @@ class AdvertisersCreativesResource {
 
   /// Creates a new creative.
   ///
-  /// Returns the newly created creative if successful.
+  /// Returns the newly created creative if successful. A \["Standard" user
+  /// role\](//support.google.com/displayvideo/answer/2723011) or greater for
+  /// the parent advertiser or partner is required to make this request.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2034,7 +2037,9 @@ class AdvertisersCreativesResource {
   ///
   /// Returns error code `NOT_FOUND` if the creative does not exist. The
   /// creative should be archived first, i.e. set entity_status to
-  /// `ENTITY_STATUS_ARCHIVED`, before it can be deleted.
+  /// `ENTITY_STATUS_ARCHIVED`, before it can be deleted. A \["Standard" user
+  /// role\](//support.google.com/displayvideo/answer/2723011) or greater for
+  /// the parent advertiser or partner is required to make this request.
   ///
   /// Request parameters:
   ///
@@ -2221,7 +2226,9 @@ class AdvertisersCreativesResource {
 
   /// Updates an existing creative.
   ///
-  /// Returns the updated creative if successful.
+  /// Returns the updated creative if successful. A \["Standard" user
+  /// role\](//support.google.com/displayvideo/answer/2723011) or greater for
+  /// the parent advertiser or partner is required to make this request.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3603,9 +3610,9 @@ class AdvertisersLineItemsResource {
   /// the assigned targeting options provided in
   /// BulkEditAssignedTargetingOptionsRequest.create_requests. Requests to this
   /// endpoint cannot be made concurrently with the following requests updating
-  /// the same line item: * BulkUpdate * UpdateLineItem *
-  /// CreateLineItemAssignedTargetingOption *
-  /// DeleteLineItemAssignedTargetingOption
+  /// the same line item: * lineItems.bulkUpdate * lineItems.patch *
+  /// assignedTargetingOptions.create * assignedTargetingOptions.delete YouTube
+  /// & Partners line items cannot be created or updated using the API.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3740,8 +3747,9 @@ class AdvertisersLineItemsResource {
   ///
   /// Requests to this endpoint cannot be made concurrently with the following
   /// requests updating the same line item: * BulkEditAssignedTargetingOptions *
-  /// UpdateLineItem * CreateLineItemAssignedTargetingOption *
-  /// DeleteLineItemAssignedTargetingOption
+  /// UpdateLineItem * assignedTargetingOptions.create *
+  /// assignedTargetingOptions.delete YouTube & Partners line items cannot be
+  /// created or updated using the API.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3787,7 +3795,8 @@ class AdvertisersLineItemsResource {
 
   /// Creates a new line item.
   ///
-  /// Returns the newly created line item if successful.
+  /// Returns the newly created line item if successful. YouTube & Partners line
+  /// items cannot be created or updated using the API.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3833,7 +3842,8 @@ class AdvertisersLineItemsResource {
   ///
   /// Returns error code `NOT_FOUND` if the line item does not exist. The line
   /// item should be archived first, i.e. set entity_status to
-  /// `ENTITY_STATUS_ARCHIVED`, to be able to delete it.
+  /// `ENTITY_STATUS_ARCHIVED`, to be able to delete it. YouTube & Partners line
+  /// items cannot be created or updated using the API.
   ///
   /// Request parameters:
   ///
@@ -3877,7 +3887,12 @@ class AdvertisersLineItemsResource {
 
   /// Duplicates a line item.
   ///
-  /// Returns the ID of the created line item if successful.
+  /// Returns the ID of the created line item if successful. YouTube & Partners
+  /// line items cannot be created or updated using the API. **This method
+  /// regularly experiences high latency.** We recommend \[increasing your
+  /// default
+  /// timeout\](/display-video/api/guides/best-practices/timeouts#client_library_timeout)
+  /// to avoid errors.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3933,7 +3948,8 @@ class AdvertisersLineItemsResource {
   /// Returns the newly created line item if successful. There are default
   /// values based on the three fields: * The insertion order's
   /// insertion_order_type * The insertion order's automation_type * The given
-  /// line_item_type
+  /// line_item_type YouTube & Partners line items cannot be created or updated
+  /// using the API.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4112,8 +4128,12 @@ class AdvertisersLineItemsResource {
   /// Returns the updated line item if successful. Requests to this endpoint
   /// cannot be made concurrently with the following requests updating the same
   /// line item: * BulkEditAssignedTargetingOptions * BulkUpdateLineItems *
-  /// CreateLineItemAssignedTargetingOption *
-  /// DeleteLineItemAssignedTargetingOption
+  /// assignedTargetingOptions.create * assignedTargetingOptions.delete YouTube
+  /// & Partners line items cannot be created or updated using the API. **This
+  /// method regularly experiences high latency.** We recommend \[increasing
+  /// your default
+  /// timeout\](/display-video/api/guides/best-practices/timeouts#client_library_timeout)
+  /// to avoid errors.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4190,8 +4210,10 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   ///
   /// Returns the assigned targeting option if successful. Requests to this
   /// endpoint cannot be made concurrently with the following requests updating
-  /// the same line item: * BulkEditAssignedTargetingOptions * BulkUpdate *
-  /// UpdateLineItem * DeleteLineItemAssignedTargetingOption
+  /// the same line item: * lineItems.bulkEditAssignedTargetingOptions *
+  /// lineItems.bulkUpdate * lineItems.patch *
+  /// DeleteLineItemAssignedTargetingOption YouTube & Partners line items cannot
+  /// be created or updated using the API.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4386,8 +4408,10 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// Deletes an assigned targeting option from a line item.
   ///
   /// Requests to this endpoint cannot be made concurrently with the following
-  /// requests updating the same line item: * BulkEditAssignedTargetingOptions *
-  /// BulkUpdate * UpdateLineItem * CreateLineItemAssignedTargetingOption
+  /// requests updating the same line item: *
+  /// lineItems.bulkEditAssignedTargetingOptions * lineItems.bulkUpdate *
+  /// lineItems.patch * CreateLineItemAssignedTargetingOption YouTube & Partners
+  /// line items cannot be created or updated using the API.
   ///
   /// Request parameters:
   ///
@@ -5245,9 +5269,8 @@ class AdvertisersLocationListsAssignedLocationsResource {
   /// list.
   ///
   /// The operation will delete the assigned locations provided in
-  /// BulkEditAssignedLocationsRequest.deleted_assigned_locations and then
-  /// create the assigned locations provided in
-  /// BulkEditAssignedLocationsRequest.created_assigned_locations.
+  /// deletedAssignedLocations and then create the assigned locations provided
+  /// in createdAssignedLocations.
   ///
   /// [request] - The metadata request object.
   ///
@@ -7216,7 +7239,7 @@ class AdvertisersYoutubeAdGroupsResource {
   /// Lists assigned targeting options for multiple YouTube ad groups across
   /// targeting types.
   ///
-  /// Inherieted assigned targeting options are not included.
+  /// Inherited assigned targeting options are not included.
   ///
   /// Request parameters:
   ///
@@ -7224,12 +7247,12 @@ class AdvertisersYoutubeAdGroupsResource {
   /// to.
   /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [filter] - Allows filtering by assigned targeting option fields. Supported
-  /// syntax: * Filter expressions are made up of one or more restrictions. *
-  /// Restrictions can be combined by the logical operator `OR`. * A restriction
-  /// has the form of `{field} {operator} {value}`. * All fields must use the
-  /// `EQUALS (=)` operator. Supported fields: * `targetingType` Examples: *
-  /// `AssignedTargetingOption` resources of targeting type
+  /// [filter] - Optional. Allows filtering by assigned targeting option fields.
+  /// Supported syntax: * Filter expressions are made up of one or more
+  /// restrictions. * Restrictions can be combined by the logical operator `OR`.
+  /// * A restriction has the form of `{field} {operator} {value}`. * All fields
+  /// must use the `EQUALS (=)` operator. Supported fields: * `targetingType`
+  /// Examples: * `AssignedTargetingOption` resources of targeting type
   /// `TARGETING_TYPE_YOUTUBE_VIDEO` or `TARGETING_TYPE_YOUTUBE_CHANNEL`:
   /// `targetingType="TARGETING_TYPE_YOUTUBE_VIDEO" OR
   /// targetingType="TARGETING_TYPE_YOUTUBE_CHANNEL"` The length of this field
@@ -7237,20 +7260,20 @@ class AdvertisersYoutubeAdGroupsResource {
   /// requests\](/display-video/api/guides/how-tos/filters) guide for more
   /// information.
   ///
-  /// [orderBy] - Field by which to sort the list. Acceptable values are: *
-  /// `youtubeAdGroupId` (default) * `assignedTargetingOption.targetingType` The
+  /// [orderBy] - Optional. Field by which to sort the list. Acceptable values
+  /// are: * `adGroupId` (default) * `assignedTargetingOption.targetingType` The
   /// default sorting order is ascending. To specify descending order for a
   /// field, a suffix "desc" should be added to the field name. Example:
   /// `targetingType desc`.
   ///
-  /// [pageSize] - Requested page size. The size must be an integer between `1`
-  /// and `5000`. If unspecified, the default is `5000`. Returns error code
-  /// `INVALID_ARGUMENT` if an invalid value is specified.
+  /// [pageSize] - Optional. Requested page size. The size must be an integer
+  /// between `1` and `5000`. If unspecified, the default is `5000`. Returns
+  /// error code `INVALID_ARGUMENT` if an invalid value is specified.
   ///
-  /// [pageToken] - A token that lets the client fetch the next page of results.
-  /// Typically, this is the value of next_page_token returned from the previous
-  /// call to the `BulkListAdGroupAssignedTargetingOptions` method. If not
-  /// specified, the first page of results will be returned.
+  /// [pageToken] - Optional. A token that lets the client fetch the next page
+  /// of results. Typically, this is the value of next_page_token returned from
+  /// the previous call to the `BulkListAdGroupAssignedTargetingOptions` method.
+  /// If not specified, the first page of results will be returned.
   ///
   /// [youtubeAdGroupIds] - Required. The IDs of the youtube ad groups to list
   /// assigned targeting options for.
@@ -8826,6 +8849,9 @@ class FirstAndThirdPartyAudiencesResource {
 class FloodlightGroupsResource {
   final commons.ApiRequester _requester;
 
+  FloodlightGroupsFloodlightActivitiesResource get floodlightActivities =>
+      FloodlightGroupsFloodlightActivitiesResource(_requester);
+
   FloodlightGroupsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets a Floodlight group.
@@ -8920,6 +8946,128 @@ class FloodlightGroupsResource {
       queryParams: queryParams_,
     );
     return FloodlightGroup.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class FloodlightGroupsFloodlightActivitiesResource {
+  final commons.ApiRequester _requester;
+
+  FloodlightGroupsFloodlightActivitiesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets a Floodlight activity.
+  ///
+  /// Request parameters:
+  ///
+  /// [floodlightGroupId] - Required. The ID of the parent Floodlight group to
+  /// which the requested Floodlight activity belongs.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [floodlightActivityId] - Required. The ID of the Floodlight activity to
+  /// fetch.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [partnerId] - Required. The ID of the partner through which the Floodlight
+  /// activity is being accessed.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [FloodlightActivity].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<FloodlightActivity> get(
+    core.String floodlightGroupId,
+    core.String floodlightActivityId, {
+    core.String? partnerId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (partnerId != null) 'partnerId': [partnerId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/floodlightGroups/' +
+        core.Uri.encodeFull('$floodlightGroupId') +
+        '/floodlightActivities/' +
+        core.Uri.encodeFull('$floodlightActivityId');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return FloodlightActivity.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists Floodlight activities in a Floodlight group.
+  ///
+  /// Request parameters:
+  ///
+  /// [floodlightGroupId] - Required. The ID of the parent Floodlight group to
+  /// which the requested Floodlight activities belong.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [orderBy] - Optional. Field by which to sort the list. Acceptable values
+  /// are: * `displayName` (default) * `floodlightActivityId` The default
+  /// sorting order is ascending. To specify descending order for a field, a
+  /// suffix "desc" should be added to the field name. Example: `displayName
+  /// desc`.
+  ///
+  /// [pageSize] - Optional. Requested page size. Must be between `1` and `100`.
+  /// If unspecified will default to `100`. Returns error code
+  /// `INVALID_ARGUMENT` if an invalid value is specified.
+  ///
+  /// [pageToken] - Optional. A token identifying a page of results the server
+  /// should return. Typically, this is the value of next_page_token returned
+  /// from the previous call to `ListFloodlightActivities` method. If not
+  /// specified, the first page of results will be returned.
+  ///
+  /// [partnerId] - Required. The ID of the partner through which the Floodlight
+  /// activities are being accessed.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListFloodlightActivitiesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListFloodlightActivitiesResponse> list(
+    core.String floodlightGroupId, {
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? partnerId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (partnerId != null) 'partnerId': [partnerId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/floodlightGroups/' +
+        core.Uri.encodeFull('$floodlightGroupId') +
+        '/floodlightActivities';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListFloodlightActivitiesResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -9994,9 +10142,6 @@ class InventorySourcesResource {
   /// [inventorySourceId] - Required. The ID of the inventory source to fetch.
   /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [advertiserId] - Optional. The advertiser_id is optional, when it is
-  /// provided, the advertiser access is used.
-  ///
   /// [partnerId] - Required. The ID of the DV360 partner to which the fetched
   /// inventory source is permissioned.
   ///
@@ -10012,12 +10157,10 @@ class InventorySourcesResource {
   /// this method will complete with the same error.
   async.Future<InventorySource> get(
     core.String inventorySourceId, {
-    core.String? advertiserId,
     core.String? partnerId,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (advertiserId != null) 'advertiserId': [advertiserId],
       if (partnerId != null) 'partnerId': [partnerId],
       if ($fields != null) 'fields': [$fields],
     };
@@ -10931,7 +11074,10 @@ class PartnersChannelsSitesResource {
   /// Replaces all of the sites under a single channel.
   ///
   /// The operation will replace the sites under a channel with the sites
-  /// provided in ReplaceSitesRequest.new_sites.
+  /// provided in ReplaceSitesRequest.new_sites. **This method regularly
+  /// experiences high latency.** We recommend \[increasing your default
+  /// timeout\](/display-video/api/guides/best-practices/timeouts#client_library_timeout)
+  /// to avoid errors.
   ///
   /// [request] - The metadata request object.
   ///
@@ -12647,39 +12793,7 @@ typedef ActiveViewVideoViewabilityMetricConfig
     = $ActiveViewVideoViewabilityMetricConfig;
 
 /// Additional URLs related to the ad, including beacons.
-class AdUrl {
-  /// The type of the Ad URL.
-  /// Possible string values are:
-  /// - "AD_URL_TYPE_UNSPECIFIED" : Unknown or unspecified.
-  /// - "AD_URL_TYPE_BEACON_IMPRESSION" : A 1x1 tracking pixel to ping when an
-  /// impression of a creative is delivered.
-  /// - "AD_URL_TYPE_BEACON_EXPANDABLE_DCM_IMPRESSION" : Expandable DCM
-  /// impression beacon. At serving time, it is expanded to several beacons.
-  /// - "AD_URL_TYPE_BEACON_CLICK" : Tracking URL to ping when the click event
-  /// is triggered.
-  /// - "AD_URL_TYPE_BEACON_SKIP" : Tracking URL to ping when the skip event is
-  /// triggered.
-  core.String? type;
-
-  /// The URL string value.
-  core.String? url;
-
-  AdUrl({
-    this.type,
-    this.url,
-  });
-
-  AdUrl.fromJson(core.Map json_)
-      : this(
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
-          url: json_.containsKey('url') ? json_['url'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (type != null) 'type': type!,
-        if (url != null) 'url': url!,
-      };
-}
+typedef AdUrl = $AdUrl;
 
 /// Details of Adloox settings.
 typedef Adloox = $Adloox;
@@ -12699,6 +12813,8 @@ class Advertiser {
   core.String? advertiserId;
 
   /// Billing related settings of the advertiser.
+  ///
+  /// Optional. Required.
   AdvertiserBillingConfig? billingConfig;
 
   /// Creative related settings of the advertiser.
@@ -12901,28 +13017,7 @@ class AdvertiserAdServerConfig {
 }
 
 /// Billing related settings of an advertiser.
-class AdvertiserBillingConfig {
-  /// The ID of a billing profile assigned to the advertiser.
-  ///
-  /// This field will default to the default billing profile ID of the
-  /// advertiser's parent partner if a value is not provided.
-  core.String? billingProfileId;
-
-  AdvertiserBillingConfig({
-    this.billingProfileId,
-  });
-
-  AdvertiserBillingConfig.fromJson(core.Map json_)
-      : this(
-          billingProfileId: json_.containsKey('billingProfileId')
-              ? json_['billingProfileId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (billingProfileId != null) 'billingProfileId': billingProfileId!,
-      };
-}
+typedef AdvertiserBillingConfig = $AdvertiserBillingConfig;
 
 /// Creatives related settings of an advertiser.
 typedef AdvertiserCreativeConfig = $AdvertiserCreativeConfig;
@@ -13001,119 +13096,14 @@ typedef AdvertiserTargetingConfig = $AdvertiserTargetingConfig;
 ///
 /// This will be populated in the details field of an AssignedTargetingOption
 /// when targeting_type is `TARGETING_TYPE_AGE_RANGE`.
-class AgeRangeAssignedTargetingOptionDetails {
-  /// The age range of an audience.
-  ///
-  /// We only support targeting a continuous age range of an audience. Thus, the
-  /// age range represented in this field can be 1) targeted solely, or, 2) part
-  /// of a larger continuous age range. The reach of a continuous age range
-  /// targeting can be expanded by also targeting an audience of an unknown age.
-  /// Output only in v1. Required in v2.
-  /// Possible string values are:
-  /// - "AGE_RANGE_UNSPECIFIED" : Default value when age range is not specified
-  /// in this version. This enum is a placeholder for default value and does not
-  /// represent a real age range option.
-  /// - "AGE_RANGE_18_24" : The age range of the audience is 18 to 24.
-  /// - "AGE_RANGE_25_34" : The age range of the audience is 25 to 34.
-  /// - "AGE_RANGE_35_44" : The age range of the audience is 35 to 44.
-  /// - "AGE_RANGE_45_54" : The age range of the audience is 45 to 54.
-  /// - "AGE_RANGE_55_64" : The age range of the audience is 55 to 64.
-  /// - "AGE_RANGE_65_PLUS" : The age range of the audience is 65 and up.
-  /// - "AGE_RANGE_UNKNOWN" : The age range of the audience is unknown.
-  /// - "AGE_RANGE_18_20" : The age range of the audience is 18 to 20, only
-  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
-  /// - "AGE_RANGE_21_24" : The age range of the audience is 21 to 24, only
-  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
-  /// - "AGE_RANGE_25_29" : The age range of the audience is 25 to 29, only
-  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
-  /// - "AGE_RANGE_30_34" : The age range of the audience is 30 to 34, only
-  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
-  /// - "AGE_RANGE_35_39" : The age range of the audience is 35 to 39, only
-  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
-  /// - "AGE_RANGE_40_44" : The age range of the audience is 40 to 44, only
-  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
-  /// - "AGE_RANGE_45_49" : The age range of the audience is 45 to 49, only
-  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
-  /// - "AGE_RANGE_50_54" : The age range of the audience is 50 to 54, only
-  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
-  /// - "AGE_RANGE_55_59" : The age range of the audience is 55 to 59, only
-  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
-  /// - "AGE_RANGE_60_64" : The age range of the audience is 60 to 64, only
-  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
-  core.String? ageRange;
-
-  AgeRangeAssignedTargetingOptionDetails({
-    this.ageRange,
-  });
-
-  AgeRangeAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          ageRange: json_.containsKey('ageRange')
-              ? json_['ageRange'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (ageRange != null) 'ageRange': ageRange!,
-      };
-}
+typedef AgeRangeAssignedTargetingOptionDetails
+    = $AgeRangeAssignedTargetingOptionDetails;
 
 /// Represents a targetable age range.
 ///
 /// This will be populated in the age_range_details field when targeting_type is
 /// `TARGETING_TYPE_AGE_RANGE`.
-class AgeRangeTargetingOptionDetails {
-  /// The age range of an audience.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "AGE_RANGE_UNSPECIFIED" : Default value when age range is not specified
-  /// in this version. This enum is a placeholder for default value and does not
-  /// represent a real age range option.
-  /// - "AGE_RANGE_18_24" : The age range of the audience is 18 to 24.
-  /// - "AGE_RANGE_25_34" : The age range of the audience is 25 to 34.
-  /// - "AGE_RANGE_35_44" : The age range of the audience is 35 to 44.
-  /// - "AGE_RANGE_45_54" : The age range of the audience is 45 to 54.
-  /// - "AGE_RANGE_55_64" : The age range of the audience is 55 to 64.
-  /// - "AGE_RANGE_65_PLUS" : The age range of the audience is 65 and up.
-  /// - "AGE_RANGE_UNKNOWN" : The age range of the audience is unknown.
-  /// - "AGE_RANGE_18_20" : The age range of the audience is 18 to 20, only
-  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
-  /// - "AGE_RANGE_21_24" : The age range of the audience is 21 to 24, only
-  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
-  /// - "AGE_RANGE_25_29" : The age range of the audience is 25 to 29, only
-  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
-  /// - "AGE_RANGE_30_34" : The age range of the audience is 30 to 34, only
-  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
-  /// - "AGE_RANGE_35_39" : The age range of the audience is 35 to 39, only
-  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
-  /// - "AGE_RANGE_40_44" : The age range of the audience is 40 to 44, only
-  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
-  /// - "AGE_RANGE_45_49" : The age range of the audience is 45 to 49, only
-  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
-  /// - "AGE_RANGE_50_54" : The age range of the audience is 50 to 54, only
-  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
-  /// - "AGE_RANGE_55_59" : The age range of the audience is 55 to 59, only
-  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
-  /// - "AGE_RANGE_60_64" : The age range of the audience is 60 to 64, only
-  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
-  core.String? ageRange;
-
-  AgeRangeTargetingOptionDetails({
-    this.ageRange,
-  });
-
-  AgeRangeTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          ageRange: json_.containsKey('ageRange')
-              ? json_['ageRange'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (ageRange != null) 'ageRange': ageRange!,
-      };
-}
+typedef AgeRangeTargetingOptionDetails = $AgeRangeTargetingOptionDetails;
 
 /// Details for assigned app targeting option.
 ///
@@ -13243,9 +13233,6 @@ class AssetAssociation {
 typedef AssignedInventorySource = $AssignedInventorySource;
 
 /// An assignment between a location list and a relevant targeting option.
-///
-/// Currently, geo region targeting options are the only supported option for
-/// assignment.
 typedef AssignedLocation = $AssignedLocation;
 
 /// A single assigned targeting option, which defines the state of a targeting
@@ -14316,35 +14303,8 @@ class AudioAd {
 /// targeting_type is `TARGETING_TYPE_AUDIO_CONTENT_TYPE`. Explicitly targeting
 /// all options is not supported. Remove all audio content type targeting
 /// options to achieve this effect.
-class AudioContentTypeAssignedTargetingOptionDetails {
-  /// The audio content type.
-  ///
-  /// Output only in v1. Required in v2.
-  /// Possible string values are:
-  /// - "AUDIO_CONTENT_TYPE_UNSPECIFIED" : Audio content type is not specified
-  /// in this version. This enum is a place holder for a default value and does
-  /// not represent a real content stream type.
-  /// - "AUDIO_CONTENT_TYPE_UNKNOWN" : The audio content type is unknown.
-  /// - "AUDIO_CONTENT_TYPE_MUSIC" : The audio content type is music.
-  /// - "AUDIO_CONTENT_TYPE_BROADCAST" : The audio content type is broadcast.
-  /// - "AUDIO_CONTENT_TYPE_PODCAST" : The audio content type is podcast.
-  core.String? audioContentType;
-
-  AudioContentTypeAssignedTargetingOptionDetails({
-    this.audioContentType,
-  });
-
-  AudioContentTypeAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          audioContentType: json_.containsKey('audioContentType')
-              ? json_['audioContentType'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (audioContentType != null) 'audioContentType': audioContentType!,
-      };
-}
+typedef AudioContentTypeAssignedTargetingOptionDetails
+    = $AudioContentTypeAssignedTargetingOptionDetails;
 
 /// Represents a targetable audio content type.
 ///
@@ -14692,11 +14652,11 @@ class BulkEditAssignedInventorySourcesResponse {
 /// Request message for AssignedLocationService.BulkEditAssignedLocations.
 class BulkEditAssignedLocationsRequest {
   /// The assigned locations to create in bulk, specified as a list of
-  /// AssignedLocations.
+  /// AssignedLocation resources.
   core.List<AssignedLocation>? createdAssignedLocations;
 
   /// The IDs of the assigned locations to delete in bulk, specified as a list
-  /// of assigned_location_ids.
+  /// of assignedLocationId values.
   core.List<core.String>? deletedAssignedLocations;
 
   BulkEditAssignedLocationsRequest({
@@ -14729,7 +14689,6 @@ class BulkEditAssignedLocationsRequest {
       };
 }
 
-/// Response message for AssignedLocationService.BulkEditAssignedLocations.
 class BulkEditAssignedLocationsResponse {
   /// The list of assigned locations that have been successfully created.
   ///
@@ -15195,7 +15154,7 @@ class BulkListAdGroupAssignedTargetingOptionsResponse {
   /// This value should be specified as the pageToken in a subsequent call to
   /// `BulkListAdGroupAssignedTargetingOptions` to fetch the next page of
   /// results. This token will be absent if there are no more
-  /// youtube_ad_group_assigned_targeting_options to return.
+  /// AdGroupAssignedTargetingOption resources to return.
   core.String? nextPageToken;
 
   /// The list of wrapper objects, each providing an assigned targeting option
@@ -15314,7 +15273,6 @@ class BulkListAssignedTargetingOptionsResponse {
       };
 }
 
-/// Response message for BulkListCampaignAssignedTargetingOptions.
 class BulkListCampaignAssignedTargetingOptionsResponse {
   /// The list of assigned targeting options.
   ///
@@ -15355,7 +15313,6 @@ class BulkListCampaignAssignedTargetingOptionsResponse {
       };
 }
 
-/// Response message for BulkListInsertionOrderAssignedTargetingOptions.
 class BulkListInsertionOrderAssignedTargetingOptionsResponse {
   /// The list of assigned targeting options.
   ///
@@ -16077,12 +16034,23 @@ class CommonInStreamAttribute {
       };
 }
 
+/// User consent status.
+typedef Consent = $Consent;
+
 /// Contact information defining a Customer Match audience member.
 typedef ContactInfo = $ContactInfo;
 
 /// Wrapper message for a list of contact information defining Customer Match
 /// audience members.
 class ContactInfoList {
+  /// Input only.
+  ///
+  /// The consent setting for the users in contact_infos. Leaving this field
+  /// unset indicates that consent is not specified. If ad_user_data or
+  /// ad_personalization fields are set to `CONSENT_STATUS_DENIED`, the request
+  /// will return an error.
+  Consent? consent;
+
   /// A list of ContactInfo objects defining Customer Match audience members.
   ///
   /// The size of members after splitting the contact_infos mustn't be greater
@@ -16090,11 +16058,16 @@ class ContactInfoList {
   core.List<ContactInfo>? contactInfos;
 
   ContactInfoList({
+    this.consent,
     this.contactInfos,
   });
 
   ContactInfoList.fromJson(core.Map json_)
       : this(
+          consent: json_.containsKey('consent')
+              ? Consent.fromJson(
+                  json_['consent'] as core.Map<core.String, core.dynamic>)
+              : null,
           contactInfos: json_.containsKey('contactInfos')
               ? (json_['contactInfos'] as core.List)
                   .map((value) => ContactInfo.fromJson(
@@ -16104,6 +16077,7 @@ class ContactInfoList {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (consent != null) 'consent': consent!,
         if (contactInfos != null) 'contactInfos': contactInfos!,
       };
 }
@@ -16144,64 +16118,8 @@ typedef ContentGenreTargetingOptionDetails
 ///
 /// This will be populated in the content_instream_position_details field when
 /// targeting_type is `TARGETING_TYPE_CONTENT_INSTREAM_POSITION`.
-class ContentInstreamPositionAssignedTargetingOptionDetails {
-  /// The ad type to target.
-  ///
-  /// Only applicable to insertion order targeting and new line items supporting
-  /// the specified ad type will inherit this targeting option by default.
-  /// Possible values are: * `AD_TYPE_VIDEO`, the setting will be inherited by
-  /// new line item when line_item_type is `LINE_ITEM_TYPE_VIDEO_DEFAULT`. *
-  /// `AD_TYPE_AUDIO`, the setting will be inherited by new line item when
-  /// line_item_type is `LINE_ITEM_TYPE_AUDIO_DEFAULT`.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "AD_TYPE_UNSPECIFIED" : Ad type is not specified or is unknown in this
-  /// version.
-  /// - "AD_TYPE_DISPLAY" : Display creatives, e.g. image and HTML5.
-  /// - "AD_TYPE_VIDEO" : Video creatives, e.g. video ads that play during
-  /// streaming content in video players.
-  /// - "AD_TYPE_AUDIO" : Audio creatives, e.g. audio ads that play during audio
-  /// content.
-  core.String? adType;
-
-  /// The content instream position for video or audio ads.
-  ///
-  /// Output only in v1. Required in v2.
-  /// Possible string values are:
-  /// - "CONTENT_INSTREAM_POSITION_UNSPECIFIED" : Content instream position is
-  /// not specified in this version. This enum is a place holder for a default
-  /// value and does not represent a real in stream ad position.
-  /// - "CONTENT_INSTREAM_POSITION_PRE_ROLL" : Ads that play before streaming
-  /// content.
-  /// - "CONTENT_INSTREAM_POSITION_MID_ROLL" : Ads that play between the
-  /// beginning and end of streaming content.
-  /// - "CONTENT_INSTREAM_POSITION_POST_ROLL" : Ads that play at the end of
-  /// streaming content.
-  /// - "CONTENT_INSTREAM_POSITION_UNKNOWN" : Ads instream position is unknown.
-  core.String? contentInstreamPosition;
-
-  ContentInstreamPositionAssignedTargetingOptionDetails({
-    this.adType,
-    this.contentInstreamPosition,
-  });
-
-  ContentInstreamPositionAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          adType: json_.containsKey('adType')
-              ? json_['adType'] as core.String
-              : null,
-          contentInstreamPosition: json_.containsKey('contentInstreamPosition')
-              ? json_['contentInstreamPosition'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (adType != null) 'adType': adType!,
-        if (contentInstreamPosition != null)
-          'contentInstreamPosition': contentInstreamPosition!,
-      };
-}
+typedef ContentInstreamPositionAssignedTargetingOptionDetails
+    = $ContentInstreamPositionAssignedTargetingOptionDetails;
 
 /// Represents a targetable content instream position, which could be used by
 /// video and audio ads.
@@ -16215,70 +16133,8 @@ typedef ContentInstreamPositionTargetingOptionDetails
 ///
 /// This will be populated in the content_outstream_position_details field when
 /// targeting_type is `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION`.
-class ContentOutstreamPositionAssignedTargetingOptionDetails {
-  /// The ad type to target.
-  ///
-  /// Only applicable to insertion order targeting and new line items supporting
-  /// the specified ad type will inherit this targeting option by default.
-  /// Possible values are: * `AD_TYPE_DISPLAY`, the setting will be inherited by
-  /// new line item when line_item_type is `LINE_ITEM_TYPE_DISPLAY_DEFAULT`. *
-  /// `AD_TYPE_VIDEO`, the setting will be inherited by new line item when
-  /// line_item_type is `LINE_ITEM_TYPE_VIDEO_DEFAULT`.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "AD_TYPE_UNSPECIFIED" : Ad type is not specified or is unknown in this
-  /// version.
-  /// - "AD_TYPE_DISPLAY" : Display creatives, e.g. image and HTML5.
-  /// - "AD_TYPE_VIDEO" : Video creatives, e.g. video ads that play during
-  /// streaming content in video players.
-  /// - "AD_TYPE_AUDIO" : Audio creatives, e.g. audio ads that play during audio
-  /// content.
-  core.String? adType;
-
-  /// The content outstream position.
-  ///
-  /// Output only in v1. Required in v2.
-  /// Possible string values are:
-  /// - "CONTENT_OUTSTREAM_POSITION_UNSPECIFIED" : Content outstream position is
-  /// not specified in this version. This enum is a place holder for a default
-  /// value and does not represent a real content outstream position.
-  /// - "CONTENT_OUTSTREAM_POSITION_UNKNOWN" : The ad position is unknown in the
-  /// content outstream.
-  /// - "CONTENT_OUTSTREAM_POSITION_IN_ARTICLE" : Ads that appear between the
-  /// paragraphs of your pages.
-  /// - "CONTENT_OUTSTREAM_POSITION_IN_BANNER" : Ads that display on the top and
-  /// the sides of a page.
-  /// - "CONTENT_OUTSTREAM_POSITION_IN_FEED" : Ads that appear in a scrollable
-  /// stream of content. A feed is typically editorial (e.g. a list of articles
-  /// or news) or listings (e.g. a list of products or services).
-  /// - "CONTENT_OUTSTREAM_POSITION_INTERSTITIAL" : Ads shown before or between
-  /// content loads.
-  core.String? contentOutstreamPosition;
-
-  ContentOutstreamPositionAssignedTargetingOptionDetails({
-    this.adType,
-    this.contentOutstreamPosition,
-  });
-
-  ContentOutstreamPositionAssignedTargetingOptionDetails.fromJson(
-      core.Map json_)
-      : this(
-          adType: json_.containsKey('adType')
-              ? json_['adType'] as core.String
-              : null,
-          contentOutstreamPosition:
-              json_.containsKey('contentOutstreamPosition')
-                  ? json_['contentOutstreamPosition'] as core.String
-                  : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (adType != null) 'adType': adType!,
-        if (contentOutstreamPosition != null)
-          'contentOutstreamPosition': contentOutstreamPosition!,
-      };
-}
+typedef ContentOutstreamPositionAssignedTargetingOptionDetails
+    = $ContentOutstreamPositionAssignedTargetingOptionDetails;
 
 /// Represents a targetable content outstream position, which could be used by
 /// display and video ads.
@@ -16569,6 +16425,9 @@ class CreateSdfDownloadTaskRequest {
   /// - "SDF_VERSION_5_4" : SDF version 5.4
   /// - "SDF_VERSION_5_5" : SDF version 5.5
   /// - "SDF_VERSION_6" : SDF version 6
+  /// - "SDF_VERSION_7" : SDF version 7. Read the \[v7 migration
+  /// guide\](/display-video/api/structured-data-file/v7-migration-guide) before
+  /// migrating to this version.
   core.String? version;
 
   CreateSdfDownloadTaskRequest({
@@ -17707,7 +17566,7 @@ class CustomBiddingScript {
 
   /// Error details of a rejected custom bidding script.
   ///
-  /// This field will only be populated when Script.state is REJECTED.
+  /// This field will only be populated when state is REJECTED.
   ///
   /// Output only.
   core.List<ScriptError>? errors;
@@ -17790,37 +17649,7 @@ class CustomBiddingScript {
 typedef CustomBiddingScriptRef = $CustomBiddingScriptRef;
 
 /// The key and value of a custom label.
-class CustomLabel {
-  /// The key of the label.
-  /// Possible string values are:
-  /// - "CUSTOM_LABEL_KEY_UNSPECIFIED" : Not specified or unknown.
-  /// - "CUSTOM_LABEL_KEY_0" : Key index 0.
-  /// - "CUSTOM_LABEL_KEY_1" : Key index 1.
-  /// - "CUSTOM_LABEL_KEY_2" : Key index 2.
-  /// - "CUSTOM_LABEL_KEY_3" : Key index 3.
-  /// - "CUSTOM_LABEL_KEY_4" : Key index 4.
-  core.String? key;
-
-  /// The value of the label.
-  core.String? value;
-
-  CustomLabel({
-    this.key,
-    this.value,
-  });
-
-  CustomLabel.fromJson(core.Map json_)
-      : this(
-          key: json_.containsKey('key') ? json_['key'] as core.String : null,
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (key != null) 'key': key!,
-        if (value != null) 'value': value!,
-      };
-}
+typedef CustomLabel = $CustomLabel;
 
 /// Describes a custom list entity, such as a custom affinity or custom intent
 /// audience list.
@@ -17919,150 +17748,8 @@ typedef DeactivateManualTriggerRequest = $Empty;
 
 /// A request listing which assigned targeting options of a given targeting type
 /// should be deleted.
-class DeleteAssignedTargetingOptionsRequest {
-  /// The assigned targeting option IDs to delete.
-  ///
-  /// Required.
-  core.List<core.String>? assignedTargetingOptionIds;
-
-  /// Identifies the type of this assigned targeting option.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
-  /// or is unknown in this version.
-  /// - "TARGETING_TYPE_CHANNEL" : Target a channel (a custom group of related
-  /// websites or apps).
-  /// - "TARGETING_TYPE_APP_CATEGORY" : Target an app category (for example,
-  /// education or puzzle games).
-  /// - "TARGETING_TYPE_APP" : Target a specific app (for example, Angry Birds).
-  /// - "TARGETING_TYPE_URL" : Target a specific url (for example, quora.com).
-  /// - "TARGETING_TYPE_DAY_AND_TIME" : Target ads during a chosen time period
-  /// on a specific day.
-  /// - "TARGETING_TYPE_AGE_RANGE" : Target ads to a specific age range (for
-  /// example, 18-24).
-  /// - "TARGETING_TYPE_REGIONAL_LOCATION_LIST" : Target ads to the specified
-  /// regions on a regional location list.
-  /// - "TARGETING_TYPE_PROXIMITY_LOCATION_LIST" : Target ads to the specified
-  /// points of interest on a proximity location list.
-  /// - "TARGETING_TYPE_GENDER" : Target ads to a specific gender (for example,
-  /// female or male).
-  /// - "TARGETING_TYPE_VIDEO_PLAYER_SIZE" : Target a specific video player size
-  /// for video ads.
-  /// - "TARGETING_TYPE_USER_REWARDED_CONTENT" : Target user rewarded content
-  /// for video ads.
-  /// - "TARGETING_TYPE_PARENTAL_STATUS" : Target ads to a specific parental
-  /// status (for example, parent or not a parent).
-  /// - "TARGETING_TYPE_CONTENT_INSTREAM_POSITION" : Target video or audio ads
-  /// in a specific content instream position (for example, pre-roll, mid-roll,
-  /// or post-roll).
-  /// - "TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION" : Target ads in a specific
-  /// content outstream position.
-  /// - "TARGETING_TYPE_DEVICE_TYPE" : Target ads to a specific device type (for
-  /// example, tablet or connected TV).
-  /// - "TARGETING_TYPE_AUDIENCE_GROUP" : Target ads to an audience or groups of
-  /// audiences. Singleton field, at most one can exist on a single Lineitem at
-  /// a time.
-  /// - "TARGETING_TYPE_BROWSER" : Target ads to specific web browsers (for
-  /// example, Chrome).
-  /// - "TARGETING_TYPE_HOUSEHOLD_INCOME" : Target ads to a specific household
-  /// income range (for example, top 10%).
-  /// - "TARGETING_TYPE_ON_SCREEN_POSITION" : Target ads in a specific on screen
-  /// position.
-  /// - "TARGETING_TYPE_THIRD_PARTY_VERIFIER" : Filter web sites through third
-  /// party verification (for example, IAS or DoubleVerify).
-  /// - "TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION" : Filter web sites by
-  /// specific digital content label ratings (for example, DL-MA: suitable only
-  /// for mature audiences).
-  /// - "TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION" : Filter website content
-  /// by sensitive categories (for example, adult).
-  /// - "TARGETING_TYPE_ENVIRONMENT" : Target ads to a specific environment (for
-  /// example, web or app).
-  /// - "TARGETING_TYPE_CARRIER_AND_ISP" : Target ads to a specific network
-  /// carrier or internet service provider (ISP) (for example, Comcast or
-  /// Orange).
-  /// - "TARGETING_TYPE_OPERATING_SYSTEM" : Target ads to a specific operating
-  /// system (for example, macOS).
-  /// - "TARGETING_TYPE_DEVICE_MAKE_MODEL" : Target ads to a specific device
-  /// make or model (for example, Roku or Samsung).
-  /// - "TARGETING_TYPE_KEYWORD" : Target ads to a specific keyword (for
-  /// example, dog or retriever).
-  /// - "TARGETING_TYPE_NEGATIVE_KEYWORD_LIST" : Target ads to a specific
-  /// negative keyword list.
-  /// - "TARGETING_TYPE_VIEWABILITY" : Target ads to a specific viewability (for
-  /// example, 80% viewable).
-  /// - "TARGETING_TYPE_CATEGORY" : Target ads to a specific content category
-  /// (for example, arts & entertainment).
-  /// - "TARGETING_TYPE_INVENTORY_SOURCE" : Purchase impressions from specific
-  /// deals and auction packages.
-  /// - "TARGETING_TYPE_LANGUAGE" : Target ads to a specific language (for
-  /// example, English or Japanese).
-  /// - "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS" : Target ads to ads.txt
-  /// authorized sellers. If no targeting option of this type is assigned, the
-  /// resource uses the "Authorized Direct Sellers and Resellers" option by
-  /// default.
-  /// - "TARGETING_TYPE_GEO_REGION" : Target ads to a specific regional location
-  /// (for example, a city or state).
-  /// - "TARGETING_TYPE_INVENTORY_SOURCE_GROUP" : Purchase impressions from a
-  /// group of deals and auction packages.
-  /// - "TARGETING_TYPE_EXCHANGE" : Purchase impressions from specific
-  /// exchanges.
-  /// - "TARGETING_TYPE_SUB_EXCHANGE" : Purchase impressions from specific
-  /// sub-exchanges.
-  /// - "TARGETING_TYPE_POI" : Target ads around a specific point of interest,
-  /// such as a notable building, a street address, or latitude/longitude
-  /// coordinates.
-  /// - "TARGETING_TYPE_BUSINESS_CHAIN" : Target ads around locations of a
-  /// business chain within a specific geo region.
-  /// - "TARGETING_TYPE_CONTENT_DURATION" : Target ads to a specific video
-  /// content duration.
-  /// - "TARGETING_TYPE_CONTENT_STREAM_TYPE" : Target ads to a specific video
-  /// content stream type.
-  /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
-  /// native content position.
-  /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
-  /// inventory.
-  /// - "TARGETING_TYPE_AUDIO_CONTENT_TYPE" : Target ads to a specific audio
-  /// content type.
-  /// - "TARGETING_TYPE_CONTENT_GENRE" : Target ads to a specific content genre.
-  /// - "TARGETING_TYPE_YOUTUBE_VIDEO" : Target ads to a specific YouTube video.
-  /// Targeting of this type cannot be created or updated using the API.
-  /// Although this targeting is inherited by child resources, **inherited
-  /// targeting of this type will not be retrieveable**.
-  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL" : Target ads to a specific YouTube
-  /// channel. Targeting of this type cannot be created or updated using the
-  /// API. Although this targeting is inherited by child resources, **inherited
-  /// targeting of this type will not be retrieveable**.
-  /// - "TARGETING_TYPE_SESSION_POSITION" : Target ads to a serve it in a
-  /// certain position of a session. Only supported for Ad Group resources under
-  /// YouTube Programmatic Reservation line items. Targeting of this type cannot
-  /// be created or updated using the API.
-  core.String? targetingType;
-
-  DeleteAssignedTargetingOptionsRequest({
-    this.assignedTargetingOptionIds,
-    this.targetingType,
-  });
-
-  DeleteAssignedTargetingOptionsRequest.fromJson(core.Map json_)
-      : this(
-          assignedTargetingOptionIds:
-              json_.containsKey('assignedTargetingOptionIds')
-                  ? (json_['assignedTargetingOptionIds'] as core.List)
-                      .map((value) => value as core.String)
-                      .toList()
-                  : null,
-          targetingType: json_.containsKey('targetingType')
-              ? json_['targetingType'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (assignedTargetingOptionIds != null)
-          'assignedTargetingOptionIds': assignedTargetingOptionIds!,
-        if (targetingType != null) 'targetingType': targetingType!,
-      };
-}
+typedef DeleteAssignedTargetingOptionsRequest
+    = $DeleteAssignedTargetingOptionsRequest;
 
 /// Assigned device make and model targeting option details.
 ///
@@ -18082,55 +17769,8 @@ typedef DeviceMakeModelTargetingOptionDetails
 ///
 /// This will be populated in the details field of an AssignedTargetingOption
 /// when targeting_type is `TARGETING_TYPE_DEVICE_TYPE`.
-class DeviceTypeAssignedTargetingOptionDetails {
-  /// The display name of the device type.
-  ///
-  /// Output only in v1. Required in v2.
-  /// Possible string values are:
-  /// - "DEVICE_TYPE_UNSPECIFIED" : Default value when device type is not
-  /// specified in this version. This enum is a placeholder for default value
-  /// and does not represent a real device type option.
-  /// - "DEVICE_TYPE_COMPUTER" : The device type is computer.
-  /// - "DEVICE_TYPE_CONNECTED_TV" : The device type is connected TV.
-  /// - "DEVICE_TYPE_SMART_PHONE" : The device type is smart phone..
-  /// - "DEVICE_TYPE_TABLET" : The device type is tablet.
-  core.String? deviceType;
-
-  /// Bid multiplier allows you to show your ads more or less frequently based
-  /// on the device type.
-  ///
-  /// It will apply a multiplier on the original bid price. When this field is
-  /// 0, it indicates this field is not applicable instead of multiplying 0 on
-  /// the original bid price. For example, if the bid price without multiplier
-  /// is $10.0 and the multiplier is 1.5 for Tablet, the resulting bid price for
-  /// Tablet will be $15.0. Only applicable to YouTube and Partners line items.
-  ///
-  /// Output only.
-  core.double? youtubeAndPartnersBidMultiplier;
-
-  DeviceTypeAssignedTargetingOptionDetails({
-    this.deviceType,
-    this.youtubeAndPartnersBidMultiplier,
-  });
-
-  DeviceTypeAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          deviceType: json_.containsKey('deviceType')
-              ? json_['deviceType'] as core.String
-              : null,
-          youtubeAndPartnersBidMultiplier:
-              json_.containsKey('youtubeAndPartnersBidMultiplier')
-                  ? (json_['youtubeAndPartnersBidMultiplier'] as core.num)
-                      .toDouble()
-                  : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (deviceType != null) 'deviceType': deviceType!,
-        if (youtubeAndPartnersBidMultiplier != null)
-          'youtubeAndPartnersBidMultiplier': youtubeAndPartnersBidMultiplier!,
-      };
-}
+typedef DeviceTypeAssignedTargetingOptionDetails
+    = $DeviceTypeAssignedTargetingOptionDetails;
 
 /// Represents a targetable device type.
 ///
@@ -18142,110 +17782,22 @@ typedef DeviceTypeTargetingOptionDetails = $DeviceTypeTargetingOptionDetails;
 ///
 /// This will be populated in the details field of an AssignedTargetingOption
 /// when targeting_type is `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION`.
-class DigitalContentLabelAssignedTargetingOptionDetails {
-  /// The display name of the digital content label rating tier to be EXCLUDED.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "CONTENT_RATING_TIER_UNSPECIFIED" : Content label is not specified in
-  /// this version. This enum is a place holder for a default value and does not
-  /// represent a real content rating.
-  /// - "CONTENT_RATING_TIER_UNRATED" : Content that has not been labeled.
-  /// - "CONTENT_RATING_TIER_GENERAL" : Content suitable for general audiences.
-  /// - "CONTENT_RATING_TIER_PARENTAL_GUIDANCE" : Content suitable for most
-  /// audiences with parental guidance.
-  /// - "CONTENT_RATING_TIER_TEENS" : Content suitable for teen and older
-  /// audiences.
-  /// - "CONTENT_RATING_TIER_MATURE" : Content suitable only for mature
-  /// audiences.
-  /// - "CONTENT_RATING_TIER_FAMILIES" : Content suitable for family audiences.
-  /// It is a subset of CONTENT_RATING_TIER_GENERAL. Only applicable to YouTube
-  /// and Partners line items.
-  core.String? excludedContentRatingTier;
-
-  DigitalContentLabelAssignedTargetingOptionDetails({
-    this.excludedContentRatingTier,
-  });
-
-  DigitalContentLabelAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          excludedContentRatingTier:
-              json_.containsKey('excludedContentRatingTier')
-                  ? json_['excludedContentRatingTier'] as core.String
-                  : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (excludedContentRatingTier != null)
-          'excludedContentRatingTier': excludedContentRatingTier!,
-      };
-}
+typedef DigitalContentLabelAssignedTargetingOptionDetails
+    = $DigitalContentLabelAssignedTargetingOptionDetails;
 
 /// Represents a targetable digital content label rating tier.
 ///
 /// This will be populated in the digital_content_label_details field of the
 /// TargetingOption when targeting_type is
 /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION`.
-class DigitalContentLabelTargetingOptionDetails {
-  /// An enum for the content label brand safety tiers.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "CONTENT_RATING_TIER_UNSPECIFIED" : Content label is not specified in
-  /// this version. This enum is a place holder for a default value and does not
-  /// represent a real content rating.
-  /// - "CONTENT_RATING_TIER_UNRATED" : Content that has not been labeled.
-  /// - "CONTENT_RATING_TIER_GENERAL" : Content suitable for general audiences.
-  /// - "CONTENT_RATING_TIER_PARENTAL_GUIDANCE" : Content suitable for most
-  /// audiences with parental guidance.
-  /// - "CONTENT_RATING_TIER_TEENS" : Content suitable for teen and older
-  /// audiences.
-  /// - "CONTENT_RATING_TIER_MATURE" : Content suitable only for mature
-  /// audiences.
-  /// - "CONTENT_RATING_TIER_FAMILIES" : Content suitable for family audiences.
-  /// It is a subset of CONTENT_RATING_TIER_GENERAL. Only applicable to YouTube
-  /// and Partners line items.
-  core.String? contentRatingTier;
-
-  DigitalContentLabelTargetingOptionDetails({
-    this.contentRatingTier,
-  });
-
-  DigitalContentLabelTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          contentRatingTier: json_.containsKey('contentRatingTier')
-              ? json_['contentRatingTier'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (contentRatingTier != null) 'contentRatingTier': contentRatingTier!,
-      };
-}
+typedef DigitalContentLabelTargetingOptionDetails
+    = $DigitalContentLabelTargetingOptionDetails;
 
 /// Dimensions.
 typedef Dimensions = $Dimensions;
 
 /// The ad sourced from a DV360 creative.
-class DisplayVideoSourceAd {
-  /// The ID of the source creative.
-  core.String? creativeId;
-
-  DisplayVideoSourceAd({
-    this.creativeId,
-  });
-
-  DisplayVideoSourceAd.fromJson(core.Map json_)
-      : this(
-          creativeId: json_.containsKey('creativeId')
-              ? json_['creativeId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (creativeId != null) 'creativeId': creativeId!,
-      };
-}
+typedef DisplayVideoSourceAd = $DisplayVideoSourceAd;
 
 /// Details of DoubleVerify settings.
 class DoubleVerify {
@@ -18350,48 +17902,8 @@ typedef DoubleVerifyFraudInvalidTraffic = $DoubleVerifyFraudInvalidTraffic;
 typedef DoubleVerifyVideoViewability = $DoubleVerifyVideoViewability;
 
 /// Request message for LineItemService.DuplicateLineItem.
-class DuplicateLineItemRequest {
-  /// The display name of the new line item.
-  ///
-  /// Must be UTF-8 encoded with a maximum size of 240 bytes.
-  core.String? targetDisplayName;
-
-  DuplicateLineItemRequest({
-    this.targetDisplayName,
-  });
-
-  DuplicateLineItemRequest.fromJson(core.Map json_)
-      : this(
-          targetDisplayName: json_.containsKey('targetDisplayName')
-              ? json_['targetDisplayName'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (targetDisplayName != null) 'targetDisplayName': targetDisplayName!,
-      };
-}
-
-class DuplicateLineItemResponse {
-  /// The ID of the created line item.
-  core.String? duplicateLineItemId;
-
-  DuplicateLineItemResponse({
-    this.duplicateLineItemId,
-  });
-
-  DuplicateLineItemResponse.fromJson(core.Map json_)
-      : this(
-          duplicateLineItemId: json_.containsKey('duplicateLineItemId')
-              ? json_['duplicateLineItemId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (duplicateLineItemId != null)
-          'duplicateLineItemId': duplicateLineItemId!,
-      };
-}
+typedef DuplicateLineItemRequest = $DuplicateLineItemRequest;
+typedef DuplicateLineItemResponse = $DuplicateLineItemResponse;
 
 /// Request message for
 /// FirstAndThirdPartyAudienceService.EditCustomerMatchMembers.
@@ -18412,10 +17924,22 @@ class EditCustomerMatchMembersRequest {
   /// Required.
   core.String? advertiserId;
 
+  /// Input only.
+  ///
+  /// A list of contact information to define the members to be removed.
+  ContactInfoList? removedContactInfoList;
+
+  /// Input only.
+  ///
+  /// A list of mobile device IDs to define the members to be removed.
+  MobileDeviceIdList? removedMobileDeviceIdList;
+
   EditCustomerMatchMembersRequest({
     this.addedContactInfoList,
     this.addedMobileDeviceIdList,
     this.advertiserId,
+    this.removedContactInfoList,
+    this.removedMobileDeviceIdList,
   });
 
   EditCustomerMatchMembersRequest.fromJson(core.Map json_)
@@ -18431,6 +17955,15 @@ class EditCustomerMatchMembersRequest {
           advertiserId: json_.containsKey('advertiserId')
               ? json_['advertiserId'] as core.String
               : null,
+          removedContactInfoList: json_.containsKey('removedContactInfoList')
+              ? ContactInfoList.fromJson(json_['removedContactInfoList']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          removedMobileDeviceIdList: json_
+                  .containsKey('removedMobileDeviceIdList')
+              ? MobileDeviceIdList.fromJson(json_['removedMobileDeviceIdList']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -18439,6 +17972,10 @@ class EditCustomerMatchMembersRequest {
         if (addedMobileDeviceIdList != null)
           'addedMobileDeviceIdList': addedMobileDeviceIdList!,
         if (advertiserId != null) 'advertiserId': advertiserId!,
+        if (removedContactInfoList != null)
+          'removedContactInfoList': removedContactInfoList!,
+        if (removedMobileDeviceIdList != null)
+          'removedMobileDeviceIdList': removedMobileDeviceIdList!,
       };
 }
 
@@ -18516,42 +18053,8 @@ typedef Empty = $Empty;
 ///
 /// This will be populated in the details field of an AssignedTargetingOption
 /// when targeting_type is `TARGETING_TYPE_ENVIRONMENT`.
-class EnvironmentAssignedTargetingOptionDetails {
-  /// The serving environment.
-  ///
-  /// Output only in v1. Required in v2.
-  /// Possible string values are:
-  /// - "ENVIRONMENT_UNSPECIFIED" : Default value when environment is not
-  /// specified in this version. This enum is a placeholder for default value
-  /// and does not represent a real environment option.
-  /// - "ENVIRONMENT_WEB_OPTIMIZED" : Target inventory displayed in browsers.
-  /// This includes inventory that was designed for the device it was viewed on,
-  /// such as mobile websites viewed on a mobile device.
-  /// ENVIRONMENT_WEB_NOT_OPTIMIZED, if targeted, should be deleted prior to the
-  /// deletion of this targeting option.
-  /// - "ENVIRONMENT_WEB_NOT_OPTIMIZED" : Target inventory displayed in
-  /// browsers. This includes inventory that was not designed for the device but
-  /// viewed on it, such as websites optimized for desktop but viewed on a
-  /// mobile device. ENVIRONMENT_WEB_OPTIMIZED should be targeted prior to the
-  /// addition of this targeting option.
-  /// - "ENVIRONMENT_APP" : Target inventory displayed in apps.
-  core.String? environment;
-
-  EnvironmentAssignedTargetingOptionDetails({
-    this.environment,
-  });
-
-  EnvironmentAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          environment: json_.containsKey('environment')
-              ? json_['environment'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (environment != null) 'environment': environment!,
-      };
-}
+typedef EnvironmentAssignedTargetingOptionDetails
+    = $EnvironmentAssignedTargetingOptionDetails;
 
 /// Represents a targetable environment.
 ///
@@ -18563,105 +18066,8 @@ typedef EnvironmentTargetingOptionDetails = $EnvironmentTargetingOptionDetails;
 ///
 /// This will be populated in the details field of an AssignedTargetingOption
 /// when targeting_type is `TARGETING_TYPE_EXCHANGE`.
-class ExchangeAssignedTargetingOptionDetails {
-  /// The enum value for the exchange.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "EXCHANGE_UNSPECIFIED" : Exchange is not specified or is unknown in this
-  /// version.
-  /// - "EXCHANGE_GOOGLE_AD_MANAGER" : Google Ad Manager.
-  /// - "EXCHANGE_APPNEXUS" : AppNexus.
-  /// - "EXCHANGE_BRIGHTROLL" : BrightRoll Exchange for Video from Yahoo!.
-  /// - "EXCHANGE_ADFORM" : Adform.
-  /// - "EXCHANGE_ADMETA" : Admeta.
-  /// - "EXCHANGE_ADMIXER" : Admixer.
-  /// - "EXCHANGE_ADSMOGO" : AdsMogo.
-  /// - "EXCHANGE_ADSWIZZ" : AdsWizz.
-  /// - "EXCHANGE_BIDSWITCH" : BidSwitch.
-  /// - "EXCHANGE_BRIGHTROLL_DISPLAY" : BrightRoll Exchange for Display from
-  /// Yahoo!.
-  /// - "EXCHANGE_CADREON" : Cadreon.
-  /// - "EXCHANGE_DAILYMOTION" : Dailymotion.
-  /// - "EXCHANGE_FIVE" : Five.
-  /// - "EXCHANGE_FLUCT" : Fluct.
-  /// - "EXCHANGE_FREEWHEEL" : FreeWheel SSP.
-  /// - "EXCHANGE_GENIEE" : Geniee.
-  /// - "EXCHANGE_GUMGUM" : GumGum.
-  /// - "EXCHANGE_IMOBILE" : i-mobile.
-  /// - "EXCHANGE_IBILLBOARD" : iBILLBOARD.
-  /// - "EXCHANGE_IMPROVE_DIGITAL" : Improve Digital.
-  /// - "EXCHANGE_INDEX" : Index Exchange.
-  /// - "EXCHANGE_KARGO" : Kargo.
-  /// - "EXCHANGE_MICROAD" : MicroAd.
-  /// - "EXCHANGE_MOPUB" : MoPub.
-  /// - "EXCHANGE_NEND" : Nend.
-  /// - "EXCHANGE_ONE_BY_AOL_DISPLAY" : ONE by AOL: Display Market Place.
-  /// - "EXCHANGE_ONE_BY_AOL_MOBILE" : ONE by AOL: Mobile.
-  /// - "EXCHANGE_ONE_BY_AOL_VIDEO" : ONE by AOL: Video.
-  /// - "EXCHANGE_OOYALA" : Ooyala.
-  /// - "EXCHANGE_OPENX" : OpenX.
-  /// - "EXCHANGE_PERMODO" : Permodo.
-  /// - "EXCHANGE_PLATFORMONE" : Platform One.
-  /// - "EXCHANGE_PLATFORMID" : PlatformId.
-  /// - "EXCHANGE_PUBMATIC" : PubMatic.
-  /// - "EXCHANGE_PULSEPOINT" : PulsePoint.
-  /// - "EXCHANGE_REVENUEMAX" : RevenueMax.
-  /// - "EXCHANGE_RUBICON" : Rubicon.
-  /// - "EXCHANGE_SMARTCLIP" : SmartClip.
-  /// - "EXCHANGE_SMARTRTB" : SmartRTB+.
-  /// - "EXCHANGE_SMARTSTREAMTV" : SmartstreamTv.
-  /// - "EXCHANGE_SOVRN" : Sovrn.
-  /// - "EXCHANGE_SPOTXCHANGE" : SpotXchange.
-  /// - "EXCHANGE_STROER" : Ströer SSP.
-  /// - "EXCHANGE_TEADSTV" : TeadsTv.
-  /// - "EXCHANGE_TELARIA" : Telaria.
-  /// - "EXCHANGE_TVN" : TVN.
-  /// - "EXCHANGE_UNITED" : United.
-  /// - "EXCHANGE_YIELDLAB" : Yieldlab.
-  /// - "EXCHANGE_YIELDMO" : Yieldmo.
-  /// - "EXCHANGE_UNRULYX" : UnrulyX.
-  /// - "EXCHANGE_OPEN8" : Open8.
-  /// - "EXCHANGE_TRITON" : Triton.
-  /// - "EXCHANGE_TRIPLELIFT" : TripleLift.
-  /// - "EXCHANGE_TABOOLA" : Taboola.
-  /// - "EXCHANGE_INMOBI" : InMobi.
-  /// - "EXCHANGE_SMAATO" : Smaato.
-  /// - "EXCHANGE_AJA" : Aja.
-  /// - "EXCHANGE_SUPERSHIP" : Supership.
-  /// - "EXCHANGE_NEXSTAR_DIGITAL" : Nexstar Digital.
-  /// - "EXCHANGE_WAZE" : Waze.
-  /// - "EXCHANGE_SOUNDCAST" : SoundCast.
-  /// - "EXCHANGE_SHARETHROUGH" : Sharethrough.
-  /// - "EXCHANGE_FYBER" : Fyber.
-  /// - "EXCHANGE_RED_FOR_PUBLISHERS" : Red For Publishers.
-  /// - "EXCHANGE_MEDIANET" : Media.net.
-  /// - "EXCHANGE_TAPJOY" : Tapjoy.
-  /// - "EXCHANGE_VISTAR" : Vistar.
-  /// - "EXCHANGE_DAX" : DAX.
-  /// - "EXCHANGE_JCD" : JCD.
-  /// - "EXCHANGE_PLACE_EXCHANGE" : Place Exchange.
-  /// - "EXCHANGE_APPLOVIN" : AppLovin.
-  /// - "EXCHANGE_CONNATIX" : Connatix.
-  /// - "EXCHANGE_RESET_DIGITAL" : Reset Digital.
-  /// - "EXCHANGE_HIVESTACK" : Hivestack.
-  core.String? exchange;
-
-  ExchangeAssignedTargetingOptionDetails({
-    this.exchange,
-  });
-
-  ExchangeAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          exchange: json_.containsKey('exchange')
-              ? json_['exchange'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (exchange != null) 'exchange': exchange!,
-      };
-}
+typedef ExchangeAssignedTargetingOptionDetails
+    = $ExchangeAssignedTargetingOptionDetails;
 
 /// Settings that control which exchanges are enabled for a partner.
 class ExchangeConfig {
@@ -19025,6 +18431,118 @@ typedef FirstAndThirdPartyAudienceTargetingSetting
 /// A strategy that uses a fixed bidding price.
 typedef FixedBidStrategy = $FixedBidStrategy;
 
+/// A single Floodlight activity.
+class FloodlightActivity {
+  /// IDs of the advertisers that have access to the parent Floodlight group.
+  ///
+  /// Only advertisers under the provided partner ID will be listed in this
+  /// field.
+  ///
+  /// Output only.
+  core.List<core.String>? advertiserIds;
+
+  /// The display name of the Floodlight activity.
+  ///
+  /// Required.
+  core.String? displayName;
+
+  /// The unique ID of the Floodlight activity.
+  ///
+  /// Assigned by the system.
+  ///
+  /// Output only.
+  core.String? floodlightActivityId;
+
+  /// The ID of the parent Floodlight group.
+  ///
+  /// Required. Immutable.
+  core.String? floodlightGroupId;
+
+  /// The resource name of the Floodlight activity.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// A list of configuration objects designating whether remarketing for this
+  /// Floodlight Activity is enabled and available for a specifc advertiser.
+  ///
+  /// If enabled, this Floodlight Activity generates a remarketing user list
+  /// that is able to be used in targeting under the advertiser.
+  ///
+  /// Output only.
+  core.List<RemarketingConfig>? remarketingConfigs;
+
+  /// Whether the Floodlight activity is served.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "FLOODLIGHT_ACTIVITY_SERVING_STATUS_UNSPECIFIED" : Type value is not
+  /// specified or is unknown in this version.
+  /// - "FLOODLIGHT_ACTIVITY_SERVING_STATUS_ENABLED" : Enabled.
+  /// - "FLOODLIGHT_ACTIVITY_SERVING_STATUS_DISABLED" : Disabled.
+  core.String? servingStatus;
+
+  /// Whether tags are required to be compliant.
+  ///
+  /// Output only.
+  core.bool? sslRequired;
+
+  FloodlightActivity({
+    this.advertiserIds,
+    this.displayName,
+    this.floodlightActivityId,
+    this.floodlightGroupId,
+    this.name,
+    this.remarketingConfigs,
+    this.servingStatus,
+    this.sslRequired,
+  });
+
+  FloodlightActivity.fromJson(core.Map json_)
+      : this(
+          advertiserIds: json_.containsKey('advertiserIds')
+              ? (json_['advertiserIds'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          floodlightActivityId: json_.containsKey('floodlightActivityId')
+              ? json_['floodlightActivityId'] as core.String
+              : null,
+          floodlightGroupId: json_.containsKey('floodlightGroupId')
+              ? json_['floodlightGroupId'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          remarketingConfigs: json_.containsKey('remarketingConfigs')
+              ? (json_['remarketingConfigs'] as core.List)
+                  .map((value) => RemarketingConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          servingStatus: json_.containsKey('servingStatus')
+              ? json_['servingStatus'] as core.String
+              : null,
+          sslRequired: json_.containsKey('sslRequired')
+              ? json_['sslRequired'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (advertiserIds != null) 'advertiserIds': advertiserIds!,
+        if (displayName != null) 'displayName': displayName!,
+        if (floodlightActivityId != null)
+          'floodlightActivityId': floodlightActivityId!,
+        if (floodlightGroupId != null) 'floodlightGroupId': floodlightGroupId!,
+        if (name != null) 'name': name!,
+        if (remarketingConfigs != null)
+          'remarketingConfigs': remarketingConfigs!,
+        if (servingStatus != null) 'servingStatus': servingStatus!,
+        if (sslRequired != null) 'sslRequired': sslRequired!,
+      };
+}
+
 /// A single Floodlight group.
 class FloodlightGroup {
   /// The Active View video viewability metric configuration for the Floodlight
@@ -19136,125 +18654,14 @@ class FloodlightGroup {
 
 /// Settings that control the number of times a user may be shown with the same
 /// ad during a given time period.
-class FrequencyCap {
-  /// The maximum number of times a user may be shown the same ad during this
-  /// period.
-  ///
-  /// Must be greater than 0. Required when unlimited is `false` and max_views
-  /// is not set.
-  core.int? maxImpressions;
-
-  /// The maximum number of times a user may click-through or fully view an ad
-  /// during this period until it is no longer served to them.
-  ///
-  /// Must be greater than 0. Only applicable to YouTube and Partners resources.
-  /// Required when unlimited is `false` and max_impressions is not set.
-  core.int? maxViews;
-
-  /// The time unit in which the frequency cap will be applied.
-  ///
-  /// Required when unlimited is `false`.
-  /// Possible string values are:
-  /// - "TIME_UNIT_UNSPECIFIED" : Time unit value is not specified or is unknown
-  /// in this version.
-  /// - "TIME_UNIT_LIFETIME" : The frequency cap will be applied to the whole
-  /// life time of the line item.
-  /// - "TIME_UNIT_MONTHS" : The frequency cap will be applied to a number of
-  /// months.
-  /// - "TIME_UNIT_WEEKS" : The frequency cap will be applied to a number of
-  /// weeks.
-  /// - "TIME_UNIT_DAYS" : The frequency cap will be applied to a number of
-  /// days.
-  /// - "TIME_UNIT_HOURS" : The frequency cap will be applied to a number of
-  /// hours.
-  /// - "TIME_UNIT_MINUTES" : The frequency cap will be applied to a number of
-  /// minutes.
-  core.String? timeUnit;
-
-  /// The number of time_unit the frequency cap will last.
-  ///
-  /// Required when unlimited is `false`. The following restrictions apply based
-  /// on the value of time_unit: * `TIME_UNIT_LIFETIME` - this field is output
-  /// only and will default to 1 * `TIME_UNIT_MONTHS` - must be between 1 and 2
-  /// * `TIME_UNIT_WEEKS` - must be between 1 and 4 * `TIME_UNIT_DAYS` - must be
-  /// between 1 and 6 * `TIME_UNIT_HOURS` - must be between 1 and 23 *
-  /// `TIME_UNIT_MINUTES` - must be between 1 and 59
-  core.int? timeUnitCount;
-
-  /// Whether unlimited frequency capping is applied.
-  ///
-  /// When this field is set to `true`, the remaining frequency cap fields are
-  /// not applicable.
-  core.bool? unlimited;
-
-  FrequencyCap({
-    this.maxImpressions,
-    this.maxViews,
-    this.timeUnit,
-    this.timeUnitCount,
-    this.unlimited,
-  });
-
-  FrequencyCap.fromJson(core.Map json_)
-      : this(
-          maxImpressions: json_.containsKey('maxImpressions')
-              ? json_['maxImpressions'] as core.int
-              : null,
-          maxViews: json_.containsKey('maxViews')
-              ? json_['maxViews'] as core.int
-              : null,
-          timeUnit: json_.containsKey('timeUnit')
-              ? json_['timeUnit'] as core.String
-              : null,
-          timeUnitCount: json_.containsKey('timeUnitCount')
-              ? json_['timeUnitCount'] as core.int
-              : null,
-          unlimited: json_.containsKey('unlimited')
-              ? json_['unlimited'] as core.bool
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (maxImpressions != null) 'maxImpressions': maxImpressions!,
-        if (maxViews != null) 'maxViews': maxViews!,
-        if (timeUnit != null) 'timeUnit': timeUnit!,
-        if (timeUnitCount != null) 'timeUnitCount': timeUnitCount!,
-        if (unlimited != null) 'unlimited': unlimited!,
-      };
-}
+typedef FrequencyCap = $FrequencyCap;
 
 /// Details for assigned gender targeting option.
 ///
 /// This will be populated in the details field of an AssignedTargetingOption
 /// when targeting_type is `TARGETING_TYPE_GENDER`.
-class GenderAssignedTargetingOptionDetails {
-  /// The gender of the audience.
-  ///
-  /// Output only in v1. Required in v2.
-  /// Possible string values are:
-  /// - "GENDER_UNSPECIFIED" : Default value when gender is not specified in
-  /// this version. This enum is a place holder for default value and does not
-  /// represent a real gender option.
-  /// - "GENDER_MALE" : The audience gender is male.
-  /// - "GENDER_FEMALE" : The audience gender is female.
-  /// - "GENDER_UNKNOWN" : The audience gender is unknown.
-  core.String? gender;
-
-  GenderAssignedTargetingOptionDetails({
-    this.gender,
-  });
-
-  GenderAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          gender: json_.containsKey('gender')
-              ? json_['gender'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (gender != null) 'gender': gender!,
-      };
-}
+typedef GenderAssignedTargetingOptionDetails
+    = $GenderAssignedTargetingOptionDetails;
 
 /// Represents a targetable gender.
 ///
@@ -19338,6 +18745,15 @@ class GenerateDefaultLineItemRequest {
   /// this line item type is to show the YouTube ads target number of times to
   /// the same person in a certain period of time. Line items of this type and
   /// their targeting cannot be created or updated using the API.
+  /// - "LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIEW" : YouTube video ads that aim
+  /// to get more views with a variety of ad formats. Line items of this type
+  /// and their targeting cannot be created or updated using the API.
+  /// - "LINE_ITEM_TYPE_DISPLAY_OUT_OF_HOME" : Display ads served on
+  /// digital-out-of-home inventory. Line items of this type and their targeting
+  /// cannot be created or updated using the API.
+  /// - "LINE_ITEM_TYPE_VIDEO_OUT_OF_HOME" : Video ads served on
+  /// digital-out-of-home inventory. Line items of this type and their targeting
+  /// cannot be created or updated using the API.
   core.String? lineItemType;
 
   /// The mobile app promoted by the line item.
@@ -19544,6 +18960,12 @@ class GuaranteedOrder {
   /// - "EXCHANGE_CONNATIX" : Connatix.
   /// - "EXCHANGE_RESET_DIGITAL" : Reset Digital.
   /// - "EXCHANGE_HIVESTACK" : Hivestack.
+  /// - "EXCHANGE_APPLOVIN_GBID" : AppLovin MAX.
+  /// - "EXCHANGE_FYBER_GBID" : DT Fairbid.
+  /// - "EXCHANGE_UNITY_GBID" : Unity LevelPlay.
+  /// - "EXCHANGE_CHARTBOOST_GBID" : Chartboost Mediation.
+  /// - "EXCHANGE_ADMOST_GBID" : AdMost.
+  /// - "EXCHANGE_TOPON_GBID" : TopOn.
   core.String? exchange;
 
   /// The unique identifier of the guaranteed order.
@@ -19702,45 +19124,8 @@ typedef GuaranteedOrderStatus = $GuaranteedOrderStatus;
 ///
 /// This will be populated in the details field of an AssignedTargetingOption
 /// when targeting_type is `TARGETING_TYPE_HOUSEHOLD_INCOME`.
-class HouseholdIncomeAssignedTargetingOptionDetails {
-  /// The household income of the audience.
-  ///
-  /// Output only in v1. Required in v2.
-  /// Possible string values are:
-  /// - "HOUSEHOLD_INCOME_UNSPECIFIED" : Default value when household income is
-  /// not specified in this version. This enum is a placeholder for default
-  /// value and does not represent a real household income option.
-  /// - "HOUSEHOLD_INCOME_UNKNOWN" : The household income of the audience is
-  /// unknown.
-  /// - "HOUSEHOLD_INCOME_LOWER_50_PERCENT" : The audience is in the lower 50%
-  /// of U.S. household incomes.
-  /// - "HOUSEHOLD_INCOME_TOP_41_TO_50_PERCENT" : The audience is in the top
-  /// 41-50% of U.S. household incomes.
-  /// - "HOUSEHOLD_INCOME_TOP_31_TO_40_PERCENT" : The audience is in the top
-  /// 31-40% of U.S. household incomes.
-  /// - "HOUSEHOLD_INCOME_TOP_21_TO_30_PERCENT" : The audience is in the top
-  /// 21-30% of U.S. household incomes.
-  /// - "HOUSEHOLD_INCOME_TOP_11_TO_20_PERCENT" : The audience is in the top
-  /// 11-20% of U.S. household incomes.
-  /// - "HOUSEHOLD_INCOME_TOP_10_PERCENT" : The audience is in the top 10% of
-  /// U.S. household incomes.
-  core.String? householdIncome;
-
-  HouseholdIncomeAssignedTargetingOptionDetails({
-    this.householdIncome,
-  });
-
-  HouseholdIncomeAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          householdIncome: json_.containsKey('householdIncome')
-              ? json_['householdIncome'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (householdIncome != null) 'householdIncome': householdIncome!,
-      };
-}
+typedef HouseholdIncomeAssignedTargetingOptionDetails
+    = $HouseholdIncomeAssignedTargetingOptionDetails;
 
 /// Represents a targetable household income.
 ///
@@ -20085,14 +19470,13 @@ class InsertionOrderBudget {
   /// automation option is not specified or is unknown in this version.
   /// - "INSERTION_ORDER_AUTOMATION_TYPE_BUDGET" : Automatic budget allocation.
   /// Allow the system to automatically shift budget to owning line items to
-  /// optimize performance defined by performance_goal. No automation on bid
-  /// settings.
+  /// optimize performance defined by kpi. No automation on bid settings.
   /// - "INSERTION_ORDER_AUTOMATION_TYPE_NONE" : No automation of bid or budget
   /// on insertion order level. Bid and budget must be manually configured at
   /// the line item level.
   /// - "INSERTION_ORDER_AUTOMATION_TYPE_BID_BUDGET" : Allow the system to
   /// automatically adjust bids and shift budget to owning line items to
-  /// optimize performance defined by performance_goal.
+  /// optimize performance defined by kpi.
   core.String? automationType;
 
   /// The list of budget segments.
@@ -20336,6 +19720,12 @@ class InventorySource {
   /// - "EXCHANGE_CONNATIX" : Connatix.
   /// - "EXCHANGE_RESET_DIGITAL" : Reset Digital.
   /// - "EXCHANGE_HIVESTACK" : Hivestack.
+  /// - "EXCHANGE_APPLOVIN_GBID" : AppLovin MAX.
+  /// - "EXCHANGE_FYBER_GBID" : DT Fairbid.
+  /// - "EXCHANGE_UNITY_GBID" : Unity LevelPlay.
+  /// - "EXCHANGE_CHARTBOOST_GBID" : Chartboost Mediation.
+  /// - "EXCHANGE_ADMOST_GBID" : AdMost.
+  /// - "EXCHANGE_TOPON_GBID" : TopOn.
   core.String? exchange;
 
   /// The ID of the guaranteed order that this inventory source belongs to.
@@ -21063,6 +20453,15 @@ class LineItem {
   /// this line item type is to show the YouTube ads target number of times to
   /// the same person in a certain period of time. Line items of this type and
   /// their targeting cannot be created or updated using the API.
+  /// - "LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIEW" : YouTube video ads that aim
+  /// to get more views with a variety of ad formats. Line items of this type
+  /// and their targeting cannot be created or updated using the API.
+  /// - "LINE_ITEM_TYPE_DISPLAY_OUT_OF_HOME" : Display ads served on
+  /// digital-out-of-home inventory. Line items of this type and their targeting
+  /// cannot be created or updated using the API.
+  /// - "LINE_ITEM_TYPE_VIDEO_OUT_OF_HOME" : Video ads served on
+  /// digital-out-of-home inventory. Line items of this type and their targeting
+  /// cannot be created or updated using the API.
   core.String? lineItemType;
 
   /// The mobile app promoted by the line item.
@@ -21874,6 +21273,43 @@ class ListFirstAndThirdPartyAudiencesResponse {
       };
 }
 
+class ListFloodlightActivitiesResponse {
+  /// The list of Floodlight activities.
+  ///
+  /// This list will be absent if empty.
+  core.List<FloodlightActivity>? floodlightActivities;
+
+  /// A token to retrieve the next page of results.
+  ///
+  /// Pass this value in the page_token field in the subsequent call to
+  /// `ListFloodlightActivities` method to retrieve the next page of results.
+  core.String? nextPageToken;
+
+  ListFloodlightActivitiesResponse({
+    this.floodlightActivities,
+    this.nextPageToken,
+  });
+
+  ListFloodlightActivitiesResponse.fromJson(core.Map json_)
+      : this(
+          floodlightActivities: json_.containsKey('floodlightActivities')
+              ? (json_['floodlightActivities'] as core.List)
+                  .map((value) => FloodlightActivity.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (floodlightActivities != null)
+          'floodlightActivities': floodlightActivities!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
 class ListGoogleAudiencesResponse {
   /// The list of Google audiences.
   ///
@@ -21946,7 +21382,6 @@ class ListGuaranteedOrdersResponse {
       };
 }
 
-/// Response message for ListInsertionOrderAssignedTargetingOptions.
 class ListInsertionOrderAssignedTargetingOptionsResponse {
   /// The list of assigned targeting options.
   ///
@@ -22673,7 +22108,100 @@ typedef LookupInvoiceCurrencyResponse = $LookupInvoiceCurrencyResponse;
 /// deprecation
 /// announcement\](/display-video/api/deprecations#features.manual_triggers) for
 /// more information.
-typedef ManualTrigger = $ManualTrigger;
+class ManualTrigger {
+  /// The maximum duration of each activation in minutes.
+  ///
+  /// Must be between 1 and 360 inclusive. After this duration, the trigger will
+  /// be automatically deactivated.
+  ///
+  /// Required.
+  core.String? activationDurationMinutes;
+
+  /// The unique ID of the advertiser that the manual trigger belongs to.
+  ///
+  /// Required. Immutable.
+  core.String? advertiserId;
+
+  /// The display name of the manual trigger.
+  ///
+  /// Must be UTF-8 encoded with a maximum size of 240 bytes.
+  ///
+  /// Required.
+  core.String? displayName;
+
+  /// The timestamp of the trigger's latest activation.
+  ///
+  /// Output only.
+  core.String? latestActivationTime;
+
+  /// The resource name of the manual trigger.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The state of the manual trigger.
+  ///
+  /// Will be set to the `INACTIVE` state upon creation.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default value when state is not specified or is
+  /// unknown in this version.
+  /// - "INACTIVE" : The trigger is currently inactive and ready to be
+  /// activated.
+  /// - "ACTIVE" : The trigger is currently active (activated).
+  core.String? state;
+
+  /// The unique ID of the manual trigger.
+  ///
+  /// Output only.
+  core.String? triggerId;
+
+  ManualTrigger({
+    this.activationDurationMinutes,
+    this.advertiserId,
+    this.displayName,
+    this.latestActivationTime,
+    this.name,
+    this.state,
+    this.triggerId,
+  });
+
+  ManualTrigger.fromJson(core.Map json_)
+      : this(
+          activationDurationMinutes:
+              json_.containsKey('activationDurationMinutes')
+                  ? json_['activationDurationMinutes'] as core.String
+                  : null,
+          advertiserId: json_.containsKey('advertiserId')
+              ? json_['advertiserId'] as core.String
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          latestActivationTime: json_.containsKey('latestActivationTime')
+              ? json_['latestActivationTime'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          triggerId: json_.containsKey('triggerId')
+              ? json_['triggerId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (activationDurationMinutes != null)
+          'activationDurationMinutes': activationDurationMinutes!,
+        if (advertiserId != null) 'advertiserId': advertiserId!,
+        if (displayName != null) 'displayName': displayName!,
+        if (latestActivationTime != null)
+          'latestActivationTime': latestActivationTime!,
+        if (name != null) 'name': name!,
+        if (state != null) 'state': state!,
+        if (triggerId != null) 'triggerId': triggerId!,
+      };
+}
 
 /// Details for a Masthead Ad.
 class MastheadAd {
@@ -22809,7 +22337,43 @@ typedef MobileApp = $MobileApp;
 
 /// Wrapper message for a list of mobile device IDs defining Customer Match
 /// audience members.
-typedef MobileDeviceIdList = $MobileDeviceIdList;
+class MobileDeviceIdList {
+  /// Input only.
+  ///
+  /// The consent setting for the users in mobile_device_ids. Leaving this field
+  /// unset indicates that consent is not specified. If ad_user_data or
+  /// ad_personalization fields are set to `CONSENT_STATUS_DENIED`, the request
+  /// will return an error.
+  Consent? consent;
+
+  /// A list of mobile device IDs defining Customer Match audience members.
+  ///
+  /// The size of mobile_device_ids mustn't be greater than 500,000.
+  core.List<core.String>? mobileDeviceIds;
+
+  MobileDeviceIdList({
+    this.consent,
+    this.mobileDeviceIds,
+  });
+
+  MobileDeviceIdList.fromJson(core.Map json_)
+      : this(
+          consent: json_.containsKey('consent')
+              ? Consent.fromJson(
+                  json_['consent'] as core.Map<core.String, core.dynamic>)
+              : null,
+          mobileDeviceIds: json_.containsKey('mobileDeviceIds')
+              ? (json_['mobileDeviceIds'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (consent != null) 'consent': consent!,
+        if (mobileDeviceIds != null) 'mobileDeviceIds': mobileDeviceIds!,
+      };
+}
 
 /// Represents an amount of money with its currency type.
 typedef Money = $Money;
@@ -22820,44 +22384,8 @@ typedef Money = $Money;
 /// targeting_type is `TARGETING_TYPE_NATIVE_CONTENT_POSITION`. Explicitly
 /// targeting all options is not supported. Remove all native content position
 /// targeting options to achieve this effect.
-class NativeContentPositionAssignedTargetingOptionDetails {
-  /// The content position.
-  ///
-  /// Output only in v1. Required in v2.
-  /// Possible string values are:
-  /// - "NATIVE_CONTENT_POSITION_UNSPECIFIED" : Native content position is not
-  /// specified in this version. This enum is a place holder for a default value
-  /// and does not represent a real native content position.
-  /// - "NATIVE_CONTENT_POSITION_UNKNOWN" : The native content position is
-  /// unknown.
-  /// - "NATIVE_CONTENT_POSITION_IN_ARTICLE" : Native content position is
-  /// in-article, i.e., ads appear between the paragraphs of pages.
-  /// - "NATIVE_CONTENT_POSITION_IN_FEED" : Native content position is in-feed,
-  /// i.e., ads appear in a scrollable stream of content. A feed is typically
-  /// editorial (e.g. a list of articles or news) or listings (e.g. a list of
-  /// products or services).
-  /// - "NATIVE_CONTENT_POSITION_PERIPHERAL" : Native content position is
-  /// peripheral, i.e., ads appear outside of core content on pages, such as the
-  /// right- or left-hand side of the page.
-  /// - "NATIVE_CONTENT_POSITION_RECOMMENDATION" : Native content position is
-  /// recommendation, i.e., ads appear in sections for recommended content.
-  core.String? contentPosition;
-
-  NativeContentPositionAssignedTargetingOptionDetails({
-    this.contentPosition,
-  });
-
-  NativeContentPositionAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          contentPosition: json_.containsKey('contentPosition')
-              ? json_['contentPosition'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (contentPosition != null) 'contentPosition': contentPosition!,
-      };
-}
+typedef NativeContentPositionAssignedTargetingOptionDetails
+    = $NativeContentPositionAssignedTargetingOptionDetails;
 
 /// Represents a targetable native content position.
 ///
@@ -23026,30 +22554,8 @@ class ObaIcon {
 ///
 /// This will be populated in the details field of an AssignedTargetingOption
 /// when targeting_type is `TARGETING_TYPE_OMID`.
-class OmidAssignedTargetingOptionDetails {
-  /// The type of Open Measurement enabled inventory.
-  ///
-  /// Output only in v1. Required in v2.
-  /// Possible string values are:
-  /// - "OMID_UNSPECIFIED" : Default value when omid targeting is not specified
-  /// in this version.
-  /// - "OMID_FOR_MOBILE_DISPLAY_ADS" : Open Measurement enabled mobile display
-  /// inventory.
-  core.String? omid;
-
-  OmidAssignedTargetingOptionDetails({
-    this.omid,
-  });
-
-  OmidAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          omid: json_.containsKey('omid') ? json_['omid'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (omid != null) 'omid': omid!,
-      };
-}
+typedef OmidAssignedTargetingOptionDetails
+    = $OmidAssignedTargetingOptionDetails;
 
 /// Represents a targetable Open Measurement enabled inventory type.
 ///
@@ -23173,35 +22679,8 @@ typedef ParentEntityFilter = $ParentEntityFilter;
 ///
 /// This will be populated in the details field of an AssignedTargetingOption
 /// when targeting_type is `TARGETING_TYPE_PARENTAL_STATUS`.
-class ParentalStatusAssignedTargetingOptionDetails {
-  /// The parental status of the audience.
-  ///
-  /// Output only in v1. Required in v2.
-  /// Possible string values are:
-  /// - "PARENTAL_STATUS_UNSPECIFIED" : Default value when parental status is
-  /// not specified in this version. This enum is a place holder for default
-  /// value and does not represent a real parental status option.
-  /// - "PARENTAL_STATUS_PARENT" : The audience is a parent.
-  /// - "PARENTAL_STATUS_NOT_A_PARENT" : The audience is not a parent.
-  /// - "PARENTAL_STATUS_UNKNOWN" : The parental status of the audience is
-  /// unknown.
-  core.String? parentalStatus;
-
-  ParentalStatusAssignedTargetingOptionDetails({
-    this.parentalStatus,
-  });
-
-  ParentalStatusAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          parentalStatus: json_.containsKey('parentalStatus')
-              ? json_['parentalStatus'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (parentalStatus != null) 'parentalStatus': parentalStatus!,
-      };
-}
+typedef ParentalStatusAssignedTargetingOptionDetails
+    = $ParentalStatusAssignedTargetingOptionDetails;
 
 /// Represents a targetable parental status.
 ///
@@ -23385,7 +22864,7 @@ typedef PartnerGeneralConfig = $PartnerGeneralConfig;
 /// Settings that control how partner revenue is calculated.
 typedef PartnerRevenueModel = $PartnerRevenueModel;
 
-/// Settings that control the performance goal of a campaign or insertion order.
+/// Settings that control the performance goal of a campaign.
 typedef PerformanceGoal = $PerformanceGoal;
 
 /// A strategy that automatically adjusts the bid to meet or beat a specified
@@ -23547,61 +23026,8 @@ class ProductMatchDimension {
 ///
 /// This will be populated in the details field of an AssignedTargetingOption
 /// when targeting_type is `TARGETING_TYPE_PROXIMITY_LOCATION_LIST`.
-class ProximityLocationListAssignedTargetingOptionDetails {
-  /// ID of the proximity location list.
-  ///
-  /// Should refer to the location_list_id field of a LocationList resource
-  /// whose type is `TARGETING_LOCATION_TYPE_PROXIMITY`.
-  ///
-  /// Required.
-  core.String? proximityLocationListId;
-
-  /// Radius expressed in the distance units set in proximity_radius_unit.
-  ///
-  /// This represents the size of the area around a chosen location that will be
-  /// targeted. Radius should be between 1 and 500 miles or 800 kilometers.
-  ///
-  /// Required.
-  core.double? proximityRadius;
-
-  /// Radius distance units.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "PROXIMITY_RADIUS_UNIT_UNSPECIFIED" : Default value when distance units
-  /// is not specified in this version. This enum is a place holder for default
-  /// value and does not represent a real distance unit.
-  /// - "PROXIMITY_RADIUS_UNIT_MILES" : Radius distance unit in miles.
-  /// - "PROXIMITY_RADIUS_UNIT_KILOMETERS" : Radius distance unit in kilometeres
-  core.String? proximityRadiusUnit;
-
-  ProximityLocationListAssignedTargetingOptionDetails({
-    this.proximityLocationListId,
-    this.proximityRadius,
-    this.proximityRadiusUnit,
-  });
-
-  ProximityLocationListAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          proximityLocationListId: json_.containsKey('proximityLocationListId')
-              ? json_['proximityLocationListId'] as core.String
-              : null,
-          proximityRadius: json_.containsKey('proximityRadius')
-              ? (json_['proximityRadius'] as core.num).toDouble()
-              : null,
-          proximityRadiusUnit: json_.containsKey('proximityRadiusUnit')
-              ? json_['proximityRadiusUnit'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (proximityLocationListId != null)
-          'proximityLocationListId': proximityLocationListId!,
-        if (proximityRadius != null) 'proximityRadius': proximityRadius!,
-        if (proximityRadiusUnit != null)
-          'proximityRadiusUnit': proximityRadiusUnit!,
-      };
-}
+typedef ProximityLocationListAssignedTargetingOptionDetails
+    = $ProximityLocationListAssignedTargetingOptionDetails;
 
 /// Publisher review status for the creative.
 typedef PublisherReviewStatus = $PublisherReviewStatus;
@@ -23678,6 +23104,10 @@ class RateDetails {
 /// when targeting_type is `TARGETING_TYPE_REGIONAL_LOCATION_LIST`.
 typedef RegionalLocationListAssignedTargetingOptionDetails
     = $RegionalLocationListAssignedTargetingOptionDetails;
+
+/// Settings that control the whether remarketing is enabled for the given
+/// identified advertiser.
+typedef RemarketingConfig = $RemarketingConfig;
 
 /// Request message for NegativeKeywordService.ReplaceNegativeKeywords.
 class ReplaceNegativeKeywordsRequest {
@@ -24018,200 +23448,23 @@ class SearchTargetingOptionsResponse {
 ///
 /// This will be populated in the details field of an AssignedTargetingOption
 /// when targeting_type is `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`.
-class SensitiveCategoryAssignedTargetingOptionDetails {
-  /// An enum for the DV360 Sensitive category content classified to be
-  /// EXCLUDED.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "SENSITIVE_CATEGORY_UNSPECIFIED" : This enum is only a placeholder and
-  /// doesn't specify a DV360 sensitive category.
-  /// - "SENSITIVE_CATEGORY_ADULT" : Adult or pornographic text, image, or video
-  /// content.
-  /// - "SENSITIVE_CATEGORY_DEROGATORY" : Content that may be construed as
-  /// biased against individuals, groups, or organizations based on criteria
-  /// such as race, religion, disability, sex, age, veteran status, sexual
-  /// orientation, gender identity, or political affiliation. May also indicate
-  /// discussion of such content, for instance, in an academic or journalistic
-  /// context.
-  /// - "SENSITIVE_CATEGORY_DOWNLOADS_SHARING" : Content related to audio,
-  /// video, or software downloads.
-  /// - "SENSITIVE_CATEGORY_WEAPONS" : Contains content related to personal
-  /// weapons, including knives, guns, small firearms, and ammunition. Selecting
-  /// either "weapons" or "sensitive social issues" will result in selecting
-  /// both.
-  /// - "SENSITIVE_CATEGORY_GAMBLING" : Contains content related to betting or
-  /// wagering in a real-world or online setting.
-  /// - "SENSITIVE_CATEGORY_VIOLENCE" : Content which may be considered
-  /// graphically violent, gory, gruesome, or shocking, such as street fighting
-  /// videos, accident photos, descriptions of torture, etc.
-  /// - "SENSITIVE_CATEGORY_SUGGESTIVE" : Adult content, as well as suggestive
-  /// content that's not explicitly pornographic. This category includes all
-  /// pages categorized as adult.
-  /// - "SENSITIVE_CATEGORY_PROFANITY" : Prominent use of words considered
-  /// indecent, such as curse words and sexual slang. Pages with only very
-  /// occasional usage, such as news sites that might include such words in a
-  /// quotation, are not included.
-  /// - "SENSITIVE_CATEGORY_ALCOHOL" : Contains content related to alcoholic
-  /// beverages, alcohol brands, recipes, etc.
-  /// - "SENSITIVE_CATEGORY_DRUGS" : Contains content related to the
-  /// recreational use of legal or illegal drugs, as well as to drug
-  /// paraphernalia or cultivation.
-  /// - "SENSITIVE_CATEGORY_TOBACCO" : Contains content related to tobacco and
-  /// tobacco accessories, including lighters, humidors, ashtrays, etc.
-  /// - "SENSITIVE_CATEGORY_POLITICS" : Political news and media, including
-  /// discussions of social, governmental, and public policy.
-  /// - "SENSITIVE_CATEGORY_RELIGION" : Content related to religious thought or
-  /// beliefs.
-  /// - "SENSITIVE_CATEGORY_TRAGEDY" : Content related to death, disasters,
-  /// accidents, war, etc.
-  /// - "SENSITIVE_CATEGORY_TRANSPORTATION_ACCIDENTS" : Content related to motor
-  /// vehicle, aviation or other transportation accidents.
-  /// - "SENSITIVE_CATEGORY_SENSITIVE_SOCIAL_ISSUES" : Issues that evoke strong,
-  /// opposing views and spark debate. These include issues that are
-  /// controversial in most countries and markets (such as abortion), as well as
-  /// those that are controversial in specific countries and markets (such as
-  /// immigration reform in the United States).
-  /// - "SENSITIVE_CATEGORY_SHOCKING" : Content which may be considered shocking
-  /// or disturbing, such as violent news stories, stunts, or toilet humor.
-  /// - "SENSITIVE_CATEGORY_EMBEDDED_VIDEO" : YouTube videos embedded on
-  /// websites outside of YouTube.com. Only applicable to YouTube and Partners
-  /// line items.
-  /// - "SENSITIVE_CATEGORY_LIVE_STREAMING_VIDEO" : Video of live events
-  /// streamed over the internet. Only applicable to YouTube and Partners line
-  /// items.
-  core.String? excludedSensitiveCategory;
-
-  SensitiveCategoryAssignedTargetingOptionDetails({
-    this.excludedSensitiveCategory,
-  });
-
-  SensitiveCategoryAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          excludedSensitiveCategory:
-              json_.containsKey('excludedSensitiveCategory')
-                  ? json_['excludedSensitiveCategory'] as core.String
-                  : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (excludedSensitiveCategory != null)
-          'excludedSensitiveCategory': excludedSensitiveCategory!,
-      };
-}
+typedef SensitiveCategoryAssignedTargetingOptionDetails
+    = $SensitiveCategoryAssignedTargetingOptionDetails;
 
 /// Represents a targetable sensitive category.
 ///
 /// This will be populated in the sensitive_category_details field of the
 /// TargetingOption when targeting_type is
 /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`.
-class SensitiveCategoryTargetingOptionDetails {
-  /// An enum for the DV360 Sensitive category content classifier.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "SENSITIVE_CATEGORY_UNSPECIFIED" : This enum is only a placeholder and
-  /// doesn't specify a DV360 sensitive category.
-  /// - "SENSITIVE_CATEGORY_ADULT" : Adult or pornographic text, image, or video
-  /// content.
-  /// - "SENSITIVE_CATEGORY_DEROGATORY" : Content that may be construed as
-  /// biased against individuals, groups, or organizations based on criteria
-  /// such as race, religion, disability, sex, age, veteran status, sexual
-  /// orientation, gender identity, or political affiliation. May also indicate
-  /// discussion of such content, for instance, in an academic or journalistic
-  /// context.
-  /// - "SENSITIVE_CATEGORY_DOWNLOADS_SHARING" : Content related to audio,
-  /// video, or software downloads.
-  /// - "SENSITIVE_CATEGORY_WEAPONS" : Contains content related to personal
-  /// weapons, including knives, guns, small firearms, and ammunition. Selecting
-  /// either "weapons" or "sensitive social issues" will result in selecting
-  /// both.
-  /// - "SENSITIVE_CATEGORY_GAMBLING" : Contains content related to betting or
-  /// wagering in a real-world or online setting.
-  /// - "SENSITIVE_CATEGORY_VIOLENCE" : Content which may be considered
-  /// graphically violent, gory, gruesome, or shocking, such as street fighting
-  /// videos, accident photos, descriptions of torture, etc.
-  /// - "SENSITIVE_CATEGORY_SUGGESTIVE" : Adult content, as well as suggestive
-  /// content that's not explicitly pornographic. This category includes all
-  /// pages categorized as adult.
-  /// - "SENSITIVE_CATEGORY_PROFANITY" : Prominent use of words considered
-  /// indecent, such as curse words and sexual slang. Pages with only very
-  /// occasional usage, such as news sites that might include such words in a
-  /// quotation, are not included.
-  /// - "SENSITIVE_CATEGORY_ALCOHOL" : Contains content related to alcoholic
-  /// beverages, alcohol brands, recipes, etc.
-  /// - "SENSITIVE_CATEGORY_DRUGS" : Contains content related to the
-  /// recreational use of legal or illegal drugs, as well as to drug
-  /// paraphernalia or cultivation.
-  /// - "SENSITIVE_CATEGORY_TOBACCO" : Contains content related to tobacco and
-  /// tobacco accessories, including lighters, humidors, ashtrays, etc.
-  /// - "SENSITIVE_CATEGORY_POLITICS" : Political news and media, including
-  /// discussions of social, governmental, and public policy.
-  /// - "SENSITIVE_CATEGORY_RELIGION" : Content related to religious thought or
-  /// beliefs.
-  /// - "SENSITIVE_CATEGORY_TRAGEDY" : Content related to death, disasters,
-  /// accidents, war, etc.
-  /// - "SENSITIVE_CATEGORY_TRANSPORTATION_ACCIDENTS" : Content related to motor
-  /// vehicle, aviation or other transportation accidents.
-  /// - "SENSITIVE_CATEGORY_SENSITIVE_SOCIAL_ISSUES" : Issues that evoke strong,
-  /// opposing views and spark debate. These include issues that are
-  /// controversial in most countries and markets (such as abortion), as well as
-  /// those that are controversial in specific countries and markets (such as
-  /// immigration reform in the United States).
-  /// - "SENSITIVE_CATEGORY_SHOCKING" : Content which may be considered shocking
-  /// or disturbing, such as violent news stories, stunts, or toilet humor.
-  /// - "SENSITIVE_CATEGORY_EMBEDDED_VIDEO" : YouTube videos embedded on
-  /// websites outside of YouTube.com. Only applicable to YouTube and Partners
-  /// line items.
-  /// - "SENSITIVE_CATEGORY_LIVE_STREAMING_VIDEO" : Video of live events
-  /// streamed over the internet. Only applicable to YouTube and Partners line
-  /// items.
-  core.String? sensitiveCategory;
-
-  SensitiveCategoryTargetingOptionDetails({
-    this.sensitiveCategory,
-  });
-
-  SensitiveCategoryTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          sensitiveCategory: json_.containsKey('sensitiveCategory')
-              ? json_['sensitiveCategory'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (sensitiveCategory != null) 'sensitiveCategory': sensitiveCategory!,
-      };
-}
+typedef SensitiveCategoryTargetingOptionDetails
+    = $SensitiveCategoryTargetingOptionDetails;
 
 /// Details for session position assigned targeting option.
 ///
 /// This will be populated in the session_position_details field when
 /// targeting_type is `TARGETING_TYPE_SESSION_POSITION`.
-class SessionPositionAssignedTargetingOptionDetails {
-  /// The position where the ad will show in a session.
-  /// Possible string values are:
-  /// - "SESSION_POSITION_UNSPECIFIED" : This is a placeholder, does not
-  /// indicate any positions.
-  /// - "SESSION_POSITION_FIRST_IMPRESSION" : The first impression of the
-  /// session.
-  core.String? sessionPosition;
-
-  SessionPositionAssignedTargetingOptionDetails({
-    this.sessionPosition,
-  });
-
-  SessionPositionAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          sessionPosition: json_.containsKey('sessionPosition')
-              ? json_['sessionPosition'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (sessionPosition != null) 'sessionPosition': sessionPosition!,
-      };
-}
+typedef SessionPositionAssignedTargetingOptionDetails
+    = $SessionPositionAssignedTargetingOptionDetails;
 
 /// A single site.
 ///
@@ -24242,67 +23495,72 @@ typedef SubExchangeTargetingOptionDetails = $SubExchangeTargetingOptionDetails;
 
 /// Setting that controls the average number of times the ads will show to the
 /// same person over a certain period of time.
-class TargetFrequency {
-  /// The target number of times, on average, the ads will be shown to the same
-  /// person in the timespan dictated by time_unit and time_unit_count.
-  core.String? targetCount;
-
-  /// The unit of time in which the target frequency will be applied.
-  ///
-  /// The following time unit is applicable: * `TIME_UNIT_WEEKS`
-  /// Possible string values are:
-  /// - "TIME_UNIT_UNSPECIFIED" : Time unit value is not specified or is unknown
-  /// in this version.
-  /// - "TIME_UNIT_LIFETIME" : The frequency cap will be applied to the whole
-  /// life time of the line item.
-  /// - "TIME_UNIT_MONTHS" : The frequency cap will be applied to a number of
-  /// months.
-  /// - "TIME_UNIT_WEEKS" : The frequency cap will be applied to a number of
-  /// weeks.
-  /// - "TIME_UNIT_DAYS" : The frequency cap will be applied to a number of
-  /// days.
-  /// - "TIME_UNIT_HOURS" : The frequency cap will be applied to a number of
-  /// hours.
-  /// - "TIME_UNIT_MINUTES" : The frequency cap will be applied to a number of
-  /// minutes.
-  core.String? timeUnit;
-
-  /// The number of time_unit the target frequency will last.
-  ///
-  /// The following restrictions apply based on the value of time_unit: *
-  /// `TIME_UNIT_WEEKS` - must be 1
-  core.int? timeUnitCount;
-
-  TargetFrequency({
-    this.targetCount,
-    this.timeUnit,
-    this.timeUnitCount,
-  });
-
-  TargetFrequency.fromJson(core.Map json_)
-      : this(
-          targetCount: json_.containsKey('targetCount')
-              ? json_['targetCount'] as core.String
-              : null,
-          timeUnit: json_.containsKey('timeUnit')
-              ? json_['timeUnit'] as core.String
-              : null,
-          timeUnitCount: json_.containsKey('timeUnitCount')
-              ? json_['timeUnitCount'] as core.int
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (targetCount != null) 'targetCount': targetCount!,
-        if (timeUnit != null) 'timeUnit': timeUnit!,
-        if (timeUnitCount != null) 'timeUnitCount': timeUnitCount!,
-      };
-}
+typedef TargetFrequency = $TargetFrequency;
 
 /// Settings that control the \[optimized
 /// targeting\](//support.google.com/displayvideo/answer/12060859) settings of
 /// the line item.
-typedef TargetingExpansionConfig = $TargetingExpansionConfig;
+class TargetingExpansionConfig {
+  /// Whether to exclude first-party audiences from use in targeting expansion.
+  ///
+  /// This field was deprecated with the launch of \[optimized
+  /// targeting\](//support.google.com/displayvideo/answer/12060859). This field
+  /// will be set to `false`. If this field is set to `true` when deprecated,
+  /// all positive first-party audience targeting assigned to this line item
+  /// will be replaced with negative targeting of the same first-party audiences
+  /// to ensure the continued exclusion of those audiences.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.bool? excludeFirstPartyAudience;
+
+  /// Whether optimized targeting is turned on.
+  ///
+  /// This field supports the following values: * `NO_EXPANSION`: optimized
+  /// targeting is turned off * `LEAST_EXPANSION`: optimized targeting is turned
+  /// on If this field is set to any other value, it will automatically be set
+  /// to `LEAST_EXPANSION`. `NO_EXPANSION` will be the default value for the
+  /// field and will be automatically assigned if you do not set the field.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "TARGETING_EXPANSION_LEVEL_UNSPECIFIED" : The optimized targeting
+  /// setting is not specified or is unknown in this version.
+  /// - "NO_EXPANSION" : Optimized targeting is off.
+  /// - "LEAST_EXPANSION" : Optimized targeting is on.
+  /// - "SOME_EXPANSION" : If used, will automatically be set to
+  /// `LEAST_EXPANSION`.
+  /// - "BALANCED_EXPANSION" : If used, will automatically be set to
+  /// `LEAST_EXPANSION`.
+  /// - "MORE_EXPANSION" : If used, will automatically be set to
+  /// `LEAST_EXPANSION`.
+  /// - "MOST_EXPANSION" : If used, will automatically be set to
+  /// `LEAST_EXPANSION`.
+  core.String? targetingExpansionLevel;
+
+  TargetingExpansionConfig({
+    this.excludeFirstPartyAudience,
+    this.targetingExpansionLevel,
+  });
+
+  TargetingExpansionConfig.fromJson(core.Map json_)
+      : this(
+          excludeFirstPartyAudience:
+              json_.containsKey('excludeFirstPartyAudience')
+                  ? json_['excludeFirstPartyAudience'] as core.bool
+                  : null,
+          targetingExpansionLevel: json_.containsKey('targetingExpansionLevel')
+              ? json_['targetingExpansionLevel'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (excludeFirstPartyAudience != null)
+          'excludeFirstPartyAudience': excludeFirstPartyAudience!,
+        if (targetingExpansionLevel != null)
+          'targetingExpansionLevel': targetingExpansionLevel!,
+      };
+}
 
 /// Represents a single targeting option, which is a targetable concept in
 /// DV360.
@@ -24819,46 +24077,7 @@ typedef ThirdPartyOnlyConfig = $ThirdPartyOnlyConfig;
 typedef ThirdPartyUrl = $ThirdPartyUrl;
 
 /// Settings that control how third-party measurement vendors are configured.
-class ThirdPartyVendorConfig {
-  /// The ID used by the platform of the third-party vendor to identify the line
-  /// item.
-  core.String? placementId;
-
-  /// The third-party measurement vendor.
-  /// Possible string values are:
-  /// - "THIRD_PARTY_VENDOR_UNSPECIFIED" : Unknown third-party vendor.
-  /// - "THIRD_PARTY_VENDOR_MOAT" : Moat.
-  /// - "THIRD_PARTY_VENDOR_DOUBLE_VERIFY" : DoubleVerify.
-  /// - "THIRD_PARTY_VENDOR_INTEGRAL_AD_SCIENCE" : Integral Ad Science.
-  /// - "THIRD_PARTY_VENDOR_COMSCORE" : Comscore.
-  /// - "THIRD_PARTY_VENDOR_TELEMETRY" : Telemetry.
-  /// - "THIRD_PARTY_VENDOR_MEETRICS" : Meetrics.
-  /// - "THIRD_PARTY_VENDOR_ZEFR" : ZEFR.
-  /// - "THIRD_PARTY_VENDOR_NIELSEN" : Nielsen.
-  /// - "THIRD_PARTY_VENDOR_KANTAR" : Kantar.
-  /// - "THIRD_PARTY_VENDOR_DYNATA" : Dynata.
-  core.String? vendor;
-
-  ThirdPartyVendorConfig({
-    this.placementId,
-    this.vendor,
-  });
-
-  ThirdPartyVendorConfig.fromJson(core.Map json_)
-      : this(
-          placementId: json_.containsKey('placementId')
-              ? json_['placementId'] as core.String
-              : null,
-          vendor: json_.containsKey('vendor')
-              ? json_['vendor'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (placementId != null) 'placementId': placementId!,
-        if (vendor != null) 'vendor': vendor!,
-      };
-}
+typedef ThirdPartyVendorConfig = $ThirdPartyVendorConfig;
 
 /// Assigned third party verifier targeting option details.
 ///
@@ -25030,6 +24249,11 @@ class User {
   /// Required. Immutable.
   core.String? email;
 
+  /// The timestamp when the user last logged in DV360 UI.
+  ///
+  /// Output only.
+  core.String? lastLoginTime;
+
   /// The resource name of the user.
   ///
   /// Output only.
@@ -25046,6 +24270,7 @@ class User {
     this.assignedUserRoles,
     this.displayName,
     this.email,
+    this.lastLoginTime,
     this.name,
     this.userId,
   });
@@ -25063,6 +24288,9 @@ class User {
               : null,
           email:
               json_.containsKey('email') ? json_['email'] as core.String : null,
+          lastLoginTime: json_.containsKey('lastLoginTime')
+              ? json_['lastLoginTime'] as core.String
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           userId: json_.containsKey('userId')
               ? json_['userId'] as core.String
@@ -25073,6 +24301,7 @@ class User {
         if (assignedUserRoles != null) 'assignedUserRoles': assignedUserRoles!,
         if (displayName != null) 'displayName': displayName!,
         if (email != null) 'email': email!,
+        if (lastLoginTime != null) 'lastLoginTime': lastLoginTime!,
         if (name != null) 'name': name!,
         if (userId != null) 'userId': userId!,
       };
@@ -25130,62 +24359,7 @@ class VideoAdSequenceSettings {
 }
 
 /// The detail of a single step in a VideoAdSequence.
-class VideoAdSequenceStep {
-  /// The ID of the corresponding ad group of the step.
-  core.String? adGroupId;
-
-  /// The interaction on the previous step that will lead the viewer to this
-  /// step.
-  ///
-  /// The first step does not have interaction_type.
-  /// Possible string values are:
-  /// - "INTERACTION_TYPE_UNSPECIFIED" : Unspecified or unknown
-  /// - "INTERACTION_TYPE_PAID_VIEW" : A paid view.
-  /// - "INTERACTION_TYPE_SKIP" : Skipped by the viewer.
-  /// - "INTERACTION_TYPE_IMPRESSION" : A (viewed) ad impression.
-  /// - "INTERACTION_TYPE_ENGAGED_IMPRESSION" : An ad impression that was not
-  /// immediately skipped by the viewer, but didn't reach the billable event
-  /// either.
-  core.String? interactionType;
-
-  /// The ID of the previous step.
-  ///
-  /// The first step does not have previous step.
-  core.String? previousStepId;
-
-  /// The ID of the step.
-  core.String? stepId;
-
-  VideoAdSequenceStep({
-    this.adGroupId,
-    this.interactionType,
-    this.previousStepId,
-    this.stepId,
-  });
-
-  VideoAdSequenceStep.fromJson(core.Map json_)
-      : this(
-          adGroupId: json_.containsKey('adGroupId')
-              ? json_['adGroupId'] as core.String
-              : null,
-          interactionType: json_.containsKey('interactionType')
-              ? json_['interactionType'] as core.String
-              : null,
-          previousStepId: json_.containsKey('previousStepId')
-              ? json_['previousStepId'] as core.String
-              : null,
-          stepId: json_.containsKey('stepId')
-              ? json_['stepId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (adGroupId != null) 'adGroupId': adGroupId!,
-        if (interactionType != null) 'interactionType': interactionType!,
-        if (previousStepId != null) 'previousStepId': previousStepId!,
-        if (stepId != null) 'stepId': stepId!,
-      };
-}
+typedef VideoAdSequenceStep = $VideoAdSequenceStep;
 
 /// Details for a video discovery ad.
 class VideoDiscoveryAd {
@@ -25387,40 +24561,8 @@ class VideoPerformanceAd {
 /// targeting_type is `TARGETING_TYPE_VIDEO_PLAYER_SIZE`. Explicitly targeting
 /// all options is not supported. Remove all video player size targeting options
 /// to achieve this effect.
-class VideoPlayerSizeAssignedTargetingOptionDetails {
-  /// The video player size.
-  ///
-  /// Output only in v1. Required in v2.
-  /// Possible string values are:
-  /// - "VIDEO_PLAYER_SIZE_UNSPECIFIED" : Video player size is not specified in
-  /// this version. This enum is a place holder for a default value and does not
-  /// represent a real video player size.
-  /// - "VIDEO_PLAYER_SIZE_SMALL" : The dimensions of the video player are less
-  /// than 400×300 (desktop), or up to 20% of screen covered (mobile).
-  /// - "VIDEO_PLAYER_SIZE_LARGE" : The dimensions of the video player are
-  /// between 400x300 and 1280x720 pixels (desktop), or 20% to 90% of the screen
-  /// covered (mobile).
-  /// - "VIDEO_PLAYER_SIZE_HD" : The dimensions of the video player are 1280×720
-  /// or greater (desktop), or over 90% of the screen covered (mobile).
-  /// - "VIDEO_PLAYER_SIZE_UNKNOWN" : The dimensions of the video player are
-  /// unknown.
-  core.String? videoPlayerSize;
-
-  VideoPlayerSizeAssignedTargetingOptionDetails({
-    this.videoPlayerSize,
-  });
-
-  VideoPlayerSizeAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          videoPlayerSize: json_.containsKey('videoPlayerSize')
-              ? json_['videoPlayerSize'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (videoPlayerSize != null) 'videoPlayerSize': videoPlayerSize!,
-      };
-}
+typedef VideoPlayerSizeAssignedTargetingOptionDetails
+    = $VideoPlayerSizeAssignedTargetingOptionDetails;
 
 /// Represents a targetable video player size.
 ///
@@ -25433,49 +24575,8 @@ typedef VideoPlayerSizeTargetingOptionDetails
 ///
 /// This will be populated in the viewability_details field of an
 /// AssignedTargetingOption when targeting_type is `TARGETING_TYPE_VIEWABILITY`.
-class ViewabilityAssignedTargetingOptionDetails {
-  /// The predicted viewability percentage.
-  ///
-  /// Output only in v1. Required in v2.
-  /// Possible string values are:
-  /// - "VIEWABILITY_UNSPECIFIED" : Default value when viewability is not
-  /// specified in this version. This enum is a placeholder for default value
-  /// and does not represent a real viewability option.
-  /// - "VIEWABILITY_10_PERCENT_OR_MORE" : Bid only on impressions that are at
-  /// least 10% likely to be viewable.
-  /// - "VIEWABILITY_20_PERCENT_OR_MORE" : Bid only on impressions that are at
-  /// least 20% likely to be viewable.
-  /// - "VIEWABILITY_30_PERCENT_OR_MORE" : Bid only on impressions that are at
-  /// least 30% likely to be viewable.
-  /// - "VIEWABILITY_40_PERCENT_OR_MORE" : Bid only on impressions that are at
-  /// least 40% likely to be viewable.
-  /// - "VIEWABILITY_50_PERCENT_OR_MORE" : Bid only on impressions that are at
-  /// least 50% likely to be viewable.
-  /// - "VIEWABILITY_60_PERCENT_OR_MORE" : Bid only on impressions that are at
-  /// least 60% likely to be viewable.
-  /// - "VIEWABILITY_70_PERCENT_OR_MORE" : Bid only on impressions that are at
-  /// least 70% likely to be viewable.
-  /// - "VIEWABILITY_80_PERCENT_OR_MORE" : Bid only on impressions that are at
-  /// least 80% likely to be viewable.
-  /// - "VIEWABILITY_90_PERCENT_OR_MORE" : Bid only on impressions that are at
-  /// least 90% likely to be viewable.
-  core.String? viewability;
-
-  ViewabilityAssignedTargetingOptionDetails({
-    this.viewability,
-  });
-
-  ViewabilityAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          viewability: json_.containsKey('viewability')
-              ? json_['viewability'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (viewability != null) 'viewability': viewability!,
-      };
-}
+typedef ViewabilityAssignedTargetingOptionDetails
+    = $ViewabilityAssignedTargetingOptionDetails;
 
 /// Represents a targetable viewability.
 ///
@@ -25806,7 +24907,7 @@ class YoutubeAdGroupAd {
       };
 }
 
-/// Wrapper object associating an assigned_targeting_option resource and the
+/// Wrapper object associating an AssignedTargetingOption resource and the
 /// youtube ad group it is assigned to.
 class YoutubeAdGroupAssignedTargetingOption {
   /// The assigned targeting option resource.
@@ -25841,92 +24942,16 @@ class YoutubeAdGroupAssignedTargetingOption {
 }
 
 /// Settings that control the bid strategy for YouTube and Partners resources.
-class YoutubeAndPartnersBiddingStrategy {
-  /// Source of the effective targetCpa value for AdGroup.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "BIDDING_SOURCE_UNSPECIFIED" : Bidding source is not specified or
-  /// unknown.
-  /// - "BIDDING_SOURCE_LINE_ITEM" : Bidding value is inherited from the line
-  /// item.
-  /// - "BIDDING_SOURCE_AD_GROUP" : Bidding value is defined on the ad group.
-  core.String? adGroupEffectiveTargetCpaSource;
-
-  /// The effective targetCpa for AdGroup, in micros of advertiser's currency.
-  ///
-  /// Output only.
-  core.String? adGroupEffectiveTargetCpaValue;
-
-  /// The type of the bidding strategy.
-  /// Possible string values are:
-  /// - "YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_UNSPECIFIED" : Type is not
-  /// specified or unknown.
-  /// - "YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_MANUAL_CPV" : A bidding
-  /// strategy that pays a configurable amount per video view.
-  /// - "YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_MANUAL_CPM" : A bidding
-  /// strategy that pays a configurable amount per impression.
-  /// - "YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_CPA" : A bidding
-  /// strategy that automatically optimizes conversions per dollar.
-  /// - "YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_CPM" : A bidding
-  /// strategy that pays a configurable amount per impression.
-  /// - "YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_MAXIMIZE_LIFT" : An
-  /// automated bidding strategy that sets bids to achieve maximum lift.
-  /// - "YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_MAXIMIZE_CONVERSIONS" : A
-  /// bidding strategy that automatically maximizes number of conversions given
-  /// a daily budget.
-  core.String? type;
-
-  /// The value used by the bidding strategy.
-  ///
-  /// When the bidding strategy is assigned at the line item level, this field
-  /// is only applicable for the following strategy types: *
-  /// `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_CPA` *
-  /// `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_ROAS` When the bidding
-  /// strategy is assigned at the ad group level, this field is only applicable
-  /// for the following strategy types: *
-  /// `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_MANUAL_CPM` *
-  /// `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_MANUAL_CPV` *
-  /// `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_CPA` *
-  /// `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_CPM` If not using an
-  /// applicable strategy, the value of this field will be 0.
-  core.String? value;
-
-  YoutubeAndPartnersBiddingStrategy({
-    this.adGroupEffectiveTargetCpaSource,
-    this.adGroupEffectiveTargetCpaValue,
-    this.type,
-    this.value,
-  });
-
-  YoutubeAndPartnersBiddingStrategy.fromJson(core.Map json_)
-      : this(
-          adGroupEffectiveTargetCpaSource:
-              json_.containsKey('adGroupEffectiveTargetCpaSource')
-                  ? json_['adGroupEffectiveTargetCpaSource'] as core.String
-                  : null,
-          adGroupEffectiveTargetCpaValue:
-              json_.containsKey('adGroupEffectiveTargetCpaValue')
-                  ? json_['adGroupEffectiveTargetCpaValue'] as core.String
-                  : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (adGroupEffectiveTargetCpaSource != null)
-          'adGroupEffectiveTargetCpaSource': adGroupEffectiveTargetCpaSource!,
-        if (adGroupEffectiveTargetCpaValue != null)
-          'adGroupEffectiveTargetCpaValue': adGroupEffectiveTargetCpaValue!,
-        if (type != null) 'type': type!,
-        if (value != null) 'value': value!,
-      };
-}
+typedef YoutubeAndPartnersBiddingStrategy = $YoutubeAndPartnersBiddingStrategy;
 
 /// Settings that control what YouTube related inventories the YouTube and
 /// Partners line item will target.
 class YoutubeAndPartnersInventorySourceConfig {
+  /// Whether to target inventory in video apps available with Google TV.
+  ///
+  /// Optional.
+  core.bool? includeGoogleTv;
+
   /// Whether to target inventory on the YouTube search results page.
   core.bool? includeYoutubeSearch;
 
@@ -25939,6 +24964,7 @@ class YoutubeAndPartnersInventorySourceConfig {
   core.bool? includeYoutubeVideos;
 
   YoutubeAndPartnersInventorySourceConfig({
+    this.includeGoogleTv,
     this.includeYoutubeSearch,
     this.includeYoutubeVideoPartners,
     this.includeYoutubeVideos,
@@ -25946,6 +24972,9 @@ class YoutubeAndPartnersInventorySourceConfig {
 
   YoutubeAndPartnersInventorySourceConfig.fromJson(core.Map json_)
       : this(
+          includeGoogleTv: json_.containsKey('includeGoogleTv')
+              ? json_['includeGoogleTv'] as core.bool
+              : null,
           includeYoutubeSearch: json_.containsKey('includeYoutubeSearch')
               ? json_['includeYoutubeSearch'] as core.bool
               : null,
@@ -25959,6 +24988,7 @@ class YoutubeAndPartnersInventorySourceConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (includeGoogleTv != null) 'includeGoogleTv': includeGoogleTv!,
         if (includeYoutubeSearch != null)
           'includeYoutubeSearch': includeYoutubeSearch!,
         if (includeYoutubeVideoPartners != null)
@@ -25971,6 +25001,8 @@ class YoutubeAndPartnersInventorySourceConfig {
 /// Settings for YouTube and Partners line items.
 class YoutubeAndPartnersSettings {
   /// The bidding strategy of the YouTube and Partners line item.
+  ///
+  /// Required.
   YoutubeAndPartnersBiddingStrategy? biddingStrategy;
 
   /// The kind of content on which the YouTube and Partners ads will be shown.
@@ -25989,29 +25021,62 @@ class YoutubeAndPartnersSettings {
   /// especially regarding inappropriate language and sexual suggestiveness.
   core.String? contentCategory;
 
+  /// The content category which takes effect when serving the line item.
+  ///
+  /// When content category is set in both line item and advertiser, the
+  /// stricter one will take effect when serving the line item.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "YOUTUBE_AND_PARTNERS_CONTENT_CATEGORY_UNSPECIFIED" : Content category
+  /// is not specified or is unknown in this version.
+  /// - "YOUTUBE_AND_PARTNERS_CONTENT_CATEGORY_STANDARD" : A category consisting
+  /// of a wide range of content appropriate for most brands. The content is
+  /// based off of YouTube's \[advertiser-friendly content
+  /// guidelines\](https://support.google.com/youtube/answer/6162278).
+  /// - "YOUTUBE_AND_PARTNERS_CONTENT_CATEGORY_EXPANDED" : A category including
+  /// all content across YouTube and video partners that meets standards for
+  /// monetization.
+  /// - "YOUTUBE_AND_PARTNERS_CONTENT_CATEGORY_LIMITED" : A category consisting
+  /// of a reduced range of content that meets heightened requirements,
+  /// especially regarding inappropriate language and sexual suggestiveness.
+  core.String? effectiveContentCategory;
+
   /// Settings that control what YouTube and Partners inventories the line item
   /// will target.
   YoutubeAndPartnersInventorySourceConfig? inventorySourceSettings;
 
   /// The ID of the form to generate leads.
+  ///
+  /// Optional.
   core.String? leadFormId;
 
   /// The ID of the merchant which is linked to the line item for product feed.
+  ///
+  /// Optional.
   core.String? linkedMerchantId;
 
   /// The IDs of the videos appear below the primary video ad when the ad is
   /// playing in the YouTube app on mobile devices.
+  ///
+  /// Optional.
   core.List<core.String>? relatedVideoIds;
 
   /// The average number of times you want ads from this line item to show to
   /// the same person over a certain period of time.
+  ///
+  /// Optional.
   TargetFrequency? targetFrequency;
 
   /// The third-party measurement settings of the line item.
+  ///
+  /// Optional.
   YoutubeAndPartnersThirdPartyMeasurementSettings?
       thirdPartyMeasurementSettings;
 
   /// The settings related to VideoAdSequence.
+  ///
+  /// Optional.
   VideoAdSequenceSettings? videoAdSequenceSettings;
 
   /// The view frequency cap settings of the line item.
@@ -26023,6 +25088,7 @@ class YoutubeAndPartnersSettings {
   YoutubeAndPartnersSettings({
     this.biddingStrategy,
     this.contentCategory,
+    this.effectiveContentCategory,
     this.inventorySourceSettings,
     this.leadFormId,
     this.linkedMerchantId,
@@ -26043,6 +25109,10 @@ class YoutubeAndPartnersSettings {
           contentCategory: json_.containsKey('contentCategory')
               ? json_['contentCategory'] as core.String
               : null,
+          effectiveContentCategory:
+              json_.containsKey('effectiveContentCategory')
+                  ? json_['effectiveContentCategory'] as core.String
+                  : null,
           inventorySourceSettings: json_.containsKey('inventorySourceSettings')
               ? YoutubeAndPartnersInventorySourceConfig.fromJson(
                   json_['inventorySourceSettings']
@@ -26083,6 +25153,8 @@ class YoutubeAndPartnersSettings {
   core.Map<core.String, core.dynamic> toJson() => {
         if (biddingStrategy != null) 'biddingStrategy': biddingStrategy!,
         if (contentCategory != null) 'contentCategory': contentCategory!,
+        if (effectiveContentCategory != null)
+          'effectiveContentCategory': effectiveContentCategory!,
         if (inventorySourceSettings != null)
           'inventorySourceSettings': inventorySourceSettings!,
         if (leadFormId != null) 'leadFormId': leadFormId!,
@@ -26181,93 +25253,15 @@ class YoutubeAndPartnersThirdPartyMeasurementSettings {
 ///
 /// This will be populated in the youtube_channel_details field when
 /// targeting_type is `TARGETING_TYPE_YOUTUBE_CHANNEL`.
-class YoutubeChannelAssignedTargetingOptionDetails {
-  /// The YouTube uploader channel id or the channel code of a YouTube channel.
-  core.String? channelId;
-
-  /// Indicates if this option is being negatively targeted.
-  core.bool? negative;
-
-  YoutubeChannelAssignedTargetingOptionDetails({
-    this.channelId,
-    this.negative,
-  });
-
-  YoutubeChannelAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          channelId: json_.containsKey('channelId')
-              ? json_['channelId'] as core.String
-              : null,
-          negative: json_.containsKey('negative')
-              ? json_['negative'] as core.bool
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (channelId != null) 'channelId': channelId!,
-        if (negative != null) 'negative': negative!,
-      };
-}
+typedef YoutubeChannelAssignedTargetingOptionDetails
+    = $YoutubeChannelAssignedTargetingOptionDetails;
 
 /// Details for YouTube video assigned targeting option.
 ///
 /// This will be populated in the youtube_video_details field when
 /// targeting_type is `TARGETING_TYPE_YOUTUBE_VIDEO`.
-class YoutubeVideoAssignedTargetingOptionDetails {
-  /// Indicates if this option is being negatively targeted.
-  core.bool? negative;
-
-  /// YouTube video id as it appears on the YouTube watch page.
-  core.String? videoId;
-
-  YoutubeVideoAssignedTargetingOptionDetails({
-    this.negative,
-    this.videoId,
-  });
-
-  YoutubeVideoAssignedTargetingOptionDetails.fromJson(core.Map json_)
-      : this(
-          negative: json_.containsKey('negative')
-              ? json_['negative'] as core.bool
-              : null,
-          videoId: json_.containsKey('videoId')
-              ? json_['videoId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (negative != null) 'negative': negative!,
-        if (videoId != null) 'videoId': videoId!,
-      };
-}
+typedef YoutubeVideoAssignedTargetingOptionDetails
+    = $YoutubeVideoAssignedTargetingOptionDetails;
 
 /// Details of a YouTube video.
-class YoutubeVideoDetails {
-  /// The YouTube video ID which can be searched on YouTube webpage.
-  core.String? id;
-
-  /// The reason why the video data is not available.
-  /// Possible string values are:
-  /// - "VIDEO_UNAVAILABLE_REASON_UNSPECIFIED" : Unknown or unspecified.
-  /// - "VIDEO_UNAVAILABLE_REASON_PRIVATE" : The video is private.
-  /// - "VIDEO_UNAVAILABLE_REASON_DELETED" : The video is deleted.
-  core.String? unavailableReason;
-
-  YoutubeVideoDetails({
-    this.id,
-    this.unavailableReason,
-  });
-
-  YoutubeVideoDetails.fromJson(core.Map json_)
-      : this(
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          unavailableReason: json_.containsKey('unavailableReason')
-              ? json_['unavailableReason'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (id != null) 'id': id!,
-        if (unavailableReason != null) 'unavailableReason': unavailableReason!,
-      };
-}
+typedef YoutubeVideoDetails = $YoutubeVideoDetails;

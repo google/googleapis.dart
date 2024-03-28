@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Service Control API - v1
@@ -21,7 +20,7 @@
 /// Create an instance of [ServiceControlApi] to access these resources:
 ///
 /// - [ServicesResource]
-library servicecontrol_v1;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -571,6 +570,12 @@ class CheckError {
 
 /// Contains additional information about the check operation.
 class CheckInfo {
+  /// The unique id of the api key in the format of "apikey:".
+  ///
+  /// This field will be populated when the consumer passed to Chemist is an API
+  /// key and all the API key related validations are successful.
+  core.String? apiKeyUid;
+
   /// Consumer info of this check.
   ConsumerInfo? consumerInfo;
 
@@ -581,12 +586,16 @@ class CheckInfo {
   core.List<core.String>? unusedArguments;
 
   CheckInfo({
+    this.apiKeyUid,
     this.consumerInfo,
     this.unusedArguments,
   });
 
   CheckInfo.fromJson(core.Map json_)
       : this(
+          apiKeyUid: json_.containsKey('apiKeyUid')
+              ? json_['apiKeyUid'] as core.String
+              : null,
           consumerInfo: json_.containsKey('consumerInfo')
               ? ConsumerInfo.fromJson(
                   json_['consumerInfo'] as core.Map<core.String, core.dynamic>)
@@ -599,6 +608,7 @@ class CheckInfo {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (apiKeyUid != null) 'apiKeyUid': apiKeyUid!,
         if (consumerInfo != null) 'consumerInfo': consumerInfo!,
         if (unusedArguments != null) 'unusedArguments': unusedArguments!,
       };

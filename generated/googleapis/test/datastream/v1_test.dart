@@ -10,7 +10,6 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 // ignore_for_file: unreachable_from_main
 // ignore_for_file: unused_local_variable
@@ -48,6 +47,7 @@ api.BackfillAllStrategy buildBackfillAllStrategy() {
     o.mysqlExcludedObjects = buildMysqlRdbms();
     o.oracleExcludedObjects = buildOracleRdbms();
     o.postgresqlExcludedObjects = buildPostgresqlRdbms();
+    o.sqlServerExcludedObjects = buildSqlServerRdbms();
   }
   buildCounterBackfillAllStrategy--;
   return o;
@@ -59,6 +59,7 @@ void checkBackfillAllStrategy(api.BackfillAllStrategy o) {
     checkMysqlRdbms(o.mysqlExcludedObjects!);
     checkOracleRdbms(o.oracleExcludedObjects!);
     checkPostgresqlRdbms(o.postgresqlExcludedObjects!);
+    checkSqlServerRdbms(o.sqlServerExcludedObjects!);
   }
   buildCounterBackfillAllStrategy--;
 }
@@ -240,6 +241,7 @@ api.ConnectionProfile buildConnectionProfile() {
     o.oracleProfile = buildOracleProfile();
     o.postgresqlProfile = buildPostgresqlProfile();
     o.privateConnectivity = buildPrivateConnectivity();
+    o.sqlServerProfile = buildSqlServerProfile();
     o.staticServiceIpConnectivity = buildStaticServiceIpConnectivity();
     o.updateTime = 'foo';
   }
@@ -270,6 +272,7 @@ void checkConnectionProfile(api.ConnectionProfile o) {
     checkOracleProfile(o.oracleProfile!);
     checkPostgresqlProfile(o.postgresqlProfile!);
     checkPrivateConnectivity(o.privateConnectivity!);
+    checkSqlServerProfile(o.sqlServerProfile!);
     checkStaticServiceIpConnectivity(o.staticServiceIpConnectivity!);
     unittest.expect(
       o.updateTime!,
@@ -1672,6 +1675,7 @@ api.OracleProfile buildOracleProfile() {
     o.connectionAttributes = buildUnnamed22();
     o.databaseService = 'foo';
     o.hostname = 'foo';
+    o.oracleSslConfig = buildOracleSslConfig();
     o.password = 'foo';
     o.port = 42;
     o.username = 'foo';
@@ -1692,6 +1696,7 @@ void checkOracleProfile(api.OracleProfile o) {
       o.hostname!,
       unittest.equals('foo'),
     );
+    checkOracleSslConfig(o.oracleSslConfig!);
     unittest.expect(
       o.password!,
       unittest.equals('foo'),
@@ -1773,6 +1778,28 @@ void checkOracleSchema(api.OracleSchema o) {
   buildCounterOracleSchema--;
 }
 
+core.int buildCounterOracleScnPosition = 0;
+api.OracleScnPosition buildOracleScnPosition() {
+  final o = api.OracleScnPosition();
+  buildCounterOracleScnPosition++;
+  if (buildCounterOracleScnPosition < 3) {
+    o.scn = 'foo';
+  }
+  buildCounterOracleScnPosition--;
+  return o;
+}
+
+void checkOracleScnPosition(api.OracleScnPosition o) {
+  buildCounterOracleScnPosition++;
+  if (buildCounterOracleScnPosition < 3) {
+    unittest.expect(
+      o.scn!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterOracleScnPosition--;
+}
+
 core.int buildCounterOracleSourceConfig = 0;
 api.OracleSourceConfig buildOracleSourceConfig() {
   final o = api.OracleSourceConfig();
@@ -1806,6 +1833,30 @@ void checkOracleSourceConfig(api.OracleSourceConfig o) {
     checkStreamLargeObjects(o.streamLargeObjects!);
   }
   buildCounterOracleSourceConfig--;
+}
+
+core.int buildCounterOracleSslConfig = 0;
+api.OracleSslConfig buildOracleSslConfig() {
+  final o = api.OracleSslConfig();
+  buildCounterOracleSslConfig++;
+  if (buildCounterOracleSslConfig < 3) {
+    o.caCertificate = 'foo';
+    o.caCertificateSet = true;
+  }
+  buildCounterOracleSslConfig--;
+  return o;
+}
+
+void checkOracleSslConfig(api.OracleSslConfig o) {
+  buildCounterOracleSslConfig++;
+  if (buildCounterOracleSslConfig < 3) {
+    unittest.expect(
+      o.caCertificate!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.caCertificateSet!, unittest.isTrue);
+  }
+  buildCounterOracleSslConfig--;
 }
 
 core.List<api.OracleColumn> buildUnnamed25() => [
@@ -2302,6 +2353,7 @@ api.SourceConfig buildSourceConfig() {
     o.oracleSourceConfig = buildOracleSourceConfig();
     o.postgresqlSourceConfig = buildPostgresqlSourceConfig();
     o.sourceConnectionProfile = 'foo';
+    o.sqlServerSourceConfig = buildSqlServerSourceConfig();
   }
   buildCounterSourceConfig--;
   return o;
@@ -2317,6 +2369,7 @@ void checkSourceConfig(api.SourceConfig o) {
       o.sourceConnectionProfile!,
       unittest.equals('foo'),
     );
+    checkSqlServerSourceConfig(o.sqlServerSourceConfig!);
   }
   buildCounterSourceConfig--;
 }
@@ -2348,6 +2401,7 @@ api.SourceObjectIdentifier buildSourceObjectIdentifier() {
     o.mysqlIdentifier = buildMysqlObjectIdentifier();
     o.oracleIdentifier = buildOracleObjectIdentifier();
     o.postgresqlIdentifier = buildPostgresqlObjectIdentifier();
+    o.sqlServerIdentifier = buildSqlServerObjectIdentifier();
   }
   buildCounterSourceObjectIdentifier--;
   return o;
@@ -2359,6 +2413,7 @@ void checkSourceObjectIdentifier(api.SourceObjectIdentifier o) {
     checkMysqlObjectIdentifier(o.mysqlIdentifier!);
     checkOracleObjectIdentifier(o.oracleIdentifier!);
     checkPostgresqlObjectIdentifier(o.postgresqlIdentifier!);
+    checkSqlServerObjectIdentifier(o.sqlServerIdentifier!);
   }
   buildCounterSourceObjectIdentifier--;
 }
@@ -2369,6 +2424,7 @@ api.SpecificStartPosition buildSpecificStartPosition() {
   buildCounterSpecificStartPosition++;
   if (buildCounterSpecificStartPosition < 3) {
     o.mysqlLogPosition = buildMysqlLogPosition();
+    o.oracleScnPosition = buildOracleScnPosition();
   }
   buildCounterSpecificStartPosition--;
   return o;
@@ -2378,8 +2434,260 @@ void checkSpecificStartPosition(api.SpecificStartPosition o) {
   buildCounterSpecificStartPosition++;
   if (buildCounterSpecificStartPosition < 3) {
     checkMysqlLogPosition(o.mysqlLogPosition!);
+    checkOracleScnPosition(o.oracleScnPosition!);
   }
   buildCounterSpecificStartPosition--;
+}
+
+core.int buildCounterSqlServerColumn = 0;
+api.SqlServerColumn buildSqlServerColumn() {
+  final o = api.SqlServerColumn();
+  buildCounterSqlServerColumn++;
+  if (buildCounterSqlServerColumn < 3) {
+    o.column = 'foo';
+    o.dataType = 'foo';
+    o.length = 42;
+    o.nullable = true;
+    o.ordinalPosition = 42;
+    o.precision = 42;
+    o.primaryKey = true;
+    o.scale = 42;
+  }
+  buildCounterSqlServerColumn--;
+  return o;
+}
+
+void checkSqlServerColumn(api.SqlServerColumn o) {
+  buildCounterSqlServerColumn++;
+  if (buildCounterSqlServerColumn < 3) {
+    unittest.expect(
+      o.column!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.dataType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.length!,
+      unittest.equals(42),
+    );
+    unittest.expect(o.nullable!, unittest.isTrue);
+    unittest.expect(
+      o.ordinalPosition!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.precision!,
+      unittest.equals(42),
+    );
+    unittest.expect(o.primaryKey!, unittest.isTrue);
+    unittest.expect(
+      o.scale!,
+      unittest.equals(42),
+    );
+  }
+  buildCounterSqlServerColumn--;
+}
+
+core.int buildCounterSqlServerObjectIdentifier = 0;
+api.SqlServerObjectIdentifier buildSqlServerObjectIdentifier() {
+  final o = api.SqlServerObjectIdentifier();
+  buildCounterSqlServerObjectIdentifier++;
+  if (buildCounterSqlServerObjectIdentifier < 3) {
+    o.schema = 'foo';
+    o.table = 'foo';
+  }
+  buildCounterSqlServerObjectIdentifier--;
+  return o;
+}
+
+void checkSqlServerObjectIdentifier(api.SqlServerObjectIdentifier o) {
+  buildCounterSqlServerObjectIdentifier++;
+  if (buildCounterSqlServerObjectIdentifier < 3) {
+    unittest.expect(
+      o.schema!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.table!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterSqlServerObjectIdentifier--;
+}
+
+core.int buildCounterSqlServerProfile = 0;
+api.SqlServerProfile buildSqlServerProfile() {
+  final o = api.SqlServerProfile();
+  buildCounterSqlServerProfile++;
+  if (buildCounterSqlServerProfile < 3) {
+    o.database = 'foo';
+    o.hostname = 'foo';
+    o.password = 'foo';
+    o.port = 42;
+    o.username = 'foo';
+  }
+  buildCounterSqlServerProfile--;
+  return o;
+}
+
+void checkSqlServerProfile(api.SqlServerProfile o) {
+  buildCounterSqlServerProfile++;
+  if (buildCounterSqlServerProfile < 3) {
+    unittest.expect(
+      o.database!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.hostname!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.password!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.port!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.username!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterSqlServerProfile--;
+}
+
+core.List<api.SqlServerSchema> buildUnnamed31() => [
+      buildSqlServerSchema(),
+      buildSqlServerSchema(),
+    ];
+
+void checkUnnamed31(core.List<api.SqlServerSchema> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkSqlServerSchema(o[0]);
+  checkSqlServerSchema(o[1]);
+}
+
+core.int buildCounterSqlServerRdbms = 0;
+api.SqlServerRdbms buildSqlServerRdbms() {
+  final o = api.SqlServerRdbms();
+  buildCounterSqlServerRdbms++;
+  if (buildCounterSqlServerRdbms < 3) {
+    o.schemas = buildUnnamed31();
+  }
+  buildCounterSqlServerRdbms--;
+  return o;
+}
+
+void checkSqlServerRdbms(api.SqlServerRdbms o) {
+  buildCounterSqlServerRdbms++;
+  if (buildCounterSqlServerRdbms < 3) {
+    checkUnnamed31(o.schemas!);
+  }
+  buildCounterSqlServerRdbms--;
+}
+
+core.List<api.SqlServerTable> buildUnnamed32() => [
+      buildSqlServerTable(),
+      buildSqlServerTable(),
+    ];
+
+void checkUnnamed32(core.List<api.SqlServerTable> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkSqlServerTable(o[0]);
+  checkSqlServerTable(o[1]);
+}
+
+core.int buildCounterSqlServerSchema = 0;
+api.SqlServerSchema buildSqlServerSchema() {
+  final o = api.SqlServerSchema();
+  buildCounterSqlServerSchema++;
+  if (buildCounterSqlServerSchema < 3) {
+    o.schema = 'foo';
+    o.tables = buildUnnamed32();
+  }
+  buildCounterSqlServerSchema--;
+  return o;
+}
+
+void checkSqlServerSchema(api.SqlServerSchema o) {
+  buildCounterSqlServerSchema++;
+  if (buildCounterSqlServerSchema < 3) {
+    unittest.expect(
+      o.schema!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed32(o.tables!);
+  }
+  buildCounterSqlServerSchema--;
+}
+
+core.int buildCounterSqlServerSourceConfig = 0;
+api.SqlServerSourceConfig buildSqlServerSourceConfig() {
+  final o = api.SqlServerSourceConfig();
+  buildCounterSqlServerSourceConfig++;
+  if (buildCounterSqlServerSourceConfig < 3) {
+    o.excludeObjects = buildSqlServerRdbms();
+    o.includeObjects = buildSqlServerRdbms();
+    o.maxConcurrentBackfillTasks = 42;
+    o.maxConcurrentCdcTasks = 42;
+  }
+  buildCounterSqlServerSourceConfig--;
+  return o;
+}
+
+void checkSqlServerSourceConfig(api.SqlServerSourceConfig o) {
+  buildCounterSqlServerSourceConfig++;
+  if (buildCounterSqlServerSourceConfig < 3) {
+    checkSqlServerRdbms(o.excludeObjects!);
+    checkSqlServerRdbms(o.includeObjects!);
+    unittest.expect(
+      o.maxConcurrentBackfillTasks!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.maxConcurrentCdcTasks!,
+      unittest.equals(42),
+    );
+  }
+  buildCounterSqlServerSourceConfig--;
+}
+
+core.List<api.SqlServerColumn> buildUnnamed33() => [
+      buildSqlServerColumn(),
+      buildSqlServerColumn(),
+    ];
+
+void checkUnnamed33(core.List<api.SqlServerColumn> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkSqlServerColumn(o[0]);
+  checkSqlServerColumn(o[1]);
+}
+
+core.int buildCounterSqlServerTable = 0;
+api.SqlServerTable buildSqlServerTable() {
+  final o = api.SqlServerTable();
+  buildCounterSqlServerTable++;
+  if (buildCounterSqlServerTable < 3) {
+    o.columns = buildUnnamed33();
+    o.table = 'foo';
+  }
+  buildCounterSqlServerTable--;
+  return o;
+}
+
+void checkSqlServerTable(api.SqlServerTable o) {
+  buildCounterSqlServerTable++;
+  if (buildCounterSqlServerTable < 3) {
+    checkUnnamed33(o.columns!);
+    unittest.expect(
+      o.table!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterSqlServerTable--;
 }
 
 core.int buildCounterStartBackfillJobRequest = 0;
@@ -2431,7 +2739,7 @@ void checkStaticServiceIpConnectivity(api.StaticServiceIpConnectivity o) {
   buildCounterStaticServiceIpConnectivity--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed31() => {
+core.Map<core.String, core.Object?> buildUnnamed34() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -2444,7 +2752,7 @@ core.Map<core.String, core.Object?> buildUnnamed31() => {
       },
     };
 
-void checkUnnamed31(core.Map<core.String, core.Object?> o) {
+void checkUnnamed34(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o['x']!) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
@@ -2476,15 +2784,15 @@ void checkUnnamed31(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed32() => [
-      buildUnnamed31(),
-      buildUnnamed31(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed35() => [
+      buildUnnamed34(),
+      buildUnnamed34(),
     ];
 
-void checkUnnamed32(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed35(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed31(o[0]);
-  checkUnnamed31(o[1]);
+  checkUnnamed34(o[0]);
+  checkUnnamed34(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -2493,7 +2801,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed32();
+    o.details = buildUnnamed35();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -2507,7 +2815,7 @@ void checkStatus(api.Status o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed32(o.details!);
+    checkUnnamed35(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -2550,23 +2858,23 @@ void checkStopBackfillJobResponse(api.StopBackfillJobResponse o) {
   buildCounterStopBackfillJobResponse--;
 }
 
-core.List<api.Error> buildUnnamed33() => [
+core.List<api.Error> buildUnnamed36() => [
       buildError(),
       buildError(),
     ];
 
-void checkUnnamed33(core.List<api.Error> o) {
+void checkUnnamed36(core.List<api.Error> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkError(o[0]);
   checkError(o[1]);
 }
 
-core.Map<core.String, core.String> buildUnnamed34() => {
+core.Map<core.String, core.String> buildUnnamed37() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed34(core.Map<core.String, core.String> o) {
+void checkUnnamed37(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -2589,8 +2897,9 @@ api.Stream buildStream() {
     o.customerManagedEncryptionKey = 'foo';
     o.destinationConfig = buildDestinationConfig();
     o.displayName = 'foo';
-    o.errors = buildUnnamed33();
-    o.labels = buildUnnamed34();
+    o.errors = buildUnnamed36();
+    o.labels = buildUnnamed37();
+    o.lastRecoveryTime = 'foo';
     o.name = 'foo';
     o.sourceConfig = buildSourceConfig();
     o.state = 'foo';
@@ -2618,8 +2927,12 @@ void checkStream(api.Stream o) {
       o.displayName!,
       unittest.equals('foo'),
     );
-    checkUnnamed33(o.errors!);
-    checkUnnamed34(o.labels!);
+    checkUnnamed36(o.errors!);
+    checkUnnamed37(o.labels!);
+    unittest.expect(
+      o.lastRecoveryTime!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -2652,12 +2965,12 @@ void checkStreamLargeObjects(api.StreamLargeObjects o) {
   buildCounterStreamLargeObjects--;
 }
 
-core.List<api.Error> buildUnnamed35() => [
+core.List<api.Error> buildUnnamed38() => [
       buildError(),
       buildError(),
     ];
 
-void checkUnnamed35(core.List<api.Error> o) {
+void checkUnnamed38(core.List<api.Error> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkError(o[0]);
   checkError(o[1]);
@@ -2671,7 +2984,7 @@ api.StreamObject buildStreamObject() {
     o.backfillJob = buildBackfillJob();
     o.createTime = 'foo';
     o.displayName = 'foo';
-    o.errors = buildUnnamed35();
+    o.errors = buildUnnamed38();
     o.name = 'foo';
     o.sourceObject = buildSourceObjectIdentifier();
     o.updateTime = 'foo';
@@ -2692,7 +3005,7 @@ void checkStreamObject(api.StreamObject o) {
       o.displayName!,
       unittest.equals('foo'),
     );
-    checkUnnamed35(o.errors!);
+    checkUnnamed38(o.errors!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -3204,6 +3517,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-OracleScnPosition', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildOracleScnPosition();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OracleScnPosition.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkOracleScnPosition(od);
+    });
+  });
+
   unittest.group('obj-schema-OracleSourceConfig', () {
     unittest.test('to-json--from-json', () async {
       final o = buildOracleSourceConfig();
@@ -3211,6 +3534,16 @@ void main() {
       final od = api.OracleSourceConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkOracleSourceConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-OracleSslConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildOracleSslConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OracleSslConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkOracleSslConfig(od);
     });
   });
 
@@ -3381,6 +3714,76 @@ void main() {
       final od = api.SpecificStartPosition.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkSpecificStartPosition(od);
+    });
+  });
+
+  unittest.group('obj-schema-SqlServerColumn', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSqlServerColumn();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SqlServerColumn.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSqlServerColumn(od);
+    });
+  });
+
+  unittest.group('obj-schema-SqlServerObjectIdentifier', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSqlServerObjectIdentifier();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SqlServerObjectIdentifier.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSqlServerObjectIdentifier(od);
+    });
+  });
+
+  unittest.group('obj-schema-SqlServerProfile', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSqlServerProfile();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SqlServerProfile.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSqlServerProfile(od);
+    });
+  });
+
+  unittest.group('obj-schema-SqlServerRdbms', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSqlServerRdbms();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SqlServerRdbms.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSqlServerRdbms(od);
+    });
+  });
+
+  unittest.group('obj-schema-SqlServerSchema', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSqlServerSchema();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SqlServerSchema.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSqlServerSchema(od);
+    });
+  });
+
+  unittest.group('obj-schema-SqlServerSourceConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSqlServerSourceConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SqlServerSourceConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSqlServerSourceConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-SqlServerTable', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSqlServerTable();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SqlServerTable.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSqlServerTable(od);
     });
   });
 
@@ -5131,10 +5534,6 @@ void main() {
       final res = api.DatastreamApi(mock).projects.locations.streams;
       final arg_request = buildStream();
       final arg_name = 'foo';
-      final arg_cdcStrategy_specificStartPosition_mysqlLogPosition_logFile =
-          'foo';
-      final arg_cdcStrategy_specificStartPosition_mysqlLogPosition_logPosition =
-          42;
       final arg_force = true;
       final arg_requestId = 'foo';
       final arg_updateMask = 'foo';
@@ -5177,20 +5576,6 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap[
-                  'cdcStrategy.specificStartPosition.mysqlLogPosition.logFile']!
-              .first,
-          unittest.equals(
-              arg_cdcStrategy_specificStartPosition_mysqlLogPosition_logFile),
-        );
-        unittest.expect(
-          core.int.parse(queryMap[
-                  'cdcStrategy.specificStartPosition.mysqlLogPosition.logPosition']!
-              .first),
-          unittest.equals(
-              arg_cdcStrategy_specificStartPosition_mysqlLogPosition_logPosition),
-        );
-        unittest.expect(
           queryMap['force']!.first,
           unittest.equals('$arg_force'),
         );
@@ -5218,10 +5603,6 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.patch(arg_request, arg_name,
-          cdcStrategy_specificStartPosition_mysqlLogPosition_logFile:
-              arg_cdcStrategy_specificStartPosition_mysqlLogPosition_logFile,
-          cdcStrategy_specificStartPosition_mysqlLogPosition_logPosition:
-              arg_cdcStrategy_specificStartPosition_mysqlLogPosition_logPosition,
           force: arg_force,
           requestId: arg_requestId,
           updateMask: arg_updateMask,

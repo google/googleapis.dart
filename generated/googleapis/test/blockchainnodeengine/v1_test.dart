@@ -10,7 +10,6 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 // ignore_for_file: unreachable_from_main
 // ignore_for_file: unused_local_variable
@@ -53,6 +52,7 @@ api.BlockchainNode buildBlockchainNode() {
     o.ethereumDetails = buildEthereumDetails();
     o.labels = buildUnnamed0();
     o.name = 'foo';
+    o.privateServiceConnectEnabled = true;
     o.state = 'foo';
     o.updateTime = 'foo';
   }
@@ -78,6 +78,7 @@ void checkBlockchainNode(api.BlockchainNode o) {
       o.name!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.privateServiceConnectEnabled!, unittest.isTrue);
     unittest.expect(
       o.state!,
       unittest.equals('foo'),
@@ -111,6 +112,7 @@ api.ConnectionInfo buildConnectionInfo() {
   buildCounterConnectionInfo++;
   if (buildCounterConnectionInfo < 3) {
     o.endpointInfo = buildEndpointInfo();
+    o.serviceAttachment = 'foo';
   }
   buildCounterConnectionInfo--;
   return o;
@@ -120,6 +122,10 @@ void checkConnectionInfo(api.ConnectionInfo o) {
   buildCounterConnectionInfo++;
   if (buildCounterConnectionInfo < 3) {
     checkEndpointInfo(o.endpointInfo!);
+    unittest.expect(
+      o.serviceAttachment!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterConnectionInfo--;
 }
@@ -164,6 +170,7 @@ api.EthereumDetails buildEthereumDetails() {
     o.gethDetails = buildGethDetails();
     o.network = 'foo';
     o.nodeType = 'foo';
+    o.validatorConfig = buildValidatorConfig();
   }
   buildCounterEthereumDetails--;
   return o;
@@ -192,6 +199,7 @@ void checkEthereumDetails(api.EthereumDetails o) {
       o.nodeType!,
       unittest.equals('foo'),
     );
+    checkValidatorConfig(o.validatorConfig!);
   }
   buildCounterEthereumDetails--;
 }
@@ -692,6 +700,49 @@ void checkStatus(api.Status o) {
   buildCounterStatus--;
 }
 
+core.List<core.String> buildUnnamed11() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed11(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterValidatorConfig = 0;
+api.ValidatorConfig buildValidatorConfig() {
+  final o = api.ValidatorConfig();
+  buildCounterValidatorConfig++;
+  if (buildCounterValidatorConfig < 3) {
+    o.beaconFeeRecipient = 'foo';
+    o.managedValidatorClient = true;
+    o.mevRelayUrls = buildUnnamed11();
+  }
+  buildCounterValidatorConfig--;
+  return o;
+}
+
+void checkValidatorConfig(api.ValidatorConfig o) {
+  buildCounterValidatorConfig++;
+  if (buildCounterValidatorConfig < 3) {
+    unittest.expect(
+      o.beaconFeeRecipient!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.managedValidatorClient!, unittest.isTrue);
+    checkUnnamed11(o.mevRelayUrls!);
+  }
+  buildCounterValidatorConfig--;
+}
+
 void main() {
   unittest.group('obj-schema-BlockchainNode', () {
     unittest.test('to-json--from-json', () async {
@@ -830,6 +881,16 @@ void main() {
       final od =
           api.Status.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkStatus(od);
+    });
+  });
+
+  unittest.group('obj-schema-ValidatorConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildValidatorConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ValidatorConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkValidatorConfig(od);
     });
   });
 

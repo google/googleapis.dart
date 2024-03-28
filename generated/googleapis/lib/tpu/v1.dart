@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Cloud TPU API - v1
@@ -25,7 +24,7 @@
 ///     - [ProjectsLocationsNodesResource]
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsTensorflowVersionsResource]
-library tpu_v1;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -1388,7 +1387,7 @@ class Operation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard
@@ -1456,7 +1455,33 @@ class ReimageNodeRequest {
 }
 
 /// Sets the scheduling options for this node.
-typedef SchedulingConfig = $SchedulingConfig;
+class SchedulingConfig {
+  /// Defines whether the node is preemptible.
+  core.bool? preemptible;
+
+  /// Whether the node is created under a reservation.
+  core.bool? reserved;
+
+  SchedulingConfig({
+    this.preemptible,
+    this.reserved,
+  });
+
+  SchedulingConfig.fromJson(core.Map json_)
+      : this(
+          preemptible: json_.containsKey('preemptible')
+              ? json_['preemptible'] as core.bool
+              : null,
+          reserved: json_.containsKey('reserved')
+              ? json_['reserved'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (preemptible != null) 'preemptible': preemptible!,
+        if (reserved != null) 'reserved': reserved!,
+      };
+}
 
 /// Request for StartNode.
 typedef StartNodeRequest = $Empty;

@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230602",
+    "revision": "20240205",
     "rootUrl": "https://manufacturers.googleapis.com/",
     "servicePath": "",
     "title": "Manufacturer Center API",
@@ -444,6 +444,13 @@
                     "$ref": "Capacity",
                     "description": "The capacity of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#capacity."
                 },
+                "certification": {
+                    "description": "Optional. List of certifications claimed by this product.",
+                    "items": {
+                        "$ref": "GoogleShoppingManufacturersV1ProductCertification"
+                    },
+                    "type": "array"
+                },
                 "color": {
                     "description": "The color of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#color.",
                     "type": "string"
@@ -645,6 +652,10 @@
                     "description": "Required. Name of the certification body.",
                     "type": "string"
                 },
+                "code": {
+                    "description": "Required. A unique code to identify the certification.",
+                    "type": "string"
+                },
                 "link": {
                     "description": "Optional. A URL link to the certification.",
                     "type": "string"
@@ -662,7 +673,7 @@
                     "type": "string"
                 },
                 "value": {
-                    "description": "Required. A custom value of the certification.",
+                    "description": "Optional. A custom value of the certification.",
                     "type": "string"
                 }
             },
@@ -747,6 +758,25 @@
                 },
                 "unit": {
                     "description": "unit.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleShoppingManufacturersV1ProductCertification": {
+            "description": "Description of a certification.",
+            "id": "GoogleShoppingManufacturersV1ProductCertification",
+            "properties": {
+                "authority": {
+                    "description": "Required. Name of the certification body.",
+                    "type": "string"
+                },
+                "code": {
+                    "description": "Required. A unique code to identify the certification.",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Required. Name of the certification.",
                     "type": "string"
                 }
             },

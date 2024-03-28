@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Google Search Console API - v1
@@ -28,7 +27,7 @@
 ///   - [UrlInspectionIndexResource]
 /// - [UrlTestingToolsResource]
 ///   - [UrlTestingToolsMobileFriendlyTestResource]
-library searchconsole_v1;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -1556,6 +1555,7 @@ class SearchAnalyticsQueryRequest {
   /// - "AUTO"
   /// - "BY_PROPERTY"
   /// - "BY_PAGE"
+  /// - "BY_NEWS_SHOWCASE_PANEL"
   core.String? aggregationType;
 
   /// The data state to be fetched, can be full or all, the latter including
@@ -1709,6 +1709,7 @@ class SearchAnalyticsQueryResponse {
   /// - "AUTO"
   /// - "BY_PROPERTY"
   /// - "BY_PAGE"
+  /// - "BY_NEWS_SHOWCASE_PANEL"
   core.String? responseAggregationType;
 
   /// A list of rows grouped by the key values in the order given in the query.

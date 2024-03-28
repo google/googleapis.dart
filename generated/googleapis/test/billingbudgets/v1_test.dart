@@ -10,7 +10,6 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 // ignore_for_file: unreachable_from_main
 // ignore_for_file: unused_local_variable
@@ -47,6 +46,7 @@ api.GoogleCloudBillingBudgetsV1Budget buildGoogleCloudBillingBudgetsV1Budget() {
     o.etag = 'foo';
     o.name = 'foo';
     o.notificationsRule = buildGoogleCloudBillingBudgetsV1NotificationsRule();
+    o.ownershipScope = 'foo';
     o.thresholdRules = buildUnnamed0();
   }
   buildCounterGoogleCloudBillingBudgetsV1Budget--;
@@ -72,6 +72,10 @@ void checkGoogleCloudBillingBudgetsV1Budget(
       unittest.equals('foo'),
     );
     checkGoogleCloudBillingBudgetsV1NotificationsRule(o.notificationsRule!);
+    unittest.expect(
+      o.ownershipScope!,
+      unittest.equals('foo'),
+    );
     checkUnnamed0(o.thresholdRules!);
   }
   buildCounterGoogleCloudBillingBudgetsV1Budget--;
@@ -384,6 +388,7 @@ api.GoogleCloudBillingBudgetsV1NotificationsRule
   buildCounterGoogleCloudBillingBudgetsV1NotificationsRule++;
   if (buildCounterGoogleCloudBillingBudgetsV1NotificationsRule < 3) {
     o.disableDefaultIamRecipients = true;
+    o.enableProjectLevelRecipients = true;
     o.monitoringNotificationChannels = buildUnnamed9();
     o.pubsubTopic = 'foo';
     o.schemaVersion = 'foo';
@@ -397,6 +402,7 @@ void checkGoogleCloudBillingBudgetsV1NotificationsRule(
   buildCounterGoogleCloudBillingBudgetsV1NotificationsRule++;
   if (buildCounterGoogleCloudBillingBudgetsV1NotificationsRule < 3) {
     unittest.expect(o.disableDefaultIamRecipients!, unittest.isTrue);
+    unittest.expect(o.enableProjectLevelRecipients!, unittest.isTrue);
     checkUnnamed9(o.monitoringNotificationChannels!);
     unittest.expect(
       o.pubsubTopic!,
@@ -803,6 +809,7 @@ void main() {
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
+      final arg_scope = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -845,6 +852,10 @@ void main() {
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
+          queryMap['scope']!.first,
+          unittest.equals(arg_scope),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -859,6 +870,7 @@ void main() {
       final response = await res.list(arg_parent,
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,
+          scope: arg_scope,
           $fields: arg_$fields);
       checkGoogleCloudBillingBudgetsV1ListBudgetsResponse(
           response as api.GoogleCloudBillingBudgetsV1ListBudgetsResponse);

@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Certificate Manager API - v1
@@ -26,7 +25,7 @@
 ///     - [ProjectsLocationsDnsAuthorizationsResource]
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsTrustConfigsResource]
-library certificatemanager_v1;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -1531,7 +1530,8 @@ class ProjectsLocationsTrustConfigsResource {
   /// the format `projects / * /locations / * `.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [trustConfigId] - Required. A user-provided name of the TrustConfig.
+  /// [trustConfigId] - Required. A user-provided name of the TrustConfig. Must
+  /// match the regexp `[a-z0-9-]{1,63}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1878,7 +1878,8 @@ class Certificate {
   /// certificates, served from Edge Points of Presence. See
   /// https://cloud.google.com/vpc/docs/edge-locations.
   /// - "ALL_REGIONS" : Certificates with ALL_REGIONS scope are served from all
-  /// GCP regions. See https://cloud.google.com/compute/docs/regions-zones.
+  /// Google Cloud regions. See
+  /// https://cloud.google.com/compute/docs/regions-zones.
   core.String? scope;
 
   /// If set, defines data of a self-managed certificate.
@@ -2361,6 +2362,21 @@ class DnsAuthorization {
   /// / * /locations / * /dnsAuthorizations / * `.
   core.String? name;
 
+  /// Type of DnsAuthorization.
+  ///
+  /// If unset during resource creation the following default will be used: - in
+  /// location global: FIXED_RECORD.
+  ///
+  /// Immutable.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Type is unspecified.
+  /// - "FIXED_RECORD" : FIXED_RECORD DNS authorization uses DNS-01 validation
+  /// method.
+  /// - "PER_PROJECT_RECORD" : PER_PROJECT_RECORD DNS authorization allows for
+  /// independent management of Google-managed certificates with DNS
+  /// authorization across multiple projects.
+  core.String? type;
+
   /// The last update timestamp of a DnsAuthorization.
   ///
   /// Output only.
@@ -2373,6 +2389,7 @@ class DnsAuthorization {
     this.domain,
     this.labels,
     this.name,
+    this.type,
     this.updateTime,
   });
 
@@ -2400,6 +2417,7 @@ class DnsAuthorization {
                 )
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
           updateTime: json_.containsKey('updateTime')
               ? json_['updateTime'] as core.String
               : null,
@@ -2412,6 +2430,7 @@ class DnsAuthorization {
         if (domain != null) 'domain': domain!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
+        if (type != null) 'type': type!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }

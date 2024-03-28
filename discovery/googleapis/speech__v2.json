@@ -1,0 +1,2685 @@
+{
+    "auth": {
+        "oauth2": {
+            "scopes": {
+                "https://www.googleapis.com/auth/cloud-platform": {
+                    "description": "See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account."
+                }
+            }
+        }
+    },
+    "basePath": "",
+    "baseUrl": "https://speech.googleapis.com/",
+    "batchPath": "batch",
+    "canonicalName": "Speech",
+    "description": "Converts audio to text by applying powerful neural network models.",
+    "discoveryVersion": "v1",
+    "documentationLink": "https://cloud.google.com/speech-to-text/docs/quickstart-protocol",
+    "icons": {
+        "x16": "http://www.google.com/images/icons/product/search-16.gif",
+        "x32": "http://www.google.com/images/icons/product/search-32.gif"
+    },
+    "id": "speech:v2",
+    "kind": "discovery#restDescription",
+    "name": "speech",
+    "ownerDomain": "google.com",
+    "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20240222",
+    "rootUrl": "https://speech.googleapis.com/",
+    "servicePath": "",
+    "title": "Cloud Speech-to-Text API",
+    "version": "v2",
+    "version_module": true,
+    "parameters": {
+        "$.xgafv": {
+            "description": "V1 error format.",
+            "enum": [
+                "1",
+                "2"
+            ],
+            "enumDescriptions": [
+                "v1 error format",
+                "v2 error format"
+            ],
+            "location": "query",
+            "type": "string"
+        },
+        "access_token": {
+            "description": "OAuth access token.",
+            "location": "query",
+            "type": "string"
+        },
+        "alt": {
+            "default": "json",
+            "description": "Data format for response.",
+            "enum": [
+                "json",
+                "media",
+                "proto"
+            ],
+            "enumDescriptions": [
+                "Responses with Content-Type of application/json",
+                "Media download with context-dependent Content-Type",
+                "Responses with Content-Type of application/x-protobuf"
+            ],
+            "location": "query",
+            "type": "string"
+        },
+        "callback": {
+            "description": "JSONP",
+            "location": "query",
+            "type": "string"
+        },
+        "fields": {
+            "description": "Selector specifying which fields to include in a partial response.",
+            "location": "query",
+            "type": "string"
+        },
+        "key": {
+            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+            "location": "query",
+            "type": "string"
+        },
+        "oauth_token": {
+            "description": "OAuth 2.0 token for the current user.",
+            "location": "query",
+            "type": "string"
+        },
+        "prettyPrint": {
+            "default": "true",
+            "description": "Returns response with indentations and line breaks.",
+            "location": "query",
+            "type": "boolean"
+        },
+        "quotaUser": {
+            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+            "location": "query",
+            "type": "string"
+        },
+        "uploadType": {
+            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+            "location": "query",
+            "type": "string"
+        },
+        "upload_protocol": {
+            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+            "location": "query",
+            "type": "string"
+        }
+    },
+    "resources": {
+        "projects": {
+            "resources": {
+                "locations": {
+                    "methods": {
+                        "get": {
+                            "description": "Gets information about a location.",
+                            "flatPath": "v2/projects/{projectsId}/locations/{locationsId}",
+                            "httpMethod": "GET",
+                            "id": "speech.projects.locations.get",
+                            "parameterOrder": [
+                                "name"
+                            ],
+                            "parameters": {
+                                "name": {
+                                    "description": "Resource name for the location.",
+                                    "location": "path",
+                                    "pattern": "^projects/[^/]+/locations/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v2/{+name}",
+                            "response": {
+                                "$ref": "Location"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
+                        },
+                        "list": {
+                            "description": "Lists information about the supported locations for this service.",
+                            "flatPath": "v2/projects/{projectsId}/locations",
+                            "httpMethod": "GET",
+                            "id": "speech.projects.locations.list",
+                            "parameterOrder": [
+                                "name"
+                            ],
+                            "parameters": {
+                                "filter": {
+                                    "description": "A filter to narrow down results to a preferred subset. The filtering language accepts strings like `\"displayName=tokyo\"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "description": "The resource that owns the locations collection, if applicable.",
+                                    "location": "path",
+                                    "pattern": "^projects/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "pageSize": {
+                                    "description": "The maximum number of results to return. If not set, the service selects a default.",
+                                    "format": "int32",
+                                    "location": "query",
+                                    "type": "integer"
+                                },
+                                "pageToken": {
+                                    "description": "A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page.",
+                                    "location": "query",
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v2/{+name}/locations",
+                            "response": {
+                                "$ref": "ListLocationsResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
+                        }
+                    },
+                    "resources": {
+                        "config": {
+                            "methods": {
+                                "get": {
+                                    "description": "Returns the requested Config.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/config",
+                                    "httpMethod": "GET",
+                                    "id": "speech.projects.locations.config.get",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Required. The name of the config to retrieve. There is exactly one config resource per project per location. The expected format is `projects/{project}/locations/{location}/config`.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/config$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v2/{+name}",
+                                    "response": {
+                                        "$ref": "Config"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "update": {
+                                    "description": "Updates the Config.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/config",
+                                    "httpMethod": "PATCH",
+                                    "id": "speech.projects.locations.config.update",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Output only. Identifier. The name of the config resource. There is exactly one config resource per project per location. The expected format is `projects/{project}/locations/{location}/config`.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/config$",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "updateMask": {
+                                            "description": "The list of fields to be updated.",
+                                            "format": "google-fieldmask",
+                                            "location": "query",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v2/{+name}",
+                                    "request": {
+                                        "$ref": "Config"
+                                    },
+                                    "response": {
+                                        "$ref": "Config"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                }
+                            }
+                        },
+                        "customClasses": {
+                            "methods": {
+                                "create": {
+                                    "description": "Creates a CustomClass.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/customClasses",
+                                    "httpMethod": "POST",
+                                    "id": "speech.projects.locations.customClasses.create",
+                                    "parameterOrder": [
+                                        "parent"
+                                    ],
+                                    "parameters": {
+                                        "customClassId": {
+                                            "description": "The ID to use for the CustomClass, which will become the final component of the CustomClass's resource name. This value should be 4-63 characters, and valid characters are /a-z-/.",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "parent": {
+                                            "description": "Required. The project and location where this CustomClass will be created. The expected format is `projects/{project}/locations/{location}`.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "validateOnly": {
+                                            "description": "If set, validate the request and preview the CustomClass, but do not actually create it.",
+                                            "location": "query",
+                                            "type": "boolean"
+                                        }
+                                    },
+                                    "path": "v2/{+parent}/customClasses",
+                                    "request": {
+                                        "$ref": "CustomClass"
+                                    },
+                                    "response": {
+                                        "$ref": "Operation"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "delete": {
+                                    "description": "Deletes the CustomClass.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/customClasses/{customClassesId}",
+                                    "httpMethod": "DELETE",
+                                    "id": "speech.projects.locations.customClasses.delete",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "allowMissing": {
+                                            "description": "If set to true, and the CustomClass is not found, the request will succeed and be a no-op (no Operation is recorded in this case).",
+                                            "location": "query",
+                                            "type": "boolean"
+                                        },
+                                        "etag": {
+                                            "description": "This checksum is computed by the server based on the value of other fields. This may be sent on update, undelete, and delete requests to ensure the client has an up-to-date value before proceeding.",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "description": "Required. The name of the CustomClass to delete. Format: `projects/{project}/locations/{location}/customClasses/{custom_class}`",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/customClasses/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "validateOnly": {
+                                            "description": "If set, validate the request and preview the deleted CustomClass, but do not actually delete it.",
+                                            "location": "query",
+                                            "type": "boolean"
+                                        }
+                                    },
+                                    "path": "v2/{+name}",
+                                    "response": {
+                                        "$ref": "Operation"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "get": {
+                                    "description": "Returns the requested CustomClass.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/customClasses/{customClassesId}",
+                                    "httpMethod": "GET",
+                                    "id": "speech.projects.locations.customClasses.get",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Required. The name of the CustomClass to retrieve. The expected format is `projects/{project}/locations/{location}/customClasses/{custom_class}`.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/customClasses/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v2/{+name}",
+                                    "response": {
+                                        "$ref": "CustomClass"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "list": {
+                                    "description": "Lists CustomClasses.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/customClasses",
+                                    "httpMethod": "GET",
+                                    "id": "speech.projects.locations.customClasses.list",
+                                    "parameterOrder": [
+                                        "parent"
+                                    ],
+                                    "parameters": {
+                                        "pageSize": {
+                                            "description": "Number of results per requests. A valid page_size ranges from 0 to 100 inclusive. If the page_size is zero or unspecified, a page size of 5 will be chosen. If the page size exceeds 100, it will be coerced down to 100. Note that a call might return fewer results than the requested page size.",
+                                            "format": "int32",
+                                            "location": "query",
+                                            "type": "integer"
+                                        },
+                                        "pageToken": {
+                                            "description": "A page token, received from a previous ListCustomClasses call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to ListCustomClasses must match the call that provided the page token.",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "parent": {
+                                            "description": "Required. The project and location of CustomClass resources to list. The expected format is `projects/{project}/locations/{location}`.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "showDeleted": {
+                                            "description": "Whether, or not, to show resources that have been deleted.",
+                                            "location": "query",
+                                            "type": "boolean"
+                                        }
+                                    },
+                                    "path": "v2/{+parent}/customClasses",
+                                    "response": {
+                                        "$ref": "ListCustomClassesResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "patch": {
+                                    "description": "Updates the CustomClass.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/customClasses/{customClassesId}",
+                                    "httpMethod": "PATCH",
+                                    "id": "speech.projects.locations.customClasses.patch",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Output only. Identifier. The resource name of the CustomClass. Format: `projects/{project}/locations/{location}/customClasses/{custom_class}`.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/customClasses/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "updateMask": {
+                                            "description": "The list of fields to be updated. If empty, all fields are considered for update.",
+                                            "format": "google-fieldmask",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "validateOnly": {
+                                            "description": "If set, validate the request and preview the updated CustomClass, but do not actually update it.",
+                                            "location": "query",
+                                            "type": "boolean"
+                                        }
+                                    },
+                                    "path": "v2/{+name}",
+                                    "request": {
+                                        "$ref": "CustomClass"
+                                    },
+                                    "response": {
+                                        "$ref": "Operation"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "undelete": {
+                                    "description": "Undeletes the CustomClass.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/customClasses/{customClassesId}:undelete",
+                                    "httpMethod": "POST",
+                                    "id": "speech.projects.locations.customClasses.undelete",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Required. The name of the CustomClass to undelete. Format: `projects/{project}/locations/{location}/customClasses/{custom_class}`",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/customClasses/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v2/{+name}:undelete",
+                                    "request": {
+                                        "$ref": "UndeleteCustomClassRequest"
+                                    },
+                                    "response": {
+                                        "$ref": "Operation"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                }
+                            }
+                        },
+                        "operations": {
+                            "methods": {
+                                "get": {
+                                    "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
+                                    "httpMethod": "GET",
+                                    "id": "speech.projects.locations.operations.get",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "The name of the operation resource.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v2/{+name}",
+                                    "response": {
+                                        "$ref": "Operation"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "list": {
+                                    "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/operations",
+                                    "httpMethod": "GET",
+                                    "id": "speech.projects.locations.operations.list",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "filter": {
+                                            "description": "The standard list filter.",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "description": "The name of the operation's parent resource.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "pageSize": {
+                                            "description": "The standard list page size.",
+                                            "format": "int32",
+                                            "location": "query",
+                                            "type": "integer"
+                                        },
+                                        "pageToken": {
+                                            "description": "The standard list page token.",
+                                            "location": "query",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v2/{+name}/operations",
+                                    "response": {
+                                        "$ref": "ListOperationsResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                }
+                            }
+                        },
+                        "phraseSets": {
+                            "methods": {
+                                "create": {
+                                    "description": "Creates a PhraseSet.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/phraseSets",
+                                    "httpMethod": "POST",
+                                    "id": "speech.projects.locations.phraseSets.create",
+                                    "parameterOrder": [
+                                        "parent"
+                                    ],
+                                    "parameters": {
+                                        "parent": {
+                                            "description": "Required. The project and location where this PhraseSet will be created. The expected format is `projects/{project}/locations/{location}`.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "phraseSetId": {
+                                            "description": "The ID to use for the PhraseSet, which will become the final component of the PhraseSet's resource name. This value should be 4-63 characters, and valid characters are /a-z-/.",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "validateOnly": {
+                                            "description": "If set, validate the request and preview the PhraseSet, but do not actually create it.",
+                                            "location": "query",
+                                            "type": "boolean"
+                                        }
+                                    },
+                                    "path": "v2/{+parent}/phraseSets",
+                                    "request": {
+                                        "$ref": "PhraseSet"
+                                    },
+                                    "response": {
+                                        "$ref": "Operation"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "delete": {
+                                    "description": "Deletes the PhraseSet.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/phraseSets/{phraseSetsId}",
+                                    "httpMethod": "DELETE",
+                                    "id": "speech.projects.locations.phraseSets.delete",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "allowMissing": {
+                                            "description": "If set to true, and the PhraseSet is not found, the request will succeed and be a no-op (no Operation is recorded in this case).",
+                                            "location": "query",
+                                            "type": "boolean"
+                                        },
+                                        "etag": {
+                                            "description": "This checksum is computed by the server based on the value of other fields. This may be sent on update, undelete, and delete requests to ensure the client has an up-to-date value before proceeding.",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "description": "Required. The name of the PhraseSet to delete. Format: `projects/{project}/locations/{location}/phraseSets/{phrase_set}`",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/phraseSets/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "validateOnly": {
+                                            "description": "If set, validate the request and preview the deleted PhraseSet, but do not actually delete it.",
+                                            "location": "query",
+                                            "type": "boolean"
+                                        }
+                                    },
+                                    "path": "v2/{+name}",
+                                    "response": {
+                                        "$ref": "Operation"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "get": {
+                                    "description": "Returns the requested PhraseSet.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/phraseSets/{phraseSetsId}",
+                                    "httpMethod": "GET",
+                                    "id": "speech.projects.locations.phraseSets.get",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Required. The name of the PhraseSet to retrieve. The expected format is `projects/{project}/locations/{location}/phraseSets/{phrase_set}`.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/phraseSets/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v2/{+name}",
+                                    "response": {
+                                        "$ref": "PhraseSet"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "list": {
+                                    "description": "Lists PhraseSets.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/phraseSets",
+                                    "httpMethod": "GET",
+                                    "id": "speech.projects.locations.phraseSets.list",
+                                    "parameterOrder": [
+                                        "parent"
+                                    ],
+                                    "parameters": {
+                                        "pageSize": {
+                                            "description": "The maximum number of PhraseSets to return. The service may return fewer than this value. If unspecified, at most 5 PhraseSets will be returned. The maximum value is 100; values above 100 will be coerced to 100.",
+                                            "format": "int32",
+                                            "location": "query",
+                                            "type": "integer"
+                                        },
+                                        "pageToken": {
+                                            "description": "A page token, received from a previous ListPhraseSets call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to ListPhraseSets must match the call that provided the page token.",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "parent": {
+                                            "description": "Required. The project and location of PhraseSet resources to list. The expected format is `projects/{project}/locations/{location}`.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "showDeleted": {
+                                            "description": "Whether, or not, to show resources that have been deleted.",
+                                            "location": "query",
+                                            "type": "boolean"
+                                        }
+                                    },
+                                    "path": "v2/{+parent}/phraseSets",
+                                    "response": {
+                                        "$ref": "ListPhraseSetsResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "patch": {
+                                    "description": "Updates the PhraseSet.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/phraseSets/{phraseSetsId}",
+                                    "httpMethod": "PATCH",
+                                    "id": "speech.projects.locations.phraseSets.patch",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Output only. Identifier. The resource name of the PhraseSet. Format: `projects/{project}/locations/{location}/phraseSets/{phrase_set}`.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/phraseSets/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "updateMask": {
+                                            "description": "The list of fields to update. If empty, all non-default valued fields are considered for update. Use `*` to update the entire PhraseSet resource.",
+                                            "format": "google-fieldmask",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "validateOnly": {
+                                            "description": "If set, validate the request and preview the updated PhraseSet, but do not actually update it.",
+                                            "location": "query",
+                                            "type": "boolean"
+                                        }
+                                    },
+                                    "path": "v2/{+name}",
+                                    "request": {
+                                        "$ref": "PhraseSet"
+                                    },
+                                    "response": {
+                                        "$ref": "Operation"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "undelete": {
+                                    "description": "Undeletes the PhraseSet.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/phraseSets/{phraseSetsId}:undelete",
+                                    "httpMethod": "POST",
+                                    "id": "speech.projects.locations.phraseSets.undelete",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Required. The name of the PhraseSet to undelete. Format: `projects/{project}/locations/{location}/phraseSets/{phrase_set}`",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/phraseSets/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v2/{+name}:undelete",
+                                    "request": {
+                                        "$ref": "UndeletePhraseSetRequest"
+                                    },
+                                    "response": {
+                                        "$ref": "Operation"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                }
+                            }
+                        },
+                        "recognizers": {
+                            "methods": {
+                                "batchRecognize": {
+                                    "description": "Performs batch asynchronous speech recognition: send a request with N audio files and receive a long running operation that can be polled to see when the transcriptions are finished.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/recognizers/{recognizersId}:batchRecognize",
+                                    "httpMethod": "POST",
+                                    "id": "speech.projects.locations.recognizers.batchRecognize",
+                                    "parameterOrder": [
+                                        "recognizer"
+                                    ],
+                                    "parameters": {
+                                        "recognizer": {
+                                            "description": "Required. The name of the Recognizer to use during recognition. The expected format is `projects/{project}/locations/{location}/recognizers/{recognizer}`. The {recognizer} segment may be set to `_` to use an empty implicit Recognizer.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/recognizers/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v2/{+recognizer}:batchRecognize",
+                                    "request": {
+                                        "$ref": "BatchRecognizeRequest"
+                                    },
+                                    "response": {
+                                        "$ref": "Operation"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "create": {
+                                    "description": "Creates a Recognizer.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/recognizers",
+                                    "httpMethod": "POST",
+                                    "id": "speech.projects.locations.recognizers.create",
+                                    "parameterOrder": [
+                                        "parent"
+                                    ],
+                                    "parameters": {
+                                        "parent": {
+                                            "description": "Required. The project and location where this Recognizer will be created. The expected format is `projects/{project}/locations/{location}`.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "recognizerId": {
+                                            "description": "The ID to use for the Recognizer, which will become the final component of the Recognizer's resource name. This value should be 4-63 characters, and valid characters are /a-z-/.",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "validateOnly": {
+                                            "description": "If set, validate the request and preview the Recognizer, but do not actually create it.",
+                                            "location": "query",
+                                            "type": "boolean"
+                                        }
+                                    },
+                                    "path": "v2/{+parent}/recognizers",
+                                    "request": {
+                                        "$ref": "Recognizer"
+                                    },
+                                    "response": {
+                                        "$ref": "Operation"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "delete": {
+                                    "description": "Deletes the Recognizer.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/recognizers/{recognizersId}",
+                                    "httpMethod": "DELETE",
+                                    "id": "speech.projects.locations.recognizers.delete",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "allowMissing": {
+                                            "description": "If set to true, and the Recognizer is not found, the request will succeed and be a no-op (no Operation is recorded in this case).",
+                                            "location": "query",
+                                            "type": "boolean"
+                                        },
+                                        "etag": {
+                                            "description": "This checksum is computed by the server based on the value of other fields. This may be sent on update, undelete, and delete requests to ensure the client has an up-to-date value before proceeding.",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "description": "Required. The name of the Recognizer to delete. Format: `projects/{project}/locations/{location}/recognizers/{recognizer}`",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/recognizers/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "validateOnly": {
+                                            "description": "If set, validate the request and preview the deleted Recognizer, but do not actually delete it.",
+                                            "location": "query",
+                                            "type": "boolean"
+                                        }
+                                    },
+                                    "path": "v2/{+name}",
+                                    "response": {
+                                        "$ref": "Operation"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "get": {
+                                    "description": "Returns the requested Recognizer. Fails with NOT_FOUND if the requested Recognizer doesn't exist.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/recognizers/{recognizersId}",
+                                    "httpMethod": "GET",
+                                    "id": "speech.projects.locations.recognizers.get",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Required. The name of the Recognizer to retrieve. The expected format is `projects/{project}/locations/{location}/recognizers/{recognizer}`.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/recognizers/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v2/{+name}",
+                                    "response": {
+                                        "$ref": "Recognizer"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "list": {
+                                    "description": "Lists Recognizers.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/recognizers",
+                                    "httpMethod": "GET",
+                                    "id": "speech.projects.locations.recognizers.list",
+                                    "parameterOrder": [
+                                        "parent"
+                                    ],
+                                    "parameters": {
+                                        "pageSize": {
+                                            "description": "The maximum number of Recognizers to return. The service may return fewer than this value. If unspecified, at most 5 Recognizers will be returned. The maximum value is 100; values above 100 will be coerced to 100.",
+                                            "format": "int32",
+                                            "location": "query",
+                                            "type": "integer"
+                                        },
+                                        "pageToken": {
+                                            "description": "A page token, received from a previous ListRecognizers call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to ListRecognizers must match the call that provided the page token.",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "parent": {
+                                            "description": "Required. The project and location of Recognizers to list. The expected format is `projects/{project}/locations/{location}`.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "showDeleted": {
+                                            "description": "Whether, or not, to show resources that have been deleted.",
+                                            "location": "query",
+                                            "type": "boolean"
+                                        }
+                                    },
+                                    "path": "v2/{+parent}/recognizers",
+                                    "response": {
+                                        "$ref": "ListRecognizersResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "patch": {
+                                    "description": "Updates the Recognizer.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/recognizers/{recognizersId}",
+                                    "httpMethod": "PATCH",
+                                    "id": "speech.projects.locations.recognizers.patch",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Output only. Identifier. The resource name of the Recognizer. Format: `projects/{project}/locations/{location}/recognizers/{recognizer}`.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/recognizers/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "updateMask": {
+                                            "description": "The list of fields to update. If empty, all non-default valued fields are considered for update. Use `*` to update the entire Recognizer resource.",
+                                            "format": "google-fieldmask",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "validateOnly": {
+                                            "description": "If set, validate the request and preview the updated Recognizer, but do not actually update it.",
+                                            "location": "query",
+                                            "type": "boolean"
+                                        }
+                                    },
+                                    "path": "v2/{+name}",
+                                    "request": {
+                                        "$ref": "Recognizer"
+                                    },
+                                    "response": {
+                                        "$ref": "Operation"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "recognize": {
+                                    "description": "Performs synchronous Speech recognition: receive results after all audio has been sent and processed.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/recognizers/{recognizersId}:recognize",
+                                    "httpMethod": "POST",
+                                    "id": "speech.projects.locations.recognizers.recognize",
+                                    "parameterOrder": [
+                                        "recognizer"
+                                    ],
+                                    "parameters": {
+                                        "recognizer": {
+                                            "description": "Required. The name of the Recognizer to use during recognition. The expected format is `projects/{project}/locations/{location}/recognizers/{recognizer}`. The {recognizer} segment may be set to `_` to use an empty implicit Recognizer.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/recognizers/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v2/{+recognizer}:recognize",
+                                    "request": {
+                                        "$ref": "RecognizeRequest"
+                                    },
+                                    "response": {
+                                        "$ref": "RecognizeResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "undelete": {
+                                    "description": "Undeletes the Recognizer.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/recognizers/{recognizersId}:undelete",
+                                    "httpMethod": "POST",
+                                    "id": "speech.projects.locations.recognizers.undelete",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Required. The name of the Recognizer to undelete. Format: `projects/{project}/locations/{location}/recognizers/{recognizer}`",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/recognizers/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v2/{+name}:undelete",
+                                    "request": {
+                                        "$ref": "UndeleteRecognizerRequest"
+                                    },
+                                    "response": {
+                                        "$ref": "Operation"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "schemas": {
+        "AccessMetadata": {
+            "description": "The access metadata for a particular region. This can be applied if the org policy for the given project disallows a particular region.",
+            "id": "AccessMetadata",
+            "properties": {
+                "constraintType": {
+                    "description": "Describes the different types of constraints that are applied.",
+                    "enum": [
+                        "CONSTRAINT_TYPE_UNSPECIFIED",
+                        "RESOURCE_LOCATIONS_ORG_POLICY_CREATE_CONSTRAINT"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified constraint applied.",
+                        "The project's org policy disallows the given region."
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "AdaptationPhraseSet": {
+            "description": "A biasing PhraseSet, which can be either a string referencing the name of an existing PhraseSets resource, or an inline definition of a PhraseSet.",
+            "id": "AdaptationPhraseSet",
+            "properties": {
+                "inlinePhraseSet": {
+                    "$ref": "PhraseSet",
+                    "description": "An inline defined PhraseSet."
+                },
+                "phraseSet": {
+                    "description": "The name of an existing PhraseSet resource. The user must have read access to the resource and it must not be deleted.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "AutoDetectDecodingConfig": {
+            "description": "Automatically detected decoding parameters. Supported for the following encodings: * WAV_LINEAR16: 16-bit signed little-endian PCM samples in a WAV container. * WAV_MULAW: 8-bit companded mulaw samples in a WAV container. * WAV_ALAW: 8-bit companded alaw samples in a WAV container. * RFC4867_5_AMR: AMR frames with an rfc4867.5 header. * RFC4867_5_AMRWB: AMR-WB frames with an rfc4867.5 header. * FLAC: FLAC frames in the \"native FLAC\" container format. * MP3: MPEG audio frames with optional (ignored) ID3 metadata. * OGG_OPUS: Opus audio frames in an Ogg container. * WEBM_OPUS: Opus audio frames in a WebM container. * M4A: M4A audio format.",
+            "id": "AutoDetectDecodingConfig",
+            "properties": {},
+            "type": "object"
+        },
+        "BatchRecognizeFileMetadata": {
+            "description": "Metadata about a single file in a batch for BatchRecognize.",
+            "id": "BatchRecognizeFileMetadata",
+            "properties": {
+                "config": {
+                    "$ref": "RecognitionConfig",
+                    "description": "Features and audio metadata to use for the Automatic Speech Recognition. This field in combination with the config_mask field can be used to override parts of the default_recognition_config of the Recognizer resource as well as the config at the request level."
+                },
+                "configMask": {
+                    "description": "The list of fields in config that override the values in the default_recognition_config of the recognizer during this recognition request. If no mask is provided, all non-default valued fields in config override the values in the recognizer for this recognition request. If a mask is provided, only the fields listed in the mask override the config in the recognizer for this recognition request. If a wildcard (`*`) is provided, config completely overrides and replaces the config in the recognizer for this recognition request.",
+                    "format": "google-fieldmask",
+                    "type": "string"
+                },
+                "uri": {
+                    "description": "Cloud Storage URI for the audio file.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "BatchRecognizeFileResult": {
+            "description": "Final results for a single file.",
+            "id": "BatchRecognizeFileResult",
+            "properties": {
+                "cloudStorageResult": {
+                    "$ref": "CloudStorageResult",
+                    "description": "Recognition results written to Cloud Storage. This is populated only when GcsOutputConfig is set in the RecognitionOutputConfig."
+                },
+                "error": {
+                    "$ref": "Status",
+                    "description": "Error if one was encountered."
+                },
+                "inlineResult": {
+                    "$ref": "InlineResult",
+                    "description": "Recognition results. This is populated only when InlineOutputConfig is set in the RecognitionOutputConfig."
+                },
+                "metadata": {
+                    "$ref": "RecognitionResponseMetadata"
+                },
+                "transcript": {
+                    "$ref": "BatchRecognizeResults",
+                    "deprecated": true,
+                    "description": "Deprecated. Use `inline_result.transcript` instead."
+                },
+                "uri": {
+                    "deprecated": true,
+                    "description": "Deprecated. Use `cloud_storage_result.native_format_uri` instead.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "BatchRecognizeMetadata": {
+            "description": "Operation metadata for BatchRecognize.",
+            "id": "BatchRecognizeMetadata",
+            "properties": {
+                "transcriptionMetadata": {
+                    "additionalProperties": {
+                        "$ref": "BatchRecognizeTranscriptionMetadata"
+                    },
+                    "description": "Map from provided filename to the transcription metadata for that file.",
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "BatchRecognizeRequest": {
+            "description": "Request message for the BatchRecognize method.",
+            "id": "BatchRecognizeRequest",
+            "properties": {
+                "config": {
+                    "$ref": "RecognitionConfig",
+                    "description": "Features and audio metadata to use for the Automatic Speech Recognition. This field in combination with the config_mask field can be used to override parts of the default_recognition_config of the Recognizer resource."
+                },
+                "configMask": {
+                    "description": "The list of fields in config that override the values in the default_recognition_config of the recognizer during this recognition request. If no mask is provided, all given fields in config override the values in the recognizer for this recognition request. If a mask is provided, only the fields listed in the mask override the config in the recognizer for this recognition request. If a wildcard (`*`) is provided, config completely overrides and replaces the config in the recognizer for this recognition request.",
+                    "format": "google-fieldmask",
+                    "type": "string"
+                },
+                "files": {
+                    "description": "Audio files with file metadata for ASR. The maximum number of files allowed to be specified is 5.",
+                    "items": {
+                        "$ref": "BatchRecognizeFileMetadata"
+                    },
+                    "type": "array"
+                },
+                "processingStrategy": {
+                    "description": "Processing strategy to use for this request.",
+                    "enum": [
+                        "PROCESSING_STRATEGY_UNSPECIFIED",
+                        "DYNAMIC_BATCHING"
+                    ],
+                    "enumDescriptions": [
+                        "Default value for the processing strategy. The request is processed as soon as its received.",
+                        "If selected, processes the request during lower utilization periods for a price discount. The request is fulfilled within 24 hours."
+                    ],
+                    "type": "string"
+                },
+                "recognitionOutputConfig": {
+                    "$ref": "RecognitionOutputConfig",
+                    "description": "Configuration options for where to output the transcripts of each file."
+                },
+                "recognizer": {
+                    "description": "Required. The name of the Recognizer to use during recognition. The expected format is `projects/{project}/locations/{location}/recognizers/{recognizer}`. The {recognizer} segment may be set to `_` to use an empty implicit Recognizer.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "BatchRecognizeResponse": {
+            "description": "Response message for BatchRecognize that is packaged into a longrunning Operation.",
+            "id": "BatchRecognizeResponse",
+            "properties": {
+                "results": {
+                    "additionalProperties": {
+                        "$ref": "BatchRecognizeFileResult"
+                    },
+                    "description": "Map from filename to the final result for that file.",
+                    "type": "object"
+                },
+                "totalBilledDuration": {
+                    "description": "When available, billed audio seconds for the corresponding request.",
+                    "format": "google-duration",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "BatchRecognizeResults": {
+            "description": "Output type for Cloud Storage of BatchRecognize transcripts. Though this proto isn't returned in this API anywhere, the Cloud Storage transcripts will be this proto serialized and should be parsed as such.",
+            "id": "BatchRecognizeResults",
+            "properties": {
+                "metadata": {
+                    "$ref": "RecognitionResponseMetadata",
+                    "description": "Metadata about the recognition."
+                },
+                "results": {
+                    "description": "Sequential list of transcription results corresponding to sequential portions of audio.",
+                    "items": {
+                        "$ref": "SpeechRecognitionResult"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "BatchRecognizeTranscriptionMetadata": {
+            "description": "Metadata about transcription for a single file (for example, progress percent).",
+            "id": "BatchRecognizeTranscriptionMetadata",
+            "properties": {
+                "error": {
+                    "$ref": "Status",
+                    "description": "Error if one was encountered."
+                },
+                "progressPercent": {
+                    "description": "How much of the file has been transcribed so far.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "uri": {
+                    "description": "The Cloud Storage URI to which recognition results will be written.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ClassItem": {
+            "description": "An item of the class.",
+            "id": "ClassItem",
+            "properties": {
+                "value": {
+                    "description": "The class item's value.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "CloudStorageResult": {
+            "description": "Final results written to Cloud Storage.",
+            "id": "CloudStorageResult",
+            "properties": {
+                "srtFormatUri": {
+                    "description": "The Cloud Storage URI to which recognition results were written as SRT formatted captions. This is populated only when `SRT` output is requested.",
+                    "type": "string"
+                },
+                "uri": {
+                    "description": "The Cloud Storage URI to which recognition results were written.",
+                    "type": "string"
+                },
+                "vttFormatUri": {
+                    "description": "The Cloud Storage URI to which recognition results were written as VTT formatted captions. This is populated only when `VTT` output is requested.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Config": {
+            "description": "Message representing the config for the Speech-to-Text API. This includes an optional [KMS key](https://cloud.google.com/kms/docs/resource-hierarchy#keys) with which incoming data will be encrypted.",
+            "id": "Config",
+            "properties": {
+                "kmsKeyName": {
+                    "description": "Optional. An optional [KMS key name](https://cloud.google.com/kms/docs/resource-hierarchy#keys) that if present, will be used to encrypt Speech-to-Text resources at-rest. Updating this key will not encrypt existing resources using this key; only new resources will be encrypted using this key. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Output only. Identifier. The name of the config resource. There is exactly one config resource per project per location. The expected format is `projects/{project}/locations/{location}/config`.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "updateTime": {
+                    "description": "Output only. The most recent time this resource was modified.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "CreateCustomClassRequest": {
+            "description": "Request message for the CreateCustomClass method.",
+            "id": "CreateCustomClassRequest",
+            "properties": {
+                "customClass": {
+                    "$ref": "CustomClass",
+                    "description": "Required. The CustomClass to create."
+                },
+                "customClassId": {
+                    "description": "The ID to use for the CustomClass, which will become the final component of the CustomClass's resource name. This value should be 4-63 characters, and valid characters are /a-z-/.",
+                    "type": "string"
+                },
+                "parent": {
+                    "description": "Required. The project and location where this CustomClass will be created. The expected format is `projects/{project}/locations/{location}`.",
+                    "type": "string"
+                },
+                "validateOnly": {
+                    "description": "If set, validate the request and preview the CustomClass, but do not actually create it.",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "CreatePhraseSetRequest": {
+            "description": "Request message for the CreatePhraseSet method.",
+            "id": "CreatePhraseSetRequest",
+            "properties": {
+                "parent": {
+                    "description": "Required. The project and location where this PhraseSet will be created. The expected format is `projects/{project}/locations/{location}`.",
+                    "type": "string"
+                },
+                "phraseSet": {
+                    "$ref": "PhraseSet",
+                    "description": "Required. The PhraseSet to create."
+                },
+                "phraseSetId": {
+                    "description": "The ID to use for the PhraseSet, which will become the final component of the PhraseSet's resource name. This value should be 4-63 characters, and valid characters are /a-z-/.",
+                    "type": "string"
+                },
+                "validateOnly": {
+                    "description": "If set, validate the request and preview the PhraseSet, but do not actually create it.",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "CreateRecognizerRequest": {
+            "description": "Request message for the CreateRecognizer method.",
+            "id": "CreateRecognizerRequest",
+            "properties": {
+                "parent": {
+                    "description": "Required. The project and location where this Recognizer will be created. The expected format is `projects/{project}/locations/{location}`.",
+                    "type": "string"
+                },
+                "recognizer": {
+                    "$ref": "Recognizer",
+                    "description": "Required. The Recognizer to create."
+                },
+                "recognizerId": {
+                    "description": "The ID to use for the Recognizer, which will become the final component of the Recognizer's resource name. This value should be 4-63 characters, and valid characters are /a-z-/.",
+                    "type": "string"
+                },
+                "validateOnly": {
+                    "description": "If set, validate the request and preview the Recognizer, but do not actually create it.",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "CustomClass": {
+            "description": "CustomClass for biasing in speech recognition. Used to define a set of words or phrases that represents a common concept or theme likely to appear in your audio, for example a list of passenger ship names.",
+            "id": "CustomClass",
+            "properties": {
+                "annotations": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Optional. Allows users to store small amounts of arbitrary data. Both the key and the value must be 63 characters or less each. At most 100 annotations.",
+                    "type": "object"
+                },
+                "createTime": {
+                    "description": "Output only. Creation time.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "deleteTime": {
+                    "description": "Output only. The time at which this resource was requested for deletion.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "displayName": {
+                    "description": "Optional. User-settable, human-readable name for the CustomClass. Must be 63 characters or less.",
+                    "type": "string"
+                },
+                "etag": {
+                    "description": "Output only. This checksum is computed by the server based on the value of other fields. This may be sent on update, undelete, and delete requests to ensure the client has an up-to-date value before proceeding.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "expireTime": {
+                    "description": "Output only. The time at which this resource will be purged.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "items": {
+                    "description": "A collection of class items.",
+                    "items": {
+                        "$ref": "ClassItem"
+                    },
+                    "type": "array"
+                },
+                "kmsKeyName": {
+                    "description": "Output only. The [KMS key name](https://cloud.google.com/kms/docs/resource-hierarchy#keys) with which the CustomClass is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "kmsKeyVersionName": {
+                    "description": "Output only. The [KMS key version name](https://cloud.google.com/kms/docs/resource-hierarchy#key_versions) with which the CustomClass is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{crypto_key_version}`.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Output only. Identifier. The resource name of the CustomClass. Format: `projects/{project}/locations/{location}/customClasses/{custom_class}`.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "reconciling": {
+                    "description": "Output only. Whether or not this CustomClass is in the process of being updated.",
+                    "readOnly": true,
+                    "type": "boolean"
+                },
+                "state": {
+                    "description": "Output only. The CustomClass lifecycle state.",
+                    "enum": [
+                        "STATE_UNSPECIFIED",
+                        "ACTIVE",
+                        "DELETED"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified state. This is only used/useful for distinguishing unset values.",
+                        "The normal and active state.",
+                        "This CustomClass has been deleted."
+                    ],
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "uid": {
+                    "description": "Output only. System-assigned unique identifier for the CustomClass.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "updateTime": {
+                    "description": "Output only. The most recent time this resource was modified.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "DeleteCustomClassRequest": {
+            "description": "Request message for the DeleteCustomClass method.",
+            "id": "DeleteCustomClassRequest",
+            "properties": {
+                "allowMissing": {
+                    "description": "If set to true, and the CustomClass is not found, the request will succeed and be a no-op (no Operation is recorded in this case).",
+                    "type": "boolean"
+                },
+                "etag": {
+                    "description": "This checksum is computed by the server based on the value of other fields. This may be sent on update, undelete, and delete requests to ensure the client has an up-to-date value before proceeding.",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Required. The name of the CustomClass to delete. Format: `projects/{project}/locations/{location}/customClasses/{custom_class}`",
+                    "type": "string"
+                },
+                "validateOnly": {
+                    "description": "If set, validate the request and preview the deleted CustomClass, but do not actually delete it.",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "DeletePhraseSetRequest": {
+            "description": "Request message for the DeletePhraseSet method.",
+            "id": "DeletePhraseSetRequest",
+            "properties": {
+                "allowMissing": {
+                    "description": "If set to true, and the PhraseSet is not found, the request will succeed and be a no-op (no Operation is recorded in this case).",
+                    "type": "boolean"
+                },
+                "etag": {
+                    "description": "This checksum is computed by the server based on the value of other fields. This may be sent on update, undelete, and delete requests to ensure the client has an up-to-date value before proceeding.",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Required. The name of the PhraseSet to delete. Format: `projects/{project}/locations/{location}/phraseSets/{phrase_set}`",
+                    "type": "string"
+                },
+                "validateOnly": {
+                    "description": "If set, validate the request and preview the deleted PhraseSet, but do not actually delete it.",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "DeleteRecognizerRequest": {
+            "description": "Request message for the DeleteRecognizer method.",
+            "id": "DeleteRecognizerRequest",
+            "properties": {
+                "allowMissing": {
+                    "description": "If set to true, and the Recognizer is not found, the request will succeed and be a no-op (no Operation is recorded in this case).",
+                    "type": "boolean"
+                },
+                "etag": {
+                    "description": "This checksum is computed by the server based on the value of other fields. This may be sent on update, undelete, and delete requests to ensure the client has an up-to-date value before proceeding.",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Required. The name of the Recognizer to delete. Format: `projects/{project}/locations/{location}/recognizers/{recognizer}`",
+                    "type": "string"
+                },
+                "validateOnly": {
+                    "description": "If set, validate the request and preview the deleted Recognizer, but do not actually delete it.",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "Entry": {
+            "description": "A single replacement configuration.",
+            "id": "Entry",
+            "properties": {
+                "caseSensitive": {
+                    "description": "Whether the search is case sensitive.",
+                    "type": "boolean"
+                },
+                "replace": {
+                    "description": "What to replace with. Max length is 100 characters.",
+                    "type": "string"
+                },
+                "search": {
+                    "description": "What to replace. Max length is 100 characters.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ExplicitDecodingConfig": {
+            "description": "Explicitly specified decoding parameters.",
+            "id": "ExplicitDecodingConfig",
+            "properties": {
+                "audioChannelCount": {
+                    "description": "Number of channels present in the audio data sent for recognition. Supported for the following encodings: * LINEAR16: Headerless 16-bit signed little-endian PCM samples. * MULAW: Headerless 8-bit companded mulaw samples. * ALAW: Headerless 8-bit companded alaw samples. The maximum allowed value is 8.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "encoding": {
+                    "description": "Required. Encoding of the audio data sent for recognition.",
+                    "enum": [
+                        "AUDIO_ENCODING_UNSPECIFIED",
+                        "LINEAR16",
+                        "MULAW",
+                        "ALAW"
+                    ],
+                    "enumDescriptions": [
+                        "Default value. This value is unused.",
+                        "Headerless 16-bit signed little-endian PCM samples.",
+                        "Headerless 8-bit companded mulaw samples.",
+                        "Headerless 8-bit companded alaw samples."
+                    ],
+                    "type": "string"
+                },
+                "sampleRateHertz": {
+                    "description": "Sample rate in Hertz of the audio data sent for recognition. Valid values are: 8000-48000. 16000 is optimal. For best results, set the sampling rate of the audio source to 16000 Hz. If that's not possible, use the native sample rate of the audio source (instead of re-sampling). Supported for the following encodings: * LINEAR16: Headerless 16-bit signed little-endian PCM samples. * MULAW: Headerless 8-bit companded mulaw samples. * ALAW: Headerless 8-bit companded alaw samples.",
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "GcsOutputConfig": {
+            "description": "Output configurations for Cloud Storage.",
+            "id": "GcsOutputConfig",
+            "properties": {
+                "uri": {
+                    "description": "The Cloud Storage URI prefix with which recognition results will be written.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "InlineOutputConfig": {
+            "description": "Output configurations for inline response.",
+            "id": "InlineOutputConfig",
+            "properties": {},
+            "type": "object"
+        },
+        "InlineResult": {
+            "description": "Final results returned inline in the recognition response.",
+            "id": "InlineResult",
+            "properties": {
+                "srtCaptions": {
+                    "description": "The transcript for the audio file as SRT formatted captions. This is populated only when `SRT` output is requested.",
+                    "type": "string"
+                },
+                "transcript": {
+                    "$ref": "BatchRecognizeResults",
+                    "description": "The transcript for the audio file."
+                },
+                "vttCaptions": {
+                    "description": "The transcript for the audio file as VTT formatted captions. This is populated only when `VTT` output is requested.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "LanguageMetadata": {
+            "description": "The metadata about locales available in a given region. Currently this is just the models that are available for each locale",
+            "id": "LanguageMetadata",
+            "properties": {
+                "models": {
+                    "additionalProperties": {
+                        "$ref": "ModelMetadata"
+                    },
+                    "description": "Map of locale (language code) -> models",
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "ListCustomClassesResponse": {
+            "description": "Response message for the ListCustomClasses method.",
+            "id": "ListCustomClassesResponse",
+            "properties": {
+                "customClasses": {
+                    "description": "The list of requested CustomClasses.",
+                    "items": {
+                        "$ref": "CustomClass"
+                    },
+                    "type": "array"
+                },
+                "nextPageToken": {
+                    "description": "A token, which can be sent as page_token to retrieve the next page. If this field is omitted, there are no subsequent pages. This token expires after 72 hours.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ListLocationsResponse": {
+            "description": "The response message for Locations.ListLocations.",
+            "id": "ListLocationsResponse",
+            "properties": {
+                "locations": {
+                    "description": "A list of locations that matches the specified filter in the request.",
+                    "items": {
+                        "$ref": "Location"
+                    },
+                    "type": "array"
+                },
+                "nextPageToken": {
+                    "description": "The standard List next-page token.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ListOperationsResponse": {
+            "description": "The response message for Operations.ListOperations.",
+            "id": "ListOperationsResponse",
+            "properties": {
+                "nextPageToken": {
+                    "description": "The standard List next-page token.",
+                    "type": "string"
+                },
+                "operations": {
+                    "description": "A list of operations that matches the specified filter in the request.",
+                    "items": {
+                        "$ref": "Operation"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "ListPhraseSetsResponse": {
+            "description": "Response message for the ListPhraseSets method.",
+            "id": "ListPhraseSetsResponse",
+            "properties": {
+                "nextPageToken": {
+                    "description": "A token, which can be sent as page_token to retrieve the next page. If this field is omitted, there are no subsequent pages. This token expires after 72 hours.",
+                    "type": "string"
+                },
+                "phraseSets": {
+                    "description": "The list of requested PhraseSets.",
+                    "items": {
+                        "$ref": "PhraseSet"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "ListRecognizersResponse": {
+            "description": "Response message for the ListRecognizers method.",
+            "id": "ListRecognizersResponse",
+            "properties": {
+                "nextPageToken": {
+                    "description": "A token, which can be sent as page_token to retrieve the next page. If this field is omitted, there are no subsequent pages. This token expires after 72 hours.",
+                    "type": "string"
+                },
+                "recognizers": {
+                    "description": "The list of requested Recognizers.",
+                    "items": {
+                        "$ref": "Recognizer"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "Location": {
+            "description": "A resource that represents a Google Cloud location.",
+            "id": "Location",
+            "properties": {
+                "displayName": {
+                    "description": "The friendly name for this location, typically a nearby city name. For example, \"Tokyo\".",
+                    "type": "string"
+                },
+                "labels": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Cross-service attributes for the location. For example {\"cloud.googleapis.com/region\": \"us-east1\"}",
+                    "type": "object"
+                },
+                "locationId": {
+                    "description": "The canonical id for this location. For example: `\"us-east1\"`.",
+                    "type": "string"
+                },
+                "metadata": {
+                    "additionalProperties": {
+                        "description": "Properties of the object. Contains field @type with type URL.",
+                        "type": "any"
+                    },
+                    "description": "Service-specific metadata. For example the available capacity at the given location.",
+                    "type": "object"
+                },
+                "name": {
+                    "description": "Resource name for the location, which may vary between implementations. For example: `\"projects/example-project/locations/us-east1\"`",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "LocationsMetadata": {
+            "description": "Main metadata for the Locations API for STT V2. Currently this is just the metadata about locales, models, and features",
+            "id": "LocationsMetadata",
+            "properties": {
+                "accessMetadata": {
+                    "$ref": "AccessMetadata",
+                    "description": "Information about access metadata for the region and given project."
+                },
+                "languages": {
+                    "$ref": "LanguageMetadata",
+                    "description": "Information about available locales, models, and features represented in the hierarchical structure of locales -> models -> features"
+                }
+            },
+            "type": "object"
+        },
+        "ModelFeature": {
+            "description": "Representes a singular feature of a model. If the feature is `recognizer`, the release_state of the feature represents the release_state of the model",
+            "id": "ModelFeature",
+            "properties": {
+                "feature": {
+                    "description": "The name of the feature (Note: the feature can be `recognizer`)",
+                    "type": "string"
+                },
+                "releaseState": {
+                    "description": "The release state of the feature",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ModelFeatures": {
+            "description": "Represents the collection of features belonging to a model",
+            "id": "ModelFeatures",
+            "properties": {
+                "modelFeature": {
+                    "description": "Repeated field that contains all features of the model",
+                    "items": {
+                        "$ref": "ModelFeature"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "ModelMetadata": {
+            "description": "The metadata about the models in a given region for a specific locale. Currently this is just the features of the model",
+            "id": "ModelMetadata",
+            "properties": {
+                "modelFeatures": {
+                    "additionalProperties": {
+                        "$ref": "ModelFeatures"
+                    },
+                    "description": "Map of the model name -> features of that model",
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "NativeOutputFileFormatConfig": {
+            "description": "Output configurations for serialized `BatchRecognizeResults` protos.",
+            "id": "NativeOutputFileFormatConfig",
+            "properties": {},
+            "type": "object"
+        },
+        "Operation": {
+            "description": "This resource represents a long-running operation that is the result of a network API call.",
+            "id": "Operation",
+            "properties": {
+                "done": {
+                    "description": "If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.",
+                    "type": "boolean"
+                },
+                "error": {
+                    "$ref": "Status",
+                    "description": "The error result of the operation in case of failure or cancellation."
+                },
+                "metadata": {
+                    "additionalProperties": {
+                        "description": "Properties of the object. Contains field @type with type URL.",
+                        "type": "any"
+                    },
+                    "description": "Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.",
+                    "type": "object"
+                },
+                "name": {
+                    "description": "The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.",
+                    "type": "string"
+                },
+                "response": {
+                    "additionalProperties": {
+                        "description": "Properties of the object. Contains field @type with type URL.",
+                        "type": "any"
+                    },
+                    "description": "The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "OperationMetadata": {
+            "description": "Represents the metadata of a long-running operation.",
+            "id": "OperationMetadata",
+            "properties": {
+                "batchRecognizeMetadata": {
+                    "$ref": "BatchRecognizeMetadata",
+                    "description": "Metadata specific to the BatchRecognize method."
+                },
+                "batchRecognizeRequest": {
+                    "$ref": "BatchRecognizeRequest",
+                    "description": "The BatchRecognizeRequest that spawned the Operation."
+                },
+                "createCustomClassRequest": {
+                    "$ref": "CreateCustomClassRequest",
+                    "description": "The CreateCustomClassRequest that spawned the Operation."
+                },
+                "createPhraseSetRequest": {
+                    "$ref": "CreatePhraseSetRequest",
+                    "description": "The CreatePhraseSetRequest that spawned the Operation."
+                },
+                "createRecognizerRequest": {
+                    "$ref": "CreateRecognizerRequest",
+                    "description": "The CreateRecognizerRequest that spawned the Operation."
+                },
+                "createTime": {
+                    "description": "The time the operation was created.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "deleteCustomClassRequest": {
+                    "$ref": "DeleteCustomClassRequest",
+                    "description": "The DeleteCustomClassRequest that spawned the Operation."
+                },
+                "deletePhraseSetRequest": {
+                    "$ref": "DeletePhraseSetRequest",
+                    "description": "The DeletePhraseSetRequest that spawned the Operation."
+                },
+                "deleteRecognizerRequest": {
+                    "$ref": "DeleteRecognizerRequest",
+                    "description": "The DeleteRecognizerRequest that spawned the Operation."
+                },
+                "kmsKeyName": {
+                    "description": "The [KMS key name](https://cloud.google.com/kms/docs/resource-hierarchy#keys) with which the content of the Operation is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.",
+                    "type": "string"
+                },
+                "kmsKeyVersionName": {
+                    "description": "The [KMS key version name](https://cloud.google.com/kms/docs/resource-hierarchy#key_versions) with which content of the Operation is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{crypto_key_version}`.",
+                    "type": "string"
+                },
+                "method": {
+                    "description": "The method that triggered the operation.",
+                    "type": "string"
+                },
+                "progressPercent": {
+                    "description": "The percent progress of the Operation. Values can range from 0-100. If the value is 100, then the operation is finished.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "resource": {
+                    "description": "The resource path for the target of the operation.",
+                    "type": "string"
+                },
+                "undeleteCustomClassRequest": {
+                    "$ref": "UndeleteCustomClassRequest",
+                    "description": "The UndeleteCustomClassRequest that spawned the Operation."
+                },
+                "undeletePhraseSetRequest": {
+                    "$ref": "UndeletePhraseSetRequest",
+                    "description": "The UndeletePhraseSetRequest that spawned the Operation."
+                },
+                "undeleteRecognizerRequest": {
+                    "$ref": "UndeleteRecognizerRequest",
+                    "description": "The UndeleteRecognizerRequest that spawned the Operation."
+                },
+                "updateConfigRequest": {
+                    "$ref": "UpdateConfigRequest",
+                    "deprecated": true,
+                    "description": "The UpdateConfigRequest that spawned the Operation."
+                },
+                "updateCustomClassRequest": {
+                    "$ref": "UpdateCustomClassRequest",
+                    "description": "The UpdateCustomClassRequest that spawned the Operation."
+                },
+                "updatePhraseSetRequest": {
+                    "$ref": "UpdatePhraseSetRequest",
+                    "description": "The UpdatePhraseSetRequest that spawned the Operation."
+                },
+                "updateRecognizerRequest": {
+                    "$ref": "UpdateRecognizerRequest",
+                    "description": "The UpdateRecognizerRequest that spawned the Operation."
+                },
+                "updateTime": {
+                    "description": "The time the operation was last updated.",
+                    "format": "google-datetime",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "OutputFormatConfig": {
+            "description": "Configuration for the format of the results stored to `output`.",
+            "id": "OutputFormatConfig",
+            "properties": {
+                "native": {
+                    "$ref": "NativeOutputFileFormatConfig",
+                    "description": "Configuration for the native output format. If this field is set or if no other output format field is set then transcripts will be written to the sink in the native format."
+                },
+                "srt": {
+                    "$ref": "SrtOutputFileFormatConfig",
+                    "description": "Configuration for the srt output format. If this field is set then transcripts will be written to the sink in the srt format."
+                },
+                "vtt": {
+                    "$ref": "VttOutputFileFormatConfig",
+                    "description": "Configuration for the vtt output format. If this field is set then transcripts will be written to the sink in the vtt format."
+                }
+            },
+            "type": "object"
+        },
+        "Phrase": {
+            "description": "A Phrase contains words and phrase \"hints\" so that the speech recognition is more likely to recognize them. This can be used to improve the accuracy for specific words and phrases, for example, if specific commands are typically spoken by the user. This can also be used to add additional words to the vocabulary of the recognizer. List items can also include CustomClass references containing groups of words that represent common concepts that occur in natural language.",
+            "id": "Phrase",
+            "properties": {
+                "boost": {
+                    "description": "Hint Boost. Overrides the boost set at the phrase set level. Positive value will increase the probability that a specific phrase will be recognized over other similar sounding phrases. The higher the boost, the higher the chance of false positive recognition as well. Negative boost values would correspond to anti-biasing. Anti-biasing is not enabled, so negative boost values will return an error. Boost values must be between 0 and 20. Any values outside that range will return an error. We recommend using a binary search approach to finding the optimal value for your use case as well as adding phrases both with and without boost to your requests.",
+                    "format": "float",
+                    "type": "number"
+                },
+                "value": {
+                    "description": "The phrase itself.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "PhraseSet": {
+            "description": "PhraseSet for biasing in speech recognition. A PhraseSet is used to provide \"hints\" to the speech recognizer to favor specific words and phrases in the results.",
+            "id": "PhraseSet",
+            "properties": {
+                "annotations": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Allows users to store small amounts of arbitrary data. Both the key and the value must be 63 characters or less each. At most 100 annotations.",
+                    "type": "object"
+                },
+                "boost": {
+                    "description": "Hint Boost. Positive value will increase the probability that a specific phrase will be recognized over other similar sounding phrases. The higher the boost, the higher the chance of false positive recognition as well. Valid `boost` values are between 0 (exclusive) and 20. We recommend using a binary search approach to finding the optimal value for your use case as well as adding phrases both with and without boost to your requests.",
+                    "format": "float",
+                    "type": "number"
+                },
+                "createTime": {
+                    "description": "Output only. Creation time.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "deleteTime": {
+                    "description": "Output only. The time at which this resource was requested for deletion.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "displayName": {
+                    "description": "User-settable, human-readable name for the PhraseSet. Must be 63 characters or less.",
+                    "type": "string"
+                },
+                "etag": {
+                    "description": "Output only. This checksum is computed by the server based on the value of other fields. This may be sent on update, undelete, and delete requests to ensure the client has an up-to-date value before proceeding.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "expireTime": {
+                    "description": "Output only. The time at which this resource will be purged.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "kmsKeyName": {
+                    "description": "Output only. The [KMS key name](https://cloud.google.com/kms/docs/resource-hierarchy#keys) with which the PhraseSet is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "kmsKeyVersionName": {
+                    "description": "Output only. The [KMS key version name](https://cloud.google.com/kms/docs/resource-hierarchy#key_versions) with which the PhraseSet is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{crypto_key_version}`.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Output only. Identifier. The resource name of the PhraseSet. Format: `projects/{project}/locations/{location}/phraseSets/{phrase_set}`.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "phrases": {
+                    "description": "A list of word and phrases.",
+                    "items": {
+                        "$ref": "Phrase"
+                    },
+                    "type": "array"
+                },
+                "reconciling": {
+                    "description": "Output only. Whether or not this PhraseSet is in the process of being updated.",
+                    "readOnly": true,
+                    "type": "boolean"
+                },
+                "state": {
+                    "description": "Output only. The PhraseSet lifecycle state.",
+                    "enum": [
+                        "STATE_UNSPECIFIED",
+                        "ACTIVE",
+                        "DELETED"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified state. This is only used/useful for distinguishing unset values.",
+                        "The normal and active state.",
+                        "This PhraseSet has been deleted."
+                    ],
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "uid": {
+                    "description": "Output only. System-assigned unique identifier for the PhraseSet.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "updateTime": {
+                    "description": "Output only. The most recent time this resource was modified.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "RecognitionConfig": {
+            "description": "Provides information to the Recognizer that specifies how to process the recognition request.",
+            "id": "RecognitionConfig",
+            "properties": {
+                "adaptation": {
+                    "$ref": "SpeechAdaptation",
+                    "description": "Speech adaptation context that weights recognizer predictions for specific words and phrases."
+                },
+                "autoDecodingConfig": {
+                    "$ref": "AutoDetectDecodingConfig",
+                    "description": "Automatically detect decoding parameters. Preferred for supported formats."
+                },
+                "explicitDecodingConfig": {
+                    "$ref": "ExplicitDecodingConfig",
+                    "description": "Explicitly specified decoding parameters. Required if using headerless PCM audio (linear16, mulaw, alaw)."
+                },
+                "features": {
+                    "$ref": "RecognitionFeatures",
+                    "description": "Speech recognition features to enable."
+                },
+                "languageCodes": {
+                    "description": "Optional. The language of the supplied audio as a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. Language tags are normalized to BCP-47 before they are used eg \"en-us\" becomes \"en-US\". Supported languages for each model are listed in the [Table of Supported Models](https://cloud.google.com/speech-to-text/v2/docs/speech-to-text-supported-languages). If additional languages are provided, recognition result will contain recognition in the most likely language detected. The recognition result will include the language tag of the language detected in the audio.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "model": {
+                    "description": "Optional. Which model to use for recognition requests. Select the model best suited to your domain to get best results. Guidance for choosing which model to use can be found in the [Transcription Models Documentation](https://cloud.google.com/speech-to-text/v2/docs/transcription-model) and the models supported in each region can be found in the [Table Of Supported Models](https://cloud.google.com/speech-to-text/v2/docs/speech-to-text-supported-languages).",
+                    "type": "string"
+                },
+                "transcriptNormalization": {
+                    "$ref": "TranscriptNormalization",
+                    "description": "Optional. Use transcription normalization to automatically replace parts of the transcript with phrases of your choosing. For StreamingRecognize, this normalization only applies to stable partial transcripts (stability > 0.8) and final transcripts."
+                }
+            },
+            "type": "object"
+        },
+        "RecognitionFeatures": {
+            "description": "Available recognition features.",
+            "id": "RecognitionFeatures",
+            "properties": {
+                "diarizationConfig": {
+                    "$ref": "SpeakerDiarizationConfig",
+                    "description": "Configuration to enable speaker diarization and set additional parameters to make diarization better suited for your application. When this is enabled, we send all the words from the beginning of the audio for the top alternative in every consecutive STREAMING responses. This is done in order to improve our speaker tags as our models learn to identify the speakers in the conversation over time. For non-streaming requests, the diarization results will be provided only in the top alternative of the FINAL SpeechRecognitionResult."
+                },
+                "enableAutomaticPunctuation": {
+                    "description": "If `true`, adds punctuation to recognition result hypotheses. This feature is only available in select languages. The default `false` value does not add punctuation to result hypotheses.",
+                    "type": "boolean"
+                },
+                "enableSpokenEmojis": {
+                    "description": "The spoken emoji behavior for the call. If `true`, adds spoken emoji formatting for the request. This will replace spoken emojis with the corresponding Unicode symbols in the final transcript. If `false`, spoken emojis are not replaced.",
+                    "type": "boolean"
+                },
+                "enableSpokenPunctuation": {
+                    "description": "The spoken punctuation behavior for the call. If `true`, replaces spoken punctuation with the corresponding symbols in the request. For example, \"how are you question mark\" becomes \"how are you?\". See https://cloud.google.com/speech-to-text/docs/spoken-punctuation for support. If `false`, spoken punctuation is not replaced.",
+                    "type": "boolean"
+                },
+                "enableWordConfidence": {
+                    "description": "If `true`, the top result includes a list of words and the confidence for those words. If `false`, no word-level confidence information is returned. The default is `false`.",
+                    "type": "boolean"
+                },
+                "enableWordTimeOffsets": {
+                    "description": "If `true`, the top result includes a list of words and the start and end time offsets (timestamps) for those words. If `false`, no word-level time offset information is returned. The default is `false`.",
+                    "type": "boolean"
+                },
+                "maxAlternatives": {
+                    "description": "Maximum number of recognition hypotheses to be returned. The server may return fewer than `max_alternatives`. Valid values are `0`-`30`. A value of `0` or `1` will return a maximum of one. If omitted, will return a maximum of one.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "multiChannelMode": {
+                    "description": "Mode for recognizing multi-channel audio.",
+                    "enum": [
+                        "MULTI_CHANNEL_MODE_UNSPECIFIED",
+                        "SEPARATE_RECOGNITION_PER_CHANNEL"
+                    ],
+                    "enumDescriptions": [
+                        "Default value for the multi-channel mode. If the audio contains multiple channels, only the first channel will be transcribed; other channels will be ignored.",
+                        "If selected, each channel in the provided audio is transcribed independently. This cannot be selected if the selected model is `latest_short`."
+                    ],
+                    "type": "string"
+                },
+                "profanityFilter": {
+                    "description": "If set to `true`, the server will attempt to filter out profanities, replacing all but the initial character in each filtered word with asterisks, for instance, \"f***\". If set to `false` or omitted, profanities won't be filtered out.",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "RecognitionOutputConfig": {
+            "description": "Configuration options for the output(s) of recognition.",
+            "id": "RecognitionOutputConfig",
+            "properties": {
+                "gcsOutputConfig": {
+                    "$ref": "GcsOutputConfig",
+                    "description": "If this message is populated, recognition results are written to the provided Google Cloud Storage URI."
+                },
+                "inlineResponseConfig": {
+                    "$ref": "InlineOutputConfig",
+                    "description": "If this message is populated, recognition results are provided in the BatchRecognizeResponse message of the Operation when completed. This is only supported when calling BatchRecognize with just one audio file."
+                },
+                "outputFormatConfig": {
+                    "$ref": "OutputFormatConfig",
+                    "description": "Optional. Configuration for the format of the results stored to `output`. If unspecified transcripts will be written in the `NATIVE` format only."
+                }
+            },
+            "type": "object"
+        },
+        "RecognitionResponseMetadata": {
+            "description": "Metadata about the recognition request and response. Next ID: 10",
+            "id": "RecognitionResponseMetadata",
+            "properties": {
+                "totalBilledDuration": {
+                    "description": "When available, billed audio seconds for the corresponding request.",
+                    "format": "google-duration",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "RecognizeRequest": {
+            "description": "Request message for the Recognize method. Either `content` or `uri` must be supplied. Supplying both or neither returns INVALID_ARGUMENT. See [content limits](https://cloud.google.com/speech-to-text/quotas#content).",
+            "id": "RecognizeRequest",
+            "properties": {
+                "config": {
+                    "$ref": "RecognitionConfig",
+                    "description": "Features and audio metadata to use for the Automatic Speech Recognition. This field in combination with the config_mask field can be used to override parts of the default_recognition_config of the Recognizer resource."
+                },
+                "configMask": {
+                    "description": "The list of fields in config that override the values in the default_recognition_config of the recognizer during this recognition request. If no mask is provided, all non-default valued fields in config override the values in the recognizer for this recognition request. If a mask is provided, only the fields listed in the mask override the config in the recognizer for this recognition request. If a wildcard (`*`) is provided, config completely overrides and replaces the config in the recognizer for this recognition request.",
+                    "format": "google-fieldmask",
+                    "type": "string"
+                },
+                "content": {
+                    "description": "The audio data bytes encoded as specified in RecognitionConfig. As with all bytes fields, proto buffers use a pure binary representation, whereas JSON representations use base64.",
+                    "format": "byte",
+                    "type": "string"
+                },
+                "uri": {
+                    "description": "URI that points to a file that contains audio data bytes as specified in RecognitionConfig. The file must not be compressed (for example, gzip). Currently, only Google Cloud Storage URIs are supported, which must be specified in the following format: `gs://bucket_name/object_name` (other URI formats return INVALID_ARGUMENT). For more information, see [Request URIs](https://cloud.google.com/storage/docs/reference-uris).",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "RecognizeResponse": {
+            "description": "Response message for the Recognize method.",
+            "id": "RecognizeResponse",
+            "properties": {
+                "metadata": {
+                    "$ref": "RecognitionResponseMetadata",
+                    "description": "Metadata about the recognition."
+                },
+                "results": {
+                    "description": "Sequential list of transcription results corresponding to sequential portions of audio.",
+                    "items": {
+                        "$ref": "SpeechRecognitionResult"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "Recognizer": {
+            "description": "A Recognizer message. Stores recognition configuration and metadata.",
+            "id": "Recognizer",
+            "properties": {
+                "annotations": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Allows users to store small amounts of arbitrary data. Both the key and the value must be 63 characters or less each. At most 100 annotations.",
+                    "type": "object"
+                },
+                "createTime": {
+                    "description": "Output only. Creation time.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "defaultRecognitionConfig": {
+                    "$ref": "RecognitionConfig",
+                    "description": "Default configuration to use for requests with this Recognizer. This can be overwritten by inline configuration in the RecognizeRequest.config field."
+                },
+                "deleteTime": {
+                    "description": "Output only. The time at which this Recognizer was requested for deletion.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "displayName": {
+                    "description": "User-settable, human-readable name for the Recognizer. Must be 63 characters or less.",
+                    "type": "string"
+                },
+                "etag": {
+                    "description": "Output only. This checksum is computed by the server based on the value of other fields. This may be sent on update, undelete, and delete requests to ensure the client has an up-to-date value before proceeding.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "expireTime": {
+                    "description": "Output only. The time at which this Recognizer will be purged.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "kmsKeyName": {
+                    "description": "Output only. The [KMS key name](https://cloud.google.com/kms/docs/resource-hierarchy#keys) with which the Recognizer is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "kmsKeyVersionName": {
+                    "description": "Output only. The [KMS key version name](https://cloud.google.com/kms/docs/resource-hierarchy#key_versions) with which the Recognizer is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{crypto_key_version}`.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "languageCodes": {
+                    "deprecated": true,
+                    "description": "Optional. This field is now deprecated. Prefer the `language_codes` field in the `RecognitionConfig` message. The language of the supplied audio as a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. Supported languages for each model are listed in the [Table of Supported Models](https://cloud.google.com/speech-to-text/v2/docs/speech-to-text-supported-languages). If additional languages are provided, recognition result will contain recognition in the most likely language detected. The recognition result will include the language tag of the language detected in the audio. When you create or update a Recognizer, these values are stored in normalized BCP-47 form. For example, \"en-us\" is stored as \"en-US\".",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "model": {
+                    "deprecated": true,
+                    "description": "Optional. This field is now deprecated. Prefer the `model` field in the `RecognitionConfig` message. Which model to use for recognition requests. Select the model best suited to your domain to get best results. Guidance for choosing which model to use can be found in the [Transcription Models Documentation](https://cloud.google.com/speech-to-text/v2/docs/transcription-model) and the models supported in each region can be found in the [Table Of Supported Models](https://cloud.google.com/speech-to-text/v2/docs/speech-to-text-supported-languages).",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Output only. Identifier. The resource name of the Recognizer. Format: `projects/{project}/locations/{location}/recognizers/{recognizer}`.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "reconciling": {
+                    "description": "Output only. Whether or not this Recognizer is in the process of being updated.",
+                    "readOnly": true,
+                    "type": "boolean"
+                },
+                "state": {
+                    "description": "Output only. The Recognizer lifecycle state.",
+                    "enum": [
+                        "STATE_UNSPECIFIED",
+                        "ACTIVE",
+                        "DELETED"
+                    ],
+                    "enumDescriptions": [
+                        "The default value. This value is used if the state is omitted.",
+                        "The Recognizer is active and ready for use.",
+                        "This Recognizer has been deleted."
+                    ],
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "uid": {
+                    "description": "Output only. System-assigned unique identifier for the Recognizer.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "updateTime": {
+                    "description": "Output only. The most recent time this Recognizer was modified.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SpeakerDiarizationConfig": {
+            "description": "Configuration to enable speaker diarization.",
+            "id": "SpeakerDiarizationConfig",
+            "properties": {
+                "maxSpeakerCount": {
+                    "description": "Required. Maximum number of speakers in the conversation. Valid values are: 1-6. Must be >= `min_speaker_count`. This range gives you more flexibility by allowing the system to automatically determine the correct number of speakers.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "minSpeakerCount": {
+                    "description": "Required. Minimum number of speakers in the conversation. This range gives you more flexibility by allowing the system to automatically determine the correct number of speakers. To fix the number of speakers detected in the audio, set `min_speaker_count` = `max_speaker_count`.",
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "SpeechAdaptation": {
+            "description": "Provides \"hints\" to the speech recognizer to favor specific words and phrases in the results. PhraseSets can be specified as an inline resource, or a reference to an existing PhraseSet resource.",
+            "id": "SpeechAdaptation",
+            "properties": {
+                "customClasses": {
+                    "description": "A list of inline CustomClasses. Existing CustomClass resources can be referenced directly in a PhraseSet.",
+                    "items": {
+                        "$ref": "CustomClass"
+                    },
+                    "type": "array"
+                },
+                "phraseSets": {
+                    "description": "A list of inline or referenced PhraseSets.",
+                    "items": {
+                        "$ref": "AdaptationPhraseSet"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "SpeechRecognitionAlternative": {
+            "description": "Alternative hypotheses (a.k.a. n-best list).",
+            "id": "SpeechRecognitionAlternative",
+            "properties": {
+                "confidence": {
+                    "description": "The confidence estimate between 0.0 and 1.0. A higher number indicates an estimated greater likelihood that the recognized words are correct. This field is set only for the top alternative of a non-streaming result or, of a streaming result where is_final is set to `true`. This field is not guaranteed to be accurate and users should not rely on it to be always provided. The default of 0.0 is a sentinel value indicating `confidence` was not set.",
+                    "format": "float",
+                    "type": "number"
+                },
+                "transcript": {
+                    "description": "Transcript text representing the words that the user spoke.",
+                    "type": "string"
+                },
+                "words": {
+                    "description": "A list of word-specific information for each recognized word. When the SpeakerDiarizationConfig is set, you will see all the words from the beginning of the audio.",
+                    "items": {
+                        "$ref": "WordInfo"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "SpeechRecognitionResult": {
+            "description": "A speech recognition result corresponding to a portion of the audio.",
+            "id": "SpeechRecognitionResult",
+            "properties": {
+                "alternatives": {
+                    "description": "May contain one or more recognition hypotheses. These alternatives are ordered in terms of accuracy, with the top (first) alternative being the most probable, as ranked by the recognizer.",
+                    "items": {
+                        "$ref": "SpeechRecognitionAlternative"
+                    },
+                    "type": "array"
+                },
+                "channelTag": {
+                    "description": "For multi-channel audio, this is the channel number corresponding to the recognized result for the audio from that channel. For `audio_channel_count` = `N`, its output values can range from `1` to `N`.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "languageCode": {
+                    "description": "Output only. The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag of the language in this result. This language code was detected to have the most likelihood of being spoken in the audio.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "resultEndOffset": {
+                    "description": "Time offset of the end of this result relative to the beginning of the audio.",
+                    "format": "google-duration",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SrtOutputFileFormatConfig": {
+            "description": "Output configurations [SubRip Text](https://www.matroska.org/technical/subtitles.html#srt-subtitles) formatted subtitle file.",
+            "id": "SrtOutputFileFormatConfig",
+            "properties": {},
+            "type": "object"
+        },
+        "Status": {
+            "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).",
+            "id": "Status",
+            "properties": {
+                "code": {
+                    "description": "The status code, which should be an enum value of google.rpc.Code.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "details": {
+                    "description": "A list of messages that carry the error details. There is a common set of message types for APIs to use.",
+                    "items": {
+                        "additionalProperties": {
+                            "description": "Properties of the object. Contains field @type with type URL.",
+                            "type": "any"
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "message": {
+                    "description": "A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "StreamingRecognitionResult": {
+            "description": "A streaming speech recognition result corresponding to a portion of the audio that is currently being processed.",
+            "id": "StreamingRecognitionResult",
+            "properties": {
+                "alternatives": {
+                    "description": "May contain one or more recognition hypotheses. These alternatives are ordered in terms of accuracy, with the top (first) alternative being the most probable, as ranked by the recognizer.",
+                    "items": {
+                        "$ref": "SpeechRecognitionAlternative"
+                    },
+                    "type": "array"
+                },
+                "channelTag": {
+                    "description": "For multi-channel audio, this is the channel number corresponding to the recognized result for the audio from that channel. For `audio_channel_count` = `N`, its output values can range from `1` to `N`.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "isFinal": {
+                    "description": "If `false`, this StreamingRecognitionResult represents an interim result that may change. If `true`, this is the final time the speech service will return this particular StreamingRecognitionResult, the recognizer will not return any further hypotheses for this portion of the transcript and corresponding audio.",
+                    "type": "boolean"
+                },
+                "languageCode": {
+                    "description": "Output only. The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag of the language in this result. This language code was detected to have the most likelihood of being spoken in the audio.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "resultEndOffset": {
+                    "description": "Time offset of the end of this result relative to the beginning of the audio.",
+                    "format": "google-duration",
+                    "type": "string"
+                },
+                "stability": {
+                    "description": "An estimate of the likelihood that the recognizer will not change its guess about this interim result. Values range from 0.0 (completely unstable) to 1.0 (completely stable). This field is only provided for interim results (is_final=`false`). The default of 0.0 is a sentinel value indicating `stability` was not set.",
+                    "format": "float",
+                    "type": "number"
+                }
+            },
+            "type": "object"
+        },
+        "TranscriptNormalization": {
+            "description": "Transcription normalization configuration. Use transcription normalization to automatically replace parts of the transcript with phrases of your choosing. For StreamingRecognize, this normalization only applies to stable partial transcripts (stability > 0.8) and final transcripts.",
+            "id": "TranscriptNormalization",
+            "properties": {
+                "entries": {
+                    "description": "A list of replacement entries. We will perform replacement with one entry at a time. For example, the second entry in [\"cat\" => \"dog\", \"mountain cat\" => \"mountain dog\"] will never be applied because we will always process the first entry before it. At most 100 entries.",
+                    "items": {
+                        "$ref": "Entry"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "UndeleteCustomClassRequest": {
+            "description": "Request message for the UndeleteCustomClass method.",
+            "id": "UndeleteCustomClassRequest",
+            "properties": {
+                "etag": {
+                    "description": "This checksum is computed by the server based on the value of other fields. This may be sent on update, undelete, and delete requests to ensure the client has an up-to-date value before proceeding.",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Required. The name of the CustomClass to undelete. Format: `projects/{project}/locations/{location}/customClasses/{custom_class}`",
+                    "type": "string"
+                },
+                "validateOnly": {
+                    "description": "If set, validate the request and preview the undeleted CustomClass, but do not actually undelete it.",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "UndeletePhraseSetRequest": {
+            "description": "Request message for the UndeletePhraseSet method.",
+            "id": "UndeletePhraseSetRequest",
+            "properties": {
+                "etag": {
+                    "description": "This checksum is computed by the server based on the value of other fields. This may be sent on update, undelete, and delete requests to ensure the client has an up-to-date value before proceeding.",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Required. The name of the PhraseSet to undelete. Format: `projects/{project}/locations/{location}/phraseSets/{phrase_set}`",
+                    "type": "string"
+                },
+                "validateOnly": {
+                    "description": "If set, validate the request and preview the undeleted PhraseSet, but do not actually undelete it.",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "UndeleteRecognizerRequest": {
+            "description": "Request message for the UndeleteRecognizer method.",
+            "id": "UndeleteRecognizerRequest",
+            "properties": {
+                "etag": {
+                    "description": "This checksum is computed by the server based on the value of other fields. This may be sent on update, undelete, and delete requests to ensure the client has an up-to-date value before proceeding.",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Required. The name of the Recognizer to undelete. Format: `projects/{project}/locations/{location}/recognizers/{recognizer}`",
+                    "type": "string"
+                },
+                "validateOnly": {
+                    "description": "If set, validate the request and preview the undeleted Recognizer, but do not actually undelete it.",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "UpdateConfigRequest": {
+            "description": "Request message for the UpdateConfig method.",
+            "id": "UpdateConfigRequest",
+            "properties": {
+                "config": {
+                    "$ref": "Config",
+                    "description": "Required. The config to update. The config's `name` field is used to identify the config to be updated. The expected format is `projects/{project}/locations/{location}/config`."
+                },
+                "updateMask": {
+                    "description": "The list of fields to be updated.",
+                    "format": "google-fieldmask",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "UpdateCustomClassRequest": {
+            "description": "Request message for the UpdateCustomClass method.",
+            "id": "UpdateCustomClassRequest",
+            "properties": {
+                "customClass": {
+                    "$ref": "CustomClass",
+                    "description": "Required. The CustomClass to update. The CustomClass's `name` field is used to identify the CustomClass to update. Format: `projects/{project}/locations/{location}/customClasses/{custom_class}`."
+                },
+                "updateMask": {
+                    "description": "The list of fields to be updated. If empty, all fields are considered for update.",
+                    "format": "google-fieldmask",
+                    "type": "string"
+                },
+                "validateOnly": {
+                    "description": "If set, validate the request and preview the updated CustomClass, but do not actually update it.",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "UpdatePhraseSetRequest": {
+            "description": "Request message for the UpdatePhraseSet method.",
+            "id": "UpdatePhraseSetRequest",
+            "properties": {
+                "phraseSet": {
+                    "$ref": "PhraseSet",
+                    "description": "Required. The PhraseSet to update. The PhraseSet's `name` field is used to identify the PhraseSet to update. Format: `projects/{project}/locations/{location}/phraseSets/{phrase_set}`."
+                },
+                "updateMask": {
+                    "description": "The list of fields to update. If empty, all non-default valued fields are considered for update. Use `*` to update the entire PhraseSet resource.",
+                    "format": "google-fieldmask",
+                    "type": "string"
+                },
+                "validateOnly": {
+                    "description": "If set, validate the request and preview the updated PhraseSet, but do not actually update it.",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "UpdateRecognizerRequest": {
+            "description": "Request message for the UpdateRecognizer method.",
+            "id": "UpdateRecognizerRequest",
+            "properties": {
+                "recognizer": {
+                    "$ref": "Recognizer",
+                    "description": "Required. The Recognizer to update. The Recognizer's `name` field is used to identify the Recognizer to update. Format: `projects/{project}/locations/{location}/recognizers/{recognizer}`."
+                },
+                "updateMask": {
+                    "description": "The list of fields to update. If empty, all non-default valued fields are considered for update. Use `*` to update the entire Recognizer resource.",
+                    "format": "google-fieldmask",
+                    "type": "string"
+                },
+                "validateOnly": {
+                    "description": "If set, validate the request and preview the updated Recognizer, but do not actually update it.",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "VttOutputFileFormatConfig": {
+            "description": "Output configurations for [WebVTT](https://www.w3.org/TR/webvtt1/) formatted subtitle file.",
+            "id": "VttOutputFileFormatConfig",
+            "properties": {},
+            "type": "object"
+        },
+        "WordInfo": {
+            "description": "Word-specific information for recognized words.",
+            "id": "WordInfo",
+            "properties": {
+                "confidence": {
+                    "description": "The confidence estimate between 0.0 and 1.0. A higher number indicates an estimated greater likelihood that the recognized words are correct. This field is set only for the top alternative of a non-streaming result or, of a streaming result where is_final is set to `true`. This field is not guaranteed to be accurate and users should not rely on it to be always provided. The default of 0.0 is a sentinel value indicating `confidence` was not set.",
+                    "format": "float",
+                    "type": "number"
+                },
+                "endOffset": {
+                    "description": "Time offset relative to the beginning of the audio, and corresponding to the end of the spoken word. This field is only set if enable_word_time_offsets is `true` and only in the top hypothesis. This is an experimental feature and the accuracy of the time offset can vary.",
+                    "format": "google-duration",
+                    "type": "string"
+                },
+                "speakerLabel": {
+                    "description": "A distinct label is assigned for every speaker within the audio. This field specifies which one of those speakers was detected to have spoken this word. `speaker_label` is set if SpeakerDiarizationConfig is given and only in the top alternative.",
+                    "type": "string"
+                },
+                "startOffset": {
+                    "description": "Time offset relative to the beginning of the audio, and corresponding to the start of the spoken word. This field is only set if enable_word_time_offsets is `true` and only in the top hypothesis. This is an experimental feature and the accuracy of the time offset can vary.",
+                    "format": "google-duration",
+                    "type": "string"
+                },
+                "word": {
+                    "description": "The word corresponding to this set of information.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        }
+    }
+}

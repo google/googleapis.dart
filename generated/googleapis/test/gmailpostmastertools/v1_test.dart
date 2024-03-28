@@ -10,7 +10,6 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 // ignore_for_file: unreachable_from_main
 // ignore_for_file: unused_local_variable
@@ -281,6 +280,8 @@ api.TrafficStats buildTrafficStats() {
     o.spammyFeedbackLoops = buildUnnamed5();
     o.spfSuccessRatio = 42.0;
     o.userReportedSpamRatio = 42.0;
+    o.userReportedSpamRatioLowerBound = 42.0;
+    o.userReportedSpamRatioUpperBound = 42.0;
   }
   buildCounterTrafficStats--;
   return o;
@@ -322,6 +323,14 @@ void checkTrafficStats(api.TrafficStats o) {
     );
     unittest.expect(
       o.userReportedSpamRatio!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.userReportedSpamRatioLowerBound!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.userReportedSpamRatioUpperBound!,
       unittest.equals(42.0),
     );
   }

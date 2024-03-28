@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Campaign Manager 360 API - v3.5
@@ -22,7 +21,7 @@
 /// Create an instance of [DfareportingApi] to access these resources:
 ///
 /// - [MediaResource]
-library dfareporting_v3_5;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -491,140 +490,7 @@ class CreativeCustomEvent {
 typedef DimensionValue = $DimensionValue;
 
 /// Extra information added to operations that support Scotty media requests.
-class MediaRequestInfo {
-  /// The number of current bytes uploaded or downloaded.
-  core.String? currentBytes;
-
-  /// Data to be copied to backend requests.
-  ///
-  /// Custom data is returned to Scotty in the agent_state field, which Scotty
-  /// will then provide in subsequent upload notifications.
-  core.String? customData;
-
-  /// Set if the http request info is diff encoded.
-  ///
-  /// The value of this field is the version number of the base revision. This
-  /// is corresponding to Apiary's mediaDiffObjectVersion
-  /// (//depot/google3/java/com/google/api/server/media/variable/DiffObjectVersionVariable.java).
-  /// See go/esf-scotty-diff-upload for more information.
-  core.String? diffObjectVersion;
-
-  /// The existence of the final_status field indicates that this is the last
-  /// call to the agent for this request_id.
-  ///
-  /// http://google3/uploader/agent/scotty_agent.proto?l=737&rcl=347601929
-  core.int? finalStatus;
-
-  /// The type of notification received from Scotty.
-  /// Possible string values are:
-  /// - "START" : Such requests signals the start of a request containing media
-  /// upload. Only the media field(s) in the inserted/updated resource are set.
-  /// The response should either return an error or succeed. On success,
-  /// responses don't need to contain anything.
-  /// - "PROGRESS" : Such requests signals that the upload has progressed and
-  /// that the backend might want to access the media file specified in relevant
-  /// fields in the resource. Only the media field(s) in the inserted/updated
-  /// resource are set. The response should either return an error or succeed.
-  /// On success, responses don't need to contain anything.
-  /// - "END" : Such requests signals the end of a request containing media
-  /// upload. END should be handled just like normal Insert/Upload requests,
-  /// that is, they should process the request and return a complete resource in
-  /// the response. Pointers to media data (a GFS path usually) appear in the
-  /// relevant fields in the inserted/updated resource. See gdata.Media in
-  /// data.proto.
-  /// - "RESPONSE_SENT" : Such requests occur after an END and signal that the
-  /// response has been sent back to the client. RESPONSE_SENT is only sent to
-  /// the backend if it is configured to receive them. The response does not
-  /// need to contain anything.
-  /// - "ERROR" : Such requests indicate that an error occurred while processing
-  /// the request. ERROR is only sent to the backend if it is configured to
-  /// receive them. It is not guaranteed that all errors will result in this
-  /// notification to the backend, even if the backend requests them. Since
-  /// these requests are just for informational purposes, the response does not
-  /// need to contain anything.
-  core.String? notificationType;
-
-  /// The Scotty request ID.
-  core.String? requestId;
-
-  /// The partition of the Scotty server handling this request.
-  ///
-  /// type is uploader_service.RequestReceivedParamsServingInfo
-  /// LINT.IfChange(request_received_params_serving_info_annotations)
-  /// LINT.ThenChange()
-  core.String? requestReceivedParamsServingInfo;
-  core.List<core.int> get requestReceivedParamsServingInfoAsBytes =>
-      convert.base64.decode(requestReceivedParamsServingInfo!);
-
-  set requestReceivedParamsServingInfoAsBytes(core.List<core.int> bytes_) {
-    requestReceivedParamsServingInfo =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
-  }
-
-  /// The total size of the file.
-  core.String? totalBytes;
-
-  /// Whether the total bytes field contains an estimated data.
-  core.bool? totalBytesIsEstimated;
-
-  MediaRequestInfo({
-    this.currentBytes,
-    this.customData,
-    this.diffObjectVersion,
-    this.finalStatus,
-    this.notificationType,
-    this.requestId,
-    this.requestReceivedParamsServingInfo,
-    this.totalBytes,
-    this.totalBytesIsEstimated,
-  });
-
-  MediaRequestInfo.fromJson(core.Map json_)
-      : this(
-          currentBytes: json_.containsKey('currentBytes')
-              ? json_['currentBytes'] as core.String
-              : null,
-          customData: json_.containsKey('customData')
-              ? json_['customData'] as core.String
-              : null,
-          diffObjectVersion: json_.containsKey('diffObjectVersion')
-              ? json_['diffObjectVersion'] as core.String
-              : null,
-          finalStatus: json_.containsKey('finalStatus')
-              ? json_['finalStatus'] as core.int
-              : null,
-          notificationType: json_.containsKey('notificationType')
-              ? json_['notificationType'] as core.String
-              : null,
-          requestId: json_.containsKey('requestId')
-              ? json_['requestId'] as core.String
-              : null,
-          requestReceivedParamsServingInfo:
-              json_.containsKey('requestReceivedParamsServingInfo')
-                  ? json_['requestReceivedParamsServingInfo'] as core.String
-                  : null,
-          totalBytes: json_.containsKey('totalBytes')
-              ? json_['totalBytes'] as core.String
-              : null,
-          totalBytesIsEstimated: json_.containsKey('totalBytesIsEstimated')
-              ? json_['totalBytesIsEstimated'] as core.bool
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (currentBytes != null) 'currentBytes': currentBytes!,
-        if (customData != null) 'customData': customData!,
-        if (diffObjectVersion != null) 'diffObjectVersion': diffObjectVersion!,
-        if (finalStatus != null) 'finalStatus': finalStatus!,
-        if (notificationType != null) 'notificationType': notificationType!,
-        if (requestId != null) 'requestId': requestId!,
-        if (requestReceivedParamsServingInfo != null)
-          'requestReceivedParamsServingInfo': requestReceivedParamsServingInfo!,
-        if (totalBytes != null) 'totalBytes': totalBytes!,
-        if (totalBytesIsEstimated != null)
-          'totalBytesIsEstimated': totalBytesIsEstimated!,
-      };
-}
+typedef MediaRequestInfo = $MediaRequestInfo;
 
 /// This message is for backends to pass their scotty media specific fields to
 /// ESF.

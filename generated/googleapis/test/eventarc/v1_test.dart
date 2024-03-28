@@ -10,7 +10,6 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 // ignore_for_file: unreachable_from_main
 // ignore_for_file: unused_local_variable
@@ -293,6 +292,8 @@ api.Destination buildDestination() {
     o.cloudFunction = 'foo';
     o.cloudRun = buildCloudRun();
     o.gke = buildGKE();
+    o.httpEndpoint = buildHttpEndpoint();
+    o.networkConfig = buildNetworkConfig();
     o.workflow = 'foo';
   }
   buildCounterDestination--;
@@ -308,6 +309,8 @@ void checkDestination(api.Destination o) {
     );
     checkCloudRun(o.cloudRun!);
     checkGKE(o.gke!);
+    checkHttpEndpoint(o.httpEndpoint!);
+    checkNetworkConfig(o.networkConfig!);
     unittest.expect(
       o.workflow!,
       unittest.equals('foo'),
@@ -809,6 +812,28 @@ void checkGoogleRpcStatus(api.GoogleRpcStatus o) {
   buildCounterGoogleRpcStatus--;
 }
 
+core.int buildCounterHttpEndpoint = 0;
+api.HttpEndpoint buildHttpEndpoint() {
+  final o = api.HttpEndpoint();
+  buildCounterHttpEndpoint++;
+  if (buildCounterHttpEndpoint < 3) {
+    o.uri = 'foo';
+  }
+  buildCounterHttpEndpoint--;
+  return o;
+}
+
+void checkHttpEndpoint(api.HttpEndpoint o) {
+  buildCounterHttpEndpoint++;
+  if (buildCounterHttpEndpoint < 3) {
+    unittest.expect(
+      o.uri!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterHttpEndpoint--;
+}
+
 core.List<api.ChannelConnection> buildUnnamed9() => [
       buildChannelConnection(),
       buildChannelConnection(),
@@ -1156,6 +1181,28 @@ void checkLocation(api.Location o) {
     );
   }
   buildCounterLocation--;
+}
+
+core.int buildCounterNetworkConfig = 0;
+api.NetworkConfig buildNetworkConfig() {
+  final o = api.NetworkConfig();
+  buildCounterNetworkConfig++;
+  if (buildCounterNetworkConfig < 3) {
+    o.networkAttachment = 'foo';
+  }
+  buildCounterNetworkConfig--;
+  return o;
+}
+
+void checkNetworkConfig(api.NetworkConfig o) {
+  buildCounterNetworkConfig++;
+  if (buildCounterNetworkConfig < 3) {
+    unittest.expect(
+      o.networkAttachment!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterNetworkConfig--;
 }
 
 core.List<api.AuditConfig> buildUnnamed20() => [
@@ -1706,6 +1753,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-HttpEndpoint', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildHttpEndpoint();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.HttpEndpoint.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkHttpEndpoint(od);
+    });
+  });
+
   unittest.group('obj-schema-ListChannelConnectionsResponse', () {
     unittest.test('to-json--from-json', () async {
       final o = buildListChannelConnectionsResponse();
@@ -1763,6 +1820,16 @@ void main() {
       final od =
           api.Location.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkLocation(od);
+    });
+  });
+
+  unittest.group('obj-schema-NetworkConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildNetworkConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.NetworkConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkNetworkConfig(od);
     });
   });
 

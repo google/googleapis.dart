@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Ad Experience Report API - v1
@@ -23,7 +22,7 @@
 ///
 /// - [SitesResource]
 /// - [ViolatingSitesResource]
-library adexperiencereport_v1;
+library;
 
 import 'dart:async' as async;
 import 'dart:core' as core;
@@ -169,6 +168,9 @@ class PlatformSummary {
   ///
   /// No longer populated, because there is no longer any semantic difference
   /// between sites in different regions.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<core.String>? region;
 
   /// A link to the full Ad Experience Report for the site on this platform..

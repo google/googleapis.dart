@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Smart Device Management API - v1
@@ -24,7 +23,7 @@
 ///   - [EnterprisesDevicesResource]
 ///   - [EnterprisesStructuresResource]
 ///     - [EnterprisesStructuresRoomsResource]
-library smartdevicemanagement_v1;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -43,10 +42,6 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 class SmartDeviceManagementApi {
   /// See and/or control the devices that you selected
   static const sdmServiceScope = 'https://www.googleapis.com/auth/sdm.service';
-
-  /// See your primary Google Account email address
-  static const userinfoEmailScope =
-      'https://www.googleapis.com/auth/userinfo.email';
 
   final commons.ApiRequester _requester;
 

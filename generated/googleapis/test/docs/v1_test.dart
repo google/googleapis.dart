@@ -10,7 +10,6 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 // ignore_for_file: unreachable_from_main
 // ignore_for_file: unused_local_variable
@@ -1020,6 +1019,7 @@ api.DocumentStyle buildDocumentStyle() {
     o.evenPageHeaderId = 'foo';
     o.firstPageFooterId = 'foo';
     o.firstPageHeaderId = 'foo';
+    o.flipPageOrientation = true;
     o.marginBottom = buildDimension();
     o.marginFooter = buildDimension();
     o.marginHeader = buildDimension();
@@ -1064,6 +1064,7 @@ void checkDocumentStyle(api.DocumentStyle o) {
       o.firstPageHeaderId!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.flipPageOrientation!, unittest.isTrue);
     checkDimension(o.marginBottom!);
     checkDimension(o.marginFooter!);
     checkDimension(o.marginHeader!);
@@ -1094,6 +1095,7 @@ api.DocumentStyleSuggestionState buildDocumentStyleSuggestionState() {
     o.evenPageHeaderIdSuggested = true;
     o.firstPageFooterIdSuggested = true;
     o.firstPageHeaderIdSuggested = true;
+    o.flipPageOrientationSuggested = true;
     o.marginBottomSuggested = true;
     o.marginFooterSuggested = true;
     o.marginHeaderSuggested = true;
@@ -1120,6 +1122,7 @@ void checkDocumentStyleSuggestionState(api.DocumentStyleSuggestionState o) {
     unittest.expect(o.evenPageHeaderIdSuggested!, unittest.isTrue);
     unittest.expect(o.firstPageFooterIdSuggested!, unittest.isTrue);
     unittest.expect(o.firstPageHeaderIdSuggested!, unittest.isTrue);
+    unittest.expect(o.flipPageOrientationSuggested!, unittest.isTrue);
     unittest.expect(o.marginBottomSuggested!, unittest.isTrue);
     unittest.expect(o.marginFooterSuggested!, unittest.isTrue);
     unittest.expect(o.marginHeaderSuggested!, unittest.isTrue);
@@ -3857,6 +3860,7 @@ api.SectionStyle buildSectionStyle() {
     o.evenPageHeaderId = 'foo';
     o.firstPageFooterId = 'foo';
     o.firstPageHeaderId = 'foo';
+    o.flipPageOrientation = true;
     o.marginBottom = buildDimension();
     o.marginFooter = buildDimension();
     o.marginHeader = buildDimension();
@@ -3907,6 +3911,7 @@ void checkSectionStyle(api.SectionStyle o) {
       o.firstPageHeaderId!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.flipPageOrientation!, unittest.isTrue);
     checkDimension(o.marginBottom!);
     checkDimension(o.marginFooter!);
     checkDimension(o.marginHeader!);

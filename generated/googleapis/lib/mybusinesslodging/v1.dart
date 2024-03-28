@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// My Business Lodging API - v1
@@ -23,7 +22,7 @@
 ///
 /// - [LocationsResource]
 ///   - [LocationsLodgingResource]
-library mybusinesslodging_v1;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -1087,6 +1086,9 @@ class Connectivity {
 }
 
 /// An eco certificate awarded to the hotel.
+///
+/// Deprecated: this message is no longer populated. All certification data is
+/// now provided by BeCause.
 class EcoCertification {
   /// Whether the eco certificate was awarded or not.
   core.bool? awarded;
@@ -1277,7 +1279,7 @@ class EnergyEfficiency {
 
   /// Green building design.
   ///
-  /// True if BREEAM-* or LEED-* certified.
+  /// True if the property has been awarded a relevant certification.
   ///
   /// Output only.
   core.bool? greenBuildingDesign;
@@ -7264,6 +7266,12 @@ class Sustainability {
   EnergyEfficiency? energyEfficiency;
 
   /// Sustainability certifications the hotel has been awarded.
+  ///
+  /// Deprecated: this field is no longer populated. All certification data is
+  /// now provided by BeCause.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   SustainabilityCertifications? sustainabilityCertifications;
 
   /// Sustainable sourcing practices implemented at the hotel.
@@ -7321,6 +7329,9 @@ class Sustainability {
 }
 
 /// Sustainability certifications the hotel has been awarded.
+///
+/// Deprecated: this message is no longer populated. All certification data is
+/// now provided by BeCause.
 class SustainabilityCertifications {
   /// BREEAM certification.
   /// Possible string values are:
@@ -7349,9 +7360,6 @@ class SustainabilityCertifications {
   core.List<EcoCertification>? ecoCertifications;
 
   /// LEED certification.
-  ///
-  /// Deprecated: this field is no longer populated. LEED certification status
-  /// is now provided directly by USGBC.
   /// Possible string values are:
   /// - "LEED_CERTIFICATION_UNSPECIFIED" : Default LeedCertification. Do not
   /// use.
@@ -7360,15 +7368,9 @@ class SustainabilityCertifications {
   /// - "LEED_SILVER" : LEED Silver.
   /// - "LEED_GOLD" : LEED Gold.
   /// - "LEED_PLATINUM" : LEED Platinum.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
   core.String? leedCertification;
 
   /// LEED certification exception.
-  ///
-  /// Deprecated: this field is no longer populated. LEED certification status
-  /// is now provided directly by USGBC.
   /// Possible string values are:
   /// - "EXCEPTION_UNSPECIFIED" : Default unspecified exception. Use this only
   /// if a more specific exception does not match.
@@ -7377,9 +7379,6 @@ class SustainabilityCertifications {
   /// - "DEPENDENT_ON_SEASON" : Amenity or service availability is seasonal.
   /// - "DEPENDENT_ON_DAY_OF_WEEK" : Amenity or service availability depends on
   /// the day of the week.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
   core.String? leedCertificationException;
 
   SustainabilityCertifications({

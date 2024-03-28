@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Google Classroom API - v1
@@ -33,7 +32,7 @@
 /// - [UserProfilesResource]
 ///   - [UserProfilesGuardianInvitationsResource]
 ///   - [UserProfilesGuardiansResource]
-library classroom_v1;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -1295,9 +1294,9 @@ class CoursesCourseWorkResource {
   /// [updateMask] - Mask that identifies which fields on the course work to
   /// update. This field is required to do an update. The update fails if
   /// invalid fields are specified. If a field supports empty values, it can be
-  /// cleared by specifying it in the update mask and not in the CourseWork
+  /// cleared by specifying it in the update mask and not in the `CourseWork`
   /// object. If a field that does not support empty values is included in the
-  /// update mask and not set in the CourseWork object, an `INVALID_ARGUMENT`
+  /// update mask and not set in the `CourseWork` object, an `INVALID_ARGUMENT`
   /// error is returned. The following fields may be specified by teachers: *
   /// `title` * `description` * `state` * `due_date` * `due_time` * `max_points`
   /// * `scheduled_time` * `submission_modification_mode` * `topic_id`
@@ -6442,8 +6441,8 @@ class Student {
 
 /// Student submission for course work.
 ///
-/// StudentSubmission items are generated when a CourseWork item is created.
-/// StudentSubmissions that have never been accessed (i.e. with `state` = NEW)
+/// `StudentSubmission` items are generated when a `CourseWork` item is created.
+/// Student submissions that have never been accessed (i.e. with `state` = NEW)
 /// may not have a creation time or update time.
 class StudentSubmission {
   /// Absolute link to the submission in the Classroom web UI.

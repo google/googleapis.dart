@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Cloud Deploy API - v1
@@ -19,13 +18,16 @@
 ///
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsCustomTargetTypesResource]
 ///     - [ProjectsLocationsDeliveryPipelinesResource]
+///       - [ProjectsLocationsDeliveryPipelinesAutomationRunsResource]
+///       - [ProjectsLocationsDeliveryPipelinesAutomationsResource]
 ///       - [ProjectsLocationsDeliveryPipelinesReleasesResource]
 ///         - [ProjectsLocationsDeliveryPipelinesReleasesRolloutsResource]
 /// - [ProjectsLocationsDeliveryPipelinesReleasesRolloutsJobRunsResource]
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsTargetsResource]
-library clouddeploy_v1;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -69,6 +71,8 @@ class ProjectsResource {
 class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsCustomTargetTypesResource get customTargetTypes =>
+      ProjectsLocationsCustomTargetTypesResource(_requester);
   ProjectsLocationsDeliveryPipelinesResource get deliveryPipelines =>
       ProjectsLocationsDeliveryPipelinesResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
@@ -201,9 +205,434 @@ class ProjectsLocationsResource {
   }
 }
 
+class ProjectsLocationsCustomTargetTypesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsCustomTargetTypesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new CustomTargetType in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent collection in which the `CustomTargetType`
+  /// should be created. Format should be
+  /// `projects/{project_id}/locations/{location_name}`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [customTargetTypeId] - Required. ID of the `CustomTargetType`.
+  ///
+  /// [requestId] - Optional. A request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server knows
+  /// to ignore the request if it has already been completed. The server
+  /// guarantees that for at least 60 minutes after the first request. For
+  /// example, consider a situation where you make an initial request and the
+  /// request times out. If you make the request again with the same request ID,
+  /// the server can check if original operation with the same request ID was
+  /// received, and if so, will ignore the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [validateOnly] - Optional. If set to true, the request is validated and
+  /// the user is provided with an expected result, but no actual change is
+  /// made.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    CustomTargetType request,
+    core.String parent, {
+    core.String? customTargetTypeId,
+    core.String? requestId,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (customTargetTypeId != null)
+        'customTargetTypeId': [customTargetTypeId],
+      if (requestId != null) 'requestId': [requestId],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/customTargetTypes';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single CustomTargetType.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the `CustomTargetType` to delete. Format
+  /// must be
+  /// `projects/{project_id}/locations/{location_name}/customTargetTypes/{custom_target_type}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/customTargetTypes/\[^/\]+$`.
+  ///
+  /// [allowMissing] - Optional. If set to true, then deleting an already
+  /// deleted or non-existing `CustomTargetType` will succeed.
+  ///
+  /// [etag] - Optional. This checksum is computed by the server based on the
+  /// value of other fields, and may be sent on update and delete requests to
+  /// ensure the client has an up-to-date value before proceeding.
+  ///
+  /// [requestId] - Optional. A request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server knows
+  /// to ignore the request if it has already been completed. The server
+  /// guarantees that for at least 60 minutes after the first request. For
+  /// example, consider a situation where you make an initial request and the
+  /// request times out. If you make the request again with the same request ID,
+  /// the server can check if original operation with the same request ID was
+  /// received, and if so, will ignore the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [validateOnly] - Optional. If set to true, the request is validated but no
+  /// actual change is made.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.bool? allowMissing,
+    core.String? etag,
+    core.String? requestId,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
+      if (etag != null) 'etag': [etag],
+      if (requestId != null) 'requestId': [requestId],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single CustomTargetType.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the `CustomTargetType`. Format must be
+  /// `projects/{project_id}/locations/{location_name}/customTargetTypes/{custom_target_type}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/customTargetTypes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CustomTargetType].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CustomTargetType> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return CustomTargetType.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/customTargetTypes/\[^/\]+$`.
+  ///
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy. Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected. Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset. The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1. To learn which resources support
+  /// conditions in their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(
+    core.String resource, {
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (options_requestedPolicyVersion != null)
+        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists CustomTargetTypes in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent that owns this collection of custom target
+  /// types. Format must be `projects/{project_id}/locations/{location_name}`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filter custom target types to be returned. See
+  /// https://google.aip.dev/160 for more details.
+  ///
+  /// [orderBy] - Optional. Field to sort by. See
+  /// https://google.aip.dev/132#ordering for more details.
+  ///
+  /// [pageSize] - Optional. The maximum number of `CustomTargetType` objects to
+  /// return. The service may return fewer than this value. If unspecified, at
+  /// most 50 `CustomTargetType` objects will be returned. The maximum value is
+  /// 1000; values above 1000 will be set to 1000.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListCustomTargetTypes` call. Provide this to retrieve the subsequent
+  /// page. When paginating, all other provided parameters match the call that
+  /// provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListCustomTargetTypesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListCustomTargetTypesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/customTargetTypes';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListCustomTargetTypesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a single CustomTargetType.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Optional. Name of the `CustomTargetType`. Format is
+  /// `projects/{project}/locations/{location}/customTargetTypes/a-z{0,62}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/customTargetTypes/\[^/\]+$`.
+  ///
+  /// [allowMissing] - Optional. If set to true, updating a `CustomTargetType`
+  /// that does not exist will result in the creation of a new
+  /// `CustomTargetType`.
+  ///
+  /// [requestId] - Optional. A request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server knows
+  /// to ignore the request if it has already been completed. The server
+  /// guarantees that for at least 60 minutes after the first request. For
+  /// example, consider a situation where you make an initial request and the
+  /// request times out. If you make the request again with the same request ID,
+  /// the server can check if original operation with the same request ID was
+  /// received, and if so, will ignore the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [updateMask] - Required. Field mask is used to specify the fields to be
+  /// overwritten in the `CustomTargetType` resource by the update. The fields
+  /// specified in the update_mask are relative to the resource, not the full
+  /// request. A field will be overwritten if it's in the mask. If the user
+  /// doesn't provide a mask then all fields are overwritten.
+  ///
+  /// [validateOnly] - Optional. If set to true, the request is validated and
+  /// the user is provided with an expected result, but no actual change is
+  /// made.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    CustomTargetType request,
+    core.String name, {
+    core.bool? allowMissing,
+    core.String? requestId,
+    core.String? updateMask,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
+      if (requestId != null) 'requestId': [requestId],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
+  /// and `PERMISSION_DENIED` errors.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/customTargetTypes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(
+    SetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsLocationsDeliveryPipelinesResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsDeliveryPipelinesAutomationRunsResource get automationRuns =>
+      ProjectsLocationsDeliveryPipelinesAutomationRunsResource(_requester);
+  ProjectsLocationsDeliveryPipelinesAutomationsResource get automations =>
+      ProjectsLocationsDeliveryPipelinesAutomationsResource(_requester);
   ProjectsLocationsDeliveryPipelinesReleasesResource get releases =>
       ProjectsLocationsDeliveryPipelinesReleasesResource(_requester);
 
@@ -218,15 +647,15 @@ class ProjectsLocationsDeliveryPipelinesResource {
   ///
   /// [parent] - Required. The parent collection in which the `DeliveryPipeline`
   /// should be created. Format should be
-  /// projects/{project_id}/locations/{location_name}.
+  /// `projects/{project_id}/locations/{location_name}`.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [deliveryPipelineId] - Required. ID of the `DeliveryPipeline`.
   ///
   /// [requestId] - Optional. A request ID to identify requests. Specify a
-  /// unique request ID so that if you must retry your request, the server will
-  /// know to ignore the request if it has already been completed. The server
-  /// will guarantee that for at least 60 minutes since the first request. For
+  /// unique request ID so that if you must retry your request, the server knows
+  /// to ignore the request if it has already been completed. The server
+  /// guarantees that for at least 60 minutes after the first request. For
   /// example, consider a situation where you make an initial request and the
   /// request times out. If you make the request again with the same request ID,
   /// the server can check if original operation with the same request ID was
@@ -283,7 +712,7 @@ class ProjectsLocationsDeliveryPipelinesResource {
   ///
   /// [name] - Required. The name of the `DeliveryPipeline` to delete. Format
   /// should be
-  /// projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}.
+  /// `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/deliveryPipelines/\[^/\]+$`.
   ///
@@ -299,9 +728,9 @@ class ProjectsLocationsDeliveryPipelinesResource {
   /// the pipeline has no child resources.
   ///
   /// [requestId] - Optional. A request ID to identify requests. Specify a
-  /// unique request ID so that if you must retry your request, the server will
-  /// know to ignore the request if it has already been completed. The server
-  /// will guarantee that for at least 60 minutes after the first request. For
+  /// unique request ID so that if you must retry your request, the server knows
+  /// to ignore the request if it has already been completed. The server
+  /// guarantees that for at least 60 minutes after the first request. For
   /// example, consider a situation where you make an initial request and the
   /// request times out. If you make the request again with the same request ID,
   /// the server can check if original operation with the same request ID was
@@ -356,7 +785,7 @@ class ProjectsLocationsDeliveryPipelinesResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the `DeliveryPipeline`. Format must be
-  /// projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}.
+  /// `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/deliveryPipelines/\[^/\]+$`.
   ///
@@ -451,7 +880,7 @@ class ProjectsLocationsDeliveryPipelinesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent, which owns this collection of pipelines.
-  /// Format must be projects/{project_id}/locations/{location_name}.
+  /// Format must be `projects/{project_id}/locations/{location_name}`.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - Filter pipelines to be returned. See https://google.aip.dev/160
@@ -514,7 +943,7 @@ class ProjectsLocationsDeliveryPipelinesResource {
   /// Request parameters:
   ///
   /// [name] - Optional. Name of the `DeliveryPipeline`. Format is
-  /// projects/{project}/ locations/{location}/deliveryPipelines/a-z{0,62}.
+  /// `projects/{project}/locations/{location}/deliveryPipelines/a-z{0,62}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/deliveryPipelines/\[^/\]+$`.
   ///
@@ -523,9 +952,9 @@ class ProjectsLocationsDeliveryPipelinesResource {
   /// `DeliveryPipeline`.
   ///
   /// [requestId] - Optional. A request ID to identify requests. Specify a
-  /// unique request ID so that if you must retry your request, the server will
-  /// know to ignore the request if it has already been completed. The server
-  /// will guarantee that for at least 60 minutes since the first request. For
+  /// unique request ID so that if you must retry your request, the server knows
+  /// to ignore the request if it has already been completed. The server
+  /// guarantees that for at least 60 minutes after the first request. For
   /// example, consider a situation where you make an initial request and the
   /// request times out. If you make the request again with the same request ID,
   /// the server can check if original operation with the same request ID was
@@ -537,8 +966,8 @@ class ProjectsLocationsDeliveryPipelinesResource {
   /// [updateMask] - Required. Field mask is used to specify the fields to be
   /// overwritten in the `DeliveryPipeline` resource by the update. The fields
   /// specified in the update_mask are relative to the resource, not the full
-  /// request. A field will be overwritten if it is in the mask. If the user
-  /// does not provide a mask then all fields will be overwritten.
+  /// request. A field will be overwritten if it's in the mask. If the user
+  /// doesn't provide a mask then all fields are overwritten.
   ///
   /// [validateOnly] - Optional. If set to true, the request is validated and
   /// the user is provided with an expected result, but no actual change is
@@ -581,6 +1010,50 @@ class ProjectsLocationsDeliveryPipelinesResource {
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Creates a `Rollout` to roll back the specified target.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The `DeliveryPipeline` for which the rollback `Rollout`
+  /// should be created. Format should be
+  /// `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/deliveryPipelines/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RollbackTargetResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RollbackTargetResponse> rollbackTarget(
+    RollbackTargetRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':rollbackTarget';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return RollbackTargetResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -682,6 +1155,479 @@ class ProjectsLocationsDeliveryPipelinesResource {
   }
 }
 
+class ProjectsLocationsDeliveryPipelinesAutomationRunsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsDeliveryPipelinesAutomationRunsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Cancels an AutomationRun.
+  ///
+  /// The `state` of the `AutomationRun` after cancelling is `CANCELLED`.
+  /// `CancelAutomationRun` can be called on AutomationRun in the state
+  /// `IN_PROGRESS` and `PENDING`; AutomationRun in a different state returns an
+  /// `FAILED_PRECONDITION` error.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the `AutomationRun`. Format is
+  /// `projects/{project}/locations/{location}/deliveryPipelines/{delivery_pipeline}/automationRuns/{automation_run}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/deliveryPipelines/\[^/\]+/automationRuns/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CancelAutomationRunResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CancelAutomationRunResponse> cancel(
+    CancelAutomationRunRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return CancelAutomationRunResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single AutomationRun.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the `AutomationRun`. Format must be
+  /// `projects/{project}/locations/{location}/deliveryPipelines/{delivery_pipeline}/automationRuns/{automation_run}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/deliveryPipelines/\[^/\]+/automationRuns/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AutomationRun].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AutomationRun> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AutomationRun.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists AutomationRuns in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent `Delivery Pipeline`, which owns this
+  /// collection of automationRuns. Format must be
+  /// `projects/{project}/locations/{location}/deliveryPipelines/{delivery_pipeline}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/deliveryPipelines/\[^/\]+$`.
+  ///
+  /// [filter] - Filter automationRuns to be returned. All fields can be used in
+  /// the filter.
+  ///
+  /// [orderBy] - Field to sort by.
+  ///
+  /// [pageSize] - The maximum number of automationRuns to return. The service
+  /// may return fewer than this value. If unspecified, at most 50
+  /// automationRuns will be returned. The maximum value is 1000; values above
+  /// 1000 will be set to 1000.
+  ///
+  /// [pageToken] - A page token, received from a previous `ListAutomationRuns`
+  /// call. Provide this to retrieve the subsequent page. When paginating, all
+  /// other provided parameters match the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAutomationRunsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAutomationRunsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/automationRuns';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListAutomationRunsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsDeliveryPipelinesAutomationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsDeliveryPipelinesAutomationsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new Automation in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent collection in which the `Automation`
+  /// should be created. Format should be
+  /// `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/deliveryPipelines/\[^/\]+$`.
+  ///
+  /// [automationId] - Required. ID of the `Automation`.
+  ///
+  /// [requestId] - Optional. A request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server knows
+  /// to ignore the request if it has already been completed. The server
+  /// guarantees that for at least 60 minutes after the first request. For
+  /// example, consider a situation where you make an initial request and the
+  /// request times out. If you make the request again with the same request ID,
+  /// the server can check if original operation with the same request ID was
+  /// received, and if so, will ignore the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [validateOnly] - Optional. If set to true, the request is validated and
+  /// the user is provided with an expected result, but no actual change is
+  /// made.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    Automation request,
+    core.String parent, {
+    core.String? automationId,
+    core.String? requestId,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (automationId != null) 'automationId': [automationId],
+      if (requestId != null) 'requestId': [requestId],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/automations';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single Automation resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the `Automation` to delete. Format should
+  /// be
+  /// `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}/automations/{automation_name}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/deliveryPipelines/\[^/\]+/automations/\[^/\]+$`.
+  ///
+  /// [allowMissing] - Optional. If set to true, then deleting an already
+  /// deleted or non-existing `Automation` will succeed.
+  ///
+  /// [etag] - Optional. The weak etag of the request. This checksum is computed
+  /// by the server based on the value of other fields, and may be sent on
+  /// update and delete requests to ensure the client has an up-to-date value
+  /// before proceeding.
+  ///
+  /// [requestId] - Optional. A request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server knows
+  /// to ignore the request if it has already been completed. The server
+  /// guarantees that for at least 60 minutes after the first request. For
+  /// example, consider a situation where you make an initial request and the
+  /// request times out. If you make the request again with the same request ID,
+  /// the server can check if original operation with the same request ID was
+  /// received, and if so, will ignore the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [validateOnly] - Optional. If set, validate the request and verify whether
+  /// the resource exists, but do not actually post it.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.bool? allowMissing,
+    core.String? etag,
+    core.String? requestId,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
+      if (etag != null) 'etag': [etag],
+      if (requestId != null) 'requestId': [requestId],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single Automation.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the `Automation`. Format must be
+  /// `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}/automations/{automation_name}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/deliveryPipelines/\[^/\]+/automations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Automation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Automation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Automation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists Automations in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent `Delivery Pipeline`, which owns this
+  /// collection of automations. Format must be
+  /// `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/deliveryPipelines/\[^/\]+$`.
+  ///
+  /// [filter] - Filter automations to be returned. All fields can be used in
+  /// the filter.
+  ///
+  /// [orderBy] - Field to sort by.
+  ///
+  /// [pageSize] - The maximum number of automations to return. The service may
+  /// return fewer than this value. If unspecified, at most 50 automations will
+  /// be returned. The maximum value is 1000; values above 1000 will be set to
+  /// 1000.
+  ///
+  /// [pageToken] - A page token, received from a previous `ListAutomations`
+  /// call. Provide this to retrieve the subsequent page. When paginating, all
+  /// other provided parameters match the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAutomationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAutomationsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/automations';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListAutomationsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the parameters of a single Automation resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. Name of the `Automation`. Format is
+  /// `projects/{project}/locations/{location}/deliveryPipelines/{delivery_pipeline}/automations/{automation}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/deliveryPipelines/\[^/\]+/automations/\[^/\]+$`.
+  ///
+  /// [allowMissing] - Optional. If set to true, updating a `Automation` that
+  /// does not exist will result in the creation of a new `Automation`.
+  ///
+  /// [requestId] - Optional. A request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server knows
+  /// to ignore the request if it has already been completed. The server
+  /// guarantees that for at least 60 minutes after the first request. For
+  /// example, consider a situation where you make an initial request and the
+  /// request times out. If you make the request again with the same request ID,
+  /// the server can check if original operation with the same request ID was
+  /// received, and if so, will ignore the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [updateMask] - Required. Field mask is used to specify the fields to be
+  /// overwritten in the `Automation` resource by the update. The fields
+  /// specified in the update_mask are relative to the resource, not the full
+  /// request. A field will be overwritten if it's in the mask. If the user
+  /// doesn't provide a mask then all fields are overwritten.
+  ///
+  /// [validateOnly] - Optional. If set to true, the request is validated and
+  /// the user is provided with an expected result, but no actual change is
+  /// made.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    Automation request,
+    core.String name, {
+    core.bool? allowMissing,
+    core.String? requestId,
+    core.String? updateMask,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
+      if (requestId != null) 'requestId': [requestId],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsLocationsDeliveryPipelinesReleasesResource {
   final commons.ApiRequester _requester;
 
@@ -699,8 +1645,7 @@ class ProjectsLocationsDeliveryPipelinesReleasesResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the Release. Format is
-  /// projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/
-  /// releases/{release}.
+  /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/deliveryPipelines/\[^/\]+/releases/\[^/\]+$`.
   ///
@@ -744,16 +1689,16 @@ class ProjectsLocationsDeliveryPipelinesReleasesResource {
   ///
   /// [parent] - Required. The parent collection in which the `Release` should
   /// be created. Format should be
-  /// projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}.
+  /// `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/deliveryPipelines/\[^/\]+$`.
   ///
   /// [releaseId] - Required. ID of the `Release`.
   ///
   /// [requestId] - Optional. A request ID to identify requests. Specify a
-  /// unique request ID so that if you must retry your request, the server will
-  /// know to ignore the request if it has already been completed. The server
-  /// will guarantee that for at least 60 minutes since the first request. For
+  /// unique request ID so that if you must retry your request, the server knows
+  /// to ignore the request if it has already been completed. The server
+  /// guarantees that for at least 60 minutes after the first request. For
   /// example, consider a situation where you make an initial request and the
   /// request times out. If you make the request again with the same request ID,
   /// the server can check if original operation with the same request ID was
@@ -808,7 +1753,7 @@ class ProjectsLocationsDeliveryPipelinesReleasesResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the `Release`. Format must be
-  /// projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}/releases/{release_name}.
+  /// `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}/releases/{release_name}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/deliveryPipelines/\[^/\]+/releases/\[^/\]+$`.
   ///
@@ -922,8 +1867,7 @@ class ProjectsLocationsDeliveryPipelinesReleasesRolloutsResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the Rollout. Format is
-  /// projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/
-  /// releases/{release}/rollouts/{rollout}.
+  /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/{rollout}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/deliveryPipelines/\[^/\]+/releases/\[^/\]+/rollouts/\[^/\]+$`.
   ///
@@ -966,8 +1910,7 @@ class ProjectsLocationsDeliveryPipelinesReleasesRolloutsResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the Rollout. Format is
-  /// projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/
-  /// releases/{release}/rollouts/{rollout}.
+  /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/{rollout}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/deliveryPipelines/\[^/\]+/releases/\[^/\]+/rollouts/\[^/\]+$`.
   ///
@@ -1010,8 +1953,7 @@ class ProjectsLocationsDeliveryPipelinesReleasesRolloutsResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the Rollout. Format is
-  /// projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/
-  /// releases/{release}/rollouts/{rollout}.
+  /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/{rollout}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/deliveryPipelines/\[^/\]+/releases/\[^/\]+/rollouts/\[^/\]+$`.
   ///
@@ -1055,14 +1997,14 @@ class ProjectsLocationsDeliveryPipelinesReleasesRolloutsResource {
   ///
   /// [parent] - Required. The parent collection in which the `Rollout` should
   /// be created. Format should be
-  /// projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}/releases/{release_name}.
+  /// `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}/releases/{release_name}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/deliveryPipelines/\[^/\]+/releases/\[^/\]+$`.
   ///
   /// [requestId] - Optional. A request ID to identify requests. Specify a
-  /// unique request ID so that if you must retry your request, the server will
-  /// know to ignore the request if it has already been completed. The server
-  /// will guarantee that for at least 60 minutes since the first request. For
+  /// unique request ID so that if you must retry your request, the server knows
+  /// to ignore the request if it has already been completed. The server
+  /// guarantees that for at least 60 minutes after the first request. For
   /// example, consider a situation where you make an initial request and the
   /// request times out. If you make the request again with the same request ID,
   /// the server can check if original operation with the same request ID was
@@ -1124,7 +2066,7 @@ class ProjectsLocationsDeliveryPipelinesReleasesRolloutsResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the `Rollout`. Format must be
-  /// projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}/releases/{release_name}/rollouts/{rollout_name}.
+  /// `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}/releases/{release_name}/rollouts/{rollout_name}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/deliveryPipelines/\[^/\]+/releases/\[^/\]+/rollouts/\[^/\]+$`.
   ///
@@ -1163,8 +2105,7 @@ class ProjectsLocationsDeliveryPipelinesReleasesRolloutsResource {
   /// Request parameters:
   ///
   /// [rollout] - Required. Name of the Rollout. Format is
-  /// projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/
-  /// releases/{release}/rollouts/{rollout}.
+  /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/{rollout}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/deliveryPipelines/\[^/\]+/releases/\[^/\]+/rollouts/\[^/\]+$`.
   ///
@@ -1269,8 +2210,7 @@ class ProjectsLocationsDeliveryPipelinesReleasesRolloutsResource {
   /// Request parameters:
   ///
   /// [rollout] - Required. Name of the Rollout. Format is
-  /// projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/
-  /// releases/{release}/rollouts/{rollout}.
+  /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/{rollout}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/deliveryPipelines/\[^/\]+/releases/\[^/\]+/rollouts/\[^/\]+$`.
   ///
@@ -1319,7 +2259,7 @@ class ProjectsLocationsDeliveryPipelinesReleasesRolloutsJobRunsResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the `JobRun`. Format must be
-  /// projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}/releases/{release_name}/rollouts/{rollout_name}/jobRuns/{job_run_name}.
+  /// `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}/releases/{release_name}/rollouts/{rollout_name}/jobRuns/{job_run_name}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/deliveryPipelines/\[^/\]+/releases/\[^/\]+/rollouts/\[^/\]+/jobRuns/\[^/\]+$`.
   ///
@@ -1420,8 +2360,7 @@ class ProjectsLocationsDeliveryPipelinesReleasesRolloutsJobRunsResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the `JobRun`. Format must be
-  /// projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/
-  /// releases/{release}/rollouts/{rollout}/jobRuns/{jobRun}.
+  /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/{rollout}/jobRuns/{jobRun}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/deliveryPipelines/\[^/\]+/releases/\[^/\]+/rollouts/\[^/\]+/jobRuns/\[^/\]+$`.
   ///
@@ -1657,13 +2596,14 @@ class ProjectsLocationsTargetsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent collection in which the `Target` should be
-  /// created. Format should be projects/{project_id}/locations/{location_name}.
+  /// created. Format should be
+  /// `projects/{project_id}/locations/{location_name}`.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [requestId] - Optional. A request ID to identify requests. Specify a
-  /// unique request ID so that if you must retry your request, the server will
-  /// know to ignore the request if it has already been completed. The server
-  /// will guarantee that for at least 60 minutes since the first request. For
+  /// unique request ID so that if you must retry your request, the server knows
+  /// to ignore the request if it has already been completed. The server
+  /// guarantees that for at least 60 minutes after the first request. For
   /// example, consider a situation where you make an initial request and the
   /// request times out. If you make the request again with the same request ID,
   /// the server can check if original operation with the same request ID was
@@ -1720,7 +2660,7 @@ class ProjectsLocationsTargetsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the `Target` to delete. Format should be
-  /// projects/{project_id}/locations/{location_name}/targets/{target_name}.
+  /// `projects/{project_id}/locations/{location_name}/targets/{target_name}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/targets/\[^/\]+$`.
   ///
@@ -1732,9 +2672,9 @@ class ProjectsLocationsTargetsResource {
   /// ensure the client has an up-to-date value before proceeding.
   ///
   /// [requestId] - Optional. A request ID to identify requests. Specify a
-  /// unique request ID so that if you must retry your request, the server will
-  /// know to ignore the request if it has already been completed. The server
-  /// will guarantee that for at least 60 minutes after the first request. For
+  /// unique request ID so that if you must retry your request, the server knows
+  /// to ignore the request if it has already been completed. The server
+  /// guarantees that for at least 60 minutes after the first request. For
   /// example, consider a situation where you make an initial request and the
   /// request times out. If you make the request again with the same request ID,
   /// the server can check if original operation with the same request ID was
@@ -1787,7 +2727,7 @@ class ProjectsLocationsTargetsResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the `Target`. Format must be
-  /// projects/{project_id}/locations/{location_name}/targets/{target_name}.
+  /// `projects/{project_id}/locations/{location_name}/targets/{target_name}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/targets/\[^/\]+$`.
   ///
@@ -1881,7 +2821,7 @@ class ProjectsLocationsTargetsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent, which owns this collection of targets.
-  /// Format must be projects/{project_id}/locations/{location_name}.
+  /// Format must be `projects/{project_id}/locations/{location_name}`.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - Optional. Filter targets to be returned. See
@@ -1944,7 +2884,7 @@ class ProjectsLocationsTargetsResource {
   /// Request parameters:
   ///
   /// [name] - Optional. Name of the `Target`. Format is
-  /// projects/{project}/locations/{location}/targets/a-z{0,62}.
+  /// `projects/{project}/locations/{location}/targets/a-z{0,62}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/targets/\[^/\]+$`.
   ///
@@ -1952,9 +2892,9 @@ class ProjectsLocationsTargetsResource {
   /// not exist will result in the creation of a new `Target`.
   ///
   /// [requestId] - Optional. A request ID to identify requests. Specify a
-  /// unique request ID so that if you must retry your request, the server will
-  /// know to ignore the request if it has already been completed. The server
-  /// will guarantee that for at least 60 minutes since the first request. For
+  /// unique request ID so that if you must retry your request, the server knows
+  /// to ignore the request if it has already been completed. The server
+  /// guarantees that for at least 60 minutes after the first request. For
   /// example, consider a situation where you make an initial request and the
   /// request times out. If you make the request again with the same request ID,
   /// the server can check if original operation with the same request ID was
@@ -1966,8 +2906,8 @@ class ProjectsLocationsTargetsResource {
   /// [updateMask] - Required. Field mask is used to specify the fields to be
   /// overwritten in the Target resource by the update. The fields specified in
   /// the update_mask are relative to the resource, not the full request. A
-  /// field will be overwritten if it is in the mask. If the user does not
-  /// provide a mask then all fields will be overwritten.
+  /// field will be overwritten if it's in the mask. If the user doesn't provide
+  /// a mask then all fields are overwritten.
   ///
   /// [validateOnly] - Optional. If set to true, the request is validated and
   /// the user is provided with an expected result, but no actual change is
@@ -2125,9 +3065,8 @@ typedef AdvanceChildRolloutJob = $Empty;
 class AdvanceChildRolloutJobRun {
   /// Name of the `ChildRollout`.
   ///
-  /// Format is projects/{project}/
-  /// locations/{location}/deliveryPipelines/{deliveryPipeline}/
-  /// releases/{release}/rollouts/a-z{0,62}.
+  /// Format is
+  /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/a-z{0,62}`.
   ///
   /// Output only.
   core.String? rollout;
@@ -2158,6 +3097,57 @@ class AdvanceChildRolloutJobRun {
       };
 }
 
+/// Contains the information of an automated advance-rollout operation.
+class AdvanceRolloutOperation {
+  /// The phase the rollout will be advanced to.
+  ///
+  /// Output only.
+  core.String? destinationPhase;
+
+  /// The name of the rollout that initiates the `AutomationRun`.
+  ///
+  /// Output only.
+  core.String? rollout;
+
+  /// The phase of a deployment that initiated the operation.
+  ///
+  /// Output only.
+  core.String? sourcePhase;
+
+  /// How long the operation will be paused.
+  ///
+  /// Output only.
+  core.String? wait;
+
+  AdvanceRolloutOperation({
+    this.destinationPhase,
+    this.rollout,
+    this.sourcePhase,
+    this.wait,
+  });
+
+  AdvanceRolloutOperation.fromJson(core.Map json_)
+      : this(
+          destinationPhase: json_.containsKey('destinationPhase')
+              ? json_['destinationPhase'] as core.String
+              : null,
+          rollout: json_.containsKey('rollout')
+              ? json_['rollout'] as core.String
+              : null,
+          sourcePhase: json_.containsKey('sourcePhase')
+              ? json_['sourcePhase'] as core.String
+              : null,
+          wait: json_.containsKey('wait') ? json_['wait'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (destinationPhase != null) 'destinationPhase': destinationPhase!,
+        if (rollout != null) 'rollout': rollout!,
+        if (sourcePhase != null) 'sourcePhase': sourcePhase!,
+        if (wait != null) 'wait': wait!,
+      };
+}
+
 /// The request object used by `AdvanceRollout`.
 class AdvanceRolloutRequest {
   /// The phase ID to advance the `Rollout` to.
@@ -2183,6 +3173,67 @@ class AdvanceRolloutRequest {
 
 /// The response object from `AdvanceRollout`.
 typedef AdvanceRolloutResponse = $Empty;
+
+/// The `AdvanceRollout` automation rule will automatically advance a successful
+/// Rollout to the next phase.
+class AdvanceRolloutRule {
+  /// Information around the state of the Automation rule.
+  ///
+  /// Output only.
+  AutomationRuleCondition? condition;
+
+  /// ID of the rule.
+  ///
+  /// This id must be unique in the `Automation` resource to which this rule
+  /// belongs. The format is `a-z{0,62}`.
+  ///
+  /// Required.
+  core.String? id;
+
+  /// Proceeds only after phase name matched any one in the list.
+  ///
+  /// This value must consist of lower-case letters, numbers, and hyphens, start
+  /// with a letter and end with a letter or a number, and have a max length of
+  /// 63 characters. In other words, it must match the following regex:
+  /// `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
+  ///
+  /// Optional.
+  core.List<core.String>? sourcePhases;
+
+  /// How long to wait after a rollout is finished.
+  ///
+  /// Optional.
+  core.String? wait;
+
+  AdvanceRolloutRule({
+    this.condition,
+    this.id,
+    this.sourcePhases,
+    this.wait,
+  });
+
+  AdvanceRolloutRule.fromJson(core.Map json_)
+      : this(
+          condition: json_.containsKey('condition')
+              ? AutomationRuleCondition.fromJson(
+                  json_['condition'] as core.Map<core.String, core.dynamic>)
+              : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          sourcePhases: json_.containsKey('sourcePhases')
+              ? (json_['sourcePhases'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          wait: json_.containsKey('wait') ? json_['wait'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (condition != null) 'condition': condition!,
+        if (id != null) 'id': id!,
+        if (sourcePhases != null) 'sourcePhases': sourcePhases!,
+        if (wait != null) 'wait': wait!,
+      };
+}
 
 /// Information specifying an Anthos Cluster.
 class AnthosCluster {
@@ -2294,6 +3345,558 @@ class AuditConfig {
 /// exempting jose@example.com from DATA_READ logging.
 typedef AuditLogConfig = $AuditLogConfig;
 
+/// An `Automation` resource in the Cloud Deploy API.
+///
+/// An `Automation` enables the automation of manually driven actions for a
+/// Delivery Pipeline, which includes Release promotion among Targets, Rollout
+/// repair and Rollout deployment strategy advancement. The intention of
+/// Automation is to reduce manual intervention in the continuous delivery
+/// process.
+class Automation {
+  /// User annotations.
+  ///
+  /// These attributes can only be set and used by the user, and not by Cloud
+  /// Deploy. Annotations must meet the following constraints: * Annotations are
+  /// key/value pairs. * Valid annotation keys have two segments: an optional
+  /// prefix and name, separated by a slash (`/`). * The name segment is
+  /// required and must be 63 characters or less, beginning and ending with an
+  /// alphanumeric character (`[a-z0-9A-Z]`) with dashes (`-`), underscores
+  /// (`_`), dots (`.`), and alphanumerics between. * The prefix is optional. If
+  /// specified, the prefix must be a DNS subdomain: a series of DNS labels
+  /// separated by dots(`.`), not longer than 253 characters in total, followed
+  /// by a slash (`/`). See
+  /// https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/#syntax-and-character-set
+  /// for more details.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? annotations;
+
+  /// Time at which the automation was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Description of the `Automation`.
+  ///
+  /// Max length is 255 characters.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// The weak etag of the `Automation` resource.
+  ///
+  /// This checksum is computed by the server based on the value of other
+  /// fields, and may be sent on update and delete requests to ensure the client
+  /// has an up-to-date value before proceeding.
+  ///
+  /// Optional.
+  core.String? etag;
+
+  /// Labels are attributes that can be set and used by both the user and by
+  /// Cloud Deploy.
+  ///
+  /// Labels must meet the following constraints: * Keys and values can contain
+  /// only lowercase letters, numeric characters, underscores, and dashes. * All
+  /// characters must use UTF-8 encoding, and international characters are
+  /// allowed. * Keys must start with a lowercase letter or international
+  /// character. * Each resource is limited to a maximum of 64 labels. Both keys
+  /// and values are additionally constrained to be \<= 63 characters.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Name of the `Automation`.
+  ///
+  /// Format is
+  /// `projects/{project}/locations/{location}/deliveryPipelines/{delivery_pipeline}/automations/{automation}`.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// List of Automation rules associated with the Automation resource.
+  ///
+  /// Must have at least one rule and limited to 250 rules per Delivery
+  /// Pipeline. Note: the order of the rules here is not the same as the order
+  /// of execution.
+  ///
+  /// Required.
+  core.List<AutomationRule>? rules;
+
+  /// Selected resources to which the automation will be applied.
+  ///
+  /// Required.
+  AutomationResourceSelector? selector;
+
+  /// Email address of the user-managed IAM service account that creates Cloud
+  /// Deploy release and rollout resources.
+  ///
+  /// Required.
+  core.String? serviceAccount;
+
+  /// When Suspended, automation is deactivated from execution.
+  ///
+  /// Optional.
+  core.bool? suspended;
+
+  /// Unique identifier of the `Automation`.
+  ///
+  /// Output only.
+  core.String? uid;
+
+  /// Time at which the automation was updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  Automation({
+    this.annotations,
+    this.createTime,
+    this.description,
+    this.etag,
+    this.labels,
+    this.name,
+    this.rules,
+    this.selector,
+    this.serviceAccount,
+    this.suspended,
+    this.uid,
+    this.updateTime,
+  });
+
+  Automation.fromJson(core.Map json_)
+      : this(
+          annotations: json_.containsKey('annotations')
+              ? (json_['annotations'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          rules: json_.containsKey('rules')
+              ? (json_['rules'] as core.List)
+                  .map((value) => AutomationRule.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          selector: json_.containsKey('selector')
+              ? AutomationResourceSelector.fromJson(
+                  json_['selector'] as core.Map<core.String, core.dynamic>)
+              : null,
+          serviceAccount: json_.containsKey('serviceAccount')
+              ? json_['serviceAccount'] as core.String
+              : null,
+          suspended: json_.containsKey('suspended')
+              ? json_['suspended'] as core.bool
+              : null,
+          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (annotations != null) 'annotations': annotations!,
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (etag != null) 'etag': etag!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (rules != null) 'rules': rules!,
+        if (selector != null) 'selector': selector!,
+        if (serviceAccount != null) 'serviceAccount': serviceAccount!,
+        if (suspended != null) 'suspended': suspended!,
+        if (uid != null) 'uid': uid!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// AutomationResourceSelector contains the information to select the resources
+/// to which an Automation is going to be applied.
+class AutomationResourceSelector {
+  /// Contains attributes about a target.
+  core.List<TargetAttribute>? targets;
+
+  AutomationResourceSelector({
+    this.targets,
+  });
+
+  AutomationResourceSelector.fromJson(core.Map json_)
+      : this(
+          targets: json_.containsKey('targets')
+              ? (json_['targets'] as core.List)
+                  .map((value) => TargetAttribute.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (targets != null) 'targets': targets!,
+      };
+}
+
+/// AutomationRolloutMetadata contains Automation-related actions that were
+/// performed on a rollout.
+class AutomationRolloutMetadata {
+  /// The IDs of the AutomationRuns initiated by an advance rollout rule.
+  ///
+  /// Output only.
+  core.List<core.String>? advanceAutomationRuns;
+
+  /// The current AutomationRun repairing the rollout.
+  ///
+  /// Output only.
+  core.String? currentRepairAutomationRun;
+
+  /// The ID of the AutomationRun initiated by a promote release rule.
+  ///
+  /// Output only.
+  core.String? promoteAutomationRun;
+
+  /// The IDs of the AutomationRuns initiated by a repair rollout rule.
+  ///
+  /// Output only.
+  core.List<core.String>? repairAutomationRuns;
+
+  AutomationRolloutMetadata({
+    this.advanceAutomationRuns,
+    this.currentRepairAutomationRun,
+    this.promoteAutomationRun,
+    this.repairAutomationRuns,
+  });
+
+  AutomationRolloutMetadata.fromJson(core.Map json_)
+      : this(
+          advanceAutomationRuns: json_.containsKey('advanceAutomationRuns')
+              ? (json_['advanceAutomationRuns'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          currentRepairAutomationRun:
+              json_.containsKey('currentRepairAutomationRun')
+                  ? json_['currentRepairAutomationRun'] as core.String
+                  : null,
+          promoteAutomationRun: json_.containsKey('promoteAutomationRun')
+              ? json_['promoteAutomationRun'] as core.String
+              : null,
+          repairAutomationRuns: json_.containsKey('repairAutomationRuns')
+              ? (json_['repairAutomationRuns'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (advanceAutomationRuns != null)
+          'advanceAutomationRuns': advanceAutomationRuns!,
+        if (currentRepairAutomationRun != null)
+          'currentRepairAutomationRun': currentRepairAutomationRun!,
+        if (promoteAutomationRun != null)
+          'promoteAutomationRun': promoteAutomationRun!,
+        if (repairAutomationRuns != null)
+          'repairAutomationRuns': repairAutomationRuns!,
+      };
+}
+
+/// `AutomationRule` defines the automation activities.
+class AutomationRule {
+  /// The `AdvanceRolloutRule` will automatically advance a successful Rollout.
+  ///
+  /// Optional.
+  AdvanceRolloutRule? advanceRolloutRule;
+
+  /// `PromoteReleaseRule` will automatically promote a release from the current
+  /// target to a specified target.
+  ///
+  /// Optional.
+  PromoteReleaseRule? promoteReleaseRule;
+
+  /// The `RepairRolloutRule` will automatically repair a failed rollout.
+  ///
+  /// Optional.
+  RepairRolloutRule? repairRolloutRule;
+
+  AutomationRule({
+    this.advanceRolloutRule,
+    this.promoteReleaseRule,
+    this.repairRolloutRule,
+  });
+
+  AutomationRule.fromJson(core.Map json_)
+      : this(
+          advanceRolloutRule: json_.containsKey('advanceRolloutRule')
+              ? AdvanceRolloutRule.fromJson(json_['advanceRolloutRule']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          promoteReleaseRule: json_.containsKey('promoteReleaseRule')
+              ? PromoteReleaseRule.fromJson(json_['promoteReleaseRule']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          repairRolloutRule: json_.containsKey('repairRolloutRule')
+              ? RepairRolloutRule.fromJson(json_['repairRolloutRule']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (advanceRolloutRule != null)
+          'advanceRolloutRule': advanceRolloutRule!,
+        if (promoteReleaseRule != null)
+          'promoteReleaseRule': promoteReleaseRule!,
+        if (repairRolloutRule != null) 'repairRolloutRule': repairRolloutRule!,
+      };
+}
+
+/// `AutomationRuleCondition` contains conditions relevant to an `Automation`
+/// rule.
+class AutomationRuleCondition {
+  /// Details around targets enumerated in the rule.
+  ///
+  /// Optional.
+  TargetsPresentCondition? targetsPresentCondition;
+
+  AutomationRuleCondition({
+    this.targetsPresentCondition,
+  });
+
+  AutomationRuleCondition.fromJson(core.Map json_)
+      : this(
+          targetsPresentCondition: json_.containsKey('targetsPresentCondition')
+              ? TargetsPresentCondition.fromJson(
+                  json_['targetsPresentCondition']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (targetsPresentCondition != null)
+          'targetsPresentCondition': targetsPresentCondition!,
+      };
+}
+
+/// An `AutomationRun` resource in the Cloud Deploy API.
+///
+/// An `AutomationRun` represents an execution instance of an automation rule.
+class AutomationRun {
+  /// Advances a rollout to the next phase.
+  ///
+  /// Output only.
+  AdvanceRolloutOperation? advanceRolloutOperation;
+
+  /// The ID of the automation that initiated the operation.
+  ///
+  /// Output only.
+  core.String? automationId;
+
+  /// Snapshot of the Automation taken at AutomationRun creation time.
+  ///
+  /// Output only.
+  Automation? automationSnapshot;
+
+  /// Time at which the `AutomationRun` was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The weak etag of the `AutomationRun` resource.
+  ///
+  /// This checksum is computed by the server based on the value of other
+  /// fields, and may be sent on update and delete requests to ensure the client
+  /// has an up-to-date value before proceeding.
+  ///
+  /// Output only.
+  core.String? etag;
+
+  /// Time the `AutomationRun` expires.
+  ///
+  /// An `AutomationRun` expires after 14 days from its creation date.
+  ///
+  /// Output only.
+  core.String? expireTime;
+
+  /// Name of the `AutomationRun`.
+  ///
+  /// Format is
+  /// `projects/{project}/locations/{location}/deliveryPipelines/{delivery_pipeline}/automationRuns/{automation_run}`.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Promotes a release to a specified 'Target'.
+  ///
+  /// Output only.
+  PromoteReleaseOperation? promoteReleaseOperation;
+
+  /// Repairs a failed 'Rollout'.
+  ///
+  /// Output only.
+  RepairRolloutOperation? repairRolloutOperation;
+
+  /// The ID of the automation rule that initiated the operation.
+  ///
+  /// Output only.
+  core.String? ruleId;
+
+  /// Email address of the user-managed IAM service account that performs the
+  /// operations against Cloud Deploy resources.
+  ///
+  /// Output only.
+  core.String? serviceAccount;
+
+  /// Current state of the `AutomationRun`.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The `AutomationRun` has an unspecified state.
+  /// - "SUCCEEDED" : The `AutomationRun` has succeeded.
+  /// - "CANCELLED" : The `AutomationRun` was cancelled.
+  /// - "FAILED" : The `AutomationRun` has failed.
+  /// - "IN_PROGRESS" : The `AutomationRun` is in progress.
+  /// - "PENDING" : The `AutomationRun` is pending.
+  /// - "ABORTED" : The `AutomationRun` was aborted.
+  core.String? state;
+
+  /// Explains the current state of the `AutomationRun`.
+  ///
+  /// Present only when an explanation is needed.
+  ///
+  /// Output only.
+  core.String? stateDescription;
+
+  /// The ID of the target that represents the promotion stage that initiates
+  /// the `AutomationRun`.
+  ///
+  /// The value of this field is the last segment of a target name.
+  ///
+  /// Output only.
+  core.String? targetId;
+
+  /// Time at which the automationRun was updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  /// Earliest time the `AutomationRun` will attempt to resume.
+  ///
+  /// Wait-time is configured by `wait` in automation rule.
+  ///
+  /// Output only.
+  core.String? waitUntilTime;
+
+  AutomationRun({
+    this.advanceRolloutOperation,
+    this.automationId,
+    this.automationSnapshot,
+    this.createTime,
+    this.etag,
+    this.expireTime,
+    this.name,
+    this.promoteReleaseOperation,
+    this.repairRolloutOperation,
+    this.ruleId,
+    this.serviceAccount,
+    this.state,
+    this.stateDescription,
+    this.targetId,
+    this.updateTime,
+    this.waitUntilTime,
+  });
+
+  AutomationRun.fromJson(core.Map json_)
+      : this(
+          advanceRolloutOperation: json_.containsKey('advanceRolloutOperation')
+              ? AdvanceRolloutOperation.fromJson(
+                  json_['advanceRolloutOperation']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          automationId: json_.containsKey('automationId')
+              ? json_['automationId'] as core.String
+              : null,
+          automationSnapshot: json_.containsKey('automationSnapshot')
+              ? Automation.fromJson(json_['automationSnapshot']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          expireTime: json_.containsKey('expireTime')
+              ? json_['expireTime'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          promoteReleaseOperation: json_.containsKey('promoteReleaseOperation')
+              ? PromoteReleaseOperation.fromJson(
+                  json_['promoteReleaseOperation']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          repairRolloutOperation: json_.containsKey('repairRolloutOperation')
+              ? RepairRolloutOperation.fromJson(json_['repairRolloutOperation']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          ruleId: json_.containsKey('ruleId')
+              ? json_['ruleId'] as core.String
+              : null,
+          serviceAccount: json_.containsKey('serviceAccount')
+              ? json_['serviceAccount'] as core.String
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          stateDescription: json_.containsKey('stateDescription')
+              ? json_['stateDescription'] as core.String
+              : null,
+          targetId: json_.containsKey('targetId')
+              ? json_['targetId'] as core.String
+              : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+          waitUntilTime: json_.containsKey('waitUntilTime')
+              ? json_['waitUntilTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (advanceRolloutOperation != null)
+          'advanceRolloutOperation': advanceRolloutOperation!,
+        if (automationId != null) 'automationId': automationId!,
+        if (automationSnapshot != null)
+          'automationSnapshot': automationSnapshot!,
+        if (createTime != null) 'createTime': createTime!,
+        if (etag != null) 'etag': etag!,
+        if (expireTime != null) 'expireTime': expireTime!,
+        if (name != null) 'name': name!,
+        if (promoteReleaseOperation != null)
+          'promoteReleaseOperation': promoteReleaseOperation!,
+        if (repairRolloutOperation != null)
+          'repairRolloutOperation': repairRolloutOperation!,
+        if (ruleId != null) 'ruleId': ruleId!,
+        if (serviceAccount != null) 'serviceAccount': serviceAccount!,
+        if (state != null) 'state': state!,
+        if (stateDescription != null) 'stateDescription': stateDescription!,
+        if (targetId != null) 'targetId': targetId!,
+        if (updateTime != null) 'updateTime': updateTime!,
+        if (waitUntilTime != null) 'waitUntilTime': waitUntilTime!,
+      };
+}
+
 /// Associates `members`, or principals, with a `role`.
 class Binding {
   /// The condition that is associated with this binding.
@@ -2326,14 +3929,31 @@ class Binding {
   /// `group:{emailid}`: An email address that represents a Google group. For
   /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
   /// (primary) that represents all the users of that domain. For example,
-  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a user that has
-  /// been recently deleted. For example,
-  /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
-  /// this value reverts to `user:{emailid}` and the recovered user retains the
-  /// role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a service account
-  /// that has been recently deleted. For example,
+  /// `google.com` or `example.com`. *
+  /// `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workforce identity pool. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`:
+  /// All workforce identities in a group. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All workforce identities with a specific attribute value. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}
+  /// / * `: All identities in a workforce identity pool. *
+  /// `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workload identity pool. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`:
+  /// A workload identity pool group. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All identities in a workload identity pool with a certain attribute. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}
+  /// / * `: All identities in a workload identity pool. *
+  /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
+  /// identifier) representing a user that has been recently deleted. For
+  /// example, `alice@example.com?uid=123456789012345678901`. If the user is
+  /// recovered, this value reverts to `user:{emailid}` and the recovered user
+  /// retains the role in the binding. *
+  /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus
+  /// unique identifier) representing a service account that has been recently
+  /// deleted. For example,
   /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If
   /// the service account is undeleted, this value reverts to
   /// `serviceAccount:{emailid}` and the undeleted service account retains the
@@ -2342,12 +3962,19 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding.
+  /// the role in the binding. *
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// Deleted single identity in a workforce identity pool. For example,
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
   ///
-  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an
+  /// overview of the IAM roles and permissions, see the
+  /// [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For
+  /// a list of the available pre-defined roles, see
+  /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
   Binding({
@@ -2466,14 +4093,14 @@ class CanaryDeployment {
 
   /// Configuration for the postdeploy job of the last phase.
   ///
-  /// If this is not configured, postdeploy job will not be present.
+  /// If this is not configured, there will be no postdeploy job for this phase.
   ///
   /// Optional.
   Postdeploy? postdeploy;
 
   /// Configuration for the predeploy job of the first phase.
   ///
-  /// If this is not configured, predeploy job will not be present.
+  /// If this is not configured, there will be no predeploy job for this phase.
   ///
   /// Optional.
   Predeploy? predeploy;
@@ -2514,6 +4141,12 @@ class CanaryDeployment {
         if (verify != null) 'verify': verify!,
       };
 }
+
+/// The request object used by `CancelAutomationRun`.
+typedef CancelAutomationRunRequest = $Empty;
+
+/// The response object from `CancelAutomationRun`.
+typedef CancelAutomationRunResponse = $Empty;
 
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
@@ -2573,8 +4206,29 @@ class CloudRunConfig {
   /// CustomCanaryDeployments.
   core.bool? automaticTrafficControl;
 
+  /// A list of tags that are added to the canary revision while the canary
+  /// phase is in progress.
+  ///
+  /// Optional.
+  core.List<core.String>? canaryRevisionTags;
+
+  /// A list of tags that are added to the prior revision while the canary phase
+  /// is in progress.
+  ///
+  /// Optional.
+  core.List<core.String>? priorRevisionTags;
+
+  /// A list of tags that are added to the final stable revision when the stable
+  /// phase is applied.
+  ///
+  /// Optional.
+  core.List<core.String>? stableRevisionTags;
+
   CloudRunConfig({
     this.automaticTrafficControl,
+    this.canaryRevisionTags,
+    this.priorRevisionTags,
+    this.stableRevisionTags,
   });
 
   CloudRunConfig.fromJson(core.Map json_)
@@ -2582,11 +4236,31 @@ class CloudRunConfig {
           automaticTrafficControl: json_.containsKey('automaticTrafficControl')
               ? json_['automaticTrafficControl'] as core.bool
               : null,
+          canaryRevisionTags: json_.containsKey('canaryRevisionTags')
+              ? (json_['canaryRevisionTags'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          priorRevisionTags: json_.containsKey('priorRevisionTags')
+              ? (json_['priorRevisionTags'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          stableRevisionTags: json_.containsKey('stableRevisionTags')
+              ? (json_['stableRevisionTags'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (automaticTrafficControl != null)
           'automaticTrafficControl': automaticTrafficControl!,
+        if (canaryRevisionTags != null)
+          'canaryRevisionTags': canaryRevisionTags!,
+        if (priorRevisionTags != null) 'priorRevisionTags': priorRevisionTags!,
+        if (stableRevisionTags != null)
+          'stableRevisionTags': stableRevisionTags!,
       };
 }
 
@@ -2617,6 +4291,13 @@ class CloudRunLocation {
 
 /// CloudRunMetadata contains information from a Cloud Run deployment.
 class CloudRunMetadata {
+  /// The name of the Cloud Run job that is associated with a `Rollout`.
+  ///
+  /// Format is `projects/{project}/locations/{location}/jobs/{job_name}`.
+  ///
+  /// Output only.
+  core.String? job;
+
   /// The Cloud Run Revision id associated with a `Rollout`.
   ///
   /// Output only.
@@ -2624,7 +4305,7 @@ class CloudRunMetadata {
 
   /// The name of the Cloud Run Service that is associated with a `Rollout`.
   ///
-  /// Format is projects/{project}/locations/{location}/services/{service}.
+  /// Format is `projects/{project}/locations/{location}/services/{service}`.
   ///
   /// Output only.
   core.String? service;
@@ -2635,6 +4316,7 @@ class CloudRunMetadata {
   core.List<core.String>? serviceUrls;
 
   CloudRunMetadata({
+    this.job,
     this.revision,
     this.service,
     this.serviceUrls,
@@ -2642,6 +4324,7 @@ class CloudRunMetadata {
 
   CloudRunMetadata.fromJson(core.Map json_)
       : this(
+          job: json_.containsKey('job') ? json_['job'] as core.String : null,
           revision: json_.containsKey('revision')
               ? json_['revision'] as core.String
               : null,
@@ -2656,6 +4339,7 @@ class CloudRunMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (job != null) 'job': job!,
         if (revision != null) 'revision': revision!,
         if (service != null) 'service': service!,
         if (serviceUrls != null) 'serviceUrls': serviceUrls!,
@@ -2667,7 +4351,7 @@ class CloudRunMetadata {
 class CloudRunRenderMetadata {
   /// The name of the Cloud Run Service in the rendered manifest.
   ///
-  /// Format is projects/{project}/locations/{location}/services/{service}.
+  /// Format is `projects/{project}/locations/{location}/services/{service}`.
   ///
   /// Output only.
   core.String? service;
@@ -2736,9 +4420,8 @@ typedef CreateChildRolloutJob = $Empty;
 class CreateChildRolloutJobRun {
   /// Name of the `ChildRollout`.
   ///
-  /// Format is projects/{project}/
-  /// locations/{location}/deliveryPipelines/{deliveryPipeline}/
-  /// releases/{release}/rollouts/a-z{0,62}.
+  /// Format is
+  /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/a-z{0,62}`.
   ///
   /// Output only.
   core.String? rollout;
@@ -2794,6 +4477,278 @@ class CustomCanaryDeployment {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (phaseConfigs != null) 'phaseConfigs': phaseConfigs!,
+      };
+}
+
+/// CustomMetadata contains information from a user-defined operation.
+class CustomMetadata {
+  /// Key-value pairs provided by the user-defined operation.
+  ///
+  /// Output only.
+  core.Map<core.String, core.String>? values;
+
+  CustomMetadata({
+    this.values,
+  });
+
+  CustomMetadata.fromJson(core.Map json_)
+      : this(
+          values: json_.containsKey('values')
+              ? (json_['values'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (values != null) 'values': values!,
+      };
+}
+
+/// Information specifying a Custom Target.
+class CustomTarget {
+  /// The name of the CustomTargetType.
+  ///
+  /// Format must be
+  /// `projects/{project}/locations/{location}/customTargetTypes/{custom_target_type}`.
+  ///
+  /// Required.
+  core.String? customTargetType;
+
+  CustomTarget({
+    this.customTargetType,
+  });
+
+  CustomTarget.fromJson(core.Map json_)
+      : this(
+          customTargetType: json_.containsKey('customTargetType')
+              ? json_['customTargetType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (customTargetType != null) 'customTargetType': customTargetType!,
+      };
+}
+
+/// CustomTargetDeployMetadata contains information from a Custom Target deploy
+/// operation.
+class CustomTargetDeployMetadata {
+  /// Skip message provided in the results of a custom deploy operation.
+  ///
+  /// Output only.
+  core.String? skipMessage;
+
+  CustomTargetDeployMetadata({
+    this.skipMessage,
+  });
+
+  CustomTargetDeployMetadata.fromJson(core.Map json_)
+      : this(
+          skipMessage: json_.containsKey('skipMessage')
+              ? json_['skipMessage'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (skipMessage != null) 'skipMessage': skipMessage!,
+      };
+}
+
+/// CustomTargetSkaffoldActions represents the `CustomTargetType` configuration
+/// using Skaffold custom actions.
+class CustomTargetSkaffoldActions {
+  /// The Skaffold custom action responsible for deploy operations.
+  ///
+  /// Required.
+  core.String? deployAction;
+
+  /// List of Skaffold modules Cloud Deploy will include in the Skaffold Config
+  /// as required before performing diagnose.
+  ///
+  /// Optional.
+  core.List<SkaffoldModules>? includeSkaffoldModules;
+
+  /// The Skaffold custom action responsible for render operations.
+  ///
+  /// If not provided then Cloud Deploy will perform the render operations via
+  /// `skaffold render`.
+  ///
+  /// Optional.
+  core.String? renderAction;
+
+  CustomTargetSkaffoldActions({
+    this.deployAction,
+    this.includeSkaffoldModules,
+    this.renderAction,
+  });
+
+  CustomTargetSkaffoldActions.fromJson(core.Map json_)
+      : this(
+          deployAction: json_.containsKey('deployAction')
+              ? json_['deployAction'] as core.String
+              : null,
+          includeSkaffoldModules: json_.containsKey('includeSkaffoldModules')
+              ? (json_['includeSkaffoldModules'] as core.List)
+                  .map((value) => SkaffoldModules.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          renderAction: json_.containsKey('renderAction')
+              ? json_['renderAction'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deployAction != null) 'deployAction': deployAction!,
+        if (includeSkaffoldModules != null)
+          'includeSkaffoldModules': includeSkaffoldModules!,
+        if (renderAction != null) 'renderAction': renderAction!,
+      };
+}
+
+/// A `CustomTargetType` resource in the Cloud Deploy API.
+///
+/// A `CustomTargetType` defines a type of custom target that can be referenced
+/// in a `Target` in order to facilitate deploying to other systems besides the
+/// supported runtimes.
+class CustomTargetType {
+  /// User annotations.
+  ///
+  /// These attributes can only be set and used by the user, and not by Cloud
+  /// Deploy. See https://google.aip.dev/128#annotations for more details such
+  /// as format and size limitations.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? annotations;
+
+  /// Time at which the `CustomTargetType` was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Configures render and deploy for the `CustomTargetType` using Skaffold
+  /// custom actions.
+  CustomTargetSkaffoldActions? customActions;
+
+  /// Resource id of the `CustomTargetType`.
+  ///
+  /// Output only.
+  core.String? customTargetTypeId;
+
+  /// Description of the `CustomTargetType`.
+  ///
+  /// Max length is 255 characters.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// This checksum is computed by the server based on the value of other
+  /// fields, and may be sent on update and delete requests to ensure the client
+  /// has an up-to-date value before proceeding.
+  ///
+  /// Optional.
+  core.String? etag;
+
+  /// Labels are attributes that can be set and used by both the user and by
+  /// Cloud Deploy.
+  ///
+  /// Labels must meet the following constraints: * Keys and values can contain
+  /// only lowercase letters, numeric characters, underscores, and dashes. * All
+  /// characters must use UTF-8 encoding, and international characters are
+  /// allowed. * Keys must start with a lowercase letter or international
+  /// character. * Each resource is limited to a maximum of 64 labels. Both keys
+  /// and values are additionally constrained to be \<= 128 bytes.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Name of the `CustomTargetType`.
+  ///
+  /// Format is
+  /// `projects/{project}/locations/{location}/customTargetTypes/a-z{0,62}`.
+  ///
+  /// Optional.
+  core.String? name;
+
+  /// Unique identifier of the `CustomTargetType`.
+  ///
+  /// Output only.
+  core.String? uid;
+
+  /// Most recent time at which the `CustomTargetType` was updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  CustomTargetType({
+    this.annotations,
+    this.createTime,
+    this.customActions,
+    this.customTargetTypeId,
+    this.description,
+    this.etag,
+    this.labels,
+    this.name,
+    this.uid,
+    this.updateTime,
+  });
+
+  CustomTargetType.fromJson(core.Map json_)
+      : this(
+          annotations: json_.containsKey('annotations')
+              ? (json_['annotations'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          customActions: json_.containsKey('customActions')
+              ? CustomTargetSkaffoldActions.fromJson(
+                  json_['customActions'] as core.Map<core.String, core.dynamic>)
+              : null,
+          customTargetTypeId: json_.containsKey('customTargetTypeId')
+              ? json_['customTargetTypeId'] as core.String
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (annotations != null) 'annotations': annotations!,
+        if (createTime != null) 'createTime': createTime!,
+        if (customActions != null) 'customActions': customActions!,
+        if (customTargetTypeId != null)
+          'customTargetTypeId': customTargetTypeId!,
+        if (description != null) 'description': description!,
+        if (etag != null) 'etag': etag!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (uid != null) 'uid': uid!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -2893,8 +4848,8 @@ class DeliveryPipeline {
 
   /// Name of the `DeliveryPipeline`.
   ///
-  /// Format is projects/{project}/
-  /// locations/{location}/deliveryPipelines/a-z{0,62}.
+  /// Format is
+  /// `projects/{project}/locations/{location}/deliveryPipelines/a-z{0,62}`.
   ///
   /// Optional.
   core.String? name;
@@ -3041,7 +4996,7 @@ class DeployJobRun {
   /// The resource name of the Cloud Build `Build` object that is used to
   /// deploy.
   ///
-  /// Format is projects/{project}/locations/{location}/builds/{build}.
+  /// Format is `projects/{project}/locations/{location}/builds/{build}`.
   ///
   /// Output only.
   core.String? build;
@@ -3060,13 +5015,15 @@ class DeployJobRun {
   /// [Required permission](https://cloud.google.com/deploy/docs/cloud-deploy-service-account#required_permissions).
   /// - "EXECUTION_FAILED" : The deploy operation did not complete successfully;
   /// check Cloud Build logs.
-  /// - "DEADLINE_EXCEEDED" : The deploy build did not complete within the
+  /// - "DEADLINE_EXCEEDED" : The deploy job run did not complete within the
   /// alloted time.
   /// - "MISSING_RESOURCES_FOR_CANARY" : There were missing resources in the
   /// runtime environment required for a canary deployment. Check the Cloud
   /// Build logs for more information.
   /// - "CLOUD_BUILD_REQUEST_FAILED" : Cloud Build failed to fulfill Cloud
   /// Deploy's request. See failure_message for additional details.
+  /// - "DEPLOY_FEATURE_NOT_SUPPORTED" : The deploy operation had a feature
+  /// configured that is not supported.
   core.String? failureCause;
 
   /// Additional information about the deploy failure, if available.
@@ -3125,8 +5082,20 @@ class DeployJobRunMetadata {
   /// Output only.
   CloudRunMetadata? cloudRun;
 
+  /// Custom metadata provided by user-defined deploy operation.
+  ///
+  /// Output only.
+  CustomMetadata? custom;
+
+  /// Custom Target metadata associated with a `DeployJobRun`.
+  ///
+  /// Output only.
+  CustomTargetDeployMetadata? customTarget;
+
   DeployJobRunMetadata({
     this.cloudRun,
+    this.custom,
+    this.customTarget,
   });
 
   DeployJobRunMetadata.fromJson(core.Map json_)
@@ -3135,10 +5104,20 @@ class DeployJobRunMetadata {
               ? CloudRunMetadata.fromJson(
                   json_['cloudRun'] as core.Map<core.String, core.dynamic>)
               : null,
+          custom: json_.containsKey('custom')
+              ? CustomMetadata.fromJson(
+                  json_['custom'] as core.Map<core.String, core.dynamic>)
+              : null,
+          customTarget: json_.containsKey('customTarget')
+              ? CustomTargetDeployMetadata.fromJson(
+                  json_['customTarget'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cloudRun != null) 'cloudRun': cloudRun!,
+        if (custom != null) 'custom': custom!,
+        if (customTarget != null) 'customTarget': customTarget!,
       };
 }
 
@@ -3199,18 +5178,12 @@ class DeploymentJobs {
   /// Output only.
   Job? deployJob;
 
-  /// The postdeploy Job.
-  ///
-  /// This is the postdeploy job in the phase. This is the last job of the
-  /// phase.
+  /// The postdeploy Job, which is the last job on the phase.
   ///
   /// Output only.
   Job? postdeployJob;
 
-  /// The predeploy Job.
-  ///
-  /// This is the predeploy job in the phase. This is the first job of the
-  /// phase.
+  /// The predeploy Job, which is the first job on the phase.
   ///
   /// Output only.
   Job? predeployJob;
@@ -3412,11 +5385,21 @@ class GatewayServiceMesh {
   /// Required.
   core.String? service;
 
+  /// The amount of time to migrate traffic back from the canary Service to the
+  /// original Service during the stable phase deployment.
+  ///
+  /// If specified, must be between 15s and 3600s. If unspecified, there is no
+  /// cutback time.
+  ///
+  /// Optional.
+  core.String? stableCutbackDuration;
+
   GatewayServiceMesh({
     this.deployment,
     this.httpRoute,
     this.routeUpdateWaitTime,
     this.service,
+    this.stableCutbackDuration,
   });
 
   GatewayServiceMesh.fromJson(core.Map json_)
@@ -3433,6 +5416,9 @@ class GatewayServiceMesh {
           service: json_.containsKey('service')
               ? json_['service'] as core.String
               : null,
+          stableCutbackDuration: json_.containsKey('stableCutbackDuration')
+              ? json_['stableCutbackDuration'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3441,6 +5427,8 @@ class GatewayServiceMesh {
         if (routeUpdateWaitTime != null)
           'routeUpdateWaitTime': routeUpdateWaitTime!,
         if (service != null) 'service': service!,
+        if (stableCutbackDuration != null)
+          'stableCutbackDuration': stableCutbackDuration!,
       };
 }
 
@@ -3449,7 +5437,7 @@ class GkeCluster {
   /// Information specifying a GKE Cluster.
   ///
   /// Format is
-  /// \`projects/{project_id}/locations/{location_id}/clusters/{cluster_id}.
+  /// `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}`.
   core.String? cluster;
 
   /// If true, `cluster` is accessed using the private IP address of the control
@@ -3693,9 +5681,8 @@ class JobRun {
 
   /// Name of the `JobRun`.
   ///
-  /// Format is projects/{project}/locations/{location}/
-  /// deliveryPipelines/{deliveryPipeline}/releases/{releases}/rollouts/
-  /// {rollouts}/jobRuns/{uuid}.
+  /// Format is
+  /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{releases}/rollouts/{rollouts}/jobRuns/{uuid}`.
   ///
   /// Optional.
   core.String? name;
@@ -3861,6 +5848,138 @@ class KubernetesConfig {
         if (gatewayServiceMesh != null)
           'gatewayServiceMesh': gatewayServiceMesh!,
         if (serviceNetworking != null) 'serviceNetworking': serviceNetworking!,
+      };
+}
+
+/// The response object from `ListAutomationRuns`.
+class ListAutomationRunsResponse {
+  /// The `AutomationRuns` objects.
+  core.List<AutomationRun>? automationRuns;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListAutomationRunsResponse({
+    this.automationRuns,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListAutomationRunsResponse.fromJson(core.Map json_)
+      : this(
+          automationRuns: json_.containsKey('automationRuns')
+              ? (json_['automationRuns'] as core.List)
+                  .map((value) => AutomationRun.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (automationRuns != null) 'automationRuns': automationRuns!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
+/// The response object from `ListAutomations`.
+class ListAutomationsResponse {
+  /// The `Automation` objects.
+  core.List<Automation>? automations;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListAutomationsResponse({
+    this.automations,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListAutomationsResponse.fromJson(core.Map json_)
+      : this(
+          automations: json_.containsKey('automations')
+              ? (json_['automations'] as core.List)
+                  .map((value) => Automation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (automations != null) 'automations': automations!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
+/// The response object from `ListCustomTargetTypes.`
+class ListCustomTargetTypesResponse {
+  /// The `CustomTargetType` objects.
+  core.List<CustomTargetType>? customTargetTypes;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListCustomTargetTypesResponse({
+    this.customTargetTypes,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListCustomTargetTypesResponse.fromJson(core.Map json_)
+      : this(
+          customTargetTypes: json_.containsKey('customTargetTypes')
+              ? (json_['customTargetTypes'] as core.List)
+                  .map((value) => CustomTargetType.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (customTargetTypes != null) 'customTargetTypes': customTargetTypes!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
@@ -4153,25 +6272,48 @@ typedef Location = $Location00;
 
 /// Metadata includes information associated with a `Rollout`.
 class Metadata {
+  /// AutomationRolloutMetadata contains the information about the interactions
+  /// between Automation service and this rollout.
+  ///
+  /// Output only.
+  AutomationRolloutMetadata? automation;
+
   /// The name of the Cloud Run Service that is associated with a `Rollout`.
   ///
   /// Output only.
   CloudRunMetadata? cloudRun;
 
+  /// Custom metadata provided by user-defined `Rollout` operations.
+  ///
+  /// Output only.
+  CustomMetadata? custom;
+
   Metadata({
+    this.automation,
     this.cloudRun,
+    this.custom,
   });
 
   Metadata.fromJson(core.Map json_)
       : this(
+          automation: json_.containsKey('automation')
+              ? AutomationRolloutMetadata.fromJson(
+                  json_['automation'] as core.Map<core.String, core.dynamic>)
+              : null,
           cloudRun: json_.containsKey('cloudRun')
               ? CloudRunMetadata.fromJson(
                   json_['cloudRun'] as core.Map<core.String, core.dynamic>)
               : null,
+          custom: json_.containsKey('custom')
+              ? CustomMetadata.fromJson(
+                  json_['custom'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (automation != null) 'automation': automation!,
         if (cloudRun != null) 'cloudRun': cloudRun!,
+        if (custom != null) 'custom': custom!,
       };
 }
 
@@ -4230,7 +6372,7 @@ class Operation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard
@@ -4413,16 +6555,14 @@ class PhaseConfig {
 
   /// Configuration for the postdeploy job of this phase.
   ///
-  /// If this is not configured, postdeploy job will not be present for this
-  /// phase.
+  /// If this is not configured, there will be no postdeploy job for this phase.
   ///
   /// Optional.
   Postdeploy? postdeploy;
 
   /// Configuration for the predeploy job of this phase.
   ///
-  /// If this is not configured, predeploy job will not be present for this
-  /// phase.
+  /// If this is not configured, there will be no predeploy job for this phase.
   ///
   /// Optional.
   Predeploy? predeploy;
@@ -4572,23 +6712,23 @@ class PipelineReadyCondition {
 /// request, the resource, or both. To learn which resources support conditions
 /// in their IAM policies, see the
 /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": \[ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": \[
+/// **JSON example:** ``` { "bindings": [ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": [
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": \[
-/// "user:eve@example.com" \], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": [
+/// "user:eve@example.com" ], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time \< timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
-/// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
-/// user:mike@example.com - group:admins@example.com - domain:google.com -
-/// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
-/// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
-/// role: roles/resourcemanager.organizationViewer condition: title: expirable
-/// access description: Does not grant access after Sep 2020 expression:
-/// request.time \< timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
-/// version: 3 For a description of IAM and its features, see the
-/// [IAM documentation](https://cloud.google.com/iam/docs/).
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: -
+/// members: - user:mike@example.com - group:admins@example.com -
+/// domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+/// role: roles/resourcemanager.organizationAdmin - members: -
+/// user:eve@example.com role: roles/resourcemanager.organizationViewer
+/// condition: title: expirable access description: Does not grant access after
+/// Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+/// etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features,
+/// see the [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig>? auditConfigs;
@@ -4681,7 +6821,7 @@ class Policy {
 
 /// Postdeploy contains the postdeploy job configuration information.
 class Postdeploy {
-  /// A sequence of skaffold custom actions to invoke during execution of the
+  /// A sequence of Skaffold custom actions to invoke during execution of the
   /// postdeploy job.
   ///
   /// Optional.
@@ -4735,7 +6875,7 @@ class PostdeployJobRun {
   /// The resource name of the Cloud Build `Build` object that is used to
   /// execute the custom actions associated with the postdeploy Job.
   ///
-  /// Format is projects/{project}/locations/{location}/builds/{build}.
+  /// Format is `projects/{project}/locations/{location}/builds/{build}`.
   ///
   /// Output only.
   core.String? build;
@@ -4754,7 +6894,7 @@ class PostdeployJobRun {
   /// [required permission](https://cloud.google.com/deploy/docs/cloud-deploy-service-account#required_permissions).
   /// - "EXECUTION_FAILED" : The postdeploy operation did not complete
   /// successfully; check Cloud Build logs.
-  /// - "DEADLINE_EXCEEDED" : The postdeploy build did not complete within the
+  /// - "DEADLINE_EXCEEDED" : The postdeploy job run did not complete within the
   /// alloted time.
   /// - "CLOUD_BUILD_REQUEST_FAILED" : Cloud Build failed to fulfill Cloud
   /// Deploy's request. See failure_message for additional details.
@@ -4792,7 +6932,7 @@ class PostdeployJobRun {
 
 /// Predeploy contains the predeploy job configuration information.
 class Predeploy {
-  /// A sequence of skaffold custom actions to invoke during execution of the
+  /// A sequence of Skaffold custom actions to invoke during execution of the
   /// predeploy job.
   ///
   /// Optional.
@@ -4846,7 +6986,7 @@ class PredeployJobRun {
   /// The resource name of the Cloud Build `Build` object that is used to
   /// execute the custom actions associated with the predeploy Job.
   ///
-  /// Format is projects/{project}/locations/{location}/builds/{build}.
+  /// Format is `projects/{project}/locations/{location}/builds/{build}`.
   ///
   /// Output only.
   core.String? build;
@@ -4865,7 +7005,7 @@ class PredeployJobRun {
   /// [required permission](https://cloud.google.com/deploy/docs/cloud-deploy-service-account#required_permissions).
   /// - "EXECUTION_FAILED" : The predeploy operation did not complete
   /// successfully; check Cloud Build logs.
-  /// - "DEADLINE_EXCEEDED" : The predeploy build did not complete within the
+  /// - "DEADLINE_EXCEEDED" : The predeploy job run did not complete within the
   /// alloted time.
   /// - "CLOUD_BUILD_REQUEST_FAILED" : Cloud Build failed to fulfill Cloud
   /// Deploy's request. See failure_message for additional details.
@@ -4954,6 +7094,133 @@ class PrivatePool {
       };
 }
 
+/// Contains the information of an automated promote-release operation.
+class PromoteReleaseOperation {
+  /// The starting phase of the rollout created by this operation.
+  ///
+  /// Output only.
+  core.String? phase;
+
+  /// The name of the rollout that initiates the `AutomationRun`.
+  ///
+  /// Output only.
+  core.String? rollout;
+
+  /// The ID of the target that represents the promotion stage to which the
+  /// release will be promoted.
+  ///
+  /// The value of this field is the last segment of a target name.
+  ///
+  /// Output only.
+  core.String? targetId;
+
+  /// How long the operation will be paused.
+  ///
+  /// Output only.
+  core.String? wait;
+
+  PromoteReleaseOperation({
+    this.phase,
+    this.rollout,
+    this.targetId,
+    this.wait,
+  });
+
+  PromoteReleaseOperation.fromJson(core.Map json_)
+      : this(
+          phase:
+              json_.containsKey('phase') ? json_['phase'] as core.String : null,
+          rollout: json_.containsKey('rollout')
+              ? json_['rollout'] as core.String
+              : null,
+          targetId: json_.containsKey('targetId')
+              ? json_['targetId'] as core.String
+              : null,
+          wait: json_.containsKey('wait') ? json_['wait'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (phase != null) 'phase': phase!,
+        if (rollout != null) 'rollout': rollout!,
+        if (targetId != null) 'targetId': targetId!,
+        if (wait != null) 'wait': wait!,
+      };
+}
+
+/// `PromoteRelease` rule will automatically promote a release from the current
+/// target to a specified target.
+class PromoteReleaseRule {
+  /// Information around the state of the Automation rule.
+  ///
+  /// Output only.
+  AutomationRuleCondition? condition;
+
+  /// The starting phase of the rollout created by this operation.
+  ///
+  /// Default to the first phase.
+  ///
+  /// Optional.
+  core.String? destinationPhase;
+
+  /// The ID of the stage in the pipeline to which this `Release` is deploying.
+  ///
+  /// If unspecified, default it to the next stage in the promotion flow. The
+  /// value of this field could be one of the following: * The last segment of a
+  /// target name. It only needs the ID to determine if the target is one of the
+  /// stages in the promotion sequence defined in the pipeline. * "@next", the
+  /// next target in the promotion sequence.
+  ///
+  /// Optional.
+  core.String? destinationTargetId;
+
+  /// ID of the rule.
+  ///
+  /// This id must be unique in the `Automation` resource to which this rule
+  /// belongs. The format is `a-z{0,62}`.
+  ///
+  /// Required.
+  core.String? id;
+
+  /// How long the release need to be paused until being promoted to the next
+  /// target.
+  ///
+  /// Optional.
+  core.String? wait;
+
+  PromoteReleaseRule({
+    this.condition,
+    this.destinationPhase,
+    this.destinationTargetId,
+    this.id,
+    this.wait,
+  });
+
+  PromoteReleaseRule.fromJson(core.Map json_)
+      : this(
+          condition: json_.containsKey('condition')
+              ? AutomationRuleCondition.fromJson(
+                  json_['condition'] as core.Map<core.String, core.dynamic>)
+              : null,
+          destinationPhase: json_.containsKey('destinationPhase')
+              ? json_['destinationPhase'] as core.String
+              : null,
+          destinationTargetId: json_.containsKey('destinationTargetId')
+              ? json_['destinationTargetId'] as core.String
+              : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          wait: json_.containsKey('wait') ? json_['wait'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (condition != null) 'condition': condition!,
+        if (destinationPhase != null) 'destinationPhase': destinationPhase!,
+        if (destinationTargetId != null)
+          'destinationTargetId': destinationTargetId!,
+        if (id != null) 'id': id!,
+        if (wait != null) 'wait': wait!,
+      };
+}
+
 /// A `Release` resource in the Cloud Deploy API.
 ///
 /// A `Release` defines a specific Skaffold configuration instance that can be
@@ -4983,6 +7250,12 @@ class Release {
   ///
   /// Output only.
   core.String? createTime;
+
+  /// Snapshot of the custom target types referenced by the targets taken at
+  /// release creation time.
+  ///
+  /// Output only.
+  core.List<CustomTargetType>? customTargetTypeSnapshots;
 
   /// Snapshot of the parent pipeline taken at release creation time.
   ///
@@ -5017,9 +7290,8 @@ class Release {
 
   /// Name of the `Release`.
   ///
-  /// Format is projects/{project}/
-  /// locations/{location}/deliveryPipelines/{deliveryPipeline}/
-  /// releases/a-z{0,62}.
+  /// Format is
+  /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/a-z{0,62}`.
   ///
   /// Optional.
   core.String? name;
@@ -5086,6 +7358,7 @@ class Release {
     this.buildArtifacts,
     this.condition,
     this.createTime,
+    this.customTargetTypeSnapshots,
     this.deliveryPipelineSnapshot,
     this.deployParameters,
     this.description,
@@ -5131,6 +7404,13 @@ class Release {
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
               : null,
+          customTargetTypeSnapshots:
+              json_.containsKey('customTargetTypeSnapshots')
+                  ? (json_['customTargetTypeSnapshots'] as core.List)
+                      .map((value) => CustomTargetType.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
           deliveryPipelineSnapshot:
               json_.containsKey('deliveryPipelineSnapshot')
                   ? DeliveryPipeline.fromJson(json_['deliveryPipelineSnapshot']
@@ -5213,6 +7493,8 @@ class Release {
         if (buildArtifacts != null) 'buildArtifacts': buildArtifacts!,
         if (condition != null) 'condition': condition!,
         if (createTime != null) 'createTime': createTime!,
+        if (customTargetTypeSnapshots != null)
+          'customTargetTypeSnapshots': customTargetTypeSnapshots!,
         if (deliveryPipelineSnapshot != null)
           'deliveryPipelineSnapshot': deliveryPipelineSnapshot!,
         if (deployParameters != null) 'deployParameters': deployParameters!,
@@ -5239,7 +7521,7 @@ class ReleaseCondition {
   /// Details around the Releases's overall status.
   ReleaseReadyCondition? releaseReadyCondition;
 
-  /// Details around the support state of the release's skaffold version.
+  /// Details around the support state of the release's Skaffold version.
   SkaffoldSupportedCondition? skaffoldSupportedCondition;
 
   ReleaseCondition({
@@ -5302,8 +7584,14 @@ class RenderMetadata {
   /// Output only.
   CloudRunRenderMetadata? cloudRun;
 
+  /// Custom metadata provided by user-defined render operation.
+  ///
+  /// Output only.
+  CustomMetadata? custom;
+
   RenderMetadata({
     this.cloudRun,
+    this.custom,
   });
 
   RenderMetadata.fromJson(core.Map json_)
@@ -5312,10 +7600,354 @@ class RenderMetadata {
               ? CloudRunRenderMetadata.fromJson(
                   json_['cloudRun'] as core.Map<core.String, core.dynamic>)
               : null,
+          custom: json_.containsKey('custom')
+              ? CustomMetadata.fromJson(
+                  json_['custom'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cloudRun != null) 'cloudRun': cloudRun!,
+        if (custom != null) 'custom': custom!,
+      };
+}
+
+/// Configuration of the repair action.
+class RepairMode {
+  /// Retries a failed job.
+  ///
+  /// Optional.
+  Retry? retry;
+
+  /// Rolls back a `Rollout`.
+  ///
+  /// Optional.
+  Rollback? rollback;
+
+  RepairMode({
+    this.retry,
+    this.rollback,
+  });
+
+  RepairMode.fromJson(core.Map json_)
+      : this(
+          retry: json_.containsKey('retry')
+              ? Retry.fromJson(
+                  json_['retry'] as core.Map<core.String, core.dynamic>)
+              : null,
+          rollback: json_.containsKey('rollback')
+              ? Rollback.fromJson(
+                  json_['rollback'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (retry != null) 'retry': retry!,
+        if (rollback != null) 'rollback': rollback!,
+      };
+}
+
+/// RepairPhase tracks the repair attempts that have been made for each
+/// `RepairMode` specified in the `Automation` resource.
+class RepairPhase {
+  /// Records of the retry attempts for retry repair mode.
+  ///
+  /// Output only.
+  RetryPhase? retry;
+
+  /// Rollback attempt for rollback repair mode .
+  ///
+  /// Output only.
+  RollbackAttempt? rollback;
+
+  RepairPhase({
+    this.retry,
+    this.rollback,
+  });
+
+  RepairPhase.fromJson(core.Map json_)
+      : this(
+          retry: json_.containsKey('retry')
+              ? RetryPhase.fromJson(
+                  json_['retry'] as core.Map<core.String, core.dynamic>)
+              : null,
+          rollback: json_.containsKey('rollback')
+              ? RollbackAttempt.fromJson(
+                  json_['rollback'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (retry != null) 'retry': retry!,
+        if (rollback != null) 'rollback': rollback!,
+      };
+}
+
+/// Contains the information for an automated `repair rollout` operation.
+class RepairRolloutOperation {
+  /// The index of the current repair action in the repair sequence.
+  ///
+  /// Output only.
+  core.String? currentRepairModeIndex;
+
+  /// The job ID for the Job to repair.
+  ///
+  /// Output only.
+  core.String? jobId;
+
+  /// The phase ID of the phase that includes the job being repaired.
+  ///
+  /// Output only.
+  core.String? phaseId;
+
+  /// Records of the repair attempts.
+  ///
+  /// Each repair phase may have multiple retry attempts or single rollback
+  /// attempt.
+  ///
+  /// Output only.
+  core.List<RepairPhase>? repairPhases;
+
+  /// The name of the rollout that initiates the `AutomationRun`.
+  ///
+  /// Output only.
+  core.String? rollout;
+
+  RepairRolloutOperation({
+    this.currentRepairModeIndex,
+    this.jobId,
+    this.phaseId,
+    this.repairPhases,
+    this.rollout,
+  });
+
+  RepairRolloutOperation.fromJson(core.Map json_)
+      : this(
+          currentRepairModeIndex: json_.containsKey('currentRepairModeIndex')
+              ? json_['currentRepairModeIndex'] as core.String
+              : null,
+          jobId:
+              json_.containsKey('jobId') ? json_['jobId'] as core.String : null,
+          phaseId: json_.containsKey('phaseId')
+              ? json_['phaseId'] as core.String
+              : null,
+          repairPhases: json_.containsKey('repairPhases')
+              ? (json_['repairPhases'] as core.List)
+                  .map((value) => RepairPhase.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          rollout: json_.containsKey('rollout')
+              ? json_['rollout'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (currentRepairModeIndex != null)
+          'currentRepairModeIndex': currentRepairModeIndex!,
+        if (jobId != null) 'jobId': jobId!,
+        if (phaseId != null) 'phaseId': phaseId!,
+        if (repairPhases != null) 'repairPhases': repairPhases!,
+        if (rollout != null) 'rollout': rollout!,
+      };
+}
+
+/// The `RepairRolloutRule` automation rule will automatically repair a failed
+/// `Rollout`.
+class RepairRolloutRule {
+  /// Information around the state of the 'Automation' rule.
+  ///
+  /// Output only.
+  AutomationRuleCondition? condition;
+
+  /// ID of the rule.
+  ///
+  /// This id must be unique in the `Automation` resource to which this rule
+  /// belongs. The format is `a-z{0,62}`.
+  ///
+  /// Required.
+  core.String? id;
+
+  /// Jobs to repair.
+  ///
+  /// Proceeds only after job name matched any one in the list, or for all jobs
+  /// if unspecified or empty. The phase that includes the job must match the
+  /// phase ID specified in `source_phase`. This value must consist of
+  /// lower-case letters, numbers, and hyphens, start with a letter and end with
+  /// a letter or a number, and have a max length of 63 characters. In other
+  /// words, it must match the following regex:
+  /// `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
+  ///
+  /// Optional.
+  core.List<core.String>? jobs;
+
+  /// Defines the types of automatic repair actions for failed jobs.
+  ///
+  /// Required.
+  core.List<RepairMode>? repairModes;
+
+  /// Phases within which jobs are subject to automatic repair actions on
+  /// failure.
+  ///
+  /// Proceeds only after phase name matched any one in the list, or for all
+  /// phases if unspecified. This value must consist of lower-case letters,
+  /// numbers, and hyphens, start with a letter and end with a letter or a
+  /// number, and have a max length of 63 characters. In other words, it must
+  /// match the following regex: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
+  ///
+  /// Optional.
+  core.List<core.String>? sourcePhases;
+
+  RepairRolloutRule({
+    this.condition,
+    this.id,
+    this.jobs,
+    this.repairModes,
+    this.sourcePhases,
+  });
+
+  RepairRolloutRule.fromJson(core.Map json_)
+      : this(
+          condition: json_.containsKey('condition')
+              ? AutomationRuleCondition.fromJson(
+                  json_['condition'] as core.Map<core.String, core.dynamic>)
+              : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          jobs: json_.containsKey('jobs')
+              ? (json_['jobs'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          repairModes: json_.containsKey('repairModes')
+              ? (json_['repairModes'] as core.List)
+                  .map((value) => RepairMode.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          sourcePhases: json_.containsKey('sourcePhases')
+              ? (json_['sourcePhases'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (condition != null) 'condition': condition!,
+        if (id != null) 'id': id!,
+        if (jobs != null) 'jobs': jobs!,
+        if (repairModes != null) 'repairModes': repairModes!,
+        if (sourcePhases != null) 'sourcePhases': sourcePhases!,
+      };
+}
+
+/// Retries the failed job.
+class Retry {
+  /// Total number of retries.
+  ///
+  /// Retry is skipped if set to 0; The minimum value is 1, and the maximum
+  /// value is 10.
+  ///
+  /// Required.
+  core.String? attempts;
+
+  /// The pattern of how wait time will be increased.
+  ///
+  /// Default is linear. Backoff mode will be ignored if `wait` is 0.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "BACKOFF_MODE_UNSPECIFIED" : No WaitMode is specified.
+  /// - "BACKOFF_MODE_LINEAR" : Increases the wait time linearly.
+  /// - "BACKOFF_MODE_EXPONENTIAL" : Increases the wait time exponentially.
+  core.String? backoffMode;
+
+  /// How long to wait for the first retry.
+  ///
+  /// Default is 0, and the maximum value is 14d.
+  ///
+  /// Optional.
+  core.String? wait;
+
+  Retry({
+    this.attempts,
+    this.backoffMode,
+    this.wait,
+  });
+
+  Retry.fromJson(core.Map json_)
+      : this(
+          attempts: json_.containsKey('attempts')
+              ? json_['attempts'] as core.String
+              : null,
+          backoffMode: json_.containsKey('backoffMode')
+              ? json_['backoffMode'] as core.String
+              : null,
+          wait: json_.containsKey('wait') ? json_['wait'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (attempts != null) 'attempts': attempts!,
+        if (backoffMode != null) 'backoffMode': backoffMode!,
+        if (wait != null) 'wait': wait!,
+      };
+}
+
+/// RetryAttempt represents an action of retrying the failed Cloud Deploy job.
+class RetryAttempt {
+  /// The index of this retry attempt.
+  ///
+  /// Output only.
+  core.String? attempt;
+
+  /// Valid state of this retry action.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "REPAIR_STATE_UNSPECIFIED" : The `repair` has an unspecified state.
+  /// - "REPAIR_STATE_SUCCEEDED" : The `repair` action has succeeded.
+  /// - "REPAIR_STATE_CANCELLED" : The `repair` action was cancelled.
+  /// - "REPAIR_STATE_FAILED" : The `repair` action has failed.
+  /// - "REPAIR_STATE_IN_PROGRESS" : The `repair` action is in progress.
+  /// - "REPAIR_STATE_PENDING" : The `repair` action is pending.
+  /// - "REPAIR_STATE_SKIPPED" : The `repair` action was skipped.
+  /// - "REPAIR_STATE_ABORTED" : The `repair` action was aborted.
+  core.String? state;
+
+  /// Description of the state of the Retry.
+  ///
+  /// Output only.
+  core.String? stateDesc;
+
+  /// How long the operation will be paused.
+  ///
+  /// Output only.
+  core.String? wait;
+
+  RetryAttempt({
+    this.attempt,
+    this.state,
+    this.stateDesc,
+    this.wait,
+  });
+
+  RetryAttempt.fromJson(core.Map json_)
+      : this(
+          attempt: json_.containsKey('attempt')
+              ? json_['attempt'] as core.String
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          stateDesc: json_.containsKey('stateDesc')
+              ? json_['stateDesc'] as core.String
+              : null,
+          wait: json_.containsKey('wait') ? json_['wait'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (attempt != null) 'attempt': attempt!,
+        if (state != null) 'state': state!,
+        if (stateDesc != null) 'stateDesc': stateDesc!,
+        if (wait != null) 'wait': wait!,
       };
 }
 
@@ -5354,6 +7986,305 @@ class RetryJobRequest {
 /// The response object from 'RetryJob'.
 typedef RetryJobResponse = $Empty;
 
+/// RetryPhase contains the retry attempts and the metadata for initiating a new
+/// attempt.
+class RetryPhase {
+  /// Detail of a retry action.
+  ///
+  /// Output only.
+  core.List<RetryAttempt>? attempts;
+
+  /// The pattern of how the wait time of the retry attempt is calculated.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "BACKOFF_MODE_UNSPECIFIED" : No WaitMode is specified.
+  /// - "BACKOFF_MODE_LINEAR" : Increases the wait time linearly.
+  /// - "BACKOFF_MODE_EXPONENTIAL" : Increases the wait time exponentially.
+  core.String? backoffMode;
+
+  /// The job ID for the Job to retry.
+  ///
+  /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.String? jobId;
+
+  /// The phase ID of the phase that includes the job being retried.
+  ///
+  /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.String? phaseId;
+
+  /// The number of attempts that have been made.
+  ///
+  /// Output only.
+  core.String? totalAttempts;
+
+  RetryPhase({
+    this.attempts,
+    this.backoffMode,
+    this.jobId,
+    this.phaseId,
+    this.totalAttempts,
+  });
+
+  RetryPhase.fromJson(core.Map json_)
+      : this(
+          attempts: json_.containsKey('attempts')
+              ? (json_['attempts'] as core.List)
+                  .map((value) => RetryAttempt.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          backoffMode: json_.containsKey('backoffMode')
+              ? json_['backoffMode'] as core.String
+              : null,
+          jobId:
+              json_.containsKey('jobId') ? json_['jobId'] as core.String : null,
+          phaseId: json_.containsKey('phaseId')
+              ? json_['phaseId'] as core.String
+              : null,
+          totalAttempts: json_.containsKey('totalAttempts')
+              ? json_['totalAttempts'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (attempts != null) 'attempts': attempts!,
+        if (backoffMode != null) 'backoffMode': backoffMode!,
+        if (jobId != null) 'jobId': jobId!,
+        if (phaseId != null) 'phaseId': phaseId!,
+        if (totalAttempts != null) 'totalAttempts': totalAttempts!,
+      };
+}
+
+/// Rolls back a `Rollout`.
+class Rollback {
+  /// The starting phase ID for the `Rollout`.
+  ///
+  /// If unspecified, the `Rollout` will start in the stable phase.
+  ///
+  /// Optional.
+  core.String? destinationPhase;
+
+  Rollback({
+    this.destinationPhase,
+  });
+
+  Rollback.fromJson(core.Map json_)
+      : this(
+          destinationPhase: json_.containsKey('destinationPhase')
+              ? json_['destinationPhase'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (destinationPhase != null) 'destinationPhase': destinationPhase!,
+      };
+}
+
+/// RollbackAttempt represents an action of rolling back a Cloud Deploy
+/// 'Target'.
+class RollbackAttempt {
+  /// The phase to which the rollout will be rolled back to.
+  ///
+  /// Output only.
+  core.String? destinationPhase;
+
+  /// ID of the rollback `Rollout` to create.
+  ///
+  /// Output only.
+  core.String? rolloutId;
+
+  /// Valid state of this rollback action.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "REPAIR_STATE_UNSPECIFIED" : The `repair` has an unspecified state.
+  /// - "REPAIR_STATE_SUCCEEDED" : The `repair` action has succeeded.
+  /// - "REPAIR_STATE_CANCELLED" : The `repair` action was cancelled.
+  /// - "REPAIR_STATE_FAILED" : The `repair` action has failed.
+  /// - "REPAIR_STATE_IN_PROGRESS" : The `repair` action is in progress.
+  /// - "REPAIR_STATE_PENDING" : The `repair` action is pending.
+  /// - "REPAIR_STATE_SKIPPED" : The `repair` action was skipped.
+  /// - "REPAIR_STATE_ABORTED" : The `repair` action was aborted.
+  core.String? state;
+
+  /// Description of the state of the Rollback.
+  ///
+  /// Output only.
+  core.String? stateDesc;
+
+  RollbackAttempt({
+    this.destinationPhase,
+    this.rolloutId,
+    this.state,
+    this.stateDesc,
+  });
+
+  RollbackAttempt.fromJson(core.Map json_)
+      : this(
+          destinationPhase: json_.containsKey('destinationPhase')
+              ? json_['destinationPhase'] as core.String
+              : null,
+          rolloutId: json_.containsKey('rolloutId')
+              ? json_['rolloutId'] as core.String
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          stateDesc: json_.containsKey('stateDesc')
+              ? json_['stateDesc'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (destinationPhase != null) 'destinationPhase': destinationPhase!,
+        if (rolloutId != null) 'rolloutId': rolloutId!,
+        if (state != null) 'state': state!,
+        if (stateDesc != null) 'stateDesc': stateDesc!,
+      };
+}
+
+/// Configs for the Rollback rollout.
+class RollbackTargetConfig {
+  /// The rollback `Rollout` to create.
+  ///
+  /// Optional.
+  Rollout? rollout;
+
+  /// The starting phase ID for the `Rollout`.
+  ///
+  /// If unspecified, the `Rollout` will start in the stable phase.
+  ///
+  /// Optional.
+  core.String? startingPhaseId;
+
+  RollbackTargetConfig({
+    this.rollout,
+    this.startingPhaseId,
+  });
+
+  RollbackTargetConfig.fromJson(core.Map json_)
+      : this(
+          rollout: json_.containsKey('rollout')
+              ? Rollout.fromJson(
+                  json_['rollout'] as core.Map<core.String, core.dynamic>)
+              : null,
+          startingPhaseId: json_.containsKey('startingPhaseId')
+              ? json_['startingPhaseId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (rollout != null) 'rollout': rollout!,
+        if (startingPhaseId != null) 'startingPhaseId': startingPhaseId!,
+      };
+}
+
+/// The request object for `RollbackTarget`.
+class RollbackTargetRequest {
+  /// ID of the `Release` to roll back to.
+  ///
+  /// If this isn't specified, the previous successful `Rollout` to the
+  /// specified target will be used to determine the `Release`.
+  ///
+  /// Optional.
+  core.String? releaseId;
+
+  /// Configs for the rollback `Rollout`.
+  ///
+  /// Optional.
+  RollbackTargetConfig? rollbackConfig;
+
+  /// ID of the rollback `Rollout` to create.
+  ///
+  /// Required.
+  core.String? rolloutId;
+
+  /// If provided, this must be the latest `Rollout` that is on the `Target`.
+  ///
+  /// Optional.
+  core.String? rolloutToRollBack;
+
+  /// ID of the `Target` that is being rolled back.
+  ///
+  /// Required.
+  core.String? targetId;
+
+  /// If set to true, the request is validated and the user is provided with a
+  /// `RollbackTargetResponse`.
+  ///
+  /// Optional.
+  core.bool? validateOnly;
+
+  RollbackTargetRequest({
+    this.releaseId,
+    this.rollbackConfig,
+    this.rolloutId,
+    this.rolloutToRollBack,
+    this.targetId,
+    this.validateOnly,
+  });
+
+  RollbackTargetRequest.fromJson(core.Map json_)
+      : this(
+          releaseId: json_.containsKey('releaseId')
+              ? json_['releaseId'] as core.String
+              : null,
+          rollbackConfig: json_.containsKey('rollbackConfig')
+              ? RollbackTargetConfig.fromJson(json_['rollbackConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          rolloutId: json_.containsKey('rolloutId')
+              ? json_['rolloutId'] as core.String
+              : null,
+          rolloutToRollBack: json_.containsKey('rolloutToRollBack')
+              ? json_['rolloutToRollBack'] as core.String
+              : null,
+          targetId: json_.containsKey('targetId')
+              ? json_['targetId'] as core.String
+              : null,
+          validateOnly: json_.containsKey('validateOnly')
+              ? json_['validateOnly'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (releaseId != null) 'releaseId': releaseId!,
+        if (rollbackConfig != null) 'rollbackConfig': rollbackConfig!,
+        if (rolloutId != null) 'rolloutId': rolloutId!,
+        if (rolloutToRollBack != null) 'rolloutToRollBack': rolloutToRollBack!,
+        if (targetId != null) 'targetId': targetId!,
+        if (validateOnly != null) 'validateOnly': validateOnly!,
+      };
+}
+
+/// The response object from `RollbackTarget`.
+class RollbackTargetResponse {
+  /// The config of the rollback `Rollout` created or will be created.
+  RollbackTargetConfig? rollbackConfig;
+
+  RollbackTargetResponse({
+    this.rollbackConfig,
+  });
+
+  RollbackTargetResponse.fromJson(core.Map json_)
+      : this(
+          rollbackConfig: json_.containsKey('rollbackConfig')
+              ? RollbackTargetConfig.fromJson(json_['rollbackConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (rollbackConfig != null) 'rollbackConfig': rollbackConfig!,
+      };
+}
+
 /// A `Rollout` resource in the Cloud Deploy API.
 ///
 /// A `Rollout` contains information around a specific deployment to a `Target`.
@@ -5384,9 +8315,8 @@ class Rollout {
 
   /// Name of the `ControllerRollout`.
   ///
-  /// Format is projects/{project}/
-  /// locations/{location}/deliveryPipelines/{deliveryPipeline}/
-  /// releases/{release}/rollouts/a-z{0,62}.
+  /// Format is
+  /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/a-z{0,62}`.
   ///
   /// Output only.
   core.String? controllerRollout;
@@ -5418,10 +8348,12 @@ class Rollout {
   /// time.
   /// - "RELEASE_FAILED" : Release is in a failed state.
   /// - "RELEASE_ABANDONED" : Release is abandoned.
-  /// - "VERIFICATION_CONFIG_NOT_FOUND" : No skaffold verify configuration was
+  /// - "VERIFICATION_CONFIG_NOT_FOUND" : No Skaffold verify configuration was
   /// found.
   /// - "CLOUD_BUILD_REQUEST_FAILED" : Cloud Build failed to fulfill Cloud
   /// Deploy's request. See failure_message for additional details.
+  /// - "OPERATION_FEATURE_NOT_SUPPORTED" : A Rollout operation had a feature
+  /// configured that is not supported.
   core.String? deployFailureCause;
 
   /// Time at which the `Rollout` started deploying.
@@ -5475,9 +8407,8 @@ class Rollout {
 
   /// Name of the `Rollout`.
   ///
-  /// Format is projects/{project}/
-  /// locations/{location}/deliveryPipelines/{deliveryPipeline}/
-  /// releases/{release}/rollouts/a-z{0,62}.
+  /// Format is
+  /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/a-z{0,62}`.
   ///
   /// Optional.
   core.String? name;
@@ -5486,6 +8417,18 @@ class Rollout {
   ///
   /// Output only.
   core.List<Phase>? phases;
+
+  /// Name of the `Rollout` that is rolled back by this `Rollout`.
+  ///
+  /// Empty if this `Rollout` wasn't created as a rollback.
+  ///
+  /// Output only.
+  core.String? rollbackOfRollout;
+
+  /// Names of `Rollouts` that rolled back this `Rollout`.
+  ///
+  /// Output only.
+  core.List<core.String>? rolledBackByRollouts;
 
   /// Current state of the `Rollout`.
   ///
@@ -5534,6 +8477,8 @@ class Rollout {
     this.metadata,
     this.name,
     this.phases,
+    this.rollbackOfRollout,
+    this.rolledBackByRollouts,
     this.state,
     this.targetId,
     this.uid,
@@ -5603,6 +8548,14 @@ class Rollout {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          rollbackOfRollout: json_.containsKey('rollbackOfRollout')
+              ? json_['rollbackOfRollout'] as core.String
+              : null,
+          rolledBackByRollouts: json_.containsKey('rolledBackByRollouts')
+              ? (json_['rolledBackByRollouts'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
           targetId: json_.containsKey('targetId')
@@ -5630,6 +8583,9 @@ class Rollout {
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (phases != null) 'phases': phases!,
+        if (rollbackOfRollout != null) 'rollbackOfRollout': rollbackOfRollout!,
+        if (rolledBackByRollouts != null)
+          'rolledBackByRollouts': rolledBackByRollouts!,
         if (state != null) 'state': state!,
         if (targetId != null) 'targetId': targetId!,
         if (uid != null) 'uid': uid!,
@@ -5781,29 +8737,145 @@ class SetIamPolicyRequest {
       };
 }
 
+/// Cloud Storage bucket containing Skaffold Config modules.
+class SkaffoldGCSSource {
+  /// Relative path from the source to the Skaffold file.
+  ///
+  /// Optional.
+  core.String? path;
+
+  /// Cloud Storage source paths to copy recursively.
+  ///
+  /// For example, providing "gs://my-bucket/dir/configs / * " will result in
+  /// Skaffold copying all files within the "dir/configs" directory in the
+  /// bucket "my-bucket".
+  ///
+  /// Required.
+  core.String? source;
+
+  SkaffoldGCSSource({
+    this.path,
+    this.source,
+  });
+
+  SkaffoldGCSSource.fromJson(core.Map json_)
+      : this(
+          path: json_.containsKey('path') ? json_['path'] as core.String : null,
+          source: json_.containsKey('source')
+              ? json_['source'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (path != null) 'path': path!,
+        if (source != null) 'source': source!,
+      };
+}
+
+/// Git repository containing Skaffold Config modules.
+class SkaffoldGitSource {
+  /// Relative path from the repository root to the Skaffold file.
+  ///
+  /// Optional.
+  core.String? path;
+
+  /// Git ref the package should be cloned from.
+  ///
+  /// Optional.
+  core.String? ref;
+
+  /// Git repository the package should be cloned from.
+  ///
+  /// Required.
+  core.String? repo;
+
+  SkaffoldGitSource({
+    this.path,
+    this.ref,
+    this.repo,
+  });
+
+  SkaffoldGitSource.fromJson(core.Map json_)
+      : this(
+          path: json_.containsKey('path') ? json_['path'] as core.String : null,
+          ref: json_.containsKey('ref') ? json_['ref'] as core.String : null,
+          repo: json_.containsKey('repo') ? json_['repo'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (path != null) 'path': path!,
+        if (ref != null) 'ref': ref!,
+        if (repo != null) 'repo': repo!,
+      };
+}
+
+/// Skaffold Config modules and their remote source.
+class SkaffoldModules {
+  /// The Skaffold Config modules to use from the specified source.
+  ///
+  /// Optional.
+  core.List<core.String>? configs;
+
+  /// Remote git repository containing the Skaffold Config modules.
+  SkaffoldGitSource? git;
+
+  /// Cloud Storage bucket containing the Skaffold Config modules.
+  SkaffoldGCSSource? googleCloudStorage;
+
+  SkaffoldModules({
+    this.configs,
+    this.git,
+    this.googleCloudStorage,
+  });
+
+  SkaffoldModules.fromJson(core.Map json_)
+      : this(
+          configs: json_.containsKey('configs')
+              ? (json_['configs'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          git: json_.containsKey('git')
+              ? SkaffoldGitSource.fromJson(
+                  json_['git'] as core.Map<core.String, core.dynamic>)
+              : null,
+          googleCloudStorage: json_.containsKey('googleCloudStorage')
+              ? SkaffoldGCSSource.fromJson(json_['googleCloudStorage']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (configs != null) 'configs': configs!,
+        if (git != null) 'git': git!,
+        if (googleCloudStorage != null)
+          'googleCloudStorage': googleCloudStorage!,
+      };
+}
+
 /// SkaffoldSupportedCondition contains information about when support for the
-/// release's version of skaffold ends.
+/// release's version of Skaffold ends.
 class SkaffoldSupportedCondition {
-  /// The time at which this release's version of skaffold will enter
+  /// The time at which this release's version of Skaffold will enter
   /// maintenance mode.
   core.String? maintenanceModeTime;
 
-  /// The skaffold support state for this release's version of skaffold.
+  /// The Skaffold support state for this release's version of Skaffold.
   /// Possible string values are:
   /// - "SKAFFOLD_SUPPORT_STATE_UNSPECIFIED" : Default value. This value is
   /// unused.
-  /// - "SKAFFOLD_SUPPORT_STATE_SUPPORTED" : This skaffold version is currently
+  /// - "SKAFFOLD_SUPPORT_STATE_SUPPORTED" : This Skaffold version is currently
   /// supported.
-  /// - "SKAFFOLD_SUPPORT_STATE_MAINTENANCE_MODE" : This skaffold version is in
+  /// - "SKAFFOLD_SUPPORT_STATE_MAINTENANCE_MODE" : This Skaffold version is in
   /// maintenance mode.
-  /// - "SKAFFOLD_SUPPORT_STATE_UNSUPPORTED" : This skaffold version is no
+  /// - "SKAFFOLD_SUPPORT_STATE_UNSUPPORTED" : This Skaffold version is no
   /// longer supported.
   core.String? skaffoldSupportState;
 
-  /// True if the version of skaffold used by this release is supported.
+  /// True if the version of Skaffold used by this release is supported.
   core.bool? status;
 
-  /// The time at which this release's version of skaffold will no longer be
+  /// The time at which this release's version of Skaffold will no longer be
   /// supported.
   core.String? supportExpirationTime;
 
@@ -5842,13 +8914,13 @@ class SkaffoldSupportedCondition {
 
 /// Details of a supported Skaffold version.
 class SkaffoldVersion {
-  /// The time at which this version of skaffold will enter maintenance mode.
+  /// The time at which this version of Skaffold will enter maintenance mode.
   core.String? maintenanceModeTime;
 
   /// Date when this version is expected to no longer be supported.
   Date? supportEndDate;
 
-  /// The time at which this version of skaffold will no longer be supported.
+  /// The time at which this version of Skaffold will no longer be supported.
   core.String? supportExpirationTime;
 
   /// Release version number.
@@ -6064,6 +9136,11 @@ class Target {
   /// Output only.
   core.String? createTime;
 
+  /// Information specifying a Custom Target.
+  ///
+  /// Optional.
+  CustomTarget? customTarget;
+
   /// The deploy parameters to use for this target.
   ///
   /// Optional.
@@ -6117,7 +9194,7 @@ class Target {
 
   /// Name of the `Target`.
   ///
-  /// Format is projects/{project}/locations/{location}/targets/a-z{0,62}.
+  /// Format is `projects/{project}/locations/{location}/targets/a-z{0,62}`.
   ///
   /// Optional.
   core.String? name;
@@ -6151,6 +9228,7 @@ class Target {
     this.annotations,
     this.anthosCluster,
     this.createTime,
+    this.customTarget,
     this.deployParameters,
     this.description,
     this.etag,
@@ -6183,6 +9261,10 @@ class Target {
               : null,
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
+              : null,
+          customTarget: json_.containsKey('customTarget')
+              ? CustomTarget.fromJson(
+                  json_['customTarget'] as core.Map<core.String, core.dynamic>)
               : null,
           deployParameters: json_.containsKey('deployParameters')
               ? (json_['deployParameters']
@@ -6241,6 +9323,7 @@ class Target {
         if (annotations != null) 'annotations': annotations!,
         if (anthosCluster != null) 'anthosCluster': anthosCluster!,
         if (createTime != null) 'createTime': createTime!,
+        if (customTarget != null) 'customTarget': customTarget!,
         if (deployParameters != null) 'deployParameters': deployParameters!,
         if (description != null) 'description': description!,
         if (etag != null) 'etag': etag!,
@@ -6321,6 +9404,42 @@ class TargetArtifact {
       };
 }
 
+/// Contains criteria for selecting Targets.
+class TargetAttribute {
+  /// ID of the `Target`.
+  ///
+  /// The value of this field could be one of the following: * The last segment
+  /// of a target name. It only needs the ID to determine which target is being
+  /// referred to * "*", all targets in a location.
+  core.String? id;
+
+  /// Target labels.
+  core.Map<core.String, core.String>? labels;
+
+  TargetAttribute({
+    this.id,
+    this.labels,
+  });
+
+  TargetAttribute.fromJson(core.Map json_)
+      : this(
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (id != null) 'id': id!,
+        if (labels != null) 'labels': labels!,
+      };
+}
+
 /// Details of rendering for a single target.
 class TargetRender {
   /// Reason this render failed.
@@ -6338,10 +9457,18 @@ class TargetRender {
   /// check Cloud Build logs.
   /// - "CLOUD_BUILD_REQUEST_FAILED" : Cloud Build failed to fulfill Cloud
   /// Deploy's request. See failure_message for additional details.
+  /// - "VERIFICATION_CONFIG_NOT_FOUND" : The render operation did not complete
+  /// successfully because the verification stanza required for verify was not
+  /// found on the Skaffold configuration.
   /// - "CUSTOM_ACTION_NOT_FOUND" : The render operation did not complete
   /// successfully because the custom action required for predeploy or
-  /// postdeploy was not found in the skaffold configuration. See
+  /// postdeploy was not found in the Skaffold configuration. See
   /// failure_message for additional details.
+  /// - "DEPLOYMENT_STRATEGY_NOT_SUPPORTED" : Release failed during rendering
+  /// because the release configuration is not supported with the specified
+  /// deployment strategy.
+  /// - "RENDER_FEATURE_NOT_SUPPORTED" : The render operation had a feature
+  /// configured that is not supported.
   core.String? failureCause;
 
   /// Additional information about the render failure, if available.
@@ -6410,13 +9537,13 @@ class TargetRender {
       };
 }
 
-/// TargetsPresentCondition contains information on any Targets defined in the
-/// Delivery Pipeline that do not actually exist.
+/// `TargetsPresentCondition` contains information on any Targets referenced in
+/// the Delivery Pipeline that do not actually exist.
 class TargetsPresentCondition {
   /// The list of Target names that do not exist.
   ///
   /// For example,
-  /// projects/{project_id}/locations/{location_name}/targets/{target_name}.
+  /// `projects/{project_id}/locations/{location_name}/targets/{target_name}`.
   core.List<core.String>? missingTargets;
 
   /// True if there aren't any missing Targets.
@@ -6511,7 +9638,7 @@ class VerifyJobRun {
   /// The resource name of the Cloud Build `Build` object that is used to
   /// verify.
   ///
-  /// Format is projects/{project}/locations/{location}/builds/{build}.
+  /// Format is `projects/{project}/locations/{location}/builds/{build}`.
   ///
   /// Output only.
   core.String? build;
@@ -6535,7 +9662,7 @@ class VerifyJobRun {
   /// [required permission](https://cloud.google.com/deploy/docs/cloud-deploy-service-account#required_permissions).
   /// - "EXECUTION_FAILED" : The verify operation did not complete successfully;
   /// check Cloud Build logs.
-  /// - "DEADLINE_EXCEEDED" : The verify build did not complete within the
+  /// - "DEADLINE_EXCEEDED" : The verify job run did not complete within the
   /// alloted time.
   /// - "VERIFICATION_CONFIG_NOT_FOUND" : No Skaffold verify configuration was
   /// found.

@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Cloud Build API - v1
@@ -39,7 +38,7 @@
 ///     - [ProjectsLocationsWorkerPoolsResource]
 ///   - [ProjectsTriggersResource]
 /// - [V1Resource]
-library cloudbuild_v1;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -870,6 +869,44 @@ class ProjectsLocationsResource {
       ProjectsLocationsWorkerPoolsResource(_requester);
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Returns the `DefaultServiceAccount` used by the project.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the `DefaultServiceAccount` to retrieve.
+  /// Format: `projects/{project}/locations/{location}/defaultServiceAccount`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/defaultServiceAccount$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [DefaultServiceAccount].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DefaultServiceAccount> getDefaultServiceAccount(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return DefaultServiceAccount.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsLocationsBitbucketServerConfigsResource {
@@ -2348,8 +2385,6 @@ class ProjectsLocationsTriggersResource {
 
   /// Creates a new `BuildTrigger`.
   ///
-  /// This API is experimental.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -2397,8 +2432,6 @@ class ProjectsLocationsTriggersResource {
 
   /// Deletes a `BuildTrigger` by its project ID and trigger ID.
   ///
-  /// This API is experimental.
-  ///
   /// Request parameters:
   ///
   /// [name] - The name of the `Trigger` to delete. Format:
@@ -2443,8 +2476,6 @@ class ProjectsLocationsTriggersResource {
   }
 
   /// Returns information about a `BuildTrigger`.
-  ///
-  /// This API is experimental.
   ///
   /// Request parameters:
   ///
@@ -2492,8 +2523,6 @@ class ProjectsLocationsTriggersResource {
   }
 
   /// Lists existing `BuildTrigger`s.
-  ///
-  /// This API is experimental.
   ///
   /// Request parameters:
   ///
@@ -2543,8 +2572,6 @@ class ProjectsLocationsTriggersResource {
   }
 
   /// Updates a `BuildTrigger` by its project ID and trigger ID.
-  ///
-  /// This API is experimental.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2966,8 +2993,6 @@ class ProjectsTriggersResource {
 
   /// Creates a new `BuildTrigger`.
   ///
-  /// This API is experimental.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -3015,8 +3040,6 @@ class ProjectsTriggersResource {
 
   /// Deletes a `BuildTrigger` by its project ID and trigger ID.
   ///
-  /// This API is experimental.
-  ///
   /// Request parameters:
   ///
   /// [projectId] - Required. ID of the project that owns the trigger.
@@ -3061,8 +3084,6 @@ class ProjectsTriggersResource {
   }
 
   /// Returns information about a `BuildTrigger`.
-  ///
-  /// This API is experimental.
   ///
   /// Request parameters:
   ///
@@ -3110,8 +3131,6 @@ class ProjectsTriggersResource {
   }
 
   /// Lists existing `BuildTrigger`s.
-  ///
-  /// This API is experimental.
   ///
   /// Request parameters:
   ///
@@ -3161,8 +3180,6 @@ class ProjectsTriggersResource {
   }
 
   /// Updates a `BuildTrigger` by its project ID and trigger ID.
-  ///
-  /// This API is experimental.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3739,6 +3756,19 @@ class BitbucketServerConfig {
   /// Optional.
   core.String? peeredNetwork;
 
+  /// IP range within the peered network.
+  ///
+  /// This is specified in CIDR notation with a slash and the subnet prefix
+  /// size. You can optionally specify an IP address before the subnet prefix
+  /// value. e.g. `192.168.0.0/29` would specify an IP range starting at
+  /// 192.168.0.0 with a 29 bit prefix size. `/16` would specify a prefix size
+  /// of 16 bits, with an automatically determined IP within the peered VPC. If
+  /// unspecified, a value of `/24` will be used. The field only has an effect
+  /// if peered_network is set.
+  ///
+  /// Immutable.
+  core.String? peeredNetworkIpRange;
+
   /// Secret Manager secrets needed by the config.
   ///
   /// Required.
@@ -3769,6 +3799,7 @@ class BitbucketServerConfig {
     this.hostUri,
     this.name,
     this.peeredNetwork,
+    this.peeredNetworkIpRange,
     this.secrets,
     this.sslCa,
     this.username,
@@ -3796,6 +3827,9 @@ class BitbucketServerConfig {
           peeredNetwork: json_.containsKey('peeredNetwork')
               ? json_['peeredNetwork'] as core.String
               : null,
+          peeredNetworkIpRange: json_.containsKey('peeredNetworkIpRange')
+              ? json_['peeredNetworkIpRange'] as core.String
+              : null,
           secrets: json_.containsKey('secrets')
               ? BitbucketServerSecrets.fromJson(
                   json_['secrets'] as core.Map<core.String, core.dynamic>)
@@ -3818,6 +3852,8 @@ class BitbucketServerConfig {
         if (hostUri != null) 'hostUri': hostUri!,
         if (name != null) 'name': name!,
         if (peeredNetwork != null) 'peeredNetwork': peeredNetwork!,
+        if (peeredNetworkIpRange != null)
+          'peeredNetworkIpRange': peeredNetworkIpRange!,
         if (secrets != null) 'secrets': secrets!,
         if (sslCa != null) 'sslCa': sslCa!,
         if (username != null) 'username': username!,
@@ -5428,6 +5464,45 @@ class CancelBuildRequest {
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
 
+/// Location of the source in a 2nd-gen Google Cloud Build repository resource.
+class ConnectedRepository {
+  /// Directory, relative to the source root, in which to run the build.
+  core.String? dir;
+
+  /// Name of the Google Cloud Build repository, formatted as `projects / *
+  /// /locations / * /connections / * /repositories / * `.
+  ///
+  /// Required.
+  core.String? repository;
+
+  /// The revision to fetch from the Git repository such as a branch, a tag, a
+  /// commit SHA, or any Git ref.
+  core.String? revision;
+
+  ConnectedRepository({
+    this.dir,
+    this.repository,
+    this.revision,
+  });
+
+  ConnectedRepository.fromJson(core.Map json_)
+      : this(
+          dir: json_.containsKey('dir') ? json_['dir'] as core.String : null,
+          repository: json_.containsKey('repository')
+              ? json_['repository'] as core.String
+              : null,
+          revision: json_.containsKey('revision')
+              ? json_['revision'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dir != null) 'dir': dir!,
+        if (repository != null) 'repository': repository!,
+        if (revision != null) 'revision': revision!,
+      };
+}
+
 /// Request to connect a repository from a connected Bitbucket Server host.
 class CreateBitbucketServerConnectedRepositoryRequest {
   /// The Bitbucket Server repository to connect.
@@ -5505,6 +5580,46 @@ class CreateGitLabConnectedRepositoryRequest {
         if (gitlabConnectedRepository != null)
           'gitlabConnectedRepository': gitlabConnectedRepository!,
         if (parent != null) 'parent': parent!,
+      };
+}
+
+/// The default service account used for `Builds`.
+class DefaultServiceAccount {
+  /// Identifier.
+  ///
+  /// Format: \`projects/{project}/locations/{location}/defaultServiceAccount
+  core.String? name;
+
+  /// The email address of the service account identity that will be used for a
+  /// build by default.
+  ///
+  /// This is returned in the format
+  /// `projects/{project}/serviceAccounts/{service_account}` where
+  /// `{service_account}` could be the legacy Cloud Build SA, in the format
+  /// \[PROJECT_NUMBER\]@cloudbuild.gserviceaccount.com or the Compute SA, in
+  /// the format \[PROJECT_NUMBER\]-compute@developer.gserviceaccount.com. If no
+  /// service account will be used by default, this will be empty.
+  ///
+  /// Output only.
+  core.String? serviceAccountEmail;
+
+  DefaultServiceAccount({
+    this.name,
+    this.serviceAccountEmail,
+  });
+
+  DefaultServiceAccount.fromJson(core.Map json_)
+      : this(
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          serviceAccountEmail: json_.containsKey('serviceAccountEmail')
+              ? json_['serviceAccountEmail'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (serviceAccountEmail != null)
+          'serviceAccountEmail': serviceAccountEmail!,
       };
 }
 
@@ -5604,6 +5719,7 @@ class GitFileSource {
   /// GitHub Enterprise).
   /// - "BITBUCKET_SERVER" : A Bitbucket Server-hosted repo.
   /// - "GITLAB" : A GitLab-hosted repo.
+  /// - "BITBUCKET_CLOUD" : A Bitbucket Cloud-hosted repo.
   core.String? repoType;
 
   /// The fully qualified resource name of the Repos API repository.
@@ -6366,6 +6482,7 @@ class GitRepoSource {
   /// GitHub Enterprise).
   /// - "BITBUCKET_SERVER" : A Bitbucket Server-hosted repo.
   /// - "GITLAB" : A GitLab-hosted repo.
+  /// - "BITBUCKET_CLOUD" : A Bitbucket Cloud-hosted repo.
   core.String? repoType;
 
   /// The connected repository resource name, in the format `projects / *
@@ -7020,7 +7137,7 @@ class Operation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard
@@ -7194,16 +7311,29 @@ class PullRequestFilter {
   /// RE2 and described at https://github.com/google/re2/wiki/Syntax
   core.String? branch;
 
-  /// Configure builds to run whether a repository owner or collaborator need to
-  /// comment `/gcbrun`.
+  /// If CommentControl is enabled, depending on the setting, builds may not
+  /// fire until a repository writer comments `/gcbrun` on a pull request or
+  /// `/gcbrun` is in the pull request description.
+  ///
+  /// Only PR comments that contain `/gcbrun` will trigger builds. If
+  /// CommentControl is set to disabled, comments with `/gcbrun` from a user
+  /// with repository write permission or above will still trigger builds to
+  /// run.
   /// Possible string values are:
-  /// - "COMMENTS_DISABLED" : Do not require comments on Pull Requests before
-  /// builds are triggered.
-  /// - "COMMENTS_ENABLED" : Enforce that repository owners or collaborators
-  /// must comment on Pull Requests before builds are triggered.
-  /// - "COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY" : Enforce that
-  /// repository owners or collaborators must comment on external contributors'
-  /// Pull Requests before builds are triggered.
+  /// - "COMMENTS_DISABLED" : Do not require `/gcbrun` comments from a user with
+  /// repository write permission or above on pull requests before builds are
+  /// triggered. Comments that contain `/gcbrun` will still fire builds so this
+  /// should be thought of as comments not required.
+  /// - "COMMENTS_ENABLED" : Builds will only fire in response to pull requests
+  /// if: 1. The pull request author has repository write permission or above
+  /// and `/gcbrun` is in the PR description. 2. A user with repository writer
+  /// permissions or above comments `/gcbrun` on a pull request authored by any
+  /// user.
+  /// - "COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY" : Builds will only
+  /// fire in response to pull requests if: 1. The pull request author is a
+  /// repository writer or above. 2. If the author does not have write
+  /// permissions, a user with write permissions or above must comment `/gcbrun`
+  /// in order to fire a build.
   core.String? commentControl;
 
   /// If true, branches that do NOT match the git_ref will trigger a build.
@@ -7486,6 +7616,8 @@ class RepositoryEventConfig {
   /// - "GITHUB" : The SCM repo is GITHUB.
   /// - "GITHUB_ENTERPRISE" : The SCM repo is GITHUB Enterprise.
   /// - "GITLAB_ENTERPRISE" : The SCM repo is GITLAB Enterprise.
+  /// - "BITBUCKET_DATA_CENTER" : The SCM repo is BITBUCKET Data Center.
+  /// - "BITBUCKET_CLOUD" : The SCM repo is BITBUCKET Cloud.
   core.String? repositoryType;
 
   RepositoryEventConfig({
@@ -7541,7 +7673,7 @@ class Results {
   ///
   /// [Cloud Builders](https://cloud.google.com/cloud-build/docs/cloud-builders)
   /// can produce this output by writing to `$BUILDER_OUTPUT/output`. Only the
-  /// first 4KB of data is stored.
+  /// first 50KB of data is stored.
   core.List<core.String>? buildStepOutputs;
 
   /// Container images that were built as a part of the build.
@@ -7856,6 +7988,12 @@ class ServiceDirectoryConfig {
 
 /// Location of the source in a supported storage service.
 class Source {
+  /// If provided, get the source from this 2nd-gen Google Cloud Build
+  /// repository resource.
+  ///
+  /// Optional.
+  ConnectedRepository? connectedRepository;
+
   /// If provided, get the source from this Git repository.
   GitSource? gitSource;
 
@@ -7873,6 +8011,7 @@ class Source {
   StorageSourceManifest? storageSourceManifest;
 
   Source({
+    this.connectedRepository,
     this.gitSource,
     this.repoSource,
     this.storageSource,
@@ -7881,6 +8020,10 @@ class Source {
 
   Source.fromJson(core.Map json_)
       : this(
+          connectedRepository: json_.containsKey('connectedRepository')
+              ? ConnectedRepository.fromJson(json_['connectedRepository']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           gitSource: json_.containsKey('gitSource')
               ? GitSource.fromJson(
                   json_['gitSource'] as core.Map<core.String, core.dynamic>)
@@ -7900,6 +8043,8 @@ class Source {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (connectedRepository != null)
+          'connectedRepository': connectedRepository!,
         if (gitSource != null) 'gitSource': gitSource!,
         if (repoSource != null) 'repoSource': repoSource!,
         if (storageSource != null) 'storageSource': storageSource!,
@@ -7926,6 +8071,18 @@ class SourceProvenance {
   /// Output only.
   core.Map<core.String, FileHashes>? fileHashes;
 
+  /// A copy of the build's `source.connected_repository`, if exists, with any
+  /// revisions resolved.
+  ///
+  /// Output only.
+  ConnectedRepository? resolvedConnectedRepository;
+
+  /// A copy of the build's `source.git_source`, if exists, with any revisions
+  /// resolved.
+  ///
+  /// Output only.
+  GitSource? resolvedGitSource;
+
   /// A copy of the build's `source.repo_source`, if exists, with any revisions
   /// resolved.
   RepoSource? resolvedRepoSource;
@@ -7942,6 +8099,8 @@ class SourceProvenance {
 
   SourceProvenance({
     this.fileHashes,
+    this.resolvedConnectedRepository,
+    this.resolvedGitSource,
     this.resolvedRepoSource,
     this.resolvedStorageSource,
     this.resolvedStorageSourceManifest,
@@ -7958,6 +8117,16 @@ class SourceProvenance {
                         value as core.Map<core.String, core.dynamic>),
                   ),
                 )
+              : null,
+          resolvedConnectedRepository:
+              json_.containsKey('resolvedConnectedRepository')
+                  ? ConnectedRepository.fromJson(
+                      json_['resolvedConnectedRepository']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          resolvedGitSource: json_.containsKey('resolvedGitSource')
+              ? GitSource.fromJson(json_['resolvedGitSource']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           resolvedRepoSource: json_.containsKey('resolvedRepoSource')
               ? RepoSource.fromJson(json_['resolvedRepoSource']
@@ -7977,6 +8146,9 @@ class SourceProvenance {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (fileHashes != null) 'fileHashes': fileHashes!,
+        if (resolvedConnectedRepository != null)
+          'resolvedConnectedRepository': resolvedConnectedRepository!,
+        if (resolvedGitSource != null) 'resolvedGitSource': resolvedGitSource!,
         if (resolvedRepoSource != null)
           'resolvedRepoSource': resolvedRepoSource!,
         if (resolvedStorageSource != null)
@@ -8012,10 +8184,21 @@ class StorageSource {
   /// containing source to build.
   core.String? object;
 
+  /// Option to specify the tool to fetch the source file for the build.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "SOURCE_FETCHER_UNSPECIFIED" : Unspecified defaults to GSUTIL.
+  /// - "GSUTIL" : Use the "gsutil" tool to download the source file.
+  /// - "GCS_FETCHER" : Use the Cloud Storage Fetcher tool to download the
+  /// source file.
+  core.String? sourceFetcher;
+
   StorageSource({
     this.bucket,
     this.generation,
     this.object,
+    this.sourceFetcher,
   });
 
   StorageSource.fromJson(core.Map json_)
@@ -8029,12 +8212,16 @@ class StorageSource {
           object: json_.containsKey('object')
               ? json_['object'] as core.String
               : null,
+          sourceFetcher: json_.containsKey('sourceFetcher')
+              ? json_['sourceFetcher'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bucket != null) 'bucket': bucket!,
         if (generation != null) 'generation': generation!,
         if (object != null) 'object': object!,
+        if (sourceFetcher != null) 'sourceFetcher': sourceFetcher!,
       };
 }
 

@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Street View Publish API - v1
@@ -26,7 +25,7 @@
 /// - [PhotoSequenceResource]
 /// - [PhotoSequencesResource]
 /// - [PhotosResource]
-library streetviewpublish_v1;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -1763,6 +1762,8 @@ class PhotoSequence {
   /// - "NOT_OUTDOORS" : Some frames were indoors, which is unsupported.
   /// - "INSUFFICIENT_VIDEO_FRAMES" : Not enough video frames.
   /// - "INSUFFICIENT_MOVEMENT" : Not enough moving data.
+  /// - "MAST_DOWN" : Mast is down.
+  /// - "CAMERA_COVERED" : Camera is covered.
   core.String? failureReason;
 
   /// The filename of the upload.

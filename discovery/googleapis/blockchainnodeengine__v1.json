@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230712",
+    "revision": "20240228",
     "rootUrl": "https://blockchainnodeengine.googleapis.com/",
     "servicePath": "",
     "title": "Blockchain Node Engine API",
@@ -535,6 +535,10 @@
                     "readOnly": true,
                     "type": "string"
                 },
+                "privateServiceConnectEnabled": {
+                    "description": "Optional. When true, the node is only accessible via Private Service Connect; no public endpoints are exposed. Otherwise, the node is only accessible via public endpoints. Warning: Private Service Connect enabled nodes may require a manual migration effort to remain compatible with future versions of the product. If this feature is enabled, you will be notified of these changes along with any required action to avoid disruption. See https://cloud.google.com/vpc/docs/private-service-connect.",
+                    "type": "boolean"
+                },
                 "state": {
                     "description": "Output only. A status representing the state of the node.",
                     "enum": [
@@ -583,6 +587,11 @@
                     "$ref": "EndpointInfo",
                     "description": "Output only. The endpoint information through which to interact with a blockchain node.",
                     "readOnly": true
+                },
+                "serviceAttachment": {
+                    "description": "Output only. A service attachment that exposes a node, and has the following format: projects/{project}/regions/{region}/serviceAttachments/{service_attachment_name}",
+                    "readOnly": true,
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -664,13 +673,15 @@
                         "NETWORK_UNSPECIFIED",
                         "MAINNET",
                         "TESTNET_GOERLI_PRATER",
-                        "TESTNET_SEPOLIA"
+                        "TESTNET_SEPOLIA",
+                        "TESTNET_HOLESKY"
                     ],
                     "enumDescriptions": [
                         "The network has not been specified, but should be.",
                         "The Ethereum Mainnet.",
                         "The Ethereum Testnet based on Goerli protocol.",
-                        "The Ethereum Testnet based on Sepolia/Bepolia protocol."
+                        "The Ethereum Testnet based on Sepolia/Bepolia protocol. See https://github.com/eth-clients/sepolia.",
+                        "The Ethereum Testnet based on Holesky specification. See https://github.com/eth-clients/holesky."
                     ],
                     "type": "string"
                 },
@@ -689,6 +700,10 @@
                         "Holds the same data as full node as well as all of the blockchain's history state data dating back to the Genesis Block."
                     ],
                     "type": "string"
+                },
+                "validatorConfig": {
+                    "$ref": "ValidatorConfig",
+                    "description": "Configuration for validator-related parameters on the beacon client, and for any GCP-managed validator client."
                 }
             },
             "type": "object"
@@ -866,7 +881,7 @@
                         "description": "Properties of the object. Contains field @type with type URL.",
                         "type": "any"
                     },
-                    "description": "The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
+                    "description": "The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
                     "type": "object"
                 }
             },
@@ -939,6 +954,28 @@
                 "message": {
                     "description": "A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.",
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ValidatorConfig": {
+            "description": "Configuration for validator-related parameters on the beacon client, and for any GCP-managed validator client.",
+            "id": "ValidatorConfig",
+            "properties": {
+                "beaconFeeRecipient": {
+                    "description": "An Ethereum address which the beacon client will send fee rewards to if no recipient is configured in the validator client. See https://lighthouse-book.sigmaprime.io/suggested-fee-recipient.html or https://docs.prylabs.network/docs/execution-node/fee-recipient for examples of how this is used. Note that while this is often described as \"suggested\", as we run the execution node we can trust the execution node, and therefore this is considered enforced.",
+                    "type": "string"
+                },
+                "managedValidatorClient": {
+                    "description": "Immutable. When true, deploys a GCP-managed validator client alongside the beacon client.",
+                    "type": "boolean"
+                },
+                "mevRelayUrls": {
+                    "description": "URLs for MEV-relay services to use for block building. When set, a GCP-managed MEV-boost service is configured on the beacon client.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"

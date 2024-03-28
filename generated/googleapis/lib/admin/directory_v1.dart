@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Admin SDK API - directory_v1
@@ -53,7 +52,7 @@
 ///   - [UsersAliasesResource]
 ///   - [UsersPhotosResource]
 /// - [VerificationCodesResource]
-library admin_directory_v1;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -393,13 +392,16 @@ class ChromeosdevicesResource {
 
   ChromeosdevicesResource(commons.ApiRequester client) : _requester = client;
 
-  /// Takes an action that affects a Chrome OS Device.
+  /// Use
+  /// \[BatchChangeChromeOsDeviceStatus\](/admin-sdk/directory/reference/rest/v1/customer.devices.chromeos/batchChangeStatus)
+  /// instead.
   ///
-  /// This includes deprovisioning, disabling, and re-enabling devices.
-  /// *Warning:* * Deprovisioning a device will stop device policy syncing and
-  /// remove device-level printers. After a device is deprovisioned, it must be
-  /// wiped before it can be re-enrolled. * Lost or stolen devices should use
-  /// the disable action. * Re-enabling a disabled device will consume a device
+  /// Takes an action that affects a Chrome OS Device. This includes
+  /// deprovisioning, disabling, and re-enabling devices. *Warning:* *
+  /// Deprovisioning a device will stop device policy syncing and remove
+  /// device-level printers. After a device is deprovisioned, it must be wiped
+  /// before it can be re-enrolled. * Lost or stolen devices should use the
+  /// disable action. * Re-enabling a disabled device will consume a device
   /// license. If you do not have sufficient licenses available when completing
   /// the re-enable action, you will receive an error. For more information
   /// about deprovisioning and disabling devices, visit the
@@ -428,6 +430,9 @@ class ChromeosdevicesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<void> action(
     ChromeOsDeviceAction request,
     core.String customerId,
@@ -808,6 +813,51 @@ class CustomerDevicesChromeosResource {
 
   CustomerDevicesChromeosResource(commons.ApiRequester client)
       : _requester = client;
+
+  /// Changes the status of a batch of ChromeOS devices.
+  ///
+  /// For more information about changing a ChromeOS device state
+  /// [Repair, repurpose, or retire ChromeOS devices](https://support.google.com/chrome/a/answer/3523633).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [customerId] - Required. Immutable ID of the Google Workspace account.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BatchChangeChromeOsDeviceStatusResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BatchChangeChromeOsDeviceStatusResponse> batchChangeStatus(
+    BatchChangeChromeOsDeviceStatusRequest request,
+    core.String customerId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'admin/directory/v1/customer/' +
+        commons.escapeVariable('$customerId') +
+        '/devices/chromeos:batchChangeStatus';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return BatchChangeChromeOsDeviceStatusResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 
   /// Issues a command for the device to execute.
   ///
@@ -5430,6 +5480,11 @@ class UsersResource {
   ///
   /// Request parameters:
   ///
+  /// [resolveConflictAccount] - Optional. If set to `true`, the option selected
+  /// for
+  /// [handling unmanaged user accounts](https://support.google.com/a/answer/11112794)
+  /// will apply. Default: `false`
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -5442,10 +5497,13 @@ class UsersResource {
   /// this method will complete with the same error.
   async.Future<User> insert(
     User request, {
+    core.bool? resolveConflictAccount,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (resolveConflictAccount != null)
+        'resolveConflictAccount': ['${resolveConflictAccount}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -6603,6 +6661,178 @@ class AuxiliaryMessage {
       };
 }
 
+/// Information about the device's backlights.
+class BacklightInfo {
+  /// Current brightness of the backlight, between 0 and max_brightness.
+  ///
+  /// Output only.
+  core.int? brightness;
+
+  /// Maximum brightness for the backlight.
+  ///
+  /// Output only.
+  core.int? maxBrightness;
+
+  /// Path to this backlight on the system.
+  ///
+  /// Useful if the caller needs to correlate with other information.
+  ///
+  /// Output only.
+  core.String? path;
+
+  BacklightInfo({
+    this.brightness,
+    this.maxBrightness,
+    this.path,
+  });
+
+  BacklightInfo.fromJson(core.Map json_)
+      : this(
+          brightness: json_.containsKey('brightness')
+              ? json_['brightness'] as core.int
+              : null,
+          maxBrightness: json_.containsKey('maxBrightness')
+              ? json_['maxBrightness'] as core.int
+              : null,
+          path: json_.containsKey('path') ? json_['path'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (brightness != null) 'brightness': brightness!,
+        if (maxBrightness != null) 'maxBrightness': maxBrightness!,
+        if (path != null) 'path': path!,
+      };
+}
+
+/// A request for changing the status of a batch of ChromeOS devices.
+class BatchChangeChromeOsDeviceStatusRequest {
+  /// The action to take on the ChromeOS device in order to change its status.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "CHANGE_CHROME_OS_DEVICE_STATUS_ACTION_UNSPECIFIED" : Default value.
+  /// Value is unused.
+  /// - "CHANGE_CHROME_OS_DEVICE_STATUS_ACTION_DEPROVISION" : Deprovisions a
+  /// ChromeOS device. If you have ChromeOS devices that are no longer being
+  /// used in your organization, you should deprovision them so that you’re no
+  /// longer managing them. Deprovisioning the device removes all policies that
+  /// were on the device as well as device-level printers and the ability to use
+  /// the device as a kiosk. Depending on the upgrade that’s associated with the
+  /// device this action might release the license back into the license pool;
+  /// which allows you to use the license on a different device.
+  /// - "CHANGE_CHROME_OS_DEVICE_STATUS_ACTION_DISABLE" : Disables a ChromeOS
+  /// device. Use this action if a user loses their device or it’s stolen, this
+  /// makes it such that the device is still managed, so it will still receive
+  /// policies, but no one can use it. Depending on the upgrade that’s
+  /// associated with the device this action might release the license back into
+  /// the license pool; which allows you to use the license on a different
+  /// device.
+  /// - "CHANGE_CHROME_OS_DEVICE_STATUS_ACTION_REENABLE" : Reenables a ChromeOS
+  /// device to be used after being disabled. Reenables the device once it's no
+  /// longer lost or it's been recovered. This allows the device to be used
+  /// again. Depending on the upgrade associated with the device this might
+  /// consume one license from the license pool, meaning that if there aren't
+  /// enough licenses available the operation will fail.
+  core.String? changeChromeOsDeviceStatusAction;
+
+  /// The reason behind a device deprovision.
+  ///
+  /// Must be provided if 'changeChromeOsDeviceStatusAction' is set to
+  /// 'CHANGE_CHROME_OS_DEVICE_STATUS_ACTION_DEPROVISION'. Otherwise, omit this
+  /// field.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "DEPROVISION_REASON_UNSPECIFIED" : The deprovision reason is unknown.
+  /// - "DEPROVISION_REASON_SAME_MODEL_REPLACEMENT" : Same model replacement.
+  /// You have return materials authorization (RMA) or you are replacing a
+  /// malfunctioning device under warranty with the same device model.
+  /// - "DEPROVISION_REASON_UPGRADE" : The device was upgraded.
+  /// - "DEPROVISION_REASON_DOMAIN_MOVE" : The device's domain was changed.
+  /// - "DEPROVISION_REASON_SERVICE_EXPIRATION" : Service expired for the
+  /// device.
+  /// - "DEPROVISION_REASON_OTHER" : The device was deprovisioned for a legacy
+  /// reason that is no longer supported.
+  /// - "DEPROVISION_REASON_DIFFERENT_MODEL_REPLACEMENT" : Different model
+  /// replacement. You are replacing this device with an upgraded or newer
+  /// device model.
+  /// - "DEPROVISION_REASON_RETIRING_DEVICE" : Retiring from fleet. You are
+  /// donating, discarding, or otherwise removing the device from use.
+  /// - "DEPROVISION_REASON_UPGRADE_TRANSFER" : ChromeOS Flex upgrade transfer.
+  /// This is a ChromeOS Flex device that you are replacing with a Chromebook
+  /// within a year.
+  /// - "DEPROVISION_REASON_NOT_REQUIRED" : A reason was not required. For
+  /// example, the licenses were returned to the customer's license pool.
+  /// - "DEPROVISION_REASON_REPAIR_CENTER" : The device was deprovisioned by the
+  /// Repair Service Center. Can only be set by Repair Service Center during
+  /// RMA.
+  core.String? deprovisionReason;
+
+  /// List of the IDs of the ChromeOS devices to change.
+  ///
+  /// Maximum 50.
+  ///
+  /// Required.
+  core.List<core.String>? deviceIds;
+
+  BatchChangeChromeOsDeviceStatusRequest({
+    this.changeChromeOsDeviceStatusAction,
+    this.deprovisionReason,
+    this.deviceIds,
+  });
+
+  BatchChangeChromeOsDeviceStatusRequest.fromJson(core.Map json_)
+      : this(
+          changeChromeOsDeviceStatusAction:
+              json_.containsKey('changeChromeOsDeviceStatusAction')
+                  ? json_['changeChromeOsDeviceStatusAction'] as core.String
+                  : null,
+          deprovisionReason: json_.containsKey('deprovisionReason')
+              ? json_['deprovisionReason'] as core.String
+              : null,
+          deviceIds: json_.containsKey('deviceIds')
+              ? (json_['deviceIds'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (changeChromeOsDeviceStatusAction != null)
+          'changeChromeOsDeviceStatusAction': changeChromeOsDeviceStatusAction!,
+        if (deprovisionReason != null) 'deprovisionReason': deprovisionReason!,
+        if (deviceIds != null) 'deviceIds': deviceIds!,
+      };
+}
+
+/// The response of changing the status of a batch of ChromeOS devices.
+class BatchChangeChromeOsDeviceStatusResponse {
+  /// The results for each of the ChromeOS devices provided in the request.
+  core.List<ChangeChromeOsDeviceStatusResult>?
+      changeChromeOsDeviceStatusResults;
+
+  BatchChangeChromeOsDeviceStatusResponse({
+    this.changeChromeOsDeviceStatusResults,
+  });
+
+  BatchChangeChromeOsDeviceStatusResponse.fromJson(core.Map json_)
+      : this(
+          changeChromeOsDeviceStatusResults:
+              json_.containsKey('changeChromeOsDeviceStatusResults')
+                  ? (json_['changeChromeOsDeviceStatusResults'] as core.List)
+                      .map((value) => ChangeChromeOsDeviceStatusResult.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (changeChromeOsDeviceStatusResults != null)
+          'changeChromeOsDeviceStatusResults':
+              changeChromeOsDeviceStatusResults!,
+      };
+}
+
 /// Request to add multiple new print servers in a batch.
 class BatchCreatePrintServersRequest {
   /// A list of `PrintServer` resources to be created (max `50` per batch).
@@ -7301,6 +7531,48 @@ class CalendarResources {
       };
 }
 
+/// The result of a single ChromeOS device for a Change state operation.
+class ChangeChromeOsDeviceStatusResult {
+  /// The unique ID of the ChromeOS device.
+  core.String? deviceId;
+
+  /// The error result of the operation in case of failure.
+  Status? error;
+
+  /// The device could change its status successfully.
+  ChangeChromeOsDeviceStatusSucceeded? response;
+
+  ChangeChromeOsDeviceStatusResult({
+    this.deviceId,
+    this.error,
+    this.response,
+  });
+
+  ChangeChromeOsDeviceStatusResult.fromJson(core.Map json_)
+      : this(
+          deviceId: json_.containsKey('deviceId')
+              ? json_['deviceId'] as core.String
+              : null,
+          error: json_.containsKey('error')
+              ? Status.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>)
+              : null,
+          response: json_.containsKey('response')
+              ? ChangeChromeOsDeviceStatusSucceeded.fromJson(
+                  json_['response'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deviceId != null) 'deviceId': deviceId!,
+        if (error != null) 'error': error!,
+        if (response != null) 'response': response!,
+      };
+}
+
+/// Response for a successful ChromeOS device status change.
+typedef ChangeChromeOsDeviceStatusSucceeded = $Empty;
+
 /// An notification channel used to watch for resource changes.
 class Channel {
   /// The address where notifications are delivered for this channel.
@@ -7963,6 +8235,11 @@ class ChromeOsDevice {
   /// Chrome updates or support
   core.String? autoUpdateExpiration;
 
+  /// Contains backlight information for the device.
+  ///
+  /// Output only.
+  core.List<BacklightInfo>? backlightInfo;
+
   /// The boot mode for the device.
   ///
   /// The possible values are: * `Verified`: The device is running a valid
@@ -7980,23 +8257,29 @@ class ChromeOsDevice {
 
   /// (Read-only) Deprovision reason.
   /// Possible string values are:
-  /// - "deprovisionReasonUnspecified" : The deprovision reason is unknown.
-  /// - "deprovisionReasonSameModelReplacement" : The device was replaced by a
-  /// device with the same model.
-  /// - "deprovisionReasonUpgrade" : The device was upgraded.
-  /// - "deprovisionReasonDomainMove" : The device's domain was changed.
-  /// - "deprovisionReasonServiceExpiration" : Service expired for the device.
-  /// - "deprovisionReasonOther" : The device was deprovisioned for a legacy
+  /// - "DEPROVISION_REASON_UNSPECIFIED" : The deprovision reason is unknown.
+  /// - "DEPROVISION_REASON_SAME_MODEL_REPLACEMENT" : Same model replacement.
+  /// You have return materials authorization (RMA) or you are replacing a
+  /// malfunctioning device under warranty with the same device model.
+  /// - "DEPROVISION_REASON_UPGRADE" : The device was upgraded.
+  /// - "DEPROVISION_REASON_DOMAIN_MOVE" : The device's domain was changed.
+  /// - "DEPROVISION_REASON_SERVICE_EXPIRATION" : Service expired for the
+  /// device.
+  /// - "DEPROVISION_REASON_OTHER" : The device was deprovisioned for a legacy
   /// reason that is no longer supported.
-  /// - "deprovisionReasonDifferentModelReplacement" : The device was replaced
-  /// by a device with a different model.
-  /// - "deprovisionReasonRetiringDevice" : The device was retired.
-  /// - "deprovisionReasonUpgradeTransfer" : The device's perpetual upgrade was
-  /// transferred to a new device.
-  /// - "deprovisionReasonNotRequired" : A reason was not required. For example,
-  /// the licenses were returned to the customer's license pool.
-  /// - "deprovisionReasonRepairCenter" : The device was deprovisioned by a
-  /// repair service center.
+  /// - "DEPROVISION_REASON_DIFFERENT_MODEL_REPLACEMENT" : Different model
+  /// replacement. You are replacing this device with an upgraded or newer
+  /// device model.
+  /// - "DEPROVISION_REASON_RETIRING_DEVICE" : Retiring from fleet. You are
+  /// donating, discarding, or otherwise removing the device from use.
+  /// - "DEPROVISION_REASON_UPGRADE_TRANSFER" : ChromeOS Flex upgrade transfer.
+  /// This is a ChromeOS Flex device that you are replacing with a Chromebook
+  /// within a year.
+  /// - "DEPROVISION_REASON_NOT_REQUIRED" : A reason was not required. For
+  /// example, the licenses were returned to the customer's license pool.
+  /// - "DEPROVISION_REASON_REPAIR_CENTER" : The device was deprovisioned by the
+  /// Repair Service Center. Can only be set by Repair Service Center during
+  /// RMA.
   core.String? deprovisionReason;
 
   /// A list of device files to download (Read-only)
@@ -8009,18 +8292,16 @@ class ChromeOsDevice {
   ///
   /// Output only.
   /// Possible string values are:
-  /// - "deviceLicenseTypeUnspecified" : UNSPECIFIED type.
-  /// - "enterprise" : Indicating the device is a
-  /// Chromebook/Chromebox/Chromebase enterprise, which is packaged with an
-  /// upgrade(license).
-  /// - "enterpriseUpgrade" : Indicating the device is consuming standalone
-  /// Chrome Enterprise Upgrade, a Chrome Enterprise license.
-  /// - "educationUpgrade" : Indicating the device is consuming Chrome Education
-  /// Upgrade(AKA Chrome EDU perpetual license).
-  /// - "education" : Packaged with a license as education.
-  /// - "terminal" : Packaged with a license as terminal.
-  /// - "kioskUpgrade" : Indicating the device is consuming standalone Chrome
-  /// Kiosk Upgrade, a Chrome Kiosk (annual) license.
+  /// - "deviceLicenseTypeUnspecified" : The license type is unknown.
+  /// - "enterprise" : The device is bundled with a perpetual Chrome Enterprise
+  /// Upgrade.
+  /// - "enterpriseUpgrade" : The device has an annual standalone Chrome
+  /// Enterprise Upgrade.
+  /// - "educationUpgrade" : The device has a perpetual standalone Chrome
+  /// Education Upgrade.
+  /// - "education" : The device is bundled with a perpetual Chrome Education
+  /// Upgrade.
+  /// - "kioskUpgrade" : The device has an annual Kiosk Upgrade.
   core.String? deviceLicenseType;
 
   /// Reports of disk space and other info about mounted/connected volumes.
@@ -8185,6 +8466,7 @@ class ChromeOsDevice {
     this.annotatedLocation,
     this.annotatedUser,
     this.autoUpdateExpiration,
+    this.backlightInfo,
     this.bootMode,
     this.cpuInfo,
     this.cpuStatusReports,
@@ -8245,6 +8527,12 @@ class ChromeOsDevice {
               : null,
           autoUpdateExpiration: json_.containsKey('autoUpdateExpiration')
               ? json_['autoUpdateExpiration'] as core.String
+              : null,
+          backlightInfo: json_.containsKey('backlightInfo')
+              ? (json_['backlightInfo'] as core.List)
+                  .map((value) => BacklightInfo.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
               : null,
           bootMode: json_.containsKey('bootMode')
               ? json_['bootMode'] as core.String
@@ -8391,6 +8679,7 @@ class ChromeOsDevice {
         if (annotatedUser != null) 'annotatedUser': annotatedUser!,
         if (autoUpdateExpiration != null)
           'autoUpdateExpiration': autoUpdateExpiration!,
+        if (backlightInfo != null) 'backlightInfo': backlightInfo!,
         if (bootMode != null) 'bootMode': bootMode!,
         if (cpuInfo != null) 'cpuInfo': cpuInfo!,
         if (cpuStatusReports != null) 'cpuStatusReports': cpuStatusReports!,
@@ -8873,6 +9162,11 @@ class DirectoryChromeosdevicesCommand {
   /// - "CAPTURE_LOGS" : Capture the system logs of a kiosk device. The logs can
   /// be downloaded from the downloadUrl link present in `deviceFiles` field of
   /// [chromeosdevices](https://developers.google.com/admin-sdk/directory/reference/rest/v1/chromeosdevices)
+  /// - "FETCH_SUPPORT_PACKET" : Fetch support packet from a device remotely.
+  /// Support packet is a zip archive that contains various system logs and
+  /// debug data from a ChromeOS device. The support packet can be downloaded
+  /// from the downloadURL link present in the `deviceFiles` field of
+  /// \[`chromeosdevices`\](https://developers.google.com/admin-sdk/directory/reference/rest/v1/chromeosdevices)
   core.String? type;
 
   DirectoryChromeosdevicesCommand({
@@ -9001,6 +9295,11 @@ class DirectoryChromeosdevicesIssueCommandRequest {
   /// - "CAPTURE_LOGS" : Capture the system logs of a kiosk device. The logs can
   /// be downloaded from the downloadUrl link present in `deviceFiles` field of
   /// [chromeosdevices](https://developers.google.com/admin-sdk/directory/reference/rest/v1/chromeosdevices)
+  /// - "FETCH_SUPPORT_PACKET" : Fetch support packet from a device remotely.
+  /// Support packet is a zip archive that contains various system logs and
+  /// debug data from a ChromeOS device. The support packet can be downloaded
+  /// from the downloadURL link present in the `deviceFiles` field of
+  /// \[`chromeosdevices`\](https://developers.google.com/admin-sdk/directory/reference/rest/v1/chromeosdevices)
   core.String? commandType;
 
   /// The payload for the command, provide it only if command supports it.
@@ -9011,7 +9310,24 @@ class DirectoryChromeosdevicesIssueCommandRequest {
   /// Payload is optionally a stringified JSON object in the form: {
   /// "ackedUserPresence": true }. `ackedUserPresence` is a boolean. By default,
   /// `ackedUserPresence` is set to `false`. To start a Chrome Remote Desktop
-  /// session for an active device, set `ackedUserPresence` to `true`.
+  /// session for an active device, set `ackedUserPresence` to `true`. *
+  /// `REBOOT`: Payload is a stringified JSON object in the form: {
+  /// "user_session_delay_seconds": 300 }. The delay has to be in the range \[0,
+  /// 300\]. * `FETCH_SUPPORT_PACKET`: Payload is optionally a stringified JSON
+  /// object in the form: {"supportPacketDetails":{ "issueCaseId":
+  /// optional_support_case_id_string, "issueDescription":
+  /// optional_issue_description_string, "requestedDataCollectors": \[\]}} The
+  /// list of available `data_collector_enums` are as following: Chrome System
+  /// Information (1), Crash IDs (2), Memory Details (3), UI Hierarchy (4),
+  /// Additional ChromeOS Platform Logs (5), Device Event (6), Intel WiFi NICs
+  /// Debug Dump (7), Touch Events (8), Lacros (9), Lacros System Information
+  /// (10), ChromeOS Flex Logs (11), DBus Details (12), ChromeOS Network Routes
+  /// (13), ChromeOS Shill (Connection Manager) Logs (14), Policies (15),
+  /// ChromeOS System State and Logs (16), ChromeOS System Logs (17), ChromeOS
+  /// Chrome User Logs (18), ChromeOS Bluetooth (19), ChromeOS Connected Input
+  /// Devices (20), ChromeOS Traffic Counters (21), ChromeOS Virtual Keyboard
+  /// (22), ChromeOS Network Health (23). See more details in
+  /// [help article](https://support.google.com/chrome/a?p=remote-log).
   core.String? payload;
 
   DirectoryChromeosdevicesIssueCommandRequest({
@@ -10463,11 +10779,14 @@ class OrgUnit {
   /// parent organization.
   ///
   /// The default value is `false`, meaning a sub-organizational unit inherits
-  /// the settings of the nearest parent organizational unit. We recommend using
-  /// the default value because setting `block_inheritance` to `true` can have
+  /// the settings of the nearest parent organizational unit. This field is
+  /// deprecated. Setting it to `true` is no longer supported and can have
   /// _unintended consequences_. For more information about inheritance and
   /// users in an organization structure, see the
   /// [administration help center](https://support.google.com/a/answer/4352075).
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? blockInheritance;
 
   /// Description of the organizational unit.
@@ -11685,6 +12004,15 @@ class Schemas {
       };
 }
 
+/// The `Status` type defines a logical error model that is suitable for
+/// different programming environments, including REST APIs and RPC APIs.
+///
+/// It is used by [gRPC](https://github.com/grpc). Each `Status` message
+/// contains three pieces of data: error code, error message, and error details.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
+typedef Status = $Status;
+
 /// JSON template for token resource in Directory API.
 class Token {
   /// Whether the application is registered with Google.
@@ -11867,7 +12195,8 @@ class User {
 
   /// The list of the user's email addresses.
   ///
-  /// The maximum allowed data size for this field is 10KB.
+  /// The maximum allowed data size for this field is 10KB. This excludes
+  /// `publicKeyEncryptionCertificates`.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.

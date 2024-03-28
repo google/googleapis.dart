@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Service Networking API - v1
@@ -32,7 +31,7 @@
 ///         - [ServicesProjectsGlobalNetworksDnsZonesResource]
 ///         - [ServicesProjectsGlobalNetworksPeeredDnsDomainsResource]
 ///   - [ServicesRolesResource]
-library servicenetworking_v1;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -1136,6 +1135,52 @@ class ServicesProjectsGlobalNetworksResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Consumers use this method to find out the state of VPC Service Controls.
+  ///
+  /// The controls could be enabled or disabled for a connection.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the VPC Service Controls config to retrieve in
+  /// the format:
+  /// `services/{service}/projects/{project}/global/networks/{network}`.
+  /// {service} is the peering service that is managing connectivity for the
+  /// service producer's organization. For Google services that support this
+  /// functionality, this value is `servicenetworking.googleapis.com`. {project}
+  /// is a project number e.g. `12345` that contains the service consumer's VPC
+  /// network. {network} is the name of the service consumer's VPC network.
+  /// Value must have pattern
+  /// `^services/\[^/\]+/projects/\[^/\]+/global/networks/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [VpcServiceControls].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<VpcServiceControls> getVpcServiceControls(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/vpcServiceControls';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return VpcServiceControls.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Service producers use this method to update the configuration of their
   /// connection including the import/export of custom routes and subnetwork
   /// routes with public IP.
@@ -1686,6 +1731,16 @@ class AddSubnetworkRequest {
   /// Optional.
   core.String? description;
 
+  /// The url of an Internal Range.
+  ///
+  /// Eg: `projects//locations/global/internalRanges/`. If specified, it means
+  /// that the subnetwork cidr will be created using the combination of
+  /// requested_address/ip_prefix_length. Note that the subnet cidr has to be
+  /// within the cidr range of this Internal Range.
+  ///
+  /// Optional.
+  core.String? internalRange;
+
   /// The prefix length of the subnet's IP address range.
   ///
   /// Use CIDR range notation, such as `29` to provision a subnet with an
@@ -1794,6 +1849,7 @@ class AddSubnetworkRequest {
     this.consumer,
     this.consumerNetwork,
     this.description,
+    this.internalRange,
     this.ipPrefixLength,
     this.outsideAllocationPublicIpRange,
     this.privateIpv6GoogleAccess,
@@ -1830,6 +1886,9 @@ class AddSubnetworkRequest {
               : null,
           description: json_.containsKey('description')
               ? json_['description'] as core.String
+              : null,
+          internalRange: json_.containsKey('internalRange')
+              ? json_['internalRange'] as core.String
               : null,
           ipPrefixLength: json_.containsKey('ipPrefixLength')
               ? json_['ipPrefixLength'] as core.int
@@ -1887,6 +1946,7 @@ class AddSubnetworkRequest {
         if (consumer != null) 'consumer': consumer!,
         if (consumerNetwork != null) 'consumerNetwork': consumerNetwork!,
         if (description != null) 'description': description!,
+        if (internalRange != null) 'internalRange': internalRange!,
         if (ipPrefixLength != null) 'ipPrefixLength': ipPrefixLength!,
         if (outsideAllocationPublicIpRange != null)
           'outsideAllocationPublicIpRange': outsideAllocationPublicIpRange!,
@@ -3353,5 +3413,33 @@ class ValidateConsumerConfigResponse {
           'existingSubnetworkCandidates': existingSubnetworkCandidates!,
         if (isValid != null) 'isValid': isValid!,
         if (validationError != null) 'validationError': validationError!,
+      };
+}
+
+/// Response for the get VPC Service Controls request.
+class VpcServiceControls {
+  /// Indicates whether the VPC Service Controls are enabled or disabled for the
+  /// connection.
+  ///
+  /// If the consumer called the EnableVpcServiceControls method, then this is
+  /// true. If the consumer called DisableVpcServiceControls, then this is
+  /// false. The default is false.
+  ///
+  /// Output only.
+  core.bool? enabled;
+
+  VpcServiceControls({
+    this.enabled,
+  });
+
+  VpcServiceControls.fromJson(core.Map json_)
+      : this(
+          enabled: json_.containsKey('enabled')
+              ? json_['enabled'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
       };
 }

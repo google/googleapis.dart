@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Cloud Tool Results API - v1beta3
@@ -30,7 +29,7 @@
 /// - [ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResource]
 ///         - [ProjectsHistoriesExecutionsStepsTestCasesResource]
 ///         - [ProjectsHistoriesExecutionsStepsThumbnailsResource]
-library toolresults_v1beta3;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -3952,6 +3951,9 @@ class PerfMetricsSummary {
   ///
   /// Statistics are reset at the beginning of the run and collected at the end
   /// of the run.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   GraphicsStats? graphicsStats;
 
   /// A tool results history ID.

@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Cloud Domains API - v1
@@ -23,7 +22,7 @@
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsRegistrationsResource]
-library domains_v1;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -405,16 +404,17 @@ class ProjectsLocationsRegistrationsResource {
   ///
   /// This method works on any `Registration` resource using \[Subscription or
   /// Commitment billing\](/domains/pricing#billing-models), provided that the
-  /// resource was created at least 1 day in the past. For `Registration`
-  /// resources using \[Monthly billing\](/domains/pricing#billing-models), this
-  /// method works if: * `state` is `EXPORTED` with `expire_time` in the past *
-  /// `state` is `REGISTRATION_FAILED` * `state` is `TRANSFER_FAILED` When an
-  /// active registration is successfully deleted, you can continue to use the
-  /// domain in [Google Domains](https://domains.google/) until it expires. The
-  /// calling user becomes the domain's sole owner in Google Domains, and
-  /// permissions for the domain are subsequently managed there. The domain does
-  /// not renew automatically unless the new owner sets up billing in Google
-  /// Domains.
+  /// resource was created at least 1 day in the past. When an active
+  /// registration is successfully deleted, you can continue to use the domain
+  /// in [Google Domains](https://domains.google/) until it expires. The calling
+  /// user becomes the domain's sole owner in Google Domains, and permissions
+  /// for the domain are subsequently managed there. The domain does not renew
+  /// automatically unless the new owner sets up billing in Google Domains.
+  /// After January 2024 you will only be able to delete `Registration`
+  /// resources when `state` is one of: `EXPORTED`,
+  /// `EXPIRED`,`REGISTRATION_FAILED` or `TRANSFER_FAILED`. See
+  /// [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations)
+  /// for more details.
   ///
   /// Request parameters:
   ///
@@ -451,6 +451,8 @@ class ProjectsLocationsRegistrationsResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Deprecated: For more information, see
+  /// [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations)
   /// Exports a `Registration` resource, such that it is no longer managed by
   /// Cloud Domains.
   ///
@@ -480,6 +482,9 @@ class ProjectsLocationsRegistrationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<Operation> export(
     ExportRegistrationRequest request,
     core.String name, {
@@ -596,6 +601,8 @@ class ProjectsLocationsRegistrationsResource {
     return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Deprecated: For more information, see
+  /// [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations)
   /// Imports a domain name from [Google Domains](https://domains.google/) for
   /// use in Cloud Domains.
   ///
@@ -621,6 +628,9 @@ class ProjectsLocationsRegistrationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<Operation> import(
     ImportDomainRequest request,
     core.String parent, {
@@ -904,6 +914,8 @@ class ProjectsLocationsRegistrationsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Deprecated: For more information, see
+  /// [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations)
   /// Lists domain names from [Google Domains](https://domains.google/) that can
   /// be imported to Cloud Domains using the `ImportDomain` method.
   ///
@@ -932,6 +944,9 @@ class ProjectsLocationsRegistrationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<RetrieveImportableDomainsResponse> retrieveImportableDomains(
     core.String location, {
     core.int? pageSize,
@@ -1004,6 +1019,8 @@ class ProjectsLocationsRegistrationsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Deprecated: For more information, see
+  /// [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations)
   /// Gets parameters needed to transfer a domain name from another registrar to
   /// Cloud Domains.
   ///
@@ -1030,6 +1047,9 @@ class ProjectsLocationsRegistrationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<RetrieveTransferParametersResponse> retrieveTransferParameters(
     core.String location, {
     core.String? domainName,
@@ -1198,6 +1218,8 @@ class ProjectsLocationsRegistrationsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Deprecated: For more information, see
+  /// [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations)
   /// Transfers a domain name from another registrar to Cloud Domains.
   ///
   /// For domains already managed by [Google Domains](https://domains.google/),
@@ -1234,6 +1256,9 @@ class ProjectsLocationsRegistrationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<Operation> transfer(
     TransferDomainRequest request,
     core.String parent, {
@@ -1369,14 +1394,31 @@ class Binding {
   /// `group:{emailid}`: An email address that represents a Google group. For
   /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
   /// (primary) that represents all the users of that domain. For example,
-  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a user that has
-  /// been recently deleted. For example,
-  /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
-  /// this value reverts to `user:{emailid}` and the recovered user retains the
-  /// role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a service account
-  /// that has been recently deleted. For example,
+  /// `google.com` or `example.com`. *
+  /// `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workforce identity pool. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`:
+  /// All workforce identities in a group. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All workforce identities with a specific attribute value. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}
+  /// / * `: All identities in a workforce identity pool. *
+  /// `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workload identity pool. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`:
+  /// A workload identity pool group. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All identities in a workload identity pool with a certain attribute. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}
+  /// / * `: All identities in a workload identity pool. *
+  /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
+  /// identifier) representing a user that has been recently deleted. For
+  /// example, `alice@example.com?uid=123456789012345678901`. If the user is
+  /// recovered, this value reverts to `user:{emailid}` and the recovered user
+  /// retains the role in the binding. *
+  /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus
+  /// unique identifier) representing a service account that has been recently
+  /// deleted. For example,
   /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If
   /// the service account is undeleted, this value reverts to
   /// `serviceAccount:{emailid}` and the undeleted service account retains the
@@ -1385,12 +1427,19 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding.
+  /// the role in the binding. *
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// Deleted single identity in a workforce identity pool. For example,
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
   ///
-  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an
+  /// overview of the IAM roles and permissions, see the
+  /// [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For
+  /// a list of the available pre-defined roles, see
+  /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
   Binding({
@@ -1638,14 +1687,17 @@ class ContactSettings {
   /// available. When setting this option, you must also provide a
   /// `PUBLIC_CONTACT_DATA_ACKNOWLEDGEMENT` in the `contact_notices` field of
   /// the request.
-  /// - "PRIVATE_CONTACT_DATA" : None of the data from `ContactSettings` is
-  /// publicly available. Instead, proxy contact data is published for your
-  /// domain. Email sent to the proxy email address is forwarded to the
-  /// registrant's email address. Cloud Domains provides this privacy proxy
-  /// service at no additional cost.
-  /// - "REDACTED_CONTACT_DATA" : Some data from `ContactSettings` is publicly
-  /// available. The actual information redacted depends on the domain. For
-  /// details, see
+  /// - "PRIVATE_CONTACT_DATA" : Deprecated: For more information, see
+  /// [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations).
+  /// None of the data from `ContactSettings` is publicly available. Instead,
+  /// proxy contact data is published for your domain. Email sent to the proxy
+  /// email address is forwarded to the registrant's email address. Cloud
+  /// Domains provides this privacy proxy service at no additional cost.
+  /// - "REDACTED_CONTACT_DATA" : The organization name (if provided) and
+  /// limited non-identifying data from `ContactSettings` is available to the
+  /// public (e.g. country and state). The remaining data is marked as `REDACTED
+  /// FOR PRIVACY` in the WHOIS database. The actual information redacted
+  /// depends on the domain. For details, see
   /// [the registration privacy article](https://support.google.com/domains/answer/3251242).
   core.String? privacy;
 
@@ -1751,7 +1803,13 @@ class DnsSettings {
   /// Commonly empty.
   core.List<GlueRecord>? glueRecords;
 
+  /// Deprecated: For more information, see
+  /// [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations).
+  ///
   /// The free DNS zone provided by [Google Domains](https://domains.google/).
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   GoogleDomainsDns? googleDomainsDns;
 
   DnsSettings({
@@ -1921,8 +1979,11 @@ class DsRecord {
       };
 }
 
+/// Deprecated: For more information, see
+/// [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations).
+///
 /// Request for the `ExportRegistration` method.
-typedef ExportRegistrationRequest = $Empty;
+typedef ExportRegistrationRequest = $Shared01;
 
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.
@@ -2000,11 +2061,13 @@ class GlueRecord {
       };
 }
 
-/// Configuration for using the free DNS zone provided by Google Domains as a
-/// `Registration`'s `dns_provider`.
+/// Deprecated: For more information, see
+/// [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations).
 ///
-/// You cannot configure the DNS zone itself using the API. To configure the DNS
-/// zone, go to [Google Domains](https://domains.google/).
+/// Configuration for using the free DNS zone provided by Google Domains as a
+/// `Registration`'s `dns_provider`. You cannot configure the DNS zone itself
+/// using the API. To configure the DNS zone, go to
+/// [Google Domains](https://domains.google/).
 class GoogleDomainsDns {
   /// The list of DS records published for this domain.
   ///
@@ -2069,6 +2132,9 @@ class GoogleDomainsDns {
       };
 }
 
+/// Deprecated: For more information, see
+/// [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations).
+///
 /// Request for the `ImportDomain` method.
 class ImportDomainRequest {
   /// The domain name.
@@ -2211,19 +2277,49 @@ typedef Location = $Location00;
 
 /// Defines renewal, billing, and transfer settings for a `Registration`.
 class ManagementSettings {
-  /// The renewal method for this `Registration`.
+  /// The desired renewal method for this `Registration`.
+  ///
+  /// The actual `renewal_method` is automatically updated to reflect this
+  /// choice. If unset or equal to `RENEWAL_METHOD_UNSPECIFIED`, the actual
+  /// `renewalMethod` is treated as if it were set to `AUTOMATIC_RENEWAL`. You
+  /// cannot use `RENEWAL_DISABLED` during resource creation, and you can update
+  /// the renewal status only when the `Registration` resource has state
+  /// `ACTIVE` or `SUSPENDED`. When `preferred_renewal_method` is set to
+  /// `AUTOMATIC_RENEWAL`, the actual `renewal_method` can be set to
+  /// `RENEWAL_DISABLED` in case of problems with the billing account or
+  /// reported domain abuse. In such cases, check the `issues` field on the
+  /// `Registration`. After the problem is resolved, the `renewal_method` is
+  /// automatically updated to `preferred_renewal_method` in a few hours.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "RENEWAL_METHOD_UNSPECIFIED" : The renewal method is undefined.
+  /// - "AUTOMATIC_RENEWAL" : The domain is automatically renewed each year.
+  /// - "MANUAL_RENEWAL" : Deprecated: For more information, see
+  /// [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations).
+  /// This option was never used. Use `RENEWAL_DISABLED` instead.
+  /// - "RENEWAL_DISABLED" : The domain won't be renewed and will expire at its
+  /// expiration time.
+  core.String? preferredRenewalMethod;
+
+  /// The actual renewal method for this `Registration`.
+  ///
+  /// When `preferred_renewal_method` is set to `AUTOMATIC_RENEWAL`, the actual
+  /// `renewal_method` can be equal to `RENEWAL_DISABLED`—for example, when
+  /// there are problems with the billing account or reported domain abuse. In
+  /// such cases, check the `issues` field on the `Registration`. After the
+  /// problem is resolved, the `renewal_method` is automatically updated to
+  /// `preferred_renewal_method` in a few hours.
   ///
   /// Output only.
   /// Possible string values are:
   /// - "RENEWAL_METHOD_UNSPECIFIED" : The renewal method is undefined.
-  /// - "AUTOMATIC_RENEWAL" : The domain is automatically renewed each year . To
-  /// disable automatic renewals, delete the resource by calling
-  /// `DeleteRegistration` or export it by calling `ExportRegistration`.
-  /// - "MANUAL_RENEWAL" : The domain must be explicitly renewed each year
-  /// before its `expire_time`. This option is only available when the
-  /// `Registration` is in state `EXPORTED`. To manage the domain's current
-  /// billing and renewal settings, go to
-  /// [Google Domains](https://domains.google/).
+  /// - "AUTOMATIC_RENEWAL" : The domain is automatically renewed each year.
+  /// - "MANUAL_RENEWAL" : Deprecated: For more information, see
+  /// [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations).
+  /// This option was never used. Use `RENEWAL_DISABLED` instead.
+  /// - "RENEWAL_DISABLED" : The domain won't be renewed and will expire at its
+  /// expiration time.
   core.String? renewalMethod;
 
   /// Controls whether the domain can be transferred to another registrar.
@@ -2236,12 +2332,16 @@ class ManagementSettings {
   core.String? transferLockState;
 
   ManagementSettings({
+    this.preferredRenewalMethod,
     this.renewalMethod,
     this.transferLockState,
   });
 
   ManagementSettings.fromJson(core.Map json_)
       : this(
+          preferredRenewalMethod: json_.containsKey('preferredRenewalMethod')
+              ? json_['preferredRenewalMethod'] as core.String
+              : null,
           renewalMethod: json_.containsKey('renewalMethod')
               ? json_['renewalMethod'] as core.String
               : null,
@@ -2251,6 +2351,8 @@ class ManagementSettings {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (preferredRenewalMethod != null)
+          'preferredRenewalMethod': preferredRenewalMethod!,
         if (renewalMethod != null) 'renewalMethod': renewalMethod!,
         if (transferLockState != null) 'transferLockState': transferLockState!,
       };
@@ -2289,7 +2391,7 @@ class Operation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard
@@ -2349,23 +2451,23 @@ class Operation {
 /// request, the resource, or both. To learn which resources support conditions
 /// in their IAM policies, see the
 /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": \[ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": \[
+/// **JSON example:** ``` { "bindings": [ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": [
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": \[
-/// "user:eve@example.com" \], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": [
+/// "user:eve@example.com" ], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time \< timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
-/// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
-/// user:mike@example.com - group:admins@example.com - domain:google.com -
-/// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
-/// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
-/// role: roles/resourcemanager.organizationViewer condition: title: expirable
-/// access description: Does not grant access after Sep 2020 expression:
-/// request.time \< timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
-/// version: 3 For a description of IAM and its features, see the
-/// [IAM documentation](https://cloud.google.com/iam/docs/).
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: -
+/// members: - user:mike@example.com - group:admins@example.com -
+/// domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+/// role: roles/resourcemanager.organizationAdmin - members: -
+/// user:eve@example.com role: roles/resourcemanager.organizationViewer
+/// condition: title: expirable access description: Does not grant access after
+/// Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+/// etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features,
+/// see the [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig>? auditConfigs;
@@ -2628,16 +2730,20 @@ class RegisterParameters {
 /// After choosing a name, call `RetrieveRegisterParameters` to ensure
 /// availability and obtain information like pricing, which is needed to build a
 /// call to `RegisterDomain`. Another way to create a new `Registration` is to
-/// transfer an existing domain from another registrar. First, go to the current
-/// registrar to unlock the domain for transfer and retrieve the domain's
-/// transfer authorization code. Then call `RetrieveTransferParameters` to
-/// confirm that the domain is unlocked and to get values needed to build a call
-/// to `TransferDomain`. Finally, you can create a new `Registration` by
-/// importing an existing domain managed with
-/// [Google Domains](https://domains.google/). First, call
-/// `RetrieveImportableDomains` to list domains to which the calling user has
-/// sufficient access. Then call `ImportDomain` on any domain names you want to
-/// use with Cloud Domains.
+/// transfer an existing domain from another registrar (Deprecated: For more
+/// information, see
+/// [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations)).
+/// First, go to the current registrar to unlock the domain for transfer and
+/// retrieve the domain's transfer authorization code. Then call
+/// `RetrieveTransferParameters` to confirm that the domain is unlocked and to
+/// get values needed to build a call to `TransferDomain`. Finally, you can
+/// create a new `Registration` by importing an existing domain managed with
+/// [Google Domains](https://domains.google/) (Deprecated: For more information,
+/// see
+/// [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations)).
+/// First, call `RetrieveImportableDomains` to list domains to which the calling
+/// user has sufficient access. Then call `ImportDomain` on any domain names you
+/// want to use with Cloud Domains.
 class Registration {
   /// Settings for contact information linked to the `Registration`.
   ///
@@ -2732,7 +2838,8 @@ class Registration {
   /// - "IMPORT_PENDING" : The domain is being imported from Google Domains to
   /// Cloud Domains.
   /// - "ACTIVE" : The domain is registered and operational. The domain renews
-  /// automatically as long as it remains in this state.
+  /// automatically as long as it remains in this state and the `RenewalMethod`
+  /// is set to `AUTOMATIC_RENEWAL`.
   /// - "SUSPENDED" : The domain is suspended and inoperative. For more details,
   /// see the `issues` field.
   /// - "EXPORTED" : The domain is no longer managed with Cloud Domains. It may
@@ -2740,6 +2847,7 @@ class Registration {
   /// [Google Domains](https://domains.google/). You can no longer update it
   /// with this API, and information shown about it may be stale. Domains in
   /// this state are not automatically renewed by Cloud Domains.
+  /// - "EXPIRED" : The domain is expired.
   core.String? state;
 
   /// Set of options for the `contact_settings.privacy` field that this
@@ -2748,9 +2856,11 @@ class Registration {
   /// Output only.
   core.List<core.String>? supportedPrivacy;
 
-  /// The reason the domain transfer failed.
+  /// Deprecated: For more information, see
+  /// [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations).
   ///
-  /// Only set for domains in TRANSFER_FAILED state.
+  /// The reason the domain transfer failed. Only set for domains in
+  /// TRANSFER_FAILED state.
   ///
   /// Output only.
   /// Possible string values are:
@@ -2776,6 +2886,9 @@ class Registration {
   /// - "TRANSFER_ALREADY_PENDING" : Another transfer is already pending for
   /// this domain. The existing transfer attempt must expire or be cancelled in
   /// order to proceed.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? transferFailureReason;
 
   Registration({
@@ -2876,6 +2989,9 @@ class Registration {
 /// Request for the `ResetAuthorizationCode` method.
 typedef ResetAuthorizationCodeRequest = $Empty;
 
+/// Deprecated: For more information, see
+/// [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations).
+///
 /// Response for the `RetrieveImportableDomains` method.
 class RetrieveImportableDomainsResponse {
   /// A list of domains that the calling user manages in Google Domains.
@@ -2934,6 +3050,9 @@ class RetrieveRegisterParametersResponse {
       };
 }
 
+/// Deprecated: For more information, see
+/// [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations).
+///
 /// Response for the `RetrieveTransferParameters` method.
 class RetrieveTransferParametersResponse {
   /// Parameters to use when calling the `TransferDomain` method.
@@ -3034,6 +3153,9 @@ typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;
 
+/// Deprecated: For more information, see
+/// [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations).
+///
 /// Request for the `TransferDomain` method.
 class TransferDomainRequest {
   /// The domain's transfer authorization code.
@@ -3110,6 +3232,9 @@ class TransferDomainRequest {
       };
 }
 
+/// Deprecated: For more information, see
+/// [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations).
+///
 /// Parameters required to transfer a domain from another registrar.
 class TransferParameters {
   /// The registrar that currently manages the domain.

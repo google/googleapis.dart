@@ -10,7 +10,6 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 // ignore_for_file: unreachable_from_main
 // ignore_for_file: unused_local_variable
@@ -890,6 +889,7 @@ api.ManagementSettings buildManagementSettings() {
   final o = api.ManagementSettings();
   buildCounterManagementSettings++;
   if (buildCounterManagementSettings < 3) {
+    o.preferredRenewalMethod = 'foo';
     o.renewalMethod = 'foo';
     o.transferLockState = 'foo';
   }
@@ -900,6 +900,10 @@ api.ManagementSettings buildManagementSettings() {
 void checkManagementSettings(api.ManagementSettings o) {
   buildCounterManagementSettings++;
   if (buildCounterManagementSettings < 3) {
+    unittest.expect(
+      o.preferredRenewalMethod!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.renewalMethod!,
       unittest.equals('foo'),

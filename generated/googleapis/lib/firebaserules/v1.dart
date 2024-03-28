@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Firebase Rules API - v1
@@ -24,7 +23,7 @@
 /// - [ProjectsResource]
 ///   - [ProjectsReleasesResource]
 ///   - [ProjectsRulesetsResource]
-library firebaserules_v1;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -1143,6 +1142,14 @@ class Result {
 /// `Ruleset` is an immutable copy of `Source` with a globally unique identifier
 /// and a creation time.
 class Ruleset {
+  /// Intended resource to which this Ruleset should be released.
+  ///
+  /// May be left blank to signify the resource associated with the default
+  /// release. Expected format: firestore.googleapis.com/projects//databases/
+  ///
+  /// Immutable.
+  core.String? attachmentPoint;
+
   /// Time the `Ruleset` was created.
   ///
   /// Output only.
@@ -1167,6 +1174,7 @@ class Ruleset {
   Source? source;
 
   Ruleset({
+    this.attachmentPoint,
     this.createTime,
     this.metadata,
     this.name,
@@ -1175,6 +1183,9 @@ class Ruleset {
 
   Ruleset.fromJson(core.Map json_)
       : this(
+          attachmentPoint: json_.containsKey('attachmentPoint')
+              ? json_['attachmentPoint'] as core.String
+              : null,
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
               : null,
@@ -1190,6 +1201,7 @@ class Ruleset {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (attachmentPoint != null) 'attachmentPoint': attachmentPoint!,
         if (createTime != null) 'createTime': createTime!,
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,

@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Cloud OS Login API - v1
@@ -22,7 +21,7 @@
 /// - [UsersResource]
 ///   - [UsersProjectsResource]
 ///   - [UsersSshPublicKeysResource]
-library oslogin_v1;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -135,6 +134,10 @@ class UsersResource {
   ///
   /// [projectId] - The project ID of the Google Cloud Platform project.
   ///
+  /// [regions] - Optional. The regions to which to assert that the key was
+  /// written. If unspecified, defaults to all regions. Regions are listed at
+  /// https://cloud.google.com/about/locations#region.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -149,11 +152,13 @@ class UsersResource {
     SshPublicKey request,
     core.String parent, {
     core.String? projectId,
+    core.List<core.String>? regions,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       if (projectId != null) 'projectId': [projectId],
+      if (regions != null) 'regions': regions,
       if ($fields != null) 'fields': [$fields],
     };
 

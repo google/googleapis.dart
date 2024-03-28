@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Cloud Profiler API - v2
@@ -21,7 +20,7 @@
 ///
 /// - [ProjectsResource]
 ///   - [ProjectsProfilesResource]
-library cloudprofiler_v2;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -76,15 +75,18 @@ class ProjectsProfilesResource {
 
   /// CreateProfile creates a new profile resource in the online mode.
   ///
-  /// The server ensures that the new profiles are created at a constant rate
-  /// per deployment, so the creation request may hang for some time until the
-  /// next profile session is available. The request may fail with ABORTED error
-  /// if the creation is not available within ~1m, the response will indicate
-  /// the duration of the backoff the client should take before attempting
-  /// creating a profile again. The backoff duration is returned in
-  /// google.rpc.RetryInfo extension on the response status. To a gRPC client,
-  /// the extension will be return as a binary-serialized proto in the trailing
-  /// metadata item named "google.rpc.retryinfo-bin".
+  /// _Direct use of this API is discouraged, please use a
+  /// [supported profiler agent](https://cloud.google.com/profiler/docs/about-profiler#profiling_agent)
+  /// instead for profile collection._ The server ensures that the new profiles
+  /// are created at a constant rate per deployment, so the creation request may
+  /// hang for some time until the next profile session is available. The
+  /// request may fail with ABORTED error if the creation is not available
+  /// within ~1m, the response will indicate the duration of the backoff the
+  /// client should take before attempting creating a profile again. The backoff
+  /// duration is returned in google.rpc.RetryInfo extension on the response
+  /// status. To a gRPC client, the extension will be return as a
+  /// binary-serialized proto in the trailing metadata item named
+  /// "google.rpc.retryinfo-bin".
   ///
   /// [request] - The metadata request object.
   ///
@@ -127,7 +129,10 @@ class ProjectsProfilesResource {
   /// CreateOfflineProfile creates a new profile resource in the offline mode.
   ///
   /// The client provides the profile to create along with the profile bytes,
-  /// the server records it.
+  /// the server records it. _Direct use of this API is discouraged, please use
+  /// a
+  /// [supported profiler agent](https://cloud.google.com/profiler/docs/about-profiler#profiling_agent)
+  /// instead for profile collection._
   ///
   /// [request] - The metadata request object.
   ///
@@ -168,12 +173,63 @@ class ProjectsProfilesResource {
     return Profile.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Lists profiles which have been collected so far and for which the caller
+  /// has permission to view.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent, which owns this collection of profiles.
+  /// Format: projects/{user_project_id}
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of items to return. Default page_size is
+  /// 1000. Max limit is 1000.
+  ///
+  /// [pageToken] - The token to continue pagination and get profiles from a
+  /// particular page. When paginating, all other parameters provided to
+  /// `ListProfiles` must match the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListProfilesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListProfilesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/profiles';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListProfilesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// UpdateProfile updates the profile bytes and labels on the profile resource
   /// created in the online mode.
   ///
   /// Updating the bytes for profiles created in the offline mode is currently
   /// not supported: the profile content must be provided at the time of the
-  /// profile creation.
+  /// profile creation. _Direct use of this API is discouraged, please use a
+  /// [supported profiler agent](https://cloud.google.com/profiler/docs/about-profiler#profiling_agent)
+  /// instead for profile collection._
   ///
   /// [request] - The metadata request object.
   ///
@@ -316,6 +372,54 @@ class Deployment {
       };
 }
 
+/// ListProfileResponse contains the list of collected profiles for deployments
+/// in projects which the user has permissions to view.
+class ListProfilesResponse {
+  /// Token to receive the next page of results.
+  ///
+  /// This field maybe empty if there are no more profiles to fetch.
+  core.String? nextPageToken;
+
+  /// List of profiles fetched.
+  core.List<Profile>? profiles;
+
+  /// Number of profiles that were skipped in the current page since they were
+  /// not able to be fetched successfully.
+  ///
+  /// This should typically be zero. A non-zero value may indicate a transient
+  /// failure, in which case if the number is too high for your use case, the
+  /// call may be retried.
+  core.int? skippedProfiles;
+
+  ListProfilesResponse({
+    this.nextPageToken,
+    this.profiles,
+    this.skippedProfiles,
+  });
+
+  ListProfilesResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          profiles: json_.containsKey('profiles')
+              ? (json_['profiles'] as core.List)
+                  .map((value) => Profile.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          skippedProfiles: json_.containsKey('skippedProfiles')
+              ? json_['skippedProfiles'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (profiles != null) 'profiles': profiles!,
+        if (skippedProfiles != null) 'skippedProfiles': skippedProfiles!,
+      };
+}
+
 /// Profile resource.
 class Profile {
   /// Deployment this profile corresponds to.
@@ -376,6 +480,13 @@ class Profile {
   /// the garbage collection pressure to see if those can be optimized.
   core.String? profileType;
 
+  /// Start time for the profile.
+  ///
+  /// This output is only present in response from the ListProfiles method.
+  ///
+  /// Output only.
+  core.String? startTime;
+
   Profile({
     this.deployment,
     this.duration,
@@ -383,6 +494,7 @@ class Profile {
     this.name,
     this.profileBytes,
     this.profileType,
+    this.startTime,
   });
 
   Profile.fromJson(core.Map json_)
@@ -409,6 +521,9 @@ class Profile {
           profileType: json_.containsKey('profileType')
               ? json_['profileType'] as core.String
               : null,
+          startTime: json_.containsKey('startTime')
+              ? json_['startTime'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -418,5 +533,6 @@ class Profile {
         if (name != null) 'name': name!,
         if (profileBytes != null) 'profileBytes': profileBytes!,
         if (profileType != null) 'profileType': profileType!,
+        if (startTime != null) 'startTime': startTime!,
       };
 }

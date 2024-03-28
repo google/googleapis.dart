@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Database Migration API - v1
@@ -28,7 +27,7 @@
 ///     - [ProjectsLocationsMigrationJobsResource]
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsPrivateConnectionsResource]
-library datamigration_v1;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert_1;
@@ -1880,6 +1879,51 @@ class ProjectsLocationsMigrationJobsResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Demotes the destination database to become a read replica of the source.
+  ///
+  /// This is applicable for the following migrations: 1. MySQL to Cloud SQL for
+  /// MySQL 2. PostgreSQL to Cloud SQL for PostgreSQL 3. PostgreSQL to AlloyDB
+  /// for PostgreSQL.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Name of the migration job resource to demote its destination.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/migrationJobs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> demoteDestination(
+    DemoteDestinationRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert_1.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':demoteDestination';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Generate a SSH configuration script to configure the reverse SSH
   /// connectivity.
   ///
@@ -3126,6 +3170,18 @@ class AlloyDbConnectionProfile {
 
 /// Settings for creating an AlloyDB cluster.
 class AlloyDbSettings {
+  /// The database engine major version.
+  ///
+  /// This is an optional field. If a database version is not supplied at
+  /// cluster creation time, then a default database version will be used.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "DATABASE_VERSION_UNSPECIFIED" : This is an unknown database version.
+  /// - "POSTGRES_14" : The database version is Postgres 14.
+  /// - "POSTGRES_15" : The database version is Postgres 15.
+  core.String? databaseVersion;
+
   /// The encryption config can be specified to encrypt the data disks and other
   /// persistent data resources of a cluster with a customer-managed encryption
   /// key (CMEK).
@@ -3161,6 +3217,7 @@ class AlloyDbSettings {
   core.String? vpcNetwork;
 
   AlloyDbSettings({
+    this.databaseVersion,
     this.encryptionConfig,
     this.initialUser,
     this.labels,
@@ -3170,6 +3227,9 @@ class AlloyDbSettings {
 
   AlloyDbSettings.fromJson(core.Map json_)
       : this(
+          databaseVersion: json_.containsKey('databaseVersion')
+              ? json_['databaseVersion'] as core.String
+              : null,
           encryptionConfig: json_.containsKey('encryptionConfig')
               ? EncryptionConfig.fromJson(json_['encryptionConfig']
                   as core.Map<core.String, core.dynamic>)
@@ -3197,6 +3257,7 @@ class AlloyDbSettings {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (databaseVersion != null) 'databaseVersion': databaseVersion!,
         if (encryptionConfig != null) 'encryptionConfig': encryptionConfig!,
         if (initialUser != null) 'initialUser': initialUser!,
         if (labels != null) 'labels': labels!,
@@ -3568,14 +3629,31 @@ class Binding {
   /// `group:{emailid}`: An email address that represents a Google group. For
   /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
   /// (primary) that represents all the users of that domain. For example,
-  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a user that has
-  /// been recently deleted. For example,
-  /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
-  /// this value reverts to `user:{emailid}` and the recovered user retains the
-  /// role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a service account
-  /// that has been recently deleted. For example,
+  /// `google.com` or `example.com`. *
+  /// `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workforce identity pool. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`:
+  /// All workforce identities in a group. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All workforce identities with a specific attribute value. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}
+  /// / * `: All identities in a workforce identity pool. *
+  /// `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workload identity pool. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`:
+  /// A workload identity pool group. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All identities in a workload identity pool with a certain attribute. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}
+  /// / * `: All identities in a workload identity pool. *
+  /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
+  /// identifier) representing a user that has been recently deleted. For
+  /// example, `alice@example.com?uid=123456789012345678901`. If the user is
+  /// recovered, this value reverts to `user:{emailid}` and the recovered user
+  /// retains the role in the binding. *
+  /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus
+  /// unique identifier) representing a service account that has been recently
+  /// deleted. For example,
   /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If
   /// the service account is undeleted, this value reverts to
   /// `serviceAccount:{emailid}` and the undeleted service account retains the
@@ -3584,12 +3662,19 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding.
+  /// the role in the binding. *
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// Deleted single identity in a workforce identity pool. For example,
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
   ///
-  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an
+  /// overview of the IAM roles and permissions, see the
+  /// [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For
+  /// a list of the available pre-defined roles, see
+  /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
   Binding({
@@ -3735,6 +3820,16 @@ class CloudSqlSettings {
   /// The Cloud SQL default instance level collation.
   core.String? collation;
 
+  /// Data cache is an optional feature available for Cloud SQL for MySQL
+  /// Enterprise Plus edition only.
+  ///
+  /// For more information on data cache, see
+  /// [Data cache overview](https://cloud.google.com/sql/help/mysql-data-cache)
+  /// in Cloud SQL documentation.
+  ///
+  /// Optional.
+  DataCacheConfig? dataCacheConfig;
+
   /// The storage capacity available to the database, in GB.
   ///
   /// The minimum (and default) size is 10GB.
@@ -3758,10 +3853,30 @@ class CloudSqlSettings {
   /// - "SQL_DATABASE_VERSION_UNSPECIFIED" : Unspecified version.
   /// - "MYSQL_5_6" : MySQL 5.6.
   /// - "MYSQL_5_7" : MySQL 5.7.
+  /// - "MYSQL_8_0" : MySQL 8.0.
+  /// - "MYSQL_8_0_18" : The database major version is MySQL 8.0 and the minor
+  /// version is 18.
+  /// - "MYSQL_8_0_26" : The database major version is MySQL 8.0 and the minor
+  /// version is 26.
+  /// - "MYSQL_8_0_27" : The database major version is MySQL 8.0 and the minor
+  /// version is 27.
+  /// - "MYSQL_8_0_28" : The database major version is MySQL 8.0 and the minor
+  /// version is 28.
+  /// - "MYSQL_8_0_30" : The database major version is MySQL 8.0 and the minor
+  /// version is 30.
+  /// - "MYSQL_8_0_31" : The database major version is MySQL 8.0 and the minor
+  /// version is 31.
+  /// - "MYSQL_8_0_32" : The database major version is MySQL 8.0 and the minor
+  /// version is 32.
+  /// - "MYSQL_8_0_33" : The database major version is MySQL 8.0 and the minor
+  /// version is 33.
+  /// - "MYSQL_8_0_34" : The database major version is MySQL 8.0 and the minor
+  /// version is 34.
+  /// - "MYSQL_8_0_35" : The database major version is MySQL 8.0 and the minor
+  /// version is 35.
   /// - "POSTGRES_9_6" : PostgreSQL 9.6.
   /// - "POSTGRES_11" : PostgreSQL 11.
   /// - "POSTGRES_10" : PostgreSQL 10.
-  /// - "MYSQL_8_0" : MySQL 8.0.
   /// - "POSTGRES_12" : PostgreSQL 12.
   /// - "POSTGRES_13" : PostgreSQL 13.
   /// - "POSTGRES_14" : PostgreSQL 14.
@@ -3837,6 +3952,7 @@ class CloudSqlSettings {
     this.availabilityType,
     this.cmekKeyName,
     this.collation,
+    this.dataCacheConfig,
     this.dataDiskSizeGb,
     this.dataDiskType,
     this.databaseFlags,
@@ -3869,6 +3985,10 @@ class CloudSqlSettings {
               : null,
           collation: json_.containsKey('collation')
               ? json_['collation'] as core.String
+              : null,
+          dataCacheConfig: json_.containsKey('dataCacheConfig')
+              ? DataCacheConfig.fromJson(json_['dataCacheConfig']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           dataDiskSizeGb: json_.containsKey('dataDiskSizeGb')
               ? json_['dataDiskSizeGb'] as core.String
@@ -3930,6 +4050,7 @@ class CloudSqlSettings {
         if (availabilityType != null) 'availabilityType': availabilityType!,
         if (cmekKeyName != null) 'cmekKeyName': cmekKeyName!,
         if (collation != null) 'collation': collation!,
+        if (dataCacheConfig != null) 'dataCacheConfig': dataCacheConfig!,
         if (dataDiskSizeGb != null) 'dataDiskSizeGb': dataDiskSizeGb!,
         if (dataDiskType != null) 'dataDiskType': dataDiskType!,
         if (databaseFlags != null) 'databaseFlags': databaseFlags!,
@@ -4700,6 +4821,34 @@ class ConvertRowIdToColumn {
       };
 }
 
+/// Data cache is an optional feature available for Cloud SQL for MySQL
+/// Enterprise Plus edition only.
+///
+/// For more information on data cache, see
+/// [Data cache overview](https://cloud.google.com/sql/help/mysql-data-cache) in
+/// Cloud SQL documentation.
+class DataCacheConfig {
+  /// Whether data cache is enabled for the instance.
+  ///
+  /// Optional.
+  core.bool? dataCacheEnabled;
+
+  DataCacheConfig({
+    this.dataCacheEnabled,
+  });
+
+  DataCacheConfig.fromJson(core.Map json_)
+      : this(
+          dataCacheEnabled: json_.containsKey('dataCacheEnabled')
+              ? json_['dataCacheEnabled'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dataCacheEnabled != null) 'dataCacheEnabled': dataCacheEnabled!,
+      };
+}
+
 /// The type and version of a source or destination database.
 class DatabaseEngineInfo {
   /// Engine type.
@@ -4713,7 +4862,7 @@ class DatabaseEngineInfo {
   /// - "ORACLE" : The source engine is Oracle.
   core.String? engine;
 
-  /// Engine named version, for example 12.c.1.
+  /// Engine version, for example "12.c.1".
   ///
   /// Required.
   core.String? version;
@@ -4993,6 +5142,9 @@ class DatabaseType {
       };
 }
 
+/// Request message for 'DemoteDestination' request.
+typedef DemoteDestinationRequest = $Empty;
+
 /// Response message for 'DescribeConversionWorkspaceRevisions' request.
 class DescribeConversionWorkspaceRevisionsResponse {
   /// The list of conversion workspace revisions.
@@ -5155,28 +5307,7 @@ typedef Empty = $Empty;
 
 /// EncryptionConfig describes the encryption config of a cluster that is
 /// encrypted with a CMEK (customer-managed encryption key).
-class EncryptionConfig {
-  /// The fully-qualified resource name of the KMS key.
-  ///
-  /// Each Cloud KMS key is regionalized and has the following format:
-  /// projects/\[PROJECT\]/locations/\[REGION\]/keyRings/\[RING\]/cryptoKeys/\[KEY_NAME\]
-  core.String? kmsKeyName;
-
-  EncryptionConfig({
-    this.kmsKeyName,
-  });
-
-  EncryptionConfig.fromJson(core.Map json_)
-      : this(
-          kmsKeyName: json_.containsKey('kmsKeyName')
-              ? json_['kmsKeyName'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
-      };
-}
+typedef EncryptionConfig = $EncryptionConfig;
 
 /// A single DDL statement for a specific entity
 class EntityDdl {
@@ -6221,25 +6352,7 @@ class ListPrivateConnectionsResponse {
 typedef Location = $Location00;
 
 /// MachineConfig describes the configuration of a machine.
-class MachineConfig {
-  /// The number of CPU's in the VM instance.
-  core.int? cpuCount;
-
-  MachineConfig({
-    this.cpuCount,
-  });
-
-  MachineConfig.fromJson(core.Map json_)
-      : this(
-          cpuCount: json_.containsKey('cpuCount')
-              ? json_['cpuCount'] as core.int
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (cpuCount != null) 'cpuCount': cpuCount!,
-      };
-}
+typedef MachineConfig = $MachineConfig;
 
 /// Definition of a transformation that is to be applied to a group of entities
 /// in the source schema.
@@ -7217,7 +7330,7 @@ class Operation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard
@@ -7468,23 +7581,23 @@ class PerformanceConfig {
 /// request, the resource, or both. To learn which resources support conditions
 /// in their IAM policies, see the
 /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": \[ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": \[
+/// **JSON example:** ``` { "bindings": [ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": [
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": \[
-/// "user:eve@example.com" \], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": [
+/// "user:eve@example.com" ], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time \< timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
-/// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
-/// user:mike@example.com - group:admins@example.com - domain:google.com -
-/// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
-/// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
-/// role: roles/resourcemanager.organizationViewer condition: title: expirable
-/// access description: Does not grant access after Sep 2020 expression:
-/// request.time \< timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
-/// version: 3 For a description of IAM and its features, see the
-/// [IAM documentation](https://cloud.google.com/iam/docs/).
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: -
+/// members: - user:mike@example.com - group:admins@example.com -
+/// domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+/// role: roles/resourcemanager.organizationAdmin - members: -
+/// user:eve@example.com role: roles/resourcemanager.organizationViewer
+/// condition: title: expirable access description: Does not grant access after
+/// Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+/// etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features,
+/// see the [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig>? auditConfigs;
@@ -7620,6 +7733,12 @@ class Position {
 /// Specifies connection parameters required specifically for PostgreSQL
 /// databases.
 class PostgreSqlConnectionProfile {
+  /// If the destination is an AlloyDB database, use this field to provide the
+  /// AlloyDB cluster ID.
+  ///
+  /// Optional.
+  core.String? alloydbClusterId;
+
   /// If the source is a Cloud SQL database, use this field to provide the Cloud
   /// SQL instance ID of the source.
   core.String? cloudSqlId;
@@ -7678,6 +7797,7 @@ class PostgreSqlConnectionProfile {
   core.String? username;
 
   PostgreSqlConnectionProfile({
+    this.alloydbClusterId,
     this.cloudSqlId,
     this.host,
     this.networkArchitecture,
@@ -7692,6 +7812,9 @@ class PostgreSqlConnectionProfile {
 
   PostgreSqlConnectionProfile.fromJson(core.Map json_)
       : this(
+          alloydbClusterId: json_.containsKey('alloydbClusterId')
+              ? json_['alloydbClusterId'] as core.String
+              : null,
           cloudSqlId: json_.containsKey('cloudSqlId')
               ? json_['cloudSqlId'] as core.String
               : null,
@@ -7726,6 +7849,7 @@ class PostgreSqlConnectionProfile {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (alloydbClusterId != null) 'alloydbClusterId': alloydbClusterId!,
         if (cloudSqlId != null) 'cloudSqlId': cloudSqlId!,
         if (host != null) 'host': host!,
         if (networkArchitecture != null)

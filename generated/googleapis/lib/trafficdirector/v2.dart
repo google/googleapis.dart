@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Traffic Director API - v2
@@ -18,7 +17,7 @@
 /// Create an instance of [TrafficDirectorServiceApi] to access these resources:
 ///
 /// - [DiscoveryResource]
-library trafficdirector_v2;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -344,33 +343,7 @@ class DoubleMatcher {
 
 /// Specifies the double start and end of the range using half-open interval
 /// semantics \[start, end).
-class DoubleRange {
-  /// end of the range (exclusive)
-  core.double? end;
-
-  /// start of the range (inclusive)
-  core.double? start;
-
-  DoubleRange({
-    this.end,
-    this.start,
-  });
-
-  DoubleRange.fromJson(core.Map json_)
-      : this(
-          end: json_.containsKey('end')
-              ? (json_['end'] as core.num).toDouble()
-              : null,
-          start: json_.containsKey('start')
-              ? (json_['start'] as core.num).toDouble()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (end != null) 'end': end!,
-        if (start != null) 'start': start!,
-      };
-}
+typedef DoubleRange = $DoubleRange;
 
 /// Describes a dynamically loaded cluster via the CDS API.
 class DynamicCluster {
@@ -486,48 +459,7 @@ class DynamicListener {
       };
 }
 
-class DynamicListenerState {
-  /// The timestamp when the Listener was last successfully updated.
-  core.String? lastUpdated;
-
-  /// The listener config.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object?>? listener;
-
-  /// This is the per-resource version information.
-  ///
-  /// This version is currently taken from the :ref:`version_info ` field at the
-  /// time that the listener was loaded. In the future, discrete per-listener
-  /// versions may be supported by the API.
-  core.String? versionInfo;
-
-  DynamicListenerState({
-    this.lastUpdated,
-    this.listener,
-    this.versionInfo,
-  });
-
-  DynamicListenerState.fromJson(core.Map json_)
-      : this(
-          lastUpdated: json_.containsKey('lastUpdated')
-              ? json_['lastUpdated'] as core.String
-              : null,
-          listener: json_.containsKey('listener')
-              ? json_['listener'] as core.Map<core.String, core.dynamic>
-              : null,
-          versionInfo: json_.containsKey('versionInfo')
-              ? json_['versionInfo'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (lastUpdated != null) 'lastUpdated': lastUpdated!,
-        if (listener != null) 'listener': listener!,
-        if (versionInfo != null) 'versionInfo': versionInfo!,
-      };
-}
+typedef DynamicListenerState = $DynamicListenerState;
 
 class DynamicRouteConfig {
   /// The timestamp when the Route was last updated.
@@ -733,45 +665,7 @@ class GoogleRE2 {
       };
 }
 
-class InlineScopedRouteConfigs {
-  /// The timestamp when the scoped route config set was last updated.
-  core.String? lastUpdated;
-
-  /// The name assigned to the scoped route configurations.
-  core.String? name;
-
-  /// The scoped route configurations.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object?>>? scopedRouteConfigs;
-
-  InlineScopedRouteConfigs({
-    this.lastUpdated,
-    this.name,
-    this.scopedRouteConfigs,
-  });
-
-  InlineScopedRouteConfigs.fromJson(core.Map json_)
-      : this(
-          lastUpdated: json_.containsKey('lastUpdated')
-              ? json_['lastUpdated'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          scopedRouteConfigs: json_.containsKey('scopedRouteConfigs')
-              ? (json_['scopedRouteConfigs'] as core.List)
-                  .map((value) => value as core.Map<core.String, core.dynamic>)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (lastUpdated != null) 'lastUpdated': lastUpdated!,
-        if (name != null) 'name': name!,
-        if (scopedRouteConfigs != null)
-          'scopedRouteConfigs': scopedRouteConfigs!,
-      };
-}
+typedef InlineScopedRouteConfigs = $InlineScopedRouteConfigs;
 
 /// Specifies the way to match a list value.
 class ListMatcher {
@@ -848,46 +742,7 @@ class ListenersConfigDump {
 }
 
 /// Identifies location of where either Envoy runs or where upstream hosts run.
-class Locality {
-  /// Region this :ref:`zone ` belongs to.
-  core.String? region;
-
-  /// When used for locality of upstream hosts, this field further splits zone
-  /// into smaller chunks of sub-zones so they can be load balanced
-  /// independently.
-  core.String? subZone;
-
-  /// Defines the local service zone where Envoy is running.
-  ///
-  /// Though optional, it should be set if discovery service routing is used and
-  /// the discovery service exposes :ref:`zone data `, either in this message or
-  /// via :option:`--service-zone`. The meaning of zone is context dependent,
-  /// e.g. `Availability Zone (AZ) `_ on AWS, `Zone `_ on GCP, etc.
-  core.String? zone;
-
-  Locality({
-    this.region,
-    this.subZone,
-    this.zone,
-  });
-
-  Locality.fromJson(core.Map json_)
-      : this(
-          region: json_.containsKey('region')
-              ? json_['region'] as core.String
-              : null,
-          subZone: json_.containsKey('subZone')
-              ? json_['subZone'] as core.String
-              : null,
-          zone: json_.containsKey('zone') ? json_['zone'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (region != null) 'region': region!,
-        if (subZone != null) 'subZone': subZone!,
-        if (zone != null) 'zone': zone!,
-      };
-}
+typedef Locality = $Locality;
 
 /// Identifies a specific Envoy instance.
 ///
@@ -1081,23 +936,7 @@ class NodeMatcher {
 typedef NullMatch = $Empty;
 
 /// Specifies the segment in a path to retrieve value from Struct.
-class PathSegment {
-  /// If specified, use the key to retrieve the value in a Struct.
-  core.String? key;
-
-  PathSegment({
-    this.key,
-  });
-
-  PathSegment.fromJson(core.Map json_)
-      : this(
-          key: json_.containsKey('key') ? json_['key'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (key != null) 'key': key!,
-      };
-}
+typedef PathSegment = $PathSegment;
 
 /// Detailed config (per xDS) with status.
 ///
@@ -1160,35 +999,7 @@ class PerXdsConfig {
       };
 }
 
-class Pipe {
-  /// The mode for the Pipe.
-  ///
-  /// Not applicable for abstract sockets.
-  core.int? mode;
-
-  /// Unix Domain Socket path.
-  ///
-  /// On Linux, paths starting with '@' will use the abstract namespace. The
-  /// starting '@' is replaced by a null byte by Envoy. Paths starting with '@'
-  /// will result in an error in environments other than Linux.
-  core.String? path;
-
-  Pipe({
-    this.mode,
-    this.path,
-  });
-
-  Pipe.fromJson(core.Map json_)
-      : this(
-          mode: json_.containsKey('mode') ? json_['mode'] as core.int : null,
-          path: json_.containsKey('path') ? json_['path'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (mode != null) 'mode': mode!,
-        if (path != null) 'path': path!,
-      };
-}
+typedef Pipe = $Pipe;
 
 /// A regex matcher designed for safety when used with untrusted input.
 class RegexMatcher {
@@ -1314,34 +1125,7 @@ class ScopedRoutesConfigDump {
 ///
 /// Major/minor versions indicate expected behaviors and APIs, the patch version
 /// field is used only for security fixes and can be generally ignored.
-class SemanticVersion {
-  core.int? majorNumber;
-  core.int? minorNumber;
-  core.int? patch;
-
-  SemanticVersion({
-    this.majorNumber,
-    this.minorNumber,
-    this.patch,
-  });
-
-  SemanticVersion.fromJson(core.Map json_)
-      : this(
-          majorNumber: json_.containsKey('majorNumber')
-              ? json_['majorNumber'] as core.int
-              : null,
-          minorNumber: json_.containsKey('minorNumber')
-              ? json_['minorNumber'] as core.int
-              : null,
-          patch: json_.containsKey('patch') ? json_['patch'] as core.int : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (majorNumber != null) 'majorNumber': majorNumber!,
-        if (minorNumber != null) 'minorNumber': minorNumber!,
-        if (patch != null) 'patch': patch!,
-      };
-}
+typedef SemanticVersion = $SemanticVersion;
 
 /// \[#next-free-field: 7\]
 class SocketAddress {
@@ -1428,99 +1212,11 @@ class SocketAddress {
 }
 
 /// Describes a statically loaded cluster.
-class StaticCluster {
-  /// The cluster config.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object?>? cluster;
-
-  /// The timestamp when the Cluster was last updated.
-  core.String? lastUpdated;
-
-  StaticCluster({
-    this.cluster,
-    this.lastUpdated,
-  });
-
-  StaticCluster.fromJson(core.Map json_)
-      : this(
-          cluster: json_.containsKey('cluster')
-              ? json_['cluster'] as core.Map<core.String, core.dynamic>
-              : null,
-          lastUpdated: json_.containsKey('lastUpdated')
-              ? json_['lastUpdated'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (cluster != null) 'cluster': cluster!,
-        if (lastUpdated != null) 'lastUpdated': lastUpdated!,
-      };
-}
+typedef StaticCluster = $StaticCluster;
 
 /// Describes a statically loaded listener.
-class StaticListener {
-  /// The timestamp when the Listener was last successfully updated.
-  core.String? lastUpdated;
-
-  /// The listener config.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object?>? listener;
-
-  StaticListener({
-    this.lastUpdated,
-    this.listener,
-  });
-
-  StaticListener.fromJson(core.Map json_)
-      : this(
-          lastUpdated: json_.containsKey('lastUpdated')
-              ? json_['lastUpdated'] as core.String
-              : null,
-          listener: json_.containsKey('listener')
-              ? json_['listener'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (lastUpdated != null) 'lastUpdated': lastUpdated!,
-        if (listener != null) 'listener': listener!,
-      };
-}
-
-class StaticRouteConfig {
-  /// The timestamp when the Route was last updated.
-  core.String? lastUpdated;
-
-  /// The route config.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object?>? routeConfig;
-
-  StaticRouteConfig({
-    this.lastUpdated,
-    this.routeConfig,
-  });
-
-  StaticRouteConfig.fromJson(core.Map json_)
-      : this(
-          lastUpdated: json_.containsKey('lastUpdated')
-              ? json_['lastUpdated'] as core.String
-              : null,
-          routeConfig: json_.containsKey('routeConfig')
-              ? json_['routeConfig'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (lastUpdated != null) 'lastUpdated': lastUpdated!,
-        if (routeConfig != null) 'routeConfig': routeConfig!,
-      };
-}
+typedef StaticListener = $StaticListener;
+typedef StaticRouteConfig = $StaticRouteConfig;
 
 /// Specifies the way to match a string.
 ///

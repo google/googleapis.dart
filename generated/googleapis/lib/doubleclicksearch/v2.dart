@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Search Ads 360 API - v2
@@ -23,7 +22,7 @@
 /// - [ConversionResource]
 /// - [ReportsResource]
 /// - [SavedColumnsResource]
-library doubleclicksearch_v2;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -713,6 +712,18 @@ class Conversion {
   /// DS ad ID.
   core.String? adId;
 
+  /// Represents consent for core platform services (CPS) preferences in
+  /// settings.
+  ///
+  /// No default value. Acceptable values are: GRANTED: The desired consent
+  /// status is to grant. Read the CPS preferences from GTE settings. DENIED:
+  /// The desired consent status is to deny; CPS list is empty.
+  /// Possible string values are:
+  /// - "UNKNOWN" : Not specified.
+  /// - "GRANTED" : Granted.
+  /// - "DENIED" : Denied.
+  core.String? adUserDataConsent;
+
   /// DS advertiser ID.
   core.String? advertiserId;
 
@@ -849,6 +860,7 @@ class Conversion {
   Conversion({
     this.adGroupId,
     this.adId,
+    this.adUserDataConsent,
     this.advertiserId,
     this.agencyId,
     this.attributionModel,
@@ -889,6 +901,9 @@ class Conversion {
               ? json_['adGroupId'] as core.String
               : null,
           adId: json_.containsKey('adId') ? json_['adId'] as core.String : null,
+          adUserDataConsent: json_.containsKey('adUserDataConsent')
+              ? json_['adUserDataConsent'] as core.String
+              : null,
           advertiserId: json_.containsKey('advertiserId')
               ? json_['advertiserId'] as core.String
               : null,
@@ -994,6 +1009,7 @@ class Conversion {
   core.Map<core.String, core.dynamic> toJson() => {
         if (adGroupId != null) 'adGroupId': adGroupId!,
         if (adId != null) 'adId': adId!,
+        if (adUserDataConsent != null) 'adUserDataConsent': adUserDataConsent!,
         if (advertiserId != null) 'advertiserId': advertiserId!,
         if (agencyId != null) 'agencyId': agencyId!,
         if (attributionModel != null) 'attributionModel': attributionModel!,
