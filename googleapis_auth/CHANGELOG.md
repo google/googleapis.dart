@@ -1,7 +1,9 @@
+## 1.6.0
+- Added support for custom post-auth html page
+
 ## 1.5.1
 
 - `auth_browser.dart`: handle pop-up closed errors correctly. 
-- Added support for custom post-auth html page
 
 ## 1.5.0
 
