@@ -39,8 +39,11 @@ Object? readConfig(String key) {
 }
 
 Future<T> withClientFromUserCredentials<T>(
-    List<String> scopes, Future<T> Function(AuthClient) action) async {
-  final client = Client();
+  List<String> scopes,
+  Future<T> Function(AuthClient) action, {
+  Client? customClient,
+}) async {
+  final client = customClient ?? Client();
 
   final credentials = await _credentials(client, scopes);
 
