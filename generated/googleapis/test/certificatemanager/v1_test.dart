@@ -24,6 +24,28 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
+core.int buildCounterAllowlistedCertificate = 0;
+api.AllowlistedCertificate buildAllowlistedCertificate() {
+  final o = api.AllowlistedCertificate();
+  buildCounterAllowlistedCertificate++;
+  if (buildCounterAllowlistedCertificate < 3) {
+    o.pemCertificate = 'foo';
+  }
+  buildCounterAllowlistedCertificate--;
+  return o;
+}
+
+void checkAllowlistedCertificate(api.AllowlistedCertificate o) {
+  buildCounterAllowlistedCertificate++;
+  if (buildCounterAllowlistedCertificate < 3) {
+    unittest.expect(
+      o.pemCertificate!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterAllowlistedCertificate--;
+}
+
 core.int buildCounterAuthorizationAttemptInfo = 0;
 api.AuthorizationAttemptInfo buildAuthorizationAttemptInfo() {
   final o = api.AuthorizationAttemptInfo();
@@ -1520,12 +1542,23 @@ void checkTrustAnchor(api.TrustAnchor o) {
   buildCounterTrustAnchor--;
 }
 
-core.Map<core.String, core.String> buildUnnamed33() => {
+core.List<api.AllowlistedCertificate> buildUnnamed33() => [
+      buildAllowlistedCertificate(),
+      buildAllowlistedCertificate(),
+    ];
+
+void checkUnnamed33(core.List<api.AllowlistedCertificate> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkAllowlistedCertificate(o[0]);
+  checkAllowlistedCertificate(o[1]);
+}
+
+core.Map<core.String, core.String> buildUnnamed34() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed33(core.Map<core.String, core.String> o) {
+void checkUnnamed34(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -1537,12 +1570,12 @@ void checkUnnamed33(core.Map<core.String, core.String> o) {
   );
 }
 
-core.List<api.TrustStore> buildUnnamed34() => [
+core.List<api.TrustStore> buildUnnamed35() => [
       buildTrustStore(),
       buildTrustStore(),
     ];
 
-void checkUnnamed34(core.List<api.TrustStore> o) {
+void checkUnnamed35(core.List<api.TrustStore> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTrustStore(o[0]);
   checkTrustStore(o[1]);
@@ -1553,12 +1586,13 @@ api.TrustConfig buildTrustConfig() {
   final o = api.TrustConfig();
   buildCounterTrustConfig++;
   if (buildCounterTrustConfig < 3) {
+    o.allowlistedCertificates = buildUnnamed33();
     o.createTime = 'foo';
     o.description = 'foo';
     o.etag = 'foo';
-    o.labels = buildUnnamed33();
+    o.labels = buildUnnamed34();
     o.name = 'foo';
-    o.trustStores = buildUnnamed34();
+    o.trustStores = buildUnnamed35();
     o.updateTime = 'foo';
   }
   buildCounterTrustConfig--;
@@ -1568,6 +1602,7 @@ api.TrustConfig buildTrustConfig() {
 void checkTrustConfig(api.TrustConfig o) {
   buildCounterTrustConfig++;
   if (buildCounterTrustConfig < 3) {
+    checkUnnamed33(o.allowlistedCertificates!);
     unittest.expect(
       o.createTime!,
       unittest.equals('foo'),
@@ -1580,12 +1615,12 @@ void checkTrustConfig(api.TrustConfig o) {
       o.etag!,
       unittest.equals('foo'),
     );
-    checkUnnamed33(o.labels!);
+    checkUnnamed34(o.labels!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed34(o.trustStores!);
+    checkUnnamed35(o.trustStores!);
     unittest.expect(
       o.updateTime!,
       unittest.equals('foo'),
@@ -1594,23 +1629,23 @@ void checkTrustConfig(api.TrustConfig o) {
   buildCounterTrustConfig--;
 }
 
-core.List<api.IntermediateCA> buildUnnamed35() => [
+core.List<api.IntermediateCA> buildUnnamed36() => [
       buildIntermediateCA(),
       buildIntermediateCA(),
     ];
 
-void checkUnnamed35(core.List<api.IntermediateCA> o) {
+void checkUnnamed36(core.List<api.IntermediateCA> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkIntermediateCA(o[0]);
   checkIntermediateCA(o[1]);
 }
 
-core.List<api.TrustAnchor> buildUnnamed36() => [
+core.List<api.TrustAnchor> buildUnnamed37() => [
       buildTrustAnchor(),
       buildTrustAnchor(),
     ];
 
-void checkUnnamed36(core.List<api.TrustAnchor> o) {
+void checkUnnamed37(core.List<api.TrustAnchor> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTrustAnchor(o[0]);
   checkTrustAnchor(o[1]);
@@ -1621,8 +1656,8 @@ api.TrustStore buildTrustStore() {
   final o = api.TrustStore();
   buildCounterTrustStore++;
   if (buildCounterTrustStore < 3) {
-    o.intermediateCas = buildUnnamed35();
-    o.trustAnchors = buildUnnamed36();
+    o.intermediateCas = buildUnnamed36();
+    o.trustAnchors = buildUnnamed37();
   }
   buildCounterTrustStore--;
   return o;
@@ -1631,13 +1666,23 @@ api.TrustStore buildTrustStore() {
 void checkTrustStore(api.TrustStore o) {
   buildCounterTrustStore++;
   if (buildCounterTrustStore < 3) {
-    checkUnnamed35(o.intermediateCas!);
-    checkUnnamed36(o.trustAnchors!);
+    checkUnnamed36(o.intermediateCas!);
+    checkUnnamed37(o.trustAnchors!);
   }
   buildCounterTrustStore--;
 }
 
 void main() {
+  unittest.group('obj-schema-AllowlistedCertificate', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAllowlistedCertificate();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AllowlistedCertificate.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAllowlistedCertificate(od);
+    });
+  });
+
   unittest.group('obj-schema-AuthorizationAttemptInfo', () {
     unittest.test('to-json--from-json', () async {
       final o = buildAuthorizationAttemptInfo();

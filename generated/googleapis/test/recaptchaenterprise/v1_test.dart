@@ -429,6 +429,7 @@ api.GoogleCloudRecaptchaenterpriseV1Event
     o.expectedAction = 'foo';
     o.express = true;
     o.firewallPolicyEvaluation = true;
+    o.fraudPrevention = 'foo';
     o.hashedAccountId = 'foo';
     o.headers = buildUnnamed4();
     o.ja3 = 'foo';
@@ -455,6 +456,10 @@ void checkGoogleCloudRecaptchaenterpriseV1Event(
     );
     unittest.expect(o.express!, unittest.isTrue);
     unittest.expect(o.firewallPolicyEvaluation!, unittest.isTrue);
+    unittest.expect(
+      o.fraudPrevention!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.hashedAccountId!,
       unittest.equals('foo'),

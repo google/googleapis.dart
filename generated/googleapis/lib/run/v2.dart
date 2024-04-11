@@ -87,6 +87,136 @@ class ProjectsLocationsResource {
       ProjectsLocationsServicesResource(_requester);
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Export image for a given resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the resource of which image metadata should
+  /// be exported. Format:
+  /// `projects/{project_id_or_number}/locations/{location}/services/{service}/revisions/{revision}`
+  /// for Revision
+  /// `projects/{project_id_or_number}/locations/{location}/jobs/{job}/executions/{execution}`
+  /// for Execution
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+/.*$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRunV2ExportImageResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRunV2ExportImageResponse> exportImage(
+    GoogleCloudRunV2ExportImageRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':exportImage';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudRunV2ExportImageResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Export image metadata for a given resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the resource of which image metadata should
+  /// be exported. Format:
+  /// `projects/{project_id_or_number}/locations/{location}/services/{service}/revisions/{revision}`
+  /// for Revision
+  /// `projects/{project_id_or_number}/locations/{location}/jobs/{job}/executions/{execution}`
+  /// for Execution
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+/.*$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRunV2Metadata].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRunV2Metadata> exportImageMetadata(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':exportImageMetadata';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudRunV2Metadata.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Export generated customer metadata for a given resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the resource of which metadata should be
+  /// exported. Format:
+  /// `projects/{project_id_or_number}/locations/{location}/services/{service}`
+  /// for Service
+  /// `projects/{project_id_or_number}/locations/{location}/services/{service}/revisions/{revision}`
+  /// for Revision
+  /// `projects/{project_id_or_number}/locations/{location}/jobs/{job}/executions/{execution}`
+  /// for Execution
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+/.*$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRunV2Metadata].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRunV2Metadata> exportMetadata(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':exportMetadata';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudRunV2Metadata.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsLocationsJobsResource {
@@ -643,6 +773,56 @@ class ProjectsLocationsJobsExecutionsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Read the status of an image export operation.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the resource of which image export
+  /// operation status has to be fetched. Format:
+  /// `projects/{project_id_or_number}/locations/{location}/services/{service}/revisions/{revision}`
+  /// for Revision
+  /// `projects/{project_id_or_number}/locations/{location}/jobs/{job}/executions/{execution}`
+  /// for Execution
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/jobs/\[^/\]+/executions/\[^/\]+$`.
+  ///
+  /// [operationId] - Required. The operation id returned from ExportImage.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRunV2ExportStatusResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRunV2ExportStatusResponse> exportStatus(
+    core.String name,
+    core.String operationId, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' +
+        core.Uri.encodeFull('$name') +
+        '/' +
+        core.Uri.encodeFull('$operationId') +
+        ':exportStatus';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudRunV2ExportStatusResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 
@@ -1320,6 +1500,8 @@ class ProjectsLocationsServicesResource {
   /// will create a new one. The caller must have 'run.services.create'
   /// permissions if this is set to true and the Service does not exist.
   ///
+  /// [updateMask] - Optional. The list of fields to be updated.
+  ///
   /// [validateOnly] - Indicates that the request should be validated and
   /// default values populated, without persisting the request or updating any
   /// resources.
@@ -1338,12 +1520,14 @@ class ProjectsLocationsServicesResource {
     GoogleCloudRunV2Service request,
     core.String name, {
     core.bool? allowMissing,
+    core.String? updateMask,
     core.bool? validateOnly,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
+      if (updateMask != null) 'updateMask': [updateMask],
       if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
       if ($fields != null) 'fields': [$fields],
     };
@@ -1510,6 +1694,56 @@ class ProjectsLocationsServicesRevisionsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Read the status of an image export operation.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the resource of which image export
+  /// operation status has to be fetched. Format:
+  /// `projects/{project_id_or_number}/locations/{location}/services/{service}/revisions/{revision}`
+  /// for Revision
+  /// `projects/{project_id_or_number}/locations/{location}/jobs/{job}/executions/{execution}`
+  /// for Execution
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+/revisions/\[^/\]+$`.
+  ///
+  /// [operationId] - Required. The operation id returned from ExportImage.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRunV2ExportStatusResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRunV2ExportStatusResponse> exportStatus(
+    core.String name,
+    core.String operationId, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' +
+        core.Uri.encodeFull('$name') +
+        '/' +
+        core.Uri.encodeFull('$operationId') +
+        ':exportStatus';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudRunV2ExportStatusResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets information about a Revision.
   ///
   /// Request parameters:
@@ -1611,6 +1845,11 @@ class GoogleCloudRunV2BinaryAuthorization {
   /// https://cloud.google.com/binary-authorization/docs/using-breakglass
   core.String? breakglassJustification;
 
+  /// The path to a binary authorization policy.
+  ///
+  /// Format: projects/{project}/platforms/cloudRun/{policy-name}
+  core.String? policy;
+
   /// If True, indicates to use the default project's binary authorization
   /// policy.
   ///
@@ -1619,6 +1858,7 @@ class GoogleCloudRunV2BinaryAuthorization {
 
   GoogleCloudRunV2BinaryAuthorization({
     this.breakglassJustification,
+    this.policy,
     this.useDefault,
   });
 
@@ -1626,6 +1866,9 @@ class GoogleCloudRunV2BinaryAuthorization {
       : this(
           breakglassJustification: json_.containsKey('breakglassJustification')
               ? json_['breakglassJustification'] as core.String
+              : null,
+          policy: json_.containsKey('policy')
+              ? json_['policy'] as core.String
               : null,
           useDefault: json_.containsKey('useDefault')
               ? json_['useDefault'] as core.bool
@@ -1635,6 +1878,7 @@ class GoogleCloudRunV2BinaryAuthorization {
   core.Map<core.String, core.dynamic> toJson() => {
         if (breakglassJustification != null)
           'breakglassJustification': breakglassJustification!,
+        if (policy != null) 'policy': policy!,
         if (useDefault != null) 'useDefault': useDefault!,
       };
 }
@@ -2721,12 +2965,107 @@ class GoogleCloudRunV2ExecutionTemplate {
       };
 }
 
-/// Represents a GCS Bucket mounted as a volume.
+/// Request message for exporting Cloud Run image.
+class GoogleCloudRunV2ExportImageRequest {
+  /// The export destination url (the Artifact Registry repo).
+  ///
+  /// Required.
+  core.String? destinationRepo;
+
+  GoogleCloudRunV2ExportImageRequest({
+    this.destinationRepo,
+  });
+
+  GoogleCloudRunV2ExportImageRequest.fromJson(core.Map json_)
+      : this(
+          destinationRepo: json_.containsKey('destinationRepo')
+              ? json_['destinationRepo'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (destinationRepo != null) 'destinationRepo': destinationRepo!,
+      };
+}
+
+/// ExportImageResponse contains an operation Id to track the image export
+/// operation.
+class GoogleCloudRunV2ExportImageResponse {
+  /// An operation ID used to track the status of image exports tied to the
+  /// original pod ID in the request.
+  core.String? operationId;
+
+  GoogleCloudRunV2ExportImageResponse({
+    this.operationId,
+  });
+
+  GoogleCloudRunV2ExportImageResponse.fromJson(core.Map json_)
+      : this(
+          operationId: json_.containsKey('operationId')
+              ? json_['operationId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (operationId != null) 'operationId': operationId!,
+      };
+}
+
+/// ExportStatusResponse contains the status of image export operation, with the
+/// status of each image export job.
+class GoogleCloudRunV2ExportStatusResponse {
+  /// The status of each image export job.
+  core.List<GoogleCloudRunV2ImageExportStatus>? imageExportStatuses;
+
+  /// The operation id.
+  core.String? operationId;
+
+  /// The state of the overall export operation.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "OPERATION_STATE_UNSPECIFIED" : State unspecified.
+  /// - "IN_PROGRESS" : Operation still in progress.
+  /// - "FINISHED" : Operation finished.
+  core.String? operationState;
+
+  GoogleCloudRunV2ExportStatusResponse({
+    this.imageExportStatuses,
+    this.operationId,
+    this.operationState,
+  });
+
+  GoogleCloudRunV2ExportStatusResponse.fromJson(core.Map json_)
+      : this(
+          imageExportStatuses: json_.containsKey('imageExportStatuses')
+              ? (json_['imageExportStatuses'] as core.List)
+                  .map((value) => GoogleCloudRunV2ImageExportStatus.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          operationId: json_.containsKey('operationId')
+              ? json_['operationId'] as core.String
+              : null,
+          operationState: json_.containsKey('operationState')
+              ? json_['operationState'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (imageExportStatuses != null)
+          'imageExportStatuses': imageExportStatuses!,
+        if (operationId != null) 'operationId': operationId!,
+        if (operationState != null) 'operationState': operationState!,
+      };
+}
+
+/// Represents a volume backed by a Cloud Storage bucket using Cloud Storage
+/// FUSE.
 class GoogleCloudRunV2GCSVolumeSource {
-  /// GCS Bucket name
+  /// Cloud Storage Bucket name.
   core.String? bucket;
 
-  /// If true, mount the GCS bucket as read-only
+  /// If true, the volume will be mounted as read only for all mounts.
   core.bool? readOnly;
 
   GoogleCloudRunV2GCSVolumeSource({
@@ -2830,6 +3169,57 @@ class GoogleCloudRunV2HTTPGetAction {
 
 /// HTTPHeader describes a custom header to be used in HTTP probes
 typedef GoogleCloudRunV2HTTPHeader = $HTTPHeader;
+
+/// The status of an image export job.
+class GoogleCloudRunV2ImageExportStatus {
+  /// Has the image export job finished (regardless of successful or failure).
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "EXPORT_JOB_STATE_UNSPECIFIED" : State unspecified.
+  /// - "IN_PROGRESS" : Job still in progress.
+  /// - "FINISHED" : Job finished.
+  core.String? exportJobState;
+
+  /// The exported image ID as it will appear in Artifact Registry.
+  core.String? exportedImageDigest;
+
+  /// The status of the export task if done.
+  UtilStatusProto? status;
+
+  /// The image tag as it will appear in Artifact Registry.
+  core.String? tag;
+
+  GoogleCloudRunV2ImageExportStatus({
+    this.exportJobState,
+    this.exportedImageDigest,
+    this.status,
+    this.tag,
+  });
+
+  GoogleCloudRunV2ImageExportStatus.fromJson(core.Map json_)
+      : this(
+          exportJobState: json_.containsKey('exportJobState')
+              ? json_['exportJobState'] as core.String
+              : null,
+          exportedImageDigest: json_.containsKey('exportedImageDigest')
+              ? json_['exportedImageDigest'] as core.String
+              : null,
+          status: json_.containsKey('status')
+              ? UtilStatusProto.fromJson(
+                  json_['status'] as core.Map<core.String, core.dynamic>)
+              : null,
+          tag: json_.containsKey('tag') ? json_['tag'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (exportJobState != null) 'exportJobState': exportJobState!,
+        if (exportedImageDigest != null)
+          'exportedImageDigest': exportedImageDigest!,
+        if (status != null) 'status': status!,
+        if (tag != null) 'tag': tag!,
+      };
+}
 
 /// Job represents the configuration of a single job, which references a
 /// container image that is run to completion.
@@ -3352,12 +3742,34 @@ class GoogleCloudRunV2ListTasksResponse {
       };
 }
 
+/// Metadata represents the JSON encoded generated customer metadata.
+class GoogleCloudRunV2Metadata {
+  /// JSON encoded Google-generated Customer Metadata for a given
+  /// resource/project.
+  core.String? metadata;
+
+  GoogleCloudRunV2Metadata({
+    this.metadata,
+  });
+
+  GoogleCloudRunV2Metadata.fromJson(core.Map json_)
+      : this(
+          metadata: json_.containsKey('metadata')
+              ? json_['metadata'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (metadata != null) 'metadata': metadata!,
+      };
+}
+
 /// Represents an NFS mount.
 class GoogleCloudRunV2NFSVolumeSource {
   /// Path that is exported by the NFS server.
   core.String? path;
 
-  /// If true, mount the NFS volume as read only
+  /// If true, the volume will be mounted as read only for all mounts.
   core.bool? readOnly;
 
   /// Hostname or IP address of the NFS server
@@ -4536,6 +4948,7 @@ class GoogleCloudRunV2Service {
   /// - "INGRESS_TRAFFIC_INTERNAL_ONLY" : Only internal traffic is allowed.
   /// - "INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER" : Both internal and Google
   /// Cloud Load Balancer traffic is allowed.
+  /// - "INGRESS_TRAFFIC_NONE" : No ingress traffic is allowed.
   core.String? ingress;
 
   /// Unstructured key value map that can be used to organize and categorize
@@ -6296,3 +6709,65 @@ typedef GoogleRpcStatus = $Status;
 /// service that evaluates it. See the service documentation for additional
 /// information.
 typedef GoogleTypeExpr = $Expr;
+
+/// This is proto2's version of MessageSet.
+typedef Proto2BridgeMessageSet = $Empty;
+
+/// Wire-format for a Status object
+class UtilStatusProto {
+  /// The canonical error code (see codes.proto) that most closely corresponds
+  /// to this status.
+  ///
+  /// This may be missing, and in the common case of the generic space, it
+  /// definitely will be.
+  core.int? canonicalCode;
+
+  /// Numeric code drawn from the space specified below.
+  ///
+  /// Often, this is the canonical error space, and code is drawn from
+  /// google3/util/task/codes.proto
+  core.int? code;
+
+  /// Detail message
+  core.String? message;
+
+  /// message_set associates an arbitrary proto message with the status.
+  Proto2BridgeMessageSet? messageSet;
+
+  /// The following are usually only present when code != 0 Space to which this
+  /// status belongs
+  core.String? space;
+
+  UtilStatusProto({
+    this.canonicalCode,
+    this.code,
+    this.message,
+    this.messageSet,
+    this.space,
+  });
+
+  UtilStatusProto.fromJson(core.Map json_)
+      : this(
+          canonicalCode: json_.containsKey('canonicalCode')
+              ? json_['canonicalCode'] as core.int
+              : null,
+          code: json_.containsKey('code') ? json_['code'] as core.int : null,
+          message: json_.containsKey('message')
+              ? json_['message'] as core.String
+              : null,
+          messageSet: json_.containsKey('messageSet')
+              ? Proto2BridgeMessageSet.fromJson(
+                  json_['messageSet'] as core.Map<core.String, core.dynamic>)
+              : null,
+          space:
+              json_.containsKey('space') ? json_['space'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (canonicalCode != null) 'canonicalCode': canonicalCode!,
+        if (code != null) 'code': code!,
+        if (message != null) 'message': message!,
+        if (messageSet != null) 'messageSet': messageSet!,
+        if (space != null) 'space': space!,
+      };
+}

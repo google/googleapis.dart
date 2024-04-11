@@ -753,6 +753,54 @@ class ProjectsLocationsReservationsResource {
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Failover a reservation to the secondary location.
+  ///
+  /// The operation should be done in the current secondary location, which will
+  /// be promoted to the new primary location for the reservation. Attempting to
+  /// failover a reservation in the current primary location will fail with the
+  /// error code `google.rpc.Code.FAILED_PRECONDITION`.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the reservation to failover. E.g.,
+  /// `projects/myproject/locations/US/reservations/team1-prod`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/reservations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Reservation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Reservation> failoverReservation(
+    FailoverReservationRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':failoverReservation';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Reservation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Returns information about the reservation.
   ///
   /// Request parameters:
@@ -1187,6 +1235,9 @@ class Assignment {
   /// reservations.
   /// - "BACKGROUND" : Background jobs that BigQuery runs for the customers in
   /// the background.
+  /// - "CONTINUOUS" : Continuous SQL jobs will use this reservation.
+  /// Reservations with continuous assignments cannot be mixed with
+  /// non-continuous assignments.
   core.String? jobType;
 
   /// Name of the resource.
@@ -1540,6 +1591,9 @@ class CapacityCommitment {
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
+/// The request for ReservationService.FailoverReservation.
+typedef FailoverReservationRequest = $Empty;
+
 /// The response for ReservationService.ListAssignments.
 class ListAssignmentsResponse {
   /// List of assignments visible to the user.
@@ -1719,8 +1773,8 @@ class Reservation {
   /// This is a soft target due to asynchronous nature of the system and various
   /// optimizations for small queries. Default value is 0 which means that
   /// concurrency target will be automatically computed by the system. NOTE:
-  /// this field is exposed as `target_job_concurrency` in the Information
-  /// Schema, DDL and BQ CLI.
+  /// this field is exposed as target job concurrency in the Information Schema,
+  /// DDL and BQ CLI.
   core.String? concurrency;
 
   /// Creation time of the reservation.
@@ -1762,6 +1816,39 @@ class Reservation {
   /// maximum length is 64 characters.
   core.String? name;
 
+  /// The original primary location of the reservation which is set only during
+  /// its creation and remains unchanged afterwards.
+  ///
+  /// It can be used by the customer to answer questions about disaster recovery
+  /// billing. The field is output only for customers and should not be
+  /// specified, however, the google.api.field_behavior is not set to
+  /// OUTPUT_ONLY since these fields are set in rerouted requests sent across
+  /// regions.
+  ///
+  /// Optional.
+  core.String? originalPrimaryLocation;
+
+  /// The primary location of the reservation.
+  ///
+  /// The field is only meaningful for reservation used for cross region
+  /// disaster recovery. The field is output only for customers and should not
+  /// be specified, however, the google.api.field_behavior is not set to
+  /// OUTPUT_ONLY since these fields are set in rerouted requests sent across
+  /// regions.
+  ///
+  /// Optional.
+  core.String? primaryLocation;
+
+  /// The secondary location of the reservation which is used for cross region
+  /// disaster recovery purposes.
+  ///
+  /// Customer can set this in create/update reservation calls to create a
+  /// failover reservation or convert a non-failover reservation to a failover
+  /// reservation.
+  ///
+  /// Optional.
+  core.String? secondaryLocation;
+
   /// Baseline slots available to this reservation.
   ///
   /// A slot is a unit of computational power in BigQuery, and serves as the
@@ -1795,6 +1882,9 @@ class Reservation {
     this.ignoreIdleSlots,
     this.multiRegionAuxiliary,
     this.name,
+    this.originalPrimaryLocation,
+    this.primaryLocation,
+    this.secondaryLocation,
     this.slotCapacity,
     this.updateTime,
   });
@@ -1821,6 +1911,15 @@ class Reservation {
               ? json_['multiRegionAuxiliary'] as core.bool
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          originalPrimaryLocation: json_.containsKey('originalPrimaryLocation')
+              ? json_['originalPrimaryLocation'] as core.String
+              : null,
+          primaryLocation: json_.containsKey('primaryLocation')
+              ? json_['primaryLocation'] as core.String
+              : null,
+          secondaryLocation: json_.containsKey('secondaryLocation')
+              ? json_['secondaryLocation'] as core.String
+              : null,
           slotCapacity: json_.containsKey('slotCapacity')
               ? json_['slotCapacity'] as core.String
               : null,
@@ -1838,6 +1937,10 @@ class Reservation {
         if (multiRegionAuxiliary != null)
           'multiRegionAuxiliary': multiRegionAuxiliary!,
         if (name != null) 'name': name!,
+        if (originalPrimaryLocation != null)
+          'originalPrimaryLocation': originalPrimaryLocation!,
+        if (primaryLocation != null) 'primaryLocation': primaryLocation!,
+        if (secondaryLocation != null) 'secondaryLocation': secondaryLocation!,
         if (slotCapacity != null) 'slotCapacity': slotCapacity!,
         if (updateTime != null) 'updateTime': updateTime!,
       };

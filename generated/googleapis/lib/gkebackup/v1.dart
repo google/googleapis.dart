@@ -730,6 +730,45 @@ class ProjectsLocationsBackupPlansBackupsResource {
     return Backup.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Retrieve the link to the backupIndex.
+  ///
+  /// Request parameters:
+  ///
+  /// [backup] - Required. Full name of Backup resource. Format:
+  /// projects/{project}/locations/{location}/backupPlans/{backup_plan}/backups/{backup}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/backupPlans/\[^/\]+/backups/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GetBackupIndexDownloadUrlResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GetBackupIndexDownloadUrlResponse> getBackupIndexDownloadUrl(
+    core.String backup, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$backup') + ':getBackupIndexDownloadUrl';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GetBackupIndexDownloadUrlResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets the access control policy for a resource.
   ///
   /// Returns an empty policy if the resource exists and does not have a policy
@@ -2615,8 +2654,6 @@ typedef AuditLogConfig = $AuditLogConfig;
 /// portion of the state of a GKE cluster, the record of the backup operation
 /// itself, and an anchor for the underlying artifacts that comprise the Backup
 /// (the config backup and VolumeBackups).
-///
-/// Next id: 29
 class Backup {
   /// If True, all namespaces were included in the Backup.
   ///
@@ -3113,6 +3150,18 @@ class BackupPlan {
   /// Optional.
   RetentionPolicy? retentionPolicy;
 
+  /// A number that represents the current risk level of this BackupPlan from
+  /// RPO perspective with 1 being no risk and 5 being highest risk.
+  ///
+  /// Output only.
+  core.int? rpoRiskLevel;
+
+  /// Human-readable description of why the BackupPlan is in the current
+  /// rpo_risk_level and action items if any.
+  ///
+  /// Output only.
+  core.String? rpoRiskReason;
+
   /// State of the BackupPlan.
   ///
   /// This State field reflects the various stages a BackupPlan can be in during
@@ -3160,6 +3209,8 @@ class BackupPlan {
     this.name,
     this.protectedPodCount,
     this.retentionPolicy,
+    this.rpoRiskLevel,
+    this.rpoRiskReason,
     this.state,
     this.stateReason,
     this.uid,
@@ -3205,6 +3256,12 @@ class BackupPlan {
               ? RetentionPolicy.fromJson(json_['retentionPolicy']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          rpoRiskLevel: json_.containsKey('rpoRiskLevel')
+              ? json_['rpoRiskLevel'] as core.int
+              : null,
+          rpoRiskReason: json_.containsKey('rpoRiskReason')
+              ? json_['rpoRiskReason'] as core.String
+              : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
           stateReason: json_.containsKey('stateReason')
@@ -3228,6 +3285,8 @@ class BackupPlan {
         if (name != null) 'name': name!,
         if (protectedPodCount != null) 'protectedPodCount': protectedPodCount!,
         if (retentionPolicy != null) 'retentionPolicy': retentionPolicy!,
+        if (rpoRiskLevel != null) 'rpoRiskLevel': rpoRiskLevel!,
+        if (rpoRiskReason != null) 'rpoRiskReason': rpoRiskReason!,
         if (state != null) 'state': state!,
         if (stateReason != null) 'stateReason': stateReason!,
         if (uid != null) 'uid': uid!,
@@ -3500,6 +3559,43 @@ class ClusterResourceRestoreScope {
       };
 }
 
+/// Represents a whole or partial calendar date, such as a birthday.
+///
+/// The time of day and time zone are either specified elsewhere or are
+/// insignificant. The date is relative to the Gregorian Calendar. This can
+/// represent one of the following: * A full date, with non-zero year, month,
+/// and day values. * A month and day, with a zero year (for example, an
+/// anniversary). * A year on its own, with a zero month and a zero day. * A
+/// year and month, with a zero day (for example, a credit card expiration
+/// date). Related types: * google.type.TimeOfDay * google.type.DateTime *
+/// google.protobuf.Timestamp
+typedef Date = $Date;
+
+/// Holds repeated DaysOfWeek values as a container.
+class DayOfWeekList {
+  /// A list of days of week.
+  ///
+  /// Optional.
+  core.List<core.String>? daysOfWeek;
+
+  DayOfWeekList({
+    this.daysOfWeek,
+  });
+
+  DayOfWeekList.fromJson(core.Map json_)
+      : this(
+          daysOfWeek: json_.containsKey('daysOfWeek')
+              ? (json_['daysOfWeek'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (daysOfWeek != null) 'daysOfWeek': daysOfWeek!,
+      };
+}
+
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
 ///
@@ -3535,6 +3631,79 @@ class EncryptionKey {
       };
 }
 
+/// Defines a time window during which no backup should happen.
+///
+/// All time and date are in UTC.
+class ExclusionWindow {
+  /// The exclusion window occurs every day if set to "True".
+  ///
+  /// Specifying this field to "False" is an error.
+  core.bool? daily;
+
+  /// The exclusion window occurs on these days of each week in UTC.
+  DayOfWeekList? daysOfWeek;
+
+  /// Specifies duration of the window.
+  ///
+  /// Restrictions for duration based on the recurrence type to allow some time
+  /// for backup to happen: - single_occurrence_date: no restriction, but UI may
+  /// warn about this when duration \>= target RPO - daily window: duration \<
+  /// 24 hours - weekly window: - days of week includes all seven days of a
+  /// week: duration \< 24 hours - all other weekly window: duration \< 168
+  /// hours (i.e., 24 * 7 hours)
+  ///
+  /// Required.
+  core.String? duration;
+
+  /// No recurrence.
+  ///
+  /// The exclusion window occurs only once and on this date in UTC.
+  Date? singleOccurrenceDate;
+
+  /// Specifies the start time of the window using time of the day in UTC.
+  ///
+  /// Required.
+  TimeOfDay? startTime;
+
+  ExclusionWindow({
+    this.daily,
+    this.daysOfWeek,
+    this.duration,
+    this.singleOccurrenceDate,
+    this.startTime,
+  });
+
+  ExclusionWindow.fromJson(core.Map json_)
+      : this(
+          daily:
+              json_.containsKey('daily') ? json_['daily'] as core.bool : null,
+          daysOfWeek: json_.containsKey('daysOfWeek')
+              ? DayOfWeekList.fromJson(
+                  json_['daysOfWeek'] as core.Map<core.String, core.dynamic>)
+              : null,
+          duration: json_.containsKey('duration')
+              ? json_['duration'] as core.String
+              : null,
+          singleOccurrenceDate: json_.containsKey('singleOccurrenceDate')
+              ? Date.fromJson(json_['singleOccurrenceDate']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          startTime: json_.containsKey('startTime')
+              ? TimeOfDay.fromJson(
+                  json_['startTime'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (daily != null) 'daily': daily!,
+        if (daysOfWeek != null) 'daysOfWeek': daysOfWeek!,
+        if (duration != null) 'duration': duration!,
+        if (singleOccurrenceDate != null)
+          'singleOccurrenceDate': singleOccurrenceDate!,
+        if (startTime != null) 'startTime': startTime!,
+      };
+}
+
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.
 ///
@@ -3554,6 +3723,26 @@ class EncryptionKey {
 /// service that evaluates it. See the service documentation for additional
 /// information.
 typedef Expr = $Expr;
+
+/// Response message for GetBackupIndexDownloadUrl.
+class GetBackupIndexDownloadUrlResponse {
+  core.String? signedUrl;
+
+  GetBackupIndexDownloadUrlResponse({
+    this.signedUrl,
+  });
+
+  GetBackupIndexDownloadUrlResponse.fromJson(core.Map json_)
+      : this(
+          signedUrl: json_.containsKey('signedUrl')
+              ? json_['signedUrl'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (signedUrl != null) 'signedUrl': signedUrl!,
+      };
+}
 
 /// The request message for Operations.CancelOperation.
 typedef GoogleLongrunningCancelOperationRequest = $Empty;
@@ -4266,8 +4455,6 @@ class ResourceFilter {
 
 /// Represents both a request to Restore some portion of a Backup into a target
 /// GKE cluster and a record of the restore operation itself.
-///
-/// Next id: 20
 class Restore {
   /// A reference to the Backup used as the source from which this Restore will
   /// restore.
@@ -4485,8 +4672,6 @@ class Restore {
 }
 
 /// Configuration of a restore.
-///
-/// Next id: 14
 class RestoreConfig {
   /// Restore all namespaced resources in the Backup if set to "True".
   ///
@@ -4697,8 +4882,6 @@ class RestoreConfig {
 
 /// The configuration of a potential series of Restore operations to be
 /// performed against Backups belong to a particular BackupPlan.
-///
-/// Next id: 13
 class RestorePlan {
   /// A reference to the BackupPlan from which Backups may be used as the source
   /// for Restores created via this RestorePlan.
@@ -4925,6 +5108,55 @@ class RetentionPolicy {
       };
 }
 
+/// Defines RPO scheduling configuration for automatically creating Backups via
+/// this BackupPlan.
+class RpoConfig {
+  /// User specified time windows during which backup can NOT happen for this
+  /// BackupPlan - backups should start and finish outside of any given
+  /// exclusion window.
+  ///
+  /// Note: backup jobs will be scheduled to start and finish outside the
+  /// duration of the window as much as possible, but running jobs will not get
+  /// canceled when it runs into the window. All the time and date values in
+  /// exclusion_windows entry in the API are in UTC. We only allow \<=1
+  /// recurrence (daily or weekly) exclusion window for a BackupPlan while no
+  /// restriction on number of single occurrence windows.
+  ///
+  /// Optional.
+  core.List<ExclusionWindow>? exclusionWindows;
+
+  /// Defines the target RPO for the BackupPlan in minutes, which means the
+  /// target maximum data loss in time that is acceptable for this BackupPlan.
+  ///
+  /// This must be at least 60, i.e., 1 hour, and at most 86400, i.e., 60 days.
+  ///
+  /// Required.
+  core.int? targetRpoMinutes;
+
+  RpoConfig({
+    this.exclusionWindows,
+    this.targetRpoMinutes,
+  });
+
+  RpoConfig.fromJson(core.Map json_)
+      : this(
+          exclusionWindows: json_.containsKey('exclusionWindows')
+              ? (json_['exclusionWindows'] as core.List)
+                  .map((value) => ExclusionWindow.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          targetRpoMinutes: json_.containsKey('targetRpoMinutes')
+              ? json_['targetRpoMinutes'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (exclusionWindows != null) 'exclusionWindows': exclusionWindows!,
+        if (targetRpoMinutes != null) 'targetRpoMinutes': targetRpoMinutes!,
+      };
+}
+
 /// Defines scheduling parameters for automatically creating Backups via this
 /// BackupPlan.
 class Schedule {
@@ -4939,6 +5171,12 @@ class Schedule {
   /// Optional.
   core.String? cronSchedule;
 
+  /// Start time of next scheduled backup under this BackupPlan by either
+  /// cron_schedule or rpo config.
+  ///
+  /// Output only.
+  core.String? nextScheduledBackupTime;
+
   /// This flag denotes whether automatic Backup creation is paused for this
   /// BackupPlan.
   ///
@@ -4947,9 +5185,21 @@ class Schedule {
   /// Optional.
   core.bool? paused;
 
+  /// Defines the RPO schedule configuration for this BackupPlan.
+  ///
+  /// This is mutually exclusive with the cron_schedule field since at most one
+  /// schedule can be defined for a BackupPLan. If this is defined, then
+  /// backup_retain_days must also be defined. Default (empty): no automatic
+  /// backup creation will occur.
+  ///
+  /// Optional.
+  RpoConfig? rpoConfig;
+
   Schedule({
     this.cronSchedule,
+    this.nextScheduledBackupTime,
     this.paused,
+    this.rpoConfig,
   });
 
   Schedule.fromJson(core.Map json_)
@@ -4957,13 +5207,23 @@ class Schedule {
           cronSchedule: json_.containsKey('cronSchedule')
               ? json_['cronSchedule'] as core.String
               : null,
+          nextScheduledBackupTime: json_.containsKey('nextScheduledBackupTime')
+              ? json_['nextScheduledBackupTime'] as core.String
+              : null,
           paused:
               json_.containsKey('paused') ? json_['paused'] as core.bool : null,
+          rpoConfig: json_.containsKey('rpoConfig')
+              ? RpoConfig.fromJson(
+                  json_['rpoConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cronSchedule != null) 'cronSchedule': cronSchedule!,
+        if (nextScheduledBackupTime != null)
+          'nextScheduledBackupTime': nextScheduledBackupTime!,
         if (paused != null) 'paused': paused!,
+        if (rpoConfig != null) 'rpoConfig': rpoConfig!,
       };
 }
 
@@ -5114,6 +5374,13 @@ typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;
 
+/// Represents a time of day.
+///
+/// The date and time zone are either not significant or are specified
+/// elsewhere. An API may choose to allow leap seconds. Related types are
+/// google.type.Date and `google.protobuf.Timestamp`.
+typedef TimeOfDay = $TimeOfDay;
+
 /// A transformation rule to be applied against Kubernetes resources as they are
 /// selected for restoration from a Backup.
 ///
@@ -5248,8 +5515,6 @@ class TransformationRuleAction {
 /// Represents the backup of a specific persistent volume as a component of a
 /// Backup - both the record of the operation and a pointer to the underlying
 /// storage-specific artifacts.
-///
-/// Next id: 14
 class VolumeBackup {
   /// The timestamp when the associated underlying volume backup operation
   /// completed.
@@ -5426,8 +5691,6 @@ class VolumeBackup {
 }
 
 /// Represents the operation of restoring a volume from a VolumeBackup.
-///
-/// Next id: 13
 class VolumeRestore {
   /// The timestamp when the associated underlying volume restoration completed.
   ///

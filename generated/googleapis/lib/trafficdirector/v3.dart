@@ -1861,13 +1861,18 @@ typedef StaticRouteConfig = $StaticRouteConfig;
 
 /// Specifies the way to match a string.
 ///
-/// \[#next-free-field: 8\]
+/// \[#next-free-field: 9\]
 class StringMatcher {
   /// The input string must have the substring specified here.
   ///
   /// Note: empty contains match is not allowed, please use regex instead.
   /// Examples: * ``abc`` matches the value ``xyz.abc.def``
   core.String? contains;
+
+  /// Use an extension as the matcher type.
+  ///
+  /// \[#extension-category: envoy.string_matcher\]
+  TypedExtensionConfig? custom;
 
   /// The input string must match exactly the string specified here.
   ///
@@ -1899,6 +1904,7 @@ class StringMatcher {
 
   StringMatcher({
     this.contains,
+    this.custom,
     this.exact,
     this.ignoreCase,
     this.prefix,
@@ -1910,6 +1916,10 @@ class StringMatcher {
       : this(
           contains: json_.containsKey('contains')
               ? json_['contains'] as core.String
+              : null,
+          custom: json_.containsKey('custom')
+              ? TypedExtensionConfig.fromJson(
+                  json_['custom'] as core.Map<core.String, core.dynamic>)
               : null,
           exact:
               json_.containsKey('exact') ? json_['exact'] as core.String : null,
@@ -1930,6 +1940,7 @@ class StringMatcher {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (contains != null) 'contains': contains!,
+        if (custom != null) 'custom': custom!,
         if (exact != null) 'exact': exact!,
         if (ignoreCase != null) 'ignoreCase': ignoreCase!,
         if (prefix != null) 'prefix': prefix!,
@@ -1983,6 +1994,45 @@ class StructMatcher {
   core.Map<core.String, core.dynamic> toJson() => {
         if (path != null) 'path': path!,
         if (value != null) 'value': value!,
+      };
+}
+
+/// Message type for extension configuration.
+class TypedExtensionConfig {
+  /// The name of an extension.
+  ///
+  /// This is not used to select the extension, instead it serves the role of an
+  /// opaque identifier.
+  core.String? name;
+
+  /// The typed config for the extension.
+  ///
+  /// The type URL will be used to identify the extension. In the case that the
+  /// type URL is *xds.type.v3.TypedStruct* (or, for historical reasons,
+  /// *udpa.type.v1.TypedStruct*), the inner type URL of *TypedStruct* will be
+  /// utilized. See the :ref:`extension configuration overview ` for further
+  /// details.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? typedConfig;
+
+  TypedExtensionConfig({
+    this.name,
+    this.typedConfig,
+  });
+
+  TypedExtensionConfig.fromJson(core.Map json_)
+      : this(
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          typedConfig: json_.containsKey('typedConfig')
+              ? json_['typedConfig'] as core.Map<core.String, core.dynamic>
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (typedConfig != null) 'typedConfig': typedConfig!,
       };
 }
 

@@ -507,9 +507,9 @@ class ProjectsLocationsEntryGroupsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name of the entry group in URL format. Note: The
-  /// entry group itself and its child resources might not be stored in the
-  /// location specified in its name.
+  /// [name] - Identifier. The resource name of the entry group in URL format.
+  /// Note: The entry group itself and its child resources might not be stored
+  /// in the location specified in its name.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/entryGroups/\[^/\]+$`.
   ///
@@ -1067,9 +1067,9 @@ class ProjectsLocationsEntryGroupsEntriesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. The resource name of an entry in URL format. Note:
-  /// The entry itself and its child resources might not be stored in the
-  /// location specified in its name.
+  /// [name] - Output only. Identifier. The resource name of an entry in URL
+  /// format. Note: The entry itself and its child resources might not be stored
+  /// in the location specified in its name.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/entryGroups/\[^/\]+/entries/\[^/\]+$`.
   ///
@@ -1413,9 +1413,9 @@ class ProjectsLocationsEntryGroupsEntriesTagsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name of the tag in URL format where tag ID is a
-  /// system-generated identifier. Note: The tag itself might not be stored in
-  /// the location specified in its name.
+  /// [name] - Identifier. The resource name of the tag in URL format where tag
+  /// ID is a system-generated identifier. Note: The tag itself might not be
+  /// stored in the location specified in its name.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/entryGroups/\[^/\]+/entries/\[^/\]+/tags/\[^/\]+$`.
   ///
@@ -1660,9 +1660,9 @@ class ProjectsLocationsEntryGroupsTagsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name of the tag in URL format where tag ID is a
-  /// system-generated identifier. Note: The tag itself might not be stored in
-  /// the location specified in its name.
+  /// [name] - Identifier. The resource name of the tag in URL format where tag
+  /// ID is a system-generated identifier. Note: The tag itself might not be
+  /// stored in the location specified in its name.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/entryGroups/\[^/\]+/tags/\[^/\]+$`.
   ///
@@ -2097,9 +2097,9 @@ class ProjectsLocationsTagTemplatesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name of the tag template in URL format. Note: The
-  /// tag template itself and its child resources might not be stored in the
-  /// location specified in its name.
+  /// [name] - Identifier. The resource name of the tag template in URL format.
+  /// Note: The tag template itself and its child resources might not be stored
+  /// in the location specified in its name.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/tagTemplates/\[^/\]+$`.
   ///
@@ -4732,10 +4732,11 @@ class GoogleCloudDatacatalogV1Entry {
   /// Model specification.
   GoogleCloudDatacatalogV1ModelSpec? modelSpec;
 
-  /// The resource name of an entry in URL format.
+  /// Identifier.
   ///
-  /// Note: The entry itself and its child resources might not be stored in the
-  /// location specified in its name.
+  /// The resource name of an entry in URL format. Note: The entry itself and
+  /// its child resources might not be stored in the location specified in its
+  /// name.
   ///
   /// Output only.
   core.String? name;
@@ -5057,10 +5058,11 @@ class GoogleCloudDatacatalogV1EntryGroup {
   /// Default value is an empty string.
   core.String? displayName;
 
-  /// The resource name of the entry group in URL format.
+  /// Identifier.
   ///
-  /// Note: The entry group itself and its child resources might not be stored
-  /// in the location specified in its name.
+  /// The resource name of the entry group in URL format. Note: The entry group
+  /// itself and its child resources might not be stored in the location
+  /// specified in its name.
   core.String? name;
 
   GoogleCloudDatacatalogV1EntryGroup({
@@ -7095,11 +7097,11 @@ class GoogleCloudDatacatalogV1Tag {
   /// Required.
   core.Map<core.String, GoogleCloudDatacatalogV1TagField>? fields;
 
-  /// The resource name of the tag in URL format where tag ID is a
-  /// system-generated identifier.
+  /// Identifier.
   ///
-  /// Note: The tag itself might not be stored in the location specified in its
-  /// name.
+  /// The resource name of the tag in URL format where tag ID is a
+  /// system-generated identifier. Note: The tag itself might not be stored in
+  /// the location specified in its name.
   core.String? name;
 
   /// The resource name of the tag template this tag uses.
@@ -7280,6 +7282,17 @@ class GoogleCloudDatacatalogV1TagFieldEnumValue {
 /// [TagTemplate User](https://cloud.google.com/data-catalog/docs/how-to/template-user)
 /// role that includes a permission to use the tag template to tag resources.
 class GoogleCloudDatacatalogV1TagTemplate {
+  /// Transfer status of the TagTemplate
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "DATAPLEX_TRANSFER_STATUS_UNSPECIFIED" : Default value. TagTemplate and
+  /// its tags are only visible and editable in DataCatalog.
+  /// - "MIGRATED" : TagTemplate and its tags are auto-copied to Dataplex
+  /// service. Visible in both services. Editable in DataCatalog, read-only in
+  /// Dataplex.
+  core.String? dataplexTransferStatus;
+
   /// Display name for this template.
   ///
   /// Defaults to an empty string. The name must contain only Unicode letters,
@@ -7306,13 +7319,15 @@ class GoogleCloudDatacatalogV1TagTemplate {
   /// simple search query in addition to using a ``tag:`` predicate.
   core.bool? isPubliclyReadable;
 
-  /// The resource name of the tag template in URL format.
+  /// Identifier.
   ///
-  /// Note: The tag template itself and its child resources might not be stored
-  /// in the location specified in its name.
+  /// The resource name of the tag template in URL format. Note: The tag
+  /// template itself and its child resources might not be stored in the
+  /// location specified in its name.
   core.String? name;
 
   GoogleCloudDatacatalogV1TagTemplate({
+    this.dataplexTransferStatus,
     this.displayName,
     this.fields,
     this.isPubliclyReadable,
@@ -7321,6 +7336,9 @@ class GoogleCloudDatacatalogV1TagTemplate {
 
   GoogleCloudDatacatalogV1TagTemplate.fromJson(core.Map json_)
       : this(
+          dataplexTransferStatus: json_.containsKey('dataplexTransferStatus')
+              ? json_['dataplexTransferStatus'] as core.String
+              : null,
           displayName: json_.containsKey('displayName')
               ? json_['displayName'] as core.String
               : null,
@@ -7340,6 +7358,8 @@ class GoogleCloudDatacatalogV1TagTemplate {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (dataplexTransferStatus != null)
+          'dataplexTransferStatus': dataplexTransferStatus!,
         if (displayName != null) 'displayName': displayName!,
         if (fields != null) 'fields': fields!,
         if (isPubliclyReadable != null)
@@ -7367,16 +7387,14 @@ class GoogleCloudDatacatalogV1TagTemplateField {
   /// Defaults to false.
   core.bool? isRequired;
 
-  /// The resource name of the tag template field in URL format.
+  /// Identifier.
   ///
-  /// Example:
+  /// The resource name of the tag template field in URL format. Example:
   /// `projects/{PROJECT_ID}/locations/{LOCATION}/tagTemplates/{TAG_TEMPLATE}/fields/{FIELD}`
   /// Note: The tag template field itself might not be stored in the location
   /// specified in its name. The name must contain only letters (a-z, A-Z),
   /// numbers (0-9), or underscores (_), and must start with a letter or
   /// underscore. The maximum length is 64 characters.
-  ///
-  /// Output only.
   core.String? name;
 
   /// The order of this field with respect to other fields in this tag template.

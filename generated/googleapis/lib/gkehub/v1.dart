@@ -2110,6 +2110,116 @@ class ProjectsLocationsScopesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Lists Memberships bound to a Scope.
+  ///
+  /// The response includes relevant Memberships from all regions.
+  ///
+  /// Request parameters:
+  ///
+  /// [scopeName] - Required. Name of the Scope, in the format `projects / *
+  /// /locations/global/scopes / * `, to which the Memberships are bound.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/scopes/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Lists Memberships that match the filter expression,
+  /// following the syntax outlined in https://google.aip.dev/160. Currently,
+  /// filtering can be done only based on Memberships's `name`, `labels`,
+  /// `create_time`, `update_time`, and `unique_id`.
+  ///
+  /// [pageSize] - Optional. When requesting a 'page' of resources, `page_size`
+  /// specifies number of resources to return. If unspecified or set to 0, all
+  /// resources will be returned. Pagination is currently not supported;
+  /// therefore, setting this field does not have any impact for now.
+  ///
+  /// [pageToken] - Optional. Token returned by previous call to
+  /// `ListBoundMemberships` which specifies the position in the list from where
+  /// to continue listing the resources.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListBoundMembershipsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListBoundMembershipsResponse> listMemberships(
+    core.String scopeName, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$scopeName') + ':listMemberships';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListBoundMembershipsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists permitted Scopes.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent (project and location) where the Scope
+  /// will be listed. Specified in the format `projects / * /locations / * `.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. When requesting a 'page' of resources, `page_size`
+  /// specifies number of resources to return. If unspecified or set to 0, all
+  /// resources will be returned.
+  ///
+  /// [pageToken] - Optional. Token returned by previous call to
+  /// `ListPermittedScopes` which specifies the position in the list from where
+  /// to continue listing the resources.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListPermittedScopesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListPermittedScopesResponse> listPermitted(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/scopes:listPermitted';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListPermittedScopesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Updates a scopes.
   ///
   /// [request] - The metadata request object.
@@ -5983,6 +6093,9 @@ class IdentityServiceAuthMethod {
   /// GoogleConfig specific configuration.
   IdentityServiceGoogleConfig? googleConfig;
 
+  /// LDAP specific configuration.
+  IdentityServiceLdapConfig? ldapConfig;
+
   /// Identifier for auth config.
   core.String? name;
 
@@ -5998,6 +6111,7 @@ class IdentityServiceAuthMethod {
   IdentityServiceAuthMethod({
     this.azureadConfig,
     this.googleConfig,
+    this.ldapConfig,
     this.name,
     this.oidcConfig,
     this.proxy,
@@ -6013,6 +6127,10 @@ class IdentityServiceAuthMethod {
           googleConfig: json_.containsKey('googleConfig')
               ? IdentityServiceGoogleConfig.fromJson(
                   json_['googleConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          ldapConfig: json_.containsKey('ldapConfig')
+              ? IdentityServiceLdapConfig.fromJson(
+                  json_['ldapConfig'] as core.Map<core.String, core.dynamic>)
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           oidcConfig: json_.containsKey('oidcConfig')
@@ -6030,6 +6148,7 @@ class IdentityServiceAuthMethod {
   core.Map<core.String, core.dynamic> toJson() => {
         if (azureadConfig != null) 'azureadConfig': azureadConfig!,
         if (googleConfig != null) 'googleConfig': googleConfig!,
+        if (ldapConfig != null) 'ldapConfig': ldapConfig!,
         if (name != null) 'name': name!,
         if (oidcConfig != null) 'oidcConfig': oidcConfig!,
         if (proxy != null) 'proxy': proxy!,
@@ -6144,6 +6263,122 @@ class IdentityServiceGoogleConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (disable != null) 'disable': disable!,
+      };
+}
+
+/// Contains the properties for locating and authenticating groups in the
+/// directory.
+class IdentityServiceGroupConfig {
+  /// The location of the subtree in the LDAP directory to search for group
+  /// entries.
+  ///
+  /// Required.
+  core.String? baseDn;
+
+  /// Optional filter to be used when searching for groups a user belongs to.
+  ///
+  /// This can be used to explicitly match only certain groups in order to
+  /// reduce the amount of groups returned for each user. This defaults to
+  /// "(objectClass=Group)".
+  ///
+  /// Optional.
+  core.String? filter;
+
+  /// The identifying name of each group a user belongs to.
+  ///
+  /// For example, if this is set to "distinguishedName" then RBACs and other
+  /// group expectations should be written as full DNs. This defaults to
+  /// "distinguishedName".
+  ///
+  /// Optional.
+  core.String? idAttribute;
+
+  IdentityServiceGroupConfig({
+    this.baseDn,
+    this.filter,
+    this.idAttribute,
+  });
+
+  IdentityServiceGroupConfig.fromJson(core.Map json_)
+      : this(
+          baseDn: json_.containsKey('baseDn')
+              ? json_['baseDn'] as core.String
+              : null,
+          filter: json_.containsKey('filter')
+              ? json_['filter'] as core.String
+              : null,
+          idAttribute: json_.containsKey('idAttribute')
+              ? json_['idAttribute'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (baseDn != null) 'baseDn': baseDn!,
+        if (filter != null) 'filter': filter!,
+        if (idAttribute != null) 'idAttribute': idAttribute!,
+      };
+}
+
+/// Configuration for the LDAP Auth flow.
+class IdentityServiceLdapConfig {
+  /// Contains the properties for locating and authenticating groups in the
+  /// directory.
+  ///
+  /// Optional.
+  IdentityServiceGroupConfig? group;
+
+  /// Server settings for the external LDAP server.
+  ///
+  /// Required.
+  IdentityServiceServerConfig? server;
+
+  /// Contains the credentials of the service account which is authorized to
+  /// perform the LDAP search in the directory.
+  ///
+  /// The credentials can be supplied by the combination of the DN and password
+  /// or the client certificate.
+  ///
+  /// Required.
+  IdentityServiceServiceAccountConfig? serviceAccount;
+
+  /// Defines where users exist in the LDAP directory.
+  ///
+  /// Required.
+  IdentityServiceUserConfig? user;
+
+  IdentityServiceLdapConfig({
+    this.group,
+    this.server,
+    this.serviceAccount,
+    this.user,
+  });
+
+  IdentityServiceLdapConfig.fromJson(core.Map json_)
+      : this(
+          group: json_.containsKey('group')
+              ? IdentityServiceGroupConfig.fromJson(
+                  json_['group'] as core.Map<core.String, core.dynamic>)
+              : null,
+          server: json_.containsKey('server')
+              ? IdentityServiceServerConfig.fromJson(
+                  json_['server'] as core.Map<core.String, core.dynamic>)
+              : null,
+          serviceAccount: json_.containsKey('serviceAccount')
+              ? IdentityServiceServiceAccountConfig.fromJson(
+                  json_['serviceAccount']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          user: json_.containsKey('user')
+              ? IdentityServiceUserConfig.fromJson(
+                  json_['user'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (group != null) 'group': group!,
+        if (server != null) 'server': server!,
+        if (serviceAccount != null) 'serviceAccount': serviceAccount!,
+        if (user != null) 'user': user!,
       };
 }
 
@@ -6490,6 +6725,214 @@ class IdentityServiceSamlConfig {
       };
 }
 
+/// Server settings for the external LDAP server.
+class IdentityServiceServerConfig {
+  /// Contains a Base64 encoded, PEM formatted certificate authority certificate
+  /// for the LDAP server.
+  ///
+  /// This must be provided for the "ldaps" and "startTLS" connections.
+  ///
+  /// Optional.
+  core.String? certificateAuthorityData;
+  core.List<core.int> get certificateAuthorityDataAsBytes =>
+      convert.base64.decode(certificateAuthorityData!);
+
+  set certificateAuthorityDataAsBytes(core.List<core.int> bytes_) {
+    certificateAuthorityData =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// Defines the connection type to communicate with the LDAP server.
+  ///
+  /// If `starttls` or `ldaps` is specified, the certificate_authority_data
+  /// should not be empty.
+  ///
+  /// Optional.
+  core.String? connectionType;
+
+  /// Defines the hostname or IP of the LDAP server.
+  ///
+  /// Port is optional and will default to 389, if unspecified. For example,
+  /// "ldap.server.example" or "10.10.10.10:389".
+  ///
+  /// Required.
+  core.String? host;
+
+  IdentityServiceServerConfig({
+    this.certificateAuthorityData,
+    this.connectionType,
+    this.host,
+  });
+
+  IdentityServiceServerConfig.fromJson(core.Map json_)
+      : this(
+          certificateAuthorityData:
+              json_.containsKey('certificateAuthorityData')
+                  ? json_['certificateAuthorityData'] as core.String
+                  : null,
+          connectionType: json_.containsKey('connectionType')
+              ? json_['connectionType'] as core.String
+              : null,
+          host: json_.containsKey('host') ? json_['host'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (certificateAuthorityData != null)
+          'certificateAuthorityData': certificateAuthorityData!,
+        if (connectionType != null) 'connectionType': connectionType!,
+        if (host != null) 'host': host!,
+      };
+}
+
+/// Contains the credentials of the service account which is authorized to
+/// perform the LDAP search in the directory.
+///
+/// The credentials can be supplied by the combination of the DN and password or
+/// the client certificate.
+class IdentityServiceServiceAccountConfig {
+  /// Credentials for basic auth.
+  IdentityServiceSimpleBindCredentials? simpleBindCredentials;
+
+  IdentityServiceServiceAccountConfig({
+    this.simpleBindCredentials,
+  });
+
+  IdentityServiceServiceAccountConfig.fromJson(core.Map json_)
+      : this(
+          simpleBindCredentials: json_.containsKey('simpleBindCredentials')
+              ? IdentityServiceSimpleBindCredentials.fromJson(
+                  json_['simpleBindCredentials']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (simpleBindCredentials != null)
+          'simpleBindCredentials': simpleBindCredentials!,
+      };
+}
+
+/// The structure holds the LDAP simple binding credential.
+class IdentityServiceSimpleBindCredentials {
+  /// The distinguished name(DN) of the service account object/user.
+  ///
+  /// Required.
+  core.String? dn;
+
+  /// The encrypted password of the service account object/user.
+  ///
+  /// Output only.
+  core.String? encryptedPassword;
+  core.List<core.int> get encryptedPasswordAsBytes =>
+      convert.base64.decode(encryptedPassword!);
+
+  set encryptedPasswordAsBytes(core.List<core.int> bytes_) {
+    encryptedPassword =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// Input only.
+  ///
+  /// The password of the service account object/user.
+  ///
+  /// Required.
+  core.String? password;
+
+  IdentityServiceSimpleBindCredentials({
+    this.dn,
+    this.encryptedPassword,
+    this.password,
+  });
+
+  IdentityServiceSimpleBindCredentials.fromJson(core.Map json_)
+      : this(
+          dn: json_.containsKey('dn') ? json_['dn'] as core.String : null,
+          encryptedPassword: json_.containsKey('encryptedPassword')
+              ? json_['encryptedPassword'] as core.String
+              : null,
+          password: json_.containsKey('password')
+              ? json_['password'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dn != null) 'dn': dn!,
+        if (encryptedPassword != null) 'encryptedPassword': encryptedPassword!,
+        if (password != null) 'password': password!,
+      };
+}
+
+/// Defines where users exist in the LDAP directory.
+class IdentityServiceUserConfig {
+  /// The location of the subtree in the LDAP directory to search for user
+  /// entries.
+  ///
+  /// Required.
+  core.String? baseDn;
+
+  /// Filter to apply when searching for the user.
+  ///
+  /// This can be used to further restrict the user accounts which are allowed
+  /// to login. This defaults to "(objectClass=User)".
+  ///
+  /// Optional.
+  core.String? filter;
+
+  /// Determines which attribute to use as the user's identity after they are
+  /// authenticated.
+  ///
+  /// This is distinct from the loginAttribute field to allow users to login
+  /// with a username, but then have their actual identifier be an email address
+  /// or full Distinguished Name (DN). For example, setting loginAttribute to
+  /// "sAMAccountName" and identifierAttribute to "userPrincipalName" would
+  /// allow a user to login as "bsmith", but actual RBAC policies for the user
+  /// would be written as "bsmith@example.com". Using "userPrincipalName" is
+  /// recommended since this will be unique for each user. This defaults to
+  /// "userPrincipalName".
+  ///
+  /// Optional.
+  core.String? idAttribute;
+
+  /// The name of the attribute which matches against the input username.
+  ///
+  /// This is used to find the user in the LDAP database e.g. "(=)" and is
+  /// combined with the optional filter field. This defaults to
+  /// "userPrincipalName".
+  ///
+  /// Optional.
+  core.String? loginAttribute;
+
+  IdentityServiceUserConfig({
+    this.baseDn,
+    this.filter,
+    this.idAttribute,
+    this.loginAttribute,
+  });
+
+  IdentityServiceUserConfig.fromJson(core.Map json_)
+      : this(
+          baseDn: json_.containsKey('baseDn')
+              ? json_['baseDn'] as core.String
+              : null,
+          filter: json_.containsKey('filter')
+              ? json_['filter'] as core.String
+              : null,
+          idAttribute: json_.containsKey('idAttribute')
+              ? json_['idAttribute'] as core.String
+              : null,
+          loginAttribute: json_.containsKey('loginAttribute')
+              ? json_['loginAttribute'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (baseDn != null) 'baseDn': baseDn!,
+        if (filter != null) 'filter': filter!,
+        if (idAttribute != null) 'idAttribute': idAttribute!,
+        if (loginAttribute != null) 'loginAttribute': loginAttribute!,
+      };
+}
+
 /// KubernetesMetadata provides informational metadata for Memberships
 /// representing Kubernetes clusters.
 class KubernetesMetadata {
@@ -6655,6 +7098,52 @@ class KubernetesResource {
         if (membershipResources != null)
           'membershipResources': membershipResources!,
         if (resourceOptions != null) 'resourceOptions': resourceOptions!,
+      };
+}
+
+/// List of Memberships bound to a Scope.
+class ListBoundMembershipsResponse {
+  /// The list of Memberships bound to the given Scope.
+  core.List<Membership>? memberships;
+
+  /// A token to request the next page of resources from the
+  /// `ListBoundMemberships` method.
+  ///
+  /// The value of an empty string means that there are no more resources to
+  /// return.
+  core.String? nextPageToken;
+
+  /// List of locations that could not be reached while fetching this list.
+  core.List<core.String>? unreachable;
+
+  ListBoundMembershipsResponse({
+    this.memberships,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListBoundMembershipsResponse.fromJson(core.Map json_)
+      : this(
+          memberships: json_.containsKey('memberships')
+              ? (json_['memberships'] as core.List)
+                  .map((value) => Membership.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (memberships != null) 'memberships': memberships!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
@@ -6873,6 +7362,42 @@ class ListOperationsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null) 'operations': operations!,
+      };
+}
+
+/// List of permitted Scopes.
+class ListPermittedScopesResponse {
+  /// A token to request the next page of resources from the
+  /// `ListPermittedScopes` method.
+  ///
+  /// The value of an empty string means that there are no more resources to
+  /// return.
+  core.String? nextPageToken;
+
+  /// The list of permitted Scopes
+  core.List<Scope>? scopes;
+
+  ListPermittedScopesResponse({
+    this.nextPageToken,
+    this.scopes,
+  });
+
+  ListPermittedScopesResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          scopes: json_.containsKey('scopes')
+              ? (json_['scopes'] as core.List)
+                  .map((value) => Scope.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (scopes != null) 'scopes': scopes!,
       };
 }
 
@@ -9272,6 +9797,68 @@ class ScopeLifecycleState {
 /// for the Security Posture API.
 typedef SecurityPostureConfig = $SecurityPostureConfig;
 
+/// Condition being reported.
+class ServiceMeshCondition {
+  /// Unique identifier of the condition which describes the condition
+  /// recognizable to the user.
+  /// Possible string values are:
+  /// - "CODE_UNSPECIFIED" : Default Unspecified code
+  /// - "MESH_IAM_PERMISSION_DENIED" : Mesh IAM permission denied error code
+  /// - "CNI_CONFIG_UNSUPPORTED" : CNI config unsupported error code
+  /// - "GKE_SANDBOX_UNSUPPORTED" : GKE sandbox unsupported error code
+  /// - "NODEPOOL_WORKLOAD_IDENTITY_FEDERATION_REQUIRED" : Nodepool workload
+  /// identity federation required error code
+  /// - "CNI_INSTALLATION_FAILED" : CNI installation failed error code
+  /// - "CNI_POD_UNSCHEDULABLE" : CNI pod unschedulable error code
+  /// - "UNSUPPORTED_MULTIPLE_CONTROL_PLANES" : Multiple control planes
+  /// unsupported error code
+  core.String? code;
+
+  /// A short summary about the issue.
+  core.String? details;
+
+  /// Links contains actionable information.
+  core.String? documentationLink;
+
+  /// Severity level of the condition.
+  /// Possible string values are:
+  /// - "SEVERITY_UNSPECIFIED" : Unspecified severity
+  /// - "ERROR" : Indicates an issue that prevents the mesh from operating
+  /// correctly
+  /// - "WARNING" : Indicates a setting is likely wrong, but the mesh is still
+  /// able to operate
+  /// - "INFO" : An informational message, not requiring any action
+  core.String? severity;
+
+  ServiceMeshCondition({
+    this.code,
+    this.details,
+    this.documentationLink,
+    this.severity,
+  });
+
+  ServiceMeshCondition.fromJson(core.Map json_)
+      : this(
+          code: json_.containsKey('code') ? json_['code'] as core.String : null,
+          details: json_.containsKey('details')
+              ? json_['details'] as core.String
+              : null,
+          documentationLink: json_.containsKey('documentationLink')
+              ? json_['documentationLink'] as core.String
+              : null,
+          severity: json_.containsKey('severity')
+              ? json_['severity'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (documentationLink != null) 'documentationLink': documentationLink!,
+        if (severity != null) 'severity': severity!,
+      };
+}
+
 /// Status of control plane management.
 class ServiceMeshControlPlaneManagement {
   /// Explanation of state.
@@ -9412,6 +9999,11 @@ class ServiceMeshMembershipSpec {
 /// **Service Mesh**: State for a single Membership, as analyzed by the Service
 /// Mesh Hub Controller.
 class ServiceMeshMembershipState {
+  /// List of condition reporting membership statues
+  ///
+  /// Output only.
+  core.List<ServiceMeshCondition>? conditions;
+
   /// Status of control plane management
   ///
   /// Output only.
@@ -9423,12 +10015,19 @@ class ServiceMeshMembershipState {
   ServiceMeshDataPlaneManagement? dataPlaneManagement;
 
   ServiceMeshMembershipState({
+    this.conditions,
     this.controlPlaneManagement,
     this.dataPlaneManagement,
   });
 
   ServiceMeshMembershipState.fromJson(core.Map json_)
       : this(
+          conditions: json_.containsKey('conditions')
+              ? (json_['conditions'] as core.List)
+                  .map((value) => ServiceMeshCondition.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           controlPlaneManagement: json_.containsKey('controlPlaneManagement')
               ? ServiceMeshControlPlaneManagement.fromJson(
                   json_['controlPlaneManagement']
@@ -9442,6 +10041,7 @@ class ServiceMeshMembershipState {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (conditions != null) 'conditions': conditions!,
         if (controlPlaneManagement != null)
           'controlPlaneManagement': controlPlaneManagement!,
         if (dataPlaneManagement != null)

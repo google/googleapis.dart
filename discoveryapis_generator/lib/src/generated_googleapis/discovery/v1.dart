@@ -1231,6 +1231,10 @@ class RestMethodResponse {
 }
 
 class RestMethod {
+  /// The API Version of this method, as passed in via the `X-Goog-Api-Version`
+  /// header or `$apiVersion` query parameter.
+  core.String? apiVersion;
+
   /// Whether this method is deprecated.
   core.bool? deprecated;
 
@@ -1300,6 +1304,7 @@ class RestMethod {
   core.bool? useMediaDownloadService;
 
   RestMethod({
+    this.apiVersion,
     this.deprecated,
     this.description,
     this.etagRequired,
@@ -1321,6 +1326,9 @@ class RestMethod {
 
   RestMethod.fromJson(core.Map json_)
       : this(
+          apiVersion: json_.containsKey('apiVersion')
+              ? json_['apiVersion'] as core.String
+              : null,
           deprecated: json_.containsKey('deprecated')
               ? json_['deprecated'] as core.bool
               : null,
@@ -1385,6 +1393,7 @@ class RestMethod {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (apiVersion != null) 'apiVersion': apiVersion!,
         if (deprecated != null) 'deprecated': deprecated!,
         if (description != null) 'description': description!,
         if (etagRequired != null) 'etagRequired': etagRequired!,

@@ -4850,8 +4850,8 @@ class ExtensionChainMatchCondition {
   /// A Common Expression Language (CEL) expression that is used to match
   /// requests for which the extension chain is executed.
   ///
-  /// For more information, see \[CEL matcher language
-  /// reference\](/service-extensions/docs/cel-matcher-language-reference).
+  /// For more information, see
+  /// [CEL matcher language reference](https://cloud.google.com/service-extensions/docs/cel-matcher-language-reference).
   ///
   /// Required.
   core.String? celExpression;
@@ -6965,9 +6965,9 @@ class LbRouteExtension {
 
   /// Set of labels associated with the `LbRouteExtension` resource.
   ///
-  /// The format must comply with \[the requirements for
-  /// labels\](/compute/docs/labeling-resources#requirements) for Google Cloud
-  /// resources.
+  /// The format must comply with
+  /// [the requirements for labels](https://cloud.google.com/compute/docs/labeling-resources#requirements)
+  /// for Google Cloud resources.
   ///
   /// Optional.
   core.Map<core.String, core.String>? labels;
@@ -7098,9 +7098,9 @@ class LbTrafficExtension {
 
   /// Set of labels associated with the `LbTrafficExtension` resource.
   ///
-  /// The format must comply with \[the requirements for
-  /// labels\](/compute/docs/labeling-resources#requirements) for Google Cloud
-  /// resources.
+  /// The format must comply with
+  /// [the requirements for labels](https://cloud.google.com/compute/docs/labeling-resources#requirements)
+  /// for Google Cloud resources.
   ///
   /// Optional.
   core.Map<core.String, core.String>? labels;

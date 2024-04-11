@@ -8060,6 +8060,9 @@ class ChannelSettings {
 
   /// Whether user-submitted comments left on the channel page need to be
   /// approved by the channel owner to be publicly visible.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? moderateComments;
 
   /// A prominent color that can be rendered on this channel page.
@@ -12453,6 +12456,9 @@ class LiveChatMessageDeletedDetails {
 }
 
 class LiveChatMessageListResponse {
+  /// Set when there is an active poll.
+  LiveChatMessage? activePollItem;
+
   /// Etag of this resource.
   core.String? etag;
 
@@ -12489,6 +12495,7 @@ class LiveChatMessageListResponse {
   core.String? visitorId;
 
   LiveChatMessageListResponse({
+    this.activePollItem,
     this.etag,
     this.eventId,
     this.items,
@@ -12503,6 +12510,10 @@ class LiveChatMessageListResponse {
 
   LiveChatMessageListResponse.fromJson(core.Map json_)
       : this(
+          activePollItem: json_.containsKey('activePollItem')
+              ? LiveChatMessage.fromJson(json_['activePollItem']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
           eventId: json_.containsKey('eventId')
               ? json_['eventId'] as core.String
@@ -12537,6 +12548,7 @@ class LiveChatMessageListResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (activePollItem != null) 'activePollItem': activePollItem!,
         if (etag != null) 'etag': etag!,
         if (eventId != null) 'eventId': eventId!,
         if (items != null) 'items': items!,

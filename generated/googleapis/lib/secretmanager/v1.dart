@@ -2468,6 +2468,16 @@ class Secret {
   /// Output only.
   core.String? createTime;
 
+  /// The customer-managed encryption configuration of the Regionalised Secrets.
+  ///
+  /// If no configuration is provided, Google-managed default encryption is
+  /// used. Updates to the Secret encryption configuration only apply to
+  /// SecretVersions added afterwards. They do not apply retroactively to
+  /// existing SecretVersions.
+  ///
+  /// Optional.
+  CustomerManagedEncryption? customerManagedEncryption;
+
   /// Etag of the currently stored Secret.
   ///
   /// Optional.
@@ -2536,9 +2546,20 @@ class Secret {
   /// Optional.
   core.Map<core.String, core.String>? versionAliases;
 
+  /// Secret Version TTL after destruction request This is a part of the Delayed
+  /// secret version destroy feature.
+  ///
+  /// For secret with TTL\>0, version destruction doesn't happen immediately on
+  /// calling destroy instead the version goes to a disabled state and
+  /// destruction happens after the TTL expires.
+  ///
+  /// Optional.
+  core.String? versionDestroyTtl;
+
   Secret({
     this.annotations,
     this.createTime,
+    this.customerManagedEncryption,
     this.etag,
     this.expireTime,
     this.labels,
@@ -2548,6 +2569,7 @@ class Secret {
     this.topics,
     this.ttl,
     this.versionAliases,
+    this.versionDestroyTtl,
   });
 
   Secret.fromJson(core.Map json_)
@@ -2564,6 +2586,12 @@ class Secret {
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
               : null,
+          customerManagedEncryption:
+              json_.containsKey('customerManagedEncryption')
+                  ? CustomerManagedEncryption.fromJson(
+                      json_['customerManagedEncryption']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
           expireTime: json_.containsKey('expireTime')
               ? json_['expireTime'] as core.String
@@ -2601,11 +2629,16 @@ class Secret {
                   ),
                 )
               : null,
+          versionDestroyTtl: json_.containsKey('versionDestroyTtl')
+              ? json_['versionDestroyTtl'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (annotations != null) 'annotations': annotations!,
         if (createTime != null) 'createTime': createTime!,
+        if (customerManagedEncryption != null)
+          'customerManagedEncryption': customerManagedEncryption!,
         if (etag != null) 'etag': etag!,
         if (expireTime != null) 'expireTime': expireTime!,
         if (labels != null) 'labels': labels!,
@@ -2615,6 +2648,7 @@ class Secret {
         if (topics != null) 'topics': topics!,
         if (ttl != null) 'ttl': ttl!,
         if (versionAliases != null) 'versionAliases': versionAliases!,
+        if (versionDestroyTtl != null) 'versionDestroyTtl': versionDestroyTtl!,
       };
 }
 
@@ -2680,6 +2714,14 @@ class SecretVersion {
   /// Output only.
   core.String? createTime;
 
+  /// The customer-managed encryption status of the SecretVersion.
+  ///
+  /// Only populated if customer-managed encryption is used and Secret is a
+  /// Regionalised Secret.
+  ///
+  /// Output only.
+  CustomerManagedEncryptionStatus? customerManagedEncryption;
+
   /// The time this SecretVersion was destroyed.
   ///
   /// Only present if state is DESTROYED.
@@ -2704,6 +2746,16 @@ class SecretVersion {
   /// The replication status of the SecretVersion.
   ReplicationStatus? replicationStatus;
 
+  /// Scheduled destroy time for secret version.
+  ///
+  /// This is a part of the Delayed secret version destroy feature. For a Secret
+  /// with a valid version destroy TTL, when a secert version is destroyed,
+  /// version is moved to disabled state and it is scheduled for destruction
+  /// Version is destroyed only after the scheduled_destroy_time.
+  ///
+  /// Optional. Output only.
+  core.String? scheduledDestroyTime;
+
   /// The current state of the SecretVersion.
   ///
   /// Output only.
@@ -2719,10 +2771,12 @@ class SecretVersion {
   SecretVersion({
     this.clientSpecifiedPayloadChecksum,
     this.createTime,
+    this.customerManagedEncryption,
     this.destroyTime,
     this.etag,
     this.name,
     this.replicationStatus,
+    this.scheduledDestroyTime,
     this.state,
   });
 
@@ -2735,6 +2789,12 @@ class SecretVersion {
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
               : null,
+          customerManagedEncryption:
+              json_.containsKey('customerManagedEncryption')
+                  ? CustomerManagedEncryptionStatus.fromJson(
+                      json_['customerManagedEncryption']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           destroyTime: json_.containsKey('destroyTime')
               ? json_['destroyTime'] as core.String
               : null,
@@ -2744,6 +2804,9 @@ class SecretVersion {
               ? ReplicationStatus.fromJson(json_['replicationStatus']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          scheduledDestroyTime: json_.containsKey('scheduledDestroyTime')
+              ? json_['scheduledDestroyTime'] as core.String
+              : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
         );
@@ -2752,10 +2815,14 @@ class SecretVersion {
         if (clientSpecifiedPayloadChecksum != null)
           'clientSpecifiedPayloadChecksum': clientSpecifiedPayloadChecksum!,
         if (createTime != null) 'createTime': createTime!,
+        if (customerManagedEncryption != null)
+          'customerManagedEncryption': customerManagedEncryption!,
         if (destroyTime != null) 'destroyTime': destroyTime!,
         if (etag != null) 'etag': etag!,
         if (name != null) 'name': name!,
         if (replicationStatus != null) 'replicationStatus': replicationStatus!,
+        if (scheduledDestroyTime != null)
+          'scheduledDestroyTime': scheduledDestroyTime!,
         if (state != null) 'state': state!,
       };
 }

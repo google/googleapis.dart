@@ -3495,6 +3495,9 @@ class PageElement {
   /// The size of the page element.
   Size? size;
 
+  /// A Speaker Spotlight.
+  SpeakerSpotlight? speakerSpotlight;
+
   /// A table page element.
   Table? table;
 
@@ -3529,6 +3532,7 @@ class PageElement {
     this.shape,
     this.sheetsChart,
     this.size,
+    this.speakerSpotlight,
     this.table,
     this.title,
     this.transform,
@@ -3568,6 +3572,10 @@ class PageElement {
               ? Size.fromJson(
                   json_['size'] as core.Map<core.String, core.dynamic>)
               : null,
+          speakerSpotlight: json_.containsKey('speakerSpotlight')
+              ? SpeakerSpotlight.fromJson(json_['speakerSpotlight']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           table: json_.containsKey('table')
               ? Table.fromJson(
                   json_['table'] as core.Map<core.String, core.dynamic>)
@@ -3597,6 +3605,7 @@ class PageElement {
         if (shape != null) 'shape': shape!,
         if (sheetsChart != null) 'sheetsChart': sheetsChart!,
         if (size != null) 'size': size!,
+        if (speakerSpotlight != null) 'speakerSpotlight': speakerSpotlight!,
         if (table != null) 'table': table!,
         if (title != null) 'title': title!,
         if (transform != null) 'transform': transform!,
@@ -5963,6 +5972,66 @@ class SolidFill {
   core.Map<core.String, core.dynamic> toJson() => {
         if (alpha != null) 'alpha': alpha!,
         if (color != null) 'color': color!,
+      };
+}
+
+/// A PageElement kind representing a Speaker Spotlight.
+class SpeakerSpotlight {
+  /// The properties of the Speaker Spotlight.
+  SpeakerSpotlightProperties? speakerSpotlightProperties;
+
+  SpeakerSpotlight({
+    this.speakerSpotlightProperties,
+  });
+
+  SpeakerSpotlight.fromJson(core.Map json_)
+      : this(
+          speakerSpotlightProperties:
+              json_.containsKey('speakerSpotlightProperties')
+                  ? SpeakerSpotlightProperties.fromJson(
+                      json_['speakerSpotlightProperties']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (speakerSpotlightProperties != null)
+          'speakerSpotlightProperties': speakerSpotlightProperties!,
+      };
+}
+
+/// The properties of the SpeakerSpotlight.
+class SpeakerSpotlightProperties {
+  /// The outline of the Speaker Spotlight.
+  ///
+  /// If not set, it has no outline.
+  Outline? outline;
+
+  /// The shadow of the Speaker Spotlight.
+  ///
+  /// If not set, it has no shadow.
+  Shadow? shadow;
+
+  SpeakerSpotlightProperties({
+    this.outline,
+    this.shadow,
+  });
+
+  SpeakerSpotlightProperties.fromJson(core.Map json_)
+      : this(
+          outline: json_.containsKey('outline')
+              ? Outline.fromJson(
+                  json_['outline'] as core.Map<core.String, core.dynamic>)
+              : null,
+          shadow: json_.containsKey('shadow')
+              ? Shadow.fromJson(
+                  json_['shadow'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (outline != null) 'outline': outline!,
+        if (shadow != null) 'shadow': shadow!,
       };
 }
 

@@ -2,7 +2,7 @@
 # should be ignored.
 packages:
 - googleapis:
-    version: 13.1.0
+    version: 13.2.0-wip
     repository: https://github.com/google/googleapis.dart/tree/master/generated/googleapis
     readme: resources/README.md
     license: resources/LICENSE
@@ -18,6 +18,7 @@ packages:
     - accessapproval:v1
     - accesscontextmanager:v1
     - acmedns:v1
+    - addressvalidation:v1
     - adexperiencereport:v1 # https://developers.google.com/ad-experience-report/
     - admin:datatransfer_v1 # https://developers.google.com/admin-sdk/data-transfer/
     - admin:directory_v1 # https://developers.google.com/admin-sdk/directory/
@@ -74,6 +75,7 @@ packages:
     - cloudbuild:v1 # https://cloud.google.com/container-builder/docs/
     - cloudbuild:v2
     - cloudchannel:v1
+    - cloudcontrolspartner:v1
     - clouddeploy:v1
     - cloudfunctions:v1 # https://cloud.google.com/functions/docs/
     - cloudfunctions:v2
@@ -245,6 +247,7 @@ packages:
     - siteVerification:v1 # https://developers.google.com/site-verification/
     - slides:v1 # https://developers.google.com/slides/
     - smartdevicemanagement:v1
+    - solar:v1
     - sourcerepo:v1 # https://cloud.google.com/eap/cloud-repositories/cloud-sourcerepo-api
     - spanner:v1 # https://cloud.google.com/spanner/docs/
     - speech:v1 # https://cloud.google.com/speech/
@@ -352,6 +355,7 @@ skipped_apis:
 - cloudasset:v1p5beta1 # v1 included
 - cloudasset:v1p7beta1 # v1 included
 - cloudbilling:v1beta
+- cloudcontrolspartner:v1beta
 - cloudfunctions:v2alpha # v2beta included
 - cloudfunctions:v2beta
 - cloudidentity:v1beta1 # v1 included
@@ -380,6 +384,7 @@ skipped_apis:
 - deploymentmanager:v2beta # v1 included
 - dialogflow:v2beta1 # v2 included
 - dialogflow:v3beta1 # v3 included
+- discoveryengine:v1 # https://cloud.google.com/discovery-engine/media/docs
 - discoveryengine:v1alpha
 - discoveryengine:v1beta
 - dns:v1beta2 # v1 included
@@ -393,10 +398,10 @@ skipped_apis:
 - firebaseappdistribution:v1alpha
 - firebasehosting:v1beta1 # v1 included
 - firebaseml:v1beta2
+- firebaseml:v2beta
 - firestore:v1beta1 # v1 included
 - firestore:v1beta2 # v1 included
 - gkehub:v1alpha
-- gkehub:v1alpha2
 - gkehub:v1beta
 - gkehub:v1beta1
 - gmailpostmastertools:v1beta1 # v1 included
@@ -444,6 +449,7 @@ skipped_apis:
 - runtimeconfig:v1beta1 # v1 included
 - searchads360:v0
 - secretmanager:v1beta1 # v1 included
+- secretmanager:v1beta2
 - securitycenter:v1beta1 # v1 included
 - securitycenter:v1beta2 # v1 included
 - serviceconsumermanagement:v1beta1 # v1 included

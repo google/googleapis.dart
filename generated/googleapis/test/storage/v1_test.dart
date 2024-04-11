@@ -6477,6 +6477,7 @@ void main() {
       final res = api.StorageApi(mock).managedFolders;
       final arg_bucket = 'foo';
       final arg_managedFolder = 'foo';
+      final arg_allowNonEmpty = true;
       final arg_ifMetagenerationMatch = 'foo';
       final arg_ifMetagenerationNotMatch = 'foo';
       final arg_$fields = 'foo';
@@ -6537,6 +6538,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['allowNonEmpty']!.first,
+          unittest.equals('$arg_allowNonEmpty'),
+        );
+        unittest.expect(
           queryMap['ifMetagenerationMatch']!.first,
           unittest.equals(arg_ifMetagenerationMatch),
         );
@@ -6556,6 +6561,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       await res.delete(arg_bucket, arg_managedFolder,
+          allowNonEmpty: arg_allowNonEmpty,
           ifMetagenerationMatch: arg_ifMetagenerationMatch,
           ifMetagenerationNotMatch: arg_ifMetagenerationNotMatch,
           $fields: arg_$fields);
@@ -9228,7 +9234,6 @@ void main() {
     unittest.test('method--restore', () async {
       final mock = HttpServerMock();
       final res = api.StorageApi(mock).objects;
-      final arg_request = buildObject();
       final arg_bucket = 'foo';
       final arg_object = 'foo';
       final arg_generation = 'foo';
@@ -9241,10 +9246,6 @@ void main() {
       final arg_userProject = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj =
-            api.Object.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkObject(obj);
-
         final path = req.url.path;
         var pathOffset = 0;
         core.int index;
@@ -9351,8 +9352,7 @@ void main() {
         final resp = convert.json.encode(buildObject());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      final response = await res.restore(
-          arg_request, arg_bucket, arg_object, arg_generation,
+      final response = await res.restore(arg_bucket, arg_object, arg_generation,
           copySourceAcl: arg_copySourceAcl,
           ifGenerationMatch: arg_ifGenerationMatch,
           ifGenerationNotMatch: arg_ifGenerationNotMatch,

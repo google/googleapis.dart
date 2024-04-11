@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240301",
+    "revision": "20240331",
     "rootUrl": "https://apphub.googleapis.com/",
     "servicePath": "",
     "title": "App Hub API",
@@ -114,7 +114,7 @@
                 "locations": {
                     "methods": {
                         "detachServiceProjectAttachment": {
-                            "description": "Detaches a service project from a host project. You can call this API from either a host or service project.",
+                            "description": "Detaches a service project from a host project. You can call this API from any service project without needing access to the host project that it is attached to.",
                             "flatPath": "v1/projects/{projectsId}/locations/{locationsId}:detachServiceProjectAttachment",
                             "httpMethod": "POST",
                             "id": "apphub.projects.locations.detachServiceProjectAttachment",
@@ -123,7 +123,7 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "Required. Value for name.",
+                                    "description": "Required. Service project id and location to detach from a host project. Only global location is supported. Expected format: `projects/{project}/locations/{location}`.",
                                     "location": "path",
                                     "pattern": "^projects/[^/]+/locations/[^/]+$",
                                     "required": true,
@@ -208,7 +208,7 @@
                             ]
                         },
                         "lookupServiceProjectAttachment": {
-                            "description": "Looks up a service project attachment. You can call this API from either a host or service project.",
+                            "description": "Lists a service project attachment for a given service project. You can call this API from any project to find if it is attached to a host project.",
                             "flatPath": "v1/projects/{projectsId}/locations/{locationsId}:lookupServiceProjectAttachment",
                             "httpMethod": "GET",
                             "id": "apphub.projects.locations.lookupServiceProjectAttachment",
@@ -217,7 +217,7 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "Required. Value for name.",
+                                    "description": "Required. Service project ID and location to lookup service project attachment for. Only global location is supported. Expected format: `projects/{project}/locations/{location}`.",
                                     "location": "path",
                                     "pattern": "^projects/[^/]+/locations/[^/]+$",
                                     "required": true,
@@ -251,7 +251,7 @@
                                             "type": "string"
                                         },
                                         "parent": {
-                                            "description": "Required. Value for parent.",
+                                            "description": "Required. Project and location to create Application in. Expected format: `projects/{project}/locations/{location}`.",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+$",
                                             "required": true,
@@ -284,7 +284,7 @@
                                     ],
                                     "parameters": {
                                         "name": {
-                                            "description": "Required. Value for name.",
+                                            "description": "Required. Fully qualified name of the Application to delete. Expected format: `projects/{project}/locations/{location}/applications/{application}`.",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+/applications/[^/]+$",
                                             "required": true,
@@ -314,7 +314,7 @@
                                     ],
                                     "parameters": {
                                         "name": {
-                                            "description": "Required. Value for name.",
+                                            "description": "Required. Fully qualified name of the Application to fetch. Expected format: `projects/{project}/locations/{location}/applications/{application}`.",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+/applications/[^/]+$",
                                             "required": true,
@@ -370,12 +370,12 @@
                                     ],
                                     "parameters": {
                                         "filter": {
-                                            "description": "Optional. Filtering results",
+                                            "description": "Optional. Filtering results.",
                                             "location": "query",
                                             "type": "string"
                                         },
                                         "orderBy": {
-                                            "description": "Optional. Hint for how to order the results",
+                                            "description": "Optional. Hint for how to order the results.",
                                             "location": "query",
                                             "type": "string"
                                         },
@@ -391,7 +391,7 @@
                                             "type": "string"
                                         },
                                         "parent": {
-                                            "description": "Required. Value for parent.",
+                                            "description": "Required. Project and location to list Applications on. Expected format: `projects/{project}/locations/{location}`.",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+$",
                                             "required": true,
@@ -515,7 +515,7 @@
                                             ],
                                             "parameters": {
                                                 "parent": {
-                                                    "description": "Required. Value for parent.",
+                                                    "description": "Required. Fully qualified name of the parent Application to create the Service in. Expected format: `projects/{project}/locations/{location}/applications/{application}`.",
                                                     "location": "path",
                                                     "pattern": "^projects/[^/]+/locations/[^/]+/applications/[^/]+$",
                                                     "required": true,
@@ -544,7 +544,7 @@
                                             ]
                                         },
                                         "delete": {
-                                            "description": "Deletes a Service in an Application.",
+                                            "description": "Deletes a Service from an Application.",
                                             "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services/{servicesId}",
                                             "httpMethod": "DELETE",
                                             "id": "apphub.projects.locations.applications.services.delete",
@@ -553,7 +553,7 @@
                                             ],
                                             "parameters": {
                                                 "name": {
-                                                    "description": "Required. Value for name.",
+                                                    "description": "Required. Fully qualified name of the Service to delete from an Application. Expected format: `projects/{project}/locations/{location}/applications/{application}/services/{service}`.",
                                                     "location": "path",
                                                     "pattern": "^projects/[^/]+/locations/[^/]+/applications/[^/]+/services/[^/]+$",
                                                     "required": true,
@@ -583,7 +583,7 @@
                                             ],
                                             "parameters": {
                                                 "name": {
-                                                    "description": "Required. Value for name.",
+                                                    "description": "Required. Fully qualified name of the Service to fetch. Expected format: `projects/{project}/locations/{location}/applications/{application}/services/{service}`.",
                                                     "location": "path",
                                                     "pattern": "^projects/[^/]+/locations/[^/]+/applications/[^/]+/services/[^/]+$",
                                                     "required": true,
@@ -599,7 +599,7 @@
                                             ]
                                         },
                                         "list": {
-                                            "description": "List Services in an Application.",
+                                            "description": "Lists Services in an Application.",
                                             "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services",
                                             "httpMethod": "GET",
                                             "id": "apphub.projects.locations.applications.services.list",
@@ -629,7 +629,7 @@
                                                     "type": "string"
                                                 },
                                                 "parent": {
-                                                    "description": "Required. Value for parent.",
+                                                    "description": "Required. Fully qualified name of the parent Application to list Services for. Expected format: `projects/{project}/locations/{location}/applications/{application}`.",
                                                     "location": "path",
                                                     "pattern": "^projects/[^/]+/locations/[^/]+/applications/[^/]+$",
                                                     "required": true,
@@ -697,7 +697,7 @@
                                             ],
                                             "parameters": {
                                                 "parent": {
-                                                    "description": "Required. Value for parent.",
+                                                    "description": "Required. Fully qualified name of the Application to create Workload in. Expected format: `projects/{project}/locations/{location}/applications/{application}`.",
                                                     "location": "path",
                                                     "pattern": "^projects/[^/]+/locations/[^/]+/applications/[^/]+$",
                                                     "required": true,
@@ -726,7 +726,7 @@
                                             ]
                                         },
                                         "delete": {
-                                            "description": "Deletes a Workload in an Application.",
+                                            "description": "Deletes a Workload from an Application.",
                                             "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/workloads/{workloadsId}",
                                             "httpMethod": "DELETE",
                                             "id": "apphub.projects.locations.applications.workloads.delete",
@@ -735,7 +735,7 @@
                                             ],
                                             "parameters": {
                                                 "name": {
-                                                    "description": "Required. Value for name.",
+                                                    "description": "Required. Fully qualified name of the Workload to delete from an Application. Expected format: `projects/{project}/locations/{location}/applications/{application}/workloads/{workload}`.",
                                                     "location": "path",
                                                     "pattern": "^projects/[^/]+/locations/[^/]+/applications/[^/]+/workloads/[^/]+$",
                                                     "required": true,
@@ -765,7 +765,7 @@
                                             ],
                                             "parameters": {
                                                 "name": {
-                                                    "description": "Required. Value for name.",
+                                                    "description": "Required. Fully qualified name of the Workload to fetch. Expected format: `projects/{project}/locations/{location}/applications/{application}/workloads/{workload}`.",
                                                     "location": "path",
                                                     "pattern": "^projects/[^/]+/locations/[^/]+/applications/[^/]+/workloads/[^/]+$",
                                                     "required": true,
@@ -790,12 +790,12 @@
                                             ],
                                             "parameters": {
                                                 "filter": {
-                                                    "description": "Optional. Filtering results",
+                                                    "description": "Optional. Filtering results.",
                                                     "location": "query",
                                                     "type": "string"
                                                 },
                                                 "orderBy": {
-                                                    "description": "Optional. Hint for how to order the results",
+                                                    "description": "Optional. Hint for how to order the results.",
                                                     "location": "query",
                                                     "type": "string"
                                                 },
@@ -811,7 +811,7 @@
                                                     "type": "string"
                                                 },
                                                 "parent": {
-                                                    "description": "Required. Value for parent.",
+                                                    "description": "Required. Fully qualified name of the parent Application to list Workloads for. Expected format: `projects/{project}/locations/{location}/applications/{application}`.",
                                                     "location": "path",
                                                     "pattern": "^projects/[^/]+/locations/[^/]+/applications/[^/]+$",
                                                     "required": true,
@@ -872,7 +872,7 @@
                         "discoveredServices": {
                             "methods": {
                                 "get": {
-                                    "description": "Gets a discovered service in a host project and location.",
+                                    "description": "Gets a Discovered Service in a host project and location.",
                                     "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/discoveredServices/{discoveredServicesId}",
                                     "httpMethod": "GET",
                                     "id": "apphub.projects.locations.discoveredServices.get",
@@ -881,7 +881,7 @@
                                     ],
                                     "parameters": {
                                         "name": {
-                                            "description": "Required. Value for name.",
+                                            "description": "Required. Fully qualified name of the Discovered Service to fetch. Expected format: `projects/{project}/locations/{location}/discoveredServices/{discoveredService}`.",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+/discoveredServices/[^/]+$",
                                             "required": true,
@@ -897,7 +897,7 @@
                                     ]
                                 },
                                 "list": {
-                                    "description": "Lists discovered services that can be added to an application in a host project and location.",
+                                    "description": "Lists Discovered Services that can be added to an Application in a host project and location.",
                                     "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/discoveredServices",
                                     "httpMethod": "GET",
                                     "id": "apphub.projects.locations.discoveredServices.list",
@@ -906,12 +906,12 @@
                                     ],
                                     "parameters": {
                                         "filter": {
-                                            "description": "Optional. Filtering results",
+                                            "description": "Optional. Filtering results.",
                                             "location": "query",
                                             "type": "string"
                                         },
                                         "orderBy": {
-                                            "description": "Optional. Hint for how to order the results",
+                                            "description": "Optional. Hint for how to order the results.",
                                             "location": "query",
                                             "type": "string"
                                         },
@@ -927,7 +927,7 @@
                                             "type": "string"
                                         },
                                         "parent": {
-                                            "description": "Required. Value for parent.",
+                                            "description": "Required. Project and location to list Discovered Services on. Expected format: `projects/{project}/locations/{location}`.",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+$",
                                             "required": true,
@@ -943,7 +943,7 @@
                                     ]
                                 },
                                 "lookup": {
-                                    "description": "Looks up a discovered service in a host project and location and with a given resource URI.",
+                                    "description": "Lists a Discovered Service in a host project and location, with a given resource URI.",
                                     "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/discoveredServices:lookup",
                                     "httpMethod": "GET",
                                     "id": "apphub.projects.locations.discoveredServices.lookup",
@@ -952,14 +952,14 @@
                                     ],
                                     "parameters": {
                                         "parent": {
-                                            "description": "Required. Value for parent.",
+                                            "description": "Required. Host project ID and location to lookup Discovered Service in. Expected format: `projects/{project}/locations/{location}`.",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+$",
                                             "required": true,
                                             "type": "string"
                                         },
                                         "uri": {
-                                            "description": "Required. Resource URI to find service for. Accepts both project number and project id and does translation when needed.",
+                                            "description": "Required. Resource URI to find DiscoveredService for. Accepts both project number and project ID and does translation when needed.",
                                             "location": "query",
                                             "type": "string"
                                         }
@@ -977,7 +977,7 @@
                         "discoveredWorkloads": {
                             "methods": {
                                 "get": {
-                                    "description": "Gets a discovered workload in a host project and location.",
+                                    "description": "Gets a Discovered Workload in a host project and location.",
                                     "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/discoveredWorkloads/{discoveredWorkloadsId}",
                                     "httpMethod": "GET",
                                     "id": "apphub.projects.locations.discoveredWorkloads.get",
@@ -986,7 +986,7 @@
                                     ],
                                     "parameters": {
                                         "name": {
-                                            "description": "Required. Value for name.",
+                                            "description": "Required. Fully qualified name of the Discovered Workload to fetch. Expected format: `projects/{project}/locations/{location}/discoveredWorkloads/{discoveredWorkload}`.",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+/discoveredWorkloads/[^/]+$",
                                             "required": true,
@@ -1002,7 +1002,7 @@
                                     ]
                                 },
                                 "list": {
-                                    "description": "Lists discovered workloads that can be added to an application in a host project and location.",
+                                    "description": "Lists Discovered Workloads that can be added to an Application in a host project and location.",
                                     "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/discoveredWorkloads",
                                     "httpMethod": "GET",
                                     "id": "apphub.projects.locations.discoveredWorkloads.list",
@@ -1011,12 +1011,12 @@
                                     ],
                                     "parameters": {
                                         "filter": {
-                                            "description": "Optional. Filtering results",
+                                            "description": "Optional. Filtering results.",
                                             "location": "query",
                                             "type": "string"
                                         },
                                         "orderBy": {
-                                            "description": "Optional. Hint for how to order the results",
+                                            "description": "Optional. Hint for how to order the results.",
                                             "location": "query",
                                             "type": "string"
                                         },
@@ -1032,7 +1032,7 @@
                                             "type": "string"
                                         },
                                         "parent": {
-                                            "description": "Required. Value for parent.",
+                                            "description": "Required. Project and location to list Discovered Workloads on. Expected format: `projects/{project}/locations/{location}`.",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+$",
                                             "required": true,
@@ -1048,7 +1048,7 @@
                                     ]
                                 },
                                 "lookup": {
-                                    "description": "Looks up a discovered Workload in a host project and location and with a given resource URI.",
+                                    "description": "Lists a Discovered Workload in a host project and location, with a given resource URI.",
                                     "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/discoveredWorkloads:lookup",
                                     "httpMethod": "GET",
                                     "id": "apphub.projects.locations.discoveredWorkloads.lookup",
@@ -1057,14 +1057,14 @@
                                     ],
                                     "parameters": {
                                         "parent": {
-                                            "description": "Required. Value for parent.",
+                                            "description": "Required. Host project ID and location to lookup Discovered Workload in. Expected format: `projects/{project}/locations/{location}`.",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+$",
                                             "required": true,
                                             "type": "string"
                                         },
                                         "uri": {
-                                            "description": "Required. Resource URI to find workload for. Accepts both project number and project id and does translation when needed.",
+                                            "description": "Required. Resource URI to find Discovered Workload for. Accepts both project number and project ID and does translation when needed.",
                                             "location": "query",
                                             "type": "string"
                                         }
@@ -1214,7 +1214,7 @@
                                     ],
                                     "parameters": {
                                         "parent": {
-                                            "description": "Required. Value for parent.",
+                                            "description": "Required. Host project ID and location to which service project is being attached. Only global location is supported. Expected format: `projects/{project}/locations/{location}`.",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+$",
                                             "required": true,
@@ -1226,7 +1226,7 @@
                                             "type": "string"
                                         },
                                         "serviceProjectAttachmentId": {
-                                            "description": "Required. The service project attachment identifier must contain the project_id of the service project specified in the service_project_attachment.service_project field. Hint: \"projects/{project_id}\"",
+                                            "description": "Required. The service project attachment identifier must contain the project id of the service project specified in the service_project_attachment.service_project field.",
                                             "location": "query",
                                             "type": "string"
                                         }
@@ -1243,7 +1243,7 @@
                                     ]
                                 },
                                 "delete": {
-                                    "description": "Deletes a service project attached to the host project.",
+                                    "description": "Deletes a service project attachment.",
                                     "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/serviceProjectAttachments/{serviceProjectAttachmentsId}",
                                     "httpMethod": "DELETE",
                                     "id": "apphub.projects.locations.serviceProjectAttachments.delete",
@@ -1252,7 +1252,7 @@
                                     ],
                                     "parameters": {
                                         "name": {
-                                            "description": "Required. Value for name.",
+                                            "description": "Required. Fully qualified name of the service project attachment to delete. Expected format: `projects/{project}/locations/{location}/serviceProjectAttachments/{serviceProjectAttachment}`.",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+/serviceProjectAttachments/[^/]+$",
                                             "required": true,
@@ -1273,7 +1273,7 @@
                                     ]
                                 },
                                 "get": {
-                                    "description": "Gets a service project attached to the host project.",
+                                    "description": "Gets a service project attachment.",
                                     "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/serviceProjectAttachments/{serviceProjectAttachmentsId}",
                                     "httpMethod": "GET",
                                     "id": "apphub.projects.locations.serviceProjectAttachments.get",
@@ -1282,7 +1282,7 @@
                                     ],
                                     "parameters": {
                                         "name": {
-                                            "description": "Required. Value for name.",
+                                            "description": "Required. Fully qualified name of the service project attachment to retrieve. Expected format: `projects/{project}/locations/{location}/serviceProjectAttachments/{serviceProjectAttachment}`.",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+/serviceProjectAttachments/[^/]+$",
                                             "required": true,
@@ -1298,7 +1298,7 @@
                                     ]
                                 },
                                 "list": {
-                                    "description": "List service projects attached to the host project.",
+                                    "description": "Lists service projects attached to the host project.",
                                     "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/serviceProjectAttachments",
                                     "httpMethod": "GET",
                                     "id": "apphub.projects.locations.serviceProjectAttachments.list",
@@ -1307,12 +1307,12 @@
                                     ],
                                     "parameters": {
                                         "filter": {
-                                            "description": "Optional. Filtering results",
+                                            "description": "Optional. Filtering results.",
                                             "location": "query",
                                             "type": "string"
                                         },
                                         "orderBy": {
-                                            "description": "Optional. Hint for how to order the results",
+                                            "description": "Optional. Hint for how to order the results.",
                                             "location": "query",
                                             "type": "string"
                                         },
@@ -1328,7 +1328,7 @@
                                             "type": "string"
                                         },
                                         "parent": {
-                                            "description": "Required. Value for parent.",
+                                            "description": "Required. Host project ID and location to list service project attachments. Only global location is supported. Expected format: `projects/{project}/locations/{location}`.",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+$",
                                             "required": true,
@@ -1702,7 +1702,7 @@
             "id": "ListDiscoveredServicesResponse",
             "properties": {
                 "discoveredServices": {
-                    "description": "List of discovered services.",
+                    "description": "List of Discovered Services.",
                     "items": {
                         "$ref": "DiscoveredService"
                     },
@@ -1727,7 +1727,7 @@
             "id": "ListDiscoveredWorkloadsResponse",
             "properties": {
                 "discoveredWorkloads": {
-                    "description": "List of discovered workloads.",
+                    "description": "List of Discovered Workloads.",
                     "items": {
                         "$ref": "DiscoveredWorkload"
                     },
@@ -1898,7 +1898,7 @@
             "properties": {
                 "discoveredService": {
                     "$ref": "DiscoveredService",
-                    "description": "Discovered service if exists, empty otherwise."
+                    "description": "Discovered Service if exists, empty otherwise."
                 }
             },
             "type": "object"
@@ -1909,7 +1909,7 @@
             "properties": {
                 "discoveredWorkload": {
                     "$ref": "DiscoveredWorkload",
-                    "description": "Discovered workload if exists, empty otherwise."
+                    "description": "Discovered Workload if exists, empty otherwise."
                 }
             },
             "type": "object"

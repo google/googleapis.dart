@@ -1063,7 +1063,7 @@ class DrivesResource {
     return Drive.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates the metadate for a shared drive.
+  /// Updates the metadata for a shared drive.
   ///
   /// [request] - The metadata request object.
   ///

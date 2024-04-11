@@ -24,6 +24,28 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
+core.int buildCounterAuthorizedNetwork = 0;
+api.AuthorizedNetwork buildAuthorizedNetwork() {
+  final o = api.AuthorizedNetwork();
+  buildCounterAuthorizedNetwork++;
+  if (buildCounterAuthorizedNetwork < 3) {
+    o.cidrRange = 'foo';
+  }
+  buildCounterAuthorizedNetwork--;
+  return o;
+}
+
+void checkAuthorizedNetwork(api.AuthorizedNetwork o) {
+  buildCounterAuthorizedNetwork++;
+  if (buildCounterAuthorizedNetwork < 3) {
+    unittest.expect(
+      o.cidrRange!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterAuthorizedNetwork--;
+}
+
 core.Map<core.String, core.String> buildUnnamed0() => {
       'x': 'foo',
       'y': 'foo',
@@ -429,6 +451,7 @@ api.ConnectionInfo buildConnectionInfo() {
     o.instanceUid = 'foo';
     o.ipAddress = 'foo';
     o.name = 'foo';
+    o.publicIpAddress = 'foo';
   }
   buildCounterConnectionInfo--;
   return o;
@@ -447,6 +470,10 @@ void checkConnectionInfo(api.ConnectionInfo o) {
     );
     unittest.expect(
       o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.publicIpAddress!,
       unittest.equals('foo'),
     );
   }
@@ -656,89 +683,12 @@ void checkFailoverInstanceRequest(api.FailoverInstanceRequest o) {
   buildCounterFailoverInstanceRequest--;
 }
 
-core.int buildCounterGenerateClientCertificateRequest = 0;
-api.GenerateClientCertificateRequest buildGenerateClientCertificateRequest() {
-  final o = api.GenerateClientCertificateRequest();
-  buildCounterGenerateClientCertificateRequest++;
-  if (buildCounterGenerateClientCertificateRequest < 3) {
-    o.certDuration = 'foo';
-    o.publicKey = 'foo';
-    o.requestId = 'foo';
-    o.useMetadataExchange = true;
-  }
-  buildCounterGenerateClientCertificateRequest--;
-  return o;
-}
-
-void checkGenerateClientCertificateRequest(
-    api.GenerateClientCertificateRequest o) {
-  buildCounterGenerateClientCertificateRequest++;
-  if (buildCounterGenerateClientCertificateRequest < 3) {
-    unittest.expect(
-      o.certDuration!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.publicKey!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.requestId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(o.useMetadataExchange!, unittest.isTrue);
-  }
-  buildCounterGenerateClientCertificateRequest--;
-}
-
-core.List<core.String> buildUnnamed7() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed7(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.int buildCounterGenerateClientCertificateResponse = 0;
-api.GenerateClientCertificateResponse buildGenerateClientCertificateResponse() {
-  final o = api.GenerateClientCertificateResponse();
-  buildCounterGenerateClientCertificateResponse++;
-  if (buildCounterGenerateClientCertificateResponse < 3) {
-    o.caCert = 'foo';
-    o.pemCertificateChain = buildUnnamed7();
-  }
-  buildCounterGenerateClientCertificateResponse--;
-  return o;
-}
-
-void checkGenerateClientCertificateResponse(
-    api.GenerateClientCertificateResponse o) {
-  buildCounterGenerateClientCertificateResponse++;
-  if (buildCounterGenerateClientCertificateResponse < 3) {
-    unittest.expect(
-      o.caCert!,
-      unittest.equals('foo'),
-    );
-    checkUnnamed7(o.pemCertificateChain!);
-  }
-  buildCounterGenerateClientCertificateResponse--;
-}
-
-core.List<api.GoogleCloudLocationLocation> buildUnnamed8() => [
+core.List<api.GoogleCloudLocationLocation> buildUnnamed7() => [
       buildGoogleCloudLocationLocation(),
       buildGoogleCloudLocationLocation(),
     ];
 
-void checkUnnamed8(core.List<api.GoogleCloudLocationLocation> o) {
+void checkUnnamed7(core.List<api.GoogleCloudLocationLocation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudLocationLocation(o[0]);
   checkGoogleCloudLocationLocation(o[1]);
@@ -750,7 +700,7 @@ api.GoogleCloudLocationListLocationsResponse
   final o = api.GoogleCloudLocationListLocationsResponse();
   buildCounterGoogleCloudLocationListLocationsResponse++;
   if (buildCounterGoogleCloudLocationListLocationsResponse < 3) {
-    o.locations = buildUnnamed8();
+    o.locations = buildUnnamed7();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudLocationListLocationsResponse--;
@@ -761,7 +711,7 @@ void checkGoogleCloudLocationListLocationsResponse(
     api.GoogleCloudLocationListLocationsResponse o) {
   buildCounterGoogleCloudLocationListLocationsResponse++;
   if (buildCounterGoogleCloudLocationListLocationsResponse < 3) {
-    checkUnnamed8(o.locations!);
+    checkUnnamed7(o.locations!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -770,12 +720,12 @@ void checkGoogleCloudLocationListLocationsResponse(
   buildCounterGoogleCloudLocationListLocationsResponse--;
 }
 
-core.Map<core.String, core.String> buildUnnamed9() => {
+core.Map<core.String, core.String> buildUnnamed8() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed9(core.Map<core.String, core.String> o) {
+void checkUnnamed8(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -787,7 +737,7 @@ void checkUnnamed9(core.Map<core.String, core.String> o) {
   );
 }
 
-core.Map<core.String, core.Object?> buildUnnamed10() => {
+core.Map<core.String, core.Object?> buildUnnamed9() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -800,7 +750,7 @@ core.Map<core.String, core.Object?> buildUnnamed10() => {
       },
     };
 
-void checkUnnamed10(core.Map<core.String, core.Object?> o) {
+void checkUnnamed9(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -838,9 +788,9 @@ api.GoogleCloudLocationLocation buildGoogleCloudLocationLocation() {
   buildCounterGoogleCloudLocationLocation++;
   if (buildCounterGoogleCloudLocationLocation < 3) {
     o.displayName = 'foo';
-    o.labels = buildUnnamed9();
+    o.labels = buildUnnamed8();
     o.locationId = 'foo';
-    o.metadata = buildUnnamed10();
+    o.metadata = buildUnnamed9();
     o.name = 'foo';
   }
   buildCounterGoogleCloudLocationLocation--;
@@ -854,12 +804,12 @@ void checkGoogleCloudLocationLocation(api.GoogleCloudLocationLocation o) {
       o.displayName!,
       unittest.equals('foo'),
     );
-    checkUnnamed9(o.labels!);
+    checkUnnamed8(o.labels!);
     unittest.expect(
       o.locationId!,
       unittest.equals('foo'),
     );
-    checkUnnamed10(o.metadata!);
+    checkUnnamed9(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -934,6 +884,23 @@ void checkInjectFaultRequest(api.InjectFaultRequest o) {
   buildCounterInjectFaultRequest--;
 }
 
+core.Map<core.String, core.String> buildUnnamed10() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
+
+void checkUnnamed10(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
+}
+
 core.Map<core.String, core.String> buildUnnamed11() => {
       'x': 'foo',
       'y': 'foo',
@@ -968,29 +935,12 @@ void checkUnnamed12(core.Map<core.String, core.String> o) {
   );
 }
 
-core.Map<core.String, core.String> buildUnnamed13() => {
-      'x': 'foo',
-      'y': 'foo',
-    };
-
-void checkUnnamed13(core.Map<core.String, core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o['x']!,
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o['y']!,
-    unittest.equals('foo'),
-  );
-}
-
-core.List<api.Node> buildUnnamed14() => [
+core.List<api.Node> buildUnnamed13() => [
       buildNode(),
       buildNode(),
     ];
 
-void checkUnnamed14(core.List<api.Node> o) {
+void checkUnnamed13(core.List<api.Node> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkNode(o[0]);
   checkNode(o[1]);
@@ -1001,21 +951,23 @@ api.Instance buildInstance() {
   final o = api.Instance();
   buildCounterInstance++;
   if (buildCounterInstance < 3) {
-    o.annotations = buildUnnamed11();
+    o.annotations = buildUnnamed10();
     o.availabilityType = 'foo';
     o.clientConnectionConfig = buildClientConnectionConfig();
     o.createTime = 'foo';
-    o.databaseFlags = buildUnnamed12();
+    o.databaseFlags = buildUnnamed11();
     o.deleteTime = 'foo';
     o.displayName = 'foo';
     o.etag = 'foo';
     o.gceZone = 'foo';
     o.instanceType = 'foo';
     o.ipAddress = 'foo';
-    o.labels = buildUnnamed13();
+    o.labels = buildUnnamed12();
     o.machineConfig = buildMachineConfig();
     o.name = 'foo';
-    o.nodes = buildUnnamed14();
+    o.networkConfig = buildInstanceNetworkConfig();
+    o.nodes = buildUnnamed13();
+    o.publicIpAddress = 'foo';
     o.queryInsightsConfig = buildQueryInsightsInstanceConfig();
     o.readPoolConfig = buildReadPoolConfig();
     o.reconciling = true;
@@ -1032,7 +984,7 @@ api.Instance buildInstance() {
 void checkInstance(api.Instance o) {
   buildCounterInstance++;
   if (buildCounterInstance < 3) {
-    checkUnnamed11(o.annotations!);
+    checkUnnamed10(o.annotations!);
     unittest.expect(
       o.availabilityType!,
       unittest.equals('foo'),
@@ -1042,7 +994,7 @@ void checkInstance(api.Instance o) {
       o.createTime!,
       unittest.equals('foo'),
     );
-    checkUnnamed12(o.databaseFlags!);
+    checkUnnamed11(o.databaseFlags!);
     unittest.expect(
       o.deleteTime!,
       unittest.equals('foo'),
@@ -1067,13 +1019,18 @@ void checkInstance(api.Instance o) {
       o.ipAddress!,
       unittest.equals('foo'),
     );
-    checkUnnamed13(o.labels!);
+    checkUnnamed12(o.labels!);
     checkMachineConfig(o.machineConfig!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed14(o.nodes!);
+    checkInstanceNetworkConfig(o.networkConfig!);
+    checkUnnamed13(o.nodes!);
+    unittest.expect(
+      o.publicIpAddress!,
+      unittest.equals('foo'),
+    );
     checkQueryInsightsInstanceConfig(o.queryInsightsConfig!);
     checkReadPoolConfig(o.readPoolConfig!);
     unittest.expect(o.reconciling!, unittest.isTrue);
@@ -1093,6 +1050,38 @@ void checkInstance(api.Instance o) {
     checkNode(o.writableNode!);
   }
   buildCounterInstance--;
+}
+
+core.List<api.AuthorizedNetwork> buildUnnamed14() => [
+      buildAuthorizedNetwork(),
+      buildAuthorizedNetwork(),
+    ];
+
+void checkUnnamed14(core.List<api.AuthorizedNetwork> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkAuthorizedNetwork(o[0]);
+  checkAuthorizedNetwork(o[1]);
+}
+
+core.int buildCounterInstanceNetworkConfig = 0;
+api.InstanceNetworkConfig buildInstanceNetworkConfig() {
+  final o = api.InstanceNetworkConfig();
+  buildCounterInstanceNetworkConfig++;
+  if (buildCounterInstanceNetworkConfig < 3) {
+    o.authorizedExternalNetworks = buildUnnamed14();
+    o.enablePublicIp = true;
+  }
+  buildCounterInstanceNetworkConfig--;
+  return o;
+}
+
+void checkInstanceNetworkConfig(api.InstanceNetworkConfig o) {
+  buildCounterInstanceNetworkConfig++;
+  if (buildCounterInstanceNetworkConfig < 3) {
+    checkUnnamed14(o.authorizedExternalNetworks!);
+    unittest.expect(o.enablePublicIp!, unittest.isTrue);
+  }
+  buildCounterInstanceNetworkConfig--;
 }
 
 core.int buildCounterIntegerRestrictions = 0;
@@ -2253,6 +2242,16 @@ void checkWeeklySchedule(api.WeeklySchedule o) {
 }
 
 void main() {
+  unittest.group('obj-schema-AuthorizedNetwork', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAuthorizedNetwork();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AuthorizedNetwork.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAuthorizedNetwork(od);
+    });
+  });
+
   unittest.group('obj-schema-AutomatedBackupPolicy', () {
     unittest.test('to-json--from-json', () async {
       final o = buildAutomatedBackupPolicy();
@@ -2393,26 +2392,6 @@ void main() {
     });
   });
 
-  unittest.group('obj-schema-GenerateClientCertificateRequest', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGenerateClientCertificateRequest();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GenerateClientCertificateRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGenerateClientCertificateRequest(od);
-    });
-  });
-
-  unittest.group('obj-schema-GenerateClientCertificateResponse', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGenerateClientCertificateResponse();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GenerateClientCertificateResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGenerateClientCertificateResponse(od);
-    });
-  });
-
   unittest.group('obj-schema-GoogleCloudLocationListLocationsResponse', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleCloudLocationListLocationsResponse();
@@ -2460,6 +2439,16 @@ void main() {
       final od =
           api.Instance.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkInstance(od);
+    });
+  });
+
+  unittest.group('obj-schema-InstanceNetworkConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildInstanceNetworkConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.InstanceNetworkConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkInstanceNetworkConfig(od);
     });
   });
 
@@ -3469,67 +3458,6 @@ void main() {
           validateOnly: arg_validateOnly,
           $fields: arg_$fields);
       checkOperation(response as api.Operation);
-    });
-
-    unittest.test('method--generateClientCertificate', () async {
-      final mock = HttpServerMock();
-      final res = api.CloudAlloyDBAdminApi(mock).projects.locations.clusters;
-      final arg_request = buildGenerateClientCertificateRequest();
-      final arg_parent = 'foo';
-      final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.GenerateClientCertificateRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkGenerateClientCertificateRequest(obj);
-
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
-
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
-
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
-          }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
-
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp =
-            convert.json.encode(buildGenerateClientCertificateResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.generateClientCertificate(
-          arg_request, arg_parent,
-          $fields: arg_$fields);
-      checkGenerateClientCertificateResponse(
-          response as api.GenerateClientCertificateResponse);
     });
 
     unittest.test('method--get', () async {

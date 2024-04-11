@@ -1652,6 +1652,9 @@ class ComposerWorkloadStatus {
 }
 
 /// Configuration for resources used by Airflow DAG processors.
+///
+/// This field is supported for Cloud Composer environments in versions
+/// composer-3.*.*-airflow-*.*.* and newer.
 class DagProcessorResource {
   /// The number of DAG processors.
   ///
@@ -1708,8 +1711,6 @@ class DagProcessorResource {
 /// The configuration setting for Airflow database data retention mechanism.
 class DataRetentionConfig {
   /// The retention policy for airflow metadata database.
-  ///
-  /// Details: go/composer-database-retention-2
   ///
   /// Optional.
   AirflowMetadataRetentionPolicyConfig? airflowMetadataRetentionConfig;
@@ -2035,8 +2036,9 @@ class EnvironmentConfig {
   /// scheduled during the window. The maintenance window period must encompass
   /// at least 12 hours per week. This may be split into multiple chunks, each
   /// with a size of at least 4 hours. If this value is omitted, the default
-  /// value for maintenance window will be applied. The default value is
-  /// Saturday and Sunday 00-06 GMT.
+  /// value for maintenance window is applied. By default, maintenance windows
+  /// are from 00:00:00 to 04:00:00 (GMT) on Friday, Saturday, and Sunday every
+  /// week.
   ///
   /// Optional.
   MaintenanceWindow? maintenanceWindow;
@@ -4068,9 +4070,6 @@ class StorageConfig {
 /// The configuration setting for Task Logs.
 class TaskLogsRetentionConfig {
   /// The mode of storage for Airflow workers task logs.
-  ///
-  /// For details, see
-  /// go/composer-store-task-logs-in-cloud-logging-only-design-doc
   ///
   /// Optional.
   /// Possible string values are:

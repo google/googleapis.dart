@@ -206,6 +206,17 @@ void checkUnnamed3(core.Map<core.String, api.PersonalizationMetadata> o) {
   checkPersonalizationMetadata(o['y']!);
 }
 
+core.List<api.RolloutMetadata> buildUnnamed4() => [
+      buildRolloutMetadata(),
+      buildRolloutMetadata(),
+    ];
+
+void checkUnnamed4(core.List<api.RolloutMetadata> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkRolloutMetadata(o[0]);
+  checkRolloutMetadata(o[1]);
+}
+
 core.int buildCounterFetchRemoteConfigResponse = 0;
 api.FetchRemoteConfigResponse buildFetchRemoteConfigResponse() {
   final o = api.FetchRemoteConfigResponse();
@@ -215,6 +226,7 @@ api.FetchRemoteConfigResponse buildFetchRemoteConfigResponse() {
     o.entries = buildUnnamed1();
     o.experimentDescriptions = buildUnnamed2();
     o.personalizationMetadata = buildUnnamed3();
+    o.rolloutMetadata = buildUnnamed4();
     o.state = 'foo';
     o.templateVersion = 'foo';
   }
@@ -232,6 +244,7 @@ void checkFetchRemoteConfigResponse(api.FetchRemoteConfigResponse o) {
     checkUnnamed1(o.entries!);
     checkUnnamed2(o.experimentDescriptions!);
     checkUnnamed3(o.personalizationMetadata!);
+    checkUnnamed4(o.rolloutMetadata!);
     unittest.expect(
       o.state!,
       unittest.equals('foo'),
@@ -244,12 +257,12 @@ void checkFetchRemoteConfigResponse(api.FetchRemoteConfigResponse o) {
   buildCounterFetchRemoteConfigResponse--;
 }
 
-core.List<api.Version> buildUnnamed4() => [
+core.List<api.Version> buildUnnamed5() => [
       buildVersion(),
       buildVersion(),
     ];
 
-void checkUnnamed4(core.List<api.Version> o) {
+void checkUnnamed5(core.List<api.Version> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVersion(o[0]);
   checkVersion(o[1]);
@@ -261,7 +274,7 @@ api.ListVersionsResponse buildListVersionsResponse() {
   buildCounterListVersionsResponse++;
   if (buildCounterListVersionsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.versions = buildUnnamed4();
+    o.versions = buildUnnamed5();
   }
   buildCounterListVersionsResponse--;
   return o;
@@ -274,7 +287,7 @@ void checkListVersionsResponse(api.ListVersionsResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed4(o.versions!);
+    checkUnnamed5(o.versions!);
   }
   buildCounterListVersionsResponse--;
 }
@@ -338,34 +351,34 @@ void checkPersonalizationValue(api.PersonalizationValue o) {
   buildCounterPersonalizationValue--;
 }
 
-core.List<api.RemoteConfigCondition> buildUnnamed5() => [
+core.List<api.RemoteConfigCondition> buildUnnamed6() => [
       buildRemoteConfigCondition(),
       buildRemoteConfigCondition(),
     ];
 
-void checkUnnamed5(core.List<api.RemoteConfigCondition> o) {
+void checkUnnamed6(core.List<api.RemoteConfigCondition> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRemoteConfigCondition(o[0]);
   checkRemoteConfigCondition(o[1]);
 }
 
-core.Map<core.String, api.RemoteConfigParameterGroup> buildUnnamed6() => {
+core.Map<core.String, api.RemoteConfigParameterGroup> buildUnnamed7() => {
       'x': buildRemoteConfigParameterGroup(),
       'y': buildRemoteConfigParameterGroup(),
     };
 
-void checkUnnamed6(core.Map<core.String, api.RemoteConfigParameterGroup> o) {
+void checkUnnamed7(core.Map<core.String, api.RemoteConfigParameterGroup> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRemoteConfigParameterGroup(o['x']!);
   checkRemoteConfigParameterGroup(o['y']!);
 }
 
-core.Map<core.String, api.RemoteConfigParameter> buildUnnamed7() => {
+core.Map<core.String, api.RemoteConfigParameter> buildUnnamed8() => {
       'x': buildRemoteConfigParameter(),
       'y': buildRemoteConfigParameter(),
     };
 
-void checkUnnamed7(core.Map<core.String, api.RemoteConfigParameter> o) {
+void checkUnnamed8(core.Map<core.String, api.RemoteConfigParameter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRemoteConfigParameter(o['x']!);
   checkRemoteConfigParameter(o['y']!);
@@ -376,9 +389,9 @@ api.RemoteConfig buildRemoteConfig() {
   final o = api.RemoteConfig();
   buildCounterRemoteConfig++;
   if (buildCounterRemoteConfig < 3) {
-    o.conditions = buildUnnamed5();
-    o.parameterGroups = buildUnnamed6();
-    o.parameters = buildUnnamed7();
+    o.conditions = buildUnnamed6();
+    o.parameterGroups = buildUnnamed7();
+    o.parameters = buildUnnamed8();
     o.version = buildVersion();
   }
   buildCounterRemoteConfig--;
@@ -388,9 +401,9 @@ api.RemoteConfig buildRemoteConfig() {
 void checkRemoteConfig(api.RemoteConfig o) {
   buildCounterRemoteConfig++;
   if (buildCounterRemoteConfig < 3) {
-    checkUnnamed5(o.conditions!);
-    checkUnnamed6(o.parameterGroups!);
-    checkUnnamed7(o.parameters!);
+    checkUnnamed6(o.conditions!);
+    checkUnnamed7(o.parameterGroups!);
+    checkUnnamed8(o.parameters!);
     checkVersion(o.version!);
   }
   buildCounterRemoteConfig--;
@@ -428,12 +441,12 @@ void checkRemoteConfigCondition(api.RemoteConfigCondition o) {
   buildCounterRemoteConfigCondition--;
 }
 
-core.Map<core.String, api.RemoteConfigParameterValue> buildUnnamed8() => {
+core.Map<core.String, api.RemoteConfigParameterValue> buildUnnamed9() => {
       'x': buildRemoteConfigParameterValue(),
       'y': buildRemoteConfigParameterValue(),
     };
 
-void checkUnnamed8(core.Map<core.String, api.RemoteConfigParameterValue> o) {
+void checkUnnamed9(core.Map<core.String, api.RemoteConfigParameterValue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRemoteConfigParameterValue(o['x']!);
   checkRemoteConfigParameterValue(o['y']!);
@@ -444,7 +457,7 @@ api.RemoteConfigParameter buildRemoteConfigParameter() {
   final o = api.RemoteConfigParameter();
   buildCounterRemoteConfigParameter++;
   if (buildCounterRemoteConfigParameter < 3) {
-    o.conditionalValues = buildUnnamed8();
+    o.conditionalValues = buildUnnamed9();
     o.defaultValue = buildRemoteConfigParameterValue();
     o.description = 'foo';
     o.valueType = 'foo';
@@ -456,7 +469,7 @@ api.RemoteConfigParameter buildRemoteConfigParameter() {
 void checkRemoteConfigParameter(api.RemoteConfigParameter o) {
   buildCounterRemoteConfigParameter++;
   if (buildCounterRemoteConfigParameter < 3) {
-    checkUnnamed8(o.conditionalValues!);
+    checkUnnamed9(o.conditionalValues!);
     checkRemoteConfigParameterValue(o.defaultValue!);
     unittest.expect(
       o.description!,
@@ -470,12 +483,12 @@ void checkRemoteConfigParameter(api.RemoteConfigParameter o) {
   buildCounterRemoteConfigParameter--;
 }
 
-core.Map<core.String, api.RemoteConfigParameter> buildUnnamed9() => {
+core.Map<core.String, api.RemoteConfigParameter> buildUnnamed10() => {
       'x': buildRemoteConfigParameter(),
       'y': buildRemoteConfigParameter(),
     };
 
-void checkUnnamed9(core.Map<core.String, api.RemoteConfigParameter> o) {
+void checkUnnamed10(core.Map<core.String, api.RemoteConfigParameter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRemoteConfigParameter(o['x']!);
   checkRemoteConfigParameter(o['y']!);
@@ -487,7 +500,7 @@ api.RemoteConfigParameterGroup buildRemoteConfigParameterGroup() {
   buildCounterRemoteConfigParameterGroup++;
   if (buildCounterRemoteConfigParameterGroup < 3) {
     o.description = 'foo';
-    o.parameters = buildUnnamed9();
+    o.parameters = buildUnnamed10();
   }
   buildCounterRemoteConfigParameterGroup--;
   return o;
@@ -500,7 +513,7 @@ void checkRemoteConfigParameterGroup(api.RemoteConfigParameterGroup o) {
       o.description!,
       unittest.equals('foo'),
     );
-    checkUnnamed9(o.parameters!);
+    checkUnnamed10(o.parameters!);
   }
   buildCounterRemoteConfigParameterGroup--;
 }
@@ -630,6 +643,52 @@ void checkRollbackRemoteConfigRequest(api.RollbackRemoteConfigRequest o) {
     );
   }
   buildCounterRollbackRemoteConfigRequest--;
+}
+
+core.List<core.String> buildUnnamed11() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed11(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterRolloutMetadata = 0;
+api.RolloutMetadata buildRolloutMetadata() {
+  final o = api.RolloutMetadata();
+  buildCounterRolloutMetadata++;
+  if (buildCounterRolloutMetadata < 3) {
+    o.affectedParameterKeys = buildUnnamed11();
+    o.rolloutId = 'foo';
+    o.variantId = 'foo';
+  }
+  buildCounterRolloutMetadata--;
+  return o;
+}
+
+void checkRolloutMetadata(api.RolloutMetadata o) {
+  buildCounterRolloutMetadata++;
+  if (buildCounterRolloutMetadata < 3) {
+    checkUnnamed11(o.affectedParameterKeys!);
+    unittest.expect(
+      o.rolloutId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.variantId!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterRolloutMetadata--;
 }
 
 core.int buildCounterVersion = 0;
@@ -820,6 +879,16 @@ void main() {
       final od = api.RollbackRemoteConfigRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkRollbackRemoteConfigRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-RolloutMetadata', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRolloutMetadata();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RolloutMetadata.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRolloutMetadata(od);
     });
   });
 

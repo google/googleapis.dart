@@ -3930,6 +3930,62 @@ class MerchantsupportResource {
     return RenderProductIssuesResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
+
+  /// Start an action.
+  ///
+  /// The action can be requested by merchants in third-party application.
+  /// Before merchants can request the action, the third-party application needs
+  /// to show them action specific content and display a user input form. The
+  /// action can be successfully started only once all `required` inputs are
+  /// provided. If any `required` input is missing, or invalid value was
+  /// provided, the service will return 400 error. Validation errors will
+  /// contain Ids for all problematic field together with translated, human
+  /// readable error messages that can be shown to the user.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - Required. The ID of the merchant's account.
+  ///
+  /// [languageCode] - Optional. Language code
+  /// [IETF BCP 47 syntax](https://tools.ietf.org/html/bcp47) used to localize
+  /// the response. If not set, the result will be in default language `en-US`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TriggerActionResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TriggerActionResponse> triggeraction(
+    TriggerActionPayload request,
+    core.String merchantId, {
+    core.String? languageCode,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (languageCode != null) 'languageCode': [languageCode],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = commons.escapeVariable('$merchantId') +
+        '/merchantsupport/triggeraction';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return TriggerActionResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class OrderinvoicesResource {
@@ -10202,6 +10258,9 @@ class AccountUser {
   core.bool? paymentsManager;
 
   /// Whether user is a reporting manager.
+  ///
+  /// This role is equivalent to the Performance and insights role in Merchant
+  /// Center.
   core.bool? reportingManager;
 
   AccountUser({
@@ -11225,6 +11284,13 @@ class Action {
   /// specific functionality is not available.
   BuiltInSimpleAction? builtinSimpleAction;
 
+  /// Action implemented and performed in (your) third-party application.
+  ///
+  /// The application needs to show an additional content and input form to the
+  /// merchant as specified for given action. They can trigger the action only
+  /// when they provided all required inputs.
+  BuiltInUserInputAction? builtinUserInputAction;
+
   /// Label of the action button.
   core.String? buttonLabel;
 
@@ -11253,6 +11319,7 @@ class Action {
 
   Action({
     this.builtinSimpleAction,
+    this.builtinUserInputAction,
     this.buttonLabel,
     this.externalAction,
     this.isAvailable,
@@ -11263,6 +11330,10 @@ class Action {
       : this(
           builtinSimpleAction: json_.containsKey('builtinSimpleAction')
               ? BuiltInSimpleAction.fromJson(json_['builtinSimpleAction']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          builtinUserInputAction: json_.containsKey('builtinUserInputAction')
+              ? BuiltInUserInputAction.fromJson(json_['builtinUserInputAction']
                   as core.Map<core.String, core.dynamic>)
               : null,
           buttonLabel: json_.containsKey('buttonLabel')
@@ -11286,10 +11357,137 @@ class Action {
   core.Map<core.String, core.dynamic> toJson() => {
         if (builtinSimpleAction != null)
           'builtinSimpleAction': builtinSimpleAction!,
+        if (builtinUserInputAction != null)
+          'builtinUserInputAction': builtinUserInputAction!,
         if (buttonLabel != null) 'buttonLabel': buttonLabel!,
         if (externalAction != null) 'externalAction': externalAction!,
         if (isAvailable != null) 'isAvailable': isAvailable!,
         if (reasons != null) 'reasons': reasons!,
+      };
+}
+
+/// Flow that can be selected for an action.
+///
+/// When merchant selects a flow, application should open a dialog with more
+/// information and input form.
+class ActionFlow {
+  /// Label for the button to trigger the action from the action dialog.
+  ///
+  /// For example: "Request review"
+  core.String? dialogButtonLabel;
+
+  /// Important message to be highlighted in the request dialog.
+  ///
+  /// For example: "You can only request a review for disagreeing with this
+  /// issue once. If it's not approved, you'll need to fix the issue and wait a
+  /// few days before you can request another review."
+  Callout? dialogCallout;
+
+  /// Message displayed in the request dialog.
+  ///
+  /// For example: "Make sure you've fixed all your country-specific issues. If
+  /// not, you may have to wait 7 days to request another review". There may be
+  /// an more information to be shown in a tooltip.
+  TextWithTooltip? dialogMessage;
+
+  /// Title of the request dialog.
+  ///
+  /// For example: "Before you request a review"
+  core.String? dialogTitle;
+
+  /// Not for display but need to be sent back for the selected action flow.
+  core.String? id;
+
+  /// A list of input fields.
+  core.List<InputField>? inputs;
+
+  /// Text value describing the intent for the action flow.
+  ///
+  /// It can be used as an input label if merchant needs to pick one of multiple
+  /// flows. For example: "I disagree with the issue"
+  core.String? label;
+
+  ActionFlow({
+    this.dialogButtonLabel,
+    this.dialogCallout,
+    this.dialogMessage,
+    this.dialogTitle,
+    this.id,
+    this.inputs,
+    this.label,
+  });
+
+  ActionFlow.fromJson(core.Map json_)
+      : this(
+          dialogButtonLabel: json_.containsKey('dialogButtonLabel')
+              ? json_['dialogButtonLabel'] as core.String
+              : null,
+          dialogCallout: json_.containsKey('dialogCallout')
+              ? Callout.fromJson(
+                  json_['dialogCallout'] as core.Map<core.String, core.dynamic>)
+              : null,
+          dialogMessage: json_.containsKey('dialogMessage')
+              ? TextWithTooltip.fromJson(
+                  json_['dialogMessage'] as core.Map<core.String, core.dynamic>)
+              : null,
+          dialogTitle: json_.containsKey('dialogTitle')
+              ? json_['dialogTitle'] as core.String
+              : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          inputs: json_.containsKey('inputs')
+              ? (json_['inputs'] as core.List)
+                  .map((value) => InputField.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          label:
+              json_.containsKey('label') ? json_['label'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dialogButtonLabel != null) 'dialogButtonLabel': dialogButtonLabel!,
+        if (dialogCallout != null) 'dialogCallout': dialogCallout!,
+        if (dialogMessage != null) 'dialogMessage': dialogMessage!,
+        if (dialogTitle != null) 'dialogTitle': dialogTitle!,
+        if (id != null) 'id': id!,
+        if (inputs != null) 'inputs': inputs!,
+        if (label != null) 'label': label!,
+      };
+}
+
+/// Input provided by the merchant.
+class ActionInput {
+  /// Id of the selected action flow.
+  ///
+  /// Required.
+  core.String? actionFlowId;
+
+  /// Values for input fields.
+  ///
+  /// Required.
+  core.List<InputValue>? inputValues;
+
+  ActionInput({
+    this.actionFlowId,
+    this.inputValues,
+  });
+
+  ActionInput.fromJson(core.Map json_)
+      : this(
+          actionFlowId: json_.containsKey('actionFlowId')
+              ? json_['actionFlowId'] as core.String
+              : null,
+          inputValues: json_.containsKey('inputValues')
+              ? (json_['inputValues'] as core.List)
+                  .map((value) => InputValue.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (actionFlowId != null) 'actionFlowId': actionFlowId!,
+        if (inputValues != null) 'inputValues': inputValues!,
       };
 }
 
@@ -11922,6 +12120,50 @@ class BuiltInSimpleActionAdditionalContent {
       };
 }
 
+/// Action that is implemented and performed in (your) third-party application.
+///
+/// The application needs to show an additional content and input form to the
+/// merchant. They can start the action only when they provided all required
+/// inputs. The application will request processing of the action by calling the
+/// [triggeraction method](https://developers.google.com/shopping-content/reference/rest/v2.1/merchantsupport/triggeraction).
+class BuiltInUserInputAction {
+  /// Internal details.
+  ///
+  /// Not for display but need to be sent back when triggering the action.
+  core.String? actionContext;
+
+  /// Actions may provide multiple different flows.
+  ///
+  /// Merchant selects one that fits best to their intent. Selecting the flow is
+  /// the first step in user's interaction with the action. It affects what
+  /// input fields will be available and required and also how the request will
+  /// be processed.
+  core.List<ActionFlow>? flows;
+
+  BuiltInUserInputAction({
+    this.actionContext,
+    this.flows,
+  });
+
+  BuiltInUserInputAction.fromJson(core.Map json_)
+      : this(
+          actionContext: json_.containsKey('actionContext')
+              ? json_['actionContext'] as core.String
+              : null,
+          flows: json_.containsKey('flows')
+              ? (json_['flows'] as core.List)
+                  .map((value) => ActionFlow.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (actionContext != null) 'actionContext': actionContext!,
+        if (flows != null) 'flows': flows!,
+      };
+}
+
 class BusinessDayConfig {
   /// Regular business days, such as '"monday"'.
   ///
@@ -12103,6 +12345,51 @@ class BuyOnGoogleProgramStatus {
           'onlineSalesChannel': onlineSalesChannel!,
         if (participationStage != null)
           'participationStage': participationStage!,
+      };
+}
+
+/// An important message that should be highlighted.
+///
+/// Usually displayed as a banner.
+class Callout {
+  /// A full message that needs to be shown to the merchant.
+  TextWithTooltip? fullMessage;
+
+  /// Can be used to render messages with different severity in different
+  /// styles.
+  ///
+  /// Snippets off all types contain important information that should be
+  /// displayed to merchants.
+  /// Possible string values are:
+  /// - "CALLOUT_STYLE_HINT_UNSPECIFIED" : Default value. Will never be provided
+  /// by the API.
+  /// - "ERROR" : The most important type of information highlighting problems,
+  /// like an unsuccessful outcome of previously requested actions.
+  /// - "WARNING" : Information warning about pending problems, risks or
+  /// deadlines.
+  /// - "INFO" : Default severity for important information like pending status
+  /// of previously requested action or cooldown for re-review.
+  core.String? styleHint;
+
+  Callout({
+    this.fullMessage,
+    this.styleHint,
+  });
+
+  Callout.fromJson(core.Map json_)
+      : this(
+          fullMessage: json_.containsKey('fullMessage')
+              ? TextWithTooltip.fromJson(
+                  json_['fullMessage'] as core.Map<core.String, core.dynamic>)
+              : null,
+          styleHint: json_.containsKey('styleHint')
+              ? json_['styleHint'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fullMessage != null) 'fullMessage': fullMessage!,
+        if (styleHint != null) 'styleHint': styleHint!,
       };
 }
 
@@ -13856,8 +14143,9 @@ class DatafeedTarget {
   /// Deprecated.
   core.String? country;
 
-  /// The list of destinations to exclude for this target (corresponds to
-  /// cleared check boxes in Merchant Center).
+  /// The list of \[destinations to
+  /// exclude\](//support.google.com/merchants/answer/6324486) for this target
+  /// (corresponds to cleared check boxes in Merchant Center).
   ///
   /// Products that are excluded from all destinations for more than 7 days are
   /// automatically deleted.
@@ -13870,8 +14158,9 @@ class DatafeedTarget {
   /// to 20 uppercase letters (A-Z), numbers (0-9), and dashes (-).
   core.String? feedLabel;
 
-  /// The list of destinations to include for this target (corresponds to
-  /// checked check boxes in Merchant Center).
+  /// The list of \[destinations to
+  /// include\](//support.google.com/merchants/answer/7501026) for this target
+  /// (corresponds to checked check boxes in Merchant Center).
   ///
   /// Default destinations are always included unless provided in
   /// `excludedDestinations`.
@@ -15498,6 +15787,358 @@ class HolidaysHoliday {
           'deliveryGuaranteeHour': deliveryGuaranteeHour!,
         if (id != null) 'id': id!,
         if (type != null) 'type': type!,
+      };
+}
+
+/// Input field that needs to be available to the merchant.
+///
+/// If the field is marked as required, then a value needs to be provided for a
+/// successful processing of the request.
+class InputField {
+  /// Input field to provide a boolean value.
+  ///
+  /// Corresponds to the \[html input
+  /// type=checkbox\](https://www.w3.org/TR/2012/WD-html-markup-20121025/input.checkbox.html#input.checkbox).
+  InputFieldCheckboxInput? checkboxInput;
+
+  /// Input field to select one of the offered choices.
+  ///
+  /// Corresponds to the \[html input
+  /// type=radio\](https://www.w3.org/TR/2012/WD-html-markup-20121025/input.radio.html#input.radio).
+  InputFieldChoiceInput? choiceInput;
+
+  /// Not for display but need to be sent back for the given input field.
+  core.String? id;
+
+  /// Input field label.
+  ///
+  /// There may be more information to be shown in a tooltip.
+  TextWithTooltip? label;
+
+  /// Whether the field is required.
+  ///
+  /// The action button needs to stay disabled till values for all required
+  /// fields are provided.
+  core.bool? required;
+
+  /// Input field to provide text information.
+  ///
+  /// Corresponds to the \[html input
+  /// type=text\](https://www.w3.org/TR/2012/WD-html-markup-20121025/input.text.html#input.text)
+  /// or
+  /// [html textarea](https://www.w3.org/TR/2012/WD-html-markup-20121025/textarea.html#textarea).
+  InputFieldTextInput? textInput;
+
+  InputField({
+    this.checkboxInput,
+    this.choiceInput,
+    this.id,
+    this.label,
+    this.required,
+    this.textInput,
+  });
+
+  InputField.fromJson(core.Map json_)
+      : this(
+          checkboxInput: json_.containsKey('checkboxInput')
+              ? InputFieldCheckboxInput.fromJson(
+                  json_['checkboxInput'] as core.Map<core.String, core.dynamic>)
+              : null,
+          choiceInput: json_.containsKey('choiceInput')
+              ? InputFieldChoiceInput.fromJson(
+                  json_['choiceInput'] as core.Map<core.String, core.dynamic>)
+              : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          label: json_.containsKey('label')
+              ? TextWithTooltip.fromJson(
+                  json_['label'] as core.Map<core.String, core.dynamic>)
+              : null,
+          required: json_.containsKey('required')
+              ? json_['required'] as core.bool
+              : null,
+          textInput: json_.containsKey('textInput')
+              ? InputFieldTextInput.fromJson(
+                  json_['textInput'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (checkboxInput != null) 'checkboxInput': checkboxInput!,
+        if (choiceInput != null) 'choiceInput': choiceInput!,
+        if (id != null) 'id': id!,
+        if (label != null) 'label': label!,
+        if (required != null) 'required': required!,
+        if (textInput != null) 'textInput': textInput!,
+      };
+}
+
+/// Checkbox input allows merchants to provide a boolean value.
+///
+/// Corresponds to the \[html input
+/// type=checkbox\](https://www.w3.org/TR/2012/WD-html-markup-20121025/input.checkbox.html#input.checkbox).
+/// If merchant checks the box, the input value for the field is `true`,
+/// otherwise it is `false`. This type of input is often used as a confirmation
+/// that the merchant completed required steps before they are allowed to start
+/// the action. In such a case, the input field is marked as required and the
+/// button to trigger the action should stay disabled until the merchant checks
+/// the box.
+typedef InputFieldCheckboxInput = $Empty;
+
+/// Choice input allows merchants to select one of the offered choices.
+///
+/// Some choices may be linked to additional input fields that should be
+/// displayed under or next to the choice option. The value for the additional
+/// input field needs to be provided only when the specific choice is selected
+/// by the merchant. For example, additional input field can be hidden or
+/// disabled until the merchant selects the specific choice.
+class InputFieldChoiceInput {
+  /// A list of choices.
+  ///
+  /// Only one option can be selected.
+  core.List<InputFieldChoiceInputChoiceInputOption>? options;
+
+  InputFieldChoiceInput({
+    this.options,
+  });
+
+  InputFieldChoiceInput.fromJson(core.Map json_)
+      : this(
+          options: json_.containsKey('options')
+              ? (json_['options'] as core.List)
+                  .map((value) =>
+                      InputFieldChoiceInputChoiceInputOption.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (options != null) 'options': options!,
+      };
+}
+
+/// A choice that merchant can select.
+class InputFieldChoiceInputChoiceInputOption {
+  /// Input that should be displayed when this option is selected.
+  ///
+  /// The additional input will not contain a `ChoiceInput`.
+  InputField? additionalInput;
+
+  /// Not for display but need to be sent back for the selected choice option.
+  core.String? id;
+
+  /// Short description of the choice option.
+  ///
+  /// There may be more information to be shown as a tooltip.
+  TextWithTooltip? label;
+
+  InputFieldChoiceInputChoiceInputOption({
+    this.additionalInput,
+    this.id,
+    this.label,
+  });
+
+  InputFieldChoiceInputChoiceInputOption.fromJson(core.Map json_)
+      : this(
+          additionalInput: json_.containsKey('additionalInput')
+              ? InputField.fromJson(json_['additionalInput']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          label: json_.containsKey('label')
+              ? TextWithTooltip.fromJson(
+                  json_['label'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (additionalInput != null) 'additionalInput': additionalInput!,
+        if (id != null) 'id': id!,
+        if (label != null) 'label': label!,
+      };
+}
+
+/// Text input allows merchants to provide a text value.
+class InputFieldTextInput {
+  /// Additional info regarding the field to be displayed to merchant.
+  ///
+  /// For example, warning to not include personal identifiable information.
+  /// There may be more information to be shown in a tooltip.
+  TextWithTooltip? additionalInfo;
+
+  /// Text to be used as the
+  /// [aria label](https://www.w3.org/TR/WCAG20-TECHS/ARIA14.html) for the
+  /// input.
+  core.String? ariaLabel;
+
+  /// Information about the required format.
+  ///
+  /// If present, it should be shown close to the input field to help merchants
+  /// to provide a correct value. For example: "VAT numbers should be in a
+  /// format similar to SK9999999999"
+  core.String? formatInfo;
+
+  /// Type of the text input
+  /// Possible string values are:
+  /// - "TEXT_INPUT_TYPE_UNSPECIFIED" : Default value. Will never be provided by
+  /// the API.
+  /// - "GENERIC_SHORT_TEXT" : Used when a short text is expected. The field can
+  /// be rendered as a
+  /// [text field](https://www.w3.org/TR/2012/WD-html-markup-20121025/input.text.html#input.text).
+  /// - "GENERIC_LONG_TEXT" : Used when a longer text is expected. The field
+  /// should be rendered as a
+  /// [textarea](https://www.w3.org/TR/2012/WD-html-markup-20121025/textarea.html#textarea).
+  core.String? type;
+
+  InputFieldTextInput({
+    this.additionalInfo,
+    this.ariaLabel,
+    this.formatInfo,
+    this.type,
+  });
+
+  InputFieldTextInput.fromJson(core.Map json_)
+      : this(
+          additionalInfo: json_.containsKey('additionalInfo')
+              ? TextWithTooltip.fromJson(json_['additionalInfo']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          ariaLabel: json_.containsKey('ariaLabel')
+              ? json_['ariaLabel'] as core.String
+              : null,
+          formatInfo: json_.containsKey('formatInfo')
+              ? json_['formatInfo'] as core.String
+              : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (additionalInfo != null) 'additionalInfo': additionalInfo!,
+        if (ariaLabel != null) 'ariaLabel': ariaLabel!,
+        if (formatInfo != null) 'formatInfo': formatInfo!,
+        if (type != null) 'type': type!,
+      };
+}
+
+/// Input provided by the merchant for input field.
+class InputValue {
+  /// Value for checkbox input field.
+  InputValueCheckboxInputValue? checkboxInputValue;
+
+  /// Value for choice input field.
+  InputValueChoiceInputValue? choiceInputValue;
+
+  /// Id of the corresponding input field.
+  ///
+  /// Required.
+  core.String? inputFieldId;
+
+  /// Value for text input field.
+  InputValueTextInputValue? textInputValue;
+
+  InputValue({
+    this.checkboxInputValue,
+    this.choiceInputValue,
+    this.inputFieldId,
+    this.textInputValue,
+  });
+
+  InputValue.fromJson(core.Map json_)
+      : this(
+          checkboxInputValue: json_.containsKey('checkboxInputValue')
+              ? InputValueCheckboxInputValue.fromJson(
+                  json_['checkboxInputValue']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          choiceInputValue: json_.containsKey('choiceInputValue')
+              ? InputValueChoiceInputValue.fromJson(json_['choiceInputValue']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          inputFieldId: json_.containsKey('inputFieldId')
+              ? json_['inputFieldId'] as core.String
+              : null,
+          textInputValue: json_.containsKey('textInputValue')
+              ? InputValueTextInputValue.fromJson(json_['textInputValue']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (checkboxInputValue != null)
+          'checkboxInputValue': checkboxInputValue!,
+        if (choiceInputValue != null) 'choiceInputValue': choiceInputValue!,
+        if (inputFieldId != null) 'inputFieldId': inputFieldId!,
+        if (textInputValue != null) 'textInputValue': textInputValue!,
+      };
+}
+
+/// Value for checkbox input field.
+class InputValueCheckboxInputValue {
+  /// True if the merchant checked the box field.
+  ///
+  /// False otherwise.
+  ///
+  /// Required.
+  core.bool? value;
+
+  InputValueCheckboxInputValue({
+    this.value,
+  });
+
+  InputValueCheckboxInputValue.fromJson(core.Map json_)
+      : this(
+          value:
+              json_.containsKey('value') ? json_['value'] as core.bool : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (value != null) 'value': value!,
+      };
+}
+
+/// Value for choice input field.
+class InputValueChoiceInputValue {
+  /// Id of the option that was selected by the merchant.
+  ///
+  /// Required.
+  core.String? choiceInputOptionId;
+
+  InputValueChoiceInputValue({
+    this.choiceInputOptionId,
+  });
+
+  InputValueChoiceInputValue.fromJson(core.Map json_)
+      : this(
+          choiceInputOptionId: json_.containsKey('choiceInputOptionId')
+              ? json_['choiceInputOptionId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (choiceInputOptionId != null)
+          'choiceInputOptionId': choiceInputOptionId!,
+      };
+}
+
+/// Value for text input field.
+class InputValueTextInputValue {
+  /// Text provided by the merchant.
+  ///
+  /// Required.
+  core.String? value;
+
+  InputValueTextInputValue({
+    this.value,
+  });
+
+  InputValueTextInputValue.fromJson(core.Map json_)
+      : this(
+          value:
+              json_.containsKey('value') ? json_['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (value != null) 'value': value!,
       };
 }
 
@@ -17450,19 +18091,32 @@ class MethodQuota {
   ///
   /// Method name does not contain version because quota can be shared between
   /// different API versions of the same method.
+  ///
+  /// Output only.
   core.String? method;
 
-  /// The current quota limit per day, meaning the maximum number of calls for
-  /// the method.
+  /// The maximum number of calls allowed per day for the method.
+  ///
+  /// Output only.
   core.String? quotaLimit;
 
+  /// The maximum number of calls allowed per minute for the method.
+  ///
+  /// Output only.
+  core.String? quotaMinuteLimit;
+
   /// The current quota usage, meaning the number of calls already made to the
-  /// method.
+  /// method per day.
+  ///
+  /// Usage is reset every day at 12 PM midday UTC.
+  ///
+  /// Output only.
   core.String? quotaUsage;
 
   MethodQuota({
     this.method,
     this.quotaLimit,
+    this.quotaMinuteLimit,
     this.quotaUsage,
   });
 
@@ -17474,6 +18128,9 @@ class MethodQuota {
           quotaLimit: json_.containsKey('quotaLimit')
               ? json_['quotaLimit'] as core.String
               : null,
+          quotaMinuteLimit: json_.containsKey('quotaMinuteLimit')
+              ? json_['quotaMinuteLimit'] as core.String
+              : null,
           quotaUsage: json_.containsKey('quotaUsage')
               ? json_['quotaUsage'] as core.String
               : null,
@@ -17482,6 +18139,7 @@ class MethodQuota {
   core.Map<core.String, core.dynamic> toJson() => {
         if (method != null) 'method': method!,
         if (quotaLimit != null) 'quotaLimit': quotaLimit!,
+        if (quotaMinuteLimit != null) 'quotaMinuteLimit': quotaMinuteLimit!,
         if (quotaUsage != null) 'quotaUsage': quotaUsage!,
       };
 }
@@ -24351,6 +25009,14 @@ class Product {
   /// Target age group of the item.
   core.String? ageGroup;
 
+  /// A safeguard in the
+  /// [Automated Discounts](https://support.google.com/merchants/answer/10295759?hl=en)
+  /// and
+  /// [Dynamic Promotions](https://support.google.com/merchants/answer/13949249?hl=en)
+  /// projects, ensuring that discounts on merchants' offers do not fall below
+  /// this value, thereby preserving the offer's value and profitability.
+  Price? autoPricingMinPrice;
+
   /// Availability status of the item.
   core.String? availability;
 
@@ -24451,8 +25117,9 @@ class Product {
   /// The energy efficiency class as defined in EU directive 2010/30/EU.
   core.String? energyEfficiencyClass;
 
-  /// The list of destinations to exclude for this target (corresponds to
-  /// cleared check boxes in Merchant Center).
+  /// The list of \[destinations to
+  /// exclude\](//support.google.com/merchants/answer/6324486) for this target
+  /// (corresponds to cleared check boxes in Merchant Center).
   ///
   /// Products that are excluded from all destinations for more than 7 days are
   /// automatically deleted.
@@ -24510,8 +25177,9 @@ class Product {
   /// URL of an image of the item.
   core.String? imageLink;
 
-  /// The list of destinations to include for this target (corresponds to
-  /// checked check boxes in Merchant Center).
+  /// The list of \[destinations to
+  /// include\](//support.google.com/merchants/answer/7501026) for this target
+  /// (corresponds to checked check boxes in Merchant Center).
   ///
   /// Default destinations are always included unless provided in
   /// `excludedDestinations`.
@@ -24705,6 +25373,12 @@ class Product {
   /// Acceptable values are: - "`api`" - "`crawl`" - "`feed`"
   core.String? source;
 
+  /// Structured description, for algorithmically (AI)-generated descriptions.
+  ProductStructuredDescription? structuredDescription;
+
+  /// Structured title, for algorithmically (AI)-generated titles.
+  ProductStructuredTitle? structuredTitle;
+
   /// Number of periods (months or years) and amount of payment per period for
   /// an item with an associated subscription contract.
   ProductSubscriptionCost? subscriptionCost;
@@ -24745,6 +25419,7 @@ class Product {
     this.adsRedirect,
     this.adult,
     this.ageGroup,
+    this.autoPricingMinPrice,
     this.availability,
     this.availabilityDate,
     this.brand,
@@ -24826,6 +25501,8 @@ class Product {
     this.sizeType,
     this.sizes,
     this.source,
+    this.structuredDescription,
+    this.structuredTitle,
     this.subscriptionCost,
     this.targetCountry,
     this.taxCategory,
@@ -24862,6 +25539,10 @@ class Product {
               json_.containsKey('adult') ? json_['adult'] as core.bool : null,
           ageGroup: json_.containsKey('ageGroup')
               ? json_['ageGroup'] as core.String
+              : null,
+          autoPricingMinPrice: json_.containsKey('autoPricingMinPrice')
+              ? Price.fromJson(json_['autoPricingMinPrice']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           availability: json_.containsKey('availability')
               ? json_['availability'] as core.String
@@ -25143,6 +25824,15 @@ class Product {
           source: json_.containsKey('source')
               ? json_['source'] as core.String
               : null,
+          structuredDescription: json_.containsKey('structuredDescription')
+              ? ProductStructuredDescription.fromJson(
+                  json_['structuredDescription']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          structuredTitle: json_.containsKey('structuredTitle')
+              ? ProductStructuredTitle.fromJson(json_['structuredTitle']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           subscriptionCost: json_.containsKey('subscriptionCost')
               ? ProductSubscriptionCost.fromJson(json_['subscriptionCost']
                   as core.Map<core.String, core.dynamic>)
@@ -25188,6 +25878,8 @@ class Product {
         if (adsRedirect != null) 'adsRedirect': adsRedirect!,
         if (adult != null) 'adult': adult!,
         if (ageGroup != null) 'ageGroup': ageGroup!,
+        if (autoPricingMinPrice != null)
+          'autoPricingMinPrice': autoPricingMinPrice!,
         if (availability != null) 'availability': availability!,
         if (availabilityDate != null) 'availabilityDate': availabilityDate!,
         if (brand != null) 'brand': brand!,
@@ -25282,6 +25974,9 @@ class Product {
         if (sizeType != null) 'sizeType': sizeType!,
         if (sizes != null) 'sizes': sizes!,
         if (source != null) 'source': source!,
+        if (structuredDescription != null)
+          'structuredDescription': structuredDescription!,
+        if (structuredTitle != null) 'structuredTitle': structuredTitle!,
         if (subscriptionCost != null) 'subscriptionCost': subscriptionCost!,
         if (targetCountry != null) 'targetCountry': targetCountry!,
         if (taxCategory != null) 'taxCategory': taxCategory!,
@@ -26332,6 +27027,87 @@ class ProductStatusItemLevelIssue {
       };
 }
 
+/// Structured description, for algorithmically (AI)-generated descriptions.
+///
+/// See
+/// [description](https://support.google.com/merchants/answer/6324468#When_to_use)
+/// for more information.
+class ProductStructuredDescription {
+  /// The description text.
+  ///
+  /// Maximum length is 5000 characters.
+  ///
+  /// Required.
+  core.String? content;
+
+  /// The digital source type.
+  ///
+  /// Acceptable values are: - "`trained_algorithmic_media`" - "`default`"
+  ///
+  /// Optional.
+  core.String? digitalSourceType;
+
+  ProductStructuredDescription({
+    this.content,
+    this.digitalSourceType,
+  });
+
+  ProductStructuredDescription.fromJson(core.Map json_)
+      : this(
+          content: json_.containsKey('content')
+              ? json_['content'] as core.String
+              : null,
+          digitalSourceType: json_.containsKey('digitalSourceType')
+              ? json_['digitalSourceType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (content != null) 'content': content!,
+        if (digitalSourceType != null) 'digitalSourceType': digitalSourceType!,
+      };
+}
+
+/// Structured title, for algorithmically (AI)-generated titles.
+///
+/// See [title](https://support.google.com/merchants/answer/6324415#Whentouse)
+/// for more information.
+class ProductStructuredTitle {
+  /// The title text.
+  ///
+  /// Maximum length is 150 characters.
+  ///
+  /// Required.
+  core.String? content;
+
+  /// The digital source type.
+  ///
+  /// Acceptable values are: - "`trained_algorithmic_media`" - "`default`"
+  ///
+  /// Optional.
+  core.String? digitalSourceType;
+
+  ProductStructuredTitle({
+    this.content,
+    this.digitalSourceType,
+  });
+
+  ProductStructuredTitle.fromJson(core.Map json_)
+      : this(
+          content: json_.containsKey('content')
+              ? json_['content'] as core.String
+              : null,
+          digitalSourceType: json_.containsKey('digitalSourceType')
+              ? json_['digitalSourceType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (content != null) 'content': content!,
+        if (digitalSourceType != null) 'digitalSourceType': digitalSourceType!,
+      };
+}
+
 class ProductSubscriptionCost {
   /// The amount the buyer has to pay per subscription period.
   Price? amount;
@@ -26535,6 +27311,24 @@ class ProductView {
   /// - "ONLINE" : Indicates that the channel is online.
   core.String? channel;
 
+  /// Estimated performance potential compared to highest performing products of
+  /// the merchant.
+  /// Possible string values are:
+  /// - "CLICK_POTENTIAL_UNSPECIFIED" : Unknown predicted clicks impact.
+  /// - "LOW" : Potential to receive a low number of clicks compared to the
+  /// highest performing products of the merchant.
+  /// - "MEDIUM" : Potential to receive a moderate number of clicks compared to
+  /// the highest performing products of the merchant.
+  /// - "HIGH" : Potential to receive a similar number of clicks as the highest
+  /// performing products of the merchant.
+  core.String? clickPotential;
+
+  /// Rank of the product based on its click potential.
+  ///
+  /// A product with `click_potential_rank` 1 has the highest click potential
+  /// among the merchant's products that fulfill the search query conditions.
+  core.String? clickPotentialRank;
+
   /// Condition of the product.
   core.String? condition;
 
@@ -26616,6 +27410,8 @@ class ProductView {
     this.categoryL4,
     this.categoryL5,
     this.channel,
+    this.clickPotential,
+    this.clickPotentialRank,
     this.condition,
     this.creationTime,
     this.currencyCode,
@@ -26664,6 +27460,12 @@ class ProductView {
               : null,
           channel: json_.containsKey('channel')
               ? json_['channel'] as core.String
+              : null,
+          clickPotential: json_.containsKey('clickPotential')
+              ? json_['clickPotential'] as core.String
+              : null,
+          clickPotentialRank: json_.containsKey('clickPotentialRank')
+              ? json_['clickPotentialRank'] as core.String
               : null,
           condition: json_.containsKey('condition')
               ? json_['condition'] as core.String
@@ -26735,6 +27537,9 @@ class ProductView {
         if (categoryL4 != null) 'categoryL4': categoryL4!,
         if (categoryL5 != null) 'categoryL5': categoryL5!,
         if (channel != null) 'channel': channel!,
+        if (clickPotential != null) 'clickPotential': clickPotential!,
+        if (clickPotentialRank != null)
+          'clickPotentialRank': clickPotentialRank!,
         if (condition != null) 'condition': condition!,
         if (creationTime != null) 'creationTime': creationTime!,
         if (currencyCode != null) 'currencyCode': currencyCode!,
@@ -29141,6 +29946,12 @@ class ReportRow {
   /// query.
   Segments? segments;
 
+  /// [Topic trends](https://support.google.com/merchants/answer/13542370)
+  /// fields requested by the merchant in the query.
+  ///
+  /// Field values are only set if the merchant queries `TopicTrendsView`.
+  TopicTrends? topicTrends;
+
   ReportRow({
     this.bestSellers,
     this.brand,
@@ -29151,6 +29962,7 @@ class ReportRow {
     this.productCluster,
     this.productView,
     this.segments,
+    this.topicTrends,
   });
 
   ReportRow.fromJson(core.Map json_)
@@ -29191,6 +30003,10 @@ class ReportRow {
               ? Segments.fromJson(
                   json_['segments'] as core.Map<core.String, core.dynamic>)
               : null,
+          topicTrends: json_.containsKey('topicTrends')
+              ? TopicTrends.fromJson(
+                  json_['topicTrends'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -29205,6 +30021,7 @@ class ReportRow {
         if (productCluster != null) 'productCluster': productCluster!,
         if (productView != null) 'productView': productView!,
         if (segments != null) 'segments': segments!,
+        if (topicTrends != null) 'topicTrends': topicTrends!,
       };
 }
 
@@ -32835,6 +33652,51 @@ class TestOrderPickupDetailsPickupPerson {
       };
 }
 
+/// Block of text that may contain a tooltip with more information.
+class TextWithTooltip {
+  /// Value of the tooltip as a simple text.
+  core.String? simpleTooltipValue;
+
+  /// Value of the message as a simple text.
+  core.String? simpleValue;
+
+  /// The suggested type of an icon for tooltip, if a tooltip is present.
+  /// Possible string values are:
+  /// - "TOOLTIP_ICON_STYLE_UNSPECIFIED" : Default value. Will never be provided
+  /// by the API.
+  /// - "INFO" : Used when the tooltip adds additional information to the
+  /// context, the 'i' can be used as an icon.
+  /// - "QUESTION" : Used when the tooltip shows helpful information, the '?'
+  /// can be used as an icon.
+  core.String? tooltipIconStyle;
+
+  TextWithTooltip({
+    this.simpleTooltipValue,
+    this.simpleValue,
+    this.tooltipIconStyle,
+  });
+
+  TextWithTooltip.fromJson(core.Map json_)
+      : this(
+          simpleTooltipValue: json_.containsKey('simpleTooltipValue')
+              ? json_['simpleTooltipValue'] as core.String
+              : null,
+          simpleValue: json_.containsKey('simpleValue')
+              ? json_['simpleValue'] as core.String
+              : null,
+          tooltipIconStyle: json_.containsKey('tooltipIconStyle')
+              ? json_['tooltipIconStyle'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (simpleTooltipValue != null)
+          'simpleTooltipValue': simpleTooltipValue!,
+        if (simpleValue != null) 'simpleValue': simpleValue!,
+        if (tooltipIconStyle != null) 'tooltipIconStyle': tooltipIconStyle!,
+      };
+}
+
 /// A message that represents a time period.
 class TimePeriod {
   /// The ending timestamp.
@@ -32867,6 +33729,133 @@ class TimePeriod {
 /// Represents a time zone from the
 /// [IANA Time Zone Database](https://www.iana.org/time-zones).
 typedef TimeZone = $TimeZone;
+
+/// Topic trends fields requested by the merchant in the query.
+///
+/// Field values are only set if the merchant queries `TopicTrendsView`.
+/// Forecast data can be queried up to 13 weeks by passing a future date in the
+/// `date` field. Historical data is measured daily, and forecasted data is
+/// projected weekly. All data points are normalized based on the highest data
+/// points returned in the response. If you make separate queries with different
+/// date ranges, you might see different values for the same date in each
+/// response. The recommended way to get a trend score of a topic is
+/// `last7_days_search_interest / last{$day}_days_search_interest - 1`. You can
+/// view trends for up to eight topics at a time.
+class TopicTrends {
+  /// Country trends are calculated for.
+  ///
+  /// Must be a two-letter country code (ISO 3166-1-alpha-2 code), for example,
+  /// `“US”`.
+  core.String? customerCountryCode;
+
+  /// Date the trend score was retrieved.
+  Date? date;
+
+  /// Search interest in the last 120 days, with the same normalization as
+  /// search_interest.
+  ///
+  /// This field is only present for a past date.
+  core.double? last120DaysSearchInterest;
+
+  /// Search interest in the last 30 days, with the same normalization as
+  /// search_interest.
+  ///
+  /// This field is only present for a past date.
+  core.double? last30DaysSearchInterest;
+
+  /// Search interest in the last 7 days, with the same normalization as
+  /// search_interest.
+  ///
+  /// This field is only present for a past date.
+  core.double? last7DaysSearchInterest;
+
+  /// Search interest in the last 90 days, with the same normalization as
+  /// search_interest.
+  ///
+  /// This field is only present for a past date.
+  core.double? last90DaysSearchInterest;
+
+  /// Estimated search interest in the next 7 days, with the same normalization
+  /// as search_interest.
+  ///
+  /// This field is only present for a future date.
+  core.double? next7DaysSearchInterest;
+
+  /// Daily search interest, normalized to the time and country to make
+  /// comparisons easier, with 100 representing peak popularity (from 0 to 100)
+  /// for the requested time period and location.
+  core.double? searchInterest;
+
+  /// Google-provided topic trends are calculated for.
+  ///
+  /// Only top eight topics are returned. Topic is what shoppers are searching
+  /// for on Google, grouped by the same concept.
+  core.String? topic;
+
+  TopicTrends({
+    this.customerCountryCode,
+    this.date,
+    this.last120DaysSearchInterest,
+    this.last30DaysSearchInterest,
+    this.last7DaysSearchInterest,
+    this.last90DaysSearchInterest,
+    this.next7DaysSearchInterest,
+    this.searchInterest,
+    this.topic,
+  });
+
+  TopicTrends.fromJson(core.Map json_)
+      : this(
+          customerCountryCode: json_.containsKey('customerCountryCode')
+              ? json_['customerCountryCode'] as core.String
+              : null,
+          date: json_.containsKey('date')
+              ? Date.fromJson(
+                  json_['date'] as core.Map<core.String, core.dynamic>)
+              : null,
+          last120DaysSearchInterest:
+              json_.containsKey('last120DaysSearchInterest')
+                  ? (json_['last120DaysSearchInterest'] as core.num).toDouble()
+                  : null,
+          last30DaysSearchInterest:
+              json_.containsKey('last30DaysSearchInterest')
+                  ? (json_['last30DaysSearchInterest'] as core.num).toDouble()
+                  : null,
+          last7DaysSearchInterest: json_.containsKey('last7DaysSearchInterest')
+              ? (json_['last7DaysSearchInterest'] as core.num).toDouble()
+              : null,
+          last90DaysSearchInterest:
+              json_.containsKey('last90DaysSearchInterest')
+                  ? (json_['last90DaysSearchInterest'] as core.num).toDouble()
+                  : null,
+          next7DaysSearchInterest: json_.containsKey('next7DaysSearchInterest')
+              ? (json_['next7DaysSearchInterest'] as core.num).toDouble()
+              : null,
+          searchInterest: json_.containsKey('searchInterest')
+              ? (json_['searchInterest'] as core.num).toDouble()
+              : null,
+          topic:
+              json_.containsKey('topic') ? json_['topic'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (customerCountryCode != null)
+          'customerCountryCode': customerCountryCode!,
+        if (date != null) 'date': date!,
+        if (last120DaysSearchInterest != null)
+          'last120DaysSearchInterest': last120DaysSearchInterest!,
+        if (last30DaysSearchInterest != null)
+          'last30DaysSearchInterest': last30DaysSearchInterest!,
+        if (last7DaysSearchInterest != null)
+          'last7DaysSearchInterest': last7DaysSearchInterest!,
+        if (last90DaysSearchInterest != null)
+          'last90DaysSearchInterest': last90DaysSearchInterest!,
+        if (next7DaysSearchInterest != null)
+          'next7DaysSearchInterest': next7DaysSearchInterest!,
+        if (searchInterest != null) 'searchInterest': searchInterest!,
+        if (topic != null) 'topic': topic!,
+      };
+}
 
 class TransitTable {
   /// A list of postal group names.
@@ -32969,6 +33958,64 @@ class TransitTableTransitTimeRowTransitTimeValue {
           'maxTransitTimeInDays': maxTransitTimeInDays!,
         if (minTransitTimeInDays != null)
           'minTransitTimeInDays': minTransitTimeInDays!,
+      };
+}
+
+/// The payload for the triggered action.
+class TriggerActionPayload {
+  /// The context from the selected action.
+  ///
+  /// The value is obtained from rendered issues and needs to be sent back to
+  /// identify the action that is being triggered.
+  ///
+  /// Required.
+  core.String? actionContext;
+
+  /// Input provided by the merchant.
+  ///
+  /// Required.
+  ActionInput? actionInput;
+
+  TriggerActionPayload({
+    this.actionContext,
+    this.actionInput,
+  });
+
+  TriggerActionPayload.fromJson(core.Map json_)
+      : this(
+          actionContext: json_.containsKey('actionContext')
+              ? json_['actionContext'] as core.String
+              : null,
+          actionInput: json_.containsKey('actionInput')
+              ? ActionInput.fromJson(
+                  json_['actionInput'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (actionContext != null) 'actionContext': actionContext!,
+        if (actionInput != null) 'actionInput': actionInput!,
+      };
+}
+
+/// Response informing about the started action.
+class TriggerActionResponse {
+  /// The message for merchant.
+  core.String? message;
+
+  TriggerActionResponse({
+    this.message,
+  });
+
+  TriggerActionResponse.fromJson(core.Map json_)
+      : this(
+          message: json_.containsKey('message')
+              ? json_['message'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (message != null) 'message': message!,
       };
 }
 

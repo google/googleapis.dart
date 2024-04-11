@@ -1897,6 +1897,14 @@ class GoogleCloudPaymentsResellerSubscriptionV1Subscription {
   /// Optional.
   core.List<core.String>? promotions;
 
+  /// The timestamp when the user transaction was made with the Partner.
+  ///
+  /// Specify for the case of "bundle with choice", and it must be before the
+  /// provision_time (when the user makes a selection).
+  ///
+  /// Optional.
+  core.String? purchaseTime;
+
   /// The place where partners should redirect the end-user to after creation.
   ///
   /// This field might also be populated when creation failed. However, Partners
@@ -1973,6 +1981,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1Subscription {
     this.products,
     this.promotionSpecs,
     this.promotions,
+    this.purchaseTime,
     this.redirectUri,
     this.renewalTime,
     this.serviceLocation,
@@ -2033,6 +2042,9 @@ class GoogleCloudPaymentsResellerSubscriptionV1Subscription {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          purchaseTime: json_.containsKey('purchaseTime')
+              ? json_['purchaseTime'] as core.String
+              : null,
           redirectUri: json_.containsKey('redirectUri')
               ? json_['redirectUri'] as core.String
               : null,
@@ -2070,6 +2082,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1Subscription {
         if (products != null) 'products': products!,
         if (promotionSpecs != null) 'promotionSpecs': promotionSpecs!,
         if (promotions != null) 'promotions': promotions!,
+        if (purchaseTime != null) 'purchaseTime': purchaseTime!,
         if (redirectUri != null) 'redirectUri': redirectUri!,
         if (renewalTime != null) 'renewalTime': renewalTime!,
         if (serviceLocation != null) 'serviceLocation': serviceLocation!,
@@ -2170,10 +2183,9 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem {
 
   /// The promotions applied on the line item.
   ///
-  /// It can be: - a free trial promotion, which overrides the
-  /// subscription-level free trial promotion. - an introductory pricing
-  /// promotion. When used as input in Create or Provision API, specify its
-  /// resource name only.
+  /// It can be: - an introductory pricing promotion. - a free trial promotion.
+  /// This feature is not enabled. If used, the request will be rejected. When
+  /// used as input in Create or Provision API, specify its resource name only.
   ///
   /// Optional.
   core.List<GoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec>?

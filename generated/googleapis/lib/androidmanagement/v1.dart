@@ -2305,8 +2305,8 @@ class ApplicationPolicy {
   /// becomes out of date again.The user can still manually update the app from
   /// the Play Store at any time.
   /// - "AUTO_UPDATE_HIGH_PRIORITY" : The app is updated as soon as possible. No
-  /// constraints are applied.The device is notified immediately about a new
-  /// update after it becomes available.
+  /// constraints are applied.The device is notified as soon as possible about a
+  /// new update after it becomes available.
   core.String? autoUpdateMode;
 
   /// Controls whether the app can communicate with itself across a device’s
@@ -4065,8 +4065,6 @@ class DeviceConnectivityManagement {
   /// Supported only on company-owned devices.
   /// Possible string values are:
   /// - "USB_DATA_ACCESS_UNSPECIFIED" : Unspecified. Defaults to
-  /// ALLOW_USB_DATA_TRANSFER, unless usbFileTransferDisabled is set to true. If
-  /// usbFileTransferDisabled is set to true, this is equivalent to
   /// DISALLOW_USB_FILE_TRANSFER.
   /// - "ALLOW_USB_DATA_TRANSFER" : All types of USB data transfers are allowed.
   /// usbFileTransferDisabled is ignored.
@@ -4167,6 +4165,11 @@ class DeviceRadioState {
   /// required security level. The device will not be able to connect to Wi-Fi
   /// network below this security level. This is stricter than
   /// PERSONAL_NETWORK_SECURITY. A nonComplianceDetail with API_LEVEL is
+  /// reported if the Android version is less than 13.
+  /// - "ENTERPRISE_BIT192_NETWORK_SECURITY" : A 192-bit enterprise network is
+  /// the minimum required security level. The device will not be able to
+  /// connect to Wi-Fi network below this security level. This is stricter than
+  /// ENTERPRISE_NETWORK_SECURITY. A nonComplianceDetail with API_LEVEL is
   /// reported if the Android version is less than 13.
   core.String? minimumWifiSecurityLevel;
 
@@ -4716,9 +4719,7 @@ class Enterprise {
 /// (https://developer.android.com/topic/performance/appstandby#restricted-bucket).
 /// Extensions apps are also protected against users clearing their data or
 /// force-closing the application, although admins can continue to use the clear
-/// app data command
-/// (https://developer.android.com/management/reference/rest/v1/enterprises.devices/issueCommand#CommandType)
-/// on extension apps if needed for Android 13 and above.
+/// app data command on extension apps if needed for Android 13 and above.
 class ExtensionConfig {
   /// Fully qualified class name of the receiver service class for Android
   /// Device Policy to notify the extension app of any local command status
@@ -8996,7 +8997,8 @@ class StartLostModeParams {
   /// mode.
   UserFacingMessage? lostOrganization;
 
-  /// The phone number displayed to the user when the device is in lost mode.
+  /// The phone number that will be called when the device is in lost mode and
+  /// the call owner button is tapped.
   UserFacingMessage? lostPhoneNumber;
 
   /// The street address displayed to the user when the device is in lost mode.

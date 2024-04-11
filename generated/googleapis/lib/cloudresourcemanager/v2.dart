@@ -897,7 +897,8 @@ class Folder {
   ///
   /// Immutable. Tag keys/values directly bound to this folder. Each item in the
   /// map must be expressed as " : ". For example: "123/environment" :
-  /// "production", "123/costCenter" : "marketing"
+  /// "production", "123/costCenter" : "marketing" Note: Currently this field is
+  /// in Preview.
   ///
   /// Optional.
   core.Map<core.String, core.String>? tags;

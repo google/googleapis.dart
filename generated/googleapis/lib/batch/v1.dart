@@ -12,7 +12,7 @@
 
 /// Batch API - v1
 ///
-/// An API to manage the running of batch resources on Google Cloud Platform.
+/// An API to manage the running of Batch resources on Google Cloud Platform.
 ///
 /// For more information, see <https://cloud.google.com/batch/>
 ///
@@ -40,7 +40,7 @@ import '../src/user_agent.dart';
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-/// An API to manage the running of batch resources on Google Cloud Platform.
+/// An API to manage the running of Batch resources on Google Cloud Platform.
 class BatchApi {
   /// See, edit, configure, and delete your Google Cloud data and see the email
   /// address for your Google Account.
@@ -1326,7 +1326,9 @@ class AgentTaskSpec {
 
   /// Maximum duration the task should run.
   ///
-  /// The task will be killed and marked as FAILED if over this limit.
+  /// The task will be killed and marked as FAILED if over this limit. The valid
+  /// value range for max_run_duration in seconds is \[0,
+  /// 315576000000.999999999\],
   core.String? maxRunDuration;
 
   /// AgentTaskRunnable is runanbles that will be executed on the agent.
@@ -1468,7 +1470,16 @@ class AllocationPolicy {
   /// The placement policy.
   PlacementPolicy? placement;
 
-  /// Service account that VMs will run as.
+  /// Defines the service account for Batch-created VMs.
+  ///
+  /// If omitted, the
+  /// [default Compute Engine service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account)
+  /// is used. Must match the service account specified in any used instance
+  /// template configured in the Batch job. Includes the following fields: *
+  /// email: The service account's email address. If not set, the default
+  /// Compute Engine service account is used. * scopes: Additional OAuth scopes
+  /// to grant the service account, beyond the default cloud-platform scope.
+  /// (list of strings)
   ServiceAccount? serviceAccount;
 
   /// Tags applied to the VM instances.
@@ -3269,15 +3280,9 @@ typedef Script = $Script;
 /// Carries information about a Google Cloud service account.
 class ServiceAccount {
   /// Email address of the service account.
-  ///
-  /// If not specified, the default Compute Engine service account for the
-  /// project will be used. If instance template is being used, the service
-  /// account has to be specified in the instance template and it has to match
-  /// the email field here.
   core.String? email;
 
-  /// List of scopes to be enabled for this service account on the VM, in
-  /// addition to the cloud-platform API scope that will be added by default.
+  /// List of scopes to be enabled for this service account.
   core.List<core.String>? scopes;
 
   ServiceAccount({
@@ -3636,7 +3641,9 @@ class TaskSpec {
 
   /// Maximum duration the task should run.
   ///
-  /// The task will be killed and marked as FAILED if over this limit.
+  /// The task will be killed and marked as FAILED if over this limit. The valid
+  /// value range for max_run_duration in seconds is \[0,
+  /// 315576000000.999999999\],
   core.String? maxRunDuration;
 
   /// The sequence of scripts or containers to run for this Task.

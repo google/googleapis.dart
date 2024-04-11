@@ -2128,6 +2128,62 @@ class PosixFilesystem {
       };
 }
 
+/// Specifies the configuration for running a replication job.
+class ReplicationSpec {
+  /// Specifies cloud Storage data sink.
+  GcsData? gcsDataSink;
+
+  /// Specifies cloud Storage data source.
+  GcsData? gcsDataSource;
+
+  /// Specifies the object conditions to only include objects that satisfy these
+  /// conditions in the set of data source objects.
+  ///
+  /// Object conditions based on objects' "last modification time" do not
+  /// exclude objects in a data sink.
+  ObjectConditions? objectConditions;
+
+  /// Specifies the actions to be performed on the object during replication.
+  ///
+  /// Delete options are not supported for replication and when specified, the
+  /// request fails with an INVALID_ARGUMENT error.
+  TransferOptions? transferOptions;
+
+  ReplicationSpec({
+    this.gcsDataSink,
+    this.gcsDataSource,
+    this.objectConditions,
+    this.transferOptions,
+  });
+
+  ReplicationSpec.fromJson(core.Map json_)
+      : this(
+          gcsDataSink: json_.containsKey('gcsDataSink')
+              ? GcsData.fromJson(
+                  json_['gcsDataSink'] as core.Map<core.String, core.dynamic>)
+              : null,
+          gcsDataSource: json_.containsKey('gcsDataSource')
+              ? GcsData.fromJson(
+                  json_['gcsDataSource'] as core.Map<core.String, core.dynamic>)
+              : null,
+          objectConditions: json_.containsKey('objectConditions')
+              ? ObjectConditions.fromJson(json_['objectConditions']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          transferOptions: json_.containsKey('transferOptions')
+              ? TransferOptions.fromJson(json_['transferOptions']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (gcsDataSink != null) 'gcsDataSink': gcsDataSink!,
+        if (gcsDataSource != null) 'gcsDataSource': gcsDataSource!,
+        if (objectConditions != null) 'objectConditions': objectConditions!,
+        if (transferOptions != null) 'transferOptions': transferOptions!,
+      };
+}
+
 /// Request passed to ResumeTransferOperation.
 typedef ResumeTransferOperationRequest = $Empty;
 
@@ -2410,6 +2466,9 @@ class TransferJob {
   /// The ID of the Google Cloud project that owns the job.
   core.String? projectId;
 
+  /// Replication specification.
+  ReplicationSpec? replicationSpec;
+
   /// Specifies schedule for the transfer job.
   ///
   /// This is an optional field. When the field is not set, the job never
@@ -2448,6 +2507,7 @@ class TransferJob {
     this.name,
     this.notificationConfig,
     this.projectId,
+    this.replicationSpec,
     this.schedule,
     this.status,
     this.transferSpec,
@@ -2486,6 +2546,10 @@ class TransferJob {
           projectId: json_.containsKey('projectId')
               ? json_['projectId'] as core.String
               : null,
+          replicationSpec: json_.containsKey('replicationSpec')
+              ? ReplicationSpec.fromJson(json_['replicationSpec']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           schedule: json_.containsKey('schedule')
               ? Schedule.fromJson(
                   json_['schedule'] as core.Map<core.String, core.dynamic>)
@@ -2513,6 +2577,7 @@ class TransferJob {
         if (notificationConfig != null)
           'notificationConfig': notificationConfig!,
         if (projectId != null) 'projectId': projectId!,
+        if (replicationSpec != null) 'replicationSpec': replicationSpec!,
         if (schedule != null) 'schedule': schedule!,
         if (status != null) 'status': status!,
         if (transferSpec != null) 'transferSpec': transferSpec!,

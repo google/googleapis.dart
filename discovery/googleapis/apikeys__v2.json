@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240303",
+    "revision": "20240331",
     "rootUrl": "https://apikeys.googleapis.com/",
     "servicePath": "",
     "title": "API Keys API",

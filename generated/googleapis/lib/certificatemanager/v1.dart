@@ -1754,6 +1754,32 @@ class ProjectsLocationsTrustConfigsResource {
   }
 }
 
+/// Defines an allowlisted certificate.
+class AllowlistedCertificate {
+  /// PEM certificate that is allowlisted.
+  ///
+  /// The certificate can be up to 5k bytes, and must be a parseable X.509
+  /// certificate.
+  ///
+  /// Required.
+  core.String? pemCertificate;
+
+  AllowlistedCertificate({
+    this.pemCertificate,
+  });
+
+  AllowlistedCertificate.fromJson(core.Map json_)
+      : this(
+          pemCertificate: json_.containsKey('pemCertificate')
+              ? json_['pemCertificate'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (pemCertificate != null) 'pemCertificate': pemCertificate!,
+      };
+}
+
 /// State of the latest attempt to authorize a domain for certificate issuance.
 class AuthorizationAttemptInfo {
   /// Human readable explanation for reaching the state.
@@ -3232,6 +3258,14 @@ class TrustAnchor {
 
 /// Defines a trust config.
 class TrustConfig {
+  /// A certificate matching an allowlisted certificate is always considered
+  /// valid as long as the certificate is parseable, proof of private key
+  /// possession is established, and constraints on the certificate’s SAN field
+  /// are met.
+  ///
+  /// Optional.
+  core.List<AllowlistedCertificate>? allowlistedCertificates;
+
   /// The creation timestamp of a TrustConfig.
   ///
   /// Output only.
@@ -3267,6 +3301,7 @@ class TrustConfig {
   core.String? updateTime;
 
   TrustConfig({
+    this.allowlistedCertificates,
     this.createTime,
     this.description,
     this.etag,
@@ -3278,6 +3313,12 @@ class TrustConfig {
 
   TrustConfig.fromJson(core.Map json_)
       : this(
+          allowlistedCertificates: json_.containsKey('allowlistedCertificates')
+              ? (json_['allowlistedCertificates'] as core.List)
+                  .map((value) => AllowlistedCertificate.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
               : null,
@@ -3306,6 +3347,8 @@ class TrustConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (allowlistedCertificates != null)
+          'allowlistedCertificates': allowlistedCertificates!,
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
         if (etag != null) 'etag': etag!,

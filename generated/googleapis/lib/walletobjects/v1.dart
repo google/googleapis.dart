@@ -5122,7 +5122,7 @@ class CallbackOptions {
   /// URL for the merchant endpoint that would be called to request updates.
   ///
   /// The URL should be hosted on HTTPS and robots.txt should allow the URL path
-  /// to be accessible by UserAgent:Google-Valuables. Deprecated.
+  /// to be accessible by UserAgent:Googlebot. Deprecated.
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
   )
@@ -5131,7 +5131,7 @@ class CallbackOptions {
   /// The HTTPS url configured by the merchant.
   ///
   /// The URL should be hosted on HTTPS and robots.txt should allow the URL path
-  /// to be accessible by UserAgent:Google-Valuables.
+  /// to be accessible by UserAgent:Googlebot.
   core.String? url;
 
   CallbackOptions({

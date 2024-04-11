@@ -1512,6 +1512,11 @@ class Instance {
   /// Output only.
   DenyMaintenancePeriod? lastDenyMaintenancePeriod;
 
+  /// Linked Google Cloud Project Number for Looker Studio Pro.
+  ///
+  /// Optional.
+  core.String? linkedLspProjectNumber;
+
   /// Looker instance URI which can be used to access the Looker Instance UI.
   ///
   /// Output only.
@@ -1548,20 +1553,6 @@ class Instance {
 
   /// Whether private IP is enabled on the Looker instance.
   core.bool? privateIpEnabled;
-
-  /// PSC configuration.
-  ///
-  /// Used when `enable_private_ip` and `psc_enabled` are both true.
-  ///
-  /// Optional.
-  PscConfig? pscConfig;
-
-  /// Whether to use Private Service Connect (PSC) for private IP connectivity.
-  ///
-  /// If true, VPC peering (PSA) will not be used.
-  ///
-  /// Optional.
-  core.bool? pscEnabled;
 
   /// Whether public IP is enabled on the Looker instance.
   core.bool? publicIpEnabled;
@@ -1606,6 +1597,7 @@ class Instance {
     this.ingressPrivateIp,
     this.ingressPublicIp,
     this.lastDenyMaintenancePeriod,
+    this.linkedLspProjectNumber,
     this.lookerUri,
     this.lookerVersion,
     this.maintenanceSchedule,
@@ -1614,8 +1606,6 @@ class Instance {
     this.oauthConfig,
     this.platformEdition,
     this.privateIpEnabled,
-    this.pscConfig,
-    this.pscEnabled,
     this.publicIpEnabled,
     this.reservedRange,
     this.state,
@@ -1662,6 +1652,9 @@ class Instance {
                       json_['lastDenyMaintenancePeriod']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          linkedLspProjectNumber: json_.containsKey('linkedLspProjectNumber')
+              ? json_['linkedLspProjectNumber'] as core.String
+              : null,
           lookerUri: json_.containsKey('lookerUri')
               ? json_['lookerUri'] as core.String
               : null,
@@ -1686,13 +1679,6 @@ class Instance {
               : null,
           privateIpEnabled: json_.containsKey('privateIpEnabled')
               ? json_['privateIpEnabled'] as core.bool
-              : null,
-          pscConfig: json_.containsKey('pscConfig')
-              ? PscConfig.fromJson(
-                  json_['pscConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-          pscEnabled: json_.containsKey('pscEnabled')
-              ? json_['pscEnabled'] as core.bool
               : null,
           publicIpEnabled: json_.containsKey('publicIpEnabled')
               ? json_['publicIpEnabled'] as core.bool
@@ -1724,6 +1710,8 @@ class Instance {
         if (ingressPublicIp != null) 'ingressPublicIp': ingressPublicIp!,
         if (lastDenyMaintenancePeriod != null)
           'lastDenyMaintenancePeriod': lastDenyMaintenancePeriod!,
+        if (linkedLspProjectNumber != null)
+          'linkedLspProjectNumber': linkedLspProjectNumber!,
         if (lookerUri != null) 'lookerUri': lookerUri!,
         if (lookerVersion != null) 'lookerVersion': lookerVersion!,
         if (maintenanceSchedule != null)
@@ -1733,8 +1721,6 @@ class Instance {
         if (oauthConfig != null) 'oauthConfig': oauthConfig!,
         if (platformEdition != null) 'platformEdition': platformEdition!,
         if (privateIpEnabled != null) 'privateIpEnabled': privateIpEnabled!,
-        if (pscConfig != null) 'pscConfig': pscConfig!,
-        if (pscEnabled != null) 'pscEnabled': pscEnabled!,
         if (publicIpEnabled != null) 'publicIpEnabled': publicIpEnabled!,
         if (reservedRange != null) 'reservedRange': reservedRange!,
         if (state != null) 'state': state!,
@@ -2162,121 +2148,8 @@ class Policy {
       };
 }
 
-/// Information for Private Service Connect (PSC) setup for a Looker instance.
-class PscConfig {
-  /// List of VPCs that are allowed ingress into looker.
-  ///
-  /// Format: projects/{project}/global/networks/{network}
-  ///
-  /// Optional.
-  core.List<core.String>? allowedVpcs;
-
-  /// URI of the Looker service attachment.
-  ///
-  /// Output only.
-  core.String? lookerServiceAttachmentUri;
-
-  /// List of egress service attachment configurations.
-  ///
-  /// Optional.
-  core.List<ServiceAttachment>? serviceAttachments;
-
-  PscConfig({
-    this.allowedVpcs,
-    this.lookerServiceAttachmentUri,
-    this.serviceAttachments,
-  });
-
-  PscConfig.fromJson(core.Map json_)
-      : this(
-          allowedVpcs: json_.containsKey('allowedVpcs')
-              ? (json_['allowedVpcs'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          lookerServiceAttachmentUri:
-              json_.containsKey('lookerServiceAttachmentUri')
-                  ? json_['lookerServiceAttachmentUri'] as core.String
-                  : null,
-          serviceAttachments: json_.containsKey('serviceAttachments')
-              ? (json_['serviceAttachments'] as core.List)
-                  .map((value) => ServiceAttachment.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (allowedVpcs != null) 'allowedVpcs': allowedVpcs!,
-        if (lookerServiceAttachmentUri != null)
-          'lookerServiceAttachmentUri': lookerServiceAttachmentUri!,
-        if (serviceAttachments != null)
-          'serviceAttachments': serviceAttachments!,
-      };
-}
-
 /// Request options for restarting an instance.
 typedef RestartInstanceRequest = $Empty;
-
-/// Service attachment configuration.
-class ServiceAttachment {
-  /// Connection status.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "UNKNOWN" : Connection status is unspecified.
-  /// - "ACCEPTED" : Connection is established and functioning normally.
-  /// - "PENDING" : Connection is not established (Looker tenant project hasn't
-  /// been allowlisted).
-  /// - "REJECTED" : Connection is not established (Looker tenant project is
-  /// explicitly in reject list).
-  /// - "NEEDS_ATTENTION" : Issue with target service attachment, e.g. NAT
-  /// subnet is exhausted.
-  /// - "CLOSED" : Target service attachment does not exist. This status is a
-  /// terminal state.
-  core.String? connectionStatus;
-
-  /// Fully qualified domain name that will be used in the private DNS record
-  /// created for the service attachment.
-  ///
-  /// Required.
-  core.String? localFqdn;
-
-  /// URI of the service attachment to connect to.
-  ///
-  /// Format:
-  /// projects/{project}/regions/{region}/serviceAttachments/{service_attachment}
-  ///
-  /// Required.
-  core.String? targetServiceAttachmentUri;
-
-  ServiceAttachment({
-    this.connectionStatus,
-    this.localFqdn,
-    this.targetServiceAttachmentUri,
-  });
-
-  ServiceAttachment.fromJson(core.Map json_)
-      : this(
-          connectionStatus: json_.containsKey('connectionStatus')
-              ? json_['connectionStatus'] as core.String
-              : null,
-          localFqdn: json_.containsKey('localFqdn')
-              ? json_['localFqdn'] as core.String
-              : null,
-          targetServiceAttachmentUri:
-              json_.containsKey('targetServiceAttachmentUri')
-                  ? json_['targetServiceAttachmentUri'] as core.String
-                  : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (connectionStatus != null) 'connectionStatus': connectionStatus!,
-        if (localFqdn != null) 'localFqdn': localFqdn!,
-        if (targetServiceAttachmentUri != null)
-          'targetServiceAttachmentUri': targetServiceAttachmentUri!,
-      };
-}
 
 /// Request message for `SetIamPolicy` method.
 class SetIamPolicyRequest {

@@ -1171,6 +1171,7 @@ class AcceleratorConfig {
   /// - "V2" : TPU v2.
   /// - "V3" : TPU v3.
   /// - "V4" : TPU v4.
+  /// - "V5P" : TPU v5p
   core.String? type;
 
   AcceleratorConfig({

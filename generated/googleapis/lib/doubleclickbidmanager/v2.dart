@@ -634,6 +634,9 @@ class Options {
   core.bool? includeOnlyTargetedUserLists;
 
   /// Options that contain Path Filters and Custom Channel Groupings.
+  ///
+  /// This field is deprecated and will sunset on **May 1, 2024**. After sunset,
+  /// requests using this field will return an error.
   PathQueryOptions? pathQueryOptions;
 
   Options({
@@ -691,8 +694,13 @@ class Parameters {
   /// report.
   /// - "REACH" : Reach report.
   /// - "UNIQUE_REACH_AUDIENCE" : Unique Reach Audience report.
-  /// - "FULL_PATH" : Full Path report.
-  /// - "PATH_ATTRIBUTION" : Path Attribution report.
+  /// - "FULL_PATH" : Full Path report. This report type is deprecated and will
+  /// sunset on **May 1, 2024**. After sunset, requests retrieving, creating, or
+  /// running reports of this type will return an error.
+  /// - "PATH_ATTRIBUTION" : Path Attribution report. This report type is
+  /// deprecated and will sunset on **May 1, 2024**. After sunset, requests
+  /// retrieving, creating, or running reports of this type will return an
+  /// error.
   core.String? type;
 
   Parameters({

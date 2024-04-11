@@ -366,6 +366,8 @@ class DecodeIntegrityTokenResponse {
 }
 
 /// Contains the device attestation information.
+///
+/// Next tag: 4
 class DeviceIntegrity {
   /// Details about the integrity of the device the app is running on.
   core.List<core.String>? deviceRecognitionVerdict;

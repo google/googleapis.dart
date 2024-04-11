@@ -1793,6 +1793,7 @@ api.PageElement buildPageElement() {
     o.shape = buildShape();
     o.sheetsChart = buildSheetsChart();
     o.size = buildSize();
+    o.speakerSpotlight = buildSpeakerSpotlight();
     o.table = buildTable();
     o.title = 'foo';
     o.transform = buildAffineTransform();
@@ -1820,6 +1821,7 @@ void checkPageElement(api.PageElement o) {
     checkShape(o.shape!);
     checkSheetsChart(o.sheetsChart!);
     checkSize(o.size!);
+    checkSpeakerSpotlight(o.speakerSpotlight!);
     checkTable(o.table!);
     unittest.expect(
       o.title!,
@@ -2861,6 +2863,46 @@ void checkSolidFill(api.SolidFill o) {
     checkOpaqueColor(o.color!);
   }
   buildCounterSolidFill--;
+}
+
+core.int buildCounterSpeakerSpotlight = 0;
+api.SpeakerSpotlight buildSpeakerSpotlight() {
+  final o = api.SpeakerSpotlight();
+  buildCounterSpeakerSpotlight++;
+  if (buildCounterSpeakerSpotlight < 3) {
+    o.speakerSpotlightProperties = buildSpeakerSpotlightProperties();
+  }
+  buildCounterSpeakerSpotlight--;
+  return o;
+}
+
+void checkSpeakerSpotlight(api.SpeakerSpotlight o) {
+  buildCounterSpeakerSpotlight++;
+  if (buildCounterSpeakerSpotlight < 3) {
+    checkSpeakerSpotlightProperties(o.speakerSpotlightProperties!);
+  }
+  buildCounterSpeakerSpotlight--;
+}
+
+core.int buildCounterSpeakerSpotlightProperties = 0;
+api.SpeakerSpotlightProperties buildSpeakerSpotlightProperties() {
+  final o = api.SpeakerSpotlightProperties();
+  buildCounterSpeakerSpotlightProperties++;
+  if (buildCounterSpeakerSpotlightProperties < 3) {
+    o.outline = buildOutline();
+    o.shadow = buildShadow();
+  }
+  buildCounterSpeakerSpotlightProperties--;
+  return o;
+}
+
+void checkSpeakerSpotlightProperties(api.SpeakerSpotlightProperties o) {
+  buildCounterSpeakerSpotlightProperties++;
+  if (buildCounterSpeakerSpotlightProperties < 3) {
+    checkOutline(o.outline!);
+    checkShadow(o.shadow!);
+  }
+  buildCounterSpeakerSpotlightProperties--;
 }
 
 core.int buildCounterStretchedPictureFill = 0;
@@ -5166,6 +5208,26 @@ void main() {
       final od =
           api.SolidFill.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkSolidFill(od);
+    });
+  });
+
+  unittest.group('obj-schema-SpeakerSpotlight', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSpeakerSpotlight();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SpeakerSpotlight.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSpeakerSpotlight(od);
+    });
+  });
+
+  unittest.group('obj-schema-SpeakerSpotlightProperties', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSpeakerSpotlightProperties();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SpeakerSpotlightProperties.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSpeakerSpotlightProperties(od);
     });
   });
 

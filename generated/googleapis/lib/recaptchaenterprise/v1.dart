@@ -1566,6 +1566,21 @@ class GoogleCloudRecaptchaenterpriseV1Event {
   /// Optional.
   core.bool? firewallPolicyEvaluation;
 
+  /// The Fraud Prevention setting for this assessment.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "FRAUD_PREVENTION_UNSPECIFIED" : Default, unspecified setting. If opted
+  /// in for automatic detection, `fraud_prevention_assessment` is returned
+  /// based on the request. Otherwise, `fraud_prevention_assessment` is returned
+  /// if `transaction_data` is present in the `Event` and Fraud Prevention is
+  /// enabled in the Google Cloud console.
+  /// - "ENABLED" : Enable Fraud Prevention for this assessment, if Fraud
+  /// Prevention is enabled in the Google Cloud console.
+  /// - "DISABLED" : Disable Fraud Prevention for this assessment, regardless of
+  /// opt-in status or Google Cloud console settings.
+  core.String? fraudPrevention;
+
   /// Deprecated: use `user_info.account_id` instead.
   ///
   /// Unique stable hashed user identifier for the request. The identifier must
@@ -1653,6 +1668,7 @@ class GoogleCloudRecaptchaenterpriseV1Event {
     this.expectedAction,
     this.express,
     this.firewallPolicyEvaluation,
+    this.fraudPrevention,
     this.hashedAccountId,
     this.headers,
     this.ja3,
@@ -1678,6 +1694,9 @@ class GoogleCloudRecaptchaenterpriseV1Event {
               json_.containsKey('firewallPolicyEvaluation')
                   ? json_['firewallPolicyEvaluation'] as core.bool
                   : null,
+          fraudPrevention: json_.containsKey('fraudPrevention')
+              ? json_['fraudPrevention'] as core.String
+              : null,
           hashedAccountId: json_.containsKey('hashedAccountId')
               ? json_['hashedAccountId'] as core.String
               : null,
@@ -1720,6 +1739,7 @@ class GoogleCloudRecaptchaenterpriseV1Event {
         if (express != null) 'express': express!,
         if (firewallPolicyEvaluation != null)
           'firewallPolicyEvaluation': firewallPolicyEvaluation!,
+        if (fraudPrevention != null) 'fraudPrevention': fraudPrevention!,
         if (hashedAccountId != null) 'hashedAccountId': hashedAccountId!,
         if (headers != null) 'headers': headers!,
         if (ja3 != null) 'ja3': ja3!,
@@ -2445,7 +2465,7 @@ class GoogleCloudRecaptchaenterpriseV1Key {
       };
 }
 
-/// Response to request to list firewall policies belonging to a key.
+/// Response to request to list firewall policies belonging to a project.
 class GoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse {
   /// Policy details.
   core.List<GoogleCloudRecaptchaenterpriseV1FirewallPolicy>? firewallPolicies;

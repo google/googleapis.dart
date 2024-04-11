@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240229",
+    "revision": "20240328",
     "rootUrl": "https://assuredworkloads.googleapis.com/",
     "servicePath": "",
     "title": "Assured Workloads API",
@@ -697,7 +697,9 @@
                         "CA_PROTECTED_B",
                         "IL5",
                         "IL2",
-                        "JP_REGIONS_AND_SUPPORT"
+                        "JP_REGIONS_AND_SUPPORT",
+                        "KSA_REGIONS_AND_SUPPORT_WITH_SOVEREIGNTY_CONTROLS",
+                        "FREE_REGIONS"
                     ],
                     "enumDescriptions": [
                         "Unknown compliance regime.",
@@ -718,7 +720,9 @@
                         "Assured Workloads for Canada Protected B regime",
                         "Information protection as per DoD IL5 requirements.",
                         "Information protection as per DoD IL2 requirements.",
-                        "Assured Workloads for Japan Regions"
+                        "Assured Workloads for Japan Regions",
+                        "KSA R5 Controls.",
+                        "Assured Workloads Free Regions"
                     ],
                     "type": "string"
                 },
@@ -1174,7 +1178,9 @@
                         "CA_PROTECTED_B",
                         "IL5",
                         "IL2",
-                        "JP_REGIONS_AND_SUPPORT"
+                        "JP_REGIONS_AND_SUPPORT",
+                        "KSA_REGIONS_AND_SUPPORT_WITH_SOVEREIGNTY_CONTROLS",
+                        "FREE_REGIONS"
                     ],
                     "enumDescriptions": [
                         "Unknown compliance regime.",
@@ -1195,7 +1201,9 @@
                         "Assured Workloads for Canada Protected B regime",
                         "Information protection as per DoD IL5 requirements.",
                         "Information protection as per DoD IL2 requirements.",
-                        "Assured Workloads for Japan Regions"
+                        "Assured Workloads for Japan Regions",
+                        "KSA R5 Controls.",
+                        "Assured Workloads Free Regions"
                     ],
                     "type": "string"
                 },

@@ -80,7 +80,8 @@ class OrganizationsLocationsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of the settings to retrieve. Format:
-  /// organizations/{organization}/locations/{location}/settings.
+  /// organizations/{organization}/locations/{location}/settings or
+  /// projects/{projects}/locations/{location}/settings.
   /// Value must have pattern
   /// `^organizations/\[^/\]+/locations/\[^/\]+/settings$`.
   ///
@@ -120,7 +121,8 @@ class OrganizationsLocationsResource {
   /// Request parameters:
   ///
   /// [name] - Identifier. The resource name of the settings to retrieve.
-  /// Format: organizations/{organization}/locations/{location}/settings.
+  /// Format: organizations/{organization}/locations/{location}/settings or
+  /// projects/{projects}/locations/{location}/settings.
   /// Value must have pattern
   /// `^organizations/\[^/\]+/locations/\[^/\]+/settings$`.
   ///
@@ -217,7 +219,7 @@ class OrganizationsLocationsNotificationsResource {
   /// [parent] - Required. The parent, which owns this collection of
   /// notifications. Must be of the form
   /// "organizations/{organization}/locations/{location}" or
-  /// "projects/{project}/locations/{location}"
+  /// "projects/{project}/locations/{location}".
   /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [languageCode] - ISO code for requested localization language. If unset,
@@ -301,6 +303,87 @@ class ProjectsLocationsResource {
       ProjectsLocationsNotificationsResource(_requester);
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Get notification settings.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the settings to retrieve. Format:
+  /// organizations/{organization}/locations/{location}/settings or
+  /// projects/{projects}/locations/{location}/settings.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+/settings$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudAdvisorynotificationsV1Settings].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudAdvisorynotificationsV1Settings> getSettings(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAdvisorynotificationsV1Settings.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Update notification settings.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The resource name of the settings to retrieve.
+  /// Format: organizations/{organization}/locations/{location}/settings or
+  /// projects/{projects}/locations/{location}/settings.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+/settings$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudAdvisorynotificationsV1Settings].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudAdvisorynotificationsV1Settings> updateSettings(
+    GoogleCloudAdvisorynotificationsV1Settings request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAdvisorynotificationsV1Settings.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsLocationsNotificationsResource {
@@ -363,7 +446,7 @@ class ProjectsLocationsNotificationsResource {
   /// [parent] - Required. The parent, which owns this collection of
   /// notifications. Must be of the form
   /// "organizations/{organization}/locations/{location}" or
-  /// "projects/{project}/locations/{location}"
+  /// "projects/{project}/locations/{location}".
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [languageCode] - ISO code for requested localization language. If unset,
@@ -746,7 +829,8 @@ class GoogleCloudAdvisorynotificationsV1Settings {
   /// Identifier.
   ///
   /// The resource name of the settings to retrieve. Format:
-  /// organizations/{organization}/locations/{location}/settings.
+  /// organizations/{organization}/locations/{location}/settings or
+  /// projects/{projects}/locations/{location}/settings.
   core.String? name;
 
   /// Map of each notification type and its settings to get/set all settings at

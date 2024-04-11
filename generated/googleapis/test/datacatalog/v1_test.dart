@@ -2997,6 +2997,7 @@ api.GoogleCloudDatacatalogV1TagTemplate
   final o = api.GoogleCloudDatacatalogV1TagTemplate();
   buildCounterGoogleCloudDatacatalogV1TagTemplate++;
   if (buildCounterGoogleCloudDatacatalogV1TagTemplate < 3) {
+    o.dataplexTransferStatus = 'foo';
     o.displayName = 'foo';
     o.fields = buildUnnamed32();
     o.isPubliclyReadable = true;
@@ -3010,6 +3011,10 @@ void checkGoogleCloudDatacatalogV1TagTemplate(
     api.GoogleCloudDatacatalogV1TagTemplate o) {
   buildCounterGoogleCloudDatacatalogV1TagTemplate++;
   if (buildCounterGoogleCloudDatacatalogV1TagTemplate < 3) {
+    unittest.expect(
+      o.dataplexTransferStatus!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.displayName!,
       unittest.equals('foo'),

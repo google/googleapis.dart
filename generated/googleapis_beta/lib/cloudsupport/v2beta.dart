@@ -100,15 +100,6 @@ class CaseClassificationsResource {
   /// [pageToken] - A token identifying the page of results to return. If
   /// unspecified, the first page is retrieved.
   ///
-  /// [product_productLine] - The Product Line of the Product.
-  /// Possible string values are:
-  /// - "PRODUCT_LINE_UNSPECIFIED" : Unknown product type.
-  /// - "GOOGLE_CLOUD" : Google Cloud
-  /// - "GOOGLE_MAPS" : Google Maps
-  ///
-  /// [product_productSubline] - The Product Subline of the Product, such as
-  /// "Maps Billing".
-  ///
   /// [query] - An expression used to filter case classifications. If it's an
   /// empty string, then no filtering happens. Otherwise, case classifications
   /// will be returned that match the filter.
@@ -126,18 +117,12 @@ class CaseClassificationsResource {
   async.Future<SearchCaseClassificationsResponse> search({
     core.int? pageSize,
     core.String? pageToken,
-    core.String? product_productLine,
-    core.String? product_productSubline,
     core.String? query,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
-      if (product_productLine != null)
-        'product.productLine': [product_productLine],
-      if (product_productSubline != null)
-        'product.productSubline': [product_productSubline],
       if (query != null) 'query': [query],
       if ($fields != null) 'fields': [$fields],
     };
@@ -420,13 +405,6 @@ class CasesResource {
   /// [pageToken] - A token identifying the page of results to return. If
   /// unspecified, the first page is retrieved.
   ///
-  /// [productLine] - The product line for which to request cases for. If
-  /// unspecified, only Google Cloud cases will be returned.
-  /// Possible string values are:
-  /// - "PRODUCT_LINE_UNSPECIFIED" : Unknown product type.
-  /// - "GOOGLE_CLOUD" : Google Cloud
-  /// - "GOOGLE_MAPS" : Google Maps
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -442,14 +420,12 @@ class CasesResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
-    core.String? productLine,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
-      if (productLine != null) 'productLine': [productLine],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1385,13 +1361,9 @@ class CaseClassification {
   /// using the classification ID will fail.
   core.String? id;
 
-  /// The full product the classification corresponds to.
-  Product? product;
-
   CaseClassification({
     this.displayName,
     this.id,
-    this.product,
   });
 
   CaseClassification.fromJson(core.Map json_)
@@ -1400,52 +1372,54 @@ class CaseClassification {
               ? json_['displayName'] as core.String
               : null,
           id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          product: json_.containsKey('product')
-              ? Product.fromJson(
-                  json_['product'] as core.Map<core.String, core.dynamic>)
-              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
         if (id != null) 'id': id!,
-        if (product != null) 'product': product!,
       };
 }
 
 /// The request message for the CloseCase endpoint.
 typedef CloseCaseRequest = $Empty;
 
-/// Case comments are the main way Google Support communicates with a user who
-/// has opened a case.
+/// A comment associated with a support case.
 ///
-/// When a user responds to Google Support, the user's responses also appear as
-/// comments.
+/// Case comments are the primary way for Google Support to communicate with a
+/// user who has opened a case. When a user responds to Google Support, the
+/// user's responses also appear as comments.
 class Comment {
   /// The full comment body.
   ///
-  /// Maximum of 12800 characters. This can contain rich text syntax.
+  /// Maximum of 12800 characters.
   core.String? body;
 
-  /// The time when this comment was created.
+  /// The time when the comment was created.
   ///
   /// Output only.
   core.String? createTime;
 
-  /// The user or Google Support agent created this comment.
+  /// The user or Google Support agent who created the comment.
   ///
   /// Output only.
   Actor? creator;
 
-  /// The resource name for the comment.
+  /// Identifier.
+  ///
+  /// The resource name of the comment.
   ///
   /// Output only.
   core.String? name;
 
-  /// An automatically generated plain text version of body with all rich text
-  /// syntax stripped.
+  /// DO NOT USE.
+  ///
+  /// A duplicate of the `body` field. This field is only present for legacy
+  /// reasons.
   ///
   /// Output only. Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? plainTextBody;
 
   Comment({
@@ -2461,40 +2435,6 @@ class ObjectId {
         if (bucketName != null) 'bucketName': bucketName!,
         if (generation != null) 'generation': generation!,
         if (objectName != null) 'objectName': objectName!,
-      };
-}
-
-/// The full product a case may be associated with, including Product Line and
-/// Product Subline.
-class Product {
-  /// The Product Line of the Product.
-  /// Possible string values are:
-  /// - "PRODUCT_LINE_UNSPECIFIED" : Unknown product type.
-  /// - "GOOGLE_CLOUD" : Google Cloud
-  /// - "GOOGLE_MAPS" : Google Maps
-  core.String? productLine;
-
-  /// The Product Subline of the Product, such as "Maps Billing".
-  core.String? productSubline;
-
-  Product({
-    this.productLine,
-    this.productSubline,
-  });
-
-  Product.fromJson(core.Map json_)
-      : this(
-          productLine: json_.containsKey('productLine')
-              ? json_['productLine'] as core.String
-              : null,
-          productSubline: json_.containsKey('productSubline')
-              ? json_['productSubline'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (productLine != null) 'productLine': productLine!,
-        if (productSubline != null) 'productSubline': productSubline!,
       };
 }
 

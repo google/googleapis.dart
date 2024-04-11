@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240302",
+    "revision": "20240328",
     "rootUrl": "https://securitycenter.googleapis.com/",
     "servicePath": "",
     "title": "Security Command Center API",

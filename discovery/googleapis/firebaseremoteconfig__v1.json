@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240307",
+    "revision": "20240404",
     "rootUrl": "https://firebaseremoteconfig.googleapis.com/",
     "servicePath": "",
     "title": "Firebase Remote Config API",
@@ -470,6 +470,13 @@
                     "description": "A map of Remote Config parameter key to Firebase Personalization related metadata that should be delivered to the particular device making the fetch call.",
                     "type": "object"
                 },
+                "rolloutMetadata": {
+                    "description": "Metadata describing active Remote Config rollouts which are related to parameters delivered via this fetch response.",
+                    "items": {
+                        "$ref": "RolloutMetadata"
+                    },
+                    "type": "array"
+                },
                 "state": {
                     "description": "The state of the fetched response.",
                     "enum": [
@@ -750,6 +757,28 @@
                 "versionNumber": {
                     "description": "Required. The version number of the RemoteConfig to roll back to. The specified version number must be less than the current version number, and not have been deleted due to staleness.",
                     "format": "int64",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "RolloutMetadata": {
+            "description": "Metadata describing Remote Config rollouts.",
+            "id": "RolloutMetadata",
+            "properties": {
+                "affectedParameterKeys": {
+                    "description": "The parameter keys affected by this rollout.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "rolloutId": {
+                    "description": "The Firebase Remote Config rollout ID uniquely identifying a rollout. This is the tracking ID of the Rollout object defined in ExperimentsEntities.",
+                    "type": "string"
+                },
+                "variantId": {
+                    "description": "The variant of the rollout assigned to this instance in this fetch response.",
                     "type": "string"
                 }
             },

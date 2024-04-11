@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240303",
+    "revision": "20240407",
     "rootUrl": "https://advisorynotifications.googleapis.com/",
     "servicePath": "",
     "title": "Advisory Notifications API",
@@ -123,7 +123,7 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "Required. The resource name of the settings to retrieve. Format: organizations/{organization}/locations/{location}/settings.",
+                                    "description": "Required. The resource name of the settings to retrieve. Format: organizations/{organization}/locations/{location}/settings or projects/{projects}/locations/{location}/settings.",
                                     "location": "path",
                                     "pattern": "^organizations/[^/]+/locations/[^/]+/settings$",
                                     "required": true,
@@ -148,7 +148,7 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "Identifier. The resource name of the settings to retrieve. Format: organizations/{organization}/locations/{location}/settings.",
+                                    "description": "Identifier. The resource name of the settings to retrieve. Format: organizations/{organization}/locations/{location}/settings or projects/{projects}/locations/{location}/settings.",
                                     "location": "path",
                                     "pattern": "^organizations/[^/]+/locations/[^/]+/settings$",
                                     "required": true,
@@ -226,7 +226,7 @@
                                             "type": "string"
                                         },
                                         "parent": {
-                                            "description": "Required. The parent, which owns this collection of notifications. Must be of the form \"organizations/{organization}/locations/{location}\" or \"projects/{project}/locations/{location}\"",
+                                            "description": "Required. The parent, which owns this collection of notifications. Must be of the form \"organizations/{organization}/locations/{location}\" or \"projects/{project}/locations/{location}\".",
                                             "location": "path",
                                             "pattern": "^organizations/[^/]+/locations/[^/]+$",
                                             "required": true,
@@ -265,6 +265,61 @@
         "projects": {
             "resources": {
                 "locations": {
+                    "methods": {
+                        "getSettings": {
+                            "description": "Get notification settings.",
+                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/settings",
+                            "httpMethod": "GET",
+                            "id": "advisorynotifications.projects.locations.getSettings",
+                            "parameterOrder": [
+                                "name"
+                            ],
+                            "parameters": {
+                                "name": {
+                                    "description": "Required. The resource name of the settings to retrieve. Format: organizations/{organization}/locations/{location}/settings or projects/{projects}/locations/{location}/settings.",
+                                    "location": "path",
+                                    "pattern": "^projects/[^/]+/locations/[^/]+/settings$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+name}",
+                            "response": {
+                                "$ref": "GoogleCloudAdvisorynotificationsV1Settings"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
+                        },
+                        "updateSettings": {
+                            "description": "Update notification settings.",
+                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/settings",
+                            "httpMethod": "PATCH",
+                            "id": "advisorynotifications.projects.locations.updateSettings",
+                            "parameterOrder": [
+                                "name"
+                            ],
+                            "parameters": {
+                                "name": {
+                                    "description": "Identifier. The resource name of the settings to retrieve. Format: organizations/{organization}/locations/{location}/settings or projects/{projects}/locations/{location}/settings.",
+                                    "location": "path",
+                                    "pattern": "^projects/[^/]+/locations/[^/]+/settings$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+name}",
+                            "request": {
+                                "$ref": "GoogleCloudAdvisorynotificationsV1Settings"
+                            },
+                            "response": {
+                                "$ref": "GoogleCloudAdvisorynotificationsV1Settings"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
+                        }
+                    },
                     "resources": {
                         "notifications": {
                             "methods": {
@@ -324,7 +379,7 @@
                                             "type": "string"
                                         },
                                         "parent": {
-                                            "description": "Required. The parent, which owns this collection of notifications. Must be of the form \"organizations/{organization}/locations/{location}\" or \"projects/{project}/locations/{location}\"",
+                                            "description": "Required. The parent, which owns this collection of notifications. Must be of the form \"organizations/{organization}/locations/{location}\" or \"projects/{project}/locations/{location}\".",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+$",
                                             "required": true,
@@ -540,7 +595,7 @@
                     "type": "string"
                 },
                 "name": {
-                    "description": "Identifier. The resource name of the settings to retrieve. Format: organizations/{organization}/locations/{location}/settings.",
+                    "description": "Identifier. The resource name of the settings to retrieve. Format: organizations/{organization}/locations/{location}/settings or projects/{projects}/locations/{location}/settings.",
                     "type": "string"
                 },
                 "notificationSettings": {

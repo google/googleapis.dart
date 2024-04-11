@@ -37,7 +37,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240304",
+    "revision": "20240326",
     "rootUrl": "https://docs.googleapis.com/",
     "servicePath": "",
     "title": "Google Docs API",

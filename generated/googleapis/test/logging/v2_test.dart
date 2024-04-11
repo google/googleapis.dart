@@ -1706,8 +1706,10 @@ api.LogSink buildLogSink() {
     o.exclusions = buildUnnamed28();
     o.filter = 'foo';
     o.includeChildren = true;
+    o.interceptChildren = true;
     o.name = 'foo';
     o.outputVersionFormat = 'foo';
+    o.resourceName = 'foo';
     o.updateTime = 'foo';
     o.writerIdentity = 'foo';
   }
@@ -1738,12 +1740,17 @@ void checkLogSink(api.LogSink o) {
       unittest.equals('foo'),
     );
     unittest.expect(o.includeChildren!, unittest.isTrue);
+    unittest.expect(o.interceptChildren!, unittest.isTrue);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
     unittest.expect(
       o.outputVersionFormat!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.resourceName!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -5707,6 +5714,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.LoggingApi(mock).billingAccounts.sinks;
       final arg_parent = 'foo';
+      final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
@@ -5743,6 +5751,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['filter']!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
           core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
@@ -5762,6 +5774,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_parent,
+          filter: arg_filter,
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,
           $fields: arg_$fields);
@@ -8788,6 +8801,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.LoggingApi(mock).folders.sinks;
       final arg_parent = 'foo';
+      final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
@@ -8824,6 +8838,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['filter']!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
           core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
@@ -8843,6 +8861,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_parent,
+          filter: arg_filter,
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,
           $fields: arg_$fields);
@@ -12986,6 +13005,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.LoggingApi(mock).organizations.sinks;
       final arg_parent = 'foo';
+      final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
@@ -13022,6 +13042,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['filter']!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
           core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
@@ -13041,6 +13065,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_parent,
+          filter: arg_filter,
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,
           $fields: arg_$fields);
@@ -15832,6 +15857,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.LoggingApi(mock).projects.sinks;
       final arg_parent = 'foo';
+      final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
@@ -15868,6 +15894,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['filter']!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
           core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
@@ -15887,6 +15917,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_parent,
+          filter: arg_filter,
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,
           $fields: arg_$fields);
@@ -16225,6 +16256,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.LoggingApi(mock).sinks;
       final arg_parent = 'foo';
+      final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
@@ -16261,6 +16293,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['filter']!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
           core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
@@ -16280,6 +16316,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_parent,
+          filter: arg_filter,
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,
           $fields: arg_$fields);

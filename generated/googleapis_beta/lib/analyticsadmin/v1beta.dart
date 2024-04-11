@@ -35,6 +35,7 @@
 ///     - [PropertiesDataStreamsMeasurementProtocolSecretsResource]
 ///   - [PropertiesFirebaseLinksResource]
 ///   - [PropertiesGoogleAdsLinksResource]
+///   - [PropertiesKeyEventsResource]
 library;
 
 import 'dart:async' as async;
@@ -529,6 +530,8 @@ class PropertiesResource {
       PropertiesFirebaseLinksResource(_requester);
   PropertiesGoogleAdsLinksResource get googleAdsLinks =>
       PropertiesGoogleAdsLinksResource(_requester);
+  PropertiesKeyEventsResource get keyEvents =>
+      PropertiesKeyEventsResource(_requester);
 
   PropertiesResource(commons.ApiRequester client) : _requester = client;
 
@@ -972,6 +975,9 @@ class PropertiesResource {
   }
 }
 
+@core.Deprecated(
+  'Not supported. Member documentation may have more information.',
+)
 class PropertiesConversionEventsResource {
   final commons.ApiRequester _requester;
 
@@ -998,6 +1004,9 @@ class PropertiesConversionEventsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleAnalyticsAdminV1betaConversionEvent> create(
     GoogleAnalyticsAdminV1betaConversionEvent request,
     core.String parent, {
@@ -1040,6 +1049,9 @@ class PropertiesConversionEventsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
     core.String? $fields,
@@ -1078,6 +1090,9 @@ class PropertiesConversionEventsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleAnalyticsAdminV1betaConversionEvent> get(
     core.String name, {
     core.String? $fields,
@@ -1126,6 +1141,9 @@ class PropertiesConversionEventsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleAnalyticsAdminV1betaListConversionEventsResponse> list(
     core.String parent, {
     core.int? pageSize,
@@ -1175,6 +1193,9 @@ class PropertiesConversionEventsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleAnalyticsAdminV1betaConversionEvent> patch(
     GoogleAnalyticsAdminV1betaConversionEvent request,
     core.String name, {
@@ -2434,6 +2455,232 @@ class PropertiesGoogleAdsLinksResource {
   }
 }
 
+class PropertiesKeyEventsResource {
+  final commons.ApiRequester _requester;
+
+  PropertiesKeyEventsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a Key Event.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the parent property where this
+  /// Key Event will be created. Format: properties/123
+  /// Value must have pattern `^properties/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAnalyticsAdminV1betaKeyEvent].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAnalyticsAdminV1betaKeyEvent> create(
+    GoogleAnalyticsAdminV1betaKeyEvent request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$parent') + '/keyEvents';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleAnalyticsAdminV1betaKeyEvent.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a Key Event.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the Key Event to delete. Format:
+  /// properties/{property}/keyEvents/{key_event} Example:
+  /// "properties/123/keyEvents/456"
+  /// Value must have pattern `^properties/\[^/\]+/keyEvents/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieve a single Key Event.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the Key Event to retrieve. Format:
+  /// properties/{property}/keyEvents/{key_event} Example:
+  /// "properties/123/keyEvents/456"
+  /// Value must have pattern `^properties/\[^/\]+/keyEvents/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAnalyticsAdminV1betaKeyEvent].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAnalyticsAdminV1betaKeyEvent> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleAnalyticsAdminV1betaKeyEvent.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns a list of Key Events in the specified parent property.
+  ///
+  /// Returns an empty list if no Key Events are found.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the parent property. Example:
+  /// 'properties/123'
+  /// Value must have pattern `^properties/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of resources to return. If unspecified, at
+  /// most 50 resources will be returned. The maximum value is 200; (higher
+  /// values will be coerced to the maximum)
+  ///
+  /// [pageToken] - A page token, received from a previous `ListKeyEvents` call.
+  /// Provide this to retrieve the subsequent page. When paginating, all other
+  /// parameters provided to `ListKeyEvents` must match the call that provided
+  /// the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAnalyticsAdminV1betaListKeyEventsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAnalyticsAdminV1betaListKeyEventsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$parent') + '/keyEvents';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleAnalyticsAdminV1betaListKeyEventsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a Key Event.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. Resource name of this key event. Format:
+  /// properties/{property}/keyEvents/{key_event}
+  /// Value must have pattern `^properties/\[^/\]+/keyEvents/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. The list of fields to be updated. Field names
+  /// must be in snake case (e.g., "field_to_update"). Omitted fields will not
+  /// be updated. To replace the entire entity, use one path with the string "*"
+  /// to match all fields.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAnalyticsAdminV1betaKeyEvent].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAnalyticsAdminV1betaKeyEvent> patch(
+    GoogleAnalyticsAdminV1betaKeyEvent request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleAnalyticsAdminV1betaKeyEvent.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 /// To express that the result needs to be between two numbers (inclusive).
 class GoogleAnalyticsAdminV1betaAccessBetweenFilter {
   /// Begins with this number.
@@ -3029,6 +3276,14 @@ class GoogleAnalyticsAdminV1betaAccount {
   /// Required.
   core.String? displayName;
 
+  /// The URI for a Google Marketing Platform organization resource.
+  ///
+  /// Only set when this account is connected to a GMP organization. Format:
+  /// marketingplatformadmin.googleapis.com/organizations/{org_id}
+  ///
+  /// Output only.
+  core.String? gmpOrganization;
+
   /// Resource name of this account.
   ///
   /// Format: accounts/{account} Example: "accounts/100"
@@ -3050,6 +3305,7 @@ class GoogleAnalyticsAdminV1betaAccount {
     this.createTime,
     this.deleted,
     this.displayName,
+    this.gmpOrganization,
     this.name,
     this.regionCode,
     this.updateTime,
@@ -3066,6 +3322,9 @@ class GoogleAnalyticsAdminV1betaAccount {
           displayName: json_.containsKey('displayName')
               ? json_['displayName'] as core.String
               : null,
+          gmpOrganization: json_.containsKey('gmpOrganization')
+              ? json_['gmpOrganization'] as core.String
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           regionCode: json_.containsKey('regionCode')
               ? json_['regionCode'] as core.String
@@ -3079,6 +3338,7 @@ class GoogleAnalyticsAdminV1betaAccount {
         if (createTime != null) 'createTime': createTime!,
         if (deleted != null) 'deleted': deleted!,
         if (displayName != null) 'displayName': displayName!,
+        if (gmpOrganization != null) 'gmpOrganization': gmpOrganization!,
         if (name != null) 'name': name!,
         if (regionCode != null) 'regionCode': regionCode!,
         if (updateTime != null) 'updateTime': updateTime!,
@@ -4262,6 +4522,141 @@ class GoogleAnalyticsAdminV1betaGoogleAdsLink {
       };
 }
 
+/// A key event in a Google Analytics property.
+class GoogleAnalyticsAdminV1betaKeyEvent {
+  /// The method by which Key Events will be counted across multiple events
+  /// within a session.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "COUNTING_METHOD_UNSPECIFIED" : Counting method not specified.
+  /// - "ONCE_PER_EVENT" : Each Event instance is considered a Key Event.
+  /// - "ONCE_PER_SESSION" : An Event instance is considered a Key Event at most
+  /// once per session per user.
+  core.String? countingMethod;
+
+  /// Time when this key event was created in the property.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// If set to true, this key event refers to a custom event.
+  ///
+  /// If set to false, this key event refers to a default event in GA. Default
+  /// events typically have special meaning in GA. Default events are usually
+  /// created for you by the GA system, but in some cases can be created by
+  /// property admins. Custom events count towards the maximum number of custom
+  /// key events that may be created per property.
+  ///
+  /// Output only.
+  core.bool? custom;
+
+  /// Defines a default value/currency for a key event.
+  ///
+  /// Optional.
+  GoogleAnalyticsAdminV1betaKeyEventDefaultValue? defaultValue;
+
+  /// If set to true, this event can be deleted.
+  ///
+  /// Output only.
+  core.bool? deletable;
+
+  /// The event name for this key event.
+  ///
+  /// Examples: 'click', 'purchase'
+  ///
+  /// Immutable.
+  core.String? eventName;
+
+  /// Resource name of this key event.
+  ///
+  /// Format: properties/{property}/keyEvents/{key_event}
+  ///
+  /// Output only.
+  core.String? name;
+
+  GoogleAnalyticsAdminV1betaKeyEvent({
+    this.countingMethod,
+    this.createTime,
+    this.custom,
+    this.defaultValue,
+    this.deletable,
+    this.eventName,
+    this.name,
+  });
+
+  GoogleAnalyticsAdminV1betaKeyEvent.fromJson(core.Map json_)
+      : this(
+          countingMethod: json_.containsKey('countingMethod')
+              ? json_['countingMethod'] as core.String
+              : null,
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          custom:
+              json_.containsKey('custom') ? json_['custom'] as core.bool : null,
+          defaultValue: json_.containsKey('defaultValue')
+              ? GoogleAnalyticsAdminV1betaKeyEventDefaultValue.fromJson(
+                  json_['defaultValue'] as core.Map<core.String, core.dynamic>)
+              : null,
+          deletable: json_.containsKey('deletable')
+              ? json_['deletable'] as core.bool
+              : null,
+          eventName: json_.containsKey('eventName')
+              ? json_['eventName'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (countingMethod != null) 'countingMethod': countingMethod!,
+        if (createTime != null) 'createTime': createTime!,
+        if (custom != null) 'custom': custom!,
+        if (defaultValue != null) 'defaultValue': defaultValue!,
+        if (deletable != null) 'deletable': deletable!,
+        if (eventName != null) 'eventName': eventName!,
+        if (name != null) 'name': name!,
+      };
+}
+
+/// Defines a default value/currency for a key event.
+class GoogleAnalyticsAdminV1betaKeyEventDefaultValue {
+  /// When an occurrence of this Key Event (specified by event_name) has no set
+  /// currency this currency will be applied as the default.
+  ///
+  /// Must be in ISO 4217 currency code format. See
+  /// https://en.wikipedia.org/wiki/ISO_4217 for more information.
+  ///
+  /// Required.
+  core.String? currencyCode;
+
+  /// This will be used to populate the "value" parameter for all occurrences of
+  /// this Key Event (specified by event_name) where that parameter is unset.
+  ///
+  /// Required.
+  core.double? numericValue;
+
+  GoogleAnalyticsAdminV1betaKeyEventDefaultValue({
+    this.currencyCode,
+    this.numericValue,
+  });
+
+  GoogleAnalyticsAdminV1betaKeyEventDefaultValue.fromJson(core.Map json_)
+      : this(
+          currencyCode: json_.containsKey('currencyCode')
+              ? json_['currencyCode'] as core.String
+              : null,
+          numericValue: json_.containsKey('numericValue')
+              ? (json_['numericValue'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (currencyCode != null) 'currencyCode': currencyCode!,
+        if (numericValue != null) 'numericValue': numericValue!,
+      };
+}
+
 /// Response message for ListAccountSummaries RPC.
 class GoogleAnalyticsAdminV1betaListAccountSummariesResponse {
   /// Account summaries of all accounts the caller has access to.
@@ -4543,6 +4938,40 @@ class GoogleAnalyticsAdminV1betaListGoogleAdsLinksResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (googleAdsLinks != null) 'googleAdsLinks': googleAdsLinks!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Response message for ListKeyEvents RPC.
+class GoogleAnalyticsAdminV1betaListKeyEventsResponse {
+  /// The requested Key Events
+  core.List<GoogleAnalyticsAdminV1betaKeyEvent>? keyEvents;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  GoogleAnalyticsAdminV1betaListKeyEventsResponse({
+    this.keyEvents,
+    this.nextPageToken,
+  });
+
+  GoogleAnalyticsAdminV1betaListKeyEventsResponse.fromJson(core.Map json_)
+      : this(
+          keyEvents: json_.containsKey('keyEvents')
+              ? (json_['keyEvents'] as core.List)
+                  .map((value) => GoogleAnalyticsAdminV1betaKeyEvent.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (keyEvents != null) 'keyEvents': keyEvents!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }

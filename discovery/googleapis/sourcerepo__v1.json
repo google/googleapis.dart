@@ -34,7 +34,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240304",
+    "revision": "20240331",
     "rootUrl": "https://sourcerepo.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Source Repositories API",

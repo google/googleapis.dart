@@ -5431,13 +5431,15 @@ class GoogleCloudDocumentaiV1ProcessorVersion {
   /// - "MODEL_TYPE_CUSTOM" : The processor version has custom model type.
   core.String? modelType;
 
-  /// The resource name of the processor version.
+  /// Identifier.
   ///
-  /// Format:
+  /// The resource name of the processor version. Format:
   /// `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processor_version}`
   core.String? name;
 
   /// The state of the processor version.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : The processor version is in an unspecified state.
   /// - "DEPLOYED" : The processor version is deployed and can be used for
@@ -5731,6 +5733,10 @@ class GoogleCloudDocumentaiV1TrainProcessorVersionRequest {
   /// Optional.
   GoogleCloudDocumentaiV1DocumentSchema? documentSchema;
 
+  /// Options to control foundation model tuning of a processor.
+  GoogleCloudDocumentaiV1TrainProcessorVersionRequestFoundationModelTuningOptions?
+      foundationModelTuningOptions;
+
   /// The input data used to train the ProcessorVersion.
   ///
   /// Optional.
@@ -5745,6 +5751,7 @@ class GoogleCloudDocumentaiV1TrainProcessorVersionRequest {
     this.baseProcessorVersion,
     this.customDocumentExtractionOptions,
     this.documentSchema,
+    this.foundationModelTuningOptions,
     this.inputData,
     this.processorVersion,
   });
@@ -5765,6 +5772,12 @@ class GoogleCloudDocumentaiV1TrainProcessorVersionRequest {
                   json_['documentSchema']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          foundationModelTuningOptions: json_
+                  .containsKey('foundationModelTuningOptions')
+              ? GoogleCloudDocumentaiV1TrainProcessorVersionRequestFoundationModelTuningOptions
+                  .fromJson(json_['foundationModelTuningOptions']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           inputData: json_.containsKey('inputData')
               ? GoogleCloudDocumentaiV1TrainProcessorVersionRequestInputData
                   .fromJson(
@@ -5783,6 +5796,8 @@ class GoogleCloudDocumentaiV1TrainProcessorVersionRequest {
         if (customDocumentExtractionOptions != null)
           'customDocumentExtractionOptions': customDocumentExtractionOptions!,
         if (documentSchema != null) 'documentSchema': documentSchema!,
+        if (foundationModelTuningOptions != null)
+          'foundationModelTuningOptions': foundationModelTuningOptions!,
         if (inputData != null) 'inputData': inputData!,
         if (processorVersion != null) 'processorVersion': processorVersion!,
       };
@@ -5812,6 +5827,47 @@ class GoogleCloudDocumentaiV1TrainProcessorVersionRequestCustomDocumentExtractio
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (trainingMethod != null) 'trainingMethod': trainingMethod!,
+      };
+}
+
+/// Options to control foundation model tuning of the processor.
+class GoogleCloudDocumentaiV1TrainProcessorVersionRequestFoundationModelTuningOptions {
+  /// The multiplier to apply to the recommended learning rate.
+  ///
+  /// Valid values are between 0.1 and 10. If not provided, recommended learning
+  /// rate will be used.
+  ///
+  /// Optional.
+  core.double? learningRateMultiplier;
+
+  /// The number of steps to run for model tuning.
+  ///
+  /// Valid values are between 1 and 400. If not provided, recommended steps
+  /// will be used.
+  ///
+  /// Optional.
+  core.int? trainSteps;
+
+  GoogleCloudDocumentaiV1TrainProcessorVersionRequestFoundationModelTuningOptions({
+    this.learningRateMultiplier,
+    this.trainSteps,
+  });
+
+  GoogleCloudDocumentaiV1TrainProcessorVersionRequestFoundationModelTuningOptions.fromJson(
+      core.Map json_)
+      : this(
+          learningRateMultiplier: json_.containsKey('learningRateMultiplier')
+              ? (json_['learningRateMultiplier'] as core.num).toDouble()
+              : null,
+          trainSteps: json_.containsKey('trainSteps')
+              ? json_['trainSteps'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (learningRateMultiplier != null)
+          'learningRateMultiplier': learningRateMultiplier!,
+        if (trainSteps != null) 'trainSteps': trainSteps!,
       };
 }
 

@@ -1180,6 +1180,37 @@ class ProjectsLocationsOperationsResource {
   }
 }
 
+/// Configuration of the AOF based persistence.
+class AOFConfig {
+  /// fsync configuration.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "APPEND_FSYNC_UNSPECIFIED" : Not set. Default: EVERYSEC
+  /// - "NO" : Never fsync. Normally Linux will flush data every 30 seconds with
+  /// this configuration, but it's up to the kernel's exact tuning.
+  /// - "EVERYSEC" : fsync every second. Fast enough, and you may lose 1 second
+  /// of data if there is a disaster
+  /// - "ALWAYS" : fsync every time new commands are appended to the AOF. It has
+  /// the best data loss protection at the cost of performance
+  core.String? appendFsync;
+
+  AOFConfig({
+    this.appendFsync,
+  });
+
+  AOFConfig.fromJson(core.Map json_)
+      : this(
+          appendFsync: json_.containsKey('appendFsync')
+              ? json_['appendFsync'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (appendFsync != null) 'appendFsync': appendFsync!,
+      };
+}
+
 typedef CertChain = $CertChain;
 
 /// Redis cluster certificate authority
@@ -1246,6 +1277,29 @@ class Cluster {
   /// Required.
   core.String? name;
 
+  /// The type of a redis node in the cluster.
+  ///
+  /// NodeType determines the underlying machine-type of a redis node.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "NODE_TYPE_UNSPECIFIED"
+  /// - "REDIS_SHARED_CORE_NANO" : Redis shared core nano node_type.
+  /// - "REDIS_HIGHMEM_MEDIUM" : Redis highmem medium node_type.
+  /// - "REDIS_HIGHMEM_XLARGE" : Redis highmem xlarge node_type.
+  /// - "REDIS_STANDARD_SMALL" : Redis standard small node_type.
+  core.String? nodeType;
+
+  /// Persistence config (RDB, AOF) for the cluster.
+  ///
+  /// Optional.
+  ClusterPersistenceConfig? persistenceConfig;
+
+  /// Precise value of redis memory size in GB for the entire cluster.
+  ///
+  /// Output only.
+  core.double? preciseSizeGb;
+
   /// Each PscConfig configures the consumer network where IPs will be
   /// designated to the cluster for client access through Private Service
   /// Connect Automation.
@@ -1260,6 +1314,11 @@ class Cluster {
   ///
   /// Output only.
   core.List<PscConnection>? pscConnections;
+
+  /// Key/Value pairs of customer overrides for mutable Redis Configs
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? redisConfigs;
 
   /// The number of replica nodes per shard.
   ///
@@ -1317,8 +1376,12 @@ class Cluster {
     this.createTime,
     this.discoveryEndpoints,
     this.name,
+    this.nodeType,
+    this.persistenceConfig,
+    this.preciseSizeGb,
     this.pscConfigs,
     this.pscConnections,
+    this.redisConfigs,
     this.replicaCount,
     this.shardCount,
     this.sizeGb,
@@ -1343,6 +1406,16 @@ class Cluster {
                   .toList()
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          nodeType: json_.containsKey('nodeType')
+              ? json_['nodeType'] as core.String
+              : null,
+          persistenceConfig: json_.containsKey('persistenceConfig')
+              ? ClusterPersistenceConfig.fromJson(json_['persistenceConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          preciseSizeGb: json_.containsKey('preciseSizeGb')
+              ? (json_['preciseSizeGb'] as core.num).toDouble()
+              : null,
           pscConfigs: json_.containsKey('pscConfigs')
               ? (json_['pscConfigs'] as core.List)
                   .map((value) => PscConfig.fromJson(
@@ -1354,6 +1427,15 @@ class Cluster {
                   .map((value) => PscConnection.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
+              : null,
+          redisConfigs: json_.containsKey('redisConfigs')
+              ? (json_['redisConfigs'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
               : null,
           replicaCount: json_.containsKey('replicaCount')
               ? json_['replicaCount'] as core.int
@@ -1381,8 +1463,12 @@ class Cluster {
         if (discoveryEndpoints != null)
           'discoveryEndpoints': discoveryEndpoints!,
         if (name != null) 'name': name!,
+        if (nodeType != null) 'nodeType': nodeType!,
+        if (persistenceConfig != null) 'persistenceConfig': persistenceConfig!,
+        if (preciseSizeGb != null) 'preciseSizeGb': preciseSizeGb!,
         if (pscConfigs != null) 'pscConfigs': pscConfigs!,
         if (pscConnections != null) 'pscConnections': pscConnections!,
+        if (redisConfigs != null) 'redisConfigs': redisConfigs!,
         if (replicaCount != null) 'replicaCount': replicaCount!,
         if (shardCount != null) 'shardCount': shardCount!,
         if (sizeGb != null) 'sizeGb': sizeGb!,
@@ -1391,6 +1477,58 @@ class Cluster {
         if (transitEncryptionMode != null)
           'transitEncryptionMode': transitEncryptionMode!,
         if (uid != null) 'uid': uid!,
+      };
+}
+
+/// Configuration of the persistence functionality.
+class ClusterPersistenceConfig {
+  /// AOF configuration.
+  ///
+  /// This field will be ignored if mode is not AOF.
+  ///
+  /// Optional.
+  AOFConfig? aofConfig;
+
+  /// The mode of persistence.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "PERSISTENCE_MODE_UNSPECIFIED" : Not set.
+  /// - "DISABLED" : Persistence is disabled, and any snapshot data is deleted.
+  /// - "RDB" : RDB based persistence is enabled.
+  /// - "AOF" : AOF based persistence is enabled.
+  core.String? mode;
+
+  /// RDB configuration.
+  ///
+  /// This field will be ignored if mode is not RDB.
+  ///
+  /// Optional.
+  RDBConfig? rdbConfig;
+
+  ClusterPersistenceConfig({
+    this.aofConfig,
+    this.mode,
+    this.rdbConfig,
+  });
+
+  ClusterPersistenceConfig.fromJson(core.Map json_)
+      : this(
+          aofConfig: json_.containsKey('aofConfig')
+              ? AOFConfig.fromJson(
+                  json_['aofConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          mode: json_.containsKey('mode') ? json_['mode'] as core.String : null,
+          rdbConfig: json_.containsKey('rdbConfig')
+              ? RDBConfig.fromJson(
+                  json_['rdbConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (aofConfig != null) 'aofConfig': aofConfig!,
+        if (mode != null) 'mode': mode!,
+        if (rdbConfig != null) 'rdbConfig': rdbConfig!,
       };
 }
 
@@ -2829,6 +2967,49 @@ class PscConnection {
         if (network != null) 'network': network!,
         if (projectId != null) 'projectId': projectId!,
         if (pscConnectionId != null) 'pscConnectionId': pscConnectionId!,
+      };
+}
+
+/// Configuration of the RDB based persistence.
+class RDBConfig {
+  /// Period between RDB snapshots.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "SNAPSHOT_PERIOD_UNSPECIFIED" : Not set.
+  /// - "ONE_HOUR" : One hour.
+  /// - "SIX_HOURS" : Six hours.
+  /// - "TWELVE_HOURS" : Twelve hours.
+  /// - "TWENTY_FOUR_HOURS" : Twenty four hours.
+  core.String? rdbSnapshotPeriod;
+
+  /// The time that the first snapshot was/will be attempted, and to which
+  /// future snapshots will be aligned.
+  ///
+  /// If not provided, the current time will be used.
+  ///
+  /// Optional.
+  core.String? rdbSnapshotStartTime;
+
+  RDBConfig({
+    this.rdbSnapshotPeriod,
+    this.rdbSnapshotStartTime,
+  });
+
+  RDBConfig.fromJson(core.Map json_)
+      : this(
+          rdbSnapshotPeriod: json_.containsKey('rdbSnapshotPeriod')
+              ? json_['rdbSnapshotPeriod'] as core.String
+              : null,
+          rdbSnapshotStartTime: json_.containsKey('rdbSnapshotStartTime')
+              ? json_['rdbSnapshotStartTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (rdbSnapshotPeriod != null) 'rdbSnapshotPeriod': rdbSnapshotPeriod!,
+        if (rdbSnapshotStartTime != null)
+          'rdbSnapshotStartTime': rdbSnapshotStartTime!,
       };
 }
 

@@ -5043,8 +5043,8 @@ class GoogleCloudRetailV2ExperimentInfo {
 /// Metadata for active serving config A/B tests.
 class GoogleCloudRetailV2ExperimentInfoServingConfigExperiment {
   /// The fully qualified resource name of the serving config
-  /// VariantArm.serving_config_id responsible for generating the search
-  /// response.
+  /// Experiment.VariantArm.serving_config_id responsible for generating the
+  /// search response.
   ///
   /// For example: `projects / * /locations / * /catalogs / * /servingConfigs /
   /// * `.
@@ -9741,6 +9741,10 @@ class GoogleCloudRetailV2ServingConfig {
   /// SOLUTION_TYPE_SEARCH.
   core.List<core.String>? ignoreControlIds;
 
+  /// When the flag is enabled, the products in the denylist will not be
+  /// filtered out in the recommendation filtering results.
+  core.bool? ignoreRecsDenylist;
+
   /// The id of the model in the same Catalog to use at serving time.
   ///
   /// Currently only RecommendationModels are supported:
@@ -9824,6 +9828,7 @@ class GoogleCloudRetailV2ServingConfig {
     this.facetControlIds,
     this.filterControlIds,
     this.ignoreControlIds,
+    this.ignoreRecsDenylist,
     this.modelId,
     this.name,
     this.onewaySynonymsControlIds,
@@ -9881,6 +9886,9 @@ class GoogleCloudRetailV2ServingConfig {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          ignoreRecsDenylist: json_.containsKey('ignoreRecsDenylist')
+              ? json_['ignoreRecsDenylist'] as core.bool
+              : null,
           modelId: json_.containsKey('modelId')
               ? json_['modelId'] as core.String
               : null,
@@ -9935,6 +9943,8 @@ class GoogleCloudRetailV2ServingConfig {
         if (facetControlIds != null) 'facetControlIds': facetControlIds!,
         if (filterControlIds != null) 'filterControlIds': filterControlIds!,
         if (ignoreControlIds != null) 'ignoreControlIds': ignoreControlIds!,
+        if (ignoreRecsDenylist != null)
+          'ignoreRecsDenylist': ignoreRecsDenylist!,
         if (modelId != null) 'modelId': modelId!,
         if (name != null) 'name': name!,
         if (onewaySynonymsControlIds != null)

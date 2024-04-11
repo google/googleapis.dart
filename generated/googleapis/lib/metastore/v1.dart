@@ -26,7 +26,6 @@
 ///     - [ProjectsLocationsServicesResource]
 ///       - [ProjectsLocationsServicesBackupsResource]
 ///       - [ProjectsLocationsServicesMetadataImportsResource]
-///       - [ProjectsLocationsServicesMigrationExecutionsResource]
 library;
 
 import 'dart:async' as async;
@@ -802,9 +801,6 @@ class ProjectsLocationsServicesResource {
       ProjectsLocationsServicesBackupsResource(_requester);
   ProjectsLocationsServicesMetadataImportsResource get metadataImports =>
       ProjectsLocationsServicesMetadataImportsResource(_requester);
-  ProjectsLocationsServicesMigrationExecutionsResource
-      get migrationExecutions =>
-          ProjectsLocationsServicesMigrationExecutionsResource(_requester);
 
   ProjectsLocationsServicesResource(commons.ApiRequester client)
       : _requester = client;
@@ -2074,64 +2070,6 @@ class ProjectsLocationsServicesMetadataImportsResource {
   }
 }
 
-class ProjectsLocationsServicesMigrationExecutionsResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsLocationsServicesMigrationExecutionsResource(
-      commons.ApiRequester client)
-      : _requester = client;
-
-  /// Deletes a single migration execution.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Required. The relative resource name of the migrationExecution to
-  /// delete, in the following
-  /// form:projects/{project_number}/locations/{location_id}/services/{service_id}/migrationExecutions/{migration_execution_id}.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+/migrationExecutions/\[^/\]+$`.
-  ///
-  /// [requestId] - Optional. A request ID. Specify a unique request ID to allow
-  /// the server to ignore the request if it has completed. The server will
-  /// ignore subsequent requests that provide a duplicate request ID for at
-  /// least 60 minutes after the first request.For example, if an initial
-  /// request times out, followed by another request with the same request ID,
-  /// the server ignores the second request to prevent the creation of duplicate
-  /// commitments.The request ID must be a valid UUID
-  /// (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A
-  /// zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Operation].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Operation> delete(
-    core.String name, {
-    core.String? requestId,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (requestId != null) 'requestId': [requestId],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$name');
-
-    final response_ = await _requester.request(
-      url_,
-      'DELETE',
-      queryParams: queryParams_,
-    );
-    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-}
-
 /// Request message for DataprocMetastore.AlterMetadataResourceLocation.
 class AlterMetadataResourceLocationRequest {
   /// The new location URI for the metadata resource.
@@ -2730,7 +2668,7 @@ typedef Empty = $Empty;
 class EncryptionConfig {
   /// The fully qualified customer provided Cloud KMS key name to use for
   /// customer data encryption, in the following
-  /// form:projects/{project_number}/locations/{location_id}/keyRings/{key_ring_id}/cryptoKeys/{crypto_key_id}.
+  /// format:projects/{project_number}/locations/{location_id}/keyRings/{key_ring_id}/cryptoKeys/{crypto_key_id}.
   core.String? kmsKey;
 
   EncryptionConfig({

@@ -512,7 +512,7 @@ class ProjectsDatabasesBackupSchedulesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of backup schedule. Format
+  /// [name] - Required. The name of the backup schedule. Format
   /// `projects/{project}/databases/{database}/backupSchedules/{backup_schedule}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/databases/\[^/\]+/backupSchedules/\[^/\]+$`.
@@ -3122,6 +3122,45 @@ class DocumentTransform {
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
+/// Execution statistics for the query.
+typedef ExecutionStats = $ExecutionStats;
+
+/// Explain metrics for the query.
+class ExplainMetrics {
+  /// Aggregated stats from the execution of the query.
+  ///
+  /// Only present when ExplainOptions.analyze is set to true.
+  ExecutionStats? executionStats;
+
+  /// Planning phase information for the query.
+  PlanSummary? planSummary;
+
+  ExplainMetrics({
+    this.executionStats,
+    this.planSummary,
+  });
+
+  ExplainMetrics.fromJson(core.Map json_)
+      : this(
+          executionStats: json_.containsKey('executionStats')
+              ? ExecutionStats.fromJson(json_['executionStats']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          planSummary: json_.containsKey('planSummary')
+              ? PlanSummary.fromJson(
+                  json_['planSummary'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (executionStats != null) 'executionStats': executionStats!,
+        if (planSummary != null) 'planSummary': planSummary!,
+      };
+}
+
+/// Explain options for the query.
+typedef ExplainOptions = $ExplainOptions;
+
 /// A filter on a specific field.
 class FieldFilter {
   /// The field to filter by.
@@ -3379,6 +3418,81 @@ class Filter {
       };
 }
 
+/// Nearest Neighbors search config.
+class FindNearest {
+  /// The Distance Measure to use, required.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "DISTANCE_MEASURE_UNSPECIFIED" : Should not be set.
+  /// - "EUCLIDEAN" : Measures the EUCLIDEAN distance between the vectors. See
+  /// [Euclidean](https://en.wikipedia.org/wiki/Euclidean_distance) to learn
+  /// more
+  /// - "COSINE" : Compares vectors based on the angle between them, which
+  /// allows you to measure similarity that isn't based on the vectors
+  /// magnitude. We recommend using DOT_PRODUCT with unit normalized vectors
+  /// instead of COSINE distance, which is mathematically equivalent with better
+  /// performance. See
+  /// [Cosine Similarity](https://en.wikipedia.org/wiki/Cosine_similarity) to
+  /// learn more.
+  /// - "DOT_PRODUCT" : Similar to cosine but is affected by the magnitude of
+  /// the vectors. See [Dot Product](https://en.wikipedia.org/wiki/Dot_product)
+  /// to learn more.
+  core.String? distanceMeasure;
+
+  /// The number of nearest neighbors to return.
+  ///
+  /// Must be a positive integer of no more than 1000.
+  ///
+  /// Required.
+  core.int? limit;
+
+  /// The query vector that we are searching on.
+  ///
+  /// Must be a vector of no more than 2048 dimensions.
+  ///
+  /// Required.
+  Value? queryVector;
+
+  /// An indexed vector field to search upon.
+  ///
+  /// Only documents which contain vectors whose dimensionality match the
+  /// query_vector can be returned.
+  ///
+  /// Required.
+  FieldReference? vectorField;
+
+  FindNearest({
+    this.distanceMeasure,
+    this.limit,
+    this.queryVector,
+    this.vectorField,
+  });
+
+  FindNearest.fromJson(core.Map json_)
+      : this(
+          distanceMeasure: json_.containsKey('distanceMeasure')
+              ? json_['distanceMeasure'] as core.String
+              : null,
+          limit: json_.containsKey('limit') ? json_['limit'] as core.int : null,
+          queryVector: json_.containsKey('queryVector')
+              ? Value.fromJson(
+                  json_['queryVector'] as core.Map<core.String, core.dynamic>)
+              : null,
+          vectorField: json_.containsKey('vectorField')
+              ? FieldReference.fromJson(
+                  json_['vectorField'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (distanceMeasure != null) 'distanceMeasure': distanceMeasure!,
+        if (limit != null) 'limit': limit!,
+        if (queryVector != null) 'queryVector': queryVector!,
+        if (vectorField != null) 'vectorField': vectorField!,
+      };
+}
+
 /// A Backup of a Cloud Firestore Database.
 ///
 /// The backup contains all documents and index configurations for the given
@@ -3560,7 +3674,58 @@ class GoogleFirestoreAdminV1BackupSchedule {
       };
 }
 
-/// Represent a recurring schedule that runs at a specific time every day.
+/// The CMEK (Customer Managed Encryption Key) configuration for a Firestore
+/// database.
+///
+/// If not present, the database is secured by the default Google encryption
+/// key.
+class GoogleFirestoreAdminV1CmekConfig {
+  /// Currently in-use
+  /// [KMS key versions](https://cloud.google.com/kms/docs/resource-hierarchy#key_versions).
+  ///
+  /// During [key rotation](https://cloud.google.com/kms/docs/key-rotation),
+  /// there can be multiple in-use key versions. The expected format is
+  /// `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{key_version}`.
+  ///
+  /// Output only.
+  core.List<core.String>? activeKeyVersion;
+
+  /// Only keys in the same location as this database are allowed to be used for
+  /// encryption.
+  ///
+  /// For Firestore's nam5 multi-region, this corresponds to Cloud KMS
+  /// multi-region us. For Firestore's eur3 multi-region, this corresponds to
+  /// Cloud KMS multi-region europe. See
+  /// https://cloud.google.com/kms/docs/locations. The expected format is
+  /// `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+  ///
+  /// Required.
+  core.String? kmsKeyName;
+
+  GoogleFirestoreAdminV1CmekConfig({
+    this.activeKeyVersion,
+    this.kmsKeyName,
+  });
+
+  GoogleFirestoreAdminV1CmekConfig.fromJson(core.Map json_)
+      : this(
+          activeKeyVersion: json_.containsKey('activeKeyVersion')
+              ? (json_['activeKeyVersion'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          kmsKeyName: json_.containsKey('kmsKeyName')
+              ? json_['kmsKeyName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (activeKeyVersion != null) 'activeKeyVersion': activeKeyVersion!,
+        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
+      };
+}
+
+/// Represents a recurring schedule that runs at a specific time every day.
 ///
 /// The time zone is UTC.
 typedef GoogleFirestoreAdminV1DailyRecurrence = $Empty;
@@ -3578,6 +3743,11 @@ class GoogleFirestoreAdminV1Database {
   /// serve requests. This is the default setting for databases created with the
   /// Firestore API.
   core.String? appEngineIntegrationMode;
+
+  /// Presence indicates CMEK is enabled for this database.
+  ///
+  /// Optional.
+  GoogleFirestoreAdminV1CmekConfig? cmekConfig;
 
   /// The concurrency control mode to use for this database.
   /// Possible string values are:
@@ -3696,6 +3866,7 @@ class GoogleFirestoreAdminV1Database {
 
   GoogleFirestoreAdminV1Database({
     this.appEngineIntegrationMode,
+    this.cmekConfig,
     this.concurrencyMode,
     this.createTime,
     this.deleteProtectionState,
@@ -3717,6 +3888,10 @@ class GoogleFirestoreAdminV1Database {
               json_.containsKey('appEngineIntegrationMode')
                   ? json_['appEngineIntegrationMode'] as core.String
                   : null,
+          cmekConfig: json_.containsKey('cmekConfig')
+              ? GoogleFirestoreAdminV1CmekConfig.fromJson(
+                  json_['cmekConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
           concurrencyMode: json_.containsKey('concurrencyMode')
               ? json_['concurrencyMode'] as core.String
               : null,
@@ -3754,6 +3929,7 @@ class GoogleFirestoreAdminV1Database {
   core.Map<core.String, core.dynamic> toJson() => {
         if (appEngineIntegrationMode != null)
           'appEngineIntegrationMode': appEngineIntegrationMode!,
+        if (cmekConfig != null) 'cmekConfig': cmekConfig!,
         if (concurrencyMode != null) 'concurrencyMode': concurrencyMode!,
         if (createTime != null) 'createTime': createTime!,
         if (deleteProtectionState != null)
@@ -4264,8 +4440,6 @@ class GoogleFirestoreAdminV1ListBackupSchedulesResponse {
 /// The response for FirestoreAdmin.ListBackups.
 class GoogleFirestoreAdminV1ListBackupsResponse {
   /// List of all backups for the project.
-  ///
-  /// Ordered by `location ASC, create_time DESC, name ASC`.
   core.List<GoogleFirestoreAdminV1Backup>? backups;
 
   /// List of locations that existing backups were not able to be fetched from.
@@ -5077,6 +5251,9 @@ class PartitionQueryResponse {
       };
 }
 
+/// Planning phase information for the query.
+typedef PlanSummary = $PlanSummary;
+
 /// A precondition on a document, used for conditional operations.
 class Precondition {
   /// When set to `true`, the target document must exist.
@@ -5225,6 +5402,14 @@ class RollbackRequest {
 
 /// The request for Firestore.RunAggregationQuery.
 class RunAggregationQueryRequest {
+  /// Explain options for the query.
+  ///
+  /// If set, additional query statistics will be returned. If not, only query
+  /// results will be returned.
+  ///
+  /// Optional.
+  ExplainOptions? explainOptions;
+
   /// Starts a new transaction as part of the query, defaulting to read-only.
   ///
   /// The new transaction ID will be returned as the first response in the
@@ -5254,6 +5439,7 @@ class RunAggregationQueryRequest {
   }
 
   RunAggregationQueryRequest({
+    this.explainOptions,
     this.newTransaction,
     this.readTime,
     this.structuredAggregationQuery,
@@ -5262,6 +5448,10 @@ class RunAggregationQueryRequest {
 
   RunAggregationQueryRequest.fromJson(core.Map json_)
       : this(
+          explainOptions: json_.containsKey('explainOptions')
+              ? ExplainOptions.fromJson(json_['explainOptions']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           newTransaction: json_.containsKey('newTransaction')
               ? TransactionOptions.fromJson(json_['newTransaction']
                   as core.Map<core.String, core.dynamic>)
@@ -5281,6 +5471,7 @@ class RunAggregationQueryRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (explainOptions != null) 'explainOptions': explainOptions!,
         if (newTransaction != null) 'newTransaction': newTransaction!,
         if (readTime != null) 'readTime': readTime!,
         if (structuredAggregationQuery != null)
@@ -5290,6 +5481,13 @@ class RunAggregationQueryRequest {
 }
 
 class RunAggregationQueryResponseElement {
+  /// Query explain metrics.
+  ///
+  /// This is only present when the RunAggregationQueryRequest.explain_options
+  /// is provided, and it is sent only once with the last response in the
+  /// stream.
+  ExplainMetrics? explainMetrics;
+
   /// The time at which the aggregate result was computed.
   ///
   /// This is always monotonically increasing; in this case, the previous
@@ -5318,6 +5516,7 @@ class RunAggregationQueryResponseElement {
   }
 
   RunAggregationQueryResponseElement({
+    this.explainMetrics,
     this.readTime,
     this.result,
     this.transaction,
@@ -5325,6 +5524,10 @@ class RunAggregationQueryResponseElement {
 
   RunAggregationQueryResponseElement.fromJson(core.Map json_)
       : this(
+          explainMetrics: json_.containsKey('explainMetrics')
+              ? ExplainMetrics.fromJson(json_['explainMetrics']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           readTime: json_.containsKey('readTime')
               ? json_['readTime'] as core.String
               : null,
@@ -5338,6 +5541,7 @@ class RunAggregationQueryResponseElement {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (explainMetrics != null) 'explainMetrics': explainMetrics!,
         if (readTime != null) 'readTime': readTime!,
         if (result != null) 'result': result!,
         if (transaction != null) 'transaction': transaction!,
@@ -5350,6 +5554,14 @@ typedef RunAggregationQueryResponse
 
 /// The request for Firestore.RunQuery.
 class RunQueryRequest {
+  /// Explain options for the query.
+  ///
+  /// If set, additional query statistics will be returned. If not, only query
+  /// results will be returned.
+  ///
+  /// Optional.
+  ExplainOptions? explainOptions;
+
   /// Starts a new transaction and reads the documents.
   ///
   /// Defaults to a read-only transaction. The new transaction ID will be
@@ -5379,6 +5591,7 @@ class RunQueryRequest {
   }
 
   RunQueryRequest({
+    this.explainOptions,
     this.newTransaction,
     this.readTime,
     this.structuredQuery,
@@ -5387,6 +5600,10 @@ class RunQueryRequest {
 
   RunQueryRequest.fromJson(core.Map json_)
       : this(
+          explainOptions: json_.containsKey('explainOptions')
+              ? ExplainOptions.fromJson(json_['explainOptions']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           newTransaction: json_.containsKey('newTransaction')
               ? TransactionOptions.fromJson(json_['newTransaction']
                   as core.Map<core.String, core.dynamic>)
@@ -5404,6 +5621,7 @@ class RunQueryRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (explainOptions != null) 'explainOptions': explainOptions!,
         if (newTransaction != null) 'newTransaction': newTransaction!,
         if (readTime != null) 'readTime': readTime!,
         if (structuredQuery != null) 'structuredQuery': structuredQuery!,
@@ -5418,6 +5636,12 @@ class RunQueryResponseElement {
   /// If present, Firestore has completely finished the request and no more
   /// documents will be returned.
   core.bool? done;
+
+  /// Query explain metrics.
+  ///
+  /// This is only present when the RunQueryRequest.explain_options is provided,
+  /// and it is sent only once with the last response in the stream.
+  ExplainMetrics? explainMetrics;
 
   /// The time at which the document was read.
   ///
@@ -5449,6 +5673,7 @@ class RunQueryResponseElement {
   RunQueryResponseElement({
     this.document,
     this.done,
+    this.explainMetrics,
     this.readTime,
     this.skippedResults,
     this.transaction,
@@ -5461,6 +5686,10 @@ class RunQueryResponseElement {
                   json_['document'] as core.Map<core.String, core.dynamic>)
               : null,
           done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          explainMetrics: json_.containsKey('explainMetrics')
+              ? ExplainMetrics.fromJson(json_['explainMetrics']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           readTime: json_.containsKey('readTime')
               ? json_['readTime'] as core.String
               : null,
@@ -5475,6 +5704,7 @@ class RunQueryResponseElement {
   core.Map<core.String, core.dynamic> toJson() => {
         if (document != null) 'document': document!,
         if (done != null) 'done': done!,
+        if (explainMetrics != null) 'explainMetrics': explainMetrics!,
         if (readTime != null) 'readTime': readTime!,
         if (skippedResults != null) 'skippedResults': skippedResults!,
         if (transaction != null) 'transaction': transaction!,
@@ -5543,6 +5773,14 @@ class StructuredQuery {
   /// greater than the number of fields specified in the `ORDER BY` clause.
   Cursor? endAt;
 
+  /// A potential Nearest Neighbors Search.
+  ///
+  /// Applies after all other filters and ordering. Finds the closest vector
+  /// embeddings to the given query vector.
+  ///
+  /// Optional.
+  FindNearest? findNearest;
+
   /// The collections to query.
   core.List<CollectionSelector>? from;
 
@@ -5606,6 +5844,7 @@ class StructuredQuery {
 
   StructuredQuery({
     this.endAt,
+    this.findNearest,
     this.from,
     this.limit,
     this.offset,
@@ -5620,6 +5859,10 @@ class StructuredQuery {
           endAt: json_.containsKey('endAt')
               ? Cursor.fromJson(
                   json_['endAt'] as core.Map<core.String, core.dynamic>)
+              : null,
+          findNearest: json_.containsKey('findNearest')
+              ? FindNearest.fromJson(
+                  json_['findNearest'] as core.Map<core.String, core.dynamic>)
               : null,
           from: json_.containsKey('from')
               ? (json_['from'] as core.List)
@@ -5652,6 +5895,7 @@ class StructuredQuery {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (endAt != null) 'endAt': endAt!,
+        if (findNearest != null) 'findNearest': findNearest!,
         if (from != null) 'from': from!,
         if (limit != null) 'limit': limit!,
         if (offset != null) 'offset': offset!,

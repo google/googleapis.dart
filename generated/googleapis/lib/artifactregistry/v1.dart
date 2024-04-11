@@ -4585,6 +4585,8 @@ class Repository {
   /// or more sources.
   /// - "REMOTE_REPOSITORY" : A remote repository to serve artifacts from a
   /// remote source.
+  /// - "AOSS_REPOSITORY" : An AOSS repository provides artifacts from AOSS
+  /// upstreams.
   core.String? mode;
 
   /// The name of the repository, for example:

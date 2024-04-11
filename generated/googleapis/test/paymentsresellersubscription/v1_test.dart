@@ -1119,6 +1119,7 @@ api.GoogleCloudPaymentsResellerSubscriptionV1Subscription
     o.products = buildUnnamed14();
     o.promotionSpecs = buildUnnamed15();
     o.promotions = buildUnnamed16();
+    o.purchaseTime = 'foo';
     o.redirectUri = 'foo';
     o.renewalTime = 'foo';
     o.serviceLocation =
@@ -1167,6 +1168,10 @@ void checkGoogleCloudPaymentsResellerSubscriptionV1Subscription(
     checkUnnamed14(o.products!);
     checkUnnamed15(o.promotionSpecs!);
     checkUnnamed16(o.promotions!);
+    unittest.expect(
+      o.purchaseTime!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.redirectUri!,
       unittest.equals('foo'),

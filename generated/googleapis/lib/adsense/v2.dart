@@ -27,6 +27,7 @@
 ///     - [AccountsAdclientsUrlchannelsResource]
 ///   - [AccountsAlertsResource]
 ///   - [AccountsPaymentsResource]
+///   - [AccountsPolicyIssuesResource]
 ///   - [AccountsReportsResource]
 ///     - [AccountsReportsSavedResource]
 ///   - [AccountsSitesResource]
@@ -73,6 +74,8 @@ class AccountsResource {
       AccountsAdclientsResource(_requester);
   AccountsAlertsResource get alerts => AccountsAlertsResource(_requester);
   AccountsPaymentsResource get payments => AccountsPaymentsResource(_requester);
+  AccountsPolicyIssuesResource get policyIssues =>
+      AccountsPolicyIssuesResource(_requester);
   AccountsReportsResource get reports => AccountsReportsResource(_requester);
   AccountsSitesResource get sites => AccountsSitesResource(_requester);
 
@@ -398,10 +401,12 @@ class AccountsAdclientsAdunitsResource {
 
   /// Creates an ad unit.
   ///
-  /// This method can only be used by projects enabled for the
+  /// This method can be called only by a restricted set of projects, which are
+  /// usually owned by
   /// [AdSense for Platforms](https://developers.google.com/adsense/platforms/)
-  /// product. Note that ad units can only be created for ad clients with an
-  /// "AFC" product code. For more info see the \[AdClient
+  /// publishers. Contact your account manager if you need to use this method.
+  /// Note that ad units can only be created for ad clients with an "AFC"
+  /// product code. For more info see the \[AdClient
   /// resource\](/adsense/management/reference/rest/v2/accounts.adclients). For
   /// now, this method can only be used to create `DISPLAY` ad units. See:
   /// https://support.google.com/adsense/answer/9183566
@@ -631,10 +636,12 @@ class AccountsAdclientsAdunitsResource {
 
   /// Updates an ad unit.
   ///
-  /// This method can only be used by projects enabled for the
+  /// This method can be called only by a restricted set of projects, which are
+  /// usually owned by
   /// [AdSense for Platforms](https://developers.google.com/adsense/platforms/)
-  /// product. For now, this method can only be used to update `DISPLAY` ad
-  /// units. See: https://support.google.com/adsense/answer/9183566
+  /// publishers. Contact your account manager if you need to use this method.
+  /// For now, this method can only be used to update `DISPLAY` ad units. See:
+  /// https://support.google.com/adsense/answer/9183566
   ///
   /// [request] - The metadata request object.
   ///
@@ -690,9 +697,10 @@ class AccountsAdclientsCustomchannelsResource {
 
   /// Creates a custom channel.
   ///
-  /// This method can only be used by projects enabled for the
+  /// This method can be called only by a restricted set of projects, which are
+  /// usually owned by
   /// [AdSense for Platforms](https://developers.google.com/adsense/platforms/)
-  /// product.
+  /// publishers. Contact your account manager if you need to use this method.
   ///
   /// [request] - The metadata request object.
   ///
@@ -736,9 +744,10 @@ class AccountsAdclientsCustomchannelsResource {
 
   /// Deletes a custom channel.
   ///
-  /// This method can only be used by projects enabled for the
+  /// This method can be called only by a restricted set of projects, which are
+  /// usually owned by
   /// [AdSense for Platforms](https://developers.google.com/adsense/platforms/)
-  /// product.
+  /// publishers. Contact your account manager if you need to use this method.
   ///
   /// Request parameters:
   ///
@@ -918,9 +927,10 @@ class AccountsAdclientsCustomchannelsResource {
 
   /// Updates a custom channel.
   ///
-  /// This method can only be used by projects enabled for the
+  /// This method can be called only by a restricted set of projects, which are
+  /// usually owned by
   /// [AdSense for Platforms](https://developers.google.com/adsense/platforms/)
-  /// product.
+  /// publishers. Contact your account manager if you need to use this method.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1155,6 +1165,101 @@ class AccountsPaymentsResource {
       queryParams: queryParams_,
     );
     return ListPaymentsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class AccountsPolicyIssuesResource {
+  final commons.ApiRequester _requester;
+
+  AccountsPolicyIssuesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets information about the selected policy issue.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the policy issue. Format:
+  /// accounts/{account}/policyIssues/{policy_issue}
+  /// Value must have pattern `^accounts/\[^/\]+/policyIssues/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [PolicyIssue].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<PolicyIssue> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return PolicyIssue.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all the policy issues for the specified account.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The account for which policy issues are being
+  /// retrieved. Format: accounts/{account}
+  /// Value must have pattern `^accounts/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of policy issues to include in the
+  /// response, used for paging. If unspecified, at most 10000 policy issues
+  /// will be returned. The maximum value is 10000; values above 10000 will be
+  /// coerced to 10000.
+  ///
+  /// [pageToken] - A page token, received from a previous `ListPolicyIssues`
+  /// call. Provide this to retrieve the subsequent page. When paginating, all
+  /// other parameters provided to `ListPolicyIssues` must match the call that
+  /// provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListPolicyIssuesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListPolicyIssuesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/policyIssues';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListPolicyIssuesResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -2782,6 +2887,45 @@ class ListPaymentsResponse {
       };
 }
 
+/// Response definition for the policy issues list rpc.
+///
+/// Policy issues are reported only if the publisher has at least one AFC ad
+/// client in READY or GETTING_READY state. If the publisher has no such AFC ad
+/// client, the response will be an empty list.
+class ListPolicyIssuesResponse {
+  /// Continuation token used to page through policy issues.
+  ///
+  /// To retrieve the next page of the results, set the next request's
+  /// "page_token" value to this.
+  core.String? nextPageToken;
+
+  /// The policy issues returned in the list response.
+  core.List<PolicyIssue>? policyIssues;
+
+  ListPolicyIssuesResponse({
+    this.nextPageToken,
+    this.policyIssues,
+  });
+
+  ListPolicyIssuesResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          policyIssues: json_.containsKey('policyIssues')
+              ? (json_['policyIssues'] as core.List)
+                  .map((value) => PolicyIssue.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (policyIssues != null) 'policyIssues': policyIssues!,
+      };
+}
+
 /// Response definition for the saved reports list rpc.
 class ListSavedReportsResponse {
   /// Continuation token used to page through reports.
@@ -2944,6 +3088,242 @@ class Payment {
         if (amount != null) 'amount': amount!,
         if (date != null) 'date': date!,
         if (name != null) 'name': name!,
+      };
+}
+
+/// Representation of a policy issue for a single entity (site, site-section, or
+/// page).
+///
+/// All issues for a single entity are represented by a single PolicyIssue
+/// resource, though that PolicyIssue can have multiple causes (or "topics")
+/// that can change over time. Policy issues are removed if there are no issues
+/// detected recently or if there's a recent successful appeal for the entity.
+class PolicyIssue {
+  /// The most severe action taken on the entity over the past seven days.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "ENFORCEMENT_ACTION_UNSPECIFIED" : The action is unspecified.
+  /// - "WARNED" : No ad serving enforcement is currently present, but
+  /// enforcement will start on the `warning_escalation_date` if the issue is
+  /// not resolved.
+  /// - "AD_SERVING_RESTRICTED" : Ad serving demand has been restricted on the
+  /// entity.
+  /// - "AD_SERVING_DISABLED" : Ad serving has been disabled on the entity.
+  /// - "AD_SERVED_WITH_CLICK_CONFIRMATION" : Ads are being served for the
+  /// entity but Confirmed Click is being applied to the ads. See
+  /// https://support.google.com/adsense/answer/10025624.
+  /// - "AD_PERSONALIZATION_RESTRICTED" : Ad personalization is restricted
+  /// because the ad requests coming from the EEA and UK do not have a TCF
+  /// string or the Consent Management Platform (CMP) indicated by the TCF
+  /// string is not Google certified. As a result, basic/limited ads will be
+  /// served. See https://support.google.com/adsense/answer/13554116
+  core.String? action;
+
+  /// List of ad clients associated with the policy issue (either as the primary
+  /// ad client or an associated host/secondary ad client).
+  ///
+  /// In the latter case, this will be an ad client that is not owned by the
+  /// current account.
+  ///
+  /// Optional.
+  core.List<core.String>? adClients;
+
+  /// Total number of ad requests affected by the policy violations over the
+  /// past seven days.
+  ///
+  /// Required.
+  core.String? adRequestCount;
+
+  /// Type of the entity indicating if the entity is a site, site-section, or
+  /// page.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "ENTITY_TYPE_UNSPECIFIED" : The entity type is unspecified.
+  /// - "SITE" : The enforced entity is an entire website.
+  /// - "SITE_SECTION" : The enforced entity is a particular section of a
+  /// website. All the pages with this prefix are enforced.
+  /// - "PAGE" : The enforced entity is a single web page.
+  core.String? entityType;
+
+  /// The date (in the America/Los_Angeles timezone) when policy violations were
+  /// first detected on the entity.
+  ///
+  /// Required.
+  Date? firstDetectedDate;
+
+  /// The date (in the America/Los_Angeles timezone) when policy violations were
+  /// last detected on the entity.
+  ///
+  /// Required.
+  Date? lastDetectedDate;
+
+  /// Resource name of the entity with policy issues.
+  ///
+  /// Format: accounts/{account}/policyIssues/{policy_issue}
+  ///
+  /// Required.
+  core.String? name;
+
+  /// Unordered list.
+  ///
+  /// The policy topics that this entity was found to violate over the past
+  /// seven days.
+  ///
+  /// Required.
+  core.List<PolicyTopic>? policyTopics;
+
+  /// Hostname/domain of the entity (for example "foo.com" or "www.foo.com").
+  ///
+  /// This _should_ be a bare domain/host name without any protocol. This will
+  /// be present for all policy issues.
+  ///
+  /// Required.
+  core.String? site;
+
+  /// Prefix of the site-section having policy issues (For example
+  /// "foo.com/bar-section").
+  ///
+  /// This will be present if the `entity_type` is `SITE_SECTION` and will be
+  /// absent for other entity types.
+  ///
+  /// Optional.
+  core.String? siteSection;
+
+  /// URI of the page having policy violations (for example "foo.com/bar" or
+  /// "www.foo.com/bar").
+  ///
+  /// This will be present if the `entity_type` is `PAGE` and will be absent for
+  /// other entity types.
+  ///
+  /// Optional.
+  core.String? uri;
+
+  /// The date (in the America/Los_Angeles timezone) when the entity will have
+  /// ad serving demand restricted or ad serving disabled.
+  ///
+  /// This is present only for issues with a `WARNED` enforcement action. See
+  /// https://support.google.com/adsense/answer/11066888.
+  ///
+  /// Optional.
+  Date? warningEscalationDate;
+
+  PolicyIssue({
+    this.action,
+    this.adClients,
+    this.adRequestCount,
+    this.entityType,
+    this.firstDetectedDate,
+    this.lastDetectedDate,
+    this.name,
+    this.policyTopics,
+    this.site,
+    this.siteSection,
+    this.uri,
+    this.warningEscalationDate,
+  });
+
+  PolicyIssue.fromJson(core.Map json_)
+      : this(
+          action: json_.containsKey('action')
+              ? json_['action'] as core.String
+              : null,
+          adClients: json_.containsKey('adClients')
+              ? (json_['adClients'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          adRequestCount: json_.containsKey('adRequestCount')
+              ? json_['adRequestCount'] as core.String
+              : null,
+          entityType: json_.containsKey('entityType')
+              ? json_['entityType'] as core.String
+              : null,
+          firstDetectedDate: json_.containsKey('firstDetectedDate')
+              ? Date.fromJson(json_['firstDetectedDate']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          lastDetectedDate: json_.containsKey('lastDetectedDate')
+              ? Date.fromJson(json_['lastDetectedDate']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          policyTopics: json_.containsKey('policyTopics')
+              ? (json_['policyTopics'] as core.List)
+                  .map((value) => PolicyTopic.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          site: json_.containsKey('site') ? json_['site'] as core.String : null,
+          siteSection: json_.containsKey('siteSection')
+              ? json_['siteSection'] as core.String
+              : null,
+          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+          warningEscalationDate: json_.containsKey('warningEscalationDate')
+              ? Date.fromJson(json_['warningEscalationDate']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (action != null) 'action': action!,
+        if (adClients != null) 'adClients': adClients!,
+        if (adRequestCount != null) 'adRequestCount': adRequestCount!,
+        if (entityType != null) 'entityType': entityType!,
+        if (firstDetectedDate != null) 'firstDetectedDate': firstDetectedDate!,
+        if (lastDetectedDate != null) 'lastDetectedDate': lastDetectedDate!,
+        if (name != null) 'name': name!,
+        if (policyTopics != null) 'policyTopics': policyTopics!,
+        if (site != null) 'site': site!,
+        if (siteSection != null) 'siteSection': siteSection!,
+        if (uri != null) 'uri': uri!,
+        if (warningEscalationDate != null)
+          'warningEscalationDate': warningEscalationDate!,
+      };
+}
+
+/// Information about a particular policy topic.
+///
+/// A policy topic represents a single class of policy issue that can impact ad
+/// serving for your site. For example, sexual content or having ads that
+/// obscure your content. A single policy issue can have multiple policy topics
+/// for a single entity.
+class PolicyTopic {
+  /// Indicates if this is a policy violation or not.
+  ///
+  /// When the value is true, issues that are instances of this topic must be
+  /// addressed to remain in compliance with the partner's agreements with
+  /// Google. A false value indicates that it's not mandatory to fix the issues
+  /// but advertising demand might be restricted.
+  ///
+  /// Required.
+  core.bool? mustFix;
+
+  /// The policy topic.
+  ///
+  /// For example, "sexual-content" or "ads-obscuring-content"."
+  ///
+  /// Required.
+  core.String? topic;
+
+  PolicyTopic({
+    this.mustFix,
+    this.topic,
+  });
+
+  PolicyTopic.fromJson(core.Map json_)
+      : this(
+          mustFix: json_.containsKey('mustFix')
+              ? json_['mustFix'] as core.bool
+              : null,
+          topic:
+              json_.containsKey('topic') ? json_['topic'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (mustFix != null) 'mustFix': mustFix!,
+        if (topic != null) 'topic': topic!,
       };
 }
 

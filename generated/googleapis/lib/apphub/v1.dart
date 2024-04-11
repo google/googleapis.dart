@@ -85,13 +85,16 @@ class ProjectsLocationsResource {
 
   /// Detaches a service project from a host project.
   ///
-  /// You can call this API from either a host or service project.
+  /// You can call this API from any service project without needing access to
+  /// the host project that it is attached to.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Value for name.
+  /// [name] - Required. Service project id and location to detach from a host
+  /// project. Only global location is supported. Expected format:
+  /// `projects/{project}/locations/{location}`.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -216,13 +219,16 @@ class ProjectsLocationsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Looks up a service project attachment.
+  /// Lists a service project attachment for a given service project.
   ///
-  /// You can call this API from either a host or service project.
+  /// You can call this API from any project to find if it is attached to a host
+  /// project.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Value for name.
+  /// [name] - Required. Service project ID and location to lookup service
+  /// project attachment for. Only global location is supported. Expected
+  /// format: `projects/{project}/locations/{location}`.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -275,7 +281,8 @@ class ProjectsLocationsApplicationsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Value for parent.
+  /// [parent] - Required. Project and location to create Application in.
+  /// Expected format: `projects/{project}/locations/{location}`.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [applicationId] - Required. The Application identifier. Must contain only
@@ -333,7 +340,9 @@ class ProjectsLocationsApplicationsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Value for name.
+  /// [name] - Required. Fully qualified name of the Application to delete.
+  /// Expected format:
+  /// `projects/{project}/locations/{location}/applications/{application}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/applications/\[^/\]+$`.
   ///
@@ -383,7 +392,9 @@ class ProjectsLocationsApplicationsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Value for name.
+  /// [name] - Required. Fully qualified name of the Application to fetch.
+  /// Expected format:
+  /// `projects/{project}/locations/{location}/applications/{application}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/applications/\[^/\]+$`.
   ///
@@ -477,12 +488,13 @@ class ProjectsLocationsApplicationsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Value for parent.
+  /// [parent] - Required. Project and location to list Applications on.
+  /// Expected format: `projects/{project}/locations/{location}`.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [filter] - Optional. Filtering results
+  /// [filter] - Optional. Filtering results.
   ///
-  /// [orderBy] - Optional. Hint for how to order the results
+  /// [orderBy] - Optional. Hint for how to order the results.
   ///
   /// [pageSize] - Optional. Requested page size. Server may return fewer items
   /// than requested. If unspecified, server will pick an appropriate default.
@@ -705,7 +717,9 @@ class ProjectsLocationsApplicationsServicesResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Value for parent.
+  /// [parent] - Required. Fully qualified name of the parent Application to
+  /// create the Service in. Expected format:
+  /// `projects/{project}/locations/{location}/applications/{application}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/applications/\[^/\]+$`.
   ///
@@ -760,11 +774,13 @@ class ProjectsLocationsApplicationsServicesResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Deletes a Service in an Application.
+  /// Deletes a Service from an Application.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Value for name.
+  /// [name] - Required. Fully qualified name of the Service to delete from an
+  /// Application. Expected format:
+  /// `projects/{project}/locations/{location}/applications/{application}/services/{service}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/applications/\[^/\]+/services/\[^/\]+$`.
   ///
@@ -814,7 +830,9 @@ class ProjectsLocationsApplicationsServicesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Value for name.
+  /// [name] - Required. Fully qualified name of the Service to fetch. Expected
+  /// format:
+  /// `projects/{project}/locations/{location}/applications/{application}/services/{service}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/applications/\[^/\]+/services/\[^/\]+$`.
   ///
@@ -846,11 +864,13 @@ class ProjectsLocationsApplicationsServicesResource {
     return Service.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// List Services in an Application.
+  /// Lists Services in an Application.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Value for parent.
+  /// [parent] - Required. Fully qualified name of the parent Application to
+  /// list Services for. Expected format:
+  /// `projects/{project}/locations/{location}/applications/{application}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/applications/\[^/\]+$`.
   ///
@@ -981,7 +1001,9 @@ class ProjectsLocationsApplicationsWorkloadsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Value for parent.
+  /// [parent] - Required. Fully qualified name of the Application to create
+  /// Workload in. Expected format:
+  /// `projects/{project}/locations/{location}/applications/{application}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/applications/\[^/\]+$`.
   ///
@@ -1036,11 +1058,13 @@ class ProjectsLocationsApplicationsWorkloadsResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Deletes a Workload in an Application.
+  /// Deletes a Workload from an Application.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Value for name.
+  /// [name] - Required. Fully qualified name of the Workload to delete from an
+  /// Application. Expected format:
+  /// `projects/{project}/locations/{location}/applications/{application}/workloads/{workload}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/applications/\[^/\]+/workloads/\[^/\]+$`.
   ///
@@ -1090,7 +1114,9 @@ class ProjectsLocationsApplicationsWorkloadsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Value for name.
+  /// [name] - Required. Fully qualified name of the Workload to fetch. Expected
+  /// format:
+  /// `projects/{project}/locations/{location}/applications/{application}/workloads/{workload}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/applications/\[^/\]+/workloads/\[^/\]+$`.
   ///
@@ -1126,13 +1152,15 @@ class ProjectsLocationsApplicationsWorkloadsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Value for parent.
+  /// [parent] - Required. Fully qualified name of the parent Application to
+  /// list Workloads for. Expected format:
+  /// `projects/{project}/locations/{location}/applications/{application}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/applications/\[^/\]+$`.
   ///
-  /// [filter] - Optional. Filtering results
+  /// [filter] - Optional. Filtering results.
   ///
-  /// [orderBy] - Optional. Hint for how to order the results
+  /// [orderBy] - Optional. Hint for how to order the results.
   ///
   /// [pageSize] - Optional. Requested page size. Server may return fewer items
   /// than requested. If unspecified, server will pick an appropriate default.
@@ -1251,11 +1279,13 @@ class ProjectsLocationsDiscoveredServicesResource {
   ProjectsLocationsDiscoveredServicesResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Gets a discovered service in a host project and location.
+  /// Gets a Discovered Service in a host project and location.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Value for name.
+  /// [name] - Required. Fully qualified name of the Discovered Service to
+  /// fetch. Expected format:
+  /// `projects/{project}/locations/{location}/discoveredServices/{discoveredService}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/discoveredServices/\[^/\]+$`.
   ///
@@ -1288,17 +1318,18 @@ class ProjectsLocationsDiscoveredServicesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists discovered services that can be added to an application in a host
+  /// Lists Discovered Services that can be added to an Application in a host
   /// project and location.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Value for parent.
+  /// [parent] - Required. Project and location to list Discovered Services on.
+  /// Expected format: `projects/{project}/locations/{location}`.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [filter] - Optional. Filtering results
+  /// [filter] - Optional. Filtering results.
   ///
-  /// [orderBy] - Optional. Hint for how to order the results
+  /// [orderBy] - Optional. Hint for how to order the results.
   ///
   /// [pageSize] - Optional. Requested page size. Server may return fewer items
   /// than requested. If unspecified, server will pick an appropriate default.
@@ -1343,16 +1374,17 @@ class ProjectsLocationsDiscoveredServicesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Looks up a discovered service in a host project and location and with a
-  /// given resource URI.
+  /// Lists a Discovered Service in a host project and location, with a given
+  /// resource URI.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Value for parent.
+  /// [parent] - Required. Host project ID and location to lookup Discovered
+  /// Service in. Expected format: `projects/{project}/locations/{location}`.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [uri] - Required. Resource URI to find service for. Accepts both project
-  /// number and project id and does translation when needed.
+  /// [uri] - Required. Resource URI to find DiscoveredService for. Accepts both
+  /// project number and project ID and does translation when needed.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1393,11 +1425,13 @@ class ProjectsLocationsDiscoveredWorkloadsResource {
   ProjectsLocationsDiscoveredWorkloadsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Gets a discovered workload in a host project and location.
+  /// Gets a Discovered Workload in a host project and location.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Value for name.
+  /// [name] - Required. Fully qualified name of the Discovered Workload to
+  /// fetch. Expected format:
+  /// `projects/{project}/locations/{location}/discoveredWorkloads/{discoveredWorkload}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/discoveredWorkloads/\[^/\]+$`.
   ///
@@ -1430,17 +1464,18 @@ class ProjectsLocationsDiscoveredWorkloadsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists discovered workloads that can be added to an application in a host
+  /// Lists Discovered Workloads that can be added to an Application in a host
   /// project and location.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Value for parent.
+  /// [parent] - Required. Project and location to list Discovered Workloads on.
+  /// Expected format: `projects/{project}/locations/{location}`.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [filter] - Optional. Filtering results
+  /// [filter] - Optional. Filtering results.
   ///
-  /// [orderBy] - Optional. Hint for how to order the results
+  /// [orderBy] - Optional. Hint for how to order the results.
   ///
   /// [pageSize] - Optional. Requested page size. Server may return fewer items
   /// than requested. If unspecified, server will pick an appropriate default.
@@ -1486,16 +1521,17 @@ class ProjectsLocationsDiscoveredWorkloadsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Looks up a discovered Workload in a host project and location and with a
-  /// given resource URI.
+  /// Lists a Discovered Workload in a host project and location, with a given
+  /// resource URI.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Value for parent.
+  /// [parent] - Required. Host project ID and location to lookup Discovered
+  /// Workload in. Expected format: `projects/{project}/locations/{location}`.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [uri] - Required. Resource URI to find workload for. Accepts both project
-  /// number and project id and does translation when needed.
+  /// [uri] - Required. Resource URI to find Discovered Workload for. Accepts
+  /// both project number and project ID and does translation when needed.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1729,7 +1765,9 @@ class ProjectsLocationsServiceProjectAttachmentsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Value for parent.
+  /// [parent] - Required. Host project ID and location to which service project
+  /// is being attached. Only global location is supported. Expected format:
+  /// `projects/{project}/locations/{location}`.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [requestId] - Optional. An optional request ID to identify requests.
@@ -1745,9 +1783,8 @@ class ProjectsLocationsServiceProjectAttachmentsResource {
   /// supported (00000000-0000-0000-0000-000000000000).
   ///
   /// [serviceProjectAttachmentId] - Required. The service project attachment
-  /// identifier must contain the project_id of the service project specified in
-  /// the service_project_attachment.service_project field. Hint:
-  /// "projects/{project_id}"
+  /// identifier must contain the project id of the service project specified in
+  /// the service_project_attachment.service_project field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1786,11 +1823,13 @@ class ProjectsLocationsServiceProjectAttachmentsResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Deletes a service project attached to the host project.
+  /// Deletes a service project attachment.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Value for name.
+  /// [name] - Required. Fully qualified name of the service project attachment
+  /// to delete. Expected format:
+  /// `projects/{project}/locations/{location}/serviceProjectAttachments/{serviceProjectAttachment}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/serviceProjectAttachments/\[^/\]+$`.
   ///
@@ -1836,11 +1875,13 @@ class ProjectsLocationsServiceProjectAttachmentsResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets a service project attached to the host project.
+  /// Gets a service project attachment.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Value for name.
+  /// [name] - Required. Fully qualified name of the service project attachment
+  /// to retrieve. Expected format:
+  /// `projects/{project}/locations/{location}/serviceProjectAttachments/{serviceProjectAttachment}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/serviceProjectAttachments/\[^/\]+$`.
   ///
@@ -1873,16 +1914,18 @@ class ProjectsLocationsServiceProjectAttachmentsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// List service projects attached to the host project.
+  /// Lists service projects attached to the host project.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Value for parent.
+  /// [parent] - Required. Host project ID and location to list service project
+  /// attachments. Only global location is supported. Expected format:
+  /// `projects/{project}/locations/{location}`.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [filter] - Optional. Filtering results
+  /// [filter] - Optional. Filtering results.
   ///
-  /// [orderBy] - Optional. Hint for how to order the results
+  /// [orderBy] - Optional. Hint for how to order the results.
   ///
   /// [pageSize] - Optional. Requested page size. Server may return fewer items
   /// than requested. If unspecified, server will pick an appropriate default.
@@ -2559,7 +2602,7 @@ class ListApplicationsResponse {
 
 /// Response for ListDiscoveredServices.
 class ListDiscoveredServicesResponse {
-  /// List of discovered services.
+  /// List of Discovered Services.
   core.List<DiscoveredService>? discoveredServices;
 
   /// A token identifying a page of results the server should return.
@@ -2602,7 +2645,7 @@ class ListDiscoveredServicesResponse {
 
 /// Response for ListDiscoveredWorkloads.
 class ListDiscoveredWorkloadsResponse {
-  /// List of discovered workloads.
+  /// List of Discovered Workloads.
   core.List<DiscoveredWorkload>? discoveredWorkloads;
 
   /// A token identifying a page of results the server should return.
@@ -2840,7 +2883,7 @@ typedef Location = $Location00;
 
 /// Response for LookupDiscoveredService.
 class LookupDiscoveredServiceResponse {
-  /// Discovered service if exists, empty otherwise.
+  /// Discovered Service if exists, empty otherwise.
   DiscoveredService? discoveredService;
 
   LookupDiscoveredServiceResponse({
@@ -2862,7 +2905,7 @@ class LookupDiscoveredServiceResponse {
 
 /// Response for LookupDiscoveredWorkload.
 class LookupDiscoveredWorkloadResponse {
-  /// Discovered workload if exists, empty otherwise.
+  /// Discovered Workload if exists, empty otherwise.
   DiscoveredWorkload? discoveredWorkload;
 
   LookupDiscoveredWorkloadResponse({

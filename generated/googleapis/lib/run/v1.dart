@@ -6072,7 +6072,7 @@ typedef Location = $Location00;
 
 /// Represents a persistent volume that will be mounted using NFS.
 ///
-/// This volume will be shared between all instances of the Service and data
+/// This volume will be shared between all instances of the resource and data
 /// will not be deleted when the instance is shut down.
 class NFSVolumeSource {
   /// Path that is exported by the NFS server.
@@ -7482,7 +7482,7 @@ class Service {
   /// `run.googleapis.com/binary-authorization-breakglass` *
   /// `run.googleapis.com/binary-authorization` *
   /// `run.googleapis.com/client-name` * `run.googleapis.com/custom-audiences` *
-  /// `run.googleapis.com/default-url-disabled`: Service. *
+  /// `run.googleapis.com/default-url-disabled` *
   /// `run.googleapis.com/description` * `run.googleapis.com/gc-traffic-tags` *
   /// `run.googleapis.com/ingress` * `run.googleapis.com/ingress` sets the
   /// ingress settings for the Service. See \[the ingress settings

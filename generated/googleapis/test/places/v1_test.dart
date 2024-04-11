@@ -1652,6 +1652,7 @@ api.GoogleMapsPlacesV1SearchTextRequest
   final o = api.GoogleMapsPlacesV1SearchTextRequest();
   buildCounterGoogleMapsPlacesV1SearchTextRequest++;
   if (buildCounterGoogleMapsPlacesV1SearchTextRequest < 3) {
+    o.evOptions = buildGoogleMapsPlacesV1SearchTextRequestEVOptions();
     o.includedType = 'foo';
     o.languageCode = 'foo';
     o.locationBias = buildGoogleMapsPlacesV1SearchTextRequestLocationBias();
@@ -1674,6 +1675,7 @@ void checkGoogleMapsPlacesV1SearchTextRequest(
     api.GoogleMapsPlacesV1SearchTextRequest o) {
   buildCounterGoogleMapsPlacesV1SearchTextRequest++;
   if (buildCounterGoogleMapsPlacesV1SearchTextRequest < 3) {
+    checkGoogleMapsPlacesV1SearchTextRequestEVOptions(o.evOptions!);
     unittest.expect(
       o.includedType!,
       unittest.equals('foo'),
@@ -1710,6 +1712,49 @@ void checkGoogleMapsPlacesV1SearchTextRequest(
     );
   }
   buildCounterGoogleMapsPlacesV1SearchTextRequest--;
+}
+
+core.List<core.String> buildUnnamed26() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed26(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterGoogleMapsPlacesV1SearchTextRequestEVOptions = 0;
+api.GoogleMapsPlacesV1SearchTextRequestEVOptions
+    buildGoogleMapsPlacesV1SearchTextRequestEVOptions() {
+  final o = api.GoogleMapsPlacesV1SearchTextRequestEVOptions();
+  buildCounterGoogleMapsPlacesV1SearchTextRequestEVOptions++;
+  if (buildCounterGoogleMapsPlacesV1SearchTextRequestEVOptions < 3) {
+    o.connectorTypes = buildUnnamed26();
+    o.minimumChargingRateKw = 42.0;
+  }
+  buildCounterGoogleMapsPlacesV1SearchTextRequestEVOptions--;
+  return o;
+}
+
+void checkGoogleMapsPlacesV1SearchTextRequestEVOptions(
+    api.GoogleMapsPlacesV1SearchTextRequestEVOptions o) {
+  buildCounterGoogleMapsPlacesV1SearchTextRequestEVOptions++;
+  if (buildCounterGoogleMapsPlacesV1SearchTextRequestEVOptions < 3) {
+    checkUnnamed26(o.connectorTypes!);
+    unittest.expect(
+      o.minimumChargingRateKw!,
+      unittest.equals(42.0),
+    );
+  }
+  buildCounterGoogleMapsPlacesV1SearchTextRequestEVOptions--;
 }
 
 core.int buildCounterGoogleMapsPlacesV1SearchTextRequestLocationBias = 0;
@@ -1756,12 +1801,12 @@ void checkGoogleMapsPlacesV1SearchTextRequestLocationRestriction(
   buildCounterGoogleMapsPlacesV1SearchTextRequestLocationRestriction--;
 }
 
-core.List<api.GoogleMapsPlacesV1Place> buildUnnamed26() => [
+core.List<api.GoogleMapsPlacesV1Place> buildUnnamed27() => [
       buildGoogleMapsPlacesV1Place(),
       buildGoogleMapsPlacesV1Place(),
     ];
 
-void checkUnnamed26(core.List<api.GoogleMapsPlacesV1Place> o) {
+void checkUnnamed27(core.List<api.GoogleMapsPlacesV1Place> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleMapsPlacesV1Place(o[0]);
   checkGoogleMapsPlacesV1Place(o[1]);
@@ -1773,7 +1818,7 @@ api.GoogleMapsPlacesV1SearchTextResponse
   final o = api.GoogleMapsPlacesV1SearchTextResponse();
   buildCounterGoogleMapsPlacesV1SearchTextResponse++;
   if (buildCounterGoogleMapsPlacesV1SearchTextResponse < 3) {
-    o.places = buildUnnamed26();
+    o.places = buildUnnamed27();
   }
   buildCounterGoogleMapsPlacesV1SearchTextResponse--;
   return o;
@@ -1783,7 +1828,7 @@ void checkGoogleMapsPlacesV1SearchTextResponse(
     api.GoogleMapsPlacesV1SearchTextResponse o) {
   buildCounterGoogleMapsPlacesV1SearchTextResponse++;
   if (buildCounterGoogleMapsPlacesV1SearchTextResponse < 3) {
-    checkUnnamed26(o.places!);
+    checkUnnamed27(o.places!);
   }
   buildCounterGoogleMapsPlacesV1SearchTextResponse--;
 }
@@ -2304,6 +2349,16 @@ void main() {
       final od = api.GoogleMapsPlacesV1SearchTextRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleMapsPlacesV1SearchTextRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleMapsPlacesV1SearchTextRequestEVOptions', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleMapsPlacesV1SearchTextRequestEVOptions();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleMapsPlacesV1SearchTextRequestEVOptions.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleMapsPlacesV1SearchTextRequestEVOptions(od);
     });
   });
 

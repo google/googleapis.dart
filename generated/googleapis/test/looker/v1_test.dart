@@ -443,6 +443,7 @@ api.Instance buildInstance() {
     o.ingressPrivateIp = 'foo';
     o.ingressPublicIp = 'foo';
     o.lastDenyMaintenancePeriod = buildDenyMaintenancePeriod();
+    o.linkedLspProjectNumber = 'foo';
     o.lookerUri = 'foo';
     o.lookerVersion = 'foo';
     o.maintenanceSchedule = buildMaintenanceSchedule();
@@ -451,8 +452,6 @@ api.Instance buildInstance() {
     o.oauthConfig = buildOAuthConfig();
     o.platformEdition = 'foo';
     o.privateIpEnabled = true;
-    o.pscConfig = buildPscConfig();
-    o.pscEnabled = true;
     o.publicIpEnabled = true;
     o.reservedRange = 'foo';
     o.state = 'foo';
@@ -492,6 +491,10 @@ void checkInstance(api.Instance o) {
     );
     checkDenyMaintenancePeriod(o.lastDenyMaintenancePeriod!);
     unittest.expect(
+      o.linkedLspProjectNumber!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.lookerUri!,
       unittest.equals('foo'),
     );
@@ -511,8 +514,6 @@ void checkInstance(api.Instance o) {
       unittest.equals('foo'),
     );
     unittest.expect(o.privateIpEnabled!, unittest.isTrue);
-    checkPscConfig(o.pscConfig!);
-    unittest.expect(o.pscEnabled!, unittest.isTrue);
     unittest.expect(o.publicIpEnabled!, unittest.isTrue);
     unittest.expect(
       o.reservedRange!,
@@ -1004,60 +1005,6 @@ void checkPolicy(api.Policy o) {
   buildCounterPolicy--;
 }
 
-core.List<core.String> buildUnnamed14() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed14(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.List<api.ServiceAttachment> buildUnnamed15() => [
-      buildServiceAttachment(),
-      buildServiceAttachment(),
-    ];
-
-void checkUnnamed15(core.List<api.ServiceAttachment> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkServiceAttachment(o[0]);
-  checkServiceAttachment(o[1]);
-}
-
-core.int buildCounterPscConfig = 0;
-api.PscConfig buildPscConfig() {
-  final o = api.PscConfig();
-  buildCounterPscConfig++;
-  if (buildCounterPscConfig < 3) {
-    o.allowedVpcs = buildUnnamed14();
-    o.lookerServiceAttachmentUri = 'foo';
-    o.serviceAttachments = buildUnnamed15();
-  }
-  buildCounterPscConfig--;
-  return o;
-}
-
-void checkPscConfig(api.PscConfig o) {
-  buildCounterPscConfig++;
-  if (buildCounterPscConfig < 3) {
-    checkUnnamed14(o.allowedVpcs!);
-    unittest.expect(
-      o.lookerServiceAttachmentUri!,
-      unittest.equals('foo'),
-    );
-    checkUnnamed15(o.serviceAttachments!);
-  }
-  buildCounterPscConfig--;
-}
-
 core.int buildCounterRestartInstanceRequest = 0;
 api.RestartInstanceRequest buildRestartInstanceRequest() {
   final o = api.RestartInstanceRequest();
@@ -1071,38 +1018,6 @@ void checkRestartInstanceRequest(api.RestartInstanceRequest o) {
   buildCounterRestartInstanceRequest++;
   if (buildCounterRestartInstanceRequest < 3) {}
   buildCounterRestartInstanceRequest--;
-}
-
-core.int buildCounterServiceAttachment = 0;
-api.ServiceAttachment buildServiceAttachment() {
-  final o = api.ServiceAttachment();
-  buildCounterServiceAttachment++;
-  if (buildCounterServiceAttachment < 3) {
-    o.connectionStatus = 'foo';
-    o.localFqdn = 'foo';
-    o.targetServiceAttachmentUri = 'foo';
-  }
-  buildCounterServiceAttachment--;
-  return o;
-}
-
-void checkServiceAttachment(api.ServiceAttachment o) {
-  buildCounterServiceAttachment++;
-  if (buildCounterServiceAttachment < 3) {
-    unittest.expect(
-      o.connectionStatus!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.localFqdn!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.targetServiceAttachmentUri!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterServiceAttachment--;
 }
 
 core.int buildCounterSetIamPolicyRequest = 0;
@@ -1129,7 +1044,7 @@ void checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
   buildCounterSetIamPolicyRequest--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed16() => {
+core.Map<core.String, core.Object?> buildUnnamed14() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -1142,7 +1057,7 @@ core.Map<core.String, core.Object?> buildUnnamed16() => {
       },
     };
 
-void checkUnnamed16(core.Map<core.String, core.Object?> o) {
+void checkUnnamed14(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o['x']!) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
@@ -1174,15 +1089,15 @@ void checkUnnamed16(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed17() => [
-      buildUnnamed16(),
-      buildUnnamed16(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed15() => [
+      buildUnnamed14(),
+      buildUnnamed14(),
     ];
 
-void checkUnnamed17(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed15(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed16(o[0]);
-  checkUnnamed16(o[1]);
+  checkUnnamed14(o[0]);
+  checkUnnamed14(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -1191,7 +1106,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed17();
+    o.details = buildUnnamed15();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -1205,7 +1120,7 @@ void checkStatus(api.Status o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed17(o.details!);
+    checkUnnamed15(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -1214,12 +1129,12 @@ void checkStatus(api.Status o) {
   buildCounterStatus--;
 }
 
-core.List<core.String> buildUnnamed18() => [
+core.List<core.String> buildUnnamed16() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed18(core.List<core.String> o) {
+void checkUnnamed16(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1236,7 +1151,7 @@ api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
   final o = api.TestIamPermissionsRequest();
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed18();
+    o.permissions = buildUnnamed16();
   }
   buildCounterTestIamPermissionsRequest--;
   return o;
@@ -1245,17 +1160,17 @@ api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
 void checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    checkUnnamed18(o.permissions!);
+    checkUnnamed16(o.permissions!);
   }
   buildCounterTestIamPermissionsRequest--;
 }
 
-core.List<core.String> buildUnnamed19() => [
+core.List<core.String> buildUnnamed17() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed19(core.List<core.String> o) {
+void checkUnnamed17(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1272,7 +1187,7 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
   final o = api.TestIamPermissionsResponse();
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed19();
+    o.permissions = buildUnnamed17();
   }
   buildCounterTestIamPermissionsResponse--;
   return o;
@@ -1281,7 +1196,7 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
 void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    checkUnnamed19(o.permissions!);
+    checkUnnamed17(o.permissions!);
   }
   buildCounterTestIamPermissionsResponse--;
 }
@@ -1596,16 +1511,6 @@ void main() {
     });
   });
 
-  unittest.group('obj-schema-PscConfig', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildPscConfig();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.PscConfig.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkPscConfig(od);
-    });
-  });
-
   unittest.group('obj-schema-RestartInstanceRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildRestartInstanceRequest();
@@ -1613,16 +1518,6 @@ void main() {
       final od = api.RestartInstanceRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkRestartInstanceRequest(od);
-    });
-  });
-
-  unittest.group('obj-schema-ServiceAttachment', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildServiceAttachment();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.ServiceAttachment.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkServiceAttachment(od);
     });
   });
 

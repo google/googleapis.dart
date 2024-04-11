@@ -839,6 +839,7 @@ api.Secret buildSecret() {
   if (buildCounterSecret < 3) {
     o.annotations = buildUnnamed10();
     o.createTime = 'foo';
+    o.customerManagedEncryption = buildCustomerManagedEncryption();
     o.etag = 'foo';
     o.expireTime = 'foo';
     o.labels = buildUnnamed11();
@@ -848,6 +849,7 @@ api.Secret buildSecret() {
     o.topics = buildUnnamed12();
     o.ttl = 'foo';
     o.versionAliases = buildUnnamed13();
+    o.versionDestroyTtl = 'foo';
   }
   buildCounterSecret--;
   return o;
@@ -861,6 +863,7 @@ void checkSecret(api.Secret o) {
       o.createTime!,
       unittest.equals('foo'),
     );
+    checkCustomerManagedEncryption(o.customerManagedEncryption!);
     unittest.expect(
       o.etag!,
       unittest.equals('foo'),
@@ -882,6 +885,10 @@ void checkSecret(api.Secret o) {
       unittest.equals('foo'),
     );
     checkUnnamed13(o.versionAliases!);
+    unittest.expect(
+      o.versionDestroyTtl!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterSecret--;
 }
@@ -920,10 +927,12 @@ api.SecretVersion buildSecretVersion() {
   if (buildCounterSecretVersion < 3) {
     o.clientSpecifiedPayloadChecksum = true;
     o.createTime = 'foo';
+    o.customerManagedEncryption = buildCustomerManagedEncryptionStatus();
     o.destroyTime = 'foo';
     o.etag = 'foo';
     o.name = 'foo';
     o.replicationStatus = buildReplicationStatus();
+    o.scheduledDestroyTime = 'foo';
     o.state = 'foo';
   }
   buildCounterSecretVersion--;
@@ -938,6 +947,7 @@ void checkSecretVersion(api.SecretVersion o) {
       o.createTime!,
       unittest.equals('foo'),
     );
+    checkCustomerManagedEncryptionStatus(o.customerManagedEncryption!);
     unittest.expect(
       o.destroyTime!,
       unittest.equals('foo'),
@@ -951,6 +961,10 @@ void checkSecretVersion(api.SecretVersion o) {
       unittest.equals('foo'),
     );
     checkReplicationStatus(o.replicationStatus!);
+    unittest.expect(
+      o.scheduledDestroyTime!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.state!,
       unittest.equals('foo'),

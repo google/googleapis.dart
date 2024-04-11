@@ -5594,6 +5594,7 @@ class DataExecutionStatus {
   /// - "OBJECT_IN_ERROR_STATE" : The data source object is currently in error
   /// state. To force refresh, set force in RefreshDataSourceRequest.
   /// - "OBJECT_SPEC_INVALID" : The data source object specification is invalid.
+  /// - "DATA_EXECUTION_CANCELLED" : The data execution has been cancelled.
   core.String? errorCode;
 
   /// The error message, which may be empty.
@@ -5607,6 +5608,7 @@ class DataExecutionStatus {
   /// - "DATA_EXECUTION_STATE_UNSPECIFIED" : Default value, do not use.
   /// - "NOT_STARTED" : The data execution has not started.
   /// - "RUNNING" : The data execution has started and is running.
+  /// - "CANCELLING" : The data execution is currently being cancelled.
   /// - "SUCCEEDED" : The data execution has completed successfully.
   /// - "FAILED" : The data execution has completed with errors.
   core.String? state;
@@ -12569,6 +12571,11 @@ class SpreadsheetProperties {
   /// this default format. This field is read-only.
   CellFormat? defaultFormat;
 
+  /// Whether to allow external url access for image and import functions.
+  ///
+  /// Read only when true. When false, you can set to true.
+  core.bool? importFunctionsExternalUrlAccessAllowed;
+
   /// Determines whether and how circular references are resolved with iterative
   /// calculation.
   ///
@@ -12599,6 +12606,7 @@ class SpreadsheetProperties {
   SpreadsheetProperties({
     this.autoRecalc,
     this.defaultFormat,
+    this.importFunctionsExternalUrlAccessAllowed,
     this.iterativeCalculationSettings,
     this.locale,
     this.spreadsheetTheme,
@@ -12614,6 +12622,10 @@ class SpreadsheetProperties {
           defaultFormat: json_.containsKey('defaultFormat')
               ? CellFormat.fromJson(
                   json_['defaultFormat'] as core.Map<core.String, core.dynamic>)
+              : null,
+          importFunctionsExternalUrlAccessAllowed: json_
+                  .containsKey('importFunctionsExternalUrlAccessAllowed')
+              ? json_['importFunctionsExternalUrlAccessAllowed'] as core.bool
               : null,
           iterativeCalculationSettings:
               json_.containsKey('iterativeCalculationSettings')
@@ -12638,6 +12650,9 @@ class SpreadsheetProperties {
   core.Map<core.String, core.dynamic> toJson() => {
         if (autoRecalc != null) 'autoRecalc': autoRecalc!,
         if (defaultFormat != null) 'defaultFormat': defaultFormat!,
+        if (importFunctionsExternalUrlAccessAllowed != null)
+          'importFunctionsExternalUrlAccessAllowed':
+              importFunctionsExternalUrlAccessAllowed!,
         if (iterativeCalculationSettings != null)
           'iterativeCalculationSettings': iterativeCalculationSettings!,
         if (locale != null) 'locale': locale!,

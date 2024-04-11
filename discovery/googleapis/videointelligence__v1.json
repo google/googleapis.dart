@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240304",
+    "revision": "20240327",
     "rootUrl": "https://videointelligence.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Video Intelligence API",

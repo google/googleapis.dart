@@ -1,3 +1,9 @@
+## 13.2.0-wip
+
+- `addressvalidation` - new!
+- `cloudcontrolspartner` - new!
+- `solar` - new!
+
 ## 13.1.0
 
  - `logging` - removed (*BROKEN*) `tail()` function call.

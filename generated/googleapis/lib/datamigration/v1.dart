@@ -4367,12 +4367,16 @@ class ConnectionProfile {
 
   /// The database provider.
   /// Possible string values are:
-  /// - "DATABASE_PROVIDER_UNSPECIFIED" : The database provider is unknown.
-  /// - "CLOUDSQL" : CloudSQL runs the database.
-  /// - "RDS" : RDS runs the database.
-  /// - "AURORA" : Amazon Aurora.
-  /// - "ALLOYDB" : AlloyDB.
+  /// - "DATABASE_PROVIDER_UNSPECIFIED" : Use this value for on-premise source
+  /// database instances.
+  /// - "CLOUDSQL" : Cloud SQL is the source instance provider.
+  /// - "RDS" : Amazon RDS is the source instance provider.
+  /// - "AURORA" : Amazon Aurora is the source instance provider.
+  /// - "ALLOYDB" : AlloyDB for PostgreSQL is the source instance provider.
   core.String? provider;
+
+  /// Connection profile for a SQL Server data source.
+  SqlServerConnectionProfile? sqlserver;
 
   /// The current connection profile state (e.g. DRAFT, READY, or FAILED).
   /// Possible string values are:
@@ -4406,6 +4410,7 @@ class ConnectionProfile {
     this.oracle,
     this.postgresql,
     this.provider,
+    this.sqlserver,
     this.state,
     this.updateTime,
   });
@@ -4454,6 +4459,10 @@ class ConnectionProfile {
           provider: json_.containsKey('provider')
               ? json_['provider'] as core.String
               : null,
+          sqlserver: json_.containsKey('sqlserver')
+              ? SqlServerConnectionProfile.fromJson(
+                  json_['sqlserver'] as core.Map<core.String, core.dynamic>)
+              : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
           updateTime: json_.containsKey('updateTime')
@@ -4473,6 +4482,7 @@ class ConnectionProfile {
         if (oracle != null) 'oracle': oracle!,
         if (postgresql != null) 'postgresql': postgresql!,
         if (provider != null) 'provider': provider!,
+        if (sqlserver != null) 'sqlserver': sqlserver!,
         if (state != null) 'state': state!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
@@ -4859,6 +4869,7 @@ class DatabaseEngineInfo {
   /// migration job is unknown.
   /// - "MYSQL" : The source engine is MySQL.
   /// - "POSTGRESQL" : The source engine is PostgreSQL.
+  /// - "SQLSERVER" : The source engine is SQL Server.
   /// - "ORACLE" : The source engine is Oracle.
   core.String? engine;
 
@@ -5109,16 +5120,18 @@ class DatabaseType {
   /// migration job is unknown.
   /// - "MYSQL" : The source engine is MySQL.
   /// - "POSTGRESQL" : The source engine is PostgreSQL.
+  /// - "SQLSERVER" : The source engine is SQL Server.
   /// - "ORACLE" : The source engine is Oracle.
   core.String? engine;
 
   /// The database provider.
   /// Possible string values are:
-  /// - "DATABASE_PROVIDER_UNSPECIFIED" : The database provider is unknown.
-  /// - "CLOUDSQL" : CloudSQL runs the database.
-  /// - "RDS" : RDS runs the database.
-  /// - "AURORA" : Amazon Aurora.
-  /// - "ALLOYDB" : AlloyDB.
+  /// - "DATABASE_PROVIDER_UNSPECIFIED" : Use this value for on-premise source
+  /// database instances.
+  /// - "CLOUDSQL" : Cloud SQL is the source instance provider.
+  /// - "RDS" : Amazon RDS is the source instance provider.
+  /// - "AURORA" : Amazon Aurora is the source instance provider.
+  /// - "ALLOYDB" : AlloyDB for PostgreSQL is the source instance provider.
   core.String? provider;
 
   DatabaseType({
@@ -6774,6 +6787,18 @@ class MigrationJob {
   /// This field and the "dump_flags" field are mutually exclusive.
   core.String? dumpPath;
 
+  /// The type of the data dump.
+  ///
+  /// Supported for MySQL to CloudSQL for MySQL migrations only.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "DUMP_TYPE_UNSPECIFIED" : If not specified, defaults to LOGICAL
+  /// - "LOGICAL" : Logical dump.
+  /// - "PHYSICAL" : Physical file-based dump. Supported for MySQL to CloudSQL
+  /// for MySQL migrations only.
+  core.String? dumpType;
+
   /// The duration of the migration job (in seconds).
   ///
   /// A duration in seconds with up to nine fractional digits, terminated by
@@ -6831,6 +6856,7 @@ class MigrationJob {
   /// writes to stop
   /// - "PREPARING_THE_DUMP" : Only RDS flow - the sources writes stopped,
   /// waiting for dump to begin
+  /// - "READY_FOR_PROMOTE" : The migration job is ready to be promoted.
   core.String? phase;
 
   /// The details needed to communicate to the source over Reverse SSH tunnel
@@ -6844,6 +6870,12 @@ class MigrationJob {
 
   /// The database engine type and provider of the source.
   DatabaseType? sourceDatabase;
+
+  /// Configuration for SQL Server homogeneous migration.
+  ///
+  /// Optional.
+  SqlServerHomogeneousMigrationJobConfig?
+      sqlserverHomogeneousMigrationJobConfig;
 
   /// The current migration job state.
   /// Possible string values are:
@@ -6898,6 +6930,7 @@ class MigrationJob {
     this.displayName,
     this.dumpFlags,
     this.dumpPath,
+    this.dumpType,
     this.duration,
     this.endTime,
     this.error,
@@ -6909,6 +6942,7 @@ class MigrationJob {
     this.reverseSshConnectivity,
     this.source,
     this.sourceDatabase,
+    this.sqlserverHomogeneousMigrationJobConfig,
     this.state,
     this.staticIpConnectivity,
     this.type,
@@ -6944,6 +6978,9 @@ class MigrationJob {
               : null,
           dumpPath: json_.containsKey('dumpPath')
               ? json_['dumpPath'] as core.String
+              : null,
+          dumpType: json_.containsKey('dumpType')
+              ? json_['dumpType'] as core.String
               : null,
           duration: json_.containsKey('duration')
               ? json_['duration'] as core.String
@@ -6984,6 +7021,12 @@ class MigrationJob {
               ? DatabaseType.fromJson(json_['sourceDatabase']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          sqlserverHomogeneousMigrationJobConfig:
+              json_.containsKey('sqlserverHomogeneousMigrationJobConfig')
+                  ? SqlServerHomogeneousMigrationJobConfig.fromJson(
+                      json_['sqlserverHomogeneousMigrationJobConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
           staticIpConnectivity: json_.containsKey('staticIpConnectivity')
@@ -7011,6 +7054,7 @@ class MigrationJob {
         if (displayName != null) 'displayName': displayName!,
         if (dumpFlags != null) 'dumpFlags': dumpFlags!,
         if (dumpPath != null) 'dumpPath': dumpPath!,
+        if (dumpType != null) 'dumpType': dumpType!,
         if (duration != null) 'duration': duration!,
         if (endTime != null) 'endTime': endTime!,
         if (error != null) 'error': error!,
@@ -7023,6 +7067,9 @@ class MigrationJob {
           'reverseSshConnectivity': reverseSshConnectivity!,
         if (source != null) 'source': source!,
         if (sourceDatabase != null) 'sourceDatabase': sourceDatabase!,
+        if (sqlserverHomogeneousMigrationJobConfig != null)
+          'sqlserverHomogeneousMigrationJobConfig':
+              sqlserverHomogeneousMigrationJobConfig!,
         if (state != null) 'state': state!,
         if (staticIpConnectivity != null)
           'staticIpConnectivity': staticIpConnectivity!,
@@ -8126,7 +8173,29 @@ class RestartMigrationJobRequest {
 }
 
 /// Request message for 'ResumeMigrationJob' request.
-typedef ResumeMigrationJobRequest = $Empty;
+class ResumeMigrationJobRequest {
+  /// Resume the migration job without running prior configuration verification.
+  ///
+  /// Defaults to `false`.
+  ///
+  /// Optional.
+  core.bool? skipValidation;
+
+  ResumeMigrationJobRequest({
+    this.skipValidation,
+  });
+
+  ResumeMigrationJobRequest.fromJson(core.Map json_)
+      : this(
+          skipValidation: json_.containsKey('skipValidation')
+              ? json_['skipValidation'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (skipValidation != null) 'skipValidation': skipValidation!,
+      };
+}
 
 /// The details needed to configure a reverse SSH tunnel between the source and
 /// destination databases.
@@ -9022,6 +9091,308 @@ class SqlIpConfig {
         if (enableIpv4 != null) 'enableIpv4': enableIpv4!,
         if (privateNetwork != null) 'privateNetwork': privateNetwork!,
         if (requireSsl != null) 'requireSsl': requireSsl!,
+      };
+}
+
+/// Specifies the backup details in Cloud Storage for homogeneous migration to
+/// Cloud SQL for SQL Server.
+class SqlServerBackups {
+  /// The Cloud Storage bucket that stores backups for all replicated databases.
+  ///
+  /// Required.
+  core.String? gcsBucket;
+
+  /// Cloud Storage path inside the bucket that stores backups.
+  ///
+  /// Optional.
+  core.String? gcsPrefix;
+
+  SqlServerBackups({
+    this.gcsBucket,
+    this.gcsPrefix,
+  });
+
+  SqlServerBackups.fromJson(core.Map json_)
+      : this(
+          gcsBucket: json_.containsKey('gcsBucket')
+              ? json_['gcsBucket'] as core.String
+              : null,
+          gcsPrefix: json_.containsKey('gcsPrefix')
+              ? json_['gcsPrefix'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (gcsBucket != null) 'gcsBucket': gcsBucket!,
+        if (gcsPrefix != null) 'gcsPrefix': gcsPrefix!,
+      };
+}
+
+/// Specifies connection parameters required specifically for SQL Server
+/// databases.
+class SqlServerConnectionProfile {
+  /// The backup details in Cloud Storage for homogeneous migration to Cloud SQL
+  /// for SQL Server.
+  SqlServerBackups? backups;
+
+  /// If the source is a Cloud SQL database, use this field to provide the Cloud
+  /// SQL instance ID of the source.
+  core.String? cloudSqlId;
+
+  /// Forward SSH tunnel connectivity.
+  ForwardSshTunnelConnectivity? forwardSshConnectivity;
+
+  /// The IP or hostname of the source SQL Server database.
+  ///
+  /// Required.
+  core.String? host;
+
+  /// Input only.
+  ///
+  /// The password for the user that Database Migration Service will be using to
+  /// connect to the database. This field is not returned on request, and the
+  /// value is encrypted when stored in Database Migration Service.
+  ///
+  /// Required.
+  core.String? password;
+
+  /// Indicates whether a new password is included in the request.
+  ///
+  /// Output only.
+  core.bool? passwordSet;
+
+  /// The network port of the source SQL Server database.
+  ///
+  /// Required.
+  core.int? port;
+
+  /// Private connectivity.
+  PrivateConnectivity? privateConnectivity;
+
+  /// Private Service Connect connectivity.
+  PrivateServiceConnectConnectivity? privateServiceConnectConnectivity;
+
+  /// SSL configuration for the destination to connect to the source database.
+  SslConfig? ssl;
+
+  /// Static IP connectivity data (default, no additional details needed).
+  StaticIpConnectivity? staticIpConnectivity;
+
+  /// The username that Database Migration Service will use to connect to the
+  /// database.
+  ///
+  /// The value is encrypted when stored in Database Migration Service.
+  ///
+  /// Required.
+  core.String? username;
+
+  SqlServerConnectionProfile({
+    this.backups,
+    this.cloudSqlId,
+    this.forwardSshConnectivity,
+    this.host,
+    this.password,
+    this.passwordSet,
+    this.port,
+    this.privateConnectivity,
+    this.privateServiceConnectConnectivity,
+    this.ssl,
+    this.staticIpConnectivity,
+    this.username,
+  });
+
+  SqlServerConnectionProfile.fromJson(core.Map json_)
+      : this(
+          backups: json_.containsKey('backups')
+              ? SqlServerBackups.fromJson(
+                  json_['backups'] as core.Map<core.String, core.dynamic>)
+              : null,
+          cloudSqlId: json_.containsKey('cloudSqlId')
+              ? json_['cloudSqlId'] as core.String
+              : null,
+          forwardSshConnectivity: json_.containsKey('forwardSshConnectivity')
+              ? ForwardSshTunnelConnectivity.fromJson(
+                  json_['forwardSshConnectivity']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          host: json_.containsKey('host') ? json_['host'] as core.String : null,
+          password: json_.containsKey('password')
+              ? json_['password'] as core.String
+              : null,
+          passwordSet: json_.containsKey('passwordSet')
+              ? json_['passwordSet'] as core.bool
+              : null,
+          port: json_.containsKey('port') ? json_['port'] as core.int : null,
+          privateConnectivity: json_.containsKey('privateConnectivity')
+              ? PrivateConnectivity.fromJson(json_['privateConnectivity']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          privateServiceConnectConnectivity:
+              json_.containsKey('privateServiceConnectConnectivity')
+                  ? PrivateServiceConnectConnectivity.fromJson(
+                      json_['privateServiceConnectConnectivity']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          ssl: json_.containsKey('ssl')
+              ? SslConfig.fromJson(
+                  json_['ssl'] as core.Map<core.String, core.dynamic>)
+              : null,
+          staticIpConnectivity: json_.containsKey('staticIpConnectivity')
+              ? StaticIpConnectivity.fromJson(json_['staticIpConnectivity']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          username: json_.containsKey('username')
+              ? json_['username'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (backups != null) 'backups': backups!,
+        if (cloudSqlId != null) 'cloudSqlId': cloudSqlId!,
+        if (forwardSshConnectivity != null)
+          'forwardSshConnectivity': forwardSshConnectivity!,
+        if (host != null) 'host': host!,
+        if (password != null) 'password': password!,
+        if (passwordSet != null) 'passwordSet': passwordSet!,
+        if (port != null) 'port': port!,
+        if (privateConnectivity != null)
+          'privateConnectivity': privateConnectivity!,
+        if (privateServiceConnectConnectivity != null)
+          'privateServiceConnectConnectivity':
+              privateServiceConnectConnectivity!,
+        if (ssl != null) 'ssl': ssl!,
+        if (staticIpConnectivity != null)
+          'staticIpConnectivity': staticIpConnectivity!,
+        if (username != null) 'username': username!,
+      };
+}
+
+/// Specifies the backup details for a single database in Cloud Storage for
+/// homogeneous migration to Cloud SQL for SQL Server.
+class SqlServerDatabaseBackup {
+  /// Name of a SQL Server database for which to define backup configuration.
+  ///
+  /// Required.
+  core.String? database;
+
+  /// Encryption settings for the database.
+  ///
+  /// Required if provided database backups are encrypted. Encryption settings
+  /// include path to certificate, path to certificate private key, and key
+  /// password.
+  ///
+  /// Optional.
+  SqlServerEncryptionOptions? encryptionOptions;
+
+  SqlServerDatabaseBackup({
+    this.database,
+    this.encryptionOptions,
+  });
+
+  SqlServerDatabaseBackup.fromJson(core.Map json_)
+      : this(
+          database: json_.containsKey('database')
+              ? json_['database'] as core.String
+              : null,
+          encryptionOptions: json_.containsKey('encryptionOptions')
+              ? SqlServerEncryptionOptions.fromJson(json_['encryptionOptions']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (database != null) 'database': database!,
+        if (encryptionOptions != null) 'encryptionOptions': encryptionOptions!,
+      };
+}
+
+/// Encryption settings for the SQL Server database.
+class SqlServerEncryptionOptions {
+  /// Path to certificate.
+  ///
+  /// Required.
+  core.String? certPath;
+
+  /// Input only.
+  ///
+  /// Private key password.
+  ///
+  /// Required.
+  core.String? pvkPassword;
+
+  /// Path to certificate private key.
+  ///
+  /// Required.
+  core.String? pvkPath;
+
+  SqlServerEncryptionOptions({
+    this.certPath,
+    this.pvkPassword,
+    this.pvkPath,
+  });
+
+  SqlServerEncryptionOptions.fromJson(core.Map json_)
+      : this(
+          certPath: json_.containsKey('certPath')
+              ? json_['certPath'] as core.String
+              : null,
+          pvkPassword: json_.containsKey('pvkPassword')
+              ? json_['pvkPassword'] as core.String
+              : null,
+          pvkPath: json_.containsKey('pvkPath')
+              ? json_['pvkPath'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (certPath != null) 'certPath': certPath!,
+        if (pvkPassword != null) 'pvkPassword': pvkPassword!,
+        if (pvkPath != null) 'pvkPath': pvkPath!,
+      };
+}
+
+/// Configuration for homogeneous migration to Cloud SQL for SQL Server.
+class SqlServerHomogeneousMigrationJobConfig {
+  /// Pattern that describes the default backup naming strategy.
+  ///
+  /// The specified pattern should ensure lexicographical order of backups. The
+  /// pattern must define one of the following capture group sets: Capture group
+  /// set #1 yy/yyyy - year, 2 or 4 digits mm - month number, 1-12 dd - day of
+  /// month, 1-31 hh - hour of day, 00-23 mi - minutes, 00-59 ss - seconds,
+  /// 00-59 Example: For backup file TestDB_20230802_155400.trn, use pattern:
+  /// (?.*)_backup_(?\d{4})(?\d{2})(?\d{2})_(?\d{2})(?\d{2})(?\d{2}).trn Capture
+  /// group set #2 timestamp - unix timestamp Example: For backup file
+  /// TestDB.1691448254.trn, use pattern: (?.*)\.(?\d*).trn or (?.*)\.(?\d*).trn
+  ///
+  /// Required.
+  core.String? backupFilePattern;
+
+  /// Backup details per database in Cloud Storage.
+  ///
+  /// Required.
+  core.List<SqlServerDatabaseBackup>? databaseBackups;
+
+  SqlServerHomogeneousMigrationJobConfig({
+    this.backupFilePattern,
+    this.databaseBackups,
+  });
+
+  SqlServerHomogeneousMigrationJobConfig.fromJson(core.Map json_)
+      : this(
+          backupFilePattern: json_.containsKey('backupFilePattern')
+              ? json_['backupFilePattern'] as core.String
+              : null,
+          databaseBackups: json_.containsKey('databaseBackups')
+              ? (json_['databaseBackups'] as core.List)
+                  .map((value) => SqlServerDatabaseBackup.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (backupFilePattern != null) 'backupFilePattern': backupFilePattern!,
+        if (databaseBackups != null) 'databaseBackups': databaseBackups!,
       };
 }
 

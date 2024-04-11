@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240223",
+    "revision": "20240329",
     "rootUrl": "https://accessapproval.googleapis.com/",
     "servicePath": "",
     "title": "Access Approval API",

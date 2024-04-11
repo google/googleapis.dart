@@ -12924,7 +12924,7 @@ class RollbackFhirResourcesRequest {
   /// Optional.
   core.bool? force;
 
-  /// GCS object containing list of {resourceType}/{resourceId} lines,
+  /// Cloud Storage object containing list of {resourceType}/{resourceId} lines,
   /// identifying resources to be reverted
   ///
   /// Optional.

@@ -15934,6 +15934,50 @@ class GoogleCloudApigeeV1AccessGet {
       };
 }
 
+/// Access logging configuration enables customers to ship the access logs from
+/// the tenant projects to their own project's cloud logging.
+///
+/// The feature is at the instance level ad disabled by default. It can be
+/// enabled during CreateInstance or UpdateInstance.
+class GoogleCloudApigeeV1AccessLoggingConfig {
+  /// Boolean flag that specifies whether the customer access log feature is
+  /// enabled.
+  ///
+  /// Optional.
+  core.bool? enabled;
+
+  /// Ship the access log entries that match the status_code defined in the
+  /// filter.
+  ///
+  /// The status_code is the only expected/supported filter field. (Ex:
+  /// status_code) The filter will parse it to the Common Expression Language
+  /// semantics for expression evaluation to build the filter condition. (Ex:
+  /// "filter": status_code \>= 200 && status_code \< 300 )
+  ///
+  /// Optional.
+  core.String? filter;
+
+  GoogleCloudApigeeV1AccessLoggingConfig({
+    this.enabled,
+    this.filter,
+  });
+
+  GoogleCloudApigeeV1AccessLoggingConfig.fromJson(core.Map json_)
+      : this(
+          enabled: json_.containsKey('enabled')
+              ? json_['enabled'] as core.bool
+              : null,
+          filter: json_.containsKey('filter')
+              ? json_['filter'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
+        if (filter != null) 'filter': filter!,
+      };
+}
+
 /// Remove action.
 ///
 /// For example, "Remove" : { "name" : "target.name", "success" : true }
@@ -16373,13 +16417,16 @@ class GoogleCloudApigeeV1ApiCategoryResponse {
 class GoogleCloudApigeeV1ApiDoc {
   /// Boolean flag that manages user access to the catalog item.
   ///
-  /// When true, the catalog item can be viewed anonymously; otherwise, only
-  /// registered users may view it. Note: when the parent portal is enrolled in
-  /// the
+  /// When true, the catalog item has public visibility and can be viewed
+  /// anonymously; otherwise, only registered users may view it. Note: when the
+  /// parent portal is enrolled in the
   /// [audience management feature](https://cloud.google.com/apigee/docs/api-platform/publish/portal/portal-audience#enrolling_in_the_beta_release_of_the_audience_management_feature),
-  /// this flag is ignored; instead visibility must be further managed in the
-  /// management UI (see
+  /// and this flag is set to false, visibility is set to an indeterminate state
+  /// and must be explicitly specified in the management UI (see
   /// [Manage the visibility of an API in your portal](https://cloud.google.com/apigee/docs/api-platform/publish/portal/publish-apis#visibility)).
+  /// Additionally, when enrolled in the audience management feature, updates to
+  /// this flag will be ignored as visibility permissions must be updated in the
+  /// management UI.
   ///
   /// Optional.
   core.bool? anonAllowed;
@@ -16460,11 +16507,11 @@ class GoogleCloudApigeeV1ApiDoc {
   ///
   /// When the parent portal is enrolled in the
   /// [audience management feature](https://cloud.google.com/apigee/docs/api-platform/publish/portal/portal-audience#enrolling_in_the_beta_release_of_the_audience_management_feature),
-  /// the visibility must be further managed in the management UI (see
+  /// the visibility can be set to public on creation by setting the anonAllowed
+  /// flag to true or further managed in the management UI (see
   /// [Manage the visibility of an API in your portal](https://cloud.google.com/apigee/docs/api-platform/publish/portal/publish-apis#visibility))
   /// before it can be visible to any users. If not enrolled in the audience
-  /// management feature, the visibility is further managed by the `anonAllowed`
-  /// flag.
+  /// management feature, the visibility is managed by the `anonAllowed` flag.
   ///
   /// Optional.
   core.bool? published;
@@ -22733,6 +22780,15 @@ class GoogleCloudApigeeV1IngressConfig {
 
 /// Apigee runtime instance.
 class GoogleCloudApigeeV1Instance {
+  /// Access logging configuration enables the access logging feature at the
+  /// instance.
+  ///
+  /// Apigee customers can enable access logging to ship the access logs to
+  /// their own project's cloud logging.
+  ///
+  /// Optional.
+  GoogleCloudApigeeV1AccessLoggingConfig? accessLoggingConfig;
+
   /// Customer accept list represents the list of projects (id/number) on
   /// customer side that can privately connect to the service attachment.
   ///
@@ -22857,6 +22913,7 @@ class GoogleCloudApigeeV1Instance {
   core.String? state;
 
   GoogleCloudApigeeV1Instance({
+    this.accessLoggingConfig,
     this.consumerAcceptList,
     this.createdAt,
     this.description,
@@ -22876,6 +22933,11 @@ class GoogleCloudApigeeV1Instance {
 
   GoogleCloudApigeeV1Instance.fromJson(core.Map json_)
       : this(
+          accessLoggingConfig: json_.containsKey('accessLoggingConfig')
+              ? GoogleCloudApigeeV1AccessLoggingConfig.fromJson(
+                  json_['accessLoggingConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           consumerAcceptList: json_.containsKey('consumerAcceptList')
               ? (json_['consumerAcceptList'] as core.List)
                   .map((value) => value as core.String)
@@ -22919,6 +22981,8 @@ class GoogleCloudApigeeV1Instance {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (accessLoggingConfig != null)
+          'accessLoggingConfig': accessLoggingConfig!,
         if (consumerAcceptList != null)
           'consumerAcceptList': consumerAcceptList!,
         if (createdAt != null) 'createdAt': createdAt!,

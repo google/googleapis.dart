@@ -34,7 +34,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240304",
+    "revision": "20240323",
     "rootUrl": "https://dns.googleapis.com/",
     "servicePath": "",
     "title": "Cloud DNS API",

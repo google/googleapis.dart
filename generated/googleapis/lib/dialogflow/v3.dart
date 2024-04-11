@@ -7028,6 +7028,13 @@ class GoogleCloudDialogflowCxV3Agent {
   /// Required.
   core.String? displayName;
 
+  /// Enable training multi-lingual models for this agent.
+  ///
+  /// These models will be trained on all the languages supported by the agent.
+  ///
+  /// Optional.
+  core.bool? enableMultiLanguageTraining;
+
   /// Indicates if automatic spell correction is enabled in detect intent
   /// requests.
   core.bool? enableSpellCorrection;
@@ -7103,6 +7110,7 @@ class GoogleCloudDialogflowCxV3Agent {
     this.defaultLanguageCode,
     this.description,
     this.displayName,
+    this.enableMultiLanguageTraining,
     this.enableSpellCorrection,
     this.enableStackdriverLogging,
     this.genAppBuilderSettings,
@@ -7142,6 +7150,10 @@ class GoogleCloudDialogflowCxV3Agent {
           displayName: json_.containsKey('displayName')
               ? json_['displayName'] as core.String
               : null,
+          enableMultiLanguageTraining:
+              json_.containsKey('enableMultiLanguageTraining')
+                  ? json_['enableMultiLanguageTraining'] as core.bool
+                  : null,
           enableSpellCorrection: json_.containsKey('enableSpellCorrection')
               ? json_['enableSpellCorrection'] as core.bool
               : null,
@@ -7202,6 +7214,8 @@ class GoogleCloudDialogflowCxV3Agent {
           'defaultLanguageCode': defaultLanguageCode!,
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
+        if (enableMultiLanguageTraining != null)
+          'enableMultiLanguageTraining': enableMultiLanguageTraining!,
         if (enableSpellCorrection != null)
           'enableSpellCorrection': enableSpellCorrection!,
         if (enableStackdriverLogging != null)
@@ -8301,6 +8315,350 @@ class GoogleCloudDialogflowCxV3DataStoreConnection {
   core.Map<core.String, core.dynamic> toJson() => {
         if (dataStore != null) 'dataStore': dataStore!,
         if (dataStoreType != null) 'dataStoreType': dataStoreType!,
+      };
+}
+
+/// Data store connection feature output signals.
+///
+/// Might be only partially field if processing stop before the final answer.
+/// Reasons for this can be, but are not limited to: empty UCS search results,
+/// positive RAI check outcome, grounding failure, ...
+class GoogleCloudDialogflowCxV3DataStoreConnectionSignals {
+  /// The final compiled answer.
+  ///
+  /// Optional.
+  core.String? answer;
+
+  /// Diagnostic info related to the answer generation model call.
+  ///
+  /// Optional.
+  GoogleCloudDialogflowCxV3DataStoreConnectionSignalsAnswerGenerationModelCallSignals?
+      answerGenerationModelCallSignals;
+
+  /// Answer parts with relevant citations.
+  ///
+  /// Concatenation of texts should add up the `answer` (not counting
+  /// whitespaces).
+  ///
+  /// Optional.
+  core.List<GoogleCloudDialogflowCxV3DataStoreConnectionSignalsAnswerPart>?
+      answerParts;
+
+  /// Snippets cited by the answer generation model from the most to least
+  /// relevant.
+  ///
+  /// Optional.
+  core.List<GoogleCloudDialogflowCxV3DataStoreConnectionSignalsCitedSnippet>?
+      citedSnippets;
+
+  /// Grounding signals.
+  ///
+  /// Optional.
+  GoogleCloudDialogflowCxV3DataStoreConnectionSignalsGroundingSignals?
+      groundingSignals;
+
+  /// Diagnostic info related to the rewriter model call.
+  ///
+  /// Optional.
+  GoogleCloudDialogflowCxV3DataStoreConnectionSignalsRewriterModelCallSignals?
+      rewriterModelCallSignals;
+
+  /// Rewritten string query used for search.
+  ///
+  /// Optional.
+  core.String? rewrittenQuery;
+
+  /// Safety check result.
+  ///
+  /// Optional.
+  GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSafetySignals?
+      safetySignals;
+
+  /// Search snippets included in the answer generation prompt.
+  ///
+  /// Optional.
+  core.List<GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSearchSnippet>?
+      searchSnippets;
+
+  GoogleCloudDialogflowCxV3DataStoreConnectionSignals({
+    this.answer,
+    this.answerGenerationModelCallSignals,
+    this.answerParts,
+    this.citedSnippets,
+    this.groundingSignals,
+    this.rewriterModelCallSignals,
+    this.rewrittenQuery,
+    this.safetySignals,
+    this.searchSnippets,
+  });
+
+  GoogleCloudDialogflowCxV3DataStoreConnectionSignals.fromJson(core.Map json_)
+      : this(
+          answer: json_.containsKey('answer')
+              ? json_['answer'] as core.String
+              : null,
+          answerGenerationModelCallSignals: json_
+                  .containsKey('answerGenerationModelCallSignals')
+              ? GoogleCloudDialogflowCxV3DataStoreConnectionSignalsAnswerGenerationModelCallSignals
+                  .fromJson(json_['answerGenerationModelCallSignals']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          answerParts: json_.containsKey('answerParts')
+              ? (json_['answerParts'] as core.List)
+                  .map((value) =>
+                      GoogleCloudDialogflowCxV3DataStoreConnectionSignalsAnswerPart
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          citedSnippets: json_.containsKey('citedSnippets')
+              ? (json_['citedSnippets'] as core.List)
+                  .map((value) =>
+                      GoogleCloudDialogflowCxV3DataStoreConnectionSignalsCitedSnippet
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          groundingSignals: json_.containsKey('groundingSignals')
+              ? GoogleCloudDialogflowCxV3DataStoreConnectionSignalsGroundingSignals
+                  .fromJson(json_['groundingSignals']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          rewriterModelCallSignals: json_
+                  .containsKey('rewriterModelCallSignals')
+              ? GoogleCloudDialogflowCxV3DataStoreConnectionSignalsRewriterModelCallSignals
+                  .fromJson(json_['rewriterModelCallSignals']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          rewrittenQuery: json_.containsKey('rewrittenQuery')
+              ? json_['rewrittenQuery'] as core.String
+              : null,
+          safetySignals: json_.containsKey('safetySignals')
+              ? GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSafetySignals
+                  .fromJson(json_['safetySignals']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          searchSnippets: json_.containsKey('searchSnippets')
+              ? (json_['searchSnippets'] as core.List)
+                  .map((value) =>
+                      GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSearchSnippet
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (answer != null) 'answer': answer!,
+        if (answerGenerationModelCallSignals != null)
+          'answerGenerationModelCallSignals': answerGenerationModelCallSignals!,
+        if (answerParts != null) 'answerParts': answerParts!,
+        if (citedSnippets != null) 'citedSnippets': citedSnippets!,
+        if (groundingSignals != null) 'groundingSignals': groundingSignals!,
+        if (rewriterModelCallSignals != null)
+          'rewriterModelCallSignals': rewriterModelCallSignals!,
+        if (rewrittenQuery != null) 'rewrittenQuery': rewrittenQuery!,
+        if (safetySignals != null) 'safetySignals': safetySignals!,
+        if (searchSnippets != null) 'searchSnippets': searchSnippets!,
+      };
+}
+
+/// Diagnostic info related to the answer generation model call.
+typedef GoogleCloudDialogflowCxV3DataStoreConnectionSignalsAnswerGenerationModelCallSignals
+    = $ModelCallSignals;
+
+/// Answer part with citation.
+class GoogleCloudDialogflowCxV3DataStoreConnectionSignalsAnswerPart {
+  /// Citations for this answer part.
+  ///
+  /// Indices of `search_snippets`.
+  core.List<core.int>? supportingIndices;
+
+  /// Substring of the answer.
+  core.String? text;
+
+  GoogleCloudDialogflowCxV3DataStoreConnectionSignalsAnswerPart({
+    this.supportingIndices,
+    this.text,
+  });
+
+  GoogleCloudDialogflowCxV3DataStoreConnectionSignalsAnswerPart.fromJson(
+      core.Map json_)
+      : this(
+          supportingIndices: json_.containsKey('supportingIndices')
+              ? (json_['supportingIndices'] as core.List)
+                  .map((value) => value as core.int)
+                  .toList()
+              : null,
+          text: json_.containsKey('text') ? json_['text'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (supportingIndices != null) 'supportingIndices': supportingIndices!,
+        if (text != null) 'text': text!,
+      };
+}
+
+/// Snippet cited by the answer generation model.
+class GoogleCloudDialogflowCxV3DataStoreConnectionSignalsCitedSnippet {
+  /// Details of the snippet.
+  GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSearchSnippet?
+      searchSnippet;
+
+  /// Index of the snippet in `search_snippets` field.
+  core.int? snippetIndex;
+
+  GoogleCloudDialogflowCxV3DataStoreConnectionSignalsCitedSnippet({
+    this.searchSnippet,
+    this.snippetIndex,
+  });
+
+  GoogleCloudDialogflowCxV3DataStoreConnectionSignalsCitedSnippet.fromJson(
+      core.Map json_)
+      : this(
+          searchSnippet: json_.containsKey('searchSnippet')
+              ? GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSearchSnippet
+                  .fromJson(json_['searchSnippet']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          snippetIndex: json_.containsKey('snippetIndex')
+              ? json_['snippetIndex'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (searchSnippet != null) 'searchSnippet': searchSnippet!,
+        if (snippetIndex != null) 'snippetIndex': snippetIndex!,
+      };
+}
+
+/// Grounding signals.
+class GoogleCloudDialogflowCxV3DataStoreConnectionSignalsGroundingSignals {
+  /// Represents the decision of the grounding check.
+  /// Possible string values are:
+  /// - "GROUNDING_DECISION_UNSPECIFIED" : Decision not specified.
+  /// - "ACCEPTED_BY_GROUNDING" : Grounding have accepted the answer.
+  /// - "REJECTED_BY_GROUNDING" : Grounding have rejected the answer.
+  core.String? decision;
+
+  /// Grounding score bucket setting.
+  /// Possible string values are:
+  /// - "GROUNDING_SCORE_BUCKET_UNSPECIFIED" : Score not specified.
+  /// - "VERY_LOW" : We have very low confidence that the answer is grounded.
+  /// - "LOW" : We have low confidence that the answer is grounded.
+  /// - "MEDIUM" : We have medium confidence that the answer is grounded.
+  /// - "HIGH" : We have high confidence that the answer is grounded.
+  /// - "VERY_HIGH" : We have very high confidence that the answer is grounded.
+  core.String? score;
+
+  GoogleCloudDialogflowCxV3DataStoreConnectionSignalsGroundingSignals({
+    this.decision,
+    this.score,
+  });
+
+  GoogleCloudDialogflowCxV3DataStoreConnectionSignalsGroundingSignals.fromJson(
+      core.Map json_)
+      : this(
+          decision: json_.containsKey('decision')
+              ? json_['decision'] as core.String
+              : null,
+          score:
+              json_.containsKey('score') ? json_['score'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (decision != null) 'decision': decision!,
+        if (score != null) 'score': score!,
+      };
+}
+
+/// Diagnostic info related to the rewriter model call.
+typedef GoogleCloudDialogflowCxV3DataStoreConnectionSignalsRewriterModelCallSignals
+    = $ModelCallSignals;
+
+/// Safety check results.
+class GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSafetySignals {
+  /// Specifies banned phrase match subject.
+  /// Possible string values are:
+  /// - "BANNED_PHRASE_MATCH_UNSPECIFIED" : No banned phrase check was executed.
+  /// - "BANNED_PHRASE_MATCH_NONE" : All banned phrase checks led to no match.
+  /// - "BANNED_PHRASE_MATCH_QUERY" : A banned phrase matched the query.
+  /// - "BANNED_PHRASE_MATCH_RESPONSE" : A banned phrase matched the response.
+  core.String? bannedPhraseMatch;
+
+  /// Safety decision.
+  /// Possible string values are:
+  /// - "SAFETY_DECISION_UNSPECIFIED" : Decision not specified.
+  /// - "ACCEPTED_BY_SAFETY_CHECK" : No manual or automatic safety check fired.
+  /// - "REJECTED_BY_SAFETY_CHECK" : One ore more safety checks fired.
+  core.String? decision;
+
+  /// The matched banned phrase if there was a match.
+  core.String? matchedBannedPhrase;
+
+  GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSafetySignals({
+    this.bannedPhraseMatch,
+    this.decision,
+    this.matchedBannedPhrase,
+  });
+
+  GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSafetySignals.fromJson(
+      core.Map json_)
+      : this(
+          bannedPhraseMatch: json_.containsKey('bannedPhraseMatch')
+              ? json_['bannedPhraseMatch'] as core.String
+              : null,
+          decision: json_.containsKey('decision')
+              ? json_['decision'] as core.String
+              : null,
+          matchedBannedPhrase: json_.containsKey('matchedBannedPhrase')
+              ? json_['matchedBannedPhrase'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bannedPhraseMatch != null) 'bannedPhraseMatch': bannedPhraseMatch!,
+        if (decision != null) 'decision': decision!,
+        if (matchedBannedPhrase != null)
+          'matchedBannedPhrase': matchedBannedPhrase!,
+      };
+}
+
+/// Search snippet details.
+class GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSearchSnippet {
+  /// Title of the enclosing document.
+  core.String? documentTitle;
+
+  /// Uri for the document.
+  ///
+  /// Present if specified for the document.
+  core.String? documentUri;
+
+  /// Text included in the prompt.
+  core.String? text;
+
+  GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSearchSnippet({
+    this.documentTitle,
+    this.documentUri,
+    this.text,
+  });
+
+  GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSearchSnippet.fromJson(
+      core.Map json_)
+      : this(
+          documentTitle: json_.containsKey('documentTitle')
+              ? json_['documentTitle'] as core.String
+              : null,
+          documentUri: json_.containsKey('documentUri')
+              ? json_['documentUri'] as core.String
+              : null,
+          text: json_.containsKey('text') ? json_['text'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (documentTitle != null) 'documentTitle': documentTitle!,
+        if (documentUri != null) 'documentUri': documentUri!,
+        if (text != null) 'text': text!,
       };
 }
 
@@ -9960,6 +10318,11 @@ class GoogleCloudDialogflowCxV3Flow {
   GoogleCloudDialogflowCxV3KnowledgeConnectorSettings?
       knowledgeConnectorSettings;
 
+  /// Multi-lingual agent settings for this flow.
+  ///
+  /// Optional.
+  GoogleCloudDialogflowCxV3FlowMultiLanguageSettings? multiLanguageSettings;
+
   /// The unique identifier of the flow.
   ///
   /// Format: `projects//locations//agents//flows/`.
@@ -9998,6 +10361,7 @@ class GoogleCloudDialogflowCxV3Flow {
     this.displayName,
     this.eventHandlers,
     this.knowledgeConnectorSettings,
+    this.multiLanguageSettings,
     this.name,
     this.nluSettings,
     this.transitionRouteGroups,
@@ -10030,6 +10394,11 @@ class GoogleCloudDialogflowCxV3Flow {
                   json_['knowledgeConnectorSettings']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          multiLanguageSettings: json_.containsKey('multiLanguageSettings')
+              ? GoogleCloudDialogflowCxV3FlowMultiLanguageSettings.fromJson(
+                  json_['multiLanguageSettings']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           nluSettings: json_.containsKey('nluSettings')
               ? GoogleCloudDialogflowCxV3NluSettings.fromJson(
@@ -10056,6 +10425,8 @@ class GoogleCloudDialogflowCxV3Flow {
         if (eventHandlers != null) 'eventHandlers': eventHandlers!,
         if (knowledgeConnectorSettings != null)
           'knowledgeConnectorSettings': knowledgeConnectorSettings!,
+        if (multiLanguageSettings != null)
+          'multiLanguageSettings': multiLanguageSettings!,
         if (name != null) 'name': name!,
         if (nluSettings != null) 'nluSettings': nluSettings!,
         if (transitionRouteGroups != null)
@@ -10102,6 +10473,52 @@ class GoogleCloudDialogflowCxV3FlowImportStrategy {
   core.Map<core.String, core.dynamic> toJson() => {
         if (globalImportStrategy != null)
           'globalImportStrategy': globalImportStrategy!,
+      };
+}
+
+/// Settings for multi-lingual agents.
+class GoogleCloudDialogflowCxV3FlowMultiLanguageSettings {
+  /// Enable multi-language detection for this flow.
+  ///
+  /// This can be set only if agent level multi language setting is enabled.
+  ///
+  /// Optional.
+  core.bool? enableMultiLanguageDetection;
+
+  /// Agent will respond in the detected language if the detected language code
+  /// is in the supported resolved languages for this flow.
+  ///
+  /// This will be used only if multi-language training is enabled in the agent
+  /// and multi-language detection is enabled in the flow. The supported
+  /// languages must be a subset of the languages supported by the agent.
+  ///
+  /// Optional.
+  core.List<core.String>? supportedResponseLanguageCodes;
+
+  GoogleCloudDialogflowCxV3FlowMultiLanguageSettings({
+    this.enableMultiLanguageDetection,
+    this.supportedResponseLanguageCodes,
+  });
+
+  GoogleCloudDialogflowCxV3FlowMultiLanguageSettings.fromJson(core.Map json_)
+      : this(
+          enableMultiLanguageDetection:
+              json_.containsKey('enableMultiLanguageDetection')
+                  ? json_['enableMultiLanguageDetection'] as core.bool
+                  : null,
+          supportedResponseLanguageCodes:
+              json_.containsKey('supportedResponseLanguageCodes')
+                  ? (json_['supportedResponseLanguageCodes'] as core.List)
+                      .map((value) => value as core.String)
+                      .toList()
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enableMultiLanguageDetection != null)
+          'enableMultiLanguageDetection': enableMultiLanguageDetection!,
+        if (supportedResponseLanguageCodes != null)
+          'supportedResponseLanguageCodes': supportedResponseLanguageCodes!,
       };
 }
 
@@ -13353,6 +13770,13 @@ class GoogleCloudDialogflowCxV3QueryParameters {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? payload;
 
+  /// If set to true and data stores are involved in serving the request then
+  /// DetectIntentResponse.query_result.data_store_connection_signals will be
+  /// filled with data that can help evaluations.
+  ///
+  /// Optional.
+  core.bool? populateDataStoreConnectionSignals;
+
   /// Search configuration for UCS search queries.
   ///
   /// Optional.
@@ -13402,6 +13826,7 @@ class GoogleCloudDialogflowCxV3QueryParameters {
     this.geoLocation,
     this.parameters,
     this.payload,
+    this.populateDataStoreConnectionSignals,
     this.searchConfig,
     this.sessionEntityTypes,
     this.sessionTtl,
@@ -13442,6 +13867,10 @@ class GoogleCloudDialogflowCxV3QueryParameters {
           payload: json_.containsKey('payload')
               ? json_['payload'] as core.Map<core.String, core.dynamic>
               : null,
+          populateDataStoreConnectionSignals:
+              json_.containsKey('populateDataStoreConnectionSignals')
+                  ? json_['populateDataStoreConnectionSignals'] as core.bool
+                  : null,
           searchConfig: json_.containsKey('searchConfig')
               ? GoogleCloudDialogflowCxV3SearchConfig.fromJson(
                   json_['searchConfig'] as core.Map<core.String, core.dynamic>)
@@ -13481,6 +13910,9 @@ class GoogleCloudDialogflowCxV3QueryParameters {
         if (geoLocation != null) 'geoLocation': geoLocation!,
         if (parameters != null) 'parameters': parameters!,
         if (payload != null) 'payload': payload!,
+        if (populateDataStoreConnectionSignals != null)
+          'populateDataStoreConnectionSignals':
+              populateDataStoreConnectionSignals!,
         if (searchConfig != null) 'searchConfig': searchConfig!,
         if (sessionEntityTypes != null)
           'sessionEntityTypes': sessionEntityTypes!,
@@ -13510,6 +13942,16 @@ class GoogleCloudDialogflowCxV3QueryResult {
   /// Some, not all fields are filled in this message, including but not limited
   /// to `name` and `display_name`.
   GoogleCloudDialogflowCxV3Page? currentPage;
+
+  /// Data store connection feature output signals.
+  ///
+  /// Filled only when data stores are involved in serving the query and
+  /// DetectIntentRequest.populate data_store_connection_quality_signals is set
+  /// to true in the request.
+  ///
+  /// Optional.
+  GoogleCloudDialogflowCxV3DataStoreConnectionSignals?
+      dataStoreConnectionSignals;
 
   /// The free-form diagnostic info.
   ///
@@ -13628,6 +14070,7 @@ class GoogleCloudDialogflowCxV3QueryResult {
     this.advancedSettings,
     this.allowAnswerFeedback,
     this.currentPage,
+    this.dataStoreConnectionSignals,
     this.diagnosticInfo,
     this.dtmf,
     this.intent,
@@ -13658,6 +14101,12 @@ class GoogleCloudDialogflowCxV3QueryResult {
           currentPage: json_.containsKey('currentPage')
               ? GoogleCloudDialogflowCxV3Page.fromJson(
                   json_['currentPage'] as core.Map<core.String, core.dynamic>)
+              : null,
+          dataStoreConnectionSignals: json_
+                  .containsKey('dataStoreConnectionSignals')
+              ? GoogleCloudDialogflowCxV3DataStoreConnectionSignals.fromJson(
+                  json_['dataStoreConnectionSignals']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           diagnosticInfo: json_.containsKey('diagnosticInfo')
               ? json_['diagnosticInfo'] as core.Map<core.String, core.dynamic>
@@ -13724,6 +14173,8 @@ class GoogleCloudDialogflowCxV3QueryResult {
         if (allowAnswerFeedback != null)
           'allowAnswerFeedback': allowAnswerFeedback!,
         if (currentPage != null) 'currentPage': currentPage!,
+        if (dataStoreConnectionSignals != null)
+          'dataStoreConnectionSignals': dataStoreConnectionSignals!,
         if (diagnosticInfo != null) 'diagnosticInfo': diagnosticInfo!,
         if (dtmf != null) 'dtmf': dtmf!,
         if (intent != null) 'intent': intent!,
@@ -16263,6 +16714,15 @@ class GoogleCloudDialogflowCxV3WebhookGenericWebService {
   /// - "OPTIONS" : HTTP OPTIONS Method.
   core.String? httpMethod;
 
+  /// The OAuth configuration of the webhook.
+  ///
+  /// If specified, Dialogflow will initiate the OAuth client credential flow to
+  /// exchange an access token from the 3rd party platform and put it in the
+  /// auth header.
+  ///
+  /// Optional.
+  GoogleCloudDialogflowCxV3WebhookGenericWebServiceOAuthConfig? oauthConfig;
+
   /// Maps the values extracted from specific fields of the flexible webhook
   /// response into session parameters.
   ///
@@ -16284,6 +16744,28 @@ class GoogleCloudDialogflowCxV3WebhookGenericWebService {
 
   /// The HTTP request headers to send together with webhook requests.
   core.Map<core.String, core.String>? requestHeaders;
+
+  /// Indicate the auth token type generated from the
+  /// [Diglogflow service agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent).
+  ///
+  /// The generated token is sent in the Authorization header.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "SERVICE_AGENT_AUTH_UNSPECIFIED" : Service agent auth type unspecified.
+  /// Default to ID_TOKEN.
+  /// - "NONE" : No token used.
+  /// - "ID_TOKEN" : Use
+  /// [ID token](https://cloud.google.com/docs/authentication/token-types#id)
+  /// generated from service agent. This can be used to access Cloud Function
+  /// and Cloud Run after you grant Invoker role to
+  /// `service-@gcp-sa-dialogflow.iam.gserviceaccount.com`.
+  /// - "ACCESS_TOKEN" : Use
+  /// [access token](https://cloud.google.com/docs/authentication/token-types#access)
+  /// generated from service agent. This can be used to access other Google
+  /// Cloud APIs after you grant required roles to
+  /// `service-@gcp-sa-dialogflow.iam.gserviceaccount.com`.
+  core.String? serviceAgentAuth;
 
   /// The webhook URI for receiving POST requests.
   ///
@@ -16310,10 +16792,12 @@ class GoogleCloudDialogflowCxV3WebhookGenericWebService {
   GoogleCloudDialogflowCxV3WebhookGenericWebService({
     this.allowedCaCerts,
     this.httpMethod,
+    this.oauthConfig,
     this.parameterMapping,
     this.password,
     this.requestBody,
     this.requestHeaders,
+    this.serviceAgentAuth,
     this.uri,
     this.username,
     this.webhookType,
@@ -16328,6 +16812,11 @@ class GoogleCloudDialogflowCxV3WebhookGenericWebService {
               : null,
           httpMethod: json_.containsKey('httpMethod')
               ? json_['httpMethod'] as core.String
+              : null,
+          oauthConfig: json_.containsKey('oauthConfig')
+              ? GoogleCloudDialogflowCxV3WebhookGenericWebServiceOAuthConfig
+                  .fromJson(json_['oauthConfig']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           parameterMapping: json_.containsKey('parameterMapping')
               ? (json_['parameterMapping']
@@ -16354,6 +16843,9 @@ class GoogleCloudDialogflowCxV3WebhookGenericWebService {
                   ),
                 )
               : null,
+          serviceAgentAuth: json_.containsKey('serviceAgentAuth')
+              ? json_['serviceAgentAuth'] as core.String
+              : null,
           uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
           username: json_.containsKey('username')
               ? json_['username'] as core.String
@@ -16366,13 +16858,73 @@ class GoogleCloudDialogflowCxV3WebhookGenericWebService {
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowedCaCerts != null) 'allowedCaCerts': allowedCaCerts!,
         if (httpMethod != null) 'httpMethod': httpMethod!,
+        if (oauthConfig != null) 'oauthConfig': oauthConfig!,
         if (parameterMapping != null) 'parameterMapping': parameterMapping!,
         if (password != null) 'password': password!,
         if (requestBody != null) 'requestBody': requestBody!,
         if (requestHeaders != null) 'requestHeaders': requestHeaders!,
+        if (serviceAgentAuth != null) 'serviceAgentAuth': serviceAgentAuth!,
         if (uri != null) 'uri': uri!,
         if (username != null) 'username': username!,
         if (webhookType != null) 'webhookType': webhookType!,
+      };
+}
+
+/// Represents configuration of OAuth client credential flow for 3rd party API
+/// authentication.
+class GoogleCloudDialogflowCxV3WebhookGenericWebServiceOAuthConfig {
+  /// The client ID provided by the 3rd party platform.
+  ///
+  /// Required.
+  core.String? clientId;
+
+  /// The client secret provided by the 3rd party platform.
+  ///
+  /// Required.
+  core.String? clientSecret;
+
+  /// The OAuth scopes to grant.
+  ///
+  /// Optional.
+  core.List<core.String>? scopes;
+
+  /// The token endpoint provided by the 3rd party platform to exchange an
+  /// access token.
+  ///
+  /// Required.
+  core.String? tokenEndpoint;
+
+  GoogleCloudDialogflowCxV3WebhookGenericWebServiceOAuthConfig({
+    this.clientId,
+    this.clientSecret,
+    this.scopes,
+    this.tokenEndpoint,
+  });
+
+  GoogleCloudDialogflowCxV3WebhookGenericWebServiceOAuthConfig.fromJson(
+      core.Map json_)
+      : this(
+          clientId: json_.containsKey('clientId')
+              ? json_['clientId'] as core.String
+              : null,
+          clientSecret: json_.containsKey('clientSecret')
+              ? json_['clientSecret'] as core.String
+              : null,
+          scopes: json_.containsKey('scopes')
+              ? (json_['scopes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          tokenEndpoint: json_.containsKey('tokenEndpoint')
+              ? json_['tokenEndpoint'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (clientId != null) 'clientId': clientId!,
+        if (clientSecret != null) 'clientSecret': clientSecret!,
+        if (scopes != null) 'scopes': scopes!,
+        if (tokenEndpoint != null) 'tokenEndpoint': tokenEndpoint!,
       };
 }
 

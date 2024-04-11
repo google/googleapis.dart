@@ -3369,7 +3369,28 @@ class CertificateConfig {
 }
 
 /// A KeyId identifies a specific public key, usually by hashing the public key.
-typedef CertificateConfigKeyId = $KeyId;
+class CertificateConfigKeyId {
+  /// The value of this KeyId encoded in lowercase hexadecimal.
+  ///
+  /// This is most likely the 160 bit SHA-1 hash of the public key.
+  ///
+  /// Required.
+  core.String? keyId;
+
+  CertificateConfigKeyId({
+    this.keyId,
+  });
+
+  CertificateConfigKeyId.fromJson(core.Map json_)
+      : this(
+          keyId:
+              json_.containsKey('keyId') ? json_['keyId'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (keyId != null) 'keyId': keyId!,
+      };
+}
 
 /// A CertificateDescription describes an X.509 certificate or CSR that has been
 /// issued, as an alternative to using ASN.1 / X.509.
@@ -4264,7 +4285,28 @@ class IssuancePolicy {
 }
 
 /// A KeyId identifies a specific public key, usually by hashing the public key.
-typedef KeyId = $KeyId;
+class KeyId {
+  /// The value of this KeyId encoded in lowercase hexadecimal.
+  ///
+  /// This is most likely the 160 bit SHA-1 hash of the public key.
+  ///
+  /// Optional.
+  core.String? keyId;
+
+  KeyId({
+    this.keyId,
+  });
+
+  KeyId.fromJson(core.Map json_)
+      : this(
+          keyId:
+              json_.containsKey('keyId') ? json_['keyId'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (keyId != null) 'keyId': keyId!,
+      };
+}
 
 /// A KeyUsage describes key usage values that may appear in an X.509
 /// certificate.

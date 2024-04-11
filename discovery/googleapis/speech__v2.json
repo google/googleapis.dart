@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240222",
+    "revision": "20240405",
     "rootUrl": "https://speech.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Speech-to-Text API",
@@ -2103,6 +2103,10 @@
                 "transcriptNormalization": {
                     "$ref": "TranscriptNormalization",
                     "description": "Optional. Use transcription normalization to automatically replace parts of the transcript with phrases of your choosing. For StreamingRecognize, this normalization only applies to stable partial transcripts (stability > 0.8) and final transcripts."
+                },
+                "translationConfig": {
+                    "$ref": "TranslationConfig",
+                    "description": "Optional. Optional configuration used to automatically run translation on the given audio to the desired language for supported models."
                 }
             },
             "type": "object"
@@ -2508,6 +2512,17 @@
                         "$ref": "Entry"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "TranslationConfig": {
+            "description": "Translation configuration. Use to translate the given audio into text for the desired language.",
+            "id": "TranslationConfig",
+            "properties": {
+                "targetLanguage": {
+                    "description": "Required. The language code to translate to.",
+                    "type": "string"
                 }
             },
             "type": "object"

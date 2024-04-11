@@ -6857,6 +6857,7 @@ api.SpreadsheetProperties buildSpreadsheetProperties() {
   if (buildCounterSpreadsheetProperties < 3) {
     o.autoRecalc = 'foo';
     o.defaultFormat = buildCellFormat();
+    o.importFunctionsExternalUrlAccessAllowed = true;
     o.iterativeCalculationSettings = buildIterativeCalculationSettings();
     o.locale = 'foo';
     o.spreadsheetTheme = buildSpreadsheetTheme();
@@ -6875,6 +6876,8 @@ void checkSpreadsheetProperties(api.SpreadsheetProperties o) {
       unittest.equals('foo'),
     );
     checkCellFormat(o.defaultFormat!);
+    unittest.expect(
+        o.importFunctionsExternalUrlAccessAllowed!, unittest.isTrue);
     checkIterativeCalculationSettings(o.iterativeCalculationSettings!);
     unittest.expect(
       o.locale!,

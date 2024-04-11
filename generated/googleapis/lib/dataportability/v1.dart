@@ -78,6 +78,22 @@ class DataPortabilityApi {
   static const dataportabilityChromeSettingsScope =
       'https://www.googleapis.com/auth/dataportability.chrome.settings';
 
+  /// Move a copy of searches and sites you follow, saved by Discover.
+  static const dataportabilityDiscoverFollowsScope =
+      'https://www.googleapis.com/auth/dataportability.discover.follows';
+
+  /// Move a copy of links to your liked documents, saved by Discover.
+  static const dataportabilityDiscoverLikesScope =
+      'https://www.googleapis.com/auth/dataportability.discover.likes';
+
+  /// Move a copy of content you marked as not interested, saved by Discover.
+  static const dataportabilityDiscoverNotInterestedScope =
+      'https://www.googleapis.com/auth/dataportability.discover.not_interested';
+
+  /// Move a copy of the places you labeled on Maps.
+  static const dataportabilityMapsAliasedPlacesScope =
+      'https://www.googleapis.com/auth/dataportability.maps.aliased_places';
+
   /// Move a copy of your pinned trips on Maps.
   static const dataportabilityMapsCommuteRoutesScope =
       'https://www.googleapis.com/auth/dataportability.maps.commute_routes';
@@ -90,6 +106,11 @@ class DataPortabilityApi {
   static const dataportabilityMapsEvProfileScope =
       'https://www.googleapis.com/auth/dataportability.maps.ev_profile';
 
+  /// Move a copy of the corrections you made to places or map information on
+  /// Maps.
+  static const dataportabilityMapsFactualContributionsScope =
+      'https://www.googleapis.com/auth/dataportability.maps.factual_contributions';
+
   /// Move a copy of your updates to places on Maps.
   static const dataportabilityMapsOfferingContributionsScope =
       'https://www.googleapis.com/auth/dataportability.maps.offering_contributions';
@@ -97,6 +118,10 @@ class DataPortabilityApi {
   /// Move a copy of the photos and videos you posted on Maps.
   static const dataportabilityMapsPhotosVideosScope =
       'https://www.googleapis.com/auth/dataportability.maps.photos_videos';
+
+  /// Move a copy of the questions and answers you posted on Maps.
+  static const dataportabilityMapsQuestionsAnswersScope =
+      'https://www.googleapis.com/auth/dataportability.maps.questions_answers';
 
   /// Move a copy of your reviews and posts on Maps.
   static const dataportabilityMapsReviewsScope =
@@ -110,6 +135,14 @@ class DataPortabilityApi {
   static const dataportabilityMyactivityMapsScope =
       'https://www.googleapis.com/auth/dataportability.myactivity.maps';
 
+  /// Move a copy of your My Ad Center activity.
+  static const dataportabilityMyactivityMyadcenterScope =
+      'https://www.googleapis.com/auth/dataportability.myactivity.myadcenter';
+
+  /// Move a copy of your Google Play activity.
+  static const dataportabilityMyactivityPlayScope =
+      'https://www.googleapis.com/auth/dataportability.myactivity.play';
+
   /// Move a copy of your Google Search activity.
   static const dataportabilityMyactivitySearchScope =
       'https://www.googleapis.com/auth/dataportability.myactivity.search';
@@ -122,10 +155,88 @@ class DataPortabilityApi {
   static const dataportabilityMyactivityYoutubeScope =
       'https://www.googleapis.com/auth/dataportability.myactivity.youtube';
 
+  /// Move a copy of the maps you created in My Maps.
+  static const dataportabilityMymapsMapsScope =
+      'https://www.googleapis.com/auth/dataportability.mymaps.maps';
+
+  /// Move a copy of your food purchase and reservation activity.
+  static const dataportabilityOrderReservePurchasesReservationsScope =
+      'https://www.googleapis.com/auth/dataportability.order_reserve.purchases_reservations';
+
+  /// Move a copy of information about your devices with Google Play Store
+  /// installed.
+  static const dataportabilityPlayDevicesScope =
+      'https://www.googleapis.com/auth/dataportability.play.devices';
+
+  /// Move a copy of your Google Play Store Grouping tags created by app
+  /// developers.
+  static const dataportabilityPlayGroupingScope =
+      'https://www.googleapis.com/auth/dataportability.play.grouping';
+
+  /// Move a copy of your Google Play Store app installations.
+  static const dataportabilityPlayInstallsScope =
+      'https://www.googleapis.com/auth/dataportability.play.installs';
+
+  /// Move a copy of your Google Play Store downloads, including books, games,
+  /// and apps.
+  static const dataportabilityPlayLibraryScope =
+      'https://www.googleapis.com/auth/dataportability.play.library';
+
+  /// Move a copy of information about your Google Play Store Points.
+  static const dataportabilityPlayPlaypointsScope =
+      'https://www.googleapis.com/auth/dataportability.play.playpoints';
+
+  /// Move a copy of information about your Google Play Store promotions.
+  static const dataportabilityPlayPromotionsScope =
+      'https://www.googleapis.com/auth/dataportability.play.promotions';
+
+  /// Move a copy of your Google Play Store purchases.
+  static const dataportabilityPlayPurchasesScope =
+      'https://www.googleapis.com/auth/dataportability.play.purchases';
+
+  /// Move a copy of your Google Play Store redemption activities.
+  static const dataportabilityPlayRedemptionsScope =
+      'https://www.googleapis.com/auth/dataportability.play.redemptions';
+
+  /// Move a copy of your Google Play Store subscriptions.
+  static const dataportabilityPlaySubscriptionsScope =
+      'https://www.googleapis.com/auth/dataportability.play.subscriptions';
+
+  /// Move a copy of your Google Play Store user settings and preferences.
+  static const dataportabilityPlayUsersettingsScope =
+      'https://www.googleapis.com/auth/dataportability.play.usersettings';
+
   /// Move a copy of your saved links, images, places, and collections from your
   /// use of Google services.
   static const dataportabilitySavedCollectionsScope =
       'https://www.googleapis.com/auth/dataportability.saved.collections';
+
+  /// Move a copy of your media reviews on Google Search.
+  static const dataportabilitySearchUgcMediaReviewsAndStarsScope =
+      'https://www.googleapis.com/auth/dataportability.search_ugc.media.reviews_and_stars';
+
+  /// Move a copy of your self-reported video streaming provider preferences
+  /// from Google Search and Google TV.
+  static const dataportabilitySearchUgcMediaStreamingVideoProvidersScope =
+      'https://www.googleapis.com/auth/dataportability.search_ugc.media.streaming_video_providers';
+
+  /// Move a copy of your indicated thumbs up and thumbs down on media in Google
+  /// Search and Google TV.
+  static const dataportabilitySearchUgcMediaThumbsScope =
+      'https://www.googleapis.com/auth/dataportability.search_ugc.media.thumbs';
+
+  /// Move a copy of information about the movies and TV shows you marked as
+  /// watched on Google Search and Google TV.
+  static const dataportabilitySearchUgcMediaWatchedScope =
+      'https://www.googleapis.com/auth/dataportability.search_ugc.media.watched';
+
+  /// Move a copy of your notification settings on the Google Search app.
+  static const dataportabilitySearchnotificationsSettingsScope =
+      'https://www.googleapis.com/auth/dataportability.searchnotifications.settings';
+
+  /// Move a copy of your notification subscriptions on Google Search app.
+  static const dataportabilitySearchnotificationsSubscriptionsScope =
+      'https://www.googleapis.com/auth/dataportability.searchnotifications.subscriptions';
 
   /// Move a copy of your shipping information on Shopping.
   static const dataportabilityShoppingAddressesScope =
@@ -135,6 +246,10 @@ class DataPortabilityApi {
   /// Search.
   static const dataportabilityShoppingReviewsScope =
       'https://www.googleapis.com/auth/dataportability.shopping.reviews';
+
+  /// Move a copy of the images and videos you uploaded to Street View.
+  static const dataportabilityStreetviewImageryScope =
+      'https://www.googleapis.com/auth/dataportability.streetview.imagery';
 
   /// Move a copy of information about your YouTube channel.
   static const dataportabilityYoutubeChannelScope =

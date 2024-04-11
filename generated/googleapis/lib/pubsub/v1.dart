@@ -2705,6 +2705,15 @@ class CloudStorageConfig {
   /// Required.
   core.String? bucket;
 
+  /// User-provided format string specifying how to represent datetimes in Cloud
+  /// Storage filenames.
+  ///
+  /// See the
+  /// [datetime format guidance](https://cloud.google.com/pubsub/docs/create-cloudstorage-subscription#file_names).
+  ///
+  /// Optional.
+  core.String? filenameDatetimeFormat;
+
   /// User-provided prefix for Cloud Storage filename.
   ///
   /// See the
@@ -2775,6 +2784,7 @@ class CloudStorageConfig {
   CloudStorageConfig({
     this.avroConfig,
     this.bucket,
+    this.filenameDatetimeFormat,
     this.filenamePrefix,
     this.filenameSuffix,
     this.maxBytes,
@@ -2792,6 +2802,9 @@ class CloudStorageConfig {
               : null,
           bucket: json_.containsKey('bucket')
               ? json_['bucket'] as core.String
+              : null,
+          filenameDatetimeFormat: json_.containsKey('filenameDatetimeFormat')
+              ? json_['filenameDatetimeFormat'] as core.String
               : null,
           filenamePrefix: json_.containsKey('filenamePrefix')
               ? json_['filenamePrefix'] as core.String
@@ -2819,6 +2832,8 @@ class CloudStorageConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (avroConfig != null) 'avroConfig': avroConfig!,
         if (bucket != null) 'bucket': bucket!,
+        if (filenameDatetimeFormat != null)
+          'filenameDatetimeFormat': filenameDatetimeFormat!,
         if (filenamePrefix != null) 'filenamePrefix': filenamePrefix!,
         if (filenameSuffix != null) 'filenameSuffix': filenameSuffix!,
         if (maxBytes != null) 'maxBytes': maxBytes!,

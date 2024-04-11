@@ -34,7 +34,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240303",
+    "revision": "20240324",
     "rootUrl": "https://monitoring.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Monitoring API",

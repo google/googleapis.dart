@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240304",
+    "revision": "20240408",
     "rootUrl": "https://alertcenter.googleapis.com/",
     "servicePath": "",
     "title": "Google Workspace Alert Center API",
@@ -1179,12 +1179,24 @@
                     "description": "The email of the user this alert was created for.",
                     "type": "string"
                 },
+                "id": {
+                    "description": "ID of the rule that triggered the alert",
+                    "type": "string"
+                },
                 "iosVendorId": {
                     "description": "Required for iOS, empty for others.",
                     "type": "string"
                 },
+                "ownerId": {
+                    "description": "Obfuscated ID of the owner of the device",
+                    "type": "string"
+                },
                 "resourceId": {
                     "description": "The device resource ID.",
+                    "type": "string"
+                },
+                "ruleAction": {
+                    "description": "Action taken as result of the rule",
                     "type": "string"
                 },
                 "serialNumber": {

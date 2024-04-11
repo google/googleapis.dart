@@ -211,6 +211,7 @@ api.CloudStorageConfig buildCloudStorageConfig() {
   if (buildCounterCloudStorageConfig < 3) {
     o.avroConfig = buildAvroConfig();
     o.bucket = 'foo';
+    o.filenameDatetimeFormat = 'foo';
     o.filenamePrefix = 'foo';
     o.filenameSuffix = 'foo';
     o.maxBytes = 'foo';
@@ -229,6 +230,10 @@ void checkCloudStorageConfig(api.CloudStorageConfig o) {
     checkAvroConfig(o.avroConfig!);
     unittest.expect(
       o.bucket!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.filenameDatetimeFormat!,
       unittest.equals('foo'),
     );
     unittest.expect(

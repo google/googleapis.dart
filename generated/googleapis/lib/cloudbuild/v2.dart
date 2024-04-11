@@ -910,7 +910,7 @@ class ProjectsLocationsConnectionsRepositoriesResource {
   /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+/repositories/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. Number of results to return in the list. Default to
-  /// 100.
+  /// 20.
   ///
   /// [pageToken] - Optional. Page start.
   ///

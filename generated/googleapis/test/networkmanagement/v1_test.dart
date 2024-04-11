@@ -472,6 +472,7 @@ api.ConnectivityTest buildConnectivityTest() {
   final o = api.ConnectivityTest();
   buildCounterConnectivityTest++;
   if (buildCounterConnectivityTest < 3) {
+    o.bypassFirewallChecks = true;
     o.createTime = 'foo';
     o.description = 'foo';
     o.destination = buildEndpoint();
@@ -492,6 +493,7 @@ api.ConnectivityTest buildConnectivityTest() {
 void checkConnectivityTest(api.ConnectivityTest o) {
   buildCounterConnectivityTest++;
   if (buildCounterConnectivityTest < 3) {
+    unittest.expect(o.bypassFirewallChecks!, unittest.isTrue);
     unittest.expect(
       o.createTime!,
       unittest.equals('foo'),

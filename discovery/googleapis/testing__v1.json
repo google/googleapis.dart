@@ -16,7 +16,7 @@
     "batchPath": "batch",
     "description": "Allows developers to run automated tests for their mobile applications on Google infrastructure.",
     "discoveryVersion": "v1",
-    "documentationLink": "https://developers.google.com/cloud-test-lab/",
+    "documentationLink": "https://firebase.google.com/docs/test-lab/",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -27,7 +27,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240305",
+    "revision": "20240405",
     "rootUrl": "https://testing.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Testing API",
@@ -1229,7 +1229,7 @@
                     "type": "array"
                 },
                 "ttl": {
-                    "description": "Optional. The amount of time that a device will be initially allocated for. This can eventually be extended with the UpdateDeviceSession RPC. Default: 30 minutes.",
+                    "description": "Optional. The amount of time that a device will be initially allocated for. This can eventually be extended with the UpdateDeviceSession RPC. Default: 15 minutes.",
                     "format": "google-duration",
                     "type": "string"
                 }

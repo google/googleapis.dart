@@ -33,7 +33,7 @@
             "location": "me-central2"
         }
     ],
-    "etag": "\"313331373930313233323239353132323136\"",
+    "etag": "\"363538353332373134383231383131323930\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/cloud_storage-16.png",
         "x32": "https://www.google.com/images/icons/product/cloud_storage-32.png"
@@ -47,7 +47,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240304",
+    "revision": "20240331",
     "rootUrl": "https://storage.googleapis.com/",
     "servicePath": "storage/v1/",
     "title": "Cloud Storage JSON API",
@@ -1636,6 +1636,11 @@
                         "managedFolder"
                     ],
                     "parameters": {
+                        "allowNonEmpty": {
+                            "description": "Allows the deletion of a managed folder even if it is not empty. A managed folder is empty if there are no objects or managed folders that it applies to. Callers must have storage.managedFolders.setIamPolicy permission.",
+                            "location": "query",
+                            "type": "boolean"
+                        },
                         "bucket": {
                             "description": "Name of the bucket containing the managed folder.",
                             "location": "path",
@@ -3145,7 +3150,8 @@
                     "id": "storage.objects.restore",
                     "parameterOrder": [
                         "bucket",
-                        "object"
+                        "object",
+                        "generation"
                     ],
                     "parameters": {
                         "bucket": {
@@ -3216,9 +3222,6 @@
                         }
                     },
                     "path": "b/{bucket}/o/{object}/restore",
-                    "request": {
-                        "$ref": "Object"
-                    },
                     "response": {
                         "$ref": "Object"
                     },

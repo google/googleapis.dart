@@ -494,6 +494,48 @@ class ProjectsLocationsBatchesResource {
   ProjectsLocationsBatchesResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Analyze a Batch for possible recommendations and insights.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The fully qualified name of the batch to analyze in the
+  /// format "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/batches/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> analyze(
+    AnalyzeBatchRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':analyze';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Creates a batch workload that executes asynchronously.
   ///
   /// [request] - The metadata request object.
@@ -4723,6 +4765,38 @@ class AcceleratorConfig {
       };
 }
 
+/// A request to analyze a batch workload.
+class AnalyzeBatchRequest {
+  /// A unique ID used to identify the request.
+  ///
+  /// If the service receives two AnalyzeBatchRequest
+  /// (http://cloud/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.AnalyzeBatchRequest)s
+  /// with the same request_id, the second request is ignored and the Operation
+  /// that corresponds to the first request created and stored in the backend is
+  /// returned.Recommendation: Set this value to a UUID
+  /// (https://en.wikipedia.org/wiki/Universally_unique_identifier).The value
+  /// must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
+  /// hyphens (-). The maximum length is 40 characters.
+  ///
+  /// Optional.
+  core.String? requestId;
+
+  AnalyzeBatchRequest({
+    this.requestId,
+  });
+
+  AnalyzeBatchRequest.fromJson(core.Map json_)
+      : this(
+          requestId: json_.containsKey('requestId')
+              ? json_['requestId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (requestId != null) 'requestId': requestId!,
+      };
+}
+
 /// Autoscaling Policy config associated with the cluster.
 class AutoscalingConfig {
   /// The autoscaling policy used by the cluster.Only resource names including
@@ -6617,14 +6691,16 @@ class GceClusterConfig {
   /// Optional.
   ConfidentialInstanceConfig? confidentialInstanceConfig;
 
-  /// If true, all instances in the cluster will only have internal IP
-  /// addresses.
+  /// This setting applies to subnetwork-enabled networks.
   ///
-  /// By default, clusters are not restricted to internal IP addresses, and will
-  /// have ephemeral external IP addresses assigned to each instance. This
-  /// internal_ip_only restriction can only be enabled for subnetwork enabled
-  /// networks, and all off-cluster dependencies must be configured to be
-  /// accessible without external IP addresses.
+  /// It is set to true by default in clusters created with image versions
+  /// 2.2.x.When set to true: All cluster VMs have internal IP addresses. Google
+  /// Private Access (https://cloud.google.com/vpc/docs/private-google-access)
+  /// must be enabled to access Dataproc and other Google Cloud APIs.
+  /// Off-cluster dependencies must be configured to be accessible without
+  /// external IP addresses.When set to false: Cluster VMs are not restricted to
+  /// internal IP addresses. Ephemeral external IP addresses are assigned to
+  /// each cluster VM.
   ///
   /// Optional.
   core.bool? internalIpOnly;

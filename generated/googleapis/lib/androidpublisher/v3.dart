@@ -2651,10 +2651,10 @@ class ExternaltransactionsResource {
   ///
   /// [externalTransactionId] - Required. The id to use for the external
   /// transaction. Must be unique across all other transactions for the app.
-  /// This value should be 1-63 characters and valid characters are /a-z0-9_-/.
-  /// Do not use this field to store any Personally Identifiable Information
-  /// (PII) such as emails. Attempting to store PII in this field may result in
-  /// requests being blocked.
+  /// This value should be 1-63 characters and valid characters are
+  /// /a-zA-Z0-9_-/. Do not use this field to store any Personally Identifiable
+  /// Information (PII) such as emails. Attempting to store PII in this field
+  /// may result in requests being blocked.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5830,6 +5830,12 @@ class PurchasesVoidedpurchasesResource {
   /// is applied on the time at which the record is seen as voided by our
   /// systems and not the actual voided time returned in the response.
   ///
+  /// [includeQuantityBasedPartialRefund] - Optional. Whether to include voided
+  /// purchases of quantity-based partial refunds, which are applicable only to
+  /// multi-quantity purchases. If true, additional voided purchases may be
+  /// returned with voidedQuantity that indicates the refund quantity of a
+  /// quantity-based partial refund. The default value is false.
+  ///
   /// [maxResults] - Defines how many results the list operation should return.
   /// The default number depends on the resource collection.
   ///
@@ -5869,6 +5875,7 @@ class PurchasesVoidedpurchasesResource {
   async.Future<VoidedPurchasesListResponse> list(
     core.String packageName, {
     core.String? endTime,
+    core.bool? includeQuantityBasedPartialRefund,
     core.int? maxResults,
     core.int? startIndex,
     core.String? startTime,
@@ -5878,6 +5885,10 @@ class PurchasesVoidedpurchasesResource {
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (endTime != null) 'endTime': [endTime],
+      if (includeQuantityBasedPartialRefund != null)
+        'includeQuantityBasedPartialRefund': [
+          '${includeQuantityBasedPartialRefund}'
+        ],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (startIndex != null) 'startIndex': ['${startIndex}'],
       if (startTime != null) 'startTime': [startTime],
@@ -11496,7 +11507,8 @@ class OfferDetails {
       };
 }
 
-/// Represents a custom tag specified for base plans and subscription offers.
+/// Represents a custom tag specified for one-time products, purchase options,
+/// base plans and offers.
 class OfferTag {
   /// Must conform with RFC-1034.
   ///
@@ -11947,14 +11959,20 @@ class ProductPurchase {
   ///
   /// This field is only set if this purchase was not made using the standard
   /// in-app billing flow. Possible values are: 0. Test (i.e. purchased from a
-  /// license testing account) 1. Promo (i.e. purchased using a promo code) 2.
-  /// Rewarded (i.e. from watching a video ad instead of paying)
+  /// license testing account) 1. Promo (i.e. purchased using a promo code).
+  /// Does not include Play Points purchases. 2. Rewarded (i.e. from watching a
+  /// video ad instead of paying)
   core.int? purchaseType;
 
   /// The quantity associated with the purchase of the inapp product.
   ///
   /// If not present, the quantity is 1.
   core.int? quantity;
+
+  /// The quantity eligible for refund, i.e. quantity that hasn't been refunded.
+  ///
+  /// The value reflects quantity-based partial refunds and full refunds.
+  core.int? refundableQuantity;
 
   /// ISO 3166-1 alpha-2 billing region code of the user at the time the product
   /// was granted.
@@ -11974,6 +11992,7 @@ class ProductPurchase {
     this.purchaseToken,
     this.purchaseType,
     this.quantity,
+    this.refundableQuantity,
     this.regionCode,
   });
 
@@ -12018,6 +12037,9 @@ class ProductPurchase {
           quantity: json_.containsKey('quantity')
               ? json_['quantity'] as core.int
               : null,
+          refundableQuantity: json_.containsKey('refundableQuantity')
+              ? json_['refundableQuantity'] as core.int
+              : null,
           regionCode: json_.containsKey('regionCode')
               ? json_['regionCode'] as core.String
               : null,
@@ -12041,6 +12063,8 @@ class ProductPurchase {
         if (purchaseToken != null) 'purchaseToken': purchaseToken!,
         if (purchaseType != null) 'purchaseType': purchaseType!,
         if (quantity != null) 'quantity': quantity!,
+        if (refundableQuantity != null)
+          'refundableQuantity': refundableQuantity!,
         if (regionCode != null) 'regionCode': regionCode!,
       };
 }
@@ -14620,29 +14644,60 @@ class TargetingInfo {
 /// Defines the scope of subscriptions which a targeting rule can match to
 /// target offers to users based on past or current entitlement.
 class TargetingRuleScope {
+  /// The scope of the current targeting rule is any subscription in the parent
+  /// app.
+  TargetingRuleScopeAnySubscriptionInApp? anySubscriptionInApp;
+
   /// The scope of the current targeting rule is the subscription with the
   /// specified subscription ID.
   ///
   /// Must be a subscription within the same parent app.
   core.String? specificSubscriptionInApp;
 
+  /// The scope of the current targeting rule is the subscription in which this
+  /// offer is defined.
+  TargetingRuleScopeThisSubscription? thisSubscription;
+
   TargetingRuleScope({
+    this.anySubscriptionInApp,
     this.specificSubscriptionInApp,
+    this.thisSubscription,
   });
 
   TargetingRuleScope.fromJson(core.Map json_)
       : this(
+          anySubscriptionInApp: json_.containsKey('anySubscriptionInApp')
+              ? TargetingRuleScopeAnySubscriptionInApp.fromJson(
+                  json_['anySubscriptionInApp']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           specificSubscriptionInApp:
               json_.containsKey('specificSubscriptionInApp')
                   ? json_['specificSubscriptionInApp'] as core.String
                   : null,
+          thisSubscription: json_.containsKey('thisSubscription')
+              ? TargetingRuleScopeThisSubscription.fromJson(
+                  json_['thisSubscription']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (anySubscriptionInApp != null)
+          'anySubscriptionInApp': anySubscriptionInApp!,
         if (specificSubscriptionInApp != null)
           'specificSubscriptionInApp': specificSubscriptionInApp!,
+        if (thisSubscription != null) 'thisSubscription': thisSubscription!,
       };
 }
+
+/// Represents the targeting rule scope corresponding to any subscription in the
+/// parent app.
+typedef TargetingRuleScopeAnySubscriptionInApp = $Empty;
+
+/// Represents the targeting rule scope corresponding to the subscriptions in
+/// which this offer is defined.
+typedef TargetingRuleScopeThisSubscription = $Empty;
 
 /// Update type for targeting.
 ///
@@ -15914,6 +15969,12 @@ class VoidedPurchase {
   /// starting from version 3 of the API).
   core.String? purchaseToken;
 
+  /// The voided quantity as the result of a quantity-based partial refund.
+  ///
+  /// Voided purchases of quantity-based partial refunds may only be returned
+  /// when includeQuantityBasedPartialRefund is set to true.
+  core.int? voidedQuantity;
+
   /// The reason why the purchase was voided, possible values are: 0.
   ///
   /// Other 1. Remorse 2. Not_received 3. Defective 4. Accidental_purchase 5.
@@ -15934,6 +15995,7 @@ class VoidedPurchase {
     this.orderId,
     this.purchaseTimeMillis,
     this.purchaseToken,
+    this.voidedQuantity,
     this.voidedReason,
     this.voidedSource,
     this.voidedTimeMillis,
@@ -15950,6 +16012,9 @@ class VoidedPurchase {
               : null,
           purchaseToken: json_.containsKey('purchaseToken')
               ? json_['purchaseToken'] as core.String
+              : null,
+          voidedQuantity: json_.containsKey('voidedQuantity')
+              ? json_['voidedQuantity'] as core.int
               : null,
           voidedReason: json_.containsKey('voidedReason')
               ? json_['voidedReason'] as core.int
@@ -15968,6 +16033,7 @@ class VoidedPurchase {
         if (purchaseTimeMillis != null)
           'purchaseTimeMillis': purchaseTimeMillis!,
         if (purchaseToken != null) 'purchaseToken': purchaseToken!,
+        if (voidedQuantity != null) 'voidedQuantity': voidedQuantity!,
         if (voidedReason != null) 'voidedReason': voidedReason!,
         if (voidedSource != null) 'voidedSource': voidedSource!,
         if (voidedTimeMillis != null) 'voidedTimeMillis': voidedTimeMillis!,
