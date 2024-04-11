@@ -216,7 +216,7 @@ extension on Page {
     for (var element in elements) {
       final text = element.shape?.text;
       if (text == null) {
-        return;
+        continue;
       }
 
       yield* text.lines;
