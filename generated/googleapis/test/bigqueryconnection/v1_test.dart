@@ -440,6 +440,7 @@ api.ConnectorConfiguration buildConnectorConfiguration() {
     o.authentication = buildConnectorConfigurationAuthentication();
     o.connectorId = 'foo';
     o.endpoint = buildConnectorConfigurationEndpoint();
+    o.network = buildConnectorConfigurationNetwork();
   }
   buildCounterConnectorConfiguration--;
   return o;
@@ -454,6 +455,7 @@ void checkConnectorConfiguration(api.ConnectorConfiguration o) {
       unittest.equals('foo'),
     );
     checkConnectorConfigurationEndpoint(o.endpoint!);
+    checkConnectorConfigurationNetwork(o.network!);
   }
   buildCounterConnectorConfiguration--;
 }
@@ -499,6 +501,50 @@ void checkConnectorConfigurationEndpoint(api.ConnectorConfigurationEndpoint o) {
     );
   }
   buildCounterConnectorConfigurationEndpoint--;
+}
+
+core.int buildCounterConnectorConfigurationNetwork = 0;
+api.ConnectorConfigurationNetwork buildConnectorConfigurationNetwork() {
+  final o = api.ConnectorConfigurationNetwork();
+  buildCounterConnectorConfigurationNetwork++;
+  if (buildCounterConnectorConfigurationNetwork < 3) {
+    o.privateServiceConnect =
+        buildConnectorConfigurationPrivateServiceConnect();
+  }
+  buildCounterConnectorConfigurationNetwork--;
+  return o;
+}
+
+void checkConnectorConfigurationNetwork(api.ConnectorConfigurationNetwork o) {
+  buildCounterConnectorConfigurationNetwork++;
+  if (buildCounterConnectorConfigurationNetwork < 3) {
+    checkConnectorConfigurationPrivateServiceConnect(o.privateServiceConnect!);
+  }
+  buildCounterConnectorConfigurationNetwork--;
+}
+
+core.int buildCounterConnectorConfigurationPrivateServiceConnect = 0;
+api.ConnectorConfigurationPrivateServiceConnect
+    buildConnectorConfigurationPrivateServiceConnect() {
+  final o = api.ConnectorConfigurationPrivateServiceConnect();
+  buildCounterConnectorConfigurationPrivateServiceConnect++;
+  if (buildCounterConnectorConfigurationPrivateServiceConnect < 3) {
+    o.networkAttachment = 'foo';
+  }
+  buildCounterConnectorConfigurationPrivateServiceConnect--;
+  return o;
+}
+
+void checkConnectorConfigurationPrivateServiceConnect(
+    api.ConnectorConfigurationPrivateServiceConnect o) {
+  buildCounterConnectorConfigurationPrivateServiceConnect++;
+  if (buildCounterConnectorConfigurationPrivateServiceConnect < 3) {
+    unittest.expect(
+      o.networkAttachment!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterConnectorConfigurationPrivateServiceConnect--;
 }
 
 core.int buildCounterConnectorConfigurationSecret = 0;
@@ -1071,6 +1117,26 @@ void main() {
       final od = api.ConnectorConfigurationEndpoint.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkConnectorConfigurationEndpoint(od);
+    });
+  });
+
+  unittest.group('obj-schema-ConnectorConfigurationNetwork', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildConnectorConfigurationNetwork();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ConnectorConfigurationNetwork.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkConnectorConfigurationNetwork(od);
+    });
+  });
+
+  unittest.group('obj-schema-ConnectorConfigurationPrivateServiceConnect', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildConnectorConfigurationPrivateServiceConnect();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ConnectorConfigurationPrivateServiceConnect.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkConnectorConfigurationPrivateServiceConnect(od);
     });
   });
 

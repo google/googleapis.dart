@@ -87,6 +87,7 @@ api.Task buildTask() {
     o.status = 'foo';
     o.title = 'foo';
     o.updated = 'foo';
+    o.webViewLink = 'foo';
   }
   buildCounterTask--;
   return o;
@@ -144,6 +145,10 @@ void checkTask(api.Task o) {
     );
     unittest.expect(
       o.updated!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.webViewLink!,
       unittest.equals('foo'),
     );
   }

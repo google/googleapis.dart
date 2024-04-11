@@ -1,18 +1,21 @@
 diff --git a/discovery/googleapis/firestore__v1.json b/discovery/googleapis/firestore__v1.json
-index da7241732..aa15b8894 100644
+index ed400b977..a1efcd478 100644
 --- a/discovery/googleapis/firestore__v1.json
 +++ b/discovery/googleapis/firestore__v1.json
-@@ -3085,23 +3085,26 @@
+@@ -3904,27 +3904,30 @@
          "RunAggregationQueryResponse": {
              "description": "The response for Firestore.RunAggregationQuery.",
              "id": "RunAggregationQueryResponse",
 -            "properties": {
--                "readTime": {
--                    "description": "The time at which the aggregate result was computed. This is always monotonically increasing; in this case, the previous AggregationResult in the result stream are guaranteed not to have changed between their `read_time` and this one. If the query returns no results, a response with `read_time` and no `result` will be sent, and this represents the time at which the query was run.",
--                    "format": "google-datetime",
--                    "type": "string"
+-                "explainMetrics": {
+-                    "$ref": "ExplainMetrics",
+-                    "description": "Query explain metrics. This is only present when the RunAggregationQueryRequest.explain_options is provided, and it is sent only once with the last response in the stream."
 +            "items": {
 +                "properties": {
++                    "explainMetrics": {
++                        "$ref": "ExplainMetrics",
++                        "description": "Query explain metrics. This is only present when the RunAggregationQueryRequest.explain_options is provided, and it is sent only once with the last response in the stream."
++                    },
 +                    "readTime": {
 +                        "description": "The time at which the aggregate result was computed. This is always monotonically increasing; in this case, the previous AggregationResult in the result stream are guaranteed not to have changed between their `read_time` and this one. If the query returns no results, a response with `read_time` and no `result` will be sent, and this represents the time at which the query was run.",
 +                        "format": "google-datetime",
@@ -28,6 +31,11 @@ index da7241732..aa15b8894 100644
 +                        "type": "string"
 +                    }
                  },
+-                "readTime": {
+-                    "description": "The time at which the aggregate result was computed. This is always monotonically increasing; in this case, the previous AggregationResult in the result stream are guaranteed not to have changed between their `read_time` and this one. If the query returns no results, a response with `read_time` and no `result` will be sent, and this represents the time at which the query was run.",
+-                    "format": "google-datetime",
+-                    "type": "string"
+-                },
 -                "result": {
 -                    "$ref": "AggregationResult",
 -                    "description": "A single aggregation result. Not present when reporting partial progress."

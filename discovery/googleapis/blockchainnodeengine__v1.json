@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240228",
+    "revision": "20240320",
     "rootUrl": "https://blockchainnodeengine.googleapis.com/",
     "servicePath": "",
     "title": "Blockchain Node Engine API",
@@ -676,10 +676,17 @@
                         "TESTNET_SEPOLIA",
                         "TESTNET_HOLESKY"
                     ],
+                    "enumDeprecated": [
+                        false,
+                        false,
+                        true,
+                        false,
+                        false
+                    ],
                     "enumDescriptions": [
                         "The network has not been specified, but should be.",
                         "The Ethereum Mainnet.",
-                        "The Ethereum Testnet based on Goerli protocol.",
+                        "Deprecated: The Ethereum Testnet based on Goerli protocol. Holesky (TESTNET_HOLESKY) is the recommended testnet to replace Goerli.",
                         "The Ethereum Testnet based on Sepolia/Bepolia protocol. See https://github.com/eth-clients/sepolia.",
                         "The Ethereum Testnet based on Holesky specification. See https://github.com/eth-clients/holesky."
                     ],

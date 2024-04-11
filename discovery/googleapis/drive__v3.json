@@ -48,7 +48,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240303",
+    "revision": "20240405",
     "rootUrl": "https://www.googleapis.com/",
     "servicePath": "drive/v3/",
     "title": "Google Drive API",
@@ -895,7 +895,7 @@
                     ]
                 },
                 "update": {
-                    "description": "Updates the metadate for a shared drive.",
+                    "description": "Updates the metadata for a shared drive.",
                     "flatPath": "drives/{driveId}",
                     "httpMethod": "PATCH",
                     "id": "drive.drives.update",

@@ -131,6 +131,8 @@ class TasklistsResource {
   /// Creates a new task list and adds it to the authenticated user's task
   /// lists.
   ///
+  /// A user can have up to 2000 lists at a time.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -166,6 +168,8 @@ class TasklistsResource {
   }
 
   /// Returns all the authenticated user's task lists.
+  ///
+  /// A user can have up to 2000 lists at a time.
   ///
   /// Request parameters:
   ///
@@ -409,6 +413,9 @@ class TasksResource {
 
   /// Creates a new task on the specified task list.
   ///
+  /// A user can have up to 20,000 uncompleted tasks per list and up to 100,000
+  /// tasks in total at a time.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -459,6 +466,9 @@ class TasksResource {
   }
 
   /// Returns all tasks in the specified task list.
+  ///
+  /// A user can have up to 20,000 uncompleted tasks per list and up to 100,000
+  /// tasks in total at a time.
   ///
   /// Request parameters:
   ///
@@ -550,7 +560,8 @@ class TasksResource {
   /// Moves the specified task to another position in the task list.
   ///
   /// This can include putting it as a child task under a new parent and/or move
-  /// it to a different position among its sibling tasks.
+  /// it to a different position among its sibling tasks. A user can have up to
+  /// 2,000 subtasks per task.
   ///
   /// Request parameters:
   ///
@@ -771,7 +782,7 @@ class Task {
 
   /// Notes describing the task.
   ///
-  /// Optional.
+  /// Optional. Maximum length allowed: 8192 characters.
   core.String? notes;
 
   /// Parent task identifier.
@@ -802,10 +813,17 @@ class Task {
   core.String? status;
 
   /// Title of the task.
+  ///
+  /// Maximum length allowed: 1024 characters.
   core.String? title;
 
   /// Last modification time of the task (as a RFC 3339 timestamp).
   core.String? updated;
+
+  /// An absolute link to the task in the Google Tasks Web UI.
+  ///
+  /// This field is read-only.
+  core.String? webViewLink;
 
   Task({
     this.completed,
@@ -823,6 +841,7 @@ class Task {
     this.status,
     this.title,
     this.updated,
+    this.webViewLink,
   });
 
   Task.fromJson(core.Map json_)
@@ -864,6 +883,9 @@ class Task {
           updated: json_.containsKey('updated')
               ? json_['updated'] as core.String
               : null,
+          webViewLink: json_.containsKey('webViewLink')
+              ? json_['webViewLink'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -882,6 +904,7 @@ class Task {
         if (status != null) 'status': status!,
         if (title != null) 'title': title!,
         if (updated != null) 'updated': updated!,
+        if (webViewLink != null) 'webViewLink': webViewLink!,
       };
 }
 
@@ -903,6 +926,8 @@ class TaskList {
   core.String? selfLink;
 
   /// Title of the task list.
+  ///
+  /// Maximum length allowed: 1024 characters.
   core.String? title;
 
   /// Last modification time of the task list (as a RFC 3339 timestamp).

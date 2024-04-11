@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240305",
+    "revision": "20240409",
     "rootUrl": "https://tasks.googleapis.com/",
     "servicePath": "",
     "title": "Google Tasks API",
@@ -160,7 +160,7 @@
                     ]
                 },
                 "insert": {
-                    "description": "Creates a new task list and adds it to the authenticated user's task lists.",
+                    "description": "Creates a new task list and adds it to the authenticated user's task lists. A user can have up to 2000 lists at a time.",
                     "flatPath": "tasks/v1/users/@me/lists",
                     "httpMethod": "POST",
                     "id": "tasks.tasklists.insert",
@@ -178,7 +178,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Returns all the authenticated user's task lists.",
+                    "description": "Returns all the authenticated user's task lists. A user can have up to 2000 lists at a time.",
                     "flatPath": "tasks/v1/users/@me/lists",
                     "httpMethod": "GET",
                     "id": "tasks.tasklists.list",
@@ -345,7 +345,7 @@
                     ]
                 },
                 "insert": {
-                    "description": "Creates a new task on the specified task list.",
+                    "description": "Creates a new task on the specified task list. A user can have up to 20,000 uncompleted tasks per list and up to 100,000 tasks in total at a time.",
                     "flatPath": "tasks/v1/lists/{tasklist}/tasks",
                     "httpMethod": "POST",
                     "id": "tasks.tasks.insert",
@@ -382,7 +382,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Returns all tasks in the specified task list.",
+                    "description": "Returns all tasks in the specified task list. A user can have up to 20,000 uncompleted tasks per list and up to 100,000 tasks in total at a time.",
                     "flatPath": "tasks/v1/lists/{tasklist}/tasks",
                     "httpMethod": "GET",
                     "id": "tasks.tasks.list",
@@ -458,7 +458,7 @@
                     ]
                 },
                 "move": {
-                    "description": "Moves the specified task to another position in the task list. This can include putting it as a child task under a new parent and/or move it to a different position among its sibling tasks.",
+                    "description": "Moves the specified task to another position in the task list. This can include putting it as a child task under a new parent and/or move it to a different position among its sibling tasks. A user can have up to 2,000 subtasks per task.",
                     "flatPath": "tasks/v1/lists/{tasklist}/tasks/{task}/move",
                     "httpMethod": "POST",
                     "id": "tasks.tasks.move",
@@ -623,7 +623,7 @@
                     "type": "array"
                 },
                 "notes": {
-                    "description": "Notes describing the task. Optional.",
+                    "description": "Notes describing the task. Optional. Maximum length allowed: 8192 characters.",
                     "type": "string"
                 },
                 "parent": {
@@ -643,11 +643,15 @@
                     "type": "string"
                 },
                 "title": {
-                    "description": "Title of the task.",
+                    "description": "Title of the task. Maximum length allowed: 1024 characters.",
                     "type": "string"
                 },
                 "updated": {
                     "description": "Last modification time of the task (as a RFC 3339 timestamp).",
+                    "type": "string"
+                },
+                "webViewLink": {
+                    "description": "An absolute link to the task in the Google Tasks Web UI. This field is read-only.",
                     "type": "string"
                 }
             },
@@ -673,7 +677,7 @@
                     "type": "string"
                 },
                 "title": {
-                    "description": "Title of the task list.",
+                    "description": "Title of the task list. Maximum length allowed: 1024 characters.",
                     "type": "string"
                 },
                 "updated": {

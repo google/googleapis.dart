@@ -685,6 +685,10 @@ class FetchRemoteConfigResponse {
   /// fetch call.
   core.Map<core.String, PersonalizationMetadata>? personalizationMetadata;
 
+  /// Metadata describing active Remote Config rollouts which are related to
+  /// parameters delivered via this fetch response.
+  core.List<RolloutMetadata>? rolloutMetadata;
+
   /// The state of the fetched response.
   /// Possible string values are:
   /// - "INSTANCE_STATE_UNSPECIFIED" : Default (when the enum is not set by the
@@ -706,6 +710,7 @@ class FetchRemoteConfigResponse {
     this.entries,
     this.experimentDescriptions,
     this.personalizationMetadata,
+    this.rolloutMetadata,
     this.state,
     this.templateVersion,
   });
@@ -740,6 +745,12 @@ class FetchRemoteConfigResponse {
                   ),
                 )
               : null,
+          rolloutMetadata: json_.containsKey('rolloutMetadata')
+              ? (json_['rolloutMetadata'] as core.List)
+                  .map((value) => RolloutMetadata.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
           templateVersion: json_.containsKey('templateVersion')
@@ -754,6 +765,7 @@ class FetchRemoteConfigResponse {
           'experimentDescriptions': experimentDescriptions!,
         if (personalizationMetadata != null)
           'personalizationMetadata': personalizationMetadata!,
+        if (rolloutMetadata != null) 'rolloutMetadata': rolloutMetadata!,
         if (state != null) 'state': state!,
         if (templateVersion != null) 'templateVersion': templateVersion!,
       };
@@ -1273,6 +1285,50 @@ class RollbackRemoteConfigRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (versionNumber != null) 'versionNumber': versionNumber!,
+      };
+}
+
+/// Metadata describing Remote Config rollouts.
+class RolloutMetadata {
+  /// The parameter keys affected by this rollout.
+  core.List<core.String>? affectedParameterKeys;
+
+  /// The Firebase Remote Config rollout ID uniquely identifying a rollout.
+  ///
+  /// This is the tracking ID of the Rollout object defined in
+  /// ExperimentsEntities.
+  core.String? rolloutId;
+
+  /// The variant of the rollout assigned to this instance in this fetch
+  /// response.
+  core.String? variantId;
+
+  RolloutMetadata({
+    this.affectedParameterKeys,
+    this.rolloutId,
+    this.variantId,
+  });
+
+  RolloutMetadata.fromJson(core.Map json_)
+      : this(
+          affectedParameterKeys: json_.containsKey('affectedParameterKeys')
+              ? (json_['affectedParameterKeys'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          rolloutId: json_.containsKey('rolloutId')
+              ? json_['rolloutId'] as core.String
+              : null,
+          variantId: json_.containsKey('variantId')
+              ? json_['variantId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (affectedParameterKeys != null)
+          'affectedParameterKeys': affectedParameterKeys!,
+        if (rolloutId != null) 'rolloutId': rolloutId!,
+        if (variantId != null) 'variantId': variantId!,
       };
 }
 

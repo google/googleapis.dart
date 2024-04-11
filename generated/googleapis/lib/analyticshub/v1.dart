@@ -1470,8 +1470,17 @@ class BigQueryDatasetSource {
   /// e.g. `projects/myproject/datasets/123`
   core.String? dataset;
 
+  /// Resources in this dataset that are selectively shared.
+  ///
+  /// If this field is empty, then the entire dataset (all resources) are
+  /// shared. This field is only valid for data clean room exchanges.
+  ///
+  /// Optional.
+  core.List<SelectedResource>? selectedResources;
+
   BigQueryDatasetSource({
     this.dataset,
+    this.selectedResources,
   });
 
   BigQueryDatasetSource.fromJson(core.Map json_)
@@ -1479,10 +1488,17 @@ class BigQueryDatasetSource {
           dataset: json_.containsKey('dataset')
               ? json_['dataset'] as core.String
               : null,
+          selectedResources: json_.containsKey('selectedResources')
+              ? (json_['selectedResources'] as core.List)
+                  .map((value) => SelectedResource.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dataset != null) 'dataset': dataset!,
+        if (selectedResources != null) 'selectedResources': selectedResources!,
       };
 }
 
@@ -2625,6 +2641,30 @@ typedef RevokeSubscriptionRequest = $Empty;
 
 /// Message for response when you revoke a subscription.
 typedef RevokeSubscriptionResponse = $Empty;
+
+/// Resource in this dataset that are selectively shared.
+class SelectedResource {
+  /// Format: For table:
+  /// `projects/{projectId}/datasets/{datasetId}/tables/{tableId}`
+  /// Example:"projects/test_project/datasets/test_dataset/tables/test_table"
+  ///
+  /// Optional.
+  core.String? table;
+
+  SelectedResource({
+    this.table,
+  });
+
+  SelectedResource.fromJson(core.Map json_)
+      : this(
+          table:
+              json_.containsKey('table') ? json_['table'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (table != null) 'table': table!,
+      };
+}
 
 /// Request message for `SetIamPolicy` method.
 class SetIamPolicyRequest {

@@ -1361,36 +1361,43 @@ class CaseClassification {
 /// The request message for the CloseCase endpoint.
 typedef CloseCaseRequest = $Empty;
 
-/// Case comments are the main way Google Support communicates with a user who
-/// has opened a case.
+/// A comment associated with a support case.
 ///
-/// When a user responds to Google Support, the user's responses also appear as
-/// comments.
+/// Case comments are the primary way for Google Support to communicate with a
+/// user who has opened a case. When a user responds to Google Support, the
+/// user's responses also appear as comments.
 class Comment {
   /// The full comment body.
   ///
-  /// Maximum of 12800 characters. This can contain rich text syntax.
+  /// Maximum of 12800 characters.
   core.String? body;
 
-  /// The time when this comment was created.
+  /// The time when the comment was created.
   ///
   /// Output only.
   core.String? createTime;
 
-  /// The user or Google Support agent created this comment.
+  /// The user or Google Support agent who created the comment.
   ///
   /// Output only.
   Actor? creator;
 
-  /// The resource name for the comment.
+  /// Identifier.
+  ///
+  /// The resource name of the comment.
   ///
   /// Output only.
   core.String? name;
 
-  /// An automatically generated plain text version of body with all rich text
-  /// syntax stripped.
+  /// DO NOT USE.
+  ///
+  /// A duplicate of the `body` field. This field is only present for legacy
+  /// reasons.
   ///
   /// Output only. Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? plainTextBody;
 
   Comment({

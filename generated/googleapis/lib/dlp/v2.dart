@@ -29,6 +29,7 @@
 ///   - [OrganizationsInspectTemplatesResource]
 ///   - [OrganizationsLocationsResource]
 ///     - [OrganizationsLocationsColumnDataProfilesResource]
+///     - [OrganizationsLocationsConnectionsResource]
 ///     - [OrganizationsLocationsDeidentifyTemplatesResource]
 ///     - [OrganizationsLocationsDiscoveryConfigsResource]
 ///     - [OrganizationsLocationsDlpJobsResource]
@@ -47,6 +48,7 @@
 ///   - [ProjectsJobTriggersResource]
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsColumnDataProfilesResource]
+///     - [ProjectsLocationsConnectionsResource]
 ///     - [ProjectsLocationsContentResource]
 ///     - [ProjectsLocationsDeidentifyTemplatesResource]
 ///     - [ProjectsLocationsDiscoveryConfigsResource]
@@ -813,6 +815,8 @@ class OrganizationsLocationsResource {
 
   OrganizationsLocationsColumnDataProfilesResource get columnDataProfiles =>
       OrganizationsLocationsColumnDataProfilesResource(_requester);
+  OrganizationsLocationsConnectionsResource get connections =>
+      OrganizationsLocationsConnectionsResource(_requester);
   OrganizationsLocationsDeidentifyTemplatesResource get deidentifyTemplates =>
       OrganizationsLocationsDeidentifyTemplatesResource(_requester);
   OrganizationsLocationsDiscoveryConfigsResource get discoveryConfigs =>
@@ -878,13 +882,13 @@ class OrganizationsLocationsColumnDataProfilesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists data profiles for an organization.
+  /// Lists column data profiles for an organization.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. Resource name of the organization or project, for
   /// example `organizations/433245324/locations/europe` or
-  /// projects/project-id/locations/asia.
+  /// `projects/project-id/locations/asia`.
   /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - Allows filtering. Supported syntax: * Filter expressions are
@@ -957,6 +961,65 @@ class OrganizationsLocationsColumnDataProfilesResource {
       queryParams: queryParams_,
     );
     return GooglePrivacyDlpV2ListColumnDataProfilesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class OrganizationsLocationsConnectionsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsConnectionsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Searches for Connections in a parent.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent name, typically an organization, without
+  /// location. For example: "organizations/12345678".
+  /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. * Supported fields/values - `state` -
+  /// MISSING|AVAILABLE|ERROR
+  ///
+  /// [pageSize] - Optional. Number of results per page, max 1000.
+  ///
+  /// [pageToken] - Optional. Page token from a previous page to return the next
+  /// set of results. If set, all other request fields must match the original
+  /// request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2SearchConnectionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2SearchConnectionsResponse> search(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/connections:search';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GooglePrivacyDlpV2SearchConnectionsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -2203,7 +2266,7 @@ class OrganizationsLocationsProjectDataProfilesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists data profiles for an organization.
+  /// Lists project data profiles for an organization.
   ///
   /// Request parameters:
   ///
@@ -2218,19 +2281,19 @@ class OrganizationsLocationsProjectDataProfilesResource {
   /// `data_risk_level` - HIGH|MODERATE|LOW - `status_code` - an RPC status code
   /// as defined in
   /// https://github.com/googleapis/googleapis/blob/master/google/rpc/code.proto
-  /// * The operator must be `=` or `!=`. Examples: * project_id = 12345 AND
-  /// status_code = 1 * project_id = 12345 AND sensitivity_level = HIGH The
+  /// * The operator must be `=` or `!=`. Examples: * `project_id = 12345 AND
+  /// status_code = 1` * `project_id = 12345 AND sensitivity_level = HIGH` The
   /// length of this field should be no more than 500 characters.
   ///
   /// [orderBy] - Comma separated list of fields to order by, followed by `asc`
   /// or `desc` postfix. This list is case insensitive. The default sorting
   /// order is ascending. Redundant space characters are insignificant. Only one
   /// order field at a time is allowed. Examples: * `project_id` *
-  /// `sensitivity_level desc` Supported fields are: - `project_id`: GCP project
-  /// ID - `sensitivity_level`: How sensitive the data in a project is, at most.
-  /// - `data_risk_level`: How much risk is associated with this data. -
-  /// `profile_last_generated`: When the profile was last updated in epoch
-  /// seconds.
+  /// `sensitivity_level desc` Supported fields are: - `project_id`: Google
+  /// Cloud project ID - `sensitivity_level`: How sensitive the data in a
+  /// project is, at most. - `data_risk_level`: How much risk is associated with
+  /// this data. - `profile_last_generated`: When the profile was last updated
+  /// in epoch seconds.
   ///
   /// [pageSize] - Size of the page. This value can be limited by the server. If
   /// zero, server returns a page of max size 100.
@@ -2558,6 +2621,46 @@ class OrganizationsLocationsTableDataProfilesResource {
   OrganizationsLocationsTableDataProfilesResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Delete a TableDataProfile.
+  ///
+  /// Will not prevent the profile from being regenerated if the table is still
+  /// included in a discovery configuration.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the table data profile.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/tableDataProfiles/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets a table data profile.
   ///
   /// Request parameters:
@@ -2596,7 +2699,7 @@ class OrganizationsLocationsTableDataProfilesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists data profiles for an organization.
+  /// Lists table data profiles for an organization.
   ///
   /// Request parameters:
   ///
@@ -2609,15 +2712,15 @@ class OrganizationsLocationsTableDataProfilesResource {
   /// made up of one or more restrictions. * Restrictions can be combined by
   /// `AND` or `OR` logical operators. A sequence of restrictions implicitly
   /// uses `AND`. * A restriction has the form of `{field} {operator} {value}`.
-  /// * Supported fields/values: - `project_id` - The GCP project ID. -
+  /// * Supported fields/values: - `project_id` - The Google Cloud project ID. -
   /// `dataset_id` - The BigQuery dataset ID. - `table_id` - The ID of the
   /// BigQuery table. - `sensitivity_level` - HIGH|MODERATE|LOW -
   /// `data_risk_level` - HIGH|MODERATE|LOW - `resource_visibility`:
   /// PUBLIC|RESTRICTED - `status_code` - an RPC status code as defined in
   /// https://github.com/googleapis/googleapis/blob/master/google/rpc/code.proto
-  /// * The operator must be `=` or `!=`. Examples: * project_id = 12345 AND
-  /// status_code = 1 * project_id = 12345 AND sensitivity_level = HIGH *
-  /// project_id = 12345 AND resource_visibility = PUBLIC The length of this
+  /// * The operator must be `=` or `!=`. Examples: * `project_id = 12345 AND
+  /// status_code = 1` * `project_id = 12345 AND sensitivity_level = HIGH` *
+  /// `project_id = 12345 AND resource_visibility = PUBLIC` The length of this
   /// field should be no more than 500 characters.
   ///
   /// [orderBy] - Comma separated list of fields to order by, followed by `asc`
@@ -2625,14 +2728,14 @@ class OrganizationsLocationsTableDataProfilesResource {
   /// order is ascending. Redundant space characters are insignificant. Only one
   /// order field at a time is allowed. Examples: * `project_id asc` *
   /// `table_id` * `sensitivity_level desc` Supported fields are: -
-  /// `project_id`: The GCP project ID. - `dataset_id`: The ID of a BigQuery
-  /// dataset. - `table_id`: The ID of a BigQuery table. - `sensitivity_level`:
-  /// How sensitive the data in a table is, at most. - `data_risk_level`: How
-  /// much risk is associated with this data. - `profile_last_generated`: When
-  /// the profile was last updated in epoch seconds. - `last_modified`: The last
-  /// time the resource was modified. - `resource_visibility`: Visibility
-  /// restriction for this resource. - `row_count`: Number of rows in this
-  /// resource.
+  /// `project_id`: The Google Cloud project ID. - `dataset_id`: The ID of a
+  /// BigQuery dataset. - `table_id`: The ID of a BigQuery table. -
+  /// `sensitivity_level`: How sensitive the data in a table is, at most. -
+  /// `data_risk_level`: How much risk is associated with this data. -
+  /// `profile_last_generated`: When the profile was last updated in epoch
+  /// seconds. - `last_modified`: The last time the resource was modified. -
+  /// `resource_visibility`: Visibility restriction for this resource. -
+  /// `row_count`: Number of rows in this resource.
   ///
   /// [pageSize] - Size of the page. This value can be limited by the server. If
   /// zero, server returns a page of max size 100.
@@ -4409,6 +4512,8 @@ class ProjectsLocationsResource {
 
   ProjectsLocationsColumnDataProfilesResource get columnDataProfiles =>
       ProjectsLocationsColumnDataProfilesResource(_requester);
+  ProjectsLocationsConnectionsResource get connections =>
+      ProjectsLocationsConnectionsResource(_requester);
   ProjectsLocationsContentResource get content =>
       ProjectsLocationsContentResource(_requester);
   ProjectsLocationsDeidentifyTemplatesResource get deidentifyTemplates =>
@@ -4477,13 +4582,13 @@ class ProjectsLocationsColumnDataProfilesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists data profiles for an organization.
+  /// Lists column data profiles for an organization.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. Resource name of the organization or project, for
   /// example `organizations/433245324/locations/europe` or
-  /// projects/project-id/locations/asia.
+  /// `projects/project-id/locations/asia`.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - Allows filtering. Supported syntax: * Filter expressions are
@@ -4556,6 +4661,279 @@ class ProjectsLocationsColumnDataProfilesResource {
       queryParams: queryParams_,
     );
     return GooglePrivacyDlpV2ListColumnDataProfilesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsConnectionsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsConnectionsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Create a Connection to an external data source.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent resource name in the format:
+  /// "projects/{project}/locations/{location}".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2Connection].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2Connection> create(
+    GooglePrivacyDlpV2CreateConnectionRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/connections';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GooglePrivacyDlpV2Connection.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Delete a Connection.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the Connection to be deleted, in the
+  /// format:
+  /// "projects/{project}/locations/{location}/connections/{connection}".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Get a Connection by name.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name in the format:
+  /// "projects/{project}/locations/{location}/connections/{connection}".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2Connection].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2Connection> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GooglePrivacyDlpV2Connection.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists Connections in a parent.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent name, for example:
+  /// "projects/project-id/locations/global".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. * Supported fields/values - `state` -
+  /// MISSING|AVAILABLE|ERROR
+  ///
+  /// [pageSize] - Optional. Number of results per page, max 1000.
+  ///
+  /// [pageToken] - Optional. Page token from a previous page to return the next
+  /// set of results. If set, all other request fields must match the original
+  /// request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2ListConnectionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2ListConnectionsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/connections';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GooglePrivacyDlpV2ListConnectionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Update a Connection.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name in the format:
+  /// "projects/{project}/locations/{location}/connections/{connection}".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2Connection].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2Connection> patch(
+    GooglePrivacyDlpV2UpdateConnectionRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GooglePrivacyDlpV2Connection.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Searches for Connections in a parent.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent name, typically an organization, without
+  /// location. For example: "organizations/12345678".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. * Supported fields/values - `state` -
+  /// MISSING|AVAILABLE|ERROR
+  ///
+  /// [pageSize] - Optional. Number of results per page, max 1000.
+  ///
+  /// [pageToken] - Optional. Page token from a previous page to return the next
+  /// set of results. If set, all other request fields must match the original
+  /// request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2SearchConnectionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2SearchConnectionsResponse> search(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/connections:search';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GooglePrivacyDlpV2SearchConnectionsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -6422,7 +6800,7 @@ class ProjectsLocationsProjectDataProfilesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists data profiles for an organization.
+  /// Lists project data profiles for an organization.
   ///
   /// Request parameters:
   ///
@@ -6437,19 +6815,19 @@ class ProjectsLocationsProjectDataProfilesResource {
   /// `data_risk_level` - HIGH|MODERATE|LOW - `status_code` - an RPC status code
   /// as defined in
   /// https://github.com/googleapis/googleapis/blob/master/google/rpc/code.proto
-  /// * The operator must be `=` or `!=`. Examples: * project_id = 12345 AND
-  /// status_code = 1 * project_id = 12345 AND sensitivity_level = HIGH The
+  /// * The operator must be `=` or `!=`. Examples: * `project_id = 12345 AND
+  /// status_code = 1` * `project_id = 12345 AND sensitivity_level = HIGH` The
   /// length of this field should be no more than 500 characters.
   ///
   /// [orderBy] - Comma separated list of fields to order by, followed by `asc`
   /// or `desc` postfix. This list is case insensitive. The default sorting
   /// order is ascending. Redundant space characters are insignificant. Only one
   /// order field at a time is allowed. Examples: * `project_id` *
-  /// `sensitivity_level desc` Supported fields are: - `project_id`: GCP project
-  /// ID - `sensitivity_level`: How sensitive the data in a project is, at most.
-  /// - `data_risk_level`: How much risk is associated with this data. -
-  /// `profile_last_generated`: When the profile was last updated in epoch
-  /// seconds.
+  /// `sensitivity_level desc` Supported fields are: - `project_id`: Google
+  /// Cloud project ID - `sensitivity_level`: How sensitive the data in a
+  /// project is, at most. - `data_risk_level`: How much risk is associated with
+  /// this data. - `profile_last_generated`: When the profile was last updated
+  /// in epoch seconds.
   ///
   /// [pageSize] - Size of the page. This value can be limited by the server. If
   /// zero, server returns a page of max size 100.
@@ -6777,6 +7155,46 @@ class ProjectsLocationsTableDataProfilesResource {
   ProjectsLocationsTableDataProfilesResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Delete a TableDataProfile.
+  ///
+  /// Will not prevent the profile from being regenerated if the table is still
+  /// included in a discovery configuration.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the table data profile.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/tableDataProfiles/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets a table data profile.
   ///
   /// Request parameters:
@@ -6815,7 +7233,7 @@ class ProjectsLocationsTableDataProfilesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists data profiles for an organization.
+  /// Lists table data profiles for an organization.
   ///
   /// Request parameters:
   ///
@@ -6828,15 +7246,15 @@ class ProjectsLocationsTableDataProfilesResource {
   /// made up of one or more restrictions. * Restrictions can be combined by
   /// `AND` or `OR` logical operators. A sequence of restrictions implicitly
   /// uses `AND`. * A restriction has the form of `{field} {operator} {value}`.
-  /// * Supported fields/values: - `project_id` - The GCP project ID. -
+  /// * Supported fields/values: - `project_id` - The Google Cloud project ID. -
   /// `dataset_id` - The BigQuery dataset ID. - `table_id` - The ID of the
   /// BigQuery table. - `sensitivity_level` - HIGH|MODERATE|LOW -
   /// `data_risk_level` - HIGH|MODERATE|LOW - `resource_visibility`:
   /// PUBLIC|RESTRICTED - `status_code` - an RPC status code as defined in
   /// https://github.com/googleapis/googleapis/blob/master/google/rpc/code.proto
-  /// * The operator must be `=` or `!=`. Examples: * project_id = 12345 AND
-  /// status_code = 1 * project_id = 12345 AND sensitivity_level = HIGH *
-  /// project_id = 12345 AND resource_visibility = PUBLIC The length of this
+  /// * The operator must be `=` or `!=`. Examples: * `project_id = 12345 AND
+  /// status_code = 1` * `project_id = 12345 AND sensitivity_level = HIGH` *
+  /// `project_id = 12345 AND resource_visibility = PUBLIC` The length of this
   /// field should be no more than 500 characters.
   ///
   /// [orderBy] - Comma separated list of fields to order by, followed by `asc`
@@ -6844,14 +7262,14 @@ class ProjectsLocationsTableDataProfilesResource {
   /// order is ascending. Redundant space characters are insignificant. Only one
   /// order field at a time is allowed. Examples: * `project_id asc` *
   /// `table_id` * `sensitivity_level desc` Supported fields are: -
-  /// `project_id`: The GCP project ID. - `dataset_id`: The ID of a BigQuery
-  /// dataset. - `table_id`: The ID of a BigQuery table. - `sensitivity_level`:
-  /// How sensitive the data in a table is, at most. - `data_risk_level`: How
-  /// much risk is associated with this data. - `profile_last_generated`: When
-  /// the profile was last updated in epoch seconds. - `last_modified`: The last
-  /// time the resource was modified. - `resource_visibility`: Visibility
-  /// restriction for this resource. - `row_count`: Number of rows in this
-  /// resource.
+  /// `project_id`: The Google Cloud project ID. - `dataset_id`: The ID of a
+  /// BigQuery dataset. - `table_id`: The ID of a BigQuery table. -
+  /// `sensitivity_level`: How sensitive the data in a table is, at most. -
+  /// `data_risk_level`: How much risk is associated with this data. -
+  /// `profile_last_generated`: When the profile was last updated in epoch
+  /// seconds. - `last_modified`: The last time the resource was modified. -
+  /// `resource_visibility`: Visibility restriction for this resource. -
+  /// `row_count`: Number of rows in this resource.
   ///
   /// [pageSize] - Size of the page. This value can be limited by the server. If
   /// zero, server returns a page of max size 100.
@@ -7296,6 +7714,9 @@ typedef GooglePrivacyDlpV2AllInfoTypes = $Empty;
 /// Should always be last, except for single-table configurations, which will
 /// only have a TableReference target.
 typedef GooglePrivacyDlpV2AllOtherBigQueryTables = $Empty;
+
+/// Match database resources not covered by any other filter.
+typedef GooglePrivacyDlpV2AllOtherDatabaseResources = $Empty;
 
 /// Apply to all text.
 typedef GooglePrivacyDlpV2AllText = $Empty;
@@ -8280,6 +8701,150 @@ class GooglePrivacyDlpV2CharsToIgnore {
       };
 }
 
+/// Target used to match against for discovery with Cloud SQL tables.
+class GooglePrivacyDlpV2CloudSqlDiscoveryTarget {
+  /// In addition to matching the filter, these conditions must be true before a
+  /// profile is generated.
+  GooglePrivacyDlpV2DiscoveryCloudSqlConditions? conditions;
+
+  /// Disable profiling for database resources that match this filter.
+  GooglePrivacyDlpV2Disabled? disabled;
+
+  /// The tables the discovery cadence applies to.
+  ///
+  /// The first target with a matching filter will be the one to apply to a
+  /// table.
+  ///
+  /// Required.
+  GooglePrivacyDlpV2DiscoveryCloudSqlFilter? filter;
+
+  /// How often and when to update profiles.
+  ///
+  /// New tables that match both the filter and conditions are scanned as
+  /// quickly as possible depending on system capacity.
+  GooglePrivacyDlpV2DiscoveryCloudSqlGenerationCadence? generationCadence;
+
+  GooglePrivacyDlpV2CloudSqlDiscoveryTarget({
+    this.conditions,
+    this.disabled,
+    this.filter,
+    this.generationCadence,
+  });
+
+  GooglePrivacyDlpV2CloudSqlDiscoveryTarget.fromJson(core.Map json_)
+      : this(
+          conditions: json_.containsKey('conditions')
+              ? GooglePrivacyDlpV2DiscoveryCloudSqlConditions.fromJson(
+                  json_['conditions'] as core.Map<core.String, core.dynamic>)
+              : null,
+          disabled: json_.containsKey('disabled')
+              ? GooglePrivacyDlpV2Disabled.fromJson(
+                  json_['disabled'] as core.Map<core.String, core.dynamic>)
+              : null,
+          filter: json_.containsKey('filter')
+              ? GooglePrivacyDlpV2DiscoveryCloudSqlFilter.fromJson(
+                  json_['filter'] as core.Map<core.String, core.dynamic>)
+              : null,
+          generationCadence: json_.containsKey('generationCadence')
+              ? GooglePrivacyDlpV2DiscoveryCloudSqlGenerationCadence.fromJson(
+                  json_['generationCadence']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (conditions != null) 'conditions': conditions!,
+        if (disabled != null) 'disabled': disabled!,
+        if (filter != null) 'filter': filter!,
+        if (generationCadence != null) 'generationCadence': generationCadence!,
+      };
+}
+
+/// Use IAM auth to connect.
+///
+/// This requires the Cloud SQL IAM feature to be enabled on the instance, which
+/// is not the default for Cloud SQL. See
+/// https://cloud.google.com/sql/docs/postgres/authentication and
+/// https://cloud.google.com/sql/docs/mysql/authentication.
+typedef GooglePrivacyDlpV2CloudSqlIamCredential = $Empty;
+
+/// Cloud SQL connection properties.
+class GooglePrivacyDlpV2CloudSqlProperties {
+  /// Built-in IAM authentication (must be configured in Cloud SQL).
+  GooglePrivacyDlpV2CloudSqlIamCredential? cloudSqlIam;
+
+  /// The Cloud SQL instance for which the connection is defined.
+  ///
+  /// Only one connection per instance is allowed. This can only be set at
+  /// creation time, and cannot be updated. It is an error to use a
+  /// connection_name from different project or region than the one that holds
+  /// the connection. For example, a Connection resource for Cloud SQL
+  /// connection_name "project-id:us-central1:sql-instance" must be created
+  /// under the parent "projects/project-id/locations/us-central1"
+  ///
+  /// Optional. Immutable.
+  core.String? connectionName;
+
+  /// The database engine used by the Cloud SQL instance that this connection
+  /// configures.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "DATABASE_ENGINE_UNKNOWN" : An engine that is not currently supported by
+  /// SDP.
+  /// - "DATABASE_ENGINE_MYSQL" : Cloud SQL for MySQL instance.
+  /// - "DATABASE_ENGINE_POSTGRES" : Cloud SQL for Postgres instance.
+  core.String? databaseEngine;
+
+  /// DLP will limit its connections to max_connections.
+  ///
+  /// Must be 2 or greater.
+  ///
+  /// Required.
+  core.int? maxConnections;
+
+  /// A username and password stored in Secret Manager.
+  GooglePrivacyDlpV2SecretManagerCredential? usernamePassword;
+
+  GooglePrivacyDlpV2CloudSqlProperties({
+    this.cloudSqlIam,
+    this.connectionName,
+    this.databaseEngine,
+    this.maxConnections,
+    this.usernamePassword,
+  });
+
+  GooglePrivacyDlpV2CloudSqlProperties.fromJson(core.Map json_)
+      : this(
+          cloudSqlIam: json_.containsKey('cloudSqlIam')
+              ? GooglePrivacyDlpV2CloudSqlIamCredential.fromJson(
+                  json_['cloudSqlIam'] as core.Map<core.String, core.dynamic>)
+              : null,
+          connectionName: json_.containsKey('connectionName')
+              ? json_['connectionName'] as core.String
+              : null,
+          databaseEngine: json_.containsKey('databaseEngine')
+              ? json_['databaseEngine'] as core.String
+              : null,
+          maxConnections: json_.containsKey('maxConnections')
+              ? json_['maxConnections'] as core.int
+              : null,
+          usernamePassword: json_.containsKey('usernamePassword')
+              ? GooglePrivacyDlpV2SecretManagerCredential.fromJson(
+                  json_['usernamePassword']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cloudSqlIam != null) 'cloudSqlIam': cloudSqlIam!,
+        if (connectionName != null) 'connectionName': connectionName!,
+        if (databaseEngine != null) 'databaseEngine': databaseEngine!,
+        if (maxConnections != null) 'maxConnections': maxConnections!,
+        if (usernamePassword != null) 'usernamePassword': usernamePassword!,
+      };
+}
+
 /// Message representing a set of files in Cloud Storage.
 class GooglePrivacyDlpV2CloudStorageFileSet {
   /// The url, in the format `gs:///`.
@@ -8565,6 +9130,10 @@ class GooglePrivacyDlpV2ColumnDataProfile {
   /// name.
   /// - "TYPE_BIGNUMERIC" : Decimal type.
   /// - "TYPE_JSON" : Json type.
+  /// - "TYPE_INTERVAL" : Interval type.
+  /// - "TYPE_RANGE_DATE" : Range type.
+  /// - "TYPE_RANGE_DATETIME" : Range type.
+  /// - "TYPE_RANGE_TIMESTAMP" : Range type.
   core.String? columnType;
 
   /// The data risk level for this column.
@@ -8865,6 +9434,73 @@ class GooglePrivacyDlpV2Conditions {
       };
 }
 
+/// A data connection to allow DLP to profile data in locations that require
+/// additional configuration.
+class GooglePrivacyDlpV2Connection {
+  /// Connect to a Cloud SQL instance.
+  GooglePrivacyDlpV2CloudSqlProperties? cloudSql;
+
+  /// Set if status == ERROR, to provide additional details.
+  ///
+  /// Will store the last 10 errors sorted with the most recent first.
+  ///
+  /// Output only.
+  core.List<GooglePrivacyDlpV2Error>? errors;
+
+  /// Name of the connection:
+  /// projects/{project}/locations/{location}/connections/{name}.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The connection's state in its lifecycle.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "CONNECTION_STATE_UNSPECIFIED" : Unused
+  /// - "MISSING_CREDENTIALS" : DLP automatically created this connection during
+  /// an initial scan, and it is awaiting full configuration by a user.
+  /// - "AVAILABLE" : A configured connection that has not encountered any
+  /// errors.
+  /// - "ERROR" : A configured connection that encountered errors during its
+  /// last use. It will not be used again until it is set to AVAILABLE. If the
+  /// resolution requires external action, then a request to set the status to
+  /// AVAILABLE will mark this connection for use. Otherwise, any changes to the
+  /// connection properties will automatically mark it as AVAILABLE.
+  core.String? state;
+
+  GooglePrivacyDlpV2Connection({
+    this.cloudSql,
+    this.errors,
+    this.name,
+    this.state,
+  });
+
+  GooglePrivacyDlpV2Connection.fromJson(core.Map json_)
+      : this(
+          cloudSql: json_.containsKey('cloudSql')
+              ? GooglePrivacyDlpV2CloudSqlProperties.fromJson(
+                  json_['cloudSql'] as core.Map<core.String, core.dynamic>)
+              : null,
+          errors: json_.containsKey('errors')
+              ? (json_['errors'] as core.List)
+                  .map((value) => GooglePrivacyDlpV2Error.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cloudSql != null) 'cloudSql': cloudSql!,
+        if (errors != null) 'errors': errors!,
+        if (name != null) 'name': name!,
+        if (state != null) 'state': state!,
+      };
+}
+
 /// Represents a container that may contain DLP findings.
 ///
 /// Examples of a container include a file, table, or database record.
@@ -9082,6 +9718,30 @@ class GooglePrivacyDlpV2ContentLocation {
         if (imageLocation != null) 'imageLocation': imageLocation!,
         if (metadataLocation != null) 'metadataLocation': metadataLocation!,
         if (recordLocation != null) 'recordLocation': recordLocation!,
+      };
+}
+
+/// Request message for CreateConnection.
+class GooglePrivacyDlpV2CreateConnectionRequest {
+  /// The connection resource.
+  ///
+  /// Required.
+  GooglePrivacyDlpV2Connection? connection;
+
+  GooglePrivacyDlpV2CreateConnectionRequest({
+    this.connection,
+  });
+
+  GooglePrivacyDlpV2CreateConnectionRequest.fromJson(core.Map json_)
+      : this(
+          connection: json_.containsKey('connection')
+              ? GooglePrivacyDlpV2Connection.fromJson(
+                  json_['connection'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (connection != null) 'connection': connection!,
       };
 }
 
@@ -10037,6 +10697,158 @@ class GooglePrivacyDlpV2DataSourceType {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dataSource != null) 'dataSource': dataSource!,
+      };
+}
+
+/// Match database resources using regex filters.
+///
+/// Examples of database resources are tables, views, and stored procedures.
+class GooglePrivacyDlpV2DatabaseResourceCollection {
+  /// A collection of regular expressions to match a database resource against.
+  GooglePrivacyDlpV2DatabaseResourceRegexes? includeRegexes;
+
+  GooglePrivacyDlpV2DatabaseResourceCollection({
+    this.includeRegexes,
+  });
+
+  GooglePrivacyDlpV2DatabaseResourceCollection.fromJson(core.Map json_)
+      : this(
+          includeRegexes: json_.containsKey('includeRegexes')
+              ? GooglePrivacyDlpV2DatabaseResourceRegexes.fromJson(
+                  json_['includeRegexes']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (includeRegexes != null) 'includeRegexes': includeRegexes!,
+      };
+}
+
+/// Identifies a single database resource, like a table within a database.
+class GooglePrivacyDlpV2DatabaseResourceReference {
+  /// The instance where this resource is located.
+  ///
+  /// For example: Cloud SQL's instance id.
+  ///
+  /// Required.
+  core.String? instance;
+
+  /// If within a project-level config, then this must match the config's
+  /// project id.
+  ///
+  /// Required.
+  core.String? projectId;
+
+  GooglePrivacyDlpV2DatabaseResourceReference({
+    this.instance,
+    this.projectId,
+  });
+
+  GooglePrivacyDlpV2DatabaseResourceReference.fromJson(core.Map json_)
+      : this(
+          instance: json_.containsKey('instance')
+              ? json_['instance'] as core.String
+              : null,
+          projectId: json_.containsKey('projectId')
+              ? json_['projectId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (instance != null) 'instance': instance!,
+        if (projectId != null) 'projectId': projectId!,
+      };
+}
+
+/// A pattern to match against one or more database resources.
+///
+/// At least one pattern must be specified. Regular expressions use RE2
+/// [syntax](https://github.com/google/re2/wiki/Syntax); a guide can be found
+/// under the google/re2 repository on GitHub.
+class GooglePrivacyDlpV2DatabaseResourceRegex {
+  /// Regex to test the database name against.
+  ///
+  /// If empty, all databases match.
+  core.String? databaseRegex;
+
+  /// Regex to test the database resource's name against.
+  ///
+  /// An example of a database resource name is a table's name. Other database
+  /// resource names like view names could be included in the future. If empty,
+  /// all database resources match.
+  core.String? databaseResourceNameRegex;
+
+  /// Regex to test the instance name against.
+  ///
+  /// If empty, all instances match.
+  core.String? instanceRegex;
+
+  /// For organizations, if unset, will match all projects.
+  ///
+  /// Has no effect for Data Profile configurations created within a project.
+  core.String? projectIdRegex;
+
+  GooglePrivacyDlpV2DatabaseResourceRegex({
+    this.databaseRegex,
+    this.databaseResourceNameRegex,
+    this.instanceRegex,
+    this.projectIdRegex,
+  });
+
+  GooglePrivacyDlpV2DatabaseResourceRegex.fromJson(core.Map json_)
+      : this(
+          databaseRegex: json_.containsKey('databaseRegex')
+              ? json_['databaseRegex'] as core.String
+              : null,
+          databaseResourceNameRegex:
+              json_.containsKey('databaseResourceNameRegex')
+                  ? json_['databaseResourceNameRegex'] as core.String
+                  : null,
+          instanceRegex: json_.containsKey('instanceRegex')
+              ? json_['instanceRegex'] as core.String
+              : null,
+          projectIdRegex: json_.containsKey('projectIdRegex')
+              ? json_['projectIdRegex'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (databaseRegex != null) 'databaseRegex': databaseRegex!,
+        if (databaseResourceNameRegex != null)
+          'databaseResourceNameRegex': databaseResourceNameRegex!,
+        if (instanceRegex != null) 'instanceRegex': instanceRegex!,
+        if (projectIdRegex != null) 'projectIdRegex': projectIdRegex!,
+      };
+}
+
+/// A collection of regular expressions to determine what database resources to
+/// match against.
+class GooglePrivacyDlpV2DatabaseResourceRegexes {
+  /// A group of regular expression patterns to match against one or more
+  /// database resources.
+  ///
+  /// Maximum of 100 entries. The sum of all regular expression's length can't
+  /// exceed 10 KiB.
+  core.List<GooglePrivacyDlpV2DatabaseResourceRegex>? patterns;
+
+  GooglePrivacyDlpV2DatabaseResourceRegexes({
+    this.patterns,
+  });
+
+  GooglePrivacyDlpV2DatabaseResourceRegexes.fromJson(core.Map json_)
+      : this(
+          patterns: json_.containsKey('patterns')
+              ? (json_['patterns'] as core.List)
+                  .map((value) =>
+                      GooglePrivacyDlpV2DatabaseResourceRegex.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (patterns != null) 'patterns': patterns!,
       };
 }
 
@@ -11042,6 +11854,148 @@ class GooglePrivacyDlpV2DiscoveryBigQueryFilter {
       };
 }
 
+/// Requirements that must be true before a table is profiled for the first
+/// time.
+class GooglePrivacyDlpV2DiscoveryCloudSqlConditions {
+  /// Database engines that should be profiled.
+  ///
+  /// Optional. Defaults to ALL_SUPPORTED_DATABASE_ENGINES if unspecified.
+  ///
+  /// Optional.
+  core.List<core.String>? databaseEngines;
+
+  /// Data profiles will only be generated for the database resource types
+  /// specified in this field.
+  ///
+  /// If not specified, defaults to
+  /// \[DATABASE_RESOURCE_TYPE_ALL_SUPPORTED_TYPES\].
+  core.List<core.String>? types;
+
+  GooglePrivacyDlpV2DiscoveryCloudSqlConditions({
+    this.databaseEngines,
+    this.types,
+  });
+
+  GooglePrivacyDlpV2DiscoveryCloudSqlConditions.fromJson(core.Map json_)
+      : this(
+          databaseEngines: json_.containsKey('databaseEngines')
+              ? (json_['databaseEngines'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          types: json_.containsKey('types')
+              ? (json_['types'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (databaseEngines != null) 'databaseEngines': databaseEngines!,
+        if (types != null) 'types': types!,
+      };
+}
+
+/// Determines what tables will have profiles generated within an organization
+/// or project.
+///
+/// Includes the ability to filter by regular expression patterns on project ID,
+/// location, instance, database, and database resource name.
+class GooglePrivacyDlpV2DiscoveryCloudSqlFilter {
+  /// A specific set of database resources for this filter to apply to.
+  GooglePrivacyDlpV2DatabaseResourceCollection? collection;
+
+  /// The database resource to scan.
+  ///
+  /// Targets including this can only include one target (the target with this
+  /// database resource reference).
+  GooglePrivacyDlpV2DatabaseResourceReference? databaseResourceReference;
+
+  /// Catch-all.
+  ///
+  /// This should always be the last target in the list because anything above
+  /// it will apply first. Should only appear once in a configuration. If none
+  /// is specified, a default one will be added automatically.
+  GooglePrivacyDlpV2AllOtherDatabaseResources? others;
+
+  GooglePrivacyDlpV2DiscoveryCloudSqlFilter({
+    this.collection,
+    this.databaseResourceReference,
+    this.others,
+  });
+
+  GooglePrivacyDlpV2DiscoveryCloudSqlFilter.fromJson(core.Map json_)
+      : this(
+          collection: json_.containsKey('collection')
+              ? GooglePrivacyDlpV2DatabaseResourceCollection.fromJson(
+                  json_['collection'] as core.Map<core.String, core.dynamic>)
+              : null,
+          databaseResourceReference:
+              json_.containsKey('databaseResourceReference')
+                  ? GooglePrivacyDlpV2DatabaseResourceReference.fromJson(
+                      json_['databaseResourceReference']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          others: json_.containsKey('others')
+              ? GooglePrivacyDlpV2AllOtherDatabaseResources.fromJson(
+                  json_['others'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (collection != null) 'collection': collection!,
+        if (databaseResourceReference != null)
+          'databaseResourceReference': databaseResourceReference!,
+        if (others != null) 'others': others!,
+      };
+}
+
+/// How often existing tables should have their profiles refreshed.
+///
+/// New tables are scanned as quickly as possible depending on system capacity.
+class GooglePrivacyDlpV2DiscoveryCloudSqlGenerationCadence {
+  /// Data changes (non-schema changes) in Cloud SQL tables can't trigger
+  /// reprofiling.
+  ///
+  /// If you set this field, profiles are refreshed at this frequency regardless
+  /// of whether the underlying tables have changes. Defaults to never.
+  /// Possible string values are:
+  /// - "UPDATE_FREQUENCY_UNSPECIFIED" : Unspecified.
+  /// - "UPDATE_FREQUENCY_NEVER" : After the data profile is created, it will
+  /// never be updated.
+  /// - "UPDATE_FREQUENCY_DAILY" : The data profile can be updated up to once
+  /// every 24 hours.
+  /// - "UPDATE_FREQUENCY_MONTHLY" : The data profile can be updated up to once
+  /// every 30 days. Default.
+  core.String? refreshFrequency;
+
+  /// When to reprofile if the schema has changed.
+  GooglePrivacyDlpV2SchemaModifiedCadence? schemaModifiedCadence;
+
+  GooglePrivacyDlpV2DiscoveryCloudSqlGenerationCadence({
+    this.refreshFrequency,
+    this.schemaModifiedCadence,
+  });
+
+  GooglePrivacyDlpV2DiscoveryCloudSqlGenerationCadence.fromJson(core.Map json_)
+      : this(
+          refreshFrequency: json_.containsKey('refreshFrequency')
+              ? json_['refreshFrequency'] as core.String
+              : null,
+          schemaModifiedCadence: json_.containsKey('schemaModifiedCadence')
+              ? GooglePrivacyDlpV2SchemaModifiedCadence.fromJson(
+                  json_['schemaModifiedCadence']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (refreshFrequency != null) 'refreshFrequency': refreshFrequency!,
+        if (schemaModifiedCadence != null)
+          'schemaModifiedCadence': schemaModifiedCadence!,
+      };
+}
+
 /// Configuration for discovery to scan resources for profile generation.
 ///
 /// Only one discovery configuration may exist per organization, folder, or
@@ -11326,8 +12280,14 @@ class GooglePrivacyDlpV2DiscoveryTarget {
   /// The first target to match a table will be the one applied.
   GooglePrivacyDlpV2BigQueryDiscoveryTarget? bigQueryTarget;
 
+  /// Cloud SQL target for Discovery.
+  ///
+  /// The first target to match a table will be the one applied.
+  GooglePrivacyDlpV2CloudSqlDiscoveryTarget? cloudSqlTarget;
+
   GooglePrivacyDlpV2DiscoveryTarget({
     this.bigQueryTarget,
+    this.cloudSqlTarget,
   });
 
   GooglePrivacyDlpV2DiscoveryTarget.fromJson(core.Map json_)
@@ -11337,10 +12297,16 @@ class GooglePrivacyDlpV2DiscoveryTarget {
                   json_['bigQueryTarget']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          cloudSqlTarget: json_.containsKey('cloudSqlTarget')
+              ? GooglePrivacyDlpV2CloudSqlDiscoveryTarget.fromJson(
+                  json_['cloudSqlTarget']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bigQueryTarget != null) 'bigQueryTarget': bigQueryTarget!,
+        if (cloudSqlTarget != null) 'cloudSqlTarget': cloudSqlTarget!,
       };
 }
 
@@ -13624,7 +14590,7 @@ class GooglePrivacyDlpV2InspectionRuleSet {
 /// [Essential Contacts](https://cloud.google.com/resource-manager/docs/managing-notification-contacts).
 typedef GooglePrivacyDlpV2JobNotificationEmails = $Empty;
 
-/// Contains a configuration to make dlp api calls on a repeating basis.
+/// Contains a configuration to make api calls on a repeating basis.
 ///
 /// See
 /// https://cloud.google.com/sensitive-data-protection/docs/concepts-job-triggers
@@ -14566,6 +15532,40 @@ class GooglePrivacyDlpV2ListColumnDataProfilesResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (columnDataProfiles != null)
           'columnDataProfiles': columnDataProfiles!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Response message for ListConnections.
+class GooglePrivacyDlpV2ListConnectionsResponse {
+  /// List of connections.
+  core.List<GooglePrivacyDlpV2Connection>? connections;
+
+  /// Token to retrieve the next page of results.
+  ///
+  /// An empty value means there are no more results.
+  core.String? nextPageToken;
+
+  GooglePrivacyDlpV2ListConnectionsResponse({
+    this.connections,
+    this.nextPageToken,
+  });
+
+  GooglePrivacyDlpV2ListConnectionsResponse.fromJson(core.Map json_)
+      : this(
+          connections: json_.containsKey('connections')
+              ? (json_['connections'] as core.List)
+                  .map((value) => GooglePrivacyDlpV2Connection.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (connections != null) 'connections': connections!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -16791,6 +17791,127 @@ class GooglePrivacyDlpV2Schedule {
       };
 }
 
+/// How frequency to modify the profile when the table's schema is modified.
+class GooglePrivacyDlpV2SchemaModifiedCadence {
+  /// Frequency to regenerate data profiles when the schema is modified.
+  ///
+  /// Defaults to monthly.
+  /// Possible string values are:
+  /// - "UPDATE_FREQUENCY_UNSPECIFIED" : Unspecified.
+  /// - "UPDATE_FREQUENCY_NEVER" : After the data profile is created, it will
+  /// never be updated.
+  /// - "UPDATE_FREQUENCY_DAILY" : The data profile can be updated up to once
+  /// every 24 hours.
+  /// - "UPDATE_FREQUENCY_MONTHLY" : The data profile can be updated up to once
+  /// every 30 days. Default.
+  core.String? frequency;
+
+  /// The types of schema modifications to consider.
+  ///
+  /// Defaults to NEW_COLUMNS.
+  core.List<core.String>? types;
+
+  GooglePrivacyDlpV2SchemaModifiedCadence({
+    this.frequency,
+    this.types,
+  });
+
+  GooglePrivacyDlpV2SchemaModifiedCadence.fromJson(core.Map json_)
+      : this(
+          frequency: json_.containsKey('frequency')
+              ? json_['frequency'] as core.String
+              : null,
+          types: json_.containsKey('types')
+              ? (json_['types'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (frequency != null) 'frequency': frequency!,
+        if (types != null) 'types': types!,
+      };
+}
+
+/// Response message for SearchConnections.
+class GooglePrivacyDlpV2SearchConnectionsResponse {
+  /// List of connections that match the search query.
+  ///
+  /// Note that only a subset of the fields will be populated, and only "name"
+  /// is guaranteed to be set. For full details of a Connection, call
+  /// GetConnection with the name.
+  core.List<GooglePrivacyDlpV2Connection>? connections;
+
+  /// Token to retrieve the next page of results.
+  ///
+  /// An empty value means there are no more results.
+  core.String? nextPageToken;
+
+  GooglePrivacyDlpV2SearchConnectionsResponse({
+    this.connections,
+    this.nextPageToken,
+  });
+
+  GooglePrivacyDlpV2SearchConnectionsResponse.fromJson(core.Map json_)
+      : this(
+          connections: json_.containsKey('connections')
+              ? (json_['connections'] as core.List)
+                  .map((value) => GooglePrivacyDlpV2Connection.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (connections != null) 'connections': connections!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// A credential consisting of a username and password, where the password is
+/// stored in a Secret Manager resource.
+///
+/// Note: Secret Manager
+/// [charges apply](https://cloud.google.com/secret-manager/pricing).
+class GooglePrivacyDlpV2SecretManagerCredential {
+  /// The name of the Secret Manager resource that stores the password, in the
+  /// form "projects/project-id/secrets/secret-name/versions/version".
+  ///
+  /// Required.
+  core.String? passwordSecretVersionName;
+
+  /// The username.
+  ///
+  /// Required.
+  core.String? username;
+
+  GooglePrivacyDlpV2SecretManagerCredential({
+    this.passwordSecretVersionName,
+    this.username,
+  });
+
+  GooglePrivacyDlpV2SecretManagerCredential.fromJson(core.Map json_)
+      : this(
+          passwordSecretVersionName:
+              json_.containsKey('passwordSecretVersionName')
+                  ? json_['passwordSecretVersionName'] as core.String
+                  : null,
+          username: json_.containsKey('username')
+              ? json_['username'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (passwordSecretVersionName != null)
+          'passwordSecretVersionName': passwordSecretVersionName!,
+        if (username != null) 'username': username!,
+      };
+}
+
 /// Apply transformation to the selected info_types.
 class GooglePrivacyDlpV2SelectedInfoTypes {
   /// InfoTypes to apply the transformation to.
@@ -18189,6 +19310,40 @@ class GooglePrivacyDlpV2UnwrappedCryptoKey {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (key != null) 'key': key!,
+      };
+}
+
+/// Request message for UpdateConnection.
+class GooglePrivacyDlpV2UpdateConnectionRequest {
+  /// The connection with new values for the relevant fields.
+  ///
+  /// Required.
+  GooglePrivacyDlpV2Connection? connection;
+
+  /// Mask to control which fields get updated.
+  ///
+  /// Optional.
+  core.String? updateMask;
+
+  GooglePrivacyDlpV2UpdateConnectionRequest({
+    this.connection,
+    this.updateMask,
+  });
+
+  GooglePrivacyDlpV2UpdateConnectionRequest.fromJson(core.Map json_)
+      : this(
+          connection: json_.containsKey('connection')
+              ? GooglePrivacyDlpV2Connection.fromJson(
+                  json_['connection'] as core.Map<core.String, core.dynamic>)
+              : null,
+          updateMask: json_.containsKey('updateMask')
+              ? json_['updateMask'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (connection != null) 'connection': connection!,
+        if (updateMask != null) 'updateMask': updateMask!,
       };
 }
 

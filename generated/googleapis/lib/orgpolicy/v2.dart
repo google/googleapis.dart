@@ -1472,6 +1472,10 @@ class GoogleCloudOrgpolicyV2Constraint {
   /// Indicate that enforcement is on for boolean constraints.
   core.String? constraintDefault;
 
+  /// Defines this constraint as being a CustomConstraint.
+  GoogleCloudOrgpolicyV2ConstraintGoogleDefinedCustomConstraint?
+      customConstraint;
+
   /// Detailed description of what this constraint controls as well as how and
   /// where it is enforced.
   ///
@@ -1503,6 +1507,7 @@ class GoogleCloudOrgpolicyV2Constraint {
   GoogleCloudOrgpolicyV2Constraint({
     this.booleanConstraint,
     this.constraintDefault,
+    this.customConstraint,
     this.description,
     this.displayName,
     this.listConstraint,
@@ -1519,6 +1524,11 @@ class GoogleCloudOrgpolicyV2Constraint {
               : null,
           constraintDefault: json_.containsKey('constraintDefault')
               ? json_['constraintDefault'] as core.String
+              : null,
+          customConstraint: json_.containsKey('customConstraint')
+              ? GoogleCloudOrgpolicyV2ConstraintGoogleDefinedCustomConstraint
+                  .fromJson(json_['customConstraint']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           description: json_.containsKey('description')
               ? json_['description'] as core.String
@@ -1540,6 +1550,7 @@ class GoogleCloudOrgpolicyV2Constraint {
   core.Map<core.String, core.dynamic> toJson() => {
         if (booleanConstraint != null) 'booleanConstraint': booleanConstraint!,
         if (constraintDefault != null) 'constraintDefault': constraintDefault!,
+        if (customConstraint != null) 'customConstraint': customConstraint!,
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
         if (listConstraint != null) 'listConstraint': listConstraint!,
@@ -1554,6 +1565,70 @@ class GoogleCloudOrgpolicyV2Constraint {
 /// it is enforced on a VM instance, serial port connections will not be opened
 /// to that instance.
 typedef GoogleCloudOrgpolicyV2ConstraintBooleanConstraint = $Empty;
+
+/// A Google defined custom constraint.
+///
+/// This represents a subset of fields missing from Constraint proto that are
+/// required to describe CustomConstraint
+class GoogleCloudOrgpolicyV2ConstraintGoogleDefinedCustomConstraint {
+  /// Allow or deny type.
+  /// Possible string values are:
+  /// - "ACTION_TYPE_UNSPECIFIED" : Unspecified. Results in an error.
+  /// - "ALLOW" : Allowed action type.
+  /// - "DENY" : Deny action type.
+  core.String? actionType;
+
+  /// Org policy condition/expression.
+  ///
+  /// For example: `resource.instanceName.matches("[production|test]_.*_(\d)+")`
+  /// or, `resource.management.auto_upgrade == true` The max length of the
+  /// condition is 1000 characters.
+  core.String? condition;
+
+  /// All the operations being applied for this constraint.
+  core.List<core.String>? methodTypes;
+
+  /// The resource instance type on which this policy applies.
+  ///
+  /// Format will be of the form : `/` Example: *
+  /// `compute.googleapis.com/Instance`.
+  core.List<core.String>? resourceTypes;
+
+  GoogleCloudOrgpolicyV2ConstraintGoogleDefinedCustomConstraint({
+    this.actionType,
+    this.condition,
+    this.methodTypes,
+    this.resourceTypes,
+  });
+
+  GoogleCloudOrgpolicyV2ConstraintGoogleDefinedCustomConstraint.fromJson(
+      core.Map json_)
+      : this(
+          actionType: json_.containsKey('actionType')
+              ? json_['actionType'] as core.String
+              : null,
+          condition: json_.containsKey('condition')
+              ? json_['condition'] as core.String
+              : null,
+          methodTypes: json_.containsKey('methodTypes')
+              ? (json_['methodTypes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          resourceTypes: json_.containsKey('resourceTypes')
+              ? (json_['resourceTypes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (actionType != null) 'actionType': actionType!,
+        if (condition != null) 'condition': condition!,
+        if (methodTypes != null) 'methodTypes': methodTypes!,
+        if (resourceTypes != null) 'resourceTypes': resourceTypes!,
+      };
+}
 
 /// A constraint that allows or disallows a list of string values, which are
 /// configured by an Organization Policy administrator with a policy.

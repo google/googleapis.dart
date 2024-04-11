@@ -34,6 +34,7 @@
 ///       - [ProjectsInstancesDatabasesDatabaseRolesResource]
 ///       - [ProjectsInstancesDatabasesOperationsResource]
 ///       - [ProjectsInstancesDatabasesSessionsResource]
+///     - [ProjectsInstancesInstancePartitionOperationsResource]
 ///     - [ProjectsInstancesInstancePartitionsResource]
 ///       - [ProjectsInstancesInstancePartitionsOperationsResource]
 ///     - [ProjectsInstancesOperationsResource]
@@ -846,6 +847,9 @@ class ProjectsInstancesResource {
       ProjectsInstancesDatabaseOperationsResource(_requester);
   ProjectsInstancesDatabasesResource get databases =>
       ProjectsInstancesDatabasesResource(_requester);
+  ProjectsInstancesInstancePartitionOperationsResource
+      get instancePartitionOperations =>
+          ProjectsInstancesInstancePartitionOperationsResource(_requester);
   ProjectsInstancesInstancePartitionsResource get instancePartitions =>
       ProjectsInstancesInstancePartitionsResource(_requester);
   ProjectsInstancesOperationsResource get operations =>
@@ -1105,6 +1109,77 @@ class ProjectsInstancesResource {
     );
     return ListInstancesResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Moves the instance to the target instance config.
+  ///
+  /// The returned long-running operation can be used to track the progress of
+  /// moving the instance. `MoveInstance` returns `FAILED_PRECONDITION` if the
+  /// instance meets any of the following criteria: * Has an ongoing move to a
+  /// different instance config * Has backups * Has an ongoing update * Is under
+  /// free trial * Contains any CMEK-enabled databases While the operation is
+  /// pending: * All other attempts to modify the instance, including changes to
+  /// its compute capacity, are rejected. * The following database and backup
+  /// admin operations are rejected: * DatabaseAdmin.CreateDatabase, *
+  /// DatabaseAdmin.UpdateDatabaseDdl (Disabled if default_leader is specified
+  /// in the request.) * DatabaseAdmin.RestoreDatabase *
+  /// DatabaseAdmin.CreateBackup * DatabaseAdmin.CopyBackup * Both the source
+  /// and target instance configs are subject to hourly compute and storage
+  /// charges. * The instance may experience higher read-write latencies and a
+  /// higher transaction abort rate. However, moving an instance does not cause
+  /// any downtime. The returned long-running operation will have a name of the
+  /// format `/operations/` and can be used to track the move instance
+  /// operation. The metadata field type is MoveInstanceMetadata. The response
+  /// field type is Instance, if successful. Cancelling the operation sets its
+  /// metadata's cancel_time. Cancellation is not immediate since it involves
+  /// moving any data previously moved to target instance config back to the
+  /// original instance config. The same operation can be used to track the
+  /// progress of the cancellation. Upon successful completion of the
+  /// cancellation, the operation terminates with CANCELLED status. Upon
+  /// completion(if not cancelled) of the returned operation: * Instance would
+  /// be successfully moved to the target instance config. * You are billed for
+  /// compute and storage in target instance config. Authorization requires
+  /// `spanner.instances.update` permission on the resource instance. For more
+  /// details, please see
+  /// [documentation](https://cloud.google.com/spanner/docs/move-instance).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The instance to move. Values are of the form
+  /// `projects//instances/`.
+  /// Value must have pattern `^projects/\[^/\]+/instances/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> move(
+    MoveInstanceRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':move';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an instance, and begins allocating or releasing resources as
@@ -3839,6 +3914,111 @@ class ProjectsInstancesDatabasesSessionsResource {
   }
 }
 
+class ProjectsInstancesInstancePartitionOperationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsInstancesInstancePartitionOperationsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists instance partition long-running operations in the given instance.
+  ///
+  /// An instance partition operation has a name of the form
+  /// `projects//instances//instancePartitions//operations/`. The long-running
+  /// operation metadata field type `metadata.type_url` describes the type of
+  /// the metadata. Operations returned include those that have
+  /// completed/failed/canceled within the last 7 days, and pending operations.
+  /// Operations returned are ordered by `operation.metadata.value.start_time`
+  /// in descending order starting from the most recently started operation.
+  /// Authorization requires `spanner.instancePartitionOperations.list`
+  /// permission on the resource parent.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent instance of the instance partition
+  /// operations. Values are of the form `projects//instances/`.
+  /// Value must have pattern `^projects/\[^/\]+/instances/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. An expression that filters the list of returned
+  /// operations. A filter expression consists of a field name, a comparison
+  /// operator, and a value for filtering. The value must be a string, a number,
+  /// or a boolean. The comparison operator must be one of: `<`, `>`, `<=`,
+  /// `>=`, `!=`, `=`, or `:`. Colon `:` is the contains operator. Filter rules
+  /// are not case sensitive. The following fields in the Operation are eligible
+  /// for filtering: * `name` - The name of the long-running operation * `done`
+  /// - False if the operation is in progress, else true. * `metadata.@type` -
+  /// the type of metadata. For example, the type string for
+  /// CreateInstancePartitionMetadata is
+  /// `type.googleapis.com/google.spanner.admin.instance.v1.CreateInstancePartitionMetadata`.
+  /// * `metadata.` - any field in metadata.value. `metadata.@type` must be
+  /// specified first, if filtering on metadata fields. * `error` - Error
+  /// associated with the long-running operation. * `response.@type` - the type
+  /// of response. * `response.` - any field in response.value. You can combine
+  /// multiple expressions by enclosing each expression in parentheses. By
+  /// default, expressions are combined with AND logic. However, you can specify
+  /// AND, OR, and NOT logic explicitly. Here are a few examples: * `done:true`
+  /// - The operation is complete. * `(metadata.@type=` \
+  /// `type.googleapis.com/google.spanner.admin.instance.v1.CreateInstancePartitionMetadata)
+  /// AND` \ `(metadata.instance_partition.name:custom-instance-partition) AND`
+  /// \ `(metadata.start_time < \"2021-03-28T14:50:00Z\") AND` \ `(error:*)` -
+  /// Return operations where: * The operation's metadata type is
+  /// CreateInstancePartitionMetadata. * The instance partition name contains
+  /// "custom-instance-partition". * The operation started before
+  /// 2021-03-28T14:50:00Z. * The operation resulted in an error.
+  ///
+  /// [instancePartitionDeadline] - Optional. Deadline used while retrieving
+  /// metadata for instance partition operations. Instance partitions whose
+  /// operation metadata cannot be retrieved within this deadline will be added
+  /// to unreachable in ListInstancePartitionOperationsResponse.
+  ///
+  /// [pageSize] - Optional. Number of operations to be returned in the
+  /// response. If 0 or less, defaults to the server's maximum allowed page
+  /// size.
+  ///
+  /// [pageToken] - Optional. If non-empty, `page_token` should contain a
+  /// next_page_token from a previous ListInstancePartitionOperationsResponse to
+  /// the same `parent` and with the same `filter`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListInstancePartitionOperationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListInstancePartitionOperationsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? instancePartitionDeadline,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (instancePartitionDeadline != null)
+        'instancePartitionDeadline': [instancePartitionDeadline],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/instancePartitionOperations';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListInstancePartitionOperationsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsInstancesInstancePartitionsResource {
   final commons.ApiRequester _requester;
 
@@ -3847,6 +4027,280 @@ class ProjectsInstancesInstancePartitionsResource {
 
   ProjectsInstancesInstancePartitionsResource(commons.ApiRequester client)
       : _requester = client;
+
+  /// Creates an instance partition and begins preparing it to be used.
+  ///
+  /// The returned long-running operation can be used to track the progress of
+  /// preparing the new instance partition. The instance partition name is
+  /// assigned by the caller. If the named instance partition already exists,
+  /// `CreateInstancePartition` returns `ALREADY_EXISTS`. Immediately upon
+  /// completion of this request: * The instance partition is readable via the
+  /// API, with all requested attributes but no allocated resources. Its state
+  /// is `CREATING`. Until completion of the returned operation: * Cancelling
+  /// the operation renders the instance partition immediately unreadable via
+  /// the API. * The instance partition can be deleted. * All other attempts to
+  /// modify the instance partition are rejected. Upon completion of the
+  /// returned operation: * Billing for all successfully-allocated resources
+  /// begins (some types may have lower than the requested levels). * Databases
+  /// can start using this instance partition. * The instance partition's
+  /// allocated resource levels are readable via the API. * The instance
+  /// partition's state becomes `READY`. The returned long-running operation
+  /// will have a name of the format `/operations/` and can be used to track
+  /// creation of the instance partition. The metadata field type is
+  /// CreateInstancePartitionMetadata. The response field type is
+  /// InstancePartition, if successful.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the instance in which to create the
+  /// instance partition. Values are of the form `projects//instances/`.
+  /// Value must have pattern `^projects/\[^/\]+/instances/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    CreateInstancePartitionRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/instancePartitions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes an existing instance partition.
+  ///
+  /// Requires that the instance partition is not used by any database or backup
+  /// and is not the default instance partition of an instance. Authorization
+  /// requires `spanner.instancePartitions.delete` permission on the resource
+  /// name.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the instance partition to be deleted.
+  /// Values are of the form
+  /// `projects/{project}/instances/{instance}/instancePartitions/{instance_partition}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/instancePartitions/\[^/\]+$`.
+  ///
+  /// [etag] - Optional. If not empty, the API only deletes the instance
+  /// partition when the etag provided matches the current status of the
+  /// requested instance partition. Otherwise, deletes the instance partition
+  /// without checking the current status of the requested instance partition.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? etag,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (etag != null) 'etag': [etag],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets information about a particular instance partition.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the requested instance partition. Values
+  /// are of the form
+  /// `projects/{project}/instances/{instance}/instancePartitions/{instance_partition}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/instancePartitions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [InstancePartition].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<InstancePartition> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return InstancePartition.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all instance partitions for the given instance.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The instance whose instance partitions should be
+  /// listed. Values are of the form `projects//instances/`.
+  /// Value must have pattern `^projects/\[^/\]+/instances/\[^/\]+$`.
+  ///
+  /// [instancePartitionDeadline] - Optional. Deadline used while retrieving
+  /// metadata for instance partitions. Instance partitions whose metadata
+  /// cannot be retrieved within this deadline will be added to unreachable in
+  /// ListInstancePartitionsResponse.
+  ///
+  /// [pageSize] - Number of instance partitions to be returned in the response.
+  /// If 0 or less, defaults to the server's maximum allowed page size.
+  ///
+  /// [pageToken] - If non-empty, `page_token` should contain a next_page_token
+  /// from a previous ListInstancePartitionsResponse.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListInstancePartitionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListInstancePartitionsResponse> list(
+    core.String parent, {
+    core.String? instancePartitionDeadline,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (instancePartitionDeadline != null)
+        'instancePartitionDeadline': [instancePartitionDeadline],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/instancePartitions';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListInstancePartitionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates an instance partition, and begins allocating or releasing
+  /// resources as requested.
+  ///
+  /// The returned long-running operation can be used to track the progress of
+  /// updating the instance partition. If the named instance partition does not
+  /// exist, returns `NOT_FOUND`. Immediately upon completion of this request: *
+  /// For resource types for which a decrease in the instance partition's
+  /// allocation has been requested, billing is based on the newly-requested
+  /// level. Until completion of the returned operation: * Cancelling the
+  /// operation sets its metadata's cancel_time, and begins restoring resources
+  /// to their pre-request values. The operation is guaranteed to succeed at
+  /// undoing all resource changes, after which point it terminates with a
+  /// `CANCELLED` status. * All other attempts to modify the instance partition
+  /// are rejected. * Reading the instance partition via the API continues to
+  /// give the pre-request resource levels. Upon completion of the returned
+  /// operation: * Billing begins for all successfully-allocated resources (some
+  /// types may have lower than the requested levels). * All newly-reserved
+  /// resources are available for serving the instance partition's tables. * The
+  /// instance partition's new resource levels are readable via the API. The
+  /// returned long-running operation will have a name of the format
+  /// `/operations/` and can be used to track the instance partition
+  /// modification. The metadata field type is UpdateInstancePartitionMetadata.
+  /// The response field type is InstancePartition, if successful. Authorization
+  /// requires `spanner.instancePartitions.update` permission on the resource
+  /// name.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. A unique identifier for the instance partition. Values
+  /// are of the form `projects//instances//instancePartitions/a-z*[a-z0-9]`.
+  /// The final segment of the name must be between 2 and 64 characters in
+  /// length. An instance partition's name cannot be changed after the instance
+  /// partition is created.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/instancePartitions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    UpdateInstancePartitionRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsInstancesInstancePartitionsOperationsResource {
@@ -5496,6 +5950,47 @@ class CreateInstanceConfigRequest {
       };
 }
 
+/// The request for CreateInstancePartition.
+class CreateInstancePartitionRequest {
+  /// The instance partition to create.
+  ///
+  /// The instance_partition.name may be omitted, but if specified must be
+  /// `/instancePartitions/`.
+  ///
+  /// Required.
+  InstancePartition? instancePartition;
+
+  /// The ID of the instance partition to create.
+  ///
+  /// Valid identifiers are of the form `a-z*[a-z0-9]` and must be between 2 and
+  /// 64 characters in length.
+  ///
+  /// Required.
+  core.String? instancePartitionId;
+
+  CreateInstancePartitionRequest({
+    this.instancePartition,
+    this.instancePartitionId,
+  });
+
+  CreateInstancePartitionRequest.fromJson(core.Map json_)
+      : this(
+          instancePartition: json_.containsKey('instancePartition')
+              ? InstancePartition.fromJson(json_['instancePartition']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          instancePartitionId: json_.containsKey('instancePartitionId')
+              ? json_['instancePartitionId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (instancePartition != null) 'instancePartition': instancePartition!,
+        if (instancePartitionId != null)
+          'instancePartitionId': instancePartitionId!,
+      };
+}
+
 /// The request for CreateInstance.
 class CreateInstanceRequest {
   /// The instance to create.
@@ -7120,6 +7615,168 @@ class InstanceConfig {
       };
 }
 
+/// An isolated set of Cloud Spanner resources that databases can define
+/// placements on.
+class InstancePartition {
+  /// The name of the instance partition's configuration.
+  ///
+  /// Values are of the form `projects//instanceConfigs/`. See also
+  /// InstanceConfig and ListInstanceConfigs.
+  ///
+  /// Required.
+  core.String? config;
+
+  /// The time at which the instance partition was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The descriptive name for this instance partition as it appears in UIs.
+  ///
+  /// Must be unique per project and between 4 and 30 characters in length.
+  ///
+  /// Required.
+  core.String? displayName;
+
+  /// Used for optimistic concurrency control as a way to help prevent
+  /// simultaneous updates of a instance partition from overwriting each other.
+  ///
+  /// It is strongly suggested that systems make use of the etag in the
+  /// read-modify-write cycle to perform instance partition updates in order to
+  /// avoid race conditions: An etag is returned in the response which contains
+  /// instance partitions, and systems are expected to put that etag in the
+  /// request to update instance partitions to ensure that their change will be
+  /// applied to the same version of the instance partition. If no etag is
+  /// provided in the call to update instance partition, then the existing
+  /// instance partition is overwritten blindly.
+  core.String? etag;
+
+  /// A unique identifier for the instance partition.
+  ///
+  /// Values are of the form
+  /// `projects//instances//instancePartitions/a-z*[a-z0-9]`. The final segment
+  /// of the name must be between 2 and 64 characters in length. An instance
+  /// partition's name cannot be changed after the instance partition is
+  /// created.
+  ///
+  /// Required.
+  core.String? name;
+
+  /// The number of nodes allocated to this instance partition.
+  ///
+  /// Users can set the node_count field to specify the target number of nodes
+  /// allocated to the instance partition. This may be zero in API responses for
+  /// instance partitions that are not yet in state `READY`.
+  core.int? nodeCount;
+
+  /// The number of processing units allocated to this instance partition.
+  ///
+  /// Users can set the processing_units field to specify the target number of
+  /// processing units allocated to the instance partition. This may be zero in
+  /// API responses for instance partitions that are not yet in state `READY`.
+  core.int? processingUnits;
+
+  /// The names of the backups that reference this instance partition.
+  ///
+  /// Referencing backups should share the parent instance. The existence of any
+  /// referencing backup prevents the instance partition from being deleted.
+  ///
+  /// Output only.
+  core.List<core.String>? referencingBackups;
+
+  /// The names of the databases that reference this instance partition.
+  ///
+  /// Referencing databases should share the parent instance. The existence of
+  /// any referencing database prevents the instance partition from being
+  /// deleted.
+  ///
+  /// Output only.
+  core.List<core.String>? referencingDatabases;
+
+  /// The current instance partition state.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Not specified.
+  /// - "CREATING" : The instance partition is still being created. Resources
+  /// may not be available yet, and operations such as creating placements using
+  /// this instance partition may not work.
+  /// - "READY" : The instance partition is fully created and ready to do work
+  /// such as creating placements and using in databases.
+  core.String? state;
+
+  /// The time at which the instance partition was most recently updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  InstancePartition({
+    this.config,
+    this.createTime,
+    this.displayName,
+    this.etag,
+    this.name,
+    this.nodeCount,
+    this.processingUnits,
+    this.referencingBackups,
+    this.referencingDatabases,
+    this.state,
+    this.updateTime,
+  });
+
+  InstancePartition.fromJson(core.Map json_)
+      : this(
+          config: json_.containsKey('config')
+              ? json_['config'] as core.String
+              : null,
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          nodeCount: json_.containsKey('nodeCount')
+              ? json_['nodeCount'] as core.int
+              : null,
+          processingUnits: json_.containsKey('processingUnits')
+              ? json_['processingUnits'] as core.int
+              : null,
+          referencingBackups: json_.containsKey('referencingBackups')
+              ? (json_['referencingBackups'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          referencingDatabases: json_.containsKey('referencingDatabases')
+              ? (json_['referencingDatabases'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (config != null) 'config': config!,
+        if (createTime != null) 'createTime': createTime!,
+        if (displayName != null) 'displayName': displayName!,
+        if (etag != null) 'etag': etag!,
+        if (name != null) 'name': name!,
+        if (nodeCount != null) 'nodeCount': nodeCount!,
+        if (processingUnits != null) 'processingUnits': processingUnits!,
+        if (referencingBackups != null)
+          'referencingBackups': referencingBackups!,
+        if (referencingDatabases != null)
+          'referencingDatabases': referencingDatabases!,
+        if (state != null) 'state': state!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
 /// KeyRange represents a range of rows in a table or index.
 ///
 /// A range has a start key and an end key. These keys can be open or closed,
@@ -7656,6 +8313,106 @@ class ListInstanceConfigsResponse {
       };
 }
 
+/// The response for ListInstancePartitionOperations.
+class ListInstancePartitionOperationsResponse {
+  /// `next_page_token` can be sent in a subsequent
+  /// ListInstancePartitionOperations call to fetch more of the matching
+  /// metadata.
+  core.String? nextPageToken;
+
+  /// The list of matching instance partition long-running operations.
+  ///
+  /// Each operation's name will be prefixed by the instance partition's name.
+  /// The operation's metadata field type `metadata.type_url` describes the type
+  /// of the metadata.
+  core.List<Operation>? operations;
+
+  /// The list of unreachable instance partitions.
+  ///
+  /// It includes the names of instance partitions whose operation metadata
+  /// could not be retrieved within instance_partition_deadline.
+  core.List<core.String>? unreachableInstancePartitions;
+
+  ListInstancePartitionOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+    this.unreachableInstancePartitions,
+  });
+
+  ListInstancePartitionOperationsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          operations: json_.containsKey('operations')
+              ? (json_['operations'] as core.List)
+                  .map((value) => Operation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          unreachableInstancePartitions:
+              json_.containsKey('unreachableInstancePartitions')
+                  ? (json_['unreachableInstancePartitions'] as core.List)
+                      .map((value) => value as core.String)
+                      .toList()
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (operations != null) 'operations': operations!,
+        if (unreachableInstancePartitions != null)
+          'unreachableInstancePartitions': unreachableInstancePartitions!,
+      };
+}
+
+/// The response for ListInstancePartitions.
+class ListInstancePartitionsResponse {
+  /// The list of requested instancePartitions.
+  core.List<InstancePartition>? instancePartitions;
+
+  /// `next_page_token` can be sent in a subsequent ListInstancePartitions call
+  /// to fetch more of the matching instance partitions.
+  core.String? nextPageToken;
+
+  /// The list of unreachable instance partitions.
+  ///
+  /// It includes the names of instance partitions whose metadata could not be
+  /// retrieved within instance_partition_deadline.
+  core.List<core.String>? unreachable;
+
+  ListInstancePartitionsResponse({
+    this.instancePartitions,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListInstancePartitionsResponse.fromJson(core.Map json_)
+      : this(
+          instancePartitions: json_.containsKey('instancePartitions')
+              ? (json_['instancePartitions'] as core.List)
+                  .map((value) => InstancePartition.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (instancePartitions != null)
+          'instancePartitions': instancePartitions!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
 /// The response for ListInstances.
 class ListInstancesResponse {
   /// The list of requested instances.
@@ -8037,6 +8794,31 @@ class MetricMatrixRow {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cols != null) 'cols': cols!,
+      };
+}
+
+/// The request for MoveInstance.
+class MoveInstanceRequest {
+  /// The target instance config for the instance to move.
+  ///
+  /// Values are of the form `projects//instanceConfigs/`.
+  ///
+  /// Required.
+  core.String? targetConfig;
+
+  MoveInstanceRequest({
+    this.targetConfig,
+  });
+
+  MoveInstanceRequest.fromJson(core.Map json_)
+      : this(
+          targetConfig: json_.containsKey('targetConfig')
+              ? json_['targetConfig'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (targetConfig != null) 'targetConfig': targetConfig!,
       };
 }
 
@@ -10783,6 +11565,47 @@ class UpdateInstanceConfigRequest {
         if (instanceConfig != null) 'instanceConfig': instanceConfig!,
         if (updateMask != null) 'updateMask': updateMask!,
         if (validateOnly != null) 'validateOnly': validateOnly!,
+      };
+}
+
+/// The request for UpdateInstancePartition.
+class UpdateInstancePartitionRequest {
+  /// A mask specifying which fields in InstancePartition should be updated.
+  ///
+  /// The field mask must always be specified; this prevents any future fields
+  /// in InstancePartition from being erased accidentally by clients that do not
+  /// know about them.
+  ///
+  /// Required.
+  core.String? fieldMask;
+
+  /// The instance partition to update, which must always include the instance
+  /// partition name.
+  ///
+  /// Otherwise, only fields mentioned in field_mask need be included.
+  ///
+  /// Required.
+  InstancePartition? instancePartition;
+
+  UpdateInstancePartitionRequest({
+    this.fieldMask,
+    this.instancePartition,
+  });
+
+  UpdateInstancePartitionRequest.fromJson(core.Map json_)
+      : this(
+          fieldMask: json_.containsKey('fieldMask')
+              ? json_['fieldMask'] as core.String
+              : null,
+          instancePartition: json_.containsKey('instancePartition')
+              ? InstancePartition.fromJson(json_['instancePartition']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fieldMask != null) 'fieldMask': fieldMask!,
+        if (instancePartition != null) 'instancePartition': instancePartition!,
       };
 }
 

@@ -2414,14 +2414,15 @@ class ProjectsLocationsTemplatesResource {
   /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
   /// to which to direct the request.
   ///
-  /// [dynamicTemplate_gcsPath] - Path to dynamic template spec file on Cloud
-  /// Storage. The file must be a Json serialized DynamicTemplateFieSpec object.
+  /// [dynamicTemplate_gcsPath] - Path to the dynamic template specification
+  /// file on Cloud Storage. The file must be a JSON serialized
+  /// `DynamicTemplateFileSpec` object.
   ///
   /// [dynamicTemplate_stagingLocation] - Cloud Storage path for staging
   /// dependencies. Must be a valid Cloud Storage URL, beginning with `gs://`.
   ///
-  /// [gcsPath] - A Cloud Storage path to the template from which to create the
-  /// job. Must be valid Cloud Storage URL, beginning with 'gs://'.
+  /// [gcsPath] - A Cloud Storage path to the template to use to create the job.
+  /// Must be valid Cloud Storage URL, beginning with `gs://`.
   ///
   /// [validateOnly] - If true, the request is validated but not actually
   /// executed. Defaults to false.
@@ -2683,14 +2684,15 @@ class ProjectsTemplatesResource {
   /// [projectId] - Required. The ID of the Cloud Platform project that the job
   /// belongs to.
   ///
-  /// [dynamicTemplate_gcsPath] - Path to dynamic template spec file on Cloud
-  /// Storage. The file must be a Json serialized DynamicTemplateFieSpec object.
+  /// [dynamicTemplate_gcsPath] - Path to the dynamic template specification
+  /// file on Cloud Storage. The file must be a JSON serialized
+  /// `DynamicTemplateFileSpec` object.
   ///
   /// [dynamicTemplate_stagingLocation] - Cloud Storage path for staging
   /// dependencies. Must be a valid Cloud Storage URL, beginning with `gs://`.
   ///
-  /// [gcsPath] - A Cloud Storage path to the template from which to create the
-  /// job. Must be valid Cloud Storage URL, beginning with 'gs://'.
+  /// [gcsPath] - A Cloud Storage path to the template to use to create the job.
+  /// Must be valid Cloud Storage URL, beginning with `gs://`.
   ///
   /// [location] - The
   /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
@@ -4615,7 +4617,8 @@ class Environment {
   /// Reduces cost and latency but might result in duplicate messages committed
   /// to storage. Designed to run simple mapping streaming ETL jobs at the
   /// lowest cost. For example, Change Data Capture (CDC) to BigQuery is a
-  /// canonical use case.
+  /// canonical use case. For more information, see
+  /// [Set the pipeline streaming mode](https://cloud.google.com/dataflow/docs/guides/streaming-modes).
   ///
   /// Optional.
   /// Possible string values are:
@@ -5175,7 +5178,8 @@ class FlexTemplateRuntimeEnvironment {
   /// Reduces cost and latency but might result in duplicate messages committed
   /// to storage. Designed to run simple mapping streaming ETL jobs at the
   /// lowest cost. For example, Change Data Capture (CDC) to BigQuery is a
-  /// canonical use case.
+  /// canonical use case. For more information, see
+  /// [Set the pipeline streaming mode](https://cloud.google.com/dataflow/docs/guides/streaming-modes).
   ///
   /// Optional.
   /// Possible string values are:
@@ -9004,6 +9008,8 @@ class ResourceUtilizationReport {
 typedef ResourceUtilizationReportResponse = $Empty;
 
 /// The environment values to set at runtime.
+///
+/// LINT.IfChange
 class RuntimeEnvironment {
   /// Additional experiment flags for the job, specified with the
   /// `--experiments` option.
@@ -9094,7 +9100,8 @@ class RuntimeEnvironment {
   /// Reduces cost and latency but might result in duplicate messages committed
   /// to storage. Designed to run simple mapping streaming ETL jobs at the
   /// lowest cost. For example, Change Data Capture (CDC) to BigQuery is a
-  /// canonical use case.
+  /// canonical use case. For more information, see
+  /// [Set the pipeline streaming mode](https://cloud.google.com/dataflow/docs/guides/streaming-modes).
   ///
   /// Optional.
   /// Possible string values are:
@@ -9321,6 +9328,9 @@ class RuntimeUpdatableParams {
   /// Target worker utilization, compared against the aggregate utilization of
   /// the worker pool by autoscaler, to determine upscaling and downscaling when
   /// absent other constraints such as backlog.
+  ///
+  /// For more information, see
+  /// [Update an existing pipeline](https://cloud.google.com/dataflow/docs/guides/updating-a-pipeline).
   core.double? workerUtilizationHint;
 
   RuntimeUpdatableParams({

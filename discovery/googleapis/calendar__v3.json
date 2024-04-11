@@ -36,7 +36,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240223",
+    "revision": "20240405",
     "rootUrl": "https://www.googleapis.com/",
     "servicePath": "calendar/v3/",
     "title": "Calendar API",
@@ -1093,7 +1093,7 @@
                             "type": "string"
                         },
                         "eventTypes": {
-                            "description": "Event types to return. Optional. This parameter can be repeated multiple times to return events of different types. The default is [\"default\", \"focusTime\", \"outOfOffice\"].",
+                            "description": "Event types to return. Optional. This parameter can be repeated multiple times to return events of different types. If unset, returns all event types.",
                             "enum": [
                                 "default",
                                 "focusTime",
@@ -1508,7 +1508,7 @@
                             "type": "string"
                         },
                         "eventTypes": {
-                            "description": "Event types to return. Optional. This parameter can be repeated multiple times to return events of different types. The default is [\"default\", \"focusTime\", \"outOfOffice\"].",
+                            "description": "Event types to return. Optional. This parameter can be repeated multiple times to return events of different types. If unset, returns all event types.",
                             "enum": [
                                 "default",
                                 "focusTime",

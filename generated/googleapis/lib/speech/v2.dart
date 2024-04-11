@@ -2471,6 +2471,12 @@ class RecognitionConfig {
   /// Optional.
   TranscriptNormalization? transcriptNormalization;
 
+  /// Optional configuration used to automatically run translation on the given
+  /// audio to the desired language for supported models.
+  ///
+  /// Optional.
+  TranslationConfig? translationConfig;
+
   RecognitionConfig({
     this.adaptation,
     this.autoDecodingConfig,
@@ -2479,6 +2485,7 @@ class RecognitionConfig {
     this.languageCodes,
     this.model,
     this.transcriptNormalization,
+    this.translationConfig,
   });
 
   RecognitionConfig.fromJson(core.Map json_)
@@ -2511,6 +2518,10 @@ class RecognitionConfig {
                   json_['transcriptNormalization']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          translationConfig: json_.containsKey('translationConfig')
+              ? TranslationConfig.fromJson(json_['translationConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2524,6 +2535,7 @@ class RecognitionConfig {
         if (model != null) 'model': model!,
         if (transcriptNormalization != null)
           'transcriptNormalization': transcriptNormalization!,
+        if (translationConfig != null) 'translationConfig': translationConfig!,
       };
 }
 
@@ -3315,6 +3327,31 @@ class TranscriptNormalization {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (entries != null) 'entries': entries!,
+      };
+}
+
+/// Translation configuration.
+///
+/// Use to translate the given audio into text for the desired language.
+class TranslationConfig {
+  /// The language code to translate to.
+  ///
+  /// Required.
+  core.String? targetLanguage;
+
+  TranslationConfig({
+    this.targetLanguage,
+  });
+
+  TranslationConfig.fromJson(core.Map json_)
+      : this(
+          targetLanguage: json_.containsKey('targetLanguage')
+              ? json_['targetLanguage'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (targetLanguage != null) 'targetLanguage': targetLanguage!,
       };
 }
 

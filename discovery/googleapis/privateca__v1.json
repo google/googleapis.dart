@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240228",
+    "revision": "20240320",
     "rootUrl": "https://privateca.googleapis.com/",
     "servicePath": "",
     "title": "Certificate Authority API",
@@ -2061,7 +2061,7 @@
             "id": "CertificateConfigKeyId",
             "properties": {
                 "keyId": {
-                    "description": "Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1 hash of the public key.",
+                    "description": "Required. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1 hash of the public key.",
                     "type": "string"
                 }
             },

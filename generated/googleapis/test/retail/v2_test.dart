@@ -4878,6 +4878,7 @@ api.GoogleCloudRetailV2ServingConfig buildGoogleCloudRetailV2ServingConfig() {
     o.facetControlIds = buildUnnamed93();
     o.filterControlIds = buildUnnamed94();
     o.ignoreControlIds = buildUnnamed95();
+    o.ignoreRecsDenylist = true;
     o.modelId = 'foo';
     o.name = 'foo';
     o.onewaySynonymsControlIds = buildUnnamed96();
@@ -4919,6 +4920,7 @@ void checkGoogleCloudRetailV2ServingConfig(
     checkUnnamed93(o.facetControlIds!);
     checkUnnamed94(o.filterControlIds!);
     checkUnnamed95(o.ignoreControlIds!);
+    unittest.expect(o.ignoreRecsDenylist!, unittest.isTrue);
     unittest.expect(
       o.modelId!,
       unittest.equals('foo'),

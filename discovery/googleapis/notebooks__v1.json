@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20231227",
+    "revision": "20240320",
     "rootUrl": "https://notebooks.googleapis.com/",
     "servicePath": "",
     "title": "Notebooks API",
@@ -2033,6 +2033,7 @@
                         "NVIDIA_TESLA_T4",
                         "NVIDIA_TESLA_A100",
                         "NVIDIA_L4",
+                        "NVIDIA_A100_80GB",
                         "NVIDIA_TESLA_T4_VWS",
                         "NVIDIA_TESLA_P100_VWS",
                         "NVIDIA_TESLA_P4_VWS",
@@ -2048,6 +2049,7 @@
                         "Accelerator type is Nvidia Tesla T4.",
                         "Accelerator type is Nvidia Tesla A100.",
                         "Accelerator type is Nvidia Tesla L4.",
+                        "Accelerator type is Nvidia Tesla A100 80GB.",
                         "Accelerator type is NVIDIA Tesla T4 Virtual Workstations.",
                         "Accelerator type is NVIDIA Tesla P100 Virtual Workstations.",
                         "Accelerator type is NVIDIA Tesla P4 Virtual Workstations.",
@@ -2075,7 +2077,7 @@
                     "type": "array"
                 },
                 "role": {
-                    "description": "Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.",
+                    "description": "Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).",
                     "type": "string"
                 }
             },
@@ -2709,7 +2711,7 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "Custom metadata to apply to this instance. For example, to specify a Cloud Storage bucket for automatic backup, you can use the `gcs-data-bucket` metadata tag. Format: `\"--metadata=gcs-data-bucket=``BUCKET''\"`.",
+                    "description": "Custom metadata to apply to this instance. For example, to specify a Cloud Storage bucket for automatic backup, you can use the `gcs-data-bucket` metadata tag. Format: `\"--metadata=gcs-data-bucket=BUCKET\"`.",
                     "type": "object"
                 },
                 "migrated": {
@@ -4054,6 +4056,7 @@
                         "NVIDIA_TESLA_T4",
                         "NVIDIA_TESLA_A100",
                         "NVIDIA_L4",
+                        "NVIDIA_A100_80GB",
                         "NVIDIA_TESLA_T4_VWS",
                         "NVIDIA_TESLA_P100_VWS",
                         "NVIDIA_TESLA_P4_VWS",
@@ -4069,6 +4072,7 @@
                         "Accelerator type is Nvidia Tesla T4.",
                         "Accelerator type is Nvidia Tesla A100.",
                         "Accelerator type is Nvidia Tesla L4.",
+                        "Accelerator type is Nvidia Tesla A100 80GB.",
                         "Accelerator type is NVIDIA Tesla T4 Virtual Workstations.",
                         "Accelerator type is NVIDIA Tesla P100 Virtual Workstations.",
                         "Accelerator type is NVIDIA Tesla P4 Virtual Workstations.",

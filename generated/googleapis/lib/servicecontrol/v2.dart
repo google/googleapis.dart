@@ -649,7 +649,30 @@ class ReportRequest {
 }
 
 /// Response message for the Report method.
-typedef ReportResponse = $Empty;
+class ReportResponse {
+  /// The extension field to store serialized OTel responses.
+  ///
+  /// e.g. ExportLogsServiceResponse, ExportMetricsServiceResponse.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? extensions;
+
+  ReportResponse({
+    this.extensions,
+  });
+
+  ReportResponse.fromJson(core.Map json_)
+      : this(
+          extensions: json_.containsKey('extensions')
+              ? json_['extensions'] as core.Map<core.String, core.dynamic>
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (extensions != null) 'extensions': extensions!,
+      };
+}
 
 /// This message defines attributes for an HTTP request.
 ///

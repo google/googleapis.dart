@@ -28,6 +28,7 @@
 ///       - [ProjectsInstancesClustersBackupsResource]
 ///       - [ProjectsInstancesClustersHotTabletsResource]
 ///     - [ProjectsInstancesTablesResource]
+///       - [ProjectsInstancesTablesAuthorizedViewsResource]
 ///   - [ProjectsLocationsResource]
 library;
 
@@ -1708,6 +1709,9 @@ class ProjectsInstancesClustersHotTabletsResource {
 class ProjectsInstancesTablesResource {
   final commons.ApiRequester _requester;
 
+  ProjectsInstancesTablesAuthorizedViewsResource get authorizedViews =>
+      ProjectsInstancesTablesAuthorizedViewsResource(_requester);
+
   ProjectsInstancesTablesResource(commons.ApiRequester client)
       : _requester = client;
 
@@ -2394,6 +2398,421 @@ class ProjectsInstancesTablesResource {
   }
 }
 
+class ProjectsInstancesTablesAuthorizedViewsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsInstancesTablesAuthorizedViewsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new AuthorizedView in a table.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. This is the name of the table the AuthorizedView
+  /// belongs to. Values are of the form
+  /// `projects/{project}/instances/{instance}/tables/{table}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/tables/\[^/\]+$`.
+  ///
+  /// [authorizedViewId] - Required. The id of the AuthorizedView to create.
+  /// This AuthorizedView must not already exist. The `authorized_view_id`
+  /// appended to `parent` forms the full AuthorizedView name of the form
+  /// `projects/{project}/instances/{instance}/tables/{table}/authorizedView/{authorized_view}`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    AuthorizedView request,
+    core.String parent, {
+    core.String? authorizedViewId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (authorizedViewId != null) 'authorizedViewId': [authorizedViewId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/authorizedViews';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Permanently deletes a specified AuthorizedView.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The unique name of the AuthorizedView to be deleted.
+  /// Values are of the form
+  /// `projects/{project}/instances/{instance}/tables/{table}/authorizedViews/{authorized_view}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/tables/\[^/\]+/authorizedViews/\[^/\]+$`.
+  ///
+  /// [etag] - Optional. The current etag of the AuthorizedView. If an etag is
+  /// provided and does not match the current etag of the AuthorizedView,
+  /// deletion will be blocked and an ABORTED error will be returned.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? etag,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (etag != null) 'etag': [etag],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets information from a specified AuthorizedView.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The unique name of the requested AuthorizedView. Values
+  /// are of the form
+  /// `projects/{project}/instances/{instance}/tables/{table}/authorizedViews/{authorized_view}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/tables/\[^/\]+/authorizedViews/\[^/\]+$`.
+  ///
+  /// [view] - Optional. The resource_view to be applied to the returned
+  /// AuthorizedView's fields. Default to BASIC.
+  /// Possible string values are:
+  /// - "RESPONSE_VIEW_UNSPECIFIED" : Uses the default view for each method as
+  /// documented in the request.
+  /// - "NAME_ONLY" : Only populates `name`.
+  /// - "BASIC" : Only populates the AuthorizedView's basic metadata. This
+  /// includes: name, deletion_protection, etag.
+  /// - "FULL" : Populates every fields.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AuthorizedView].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AuthorizedView> get(
+    core.String name, {
+    core.String? view,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (view != null) 'view': [view],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AuthorizedView.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the access control policy for a Table or Backup resource.
+  ///
+  /// Returns an empty policy if the resource exists but does not have a policy
+  /// set.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/tables/\[^/\]+/authorizedViews/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(
+    GetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all AuthorizedViews from a specific table.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The unique name of the table for which
+  /// AuthorizedViews should be listed. Values are of the form
+  /// `projects/{project}/instances/{instance}/tables/{table}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/tables/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. Maximum number of results per page. A page_size of
+  /// zero lets the server choose the number of items to return. A page_size
+  /// which is strictly positive will return at most that many items. A negative
+  /// page_size will cause an error. Following the first request, subsequent
+  /// paginated calls are not required to pass a page_size. If a page_size is
+  /// set in subsequent calls, it must match the page_size given in the first
+  /// request.
+  ///
+  /// [pageToken] - Optional. The value of `next_page_token` returned by a
+  /// previous call.
+  ///
+  /// [view] - Optional. The resource_view to be applied to the returned views'
+  /// fields. Default to NAME_ONLY.
+  /// Possible string values are:
+  /// - "RESPONSE_VIEW_UNSPECIFIED" : Uses the default view for each method as
+  /// documented in the request.
+  /// - "NAME_ONLY" : Only populates `name`.
+  /// - "BASIC" : Only populates the AuthorizedView's basic metadata. This
+  /// includes: name, deletion_protection, etag.
+  /// - "FULL" : Populates every fields.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAuthorizedViewsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAuthorizedViewsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? view,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (view != null) 'view': [view],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/authorizedViews';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListAuthorizedViewsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates an AuthorizedView in a table.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The name of this AuthorizedView. Values are of the
+  /// form
+  /// `projects/{project}/instances/{instance}/tables/{table}/authorizedViews/{authorized_view}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/tables/\[^/\]+/authorizedViews/\[^/\]+$`.
+  ///
+  /// [ignoreWarnings] - Optional. If true, ignore the safety checks when
+  /// updating the AuthorizedView.
+  ///
+  /// [updateMask] - Optional. The list of fields to update. A mask specifying
+  /// which fields in the AuthorizedView resource should be updated. This mask
+  /// is relative to the AuthorizedView resource, not to the request message. A
+  /// field will be overwritten if it is in the mask. If empty, all fields set
+  /// in the request will be overwritten. A special value `*` means to overwrite
+  /// all fields (including fields not set in the request).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    AuthorizedView request,
+    core.String name, {
+    core.bool? ignoreWarnings,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (ignoreWarnings != null) 'ignoreWarnings': ['${ignoreWarnings}'],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Sets the access control policy on a Table or Backup resource.
+  ///
+  /// Replaces any existing policy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/tables/\[^/\]+/authorizedViews/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(
+    SetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns permissions that the caller has on the specified Table or Backup
+  /// resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/tables/\[^/\]+/authorizedViews/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestIamPermissionsResponse> testIamPermissions(
+    TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v2/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return TestIamPermissionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
@@ -2455,6 +2874,10 @@ class ProjectsLocationsResource {
 /// A configuration object describing how Cloud Bigtable should treat traffic
 /// from a particular end user application.
 class AppProfile {
+  /// Specifies that this app profile is intended for read-only usage via the
+  /// Data Boost feature.
+  DataBoostIsolationReadOnly? dataBoostIsolationReadOnly;
+
   /// Long form description of the use case for this AppProfile.
   core.String? description;
 
@@ -2501,6 +2924,7 @@ class AppProfile {
   StandardIsolation? standardIsolation;
 
   AppProfile({
+    this.dataBoostIsolationReadOnly,
     this.description,
     this.etag,
     this.multiClusterRoutingUseAny,
@@ -2512,6 +2936,12 @@ class AppProfile {
 
   AppProfile.fromJson(core.Map json_)
       : this(
+          dataBoostIsolationReadOnly:
+              json_.containsKey('dataBoostIsolationReadOnly')
+                  ? DataBoostIsolationReadOnly.fromJson(
+                      json_['dataBoostIsolationReadOnly']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           description: json_.containsKey('description')
               ? json_['description'] as core.String
               : null,
@@ -2537,6 +2967,8 @@ class AppProfile {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (dataBoostIsolationReadOnly != null)
+          'dataBoostIsolationReadOnly': dataBoostIsolationReadOnly!,
         if (description != null) 'description': description!,
         if (etag != null) 'etag': etag!,
         if (multiClusterRoutingUseAny != null)
@@ -2607,6 +3039,58 @@ class AuditConfig {
 /// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
 typedef AuditLogConfig = $AuditLogConfig;
+
+/// Placeholder for admin API work while we work out the internals.
+class AuthorizedView {
+  /// Set to true to make the AuthorizedView protected against deletion.
+  ///
+  /// The parent Table and containing Instance cannot be deleted if an
+  /// AuthorizedView has this bit set.
+  core.bool? deletionProtection;
+
+  /// The etag for this AuthorizedView.
+  ///
+  /// If this is provided on update, it must match the server's etag. The server
+  /// returns ABORTED error on a mismatched etag.
+  core.String? etag;
+
+  /// Identifier.
+  ///
+  /// The name of this AuthorizedView. Values are of the form
+  /// `projects/{project}/instances/{instance}/tables/{table}/authorizedViews/{authorized_view}`
+  core.String? name;
+
+  /// An AuthorizedView permitting access to an explicit subset of a Table.
+  GoogleBigtableAdminV2AuthorizedViewSubsetView? subsetView;
+
+  AuthorizedView({
+    this.deletionProtection,
+    this.etag,
+    this.name,
+    this.subsetView,
+  });
+
+  AuthorizedView.fromJson(core.Map json_)
+      : this(
+          deletionProtection: json_.containsKey('deletionProtection')
+              ? json_['deletionProtection'] as core.bool
+              : null,
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          subsetView: json_.containsKey('subsetView')
+              ? GoogleBigtableAdminV2AuthorizedViewSubsetView.fromJson(
+                  json_['subsetView'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deletionProtection != null)
+          'deletionProtection': deletionProtection!,
+        if (etag != null) 'etag': etag!,
+        if (name != null) 'name': name!,
+        if (subsetView != null) 'subsetView': subsetView!,
+      };
+}
 
 /// Defines an automated backup policy for a table
 class AutomatedBackupPolicy {
@@ -3059,8 +3543,20 @@ class CheckConsistencyRequest {
   /// Required.
   core.String? consistencyToken;
 
+  /// Checks that reads using an app profile with `DataBoostIsolationReadOnly`
+  /// can see all writes committed before the token was created, but only if the
+  /// read and write target the same cluster.
+  DataBoostReadLocalWrites? dataBoostReadLocalWrites;
+
+  /// Checks that reads using an app profile with `StandardIsolation` can see
+  /// all writes committed before the token was created, even if the read and
+  /// write target different clusters.
+  StandardReadRemoteWrites? standardReadRemoteWrites;
+
   CheckConsistencyRequest({
     this.consistencyToken,
+    this.dataBoostReadLocalWrites,
+    this.standardReadRemoteWrites,
   });
 
   CheckConsistencyRequest.fromJson(core.Map json_)
@@ -3068,10 +3564,26 @@ class CheckConsistencyRequest {
           consistencyToken: json_.containsKey('consistencyToken')
               ? json_['consistencyToken'] as core.String
               : null,
+          dataBoostReadLocalWrites:
+              json_.containsKey('dataBoostReadLocalWrites')
+                  ? DataBoostReadLocalWrites.fromJson(
+                      json_['dataBoostReadLocalWrites']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          standardReadRemoteWrites:
+              json_.containsKey('standardReadRemoteWrites')
+                  ? StandardReadRemoteWrites.fromJson(
+                      json_['standardReadRemoteWrites']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (consistencyToken != null) 'consistencyToken': consistencyToken!,
+        if (dataBoostReadLocalWrites != null)
+          'dataBoostReadLocalWrites': dataBoostReadLocalWrites!,
+        if (standardReadRemoteWrites != null)
+          'standardReadRemoteWrites': standardReadRemoteWrites!,
       };
 }
 
@@ -3342,9 +3854,20 @@ class ColumnFamily {
   /// Output only.
   ColumnFamilyStats? stats;
 
+  /// The type of data stored in each of this family's cell values, including
+  /// its full encoding.
+  ///
+  /// If omitted, the family only serves raw untyped bytes. For now, only the
+  /// `Aggregate` type is supported. `Aggregate` can only be set at family
+  /// creation and is immutable afterwards. If `value_type` is `Aggregate`,
+  /// written data must be compatible with: * `value_type.input_type` for
+  /// `AddInput` mutations
+  Type? valueType;
+
   ColumnFamily({
     this.gcRule,
     this.stats,
+    this.valueType,
   });
 
   ColumnFamily.fromJson(core.Map json_)
@@ -3357,11 +3880,16 @@ class ColumnFamily {
               ? ColumnFamilyStats.fromJson(
                   json_['stats'] as core.Map<core.String, core.dynamic>)
               : null,
+          valueType: json_.containsKey('valueType')
+              ? Type.fromJson(
+                  json_['valueType'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (gcRule != null) 'gcRule': gcRule!,
         if (stats != null) 'stats': stats!,
+        if (valueType != null) 'valueType': valueType!,
       };
 }
 
@@ -3614,6 +4142,46 @@ class CreateTableRequest {
         if (tableId != null) 'tableId': tableId!,
       };
 }
+
+/// Data Boost is a serverless compute capability that lets you run
+/// high-throughput read jobs on your Bigtable data, without impacting the
+/// performance of the clusters that handle your application traffic.
+///
+/// Currently, Data Boost exclusively supports read-only use-cases with
+/// single-cluster routing. Data Boost reads are only guaranteed to see the
+/// results of writes that were written at least 30 minutes ago. This means
+/// newly written values may not become visible for up to 30m, and also means
+/// that old values may remain visible for up to 30m after being deleted or
+/// overwritten. To mitigate the staleness of the data, users may either wait
+/// 30m, or use CheckConsistency.
+class DataBoostIsolationReadOnly {
+  /// The Compute Billing Owner for this Data Boost App Profile.
+  /// Possible string values are:
+  /// - "COMPUTE_BILLING_OWNER_UNSPECIFIED" : Unspecified value.
+  /// - "HOST_PAYS" : The host Cloud Project containing the targeted Bigtable
+  /// Instance / Table pays for compute.
+  core.String? computeBillingOwner;
+
+  DataBoostIsolationReadOnly({
+    this.computeBillingOwner,
+  });
+
+  DataBoostIsolationReadOnly.fromJson(core.Map json_)
+      : this(
+          computeBillingOwner: json_.containsKey('computeBillingOwner')
+              ? json_['computeBillingOwner'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (computeBillingOwner != null)
+          'computeBillingOwner': computeBillingOwner!,
+      };
+}
+
+/// Checks that all writes before the consistency token was generated in the
+/// same cluster are readable by Databoost.
+typedef DataBoostReadLocalWrites = $Empty;
 
 /// Request message for google.bigtable.admin.v2.BigtableTableAdmin.DropRowRange
 class DropRowRangeRequest {
@@ -3878,6 +4446,261 @@ class GetIamPolicyRequest {
 
 /// Encapsulates settings provided to GetIamPolicy.
 typedef GetPolicyOptions = $GetPolicyOptions;
+
+/// Subsets of a column family that are included in this AuthorizedView.
+class GoogleBigtableAdminV2AuthorizedViewFamilySubsets {
+  /// Prefixes for qualifiers to be included in the AuthorizedView.
+  ///
+  /// Every qualifier starting with one of these prefixes is included in the
+  /// AuthorizedView. To provide access to all qualifiers, include the empty
+  /// string as a prefix ("").
+  core.List<core.String>? qualifierPrefixes;
+
+  /// Individual exact column qualifiers to be included in the AuthorizedView.
+  core.List<core.String>? qualifiers;
+
+  GoogleBigtableAdminV2AuthorizedViewFamilySubsets({
+    this.qualifierPrefixes,
+    this.qualifiers,
+  });
+
+  GoogleBigtableAdminV2AuthorizedViewFamilySubsets.fromJson(core.Map json_)
+      : this(
+          qualifierPrefixes: json_.containsKey('qualifierPrefixes')
+              ? (json_['qualifierPrefixes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          qualifiers: json_.containsKey('qualifiers')
+              ? (json_['qualifiers'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (qualifierPrefixes != null) 'qualifierPrefixes': qualifierPrefixes!,
+        if (qualifiers != null) 'qualifiers': qualifiers!,
+      };
+}
+
+/// Defines a simple AuthorizedView that is a subset of the underlying Table.
+class GoogleBigtableAdminV2AuthorizedViewSubsetView {
+  /// Map from column family name to the columns in this family to be included
+  /// in the AuthorizedView.
+  core.Map<core.String, GoogleBigtableAdminV2AuthorizedViewFamilySubsets>?
+      familySubsets;
+
+  /// Row prefixes to be included in the AuthorizedView.
+  ///
+  /// To provide access to all rows, include the empty string as a prefix ("").
+  core.List<core.String>? rowPrefixes;
+
+  GoogleBigtableAdminV2AuthorizedViewSubsetView({
+    this.familySubsets,
+    this.rowPrefixes,
+  });
+
+  GoogleBigtableAdminV2AuthorizedViewSubsetView.fromJson(core.Map json_)
+      : this(
+          familySubsets: json_.containsKey('familySubsets')
+              ? (json_['familySubsets'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    GoogleBigtableAdminV2AuthorizedViewFamilySubsets.fromJson(
+                        value as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+          rowPrefixes: json_.containsKey('rowPrefixes')
+              ? (json_['rowPrefixes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (familySubsets != null) 'familySubsets': familySubsets!,
+        if (rowPrefixes != null) 'rowPrefixes': rowPrefixes!,
+      };
+}
+
+/// A value that combines incremental updates into a summarized value.
+///
+/// Data is never directly written or read using type `Aggregate`. Writes will
+/// provide either the `input_type` or `state_type`, and reads will always
+/// return the `state_type` .
+class GoogleBigtableAdminV2TypeAggregate {
+  /// Type of the inputs that are accumulated by this `Aggregate`, which must
+  /// specify a full encoding.
+  ///
+  /// Use `AddInput` mutations to accumulate new inputs.
+  Type? inputType;
+
+  /// Type that holds the internal accumulator state for the `Aggregate`.
+  ///
+  /// This is a function of the `input_type` and `aggregator` chosen, and will
+  /// always specify a full encoding.
+  ///
+  /// Output only.
+  Type? stateType;
+
+  /// Sum aggregator.
+  GoogleBigtableAdminV2TypeAggregateSum? sum;
+
+  GoogleBigtableAdminV2TypeAggregate({
+    this.inputType,
+    this.stateType,
+    this.sum,
+  });
+
+  GoogleBigtableAdminV2TypeAggregate.fromJson(core.Map json_)
+      : this(
+          inputType: json_.containsKey('inputType')
+              ? Type.fromJson(
+                  json_['inputType'] as core.Map<core.String, core.dynamic>)
+              : null,
+          stateType: json_.containsKey('stateType')
+              ? Type.fromJson(
+                  json_['stateType'] as core.Map<core.String, core.dynamic>)
+              : null,
+          sum: json_.containsKey('sum')
+              ? GoogleBigtableAdminV2TypeAggregateSum.fromJson(
+                  json_['sum'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (inputType != null) 'inputType': inputType!,
+        if (stateType != null) 'stateType': stateType!,
+        if (sum != null) 'sum': sum!,
+      };
+}
+
+/// Computes the sum of the input values.
+///
+/// Allowed input: `Int64` State: same as input
+typedef GoogleBigtableAdminV2TypeAggregateSum = $Empty;
+
+/// Bytes Values of type `Bytes` are stored in `Value.bytes_value`.
+class GoogleBigtableAdminV2TypeBytes {
+  /// The encoding to use when converting to/from lower level types.
+  GoogleBigtableAdminV2TypeBytesEncoding? encoding;
+
+  GoogleBigtableAdminV2TypeBytes({
+    this.encoding,
+  });
+
+  GoogleBigtableAdminV2TypeBytes.fromJson(core.Map json_)
+      : this(
+          encoding: json_.containsKey('encoding')
+              ? GoogleBigtableAdminV2TypeBytesEncoding.fromJson(
+                  json_['encoding'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (encoding != null) 'encoding': encoding!,
+      };
+}
+
+/// Rules used to convert to/from lower level types.
+class GoogleBigtableAdminV2TypeBytesEncoding {
+  /// Use `Raw` encoding.
+  GoogleBigtableAdminV2TypeBytesEncodingRaw? raw;
+
+  GoogleBigtableAdminV2TypeBytesEncoding({
+    this.raw,
+  });
+
+  GoogleBigtableAdminV2TypeBytesEncoding.fromJson(core.Map json_)
+      : this(
+          raw: json_.containsKey('raw')
+              ? GoogleBigtableAdminV2TypeBytesEncodingRaw.fromJson(
+                  json_['raw'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (raw != null) 'raw': raw!,
+      };
+}
+
+/// Leaves the value "as-is" * Natural sort? Yes * Self-delimiting? No *
+/// Compatibility? N/A
+typedef GoogleBigtableAdminV2TypeBytesEncodingRaw = $Empty;
+
+/// Int64 Values of type `Int64` are stored in `Value.int_value`.
+class GoogleBigtableAdminV2TypeInt64 {
+  /// The encoding to use when converting to/from lower level types.
+  GoogleBigtableAdminV2TypeInt64Encoding? encoding;
+
+  GoogleBigtableAdminV2TypeInt64({
+    this.encoding,
+  });
+
+  GoogleBigtableAdminV2TypeInt64.fromJson(core.Map json_)
+      : this(
+          encoding: json_.containsKey('encoding')
+              ? GoogleBigtableAdminV2TypeInt64Encoding.fromJson(
+                  json_['encoding'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (encoding != null) 'encoding': encoding!,
+      };
+}
+
+/// Rules used to convert to/from lower level types.
+class GoogleBigtableAdminV2TypeInt64Encoding {
+  /// Use `BigEndianBytes` encoding.
+  GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes? bigEndianBytes;
+
+  GoogleBigtableAdminV2TypeInt64Encoding({
+    this.bigEndianBytes,
+  });
+
+  GoogleBigtableAdminV2TypeInt64Encoding.fromJson(core.Map json_)
+      : this(
+          bigEndianBytes: json_.containsKey('bigEndianBytes')
+              ? GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes.fromJson(
+                  json_['bigEndianBytes']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bigEndianBytes != null) 'bigEndianBytes': bigEndianBytes!,
+      };
+}
+
+/// Encodes the value as an 8-byte big endian twos complement `Bytes` value.
+///
+/// * Natural sort? No (positive values only) * Self-delimiting? Yes *
+/// Compatibility? - BigQuery Federation `BINARY` encoding - HBase
+/// `Bytes.toBytes` - Java `ByteBuffer.putLong()` with `ByteOrder.BIG_ENDIAN`
+class GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes {
+  /// The underlying `Bytes` type, which may be able to encode further.
+  GoogleBigtableAdminV2TypeBytes? bytesType;
+
+  GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes({
+    this.bytesType,
+  });
+
+  GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes.fromJson(core.Map json_)
+      : this(
+          bytesType: json_.containsKey('bytesType')
+              ? GoogleBigtableAdminV2TypeBytes.fromJson(
+                  json_['bytesType'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bytesType != null) 'bytesType': bytesType!,
+      };
+}
 
 /// A tablet is a defined by a start and end key and is explained in
 /// https://cloud.google.com/bigtable/docs/overview#architecture and
@@ -4150,6 +4973,42 @@ class ListAppProfilesResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (appProfiles != null) 'appProfiles': appProfiles!,
         if (failedLocations != null) 'failedLocations': failedLocations!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Response message for
+/// google.bigtable.admin.v2.BigtableTableAdmin.ListAuthorizedViews
+class ListAuthorizedViewsResponse {
+  /// The AuthorizedViews present in the requested table.
+  core.List<AuthorizedView>? authorizedViews;
+
+  /// Set if not all tables could be returned in a single response.
+  ///
+  /// Pass this value to `page_token` in another request to get the next page of
+  /// results.
+  core.String? nextPageToken;
+
+  ListAuthorizedViewsResponse({
+    this.authorizedViews,
+    this.nextPageToken,
+  });
+
+  ListAuthorizedViewsResponse.fromJson(core.Map json_)
+      : this(
+          authorizedViews: json_.containsKey('authorizedViews')
+              ? (json_['authorizedViews'] as core.List)
+                  .map((value) => AuthorizedView.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (authorizedViews != null) 'authorizedViews': authorizedViews!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -4953,6 +5812,10 @@ class StandardIsolation {
       };
 }
 
+/// Checks that all writes before the consistency token was generated are
+/// replicated in every cluster and readable.
+typedef StandardReadRemoteWrites = $Empty;
+
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.
 ///
@@ -5183,6 +6046,72 @@ typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;
+
+/// `Type` represents the type of data that is written to, read from, or stored
+/// in Bigtable.
+///
+/// It is heavily based on the GoogleSQL standard to help maintain familiarity
+/// and consistency across products and features. For compatibility with
+/// Bigtable's existing untyped APIs, each `Type` includes an `Encoding` which
+/// describes how to convert to/from the underlying data. This might involve
+/// composing a series of steps into an "encoding chain," for example to convert
+/// from INT64 -\> STRING -\> raw bytes. In most cases, a "link" in the encoding
+/// chain will be based an on existing GoogleSQL conversion function like
+/// `CAST`. Each link in the encoding chain also defines the following
+/// properties: * Natural sort: Does the encoded value sort consistently with
+/// the original typed value? Note that Bigtable will always sort data based on
+/// the raw encoded value, *not* the decoded type. - Example: STRING values sort
+/// in the same order as their UTF-8 encodings. - Counterexample: Encoding INT64
+/// to a fixed-width STRING does *not* preserve sort order when dealing with
+/// negative numbers. INT64(1) \> INT64(-1), but STRING("-00001") \>
+/// STRING("00001). - The overall encoding chain sorts naturally if *every* link
+/// does. * Self-delimiting: If we concatenate two encoded values, can we always
+/// tell where the first one ends and the second one begins? - Example: If we
+/// encode INT64s to fixed-width STRINGs, the first value will always contain
+/// exactly N digits, possibly preceded by a sign. - Counterexample: If we
+/// concatenate two UTF-8 encoded STRINGs, we have no way to tell where the
+/// first one ends. - The overall encoding chain is self-delimiting if *any*
+/// link is. * Compatibility: Which other systems have matching encoding
+/// schemes? For example, does this encoding have a GoogleSQL equivalent? HBase?
+/// Java?
+class Type {
+  /// Aggregate
+  GoogleBigtableAdminV2TypeAggregate? aggregateType;
+
+  /// Bytes
+  GoogleBigtableAdminV2TypeBytes? bytesType;
+
+  /// Int64
+  GoogleBigtableAdminV2TypeInt64? int64Type;
+
+  Type({
+    this.aggregateType,
+    this.bytesType,
+    this.int64Type,
+  });
+
+  Type.fromJson(core.Map json_)
+      : this(
+          aggregateType: json_.containsKey('aggregateType')
+              ? GoogleBigtableAdminV2TypeAggregate.fromJson(
+                  json_['aggregateType'] as core.Map<core.String, core.dynamic>)
+              : null,
+          bytesType: json_.containsKey('bytesType')
+              ? GoogleBigtableAdminV2TypeBytes.fromJson(
+                  json_['bytesType'] as core.Map<core.String, core.dynamic>)
+              : null,
+          int64Type: json_.containsKey('int64Type')
+              ? GoogleBigtableAdminV2TypeInt64.fromJson(
+                  json_['int64Type'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (aggregateType != null) 'aggregateType': aggregateType!,
+        if (bytesType != null) 'bytesType': bytesType!,
+        if (int64Type != null) 'int64Type': int64Type!,
+      };
+}
 
 /// Request message for
 /// google.bigtable.admin.v2.BigtableTableAdmin.UndeleteTable

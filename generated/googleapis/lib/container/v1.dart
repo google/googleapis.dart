@@ -4568,6 +4568,46 @@ class CancelOperationRequest {
       };
 }
 
+/// CertificateAuthorityDomainConfig configures one or more fully qualified
+/// domain names (FQDN) to a specific certificate.
+class CertificateAuthorityDomainConfig {
+  /// List of fully qualified domain names (FQDN).
+  ///
+  /// Specifying port is supported. Wilcards are NOT supported. Examples: -
+  /// my.customdomain.com - 10.0.1.2:5000
+  core.List<core.String>? fqdns;
+
+  /// Google Secret Manager (GCP) certificate configuration.
+  GCPSecretManagerCertificateConfig? gcpSecretManagerCertificateConfig;
+
+  CertificateAuthorityDomainConfig({
+    this.fqdns,
+    this.gcpSecretManagerCertificateConfig,
+  });
+
+  CertificateAuthorityDomainConfig.fromJson(core.Map json_)
+      : this(
+          fqdns: json_.containsKey('fqdns')
+              ? (json_['fqdns'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          gcpSecretManagerCertificateConfig:
+              json_.containsKey('gcpSecretManagerCertificateConfig')
+                  ? GCPSecretManagerCertificateConfig.fromJson(
+                      json_['gcpSecretManagerCertificateConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fqdns != null) 'fqdns': fqdns!,
+        if (gcpSecretManagerCertificateConfig != null)
+          'gcpSecretManagerCertificateConfig':
+              gcpSecretManagerCertificateConfig!,
+      };
+}
+
 /// CheckAutopilotCompatibilityResponse has a list of compatibility issues.
 class CheckAutopilotCompatibilityResponse {
   /// The list of issues for the given operation.
@@ -5652,6 +5692,9 @@ class ClusterUpdate {
   /// Cluster-level autoscaling configuration.
   ClusterAutoscaling? desiredClusterAutoscaling;
 
+  /// The desired containerd config for the cluster.
+  ContainerdConfig? desiredContainerdConfig;
+
   /// The desired configuration for the fine-grained cost management feature.
   CostManagementConfig? desiredCostManagementConfig;
 
@@ -5679,6 +5722,9 @@ class ClusterUpdate {
 
   /// Enable/Disable FQDN Network Policy for the cluster.
   core.bool? desiredEnableFqdnNetworkPolicy;
+
+  /// Enable/Disable Multi-Networking for the cluster
+  core.bool? desiredEnableMultiNetworking;
 
   /// Enable/Disable private endpoint for the cluster's master.
   core.bool? desiredEnablePrivateEndpoint;
@@ -5817,6 +5863,10 @@ class ClusterUpdate {
   ParentProductConfig? desiredParentProductConfig;
 
   /// The desired private cluster configuration.
+  ///
+  /// master_global_access_config is the only field that can be changed via this
+  /// field. See also ClusterUpdate.desired_enable_private_endpoint for
+  /// modifying other fields within PrivateClusterConfig.
   PrivateClusterConfig? desiredPrivateClusterConfig;
 
   /// The desired state of IPv6 connectivity to Google Services.
@@ -5887,6 +5937,7 @@ class ClusterUpdate {
     this.desiredAutopilotWorkloadPolicyConfig,
     this.desiredBinaryAuthorization,
     this.desiredClusterAutoscaling,
+    this.desiredContainerdConfig,
     this.desiredCostManagementConfig,
     this.desiredDatabaseEncryption,
     this.desiredDatapathProvider,
@@ -5894,6 +5945,7 @@ class ClusterUpdate {
     this.desiredDnsConfig,
     this.desiredEnableCiliumClusterwideNetworkPolicy,
     this.desiredEnableFqdnNetworkPolicy,
+    this.desiredEnableMultiNetworking,
     this.desiredEnablePrivateEndpoint,
     this.desiredFleet,
     this.desiredGatewayApiConfig,
@@ -5970,6 +6022,10 @@ class ClusterUpdate {
               ? ClusterAutoscaling.fromJson(json_['desiredClusterAutoscaling']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          desiredContainerdConfig: json_.containsKey('desiredContainerdConfig')
+              ? ContainerdConfig.fromJson(json_['desiredContainerdConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           desiredCostManagementConfig:
               json_.containsKey('desiredCostManagementConfig')
                   ? CostManagementConfig.fromJson(
@@ -6001,6 +6057,10 @@ class ClusterUpdate {
           desiredEnableFqdnNetworkPolicy:
               json_.containsKey('desiredEnableFqdnNetworkPolicy')
                   ? json_['desiredEnableFqdnNetworkPolicy'] as core.bool
+                  : null,
+          desiredEnableMultiNetworking:
+              json_.containsKey('desiredEnableMultiNetworking')
+                  ? json_['desiredEnableMultiNetworking'] as core.bool
                   : null,
           desiredEnablePrivateEndpoint:
               json_.containsKey('desiredEnablePrivateEndpoint')
@@ -6203,6 +6263,8 @@ class ClusterUpdate {
           'desiredBinaryAuthorization': desiredBinaryAuthorization!,
         if (desiredClusterAutoscaling != null)
           'desiredClusterAutoscaling': desiredClusterAutoscaling!,
+        if (desiredContainerdConfig != null)
+          'desiredContainerdConfig': desiredContainerdConfig!,
         if (desiredCostManagementConfig != null)
           'desiredCostManagementConfig': desiredCostManagementConfig!,
         if (desiredDatabaseEncryption != null)
@@ -6217,6 +6279,8 @@ class ClusterUpdate {
               desiredEnableCiliumClusterwideNetworkPolicy!,
         if (desiredEnableFqdnNetworkPolicy != null)
           'desiredEnableFqdnNetworkPolicy': desiredEnableFqdnNetworkPolicy!,
+        if (desiredEnableMultiNetworking != null)
+          'desiredEnableMultiNetworking': desiredEnableMultiNetworking!,
         if (desiredEnablePrivateEndpoint != null)
           'desiredEnablePrivateEndpoint': desiredEnablePrivateEndpoint!,
         if (desiredFleet != null) 'desiredFleet': desiredFleet!,
@@ -6434,6 +6498,32 @@ class ConsumptionMeteringConfig {
       };
 }
 
+/// ContainerdConfig contains configuration to customize containerd.
+class ContainerdConfig {
+  /// PrivateRegistryAccessConfig is used to configure access configuration for
+  /// private container registries.
+  PrivateRegistryAccessConfig? privateRegistryAccessConfig;
+
+  ContainerdConfig({
+    this.privateRegistryAccessConfig,
+  });
+
+  ContainerdConfig.fromJson(core.Map json_)
+      : this(
+          privateRegistryAccessConfig:
+              json_.containsKey('privateRegistryAccessConfig')
+                  ? PrivateRegistryAccessConfig.fromJson(
+                      json_['privateRegistryAccessConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (privateRegistryAccessConfig != null)
+          'privateRegistryAccessConfig': privateRegistryAccessConfig!,
+      };
+}
+
 /// Configuration for fine-grained cost management feature.
 class CostManagementConfig {
   /// Whether the feature is enabled or not.
@@ -6604,6 +6694,11 @@ class CreateNodePoolRequest {
 
 /// DNSConfig contains the desired set of options for configuring clusterDNS.
 class DNSConfig {
+  /// The domain used in Additive VPC scope.
+  ///
+  /// Optional.
+  core.String? additiveVpcScopeDnsDomain;
+
   /// cluster_dns indicates which in-cluster DNS provider should be used.
   /// Possible string values are:
   /// - "PROVIDER_UNSPECIFIED" : Default value
@@ -6625,6 +6720,7 @@ class DNSConfig {
   core.String? clusterDnsScope;
 
   DNSConfig({
+    this.additiveVpcScopeDnsDomain,
     this.clusterDns,
     this.clusterDnsDomain,
     this.clusterDnsScope,
@@ -6632,6 +6728,10 @@ class DNSConfig {
 
   DNSConfig.fromJson(core.Map json_)
       : this(
+          additiveVpcScopeDnsDomain:
+              json_.containsKey('additiveVpcScopeDnsDomain')
+                  ? json_['additiveVpcScopeDnsDomain'] as core.String
+                  : null,
           clusterDns: json_.containsKey('clusterDns')
               ? json_['clusterDns'] as core.String
               : null,
@@ -6644,6 +6744,8 @@ class DNSConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (additiveVpcScopeDnsDomain != null)
+          'additiveVpcScopeDnsDomain': additiveVpcScopeDnsDomain!,
         if (clusterDns != null) 'clusterDns': clusterDns!,
         if (clusterDnsDomain != null) 'clusterDnsDomain': clusterDnsDomain!,
         if (clusterDnsScope != null) 'clusterDnsScope': clusterDnsScope!,
@@ -6690,11 +6792,43 @@ class DailyMaintenanceWindow {
 
 /// Configuration of etcd encryption.
 class DatabaseEncryption {
+  /// The current state of etcd encryption.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CURRENT_STATE_UNSPECIFIED" : Should never be set
+  /// - "CURRENT_STATE_ENCRYPTED" : Secrets in etcd are encrypted.
+  /// - "CURRENT_STATE_DECRYPTED" : Secrets in etcd are stored in plain text (at
+  /// etcd level) - this is unrelated to Compute Engine level full disk
+  /// encryption.
+  /// - "CURRENT_STATE_ENCRYPTION_PENDING" : Encryption (or re-encryption with a
+  /// different CloudKMS key) of Secrets is in progress.
+  /// - "CURRENT_STATE_ENCRYPTION_ERROR" : Encryption (or re-encryption with a
+  /// different CloudKMS key) of Secrets in etcd encountered an error.
+  /// - "CURRENT_STATE_DECRYPTION_PENDING" : De-crypting Secrets to plain text
+  /// in etcd is in progress.
+  /// - "CURRENT_STATE_DECRYPTION_ERROR" : De-crypting Secrets to plain text in
+  /// etcd encountered an error.
+  core.String? currentState;
+
+  /// Keys in use by the cluster for decrypting existing objects, in addition to
+  /// the key in `key_name`.
+  ///
+  /// Each item is a CloudKMS key resource.
+  ///
+  /// Output only.
+  core.List<core.String>? decryptionKeys;
+
   /// Name of CloudKMS key to use for the encryption of secrets in etcd.
   ///
   /// Ex.
   /// projects/my-project/locations/global/keyRings/my-ring/cryptoKeys/my-key
   core.String? keyName;
+
+  /// Records errors seen during DatabaseEncryption update operations.
+  ///
+  /// Output only.
+  core.List<OperationError>? lastOperationErrors;
 
   /// The desired state of etcd encryption.
   /// Possible string values are:
@@ -6705,21 +6839,42 @@ class DatabaseEncryption {
   core.String? state;
 
   DatabaseEncryption({
+    this.currentState,
+    this.decryptionKeys,
     this.keyName,
+    this.lastOperationErrors,
     this.state,
   });
 
   DatabaseEncryption.fromJson(core.Map json_)
       : this(
+          currentState: json_.containsKey('currentState')
+              ? json_['currentState'] as core.String
+              : null,
+          decryptionKeys: json_.containsKey('decryptionKeys')
+              ? (json_['decryptionKeys'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           keyName: json_.containsKey('keyName')
               ? json_['keyName'] as core.String
+              : null,
+          lastOperationErrors: json_.containsKey('lastOperationErrors')
+              ? (json_['lastOperationErrors'] as core.List)
+                  .map((value) => OperationError.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
               : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (currentState != null) 'currentState': currentState!,
+        if (decryptionKeys != null) 'decryptionKeys': decryptionKeys!,
         if (keyName != null) 'keyName': keyName!,
+        if (lastOperationErrors != null)
+          'lastOperationErrors': lastOperationErrors!,
         if (state != null) 'state': state!,
       };
 }
@@ -6933,6 +7088,31 @@ class Fleet {
       };
 }
 
+/// GCPSecretManagerCertificateConfig configures a secret from
+/// [Google Secret Manager](https://cloud.google.com/secret-manager).
+class GCPSecretManagerCertificateConfig {
+  /// Secret URI, in the form
+  /// "projects/$PROJECT_ID/secrets/$SECRET_NAME/versions/$VERSION".
+  ///
+  /// Version can be fixed (e.g. "2") or "latest"
+  core.String? secretUri;
+
+  GCPSecretManagerCertificateConfig({
+    this.secretUri,
+  });
+
+  GCPSecretManagerCertificateConfig.fromJson(core.Map json_)
+      : this(
+          secretUri: json_.containsKey('secretUri')
+              ? json_['secretUri'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (secretUri != null) 'secretUri': secretUri!,
+      };
+}
+
 /// GPUDriverInstallationConfig specifies the version of GPU driver to be auto
 /// installed.
 class GPUDriverInstallationConfig {
@@ -6969,6 +7149,7 @@ class GPUSharingConfig {
   /// Possible string values are:
   /// - "GPU_SHARING_STRATEGY_UNSPECIFIED" : Default value.
   /// - "TIME_SHARING" : GPUs are time-shared between containers.
+  /// - "MPS" : GPUs are shared between containers with NVIDIA MPS.
   core.String? gpuSharingStrategy;
 
   /// The max number of containers that can share a physical GPU.
@@ -7345,6 +7526,39 @@ class HttpLoadBalancing {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (disabled != null) 'disabled': disabled!,
+      };
+}
+
+/// Hugepages amount in both 2m and 1g size
+class HugepagesConfig {
+  /// Amount of 1G hugepages
+  ///
+  /// Optional.
+  core.int? hugepageSize1g;
+
+  /// Amount of 2M hugepages
+  ///
+  /// Optional.
+  core.int? hugepageSize2m;
+
+  HugepagesConfig({
+    this.hugepageSize1g,
+    this.hugepageSize2m,
+  });
+
+  HugepagesConfig.fromJson(core.Map json_)
+      : this(
+          hugepageSize1g: json_.containsKey('hugepageSize1g')
+              ? json_['hugepageSize1g'] as core.int
+              : null,
+          hugepageSize2m: json_.containsKey('hugepageSize2m')
+              ? json_['hugepageSize2m'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (hugepageSize1g != null) 'hugepageSize1g': hugepageSize1g!,
+        if (hugepageSize2m != null) 'hugepageSize2m': hugepageSize2m!,
       };
 }
 
@@ -7853,6 +8067,11 @@ class LinuxNodeConfig {
   /// cgroup configuration on the node image.
   core.String? cgroupMode;
 
+  /// Amounts for 2M and 1G hugepages
+  ///
+  /// Optional.
+  HugepagesConfig? hugepages;
+
   /// The Linux kernel parameters to be applied to the nodes and all pods
   /// running on the nodes.
   ///
@@ -7865,6 +8084,7 @@ class LinuxNodeConfig {
 
   LinuxNodeConfig({
     this.cgroupMode,
+    this.hugepages,
     this.sysctls,
   });
 
@@ -7872,6 +8092,10 @@ class LinuxNodeConfig {
       : this(
           cgroupMode: json_.containsKey('cgroupMode')
               ? json_['cgroupMode'] as core.String
+              : null,
+          hugepages: json_.containsKey('hugepages')
+              ? HugepagesConfig.fromJson(
+                  json_['hugepages'] as core.Map<core.String, core.dynamic>)
               : null,
           sysctls: json_.containsKey('sysctls')
               ? (json_['sysctls'] as core.Map<core.String, core.dynamic>).map(
@@ -7885,6 +8109,7 @@ class LinuxNodeConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cgroupMode != null) 'cgroupMode': cgroupMode!,
+        if (hugepages != null) 'hugepages': hugepages!,
         if (sysctls != null) 'sysctls': sysctls!,
       };
 }
@@ -8966,6 +9191,9 @@ class NodeConfig {
   /// All the nodes in the node pool will be Confidential VM once enabled.
   ConfidentialNodes? confidentialNodes;
 
+  /// Parameters for containerd customization.
+  ContainerdConfig? containerdConfig;
+
   /// Size of the disk attached to each node, specified in GB.
   ///
   /// The smallest allowed disk size is 10GB. If unspecified, the default disk
@@ -9108,6 +9336,9 @@ class NodeConfig {
   /// Sandbox configuration for this node.
   SandboxConfig? sandboxConfig;
 
+  /// Secondary boot disk update strategy.
+  SecondaryBootDiskUpdateStrategy? secondaryBootDiskUpdateStrategy;
+
   /// List of secondary boot disks attached to the nodes.
   core.List<SecondaryBootDisk>? secondaryBootDisks;
 
@@ -9151,6 +9382,7 @@ class NodeConfig {
     this.advancedMachineFeatures,
     this.bootDiskKmsKey,
     this.confidentialNodes,
+    this.containerdConfig,
     this.diskSizeGb,
     this.diskType,
     this.enableConfidentialStorage,
@@ -9175,6 +9407,7 @@ class NodeConfig {
     this.resourceLabels,
     this.resourceManagerTags,
     this.sandboxConfig,
+    this.secondaryBootDiskUpdateStrategy,
     this.secondaryBootDisks,
     this.serviceAccount,
     this.shieldedInstanceConfig,
@@ -9204,6 +9437,10 @@ class NodeConfig {
               : null,
           confidentialNodes: json_.containsKey('confidentialNodes')
               ? ConfidentialNodes.fromJson(json_['confidentialNodes']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          containerdConfig: json_.containsKey('containerdConfig')
+              ? ContainerdConfig.fromJson(json_['containerdConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
           diskSizeGb: json_.containsKey('diskSizeGb')
@@ -9311,6 +9548,12 @@ class NodeConfig {
               ? SandboxConfig.fromJson(
                   json_['sandboxConfig'] as core.Map<core.String, core.dynamic>)
               : null,
+          secondaryBootDiskUpdateStrategy:
+              json_.containsKey('secondaryBootDiskUpdateStrategy')
+                  ? SecondaryBootDiskUpdateStrategy.fromJson(
+                      json_['secondaryBootDiskUpdateStrategy']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           secondaryBootDisks: json_.containsKey('secondaryBootDisks')
               ? (json_['secondaryBootDisks'] as core.List)
                   .map((value) => SecondaryBootDisk.fromJson(
@@ -9356,6 +9599,7 @@ class NodeConfig {
           'advancedMachineFeatures': advancedMachineFeatures!,
         if (bootDiskKmsKey != null) 'bootDiskKmsKey': bootDiskKmsKey!,
         if (confidentialNodes != null) 'confidentialNodes': confidentialNodes!,
+        if (containerdConfig != null) 'containerdConfig': containerdConfig!,
         if (diskSizeGb != null) 'diskSizeGb': diskSizeGb!,
         if (diskType != null) 'diskType': diskType!,
         if (enableConfidentialStorage != null)
@@ -9385,6 +9629,8 @@ class NodeConfig {
         if (resourceManagerTags != null)
           'resourceManagerTags': resourceManagerTags!,
         if (sandboxConfig != null) 'sandboxConfig': sandboxConfig!,
+        if (secondaryBootDiskUpdateStrategy != null)
+          'secondaryBootDiskUpdateStrategy': secondaryBootDiskUpdateStrategy!,
         if (secondaryBootDisks != null)
           'secondaryBootDisks': secondaryBootDisks!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
@@ -9402,6 +9648,9 @@ class NodeConfig {
 
 /// Subset of NodeConfig message that has defaults.
 class NodeConfigDefaults {
+  /// Parameters for containerd customization.
+  ContainerdConfig? containerdConfig;
+
   /// GCFS (Google Container File System, also known as Riptide) options.
   GcfsConfig? gcfsConfig;
 
@@ -9409,12 +9658,17 @@ class NodeConfigDefaults {
   NodePoolLoggingConfig? loggingConfig;
 
   NodeConfigDefaults({
+    this.containerdConfig,
     this.gcfsConfig,
     this.loggingConfig,
   });
 
   NodeConfigDefaults.fromJson(core.Map json_)
       : this(
+          containerdConfig: json_.containsKey('containerdConfig')
+              ? ContainerdConfig.fromJson(json_['containerdConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           gcfsConfig: json_.containsKey('gcfsConfig')
               ? GcfsConfig.fromJson(
                   json_['gcfsConfig'] as core.Map<core.String, core.dynamic>)
@@ -9426,6 +9680,7 @@ class NodeConfigDefaults {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (containerdConfig != null) 'containerdConfig': containerdConfig!,
         if (gcfsConfig != null) 'gcfsConfig': gcfsConfig!,
         if (loggingConfig != null) 'loggingConfig': loggingConfig!,
       };
@@ -10504,6 +10759,44 @@ class Operation {
       };
 }
 
+/// OperationError records errors seen from CloudKMS keys encountered during
+/// updates to DatabaseEncryption configuration.
+class OperationError {
+  /// Description of the error seen during the operation.
+  core.String? errorMessage;
+
+  /// CloudKMS key resource that had the error.
+  core.String? keyName;
+
+  /// Time when the CloudKMS error was seen.
+  core.String? timestamp;
+
+  OperationError({
+    this.errorMessage,
+    this.keyName,
+    this.timestamp,
+  });
+
+  OperationError.fromJson(core.Map json_)
+      : this(
+          errorMessage: json_.containsKey('errorMessage')
+              ? json_['errorMessage'] as core.String
+              : null,
+          keyName: json_.containsKey('keyName')
+              ? json_['keyName'] as core.String
+              : null,
+          timestamp: json_.containsKey('timestamp')
+              ? json_['timestamp'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (errorMessage != null) 'errorMessage': errorMessage!,
+        if (keyName != null) 'keyName': keyName!,
+        if (timestamp != null) 'timestamp': timestamp!,
+      };
+}
+
 /// Information about operation (or operation stage) progress.
 class OperationProgress {
   /// Progress metric bundle, for example: metrics: \[{name: "nodes done",
@@ -10793,6 +11086,41 @@ class PrivateClusterMasterGlobalAccessConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
+      };
+}
+
+/// PrivateRegistryAccessConfig contains access configuration for private
+/// container registries.
+class PrivateRegistryAccessConfig {
+  /// Private registry access configuration.
+  core.List<CertificateAuthorityDomainConfig>? certificateAuthorityDomainConfig;
+
+  /// Private registry access is enabled.
+  core.bool? enabled;
+
+  PrivateRegistryAccessConfig({
+    this.certificateAuthorityDomainConfig,
+    this.enabled,
+  });
+
+  PrivateRegistryAccessConfig.fromJson(core.Map json_)
+      : this(
+          certificateAuthorityDomainConfig:
+              json_.containsKey('certificateAuthorityDomainConfig')
+                  ? (json_['certificateAuthorityDomainConfig'] as core.List)
+                      .map((value) => CertificateAuthorityDomainConfig.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+          enabled: json_.containsKey('enabled')
+              ? json_['enabled'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (certificateAuthorityDomainConfig != null)
+          'certificateAuthorityDomainConfig': certificateAuthorityDomainConfig!,
         if (enabled != null) 'enabled': enabled!,
       };
 }
@@ -11355,6 +11683,10 @@ class SecondaryBootDisk {
         if (mode != null) 'mode': mode!,
       };
 }
+
+/// SecondaryBootDiskUpdateStrategy is a placeholder which will be extended in
+/// the future to define different options for updating secondary boot disks.
+typedef SecondaryBootDiskUpdateStrategy = $Empty;
 
 /// SecurityPostureConfig defines the flags needed to enable/disable features
 /// for the Security Posture API.
@@ -13092,6 +13424,12 @@ class UpdateMasterRequest {
 
 /// UpdateNodePoolRequests update a node pool's image and/or version.
 class UpdateNodePoolRequest {
+  /// A list of hardware accelerators to be attached to each node.
+  ///
+  /// See https://cloud.google.com/compute/docs/gpus for more information about
+  /// support for GPUs.
+  core.List<AcceleratorConfig>? accelerators;
+
   /// The name of the cluster to upgrade.
   ///
   /// This field has been deprecated and replaced by the name field.
@@ -13106,6 +13444,12 @@ class UpdateNodePoolRequest {
   ///
   /// All the nodes in the node pool will be Confidential VM once enabled.
   ConfidentialNodes? confidentialNodes;
+
+  /// The desired containerd config for nodes in the node pool.
+  ///
+  /// Initiates an upgrade operation that recreates the nodes with the new
+  /// config.
+  ContainerdConfig? containerdConfig;
 
   /// The desired disk size for nodes in the node pool specified in GB.
   ///
@@ -13272,8 +13616,10 @@ class UpdateNodePoolRequest {
   core.String? zone;
 
   UpdateNodePoolRequest({
+    this.accelerators,
     this.clusterId,
     this.confidentialNodes,
+    this.containerdConfig,
     this.diskSizeGb,
     this.diskType,
     this.etag,
@@ -13305,11 +13651,21 @@ class UpdateNodePoolRequest {
 
   UpdateNodePoolRequest.fromJson(core.Map json_)
       : this(
+          accelerators: json_.containsKey('accelerators')
+              ? (json_['accelerators'] as core.List)
+                  .map((value) => AcceleratorConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           clusterId: json_.containsKey('clusterId')
               ? json_['clusterId'] as core.String
               : null,
           confidentialNodes: json_.containsKey('confidentialNodes')
               ? ConfidentialNodes.fromJson(json_['confidentialNodes']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          containerdConfig: json_.containsKey('containerdConfig')
+              ? ContainerdConfig.fromJson(json_['containerdConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
           diskSizeGb: json_.containsKey('diskSizeGb')
@@ -13408,8 +13764,10 @@ class UpdateNodePoolRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (accelerators != null) 'accelerators': accelerators!,
         if (clusterId != null) 'clusterId': clusterId!,
         if (confidentialNodes != null) 'confidentialNodes': confidentialNodes!,
+        if (containerdConfig != null) 'containerdConfig': containerdConfig!,
         if (diskSizeGb != null) 'diskSizeGb': diskSizeGb!,
         if (diskType != null) 'diskType': diskType!,
         if (etag != null) 'etag': etag!,

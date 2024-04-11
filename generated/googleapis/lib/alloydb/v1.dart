@@ -707,55 +707,6 @@ class ProjectsLocationsClustersResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Generate a client certificate signed by a Cluster CA.
-  ///
-  /// The sole purpose of this endpoint is to support AlloyDB connectors and the
-  /// Auth Proxy client. The endpoint's behavior is subject to change without
-  /// notice, so do not rely on its behavior remaining constant. Future changes
-  /// will not break AlloyDB connectors or the Auth Proxy client.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. The name of the parent resource. The required format
-  /// is: * projects/{project}/locations/{location}/clusters/{cluster}
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/clusters/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GenerateClientCertificateResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GenerateClientCertificateResponse> generateClientCertificate(
-    GenerateClientCertificateRequest request,
-    core.String parent, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ =
-        'v1/' + core.Uri.encodeFull('$parent') + ':generateClientCertificate';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return GenerateClientCertificateResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-
   /// Gets details of a single Cluster.
   ///
   /// Request parameters:
@@ -2150,6 +2101,27 @@ class ProjectsLocationsSupportedDatabaseFlagsResource {
   }
 }
 
+/// AuthorizedNetwork contains metadata for an authorized network.
+class AuthorizedNetwork {
+  /// CIDR range for one authorzied network of the instance.
+  core.String? cidrRange;
+
+  AuthorizedNetwork({
+    this.cidrRange,
+  });
+
+  AuthorizedNetwork.fromJson(core.Map json_)
+      : this(
+          cidrRange: json_.containsKey('cidrRange')
+              ? json_['cidrRange'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cidrRange != null) 'cidrRange': cidrRange!,
+      };
+}
+
 /// Message describing the user-specified automated backup policy.
 ///
 /// All fields in the automated backup policy are optional. Defaults for each
@@ -3001,10 +2973,19 @@ class ConnectionInfo {
   /// /connectionInfo This field currently has no semantic meaning.
   core.String? name;
 
+  /// The public IP addresses for the Instance.
+  ///
+  /// This is available ONLY when enable_public_ip is set. This is the
+  /// connection endpoint for an end-user application.
+  ///
+  /// Output only.
+  core.String? publicIpAddress;
+
   ConnectionInfo({
     this.instanceUid,
     this.ipAddress,
     this.name,
+    this.publicIpAddress,
   });
 
   ConnectionInfo.fromJson(core.Map json_)
@@ -3016,12 +2997,16 @@ class ConnectionInfo {
               ? json_['ipAddress'] as core.String
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          publicIpAddress: json_.containsKey('publicIpAddress')
+              ? json_['publicIpAddress'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (instanceUid != null) 'instanceUid': instanceUid!,
         if (ipAddress != null) 'ipAddress': ipAddress!,
         if (name != null) 'name': name!,
+        if (publicIpAddress != null) 'publicIpAddress': publicIpAddress!,
       };
 }
 
@@ -3276,117 +3261,6 @@ class FailoverInstanceRequest {
       };
 }
 
-/// Message for requests to generate a client certificate signed by the Cluster
-/// CA.
-class GenerateClientCertificateRequest {
-  /// An optional hint to the endpoint to generate the client certificate with
-  /// the requested duration.
-  ///
-  /// The duration can be from 1 hour to 24 hours. The endpoint may or may not
-  /// honor the hint. If the hint is left unspecified or is not honored, then
-  /// the endpoint will pick an appropriate default duration.
-  ///
-  /// Optional.
-  core.String? certDuration;
-
-  /// The public key from the client.
-  ///
-  /// Optional.
-  core.String? publicKey;
-
-  /// An optional request ID to identify requests.
-  ///
-  /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// The server will guarantee that for at least 60 minutes after the first
-  /// request. For example, consider a situation where you make an initial
-  /// request and the request times out. If you make the request again with the
-  /// same request ID, the server can check if original operation with the same
-  /// request ID was received, and if so, will ignore the second request. This
-  /// prevents clients from accidentally creating duplicate commitments. The
-  /// request ID must be a valid UUID with the exception that zero UUID is not
-  /// supported (00000000-0000-0000-0000-000000000000).
-  ///
-  /// Optional.
-  core.String? requestId;
-
-  /// An optional hint to the endpoint to generate a client ceritificate that
-  /// can be used by AlloyDB connectors to exchange additional metadata with the
-  /// server after TLS handshake.
-  ///
-  /// Optional.
-  core.bool? useMetadataExchange;
-
-  GenerateClientCertificateRequest({
-    this.certDuration,
-    this.publicKey,
-    this.requestId,
-    this.useMetadataExchange,
-  });
-
-  GenerateClientCertificateRequest.fromJson(core.Map json_)
-      : this(
-          certDuration: json_.containsKey('certDuration')
-              ? json_['certDuration'] as core.String
-              : null,
-          publicKey: json_.containsKey('publicKey')
-              ? json_['publicKey'] as core.String
-              : null,
-          requestId: json_.containsKey('requestId')
-              ? json_['requestId'] as core.String
-              : null,
-          useMetadataExchange: json_.containsKey('useMetadataExchange')
-              ? json_['useMetadataExchange'] as core.bool
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (certDuration != null) 'certDuration': certDuration!,
-        if (publicKey != null) 'publicKey': publicKey!,
-        if (requestId != null) 'requestId': requestId!,
-        if (useMetadataExchange != null)
-          'useMetadataExchange': useMetadataExchange!,
-      };
-}
-
-/// Message returned by a GenerateClientCertificate operation.
-class GenerateClientCertificateResponse {
-  /// The pem-encoded cluster ca X.509 certificate.
-  ///
-  /// Optional.
-  core.String? caCert;
-
-  /// The pem-encoded chain that may be used to verify the X.509 certificate.
-  ///
-  /// Expected to be in issuer-to-root order according to RFC 5246.
-  ///
-  /// Output only.
-  core.List<core.String>? pemCertificateChain;
-
-  GenerateClientCertificateResponse({
-    this.caCert,
-    this.pemCertificateChain,
-  });
-
-  GenerateClientCertificateResponse.fromJson(core.Map json_)
-      : this(
-          caCert: json_.containsKey('caCert')
-              ? json_['caCert'] as core.String
-              : null,
-          pemCertificateChain: json_.containsKey('pemCertificateChain')
-              ? (json_['pemCertificateChain'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (caCert != null) 'caCert': caCert!,
-        if (pemCertificateChain != null)
-          'pemCertificateChain': pemCertificateChain!,
-      };
-}
-
 /// The response message for Locations.ListLocations.
 class GoogleCloudLocationListLocationsResponse {
   /// A list of locations that matches the specified filter in the request.
@@ -3596,11 +3470,24 @@ class Instance {
   /// Output only.
   core.String? name;
 
+  /// Instance level network configuration.
+  ///
+  /// Optional.
+  InstanceNetworkConfig? networkConfig;
+
   /// List of available read-only VMs in this instance, including the standby
   /// for a PRIMARY instance.
   ///
   /// Output only.
   core.List<Node>? nodes;
+
+  /// The public IP addresses for the Instance.
+  ///
+  /// This is available ONLY when enable_public_ip is set. This is the
+  /// connection endpoint for an end-user application.
+  ///
+  /// Output only.
+  core.String? publicIpAddress;
 
   /// Configuration for query insights.
   QueryInsightsInstanceConfig? queryInsightsConfig;
@@ -3680,7 +3567,9 @@ class Instance {
     this.labels,
     this.machineConfig,
     this.name,
+    this.networkConfig,
     this.nodes,
+    this.publicIpAddress,
     this.queryInsightsConfig,
     this.readPoolConfig,
     this.reconciling,
@@ -3750,11 +3639,18 @@ class Instance {
                   json_['machineConfig'] as core.Map<core.String, core.dynamic>)
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          networkConfig: json_.containsKey('networkConfig')
+              ? InstanceNetworkConfig.fromJson(
+                  json_['networkConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
           nodes: json_.containsKey('nodes')
               ? (json_['nodes'] as core.List)
                   .map((value) => Node.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
+              : null,
+          publicIpAddress: json_.containsKey('publicIpAddress')
+              ? json_['publicIpAddress'] as core.String
               : null,
           queryInsightsConfig: json_.containsKey('queryInsightsConfig')
               ? QueryInsightsInstanceConfig.fromJson(
@@ -3799,7 +3695,9 @@ class Instance {
         if (labels != null) 'labels': labels!,
         if (machineConfig != null) 'machineConfig': machineConfig!,
         if (name != null) 'name': name!,
+        if (networkConfig != null) 'networkConfig': networkConfig!,
         if (nodes != null) 'nodes': nodes!,
+        if (publicIpAddress != null) 'publicIpAddress': publicIpAddress!,
         if (queryInsightsConfig != null)
           'queryInsightsConfig': queryInsightsConfig!,
         if (readPoolConfig != null) 'readPoolConfig': readPoolConfig!,
@@ -3809,6 +3707,44 @@ class Instance {
         if (uid != null) 'uid': uid!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (writableNode != null) 'writableNode': writableNode!,
+      };
+}
+
+/// Metadata related to instance level network configuration.
+class InstanceNetworkConfig {
+  /// A list of external network authorized to access this instance.
+  ///
+  /// Optional.
+  core.List<AuthorizedNetwork>? authorizedExternalNetworks;
+
+  /// Enabling public ip for the instance.
+  ///
+  /// Optional.
+  core.bool? enablePublicIp;
+
+  InstanceNetworkConfig({
+    this.authorizedExternalNetworks,
+    this.enablePublicIp,
+  });
+
+  InstanceNetworkConfig.fromJson(core.Map json_)
+      : this(
+          authorizedExternalNetworks:
+              json_.containsKey('authorizedExternalNetworks')
+                  ? (json_['authorizedExternalNetworks'] as core.List)
+                      .map((value) => AuthorizedNetwork.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+          enablePublicIp: json_.containsKey('enablePublicIp')
+              ? json_['enablePublicIp'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (authorizedExternalNetworks != null)
+          'authorizedExternalNetworks': authorizedExternalNetworks!,
+        if (enablePublicIp != null) 'enablePublicIp': enablePublicIp!,
       };
 }
 

@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240229",
+    "revision": "20240328",
     "rootUrl": "https://vmmigration.googleapis.com/",
     "servicePath": "",
     "title": "VM Migration API",

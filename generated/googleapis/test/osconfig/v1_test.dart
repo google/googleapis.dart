@@ -3055,6 +3055,33 @@ void checkPausePatchDeploymentRequest(api.PausePatchDeploymentRequest o) {
   buildCounterPausePatchDeploymentRequest--;
 }
 
+core.int buildCounterProjectFeatureSettings = 0;
+api.ProjectFeatureSettings buildProjectFeatureSettings() {
+  final o = api.ProjectFeatureSettings();
+  buildCounterProjectFeatureSettings++;
+  if (buildCounterProjectFeatureSettings < 3) {
+    o.name = 'foo';
+    o.patchAndConfigFeatureSet = 'foo';
+  }
+  buildCounterProjectFeatureSettings--;
+  return o;
+}
+
+void checkProjectFeatureSettings(api.ProjectFeatureSettings o) {
+  buildCounterProjectFeatureSettings++;
+  if (buildCounterProjectFeatureSettings < 3) {
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.patchAndConfigFeatureSet!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterProjectFeatureSettings--;
+}
+
 core.int buildCounterRecurringSchedule = 0;
 api.RecurringSchedule buildRecurringSchedule() {
   final o = api.RecurringSchedule();
@@ -4571,6 +4598,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-ProjectFeatureSettings', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildProjectFeatureSettings();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ProjectFeatureSettings.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkProjectFeatureSettings(od);
+    });
+  });
+
   unittest.group('obj-schema-RecurringSchedule', () {
     unittest.test('to-json--from-json', () async {
       final o = buildRecurringSchedule();
@@ -4719,6 +4756,125 @@ void main() {
       final od = api.ZypperSettings.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkZypperSettings(od);
+    });
+  });
+
+  unittest.group('resource-ProjectsLocationsGlobalResource', () {
+    unittest.test('method--getProjectFeatureSettings', () async {
+      final mock = HttpServerMock();
+      final res = api.OSConfigApi(mock).projects.locations.global;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildProjectFeatureSettings());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.getProjectFeatureSettings(arg_name, $fields: arg_$fields);
+      checkProjectFeatureSettings(response as api.ProjectFeatureSettings);
+    });
+
+    unittest.test('method--updateProjectFeatureSettings', () async {
+      final mock = HttpServerMock();
+      final res = api.OSConfigApi(mock).projects.locations.global;
+      final arg_request = buildProjectFeatureSettings();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.ProjectFeatureSettings.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkProjectFeatureSettings(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['updateMask']!.first,
+          unittest.equals(arg_updateMask),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildProjectFeatureSettings());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.updateProjectFeatureSettings(
+          arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkProjectFeatureSettings(response as api.ProjectFeatureSettings);
     });
   });
 

@@ -1623,92 +1623,12 @@ class GoogleCloudAssuredworkloadsV1ViolationRemediationInstructions {
 }
 
 /// Remediation instructions to resolve violation via cloud console
-class GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsConsole {
-  /// Additional urls for more information about steps
-  core.List<core.String>? additionalLinks;
-
-  /// Link to console page where violations can be resolved
-  core.List<core.String>? consoleUris;
-
-  /// Steps to resolve violation via cloud console
-  core.List<core.String>? steps;
-
-  GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsConsole({
-    this.additionalLinks,
-    this.consoleUris,
-    this.steps,
-  });
-
-  GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsConsole.fromJson(
-      core.Map json_)
-      : this(
-          additionalLinks: json_.containsKey('additionalLinks')
-              ? (json_['additionalLinks'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          consoleUris: json_.containsKey('consoleUris')
-              ? (json_['consoleUris'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          steps: json_.containsKey('steps')
-              ? (json_['steps'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (additionalLinks != null) 'additionalLinks': additionalLinks!,
-        if (consoleUris != null) 'consoleUris': consoleUris!,
-        if (steps != null) 'steps': steps!,
-      };
-}
+typedef GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsConsole
+    = $Console;
 
 /// Remediation instructions to resolve violation via gcloud cli
-class GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsGcloud {
-  /// Additional urls for more information about steps
-  core.List<core.String>? additionalLinks;
-
-  /// Gcloud command to resolve violation
-  core.List<core.String>? gcloudCommands;
-
-  /// Steps to resolve violation via gcloud cli
-  core.List<core.String>? steps;
-
-  GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsGcloud({
-    this.additionalLinks,
-    this.gcloudCommands,
-    this.steps,
-  });
-
-  GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsGcloud.fromJson(
-      core.Map json_)
-      : this(
-          additionalLinks: json_.containsKey('additionalLinks')
-              ? (json_['additionalLinks'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          gcloudCommands: json_.containsKey('gcloudCommands')
-              ? (json_['gcloudCommands'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          steps: json_.containsKey('steps')
-              ? (json_['steps'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (additionalLinks != null) 'additionalLinks': additionalLinks!,
-        if (gcloudCommands != null) 'gcloudCommands': gcloudCommands!,
-        if (steps != null) 'steps': steps!,
-      };
-}
+typedef GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsGcloud
+    = $Gcloud;
 
 /// A Workload object for managing highly regulated workloads of cloud
 /// customers.
@@ -1752,6 +1672,8 @@ class GoogleCloudAssuredworkloadsV1Workload {
   /// - "IL5" : Information protection as per DoD IL5 requirements.
   /// - "IL2" : Information protection as per DoD IL2 requirements.
   /// - "JP_REGIONS_AND_SUPPORT" : Assured Workloads for Japan Regions
+  /// - "KSA_REGIONS_AND_SUPPORT_WITH_SOVEREIGNTY_CONTROLS" : KSA R5 Controls.
+  /// - "FREE_REGIONS" : Assured Workloads Free Regions
   core.String? complianceRegime;
 
   /// Count of active Violations in the Workload.

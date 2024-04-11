@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240202",
+    "revision": "20240311",
     "rootUrl": "https://jobs.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Talent Solution API",

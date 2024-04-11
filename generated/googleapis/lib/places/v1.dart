@@ -924,7 +924,7 @@ class GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionQueryPrediction {
   /// The predicted text.
   ///
   /// This text does not represent a Place, but rather a text query that could
-  /// be used in a search endpoint (for example, TextSearch). `text` is
+  /// be used in a search endpoint (for example, Text Search). `text` is
   /// recommended for developers who wish to show a single UI element.
   /// Developers who wish to show two separate, but related, UI elements may
   /// want to use `structured_format` instead. They are two different ways to
@@ -1529,7 +1529,7 @@ class GoogleMapsPlacesV1Place {
   /// - "PRICE_LEVEL_INEXPENSIVE" : Place provides inexpensive services.
   /// - "PRICE_LEVEL_MODERATE" : Place provides moderately priced services.
   /// - "PRICE_LEVEL_EXPENSIVE" : Place provides expensive services.
-  /// - "PRICE_LEVEL_VERY_EXPENSIVE" : Place provides very expensive service s.
+  /// - "PRICE_LEVEL_VERY_EXPENSIVE" : Place provides very expensive services.
   core.String? priceLevel;
 
   /// The primary type of the given result.
@@ -2481,36 +2481,7 @@ class GoogleMapsPlacesV1PlacePaymentOptions {
 /// Plus code (http://plus.codes) is a location reference with two formats:
 /// global code defining a 14mx14m (1/8000th of a degree) or smaller rectangle,
 /// and compound code, replacing the prefix with a reference location.
-class GoogleMapsPlacesV1PlacePlusCode {
-  /// Place's compound code, such as "33GV+HQ, Ramberg, Norway", containing the
-  /// suffix of the global code and replacing the prefix with a formatted name
-  /// of a reference entity.
-  core.String? compoundCode;
-
-  /// Place's global (full) code, such as "9FWM33GV+HQ", representing an 1/8000
-  /// by 1/8000 degree area (~14 by 14 meters).
-  core.String? globalCode;
-
-  GoogleMapsPlacesV1PlacePlusCode({
-    this.compoundCode,
-    this.globalCode,
-  });
-
-  GoogleMapsPlacesV1PlacePlusCode.fromJson(core.Map json_)
-      : this(
-          compoundCode: json_.containsKey('compoundCode')
-              ? json_['compoundCode'] as core.String
-              : null,
-          globalCode: json_.containsKey('globalCode')
-              ? json_['globalCode'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (compoundCode != null) 'compoundCode': compoundCode!,
-        if (globalCode != null) 'globalCode': globalCode!,
-      };
-}
+typedef GoogleMapsPlacesV1PlacePlusCode = $PlusCode;
 
 /// Place resource name and id of sub destinations that relate to the place.
 ///
@@ -2839,6 +2810,11 @@ class GoogleMapsPlacesV1SearchNearbyResponse {
 
 /// Request proto for SearchText.
 class GoogleMapsPlacesV1SearchTextRequest {
+  /// Set the searchable EV options of a place search request.
+  ///
+  /// Optional.
+  GoogleMapsPlacesV1SearchTextRequestEVOptions? evOptions;
+
   /// The requested place type.
   ///
   /// Full list of types supported:
@@ -2926,6 +2902,7 @@ class GoogleMapsPlacesV1SearchTextRequest {
   core.String? textQuery;
 
   GoogleMapsPlacesV1SearchTextRequest({
+    this.evOptions,
     this.includedType,
     this.languageCode,
     this.locationBias,
@@ -2942,6 +2919,10 @@ class GoogleMapsPlacesV1SearchTextRequest {
 
   GoogleMapsPlacesV1SearchTextRequest.fromJson(core.Map json_)
       : this(
+          evOptions: json_.containsKey('evOptions')
+              ? GoogleMapsPlacesV1SearchTextRequestEVOptions.fromJson(
+                  json_['evOptions'] as core.Map<core.String, core.dynamic>)
+              : null,
           includedType: json_.containsKey('includedType')
               ? json_['includedType'] as core.String
               : null,
@@ -2986,6 +2967,7 @@ class GoogleMapsPlacesV1SearchTextRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (evOptions != null) 'evOptions': evOptions!,
         if (includedType != null) 'includedType': includedType!,
         if (languageCode != null) 'languageCode': languageCode!,
         if (locationBias != null) 'locationBias': locationBias!,
@@ -3000,6 +2982,48 @@ class GoogleMapsPlacesV1SearchTextRequest {
         if (strictTypeFiltering != null)
           'strictTypeFiltering': strictTypeFiltering!,
         if (textQuery != null) 'textQuery': textQuery!,
+      };
+}
+
+/// Searchable EV options of a place search request.
+class GoogleMapsPlacesV1SearchTextRequestEVOptions {
+  /// The list of preferred EV connector types.
+  ///
+  /// A place that does not support any of the listed connector types are filter
+  /// out.
+  ///
+  /// Optional.
+  core.List<core.String>? connectorTypes;
+
+  /// Filtering places by minimum charging rate.
+  ///
+  /// Any places with charging a rate less than the minimum charging rate are
+  /// filtered out.
+  ///
+  /// Optional.
+  core.double? minimumChargingRateKw;
+
+  GoogleMapsPlacesV1SearchTextRequestEVOptions({
+    this.connectorTypes,
+    this.minimumChargingRateKw,
+  });
+
+  GoogleMapsPlacesV1SearchTextRequestEVOptions.fromJson(core.Map json_)
+      : this(
+          connectorTypes: json_.containsKey('connectorTypes')
+              ? (json_['connectorTypes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          minimumChargingRateKw: json_.containsKey('minimumChargingRateKw')
+              ? (json_['minimumChargingRateKw'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (connectorTypes != null) 'connectorTypes': connectorTypes!,
+        if (minimumChargingRateKw != null)
+          'minimumChargingRateKw': minimumChargingRateKw!,
       };
 }
 

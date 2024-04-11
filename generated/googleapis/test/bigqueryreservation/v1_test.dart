@@ -211,6 +211,21 @@ void checkEmpty(api.Empty o) {
   buildCounterEmpty--;
 }
 
+core.int buildCounterFailoverReservationRequest = 0;
+api.FailoverReservationRequest buildFailoverReservationRequest() {
+  final o = api.FailoverReservationRequest();
+  buildCounterFailoverReservationRequest++;
+  if (buildCounterFailoverReservationRequest < 3) {}
+  buildCounterFailoverReservationRequest--;
+  return o;
+}
+
+void checkFailoverReservationRequest(api.FailoverReservationRequest o) {
+  buildCounterFailoverReservationRequest++;
+  if (buildCounterFailoverReservationRequest < 3) {}
+  buildCounterFailoverReservationRequest--;
+}
+
 core.List<api.Assignment> buildUnnamed1() => [
       buildAssignment(),
       buildAssignment(),
@@ -393,6 +408,9 @@ api.Reservation buildReservation() {
     o.ignoreIdleSlots = true;
     o.multiRegionAuxiliary = true;
     o.name = 'foo';
+    o.originalPrimaryLocation = 'foo';
+    o.primaryLocation = 'foo';
+    o.secondaryLocation = 'foo';
     o.slotCapacity = 'foo';
     o.updateTime = 'foo';
   }
@@ -420,6 +438,18 @@ void checkReservation(api.Reservation o) {
     unittest.expect(o.multiRegionAuxiliary!, unittest.isTrue);
     unittest.expect(
       o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.originalPrimaryLocation!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.primaryLocation!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.secondaryLocation!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -713,6 +743,16 @@ void main() {
       final od =
           api.Empty.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkEmpty(od);
+    });
+  });
+
+  unittest.group('obj-schema-FailoverReservationRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildFailoverReservationRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.FailoverReservationRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkFailoverReservationRequest(od);
     });
   });
 
@@ -1664,6 +1704,65 @@ void main() {
       }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
       checkEmpty(response as api.Empty);
+    });
+
+    unittest.test('method--failoverReservation', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.BigQueryReservationApi(mock).projects.locations.reservations;
+      final arg_request = buildFailoverReservationRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.FailoverReservationRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkFailoverReservationRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildReservation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.failoverReservation(arg_request, arg_name,
+          $fields: arg_$fields);
+      checkReservation(response as api.Reservation);
     });
 
     unittest.test('method--get', () async {

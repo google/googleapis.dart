@@ -719,6 +719,57 @@ class InstancesResource {
 
   InstancesResource(commons.ApiRequester client) : _requester = client;
 
+  /// Acquire a lease for the setup of SQL Server Reporting Services (SSRS).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Required. ID of the project that contains the instance
+  /// (Example: project-id).
+  ///
+  /// [instance] - Required. Cloud SQL instance ID. This doesn't include the
+  /// project ID. It's composed of lowercase letters, numbers, and hyphens, and
+  /// it must start with a letter. The total length must be 98 characters or
+  /// less (Example: instance-id).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SqlInstancesAcquireSsrsLeaseResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SqlInstancesAcquireSsrsLeaseResponse> acquireSsrsLease(
+    InstancesAcquireSsrsLeaseRequest request,
+    core.String project,
+    core.String instance, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'sql/v1beta4/projects/' +
+        commons.escapeVariable('$project') +
+        '/instances/' +
+        commons.escapeVariable('$instance') +
+        '/acquireSsrsLease';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return SqlInstancesAcquireSsrsLeaseResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Add a new trusted Certificate Authority (CA) version for the specified
   /// instance.
   ///
@@ -1433,6 +1484,52 @@ class InstancesResource {
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Release a lease for the setup of SQL Server Reporting Services (SSRS).
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Required. The ID of the project that contains the instance
+  /// (Example: project-id).
+  ///
+  /// [instance] - Required. The Cloud SQL instance ID. This doesn't include the
+  /// project ID. It's composed of lowercase letters, numbers, and hyphens, and
+  /// it must start with a letter. The total length must be 98 characters or
+  /// less (Example: instance-id).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SqlInstancesReleaseSsrsLeaseResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SqlInstancesReleaseSsrsLeaseResponse> releaseSsrsLease(
+    core.String project,
+    core.String instance, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'sql/v1beta4/projects/' +
+        commons.escapeVariable('$project') +
+        '/instances/' +
+        commons.escapeVariable('$instance') +
+        '/releaseSsrsLease';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+    );
+    return SqlInstancesReleaseSsrsLeaseResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes all client certificates and generates a new server SSL certificate
@@ -2885,6 +2982,53 @@ class AclEntry {
       };
 }
 
+/// Acquire SSRS lease context.
+class AcquireSsrsLeaseContext {
+  /// Lease duration needed for the SSRS setup.
+  core.String? duration;
+
+  /// The report database to be used for the SSRS setup.
+  core.String? reportDatabase;
+
+  /// The username to be used as the service login to connect to the report
+  /// database for SSRS setup.
+  core.String? serviceLogin;
+
+  /// The username to be used as the setup login to connect to the database
+  /// server for SSRS setup.
+  core.String? setupLogin;
+
+  AcquireSsrsLeaseContext({
+    this.duration,
+    this.reportDatabase,
+    this.serviceLogin,
+    this.setupLogin,
+  });
+
+  AcquireSsrsLeaseContext.fromJson(core.Map json_)
+      : this(
+          duration: json_.containsKey('duration')
+              ? json_['duration'] as core.String
+              : null,
+          reportDatabase: json_.containsKey('reportDatabase')
+              ? json_['reportDatabase'] as core.String
+              : null,
+          serviceLogin: json_.containsKey('serviceLogin')
+              ? json_['serviceLogin'] as core.String
+              : null,
+          setupLogin: json_.containsKey('setupLogin')
+              ? json_['setupLogin'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (duration != null) 'duration': duration!,
+        if (reportDatabase != null) 'reportDatabase': reportDatabase!,
+        if (serviceLogin != null) 'serviceLogin': serviceLogin!,
+        if (setupLogin != null) 'setupLogin': setupLogin!,
+      };
+}
+
 /// Specifies options for controlling advanced machine features.
 class AdvancedMachineFeatures {
   /// The number of threads per physical core.
@@ -2986,6 +3130,23 @@ class BackupConfiguration {
   /// restore, from 1-7.
   core.int? transactionLogRetentionDays;
 
+  /// This value contains the storage location of transactional logs for the
+  /// database for point-in-time recovery.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "TRANSACTIONAL_LOG_STORAGE_STATE_UNSPECIFIED" : Unspecified.
+  /// - "DISK" : The transaction logs for the instance are stored on a data
+  /// disk.
+  /// - "SWITCHING_TO_CLOUD_STORAGE" : The transaction logs for the instance are
+  /// switching from being stored on a data disk to being stored in Cloud
+  /// Storage.
+  /// - "SWITCHED_TO_CLOUD_STORAGE" : The transaction logs for the instance are
+  /// now stored in Cloud Storage. Previously, they were stored on a data disk.
+  /// - "CLOUD_STORAGE" : The transaction logs for the instance are stored in
+  /// Cloud Storage.
+  core.String? transactionalLogStorageState;
+
   BackupConfiguration({
     this.backupRetentionSettings,
     this.binaryLogEnabled,
@@ -2996,6 +3157,7 @@ class BackupConfiguration {
     this.replicationLogArchivingEnabled,
     this.startTime,
     this.transactionLogRetentionDays,
+    this.transactionalLogStorageState,
   });
 
   BackupConfiguration.fromJson(core.Map json_)
@@ -3030,6 +3192,10 @@ class BackupConfiguration {
               json_.containsKey('transactionLogRetentionDays')
                   ? json_['transactionLogRetentionDays'] as core.int
                   : null,
+          transactionalLogStorageState:
+              json_.containsKey('transactionalLogStorageState')
+                  ? json_['transactionalLogStorageState'] as core.String
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3046,6 +3212,8 @@ class BackupConfiguration {
         if (startTime != null) 'startTime': startTime!,
         if (transactionLogRetentionDays != null)
           'transactionLogRetentionDays': transactionLogRetentionDays!,
+        if (transactionalLogStorageState != null)
+          'transactionalLogStorageState': transactionalLogStorageState!,
       };
 }
 
@@ -3584,6 +3752,14 @@ class ConnectSettings {
   /// version is 35.
   /// - "MYSQL_8_0_36" : The database major version is MySQL 8.0 and the minor
   /// version is 36.
+  /// - "MYSQL_8_0_37" : The database major version is MySQL 8.0 and the minor
+  /// version is 37.
+  /// - "MYSQL_8_0_38" : The database major version is MySQL 8.0 and the minor
+  /// version is 38.
+  /// - "MYSQL_8_0_39" : The database major version is MySQL 8.0 and the minor
+  /// version is 39.
+  /// - "MYSQL_8_0_40" : The database major version is MySQL 8.0 and the minor
+  /// version is 40.
   /// - "SQLSERVER_2019_STANDARD" : The database version is SQL Server 2019
   /// Standard.
   /// - "SQLSERVER_2019_ENTERPRISE" : The database version is SQL Server 2019
@@ -3949,6 +4125,14 @@ class DatabaseInstance {
   /// version is 35.
   /// - "MYSQL_8_0_36" : The database major version is MySQL 8.0 and the minor
   /// version is 36.
+  /// - "MYSQL_8_0_37" : The database major version is MySQL 8.0 and the minor
+  /// version is 37.
+  /// - "MYSQL_8_0_38" : The database major version is MySQL 8.0 and the minor
+  /// version is 38.
+  /// - "MYSQL_8_0_39" : The database major version is MySQL 8.0 and the minor
+  /// version is 39.
+  /// - "MYSQL_8_0_40" : The database major version is MySQL 8.0 and the minor
+  /// version is 40.
   /// - "SQLSERVER_2019_STANDARD" : The database version is SQL Server 2019
   /// Standard.
   /// - "SQLSERVER_2019_ENTERPRISE" : The database version is SQL Server 2019
@@ -3991,6 +4175,9 @@ class DatabaseInstance {
   /// instance was created if the instance has failed over to its secondary
   /// zone. WARNING: Changing this might restart the instance.
   core.String? gceZone;
+
+  /// Gemini instance configuration.
+  GeminiInstanceConfig? geminiConfig;
 
   /// The instance type.
   /// Possible string values are:
@@ -4078,6 +4265,12 @@ class DatabaseInstance {
   /// The replicas of the instance.
   core.List<core.String>? replicaNames;
 
+  /// The pair of a primary instance and disaster recovery (DR) replica.
+  ///
+  /// A DR replica is a cross-region replica that you designate for failover in
+  /// the event that the primary instance has regional failure.
+  ReplicationCluster? replicationCluster;
+
   /// Initial root password.
   ///
   /// Use only on creation. You must set root passwords before you can connect
@@ -4159,6 +4352,7 @@ class DatabaseInstance {
     this.etag,
     this.failoverReplica,
     this.gceZone,
+    this.geminiConfig,
     this.instanceType,
     this.ipAddresses,
     this.ipv6Address,
@@ -4175,6 +4369,7 @@ class DatabaseInstance {
     this.region,
     this.replicaConfiguration,
     this.replicaNames,
+    this.replicationCluster,
     this.rootPassword,
     this.satisfiesPzs,
     this.scheduledMaintenance,
@@ -4238,6 +4433,10 @@ class DatabaseInstance {
           gceZone: json_.containsKey('gceZone')
               ? json_['gceZone'] as core.String
               : null,
+          geminiConfig: json_.containsKey('geminiConfig')
+              ? GeminiInstanceConfig.fromJson(
+                  json_['geminiConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
           instanceType: json_.containsKey('instanceType')
               ? json_['instanceType'] as core.String
               : null,
@@ -4291,6 +4490,10 @@ class DatabaseInstance {
               ? (json_['replicaNames'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
+              : null,
+          replicationCluster: json_.containsKey('replicationCluster')
+              ? ReplicationCluster.fromJson(json_['replicationCluster']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           rootPassword: json_.containsKey('rootPassword')
               ? json_['rootPassword'] as core.String
@@ -4353,6 +4556,7 @@ class DatabaseInstance {
         if (etag != null) 'etag': etag!,
         if (failoverReplica != null) 'failoverReplica': failoverReplica!,
         if (gceZone != null) 'gceZone': gceZone!,
+        if (geminiConfig != null) 'geminiConfig': geminiConfig!,
         if (instanceType != null) 'instanceType': instanceType!,
         if (ipAddresses != null) 'ipAddresses': ipAddresses!,
         if (ipv6Address != null) 'ipv6Address': ipv6Address!,
@@ -4374,6 +4578,8 @@ class DatabaseInstance {
         if (replicaConfiguration != null)
           'replicaConfiguration': replicaConfiguration!,
         if (replicaNames != null) 'replicaNames': replicaNames!,
+        if (replicationCluster != null)
+          'replicationCluster': replicationCluster!,
         if (rootPassword != null) 'rootPassword': rootPassword!,
         if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (scheduledMaintenance != null)
@@ -5236,6 +5442,84 @@ class FlagsListResponse {
       };
 }
 
+/// Gemini configuration.
+class GeminiInstanceConfig {
+  /// Whether active query is enabled.
+  ///
+  /// Output only.
+  core.bool? activeQueryEnabled;
+
+  /// Whether Gemini is enabled.
+  ///
+  /// Output only.
+  core.bool? entitled;
+
+  /// Whether flag recommender is enabled.
+  ///
+  /// Output only.
+  core.bool? flagRecommenderEnabled;
+
+  /// Whether vacuum management is enabled.
+  ///
+  /// Output only.
+  core.bool? googleVacuumMgmtEnabled;
+
+  /// Whether index advisor is enabled.
+  ///
+  /// Output only.
+  core.bool? indexAdvisorEnabled;
+
+  /// Whether oom session cancel is enabled.
+  ///
+  /// Output only.
+  core.bool? oomSessionCancelEnabled;
+
+  GeminiInstanceConfig({
+    this.activeQueryEnabled,
+    this.entitled,
+    this.flagRecommenderEnabled,
+    this.googleVacuumMgmtEnabled,
+    this.indexAdvisorEnabled,
+    this.oomSessionCancelEnabled,
+  });
+
+  GeminiInstanceConfig.fromJson(core.Map json_)
+      : this(
+          activeQueryEnabled: json_.containsKey('activeQueryEnabled')
+              ? json_['activeQueryEnabled'] as core.bool
+              : null,
+          entitled: json_.containsKey('entitled')
+              ? json_['entitled'] as core.bool
+              : null,
+          flagRecommenderEnabled: json_.containsKey('flagRecommenderEnabled')
+              ? json_['flagRecommenderEnabled'] as core.bool
+              : null,
+          googleVacuumMgmtEnabled: json_.containsKey('googleVacuumMgmtEnabled')
+              ? json_['googleVacuumMgmtEnabled'] as core.bool
+              : null,
+          indexAdvisorEnabled: json_.containsKey('indexAdvisorEnabled')
+              ? json_['indexAdvisorEnabled'] as core.bool
+              : null,
+          oomSessionCancelEnabled: json_.containsKey('oomSessionCancelEnabled')
+              ? json_['oomSessionCancelEnabled'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (activeQueryEnabled != null)
+          'activeQueryEnabled': activeQueryEnabled!,
+        if (entitled != null) 'entitled': entitled!,
+        if (flagRecommenderEnabled != null)
+          'flagRecommenderEnabled': flagRecommenderEnabled!,
+        if (googleVacuumMgmtEnabled != null)
+          'googleVacuumMgmtEnabled': googleVacuumMgmtEnabled!,
+        if (indexAdvisorEnabled != null)
+          'indexAdvisorEnabled': indexAdvisorEnabled!,
+        if (oomSessionCancelEnabled != null)
+          'oomSessionCancelEnabled': oomSessionCancelEnabled!,
+      };
+}
+
 /// Ephemeral certificate creation request.
 class GenerateEphemeralCertRequest {
   /// Access token to include in the signed certificate.
@@ -5516,6 +5800,41 @@ class ImportContextCsvImportOptions {
       };
 }
 
+/// Options for importing data from SQL statements.
+///
+/// Optional.
+class ImportContextSqlImportOptions {
+  /// Whether or not the import should be parallel.
+  ///
+  /// Optional.
+  core.bool? parallel;
+
+  /// The number of threads to use for parallel import.
+  ///
+  /// Optional.
+  core.int? threads;
+
+  ImportContextSqlImportOptions({
+    this.parallel,
+    this.threads,
+  });
+
+  ImportContextSqlImportOptions.fromJson(core.Map json_)
+      : this(
+          parallel: json_.containsKey('parallel')
+              ? json_['parallel'] as core.bool
+              : null,
+          threads: json_.containsKey('threads')
+              ? json_['threads'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (parallel != null) 'parallel': parallel!,
+        if (threads != null) 'threads': threads!,
+      };
+}
+
 /// Database instance import context.
 class ImportContext {
   /// Import parameters specific to SQL Server .BAK files
@@ -5551,6 +5870,11 @@ class ImportContext {
   /// This is always `sql#importContext`.
   core.String? kind;
 
+  /// Options for importing data from SQL statements.
+  ///
+  /// Optional.
+  ImportContextSqlImportOptions? sqlImportOptions;
+
   /// Path to the import file in Cloud Storage, in the form
   /// `gs://bucketName/fileName`.
   ///
@@ -5566,6 +5890,7 @@ class ImportContext {
     this.fileType,
     this.importUser,
     this.kind,
+    this.sqlImportOptions,
     this.uri,
   });
 
@@ -5589,6 +5914,10 @@ class ImportContext {
               ? json_['importUser'] as core.String
               : null,
           kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          sqlImportOptions: json_.containsKey('sqlImportOptions')
+              ? ImportContextSqlImportOptions.fromJson(json_['sqlImportOptions']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
         );
 
@@ -5599,6 +5928,7 @@ class ImportContext {
         if (fileType != null) 'fileType': fileType!,
         if (importUser != null) 'importUser': importUser!,
         if (kind != null) 'kind': kind!,
+        if (sqlImportOptions != null) 'sqlImportOptions': sqlImportOptions!,
         if (uri != null) 'uri': uri!,
       };
 }
@@ -5708,6 +6038,30 @@ class InstanceReference {
         if (name != null) 'name': name!,
         if (project != null) 'project': project!,
         if (region != null) 'region': region!,
+      };
+}
+
+/// Request to acquire an SSRS lease for an instance.
+class InstancesAcquireSsrsLeaseRequest {
+  /// Contains details about the acquire SSRS lease operation.
+  AcquireSsrsLeaseContext? acquireSsrsLeaseContext;
+
+  InstancesAcquireSsrsLeaseRequest({
+    this.acquireSsrsLeaseContext,
+  });
+
+  InstancesAcquireSsrsLeaseRequest.fromJson(core.Map json_)
+      : this(
+          acquireSsrsLeaseContext: json_.containsKey('acquireSsrsLeaseContext')
+              ? AcquireSsrsLeaseContext.fromJson(
+                  json_['acquireSsrsLeaseContext']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (acquireSsrsLeaseContext != null)
+          'acquireSsrsLeaseContext': acquireSsrsLeaseContext!,
       };
 }
 
@@ -6066,31 +6420,32 @@ class IpConfiguration {
   /// PSC settings for this instance.
   PscConfig? pscConfig;
 
-  /// Use `ssl_mode` instead for MySQL and PostgreSQL.
+  /// Use `ssl_mode` instead.
   ///
-  /// SQL Server uses this flag. Whether SSL/TLS connections over IP are
-  /// enforced. If set to false, then allow both non-SSL/non-TLS and SSL/TLS
-  /// connections. For SSL/TLS connections, the client certificate won't be
-  /// verified. If set to true, then only allow connections encrypted with
-  /// SSL/TLS and with valid client certificates. If you want to enforce SSL/TLS
-  /// without enforcing the requirement for valid client certificates, then use
-  /// the `ssl_mode` flag instead of the legacy `require_ssl` flag.
+  /// Whether SSL/TLS connections over IP are enforced. If set to false, then
+  /// allow both non-SSL/non-TLS and SSL/TLS connections. For SSL/TLS
+  /// connections, the client certificate won't be verified. If set to true,
+  /// then only allow connections encrypted with SSL/TLS and with valid client
+  /// certificates. If you want to enforce SSL/TLS without enforcing the
+  /// requirement for valid client certificates, then use the `ssl_mode` flag
+  /// instead of the legacy `require_ssl` flag.
   core.bool? requireSsl;
 
   /// Specify how SSL/TLS is enforced in database connections.
   ///
-  /// MySQL and PostgreSQL use the `ssl_mode` flag. If you must use the
-  /// `require_ssl` flag for backward compatibility, then only the following
-  /// value pairs are valid: * `ssl_mode=ALLOW_UNENCRYPTED_AND_ENCRYPTED` and
-  /// `require_ssl=false` * `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=false` *
-  /// `ssl_mode=TRUSTED_CLIENT_CERTIFICATE_REQUIRED` and `require_ssl=true` The
+  /// If you must use the `require_ssl` flag for backward compatibility, then
+  /// only the following value pairs are valid: For PostgreSQL and MySQL: *
+  /// `ssl_mode=ALLOW_UNENCRYPTED_AND_ENCRYPTED` and `require_ssl=false` *
+  /// `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=false` *
+  /// `ssl_mode=TRUSTED_CLIENT_CERTIFICATE_REQUIRED` and `require_ssl=true` For
+  /// SQL Server: * `ssl_mode=ALLOW_UNENCRYPTED_AND_ENCRYPTED` and
+  /// `require_ssl=false` * `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=true` The
   /// value of `ssl_mode` gets priority over the value of `require_ssl`. For
   /// example, for the pair `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=false`,
   /// the `ssl_mode=ENCRYPTED_ONLY` means only accept SSL connections, while the
   /// `require_ssl=false` means accept both non-SSL and SSL connections. MySQL
   /// and PostgreSQL databases respect `ssl_mode` in this case and accept only
-  /// SSL connections. SQL Server uses the `require_ssl` flag. You can set the
-  /// value for this flag to `true` or `false`.
+  /// SSL connections.
   /// Possible string values are:
   /// - "SSL_MODE_UNSPECIFIED" : The SSL mode is unknown.
   /// - "ALLOW_UNENCRYPTED_AND_ENCRYPTED" : Allow non-SSL/non-TLS and SSL/TLS
@@ -6108,7 +6463,8 @@ class IpConfiguration {
   /// [Cloud SQL Auth Proxy](https://cloud.google.com/sql/docs/postgres/connect-auth-proxy)
   /// or
   /// [Cloud SQL Connectors](https://cloud.google.com/sql/docs/postgres/connect-connectors)
-  /// to enforce client identity verification.
+  /// to enforce client identity verification. This value is not applicable to
+  /// SQL Server.
   core.String? sslMode;
 
   IpConfiguration({
@@ -6569,6 +6925,9 @@ class OnPremisesConfiguration {
 /// For successful operations that return an Operation resource, only the fields
 /// relevant to the operation are populated in the resource.
 class Operation {
+  /// The context for acquire SSRS lease operation, if applicable.
+  AcquireSsrsLeaseContext? acquireSsrsLeaseContext;
+
   /// An Admin API warning message.
   ApiWarning? apiWarning;
 
@@ -6658,6 +7017,14 @@ class Operation {
   /// database for auto recovery.
   /// - "REENCRYPT" : Re-encrypts CMEK instances with latest key version.
   /// - "SWITCHOVER" : Switches over to replica instance from primary.
+  /// - "ACQUIRE_SSRS_LEASE" : Acquire a lease for the setup of SQL Server
+  /// Reporting Services (SSRS).
+  /// - "RELEASE_SSRS_LEASE" : Release a lease for the setup of SQL Server
+  /// Reporting Services (SSRS).
+  /// - "RECONFIGURE_OLD_PRIMARY" : Reconfigures old primary after a promote
+  /// replica operation. Effect of a promote operation to the old primary is
+  /// executed in this operation, asynchronously from the promote replica
+  /// operation executed to the replica.
   core.String? operationType;
 
   /// The URI of this resource.
@@ -6688,6 +7055,7 @@ class Operation {
   core.String? user;
 
   Operation({
+    this.acquireSsrsLeaseContext,
     this.apiWarning,
     this.backupContext,
     this.endTime,
@@ -6709,6 +7077,11 @@ class Operation {
 
   Operation.fromJson(core.Map json_)
       : this(
+          acquireSsrsLeaseContext: json_.containsKey('acquireSsrsLeaseContext')
+              ? AcquireSsrsLeaseContext.fromJson(
+                  json_['acquireSsrsLeaseContext']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           apiWarning: json_.containsKey('apiWarning')
               ? ApiWarning.fromJson(
                   json_['apiWarning'] as core.Map<core.String, core.dynamic>)
@@ -6762,6 +7135,8 @@ class Operation {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (acquireSsrsLeaseContext != null)
+          'acquireSsrsLeaseContext': acquireSsrsLeaseContext!,
         if (apiWarning != null) 'apiWarning': apiWarning!,
         if (backupContext != null) 'backupContext': backupContext!,
         if (endTime != null) 'endTime': endTime!,
@@ -7125,6 +7500,47 @@ class ReplicaConfiguration {
       };
 }
 
+/// Primary-DR replica pair
+class ReplicationCluster {
+  /// read-only field that indicates if the replica is a dr_replica; not set for
+  /// a primary.
+  ///
+  /// Output only.
+  core.bool? drReplica;
+
+  /// If the instance is a primary instance, then this field identifies the
+  /// disaster recovery (DR) replica.
+  ///
+  /// A DR replica is an optional configuration for Enterprise Plus edition
+  /// instances. If the instance is a read replica, then the field is not set.
+  /// Users can set this field to set a designated DR replica for a primary.
+  /// Removing this field removes the DR replica.
+  ///
+  /// Optional.
+  core.String? failoverDrReplicaName;
+
+  ReplicationCluster({
+    this.drReplica,
+    this.failoverDrReplicaName,
+  });
+
+  ReplicationCluster.fromJson(core.Map json_)
+      : this(
+          drReplica: json_.containsKey('drReplica')
+              ? json_['drReplica'] as core.bool
+              : null,
+          failoverDrReplicaName: json_.containsKey('failoverDrReplicaName')
+              ? json_['failoverDrReplicaName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (drReplica != null) 'drReplica': drReplica!,
+        if (failoverDrReplicaName != null)
+          'failoverDrReplicaName': failoverDrReplicaName!,
+      };
+}
+
 class Reschedule {
   /// The type of the reschedule.
   ///
@@ -7362,6 +7778,16 @@ class Settings {
   /// - "ENTERPRISE_PLUS" : The instance is an Enterprise Plus edition.
   core.String? edition;
 
+  /// When this parameter is set to true, Cloud SQL instances can connect to
+  /// Vertex AI to pass requests for real-time predictions and insights to the
+  /// AI.
+  ///
+  /// The default value is false. This applies only to Cloud SQL for PostgreSQL
+  /// instances.
+  ///
+  /// Optional.
+  core.bool? enableGoogleMlIntegration;
+
   /// Insights configuration, for now relevant only for Postgres.
   InsightsConfig? insightsConfig;
 
@@ -7471,6 +7897,7 @@ class Settings {
     this.deletionProtectionEnabled,
     this.denyMaintenancePeriods,
     this.edition,
+    this.enableGoogleMlIntegration,
     this.insightsConfig,
     this.ipConfiguration,
     this.kind,
@@ -7558,6 +7985,10 @@ class Settings {
           edition: json_.containsKey('edition')
               ? json_['edition'] as core.String
               : null,
+          enableGoogleMlIntegration:
+              json_.containsKey('enableGoogleMlIntegration')
+                  ? json_['enableGoogleMlIntegration'] as core.bool
+                  : null,
           insightsConfig: json_.containsKey('insightsConfig')
               ? InsightsConfig.fromJson(json_['insightsConfig']
                   as core.Map<core.String, core.dynamic>)
@@ -7642,6 +8073,8 @@ class Settings {
         if (denyMaintenancePeriods != null)
           'denyMaintenancePeriods': denyMaintenancePeriods!,
         if (edition != null) 'edition': edition!,
+        if (enableGoogleMlIntegration != null)
+          'enableGoogleMlIntegration': enableGoogleMlIntegration!,
         if (insightsConfig != null) 'insightsConfig': insightsConfig!,
         if (ipConfiguration != null) 'ipConfiguration': ipConfiguration!,
         if (kind != null) 'kind': kind!,
@@ -7813,6 +8246,27 @@ class SqlExternalSyncSettingError {
       };
 }
 
+/// Acquire SSRS lease response.
+class SqlInstancesAcquireSsrsLeaseResponse {
+  /// The unique identifier for this operation.
+  core.String? operationId;
+
+  SqlInstancesAcquireSsrsLeaseResponse({
+    this.operationId,
+  });
+
+  SqlInstancesAcquireSsrsLeaseResponse.fromJson(core.Map json_)
+      : this(
+          operationId: json_.containsKey('operationId')
+              ? json_['operationId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (operationId != null) 'operationId': operationId!,
+      };
+}
+
 /// Instance get disk shrink config response.
 class SqlInstancesGetDiskShrinkConfigResponse {
   /// This is always `sql#getDiskShrinkConfig`.
@@ -7877,6 +8331,27 @@ class SqlInstancesGetLatestRecoveryTimeResponse {
       };
 }
 
+/// The response for the release of the SSRS lease.
+class SqlInstancesReleaseSsrsLeaseResponse {
+  /// The operation ID.
+  core.String? operationId;
+
+  SqlInstancesReleaseSsrsLeaseResponse({
+    this.operationId,
+  });
+
+  SqlInstancesReleaseSsrsLeaseResponse.fromJson(core.Map json_)
+      : this(
+          operationId: json_.containsKey('operationId')
+              ? json_['operationId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (operationId != null) 'operationId': operationId!,
+      };
+}
+
 /// Reschedule options for maintenance windows.
 class SqlInstancesRescheduleMaintenanceRequestBody {
   /// The type of the reschedule the user wants.
@@ -7905,6 +8380,17 @@ class SqlInstancesRescheduleMaintenanceRequestBody {
 typedef SqlInstancesResetReplicaSizeRequest = $Empty;
 
 class SqlInstancesStartExternalSyncRequest {
+  /// MigrationType decides if the migration is a physical file based migration
+  /// or logical migration.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "MIGRATION_TYPE_UNSPECIFIED" : If no migration type is specified it will
+  /// be defaulted to LOGICAL.
+  /// - "LOGICAL" : Logical Migrations
+  /// - "PHYSICAL" : Physical file based Migrations
+  core.String? migrationType;
+
   /// MySQL-specific settings for start external sync.
   MySqlSyncConfig? mysqlSyncConfig;
 
@@ -7935,6 +8421,7 @@ class SqlInstancesStartExternalSyncRequest {
   core.String? syncParallelLevel;
 
   SqlInstancesStartExternalSyncRequest({
+    this.migrationType,
     this.mysqlSyncConfig,
     this.skipVerification,
     this.syncMode,
@@ -7943,6 +8430,9 @@ class SqlInstancesStartExternalSyncRequest {
 
   SqlInstancesStartExternalSyncRequest.fromJson(core.Map json_)
       : this(
+          migrationType: json_.containsKey('migrationType')
+              ? json_['migrationType'] as core.String
+              : null,
           mysqlSyncConfig: json_.containsKey('mysqlSyncConfig')
               ? MySqlSyncConfig.fromJson(json_['mysqlSyncConfig']
                   as core.Map<core.String, core.dynamic>)
@@ -7959,6 +8449,7 @@ class SqlInstancesStartExternalSyncRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (migrationType != null) 'migrationType': migrationType!,
         if (mysqlSyncConfig != null) 'mysqlSyncConfig': mysqlSyncConfig!,
         if (skipVerification != null) 'skipVerification': skipVerification!,
         if (syncMode != null) 'syncMode': syncMode!,
@@ -7967,6 +8458,17 @@ class SqlInstancesStartExternalSyncRequest {
 }
 
 class SqlInstancesVerifyExternalSyncSettingsRequest {
+  /// MigrationType field decides if the migration is a physical file based
+  /// migration or logical migration
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "MIGRATION_TYPE_UNSPECIFIED" : If no migration type is specified it will
+  /// be defaulted to LOGICAL.
+  /// - "LOGICAL" : Logical Migrations
+  /// - "PHYSICAL" : Physical file based Migrations
+  core.String? migrationType;
+
   /// MySQL-specific settings for start external sync.
   ///
   /// Optional.
@@ -7982,6 +8484,19 @@ class SqlInstancesVerifyExternalSyncSettingsRequest {
   /// snapshot of the primary instance's data
   core.String? syncMode;
 
+  /// Parallel level for initial data sync.
+  ///
+  /// Currently only applicable for PostgreSQL.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "EXTERNAL_SYNC_PARALLEL_LEVEL_UNSPECIFIED" : Unknown sync parallel
+  /// level. Will be defaulted to OPTIMAL.
+  /// - "MIN" : Minimal parallel level.
+  /// - "OPTIMAL" : Optimal parallel level.
+  /// - "MAX" : Maximum parallel level.
+  core.String? syncParallelLevel;
+
   /// Flag to enable verifying connection only
   core.bool? verifyConnectionOnly;
 
@@ -7991,20 +8506,28 @@ class SqlInstancesVerifyExternalSyncSettingsRequest {
   core.bool? verifyReplicationOnly;
 
   SqlInstancesVerifyExternalSyncSettingsRequest({
+    this.migrationType,
     this.mysqlSyncConfig,
     this.syncMode,
+    this.syncParallelLevel,
     this.verifyConnectionOnly,
     this.verifyReplicationOnly,
   });
 
   SqlInstancesVerifyExternalSyncSettingsRequest.fromJson(core.Map json_)
       : this(
+          migrationType: json_.containsKey('migrationType')
+              ? json_['migrationType'] as core.String
+              : null,
           mysqlSyncConfig: json_.containsKey('mysqlSyncConfig')
               ? MySqlSyncConfig.fromJson(json_['mysqlSyncConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
           syncMode: json_.containsKey('syncMode')
               ? json_['syncMode'] as core.String
+              : null,
+          syncParallelLevel: json_.containsKey('syncParallelLevel')
+              ? json_['syncParallelLevel'] as core.String
               : null,
           verifyConnectionOnly: json_.containsKey('verifyConnectionOnly')
               ? json_['verifyConnectionOnly'] as core.bool
@@ -8015,8 +8538,10 @@ class SqlInstancesVerifyExternalSyncSettingsRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (migrationType != null) 'migrationType': migrationType!,
         if (mysqlSyncConfig != null) 'mysqlSyncConfig': mysqlSyncConfig!,
         if (syncMode != null) 'syncMode': syncMode!,
+        if (syncParallelLevel != null) 'syncParallelLevel': syncParallelLevel!,
         if (verifyConnectionOnly != null)
           'verifyConnectionOnly': verifyConnectionOnly!,
         if (verifyReplicationOnly != null)

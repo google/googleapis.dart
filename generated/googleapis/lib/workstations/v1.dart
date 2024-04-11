@@ -1644,6 +1644,36 @@ class ProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsResource
   }
 }
 
+/// An accelerator card attached to the instance.
+class Accelerator {
+  /// Number of accelerator cards exposed to the instance.
+  ///
+  /// Optional.
+  core.int? count;
+
+  /// Type of accelerator resource to attach to the instance, for example,
+  /// `"nvidia-tesla-p100"`.
+  ///
+  /// Optional.
+  core.String? type;
+
+  Accelerator({
+    this.count,
+    this.type,
+  });
+
+  Accelerator.fromJson(core.Map json_)
+      : this(
+          count: json_.containsKey('count') ? json_['count'] as core.int : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (count != null) 'count': count!,
+        if (type != null) 'type': type!,
+      };
+}
+
 /// Specifies the audit configuration for a service.
 ///
 /// The configuration determines which permission types are logged, and what
@@ -1977,6 +2007,40 @@ class DomainConfig {
       };
 }
 
+/// An ephemeral directory which won't persist across workstation sessions.
+///
+/// It is freshly created on every workstation start operation.
+class EphemeralDirectory {
+  /// An EphemeralDirectory backed by a Compute Engine persistent disk.
+  GcePersistentDisk? gcePd;
+
+  /// Location of this directory in the running workstation.
+  ///
+  /// Required.
+  core.String? mountPath;
+
+  EphemeralDirectory({
+    this.gcePd,
+    this.mountPath,
+  });
+
+  EphemeralDirectory.fromJson(core.Map json_)
+      : this(
+          gcePd: json_.containsKey('gcePd')
+              ? GcePersistentDisk.fromJson(
+                  json_['gcePd'] as core.Map<core.String, core.dynamic>)
+              : null,
+          mountPath: json_.containsKey('mountPath')
+              ? json_['mountPath'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (gcePd != null) 'gcePd': gcePd!,
+        if (mountPath != null) 'mountPath': mountPath!,
+      };
+}
+
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.
 ///
@@ -2024,6 +2088,12 @@ class GceConfidentialInstanceConfig {
 
 /// A runtime using a Compute Engine instance.
 class GceInstance {
+  /// A list of the type and count of accelerator cards attached to the
+  /// instance.
+  ///
+  /// Optional.
+  core.List<Accelerator>? accelerators;
+
   /// The size of the boot disk for the VM in gigabytes (GB).
   ///
   /// The minimum boot disk size is `30` GB. Defaults to `50` GB.
@@ -2048,8 +2118,13 @@ class GceInstance {
   /// Optional.
   core.bool? disablePublicIpAddresses;
 
+  /// Whether to disable SSH access to the VM.
+  ///
+  /// Optional.
+  core.bool? disableSsh;
+
   /// Whether to enable nested virtualization on Cloud Workstations VMs created
-  /// under this workstation configuration.
+  /// using this workstation configuration.
   ///
   /// Nested virtualization lets you run virtual machine (VM) instances inside
   /// your workstation. Before enabling nested virtualization, consider the
@@ -2147,9 +2222,11 @@ class GceInstance {
   core.List<core.String>? tags;
 
   GceInstance({
+    this.accelerators,
     this.bootDiskSizeGb,
     this.confidentialInstanceConfig,
     this.disablePublicIpAddresses,
+    this.disableSsh,
     this.enableNestedVirtualization,
     this.machineType,
     this.poolSize,
@@ -2162,6 +2239,12 @@ class GceInstance {
 
   GceInstance.fromJson(core.Map json_)
       : this(
+          accelerators: json_.containsKey('accelerators')
+              ? (json_['accelerators'] as core.List)
+                  .map((value) => Accelerator.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           bootDiskSizeGb: json_.containsKey('bootDiskSizeGb')
               ? json_['bootDiskSizeGb'] as core.int
               : null,
@@ -2175,6 +2258,9 @@ class GceInstance {
               json_.containsKey('disablePublicIpAddresses')
                   ? json_['disablePublicIpAddresses'] as core.bool
                   : null,
+          disableSsh: json_.containsKey('disableSsh')
+              ? json_['disableSsh'] as core.bool
+              : null,
           enableNestedVirtualization:
               json_.containsKey('enableNestedVirtualization')
                   ? json_['enableNestedVirtualization'] as core.bool
@@ -2209,11 +2295,13 @@ class GceInstance {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (accelerators != null) 'accelerators': accelerators!,
         if (bootDiskSizeGb != null) 'bootDiskSizeGb': bootDiskSizeGb!,
         if (confidentialInstanceConfig != null)
           'confidentialInstanceConfig': confidentialInstanceConfig!,
         if (disablePublicIpAddresses != null)
           'disablePublicIpAddresses': disablePublicIpAddresses!,
+        if (disableSsh != null) 'disableSsh': disableSsh!,
         if (enableNestedVirtualization != null)
           'enableNestedVirtualization': enableNestedVirtualization!,
         if (machineType != null) 'machineType': machineType!,
@@ -2228,7 +2316,73 @@ class GceInstance {
       };
 }
 
-/// A PersistentDirectory backed by a Compute Engine regional persistent disk.
+/// An EphemeralDirectory is backed by a Compute Engine persistent disk.
+class GcePersistentDisk {
+  /// Type of the disk to use.
+  ///
+  /// Defaults to `"pd-standard"`.
+  ///
+  /// Optional.
+  core.String? diskType;
+
+  /// Whether the disk is read only.
+  ///
+  /// If true, the disk may be shared by multiple VMs and source_snapshot must
+  /// be set.
+  ///
+  /// Optional.
+  core.bool? readOnly;
+
+  /// Name of the disk image to use as the source for the disk.
+  ///
+  /// Must be empty if source_snapshot is set. Updating source_image will update
+  /// content in the ephemeral directory after the workstation is restarted.
+  /// This field is mutable.
+  ///
+  /// Optional.
+  core.String? sourceImage;
+
+  /// Name of the snapshot to use as the source for the disk.
+  ///
+  /// Must be empty if source_image is set. Must be empty if read_only is false.
+  /// Updating source_snapshot will update content in the ephemeral directory
+  /// after the workstation is restarted. This field is mutable.
+  ///
+  /// Optional.
+  core.String? sourceSnapshot;
+
+  GcePersistentDisk({
+    this.diskType,
+    this.readOnly,
+    this.sourceImage,
+    this.sourceSnapshot,
+  });
+
+  GcePersistentDisk.fromJson(core.Map json_)
+      : this(
+          diskType: json_.containsKey('diskType')
+              ? json_['diskType'] as core.String
+              : null,
+          readOnly: json_.containsKey('readOnly')
+              ? json_['readOnly'] as core.bool
+              : null,
+          sourceImage: json_.containsKey('sourceImage')
+              ? json_['sourceImage'] as core.String
+              : null,
+          sourceSnapshot: json_.containsKey('sourceSnapshot')
+              ? json_['sourceSnapshot'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (diskType != null) 'diskType': diskType!,
+        if (readOnly != null) 'readOnly': readOnly!,
+        if (sourceImage != null) 'sourceImage': sourceImage!,
+        if (sourceSnapshot != null) 'sourceSnapshot': sourceSnapshot!,
+      };
+}
+
+/// A Persistent Directory backed by a Compute Engine regional persistent disk.
 ///
 /// The persistent_directories field is repeated, but it may contain only one
 /// entry. It creates a
@@ -3593,10 +3747,10 @@ class WorkstationConfig {
 
   /// Disables support for plain TCP connections in the workstation.
   ///
-  /// By default the service supports TCP connections via a websocket relay.
+  /// By default the service supports TCP connections through a websocket relay.
   /// Setting this option to true disables that relay, which prevents the usage
-  /// of services that require plain tcp connections, such as ssh. When enabled,
-  /// all communication must occur over https or wss.
+  /// of services that require plain TCP connections, such as SSH. When enabled,
+  /// all communication must occur over HTTPS or WSS.
   ///
   /// Optional.
   core.bool? disableTcpConnections;
@@ -3633,6 +3787,11 @@ class WorkstationConfig {
   ///
   /// Immutable.
   CustomerEncryptionKey? encryptionKey;
+
+  /// Ephemeral directories which won't persist across workstation sessions.
+  ///
+  /// Optional.
+  core.List<EphemeralDirectory>? ephemeralDirectories;
 
   /// Checksum computed by the server.
   ///
@@ -3742,6 +3901,7 @@ class WorkstationConfig {
     this.displayName,
     this.enableAuditAgent,
     this.encryptionKey,
+    this.ephemeralDirectories,
     this.etag,
     this.host,
     this.idleTimeout,
@@ -3798,6 +3958,12 @@ class WorkstationConfig {
           encryptionKey: json_.containsKey('encryptionKey')
               ? CustomerEncryptionKey.fromJson(
                   json_['encryptionKey'] as core.Map<core.String, core.dynamic>)
+              : null,
+          ephemeralDirectories: json_.containsKey('ephemeralDirectories')
+              ? (json_['ephemeralDirectories'] as core.List)
+                  .map((value) => EphemeralDirectory.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
               : null,
           etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
           host: json_.containsKey('host')
@@ -3857,6 +4023,8 @@ class WorkstationConfig {
         if (displayName != null) 'displayName': displayName!,
         if (enableAuditAgent != null) 'enableAuditAgent': enableAuditAgent!,
         if (encryptionKey != null) 'encryptionKey': encryptionKey!,
+        if (ephemeralDirectories != null)
+          'ephemeralDirectories': ephemeralDirectories!,
         if (etag != null) 'etag': etag!,
         if (host != null) 'host': host!,
         if (idleTimeout != null) 'idleTimeout': idleTimeout!,

@@ -2199,6 +2199,14 @@ class BillingAccountsSinksResource {
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]" "folders/\[FOLDER_ID\]"
   /// Value must have pattern `^billingAccounts/\[^/\]+$`.
   ///
+  /// [filter] - Optional. A filter expression to constrain the sinks returned.
+  /// Today, this only supports the following strings: '' 'in_scope("ALL")',
+  /// 'in_scope("ANCESTOR")', 'in_scope("DEFAULT")'.Description of scopes below.
+  /// ALL: Includes all of the sinks which can be returned in any other scope.
+  /// ANCESTOR: Includes intercepting sinks owned by ancestor resources.
+  /// DEFAULT: Includes sinks owned by parent.When the empty string is provided,
+  /// then the filter 'in_scope("DEFAULT")' is applied.
+  ///
   /// [pageSize] - Optional. The maximum number of results to return from this
   /// request. Non-positive values are ignored. The presence of nextPageToken in
   /// the response indicates that more results might be available.
@@ -2220,11 +2228,13 @@ class BillingAccountsSinksResource {
   /// this method will complete with the same error.
   async.Future<ListSinksResponse> list(
     core.String parent, {
+    core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -4898,6 +4908,14 @@ class FoldersSinksResource {
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]" "folders/\[FOLDER_ID\]"
   /// Value must have pattern `^folders/\[^/\]+$`.
   ///
+  /// [filter] - Optional. A filter expression to constrain the sinks returned.
+  /// Today, this only supports the following strings: '' 'in_scope("ALL")',
+  /// 'in_scope("ANCESTOR")', 'in_scope("DEFAULT")'.Description of scopes below.
+  /// ALL: Includes all of the sinks which can be returned in any other scope.
+  /// ANCESTOR: Includes intercepting sinks owned by ancestor resources.
+  /// DEFAULT: Includes sinks owned by parent.When the empty string is provided,
+  /// then the filter 'in_scope("DEFAULT")' is applied.
+  ///
   /// [pageSize] - Optional. The maximum number of results to return from this
   /// request. Non-positive values are ignored. The presence of nextPageToken in
   /// the response indicates that more results might be available.
@@ -4919,11 +4937,13 @@ class FoldersSinksResource {
   /// this method will complete with the same error.
   async.Future<ListSinksResponse> list(
     core.String parent, {
+    core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -8573,6 +8593,14 @@ class OrganizationsSinksResource {
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]" "folders/\[FOLDER_ID\]"
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
+  /// [filter] - Optional. A filter expression to constrain the sinks returned.
+  /// Today, this only supports the following strings: '' 'in_scope("ALL")',
+  /// 'in_scope("ANCESTOR")', 'in_scope("DEFAULT")'.Description of scopes below.
+  /// ALL: Includes all of the sinks which can be returned in any other scope.
+  /// ANCESTOR: Includes intercepting sinks owned by ancestor resources.
+  /// DEFAULT: Includes sinks owned by parent.When the empty string is provided,
+  /// then the filter 'in_scope("DEFAULT")' is applied.
+  ///
   /// [pageSize] - Optional. The maximum number of results to return from this
   /// request. Non-positive values are ignored. The presence of nextPageToken in
   /// the response indicates that more results might be available.
@@ -8594,11 +8622,13 @@ class OrganizationsSinksResource {
   /// this method will complete with the same error.
   async.Future<ListSinksResponse> list(
     core.String parent, {
+    core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -11056,6 +11086,14 @@ class ProjectsSinksResource {
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]" "folders/\[FOLDER_ID\]"
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
+  /// [filter] - Optional. A filter expression to constrain the sinks returned.
+  /// Today, this only supports the following strings: '' 'in_scope("ALL")',
+  /// 'in_scope("ANCESTOR")', 'in_scope("DEFAULT")'.Description of scopes below.
+  /// ALL: Includes all of the sinks which can be returned in any other scope.
+  /// ANCESTOR: Includes intercepting sinks owned by ancestor resources.
+  /// DEFAULT: Includes sinks owned by parent.When the empty string is provided,
+  /// then the filter 'in_scope("DEFAULT")' is applied.
+  ///
   /// [pageSize] - Optional. The maximum number of results to return from this
   /// request. Non-positive values are ignored. The presence of nextPageToken in
   /// the response indicates that more results might be available.
@@ -11077,11 +11115,13 @@ class ProjectsSinksResource {
   /// this method will complete with the same error.
   async.Future<ListSinksResponse> list(
     core.String parent, {
+    core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -11441,6 +11481,14 @@ class SinksResource {
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]" "folders/\[FOLDER_ID\]"
   /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
   ///
+  /// [filter] - Optional. A filter expression to constrain the sinks returned.
+  /// Today, this only supports the following strings: '' 'in_scope("ALL")',
+  /// 'in_scope("ANCESTOR")', 'in_scope("DEFAULT")'.Description of scopes below.
+  /// ALL: Includes all of the sinks which can be returned in any other scope.
+  /// ANCESTOR: Includes intercepting sinks owned by ancestor resources.
+  /// DEFAULT: Includes sinks owned by parent.When the empty string is provided,
+  /// then the filter 'in_scope("DEFAULT")' is applied.
+  ///
   /// [pageSize] - Optional. The maximum number of results to return from this
   /// request. Non-positive values are ignored. The presence of nextPageToken in
   /// the response indicates that more results might be available.
@@ -11462,11 +11510,13 @@ class SinksResource {
   /// this method will complete with the same error.
   async.Future<ListSinksResponse> list(
     core.String parent, {
+    core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -14139,6 +14189,19 @@ class LogSink {
   /// Optional.
   core.bool? includeChildren;
 
+  /// This field applies only to sinks owned by organizations and folders.When
+  /// the value of 'intercept_children' is true, the following restrictions
+  /// apply: The sink must have the include_children flag set to true.
+  ///
+  /// The sink destination must be a Cloud project.Also, the following behaviors
+  /// apply: Any logs matched by the sink won't be included by non-_Required
+  /// sinks owned by child resources. The sink appears in the results of a
+  /// ListSinks call from a child resource if the value of the filter field in
+  /// its request is either 'in_scope("ALL")' or 'in_scope("ANCESTOR")'.
+  ///
+  /// Optional.
+  core.bool? interceptChildren;
+
   /// The client-assigned sink identifier, unique within the project.For
   /// example: "my-syslog-errors-to-pubsub".Sink identifiers are limited to 100
   /// characters and can include only the following characters: upper and
@@ -14160,6 +14223,17 @@ class LogSink {
     'Not supported. Member documentation may have more information.',
   )
   core.String? outputVersionFormat;
+
+  /// The resource name of the sink.
+  ///
+  /// "projects/\[PROJECT_ID\]/sinks/\[SINK_NAME\]
+  /// "organizations/\[ORGANIZATION_ID\]/sinks/\[SINK_NAME\]
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/sinks/\[SINK_NAME\]
+  /// "folders/\[FOLDER_ID\]/sinks/\[SINK_NAME\] For example:
+  /// projects/my_project/sinks/SINK_NAME
+  ///
+  /// Output only.
+  core.String? resourceName;
 
   /// The last update timestamp of the sink.This field may not be present for
   /// older sinks.
@@ -14193,8 +14267,10 @@ class LogSink {
     this.exclusions,
     this.filter,
     this.includeChildren,
+    this.interceptChildren,
     this.name,
     this.outputVersionFormat,
+    this.resourceName,
     this.updateTime,
     this.writerIdentity,
   });
@@ -14229,9 +14305,15 @@ class LogSink {
           includeChildren: json_.containsKey('includeChildren')
               ? json_['includeChildren'] as core.bool
               : null,
+          interceptChildren: json_.containsKey('interceptChildren')
+              ? json_['interceptChildren'] as core.bool
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           outputVersionFormat: json_.containsKey('outputVersionFormat')
               ? json_['outputVersionFormat'] as core.String
+              : null,
+          resourceName: json_.containsKey('resourceName')
+              ? json_['resourceName'] as core.String
               : null,
           updateTime: json_.containsKey('updateTime')
               ? json_['updateTime'] as core.String
@@ -14250,9 +14332,11 @@ class LogSink {
         if (exclusions != null) 'exclusions': exclusions!,
         if (filter != null) 'filter': filter!,
         if (includeChildren != null) 'includeChildren': includeChildren!,
+        if (interceptChildren != null) 'interceptChildren': interceptChildren!,
         if (name != null) 'name': name!,
         if (outputVersionFormat != null)
           'outputVersionFormat': outputVersionFormat!,
+        if (resourceName != null) 'resourceName': resourceName!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (writerIdentity != null) 'writerIdentity': writerIdentity!,
       };

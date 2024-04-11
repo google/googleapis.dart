@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240305",
+    "revision": "20240321",
     "rootUrl": "https://cloudbuild.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Build API",
@@ -675,7 +675,7 @@
                                             ],
                                             "parameters": {
                                                 "pageSize": {
-                                                    "description": "Optional. Number of results to return in the list. Default to 100.",
+                                                    "description": "Optional. Number of results to return in the list. Default to 20.",
                                                     "format": "int32",
                                                     "location": "query",
                                                     "type": "integer"
@@ -2042,7 +2042,8 @@
                     "description": "Optional. Security configuration."
                 },
                 "serviceAccount": {
-                    "description": "Service account used in the Pipeline.",
+                    "deprecated": true,
+                    "description": "Service account used in the Pipeline. Deprecated; please use security.service_account instead.",
                     "type": "string"
                 },
                 "skippedTasks": {

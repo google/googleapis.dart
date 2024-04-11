@@ -24,6 +24,25 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
+core.int buildCounterAccessoryWidget = 0;
+api.AccessoryWidget buildAccessoryWidget() {
+  final o = api.AccessoryWidget();
+  buildCounterAccessoryWidget++;
+  if (buildCounterAccessoryWidget < 3) {
+    o.buttonList = buildGoogleAppsCardV1ButtonList();
+  }
+  buildCounterAccessoryWidget--;
+  return o;
+}
+
+void checkAccessoryWidget(api.AccessoryWidget o) {
+  buildCounterAccessoryWidget++;
+  if (buildCounterAccessoryWidget < 3) {
+    checkGoogleAppsCardV1ButtonList(o.buttonList!);
+  }
+  buildCounterAccessoryWidget--;
+}
+
 core.int buildCounterActionParameter = 0;
 api.ActionParameter buildActionParameter() {
   final o = api.ActionParameter();
@@ -115,6 +134,7 @@ api.Annotation buildAnnotation() {
   buildCounterAnnotation++;
   if (buildCounterAnnotation < 3) {
     o.length = 42;
+    o.richLinkMetadata = buildRichLinkMetadata();
     o.slashCommand = buildSlashCommandMetadata();
     o.startIndex = 42;
     o.type = 'foo';
@@ -131,6 +151,7 @@ void checkAnnotation(api.Annotation o) {
       o.length!,
       unittest.equals(42),
     );
+    checkRichLinkMetadata(o.richLinkMetadata!);
     checkSlashCommandMetadata(o.slashCommand!);
     unittest.expect(
       o.startIndex!,
@@ -595,6 +616,30 @@ void checkDriveDataRef(api.DriveDataRef o) {
     );
   }
   buildCounterDriveDataRef--;
+}
+
+core.int buildCounterDriveLinkData = 0;
+api.DriveLinkData buildDriveLinkData() {
+  final o = api.DriveLinkData();
+  buildCounterDriveLinkData++;
+  if (buildCounterDriveLinkData < 3) {
+    o.driveDataRef = buildDriveDataRef();
+    o.mimeType = 'foo';
+  }
+  buildCounterDriveLinkData--;
+  return o;
+}
+
+void checkDriveLinkData(api.DriveLinkData o) {
+  buildCounterDriveLinkData++;
+  if (buildCounterDriveLinkData < 3) {
+    checkDriveDataRef(o.driveDataRef!);
+    unittest.expect(
+      o.mimeType!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterDriveLinkData--;
 }
 
 core.int buildCounterEmoji = 0;
@@ -1288,6 +1333,7 @@ api.GoogleAppsCardV1Icon buildGoogleAppsCardV1Icon() {
     o.iconUrl = 'foo';
     o.imageType = 'foo';
     o.knownIcon = 'foo';
+    o.materialIcon = buildGoogleAppsCardV1MaterialIcon();
   }
   buildCounterGoogleAppsCardV1Icon--;
   return o;
@@ -1312,6 +1358,7 @@ void checkGoogleAppsCardV1Icon(api.GoogleAppsCardV1Icon o) {
       o.knownIcon!,
       unittest.equals('foo'),
     );
+    checkGoogleAppsCardV1MaterialIcon(o.materialIcon!);
   }
   buildCounterGoogleAppsCardV1Icon--;
 }
@@ -1401,6 +1448,40 @@ void checkGoogleAppsCardV1ImageCropStyle(api.GoogleAppsCardV1ImageCropStyle o) {
     );
   }
   buildCounterGoogleAppsCardV1ImageCropStyle--;
+}
+
+core.int buildCounterGoogleAppsCardV1MaterialIcon = 0;
+api.GoogleAppsCardV1MaterialIcon buildGoogleAppsCardV1MaterialIcon() {
+  final o = api.GoogleAppsCardV1MaterialIcon();
+  buildCounterGoogleAppsCardV1MaterialIcon++;
+  if (buildCounterGoogleAppsCardV1MaterialIcon < 3) {
+    o.fill = true;
+    o.grade = 42;
+    o.name = 'foo';
+    o.weight = 42;
+  }
+  buildCounterGoogleAppsCardV1MaterialIcon--;
+  return o;
+}
+
+void checkGoogleAppsCardV1MaterialIcon(api.GoogleAppsCardV1MaterialIcon o) {
+  buildCounterGoogleAppsCardV1MaterialIcon++;
+  if (buildCounterGoogleAppsCardV1MaterialIcon < 3) {
+    unittest.expect(o.fill!, unittest.isTrue);
+    unittest.expect(
+      o.grade!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.weight!,
+      unittest.equals(42),
+    );
+  }
+  buildCounterGoogleAppsCardV1MaterialIcon--;
 }
 
 core.int buildCounterGoogleAppsCardV1OnClick = 0;
@@ -2121,12 +2202,47 @@ void checkListReactionsResponse(api.ListReactionsResponse o) {
   buildCounterListReactionsResponse--;
 }
 
-core.List<api.Space> buildUnnamed16() => [
+core.List<api.SpaceEvent> buildUnnamed16() => [
+      buildSpaceEvent(),
+      buildSpaceEvent(),
+    ];
+
+void checkUnnamed16(core.List<api.SpaceEvent> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkSpaceEvent(o[0]);
+  checkSpaceEvent(o[1]);
+}
+
+core.int buildCounterListSpaceEventsResponse = 0;
+api.ListSpaceEventsResponse buildListSpaceEventsResponse() {
+  final o = api.ListSpaceEventsResponse();
+  buildCounterListSpaceEventsResponse++;
+  if (buildCounterListSpaceEventsResponse < 3) {
+    o.nextPageToken = 'foo';
+    o.spaceEvents = buildUnnamed16();
+  }
+  buildCounterListSpaceEventsResponse--;
+  return o;
+}
+
+void checkListSpaceEventsResponse(api.ListSpaceEventsResponse o) {
+  buildCounterListSpaceEventsResponse++;
+  if (buildCounterListSpaceEventsResponse < 3) {
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed16(o.spaceEvents!);
+  }
+  buildCounterListSpaceEventsResponse--;
+}
+
+core.List<api.Space> buildUnnamed17() => [
       buildSpace(),
       buildSpace(),
     ];
 
-void checkUnnamed16(core.List<api.Space> o) {
+void checkUnnamed17(core.List<api.Space> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSpace(o[0]);
   checkSpace(o[1]);
@@ -2138,7 +2254,7 @@ api.ListSpacesResponse buildListSpacesResponse() {
   buildCounterListSpacesResponse++;
   if (buildCounterListSpacesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.spaces = buildUnnamed16();
+    o.spaces = buildUnnamed17();
   }
   buildCounterListSpacesResponse--;
   return o;
@@ -2151,7 +2267,7 @@ void checkListSpacesResponse(api.ListSpacesResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed16(o.spaces!);
+    checkUnnamed17(o.spaces!);
   }
   buildCounterListSpacesResponse--;
 }
@@ -2246,67 +2362,228 @@ void checkMembership(api.Membership o) {
   buildCounterMembership--;
 }
 
-core.List<api.Annotation> buildUnnamed17() => [
+core.List<api.MembershipCreatedEventData> buildUnnamed18() => [
+      buildMembershipCreatedEventData(),
+      buildMembershipCreatedEventData(),
+    ];
+
+void checkUnnamed18(core.List<api.MembershipCreatedEventData> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkMembershipCreatedEventData(o[0]);
+  checkMembershipCreatedEventData(o[1]);
+}
+
+core.int buildCounterMembershipBatchCreatedEventData = 0;
+api.MembershipBatchCreatedEventData buildMembershipBatchCreatedEventData() {
+  final o = api.MembershipBatchCreatedEventData();
+  buildCounterMembershipBatchCreatedEventData++;
+  if (buildCounterMembershipBatchCreatedEventData < 3) {
+    o.memberships = buildUnnamed18();
+  }
+  buildCounterMembershipBatchCreatedEventData--;
+  return o;
+}
+
+void checkMembershipBatchCreatedEventData(
+    api.MembershipBatchCreatedEventData o) {
+  buildCounterMembershipBatchCreatedEventData++;
+  if (buildCounterMembershipBatchCreatedEventData < 3) {
+    checkUnnamed18(o.memberships!);
+  }
+  buildCounterMembershipBatchCreatedEventData--;
+}
+
+core.List<api.MembershipDeletedEventData> buildUnnamed19() => [
+      buildMembershipDeletedEventData(),
+      buildMembershipDeletedEventData(),
+    ];
+
+void checkUnnamed19(core.List<api.MembershipDeletedEventData> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkMembershipDeletedEventData(o[0]);
+  checkMembershipDeletedEventData(o[1]);
+}
+
+core.int buildCounterMembershipBatchDeletedEventData = 0;
+api.MembershipBatchDeletedEventData buildMembershipBatchDeletedEventData() {
+  final o = api.MembershipBatchDeletedEventData();
+  buildCounterMembershipBatchDeletedEventData++;
+  if (buildCounterMembershipBatchDeletedEventData < 3) {
+    o.memberships = buildUnnamed19();
+  }
+  buildCounterMembershipBatchDeletedEventData--;
+  return o;
+}
+
+void checkMembershipBatchDeletedEventData(
+    api.MembershipBatchDeletedEventData o) {
+  buildCounterMembershipBatchDeletedEventData++;
+  if (buildCounterMembershipBatchDeletedEventData < 3) {
+    checkUnnamed19(o.memberships!);
+  }
+  buildCounterMembershipBatchDeletedEventData--;
+}
+
+core.List<api.MembershipUpdatedEventData> buildUnnamed20() => [
+      buildMembershipUpdatedEventData(),
+      buildMembershipUpdatedEventData(),
+    ];
+
+void checkUnnamed20(core.List<api.MembershipUpdatedEventData> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkMembershipUpdatedEventData(o[0]);
+  checkMembershipUpdatedEventData(o[1]);
+}
+
+core.int buildCounterMembershipBatchUpdatedEventData = 0;
+api.MembershipBatchUpdatedEventData buildMembershipBatchUpdatedEventData() {
+  final o = api.MembershipBatchUpdatedEventData();
+  buildCounterMembershipBatchUpdatedEventData++;
+  if (buildCounterMembershipBatchUpdatedEventData < 3) {
+    o.memberships = buildUnnamed20();
+  }
+  buildCounterMembershipBatchUpdatedEventData--;
+  return o;
+}
+
+void checkMembershipBatchUpdatedEventData(
+    api.MembershipBatchUpdatedEventData o) {
+  buildCounterMembershipBatchUpdatedEventData++;
+  if (buildCounterMembershipBatchUpdatedEventData < 3) {
+    checkUnnamed20(o.memberships!);
+  }
+  buildCounterMembershipBatchUpdatedEventData--;
+}
+
+core.int buildCounterMembershipCreatedEventData = 0;
+api.MembershipCreatedEventData buildMembershipCreatedEventData() {
+  final o = api.MembershipCreatedEventData();
+  buildCounterMembershipCreatedEventData++;
+  if (buildCounterMembershipCreatedEventData < 3) {
+    o.membership = buildMembership();
+  }
+  buildCounterMembershipCreatedEventData--;
+  return o;
+}
+
+void checkMembershipCreatedEventData(api.MembershipCreatedEventData o) {
+  buildCounterMembershipCreatedEventData++;
+  if (buildCounterMembershipCreatedEventData < 3) {
+    checkMembership(o.membership!);
+  }
+  buildCounterMembershipCreatedEventData--;
+}
+
+core.int buildCounterMembershipDeletedEventData = 0;
+api.MembershipDeletedEventData buildMembershipDeletedEventData() {
+  final o = api.MembershipDeletedEventData();
+  buildCounterMembershipDeletedEventData++;
+  if (buildCounterMembershipDeletedEventData < 3) {
+    o.membership = buildMembership();
+  }
+  buildCounterMembershipDeletedEventData--;
+  return o;
+}
+
+void checkMembershipDeletedEventData(api.MembershipDeletedEventData o) {
+  buildCounterMembershipDeletedEventData++;
+  if (buildCounterMembershipDeletedEventData < 3) {
+    checkMembership(o.membership!);
+  }
+  buildCounterMembershipDeletedEventData--;
+}
+
+core.int buildCounterMembershipUpdatedEventData = 0;
+api.MembershipUpdatedEventData buildMembershipUpdatedEventData() {
+  final o = api.MembershipUpdatedEventData();
+  buildCounterMembershipUpdatedEventData++;
+  if (buildCounterMembershipUpdatedEventData < 3) {
+    o.membership = buildMembership();
+  }
+  buildCounterMembershipUpdatedEventData--;
+  return o;
+}
+
+void checkMembershipUpdatedEventData(api.MembershipUpdatedEventData o) {
+  buildCounterMembershipUpdatedEventData++;
+  if (buildCounterMembershipUpdatedEventData < 3) {
+    checkMembership(o.membership!);
+  }
+  buildCounterMembershipUpdatedEventData--;
+}
+
+core.List<api.AccessoryWidget> buildUnnamed21() => [
+      buildAccessoryWidget(),
+      buildAccessoryWidget(),
+    ];
+
+void checkUnnamed21(core.List<api.AccessoryWidget> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkAccessoryWidget(o[0]);
+  checkAccessoryWidget(o[1]);
+}
+
+core.List<api.Annotation> buildUnnamed22() => [
       buildAnnotation(),
       buildAnnotation(),
     ];
 
-void checkUnnamed17(core.List<api.Annotation> o) {
+void checkUnnamed22(core.List<api.Annotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAnnotation(o[0]);
   checkAnnotation(o[1]);
 }
 
-core.List<api.AttachedGif> buildUnnamed18() => [
+core.List<api.AttachedGif> buildUnnamed23() => [
       buildAttachedGif(),
       buildAttachedGif(),
     ];
 
-void checkUnnamed18(core.List<api.AttachedGif> o) {
+void checkUnnamed23(core.List<api.AttachedGif> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAttachedGif(o[0]);
   checkAttachedGif(o[1]);
 }
 
-core.List<api.Attachment> buildUnnamed19() => [
+core.List<api.Attachment> buildUnnamed24() => [
       buildAttachment(),
       buildAttachment(),
     ];
 
-void checkUnnamed19(core.List<api.Attachment> o) {
+void checkUnnamed24(core.List<api.Attachment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAttachment(o[0]);
   checkAttachment(o[1]);
 }
 
-core.List<api.Card> buildUnnamed20() => [
+core.List<api.Card> buildUnnamed25() => [
       buildCard(),
       buildCard(),
     ];
 
-void checkUnnamed20(core.List<api.Card> o) {
+void checkUnnamed25(core.List<api.Card> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCard(o[0]);
   checkCard(o[1]);
 }
 
-core.List<api.CardWithId> buildUnnamed21() => [
+core.List<api.CardWithId> buildUnnamed26() => [
       buildCardWithId(),
       buildCardWithId(),
     ];
 
-void checkUnnamed21(core.List<api.CardWithId> o) {
+void checkUnnamed26(core.List<api.CardWithId> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCardWithId(o[0]);
   checkCardWithId(o[1]);
 }
 
-core.List<api.EmojiReactionSummary> buildUnnamed22() => [
+core.List<api.EmojiReactionSummary> buildUnnamed27() => [
       buildEmojiReactionSummary(),
       buildEmojiReactionSummary(),
     ];
 
-void checkUnnamed22(core.List<api.EmojiReactionSummary> o) {
+void checkUnnamed27(core.List<api.EmojiReactionSummary> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEmojiReactionSummary(o[0]);
   checkEmojiReactionSummary(o[1]);
@@ -2317,18 +2594,19 @@ api.Message buildMessage() {
   final o = api.Message();
   buildCounterMessage++;
   if (buildCounterMessage < 3) {
+    o.accessoryWidgets = buildUnnamed21();
     o.actionResponse = buildActionResponse();
-    o.annotations = buildUnnamed17();
+    o.annotations = buildUnnamed22();
     o.argumentText = 'foo';
-    o.attachedGifs = buildUnnamed18();
-    o.attachment = buildUnnamed19();
-    o.cards = buildUnnamed20();
-    o.cardsV2 = buildUnnamed21();
+    o.attachedGifs = buildUnnamed23();
+    o.attachment = buildUnnamed24();
+    o.cards = buildUnnamed25();
+    o.cardsV2 = buildUnnamed26();
     o.clientAssignedMessageId = 'foo';
     o.createTime = 'foo';
     o.deleteTime = 'foo';
     o.deletionMetadata = buildDeletionMetadata();
-    o.emojiReactionSummaries = buildUnnamed22();
+    o.emojiReactionSummaries = buildUnnamed27();
     o.fallbackText = 'foo';
     o.formattedText = 'foo';
     o.lastUpdateTime = 'foo';
@@ -2350,16 +2628,17 @@ api.Message buildMessage() {
 void checkMessage(api.Message o) {
   buildCounterMessage++;
   if (buildCounterMessage < 3) {
+    checkUnnamed21(o.accessoryWidgets!);
     checkActionResponse(o.actionResponse!);
-    checkUnnamed17(o.annotations!);
+    checkUnnamed22(o.annotations!);
     unittest.expect(
       o.argumentText!,
       unittest.equals('foo'),
     );
-    checkUnnamed18(o.attachedGifs!);
-    checkUnnamed19(o.attachment!);
-    checkUnnamed20(o.cards!);
-    checkUnnamed21(o.cardsV2!);
+    checkUnnamed23(o.attachedGifs!);
+    checkUnnamed24(o.attachment!);
+    checkUnnamed25(o.cards!);
+    checkUnnamed26(o.cardsV2!);
     unittest.expect(
       o.clientAssignedMessageId!,
       unittest.equals('foo'),
@@ -2373,7 +2652,7 @@ void checkMessage(api.Message o) {
       unittest.equals('foo'),
     );
     checkDeletionMetadata(o.deletionMetadata!);
-    checkUnnamed22(o.emojiReactionSummaries!);
+    checkUnnamed27(o.emojiReactionSummaries!);
     unittest.expect(
       o.fallbackText!,
       unittest.equals('foo'),
@@ -2404,6 +2683,153 @@ void checkMessage(api.Message o) {
     unittest.expect(o.threadReply!, unittest.isTrue);
   }
   buildCounterMessage--;
+}
+
+core.List<api.MessageCreatedEventData> buildUnnamed28() => [
+      buildMessageCreatedEventData(),
+      buildMessageCreatedEventData(),
+    ];
+
+void checkUnnamed28(core.List<api.MessageCreatedEventData> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkMessageCreatedEventData(o[0]);
+  checkMessageCreatedEventData(o[1]);
+}
+
+core.int buildCounterMessageBatchCreatedEventData = 0;
+api.MessageBatchCreatedEventData buildMessageBatchCreatedEventData() {
+  final o = api.MessageBatchCreatedEventData();
+  buildCounterMessageBatchCreatedEventData++;
+  if (buildCounterMessageBatchCreatedEventData < 3) {
+    o.messages = buildUnnamed28();
+  }
+  buildCounterMessageBatchCreatedEventData--;
+  return o;
+}
+
+void checkMessageBatchCreatedEventData(api.MessageBatchCreatedEventData o) {
+  buildCounterMessageBatchCreatedEventData++;
+  if (buildCounterMessageBatchCreatedEventData < 3) {
+    checkUnnamed28(o.messages!);
+  }
+  buildCounterMessageBatchCreatedEventData--;
+}
+
+core.List<api.MessageDeletedEventData> buildUnnamed29() => [
+      buildMessageDeletedEventData(),
+      buildMessageDeletedEventData(),
+    ];
+
+void checkUnnamed29(core.List<api.MessageDeletedEventData> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkMessageDeletedEventData(o[0]);
+  checkMessageDeletedEventData(o[1]);
+}
+
+core.int buildCounterMessageBatchDeletedEventData = 0;
+api.MessageBatchDeletedEventData buildMessageBatchDeletedEventData() {
+  final o = api.MessageBatchDeletedEventData();
+  buildCounterMessageBatchDeletedEventData++;
+  if (buildCounterMessageBatchDeletedEventData < 3) {
+    o.messages = buildUnnamed29();
+  }
+  buildCounterMessageBatchDeletedEventData--;
+  return o;
+}
+
+void checkMessageBatchDeletedEventData(api.MessageBatchDeletedEventData o) {
+  buildCounterMessageBatchDeletedEventData++;
+  if (buildCounterMessageBatchDeletedEventData < 3) {
+    checkUnnamed29(o.messages!);
+  }
+  buildCounterMessageBatchDeletedEventData--;
+}
+
+core.List<api.MessageUpdatedEventData> buildUnnamed30() => [
+      buildMessageUpdatedEventData(),
+      buildMessageUpdatedEventData(),
+    ];
+
+void checkUnnamed30(core.List<api.MessageUpdatedEventData> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkMessageUpdatedEventData(o[0]);
+  checkMessageUpdatedEventData(o[1]);
+}
+
+core.int buildCounterMessageBatchUpdatedEventData = 0;
+api.MessageBatchUpdatedEventData buildMessageBatchUpdatedEventData() {
+  final o = api.MessageBatchUpdatedEventData();
+  buildCounterMessageBatchUpdatedEventData++;
+  if (buildCounterMessageBatchUpdatedEventData < 3) {
+    o.messages = buildUnnamed30();
+  }
+  buildCounterMessageBatchUpdatedEventData--;
+  return o;
+}
+
+void checkMessageBatchUpdatedEventData(api.MessageBatchUpdatedEventData o) {
+  buildCounterMessageBatchUpdatedEventData++;
+  if (buildCounterMessageBatchUpdatedEventData < 3) {
+    checkUnnamed30(o.messages!);
+  }
+  buildCounterMessageBatchUpdatedEventData--;
+}
+
+core.int buildCounterMessageCreatedEventData = 0;
+api.MessageCreatedEventData buildMessageCreatedEventData() {
+  final o = api.MessageCreatedEventData();
+  buildCounterMessageCreatedEventData++;
+  if (buildCounterMessageCreatedEventData < 3) {
+    o.message = buildMessage();
+  }
+  buildCounterMessageCreatedEventData--;
+  return o;
+}
+
+void checkMessageCreatedEventData(api.MessageCreatedEventData o) {
+  buildCounterMessageCreatedEventData++;
+  if (buildCounterMessageCreatedEventData < 3) {
+    checkMessage(o.message!);
+  }
+  buildCounterMessageCreatedEventData--;
+}
+
+core.int buildCounterMessageDeletedEventData = 0;
+api.MessageDeletedEventData buildMessageDeletedEventData() {
+  final o = api.MessageDeletedEventData();
+  buildCounterMessageDeletedEventData++;
+  if (buildCounterMessageDeletedEventData < 3) {
+    o.message = buildMessage();
+  }
+  buildCounterMessageDeletedEventData--;
+  return o;
+}
+
+void checkMessageDeletedEventData(api.MessageDeletedEventData o) {
+  buildCounterMessageDeletedEventData++;
+  if (buildCounterMessageDeletedEventData < 3) {
+    checkMessage(o.message!);
+  }
+  buildCounterMessageDeletedEventData--;
+}
+
+core.int buildCounterMessageUpdatedEventData = 0;
+api.MessageUpdatedEventData buildMessageUpdatedEventData() {
+  final o = api.MessageUpdatedEventData();
+  buildCounterMessageUpdatedEventData++;
+  if (buildCounterMessageUpdatedEventData < 3) {
+    o.message = buildMessage();
+  }
+  buildCounterMessageUpdatedEventData--;
+  return o;
+}
+
+void checkMessageUpdatedEventData(api.MessageUpdatedEventData o) {
+  buildCounterMessageUpdatedEventData++;
+  if (buildCounterMessageUpdatedEventData < 3) {
+    checkMessage(o.message!);
+  }
+  buildCounterMessageUpdatedEventData--;
 }
 
 core.int buildCounterOnClick = 0;
@@ -2502,12 +2928,139 @@ void checkReaction(api.Reaction o) {
   buildCounterReaction--;
 }
 
-core.List<api.WidgetMarkup> buildUnnamed23() => [
+core.List<api.ReactionCreatedEventData> buildUnnamed31() => [
+      buildReactionCreatedEventData(),
+      buildReactionCreatedEventData(),
+    ];
+
+void checkUnnamed31(core.List<api.ReactionCreatedEventData> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkReactionCreatedEventData(o[0]);
+  checkReactionCreatedEventData(o[1]);
+}
+
+core.int buildCounterReactionBatchCreatedEventData = 0;
+api.ReactionBatchCreatedEventData buildReactionBatchCreatedEventData() {
+  final o = api.ReactionBatchCreatedEventData();
+  buildCounterReactionBatchCreatedEventData++;
+  if (buildCounterReactionBatchCreatedEventData < 3) {
+    o.reactions = buildUnnamed31();
+  }
+  buildCounterReactionBatchCreatedEventData--;
+  return o;
+}
+
+void checkReactionBatchCreatedEventData(api.ReactionBatchCreatedEventData o) {
+  buildCounterReactionBatchCreatedEventData++;
+  if (buildCounterReactionBatchCreatedEventData < 3) {
+    checkUnnamed31(o.reactions!);
+  }
+  buildCounterReactionBatchCreatedEventData--;
+}
+
+core.List<api.ReactionDeletedEventData> buildUnnamed32() => [
+      buildReactionDeletedEventData(),
+      buildReactionDeletedEventData(),
+    ];
+
+void checkUnnamed32(core.List<api.ReactionDeletedEventData> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkReactionDeletedEventData(o[0]);
+  checkReactionDeletedEventData(o[1]);
+}
+
+core.int buildCounterReactionBatchDeletedEventData = 0;
+api.ReactionBatchDeletedEventData buildReactionBatchDeletedEventData() {
+  final o = api.ReactionBatchDeletedEventData();
+  buildCounterReactionBatchDeletedEventData++;
+  if (buildCounterReactionBatchDeletedEventData < 3) {
+    o.reactions = buildUnnamed32();
+  }
+  buildCounterReactionBatchDeletedEventData--;
+  return o;
+}
+
+void checkReactionBatchDeletedEventData(api.ReactionBatchDeletedEventData o) {
+  buildCounterReactionBatchDeletedEventData++;
+  if (buildCounterReactionBatchDeletedEventData < 3) {
+    checkUnnamed32(o.reactions!);
+  }
+  buildCounterReactionBatchDeletedEventData--;
+}
+
+core.int buildCounterReactionCreatedEventData = 0;
+api.ReactionCreatedEventData buildReactionCreatedEventData() {
+  final o = api.ReactionCreatedEventData();
+  buildCounterReactionCreatedEventData++;
+  if (buildCounterReactionCreatedEventData < 3) {
+    o.reaction = buildReaction();
+  }
+  buildCounterReactionCreatedEventData--;
+  return o;
+}
+
+void checkReactionCreatedEventData(api.ReactionCreatedEventData o) {
+  buildCounterReactionCreatedEventData++;
+  if (buildCounterReactionCreatedEventData < 3) {
+    checkReaction(o.reaction!);
+  }
+  buildCounterReactionCreatedEventData--;
+}
+
+core.int buildCounterReactionDeletedEventData = 0;
+api.ReactionDeletedEventData buildReactionDeletedEventData() {
+  final o = api.ReactionDeletedEventData();
+  buildCounterReactionDeletedEventData++;
+  if (buildCounterReactionDeletedEventData < 3) {
+    o.reaction = buildReaction();
+  }
+  buildCounterReactionDeletedEventData--;
+  return o;
+}
+
+void checkReactionDeletedEventData(api.ReactionDeletedEventData o) {
+  buildCounterReactionDeletedEventData++;
+  if (buildCounterReactionDeletedEventData < 3) {
+    checkReaction(o.reaction!);
+  }
+  buildCounterReactionDeletedEventData--;
+}
+
+core.int buildCounterRichLinkMetadata = 0;
+api.RichLinkMetadata buildRichLinkMetadata() {
+  final o = api.RichLinkMetadata();
+  buildCounterRichLinkMetadata++;
+  if (buildCounterRichLinkMetadata < 3) {
+    o.driveLinkData = buildDriveLinkData();
+    o.richLinkType = 'foo';
+    o.uri = 'foo';
+  }
+  buildCounterRichLinkMetadata--;
+  return o;
+}
+
+void checkRichLinkMetadata(api.RichLinkMetadata o) {
+  buildCounterRichLinkMetadata++;
+  if (buildCounterRichLinkMetadata < 3) {
+    checkDriveLinkData(o.driveLinkData!);
+    unittest.expect(
+      o.richLinkType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.uri!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterRichLinkMetadata--;
+}
+
+core.List<api.WidgetMarkup> buildUnnamed33() => [
       buildWidgetMarkup(),
       buildWidgetMarkup(),
     ];
 
-void checkUnnamed23(core.List<api.WidgetMarkup> o) {
+void checkUnnamed33(core.List<api.WidgetMarkup> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWidgetMarkup(o[0]);
   checkWidgetMarkup(o[1]);
@@ -2519,7 +3072,7 @@ api.Section buildSection() {
   buildCounterSection++;
   if (buildCounterSection < 3) {
     o.header = 'foo';
-    o.widgets = buildUnnamed23();
+    o.widgets = buildUnnamed33();
   }
   buildCounterSection--;
   return o;
@@ -2532,17 +3085,17 @@ void checkSection(api.Section o) {
       o.header!,
       unittest.equals('foo'),
     );
-    checkUnnamed23(o.widgets!);
+    checkUnnamed33(o.widgets!);
   }
   buildCounterSection--;
 }
 
-core.List<api.GoogleAppsCardV1SelectionItem> buildUnnamed24() => [
+core.List<api.GoogleAppsCardV1SelectionItem> buildUnnamed34() => [
       buildGoogleAppsCardV1SelectionItem(),
       buildGoogleAppsCardV1SelectionItem(),
     ];
 
-void checkUnnamed24(core.List<api.GoogleAppsCardV1SelectionItem> o) {
+void checkUnnamed34(core.List<api.GoogleAppsCardV1SelectionItem> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAppsCardV1SelectionItem(o[0]);
   checkGoogleAppsCardV1SelectionItem(o[1]);
@@ -2553,7 +3106,7 @@ api.SelectionItems buildSelectionItems() {
   final o = api.SelectionItems();
   buildCounterSelectionItems++;
   if (buildCounterSelectionItems < 3) {
-    o.items = buildUnnamed24();
+    o.items = buildUnnamed34();
   }
   buildCounterSelectionItems--;
   return o;
@@ -2562,17 +3115,17 @@ api.SelectionItems buildSelectionItems() {
 void checkSelectionItems(api.SelectionItems o) {
   buildCounterSelectionItems++;
   if (buildCounterSelectionItems < 3) {
-    checkUnnamed24(o.items!);
+    checkUnnamed34(o.items!);
   }
   buildCounterSelectionItems--;
 }
 
-core.List<api.Membership> buildUnnamed25() => [
+core.List<api.Membership> buildUnnamed35() => [
       buildMembership(),
       buildMembership(),
     ];
 
-void checkUnnamed25(core.List<api.Membership> o) {
+void checkUnnamed35(core.List<api.Membership> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMembership(o[0]);
   checkMembership(o[1]);
@@ -2583,7 +3136,7 @@ api.SetUpSpaceRequest buildSetUpSpaceRequest() {
   final o = api.SetUpSpaceRequest();
   buildCounterSetUpSpaceRequest++;
   if (buildCounterSetUpSpaceRequest < 3) {
-    o.memberships = buildUnnamed25();
+    o.memberships = buildUnnamed35();
     o.requestId = 'foo';
     o.space = buildSpace();
   }
@@ -2594,7 +3147,7 @@ api.SetUpSpaceRequest buildSetUpSpaceRequest() {
 void checkSetUpSpaceRequest(api.SetUpSpaceRequest o) {
   buildCounterSetUpSpaceRequest++;
   if (buildCounterSetUpSpaceRequest < 3) {
-    checkUnnamed25(o.memberships!);
+    checkUnnamed35(o.memberships!);
     unittest.expect(
       o.requestId!,
       unittest.equals('foo'),
@@ -2726,6 +3279,36 @@ void checkSpace(api.Space o) {
   buildCounterSpace--;
 }
 
+core.List<api.SpaceUpdatedEventData> buildUnnamed36() => [
+      buildSpaceUpdatedEventData(),
+      buildSpaceUpdatedEventData(),
+    ];
+
+void checkUnnamed36(core.List<api.SpaceUpdatedEventData> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkSpaceUpdatedEventData(o[0]);
+  checkSpaceUpdatedEventData(o[1]);
+}
+
+core.int buildCounterSpaceBatchUpdatedEventData = 0;
+api.SpaceBatchUpdatedEventData buildSpaceBatchUpdatedEventData() {
+  final o = api.SpaceBatchUpdatedEventData();
+  buildCounterSpaceBatchUpdatedEventData++;
+  if (buildCounterSpaceBatchUpdatedEventData < 3) {
+    o.spaces = buildUnnamed36();
+  }
+  buildCounterSpaceBatchUpdatedEventData--;
+  return o;
+}
+
+void checkSpaceBatchUpdatedEventData(api.SpaceBatchUpdatedEventData o) {
+  buildCounterSpaceBatchUpdatedEventData++;
+  if (buildCounterSpaceBatchUpdatedEventData < 3) {
+    checkUnnamed36(o.spaces!);
+  }
+  buildCounterSpaceBatchUpdatedEventData--;
+}
+
 core.int buildCounterSpaceDataSource = 0;
 api.SpaceDataSource buildSpaceDataSource() {
   final o = api.SpaceDataSource();
@@ -2770,6 +3353,93 @@ void checkSpaceDetails(api.SpaceDetails o) {
     );
   }
   buildCounterSpaceDetails--;
+}
+
+core.int buildCounterSpaceEvent = 0;
+api.SpaceEvent buildSpaceEvent() {
+  final o = api.SpaceEvent();
+  buildCounterSpaceEvent++;
+  if (buildCounterSpaceEvent < 3) {
+    o.eventTime = 'foo';
+    o.eventType = 'foo';
+    o.membershipBatchCreatedEventData = buildMembershipBatchCreatedEventData();
+    o.membershipBatchDeletedEventData = buildMembershipBatchDeletedEventData();
+    o.membershipBatchUpdatedEventData = buildMembershipBatchUpdatedEventData();
+    o.membershipCreatedEventData = buildMembershipCreatedEventData();
+    o.membershipDeletedEventData = buildMembershipDeletedEventData();
+    o.membershipUpdatedEventData = buildMembershipUpdatedEventData();
+    o.messageBatchCreatedEventData = buildMessageBatchCreatedEventData();
+    o.messageBatchDeletedEventData = buildMessageBatchDeletedEventData();
+    o.messageBatchUpdatedEventData = buildMessageBatchUpdatedEventData();
+    o.messageCreatedEventData = buildMessageCreatedEventData();
+    o.messageDeletedEventData = buildMessageDeletedEventData();
+    o.messageUpdatedEventData = buildMessageUpdatedEventData();
+    o.name = 'foo';
+    o.reactionBatchCreatedEventData = buildReactionBatchCreatedEventData();
+    o.reactionBatchDeletedEventData = buildReactionBatchDeletedEventData();
+    o.reactionCreatedEventData = buildReactionCreatedEventData();
+    o.reactionDeletedEventData = buildReactionDeletedEventData();
+    o.spaceBatchUpdatedEventData = buildSpaceBatchUpdatedEventData();
+    o.spaceUpdatedEventData = buildSpaceUpdatedEventData();
+  }
+  buildCounterSpaceEvent--;
+  return o;
+}
+
+void checkSpaceEvent(api.SpaceEvent o) {
+  buildCounterSpaceEvent++;
+  if (buildCounterSpaceEvent < 3) {
+    unittest.expect(
+      o.eventTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.eventType!,
+      unittest.equals('foo'),
+    );
+    checkMembershipBatchCreatedEventData(o.membershipBatchCreatedEventData!);
+    checkMembershipBatchDeletedEventData(o.membershipBatchDeletedEventData!);
+    checkMembershipBatchUpdatedEventData(o.membershipBatchUpdatedEventData!);
+    checkMembershipCreatedEventData(o.membershipCreatedEventData!);
+    checkMembershipDeletedEventData(o.membershipDeletedEventData!);
+    checkMembershipUpdatedEventData(o.membershipUpdatedEventData!);
+    checkMessageBatchCreatedEventData(o.messageBatchCreatedEventData!);
+    checkMessageBatchDeletedEventData(o.messageBatchDeletedEventData!);
+    checkMessageBatchUpdatedEventData(o.messageBatchUpdatedEventData!);
+    checkMessageCreatedEventData(o.messageCreatedEventData!);
+    checkMessageDeletedEventData(o.messageDeletedEventData!);
+    checkMessageUpdatedEventData(o.messageUpdatedEventData!);
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    checkReactionBatchCreatedEventData(o.reactionBatchCreatedEventData!);
+    checkReactionBatchDeletedEventData(o.reactionBatchDeletedEventData!);
+    checkReactionCreatedEventData(o.reactionCreatedEventData!);
+    checkReactionDeletedEventData(o.reactionDeletedEventData!);
+    checkSpaceBatchUpdatedEventData(o.spaceBatchUpdatedEventData!);
+    checkSpaceUpdatedEventData(o.spaceUpdatedEventData!);
+  }
+  buildCounterSpaceEvent--;
+}
+
+core.int buildCounterSpaceUpdatedEventData = 0;
+api.SpaceUpdatedEventData buildSpaceUpdatedEventData() {
+  final o = api.SpaceUpdatedEventData();
+  buildCounterSpaceUpdatedEventData++;
+  if (buildCounterSpaceUpdatedEventData < 3) {
+    o.space = buildSpace();
+  }
+  buildCounterSpaceUpdatedEventData--;
+  return o;
+}
+
+void checkSpaceUpdatedEventData(api.SpaceUpdatedEventData o) {
+  buildCounterSpaceUpdatedEventData++;
+  if (buildCounterSpaceUpdatedEventData < 3) {
+    checkSpace(o.space!);
+  }
+  buildCounterSpaceUpdatedEventData--;
 }
 
 core.int buildCounterTextButton = 0;
@@ -2973,12 +3643,12 @@ void checkUserMentionMetadata(api.UserMentionMetadata o) {
   buildCounterUserMentionMetadata--;
 }
 
-core.List<api.Button> buildUnnamed26() => [
+core.List<api.Button> buildUnnamed37() => [
       buildButton(),
       buildButton(),
     ];
 
-void checkUnnamed26(core.List<api.Button> o) {
+void checkUnnamed37(core.List<api.Button> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkButton(o[0]);
   checkButton(o[1]);
@@ -2989,7 +3659,7 @@ api.WidgetMarkup buildWidgetMarkup() {
   final o = api.WidgetMarkup();
   buildCounterWidgetMarkup++;
   if (buildCounterWidgetMarkup < 3) {
-    o.buttons = buildUnnamed26();
+    o.buttons = buildUnnamed37();
     o.image = buildImage();
     o.keyValue = buildKeyValue();
     o.textParagraph = buildTextParagraph();
@@ -3001,7 +3671,7 @@ api.WidgetMarkup buildWidgetMarkup() {
 void checkWidgetMarkup(api.WidgetMarkup o) {
   buildCounterWidgetMarkup++;
   if (buildCounterWidgetMarkup < 3) {
-    checkUnnamed26(o.buttons!);
+    checkUnnamed37(o.buttons!);
     checkImage(o.image!);
     checkKeyValue(o.keyValue!);
     checkTextParagraph(o.textParagraph!);
@@ -3010,6 +3680,16 @@ void checkWidgetMarkup(api.WidgetMarkup o) {
 }
 
 void main() {
+  unittest.group('obj-schema-AccessoryWidget', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAccessoryWidget();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AccessoryWidget.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAccessoryWidget(od);
+    });
+  });
+
   unittest.group('obj-schema-ActionParameter', () {
     unittest.test('to-json--from-json', () async {
       final o = buildActionParameter();
@@ -3217,6 +3897,16 @@ void main() {
       final od = api.DriveDataRef.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkDriveDataRef(od);
+    });
+  });
+
+  unittest.group('obj-schema-DriveLinkData', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDriveLinkData();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DriveLinkData.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkDriveLinkData(od);
     });
   });
 
@@ -3460,6 +4150,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-GoogleAppsCardV1MaterialIcon', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleAppsCardV1MaterialIcon();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleAppsCardV1MaterialIcon.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleAppsCardV1MaterialIcon(od);
+    });
+  });
+
   unittest.group('obj-schema-GoogleAppsCardV1OnClick', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleAppsCardV1OnClick();
@@ -3670,6 +4370,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-ListSpaceEventsResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildListSpaceEventsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListSpaceEventsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkListSpaceEventsResponse(od);
+    });
+  });
+
   unittest.group('obj-schema-ListSpacesResponse', () {
     unittest.test('to-json--from-json', () async {
       final o = buildListSpacesResponse();
@@ -3710,6 +4420,66 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-MembershipBatchCreatedEventData', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMembershipBatchCreatedEventData();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MembershipBatchCreatedEventData.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkMembershipBatchCreatedEventData(od);
+    });
+  });
+
+  unittest.group('obj-schema-MembershipBatchDeletedEventData', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMembershipBatchDeletedEventData();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MembershipBatchDeletedEventData.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkMembershipBatchDeletedEventData(od);
+    });
+  });
+
+  unittest.group('obj-schema-MembershipBatchUpdatedEventData', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMembershipBatchUpdatedEventData();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MembershipBatchUpdatedEventData.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkMembershipBatchUpdatedEventData(od);
+    });
+  });
+
+  unittest.group('obj-schema-MembershipCreatedEventData', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMembershipCreatedEventData();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MembershipCreatedEventData.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkMembershipCreatedEventData(od);
+    });
+  });
+
+  unittest.group('obj-schema-MembershipDeletedEventData', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMembershipDeletedEventData();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MembershipDeletedEventData.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkMembershipDeletedEventData(od);
+    });
+  });
+
+  unittest.group('obj-schema-MembershipUpdatedEventData', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMembershipUpdatedEventData();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MembershipUpdatedEventData.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkMembershipUpdatedEventData(od);
+    });
+  });
+
   unittest.group('obj-schema-Message', () {
     unittest.test('to-json--from-json', () async {
       final o = buildMessage();
@@ -3717,6 +4487,66 @@ void main() {
       final od =
           api.Message.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkMessage(od);
+    });
+  });
+
+  unittest.group('obj-schema-MessageBatchCreatedEventData', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMessageBatchCreatedEventData();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MessageBatchCreatedEventData.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkMessageBatchCreatedEventData(od);
+    });
+  });
+
+  unittest.group('obj-schema-MessageBatchDeletedEventData', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMessageBatchDeletedEventData();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MessageBatchDeletedEventData.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkMessageBatchDeletedEventData(od);
+    });
+  });
+
+  unittest.group('obj-schema-MessageBatchUpdatedEventData', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMessageBatchUpdatedEventData();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MessageBatchUpdatedEventData.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkMessageBatchUpdatedEventData(od);
+    });
+  });
+
+  unittest.group('obj-schema-MessageCreatedEventData', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMessageCreatedEventData();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MessageCreatedEventData.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkMessageCreatedEventData(od);
+    });
+  });
+
+  unittest.group('obj-schema-MessageDeletedEventData', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMessageDeletedEventData();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MessageDeletedEventData.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkMessageDeletedEventData(od);
+    });
+  });
+
+  unittest.group('obj-schema-MessageUpdatedEventData', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMessageUpdatedEventData();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MessageUpdatedEventData.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkMessageUpdatedEventData(od);
     });
   });
 
@@ -3757,6 +4587,56 @@ void main() {
       final od =
           api.Reaction.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkReaction(od);
+    });
+  });
+
+  unittest.group('obj-schema-ReactionBatchCreatedEventData', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildReactionBatchCreatedEventData();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ReactionBatchCreatedEventData.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkReactionBatchCreatedEventData(od);
+    });
+  });
+
+  unittest.group('obj-schema-ReactionBatchDeletedEventData', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildReactionBatchDeletedEventData();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ReactionBatchDeletedEventData.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkReactionBatchDeletedEventData(od);
+    });
+  });
+
+  unittest.group('obj-schema-ReactionCreatedEventData', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildReactionCreatedEventData();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ReactionCreatedEventData.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkReactionCreatedEventData(od);
+    });
+  });
+
+  unittest.group('obj-schema-ReactionDeletedEventData', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildReactionDeletedEventData();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ReactionDeletedEventData.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkReactionDeletedEventData(od);
+    });
+  });
+
+  unittest.group('obj-schema-RichLinkMetadata', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRichLinkMetadata();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RichLinkMetadata.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRichLinkMetadata(od);
     });
   });
 
@@ -3820,6 +4700,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-SpaceBatchUpdatedEventData', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSpaceBatchUpdatedEventData();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SpaceBatchUpdatedEventData.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSpaceBatchUpdatedEventData(od);
+    });
+  });
+
   unittest.group('obj-schema-SpaceDataSource', () {
     unittest.test('to-json--from-json', () async {
       final o = buildSpaceDataSource();
@@ -3837,6 +4727,26 @@ void main() {
       final od = api.SpaceDetails.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkSpaceDetails(od);
+    });
+  });
+
+  unittest.group('obj-schema-SpaceEvent', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSpaceEvent();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.SpaceEvent.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkSpaceEvent(od);
+    });
+  });
+
+  unittest.group('obj-schema-SpaceUpdatedEventData', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSpaceUpdatedEventData();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SpaceUpdatedEventData.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSpaceUpdatedEventData(od);
     });
   });
 
@@ -5416,6 +6326,131 @@ void main() {
           pageToken: arg_pageToken,
           $fields: arg_$fields);
       checkListReactionsResponse(response as api.ListReactionsResponse);
+    });
+  });
+
+  unittest.group('resource-SpacesSpaceEventsResource', () {
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.HangoutsChatApi(mock).spaces.spaceEvents;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildSpaceEvent());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkSpaceEvent(response as api.SpaceEvent);
+    });
+
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res = api.HangoutsChatApi(mock).spaces.spaceEvents;
+      final arg_parent = 'foo';
+      final arg_filter = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['filter']!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildListSpaceEventsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListSpaceEventsResponse(response as api.ListSpaceEventsResponse);
     });
   });
 }

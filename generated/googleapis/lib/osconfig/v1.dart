@@ -22,6 +22,7 @@
 ///
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsGlobalResource]
 ///     - [ProjectsLocationsInstancesResource]
 ///       - [ProjectsLocationsInstancesInventoriesResource]
 ///       - [ProjectsLocationsInstancesOsPolicyAssignmentsResource]
@@ -82,12 +83,109 @@ class ProjectsResource {
 class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsGlobalResource get global =>
+      ProjectsLocationsGlobalResource(_requester);
   ProjectsLocationsInstancesResource get instances =>
       ProjectsLocationsInstancesResource(_requester);
   ProjectsLocationsOsPolicyAssignmentsResource get osPolicyAssignments =>
       ProjectsLocationsOsPolicyAssignmentsResource(_requester);
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsLocationsGlobalResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsGlobalResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// GetProjectFeatureSettings returns the VM Manager feature settings for a
+  /// project.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name specifies the URL for the ProjectFeatureSettings
+  /// resource: projects/project_id/locations/global/projectFeatureSettings.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/projectFeatureSettings$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ProjectFeatureSettings].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ProjectFeatureSettings> getProjectFeatureSettings(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ProjectFeatureSettings.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// UpdateProjectFeatureSettings sets the VM Manager features for a project.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Immutable. Name specifies the URL for the
+  /// ProjectFeatureSettings resource:
+  /// projects/project_id/locations/global/projectFeatureSettings.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/projectFeatureSettings$`.
+  ///
+  /// [updateMask] - Optional. Field mask that controls which fields of the
+  /// ProjectFeatureSettings should be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ProjectFeatureSettings].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ProjectFeatureSettings> updateProjectFeatureSettings(
+    ProjectFeatureSettings request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return ProjectFeatureSettings.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsLocationsInstancesResource {
@@ -5338,6 +5436,46 @@ class PatchRollout {
 
 /// A request message for pausing a patch deployment.
 typedef PausePatchDeploymentRequest = $Empty;
+
+/// ProjectFeatureSettings represents the VM Manager feature settings in a
+/// project.
+///
+/// For more information, see Enable full VM Manager functionality.
+class ProjectFeatureSettings {
+  /// Name specifies the URL for the ProjectFeatureSettings resource:
+  /// projects/project_id/locations/global/projectFeatureSettings.
+  ///
+  /// Required. Immutable.
+  core.String? name;
+
+  /// Set PatchAndConfigFeatureSet for the project.
+  /// Possible string values are:
+  /// - "PATCH_AND_CONFIG_FEATURE_SET_UNSPECIFIED" : Not specified placeholder
+  /// - "OSCONFIG_B" : Enables only the basic set of VM Manager features in the
+  /// project.
+  /// - "OSCONFIG_C" : Enables all VM Manager features in the project.
+  core.String? patchAndConfigFeatureSet;
+
+  ProjectFeatureSettings({
+    this.name,
+    this.patchAndConfigFeatureSet,
+  });
+
+  ProjectFeatureSettings.fromJson(core.Map json_)
+      : this(
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          patchAndConfigFeatureSet:
+              json_.containsKey('patchAndConfigFeatureSet')
+                  ? json_['patchAndConfigFeatureSet'] as core.String
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (patchAndConfigFeatureSet != null)
+          'patchAndConfigFeatureSet': patchAndConfigFeatureSet!,
+      };
+}
 
 /// Sets the time for recurring patch deployments.
 class RecurringSchedule {

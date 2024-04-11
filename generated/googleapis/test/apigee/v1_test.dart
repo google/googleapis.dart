@@ -188,6 +188,32 @@ void checkGoogleCloudApigeeV1AccessGet(api.GoogleCloudApigeeV1AccessGet o) {
   buildCounterGoogleCloudApigeeV1AccessGet--;
 }
 
+core.int buildCounterGoogleCloudApigeeV1AccessLoggingConfig = 0;
+api.GoogleCloudApigeeV1AccessLoggingConfig
+    buildGoogleCloudApigeeV1AccessLoggingConfig() {
+  final o = api.GoogleCloudApigeeV1AccessLoggingConfig();
+  buildCounterGoogleCloudApigeeV1AccessLoggingConfig++;
+  if (buildCounterGoogleCloudApigeeV1AccessLoggingConfig < 3) {
+    o.enabled = true;
+    o.filter = 'foo';
+  }
+  buildCounterGoogleCloudApigeeV1AccessLoggingConfig--;
+  return o;
+}
+
+void checkGoogleCloudApigeeV1AccessLoggingConfig(
+    api.GoogleCloudApigeeV1AccessLoggingConfig o) {
+  buildCounterGoogleCloudApigeeV1AccessLoggingConfig++;
+  if (buildCounterGoogleCloudApigeeV1AccessLoggingConfig < 3) {
+    unittest.expect(o.enabled!, unittest.isTrue);
+    unittest.expect(
+      o.filter!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleCloudApigeeV1AccessLoggingConfig--;
+}
+
 core.int buildCounterGoogleCloudApigeeV1AccessRemove = 0;
 api.GoogleCloudApigeeV1AccessRemove buildGoogleCloudApigeeV1AccessRemove() {
   final o = api.GoogleCloudApigeeV1AccessRemove();
@@ -5743,6 +5769,7 @@ api.GoogleCloudApigeeV1Instance buildGoogleCloudApigeeV1Instance() {
   final o = api.GoogleCloudApigeeV1Instance();
   buildCounterGoogleCloudApigeeV1Instance++;
   if (buildCounterGoogleCloudApigeeV1Instance < 3) {
+    o.accessLoggingConfig = buildGoogleCloudApigeeV1AccessLoggingConfig();
     o.consumerAcceptList = buildUnnamed107();
     o.createdAt = 'foo';
     o.description = 'foo';
@@ -5766,6 +5793,7 @@ api.GoogleCloudApigeeV1Instance buildGoogleCloudApigeeV1Instance() {
 void checkGoogleCloudApigeeV1Instance(api.GoogleCloudApigeeV1Instance o) {
   buildCounterGoogleCloudApigeeV1Instance++;
   if (buildCounterGoogleCloudApigeeV1Instance < 3) {
+    checkGoogleCloudApigeeV1AccessLoggingConfig(o.accessLoggingConfig!);
     checkUnnamed107(o.consumerAcceptList!);
     unittest.expect(
       o.createdAt!,
@@ -13346,6 +13374,16 @@ void main() {
       final od = api.GoogleCloudApigeeV1AccessGet.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1AccessGet(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleCloudApigeeV1AccessLoggingConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudApigeeV1AccessLoggingConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1AccessLoggingConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudApigeeV1AccessLoggingConfig(od);
     });
   });
 

@@ -1583,6 +1583,45 @@ class EntityResult {
       };
 }
 
+/// Execution statistics for the query.
+typedef ExecutionStats = $ExecutionStats;
+
+/// Explain metrics for the query.
+class ExplainMetrics {
+  /// Aggregated stats from the execution of the query.
+  ///
+  /// Only present when ExplainOptions.analyze is set to true.
+  ExecutionStats? executionStats;
+
+  /// Planning phase information for the query.
+  PlanSummary? planSummary;
+
+  ExplainMetrics({
+    this.executionStats,
+    this.planSummary,
+  });
+
+  ExplainMetrics.fromJson(core.Map json_)
+      : this(
+          executionStats: json_.containsKey('executionStats')
+              ? ExecutionStats.fromJson(json_['executionStats']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          planSummary: json_.containsKey('planSummary')
+              ? PlanSummary.fromJson(
+                  json_['planSummary'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (executionStats != null) 'executionStats': executionStats!,
+        if (planSummary != null) 'planSummary': planSummary!,
+      };
+}
+
+/// Explain options for the query.
+typedef ExplainOptions = $ExplainOptions;
+
 /// A holder for any type of filter.
 class Filter {
   /// A composite filter.
@@ -2243,12 +2282,21 @@ class LookupRequest {
   /// Required.
   core.List<Key>? keys;
 
+  /// The properties to return.
+  ///
+  /// Defaults to returning all properties. If this field is set and an entity
+  /// has a property not referenced in the mask, it will be absent from
+  /// LookupResponse.found.entity.properties. The entity's key is always
+  /// returned.
+  PropertyMask? propertyMask;
+
   /// The options for this lookup request.
   ReadOptions? readOptions;
 
   LookupRequest({
     this.databaseId,
     this.keys,
+    this.propertyMask,
     this.readOptions,
   });
 
@@ -2263,6 +2311,10 @@ class LookupRequest {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          propertyMask: json_.containsKey('propertyMask')
+              ? PropertyMask.fromJson(
+                  json_['propertyMask'] as core.Map<core.String, core.dynamic>)
+              : null,
           readOptions: json_.containsKey('readOptions')
               ? ReadOptions.fromJson(
                   json_['readOptions'] as core.Map<core.String, core.dynamic>)
@@ -2272,6 +2324,7 @@ class LookupRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (databaseId != null) 'databaseId': databaseId!,
         if (keys != null) 'keys': keys!,
+        if (propertyMask != null) 'propertyMask': propertyMask!,
         if (readOptions != null) 'readOptions': readOptions!,
       };
 }
@@ -2378,6 +2431,15 @@ class Mutation {
   /// be incomplete.
   Entity? insert;
 
+  /// The properties to write in this mutation.
+  ///
+  /// None of the properties in the mask may have a reserved name, except for
+  /// `__key__`. This field is ignored for `delete`. If the entity already
+  /// exists, only properties referenced in the mask are updated, others are
+  /// left untouched. Properties referenced in the mask but not in the entity
+  /// are deleted.
+  PropertyMask? propertyMask;
+
   /// The entity to update.
   ///
   /// The entity must already exist. Must have a complete key path.
@@ -2399,6 +2461,7 @@ class Mutation {
     this.baseVersion,
     this.delete,
     this.insert,
+    this.propertyMask,
     this.update,
     this.updateTime,
     this.upsert,
@@ -2417,6 +2480,10 @@ class Mutation {
               ? Entity.fromJson(
                   json_['insert'] as core.Map<core.String, core.dynamic>)
               : null,
+          propertyMask: json_.containsKey('propertyMask')
+              ? PropertyMask.fromJson(
+                  json_['propertyMask'] as core.Map<core.String, core.dynamic>)
+              : null,
           update: json_.containsKey('update')
               ? Entity.fromJson(
                   json_['update'] as core.Map<core.String, core.dynamic>)
@@ -2434,6 +2501,7 @@ class Mutation {
         if (baseVersion != null) 'baseVersion': baseVersion!,
         if (delete != null) 'delete': delete!,
         if (insert != null) 'insert': insert!,
+        if (propertyMask != null) 'propertyMask': propertyMask!,
         if (update != null) 'update': update!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (upsert != null) 'upsert': upsert!,
@@ -2604,6 +2672,9 @@ class PathElement {
       };
 }
 
+/// Planning phase information for the query.
+typedef PlanSummary = $PlanSummary;
+
 /// A representation of a property in a projection.
 class Projection {
   /// The property to project.
@@ -2685,6 +2756,36 @@ class PropertyFilter {
         if (op != null) 'op': op!,
         if (property != null) 'property': property!,
         if (value != null) 'value': value!,
+      };
+}
+
+/// The set of arbitrarily nested property paths used to restrict an operation
+/// to only a subset of properties in an entity.
+class PropertyMask {
+  /// The paths to the properties covered by this mask.
+  ///
+  /// A path is a list of property names separated by dots (`.`), for example
+  /// `foo.bar` means the property `bar` inside the entity property `foo` inside
+  /// the entity associated with this path. If a property name contains a dot
+  /// `.` or a backslash `\`, then that name must be escaped. A path must not be
+  /// empty, and may not reference a value inside an array value.
+  core.List<core.String>? paths;
+
+  PropertyMask({
+    this.paths,
+  });
+
+  PropertyMask.fromJson(core.Map json_)
+      : this(
+          paths: json_.containsKey('paths')
+              ? (json_['paths'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (paths != null) 'paths': paths!,
       };
 }
 
@@ -3225,6 +3326,14 @@ class RunAggregationQueryRequest {
   /// default database.
   core.String? databaseId;
 
+  /// Explain options for the query.
+  ///
+  /// If set, additional query statistics will be returned. If not, only query
+  /// results will be returned.
+  ///
+  /// Optional.
+  ExplainOptions? explainOptions;
+
   /// The GQL query to run.
   ///
   /// This query must be an aggregation query.
@@ -3242,6 +3351,7 @@ class RunAggregationQueryRequest {
   RunAggregationQueryRequest({
     this.aggregationQuery,
     this.databaseId,
+    this.explainOptions,
     this.gqlQuery,
     this.partitionId,
     this.readOptions,
@@ -3255,6 +3365,10 @@ class RunAggregationQueryRequest {
               : null,
           databaseId: json_.containsKey('databaseId')
               ? json_['databaseId'] as core.String
+              : null,
+          explainOptions: json_.containsKey('explainOptions')
+              ? ExplainOptions.fromJson(json_['explainOptions']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           gqlQuery: json_.containsKey('gqlQuery')
               ? GqlQuery.fromJson(
@@ -3273,6 +3387,7 @@ class RunAggregationQueryRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (aggregationQuery != null) 'aggregationQuery': aggregationQuery!,
         if (databaseId != null) 'databaseId': databaseId!,
+        if (explainOptions != null) 'explainOptions': explainOptions!,
         if (gqlQuery != null) 'gqlQuery': gqlQuery!,
         if (partitionId != null) 'partitionId': partitionId!,
         if (readOptions != null) 'readOptions': readOptions!,
@@ -3285,6 +3400,13 @@ class RunAggregationQueryResponse {
   ///
   /// Always present.
   AggregationResultBatch? batch;
+
+  /// Query explain metrics.
+  ///
+  /// This is only present when the RunAggregationQueryRequest.explain_options
+  /// is provided, and it is sent only once with the last response in the
+  /// stream.
+  ExplainMetrics? explainMetrics;
 
   /// The parsed form of the `GqlQuery` from the request, if it was set.
   AggregationQuery? query;
@@ -3305,6 +3427,7 @@ class RunAggregationQueryResponse {
 
   RunAggregationQueryResponse({
     this.batch,
+    this.explainMetrics,
     this.query,
     this.transaction,
   });
@@ -3314,6 +3437,10 @@ class RunAggregationQueryResponse {
           batch: json_.containsKey('batch')
               ? AggregationResultBatch.fromJson(
                   json_['batch'] as core.Map<core.String, core.dynamic>)
+              : null,
+          explainMetrics: json_.containsKey('explainMetrics')
+              ? ExplainMetrics.fromJson(json_['explainMetrics']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           query: json_.containsKey('query')
               ? AggregationQuery.fromJson(
@@ -3326,6 +3453,7 @@ class RunAggregationQueryResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (batch != null) 'batch': batch!,
+        if (explainMetrics != null) 'explainMetrics': explainMetrics!,
         if (query != null) 'query': query!,
         if (transaction != null) 'transaction': transaction!,
       };
@@ -3339,6 +3467,14 @@ class RunQueryRequest {
   /// default database.
   core.String? databaseId;
 
+  /// Explain options for the query.
+  ///
+  /// If set, additional query statistics will be returned. If not, only query
+  /// results will be returned.
+  ///
+  /// Optional.
+  ExplainOptions? explainOptions;
+
   /// The GQL query to run.
   ///
   /// This query must be a non-aggregation query.
@@ -3350,6 +3486,12 @@ class RunQueryRequest {
   /// with the standard default context partition ID.
   PartitionId? partitionId;
 
+  /// The properties to return.
+  ///
+  /// This field must not be set for a projection query. See
+  /// LookupRequest.property_mask.
+  PropertyMask? propertyMask;
+
   /// The query to run.
   Query? query;
 
@@ -3358,8 +3500,10 @@ class RunQueryRequest {
 
   RunQueryRequest({
     this.databaseId,
+    this.explainOptions,
     this.gqlQuery,
     this.partitionId,
+    this.propertyMask,
     this.query,
     this.readOptions,
   });
@@ -3369,6 +3513,10 @@ class RunQueryRequest {
           databaseId: json_.containsKey('databaseId')
               ? json_['databaseId'] as core.String
               : null,
+          explainOptions: json_.containsKey('explainOptions')
+              ? ExplainOptions.fromJson(json_['explainOptions']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           gqlQuery: json_.containsKey('gqlQuery')
               ? GqlQuery.fromJson(
                   json_['gqlQuery'] as core.Map<core.String, core.dynamic>)
@@ -3376,6 +3524,10 @@ class RunQueryRequest {
           partitionId: json_.containsKey('partitionId')
               ? PartitionId.fromJson(
                   json_['partitionId'] as core.Map<core.String, core.dynamic>)
+              : null,
+          propertyMask: json_.containsKey('propertyMask')
+              ? PropertyMask.fromJson(
+                  json_['propertyMask'] as core.Map<core.String, core.dynamic>)
               : null,
           query: json_.containsKey('query')
               ? Query.fromJson(
@@ -3389,8 +3541,10 @@ class RunQueryRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (databaseId != null) 'databaseId': databaseId!,
+        if (explainOptions != null) 'explainOptions': explainOptions!,
         if (gqlQuery != null) 'gqlQuery': gqlQuery!,
         if (partitionId != null) 'partitionId': partitionId!,
+        if (propertyMask != null) 'propertyMask': propertyMask!,
         if (query != null) 'query': query!,
         if (readOptions != null) 'readOptions': readOptions!,
       };
@@ -3400,6 +3554,12 @@ class RunQueryRequest {
 class RunQueryResponse {
   /// A batch of query results (always present).
   QueryResultBatch? batch;
+
+  /// Query explain metrics.
+  ///
+  /// This is only present when the RunQueryRequest.explain_options is provided,
+  /// and it is sent only once with the last response in the stream.
+  ExplainMetrics? explainMetrics;
 
   /// The parsed form of the `GqlQuery` from the request, if it was set.
   Query? query;
@@ -3420,6 +3580,7 @@ class RunQueryResponse {
 
   RunQueryResponse({
     this.batch,
+    this.explainMetrics,
     this.query,
     this.transaction,
   });
@@ -3429,6 +3590,10 @@ class RunQueryResponse {
           batch: json_.containsKey('batch')
               ? QueryResultBatch.fromJson(
                   json_['batch'] as core.Map<core.String, core.dynamic>)
+              : null,
+          explainMetrics: json_.containsKey('explainMetrics')
+              ? ExplainMetrics.fromJson(json_['explainMetrics']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           query: json_.containsKey('query')
               ? Query.fromJson(
@@ -3441,6 +3606,7 @@ class RunQueryResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (batch != null) 'batch': batch!,
+        if (explainMetrics != null) 'explainMetrics': explainMetrics!,
         if (query != null) 'query': query!,
         if (transaction != null) 'transaction': transaction!,
       };

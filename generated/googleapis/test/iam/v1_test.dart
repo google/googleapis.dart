@@ -2510,6 +2510,7 @@ api.WorkloadIdentityPoolProvider buildWorkloadIdentityPoolProvider() {
     o.oidc = buildOidc();
     o.saml = buildSaml();
     o.state = 'foo';
+    o.x509 = buildX509();
   }
   buildCounterWorkloadIdentityPoolProvider--;
   return o;
@@ -2547,6 +2548,7 @@ void checkWorkloadIdentityPoolProvider(api.WorkloadIdentityPoolProvider o) {
       o.state!,
       unittest.equals('foo'),
     );
+    checkX509(o.x509!);
   }
   buildCounterWorkloadIdentityPoolProvider--;
 }
@@ -2589,6 +2591,21 @@ void checkWorkloadIdentityPoolProviderKey(
     );
   }
   buildCounterWorkloadIdentityPoolProviderKey--;
+}
+
+core.int buildCounterX509 = 0;
+api.X509 buildX509() {
+  final o = api.X509();
+  buildCounterX509++;
+  if (buildCounterX509 < 3) {}
+  buildCounterX509--;
+  return o;
+}
+
+void checkX509(api.X509 o) {
+  buildCounterX509++;
+  if (buildCounterX509 < 3) {}
+  buildCounterX509--;
 }
 
 core.List<core.String> buildUnnamed30() => [
@@ -3373,6 +3390,16 @@ void main() {
       final od = api.WorkloadIdentityPoolProviderKey.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkWorkloadIdentityPoolProviderKey(od);
+    });
+  });
+
+  unittest.group('obj-schema-X509', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildX509();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.X509.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkX509(od);
     });
   });
 

@@ -831,12 +831,47 @@ void checkListPaymentsResponse(api.ListPaymentsResponse o) {
   buildCounterListPaymentsResponse--;
 }
 
-core.List<api.SavedReport> buildUnnamed12() => [
+core.List<api.PolicyIssue> buildUnnamed12() => [
+      buildPolicyIssue(),
+      buildPolicyIssue(),
+    ];
+
+void checkUnnamed12(core.List<api.PolicyIssue> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkPolicyIssue(o[0]);
+  checkPolicyIssue(o[1]);
+}
+
+core.int buildCounterListPolicyIssuesResponse = 0;
+api.ListPolicyIssuesResponse buildListPolicyIssuesResponse() {
+  final o = api.ListPolicyIssuesResponse();
+  buildCounterListPolicyIssuesResponse++;
+  if (buildCounterListPolicyIssuesResponse < 3) {
+    o.nextPageToken = 'foo';
+    o.policyIssues = buildUnnamed12();
+  }
+  buildCounterListPolicyIssuesResponse--;
+  return o;
+}
+
+void checkListPolicyIssuesResponse(api.ListPolicyIssuesResponse o) {
+  buildCounterListPolicyIssuesResponse++;
+  if (buildCounterListPolicyIssuesResponse < 3) {
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed12(o.policyIssues!);
+  }
+  buildCounterListPolicyIssuesResponse--;
+}
+
+core.List<api.SavedReport> buildUnnamed13() => [
       buildSavedReport(),
       buildSavedReport(),
     ];
 
-void checkUnnamed12(core.List<api.SavedReport> o) {
+void checkUnnamed13(core.List<api.SavedReport> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSavedReport(o[0]);
   checkSavedReport(o[1]);
@@ -848,7 +883,7 @@ api.ListSavedReportsResponse buildListSavedReportsResponse() {
   buildCounterListSavedReportsResponse++;
   if (buildCounterListSavedReportsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.savedReports = buildUnnamed12();
+    o.savedReports = buildUnnamed13();
   }
   buildCounterListSavedReportsResponse--;
   return o;
@@ -861,17 +896,17 @@ void checkListSavedReportsResponse(api.ListSavedReportsResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed12(o.savedReports!);
+    checkUnnamed13(o.savedReports!);
   }
   buildCounterListSavedReportsResponse--;
 }
 
-core.List<api.Site> buildUnnamed13() => [
+core.List<api.Site> buildUnnamed14() => [
       buildSite(),
       buildSite(),
     ];
 
-void checkUnnamed13(core.List<api.Site> o) {
+void checkUnnamed14(core.List<api.Site> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSite(o[0]);
   checkSite(o[1]);
@@ -883,7 +918,7 @@ api.ListSitesResponse buildListSitesResponse() {
   buildCounterListSitesResponse++;
   if (buildCounterListSitesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.sites = buildUnnamed13();
+    o.sites = buildUnnamed14();
   }
   buildCounterListSitesResponse--;
   return o;
@@ -896,17 +931,17 @@ void checkListSitesResponse(api.ListSitesResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed13(o.sites!);
+    checkUnnamed14(o.sites!);
   }
   buildCounterListSitesResponse--;
 }
 
-core.List<api.UrlChannel> buildUnnamed14() => [
+core.List<api.UrlChannel> buildUnnamed15() => [
       buildUrlChannel(),
       buildUrlChannel(),
     ];
 
-void checkUnnamed14(core.List<api.UrlChannel> o) {
+void checkUnnamed15(core.List<api.UrlChannel> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUrlChannel(o[0]);
   checkUrlChannel(o[1]);
@@ -918,7 +953,7 @@ api.ListUrlChannelsResponse buildListUrlChannelsResponse() {
   buildCounterListUrlChannelsResponse++;
   if (buildCounterListUrlChannelsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.urlChannels = buildUnnamed14();
+    o.urlChannels = buildUnnamed15();
   }
   buildCounterListUrlChannelsResponse--;
   return o;
@@ -931,7 +966,7 @@ void checkListUrlChannelsResponse(api.ListUrlChannelsResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed14(o.urlChannels!);
+    checkUnnamed15(o.urlChannels!);
   }
   buildCounterListUrlChannelsResponse--;
 }
@@ -965,34 +1000,148 @@ void checkPayment(api.Payment o) {
   buildCounterPayment--;
 }
 
-core.List<api.Header> buildUnnamed15() => [
+core.List<core.String> buildUnnamed16() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed16(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<api.PolicyTopic> buildUnnamed17() => [
+      buildPolicyTopic(),
+      buildPolicyTopic(),
+    ];
+
+void checkUnnamed17(core.List<api.PolicyTopic> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkPolicyTopic(o[0]);
+  checkPolicyTopic(o[1]);
+}
+
+core.int buildCounterPolicyIssue = 0;
+api.PolicyIssue buildPolicyIssue() {
+  final o = api.PolicyIssue();
+  buildCounterPolicyIssue++;
+  if (buildCounterPolicyIssue < 3) {
+    o.action = 'foo';
+    o.adClients = buildUnnamed16();
+    o.adRequestCount = 'foo';
+    o.entityType = 'foo';
+    o.firstDetectedDate = buildDate();
+    o.lastDetectedDate = buildDate();
+    o.name = 'foo';
+    o.policyTopics = buildUnnamed17();
+    o.site = 'foo';
+    o.siteSection = 'foo';
+    o.uri = 'foo';
+    o.warningEscalationDate = buildDate();
+  }
+  buildCounterPolicyIssue--;
+  return o;
+}
+
+void checkPolicyIssue(api.PolicyIssue o) {
+  buildCounterPolicyIssue++;
+  if (buildCounterPolicyIssue < 3) {
+    unittest.expect(
+      o.action!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed16(o.adClients!);
+    unittest.expect(
+      o.adRequestCount!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.entityType!,
+      unittest.equals('foo'),
+    );
+    checkDate(o.firstDetectedDate!);
+    checkDate(o.lastDetectedDate!);
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed17(o.policyTopics!);
+    unittest.expect(
+      o.site!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.siteSection!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.uri!,
+      unittest.equals('foo'),
+    );
+    checkDate(o.warningEscalationDate!);
+  }
+  buildCounterPolicyIssue--;
+}
+
+core.int buildCounterPolicyTopic = 0;
+api.PolicyTopic buildPolicyTopic() {
+  final o = api.PolicyTopic();
+  buildCounterPolicyTopic++;
+  if (buildCounterPolicyTopic < 3) {
+    o.mustFix = true;
+    o.topic = 'foo';
+  }
+  buildCounterPolicyTopic--;
+  return o;
+}
+
+void checkPolicyTopic(api.PolicyTopic o) {
+  buildCounterPolicyTopic++;
+  if (buildCounterPolicyTopic < 3) {
+    unittest.expect(o.mustFix!, unittest.isTrue);
+    unittest.expect(
+      o.topic!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterPolicyTopic--;
+}
+
+core.List<api.Header> buildUnnamed18() => [
       buildHeader(),
       buildHeader(),
     ];
 
-void checkUnnamed15(core.List<api.Header> o) {
+void checkUnnamed18(core.List<api.Header> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkHeader(o[0]);
   checkHeader(o[1]);
 }
 
-core.List<api.Row> buildUnnamed16() => [
+core.List<api.Row> buildUnnamed19() => [
       buildRow(),
       buildRow(),
     ];
 
-void checkUnnamed16(core.List<api.Row> o) {
+void checkUnnamed19(core.List<api.Row> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRow(o[0]);
   checkRow(o[1]);
 }
 
-core.List<core.String> buildUnnamed17() => [
+core.List<core.String> buildUnnamed20() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed17(core.List<core.String> o) {
+void checkUnnamed20(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1011,12 +1160,12 @@ api.ReportResult buildReportResult() {
   if (buildCounterReportResult < 3) {
     o.averages = buildRow();
     o.endDate = buildDate();
-    o.headers = buildUnnamed15();
-    o.rows = buildUnnamed16();
+    o.headers = buildUnnamed18();
+    o.rows = buildUnnamed19();
     o.startDate = buildDate();
     o.totalMatchedRows = 'foo';
     o.totals = buildRow();
-    o.warnings = buildUnnamed17();
+    o.warnings = buildUnnamed20();
   }
   buildCounterReportResult--;
   return o;
@@ -1027,25 +1176,25 @@ void checkReportResult(api.ReportResult o) {
   if (buildCounterReportResult < 3) {
     checkRow(o.averages!);
     checkDate(o.endDate!);
-    checkUnnamed15(o.headers!);
-    checkUnnamed16(o.rows!);
+    checkUnnamed18(o.headers!);
+    checkUnnamed19(o.rows!);
     checkDate(o.startDate!);
     unittest.expect(
       o.totalMatchedRows!,
       unittest.equals('foo'),
     );
     checkRow(o.totals!);
-    checkUnnamed17(o.warnings!);
+    checkUnnamed20(o.warnings!);
   }
   buildCounterReportResult--;
 }
 
-core.List<api.Cell> buildUnnamed18() => [
+core.List<api.Cell> buildUnnamed21() => [
       buildCell(),
       buildCell(),
     ];
 
-void checkUnnamed18(core.List<api.Cell> o) {
+void checkUnnamed21(core.List<api.Cell> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCell(o[0]);
   checkCell(o[1]);
@@ -1056,7 +1205,7 @@ api.Row buildRow() {
   final o = api.Row();
   buildCounterRow++;
   if (buildCounterRow < 3) {
-    o.cells = buildUnnamed18();
+    o.cells = buildUnnamed21();
   }
   buildCounterRow--;
   return o;
@@ -1065,7 +1214,7 @@ api.Row buildRow() {
 void checkRow(api.Row o) {
   buildCounterRow++;
   if (buildCounterRow < 3) {
-    checkUnnamed18(o.cells!);
+    checkUnnamed21(o.cells!);
   }
   buildCounterRow--;
 }
@@ -1195,57 +1344,6 @@ void checkUrlChannel(api.UrlChannel o) {
   buildCounterUrlChannel--;
 }
 
-core.List<core.String> buildUnnamed19() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed19(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.List<core.String> buildUnnamed20() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed20(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.List<core.String> buildUnnamed21() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed21(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
 core.List<core.String> buildUnnamed22() => [
       'foo',
       'foo',
@@ -1320,6 +1418,57 @@ core.List<core.String> buildUnnamed26() => [
     ];
 
 void checkUnnamed26(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed27() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed27(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed28() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed28(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed29() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed29(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1562,6 +1711,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-ListPolicyIssuesResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildListPolicyIssuesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListPolicyIssuesResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkListPolicyIssuesResponse(od);
+    });
+  });
+
   unittest.group('obj-schema-ListSavedReportsResponse', () {
     unittest.test('to-json--from-json', () async {
       final o = buildListSavedReportsResponse();
@@ -1599,6 +1758,26 @@ void main() {
       final od =
           api.Payment.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkPayment(od);
+    });
+  });
+
+  unittest.group('obj-schema-PolicyIssue', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPolicyIssue();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PolicyIssue.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkPolicyIssue(od);
+    });
+  });
+
+  unittest.group('obj-schema-PolicyTopic', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPolicyTopic();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PolicyTopic.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkPolicyTopic(od);
     });
   });
 
@@ -3017,6 +3196,125 @@ void main() {
     });
   });
 
+  unittest.group('resource-AccountsPolicyIssuesResource', () {
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.AdsenseApi(mock).accounts.policyIssues;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildPolicyIssue());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkPolicyIssue(response as api.PolicyIssue);
+    });
+
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res = api.AdsenseApi(mock).accounts.policyIssues;
+      final arg_parent = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildListPolicyIssuesResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListPolicyIssuesResponse(response as api.ListPolicyIssuesResponse);
+    });
+  });
+
   unittest.group('resource-AccountsReportsResource', () {
     unittest.test('method--generate', () async {
       final mock = HttpServerMock();
@@ -3024,15 +3322,15 @@ void main() {
       final arg_account = 'foo';
       final arg_currencyCode = 'foo';
       final arg_dateRange = 'foo';
-      final arg_dimensions = buildUnnamed19();
+      final arg_dimensions = buildUnnamed22();
       final arg_endDate_day = 42;
       final arg_endDate_month = 42;
       final arg_endDate_year = 42;
-      final arg_filters = buildUnnamed20();
+      final arg_filters = buildUnnamed23();
       final arg_languageCode = 'foo';
       final arg_limit = 42;
-      final arg_metrics = buildUnnamed21();
-      final arg_orderBy = buildUnnamed22();
+      final arg_metrics = buildUnnamed24();
+      final arg_orderBy = buildUnnamed25();
       final arg_reportingTimeZone = 'foo';
       final arg_startDate_day = 42;
       final arg_startDate_month = 42;
@@ -3167,15 +3465,15 @@ void main() {
       final arg_account = 'foo';
       final arg_currencyCode = 'foo';
       final arg_dateRange = 'foo';
-      final arg_dimensions = buildUnnamed23();
+      final arg_dimensions = buildUnnamed26();
       final arg_endDate_day = 42;
       final arg_endDate_month = 42;
       final arg_endDate_year = 42;
-      final arg_filters = buildUnnamed24();
+      final arg_filters = buildUnnamed27();
       final arg_languageCode = 'foo';
       final arg_limit = 42;
-      final arg_metrics = buildUnnamed25();
-      final arg_orderBy = buildUnnamed26();
+      final arg_metrics = buildUnnamed28();
+      final arg_orderBy = buildUnnamed29();
       final arg_reportingTimeZone = 'foo';
       final arg_startDate_day = 42;
       final arg_startDate_month = 42;

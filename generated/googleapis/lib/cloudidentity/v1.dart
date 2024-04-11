@@ -3408,12 +3408,395 @@ typedef GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest = $Request00;
 /// Request message for blocking account on device.
 typedef GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest = $Request00;
 
+/// Contains information about browser profiles reported by the
+/// [Endpoint Verification extension](https://chromewebstore.google.com/detail/endpoint-verification/callobklhcbilhphinckomhgkigmfocg?pli=1).
+class GoogleAppsCloudidentityDevicesV1BrowserAttributes {
+  /// Represents the current state of the
+  /// [Chrome browser attributes](https://cloud.google.com/access-context-manager/docs/browser-attributes)
+  /// sent by the
+  /// [Endpoint Verification extension](https://chromewebstore.google.com/detail/endpoint-verification/callobklhcbilhphinckomhgkigmfocg?pli=1).
+  GoogleAppsCloudidentityDevicesV1BrowserInfo? chromeBrowserInfo;
+
+  /// Chrome profile ID that is exposed by the Chrome API.
+  ///
+  /// It is unique for each device.
+  core.String? chromeProfileId;
+
+  /// Timestamp in milliseconds since Epoch when the profile/gcm id was last
+  /// synced.
+  core.String? lastProfileSyncTime;
+
+  GoogleAppsCloudidentityDevicesV1BrowserAttributes({
+    this.chromeBrowserInfo,
+    this.chromeProfileId,
+    this.lastProfileSyncTime,
+  });
+
+  GoogleAppsCloudidentityDevicesV1BrowserAttributes.fromJson(core.Map json_)
+      : this(
+          chromeBrowserInfo: json_.containsKey('chromeBrowserInfo')
+              ? GoogleAppsCloudidentityDevicesV1BrowserInfo.fromJson(
+                  json_['chromeBrowserInfo']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          chromeProfileId: json_.containsKey('chromeProfileId')
+              ? json_['chromeProfileId'] as core.String
+              : null,
+          lastProfileSyncTime: json_.containsKey('lastProfileSyncTime')
+              ? json_['lastProfileSyncTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (chromeBrowserInfo != null) 'chromeBrowserInfo': chromeBrowserInfo!,
+        if (chromeProfileId != null) 'chromeProfileId': chromeProfileId!,
+        if (lastProfileSyncTime != null)
+          'lastProfileSyncTime': lastProfileSyncTime!,
+      };
+}
+
+/// Browser-specific fields reported by the
+/// [Endpoint Verification extension](https://chromewebstore.google.com/detail/endpoint-verification/callobklhcbilhphinckomhgkigmfocg?pli=1).
+///
+/// LINT.IfChange
+class GoogleAppsCloudidentityDevicesV1BrowserInfo {
+  /// Browser's management state.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "UNSPECIFIED" : Management state is not specified.
+  /// - "UNMANAGED" : Browser/Profile is not managed by any customer.
+  /// - "MANAGED_BY_OTHER_DOMAIN" : Browser/Profile is managed, but by some
+  /// other customer.
+  /// - "PROFILE_MANAGED" : Profile is managed by customer.
+  /// - "BROWSER_MANAGED" : Browser is managed by customer.
+  core.String? browserManagementState;
+
+  /// Version of the request initiating browser.
+  core.String? browserVersion;
+
+  /// Current state of \[built-in DNS
+  /// client\](https://chromeenterprise.google/policies/#BuiltInDnsClientEnabled).
+  core.bool? isBuiltInDnsClientEnabled;
+
+  /// Current state of
+  /// [bulk data analysis](https://chromeenterprise.google/policies/#OnBulkDataEntryEnterpriseConnector).
+  ///
+  /// Set to true if provider list from Chrome is non-empty.
+  core.bool? isBulkDataEntryAnalysisEnabled;
+
+  /// Current state of
+  /// [Chrome Cleanup](https://chromeenterprise.google/policies/#ChromeCleanupEnabled).
+  core.bool? isChromeCleanupEnabled;
+
+  /// Current state of
+  /// [Chrome Remote Desktop app](https://chromeenterprise.google/policies/#URLBlocklist).
+  core.bool? isChromeRemoteDesktopAppBlocked;
+
+  /// Current state of
+  /// [file download analysis](https://chromeenterprise.google/policies/#OnFileDownloadedEnterpriseConnector).
+  ///
+  /// Set to true if provider list from Chrome is non-empty.
+  core.bool? isFileDownloadAnalysisEnabled;
+
+  /// Current state of
+  /// [file upload analysis](https://chromeenterprise.google/policies/#OnFileAttachedEnterpriseConnector).
+  ///
+  /// Set to true if provider list from Chrome is non-empty.
+  core.bool? isFileUploadAnalysisEnabled;
+
+  /// Current state of \[real-time URL
+  /// check\](https://chromeenterprise.google/policies/#EnterpriseRealTimeUrlCheckMode).
+  ///
+  /// Set to true if provider list from Chrome is non-empty.
+  core.bool? isRealtimeUrlCheckEnabled;
+
+  /// Current state of
+  /// [security event analysis](https://chromeenterprise.google/policies/#OnSecurityEventEnterpriseConnector).
+  ///
+  /// Set to true if provider list from Chrome is non-empty.
+  core.bool? isSecurityEventAnalysisEnabled;
+
+  /// Current state of
+  /// [site isolation](https://chromeenterprise.google/policies/?policy=IsolateOrigins).
+  core.bool? isSiteIsolationEnabled;
+
+  /// Current state of \[third-party
+  /// blocking\](https://chromeenterprise.google/policies/#ThirdPartyBlockingEnabled).
+  core.bool? isThirdPartyBlockingEnabled;
+
+  /// Current state of
+  /// [password protection trigger](https://chromeenterprise.google/policies/#PasswordProtectionWarningTrigger).
+  /// Possible string values are:
+  /// - "PASSWORD_PROTECTION_TRIGGER_UNSPECIFIED" : Password protection is not
+  /// specified.
+  /// - "PROTECTION_OFF" : Password reuse is never detected.
+  /// - "PASSWORD_REUSE" : Warning is shown when the user reuses their protected
+  /// password on a non-allowed site.
+  /// - "PHISHING_REUSE" : Warning is shown when the user reuses their protected
+  /// password on a phishing site.
+  core.String? passwordProtectionWarningTrigger;
+
+  /// Current state of
+  /// [Safe Browsing protection level](https://chromeenterprise.google/policies/#SafeBrowsingProtectionLevel).
+  /// Possible string values are:
+  /// - "SAFE_BROWSING_LEVEL_UNSPECIFIED" : Browser protection level is not
+  /// specified.
+  /// - "DISABLED" : No protection against dangerous websites, downloads, and
+  /// extensions.
+  /// - "STANDARD" : Standard protection against websites, downloads, and
+  /// extensions that are known to be dangerous.
+  /// - "ENHANCED" : Faster, proactive protection against dangerous websites,
+  /// downloads, and extensions.
+  core.String? safeBrowsingProtectionLevel;
+
+  GoogleAppsCloudidentityDevicesV1BrowserInfo({
+    this.browserManagementState,
+    this.browserVersion,
+    this.isBuiltInDnsClientEnabled,
+    this.isBulkDataEntryAnalysisEnabled,
+    this.isChromeCleanupEnabled,
+    this.isChromeRemoteDesktopAppBlocked,
+    this.isFileDownloadAnalysisEnabled,
+    this.isFileUploadAnalysisEnabled,
+    this.isRealtimeUrlCheckEnabled,
+    this.isSecurityEventAnalysisEnabled,
+    this.isSiteIsolationEnabled,
+    this.isThirdPartyBlockingEnabled,
+    this.passwordProtectionWarningTrigger,
+    this.safeBrowsingProtectionLevel,
+  });
+
+  GoogleAppsCloudidentityDevicesV1BrowserInfo.fromJson(core.Map json_)
+      : this(
+          browserManagementState: json_.containsKey('browserManagementState')
+              ? json_['browserManagementState'] as core.String
+              : null,
+          browserVersion: json_.containsKey('browserVersion')
+              ? json_['browserVersion'] as core.String
+              : null,
+          isBuiltInDnsClientEnabled:
+              json_.containsKey('isBuiltInDnsClientEnabled')
+                  ? json_['isBuiltInDnsClientEnabled'] as core.bool
+                  : null,
+          isBulkDataEntryAnalysisEnabled:
+              json_.containsKey('isBulkDataEntryAnalysisEnabled')
+                  ? json_['isBulkDataEntryAnalysisEnabled'] as core.bool
+                  : null,
+          isChromeCleanupEnabled: json_.containsKey('isChromeCleanupEnabled')
+              ? json_['isChromeCleanupEnabled'] as core.bool
+              : null,
+          isChromeRemoteDesktopAppBlocked:
+              json_.containsKey('isChromeRemoteDesktopAppBlocked')
+                  ? json_['isChromeRemoteDesktopAppBlocked'] as core.bool
+                  : null,
+          isFileDownloadAnalysisEnabled:
+              json_.containsKey('isFileDownloadAnalysisEnabled')
+                  ? json_['isFileDownloadAnalysisEnabled'] as core.bool
+                  : null,
+          isFileUploadAnalysisEnabled:
+              json_.containsKey('isFileUploadAnalysisEnabled')
+                  ? json_['isFileUploadAnalysisEnabled'] as core.bool
+                  : null,
+          isRealtimeUrlCheckEnabled:
+              json_.containsKey('isRealtimeUrlCheckEnabled')
+                  ? json_['isRealtimeUrlCheckEnabled'] as core.bool
+                  : null,
+          isSecurityEventAnalysisEnabled:
+              json_.containsKey('isSecurityEventAnalysisEnabled')
+                  ? json_['isSecurityEventAnalysisEnabled'] as core.bool
+                  : null,
+          isSiteIsolationEnabled: json_.containsKey('isSiteIsolationEnabled')
+              ? json_['isSiteIsolationEnabled'] as core.bool
+              : null,
+          isThirdPartyBlockingEnabled:
+              json_.containsKey('isThirdPartyBlockingEnabled')
+                  ? json_['isThirdPartyBlockingEnabled'] as core.bool
+                  : null,
+          passwordProtectionWarningTrigger:
+              json_.containsKey('passwordProtectionWarningTrigger')
+                  ? json_['passwordProtectionWarningTrigger'] as core.String
+                  : null,
+          safeBrowsingProtectionLevel:
+              json_.containsKey('safeBrowsingProtectionLevel')
+                  ? json_['safeBrowsingProtectionLevel'] as core.String
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (browserManagementState != null)
+          'browserManagementState': browserManagementState!,
+        if (browserVersion != null) 'browserVersion': browserVersion!,
+        if (isBuiltInDnsClientEnabled != null)
+          'isBuiltInDnsClientEnabled': isBuiltInDnsClientEnabled!,
+        if (isBulkDataEntryAnalysisEnabled != null)
+          'isBulkDataEntryAnalysisEnabled': isBulkDataEntryAnalysisEnabled!,
+        if (isChromeCleanupEnabled != null)
+          'isChromeCleanupEnabled': isChromeCleanupEnabled!,
+        if (isChromeRemoteDesktopAppBlocked != null)
+          'isChromeRemoteDesktopAppBlocked': isChromeRemoteDesktopAppBlocked!,
+        if (isFileDownloadAnalysisEnabled != null)
+          'isFileDownloadAnalysisEnabled': isFileDownloadAnalysisEnabled!,
+        if (isFileUploadAnalysisEnabled != null)
+          'isFileUploadAnalysisEnabled': isFileUploadAnalysisEnabled!,
+        if (isRealtimeUrlCheckEnabled != null)
+          'isRealtimeUrlCheckEnabled': isRealtimeUrlCheckEnabled!,
+        if (isSecurityEventAnalysisEnabled != null)
+          'isSecurityEventAnalysisEnabled': isSecurityEventAnalysisEnabled!,
+        if (isSiteIsolationEnabled != null)
+          'isSiteIsolationEnabled': isSiteIsolationEnabled!,
+        if (isThirdPartyBlockingEnabled != null)
+          'isThirdPartyBlockingEnabled': isThirdPartyBlockingEnabled!,
+        if (passwordProtectionWarningTrigger != null)
+          'passwordProtectionWarningTrigger': passwordProtectionWarningTrigger!,
+        if (safeBrowsingProtectionLevel != null)
+          'safeBrowsingProtectionLevel': safeBrowsingProtectionLevel!,
+      };
+}
+
 /// Request message for cancelling an unfinished device wipe.
 typedef GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest = $Request00;
 
 /// Request message for cancelling an unfinished user account wipe.
 typedef GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest
     = $Request00;
+
+/// Stores information about a certificate.
+class GoogleAppsCloudidentityDevicesV1CertificateAttributes {
+  /// The X.509 extension for CertificateTemplate.
+  GoogleAppsCloudidentityDevicesV1CertificateTemplate? certificateTemplate;
+
+  /// The encoded certificate fingerprint.
+  core.String? fingerprint;
+
+  /// The name of the issuer of this certificate.
+  core.String? issuer;
+
+  /// Serial number of the certificate, Example: "123456789".
+  core.String? serialNumber;
+
+  /// The subject name of this certificate.
+  core.String? subject;
+
+  /// The certificate thumbprint.
+  core.String? thumbprint;
+
+  /// Validation state of this certificate.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CERTIFICATE_VALIDATION_STATE_UNSPECIFIED" : Default value.
+  /// - "VALIDATION_SUCCESSFUL" : Certificate validation was successful.
+  /// - "VALIDATION_FAILED" : Certificate validation failed.
+  core.String? validationState;
+
+  /// Certificate not valid at or after this timestamp.
+  core.String? validityExpirationTime;
+
+  /// Certificate not valid before this timestamp.
+  core.String? validityStartTime;
+
+  GoogleAppsCloudidentityDevicesV1CertificateAttributes({
+    this.certificateTemplate,
+    this.fingerprint,
+    this.issuer,
+    this.serialNumber,
+    this.subject,
+    this.thumbprint,
+    this.validationState,
+    this.validityExpirationTime,
+    this.validityStartTime,
+  });
+
+  GoogleAppsCloudidentityDevicesV1CertificateAttributes.fromJson(core.Map json_)
+      : this(
+          certificateTemplate: json_.containsKey('certificateTemplate')
+              ? GoogleAppsCloudidentityDevicesV1CertificateTemplate.fromJson(
+                  json_['certificateTemplate']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          fingerprint: json_.containsKey('fingerprint')
+              ? json_['fingerprint'] as core.String
+              : null,
+          issuer: json_.containsKey('issuer')
+              ? json_['issuer'] as core.String
+              : null,
+          serialNumber: json_.containsKey('serialNumber')
+              ? json_['serialNumber'] as core.String
+              : null,
+          subject: json_.containsKey('subject')
+              ? json_['subject'] as core.String
+              : null,
+          thumbprint: json_.containsKey('thumbprint')
+              ? json_['thumbprint'] as core.String
+              : null,
+          validationState: json_.containsKey('validationState')
+              ? json_['validationState'] as core.String
+              : null,
+          validityExpirationTime: json_.containsKey('validityExpirationTime')
+              ? json_['validityExpirationTime'] as core.String
+              : null,
+          validityStartTime: json_.containsKey('validityStartTime')
+              ? json_['validityStartTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (certificateTemplate != null)
+          'certificateTemplate': certificateTemplate!,
+        if (fingerprint != null) 'fingerprint': fingerprint!,
+        if (issuer != null) 'issuer': issuer!,
+        if (serialNumber != null) 'serialNumber': serialNumber!,
+        if (subject != null) 'subject': subject!,
+        if (thumbprint != null) 'thumbprint': thumbprint!,
+        if (validationState != null) 'validationState': validationState!,
+        if (validityExpirationTime != null)
+          'validityExpirationTime': validityExpirationTime!,
+        if (validityStartTime != null) 'validityStartTime': validityStartTime!,
+      };
+}
+
+/// CertificateTemplate (v3 Extension in X.509).
+class GoogleAppsCloudidentityDevicesV1CertificateTemplate {
+  /// The template id of the template.
+  ///
+  /// Example:
+  /// "1.3.6.1.4.1.311.21.8.15608621.11768144.5720724.16068415.6889630.81.2472537.7784047".
+  core.String? id;
+
+  /// The Major version of the template.
+  ///
+  /// Example: 100.
+  core.int? majorVersion;
+
+  /// The minor version of the template.
+  ///
+  /// Example: 12.
+  core.int? minorVersion;
+
+  GoogleAppsCloudidentityDevicesV1CertificateTemplate({
+    this.id,
+    this.majorVersion,
+    this.minorVersion,
+  });
+
+  GoogleAppsCloudidentityDevicesV1CertificateTemplate.fromJson(core.Map json_)
+      : this(
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          majorVersion: json_.containsKey('majorVersion')
+              ? json_['majorVersion'] as core.int
+              : null,
+          minorVersion: json_.containsKey('minorVersion')
+              ? json_['minorVersion'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (id != null) 'id': id!,
+        if (majorVersion != null) 'majorVersion': majorVersion!,
+        if (minorVersion != null) 'minorVersion': minorVersion!,
+      };
+}
 
 /// Represents the state associated with an API client calling the Devices API.
 ///
@@ -3719,6 +4102,14 @@ class GoogleAppsCloudidentityDevicesV1Device {
   /// - "NOT_ENCRYPTED" : Device is not encrypted.
   core.String? encryptionState;
 
+  /// Attributes specific to
+  /// [Endpoint Verification](https://cloud.google.com/endpoint-verification/docs/overview)
+  /// devices.
+  ///
+  /// Output only.
+  GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributes?
+      endpointVerificationSpecificAttributes;
+
   /// Host name of the device.
   core.String? hostname;
 
@@ -3841,6 +4232,7 @@ class GoogleAppsCloudidentityDevicesV1Device {
     this.enabledDeveloperOptions,
     this.enabledUsbDebugging,
     this.encryptionState,
+    this.endpointVerificationSpecificAttributes,
     this.hostname,
     this.imei,
     this.kernelVersion,
@@ -3902,6 +4294,12 @@ class GoogleAppsCloudidentityDevicesV1Device {
               : null,
           encryptionState: json_.containsKey('encryptionState')
               ? json_['encryptionState'] as core.String
+              : null,
+          endpointVerificationSpecificAttributes: json_
+                  .containsKey('endpointVerificationSpecificAttributes')
+              ? GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributes
+                  .fromJson(json_['endpointVerificationSpecificAttributes']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           hostname: json_.containsKey('hostname')
               ? json_['hostname'] as core.String
@@ -3970,6 +4368,9 @@ class GoogleAppsCloudidentityDevicesV1Device {
         if (enabledUsbDebugging != null)
           'enabledUsbDebugging': enabledUsbDebugging!,
         if (encryptionState != null) 'encryptionState': encryptionState!,
+        if (endpointVerificationSpecificAttributes != null)
+          'endpointVerificationSpecificAttributes':
+              endpointVerificationSpecificAttributes!,
         if (hostname != null) 'hostname': hostname!,
         if (imei != null) 'imei': imei!,
         if (kernelVersion != null) 'kernelVersion': kernelVersion!,
@@ -4113,6 +4514,70 @@ class GoogleAppsCloudidentityDevicesV1DeviceUser {
         if (passwordState != null) 'passwordState': passwordState!,
         if (userAgent != null) 'userAgent': userAgent!,
         if (userEmail != null) 'userEmail': userEmail!,
+      };
+}
+
+/// Resource representing the \[Endpoint Verification-specific
+/// attributes\](https://cloud.google.com/endpoint-verification/docs/device-information)
+/// of a device.
+class GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributes {
+  /// Additional signals reported by Endpoint Verification.
+  ///
+  /// It includes the following attributes: 1. Non-configurable attributes:
+  /// hotfixes, av_installed, av_enabled, windows_domain_name,
+  /// is_os_native_firewall_enabled, and is_secure_boot_enabled. 2.
+  /// [Configurable attributes](https://cloud.google.com/endpoint-verification/docs/collect-config-attributes):
+  /// file, folder, and binary attributes; registry entries; and properties in a
+  /// plist.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? additionalSignals;
+
+  /// Details of browser profiles reported by Endpoint Verification.
+  core.List<GoogleAppsCloudidentityDevicesV1BrowserAttributes>?
+      browserAttributes;
+
+  /// Details of certificates.
+  core.List<GoogleAppsCloudidentityDevicesV1CertificateAttributes>?
+      certificateAttributes;
+
+  GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributes({
+    this.additionalSignals,
+    this.browserAttributes,
+    this.certificateAttributes,
+  });
+
+  GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributes.fromJson(
+      core.Map json_)
+      : this(
+          additionalSignals: json_.containsKey('additionalSignals')
+              ? json_['additionalSignals']
+                  as core.Map<core.String, core.dynamic>
+              : null,
+          browserAttributes: json_.containsKey('browserAttributes')
+              ? (json_['browserAttributes'] as core.List)
+                  .map((value) =>
+                      GoogleAppsCloudidentityDevicesV1BrowserAttributes
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          certificateAttributes: json_.containsKey('certificateAttributes')
+              ? (json_['certificateAttributes'] as core.List)
+                  .map((value) =>
+                      GoogleAppsCloudidentityDevicesV1CertificateAttributes
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (additionalSignals != null) 'additionalSignals': additionalSignals!,
+        if (browserAttributes != null) 'browserAttributes': browserAttributes!,
+        if (certificateAttributes != null)
+          'certificateAttributes': certificateAttributes!,
       };
 }
 

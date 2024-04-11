@@ -5675,8 +5675,7 @@ class PublicKey {
   /// Provided here for verification. NOTE: This field is in Beta.
   core.String? name;
 
-  /// A public key encoded in PEM format, populated only when GetPublicKey
-  /// returns one key.
+  /// The public key, encoded in PEM format.
   ///
   /// For more information, see the
   /// [RFC 7468](https://tools.ietf.org/html/rfc7468) sections for
@@ -5685,11 +5684,10 @@ class PublicKey {
   /// [Textual Encoding of Subject Public Key Info](https://tools.ietf.org/html/rfc7468#section-13).
   core.String? pem;
 
-  /// Integrity verification field: A CRC32C checksum of the returned
-  /// PublicKey.pem.
+  /// Integrity verification field.
   ///
-  /// It is only populated when GetPublicKey returns one key. An integrity check
-  /// of PublicKey.pem can be performed by computing the CRC32C checksum of
+  /// A CRC32C checksum of the returned PublicKey.pem. An integrity check of
+  /// PublicKey.pem can be performed by computing the CRC32C checksum of
   /// PublicKey.pem and comparing your results to this field. Discard the
   /// response in case of non-matching checksum values, and perform a limited
   /// number of retries. A persistent mismatch may indicate an issue in your

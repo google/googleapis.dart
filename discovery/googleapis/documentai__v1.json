@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240304",
+    "revision": "20240328",
     "rootUrl": "https://documentai.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Document AI API",
@@ -4396,11 +4396,11 @@
                     "type": "string"
                 },
                 "name": {
-                    "description": "The resource name of the processor version. Format: `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processor_version}`",
+                    "description": "Identifier. The resource name of the processor version. Format: `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processor_version}`",
                     "type": "string"
                 },
                 "state": {
-                    "description": "The state of the processor version.",
+                    "description": "Output only. The state of the processor version.",
                     "enum": [
                         "STATE_UNSPECIFIED",
                         "DEPLOYED",
@@ -4423,6 +4423,7 @@
                         "The processor version failed and is in an indeterminate state.",
                         "The processor version is being imported."
                     ],
+                    "readOnly": true,
                     "type": "string"
                 }
             },
@@ -4648,6 +4649,10 @@
                     "$ref": "GoogleCloudDocumentaiV1DocumentSchema",
                     "description": "Optional. The schema the processor version will be trained with."
                 },
+                "foundationModelTuningOptions": {
+                    "$ref": "GoogleCloudDocumentaiV1TrainProcessorVersionRequestFoundationModelTuningOptions",
+                    "description": "Options to control foundation model tuning of a processor."
+                },
                 "inputData": {
                     "$ref": "GoogleCloudDocumentaiV1TrainProcessorVersionRequestInputData",
                     "description": "Optional. The input data used to train the ProcessorVersion."
@@ -4676,6 +4681,23 @@
                         ""
                     ],
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudDocumentaiV1TrainProcessorVersionRequestFoundationModelTuningOptions": {
+            "description": "Options to control foundation model tuning of the processor.",
+            "id": "GoogleCloudDocumentaiV1TrainProcessorVersionRequestFoundationModelTuningOptions",
+            "properties": {
+                "learningRateMultiplier": {
+                    "description": "Optional. The multiplier to apply to the recommended learning rate. Valid values are between 0.1 and 10. If not provided, recommended learning rate will be used.",
+                    "format": "float",
+                    "type": "number"
+                },
+                "trainSteps": {
+                    "description": "Optional. The number of steps to run for model tuning. Valid values are between 1 and 400. If not provided, recommended steps will be used.",
+                    "format": "int32",
+                    "type": "integer"
                 }
             },
             "type": "object"

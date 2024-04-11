@@ -61,6 +61,43 @@ void checkAclEntry(api.AclEntry o) {
   buildCounterAclEntry--;
 }
 
+core.int buildCounterAcquireSsrsLeaseContext = 0;
+api.AcquireSsrsLeaseContext buildAcquireSsrsLeaseContext() {
+  final o = api.AcquireSsrsLeaseContext();
+  buildCounterAcquireSsrsLeaseContext++;
+  if (buildCounterAcquireSsrsLeaseContext < 3) {
+    o.duration = 'foo';
+    o.reportDatabase = 'foo';
+    o.serviceLogin = 'foo';
+    o.setupLogin = 'foo';
+  }
+  buildCounterAcquireSsrsLeaseContext--;
+  return o;
+}
+
+void checkAcquireSsrsLeaseContext(api.AcquireSsrsLeaseContext o) {
+  buildCounterAcquireSsrsLeaseContext++;
+  if (buildCounterAcquireSsrsLeaseContext < 3) {
+    unittest.expect(
+      o.duration!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.reportDatabase!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.serviceLogin!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.setupLogin!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterAcquireSsrsLeaseContext--;
+}
+
 core.int buildCounterAdvancedMachineFeatures = 0;
 api.AdvancedMachineFeatures buildAdvancedMachineFeatures() {
   final o = api.AdvancedMachineFeatures();
@@ -129,6 +166,7 @@ api.BackupConfiguration buildBackupConfiguration() {
     o.replicationLogArchivingEnabled = true;
     o.startTime = 'foo';
     o.transactionLogRetentionDays = 42;
+    o.transactionalLogStorageState = 'foo';
   }
   buildCounterBackupConfiguration--;
   return o;
@@ -157,6 +195,10 @@ void checkBackupConfiguration(api.BackupConfiguration o) {
     unittest.expect(
       o.transactionLogRetentionDays!,
       unittest.equals(42),
+    );
+    unittest.expect(
+      o.transactionalLogStorageState!,
+      unittest.equals('foo'),
     );
   }
   buildCounterBackupConfiguration--;
@@ -745,6 +787,7 @@ api.DatabaseInstance buildDatabaseInstance() {
     o.etag = 'foo';
     o.failoverReplica = buildDatabaseInstanceFailoverReplica();
     o.gceZone = 'foo';
+    o.geminiConfig = buildGeminiInstanceConfig();
     o.instanceType = 'foo';
     o.ipAddresses = buildUnnamed4();
     o.ipv6Address = 'foo';
@@ -761,6 +804,7 @@ api.DatabaseInstance buildDatabaseInstance() {
     o.region = 'foo';
     o.replicaConfiguration = buildReplicaConfiguration();
     o.replicaNames = buildUnnamed5();
+    o.replicationCluster = buildReplicationCluster();
     o.rootPassword = 'foo';
     o.satisfiesPzs = true;
     o.scheduledMaintenance = buildSqlScheduledMaintenance();
@@ -821,6 +865,7 @@ void checkDatabaseInstance(api.DatabaseInstance o) {
       o.gceZone!,
       unittest.equals('foo'),
     );
+    checkGeminiInstanceConfig(o.geminiConfig!);
     unittest.expect(
       o.instanceType!,
       unittest.equals('foo'),
@@ -870,6 +915,7 @@ void checkDatabaseInstance(api.DatabaseInstance o) {
     );
     checkReplicaConfiguration(o.replicaConfiguration!);
     checkUnnamed5(o.replicaNames!);
+    checkReplicationCluster(o.replicationCluster!);
     unittest.expect(
       o.rootPassword!,
       unittest.equals('foo'),
@@ -1547,6 +1593,35 @@ void checkFlagsListResponse(api.FlagsListResponse o) {
   buildCounterFlagsListResponse--;
 }
 
+core.int buildCounterGeminiInstanceConfig = 0;
+api.GeminiInstanceConfig buildGeminiInstanceConfig() {
+  final o = api.GeminiInstanceConfig();
+  buildCounterGeminiInstanceConfig++;
+  if (buildCounterGeminiInstanceConfig < 3) {
+    o.activeQueryEnabled = true;
+    o.entitled = true;
+    o.flagRecommenderEnabled = true;
+    o.googleVacuumMgmtEnabled = true;
+    o.indexAdvisorEnabled = true;
+    o.oomSessionCancelEnabled = true;
+  }
+  buildCounterGeminiInstanceConfig--;
+  return o;
+}
+
+void checkGeminiInstanceConfig(api.GeminiInstanceConfig o) {
+  buildCounterGeminiInstanceConfig++;
+  if (buildCounterGeminiInstanceConfig < 3) {
+    unittest.expect(o.activeQueryEnabled!, unittest.isTrue);
+    unittest.expect(o.entitled!, unittest.isTrue);
+    unittest.expect(o.flagRecommenderEnabled!, unittest.isTrue);
+    unittest.expect(o.googleVacuumMgmtEnabled!, unittest.isTrue);
+    unittest.expect(o.indexAdvisorEnabled!, unittest.isTrue);
+    unittest.expect(o.oomSessionCancelEnabled!, unittest.isTrue);
+  }
+  buildCounterGeminiInstanceConfig--;
+}
+
 core.int buildCounterGenerateEphemeralCertRequest = 0;
 api.GenerateEphemeralCertRequest buildGenerateEphemeralCertRequest() {
   final o = api.GenerateEphemeralCertRequest();
@@ -1738,6 +1813,30 @@ void checkImportContextCsvImportOptions(api.ImportContextCsvImportOptions o) {
   buildCounterImportContextCsvImportOptions--;
 }
 
+core.int buildCounterImportContextSqlImportOptions = 0;
+api.ImportContextSqlImportOptions buildImportContextSqlImportOptions() {
+  final o = api.ImportContextSqlImportOptions();
+  buildCounterImportContextSqlImportOptions++;
+  if (buildCounterImportContextSqlImportOptions < 3) {
+    o.parallel = true;
+    o.threads = 42;
+  }
+  buildCounterImportContextSqlImportOptions--;
+  return o;
+}
+
+void checkImportContextSqlImportOptions(api.ImportContextSqlImportOptions o) {
+  buildCounterImportContextSqlImportOptions++;
+  if (buildCounterImportContextSqlImportOptions < 3) {
+    unittest.expect(o.parallel!, unittest.isTrue);
+    unittest.expect(
+      o.threads!,
+      unittest.equals(42),
+    );
+  }
+  buildCounterImportContextSqlImportOptions--;
+}
+
 core.int buildCounterImportContext = 0;
 api.ImportContext buildImportContext() {
   final o = api.ImportContext();
@@ -1749,6 +1848,7 @@ api.ImportContext buildImportContext() {
     o.fileType = 'foo';
     o.importUser = 'foo';
     o.kind = 'foo';
+    o.sqlImportOptions = buildImportContextSqlImportOptions();
     o.uri = 'foo';
   }
   buildCounterImportContext--;
@@ -1776,6 +1876,7 @@ void checkImportContext(api.ImportContext o) {
       o.kind!,
       unittest.equals('foo'),
     );
+    checkImportContextSqlImportOptions(o.sqlImportOptions!);
     unittest.expect(
       o.uri!,
       unittest.equals('foo'),
@@ -1847,6 +1948,26 @@ void checkInstanceReference(api.InstanceReference o) {
     );
   }
   buildCounterInstanceReference--;
+}
+
+core.int buildCounterInstancesAcquireSsrsLeaseRequest = 0;
+api.InstancesAcquireSsrsLeaseRequest buildInstancesAcquireSsrsLeaseRequest() {
+  final o = api.InstancesAcquireSsrsLeaseRequest();
+  buildCounterInstancesAcquireSsrsLeaseRequest++;
+  if (buildCounterInstancesAcquireSsrsLeaseRequest < 3) {
+    o.acquireSsrsLeaseContext = buildAcquireSsrsLeaseContext();
+  }
+  buildCounterInstancesAcquireSsrsLeaseRequest--;
+  return o;
+}
+
+void checkInstancesAcquireSsrsLeaseRequest(
+    api.InstancesAcquireSsrsLeaseRequest o) {
+  buildCounterInstancesAcquireSsrsLeaseRequest++;
+  if (buildCounterInstancesAcquireSsrsLeaseRequest < 3) {
+    checkAcquireSsrsLeaseContext(o.acquireSsrsLeaseContext!);
+  }
+  buildCounterInstancesAcquireSsrsLeaseRequest--;
 }
 
 core.int buildCounterInstancesCloneRequest = 0;
@@ -2455,6 +2576,7 @@ api.Operation buildOperation() {
   final o = api.Operation();
   buildCounterOperation++;
   if (buildCounterOperation < 3) {
+    o.acquireSsrsLeaseContext = buildAcquireSsrsLeaseContext();
     o.apiWarning = buildApiWarning();
     o.backupContext = buildBackupContext();
     o.endTime = 'foo';
@@ -2480,6 +2602,7 @@ api.Operation buildOperation() {
 void checkOperation(api.Operation o) {
   buildCounterOperation++;
   if (buildCounterOperation < 3) {
+    checkAcquireSsrsLeaseContext(o.acquireSsrsLeaseContext!);
     checkApiWarning(o.apiWarning!);
     checkBackupContext(o.backupContext!);
     unittest.expect(
@@ -2799,6 +2922,30 @@ void checkReplicaConfiguration(api.ReplicaConfiguration o) {
   buildCounterReplicaConfiguration--;
 }
 
+core.int buildCounterReplicationCluster = 0;
+api.ReplicationCluster buildReplicationCluster() {
+  final o = api.ReplicationCluster();
+  buildCounterReplicationCluster++;
+  if (buildCounterReplicationCluster < 3) {
+    o.drReplica = true;
+    o.failoverDrReplicaName = 'foo';
+  }
+  buildCounterReplicationCluster--;
+  return o;
+}
+
+void checkReplicationCluster(api.ReplicationCluster o) {
+  buildCounterReplicationCluster++;
+  if (buildCounterReplicationCluster < 3) {
+    unittest.expect(o.drReplica!, unittest.isTrue);
+    unittest.expect(
+      o.failoverDrReplicaName!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterReplicationCluster--;
+}
+
 core.int buildCounterReschedule = 0;
 api.Reschedule buildReschedule() {
   final o = api.Reschedule();
@@ -2968,6 +3115,7 @@ api.Settings buildSettings() {
     o.deletionProtectionEnabled = true;
     o.denyMaintenancePeriods = buildUnnamed25();
     o.edition = 'foo';
+    o.enableGoogleMlIntegration = true;
     o.insightsConfig = buildInsightsConfig();
     o.ipConfiguration = buildIpConfiguration();
     o.kind = 'foo';
@@ -3029,6 +3177,7 @@ void checkSettings(api.Settings o) {
       o.edition!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.enableGoogleMlIntegration!, unittest.isTrue);
     checkInsightsConfig(o.insightsConfig!);
     checkIpConfiguration(o.ipConfiguration!);
     unittest.expect(
@@ -3128,6 +3277,30 @@ void checkSqlExternalSyncSettingError(api.SqlExternalSyncSettingError o) {
   buildCounterSqlExternalSyncSettingError--;
 }
 
+core.int buildCounterSqlInstancesAcquireSsrsLeaseResponse = 0;
+api.SqlInstancesAcquireSsrsLeaseResponse
+    buildSqlInstancesAcquireSsrsLeaseResponse() {
+  final o = api.SqlInstancesAcquireSsrsLeaseResponse();
+  buildCounterSqlInstancesAcquireSsrsLeaseResponse++;
+  if (buildCounterSqlInstancesAcquireSsrsLeaseResponse < 3) {
+    o.operationId = 'foo';
+  }
+  buildCounterSqlInstancesAcquireSsrsLeaseResponse--;
+  return o;
+}
+
+void checkSqlInstancesAcquireSsrsLeaseResponse(
+    api.SqlInstancesAcquireSsrsLeaseResponse o) {
+  buildCounterSqlInstancesAcquireSsrsLeaseResponse++;
+  if (buildCounterSqlInstancesAcquireSsrsLeaseResponse < 3) {
+    unittest.expect(
+      o.operationId!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterSqlInstancesAcquireSsrsLeaseResponse--;
+}
+
 core.int buildCounterSqlInstancesGetDiskShrinkConfigResponse = 0;
 api.SqlInstancesGetDiskShrinkConfigResponse
     buildSqlInstancesGetDiskShrinkConfigResponse() {
@@ -3191,6 +3364,30 @@ void checkSqlInstancesGetLatestRecoveryTimeResponse(
   buildCounterSqlInstancesGetLatestRecoveryTimeResponse--;
 }
 
+core.int buildCounterSqlInstancesReleaseSsrsLeaseResponse = 0;
+api.SqlInstancesReleaseSsrsLeaseResponse
+    buildSqlInstancesReleaseSsrsLeaseResponse() {
+  final o = api.SqlInstancesReleaseSsrsLeaseResponse();
+  buildCounterSqlInstancesReleaseSsrsLeaseResponse++;
+  if (buildCounterSqlInstancesReleaseSsrsLeaseResponse < 3) {
+    o.operationId = 'foo';
+  }
+  buildCounterSqlInstancesReleaseSsrsLeaseResponse--;
+  return o;
+}
+
+void checkSqlInstancesReleaseSsrsLeaseResponse(
+    api.SqlInstancesReleaseSsrsLeaseResponse o) {
+  buildCounterSqlInstancesReleaseSsrsLeaseResponse++;
+  if (buildCounterSqlInstancesReleaseSsrsLeaseResponse < 3) {
+    unittest.expect(
+      o.operationId!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterSqlInstancesReleaseSsrsLeaseResponse--;
+}
+
 core.int buildCounterSqlInstancesRescheduleMaintenanceRequestBody = 0;
 api.SqlInstancesRescheduleMaintenanceRequestBody
     buildSqlInstancesRescheduleMaintenanceRequestBody() {
@@ -3235,6 +3432,7 @@ api.SqlInstancesStartExternalSyncRequest
   final o = api.SqlInstancesStartExternalSyncRequest();
   buildCounterSqlInstancesStartExternalSyncRequest++;
   if (buildCounterSqlInstancesStartExternalSyncRequest < 3) {
+    o.migrationType = 'foo';
     o.mysqlSyncConfig = buildMySqlSyncConfig();
     o.skipVerification = true;
     o.syncMode = 'foo';
@@ -3248,6 +3446,10 @@ void checkSqlInstancesStartExternalSyncRequest(
     api.SqlInstancesStartExternalSyncRequest o) {
   buildCounterSqlInstancesStartExternalSyncRequest++;
   if (buildCounterSqlInstancesStartExternalSyncRequest < 3) {
+    unittest.expect(
+      o.migrationType!,
+      unittest.equals('foo'),
+    );
     checkMySqlSyncConfig(o.mysqlSyncConfig!);
     unittest.expect(o.skipVerification!, unittest.isTrue);
     unittest.expect(
@@ -3268,8 +3470,10 @@ api.SqlInstancesVerifyExternalSyncSettingsRequest
   final o = api.SqlInstancesVerifyExternalSyncSettingsRequest();
   buildCounterSqlInstancesVerifyExternalSyncSettingsRequest++;
   if (buildCounterSqlInstancesVerifyExternalSyncSettingsRequest < 3) {
+    o.migrationType = 'foo';
     o.mysqlSyncConfig = buildMySqlSyncConfig();
     o.syncMode = 'foo';
+    o.syncParallelLevel = 'foo';
     o.verifyConnectionOnly = true;
     o.verifyReplicationOnly = true;
   }
@@ -3281,9 +3485,17 @@ void checkSqlInstancesVerifyExternalSyncSettingsRequest(
     api.SqlInstancesVerifyExternalSyncSettingsRequest o) {
   buildCounterSqlInstancesVerifyExternalSyncSettingsRequest++;
   if (buildCounterSqlInstancesVerifyExternalSyncSettingsRequest < 3) {
+    unittest.expect(
+      o.migrationType!,
+      unittest.equals('foo'),
+    );
     checkMySqlSyncConfig(o.mysqlSyncConfig!);
     unittest.expect(
       o.syncMode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.syncParallelLevel!,
       unittest.equals('foo'),
     );
     unittest.expect(o.verifyConnectionOnly!, unittest.isTrue);
@@ -3995,6 +4207,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-AcquireSsrsLeaseContext', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAcquireSsrsLeaseContext();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AcquireSsrsLeaseContext.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAcquireSsrsLeaseContext(od);
+    });
+  });
+
   unittest.group('obj-schema-AdvancedMachineFeatures', () {
     unittest.test('to-json--from-json', () async {
       final o = buildAdvancedMachineFeatures();
@@ -4326,6 +4548,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-GeminiInstanceConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGeminiInstanceConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GeminiInstanceConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGeminiInstanceConfig(od);
+    });
+  });
+
   unittest.group('obj-schema-GenerateEphemeralCertRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGenerateEphemeralCertRequest();
@@ -4377,6 +4609,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-ImportContextSqlImportOptions', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildImportContextSqlImportOptions();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ImportContextSqlImportOptions.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkImportContextSqlImportOptions(od);
+    });
+  });
+
   unittest.group('obj-schema-ImportContext', () {
     unittest.test('to-json--from-json', () async {
       final o = buildImportContext();
@@ -4404,6 +4646,16 @@ void main() {
       final od = api.InstanceReference.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkInstanceReference(od);
+    });
+  });
+
+  unittest.group('obj-schema-InstancesAcquireSsrsLeaseRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildInstancesAcquireSsrsLeaseRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.InstancesAcquireSsrsLeaseRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkInstancesAcquireSsrsLeaseRequest(od);
     });
   });
 
@@ -4687,6 +4939,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-ReplicationCluster', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildReplicationCluster();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ReplicationCluster.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkReplicationCluster(od);
+    });
+  });
+
   unittest.group('obj-schema-Reschedule', () {
     unittest.test('to-json--from-json', () async {
       final o = buildReschedule();
@@ -4747,6 +5009,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-SqlInstancesAcquireSsrsLeaseResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSqlInstancesAcquireSsrsLeaseResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SqlInstancesAcquireSsrsLeaseResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSqlInstancesAcquireSsrsLeaseResponse(od);
+    });
+  });
+
   unittest.group('obj-schema-SqlInstancesGetDiskShrinkConfigResponse', () {
     unittest.test('to-json--from-json', () async {
       final o = buildSqlInstancesGetDiskShrinkConfigResponse();
@@ -4764,6 +5036,16 @@ void main() {
       final od = api.SqlInstancesGetLatestRecoveryTimeResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkSqlInstancesGetLatestRecoveryTimeResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-SqlInstancesReleaseSsrsLeaseResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSqlInstancesReleaseSsrsLeaseResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SqlInstancesReleaseSsrsLeaseResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSqlInstancesReleaseSsrsLeaseResponse(od);
     });
   });
 
@@ -6124,6 +6406,95 @@ void main() {
   });
 
   unittest.group('resource-InstancesResource', () {
+    unittest.test('method--acquireSsrsLease', () async {
+      final mock = HttpServerMock();
+      final res = api.SQLAdminApi(mock).instances;
+      final arg_request = buildInstancesAcquireSsrsLeaseRequest();
+      final arg_project = 'foo';
+      final arg_instance = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.InstancesAcquireSsrsLeaseRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkInstancesAcquireSsrsLeaseRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 21),
+          unittest.equals('sql/v1beta4/projects/'),
+        );
+        pathOffset += 21;
+        index = path.indexOf('/instances/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_project'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals('/instances/'),
+        );
+        pathOffset += 11;
+        index = path.indexOf('/acquireSsrsLease', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_instance'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 17),
+          unittest.equals('/acquireSsrsLease'),
+        );
+        pathOffset += 17;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildSqlInstancesAcquireSsrsLeaseResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.acquireSsrsLease(
+          arg_request, arg_project, arg_instance,
+          $fields: arg_$fields);
+      checkSqlInstancesAcquireSsrsLeaseResponse(
+          response as api.SqlInstancesAcquireSsrsLeaseResponse);
+    });
+
     unittest.test('method--addServerCa', () async {
       final mock = HttpServerMock();
       final res = api.SQLAdminApi(mock).instances;
@@ -7355,6 +7726,89 @@ void main() {
           arg_request, arg_project, arg_instance,
           $fields: arg_$fields);
       checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--releaseSsrsLease', () async {
+      final mock = HttpServerMock();
+      final res = api.SQLAdminApi(mock).instances;
+      final arg_project = 'foo';
+      final arg_instance = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 21),
+          unittest.equals('sql/v1beta4/projects/'),
+        );
+        pathOffset += 21;
+        index = path.indexOf('/instances/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_project'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals('/instances/'),
+        );
+        pathOffset += 11;
+        index = path.indexOf('/releaseSsrsLease', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_instance'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 17),
+          unittest.equals('/releaseSsrsLease'),
+        );
+        pathOffset += 17;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildSqlInstancesReleaseSsrsLeaseResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.releaseSsrsLease(arg_project, arg_instance,
+          $fields: arg_$fields);
+      checkSqlInstancesReleaseSsrsLeaseResponse(
+          response as api.SqlInstancesReleaseSsrsLeaseResponse);
     });
 
     unittest.test('method--resetSslConfig', () async {

@@ -6818,8 +6818,8 @@ class ProductPolicy {
   /// becomes out of date again. The user can still manually update the app from
   /// the Play Store at any time.
   /// - "autoUpdateHighPriority" : The app is updated as soon as possible. No
-  /// constraints are applied. The device is notified immediately about a new
-  /// app update after it is published by the developer.
+  /// constraints are applied. The device is notified as soon as possible about
+  /// a new app update after it is published by the developer.
   core.String? autoUpdateMode;
 
   /// An authentication URL configuration for the authenticator app of an

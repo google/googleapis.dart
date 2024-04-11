@@ -947,6 +947,31 @@ void checkPosixFilesystem(api.PosixFilesystem o) {
   buildCounterPosixFilesystem--;
 }
 
+core.int buildCounterReplicationSpec = 0;
+api.ReplicationSpec buildReplicationSpec() {
+  final o = api.ReplicationSpec();
+  buildCounterReplicationSpec++;
+  if (buildCounterReplicationSpec < 3) {
+    o.gcsDataSink = buildGcsData();
+    o.gcsDataSource = buildGcsData();
+    o.objectConditions = buildObjectConditions();
+    o.transferOptions = buildTransferOptions();
+  }
+  buildCounterReplicationSpec--;
+  return o;
+}
+
+void checkReplicationSpec(api.ReplicationSpec o) {
+  buildCounterReplicationSpec++;
+  if (buildCounterReplicationSpec < 3) {
+    checkGcsData(o.gcsDataSink!);
+    checkGcsData(o.gcsDataSource!);
+    checkObjectConditions(o.objectConditions!);
+    checkTransferOptions(o.transferOptions!);
+  }
+  buildCounterReplicationSpec--;
+}
+
 core.int buildCounterResumeTransferOperationRequest = 0;
 api.ResumeTransferOperationRequest buildResumeTransferOperationRequest() {
   final o = api.ResumeTransferOperationRequest();
@@ -1188,6 +1213,7 @@ api.TransferJob buildTransferJob() {
     o.name = 'foo';
     o.notificationConfig = buildNotificationConfig();
     o.projectId = 'foo';
+    o.replicationSpec = buildReplicationSpec();
     o.schedule = buildSchedule();
     o.status = 'foo';
     o.transferSpec = buildTransferSpec();
@@ -1230,6 +1256,7 @@ void checkTransferJob(api.TransferJob o) {
       o.projectId!,
       unittest.equals('foo'),
     );
+    checkReplicationSpec(o.replicationSpec!);
     checkSchedule(o.schedule!);
     unittest.expect(
       o.status!,
@@ -1622,6 +1649,16 @@ void main() {
       final od = api.PosixFilesystem.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkPosixFilesystem(od);
+    });
+  });
+
+  unittest.group('obj-schema-ReplicationSpec', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildReplicationSpec();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ReplicationSpec.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkReplicationSpec(od);
     });
   });
 

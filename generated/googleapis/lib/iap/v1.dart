@@ -934,7 +934,7 @@ class V1Resource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Validates a given CEL expression conforms to IAP restrictions.
+  /// Validates that a given CEL expression conforms to IAP restrictions.
   ///
   /// Request parameters:
   ///
@@ -942,8 +942,8 @@ class V1Resource {
   /// Value must have pattern `^.*$`.
   ///
   /// [expression] - Required. User input string expression. Should be of the
-  /// form 'attributes.saml_attributes.filter(attribute, attribute.name in
-  /// \['{attribute_name}', '{attribute_name}'\])'
+  /// form `attributes.saml_attributes.filter(attribute, attribute.name in
+  /// ['{attribute_name}', '{attribute_name}'])`
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.

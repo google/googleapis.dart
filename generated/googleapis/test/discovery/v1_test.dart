@@ -1000,6 +1000,7 @@ api.RestMethod buildRestMethod() {
   final o = api.RestMethod();
   buildCounterRestMethod++;
   if (buildCounterRestMethod < 3) {
+    o.apiVersion = 'foo';
     o.deprecated = true;
     o.description = 'foo';
     o.etagRequired = true;
@@ -1025,6 +1026,10 @@ api.RestMethod buildRestMethod() {
 void checkRestMethod(api.RestMethod o) {
   buildCounterRestMethod++;
   if (buildCounterRestMethod < 3) {
+    unittest.expect(
+      o.apiVersion!,
+      unittest.equals('foo'),
+    );
     unittest.expect(o.deprecated!, unittest.isTrue);
     unittest.expect(
       o.description!,

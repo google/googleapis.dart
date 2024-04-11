@@ -15,7 +15,7 @@
 /// Allows developers to run automated tests for their mobile applications on
 /// Google infrastructure.
 ///
-/// For more information, see <https://developers.google.com/cloud-test-lab/>
+/// For more information, see <https://firebase.google.com/docs/test-lab/>
 ///
 /// Create an instance of [TestingApi] to access these resources:
 ///
@@ -1948,7 +1948,7 @@ class DeviceSession {
   /// The amount of time that a device will be initially allocated for.
   ///
   /// This can eventually be extended with the UpdateDeviceSession RPC. Default:
-  /// 30 minutes.
+  /// 15 minutes.
   ///
   /// Optional.
   core.String? ttl;

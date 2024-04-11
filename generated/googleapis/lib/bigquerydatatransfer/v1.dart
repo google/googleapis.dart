@@ -98,7 +98,7 @@ class ProjectsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the project resource in the form:
+  /// [name] - Required. The name of the project resource in the form:
   /// `projects/{project_id}`
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
@@ -297,7 +297,7 @@ class ProjectsLocationsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the project resource in the form:
+  /// [name] - Required. The name of the project resource in the form:
   /// `projects/{project_id}`
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
@@ -431,7 +431,7 @@ class ProjectsLocationsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the project resource in the form:
+  /// [name] - Required. The name of the project resource in the form:
   /// `projects/{project_id}`
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
@@ -840,8 +840,8 @@ class ProjectsLocationsTransferConfigsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name of the transfer config. Transfer config names
-  /// have the form either
+  /// [name] - Identifier. The resource name of the transfer config. Transfer
+  /// config names have the form either
   /// `projects/{project_id}/locations/{region}/transferConfigs/{config_id}` or
   /// `projects/{project_id}/transferConfigs/{config_id}`, where `config_id` is
   /// usually a UUID, even though it is not guaranteed or required. The name is
@@ -984,7 +984,7 @@ class ProjectsLocationsTransferConfigsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Transfer configuration name in the form:
+  /// [parent] - Required. Transfer configuration name in the form:
   /// `projects/{project_id}/transferConfigs/{config_id}` or
   /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`.
   /// Value must have pattern
@@ -1470,8 +1470,8 @@ class ProjectsTransferConfigsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name of the transfer config. Transfer config names
-  /// have the form either
+  /// [name] - Identifier. The resource name of the transfer config. Transfer
+  /// config names have the form either
   /// `projects/{project_id}/locations/{region}/transferConfigs/{config_id}` or
   /// `projects/{project_id}/transferConfigs/{config_id}`, where `config_id` is
   /// usually a UUID, even though it is not guaranteed or required. The name is
@@ -1612,7 +1612,7 @@ class ProjectsTransferConfigsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Transfer configuration name in the form:
+  /// [parent] - Required. Transfer configuration name in the form:
   /// `projects/{project_id}/transferConfigs/{config_id}` or
   /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`.
   /// Value must have pattern `^projects/\[^/\]+/transferConfigs/\[^/\]+$`.
@@ -2823,9 +2823,10 @@ class TransferConfig {
   /// project default keys if it is absent.
   EncryptionConfiguration? encryptionConfiguration;
 
-  /// The resource name of the transfer config.
+  /// Identifier.
   ///
-  /// Transfer config names have the form either
+  /// The resource name of the transfer config. Transfer config names have the
+  /// form either
   /// `projects/{project_id}/locations/{region}/transferConfigs/{config_id}` or
   /// `projects/{project_id}/transferConfigs/{config_id}`, where `config_id` is
   /// usually a UUID, even though it is not guaranteed or required. The name is
@@ -3081,9 +3082,9 @@ class TransferRun {
   /// Status of the transfer run.
   Status? errorStatus;
 
-  /// The resource name of the transfer run.
+  /// Identifier.
   ///
-  /// Transfer run names have the form
+  /// The resource name of the transfer run. Transfer run names have the form
   /// `projects/{project_id}/locations/{location}/transferConfigs/{config_id}/runs/{run_id}`.
   /// The name is ignored when creating a transfer run.
   core.String? name;

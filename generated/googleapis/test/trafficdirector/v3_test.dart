@@ -2030,6 +2030,7 @@ api.StringMatcher buildStringMatcher() {
   buildCounterStringMatcher++;
   if (buildCounterStringMatcher < 3) {
     o.contains = 'foo';
+    o.custom = buildTypedExtensionConfig();
     o.exact = 'foo';
     o.ignoreCase = true;
     o.prefix = 'foo';
@@ -2047,6 +2048,7 @@ void checkStringMatcher(api.StringMatcher o) {
       o.contains!,
       unittest.equals('foo'),
     );
+    checkTypedExtensionConfig(o.custom!);
     unittest.expect(
       o.exact!,
       unittest.equals('foo'),
@@ -2142,13 +2144,82 @@ void checkUnnamed39(core.Map<core.String, core.Object?> o) {
   );
 }
 
+core.int buildCounterTypedExtensionConfig = 0;
+api.TypedExtensionConfig buildTypedExtensionConfig() {
+  final o = api.TypedExtensionConfig();
+  buildCounterTypedExtensionConfig++;
+  if (buildCounterTypedExtensionConfig < 3) {
+    o.name = 'foo';
+    o.typedConfig = buildUnnamed39();
+  }
+  buildCounterTypedExtensionConfig--;
+  return o;
+}
+
+void checkTypedExtensionConfig(api.TypedExtensionConfig o) {
+  buildCounterTypedExtensionConfig++;
+  if (buildCounterTypedExtensionConfig < 3) {
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed39(o.typedConfig!);
+  }
+  buildCounterTypedExtensionConfig--;
+}
+
+core.Map<core.String, core.Object?> buildUnnamed40() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
+
+void checkUnnamed40(core.Map<core.String, core.Object?> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  var casted29 = (o['x']!) as core.Map;
+  unittest.expect(casted29, unittest.hasLength(3));
+  unittest.expect(
+    casted29['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted29['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted29['string'],
+    unittest.equals('foo'),
+  );
+  var casted30 = (o['y']!) as core.Map;
+  unittest.expect(casted30, unittest.hasLength(3));
+  unittest.expect(
+    casted30['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted30['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted30['string'],
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterUpdateFailureState = 0;
 api.UpdateFailureState buildUpdateFailureState() {
   final o = api.UpdateFailureState();
   buildCounterUpdateFailureState++;
   if (buildCounterUpdateFailureState < 3) {
     o.details = 'foo';
-    o.failedConfiguration = buildUnnamed39();
+    o.failedConfiguration = buildUnnamed40();
     o.lastUpdateAttempt = 'foo';
     o.versionInfo = 'foo';
   }
@@ -2163,7 +2234,7 @@ void checkUpdateFailureState(api.UpdateFailureState o) {
       o.details!,
       unittest.equals('foo'),
     );
-    checkUnnamed39(o.failedConfiguration!);
+    checkUnnamed40(o.failedConfiguration!);
     unittest.expect(
       o.lastUpdateAttempt!,
       unittest.equals('foo'),
@@ -2625,6 +2696,16 @@ void main() {
       final od = api.StructMatcher.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkStructMatcher(od);
+    });
+  });
+
+  unittest.group('obj-schema-TypedExtensionConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildTypedExtensionConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TypedExtensionConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkTypedExtensionConfig(od);
     });
   });
 

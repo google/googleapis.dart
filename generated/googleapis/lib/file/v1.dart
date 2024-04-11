@@ -712,9 +712,8 @@ class ProjectsLocationsInstancesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required.
+  /// [name] - Required. The resource name of the instance, in the format
   /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`.
-  /// The resource name of the instance, in the format
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
   ///

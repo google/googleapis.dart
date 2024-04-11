@@ -12,9 +12,11 @@
 
 /// Identity and Access Management (IAM) API - v1
 ///
-/// Manages identity and access control for Google Cloud Platform resources,
-/// including the creation of service accounts, which you can use to
-/// authenticate to Google and make API calls.
+/// Manages identity and access control for Google Cloud resources, including
+/// the creation of service accounts, which you can use to authenticate to
+/// Google and make API calls. Enabling this API also enables the IAM Service
+/// Account Credentials API (iamcredentials.googleapis.com). However, disabling
+/// this API doesn't disable the IAM Service Account Credentials API.
 ///
 /// For more information, see <https://cloud.google.com/iam/>
 ///
@@ -70,9 +72,13 @@ import '../src/user_agent.dart';
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-/// Manages identity and access control for Google Cloud Platform resources,
-/// including the creation of service accounts, which you can use to
-/// authenticate to Google and make API calls.
+/// Manages identity and access control for Google Cloud resources, including
+/// the creation of service accounts, which you can use to authenticate to
+/// Google and make API calls.
+///
+/// Enabling this API also enables the IAM Service Account Credentials API
+/// (iamcredentials.googleapis.com). However, disabling this API doesn't disable
+/// the IAM Service Account Credentials API.
 class IamApi {
   /// See, edit, configure, and delete your Google Cloud data and see the email
   /// address for your Google Account.
@@ -6660,8 +6666,8 @@ class Role {
   /// When `Role` is used in `CreateRole`, the role name must not be set. When
   /// `Role` is used in output and other input such as `UpdateRole`, the role
   /// name is the complete path. For example, `roles/logging.viewer` for
-  /// predefined roles, `organizations/{ORGANIZATION_ID}/roles/my-role` for
-  /// organization-level custom roles, and `projects/{PROJECT_ID}/roles/my-role`
+  /// predefined roles, `organizations/{ORGANIZATION_ID}/roles/myRole` for
+  /// organization-level custom roles, and `projects/{PROJECT_ID}/roles/myRole`
   /// for project-level custom roles.
   core.String? name;
 
@@ -6733,20 +6739,19 @@ class Role {
 
 /// Represents an SAML 2.0 identity provider.
 class Saml {
-  /// SAML Identity provider configuration metadata xml doc.
+  /// SAML identity provider (IdP) configuration metadata XML doc.
   ///
-  /// The xml document should comply with
-  /// [SAML 2.0 specification](https://www.oasis-open.org/committees/download.php/56785/sstc-saml-metadata-errata-2.0-wd-05.pdf).
-  /// The max size of the acceptable xml document will be bounded to 128k
-  /// characters. The metadata xml document should satisfy the following
-  /// constraints: 1) Must contain an Identity Provider Entity ID. 2) Must
-  /// contain at least one non-expired signing key certificate. 3) For each
-  /// signing key: a) Valid from should be no more than 7 days from now. b)
-  /// Valid to should be no more than 15 years in the future. 4) Upto 3 IdP
-  /// signing keys are allowed in the metadata xml. When updating the provider's
-  /// metadata xml, at lease one non-expired signing key must overlap with the
-  /// existing metadata. This requirement is skipped if there are no non-expired
-  /// signing keys present in the existing metadata
+  /// The XML document must comply with the
+  /// [SAML 2.0 specification](https://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf).
+  /// The maximum size of an acceptable XML document is 128K characters. The
+  /// SAML metadata XML document must satisfy the following constraints: * Must
+  /// contain an IdP Entity ID. * Must contain at least one non-expired signing
+  /// certificate. * For each signing certificate, the expiration must be: *
+  /// From no more than 7 days in the future. * To no more than 15 years in the
+  /// future. * Up to three IdP signing keys are allowed. When updating the
+  /// provider's metadata XML, at least one non-expired signing key must overlap
+  /// with the existing metadata. This requirement is skipped if there are no
+  /// non-expired signing keys present in the existing metadata.
   ///
   /// Required.
   core.String? idpMetadataXml;
@@ -7583,8 +7588,8 @@ class WorkforcePoolProvider {
   /// thumbnail photo. This is an optional field. When set, the image will be
   /// visible as the user's profile picture. If not set, a generic user icon
   /// will be displayed instead. This attribute cannot be referenced in IAM
-  /// bindings. * `google.posix_username`: The linux username used by OS login.
-  /// This is an optional field and the mapped posix username cannot exceed 32
+  /// bindings. * `google.posix_username`: The Linux username used by OS Login.
+  /// This is an optional field and the mapped POSIX username cannot exceed 32
   /// characters, The key must match the regex "^a-zA-Z0-9._{0,31}$". This
   /// attribute cannot be referenced in IAM bindings. You can also provide
   /// custom attributes by specifying `attribute.{custom_attribute}`, where
@@ -8005,6 +8010,9 @@ class WorkloadIdentityPoolProvider {
   /// deleted.
   core.String? state;
 
+  /// An X.509-type identity provider.
+  X509? x509;
+
   WorkloadIdentityPoolProvider({
     this.attributeCondition,
     this.attributeMapping,
@@ -8017,6 +8025,7 @@ class WorkloadIdentityPoolProvider {
     this.oidc,
     this.saml,
     this.state,
+    this.x509,
   });
 
   WorkloadIdentityPoolProvider.fromJson(core.Map json_)
@@ -8061,6 +8070,10 @@ class WorkloadIdentityPoolProvider {
               : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
+          x509: json_.containsKey('x509')
+              ? X509.fromJson(
+                  json_['x509'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8076,6 +8089,7 @@ class WorkloadIdentityPoolProvider {
         if (oidc != null) 'oidc': oidc!,
         if (saml != null) 'saml': saml!,
         if (state != null) 'state': state!,
+        if (x509 != null) 'x509': x509!,
       };
 }
 
@@ -8156,3 +8170,9 @@ class WorkloadIdentityPoolProviderKey {
         if (use != null) 'use': use!,
       };
 }
+
+/// An X.509-type identity provider represents a CA.
+///
+/// It is trusted to assert a client identity if the client has a certificate
+/// that chains up to this CA.
+typedef X509 = $Empty;

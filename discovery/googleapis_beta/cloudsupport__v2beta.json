@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240306",
+    "revision": "20240403",
     "rootUrl": "https://cloudsupport.googleapis.com/",
     "servicePath": "",
     "title": "Google Cloud Support API",
@@ -126,26 +126,6 @@
                         },
                         "pageToken": {
                             "description": "A token identifying the page of results to return. If unspecified, the first page is retrieved.",
-                            "location": "query",
-                            "type": "string"
-                        },
-                        "product.productLine": {
-                            "description": "The Product Line of the Product.",
-                            "enum": [
-                                "PRODUCT_LINE_UNSPECIFIED",
-                                "GOOGLE_CLOUD",
-                                "GOOGLE_MAPS"
-                            ],
-                            "enumDescriptions": [
-                                "Unknown product type.",
-                                "Google Cloud",
-                                "Google Maps"
-                            ],
-                            "location": "query",
-                            "type": "string"
-                        },
-                        "product.productSubline": {
-                            "description": "The Product Subline of the Product, such as \"Maps Billing\".",
                             "location": "query",
                             "type": "string"
                         },
@@ -306,21 +286,6 @@
                             "location": "path",
                             "pattern": "^[^/]+/[^/]+$",
                             "required": true,
-                            "type": "string"
-                        },
-                        "productLine": {
-                            "description": "The product line for which to request cases for. If unspecified, only Google Cloud cases will be returned.",
-                            "enum": [
-                                "PRODUCT_LINE_UNSPECIFIED",
-                                "GOOGLE_CLOUD",
-                                "GOOGLE_MAPS"
-                            ],
-                            "enumDescriptions": [
-                                "Unknown product type.",
-                                "Google Cloud",
-                                "Google Maps"
-                            ],
-                            "location": "query",
                             "type": "string"
                         }
                     },
@@ -820,10 +785,6 @@
                 "id": {
                     "description": "The unique ID for a classification. Must be specified for case creation. To retrieve valid classification IDs for case creation, use `caseClassifications.search`. Classification IDs returned by `caseClassifications.search` are guaranteed to be valid for at least 6 months. If a given classification is deactiveated, it will immediately stop being returned. After 6 months, `case.create` requests using the classification ID will fail.",
                     "type": "string"
-                },
-                "product": {
-                    "$ref": "Product",
-                    "description": "The full product the classification corresponds to."
                 }
             },
             "type": "object"
@@ -835,31 +796,32 @@
             "type": "object"
         },
         "Comment": {
-            "description": "Case comments are the main way Google Support communicates with a user who has opened a case. When a user responds to Google Support, the user's responses also appear as comments.",
+            "description": "A comment associated with a support case. Case comments are the primary way for Google Support to communicate with a user who has opened a case. When a user responds to Google Support, the user's responses also appear as comments.",
             "id": "Comment",
             "properties": {
                 "body": {
-                    "description": "The full comment body. Maximum of 12800 characters. This can contain rich text syntax.",
+                    "description": "The full comment body. Maximum of 12800 characters.",
                     "type": "string"
                 },
                 "createTime": {
-                    "description": "Output only. The time when this comment was created.",
+                    "description": "Output only. The time when the comment was created.",
                     "format": "google-datetime",
                     "readOnly": true,
                     "type": "string"
                 },
                 "creator": {
                     "$ref": "Actor",
-                    "description": "Output only. The user or Google Support agent created this comment.",
+                    "description": "Output only. The user or Google Support agent who created the comment.",
                     "readOnly": true
                 },
                 "name": {
-                    "description": "Output only. The resource name for the comment.",
+                    "description": "Output only. Identifier. The resource name of the comment.",
                     "readOnly": true,
                     "type": "string"
                 },
                 "plainTextBody": {
-                    "description": "Output only. DEPRECATED. An automatically generated plain text version of body with all rich text syntax stripped.",
+                    "deprecated": true,
+                    "description": "Output only. DEPRECATED. DO NOT USE. A duplicate of the `body` field. This field is only present for legacy reasons.",
                     "readOnly": true,
                     "type": "string"
                 }
@@ -1364,31 +1326,6 @@
                 },
                 "objectName": {
                     "description": "# gdata.* are outside protos with mising documentation",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "Product": {
-            "description": "The full product a case may be associated with, including Product Line and Product Subline.",
-            "id": "Product",
-            "properties": {
-                "productLine": {
-                    "description": "The Product Line of the Product.",
-                    "enum": [
-                        "PRODUCT_LINE_UNSPECIFIED",
-                        "GOOGLE_CLOUD",
-                        "GOOGLE_MAPS"
-                    ],
-                    "enumDescriptions": [
-                        "Unknown product type.",
-                        "Google Cloud",
-                        "Google Maps"
-                    ],
-                    "type": "string"
-                },
-                "productSubline": {
-                    "description": "The Product Subline of the Product, such as \"Maps Billing\".",
                     "type": "string"
                 }
             },

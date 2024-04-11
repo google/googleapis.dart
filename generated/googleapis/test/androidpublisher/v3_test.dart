@@ -4535,6 +4535,7 @@ api.ProductPurchase buildProductPurchase() {
     o.purchaseToken = 'foo';
     o.purchaseType = 42;
     o.quantity = 42;
+    o.refundableQuantity = 42;
     o.regionCode = 'foo';
   }
   buildCounterProductPurchase--;
@@ -4594,6 +4595,10 @@ void checkProductPurchase(api.ProductPurchase o) {
     );
     unittest.expect(
       o.quantity!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.refundableQuantity!,
       unittest.equals(42),
     );
     unittest.expect(
@@ -6417,7 +6422,9 @@ api.TargetingRuleScope buildTargetingRuleScope() {
   final o = api.TargetingRuleScope();
   buildCounterTargetingRuleScope++;
   if (buildCounterTargetingRuleScope < 3) {
+    o.anySubscriptionInApp = buildTargetingRuleScopeAnySubscriptionInApp();
     o.specificSubscriptionInApp = 'foo';
+    o.thisSubscription = buildTargetingRuleScopeThisSubscription();
   }
   buildCounterTargetingRuleScope--;
   return o;
@@ -6426,12 +6433,48 @@ api.TargetingRuleScope buildTargetingRuleScope() {
 void checkTargetingRuleScope(api.TargetingRuleScope o) {
   buildCounterTargetingRuleScope++;
   if (buildCounterTargetingRuleScope < 3) {
+    checkTargetingRuleScopeAnySubscriptionInApp(o.anySubscriptionInApp!);
     unittest.expect(
       o.specificSubscriptionInApp!,
       unittest.equals('foo'),
     );
+    checkTargetingRuleScopeThisSubscription(o.thisSubscription!);
   }
   buildCounterTargetingRuleScope--;
+}
+
+core.int buildCounterTargetingRuleScopeAnySubscriptionInApp = 0;
+api.TargetingRuleScopeAnySubscriptionInApp
+    buildTargetingRuleScopeAnySubscriptionInApp() {
+  final o = api.TargetingRuleScopeAnySubscriptionInApp();
+  buildCounterTargetingRuleScopeAnySubscriptionInApp++;
+  if (buildCounterTargetingRuleScopeAnySubscriptionInApp < 3) {}
+  buildCounterTargetingRuleScopeAnySubscriptionInApp--;
+  return o;
+}
+
+void checkTargetingRuleScopeAnySubscriptionInApp(
+    api.TargetingRuleScopeAnySubscriptionInApp o) {
+  buildCounterTargetingRuleScopeAnySubscriptionInApp++;
+  if (buildCounterTargetingRuleScopeAnySubscriptionInApp < 3) {}
+  buildCounterTargetingRuleScopeAnySubscriptionInApp--;
+}
+
+core.int buildCounterTargetingRuleScopeThisSubscription = 0;
+api.TargetingRuleScopeThisSubscription
+    buildTargetingRuleScopeThisSubscription() {
+  final o = api.TargetingRuleScopeThisSubscription();
+  buildCounterTargetingRuleScopeThisSubscription++;
+  if (buildCounterTargetingRuleScopeThisSubscription < 3) {}
+  buildCounterTargetingRuleScopeThisSubscription--;
+  return o;
+}
+
+void checkTargetingRuleScopeThisSubscription(
+    api.TargetingRuleScopeThisSubscription o) {
+  buildCounterTargetingRuleScopeThisSubscription++;
+  if (buildCounterTargetingRuleScopeThisSubscription < 3) {}
+  buildCounterTargetingRuleScopeThisSubscription--;
 }
 
 core.int buildCounterTargetingUpdate = 0;
@@ -7332,6 +7375,7 @@ api.VoidedPurchase buildVoidedPurchase() {
     o.orderId = 'foo';
     o.purchaseTimeMillis = 'foo';
     o.purchaseToken = 'foo';
+    o.voidedQuantity = 42;
     o.voidedReason = 42;
     o.voidedSource = 42;
     o.voidedTimeMillis = 'foo';
@@ -7358,6 +7402,10 @@ void checkVoidedPurchase(api.VoidedPurchase o) {
     unittest.expect(
       o.purchaseToken!,
       unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.voidedQuantity!,
+      unittest.equals(42),
     );
     unittest.expect(
       o.voidedReason!,
@@ -9379,6 +9427,26 @@ void main() {
       final od = api.TargetingRuleScope.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkTargetingRuleScope(od);
+    });
+  });
+
+  unittest.group('obj-schema-TargetingRuleScopeAnySubscriptionInApp', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildTargetingRuleScopeAnySubscriptionInApp();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TargetingRuleScopeAnySubscriptionInApp.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkTargetingRuleScopeAnySubscriptionInApp(od);
+    });
+  });
+
+  unittest.group('obj-schema-TargetingRuleScopeThisSubscription', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildTargetingRuleScopeThisSubscription();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TargetingRuleScopeThisSubscription.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkTargetingRuleScopeThisSubscription(od);
     });
   });
 
@@ -18726,6 +18794,7 @@ void main() {
       final res = api.AndroidPublisherApi(mock).purchases.voidedpurchases;
       final arg_packageName = 'foo';
       final arg_endTime = 'foo';
+      final arg_includeQuantityBasedPartialRefund = true;
       final arg_maxResults = 42;
       final arg_startIndex = 42;
       final arg_startTime = 'foo';
@@ -18782,6 +18851,10 @@ void main() {
           unittest.equals(arg_endTime),
         );
         unittest.expect(
+          queryMap['includeQuantityBasedPartialRefund']!.first,
+          unittest.equals('$arg_includeQuantityBasedPartialRefund'),
+        );
+        unittest.expect(
           core.int.parse(queryMap['maxResults']!.first),
           unittest.equals(arg_maxResults),
         );
@@ -18814,6 +18887,8 @@ void main() {
       }), true);
       final response = await res.list(arg_packageName,
           endTime: arg_endTime,
+          includeQuantityBasedPartialRefund:
+              arg_includeQuantityBasedPartialRefund,
           maxResults: arg_maxResults,
           startIndex: arg_startIndex,
           startTime: arg_startTime,

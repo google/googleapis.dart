@@ -1,8 +1,8 @@
 diff --git a/discovery/googleapis/firestore__v1.json b/discovery/googleapis/firestore__v1.json
-index f59030af3..c865a5ad8 100644
+index 6cd3ce364..ed400b977 100644
 --- a/discovery/googleapis/firestore__v1.json
 +++ b/discovery/googleapis/firestore__v1.json
-@@ -2812,32 +2812,35 @@
+@@ -3958,36 +3958,39 @@
          "RunQueryResponse": {
              "description": "The response for Firestore.RunQuery.",
              "id": "RunQueryResponse",
@@ -19,6 +19,10 @@ index f59030af3..c865a5ad8 100644
 +                    "done": {
 +                        "description": "If present, Firestore has completely finished the request and no more documents will be returned.",
 +                        "type": "boolean"
++                    },
++                    "explainMetrics": {
++                        "$ref": "ExplainMetrics",
++                        "description": "Query explain metrics. This is only present when the RunQueryRequest.explain_options is provided, and it is sent only once with the last response in the stream."
 +                    },
 +                    "readTime": {
 +                        "description": "The time at which the document was read. This may be monotonically increasing; in this case, the previous documents in the result stream are guaranteed not to have changed between their `read_time` and this one. If the query returns no results, a response with `read_time` and no `document` will be sent, and this represents the time at which the query was run.",
@@ -40,6 +44,10 @@ index f59030af3..c865a5ad8 100644
 -                    "description": "If present, Firestore has completely finished the request and no more documents will be returned.",
 -                    "type": "boolean"
 -                },
+-                "explainMetrics": {
+-                    "$ref": "ExplainMetrics",
+-                    "description": "Query explain metrics. This is only present when the RunQueryRequest.explain_options is provided, and it is sent only once with the last response in the stream."
+-                },
 -                "readTime": {
 -                    "description": "The time at which the document was read. This may be monotonically increasing; in this case, the previous documents in the result stream are guaranteed not to have changed between their `read_time` and this one. If the query returns no results, a response with `read_time` and no `document` will be sent, and this represents the time at which the query was run.",
 -                    "format": "google-datetime",
@@ -58,7 +66,7 @@ index f59030af3..c865a5ad8 100644
 +                "type": "object"
              },
 -            "type": "object"
-+            "type":"array"
++            "type": "array"
          },
          "Status": {
              "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).",

@@ -899,6 +899,10 @@ class AbortInfo {
   /// forwarding rule as a source are not supported.
   /// - "NON_ROUTABLE_IP_ADDRESS" : Aborted because one of the endpoints is a
   /// non-routable IP address (loopback, link-local, etc).
+  /// - "UNKNOWN_ISSUE_IN_GOOGLE_MANAGED_PROJECT" : Aborted due to an unknown
+  /// issue in the Google-managed project.
+  /// - "UNSUPPORTED_GOOGLE_MANAGED_PROJECT_CONFIG" : Aborted due to an
+  /// unsupported configuration of the Google-managed project.
   core.String? cause;
 
   /// IP address that caused the abort.
@@ -1378,6 +1382,11 @@ class CloudSQLInstanceInfo {
 
 /// A Connectivity Test for a network reachability analysis.
 class ConnectivityTest {
+  /// Whether the test should skip firewall checking.
+  ///
+  /// If not provided, we assume false.
+  core.bool? bypassFirewallChecks;
+
   /// The time the test was created.
   ///
   /// Output only.
@@ -1470,6 +1479,7 @@ class ConnectivityTest {
   core.String? updateTime;
 
   ConnectivityTest({
+    this.bypassFirewallChecks,
     this.createTime,
     this.description,
     this.destination,
@@ -1486,6 +1496,9 @@ class ConnectivityTest {
 
   ConnectivityTest.fromJson(core.Map json_)
       : this(
+          bypassFirewallChecks: json_.containsKey('bypassFirewallChecks')
+              ? json_['bypassFirewallChecks'] as core.bool
+              : null,
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
               : null,
@@ -1534,6 +1547,8 @@ class ConnectivityTest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (bypassFirewallChecks != null)
+          'bypassFirewallChecks': bypassFirewallChecks!,
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
         if (destination != null) 'destination': destination!,
@@ -1634,7 +1649,7 @@ class DropInfo {
   /// - "ROUTE_NEXT_HOP_RESOURCE_NOT_FOUND" : Route's next hop resource is not
   /// found.
   /// - "ROUTE_NEXT_HOP_INSTANCE_WRONG_NETWORK" : Route's next hop instance
-  /// doesn't hace a NIC in the route's network.
+  /// doesn't have a NIC in the route's network.
   /// - "ROUTE_NEXT_HOP_INSTANCE_NON_PRIMARY_IP" : Route's next hop IP address
   /// is not a primary IP address of the next hop instance.
   /// - "ROUTE_NEXT_HOP_FORWARDING_RULE_IP_MISMATCH" : Route's next hop
@@ -1742,6 +1757,9 @@ class DropInfo {
   /// - "PSC_NEG_PRODUCER_FORWARDING_RULE_MULTIPLE_PORTS" : The packet is sent
   /// to the Private Service Connect backend (network endpoint group), but the
   /// producer PSC forwarding rule has multiple ports specified.
+  /// - "CLOUD_SQL_PSC_NEG_UNSUPPORTED" : The packet is sent to the Private
+  /// Service Connect backend (network endpoint group) targeting a Cloud SQL
+  /// service attachment, but this configuration is not supported.
   /// - "NO_NAT_SUBNETS_FOR_PSC_SERVICE_ATTACHMENT" : No NAT subnets are defined
   /// for the PSC service attachment.
   /// - "HYBRID_NEG_NON_DYNAMIC_ROUTE_MATCHED" : The packet sent from the hybrid
@@ -1758,6 +1776,7 @@ class DropInfo {
   /// which requires a proxy-only subnet and the subnet is not found.
   /// - "CLOUD_NAT_NO_ADDRESSES" : Packet sent to Cloud Nat without active NAT
   /// IPs.
+  /// - "ROUTING_LOOP" : Packet is stuck in a routing loop.
   core.String? cause;
 
   /// Destination IP address of the dropped packet (if relevant).

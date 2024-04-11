@@ -31,7 +31,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240214",
+    "revision": "20240311",
     "rootUrl": "https://firebaserules.googleapis.com/",
     "servicePath": "",
     "title": "Firebase Rules API",

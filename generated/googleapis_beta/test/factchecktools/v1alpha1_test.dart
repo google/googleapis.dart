@@ -372,13 +372,92 @@ void checkGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage(
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage--;
 }
 
-core.List<api.GoogleFactcheckingFactchecktoolsV1alpha1Claim> buildUnnamed3() =>
+core.List<
+        api
+        .GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult>
+    buildUnnamed3() => [
+          buildGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult(),
+          buildGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult(),
+        ];
+
+void checkUnnamed3(
+    core.List<
+            api
+            .GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult>
+        o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult(
+      o[0]);
+  checkGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult(
+      o[1]);
+}
+
+core.int
+    buildCounterGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse =
+    0;
+api.GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse
+    buildGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse() {
+  final o = api
+      .GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse();
+  buildCounterGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse++;
+  if (buildCounterGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse <
+      3) {
+    o.nextPageToken = 'foo';
+    o.results = buildUnnamed3();
+  }
+  buildCounterGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse--;
+  return o;
+}
+
+void checkGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse(
+    api.GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse
+        o) {
+  buildCounterGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse++;
+  if (buildCounterGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse <
+      3) {
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed3(o.results!);
+  }
+  buildCounterGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse--;
+}
+
+core.int
+    buildCounterGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult =
+    0;
+api.GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult
+    buildGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult() {
+  final o = api
+      .GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult();
+  buildCounterGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult++;
+  if (buildCounterGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult <
+      3) {
+    o.claim = buildGoogleFactcheckingFactchecktoolsV1alpha1Claim();
+  }
+  buildCounterGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult--;
+  return o;
+}
+
+void checkGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult(
+    api.GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult
+        o) {
+  buildCounterGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult++;
+  if (buildCounterGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult <
+      3) {
+    checkGoogleFactcheckingFactchecktoolsV1alpha1Claim(o.claim!);
+  }
+  buildCounterGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult--;
+}
+
+core.List<api.GoogleFactcheckingFactchecktoolsV1alpha1Claim> buildUnnamed4() =>
     [
       buildGoogleFactcheckingFactchecktoolsV1alpha1Claim(),
       buildGoogleFactcheckingFactchecktoolsV1alpha1Claim(),
     ];
 
-void checkUnnamed3(
+void checkUnnamed4(
     core.List<api.GoogleFactcheckingFactchecktoolsV1alpha1Claim> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleFactcheckingFactchecktoolsV1alpha1Claim(o[0]);
@@ -395,7 +474,7 @@ api.GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse++;
   if (buildCounterGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse <
       3) {
-    o.claims = buildUnnamed3();
+    o.claims = buildUnnamed4();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse--;
@@ -408,7 +487,7 @@ void checkGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse++;
   if (buildCounterGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse <
       3) {
-    checkUnnamed3(o.claims!);
+    checkUnnamed4(o.claims!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -418,12 +497,12 @@ void checkGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse
 }
 
 core.List<api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage>
-    buildUnnamed4() => [
+    buildUnnamed5() => [
           buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage(),
           buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage(),
         ];
 
-void checkUnnamed4(
+void checkUnnamed5(
     core.List<api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -441,7 +520,7 @@ api.GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse++;
   if (buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse <
       3) {
-    o.claimReviewMarkupPages = buildUnnamed4();
+    o.claimReviewMarkupPages = buildUnnamed5();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse--;
@@ -454,7 +533,7 @@ void checkGoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResp
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse++;
   if (buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse <
       3) {
-    checkUnnamed4(o.claimReviewMarkupPages!);
+    checkUnnamed5(o.claimReviewMarkupPages!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -596,6 +675,36 @@ void main() {
   });
 
   unittest.group(
+      'obj-schema-GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse(
+          od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult(
+          od);
+    });
+  });
+
+  unittest.group(
       'obj-schema-GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse',
       () {
     unittest.test('to-json--from-json', () async {
@@ -647,6 +756,90 @@ void main() {
   });
 
   unittest.group('resource-ClaimsResource', () {
+    unittest.test('method--imageSearch', () async {
+      final mock = HttpServerMock();
+      final res = api.FactCheckToolsApi(mock).claims;
+      final arg_imageUri = 'foo';
+      final arg_languageCode = 'foo';
+      final arg_offset = 42;
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 27),
+          unittest.equals('v1alpha1/claims:imageSearch'),
+        );
+        pathOffset += 27;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['imageUri']!.first,
+          unittest.equals(arg_imageUri),
+        );
+        unittest.expect(
+          queryMap['languageCode']!.first,
+          unittest.equals(arg_languageCode),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['offset']!.first),
+          unittest.equals(arg_offset),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(
+            buildGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.imageSearch(
+          imageUri: arg_imageUri,
+          languageCode: arg_languageCode,
+          offset: arg_offset,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse(
+          response as api
+              .GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse);
+    });
+
     unittest.test('method--search', () async {
       final mock = HttpServerMock();
       final res = api.FactCheckToolsApi(mock).claims;

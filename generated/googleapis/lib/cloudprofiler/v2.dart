@@ -182,11 +182,11 @@ class ProjectsProfilesResource {
   /// Format: projects/{user_project_id}
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [pageSize] - The maximum number of items to return. Default page_size is
-  /// 1000. Max limit is 1000.
+  /// [pageSize] - Optional. The maximum number of items to return. Default
+  /// page_size is 1000. Max limit is 1000.
   ///
-  /// [pageToken] - The token to continue pagination and get profiles from a
-  /// particular page. When paginating, all other parameters provided to
+  /// [pageToken] - Optional. The token to continue pagination and get profiles
+  /// from a particular page. When paginating, all other parameters provided to
   /// `ListProfiles` must match the call that provided the page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial

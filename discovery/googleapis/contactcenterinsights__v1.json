@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240304",
+    "revision": "20240402",
     "rootUrl": "https://contactcenterinsights.googleapis.com/",
     "servicePath": "",
     "title": "Contact Center AI Insights API",
@@ -1658,11 +1658,13 @@
                     "description": "Default summarization model to be used.",
                     "enum": [
                         "SUMMARIZATION_MODEL_UNSPECIFIED",
-                        "BASELINE_MODEL"
+                        "BASELINE_MODEL",
+                        "BASELINE_MODEL_V2_0"
                     ],
                     "enumDescriptions": [
                         "Unspecified summarization model.",
-                        "The CCAI baseline model."
+                        "The CCAI baseline model.",
+                        "The CCAI baseline model, V2.0."
                     ],
                     "type": "string"
                 }
@@ -4236,11 +4238,13 @@
                     "description": "Default summarization model to be used.",
                     "enum": [
                         "SUMMARIZATION_MODEL_UNSPECIFIED",
-                        "BASELINE_MODEL"
+                        "BASELINE_MODEL",
+                        "BASELINE_MODEL_V2_0"
                     ],
                     "enumDescriptions": [
                         "Unspecified summarization model.",
-                        "The CCAI baseline model."
+                        "The CCAI baseline model.",
+                        "The CCAI baseline model, V2.0."
                     ],
                     "type": "string"
                 }

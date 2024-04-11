@@ -22,6 +22,7 @@
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsAssetsResource]
+///     - [ProjectsLocationsDiscoveryClientsResource]
 ///     - [ProjectsLocationsGroupsResource]
 ///     - [ProjectsLocationsImportJobsResource]
 ///       - [ProjectsLocationsImportJobsImportDataFilesResource]
@@ -79,6 +80,8 @@ class ProjectsLocationsResource {
 
   ProjectsLocationsAssetsResource get assets =>
       ProjectsLocationsAssetsResource(_requester);
+  ProjectsLocationsDiscoveryClientsResource get discoveryClients =>
+      ProjectsLocationsDiscoveryClientsResource(_requester);
   ProjectsLocationsGroupsResource get groups =>
       ProjectsLocationsGroupsResource(_requester);
   ProjectsLocationsImportJobsResource get importJobs =>
@@ -678,6 +681,326 @@ class ProjectsLocationsAssetsResource {
     );
     return ReportAssetFramesResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsDiscoveryClientsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsDiscoveryClientsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new discovery client.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent resource.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [discoveryClientId] - Required. User specified ID for the discovery
+  /// client. It will become the last component of the discovery client name.
+  /// The ID must be unique within the project, is restricted to lower-cased
+  /// letters and has a maximum length of 63 characters. The ID must match the
+  /// regular expression: `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes since the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    DiscoveryClient request,
+    core.String parent, {
+    core.String? discoveryClientId,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (discoveryClientId != null) 'discoveryClientId': [discoveryClientId],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/discoveryClients';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a discovery client.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The discovery client name.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/discoveryClients/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes after the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the details of a discovery client.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The discovery client name.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/discoveryClients/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [DiscoveryClient].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DiscoveryClient> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return DiscoveryClient.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all the discovery clients in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent resource.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filter expression to filter results by.
+  ///
+  /// [orderBy] - Optional. Field to sort by.
+  ///
+  /// [pageSize] - Optional. The maximum number of items to return. The server
+  /// may return fewer items than requested. If unspecified, the server will
+  /// pick an appropriate default value.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListDiscoveryClients` call. Provide this to retrieve the subsequent page.
+  /// When paginating, all other parameters provided to `ListDiscoveryClients`
+  /// must match the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListDiscoveryClientsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListDiscoveryClientsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/discoveryClients';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListDiscoveryClientsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a discovery client.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. Identifier. Full name of this discovery client.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/discoveryClients/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes since the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [updateMask] - Required. Update mask is used to specify the fields to be
+  /// overwritten in the `DiscoveryClient` resource by the update. The values
+  /// specified in the `update_mask` field are relative to the resource, not the
+  /// full request. A field will be overwritten if it is in the mask. A single *
+  /// value in the mask lets you to overwrite all fields.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    DiscoveryClient request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Sends a discovery client heartbeat.
+  ///
+  /// Healthy clients are expected to send heartbeats regularly (normally every
+  /// few minutes).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The discovery client name.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/discoveryClients/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> sendHeartbeat(
+    SendDiscoveryClientHeartbeatRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':sendHeartbeat';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3474,6 +3797,19 @@ class AssetFrame {
   /// Generic asset attributes.
   core.Map<core.String, core.String>? attributes;
 
+  /// Frame collection type, if not specified the collection type will be based
+  /// on the source type of the source the frame was reported on.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "SOURCE_TYPE_UNKNOWN" : Unspecified
+  /// - "SOURCE_TYPE_UPLOAD" : Manually uploaded file (e.g. CSV)
+  /// - "SOURCE_TYPE_GUEST_OS_SCAN" : Guest-level info
+  /// - "SOURCE_TYPE_INVENTORY_SCAN" : Inventory-level scan
+  /// - "SOURCE_TYPE_CUSTOM" : Third-party owned sources.
+  /// - "SOURCE_TYPE_DISCOVERY_CLIENT" : Discovery clients
+  core.String? collectionType;
+
   /// Labels as key value pairs.
   core.Map<core.String, core.String>? labels;
 
@@ -3496,6 +3832,7 @@ class AssetFrame {
 
   AssetFrame({
     this.attributes,
+    this.collectionType,
     this.labels,
     this.machineDetails,
     this.performanceSamples,
@@ -3513,6 +3850,9 @@ class AssetFrame {
                     value as core.String,
                   ),
                 )
+              : null,
+          collectionType: json_.containsKey('collectionType')
+              ? json_['collectionType'] as core.String
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
@@ -3542,6 +3882,7 @@ class AssetFrame {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (attributes != null) 'attributes': attributes!,
+        if (collectionType != null) 'collectionType': collectionType!,
         if (labels != null) 'labels': labels!,
         if (machineDetails != null) 'machineDetails': machineDetails!,
         if (performanceSamples != null)
@@ -4258,6 +4599,198 @@ class DailyResourceUsageAggregationStats {
 /// date). Related types: * google.type.TimeOfDay * google.type.DateTime *
 /// google.protobuf.Timestamp
 typedef Date = $Date;
+
+/// Represents an installed Migration Center Discovery Client instance.
+class DiscoveryClient {
+  /// Time when the discovery client was first created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Free text description.
+  ///
+  /// Maximum length is 1000 characters.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// Free text display name.
+  ///
+  /// Maximum length is 63 characters.
+  ///
+  /// Optional.
+  core.String? displayName;
+
+  /// Errors affecting client functionality.
+  ///
+  /// Output only.
+  core.List<Status>? errors;
+
+  /// Client expiration time in UTC.
+  ///
+  /// If specified, the backend will not accept new frames after this time.
+  ///
+  /// Optional.
+  core.String? expireTime;
+
+  /// Last heartbeat time.
+  ///
+  /// Healthy clients are expected to send heartbeats regularly (normally every
+  /// few minutes).
+  ///
+  /// Output only.
+  core.String? heartbeatTime;
+
+  /// Labels as key value pairs.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Identifier.
+  ///
+  /// Full name of this discovery client.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Service account used by the discovery client for various operation.
+  ///
+  /// Required.
+  core.String? serviceAccount;
+
+  /// This field is intended for internal use.
+  ///
+  /// Output only.
+  core.String? signalsEndpoint;
+
+  /// Full name of the source object associated with this discovery client.
+  ///
+  /// Required. Immutable.
+  core.String? source;
+
+  /// Current state of the discovery client.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Client state is unspecified.
+  /// - "ACTIVE" : Client is active.
+  /// - "OFFLINE" : Client is offline.
+  /// - "DEGRADED" : Client is in a degraded state. See the `errors` field for
+  /// details.
+  /// - "EXPIRED" : Client has expired. See the expire_time field for the expire
+  /// time.
+  core.String? state;
+
+  /// Input only.
+  ///
+  /// Client time-to-live. If specified, the backend will not accept new frames
+  /// after this time. This field is input only. The derived expiration time is
+  /// provided as output through the `expire_time` field.
+  ///
+  /// Optional.
+  core.String? ttl;
+
+  /// Time when the discovery client was last updated.
+  ///
+  /// This value is not updated by heartbeats, to view the last heartbeat time
+  /// please refer to the `heartbeat_time` field.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  /// Client version, as reported in recent heartbeat.
+  ///
+  /// Output only.
+  core.String? version;
+
+  DiscoveryClient({
+    this.createTime,
+    this.description,
+    this.displayName,
+    this.errors,
+    this.expireTime,
+    this.heartbeatTime,
+    this.labels,
+    this.name,
+    this.serviceAccount,
+    this.signalsEndpoint,
+    this.source,
+    this.state,
+    this.ttl,
+    this.updateTime,
+    this.version,
+  });
+
+  DiscoveryClient.fromJson(core.Map json_)
+      : this(
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          errors: json_.containsKey('errors')
+              ? (json_['errors'] as core.List)
+                  .map((value) => Status.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          expireTime: json_.containsKey('expireTime')
+              ? json_['expireTime'] as core.String
+              : null,
+          heartbeatTime: json_.containsKey('heartbeatTime')
+              ? json_['heartbeatTime'] as core.String
+              : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          serviceAccount: json_.containsKey('serviceAccount')
+              ? json_['serviceAccount'] as core.String
+              : null,
+          signalsEndpoint: json_.containsKey('signalsEndpoint')
+              ? json_['signalsEndpoint'] as core.String
+              : null,
+          source: json_.containsKey('source')
+              ? json_['source'] as core.String
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          ttl: json_.containsKey('ttl') ? json_['ttl'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+          version: json_.containsKey('version')
+              ? json_['version'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
+        if (errors != null) 'errors': errors!,
+        if (expireTime != null) 'expireTime': expireTime!,
+        if (heartbeatTime != null) 'heartbeatTime': heartbeatTime!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (serviceAccount != null) 'serviceAccount': serviceAccount!,
+        if (signalsEndpoint != null) 'signalsEndpoint': signalsEndpoint!,
+        if (source != null) 'source': source!,
+        if (state != null) 'state': state!,
+        if (ttl != null) 'ttl': ttl!,
+        if (updateTime != null) 'updateTime': updateTime!,
+        if (version != null) 'version': version!,
+      };
+}
 
 /// Single disk entry.
 class DiskEntry {
@@ -5702,6 +6235,50 @@ class ListAssetsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (assets != null) 'assets': assets!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
+/// Response message for listing discovery clients.
+class ListDiscoveryClientsResponse {
+  /// List of discovery clients.
+  core.List<DiscoveryClient>? discoveryClients;
+
+  /// A token that can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListDiscoveryClientsResponse({
+    this.discoveryClients,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListDiscoveryClientsResponse.fromJson(core.Map json_)
+      : this(
+          discoveryClients: json_.containsKey('discoveryClients')
+              ? (json_['discoveryClients'] as core.List)
+                  .map((value) => DiscoveryClient.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (discoveryClients != null) 'discoveryClients': discoveryClients!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (unreachable != null) 'unreachable': unreachable!,
       };
@@ -8474,6 +9051,42 @@ class RuntimeNetworkInfo {
       };
 }
 
+/// A request to send a discovery client heartbeat.
+class SendDiscoveryClientHeartbeatRequest {
+  /// Errors affecting client functionality.
+  ///
+  /// Optional.
+  core.List<Status>? errors;
+
+  /// Client application version.
+  ///
+  /// Optional.
+  core.String? version;
+
+  SendDiscoveryClientHeartbeatRequest({
+    this.errors,
+    this.version,
+  });
+
+  SendDiscoveryClientHeartbeatRequest.fromJson(core.Map json_)
+      : this(
+          errors: json_.containsKey('errors')
+              ? (json_['errors'] as core.List)
+                  .map((value) => Status.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          version: json_.containsKey('version')
+              ? json_['version'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (errors != null) 'errors': errors!,
+        if (version != null) 'version': version!,
+      };
+}
+
 /// Describes the Migration Center settings related to the project.
 class Settings {
   /// Disable Cloud Logging for the Migration Center API.
@@ -8664,6 +9277,7 @@ class Source {
   /// - "SOURCE_TYPE_GUEST_OS_SCAN" : Guest-level info
   /// - "SOURCE_TYPE_INVENTORY_SCAN" : Inventory-level scan
   /// - "SOURCE_TYPE_CUSTOM" : Third-party owned sources.
+  /// - "SOURCE_TYPE_DISCOVERY_CLIENT" : Discovery clients
   core.String? type;
 
   /// The timestamp when the source was last updated.

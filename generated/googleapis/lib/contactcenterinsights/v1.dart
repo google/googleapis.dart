@@ -2448,6 +2448,7 @@ class GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig {
   /// Possible string values are:
   /// - "SUMMARIZATION_MODEL_UNSPECIFIED" : Unspecified summarization model.
   /// - "BASELINE_MODEL" : The CCAI baseline model.
+  /// - "BASELINE_MODEL_V2_0" : The CCAI baseline model, V2.0.
   core.String? summarizationModel;
 
   GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig({

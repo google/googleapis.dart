@@ -1141,10 +1141,14 @@ class ConnectorConfiguration {
   /// Specifies how to reach the remote system this connection is pointing to.
   ConnectorConfigurationEndpoint? endpoint;
 
+  /// Networking configuration.
+  ConnectorConfigurationNetwork? network;
+
   ConnectorConfiguration({
     this.authentication,
     this.connectorId,
     this.endpoint,
+    this.network,
   });
 
   ConnectorConfiguration.fromJson(core.Map json_)
@@ -1161,12 +1165,17 @@ class ConnectorConfiguration {
               ? ConnectorConfigurationEndpoint.fromJson(
                   json_['endpoint'] as core.Map<core.String, core.dynamic>)
               : null,
+          network: json_.containsKey('network')
+              ? ConnectorConfigurationNetwork.fromJson(
+                  json_['network'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (authentication != null) 'authentication': authentication!,
         if (connectorId != null) 'connectorId': connectorId!,
         if (endpoint != null) 'endpoint': endpoint!,
+        if (network != null) 'network': network!,
       };
 }
 
@@ -1213,6 +1222,54 @@ class ConnectorConfigurationEndpoint {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (hostPort != null) 'hostPort': hostPort!,
+      };
+}
+
+/// Network related configuration.
+class ConnectorConfigurationNetwork {
+  /// Private Service Connect networking configuration.
+  ConnectorConfigurationPrivateServiceConnect? privateServiceConnect;
+
+  ConnectorConfigurationNetwork({
+    this.privateServiceConnect,
+  });
+
+  ConnectorConfigurationNetwork.fromJson(core.Map json_)
+      : this(
+          privateServiceConnect: json_.containsKey('privateServiceConnect')
+              ? ConnectorConfigurationPrivateServiceConnect.fromJson(
+                  json_['privateServiceConnect']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (privateServiceConnect != null)
+          'privateServiceConnect': privateServiceConnect!,
+      };
+}
+
+/// Private Service Connect configuration.
+class ConnectorConfigurationPrivateServiceConnect {
+  /// Network Attachment name in the format of
+  /// `projects/{project}/regions/{region}/networkAttachments/{networkattachment}`.
+  ///
+  /// Required.
+  core.String? networkAttachment;
+
+  ConnectorConfigurationPrivateServiceConnect({
+    this.networkAttachment,
+  });
+
+  ConnectorConfigurationPrivateServiceConnect.fromJson(core.Map json_)
+      : this(
+          networkAttachment: json_.containsKey('networkAttachment')
+              ? json_['networkAttachment'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (networkAttachment != null) 'networkAttachment': networkAttachment!,
       };
 }
 

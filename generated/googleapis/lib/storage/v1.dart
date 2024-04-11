@@ -2003,6 +2003,11 @@ class ManagedFoldersResource {
   ///
   /// [managedFolder] - The managed folder name/path.
   ///
+  /// [allowNonEmpty] - Allows the deletion of a managed folder even if it is
+  /// not empty. A managed folder is empty if there are no objects or managed
+  /// folders that it applies to. Callers must have
+  /// storage.managedFolders.setIamPolicy permission.
+  ///
   /// [ifMetagenerationMatch] - If set, only deletes the managed folder if its
   /// metageneration matches this value.
   ///
@@ -2020,11 +2025,13 @@ class ManagedFoldersResource {
   async.Future<void> delete(
     core.String bucket,
     core.String managedFolder, {
+    core.bool? allowNonEmpty,
     core.String? ifMetagenerationMatch,
     core.String? ifMetagenerationNotMatch,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (allowNonEmpty != null) 'allowNonEmpty': ['${allowNonEmpty}'],
       if (ifMetagenerationMatch != null)
         'ifMetagenerationMatch': [ifMetagenerationMatch],
       if (ifMetagenerationNotMatch != null)
@@ -3799,8 +3806,6 @@ class ObjectsResource {
 
   /// Restores a soft-deleted object.
   ///
-  /// [request] - The metadata request object.
-  ///
   /// Request parameters:
   ///
   /// [bucket] - Name of the bucket in which the object resides.
@@ -3847,7 +3852,6 @@ class ObjectsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Object> restore(
-    Object request,
     core.String bucket,
     core.String object,
     core.String generation, {
@@ -3860,7 +3864,6 @@ class ObjectsResource {
     core.String? userProject,
     core.String? $fields,
   }) async {
-    final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       'generation': [generation],
       if (copySourceAcl != null) 'copySourceAcl': ['${copySourceAcl}'],
@@ -3885,7 +3888,6 @@ class ObjectsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-      body: body_,
       queryParams: queryParams_,
     );
     return Object.fromJson(response_ as core.Map<core.String, core.dynamic>);

@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240228",
+    "revision": "20240319",
     "rootUrl": "https://identitytoolkit.googleapis.com/",
     "servicePath": "",
     "title": "Identity Toolkit API",
@@ -2640,11 +2640,10 @@
                     "type": "array"
                 },
                 "recaptchaKeys": {
-                    "description": "Output only. The reCAPTCHA keys.",
+                    "description": "The reCAPTCHA keys.",
                     "items": {
                         "$ref": "GoogleCloudIdentitytoolkitAdminV2RecaptchaKey"
                     },
-                    "readOnly": true,
                     "type": "array"
                 },
                 "useAccountDefender": {

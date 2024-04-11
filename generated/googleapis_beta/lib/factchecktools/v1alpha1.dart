@@ -56,6 +56,77 @@ class ClaimsResource {
 
   ClaimsResource(commons.ApiRequester client) : _requester = client;
 
+  /// Search through fact-checked claims using an image as the query.
+  ///
+  /// Request parameters:
+  ///
+  /// [imageUri] - Required. The URI of the source image. This must be a
+  /// publicly-accessible image HTTP/HTTPS URL. When fetching images from
+  /// HTTP/HTTPS URLs, Google cannot guarantee that the request will be
+  /// completed. Your request may fail if the specified host denies the request
+  /// (e.g. due to request throttling or DOS prevention), or if Google throttles
+  /// requests to the site for abuse prevention. You should not depend on
+  /// externally-hosted images for production applications.
+  ///
+  /// [languageCode] - Optional. The BCP-47 language code, such as "en-US" or
+  /// "sr-Latn". Can be used to restrict results by language, though we do not
+  /// currently consider the region.
+  ///
+  /// [offset] - Optional. An integer that specifies the current offset (that
+  /// is, starting result location) in search results. This field is only
+  /// considered if `page_token` is unset. For example, 0 means to return
+  /// results starting from the first matching result, and 10 means to return
+  /// from the 11th result.
+  ///
+  /// [pageSize] - Optional. The pagination size. We will return up to that many
+  /// results. Defaults to 10 if not set.
+  ///
+  /// [pageToken] - Optional. The pagination token. You may provide the
+  /// `next_page_token` returned from a previous List request, if any, in order
+  /// to get the next page. All other fields must have the same values as in the
+  /// previous request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<
+          GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse>
+      imageSearch({
+    core.String? imageUri,
+    core.String? languageCode,
+    core.int? offset,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (imageUri != null) 'imageUri': [imageUri],
+      if (languageCode != null) 'languageCode': [languageCode],
+      if (offset != null) 'offset': ['${offset}'],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const url_ = 'v1alpha1/claims:imageSearch';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Search through fact-checked claims.
   ///
   /// Request parameters:
@@ -824,6 +895,69 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage {
         if (pageUrl != null) 'pageUrl': pageUrl!,
         if (publishDate != null) 'publishDate': publishDate!,
         if (versionId != null) 'versionId': versionId!,
+      };
+}
+
+/// Response from searching fact-checked claims by image.
+class GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse {
+  /// The next pagination token in the Search response.
+  ///
+  /// It should be used as the `page_token` for the following request. An empty
+  /// value means no more results.
+  core.String? nextPageToken;
+
+  /// The list of claims and all of their associated information.
+  core.List<
+          GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult>?
+      results;
+
+  GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse({
+    this.nextPageToken,
+    this.results,
+  });
+
+  GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse.fromJson(
+      core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          results: json_.containsKey('results')
+              ? (json_['results'] as core.List)
+                  .map((value) =>
+                      GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (results != null) 'results': results!,
+      };
+}
+
+/// A claim and its associated information.
+class GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult {
+  /// A claim which matched the query.
+  GoogleFactcheckingFactchecktoolsV1alpha1Claim? claim;
+
+  GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult({
+    this.claim,
+  });
+
+  GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult.fromJson(
+      core.Map json_)
+      : this(
+          claim: json_.containsKey('claim')
+              ? GoogleFactcheckingFactchecktoolsV1alpha1Claim.fromJson(
+                  json_['claim'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (claim != null) 'claim': claim!,
       };
 }
 

@@ -200,6 +200,7 @@ api.DeviceSignals buildDeviceSignals() {
     o.osVersion = 'foo';
     o.passwordProtectionWarningTrigger = 'foo';
     o.profileAffiliationIds = buildUnnamed4();
+    o.profileEnrollmentDomain = 'foo';
     o.realtimeUrlCheckMode = 'foo';
     o.safeBrowsingProtectionLevel = 'foo';
     o.screenLockSecured = 'foo';
@@ -272,6 +273,10 @@ void checkDeviceSignals(api.DeviceSignals o) {
       unittest.equals('foo'),
     );
     checkUnnamed4(o.profileAffiliationIds!);
+    unittest.expect(
+      o.profileEnrollmentDomain!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.realtimeUrlCheckMode!,
       unittest.equals('foo'),

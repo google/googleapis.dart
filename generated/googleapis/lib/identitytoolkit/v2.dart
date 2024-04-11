@@ -4114,8 +4114,6 @@ class GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig {
       managedRules;
 
   /// The reCAPTCHA keys.
-  ///
-  /// Output only.
   core.List<GoogleCloudIdentitytoolkitAdminV2RecaptchaKey>? recaptchaKeys;
 
   /// Whether to use the account defender for reCAPTCHA assessment.

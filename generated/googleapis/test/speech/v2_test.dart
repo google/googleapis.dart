@@ -997,6 +997,7 @@ api.RecognitionConfig buildRecognitionConfig() {
     o.languageCodes = buildUnnamed14();
     o.model = 'foo';
     o.transcriptNormalization = buildTranscriptNormalization();
+    o.translationConfig = buildTranslationConfig();
   }
   buildCounterRecognitionConfig--;
   return o;
@@ -1015,6 +1016,7 @@ void checkRecognitionConfig(api.RecognitionConfig o) {
       unittest.equals('foo'),
     );
     checkTranscriptNormalization(o.transcriptNormalization!);
+    checkTranslationConfig(o.translationConfig!);
   }
   buildCounterRecognitionConfig--;
 }
@@ -1575,6 +1577,28 @@ void checkTranscriptNormalization(api.TranscriptNormalization o) {
   buildCounterTranscriptNormalization--;
 }
 
+core.int buildCounterTranslationConfig = 0;
+api.TranslationConfig buildTranslationConfig() {
+  final o = api.TranslationConfig();
+  buildCounterTranslationConfig++;
+  if (buildCounterTranslationConfig < 3) {
+    o.targetLanguage = 'foo';
+  }
+  buildCounterTranslationConfig--;
+  return o;
+}
+
+void checkTranslationConfig(api.TranslationConfig o) {
+  buildCounterTranslationConfig++;
+  if (buildCounterTranslationConfig < 3) {
+    unittest.expect(
+      o.targetLanguage!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterTranslationConfig--;
+}
+
 core.int buildCounterUndeleteCustomClassRequest = 0;
 api.UndeleteCustomClassRequest buildUndeleteCustomClassRequest() {
   final o = api.UndeleteCustomClassRequest();
@@ -2077,6 +2101,16 @@ void main() {
       final od = api.TranscriptNormalization.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkTranscriptNormalization(od);
+    });
+  });
+
+  unittest.group('obj-schema-TranslationConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildTranslationConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TranslationConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkTranslationConfig(od);
     });
   });
 

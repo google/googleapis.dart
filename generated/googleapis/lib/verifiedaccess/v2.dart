@@ -319,6 +319,9 @@ class DeviceSignals {
   /// ChromeOS user.
   core.List<core.String>? profileAffiliationIds;
 
+  /// Enrollment domain of the customer which is currently managing the profile.
+  core.String? profileEnrollmentDomain;
+
   /// Whether Enterprise-grade (i.e. custom) unsafe URL scanning is enabled or
   /// not.
   ///
@@ -432,6 +435,7 @@ class DeviceSignals {
     this.osVersion,
     this.passwordProtectionWarningTrigger,
     this.profileAffiliationIds,
+    this.profileEnrollmentDomain,
     this.realtimeUrlCheckMode,
     this.safeBrowsingProtectionLevel,
     this.screenLockSecured,
@@ -520,6 +524,9 @@ class DeviceSignals {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          profileEnrollmentDomain: json_.containsKey('profileEnrollmentDomain')
+              ? json_['profileEnrollmentDomain'] as core.String
+              : null,
           realtimeUrlCheckMode: json_.containsKey('realtimeUrlCheckMode')
               ? json_['realtimeUrlCheckMode'] as core.String
               : null,
@@ -587,6 +594,8 @@ class DeviceSignals {
           'passwordProtectionWarningTrigger': passwordProtectionWarningTrigger!,
         if (profileAffiliationIds != null)
           'profileAffiliationIds': profileAffiliationIds!,
+        if (profileEnrollmentDomain != null)
+          'profileEnrollmentDomain': profileEnrollmentDomain!,
         if (realtimeUrlCheckMode != null)
           'realtimeUrlCheckMode': realtimeUrlCheckMode!,
         if (safeBrowsingProtectionLevel != null)
