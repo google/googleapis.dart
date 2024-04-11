@@ -208,28 +208,41 @@ Iterable<String> _printSlides(List<Page> pages, {int? lastSlide}) sync* {
 extension on Page {
   Iterable<String> get noteLines sync* {
     final elements = slideProperties?.notesPage?.pageElements;
-    if (elements != null) {
-      for (var element in elements) {
-        final text = element.shape?.text;
-        if (text != null) {
-          final value = text.textElements!
-              .map((e) => e.textRun?.content)
-              .whereType<String>()
-              .where((element) => element.isNotEmpty)
-              .join()
-              .trim();
 
-          if (value.isNotEmpty) {
-            // `value` may contain sections split by new-lines. Turn these into
-            // individual returned "lines" removing extra whitespace and
-            // blank lines
-            yield* LineSplitter.split(value)
-                .map((line) => line.trim())
-                .where((line) => line.isNotEmpty);
-          }
-        }
-      }
+    if (elements == null) {
+      return;
     }
+
+    for (var element in elements) {
+      final text = element.shape?.text;
+      if (text == null) {
+        return;
+      }
+
+      yield* text.lines;
+    }
+  }
+}
+
+extension on TextContent {
+  Iterable<String> get lines sync* {
+    final value = textElements!
+        .map((e) => e.textRun?.content)
+        .whereType<String>()
+        .where((element) => element.isNotEmpty)
+        .join()
+        .trim();
+
+    if (value.isEmpty) {
+      return;
+    }
+
+    // `value` may contain sections split by new-lines. Turn these into
+    // individual returned "lines" removing extra whitespace and
+    // blank lines
+    yield* LineSplitter.split(value)
+        .map((line) => line.trim())
+        .where((line) => line.isNotEmpty);
   }
 }
 
