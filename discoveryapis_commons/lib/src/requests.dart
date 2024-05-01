@@ -24,6 +24,7 @@ class Media {
   }
 }
 
+// ignore: avoid_classes_with_only_static_members
 /// Represents options for uploading a [Media].
 class UploadOptions {
   /// Use either simple uploads (only media) or multipart for media+metadata
