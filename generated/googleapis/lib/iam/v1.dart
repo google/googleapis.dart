@@ -37,6 +37,8 @@
 /// - [PermissionsResource]
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsOauthClientsResource]
+///       - [ProjectsLocationsOauthClientsCredentialsResource]
 ///     - [ProjectsLocationsWorkloadIdentityPoolsResource]
 ///       - [ProjectsLocationsWorkloadIdentityPoolsNamespacesResource]
 /// -
@@ -535,8 +537,8 @@ class LocationsWorkforcePoolsResource {
 
   /// Returns the caller's permissions on the WorkforcePool.
   ///
-  /// If the pool does not exist, this will return an empty set of permissions,
-  /// not a `NOT_FOUND` error.
+  /// If the pool doesn't exist, this call returns an empty set of permissions.
+  /// It doesn't return a `NOT_FOUND` error.
   ///
   /// [request] - The metadata request object.
   ///
@@ -735,7 +737,7 @@ class LocationsWorkforcePoolsProvidersResource {
 
   /// Deletes a WorkforcePoolProvider.
   ///
-  /// Deleting a provider does not revoke credentials that have already been\
+  /// Deleting a provider does not revoke credentials that have already been
   /// issued; they continue to grant access. You can undelete a provider for 30
   /// days. After 30 days, deletion is permanent. You cannot update deleted
   /// providers. However, you can view and list them.
@@ -1299,18 +1301,22 @@ class LocationsWorkforcePoolsSubjectsResource {
   ///
   /// Subject must not already be in a deleted state. A WorkforcePoolSubject is
   /// automatically created the first time an external credential is exchanged
-  /// for a Google Cloud credential with a mapped `google.subject` attribute.
-  /// There is no path to manually create WorkforcePoolSubjects. Once deleted,
-  /// the WorkforcePoolSubject may not be used for 30 days. After 30 days, the
-  /// WorkforcePoolSubject will be deleted forever and can be reused in token
-  /// exchanges with Google Cloud STS. This will automatically create a new
-  /// WorkforcePoolSubject that is independent of the previously deleted
-  /// WorkforcePoolSubject with the same google.subject value.
+  /// for a Google Cloud credential using a mapped `google.subject` attribute.
+  /// There is no endpoint to manually create a WorkforcePoolSubject. For 30
+  /// days after a WorkforcePoolSubject is deleted, using the same
+  /// `google.subject` attribute in token exchanges with Google Cloud STS fails.
+  /// Call UndeleteWorkforcePoolSubject to undelete a WorkforcePoolSubject that
+  /// has been deleted, within within 30 days of deleting it. After 30 days, the
+  /// WorkforcePoolSubject is permanently deleted. At this point, a token
+  /// exchange with Google Cloud STS that uses the same mapped `google.subject`
+  /// attribute automatically creates a new WorkforcePoolSubject that is
+  /// unrelated to the previously deleted WorkforcePoolSubject but has the same
+  /// `google.subject` value.
   ///
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of the WorkforcePoolSubject. Special
-  /// characters, like '/' and ':', must be escaped, because all URLs need to
+  /// characters, like `/` and `:`, must be escaped, because all URLs need to
   /// conform to the "When to Escape and Unescape" section of
   /// [RFC3986](https://www.ietf.org/rfc/rfc2396.txt). Format:
   /// `locations/{location}/workforcePools/{workforce_pool_id}/subjects/{subject_id}`
@@ -1353,7 +1359,7 @@ class LocationsWorkforcePoolsSubjectsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of the WorkforcePoolSubject. Special
-  /// characters, like '/' and ':', must be escaped, because all URLs need to
+  /// characters, like `/` and `:`, must be escaped, because all URLs need to
   /// conform to the "When to Escape and Unescape" section of
   /// [RFC3986](https://www.ietf.org/rfc/rfc2396.txt). Format:
   /// `locations/{location}/workforcePools/{workforce_pool_id}/subjects/{subject_id}`
@@ -1460,16 +1466,16 @@ class OrganizationsRolesResource {
   ///
   /// [parent] - The `parent` parameter's value depends on the target resource
   /// for the request, namely
-  /// \[`projects`\](https://cloud.google.com/iam/reference/rest/v1/projects.roles)
+  /// \[`projects`\](https://cloud.google.com/iam/docs/reference/rest/v1/projects.roles)
   /// or
-  /// \[`organizations`\](https://cloud.google.com/iam/reference/rest/v1/organizations.roles).
+  /// \[`organizations`\](https://cloud.google.com/iam/docs/reference/rest/v1/organizations.roles).
   /// Each resource type's `parent` value format is described below: *
-  /// \[`projects.roles.create()`\](https://cloud.google.com/iam/reference/rest/v1/projects.roles/create):
+  /// \[`projects.roles.create()`\](https://cloud.google.com/iam/docs/reference/rest/v1/projects.roles/create):
   /// `projects/{PROJECT_ID}`. This method creates project-level
   /// [custom roles](https://cloud.google.com/iam/docs/understanding-custom-roles).
   /// Example request URL:
   /// `https://iam.googleapis.com/v1/projects/{PROJECT_ID}/roles` *
-  /// \[`organizations.roles.create()`\](https://cloud.google.com/iam/reference/rest/v1/organizations.roles/create):
+  /// \[`organizations.roles.create()`\](https://cloud.google.com/iam/docs/reference/rest/v1/organizations.roles/create):
   /// `organizations/{ORGANIZATION_ID}`. This method creates organization-level
   /// [custom roles](https://cloud.google.com/iam/docs/understanding-custom-roles).
   /// Example request URL:
@@ -1524,17 +1530,17 @@ class OrganizationsRolesResource {
   ///
   /// [name] - The `name` parameter's value depends on the target resource for
   /// the request, namely
-  /// \[`projects`\](https://cloud.google.com/iam/reference/rest/v1/projects.roles)
+  /// \[`projects`\](https://cloud.google.com/iam/docs/reference/rest/v1/projects.roles)
   /// or
-  /// \[`organizations`\](https://cloud.google.com/iam/reference/rest/v1/organizations.roles).
+  /// \[`organizations`\](https://cloud.google.com/iam/docs/reference/rest/v1/organizations.roles).
   /// Each resource type's `name` value format is described below: *
-  /// \[`projects.roles.delete()`\](https://cloud.google.com/iam/reference/rest/v1/projects.roles/delete):
+  /// \[`projects.roles.delete()`\](https://cloud.google.com/iam/docs/reference/rest/v1/projects.roles/delete):
   /// `projects/{PROJECT_ID}/roles/{CUSTOM_ROLE_ID}`. This method deletes only
   /// [custom roles](https://cloud.google.com/iam/docs/understanding-custom-roles)
   /// that have been created at the project level. Example request URL:
   /// `https://iam.googleapis.com/v1/projects/{PROJECT_ID}/roles/{CUSTOM_ROLE_ID}`
   /// *
-  /// \[`organizations.roles.delete()`\](https://cloud.google.com/iam/reference/rest/v1/organizations.roles/delete):
+  /// \[`organizations.roles.delete()`\](https://cloud.google.com/iam/docs/reference/rest/v1/organizations.roles/delete):
   /// `organizations/{ORGANIZATION_ID}/roles/{CUSTOM_ROLE_ID}`. This method
   /// deletes only
   /// [custom roles](https://cloud.google.com/iam/docs/understanding-custom-roles)
@@ -1582,23 +1588,23 @@ class OrganizationsRolesResource {
   ///
   /// [name] - The `name` parameter's value depends on the target resource for
   /// the request, namely
-  /// \[`roles`\](https://cloud.google.com/iam/reference/rest/v1/roles),
-  /// \[`projects`\](https://cloud.google.com/iam/reference/rest/v1/projects.roles),
+  /// \[`roles`\](https://cloud.google.com/iam/docs/reference/rest/v1/roles),
+  /// \[`projects`\](https://cloud.google.com/iam/docs/reference/rest/v1/projects.roles),
   /// or
-  /// \[`organizations`\](https://cloud.google.com/iam/reference/rest/v1/organizations.roles).
+  /// \[`organizations`\](https://cloud.google.com/iam/docs/reference/rest/v1/organizations.roles).
   /// Each resource type's `name` value format is described below: *
-  /// \[`roles.get()`\](https://cloud.google.com/iam/reference/rest/v1/roles/get):
+  /// \[`roles.get()`\](https://cloud.google.com/iam/docs/reference/rest/v1/roles/get):
   /// `roles/{ROLE_NAME}`. This method returns results from all
   /// [predefined roles](https://cloud.google.com/iam/docs/understanding-roles#predefined_roles)
-  /// in Cloud IAM. Example request URL:
+  /// in IAM. Example request URL:
   /// `https://iam.googleapis.com/v1/roles/{ROLE_NAME}` *
-  /// \[`projects.roles.get()`\](https://cloud.google.com/iam/reference/rest/v1/projects.roles/get):
+  /// \[`projects.roles.get()`\](https://cloud.google.com/iam/docs/reference/rest/v1/projects.roles/get):
   /// `projects/{PROJECT_ID}/roles/{CUSTOM_ROLE_ID}`. This method returns only
   /// [custom roles](https://cloud.google.com/iam/docs/understanding-custom-roles)
   /// that have been created at the project level. Example request URL:
   /// `https://iam.googleapis.com/v1/projects/{PROJECT_ID}/roles/{CUSTOM_ROLE_ID}`
   /// *
-  /// \[`organizations.roles.get()`\](https://cloud.google.com/iam/reference/rest/v1/organizations.roles/get):
+  /// \[`organizations.roles.get()`\](https://cloud.google.com/iam/docs/reference/rest/v1/organizations.roles/get):
   /// `organizations/{ORGANIZATION_ID}/roles/{CUSTOM_ROLE_ID}`. This method
   /// returns only
   /// [custom roles](https://cloud.google.com/iam/docs/understanding-custom-roles)
@@ -1643,22 +1649,22 @@ class OrganizationsRolesResource {
   ///
   /// [parent] - The `parent` parameter's value depends on the target resource
   /// for the request, namely
-  /// \[`roles`\](https://cloud.google.com/iam/reference/rest/v1/roles),
-  /// \[`projects`\](https://cloud.google.com/iam/reference/rest/v1/projects.roles),
+  /// \[`roles`\](https://cloud.google.com/iam/docs/reference/rest/v1/roles),
+  /// \[`projects`\](https://cloud.google.com/iam/docs/reference/rest/v1/projects.roles),
   /// or
-  /// \[`organizations`\](https://cloud.google.com/iam/reference/rest/v1/organizations.roles).
+  /// \[`organizations`\](https://cloud.google.com/iam/docs/reference/rest/v1/organizations.roles).
   /// Each resource type's `parent` value format is described below: *
-  /// \[`roles.list()`\](https://cloud.google.com/iam/reference/rest/v1/roles/list):
+  /// \[`roles.list()`\](https://cloud.google.com/iam/docs/reference/rest/v1/roles/list):
   /// An empty string. This method doesn't require a resource; it simply returns
   /// all
   /// [predefined roles](https://cloud.google.com/iam/docs/understanding-roles#predefined_roles)
-  /// in Cloud IAM. Example request URL: `https://iam.googleapis.com/v1/roles` *
-  /// \[`projects.roles.list()`\](https://cloud.google.com/iam/reference/rest/v1/projects.roles/list):
+  /// in IAM. Example request URL: `https://iam.googleapis.com/v1/roles` *
+  /// \[`projects.roles.list()`\](https://cloud.google.com/iam/docs/reference/rest/v1/projects.roles/list):
   /// `projects/{PROJECT_ID}`. This method lists all project-level
   /// [custom roles](https://cloud.google.com/iam/docs/understanding-custom-roles).
   /// Example request URL:
   /// `https://iam.googleapis.com/v1/projects/{PROJECT_ID}/roles` *
-  /// \[`organizations.roles.list()`\](https://cloud.google.com/iam/reference/rest/v1/organizations.roles/list):
+  /// \[`organizations.roles.list()`\](https://cloud.google.com/iam/docs/reference/rest/v1/organizations.roles/list):
   /// `organizations/{ORGANIZATION_ID}`. This method lists all
   /// organization-level
   /// [custom roles](https://cloud.google.com/iam/docs/understanding-custom-roles).
@@ -1730,17 +1736,17 @@ class OrganizationsRolesResource {
   ///
   /// [name] - The `name` parameter's value depends on the target resource for
   /// the request, namely
-  /// \[`projects`\](https://cloud.google.com/iam/reference/rest/v1/projects.roles)
+  /// \[`projects`\](https://cloud.google.com/iam/docs/reference/rest/v1/projects.roles)
   /// or
-  /// \[`organizations`\](https://cloud.google.com/iam/reference/rest/v1/organizations.roles).
+  /// \[`organizations`\](https://cloud.google.com/iam/docs/reference/rest/v1/organizations.roles).
   /// Each resource type's `name` value format is described below: *
-  /// \[`projects.roles.patch()`\](https://cloud.google.com/iam/reference/rest/v1/projects.roles/patch):
+  /// \[`projects.roles.patch()`\](https://cloud.google.com/iam/docs/reference/rest/v1/projects.roles/patch):
   /// `projects/{PROJECT_ID}/roles/{CUSTOM_ROLE_ID}`. This method updates only
   /// [custom roles](https://cloud.google.com/iam/docs/understanding-custom-roles)
   /// that have been created at the project level. Example request URL:
   /// `https://iam.googleapis.com/v1/projects/{PROJECT_ID}/roles/{CUSTOM_ROLE_ID}`
   /// *
-  /// \[`organizations.roles.patch()`\](https://cloud.google.com/iam/reference/rest/v1/organizations.roles/patch):
+  /// \[`organizations.roles.patch()`\](https://cloud.google.com/iam/docs/reference/rest/v1/organizations.roles/patch):
   /// `organizations/{ORGANIZATION_ID}/roles/{CUSTOM_ROLE_ID}`. This method
   /// updates only
   /// [custom roles](https://cloud.google.com/iam/docs/understanding-custom-roles)
@@ -1793,17 +1799,17 @@ class OrganizationsRolesResource {
   ///
   /// [name] - The `name` parameter's value depends on the target resource for
   /// the request, namely
-  /// \[`projects`\](https://cloud.google.com/iam/reference/rest/v1/projects.roles)
+  /// \[`projects`\](https://cloud.google.com/iam/docs/reference/rest/v1/projects.roles)
   /// or
-  /// \[`organizations`\](https://cloud.google.com/iam/reference/rest/v1/organizations.roles).
+  /// \[`organizations`\](https://cloud.google.com/iam/docs/reference/rest/v1/organizations.roles).
   /// Each resource type's `name` value format is described below: *
-  /// \[`projects.roles.undelete()`\](https://cloud.google.com/iam/reference/rest/v1/projects.roles/undelete):
+  /// \[`projects.roles.undelete()`\](https://cloud.google.com/iam/docs/reference/rest/v1/projects.roles/undelete):
   /// `projects/{PROJECT_ID}/roles/{CUSTOM_ROLE_ID}`. This method undeletes only
   /// [custom roles](https://cloud.google.com/iam/docs/understanding-custom-roles)
   /// that have been created at the project level. Example request URL:
   /// `https://iam.googleapis.com/v1/projects/{PROJECT_ID}/roles/{CUSTOM_ROLE_ID}`
   /// *
-  /// \[`organizations.roles.undelete()`\](https://cloud.google.com/iam/reference/rest/v1/organizations.roles/undelete):
+  /// \[`organizations.roles.undelete()`\](https://cloud.google.com/iam/docs/reference/rest/v1/organizations.roles/undelete):
   /// `organizations/{ORGANIZATION_ID}/roles/{CUSTOM_ROLE_ID}`. This method
   /// undeletes only
   /// [custom roles](https://cloud.google.com/iam/docs/understanding-custom-roles)
@@ -1906,10 +1912,527 @@ class ProjectsResource {
 class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsOauthClientsResource get oauthClients =>
+      ProjectsLocationsOauthClientsResource(_requester);
   ProjectsLocationsWorkloadIdentityPoolsResource get workloadIdentityPools =>
       ProjectsLocationsWorkloadIdentityPoolsResource(_requester);
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsLocationsOauthClientsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsOauthClientsCredentialsResource get credentials =>
+      ProjectsLocationsOauthClientsCredentialsResource(_requester);
+
+  ProjectsLocationsOauthClientsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new OauthClient.
+  ///
+  /// You cannot reuse the name of a deleted oauth client until 30 days after
+  /// deletion.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource to create the oauth client in.
+  /// The only supported location is `global`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [oauthClientId] - Required. The ID to use for the oauth client, which
+  /// becomes the final component of the resource name. This value should be a
+  /// string of 6 to 63 lowercase letters, digits, or hyphens. It must start
+  /// with a letter, and cannot have a trailing hyphen. The prefix `gcp-` is
+  /// reserved for use by Google, and may not be specified.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [OauthClient].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<OauthClient> create(
+    OauthClient request,
+    core.String parent, {
+    core.String? oauthClientId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (oauthClientId != null) 'oauthClientId': [oauthClientId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/oauthClients';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return OauthClient.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a OauthClient.
+  ///
+  /// You cannot use a deleted oauth client. However, deletion does not revoke
+  /// access tokens that have already been issued; they continue to grant
+  /// access. Deletion does revoke refresh tokens that have already been issued;
+  /// They cannot be used to renew an access token. If the oauth client is
+  /// undeleted, and the refresh tokens are not expired, they are valid for
+  /// token exchange again. You can undelete an oauth client for 30 days. After
+  /// 30 days, deletion is permanent. You cannot update deleted oauth clients.
+  /// However, you can view and list them.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the oauth client to delete. Format:
+  /// `projects/{project}/locations/{location}/oauthClients/{oauth_client}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/oauthClients/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [OauthClient].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<OauthClient> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return OauthClient.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets an individual OauthClient.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the oauth client to retrieve. Format:
+  /// `projects/{project}/locations/{location}/oauthClients/{oauth_client}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/oauthClients/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [OauthClient].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<OauthClient> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return OauthClient.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all non-deleted OauthClientss in a project.
+  ///
+  /// If `show_deleted` is set to `true`, then deleted oauth clients are also
+  /// listed.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent to list oauth clients for.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of oauth clients to return. If
+  /// unspecified, at most 50 oauth clients will be returned. The maximum value
+  /// is 100; values above 100 are truncated to 100.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListOauthClients` call. Provide this to retrieve the subsequent page.
+  ///
+  /// [showDeleted] - Optional. Whether to return soft-deleted oauth clients.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListOauthClientsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListOauthClientsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.bool? showDeleted,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/oauthClients';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListOauthClientsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates an existing OauthClient.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Immutable. The resource name of the oauth client.
+  /// Format:`projects/{project}/locations/{location}/oauthClients/{oauth_client}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/oauthClients/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. The list of fields to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [OauthClient].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<OauthClient> patch(
+    OauthClient request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return OauthClient.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Undeletes a OauthClient, as long as it was deleted fewer than 30 days ago.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the oauth client to undelete. Format:
+  /// `projects/{project}/locations/{location}/oauthClients/{oauth_client}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/oauthClients/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [OauthClient].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<OauthClient> undelete(
+    UndeleteOauthClientRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':undelete';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return OauthClient.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsOauthClientsCredentialsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsOauthClientsCredentialsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new OauthClientCredential.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource to create the oauth client
+  /// Credential in.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/oauthClients/\[^/\]+$`.
+  ///
+  /// [oauthClientCredentialId] - Required. The ID to use for the oauth client
+  /// credential, which becomes the final component of the resource name. This
+  /// value should be 4-32 characters, and may contain the characters
+  /// \[a-z0-9-\]. The prefix `gcp-` is reserved for use by Google, and may not
+  /// be specified.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [OauthClientCredential].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<OauthClientCredential> create(
+    OauthClientCredential request,
+    core.String parent, {
+    core.String? oauthClientCredentialId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (oauthClientCredentialId != null)
+        'oauthClientCredentialId': [oauthClientCredentialId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/credentials';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return OauthClientCredential.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a OauthClientCredential.
+  ///
+  /// Before deleting an oauth client credential, it should first be disabled.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the oauth client credential to delete.
+  /// Format:
+  /// `projects/{project}/locations/{location}/oauthClients/{oauth_client}/credentials/{credential}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/oauthClients/\[^/\]+/credentials/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets an individual OauthClientCredential.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the oauth client credential to retrieve.
+  /// Format:
+  /// `projects/{project}/locations/{location}/oauthClients/{oauth_client}/credentials/{credential}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/oauthClients/\[^/\]+/credentials/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [OauthClientCredential].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<OauthClientCredential> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return OauthClientCredential.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all OauthClientCredentialss in a OauthClient.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent to list oauth client credentials for.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/oauthClients/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListOauthClientCredentialsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListOauthClientCredentialsResponse> list(
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/credentials';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListOauthClientCredentialsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates an existing OauthClientCredential.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Immutable. The resource name of the oauth client credential.
+  /// Format:
+  /// `projects/{project}/locations/{location}/oauthClients/{oauth_client}/credentials/{credential}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/oauthClients/\[^/\]+/credentials/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. The list of fields to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [OauthClientCredential].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<OauthClientCredential> patch(
+    OauthClientCredential request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return OauthClientCredential.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsLocationsWorkloadIdentityPoolsResource {
@@ -3069,16 +3592,16 @@ class ProjectsRolesResource {
   ///
   /// [parent] - The `parent` parameter's value depends on the target resource
   /// for the request, namely
-  /// \[`projects`\](https://cloud.google.com/iam/reference/rest/v1/projects.roles)
+  /// \[`projects`\](https://cloud.google.com/iam/docs/reference/rest/v1/projects.roles)
   /// or
-  /// \[`organizations`\](https://cloud.google.com/iam/reference/rest/v1/organizations.roles).
+  /// \[`organizations`\](https://cloud.google.com/iam/docs/reference/rest/v1/organizations.roles).
   /// Each resource type's `parent` value format is described below: *
-  /// \[`projects.roles.create()`\](https://cloud.google.com/iam/reference/rest/v1/projects.roles/create):
+  /// \[`projects.roles.create()`\](https://cloud.google.com/iam/docs/reference/rest/v1/projects.roles/create):
   /// `projects/{PROJECT_ID}`. This method creates project-level
   /// [custom roles](https://cloud.google.com/iam/docs/understanding-custom-roles).
   /// Example request URL:
   /// `https://iam.googleapis.com/v1/projects/{PROJECT_ID}/roles` *
-  /// \[`organizations.roles.create()`\](https://cloud.google.com/iam/reference/rest/v1/organizations.roles/create):
+  /// \[`organizations.roles.create()`\](https://cloud.google.com/iam/docs/reference/rest/v1/organizations.roles/create):
   /// `organizations/{ORGANIZATION_ID}`. This method creates organization-level
   /// [custom roles](https://cloud.google.com/iam/docs/understanding-custom-roles).
   /// Example request URL:
@@ -3133,17 +3656,17 @@ class ProjectsRolesResource {
   ///
   /// [name] - The `name` parameter's value depends on the target resource for
   /// the request, namely
-  /// \[`projects`\](https://cloud.google.com/iam/reference/rest/v1/projects.roles)
+  /// \[`projects`\](https://cloud.google.com/iam/docs/reference/rest/v1/projects.roles)
   /// or
-  /// \[`organizations`\](https://cloud.google.com/iam/reference/rest/v1/organizations.roles).
+  /// \[`organizations`\](https://cloud.google.com/iam/docs/reference/rest/v1/organizations.roles).
   /// Each resource type's `name` value format is described below: *
-  /// \[`projects.roles.delete()`\](https://cloud.google.com/iam/reference/rest/v1/projects.roles/delete):
+  /// \[`projects.roles.delete()`\](https://cloud.google.com/iam/docs/reference/rest/v1/projects.roles/delete):
   /// `projects/{PROJECT_ID}/roles/{CUSTOM_ROLE_ID}`. This method deletes only
   /// [custom roles](https://cloud.google.com/iam/docs/understanding-custom-roles)
   /// that have been created at the project level. Example request URL:
   /// `https://iam.googleapis.com/v1/projects/{PROJECT_ID}/roles/{CUSTOM_ROLE_ID}`
   /// *
-  /// \[`organizations.roles.delete()`\](https://cloud.google.com/iam/reference/rest/v1/organizations.roles/delete):
+  /// \[`organizations.roles.delete()`\](https://cloud.google.com/iam/docs/reference/rest/v1/organizations.roles/delete):
   /// `organizations/{ORGANIZATION_ID}/roles/{CUSTOM_ROLE_ID}`. This method
   /// deletes only
   /// [custom roles](https://cloud.google.com/iam/docs/understanding-custom-roles)
@@ -3191,23 +3714,23 @@ class ProjectsRolesResource {
   ///
   /// [name] - The `name` parameter's value depends on the target resource for
   /// the request, namely
-  /// \[`roles`\](https://cloud.google.com/iam/reference/rest/v1/roles),
-  /// \[`projects`\](https://cloud.google.com/iam/reference/rest/v1/projects.roles),
+  /// \[`roles`\](https://cloud.google.com/iam/docs/reference/rest/v1/roles),
+  /// \[`projects`\](https://cloud.google.com/iam/docs/reference/rest/v1/projects.roles),
   /// or
-  /// \[`organizations`\](https://cloud.google.com/iam/reference/rest/v1/organizations.roles).
+  /// \[`organizations`\](https://cloud.google.com/iam/docs/reference/rest/v1/organizations.roles).
   /// Each resource type's `name` value format is described below: *
-  /// \[`roles.get()`\](https://cloud.google.com/iam/reference/rest/v1/roles/get):
+  /// \[`roles.get()`\](https://cloud.google.com/iam/docs/reference/rest/v1/roles/get):
   /// `roles/{ROLE_NAME}`. This method returns results from all
   /// [predefined roles](https://cloud.google.com/iam/docs/understanding-roles#predefined_roles)
-  /// in Cloud IAM. Example request URL:
+  /// in IAM. Example request URL:
   /// `https://iam.googleapis.com/v1/roles/{ROLE_NAME}` *
-  /// \[`projects.roles.get()`\](https://cloud.google.com/iam/reference/rest/v1/projects.roles/get):
+  /// \[`projects.roles.get()`\](https://cloud.google.com/iam/docs/reference/rest/v1/projects.roles/get):
   /// `projects/{PROJECT_ID}/roles/{CUSTOM_ROLE_ID}`. This method returns only
   /// [custom roles](https://cloud.google.com/iam/docs/understanding-custom-roles)
   /// that have been created at the project level. Example request URL:
   /// `https://iam.googleapis.com/v1/projects/{PROJECT_ID}/roles/{CUSTOM_ROLE_ID}`
   /// *
-  /// \[`organizations.roles.get()`\](https://cloud.google.com/iam/reference/rest/v1/organizations.roles/get):
+  /// \[`organizations.roles.get()`\](https://cloud.google.com/iam/docs/reference/rest/v1/organizations.roles/get):
   /// `organizations/{ORGANIZATION_ID}/roles/{CUSTOM_ROLE_ID}`. This method
   /// returns only
   /// [custom roles](https://cloud.google.com/iam/docs/understanding-custom-roles)
@@ -3252,22 +3775,22 @@ class ProjectsRolesResource {
   ///
   /// [parent] - The `parent` parameter's value depends on the target resource
   /// for the request, namely
-  /// \[`roles`\](https://cloud.google.com/iam/reference/rest/v1/roles),
-  /// \[`projects`\](https://cloud.google.com/iam/reference/rest/v1/projects.roles),
+  /// \[`roles`\](https://cloud.google.com/iam/docs/reference/rest/v1/roles),
+  /// \[`projects`\](https://cloud.google.com/iam/docs/reference/rest/v1/projects.roles),
   /// or
-  /// \[`organizations`\](https://cloud.google.com/iam/reference/rest/v1/organizations.roles).
+  /// \[`organizations`\](https://cloud.google.com/iam/docs/reference/rest/v1/organizations.roles).
   /// Each resource type's `parent` value format is described below: *
-  /// \[`roles.list()`\](https://cloud.google.com/iam/reference/rest/v1/roles/list):
+  /// \[`roles.list()`\](https://cloud.google.com/iam/docs/reference/rest/v1/roles/list):
   /// An empty string. This method doesn't require a resource; it simply returns
   /// all
   /// [predefined roles](https://cloud.google.com/iam/docs/understanding-roles#predefined_roles)
-  /// in Cloud IAM. Example request URL: `https://iam.googleapis.com/v1/roles` *
-  /// \[`projects.roles.list()`\](https://cloud.google.com/iam/reference/rest/v1/projects.roles/list):
+  /// in IAM. Example request URL: `https://iam.googleapis.com/v1/roles` *
+  /// \[`projects.roles.list()`\](https://cloud.google.com/iam/docs/reference/rest/v1/projects.roles/list):
   /// `projects/{PROJECT_ID}`. This method lists all project-level
   /// [custom roles](https://cloud.google.com/iam/docs/understanding-custom-roles).
   /// Example request URL:
   /// `https://iam.googleapis.com/v1/projects/{PROJECT_ID}/roles` *
-  /// \[`organizations.roles.list()`\](https://cloud.google.com/iam/reference/rest/v1/organizations.roles/list):
+  /// \[`organizations.roles.list()`\](https://cloud.google.com/iam/docs/reference/rest/v1/organizations.roles/list):
   /// `organizations/{ORGANIZATION_ID}`. This method lists all
   /// organization-level
   /// [custom roles](https://cloud.google.com/iam/docs/understanding-custom-roles).
@@ -3339,17 +3862,17 @@ class ProjectsRolesResource {
   ///
   /// [name] - The `name` parameter's value depends on the target resource for
   /// the request, namely
-  /// \[`projects`\](https://cloud.google.com/iam/reference/rest/v1/projects.roles)
+  /// \[`projects`\](https://cloud.google.com/iam/docs/reference/rest/v1/projects.roles)
   /// or
-  /// \[`organizations`\](https://cloud.google.com/iam/reference/rest/v1/organizations.roles).
+  /// \[`organizations`\](https://cloud.google.com/iam/docs/reference/rest/v1/organizations.roles).
   /// Each resource type's `name` value format is described below: *
-  /// \[`projects.roles.patch()`\](https://cloud.google.com/iam/reference/rest/v1/projects.roles/patch):
+  /// \[`projects.roles.patch()`\](https://cloud.google.com/iam/docs/reference/rest/v1/projects.roles/patch):
   /// `projects/{PROJECT_ID}/roles/{CUSTOM_ROLE_ID}`. This method updates only
   /// [custom roles](https://cloud.google.com/iam/docs/understanding-custom-roles)
   /// that have been created at the project level. Example request URL:
   /// `https://iam.googleapis.com/v1/projects/{PROJECT_ID}/roles/{CUSTOM_ROLE_ID}`
   /// *
-  /// \[`organizations.roles.patch()`\](https://cloud.google.com/iam/reference/rest/v1/organizations.roles/patch):
+  /// \[`organizations.roles.patch()`\](https://cloud.google.com/iam/docs/reference/rest/v1/organizations.roles/patch):
   /// `organizations/{ORGANIZATION_ID}/roles/{CUSTOM_ROLE_ID}`. This method
   /// updates only
   /// [custom roles](https://cloud.google.com/iam/docs/understanding-custom-roles)
@@ -3402,17 +3925,17 @@ class ProjectsRolesResource {
   ///
   /// [name] - The `name` parameter's value depends on the target resource for
   /// the request, namely
-  /// \[`projects`\](https://cloud.google.com/iam/reference/rest/v1/projects.roles)
+  /// \[`projects`\](https://cloud.google.com/iam/docs/reference/rest/v1/projects.roles)
   /// or
-  /// \[`organizations`\](https://cloud.google.com/iam/reference/rest/v1/organizations.roles).
+  /// \[`organizations`\](https://cloud.google.com/iam/docs/reference/rest/v1/organizations.roles).
   /// Each resource type's `name` value format is described below: *
-  /// \[`projects.roles.undelete()`\](https://cloud.google.com/iam/reference/rest/v1/projects.roles/undelete):
+  /// \[`projects.roles.undelete()`\](https://cloud.google.com/iam/docs/reference/rest/v1/projects.roles/undelete):
   /// `projects/{PROJECT_ID}/roles/{CUSTOM_ROLE_ID}`. This method undeletes only
   /// [custom roles](https://cloud.google.com/iam/docs/understanding-custom-roles)
   /// that have been created at the project level. Example request URL:
   /// `https://iam.googleapis.com/v1/projects/{PROJECT_ID}/roles/{CUSTOM_ROLE_ID}`
   /// *
-  /// \[`organizations.roles.undelete()`\](https://cloud.google.com/iam/reference/rest/v1/organizations.roles/undelete):
+  /// \[`organizations.roles.undelete()`\](https://cloud.google.com/iam/docs/reference/rest/v1/organizations.roles/undelete):
   /// `organizations/{ORGANIZATION_ID}/roles/{CUSTOM_ROLE_ID}`. This method
   /// undeletes only
   /// [custom roles](https://cloud.google.com/iam/docs/understanding-custom-roles)
@@ -4564,6 +5087,49 @@ class ProjectsServiceAccountsKeysResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Patches a ServiceAccountKey.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource name of the service account key in the following
+  /// format `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{key}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/serviceAccounts/\[^/\]+/keys/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ServiceAccountKey].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ServiceAccountKey> patch(
+    PatchServiceAccountKeyRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':patch';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return ServiceAccountKey.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Uploads the public key portion of a key pair that you manage, and
   /// associates the public key with a ServiceAccount.
   ///
@@ -4632,23 +5198,23 @@ class RolesResource {
   ///
   /// [name] - The `name` parameter's value depends on the target resource for
   /// the request, namely
-  /// \[`roles`\](https://cloud.google.com/iam/reference/rest/v1/roles),
-  /// \[`projects`\](https://cloud.google.com/iam/reference/rest/v1/projects.roles),
+  /// \[`roles`\](https://cloud.google.com/iam/docs/reference/rest/v1/roles),
+  /// \[`projects`\](https://cloud.google.com/iam/docs/reference/rest/v1/projects.roles),
   /// or
-  /// \[`organizations`\](https://cloud.google.com/iam/reference/rest/v1/organizations.roles).
+  /// \[`organizations`\](https://cloud.google.com/iam/docs/reference/rest/v1/organizations.roles).
   /// Each resource type's `name` value format is described below: *
-  /// \[`roles.get()`\](https://cloud.google.com/iam/reference/rest/v1/roles/get):
+  /// \[`roles.get()`\](https://cloud.google.com/iam/docs/reference/rest/v1/roles/get):
   /// `roles/{ROLE_NAME}`. This method returns results from all
   /// [predefined roles](https://cloud.google.com/iam/docs/understanding-roles#predefined_roles)
-  /// in Cloud IAM. Example request URL:
+  /// in IAM. Example request URL:
   /// `https://iam.googleapis.com/v1/roles/{ROLE_NAME}` *
-  /// \[`projects.roles.get()`\](https://cloud.google.com/iam/reference/rest/v1/projects.roles/get):
+  /// \[`projects.roles.get()`\](https://cloud.google.com/iam/docs/reference/rest/v1/projects.roles/get):
   /// `projects/{PROJECT_ID}/roles/{CUSTOM_ROLE_ID}`. This method returns only
   /// [custom roles](https://cloud.google.com/iam/docs/understanding-custom-roles)
   /// that have been created at the project level. Example request URL:
   /// `https://iam.googleapis.com/v1/projects/{PROJECT_ID}/roles/{CUSTOM_ROLE_ID}`
   /// *
-  /// \[`organizations.roles.get()`\](https://cloud.google.com/iam/reference/rest/v1/organizations.roles/get):
+  /// \[`organizations.roles.get()`\](https://cloud.google.com/iam/docs/reference/rest/v1/organizations.roles/get):
   /// `organizations/{ORGANIZATION_ID}/roles/{CUSTOM_ROLE_ID}`. This method
   /// returns only
   /// [custom roles](https://cloud.google.com/iam/docs/understanding-custom-roles)
@@ -4699,22 +5265,22 @@ class RolesResource {
   ///
   /// [parent] - The `parent` parameter's value depends on the target resource
   /// for the request, namely
-  /// \[`roles`\](https://cloud.google.com/iam/reference/rest/v1/roles),
-  /// \[`projects`\](https://cloud.google.com/iam/reference/rest/v1/projects.roles),
+  /// \[`roles`\](https://cloud.google.com/iam/docs/reference/rest/v1/roles),
+  /// \[`projects`\](https://cloud.google.com/iam/docs/reference/rest/v1/projects.roles),
   /// or
-  /// \[`organizations`\](https://cloud.google.com/iam/reference/rest/v1/organizations.roles).
+  /// \[`organizations`\](https://cloud.google.com/iam/docs/reference/rest/v1/organizations.roles).
   /// Each resource type's `parent` value format is described below: *
-  /// \[`roles.list()`\](https://cloud.google.com/iam/reference/rest/v1/roles/list):
+  /// \[`roles.list()`\](https://cloud.google.com/iam/docs/reference/rest/v1/roles/list):
   /// An empty string. This method doesn't require a resource; it simply returns
   /// all
   /// [predefined roles](https://cloud.google.com/iam/docs/understanding-roles#predefined_roles)
-  /// in Cloud IAM. Example request URL: `https://iam.googleapis.com/v1/roles` *
-  /// \[`projects.roles.list()`\](https://cloud.google.com/iam/reference/rest/v1/projects.roles/list):
+  /// in IAM. Example request URL: `https://iam.googleapis.com/v1/roles` *
+  /// \[`projects.roles.list()`\](https://cloud.google.com/iam/docs/reference/rest/v1/projects.roles/list):
   /// `projects/{PROJECT_ID}`. This method lists all project-level
   /// [custom roles](https://cloud.google.com/iam/docs/understanding-custom-roles).
   /// Example request URL:
   /// `https://iam.googleapis.com/v1/projects/{PROJECT_ID}/roles` *
-  /// \[`organizations.roles.list()`\](https://cloud.google.com/iam/reference/rest/v1/organizations.roles/list):
+  /// \[`organizations.roles.list()`\](https://cloud.google.com/iam/docs/reference/rest/v1/organizations.roles/list):
   /// `organizations/{ORGANIZATION_ID}`. This method lists all
   /// organization-level
   /// [custom roles](https://cloud.google.com/iam/docs/understanding-custom-roles).
@@ -4920,7 +5486,7 @@ typedef AuditLogConfig = $AuditLogConfig;
 class AuditableService {
   /// Public name of the service.
   ///
-  /// For example, the service name for Cloud IAM is 'iam.googleapis.com'.
+  /// For example, the service name for IAM is 'iam.googleapis.com'.
   core.String? name;
 
   AuditableService({
@@ -5187,7 +5753,57 @@ class CreateServiceAccountRequest {
 }
 
 /// The service account key disable request.
-typedef DisableServiceAccountKeyRequest = $Empty;
+class DisableServiceAccountKeyRequest {
+  /// Usable by internal google services only.
+  ///
+  /// An extended_status_message can be used to include additional information
+  /// about the key, such as its private key data being exposed on a public
+  /// repository like GitHub.
+  ///
+  /// Optional.
+  core.String? extendedStatusMessage;
+
+  /// Describes the reason this key is being disabled.
+  ///
+  /// If unspecified, the default value of
+  /// SERVICE_ACCOUNT_KEY_DISABLE_REASON_USER_INITIATED will be used.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "SERVICE_ACCOUNT_KEY_DISABLE_REASON_UNSPECIFIED" : Unspecified disable
+  /// reason
+  /// - "SERVICE_ACCOUNT_KEY_DISABLE_REASON_USER_INITIATED" : Disabled by the
+  /// user
+  /// - "SERVICE_ACCOUNT_KEY_DISABLE_REASON_EXPOSED" : Google detected this
+  /// Service Account external key's private key data as exposed, typically in a
+  /// public repository on GitHub or similar.
+  /// - "SERVICE_ACCOUNT_KEY_DISABLE_REASON_COMPROMISE_DETECTED" : This service
+  /// account external key was detected as compromised and used by an attacker.
+  core.String? serviceAccountKeyDisableReason;
+
+  DisableServiceAccountKeyRequest({
+    this.extendedStatusMessage,
+    this.serviceAccountKeyDisableReason,
+  });
+
+  DisableServiceAccountKeyRequest.fromJson(core.Map json_)
+      : this(
+          extendedStatusMessage: json_.containsKey('extendedStatusMessage')
+              ? json_['extendedStatusMessage'] as core.String
+              : null,
+          serviceAccountKeyDisableReason:
+              json_.containsKey('serviceAccountKeyDisableReason')
+                  ? json_['serviceAccountKeyDisableReason'] as core.String
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (extendedStatusMessage != null)
+          'extendedStatusMessage': extendedStatusMessage!,
+        if (serviceAccountKeyDisableReason != null)
+          'serviceAccountKeyDisableReason': serviceAccountKeyDisableReason!,
+      };
+}
 
 /// The service account disable request.
 typedef DisableServiceAccountRequest = $Empty;
@@ -5226,6 +5842,44 @@ typedef EnableServiceAccountRequest = $Empty;
 /// information.
 typedef Expr = $Expr;
 
+/// Extended status can store additional metadata.
+///
+/// For example, for keys disabled due to their private key data being expoesed
+/// we may include a message with more information about the exposure.
+class ExtendedStatus {
+  /// The key for this extended status.
+  /// Possible string values are:
+  /// - "SERVICE_ACCOUNT_KEY_EXTENDED_STATUS_KEY_UNSPECIFIED" : Unspecified
+  /// extended status, should not be used.
+  /// - "SERVICE_ACCOUNT_KEY_EXTENDED_STATUS_KEY_EXPOSED" : This key has been
+  /// detected as exposed. extended_status_value may contain information about
+  /// the exposure (public GitHub repo, open internet, etc.)
+  /// - "SERVICE_ACCOUNT_KEY_EXTENDED_STATUS_KEY_COMPROMISE_DETECTED" : This key
+  /// was implicated in a compromise or other attack. extended_status_value may
+  /// contain information about the abuse perpetrated.
+  core.String? key;
+
+  /// The value for the extended status.
+  core.String? value;
+
+  ExtendedStatus({
+    this.key,
+    this.value,
+  });
+
+  ExtendedStatus.fromJson(core.Map json_)
+      : this(
+          key: json_.containsKey('key') ? json_['key'] as core.String : null,
+          value:
+              json_.containsKey('value') ? json_['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (key != null) 'key': key!,
+        if (value != null) 'value': value!,
+      };
+}
+
 /// Request message for `GetIamPolicy` method.
 class GetIamPolicyRequest {
   /// OPTIONAL: A `GetPolicyOptions` object for specifying options to
@@ -5250,7 +5904,129 @@ class GetIamPolicyRequest {
 }
 
 /// Encapsulates settings provided to GetIamPolicy.
-typedef GetPolicyOptions = $GetPolicyOptions;
+typedef GetPolicyOptions = $GetPolicyOptions00;
+
+/// Represents the OAuth 2.0 client credential configuration for retrieving
+/// additional user attributes that are not present in the initial
+/// authentication credentials from the identity provider, e.g. groups.
+///
+/// See https://datatracker.ietf.org/doc/html/rfc6749#section-4.4 for more
+/// details on client credentials grant flow.
+class GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2Client {
+  /// Represents the IdP and type of claims that should be fetched.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "ATTRIBUTES_TYPE_UNSPECIFIED" : No AttributesType specified.
+  /// - "AZURE_AD_GROUPS_MAIL" : Used to get the user's group claims from the
+  /// Azure AD identity provider using configuration provided in
+  /// ExtraAttributesOAuth2Client and `mail` property of the
+  /// `microsoft.graph.group` object is used for claim mapping. See
+  /// https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties
+  /// for more details on `microsoft.graph.group` properties. The attributes
+  /// obtained from idntity provider are mapped to `assertion.groups`.
+  core.String? attributesType;
+
+  /// The OAuth 2.0 client ID for retrieving extra attributes from the identity
+  /// provider.
+  ///
+  /// Required to get the Access Token using client credentials grant flow.
+  ///
+  /// Required.
+  core.String? clientId;
+
+  /// The OAuth 2.0 client secret for retrieving extra attributes from the
+  /// identity provider.
+  ///
+  /// Required to get the Access Token using client credentials grant flow.
+  ///
+  /// Required.
+  GoogleIamAdminV1WorkforcePoolProviderOidcClientSecret? clientSecret;
+
+  /// The OIDC identity provider's issuer URI.
+  ///
+  /// Must be a valid URI using the `https` scheme. Required to get the OIDC
+  /// discovery document.
+  ///
+  /// Required.
+  core.String? issuerUri;
+
+  /// Represents the parameters to control which claims are fetched from an IdP.
+  ///
+  /// Optional.
+  GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2ClientQueryParameters?
+      queryParameters;
+
+  GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2Client({
+    this.attributesType,
+    this.clientId,
+    this.clientSecret,
+    this.issuerUri,
+    this.queryParameters,
+  });
+
+  GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2Client.fromJson(
+      core.Map json_)
+      : this(
+          attributesType: json_.containsKey('attributesType')
+              ? json_['attributesType'] as core.String
+              : null,
+          clientId: json_.containsKey('clientId')
+              ? json_['clientId'] as core.String
+              : null,
+          clientSecret: json_.containsKey('clientSecret')
+              ? GoogleIamAdminV1WorkforcePoolProviderOidcClientSecret.fromJson(
+                  json_['clientSecret'] as core.Map<core.String, core.dynamic>)
+              : null,
+          issuerUri: json_.containsKey('issuerUri')
+              ? json_['issuerUri'] as core.String
+              : null,
+          queryParameters: json_.containsKey('queryParameters')
+              ? GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2ClientQueryParameters
+                  .fromJson(json_['queryParameters']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (attributesType != null) 'attributesType': attributesType!,
+        if (clientId != null) 'clientId': clientId!,
+        if (clientSecret != null) 'clientSecret': clientSecret!,
+        if (issuerUri != null) 'issuerUri': issuerUri!,
+        if (queryParameters != null) 'queryParameters': queryParameters!,
+      };
+}
+
+/// Represents the parameters to control which claims are fetched from an IdP.
+class GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2ClientQueryParameters {
+  /// The filter used to request specific records from IdP.
+  ///
+  /// In case of attributes type as AZURE_AD_GROUPS_MAIL, it represents the
+  /// filter used to request specific groups for users from IdP. By default, all
+  /// of the groups associated with the user are fetched. The groups should be
+  /// mail enabled and security enabled. See
+  /// https://learn.microsoft.com/en-us/graph/search-query-parameter for more
+  /// details.
+  ///
+  /// Optional.
+  core.String? filter;
+
+  GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2ClientQueryParameters({
+    this.filter,
+  });
+
+  GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2ClientQueryParameters.fromJson(
+      core.Map json_)
+      : this(
+          filter: json_.containsKey('filter')
+              ? json_['filter'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (filter != null) 'filter': filter!,
+      };
+}
 
 /// Represents an OpenId Connect 1.0 identity provider.
 class GoogleIamAdminV1WorkforcePoolProviderOidc {
@@ -5268,7 +6044,7 @@ class GoogleIamAdminV1WorkforcePoolProviderOidc {
 
   /// The OIDC issuer URI.
   ///
-  /// Must be a valid URI using the 'https' scheme.
+  /// Must be a valid URI using the `https` scheme.
   ///
   /// Required.
   core.String? issuerUri;
@@ -5572,7 +6348,7 @@ class KeyData {
       };
 }
 
-/// The request to lint a Cloud IAM policy object.
+/// The request to lint an IAM policy object.
 class LintPolicyRequest {
   /// google.iam.v1.Binding.condition object to be linted.
   Expr? condition;
@@ -5580,7 +6356,7 @@ class LintPolicyRequest {
   /// The full resource name of the policy this lint request is about.
   ///
   /// The name follows the Google Cloud format for full resource names. For
-  /// example, a Cloud project with ID `my-project` will be named
+  /// example, a Google Cloud project with ID `my-project` will be named
   /// `//cloudresourcemanager.googleapis.com/projects/my-project`. The resource
   /// name is not used to read a policy from IAM. Only the data in the request
   /// object is linted.
@@ -5728,6 +6504,67 @@ class LintResult {
         if (severity != null) 'severity': severity!,
         if (validationUnitName != null)
           'validationUnitName': validationUnitName!,
+      };
+}
+
+/// Response message for ListOauthClientCredentials.
+class ListOauthClientCredentialsResponse {
+  /// A list of oauth client credentials.
+  core.List<OauthClientCredential>? oauthClientCredentials;
+
+  ListOauthClientCredentialsResponse({
+    this.oauthClientCredentials,
+  });
+
+  ListOauthClientCredentialsResponse.fromJson(core.Map json_)
+      : this(
+          oauthClientCredentials: json_.containsKey('oauthClientCredentials')
+              ? (json_['oauthClientCredentials'] as core.List)
+                  .map((value) => OauthClientCredential.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (oauthClientCredentials != null)
+          'oauthClientCredentials': oauthClientCredentials!,
+      };
+}
+
+/// Response message for ListOauthClients.
+class ListOauthClientsResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  ///
+  /// Optional.
+  core.String? nextPageToken;
+
+  /// A list of oauth clients.
+  core.List<OauthClient>? oauthClients;
+
+  ListOauthClientsResponse({
+    this.nextPageToken,
+    this.oauthClients,
+  });
+
+  ListOauthClientsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          oauthClients: json_.containsKey('oauthClients')
+              ? (json_['oauthClients'] as core.List)
+                  .map((value) => OauthClient.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (oauthClients != null) 'oauthClients': oauthClients!,
       };
 }
 
@@ -6033,6 +6870,225 @@ class ListWorkloadIdentityPoolsResponse {
       };
 }
 
+/// Represents an oauth client.
+///
+/// Used to access Google Cloud resources on behave of a user by using OAuth2
+/// Protocol to obtain an access token from Google Cloud Platform.
+class OauthClient {
+  /// The list of OAuth grant type is allowed for the oauth client.
+  ///
+  /// Required.
+  core.List<core.String>? allowedGrantTypes;
+
+  /// The list of redirect uris that is allowed to redirect back when
+  /// authorization process is completed.
+  ///
+  /// Required.
+  core.List<core.String>? allowedRedirectUris;
+
+  /// The list of scopes that the oauth client is allowed to request during
+  /// OAuth flows.
+  ///
+  /// The following scopes are supported: *
+  /// `https://www.googleapis.com/auth/cloud-platform`: See, edit, configure,
+  /// and delete your Google Cloud data and see the email address for your
+  /// Google Account. * `openid`: Associate you with your personal info on
+  /// Google Cloud. * `email`: See your Google Cloud Account email address.
+  ///
+  /// Required.
+  core.List<core.String>? allowedScopes;
+
+  /// The system-generated oauth client id.
+  ///
+  /// Output only.
+  core.String? clientId;
+
+  /// The type of oauth client.
+  ///
+  /// either public or private.
+  ///
+  /// Immutable.
+  /// Possible string values are:
+  /// - "CLIENT_TYPE_UNSPECIFIED" : should not be used
+  /// - "PUBLIC_CLIENT" : public client has no secret
+  /// - "CONFIDENTIAL_CLIENT" : private client
+  core.String? clientType;
+
+  /// A user-specified description of the oauth client.
+  ///
+  /// Cannot exceed 256 characters.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// Whether the oauth client is disabled.
+  ///
+  /// You cannot use a disabled oauth client for login.
+  ///
+  /// Optional.
+  core.bool? disabled;
+
+  /// A user-specified display name of the oauth client.
+  ///
+  /// Cannot exceed 32 characters.
+  ///
+  /// Optional.
+  core.String? displayName;
+
+  /// Time after which the oauth client will be permanently purged and cannot be
+  /// recovered.
+  ///
+  /// Output only.
+  core.String? expireTime;
+
+  /// The resource name of the oauth client.
+  ///
+  /// Format:`projects/{project}/locations/{location}/oauthClients/{oauth_client}`.
+  ///
+  /// Immutable.
+  core.String? name;
+
+  /// The state of the oauth client.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "ACTIVE" : The oauth client is active.
+  /// - "DELETED" : The oauth client is soft-deleted. Soft-deleted oauth client
+  /// is permanently deleted after approximately 30 days unless restored via
+  /// UndeleteOauthClient.
+  core.String? state;
+
+  OauthClient({
+    this.allowedGrantTypes,
+    this.allowedRedirectUris,
+    this.allowedScopes,
+    this.clientId,
+    this.clientType,
+    this.description,
+    this.disabled,
+    this.displayName,
+    this.expireTime,
+    this.name,
+    this.state,
+  });
+
+  OauthClient.fromJson(core.Map json_)
+      : this(
+          allowedGrantTypes: json_.containsKey('allowedGrantTypes')
+              ? (json_['allowedGrantTypes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          allowedRedirectUris: json_.containsKey('allowedRedirectUris')
+              ? (json_['allowedRedirectUris'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          allowedScopes: json_.containsKey('allowedScopes')
+              ? (json_['allowedScopes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          clientId: json_.containsKey('clientId')
+              ? json_['clientId'] as core.String
+              : null,
+          clientType: json_.containsKey('clientType')
+              ? json_['clientType'] as core.String
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          disabled: json_.containsKey('disabled')
+              ? json_['disabled'] as core.bool
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          expireTime: json_.containsKey('expireTime')
+              ? json_['expireTime'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (allowedGrantTypes != null) 'allowedGrantTypes': allowedGrantTypes!,
+        if (allowedRedirectUris != null)
+          'allowedRedirectUris': allowedRedirectUris!,
+        if (allowedScopes != null) 'allowedScopes': allowedScopes!,
+        if (clientId != null) 'clientId': clientId!,
+        if (clientType != null) 'clientType': clientType!,
+        if (description != null) 'description': description!,
+        if (disabled != null) 'disabled': disabled!,
+        if (displayName != null) 'displayName': displayName!,
+        if (expireTime != null) 'expireTime': expireTime!,
+        if (name != null) 'name': name!,
+        if (state != null) 'state': state!,
+      };
+}
+
+/// Represents an oauth client credential.
+///
+/// Used to authenticate an oauth client while accessing Google Cloud resources
+/// on behalf of a user by using OAuth2 Protocol.
+class OauthClientCredential {
+  /// The system-generated oauth client secret.
+  ///
+  /// Output only.
+  core.String? clientSecret;
+
+  /// Whether the oauth client credential is disabled.
+  ///
+  /// You cannot use a disabled oauth client credential for OAuth.
+  ///
+  /// Optional.
+  core.bool? disabled;
+
+  /// A user-specified display name of the oauth client credential Cannot exceed
+  /// 32 characters.
+  ///
+  /// Optional.
+  core.String? displayName;
+
+  /// The resource name of the oauth client credential.
+  ///
+  /// Format:
+  /// `projects/{project}/locations/{location}/oauthClients/{oauth_client}/credentials/{credential}`
+  ///
+  /// Immutable.
+  core.String? name;
+
+  OauthClientCredential({
+    this.clientSecret,
+    this.disabled,
+    this.displayName,
+    this.name,
+  });
+
+  OauthClientCredential.fromJson(core.Map json_)
+      : this(
+          clientSecret: json_.containsKey('clientSecret')
+              ? json_['clientSecret'] as core.String
+              : null,
+          disabled: json_.containsKey('disabled')
+              ? json_['disabled'] as core.bool
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (clientSecret != null) 'clientSecret': clientSecret!,
+        if (disabled != null) 'disabled': disabled!,
+        if (displayName != null) 'displayName': displayName!,
+        if (name != null) 'name': name!,
+      };
+}
+
 /// Represents an OpenId Connect 1.0 identity provider.
 class Oidc {
   /// Acceptable values for the `aud` field (audience) in the OIDC token.
@@ -6169,6 +7225,43 @@ class Operation {
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (response != null) 'response': response!,
+      };
+}
+
+/// The service account key patch request.
+class PatchServiceAccountKeyRequest {
+  /// The service account key to update.
+  ///
+  /// Required.
+  ServiceAccountKey? serviceAccountKey;
+
+  /// The update mask to apply to the service account key.
+  ///
+  /// Only the following fields are eligible for patching: - contact -
+  /// description
+  ///
+  /// Required.
+  core.String? updateMask;
+
+  PatchServiceAccountKeyRequest({
+    this.serviceAccountKey,
+    this.updateMask,
+  });
+
+  PatchServiceAccountKeyRequest.fromJson(core.Map json_)
+      : this(
+          serviceAccountKey: json_.containsKey('serviceAccountKey')
+              ? ServiceAccountKey.fromJson(json_['serviceAccountKey']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          updateMask: json_.containsKey('updateMask')
+              ? json_['updateMask'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (serviceAccountKey != null) 'serviceAccountKey': serviceAccountKey!,
+        if (updateMask != null) 'updateMask': updateMask!,
       };
 }
 
@@ -6925,8 +8018,55 @@ class ServiceAccount {
 /// used for signing. Public keys for all service accounts are also published at
 /// the OAuth2 Service Account API.
 class ServiceAccountKey {
+  /// A user provided email address as the point of contact for this service
+  /// account key.
+  ///
+  /// Must be an email address. Limit 64 characters.
+  ///
+  /// Optional.
+  core.String? contact;
+
+  /// The cloud identity that created this service account key.
+  ///
+  /// Populated automatically when the key is created and not editable by the
+  /// user.
+  ///
+  /// Output only.
+  core.String? creator;
+
+  /// A user provided description of this service account key.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// If the key is disabled, it may have a DisableReason describing why it was
+  /// disabled.
+  ///
+  /// Output only. Optional.
+  /// Possible string values are:
+  /// - "SERVICE_ACCOUNT_KEY_DISABLE_REASON_UNSPECIFIED" : Unspecified disable
+  /// reason
+  /// - "SERVICE_ACCOUNT_KEY_DISABLE_REASON_USER_INITIATED" : Disabled by the
+  /// user
+  /// - "SERVICE_ACCOUNT_KEY_DISABLE_REASON_EXPOSED" : Google detected this
+  /// Service Account external key's private key data as exposed, typically in a
+  /// public repository on GitHub or similar.
+  /// - "SERVICE_ACCOUNT_KEY_DISABLE_REASON_COMPROMISE_DETECTED" : This service
+  /// account external key was detected as compromised and used by an attacker.
+  core.String? disableReason;
+
   /// The key status.
   core.bool? disabled;
+
+  /// Extended Status provides permanent information about a service account
+  /// key.
+  ///
+  /// For example, if this key was detected as exposed or compromised, that
+  /// information will remain for the lifetime of the key in the
+  /// extended_status.
+  ///
+  /// Output only.
+  core.List<ExtendedStatus>? extendedStatus;
 
   /// Specifies the algorithm (and possibly key size) for the key.
   /// Possible string values are:
@@ -7008,7 +8148,12 @@ class ServiceAccountKey {
   core.String? validBeforeTime;
 
   ServiceAccountKey({
+    this.contact,
+    this.creator,
+    this.description,
+    this.disableReason,
     this.disabled,
+    this.extendedStatus,
     this.keyAlgorithm,
     this.keyOrigin,
     this.keyType,
@@ -7022,8 +8167,26 @@ class ServiceAccountKey {
 
   ServiceAccountKey.fromJson(core.Map json_)
       : this(
+          contact: json_.containsKey('contact')
+              ? json_['contact'] as core.String
+              : null,
+          creator: json_.containsKey('creator')
+              ? json_['creator'] as core.String
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          disableReason: json_.containsKey('disableReason')
+              ? json_['disableReason'] as core.String
+              : null,
           disabled: json_.containsKey('disabled')
               ? json_['disabled'] as core.bool
+              : null,
+          extendedStatus: json_.containsKey('extendedStatus')
+              ? (json_['extendedStatus'] as core.List)
+                  .map((value) => ExtendedStatus.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
               : null,
           keyAlgorithm: json_.containsKey('keyAlgorithm')
               ? json_['keyAlgorithm'] as core.String
@@ -7053,7 +8216,12 @@ class ServiceAccountKey {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (contact != null) 'contact': contact!,
+        if (creator != null) 'creator': creator!,
+        if (description != null) 'description': description!,
+        if (disableReason != null) 'disableReason': disableReason!,
         if (disabled != null) 'disabled': disabled!,
+        if (extendedStatus != null) 'extendedStatus': extendedStatus!,
         if (keyAlgorithm != null) 'keyAlgorithm': keyAlgorithm!,
         if (keyOrigin != null) 'keyOrigin': keyOrigin!,
         if (keyType != null) 'keyType': keyType!,
@@ -7317,6 +8485,9 @@ typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;
+
+/// Request message for UndeleteOauthClient.
+typedef UndeleteOauthClientRequest = $Empty;
 
 /// The request to undelete an existing role.
 class UndeleteRoleRequest {
@@ -7642,6 +8813,17 @@ class WorkforcePoolProvider {
   /// Output only.
   core.String? expireTime;
 
+  /// The configuration for OAuth 2.0 client used to get the additional user
+  /// attributes.
+  ///
+  /// This should be used when users can't get the desired claims in
+  /// authentication credentials. Currently this configuration is only supported
+  /// with OIDC protocol.
+  ///
+  /// Optional.
+  GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2Client?
+      extraAttributesOauth2Client;
+
   /// The resource name of the provider.
   ///
   /// Format:
@@ -7675,6 +8857,7 @@ class WorkforcePoolProvider {
     this.disabled,
     this.displayName,
     this.expireTime,
+    this.extraAttributesOauth2Client,
     this.name,
     this.oidc,
     this.saml,
@@ -7708,6 +8891,12 @@ class WorkforcePoolProvider {
           expireTime: json_.containsKey('expireTime')
               ? json_['expireTime'] as core.String
               : null,
+          extraAttributesOauth2Client: json_
+                  .containsKey('extraAttributesOauth2Client')
+              ? GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2Client
+                  .fromJson(json_['extraAttributesOauth2Client']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           oidc: json_.containsKey('oidc')
               ? GoogleIamAdminV1WorkforcePoolProviderOidc.fromJson(
@@ -7729,6 +8918,8 @@ class WorkforcePoolProvider {
         if (disabled != null) 'disabled': disabled!,
         if (displayName != null) 'displayName': displayName!,
         if (expireTime != null) 'expireTime': expireTime!,
+        if (extraAttributesOauth2Client != null)
+          'extraAttributesOauth2Client': extraAttributesOauth2Client!,
         if (name != null) 'name': name!,
         if (oidc != null) 'oidc': oidc!,
         if (saml != null) 'saml': saml!,
@@ -8010,9 +9201,6 @@ class WorkloadIdentityPoolProvider {
   /// deleted.
   core.String? state;
 
-  /// An X.509-type identity provider.
-  X509? x509;
-
   WorkloadIdentityPoolProvider({
     this.attributeCondition,
     this.attributeMapping,
@@ -8025,7 +9213,6 @@ class WorkloadIdentityPoolProvider {
     this.oidc,
     this.saml,
     this.state,
-    this.x509,
   });
 
   WorkloadIdentityPoolProvider.fromJson(core.Map json_)
@@ -8070,10 +9257,6 @@ class WorkloadIdentityPoolProvider {
               : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
-          x509: json_.containsKey('x509')
-              ? X509.fromJson(
-                  json_['x509'] as core.Map<core.String, core.dynamic>)
-              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8089,7 +9272,6 @@ class WorkloadIdentityPoolProvider {
         if (oidc != null) 'oidc': oidc!,
         if (saml != null) 'saml': saml!,
         if (state != null) 'state': state!,
-        if (x509 != null) 'x509': x509!,
       };
 }
 
@@ -8170,9 +9352,3 @@ class WorkloadIdentityPoolProviderKey {
         if (use != null) 'use': use!,
       };
 }
-
-/// An X.509-type identity provider represents a CA.
-///
-/// It is trusted to assert a client identity if the client has a certificate
-/// that chains up to this CA.
-typedef X509 = $Empty;

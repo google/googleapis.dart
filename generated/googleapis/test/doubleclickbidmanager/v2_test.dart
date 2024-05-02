@@ -24,46 +24,6 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<api.Rule> buildUnnamed0() => [
-      buildRule(),
-      buildRule(),
-    ];
-
-void checkUnnamed0(core.List<api.Rule> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkRule(o[0]);
-  checkRule(o[1]);
-}
-
-core.int buildCounterChannelGrouping = 0;
-api.ChannelGrouping buildChannelGrouping() {
-  final o = api.ChannelGrouping();
-  buildCounterChannelGrouping++;
-  if (buildCounterChannelGrouping < 3) {
-    o.fallbackName = 'foo';
-    o.name = 'foo';
-    o.rules = buildUnnamed0();
-  }
-  buildCounterChannelGrouping--;
-  return o;
-}
-
-void checkChannelGrouping(api.ChannelGrouping o) {
-  buildCounterChannelGrouping++;
-  if (buildCounterChannelGrouping < 3) {
-    unittest.expect(
-      o.fallbackName!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.name!,
-      unittest.equals('foo'),
-    );
-    checkUnnamed0(o.rules!);
-  }
-  buildCounterChannelGrouping--;
-}
-
 core.int buildCounterDataRange = 0;
 api.DataRange buildDataRange() {
   final o = api.DataRange();
@@ -122,55 +82,6 @@ void checkDate(api.Date o) {
   buildCounterDate--;
 }
 
-core.List<api.EventFilter> buildUnnamed1() => [
-      buildEventFilter(),
-      buildEventFilter(),
-    ];
-
-void checkUnnamed1(core.List<api.EventFilter> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkEventFilter(o[0]);
-  checkEventFilter(o[1]);
-}
-
-core.int buildCounterDisjunctiveMatchStatement = 0;
-api.DisjunctiveMatchStatement buildDisjunctiveMatchStatement() {
-  final o = api.DisjunctiveMatchStatement();
-  buildCounterDisjunctiveMatchStatement++;
-  if (buildCounterDisjunctiveMatchStatement < 3) {
-    o.eventFilters = buildUnnamed1();
-  }
-  buildCounterDisjunctiveMatchStatement--;
-  return o;
-}
-
-void checkDisjunctiveMatchStatement(api.DisjunctiveMatchStatement o) {
-  buildCounterDisjunctiveMatchStatement++;
-  if (buildCounterDisjunctiveMatchStatement < 3) {
-    checkUnnamed1(o.eventFilters!);
-  }
-  buildCounterDisjunctiveMatchStatement--;
-}
-
-core.int buildCounterEventFilter = 0;
-api.EventFilter buildEventFilter() {
-  final o = api.EventFilter();
-  buildCounterEventFilter++;
-  if (buildCounterEventFilter < 3) {
-    o.dimensionFilter = buildPathQueryOptionsFilter();
-  }
-  buildCounterEventFilter--;
-  return o;
-}
-
-void checkEventFilter(api.EventFilter o) {
-  buildCounterEventFilter++;
-  if (buildCounterEventFilter < 3) {
-    checkPathQueryOptionsFilter(o.dimensionFilter!);
-  }
-  buildCounterEventFilter--;
-}
-
 core.int buildCounterFilterPair = 0;
 api.FilterPair buildFilterPair() {
   final o = api.FilterPair();
@@ -198,12 +109,12 @@ void checkFilterPair(api.FilterPair o) {
   buildCounterFilterPair--;
 }
 
-core.List<api.Query> buildUnnamed2() => [
+core.List<api.Query> buildUnnamed0() => [
       buildQuery(),
       buildQuery(),
     ];
 
-void checkUnnamed2(core.List<api.Query> o) {
+void checkUnnamed0(core.List<api.Query> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkQuery(o[0]);
   checkQuery(o[1]);
@@ -215,7 +126,7 @@ api.ListQueriesResponse buildListQueriesResponse() {
   buildCounterListQueriesResponse++;
   if (buildCounterListQueriesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.queries = buildUnnamed2();
+    o.queries = buildUnnamed0();
   }
   buildCounterListQueriesResponse--;
   return o;
@@ -228,17 +139,17 @@ void checkListQueriesResponse(api.ListQueriesResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed2(o.queries!);
+    checkUnnamed0(o.queries!);
   }
   buildCounterListQueriesResponse--;
 }
 
-core.List<api.Report> buildUnnamed3() => [
+core.List<api.Report> buildUnnamed1() => [
       buildReport(),
       buildReport(),
     ];
 
-void checkUnnamed3(core.List<api.Report> o) {
+void checkUnnamed1(core.List<api.Report> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReport(o[0]);
   checkReport(o[1]);
@@ -250,7 +161,7 @@ api.ListReportsResponse buildListReportsResponse() {
   buildCounterListReportsResponse++;
   if (buildCounterListReportsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.reports = buildUnnamed3();
+    o.reports = buildUnnamed1();
   }
   buildCounterListReportsResponse--;
   return o;
@@ -263,7 +174,7 @@ void checkListReportsResponse(api.ListReportsResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed3(o.reports!);
+    checkUnnamed1(o.reports!);
   }
   buildCounterListReportsResponse--;
 }
@@ -274,7 +185,6 @@ api.Options buildOptions() {
   buildCounterOptions++;
   if (buildCounterOptions < 3) {
     o.includeOnlyTargetedUserLists = true;
-    o.pathQueryOptions = buildPathQueryOptions();
   }
   buildCounterOptions--;
   return o;
@@ -284,28 +194,27 @@ void checkOptions(api.Options o) {
   buildCounterOptions++;
   if (buildCounterOptions < 3) {
     unittest.expect(o.includeOnlyTargetedUserLists!, unittest.isTrue);
-    checkPathQueryOptions(o.pathQueryOptions!);
   }
   buildCounterOptions--;
 }
 
-core.List<api.FilterPair> buildUnnamed4() => [
+core.List<api.FilterPair> buildUnnamed2() => [
       buildFilterPair(),
       buildFilterPair(),
     ];
 
-void checkUnnamed4(core.List<api.FilterPair> o) {
+void checkUnnamed2(core.List<api.FilterPair> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFilterPair(o[0]);
   checkFilterPair(o[1]);
 }
 
-core.List<core.String> buildUnnamed5() => [
+core.List<core.String> buildUnnamed3() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed5(core.List<core.String> o) {
+void checkUnnamed3(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -317,12 +226,12 @@ void checkUnnamed5(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed6() => [
+core.List<core.String> buildUnnamed4() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed6(core.List<core.String> o) {
+void checkUnnamed4(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -339,9 +248,9 @@ api.Parameters buildParameters() {
   final o = api.Parameters();
   buildCounterParameters++;
   if (buildCounterParameters < 3) {
-    o.filters = buildUnnamed4();
-    o.groupBys = buildUnnamed5();
-    o.metrics = buildUnnamed6();
+    o.filters = buildUnnamed2();
+    o.groupBys = buildUnnamed3();
+    o.metrics = buildUnnamed4();
     o.options = buildOptions();
     o.type = 'foo';
   }
@@ -352,9 +261,9 @@ api.Parameters buildParameters() {
 void checkParameters(api.Parameters o) {
   buildCounterParameters++;
   if (buildCounterParameters < 3) {
-    checkUnnamed4(o.filters!);
-    checkUnnamed5(o.groupBys!);
-    checkUnnamed6(o.metrics!);
+    checkUnnamed2(o.filters!);
+    checkUnnamed3(o.groupBys!);
+    checkUnnamed4(o.metrics!);
     checkOptions(o.options!);
     unittest.expect(
       o.type!,
@@ -362,119 +271,6 @@ void checkParameters(api.Parameters o) {
     );
   }
   buildCounterParameters--;
-}
-
-core.List<api.EventFilter> buildUnnamed7() => [
-      buildEventFilter(),
-      buildEventFilter(),
-    ];
-
-void checkUnnamed7(core.List<api.EventFilter> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkEventFilter(o[0]);
-  checkEventFilter(o[1]);
-}
-
-core.int buildCounterPathFilter = 0;
-api.PathFilter buildPathFilter() {
-  final o = api.PathFilter();
-  buildCounterPathFilter++;
-  if (buildCounterPathFilter < 3) {
-    o.eventFilters = buildUnnamed7();
-    o.pathMatchPosition = 'foo';
-  }
-  buildCounterPathFilter--;
-  return o;
-}
-
-void checkPathFilter(api.PathFilter o) {
-  buildCounterPathFilter++;
-  if (buildCounterPathFilter < 3) {
-    checkUnnamed7(o.eventFilters!);
-    unittest.expect(
-      o.pathMatchPosition!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterPathFilter--;
-}
-
-core.List<api.PathFilter> buildUnnamed8() => [
-      buildPathFilter(),
-      buildPathFilter(),
-    ];
-
-void checkUnnamed8(core.List<api.PathFilter> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkPathFilter(o[0]);
-  checkPathFilter(o[1]);
-}
-
-core.int buildCounterPathQueryOptions = 0;
-api.PathQueryOptions buildPathQueryOptions() {
-  final o = api.PathQueryOptions();
-  buildCounterPathQueryOptions++;
-  if (buildCounterPathQueryOptions < 3) {
-    o.channelGrouping = buildChannelGrouping();
-    o.pathFilters = buildUnnamed8();
-  }
-  buildCounterPathQueryOptions--;
-  return o;
-}
-
-void checkPathQueryOptions(api.PathQueryOptions o) {
-  buildCounterPathQueryOptions++;
-  if (buildCounterPathQueryOptions < 3) {
-    checkChannelGrouping(o.channelGrouping!);
-    checkUnnamed8(o.pathFilters!);
-  }
-  buildCounterPathQueryOptions--;
-}
-
-core.List<core.String> buildUnnamed9() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed9(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.int buildCounterPathQueryOptionsFilter = 0;
-api.PathQueryOptionsFilter buildPathQueryOptionsFilter() {
-  final o = api.PathQueryOptionsFilter();
-  buildCounterPathQueryOptionsFilter++;
-  if (buildCounterPathQueryOptionsFilter < 3) {
-    o.filter = 'foo';
-    o.match = 'foo';
-    o.values = buildUnnamed9();
-  }
-  buildCounterPathQueryOptionsFilter--;
-  return o;
-}
-
-void checkPathQueryOptionsFilter(api.PathQueryOptionsFilter o) {
-  buildCounterPathQueryOptionsFilter++;
-  if (buildCounterPathQueryOptionsFilter < 3) {
-    unittest.expect(
-      o.filter!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.match!,
-      unittest.equals('foo'),
-    );
-    checkUnnamed9(o.values!);
-  }
-  buildCounterPathQueryOptionsFilter--;
 }
 
 core.int buildCounterQuery = 0;
@@ -505,12 +301,12 @@ void checkQuery(api.Query o) {
   buildCounterQuery--;
 }
 
-core.List<core.String> buildUnnamed10() => [
+core.List<core.String> buildUnnamed5() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed10(core.List<core.String> o) {
+void checkUnnamed5(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -530,7 +326,7 @@ api.QueryMetadata buildQueryMetadata() {
     o.dataRange = buildDataRange();
     o.format = 'foo';
     o.sendNotification = true;
-    o.shareEmailAddress = buildUnnamed10();
+    o.shareEmailAddress = buildUnnamed5();
     o.title = 'foo';
   }
   buildCounterQueryMetadata--;
@@ -546,7 +342,7 @@ void checkQueryMetadata(api.QueryMetadata o) {
       unittest.equals('foo'),
     );
     unittest.expect(o.sendNotification!, unittest.isTrue);
-    checkUnnamed10(o.shareEmailAddress!);
+    checkUnnamed5(o.shareEmailAddress!);
     unittest.expect(
       o.title!,
       unittest.equals('foo'),
@@ -696,41 +492,6 @@ void checkReportStatus(api.ReportStatus o) {
   buildCounterReportStatus--;
 }
 
-core.List<api.DisjunctiveMatchStatement> buildUnnamed11() => [
-      buildDisjunctiveMatchStatement(),
-      buildDisjunctiveMatchStatement(),
-    ];
-
-void checkUnnamed11(core.List<api.DisjunctiveMatchStatement> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkDisjunctiveMatchStatement(o[0]);
-  checkDisjunctiveMatchStatement(o[1]);
-}
-
-core.int buildCounterRule = 0;
-api.Rule buildRule() {
-  final o = api.Rule();
-  buildCounterRule++;
-  if (buildCounterRule < 3) {
-    o.disjunctiveMatchStatements = buildUnnamed11();
-    o.name = 'foo';
-  }
-  buildCounterRule--;
-  return o;
-}
-
-void checkRule(api.Rule o) {
-  buildCounterRule++;
-  if (buildCounterRule < 3) {
-    checkUnnamed11(o.disjunctiveMatchStatements!);
-    unittest.expect(
-      o.name!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterRule--;
-}
-
 core.int buildCounterRunQueryRequest = 0;
 api.RunQueryRequest buildRunQueryRequest() {
   final o = api.RunQueryRequest();
@@ -751,16 +512,6 @@ void checkRunQueryRequest(api.RunQueryRequest o) {
 }
 
 void main() {
-  unittest.group('obj-schema-ChannelGrouping', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildChannelGrouping();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.ChannelGrouping.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkChannelGrouping(od);
-    });
-  });
-
   unittest.group('obj-schema-DataRange', () {
     unittest.test('to-json--from-json', () async {
       final o = buildDataRange();
@@ -778,26 +529,6 @@ void main() {
       final od =
           api.Date.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkDate(od);
-    });
-  });
-
-  unittest.group('obj-schema-DisjunctiveMatchStatement', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildDisjunctiveMatchStatement();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.DisjunctiveMatchStatement.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkDisjunctiveMatchStatement(od);
-    });
-  });
-
-  unittest.group('obj-schema-EventFilter', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildEventFilter();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.EventFilter.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkEventFilter(od);
     });
   });
 
@@ -848,36 +579,6 @@ void main() {
       final od =
           api.Parameters.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkParameters(od);
-    });
-  });
-
-  unittest.group('obj-schema-PathFilter', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildPathFilter();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.PathFilter.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkPathFilter(od);
-    });
-  });
-
-  unittest.group('obj-schema-PathQueryOptions', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildPathQueryOptions();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.PathQueryOptions.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkPathQueryOptions(od);
-    });
-  });
-
-  unittest.group('obj-schema-PathQueryOptionsFilter', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildPathQueryOptionsFilter();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.PathQueryOptionsFilter.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkPathQueryOptionsFilter(od);
     });
   });
 
@@ -948,16 +649,6 @@ void main() {
       final od = api.ReportStatus.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkReportStatus(od);
-    });
-  });
-
-  unittest.group('obj-schema-Rule', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildRule();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Rule.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkRule(od);
     });
   });
 

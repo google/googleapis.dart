@@ -133,6 +133,7 @@ api.AwsS3Data buildAwsS3Data() {
     o.bucketName = 'foo';
     o.cloudfrontDomain = 'foo';
     o.credentialsSecret = 'foo';
+    o.managedPrivateNetwork = true;
     o.path = 'foo';
     o.roleArn = 'foo';
   }
@@ -156,6 +157,7 @@ void checkAwsS3Data(api.AwsS3Data o) {
       o.credentialsSecret!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.managedPrivateNetwork!, unittest.isTrue);
     unittest.expect(
       o.path!,
       unittest.equals('foo'),

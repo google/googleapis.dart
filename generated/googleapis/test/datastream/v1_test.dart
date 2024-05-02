@@ -24,6 +24,21 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
+core.int buildCounterAppendOnly = 0;
+api.AppendOnly buildAppendOnly() {
+  final o = api.AppendOnly();
+  buildCounterAppendOnly++;
+  if (buildCounterAppendOnly < 3) {}
+  buildCounterAppendOnly--;
+  return o;
+}
+
+void checkAppendOnly(api.AppendOnly o) {
+  buildCounterAppendOnly++;
+  if (buildCounterAppendOnly < 3) {}
+  buildCounterAppendOnly--;
+}
+
 core.int buildCounterAvroFileFormat = 0;
 api.AvroFileFormat buildAvroFileFormat() {
   final o = api.AvroFileFormat();
@@ -134,7 +149,9 @@ api.BigQueryDestinationConfig buildBigQueryDestinationConfig() {
   final o = api.BigQueryDestinationConfig();
   buildCounterBigQueryDestinationConfig++;
   if (buildCounterBigQueryDestinationConfig < 3) {
+    o.appendOnly = buildAppendOnly();
     o.dataFreshness = 'foo';
+    o.merge = buildMerge();
     o.singleTargetDataset = buildSingleTargetDataset();
     o.sourceHierarchyDatasets = buildSourceHierarchyDatasets();
   }
@@ -145,10 +162,12 @@ api.BigQueryDestinationConfig buildBigQueryDestinationConfig() {
 void checkBigQueryDestinationConfig(api.BigQueryDestinationConfig o) {
   buildCounterBigQueryDestinationConfig++;
   if (buildCounterBigQueryDestinationConfig < 3) {
+    checkAppendOnly(o.appendOnly!);
     unittest.expect(
       o.dataFreshness!,
       unittest.equals('foo'),
     );
+    checkMerge(o.merge!);
     checkSingleTargetDataset(o.singleTargetDataset!);
     checkSourceHierarchyDatasets(o.sourceHierarchyDatasets!);
   }
@@ -1097,6 +1116,21 @@ void checkLookupStreamObjectRequest(api.LookupStreamObjectRequest o) {
     checkSourceObjectIdentifier(o.sourceObjectIdentifier!);
   }
   buildCounterLookupStreamObjectRequest--;
+}
+
+core.int buildCounterMerge = 0;
+api.Merge buildMerge() {
+  final o = api.Merge();
+  buildCounterMerge++;
+  if (buildCounterMerge < 3) {}
+  buildCounterMerge--;
+  return o;
+}
+
+void checkMerge(api.Merge o) {
+  buildCounterMerge++;
+  if (buildCounterMerge < 3) {}
+  buildCounterMerge--;
 }
 
 core.int buildCounterMostRecentStartPosition = 0;
@@ -3047,6 +3081,16 @@ void checkVpcPeeringConfig(api.VpcPeeringConfig o) {
 }
 
 void main() {
+  unittest.group('obj-schema-AppendOnly', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAppendOnly();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.AppendOnly.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkAppendOnly(od);
+    });
+  });
+
   unittest.group('obj-schema-AvroFileFormat', () {
     unittest.test('to-json--from-json', () async {
       final o = buildAvroFileFormat();
@@ -3344,6 +3388,16 @@ void main() {
       final od = api.LookupStreamObjectRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkLookupStreamObjectRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-Merge', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMerge();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Merge.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkMerge(od);
     });
   });
 

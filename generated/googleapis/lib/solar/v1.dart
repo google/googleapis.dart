@@ -136,6 +136,14 @@ class DataLayersResource {
   ///
   /// Request parameters:
   ///
+  /// [exactQualityRequired] - Optional. Whether to require exact quality of the
+  /// imagery. If set to false, the `required_quality` field is interpreted as
+  /// the minimum required quality, such that HIGH quality imagery may be
+  /// returned when `required_quality` is set to MEDIUM. If set to true,
+  /// `required_quality` is interpreted as the exact required quality and only
+  /// `MEDIUM` quality imagery is returned if `required_quality` is set to
+  /// `MEDIUM`.
+  ///
   /// [location_latitude] - The latitude in degrees. It must be in the range
   /// \[-90.0, +90.0\].
   ///
@@ -192,6 +200,7 @@ class DataLayersResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<DataLayers> get({
+    core.bool? exactQualityRequired,
     core.double? location_latitude,
     core.double? location_longitude,
     core.double? pixelSizeMeters,
@@ -201,6 +210,8 @@ class DataLayersResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (exactQualityRequired != null)
+        'exactQualityRequired': ['${exactQualityRequired}'],
       if (location_latitude != null)
         'location.latitude': ['${location_latitude}'],
       if (location_longitude != null)

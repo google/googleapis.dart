@@ -1488,6 +1488,7 @@ class $AuditAdvertiserResponse {
 /// - cloudresourcemanager:v1 : AuditLogConfig
 /// - cloudresourcemanager:v2 : AuditLogConfig
 /// - cloudresourcemanager:v3 : AuditLogConfig
+/// - config:v1 : AuditLogConfig
 /// - connectors:v1 : AuditLogConfig
 /// - contentwarehouse:v1 : GoogleIamV1AuditLogConfig
 /// - datafusion:v1 : AuditLogConfig
@@ -1503,6 +1504,7 @@ class $AuditAdvertiserResponse {
 /// - iam:v1 : AuditLogConfig
 /// - identitytoolkit:v2 : GoogleIamV1AuditLogConfig
 /// - ids:v1 : AuditLogConfig
+/// - logging:v2 : AuditLogConfig
 /// - looker:v1 : AuditLogConfig
 /// - metastore:v1 : AuditLogConfig
 /// - ml:v1 : GoogleIamV1__AuditLogConfig
@@ -1720,6 +1722,36 @@ class $AutoRetrievalInfo {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (appSignatureHash != null) 'appSignatureHash': appSignatureHash!,
+      };
+}
+
+/// Used by:
+///
+/// - connectors:v1 : BillingConfig
+/// - integrations:v1 : GoogleCloudConnectorsV1BillingConfig
+class $BillingConfig {
+  /// Billing category for the connector.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "BILLING_CATEGORY_UNSPECIFIED" : Billing category is not specified.
+  /// - "GCP_AND_TECHNICAL_CONNECTOR" : GCP/Technical connector.
+  /// - "NON_GCP_CONNECTOR" : Non-GCP connector.
+  core.String? billingCategory;
+
+  $BillingConfig({
+    this.billingCategory,
+  });
+
+  $BillingConfig.fromJson(core.Map json_)
+      : this(
+          billingCategory: json_.containsKey('billingCategory')
+              ? json_['billingCategory'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (billingCategory != null) 'billingCategory': billingCategory!,
       };
 }
 
@@ -2973,6 +3005,65 @@ class $ClassificationCategory {
 
 /// Used by:
 ///
+/// - integrations:v1 : EnterpriseCrmEventbusProtoCloudSchedulerConfig
+/// - integrations:v1 : GoogleCloudIntegrationsV1alphaCloudSchedulerConfig
+class $CloudSchedulerConfig {
+  /// The cron tab of cloud scheduler trigger.
+  ///
+  /// Required.
+  core.String? cronTab;
+
+  /// When the job was deleted from Pantheon UI, error_message will be populated
+  /// when Get/List integrations
+  ///
+  /// Optional.
+  core.String? errorMessage;
+
+  /// The location where associated cloud scheduler job will be created
+  ///
+  /// Required.
+  core.String? location;
+
+  /// Service account used by Cloud Scheduler to trigger the integration at
+  /// scheduled time
+  ///
+  /// Required.
+  core.String? serviceAccountEmail;
+
+  $CloudSchedulerConfig({
+    this.cronTab,
+    this.errorMessage,
+    this.location,
+    this.serviceAccountEmail,
+  });
+
+  $CloudSchedulerConfig.fromJson(core.Map json_)
+      : this(
+          cronTab: json_.containsKey('cronTab')
+              ? json_['cronTab'] as core.String
+              : null,
+          errorMessage: json_.containsKey('errorMessage')
+              ? json_['errorMessage'] as core.String
+              : null,
+          location: json_.containsKey('location')
+              ? json_['location'] as core.String
+              : null,
+          serviceAccountEmail: json_.containsKey('serviceAccountEmail')
+              ? json_['serviceAccountEmail'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cronTab != null) 'cronTab': cronTab!,
+        if (errorMessage != null) 'errorMessage': errorMessage!,
+        if (location != null) 'location': location!,
+        if (serviceAccountEmail != null)
+          'serviceAccountEmail': serviceAccountEmail!,
+      };
+}
+
+/// Used by:
+///
 /// - gkeonprem:v1 : BareMetalAdminClusterOperationsConfig
 /// - gkeonprem:v1 : BareMetalClusterOperationsConfig
 class $ClusterOperationsConfig {
@@ -3396,6 +3487,51 @@ class $Completeness {
 
 /// Used by:
 ///
+/// - containeranalysis:v1 : ComplianceVersion
+/// - ondemandscanning:v1 : ComplianceVersion
+class $ComplianceVersion {
+  /// The name of the document that defines this benchmark, e.g. "CIS
+  /// Container-Optimized OS".
+  core.String? benchmarkDocument;
+
+  /// The CPE URI (https://cpe.mitre.org/specification/) this benchmark is
+  /// applicable to.
+  core.String? cpeUri;
+
+  /// The version of the benchmark.
+  ///
+  /// This is set to the version of the OS-specific CIS document the benchmark
+  /// is defined in.
+  core.String? version;
+
+  $ComplianceVersion({
+    this.benchmarkDocument,
+    this.cpeUri,
+    this.version,
+  });
+
+  $ComplianceVersion.fromJson(core.Map json_)
+      : this(
+          benchmarkDocument: json_.containsKey('benchmarkDocument')
+              ? json_['benchmarkDocument'] as core.String
+              : null,
+          cpeUri: json_.containsKey('cpeUri')
+              ? json_['cpeUri'] as core.String
+              : null,
+          version: json_.containsKey('version')
+              ? json_['version'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (benchmarkDocument != null) 'benchmarkDocument': benchmarkDocument!,
+        if (cpeUri != null) 'cpeUri': cpeUri!,
+        if (version != null) 'version': version!,
+      };
+}
+
+/// Used by:
+///
 /// - dataplex:v1 : GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation
 /// - dataplex:v1 : GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation
 class $ConditionExpectation {
@@ -3417,6 +3553,55 @@ class $ConditionExpectation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (sqlExpression != null) 'sqlExpression': sqlExpression!,
+      };
+}
+
+/// Used by:
+///
+/// - connectors:v1 : ConnectionStatus
+/// - integrations:v1 : GoogleCloudConnectorsV1ConnectionStatus
+class $ConnectionStatus {
+  /// Description.
+  core.String? description;
+
+  /// State.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Connection does not have a state yet.
+  /// - "CREATING" : Connection is being created.
+  /// - "ACTIVE" : Connection is running and ready for requests.
+  /// - "INACTIVE" : Connection is stopped.
+  /// - "DELETING" : Connection is being deleted.
+  /// - "UPDATING" : Connection is being updated.
+  /// - "ERROR" : Connection is not running due to an error.
+  /// - "AUTHORIZATION_REQUIRED" : Connection is not running because the
+  /// authorization configuration is not complete.
+  core.String? state;
+
+  /// Status provides detailed information for the state.
+  core.String? status;
+
+  $ConnectionStatus({
+    this.description,
+    this.state,
+    this.status,
+  });
+
+  $ConnectionStatus.fromJson(core.Map json_)
+      : this(
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          status: json_.containsKey('status')
+              ? json_['status'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
+        if (state != null) 'state': state!,
+        if (status != null) 'status': status!,
       };
 }
 
@@ -4354,6 +4539,8 @@ class $CryptoKeyVersionTemplate {
   /// curve is only supported for HSM protection level. Other hash functions can
   /// also be used:
   /// https://cloud.google.com/kms/docs/create-validate-signatures#ecdsa_support_for_other_hash_algorithms
+  /// - "EC_SIGN_ED25519" : EdDSA on the Curve25519 in pure mode (taking data as
+  /// input).
   /// - "HMAC_SHA256" : HMAC-SHA256 signing with a 256 bit key.
   /// - "HMAC_SHA1" : HMAC-SHA1 signing with a 160 bit key.
   /// - "HMAC_SHA384" : HMAC-SHA384 signing with a 384 bit key.
@@ -4693,6 +4880,41 @@ class $DayAndTimeAssignedTargetingOptionDetails {
 
 /// Used by:
 ///
+/// - connectors:v1 : DeadLetterConfig
+/// - integrations:v1 : GoogleCloudConnectorsV1EventingConfigDeadLetterConfig
+class $DeadLetterConfig {
+  /// Project which has the topic given.
+  ///
+  /// Optional.
+  core.String? projectId;
+
+  /// Topic to push events which couldn't be processed.
+  ///
+  /// Optional.
+  core.String? topic;
+
+  $DeadLetterConfig({
+    this.projectId,
+    this.topic,
+  });
+
+  $DeadLetterConfig.fromJson(core.Map json_)
+      : this(
+          projectId: json_.containsKey('projectId')
+              ? json_['projectId'] as core.String
+              : null,
+          topic:
+              json_.containsKey('topic') ? json_['topic'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (projectId != null) 'projectId': projectId!,
+        if (topic != null) 'topic': topic!,
+      };
+}
+
+/// Used by:
+///
 /// - cloudsearch:v1 : ResponseDebugInfo
 /// - cloudsearch:v1 : ResultDebugInfo
 class $DebugInfo {
@@ -4946,6 +5168,47 @@ class $DeploymentOccurrence {
         if (resourceUri != null) 'resourceUri': resourceUri!,
         if (undeployTime != null) 'undeployTime': undeployTime!,
         if (userEmail != null) 'userEmail': userEmail!,
+      };
+}
+
+/// Used by:
+///
+/// - connectors:v1 : Destination
+/// - integrations:v1 : GoogleCloudConnectorsV1Destination
+class $Destination {
+  /// For publicly routable host.
+  core.String? host;
+
+  /// The port is the target port number that is accepted by the destination.
+  core.int? port;
+
+  /// PSC service attachments.
+  ///
+  /// Format: projects / * /regions / * /serviceAttachments / *
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.String? serviceAttachment;
+
+  $Destination({
+    this.host,
+    this.port,
+    this.serviceAttachment,
+  });
+
+  $Destination.fromJson(core.Map json_)
+      : this(
+          host: json_.containsKey('host') ? json_['host'] as core.String : null,
+          port: json_.containsKey('port') ? json_['port'] as core.int : null,
+          serviceAttachment: json_.containsKey('serviceAttachment')
+              ? json_['serviceAttachment'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (host != null) 'host': host!,
+        if (port != null) 'port': port!,
+        if (serviceAttachment != null) 'serviceAttachment': serviceAttachment!,
       };
 }
 
@@ -6342,6 +6605,9 @@ class $EgressSource {
 /// - androidpublisher:v3 : ExternalTransactionTestPurchase
 /// - androidpublisher:v3 : FullRefund
 /// - androidpublisher:v3 : MigrateBasePlanPricesResponse
+/// - androidpublisher:v3 : OtherRecurringProduct
+/// - androidpublisher:v3 : OtherRegionsSubscriptionOfferPhaseFreePriceOverride
+/// - androidpublisher:v3 : RegionalSubscriptionOfferPhaseFreePriceOverride
 /// - androidpublisher:v3 : ReplacementCancellation
 /// - androidpublisher:v3 : RevocationContextProratedRefund
 /// - androidpublisher:v3 : RevokeSubscriptionPurchaseResponse
@@ -6353,6 +6619,7 @@ class $EgressSource {
 /// - apigateway:v1 : ApigatewayCancelOperationRequest
 /// - apigateway:v1 : Empty
 /// - apigee:v1 : GoogleCloudApigeeV1ActivateNatAddressRequest
+/// - apigee:v1 : GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestIncludeAll
 /// - apigee:v1 : GoogleCloudApigeeV1DisableSecurityActionRequest
 /// - apigee:v1 : GoogleCloudApigeeV1EnableSecurityActionRequest
 /// - apigee:v1 : GoogleCloudApigeeV1ExpireDeveloperSubscriptionRequest
@@ -6399,8 +6666,10 @@ class $EgressSource {
 /// - authorizedbuyersmarketplace:v1 : UnsubscribeAuctionPackageRequest
 /// - backupdr:v1 : CancelOperationRequest
 /// - backupdr:v1 : Empty
+/// - baremetalsolution:v2 : DisableHyperthreadingRequest
 /// - baremetalsolution:v2 : DisableInteractiveSerialConsoleRequest
 /// - baremetalsolution:v2 : Empty
+/// - baremetalsolution:v2 : EnableHyperthreadingRequest
 /// - baremetalsolution:v2 : EnableInteractiveSerialConsoleRequest
 /// - baremetalsolution:v2 : EvictLunRequest
 /// - baremetalsolution:v2 : EvictVolumeRequest
@@ -6516,6 +6785,11 @@ class $EgressSource {
 /// - composer:v1 : DatabaseFailoverRequest
 /// - composer:v1 : Empty
 /// - compute:v1 : ResourcePolicyDiskConsistencyGroupPolicy
+/// - config:v1 : CancelOperationRequest
+/// - config:v1 : Empty
+/// - config:v1 : ExportPreviewResultRequest
+/// - config:v1 : ExportRevisionStatefileRequest
+/// - config:v1 : LockDeploymentRequest
 /// - connectors:v1 : CancelOperationRequest
 /// - connectors:v1 : Empty
 /// - connectors:v1 : ListenEventResponse
@@ -6593,12 +6867,14 @@ class $EgressSource {
 /// - datastore:v1 : Empty
 /// - datastore:v1 : ReserveIdsResponse
 /// - datastore:v1 : RollbackResponse
+/// - datastream:v1 : AppendOnly
 /// - datastream:v1 : AvroFileFormat
 /// - datastream:v1 : BackfillNoneStrategy
 /// - datastream:v1 : BigQueryProfile
 /// - datastream:v1 : CancelOperationRequest
 /// - datastream:v1 : DropLargeObjects
 /// - datastream:v1 : Empty
+/// - datastream:v1 : Merge
 /// - datastream:v1 : MostRecentStartPosition
 /// - datastream:v1 : NextAvailableStartPosition
 /// - datastream:v1 : StartBackfillJobRequest
@@ -6718,11 +6994,11 @@ class $EgressSource {
 /// - healthcare:v1 : ReplaceWithInfoTypeConfig
 /// - homegraph:v1 : Empty
 /// - homegraph:v1 : RequestSyncDevicesResponse
-/// - iam:v1 : DisableServiceAccountKeyRequest
 /// - iam:v1 : DisableServiceAccountRequest
 /// - iam:v1 : Empty
 /// - iam:v1 : EnableServiceAccountKeyRequest
 /// - iam:v1 : EnableServiceAccountRequest
+/// - iam:v1 : UndeleteOauthClientRequest
 /// - iam:v1 : UndeleteServiceAccountRequest
 /// - iam:v1 : UndeleteWorkforcePoolProviderKeyRequest
 /// - iam:v1 : UndeleteWorkforcePoolProviderRequest
@@ -6731,7 +7007,6 @@ class $EgressSource {
 /// - iam:v1 : UndeleteWorkloadIdentityPoolProviderKeyRequest
 /// - iam:v1 : UndeleteWorkloadIdentityPoolProviderRequest
 /// - iam:v1 : UndeleteWorkloadIdentityPoolRequest
-/// - iam:v1 : X509
 /// - iap:v1 : Empty
 /// - iap:v1 : ResetIdentityAwareProxyClientSecretRequest
 /// - iap:v1 : ValidateIapAttributeExpressionResponse
@@ -6744,6 +7019,13 @@ class $EgressSource {
 /// - identitytoolkit:v2 : GoogleProtobufEmpty
 /// - ids:v1 : CancelOperationRequest
 /// - ids:v1 : Empty
+/// - integrations:v1 : GoogleCloudIntegrationsV1alphaCancelExecutionRequest
+/// - integrations:v1 : GoogleCloudIntegrationsV1alphaDeprovisionClientRequest
+/// - integrations:v1 : GoogleCloudIntegrationsV1alphaPublishIntegrationVersionResponse
+/// - integrations:v1 : GoogleCloudIntegrationsV1alphaResolveSuspensionResponse
+/// - integrations:v1 : GoogleCloudIntegrationsV1alphaTakeoverEditLockRequest
+/// - integrations:v1 : GoogleCloudIntegrationsV1alphaUnpublishIntegrationVersionRequest
+/// - integrations:v1 : GoogleProtobufEmpty
 /// - jobs:v3 : Empty
 /// - jobs:v4 : Empty
 /// - keep:v1 : Empty
@@ -7030,19 +7312,49 @@ class $EncryptionConfig {
 
 /// Used by:
 ///
+/// - connectors:v1 : EncryptionKey
+/// - integrations:v1 : GoogleCloudConnectorsV1EncryptionKey
+class $EncryptionKey {
+  /// The \[KMS key name\] with which the content of the Operation is encrypted.
+  ///
+  /// The expected format: `projects / * /locations / * /keyRings / *
+  /// /cryptoKeys / * `. Will be empty string if google managed.
+  core.String? kmsKeyName;
+
+  /// Type.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Value type is not specified.
+  /// - "GOOGLE_MANAGED" : Google Managed.
+  /// - "CUSTOMER_MANAGED" : Customer Managed.
+  core.String? type;
+
+  $EncryptionKey({
+    this.kmsKeyName,
+    this.type,
+  });
+
+  $EncryptionKey.fromJson(core.Map json_)
+      : this(
+          kmsKeyName: json_.containsKey('kmsKeyName')
+              ? json_['kmsKeyName'] as core.String
+              : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
+        if (type != null) 'type': type!,
+      };
+}
+
+/// Used by:
+///
 /// - servicemanagement:v1 : Endpoint
 /// - serviceusage:v1 : Endpoint
 class $Endpoint {
-  /// Dot not use.
-  ///
-  /// DEPRECATED: This field is no longer supported. Instead of using aliases,
-  /// please specify multiple google.api.Endpoint for each of the intended
-  /// aliases. Additional names that this endpoint will be hosted on.
-  ///
-  /// Unimplemented.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
+  /// Aliases for this endpoint, these will be served by the same UrlMap as the
+  /// parent endpoint, and will be provisioned in the GCP stack for the Regional
+  /// Endpoints.
   core.List<core.String>? aliases;
 
   /// Allowing
@@ -7302,6 +7614,205 @@ class $Error {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (errorMessage != null) 'errorMessage': errorMessage!,
+      };
+}
+
+/// Used by:
+///
+/// - integrations:v1 : EnterpriseCrmEventbusProtoBooleanParameterArray
+/// - integrations:v1 : EnterpriseCrmFrontendsEventbusProtoBooleanParameterArray
+class $EventbusProtoBooleanParameterArray {
+  core.List<core.bool>? booleanValues;
+
+  $EventbusProtoBooleanParameterArray({
+    this.booleanValues,
+  });
+
+  $EventbusProtoBooleanParameterArray.fromJson(core.Map json_)
+      : this(
+          booleanValues: json_.containsKey('booleanValues')
+              ? (json_['booleanValues'] as core.List)
+                  .map((value) => value as core.bool)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (booleanValues != null) 'booleanValues': booleanValues!,
+      };
+}
+
+/// Used by:
+///
+/// - integrations:v1 : EnterpriseCrmEventbusProtoDoubleParameterArray
+/// - integrations:v1 : EnterpriseCrmFrontendsEventbusProtoDoubleParameterArray
+class $EventbusProtoDoubleParameterArray {
+  core.List<core.double>? doubleValues;
+
+  $EventbusProtoDoubleParameterArray({
+    this.doubleValues,
+  });
+
+  $EventbusProtoDoubleParameterArray.fromJson(core.Map json_)
+      : this(
+          doubleValues: json_.containsKey('doubleValues')
+              ? (json_['doubleValues'] as core.List)
+                  .map((value) => (value as core.num).toDouble())
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (doubleValues != null) 'doubleValues': doubleValues!,
+      };
+}
+
+/// Used by:
+///
+/// - integrations:v1 : EnterpriseCrmEventbusProtoIntParameterArray
+/// - integrations:v1 : EnterpriseCrmFrontendsEventbusProtoIntParameterArray
+class $EventbusProtoIntParameterArray {
+  core.List<core.String>? intValues;
+
+  $EventbusProtoIntParameterArray({
+    this.intValues,
+  });
+
+  $EventbusProtoIntParameterArray.fromJson(core.Map json_)
+      : this(
+          intValues: json_.containsKey('intValues')
+              ? (json_['intValues'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (intValues != null) 'intValues': intValues!,
+      };
+}
+
+/// Used by:
+///
+/// - integrations:v1 : EnterpriseCrmEventbusProtoProtoParameterArray
+/// - integrations:v1 : EnterpriseCrmFrontendsEventbusProtoProtoParameterArray
+class $EventbusProtoProtoParameterArray {
+  ///
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.List<core.Map<core.String, core.Object?>>? protoValues;
+
+  $EventbusProtoProtoParameterArray({
+    this.protoValues,
+  });
+
+  $EventbusProtoProtoParameterArray.fromJson(core.Map json_)
+      : this(
+          protoValues: json_.containsKey('protoValues')
+              ? (json_['protoValues'] as core.List)
+                  .map((value) => value as core.Map<core.String, core.dynamic>)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (protoValues != null) 'protoValues': protoValues!,
+      };
+}
+
+/// Used by:
+///
+/// - integrations:v1 : EnterpriseCrmEventbusProtoSerializedObjectParameter
+/// - integrations:v1 : EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameter
+class $EventbusProtoSerializedObjectParameter {
+  core.String? objectValue;
+  core.List<core.int> get objectValueAsBytes =>
+      convert.base64.decode(objectValue!);
+
+  set objectValueAsBytes(core.List<core.int> bytes_) {
+    objectValue =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  $EventbusProtoSerializedObjectParameter({
+    this.objectValue,
+  });
+
+  $EventbusProtoSerializedObjectParameter.fromJson(core.Map json_)
+      : this(
+          objectValue: json_.containsKey('objectValue')
+              ? json_['objectValue'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (objectValue != null) 'objectValue': objectValue!,
+      };
+}
+
+/// Used by:
+///
+/// - integrations:v1 : EnterpriseCrmEventbusProtoStringParameterArray
+/// - integrations:v1 : EnterpriseCrmFrontendsEventbusProtoStringParameterArray
+class $EventbusProtoStringParameterArray {
+  core.List<core.String>? stringValues;
+
+  $EventbusProtoStringParameterArray({
+    this.stringValues,
+  });
+
+  $EventbusProtoStringParameterArray.fromJson(core.Map json_)
+      : this(
+          stringValues: json_.containsKey('stringValues')
+              ? (json_['stringValues'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (stringValues != null) 'stringValues': stringValues!,
+      };
+}
+
+/// Used by:
+///
+/// - connectors:v1 : EventingStatus
+/// - integrations:v1 : GoogleCloudConnectorsV1EventingStatus
+class $EventingStatus {
+  /// Description of error if State is set to "ERROR".
+  ///
+  /// Output only.
+  core.String? description;
+
+  /// State.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default state.
+  /// - "ACTIVE" : Eventing is enabled and ready to receive events.
+  /// - "ERROR" : Eventing is not active due to an error.
+  /// - "INGRESS_ENDPOINT_REQUIRED" : Ingress endpoint required.
+  core.String? state;
+
+  $EventingStatus({
+    this.description,
+    this.state,
+  });
+
+  $EventingStatus.fromJson(core.Map json_)
+      : this(
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
+        if (state != null) 'state': state!,
       };
 }
 
@@ -8133,6 +8644,7 @@ class $ExportOptions01 {
 /// - cloudresourcemanager:v3 : Expr
 /// - cloudtasks:v2 : Expr
 /// - compute:v1 : Expr
+/// - config:v1 : Expr
 /// - connectors:v1 : Expr
 /// - containeranalysis:v1 : Expr
 /// - contentwarehouse:v1 : GoogleTypeExpr
@@ -8154,6 +8666,7 @@ class $ExportOptions01 {
 /// - iap:v1 : Expr
 /// - identitytoolkit:v2 : GoogleTypeExpr
 /// - ids:v1 : Expr
+/// - logging:v2 : Expr
 /// - looker:v1 : Expr
 /// - managedidentities:v1 : Expr
 /// - metastore:v1 : Expr
@@ -9169,7 +9682,7 @@ class $GeoRegionTargetingOptionDetails {
 /// - servicedirectory:v1 : GetPolicyOptions
 /// - servicemanagement:v1 : GetPolicyOptions
 /// - spanner:v1 : GetPolicyOptions
-class $GetPolicyOptions {
+class $GetPolicyOptions00 {
   /// The maximum policy version that will be used to format the policy.
   ///
   /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be
@@ -9185,11 +9698,49 @@ class $GetPolicyOptions {
   /// Optional.
   core.int? requestedPolicyVersion;
 
-  $GetPolicyOptions({
+  $GetPolicyOptions00({
     this.requestedPolicyVersion,
   });
 
-  $GetPolicyOptions.fromJson(core.Map json_)
+  $GetPolicyOptions00.fromJson(core.Map json_)
+      : this(
+          requestedPolicyVersion: json_.containsKey('requestedPolicyVersion')
+              ? json_['requestedPolicyVersion'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (requestedPolicyVersion != null)
+          'requestedPolicyVersion': requestedPolicyVersion!,
+      };
+}
+
+/// Used by:
+///
+/// - dataproc:v1 : GetPolicyOptions
+/// - logging:v2 : GetPolicyOptions
+class $GetPolicyOptions01 {
+  /// The maximum policy version that will be used to format the policy.Valid
+  /// values are 0, 1, and 3.
+  ///
+  /// Requests specifying an invalid value will be rejected.Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset.The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1.To learn which resources support
+  /// conditions in their IAM policies, see the IAM documentation
+  /// (https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// Optional.
+  core.int? requestedPolicyVersion;
+
+  $GetPolicyOptions01({
+    this.requestedPolicyVersion,
+  });
+
+  $GetPolicyOptions01.fromJson(core.Map json_)
       : this(
           requestedPolicyVersion: json_.containsKey('requestedPolicyVersion')
               ? json_['requestedPolicyVersion'] as core.int
@@ -10246,32 +10797,40 @@ class $GuestAttributesEntry {
 
 /// Used by:
 ///
-/// - run:v1 : HTTPHeader
-/// - run:v2 : GoogleCloudRunV2HTTPHeader
-class $HTTPHeader {
-  /// The header field name
+/// - connectors:v1 : HPAConfig
+/// - integrations:v1 : GoogleCloudConnectorsV1HPAConfig
+class $HPAConfig {
+  /// Percent CPU utilization where HPA triggers autoscaling.
   ///
-  /// Required.
-  core.String? name;
+  /// Output only.
+  core.String? cpuUtilizationThreshold;
 
-  /// The header field value
-  core.String? value;
+  /// Percent Memory utilization where HPA triggers autoscaling.
+  ///
+  /// Output only.
+  core.String? memoryUtilizationThreshold;
 
-  $HTTPHeader({
-    this.name,
-    this.value,
+  $HPAConfig({
+    this.cpuUtilizationThreshold,
+    this.memoryUtilizationThreshold,
   });
 
-  $HTTPHeader.fromJson(core.Map json_)
+  $HPAConfig.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
+          cpuUtilizationThreshold: json_.containsKey('cpuUtilizationThreshold')
+              ? json_['cpuUtilizationThreshold'] as core.String
+              : null,
+          memoryUtilizationThreshold:
+              json_.containsKey('memoryUtilizationThreshold')
+                  ? json_['memoryUtilizationThreshold'] as core.String
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (value != null) 'value': value!,
+        if (cpuUtilizationThreshold != null)
+          'cpuUtilizationThreshold': cpuUtilizationThreshold!,
+        if (memoryUtilizationThreshold != null)
+          'memoryUtilizationThreshold': memoryUtilizationThreshold!,
       };
 }
 
@@ -11612,6 +12171,46 @@ class $Jwt {
 
 /// Used by:
 ///
+/// - connectors:v1 : JwtClaims
+/// - integrations:v1 : GoogleCloudConnectorsV1AuthConfigOauth2JwtBearerJwtClaims
+class $JwtClaims {
+  /// Value for the "aud" claim.
+  core.String? audience;
+
+  /// Value for the "iss" claim.
+  core.String? issuer;
+
+  /// Value for the "sub" claim.
+  core.String? subject;
+
+  $JwtClaims({
+    this.audience,
+    this.issuer,
+    this.subject,
+  });
+
+  $JwtClaims.fromJson(core.Map json_)
+      : this(
+          audience: json_.containsKey('audience')
+              ? json_['audience'] as core.String
+              : null,
+          issuer: json_.containsKey('issuer')
+              ? json_['issuer'] as core.String
+              : null,
+          subject: json_.containsKey('subject')
+              ? json_['subject'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (audience != null) 'audience': audience!,
+        if (issuer != null) 'issuer': issuer!,
+        if (subject != null) 'subject': subject!,
+      };
+}
+
+/// Used by:
+///
 /// - servicemanagement:v1 : JwtLocation
 /// - serviceusage:v1 : JwtLocation
 class $JwtLocation {
@@ -12514,6 +13113,7 @@ class $LocalizedMessage {
 /// - cloudkms:v1 : Location
 /// - cloudscheduler:v1 : Location
 /// - cloudtasks:v2 : Location
+/// - config:v1 : Location
 /// - connectors:v1 : Location
 /// - datafusion:v1 : Location
 /// - datamigration:v1 : Location
@@ -12802,6 +13402,61 @@ class $LocationList {
         if (locationListId != null) 'locationListId': locationListId!,
         if (locationType != null) 'locationType': locationType!,
         if (name != null) 'name': name!,
+      };
+}
+
+/// Used by:
+///
+/// - connectors:v1 : LockConfig
+/// - integrations:v1 : GoogleCloudConnectorsV1LockConfig
+class $LockConfig {
+  /// Indicates whether or not the connection is locked.
+  core.bool? locked;
+
+  /// Describes why a connection is locked.
+  core.String? reason;
+
+  $LockConfig({
+    this.locked,
+    this.reason,
+  });
+
+  $LockConfig.fromJson(core.Map json_)
+      : this(
+          locked:
+              json_.containsKey('locked') ? json_['locked'] as core.bool : null,
+          reason: json_.containsKey('reason')
+              ? json_['reason'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (locked != null) 'locked': locked!,
+        if (reason != null) 'reason': reason!,
+      };
+}
+
+/// Used by:
+///
+/// - connectors:v1 : ConnectorsLogConfig
+/// - integrations:v1 : GoogleCloudConnectorsV1LogConfig
+class $LogConfig {
+  /// Enabled represents whether logging is enabled or not for a connection.
+  core.bool? enabled;
+
+  $LogConfig({
+    this.enabled,
+  });
+
+  $LogConfig.fromJson(core.Map json_)
+      : this(
+          enabled: json_.containsKey('enabled')
+              ? json_['enabled'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
       };
 }
 
@@ -13924,6 +14579,38 @@ class $NegativeKeywordListAssignedTargetingOptionDetails {
   core.Map<core.String, core.dynamic> toJson() => {
         if (negativeKeywordListId != null)
           'negativeKeywordListId': negativeKeywordListId!,
+      };
+}
+
+/// Used by:
+///
+/// - connectors:v1 : NodeConfig
+/// - integrations:v1 : GoogleCloudConnectorsV1NodeConfig
+class $NodeConfig {
+  /// Maximum number of nodes in the runtime nodes.
+  core.int? maxNodeCount;
+
+  /// Minimum number of nodes in the runtime nodes.
+  core.int? minNodeCount;
+
+  $NodeConfig({
+    this.maxNodeCount,
+    this.minNodeCount,
+  });
+
+  $NodeConfig.fromJson(core.Map json_)
+      : this(
+          maxNodeCount: json_.containsKey('maxNodeCount')
+              ? json_['maxNodeCount'] as core.int
+              : null,
+          minNodeCount: json_.containsKey('minNodeCount')
+              ? json_['minNodeCount'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (maxNodeCount != null) 'maxNodeCount': maxNodeCount!,
+        if (minNodeCount != null) 'minNodeCount': minNodeCount!,
       };
 }
 
@@ -15469,6 +16156,7 @@ class $Permissions {
 /// - cloudresourcemanager:v3 : TestIamPermissionsResponse
 /// - cloudtasks:v2 : TestIamPermissionsResponse
 /// - compute:v1 : TestPermissionsResponse
+/// - config:v1 : TestIamPermissionsResponse
 /// - connectors:v1 : TestIamPermissionsResponse
 /// - containeranalysis:v1 : TestIamPermissionsResponse
 /// - datacatalog:v1 : TestIamPermissionsResponse
@@ -16806,6 +17494,53 @@ class $ReplaceAllTextResponse {
 
 /// Used by:
 ///
+/// - integrations:v1 : EnterpriseCrmFrontendsEventbusProtoEventExecutionInfoReplayInfo
+/// - integrations:v1 : GoogleCloudIntegrationsV1alphaExecutionReplayInfo
+class $ReplayInfo {
+  /// If this execution is a replay of another execution, then this field
+  /// contains the original execution id.
+  core.String? originalExecutionInfoId;
+
+  /// reason for replay
+  core.String? replayReason;
+
+  /// If this execution has been replayed, then this field contains the
+  /// execution ids of the replayed executions.
+  core.List<core.String>? replayedExecutionInfoIds;
+
+  $ReplayInfo({
+    this.originalExecutionInfoId,
+    this.replayReason,
+    this.replayedExecutionInfoIds,
+  });
+
+  $ReplayInfo.fromJson(core.Map json_)
+      : this(
+          originalExecutionInfoId: json_.containsKey('originalExecutionInfoId')
+              ? json_['originalExecutionInfoId'] as core.String
+              : null,
+          replayReason: json_.containsKey('replayReason')
+              ? json_['replayReason'] as core.String
+              : null,
+          replayedExecutionInfoIds:
+              json_.containsKey('replayedExecutionInfoIds')
+                  ? (json_['replayedExecutionInfoIds'] as core.List)
+                      .map((value) => value as core.String)
+                      .toList()
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (originalExecutionInfoId != null)
+          'originalExecutionInfoId': originalExecutionInfoId!,
+        if (replayReason != null) 'replayReason': replayReason!,
+        if (replayedExecutionInfoIds != null)
+          'replayedExecutionInfoIds': replayedExecutionInfoIds!,
+      };
+}
+
+/// Used by:
+///
 /// - compute:v1 : InstanceGroupManagersDeletePerInstanceConfigsReq
 /// - compute:v1 : RegionInstanceGroupManagerDeleteInstanceConfigReq
 class $Req {
@@ -17236,6 +17971,74 @@ class $ResourceDescriptor {
         if (mediaType != null) 'mediaType': mediaType!,
         if (name != null) 'name': name!,
         if (uri != null) 'uri': uri!,
+      };
+}
+
+/// Used by:
+///
+/// - connectors:v1 : ResourceLimits
+/// - integrations:v1 : GoogleCloudConnectorsV1ResourceLimits
+class $ResourceLimits {
+  /// CPU limit.
+  ///
+  /// Output only.
+  core.String? cpu;
+
+  /// Memory limit.
+  ///
+  /// Output only.
+  core.String? memory;
+
+  $ResourceLimits({
+    this.cpu,
+    this.memory,
+  });
+
+  $ResourceLimits.fromJson(core.Map json_)
+      : this(
+          cpu: json_.containsKey('cpu') ? json_['cpu'] as core.String : null,
+          memory: json_.containsKey('memory')
+              ? json_['memory'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cpu != null) 'cpu': cpu!,
+        if (memory != null) 'memory': memory!,
+      };
+}
+
+/// Used by:
+///
+/// - connectors:v1 : ResourceRequests
+/// - integrations:v1 : GoogleCloudConnectorsV1ResourceRequests
+class $ResourceRequests {
+  /// CPU request.
+  ///
+  /// Output only.
+  core.String? cpu;
+
+  /// Memory request.
+  ///
+  /// Output only.
+  core.String? memory;
+
+  $ResourceRequests({
+    this.cpu,
+    this.memory,
+  });
+
+  $ResourceRequests.fromJson(core.Map json_)
+      : this(
+          cpu: json_.containsKey('cpu') ? json_['cpu'] as core.String : null,
+          memory: json_.containsKey('memory')
+              ? json_['memory'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cpu != null) 'cpu': cpu!,
+        if (memory != null) 'memory': memory!,
       };
 }
 
@@ -17789,6 +18592,31 @@ class $SdfConfig {
 
 /// Used by:
 ///
+/// - connectors:v1 : Secret
+/// - integrations:v1 : GoogleCloudConnectorsV1Secret
+class $Secret {
+  /// The resource name of the secret version in the format, format as:
+  /// `projects / * /secrets / * /versions / * `.
+  core.String? secretVersion;
+
+  $Secret({
+    this.secretVersion,
+  });
+
+  $Secret.fromJson(core.Map json_)
+      : this(
+          secretVersion: json_.containsKey('secretVersion')
+              ? json_['secretVersion'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (secretVersion != null) 'secretVersion': secretVersion!,
+      };
+}
+
+/// Used by:
+///
 /// - secretmanager:v1 : DestroySecretVersionRequest
 /// - secretmanager:v1 : DisableSecretVersionRequest
 /// - secretmanager:v1 : EnableSecretVersionRequest
@@ -17812,48 +18640,6 @@ class $SecretVersionRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
-      };
-}
-
-/// Used by:
-///
-/// - container:v1 : SecurityPostureConfig
-/// - gkehub:v1 : SecurityPostureConfig
-class $SecurityPostureConfig {
-  /// Sets which mode to use for Security Posture features.
-  /// Possible string values are:
-  /// - "MODE_UNSPECIFIED" : Default value not specified.
-  /// - "DISABLED" : Disables Security Posture features on the cluster.
-  /// - "BASIC" : Applies Security Posture features on the cluster.
-  core.String? mode;
-
-  /// Sets which mode to use for vulnerability scanning.
-  /// Possible string values are:
-  /// - "VULNERABILITY_MODE_UNSPECIFIED" : Default value not specified.
-  /// - "VULNERABILITY_DISABLED" : Disables vulnerability scanning on the
-  /// cluster.
-  /// - "VULNERABILITY_BASIC" : Applies basic vulnerability scanning on the
-  /// cluster.
-  /// - "VULNERABILITY_ENTERPRISE" : Applies the Security Posture's
-  /// vulnerability on cluster Enterprise level features.
-  core.String? vulnerabilityMode;
-
-  $SecurityPostureConfig({
-    this.mode,
-    this.vulnerabilityMode,
-  });
-
-  $SecurityPostureConfig.fromJson(core.Map json_)
-      : this(
-          mode: json_.containsKey('mode') ? json_['mode'] as core.String : null,
-          vulnerabilityMode: json_.containsKey('vulnerabilityMode')
-              ? json_['vulnerabilityMode'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (mode != null) 'mode': mode!,
-        if (vulnerabilityMode != null) 'vulnerabilityMode': vulnerabilityMode!,
       };
 }
 
@@ -18367,21 +19153,97 @@ class $Shared04 {
 
 /// Used by:
 ///
+/// - apigee:v1 : GoogleCloudApigeeV1AccessGet
+/// - integrations:v1 : EnterpriseCrmEventbusProtoToken
+class $Shared05 {
+  core.String? name;
+  core.String? value;
+
+  $Shared05({
+    this.name,
+    this.value,
+  });
+
+  $Shared05.fromJson(core.Map json_)
+      : this(
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          value:
+              json_.containsKey('value') ? json_['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (value != null) 'value': value!,
+      };
+}
+
+/// Used by:
+///
+/// - cloudsearch:v1 : DoubleValues
+/// - integrations:v1 : EnterpriseCrmEventbusProtoDoubleArray
+class $Shared06 {
+  core.List<core.double>? values;
+
+  $Shared06({
+    this.values,
+  });
+
+  $Shared06.fromJson(core.Map json_)
+      : this(
+          values: json_.containsKey('values')
+              ? (json_['values'] as core.List)
+                  .map((value) => (value as core.num).toDouble())
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (values != null) 'values': values!,
+      };
+}
+
+/// Used by:
+///
+/// - cloudsearch:v1 : IntegerValues
+/// - integrations:v1 : EnterpriseCrmEventbusProtoIntArray
+class $Shared07 {
+  core.List<core.String>? values;
+
+  $Shared07({
+    this.values,
+  });
+
+  $Shared07.fromJson(core.Map json_)
+      : this(
+          values: json_.containsKey('values')
+              ? (json_['values'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (values != null) 'values': values!,
+      };
+}
+
+/// Used by:
+///
 /// - compute:v1 : InstancesSetServiceAccountRequest
 /// - compute:v1 : ServiceAccount
-class $Shared05 {
+class $Shared08 {
   /// Email address of the service account.
   core.String? email;
 
   /// The list of scopes to be made available for this service account.
   core.List<core.String>? scopes;
 
-  $Shared05({
+  $Shared08({
     this.email,
     this.scopes,
   });
 
-  $Shared05.fromJson(core.Map json_)
+  $Shared08.fromJson(core.Map json_)
       : this(
           email:
               json_.containsKey('email') ? json_['email'] as core.String : null,
@@ -18402,17 +19264,17 @@ class $Shared05 {
 ///
 /// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination
 /// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1ImportIssueModelRequestGcsSource
-class $Shared06 {
+class $Shared09 {
   /// Format: `gs:///`
   ///
   /// Required.
   core.String? objectUri;
 
-  $Shared06({
+  $Shared09({
     this.objectUri,
   });
 
-  $Shared06.fromJson(core.Map json_)
+  $Shared09.fromJson(core.Map json_)
       : this(
           objectUri: json_.containsKey('objectUri')
               ? json_['objectUri'] as core.String
@@ -18428,19 +19290,19 @@ class $Shared06 {
 ///
 /// - content:v2.1 : Price
 /// - content:v2.1 : PriceAmount
-class $Shared07 {
+class $Shared10 {
   /// The currency of the price.
   core.String? currency;
 
   /// The price represented as a number.
   core.String? value;
 
-  $Shared07({
+  $Shared10({
     this.currency,
     this.value,
   });
 
-  $Shared07.fromJson(core.Map json_)
+  $Shared10.fromJson(core.Map json_)
       : this(
           currency: json_.containsKey('currency')
               ? json_['currency'] as core.String
@@ -18459,7 +19321,7 @@ class $Shared07 {
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2Sentiment
 /// - dialogflow:v3 : GoogleCloudDialogflowCxV3SentimentAnalysisResult
-class $Shared08 {
+class $Shared11 {
   /// A non-negative number in the \[0, +inf) range, which represents the
   /// absolute magnitude of sentiment, regardless of score (positive or
   /// negative).
@@ -18469,12 +19331,12 @@ class $Shared08 {
   /// sentiment).
   core.double? score;
 
-  $Shared08({
+  $Shared11({
     this.magnitude,
     this.score,
   });
 
-  $Shared08.fromJson(core.Map json_)
+  $Shared11.fromJson(core.Map json_)
       : this(
           magnitude: json_.containsKey('magnitude')
               ? (json_['magnitude'] as core.num).toDouble()
@@ -18494,17 +19356,17 @@ class $Shared08 {
 ///
 /// - gkehub:v1 : ConfigManagementPolicyControllerMonitoring
 /// - gkehub:v1 : PolicyControllerMonitoringConfig
-class $Shared09 {
+class $Shared12 {
   /// Specifies the list of backends Policy Controller will export to.
   ///
   /// An empty list would effectively disable metrics export.
   core.List<core.String>? backends;
 
-  $Shared09({
+  $Shared12({
     this.backends,
   });
 
-  $Shared09.fromJson(core.Map json_)
+  $Shared12.fromJson(core.Map json_)
       : this(
           backends: json_.containsKey('backends')
               ? (json_['backends'] as core.List)
@@ -18522,7 +19384,7 @@ class $Shared09 {
 ///
 /// - osconfig:v1 : OSPolicyAssignmentInstanceFilterInventory
 /// - osconfig:v1 : OSPolicyInventoryFilter
-class $Shared10 {
+class $Shared13 {
   /// The OS short name
   ///
   /// Required.
@@ -18536,12 +19398,12 @@ class $Shared10 {
   /// versions.
   core.String? osVersion;
 
-  $Shared10({
+  $Shared13({
     this.osShortName,
     this.osVersion,
   });
 
-  $Shared10.fromJson(core.Map json_)
+  $Shared13.fromJson(core.Map json_)
       : this(
           osShortName: json_.containsKey('osShortName')
               ? json_['osShortName'] as core.String
@@ -18561,14 +19423,14 @@ class $Shared10 {
 ///
 /// - youtube:v3 : CommentSnippetAuthorChannelId
 /// - youtube:v3 : LanguageTag
-class $Shared11 {
+class $Shared14 {
   core.String? value;
 
-  $Shared11({
+  $Shared14({
     this.value,
   });
 
-  $Shared11.fromJson(core.Map json_)
+  $Shared14.fromJson(core.Map json_)
       : this(
           value:
               json_.containsKey('value') ? json_['value'] as core.String : null,
@@ -19093,6 +19955,7 @@ class $StaticRouteConfig {
 /// - cloudfunctions:v1 : Status
 /// - cloudfunctions:v2 : Status
 /// - cloudidentity:v1 : Status
+/// - cloudkms:v1 : Status
 /// - cloudresourcemanager:v1 : Status
 /// - cloudresourcemanager:v2 : Status
 /// - cloudresourcemanager:v3 : Status
@@ -19103,6 +19966,7 @@ class $StaticRouteConfig {
 /// - cloudtrace:v2 : Status
 /// - composer:v1 : Status
 /// - compute:v1 : Status
+/// - config:v1 : Status
 /// - connectors:v1 : Status
 /// - contactcenterinsights:v1 : GoogleRpcStatus
 /// - container:v1 : Status
@@ -19571,6 +20435,7 @@ class $TenantProjectRequest {
 /// - cloudresourcemanager:v2 : TestIamPermissionsRequest
 /// - cloudresourcemanager:v3 : TestIamPermissionsRequest
 /// - cloudtasks:v2 : TestIamPermissionsRequest
+/// - config:v1 : TestIamPermissionsRequest
 /// - connectors:v1 : TestIamPermissionsRequest
 /// - containeranalysis:v1 : TestIamPermissionsRequest
 /// - datacatalog:v1 : TestIamPermissionsRequest
@@ -19637,6 +20502,7 @@ class $TestIamPermissionsRequest00 {
 ///
 /// - dataplex:v1 : GoogleIamV1TestIamPermissionsRequest
 /// - dataproc:v1 : TestIamPermissionsRequest
+/// - logging:v2 : TestIamPermissionsRequest
 /// - metastore:v1 : TestIamPermissionsRequest
 class $TestIamPermissionsRequest01 {
   /// The set of permissions to check for the resource.
@@ -19668,6 +20534,7 @@ class $TestIamPermissionsRequest01 {
 ///
 /// - dataplex:v1 : GoogleIamV1TestIamPermissionsResponse
 /// - dataproc:v1 : TestIamPermissionsResponse
+/// - logging:v2 : TestIamPermissionsResponse
 /// - metastore:v1 : TestIamPermissionsResponse
 class $TestIamPermissionsResponse {
   /// A subset of TestPermissionsRequest.permissions that the caller is allowed.

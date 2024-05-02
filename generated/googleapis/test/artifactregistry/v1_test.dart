@@ -2316,6 +2316,64 @@ void checkUploadAptArtifactRequest(api.UploadAptArtifactRequest o) {
   buildCounterUploadAptArtifactRequest--;
 }
 
+core.int buildCounterUploadGenericArtifactMediaResponse = 0;
+api.UploadGenericArtifactMediaResponse
+    buildUploadGenericArtifactMediaResponse() {
+  final o = api.UploadGenericArtifactMediaResponse();
+  buildCounterUploadGenericArtifactMediaResponse++;
+  if (buildCounterUploadGenericArtifactMediaResponse < 3) {
+    o.operation = buildOperation();
+  }
+  buildCounterUploadGenericArtifactMediaResponse--;
+  return o;
+}
+
+void checkUploadGenericArtifactMediaResponse(
+    api.UploadGenericArtifactMediaResponse o) {
+  buildCounterUploadGenericArtifactMediaResponse++;
+  if (buildCounterUploadGenericArtifactMediaResponse < 3) {
+    checkOperation(o.operation!);
+  }
+  buildCounterUploadGenericArtifactMediaResponse--;
+}
+
+core.int buildCounterUploadGenericArtifactRequest = 0;
+api.UploadGenericArtifactRequest buildUploadGenericArtifactRequest() {
+  final o = api.UploadGenericArtifactRequest();
+  buildCounterUploadGenericArtifactRequest++;
+  if (buildCounterUploadGenericArtifactRequest < 3) {
+    o.filename = 'foo';
+    o.name = 'foo';
+    o.packageId = 'foo';
+    o.versionId = 'foo';
+  }
+  buildCounterUploadGenericArtifactRequest--;
+  return o;
+}
+
+void checkUploadGenericArtifactRequest(api.UploadGenericArtifactRequest o) {
+  buildCounterUploadGenericArtifactRequest++;
+  if (buildCounterUploadGenericArtifactRequest < 3) {
+    unittest.expect(
+      o.filename!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.packageId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.versionId!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterUploadGenericArtifactRequest--;
+}
+
 core.int buildCounterUploadGoModuleMediaResponse = 0;
 api.UploadGoModuleMediaResponse buildUploadGoModuleMediaResponse() {
   final o = api.UploadGoModuleMediaResponse();
@@ -3363,6 +3421,26 @@ void main() {
       final od = api.UploadAptArtifactRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkUploadAptArtifactRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-UploadGenericArtifactMediaResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildUploadGenericArtifactMediaResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UploadGenericArtifactMediaResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkUploadGenericArtifactMediaResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-UploadGenericArtifactRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildUploadGenericArtifactRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UploadGenericArtifactRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkUploadGenericArtifactRequest(od);
     });
   });
 
@@ -4855,6 +4933,76 @@ void main() {
           pageToken: arg_pageToken,
           $fields: arg_$fields);
       checkListFilesResponse(response as api.ListFilesResponse);
+    });
+  });
+
+  unittest.group(
+      'resource-ProjectsLocationsRepositoriesGenericArtifactsResource', () {
+    unittest.test('method--upload', () async {
+      // TODO: Implement tests for media upload;
+      // TODO: Implement tests for media download;
+
+      final mock = HttpServerMock();
+      final res = api.ArtifactRegistryApi(mock)
+          .projects
+          .locations
+          .repositories
+          .genericArtifacts;
+      final arg_request = buildUploadGenericArtifactRequest();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.UploadGenericArtifactRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkUploadGenericArtifactRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildUploadGenericArtifactMediaResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.upload(arg_request, arg_parent, $fields: arg_$fields);
+      checkUploadGenericArtifactMediaResponse(
+          response as api.UploadGenericArtifactMediaResponse);
     });
   });
 

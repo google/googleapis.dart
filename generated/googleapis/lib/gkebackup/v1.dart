@@ -3645,7 +3645,8 @@ class ExclusionWindow {
 
   /// Specifies duration of the window.
   ///
-  /// Restrictions for duration based on the recurrence type to allow some time
+  /// Duration must be \>= 5 minutes and \< (target RPO - 20 minutes).
+  /// Additional restrictions based on the recurrence type to allow some time
   /// for backup to happen: - single_occurrence_date: no restriction, but UI may
   /// warn about this when duration \>= target RPO - daily window: duration \<
   /// 24 hours - weekly window: - days of week includes all seven days of a

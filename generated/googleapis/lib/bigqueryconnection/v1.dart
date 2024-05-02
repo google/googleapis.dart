@@ -1130,6 +1130,11 @@ class Connection {
 
 /// Represents concrete parameter values for Connector Configuration.
 class ConnectorConfiguration {
+  /// Data asset.
+  ///
+  /// Optional.
+  ConnectorConfigurationAsset? asset;
+
   /// Client authentication.
   ConnectorConfigurationAuthentication? authentication;
 
@@ -1145,6 +1150,7 @@ class ConnectorConfiguration {
   ConnectorConfigurationNetwork? network;
 
   ConnectorConfiguration({
+    this.asset,
     this.authentication,
     this.connectorId,
     this.endpoint,
@@ -1153,6 +1159,10 @@ class ConnectorConfiguration {
 
   ConnectorConfiguration.fromJson(core.Map json_)
       : this(
+          asset: json_.containsKey('asset')
+              ? ConnectorConfigurationAsset.fromJson(
+                  json_['asset'] as core.Map<core.String, core.dynamic>)
+              : null,
           authentication: json_.containsKey('authentication')
               ? ConnectorConfigurationAuthentication.fromJson(
                   json_['authentication']
@@ -1172,10 +1182,49 @@ class ConnectorConfiguration {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (asset != null) 'asset': asset!,
         if (authentication != null) 'authentication': authentication!,
         if (connectorId != null) 'connectorId': connectorId!,
         if (endpoint != null) 'endpoint': endpoint!,
         if (network != null) 'network': network!,
+      };
+}
+
+/// Data Asset - a resource within instance of the system, reachable under
+/// specified endpoint.
+///
+/// For example a database name in a SQL DB.
+class ConnectorConfigurationAsset {
+  /// Name of the database.
+  ///
+  /// Optional.
+  core.String? database;
+
+  /// Full Google Cloud resource name -
+  /// https://cloud.google.com/apis/design/resource_names#full_resource_name.
+  ///
+  /// Example: `//library.googleapis.com/shelves/shelf1/books/book2`
+  core.String? googleCloudResource;
+
+  ConnectorConfigurationAsset({
+    this.database,
+    this.googleCloudResource,
+  });
+
+  ConnectorConfigurationAsset.fromJson(core.Map json_)
+      : this(
+          database: json_.containsKey('database')
+              ? json_['database'] as core.String
+              : null,
+          googleCloudResource: json_.containsKey('googleCloudResource')
+              ? json_['googleCloudResource'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (database != null) 'database': database!,
+        if (googleCloudResource != null)
+          'googleCloudResource': googleCloudResource!,
       };
 }
 
@@ -1398,7 +1447,7 @@ class GetIamPolicyRequest {
 }
 
 /// Encapsulates settings provided to GetIamPolicy.
-typedef GetPolicyOptions = $GetPolicyOptions;
+typedef GetPolicyOptions = $GetPolicyOptions00;
 
 /// The response for ConnectionService.ListConnections.
 class ListConnectionsResponse {

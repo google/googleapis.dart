@@ -161,7 +161,7 @@ class BillingAccountsLocationsInsightTypesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Name of insight type config. Eg,
+  /// [name] - Identifier. Name of insight type config. Eg,
   /// projects/\[PROJECT_NUMBER\]/locations/\[LOCATION\]/insightTypes/\[INSIGHT_TYPE_ID\]/config
   /// Value must have pattern
   /// `^billingAccounts/\[^/\]+/locations/\[^/\]+/insightTypes/\[^/\]+/config$`.
@@ -449,7 +449,7 @@ class BillingAccountsLocationsRecommendersResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Name of recommender config. Eg,
+  /// [name] - Identifier. Name of recommender config. Eg,
   /// projects/\[PROJECT_NUMBER\]/locations/\[LOCATION\]/recommenders/\[RECOMMENDER_ID\]/config
   /// Value must have pattern
   /// `^billingAccounts/\[^/\]+/locations/\[^/\]+/recommenders/\[^/\]+/config$`.
@@ -1445,7 +1445,7 @@ class OrganizationsLocationsInsightTypesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Name of insight type config. Eg,
+  /// [name] - Identifier. Name of insight type config. Eg,
   /// projects/\[PROJECT_NUMBER\]/locations/\[LOCATION\]/insightTypes/\[INSIGHT_TYPE_ID\]/config
   /// Value must have pattern
   /// `^organizations/\[^/\]+/locations/\[^/\]+/insightTypes/\[^/\]+/config$`.
@@ -1732,7 +1732,7 @@ class OrganizationsLocationsRecommendersResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Name of recommender config. Eg,
+  /// [name] - Identifier. Name of recommender config. Eg,
   /// projects/\[PROJECT_NUMBER\]/locations/\[LOCATION\]/recommenders/\[RECOMMENDER_ID\]/config
   /// Value must have pattern
   /// `^organizations/\[^/\]+/locations/\[^/\]+/recommenders/\[^/\]+/config$`.
@@ -2188,7 +2188,7 @@ class ProjectsLocationsInsightTypesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Name of insight type config. Eg,
+  /// [name] - Identifier. Name of insight type config. Eg,
   /// projects/\[PROJECT_NUMBER\]/locations/\[LOCATION\]/insightTypes/\[INSIGHT_TYPE_ID\]/config
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/insightTypes/\[^/\]+/config$`.
@@ -2473,7 +2473,7 @@ class ProjectsLocationsRecommendersResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Name of recommender config. Eg,
+  /// [name] - Identifier. Name of recommender config. Eg,
   /// projects/\[PROJECT_NUMBER\]/locations/\[LOCATION\]/recommenders/\[RECOMMENDER_ID\]/config
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/recommenders/\[^/\]+/config$`.
@@ -3013,6 +3013,8 @@ class GoogleCloudRecommenderV1Insight {
   /// Timestamp of the latest data used to generate the insight.
   core.String? lastRefreshTime;
 
+  /// Identifier.
+  ///
   /// Name of the insight.
   core.String? name;
 
@@ -3208,9 +3210,9 @@ class GoogleCloudRecommenderV1InsightTypeConfig {
   GoogleCloudRecommenderV1InsightTypeGenerationConfig?
       insightTypeGenerationConfig;
 
-  /// Name of insight type config.
+  /// Identifier.
   ///
-  /// Eg,
+  /// Name of insight type config. Eg,
   /// projects/\[PROJECT_NUMBER\]/locations/\[LOCATION\]/insightTypes/\[INSIGHT_TYPE_ID\]/config
   core.String? name;
 
@@ -3658,6 +3660,8 @@ class GoogleCloudRecommenderV1Recommendation {
   /// in the first place.
   core.String? lastRefreshTime;
 
+  /// Identifier.
+  ///
   /// Name of recommendation.
   core.String? name;
 
@@ -3922,9 +3926,9 @@ class GoogleCloudRecommenderV1RecommenderConfig {
   /// Provides optimistic locking when updating.
   core.String? etag;
 
-  /// Name of recommender config.
+  /// Identifier.
   ///
-  /// Eg,
+  /// Name of recommender config. Eg,
   /// projects/\[PROJECT_NUMBER\]/locations/\[LOCATION\]/recommenders/\[RECOMMENDER_ID\]/config
   core.String? name;
 

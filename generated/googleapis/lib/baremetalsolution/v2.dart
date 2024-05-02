@@ -234,6 +234,49 @@ class ProjectsLocationsInstancesResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Perform disable hyperthreading operation on a single server.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The `name` field is used to identify the instance.
+  /// Format: projects/{project}/locations/{location}/instances/{instance}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> disableHyperthreading(
+    DisableHyperthreadingRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v2/' + core.Uri.encodeFull('$name') + ':disableHyperthreading';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Disable the interactive serial console feature on an instance.
   ///
   /// [request] - The metadata request object.
@@ -267,6 +310,48 @@ class ProjectsLocationsInstancesResource {
     final url_ = 'v2/' +
         core.Uri.encodeFull('$name') +
         ':disableInteractiveSerialConsole';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Perform enable hyperthreading operation on a single server.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The `name` field is used to identify the instance.
+  /// Format: projects/{project}/locations/{location}/instances/{instance}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> enableHyperthreading(
+    EnableHyperthreadingRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':enableHyperthreading';
 
     final response_ = await _requester.request(
       url_,
@@ -486,6 +571,48 @@ class ProjectsLocationsInstancesResource {
     final response_ = await _requester.request(
       url_,
       'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Perform reimage operation on a single server.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The `name` field is used to identify the instance.
+  /// Format: projects/{project}/locations/{location}/instances/{instance}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> reimage(
+    ReimageInstanceRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':reimage';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
       body: body_,
       queryParams: queryParams_,
     );
@@ -2413,6 +2540,9 @@ class DetachLunRequest {
       };
 }
 
+/// Message requesting to perform disable hyperthreading operation on a server.
+typedef DisableHyperthreadingRequest = $Empty;
+
 /// Message for disabling the interactive serial console on an instance.
 typedef DisableInteractiveSerialConsoleRequest = $Empty;
 
@@ -2423,6 +2553,9 @@ typedef DisableInteractiveSerialConsoleRequest = $Empty;
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
+
+/// Message requesting to perform enable hyperthreading operation on a server.
+typedef EnableHyperthreadingRequest = $Empty;
 
 /// Message for enabling the interactive serial console on an instance.
 typedef EnableInteractiveSerialConsoleRequest = $Empty;
@@ -4767,6 +4900,55 @@ class QosPolicy {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bandwidthGbps != null) 'bandwidthGbps': bandwidthGbps!,
+      };
+}
+
+/// Message requesting to perform reimage operation on a server.
+class ReimageInstanceRequest {
+  /// Name of the KMS crypto key version used to encrypt the initial passwords.
+  ///
+  /// The key has to have ASYMMETRIC_DECRYPT purpose. Format is
+  /// `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}/cryptoKeyVersions/{version}`.
+  ///
+  /// Optional.
+  core.String? kmsKeyVersion;
+
+  /// The OS image code of the image which will be used in the reimage
+  /// operation.
+  ///
+  /// Required.
+  core.String? osImage;
+
+  /// List of SSH Keys used during reimaging an instance.
+  ///
+  /// Optional.
+  core.List<core.String>? sshKeys;
+
+  ReimageInstanceRequest({
+    this.kmsKeyVersion,
+    this.osImage,
+    this.sshKeys,
+  });
+
+  ReimageInstanceRequest.fromJson(core.Map json_)
+      : this(
+          kmsKeyVersion: json_.containsKey('kmsKeyVersion')
+              ? json_['kmsKeyVersion'] as core.String
+              : null,
+          osImage: json_.containsKey('osImage')
+              ? json_['osImage'] as core.String
+              : null,
+          sshKeys: json_.containsKey('sshKeys')
+              ? (json_['sshKeys'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kmsKeyVersion != null) 'kmsKeyVersion': kmsKeyVersion!,
+        if (osImage != null) 'osImage': osImage!,
+        if (sshKeys != null) 'sshKeys': sshKeys!,
       };
 }
 

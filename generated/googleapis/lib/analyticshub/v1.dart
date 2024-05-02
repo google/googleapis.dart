@@ -1222,8 +1222,15 @@ class ProjectsLocationsSubscriptionsResource {
   /// projects/myproject/locations/US
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [filter] - The filter expression may be used to filter by Data Exchange or
-  /// Listing.
+  /// [filter] - An expression for filtering the results of the request.
+  /// Eligible fields for filtering are: + `listing` + `data_exchange`
+  /// Alternatively, a literal wrapped in double quotes may be provided. This
+  /// will be checked for an exact match against both fields above. In all
+  /// cases, the full Data Exchange or Listing resource name must be provided.
+  /// Some example of using filters: +
+  /// data_exchange="projects/myproject/locations/us/dataExchanges/123" +
+  /// listing="projects/123/locations/us/dataExchanges/456/listings/789" +
+  /// "projects/myproject/locations/us/dataExchanges/123"
   ///
   /// [pageSize] - The maximum number of results to return in a single response
   /// page.
@@ -1470,6 +1477,12 @@ class BigQueryDatasetSource {
   /// e.g. `projects/myproject/datasets/123`
   core.String? dataset;
 
+  /// If set, restricted export policy will be propagated and enforced on the
+  /// linked dataset.
+  ///
+  /// Optional.
+  RestrictedExportPolicy? restrictedExportPolicy;
+
   /// Resources in this dataset that are selectively shared.
   ///
   /// If this field is empty, then the entire dataset (all resources) are
@@ -1480,6 +1493,7 @@ class BigQueryDatasetSource {
 
   BigQueryDatasetSource({
     this.dataset,
+    this.restrictedExportPolicy,
     this.selectedResources,
   });
 
@@ -1487,6 +1501,10 @@ class BigQueryDatasetSource {
       : this(
           dataset: json_.containsKey('dataset')
               ? json_['dataset'] as core.String
+              : null,
+          restrictedExportPolicy: json_.containsKey('restrictedExportPolicy')
+              ? RestrictedExportPolicy.fromJson(json_['restrictedExportPolicy']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           selectedResources: json_.containsKey('selectedResources')
               ? (json_['selectedResources'] as core.List)
@@ -1498,6 +1516,8 @@ class BigQueryDatasetSource {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dataset != null) 'dataset': dataset!,
+        if (restrictedExportPolicy != null)
+          'restrictedExportPolicy': restrictedExportPolicy!,
         if (selectedResources != null) 'selectedResources': selectedResources!,
       };
 }
@@ -1981,7 +2001,7 @@ class GetIamPolicyRequest {
 }
 
 /// Encapsulates settings provided to GetIamPolicy.
-typedef GetPolicyOptions = $GetPolicyOptions;
+typedef GetPolicyOptions = $GetPolicyOptions00;
 
 /// Reference to a linked resource tracked by this Subscription.
 class LinkedResource {
@@ -2636,6 +2656,55 @@ class RestrictedExportConfig {
       };
 }
 
+/// Restricted export policy used to configure restricted export on linked
+/// dataset.
+class RestrictedExportPolicy {
+  /// If true, enable restricted export.
+  ///
+  /// Optional.
+  core.bool? enabled;
+
+  /// If true, restrict direct table access (read api/tabledata.list) on linked
+  /// table.
+  ///
+  /// Optional.
+  core.bool? restrictDirectTableAccess;
+
+  /// If true, restrict export of query result derived from restricted linked
+  /// dataset table.
+  ///
+  /// Optional.
+  core.bool? restrictQueryResult;
+
+  RestrictedExportPolicy({
+    this.enabled,
+    this.restrictDirectTableAccess,
+    this.restrictQueryResult,
+  });
+
+  RestrictedExportPolicy.fromJson(core.Map json_)
+      : this(
+          enabled: json_.containsKey('enabled')
+              ? json_['enabled'] as core.bool
+              : null,
+          restrictDirectTableAccess:
+              json_.containsKey('restrictDirectTableAccess')
+                  ? json_['restrictDirectTableAccess'] as core.bool
+                  : null,
+          restrictQueryResult: json_.containsKey('restrictQueryResult')
+              ? json_['restrictQueryResult'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
+        if (restrictDirectTableAccess != null)
+          'restrictDirectTableAccess': restrictDirectTableAccess!,
+        if (restrictQueryResult != null)
+          'restrictQueryResult': restrictQueryResult!,
+      };
+}
+
 /// Message for revoking a subscription.
 typedef RevokeSubscriptionRequest = $Empty;
 
@@ -2794,6 +2863,8 @@ class SubscribeDataExchangeRequest {
 
 /// Message for subscribing to a listing.
 class SubscribeListingRequest {
+  /// Input only.
+  ///
   /// BigQuery destination dataset to create for the subscriber.
   DestinationDataset? destinationDataset;
 

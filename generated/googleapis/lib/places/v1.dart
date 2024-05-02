@@ -2873,8 +2873,10 @@ class GoogleMapsPlacesV1SearchTextRequest {
 
   /// How results will be ranked in the response.
   /// Possible string values are:
-  /// - "RANK_PREFERENCE_UNSPECIFIED" : RankPreference value not set. Will
-  /// default to DISTANCE.
+  /// - "RANK_PREFERENCE_UNSPECIFIED" : For a categorical query such as
+  /// "Restaurants in New York City", RELEVANCE is the default. For
+  /// non-categorical queries such as "Mountain View, CA" we recommend that you
+  /// leave rankPreference unset.
   /// - "DISTANCE" : Ranks results by distance.
   /// - "RELEVANCE" : Ranks results by relevance. Sort order determined by
   /// normal ranking stack.
@@ -2989,16 +2991,15 @@ class GoogleMapsPlacesV1SearchTextRequest {
 class GoogleMapsPlacesV1SearchTextRequestEVOptions {
   /// The list of preferred EV connector types.
   ///
-  /// A place that does not support any of the listed connector types are filter
-  /// out.
+  /// A place that does not support any of the listed connector types is
+  /// filtered out.
   ///
   /// Optional.
   core.List<core.String>? connectorTypes;
 
-  /// Filtering places by minimum charging rate.
+  /// Minimum required charging rate in kilowatts.
   ///
-  /// Any places with charging a rate less than the minimum charging rate are
-  /// filtered out.
+  /// A place with a charging rate less than the specified rate is filtered out.
   ///
   /// Optional.
   core.double? minimumChargingRateKw;

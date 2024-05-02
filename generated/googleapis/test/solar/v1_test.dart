@@ -1125,6 +1125,7 @@ void main() {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
       final res = api.SolarApi(mock).dataLayers;
+      final arg_exactQualityRequired = true;
       final arg_location_latitude = 42.0;
       final arg_location_longitude = 42.0;
       final arg_pixelSizeMeters = 42.0;
@@ -1164,6 +1165,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['exactQualityRequired']!.first,
+          unittest.equals('$arg_exactQualityRequired'),
+        );
+        unittest.expect(
           core.num.parse(queryMap['location.latitude']!.first),
           unittest.equals(arg_location_latitude),
         );
@@ -1199,6 +1204,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(
+          exactQualityRequired: arg_exactQualityRequired,
           location_latitude: arg_location_latitude,
           location_longitude: arg_location_longitude,
           pixelSizeMeters: arg_pixelSizeMeters,

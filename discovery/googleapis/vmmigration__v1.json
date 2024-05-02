@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240328",
+    "revision": "20240411",
     "rootUrl": "https://vmmigration.googleapis.com/",
     "servicePath": "",
     "title": "VM Migration API",
@@ -3714,7 +3714,7 @@
                 },
                 "encryption": {
                     "$ref": "Encryption",
-                    "description": "Optional. Immutable. The encryption to apply to the image."
+                    "description": "Immutable. The encryption to apply to the image."
                 },
                 "familyName": {
                     "description": "Optional. The name of the image family to which the new image belongs.",

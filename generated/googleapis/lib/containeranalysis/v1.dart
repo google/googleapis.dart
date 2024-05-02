@@ -2596,46 +2596,7 @@ class ComplianceOccurrence {
 
 /// Describes the CIS benchmark version that is applicable to a given OS and os
 /// version.
-class ComplianceVersion {
-  /// The name of the document that defines this benchmark, e.g. "CIS
-  /// Container-Optimized OS".
-  core.String? benchmarkDocument;
-
-  /// The CPE URI (https://cpe.mitre.org/specification/) this benchmark is
-  /// applicable to.
-  core.String? cpeUri;
-
-  /// The version of the benchmark.
-  ///
-  /// This is set to the version of the OS-specific CIS document the benchmark
-  /// is defined in.
-  core.String? version;
-
-  ComplianceVersion({
-    this.benchmarkDocument,
-    this.cpeUri,
-    this.version,
-  });
-
-  ComplianceVersion.fromJson(core.Map json_)
-      : this(
-          benchmarkDocument: json_.containsKey('benchmarkDocument')
-              ? json_['benchmarkDocument'] as core.String
-              : null,
-          cpeUri: json_.containsKey('cpeUri')
-              ? json_['cpeUri'] as core.String
-              : null,
-          version: json_.containsKey('version')
-              ? json_['version'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (benchmarkDocument != null) 'benchmarkDocument': benchmarkDocument!,
-        if (cpeUri != null) 'cpeUri': cpeUri!,
-        if (version != null) 'version': version!,
-      };
-}
+typedef ComplianceVersion = $ComplianceVersion;
 
 class DSSEAttestationNote {
   /// DSSEHint hints at the purpose of the attestation authority.
@@ -3457,7 +3418,7 @@ class GetIamPolicyRequest {
 }
 
 /// Encapsulates settings provided to GetIamPolicy.
-typedef GetPolicyOptions = $GetPolicyOptions;
+typedef GetPolicyOptions = $GetPolicyOptions00;
 
 /// A GitSourceContext denotes a particular revision in a third party Git
 /// repository (e.g., GitHub).

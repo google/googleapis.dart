@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240304",
+    "revision": "20240424",
     "rootUrl": "https://vmwareengine.googleapis.com/",
     "servicePath": "",
     "title": "VMware Engine API",
@@ -4223,12 +4223,18 @@
                     "enum": [
                         "PROTOCOL_UNSPECIFIED",
                         "UDP",
-                        "TCP"
+                        "TCP",
+                        "TLS",
+                        "SSL",
+                        "RELP"
                     ],
                     "enumDescriptions": [
                         "Unspecified communications protocol. This is the default value.",
                         "UDP",
-                        "TCP"
+                        "TCP",
+                        "TLS",
+                        "SSL",
+                        "RELP"
                     ],
                     "type": "string"
                 },

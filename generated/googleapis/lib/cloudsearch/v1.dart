@@ -3839,26 +3839,7 @@ class DoublePropertyOptions {
 }
 
 /// List of double values.
-class DoubleValues {
-  core.List<core.double>? values;
-
-  DoubleValues({
-    this.values,
-  });
-
-  DoubleValues.fromJson(core.Map json_)
-      : this(
-          values: json_.containsKey('values')
-              ? (json_['values'] as core.List)
-                  .map((value) => (value as core.num).toDouble())
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (values != null) 'values': values!,
-      };
-}
+typedef DoubleValues = $Shared06;
 
 /// A person's email address.
 class EmailAddress {
@@ -5112,26 +5093,7 @@ class IntegerPropertyOptions {
 }
 
 /// List of integer values.
-class IntegerValues {
-  core.List<core.String>? values;
-
-  IntegerValues({
-    this.values,
-  });
-
-  IntegerValues.fromJson(core.Map json_)
-      : this(
-          values: json_.containsKey('values')
-              ? (json_['values'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (values != null) 'values': values!,
-      };
-}
+typedef IntegerValues = $Shared07;
 
 /// Represents an interaction between a user and an item.
 class Interaction {

@@ -6435,7 +6435,7 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// [targetingType] - Required. Identifies the type of this assigned targeting
   /// option. Supported targeting types: * `TARGETING_TYPE_CHANNEL` *
   /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` *
-  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
+  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD`
   /// Value must have pattern `^\[^/\]+$`.
   /// Possible string values are:
   /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
@@ -6594,7 +6594,7 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// [targetingType] - Required. Identifies the type of this assigned targeting
   /// option. Supported targeting types: * `TARGETING_TYPE_CHANNEL` *
   /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` *
-  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
+  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD`
   /// Value must have pattern `^\[^/\]+$`.
   /// Possible string values are:
   /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
@@ -14494,7 +14494,7 @@ class BulkEditAdvertiserAssignedTargetingOptionsRequest {
   ///
   /// Supported targeting types: * `TARGETING_TYPE_CHANNEL` *
   /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` *
-  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
+  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD`
   core.List<CreateAssignedTargetingOptionsRequest>? createRequests;
 
   /// The assigned targeting options to delete in batch, specified as a list of
@@ -14502,7 +14502,7 @@ class BulkEditAdvertiserAssignedTargetingOptionsRequest {
   ///
   /// Supported targeting types: * `TARGETING_TYPE_CHANNEL` *
   /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` *
-  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
+  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD`
   core.List<DeleteAssignedTargetingOptionsRequest>? deleteRequests;
 
   BulkEditAdvertiserAssignedTargetingOptionsRequest({

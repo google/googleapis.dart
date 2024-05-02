@@ -154,6 +154,7 @@ api.Channel buildChannel() {
     o.name = 'foo';
     o.provider = 'foo';
     o.pubsubTopic = 'foo';
+    o.satisfiesPzs = true;
     o.state = 'foo';
     o.uid = 'foo';
     o.updateTime = 'foo';
@@ -189,6 +190,7 @@ void checkChannel(api.Channel o) {
       o.pubsubTopic!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.satisfiesPzs!, unittest.isTrue);
     unittest.expect(
       o.state!,
       unittest.equals('foo'),
@@ -1520,6 +1522,7 @@ api.Trigger buildTrigger() {
     o.eventFilters = buildUnnamed26();
     o.labels = buildUnnamed27();
     o.name = 'foo';
+    o.satisfiesPzs = true;
     o.serviceAccount = 'foo';
     o.transport = buildTransport();
     o.uid = 'foo';
@@ -1556,6 +1559,7 @@ void checkTrigger(api.Trigger o) {
       o.name!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.satisfiesPzs!, unittest.isTrue);
     unittest.expect(
       o.serviceAccount!,
       unittest.equals('foo'),

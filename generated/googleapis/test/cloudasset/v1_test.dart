@@ -5351,6 +5351,7 @@ api.Tag buildTag() {
   buildCounterTag++;
   if (buildCounterTag < 3) {
     o.tagKey = 'foo';
+    o.tagKeyId = 'foo';
     o.tagValue = 'foo';
     o.tagValueId = 'foo';
   }
@@ -5363,6 +5364,10 @@ void checkTag(api.Tag o) {
   if (buildCounterTag < 3) {
     unittest.expect(
       o.tagKey!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.tagKeyId!,
       unittest.equals('foo'),
     );
     unittest.expect(

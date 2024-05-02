@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240411",
+    "revision": "20240507",
     "rootUrl": "https://androidpublisher.googleapis.com/",
     "servicePath": "",
     "title": "Google Play Android Developer API",
@@ -7467,7 +7467,7 @@
             "type": "object"
         },
         "OfferTag": {
-            "description": "Represents a custom tag specified for one-time products, purchase options, base plans and offers.",
+            "description": "Represents a custom tag specified for base plans and subscription offers.",
             "id": "OfferTag",
             "properties": {
                 "tag": {
@@ -7486,6 +7486,12 @@
                     "type": "string"
                 }
             },
+            "type": "object"
+        },
+        "OtherRecurringProduct": {
+            "description": "Details of a recurring external transaction product which doesn't belong to any other more specific category.",
+            "id": "OtherRecurringProduct",
+            "properties": {},
             "type": "object"
         },
         "OtherRegionsBasePlanConfig": {
@@ -7526,6 +7532,10 @@
                     "$ref": "OtherRegionsSubscriptionOfferPhasePrices",
                     "description": "The absolute amount of money subtracted from the base plan price prorated over the phase duration that the user pays for this offer phase. For example, if the base plan price for this region is $12 for a period of 1 year, then a $1 absolute discount for a phase of a duration of 3 months would correspond to a price of $2. The resulting price may not be smaller than the minimum price allowed for any new locations Play may launch in."
                 },
+                "free": {
+                    "$ref": "OtherRegionsSubscriptionOfferPhaseFreePriceOverride",
+                    "description": "Set to specify this offer is free to obtain."
+                },
                 "otherRegionsPrices": {
                     "$ref": "OtherRegionsSubscriptionOfferPhasePrices",
                     "description": "The absolute price the user pays for this offer phase. The price must not be smaller than the minimum price allowed for any new locations Play may launch in."
@@ -7536,6 +7546,12 @@
                     "type": "number"
                 }
             },
+            "type": "object"
+        },
+        "OtherRegionsSubscriptionOfferPhaseFreePriceOverride": {
+            "description": "Represents the free price override configuration for any new locations Play may launch for a single offer phase.",
+            "id": "OtherRegionsSubscriptionOfferPhaseFreePriceOverride",
+            "properties": {},
             "type": "object"
         },
         "OtherRegionsSubscriptionOfferPhasePrices": {
@@ -7768,6 +7784,10 @@
                         "Alternative billing only, where users may only use developer-manager billing."
                     ],
                     "type": "string"
+                },
+                "otherRecurringProduct": {
+                    "$ref": "OtherRecurringProduct",
+                    "description": "Details of a recurring external transaction product which doesn't belong to any other specific category."
                 }
             },
             "type": "object"
@@ -7864,6 +7884,10 @@
                     "$ref": "Money",
                     "description": "The absolute amount of money subtracted from the base plan price prorated over the phase duration that the user pays for this offer phase. For example, if the base plan price for this region is $12 for a period of 1 year, then a $1 absolute discount for a phase of a duration of 3 months would correspond to a price of $2. The resulting price may not be smaller than the minimum price allowed for this region."
                 },
+                "free": {
+                    "$ref": "RegionalSubscriptionOfferPhaseFreePriceOverride",
+                    "description": "Set to specify this offer is free to obtain."
+                },
                 "price": {
                     "$ref": "Money",
                     "description": "The absolute price the user pays for this offer phase. The price must not be smaller than the minimum price allowed for this region."
@@ -7878,6 +7902,12 @@
                     "type": "number"
                 }
             },
+            "type": "object"
+        },
+        "RegionalSubscriptionOfferPhaseFreePriceOverride": {
+            "description": "Represents the free price override configuration for a single phase of a subscription offer",
+            "id": "RegionalSubscriptionOfferPhaseFreePriceOverride",
+            "properties": {},
             "type": "object"
         },
         "RegionalTaxRateInfo": {
@@ -8772,7 +8802,7 @@
                 },
                 "canceledStateContext": {
                     "$ref": "CanceledStateContext",
-                    "description": "Additional context around canceled subscriptions. Only present if the subscription currently has subscription_state SUBSCRIPTION_STATE_CANCELED."
+                    "description": "Additional context around canceled subscriptions. Only present if the subscription currently has subscription_state SUBSCRIPTION_STATE_CANCELED or SUBSCRIPTION_STATE_EXPIRED."
                 },
                 "externalAccountIdentifiers": {
                     "$ref": "ExternalAccountIdentifiers",

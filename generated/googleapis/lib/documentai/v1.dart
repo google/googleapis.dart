@@ -3203,15 +3203,23 @@ class GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo {
   core.double? pixelFontSize;
 
   /// Whether the text is in small caps.
+  ///
+  /// This feature is not supported yet.
   core.bool? smallcaps;
 
   /// Whether the text is strikethrough.
+  ///
+  /// This feature is not supported yet.
   core.bool? strikeout;
 
   /// Whether the text is a subscript.
+  ///
+  /// This feature is not supported yet.
   core.bool? subscript;
 
   /// Whether the text is a superscript.
+  ///
+  /// This feature is not supported yet.
   core.bool? superscript;
 
   /// Color of the text.

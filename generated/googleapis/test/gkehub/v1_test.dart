@@ -2617,6 +2617,30 @@ void checkIdentityServiceGroupConfig(api.IdentityServiceGroupConfig o) {
   buildCounterIdentityServiceGroupConfig--;
 }
 
+core.int buildCounterIdentityServiceIdentityServiceOptions = 0;
+api.IdentityServiceIdentityServiceOptions
+    buildIdentityServiceIdentityServiceOptions() {
+  final o = api.IdentityServiceIdentityServiceOptions();
+  buildCounterIdentityServiceIdentityServiceOptions++;
+  if (buildCounterIdentityServiceIdentityServiceOptions < 3) {
+    o.sessionDuration = 'foo';
+  }
+  buildCounterIdentityServiceIdentityServiceOptions--;
+  return o;
+}
+
+void checkIdentityServiceIdentityServiceOptions(
+    api.IdentityServiceIdentityServiceOptions o) {
+  buildCounterIdentityServiceIdentityServiceOptions++;
+  if (buildCounterIdentityServiceIdentityServiceOptions < 3) {
+    unittest.expect(
+      o.sessionDuration!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterIdentityServiceIdentityServiceOptions--;
+}
+
 core.int buildCounterIdentityServiceLdapConfig = 0;
 api.IdentityServiceLdapConfig buildIdentityServiceLdapConfig() {
   final o = api.IdentityServiceLdapConfig();
@@ -2659,6 +2683,7 @@ api.IdentityServiceMembershipSpec buildIdentityServiceMembershipSpec() {
   buildCounterIdentityServiceMembershipSpec++;
   if (buildCounterIdentityServiceMembershipSpec < 3) {
     o.authMethods = buildUnnamed28();
+    o.identityServiceOptions = buildIdentityServiceIdentityServiceOptions();
   }
   buildCounterIdentityServiceMembershipSpec--;
   return o;
@@ -2668,6 +2693,7 @@ void checkIdentityServiceMembershipSpec(api.IdentityServiceMembershipSpec o) {
   buildCounterIdentityServiceMembershipSpec++;
   if (buildCounterIdentityServiceMembershipSpec < 3) {
     checkUnnamed28(o.authMethods!);
+    checkIdentityServiceIdentityServiceOptions(o.identityServiceOptions!);
   }
   buildCounterIdentityServiceMembershipSpec--;
 }
@@ -5213,6 +5239,7 @@ api.ServiceMeshControlPlaneManagement buildServiceMeshControlPlaneManagement() {
   buildCounterServiceMeshControlPlaneManagement++;
   if (buildCounterServiceMeshControlPlaneManagement < 3) {
     o.details = buildUnnamed67();
+    o.implementation = 'foo';
     o.state = 'foo';
   }
   buildCounterServiceMeshControlPlaneManagement--;
@@ -5224,6 +5251,10 @@ void checkServiceMeshControlPlaneManagement(
   buildCounterServiceMeshControlPlaneManagement++;
   if (buildCounterServiceMeshControlPlaneManagement < 3) {
     checkUnnamed67(o.details!);
+    unittest.expect(
+      o.implementation!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.state!,
       unittest.equals('foo'),
@@ -6280,6 +6311,16 @@ void main() {
       final od = api.IdentityServiceGroupConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkIdentityServiceGroupConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-IdentityServiceIdentityServiceOptions', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildIdentityServiceIdentityServiceOptions();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.IdentityServiceIdentityServiceOptions.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkIdentityServiceIdentityServiceOptions(od);
     });
   });
 

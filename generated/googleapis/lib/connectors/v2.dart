@@ -1146,11 +1146,13 @@ class EntityType {
 
   /// The name of the entity type.
   core.String? name;
+  core.List<core.String>? operations;
 
   EntityType({
     this.fields,
     this.jsonSchema,
     this.name,
+    this.operations,
   });
 
   EntityType.fromJson(core.Map json_)
@@ -1166,12 +1168,18 @@ class EntityType {
                   json_['jsonSchema'] as core.Map<core.String, core.dynamic>)
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          operations: json_.containsKey('operations')
+              ? (json_['operations'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (fields != null) 'fields': fields!,
         if (jsonSchema != null) 'jsonSchema': jsonSchema!,
         if (name != null) 'name': name!,
+        if (operations != null) 'operations': operations!,
       };
 }
 

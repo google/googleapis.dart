@@ -2058,6 +2058,35 @@ class ApiOperation {
       };
 }
 
+/// An application that accesses Google Cloud APIs.
+class Application {
+  /// The OAuth client ID of the application.
+  core.String? clientId;
+
+  /// The name of the application.
+  ///
+  /// Example: "Cloud Console"
+  core.String? name;
+
+  Application({
+    this.clientId,
+    this.name,
+  });
+
+  Application.fromJson(core.Map json_)
+      : this(
+          clientId: json_.containsKey('clientId')
+              ? json_['clientId'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (clientId != null) 'clientId': clientId!,
+        if (name != null) 'name': name!,
+      };
+}
+
 /// Specifies the audit configuration for a service.
 ///
 /// The configuration determines which permission types are logged, and what
@@ -2630,9 +2659,12 @@ class DevicePolicy {
 /// then that ServicePerimeter must have an IngressPolicy which allows access in
 /// order for this request to succeed.
 class EgressFrom {
-  /// A list of identities that are allowed access through this
-  /// \[EgressPolicy\], in the format of `user:{email_id}` or
-  /// `serviceAccount:{email_id}`.
+  /// A list of identities that are allowed access through \[EgressPolicy\].
+  ///
+  /// Identities can be an individual user, service account, Google group, or
+  /// third-party identity. The `v1` identities that have the prefix `user`,
+  /// `group`, `serviceAccount`, `principal`, and `principalSet` in
+  /// https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
   core.List<core.String>? identities;
 
   /// Specifies the type of identities that are allowed access to outside the
@@ -2767,7 +2799,8 @@ class EgressTo {
   /// A list of external resources that are allowed to be accessed.
   ///
   /// Only AWS and Azure resources are supported. For Amazon S3, the supported
-  /// format is s3://BUCKET_NAME. For Azure Storage, the supported format is
+  /// formats are s3://BUCKET_NAME, s3a://BUCKET_NAME, and s3n://BUCKET_NAME.
+  /// For Azure Storage, the supported format is
   /// azure://myaccount.blob.core.windows.net/CONTAINER_NAME. A request matches
   /// if it contains an external resource in this list (Example:
   /// s3://bucket/path). Currently '*' is not allowed.
@@ -2892,11 +2925,20 @@ class GcpUserAccessBinding {
   /// Immutable.
   core.String? name;
 
+  /// A list of applications that are subject to this binding's restrictions.
+  ///
+  /// If the list is empty, the binding restrictions will universally apply to
+  /// all applications.
+  ///
+  /// Optional.
+  core.List<Application>? restrictedClientApplications;
+
   GcpUserAccessBinding({
     this.accessLevels,
     this.dryRunAccessLevels,
     this.groupKey,
     this.name,
+    this.restrictedClientApplications,
   });
 
   GcpUserAccessBinding.fromJson(core.Map json_)
@@ -2915,6 +2957,13 @@ class GcpUserAccessBinding {
               ? json_['groupKey'] as core.String
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          restrictedClientApplications:
+              json_.containsKey('restrictedClientApplications')
+                  ? (json_['restrictedClientApplications'] as core.List)
+                      .map((value) => Application.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2923,6 +2972,8 @@ class GcpUserAccessBinding {
           'dryRunAccessLevels': dryRunAccessLevels!,
         if (groupKey != null) 'groupKey': groupKey!,
         if (name != null) 'name': name!,
+        if (restrictedClientApplications != null)
+          'restrictedClientApplications': restrictedClientApplications!,
       };
 }
 
@@ -2950,7 +3001,7 @@ class GetIamPolicyRequest {
 }
 
 /// Encapsulates settings provided to GetIamPolicy.
-typedef GetPolicyOptions = $GetPolicyOptions;
+typedef GetPolicyOptions = $GetPolicyOptions00;
 
 /// Defines the conditions under which an IngressPolicy matches a request.
 ///
@@ -2958,8 +3009,12 @@ typedef GetPolicyOptions = $GetPolicyOptions;
 /// request must satisfy what is defined in `sources` AND identity related
 /// fields in order to match.
 class IngressFrom {
-  /// A list of identities that are allowed access through this ingress policy,
-  /// in the format of `user:{email_id}` or `serviceAccount:{email_id}`.
+  /// A list of identities that are allowed access through \[IngressPolicy\].
+  ///
+  /// Identities can be an individual user, service account, Google group, or
+  /// third-party identity. The `v1` identities that have the prefix `user`,
+  /// `group`, `serviceAccount`, `principal`, and `principalSet` in
+  /// https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
   core.List<core.String>? identities;
 
   /// Specifies the type of identities that are allowed access from outside the

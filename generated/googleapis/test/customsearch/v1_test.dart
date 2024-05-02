@@ -1383,6 +1383,7 @@ void main() {
       final arg_searchType = 'foo';
       final arg_siteSearch = 'foo';
       final arg_siteSearchFilter = 'foo';
+      final arg_snippetLength = 42;
       final arg_sort = 'foo';
       final arg_start = 42;
       final arg_$fields = 'foo';
@@ -1534,6 +1535,10 @@ void main() {
           unittest.equals(arg_siteSearchFilter),
         );
         unittest.expect(
+          core.int.parse(queryMap['snippetLength']!.first),
+          unittest.equals(arg_snippetLength),
+        );
+        unittest.expect(
           queryMap['sort']!.first,
           unittest.equals(arg_sort),
         );
@@ -1582,6 +1587,7 @@ void main() {
           searchType: arg_searchType,
           siteSearch: arg_siteSearch,
           siteSearchFilter: arg_siteSearchFilter,
+          snippetLength: arg_snippetLength,
           sort: arg_sort,
           start: arg_start,
           $fields: arg_$fields);
@@ -1622,6 +1628,7 @@ void main() {
       final arg_searchType = 'foo';
       final arg_siteSearch = 'foo';
       final arg_siteSearchFilter = 'foo';
+      final arg_snippetLength = 42;
       final arg_sort = 'foo';
       final arg_start = 42;
       final arg_$fields = 'foo';
@@ -1773,6 +1780,10 @@ void main() {
           unittest.equals(arg_siteSearchFilter),
         );
         unittest.expect(
+          core.int.parse(queryMap['snippetLength']!.first),
+          unittest.equals(arg_snippetLength),
+        );
+        unittest.expect(
           queryMap['sort']!.first,
           unittest.equals(arg_sort),
         );
@@ -1821,6 +1832,7 @@ void main() {
           searchType: arg_searchType,
           siteSearch: arg_siteSearch,
           siteSearchFilter: arg_siteSearchFilter,
+          snippetLength: arg_snippetLength,
           sort: arg_sort,
           start: arg_start,
           $fields: arg_$fields);

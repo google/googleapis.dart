@@ -932,9 +932,13 @@ class ComplianceOccurrence {
   core.String? nonComplianceReason;
   core.List<NonCompliantFile>? nonCompliantFiles;
 
+  /// The OS and config version the benchmark was run on.
+  ComplianceVersion? version;
+
   ComplianceOccurrence({
     this.nonComplianceReason,
     this.nonCompliantFiles,
+    this.version,
   });
 
   ComplianceOccurrence.fromJson(core.Map json_)
@@ -948,14 +952,23 @@ class ComplianceOccurrence {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          version: json_.containsKey('version')
+              ? ComplianceVersion.fromJson(
+                  json_['version'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nonComplianceReason != null)
           'nonComplianceReason': nonComplianceReason!,
         if (nonCompliantFiles != null) 'nonCompliantFiles': nonCompliantFiles!,
+        if (version != null) 'version': version!,
       };
 }
+
+/// Describes the CIS benchmark version that is applicable to a given OS and os
+/// version.
+typedef ComplianceVersion = $ComplianceVersion;
 
 /// Prefer to use a regular Occurrence, and populate the Envelope at the top
 /// level of the Occurrence.

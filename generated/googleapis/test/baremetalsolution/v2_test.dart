@@ -96,6 +96,21 @@ void checkDetachLunRequest(api.DetachLunRequest o) {
   buildCounterDetachLunRequest--;
 }
 
+core.int buildCounterDisableHyperthreadingRequest = 0;
+api.DisableHyperthreadingRequest buildDisableHyperthreadingRequest() {
+  final o = api.DisableHyperthreadingRequest();
+  buildCounterDisableHyperthreadingRequest++;
+  if (buildCounterDisableHyperthreadingRequest < 3) {}
+  buildCounterDisableHyperthreadingRequest--;
+  return o;
+}
+
+void checkDisableHyperthreadingRequest(api.DisableHyperthreadingRequest o) {
+  buildCounterDisableHyperthreadingRequest++;
+  if (buildCounterDisableHyperthreadingRequest < 3) {}
+  buildCounterDisableHyperthreadingRequest--;
+}
+
 core.int buildCounterDisableInteractiveSerialConsoleRequest = 0;
 api.DisableInteractiveSerialConsoleRequest
     buildDisableInteractiveSerialConsoleRequest() {
@@ -126,6 +141,21 @@ void checkEmpty(api.Empty o) {
   buildCounterEmpty++;
   if (buildCounterEmpty < 3) {}
   buildCounterEmpty--;
+}
+
+core.int buildCounterEnableHyperthreadingRequest = 0;
+api.EnableHyperthreadingRequest buildEnableHyperthreadingRequest() {
+  final o = api.EnableHyperthreadingRequest();
+  buildCounterEnableHyperthreadingRequest++;
+  if (buildCounterEnableHyperthreadingRequest < 3) {}
+  buildCounterEnableHyperthreadingRequest--;
+  return o;
+}
+
+void checkEnableHyperthreadingRequest(api.EnableHyperthreadingRequest o) {
+  buildCounterEnableHyperthreadingRequest++;
+  if (buildCounterEnableHyperthreadingRequest < 3) {}
+  buildCounterEnableHyperthreadingRequest--;
 }
 
 core.int buildCounterEnableInteractiveSerialConsoleRequest = 0;
@@ -2215,6 +2245,52 @@ void checkQosPolicy(api.QosPolicy o) {
   buildCounterQosPolicy--;
 }
 
+core.List<core.String> buildUnnamed46() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed46(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterReimageInstanceRequest = 0;
+api.ReimageInstanceRequest buildReimageInstanceRequest() {
+  final o = api.ReimageInstanceRequest();
+  buildCounterReimageInstanceRequest++;
+  if (buildCounterReimageInstanceRequest < 3) {
+    o.kmsKeyVersion = 'foo';
+    o.osImage = 'foo';
+    o.sshKeys = buildUnnamed46();
+  }
+  buildCounterReimageInstanceRequest--;
+  return o;
+}
+
+void checkReimageInstanceRequest(api.ReimageInstanceRequest o) {
+  buildCounterReimageInstanceRequest++;
+  if (buildCounterReimageInstanceRequest < 3) {
+    unittest.expect(
+      o.kmsKeyVersion!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.osImage!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed46(o.sshKeys!);
+  }
+  buildCounterReimageInstanceRequest--;
+}
+
 core.int buildCounterRenameInstanceRequest = 0;
 api.RenameInstanceRequest buildRenameInstanceRequest() {
   final o = api.RenameInstanceRequest();
@@ -2434,7 +2510,7 @@ void checkStartInstanceRequest(api.StartInstanceRequest o) {
   buildCounterStartInstanceRequest--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed46() => {
+core.Map<core.String, core.Object?> buildUnnamed47() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -2447,7 +2523,7 @@ core.Map<core.String, core.Object?> buildUnnamed46() => {
       },
     };
 
-void checkUnnamed46(core.Map<core.String, core.Object?> o) {
+void checkUnnamed47(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o['x']!) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
@@ -2479,15 +2555,15 @@ void checkUnnamed46(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed47() => [
-      buildUnnamed46(),
-      buildUnnamed46(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed48() => [
+      buildUnnamed47(),
+      buildUnnamed47(),
     ];
 
-void checkUnnamed47(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed48(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed46(o[0]);
-  checkUnnamed46(o[1]);
+  checkUnnamed47(o[0]);
+  checkUnnamed47(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -2496,7 +2572,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed47();
+    o.details = buildUnnamed48();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -2510,7 +2586,7 @@ void checkStatus(api.Status o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed47(o.details!);
+    checkUnnamed48(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -2606,12 +2682,12 @@ void checkUserAccount(api.UserAccount o) {
   buildCounterUserAccount--;
 }
 
-core.List<api.VlanAttachment> buildUnnamed48() => [
+core.List<api.VlanAttachment> buildUnnamed49() => [
       buildVlanAttachment(),
       buildVlanAttachment(),
     ];
 
-void checkUnnamed48(core.List<api.VlanAttachment> o) {
+void checkUnnamed49(core.List<api.VlanAttachment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVlanAttachment(o[0]);
   checkVlanAttachment(o[1]);
@@ -2625,7 +2701,7 @@ api.VRF buildVRF() {
     o.name = 'foo';
     o.qosPolicy = buildQosPolicy();
     o.state = 'foo';
-    o.vlanAttachments = buildUnnamed48();
+    o.vlanAttachments = buildUnnamed49();
   }
   buildCounterVRF--;
   return o;
@@ -2643,7 +2719,7 @@ void checkVRF(api.VRF o) {
       o.state!,
       unittest.equals('foo'),
     );
-    checkUnnamed48(o.vlanAttachments!);
+    checkUnnamed49(o.vlanAttachments!);
   }
   buildCounterVRF--;
 }
@@ -2697,12 +2773,12 @@ void checkVlanAttachment(api.VlanAttachment o) {
   buildCounterVlanAttachment--;
 }
 
-core.List<core.String> buildUnnamed49() => [
+core.List<core.String> buildUnnamed50() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed49(core.List<core.String> o) {
+void checkUnnamed50(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2714,12 +2790,12 @@ void checkUnnamed49(core.List<core.String> o) {
   );
 }
 
-core.Map<core.String, core.String> buildUnnamed50() => {
+core.Map<core.String, core.String> buildUnnamed51() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed50(core.Map<core.String, core.String> o) {
+void checkUnnamed51(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -2743,8 +2819,8 @@ api.Volume buildVolume() {
     o.emergencySizeGib = 'foo';
     o.expireTime = 'foo';
     o.id = 'foo';
-    o.instances = buildUnnamed49();
-    o.labels = buildUnnamed50();
+    o.instances = buildUnnamed50();
+    o.labels = buildUnnamed51();
     o.maxSizeGib = 'foo';
     o.name = 'foo';
     o.notes = 'foo';
@@ -2790,8 +2866,8 @@ void checkVolume(api.Volume o) {
       o.id!,
       unittest.equals('foo'),
     );
-    checkUnnamed49(o.instances!);
-    checkUnnamed50(o.labels!);
+    checkUnnamed50(o.instances!);
+    checkUnnamed51(o.labels!);
     unittest.expect(
       o.maxSizeGib!,
       unittest.equals('foo'),
@@ -2850,23 +2926,23 @@ void checkVolume(api.Volume o) {
   buildCounterVolume--;
 }
 
-core.List<api.LunRange> buildUnnamed51() => [
+core.List<api.LunRange> buildUnnamed52() => [
       buildLunRange(),
       buildLunRange(),
     ];
 
-void checkUnnamed51(core.List<api.LunRange> o) {
+void checkUnnamed52(core.List<api.LunRange> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLunRange(o[0]);
   checkLunRange(o[1]);
 }
 
-core.List<core.String> buildUnnamed52() => [
+core.List<core.String> buildUnnamed53() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed52(core.List<core.String> o) {
+void checkUnnamed53(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2878,12 +2954,12 @@ void checkUnnamed52(core.List<core.String> o) {
   );
 }
 
-core.List<api.NfsExport> buildUnnamed53() => [
+core.List<api.NfsExport> buildUnnamed54() => [
       buildNfsExport(),
       buildNfsExport(),
     ];
 
-void checkUnnamed53(core.List<api.NfsExport> o) {
+void checkUnnamed54(core.List<api.NfsExport> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkNfsExport(o[0]);
   checkNfsExport(o[1]);
@@ -2896,10 +2972,10 @@ api.VolumeConfig buildVolumeConfig() {
   if (buildCounterVolumeConfig < 3) {
     o.gcpService = 'foo';
     o.id = 'foo';
-    o.lunRanges = buildUnnamed51();
-    o.machineIds = buildUnnamed52();
+    o.lunRanges = buildUnnamed52();
+    o.machineIds = buildUnnamed53();
     o.name = 'foo';
-    o.nfsExports = buildUnnamed53();
+    o.nfsExports = buildUnnamed54();
     o.performanceTier = 'foo';
     o.protocol = 'foo';
     o.sizeGb = 42;
@@ -2922,13 +2998,13 @@ void checkVolumeConfig(api.VolumeConfig o) {
       o.id!,
       unittest.equals('foo'),
     );
-    checkUnnamed51(o.lunRanges!);
-    checkUnnamed52(o.machineIds!);
+    checkUnnamed52(o.lunRanges!);
+    checkUnnamed53(o.machineIds!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed53(o.nfsExports!);
+    checkUnnamed54(o.nfsExports!);
     unittest.expect(
       o.performanceTier!,
       unittest.equals('foo'),
@@ -3022,6 +3098,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-DisableHyperthreadingRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDisableHyperthreadingRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DisableHyperthreadingRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkDisableHyperthreadingRequest(od);
+    });
+  });
+
   unittest.group('obj-schema-DisableInteractiveSerialConsoleRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildDisableInteractiveSerialConsoleRequest();
@@ -3039,6 +3125,16 @@ void main() {
       final od =
           api.Empty.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkEmpty(od);
+    });
+  });
+
+  unittest.group('obj-schema-EnableHyperthreadingRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildEnableHyperthreadingRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.EnableHyperthreadingRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkEnableHyperthreadingRequest(od);
     });
   });
 
@@ -3409,6 +3505,16 @@ void main() {
       final od =
           api.QosPolicy.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkQosPolicy(od);
+    });
+  });
+
+  unittest.group('obj-schema-ReimageInstanceRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildReimageInstanceRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ReimageInstanceRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkReimageInstanceRequest(od);
     });
   });
 
@@ -3795,6 +3901,64 @@ void main() {
       checkOperation(response as api.Operation);
     });
 
+    unittest.test('method--disableHyperthreading', () async {
+      final mock = HttpServerMock();
+      final res = api.BaremetalsolutionApi(mock).projects.locations.instances;
+      final arg_request = buildDisableHyperthreadingRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.DisableHyperthreadingRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkDisableHyperthreadingRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.disableHyperthreading(arg_request, arg_name,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+
     unittest.test('method--disableInteractiveSerialConsole', () async {
       final mock = HttpServerMock();
       final res = api.BaremetalsolutionApi(mock).projects.locations.instances;
@@ -3850,6 +4014,64 @@ void main() {
       }), true);
       final response = await res.disableInteractiveSerialConsole(
           arg_request, arg_name,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--enableHyperthreading', () async {
+      final mock = HttpServerMock();
+      final res = api.BaremetalsolutionApi(mock).projects.locations.instances;
+      final arg_request = buildEnableHyperthreadingRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.EnableHyperthreadingRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkEnableHyperthreadingRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.enableHyperthreading(arg_request, arg_name,
           $fields: arg_$fields);
       checkOperation(response as api.Operation);
     });
@@ -4149,6 +4371,64 @@ void main() {
       }), true);
       final response = await res.patch(arg_request, arg_name,
           updateMask: arg_updateMask, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--reimage', () async {
+      final mock = HttpServerMock();
+      final res = api.BaremetalsolutionApi(mock).projects.locations.instances;
+      final arg_request = buildReimageInstanceRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.ReimageInstanceRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkReimageInstanceRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.reimage(arg_request, arg_name, $fields: arg_$fields);
       checkOperation(response as api.Operation);
     });
 

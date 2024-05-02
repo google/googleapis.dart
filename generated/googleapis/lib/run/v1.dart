@@ -5269,7 +5269,32 @@ class HTTPGetAction {
 }
 
 /// HTTPHeader describes a custom header to be used in HTTP probes
-typedef HTTPHeader = $HTTPHeader;
+class HTTPHeader {
+  /// The header field name
+  ///
+  /// Required.
+  core.String? name;
+
+  /// The header field value
+  core.String? value;
+
+  HTTPHeader({
+    this.name,
+    this.value,
+  });
+
+  HTTPHeader.fromJson(core.Map json_)
+      : this(
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          value:
+              json_.containsKey('value') ? json_['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (value != null) 'value': value!,
+      };
+}
 
 /// Job represents the configuration of a single job, which references a
 /// container image which is run to completion.
@@ -5346,17 +5371,37 @@ class Job {
 
 /// JobSpec describes how the job will look.
 class JobSpec {
+  /// A unique string used as a suffix for creating a new execution.
+  ///
+  /// The Job will become ready when the execution is successfully completed.
+  /// The sum of job name and token length must be fewer than 63 characters.
+  core.String? runExecutionToken;
+
+  /// A unique string used as a suffix for creating a new execution.
+  ///
+  /// The Job will become ready when the execution is successfully started. The
+  /// sum of job name and token length must be fewer than 63 characters.
+  core.String? startExecutionToken;
+
   /// Describes the execution that will be created when running a job.
   ///
   /// Optional.
   ExecutionTemplateSpec? template;
 
   JobSpec({
+    this.runExecutionToken,
+    this.startExecutionToken,
     this.template,
   });
 
   JobSpec.fromJson(core.Map json_)
       : this(
+          runExecutionToken: json_.containsKey('runExecutionToken')
+              ? json_['runExecutionToken'] as core.String
+              : null,
+          startExecutionToken: json_.containsKey('startExecutionToken')
+              ? json_['startExecutionToken'] as core.String
+              : null,
           template: json_.containsKey('template')
               ? ExecutionTemplateSpec.fromJson(
                   json_['template'] as core.Map<core.String, core.dynamic>)
@@ -5364,6 +5409,9 @@ class JobSpec {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (runExecutionToken != null) 'runExecutionToken': runExecutionToken!,
+        if (startExecutionToken != null)
+          'startExecutionToken': startExecutionToken!,
         if (template != null) 'template': template!,
       };
 }
@@ -6827,6 +6875,13 @@ class RevisionSpec {
   /// Not supported by Cloud Run.
   core.List<LocalObjectReference>? imagePullSecrets;
 
+  /// The Node Selector configuration.
+  ///
+  /// Map of selector key to a value which matches a node.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? nodeSelector;
+
   /// Email address of the IAM service account associated with the revision of
   /// the service.
   ///
@@ -6848,6 +6903,7 @@ class RevisionSpec {
     this.containers,
     this.enableServiceLinks,
     this.imagePullSecrets,
+    this.nodeSelector,
     this.serviceAccountName,
     this.timeoutSeconds,
     this.volumes,
@@ -6873,6 +6929,15 @@ class RevisionSpec {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          nodeSelector: json_.containsKey('nodeSelector')
+              ? (json_['nodeSelector'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
           serviceAccountName: json_.containsKey('serviceAccountName')
               ? json_['serviceAccountName'] as core.String
               : null,
@@ -6894,6 +6959,7 @@ class RevisionSpec {
         if (enableServiceLinks != null)
           'enableServiceLinks': enableServiceLinks!,
         if (imagePullSecrets != null) 'imagePullSecrets': imagePullSecrets!,
+        if (nodeSelector != null) 'nodeSelector': nodeSelector!,
         if (serviceAccountName != null)
           'serviceAccountName': serviceAccountName!,
         if (timeoutSeconds != null) 'timeoutSeconds': timeoutSeconds!,

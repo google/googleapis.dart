@@ -7210,6 +7210,7 @@ api.StreamingConfigTask buildStreamingConfigTask() {
     o.commitStreamChunkSizeBytes = 'foo';
     o.getDataStreamChunkSizeBytes = 'foo';
     o.maxWorkItemCommitBytes = 'foo';
+    o.operationalLimits = buildStreamingOperationalLimits();
     o.streamingComputationConfigs = buildUnnamed120();
     o.userStepToStateFamilyNameMap = buildUnnamed121();
     o.windmillServiceEndpoint = 'foo';
@@ -7234,6 +7235,7 @@ void checkStreamingConfigTask(api.StreamingConfigTask o) {
       o.maxWorkItemCommitBytes!,
       unittest.equals('foo'),
     );
+    checkStreamingOperationalLimits(o.operationalLimits!);
     checkUnnamed120(o.streamingComputationConfigs!);
     checkUnnamed121(o.userStepToStateFamilyNameMap!);
     unittest.expect(
@@ -7246,6 +7248,63 @@ void checkStreamingConfigTask(api.StreamingConfigTask o) {
     );
   }
   buildCounterStreamingConfigTask--;
+}
+
+core.int buildCounterStreamingOperationalLimits = 0;
+api.StreamingOperationalLimits buildStreamingOperationalLimits() {
+  final o = api.StreamingOperationalLimits();
+  buildCounterStreamingOperationalLimits++;
+  if (buildCounterStreamingOperationalLimits < 3) {
+    o.maxBagElementBytes = 'foo';
+    o.maxGlobalDataBytes = 'foo';
+    o.maxKeyBytes = 'foo';
+    o.maxProductionOutputBytes = 'foo';
+    o.maxSortedListElementBytes = 'foo';
+    o.maxSourceStateBytes = 'foo';
+    o.maxTagBytes = 'foo';
+    o.maxValueBytes = 'foo';
+  }
+  buildCounterStreamingOperationalLimits--;
+  return o;
+}
+
+void checkStreamingOperationalLimits(api.StreamingOperationalLimits o) {
+  buildCounterStreamingOperationalLimits++;
+  if (buildCounterStreamingOperationalLimits < 3) {
+    unittest.expect(
+      o.maxBagElementBytes!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.maxGlobalDataBytes!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.maxKeyBytes!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.maxProductionOutputBytes!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.maxSortedListElementBytes!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.maxSourceStateBytes!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.maxTagBytes!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.maxValueBytes!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterStreamingOperationalLimits--;
 }
 
 core.int buildCounterStreamingScalingReport = 0;
@@ -7662,6 +7721,7 @@ api.TemplateMetadata buildTemplateMetadata() {
   final o = api.TemplateMetadata();
   buildCounterTemplateMetadata++;
   if (buildCounterTemplateMetadata < 3) {
+    o.defaultStreamingMode = 'foo';
     o.description = 'foo';
     o.name = 'foo';
     o.parameters = buildUnnamed125();
@@ -7676,6 +7736,10 @@ api.TemplateMetadata buildTemplateMetadata() {
 void checkTemplateMetadata(api.TemplateMetadata o) {
   buildCounterTemplateMetadata++;
   if (buildCounterTemplateMetadata < 3) {
+    unittest.expect(
+      o.defaultStreamingMode!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.description!,
       unittest.equals('foo'),
@@ -10411,6 +10475,16 @@ void main() {
       final od = api.StreamingConfigTask.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkStreamingConfigTask(od);
+    });
+  });
+
+  unittest.group('obj-schema-StreamingOperationalLimits', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildStreamingOperationalLimits();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.StreamingOperationalLimits.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkStreamingOperationalLimits(od);
     });
   });
 

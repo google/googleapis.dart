@@ -1485,6 +1485,7 @@ api.DeviceConnectivityManagement buildDeviceConnectivityManagement() {
     o.tetheringSettings = 'foo';
     o.usbDataAccess = 'foo';
     o.wifiDirectSettings = 'foo';
+    o.wifiSsidPolicy = buildWifiSsidPolicy();
   }
   buildCounterDeviceConnectivityManagement--;
   return o;
@@ -1509,6 +1510,7 @@ void checkDeviceConnectivityManagement(api.DeviceConnectivityManagement o) {
       o.wifiDirectSettings!,
       unittest.equals('foo'),
     );
+    checkWifiSsidPolicy(o.wifiSsidPolicy!);
   }
   buildCounterDeviceConnectivityManagement--;
 }
@@ -4180,10 +4182,13 @@ api.ProvisioningInfo buildProvisioningInfo() {
     o.apiLevel = 42;
     o.brand = 'foo';
     o.enterprise = 'foo';
+    o.imei = 'foo';
     o.managementMode = 'foo';
+    o.meid = 'foo';
     o.model = 'foo';
     o.name = 'foo';
     o.ownership = 'foo';
+    o.serialNumber = 'foo';
   }
   buildCounterProvisioningInfo--;
   return o;
@@ -4205,7 +4210,15 @@ void checkProvisioningInfo(api.ProvisioningInfo o) {
       unittest.equals('foo'),
     );
     unittest.expect(
+      o.imei!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.managementMode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.meid!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -4218,6 +4231,10 @@ void checkProvisioningInfo(api.ProvisioningInfo o) {
     );
     unittest.expect(
       o.ownership!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.serialNumber!,
       unittest.equals('foo'),
     );
   }
@@ -5090,6 +5107,63 @@ void checkWebToken(api.WebToken o) {
   buildCounterWebToken--;
 }
 
+core.int buildCounterWifiSsid = 0;
+api.WifiSsid buildWifiSsid() {
+  final o = api.WifiSsid();
+  buildCounterWifiSsid++;
+  if (buildCounterWifiSsid < 3) {
+    o.wifiSsid = 'foo';
+  }
+  buildCounterWifiSsid--;
+  return o;
+}
+
+void checkWifiSsid(api.WifiSsid o) {
+  buildCounterWifiSsid++;
+  if (buildCounterWifiSsid < 3) {
+    unittest.expect(
+      o.wifiSsid!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterWifiSsid--;
+}
+
+core.List<api.WifiSsid> buildUnnamed96() => [
+      buildWifiSsid(),
+      buildWifiSsid(),
+    ];
+
+void checkUnnamed96(core.List<api.WifiSsid> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkWifiSsid(o[0]);
+  checkWifiSsid(o[1]);
+}
+
+core.int buildCounterWifiSsidPolicy = 0;
+api.WifiSsidPolicy buildWifiSsidPolicy() {
+  final o = api.WifiSsidPolicy();
+  buildCounterWifiSsidPolicy++;
+  if (buildCounterWifiSsidPolicy < 3) {
+    o.wifiSsidPolicyType = 'foo';
+    o.wifiSsids = buildUnnamed96();
+  }
+  buildCounterWifiSsidPolicy--;
+  return o;
+}
+
+void checkWifiSsidPolicy(api.WifiSsidPolicy o) {
+  buildCounterWifiSsidPolicy++;
+  if (buildCounterWifiSsidPolicy < 3) {
+    unittest.expect(
+      o.wifiSsidPolicyType!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed96(o.wifiSsids!);
+  }
+  buildCounterWifiSsidPolicy--;
+}
+
 core.int buildCounterWipeAction = 0;
 api.WipeAction buildWipeAction() {
   final o = api.WipeAction();
@@ -5114,12 +5188,12 @@ void checkWipeAction(api.WipeAction o) {
   buildCounterWipeAction--;
 }
 
-core.List<core.String> buildUnnamed96() => [
+core.List<core.String> buildUnnamed97() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed96(core.List<core.String> o) {
+void checkUnnamed97(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -6082,6 +6156,26 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-WifiSsid', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildWifiSsid();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.WifiSsid.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkWifiSsid(od);
+    });
+  });
+
+  unittest.group('obj-schema-WifiSsidPolicy', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildWifiSsidPolicy();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.WifiSsidPolicy.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkWifiSsidPolicy(od);
+    });
+  });
+
   unittest.group('obj-schema-WipeAction', () {
     unittest.test('to-json--from-json', () async {
       final o = buildWipeAction();
@@ -6481,7 +6575,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.AndroidManagementApi(mock).enterprises.devices;
       final arg_name = 'foo';
-      final arg_wipeDataFlags = buildUnnamed96();
+      final arg_wipeDataFlags = buildUnnamed97();
       final arg_wipeReasonMessage = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {

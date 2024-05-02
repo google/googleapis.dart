@@ -313,7 +313,10 @@ class AccountsResource {
 
   /// Sends a SMS verification code for phone number sign-in.
   ///
-  /// An [API key](https://cloud.google.com/docs/authentication/api-keys) is
+  /// To localize the text of the SMS sent to the user, set the HTTP header
+  /// `X-Firebase-Locale` to the language code that corresponds with the user's
+  /// locale. An
+  /// [API key](https://cloud.google.com/docs/authentication/api-keys) is
   /// required in the request in order to identify the Google Cloud project.
   ///
   /// [request] - The metadata request object.
@@ -595,7 +598,9 @@ class AccountsResource {
   /// If a user already exists with the given phone number, an ID token is
   /// minted for that user. Otherwise, a new user is created and associated with
   /// the phone number. This method may also be used to link a phone number to
-  /// an existing user. An
+  /// an existing user. To localize the text of the SMS sent to the user, set
+  /// the HTTP header `X-Firebase-Locale` to the language code that corresponds
+  /// with the user's locale. An
   /// [API key](https://cloud.google.com/docs/authentication/api-keys) is
   /// required in the request in order to identify the Google Cloud project.
   ///
@@ -5769,7 +5774,7 @@ class GoogleCloudIdentitytoolkitV1SignInWithIdpResponse {
 
   /// Whether or not there is an existing Identity Platform user account with
   /// the same email address as the current account signed in at the IdP, and
-  /// the account's email addresss is not verified at the IdP.
+  /// the account's email address is not verified at the IdP.
   ///
   /// The user will need to sign in to the existing Identity Platform account
   /// and then link the current credential from the IdP to it. Only present if

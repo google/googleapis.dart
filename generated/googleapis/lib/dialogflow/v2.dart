@@ -21766,7 +21766,7 @@ class GoogleCloudDialogflowV2SearchKnowledgeResponse {
 /// See:
 /// https://cloud.google.com/natural-language/docs/basics#interpreting_sentiment_analysis_values
 /// for how to interpret the result.
-typedef GoogleCloudDialogflowV2Sentiment = $Shared08;
+typedef GoogleCloudDialogflowV2Sentiment = $Shared11;
 
 /// Configures the types of sentiment analysis to perform.
 class GoogleCloudDialogflowV2SentimentAnalysisRequestConfig {

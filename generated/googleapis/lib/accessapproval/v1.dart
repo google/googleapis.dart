@@ -1454,6 +1454,12 @@ class AccessApprovalSettings {
   /// The approver ultimately can set the expiration at approval time.
   core.int? preferredRequestExpirationDays;
 
+  /// A setting to require approval request justifications to be customer
+  /// visible.
+  ///
+  /// Optional.
+  core.bool? requireCustomerVisibleJustification;
+
   AccessApprovalSettings({
     this.activeKeyVersion,
     this.ancestorHasActiveKeyVersion,
@@ -1465,6 +1471,7 @@ class AccessApprovalSettings {
     this.notificationPubsubTopic,
     this.preferNoBroadApprovalRequests,
     this.preferredRequestExpirationDays,
+    this.requireCustomerVisibleJustification,
   });
 
   AccessApprovalSettings.fromJson(core.Map json_)
@@ -1505,6 +1512,10 @@ class AccessApprovalSettings {
               json_.containsKey('preferredRequestExpirationDays')
                   ? json_['preferredRequestExpirationDays'] as core.int
                   : null,
+          requireCustomerVisibleJustification:
+              json_.containsKey('requireCustomerVisibleJustification')
+                  ? json_['requireCustomerVisibleJustification'] as core.bool
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1523,6 +1534,9 @@ class AccessApprovalSettings {
           'preferNoBroadApprovalRequests': preferNoBroadApprovalRequests!,
         if (preferredRequestExpirationDays != null)
           'preferredRequestExpirationDays': preferredRequestExpirationDays!,
+        if (requireCustomerVisibleJustification != null)
+          'requireCustomerVisibleJustification':
+              requireCustomerVisibleJustification!,
       };
 }
 
@@ -2031,6 +2045,8 @@ class SignatureInfo {
   /// curve is only supported for HSM protection level. Other hash functions can
   /// also be used:
   /// https://cloud.google.com/kms/docs/create-validate-signatures#ecdsa_support_for_other_hash_algorithms
+  /// - "EC_SIGN_ED25519" : EdDSA on the Curve25519 in pure mode (taking data as
+  /// input).
   /// - "HMAC_SHA256" : HMAC-SHA256 signing with a 256 bit key.
   /// - "HMAC_SHA1" : HMAC-SHA1 signing with a 160 bit key.
   /// - "HMAC_SHA384" : HMAC-SHA384 signing with a 384 bit key.

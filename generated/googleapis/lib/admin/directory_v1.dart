@@ -8232,8 +8232,19 @@ class ChromeOsDevice {
   core.String? annotatedUser;
 
   /// (Read-only) The timestamp after which the device will stop receiving
-  /// Chrome updates or support
+  /// Chrome updates or support.
+  ///
+  /// Please use "autoUpdateThrough" instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? autoUpdateExpiration;
+
+  /// The timestamp after which the device will stop receiving Chrome updates or
+  /// support.
+  ///
+  /// Output only.
+  core.String? autoUpdateThrough;
 
   /// Contains backlight information for the device.
   ///
@@ -8328,6 +8339,22 @@ class ChromeOsDevice {
   /// The format is twelve (12) hexadecimal digits without any delimiter
   /// (uppercase letters). This is only relevant for some devices.
   core.String? ethernetMacAddress0;
+
+  /// Whether or not the device requires the extended support opt in.
+  ///
+  /// Output only.
+  core.bool? extendedSupportEligible;
+
+  /// Whether extended support policy is enabled on the device.
+  ///
+  /// Output only.
+  core.bool? extendedSupportEnabled;
+
+  /// Date of the device when extended support policy for automatic updates
+  /// starts.
+  ///
+  /// Output only.
+  core.String? extendedSupportStart;
 
   /// The Chrome device's firmware version.
   core.String? firmwareVersion;
@@ -8466,6 +8493,7 @@ class ChromeOsDevice {
     this.annotatedLocation,
     this.annotatedUser,
     this.autoUpdateExpiration,
+    this.autoUpdateThrough,
     this.backlightInfo,
     this.bootMode,
     this.cpuInfo,
@@ -8479,6 +8507,9 @@ class ChromeOsDevice {
     this.etag,
     this.ethernetMacAddress,
     this.ethernetMacAddress0,
+    this.extendedSupportEligible,
+    this.extendedSupportEnabled,
+    this.extendedSupportStart,
     this.firmwareVersion,
     this.firstEnrollmentTime,
     this.kind,
@@ -8527,6 +8558,9 @@ class ChromeOsDevice {
               : null,
           autoUpdateExpiration: json_.containsKey('autoUpdateExpiration')
               ? json_['autoUpdateExpiration'] as core.String
+              : null,
+          autoUpdateThrough: json_.containsKey('autoUpdateThrough')
+              ? json_['autoUpdateThrough'] as core.String
               : null,
           backlightInfo: json_.containsKey('backlightInfo')
               ? (json_['backlightInfo'] as core.List)
@@ -8579,6 +8613,15 @@ class ChromeOsDevice {
               : null,
           ethernetMacAddress0: json_.containsKey('ethernetMacAddress0')
               ? json_['ethernetMacAddress0'] as core.String
+              : null,
+          extendedSupportEligible: json_.containsKey('extendedSupportEligible')
+              ? json_['extendedSupportEligible'] as core.bool
+              : null,
+          extendedSupportEnabled: json_.containsKey('extendedSupportEnabled')
+              ? json_['extendedSupportEnabled'] as core.bool
+              : null,
+          extendedSupportStart: json_.containsKey('extendedSupportStart')
+              ? json_['extendedSupportStart'] as core.String
               : null,
           firmwareVersion: json_.containsKey('firmwareVersion')
               ? json_['firmwareVersion'] as core.String
@@ -8679,6 +8722,7 @@ class ChromeOsDevice {
         if (annotatedUser != null) 'annotatedUser': annotatedUser!,
         if (autoUpdateExpiration != null)
           'autoUpdateExpiration': autoUpdateExpiration!,
+        if (autoUpdateThrough != null) 'autoUpdateThrough': autoUpdateThrough!,
         if (backlightInfo != null) 'backlightInfo': backlightInfo!,
         if (bootMode != null) 'bootMode': bootMode!,
         if (cpuInfo != null) 'cpuInfo': cpuInfo!,
@@ -8694,6 +8738,12 @@ class ChromeOsDevice {
           'ethernetMacAddress': ethernetMacAddress!,
         if (ethernetMacAddress0 != null)
           'ethernetMacAddress0': ethernetMacAddress0!,
+        if (extendedSupportEligible != null)
+          'extendedSupportEligible': extendedSupportEligible!,
+        if (extendedSupportEnabled != null)
+          'extendedSupportEnabled': extendedSupportEnabled!,
+        if (extendedSupportStart != null)
+          'extendedSupportStart': extendedSupportStart!,
         if (firmwareVersion != null) 'firmwareVersion': firmwareVersion!,
         if (firstEnrollmentTime != null)
           'firstEnrollmentTime': firstEnrollmentTime!,

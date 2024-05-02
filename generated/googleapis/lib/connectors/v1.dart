@@ -757,6 +757,56 @@ class ProjectsLocationsConnectionsResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Returns Top matching Connections for a given query.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Parent resource of the Connection, of the form:
+  /// `projects / * /locations / * /connections`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/connections$`.
+  ///
+  /// [pageSize] - Optional. The number of top matching connectors to return
+  ///
+  /// [pageToken] - Optional. page_token
+  ///
+  /// [query] - Required. The query against which the search needs to be done.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SearchConnectionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SearchConnectionsResponse> search(
+    core.String name, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? query,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (query != null) 'query': [query],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':search';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return SearchConnectionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Sets the access control policy on the specified resource.
   ///
   /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
@@ -3568,6 +3618,9 @@ class AuthorizationCodeLink {
       };
 }
 
+/// Billing config for the connection.
+typedef BillingConfig = $BillingConfig;
+
 /// Associates `members`, or principals, with a `role`.
 class Binding {
   /// The condition that is associated with this binding.
@@ -3916,6 +3969,11 @@ class Connection {
   /// Optional.
   AuthConfig? authConfig;
 
+  /// Billing config for the connection.
+  ///
+  /// Output only.
+  BillingConfig? billingConfig;
+
   /// Configuration for configuring the connection with an external system.
   ///
   /// Optional.
@@ -4086,6 +4144,7 @@ class Connection {
 
   Connection({
     this.authConfig,
+    this.billingConfig,
     this.configVariables,
     this.connectionRevision,
     this.connectorVersion,
@@ -4119,6 +4178,10 @@ class Connection {
           authConfig: json_.containsKey('authConfig')
               ? AuthConfig.fromJson(
                   json_['authConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          billingConfig: json_.containsKey('billingConfig')
+              ? BillingConfig.fromJson(
+                  json_['billingConfig'] as core.Map<core.String, core.dynamic>)
               : null,
           configVariables: json_.containsKey('configVariables')
               ? (json_['configVariables'] as core.List)
@@ -4222,6 +4285,7 @@ class Connection {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (authConfig != null) 'authConfig': authConfig!,
+        if (billingConfig != null) 'billingConfig': billingConfig!,
         if (configVariables != null) 'configVariables': configVariables!,
         if (connectionRevision != null)
           'connectionRevision': connectionRevision!,
@@ -4357,50 +4421,7 @@ class ConnectionSchemaMetadata {
 }
 
 /// ConnectionStatus indicates the state of the connection.
-class ConnectionStatus {
-  /// Description.
-  core.String? description;
-
-  /// State.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : Connection does not have a state yet.
-  /// - "CREATING" : Connection is being created.
-  /// - "ACTIVE" : Connection is running and ready for requests.
-  /// - "INACTIVE" : Connection is stopped.
-  /// - "DELETING" : Connection is being deleted.
-  /// - "UPDATING" : Connection is being updated.
-  /// - "ERROR" : Connection is not running due to an error.
-  /// - "AUTHORIZATION_REQUIRED" : Connection is not running because the
-  /// authorization configuration is not complete.
-  core.String? state;
-
-  /// Status provides detailed information for the state.
-  core.String? status;
-
-  ConnectionStatus({
-    this.description,
-    this.state,
-    this.status,
-  });
-
-  ConnectionStatus.fromJson(core.Map json_)
-      : this(
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
-          status: json_.containsKey('status')
-              ? json_['status'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (state != null) 'state': state!,
-        if (status != null) 'status': status!,
-      };
-}
+typedef ConnectionStatus = $ConnectionStatus;
 
 /// Connectors indicates a specific connector type, e.x. Salesforce, SAP etc.
 class Connector {
@@ -5005,33 +5026,20 @@ class ConnectorVersionInfraConfig {
 }
 
 /// Log configuration for the connection.
-class ConnectorsLogConfig {
-  /// Enabled represents whether logging is enabled or not for a connection.
-  core.bool? enabled;
-
-  ConnectorsLogConfig({
-    this.enabled,
-  });
-
-  ConnectorsLogConfig.fromJson(core.Map json_)
-      : this(
-          enabled: json_.containsKey('enabled')
-              ? json_['enabled'] as core.bool
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (enabled != null) 'enabled': enabled!,
-      };
-}
+typedef ConnectorsLogConfig = $LogConfig;
 
 /// CustomConnector represents the custom connector defined by the customer as
 /// part of byoc.
 class CustomConnector {
   /// Active connector versions.
   ///
-  /// Optional.
+  /// Output only.
   core.List<core.String>? activeConnectorVersions;
+
+  /// All connector versions.
+  ///
+  /// Output only.
+  core.List<core.String>? allConnectorVersions;
 
   /// Created time.
   ///
@@ -5083,6 +5091,7 @@ class CustomConnector {
 
   CustomConnector({
     this.activeConnectorVersions,
+    this.allConnectorVersions,
     this.createTime,
     this.customConnectorType,
     this.description,
@@ -5097,6 +5106,11 @@ class CustomConnector {
       : this(
           activeConnectorVersions: json_.containsKey('activeConnectorVersions')
               ? (json_['activeConnectorVersions'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          allConnectorVersions: json_.containsKey('allConnectorVersions')
+              ? (json_['allConnectorVersions'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -5130,6 +5144,8 @@ class CustomConnector {
   core.Map<core.String, core.dynamic> toJson() => {
         if (activeConnectorVersions != null)
           'activeConnectorVersions': activeConnectorVersions!,
+        if (allConnectorVersions != null)
+          'allConnectorVersions': allConnectorVersions!,
         if (createTime != null) 'createTime': createTime!,
         if (customConnectorType != null)
           'customConnectorType': customConnectorType!,
@@ -5312,73 +5328,8 @@ class CustomConnectorVersion {
 }
 
 /// Dead Letter configuration details provided by the user.
-class DeadLetterConfig {
-  /// Project which has the topic given.
-  ///
-  /// Optional.
-  core.String? projectId;
-
-  /// Topic to push events which couldn't be processed.
-  ///
-  /// Optional.
-  core.String? topic;
-
-  DeadLetterConfig({
-    this.projectId,
-    this.topic,
-  });
-
-  DeadLetterConfig.fromJson(core.Map json_)
-      : this(
-          projectId: json_.containsKey('projectId')
-              ? json_['projectId'] as core.String
-              : null,
-          topic:
-              json_.containsKey('topic') ? json_['topic'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (projectId != null) 'projectId': projectId!,
-        if (topic != null) 'topic': topic!,
-      };
-}
-
-class Destination {
-  /// For publicly routable host.
-  core.String? host;
-
-  /// The port is the target port number that is accepted by the destination.
-  core.int? port;
-
-  /// PSC service attachments.
-  ///
-  /// Format: projects / * /regions / * /serviceAttachments / *
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? serviceAttachment;
-
-  Destination({
-    this.host,
-    this.port,
-    this.serviceAttachment,
-  });
-
-  Destination.fromJson(core.Map json_)
-      : this(
-          host: json_.containsKey('host') ? json_['host'] as core.String : null,
-          port: json_.containsKey('port') ? json_['port'] as core.int : null,
-          serviceAttachment: json_.containsKey('serviceAttachment')
-              ? json_['serviceAttachment'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (host != null) 'host': host!,
-        if (port != null) 'port': port!,
-        if (serviceAttachment != null) 'serviceAttachment': serviceAttachment!,
-      };
-}
+typedef DeadLetterConfig = $DeadLetterConfig;
+typedef Destination = $Destination;
 
 /// Define the Connectors target endpoint.
 class DestinationConfig {
@@ -5596,38 +5547,7 @@ class EncryptionConfig {
 }
 
 /// Encryption Key value.
-class EncryptionKey {
-  /// The \[KMS key name\] with which the content of the Operation is encrypted.
-  ///
-  /// The expected format: `projects / * /locations / * /keyRings / *
-  /// /cryptoKeys / * `. Will be empty string if google managed.
-  core.String? kmsKeyName;
-
-  /// Type.
-  /// Possible string values are:
-  /// - "TYPE_UNSPECIFIED" : Value type is not specified.
-  /// - "GOOGLE_MANAGED" : Google Managed.
-  /// - "CUSTOMER_MANAGED" : Customer Managed.
-  core.String? type;
-
-  EncryptionKey({
-    this.kmsKeyName,
-    this.type,
-  });
-
-  EncryptionKey.fromJson(core.Map json_)
-      : this(
-          kmsKeyName: json_.containsKey('kmsKeyName')
-              ? json_['kmsKeyName'] as core.String
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
-        if (type != null) 'type': type!,
-      };
-}
+typedef EncryptionKey = $EncryptionKey;
 
 /// Endpoint message includes details of the Destination endpoint.
 class EndPoint {
@@ -6511,41 +6431,7 @@ class EventingRuntimeData {
 }
 
 /// EventingStatus indicates the state of eventing.
-class EventingStatus {
-  /// Description of error if State is set to "ERROR".
-  ///
-  /// Output only.
-  core.String? description;
-
-  /// State.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : Default state.
-  /// - "ACTIVE" : Eventing is enabled and ready to receive events.
-  /// - "ERROR" : Eventing is not active due to an error.
-  /// - "INGRESS_ENDPOINT_REQUIRED" : Ingress endpoint required.
-  core.String? state;
-
-  EventingStatus({
-    this.description,
-    this.state,
-  });
-
-  EventingStatus.fromJson(core.Map json_)
-      : this(
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (state != null) 'state': state!,
-      };
-}
+typedef EventingStatus = $EventingStatus;
 
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.
@@ -6821,40 +6707,7 @@ class FieldComparison {
 }
 
 /// Autoscaling config for connector deployment system metrics.
-class HPAConfig {
-  /// Percent CPU utilization where HPA triggers autoscaling.
-  ///
-  /// Output only.
-  core.String? cpuUtilizationThreshold;
-
-  /// Percent Memory utilization where HPA triggers autoscaling.
-  ///
-  /// Output only.
-  core.String? memoryUtilizationThreshold;
-
-  HPAConfig({
-    this.cpuUtilizationThreshold,
-    this.memoryUtilizationThreshold,
-  });
-
-  HPAConfig.fromJson(core.Map json_)
-      : this(
-          cpuUtilizationThreshold: json_.containsKey('cpuUtilizationThreshold')
-              ? json_['cpuUtilizationThreshold'] as core.String
-              : null,
-          memoryUtilizationThreshold:
-              json_.containsKey('memoryUtilizationThreshold')
-                  ? json_['memoryUtilizationThreshold'] as core.String
-                  : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (cpuUtilizationThreshold != null)
-          'cpuUtilizationThreshold': cpuUtilizationThreshold!,
-        if (memoryUtilizationThreshold != null)
-          'memoryUtilizationThreshold': memoryUtilizationThreshold!,
-      };
-}
+typedef HPAConfig = $HPAConfig;
 
 /// Header details for a given header to be added to Endpoint.
 class Header {
@@ -7190,41 +7043,7 @@ class JsonSchema {
 }
 
 /// JWT claims used for the jwt-bearer authorization grant.
-class JwtClaims {
-  /// Value for the "aud" claim.
-  core.String? audience;
-
-  /// Value for the "iss" claim.
-  core.String? issuer;
-
-  /// Value for the "sub" claim.
-  core.String? subject;
-
-  JwtClaims({
-    this.audience,
-    this.issuer,
-    this.subject,
-  });
-
-  JwtClaims.fromJson(core.Map json_)
-      : this(
-          audience: json_.containsKey('audience')
-              ? json_['audience'] as core.String
-              : null,
-          issuer: json_.containsKey('issuer')
-              ? json_['issuer'] as core.String
-              : null,
-          subject: json_.containsKey('subject')
-              ? json_['subject'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (audience != null) 'audience': audience!,
-        if (issuer != null) 'issuer': issuer!,
-        if (subject != null) 'subject': subject!,
-      };
-}
+typedef JwtClaims = $JwtClaims;
 
 /// Response message for ListActions API
 class ListActionsResponse {
@@ -7858,32 +7677,7 @@ typedef Location = $Location00;
 /// Determines whether or no a connection is locked.
 ///
 /// If locked, a reason must be specified.
-class LockConfig {
-  /// Indicates whether or not the connection is locked.
-  core.bool? locked;
-
-  /// Describes why a connection is locked.
-  core.String? reason;
-
-  LockConfig({
-    this.locked,
-    this.reason,
-  });
-
-  LockConfig.fromJson(core.Map json_)
-      : this(
-          locked:
-              json_.containsKey('locked') ? json_['locked'] as core.bool : null,
-          reason: json_.containsKey('reason')
-              ? json_['reason'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (locked != null) 'locked': locked!,
-        if (reason != null) 'reason': reason!,
-      };
-}
+typedef LockConfig = $LockConfig;
 
 /// Struct for representing boolean expressions.
 class LogicalExpression {
@@ -8072,33 +7866,7 @@ class NetworkConfig {
 }
 
 /// Node configuration for the connection.
-class NodeConfig {
-  /// Maximum number of nodes in the runtime nodes.
-  core.int? maxNodeCount;
-
-  /// Minimum number of nodes in the runtime nodes.
-  core.int? minNodeCount;
-
-  NodeConfig({
-    this.maxNodeCount,
-    this.minNodeCount,
-  });
-
-  NodeConfig.fromJson(core.Map json_)
-      : this(
-          maxNodeCount: json_.containsKey('maxNodeCount')
-              ? json_['maxNodeCount'] as core.int
-              : null,
-          minNodeCount: json_.containsKey('minNodeCount')
-              ? json_['minNodeCount'] as core.int
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (maxNodeCount != null) 'maxNodeCount': maxNodeCount!,
-        if (minNodeCount != null) 'minNodeCount': minNodeCount!,
-      };
-}
+typedef NodeConfig = $NodeConfig;
 
 /// Parameters to support Oauth 2.0 Auth Code Grant Authentication.
 ///
@@ -8678,66 +8446,10 @@ class Resource {
 }
 
 /// Resource limits defined for connection pods of a given connector type.
-class ResourceLimits {
-  /// CPU limit.
-  ///
-  /// Output only.
-  core.String? cpu;
-
-  /// Memory limit.
-  ///
-  /// Output only.
-  core.String? memory;
-
-  ResourceLimits({
-    this.cpu,
-    this.memory,
-  });
-
-  ResourceLimits.fromJson(core.Map json_)
-      : this(
-          cpu: json_.containsKey('cpu') ? json_['cpu'] as core.String : null,
-          memory: json_.containsKey('memory')
-              ? json_['memory'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (cpu != null) 'cpu': cpu!,
-        if (memory != null) 'memory': memory!,
-      };
-}
+typedef ResourceLimits = $ResourceLimits;
 
 /// Resource requests defined for connection pods of a given connector type.
-class ResourceRequests {
-  /// CPU request.
-  ///
-  /// Output only.
-  core.String? cpu;
-
-  /// Memory request.
-  ///
-  /// Output only.
-  core.String? memory;
-
-  ResourceRequests({
-    this.cpu,
-    this.memory,
-  });
-
-  ResourceRequests.fromJson(core.Map json_)
-      : this(
-          cpu: json_.containsKey('cpu') ? json_['cpu'] as core.String : null,
-          memory: json_.containsKey('memory')
-              ? json_['memory'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (cpu != null) 'cpu': cpu!,
-        if (memory != null) 'memory': memory!,
-      };
-}
+typedef ResourceRequests = $ResourceRequests;
 
 /// Metadata of result field.
 class ResultMetadata {
@@ -9140,10 +8852,14 @@ class RuntimeEntitySchema {
   /// Output only.
   JsonSchema? jsonSchema;
 
+  /// List of operations supported by this entity
+  core.List<core.String>? operations;
+
   RuntimeEntitySchema({
     this.entity,
     this.fields,
     this.jsonSchema,
+    this.operations,
   });
 
   RuntimeEntitySchema.fromJson(core.Map json_)
@@ -9161,12 +8877,18 @@ class RuntimeEntitySchema {
               ? JsonSchema.fromJson(
                   json_['jsonSchema'] as core.Map<core.String, core.dynamic>)
               : null,
+          operations: json_.containsKey('operations')
+              ? (json_['operations'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (entity != null) 'entity': entity!,
         if (fields != null) 'fields': fields!,
         if (jsonSchema != null) 'jsonSchema': jsonSchema!,
+        if (operations != null) 'operations': operations!,
       };
 }
 
@@ -9202,27 +8924,99 @@ class SchemaRefreshConfig {
       };
 }
 
-/// Secret provides a reference to entries in Secret Manager.
-class Secret {
-  /// The resource name of the secret version in the format, format as:
-  /// `projects / * /secrets / * /versions / * `.
-  core.String? secretVersion;
+/// SearchConnectionInstance represents an instance of connector with specific
+/// fields
+class SearchConnectionInstance {
+  /// Schema of a runtime action.
+  ///
+  /// Output only.
+  RuntimeActionSchema? actionSchema;
 
-  Secret({
-    this.secretVersion,
+  /// Connection details
+  ///
+  /// Output only.
+  Connection? connection;
+
+  /// Schema of a runtime entity.
+  ///
+  /// Output only.
+  RuntimeEntitySchema? entitySchema;
+
+  SearchConnectionInstance({
+    this.actionSchema,
+    this.connection,
+    this.entitySchema,
   });
 
-  Secret.fromJson(core.Map json_)
+  SearchConnectionInstance.fromJson(core.Map json_)
       : this(
-          secretVersion: json_.containsKey('secretVersion')
-              ? json_['secretVersion'] as core.String
+          actionSchema: json_.containsKey('actionSchema')
+              ? RuntimeActionSchema.fromJson(
+                  json_['actionSchema'] as core.Map<core.String, core.dynamic>)
+              : null,
+          connection: json_.containsKey('connection')
+              ? Connection.fromJson(
+                  json_['connection'] as core.Map<core.String, core.dynamic>)
+              : null,
+          entitySchema: json_.containsKey('entitySchema')
+              ? RuntimeEntitySchema.fromJson(
+                  json_['entitySchema'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (secretVersion != null) 'secretVersion': secretVersion!,
+        if (actionSchema != null) 'actionSchema': actionSchema!,
+        if (connection != null) 'connection': connection!,
+        if (entitySchema != null) 'entitySchema': entitySchema!,
       };
 }
+
+/// Response message for Connectors.SearchConnections.
+class SearchConnectionsResponse {
+  /// A list of connectors.
+  core.List<SearchConnectionInstance>? connections;
+
+  /// page_token
+  ///
+  /// Optional.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  SearchConnectionsResponse({
+    this.connections,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  SearchConnectionsResponse.fromJson(core.Map json_)
+      : this(
+          connections: json_.containsKey('connections')
+              ? (json_['connections'] as core.List)
+                  .map((value) => SearchConnectionInstance.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (connections != null) 'connections': connections!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
+/// Secret provides a reference to entries in Secret Manager.
+typedef Secret = $Secret;
 
 /// Request message for `SetIamPolicy` method.
 class SetIamPolicyRequest {

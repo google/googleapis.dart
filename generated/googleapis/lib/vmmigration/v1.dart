@@ -5695,7 +5695,7 @@ class DiskImageTargetDetails {
 
   /// The encryption to apply to the image.
   ///
-  /// Optional. Immutable.
+  /// Immutable.
   Encryption? encryption;
 
   /// The name of the image family to which the new image belongs.

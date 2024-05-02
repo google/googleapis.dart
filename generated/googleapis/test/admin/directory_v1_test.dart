@@ -1806,6 +1806,7 @@ api.ChromeOsDevice buildChromeOsDevice() {
     o.annotatedLocation = 'foo';
     o.annotatedUser = 'foo';
     o.autoUpdateExpiration = 'foo';
+    o.autoUpdateThrough = 'foo';
     o.backlightInfo = buildUnnamed22();
     o.bootMode = 'foo';
     o.cpuInfo = buildUnnamed25();
@@ -1819,6 +1820,9 @@ api.ChromeOsDevice buildChromeOsDevice() {
     o.etag = 'foo';
     o.ethernetMacAddress = 'foo';
     o.ethernetMacAddress0 = 'foo';
+    o.extendedSupportEligible = true;
+    o.extendedSupportEnabled = true;
+    o.extendedSupportStart = 'foo';
     o.firmwareVersion = 'foo';
     o.firstEnrollmentTime = 'foo';
     o.kind = 'foo';
@@ -1871,6 +1875,10 @@ void checkChromeOsDevice(api.ChromeOsDevice o) {
       o.autoUpdateExpiration!,
       unittest.equals('foo'),
     );
+    unittest.expect(
+      o.autoUpdateThrough!,
+      unittest.equals('foo'),
+    );
     checkUnnamed22(o.backlightInfo!);
     unittest.expect(
       o.bootMode!,
@@ -1906,6 +1914,12 @@ void checkChromeOsDevice(api.ChromeOsDevice o) {
     );
     unittest.expect(
       o.ethernetMacAddress0!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.extendedSupportEligible!, unittest.isTrue);
+    unittest.expect(o.extendedSupportEnabled!, unittest.isTrue);
+    unittest.expect(
+      o.extendedSupportStart!,
       unittest.equals('foo'),
     );
     unittest.expect(

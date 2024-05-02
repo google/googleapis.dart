@@ -240,6 +240,7 @@ api.AdvancedMachineFeatures buildAdvancedMachineFeatures() {
   final o = api.AdvancedMachineFeatures();
   buildCounterAdvancedMachineFeatures++;
   if (buildCounterAdvancedMachineFeatures < 3) {
+    o.enableNestedVirtualization = true;
     o.threadsPerCore = 'foo';
   }
   buildCounterAdvancedMachineFeatures--;
@@ -249,6 +250,7 @@ api.AdvancedMachineFeatures buildAdvancedMachineFeatures() {
 void checkAdvancedMachineFeatures(api.AdvancedMachineFeatures o) {
   buildCounterAdvancedMachineFeatures++;
   if (buildCounterAdvancedMachineFeatures < 3) {
+    unittest.expect(o.enableNestedVirtualization!, unittest.isTrue);
     unittest.expect(
       o.threadsPerCore!,
       unittest.equals('foo'),

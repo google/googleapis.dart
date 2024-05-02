@@ -490,9 +490,9 @@ class ProjectsLocationsJobsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/jobs/\[^/\]+$`.
   ///
-  /// [allowMissing] - If set to true, and if the Job does not exist, it will
-  /// create a new one. Caller must have both create and update permissions for
-  /// this call if this is set to true.
+  /// [allowMissing] - Optional. If set to true, and if the Job does not exist,
+  /// it will create a new one. Caller must have both create and update
+  /// permissions for this call if this is set to true.
   ///
   /// [validateOnly] - Indicates that the request should be validated and
   /// default values populated, without persisting the request or updating any
@@ -1496,9 +1496,10 @@ class ProjectsLocationsServicesResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
   ///
-  /// [allowMissing] - If set to true, and if the Service does not exist, it
-  /// will create a new one. The caller must have 'run.services.create'
-  /// permissions if this is set to true and the Service does not exist.
+  /// [allowMissing] - Optional. If set to true, and if the Service does not
+  /// exist, it will create a new one. The caller must have
+  /// 'run.services.create' permissions if this is set to true and the Service
+  /// does not exist.
   ///
   /// [updateMask] - Optional. The list of fields to be updated.
   ///
@@ -1843,17 +1844,23 @@ class GoogleCloudRunV2BinaryAuthorization {
   /// If use_default is False, then it must be empty. For more information on
   /// breakglass, see
   /// https://cloud.google.com/binary-authorization/docs/using-breakglass
+  ///
+  /// Optional.
   core.String? breakglassJustification;
 
   /// The path to a binary authorization policy.
   ///
   /// Format: projects/{project}/platforms/cloudRun/{policy-name}
+  ///
+  /// Optional.
   core.String? policy;
 
   /// If True, indicates to use the default project's binary authorization
   /// policy.
   ///
   /// If False, binary authorization will be disabled.
+  ///
+  /// Optional.
   core.bool? useDefault;
 
   GoogleCloudRunV2BinaryAuthorization({
@@ -1948,6 +1955,8 @@ class GoogleCloudRunV2CloudSqlInstance {
 /// Defines a status condition for a resource.
 class GoogleCloudRunV2Condition {
   /// A reason for the execution condition.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "EXECUTION_REASON_UNDEFINED" : Default value.
   /// - "JOB_STATUS_SERVICE_POLLING_ERROR" : Internal system error getting
@@ -1967,6 +1976,8 @@ class GoogleCloudRunV2Condition {
   core.String? message;
 
   /// A common (service-level) reason for this condition.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "COMMON_REASON_UNDEFINED" : Default value.
   /// - "UNKNOWN" : Reason unknown. Further details will be in message.
@@ -1993,6 +2004,8 @@ class GoogleCloudRunV2Condition {
   core.String? reason;
 
   /// A reason for the revision condition.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "REVISION_REASON_UNDEFINED" : Default value.
   /// - "PENDING" : Revision in Pending state.
@@ -3096,12 +3109,16 @@ class GoogleCloudRunV2GRPCAction {
   /// Number must be in the range 1 to 65535. If not specified, defaults to the
   /// exposed port of the container, which is the value of
   /// container.ports\[0\].containerPort.
+  ///
+  /// Optional.
   core.int? port;
 
   /// Service is the name of the service to place in the gRPC HealthCheckRequest
   /// (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md ).
   ///
   /// If this is not specified, the default behavior is defined by gRPC.
+  ///
+  /// Optional.
   core.String? service;
 
   GoogleCloudRunV2GRPCAction({
@@ -3128,11 +3145,15 @@ class GoogleCloudRunV2HTTPGetAction {
   /// Custom headers to set in the request.
   ///
   /// HTTP allows repeated headers.
+  ///
+  /// Optional.
   core.List<GoogleCloudRunV2HTTPHeader>? httpHeaders;
 
   /// Path to access on the HTTP server.
   ///
   /// Defaults to '/'.
+  ///
+  /// Optional.
   core.String? path;
 
   /// Port number to access on the container.
@@ -3140,6 +3161,8 @@ class GoogleCloudRunV2HTTPGetAction {
   /// Must be in the range 1 to 65535. If not specified, defaults to the exposed
   /// port of the container, which is the value of
   /// container.ports\[0\].containerPort.
+  ///
+  /// Optional.
   core.int? port;
 
   GoogleCloudRunV2HTTPGetAction({
@@ -3168,7 +3191,34 @@ class GoogleCloudRunV2HTTPGetAction {
 }
 
 /// HTTPHeader describes a custom header to be used in HTTP probes
-typedef GoogleCloudRunV2HTTPHeader = $HTTPHeader;
+class GoogleCloudRunV2HTTPHeader {
+  /// The header field name
+  ///
+  /// Required.
+  core.String? name;
+
+  /// The header field value
+  ///
+  /// Optional.
+  core.String? value;
+
+  GoogleCloudRunV2HTTPHeader({
+    this.name,
+    this.value,
+  });
+
+  GoogleCloudRunV2HTTPHeader.fromJson(core.Map json_)
+      : this(
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          value:
+              json_.containsKey('value') ? json_['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (value != null) 'value': value!,
+      };
+}
 
 /// The status of an image export job.
 class GoogleCloudRunV2ImageExportStatus {
@@ -3400,6 +3450,12 @@ class GoogleCloudRunV2Job {
   /// Output only.
   core.bool? satisfiesPzs;
 
+  /// A unique string used as a suffix creating a new execution.
+  ///
+  /// The Job will become ready when the execution is successfully started. The
+  /// sum of job name and token length must be fewer than 63 characters.
+  core.String? startExecutionToken;
+
   /// The template used to create executions for this Job.
   ///
   /// Required.
@@ -3445,6 +3501,7 @@ class GoogleCloudRunV2Job {
     this.observedGeneration,
     this.reconciling,
     this.satisfiesPzs,
+    this.startExecutionToken,
     this.template,
     this.terminalCondition,
     this.uid,
@@ -3527,6 +3584,9 @@ class GoogleCloudRunV2Job {
           satisfiesPzs: json_.containsKey('satisfiesPzs')
               ? json_['satisfiesPzs'] as core.bool
               : null,
+          startExecutionToken: json_.containsKey('startExecutionToken')
+              ? json_['startExecutionToken'] as core.String
+              : null,
           template: json_.containsKey('template')
               ? GoogleCloudRunV2ExecutionTemplate.fromJson(
                   json_['template'] as core.Map<core.String, core.dynamic>)
@@ -3565,6 +3625,8 @@ class GoogleCloudRunV2Job {
           'observedGeneration': observedGeneration!,
         if (reconciling != null) 'reconciling': reconciling!,
         if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
+        if (startExecutionToken != null)
+          'startExecutionToken': startExecutionToken!,
         if (template != null) 'template': template!,
         if (terminalCondition != null) 'terminalCondition': terminalCondition!,
         if (uid != null) 'uid': uid!,
@@ -3808,6 +3870,8 @@ class GoogleCloudRunV2NetworkInterface {
   /// and subnetwork are specified, the given VPC subnetwork must belong to the
   /// given VPC network. If network is not specified, it will be looked up from
   /// the subnetwork.
+  ///
+  /// Optional.
   core.String? network;
 
   /// The VPC subnetwork that the Cloud Run resource will get IPs from.
@@ -3816,9 +3880,13 @@ class GoogleCloudRunV2NetworkInterface {
   /// and subnetwork are specified, the given VPC subnetwork must belong to the
   /// given VPC network. If subnetwork is not specified, the subnetwork with the
   /// same name with the network will be used.
+  ///
+  /// Optional.
   core.String? subnetwork;
 
   /// Network tags applied to this Cloud Run resource.
+  ///
+  /// Optional.
   core.List<core.String>? tags;
 
   GoogleCloudRunV2NetworkInterface({
@@ -3846,6 +3914,29 @@ class GoogleCloudRunV2NetworkInterface {
         if (network != null) 'network': network!,
         if (subnetwork != null) 'subnetwork': subnetwork!,
         if (tags != null) 'tags': tags!,
+      };
+}
+
+/// Hardware constraints configuration.
+class GoogleCloudRunV2NodeSelector {
+  /// GPU accelerator type to attach to an instance.
+  ///
+  /// Required.
+  core.String? accelerator;
+
+  GoogleCloudRunV2NodeSelector({
+    this.accelerator,
+  });
+
+  GoogleCloudRunV2NodeSelector.fromJson(core.Map json_)
+      : this(
+          accelerator: json_.containsKey('accelerator')
+              ? json_['accelerator'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (accelerator != null) 'accelerator': accelerator!,
       };
 }
 
@@ -3904,16 +3995,22 @@ class GoogleCloudRunV2Probe {
   /// having succeeded.
   ///
   /// Defaults to 3. Minimum value is 1.
+  ///
+  /// Optional.
   core.int? failureThreshold;
 
   /// GRPC specifies an action involving a gRPC port.
   ///
   /// Exactly one of httpGet, tcpSocket, or grpc must be specified.
+  ///
+  /// Optional.
   GoogleCloudRunV2GRPCAction? grpc;
 
   /// HTTPGet specifies the http request to perform.
   ///
   /// Exactly one of httpGet, tcpSocket, or grpc must be specified.
+  ///
+  /// Optional.
   GoogleCloudRunV2HTTPGetAction? httpGet;
 
   /// Number of seconds after the container has started before the probe is
@@ -3921,6 +4018,8 @@ class GoogleCloudRunV2Probe {
   ///
   /// Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness
   /// probe is 3600. Maximum value for startup probe is 240.
+  ///
+  /// Optional.
   core.int? initialDelaySeconds;
 
   /// How often (in seconds) to perform the probe.
@@ -3928,17 +4027,23 @@ class GoogleCloudRunV2Probe {
   /// Default to 10 seconds. Minimum value is 1. Maximum value for liveness
   /// probe is 3600. Maximum value for startup probe is 240. Must be greater or
   /// equal than timeout_seconds.
+  ///
+  /// Optional.
   core.int? periodSeconds;
 
   /// TCPSocket specifies an action involving a TCP port.
   ///
   /// Exactly one of httpGet, tcpSocket, or grpc must be specified.
+  ///
+  /// Optional.
   GoogleCloudRunV2TCPSocketAction? tcpSocket;
 
   /// Number of seconds after which the probe times out.
   ///
   /// Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be
   /// smaller than period_seconds.
+  ///
+  /// Optional.
   core.int? timeoutSeconds;
 
   GoogleCloudRunV2Probe({
@@ -4197,6 +4302,9 @@ class GoogleCloudRunV2Revision {
   /// Output only.
   core.String? name;
 
+  /// The node selector for the revision.
+  GoogleCloudRunV2NodeSelector? nodeSelector;
+
   /// The generation of this Revision currently serving traffic.
   ///
   /// See comments in `reconciling` for additional information on reconciliation
@@ -4284,6 +4392,7 @@ class GoogleCloudRunV2Revision {
     this.logUri,
     this.maxInstanceRequestConcurrency,
     this.name,
+    this.nodeSelector,
     this.observedGeneration,
     this.reconciling,
     this.satisfiesPzs,
@@ -4368,6 +4477,10 @@ class GoogleCloudRunV2Revision {
                   ? json_['maxInstanceRequestConcurrency'] as core.int
                   : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          nodeSelector: json_.containsKey('nodeSelector')
+              ? GoogleCloudRunV2NodeSelector.fromJson(
+                  json_['nodeSelector'] as core.Map<core.String, core.dynamic>)
+              : null,
           observedGeneration: json_.containsKey('observedGeneration')
               ? json_['observedGeneration'] as core.String
               : null,
@@ -4435,6 +4548,7 @@ class GoogleCloudRunV2Revision {
         if (maxInstanceRequestConcurrency != null)
           'maxInstanceRequestConcurrency': maxInstanceRequestConcurrency!,
         if (name != null) 'name': name!,
+        if (nodeSelector != null) 'nodeSelector': nodeSelector!,
         if (observedGeneration != null)
           'observedGeneration': observedGeneration!,
         if (reconciling != null) 'reconciling': reconciling!,
@@ -4455,9 +4569,13 @@ class GoogleCloudRunV2Revision {
 /// Settings for revision-level scaling settings.
 class GoogleCloudRunV2RevisionScaling {
   /// Maximum number of serving instances that this resource should have.
+  ///
+  /// Optional.
   core.int? maxInstanceCount;
 
   /// Minimum number of serving instances that this resource should have.
+  ///
+  /// Optional.
   core.int? minInstanceCount;
 
   GoogleCloudRunV2RevisionScaling({
@@ -4516,6 +4634,8 @@ class GoogleCloudRunV2RevisionTemplate {
   /// system annotations in v1 now have a corresponding field in v2
   /// RevisionTemplate. This field follows Kubernetes annotations' namespacing,
   /// limits, and rules.
+  ///
+  /// Optional.
   core.Map<core.String, core.String>? annotations;
 
   /// Holds the single container that defines the unit of execution for this
@@ -4530,6 +4650,8 @@ class GoogleCloudRunV2RevisionTemplate {
   core.String? encryptionKey;
 
   /// The sandbox environment to host this Revision.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "EXECUTION_ENVIRONMENT_UNSPECIFIED" : Unspecified
   /// - "EXECUTION_ENVIRONMENT_GEN1" : Uses the First Generation environment.
@@ -4553,19 +4675,32 @@ class GoogleCloudRunV2RevisionTemplate {
   /// `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they
   /// will be rejected. All system labels in v1 now have a corresponding field
   /// in v2 RevisionTemplate.
+  ///
+  /// Optional.
   core.Map<core.String, core.String>? labels;
 
   /// Sets the maximum number of requests that each serving instance can
   /// receive.
+  ///
+  /// Optional.
   core.int? maxInstanceRequestConcurrency;
+
+  /// The node selector for the revision template.
+  ///
+  /// Optional.
+  GoogleCloudRunV2NodeSelector? nodeSelector;
 
   /// The unique name for the revision.
   ///
   /// If this field is omitted, it will be automatically generated based on the
   /// Service name.
+  ///
+  /// Optional.
   core.String? revision;
 
   /// Scaling settings for this Revision.
+  ///
+  /// Optional.
   GoogleCloudRunV2RevisionScaling? scaling;
 
   /// Email address of the IAM service account associated with the revision of
@@ -4574,6 +4709,8 @@ class GoogleCloudRunV2RevisionTemplate {
   /// The service account represents the identity of the running revision, and
   /// determines what permissions the revision has. If not provided, the
   /// revision will use the project's default service account.
+  ///
+  /// Optional.
   core.String? serviceAccount;
 
   /// Enable session affinity.
@@ -4582,15 +4719,21 @@ class GoogleCloudRunV2RevisionTemplate {
   core.bool? sessionAffinity;
 
   /// Max allowed time for an instance to respond to a request.
+  ///
+  /// Optional.
   core.String? timeout;
 
   /// A list of Volumes to make available to containers.
+  ///
+  /// Optional.
   core.List<GoogleCloudRunV2Volume>? volumes;
 
   /// VPC Access configuration to use for this Revision.
   ///
   /// For more information, visit
   /// https://cloud.google.com/run/docs/configuring/connecting-vpc.
+  ///
+  /// Optional.
   GoogleCloudRunV2VpcAccess? vpcAccess;
 
   GoogleCloudRunV2RevisionTemplate({
@@ -4601,6 +4744,7 @@ class GoogleCloudRunV2RevisionTemplate {
     this.healthCheckDisabled,
     this.labels,
     this.maxInstanceRequestConcurrency,
+    this.nodeSelector,
     this.revision,
     this.scaling,
     this.serviceAccount,
@@ -4648,6 +4792,10 @@ class GoogleCloudRunV2RevisionTemplate {
               json_.containsKey('maxInstanceRequestConcurrency')
                   ? json_['maxInstanceRequestConcurrency'] as core.int
                   : null,
+          nodeSelector: json_.containsKey('nodeSelector')
+              ? GoogleCloudRunV2NodeSelector.fromJson(
+                  json_['nodeSelector'] as core.Map<core.String, core.dynamic>)
+              : null,
           revision: json_.containsKey('revision')
               ? json_['revision'] as core.String
               : null,
@@ -4687,6 +4835,7 @@ class GoogleCloudRunV2RevisionTemplate {
         if (labels != null) 'labels': labels!,
         if (maxInstanceRequestConcurrency != null)
           'maxInstanceRequestConcurrency': maxInstanceRequestConcurrency!,
+        if (nodeSelector != null) 'nodeSelector': nodeSelector!,
         if (revision != null) 'revision': revision!,
         if (scaling != null) 'scaling': scaling!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
@@ -4866,6 +5015,8 @@ class GoogleCloudRunV2Service {
   core.Map<core.String, core.String>? annotations;
 
   /// Settings for the Binary Authorization feature.
+  ///
+  /// Optional.
   GoogleCloudRunV2BinaryAuthorization? binaryAuthorization;
 
   /// Arbitrary identifier for the API client.
@@ -4942,6 +5093,8 @@ class GoogleCloudRunV2Service {
   ///
   /// On output, returns the currently observed ingress settings, or
   /// INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "INGRESS_TRAFFIC_UNSPECIFIED" : Unspecified
   /// - "INGRESS_TRAFFIC_ALL" : All inbound traffic is allowed.
@@ -4997,6 +5150,8 @@ class GoogleCloudRunV2Service {
   /// the resource uses preview features. For example, if ALPHA is provided as
   /// input, but only BETA and GA-level features are used, this field will be
   /// BETA on output.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "LAUNCH_STAGE_UNSPECIFIED" : Do not use this default value.
   /// - "UNIMPLEMENTED" : The feature is not yet implemented. Users can not use
@@ -5100,6 +5255,8 @@ class GoogleCloudRunV2Service {
   ///
   /// If traffic is empty or not provided, defaults to 100% traffic to the
   /// latest `Ready` Revision.
+  ///
+  /// Optional.
   core.List<GoogleCloudRunV2TrafficTarget>? traffic;
 
   /// Detailed status information for corresponding traffic targets.
@@ -5330,6 +5487,8 @@ class GoogleCloudRunV2ServiceScaling {
   ///
   /// This number of instances is divided among all revisions with specified
   /// traffic based on the percent of traffic they are receiving. (BETA)
+  ///
+  /// Optional.
   core.int? minInstanceCount;
 
   GoogleCloudRunV2ServiceScaling({
@@ -5355,6 +5514,8 @@ class GoogleCloudRunV2TCPSocketAction {
   /// Must be in the range 1 to 65535. If not specified, defaults to the exposed
   /// port of the container, which is the value of
   /// container.ports\[0\].containerPort.
+  ///
+  /// Optional.
   core.int? port;
 
   GoogleCloudRunV2TCPSocketAction({
@@ -5814,6 +5975,8 @@ class GoogleCloudRunV2TaskTemplate {
   core.String? encryptionKey;
 
   /// The execution environment being used to host this Task.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "EXECUTION_ENVIRONMENT_UNSPECIFIED" : Unspecified
   /// - "EXECUTION_ENVIRONMENT_GEN1" : Uses the First Generation environment.
@@ -5831,6 +5994,8 @@ class GoogleCloudRunV2TaskTemplate {
   /// The service account represents the identity of the running task, and
   /// determines what permissions the task has. If not provided, the task will
   /// use the project's default service account.
+  ///
+  /// Optional.
   core.String? serviceAccount;
 
   /// Max allowed time duration the Task may be active before the system will
@@ -5838,15 +6003,21 @@ class GoogleCloudRunV2TaskTemplate {
   ///
   /// This applies per attempt of a task, meaning each retry can run for the
   /// full timeout. Defaults to 600 seconds.
+  ///
+  /// Optional.
   core.String? timeout;
 
   /// A list of Volumes to make available to containers.
+  ///
+  /// Optional.
   core.List<GoogleCloudRunV2Volume>? volumes;
 
   /// VPC Access configuration to use for this Task.
   ///
   /// For more information, visit
   /// https://cloud.google.com/run/docs/configuring/connecting-vpc.
+  ///
+  /// Optional.
   GoogleCloudRunV2VpcAccess? vpcAccess;
 
   GoogleCloudRunV2TaskTemplate({
@@ -6190,6 +6361,8 @@ class GoogleCloudRunV2VpcAccess {
   /// Traffic VPC egress settings.
   ///
   /// If not provided, it defaults to PRIVATE_RANGES_ONLY.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "VPC_EGRESS_UNSPECIFIED" : Unspecified
   /// - "ALL_TRAFFIC" : All outbound traffic is routed through the VPC
@@ -6201,6 +6374,8 @@ class GoogleCloudRunV2VpcAccess {
   /// Direct VPC egress settings.
   ///
   /// Currently only single network interface is supported.
+  ///
+  /// Optional.
   core.List<GoogleCloudRunV2NetworkInterface>? networkInterfaces;
 
   GoogleCloudRunV2VpcAccess({

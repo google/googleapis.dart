@@ -42,7 +42,7 @@ class WorkspaceEventsApi {
   /// Private Service: https://www.googleapis.com/auth/chat.bot
   static const chatBotScope = 'https://www.googleapis.com/auth/chat.bot';
 
-  /// View, add, and remove members from conversations in Google Chat
+  /// View, add, update, and remove members from conversations in Google Chat
   static const chatMembershipsScope =
       'https://www.googleapis.com/auth/chat.memberships';
 

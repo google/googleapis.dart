@@ -267,7 +267,7 @@ class DatasetsResource {
   /// can be ANDed together by connecting with a space. Example:
   /// \"labels.department:receiving labels.active\". See \[Filtering datasets
   /// using
-  /// labels\](/bigquery/docs/labeling-datasets#filtering_datasets_using_labels)
+  /// labels\](/bigquery/docs/filtering-labels#filtering_datasets_using_labels)
   /// for details.
   ///
   /// [maxResults] - The maximum number of results to return in a single
@@ -4435,7 +4435,14 @@ class CsvOptions {
   /// Optional.
   core.String? fieldDelimiter;
 
-  /// A custom string that will represent a NULL value in CSV import data.
+  /// Specifies a string that represents a null value in a CSV file.
+  ///
+  /// For example, if you specify "\N", BigQuery interprets "\N" as a null value
+  /// when querying a CSV file. The default value is the empty string. If you
+  /// set this property to a custom value, BigQuery throws an error if an empty
+  /// string is present for all data types except for STRING and BYTE. For
+  /// STRING and BYTE columns, BigQuery interprets the empty string as an empty
+  /// value.
   ///
   /// Optional.
   core.String? nullMarker;
@@ -4978,6 +4985,16 @@ class Dataset {
   /// Optional.
   core.String? maxTimeTravelHours;
 
+  /// Restriction config for all tables and dataset.
+  ///
+  /// If set, restrict certain accesses on the dataset and all its tables based
+  /// on the config. See \[Data
+  /// egress\](/bigquery/docs/analytics-hub-introduction#data_egress) for more
+  /// details.
+  ///
+  /// Optional. Output only.
+  RestrictionConfig? restrictions;
+
   /// Reserved for future use.
   ///
   /// Output only.
@@ -5014,8 +5031,7 @@ class Dataset {
   /// The type of the dataset, one of: * DEFAULT - only accessible by owner and
   /// authorized accounts, * PUBLIC - accessible by everyone, * LINKED - linked
   /// dataset, * EXTERNAL - dataset with definition in external metadata
-  /// catalog. -- *BIGLAKE_METASTORE - dataset that references a database
-  /// created in BigLakeMetastore service. --
+  /// catalog.
   ///
   /// Output only.
   core.String? type;
@@ -5043,6 +5059,7 @@ class Dataset {
     this.linkedDatasetSource,
     this.location,
     this.maxTimeTravelHours,
+    this.restrictions,
     this.satisfiesPzi,
     this.satisfiesPzs,
     this.selfLink,
@@ -5135,6 +5152,10 @@ class Dataset {
           maxTimeTravelHours: json_.containsKey('maxTimeTravelHours')
               ? json_['maxTimeTravelHours'] as core.String
               : null,
+          restrictions: json_.containsKey('restrictions')
+              ? RestrictionConfig.fromJson(
+                  json_['restrictions'] as core.Map<core.String, core.dynamic>)
+              : null,
           satisfiesPzi: json_.containsKey('satisfiesPzi')
               ? json_['satisfiesPzi'] as core.bool
               : null,
@@ -5188,6 +5209,7 @@ class Dataset {
         if (location != null) 'location': location!,
         if (maxTimeTravelHours != null)
           'maxTimeTravelHours': maxTimeTravelHours!,
+        if (restrictions != null) 'restrictions': restrictions!,
         if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
         if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (selfLink != null) 'selfLink': selfLink!,
@@ -5507,6 +5529,16 @@ class DifferentialPrivacyPolicy {
   /// Optional.
   core.double? deltaBudget;
 
+  /// The delta budget remaining.
+  ///
+  /// If budget is exhausted, no more queries are allowed. Note that the budget
+  /// for queries that are in progress is deducted before the query executes. If
+  /// the query fails or is cancelled then the budget is refunded. In this case
+  /// the amount of budget remaining can increase.
+  ///
+  /// Output only.
+  core.double? deltaBudgetRemaining;
+
   /// The delta value that is used per query.
   ///
   /// Delta represents the probability that any row will fail to be epsilon
@@ -5532,6 +5564,16 @@ class DifferentialPrivacyPolicy {
   ///
   /// Optional.
   core.double? epsilonBudget;
+
+  /// The epsilon budget remaining.
+  ///
+  /// If budget is exhausted, no more queries are allowed. Note that the budget
+  /// for queries that are in progress is deducted before the query executes. If
+  /// the query fails or is cancelled then the budget is refunded. In this case
+  /// the amount of budget remaining can increase.
+  ///
+  /// Output only.
+  core.double? epsilonBudgetRemaining;
 
   /// The maximum epsilon value that a query can consume.
   ///
@@ -5562,8 +5604,10 @@ class DifferentialPrivacyPolicy {
 
   DifferentialPrivacyPolicy({
     this.deltaBudget,
+    this.deltaBudgetRemaining,
     this.deltaPerQuery,
     this.epsilonBudget,
+    this.epsilonBudgetRemaining,
     this.maxEpsilonPerQuery,
     this.maxGroupsContributed,
     this.privacyUnitColumn,
@@ -5574,11 +5618,17 @@ class DifferentialPrivacyPolicy {
           deltaBudget: json_.containsKey('deltaBudget')
               ? (json_['deltaBudget'] as core.num).toDouble()
               : null,
+          deltaBudgetRemaining: json_.containsKey('deltaBudgetRemaining')
+              ? (json_['deltaBudgetRemaining'] as core.num).toDouble()
+              : null,
           deltaPerQuery: json_.containsKey('deltaPerQuery')
               ? (json_['deltaPerQuery'] as core.num).toDouble()
               : null,
           epsilonBudget: json_.containsKey('epsilonBudget')
               ? (json_['epsilonBudget'] as core.num).toDouble()
+              : null,
+          epsilonBudgetRemaining: json_.containsKey('epsilonBudgetRemaining')
+              ? (json_['epsilonBudgetRemaining'] as core.num).toDouble()
               : null,
           maxEpsilonPerQuery: json_.containsKey('maxEpsilonPerQuery')
               ? (json_['maxEpsilonPerQuery'] as core.num).toDouble()
@@ -5593,8 +5643,12 @@ class DifferentialPrivacyPolicy {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (deltaBudget != null) 'deltaBudget': deltaBudget!,
+        if (deltaBudgetRemaining != null)
+          'deltaBudgetRemaining': deltaBudgetRemaining!,
         if (deltaPerQuery != null) 'deltaPerQuery': deltaPerQuery!,
         if (epsilonBudget != null) 'epsilonBudget': epsilonBudget!,
+        if (epsilonBudgetRemaining != null)
+          'epsilonBudgetRemaining': epsilonBudgetRemaining!,
         if (maxEpsilonPerQuery != null)
           'maxEpsilonPerQuery': maxEpsilonPerQuery!,
         if (maxGroupsContributed != null)
@@ -6947,6 +7001,33 @@ class FeatureValue {
       };
 }
 
+/// Metadata about the foreign data type definition such as the system in which
+/// the type is defined.
+class ForeignTypeInfo {
+  /// Specifies the system which defines the foreign data type.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "TYPE_SYSTEM_UNSPECIFIED" : TypeSystem not specified.
+  /// - "HIVE" : Represents Hive data types.
+  core.String? typeSystem;
+
+  ForeignTypeInfo({
+    this.typeSystem,
+  });
+
+  ForeignTypeInfo.fromJson(core.Map json_)
+      : this(
+          typeSystem: json_.containsKey('typeSystem')
+              ? json_['typeSystem'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (typeSystem != null) 'typeSystem': typeSystem!,
+      };
+}
+
 /// Request message for `GetIamPolicy` method.
 class GetIamPolicyRequest {
   /// OPTIONAL: A `GetPolicyOptions` object for specifying options to
@@ -6971,7 +7052,7 @@ class GetIamPolicyRequest {
 }
 
 /// Encapsulates settings provided to GetIamPolicy.
-typedef GetPolicyOptions = $GetPolicyOptions;
+typedef GetPolicyOptions = $GetPolicyOptions00;
 
 /// Response object of GetQueryResults.
 class GetQueryResultsResponse {
@@ -8467,17 +8548,17 @@ class JobConfigurationLoad {
   /// Optional.
   core.List<ConnectionProperty>? connectionProperties;
 
-  /// \[Experimental\] Configures the load job to only copy files to the
-  /// destination BigLake managed table with an external storage_uri, without
-  /// reading file content and writing them to new files.
+  /// \[Experimental\] Configures the load job to copy files directly to the
+  /// destination BigLake managed table, bypassing file content reading and
+  /// rewriting.
   ///
-  /// Copying files only is supported when: * source_uris are in the same
-  /// external storage system as the destination table but they do not overlap
-  /// with storage_uri of the destination table. * source_format is the same
-  /// file format as the destination table. * destination_table is an existing
-  /// BigLake managed table. Its schema does not have default value expression.
-  /// It schema does not have type parameters other than precision and scale. *
-  /// No options other than the above are specified.
+  /// Copying files only is supported when all the following are true: *
+  /// `source_uris` are located in the same Cloud Storage location as the
+  /// destination table's `storage_uri` location. * `source_format` is
+  /// `PARQUET`. * `destination_table` is an existing BigLake managed table. The
+  /// table's schema does not have flexible column names. The table's columns do
+  /// not have type parameters other than precision and scale. * No options
+  /// other than the above are specified.
   ///
   /// Optional.
   core.bool? copyFilesOnly;
@@ -9808,7 +9889,8 @@ class JobReference {
 
 /// Job resource usage breakdown by reservation.
 class JobStatisticsReservationUsage {
-  /// Reservation name or "unreserved" for on-demand resources usage.
+  /// Reservation name or "unreserved" for on-demand resource usage and
+  /// multi-statement queries.
   core.String? name;
 
   /// Total slot milliseconds used by the reservation for a particular job.
@@ -10107,7 +10189,8 @@ class JobStatistics {
 
 /// Job resource usage breakdown by reservation.
 class JobStatistics2ReservationUsage {
-  /// Reservation name or "unreserved" for on-demand resources usage.
+  /// Reservation name or "unreserved" for on-demand resource usage and
+  /// multi-statement queries.
   core.String? name;
 
   /// Total slot milliseconds used by the reservation for a particular job.
@@ -11387,7 +11470,8 @@ class MaterializedView {
   /// - "BASE_TABLE_FINE_GRAINED_SECURITY_POLICY" : View is inaccessible to the
   /// user because of a fine-grained security policy on one of its base tables.
   /// - "BASE_TABLE_TOO_STALE" : One of the view's base tables is too stale. For
-  /// example, the cached metadata of a biglake table needs to be updated.
+  /// example, the cached metadata of a BigLake external table needs to be
+  /// updated.
   core.String? rejectedReason;
 
   /// The candidate materialized view.
@@ -11427,8 +11511,8 @@ class MaterializedView {
 
 /// Definition and configuration of a materialized view.
 class MaterializedViewDefinition {
-  /// This option declares authors intention to construct a materialized view
-  /// that will not be refreshed incrementally.
+  /// This option declares the intention to construct a materialized view that
+  /// isn't refreshed incrementally.
   ///
   /// Optional.
   core.bool? allowNonIncrementalDefinition;
@@ -11661,6 +11745,8 @@ class MlStatistics {
   /// - "RANDOM_FOREST_CLASSIFIER" : Random forest classifier model.
   /// - "TENSORFLOW_LITE" : An imported TensorFlow Lite model.
   /// - "ONNX" : An imported ONNX model.
+  /// - "TRANSFORM_ONLY" : Model to capture the manual preprocessing logic in
+  /// the transform clause.
   core.String? modelType;
 
   /// Training type of the job.
@@ -11851,6 +11937,8 @@ class Model {
   /// - "RANDOM_FOREST_CLASSIFIER" : Random forest classifier model.
   /// - "TENSORFLOW_LITE" : An imported TensorFlow Lite model.
   /// - "ONNX" : An imported ONNX model.
+  /// - "TRANSFORM_ONLY" : Model to capture the manual preprocessing logic in
+  /// the transform clause.
   core.String? modelType;
 
   /// For single-objective \[hyperparameter
@@ -12214,9 +12302,21 @@ class ParquetOptions {
   /// Optional.
   core.bool? enumAsString;
 
+  /// Will indicate how to represent a parquet map if present.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "MAP_TARGET_TYPE_UNSPECIFIED" : In this mode, we fall back to the
+  /// default. Currently (3/24) we represent the map as: struct map_field_name {
+  /// repeated struct key_value { key value } }
+  /// - "ARRAY_OF_STRUCT" : In this mode, we omit parquet's key_value struct and
+  /// represent the map as: repeated struct map_field_name { key value }
+  core.String? mapTargetType;
+
   ParquetOptions({
     this.enableListInference,
     this.enumAsString,
+    this.mapTargetType,
   });
 
   ParquetOptions.fromJson(core.Map json_)
@@ -12227,12 +12327,16 @@ class ParquetOptions {
           enumAsString: json_.containsKey('enumAsString')
               ? json_['enumAsString'] as core.bool
               : null,
+          mapTargetType: json_.containsKey('mapTargetType')
+              ? json_['mapTargetType'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enableListInference != null)
           'enableListInference': enableListInference!,
         if (enumAsString != null) 'enumAsString': enumAsString!,
+        if (mapTargetType != null) 'mapTargetType': mapTargetType!,
       };
 }
 
@@ -13931,6 +14035,31 @@ class RemoteModelInfo {
           'remoteModelVersion': remoteModelVersion!,
         if (remoteServiceType != null) 'remoteServiceType': remoteServiceType!,
         if (speechRecognizer != null) 'speechRecognizer': speechRecognizer!,
+      };
+}
+
+class RestrictionConfig {
+  /// Specifies the type of dataset/table restriction.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "RESTRICTION_TYPE_UNSPECIFIED" : Should never be used.
+  /// - "RESTRICTED_DATA_EGRESS" : Restrict data egress. See \[Data
+  /// egress\](/bigquery/docs/analytics-hub-introduction#data_egress) for more
+  /// details.
+  core.String? type;
+
+  RestrictionConfig({
+    this.type,
+  });
+
+  RestrictionConfig.fromJson(core.Map json_)
+      : this(
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (type != null) 'type': type!,
       };
 }
 
@@ -15850,6 +15979,15 @@ class Table {
   /// Optional.
   core.Map<core.String, core.String>? resourceTags;
 
+  /// Restriction config for table.
+  ///
+  /// If set, restrict certain accesses on the table based on the config. See
+  /// \[Data egress\](/bigquery/docs/analytics-hub-introduction#data_egress) for
+  /// more details.
+  ///
+  /// Optional. Output only.
+  RestrictionConfig? restrictions;
+
   /// Describes the schema of this table.
   ///
   /// Optional.
@@ -15954,6 +16092,7 @@ class Table {
     this.replicas,
     this.requirePartitionFilter,
     this.resourceTags,
+    this.restrictions,
     this.schema,
     this.selfLink,
     this.snapshotDefinition,
@@ -16111,6 +16250,10 @@ class Table {
                   ),
                 )
               : null,
+          restrictions: json_.containsKey('restrictions')
+              ? RestrictionConfig.fromJson(
+                  json_['restrictions'] as core.Map<core.String, core.dynamic>)
+              : null,
           schema: json_.containsKey('schema')
               ? TableSchema.fromJson(
                   json_['schema'] as core.Map<core.String, core.dynamic>)
@@ -16204,6 +16347,7 @@ class Table {
         if (requirePartitionFilter != null)
           'requirePartitionFilter': requirePartitionFilter!,
         if (resourceTags != null) 'resourceTags': resourceTags!,
+        if (restrictions != null) 'restrictions': restrictions!,
         if (schema != null) 'schema': schema!,
         if (selfLink != null) 'selfLink': selfLink!,
         if (snapshotDefinition != null)
@@ -16757,6 +16901,14 @@ class TableFieldSchema {
   /// Optional.
   core.List<TableFieldSchema>? fields;
 
+  /// Definition of the foreign data type.
+  ///
+  /// Only valid for top-level schema fields (not nested fields). If the type is
+  /// FOREIGN, this field is required.
+  ///
+  /// Optional.
+  core.String? foreignTypeDefinition;
+
   /// Maximum length of values of this field for STRINGS or BYTES.
   ///
   /// If max_length is not specified, no maximum length constraint is imposed on
@@ -16857,6 +17009,7 @@ class TableFieldSchema {
     this.defaultValueExpression,
     this.description,
     this.fields,
+    this.foreignTypeDefinition,
     this.maxLength,
     this.mode,
     this.name,
@@ -16888,6 +17041,9 @@ class TableFieldSchema {
                   .map((value) => TableFieldSchema.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
+              : null,
+          foreignTypeDefinition: json_.containsKey('foreignTypeDefinition')
+              ? json_['foreignTypeDefinition'] as core.String
               : null,
           maxLength: json_.containsKey('maxLength')
               ? json_['maxLength'] as core.String
@@ -16921,6 +17077,8 @@ class TableFieldSchema {
           'defaultValueExpression': defaultValueExpression!,
         if (description != null) 'description': description!,
         if (fields != null) 'fields': fields!,
+        if (foreignTypeDefinition != null)
+          'foreignTypeDefinition': foreignTypeDefinition!,
         if (maxLength != null) 'maxLength': maxLength!,
         if (mode != null) 'mode': mode!,
         if (name != null) 'name': name!,
@@ -17271,7 +17429,10 @@ class TableReplicationInfo {
 
   /// Specifies the interval at which the source table is polled for updates.
   ///
-  /// Required.
+  /// It's Optional. If not specified, default replication interval would be
+  /// applied.
+  ///
+  /// Optional.
   core.String? replicationIntervalMs;
 
   /// Replication status of configured replication.
@@ -17361,8 +17522,15 @@ class TableSchema {
   /// Describes the fields in a table.
   core.List<TableFieldSchema>? fields;
 
+  /// Specifies metadata of the foreign data type definition in field schema
+  /// (TableFieldSchema.foreign_type_definition).
+  ///
+  /// Optional.
+  ForeignTypeInfo? foreignTypeInfo;
+
   TableSchema({
     this.fields,
+    this.foreignTypeInfo,
   });
 
   TableSchema.fromJson(core.Map json_)
@@ -17373,10 +17541,15 @@ class TableSchema {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          foreignTypeInfo: json_.containsKey('foreignTypeInfo')
+              ? ForeignTypeInfo.fromJson(json_['foreignTypeInfo']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (fields != null) 'fields': fields!,
+        if (foreignTypeInfo != null) 'foreignTypeInfo': foreignTypeInfo!,
       };
 }
 

@@ -15401,6 +15401,44 @@ class FreeListingsProgramStatusRegionStatus {
 typedef FreeListingsProgramStatusReviewIneligibilityReasonDetails
     = $ProgramStatusReviewIneligibilityReasonDetails;
 
+/// Conditions to be met for a product to have free shipping.
+class FreeShippingThreshold {
+  /// The
+  /// [CLDR territory code](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml)
+  /// of the country to which an item will ship.
+  ///
+  /// Required.
+  core.String? country;
+
+  /// The minimum product price for the shipping cost to become free.
+  ///
+  /// Represented as a number.
+  ///
+  /// Required.
+  Price? priceThreshold;
+
+  FreeShippingThreshold({
+    this.country,
+    this.priceThreshold,
+  });
+
+  FreeShippingThreshold.fromJson(core.Map json_)
+      : this(
+          country: json_.containsKey('country')
+              ? json_['country'] as core.String
+              : null,
+          priceThreshold: json_.containsKey('priceThreshold')
+              ? Price.fromJson(json_['priceThreshold']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (country != null) 'country': country!,
+        if (priceThreshold != null) 'priceThreshold': priceThreshold!,
+      };
+}
+
 /// Response containing generated recommendations.
 class GenerateRecommendationsResponse {
   /// Recommendations generated for a request.
@@ -15967,7 +16005,7 @@ class InputFieldTextInput {
   TextWithTooltip? additionalInfo;
 
   /// Text to be used as the
-  /// [aria label](https://www.w3.org/TR/WCAG20-TECHS/ARIA14.html) for the
+  /// \[aria-label\](https://www.w3.org/TR/WCAG20-TECHS/ARIA14.html) for the
   /// input.
   core.String? ariaLabel;
 
@@ -16168,15 +16206,33 @@ class InsertCheckoutSettingsRequest {
       };
 }
 
+/// Details of a monthly installment payment offering.
+///
+/// [Learn more](https://support.google.com/merchants/answer/6324474) about
+/// installments.
 class Installment {
   /// The amount the buyer has to pay per month.
   Price? amount;
+
+  /// Type of installment payments.
+  ///
+  /// Supported values are: - "`finance`" - "`lease`"
+  ///
+  /// Optional.
+  core.String? creditType;
+
+  /// The initial down payment amount the buyer has to pay.
+  ///
+  /// Optional.
+  Price? downpayment;
 
   /// The number of installments the buyer has to pay.
   core.String? months;
 
   Installment({
     this.amount,
+    this.creditType,
+    this.downpayment,
     this.months,
   });
 
@@ -16186,6 +16242,13 @@ class Installment {
               ? Price.fromJson(
                   json_['amount'] as core.Map<core.String, core.dynamic>)
               : null,
+          creditType: json_.containsKey('creditType')
+              ? json_['creditType'] as core.String
+              : null,
+          downpayment: json_.containsKey('downpayment')
+              ? Price.fromJson(
+                  json_['downpayment'] as core.Map<core.String, core.dynamic>)
+              : null,
           months: json_.containsKey('months')
               ? json_['months'] as core.String
               : null,
@@ -16193,6 +16256,8 @@ class Installment {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (amount != null) 'amount': amount!,
+        if (creditType != null) 'creditType': creditType!,
+        if (downpayment != null) 'downpayment': downpayment!,
         if (months != null) 'months': months!,
       };
 }
@@ -16293,7 +16358,7 @@ class LabelIds {
 class LiaAboutPageSettings {
   /// The status of the verification process for the About page.
   ///
-  /// Acceptable values are: - "`active`" - "`inactive`" - "`pending`"
+  /// Supported values are: - "`active`" - "`inactive`" - "`pending`"
   core.String? status;
 
   /// The URL for the About page.
@@ -17754,43 +17819,82 @@ class LocationIdSet {
       };
 }
 
-class LoyaltyPoints {
-  /// Name of loyalty points program.
+/// Allows the setting up of loyalty program benefits (for example price or
+/// points).
+///
+/// https://support.google.com/merchants/answer/12922446
+class LoyaltyProgram {
+  /// The cashback that can be used for future purchases.
   ///
-  /// It is recommended to limit the name to 12 full-width characters or 24
-  /// Roman characters.
-  core.String? name;
+  /// Optional.
+  Price? cashbackForFutureUse;
 
-  /// The retailer's loyalty points in absolute value.
-  core.String? pointsValue;
-
-  /// The ratio of a point when converted to currency.
+  /// The amount of loyalty points earned on a purchase.
   ///
-  /// Google assumes currency based on Merchant Center settings. If ratio is
-  /// left out, it defaults to 1.0.
-  core.double? ratio;
+  /// Optional.
+  core.String? loyaltyPoints;
 
-  LoyaltyPoints({
-    this.name,
-    this.pointsValue,
-    this.ratio,
+  /// The price for members of the given tier (instant discount price).
+  ///
+  /// Must be smaller or equal to the regular price.
+  ///
+  /// Optional.
+  Price? price;
+
+  /// The label of the loyalty program.
+  ///
+  /// This is an internal label that uniquely identifies the relationship
+  /// between a merchant entity and a loyalty program entity. It must be
+  /// provided so that system can associate the assets below (for example, price
+  /// and points) with a merchant. The corresponding program must be linked to
+  /// the merchant account.
+  ///
+  /// Required.
+  core.String? programLabel;
+
+  /// The label of the tier within the loyalty program.
+  ///
+  /// Must match one of the labels within the program.
+  ///
+  /// Required.
+  core.String? tierLabel;
+
+  LoyaltyProgram({
+    this.cashbackForFutureUse,
+    this.loyaltyPoints,
+    this.price,
+    this.programLabel,
+    this.tierLabel,
   });
 
-  LoyaltyPoints.fromJson(core.Map json_)
+  LoyaltyProgram.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          pointsValue: json_.containsKey('pointsValue')
-              ? json_['pointsValue'] as core.String
+          cashbackForFutureUse: json_.containsKey('cashbackForFutureUse')
+              ? Price.fromJson(json_['cashbackForFutureUse']
+                  as core.Map<core.String, core.dynamic>)
               : null,
-          ratio: json_.containsKey('ratio')
-              ? (json_['ratio'] as core.num).toDouble()
+          loyaltyPoints: json_.containsKey('loyaltyPoints')
+              ? json_['loyaltyPoints'] as core.String
+              : null,
+          price: json_.containsKey('price')
+              ? Price.fromJson(
+                  json_['price'] as core.Map<core.String, core.dynamic>)
+              : null,
+          programLabel: json_.containsKey('programLabel')
+              ? json_['programLabel'] as core.String
+              : null,
+          tierLabel: json_.containsKey('tierLabel')
+              ? json_['tierLabel'] as core.String
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (pointsValue != null) 'pointsValue': pointsValue!,
-        if (ratio != null) 'ratio': ratio!,
+        if (cashbackForFutureUse != null)
+          'cashbackForFutureUse': cashbackForFutureUse!,
+        if (loyaltyPoints != null) 'loyaltyPoints': loyaltyPoints!,
+        if (price != null) 'price': price!,
+        if (programLabel != null) 'programLabel': programLabel!,
+        if (tierLabel != null) 'tierLabel': tierLabel!,
       };
 }
 
@@ -24796,10 +24900,10 @@ class PostalCodeRange {
       };
 }
 
-typedef Price = $Shared07;
+typedef Price = $Shared10;
 
 /// The price represented as a number and currency.
-typedef PriceAmount = $Shared07;
+typedef PriceAmount = $Shared10;
 
 /// Price competitiveness fields requested by the merchant in the query.
 ///
@@ -25009,12 +25113,11 @@ class Product {
   /// Target age group of the item.
   core.String? ageGroup;
 
-  /// A safeguard in the
-  /// [Automated Discounts](https://support.google.com/merchants/answer/10295759?hl=en)
-  /// and
-  /// [Dynamic Promotions](https://support.google.com/merchants/answer/13949249?hl=en)
-  /// projects, ensuring that discounts on merchants' offers do not fall below
-  /// this value, thereby preserving the offer's value and profitability.
+  /// A safeguard in the \[Automated
+  /// Discounts\](//support.google.com/merchants/answer/10295759) and \[Dynamic
+  /// Promotions\](//support.google.com/merchants/answer/13949249) projects,
+  /// ensuring that discounts on merchants' offers do not fall below this value,
+  /// thereby preserving the offer's value and profitability.
   Price? autoPricingMinPrice;
 
   /// Availability status of the item.
@@ -25145,6 +25248,11 @@ class Product {
   /// equal to 20 uppercase letters (A-Z), numbers (0-9), and dashes (-).
   core.String? feedLabel;
 
+  /// Conditions to be met for a product to have free shipping.
+  ///
+  /// Optional.
+  core.List<FreeShippingThreshold>? freeShippingThreshold;
+
   /// Target gender of the item.
   core.String? gender;
 
@@ -25214,10 +25322,9 @@ class Product {
   /// URL template for merchant hosted local storefront.
   core.String? linkTemplate;
 
-  /// Loyalty points that users receive after purchasing the item.
-  ///
-  /// Japan only.
-  LoyaltyPoints? loyaltyPoints;
+  /// Loyalty program information that is used to surface loyalty benefits ( for
+  /// example pricing, points, etc) to the user for this item.
+  LoyaltyProgram? loyaltyProgram;
 
   /// The material of which the item is made.
   core.String? material;
@@ -25449,6 +25556,7 @@ class Product {
     this.expirationDate,
     this.externalSellerId,
     this.feedLabel,
+    this.freeShippingThreshold,
     this.gender,
     this.googleProductCategory,
     this.gtin,
@@ -25463,7 +25571,7 @@ class Product {
     this.lifestyleImageLinks,
     this.link,
     this.linkTemplate,
-    this.loyaltyPoints,
+    this.loyaltyProgram,
     this.material,
     this.maxEnergyEfficiencyClass,
     this.maxHandlingTime,
@@ -25644,6 +25752,12 @@ class Product {
           feedLabel: json_.containsKey('feedLabel')
               ? json_['feedLabel'] as core.String
               : null,
+          freeShippingThreshold: json_.containsKey('freeShippingThreshold')
+              ? (json_['freeShippingThreshold'] as core.List)
+                  .map((value) => FreeShippingThreshold.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           gender: json_.containsKey('gender')
               ? json_['gender'] as core.String
               : null,
@@ -25683,9 +25797,9 @@ class Product {
           linkTemplate: json_.containsKey('linkTemplate')
               ? json_['linkTemplate'] as core.String
               : null,
-          loyaltyPoints: json_.containsKey('loyaltyPoints')
-              ? LoyaltyPoints.fromJson(
-                  json_['loyaltyPoints'] as core.Map<core.String, core.dynamic>)
+          loyaltyProgram: json_.containsKey('loyaltyProgram')
+              ? LoyaltyProgram.fromJson(json_['loyaltyProgram']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           material: json_.containsKey('material')
               ? json_['material'] as core.String
@@ -25913,6 +26027,8 @@ class Product {
         if (expirationDate != null) 'expirationDate': expirationDate!,
         if (externalSellerId != null) 'externalSellerId': externalSellerId!,
         if (feedLabel != null) 'feedLabel': feedLabel!,
+        if (freeShippingThreshold != null)
+          'freeShippingThreshold': freeShippingThreshold!,
         if (gender != null) 'gender': gender!,
         if (googleProductCategory != null)
           'googleProductCategory': googleProductCategory!,
@@ -25930,7 +26046,7 @@ class Product {
           'lifestyleImageLinks': lifestyleImageLinks!,
         if (link != null) 'link': link!,
         if (linkTemplate != null) 'linkTemplate': linkTemplate!,
-        if (loyaltyPoints != null) 'loyaltyPoints': loyaltyPoints!,
+        if (loyaltyProgram != null) 'loyaltyProgram': loyaltyProgram!,
         if (material != null) 'material': material!,
         if (maxEnergyEfficiencyClass != null)
           'maxEnergyEfficiencyClass': maxEnergyEfficiencyClass!,
@@ -27113,6 +27229,8 @@ class ProductSubscriptionCost {
   Price? amount;
 
   /// The type of subscription period.
+  ///
+  /// - "`month`" - "`year`"
   core.String? period;
 
   /// The number of subscription periods the buyer has to pay.

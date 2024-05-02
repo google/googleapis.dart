@@ -2698,6 +2698,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.GmailApi(mock).users;
       final arg_userId = 'foo';
+      final arg_temporaryEeccBypass = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -2745,6 +2746,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['temporaryEeccBypass']!.first,
+          unittest.equals('$arg_temporaryEeccBypass'),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -2755,7 +2760,8 @@ void main() {
         final resp = convert.json.encode(buildProfile());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      final response = await res.getProfile(arg_userId, $fields: arg_$fields);
+      final response = await res.getProfile(arg_userId,
+          temporaryEeccBypass: arg_temporaryEeccBypass, $fields: arg_$fields);
       checkProfile(response as api.Profile);
     });
 
@@ -4117,6 +4123,7 @@ void main() {
       final arg_id = 'foo';
       final arg_format = 'foo';
       final arg_metadataHeaders = buildUnnamed37();
+      final arg_temporaryEeccBypass = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -4178,6 +4185,10 @@ void main() {
           unittest.equals(arg_metadataHeaders),
         );
         unittest.expect(
+          queryMap['temporaryEeccBypass']!.first,
+          unittest.equals('$arg_temporaryEeccBypass'),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -4191,6 +4202,7 @@ void main() {
       final response = await res.get(arg_userId, arg_id,
           format: arg_format,
           metadataHeaders: arg_metadataHeaders,
+          temporaryEeccBypass: arg_temporaryEeccBypass,
           $fields: arg_$fields);
       checkMessage(response as api.Message);
     });
@@ -4388,6 +4400,7 @@ void main() {
       final arg_maxResults = 42;
       final arg_pageToken = 'foo';
       final arg_q = 'foo';
+      final arg_temporaryEeccBypass = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -4455,6 +4468,10 @@ void main() {
           unittest.equals(arg_q),
         );
         unittest.expect(
+          queryMap['temporaryEeccBypass']!.first,
+          unittest.equals('$arg_temporaryEeccBypass'),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -4471,6 +4488,7 @@ void main() {
           maxResults: arg_maxResults,
           pageToken: arg_pageToken,
           q: arg_q,
+          temporaryEeccBypass: arg_temporaryEeccBypass,
           $fields: arg_$fields);
       checkListMessagesResponse(response as api.ListMessagesResponse);
     });
@@ -4805,6 +4823,7 @@ void main() {
       final arg_userId = 'foo';
       final arg_messageId = 'foo';
       final arg_id = 'foo';
+      final arg_temporaryEeccBypass = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -4872,6 +4891,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['temporaryEeccBypass']!.first,
+          unittest.equals('$arg_temporaryEeccBypass'),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -4883,7 +4906,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_userId, arg_messageId, arg_id,
-          $fields: arg_$fields);
+          temporaryEeccBypass: arg_temporaryEeccBypass, $fields: arg_$fields);
       checkMessagePartBody(response as api.MessagePartBody);
     });
   });
@@ -8310,6 +8333,7 @@ void main() {
       final arg_id = 'foo';
       final arg_format = 'foo';
       final arg_metadataHeaders = buildUnnamed39();
+      final arg_temporaryEeccBypass = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -8371,6 +8395,10 @@ void main() {
           unittest.equals(arg_metadataHeaders),
         );
         unittest.expect(
+          queryMap['temporaryEeccBypass']!.first,
+          unittest.equals('$arg_temporaryEeccBypass'),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -8384,6 +8412,7 @@ void main() {
       final response = await res.get(arg_userId, arg_id,
           format: arg_format,
           metadataHeaders: arg_metadataHeaders,
+          temporaryEeccBypass: arg_temporaryEeccBypass,
           $fields: arg_$fields);
       checkThread(response as api.Thread);
     });
@@ -8397,6 +8426,7 @@ void main() {
       final arg_maxResults = 42;
       final arg_pageToken = 'foo';
       final arg_q = 'foo';
+      final arg_temporaryEeccBypass = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -8464,6 +8494,10 @@ void main() {
           unittest.equals(arg_q),
         );
         unittest.expect(
+          queryMap['temporaryEeccBypass']!.first,
+          unittest.equals('$arg_temporaryEeccBypass'),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -8480,6 +8514,7 @@ void main() {
           maxResults: arg_maxResults,
           pageToken: arg_pageToken,
           q: arg_q,
+          temporaryEeccBypass: arg_temporaryEeccBypass,
           $fields: arg_$fields);
       checkListThreadsResponse(response as api.ListThreadsResponse);
     });

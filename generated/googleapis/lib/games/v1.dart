@@ -1118,6 +1118,48 @@ class RecallResource {
 
   RecallResource(commons.ApiRequester client) : _requester = client;
 
+  /// Retrieve the last Recall token from all developer games that is associated
+  /// with the PGS Player principal encoded in the provided recall session id.
+  ///
+  /// The API is only available for users that have active PGS Player profile.
+  ///
+  /// Request parameters:
+  ///
+  /// [sessionId] - Required. Opaque server-generated string that encodes all
+  /// the necessary information to identify the PGS player / Google user and
+  /// application.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RetrieveDeveloperGamesLastPlayerTokenResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RetrieveDeveloperGamesLastPlayerTokenResponse>
+      lastTokenFromAllDeveloperGames(
+    core.String sessionId, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'games/v1/recall/developerGamesLastPlayerToken/' +
+        commons.escapeVariable('$sessionId');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return RetrieveDeveloperGamesLastPlayerTokenResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Associate the PGS Player principal encoded in the provided recall session
   /// id with an in-game account
   ///
@@ -5015,6 +5057,32 @@ class ResetPersonaResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (unlinked != null) 'unlinked': unlinked!,
+      };
+}
+
+/// Recall token data returned from for the
+/// RetrieveDeveloperGamesLastPlayerToken RPC
+class RetrieveDeveloperGamesLastPlayerTokenResponse {
+  /// The recall token associated with the requested PGS Player principal.
+  ///
+  /// It can be unset if there is no recall token associated with the requested
+  /// principal.
+  RecallToken? token;
+
+  RetrieveDeveloperGamesLastPlayerTokenResponse({
+    this.token,
+  });
+
+  RetrieveDeveloperGamesLastPlayerTokenResponse.fromJson(core.Map json_)
+      : this(
+          token: json_.containsKey('token')
+              ? RecallToken.fromJson(
+                  json_['token'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (token != null) 'token': token!,
       };
 }
 

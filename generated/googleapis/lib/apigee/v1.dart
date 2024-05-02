@@ -101,6 +101,7 @@
 ///   - [OrganizationsOperationsResource]
 ///   - [OrganizationsOptimizedHostStatsResource]
 ///   - [OrganizationsReportsResource]
+///   - [OrganizationsSecurityAssessmentResultsResource]
 ///   - [OrganizationsSecurityProfilesResource]
 ///     - [OrganizationsSecurityProfilesEnvironmentsResource]
 ///   - [OrganizationsSharedflowsResource]
@@ -244,6 +245,9 @@ class OrganizationsResource {
       OrganizationsOptimizedHostStatsResource(_requester);
   OrganizationsReportsResource get reports =>
       OrganizationsReportsResource(_requester);
+  OrganizationsSecurityAssessmentResultsResource
+      get securityAssessmentResults =>
+          OrganizationsSecurityAssessmentResultsResource(_requester);
   OrganizationsSecurityProfilesResource get securityProfiles =>
       OrganizationsSecurityProfilesResource(_requester);
   OrganizationsSharedflowsResource get sharedflows =>
@@ -14377,6 +14381,59 @@ class OrganizationsReportsResource {
   }
 }
 
+class OrganizationsSecurityAssessmentResultsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsSecurityAssessmentResultsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Compute RAV2 security scores for a set of resources.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the organization for which the score needs to
+  /// be computed in the following format:
+  /// `organizations/{org}/securityAssessmentResults`
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/securityAssessmentResults$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsResponse>
+      batchCompute(
+    GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':batchCompute';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsResponse
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class OrganizationsSecurityProfilesResource {
   final commons.ApiRequester _requester;
 
@@ -15912,27 +15969,7 @@ class GoogleCloudApigeeV1Access {
 /// Get action.
 ///
 /// For example, "Get" : { "name" : "target.name", "value" : "default" }
-class GoogleCloudApigeeV1AccessGet {
-  core.String? name;
-  core.String? value;
-
-  GoogleCloudApigeeV1AccessGet({
-    this.name,
-    this.value,
-  });
-
-  GoogleCloudApigeeV1AccessGet.fromJson(core.Map json_)
-      : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (value != null) 'value': value!,
-      };
-}
+typedef GoogleCloudApigeeV1AccessGet = $Shared05;
 
 /// Access logging configuration enables customers to ship the access logs from
 /// the tenant projects to their own project's cloud logging.
@@ -16491,8 +16528,15 @@ class GoogleCloudApigeeV1ApiDoc {
 
   /// Location of the image used for the catalog item in the catalog.
   ///
-  /// For portal files, this can have the format `/files/{filename}`. Max length
-  /// is 2,083 characters.
+  /// This can be either an image with an external URL or a file path for
+  /// \[image files stored in the
+  /// portal\](/apigee/docs/api-platform/publish/portal/portal-files"), for
+  /// example, `/files/book-tree.jpg`. When specifying the URL of an external
+  /// image, the image won't be uploaded to your assets; additionally, loading
+  /// the image in the integrated portal will be subject to its availability,
+  /// which may be blocked or restricted by \[content security
+  /// policies\](/apigee/docs/api-platform/publish/portal/csp). Max length of
+  /// file path is 2,083 characters.
   ///
   /// Optional.
   core.String? imageUrl;
@@ -18466,6 +18510,207 @@ class GoogleCloudApigeeV1Attributes {
       };
 }
 
+/// Request for BatchComputeSecurityAssessmentResults.
+class GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequest {
+  /// Include only these resources.
+  GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArray?
+      include;
+
+  /// Include all resources under the scope.
+  GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestIncludeAll?
+      includeAllResources;
+
+  /// The maximum number of results to return.
+  ///
+  /// The service may return fewer than this value. If unspecified, at most 50
+  /// results will be returned.
+  ///
+  /// Optional.
+  core.int? pageSize;
+
+  /// A page token, received from a previous
+  /// `BatchComputeSecurityAssessmentResults` call.
+  ///
+  /// Provide this to retrieve the subsequent page.
+  ///
+  /// Optional.
+  core.String? pageToken;
+
+  /// Name of the profile that is used for computation.
+  ///
+  /// Required.
+  core.String? profile;
+
+  /// Scope of the resources for the computation.
+  ///
+  /// For Apigee, the environment is the scope of the resources.
+  ///
+  /// Required.
+  core.String? scope;
+
+  GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequest({
+    this.include,
+    this.includeAllResources,
+    this.pageSize,
+    this.pageToken,
+    this.profile,
+    this.scope,
+  });
+
+  GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequest.fromJson(
+      core.Map json_)
+      : this(
+          include: json_.containsKey('include')
+              ? GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArray
+                  .fromJson(
+                      json_['include'] as core.Map<core.String, core.dynamic>)
+              : null,
+          includeAllResources: json_.containsKey('includeAllResources')
+              ? GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestIncludeAll
+                  .fromJson(json_['includeAllResources']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          pageSize: json_.containsKey('pageSize')
+              ? json_['pageSize'] as core.int
+              : null,
+          pageToken: json_.containsKey('pageToken')
+              ? json_['pageToken'] as core.String
+              : null,
+          profile: json_.containsKey('profile')
+              ? json_['profile'] as core.String
+              : null,
+          scope:
+              json_.containsKey('scope') ? json_['scope'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (include != null) 'include': include!,
+        if (includeAllResources != null)
+          'includeAllResources': includeAllResources!,
+        if (pageSize != null) 'pageSize': pageSize!,
+        if (pageToken != null) 'pageToken': pageToken!,
+        if (profile != null) 'profile': profile!,
+        if (scope != null) 'scope': scope!,
+      };
+}
+
+/// Message for include_all option.
+typedef GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestIncludeAll
+    = $Empty;
+
+/// An array of resource messages.
+class GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArray {
+  /// The array of resources.
+  ///
+  /// For Apigee, the proxies are resources.
+  ///
+  /// Required.
+  core.List<
+          GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArrayResource>?
+      resources;
+
+  GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArray({
+    this.resources,
+  });
+
+  GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArray.fromJson(
+      core.Map json_)
+      : this(
+          resources: json_.containsKey('resources')
+              ? (json_['resources'] as core.List)
+                  .map((value) =>
+                      GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArrayResource
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (resources != null) 'resources': resources!,
+      };
+}
+
+/// Resource for which we are computing security assessment.
+class GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArrayResource {
+  /// Name of this resource.
+  ///
+  /// Required.
+  core.String? name;
+
+  /// Type of this resource.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "RESOURCE_TYPE_UNSPECIFIED" : ResourceType not specified.
+  /// - "API_PROXY" : Resource is an Apigee Proxy.
+  core.String? type;
+
+  GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArrayResource({
+    this.name,
+    this.type,
+  });
+
+  GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArrayResource.fromJson(
+      core.Map json_)
+      : this(
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (type != null) 'type': type!,
+      };
+}
+
+/// Response for BatchComputeSecurityAssessmentResults.
+class GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsResponse {
+  /// The time of the assessment api call.
+  core.String? assessmentTime;
+
+  /// A token that can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is blank, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// Default sort order is by resource name in alphabetic order.
+  core.List<GoogleCloudApigeeV1SecurityAssessmentResult>?
+      securityAssessmentResults;
+
+  GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsResponse({
+    this.assessmentTime,
+    this.nextPageToken,
+    this.securityAssessmentResults,
+  });
+
+  GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsResponse.fromJson(
+      core.Map json_)
+      : this(
+          assessmentTime: json_.containsKey('assessmentTime')
+              ? json_['assessmentTime'] as core.String
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          securityAssessmentResults:
+              json_.containsKey('securityAssessmentResults')
+                  ? (json_['securityAssessmentResults'] as core.List)
+                      .map((value) =>
+                          GoogleCloudApigeeV1SecurityAssessmentResult.fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (assessmentTime != null) 'assessmentTime': assessmentTime!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (securityAssessmentResults != null)
+          'securityAssessmentResults': securityAssessmentResults!,
+      };
+}
+
 /// Request for BatchUpdateSecurityIncident.
 class GoogleCloudApigeeV1BatchUpdateSecurityIncidentsRequest {
   /// The request message specifying the resources to update.
@@ -18861,7 +19106,8 @@ class GoogleCloudApigeeV1ComputeEnvironmentScoresRequest {
 
   /// Time range for score calculation.
   ///
-  /// At most 14 days of scores will be returned.
+  /// At most 14 days of scores will be returned, and both the start and end
+  /// dates must be within the last 90 days.
   ///
   /// Required.
   GoogleTypeInterval? timeRange;
@@ -22812,7 +23058,8 @@ class GoogleCloudApigeeV1Instance {
   /// Customer Managed Encryption Key (CMEK) used for disk and volume
   /// encryption.
   ///
-  /// Required for Apigee paid subscriptions only. Use the following format:
+  /// If not specified, a Google-Managed encryption key will be used. Use the
+  /// following format:
   /// `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`
   core.String? diskEncryptionKeyName;
 
@@ -25114,13 +25361,13 @@ class GoogleCloudApigeeV1Organization {
 
   /// Cloud KMS key name used for encrypting API consumer data.
   ///
-  /// Required for US/EU regions when \[BillingType\](#BillingType) is
-  /// `SUBSCRIPTION`. When \[BillingType\](#BillingType) is `EVALUATION` or the
-  /// region is not US/EU, a Google-Managed encryption key will be used. Format:
-  /// `projects / * /locations / * /keyRings / * /cryptoKeys / * `
+  /// If not specified or \[BillingType\](#BillingType) is `EVALUATION`, a
+  /// Google-Managed encryption key will be used. Format: `projects / *
+  /// /locations / * /keyRings / * /cryptoKeys / * `
   core.String? apiConsumerDataEncryptionKeyName;
 
-  /// This field is needed only for customers with control plane in US or EU.
+  /// This field is needed only for customers using non-default data residency
+  /// regions.
   ///
   /// Apigee stores some control plane data only in single region. This field
   /// determines which single region Apigee should use. For example: "us-west1"
@@ -25184,7 +25431,7 @@ class GoogleCloudApigeeV1Organization {
   /// Cloud KMS key name used for encrypting control plane data that is stored
   /// in a multi region.
   ///
-  /// Required when \[BillingType\](#BillingType) is `SUBSCRIPTION`. When
+  /// Only used for the data residency region "US" or "EU". If not specified or
   /// \[BillingType\](#BillingType) is `EVALUATION`, a Google-Managed encryption
   /// key will be used. Format: `projects / * /locations / * /keyRings / *
   /// /cryptoKeys / * `
@@ -25257,10 +25504,9 @@ class GoogleCloudApigeeV1Organization {
   /// Cloud KMS key name used for encrypting the data that is stored and
   /// replicated across runtime instances.
   ///
-  /// Update is not allowed after the organization is created. Required when
-  /// \[RuntimeType\](#RuntimeType) is `CLOUD`. If not specified when
-  /// \[RuntimeType\](#RuntimeType) is `TRIAL`, a Google-Managed encryption key
-  /// will be used. For example:
+  /// Update is not allowed after the organization is created. If not specified
+  /// or \[RuntimeType\](#RuntimeType) is `TRIAL`, a Google-Managed encryption
+  /// key will be used. For example:
   /// "projects/foo/locations/us/keyRings/bar/cryptoKeys/baz". **Note:** Not
   /// supported for Apigee hybrid.
   core.String? runtimeDatabaseEncryptionKeyName;
@@ -28272,6 +28518,14 @@ class GoogleCloudApigeeV1SecurityActionConditionConfig {
   /// Optional.
   core.List<core.String>? apiProducts;
 
+  /// A list of ASN numbers to act on, e.g. 23.
+  ///
+  /// https://en.wikipedia.org/wiki/Autonomous_system_(Internet) This uses int64
+  /// instead of uint32 because of https://linter.aip.dev/141/forbidden-types.
+  ///
+  /// Optional.
+  core.List<core.String>? asns;
+
   /// A list of Bot Reasons.
   ///
   /// Current options: Flooder, Brute Guessor, Static Content Scraper, OAuth
@@ -28303,6 +28557,13 @@ class GoogleCloudApigeeV1SecurityActionConditionConfig {
   /// Optional.
   core.List<core.String>? ipAddressRanges;
 
+  /// A list of countries/region codes to act on, e.g. US.
+  ///
+  /// This follows https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2.
+  ///
+  /// Optional.
+  core.List<core.String>? regionCodes;
+
   /// A list of user agents to deny.
   ///
   /// We look for exact matches. Limit 50 per action.
@@ -28314,10 +28575,12 @@ class GoogleCloudApigeeV1SecurityActionConditionConfig {
     this.accessTokens,
     this.apiKeys,
     this.apiProducts,
+    this.asns,
     this.botReasons,
     this.developerApps,
     this.developers,
     this.ipAddressRanges,
+    this.regionCodes,
     this.userAgents,
   });
 
@@ -28335,6 +28598,11 @@ class GoogleCloudApigeeV1SecurityActionConditionConfig {
               : null,
           apiProducts: json_.containsKey('apiProducts')
               ? (json_['apiProducts'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          asns: json_.containsKey('asns')
+              ? (json_['asns'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -28358,6 +28626,11 @@ class GoogleCloudApigeeV1SecurityActionConditionConfig {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          regionCodes: json_.containsKey('regionCodes')
+              ? (json_['regionCodes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           userAgents: json_.containsKey('userAgents')
               ? (json_['userAgents'] as core.List)
                   .map((value) => value as core.String)
@@ -28369,10 +28642,12 @@ class GoogleCloudApigeeV1SecurityActionConditionConfig {
         if (accessTokens != null) 'accessTokens': accessTokens!,
         if (apiKeys != null) 'apiKeys': apiKeys!,
         if (apiProducts != null) 'apiProducts': apiProducts!,
+        if (asns != null) 'asns': asns!,
         if (botReasons != null) 'botReasons': botReasons!,
         if (developerApps != null) 'developerApps': developerApps!,
         if (developers != null) 'developers': developers!,
         if (ipAddressRanges != null) 'ipAddressRanges': ipAddressRanges!,
+        if (regionCodes != null) 'regionCodes': regionCodes!,
         if (userAgents != null) 'userAgents': userAgents!,
       };
 }
@@ -28500,6 +28775,319 @@ class GoogleCloudApigeeV1SecurityActionsConfig {
         if (enabled != null) 'enabled': enabled!,
         if (name != null) 'name': name!,
         if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// The security assessment result for one resource.
+class GoogleCloudApigeeV1SecurityAssessmentResult {
+  /// The time of the assessment of this resource.
+  ///
+  /// This could lag behind `assessment_time` due to caching within the backend.
+  core.String? createTime;
+
+  /// The error status if scoring fails.
+  GoogleRpcStatus? error;
+
+  /// The assessed resource.
+  GoogleCloudApigeeV1SecurityAssessmentResultResource? resource;
+
+  /// The result of the assessment.
+  GoogleCloudApigeeV1SecurityAssessmentResultScoringResult? scoringResult;
+
+  GoogleCloudApigeeV1SecurityAssessmentResult({
+    this.createTime,
+    this.error,
+    this.resource,
+    this.scoringResult,
+  });
+
+  GoogleCloudApigeeV1SecurityAssessmentResult.fromJson(core.Map json_)
+      : this(
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          error: json_.containsKey('error')
+              ? GoogleRpcStatus.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>)
+              : null,
+          resource: json_.containsKey('resource')
+              ? GoogleCloudApigeeV1SecurityAssessmentResultResource.fromJson(
+                  json_['resource'] as core.Map<core.String, core.dynamic>)
+              : null,
+          scoringResult: json_.containsKey('scoringResult')
+              ? GoogleCloudApigeeV1SecurityAssessmentResultScoringResult
+                  .fromJson(json_['scoringResult']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (error != null) 'error': error!,
+        if (resource != null) 'resource': resource!,
+        if (scoringResult != null) 'scoringResult': scoringResult!,
+      };
+}
+
+/// Resource for which we are computing security assessment.
+class GoogleCloudApigeeV1SecurityAssessmentResultResource {
+  /// Name of this resource.
+  ///
+  /// Required.
+  core.String? name;
+
+  /// The revision id for the resource.
+  ///
+  /// In case of Apigee, this is proxy revision id.
+  core.String? resourceRevisionId;
+
+  /// Type of this resource.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "RESOURCE_TYPE_UNSPECIFIED" : ResourceType not specified.
+  /// - "API_PROXY" : Resource is an Apigee Proxy.
+  core.String? type;
+
+  GoogleCloudApigeeV1SecurityAssessmentResultResource({
+    this.name,
+    this.resourceRevisionId,
+    this.type,
+  });
+
+  GoogleCloudApigeeV1SecurityAssessmentResultResource.fromJson(core.Map json_)
+      : this(
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          resourceRevisionId: json_.containsKey('resourceRevisionId')
+              ? json_['resourceRevisionId'] as core.String
+              : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (resourceRevisionId != null)
+          'resourceRevisionId': resourceRevisionId!,
+        if (type != null) 'type': type!,
+      };
+}
+
+/// The result of the assessment.
+class GoogleCloudApigeeV1SecurityAssessmentResultScoringResult {
+  /// The recommendations of the assessment.
+  ///
+  /// The key is the "name" of the assessment (not display_name), and the value
+  /// are the recommendations.
+  core.Map<core.String,
+          GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendation>?
+      assessmentRecommendations;
+
+  /// The time when resource data was last fetched for this resource.
+  ///
+  /// This time may be different than when the resource was actually updated due
+  /// to lag in data collection.
+  core.String? dataUpdateTime;
+
+  /// The number of failed assessments grouped by its weight.
+  ///
+  /// Keys are one of the following: "MAJOR", "MODERATE", "MINOR".
+  core.Map<core.String, core.int>? failedAssessmentPerWeight;
+
+  /// The security score of the assessment.
+  core.int? score;
+
+  /// The severity of the assessment.
+  /// Possible string values are:
+  /// - "SEVERITY_UNSPECIFIED" : Severity is not defined.
+  /// - "LOW" : Severity is low.
+  /// - "MEDIUM" : Severity is medium.
+  /// - "HIGH" : Severity is high.
+  /// - "MINIMAL" : Severity is minimal
+  core.String? severity;
+
+  GoogleCloudApigeeV1SecurityAssessmentResultScoringResult({
+    this.assessmentRecommendations,
+    this.dataUpdateTime,
+    this.failedAssessmentPerWeight,
+    this.score,
+    this.severity,
+  });
+
+  GoogleCloudApigeeV1SecurityAssessmentResultScoringResult.fromJson(
+      core.Map json_)
+      : this(
+          assessmentRecommendations: json_
+                  .containsKey('assessmentRecommendations')
+              ? (json_['assessmentRecommendations']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendation
+                        .fromJson(value as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+          dataUpdateTime: json_.containsKey('dataUpdateTime')
+              ? json_['dataUpdateTime'] as core.String
+              : null,
+          failedAssessmentPerWeight:
+              json_.containsKey('failedAssessmentPerWeight')
+                  ? (json_['failedAssessmentPerWeight']
+                          as core.Map<core.String, core.dynamic>)
+                      .map(
+                      (key, value) => core.MapEntry(
+                        key,
+                        value as core.int,
+                      ),
+                    )
+                  : null,
+          score: json_.containsKey('score') ? json_['score'] as core.int : null,
+          severity: json_.containsKey('severity')
+              ? json_['severity'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (assessmentRecommendations != null)
+          'assessmentRecommendations': assessmentRecommendations!,
+        if (dataUpdateTime != null) 'dataUpdateTime': dataUpdateTime!,
+        if (failedAssessmentPerWeight != null)
+          'failedAssessmentPerWeight': failedAssessmentPerWeight!,
+        if (score != null) 'score': score!,
+        if (severity != null) 'severity': severity!,
+      };
+}
+
+/// The message format of a recommendation from the assessment.
+class GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendation {
+  /// The display name of the assessment.
+  core.String? displayName;
+
+  /// The recommended steps of the assessment.
+  core.List<
+          GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendation>?
+      recommendations;
+
+  /// Score impact indicates the impact on the overall score if the assessment
+  /// were to pass.
+  core.int? scoreImpact;
+
+  /// Verdict indicates the assessment result.
+  /// Possible string values are:
+  /// - "VERDICT_UNSPECIFIED" : The verdict is unspecified.
+  /// - "PASS" : The assessment has passed.
+  /// - "FAIL" : The assessment has failed.
+  core.String? verdict;
+
+  /// The weight of the assessment which was set in the profile.
+  /// Possible string values are:
+  /// - "WEIGHT_UNSPECIFIED" : The weight is unspecified.
+  /// - "MINOR" : The weight is minor.
+  /// - "MODERATE" : The weight is moderate.
+  /// - "MAJOR" : The weight is major.
+  core.String? weight;
+
+  GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendation({
+    this.displayName,
+    this.recommendations,
+    this.scoreImpact,
+    this.verdict,
+    this.weight,
+  });
+
+  GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendation.fromJson(
+      core.Map json_)
+      : this(
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          recommendations: json_.containsKey('recommendations')
+              ? (json_['recommendations'] as core.List)
+                  .map((value) =>
+                      GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendation
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          scoreImpact: json_.containsKey('scoreImpact')
+              ? json_['scoreImpact'] as core.int
+              : null,
+          verdict: json_.containsKey('verdict')
+              ? json_['verdict'] as core.String
+              : null,
+          weight: json_.containsKey('weight')
+              ? json_['weight'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (recommendations != null) 'recommendations': recommendations!,
+        if (scoreImpact != null) 'scoreImpact': scoreImpact!,
+        if (verdict != null) 'verdict': verdict!,
+        if (weight != null) 'weight': weight!,
+      };
+}
+
+/// The format of the assessment recommendation.
+class GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendation {
+  /// The description of the recommendation.
+  core.String? description;
+
+  /// The link for the recommendation.
+  GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendationLink?
+      link;
+
+  GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendation({
+    this.description,
+    this.link,
+  });
+
+  GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendation.fromJson(
+      core.Map json_)
+      : this(
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          link: json_.containsKey('link')
+              ? GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendationLink
+                  .fromJson(
+                      json_['link'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
+        if (link != null) 'link': link!,
+      };
+}
+
+/// The format for a link in the recommendation.
+class GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendationLink {
+  /// The text of the url.
+  ///
+  /// (ie: "Learn more")
+  core.String? text;
+
+  /// The link itself.
+  core.String? uri;
+
+  GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendationLink({
+    this.text,
+    this.uri,
+  });
+
+  GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendationLink.fromJson(
+      core.Map json_)
+      : this(
+          text: json_.containsKey('text') ? json_['text'] as core.String : null,
+          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (text != null) 'text': text!,
+        if (uri != null) 'uri': uri!,
       };
 }
 
@@ -30170,6 +30758,9 @@ class GoogleCloudApigeeV1TlsInfo {
   /// Required.
   core.bool? enabled;
 
+  /// TLS is strictly enforced.
+  core.bool? enforce;
+
   /// If true, Edge ignores TLS certificate errors.
   ///
   /// Valid when configuring TLS for target servers and target endpoints, and
@@ -30200,6 +30791,7 @@ class GoogleCloudApigeeV1TlsInfo {
     this.clientAuthEnabled,
     this.commonName,
     this.enabled,
+    this.enforce,
     this.ignoreValidationErrors,
     this.keyAlias,
     this.keyStore,
@@ -30223,6 +30815,9 @@ class GoogleCloudApigeeV1TlsInfo {
               : null,
           enabled: json_.containsKey('enabled')
               ? json_['enabled'] as core.bool
+              : null,
+          enforce: json_.containsKey('enforce')
+              ? json_['enforce'] as core.bool
               : null,
           ignoreValidationErrors: json_.containsKey('ignoreValidationErrors')
               ? json_['ignoreValidationErrors'] as core.bool
@@ -30248,6 +30843,7 @@ class GoogleCloudApigeeV1TlsInfo {
         if (clientAuthEnabled != null) 'clientAuthEnabled': clientAuthEnabled!,
         if (commonName != null) 'commonName': commonName!,
         if (enabled != null) 'enabled': enabled!,
+        if (enforce != null) 'enforce': enforce!,
         if (ignoreValidationErrors != null)
           'ignoreValidationErrors': ignoreValidationErrors!,
         if (keyAlias != null) 'keyAlias': keyAlias!,
@@ -30302,6 +30898,9 @@ class GoogleCloudApigeeV1TlsInfoConfig {
   /// Set to `true` to enable one-way TLS.
   core.bool? enabled;
 
+  /// Flag that enforces TLS settings
+  core.bool? enforce;
+
   /// Flag that specifies whether to ignore TLS certificate validation errors.
   ///
   /// Set to `true` to ignore errors.
@@ -30329,6 +30928,7 @@ class GoogleCloudApigeeV1TlsInfoConfig {
     this.clientAuthEnabled,
     this.commonName,
     this.enabled,
+    this.enforce,
     this.ignoreValidationErrors,
     this.keyAlias,
     this.keyAliasReference,
@@ -30352,6 +30952,9 @@ class GoogleCloudApigeeV1TlsInfoConfig {
               : null,
           enabled: json_.containsKey('enabled')
               ? json_['enabled'] as core.bool
+              : null,
+          enforce: json_.containsKey('enforce')
+              ? json_['enforce'] as core.bool
               : null,
           ignoreValidationErrors: json_.containsKey('ignoreValidationErrors')
               ? json_['ignoreValidationErrors'] as core.bool
@@ -30379,6 +30982,7 @@ class GoogleCloudApigeeV1TlsInfoConfig {
         if (clientAuthEnabled != null) 'clientAuthEnabled': clientAuthEnabled!,
         if (commonName != null) 'commonName': commonName!,
         if (enabled != null) 'enabled': enabled!,
+        if (enforce != null) 'enforce': enforce!,
         if (ignoreValidationErrors != null)
           'ignoreValidationErrors': ignoreValidationErrors!,
         if (keyAlias != null) 'keyAlias': keyAlias!,

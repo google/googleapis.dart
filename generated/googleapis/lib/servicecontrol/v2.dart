@@ -397,6 +397,13 @@ class Auth {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? claims;
 
+  /// Identifies the client credential id used for authentication.
+  ///
+  /// credential_id is in the format of AUTH_METHOD:IDENTIFIER, e.g.
+  /// "serviceaccount:XXXXX, apikey:XXXXX" where the format of the IDENTIFIER
+  /// can vary for different AUTH_METHODs.
+  core.String? credentialId;
+
   /// The authorized presenter of the credential.
   ///
   /// Reflects the optional Authorized Presenter (`azp`) claim within a JWT or
@@ -416,6 +423,7 @@ class Auth {
     this.accessLevels,
     this.audiences,
     this.claims,
+    this.credentialId,
     this.presenter,
     this.principal,
   });
@@ -435,6 +443,9 @@ class Auth {
           claims: json_.containsKey('claims')
               ? json_['claims'] as core.Map<core.String, core.dynamic>
               : null,
+          credentialId: json_.containsKey('credentialId')
+              ? json_['credentialId'] as core.String
+              : null,
           presenter: json_.containsKey('presenter')
               ? json_['presenter'] as core.String
               : null,
@@ -447,6 +458,7 @@ class Auth {
         if (accessLevels != null) 'accessLevels': accessLevels!,
         if (audiences != null) 'audiences': audiences!,
         if (claims != null) 'claims': claims!,
+        if (credentialId != null) 'credentialId': credentialId!,
         if (presenter != null) 'presenter': presenter!,
         if (principal != null) 'principal': principal!,
       };

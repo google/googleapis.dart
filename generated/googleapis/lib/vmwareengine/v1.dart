@@ -7135,6 +7135,9 @@ class LoggingServer {
   /// the default value.
   /// - "UDP" : UDP
   /// - "TCP" : TCP
+  /// - "TLS" : TLS
+  /// - "SSL" : SSL
+  /// - "RELP" : RELP
   core.String? protocol;
 
   /// The type of component that produces logs that will be forwarded to this

@@ -5966,14 +5966,7 @@ api.GoogleCloudDataplexV1SearchEntriesResult
   buildCounterGoogleCloudDataplexV1SearchEntriesResult++;
   if (buildCounterGoogleCloudDataplexV1SearchEntriesResult < 3) {
     o.dataplexEntry = buildGoogleCloudDataplexV1Entry();
-    o.description = 'foo';
-    o.displayName = 'foo';
-    o.entry = 'foo';
-    o.entryType = 'foo';
-    o.fullyQualifiedName = 'foo';
     o.linkedResource = 'foo';
-    o.modifyTime = 'foo';
-    o.relativeResource = 'foo';
     o.snippets = buildGoogleCloudDataplexV1SearchEntriesResultSnippets();
   }
   buildCounterGoogleCloudDataplexV1SearchEntriesResult--;
@@ -5986,35 +5979,7 @@ void checkGoogleCloudDataplexV1SearchEntriesResult(
   if (buildCounterGoogleCloudDataplexV1SearchEntriesResult < 3) {
     checkGoogleCloudDataplexV1Entry(o.dataplexEntry!);
     unittest.expect(
-      o.description!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.displayName!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.entry!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.entryType!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.fullyQualifiedName!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
       o.linkedResource!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.modifyTime!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.relativeResource!,
       unittest.equals('foo'),
     );
     checkGoogleCloudDataplexV1SearchEntriesResultSnippets(o.snippets!);

@@ -29,6 +29,7 @@
 ///       - [ProjectsLocationsGlobalPolicyBasedRoutesResource]
 ///     - [ProjectsLocationsInternalRangesResource]
 ///     - [ProjectsLocationsOperationsResource]
+///     - [ProjectsLocationsRegionalEndpointsResource]
 ///     - [ProjectsLocationsServiceClassesResource]
 ///     - [ProjectsLocationsServiceConnectionMapsResource]
 ///     - [ProjectsLocationsServiceConnectionPoliciesResource]
@@ -85,6 +86,8 @@ class ProjectsLocationsResource {
       ProjectsLocationsInternalRangesResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
       ProjectsLocationsOperationsResource(_requester);
+  ProjectsLocationsRegionalEndpointsResource get regionalEndpoints =>
+      ProjectsLocationsRegionalEndpointsResource(_requester);
   ProjectsLocationsServiceClassesResource get serviceClasses =>
       ProjectsLocationsServiceClassesResource(_requester);
   ProjectsLocationsServiceConnectionMapsResource get serviceConnectionMaps =>
@@ -2075,6 +2078,217 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningListOperationsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsRegionalEndpointsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsRegionalEndpointsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new RegionalEndpoint in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource's name of the RegionalEndpoint.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [regionalEndpointId] - Required. Unique id of the Regional Endpoint to be
+  /// created.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server knows to ignore the request if it has already been completed. The
+  /// server guarantees that for at least 60 minutes since the first request.
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if the original operation with the same request
+  /// ID was received, and if so, ignores the second request. This prevents
+  /// clients from accidentally creating duplicate commitments. The request ID
+  /// must be a valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> create(
+    RegionalEndpoint request,
+    core.String parent, {
+    core.String? regionalEndpointId,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (regionalEndpointId != null)
+        'regionalEndpointId': [regionalEndpointId],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/regionalEndpoints';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single RegionalEndpoint.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the RegionalEndpoint to delete.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/regionalEndpoints/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server knows to ignore the request if it has already been completed. The
+  /// server guarantees that for at least 60 minutes since the first request.
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if the original operation with the same request
+  /// ID was received, and if so, ignores the second request. This prevents
+  /// clients from accidentally creating duplicate commitments. The request ID
+  /// must be a valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> delete(
+    core.String name, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single RegionalEndpoint.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the RegionalEndpoint resource to get. Format:
+  /// `projects/{project}/locations/{location}/regionalEndpoints/{regional_endpoint}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/regionalEndpoints/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RegionalEndpoint].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RegionalEndpoint> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return RegionalEndpoint.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists RegionalEndpoints in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource's name of the RegionalEndpoint.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - A filter expression that filters the results listed in the
+  /// response.
+  ///
+  /// [orderBy] - Sort the results by a certain order.
+  ///
+  /// [pageSize] - Requested page size. Server may return fewer items than
+  /// requested. If unspecified, server will pick an appropriate default.
+  ///
+  /// [pageToken] - A page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListRegionalEndpointsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListRegionalEndpointsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/regionalEndpoints';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListRegionalEndpointsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -4219,6 +4433,11 @@ class ConsumerPscConfig {
   /// projects/{projectNumOrId}/global/networks/{networkId}.
   core.String? network;
 
+  /// An immutable identifier for the producer instance.
+  ///
+  /// Immutable.
+  core.String? producerInstanceId;
+
   /// The consumer project where PSC connections are allowed to be created in.
   core.String? project;
 
@@ -4240,6 +4459,7 @@ class ConsumerPscConfig {
   ConsumerPscConfig({
     this.disableGlobalAccess,
     this.network,
+    this.producerInstanceId,
     this.project,
     this.state,
   });
@@ -4252,6 +4472,9 @@ class ConsumerPscConfig {
           network: json_.containsKey('network')
               ? json_['network'] as core.String
               : null,
+          producerInstanceId: json_.containsKey('producerInstanceId')
+              ? json_['producerInstanceId'] as core.String
+              : null,
           project: json_.containsKey('project')
               ? json_['project'] as core.String
               : null,
@@ -4263,6 +4486,8 @@ class ConsumerPscConfig {
         if (disableGlobalAccess != null)
           'disableGlobalAccess': disableGlobalAccess!,
         if (network != null) 'network': network!,
+        if (producerInstanceId != null)
+          'producerInstanceId': producerInstanceId!,
         if (project != null) 'project': project!,
         if (state != null) 'state': state!,
       };
@@ -4311,6 +4536,11 @@ class ConsumerPscConnection {
   /// Note that the network could be on a different project (shared VPC).
   core.String? network;
 
+  /// An immutable identifier for the producer instance.
+  ///
+  /// Immutable.
+  core.String? producerInstanceId;
+
   /// The consumer project whose PSC forwarding rule is connected to the service
   /// attachments in this service connection map.
   core.String? project;
@@ -4346,6 +4576,7 @@ class ConsumerPscConnection {
     this.gceOperation,
     this.ip,
     this.network,
+    this.producerInstanceId,
     this.project,
     this.pscConnectionId,
     this.selectedSubnetwork,
@@ -4376,6 +4607,9 @@ class ConsumerPscConnection {
           network: json_.containsKey('network')
               ? json_['network'] as core.String
               : null,
+          producerInstanceId: json_.containsKey('producerInstanceId')
+              ? json_['producerInstanceId'] as core.String
+              : null,
           project: json_.containsKey('project')
               ? json_['project'] as core.String
               : null,
@@ -4400,6 +4634,8 @@ class ConsumerPscConnection {
         if (gceOperation != null) 'gceOperation': gceOperation!,
         if (ip != null) 'ip': ip!,
         if (network != null) 'network': network!,
+        if (producerInstanceId != null)
+          'producerInstanceId': producerInstanceId!,
         if (project != null) 'project': project!,
         if (pscConnectionId != null) 'pscConnectionId': pscConnectionId!,
         if (selectedSubnetwork != null)
@@ -4637,12 +4873,13 @@ class GoogleRpcErrorInfo {
 
   /// Additional structured details about this error.
   ///
-  /// Keys should match /\[a-zA-Z0-9-_\]/ and be limited to 64 characters in
-  /// length. When identifying the current value of an exceeded limit, the units
-  /// should be contained in the key, not the value. For example, rather than
-  /// {"instanceLimit": "100/request"}, should be returned as,
-  /// {"instanceLimitPerRequest": "100"}, if the client exceeds the number of
-  /// instances that can be created in a single (batch) request.
+  /// Keys must match /a-z+/ but should ideally be lowerCamelCase. Also they
+  /// must be limited to 64 characters in length. When identifying the current
+  /// value of an exceeded limit, the units should be contained in the key, not
+  /// the value. For example, rather than {"instanceLimit": "100/request"},
+  /// should be returned as, {"instanceLimitPerRequest": "100"}, if the client
+  /// exceeds the number of instances that can be created in a single (batch)
+  /// request.
   core.Map<core.String, core.String>? metadata;
 
   /// The reason of the error.
@@ -5009,10 +5246,9 @@ class InternalRange {
   /// range.
   ///
   /// The network cannot be deleted if there are any reserved internal ranges
-  /// referring to it. Legacy networks are not supported. This can only be
-  /// specified for a global internal address. Example: - URL:
-  /// /compute/v1/projects/{project}/global/networks/{resourceId} - ID:
-  /// network123
+  /// referring to it. Legacy networks are not supported. For example:
+  /// https://www.googleapis.com/compute/v1/projects/{project}/locations/global/networks/{network}
+  /// projects/{project}/locations/global/networks/{network} {network}
   core.String? network;
 
   /// Types of resources that are allowed to overlap with the current internal
@@ -5618,6 +5854,51 @@ class ListPolicyBasedRoutesResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (policyBasedRoutes != null) 'policyBasedRoutes': policyBasedRoutes!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
+/// Response for ListRegionalEndpoints.
+class ListRegionalEndpointsResponse {
+  /// The next pagination token in the List response.
+  ///
+  /// It should be used as page_token for the following request. An empty value
+  /// means no more result.
+  core.String? nextPageToken;
+
+  /// Regional endpoints to be returned.
+  core.List<RegionalEndpoint>? regionalEndpoints;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListRegionalEndpointsResponse({
+    this.nextPageToken,
+    this.regionalEndpoints,
+    this.unreachable,
+  });
+
+  ListRegionalEndpointsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          regionalEndpoints: json_.containsKey('regionalEndpoints')
+              ? (json_['regionalEndpoints'] as core.List)
+                  .map((value) => RegionalEndpoint.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (regionalEndpoints != null) 'regionalEndpoints': regionalEndpoints!,
         if (unreachable != null) 'unreachable': unreachable!,
       };
 }
@@ -6379,6 +6660,11 @@ class PscConnection {
   /// The last Compute Engine operation to setup PSC connection.
   core.String? gceOperation;
 
+  /// An immutable identifier for the producer instance.
+  ///
+  /// Immutable.
+  core.String? producerInstanceId;
+
   /// The PSC connection id of the PSC forwarding rule.
   core.String? pscConnectionId;
 
@@ -6406,6 +6692,7 @@ class PscConnection {
     this.errorInfo,
     this.errorType,
     this.gceOperation,
+    this.producerInstanceId,
     this.pscConnectionId,
     this.selectedSubnetwork,
     this.state,
@@ -6436,6 +6723,9 @@ class PscConnection {
           gceOperation: json_.containsKey('gceOperation')
               ? json_['gceOperation'] as core.String
               : null,
+          producerInstanceId: json_.containsKey('producerInstanceId')
+              ? json_['producerInstanceId'] as core.String
+              : null,
           pscConnectionId: json_.containsKey('pscConnectionId')
               ? json_['pscConnectionId'] as core.String
               : null,
@@ -6456,10 +6746,175 @@ class PscConnection {
         if (errorInfo != null) 'errorInfo': errorInfo!,
         if (errorType != null) 'errorType': errorType!,
         if (gceOperation != null) 'gceOperation': gceOperation!,
+        if (producerInstanceId != null)
+          'producerInstanceId': producerInstanceId!,
         if (pscConnectionId != null) 'pscConnectionId': pscConnectionId!,
         if (selectedSubnetwork != null)
           'selectedSubnetwork': selectedSubnetwork!,
         if (state != null) 'state': state!,
+      };
+}
+
+/// The RegionalEndpoint resource.
+class RegionalEndpoint {
+  /// The access type of this regional endpoint.
+  ///
+  /// This field is reflected in the PSC Forwarding Rule configuration to enable
+  /// global access.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "ACCESS_TYPE_UNSPECIFIED" : An invalid type as the default case.
+  /// - "GLOBAL" : This regional endpoint is accessible from all regions.
+  /// - "REGIONAL" : This regional endpoint is only accessible from the same
+  /// region where it resides.
+  core.String? accessType;
+
+  /// The IP Address of the Regional Endpoint.
+  ///
+  /// When no address is provided, an IP from the subnetwork is allocated. Use
+  /// one of the following formats: * IPv4 address as in `10.0.0.1` * Address
+  /// resource URI as in
+  /// `projects/{project}/regions/{region}/addresses/{address_name}`
+  ///
+  /// Optional.
+  core.String? address;
+
+  /// Time when the RegionalEndpoint was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// A description of this resource.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// The literal IP address of the PSC Forwarding Rule created on behalf of the
+  /// customer.
+  ///
+  /// This field is deprecated. Use address instead.
+  ///
+  /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.String? ipAddress;
+
+  /// User-defined labels.
+  core.Map<core.String, core.String>? labels;
+
+  /// The name of a RegionalEndpoint.
+  ///
+  /// Format:
+  /// `projects/{project}/locations/{location}/regionalEndpoints/{regional_endpoint}`.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The name of the VPC network for this private regional endpoint.
+  ///
+  /// Format: `projects/{project}/global/networks/{network}`
+  core.String? network;
+
+  /// The resource reference of the PSC Forwarding Rule created on behalf of the
+  /// customer.
+  ///
+  /// Format:
+  /// `//compute.googleapis.com/projects/{project}/regions/{region}/forwardingRules/{forwarding_rule_name}`
+  ///
+  /// Output only.
+  core.String? pscForwardingRule;
+
+  /// The name of the subnetwork from which the IP address will be allocated.
+  ///
+  /// Format: `projects/{project}/regions/{region}/subnetworks/{subnetwork}`
+  core.String? subnetwork;
+
+  /// The service endpoint this private regional endpoint connects to.
+  ///
+  /// Format: `{apiname}.{region}.p.rep.googleapis.com` Example:
+  /// "cloudkms.us-central1.p.rep.googleapis.com".
+  ///
+  /// Required.
+  core.String? targetGoogleApi;
+
+  /// Time when the RegionalEndpoint was updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  RegionalEndpoint({
+    this.accessType,
+    this.address,
+    this.createTime,
+    this.description,
+    this.ipAddress,
+    this.labels,
+    this.name,
+    this.network,
+    this.pscForwardingRule,
+    this.subnetwork,
+    this.targetGoogleApi,
+    this.updateTime,
+  });
+
+  RegionalEndpoint.fromJson(core.Map json_)
+      : this(
+          accessType: json_.containsKey('accessType')
+              ? json_['accessType'] as core.String
+              : null,
+          address: json_.containsKey('address')
+              ? json_['address'] as core.String
+              : null,
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          ipAddress: json_.containsKey('ipAddress')
+              ? json_['ipAddress'] as core.String
+              : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          network: json_.containsKey('network')
+              ? json_['network'] as core.String
+              : null,
+          pscForwardingRule: json_.containsKey('pscForwardingRule')
+              ? json_['pscForwardingRule'] as core.String
+              : null,
+          subnetwork: json_.containsKey('subnetwork')
+              ? json_['subnetwork'] as core.String
+              : null,
+          targetGoogleApi: json_.containsKey('targetGoogleApi')
+              ? json_['targetGoogleApi'] as core.String
+              : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (accessType != null) 'accessType': accessType!,
+        if (address != null) 'address': address!,
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (ipAddress != null) 'ipAddress': ipAddress!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (network != null) 'network': network!,
+        if (pscForwardingRule != null) 'pscForwardingRule': pscForwardingRule!,
+        if (subnetwork != null) 'subnetwork': subnetwork!,
+        if (targetGoogleApi != null) 'targetGoogleApi': targetGoogleApi!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 

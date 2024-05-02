@@ -1093,6 +1093,12 @@ typedef Location = $Location00;
 
 /// ManagementServer describes a single BackupDR ManagementServer instance.
 class ManagementServer {
+  /// The hostname or ip address of the exposed AGM endpoints, used by BAs to
+  /// connect to BA proxy.
+  ///
+  /// Output only.
+  core.List<core.String>? baProxyUri;
+
   /// The time when the instance was created.
   ///
   /// Output only.
@@ -1192,6 +1198,7 @@ class ManagementServer {
   WorkforceIdentityBasedOAuth2ClientID? workforceIdentityBasedOauth2ClientId;
 
   ManagementServer({
+    this.baProxyUri,
     this.createTime,
     this.description,
     this.etag,
@@ -1209,6 +1216,11 @@ class ManagementServer {
 
   ManagementServer.fromJson(core.Map json_)
       : this(
+          baProxyUri: json_.containsKey('baProxyUri')
+              ? (json_['baProxyUri'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
               : null,
@@ -1259,6 +1271,7 @@ class ManagementServer {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (baProxyUri != null) 'baProxyUri': baProxyUri!,
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
         if (etag != null) 'etag': etag!,

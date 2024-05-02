@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240404",
+    "revision": "20240505",
     "rootUrl": "https://firebaseremoteconfig.googleapis.com/",
     "servicePath": "",
     "title": "Firebase Remote Config API",
@@ -209,6 +209,31 @@
                             "response": {
                                 "$ref": "FetchRemoteConfigResponse"
                             }
+                        },
+                        "getServerRemoteConfig": {
+                            "description": "Get a project's server-side Remote Config template. Note that this request proto is structured differently from other request messages in this proto, however this is consistent and compliant with the new API guidance (https://google.aip.dev/122#fields-representing-resource-names) and the standard going forward.",
+                            "flatPath": "v1/projects/{projectsId}/namespaces/{namespacesId}/serverRemoteConfig",
+                            "httpMethod": "GET",
+                            "id": "firebaseremoteconfig.projects.namespaces.getServerRemoteConfig",
+                            "parameterOrder": [
+                                "name"
+                            ],
+                            "parameters": {
+                                "name": {
+                                    "description": "Required. The name of the template to get. Format: projects/{project}/namespaces/{namespace}/serverRemoteConfig Project is a Firebase project ID or project number. Namespace is the namespace ID (e.g.: firebase-server)",
+                                    "location": "path",
+                                    "pattern": "^projects/[^/]+/namespaces/[^/]+/serverRemoteConfig$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+name}",
+                            "response": {
+                                "$ref": "ServerRemoteConfig"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
                         }
                     }
                 },
@@ -344,6 +369,39 @@
         }
     },
     "schemas": {
+        "AndCondition": {
+            "description": "---------- Boolean Operators AND of sub-conditions. An AND condition is true if all of its subconditions evaluate to true.",
+            "id": "AndCondition",
+            "properties": {
+                "conditions": {
+                    "description": "Evaluated in given order with short circuit of false. Should contain at least one condition and no more than 100 conditions.",
+                    "items": {
+                        "$ref": "Condition"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "Condition": {
+            "description": "---------- General Condition Wrapper A general boolean expression that is used to evaluate conditions for server-side Remote Config templates.",
+            "id": "Condition",
+            "properties": {
+                "andCondition": {
+                    "$ref": "AndCondition",
+                    "description": "Boolean operators Apply logical \"and\" condition to the subset of conditions."
+                },
+                "orCondition": {
+                    "$ref": "OrCondition",
+                    "description": "Apply logical \"or\" condition to the subset of conditions."
+                },
+                "percent": {
+                    "$ref": "PercentCondition",
+                    "description": "Builtin conditions (aka 'atoms') Target a percentage of the population (users, app instances)."
+                }
+            },
+            "type": "object"
+        },
         "ExperimentDescription": {
             "description": "Encapsulates per-experiment data.",
             "id": "ExperimentDescription",
@@ -526,6 +584,73 @@
                         "$ref": "Version"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "MicroPercentRange": {
+            "description": "A micro-percent interval defined by lower and upper bounds.",
+            "id": "MicroPercentRange",
+            "properties": {
+                "microPercentLowerBound": {
+                    "description": "The lower limit of percentiles to target in micro-percents. The value must be in the range [0 and 100000000].",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "microPercentUpperBound": {
+                    "description": "The upper limit of percentiles to target in micro-percents. The value must be in the range [0 and 100000000].",
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "OrCondition": {
+            "description": "OR of sub-conditions. An OR condition is true if any of its subconditions evaluate to true. If there is an exception evaluating any of its subconditions, that subcondition can be ignored if any other subcondition is true.",
+            "id": "OrCondition",
+            "properties": {
+                "conditions": {
+                    "description": "Evaluated in given order with short circuit of true. Should contain at least one condition and no more than 100 conditions.",
+                    "items": {
+                        "$ref": "Condition"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "PercentCondition": {
+            "description": "---------- Primitive Conditions (Atoms) A condition that compares the instance pseudo-random percentile to a given limit. NOTE: Developers provide an ID via the Admin SDK. This ID is hashed to a random percentile. The function is consistent and repeatable and will give the same result for evaluating an ID for the same condition across different platforms and across time. The function is consistent with the function used for evaluating IDs for client templates.",
+            "id": "PercentCondition",
+            "properties": {
+                "microPercent": {
+                    "description": "Required. The limit of percentiles to target in micro-percents. The value must be in the range [0 and 100000000].",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "microPercentRange": {
+                    "$ref": "MicroPercentRange",
+                    "description": "The range of percentiles to target in micro-percents."
+                },
+                "percentOperator": {
+                    "description": "Required. The choice of percent operator to determine how to compare targets to percent(s).",
+                    "enum": [
+                        "UNKNOWN",
+                        "LESS_OR_EQUAL",
+                        "GREATER_THAN",
+                        "BETWEEN"
+                    ],
+                    "enumDescriptions": [
+                        "Per http://go/protodosdonts",
+                        "Target percentiles less than or equal to the target percent. A condition using this operator must specify micro_percent.",
+                        "Target percentiles greater than the target percent. A condition using this operator must specify micro_percent.",
+                        "Target percentiles within an interval defined by a lower bound and an upper bound. The lower bound is an exclusive (open) bound and the micro_percent_range_upper_bound is an inclusive (closed) bound. A condition using this operator must specify micro_percent_range."
+                    ],
+                    "type": "string"
+                },
+                "seed": {
+                    "description": "Optional. The seed used when evaluating the hash function to map an instance to a value in the hash space. This is a string which can have 0 - 32 characters and can contain ASCII characters [-_.0-9a-zA-Z]. The string is case-sensitive.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -720,6 +845,10 @@
                     "$ref": "PersonalizationValue",
                     "description": "A dynamic, user-specific value computed when config is fetched."
                 },
+                "rolloutValue": {
+                    "$ref": "RolloutValue",
+                    "description": "A dynamic Rollout value managed by the Firebase ABT Experiment service."
+                },
                 "useInAppDefault": {
                     "description": "If true, the parameter is omitted from the parameter values returned to a client.",
                     "type": "boolean"
@@ -779,6 +908,99 @@
                 },
                 "variantId": {
                     "description": "The variant of the rollout assigned to this instance in this fetch response.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "RolloutValue": {
+            "description": "Information related to a Rollout.",
+            "id": "RolloutValue",
+            "properties": {
+                "percent": {
+                    "description": "The percentage of users that will receive the rollout value.",
+                    "format": "double",
+                    "type": "number"
+                },
+                "rolloutId": {
+                    "description": "The identifier that associates a parameter value to a Rollout experiment.",
+                    "type": "string"
+                },
+                "value": {
+                    "description": "The user-specified value to be rolled out.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ServerRemoteConfig": {
+            "description": "A ServerRemoteConfig represents the raw data-plane version of a control plane Remote Config template. This raw template will be evaluated by the Admin SDK (RC Server SDK) to form the config.",
+            "id": "ServerRemoteConfig",
+            "properties": {
+                "conditions": {
+                    "description": "A list of conditions in descending order by priority.",
+                    "items": {
+                        "$ref": "ServerRemoteConfigCondition"
+                    },
+                    "type": "array"
+                },
+                "parameters": {
+                    "additionalProperties": {
+                        "$ref": "ServerRemoteConfigParameter"
+                    },
+                    "description": "Map of parameter keys to their optional default values and optional conditional values.",
+                    "type": "object"
+                },
+                "version": {
+                    "$ref": "Version",
+                    "description": "Contains all metadata about a particular version of the server Remote Config template. Note that we are reusing the control plane version proto here."
+                }
+            },
+            "type": "object"
+        },
+        "ServerRemoteConfigCondition": {
+            "description": "A condition targeting a specific group of users and servers. Same as the condition in the control plane.",
+            "id": "ServerRemoteConfigCondition",
+            "properties": {
+                "condition": {
+                    "$ref": "Condition",
+                    "description": "Required. The logic of this condition."
+                },
+                "name": {
+                    "description": "Required. A non-empty and unique name of this condition.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ServerRemoteConfigParameter": {
+            "description": "A parameter value associated with a parameter key in [google.firebase.remoteconfig.v1.ServerRemoteConfig.parameters]. At minimum, a `default_value` or a `conditional_values` entry should be present for the parameter to have any effect.",
+            "id": "ServerRemoteConfigParameter",
+            "properties": {
+                "conditionalValues": {
+                    "additionalProperties": {
+                        "$ref": "ServerRemoteConfigParameterValue"
+                    },
+                    "description": "Optional - a (condition name, value) map. The condition_name of the highest priority (the one listed first in the RemoteConfig's conditions list) determines the value of this parameter.",
+                    "type": "object"
+                },
+                "defaultValue": {
+                    "$ref": "ServerRemoteConfigParameterValue",
+                    "description": "Optional - value to set the parameter to, when none of the named conditions evaluate to true."
+                }
+            },
+            "type": "object"
+        },
+        "ServerRemoteConfigParameterValue": {
+            "description": "A ServerRemoteConfigParameterValue resource contains the value that a parameter may have. Currently, there is no support for managed values like ABT or P13n.",
+            "id": "ServerRemoteConfigParameterValue",
+            "properties": {
+                "useInAppDefault": {
+                    "description": "If true, the parameter is omitted from the parameter values returned to the server.",
+                    "type": "boolean"
+                },
+                "value": {
+                    "description": "The string value that the parameter is set to.",
                     "type": "string"
                 }
             },

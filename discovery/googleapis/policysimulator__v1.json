@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240331",
+    "revision": "20240428",
     "rootUrl": "https://policysimulator.googleapis.com/",
     "servicePath": "",
     "title": "Policy Simulator API",
@@ -999,13 +999,15 @@
                             "METHOD_TYPE_UNSPECIFIED",
                             "CREATE",
                             "UPDATE",
-                            "DELETE"
+                            "DELETE",
+                            "REMOVE_GRANT"
                         ],
                         "enumDescriptions": [
                             "Unspecified. Results in an error.",
                             "Constraint applied when creating the resource.",
                             "Constraint applied when updating the resource.",
-                            "Constraint applied when deleting the resource. Not supported yet."
+                            "Constraint applied when deleting the resource. Not supported yet.",
+                            "Constraint applied when removing an IAM grant."
                         ],
                         "type": "string"
                     },

@@ -11507,8 +11507,7 @@ class OfferDetails {
       };
 }
 
-/// Represents a custom tag specified for one-time products, purchase options,
-/// base plans and offers.
+/// Represents a custom tag specified for base plans and subscription offers.
 class OfferTag {
   /// Must conform with RFC-1034.
   ///
@@ -11555,6 +11554,10 @@ class OneTimeExternalTransaction {
           'externalTransactionToken': externalTransactionToken!,
       };
 }
+
+/// Details of a recurring external transaction product which doesn't belong to
+/// any other more specific category.
+typedef OtherRecurringProduct = $Empty;
 
 /// Pricing information for any new locations Play may launch in.
 class OtherRegionsBasePlanConfig {
@@ -11644,6 +11647,9 @@ class OtherRegionsSubscriptionOfferPhaseConfig {
   /// than the minimum price allowed for any new locations Play may launch in.
   OtherRegionsSubscriptionOfferPhasePrices? absoluteDiscounts;
 
+  /// Set to specify this offer is free to obtain.
+  OtherRegionsSubscriptionOfferPhaseFreePriceOverride? free;
+
   /// The absolute price the user pays for this offer phase.
   ///
   /// The price must not be smaller than the minimum price allowed for any new
@@ -11665,6 +11671,7 @@ class OtherRegionsSubscriptionOfferPhaseConfig {
 
   OtherRegionsSubscriptionOfferPhaseConfig({
     this.absoluteDiscounts,
+    this.free,
     this.otherRegionsPrices,
     this.relativeDiscount,
   });
@@ -11675,6 +11682,10 @@ class OtherRegionsSubscriptionOfferPhaseConfig {
               ? OtherRegionsSubscriptionOfferPhasePrices.fromJson(
                   json_['absoluteDiscounts']
                       as core.Map<core.String, core.dynamic>)
+              : null,
+          free: json_.containsKey('free')
+              ? OtherRegionsSubscriptionOfferPhaseFreePriceOverride.fromJson(
+                  json_['free'] as core.Map<core.String, core.dynamic>)
               : null,
           otherRegionsPrices: json_.containsKey('otherRegionsPrices')
               ? OtherRegionsSubscriptionOfferPhasePrices.fromJson(
@@ -11688,11 +11699,16 @@ class OtherRegionsSubscriptionOfferPhaseConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (absoluteDiscounts != null) 'absoluteDiscounts': absoluteDiscounts!,
+        if (free != null) 'free': free!,
         if (otherRegionsPrices != null)
           'otherRegionsPrices': otherRegionsPrices!,
         if (relativeDiscount != null) 'relativeDiscount': relativeDiscount!,
       };
 }
+
+/// Represents the free price override configuration for any new locations Play
+/// may launch for a single offer phase.
+typedef OtherRegionsSubscriptionOfferPhaseFreePriceOverride = $Empty;
 
 /// Pricing information for any new locations Play may launch in.
 class OtherRegionsSubscriptionOfferPhasePrices {
@@ -12107,11 +12123,16 @@ class RecurringExternalTransaction {
   /// only use developer-manager billing.
   core.String? migratedTransactionProgram;
 
+  /// Details of a recurring external transaction product which doesn't belong
+  /// to any other specific category.
+  OtherRecurringProduct? otherRecurringProduct;
+
   RecurringExternalTransaction({
     this.externalSubscription,
     this.externalTransactionToken,
     this.initialExternalTransactionId,
     this.migratedTransactionProgram,
+    this.otherRecurringProduct,
   });
 
   RecurringExternalTransaction.fromJson(core.Map json_)
@@ -12132,6 +12153,10 @@ class RecurringExternalTransaction {
               json_.containsKey('migratedTransactionProgram')
                   ? json_['migratedTransactionProgram'] as core.String
                   : null,
+          otherRecurringProduct: json_.containsKey('otherRecurringProduct')
+              ? OtherRecurringProduct.fromJson(json_['otherRecurringProduct']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12143,6 +12168,8 @@ class RecurringExternalTransaction {
           'initialExternalTransactionId': initialExternalTransactionId!,
         if (migratedTransactionProgram != null)
           'migratedTransactionProgram': migratedTransactionProgram!,
+        if (otherRecurringProduct != null)
+          'otherRecurringProduct': otherRecurringProduct!,
       };
 }
 
@@ -12350,6 +12377,9 @@ class RegionalSubscriptionOfferPhaseConfig {
   /// than the minimum price allowed for this region.
   Money? absoluteDiscount;
 
+  /// Set to specify this offer is free to obtain.
+  RegionalSubscriptionOfferPhaseFreePriceOverride? free;
+
   /// The absolute price the user pays for this offer phase.
   ///
   /// The price must not be smaller than the minimum price allowed for this
@@ -12375,6 +12405,7 @@ class RegionalSubscriptionOfferPhaseConfig {
 
   RegionalSubscriptionOfferPhaseConfig({
     this.absoluteDiscount,
+    this.free,
     this.price,
     this.regionCode,
     this.relativeDiscount,
@@ -12385,6 +12416,10 @@ class RegionalSubscriptionOfferPhaseConfig {
           absoluteDiscount: json_.containsKey('absoluteDiscount')
               ? Money.fromJson(json_['absoluteDiscount']
                   as core.Map<core.String, core.dynamic>)
+              : null,
+          free: json_.containsKey('free')
+              ? RegionalSubscriptionOfferPhaseFreePriceOverride.fromJson(
+                  json_['free'] as core.Map<core.String, core.dynamic>)
               : null,
           price: json_.containsKey('price')
               ? Money.fromJson(
@@ -12400,11 +12435,16 @@ class RegionalSubscriptionOfferPhaseConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (absoluteDiscount != null) 'absoluteDiscount': absoluteDiscount!,
+        if (free != null) 'free': free!,
         if (price != null) 'price': price!,
         if (regionCode != null) 'regionCode': regionCode!,
         if (relativeDiscount != null) 'relativeDiscount': relativeDiscount!,
       };
 }
+
+/// Represents the free price override configuration for a single phase of a
+/// subscription offer
+typedef RegionalSubscriptionOfferPhaseFreePriceOverride = $Empty;
 
 /// Specified details about taxation in a given geographical region.
 class RegionalTaxRateInfo {
@@ -14173,7 +14213,7 @@ class SubscriptionPurchaseV2 {
   /// Additional context around canceled subscriptions.
   ///
   /// Only present if the subscription currently has subscription_state
-  /// SUBSCRIPTION_STATE_CANCELED.
+  /// SUBSCRIPTION_STATE_CANCELED or SUBSCRIPTION_STATE_EXPIRED.
   CanceledStateContext? canceledStateContext;
 
   /// User account identifier in the third-party service.

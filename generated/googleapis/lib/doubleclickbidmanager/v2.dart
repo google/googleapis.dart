@@ -357,48 +357,6 @@ class QueriesReportsResource {
   }
 }
 
-/// A channel grouping defines a set of rules that can be used to categorize
-/// events in a path report.
-class ChannelGrouping {
-  /// The name to apply to an event that does not match any of the rules in the
-  /// channel grouping.
-  core.String? fallbackName;
-
-  /// Channel Grouping name.
-  core.String? name;
-
-  /// Rules within Channel Grouping.
-  ///
-  /// There is a limit of 100 rules that can be set per channel grouping.
-  core.List<Rule>? rules;
-
-  ChannelGrouping({
-    this.fallbackName,
-    this.name,
-    this.rules,
-  });
-
-  ChannelGrouping.fromJson(core.Map json_)
-      : this(
-          fallbackName: json_.containsKey('fallbackName')
-              ? json_['fallbackName'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          rules: json_.containsKey('rules')
-              ? (json_['rules'] as core.List)
-                  .map((value) => Rule.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (fallbackName != null) 'fallbackName': fallbackName!,
-        if (name != null) 'name': name!,
-        if (rules != null) 'rules': rules!,
-      };
-}
-
 /// Report data range.
 class DataRange {
   /// The ending date for the data that is shown in the report.
@@ -481,56 +439,6 @@ class DataRange {
 /// date). Related types: * google.type.TimeOfDay * google.type.DateTime *
 /// google.protobuf.Timestamp
 typedef Date = $Date;
-
-/// DisjunctiveMatchStatement that OR's all contained filters.
-class DisjunctiveMatchStatement {
-  /// Filters.
-  ///
-  /// There is a limit of 100 filters that can be set per disjunctive match
-  /// statement.
-  core.List<EventFilter>? eventFilters;
-
-  DisjunctiveMatchStatement({
-    this.eventFilters,
-  });
-
-  DisjunctiveMatchStatement.fromJson(core.Map json_)
-      : this(
-          eventFilters: json_.containsKey('eventFilters')
-              ? (json_['eventFilters'] as core.List)
-                  .map((value) => EventFilter.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (eventFilters != null) 'eventFilters': eventFilters!,
-      };
-}
-
-/// Defines the type of filter to be applied to the path, a DV360 event
-/// dimension filter.
-class EventFilter {
-  /// Filter on a dimension.
-  PathQueryOptionsFilter? dimensionFilter;
-
-  EventFilter({
-    this.dimensionFilter,
-  });
-
-  EventFilter.fromJson(core.Map json_)
-      : this(
-          dimensionFilter: json_.containsKey('dimensionFilter')
-              ? PathQueryOptionsFilter.fromJson(json_['dimensionFilter']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (dimensionFilter != null) 'dimensionFilter': dimensionFilter!,
-      };
-}
 
 /// Filter used to match traffic data in your report.
 class FilterPair {
@@ -633,15 +541,8 @@ class Options {
   /// targeted by those items.
   core.bool? includeOnlyTargetedUserLists;
 
-  /// Options that contain Path Filters and Custom Channel Groupings.
-  ///
-  /// This field is deprecated and will sunset on **May 1, 2024**. After sunset,
-  /// requests using this field will return an error.
-  PathQueryOptions? pathQueryOptions;
-
   Options({
     this.includeOnlyTargetedUserLists,
-    this.pathQueryOptions,
   });
 
   Options.fromJson(core.Map json_)
@@ -650,16 +551,11 @@ class Options {
               json_.containsKey('includeOnlyTargetedUserLists')
                   ? json_['includeOnlyTargetedUserLists'] as core.bool
                   : null,
-          pathQueryOptions: json_.containsKey('pathQueryOptions')
-              ? PathQueryOptions.fromJson(json_['pathQueryOptions']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (includeOnlyTargetedUserLists != null)
           'includeOnlyTargetedUserLists': includeOnlyTargetedUserLists!,
-        if (pathQueryOptions != null) 'pathQueryOptions': pathQueryOptions!,
       };
 }
 
@@ -694,13 +590,6 @@ class Parameters {
   /// report.
   /// - "REACH" : Reach report.
   /// - "UNIQUE_REACH_AUDIENCE" : Unique Reach Audience report.
-  /// - "FULL_PATH" : Full Path report. This report type is deprecated and will
-  /// sunset on **May 1, 2024**. After sunset, requests retrieving, creating, or
-  /// running reports of this type will return an error.
-  /// - "PATH_ATTRIBUTION" : Path Attribution report. This report type is
-  /// deprecated and will sunset on **May 1, 2024**. After sunset, requests
-  /// retrieving, creating, or running reports of this type will return an
-  /// error.
   core.String? type;
 
   Parameters({
@@ -742,131 +631,6 @@ class Parameters {
         if (metrics != null) 'metrics': metrics!,
         if (options != null) 'options': options!,
         if (type != null) 'type': type!,
-      };
-}
-
-/// Path filters specify which paths to include in a report.
-///
-/// A path is the result of combining DV360 events based on User ID to create a
-/// workflow of users' actions. When a path filter is set, the resulting report
-/// will only include paths that match the specified event at the specified
-/// position. All other paths will be excluded.
-class PathFilter {
-  /// Filter on an event to be applied to some part of the path.
-  core.List<EventFilter>? eventFilters;
-
-  /// The position of the path the filter should match to (first, last, or any
-  /// event in path).
-  /// Possible string values are:
-  /// - "PATH_MATCH_POSITION_UNSPECIFIED" : Default value when path match
-  /// position is not specified or is unknown in this version.
-  /// - "ANY" : Any position in the path.
-  /// - "FIRST" : The first position in the path.
-  /// - "LAST" : The last position in the path.
-  core.String? pathMatchPosition;
-
-  PathFilter({
-    this.eventFilters,
-    this.pathMatchPosition,
-  });
-
-  PathFilter.fromJson(core.Map json_)
-      : this(
-          eventFilters: json_.containsKey('eventFilters')
-              ? (json_['eventFilters'] as core.List)
-                  .map((value) => EventFilter.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          pathMatchPosition: json_.containsKey('pathMatchPosition')
-              ? json_['pathMatchPosition'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (eventFilters != null) 'eventFilters': eventFilters!,
-        if (pathMatchPosition != null) 'pathMatchPosition': pathMatchPosition!,
-      };
-}
-
-/// Path Query Options for Report Options.
-class PathQueryOptions {
-  /// Custom Channel Groupings.
-  ChannelGrouping? channelGrouping;
-
-  /// Path Filters.
-  ///
-  /// There is a limit of 100 path filters that can be set per report.
-  core.List<PathFilter>? pathFilters;
-
-  PathQueryOptions({
-    this.channelGrouping,
-    this.pathFilters,
-  });
-
-  PathQueryOptions.fromJson(core.Map json_)
-      : this(
-          channelGrouping: json_.containsKey('channelGrouping')
-              ? ChannelGrouping.fromJson(json_['channelGrouping']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          pathFilters: json_.containsKey('pathFilters')
-              ? (json_['pathFilters'] as core.List)
-                  .map((value) => PathFilter.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (channelGrouping != null) 'channelGrouping': channelGrouping!,
-        if (pathFilters != null) 'pathFilters': pathFilters!,
-      };
-}
-
-/// Dimension filter on path events.
-class PathQueryOptionsFilter {
-  /// Dimension the filter is applied to.
-  core.String? filter;
-
-  /// Match logic of the filter.
-  /// Possible string values are:
-  /// - "UNKNOWN" : Default value when match is not specified or is unknown in
-  /// this version.
-  /// - "EXACT" : Matches a value exactly.
-  /// - "PARTIAL" : Matches a value partially.
-  /// - "BEGINS_WITH" : Begins with a value.
-  /// - "WILDCARD_EXPRESSION" : Matches a value, utilizing wildcard character
-  /// logic in the value.
-  core.String? match;
-
-  /// Values to filter on.
-  core.List<core.String>? values;
-
-  PathQueryOptionsFilter({
-    this.filter,
-    this.match,
-    this.values,
-  });
-
-  PathQueryOptionsFilter.fromJson(core.Map json_)
-      : this(
-          filter: json_.containsKey('filter')
-              ? json_['filter'] as core.String
-              : null,
-          match:
-              json_.containsKey('match') ? json_['match'] as core.String : null,
-          values: json_.containsKey('values')
-              ? (json_['values'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (filter != null) 'filter': filter!,
-        if (match != null) 'match': match!,
-        if (values != null) 'values': values!,
       };
 }
 
@@ -1231,43 +995,6 @@ class ReportStatus {
         if (finishTime != null) 'finishTime': finishTime!,
         if (format != null) 'format': format!,
         if (state != null) 'state': state!,
-      };
-}
-
-/// A Rule defines a name, and a boolean expression in
-/// [conjunctive normal form](http://mathworld.wolfram.com/ConjunctiveNormalForm.html){.external}
-/// that can be applied to a path event to determine if that name should be
-/// applied.
-class Rule {
-  /// DisjunctiveMatchStatements within a Rule.
-  ///
-  /// DisjunctiveMatchStatement OR's all contained filters.
-  core.List<DisjunctiveMatchStatement>? disjunctiveMatchStatements;
-
-  /// Rule name.
-  core.String? name;
-
-  Rule({
-    this.disjunctiveMatchStatements,
-    this.name,
-  });
-
-  Rule.fromJson(core.Map json_)
-      : this(
-          disjunctiveMatchStatements:
-              json_.containsKey('disjunctiveMatchStatements')
-                  ? (json_['disjunctiveMatchStatements'] as core.List)
-                      .map((value) => DisjunctiveMatchStatement.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                      .toList()
-                  : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (disjunctiveMatchStatements != null)
-          'disjunctiveMatchStatements': disjunctiveMatchStatements!,
-        if (name != null) 'name': name!,
       };
 }
 

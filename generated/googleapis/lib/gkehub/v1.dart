@@ -4981,7 +4981,7 @@ class ConfigManagementPolicyControllerMigration {
 ///
 /// For example, to specify metrics should be exported to Cloud Monitoring and
 /// Prometheus, specify backends: \["cloudmonitoring", "prometheus"\]
-typedef ConfigManagementPolicyControllerMonitoring = $Shared09;
+typedef ConfigManagementPolicyControllerMonitoring = $Shared12;
 
 /// State for PolicyControllerState.
 class ConfigManagementPolicyControllerState {
@@ -6319,6 +6319,29 @@ class IdentityServiceGroupConfig {
       };
 }
 
+/// Holds non-protocol-related configuration options.
+class IdentityServiceIdentityServiceOptions {
+  /// Determines the lifespan of STS tokens issued by Anthos Identity Service.
+  ///
+  /// Optional.
+  core.String? sessionDuration;
+
+  IdentityServiceIdentityServiceOptions({
+    this.sessionDuration,
+  });
+
+  IdentityServiceIdentityServiceOptions.fromJson(core.Map json_)
+      : this(
+          sessionDuration: json_.containsKey('sessionDuration')
+              ? json_['sessionDuration'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (sessionDuration != null) 'sessionDuration': sessionDuration!,
+      };
+}
+
 /// Configuration for the LDAP Auth flow.
 class IdentityServiceLdapConfig {
   /// Contains the properties for locating and authenticating groups in the
@@ -6387,8 +6410,14 @@ class IdentityServiceMembershipSpec {
   /// A member may support multiple auth methods.
   core.List<IdentityServiceAuthMethod>? authMethods;
 
+  /// non-protocol-related configuration options.
+  ///
+  /// Optional.
+  IdentityServiceIdentityServiceOptions? identityServiceOptions;
+
   IdentityServiceMembershipSpec({
     this.authMethods,
+    this.identityServiceOptions,
   });
 
   IdentityServiceMembershipSpec.fromJson(core.Map json_)
@@ -6399,10 +6428,17 @@ class IdentityServiceMembershipSpec {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          identityServiceOptions: json_.containsKey('identityServiceOptions')
+              ? IdentityServiceIdentityServiceOptions.fromJson(
+                  json_['identityServiceOptions']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (authMethods != null) 'authMethods': authMethods!,
+        if (identityServiceOptions != null)
+          'identityServiceOptions': identityServiceOptions!,
       };
 }
 
@@ -9006,7 +9042,7 @@ class PolicyControllerMembershipState {
 ///
 /// For example, to specify metrics should be exported to Cloud Monitoring and
 /// Prometheus, specify backends: \["cloudmonitoring", "prometheus"\]
-typedef PolicyControllerMonitoringConfig = $Shared09;
+typedef PolicyControllerMonitoringConfig = $Shared12;
 
 /// OnClusterState represents the state of a sub-component of Policy Controller.
 class PolicyControllerOnClusterState {
@@ -9795,7 +9831,43 @@ class ScopeLifecycleState {
 
 /// SecurityPostureConfig defines the flags needed to enable/disable features
 /// for the Security Posture API.
-typedef SecurityPostureConfig = $SecurityPostureConfig;
+class SecurityPostureConfig {
+  /// Sets which mode to use for Security Posture features.
+  /// Possible string values are:
+  /// - "MODE_UNSPECIFIED" : Default value not specified.
+  /// - "DISABLED" : Disables Security Posture features on the cluster.
+  /// - "BASIC" : Applies Security Posture features on the cluster.
+  core.String? mode;
+
+  /// Sets which mode to use for vulnerability scanning.
+  /// Possible string values are:
+  /// - "VULNERABILITY_MODE_UNSPECIFIED" : Default value not specified.
+  /// - "VULNERABILITY_DISABLED" : Disables vulnerability scanning on the
+  /// cluster.
+  /// - "VULNERABILITY_BASIC" : Applies basic vulnerability scanning on the
+  /// cluster.
+  /// - "VULNERABILITY_ENTERPRISE" : Applies the Security Posture's
+  /// vulnerability on cluster Enterprise level features.
+  core.String? vulnerabilityMode;
+
+  SecurityPostureConfig({
+    this.mode,
+    this.vulnerabilityMode,
+  });
+
+  SecurityPostureConfig.fromJson(core.Map json_)
+      : this(
+          mode: json_.containsKey('mode') ? json_['mode'] as core.String : null,
+          vulnerabilityMode: json_.containsKey('vulnerabilityMode')
+              ? json_['vulnerabilityMode'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (mode != null) 'mode': mode!,
+        if (vulnerabilityMode != null) 'vulnerabilityMode': vulnerabilityMode!,
+      };
+}
 
 /// Condition being reported.
 class ServiceMeshCondition {
@@ -9812,6 +9884,36 @@ class ServiceMeshCondition {
   /// - "CNI_POD_UNSCHEDULABLE" : CNI pod unschedulable error code
   /// - "UNSUPPORTED_MULTIPLE_CONTROL_PLANES" : Multiple control planes
   /// unsupported error code
+  /// - "VPCSC_GA_SUPPORTED" : VPC-SC GA is supported for this control plane.
+  /// - "CONFIG_APPLY_INTERNAL_ERROR" : Configuration (Istio/k8s resources)
+  /// failed to apply due to internal error.
+  /// - "CONFIG_VALIDATION_ERROR" : Configuration failed to be applied due to
+  /// being invalid.
+  /// - "CONFIG_VALIDATION_WARNING" : Encountered configuration(s) with possible
+  /// unintended behavior or invalid configuration. These configs may not have
+  /// been applied.
+  /// - "QUOTA_EXCEEDED_BACKEND_SERVICES" : BackendService quota exceeded error
+  /// code.
+  /// - "QUOTA_EXCEEDED_HEALTH_CHECKS" : HealthCheck quota exceeded error code.
+  /// - "QUOTA_EXCEEDED_HTTP_ROUTES" : HTTPRoute quota exceeded error code.
+  /// - "QUOTA_EXCEEDED_TCP_ROUTES" : TCPRoute quota exceeded error code.
+  /// - "QUOTA_EXCEEDED_TLS_ROUTES" : TLS routes quota exceeded error code.
+  /// - "QUOTA_EXCEEDED_TRAFFIC_POLICIES" : TrafficPolicy quota exceeded error
+  /// code.
+  /// - "QUOTA_EXCEEDED_ENDPOINT_POLICIES" : EndpointPolicy quota exceeded error
+  /// code.
+  /// - "QUOTA_EXCEEDED_GATEWAYS" : Gateway quota exceeded error code.
+  /// - "QUOTA_EXCEEDED_MESHES" : Mesh quota exceeded error code.
+  /// - "QUOTA_EXCEEDED_SERVER_TLS_POLICIES" : ServerTLSPolicy quota exceeded
+  /// error code.
+  /// - "QUOTA_EXCEEDED_CLIENT_TLS_POLICIES" : ClientTLSPolicy quota exceeded
+  /// error code.
+  /// - "QUOTA_EXCEEDED_SERVICE_LB_POLICIES" : ServiceLBPolicy quota exceeded
+  /// error code.
+  /// - "QUOTA_EXCEEDED_HTTP_FILTERS" : HTTPFilter quota exceeded error code.
+  /// - "QUOTA_EXCEEDED_TCP_FILTERS" : TCPFilter quota exceeded error code.
+  /// - "QUOTA_EXCEEDED_NETWORK_ENDPOINT_GROUPS" : NetworkEndpointGroup quota
+  /// exceeded error code.
   core.String? code;
 
   /// A short summary about the issue.
@@ -9864,6 +9966,18 @@ class ServiceMeshControlPlaneManagement {
   /// Explanation of state.
   core.List<ServiceMeshStatusDetails>? details;
 
+  /// Implementation of managed control plane.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "IMPLEMENTATION_UNSPECIFIED" : Unspecified
+  /// - "ISTIOD" : A Google build of istiod is used for the managed control
+  /// plane.
+  /// - "TRAFFIC_DIRECTOR" : Traffic director is used for the managed control
+  /// plane.
+  /// - "UPDATING" : The control plane implementation is being updated.
+  core.String? implementation;
+
   /// LifecycleState of control plane management.
   /// Possible string values are:
   /// - "LIFECYCLE_STATE_UNSPECIFIED" : Unspecified
@@ -9882,6 +9996,7 @@ class ServiceMeshControlPlaneManagement {
 
   ServiceMeshControlPlaneManagement({
     this.details,
+    this.implementation,
     this.state,
   });
 
@@ -9893,12 +10008,16 @@ class ServiceMeshControlPlaneManagement {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          implementation: json_.containsKey('implementation')
+              ? json_['implementation'] as core.String
+              : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (details != null) 'details': details!,
+        if (implementation != null) 'implementation': implementation!,
         if (state != null) 'state': state!,
       };
 }
@@ -9999,7 +10118,7 @@ class ServiceMeshMembershipSpec {
 /// **Service Mesh**: State for a single Membership, as analyzed by the Service
 /// Mesh Hub Controller.
 class ServiceMeshMembershipState {
-  /// List of condition reporting membership statues
+  /// List of conditions reported for this membership.
   ///
   /// Output only.
   core.List<ServiceMeshCondition>? conditions;

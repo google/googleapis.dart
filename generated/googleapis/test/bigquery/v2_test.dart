@@ -1767,6 +1767,7 @@ api.Dataset buildDataset() {
     o.linkedDatasetSource = buildLinkedDatasetSource();
     o.location = 'foo';
     o.maxTimeTravelHours = 'foo';
+    o.restrictions = buildRestrictionConfig();
     o.satisfiesPzi = true;
     o.satisfiesPzs = true;
     o.selfLink = 'foo';
@@ -1842,6 +1843,7 @@ void checkDataset(api.Dataset o) {
       o.maxTimeTravelHours!,
       unittest.equals('foo'),
     );
+    checkRestrictionConfig(o.restrictions!);
     unittest.expect(o.satisfiesPzi!, unittest.isTrue);
     unittest.expect(o.satisfiesPzs!, unittest.isTrue);
     unittest.expect(
@@ -2105,8 +2107,10 @@ api.DifferentialPrivacyPolicy buildDifferentialPrivacyPolicy() {
   buildCounterDifferentialPrivacyPolicy++;
   if (buildCounterDifferentialPrivacyPolicy < 3) {
     o.deltaBudget = 42.0;
+    o.deltaBudgetRemaining = 42.0;
     o.deltaPerQuery = 42.0;
     o.epsilonBudget = 42.0;
+    o.epsilonBudgetRemaining = 42.0;
     o.maxEpsilonPerQuery = 42.0;
     o.maxGroupsContributed = 'foo';
     o.privacyUnitColumn = 'foo';
@@ -2123,11 +2127,19 @@ void checkDifferentialPrivacyPolicy(api.DifferentialPrivacyPolicy o) {
       unittest.equals(42.0),
     );
     unittest.expect(
+      o.deltaBudgetRemaining!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
       o.deltaPerQuery!,
       unittest.equals(42.0),
     );
     unittest.expect(
       o.epsilonBudget!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.epsilonBudgetRemaining!,
       unittest.equals(42.0),
     );
     unittest.expect(
@@ -3027,6 +3039,28 @@ void checkFeatureValue(api.FeatureValue o) {
     );
   }
   buildCounterFeatureValue--;
+}
+
+core.int buildCounterForeignTypeInfo = 0;
+api.ForeignTypeInfo buildForeignTypeInfo() {
+  final o = api.ForeignTypeInfo();
+  buildCounterForeignTypeInfo++;
+  if (buildCounterForeignTypeInfo < 3) {
+    o.typeSystem = 'foo';
+  }
+  buildCounterForeignTypeInfo--;
+  return o;
+}
+
+void checkForeignTypeInfo(api.ForeignTypeInfo o) {
+  buildCounterForeignTypeInfo++;
+  if (buildCounterForeignTypeInfo < 3) {
+    unittest.expect(
+      o.typeSystem!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterForeignTypeInfo--;
 }
 
 core.int buildCounterGetIamPolicyRequest = 0;
@@ -5947,6 +5981,7 @@ api.ParquetOptions buildParquetOptions() {
   if (buildCounterParquetOptions < 3) {
     o.enableListInference = true;
     o.enumAsString = true;
+    o.mapTargetType = 'foo';
   }
   buildCounterParquetOptions--;
   return o;
@@ -5957,6 +5992,10 @@ void checkParquetOptions(api.ParquetOptions o) {
   if (buildCounterParquetOptions < 3) {
     unittest.expect(o.enableListInference!, unittest.isTrue);
     unittest.expect(o.enumAsString!, unittest.isTrue);
+    unittest.expect(
+      o.mapTargetType!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterParquetOptions--;
 }
@@ -7032,6 +7071,28 @@ void checkRemoteModelInfo(api.RemoteModelInfo o) {
     );
   }
   buildCounterRemoteModelInfo--;
+}
+
+core.int buildCounterRestrictionConfig = 0;
+api.RestrictionConfig buildRestrictionConfig() {
+  final o = api.RestrictionConfig();
+  buildCounterRestrictionConfig++;
+  if (buildCounterRestrictionConfig < 3) {
+    o.type = 'foo';
+  }
+  buildCounterRestrictionConfig--;
+  return o;
+}
+
+void checkRestrictionConfig(api.RestrictionConfig o) {
+  buildCounterRestrictionConfig++;
+  if (buildCounterRestrictionConfig < 3) {
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterRestrictionConfig--;
 }
 
 core.List<api.Argument> buildUnnamed116() => [
@@ -8275,6 +8336,7 @@ api.Table buildTable() {
     o.replicas = buildUnnamed136();
     o.requirePartitionFilter = true;
     o.resourceTags = buildUnnamed137();
+    o.restrictions = buildRestrictionConfig();
     o.schema = buildTableSchema();
     o.selfLink = 'foo';
     o.snapshotDefinition = buildSnapshotDefinition();
@@ -8404,6 +8466,7 @@ void checkTable(api.Table o) {
     checkUnnamed136(o.replicas!);
     unittest.expect(o.requirePartitionFilter!, unittest.isTrue);
     checkUnnamed137(o.resourceTags!);
+    checkRestrictionConfig(o.restrictions!);
     checkTableSchema(o.schema!);
     unittest.expect(
       o.selfLink!,
@@ -8941,6 +9004,7 @@ api.TableFieldSchema buildTableFieldSchema() {
     o.defaultValueExpression = 'foo';
     o.description = 'foo';
     o.fields = buildUnnamed146();
+    o.foreignTypeDefinition = 'foo';
     o.maxLength = 'foo';
     o.mode = 'foo';
     o.name = 'foo';
@@ -8972,6 +9036,10 @@ void checkTableFieldSchema(api.TableFieldSchema o) {
       unittest.equals('foo'),
     );
     checkUnnamed146(o.fields!);
+    unittest.expect(
+      o.foreignTypeDefinition!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.maxLength!,
       unittest.equals('foo'),
@@ -9304,6 +9372,7 @@ api.TableSchema buildTableSchema() {
   buildCounterTableSchema++;
   if (buildCounterTableSchema < 3) {
     o.fields = buildUnnamed151();
+    o.foreignTypeInfo = buildForeignTypeInfo();
   }
   buildCounterTableSchema--;
   return o;
@@ -9313,6 +9382,7 @@ void checkTableSchema(api.TableSchema o) {
   buildCounterTableSchema++;
   if (buildCounterTableSchema < 3) {
     checkUnnamed151(o.fields!);
+    checkForeignTypeInfo(o.foreignTypeInfo!);
   }
   buildCounterTableSchema--;
 }
@@ -10868,6 +10938,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-ForeignTypeInfo', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildForeignTypeInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ForeignTypeInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkForeignTypeInfo(od);
+    });
+  });
+
   unittest.group('obj-schema-GetIamPolicyRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGetIamPolicyRequest();
@@ -11703,6 +11783,16 @@ void main() {
       final od = api.RemoteModelInfo.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkRemoteModelInfo(od);
+    });
+  });
+
+  unittest.group('obj-schema-RestrictionConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRestrictionConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RestrictionConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRestrictionConfig(od);
     });
   });
 

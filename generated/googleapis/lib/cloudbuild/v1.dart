@@ -45,7 +45,7 @@ import 'dart:convert' as convert;
 import 'dart:core' as core;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
-import 'package:http/http.dart' as http;
+import 'package:http/http.dart' as http_1;
 
 import '../shared.dart';
 import '../src/user_agent.dart';
@@ -69,7 +69,7 @@ class CloudBuildApi {
   ProjectsResource get projects => ProjectsResource(_requester);
   V1Resource get v1 => V1Resource(_requester);
 
-  CloudBuildApi(http.Client client,
+  CloudBuildApi(http_1.Client client,
       {core.String rootUrl = 'https://cloudbuild.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
@@ -101,8 +101,8 @@ class GithubDotComWebhookResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
   async.Future<Empty> receive(
     HttpBody request, {
     core.String? webhookKey,
@@ -153,8 +153,8 @@ class LocationsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
   async.Future<Empty> regionalWebhook(
     HttpBody request,
     core.String location, {
@@ -210,8 +210,8 @@ class OperationsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
   async.Future<Empty> cancel(
     CancelOperationRequest request,
     core.String name, {
@@ -251,8 +251,8 @@ class OperationsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
   async.Future<Operation> get(
     core.String name, {
     core.String? $fields,
@@ -311,8 +311,8 @@ class ProjectsBuildsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
   async.Future<Operation> approve(
     ApproveBuildRequest request,
     core.String name, {
@@ -352,8 +352,8 @@ class ProjectsBuildsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
   async.Future<Build> cancel(
     CancelBuildRequest request,
     core.String projectId,
@@ -403,8 +403,8 @@ class ProjectsBuildsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
   async.Future<Operation> create(
     Build request,
     core.String projectId, {
@@ -451,8 +451,8 @@ class ProjectsBuildsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
   async.Future<Build> get(
     core.String projectId,
     core.String id, {
@@ -507,8 +507,8 @@ class ProjectsBuildsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
   async.Future<ListBuildsResponse> list(
     core.String projectId, {
     core.String? filter,
@@ -572,8 +572,8 @@ class ProjectsBuildsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
   async.Future<Operation> retry(
     RetryBuildRequest request,
     core.String projectId,
@@ -634,8 +634,8 @@ class ProjectsGithubEnterpriseConfigsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
   async.Future<Operation> create(
     GitHubEnterpriseConfig request,
     core.String parent, {
@@ -685,8 +685,8 @@ class ProjectsGithubEnterpriseConfigsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
   async.Future<Operation> delete(
     core.String name, {
     core.String? configId,
@@ -731,8 +731,8 @@ class ProjectsGithubEnterpriseConfigsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
   async.Future<GitHubEnterpriseConfig> get(
     core.String name, {
     core.String? configId,
@@ -774,8 +774,8 @@ class ProjectsGithubEnterpriseConfigsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
   async.Future<ListGithubEnterpriseConfigsResponse> list(
     core.String parent, {
     core.String? projectId,
@@ -823,8 +823,8 @@ class ProjectsGithubEnterpriseConfigsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
   async.Future<Operation> patch(
     GitHubEnterpriseConfig request,
     core.String name, {
@@ -887,8 +887,8 @@ class ProjectsLocationsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
   async.Future<DefaultServiceAccount> getDefaultServiceAccount(
     core.String name, {
     core.String? $fields,
@@ -948,8 +948,8 @@ class ProjectsLocationsBitbucketServerConfigsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
   async.Future<Operation> create(
     BitbucketServerConfig request,
     core.String parent, {
@@ -993,8 +993,8 @@ class ProjectsLocationsBitbucketServerConfigsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
   async.Future<Operation> delete(
     core.String name, {
     core.String? $fields,
@@ -1031,8 +1031,8 @@ class ProjectsLocationsBitbucketServerConfigsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
   async.Future<BitbucketServerConfig> get(
     core.String name, {
     core.String? $fields,
@@ -1080,8 +1080,8 @@ class ProjectsLocationsBitbucketServerConfigsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
   async.Future<ListBitbucketServerConfigsResponse> list(
     core.String parent, {
     core.int? pageSize,
@@ -1130,8 +1130,8 @@ class ProjectsLocationsBitbucketServerConfigsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
   async.Future<Operation> patch(
     BitbucketServerConfig request,
     core.String name, {
@@ -1178,8 +1178,8 @@ class ProjectsLocationsBitbucketServerConfigsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
   async.Future<Empty> removeBitbucketServerConnectedRepository(
     RemoveBitbucketServerConnectedRepositoryRequest request,
     core.String config, {
@@ -1231,8 +1231,8 @@ class ProjectsLocationsBitbucketServerConfigsConnectedRepositoriesResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
   async.Future<Operation> batchCreate(
     BatchCreateBitbucketServerConnectedRepositoriesRequest request,
     core.String parent, {
@@ -1292,8 +1292,8 @@ class ProjectsLocationsBitbucketServerConfigsReposResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
   async.Future<ListBitbucketServerRepositoriesResponse> list(
     core.String parent, {
     core.int? pageSize,
@@ -1346,8 +1346,8 @@ class ProjectsLocationsBuildsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
   async.Future<Operation> approve(
     ApproveBuildRequest request,
     core.String name, {
@@ -1388,8 +1388,8 @@ class ProjectsLocationsBuildsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
   async.Future<Build> cancel(
     CancelBuildRequest request,
     core.String name, {
@@ -1435,8 +1435,8 @@ class ProjectsLocationsBuildsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
   async.Future<Operation> create(
     Build request,
     core.String parent, {
@@ -1484,8 +1484,8 @@ class ProjectsLocationsBuildsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
   async.Future<Build> get(
     core.String name, {
     core.String? id,
@@ -1539,8 +1539,8 @@ class ProjectsLocationsBuildsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
   async.Future<ListBuildsResponse> list(
     core.String parent, {
     core.String? filter,
@@ -1604,8 +1604,8 @@ class ProjectsLocationsBuildsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
   async.Future<Operation> retry(
     RetryBuildRequest request,
     core.String name, {
@@ -1666,8 +1666,8 @@ class ProjectsLocationsGitLabConfigsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
   async.Future<Operation> create(
     GitLabConfig request,
     core.String parent, {
@@ -1709,8 +1709,8 @@ class ProjectsLocationsGitLabConfigsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
   async.Future<Operation> delete(
     core.String name, {
     core.String? $fields,
@@ -1747,8 +1747,8 @@ class ProjectsLocationsGitLabConfigsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
   async.Future<GitLabConfig> get(
     core.String name, {
     core.String? $fields,
@@ -1796,8 +1796,8 @@ class ProjectsLocationsGitLabConfigsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
   async.Future<ListGitLabConfigsResponse> list(
     core.String parent, {
     core.int? pageSize,
@@ -1845,8 +1845,8 @@ class ProjectsLocationsGitLabConfigsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
   async.Future<Operation> patch(
     GitLabConfig request,
     core.String name, {
@@ -1893,8 +1893,8 @@ class ProjectsLocationsGitLabConfigsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
   async.Future<Empty> removeGitLabConnectedRepository(
     RemoveGitLabConnectedRepositoryRequest request,
     core.String config, {
@@ -1948,8 +1948,8 @@ class ProjectsLocationsGitLabConfigsConnectedRepositoriesResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
   async.Future<Operation> batchCreate(
     BatchCreateGitLabConnectedRepositoriesRequest request,
     core.String parent, {
@@ -2007,8 +2007,8 @@ class ProjectsLocationsGitLabConfigsReposResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
   async.Future<ListGitLabRepositoriesResponse> list(
     core.String parent, {
     core.int? pageSize,
@@ -2066,8 +2066,8 @@ class ProjectsLocationsGithubEnterpriseConfigsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
   async.Future<Operation> create(
     GitHubEnterpriseConfig request,
     core.String parent, {
@@ -2117,8 +2117,8 @@ class ProjectsLocationsGithubEnterpriseConfigsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
   async.Future<Operation> delete(
     core.String name, {
     core.String? configId,
@@ -2163,8 +2163,8 @@ class ProjectsLocationsGithubEnterpriseConfigsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
   async.Future<GitHubEnterpriseConfig> get(
     core.String name, {
     core.String? configId,
@@ -2206,8 +2206,8 @@ class ProjectsLocationsGithubEnterpriseConfigsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
   async.Future<ListGithubEnterpriseConfigsResponse> list(
     core.String parent, {
     core.String? projectId,
@@ -2255,8 +2255,8 @@ class ProjectsLocationsGithubEnterpriseConfigsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
   async.Future<Operation> patch(
     GitHubEnterpriseConfig request,
     core.String name, {
@@ -2314,8 +2314,8 @@ class ProjectsLocationsOperationsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
   async.Future<Empty> cancel(
     CancelOperationRequest request,
     core.String name, {
@@ -2356,8 +2356,8 @@ class ProjectsLocationsOperationsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
   async.Future<Operation> get(
     core.String name, {
     core.String? $fields,
@@ -2404,8 +2404,8 @@ class ProjectsLocationsTriggersResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
   async.Future<BuildTrigger> create(
     BuildTrigger request,
     core.String parent, {
@@ -2451,8 +2451,8 @@ class ProjectsLocationsTriggersResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
     core.String? projectId,
@@ -2497,8 +2497,8 @@ class ProjectsLocationsTriggersResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
   async.Future<BuildTrigger> get(
     core.String name, {
     core.String? projectId,
@@ -2544,8 +2544,8 @@ class ProjectsLocationsTriggersResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
   async.Future<ListBuildTriggersResponse> list(
     core.String parent, {
     core.int? pageSize,
@@ -2599,8 +2599,8 @@ class ProjectsLocationsTriggersResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
   async.Future<BuildTrigger> patch(
     BuildTrigger request,
     core.String resourceName, {
@@ -2654,8 +2654,8 @@ class ProjectsLocationsTriggersResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
   async.Future<Operation> run(
     RunBuildTriggerRequest request,
     core.String name, {
@@ -2704,8 +2704,8 @@ class ProjectsLocationsTriggersResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
   async.Future<ReceiveTriggerWebhookResponse> webhook(
     HttpBody request,
     core.String name, {
@@ -2766,8 +2766,8 @@ class ProjectsLocationsWorkerPoolsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
   async.Future<Operation> create(
     WorkerPool request,
     core.String parent, {
@@ -2819,8 +2819,8 @@ class ProjectsLocationsWorkerPoolsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
   async.Future<Operation> delete(
     core.String name, {
     core.bool? allowMissing,
@@ -2862,8 +2862,8 @@ class ProjectsLocationsWorkerPoolsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
   async.Future<WorkerPool> get(
     core.String name, {
     core.String? $fields,
@@ -2906,8 +2906,8 @@ class ProjectsLocationsWorkerPoolsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
   async.Future<ListWorkerPoolsResponse> list(
     core.String parent, {
     core.int? pageSize,
@@ -2958,8 +2958,8 @@ class ProjectsLocationsWorkerPoolsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
   async.Future<Operation> patch(
     WorkerPool request,
     core.String name, {
@@ -3011,8 +3011,8 @@ class ProjectsTriggersResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
   async.Future<BuildTrigger> create(
     BuildTrigger request,
     core.String projectId, {
@@ -3057,8 +3057,8 @@ class ProjectsTriggersResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
   async.Future<Empty> delete(
     core.String projectId,
     core.String triggerId, {
@@ -3103,8 +3103,8 @@ class ProjectsTriggersResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
   async.Future<BuildTrigger> get(
     core.String projectId,
     core.String triggerId, {
@@ -3151,8 +3151,8 @@ class ProjectsTriggersResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
   async.Future<ListBuildTriggersResponse> list(
     core.String projectId, {
     core.int? pageSize,
@@ -3201,8 +3201,8 @@ class ProjectsTriggersResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
   async.Future<BuildTrigger> patch(
     BuildTrigger request,
     core.String projectId,
@@ -3258,8 +3258,8 @@ class ProjectsTriggersResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
   async.Future<Operation> run(
     RepoSource request,
     core.String projectId,
@@ -3313,8 +3313,8 @@ class ProjectsTriggersResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
   async.Future<ReceiveTriggerWebhookResponse> webhook(
     HttpBody request,
     core.String projectId,
@@ -3370,8 +3370,8 @@ class V1Resource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
   async.Future<Empty> webhook(
     HttpBody request, {
     core.String? webhookKey,
@@ -4194,6 +4194,11 @@ class Build {
   /// Output only.
   core.String? finishTime;
 
+  /// Configuration for git operations.
+  ///
+  /// Optional.
+  GitConfig? gitConfig;
+
   /// Unique identifier of the build.
   ///
   /// Output only.
@@ -4341,6 +4346,7 @@ class Build {
     this.createTime,
     this.failureInfo,
     this.finishTime,
+    this.gitConfig,
     this.id,
     this.images,
     this.logUrl,
@@ -4391,6 +4397,10 @@ class Build {
               : null,
           finishTime: json_.containsKey('finishTime')
               ? json_['finishTime'] as core.String
+              : null,
+          gitConfig: json_.containsKey('gitConfig')
+              ? GitConfig.fromJson(
+                  json_['gitConfig'] as core.Map<core.String, core.dynamic>)
               : null,
           id: json_.containsKey('id') ? json_['id'] as core.String : null,
           images: json_.containsKey('images')
@@ -4493,6 +4503,7 @@ class Build {
         if (createTime != null) 'createTime': createTime!,
         if (failureInfo != null) 'failureInfo': failureInfo!,
         if (finishTime != null) 'finishTime': finishTime!,
+        if (gitConfig != null) 'gitConfig': gitConfig!,
         if (id != null) 'id': id!,
         if (images != null) 'images': images!,
         if (logUrl != null) 'logUrl': logUrl!,
@@ -5623,6 +5634,49 @@ class DefaultServiceAccount {
       };
 }
 
+/// This config defines the location of a source through Developer Connect.
+class DeveloperConnectConfig {
+  /// Directory, relative to the source root, in which to run the build.
+  ///
+  /// Required.
+  core.String? dir;
+
+  /// The Developer Connect Git repository link, formatted as `projects / *
+  /// /locations / * /connections / * /gitRepositoryLink / * `.
+  ///
+  /// Required.
+  core.String? gitRepositoryLink;
+
+  /// The revision to fetch from the Git repository such as a branch, a tag, a
+  /// commit SHA, or any Git ref.
+  ///
+  /// Required.
+  core.String? revision;
+
+  DeveloperConnectConfig({
+    this.dir,
+    this.gitRepositoryLink,
+    this.revision,
+  });
+
+  DeveloperConnectConfig.fromJson(core.Map json_)
+      : this(
+          dir: json_.containsKey('dir') ? json_['dir'] as core.String : null,
+          gitRepositoryLink: json_.containsKey('gitRepositoryLink')
+              ? json_['gitRepositoryLink'] as core.String
+              : null,
+          revision: json_.containsKey('revision')
+              ? json_['revision'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dir != null) 'dir': dir!,
+        if (gitRepositoryLink != null) 'gitRepositoryLink': gitRepositoryLink!,
+        if (revision != null) 'revision': revision!,
+      };
+}
+
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
 ///
@@ -5688,6 +5742,28 @@ class FileHashes {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (fileHash != null) 'fileHash': fileHash!,
+      };
+}
+
+/// GitConfig is a configuration for git operations.
+class GitConfig {
+  /// Configuration for HTTP related git operations.
+  HttpConfig? http;
+
+  GitConfig({
+    this.http,
+  });
+
+  GitConfig.fromJson(core.Map json_)
+      : this(
+          http: json_.containsKey('http')
+              ? HttpConfig.fromJson(
+                  json_['http'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (http != null) 'http': http!,
       };
 }
 
@@ -6638,6 +6714,30 @@ class Hash {
 /// request and response bodies are handled, all other features will continue to
 /// work unchanged.
 typedef HttpBody = $HttpBody;
+
+/// HttpConfig is a configuration for HTTP related git operations.
+class HttpConfig {
+  /// SecretVersion resource of the HTTP proxy URL.
+  ///
+  /// The proxy URL should be in format protocol://@\]proxyhost\[:port\].
+  core.String? proxySecretVersionName;
+
+  HttpConfig({
+    this.proxySecretVersionName,
+  });
+
+  HttpConfig.fromJson(core.Map json_)
+      : this(
+          proxySecretVersionName: json_.containsKey('proxySecretVersionName')
+              ? json_['proxySecretVersionName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (proxySecretVersionName != null)
+          'proxySecretVersionName': proxySecretVersionName!,
+      };
+}
 
 /// Pairs a set of secret environment variables mapped to encrypted values with
 /// the Cloud KMS key to use to decrypt the value.
@@ -7994,6 +8094,9 @@ class Source {
   /// Optional.
   ConnectedRepository? connectedRepository;
 
+  /// If provided, get the source from this Developer Connect config.
+  DeveloperConnectConfig? developerConnectConfig;
+
   /// If provided, get the source from this Git repository.
   GitSource? gitSource;
 
@@ -8012,6 +8115,7 @@ class Source {
 
   Source({
     this.connectedRepository,
+    this.developerConnectConfig,
     this.gitSource,
     this.repoSource,
     this.storageSource,
@@ -8022,6 +8126,10 @@ class Source {
       : this(
           connectedRepository: json_.containsKey('connectedRepository')
               ? ConnectedRepository.fromJson(json_['connectedRepository']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          developerConnectConfig: json_.containsKey('developerConnectConfig')
+              ? DeveloperConnectConfig.fromJson(json_['developerConnectConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
           gitSource: json_.containsKey('gitSource')
@@ -8045,6 +8153,8 @@ class Source {
   core.Map<core.String, core.dynamic> toJson() => {
         if (connectedRepository != null)
           'connectedRepository': connectedRepository!,
+        if (developerConnectConfig != null)
+          'developerConnectConfig': developerConnectConfig!,
         if (gitSource != null) 'gitSource': gitSource!,
         if (repoSource != null) 'repoSource': repoSource!,
         if (storageSource != null) 'storageSource': storageSource!,

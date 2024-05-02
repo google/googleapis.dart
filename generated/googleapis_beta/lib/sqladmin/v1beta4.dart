@@ -1390,7 +1390,8 @@ class InstancesResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Promotes the read replica instance to be a stand-alone Cloud SQL instance.
+  /// Promotes the read replica instance to be an independent Cloud SQL primary
+  /// instance.
   ///
   /// Using this operation might cause your instance to restart.
   ///
@@ -1400,10 +1401,12 @@ class InstancesResource {
   ///
   /// [instance] - Cloud SQL read replica instance name.
   ///
-  /// [failover_1] - Set to true if the promote operation should attempt to
-  /// re-add the original primary as a replica when it comes back online.
-  /// Otherwise, if this value is false or not set, the original primary will be
-  /// a standalone instance.
+  /// [failover_1] - Set to true to invoke a replica failover to the designated
+  /// DR replica. As part of replica failover, the promote operation attempts to
+  /// add the original primary instance as a replica of the promoted DR replica
+  /// when the original primary instance comes back online. If set to false or
+  /// not specified, then the original primary instance becomes an independent
+  /// Cloud SQL primary instance. Only applicable to MySQL.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1793,7 +1796,8 @@ class InstancesResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Switches over from the primary instance to a replica instance.
+  /// Switches over from the primary instance to the designated DR replica
+  /// instance.
   ///
   /// Request parameters:
   ///
@@ -3136,15 +3140,16 @@ class BackupConfiguration {
   /// Output only.
   /// Possible string values are:
   /// - "TRANSACTIONAL_LOG_STORAGE_STATE_UNSPECIFIED" : Unspecified.
-  /// - "DISK" : The transaction logs for the instance are stored on a data
-  /// disk.
-  /// - "SWITCHING_TO_CLOUD_STORAGE" : The transaction logs for the instance are
-  /// switching from being stored on a data disk to being stored in Cloud
-  /// Storage.
-  /// - "SWITCHED_TO_CLOUD_STORAGE" : The transaction logs for the instance are
-  /// now stored in Cloud Storage. Previously, they were stored on a data disk.
-  /// - "CLOUD_STORAGE" : The transaction logs for the instance are stored in
-  /// Cloud Storage.
+  /// - "DISK" : The transaction logs used for PITR for the instance are stored
+  /// on a data disk.
+  /// - "SWITCHING_TO_CLOUD_STORAGE" : The transaction logs used for PITR for
+  /// the instance are switching from being stored on a data disk to being
+  /// stored in Cloud Storage. Only applicable to MySQL.
+  /// - "SWITCHED_TO_CLOUD_STORAGE" : The transaction logs used for PITR for the
+  /// instance are now stored in Cloud Storage. Previously, they were stored on
+  /// a data disk. Only applicable to MySQL.
+  /// - "CLOUD_STORAGE" : The transaction logs used for PITR for the instance
+  /// are stored in Cloud Storage. Only applicable to MySQL and PostgreSQL.
   core.String? transactionalLogStorageState;
 
   BackupConfiguration({
@@ -4265,10 +4270,11 @@ class DatabaseInstance {
   /// The replicas of the instance.
   core.List<core.String>? replicaNames;
 
-  /// The pair of a primary instance and disaster recovery (DR) replica.
+  /// A primary instance and disaster recovery (DR) replica pair.
   ///
   /// A DR replica is a cross-region replica that you designate for failover in
-  /// the event that the primary instance has regional failure.
+  /// the event that the primary instance experiences regional failure. Only
+  /// applicable to MySQL.
   ReplicationCluster? replicationCluster;
 
   /// Initial root password.
@@ -5442,9 +5448,9 @@ class FlagsListResponse {
       };
 }
 
-/// Gemini configuration.
+/// Gemini instance configuration.
 class GeminiInstanceConfig {
-  /// Whether active query is enabled.
+  /// Whether the active query is enabled.
   ///
   /// Output only.
   core.bool? activeQueryEnabled;
@@ -5454,22 +5460,22 @@ class GeminiInstanceConfig {
   /// Output only.
   core.bool? entitled;
 
-  /// Whether flag recommender is enabled.
+  /// Whether the flag recommender is enabled.
   ///
   /// Output only.
   core.bool? flagRecommenderEnabled;
 
-  /// Whether vacuum management is enabled.
+  /// Whether the vacuum management is enabled.
   ///
   /// Output only.
   core.bool? googleVacuumMgmtEnabled;
 
-  /// Whether index advisor is enabled.
+  /// Whether the index advisor is enabled.
   ///
   /// Output only.
   core.bool? indexAdvisorEnabled;
 
-  /// Whether oom session cancel is enabled.
+  /// Whether canceling the out-of-memory (OOM) session is enabled.
   ///
   /// Output only.
   core.bool? oomSessionCancelEnabled;
@@ -6440,21 +6446,23 @@ class IpConfiguration {
   /// `ssl_mode=TRUSTED_CLIENT_CERTIFICATE_REQUIRED` and `require_ssl=true` For
   /// SQL Server: * `ssl_mode=ALLOW_UNENCRYPTED_AND_ENCRYPTED` and
   /// `require_ssl=false` * `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=true` The
-  /// value of `ssl_mode` gets priority over the value of `require_ssl`. For
+  /// value of `ssl_mode` has priority over the value of `require_ssl`. For
   /// example, for the pair `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=false`,
-  /// the `ssl_mode=ENCRYPTED_ONLY` means only accept SSL connections, while the
-  /// `require_ssl=false` means accept both non-SSL and SSL connections. MySQL
-  /// and PostgreSQL databases respect `ssl_mode` in this case and accept only
+  /// `ssl_mode=ENCRYPTED_ONLY` means accept only SSL connections, while
+  /// `require_ssl=false` means accept both non-SSL and SSL connections. In this
+  /// case, MySQL and PostgreSQL databases respect `ssl_mode` and accepts only
   /// SSL connections.
   /// Possible string values are:
   /// - "SSL_MODE_UNSPECIFIED" : The SSL mode is unknown.
   /// - "ALLOW_UNENCRYPTED_AND_ENCRYPTED" : Allow non-SSL/non-TLS and SSL/TLS
-  /// connections. For SSL/TLS connections, the client certificate won't be
+  /// connections. For SSL connections to MySQL and PostgreSQL, the client
+  /// certificate isn't verified. When this value is used, the legacy
+  /// `require_ssl` flag must be false or cleared to avoid a conflict between
+  /// the values of the two flags.
+  /// - "ENCRYPTED_ONLY" : Only allow connections encrypted with SSL/TLS. For
+  /// SSL connections to MySQL and PostgreSQL, the client certificate isn't
   /// verified. When this value is used, the legacy `require_ssl` flag must be
-  /// false or cleared to avoid the conflict between values of two flags.
-  /// - "ENCRYPTED_ONLY" : Only allow connections encrypted with SSL/TLS. When
-  /// this value is used, the legacy `require_ssl` flag must be false or cleared
-  /// to avoid the conflict between values of two flags.
+  /// false or cleared to avoid a conflict between the values of the two flags.
   /// - "TRUSTED_CLIENT_CERTIFICATE_REQUIRED" : Only allow connections encrypted
   /// with SSL/TLS and with valid client certificates. When this value is used,
   /// the legacy `require_ssl` flag must be true or cleared to avoid the
@@ -6463,8 +6471,8 @@ class IpConfiguration {
   /// [Cloud SQL Auth Proxy](https://cloud.google.com/sql/docs/postgres/connect-auth-proxy)
   /// or
   /// [Cloud SQL Connectors](https://cloud.google.com/sql/docs/postgres/connect-connectors)
-  /// to enforce client identity verification. This value is not applicable to
-  /// SQL Server.
+  /// to enforce client identity verification. Only applicable to MySQL and
+  /// PostgreSQL. Not applicable to SQL Server.
   core.String? sslMode;
 
   IpConfiguration({
@@ -7500,10 +7508,15 @@ class ReplicaConfiguration {
       };
 }
 
-/// Primary-DR replica pair
+/// A primary instance and disaster recovery (DR) replica pair.
+///
+/// A DR replica is a cross-region replica that you designate for failover in
+/// the event that the primary instance has regional failure. Only applicable to
+/// MySQL.
 class ReplicationCluster {
-  /// read-only field that indicates if the replica is a dr_replica; not set for
-  /// a primary.
+  /// Read-only field that indicates whether the replica is a DR replica.
+  ///
+  /// This field is not set if the instance is a primary instance.
   ///
   /// Output only.
   core.bool? drReplica;
@@ -7513,8 +7526,8 @@ class ReplicationCluster {
   ///
   /// A DR replica is an optional configuration for Enterprise Plus edition
   /// instances. If the instance is a read replica, then the field is not set.
-  /// Users can set this field to set a designated DR replica for a primary.
-  /// Removing this field removes the DR replica.
+  /// Set this field to a replica name to designate a DR replica for a primary
+  /// instance. Remove the replica name to remove the DR replica designation.
   ///
   /// Optional.
   core.String? failoverDrReplicaName;
@@ -8380,15 +8393,18 @@ class SqlInstancesRescheduleMaintenanceRequestBody {
 typedef SqlInstancesResetReplicaSizeRequest = $Empty;
 
 class SqlInstancesStartExternalSyncRequest {
-  /// MigrationType decides if the migration is a physical file based migration
-  /// or logical migration.
+  /// MigrationType configures the migration to use physical files or logical
+  /// dump files.
+  ///
+  /// If not set, then the logical dump file configuration is used. Valid values
+  /// are `LOGICAL` or `PHYSICAL`. Only applicable to MySQL.
   ///
   /// Optional.
   /// Possible string values are:
-  /// - "MIGRATION_TYPE_UNSPECIFIED" : If no migration type is specified it will
-  /// be defaulted to LOGICAL.
-  /// - "LOGICAL" : Logical Migrations
-  /// - "PHYSICAL" : Physical file based Migrations
+  /// - "MIGRATION_TYPE_UNSPECIFIED" : Default value is a logical dump
+  /// file-based migration
+  /// - "LOGICAL" : Logical dump file-based migration
+  /// - "PHYSICAL" : Physical file-based migration
   core.String? migrationType;
 
   /// MySQL-specific settings for start external sync.
@@ -8458,15 +8474,18 @@ class SqlInstancesStartExternalSyncRequest {
 }
 
 class SqlInstancesVerifyExternalSyncSettingsRequest {
-  /// MigrationType field decides if the migration is a physical file based
-  /// migration or logical migration
+  /// MigrationType configures the migration to use physical files or logical
+  /// dump files.
+  ///
+  /// If not set, then the logical dump file configuration is used. Valid values
+  /// are `LOGICAL` or `PHYSICAL`. Only applicable to MySQL.
   ///
   /// Optional.
   /// Possible string values are:
-  /// - "MIGRATION_TYPE_UNSPECIFIED" : If no migration type is specified it will
-  /// be defaulted to LOGICAL.
-  /// - "LOGICAL" : Logical Migrations
-  /// - "PHYSICAL" : Physical file based Migrations
+  /// - "MIGRATION_TYPE_UNSPECIFIED" : Default value is a logical dump
+  /// file-based migration
+  /// - "LOGICAL" : Logical dump file-based migration
+  /// - "PHYSICAL" : Physical file-based migration
   core.String? migrationType;
 
   /// MySQL-specific settings for start external sync.
@@ -8486,7 +8505,7 @@ class SqlInstancesVerifyExternalSyncSettingsRequest {
 
   /// Parallel level for initial data sync.
   ///
-  /// Currently only applicable for PostgreSQL.
+  /// Only applicable for PostgreSQL.
   ///
   /// Optional.
   /// Possible string values are:

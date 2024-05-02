@@ -871,7 +871,7 @@ class TransferOperationsResource {
   }
 }
 
-/// Represents an On-Premises Agent pool.
+/// Represents an agent pool.
 class AgentPool {
   /// Specifies the bandwidth limit details.
   ///
@@ -893,8 +893,8 @@ class AgentPool {
   /// Output only.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : Default value. This value is unused.
-  /// - "CREATING" : This is an initialization state. During this stage, the
-  /// resources such as Pub/Sub topics are allocated for the AgentPool.
+  /// - "CREATING" : This is an initialization state. During this stage,
+  /// resources are allocated for the AgentPool.
   /// - "CREATED" : Determines that the AgentPool is created for use. At this
   /// state, Agents can join the AgentPool and participate in the transfer jobs
   /// in that pool.
@@ -1078,6 +1078,11 @@ class AwsS3Data {
   /// Optional.
   core.String? credentialsSecret;
 
+  /// Egress bytes over a Google-managed private network.
+  ///
+  /// This network is shared between other users of Storage Transfer Service.
+  core.bool? managedPrivateNetwork;
+
   /// Root path to transfer objects.
   ///
   /// Must be an empty string or full path name that ends with a '/'. This field
@@ -1100,6 +1105,7 @@ class AwsS3Data {
     this.bucketName,
     this.cloudfrontDomain,
     this.credentialsSecret,
+    this.managedPrivateNetwork,
     this.path,
     this.roleArn,
   });
@@ -1119,6 +1125,9 @@ class AwsS3Data {
           credentialsSecret: json_.containsKey('credentialsSecret')
               ? json_['credentialsSecret'] as core.String
               : null,
+          managedPrivateNetwork: json_.containsKey('managedPrivateNetwork')
+              ? json_['managedPrivateNetwork'] as core.bool
+              : null,
           path: json_.containsKey('path') ? json_['path'] as core.String : null,
           roleArn: json_.containsKey('roleArn')
               ? json_['roleArn'] as core.String
@@ -1130,6 +1139,8 @@ class AwsS3Data {
         if (bucketName != null) 'bucketName': bucketName!,
         if (cloudfrontDomain != null) 'cloudfrontDomain': cloudfrontDomain!,
         if (credentialsSecret != null) 'credentialsSecret': credentialsSecret!,
+        if (managedPrivateNetwork != null)
+          'managedPrivateNetwork': managedPrivateNetwork!,
         if (path != null) 'path': path!,
         if (roleArn != null) 'roleArn': roleArn!,
       };
@@ -1758,6 +1769,8 @@ class MetadataOptions {
   /// transfers.
   ///
   /// If unspecified, the default behavior is the same as TIME_CREATED_SKIP.
+  /// This behavior is supported for transfers to GCS buckets from GCS, S3,
+  /// Azure, S3 Compatible, and Azure sources.
   /// Possible string values are:
   /// - "TIME_CREATED_UNSPECIFIED" : TimeCreated behavior is unspecified.
   /// - "TIME_CREATED_SKIP" : Do not preserve the `timeCreated` metadata from
@@ -2459,8 +2472,6 @@ class TransferJob {
   core.String? name;
 
   /// Notification configuration.
-  ///
-  /// This is not supported for transfers involving PosixFilesystem.
   NotificationConfig? notificationConfig;
 
   /// The ID of the Google Cloud project that owns the job.

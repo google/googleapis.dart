@@ -24,6 +24,59 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
+core.List<api.Condition> buildUnnamed0() => [
+      buildCondition(),
+      buildCondition(),
+    ];
+
+void checkUnnamed0(core.List<api.Condition> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkCondition(o[0]);
+  checkCondition(o[1]);
+}
+
+core.int buildCounterAndCondition = 0;
+api.AndCondition buildAndCondition() {
+  final o = api.AndCondition();
+  buildCounterAndCondition++;
+  if (buildCounterAndCondition < 3) {
+    o.conditions = buildUnnamed0();
+  }
+  buildCounterAndCondition--;
+  return o;
+}
+
+void checkAndCondition(api.AndCondition o) {
+  buildCounterAndCondition++;
+  if (buildCounterAndCondition < 3) {
+    checkUnnamed0(o.conditions!);
+  }
+  buildCounterAndCondition--;
+}
+
+core.int buildCounterCondition = 0;
+api.Condition buildCondition() {
+  final o = api.Condition();
+  buildCounterCondition++;
+  if (buildCounterCondition < 3) {
+    o.andCondition = buildAndCondition();
+    o.orCondition = buildOrCondition();
+    o.percent = buildPercentCondition();
+  }
+  buildCounterCondition--;
+  return o;
+}
+
+void checkCondition(api.Condition o) {
+  buildCounterCondition++;
+  if (buildCounterCondition < 3) {
+    checkAndCondition(o.andCondition!);
+    checkOrCondition(o.orCondition!);
+    checkPercentCondition(o.percent!);
+  }
+  buildCounterCondition--;
+}
+
 core.int buildCounterExperimentDescription = 0;
 api.ExperimentDescription buildExperimentDescription() {
   final o = api.ExperimentDescription();
@@ -71,12 +124,12 @@ void checkExperimentDescription(api.ExperimentDescription o) {
   buildCounterExperimentDescription--;
 }
 
-core.Map<core.String, core.String> buildUnnamed0() => {
+core.Map<core.String, core.String> buildUnnamed1() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed0(core.Map<core.String, core.String> o) {
+void checkUnnamed1(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -93,7 +146,7 @@ api.FetchRemoteConfigRequest buildFetchRemoteConfigRequest() {
   final o = api.FetchRemoteConfigRequest();
   buildCounterFetchRemoteConfigRequest++;
   if (buildCounterFetchRemoteConfigRequest < 3) {
-    o.analyticsUserProperties = buildUnnamed0();
+    o.analyticsUserProperties = buildUnnamed1();
     o.appBuild = 'foo';
     o.appId = 'foo';
     o.appInstanceId = 'foo';
@@ -114,7 +167,7 @@ api.FetchRemoteConfigRequest buildFetchRemoteConfigRequest() {
 void checkFetchRemoteConfigRequest(api.FetchRemoteConfigRequest o) {
   buildCounterFetchRemoteConfigRequest++;
   if (buildCounterFetchRemoteConfigRequest < 3) {
-    checkUnnamed0(o.analyticsUserProperties!);
+    checkUnnamed1(o.analyticsUserProperties!);
     unittest.expect(
       o.appBuild!,
       unittest.equals('foo'),
@@ -167,12 +220,12 @@ void checkFetchRemoteConfigRequest(api.FetchRemoteConfigRequest o) {
   buildCounterFetchRemoteConfigRequest--;
 }
 
-core.Map<core.String, core.String> buildUnnamed1() => {
+core.Map<core.String, core.String> buildUnnamed2() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed1(core.Map<core.String, core.String> o) {
+void checkUnnamed2(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -184,34 +237,34 @@ void checkUnnamed1(core.Map<core.String, core.String> o) {
   );
 }
 
-core.List<api.ExperimentDescription> buildUnnamed2() => [
+core.List<api.ExperimentDescription> buildUnnamed3() => [
       buildExperimentDescription(),
       buildExperimentDescription(),
     ];
 
-void checkUnnamed2(core.List<api.ExperimentDescription> o) {
+void checkUnnamed3(core.List<api.ExperimentDescription> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkExperimentDescription(o[0]);
   checkExperimentDescription(o[1]);
 }
 
-core.Map<core.String, api.PersonalizationMetadata> buildUnnamed3() => {
+core.Map<core.String, api.PersonalizationMetadata> buildUnnamed4() => {
       'x': buildPersonalizationMetadata(),
       'y': buildPersonalizationMetadata(),
     };
 
-void checkUnnamed3(core.Map<core.String, api.PersonalizationMetadata> o) {
+void checkUnnamed4(core.Map<core.String, api.PersonalizationMetadata> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPersonalizationMetadata(o['x']!);
   checkPersonalizationMetadata(o['y']!);
 }
 
-core.List<api.RolloutMetadata> buildUnnamed4() => [
+core.List<api.RolloutMetadata> buildUnnamed5() => [
       buildRolloutMetadata(),
       buildRolloutMetadata(),
     ];
 
-void checkUnnamed4(core.List<api.RolloutMetadata> o) {
+void checkUnnamed5(core.List<api.RolloutMetadata> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRolloutMetadata(o[0]);
   checkRolloutMetadata(o[1]);
@@ -223,10 +276,10 @@ api.FetchRemoteConfigResponse buildFetchRemoteConfigResponse() {
   buildCounterFetchRemoteConfigResponse++;
   if (buildCounterFetchRemoteConfigResponse < 3) {
     o.appName = 'foo';
-    o.entries = buildUnnamed1();
-    o.experimentDescriptions = buildUnnamed2();
-    o.personalizationMetadata = buildUnnamed3();
-    o.rolloutMetadata = buildUnnamed4();
+    o.entries = buildUnnamed2();
+    o.experimentDescriptions = buildUnnamed3();
+    o.personalizationMetadata = buildUnnamed4();
+    o.rolloutMetadata = buildUnnamed5();
     o.state = 'foo';
     o.templateVersion = 'foo';
   }
@@ -241,10 +294,10 @@ void checkFetchRemoteConfigResponse(api.FetchRemoteConfigResponse o) {
       o.appName!,
       unittest.equals('foo'),
     );
-    checkUnnamed1(o.entries!);
-    checkUnnamed2(o.experimentDescriptions!);
-    checkUnnamed3(o.personalizationMetadata!);
-    checkUnnamed4(o.rolloutMetadata!);
+    checkUnnamed2(o.entries!);
+    checkUnnamed3(o.experimentDescriptions!);
+    checkUnnamed4(o.personalizationMetadata!);
+    checkUnnamed5(o.rolloutMetadata!);
     unittest.expect(
       o.state!,
       unittest.equals('foo'),
@@ -257,12 +310,12 @@ void checkFetchRemoteConfigResponse(api.FetchRemoteConfigResponse o) {
   buildCounterFetchRemoteConfigResponse--;
 }
 
-core.List<api.Version> buildUnnamed5() => [
+core.List<api.Version> buildUnnamed6() => [
       buildVersion(),
       buildVersion(),
     ];
 
-void checkUnnamed5(core.List<api.Version> o) {
+void checkUnnamed6(core.List<api.Version> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVersion(o[0]);
   checkVersion(o[1]);
@@ -274,7 +327,7 @@ api.ListVersionsResponse buildListVersionsResponse() {
   buildCounterListVersionsResponse++;
   if (buildCounterListVersionsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.versions = buildUnnamed5();
+    o.versions = buildUnnamed6();
   }
   buildCounterListVersionsResponse--;
   return o;
@@ -287,9 +340,100 @@ void checkListVersionsResponse(api.ListVersionsResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed5(o.versions!);
+    checkUnnamed6(o.versions!);
   }
   buildCounterListVersionsResponse--;
+}
+
+core.int buildCounterMicroPercentRange = 0;
+api.MicroPercentRange buildMicroPercentRange() {
+  final o = api.MicroPercentRange();
+  buildCounterMicroPercentRange++;
+  if (buildCounterMicroPercentRange < 3) {
+    o.microPercentLowerBound = 42;
+    o.microPercentUpperBound = 42;
+  }
+  buildCounterMicroPercentRange--;
+  return o;
+}
+
+void checkMicroPercentRange(api.MicroPercentRange o) {
+  buildCounterMicroPercentRange++;
+  if (buildCounterMicroPercentRange < 3) {
+    unittest.expect(
+      o.microPercentLowerBound!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.microPercentUpperBound!,
+      unittest.equals(42),
+    );
+  }
+  buildCounterMicroPercentRange--;
+}
+
+core.List<api.Condition> buildUnnamed7() => [
+      buildCondition(),
+      buildCondition(),
+    ];
+
+void checkUnnamed7(core.List<api.Condition> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkCondition(o[0]);
+  checkCondition(o[1]);
+}
+
+core.int buildCounterOrCondition = 0;
+api.OrCondition buildOrCondition() {
+  final o = api.OrCondition();
+  buildCounterOrCondition++;
+  if (buildCounterOrCondition < 3) {
+    o.conditions = buildUnnamed7();
+  }
+  buildCounterOrCondition--;
+  return o;
+}
+
+void checkOrCondition(api.OrCondition o) {
+  buildCounterOrCondition++;
+  if (buildCounterOrCondition < 3) {
+    checkUnnamed7(o.conditions!);
+  }
+  buildCounterOrCondition--;
+}
+
+core.int buildCounterPercentCondition = 0;
+api.PercentCondition buildPercentCondition() {
+  final o = api.PercentCondition();
+  buildCounterPercentCondition++;
+  if (buildCounterPercentCondition < 3) {
+    o.microPercent = 42;
+    o.microPercentRange = buildMicroPercentRange();
+    o.percentOperator = 'foo';
+    o.seed = 'foo';
+  }
+  buildCounterPercentCondition--;
+  return o;
+}
+
+void checkPercentCondition(api.PercentCondition o) {
+  buildCounterPercentCondition++;
+  if (buildCounterPercentCondition < 3) {
+    unittest.expect(
+      o.microPercent!,
+      unittest.equals(42),
+    );
+    checkMicroPercentRange(o.microPercentRange!);
+    unittest.expect(
+      o.percentOperator!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.seed!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterPercentCondition--;
 }
 
 core.int buildCounterPersonalizationMetadata = 0;
@@ -351,34 +495,34 @@ void checkPersonalizationValue(api.PersonalizationValue o) {
   buildCounterPersonalizationValue--;
 }
 
-core.List<api.RemoteConfigCondition> buildUnnamed6() => [
+core.List<api.RemoteConfigCondition> buildUnnamed8() => [
       buildRemoteConfigCondition(),
       buildRemoteConfigCondition(),
     ];
 
-void checkUnnamed6(core.List<api.RemoteConfigCondition> o) {
+void checkUnnamed8(core.List<api.RemoteConfigCondition> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRemoteConfigCondition(o[0]);
   checkRemoteConfigCondition(o[1]);
 }
 
-core.Map<core.String, api.RemoteConfigParameterGroup> buildUnnamed7() => {
+core.Map<core.String, api.RemoteConfigParameterGroup> buildUnnamed9() => {
       'x': buildRemoteConfigParameterGroup(),
       'y': buildRemoteConfigParameterGroup(),
     };
 
-void checkUnnamed7(core.Map<core.String, api.RemoteConfigParameterGroup> o) {
+void checkUnnamed9(core.Map<core.String, api.RemoteConfigParameterGroup> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRemoteConfigParameterGroup(o['x']!);
   checkRemoteConfigParameterGroup(o['y']!);
 }
 
-core.Map<core.String, api.RemoteConfigParameter> buildUnnamed8() => {
+core.Map<core.String, api.RemoteConfigParameter> buildUnnamed10() => {
       'x': buildRemoteConfigParameter(),
       'y': buildRemoteConfigParameter(),
     };
 
-void checkUnnamed8(core.Map<core.String, api.RemoteConfigParameter> o) {
+void checkUnnamed10(core.Map<core.String, api.RemoteConfigParameter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRemoteConfigParameter(o['x']!);
   checkRemoteConfigParameter(o['y']!);
@@ -389,9 +533,9 @@ api.RemoteConfig buildRemoteConfig() {
   final o = api.RemoteConfig();
   buildCounterRemoteConfig++;
   if (buildCounterRemoteConfig < 3) {
-    o.conditions = buildUnnamed6();
-    o.parameterGroups = buildUnnamed7();
-    o.parameters = buildUnnamed8();
+    o.conditions = buildUnnamed8();
+    o.parameterGroups = buildUnnamed9();
+    o.parameters = buildUnnamed10();
     o.version = buildVersion();
   }
   buildCounterRemoteConfig--;
@@ -401,9 +545,9 @@ api.RemoteConfig buildRemoteConfig() {
 void checkRemoteConfig(api.RemoteConfig o) {
   buildCounterRemoteConfig++;
   if (buildCounterRemoteConfig < 3) {
-    checkUnnamed6(o.conditions!);
-    checkUnnamed7(o.parameterGroups!);
-    checkUnnamed8(o.parameters!);
+    checkUnnamed8(o.conditions!);
+    checkUnnamed9(o.parameterGroups!);
+    checkUnnamed10(o.parameters!);
     checkVersion(o.version!);
   }
   buildCounterRemoteConfig--;
@@ -441,12 +585,12 @@ void checkRemoteConfigCondition(api.RemoteConfigCondition o) {
   buildCounterRemoteConfigCondition--;
 }
 
-core.Map<core.String, api.RemoteConfigParameterValue> buildUnnamed9() => {
+core.Map<core.String, api.RemoteConfigParameterValue> buildUnnamed11() => {
       'x': buildRemoteConfigParameterValue(),
       'y': buildRemoteConfigParameterValue(),
     };
 
-void checkUnnamed9(core.Map<core.String, api.RemoteConfigParameterValue> o) {
+void checkUnnamed11(core.Map<core.String, api.RemoteConfigParameterValue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRemoteConfigParameterValue(o['x']!);
   checkRemoteConfigParameterValue(o['y']!);
@@ -457,7 +601,7 @@ api.RemoteConfigParameter buildRemoteConfigParameter() {
   final o = api.RemoteConfigParameter();
   buildCounterRemoteConfigParameter++;
   if (buildCounterRemoteConfigParameter < 3) {
-    o.conditionalValues = buildUnnamed9();
+    o.conditionalValues = buildUnnamed11();
     o.defaultValue = buildRemoteConfigParameterValue();
     o.description = 'foo';
     o.valueType = 'foo';
@@ -469,7 +613,7 @@ api.RemoteConfigParameter buildRemoteConfigParameter() {
 void checkRemoteConfigParameter(api.RemoteConfigParameter o) {
   buildCounterRemoteConfigParameter++;
   if (buildCounterRemoteConfigParameter < 3) {
-    checkUnnamed9(o.conditionalValues!);
+    checkUnnamed11(o.conditionalValues!);
     checkRemoteConfigParameterValue(o.defaultValue!);
     unittest.expect(
       o.description!,
@@ -483,12 +627,12 @@ void checkRemoteConfigParameter(api.RemoteConfigParameter o) {
   buildCounterRemoteConfigParameter--;
 }
 
-core.Map<core.String, api.RemoteConfigParameter> buildUnnamed10() => {
+core.Map<core.String, api.RemoteConfigParameter> buildUnnamed12() => {
       'x': buildRemoteConfigParameter(),
       'y': buildRemoteConfigParameter(),
     };
 
-void checkUnnamed10(core.Map<core.String, api.RemoteConfigParameter> o) {
+void checkUnnamed12(core.Map<core.String, api.RemoteConfigParameter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRemoteConfigParameter(o['x']!);
   checkRemoteConfigParameter(o['y']!);
@@ -500,7 +644,7 @@ api.RemoteConfigParameterGroup buildRemoteConfigParameterGroup() {
   buildCounterRemoteConfigParameterGroup++;
   if (buildCounterRemoteConfigParameterGroup < 3) {
     o.description = 'foo';
-    o.parameters = buildUnnamed10();
+    o.parameters = buildUnnamed12();
   }
   buildCounterRemoteConfigParameterGroup--;
   return o;
@@ -513,7 +657,7 @@ void checkRemoteConfigParameterGroup(api.RemoteConfigParameterGroup o) {
       o.description!,
       unittest.equals('foo'),
     );
-    checkUnnamed10(o.parameters!);
+    checkUnnamed12(o.parameters!);
   }
   buildCounterRemoteConfigParameterGroup--;
 }
@@ -524,6 +668,7 @@ api.RemoteConfigParameterValue buildRemoteConfigParameterValue() {
   buildCounterRemoteConfigParameterValue++;
   if (buildCounterRemoteConfigParameterValue < 3) {
     o.personalizationValue = buildPersonalizationValue();
+    o.rolloutValue = buildRolloutValue();
     o.useInAppDefault = true;
     o.value = 'foo';
   }
@@ -535,6 +680,7 @@ void checkRemoteConfigParameterValue(api.RemoteConfigParameterValue o) {
   buildCounterRemoteConfigParameterValue++;
   if (buildCounterRemoteConfigParameterValue < 3) {
     checkPersonalizationValue(o.personalizationValue!);
+    checkRolloutValue(o.rolloutValue!);
     unittest.expect(o.useInAppDefault!, unittest.isTrue);
     unittest.expect(
       o.value!,
@@ -645,12 +791,12 @@ void checkRollbackRemoteConfigRequest(api.RollbackRemoteConfigRequest o) {
   buildCounterRollbackRemoteConfigRequest--;
 }
 
-core.List<core.String> buildUnnamed11() => [
+core.List<core.String> buildUnnamed13() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed11(core.List<core.String> o) {
+void checkUnnamed13(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -667,7 +813,7 @@ api.RolloutMetadata buildRolloutMetadata() {
   final o = api.RolloutMetadata();
   buildCounterRolloutMetadata++;
   if (buildCounterRolloutMetadata < 3) {
-    o.affectedParameterKeys = buildUnnamed11();
+    o.affectedParameterKeys = buildUnnamed13();
     o.rolloutId = 'foo';
     o.variantId = 'foo';
   }
@@ -678,7 +824,7 @@ api.RolloutMetadata buildRolloutMetadata() {
 void checkRolloutMetadata(api.RolloutMetadata o) {
   buildCounterRolloutMetadata++;
   if (buildCounterRolloutMetadata < 3) {
-    checkUnnamed11(o.affectedParameterKeys!);
+    checkUnnamed13(o.affectedParameterKeys!);
     unittest.expect(
       o.rolloutId!,
       unittest.equals('foo'),
@@ -689,6 +835,166 @@ void checkRolloutMetadata(api.RolloutMetadata o) {
     );
   }
   buildCounterRolloutMetadata--;
+}
+
+core.int buildCounterRolloutValue = 0;
+api.RolloutValue buildRolloutValue() {
+  final o = api.RolloutValue();
+  buildCounterRolloutValue++;
+  if (buildCounterRolloutValue < 3) {
+    o.percent = 42.0;
+    o.rolloutId = 'foo';
+    o.value = 'foo';
+  }
+  buildCounterRolloutValue--;
+  return o;
+}
+
+void checkRolloutValue(api.RolloutValue o) {
+  buildCounterRolloutValue++;
+  if (buildCounterRolloutValue < 3) {
+    unittest.expect(
+      o.percent!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.rolloutId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.value!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterRolloutValue--;
+}
+
+core.List<api.ServerRemoteConfigCondition> buildUnnamed14() => [
+      buildServerRemoteConfigCondition(),
+      buildServerRemoteConfigCondition(),
+    ];
+
+void checkUnnamed14(core.List<api.ServerRemoteConfigCondition> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkServerRemoteConfigCondition(o[0]);
+  checkServerRemoteConfigCondition(o[1]);
+}
+
+core.Map<core.String, api.ServerRemoteConfigParameter> buildUnnamed15() => {
+      'x': buildServerRemoteConfigParameter(),
+      'y': buildServerRemoteConfigParameter(),
+    };
+
+void checkUnnamed15(core.Map<core.String, api.ServerRemoteConfigParameter> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkServerRemoteConfigParameter(o['x']!);
+  checkServerRemoteConfigParameter(o['y']!);
+}
+
+core.int buildCounterServerRemoteConfig = 0;
+api.ServerRemoteConfig buildServerRemoteConfig() {
+  final o = api.ServerRemoteConfig();
+  buildCounterServerRemoteConfig++;
+  if (buildCounterServerRemoteConfig < 3) {
+    o.conditions = buildUnnamed14();
+    o.parameters = buildUnnamed15();
+    o.version = buildVersion();
+  }
+  buildCounterServerRemoteConfig--;
+  return o;
+}
+
+void checkServerRemoteConfig(api.ServerRemoteConfig o) {
+  buildCounterServerRemoteConfig++;
+  if (buildCounterServerRemoteConfig < 3) {
+    checkUnnamed14(o.conditions!);
+    checkUnnamed15(o.parameters!);
+    checkVersion(o.version!);
+  }
+  buildCounterServerRemoteConfig--;
+}
+
+core.int buildCounterServerRemoteConfigCondition = 0;
+api.ServerRemoteConfigCondition buildServerRemoteConfigCondition() {
+  final o = api.ServerRemoteConfigCondition();
+  buildCounterServerRemoteConfigCondition++;
+  if (buildCounterServerRemoteConfigCondition < 3) {
+    o.condition = buildCondition();
+    o.name = 'foo';
+  }
+  buildCounterServerRemoteConfigCondition--;
+  return o;
+}
+
+void checkServerRemoteConfigCondition(api.ServerRemoteConfigCondition o) {
+  buildCounterServerRemoteConfigCondition++;
+  if (buildCounterServerRemoteConfigCondition < 3) {
+    checkCondition(o.condition!);
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterServerRemoteConfigCondition--;
+}
+
+core.Map<core.String, api.ServerRemoteConfigParameterValue> buildUnnamed16() =>
+    {
+      'x': buildServerRemoteConfigParameterValue(),
+      'y': buildServerRemoteConfigParameterValue(),
+    };
+
+void checkUnnamed16(
+    core.Map<core.String, api.ServerRemoteConfigParameterValue> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkServerRemoteConfigParameterValue(o['x']!);
+  checkServerRemoteConfigParameterValue(o['y']!);
+}
+
+core.int buildCounterServerRemoteConfigParameter = 0;
+api.ServerRemoteConfigParameter buildServerRemoteConfigParameter() {
+  final o = api.ServerRemoteConfigParameter();
+  buildCounterServerRemoteConfigParameter++;
+  if (buildCounterServerRemoteConfigParameter < 3) {
+    o.conditionalValues = buildUnnamed16();
+    o.defaultValue = buildServerRemoteConfigParameterValue();
+  }
+  buildCounterServerRemoteConfigParameter--;
+  return o;
+}
+
+void checkServerRemoteConfigParameter(api.ServerRemoteConfigParameter o) {
+  buildCounterServerRemoteConfigParameter++;
+  if (buildCounterServerRemoteConfigParameter < 3) {
+    checkUnnamed16(o.conditionalValues!);
+    checkServerRemoteConfigParameterValue(o.defaultValue!);
+  }
+  buildCounterServerRemoteConfigParameter--;
+}
+
+core.int buildCounterServerRemoteConfigParameterValue = 0;
+api.ServerRemoteConfigParameterValue buildServerRemoteConfigParameterValue() {
+  final o = api.ServerRemoteConfigParameterValue();
+  buildCounterServerRemoteConfigParameterValue++;
+  if (buildCounterServerRemoteConfigParameterValue < 3) {
+    o.useInAppDefault = true;
+    o.value = 'foo';
+  }
+  buildCounterServerRemoteConfigParameterValue--;
+  return o;
+}
+
+void checkServerRemoteConfigParameterValue(
+    api.ServerRemoteConfigParameterValue o) {
+  buildCounterServerRemoteConfigParameterValue++;
+  if (buildCounterServerRemoteConfigParameterValue < 3) {
+    unittest.expect(o.useInAppDefault!, unittest.isTrue);
+    unittest.expect(
+      o.value!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterServerRemoteConfigParameterValue--;
 }
 
 core.int buildCounterVersion = 0;
@@ -743,6 +1049,26 @@ void checkVersion(api.Version o) {
 }
 
 void main() {
+  unittest.group('obj-schema-AndCondition', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAndCondition();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AndCondition.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAndCondition(od);
+    });
+  });
+
+  unittest.group('obj-schema-Condition', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCondition();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Condition.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkCondition(od);
+    });
+  });
+
   unittest.group('obj-schema-ExperimentDescription', () {
     unittest.test('to-json--from-json', () async {
       final o = buildExperimentDescription();
@@ -780,6 +1106,36 @@ void main() {
       final od = api.ListVersionsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkListVersionsResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-MicroPercentRange', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMicroPercentRange();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MicroPercentRange.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkMicroPercentRange(od);
+    });
+  });
+
+  unittest.group('obj-schema-OrCondition', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildOrCondition();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrCondition.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkOrCondition(od);
+    });
+  });
+
+  unittest.group('obj-schema-PercentCondition', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPercentCondition();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PercentCondition.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkPercentCondition(od);
     });
   });
 
@@ -889,6 +1245,56 @@ void main() {
       final od = api.RolloutMetadata.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkRolloutMetadata(od);
+    });
+  });
+
+  unittest.group('obj-schema-RolloutValue', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRolloutValue();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RolloutValue.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRolloutValue(od);
+    });
+  });
+
+  unittest.group('obj-schema-ServerRemoteConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildServerRemoteConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ServerRemoteConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkServerRemoteConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-ServerRemoteConfigCondition', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildServerRemoteConfigCondition();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ServerRemoteConfigCondition.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkServerRemoteConfigCondition(od);
+    });
+  });
+
+  unittest.group('obj-schema-ServerRemoteConfigParameter', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildServerRemoteConfigParameter();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ServerRemoteConfigParameter.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkServerRemoteConfigParameter(od);
+    });
+  });
+
+  unittest.group('obj-schema-ServerRemoteConfigParameterValue', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildServerRemoteConfigParameterValue();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ServerRemoteConfigParameterValue.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkServerRemoteConfigParameterValue(od);
     });
   });
 
@@ -1110,6 +1516,59 @@ void main() {
       final response = await res.fetch(arg_request, arg_project, arg_namespace,
           $fields: arg_$fields);
       checkFetchRemoteConfigResponse(response as api.FetchRemoteConfigResponse);
+    });
+
+    unittest.test('method--getServerRemoteConfig', () async {
+      final mock = HttpServerMock();
+      final res = api.FirebaseRemoteConfigApi(mock).projects.namespaces;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildServerRemoteConfig());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.getServerRemoteConfig(arg_name, $fields: arg_$fields);
+      checkServerRemoteConfig(response as api.ServerRemoteConfig);
     });
   });
 

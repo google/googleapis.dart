@@ -4268,6 +4268,21 @@ void checkOneTimeExternalTransaction(api.OneTimeExternalTransaction o) {
   buildCounterOneTimeExternalTransaction--;
 }
 
+core.int buildCounterOtherRecurringProduct = 0;
+api.OtherRecurringProduct buildOtherRecurringProduct() {
+  final o = api.OtherRecurringProduct();
+  buildCounterOtherRecurringProduct++;
+  if (buildCounterOtherRecurringProduct < 3) {}
+  buildCounterOtherRecurringProduct--;
+  return o;
+}
+
+void checkOtherRecurringProduct(api.OtherRecurringProduct o) {
+  buildCounterOtherRecurringProduct++;
+  if (buildCounterOtherRecurringProduct < 3) {}
+  buildCounterOtherRecurringProduct--;
+}
+
 core.int buildCounterOtherRegionsBasePlanConfig = 0;
 api.OtherRegionsBasePlanConfig buildOtherRegionsBasePlanConfig() {
   final o = api.OtherRegionsBasePlanConfig();
@@ -4319,6 +4334,7 @@ api.OtherRegionsSubscriptionOfferPhaseConfig
   buildCounterOtherRegionsSubscriptionOfferPhaseConfig++;
   if (buildCounterOtherRegionsSubscriptionOfferPhaseConfig < 3) {
     o.absoluteDiscounts = buildOtherRegionsSubscriptionOfferPhasePrices();
+    o.free = buildOtherRegionsSubscriptionOfferPhaseFreePriceOverride();
     o.otherRegionsPrices = buildOtherRegionsSubscriptionOfferPhasePrices();
     o.relativeDiscount = 42.0;
   }
@@ -4331,6 +4347,7 @@ void checkOtherRegionsSubscriptionOfferPhaseConfig(
   buildCounterOtherRegionsSubscriptionOfferPhaseConfig++;
   if (buildCounterOtherRegionsSubscriptionOfferPhaseConfig < 3) {
     checkOtherRegionsSubscriptionOfferPhasePrices(o.absoluteDiscounts!);
+    checkOtherRegionsSubscriptionOfferPhaseFreePriceOverride(o.free!);
     checkOtherRegionsSubscriptionOfferPhasePrices(o.otherRegionsPrices!);
     unittest.expect(
       o.relativeDiscount!,
@@ -4338,6 +4355,23 @@ void checkOtherRegionsSubscriptionOfferPhaseConfig(
     );
   }
   buildCounterOtherRegionsSubscriptionOfferPhaseConfig--;
+}
+
+core.int buildCounterOtherRegionsSubscriptionOfferPhaseFreePriceOverride = 0;
+api.OtherRegionsSubscriptionOfferPhaseFreePriceOverride
+    buildOtherRegionsSubscriptionOfferPhaseFreePriceOverride() {
+  final o = api.OtherRegionsSubscriptionOfferPhaseFreePriceOverride();
+  buildCounterOtherRegionsSubscriptionOfferPhaseFreePriceOverride++;
+  if (buildCounterOtherRegionsSubscriptionOfferPhaseFreePriceOverride < 3) {}
+  buildCounterOtherRegionsSubscriptionOfferPhaseFreePriceOverride--;
+  return o;
+}
+
+void checkOtherRegionsSubscriptionOfferPhaseFreePriceOverride(
+    api.OtherRegionsSubscriptionOfferPhaseFreePriceOverride o) {
+  buildCounterOtherRegionsSubscriptionOfferPhaseFreePriceOverride++;
+  if (buildCounterOtherRegionsSubscriptionOfferPhaseFreePriceOverride < 3) {}
+  buildCounterOtherRegionsSubscriptionOfferPhaseFreePriceOverride--;
 }
 
 core.int buildCounterOtherRegionsSubscriptionOfferPhasePrices = 0;
@@ -4642,6 +4676,7 @@ api.RecurringExternalTransaction buildRecurringExternalTransaction() {
     o.externalTransactionToken = 'foo';
     o.initialExternalTransactionId = 'foo';
     o.migratedTransactionProgram = 'foo';
+    o.otherRecurringProduct = buildOtherRecurringProduct();
   }
   buildCounterRecurringExternalTransaction--;
   return o;
@@ -4663,6 +4698,7 @@ void checkRecurringExternalTransaction(api.RecurringExternalTransaction o) {
       o.migratedTransactionProgram!,
       unittest.equals('foo'),
     );
+    checkOtherRecurringProduct(o.otherRecurringProduct!);
   }
   buildCounterRecurringExternalTransaction--;
 }
@@ -4784,6 +4820,7 @@ api.RegionalSubscriptionOfferPhaseConfig
   buildCounterRegionalSubscriptionOfferPhaseConfig++;
   if (buildCounterRegionalSubscriptionOfferPhaseConfig < 3) {
     o.absoluteDiscount = buildMoney();
+    o.free = buildRegionalSubscriptionOfferPhaseFreePriceOverride();
     o.price = buildMoney();
     o.regionCode = 'foo';
     o.relativeDiscount = 42.0;
@@ -4797,6 +4834,7 @@ void checkRegionalSubscriptionOfferPhaseConfig(
   buildCounterRegionalSubscriptionOfferPhaseConfig++;
   if (buildCounterRegionalSubscriptionOfferPhaseConfig < 3) {
     checkMoney(o.absoluteDiscount!);
+    checkRegionalSubscriptionOfferPhaseFreePriceOverride(o.free!);
     checkMoney(o.price!);
     unittest.expect(
       o.regionCode!,
@@ -4808,6 +4846,23 @@ void checkRegionalSubscriptionOfferPhaseConfig(
     );
   }
   buildCounterRegionalSubscriptionOfferPhaseConfig--;
+}
+
+core.int buildCounterRegionalSubscriptionOfferPhaseFreePriceOverride = 0;
+api.RegionalSubscriptionOfferPhaseFreePriceOverride
+    buildRegionalSubscriptionOfferPhaseFreePriceOverride() {
+  final o = api.RegionalSubscriptionOfferPhaseFreePriceOverride();
+  buildCounterRegionalSubscriptionOfferPhaseFreePriceOverride++;
+  if (buildCounterRegionalSubscriptionOfferPhaseFreePriceOverride < 3) {}
+  buildCounterRegionalSubscriptionOfferPhaseFreePriceOverride--;
+  return o;
+}
+
+void checkRegionalSubscriptionOfferPhaseFreePriceOverride(
+    api.RegionalSubscriptionOfferPhaseFreePriceOverride o) {
+  buildCounterRegionalSubscriptionOfferPhaseFreePriceOverride++;
+  if (buildCounterRegionalSubscriptionOfferPhaseFreePriceOverride < 3) {}
+  buildCounterRegionalSubscriptionOfferPhaseFreePriceOverride--;
 }
 
 core.int buildCounterRegionalTaxRateInfo = 0;
@@ -8760,6 +8815,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-OtherRecurringProduct', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildOtherRecurringProduct();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OtherRecurringProduct.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkOtherRecurringProduct(od);
+    });
+  });
+
   unittest.group('obj-schema-OtherRegionsBasePlanConfig', () {
     unittest.test('to-json--from-json', () async {
       final o = buildOtherRegionsBasePlanConfig();
@@ -8787,6 +8852,18 @@ void main() {
       final od = api.OtherRegionsSubscriptionOfferPhaseConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkOtherRegionsSubscriptionOfferPhaseConfig(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-OtherRegionsSubscriptionOfferPhaseFreePriceOverride', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildOtherRegionsSubscriptionOfferPhaseFreePriceOverride();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.OtherRegionsSubscriptionOfferPhaseFreePriceOverride.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkOtherRegionsSubscriptionOfferPhaseFreePriceOverride(od);
     });
   });
 
@@ -8937,6 +9014,17 @@ void main() {
       final od = api.RegionalSubscriptionOfferPhaseConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkRegionalSubscriptionOfferPhaseConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-RegionalSubscriptionOfferPhaseFreePriceOverride',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRegionalSubscriptionOfferPhaseFreePriceOverride();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RegionalSubscriptionOfferPhaseFreePriceOverride.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRegionalSubscriptionOfferPhaseFreePriceOverride(od);
     });
   });
 

@@ -1065,6 +1065,7 @@ api.GoogleCloudRunV2Job buildGoogleCloudRunV2Job() {
     o.observedGeneration = 'foo';
     o.reconciling = true;
     o.satisfiesPzs = true;
+    o.startExecutionToken = 'foo';
     o.template = buildGoogleCloudRunV2ExecutionTemplate();
     o.terminalCondition = buildGoogleCloudRunV2Condition();
     o.uid = 'foo';
@@ -1136,6 +1137,10 @@ void checkGoogleCloudRunV2Job(api.GoogleCloudRunV2Job o) {
     );
     unittest.expect(o.reconciling!, unittest.isTrue);
     unittest.expect(o.satisfiesPzs!, unittest.isTrue);
+    unittest.expect(
+      o.startExecutionToken!,
+      unittest.equals('foo'),
+    );
     checkGoogleCloudRunV2ExecutionTemplate(o.template!);
     checkGoogleCloudRunV2Condition(o.terminalCondition!);
     unittest.expect(
@@ -1432,6 +1437,28 @@ void checkGoogleCloudRunV2NetworkInterface(
   buildCounterGoogleCloudRunV2NetworkInterface--;
 }
 
+core.int buildCounterGoogleCloudRunV2NodeSelector = 0;
+api.GoogleCloudRunV2NodeSelector buildGoogleCloudRunV2NodeSelector() {
+  final o = api.GoogleCloudRunV2NodeSelector();
+  buildCounterGoogleCloudRunV2NodeSelector++;
+  if (buildCounterGoogleCloudRunV2NodeSelector < 3) {
+    o.accelerator = 'foo';
+  }
+  buildCounterGoogleCloudRunV2NodeSelector--;
+  return o;
+}
+
+void checkGoogleCloudRunV2NodeSelector(api.GoogleCloudRunV2NodeSelector o) {
+  buildCounterGoogleCloudRunV2NodeSelector++;
+  if (buildCounterGoogleCloudRunV2NodeSelector < 3) {
+    unittest.expect(
+      o.accelerator!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleCloudRunV2NodeSelector--;
+}
+
 core.List<api.GoogleCloudRunV2ContainerOverride> buildUnnamed25() => [
       buildGoogleCloudRunV2ContainerOverride(),
       buildGoogleCloudRunV2ContainerOverride(),
@@ -1646,6 +1673,7 @@ api.GoogleCloudRunV2Revision buildGoogleCloudRunV2Revision() {
     o.logUri = 'foo';
     o.maxInstanceRequestConcurrency = 42;
     o.name = 'foo';
+    o.nodeSelector = buildGoogleCloudRunV2NodeSelector();
     o.observedGeneration = 'foo';
     o.reconciling = true;
     o.satisfiesPzs = true;
@@ -1723,6 +1751,7 @@ void checkGoogleCloudRunV2Revision(api.GoogleCloudRunV2Revision o) {
       o.name!,
       unittest.equals('foo'),
     );
+    checkGoogleCloudRunV2NodeSelector(o.nodeSelector!);
     unittest.expect(
       o.observedGeneration!,
       unittest.equals('foo'),
@@ -1878,6 +1907,7 @@ api.GoogleCloudRunV2RevisionTemplate buildGoogleCloudRunV2RevisionTemplate() {
     o.healthCheckDisabled = true;
     o.labels = buildUnnamed34();
     o.maxInstanceRequestConcurrency = 42;
+    o.nodeSelector = buildGoogleCloudRunV2NodeSelector();
     o.revision = 'foo';
     o.scaling = buildGoogleCloudRunV2RevisionScaling();
     o.serviceAccount = 'foo';
@@ -1910,6 +1940,7 @@ void checkGoogleCloudRunV2RevisionTemplate(
       o.maxInstanceRequestConcurrency!,
       unittest.equals(42),
     );
+    checkGoogleCloudRunV2NodeSelector(o.nodeSelector!);
     unittest.expect(
       o.revision!,
       unittest.equals('foo'),
@@ -3754,6 +3785,16 @@ void main() {
       final od = api.GoogleCloudRunV2NetworkInterface.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudRunV2NetworkInterface(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleCloudRunV2NodeSelector', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudRunV2NodeSelector();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudRunV2NodeSelector.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudRunV2NodeSelector(od);
     });
   });
 

@@ -7431,6 +7431,7 @@ api.Kpi buildKpi() {
   final o = api.Kpi();
   buildCounterKpi++;
   if (buildCounterKpi < 3) {
+    o.kpiAlgorithmId = 'foo';
     o.kpiAmountMicros = 'foo';
     o.kpiPercentageMicros = 'foo';
     o.kpiString = 'foo';
@@ -7443,6 +7444,10 @@ api.Kpi buildKpi() {
 void checkKpi(api.Kpi o) {
   buildCounterKpi++;
   if (buildCounterKpi < 3) {
+    unittest.expect(
+      o.kpiAlgorithmId!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.kpiAmountMicros!,
       unittest.equals('foo'),

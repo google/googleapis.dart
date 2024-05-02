@@ -9108,7 +9108,7 @@ class GenericClassListResponse {
       };
 }
 
-/// Generic Object Next ID: 121
+/// Generic Object
 class GenericObject {
   /// Information about the partner app link.
   ///

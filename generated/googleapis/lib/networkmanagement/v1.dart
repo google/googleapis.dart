@@ -446,13 +446,13 @@ class ProjectsLocationsGlobalConnectivityTestsResource {
   /// listed projects), then the reachability result returns a value of UNKNOWN.
   /// If the endpoint specifications in `ConnectivityTest` are incomplete, the
   /// reachability result returns a value of `AMBIGUOUS`. See the documentation
-  /// in `ConnectivityTest` for for more details.
+  /// in `ConnectivityTest` for more details.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Unique name of the resource using the form:
+  /// [name] - Identifier. Unique name of the resource using the form:
   /// `projects/{project_id}/locations/global/connectivityTests/{test_id}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/global/connectivityTests/\[^/\]+$`.
@@ -854,6 +854,8 @@ class AbortInfo {
   /// the new tests.
   /// - "UNKNOWN_IP" : Aborted because no endpoint with the packet's destination
   /// IP address is found.
+  /// - "GOOGLE_MANAGED_SERVICE_UNKNOWN_IP" : Aborted because no endpoint with
+  /// the packet's destination IP is found in the Google-managed project.
   /// - "SOURCE_IP_ADDRESS_NOT_IN_SOURCE_NETWORK" : Aborted because the source
   /// IP address doesn't belong to any of the subnets of the source VPC network.
   /// - "PERMISSION_DENIED" : Aborted because user lacks permission to access
@@ -1421,10 +1423,10 @@ class ConnectivityTest {
   /// Resource labels to represent user-provided metadata.
   core.Map<core.String, core.String>? labels;
 
+  /// Identifier.
+  ///
   /// Unique name of the resource using the form:
   /// `projects/{project_id}/locations/global/connectivityTests/{test_id}`
-  ///
-  /// Required.
   core.String? name;
 
   /// The probing details of this test from the latest run, present for
@@ -1743,6 +1745,11 @@ class DropInfo {
   /// connector is set.
   /// - "VPC_CONNECTOR_NOT_RUNNING" : Packet could be dropped because the VPC
   /// connector is not in a running state.
+  /// - "VPC_CONNECTOR_SERVERLESS_TRAFFIC_BLOCKED" : Packet could be dropped
+  /// because the traffic from the serverless service to the VPC connector is
+  /// not allowed.
+  /// - "VPC_CONNECTOR_HEALTH_CHECK_TRAFFIC_BLOCKED" : Packet could be dropped
+  /// because the health check traffic to the VPC connector is not allowed.
   /// - "FORWARDING_RULE_REGION_MISMATCH" : Packet could be dropped because it
   /// was sent from a different region to a regional forwarding without global
   /// access.

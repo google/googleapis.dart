@@ -1230,7 +1230,7 @@ class ProjectsAppsAppAttestConfigResource {
   /// Value must have pattern `^projects/\[^/\]+/apps/\[^/\]+/appAttestConfig$`.
   ///
   /// [updateMask] - Required. A comma-separated list of names of fields in the
-  /// AppAttestConfig Gets to update. Example: `token_ttl`.
+  /// AppAttestConfig to update. Example: `token_ttl`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1634,7 +1634,7 @@ class ProjectsAppsDeviceCheckConfigResource {
   /// `^projects/\[^/\]+/apps/\[^/\]+/deviceCheckConfig$`.
   ///
   /// [updateMask] - Required. A comma-separated list of names of fields in the
-  /// DeviceCheckConfig Gets to update. Example: `key_id,private_key`.
+  /// DeviceCheckConfig to update. Example: `key_id,private_key`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1783,7 +1783,7 @@ class ProjectsAppsPlayIntegrityConfigResource {
   /// `^projects/\[^/\]+/apps/\[^/\]+/playIntegrityConfig$`.
   ///
   /// [updateMask] - Required. A comma-separated list of names of fields in the
-  /// PlayIntegrityConfig Gets to update. Example: `token_ttl`.
+  /// PlayIntegrityConfig to update. Example: `token_ttl`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2412,7 +2412,7 @@ class ProjectsAppsSafetyNetConfigResource {
   /// Value must have pattern `^projects/\[^/\]+/apps/\[^/\]+/safetyNetConfig$`.
   ///
   /// [updateMask] - Required. A comma-separated list of names of fields in the
-  /// SafetyNetConfig Gets to update. Example: `token_ttl`.
+  /// SafetyNetConfig to update. Example: `token_ttl`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2675,10 +2675,10 @@ class ProjectsServicesResourcePoliciesResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent project name and the service, in the
-  /// format ``` projects/{project_number}/services/{service_id} ``` The parent
-  /// collection in the `name` field of any resource being updated must match
-  /// this field, or the entire batch fails.
+  /// [parent] - Required. The parent service name, in the format ```
+  /// projects/{project_number}/services/{service_id} ``` The parent collection
+  /// in the `name` field of any resource being updated must match this field,
+  /// or the entire batch fails.
   /// Value must have pattern `^projects/\[^/\]+/services/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2723,7 +2723,7 @@ class ProjectsServicesResourcePoliciesResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The relative resource name of the parent service in
+  /// [parent] - Required. The relative resource name of the parent Service in
   /// which the specified ResourcePolicy will be created, in the format: ```
   /// projects/{project_number}/services/{service_id} ``` Note that the
   /// `service_id` element must be a supported service ID. Currently, the
@@ -2770,15 +2770,18 @@ class ProjectsServicesResourcePoliciesResource {
   ///
   /// [name] - Required. The relative resource name of the ResourcePolicy to
   /// delete, in the format: ```
-  /// projects/{project_number}/services/{service_id}/resourcePolicies/{resource_name}
+  /// projects/{project_number}/services/{service_id}/resourcePolicies/{resource_policy_id}
   /// ```
   /// Value must have pattern
   /// `^projects/\[^/\]+/services/\[^/\]+/resourcePolicies/\[^/\]+$`.
   ///
   /// [etag] - The checksum to be validated against the current ResourcePolicy,
-  /// to ensure the client has an up-to-date value before proceeding. The user
-  /// can obtain this from the ResourcePolicy object that they last received.
-  /// This etag is strongly validated.
+  /// to ensure the client has an up-to-date value before proceeding. This
+  /// checksum is computed by the server based on the values of fields in the
+  /// ResourcePolicy object, and can be obtained from the ResourcePolicy object
+  /// received from the last CreateResourcePolicy, GetResourcePolicy,
+  /// ListResourcePolicies, UpdateResourcePolicy, or BatchUpdateResourcePolicies
+  /// call. This etag is strongly validated as defined by RFC 7232.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2820,8 +2823,7 @@ class ProjectsServicesResourcePoliciesResource {
   /// projects/{project_number}/services/{service_id}/resourcePolicies/{resource_policy_id}
   /// ``` Note that the `service_id` element must be a supported service ID.
   /// Currently, the following service IDs are supported: *
-  /// `oauth2.googleapis.com` (Google Identity for iOS) `resource_policy_id` is
-  /// a system-generated UID used as the resource ID for the policy.
+  /// `oauth2.googleapis.com` (Google Identity for iOS)
   /// Value must have pattern
   /// `^projects/\[^/\]+/services/\[^/\]+/resourcePolicies/\[^/\]+$`.
   ///
@@ -2859,9 +2861,12 @@ class ProjectsServicesResourcePoliciesResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The relative resource name of the parent project and
-  /// service for which to list each associated ResourcePolicy, in the format:
-  /// ``` projects/{project_number}/services/{service_name} ```
+  /// [parent] - Required. The relative resource name of the parent Service for
+  /// which to list each associated ResourcePolicy, in the format: ```
+  /// projects/{project_number}/services/{service_id} ``` Note that the
+  /// `service_id` element must be a supported service ID. Currently, the
+  /// following service IDs are supported: * `oauth2.googleapis.com` (Google
+  /// Identity for iOS)
   /// Value must have pattern `^projects/\[^/\]+/services/\[^/\]+$`.
   ///
   /// [filter] - Optional. Filters the results by the specified rule. For the
@@ -2875,14 +2880,14 @@ class ProjectsServicesResourcePoliciesResource {
   /// `enforcement_mode = ENFORCED AND target_resource =
   /// "//oauth2.googleapis.com/projects/12345/oauthClients/"`
   ///
-  /// [pageSize] - The maximum number of ResourcePolicys to return in the
-  /// response. Only explicitly configured policies are returned. The server may
-  /// return fewer than this at its own discretion. If no value is specified (or
-  /// too large a value is specified), the server will impose its own limit.
+  /// [pageSize] - The maximum number of ResourcePolicy objects to return in the
+  /// response. The server may return fewer than this at its own discretion. If
+  /// no value is specified (or too large a value is specified), the server will
+  /// impose its own limit.
   ///
   /// [pageToken] - Token returned from a previous call to ListResourcePolicies
-  /// indicating where in the set of ResourcePolicys to resume listing. Provide
-  /// this to retrieve the subsequent page. When paginating, all other
+  /// indicating where in the set of ResourcePolicy objects to resume listing.
+  /// Provide this to retrieve the subsequent page. When paginating, all other
   /// parameters provided to ListResourcePolicies must match the call that
   /// provided the page token; if they do not match, the result is undefined.
   ///
@@ -2929,13 +2934,13 @@ class ProjectsServicesResourcePoliciesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The relative name of the resource configuration object,
-  /// in the format: ```
+  /// [name] - Required. The relative name of the resource policy object, in the
+  /// format: ```
   /// projects/{project_number}/services/{service_id}/resourcePolicies/{resource_policy_id}
   /// ``` Note that the `service_id` element must be a supported service ID.
   /// Currently, the following service IDs are supported: *
   /// `oauth2.googleapis.com` (Google Identity for iOS) `resource_policy_id` is
-  /// a system-generated UID used as the resource ID for the policy.
+  /// a system-generated UID.
   /// Value must have pattern
   /// `^projects/\[^/\]+/services/\[^/\]+/resourcePolicies/\[^/\]+$`.
   ///
@@ -3289,7 +3294,7 @@ class GoogleFirebaseAppcheckV1betaBatchGetSafetyNetConfigsResponse {
 
 /// Request message for the BatchUpdateResourcePolicies method.
 class GoogleFirebaseAppcheckV1betaBatchUpdateResourcePoliciesRequest {
-  /// The request messages specifying the ResourcePolicys to update.
+  /// The request messages specifying the ResourcePolicy objects to update.
   ///
   /// A maximum of 100 objects can be updated in a batch.
   ///
@@ -3457,10 +3462,16 @@ class GoogleFirebaseAppcheckV1betaDebugToken {
   /// Required.
   core.String? token;
 
+  /// Timestamp when this debug token was most recently updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
   GoogleFirebaseAppcheckV1betaDebugToken({
     this.displayName,
     this.name,
     this.token,
+    this.updateTime,
   });
 
   GoogleFirebaseAppcheckV1betaDebugToken.fromJson(core.Map json_)
@@ -3471,12 +3482,16 @@ class GoogleFirebaseAppcheckV1betaDebugToken {
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           token:
               json_.containsKey('token') ? json_['token'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
         if (name != null) 'name': name!,
         if (token != null) 'token': token!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -4171,7 +4186,7 @@ class GoogleFirebaseAppcheckV1betaListResourcePoliciesResponse {
   /// Page tokens are short-lived and should not be persisted.
   core.String? nextPageToken;
 
-  /// The ResourcePolicys retrieved.
+  /// The ResourcePolicy objects retrieved.
   core.List<GoogleFirebaseAppcheckV1betaResourcePolicy>? resourcePolicies;
 
   GoogleFirebaseAppcheckV1betaListResourcePoliciesResponse({
@@ -4559,15 +4574,11 @@ class GoogleFirebaseAppcheckV1betaRecaptchaV3Config {
 /// App Check enforcement policy for a specific resource of a Firebase service
 /// supported by App Check.
 ///
-/// Note that this policy will override the Service level enforcement mode
-/// configuration.
+/// Note that this policy will override the service-level configuration.
 class GoogleFirebaseAppcheckV1betaResourcePolicy {
   /// The App Check enforcement mode for this resource.
   ///
-  /// This will override the EnforcementMode setting on the service. For new
-  /// resources that you are creating, you should consider setting an override
-  /// and enable enforcement on the resource immediately, if there are no
-  /// outdated clients that can use it.
+  /// This will override the EnforcementMode setting on the parent service.
   ///
   /// Required.
   /// Possible string values are:
@@ -4575,10 +4586,6 @@ class GoogleFirebaseAppcheckV1betaResourcePolicy {
   /// Check metrics collected. Though the service is not protected by App Check
   /// in this mode, other applicable protections, such as user authorization,
   /// are still enforced. An unconfigured service is in this mode by default.
-  /// Note that resource policies behave slightly differently as an unconfigured
-  /// resource policy means that the resource will inherit the EnforcementMode
-  /// configured for the service it belongs to and will not be considered as
-  /// being in OFF mode by default.
   /// - "UNENFORCED" : Firebase App Check is not enforced for the service. App
   /// Check metrics are collected to help you decide when to turn on enforcement
   /// for the service. Though the service is not protected by App Check in this
@@ -4614,31 +4621,34 @@ class GoogleFirebaseAppcheckV1betaResourcePolicy {
   /// fields, and may be sent on update and delete requests to ensure the client
   /// has an up-to-date value before proceeding.
   ///
-  /// This etag is strongly validated.
+  /// This etag is strongly validated as defined by RFC 7232.
   core.String? etag;
 
-  /// The relative name of the resource configuration object, in the format: ```
+  /// The relative name of the resource policy object, in the format: ```
   /// projects/{project_number}/services/{service_id}/resourcePolicies/{resource_policy_id}
   /// ``` Note that the `service_id` element must be a supported service ID.
   ///
   /// Currently, the following service IDs are supported: *
   /// `oauth2.googleapis.com` (Google Identity for iOS) `resource_policy_id` is
-  /// a system-generated UID used as the resource ID for the policy.
+  /// a system-generated UID.
   ///
   /// Required.
   core.String? name;
 
   /// Service specific name of the resource object to which this policy applies,
   /// in the format: *
-  /// `//oauth2.googleapis.com/projects/{project}/oauthClients/{oauth_client_id}`
-  /// (Google Identity for iOS) NOTE that the resource must belong to the
+  /// `//oauth2.googleapis.com/projects/{project_number}/oauthClients/{oauth_client_id}`
+  /// (Google Identity for iOS) Note that the resource must belong to the
   /// service specified in the `name` and be from the same project as this
-  /// policy, but it may or may not exist at the time of creation of the policy.
+  /// policy, but the resource is allowed to be missing at the time of creation
+  /// of this policy; in that case, we make a best-effort attempt at respecting
+  /// this policy, but it may not have any effect until the resource is fully
+  /// created.
   ///
   /// Required.
   core.String? targetResource;
 
-  /// Timestamp when this service configuration object was most recently
+  /// Timestamp when this resource policy configuration object was most recently
   /// updated.
   ///
   /// Output only.
@@ -4727,10 +4737,6 @@ class GoogleFirebaseAppcheckV1betaService {
   /// Check metrics collected. Though the service is not protected by App Check
   /// in this mode, other applicable protections, such as user authorization,
   /// are still enforced. An unconfigured service is in this mode by default.
-  /// Note that resource policies behave slightly differently as an unconfigured
-  /// resource policy means that the resource will inherit the EnforcementMode
-  /// configured for the service it belongs to and will not be considered as
-  /// being in OFF mode by default.
   /// - "UNENFORCED" : Firebase App Check is not enforced for the service. App
   /// Check metrics are collected to help you decide when to turn on enforcement
   /// for the service. Though the service is not protected by App Check in this
@@ -4823,13 +4829,10 @@ class GoogleFirebaseAppcheckV1betaUpdateResourcePolicyRequest {
   ///
   /// The ResourcePolicy's `name` field is used to identify the ResourcePolicy
   /// to be updated, in the format: ```
-  /// projects/{project_number}/services/{service_id}/resourcePolicies/{resource_name}
+  /// projects/{project_number}/services/{service_id}/resourcePolicies/{resource_policy_id}
   /// ``` Note that the `service_id` element must be a supported service ID.
   /// Currently, the following service IDs are supported: *
-  /// `oauth2.googleapis.com` (Google Identity for iOS) Only the top-level
-  /// resources are supported for each of the services. The resources must
-  /// belong to the service specified and `resource_name` should be formatted
-  /// as: * `oauthClients/{oauth_client_id}` (Google Identity for iOS)
+  /// `oauth2.googleapis.com` (Google Identity for iOS)
   ///
   /// Required.
   GoogleFirebaseAppcheckV1betaResourcePolicy? resourcePolicy;

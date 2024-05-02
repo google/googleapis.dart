@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240320",
+    "revision": "20240504",
     "rootUrl": "https://blockchainnodeengine.googleapis.com/",
     "servicePath": "",
     "title": "Blockchain Node Engine API",
@@ -549,7 +549,8 @@
                         "ERROR",
                         "UPDATING",
                         "REPAIRING",
-                        "RECONCILING"
+                        "RECONCILING",
+                        "SYNCING"
                     ],
                     "enumDescriptions": [
                         "The state has not been specified.",
@@ -559,7 +560,8 @@
                         "The node is in an unexpected or errored state.",
                         "The node is currently being updated.",
                         "The node is currently being repaired.",
-                        "The node is currently being reconciled."
+                        "The node is currently being reconciled.",
+                        "The node is syncing, which is the process by which it obtains the latest block and current global state."
                     ],
                     "readOnly": true,
                     "type": "string"
@@ -686,7 +688,7 @@
                     "enumDescriptions": [
                         "The network has not been specified, but should be.",
                         "The Ethereum Mainnet.",
-                        "Deprecated: The Ethereum Testnet based on Goerli protocol. Holesky (TESTNET_HOLESKY) is the recommended testnet to replace Goerli.",
+                        "Deprecated: The Ethereum Testnet based on Goerli protocol. Please use another test network.",
                         "The Ethereum Testnet based on Sepolia/Bepolia protocol. See https://github.com/eth-clients/sepolia.",
                         "The Ethereum Testnet based on Holesky specification. See https://github.com/eth-clients/holesky."
                     ],

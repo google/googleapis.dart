@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240322",
+    "revision": "20240426",
     "rootUrl": "https://eventarc.googleapis.com/",
     "servicePath": "",
     "title": "Eventarc API",
@@ -1304,6 +1304,11 @@
                     "readOnly": true,
                     "type": "string"
                 },
+                "satisfiesPzs": {
+                    "description": "Output only. Whether or not this Channel satisfies the requirements of physical zone separation",
+                    "readOnly": true,
+                    "type": "boolean"
+                },
                 "state": {
                     "description": "Output only. The state of a Channel.",
                     "enum": [
@@ -2110,6 +2115,11 @@
                 "name": {
                     "description": "Required. The resource name of the trigger. Must be unique within the location of the project and must be in `projects/{project}/locations/{location}/triggers/{trigger}` format.",
                     "type": "string"
+                },
+                "satisfiesPzs": {
+                    "description": "Output only. Whether or not this Trigger satisfies the requirements of physical zone separation",
+                    "readOnly": true,
+                    "type": "boolean"
                 },
                 "serviceAccount": {
                     "description": "Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The `iam.serviceAccounts.actAs` permission must be granted on the service account to allow a principal to impersonate the service account. For more information, see the [Roles and permissions](/eventarc/docs/all-roles-permissions) page specific to the trigger destination.",

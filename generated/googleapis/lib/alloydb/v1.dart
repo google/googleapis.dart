@@ -2687,6 +2687,17 @@ class Cluster {
   /// Labels as key value pairs
   core.Map<core.String, core.String>? labels;
 
+  /// The maintenance schedule for the cluster, generated for a specific rollout
+  /// if a maintenance window is set.
+  ///
+  /// Output only.
+  MaintenanceSchedule? maintenanceSchedule;
+
+  /// The maintenance update policy determines when to allow or deny updates.
+  ///
+  /// Optional.
+  MaintenanceUpdatePolicy? maintenanceUpdatePolicy;
+
   /// Cluster created via DMS migration.
   ///
   /// Output only.
@@ -2722,6 +2733,11 @@ class Cluster {
   ///
   /// Output only.
   PrimaryConfig? primaryConfig;
+
+  /// The configuration for Private Service Connect (PSC) for the cluster.
+  ///
+  /// Optional.
+  PscConfig? pscConfig;
 
   /// Reconciling (https://google.aip.dev/128#reconciliation).
   ///
@@ -2801,11 +2817,14 @@ class Cluster {
     this.etag,
     this.initialUser,
     this.labels,
+    this.maintenanceSchedule,
+    this.maintenanceUpdatePolicy,
     this.migrationSource,
     this.name,
     this.network,
     this.networkConfig,
     this.primaryConfig,
+    this.pscConfig,
     this.reconciling,
     this.satisfiesPzs,
     this.secondaryConfig,
@@ -2878,6 +2897,15 @@ class Cluster {
                   ),
                 )
               : null,
+          maintenanceSchedule: json_.containsKey('maintenanceSchedule')
+              ? MaintenanceSchedule.fromJson(json_['maintenanceSchedule']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          maintenanceUpdatePolicy: json_.containsKey('maintenanceUpdatePolicy')
+              ? MaintenanceUpdatePolicy.fromJson(
+                  json_['maintenanceUpdatePolicy']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           migrationSource: json_.containsKey('migrationSource')
               ? MigrationSource.fromJson(json_['migrationSource']
                   as core.Map<core.String, core.dynamic>)
@@ -2893,6 +2921,10 @@ class Cluster {
           primaryConfig: json_.containsKey('primaryConfig')
               ? PrimaryConfig.fromJson(
                   json_['primaryConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          pscConfig: json_.containsKey('pscConfig')
+              ? PscConfig.fromJson(
+                  json_['pscConfig'] as core.Map<core.String, core.dynamic>)
               : null,
           reconciling: json_.containsKey('reconciling')
               ? json_['reconciling'] as core.bool
@@ -2935,11 +2967,16 @@ class Cluster {
         if (etag != null) 'etag': etag!,
         if (initialUser != null) 'initialUser': initialUser!,
         if (labels != null) 'labels': labels!,
+        if (maintenanceSchedule != null)
+          'maintenanceSchedule': maintenanceSchedule!,
+        if (maintenanceUpdatePolicy != null)
+          'maintenanceUpdatePolicy': maintenanceUpdatePolicy!,
         if (migrationSource != null) 'migrationSource': migrationSource!,
         if (name != null) 'name': name!,
         if (network != null) 'network': network!,
         if (networkConfig != null) 'networkConfig': networkConfig!,
         if (primaryConfig != null) 'primaryConfig': primaryConfig!,
+        if (pscConfig != null) 'pscConfig': pscConfig!,
         if (reconciling != null) 'reconciling': reconciling!,
         if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (secondaryConfig != null) 'secondaryConfig': secondaryConfig!,
@@ -3481,6 +3518,11 @@ class Instance {
   /// Output only.
   core.List<Node>? nodes;
 
+  /// The configuration for Private Service Connect (PSC) for the instance.
+  ///
+  /// Optional.
+  PscInstanceConfig? pscInstanceConfig;
+
   /// The public IP addresses for the Instance.
   ///
   /// This is available ONLY when enable_public_ip is set. This is the
@@ -3569,6 +3611,7 @@ class Instance {
     this.name,
     this.networkConfig,
     this.nodes,
+    this.pscInstanceConfig,
     this.publicIpAddress,
     this.queryInsightsConfig,
     this.readPoolConfig,
@@ -3649,6 +3692,10 @@ class Instance {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          pscInstanceConfig: json_.containsKey('pscInstanceConfig')
+              ? PscInstanceConfig.fromJson(json_['pscInstanceConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           publicIpAddress: json_.containsKey('publicIpAddress')
               ? json_['publicIpAddress'] as core.String
               : null,
@@ -3697,6 +3744,7 @@ class Instance {
         if (name != null) 'name': name!,
         if (networkConfig != null) 'networkConfig': networkConfig!,
         if (nodes != null) 'nodes': nodes!,
+        if (pscInstanceConfig != null) 'pscInstanceConfig': pscInstanceConfig!,
         if (publicIpAddress != null) 'publicIpAddress': publicIpAddress!,
         if (queryInsightsConfig != null)
           'queryInsightsConfig': queryInsightsConfig!,
@@ -4013,6 +4061,100 @@ class ListUsersResponse {
 /// MachineConfig describes the configuration of a machine.
 typedef MachineConfig = $MachineConfig;
 
+/// MaintenanceSchedule stores the maintenance schedule generated from the
+/// MaintenanceUpdatePolicy, once a maintenance rollout is triggered, if
+/// MaintenanceWindow is set, and if there is no conflicting DenyPeriod.
+///
+/// The schedule is cleared once the update takes place. This field cannot be
+/// manually changed; modify the MaintenanceUpdatePolicy instead.
+class MaintenanceSchedule {
+  /// The scheduled start time for the maintenance.
+  ///
+  /// Output only.
+  core.String? startTime;
+
+  MaintenanceSchedule({
+    this.startTime,
+  });
+
+  MaintenanceSchedule.fromJson(core.Map json_)
+      : this(
+          startTime: json_.containsKey('startTime')
+              ? json_['startTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (startTime != null) 'startTime': startTime!,
+      };
+}
+
+/// MaintenanceUpdatePolicy defines the policy for system updates.
+class MaintenanceUpdatePolicy {
+  /// Preferred windows to perform maintenance.
+  ///
+  /// Currently limited to 1.
+  core.List<MaintenanceWindow>? maintenanceWindows;
+
+  MaintenanceUpdatePolicy({
+    this.maintenanceWindows,
+  });
+
+  MaintenanceUpdatePolicy.fromJson(core.Map json_)
+      : this(
+          maintenanceWindows: json_.containsKey('maintenanceWindows')
+              ? (json_['maintenanceWindows'] as core.List)
+                  .map((value) => MaintenanceWindow.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (maintenanceWindows != null)
+          'maintenanceWindows': maintenanceWindows!,
+      };
+}
+
+/// MaintenanceWindow specifies a preferred day and time for maintenance.
+class MaintenanceWindow {
+  /// Preferred day of the week for maintenance, e.g. MONDAY, TUESDAY, etc.
+  /// Possible string values are:
+  /// - "DAY_OF_WEEK_UNSPECIFIED" : The day of the week is unspecified.
+  /// - "MONDAY" : Monday
+  /// - "TUESDAY" : Tuesday
+  /// - "WEDNESDAY" : Wednesday
+  /// - "THURSDAY" : Thursday
+  /// - "FRIDAY" : Friday
+  /// - "SATURDAY" : Saturday
+  /// - "SUNDAY" : Sunday
+  core.String? day;
+
+  /// Preferred time to start the maintenance operation on the specified day.
+  ///
+  /// Maintenance will start within 1 hour of this time.
+  GoogleTypeTimeOfDay? startTime;
+
+  MaintenanceWindow({
+    this.day,
+    this.startTime,
+  });
+
+  MaintenanceWindow.fromJson(core.Map json_)
+      : this(
+          day: json_.containsKey('day') ? json_['day'] as core.String : null,
+          startTime: json_.containsKey('startTime')
+              ? GoogleTypeTimeOfDay.fromJson(
+                  json_['startTime'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (day != null) 'day': day!,
+        if (startTime != null) 'startTime': startTime!,
+      };
+}
+
 /// Subset of the source instance configuration that is available when reading
 /// the cluster resource.
 class MigrationSource {
@@ -4312,6 +4454,84 @@ class PromoteClusterRequest {
         if (etag != null) 'etag': etag!,
         if (requestId != null) 'requestId': requestId!,
         if (validateOnly != null) 'validateOnly': validateOnly!,
+      };
+}
+
+/// PscConfig contains PSC related configuration at a cluster level.
+class PscConfig {
+  /// Create an instance that allows connections from Private Service Connect
+  /// endpoints to the instance.
+  ///
+  /// Optional.
+  core.bool? pscEnabled;
+
+  PscConfig({
+    this.pscEnabled,
+  });
+
+  PscConfig.fromJson(core.Map json_)
+      : this(
+          pscEnabled: json_.containsKey('pscEnabled')
+              ? json_['pscEnabled'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (pscEnabled != null) 'pscEnabled': pscEnabled!,
+      };
+}
+
+/// PscInstanceConfig contains PSC related configuration at an instance level.
+class PscInstanceConfig {
+  /// List of consumer projects that are allowed to create PSC endpoints to
+  /// service-attachments to this instance.
+  ///
+  /// Optional.
+  core.List<core.String>? allowedConsumerProjects;
+
+  /// The DNS name of the instance for PSC connectivity.
+  ///
+  /// Name convention: ...alloydb-psc.goog
+  ///
+  /// Output only.
+  core.String? pscDnsName;
+
+  /// The service attachment created when Private Service Connect (PSC) is
+  /// enabled for the instance.
+  ///
+  /// The name of the resource will be in the format of
+  /// `projects//regions//serviceAttachments/`
+  ///
+  /// Output only.
+  core.String? serviceAttachmentLink;
+
+  PscInstanceConfig({
+    this.allowedConsumerProjects,
+    this.pscDnsName,
+    this.serviceAttachmentLink,
+  });
+
+  PscInstanceConfig.fromJson(core.Map json_)
+      : this(
+          allowedConsumerProjects: json_.containsKey('allowedConsumerProjects')
+              ? (json_['allowedConsumerProjects'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          pscDnsName: json_.containsKey('pscDnsName')
+              ? json_['pscDnsName'] as core.String
+              : null,
+          serviceAttachmentLink: json_.containsKey('serviceAttachmentLink')
+              ? json_['serviceAttachmentLink'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (allowedConsumerProjects != null)
+          'allowedConsumerProjects': allowedConsumerProjects!,
+        if (pscDnsName != null) 'pscDnsName': pscDnsName!,
+        if (serviceAttachmentLink != null)
+          'serviceAttachmentLink': serviceAttachmentLink!,
       };
 }
 

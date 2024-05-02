@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240401",
+    "revision": "20240419",
     "rootUrl": "https://vault.googleapis.com/",
     "servicePath": "",
     "title": "Google Vault API",

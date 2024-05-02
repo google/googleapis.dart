@@ -9800,6 +9800,34 @@ class AccessReview {
       };
 }
 
+/// Information about
+/// [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/cloud-armor-overview#google-cloud-armor-adaptive-protection).
+class AdaptiveProtection {
+  /// A score of 0 means that there is low confidence that the detected event is
+  /// an actual attack.
+  ///
+  /// A score of 1 means that there is high confidence that the detected event
+  /// is an attack. See the
+  /// [Adaptive Protection documentation](https://cloud.google.com/armor/docs/adaptive-protection-overview#configure-alert-tuning)
+  /// for further explanation.
+  core.double? confidence;
+
+  AdaptiveProtection({
+    this.confidence,
+  });
+
+  AdaptiveProtection.fromJson(core.Map json_)
+      : this(
+          confidence: json_.containsKey('confidence')
+              ? (json_['confidence'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (confidence != null) 'confidence': confidence!,
+      };
+}
+
 /// Represents an application associated with a finding.
 class Application {
   /// The base URI that identifies the network location of the application in
@@ -9994,6 +10022,43 @@ class AssetDiscoveryConfig {
         if (folderIds != null) 'folderIds': folderIds!,
         if (inclusionMode != null) 'inclusionMode': inclusionMode!,
         if (projectIds != null) 'projectIds': projectIds!,
+      };
+}
+
+/// Information about DDoS attack volume and classification.
+class Attack {
+  /// Type of attack, for example, 'SYN-flood', 'NTP-udp', or 'CHARGEN-udp'.
+  core.String? classification;
+
+  /// Total BPS (bytes per second) volume of attack.
+  core.int? volumeBps;
+
+  /// Total PPS (packets per second) volume of attack.
+  core.int? volumePps;
+
+  Attack({
+    this.classification,
+    this.volumeBps,
+    this.volumePps,
+  });
+
+  Attack.fromJson(core.Map json_)
+      : this(
+          classification: json_.containsKey('classification')
+              ? json_['classification'] as core.String
+              : null,
+          volumeBps: json_.containsKey('volumeBps')
+              ? json_['volumeBps'] as core.int
+              : null,
+          volumePps: json_.containsKey('volumePps')
+              ? json_['volumePps'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (classification != null) 'classification': classification!,
+        if (volumeBps != null) 'volumeBps': volumeBps!,
+        if (volumePps != null) 'volumePps': volumePps!,
       };
 }
 
@@ -10352,6 +10417,135 @@ class AuditConfig {
 /// exempting jose@example.com from DATA_READ logging.
 typedef AuditLogConfig = $AuditLogConfig;
 
+/// An AWS account that is a member of an organization.
+class AwsAccount {
+  /// The unique identifier (ID) of the account, containing exactly 12 digits.
+  core.String? id;
+
+  /// The friendly name of this account.
+  core.String? name;
+
+  AwsAccount({
+    this.id,
+    this.name,
+  });
+
+  AwsAccount.fromJson(core.Map json_)
+      : this(
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (id != null) 'id': id!,
+        if (name != null) 'name': name!,
+      };
+}
+
+/// AWS metadata associated with the resource, only applicable if the finding's
+/// cloud provider is Amazon Web Services.
+class AwsMetadata {
+  /// The AWS account associated with the resource.
+  AwsAccount? account;
+
+  /// The AWS organization associated with the resource.
+  AwsOrganization? organization;
+
+  /// A list of AWS organizational units associated with the resource, ordered
+  /// from lowest level (closest to the account) to highest level.
+  core.List<AwsOrganizationalUnit>? organizationalUnits;
+
+  AwsMetadata({
+    this.account,
+    this.organization,
+    this.organizationalUnits,
+  });
+
+  AwsMetadata.fromJson(core.Map json_)
+      : this(
+          account: json_.containsKey('account')
+              ? AwsAccount.fromJson(
+                  json_['account'] as core.Map<core.String, core.dynamic>)
+              : null,
+          organization: json_.containsKey('organization')
+              ? AwsOrganization.fromJson(
+                  json_['organization'] as core.Map<core.String, core.dynamic>)
+              : null,
+          organizationalUnits: json_.containsKey('organizationalUnits')
+              ? (json_['organizationalUnits'] as core.List)
+                  .map((value) => AwsOrganizationalUnit.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (account != null) 'account': account!,
+        if (organization != null) 'organization': organization!,
+        if (organizationalUnits != null)
+          'organizationalUnits': organizationalUnits!,
+      };
+}
+
+/// An organization is a collection of accounts that are centrally managed
+/// together using consolidated billing, organized hierarchically with
+/// organizational units (OUs), and controlled with policies.
+class AwsOrganization {
+  /// The unique identifier (ID) for the organization.
+  ///
+  /// The regex pattern for an organization ID string requires "o-" followed by
+  /// from 10 to 32 lowercase letters or digits.
+  core.String? id;
+
+  AwsOrganization({
+    this.id,
+  });
+
+  AwsOrganization.fromJson(core.Map json_)
+      : this(
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (id != null) 'id': id!,
+      };
+}
+
+/// An Organizational Unit (OU) is a container of AWS accounts within a root of
+/// an organization.
+///
+/// Policies that are attached to an OU apply to all accounts contained in that
+/// OU and in any child OUs.
+class AwsOrganizationalUnit {
+  /// The unique identifier (ID) associated with this OU.
+  ///
+  /// The regex pattern for an organizational unit ID string requires "ou-"
+  /// followed by from 4 to 32 lowercase letters or digits (the ID of the root
+  /// that contains the OU). This string is followed by a second "-" dash and
+  /// from 8 to 32 additional lowercase letters or digits. For example,
+  /// "ou-ab12-cd34ef56".
+  core.String? id;
+
+  /// The friendly name of the OU.
+  core.String? name;
+
+  AwsOrganizationalUnit({
+    this.id,
+    this.name,
+  });
+
+  AwsOrganizationalUnit.fromJson(core.Map json_)
+      : this(
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (id != null) 'id': id!,
+        if (name != null) 'name': name!,
+      };
+}
+
 /// Information related to Google Cloud Backup and DR Service findings.
 class BackupDisasterRecovery {
   /// The name of the Backup and DR appliance that captures, moves, and manages
@@ -10693,6 +10887,81 @@ class BulkMuteFindingsRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (filter != null) 'filter': filter!,
         if (muteAnnotation != null) 'muteAnnotation': muteAnnotation!,
+      };
+}
+
+/// Fields related to Google Cloud Armor findings.
+class CloudArmor {
+  /// Information about potential Layer 7 DDoS attacks identified by
+  /// [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview).
+  AdaptiveProtection? adaptiveProtection;
+
+  /// Information about DDoS attack volume and classification.
+  Attack? attack;
+
+  /// Duration of attack from the start until the current moment (updated every
+  /// 5 minutes).
+  core.String? duration;
+
+  /// Information about incoming requests evaluated by
+  /// [Google Cloud Armor security policies](https://cloud.google.com/armor/docs/security-policy-overview).
+  Requests? requests;
+
+  /// Information about the
+  /// [Google Cloud Armor security policy](https://cloud.google.com/armor/docs/security-policy-overview)
+  /// relevant to the finding.
+  SecurityPolicy? securityPolicy;
+
+  /// Distinguish between volumetric & protocol DDoS attack and application
+  /// layer attacks.
+  ///
+  /// For example, "L3_4" for Layer 3 and Layer 4 DDoS attacks, or "L_7" for
+  /// Layer 7 DDoS attacks.
+  core.String? threatVector;
+
+  CloudArmor({
+    this.adaptiveProtection,
+    this.attack,
+    this.duration,
+    this.requests,
+    this.securityPolicy,
+    this.threatVector,
+  });
+
+  CloudArmor.fromJson(core.Map json_)
+      : this(
+          adaptiveProtection: json_.containsKey('adaptiveProtection')
+              ? AdaptiveProtection.fromJson(json_['adaptiveProtection']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          attack: json_.containsKey('attack')
+              ? Attack.fromJson(
+                  json_['attack'] as core.Map<core.String, core.dynamic>)
+              : null,
+          duration: json_.containsKey('duration')
+              ? json_['duration'] as core.String
+              : null,
+          requests: json_.containsKey('requests')
+              ? Requests.fromJson(
+                  json_['requests'] as core.Map<core.String, core.dynamic>)
+              : null,
+          securityPolicy: json_.containsKey('securityPolicy')
+              ? SecurityPolicy.fromJson(json_['securityPolicy']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          threatVector: json_.containsKey('threatVector')
+              ? json_['threatVector'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (adaptiveProtection != null)
+          'adaptiveProtection': adaptiveProtection!,
+        if (attack != null) 'attack': attack!,
+        if (duration != null) 'duration': duration!,
+        if (requests != null) 'requests': requests!,
+        if (securityPolicy != null) 'securityPolicy': securityPolicy!,
+        if (threatVector != null) 'threatVector': threatVector!,
       };
 }
 
@@ -12047,6 +12316,9 @@ class Finding {
   /// "XSS_FLASH_INJECTION"
   core.String? category;
 
+  /// Fields related to Cloud Armor findings.
+  CloudArmor? cloudArmor;
+
   /// Cloud DLP data profile that is associated with the finding.
   CloudDlpDataProfile? cloudDlpDataProfile;
 
@@ -12202,6 +12474,9 @@ class Finding {
   /// Steps to address the finding.
   core.String? nextSteps;
 
+  /// Notebook associated with the finding.
+  Notebook? notebook;
+
   /// Contains information about the org policies associated with the finding.
   core.List<OrgPolicy>? orgPolicies;
 
@@ -12318,6 +12593,7 @@ class Finding {
     this.backupDisasterRecovery,
     this.canonicalName,
     this.category,
+    this.cloudArmor,
     this.cloudDlpDataProfile,
     this.cloudDlpInspection,
     this.compliances,
@@ -12346,6 +12622,7 @@ class Finding {
     this.muteUpdateTime,
     this.name,
     this.nextSteps,
+    this.notebook,
     this.orgPolicies,
     this.parent,
     this.parentDisplayName,
@@ -12382,6 +12659,10 @@ class Finding {
               : null,
           category: json_.containsKey('category')
               ? json_['category'] as core.String
+              : null,
+          cloudArmor: json_.containsKey('cloudArmor')
+              ? CloudArmor.fromJson(
+                  json_['cloudArmor'] as core.Map<core.String, core.dynamic>)
               : null,
           cloudDlpDataProfile: json_.containsKey('cloudDlpDataProfile')
               ? CloudDlpDataProfile.fromJson(json_['cloudDlpDataProfile']
@@ -12506,6 +12787,10 @@ class Finding {
           nextSteps: json_.containsKey('nextSteps')
               ? json_['nextSteps'] as core.String
               : null,
+          notebook: json_.containsKey('notebook')
+              ? Notebook.fromJson(
+                  json_['notebook'] as core.Map<core.String, core.dynamic>)
+              : null,
           orgPolicies: json_.containsKey('orgPolicies')
               ? (json_['orgPolicies'] as core.List)
                   .map((value) => OrgPolicy.fromJson(
@@ -12557,6 +12842,7 @@ class Finding {
           'backupDisasterRecovery': backupDisasterRecovery!,
         if (canonicalName != null) 'canonicalName': canonicalName!,
         if (category != null) 'category': category!,
+        if (cloudArmor != null) 'cloudArmor': cloudArmor!,
         if (cloudDlpDataProfile != null)
           'cloudDlpDataProfile': cloudDlpDataProfile!,
         if (cloudDlpInspection != null)
@@ -12587,6 +12873,7 @@ class Finding {
         if (muteUpdateTime != null) 'muteUpdateTime': muteUpdateTime!,
         if (name != null) 'name': name!,
         if (nextSteps != null) 'nextSteps': nextSteps!,
+        if (notebook != null) 'notebook': notebook!,
         if (orgPolicies != null) 'orgPolicies': orgPolicies!,
         if (parent != null) 'parent': parent!,
         if (parentDisplayName != null) 'parentDisplayName': parentDisplayName!,
@@ -12681,7 +12968,7 @@ class GetIamPolicyRequest {
 }
 
 /// Encapsulates settings provided to GetIamPolicy.
-typedef GetPolicyOptions = $GetPolicyOptions;
+typedef GetPolicyOptions = $GetPolicyOptions00;
 
 /// Configures how to deliver Findings to BigQuery Instance.
 class GoogleCloudSecuritycenterV1BigQueryExport {
@@ -13318,6 +13605,14 @@ class GoogleCloudSecuritycenterV1ResourceSelector {
 ///
 /// Used in Attack path simulations.
 class GoogleCloudSecuritycenterV1ResourceValueConfig {
+  /// Cloud provider this configuration applies to
+  /// Possible string values are:
+  /// - "CLOUD_PROVIDER_UNSPECIFIED" : The cloud provider is unspecified.
+  /// - "GOOGLE_CLOUD_PLATFORM" : The cloud provider is Google Cloud Platform.
+  /// - "AMAZON_WEB_SERVICES" : The cloud provider is Amazon Web Services.
+  /// - "MICROSOFT_AZURE" : The cloud provider is Microsoft Azure.
+  core.String? cloudProvider;
+
   /// Timestamp this resource value config was created.
   ///
   /// Output only.
@@ -13383,6 +13678,7 @@ class GoogleCloudSecuritycenterV1ResourceValueConfig {
   core.String? updateTime;
 
   GoogleCloudSecuritycenterV1ResourceValueConfig({
+    this.cloudProvider,
     this.createTime,
     this.description,
     this.name,
@@ -13397,6 +13693,9 @@ class GoogleCloudSecuritycenterV1ResourceValueConfig {
 
   GoogleCloudSecuritycenterV1ResourceValueConfig.fromJson(core.Map json_)
       : this(
+          cloudProvider: json_.containsKey('cloudProvider')
+              ? json_['cloudProvider'] as core.String
+              : null,
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
               : null,
@@ -13439,6 +13738,7 @@ class GoogleCloudSecuritycenterV1ResourceValueConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (cloudProvider != null) 'cloudProvider': cloudProvider!,
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
         if (name != null) 'name': name!,
@@ -13861,9 +14161,8 @@ class GroupFindingsRequest {
   /// `state_change`).
   ///
   /// The string value should follow SQL syntax: comma separated list of fields.
-  /// For example: "parent,resource_name". The following fields are supported: *
-  /// resource_name * category * state * parent * severity The following fields
-  /// are supported when compare_duration is set: * state_change
+  /// For example: "parent,resource_name". The following fields are supported
+  /// when compare_duration is set: * state_change
   ///
   /// Required.
   core.String? groupBy;
@@ -15304,6 +15603,52 @@ class NodePool {
       };
 }
 
+/// Represents a Jupyter notebook IPYNB file, such as a
+/// [Colab Enterprise notebook](https://cloud.google.com/colab/docs/introduction)
+/// file, that is associated with a finding.
+class Notebook {
+  /// The user ID of the latest author to modify the notebook.
+  core.String? lastAuthor;
+
+  /// The name of the notebook.
+  core.String? name;
+
+  /// The most recent time the notebook was updated.
+  core.String? notebookUpdateTime;
+
+  /// The source notebook service, for example, "Colab Enterprise".
+  core.String? service;
+
+  Notebook({
+    this.lastAuthor,
+    this.name,
+    this.notebookUpdateTime,
+    this.service,
+  });
+
+  Notebook.fromJson(core.Map json_)
+      : this(
+          lastAuthor: json_.containsKey('lastAuthor')
+              ? json_['lastAuthor'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          notebookUpdateTime: json_.containsKey('notebookUpdateTime')
+              ? json_['notebookUpdateTime'] as core.String
+              : null,
+          service: json_.containsKey('service')
+              ? json_['service'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (lastAuthor != null) 'lastAuthor': lastAuthor!,
+        if (name != null) 'name': name!,
+        if (notebookUpdateTime != null)
+          'notebookUpdateTime': notebookUpdateTime!,
+        if (service != null) 'service': service!,
+      };
+}
+
 /// Cloud Security Command Center (Cloud SCC) notification configs.
 ///
 /// A notification config is a Cloud SCC resource that contains the
@@ -16071,9 +16416,69 @@ class Reference {
       };
 }
 
+/// Information about the requests relevant to the finding.
+class Requests {
+  /// Allowed RPS (requests per second) over the long term.
+  core.int? longTermAllowed;
+
+  /// Denied RPS (requests per second) over the long term.
+  core.int? longTermDenied;
+
+  /// For 'Increasing deny ratio', the ratio is the denied traffic divided by
+  /// the allowed traffic.
+  ///
+  /// For 'Allowed traffic spike', the ratio is the allowed traffic in the short
+  /// term divided by allowed traffic in the long term.
+  core.double? ratio;
+
+  /// Allowed RPS (requests per second) in the short term.
+  core.int? shortTermAllowed;
+
+  Requests({
+    this.longTermAllowed,
+    this.longTermDenied,
+    this.ratio,
+    this.shortTermAllowed,
+  });
+
+  Requests.fromJson(core.Map json_)
+      : this(
+          longTermAllowed: json_.containsKey('longTermAllowed')
+              ? json_['longTermAllowed'] as core.int
+              : null,
+          longTermDenied: json_.containsKey('longTermDenied')
+              ? json_['longTermDenied'] as core.int
+              : null,
+          ratio: json_.containsKey('ratio')
+              ? (json_['ratio'] as core.num).toDouble()
+              : null,
+          shortTermAllowed: json_.containsKey('shortTermAllowed')
+              ? json_['shortTermAllowed'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (longTermAllowed != null) 'longTermAllowed': longTermAllowed!,
+        if (longTermDenied != null) 'longTermDenied': longTermDenied!,
+        if (ratio != null) 'ratio': ratio!,
+        if (shortTermAllowed != null) 'shortTermAllowed': shortTermAllowed!,
+      };
+}
+
 /// Information related to the Google Cloud resource that is associated with
 /// this finding.
 class Resource {
+  /// The AWS metadata associated with the finding.
+  AwsMetadata? awsMetadata;
+
+  /// Indicates which cloud provider the finding is from.
+  /// Possible string values are:
+  /// - "CLOUD_PROVIDER_UNSPECIFIED" : The cloud provider is unspecified.
+  /// - "GOOGLE_CLOUD_PLATFORM" : The cloud provider is Google Cloud Platform.
+  /// - "AMAZON_WEB_SERVICES" : The cloud provider is Amazon Web Services.
+  /// - "MICROSOFT_AZURE" : The cloud provider is Microsoft Azure.
+  core.String? cloudProvider;
+
   /// The human readable name of the resource.
   core.String? displayName;
 
@@ -16083,11 +16488,17 @@ class Resource {
   /// folder directly under the Organization.
   core.List<Folder>? folders;
 
+  /// The region or location of the service (if applicable).
+  core.String? location;
+
   /// The full resource name of the resource.
   ///
   /// See:
   /// https://cloud.google.com/apis/design/resource_names#full_resource_name
   core.String? name;
+
+  /// Indicates which organization / tenant the finding is for.
+  core.String? organization;
 
   /// The human readable name of resource's parent.
   core.String? parentDisplayName;
@@ -16101,22 +16512,54 @@ class Resource {
   /// The full resource name of project that the resource belongs to.
   core.String? projectName;
 
+  /// Provides the path to the resource within the resource hierarchy.
+  ResourcePath? resourcePath;
+
+  /// A string representation of the resource path.
+  ///
+  /// For Google Cloud, it has the format of
+  /// org/{organization_id}/folder/{folder_id}/folder/{folder_id}/project/{project_id}
+  /// where there can be any number of folders. For AWS, it has the format of
+  /// org/{organization_id}/ou/{organizational_unit_id}/ou/{organizational_unit_id}/account/{account_id}
+  /// where there can be any number of organizational units. For Azure, it has
+  /// the format of
+  /// mg/{management_group_id}/mg/{management_group_id}/subscription/{subscription_id}/rg/{resource_group_name}
+  /// where there can be any number of management groups.
+  core.String? resourcePathString;
+
+  /// The service or resource provider associated with the resource.
+  core.String? service;
+
   /// The full resource type of the resource.
   core.String? type;
 
   Resource({
+    this.awsMetadata,
+    this.cloudProvider,
     this.displayName,
     this.folders,
+    this.location,
     this.name,
+    this.organization,
     this.parentDisplayName,
     this.parentName,
     this.projectDisplayName,
     this.projectName,
+    this.resourcePath,
+    this.resourcePathString,
+    this.service,
     this.type,
   });
 
   Resource.fromJson(core.Map json_)
       : this(
+          awsMetadata: json_.containsKey('awsMetadata')
+              ? AwsMetadata.fromJson(
+                  json_['awsMetadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+          cloudProvider: json_.containsKey('cloudProvider')
+              ? json_['cloudProvider'] as core.String
+              : null,
           displayName: json_.containsKey('displayName')
               ? json_['displayName'] as core.String
               : null,
@@ -16126,7 +16569,13 @@ class Resource {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          location: json_.containsKey('location')
+              ? json_['location'] as core.String
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          organization: json_.containsKey('organization')
+              ? json_['organization'] as core.String
+              : null,
           parentDisplayName: json_.containsKey('parentDisplayName')
               ? json_['parentDisplayName'] as core.String
               : null,
@@ -16139,19 +16588,113 @@ class Resource {
           projectName: json_.containsKey('projectName')
               ? json_['projectName'] as core.String
               : null,
+          resourcePath: json_.containsKey('resourcePath')
+              ? ResourcePath.fromJson(
+                  json_['resourcePath'] as core.Map<core.String, core.dynamic>)
+              : null,
+          resourcePathString: json_.containsKey('resourcePathString')
+              ? json_['resourcePathString'] as core.String
+              : null,
+          service: json_.containsKey('service')
+              ? json_['service'] as core.String
+              : null,
           type: json_.containsKey('type') ? json_['type'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (awsMetadata != null) 'awsMetadata': awsMetadata!,
+        if (cloudProvider != null) 'cloudProvider': cloudProvider!,
         if (displayName != null) 'displayName': displayName!,
         if (folders != null) 'folders': folders!,
+        if (location != null) 'location': location!,
         if (name != null) 'name': name!,
+        if (organization != null) 'organization': organization!,
         if (parentDisplayName != null) 'parentDisplayName': parentDisplayName!,
         if (parentName != null) 'parentName': parentName!,
         if (projectDisplayName != null)
           'projectDisplayName': projectDisplayName!,
         if (projectName != null) 'projectName': projectName!,
+        if (resourcePath != null) 'resourcePath': resourcePath!,
+        if (resourcePathString != null)
+          'resourcePathString': resourcePathString!,
+        if (service != null) 'service': service!,
         if (type != null) 'type': type!,
+      };
+}
+
+/// Represents the path of resources leading up to the resource this finding is
+/// about.
+class ResourcePath {
+  /// The list of nodes that make the up resource path, ordered from lowest
+  /// level to highest level.
+  core.List<ResourcePathNode>? nodes;
+
+  ResourcePath({
+    this.nodes,
+  });
+
+  ResourcePath.fromJson(core.Map json_)
+      : this(
+          nodes: json_.containsKey('nodes')
+              ? (json_['nodes'] as core.List)
+                  .map((value) => ResourcePathNode.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nodes != null) 'nodes': nodes!,
+      };
+}
+
+/// A node within the resource path.
+///
+/// Each node represents a resource within the resource hierarchy.
+class ResourcePathNode {
+  /// The display name of the resource this node represents.
+  core.String? displayName;
+
+  /// The ID of the resource this node represents.
+  core.String? id;
+
+  /// The type of resource this node represents.
+  /// Possible string values are:
+  /// - "RESOURCE_PATH_NODE_TYPE_UNSPECIFIED" : Node type is unspecified.
+  /// - "GCP_ORGANIZATION" : The node represents a Google Cloud organization.
+  /// - "GCP_FOLDER" : The node represents a Google Cloud folder.
+  /// - "GCP_PROJECT" : The node represents a Google Cloud project.
+  /// - "AWS_ORGANIZATION" : The node represents an AWS organization.
+  /// - "AWS_ORGANIZATIONAL_UNIT" : The node represents an AWS organizational
+  /// unit.
+  /// - "AWS_ACCOUNT" : The node represents an AWS account.
+  /// - "AZURE_MANAGEMENT_GROUP" : The node represents an Azure management
+  /// group.
+  /// - "AZURE_SUBSCRIPTION" : The node represents an Azure subscription.
+  /// - "AZURE_RESOURCE_GROUP" : The node represents an Azure resource group.
+  core.String? nodeType;
+
+  ResourcePathNode({
+    this.displayName,
+    this.id,
+    this.nodeType,
+  });
+
+  ResourcePathNode.fromJson(core.Map json_)
+      : this(
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          nodeType: json_.containsKey('nodeType')
+              ? json_['nodeType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (id != null) 'id': id!,
+        if (nodeType != null) 'nodeType': nodeType!,
       };
 }
 
@@ -16431,6 +16974,44 @@ class SecurityMarks {
         if (canonicalName != null) 'canonicalName': canonicalName!,
         if (marks != null) 'marks': marks!,
         if (name != null) 'name': name!,
+      };
+}
+
+/// Information about the
+/// [Google Cloud Armor security policy](https://cloud.google.com/armor/docs/security-policy-overview)
+/// relevant to the finding.
+class SecurityPolicy {
+  /// The name of the Google Cloud Armor security policy, for example,
+  /// "my-security-policy".
+  core.String? name;
+
+  /// Whether or not the associated rule or policy is in preview mode.
+  core.bool? preview;
+
+  /// The type of Google Cloud Armor security policy for example, 'backend
+  /// security policy', 'edge security policy', 'network edge security policy',
+  /// or 'always-on DDoS protection'.
+  core.String? type;
+
+  SecurityPolicy({
+    this.name,
+    this.preview,
+    this.type,
+  });
+
+  SecurityPolicy.fromJson(core.Map json_)
+      : this(
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          preview: json_.containsKey('preview')
+              ? json_['preview'] as core.bool
+              : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (preview != null) 'preview': preview!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -16816,6 +17397,14 @@ class SimulatedResult {
 
 /// Attack path simulation
 class Simulation {
+  /// Indicates which cloud provider was used in this simulation.
+  /// Possible string values are:
+  /// - "CLOUD_PROVIDER_UNSPECIFIED" : The cloud provider is unspecified.
+  /// - "GOOGLE_CLOUD_PLATFORM" : The cloud provider is Google Cloud Platform.
+  /// - "AMAZON_WEB_SERVICES" : The cloud provider is Amazon Web Services.
+  /// - "MICROSOFT_AZURE" : The cloud provider is Microsoft Azure.
+  core.String? cloudProvider;
+
   /// Time simulation was created
   ///
   /// Output only.
@@ -16830,6 +17419,7 @@ class Simulation {
   core.List<ResourceValueConfigMetadata>? resourceValueConfigsMetadata;
 
   Simulation({
+    this.cloudProvider,
     this.createTime,
     this.name,
     this.resourceValueConfigsMetadata,
@@ -16837,6 +17427,9 @@ class Simulation {
 
   Simulation.fromJson(core.Map json_)
       : this(
+          cloudProvider: json_.containsKey('cloudProvider')
+              ? json_['cloudProvider'] as core.String
+              : null,
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
               : null,
@@ -16851,6 +17444,7 @@ class Simulation {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (cloudProvider != null) 'cloudProvider': cloudProvider!,
         if (createTime != null) 'createTime': createTime!,
         if (name != null) 'name': name!,
         if (resourceValueConfigsMetadata != null)

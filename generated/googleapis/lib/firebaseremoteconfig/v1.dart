@@ -238,6 +238,52 @@ class ProjectsNamespacesResource {
     return FetchRemoteConfigResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
+
+  /// Get a project's server-side Remote Config template.
+  ///
+  /// Note that this request proto is structured differently from other request
+  /// messages in this proto, however this is consistent and compliant with the
+  /// new API guidance
+  /// (https://google.aip.dev/122#fields-representing-resource-names) and the
+  /// standard going forward.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the template to get. Format:
+  /// projects/{project}/namespaces/{namespace}/serverRemoteConfig Project is a
+  /// Firebase project ID or project number. Namespace is the namespace ID
+  /// (e.g.: firebase-server)
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/namespaces/\[^/\]+/serverRemoteConfig$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ServerRemoteConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ServerRemoteConfig> getServerRemoteConfig(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ServerRemoteConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsRemoteConfigResource {
@@ -413,6 +459,77 @@ class ProjectsRemoteConfigResource {
     return RemoteConfig.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
+}
+
+/// ---------- Boolean Operators AND of sub-conditions.
+///
+/// An AND condition is true if all of its subconditions evaluate to true.
+class AndCondition {
+  /// Evaluated in given order with short circuit of false.
+  ///
+  /// Should contain at least one condition and no more than 100 conditions.
+  core.List<Condition>? conditions;
+
+  AndCondition({
+    this.conditions,
+  });
+
+  AndCondition.fromJson(core.Map json_)
+      : this(
+          conditions: json_.containsKey('conditions')
+              ? (json_['conditions'] as core.List)
+                  .map((value) => Condition.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (conditions != null) 'conditions': conditions!,
+      };
+}
+
+/// ---------- General Condition Wrapper A general boolean expression that is
+/// used to evaluate conditions for server-side Remote Config templates.
+class Condition {
+  /// Boolean operators Apply logical "and" condition to the subset of
+  /// conditions.
+  AndCondition? andCondition;
+
+  /// Apply logical "or" condition to the subset of conditions.
+  OrCondition? orCondition;
+
+  /// Builtin conditions (aka 'atoms') Target a percentage of the population
+  /// (users, app instances).
+  PercentCondition? percent;
+
+  Condition({
+    this.andCondition,
+    this.orCondition,
+    this.percent,
+  });
+
+  Condition.fromJson(core.Map json_)
+      : this(
+          andCondition: json_.containsKey('andCondition')
+              ? AndCondition.fromJson(
+                  json_['andCondition'] as core.Map<core.String, core.dynamic>)
+              : null,
+          orCondition: json_.containsKey('orCondition')
+              ? OrCondition.fromJson(
+                  json_['orCondition'] as core.Map<core.String, core.dynamic>)
+              : null,
+          percent: json_.containsKey('percent')
+              ? PercentCondition.fromJson(
+                  json_['percent'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (andCondition != null) 'andCondition': andCondition!,
+        if (orCondition != null) 'orCondition': orCondition!,
+        if (percent != null) 'percent': percent!,
+      };
 }
 
 /// Encapsulates per-experiment data.
@@ -804,6 +921,145 @@ class ListVersionsResponse {
       };
 }
 
+/// A micro-percent interval defined by lower and upper bounds.
+class MicroPercentRange {
+  /// The lower limit of percentiles to target in micro-percents.
+  ///
+  /// The value must be in the range \[0 and 100000000\].
+  core.int? microPercentLowerBound;
+
+  /// The upper limit of percentiles to target in micro-percents.
+  ///
+  /// The value must be in the range \[0 and 100000000\].
+  core.int? microPercentUpperBound;
+
+  MicroPercentRange({
+    this.microPercentLowerBound,
+    this.microPercentUpperBound,
+  });
+
+  MicroPercentRange.fromJson(core.Map json_)
+      : this(
+          microPercentLowerBound: json_.containsKey('microPercentLowerBound')
+              ? json_['microPercentLowerBound'] as core.int
+              : null,
+          microPercentUpperBound: json_.containsKey('microPercentUpperBound')
+              ? json_['microPercentUpperBound'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (microPercentLowerBound != null)
+          'microPercentLowerBound': microPercentLowerBound!,
+        if (microPercentUpperBound != null)
+          'microPercentUpperBound': microPercentUpperBound!,
+      };
+}
+
+/// OR of sub-conditions.
+///
+/// An OR condition is true if any of its subconditions evaluate to true. If
+/// there is an exception evaluating any of its subconditions, that subcondition
+/// can be ignored if any other subcondition is true.
+class OrCondition {
+  /// Evaluated in given order with short circuit of true.
+  ///
+  /// Should contain at least one condition and no more than 100 conditions.
+  core.List<Condition>? conditions;
+
+  OrCondition({
+    this.conditions,
+  });
+
+  OrCondition.fromJson(core.Map json_)
+      : this(
+          conditions: json_.containsKey('conditions')
+              ? (json_['conditions'] as core.List)
+                  .map((value) => Condition.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (conditions != null) 'conditions': conditions!,
+      };
+}
+
+/// ---------- Primitive Conditions (Atoms) A condition that compares the
+/// instance pseudo-random percentile to a given limit.
+///
+/// NOTE: Developers provide an ID via the Admin SDK. This ID is hashed to a
+/// random percentile. The function is consistent and repeatable and will give
+/// the same result for evaluating an ID for the same condition across different
+/// platforms and across time. The function is consistent with the function used
+/// for evaluating IDs for client templates.
+class PercentCondition {
+  /// The limit of percentiles to target in micro-percents.
+  ///
+  /// The value must be in the range \[0 and 100000000\].
+  ///
+  /// Required.
+  core.int? microPercent;
+
+  /// The range of percentiles to target in micro-percents.
+  MicroPercentRange? microPercentRange;
+
+  /// The choice of percent operator to determine how to compare targets to
+  /// percent(s).
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "UNKNOWN" : Per http://go/protodosdonts
+  /// - "LESS_OR_EQUAL" : Target percentiles less than or equal to the target
+  /// percent. A condition using this operator must specify micro_percent.
+  /// - "GREATER_THAN" : Target percentiles greater than the target percent. A
+  /// condition using this operator must specify micro_percent.
+  /// - "BETWEEN" : Target percentiles within an interval defined by a lower
+  /// bound and an upper bound. The lower bound is an exclusive (open) bound and
+  /// the micro_percent_range_upper_bound is an inclusive (closed) bound. A
+  /// condition using this operator must specify micro_percent_range.
+  core.String? percentOperator;
+
+  /// The seed used when evaluating the hash function to map an instance to a
+  /// value in the hash space.
+  ///
+  /// This is a string which can have 0 - 32 characters and can contain ASCII
+  /// characters \[-_.0-9a-zA-Z\]. The string is case-sensitive.
+  ///
+  /// Optional.
+  core.String? seed;
+
+  PercentCondition({
+    this.microPercent,
+    this.microPercentRange,
+    this.percentOperator,
+    this.seed,
+  });
+
+  PercentCondition.fromJson(core.Map json_)
+      : this(
+          microPercent: json_.containsKey('microPercent')
+              ? json_['microPercent'] as core.int
+              : null,
+          microPercentRange: json_.containsKey('microPercentRange')
+              ? MicroPercentRange.fromJson(json_['microPercentRange']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          percentOperator: json_.containsKey('percentOperator')
+              ? json_['percentOperator'] as core.String
+              : null,
+          seed: json_.containsKey('seed') ? json_['seed'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (microPercent != null) 'microPercent': microPercent!,
+        if (microPercentRange != null) 'microPercentRange': microPercentRange!,
+        if (percentOperator != null) 'percentOperator': percentOperator!,
+        if (seed != null) 'seed': seed!,
+      };
+}
+
 /// LINT.IfChange Metadata associated with a particular Remote Config parameter
 /// key, managed by Firebase Personalization.
 class PersonalizationMetadata {
@@ -1182,6 +1438,9 @@ class RemoteConfigParameterValue {
   /// A dynamic, user-specific value computed when config is fetched.
   PersonalizationValue? personalizationValue;
 
+  /// A dynamic Rollout value managed by the Firebase ABT Experiment service.
+  RolloutValue? rolloutValue;
+
   /// If true, the parameter is omitted from the parameter values returned to a
   /// client.
   core.bool? useInAppDefault;
@@ -1191,6 +1450,7 @@ class RemoteConfigParameterValue {
 
   RemoteConfigParameterValue({
     this.personalizationValue,
+    this.rolloutValue,
     this.useInAppDefault,
     this.value,
   });
@@ -1200,6 +1460,10 @@ class RemoteConfigParameterValue {
           personalizationValue: json_.containsKey('personalizationValue')
               ? PersonalizationValue.fromJson(json_['personalizationValue']
                   as core.Map<core.String, core.dynamic>)
+              : null,
+          rolloutValue: json_.containsKey('rolloutValue')
+              ? RolloutValue.fromJson(
+                  json_['rolloutValue'] as core.Map<core.String, core.dynamic>)
               : null,
           useInAppDefault: json_.containsKey('useInAppDefault')
               ? json_['useInAppDefault'] as core.bool
@@ -1211,6 +1475,7 @@ class RemoteConfigParameterValue {
   core.Map<core.String, core.dynamic> toJson() => {
         if (personalizationValue != null)
           'personalizationValue': personalizationValue!,
+        if (rolloutValue != null) 'rolloutValue': rolloutValue!,
         if (useInAppDefault != null) 'useInAppDefault': useInAppDefault!,
         if (value != null) 'value': value!,
       };
@@ -1329,6 +1594,210 @@ class RolloutMetadata {
           'affectedParameterKeys': affectedParameterKeys!,
         if (rolloutId != null) 'rolloutId': rolloutId!,
         if (variantId != null) 'variantId': variantId!,
+      };
+}
+
+/// Information related to a Rollout.
+class RolloutValue {
+  /// The percentage of users that will receive the rollout value.
+  core.double? percent;
+
+  /// The identifier that associates a parameter value to a Rollout experiment.
+  core.String? rolloutId;
+
+  /// The user-specified value to be rolled out.
+  core.String? value;
+
+  RolloutValue({
+    this.percent,
+    this.rolloutId,
+    this.value,
+  });
+
+  RolloutValue.fromJson(core.Map json_)
+      : this(
+          percent: json_.containsKey('percent')
+              ? (json_['percent'] as core.num).toDouble()
+              : null,
+          rolloutId: json_.containsKey('rolloutId')
+              ? json_['rolloutId'] as core.String
+              : null,
+          value:
+              json_.containsKey('value') ? json_['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (percent != null) 'percent': percent!,
+        if (rolloutId != null) 'rolloutId': rolloutId!,
+        if (value != null) 'value': value!,
+      };
+}
+
+/// A ServerRemoteConfig represents the raw data-plane version of a control
+/// plane Remote Config template.
+///
+/// This raw template will be evaluated by the Admin SDK (RC Server SDK) to form
+/// the config.
+class ServerRemoteConfig {
+  /// A list of conditions in descending order by priority.
+  core.List<ServerRemoteConfigCondition>? conditions;
+
+  /// Map of parameter keys to their optional default values and optional
+  /// conditional values.
+  core.Map<core.String, ServerRemoteConfigParameter>? parameters;
+
+  /// Contains all metadata about a particular version of the server Remote
+  /// Config template.
+  ///
+  /// Note that we are reusing the control plane version proto here.
+  Version? version;
+
+  ServerRemoteConfig({
+    this.conditions,
+    this.parameters,
+    this.version,
+  });
+
+  ServerRemoteConfig.fromJson(core.Map json_)
+      : this(
+          conditions: json_.containsKey('conditions')
+              ? (json_['conditions'] as core.List)
+                  .map((value) => ServerRemoteConfigCondition.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          parameters: json_.containsKey('parameters')
+              ? (json_['parameters'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    ServerRemoteConfigParameter.fromJson(
+                        value as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+          version: json_.containsKey('version')
+              ? Version.fromJson(
+                  json_['version'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (conditions != null) 'conditions': conditions!,
+        if (parameters != null) 'parameters': parameters!,
+        if (version != null) 'version': version!,
+      };
+}
+
+/// A condition targeting a specific group of users and servers.
+///
+/// Same as the condition in the control plane.
+class ServerRemoteConfigCondition {
+  /// The logic of this condition.
+  ///
+  /// Required.
+  Condition? condition;
+
+  /// A non-empty and unique name of this condition.
+  ///
+  /// Required.
+  core.String? name;
+
+  ServerRemoteConfigCondition({
+    this.condition,
+    this.name,
+  });
+
+  ServerRemoteConfigCondition.fromJson(core.Map json_)
+      : this(
+          condition: json_.containsKey('condition')
+              ? Condition.fromJson(
+                  json_['condition'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (condition != null) 'condition': condition!,
+        if (name != null) 'name': name!,
+      };
+}
+
+/// A parameter value associated with a parameter key in
+/// \[google.firebase.remoteconfig.v1.ServerRemoteConfig.parameters\].
+///
+/// At minimum, a `default_value` or a `conditional_values` entry should be
+/// present for the parameter to have any effect.
+class ServerRemoteConfigParameter {
+  /// Optional - a (condition name, value) map.
+  ///
+  /// The condition_name of the highest priority (the one listed first in the
+  /// RemoteConfig's conditions list) determines the value of this parameter.
+  core.Map<core.String, ServerRemoteConfigParameterValue>? conditionalValues;
+
+  /// Optional - value to set the parameter to, when none of the named
+  /// conditions evaluate to true.
+  ServerRemoteConfigParameterValue? defaultValue;
+
+  ServerRemoteConfigParameter({
+    this.conditionalValues,
+    this.defaultValue,
+  });
+
+  ServerRemoteConfigParameter.fromJson(core.Map json_)
+      : this(
+          conditionalValues: json_.containsKey('conditionalValues')
+              ? (json_['conditionalValues']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    ServerRemoteConfigParameterValue.fromJson(
+                        value as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+          defaultValue: json_.containsKey('defaultValue')
+              ? ServerRemoteConfigParameterValue.fromJson(
+                  json_['defaultValue'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (conditionalValues != null) 'conditionalValues': conditionalValues!,
+        if (defaultValue != null) 'defaultValue': defaultValue!,
+      };
+}
+
+/// A ServerRemoteConfigParameterValue resource contains the value that a
+/// parameter may have.
+///
+/// Currently, there is no support for managed values like ABT or P13n.
+class ServerRemoteConfigParameterValue {
+  /// If true, the parameter is omitted from the parameter values returned to
+  /// the server.
+  core.bool? useInAppDefault;
+
+  /// The string value that the parameter is set to.
+  core.String? value;
+
+  ServerRemoteConfigParameterValue({
+    this.useInAppDefault,
+    this.value,
+  });
+
+  ServerRemoteConfigParameterValue.fromJson(core.Map json_)
+      : this(
+          useInAppDefault: json_.containsKey('useInAppDefault')
+              ? json_['useInAppDefault'] as core.bool
+              : null,
+          value:
+              json_.containsKey('value') ? json_['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (useInAppDefault != null) 'useInAppDefault': useInAppDefault!,
+        if (value != null) 'value': value!,
       };
 }
 

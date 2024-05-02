@@ -465,8 +465,7 @@ class ProjectsDatabasesBackupSchedulesResource {
   /// Creates a backup schedule on a database.
   ///
   /// At most two backup schedules can be configured on a database, one daily
-  /// backup schedule with retention up to 7 days and one weekly backup schedule
-  /// with retention up to 14 weeks.
+  /// backup schedule and one weekly backup schedule.
   ///
   /// [request] - The metadata request object.
   ///
@@ -743,7 +742,8 @@ class ProjectsDatabasesCollectionGroupsFieldsResource {
   /// [filter] - The filter to apply to list results. Currently,
   /// FirestoreAdmin.ListFields only supports listing fields that have been
   /// explicitly overridden. To issue this query, call FirestoreAdmin.ListFields
-  /// with a filter that includes `indexConfig.usesAncestorConfig:false` .
+  /// with a filter that includes `indexConfig.usesAncestorConfig:false` or
+  /// `ttlConfig:*`.
   ///
   /// [pageSize] - The number of results to return.
   ///
@@ -3420,7 +3420,7 @@ class Filter {
 
 /// Nearest Neighbors search config.
 class FindNearest {
-  /// The Distance Measure to use, required.
+  /// The distance measure to use, required.
   ///
   /// Required.
   /// Possible string values are:
@@ -3605,7 +3605,7 @@ class GoogleFirestoreAdminV1BackupSchedule {
   /// Output only.
   core.String? createTime;
 
-  /// For a schedule that runs daily at a specified time.
+  /// For a schedule that runs daily.
   GoogleFirestoreAdminV1DailyRecurrence? dailyRecurrence;
 
   /// The unique backup schedule identifier across all locations and databases
@@ -3628,7 +3628,7 @@ class GoogleFirestoreAdminV1BackupSchedule {
   /// Output only.
   core.String? updateTime;
 
-  /// For a schedule that runs weekly on a specific day and time.
+  /// For a schedule that runs weekly on a specific day.
   GoogleFirestoreAdminV1WeeklyRecurrence? weeklyRecurrence;
 
   GoogleFirestoreAdminV1BackupSchedule({
@@ -3725,7 +3725,7 @@ class GoogleFirestoreAdminV1CmekConfig {
       };
 }
 
-/// Represents a recurring schedule that runs at a specific time every day.
+/// Represents a recurring schedule that runs every day.
 ///
 /// The time zone is UTC.
 typedef GoogleFirestoreAdminV1DailyRecurrence = $Empty;
@@ -4378,7 +4378,7 @@ class GoogleFirestoreAdminV1IndexField {
   /// - "DESCENDING" : The field is ordered by descending field value.
   core.String? order;
 
-  /// Indicates that this field supports nearest neighbors and distance
+  /// Indicates that this field supports nearest neighbor and distance
   /// operations on vector.
   GoogleFirestoreAdminV1VectorConfig? vectorConfig;
 
@@ -5773,7 +5773,7 @@ class StructuredQuery {
   /// greater than the number of fields specified in the `ORDER BY` clause.
   Cursor? endAt;
 
-  /// A potential Nearest Neighbors Search.
+  /// A potential nearest neighbors search.
   ///
   /// Applies after all other filters and ordering. Finds the closest vector
   /// embeddings to the given query vector.
@@ -6015,7 +6015,7 @@ class UnaryFilter {
 class Value {
   /// An array value.
   ///
-  /// Cannot directly contain another array value, though can contain an map
+  /// Cannot directly contain another array value, though can contain a map
   /// which contains another array.
   ArrayValue? arrayValue;
 

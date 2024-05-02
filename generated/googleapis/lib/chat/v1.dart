@@ -26,6 +26,9 @@
 ///     - [SpacesMessagesAttachmentsResource]
 ///     - [SpacesMessagesReactionsResource]
 ///   - [SpacesSpaceEventsResource]
+/// - [UsersResource]
+///   - [UsersSpacesResource]
+///     - [UsersSpacesThreadsResource]
 library;
 
 import 'dart:async' as async;
@@ -111,10 +114,19 @@ class HangoutsChatApi {
   static const chatSpacesReadonlyScope =
       'https://www.googleapis.com/auth/chat.spaces.readonly';
 
+  /// View and modify last read time for Google Chat conversations
+  static const chatUsersReadstateScope =
+      'https://www.googleapis.com/auth/chat.users.readstate';
+
+  /// View last read time for Google Chat conversations
+  static const chatUsersReadstateReadonlyScope =
+      'https://www.googleapis.com/auth/chat.users.readstate.readonly';
+
   final commons.ApiRequester _requester;
 
   MediaResource get media => MediaResource(_requester);
   SpacesResource get spaces => SpacesResource(_requester);
+  UsersResource get users => UsersResource(_requester);
 
   HangoutsChatApi(http.Client client,
       {core.String rootUrl = 'https://chat.googleapis.com/',
@@ -854,9 +866,10 @@ class SpacesMembersResource {
   /// Request parameters:
   ///
   /// [name] - Required. Resource name of the membership to retrieve. To get the
-  /// app's own membership, you can optionally use `spaces/{space}/members/app`.
-  /// Format: `spaces/{space}/members/{member}` or `spaces/{space}/members/app`
-  /// When
+  /// app's own membership
+  /// [by using user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user),
+  /// you can optionally use `spaces/{space}/members/app`. Format:
+  /// `spaces/{space}/members/{member}` or `spaces/{space}/members/app` When
   /// [authenticated as a user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user),
   /// you can use the user's email as an alias for `{member}`. For example,
   /// `spaces/{space}/members/example@gmail.com` where `example@gmail.com` is
@@ -906,8 +919,8 @@ class SpacesMembersResource {
   /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize).
   /// Supports
   /// [app authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app)
-  /// and \[user
-  /// authentication\](hhttps://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+  /// and
+  /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
   ///
   /// Request parameters:
   ///
@@ -991,6 +1004,57 @@ class SpacesMembersResource {
     return ListMembershipsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
+
+  /// Updates a membership.
+  ///
+  /// Requires
+  /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Resource name of the membership, assigned by the server. Format:
+  /// `spaces/{space}/members/{member}`
+  /// Value must have pattern `^spaces/\[^/\]+/members/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. The field paths to update. Separate multiple
+  /// values with commas or use `*` to update all field paths. Currently
+  /// supported field paths: - `role`
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Membership].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Membership> patch(
+    Membership request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Membership.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class SpacesMessagesResource {
@@ -1005,7 +1069,8 @@ class SpacesMessagesResource {
 
   /// Creates a message in a Google Chat space.
   ///
-  /// For an example, see
+  /// The maximum message size, including text and cards, is 32,000 bytes. For
+  /// an example, see
   /// [Send a message](https://developers.google.com/workspace/chat/create-messages).
   /// Calling this method requires
   /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize)
@@ -1518,8 +1583,8 @@ class SpacesMessagesReactionsResource {
 
   /// Creates a reaction and adds it to a message.
   ///
-  /// Only unicode emojis are supported.For an example, see
-  /// [Add a reaction to a reaction](https://developers.google.com/workspace/chat/create-reactions).
+  /// Only unicode emojis are supported. For an example, see
+  /// [Add a reaction to a message](https://developers.google.com/workspace/chat/create-reactions).
   /// Requires
   /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
   ///
@@ -1699,8 +1764,8 @@ class SpacesSpaceEventsResource {
   /// contains the most recent version of the resource that changed. For
   /// example, if you request an event about a new message but the message was
   /// later updated, the server returns the updated `Message` resource in the
-  /// event payload. Requires \[user
-  /// authentication\](hhttps://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+  /// event payload. Requires
+  /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
   /// To get an event, the authenticated user must be a member of the space. For
   /// an example, see
   /// [Get details about an event from a Google Chat space](https://developers.google.com/workspace/chat/get-space-event).
@@ -1833,6 +1898,183 @@ class SpacesSpaceEventsResource {
       queryParams: queryParams_,
     );
     return ListSpaceEventsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class UsersResource {
+  final commons.ApiRequester _requester;
+
+  UsersSpacesResource get spaces => UsersSpacesResource(_requester);
+
+  UsersResource(commons.ApiRequester client) : _requester = client;
+}
+
+class UsersSpacesResource {
+  final commons.ApiRequester _requester;
+
+  UsersSpacesThreadsResource get threads =>
+      UsersSpacesThreadsResource(_requester);
+
+  UsersSpacesResource(commons.ApiRequester client) : _requester = client;
+
+  /// Returns details about a user's read state within a space, used to identify
+  /// read and unread messages.
+  ///
+  /// Requires
+  /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the space read state to retrieve. Only
+  /// supports getting read state for the calling user. To refer to the calling
+  /// user, set one of the following: - The `me` alias. For example,
+  /// `users/me/spaces/{space}/spaceReadState`. - Their Workspace email address.
+  /// For example, `users/user@example.com/spaces/{space}/spaceReadState`. -
+  /// Their user id. For example,
+  /// `users/123456789/spaces/{space}/spaceReadState`. Format:
+  /// users/{user}/spaces/{space}/spaceReadState
+  /// Value must have pattern `^users/\[^/\]+/spaces/\[^/\]+/spaceReadState$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SpaceReadState].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SpaceReadState> getSpaceReadState(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return SpaceReadState.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a user's read state within a space, used to identify read and
+  /// unread messages.
+  ///
+  /// Requires
+  /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Resource name of the space read state. Format:
+  /// `users/{user}/spaces/{space}/spaceReadState`
+  /// Value must have pattern `^users/\[^/\]+/spaces/\[^/\]+/spaceReadState$`.
+  ///
+  /// [updateMask] - Required. The field paths to update. Currently supported
+  /// field paths: - `last_read_time` When the `last_read_time` is before the
+  /// latest message create time, the space appears as unread in the UI. To mark
+  /// the space as read, set `last_read_time` to any value later (larger) than
+  /// the latest message create time. The `last_read_time` is coerced to match
+  /// the latest message create time. Note that the space read state only
+  /// affects the read state of messages that are visible in the space's
+  /// top-level conversation. Replies in threads are unaffected by this
+  /// timestamp, and instead rely on the thread read state.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SpaceReadState].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SpaceReadState> updateSpaceReadState(
+    SpaceReadState request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return SpaceReadState.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class UsersSpacesThreadsResource {
+  final commons.ApiRequester _requester;
+
+  UsersSpacesThreadsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Returns details about a user's read state within a thread, used to
+  /// identify read and unread messages.
+  ///
+  /// Requires
+  /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the thread read state to retrieve.
+  /// Only supports getting read state for the calling user. To refer to the
+  /// calling user, set one of the following: - The `me` alias. For example,
+  /// `users/me/spaces/{space}/threads/{thread}/threadReadState`. - Their
+  /// Workspace email address. For example,
+  /// `users/user@example.com/spaces/{space}/threads/{thread}/threadReadState`.
+  /// - Their user id. For example,
+  /// `users/123456789/spaces/{space}/threads/{thread}/threadReadState`. Format:
+  /// users/{user}/spaces/{space}/threads/{thread}/threadReadState
+  /// Value must have pattern
+  /// `^users/\[^/\]+/spaces/\[^/\]+/threads/\[^/\]+/threadReadState$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ThreadReadState].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ThreadReadState> getThreadReadState(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ThreadReadState.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -2189,9 +2431,9 @@ class Attachment {
   ///
   /// Output only.
   /// Possible string values are:
-  /// - "SOURCE_UNSPECIFIED"
-  /// - "DRIVE_FILE"
-  /// - "UPLOADED_CONTENT"
+  /// - "SOURCE_UNSPECIFIED" : Reserved.
+  /// - "DRIVE_FILE" : The file is a Google Drive file.
+  /// - "UPLOADED_CONTENT" : The file is uploaded to Chat.
   core.String? source;
 
   /// The thumbnail URL which should be used to preview the attachment to a
@@ -2253,6 +2495,7 @@ class Attachment {
       };
 }
 
+/// A reference to the attachment data.
 class AttachmentDataRef {
   /// Opaque token containing a reference to an uploaded attachment.
   ///
@@ -2578,6 +2821,7 @@ typedef Color = $Color;
 /// Request message for completing the import process for a space.
 typedef CompleteImportSpaceRequest = $Empty;
 
+/// Response message for completing the import process for a space.
 class CompleteImportSpaceResponse {
   /// The import mode space.
   Space? space;
@@ -2602,6 +2846,8 @@ class CompleteImportSpaceResponse {
 /// Represents a custom emoji.
 class CustomEmoji {
   /// Unique key for the custom emoji resource.
+  ///
+  /// Output only.
   core.String? uid;
 
   CustomEmoji({
@@ -2889,7 +3135,7 @@ class FormAction {
 /// apps\](https://developers.google.com/workspace/extend):
 class GoogleAppsCardV1Action {
   /// A custom function to invoke when the containing element is clicked or
-  /// othrwise activated.
+  /// otherwise activated.
   ///
   /// For example usage, see
   /// [Read form data](https://developers.google.com/workspace/chat/read-form-data).
@@ -5604,6 +5850,7 @@ class KeyValue {
       };
 }
 
+/// Response to list memberships of the space.
 class ListMembershipsResponse {
   /// Unordered list.
   ///
@@ -5640,6 +5887,7 @@ class ListMembershipsResponse {
       };
 }
 
+/// Response message for listing messages.
 class ListMessagesResponse {
   /// List of messages.
   core.List<Message>? messages;
@@ -5673,6 +5921,7 @@ class ListMessagesResponse {
       };
 }
 
+/// Response to a list reactions request.
 class ListReactionsResponse {
   /// Continuation token to retrieve the next page of results.
   ///
@@ -5740,6 +5989,7 @@ class ListSpaceEventsResponse {
       };
 }
 
+/// The response for a list spaces request.
 class ListSpacesResponse {
   /// You can send a token as `pageToken` to retrieve the next page of results.
   ///
@@ -5844,8 +6094,7 @@ class Membership {
   /// User's role within a Chat space, which determines their permitted actions
   /// in the space.
   ///
-  /// [Developer Preview](https://developers.google.com/workspace/preview): This
-  /// field can only be used as input in `UpdateMembership`.
+  /// This field can only be used as input in `UpdateMembership`.
   ///
   /// Optional.
   /// Possible string values are:
@@ -6941,6 +7190,7 @@ class SelectionItems {
       };
 }
 
+/// Request to create a space and add specified users to it.
 class SetUpSpaceRequest {
   /// The Google Chat users to invite to join the space.
   ///
@@ -7146,9 +7396,13 @@ class Space {
   /// authenticated user uses a consumer account (unmanaged user account). By
   /// default, a space created by a consumer account permits any Google Chat
   /// user. * The space is used to
-  /// [import data to Google Chat](https://developers.google.com/workspace/chat/import-data).
-  /// Import mode spaces must only permit members from the same Google Workspace
-  /// organization. For existing spaces, this field is output only.
+  /// [import data to Google Chat](https://developers.google.com/chat/api/guides/import-data-overview)
+  /// because import mode spaces must only permit members from the same Google
+  /// Workspace organization. However, as part of the
+  /// [Google Workspace Developer Preview Program](https://developers.google.com/workspace/preview),
+  /// import mode spaces can permit any Google Chat user so this field can then
+  /// be set for import mode spaces. For existing spaces, this field is output
+  /// only.
   ///
   /// Immutable.
   core.bool? externalUserAllowed;
@@ -7229,7 +7483,7 @@ class Space {
   ///
   /// Output only.
   /// Possible string values are:
-  /// - "TYPE_UNSPECIFIED"
+  /// - "TYPE_UNSPECIFIED" : Reserved.
   /// - "ROOM" : Conversations between two or more humans.
   /// - "DM" : 1:1 Direct Message between a human and a Chat app, where all
   /// messages are flat. Note that this doesn't include direct messages between
@@ -7724,6 +7978,42 @@ class SpaceEvent {
       };
 }
 
+/// A user's read state within a space, used to identify read and unread
+/// messages.
+class SpaceReadState {
+  /// The time when the user's space read state was updated.
+  ///
+  /// Usually this corresponds with either the timestamp of the last read
+  /// message, or a timestamp specified by the user to mark the last read
+  /// position in a space.
+  ///
+  /// Optional.
+  core.String? lastReadTime;
+
+  /// Resource name of the space read state.
+  ///
+  /// Format: `users/{user}/spaces/{space}/spaceReadState`
+  core.String? name;
+
+  SpaceReadState({
+    this.lastReadTime,
+    this.name,
+  });
+
+  SpaceReadState.fromJson(core.Map json_)
+      : this(
+          lastReadTime: json_.containsKey('lastReadTime')
+              ? json_['lastReadTime'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (lastReadTime != null) 'lastReadTime': lastReadTime!,
+        if (name != null) 'name': name!,
+      };
+}
+
 /// Event payload for an updated space.
 ///
 /// Event type: `google.workspace.chat.space.v1.updated`
@@ -7844,6 +8134,39 @@ class Thread {
       };
 }
 
+/// A user's read state within a thread, used to identify read and unread
+/// messages.
+class ThreadReadState {
+  /// The time when the user's thread read state was updated.
+  ///
+  /// Usually this corresponds with the timestamp of the last read message in a
+  /// thread.
+  core.String? lastReadTime;
+
+  /// Resource name of the thread read state.
+  ///
+  /// Format: `users/{user}/spaces/{space}/threads/{thread}/threadReadState`
+  core.String? name;
+
+  ThreadReadState({
+    this.lastReadTime,
+    this.name,
+  });
+
+  ThreadReadState.fromJson(core.Map json_)
+      : this(
+          lastReadTime: json_.containsKey('lastReadTime')
+              ? json_['lastReadTime'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (lastReadTime != null) 'lastReadTime': lastReadTime!,
+        if (name != null) 'name': name!,
+      };
+}
+
 /// The response of the updated widget.
 ///
 /// Used to provide autocomplete options for a widget.
@@ -7879,6 +8202,7 @@ class UpdatedWidget {
       };
 }
 
+/// Request to upload an attachment.
 class UploadAttachmentRequest {
   /// The filename of the attachment, including the file extension.
   ///
@@ -7901,6 +8225,7 @@ class UploadAttachmentRequest {
       };
 }
 
+/// Response of uploading an attachment.
 class UploadAttachmentResponse {
   /// Reference to the uploaded attachment.
   AttachmentDataRef? attachmentDataRef;
