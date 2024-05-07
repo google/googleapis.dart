@@ -643,6 +643,7 @@ api.Build buildBuild() {
     o.createTime = 'foo';
     o.failureInfo = buildFailureInfo();
     o.finishTime = 'foo';
+    o.gitConfig = buildGitConfig();
     o.id = 'foo';
     o.images = buildUnnamed8();
     o.logUrl = 'foo';
@@ -689,6 +690,7 @@ void checkBuild(api.Build o) {
       o.finishTime!,
       unittest.equals('foo'),
     );
+    checkGitConfig(o.gitConfig!);
     unittest.expect(
       o.id!,
       unittest.equals('foo'),
@@ -1438,6 +1440,38 @@ void checkDefaultServiceAccount(api.DefaultServiceAccount o) {
   buildCounterDefaultServiceAccount--;
 }
 
+core.int buildCounterDeveloperConnectConfig = 0;
+api.DeveloperConnectConfig buildDeveloperConnectConfig() {
+  final o = api.DeveloperConnectConfig();
+  buildCounterDeveloperConnectConfig++;
+  if (buildCounterDeveloperConnectConfig < 3) {
+    o.dir = 'foo';
+    o.gitRepositoryLink = 'foo';
+    o.revision = 'foo';
+  }
+  buildCounterDeveloperConnectConfig--;
+  return o;
+}
+
+void checkDeveloperConnectConfig(api.DeveloperConnectConfig o) {
+  buildCounterDeveloperConnectConfig++;
+  if (buildCounterDeveloperConnectConfig < 3) {
+    unittest.expect(
+      o.dir!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.gitRepositoryLink!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.revision!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterDeveloperConnectConfig--;
+}
+
 core.int buildCounterEmpty = 0;
 api.Empty buildEmpty() {
   final o = api.Empty();
@@ -1508,6 +1542,25 @@ void checkFileHashes(api.FileHashes o) {
     checkUnnamed29(o.fileHash!);
   }
   buildCounterFileHashes--;
+}
+
+core.int buildCounterGitConfig = 0;
+api.GitConfig buildGitConfig() {
+  final o = api.GitConfig();
+  buildCounterGitConfig++;
+  if (buildCounterGitConfig < 3) {
+    o.http = buildHttpConfig();
+  }
+  buildCounterGitConfig--;
+  return o;
+}
+
+void checkGitConfig(api.GitConfig o) {
+  buildCounterGitConfig++;
+  if (buildCounterGitConfig < 3) {
+    checkHttpConfig(o.http!);
+  }
+  buildCounterGitConfig--;
 }
 
 core.int buildCounterGitFileSource = 0;
@@ -2153,6 +2206,28 @@ void checkHttpBody(api.HttpBody o) {
     checkUnnamed32(o.extensions!);
   }
   buildCounterHttpBody--;
+}
+
+core.int buildCounterHttpConfig = 0;
+api.HttpConfig buildHttpConfig() {
+  final o = api.HttpConfig();
+  buildCounterHttpConfig++;
+  if (buildCounterHttpConfig < 3) {
+    o.proxySecretVersionName = 'foo';
+  }
+  buildCounterHttpConfig--;
+  return o;
+}
+
+void checkHttpConfig(api.HttpConfig o) {
+  buildCounterHttpConfig++;
+  if (buildCounterHttpConfig < 3) {
+    unittest.expect(
+      o.proxySecretVersionName!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterHttpConfig--;
 }
 
 core.Map<core.String, core.String> buildUnnamed33() => {
@@ -3352,6 +3427,7 @@ api.Source buildSource() {
   buildCounterSource++;
   if (buildCounterSource < 3) {
     o.connectedRepository = buildConnectedRepository();
+    o.developerConnectConfig = buildDeveloperConnectConfig();
     o.gitSource = buildGitSource();
     o.repoSource = buildRepoSource();
     o.storageSource = buildStorageSource();
@@ -3365,6 +3441,7 @@ void checkSource(api.Source o) {
   buildCounterSource++;
   if (buildCounterSource < 3) {
     checkConnectedRepository(o.connectedRepository!);
+    checkDeveloperConnectConfig(o.developerConnectConfig!);
     checkGitSource(o.gitSource!);
     checkRepoSource(o.repoSource!);
     checkStorageSource(o.storageSource!);
@@ -4113,6 +4190,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-DeveloperConnectConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDeveloperConnectConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DeveloperConnectConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkDeveloperConnectConfig(od);
+    });
+  });
+
   unittest.group('obj-schema-Empty', () {
     unittest.test('to-json--from-json', () async {
       final o = buildEmpty();
@@ -4140,6 +4227,16 @@ void main() {
       final od =
           api.FileHashes.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkFileHashes(od);
+    });
+  });
+
+  unittest.group('obj-schema-GitConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGitConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GitConfig.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGitConfig(od);
     });
   });
 
@@ -4290,6 +4387,16 @@ void main() {
       final od =
           api.HttpBody.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkHttpBody(od);
+    });
+  });
+
+  unittest.group('obj-schema-HttpConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildHttpConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.HttpConfig.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkHttpConfig(od);
     });
   });
 

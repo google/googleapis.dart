@@ -1039,6 +1039,13 @@ class AccessSettings {
   /// GCIP claims and endpoint configurations for 3p identity providers.
   GcipSettings? gcipSettings;
 
+  /// Identity sources that IAP can use to authenticate the end user.
+  ///
+  /// Only one identity source can be configured.
+  ///
+  /// Optional.
+  core.List<core.String>? identitySources;
+
   /// Settings to configure IAP's OAuth behavior.
   OAuthSettings? oauthSettings;
 
@@ -1051,13 +1058,21 @@ class AccessSettings {
   /// Settings to configure reauthentication policies in IAP.
   ReauthSettings? reauthSettings;
 
+  /// Settings to configure the workforce identity federation, including
+  /// workforce pools and OAuth 2.0 settings.
+  ///
+  /// Optional.
+  WorkforceIdentitySettings? workforceIdentitySettings;
+
   AccessSettings({
     this.allowedDomainsSettings,
     this.corsSettings,
     this.gcipSettings,
+    this.identitySources,
     this.oauthSettings,
     this.policyDelegationSettings,
     this.reauthSettings,
+    this.workforceIdentitySettings,
   });
 
   AccessSettings.fromJson(core.Map json_)
@@ -1074,6 +1089,11 @@ class AccessSettings {
               ? GcipSettings.fromJson(
                   json_['gcipSettings'] as core.Map<core.String, core.dynamic>)
               : null,
+          identitySources: json_.containsKey('identitySources')
+              ? (json_['identitySources'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           oauthSettings: json_.containsKey('oauthSettings')
               ? OAuthSettings.fromJson(
                   json_['oauthSettings'] as core.Map<core.String, core.dynamic>)
@@ -1088,6 +1108,12 @@ class AccessSettings {
               ? ReauthSettings.fromJson(json_['reauthSettings']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          workforceIdentitySettings:
+              json_.containsKey('workforceIdentitySettings')
+                  ? WorkforceIdentitySettings.fromJson(
+                      json_['workforceIdentitySettings']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1095,10 +1121,13 @@ class AccessSettings {
           'allowedDomainsSettings': allowedDomainsSettings!,
         if (corsSettings != null) 'corsSettings': corsSettings!,
         if (gcipSettings != null) 'gcipSettings': gcipSettings!,
+        if (identitySources != null) 'identitySources': identitySources!,
         if (oauthSettings != null) 'oauthSettings': oauthSettings!,
         if (policyDelegationSettings != null)
           'policyDelegationSettings': policyDelegationSettings!,
         if (reauthSettings != null) 'reauthSettings': reauthSettings!,
+        if (workforceIdentitySettings != null)
+          'workforceIdentitySettings': workforceIdentitySettings!,
       };
 }
 
@@ -1557,7 +1586,7 @@ class GetIamPolicyRequest {
 }
 
 /// Encapsulates settings provided to GetIamPolicy.
-typedef GetPolicyOptions = $GetPolicyOptions;
+typedef GetPolicyOptions = $GetPolicyOptions00;
 
 /// The IAP configurable settings.
 class IapSettings {
@@ -1729,6 +1758,51 @@ class ListTunnelDestGroupsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (tunnelDestGroups != null) 'tunnelDestGroups': tunnelDestGroups!,
+      };
+}
+
+/// The OAuth 2.0 Settings
+class OAuth2 {
+  /// The OAuth 2.0 client ID registered in the workforce identity federation
+  /// OAuth 2.0 Server.
+  core.String? clientId;
+
+  /// Input only.
+  ///
+  /// The OAuth 2.0 client secret created while registering the client ID.
+  core.String? clientSecret;
+
+  /// SHA256 hash value for the client secret.
+  ///
+  /// This field is returned by IAP when the settings are retrieved.
+  ///
+  /// Output only.
+  core.String? clientSecretSha256;
+
+  OAuth2({
+    this.clientId,
+    this.clientSecret,
+    this.clientSecretSha256,
+  });
+
+  OAuth2.fromJson(core.Map json_)
+      : this(
+          clientId: json_.containsKey('clientId')
+              ? json_['clientId'] as core.String
+              : null,
+          clientSecret: json_.containsKey('clientSecret')
+              ? json_['clientSecret'] as core.String
+              : null,
+          clientSecretSha256: json_.containsKey('clientSecretSha256')
+              ? json_['clientSecretSha256'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (clientId != null) 'clientId': clientId!,
+        if (clientSecret != null) 'clientSecret': clientSecret!,
+        if (clientSecretSha256 != null)
+          'clientSecretSha256': clientSecretSha256!,
       };
 }
 
@@ -2077,16 +2151,17 @@ class Resource {
   /// about your use case.
   core.Map<core.String, core.String>? labels;
 
-  /// Name of the resource on which conditions will be evaluated.
+  /// The **relative** name of the resource, which is the URI path of the
+  /// resource without the leading "/".
   ///
-  /// Must use the Relative Resource Name of the resource, which is the URI path
-  /// of the resource without the leading "/". Examples are
-  /// "projects/_/buckets/\[BUCKET-ID\]" for storage buckets or
-  /// "projects/\[PROJECT-ID\]/global/firewalls/\[FIREWALL-ID\]" for a firewall.
-  /// This field is required for evaluating conditions with rules on resource
-  /// names. For a `list` permission check, the resource.name value must be set
-  /// to the parent resource. If the parent resource is a project, this field
-  /// should be left unset.
+  /// See
+  /// https://cloud.google.com/iam/docs/conditions-resource-attributes#resource-name
+  /// for examples used by other GCP Services. This field is **required** for
+  /// services integrated with resource-attribute-based IAM conditions and/or
+  /// CustomOrgPolicy. This field requires special handling for parents-only
+  /// permissions such as `create` and `list`. See the document linked below for
+  /// further details. See go/iam-conditions-sig-g3#populate-resource-attributes
+  /// for specific details on populating this field.
   core.String? name;
 
   /// The name of the service this resource belongs to.
@@ -2095,18 +2170,28 @@ class Resource {
   /// in service configurations under //configs/cloud/resourcetypes. For
   /// example, the official_service_name of cloud resource manager service is
   /// set as 'cloudresourcemanager.googleapis.com' according to
-  /// //configs/cloud/resourcetypes/google/cloud/resourcemanager/prod.yaml
+  /// //configs/cloud/resourcetypes/google/cloud/resourcemanager/prod.yaml This
+  /// field is **required** for services integrated with
+  /// resource-attribute-based IAM conditions and/or CustomOrgPolicy. This field
+  /// requires special handling for parents-only permissions such as `create`
+  /// and `list`. See the document linked below for further details. See
+  /// go/iam-conditions-sig-g3#populate-resource-attributes for specific details
+  /// on populating this field.
   core.String? service;
 
-  /// The public resource type name of the resource on which conditions will be
-  /// evaluated.
+  /// The public resource type name of the resource.
   ///
   /// It is configured using the official_name of the ResourceType as defined in
   /// service configurations under //configs/cloud/resourcetypes. For example,
   /// the official_name for GCP projects is set as
   /// 'cloudresourcemanager.googleapis.com/Project' according to
-  /// //configs/cloud/resourcetypes/google/cloud/resourcemanager/prod.yaml For
-  /// details see go/iam-conditions-integration-guide.
+  /// //configs/cloud/resourcetypes/google/cloud/resourcemanager/prod.yaml This
+  /// field is **required** for services integrated with
+  /// resource-attribute-based IAM conditions and/or CustomOrgPolicy. This field
+  /// requires special handling for parents-only permissions such as `create`
+  /// and `list`. See the document linked below for further details. See
+  /// go/iam-conditions-sig-g3#populate-resource-attributes for specific details
+  /// on populating this field.
   core.String? type;
 
   Resource({
@@ -2232,3 +2317,40 @@ class TunnelDestGroup {
 ///
 /// In the future, this response can hold AST validation info.
 typedef ValidateIapAttributeExpressionResponse = $Empty;
+
+/// WorkforceIdentitySettings allows customers to configure workforce pools and
+/// OAuth 2.0 settings to gate their applications using a third-party IdP with
+/// access control.
+class WorkforceIdentitySettings {
+  /// OAuth 2.0 settings for IAP to perform OIDC flow with workforce identity
+  /// federation services.
+  OAuth2? oauth2;
+
+  /// The workforce pool resources.
+  ///
+  /// Only one workforce pool is accepted.
+  core.List<core.String>? workforcePools;
+
+  WorkforceIdentitySettings({
+    this.oauth2,
+    this.workforcePools,
+  });
+
+  WorkforceIdentitySettings.fromJson(core.Map json_)
+      : this(
+          oauth2: json_.containsKey('oauth2')
+              ? OAuth2.fromJson(
+                  json_['oauth2'] as core.Map<core.String, core.dynamic>)
+              : null,
+          workforcePools: json_.containsKey('workforcePools')
+              ? (json_['workforcePools'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (oauth2 != null) 'oauth2': oauth2!,
+        if (workforcePools != null) 'workforcePools': workforcePools!,
+      };
+}

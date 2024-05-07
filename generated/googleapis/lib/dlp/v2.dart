@@ -12677,7 +12677,13 @@ class GooglePrivacyDlpV2Export {
   /// Store all table and column profiles in an existing table or a new table in
   /// an existing dataset.
   ///
-  /// Each re-generation will result in a new row in BigQuery.
+  /// Each re-generation will result in new rows in BigQuery. Data is inserted
+  /// using
+  /// [streaming insert](https://cloud.google.com/blog/products/bigquery/life-of-a-bigquery-streaming-insert)
+  /// and so data may be in the buffer for a period of time after the profile
+  /// has finished. The Pub/Sub notification is sent before the streaming buffer
+  /// is guaranteed to be written, so data may not be instantly visible to
+  /// queries by the time your topic receives the Pub/Sub notification.
   GooglePrivacyDlpV2BigQueryTable? profileTable;
 
   GooglePrivacyDlpV2Export({
@@ -13675,6 +13681,8 @@ class GooglePrivacyDlpV2InfoType {
 
 /// Classification of infoTypes to organize them according to geographic
 /// location, industry, and data type.
+///
+/// NEXT_ID: 48
 class GooglePrivacyDlpV2InfoTypeCategory {
   /// The group of relevant businesses where this infoType is commonly used
   /// Possible string values are:
@@ -13711,6 +13719,7 @@ class GooglePrivacyDlpV2InfoTypeCategory {
   /// - "ISRAEL" : The infoType is typically used in Israel.
   /// - "ITALY" : The infoType is typically used in Italy.
   /// - "JAPAN" : The infoType is typically used in Japan.
+  /// - "KAZAKHSTAN" : The infoType is typically used in Kazakhstan.
   /// - "KOREA" : The infoType is typically used in Korea.
   /// - "MEXICO" : The infoType is typically used in Mexico.
   /// - "THE_NETHERLANDS" : The infoType is typically used in the Netherlands.
@@ -13720,6 +13729,7 @@ class GooglePrivacyDlpV2InfoTypeCategory {
   /// - "PERU" : The infoType is typically used in Peru.
   /// - "POLAND" : The infoType is typically used in Poland.
   /// - "PORTUGAL" : The infoType is typically used in Portugal.
+  /// - "RUSSIA" : The infoType is typically used in Russia.
   /// - "SINGAPORE" : The infoType is typically used in Singapore.
   /// - "SOUTH_AFRICA" : The infoType is typically used in South Africa.
   /// - "SPAIN" : The infoType is typically used in Spain.
@@ -13728,9 +13738,11 @@ class GooglePrivacyDlpV2InfoTypeCategory {
   /// - "TAIWAN" : The infoType is typically used in Taiwan.
   /// - "THAILAND" : The infoType is typically used in Thailand.
   /// - "TURKEY" : The infoType is typically used in Turkey.
+  /// - "UKRAINE" : The infoType is typically used in Ukraine.
   /// - "UNITED_KINGDOM" : The infoType is typically used in the United Kingdom.
   /// - "UNITED_STATES" : The infoType is typically used in the United States.
   /// - "URUGUAY" : The infoType is typically used in Uruguay.
+  /// - "UZBEKISTAN" : The infoType is typically used in Uzbekistan.
   /// - "VENEZUELA" : The infoType is typically used in Venezuela.
   /// - "INTERNAL" : The infoType is typically used in Google internally.
   core.String? locationCategory;
@@ -17623,6 +17635,10 @@ class GooglePrivacyDlpV2Result {
   /// inspect job.
   core.List<GooglePrivacyDlpV2InfoTypeStats>? infoTypeStats;
 
+  /// Number of rows scanned post sampling and time filtering (Applicable for
+  /// row based stores such as BigQuery).
+  core.String? numRowsProcessed;
+
   /// Total size in bytes that were processed.
   core.String? processedBytes;
 
@@ -17632,6 +17648,7 @@ class GooglePrivacyDlpV2Result {
   GooglePrivacyDlpV2Result({
     this.hybridStats,
     this.infoTypeStats,
+    this.numRowsProcessed,
     this.processedBytes,
     this.totalEstimatedBytes,
   });
@@ -17648,6 +17665,9 @@ class GooglePrivacyDlpV2Result {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          numRowsProcessed: json_.containsKey('numRowsProcessed')
+              ? json_['numRowsProcessed'] as core.String
+              : null,
           processedBytes: json_.containsKey('processedBytes')
               ? json_['processedBytes'] as core.String
               : null,
@@ -17659,6 +17679,7 @@ class GooglePrivacyDlpV2Result {
   core.Map<core.String, core.dynamic> toJson() => {
         if (hybridStats != null) 'hybridStats': hybridStats!,
         if (infoTypeStats != null) 'infoTypeStats': infoTypeStats!,
+        if (numRowsProcessed != null) 'numRowsProcessed': numRowsProcessed!,
         if (processedBytes != null) 'processedBytes': processedBytes!,
         if (totalEstimatedBytes != null)
           'totalEstimatedBytes': totalEstimatedBytes!,
@@ -18900,7 +18921,12 @@ class GooglePrivacyDlpV2TimespanConfig {
   ///
   /// This will be based on the time of the execution of the last run of the
   /// JobTrigger or the timespan end_time used in the last run of the
-  /// JobTrigger.
+  /// JobTrigger. *For BigQuery* Inspect jobs triggered by automatic population
+  /// will scan data that is at least three hours old when the job starts. This
+  /// is because streaming buffer rows are not read during inspection and
+  /// reading up to the current timestamp will result in skipped rows. See the
+  /// [known issue](https://cloud.google.com/sensitive-data-protection/docs/known-issues#recently-streamed-data)
+  /// related to this operation.
   core.bool? enableAutoPopulationOfTimespanConfig;
 
   /// Exclude files, tables, or rows newer than this value.

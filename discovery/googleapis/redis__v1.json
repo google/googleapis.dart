@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240327",
+    "revision": "20240425",
     "rootUrl": "https://redis.googleapis.com/",
     "servicePath": "",
     "title": "Google Cloud Memorystore for Redis API",
@@ -871,6 +871,10 @@
                     ],
                     "type": "string"
                 },
+                "crossRegionReplicaConfigured": {
+                    "description": "Checks for resources that are configured to have redundancy, and ongoing replication across regions",
+                    "type": "boolean"
+                },
                 "externalReplicaConfigured": {
                     "type": "boolean"
                 },
@@ -984,6 +988,10 @@
                     "format": "google-datetime",
                     "readOnly": true,
                     "type": "string"
+                },
+                "deletionProtectionEnabled": {
+                    "description": "Optional. The delete operation will fail when the value is set to true.",
+                    "type": "boolean"
                 },
                 "discoveryEndpoints": {
                     "description": "Output only. Endpoints created on each given network, for Redis clients to connect to the cluster. Currently only one discovery endpoint is supported.",
@@ -2072,17 +2080,10 @@
                     "description": "An enum that represents the type of this entitlement.",
                     "enum": [
                         "ENTITLEMENT_TYPE_UNSPECIFIED",
-                        "DUET_AI",
                         "GEMINI"
-                    ],
-                    "enumDeprecated": [
-                        false,
-                        true,
-                        false
                     ],
                     "enumDescriptions": [
                         "",
-                        "The root entitlement representing Duet AI package ownership.",
                         "The root entitlement representing Gemini package ownership."
                     ],
                     "type": "string"
@@ -2951,6 +2952,7 @@
                         "PRODUCT_TYPE_ON_PREM",
                         "ON_PREM",
                         "PRODUCT_TYPE_MEMORYSTORE",
+                        "PRODUCT_TYPE_BIGTABLE",
                         "PRODUCT_TYPE_OTHER"
                     ],
                     "enumDeprecated": [
@@ -2962,6 +2964,7 @@
                         false,
                         false,
                         true,
+                        false,
                         false,
                         false
                     ],
@@ -2975,6 +2978,7 @@
                         "On premises database product.",
                         "On premises database product.",
                         "Memorystore product area in GCP",
+                        "Bigtable product area in GCP",
                         "Other refers to rest of other product type. This is to be when product type is known, but it is not present in this enum."
                     ],
                     "type": "string"

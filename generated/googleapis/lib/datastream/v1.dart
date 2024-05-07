@@ -1744,6 +1744,10 @@ class ProjectsLocationsStreamsObjectsResource {
   }
 }
 
+/// AppendOnly mode defines that all changes to a table will be written to the
+/// destination table.
+typedef AppendOnly = $Empty;
+
 /// AVRO file format configuration.
 typedef AvroFileFormat = $Empty;
 
@@ -1891,6 +1895,9 @@ typedef BackfillNoneStrategy = $Empty;
 
 /// BigQuery destination configuration
 class BigQueryDestinationConfig {
+  /// Append only mode
+  AppendOnly? appendOnly;
+
   /// The guaranteed data freshness (in seconds) when querying tables created by
   /// the stream.
   ///
@@ -1899,6 +1906,9 @@ class BigQueryDestinationConfig {
   /// return fresher data, but may result in higher cost.
   core.String? dataFreshness;
 
+  /// The standard mode
+  Merge? merge;
+
   /// Single destination dataset.
   SingleTargetDataset? singleTargetDataset;
 
@@ -1906,15 +1916,25 @@ class BigQueryDestinationConfig {
   SourceHierarchyDatasets? sourceHierarchyDatasets;
 
   BigQueryDestinationConfig({
+    this.appendOnly,
     this.dataFreshness,
+    this.merge,
     this.singleTargetDataset,
     this.sourceHierarchyDatasets,
   });
 
   BigQueryDestinationConfig.fromJson(core.Map json_)
       : this(
+          appendOnly: json_.containsKey('appendOnly')
+              ? AppendOnly.fromJson(
+                  json_['appendOnly'] as core.Map<core.String, core.dynamic>)
+              : null,
           dataFreshness: json_.containsKey('dataFreshness')
               ? json_['dataFreshness'] as core.String
+              : null,
+          merge: json_.containsKey('merge')
+              ? Merge.fromJson(
+                  json_['merge'] as core.Map<core.String, core.dynamic>)
               : null,
           singleTargetDataset: json_.containsKey('singleTargetDataset')
               ? SingleTargetDataset.fromJson(json_['singleTargetDataset']
@@ -1928,7 +1948,9 @@ class BigQueryDestinationConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (appendOnly != null) 'appendOnly': appendOnly!,
         if (dataFreshness != null) 'dataFreshness': dataFreshness!,
+        if (merge != null) 'merge': merge!,
         if (singleTargetDataset != null)
           'singleTargetDataset': singleTargetDataset!,
         if (sourceHierarchyDatasets != null)
@@ -2896,6 +2918,10 @@ class LookupStreamObjectRequest {
           'sourceObjectIdentifier': sourceObjectIdentifier!,
       };
 }
+
+/// Merge mode defines that all changes to a table will be merged at the
+/// destination table.
+typedef Merge = $Empty;
 
 /// CDC strategy to start replicating from the most recent position in the
 /// source.

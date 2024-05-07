@@ -237,6 +237,7 @@ api.Auth buildAuth() {
     o.accessLevels = buildUnnamed2();
     o.audiences = buildUnnamed3();
     o.claims = buildUnnamed4();
+    o.credentialId = 'foo';
     o.presenter = 'foo';
     o.principal = 'foo';
   }
@@ -250,6 +251,10 @@ void checkAuth(api.Auth o) {
     checkUnnamed2(o.accessLevels!);
     checkUnnamed3(o.audiences!);
     checkUnnamed4(o.claims!);
+    unittest.expect(
+      o.credentialId!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.presenter!,
       unittest.equals('foo'),

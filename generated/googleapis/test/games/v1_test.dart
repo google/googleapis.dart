@@ -2494,6 +2494,27 @@ void checkResetPersonaResponse(api.ResetPersonaResponse o) {
   buildCounterResetPersonaResponse--;
 }
 
+core.int buildCounterRetrieveDeveloperGamesLastPlayerTokenResponse = 0;
+api.RetrieveDeveloperGamesLastPlayerTokenResponse
+    buildRetrieveDeveloperGamesLastPlayerTokenResponse() {
+  final o = api.RetrieveDeveloperGamesLastPlayerTokenResponse();
+  buildCounterRetrieveDeveloperGamesLastPlayerTokenResponse++;
+  if (buildCounterRetrieveDeveloperGamesLastPlayerTokenResponse < 3) {
+    o.token = buildRecallToken();
+  }
+  buildCounterRetrieveDeveloperGamesLastPlayerTokenResponse--;
+  return o;
+}
+
+void checkRetrieveDeveloperGamesLastPlayerTokenResponse(
+    api.RetrieveDeveloperGamesLastPlayerTokenResponse o) {
+  buildCounterRetrieveDeveloperGamesLastPlayerTokenResponse++;
+  if (buildCounterRetrieveDeveloperGamesLastPlayerTokenResponse < 3) {
+    checkRecallToken(o.token!);
+  }
+  buildCounterRetrieveDeveloperGamesLastPlayerTokenResponse--;
+}
+
 core.List<api.RecallToken> buildUnnamed26() => [
       buildRecallToken(),
       buildRecallToken(),
@@ -3534,6 +3555,17 @@ void main() {
       final od = api.ResetPersonaResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkResetPersonaResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-RetrieveDeveloperGamesLastPlayerTokenResponse',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRetrieveDeveloperGamesLastPlayerTokenResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RetrieveDeveloperGamesLastPlayerTokenResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRetrieveDeveloperGamesLastPlayerTokenResponse(od);
     });
   });
 
@@ -5131,6 +5163,66 @@ void main() {
   });
 
   unittest.group('resource-RecallResource', () {
+    unittest.test('method--lastTokenFromAllDeveloperGames', () async {
+      final mock = HttpServerMock();
+      final res = api.GamesApi(mock).recall;
+      final arg_sessionId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 46),
+          unittest.equals('games/v1/recall/developerGamesLastPlayerToken/'),
+        );
+        pathOffset += 46;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_sessionId'),
+        );
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildRetrieveDeveloperGamesLastPlayerTokenResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.lastTokenFromAllDeveloperGames(arg_sessionId,
+          $fields: arg_$fields);
+      checkRetrieveDeveloperGamesLastPlayerTokenResponse(
+          response as api.RetrieveDeveloperGamesLastPlayerTokenResponse);
+    });
+
     unittest.test('method--linkPersona', () async {
       final mock = HttpServerMock();
       final res = api.GamesApi(mock).recall;

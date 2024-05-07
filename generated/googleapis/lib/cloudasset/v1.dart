@@ -4998,9 +4998,12 @@ class GoogleIdentityAccesscontextmanagerV1DevicePolicy {
 /// then that ServicePerimeter must have an IngressPolicy which allows access in
 /// order for this request to succeed.
 class GoogleIdentityAccesscontextmanagerV1EgressFrom {
-  /// A list of identities that are allowed access through this
-  /// \[EgressPolicy\], in the format of `user:{email_id}` or
-  /// `serviceAccount:{email_id}`.
+  /// A list of identities that are allowed access through \[EgressPolicy\].
+  ///
+  /// Identities can be an individual user, service account, Google group, or
+  /// third-party identity. The `v1` identities that have the prefix `user`,
+  /// `group`, `serviceAccount`, `principal`, and `principalSet` in
+  /// https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
   core.List<core.String>? identities;
 
   /// Specifies the type of identities that are allowed access to outside the
@@ -5136,7 +5139,8 @@ class GoogleIdentityAccesscontextmanagerV1EgressTo {
   /// A list of external resources that are allowed to be accessed.
   ///
   /// Only AWS and Azure resources are supported. For Amazon S3, the supported
-  /// format is s3://BUCKET_NAME. For Azure Storage, the supported format is
+  /// formats are s3://BUCKET_NAME, s3a://BUCKET_NAME, and s3n://BUCKET_NAME.
+  /// For Azure Storage, the supported format is
   /// azure://myaccount.blob.core.windows.net/CONTAINER_NAME. A request matches
   /// if it contains an external resource in this list (Example:
   /// s3://bucket/path). Currently '*' is not allowed.
@@ -5197,8 +5201,12 @@ class GoogleIdentityAccesscontextmanagerV1EgressTo {
 /// request must satisfy what is defined in `sources` AND identity related
 /// fields in order to match.
 class GoogleIdentityAccesscontextmanagerV1IngressFrom {
-  /// A list of identities that are allowed access through this ingress policy,
-  /// in the format of `user:{email_id}` or `serviceAccount:{email_id}`.
+  /// A list of identities that are allowed access through \[IngressPolicy\].
+  ///
+  /// Identities can be an individual user, service account, Google group, or
+  /// third-party identity. The `v1` identities that have the prefix `user`,
+  /// `group`, `serviceAccount`, `principal`, and `principalSet` in
+  /// https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
   core.List<core.String>? identities;
 
   /// Specifies the type of identities that are allowed access from outside the
@@ -7697,8 +7705,8 @@ class ResourceSearchResult {
   /// [tag inheritance](https://cloud.google.com/resource-manager/docs/tags/tags-overview#inheritance).
   /// To search against the `effective_tags`: * Use a field query. Example: -
   /// `effectiveTagKeys:"123456789/env*"` - `effectiveTagKeys="123456789/env"` -
-  /// `effectiveTagKeys:"env"` - `effectiveTagValues:"env"` -
-  /// `effectiveTagValues:"env/prod"` -
+  /// `effectiveTagKeys:"env"` - `effectiveTagKeyIds="tagKeys/123"` -
+  /// `effectiveTagValues:"env"` - `effectiveTagValues:"env/prod"` -
   /// `effectiveTagValues:"123456789/env/prod*"` -
   /// `effectiveTagValues="123456789/env/prod"` -
   /// `effectiveTagValueIds="tagValues/456"`
@@ -7889,7 +7897,7 @@ class ResourceSearchResult {
   ///
   /// To search against the `tags`: * Use a field query. Example: -
   /// `tagKeys:"123456789/env*"` - `tagKeys="123456789/env"` - `tagKeys:"env"` -
-  /// `tagValues:"env"` - `tagValues:"env/prod"` -
+  /// `tagKeyIds="tagKeys/123"` - `tagValues:"env"` - `tagValues:"env/prod"` -
   /// `tagValues:"123456789/env/prod*"` - `tagValues="123456789/env/prod"` -
   /// `tagValueIds="tagValues/456"` * Use a free text query. Example: -
   /// `env/prod`
@@ -8517,6 +8525,9 @@ class Tag {
   /// TagKey namespaced name, in the format of {ORG_ID}/{TAG_KEY_SHORT_NAME}.
   core.String? tagKey;
 
+  /// TagKey ID, in the format of tagKeys/{TAG_KEY_ID}.
+  core.String? tagKeyId;
+
   /// TagValue namespaced name, in the format of
   /// {ORG_ID}/{TAG_KEY_SHORT_NAME}/{TAG_VALUE_SHORT_NAME}.
   core.String? tagValue;
@@ -8526,6 +8537,7 @@ class Tag {
 
   Tag({
     this.tagKey,
+    this.tagKeyId,
     this.tagValue,
     this.tagValueId,
   });
@@ -8534,6 +8546,9 @@ class Tag {
       : this(
           tagKey: json_.containsKey('tagKey')
               ? json_['tagKey'] as core.String
+              : null,
+          tagKeyId: json_.containsKey('tagKeyId')
+              ? json_['tagKeyId'] as core.String
               : null,
           tagValue: json_.containsKey('tagValue')
               ? json_['tagValue'] as core.String
@@ -8545,6 +8560,7 @@ class Tag {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (tagKey != null) 'tagKey': tagKey!,
+        if (tagKeyId != null) 'tagKeyId': tagKeyId!,
         if (tagValue != null) 'tagValue': tagValue!,
         if (tagValueId != null) 'tagValueId': tagValueId!,
       };

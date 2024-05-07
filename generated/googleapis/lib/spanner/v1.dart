@@ -1555,6 +1555,19 @@ class ProjectsInstancesBackupsResource {
   /// encryption_type is `CUSTOMER_MANAGED_ENCRYPTION`. Values are of the form
   /// `projects//locations//keyRings//cryptoKeys/`.
   ///
+  /// [encryptionConfig_kmsKeyNames] - Optional. Specifies the KMS configuration
+  /// for the one or more keys used to protect the backup. Values are of the
+  /// form `projects//locations//keyRings//cryptoKeys/`. The keys referenced by
+  /// kms_key_names must fully cover all regions of the backup's instance
+  /// configuration. Some examples: * For single region instance configs,
+  /// specify a single regional location KMS key. * For multi-regional instance
+  /// configs of type GOOGLE_MANAGED, either specify a multi-regional location
+  /// KMS key or multiple regional location KMS keys that cover all regions in
+  /// the instance config. * For an instance config of type USER_MANAGED, please
+  /// specify only regional location KMS keys to cover each region in the
+  /// instance config. Multi-regional location KMS keys are not supported for
+  /// USER_MANAGED instance configs.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1571,6 +1584,7 @@ class ProjectsInstancesBackupsResource {
     core.String? backupId,
     core.String? encryptionConfig_encryptionType,
     core.String? encryptionConfig_kmsKeyName,
+    core.List<core.String>? encryptionConfig_kmsKeyNames,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
@@ -1580,6 +1594,8 @@ class ProjectsInstancesBackupsResource {
         'encryptionConfig.encryptionType': [encryptionConfig_encryptionType],
       if (encryptionConfig_kmsKeyName != null)
         'encryptionConfig.kmsKeyName': [encryptionConfig_kmsKeyName],
+      if (encryptionConfig_kmsKeyNames != null)
+        'encryptionConfig.kmsKeyNames': encryptionConfig_kmsKeyNames,
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -4913,6 +4929,18 @@ class Backup {
   /// Output only.
   EncryptionInfo? encryptionInfo;
 
+  /// The encryption information for the backup, whether it is protected by one
+  /// or more KMS keys.
+  ///
+  /// The information includes all Cloud KMS key versions used to encrypt the
+  /// backup. The \`encryption_status' field inside of each \`EncryptionInfo\`
+  /// is not populated. At least one of the key versions must be available for
+  /// the backup to be restored. If a key version is revoked in the middle of a
+  /// restore, the restore behavior is undefined.
+  ///
+  /// Output only.
+  core.List<EncryptionInfo>? encryptionInformation;
+
   /// Required for the CreateBackup operation.
   ///
   /// The expiration time of the backup, with microseconds granularity that must
@@ -4994,6 +5022,7 @@ class Backup {
     this.database,
     this.databaseDialect,
     this.encryptionInfo,
+    this.encryptionInformation,
     this.expireTime,
     this.maxExpireTime,
     this.name,
@@ -5018,6 +5047,12 @@ class Backup {
           encryptionInfo: json_.containsKey('encryptionInfo')
               ? EncryptionInfo.fromJson(json_['encryptionInfo']
                   as core.Map<core.String, core.dynamic>)
+              : null,
+          encryptionInformation: json_.containsKey('encryptionInformation')
+              ? (json_['encryptionInformation'] as core.List)
+                  .map((value) => EncryptionInfo.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
               : null,
           expireTime: json_.containsKey('expireTime')
               ? json_['expireTime'] as core.String
@@ -5051,6 +5086,8 @@ class Backup {
         if (database != null) 'database': database!,
         if (databaseDialect != null) 'databaseDialect': databaseDialect!,
         if (encryptionInfo != null) 'encryptionInfo': encryptionInfo!,
+        if (encryptionInformation != null)
+          'encryptionInformation': encryptionInformation!,
         if (expireTime != null) 'expireTime': expireTime!,
         if (maxExpireTime != null) 'maxExpireTime': maxExpireTime!,
         if (name != null) 'name': name!,
@@ -5175,17 +5212,17 @@ class BatchCreateSessionsResponse {
 
 /// The request for BatchWrite.
 class BatchWriteRequest {
-  /// When `exclude_txn_from_change_streams` is set to `true`: * Mutations from
-  /// all transactions in this batch write operation will not be recorded in
-  /// change streams with DDL option `allow_txn_exclusion=true` that are
+  /// When `exclude_txn_from_change_streams` is set to `true`: * Modifications
+  /// from all transactions in this batch write operation will not be recorded
+  /// in change streams with DDL option `allow_txn_exclusion=true` that are
   /// tracking columns modified by these transactions.
   ///
-  /// * Mutations from all transactions in this batch write operation will be
-  /// recorded in change streams with DDL option `allow_txn_exclusion=false or
-  /// not set` that are tracking columns modified by these transactions. When
-  /// `exclude_txn_from_change_streams` is set to `false` or not set, mutations
-  /// from all transactions in this batch write operation will be recorded in
-  /// all change streams that are tracking columns modified by these
+  /// * Modifications from all transactions in this batch write operation will
+  /// be recorded in change streams with DDL option `allow_txn_exclusion=false
+  /// or not set` that are tracking columns modified by these transactions. When
+  /// `exclude_txn_from_change_streams` is set to `false` or not set,
+  /// Modifications from all transactions in this batch write operation will be
+  /// recorded in all change streams that are tracking columns modified by these
   /// transactions.
   ///
   /// Optional.
@@ -5472,12 +5509,12 @@ class ChildLink {
 
 /// The request for Commit.
 class CommitRequest {
-  /// The amount of latency this request is willing to incur in order to improve
-  /// throughput.
+  /// The amount of latency this request is configured to incur in order to
+  /// improve throughput.
   ///
   /// If this field is not set, Spanner assumes requests are relatively latency
   /// sensitive and automatically determines an appropriate delay time. You can
-  /// specify a batching delay value between 0 and 500 ms.
+  /// specify a commit delay value between 0 and 500 ms.
   ///
   /// Optional.
   core.String? maxCommitDelay;
@@ -5705,9 +5742,28 @@ class CopyBackupEncryptionConfig {
   /// Optional.
   core.String? kmsKeyName;
 
+  /// Specifies the KMS configuration for the one or more keys used to protect
+  /// the backup.
+  ///
+  /// Values are of the form `projects//locations//keyRings//cryptoKeys/`. Kms
+  /// keys specified can be in any order. The keys referenced by kms_key_names
+  /// must fully cover all regions of the backup's instance configuration. Some
+  /// examples: * For single region instance configs, specify a single regional
+  /// location KMS key. * For multi-regional instance configs of type
+  /// GOOGLE_MANAGED, either specify a multi-regional location KMS key or
+  /// multiple regional location KMS keys that cover all regions in the instance
+  /// config. * For an instance config of type USER_MANAGED, please specify only
+  /// regional location KMS keys to cover each region in the instance config.
+  /// Multi-regional location KMS keys are not supported for USER_MANAGED
+  /// instance configs.
+  ///
+  /// Optional.
+  core.List<core.String>? kmsKeyNames;
+
   CopyBackupEncryptionConfig({
     this.encryptionType,
     this.kmsKeyName,
+    this.kmsKeyNames,
   });
 
   CopyBackupEncryptionConfig.fromJson(core.Map json_)
@@ -5718,11 +5774,17 @@ class CopyBackupEncryptionConfig {
           kmsKeyName: json_.containsKey('kmsKeyName')
               ? json_['kmsKeyName'] as core.String
               : null,
+          kmsKeyNames: json_.containsKey('kmsKeyNames')
+              ? (json_['kmsKeyNames'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (encryptionType != null) 'encryptionType': encryptionType!,
         if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
+        if (kmsKeyNames != null) 'kmsKeyNames': kmsKeyNames!,
       };
 }
 
@@ -6466,8 +6528,25 @@ class EncryptionConfig {
   /// Values are of the form `projects//locations//keyRings//cryptoKeys/`.
   core.String? kmsKeyName;
 
+  /// Specifies the KMS configuration for the one or more keys used to encrypt
+  /// the database.
+  ///
+  /// Values are of the form `projects//locations//keyRings//cryptoKeys/`. The
+  /// keys referenced by kms_key_names must fully cover all regions of the
+  /// database instance configuration. Some examples: * For single region
+  /// database instance configs, specify a single regional location KMS key. *
+  /// For multi-regional database instance configs of type GOOGLE_MANAGED,
+  /// either specify a multi-regional location KMS key or multiple regional
+  /// location KMS keys that cover all regions in the instance config. * For a
+  /// database instance config of type USER_MANAGED, please specify only
+  /// regional location KMS keys to cover each region in the instance config.
+  /// Multi-regional location KMS keys are not supported for USER_MANAGED
+  /// instance configs.
+  core.List<core.String>? kmsKeyNames;
+
   EncryptionConfig({
     this.kmsKeyName,
+    this.kmsKeyNames,
   });
 
   EncryptionConfig.fromJson(core.Map json_)
@@ -6475,10 +6554,16 @@ class EncryptionConfig {
           kmsKeyName: json_.containsKey('kmsKeyName')
               ? json_['kmsKeyName'] as core.String
               : null,
+          kmsKeyNames: json_.containsKey('kmsKeyNames')
+              ? (json_['kmsKeyNames'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
+        if (kmsKeyNames != null) 'kmsKeyNames': kmsKeyNames!,
       };
 }
 
@@ -7064,7 +7149,7 @@ class GetIamPolicyRequest {
 }
 
 /// Encapsulates settings provided to GetIamPolicy.
-typedef GetPolicyOptions = $GetPolicyOptions;
+typedef GetPolicyOptions = $GetPolicyOptions00;
 
 /// An IncludeReplicas contains a repeated set of ReplicaSelection which
 /// indicates the order in which replicas should be considered.
@@ -10259,9 +10344,28 @@ class RestoreDatabaseEncryptionConfig {
   /// Optional.
   core.String? kmsKeyName;
 
+  /// Specifies the KMS configuration for the one or more keys used to encrypt
+  /// the database.
+  ///
+  /// Values are of the form `projects//locations//keyRings//cryptoKeys/`. The
+  /// keys referenced by kms_key_names must fully cover all regions of the
+  /// database instance configuration. Some examples: * For single region
+  /// database instance configs, specify a single regional location KMS key. *
+  /// For multi-regional database instance configs of type GOOGLE_MANAGED,
+  /// either specify a multi-regional location KMS key or multiple regional
+  /// location KMS keys that cover all regions in the instance config. * For a
+  /// database instance config of type USER_MANAGED, please specify only
+  /// regional location KMS keys to cover each region in the instance config.
+  /// Multi-regional location KMS keys are not supported for USER_MANAGED
+  /// instance configs.
+  ///
+  /// Optional.
+  core.List<core.String>? kmsKeyNames;
+
   RestoreDatabaseEncryptionConfig({
     this.encryptionType,
     this.kmsKeyName,
+    this.kmsKeyNames,
   });
 
   RestoreDatabaseEncryptionConfig.fromJson(core.Map json_)
@@ -10272,11 +10376,17 @@ class RestoreDatabaseEncryptionConfig {
           kmsKeyName: json_.containsKey('kmsKeyName')
               ? json_['kmsKeyName'] as core.String
               : null,
+          kmsKeyNames: json_.containsKey('kmsKeyNames')
+              ? (json_['kmsKeyNames'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (encryptionType != null) 'encryptionType': encryptionType!,
         if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
+        if (kmsKeyNames != null) 'kmsKeyNames': kmsKeyNames!,
       };
 }
 
@@ -11053,59 +11163,64 @@ class Transaction {
 /// successfully committing the retry, the client should execute the retry in
 /// the same session as the original attempt. The original session's lock
 /// priority increases with each consecutive abort, meaning that each attempt
-/// has a slightly better chance of success than the previous. Under some
-/// circumstances (for example, many transactions attempting to modify the same
-/// row(s)), a transaction can abort many times in a short period before
-/// successfully committing. Thus, it is not a good idea to cap the number of
-/// retries a transaction can attempt; instead, it is better to limit the total
-/// amount of time spent retrying. Idle transactions: A transaction is
-/// considered idle if it has no outstanding reads or SQL queries and has not
-/// started a read or SQL query within the last 10 seconds. Idle transactions
-/// can be aborted by Cloud Spanner so that they don't hold on to locks
-/// indefinitely. If an idle transaction is aborted, the commit will fail with
-/// error `ABORTED`. If this behavior is undesirable, periodically executing a
-/// simple SQL query in the transaction (for example, `SELECT 1`) prevents the
-/// transaction from becoming idle. Snapshot read-only transactions: Snapshot
-/// read-only transactions provides a simpler method than locking read-write
-/// transactions for doing several consistent reads. However, this type of
-/// transaction does not support writes. Snapshot transactions do not take
-/// locks. Instead, they work by choosing a Cloud Spanner timestamp, then
-/// executing all reads at that timestamp. Since they do not acquire locks, they
-/// do not block concurrent read-write transactions. Unlike locking read-write
-/// transactions, snapshot read-only transactions never abort. They can fail if
-/// the chosen read timestamp is garbage collected; however, the default garbage
-/// collection policy is generous enough that most applications do not need to
-/// worry about this in practice. Snapshot read-only transactions do not need to
-/// call Commit or Rollback (and in fact are not permitted to do so). To execute
-/// a snapshot transaction, the client specifies a timestamp bound, which tells
-/// Cloud Spanner how to choose a read timestamp. The types of timestamp bound
-/// are: - Strong (the default). - Bounded staleness. - Exact staleness. If the
-/// Cloud Spanner database to be read is geographically distributed, stale
-/// read-only transactions can execute more quickly than strong or read-write
-/// transactions, because they are able to execute far from the leader replica.
-/// Each type of timestamp bound is discussed in detail below. Strong: Strong
-/// reads are guaranteed to see the effects of all transactions that have
-/// committed before the start of the read. Furthermore, all rows yielded by a
-/// single read are consistent with each other -- if any part of the read
-/// observes a transaction, all parts of the read see the transaction. Strong
-/// reads are not repeatable: two consecutive strong read-only transactions
-/// might return inconsistent results if there are concurrent writes. If
-/// consistency across reads is required, the reads should be executed within a
-/// transaction or at an exact read timestamp. Queries on change streams (see
-/// below for more details) must also specify the strong read timestamp bound.
-/// See TransactionOptions.ReadOnly.strong. Exact staleness: These timestamp
-/// bounds execute reads at a user-specified timestamp. Reads at a timestamp are
-/// guaranteed to see a consistent prefix of the global transaction history:
-/// they observe modifications done by all transactions with a commit timestamp
-/// less than or equal to the read timestamp, and observe none of the
-/// modifications done by transactions with a larger commit timestamp. They will
-/// block until all conflicting transactions that may be assigned commit
-/// timestamps \<= the read timestamp have finished. The timestamp can either be
-/// expressed as an absolute Cloud Spanner commit timestamp or a staleness
-/// relative to the current time. These modes do not require a "negotiation
-/// phase" to pick a timestamp. As a result, they execute slightly faster than
-/// the equivalent boundedly stale concurrency modes. On the other hand,
-/// boundedly stale reads usually return fresher results. See
+/// has a slightly better chance of success than the previous. Note that the
+/// lock priority is preserved per session (not per transaction). Lock priority
+/// is set by the first read or write in the first attempt of a read-write
+/// transaction. If the application starts a new session to retry the whole
+/// transaction, the transaction loses its original lock priority. Moreover, the
+/// lock priority is only preserved if the transaction fails with an `ABORTED`
+/// error. Under some circumstances (for example, many transactions attempting
+/// to modify the same row(s)), a transaction can abort many times in a short
+/// period before successfully committing. Thus, it is not a good idea to cap
+/// the number of retries a transaction can attempt; instead, it is better to
+/// limit the total amount of time spent retrying. Idle transactions: A
+/// transaction is considered idle if it has no outstanding reads or SQL queries
+/// and has not started a read or SQL query within the last 10 seconds. Idle
+/// transactions can be aborted by Cloud Spanner so that they don't hold on to
+/// locks indefinitely. If an idle transaction is aborted, the commit will fail
+/// with error `ABORTED`. If this behavior is undesirable, periodically
+/// executing a simple SQL query in the transaction (for example, `SELECT 1`)
+/// prevents the transaction from becoming idle. Snapshot read-only
+/// transactions: Snapshot read-only transactions provides a simpler method than
+/// locking read-write transactions for doing several consistent reads. However,
+/// this type of transaction does not support writes. Snapshot transactions do
+/// not take locks. Instead, they work by choosing a Cloud Spanner timestamp,
+/// then executing all reads at that timestamp. Since they do not acquire locks,
+/// they do not block concurrent read-write transactions. Unlike locking
+/// read-write transactions, snapshot read-only transactions never abort. They
+/// can fail if the chosen read timestamp is garbage collected; however, the
+/// default garbage collection policy is generous enough that most applications
+/// do not need to worry about this in practice. Snapshot read-only transactions
+/// do not need to call Commit or Rollback (and in fact are not permitted to do
+/// so). To execute a snapshot transaction, the client specifies a timestamp
+/// bound, which tells Cloud Spanner how to choose a read timestamp. The types
+/// of timestamp bound are: - Strong (the default). - Bounded staleness. - Exact
+/// staleness. If the Cloud Spanner database to be read is geographically
+/// distributed, stale read-only transactions can execute more quickly than
+/// strong or read-write transactions, because they are able to execute far from
+/// the leader replica. Each type of timestamp bound is discussed in detail
+/// below. Strong: Strong reads are guaranteed to see the effects of all
+/// transactions that have committed before the start of the read. Furthermore,
+/// all rows yielded by a single read are consistent with each other -- if any
+/// part of the read observes a transaction, all parts of the read see the
+/// transaction. Strong reads are not repeatable: two consecutive strong
+/// read-only transactions might return inconsistent results if there are
+/// concurrent writes. If consistency across reads is required, the reads should
+/// be executed within a transaction or at an exact read timestamp. Queries on
+/// change streams (see below for more details) must also specify the strong
+/// read timestamp bound. See TransactionOptions.ReadOnly.strong. Exact
+/// staleness: These timestamp bounds execute reads at a user-specified
+/// timestamp. Reads at a timestamp are guaranteed to see a consistent prefix of
+/// the global transaction history: they observe modifications done by all
+/// transactions with a commit timestamp less than or equal to the read
+/// timestamp, and observe none of the modifications done by transactions with a
+/// larger commit timestamp. They will block until all conflicting transactions
+/// that may be assigned commit timestamps \<= the read timestamp have finished.
+/// The timestamp can either be expressed as an absolute Cloud Spanner commit
+/// timestamp or a staleness relative to the current time. These modes do not
+/// require a "negotiation phase" to pick a timestamp. As a result, they execute
+/// slightly faster than the equivalent boundedly stale concurrency modes. On
+/// the other hand, boundedly stale reads usually return fresher results. See
 /// TransactionOptions.ReadOnly.read_timestamp and
 /// TransactionOptions.ReadOnly.exact_staleness. Bounded staleness: Bounded
 /// staleness modes allow Cloud Spanner to pick the read timestamp, subject to a
@@ -11174,9 +11289,9 @@ class Transaction {
 /// atomically to partitions of the table, in independent transactions.
 /// Secondary index rows are updated atomically with the base table rows. -
 /// Partitioned DML does not guarantee exactly-once execution semantics against
-/// a partition. The statement will be applied at least once to each partition.
-/// It is strongly recommended that the DML statement should be idempotent to
-/// avoid unexpected results. For instance, it is potentially dangerous to run a
+/// a partition. The statement is applied at least once to each partition. It is
+/// strongly recommended that the DML statement should be idempotent to avoid
+/// unexpected results. For instance, it is potentially dangerous to run a
 /// statement such as `UPDATE table SET column = column + 1` as it could be run
 /// multiple times against some rows. - The partitions are committed
 /// automatically - there is no support for Commit or Rollback. If the call
@@ -11194,17 +11309,17 @@ class Transaction {
 /// good fit for large, database-wide, operations that are idempotent, such as
 /// deleting old rows from a very large table.
 class TransactionOptions {
-  /// When `exclude_txn_from_change_streams` is set to `true`: * Mutations from
-  /// this transaction will not be recorded in change streams with DDL option
-  /// `allow_txn_exclusion=true` that are tracking columns modified by these
-  /// transactions.
+  /// When `exclude_txn_from_change_streams` is set to `true`: * Modifications
+  /// from this transaction will not be recorded in change streams with DDL
+  /// option `allow_txn_exclusion=true` that are tracking columns modified by
+  /// these transactions.
   ///
-  /// * Mutations from this transaction will be recorded in change streams with
-  /// DDL option `allow_txn_exclusion=false or not set` that are tracking
+  /// * Modifications from this transaction will be recorded in change streams
+  /// with DDL option `allow_txn_exclusion=false or not set` that are tracking
   /// columns modified by these transactions. When
-  /// `exclude_txn_from_change_streams` is set to `false` or not set, mutations
-  /// from this transaction will be recorded in all change streams that are
-  /// tracking columns modified by these transactions.
+  /// `exclude_txn_from_change_streams` is set to `false` or not set,
+  /// Modifications from this transaction will be recorded in all change streams
+  /// that are tracking columns modified by these transactions.
   /// `exclude_txn_from_change_streams` may only be specified for read-write or
   /// partitioned-dml transactions, otherwise the API will return an
   /// `INVALID_ARGUMENT` error.

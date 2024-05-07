@@ -557,6 +557,13 @@ Creates and runs virtual machines on Google Cloud Platform.
 - [Original documentation](https://cloud.google.com/compute/)
 - [Dart package details](https://pub.dev/documentation/googleapis/13.2.0-wip/compute_v1/compute_v1-library.html)
 
+#### Infrastructure Manager API - `config/v1`
+
+Creates and manages Google Cloud Platform resources and infrastructure.
+
+- [Original documentation](https://cloud.google.com/infrastructure-manager/docs)
+- [Dart package details](https://pub.dev/documentation/googleapis/13.2.0-wip/config_v1/config_v1-library.html)
+
 #### Connectors API - `connectors/v1`
 
 Enables users to create and manage connections to Google Cloud services and third-party business applications using the Connectors interface.
@@ -1054,6 +1061,11 @@ Notifies Google Web Search when your web pages change.
 
 - [Original documentation](https://developers.google.com/search/apis/indexing-api/)
 - [Dart package details](https://pub.dev/documentation/googleapis/13.2.0-wip/indexing_v3/indexing_v3-library.html)
+
+#### Application Integration API - `integrations/v1`
+
+- [Original documentation](https://cloud.google.com/application-integration)
+- [Dart package details](https://pub.dev/documentation/googleapis/13.2.0-wip/integrations_v1/integrations_v1-library.html)
 
 #### Cloud Talent Solution API - `jobs/v3`
 

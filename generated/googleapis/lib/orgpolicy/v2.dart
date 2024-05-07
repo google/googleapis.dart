@@ -1472,10 +1472,6 @@ class GoogleCloudOrgpolicyV2Constraint {
   /// Indicate that enforcement is on for boolean constraints.
   core.String? constraintDefault;
 
-  /// Defines this constraint as being a CustomConstraint.
-  GoogleCloudOrgpolicyV2ConstraintGoogleDefinedCustomConstraint?
-      customConstraint;
-
   /// Detailed description of what this constraint controls as well as how and
   /// where it is enforced.
   ///
@@ -1486,6 +1482,10 @@ class GoogleCloudOrgpolicyV2Constraint {
   ///
   /// Mutable.
   core.String? displayName;
+
+  /// Defines this constraint as being a GoogleManagedConstraint.
+  GoogleCloudOrgpolicyV2ConstraintGoogleManagedConstraint?
+      googleManagedConstraint;
 
   /// Defines this constraint as being a ListConstraint.
   GoogleCloudOrgpolicyV2ConstraintListConstraint? listConstraint;
@@ -1507,9 +1507,9 @@ class GoogleCloudOrgpolicyV2Constraint {
   GoogleCloudOrgpolicyV2Constraint({
     this.booleanConstraint,
     this.constraintDefault,
-    this.customConstraint,
     this.description,
     this.displayName,
+    this.googleManagedConstraint,
     this.listConstraint,
     this.name,
     this.supportsDryRun,
@@ -1525,16 +1525,16 @@ class GoogleCloudOrgpolicyV2Constraint {
           constraintDefault: json_.containsKey('constraintDefault')
               ? json_['constraintDefault'] as core.String
               : null,
-          customConstraint: json_.containsKey('customConstraint')
-              ? GoogleCloudOrgpolicyV2ConstraintGoogleDefinedCustomConstraint
-                  .fromJson(json_['customConstraint']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
           description: json_.containsKey('description')
               ? json_['description'] as core.String
               : null,
           displayName: json_.containsKey('displayName')
               ? json_['displayName'] as core.String
+              : null,
+          googleManagedConstraint: json_.containsKey('googleManagedConstraint')
+              ? GoogleCloudOrgpolicyV2ConstraintGoogleManagedConstraint
+                  .fromJson(json_['googleManagedConstraint']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           listConstraint: json_.containsKey('listConstraint')
               ? GoogleCloudOrgpolicyV2ConstraintListConstraint.fromJson(
@@ -1550,9 +1550,10 @@ class GoogleCloudOrgpolicyV2Constraint {
   core.Map<core.String, core.dynamic> toJson() => {
         if (booleanConstraint != null) 'booleanConstraint': booleanConstraint!,
         if (constraintDefault != null) 'constraintDefault': constraintDefault!,
-        if (customConstraint != null) 'customConstraint': customConstraint!,
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
+        if (googleManagedConstraint != null)
+          'googleManagedConstraint': googleManagedConstraint!,
         if (listConstraint != null) 'listConstraint': listConstraint!,
         if (name != null) 'name': name!,
         if (supportsDryRun != null) 'supportsDryRun': supportsDryRun!,
@@ -1566,11 +1567,11 @@ class GoogleCloudOrgpolicyV2Constraint {
 /// to that instance.
 typedef GoogleCloudOrgpolicyV2ConstraintBooleanConstraint = $Empty;
 
-/// A Google defined custom constraint.
+/// A Google managed constraint.
 ///
 /// This represents a subset of fields missing from Constraint proto that are
 /// required to describe CustomConstraint
-class GoogleCloudOrgpolicyV2ConstraintGoogleDefinedCustomConstraint {
+class GoogleCloudOrgpolicyV2ConstraintGoogleManagedConstraint {
   /// Allow or deny type.
   /// Possible string values are:
   /// - "ACTION_TYPE_UNSPECIFIED" : Unspecified. Results in an error.
@@ -1594,14 +1595,14 @@ class GoogleCloudOrgpolicyV2ConstraintGoogleDefinedCustomConstraint {
   /// `compute.googleapis.com/Instance`.
   core.List<core.String>? resourceTypes;
 
-  GoogleCloudOrgpolicyV2ConstraintGoogleDefinedCustomConstraint({
+  GoogleCloudOrgpolicyV2ConstraintGoogleManagedConstraint({
     this.actionType,
     this.condition,
     this.methodTypes,
     this.resourceTypes,
   });
 
-  GoogleCloudOrgpolicyV2ConstraintGoogleDefinedCustomConstraint.fromJson(
+  GoogleCloudOrgpolicyV2ConstraintGoogleManagedConstraint.fromJson(
       core.Map json_)
       : this(
           actionType: json_.containsKey('actionType')

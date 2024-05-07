@@ -31,7 +31,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240408",
+    "revision": "20240424",
     "rootUrl": "https://games.googleapis.com/",
     "servicePath": "",
     "title": "Google Play Game Services",
@@ -826,6 +826,30 @@
         },
         "recall": {
             "methods": {
+                "lastTokenFromAllDeveloperGames": {
+                    "description": "Retrieve the last Recall token from all developer games that is associated with the PGS Player principal encoded in the provided recall session id. The API is only available for users that have active PGS Player profile.",
+                    "flatPath": "games/v1/recall/developerGamesLastPlayerToken/{sessionId}",
+                    "httpMethod": "GET",
+                    "id": "games.recall.lastTokenFromAllDeveloperGames",
+                    "parameterOrder": [
+                        "sessionId"
+                    ],
+                    "parameters": {
+                        "sessionId": {
+                            "description": "Required. Opaque server-generated string that encodes all the necessary information to identify the PGS player / Google user and application.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "games/v1/recall/developerGamesLastPlayerToken/{sessionId}",
+                    "response": {
+                        "$ref": "RetrieveDeveloperGamesLastPlayerTokenResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/androidpublisher"
+                    ]
+                },
                 "linkPersona": {
                     "description": "Associate the PGS Player principal encoded in the provided recall session id with an in-game account",
                     "flatPath": "games/v1/recall:linkPersona",
@@ -3142,6 +3166,17 @@
                 "unlinked": {
                     "description": "Required. Whether any tokens were unlinked as a result of this request.",
                     "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "RetrieveDeveloperGamesLastPlayerTokenResponse": {
+            "description": "Recall token data returned from for the RetrieveDeveloperGamesLastPlayerToken RPC",
+            "id": "RetrieveDeveloperGamesLastPlayerTokenResponse",
+            "properties": {
+                "token": {
+                    "$ref": "RecallToken",
+                    "description": "The recall token associated with the requested PGS Player principal. It can be unset if there is no recall token associated with the requested principal."
                 }
             },
             "type": "object"

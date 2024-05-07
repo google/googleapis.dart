@@ -5353,7 +5353,7 @@ class ProjectsLocationsFeatureGroupsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The resource name of the Location to create
-  /// FeatureGroups. Format: `projects/{project}/locations/{location}'`
+  /// FeatureGroups. Format: `projects/{project}/locations/{location}`
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [featureGroupId] - Required. The ID to use for this FeatureGroup, which
@@ -30726,6 +30726,14 @@ class GoogleCloudAiplatformV1Endpoint {
   GoogleCloudAiplatformV1PredictRequestResponseLoggingConfig?
       predictRequestResponseLoggingConfig;
 
+  /// Configuration for private service connect.
+  ///
+  /// network and private_service_connect_config are mutually exclusive.
+  ///
+  /// Optional.
+  GoogleCloudAiplatformV1PrivateServiceConnectConfig?
+      privateServiceConnectConfig;
+
   /// A map from a DeployedModel's ID to the percentage of this Endpoint's
   /// traffic that should be forwarded to that DeployedModel.
   ///
@@ -30752,6 +30760,7 @@ class GoogleCloudAiplatformV1Endpoint {
     this.name,
     this.network,
     this.predictRequestResponseLoggingConfig,
+    this.privateServiceConnectConfig,
     this.trafficSplit,
     this.updateTime,
   });
@@ -30805,6 +30814,12 @@ class GoogleCloudAiplatformV1Endpoint {
                       .fromJson(json_['predictRequestResponseLoggingConfig']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          privateServiceConnectConfig:
+              json_.containsKey('privateServiceConnectConfig')
+                  ? GoogleCloudAiplatformV1PrivateServiceConnectConfig.fromJson(
+                      json_['privateServiceConnectConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           trafficSplit: json_.containsKey('trafficSplit')
               ? (json_['trafficSplit'] as core.Map<core.String, core.dynamic>)
                   .map(
@@ -30836,6 +30851,8 @@ class GoogleCloudAiplatformV1Endpoint {
         if (predictRequestResponseLoggingConfig != null)
           'predictRequestResponseLoggingConfig':
               predictRequestResponseLoggingConfig!,
+        if (privateServiceConnectConfig != null)
+          'privateServiceConnectConfig': privateServiceConnectConfig!,
         if (trafficSplit != null) 'trafficSplit': trafficSplit!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
@@ -35513,12 +35530,18 @@ class GoogleCloudAiplatformV1FindNeighborsRequestQuery {
   /// of matches with the same crowding tag.
   core.int? perCrowdingAttributeNeighborCount;
 
+  /// Represents RRF algorithm that combines search results.
+  ///
+  /// Optional.
+  GoogleCloudAiplatformV1FindNeighborsRequestQueryRRF? rrf;
+
   GoogleCloudAiplatformV1FindNeighborsRequestQuery({
     this.approximateNeighborCount,
     this.datapoint,
     this.fractionLeafNodesToSearchOverride,
     this.neighborCount,
     this.perCrowdingAttributeNeighborCount,
+    this.rrf,
   });
 
   GoogleCloudAiplatformV1FindNeighborsRequestQuery.fromJson(core.Map json_)
@@ -35543,6 +35566,10 @@ class GoogleCloudAiplatformV1FindNeighborsRequestQuery {
               json_.containsKey('perCrowdingAttributeNeighborCount')
                   ? json_['perCrowdingAttributeNeighborCount'] as core.int
                   : null,
+          rrf: json_.containsKey('rrf')
+              ? GoogleCloudAiplatformV1FindNeighborsRequestQueryRRF.fromJson(
+                  json_['rrf'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -35556,6 +35583,34 @@ class GoogleCloudAiplatformV1FindNeighborsRequestQuery {
         if (perCrowdingAttributeNeighborCount != null)
           'perCrowdingAttributeNeighborCount':
               perCrowdingAttributeNeighborCount!,
+        if (rrf != null) 'rrf': rrf!,
+      };
+}
+
+/// Parameters for RRF algorithm that combines search results.
+class GoogleCloudAiplatformV1FindNeighborsRequestQueryRRF {
+  /// Users can provide an alpha value to give more weight to dense vs sparse
+  /// results.
+  ///
+  /// For example, if the alpha is 0, we only return sparse and if the alpha is
+  /// 1, we only return dense.
+  ///
+  /// Required.
+  core.double? alpha;
+
+  GoogleCloudAiplatformV1FindNeighborsRequestQueryRRF({
+    this.alpha,
+  });
+
+  GoogleCloudAiplatformV1FindNeighborsRequestQueryRRF.fromJson(core.Map json_)
+      : this(
+          alpha: json_.containsKey('alpha')
+              ? (json_['alpha'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (alpha != null) 'alpha': alpha!,
       };
 }
 
@@ -35628,12 +35683,16 @@ class GoogleCloudAiplatformV1FindNeighborsResponseNeighbor {
   /// fields are populated.
   GoogleCloudAiplatformV1IndexDatapoint? datapoint;
 
-  /// The distance between the neighbor and the query vector.
+  /// The distance between the neighbor and the dense embedding query.
   core.double? distance;
+
+  /// The distance between the neighbor and the query sparse_embedding.
+  core.double? sparseDistance;
 
   GoogleCloudAiplatformV1FindNeighborsResponseNeighbor({
     this.datapoint,
     this.distance,
+    this.sparseDistance,
   });
 
   GoogleCloudAiplatformV1FindNeighborsResponseNeighbor.fromJson(core.Map json_)
@@ -35645,11 +35704,15 @@ class GoogleCloudAiplatformV1FindNeighborsResponseNeighbor {
           distance: json_.containsKey('distance')
               ? (json_['distance'] as core.num).toDouble()
               : null,
+          sparseDistance: json_.containsKey('sparseDistance')
+              ? (json_['sparseDistance'] as core.num).toDouble()
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (datapoint != null) 'datapoint': datapoint!,
         if (distance != null) 'distance': distance!,
+        if (sparseDistance != null) 'sparseDistance': sparseDistance!,
       };
 }
 
@@ -36115,7 +36178,7 @@ class GoogleCloudAiplatformV1GenerationConfig {
 
   /// Output response mimetype of the generated candidate text.
   ///
-  /// Supported mimetype: `text/plain`: (default) Text output.
+  /// Supported mimetype: - `text/plain`: (default) Text output. -
   /// `application/json`: JSON response in the candidates. The model needs to be
   /// prompted to output the appropriate response type, otherwise the behavior
   /// is undefined. This is a preview feature.
@@ -36225,116 +36288,12 @@ class GoogleCloudAiplatformV1GenieSource {
       };
 }
 
-/// Tool to retrieve public web data for grounding, powered by Google.
-class GoogleCloudAiplatformV1GoogleSearchRetrieval {
-  /// Disable using the result from this tool in detecting grounding
-  /// attribution.
-  ///
-  /// This does not affect how the result is given to the model for generation.
-  ///
-  /// Optional.
-  core.bool? disableAttribution;
-
-  GoogleCloudAiplatformV1GoogleSearchRetrieval({
-    this.disableAttribution,
-  });
-
-  GoogleCloudAiplatformV1GoogleSearchRetrieval.fromJson(core.Map json_)
-      : this(
-          disableAttribution: json_.containsKey('disableAttribution')
-              ? json_['disableAttribution'] as core.bool
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (disableAttribution != null)
-          'disableAttribution': disableAttribution!,
-      };
-}
-
-/// Grounding attribution.
-class GoogleCloudAiplatformV1GroundingAttribution {
-  /// Confidence score of the attribution.
-  ///
-  /// Ranges from 0 to 1. 1 is the most confident.
-  ///
-  /// Optional. Output only.
-  core.double? confidenceScore;
-
-  /// Segment of the content this attribution belongs to.
-  ///
-  /// Output only.
-  GoogleCloudAiplatformV1Segment? segment;
-
-  /// Attribution from the web.
-  ///
-  /// Optional.
-  GoogleCloudAiplatformV1GroundingAttributionWeb? web;
-
-  GoogleCloudAiplatformV1GroundingAttribution({
-    this.confidenceScore,
-    this.segment,
-    this.web,
-  });
-
-  GoogleCloudAiplatformV1GroundingAttribution.fromJson(core.Map json_)
-      : this(
-          confidenceScore: json_.containsKey('confidenceScore')
-              ? (json_['confidenceScore'] as core.num).toDouble()
-              : null,
-          segment: json_.containsKey('segment')
-              ? GoogleCloudAiplatformV1Segment.fromJson(
-                  json_['segment'] as core.Map<core.String, core.dynamic>)
-              : null,
-          web: json_.containsKey('web')
-              ? GoogleCloudAiplatformV1GroundingAttributionWeb.fromJson(
-                  json_['web'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (confidenceScore != null) 'confidenceScore': confidenceScore!,
-        if (segment != null) 'segment': segment!,
-        if (web != null) 'web': web!,
-      };
-}
-
-/// Attribution from the web.
-class GoogleCloudAiplatformV1GroundingAttributionWeb {
-  /// Title of the attribution.
-  ///
-  /// Output only.
-  core.String? title;
-
-  /// URI reference of the attribution.
-  ///
-  /// Output only.
-  core.String? uri;
-
-  GoogleCloudAiplatformV1GroundingAttributionWeb({
-    this.title,
-    this.uri,
-  });
-
-  GoogleCloudAiplatformV1GroundingAttributionWeb.fromJson(core.Map json_)
-      : this(
-          title:
-              json_.containsKey('title') ? json_['title'] as core.String : null,
-          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (title != null) 'title': title!,
-        if (uri != null) 'uri': uri!,
-      };
-}
-
 /// Metadata returned to client when grounding is enabled.
 class GoogleCloudAiplatformV1GroundingMetadata {
-  /// List of grounding attributions.
+  /// Google search entry for the following-up web searches.
   ///
   /// Optional.
-  core.List<GoogleCloudAiplatformV1GroundingAttribution>? groundingAttributions;
+  GoogleCloudAiplatformV1SearchEntryPoint? searchEntryPoint;
 
   /// Web search queries for the following-up web search.
   ///
@@ -36342,18 +36301,16 @@ class GoogleCloudAiplatformV1GroundingMetadata {
   core.List<core.String>? webSearchQueries;
 
   GoogleCloudAiplatformV1GroundingMetadata({
-    this.groundingAttributions,
+    this.searchEntryPoint,
     this.webSearchQueries,
   });
 
   GoogleCloudAiplatformV1GroundingMetadata.fromJson(core.Map json_)
       : this(
-          groundingAttributions: json_.containsKey('groundingAttributions')
-              ? (json_['groundingAttributions'] as core.List)
-                  .map((value) =>
-                      GoogleCloudAiplatformV1GroundingAttribution.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
+          searchEntryPoint: json_.containsKey('searchEntryPoint')
+              ? GoogleCloudAiplatformV1SearchEntryPoint.fromJson(
+                  json_['searchEntryPoint']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           webSearchQueries: json_.containsKey('webSearchQueries')
               ? (json_['webSearchQueries'] as core.List)
@@ -36363,8 +36320,7 @@ class GoogleCloudAiplatformV1GroundingMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (groundingAttributions != null)
-          'groundingAttributions': groundingAttributions!,
+        if (searchEntryPoint != null) 'searchEntryPoint': searchEntryPoint!,
         if (webSearchQueries != null) 'webSearchQueries': webSearchQueries!,
       };
 }
@@ -37111,7 +37067,7 @@ class GoogleCloudAiplatformV1IndexDatapoint {
   /// Required.
   core.String? datapointId;
 
-  /// Feature embedding vector.
+  /// Feature embedding vector for dense index.
   ///
   /// An array of numbers with the length of
   /// \[NearestNeighborSearchConfig.dimensions\].
@@ -37139,12 +37095,18 @@ class GoogleCloudAiplatformV1IndexDatapoint {
   /// Optional.
   core.List<GoogleCloudAiplatformV1IndexDatapointRestriction>? restricts;
 
+  /// Feature embedding vector for sparse index.
+  ///
+  /// Optional.
+  GoogleCloudAiplatformV1IndexDatapointSparseEmbedding? sparseEmbedding;
+
   GoogleCloudAiplatformV1IndexDatapoint({
     this.crowdingTag,
     this.datapointId,
     this.featureVector,
     this.numericRestricts,
     this.restricts,
+    this.sparseEmbedding,
   });
 
   GoogleCloudAiplatformV1IndexDatapoint.fromJson(core.Map json_)
@@ -37176,6 +37138,11 @@ class GoogleCloudAiplatformV1IndexDatapoint {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          sparseEmbedding: json_.containsKey('sparseEmbedding')
+              ? GoogleCloudAiplatformV1IndexDatapointSparseEmbedding.fromJson(
+                  json_['sparseEmbedding']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -37184,6 +37151,7 @@ class GoogleCloudAiplatformV1IndexDatapoint {
         if (featureVector != null) 'featureVector': featureVector!,
         if (numericRestricts != null) 'numericRestricts': numericRestricts!,
         if (restricts != null) 'restricts': restricts!,
+        if (sparseEmbedding != null) 'sparseEmbedding': sparseEmbedding!,
       };
 }
 
@@ -37326,6 +37294,45 @@ class GoogleCloudAiplatformV1IndexDatapointRestriction {
         if (allowList != null) 'allowList': allowList!,
         if (denyList != null) 'denyList': denyList!,
         if (namespace != null) 'namespace': namespace!,
+      };
+}
+
+/// Feature embedding vector for sparse index.
+///
+/// An array of numbers whose values are located in the specified dimensions.
+class GoogleCloudAiplatformV1IndexDatapointSparseEmbedding {
+  /// The list of indexes for the embedding values of the sparse vector.
+  ///
+  /// Optional.
+  core.List<core.String>? dimensions;
+
+  /// The list of embedding values of the sparse vector.
+  ///
+  /// Optional.
+  core.List<core.double>? values;
+
+  GoogleCloudAiplatformV1IndexDatapointSparseEmbedding({
+    this.dimensions,
+    this.values,
+  });
+
+  GoogleCloudAiplatformV1IndexDatapointSparseEmbedding.fromJson(core.Map json_)
+      : this(
+          dimensions: json_.containsKey('dimensions')
+              ? (json_['dimensions'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          values: json_.containsKey('values')
+              ? (json_['values'] as core.List)
+                  .map((value) => (value as core.num).toDouble())
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dimensions != null) 'dimensions': dimensions!,
+        if (values != null) 'values': values!,
       };
 }
 
@@ -37593,13 +37600,19 @@ class GoogleCloudAiplatformV1IndexStats {
   /// Output only.
   core.int? shardsCount;
 
-  /// The number of vectors in the Index.
+  /// The number of sparse vectors in the Index.
+  ///
+  /// Output only.
+  core.String? sparseVectorsCount;
+
+  /// The number of dense vectors in the Index.
   ///
   /// Output only.
   core.String? vectorsCount;
 
   GoogleCloudAiplatformV1IndexStats({
     this.shardsCount,
+    this.sparseVectorsCount,
     this.vectorsCount,
   });
 
@@ -37608,6 +37621,9 @@ class GoogleCloudAiplatformV1IndexStats {
           shardsCount: json_.containsKey('shardsCount')
               ? json_['shardsCount'] as core.int
               : null,
+          sparseVectorsCount: json_.containsKey('sparseVectorsCount')
+              ? json_['sparseVectorsCount'] as core.String
+              : null,
           vectorsCount: json_.containsKey('vectorsCount')
               ? json_['vectorsCount'] as core.String
               : null,
@@ -37615,6 +37631,8 @@ class GoogleCloudAiplatformV1IndexStats {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (shardsCount != null) 'shardsCount': shardsCount!,
+        if (sparseVectorsCount != null)
+          'sparseVectorsCount': sparseVectorsCount!,
         if (vectorsCount != null) 'vectorsCount': vectorsCount!,
       };
 }
@@ -39674,6 +39692,7 @@ class GoogleCloudAiplatformV1MachineSpec {
   /// - "TPU_V2" : TPU v2.
   /// - "TPU_V3" : TPU v3.
   /// - "TPU_V4_POD" : TPU v4.
+  /// - "TPU_V5_LITEPOD" : TPU v5.
   core.String? acceleratorType;
 
   /// The type of the machine.
@@ -44790,8 +44809,6 @@ class GoogleCloudAiplatformV1NotebookRuntimeTemplate {
   GoogleCloudAiplatformV1MachineSpec? machineSpec;
 
   /// The resource name of the NotebookRuntimeTemplate.
-  ///
-  /// Output only.
   core.String? name;
 
   /// Network spec.
@@ -46928,6 +46945,12 @@ class GoogleCloudAiplatformV1PublisherModelCallToAction {
   /// Optional.
   GoogleCloudAiplatformV1PublisherModelCallToActionDeployGke? deployGke;
 
+  /// Fine tune the PublisherModel with the third-party model tuning UI.
+  ///
+  /// Optional.
+  GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences?
+      fineTune;
+
   /// Open evaluation pipeline of the PublisherModel.
   ///
   /// Optional.
@@ -46990,6 +47013,7 @@ class GoogleCloudAiplatformV1PublisherModelCallToAction {
     this.createApplication,
     this.deploy,
     this.deployGke,
+    this.fineTune,
     this.openEvaluationPipeline,
     this.openFineTuningPipeline,
     this.openFineTuningPipelines,
@@ -47018,6 +47042,11 @@ class GoogleCloudAiplatformV1PublisherModelCallToAction {
               ? GoogleCloudAiplatformV1PublisherModelCallToActionDeployGke
                   .fromJson(
                       json_['deployGke'] as core.Map<core.String, core.dynamic>)
+              : null,
+          fineTune: json_.containsKey('fineTune')
+              ? GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences
+                  .fromJson(
+                      json_['fineTune'] as core.Map<core.String, core.dynamic>)
               : null,
           openEvaluationPipeline: json_.containsKey('openEvaluationPipeline')
               ? GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences
@@ -47076,6 +47105,7 @@ class GoogleCloudAiplatformV1PublisherModelCallToAction {
         if (createApplication != null) 'createApplication': createApplication!,
         if (deploy != null) 'deploy': deploy!,
         if (deployGke != null) 'deployGke': deployGke!,
+        if (fineTune != null) 'fineTune': fineTune!,
         if (openEvaluationPipeline != null)
           'openEvaluationPipeline': openEvaluationPipeline!,
         if (openFineTuningPipeline != null)
@@ -47119,6 +47149,11 @@ class GoogleCloudAiplatformV1PublisherModelCallToActionDeploy {
   /// that need a higher degree of manual configuration.
   GoogleCloudAiplatformV1DedicatedResources? dedicatedResources;
 
+  /// The name of the deploy task (e.g., "text to image generation").
+  ///
+  /// Optional.
+  core.String? deployTaskName;
+
   /// Large model reference.
   ///
   /// When this is set, model_artifact_spec is not needed.
@@ -47152,6 +47187,7 @@ class GoogleCloudAiplatformV1PublisherModelCallToActionDeploy {
     this.automaticResources,
     this.containerSpec,
     this.dedicatedResources,
+    this.deployTaskName,
     this.largeModelReference,
     this.modelDisplayName,
     this.publicArtifactUri,
@@ -47179,6 +47215,9 @@ class GoogleCloudAiplatformV1PublisherModelCallToActionDeploy {
                   json_['dedicatedResources']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          deployTaskName: json_.containsKey('deployTaskName')
+              ? json_['deployTaskName'] as core.String
+              : null,
           largeModelReference: json_.containsKey('largeModelReference')
               ? GoogleCloudAiplatformV1LargeModelReference.fromJson(
                   json_['largeModelReference']
@@ -47204,6 +47243,7 @@ class GoogleCloudAiplatformV1PublisherModelCallToActionDeploy {
         if (containerSpec != null) 'containerSpec': containerSpec!,
         if (dedicatedResources != null)
           'dedicatedResources': dedicatedResources!,
+        if (deployTaskName != null) 'deployTaskName': deployTaskName!,
         if (largeModelReference != null)
           'largeModelReference': largeModelReference!,
         if (modelDisplayName != null) 'modelDisplayName': modelDisplayName!,
@@ -49551,6 +49591,45 @@ class GoogleCloudAiplatformV1SearchDataItemsResponse {
       };
 }
 
+/// Google search entry point.
+class GoogleCloudAiplatformV1SearchEntryPoint {
+  /// Web content snippet that can be embedded in a web page or an app webview.
+  ///
+  /// Optional.
+  core.String? renderedContent;
+
+  /// Base64 encoded JSON representing array of tuple.
+  ///
+  /// Optional.
+  core.String? sdkBlob;
+  core.List<core.int> get sdkBlobAsBytes => convert.base64.decode(sdkBlob!);
+
+  set sdkBlobAsBytes(core.List<core.int> bytes_) {
+    sdkBlob =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  GoogleCloudAiplatformV1SearchEntryPoint({
+    this.renderedContent,
+    this.sdkBlob,
+  });
+
+  GoogleCloudAiplatformV1SearchEntryPoint.fromJson(core.Map json_)
+      : this(
+          renderedContent: json_.containsKey('renderedContent')
+              ? json_['renderedContent'] as core.String
+              : null,
+          sdkBlob: json_.containsKey('sdkBlob')
+              ? json_['sdkBlob'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (renderedContent != null) 'renderedContent': renderedContent!,
+        if (sdkBlob != null) 'sdkBlob': sdkBlob!,
+      };
+}
+
 /// Response message for FeaturestoreService.SearchFeatures.
 class GoogleCloudAiplatformV1SearchFeaturesResponse {
   /// The Features matching the request.
@@ -49915,53 +49994,6 @@ class GoogleCloudAiplatformV1SearchNearestEntitiesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nearestNeighbors != null) 'nearestNeighbors': nearestNeighbors!,
-      };
-}
-
-/// Segment of the content.
-class GoogleCloudAiplatformV1Segment {
-  /// End index in the given Part, measured in bytes.
-  ///
-  /// Offset from the start of the Part, exclusive, starting at zero.
-  ///
-  /// Output only.
-  core.int? endIndex;
-
-  /// The index of a Part object within its parent Content object.
-  ///
-  /// Output only.
-  core.int? partIndex;
-
-  /// Start index in the given Part, measured in bytes.
-  ///
-  /// Offset from the start of the Part, inclusive, starting at zero.
-  ///
-  /// Output only.
-  core.int? startIndex;
-
-  GoogleCloudAiplatformV1Segment({
-    this.endIndex,
-    this.partIndex,
-    this.startIndex,
-  });
-
-  GoogleCloudAiplatformV1Segment.fromJson(core.Map json_)
-      : this(
-          endIndex: json_.containsKey('endIndex')
-              ? json_['endIndex'] as core.int
-              : null,
-          partIndex: json_.containsKey('partIndex')
-              ? json_['partIndex'] as core.int
-              : null,
-          startIndex: json_.containsKey('startIndex')
-              ? json_['startIndex'] as core.int
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (endIndex != null) 'endIndex': endIndex!,
-        if (partIndex != null) 'partIndex': partIndex!,
-        if (startIndex != null) 'startIndex': startIndex!,
       };
 }
 
@@ -51578,12 +51610,13 @@ class GoogleCloudAiplatformV1SupervisedHyperParameters {
   /// - "ADAPTER_SIZE_SIXTEEN" : Adapter size 16.
   core.String? adapterSize;
 
-  /// Number of training epoches for this tuning job.
+  /// Number of complete passes the model makes over the entire training dataset
+  /// during training.
   ///
   /// Optional.
   core.String? epochCount;
 
-  /// Learning rate multiplier for tuning.
+  /// Multiplier for adjusting the default learning rate.
   ///
   /// Optional.
   core.double? learningRateMultiplier;
@@ -51887,10 +51920,14 @@ class GoogleCloudAiplatformV1SupervisedTuningSpec {
 
   /// Cloud Storage path to file containing training dataset for tuning.
   ///
+  /// The dataset must be formatted as a JSONL file.
+  ///
   /// Required.
   core.String? trainingDatasetUri;
 
   /// Cloud Storage path to file containing validation dataset for tuning.
+  ///
+  /// The dataset must be formatted as a JSONL file.
   ///
   /// Optional.
   core.String? validationDatasetUri;
@@ -53029,13 +53066,6 @@ class GoogleCloudAiplatformV1Tool {
   /// Optional.
   core.List<GoogleCloudAiplatformV1FunctionDeclaration>? functionDeclarations;
 
-  /// GoogleSearchRetrieval tool type.
-  ///
-  /// Specialized retrieval tool that is powered by Google search.
-  ///
-  /// Optional.
-  GoogleCloudAiplatformV1GoogleSearchRetrieval? googleSearchRetrieval;
-
   /// Retrieval tool type.
   ///
   /// System will always execute the provided retrieval tool(s) to get external
@@ -53047,7 +53077,6 @@ class GoogleCloudAiplatformV1Tool {
 
   GoogleCloudAiplatformV1Tool({
     this.functionDeclarations,
-    this.googleSearchRetrieval,
     this.retrieval,
   });
 
@@ -53060,11 +53089,6 @@ class GoogleCloudAiplatformV1Tool {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          googleSearchRetrieval: json_.containsKey('googleSearchRetrieval')
-              ? GoogleCloudAiplatformV1GoogleSearchRetrieval.fromJson(
-                  json_['googleSearchRetrieval']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
           retrieval: json_.containsKey('retrieval')
               ? GoogleCloudAiplatformV1Retrieval.fromJson(
                   json_['retrieval'] as core.Map<core.String, core.dynamic>)
@@ -53074,8 +53098,6 @@ class GoogleCloudAiplatformV1Tool {
   core.Map<core.String, core.dynamic> toJson() => {
         if (functionDeclarations != null)
           'functionDeclarations': functionDeclarations!,
-        if (googleSearchRetrieval != null)
-          'googleSearchRetrieval': googleSearchRetrieval!,
         if (retrieval != null) 'retrieval': retrieval!,
       };
 }
@@ -53699,7 +53721,7 @@ class GoogleCloudAiplatformV1TuningDataStats {
 
 /// Represents a TuningJob that runs with Google owned models.
 class GoogleCloudAiplatformV1TuningJob {
-  /// Model name for tuning, e.g., "gemini-1.0-pro-002".
+  /// The base model that is being tuned, e.g., "gemini-1.0-pro-002".
   core.String? baseModel;
 
   /// Time when the TuningJob was created.
@@ -54243,7 +54265,7 @@ class GoogleCloudAiplatformV1VertexAISearch {
   /// Fully-qualified Vertex AI Search's datastore resource ID.
   ///
   /// Format:
-  /// projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore}
+  /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore}`
   ///
   /// Required.
   core.String? datastore;

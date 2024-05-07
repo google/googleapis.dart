@@ -6816,7 +6816,7 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// [targetingType] - Required. Identifies the type of this assigned targeting
   /// option. Supported targeting types: * `TARGETING_TYPE_CHANNEL` *
   /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` *
-  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
+  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD`
   /// Value must have pattern `^\[^/\]+$`.
   /// Possible string values are:
   /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
@@ -6975,7 +6975,7 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// [targetingType] - Required. Identifies the type of this assigned targeting
   /// option. Supported targeting types: * `TARGETING_TYPE_CHANNEL` *
   /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` *
-  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
+  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD`
   /// Value must have pattern `^\[^/\]+$`.
   /// Possible string values are:
   /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
@@ -14736,7 +14736,7 @@ class BulkEditAdvertiserAssignedTargetingOptionsRequest {
   ///
   /// Supported targeting types: * `TARGETING_TYPE_CHANNEL` *
   /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` *
-  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
+  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD`
   core.List<CreateAssignedTargetingOptionsRequest>? createRequests;
 
   /// The assigned targeting options to delete in batch, specified as a list of
@@ -14744,7 +14744,7 @@ class BulkEditAdvertiserAssignedTargetingOptionsRequest {
   ///
   /// Supported targeting types: * `TARGETING_TYPE_CHANNEL` *
   /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` *
-  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
+  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD`
   core.List<DeleteAssignedTargetingOptionsRequest>? deleteRequests;
 
   BulkEditAdvertiserAssignedTargetingOptionsRequest({
@@ -20680,6 +20680,14 @@ typedef KeywordAssignedTargetingOptionDetails
 /// Settings that control the key performance indicator, or KPI, of an insertion
 /// order.
 class Kpi {
+  /// Custom Bidding Algorithm ID associated with
+  /// KPI_CUSTOM_IMPRESSION_VALUE_OVER_COST.
+  ///
+  /// This field is ignored if the proper KPI is not selected.
+  ///
+  /// Optional.
+  core.String? kpiAlgorithmId;
+
   /// The goal amount, in micros of the advertiser's currency.
   ///
   /// Applicable when kpi_type is one of: * `KPI_TYPE_CPM` * `KPI_TYPE_CPC` *
@@ -20716,6 +20724,7 @@ class Kpi {
   /// - "KPI_TYPE_CPIAVC" : The KPI is CPIAVC (cost per impression audible and
   /// visible at completion).
   /// - "KPI_TYPE_CPE" : The KPI is CPE (cost per engagement).
+  /// - "KPI_TYPE_CPV" : The KPI is set in CPV (cost per view).
   /// - "KPI_TYPE_CLICK_CVR" : The KPI is click conversion rate (conversions per
   /// click) percentage.
   /// - "KPI_TYPE_IMPRESSION_CVR" : The KPI is impression conversion rate
@@ -20728,10 +20737,21 @@ class Kpi {
   /// (complete audio listens per impression) percentage.
   /// - "KPI_TYPE_VIDEO_COMPLETION_RATE" : The KPI is video completion rate
   /// (complete video views per impression) percentage.
+  /// - "KPI_TYPE_CPCL" : The KPI is set in CPCL (cost per complete audio
+  /// listen).
+  /// - "KPI_TYPE_CPCV" : The KPI is set in CPCV (cost per complete video view).
+  /// - "KPI_TYPE_TOS10" : The KPI is set in rate of time on screen 10+ seconds
+  /// (Percentage of measurable, non-skippable impressions that were on the
+  /// screen for at least 10 seconds).
+  /// - "KPI_TYPE_MAXIMIZE_PACING" : The KPI is set to maximize brand impact
+  /// while prioritizing spending the full budget.
+  /// - "KPI_TYPE_CUSTOM_IMPRESSION_VALUE_OVER_COST" : The KPI is set in custom
+  /// impression value divided by cost.
   /// - "KPI_TYPE_OTHER" : The KPI is some other value.
   core.String? kpiType;
 
   Kpi({
+    this.kpiAlgorithmId,
     this.kpiAmountMicros,
     this.kpiPercentageMicros,
     this.kpiString,
@@ -20740,6 +20760,9 @@ class Kpi {
 
   Kpi.fromJson(core.Map json_)
       : this(
+          kpiAlgorithmId: json_.containsKey('kpiAlgorithmId')
+              ? json_['kpiAlgorithmId'] as core.String
+              : null,
           kpiAmountMicros: json_.containsKey('kpiAmountMicros')
               ? json_['kpiAmountMicros'] as core.String
               : null,
@@ -20755,6 +20778,7 @@ class Kpi {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (kpiAlgorithmId != null) 'kpiAlgorithmId': kpiAlgorithmId!,
         if (kpiAmountMicros != null) 'kpiAmountMicros': kpiAmountMicros!,
         if (kpiPercentageMicros != null)
           'kpiPercentageMicros': kpiPercentageMicros!,

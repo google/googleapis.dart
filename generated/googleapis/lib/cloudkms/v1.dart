@@ -19,14 +19,17 @@
 ///
 /// Create an instance of [CloudKMSApi] to access these resources:
 ///
+/// - [FoldersResource]
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsEkmConfigResource]
 ///     - [ProjectsLocationsEkmConnectionsResource]
+///     - [ProjectsLocationsKeyHandlesResource]
 ///     - [ProjectsLocationsKeyRingsResource]
 ///       - [ProjectsLocationsKeyRingsCryptoKeysResource]
 ///         - [ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource]
 ///       - [ProjectsLocationsKeyRingsImportJobsResource]
+///     - [ProjectsLocationsOperationsResource]
 library;
 
 import 'dart:async' as async;
@@ -56,6 +59,7 @@ class CloudKMSApi {
 
   final commons.ApiRequester _requester;
 
+  FoldersResource get folders => FoldersResource(_requester);
   ProjectsResource get projects => ProjectsResource(_requester);
 
   CloudKMSApi(http.Client client,
@@ -65,6 +69,101 @@ class CloudKMSApi {
             commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
+class FoldersResource {
+  final commons.ApiRequester _requester;
+
+  FoldersResource(commons.ApiRequester client) : _requester = client;
+
+  /// Returns the AutokeyConfig for a folder.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the AutokeyConfig resource, e.g.
+  /// `folders/{FOLDER_NUMBER}/autokeyConfig`.
+  /// Value must have pattern `^folders/\[^/\]+/autokeyConfig$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AutokeyConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AutokeyConfig> getAutokeyConfig(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AutokeyConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the AutokeyConfig for a folder.
+  ///
+  /// The caller must have both `cloudkms.autokeyConfigs.update` permission on
+  /// the parent folder and `cloudkms.cryptoKeys.setIamPolicy` permission on the
+  /// provided key project. An empty key project may be provided to clear the
+  /// configuration.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. Name of the AutokeyConfig resource, e.g.
+  /// `folders/{FOLDER_NUMBER}/autokeyConfig`.
+  /// Value must have pattern `^folders/\[^/\]+/autokeyConfig$`.
+  ///
+  /// [updateMask] - Required. Masks which fields of the AutokeyConfig to
+  /// update, e.g. `keyProject`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AutokeyConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AutokeyConfig> updateAutokeyConfig(
+    AutokeyConfig request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return AutokeyConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsResource {
   final commons.ApiRequester _requester;
 
@@ -72,6 +171,45 @@ class ProjectsResource {
       ProjectsLocationsResource(_requester);
 
   ProjectsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Returns the effective Cloud KMS Autokey configuration for a given project.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the resource project to the show effective
+  /// Cloud KMS Autokey configuration for. This may be helpful for interrogating
+  /// the effect of nested folder configurations on a given resource project.
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ShowEffectiveAutokeyConfigResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ShowEffectiveAutokeyConfigResponse> showEffectiveAutokeyConfig(
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + ':showEffectiveAutokeyConfig';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ShowEffectiveAutokeyConfigResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsLocationsResource {
@@ -81,8 +219,12 @@ class ProjectsLocationsResource {
       ProjectsLocationsEkmConfigResource(_requester);
   ProjectsLocationsEkmConnectionsResource get ekmConnections =>
       ProjectsLocationsEkmConnectionsResource(_requester);
+  ProjectsLocationsKeyHandlesResource get keyHandles =>
+      ProjectsLocationsKeyHandlesResource(_requester);
   ProjectsLocationsKeyRingsResource get keyRings =>
       ProjectsLocationsKeyRingsResource(_requester);
+  ProjectsLocationsOperationsResource get operations =>
+      ProjectsLocationsOperationsResource(_requester);
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
@@ -851,6 +993,144 @@ class ProjectsLocationsEkmConnectionsResource {
       queryParams: queryParams_,
     );
     return VerifyConnectivityResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsKeyHandlesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsKeyHandlesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new KeyHandle, triggering the provisioning of a new CryptoKey
+  /// for CMEK use with the given resource type in the configured key project
+  /// and the same location.
+  ///
+  /// GetOperation should be used to resolve the resulting long-running
+  /// operation and get the resulting KeyHandle and CryptoKey.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the resource project and location to create
+  /// the KeyHandle in, e.g. `projects/{PROJECT_ID}/locations/{LOCATION}`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [keyHandleId] - Optional. Id of the KeyHandle. Must be unique to the
+  /// resource project and location. If not provided by the caller, a new UUID
+  /// is used.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    KeyHandle request,
+    core.String parent, {
+    core.String? keyHandleId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (keyHandleId != null) 'keyHandleId': [keyHandleId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/keyHandles';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns the KeyHandle.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the KeyHandle resource, e.g.
+  /// `projects/{PROJECT_ID}/locations/{LOCATION}/keyHandles/{KEY_HANDLE_ID}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/keyHandles/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [KeyHandle].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<KeyHandle> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return KeyHandle.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists KeyHandles.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the resource project and location from which
+  /// to list KeyHandles, e.g. `projects/{PROJECT_ID}/locations/{LOCATION}`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filter to apply when listing KeyHandles, e.g.
+  /// `resource_type_selector="{SERVICE}.googleapis.com/{TYPE}"`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListKeyHandlesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListKeyHandlesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/keyHandles';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListKeyHandlesResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -2659,6 +2939,52 @@ class ProjectsLocationsKeyRingsImportJobsResource {
   }
 }
 
+class ProjectsLocationsOperationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsOperationsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 /// Request message for KeyManagementService.AsymmetricDecrypt.
 class AsymmetricDecryptRequest {
   /// The data encrypted with the named CryptoKeyVersion's public key using
@@ -3041,6 +3367,47 @@ class AuditConfig {
 /// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
 typedef AuditLogConfig = $AuditLogConfig;
+
+/// Cloud KMS Autokey configuration for a folder.
+class AutokeyConfig {
+  /// Name of the key project, e.g. `projects/{PROJECT_ID}` or
+  /// `projects/{PROJECT_NUMBER}`, where Cloud KMS Autokey will provision new
+  /// CryptoKeys.
+  ///
+  /// On UpdateAutokeyConfig, the caller will require
+  /// `cloudkms.cryptoKeys.setIamPolicy` permission on this key project. Once
+  /// configured, for Cloud KMS Autokey to function properly, this key project
+  /// must have the Cloud KMS API activated and the Cloud KMS Service Agent for
+  /// this key project must be granted the `cloudkms.admin` role (or pertinent
+  /// permissions).
+  ///
+  /// Optional.
+  core.String? keyProject;
+
+  /// Identifier.
+  ///
+  /// Name of the AutokeyConfig resource, e.g.
+  /// `folders/{FOLDER_NUMBER}/autokeyConfig`.
+  core.String? name;
+
+  AutokeyConfig({
+    this.keyProject,
+    this.name,
+  });
+
+  AutokeyConfig.fromJson(core.Map json_)
+      : this(
+          keyProject: json_.containsKey('keyProject')
+              ? json_['keyProject'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (keyProject != null) 'keyProject': keyProject!,
+        if (name != null) 'name': name!,
+      };
+}
 
 /// Associates `members`, or principals, with a `role`.
 class Binding {
@@ -3522,6 +3889,8 @@ class CryptoKeyVersion {
   /// curve is only supported for HSM protection level. Other hash functions can
   /// also be used:
   /// https://cloud.google.com/kms/docs/create-validate-signatures#ecdsa_support_for_other_hash_algorithms
+  /// - "EC_SIGN_ED25519" : EdDSA on the Curve25519 in pure mode (taking data as
+  /// input).
   /// - "HMAC_SHA256" : HMAC-SHA256 signing with a 256 bit key.
   /// - "HMAC_SHA1" : HMAC-SHA1 signing with a 160 bit key.
   /// - "HMAC_SHA384" : HMAC-SHA384 signing with a 384 bit key.
@@ -4519,6 +4888,8 @@ class ImportCryptoKeyVersionRequest {
   /// curve is only supported for HSM protection level. Other hash functions can
   /// also be used:
   /// https://cloud.google.com/kms/docs/create-validate-signatures#ecdsa_support_for_other_hash_algorithms
+  /// - "EC_SIGN_ED25519" : EdDSA on the Curve25519 in pure mode (taking data as
+  /// input).
   /// - "HMAC_SHA256" : HMAC-SHA256 signing with a 256 bit key.
   /// - "HMAC_SHA1" : HMAC-SHA1 signing with a 160 bit key.
   /// - "HMAC_SHA384" : HMAC-SHA384 signing with a 384 bit key.
@@ -4822,6 +5193,57 @@ class ImportJob {
       };
 }
 
+/// Resource-oriented representation of a request to Cloud KMS Autokey and the
+/// resulting provisioning of a CryptoKey.
+class KeyHandle {
+  /// Name of a CryptoKey that has been provisioned for Customer Managed
+  /// Encryption Key (CMEK) use in the KeyHandle's project and location for the
+  /// requested resource type.
+  ///
+  /// Output only.
+  core.String? kmsKey;
+
+  /// Identifier.
+  ///
+  /// Name of the \[KeyHandle\] resource, e.g.
+  /// `projects/{PROJECT_ID}/locations/{LOCATION}/keyHandles/{KEY_HANDLE_ID}`.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Indicates the resource type that the resulting CryptoKey is meant to
+  /// protect, e.g. `{SERVICE}.googleapis.com/{TYPE}`.
+  ///
+  /// See documentation for supported resource types.
+  ///
+  /// Required.
+  core.String? resourceTypeSelector;
+
+  KeyHandle({
+    this.kmsKey,
+    this.name,
+    this.resourceTypeSelector,
+  });
+
+  KeyHandle.fromJson(core.Map json_)
+      : this(
+          kmsKey: json_.containsKey('kmsKey')
+              ? json_['kmsKey'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          resourceTypeSelector: json_.containsKey('resourceTypeSelector')
+              ? json_['resourceTypeSelector'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kmsKey != null) 'kmsKey': kmsKey!,
+        if (name != null) 'name': name!,
+        if (resourceTypeSelector != null)
+          'resourceTypeSelector': resourceTypeSelector!,
+      };
+}
+
 /// Contains an HSM-generated attestation about a key operation.
 ///
 /// For more information, see
@@ -5085,6 +5507,30 @@ class ListImportJobsResponse {
         if (importJobs != null) 'importJobs': importJobs!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (totalSize != null) 'totalSize': totalSize!,
+      };
+}
+
+/// Response message for Autokey.ListKeyHandles.
+class ListKeyHandlesResponse {
+  /// Resulting KeyHandles.
+  core.List<KeyHandle>? keyHandles;
+
+  ListKeyHandlesResponse({
+    this.keyHandles,
+  });
+
+  ListKeyHandlesResponse.fromJson(core.Map json_)
+      : this(
+          keyHandles: json_.containsKey('keyHandles')
+              ? (json_['keyHandles'] as core.List)
+                  .map((value) => KeyHandle.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (keyHandles != null) 'keyHandles': keyHandles!,
       };
 }
 
@@ -5480,6 +5926,82 @@ class MacVerifyResponse {
       };
 }
 
+/// This resource represents a long-running operation that is the result of a
+/// network API call.
+class Operation {
+  /// If the value is `false`, it means the operation is still in progress.
+  ///
+  /// If `true`, the operation is completed, and either `error` or `response` is
+  /// available.
+  core.bool? done;
+
+  /// The error result of the operation in case of failure or cancellation.
+  Status? error;
+
+  /// Service-specific metadata associated with the operation.
+  ///
+  /// It typically contains progress information and common metadata such as
+  /// create time. Some services might not provide such metadata. Any method
+  /// that returns a long-running operation should document the metadata type,
+  /// if any.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? metadata;
+
+  /// The server-assigned name, which is only unique within the same service
+  /// that originally returns it.
+  ///
+  /// If you use the default HTTP mapping, the `name` should be a resource name
+  /// ending with `operations/{unique_id}`.
+  core.String? name;
+
+  /// The normal, successful response of the operation.
+  ///
+  /// If the original method returns no data on success, such as `Delete`, the
+  /// response is `google.protobuf.Empty`. If the original method is standard
+  /// `Get`/`Create`/`Update`, the response should be the resource. For other
+  /// methods, the response should have the type `XxxResponse`, where `Xxx` is
+  /// the original method name. For example, if the original method name is
+  /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? response;
+
+  Operation({
+    this.done,
+    this.error,
+    this.metadata,
+    this.name,
+    this.response,
+  });
+
+  Operation.fromJson(core.Map json_)
+      : this(
+          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          error: json_.containsKey('error')
+              ? Status.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>)
+              : null,
+          metadata: json_.containsKey('metadata')
+              ? json_['metadata'] as core.Map<core.String, core.dynamic>
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          response: json_.containsKey('response')
+              ? json_['response'] as core.Map<core.String, core.dynamic>
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!,
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (response != null) 'response': response!,
+      };
+}
+
 /// An Identity and Access Management (IAM) policy, which specifies access
 /// controls for Google Cloud resources.
 ///
@@ -5661,6 +6183,8 @@ class PublicKey {
   /// curve is only supported for HSM protection level. Other hash functions can
   /// also be used:
   /// https://cloud.google.com/kms/docs/create-validate-signatures#ecdsa_support_for_other_hash_algorithms
+  /// - "EC_SIGN_ED25519" : EdDSA on the Curve25519 in pure mode (taking data as
+  /// input).
   /// - "HMAC_SHA256" : HMAC-SHA256 signing with a 256 bit key.
   /// - "HMAC_SHA1" : HMAC-SHA1 signing with a 160 bit key.
   /// - "HMAC_SHA384" : HMAC-SHA384 signing with a 384 bit key.
@@ -6455,6 +6979,37 @@ class SetIamPolicyRequest {
         if (updateMask != null) 'updateMask': updateMask!,
       };
 }
+
+/// Response message for ShowEffectiveAutokeyConfig.
+class ShowEffectiveAutokeyConfigResponse {
+  /// Name of the key project configured in the resource project's folder
+  /// ancestry.
+  core.String? keyProject;
+
+  ShowEffectiveAutokeyConfigResponse({
+    this.keyProject,
+  });
+
+  ShowEffectiveAutokeyConfigResponse.fromJson(core.Map json_)
+      : this(
+          keyProject: json_.containsKey('keyProject')
+              ? json_['keyProject'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (keyProject != null) 'keyProject': keyProject!,
+      };
+}
+
+/// The `Status` type defines a logical error model that is suitable for
+/// different programming environments, including REST APIs and RPC APIs.
+///
+/// It is used by [gRPC](https://github.com/grpc). Each `Status` message
+/// contains three pieces of data: error code, error message, and error details.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
+typedef Status = $Status;
 
 /// Request message for `TestIamPermissions` method.
 typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;

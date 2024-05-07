@@ -51,6 +51,8 @@
 /// - [WatermarksResource]
 /// - [YoutubeResource]
 ///   - [YoutubeV3Resource]
+///     - [YoutubeV3LiveChatResource]
+///       - [YoutubeV3LiveChatMessagesResource]
 library;
 
 import 'dart:async' as async;
@@ -5751,6 +5753,9 @@ class YoutubeResource {
 class YoutubeV3Resource {
   final commons.ApiRequester _requester;
 
+  YoutubeV3LiveChatResource get liveChat =>
+      YoutubeV3LiveChatResource(_requester);
+
   YoutubeV3Resource(commons.ApiRequester client) : _requester = client;
 
   /// Updates an existing resource.
@@ -5794,6 +5799,65 @@ class YoutubeV3Resource {
       queryParams: queryParams_,
     );
     return CommentThread.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class YoutubeV3LiveChatResource {
+  final commons.ApiRequester _requester;
+
+  YoutubeV3LiveChatMessagesResource get messages =>
+      YoutubeV3LiveChatMessagesResource(_requester);
+
+  YoutubeV3LiveChatResource(commons.ApiRequester client) : _requester = client;
+}
+
+class YoutubeV3LiveChatMessagesResource {
+  final commons.ApiRequester _requester;
+
+  YoutubeV3LiveChatMessagesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Transition a durable chat event.
+  ///
+  /// Request parameters:
+  ///
+  /// [id] - The ID that uniquely identify the chat message event to transition.
+  ///
+  /// [status] - The status to which the chat event is going to transition.
+  /// Possible string values are:
+  /// - "statusUnspecified" : Default unknown enum value.
+  /// - "closed" : The durable chat event is over.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LiveChatMessage].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LiveChatMessage> transition({
+    core.String? id,
+    core.String? status,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (id != null) 'id': [id],
+      if (status != null) 'status': [status],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const url_ = 'youtube/v3/liveChat/messages/transition';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+    );
+    return LiveChatMessage.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -8795,7 +8859,7 @@ class CommentSnippet {
 }
 
 /// The id of the author's YouTube channel, if any.
-typedef CommentSnippetAuthorChannelId = $Shared11;
+typedef CommentSnippetAuthorChannelId = $Shared14;
 
 /// A *comment thread* represents information that applies to a top level
 /// comment and all its replies.
@@ -10402,6 +10466,9 @@ class CuepointSchedule {
 
   /// Interval frequency in seconds that api uses to insert cuepoints
   /// automatically.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.int? repeatIntervalSecs;
 
   /// The strategy to use when scheduling cuepoints.
@@ -10412,6 +10479,9 @@ class CuepointSchedule {
   /// - "nonConcurrent" : Strategy to schedule cuepoints at an increased rate to
   /// allow viewers to receive cuepoints when eligible. See
   /// go/lcr-non-concurrent-ads for more details.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? scheduleStrategy;
 
   CuepointSchedule({
@@ -11313,7 +11383,7 @@ class InvideoTiming {
       };
 }
 
-typedef LanguageTag = $Shared11;
+typedef LanguageTag = $Shared14;
 
 class LevelDetails {
   /// The name that should be used when referring to this level.
@@ -11553,6 +11623,9 @@ class LiveBroadcastContentDetails {
   /// After updating the status, you then need to send a liveCuepoints.insert
   /// request that sets the cuepoint's eventState to end to remove the in-stream
   /// slate and make your broadcast stream visible to viewers.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? startWithSlate;
 
   /// The 3D stereo layout of this broadcast.

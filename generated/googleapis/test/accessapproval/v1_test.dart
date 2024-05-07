@@ -94,6 +94,7 @@ api.AccessApprovalSettings buildAccessApprovalSettings() {
     o.notificationPubsubTopic = 'foo';
     o.preferNoBroadApprovalRequests = true;
     o.preferredRequestExpirationDays = 42;
+    o.requireCustomerVisibleJustification = true;
   }
   buildCounterAccessApprovalSettings--;
   return o;
@@ -124,6 +125,7 @@ void checkAccessApprovalSettings(api.AccessApprovalSettings o) {
       o.preferredRequestExpirationDays!,
       unittest.equals(42),
     );
+    unittest.expect(o.requireCustomerVisibleJustification!, unittest.isTrue);
   }
   buildCounterAccessApprovalSettings--;
 }

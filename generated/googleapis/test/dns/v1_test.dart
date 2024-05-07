@@ -1779,7 +1779,6 @@ api.RRSetRoutingPolicy buildRRSetRoutingPolicy() {
   buildCounterRRSetRoutingPolicy++;
   if (buildCounterRRSetRoutingPolicy < 3) {
     o.geo = buildRRSetRoutingPolicyGeoPolicy();
-    o.healthCheck = 'foo';
     o.kind = 'foo';
     o.primaryBackup = buildRRSetRoutingPolicyPrimaryBackupPolicy();
     o.wrr = buildRRSetRoutingPolicyWrrPolicy();
@@ -1792,10 +1791,6 @@ void checkRRSetRoutingPolicy(api.RRSetRoutingPolicy o) {
   buildCounterRRSetRoutingPolicy++;
   if (buildCounterRRSetRoutingPolicy < 3) {
     checkRRSetRoutingPolicyGeoPolicy(o.geo!);
-    unittest.expect(
-      o.healthCheck!,
-      unittest.equals('foo'),
-    );
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -1912,29 +1907,12 @@ void checkRRSetRoutingPolicyGeoPolicyGeoPolicyItem(
   buildCounterRRSetRoutingPolicyGeoPolicyGeoPolicyItem--;
 }
 
-core.List<core.String> buildUnnamed27() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed27(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.List<api.RRSetRoutingPolicyLoadBalancerTarget> buildUnnamed28() => [
+core.List<api.RRSetRoutingPolicyLoadBalancerTarget> buildUnnamed27() => [
       buildRRSetRoutingPolicyLoadBalancerTarget(),
       buildRRSetRoutingPolicyLoadBalancerTarget(),
     ];
 
-void checkUnnamed28(core.List<api.RRSetRoutingPolicyLoadBalancerTarget> o) {
+void checkUnnamed27(core.List<api.RRSetRoutingPolicyLoadBalancerTarget> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRRSetRoutingPolicyLoadBalancerTarget(o[0]);
   checkRRSetRoutingPolicyLoadBalancerTarget(o[1]);
@@ -1946,8 +1924,7 @@ api.RRSetRoutingPolicyHealthCheckTargets
   final o = api.RRSetRoutingPolicyHealthCheckTargets();
   buildCounterRRSetRoutingPolicyHealthCheckTargets++;
   if (buildCounterRRSetRoutingPolicyHealthCheckTargets < 3) {
-    o.externalEndpoints = buildUnnamed27();
-    o.internalLoadBalancers = buildUnnamed28();
+    o.internalLoadBalancers = buildUnnamed27();
   }
   buildCounterRRSetRoutingPolicyHealthCheckTargets--;
   return o;
@@ -1957,8 +1934,7 @@ void checkRRSetRoutingPolicyHealthCheckTargets(
     api.RRSetRoutingPolicyHealthCheckTargets o) {
   buildCounterRRSetRoutingPolicyHealthCheckTargets++;
   if (buildCounterRRSetRoutingPolicyHealthCheckTargets < 3) {
-    checkUnnamed27(o.externalEndpoints!);
-    checkUnnamed28(o.internalLoadBalancers!);
+    checkUnnamed27(o.internalLoadBalancers!);
   }
   buildCounterRRSetRoutingPolicyHealthCheckTargets--;
 }
@@ -2055,12 +2031,12 @@ void checkRRSetRoutingPolicyPrimaryBackupPolicy(
   buildCounterRRSetRoutingPolicyPrimaryBackupPolicy--;
 }
 
-core.List<api.RRSetRoutingPolicyWrrPolicyWrrPolicyItem> buildUnnamed29() => [
+core.List<api.RRSetRoutingPolicyWrrPolicyWrrPolicyItem> buildUnnamed28() => [
       buildRRSetRoutingPolicyWrrPolicyWrrPolicyItem(),
       buildRRSetRoutingPolicyWrrPolicyWrrPolicyItem(),
     ];
 
-void checkUnnamed29(core.List<api.RRSetRoutingPolicyWrrPolicyWrrPolicyItem> o) {
+void checkUnnamed28(core.List<api.RRSetRoutingPolicyWrrPolicyWrrPolicyItem> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRRSetRoutingPolicyWrrPolicyWrrPolicyItem(o[0]);
   checkRRSetRoutingPolicyWrrPolicyWrrPolicyItem(o[1]);
@@ -2071,7 +2047,7 @@ api.RRSetRoutingPolicyWrrPolicy buildRRSetRoutingPolicyWrrPolicy() {
   final o = api.RRSetRoutingPolicyWrrPolicy();
   buildCounterRRSetRoutingPolicyWrrPolicy++;
   if (buildCounterRRSetRoutingPolicyWrrPolicy < 3) {
-    o.items = buildUnnamed29();
+    o.items = buildUnnamed28();
     o.kind = 'foo';
   }
   buildCounterRRSetRoutingPolicyWrrPolicy--;
@@ -2081,13 +2057,30 @@ api.RRSetRoutingPolicyWrrPolicy buildRRSetRoutingPolicyWrrPolicy() {
 void checkRRSetRoutingPolicyWrrPolicy(api.RRSetRoutingPolicyWrrPolicy o) {
   buildCounterRRSetRoutingPolicyWrrPolicy++;
   if (buildCounterRRSetRoutingPolicyWrrPolicy < 3) {
-    checkUnnamed29(o.items!);
+    checkUnnamed28(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
     );
   }
   buildCounterRRSetRoutingPolicyWrrPolicy--;
+}
+
+core.List<core.String> buildUnnamed29() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed29(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.String> buildUnnamed30() => [
@@ -2107,23 +2100,6 @@ void checkUnnamed30(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed31() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed31(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
 core.int buildCounterRRSetRoutingPolicyWrrPolicyWrrPolicyItem = 0;
 api.RRSetRoutingPolicyWrrPolicyWrrPolicyItem
     buildRRSetRoutingPolicyWrrPolicyWrrPolicyItem() {
@@ -2132,8 +2108,8 @@ api.RRSetRoutingPolicyWrrPolicyWrrPolicyItem
   if (buildCounterRRSetRoutingPolicyWrrPolicyWrrPolicyItem < 3) {
     o.healthCheckedTargets = buildRRSetRoutingPolicyHealthCheckTargets();
     o.kind = 'foo';
-    o.rrdatas = buildUnnamed30();
-    o.signatureRrdatas = buildUnnamed31();
+    o.rrdatas = buildUnnamed29();
+    o.signatureRrdatas = buildUnnamed30();
     o.weight = 42.0;
   }
   buildCounterRRSetRoutingPolicyWrrPolicyWrrPolicyItem--;
@@ -2149,14 +2125,31 @@ void checkRRSetRoutingPolicyWrrPolicyWrrPolicyItem(
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed30(o.rrdatas!);
-    checkUnnamed31(o.signatureRrdatas!);
+    checkUnnamed29(o.rrdatas!);
+    checkUnnamed30(o.signatureRrdatas!);
     unittest.expect(
       o.weight!,
       unittest.equals(42.0),
     );
   }
   buildCounterRRSetRoutingPolicyWrrPolicyWrrPolicyItem--;
+}
+
+core.List<core.String> buildUnnamed31() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed31(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.String> buildUnnamed32() => [
@@ -2176,23 +2169,6 @@ void checkUnnamed32(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed33() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed33(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
 core.int buildCounterResourceRecordSet = 0;
 api.ResourceRecordSet buildResourceRecordSet() {
   final o = api.ResourceRecordSet();
@@ -2201,8 +2177,8 @@ api.ResourceRecordSet buildResourceRecordSet() {
     o.kind = 'foo';
     o.name = 'foo';
     o.routingPolicy = buildRRSetRoutingPolicy();
-    o.rrdatas = buildUnnamed32();
-    o.signatureRrdatas = buildUnnamed33();
+    o.rrdatas = buildUnnamed31();
+    o.signatureRrdatas = buildUnnamed32();
     o.ttl = 42;
     o.type = 'foo';
   }
@@ -2222,8 +2198,8 @@ void checkResourceRecordSet(api.ResourceRecordSet o) {
       unittest.equals('foo'),
     );
     checkRRSetRoutingPolicy(o.routingPolicy!);
-    checkUnnamed32(o.rrdatas!);
-    checkUnnamed33(o.signatureRrdatas!);
+    checkUnnamed31(o.rrdatas!);
+    checkUnnamed32(o.signatureRrdatas!);
     unittest.expect(
       o.ttl!,
       unittest.equals(42),
@@ -2252,12 +2228,12 @@ void checkResourceRecordSetsDeleteResponse(
   buildCounterResourceRecordSetsDeleteResponse--;
 }
 
-core.List<api.ResourceRecordSet> buildUnnamed34() => [
+core.List<api.ResourceRecordSet> buildUnnamed33() => [
       buildResourceRecordSet(),
       buildResourceRecordSet(),
     ];
 
-void checkUnnamed34(core.List<api.ResourceRecordSet> o) {
+void checkUnnamed33(core.List<api.ResourceRecordSet> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkResourceRecordSet(o[0]);
   checkResourceRecordSet(o[1]);
@@ -2271,7 +2247,7 @@ api.ResourceRecordSetsListResponse buildResourceRecordSetsListResponse() {
     o.header = buildResponseHeader();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
-    o.rrsets = buildUnnamed34();
+    o.rrsets = buildUnnamed33();
   }
   buildCounterResourceRecordSetsListResponse--;
   return o;
@@ -2289,7 +2265,7 @@ void checkResourceRecordSetsListResponse(api.ResourceRecordSetsListResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed34(o.rrsets!);
+    checkUnnamed33(o.rrsets!);
   }
   buildCounterResourceRecordSetsListResponse--;
 }
@@ -2316,12 +2292,12 @@ void checkResponseHeader(api.ResponseHeader o) {
   buildCounterResponseHeader--;
 }
 
-core.List<api.ResponsePolicy> buildUnnamed35() => [
+core.List<api.ResponsePolicy> buildUnnamed34() => [
       buildResponsePolicy(),
       buildResponsePolicy(),
     ];
 
-void checkUnnamed35(core.List<api.ResponsePolicy> o) {
+void checkUnnamed34(core.List<api.ResponsePolicy> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkResponsePolicy(o[0]);
   checkResponsePolicy(o[1]);
@@ -2334,7 +2310,7 @@ api.ResponsePoliciesListResponse buildResponsePoliciesListResponse() {
   if (buildCounterResponsePoliciesListResponse < 3) {
     o.header = buildResponseHeader();
     o.nextPageToken = 'foo';
-    o.responsePolicies = buildUnnamed35();
+    o.responsePolicies = buildUnnamed34();
   }
   buildCounterResponsePoliciesListResponse--;
   return o;
@@ -2348,7 +2324,7 @@ void checkResponsePoliciesListResponse(api.ResponsePoliciesListResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed35(o.responsePolicies!);
+    checkUnnamed34(o.responsePolicies!);
   }
   buildCounterResponsePoliciesListResponse--;
 }
@@ -2395,23 +2371,23 @@ void checkResponsePoliciesUpdateResponse(api.ResponsePoliciesUpdateResponse o) {
   buildCounterResponsePoliciesUpdateResponse--;
 }
 
-core.List<api.ResponsePolicyGKECluster> buildUnnamed36() => [
+core.List<api.ResponsePolicyGKECluster> buildUnnamed35() => [
       buildResponsePolicyGKECluster(),
       buildResponsePolicyGKECluster(),
     ];
 
-void checkUnnamed36(core.List<api.ResponsePolicyGKECluster> o) {
+void checkUnnamed35(core.List<api.ResponsePolicyGKECluster> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkResponsePolicyGKECluster(o[0]);
   checkResponsePolicyGKECluster(o[1]);
 }
 
-core.Map<core.String, core.String> buildUnnamed37() => {
+core.Map<core.String, core.String> buildUnnamed36() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed37(core.Map<core.String, core.String> o) {
+void checkUnnamed36(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -2423,12 +2399,12 @@ void checkUnnamed37(core.Map<core.String, core.String> o) {
   );
 }
 
-core.List<api.ResponsePolicyNetwork> buildUnnamed38() => [
+core.List<api.ResponsePolicyNetwork> buildUnnamed37() => [
       buildResponsePolicyNetwork(),
       buildResponsePolicyNetwork(),
     ];
 
-void checkUnnamed38(core.List<api.ResponsePolicyNetwork> o) {
+void checkUnnamed37(core.List<api.ResponsePolicyNetwork> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkResponsePolicyNetwork(o[0]);
   checkResponsePolicyNetwork(o[1]);
@@ -2440,11 +2416,11 @@ api.ResponsePolicy buildResponsePolicy() {
   buildCounterResponsePolicy++;
   if (buildCounterResponsePolicy < 3) {
     o.description = 'foo';
-    o.gkeClusters = buildUnnamed36();
+    o.gkeClusters = buildUnnamed35();
     o.id = 'foo';
     o.kind = 'foo';
-    o.labels = buildUnnamed37();
-    o.networks = buildUnnamed38();
+    o.labels = buildUnnamed36();
+    o.networks = buildUnnamed37();
     o.responsePolicyName = 'foo';
   }
   buildCounterResponsePolicy--;
@@ -2458,7 +2434,7 @@ void checkResponsePolicy(api.ResponsePolicy o) {
       o.description!,
       unittest.equals('foo'),
     );
-    checkUnnamed36(o.gkeClusters!);
+    checkUnnamed35(o.gkeClusters!);
     unittest.expect(
       o.id!,
       unittest.equals('foo'),
@@ -2467,8 +2443,8 @@ void checkResponsePolicy(api.ResponsePolicy o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed37(o.labels!);
-    checkUnnamed38(o.networks!);
+    checkUnnamed36(o.labels!);
+    checkUnnamed37(o.networks!);
     unittest.expect(
       o.responsePolicyName!,
       unittest.equals('foo'),
@@ -2570,12 +2546,12 @@ void checkResponsePolicyRule(api.ResponsePolicyRule o) {
   buildCounterResponsePolicyRule--;
 }
 
-core.List<api.ResourceRecordSet> buildUnnamed39() => [
+core.List<api.ResourceRecordSet> buildUnnamed38() => [
       buildResourceRecordSet(),
       buildResourceRecordSet(),
     ];
 
-void checkUnnamed39(core.List<api.ResourceRecordSet> o) {
+void checkUnnamed38(core.List<api.ResourceRecordSet> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkResourceRecordSet(o[0]);
   checkResourceRecordSet(o[1]);
@@ -2586,7 +2562,7 @@ api.ResponsePolicyRuleLocalData buildResponsePolicyRuleLocalData() {
   final o = api.ResponsePolicyRuleLocalData();
   buildCounterResponsePolicyRuleLocalData++;
   if (buildCounterResponsePolicyRuleLocalData < 3) {
-    o.localDatas = buildUnnamed39();
+    o.localDatas = buildUnnamed38();
   }
   buildCounterResponsePolicyRuleLocalData--;
   return o;
@@ -2595,17 +2571,17 @@ api.ResponsePolicyRuleLocalData buildResponsePolicyRuleLocalData() {
 void checkResponsePolicyRuleLocalData(api.ResponsePolicyRuleLocalData o) {
   buildCounterResponsePolicyRuleLocalData++;
   if (buildCounterResponsePolicyRuleLocalData < 3) {
-    checkUnnamed39(o.localDatas!);
+    checkUnnamed38(o.localDatas!);
   }
   buildCounterResponsePolicyRuleLocalData--;
 }
 
-core.List<api.ResponsePolicyRule> buildUnnamed40() => [
+core.List<api.ResponsePolicyRule> buildUnnamed39() => [
       buildResponsePolicyRule(),
       buildResponsePolicyRule(),
     ];
 
-void checkUnnamed40(core.List<api.ResponsePolicyRule> o) {
+void checkUnnamed39(core.List<api.ResponsePolicyRule> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkResponsePolicyRule(o[0]);
   checkResponsePolicyRule(o[1]);
@@ -2618,7 +2594,7 @@ api.ResponsePolicyRulesListResponse buildResponsePolicyRulesListResponse() {
   if (buildCounterResponsePolicyRulesListResponse < 3) {
     o.header = buildResponseHeader();
     o.nextPageToken = 'foo';
-    o.responsePolicyRules = buildUnnamed40();
+    o.responsePolicyRules = buildUnnamed39();
   }
   buildCounterResponsePolicyRulesListResponse--;
   return o;
@@ -2633,7 +2609,7 @@ void checkResponsePolicyRulesListResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed40(o.responsePolicyRules!);
+    checkUnnamed39(o.responsePolicyRules!);
   }
   buildCounterResponsePolicyRulesListResponse--;
 }

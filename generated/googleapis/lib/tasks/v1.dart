@@ -413,7 +413,7 @@ class TasksResource {
 
   /// Creates a new task on the specified task list.
   ///
-  /// A user can have up to 20,000 uncompleted tasks per list and up to 100,000
+  /// A user can have up to 20,000 non-hidden tasks per list and up to 100,000
   /// tasks in total at a time.
   ///
   /// [request] - The metadata request object.
@@ -467,7 +467,7 @@ class TasksResource {
 
   /// Returns all tasks in the specified task list.
   ///
-  /// A user can have up to 20,000 uncompleted tasks per list and up to 100,000
+  /// A user can have up to 20,000 non-hidden tasks per list and up to 100,000
   /// tasks in total at a time.
   ///
   /// Request parameters:

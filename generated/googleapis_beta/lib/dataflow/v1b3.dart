@@ -4601,6 +4601,8 @@ class Environment {
   /// This field should be used for service related experiments only. These
   /// experiments, when graduating to GA, should be replaced by dedicated fields
   /// or become default (i.e. always on).
+  ///
+  /// Optional.
   core.List<core.String>? serviceOptions;
 
   /// The shuffle mode used for the job.
@@ -5985,6 +5987,8 @@ class Job {
   core.String? currentStateTime;
 
   /// The environment for the job.
+  ///
+  /// Optional.
   Environment? environment;
 
   /// Deprecated.
@@ -6023,6 +6027,8 @@ class Job {
   /// name. If a caller attempts to create a job with the same name as an active
   /// job that already exists, the attempt returns the existing job. The name
   /// must match the regular expression `[a-z]([-a-z0-9]{0,1022}[a-z0-9])?`
+  ///
+  /// Optional.
   core.String? name;
 
   /// Preliminary field: The format of this data may change at any time.
@@ -6163,6 +6169,8 @@ class Job {
   core.Map<core.String, core.String>? transformNameMapping;
 
   /// The type of Dataflow job.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "JOB_TYPE_UNKNOWN" : The type of the job is unspecified, or unknown.
   /// - "JOB_TYPE_BATCH" : A batch job with a well-defined end point: data is
@@ -8134,6 +8142,9 @@ class ParameterMetadata {
   /// - "BOOLEAN" : The parameter specifies a boolean input.
   /// - "ENUM" : The parameter specifies an enum input.
   /// - "NUMBER" : The parameter specifies a number input.
+  /// - "KAFKA_TOPIC" : The parameter specifies the fully-qualified name of an
+  /// Apache Kafka topic. This can be either a Google Managed Kafka topic or a
+  /// non-managed Kafka topic.
   core.String? paramType;
 
   /// Specifies the name of the parent parameter.
@@ -11278,6 +11289,11 @@ class StreamingConfigTask {
   /// Maximum size for work item commit supported windmill storage layer.
   core.String? maxWorkItemCommitBytes;
 
+  /// Operational limits for the streaming job.
+  ///
+  /// Can be used by the worker to validate outputs sent to the backend.
+  StreamingOperationalLimits? operationalLimits;
+
   /// Set of computation configuration information.
   core.List<StreamingComputationConfig>? streamingComputationConfigs;
 
@@ -11299,6 +11315,7 @@ class StreamingConfigTask {
     this.commitStreamChunkSizeBytes,
     this.getDataStreamChunkSizeBytes,
     this.maxWorkItemCommitBytes,
+    this.operationalLimits,
     this.streamingComputationConfigs,
     this.userStepToStateFamilyNameMap,
     this.windmillServiceEndpoint,
@@ -11317,6 +11334,10 @@ class StreamingConfigTask {
                   : null,
           maxWorkItemCommitBytes: json_.containsKey('maxWorkItemCommitBytes')
               ? json_['maxWorkItemCommitBytes'] as core.String
+              : null,
+          operationalLimits: json_.containsKey('operationalLimits')
+              ? StreamingOperationalLimits.fromJson(json_['operationalLimits']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           streamingComputationConfigs:
               json_.containsKey('streamingComputationConfigs')
@@ -11351,6 +11372,7 @@ class StreamingConfigTask {
           'getDataStreamChunkSizeBytes': getDataStreamChunkSizeBytes!,
         if (maxWorkItemCommitBytes != null)
           'maxWorkItemCommitBytes': maxWorkItemCommitBytes!,
+        if (operationalLimits != null) 'operationalLimits': operationalLimits!,
         if (streamingComputationConfigs != null)
           'streamingComputationConfigs': streamingComputationConfigs!,
         if (userStepToStateFamilyNameMap != null)
@@ -11359,6 +11381,90 @@ class StreamingConfigTask {
           'windmillServiceEndpoint': windmillServiceEndpoint!,
         if (windmillServicePort != null)
           'windmillServicePort': windmillServicePort!,
+      };
+}
+
+/// Operational limits imposed on streaming jobs by the backend.
+class StreamingOperationalLimits {
+  /// The maximum size for an element in bag state.
+  core.String? maxBagElementBytes;
+
+  /// The maximum size for an element in global data.
+  core.String? maxGlobalDataBytes;
+
+  /// The maximum size allowed for a key.
+  core.String? maxKeyBytes;
+
+  /// The maximum size for a single output element.
+  core.String? maxProductionOutputBytes;
+
+  /// The maximum size for an element in sorted list state.
+  core.String? maxSortedListElementBytes;
+
+  /// The maximum size for a source state update.
+  core.String? maxSourceStateBytes;
+
+  /// The maximum size for a state tag.
+  core.String? maxTagBytes;
+
+  /// The maximum size for a value state field.
+  core.String? maxValueBytes;
+
+  StreamingOperationalLimits({
+    this.maxBagElementBytes,
+    this.maxGlobalDataBytes,
+    this.maxKeyBytes,
+    this.maxProductionOutputBytes,
+    this.maxSortedListElementBytes,
+    this.maxSourceStateBytes,
+    this.maxTagBytes,
+    this.maxValueBytes,
+  });
+
+  StreamingOperationalLimits.fromJson(core.Map json_)
+      : this(
+          maxBagElementBytes: json_.containsKey('maxBagElementBytes')
+              ? json_['maxBagElementBytes'] as core.String
+              : null,
+          maxGlobalDataBytes: json_.containsKey('maxGlobalDataBytes')
+              ? json_['maxGlobalDataBytes'] as core.String
+              : null,
+          maxKeyBytes: json_.containsKey('maxKeyBytes')
+              ? json_['maxKeyBytes'] as core.String
+              : null,
+          maxProductionOutputBytes:
+              json_.containsKey('maxProductionOutputBytes')
+                  ? json_['maxProductionOutputBytes'] as core.String
+                  : null,
+          maxSortedListElementBytes:
+              json_.containsKey('maxSortedListElementBytes')
+                  ? json_['maxSortedListElementBytes'] as core.String
+                  : null,
+          maxSourceStateBytes: json_.containsKey('maxSourceStateBytes')
+              ? json_['maxSourceStateBytes'] as core.String
+              : null,
+          maxTagBytes: json_.containsKey('maxTagBytes')
+              ? json_['maxTagBytes'] as core.String
+              : null,
+          maxValueBytes: json_.containsKey('maxValueBytes')
+              ? json_['maxValueBytes'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (maxBagElementBytes != null)
+          'maxBagElementBytes': maxBagElementBytes!,
+        if (maxGlobalDataBytes != null)
+          'maxGlobalDataBytes': maxGlobalDataBytes!,
+        if (maxKeyBytes != null) 'maxKeyBytes': maxKeyBytes!,
+        if (maxProductionOutputBytes != null)
+          'maxProductionOutputBytes': maxProductionOutputBytes!,
+        if (maxSortedListElementBytes != null)
+          'maxSortedListElementBytes': maxSortedListElementBytes!,
+        if (maxSourceStateBytes != null)
+          'maxSourceStateBytes': maxSourceStateBytes!,
+        if (maxTagBytes != null) 'maxTagBytes': maxTagBytes!,
+        if (maxValueBytes != null) 'maxValueBytes': maxValueBytes!,
       };
 }
 
@@ -11901,6 +12007,14 @@ class TaskRunnerSettings {
 
 /// Metadata describing a template.
 class TemplateMetadata {
+  /// Indicates the default streaming mode for a streaming template.
+  ///
+  /// Only valid if both supports_at_least_once and supports_exactly_once are
+  /// true. Possible values: UNSPECIFIED, EXACTLY_ONCE and AT_LEAST_ONCE
+  ///
+  /// Optional.
+  core.String? defaultStreamingMode;
+
   /// A description of the template.
   ///
   /// Optional.
@@ -11930,6 +12044,7 @@ class TemplateMetadata {
   core.bool? supportsExactlyOnce;
 
   TemplateMetadata({
+    this.defaultStreamingMode,
     this.description,
     this.name,
     this.parameters,
@@ -11940,6 +12055,9 @@ class TemplateMetadata {
 
   TemplateMetadata.fromJson(core.Map json_)
       : this(
+          defaultStreamingMode: json_.containsKey('defaultStreamingMode')
+              ? json_['defaultStreamingMode'] as core.String
+              : null,
           description: json_.containsKey('description')
               ? json_['description'] as core.String
               : null,
@@ -11962,6 +12080,8 @@ class TemplateMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (defaultStreamingMode != null)
+          'defaultStreamingMode': defaultStreamingMode!,
         if (description != null) 'description': description!,
         if (name != null) 'name': name!,
         if (parameters != null) 'parameters': parameters!,

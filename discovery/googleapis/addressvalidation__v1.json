@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240410",
+    "revision": "20240505",
     "rootUrl": "https://addressvalidation.googleapis.com/",
     "servicePath": "",
     "title": "Address Validation API",

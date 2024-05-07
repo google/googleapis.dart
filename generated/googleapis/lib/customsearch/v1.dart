@@ -251,6 +251,10 @@ class CseResource {
   /// - "e" : Exclude results from the listed sites.
   /// - "i" : Include only results from the listed sites.
   ///
+  /// [snippetLength] - Optional. Maximum length of snippet text, in characters,
+  /// to be returned with results. Note: this feature is limited to specific
+  /// engines. * Valid values are integers between 161 and 1000, inclusive.
+  ///
   /// [sort] - The sort expression to apply to the results. The sort parameter
   /// specifies that the results be sorted according to the specified expression
   /// i.e. sort by date. \[Example:
@@ -303,6 +307,7 @@ class CseResource {
     core.String? searchType,
     core.String? siteSearch,
     core.String? siteSearchFilter,
+    core.int? snippetLength,
     core.String? sort,
     core.int? start,
     core.String? $fields,
@@ -337,6 +342,7 @@ class CseResource {
       if (searchType != null) 'searchType': [searchType],
       if (siteSearch != null) 'siteSearch': [siteSearch],
       if (siteSearchFilter != null) 'siteSearchFilter': [siteSearchFilter],
+      if (snippetLength != null) 'snippetLength': ['${snippetLength}'],
       if (sort != null) 'sort': [sort],
       if (start != null) 'start': ['${start}'],
       if ($fields != null) 'fields': [$fields],
@@ -556,6 +562,10 @@ class CseSiterestrictResource {
   /// - "e" : Exclude results from the listed sites.
   /// - "i" : Include only results from the listed sites.
   ///
+  /// [snippetLength] - Optional. Maximum length of snippet text, in characters,
+  /// to be returned with results. Note: this feature is limited to specific
+  /// engines. * Valid values are integers between 161 and 1000, inclusive.
+  ///
   /// [sort] - The sort expression to apply to the results. The sort parameter
   /// specifies that the results be sorted according to the specified expression
   /// i.e. sort by date. \[Example:
@@ -608,6 +618,7 @@ class CseSiterestrictResource {
     core.String? searchType,
     core.String? siteSearch,
     core.String? siteSearchFilter,
+    core.int? snippetLength,
     core.String? sort,
     core.int? start,
     core.String? $fields,
@@ -642,6 +653,7 @@ class CseSiterestrictResource {
       if (searchType != null) 'searchType': [searchType],
       if (siteSearch != null) 'siteSearch': [siteSearch],
       if (siteSearchFilter != null) 'siteSearchFilter': [siteSearchFilter],
+      if (snippetLength != null) 'snippetLength': ['${snippetLength}'],
       if (sort != null) 'sort': [sort],
       if (start != null) 'start': ['${start}'],
       if ($fields != null) 'fields': [$fields],

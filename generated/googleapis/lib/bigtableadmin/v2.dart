@@ -1344,7 +1344,7 @@ class ProjectsInstancesClustersBackupsResource {
     return Backup.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets the access control policy for a Table or Backup resource.
+  /// Gets the access control policy for a Bigtable resource.
   ///
   /// Returns an empty policy if the resource exists but does not have a policy
   /// set.
@@ -1537,7 +1537,7 @@ class ProjectsInstancesClustersBackupsResource {
     return Backup.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Sets the access control policy on a Table or Backup resource.
+  /// Sets the access control policy on a Bigtable resource.
   ///
   /// Replaces any existing policy.
   ///
@@ -1583,7 +1583,7 @@ class ProjectsInstancesClustersBackupsResource {
     return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Returns permissions that the caller has on the specified Table or Backup
+  /// Returns permissions that the caller has on the specified Bigtable
   /// resource.
   ///
   /// [request] - The metadata request object.
@@ -1997,7 +1997,7 @@ class ProjectsInstancesTablesResource {
     return Table.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets the access control policy for a Table or Backup resource.
+  /// Gets the access control policy for a Bigtable resource.
   ///
   /// Returns an empty policy if the resource exists but does not have a policy
   /// set.
@@ -2262,7 +2262,7 @@ class ProjectsInstancesTablesResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Sets the access control policy on a Table or Backup resource.
+  /// Sets the access control policy on a Bigtable resource.
   ///
   /// Replaces any existing policy.
   ///
@@ -2308,7 +2308,7 @@ class ProjectsInstancesTablesResource {
     return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Returns permissions that the caller has on the specified Table or Backup
+  /// Returns permissions that the caller has on the specified Bigtable
   /// resource.
   ///
   /// [request] - The metadata request object.
@@ -2549,7 +2549,7 @@ class ProjectsInstancesTablesAuthorizedViewsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets the access control policy for a Table or Backup resource.
+  /// Gets the access control policy for a Bigtable resource.
   ///
   /// Returns an empty policy if the resource exists but does not have a policy
   /// set.
@@ -2617,8 +2617,8 @@ class ProjectsInstancesTablesAuthorizedViewsResource {
   /// [pageToken] - Optional. The value of `next_page_token` returned by a
   /// previous call.
   ///
-  /// [view] - Optional. The resource_view to be applied to the returned views'
-  /// fields. Default to NAME_ONLY.
+  /// [view] - Optional. The resource_view to be applied to the returned
+  /// AuthorizedViews' fields. Default to NAME_ONLY.
   /// Possible string values are:
   /// - "RESPONSE_VIEW_UNSPECIFIED" : Uses the default view for each method as
   /// documented in the request.
@@ -2719,7 +2719,7 @@ class ProjectsInstancesTablesAuthorizedViewsResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Sets the access control policy on a Table or Backup resource.
+  /// Sets the access control policy on a Bigtable resource.
   ///
   /// Replaces any existing policy.
   ///
@@ -2765,7 +2765,7 @@ class ProjectsInstancesTablesAuthorizedViewsResource {
     return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Returns permissions that the caller has on the specified Table or Backup
+  /// Returns permissions that the caller has on the specified Bigtable
   /// resource.
   ///
   /// [request] - The metadata request object.
@@ -3040,7 +3040,7 @@ class AuditConfig {
 /// exempting jose@example.com from DATA_READ logging.
 typedef AuditLogConfig = $AuditLogConfig;
 
-/// Placeholder for admin API work while we work out the internals.
+/// An Authorized View of a Cloud Bigtable Table.
 class AuthorizedView {
   /// Set to true to make the AuthorizedView protected against deletion.
   ///
@@ -4144,16 +4144,11 @@ class CreateTableRequest {
 }
 
 /// Data Boost is a serverless compute capability that lets you run
-/// high-throughput read jobs on your Bigtable data, without impacting the
-/// performance of the clusters that handle your application traffic.
+/// high-throughput read jobs and queries on your Bigtable data, without
+/// impacting the performance of the clusters that handle your application
+/// traffic.
 ///
-/// Currently, Data Boost exclusively supports read-only use-cases with
-/// single-cluster routing. Data Boost reads are only guaranteed to see the
-/// results of writes that were written at least 30 minutes ago. This means
-/// newly written values may not become visible for up to 30m, and also means
-/// that old values may remain visible for up to 30m after being deleted or
-/// overwritten. To mitigate the staleness of the data, users may either wait
-/// 30m, or use CheckConsistency.
+/// Data Boost supports read-only use cases with single-cluster routing.
 class DataBoostIsolationReadOnly {
   /// The Compute Billing Owner for this Data Boost App Profile.
   /// Possible string values are:
@@ -4445,7 +4440,7 @@ class GetIamPolicyRequest {
 }
 
 /// Encapsulates settings provided to GetIamPolicy.
-typedef GetPolicyOptions = $GetPolicyOptions;
+typedef GetPolicyOptions = $GetPolicyOptions00;
 
 /// Subsets of a column family that are included in this AuthorizedView.
 class GoogleBigtableAdminV2AuthorizedViewFamilySubsets {
@@ -4832,6 +4827,11 @@ class Instance {
   /// Reserved for future use.
   ///
   /// Output only.
+  core.bool? satisfiesPzi;
+
+  /// Reserved for future use.
+  ///
+  /// Output only.
   core.bool? satisfiesPzs;
 
   /// The current state of the instance.
@@ -4863,6 +4863,7 @@ class Instance {
     this.displayName,
     this.labels,
     this.name,
+    this.satisfiesPzi,
     this.satisfiesPzs,
     this.state,
     this.type,
@@ -4885,6 +4886,9 @@ class Instance {
                 )
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          satisfiesPzi: json_.containsKey('satisfiesPzi')
+              ? json_['satisfiesPzi'] as core.bool
+              : null,
           satisfiesPzs: json_.containsKey('satisfiesPzs')
               ? json_['satisfiesPzs'] as core.bool
               : null,
@@ -4898,6 +4902,7 @@ class Instance {
         if (displayName != null) 'displayName': displayName!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
+        if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
         if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (state != null) 'state': state!,
         if (type != null) 'type': type!,

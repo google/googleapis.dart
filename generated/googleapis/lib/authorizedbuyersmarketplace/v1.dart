@@ -22,6 +22,7 @@
 /// resources:
 ///
 /// - [BiddersResource]
+///   - [BiddersAuctionPackagesResource]
 ///   - [BiddersFinalizedDealsResource]
 /// - [BuyersResource]
 ///   - [BuyersAuctionPackagesResource]
@@ -69,10 +70,82 @@ class AuthorizedBuyersMarketplaceApi {
 class BiddersResource {
   final commons.ApiRequester _requester;
 
+  BiddersAuctionPackagesResource get auctionPackages =>
+      BiddersAuctionPackagesResource(_requester);
   BiddersFinalizedDealsResource get finalizedDeals =>
       BiddersFinalizedDealsResource(_requester);
 
   BiddersResource(commons.ApiRequester client) : _requester = client;
+}
+
+class BiddersAuctionPackagesResource {
+  final commons.ApiRequester _requester;
+
+  BiddersAuctionPackagesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// List the auction packages.
+  ///
+  /// Buyers can use the URL path "/v1/buyers/{accountId}/auctionPackages" to
+  /// list auction packages for the current buyer and its clients. Bidders can
+  /// use the URL path "/v1/bidders/{accountId}/auctionPackages" to list auction
+  /// packages for the bidder, its media planners, its buyers, and all their
+  /// clients.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the parent buyer that can access the auction
+  /// package. Format: `buyers/{accountId}`. When used with a bidder account,
+  /// the auction packages that the bidder, its media planners, its buyers and
+  /// clients are subscribed to will be listed, in the format
+  /// `bidders/{accountId}`.
+  /// Value must have pattern `^bidders/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Optional query string using the \[Cloud API list
+  /// filtering syntax\](/authorized-buyers/apis/guides/list-filters). Only
+  /// supported when parent is bidder. Supported columns for filtering are: *
+  /// displayName * createTime * updateTime * eligibleSeatIds
+  ///
+  /// [pageSize] - Requested page size. The server may return fewer results than
+  /// requested. Max allowed page size is 500.
+  ///
+  /// [pageToken] - The page token as returned.
+  /// ListAuctionPackagesResponse.nextPageToken
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAuctionPackagesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAuctionPackagesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/auctionPackages';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListAuctionPackagesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class BiddersFinalizedDealsResource {
@@ -213,13 +286,27 @@ class BuyersAuctionPackagesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// List the auction packages subscribed by a buyer and its clients.
+  /// List the auction packages.
+  ///
+  /// Buyers can use the URL path "/v1/buyers/{accountId}/auctionPackages" to
+  /// list auction packages for the current buyer and its clients. Bidders can
+  /// use the URL path "/v1/bidders/{accountId}/auctionPackages" to list auction
+  /// packages for the bidder, its media planners, its buyers, and all their
+  /// clients.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. Name of the parent buyer that can access the auction
-  /// package. Format: `buyers/{accountId}`
+  /// package. Format: `buyers/{accountId}`. When used with a bidder account,
+  /// the auction packages that the bidder, its media planners, its buyers and
+  /// clients are subscribed to will be listed, in the format
+  /// `bidders/{accountId}`.
   /// Value must have pattern `^buyers/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Optional query string using the \[Cloud API list
+  /// filtering syntax\](/authorized-buyers/apis/guides/list-filters). Only
+  /// supported when parent is bidder. Supported columns for filtering are: *
+  /// displayName * createTime * updateTime * eligibleSeatIds
   ///
   /// [pageSize] - Requested page size. The server may return fewer results than
   /// requested. Max allowed page size is 500.
@@ -239,11 +326,13 @@ class BuyersAuctionPackagesResource {
   /// this method will complete with the same error.
   async.Future<ListAuctionPackagesResponse> list(
     core.String parent, {
+    core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -2113,6 +2202,14 @@ class AuctionPackage {
   /// The display_name assigned to the auction package.
   core.String? displayName;
 
+  /// If set, this field contains the list of DSP specific seat ids set by media
+  /// planners that are eligible to transact on this deal.
+  ///
+  /// The seat ID is in the calling DSP's namespace.
+  ///
+  /// Output only.
+  core.List<core.String>? eligibleSeatIds;
+
   /// The unique identifier for the auction package.
   ///
   /// Format: `buyers/{accountId}/auctionPackages/{auctionPackageId}` The
@@ -2122,13 +2219,30 @@ class AuctionPackage {
   /// Immutable.
   core.String? name;
 
-  /// The list of clients of the current buyer that are subscribed to the
-  /// AuctionPackage.
+  /// The list of buyers that are subscribed to the AuctionPackage.
   ///
-  /// Format: `buyers/{buyerAccountId}/clients/{clientAccountId}`
+  /// This field is only populated when calling as a bidder. Format:
+  /// `buyers/{buyerAccountId}`
+  ///
+  /// Output only.
+  core.List<core.String>? subscribedBuyers;
+
+  /// When calling as a buyer, the list of clients of the current buyer that are
+  /// subscribed to the AuctionPackage.
+  ///
+  /// When calling as a bidder, the list of clients that are subscribed to the
+  /// AuctionPackage owned by the bidder or its buyers. Format:
+  /// `buyers/{buyerAccountId}/clients/{clientAccountId}`
   ///
   /// Output only.
   core.List<core.String>? subscribedClients;
+
+  /// The list of media planners that are subscribed to the AuctionPackage.
+  ///
+  /// This field is only populated when calling as a bidder.
+  ///
+  /// Output only.
+  core.List<MediaPlanner>? subscribedMediaPlanners;
 
   /// Time the auction package was last updated.
   ///
@@ -2143,8 +2257,11 @@ class AuctionPackage {
     this.creator,
     this.description,
     this.displayName,
+    this.eligibleSeatIds,
     this.name,
+    this.subscribedBuyers,
     this.subscribedClients,
+    this.subscribedMediaPlanners,
     this.updateTime,
   });
 
@@ -2162,10 +2279,26 @@ class AuctionPackage {
           displayName: json_.containsKey('displayName')
               ? json_['displayName'] as core.String
               : null,
+          eligibleSeatIds: json_.containsKey('eligibleSeatIds')
+              ? (json_['eligibleSeatIds'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          subscribedBuyers: json_.containsKey('subscribedBuyers')
+              ? (json_['subscribedBuyers'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           subscribedClients: json_.containsKey('subscribedClients')
               ? (json_['subscribedClients'] as core.List)
                   .map((value) => value as core.String)
+                  .toList()
+              : null,
+          subscribedMediaPlanners: json_.containsKey('subscribedMediaPlanners')
+              ? (json_['subscribedMediaPlanners'] as core.List)
+                  .map((value) => MediaPlanner.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           updateTime: json_.containsKey('updateTime')
@@ -2178,8 +2311,12 @@ class AuctionPackage {
         if (creator != null) 'creator': creator!,
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
+        if (eligibleSeatIds != null) 'eligibleSeatIds': eligibleSeatIds!,
         if (name != null) 'name': name!,
+        if (subscribedBuyers != null) 'subscribedBuyers': subscribedBuyers!,
         if (subscribedClients != null) 'subscribedClients': subscribedClients!,
+        if (subscribedMediaPlanners != null)
+          'subscribedMediaPlanners': subscribedMediaPlanners!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }

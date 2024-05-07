@@ -93,6 +93,7 @@ packages:
     - cloudtrace:v2 # https://cloud.google.com/cloud-trace/
     - composer:v1 # https://cloud.google.com/composer/
     - compute:v1 # https://developers.google.com/compute/
+    - config:v1
     - connectors:v1
     - connectors:v2
     - contactcenterinsights:v1
@@ -167,6 +168,7 @@ packages:
     - identitytoolkit:v3 # https://developers.google.com/identity-toolkit/
     - ids:v1
     - indexing:v3 # https://developers.google.com/search/apis/indexing-api/
+    - integrations:v1
     - jobs:v3 # https://cloud.google.com/job-discovery/docs
     - jobs:v4
     - keep:v1
@@ -393,7 +395,6 @@ skipped_apis:
 - domains:v1alpha2 # v1beta1 included
 - domains:v1beta1
 - drivelabels:v2beta
-- eventarc:v1beta1 # v1 included
 - file:v1beta1
 - firebaseappdistribution:v1alpha
 - firebasehosting:v1beta1 # v1 included
@@ -410,7 +411,6 @@ skipped_apis:
 - iap:v1beta1 # v1 included
 - identitytoolkit:v1
 - identitytoolkit:v2
-- integrations:v1alpha
 - jobs:v3p1beta1 # v3 included
 - language:v1beta2 # v1 included
 - managedidentities:v1alpha1 # v1 included

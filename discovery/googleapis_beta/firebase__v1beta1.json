@@ -34,7 +34,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240327",
+    "revision": "20240503",
     "rootUrl": "https://firebase.googleapis.com/",
     "servicePath": "",
     "title": "Firebase Management API",

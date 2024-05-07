@@ -318,7 +318,7 @@ class ProjectsLocationsCertificateIssuanceConfigsResource {
   ///
   /// [orderBy] - A list of Certificate Config field names used to specify the
   /// order of the returned results. The default sorting order is ascending. To
-  /// specify descending order for a field, add a suffix " desc".
+  /// specify descending order for a field, add a suffix `" desc"`.
   ///
   /// [pageSize] - Maximum number of certificate configs to return per call.
   ///
@@ -514,7 +514,7 @@ class ProjectsLocationsCertificateMapsResource {
   ///
   /// [orderBy] - A list of Certificate Map field names used to specify the
   /// order of the returned results. The default sorting order is ascending. To
-  /// specify descending order for a field, add a suffix " desc".
+  /// specify descending order for a field, add a suffix `" desc"`.
   ///
   /// [pageSize] - Maximum number of certificate maps to return per call.
   ///
@@ -758,7 +758,7 @@ class ProjectsLocationsCertificateMapsCertificateMapEntriesResource {
   ///
   /// [orderBy] - A list of Certificate Map Entry field names used to specify
   /// the order of the returned results. The default sorting order is ascending.
-  /// To specify descending order for a field, add a suffix " desc".
+  /// To specify descending order for a field, add a suffix `" desc"`.
   ///
   /// [pageSize] - Maximum number of certificate map entries to return. The
   /// service may return fewer than this value. If unspecified, at most 50
@@ -996,7 +996,7 @@ class ProjectsLocationsCertificatesResource {
   ///
   /// [orderBy] - A list of Certificate field names used to specify the order of
   /// the returned results. The default sorting order is ascending. To specify
-  /// descending order for a field, add a suffix " desc".
+  /// descending order for a field, add a suffix `" desc"`.
   ///
   /// [pageSize] - Maximum number of certificates to return per call.
   ///
@@ -1232,7 +1232,7 @@ class ProjectsLocationsDnsAuthorizationsResource {
   ///
   /// [orderBy] - A list of Dns Authorization field names used to specify the
   /// order of the returned results. The default sorting order is ascending. To
-  /// specify descending order for a field, add a suffix " desc".
+  /// specify descending order for a field, add a suffix `" desc"`.
   ///
   /// [pageSize] - Maximum number of dns authorizations to return per call.
   ///
@@ -1659,7 +1659,7 @@ class ProjectsLocationsTrustConfigsResource {
   ///
   /// [orderBy] - A list of TrustConfig field names used to specify the order of
   /// the returned results. The default sorting order is ascending. To specify
-  /// descending order for a field, add a suffix " desc".
+  /// descending order for a field, add a suffix `" desc"`.
   ///
   /// [pageSize] - Maximum number of TrustConfigs to return per call.
   ///
@@ -3260,7 +3260,7 @@ class TrustAnchor {
 class TrustConfig {
   /// A certificate matching an allowlisted certificate is always considered
   /// valid as long as the certificate is parseable, proof of private key
-  /// possession is established, and constraints on the certificate’s SAN field
+  /// possession is established, and constraints on the certificate's SAN field
   /// are met.
   ///
   /// Optional.

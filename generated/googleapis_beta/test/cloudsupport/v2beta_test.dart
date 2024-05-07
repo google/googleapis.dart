@@ -250,6 +250,7 @@ api.CaseClassification buildCaseClassification() {
   if (buildCounterCaseClassification < 3) {
     o.displayName = 'foo';
     o.id = 'foo';
+    o.product = buildProduct();
   }
   buildCounterCaseClassification--;
   return o;
@@ -266,6 +267,7 @@ void checkCaseClassification(api.CaseClassification o) {
       o.id!,
       unittest.equals('foo'),
     );
+    checkProduct(o.product!);
   }
   buildCounterCaseClassification--;
 }
@@ -604,6 +606,80 @@ void checkDownloadParameters(api.DownloadParameters o) {
   buildCounterDownloadParameters--;
 }
 
+core.List<core.String> buildUnnamed1() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed1(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed2() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed2(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterEmailMessage = 0;
+api.EmailMessage buildEmailMessage() {
+  final o = api.EmailMessage();
+  buildCounterEmailMessage++;
+  if (buildCounterEmailMessage < 3) {
+    o.actor = buildActor();
+    o.bodyContent = buildTextContent();
+    o.ccEmailAddresses = buildUnnamed1();
+    o.createTime = 'foo';
+    o.name = 'foo';
+    o.recipientEmailAddresses = buildUnnamed2();
+    o.subject = 'foo';
+  }
+  buildCounterEmailMessage--;
+  return o;
+}
+
+void checkEmailMessage(api.EmailMessage o) {
+  buildCounterEmailMessage++;
+  if (buildCounterEmailMessage < 3) {
+    checkActor(o.actor!);
+    checkTextContent(o.bodyContent!);
+    checkUnnamed1(o.ccEmailAddresses!);
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed2(o.recipientEmailAddresses!);
+    unittest.expect(
+      o.subject!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterEmailMessage--;
+}
+
 core.int buildCounterEscalateCaseRequest = 0;
 api.EscalateCaseRequest buildEscalateCaseRequest() {
   final o = api.EscalateCaseRequest();
@@ -650,12 +726,42 @@ void checkEscalation(api.Escalation o) {
   buildCounterEscalation--;
 }
 
-core.List<api.Attachment> buildUnnamed1() => [
+core.int buildCounterFeedItem = 0;
+api.FeedItem buildFeedItem() {
+  final o = api.FeedItem();
+  buildCounterFeedItem++;
+  if (buildCounterFeedItem < 3) {
+    o.attachment = buildAttachment();
+    o.comment = buildComment();
+    o.deletedAttachment = buildAttachment();
+    o.emailMessage = buildEmailMessage();
+    o.eventTime = 'foo';
+  }
+  buildCounterFeedItem--;
+  return o;
+}
+
+void checkFeedItem(api.FeedItem o) {
+  buildCounterFeedItem++;
+  if (buildCounterFeedItem < 3) {
+    checkAttachment(o.attachment!);
+    checkComment(o.comment!);
+    checkAttachment(o.deletedAttachment!);
+    checkEmailMessage(o.emailMessage!);
+    unittest.expect(
+      o.eventTime!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterFeedItem--;
+}
+
+core.List<api.Attachment> buildUnnamed3() => [
       buildAttachment(),
       buildAttachment(),
     ];
 
-void checkUnnamed1(core.List<api.Attachment> o) {
+void checkUnnamed3(core.List<api.Attachment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAttachment(o[0]);
   checkAttachment(o[1]);
@@ -666,7 +772,7 @@ api.ListAttachmentsResponse buildListAttachmentsResponse() {
   final o = api.ListAttachmentsResponse();
   buildCounterListAttachmentsResponse++;
   if (buildCounterListAttachmentsResponse < 3) {
-    o.attachments = buildUnnamed1();
+    o.attachments = buildUnnamed3();
     o.nextPageToken = 'foo';
   }
   buildCounterListAttachmentsResponse--;
@@ -676,7 +782,7 @@ api.ListAttachmentsResponse buildListAttachmentsResponse() {
 void checkListAttachmentsResponse(api.ListAttachmentsResponse o) {
   buildCounterListAttachmentsResponse++;
   if (buildCounterListAttachmentsResponse < 3) {
-    checkUnnamed1(o.attachments!);
+    checkUnnamed3(o.attachments!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -685,12 +791,12 @@ void checkListAttachmentsResponse(api.ListAttachmentsResponse o) {
   buildCounterListAttachmentsResponse--;
 }
 
-core.List<api.Case> buildUnnamed2() => [
+core.List<api.Case> buildUnnamed4() => [
       buildCase(),
       buildCase(),
     ];
 
-void checkUnnamed2(core.List<api.Case> o) {
+void checkUnnamed4(core.List<api.Case> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCase(o[0]);
   checkCase(o[1]);
@@ -701,7 +807,7 @@ api.ListCasesResponse buildListCasesResponse() {
   final o = api.ListCasesResponse();
   buildCounterListCasesResponse++;
   if (buildCounterListCasesResponse < 3) {
-    o.cases = buildUnnamed2();
+    o.cases = buildUnnamed4();
     o.nextPageToken = 'foo';
   }
   buildCounterListCasesResponse--;
@@ -711,7 +817,7 @@ api.ListCasesResponse buildListCasesResponse() {
 void checkListCasesResponse(api.ListCasesResponse o) {
   buildCounterListCasesResponse++;
   if (buildCounterListCasesResponse < 3) {
-    checkUnnamed2(o.cases!);
+    checkUnnamed4(o.cases!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -720,12 +826,12 @@ void checkListCasesResponse(api.ListCasesResponse o) {
   buildCounterListCasesResponse--;
 }
 
-core.List<api.Comment> buildUnnamed3() => [
+core.List<api.Comment> buildUnnamed5() => [
       buildComment(),
       buildComment(),
     ];
 
-void checkUnnamed3(core.List<api.Comment> o) {
+void checkUnnamed5(core.List<api.Comment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkComment(o[0]);
   checkComment(o[1]);
@@ -736,7 +842,7 @@ api.ListCommentsResponse buildListCommentsResponse() {
   final o = api.ListCommentsResponse();
   buildCounterListCommentsResponse++;
   if (buildCounterListCommentsResponse < 3) {
-    o.comments = buildUnnamed3();
+    o.comments = buildUnnamed5();
     o.nextPageToken = 'foo';
   }
   buildCounterListCommentsResponse--;
@@ -746,7 +852,7 @@ api.ListCommentsResponse buildListCommentsResponse() {
 void checkListCommentsResponse(api.ListCommentsResponse o) {
   buildCounterListCommentsResponse++;
   if (buildCounterListCommentsResponse < 3) {
-    checkUnnamed3(o.comments!);
+    checkUnnamed5(o.comments!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -755,12 +861,12 @@ void checkListCommentsResponse(api.ListCommentsResponse o) {
   buildCounterListCommentsResponse--;
 }
 
-core.List<api.CompositeMedia> buildUnnamed4() => [
+core.List<api.CompositeMedia> buildUnnamed6() => [
       buildCompositeMedia(),
       buildCompositeMedia(),
     ];
 
-void checkUnnamed4(core.List<api.CompositeMedia> o) {
+void checkUnnamed6(core.List<api.CompositeMedia> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCompositeMedia(o[0]);
   checkCompositeMedia(o[1]);
@@ -775,7 +881,7 @@ api.Media buildMedia() {
     o.bigstoreObjectRef = 'foo';
     o.blobRef = 'foo';
     o.blobstore2Info = buildBlobstore2Info();
-    o.compositeMedia = buildUnnamed4();
+    o.compositeMedia = buildUnnamed6();
     o.contentType = 'foo';
     o.contentTypeInfo = buildContentTypeInfo();
     o.cosmoBinaryReference = 'foo';
@@ -822,7 +928,7 @@ void checkMedia(api.Media o) {
       unittest.equals('foo'),
     );
     checkBlobstore2Info(o.blobstore2Info!);
-    checkUnnamed4(o.compositeMedia!);
+    checkUnnamed6(o.compositeMedia!);
     unittest.expect(
       o.contentType!,
       unittest.equals('foo'),
@@ -929,12 +1035,34 @@ void checkObjectId(api.ObjectId o) {
   buildCounterObjectId--;
 }
 
-core.List<api.CaseClassification> buildUnnamed5() => [
+core.int buildCounterProduct = 0;
+api.Product buildProduct() {
+  final o = api.Product();
+  buildCounterProduct++;
+  if (buildCounterProduct < 3) {
+    o.productLine = 'foo';
+  }
+  buildCounterProduct--;
+  return o;
+}
+
+void checkProduct(api.Product o) {
+  buildCounterProduct++;
+  if (buildCounterProduct < 3) {
+    unittest.expect(
+      o.productLine!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterProduct--;
+}
+
+core.List<api.CaseClassification> buildUnnamed7() => [
       buildCaseClassification(),
       buildCaseClassification(),
     ];
 
-void checkUnnamed5(core.List<api.CaseClassification> o) {
+void checkUnnamed7(core.List<api.CaseClassification> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCaseClassification(o[0]);
   checkCaseClassification(o[1]);
@@ -945,7 +1073,7 @@ api.SearchCaseClassificationsResponse buildSearchCaseClassificationsResponse() {
   final o = api.SearchCaseClassificationsResponse();
   buildCounterSearchCaseClassificationsResponse++;
   if (buildCounterSearchCaseClassificationsResponse < 3) {
-    o.caseClassifications = buildUnnamed5();
+    o.caseClassifications = buildUnnamed7();
     o.nextPageToken = 'foo';
   }
   buildCounterSearchCaseClassificationsResponse--;
@@ -956,7 +1084,7 @@ void checkSearchCaseClassificationsResponse(
     api.SearchCaseClassificationsResponse o) {
   buildCounterSearchCaseClassificationsResponse++;
   if (buildCounterSearchCaseClassificationsResponse < 3) {
-    checkUnnamed5(o.caseClassifications!);
+    checkUnnamed7(o.caseClassifications!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -965,12 +1093,12 @@ void checkSearchCaseClassificationsResponse(
   buildCounterSearchCaseClassificationsResponse--;
 }
 
-core.List<api.Case> buildUnnamed6() => [
+core.List<api.Case> buildUnnamed8() => [
       buildCase(),
       buildCase(),
     ];
 
-void checkUnnamed6(core.List<api.Case> o) {
+void checkUnnamed8(core.List<api.Case> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCase(o[0]);
   checkCase(o[1]);
@@ -981,7 +1109,7 @@ api.SearchCasesResponse buildSearchCasesResponse() {
   final o = api.SearchCasesResponse();
   buildCounterSearchCasesResponse++;
   if (buildCounterSearchCasesResponse < 3) {
-    o.cases = buildUnnamed6();
+    o.cases = buildUnnamed8();
     o.nextPageToken = 'foo';
   }
   buildCounterSearchCasesResponse--;
@@ -991,13 +1119,70 @@ api.SearchCasesResponse buildSearchCasesResponse() {
 void checkSearchCasesResponse(api.SearchCasesResponse o) {
   buildCounterSearchCasesResponse++;
   if (buildCounterSearchCasesResponse < 3) {
-    checkUnnamed6(o.cases!);
+    checkUnnamed8(o.cases!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
   }
   buildCounterSearchCasesResponse--;
+}
+
+core.List<api.FeedItem> buildUnnamed9() => [
+      buildFeedItem(),
+      buildFeedItem(),
+    ];
+
+void checkUnnamed9(core.List<api.FeedItem> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkFeedItem(o[0]);
+  checkFeedItem(o[1]);
+}
+
+core.int buildCounterShowFeedResponse = 0;
+api.ShowFeedResponse buildShowFeedResponse() {
+  final o = api.ShowFeedResponse();
+  buildCounterShowFeedResponse++;
+  if (buildCounterShowFeedResponse < 3) {
+    o.feedItems = buildUnnamed9();
+    o.nextPageToken = 'foo';
+  }
+  buildCounterShowFeedResponse--;
+  return o;
+}
+
+void checkShowFeedResponse(api.ShowFeedResponse o) {
+  buildCounterShowFeedResponse++;
+  if (buildCounterShowFeedResponse < 3) {
+    checkUnnamed9(o.feedItems!);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterShowFeedResponse--;
+}
+
+core.int buildCounterTextContent = 0;
+api.TextContent buildTextContent() {
+  final o = api.TextContent();
+  buildCounterTextContent++;
+  if (buildCounterTextContent < 3) {
+    o.plainText = 'foo';
+  }
+  buildCounterTextContent--;
+  return o;
+}
+
+void checkTextContent(api.TextContent o) {
+  buildCounterTextContent++;
+  if (buildCounterTextContent < 3) {
+    unittest.expect(
+      o.plainText!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterTextContent--;
 }
 
 void main() {
@@ -1161,6 +1346,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-EmailMessage', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildEmailMessage();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.EmailMessage.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkEmailMessage(od);
+    });
+  });
+
   unittest.group('obj-schema-EscalateCaseRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildEscalateCaseRequest();
@@ -1178,6 +1373,16 @@ void main() {
       final od =
           api.Escalation.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkEscalation(od);
+    });
+  });
+
+  unittest.group('obj-schema-FeedItem', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildFeedItem();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.FeedItem.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkFeedItem(od);
     });
   });
 
@@ -1231,6 +1436,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-Product', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildProduct();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Product.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkProduct(od);
+    });
+  });
+
   unittest.group('obj-schema-SearchCaseClassificationsResponse', () {
     unittest.test('to-json--from-json', () async {
       final o = buildSearchCaseClassificationsResponse();
@@ -1251,12 +1466,33 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-ShowFeedResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildShowFeedResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ShowFeedResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkShowFeedResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-TextContent', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildTextContent();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TextContent.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkTextContent(od);
+    });
+  });
+
   unittest.group('resource-CaseClassificationsResource', () {
     unittest.test('method--search', () async {
       final mock = HttpServerMock();
       final res = api.CloudSupportApi(mock).caseClassifications;
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
+      final arg_product_productLine = 'foo';
       final arg_query = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1299,6 +1535,10 @@ void main() {
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
+          queryMap['product.productLine']!.first,
+          unittest.equals(arg_product_productLine),
+        );
+        unittest.expect(
           queryMap['query']!.first,
           unittest.equals(arg_query),
         );
@@ -1317,6 +1557,7 @@ void main() {
       final response = await res.search(
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,
+          product_productLine: arg_product_productLine,
           query: arg_query,
           $fields: arg_$fields);
       checkSearchCaseClassificationsResponse(
@@ -1558,6 +1799,7 @@ void main() {
       final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
+      final arg_productLine = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -1604,6 +1846,10 @@ void main() {
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
+          queryMap['productLine']!.first,
+          unittest.equals(arg_productLine),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -1618,6 +1864,7 @@ void main() {
           filter: arg_filter,
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,
+          productLine: arg_productLine,
           $fields: arg_$fields);
       checkListCasesResponse(response as api.ListCasesResponse);
     });
@@ -1758,6 +2005,77 @@ void main() {
           query: arg_query,
           $fields: arg_$fields);
       checkSearchCasesResponse(response as api.SearchCasesResponse);
+    });
+
+    unittest.test('method--showFeed', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudSupportApi(mock).cases;
+      final arg_parent = 'foo';
+      final arg_orderBy = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 7),
+          unittest.equals('v2beta/'),
+        );
+        pathOffset += 7;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['orderBy']!.first,
+          unittest.equals(arg_orderBy),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildShowFeedResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.showFeed(arg_parent,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkShowFeedResponse(response as api.ShowFeedResponse);
     });
   });
 

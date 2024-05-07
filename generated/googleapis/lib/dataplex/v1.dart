@@ -12582,9 +12582,10 @@ class GoogleCloudDataplexV1EntityCompatibilityStatusCompatibility {
 class GoogleCloudDataplexV1Entry {
   /// The Aspects attached to the Entry.
   ///
-  /// The key is either the resource name of the aspect type (if the aspect is
-  /// attached directly to the entry) or "aspectType@path" if the aspect is
-  /// attached to an entry's path.
+  /// The format for the key can be one of the following: 1.
+  /// {projectId}.{locationId}.{aspectTypeId} (if the aspect is attached
+  /// directly to the entry) 2. {projectId}.{locationId}.{aspectTypeId}@{path}
+  /// (if the aspect is attached to an entry's path)
   ///
   /// Optional.
   core.Map<core.String, GoogleCloudDataplexV1Aspect>? aspects;
@@ -15273,64 +15274,15 @@ class GoogleCloudDataplexV1SearchEntriesResult {
   /// Entry format of the result.
   GoogleCloudDataplexV1Entry? dataplexEntry;
 
-  /// Entry description.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? description;
-
-  /// Display name.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? displayName;
-
-  /// Resource name of the entry.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? entry;
-
-  /// The entry type.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? entryType;
-
-  /// Fully qualified name.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? fullyQualifiedName;
-
   /// Linked resource name.
   core.String? linkedResource;
-
-  /// The last modification timestamp.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? modifyTime;
-
-  /// Relative resource name.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? relativeResource;
 
   /// Snippets.
   GoogleCloudDataplexV1SearchEntriesResultSnippets? snippets;
 
   GoogleCloudDataplexV1SearchEntriesResult({
     this.dataplexEntry,
-    this.description,
-    this.displayName,
-    this.entry,
-    this.entryType,
-    this.fullyQualifiedName,
     this.linkedResource,
-    this.modifyTime,
-    this.relativeResource,
     this.snippets,
   });
 
@@ -15340,28 +15292,8 @@ class GoogleCloudDataplexV1SearchEntriesResult {
               ? GoogleCloudDataplexV1Entry.fromJson(
                   json_['dataplexEntry'] as core.Map<core.String, core.dynamic>)
               : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          entry:
-              json_.containsKey('entry') ? json_['entry'] as core.String : null,
-          entryType: json_.containsKey('entryType')
-              ? json_['entryType'] as core.String
-              : null,
-          fullyQualifiedName: json_.containsKey('fullyQualifiedName')
-              ? json_['fullyQualifiedName'] as core.String
-              : null,
           linkedResource: json_.containsKey('linkedResource')
               ? json_['linkedResource'] as core.String
-              : null,
-          modifyTime: json_.containsKey('modifyTime')
-              ? json_['modifyTime'] as core.String
-              : null,
-          relativeResource: json_.containsKey('relativeResource')
-              ? json_['relativeResource'] as core.String
               : null,
           snippets: json_.containsKey('snippets')
               ? GoogleCloudDataplexV1SearchEntriesResultSnippets.fromJson(
@@ -15371,15 +15303,7 @@ class GoogleCloudDataplexV1SearchEntriesResult {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dataplexEntry != null) 'dataplexEntry': dataplexEntry!,
-        if (description != null) 'description': description!,
-        if (displayName != null) 'displayName': displayName!,
-        if (entry != null) 'entry': entry!,
-        if (entryType != null) 'entryType': entryType!,
-        if (fullyQualifiedName != null)
-          'fullyQualifiedName': fullyQualifiedName!,
         if (linkedResource != null) 'linkedResource': linkedResource!,
-        if (modifyTime != null) 'modifyTime': modifyTime!,
-        if (relativeResource != null) 'relativeResource': relativeResource!,
         if (snippets != null) 'snippets': snippets!,
       };
 }

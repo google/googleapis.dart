@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240320",
+    "revision": "20240425",
     "rootUrl": "https://looker.googleapis.com/",
     "servicePath": "",
     "title": "Looker (Google Cloud core) API",
@@ -1061,7 +1061,7 @@
             "type": "object"
         },
         "Instance": {
-            "description": "A Looker instance.",
+            "description": "A Looker instance. LINT.IfChange",
             "id": "Instance",
             "properties": {
                 "adminSettings": {

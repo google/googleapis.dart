@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240410",
+    "revision": "20240502",
     "rootUrl": "https://playintegrity.googleapis.com/",
     "servicePath": "",
     "title": "Google Play Integrity API",
@@ -202,7 +202,7 @@
             "id": "AppAccessRiskVerdict",
             "properties": {
                 "otherApps": {
-                    "description": "Required. App access risk verdict related to apps that are not installed by Google Play, and are not preloaded on the system image by the device manufacturer.",
+                    "description": "App access risk verdict related to apps that are not installed by Google Play, and are not preloaded on the system image by the device manufacturer.",
                     "enum": [
                         "UNKNOWN",
                         "UNEVALUATED",
@@ -222,7 +222,7 @@
                     "type": "string"
                 },
                 "playOrSystemApps": {
-                    "description": "Required. App access risk verdict related to apps that are not installed by the Google Play Store, and are not preloaded on the system image by the device manufacturer.",
+                    "description": "App access risk verdict related to apps that are not installed by the Google Play Store, and are not preloaded on the system image by the device manufacturer.",
                     "enum": [
                         "UNKNOWN",
                         "UNEVALUATED",

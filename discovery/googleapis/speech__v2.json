@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240405",
+    "revision": "20240502",
     "rootUrl": "https://speech.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Speech-to-Text API",
@@ -1141,7 +1141,7 @@
                     "type": "string"
                 },
                 "files": {
-                    "description": "Audio files with file metadata for ASR. The maximum number of files allowed to be specified is 5.",
+                    "description": "Audio files with file metadata for ASR. The maximum number of files allowed to be specified is 15.",
                     "items": {
                         "$ref": "BatchRecognizeFileMetadata"
                     },
@@ -2183,7 +2183,7 @@
             "type": "object"
         },
         "RecognitionResponseMetadata": {
-            "description": "Metadata about the recognition request and response. Next ID: 10",
+            "description": "Metadata about the recognition request and response.",
             "id": "RecognitionResponseMetadata",
             "properties": {
                 "totalBilledDuration": {

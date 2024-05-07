@@ -117,6 +117,7 @@ api.BigQueryDatasetSource buildBigQueryDatasetSource() {
   buildCounterBigQueryDatasetSource++;
   if (buildCounterBigQueryDatasetSource < 3) {
     o.dataset = 'foo';
+    o.restrictedExportPolicy = buildRestrictedExportPolicy();
     o.selectedResources = buildUnnamed2();
   }
   buildCounterBigQueryDatasetSource--;
@@ -130,6 +131,7 @@ void checkBigQueryDatasetSource(api.BigQueryDatasetSource o) {
       o.dataset!,
       unittest.equals('foo'),
     );
+    checkRestrictedExportPolicy(o.restrictedExportPolicy!);
     checkUnnamed2(o.selectedResources!);
   }
   buildCounterBigQueryDatasetSource--;
@@ -990,6 +992,29 @@ void checkRestrictedExportConfig(api.RestrictedExportConfig o) {
   buildCounterRestrictedExportConfig--;
 }
 
+core.int buildCounterRestrictedExportPolicy = 0;
+api.RestrictedExportPolicy buildRestrictedExportPolicy() {
+  final o = api.RestrictedExportPolicy();
+  buildCounterRestrictedExportPolicy++;
+  if (buildCounterRestrictedExportPolicy < 3) {
+    o.enabled = true;
+    o.restrictDirectTableAccess = true;
+    o.restrictQueryResult = true;
+  }
+  buildCounterRestrictedExportPolicy--;
+  return o;
+}
+
+void checkRestrictedExportPolicy(api.RestrictedExportPolicy o) {
+  buildCounterRestrictedExportPolicy++;
+  if (buildCounterRestrictedExportPolicy < 3) {
+    unittest.expect(o.enabled!, unittest.isTrue);
+    unittest.expect(o.restrictDirectTableAccess!, unittest.isTrue);
+    unittest.expect(o.restrictQueryResult!, unittest.isTrue);
+  }
+  buildCounterRestrictedExportPolicy--;
+}
+
 core.int buildCounterRevokeSubscriptionRequest = 0;
 api.RevokeSubscriptionRequest buildRevokeSubscriptionRequest() {
   final o = api.RevokeSubscriptionRequest();
@@ -1647,6 +1672,16 @@ void main() {
       final od = api.RestrictedExportConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkRestrictedExportConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-RestrictedExportPolicy', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRestrictedExportPolicy();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RestrictedExportPolicy.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRestrictedExportPolicy(od);
     });
   });
 

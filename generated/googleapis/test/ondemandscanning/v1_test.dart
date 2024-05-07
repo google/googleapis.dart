@@ -821,6 +821,7 @@ api.ComplianceOccurrence buildComplianceOccurrence() {
   if (buildCounterComplianceOccurrence < 3) {
     o.nonComplianceReason = 'foo';
     o.nonCompliantFiles = buildUnnamed14();
+    o.version = buildComplianceVersion();
   }
   buildCounterComplianceOccurrence--;
   return o;
@@ -834,8 +835,41 @@ void checkComplianceOccurrence(api.ComplianceOccurrence o) {
       unittest.equals('foo'),
     );
     checkUnnamed14(o.nonCompliantFiles!);
+    checkComplianceVersion(o.version!);
   }
   buildCounterComplianceOccurrence--;
+}
+
+core.int buildCounterComplianceVersion = 0;
+api.ComplianceVersion buildComplianceVersion() {
+  final o = api.ComplianceVersion();
+  buildCounterComplianceVersion++;
+  if (buildCounterComplianceVersion < 3) {
+    o.benchmarkDocument = 'foo';
+    o.cpeUri = 'foo';
+    o.version = 'foo';
+  }
+  buildCounterComplianceVersion--;
+  return o;
+}
+
+void checkComplianceVersion(api.ComplianceVersion o) {
+  buildCounterComplianceVersion++;
+  if (buildCounterComplianceVersion < 3) {
+    unittest.expect(
+      o.benchmarkDocument!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.cpeUri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.version!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterComplianceVersion--;
 }
 
 core.int buildCounterDSSEAttestationOccurrence = 0;
@@ -4393,6 +4427,16 @@ void main() {
       final od = api.ComplianceOccurrence.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkComplianceOccurrence(od);
+    });
+  });
+
+  unittest.group('obj-schema-ComplianceVersion', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildComplianceVersion();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ComplianceVersion.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkComplianceVersion(od);
     });
   });
 

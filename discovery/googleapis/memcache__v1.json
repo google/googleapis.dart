@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240307",
+    "revision": "20240418",
     "rootUrl": "https://memcache.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Memorystore for Memcached API",

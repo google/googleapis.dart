@@ -146,6 +146,8 @@ class UsersResource {
   /// [userId] - The user's email address. The special value `me` can be used to
   /// indicate the authenticated user.
   ///
+  /// [temporaryEeccBypass] - null
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -158,9 +160,12 @@ class UsersResource {
   /// this method will complete with the same error.
   async.Future<Profile> getProfile(
     core.String userId, {
+    core.bool? temporaryEeccBypass,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (temporaryEeccBypass != null)
+        'temporaryEeccBypass': ['${temporaryEeccBypass}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1101,6 +1106,8 @@ class UsersMessagesResource {
   /// [metadataHeaders] - When given and format is `METADATA`, only include
   /// headers specified.
   ///
+  /// [temporaryEeccBypass] - null
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1116,11 +1123,14 @@ class UsersMessagesResource {
     core.String id, {
     core.String? format,
     core.List<core.String>? metadataHeaders,
+    core.bool? temporaryEeccBypass,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (format != null) 'format': [format],
       if (metadataHeaders != null) 'metadataHeaders': metadataHeaders,
+      if (temporaryEeccBypass != null)
+        'temporaryEeccBypass': ['${temporaryEeccBypass}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1339,6 +1349,8 @@ class UsersMessagesResource {
   /// `"from:someuser@example.com rfc822msgid: is:unread"`. Parameter cannot be
   /// used when accessing the api using the gmail.metadata scope.
   ///
+  /// [temporaryEeccBypass] - null
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1356,6 +1368,7 @@ class UsersMessagesResource {
     core.int? maxResults,
     core.String? pageToken,
     core.String? q,
+    core.bool? temporaryEeccBypass,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -1364,6 +1377,8 @@ class UsersMessagesResource {
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (q != null) 'q': [q],
+      if (temporaryEeccBypass != null)
+        'temporaryEeccBypass': ['${temporaryEeccBypass}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1595,6 +1610,8 @@ class UsersMessagesAttachmentsResource {
   ///
   /// [id] - The ID of the attachment.
   ///
+  /// [temporaryEeccBypass] - null
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1609,9 +1626,12 @@ class UsersMessagesAttachmentsResource {
     core.String userId,
     core.String messageId,
     core.String id, {
+    core.bool? temporaryEeccBypass,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (temporaryEeccBypass != null)
+        'temporaryEeccBypass': ['${temporaryEeccBypass}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -3790,6 +3810,8 @@ class UsersThreadsResource {
   /// [metadataHeaders] - When given and format is METADATA, only include
   /// headers specified.
   ///
+  /// [temporaryEeccBypass] - null
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -3805,11 +3827,14 @@ class UsersThreadsResource {
     core.String id, {
     core.String? format,
     core.List<core.String>? metadataHeaders,
+    core.bool? temporaryEeccBypass,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (format != null) 'format': [format],
       if (metadataHeaders != null) 'metadataHeaders': metadataHeaders,
+      if (temporaryEeccBypass != null)
+        'temporaryEeccBypass': ['${temporaryEeccBypass}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -3850,6 +3875,8 @@ class UsersThreadsResource {
   /// `"from:someuser@example.com rfc822msgid: is:unread"`. Parameter cannot be
   /// used when accessing the api using the gmail.metadata scope.
   ///
+  /// [temporaryEeccBypass] - null
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -3867,6 +3894,7 @@ class UsersThreadsResource {
     core.int? maxResults,
     core.String? pageToken,
     core.String? q,
+    core.bool? temporaryEeccBypass,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -3875,6 +3903,8 @@ class UsersThreadsResource {
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (q != null) 'q': [q],
+      if (temporaryEeccBypass != null)
+        'temporaryEeccBypass': ['${temporaryEeccBypass}'],
       if ($fields != null) 'fields': [$fields],
     };
 

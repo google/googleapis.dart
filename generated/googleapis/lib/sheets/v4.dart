@@ -4047,6 +4047,111 @@ class BubbleChartSpec {
       };
 }
 
+/// Cancels one or multiple refreshes of data source objects in the spreadsheet
+/// by the specified references.
+class CancelDataSourceRefreshRequest {
+  /// Reference to a DataSource.
+  ///
+  /// If specified, cancels all associated data source object refreshes for this
+  /// data source.
+  core.String? dataSourceId;
+
+  /// Cancels all existing data source object refreshes for all data sources in
+  /// the spreadsheet.
+  core.bool? isAll;
+
+  /// References to data source objects whose refreshes are to be cancelled.
+  DataSourceObjectReferences? references;
+
+  CancelDataSourceRefreshRequest({
+    this.dataSourceId,
+    this.isAll,
+    this.references,
+  });
+
+  CancelDataSourceRefreshRequest.fromJson(core.Map json_)
+      : this(
+          dataSourceId: json_.containsKey('dataSourceId')
+              ? json_['dataSourceId'] as core.String
+              : null,
+          isAll:
+              json_.containsKey('isAll') ? json_['isAll'] as core.bool : null,
+          references: json_.containsKey('references')
+              ? DataSourceObjectReferences.fromJson(
+                  json_['references'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dataSourceId != null) 'dataSourceId': dataSourceId!,
+        if (isAll != null) 'isAll': isAll!,
+        if (references != null) 'references': references!,
+      };
+}
+
+/// The response from cancelling one or multiple data source object refreshes.
+class CancelDataSourceRefreshResponse {
+  /// The cancellation statuses of refreshes of all data source objects
+  /// specified in the request.
+  ///
+  /// If is_all is specified, the field contains only those in failure status.
+  /// Refreshing and canceling refresh the same data source object is also not
+  /// allowed in the same `batchUpdate`.
+  core.List<CancelDataSourceRefreshStatus>? statuses;
+
+  CancelDataSourceRefreshResponse({
+    this.statuses,
+  });
+
+  CancelDataSourceRefreshResponse.fromJson(core.Map json_)
+      : this(
+          statuses: json_.containsKey('statuses')
+              ? (json_['statuses'] as core.List)
+                  .map((value) => CancelDataSourceRefreshStatus.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (statuses != null) 'statuses': statuses!,
+      };
+}
+
+/// The status of cancelling a single data source object refresh.
+class CancelDataSourceRefreshStatus {
+  /// Reference to the data source object whose refresh is being cancelled.
+  DataSourceObjectReference? reference;
+
+  /// The cancellation status.
+  RefreshCancellationStatus? refreshCancellationStatus;
+
+  CancelDataSourceRefreshStatus({
+    this.reference,
+    this.refreshCancellationStatus,
+  });
+
+  CancelDataSourceRefreshStatus.fromJson(core.Map json_)
+      : this(
+          reference: json_.containsKey('reference')
+              ? DataSourceObjectReference.fromJson(
+                  json_['reference'] as core.Map<core.String, core.dynamic>)
+              : null,
+          refreshCancellationStatus:
+              json_.containsKey('refreshCancellationStatus')
+                  ? RefreshCancellationStatus.fromJson(
+                      json_['refreshCancellationStatus']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (reference != null) 'reference': reference!,
+        if (refreshCancellationStatus != null)
+          'refreshCancellationStatus': refreshCancellationStatus!,
+      };
+}
+
 /// A candlestick chart.
 class CandlestickChartSpec {
   /// The Candlestick chart data.
@@ -10292,6 +10397,9 @@ class PivotValue {
   /// - "VARP" : Corresponds to the `VARP` function.
   /// - "CUSTOM" : Indicates the formula should be used as-is. Only valid if
   /// PivotValue.formula was set.
+  /// - "NONE" : Indicates that the value is already summarized, and the
+  /// summarization function is not explicitly specified. Used for Looker data
+  /// source pivot tables where the value is already summarized.
   core.String? summarizeFunction;
 
   PivotValue({
@@ -10510,6 +10618,55 @@ class RandomizeRangeRequest {
       };
 }
 
+/// The status of a refresh cancellation.
+///
+/// You can send cancel request to explicitly cancel one or multiple data source
+/// object refreshes.
+class RefreshCancellationStatus {
+  /// The error code.
+  /// Possible string values are:
+  /// - "REFRESH_CANCELLATION_ERROR_CODE_UNSPECIFIED" : Default value, do not
+  /// use.
+  /// - "EXECUTION_NOT_FOUND" : Execution to be cancelled not found in the query
+  /// engine or in Sheets.
+  /// - "CANCEL_PERMISSION_DENIED" : The user does not have permission to cancel
+  /// the query.
+  /// - "QUERY_EXECUTION_COMPLETED" : The query execution has already completed
+  /// and thus could not be cancelled.
+  /// - "CONCURRENT_CANCELLATION" : There is already another cancellation in
+  /// process.
+  /// - "CANCEL_OTHER_ERROR" : All other errors.
+  core.String? errorCode;
+
+  /// The state of a call to cancel a refresh in Sheets.
+  /// Possible string values are:
+  /// - "REFRESH_CANCELLATION_STATE_UNSPECIFIED" : Default value, do not use.
+  /// - "CANCEL_SUCCEEDED" : The API call to Sheets to cancel a refresh has
+  /// succeeded. This does not mean that the cancel happened successfully, but
+  /// that the call has been made successfully.
+  /// - "CANCEL_FAILED" : The API call to Sheets to cancel a refresh has failed.
+  core.String? state;
+
+  RefreshCancellationStatus({
+    this.errorCode,
+    this.state,
+  });
+
+  RefreshCancellationStatus.fromJson(core.Map json_)
+      : this(
+          errorCode: json_.containsKey('errorCode')
+              ? json_['errorCode'] as core.String
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (errorCode != null) 'errorCode': errorCode!,
+        if (state != null) 'state': state!,
+      };
+}
+
 /// The execution status of refreshing one data source object.
 class RefreshDataSourceObjectExecutionStatus {
   /// The data execution status.
@@ -10723,6 +10880,10 @@ class Request {
   /// cells in that dimension.
   AutoResizeDimensionsRequest? autoResizeDimensions;
 
+  /// Cancels refreshes of one or multiple data sources and associated
+  /// dbobjects.
+  CancelDataSourceRefreshRequest? cancelDataSourceRefresh;
+
   /// Clears the basic filter on a sheet.
   ClearBasicFilterRequest? clearBasicFilter;
 
@@ -10892,6 +11053,7 @@ class Request {
     this.appendDimension,
     this.autoFill,
     this.autoResizeDimensions,
+    this.cancelDataSourceRefresh,
     this.clearBasicFilter,
     this.copyPaste,
     this.createDeveloperMetadata,
@@ -11004,6 +11166,11 @@ class Request {
           autoResizeDimensions: json_.containsKey('autoResizeDimensions')
               ? AutoResizeDimensionsRequest.fromJson(
                   json_['autoResizeDimensions']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          cancelDataSourceRefresh: json_.containsKey('cancelDataSourceRefresh')
+              ? CancelDataSourceRefreshRequest.fromJson(
+                  json_['cancelDataSourceRefresh']
                       as core.Map<core.String, core.dynamic>)
               : null,
           clearBasicFilter: json_.containsKey('clearBasicFilter')
@@ -11250,6 +11417,8 @@ class Request {
         if (autoFill != null) 'autoFill': autoFill!,
         if (autoResizeDimensions != null)
           'autoResizeDimensions': autoResizeDimensions!,
+        if (cancelDataSourceRefresh != null)
+          'cancelDataSourceRefresh': cancelDataSourceRefresh!,
         if (clearBasicFilter != null) 'clearBasicFilter': clearBasicFilter!,
         if (copyPaste != null) 'copyPaste': copyPaste!,
         if (createDeveloperMetadata != null)
@@ -11349,6 +11518,9 @@ class Response {
   /// A reply from adding a slicer.
   AddSlicerResponse? addSlicer;
 
+  /// A reply from cancelling data source object refreshes.
+  CancelDataSourceRefreshResponse? cancelDataSourceRefresh;
+
   /// A reply from creating a developer metadata entry.
   CreateDeveloperMetadataResponse? createDeveloperMetadata;
 
@@ -11401,6 +11573,7 @@ class Response {
     this.addProtectedRange,
     this.addSheet,
     this.addSlicer,
+    this.cancelDataSourceRefresh,
     this.createDeveloperMetadata,
     this.deleteConditionalFormatRule,
     this.deleteDeveloperMetadata,
@@ -11454,6 +11627,11 @@ class Response {
           addSlicer: json_.containsKey('addSlicer')
               ? AddSlicerResponse.fromJson(
                   json_['addSlicer'] as core.Map<core.String, core.dynamic>)
+              : null,
+          cancelDataSourceRefresh: json_.containsKey('cancelDataSourceRefresh')
+              ? CancelDataSourceRefreshResponse.fromJson(
+                  json_['cancelDataSourceRefresh']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           createDeveloperMetadata: json_.containsKey('createDeveloperMetadata')
               ? CreateDeveloperMetadataResponse.fromJson(
@@ -11534,6 +11712,8 @@ class Response {
         if (addProtectedRange != null) 'addProtectedRange': addProtectedRange!,
         if (addSheet != null) 'addSheet': addSheet!,
         if (addSlicer != null) 'addSlicer': addSlicer!,
+        if (cancelDataSourceRefresh != null)
+          'cancelDataSourceRefresh': cancelDataSourceRefresh!,
         if (createDeveloperMetadata != null)
           'createDeveloperMetadata': createDeveloperMetadata!,
         if (deleteConditionalFormatRule != null)
@@ -12571,7 +12751,7 @@ class SpreadsheetProperties {
   /// this default format. This field is read-only.
   CellFormat? defaultFormat;
 
-  /// Whether to allow external url access for image and import functions.
+  /// Whether to allow external URL access for image and import functions.
   ///
   /// Read only when true. When false, you can set to true.
   core.bool? importFunctionsExternalUrlAccessAllowed;

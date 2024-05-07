@@ -7235,6 +7235,7 @@ api.GooglePrivacyDlpV2Result buildGooglePrivacyDlpV2Result() {
   if (buildCounterGooglePrivacyDlpV2Result < 3) {
     o.hybridStats = buildGooglePrivacyDlpV2HybridInspectStatistics();
     o.infoTypeStats = buildUnnamed96();
+    o.numRowsProcessed = 'foo';
     o.processedBytes = 'foo';
     o.totalEstimatedBytes = 'foo';
   }
@@ -7247,6 +7248,10 @@ void checkGooglePrivacyDlpV2Result(api.GooglePrivacyDlpV2Result o) {
   if (buildCounterGooglePrivacyDlpV2Result < 3) {
     checkGooglePrivacyDlpV2HybridInspectStatistics(o.hybridStats!);
     checkUnnamed96(o.infoTypeStats!);
+    unittest.expect(
+      o.numRowsProcessed!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.processedBytes!,
       unittest.equals('foo'),

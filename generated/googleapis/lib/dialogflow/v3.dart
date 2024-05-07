@@ -13119,6 +13119,7 @@ class GoogleCloudDialogflowCxV3Match {
   /// - "NO_MATCH" : No match was found for the query.
   /// - "NO_INPUT" : Indicates an empty query.
   /// - "EVENT" : The query directly triggered an event.
+  /// - "LLM" : The query was handled by an LLM.
   core.String? matchType;
 
   /// The collection of parameters extracted from the query.
@@ -15324,7 +15325,7 @@ class GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettings {
 /// Sentiment analysis inspects user input and identifies the prevailing
 /// subjective opinion, especially to determine a user's attitude as positive,
 /// negative, or neutral.
-typedef GoogleCloudDialogflowCxV3SentimentAnalysisResult = $Shared08;
+typedef GoogleCloudDialogflowCxV3SentimentAnalysisResult = $Shared11;
 
 /// Session entity types are referred to as **User** entity types and are
 /// entities that are built for an individual user such as favorites,

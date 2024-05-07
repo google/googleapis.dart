@@ -1918,6 +1918,12 @@ class Channel {
   /// Output only.
   core.String? pubsubTopic;
 
+  /// Whether or not this Channel satisfies the requirements of physical zone
+  /// separation
+  ///
+  /// Output only.
+  core.bool? satisfiesPzs;
+
   /// The state of a Channel.
   ///
   /// Output only.
@@ -1958,6 +1964,7 @@ class Channel {
     this.name,
     this.provider,
     this.pubsubTopic,
+    this.satisfiesPzs,
     this.state,
     this.uid,
     this.updateTime,
@@ -1981,6 +1988,9 @@ class Channel {
           pubsubTopic: json_.containsKey('pubsubTopic')
               ? json_['pubsubTopic'] as core.String
               : null,
+          satisfiesPzs: json_.containsKey('satisfiesPzs')
+              ? json_['satisfiesPzs'] as core.bool
+              : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
           uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
@@ -1996,6 +2006,7 @@ class Channel {
         if (name != null) 'name': name!,
         if (provider != null) 'provider': provider!,
         if (pubsubTopic != null) 'pubsubTopic': pubsubTopic!,
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (state != null) 'state': state!,
         if (uid != null) 'uid': uid!,
         if (updateTime != null) 'updateTime': updateTime!,
@@ -3376,6 +3387,12 @@ class Trigger {
   /// Required.
   core.String? name;
 
+  /// Whether or not this Trigger satisfies the requirements of physical zone
+  /// separation
+  ///
+  /// Output only.
+  core.bool? satisfiesPzs;
+
   /// The IAM service account email associated with the trigger.
   ///
   /// The service account represents the identity of the trigger. The
@@ -3420,6 +3437,7 @@ class Trigger {
     this.eventFilters,
     this.labels,
     this.name,
+    this.satisfiesPzs,
     this.serviceAccount,
     this.transport,
     this.uid,
@@ -3467,6 +3485,9 @@ class Trigger {
                 )
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          satisfiesPzs: json_.containsKey('satisfiesPzs')
+              ? json_['satisfiesPzs'] as core.bool
+              : null,
           serviceAccount: json_.containsKey('serviceAccount')
               ? json_['serviceAccount'] as core.String
               : null,
@@ -3491,6 +3512,7 @@ class Trigger {
         if (eventFilters != null) 'eventFilters': eventFilters!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
         if (transport != null) 'transport': transport!,
         if (uid != null) 'uid': uid!,

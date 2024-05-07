@@ -1481,7 +1481,7 @@ class BatchRecognizeRequest {
 
   /// Audio files with file metadata for ASR.
   ///
-  /// The maximum number of files allowed to be specified is 5.
+  /// The maximum number of files allowed to be specified is 15.
   core.List<BatchRecognizeFileMetadata>? files;
 
   /// Processing strategy to use for this request.
@@ -2726,8 +2726,6 @@ class RecognitionOutputConfig {
 }
 
 /// Metadata about the recognition request and response.
-///
-/// Next ID: 10
 class RecognitionResponseMetadata {
   /// When available, billed audio seconds for the corresponding request.
   core.String? totalBilledDuration;

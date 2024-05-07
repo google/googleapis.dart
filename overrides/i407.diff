@@ -1,8 +1,8 @@
 diff --git a/discovery/googleapis/logging__v2.json b/discovery/googleapis/logging__v2.json
-index 0ae30623b..7447affd0 100644
+index 225d72fdc..9993774ef 100644
 --- a/discovery/googleapis/logging__v2.json
 +++ b/discovery/googleapis/logging__v2.json
-@@ -1637,27 +1637,6 @@
+@@ -1717,27 +1717,6 @@
                          "https://www.googleapis.com/auth/logging.read"
                      ]
                  },
@@ -30,7 +30,7 @@ index 0ae30623b..7447affd0 100644
                  "write": {
                      "description": "Writes log entries to Logging. This API method is the only way to send log entries to Logging. This method is used, directly or indirectly, by the Logging agent (fluentd) and all logging libraries configured to use Logging. A single request may contain log entries for a maximum of 1000 different resource names (projects, organizations, billing accounts or folders), where the resource name for a log entry is determined from its logName field.",
                      "flatPath": "v2/entries:write",
-@@ -9843,50 +9822,6 @@
+@@ -10480,50 +10459,6 @@
              },
              "type": "object"
          },
@@ -78,6 +78,6 @@ index 0ae30623b..7447affd0 100644
 -            },
 -            "type": "object"
 -        },
-         "UndeleteBucketRequest": {
-             "description": "The parameters to UndeleteBucket.",
-             "id": "UndeleteBucketRequest",
+         "TestIamPermissionsRequest": {
+             "description": "Request message for TestIamPermissions method.",
+             "id": "TestIamPermissionsRequest",

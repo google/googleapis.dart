@@ -100,6 +100,12 @@ class CaseClassificationsResource {
   /// [pageToken] - A token identifying the page of results to return. If
   /// unspecified, the first page is retrieved.
   ///
+  /// [product_productLine] - The product line of the Product.
+  /// Possible string values are:
+  /// - "PRODUCT_LINE_UNSPECIFIED" : Unknown product type.
+  /// - "GOOGLE_CLOUD" : Google Cloud
+  /// - "GOOGLE_MAPS" : Google Maps
+  ///
   /// [query] - An expression used to filter case classifications. If it's an
   /// empty string, then no filtering happens. Otherwise, case classifications
   /// will be returned that match the filter.
@@ -117,12 +123,15 @@ class CaseClassificationsResource {
   async.Future<SearchCaseClassificationsResponse> search({
     core.int? pageSize,
     core.String? pageToken,
+    core.String? product_productLine,
     core.String? query,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (product_productLine != null)
+        'product.productLine': [product_productLine],
       if (query != null) 'query': [query],
       if ($fields != null) 'fields': [$fields],
     };
@@ -405,6 +414,13 @@ class CasesResource {
   /// [pageToken] - A token identifying the page of results to return. If
   /// unspecified, the first page is retrieved.
   ///
+  /// [productLine] - The product line to request cases for. If unspecified,
+  /// only Google Cloud cases will be returned.
+  /// Possible string values are:
+  /// - "PRODUCT_LINE_UNSPECIFIED" : Unknown product type.
+  /// - "GOOGLE_CLOUD" : Google Cloud
+  /// - "GOOGLE_MAPS" : Google Maps
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -420,12 +436,14 @@ class CasesResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.String? productLine,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (productLine != null) 'productLine': [productLine],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -581,6 +599,61 @@ class CasesResource {
       queryParams: queryParams_,
     );
     return SearchCasesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Show items in the feed of this case, including case emails, attachments,
+  /// and comments.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the case for which feed items
+  /// should be listed.
+  /// Value must have pattern `^\[^/\]+/\[^/\]+/cases/\[^/\]+$`.
+  ///
+  /// [orderBy] - Optional. Field to order feed items by, followed by `asc` or
+  /// `desc` postfix. The only valid field is `creation_time`. This list is
+  /// case-insensitive, default sorting order is ascending, and the redundant
+  /// space characters are insignificant. Example: `creation_time desc`
+  ///
+  /// [pageSize] - Optional. The maximum number of feed items fetched with each
+  /// request.
+  ///
+  /// [pageToken] - Optional. A token identifying the page of results to return.
+  /// If unspecified, it retrieves the first page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ShowFeedResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ShowFeedResponse> showFeed(
+    core.String parent, {
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2beta/' + core.Uri.encodeFull('$parent') + ':showFeed';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ShowFeedResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -1361,9 +1434,13 @@ class CaseClassification {
   /// using the classification ID will fail.
   core.String? id;
 
+  /// The full product the classification corresponds to.
+  Product? product;
+
   CaseClassification({
     this.displayName,
     this.id,
+    this.product,
   });
 
   CaseClassification.fromJson(core.Map json_)
@@ -1372,11 +1449,16 @@ class CaseClassification {
               ? json_['displayName'] as core.String
               : null,
           id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          product: json_.containsKey('product')
+              ? Product.fromJson(
+                  json_['product'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
         if (id != null) 'id': id!,
+        if (product != null) 'product': product!,
       };
 }
 
@@ -1880,6 +1962,98 @@ class DownloadParameters {
       };
 }
 
+/// An email associated with a support case.
+class EmailMessage {
+  /// The user or Google Support agent that created this email message.
+  ///
+  /// This is inferred from the headers on the email message.
+  ///
+  /// Output only.
+  Actor? actor;
+
+  /// The full email message body.
+  ///
+  /// A best-effort attempt is made to remove extraneous reply threads.
+  ///
+  /// Output only.
+  TextContent? bodyContent;
+
+  /// Email addresses CCed on the email.
+  ///
+  /// Output only.
+  core.List<core.String>? ccEmailAddresses;
+
+  /// Time when this email message object was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Identifier.
+  ///
+  /// Resource name for the email message.
+  core.String? name;
+
+  /// Email addresses the email was sent to.
+  ///
+  /// Output only.
+  core.List<core.String>? recipientEmailAddresses;
+
+  /// Subject of the email.
+  ///
+  /// Output only.
+  core.String? subject;
+
+  EmailMessage({
+    this.actor,
+    this.bodyContent,
+    this.ccEmailAddresses,
+    this.createTime,
+    this.name,
+    this.recipientEmailAddresses,
+    this.subject,
+  });
+
+  EmailMessage.fromJson(core.Map json_)
+      : this(
+          actor: json_.containsKey('actor')
+              ? Actor.fromJson(
+                  json_['actor'] as core.Map<core.String, core.dynamic>)
+              : null,
+          bodyContent: json_.containsKey('bodyContent')
+              ? TextContent.fromJson(
+                  json_['bodyContent'] as core.Map<core.String, core.dynamic>)
+              : null,
+          ccEmailAddresses: json_.containsKey('ccEmailAddresses')
+              ? (json_['ccEmailAddresses'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          recipientEmailAddresses: json_.containsKey('recipientEmailAddresses')
+              ? (json_['recipientEmailAddresses'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          subject: json_.containsKey('subject')
+              ? json_['subject'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (actor != null) 'actor': actor!,
+        if (bodyContent != null) 'bodyContent': bodyContent!,
+        if (ccEmailAddresses != null) 'ccEmailAddresses': ccEmailAddresses!,
+        if (createTime != null) 'createTime': createTime!,
+        if (name != null) 'name': name!,
+        if (recipientEmailAddresses != null)
+          'recipientEmailAddresses': recipientEmailAddresses!,
+        if (subject != null) 'subject': subject!,
+      };
+}
+
 /// The request message for the EscalateCase endpoint.
 class EscalateCaseRequest {
   /// The escalation information to be sent with the escalation request.
@@ -1941,6 +2115,73 @@ class Escalation {
   core.Map<core.String, core.dynamic> toJson() => {
         if (justification != null) 'justification': justification!,
         if (reason != null) 'reason': reason!,
+      };
+}
+
+/// A feed item associated with a support case.
+class FeedItem {
+  /// An attachment attached to the case.
+  ///
+  /// Output only.
+  Attachment? attachment;
+
+  /// A comment added to the case.
+  ///
+  /// Output only.
+  Comment? comment;
+
+  /// A deleted attachment that used to be associated with the support case.
+  ///
+  /// Output only.
+  Attachment? deletedAttachment;
+
+  /// An email message received in reply to the case.
+  ///
+  /// Output only.
+  EmailMessage? emailMessage;
+
+  /// Time corresponding to the event of this item.
+  ///
+  /// Output only.
+  core.String? eventTime;
+
+  FeedItem({
+    this.attachment,
+    this.comment,
+    this.deletedAttachment,
+    this.emailMessage,
+    this.eventTime,
+  });
+
+  FeedItem.fromJson(core.Map json_)
+      : this(
+          attachment: json_.containsKey('attachment')
+              ? Attachment.fromJson(
+                  json_['attachment'] as core.Map<core.String, core.dynamic>)
+              : null,
+          comment: json_.containsKey('comment')
+              ? Comment.fromJson(
+                  json_['comment'] as core.Map<core.String, core.dynamic>)
+              : null,
+          deletedAttachment: json_.containsKey('deletedAttachment')
+              ? Attachment.fromJson(json_['deletedAttachment']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          emailMessage: json_.containsKey('emailMessage')
+              ? EmailMessage.fromJson(
+                  json_['emailMessage'] as core.Map<core.String, core.dynamic>)
+              : null,
+          eventTime: json_.containsKey('eventTime')
+              ? json_['eventTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (attachment != null) 'attachment': attachment!,
+        if (comment != null) 'comment': comment!,
+        if (deletedAttachment != null) 'deletedAttachment': deletedAttachment!,
+        if (emailMessage != null) 'emailMessage': emailMessage!,
+        if (eventTime != null) 'eventTime': eventTime!,
       };
 }
 
@@ -2438,6 +2679,31 @@ class ObjectId {
       };
 }
 
+/// The product a case may be associated with.
+class Product {
+  /// The product line of the Product.
+  /// Possible string values are:
+  /// - "PRODUCT_LINE_UNSPECIFIED" : Unknown product type.
+  /// - "GOOGLE_CLOUD" : Google Cloud
+  /// - "GOOGLE_MAPS" : Google Maps
+  core.String? productLine;
+
+  Product({
+    this.productLine,
+  });
+
+  Product.fromJson(core.Map json_)
+      : this(
+          productLine: json_.containsKey('productLine')
+              ? json_['productLine'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (productLine != null) 'productLine': productLine!,
+      };
+}
+
 /// The response message for SearchCaseClassifications endpoint.
 class SearchCaseClassificationsResponse {
   /// The classifications retrieved.
@@ -2508,5 +2774,61 @@ class SearchCasesResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (cases != null) 'cases': cases!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// The response message for the ShowFeed endpoint.
+class ShowFeedResponse {
+  /// The list of feed items associated with the given Case.
+  core.List<FeedItem>? feedItems;
+
+  /// A token to retrieve the next page of results.
+  ///
+  /// This should be set in the `page_token` field of subsequent
+  /// `ShowFeedRequests`. If unspecified, there are no more results to retrieve.
+  core.String? nextPageToken;
+
+  ShowFeedResponse({
+    this.feedItems,
+    this.nextPageToken,
+  });
+
+  ShowFeedResponse.fromJson(core.Map json_)
+      : this(
+          feedItems: json_.containsKey('feedItems')
+              ? (json_['feedItems'] as core.List)
+                  .map((value) => FeedItem.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (feedItems != null) 'feedItems': feedItems!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Stores text attached to a support object.
+class TextContent {
+  /// Content in this field should be rendered and interpreted as-is.
+  core.String? plainText;
+
+  TextContent({
+    this.plainText,
+  });
+
+  TextContent.fromJson(core.Map json_)
+      : this(
+          plainText: json_.containsKey('plainText')
+              ? json_['plainText'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (plainText != null) 'plainText': plainText!,
       };
 }

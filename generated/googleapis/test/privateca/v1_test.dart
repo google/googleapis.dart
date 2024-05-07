@@ -529,6 +529,8 @@ api.CertificateAuthority buildCertificateAuthority() {
     o.lifetime = 'foo';
     o.name = 'foo';
     o.pemCaCertificates = buildUnnamed10();
+    o.satisfiesPzi = true;
+    o.satisfiesPzs = true;
     o.state = 'foo';
     o.subordinateConfig = buildSubordinateConfig();
     o.tier = 'foo';
@@ -572,6 +574,8 @@ void checkCertificateAuthority(api.CertificateAuthority o) {
       unittest.equals('foo'),
     );
     checkUnnamed10(o.pemCaCertificates!);
+    unittest.expect(o.satisfiesPzi!, unittest.isTrue);
+    unittest.expect(o.satisfiesPzs!, unittest.isTrue);
     unittest.expect(
       o.state!,
       unittest.equals('foo'),

@@ -258,7 +258,7 @@ class ProjectsLocationsCaPoolsResource {
   /// [ignoreDependentResources] - Optional. This field allows this pool to be
   /// deleted even if it's being depended on by another resource. However, doing
   /// so may result in unintended and unrecoverable effects on any dependent
-  /// resource(s) since the pool will no longer be able to issue certificates.
+  /// resources since the pool will no longer be able to issue certificates.
   ///
   /// [requestId] - Optional. An ID to identify requests. Specify a unique
   /// request ID so that if you must retry your request, the server will know to
@@ -307,7 +307,7 @@ class ProjectsLocationsCaPoolsResource {
 
   /// FetchCaCerts returns the current trust anchor for the CaPool.
   ///
-  /// This will include CA certificate chains for all Certificate Authorities in
+  /// This will include CA certificate chains for all certificate authorities in
   /// the ENABLED, DISABLED, or STAGED states.
   ///
   /// [request] - The metadata request object.
@@ -799,10 +799,10 @@ class ProjectsLocationsCaPoolsCertificateAuthoritiesResource {
   /// deleted even if the CA has active certs. Active certs include both
   /// unrevoked and unexpired certs.
   ///
-  /// [ignoreDependentResources] - Optional. This field allows this ca to be
+  /// [ignoreDependentResources] - Optional. This field allows this CA to be
   /// deleted even if it's being depended on by another resource. However, doing
   /// so may result in unintended and unrecoverable effects on any dependent
-  /// resource(s) since the CA will no longer be able to issue certificates.
+  /// resources since the CA will no longer be able to issue certificates.
   ///
   /// [requestId] - Optional. An ID to identify requests. Specify a unique
   /// request ID so that if you must retry your request, the server will know to
@@ -3139,6 +3139,16 @@ class CertificateAuthority {
   /// Output only.
   core.List<core.String>? pemCaCertificates;
 
+  /// Reserved for future use.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzi;
+
+  /// Reserved for future use.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzs;
+
   /// The State for this CertificateAuthority.
   ///
   /// Output only.
@@ -3209,6 +3219,8 @@ class CertificateAuthority {
     this.lifetime,
     this.name,
     this.pemCaCertificates,
+    this.satisfiesPzi,
+    this.satisfiesPzs,
     this.state,
     this.subordinateConfig,
     this.tier,
@@ -3266,6 +3278,12 @@ class CertificateAuthority {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          satisfiesPzi: json_.containsKey('satisfiesPzi')
+              ? json_['satisfiesPzi'] as core.bool
+              : null,
+          satisfiesPzs: json_.containsKey('satisfiesPzs')
+              ? json_['satisfiesPzs'] as core.bool
+              : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
           subordinateConfig: json_.containsKey('subordinateConfig')
@@ -3293,6 +3311,8 @@ class CertificateAuthority {
         if (lifetime != null) 'lifetime': lifetime!,
         if (name != null) 'name': name!,
         if (pemCaCertificates != null) 'pemCaCertificates': pemCaCertificates!,
+        if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (state != null) 'state': state!,
         if (subordinateConfig != null) 'subordinateConfig': subordinateConfig!,
         if (tier != null) 'tier': tier!,
@@ -3321,8 +3341,8 @@ class CertificateConfig {
   /// When specified this provides a custom SKI to be used in the certificate.
   ///
   /// This should only be used to maintain a SKI of an existing CA originally
-  /// created outside CAS, which was not generated using method (1) described in
-  /// RFC 5280 section 4.2.1.2.
+  /// created outside CA service, which was not generated using method (1)
+  /// described in RFC 5280 section 4.2.1.2.
   ///
   /// Optional.
   CertificateConfigKeyId? subjectKeyId;
@@ -3775,11 +3795,12 @@ class CertificateTemplate {
   /// The maximum lifetime allowed for issued Certificates that use this
   /// template.
   ///
-  /// If the issuing CaPool's IssuancePolicy specifies a maximum_lifetime the
-  /// minimum of the two durations will be the maximum lifetime for issued
-  /// Certificates. Note that if the issuing CertificateAuthority expires before
-  /// a Certificate's requested maximum_lifetime, the effective lifetime will be
-  /// explicitly truncated to match it.
+  /// If the issuing CaPool resource's IssuancePolicy specifies a
+  /// maximum_lifetime the minimum of the two durations will be the maximum
+  /// lifetime for issued Certificates. Note that if the issuing
+  /// CertificateAuthority expires before a Certificate's requested
+  /// maximum_lifetime, the effective lifetime will be explicitly truncated to
+  /// match it.
   ///
   /// Optional.
   core.String? maximumLifetime;
@@ -3892,7 +3913,7 @@ class DisableCertificateAuthorityRequest {
   /// another resource.
   ///
   /// However, doing so may result in unintended and unrecoverable effects on
-  /// any dependent resource(s) since the CA will no longer be able to issue
+  /// any dependent resources since the CA will no longer be able to issue
   /// certificates.
   ///
   /// Optional.
@@ -4086,7 +4107,7 @@ typedef FetchCaCertsRequest = $Request03;
 
 /// Response message for CertificateAuthorityService.FetchCaCerts.
 class FetchCaCertsResponse {
-  /// The PEM encoded CA certificate chains of all Certificate Authorities in
+  /// The PEM encoded CA certificate chains of all certificate authorities in
   /// this CaPool in the ENABLED, DISABLED, or STAGED states.
   core.List<CertChain>? caCerts;
 
@@ -4210,8 +4231,8 @@ class IssuancePolicy {
 
   /// The maximum lifetime allowed for issued Certificates.
   ///
-  /// Note that if the issuing CertificateAuthority expires before a
-  /// Certificate's requested maximum_lifetime, the effective lifetime will be
+  /// Note that if the issuing CertificateAuthority expires before a Certificate
+  /// resource's requested maximum_lifetime, the effective lifetime will be
   /// explicitly truncated to match it.
   ///
   /// Optional.
@@ -5217,7 +5238,7 @@ class PublicKey {
 /// The options set here apply to certificates issued by any
 /// CertificateAuthority in the CaPool.
 class PublishingOptions {
-  /// Specifies the encoding format of each CertificateAuthority's CA
+  /// Specifies the encoding format of each CertificateAuthority resource's CA
   /// certificate and CRLs.
   ///
   /// If this is omitted, CA certificates and CRLs will be published in PEM.

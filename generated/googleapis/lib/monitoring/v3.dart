@@ -6104,7 +6104,8 @@ class DistributionCut {
       };
 }
 
-/// A content string and a MIME type that describes the content string's format.
+/// Documentation that is included in the notifications and incidents pertaining
+/// to this policy.
 class Documentation {
   /// The body of the documentation, interpreted according to mime_type.
   ///
@@ -6690,7 +6691,8 @@ class HttpCheck {
 
   /// The authentication information.
   ///
-  /// Optional when creating an HTTP check; defaults to empty.
+  /// Optional when creating an HTTP check; defaults to empty. Do not set both
+  /// auth_method and auth_info.
   BasicAuthentication? authInfo;
 
   /// The request body associated with the HTTP POST request.
@@ -6782,6 +6784,11 @@ class HttpCheck {
   /// - "POST" : POST request.
   core.String? requestMethod;
 
+  /// If specified, Uptime will generate and attach an OIDC JWT token for the
+  /// Monitoring service agent service account as an Authorization header in the
+  /// HTTP request when probing.
+  ServiceAgentAuthentication? serviceAgentAuthentication;
+
   /// If true, use HTTPS instead of HTTP to run the check.
   core.bool? useSsl;
 
@@ -6804,6 +6811,7 @@ class HttpCheck {
     this.pingConfig,
     this.port,
     this.requestMethod,
+    this.serviceAgentAuthentication,
     this.useSsl,
     this.validateSsl,
   });
@@ -6848,6 +6856,12 @@ class HttpCheck {
           requestMethod: json_.containsKey('requestMethod')
               ? json_['requestMethod'] as core.String
               : null,
+          serviceAgentAuthentication:
+              json_.containsKey('serviceAgentAuthentication')
+                  ? ServiceAgentAuthentication.fromJson(
+                      json_['serviceAgentAuthentication']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           useSsl:
               json_.containsKey('useSsl') ? json_['useSsl'] as core.bool : null,
           validateSsl: json_.containsKey('validateSsl')
@@ -6868,6 +6882,8 @@ class HttpCheck {
         if (pingConfig != null) 'pingConfig': pingConfig!,
         if (port != null) 'port': port!,
         if (requestMethod != null) 'requestMethod': requestMethod!,
+        if (serviceAgentAuthentication != null)
+          'serviceAgentAuthentication': serviceAgentAuthentication!,
         if (useSsl != null) 'useSsl': useSsl!,
         if (validateSsl != null) 'validateSsl': validateSsl!,
       };
@@ -9766,6 +9782,34 @@ class Service {
         if (name != null) 'name': name!,
         if (telemetry != null) 'telemetry': telemetry!,
         if (userLabels != null) 'userLabels': userLabels!,
+      };
+}
+
+/// Contains information needed for generating either an OpenID Connect token
+/// (https://developers.google.com/identity/protocols/OpenIDConnect) or OAuth
+/// token (https://developers.google.com/identity/protocols/oauth2).
+///
+/// The token will be generated for the Monitoring service agent service
+/// account.
+class ServiceAgentAuthentication {
+  /// Type of authentication.
+  /// Possible string values are:
+  /// - "SERVICE_AGENT_AUTHENTICATION_TYPE_UNSPECIFIED" : Default value, will
+  /// result in OIDC Authentication.
+  /// - "OIDC_TOKEN" : OIDC Authentication
+  core.String? type;
+
+  ServiceAgentAuthentication({
+    this.type,
+  });
+
+  ServiceAgentAuthentication.fromJson(core.Map json_)
+      : this(
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (type != null) 'type': type!,
       };
 }
 

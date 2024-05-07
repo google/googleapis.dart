@@ -4461,6 +4461,38 @@ void checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
   buildCounterSetIamPolicyRequest--;
 }
 
+core.int buildCounterSkaffoldGCBRepoSource = 0;
+api.SkaffoldGCBRepoSource buildSkaffoldGCBRepoSource() {
+  final o = api.SkaffoldGCBRepoSource();
+  buildCounterSkaffoldGCBRepoSource++;
+  if (buildCounterSkaffoldGCBRepoSource < 3) {
+    o.path = 'foo';
+    o.ref = 'foo';
+    o.repository = 'foo';
+  }
+  buildCounterSkaffoldGCBRepoSource--;
+  return o;
+}
+
+void checkSkaffoldGCBRepoSource(api.SkaffoldGCBRepoSource o) {
+  buildCounterSkaffoldGCBRepoSource++;
+  if (buildCounterSkaffoldGCBRepoSource < 3) {
+    unittest.expect(
+      o.path!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.ref!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.repository!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterSkaffoldGCBRepoSource--;
+}
+
 core.int buildCounterSkaffoldGCSSource = 0;
 api.SkaffoldGCSSource buildSkaffoldGCSSource() {
   final o = api.SkaffoldGCSSource();
@@ -4544,6 +4576,7 @@ api.SkaffoldModules buildSkaffoldModules() {
   if (buildCounterSkaffoldModules < 3) {
     o.configs = buildUnnamed77();
     o.git = buildSkaffoldGitSource();
+    o.googleCloudBuildRepo = buildSkaffoldGCBRepoSource();
     o.googleCloudStorage = buildSkaffoldGCSSource();
   }
   buildCounterSkaffoldModules--;
@@ -4555,6 +4588,7 @@ void checkSkaffoldModules(api.SkaffoldModules o) {
   if (buildCounterSkaffoldModules < 3) {
     checkUnnamed77(o.configs!);
     checkSkaffoldGitSource(o.git!);
+    checkSkaffoldGCBRepoSource(o.googleCloudBuildRepo!);
     checkSkaffoldGCSSource(o.googleCloudStorage!);
   }
   buildCounterSkaffoldModules--;
@@ -6425,6 +6459,16 @@ void main() {
       final od = api.SetIamPolicyRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkSetIamPolicyRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-SkaffoldGCBRepoSource', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSkaffoldGCBRepoSource();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SkaffoldGCBRepoSource.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSkaffoldGCBRepoSource(od);
     });
   });
 

@@ -3956,6 +3956,9 @@ class AdvancedDatapathObservabilityConfig {
 
 /// Specifies options for controlling advanced machine features.
 class AdvancedMachineFeatures {
+  /// Whether or not to enable nested virtualization (defaults to false).
+  core.bool? enableNestedVirtualization;
+
   /// The number of threads per physical core.
   ///
   /// To disable simultaneous multithreading (SMT) set this to 1. If unset, the
@@ -3964,17 +3967,24 @@ class AdvancedMachineFeatures {
   core.String? threadsPerCore;
 
   AdvancedMachineFeatures({
+    this.enableNestedVirtualization,
     this.threadsPerCore,
   });
 
   AdvancedMachineFeatures.fromJson(core.Map json_)
       : this(
+          enableNestedVirtualization:
+              json_.containsKey('enableNestedVirtualization')
+                  ? json_['enableNestedVirtualization'] as core.bool
+                  : null,
           threadsPerCore: json_.containsKey('threadsPerCore')
               ? json_['threadsPerCore'] as core.String
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (enableNestedVirtualization != null)
+          'enableNestedVirtualization': enableNestedVirtualization!,
         if (threadsPerCore != null) 'threadsPerCore': threadsPerCore!,
       };
 }
@@ -8856,6 +8866,8 @@ class NetworkConfig {
   GatewayAPIConfig? gatewayApiConfig;
 
   /// Specify the details of in-transit encryption.
+  ///
+  /// Now named inter-node transparent encryption.
   /// Possible string values are:
   /// - "IN_TRANSIT_ENCRYPTION_CONFIG_UNSPECIFIED" : Unspecified, will be
   /// inferred as default - IN_TRANSIT_ENCRYPTION_UNSPECIFIED.
@@ -11690,7 +11702,45 @@ typedef SecondaryBootDiskUpdateStrategy = $Empty;
 
 /// SecurityPostureConfig defines the flags needed to enable/disable features
 /// for the Security Posture API.
-typedef SecurityPostureConfig = $SecurityPostureConfig;
+class SecurityPostureConfig {
+  /// Sets which mode to use for Security Posture features.
+  /// Possible string values are:
+  /// - "MODE_UNSPECIFIED" : Default value not specified.
+  /// - "DISABLED" : Disables Security Posture features on the cluster.
+  /// - "BASIC" : Applies Security Posture features on the cluster.
+  /// - "ENTERPRISE" : Applies the Security Posture off cluster Enterprise level
+  /// features.
+  core.String? mode;
+
+  /// Sets which mode to use for vulnerability scanning.
+  /// Possible string values are:
+  /// - "VULNERABILITY_MODE_UNSPECIFIED" : Default value not specified.
+  /// - "VULNERABILITY_DISABLED" : Disables vulnerability scanning on the
+  /// cluster.
+  /// - "VULNERABILITY_BASIC" : Applies basic vulnerability scanning on the
+  /// cluster.
+  /// - "VULNERABILITY_ENTERPRISE" : Applies the Security Posture's
+  /// vulnerability on cluster Enterprise level features.
+  core.String? vulnerabilityMode;
+
+  SecurityPostureConfig({
+    this.mode,
+    this.vulnerabilityMode,
+  });
+
+  SecurityPostureConfig.fromJson(core.Map json_)
+      : this(
+          mode: json_.containsKey('mode') ? json_['mode'] as core.String : null,
+          vulnerabilityMode: json_.containsKey('vulnerabilityMode')
+              ? json_['vulnerabilityMode'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (mode != null) 'mode': mode!,
+        if (vulnerabilityMode != null) 'vulnerabilityMode': vulnerabilityMode!,
+      };
+}
 
 /// Kubernetes Engine service configuration.
 class ServerConfig {

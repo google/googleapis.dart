@@ -377,6 +377,7 @@ api.GoogleFirebaseAppcheckV1DebugToken
     o.displayName = 'foo';
     o.name = 'foo';
     o.token = 'foo';
+    o.updateTime = 'foo';
   }
   buildCounterGoogleFirebaseAppcheckV1DebugToken--;
   return o;
@@ -396,6 +397,10 @@ void checkGoogleFirebaseAppcheckV1DebugToken(
     );
     unittest.expect(
       o.token!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.updateTime!,
       unittest.equals('foo'),
     );
   }

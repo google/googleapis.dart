@@ -1262,6 +1262,11 @@ class Cluster {
   /// Output only.
   core.String? createTime;
 
+  /// The delete operation will fail when the value is set to true.
+  ///
+  /// Optional.
+  core.bool? deletionProtectionEnabled;
+
   /// Endpoints created on each given network, for Redis clients to connect to
   /// the cluster.
   ///
@@ -1374,6 +1379,7 @@ class Cluster {
   Cluster({
     this.authorizationMode,
     this.createTime,
+    this.deletionProtectionEnabled,
     this.discoveryEndpoints,
     this.name,
     this.nodeType,
@@ -1399,6 +1405,10 @@ class Cluster {
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
               : null,
+          deletionProtectionEnabled:
+              json_.containsKey('deletionProtectionEnabled')
+                  ? json_['deletionProtectionEnabled'] as core.bool
+                  : null,
           discoveryEndpoints: json_.containsKey('discoveryEndpoints')
               ? (json_['discoveryEndpoints'] as core.List)
                   .map((value) => DiscoveryEndpoint.fromJson(
@@ -1460,6 +1470,8 @@ class Cluster {
   core.Map<core.String, core.dynamic> toJson() => {
         if (authorizationMode != null) 'authorizationMode': authorizationMode!,
         if (createTime != null) 'createTime': createTime!,
+        if (deletionProtectionEnabled != null)
+          'deletionProtectionEnabled': deletionProtectionEnabled!,
         if (discoveryEndpoints != null)
           'discoveryEndpoints': discoveryEndpoints!,
         if (name != null) 'name': name!,

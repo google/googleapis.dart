@@ -58,10 +58,10 @@ api.GoogleCloudOrgpolicyV2Constraint buildGoogleCloudOrgpolicyV2Constraint() {
     o.booleanConstraint =
         buildGoogleCloudOrgpolicyV2ConstraintBooleanConstraint();
     o.constraintDefault = 'foo';
-    o.customConstraint =
-        buildGoogleCloudOrgpolicyV2ConstraintGoogleDefinedCustomConstraint();
     o.description = 'foo';
     o.displayName = 'foo';
+    o.googleManagedConstraint =
+        buildGoogleCloudOrgpolicyV2ConstraintGoogleManagedConstraint();
     o.listConstraint = buildGoogleCloudOrgpolicyV2ConstraintListConstraint();
     o.name = 'foo';
     o.supportsDryRun = true;
@@ -80,8 +80,6 @@ void checkGoogleCloudOrgpolicyV2Constraint(
       o.constraintDefault!,
       unittest.equals('foo'),
     );
-    checkGoogleCloudOrgpolicyV2ConstraintGoogleDefinedCustomConstraint(
-        o.customConstraint!);
     unittest.expect(
       o.description!,
       unittest.equals('foo'),
@@ -90,6 +88,8 @@ void checkGoogleCloudOrgpolicyV2Constraint(
       o.displayName!,
       unittest.equals('foo'),
     );
+    checkGoogleCloudOrgpolicyV2ConstraintGoogleManagedConstraint(
+        o.googleManagedConstraint!);
     checkGoogleCloudOrgpolicyV2ConstraintListConstraint(o.listConstraint!);
     unittest.expect(
       o.name!,
@@ -151,29 +151,26 @@ void checkUnnamed1(core.List<core.String> o) {
   );
 }
 
-core.int
-    buildCounterGoogleCloudOrgpolicyV2ConstraintGoogleDefinedCustomConstraint =
+core.int buildCounterGoogleCloudOrgpolicyV2ConstraintGoogleManagedConstraint =
     0;
-api.GoogleCloudOrgpolicyV2ConstraintGoogleDefinedCustomConstraint
-    buildGoogleCloudOrgpolicyV2ConstraintGoogleDefinedCustomConstraint() {
-  final o = api.GoogleCloudOrgpolicyV2ConstraintGoogleDefinedCustomConstraint();
-  buildCounterGoogleCloudOrgpolicyV2ConstraintGoogleDefinedCustomConstraint++;
-  if (buildCounterGoogleCloudOrgpolicyV2ConstraintGoogleDefinedCustomConstraint <
-      3) {
+api.GoogleCloudOrgpolicyV2ConstraintGoogleManagedConstraint
+    buildGoogleCloudOrgpolicyV2ConstraintGoogleManagedConstraint() {
+  final o = api.GoogleCloudOrgpolicyV2ConstraintGoogleManagedConstraint();
+  buildCounterGoogleCloudOrgpolicyV2ConstraintGoogleManagedConstraint++;
+  if (buildCounterGoogleCloudOrgpolicyV2ConstraintGoogleManagedConstraint < 3) {
     o.actionType = 'foo';
     o.condition = 'foo';
     o.methodTypes = buildUnnamed0();
     o.resourceTypes = buildUnnamed1();
   }
-  buildCounterGoogleCloudOrgpolicyV2ConstraintGoogleDefinedCustomConstraint--;
+  buildCounterGoogleCloudOrgpolicyV2ConstraintGoogleManagedConstraint--;
   return o;
 }
 
-void checkGoogleCloudOrgpolicyV2ConstraintGoogleDefinedCustomConstraint(
-    api.GoogleCloudOrgpolicyV2ConstraintGoogleDefinedCustomConstraint o) {
-  buildCounterGoogleCloudOrgpolicyV2ConstraintGoogleDefinedCustomConstraint++;
-  if (buildCounterGoogleCloudOrgpolicyV2ConstraintGoogleDefinedCustomConstraint <
-      3) {
+void checkGoogleCloudOrgpolicyV2ConstraintGoogleManagedConstraint(
+    api.GoogleCloudOrgpolicyV2ConstraintGoogleManagedConstraint o) {
+  buildCounterGoogleCloudOrgpolicyV2ConstraintGoogleManagedConstraint++;
+  if (buildCounterGoogleCloudOrgpolicyV2ConstraintGoogleManagedConstraint < 3) {
     unittest.expect(
       o.actionType!,
       unittest.equals('foo'),
@@ -185,7 +182,7 @@ void checkGoogleCloudOrgpolicyV2ConstraintGoogleDefinedCustomConstraint(
     checkUnnamed0(o.methodTypes!);
     checkUnnamed1(o.resourceTypes!);
   }
-  buildCounterGoogleCloudOrgpolicyV2ConstraintGoogleDefinedCustomConstraint--;
+  buildCounterGoogleCloudOrgpolicyV2ConstraintGoogleManagedConstraint--;
 }
 
 core.int buildCounterGoogleCloudOrgpolicyV2ConstraintListConstraint = 0;
@@ -659,16 +656,14 @@ void main() {
   });
 
   unittest.group(
-      'obj-schema-GoogleCloudOrgpolicyV2ConstraintGoogleDefinedCustomConstraint',
-      () {
+      'obj-schema-GoogleCloudOrgpolicyV2ConstraintGoogleManagedConstraint', () {
     unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleCloudOrgpolicyV2ConstraintGoogleDefinedCustomConstraint();
+      final o = buildGoogleCloudOrgpolicyV2ConstraintGoogleManagedConstraint();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od =
-          api.GoogleCloudOrgpolicyV2ConstraintGoogleDefinedCustomConstraint
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudOrgpolicyV2ConstraintGoogleDefinedCustomConstraint(od);
+          api.GoogleCloudOrgpolicyV2ConstraintGoogleManagedConstraint.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudOrgpolicyV2ConstraintGoogleManagedConstraint(od);
     });
   });
 

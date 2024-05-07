@@ -163,6 +163,7 @@ api.Cluster buildCluster() {
   if (buildCounterCluster < 3) {
     o.authorizationMode = 'foo';
     o.createTime = 'foo';
+    o.deletionProtectionEnabled = true;
     o.discoveryEndpoints = buildUnnamed1();
     o.name = 'foo';
     o.nodeType = 'foo';
@@ -194,6 +195,7 @@ void checkCluster(api.Cluster o) {
       o.createTime!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.deletionProtectionEnabled!, unittest.isTrue);
     checkUnnamed1(o.discoveryEndpoints!);
     unittest.expect(
       o.name!,

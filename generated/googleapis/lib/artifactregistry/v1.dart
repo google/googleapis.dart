@@ -27,6 +27,7 @@
 ///       - [ProjectsLocationsRepositoriesAptArtifactsResource]
 ///       - [ProjectsLocationsRepositoriesDockerImagesResource]
 ///       - [ProjectsLocationsRepositoriesFilesResource]
+///       - [ProjectsLocationsRepositoriesGenericArtifactsResource]
 ///       - [ProjectsLocationsRepositoriesGoModulesResource]
 ///       - [ProjectsLocationsRepositoriesGoogetArtifactsResource]
 ///       - [ProjectsLocationsRepositoriesKfpArtifactsResource]
@@ -472,6 +473,8 @@ class ProjectsLocationsRepositoriesResource {
       ProjectsLocationsRepositoriesDockerImagesResource(_requester);
   ProjectsLocationsRepositoriesFilesResource get files =>
       ProjectsLocationsRepositoriesFilesResource(_requester);
+  ProjectsLocationsRepositoriesGenericArtifactsResource get genericArtifacts =>
+      ProjectsLocationsRepositoriesGenericArtifactsResource(_requester);
   ProjectsLocationsRepositoriesGoModulesResource get goModules =>
       ProjectsLocationsRepositoriesGoModulesResource(_requester);
   ProjectsLocationsRepositoriesGoogetArtifactsResource get googetArtifacts =>
@@ -1169,6 +1172,84 @@ class ProjectsLocationsRepositoriesFilesResource {
       queryParams: queryParams_,
     );
     return ListFilesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsRepositoriesGenericArtifactsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsRepositoriesGenericArtifactsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Directly uploads a Generic artifact.
+  ///
+  /// The returned Operation will complete once the resources are uploaded.
+  /// Package, Version, and File resources are created based on the uploaded
+  /// artifact. Uploaded artifacts that conflict with existing resources will
+  /// raise an ALREADY_EXISTS error.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The resource name of the repository where the generic artifact
+  /// will be uploaded.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// [uploadMedia] - The media to upload.
+  ///
+  /// [uploadOptions] - Options for the media upload. Streaming Media without
+  /// the length being known ahead of time is only supported via resumable
+  /// uploads.
+  ///
+  /// Completes with a [UploadGenericArtifactMediaResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<UploadGenericArtifactMediaResponse> upload(
+    UploadGenericArtifactRequest request,
+    core.String parent, {
+    core.String? $fields,
+    commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
+    commons.Media? uploadMedia,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    core.String url_;
+    if (uploadMedia == null) {
+      url_ =
+          'v1/' + core.Uri.encodeFull('$parent') + '/genericArtifacts:create';
+    } else if (uploadOptions is commons.ResumableUploadOptions) {
+      url_ = '/resumable/upload/v1/' +
+          core.Uri.encodeFull('$parent') +
+          '/genericArtifacts:create';
+    } else {
+      url_ = '/upload/v1/' +
+          core.Uri.encodeFull('$parent') +
+          '/genericArtifacts:create';
+    }
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+      uploadMedia: uploadMedia,
+      uploadOptions: uploadOptions,
+    );
+    return UploadGenericArtifactMediaResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -4553,6 +4634,7 @@ class Repository {
   /// - "PYTHON" : Python package format.
   /// - "KFP" : Kubeflow Pipelines package format.
   /// - "GO" : Go package format.
+  /// - "GENERIC" : Generic package format.
   core.String? format;
 
   /// The Cloud KMS resource name of the customer managed encryption key that's
@@ -4832,6 +4914,99 @@ class UploadAptArtifactMediaResponse {
 
 /// The request to upload an artifact.
 typedef UploadAptArtifactRequest = $Empty;
+
+/// The response to upload a generic artifact.
+class UploadGenericArtifactMediaResponse {
+  /// Operation that will be returned to the user.
+  Operation? operation;
+
+  UploadGenericArtifactMediaResponse({
+    this.operation,
+  });
+
+  UploadGenericArtifactMediaResponse.fromJson(core.Map json_)
+      : this(
+          operation: json_.containsKey('operation')
+              ? Operation.fromJson(
+                  json_['operation'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (operation != null) 'operation': operation!,
+      };
+}
+
+/// The request to upload a generic artifact.
+///
+/// The created GenericArtifact will have the resource name
+/// {parent}/genericArtifacts/package_id:version_id. The created file will have
+/// the resource name {parent}/files/package_id:version_id:filename.
+class UploadGenericArtifactRequest {
+  /// The name of the file of the generic artifact to be uploaded.
+  ///
+  /// E.g. "example-file.zip" The filename should only include letters, numbers,
+  /// and url safe characters, i.e. \[a-zA-Z0-9-_.~@\].
+  core.String? filename;
+
+  /// Use package_id, version_id and filename instead.
+  ///
+  /// The resource name of the generic artifact. E.g.
+  /// "projects/math/locations/us/repositories/operations/genericArtifacts/addition/1.0.0/add.py"
+  ///
+  /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.String? name;
+
+  /// The ID of the package of the generic artifact.
+  ///
+  /// If the package does not exist, a new package will be created. E.g. "pkg-1"
+  /// The package_id must start with a letter, end with a letter or number, only
+  /// contain letters, numbers, hyphens and periods i.e. \[a-z0-9-.\], and
+  /// cannot exceed 256 characters.
+  core.String? packageId;
+
+  /// The ID of the version of the generic artifact.
+  ///
+  /// If the version does not exist, a new version will be created. E.g."1.0.0"
+  /// The version_id must start and end with a letter or number, can only
+  /// contain lowercase letters, numbers, hyphens and periods, i.e. \[a-z0-9-.\]
+  /// and cannot exceed a total of 128 characters. While "latest" is a
+  /// well-known name for the latest version of a package, it is not yet
+  /// supported and is reserved for future use. Creating a version called
+  /// "latest" is not allowed.
+  core.String? versionId;
+
+  UploadGenericArtifactRequest({
+    this.filename,
+    this.name,
+    this.packageId,
+    this.versionId,
+  });
+
+  UploadGenericArtifactRequest.fromJson(core.Map json_)
+      : this(
+          filename: json_.containsKey('filename')
+              ? json_['filename'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          packageId: json_.containsKey('packageId')
+              ? json_['packageId'] as core.String
+              : null,
+          versionId: json_.containsKey('versionId')
+              ? json_['versionId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (filename != null) 'filename': filename!,
+        if (name != null) 'name': name!,
+        if (packageId != null) 'packageId': packageId!,
+        if (versionId != null) 'versionId': versionId!,
+      };
+}
 
 /// The response to upload a Go module.
 class UploadGoModuleMediaResponse {

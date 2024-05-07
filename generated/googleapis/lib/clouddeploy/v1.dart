@@ -3242,6 +3242,8 @@ class AnthosCluster {
   ///
   /// Format is
   /// `projects/{project}/locations/{location}/memberships/{membership_name}`.
+  ///
+  /// Optional.
   core.String? membership;
 
   AnthosCluster({
@@ -5438,6 +5440,8 @@ class GkeCluster {
   ///
   /// Format is
   /// `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}`.
+  ///
+  /// Optional.
   core.String? cluster;
 
   /// If true, `cluster` is accessed using the private IP address of the control
@@ -8737,6 +8741,48 @@ class SetIamPolicyRequest {
       };
 }
 
+/// Cloud Build V2 Repository containing Skaffold Configs.
+class SkaffoldGCBRepoSource {
+  /// Relative path from the repository root to the Skaffold Config file.
+  ///
+  /// Optional.
+  core.String? path;
+
+  /// Branch or tag to use when cloning the repository.
+  ///
+  /// Optional.
+  core.String? ref;
+
+  /// Name of the Cloud Build V2 Repository.
+  ///
+  /// Format is
+  /// projects/{project}/locations/{location}/connections/{connection}/repositories/{repository}.
+  ///
+  /// Required.
+  core.String? repository;
+
+  SkaffoldGCBRepoSource({
+    this.path,
+    this.ref,
+    this.repository,
+  });
+
+  SkaffoldGCBRepoSource.fromJson(core.Map json_)
+      : this(
+          path: json_.containsKey('path') ? json_['path'] as core.String : null,
+          ref: json_.containsKey('ref') ? json_['ref'] as core.String : null,
+          repository: json_.containsKey('repository')
+              ? json_['repository'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (path != null) 'path': path!,
+        if (ref != null) 'ref': ref!,
+        if (repository != null) 'repository': repository!,
+      };
+}
+
 /// Cloud Storage bucket containing Skaffold Config modules.
 class SkaffoldGCSSource {
   /// Relative path from the source to the Skaffold file.
@@ -8779,7 +8825,7 @@ class SkaffoldGitSource {
   /// Optional.
   core.String? path;
 
-  /// Git ref the package should be cloned from.
+  /// Git branch or tag to use when cloning the repository.
   ///
   /// Optional.
   core.String? ref;
@@ -8819,12 +8865,16 @@ class SkaffoldModules {
   /// Remote git repository containing the Skaffold Config modules.
   SkaffoldGitSource? git;
 
+  /// Cloud Build V2 repository containing the Skaffold Config modules.
+  SkaffoldGCBRepoSource? googleCloudBuildRepo;
+
   /// Cloud Storage bucket containing the Skaffold Config modules.
   SkaffoldGCSSource? googleCloudStorage;
 
   SkaffoldModules({
     this.configs,
     this.git,
+    this.googleCloudBuildRepo,
     this.googleCloudStorage,
   });
 
@@ -8839,6 +8889,10 @@ class SkaffoldModules {
               ? SkaffoldGitSource.fromJson(
                   json_['git'] as core.Map<core.String, core.dynamic>)
               : null,
+          googleCloudBuildRepo: json_.containsKey('googleCloudBuildRepo')
+              ? SkaffoldGCBRepoSource.fromJson(json_['googleCloudBuildRepo']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           googleCloudStorage: json_.containsKey('googleCloudStorage')
               ? SkaffoldGCSSource.fromJson(json_['googleCloudStorage']
                   as core.Map<core.String, core.dynamic>)
@@ -8848,6 +8902,8 @@ class SkaffoldModules {
   core.Map<core.String, core.dynamic> toJson() => {
         if (configs != null) 'configs': configs!,
         if (git != null) 'git': git!,
+        if (googleCloudBuildRepo != null)
+          'googleCloudBuildRepo': googleCloudBuildRepo!,
         if (googleCloudStorage != null)
           'googleCloudStorage': googleCloudStorage!,
       };

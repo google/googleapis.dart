@@ -972,12 +972,17 @@ class EnterprisesMigrationTokensResource {
   /// managed by the EMM's Device Policy Controller (DPC) to being managed by
   /// the Android Management API.
   ///
+  /// See the guide
+  /// (https://developers.google.com/android/management/dpc-migration) for more
+  /// details.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The enterprise in which this migration token will be
-  /// created. Format: enterprises/{enterprise}
+  /// [parent] - Required. The enterprise in which this migration token is
+  /// created. This must be the same enterprise which already manages the device
+  /// in the Play EMM API. Format: enterprises/{enterprise}
   /// Value must have pattern `^enterprises/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -4092,11 +4097,18 @@ class DeviceConnectivityManagement {
   /// less than 13.
   core.String? wifiDirectSettings;
 
+  /// Restrictions on which Wi-Fi SSIDs the device can connect to.
+  ///
+  /// Note that this does not affect which networks can be configured on the
+  /// device. Supported on company-owned devices running Android 13 and above.
+  WifiSsidPolicy? wifiSsidPolicy;
+
   DeviceConnectivityManagement({
     this.configureWifi,
     this.tetheringSettings,
     this.usbDataAccess,
     this.wifiDirectSettings,
+    this.wifiSsidPolicy,
   });
 
   DeviceConnectivityManagement.fromJson(core.Map json_)
@@ -4113,6 +4125,10 @@ class DeviceConnectivityManagement {
           wifiDirectSettings: json_.containsKey('wifiDirectSettings')
               ? json_['wifiDirectSettings'] as core.String
               : null,
+          wifiSsidPolicy: json_.containsKey('wifiSsidPolicy')
+              ? WifiSsidPolicy.fromJson(json_['wifiSsidPolicy']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4121,6 +4137,7 @@ class DeviceConnectivityManagement {
         if (usbDataAccess != null) 'usbDataAccess': usbDataAccess!,
         if (wifiDirectSettings != null)
           'wifiDirectSettings': wifiDirectSettings!,
+        if (wifiSsidPolicy != null) 'wifiSsidPolicy': wifiSsidPolicy!,
       };
 }
 
@@ -4511,12 +4528,10 @@ class EnrollmentToken {
   /// java.util.Properties representation of the properties in the JSON.
   core.String? qrCode;
 
-  /// The user associated with this enrollment token.
-  ///
-  /// If it's specified when the enrollment token is created and the user does
-  /// not exist, the user will be created. This field must not contain
-  /// personally identifiable information. Only the account_identifier field
-  /// needs to be set.
+  /// This field is deprecated and the value is ignored.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   User? user;
 
   /// The token value that's passed to the device and authorizes the device to
@@ -5873,7 +5888,9 @@ class MemoryInfo {
 /// A token to initiate the migration of a device from being managed by a
 /// third-party DPC to being managed by Android Management API.
 ///
-/// A migration token is valid only for a single device.
+/// A migration token is valid only for a single device. See the guide
+/// (https://developers.google.com/android/management/dpc-migration) for more
+/// details.
 class MigrationToken {
   /// Optional EMM-specified additional data.
   ///
@@ -7637,7 +7654,12 @@ class Policy {
   /// The system update policy, which controls how OS updates are applied.
   ///
   /// If the update type is WINDOWED, the update window will automatically apply
-  /// to Play app updates as well.
+  /// to Play app updates as well.Note: Google Play system updates
+  /// (https://source.android.com/docs/core/ota/modular-system) (also called
+  /// Mainline updates) are automatically downloaded and require a device reboot
+  /// to be installed. Refer to the mainline section in Manage system updates
+  /// (https://developer.android.com/work/dpc/system-updates#mainline) for
+  /// further details.
   SystemUpdate? systemUpdate;
 
   /// Whether configuring tethering and portable hotspots is disabled.
@@ -8493,6 +8515,11 @@ class ProvisioningInfo {
   /// The name of the enterprise in the form enterprises/{enterprise}.
   core.String? enterprise;
 
+  /// IMEI number of the GSM device.
+  ///
+  /// For example, A1000031212.
+  core.String? imei;
+
   /// The management mode of the device or profile.
   /// Possible string values are:
   /// - "MANAGEMENT_MODE_UNSPECIFIED" : This value is disallowed.
@@ -8501,6 +8528,11 @@ class ProvisioningInfo {
   /// - "PROFILE_OWNER" : Profile owner. Android Device Policy has control over
   /// a managed profile on the device.
   core.String? managementMode;
+
+  /// MEID number of the CDMA device.
+  ///
+  /// For example, A00000292788E1.
+  core.String? meid;
 
   /// The model of the device.
   ///
@@ -8518,14 +8550,20 @@ class ProvisioningInfo {
   /// - "PERSONALLY_OWNED" : Device is personally-owned.
   core.String? ownership;
 
+  /// The device serial number.
+  core.String? serialNumber;
+
   ProvisioningInfo({
     this.apiLevel,
     this.brand,
     this.enterprise,
+    this.imei,
     this.managementMode,
+    this.meid,
     this.model,
     this.name,
     this.ownership,
+    this.serialNumber,
   });
 
   ProvisioningInfo.fromJson(core.Map json_)
@@ -8538,14 +8576,19 @@ class ProvisioningInfo {
           enterprise: json_.containsKey('enterprise')
               ? json_['enterprise'] as core.String
               : null,
+          imei: json_.containsKey('imei') ? json_['imei'] as core.String : null,
           managementMode: json_.containsKey('managementMode')
               ? json_['managementMode'] as core.String
               : null,
+          meid: json_.containsKey('meid') ? json_['meid'] as core.String : null,
           model:
               json_.containsKey('model') ? json_['model'] as core.String : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           ownership: json_.containsKey('ownership')
               ? json_['ownership'] as core.String
+              : null,
+          serialNumber: json_.containsKey('serialNumber')
+              ? json_['serialNumber'] as core.String
               : null,
         );
 
@@ -8553,10 +8596,13 @@ class ProvisioningInfo {
         if (apiLevel != null) 'apiLevel': apiLevel!,
         if (brand != null) 'brand': brand!,
         if (enterprise != null) 'enterprise': enterprise!,
+        if (imei != null) 'imei': imei!,
         if (managementMode != null) 'managementMode': managementMode!,
+        if (meid != null) 'meid': meid!,
         if (model != null) 'model': model!,
         if (name != null) 'name': name!,
         if (ownership != null) 'ownership': ownership!,
+        if (serialNumber != null) 'serialNumber': serialNumber!,
       };
 }
 
@@ -9243,7 +9289,14 @@ class StopLostModeStatus {
       };
 }
 
-/// Configuration for managing system updates
+/// Configuration for managing system updatesNote: Google Play system updates
+/// (https://source.android.com/docs/core/ota/modular-system) (also called
+/// Mainline updates) are automatically downloaded but require a device reboot
+/// to be installed.
+///
+/// Refer to the mainline section in Manage system updates
+/// (https://developer.android.com/work/dpc/system-updates#mainline) for further
+/// details.
 class SystemUpdate {
   /// If the type is WINDOWED, the end of the maintenance window, measured as
   /// the number of minutes after midnight in device's local time.
@@ -9691,6 +9744,82 @@ class WebToken {
         if (parentFrameUrl != null) 'parentFrameUrl': parentFrameUrl!,
         if (permissions != null) 'permissions': permissions!,
         if (value != null) 'value': value!,
+      };
+}
+
+/// Represents a Wi-Fi SSID.
+class WifiSsid {
+  /// Wi-Fi SSID represented as a string.
+  ///
+  /// Required.
+  core.String? wifiSsid;
+
+  WifiSsid({
+    this.wifiSsid,
+  });
+
+  WifiSsid.fromJson(core.Map json_)
+      : this(
+          wifiSsid: json_.containsKey('wifiSsid')
+              ? json_['wifiSsid'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (wifiSsid != null) 'wifiSsid': wifiSsid!,
+      };
+}
+
+/// Restrictions on which Wi-Fi SSIDs the device can connect to.
+///
+/// Note that this does not affect which networks can be configured on the
+/// device. Supported on company-owned devices running Android 13 and above.
+class WifiSsidPolicy {
+  /// Type of the Wi-Fi SSID policy to be applied.
+  /// Possible string values are:
+  /// - "WIFI_SSID_POLICY_TYPE_UNSPECIFIED" : Defaults to WIFI_SSID_DENYLIST.
+  /// wifiSsids must not be set. There are no restrictions on which SSID the
+  /// device can connect to.
+  /// - "WIFI_SSID_DENYLIST" : The device cannot connect to any Wi-Fi network
+  /// whose SSID is in wifiSsids, but can connect to other networks.
+  /// - "WIFI_SSID_ALLOWLIST" : The device can make Wi-Fi connections only to
+  /// the SSIDs in wifiSsids. wifiSsids must not be empty. The device will not
+  /// be able to connect to any other Wi-Fi network.
+  core.String? wifiSsidPolicyType;
+
+  /// List of Wi-Fi SSIDs that should be applied in the policy.
+  ///
+  /// This field must be non-empty when WifiSsidPolicyType is set to
+  /// WIFI_SSID_ALLOWLIST. If this is set to a non-empty list, then a
+  /// nonComplianceDetail detail with API_LEVEL is reported if the Android
+  /// version is less than 13 and a nonComplianceDetail with MANAGEMENT_MODE is
+  /// reported for non-company-owned devices.
+  ///
+  /// Optional.
+  core.List<WifiSsid>? wifiSsids;
+
+  WifiSsidPolicy({
+    this.wifiSsidPolicyType,
+    this.wifiSsids,
+  });
+
+  WifiSsidPolicy.fromJson(core.Map json_)
+      : this(
+          wifiSsidPolicyType: json_.containsKey('wifiSsidPolicyType')
+              ? json_['wifiSsidPolicyType'] as core.String
+              : null,
+          wifiSsids: json_.containsKey('wifiSsids')
+              ? (json_['wifiSsids'] as core.List)
+                  .map((value) => WifiSsid.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (wifiSsidPolicyType != null)
+          'wifiSsidPolicyType': wifiSsidPolicyType!,
+        if (wifiSsids != null) 'wifiSsids': wifiSsids!,
       };
 }
 

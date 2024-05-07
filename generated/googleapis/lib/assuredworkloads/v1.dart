@@ -1673,7 +1673,9 @@ class GoogleCloudAssuredworkloadsV1Workload {
   /// - "IL2" : Information protection as per DoD IL2 requirements.
   /// - "JP_REGIONS_AND_SUPPORT" : Assured Workloads for Japan Regions
   /// - "KSA_REGIONS_AND_SUPPORT_WITH_SOVEREIGNTY_CONTROLS" : KSA R5 Controls.
-  /// - "FREE_REGIONS" : Assured Workloads Free Regions
+  /// - "REGIONAL_CONTROLS" : Assured Workloads for Regional Controls/Free
+  /// Regions
+  /// - "FREE_REGIONS" : Assured Workloads for Regional Controls/Free Regions
   core.String? complianceRegime;
 
   /// Count of active Violations in the Workload.

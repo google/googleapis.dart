@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240322",
+    "revision": "20240502",
     "rootUrl": "https://iam.googleapis.com/",
     "servicePath": "",
     "title": "Identity and Access Management (IAM) API",

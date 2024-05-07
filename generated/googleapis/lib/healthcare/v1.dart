@@ -5030,7 +5030,7 @@ class ProjectsLocationsDatasetsFhirStoresResource {
   ///
   /// [name] - Output only. Identifier. Resource name of the FHIR store, of the
   /// form
-  /// `projects/{project_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
+  /// `projects/{project_id}/locations/{location}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+$`.
   ///
@@ -9710,7 +9710,7 @@ class ExportMessagesRequest {
   core.String? endTime;
 
   /// Restricts messages exported to those matching a filter, only applicable to
-  /// PubsubDestination.
+  /// PubsubDestination and GcsDestination.
   ///
   /// The following syntax is available: * A string field value can be written
   /// as text inside quotation marks, for example `"query text"`. The only valid
@@ -10138,7 +10138,7 @@ class FhirStore {
   /// Identifier.
   ///
   /// Resource name of the FHIR store, of the form
-  /// `projects/{project_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
+  /// `projects/{project_id}/locations/{location}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
   ///
   /// Output only.
   core.String? name;

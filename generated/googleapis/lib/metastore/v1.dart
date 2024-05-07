@@ -1319,7 +1319,7 @@ class ProjectsLocationsServicesResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Query DPMS metadata.
+  /// Query Dataproc Metastore metadata.
   ///
   /// [request] - The metadata request object.
   ///

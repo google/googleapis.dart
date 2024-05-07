@@ -437,6 +437,7 @@ api.ConnectorConfiguration buildConnectorConfiguration() {
   final o = api.ConnectorConfiguration();
   buildCounterConnectorConfiguration++;
   if (buildCounterConnectorConfiguration < 3) {
+    o.asset = buildConnectorConfigurationAsset();
     o.authentication = buildConnectorConfigurationAuthentication();
     o.connectorId = 'foo';
     o.endpoint = buildConnectorConfigurationEndpoint();
@@ -449,6 +450,7 @@ api.ConnectorConfiguration buildConnectorConfiguration() {
 void checkConnectorConfiguration(api.ConnectorConfiguration o) {
   buildCounterConnectorConfiguration++;
   if (buildCounterConnectorConfiguration < 3) {
+    checkConnectorConfigurationAsset(o.asset!);
     checkConnectorConfigurationAuthentication(o.authentication!);
     unittest.expect(
       o.connectorId!,
@@ -458,6 +460,33 @@ void checkConnectorConfiguration(api.ConnectorConfiguration o) {
     checkConnectorConfigurationNetwork(o.network!);
   }
   buildCounterConnectorConfiguration--;
+}
+
+core.int buildCounterConnectorConfigurationAsset = 0;
+api.ConnectorConfigurationAsset buildConnectorConfigurationAsset() {
+  final o = api.ConnectorConfigurationAsset();
+  buildCounterConnectorConfigurationAsset++;
+  if (buildCounterConnectorConfigurationAsset < 3) {
+    o.database = 'foo';
+    o.googleCloudResource = 'foo';
+  }
+  buildCounterConnectorConfigurationAsset--;
+  return o;
+}
+
+void checkConnectorConfigurationAsset(api.ConnectorConfigurationAsset o) {
+  buildCounterConnectorConfigurationAsset++;
+  if (buildCounterConnectorConfigurationAsset < 3) {
+    unittest.expect(
+      o.database!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.googleCloudResource!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterConnectorConfigurationAsset--;
 }
 
 core.int buildCounterConnectorConfigurationAuthentication = 0;
@@ -1097,6 +1126,16 @@ void main() {
       final od = api.ConnectorConfiguration.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkConnectorConfiguration(od);
+    });
+  });
+
+  unittest.group('obj-schema-ConnectorConfigurationAsset', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildConnectorConfigurationAsset();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ConnectorConfigurationAsset.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkConnectorConfigurationAsset(od);
     });
   });
 

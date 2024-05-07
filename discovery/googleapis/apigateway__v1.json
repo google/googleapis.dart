@@ -24,7 +24,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240313",
+    "revision": "20240424",
     "rootUrl": "https://apigateway.googleapis.com/",
     "servicePath": "",
     "title": "API Gateway API",

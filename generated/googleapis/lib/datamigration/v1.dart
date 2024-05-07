@@ -6002,6 +6002,14 @@ class IndexEntity {
   /// list the columns which constitutes the index.
   core.List<core.String>? tableColumns;
 
+  /// For each table_column, mark whether it's sorting order is ascending
+  /// (false) or descending (true).
+  ///
+  /// If no value is defined, assume all columns are sorted in ascending order.
+  /// Otherwise, the number of items must match that of table_columns with each
+  /// value specifying the direction of the matched column by its index.
+  core.List<core.bool>? tableColumnsDescending;
+
   /// Type of index, for example B-TREE.
   core.String? type;
 
@@ -6012,6 +6020,7 @@ class IndexEntity {
     this.customFeatures,
     this.name,
     this.tableColumns,
+    this.tableColumnsDescending,
     this.type,
     this.unique,
   });
@@ -6027,6 +6036,11 @@ class IndexEntity {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          tableColumnsDescending: json_.containsKey('tableColumnsDescending')
+              ? (json_['tableColumnsDescending'] as core.List)
+                  .map((value) => value as core.bool)
+                  .toList()
+              : null,
           type: json_.containsKey('type') ? json_['type'] as core.String : null,
           unique:
               json_.containsKey('unique') ? json_['unique'] as core.bool : null,
@@ -6036,6 +6050,8 @@ class IndexEntity {
         if (customFeatures != null) 'customFeatures': customFeatures!,
         if (name != null) 'name': name!,
         if (tableColumns != null) 'tableColumns': tableColumns!,
+        if (tableColumnsDescending != null)
+          'tableColumnsDescending': tableColumnsDescending!,
         if (type != null) 'type': type!,
         if (unique != null) 'unique': unique!,
       };
@@ -6837,9 +6853,6 @@ class MigrationJob {
   core.String? name;
 
   /// Data dump parallelism settings used by the migration.
-  ///
-  /// Currently applicable only for MySQL to Cloud SQL for MySQL migrations
-  /// only.
   ///
   /// Optional.
   PerformanceConfig? performanceConfig;

@@ -2360,7 +2360,7 @@ class V2Resource {
   /// Possible string values are:
   /// - "RECAPTCHA_VERSION_UNSPECIFIED" : The reCAPTCHA version is not
   /// specified.
-  /// - "RECAPTCHA_ENTERPRISE" : Use reCAPTCHA Enterprise.
+  /// - "RECAPTCHA_ENTERPRISE" : The reCAPTCHA enterprise.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3066,8 +3066,8 @@ class GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfig {
 /// will be replaced with the appropriate values: %LINK% - The link to use to
 /// redeem the send OOB code. %EMAIL% - The email where the email is being sent.
 /// %NEW_EMAIL% - The new email being set for the account (when applicable).
-/// %APP_NAME% - The GCP project's display name. %DISPLAY_NAME% - The user's
-/// display name.
+/// %APP_NAME% - The Google Cloud project's display name. %DISPLAY_NAME% - The
+/// user's display name.
 class GoogleCloudIdentitytoolkitAdminV2EmailTemplate {
   /// Email body
   core.String? body;
@@ -6202,7 +6202,7 @@ class GoogleIamV1GetIamPolicyRequest {
 }
 
 /// Encapsulates settings provided to GetIamPolicy.
-typedef GoogleIamV1GetPolicyOptions = $GetPolicyOptions;
+typedef GoogleIamV1GetPolicyOptions = $GetPolicyOptions00;
 
 /// An Identity and Access Management (IAM) policy, which specifies access
 /// controls for Google Cloud resources.

@@ -815,7 +815,7 @@ class ProjectsAppsAppAttestConfigResource {
   /// Value must have pattern `^projects/\[^/\]+/apps/\[^/\]+/appAttestConfig$`.
   ///
   /// [updateMask] - Required. A comma-separated list of names of fields in the
-  /// AppAttestConfig Gets to update. Example: `token_ttl`.
+  /// AppAttestConfig to update. Example: `token_ttl`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1219,7 +1219,7 @@ class ProjectsAppsDeviceCheckConfigResource {
   /// `^projects/\[^/\]+/apps/\[^/\]+/deviceCheckConfig$`.
   ///
   /// [updateMask] - Required. A comma-separated list of names of fields in the
-  /// DeviceCheckConfig Gets to update. Example: `key_id,private_key`.
+  /// DeviceCheckConfig to update. Example: `key_id,private_key`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1368,7 +1368,7 @@ class ProjectsAppsPlayIntegrityConfigResource {
   /// `^projects/\[^/\]+/apps/\[^/\]+/playIntegrityConfig$`.
   ///
   /// [updateMask] - Required. A comma-separated list of names of fields in the
-  /// PlayIntegrityConfig Gets to update. Example: `token_ttl`.
+  /// PlayIntegrityConfig to update. Example: `token_ttl`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1831,7 +1831,7 @@ class ProjectsAppsSafetyNetConfigResource {
   /// Value must have pattern `^projects/\[^/\]+/apps/\[^/\]+/safetyNetConfig$`.
   ///
   /// [updateMask] - Required. A comma-separated list of names of fields in the
-  /// SafetyNetConfig Gets to update. Example: `token_ttl`.
+  /// SafetyNetConfig to update. Example: `token_ttl`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2404,10 +2404,16 @@ class GoogleFirebaseAppcheckV1DebugToken {
   /// Required.
   core.String? token;
 
+  /// Timestamp when this debug token was most recently updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
   GoogleFirebaseAppcheckV1DebugToken({
     this.displayName,
     this.name,
     this.token,
+    this.updateTime,
   });
 
   GoogleFirebaseAppcheckV1DebugToken.fromJson(core.Map json_)
@@ -2418,12 +2424,16 @@ class GoogleFirebaseAppcheckV1DebugToken {
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           token:
               json_.containsKey('token') ? json_['token'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
         if (name != null) 'name': name!,
         if (token != null) 'token': token!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -3405,10 +3415,6 @@ class GoogleFirebaseAppcheckV1Service {
   /// Check metrics collected. Though the service is not protected by App Check
   /// in this mode, other applicable protections, such as user authorization,
   /// are still enforced. An unconfigured service is in this mode by default.
-  /// Note that resource policies behave slightly differently as an unconfigured
-  /// resource policy means that the resource will inherit the EnforcementMode
-  /// configured for the service it belongs to and will not be considered as
-  /// being in OFF mode by default.
   /// - "UNENFORCED" : Firebase App Check is not enforced for the service. App
   /// Check metrics are collected to help you decide when to turn on enforcement
   /// for the service. Though the service is not protected by App Check in this

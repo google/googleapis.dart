@@ -1578,6 +1578,7 @@ api.HttpCheck buildHttpCheck() {
     o.pingConfig = buildPingConfig();
     o.port = 42;
     o.requestMethod = 'foo';
+    o.serviceAgentAuthentication = buildServiceAgentAuthentication();
     o.useSsl = true;
     o.validateSsl = true;
   }
@@ -1617,6 +1618,7 @@ void checkHttpCheck(api.HttpCheck o) {
       o.requestMethod!,
       unittest.equals('foo'),
     );
+    checkServiceAgentAuthentication(o.serviceAgentAuthentication!);
     unittest.expect(o.useSsl!, unittest.isTrue);
     unittest.expect(o.validateSsl!, unittest.isTrue);
   }
@@ -3633,6 +3635,28 @@ void checkService(api.Service o) {
   buildCounterService--;
 }
 
+core.int buildCounterServiceAgentAuthentication = 0;
+api.ServiceAgentAuthentication buildServiceAgentAuthentication() {
+  final o = api.ServiceAgentAuthentication();
+  buildCounterServiceAgentAuthentication++;
+  if (buildCounterServiceAgentAuthentication < 3) {
+    o.type = 'foo';
+  }
+  buildCounterServiceAgentAuthentication--;
+  return o;
+}
+
+void checkServiceAgentAuthentication(api.ServiceAgentAuthentication o) {
+  buildCounterServiceAgentAuthentication++;
+  if (buildCounterServiceAgentAuthentication < 3) {
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterServiceAgentAuthentication--;
+}
+
 core.int buildCounterServiceLevelIndicator = 0;
 api.ServiceLevelIndicator buildServiceLevelIndicator() {
   final o = api.ServiceLevelIndicator();
@@ -5425,6 +5449,16 @@ void main() {
       final od =
           api.Service.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkService(od);
+    });
+  });
+
+  unittest.group('obj-schema-ServiceAgentAuthentication', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildServiceAgentAuthentication();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ServiceAgentAuthentication.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkServiceAgentAuthentication(od);
     });
   });
 

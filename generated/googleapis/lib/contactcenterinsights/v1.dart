@@ -311,6 +311,9 @@ class ProjectsLocationsConversationsResource {
 
   /// Creates a conversation.
   ///
+  /// DEPRECATED: Use UploadConversation instead. CreateConversation does not
+  /// support audio transcription or DLP redaction.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -334,6 +337,9 @@ class ProjectsLocationsConversationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleCloudContactcenterinsightsV1Conversation> create(
     GoogleCloudContactcenterinsightsV1Conversation request,
     core.String parent, {
@@ -2072,6 +2078,309 @@ class ProjectsLocationsViewsResource {
   }
 }
 
+/// Agent Coaching instructions that customer can configure.
+class GoogleCloudContactcenterinsightsV1AgentCoachingInstruction {
+  /// The action that human agent should take.
+  ///
+  /// For example, "apologize for the slow shipping". If the users only want to
+  /// use agent coaching for intent detection, agent_action can be empty
+  ///
+  /// Optional.
+  core.String? agentAction;
+
+  /// The condition of the instruction.
+  ///
+  /// For example, "the customer wants to cancel an order". If the users want
+  /// the instruction to be triggered unconditionally, the condition can be
+  /// empty.
+  ///
+  /// Optional.
+  core.String? condition;
+
+  /// The detailed description of this instruction.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// Display name for the instruction.
+  ///
+  /// Optional.
+  core.String? displayName;
+
+  /// Additional information attached to this instruction.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? metadata;
+
+  /// The action that system should take.
+  ///
+  /// For example, "call GetOrderTime with order_number={order number provided
+  /// by the customer}". If the users don't have plugins or don't want to
+  /// trigger plugins, the system_action can be empty
+  ///
+  /// Optional.
+  core.String? systemAction;
+
+  GoogleCloudContactcenterinsightsV1AgentCoachingInstruction({
+    this.agentAction,
+    this.condition,
+    this.description,
+    this.displayName,
+    this.metadata,
+    this.systemAction,
+  });
+
+  GoogleCloudContactcenterinsightsV1AgentCoachingInstruction.fromJson(
+      core.Map json_)
+      : this(
+          agentAction: json_.containsKey('agentAction')
+              ? json_['agentAction'] as core.String
+              : null,
+          condition: json_.containsKey('condition')
+              ? json_['condition'] as core.String
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          metadata: json_.containsKey('metadata')
+              ? (json_['metadata'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          systemAction: json_.containsKey('systemAction')
+              ? json_['systemAction'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (agentAction != null) 'agentAction': agentAction!,
+        if (condition != null) 'condition': condition!,
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
+        if (metadata != null) 'metadata': metadata!,
+        if (systemAction != null) 'systemAction': systemAction!,
+      };
+}
+
+/// Suggestion for coaching agents.
+class GoogleCloudContactcenterinsightsV1AgentCoachingSuggestion {
+  /// Suggested actions for the agent to take.
+  ///
+  /// Optional.
+  core.List<
+          GoogleCloudContactcenterinsightsV1AgentCoachingSuggestionAgentActionSuggestion>?
+      agentActionSuggestions;
+
+  /// Instructions applicable based on the current context.
+  ///
+  /// Optional.
+  core.List<GoogleCloudContactcenterinsightsV1AgentCoachingInstruction>?
+      applicableInstructions;
+
+  /// Sample response for the Agent.
+  ///
+  /// Optional.
+  core.List<
+          GoogleCloudContactcenterinsightsV1AgentCoachingSuggestionSampleResponse>?
+      sampleResponses;
+
+  /// Self evaluation of the suggestion.
+  GoogleCloudContactcenterinsightsV1AgentCoachingSuggestionAgentCoachingSuggestionEval?
+      suggestionEval;
+
+  /// Reasoning for the suggestion.
+  GoogleCloudContactcenterinsightsV1AgentCoachingSuggestionAgentCoachingSuggestionReasoning?
+      suggestionReasoning;
+
+  GoogleCloudContactcenterinsightsV1AgentCoachingSuggestion({
+    this.agentActionSuggestions,
+    this.applicableInstructions,
+    this.sampleResponses,
+    this.suggestionEval,
+    this.suggestionReasoning,
+  });
+
+  GoogleCloudContactcenterinsightsV1AgentCoachingSuggestion.fromJson(
+      core.Map json_)
+      : this(
+          agentActionSuggestions: json_.containsKey('agentActionSuggestions')
+              ? (json_['agentActionSuggestions'] as core.List)
+                  .map((value) =>
+                      GoogleCloudContactcenterinsightsV1AgentCoachingSuggestionAgentActionSuggestion
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          applicableInstructions: json_.containsKey('applicableInstructions')
+              ? (json_['applicableInstructions'] as core.List)
+                  .map((value) =>
+                      GoogleCloudContactcenterinsightsV1AgentCoachingInstruction
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          sampleResponses: json_.containsKey('sampleResponses')
+              ? (json_['sampleResponses'] as core.List)
+                  .map((value) =>
+                      GoogleCloudContactcenterinsightsV1AgentCoachingSuggestionSampleResponse
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          suggestionEval: json_.containsKey('suggestionEval')
+              ? GoogleCloudContactcenterinsightsV1AgentCoachingSuggestionAgentCoachingSuggestionEval
+                  .fromJson(json_['suggestionEval']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          suggestionReasoning: json_.containsKey('suggestionReasoning')
+              ? GoogleCloudContactcenterinsightsV1AgentCoachingSuggestionAgentCoachingSuggestionReasoning
+                  .fromJson(json_['suggestionReasoning']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (agentActionSuggestions != null)
+          'agentActionSuggestions': agentActionSuggestions!,
+        if (applicableInstructions != null)
+          'applicableInstructions': applicableInstructions!,
+        if (sampleResponses != null) 'sampleResponses': sampleResponses!,
+        if (suggestionEval != null) 'suggestionEval': suggestionEval!,
+        if (suggestionReasoning != null)
+          'suggestionReasoning': suggestionReasoning!,
+      };
+}
+
+/// Actions suggested for the agent.
+///
+/// This is based on applicable instructions.
+class GoogleCloudContactcenterinsightsV1AgentCoachingSuggestionAgentActionSuggestion {
+  /// The suggested action for the agent.
+  ///
+  /// Optional.
+  core.String? agentAction;
+
+  GoogleCloudContactcenterinsightsV1AgentCoachingSuggestionAgentActionSuggestion({
+    this.agentAction,
+  });
+
+  GoogleCloudContactcenterinsightsV1AgentCoachingSuggestionAgentActionSuggestion.fromJson(
+      core.Map json_)
+      : this(
+          agentAction: json_.containsKey('agentAction')
+              ? json_['agentAction'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (agentAction != null) 'agentAction': agentAction!,
+      };
+}
+
+/// Self evaluations of the suggestion.
+class GoogleCloudContactcenterinsightsV1AgentCoachingSuggestionAgentCoachingSuggestionEval {
+  /// Eval for Agent action suggestion.
+  ///
+  /// Optional.
+  core.String? actionActionSuggestionEval;
+
+  /// Eval for sample response.
+  ///
+  /// Optional.
+  core.String? sampleResponseEval;
+
+  GoogleCloudContactcenterinsightsV1AgentCoachingSuggestionAgentCoachingSuggestionEval({
+    this.actionActionSuggestionEval,
+    this.sampleResponseEval,
+  });
+
+  GoogleCloudContactcenterinsightsV1AgentCoachingSuggestionAgentCoachingSuggestionEval.fromJson(
+      core.Map json_)
+      : this(
+          actionActionSuggestionEval:
+              json_.containsKey('actionActionSuggestionEval')
+                  ? json_['actionActionSuggestionEval'] as core.String
+                  : null,
+          sampleResponseEval: json_.containsKey('sampleResponseEval')
+              ? json_['sampleResponseEval'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (actionActionSuggestionEval != null)
+          'actionActionSuggestionEval': actionActionSuggestionEval!,
+        if (sampleResponseEval != null)
+          'sampleResponseEval': sampleResponseEval!,
+      };
+}
+
+/// Reasoning for the suggestion.
+class GoogleCloudContactcenterinsightsV1AgentCoachingSuggestionAgentCoachingSuggestionReasoning {
+  /// The actions that the agent has taken already.
+  ///
+  /// Optional.
+  core.String? agentActionTaken;
+
+  /// Summary of the issue.
+  ///
+  /// Optional.
+  core.String? issueSummary;
+
+  GoogleCloudContactcenterinsightsV1AgentCoachingSuggestionAgentCoachingSuggestionReasoning({
+    this.agentActionTaken,
+    this.issueSummary,
+  });
+
+  GoogleCloudContactcenterinsightsV1AgentCoachingSuggestionAgentCoachingSuggestionReasoning.fromJson(
+      core.Map json_)
+      : this(
+          agentActionTaken: json_.containsKey('agentActionTaken')
+              ? json_['agentActionTaken'] as core.String
+              : null,
+          issueSummary: json_.containsKey('issueSummary')
+              ? json_['issueSummary'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (agentActionTaken != null) 'agentActionTaken': agentActionTaken!,
+        if (issueSummary != null) 'issueSummary': issueSummary!,
+      };
+}
+
+/// Sample response that the agent can use.
+///
+/// This could be based on applicable instructions and ingested data from other
+/// systems.
+class GoogleCloudContactcenterinsightsV1AgentCoachingSuggestionSampleResponse {
+  /// Sample response for Agent in text.
+  ///
+  /// Optional.
+  core.String? responseText;
+
+  GoogleCloudContactcenterinsightsV1AgentCoachingSuggestionSampleResponse({
+    this.responseText,
+  });
+
+  GoogleCloudContactcenterinsightsV1AgentCoachingSuggestionSampleResponse.fromJson(
+      core.Map json_)
+      : this(
+          responseText: json_.containsKey('responseText')
+              ? json_['responseText'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (responseText != null) 'responseText': responseText!,
+      };
+}
+
 /// The analysis resource.
 class GoogleCloudContactcenterinsightsV1Analysis {
   /// The result of the analysis, which is populated when the analysis finishes.
@@ -2196,6 +2505,9 @@ class GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadata {
   core.List<GoogleCloudContactcenterinsightsV1ConversationLevelSentiment>?
       sentiments;
 
+  /// Overall conversation-level silence during the call.
+  GoogleCloudContactcenterinsightsV1ConversationLevelSilence? silence;
+
   GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadata({
     this.annotations,
     this.entities,
@@ -2203,6 +2515,7 @@ class GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadata {
     this.issueModelResult,
     this.phraseMatchers,
     this.sentiments,
+    this.silence,
   });
 
   GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadata.fromJson(
@@ -2256,6 +2569,11 @@ class GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadata {
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          silence: json_.containsKey('silence')
+              ? GoogleCloudContactcenterinsightsV1ConversationLevelSilence
+                  .fromJson(
+                      json_['silence'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2265,6 +2583,7 @@ class GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadata {
         if (issueModelResult != null) 'issueModelResult': issueModelResult!,
         if (phraseMatchers != null) 'phraseMatchers': phraseMatchers!,
         if (sentiments != null) 'sentiments': sentiments!,
+        if (silence != null) 'silence': silence!,
       };
 }
 
@@ -3400,6 +3719,36 @@ class GoogleCloudContactcenterinsightsV1ConversationLevelSentiment {
       };
 }
 
+/// Conversation-level silence data.
+class GoogleCloudContactcenterinsightsV1ConversationLevelSilence {
+  /// Amount of time calculated to be in silence.
+  core.String? silenceDuration;
+
+  /// Percentage of the total conversation spent in silence.
+  core.double? silencePercentage;
+
+  GoogleCloudContactcenterinsightsV1ConversationLevelSilence({
+    this.silenceDuration,
+    this.silencePercentage,
+  });
+
+  GoogleCloudContactcenterinsightsV1ConversationLevelSilence.fromJson(
+      core.Map json_)
+      : this(
+          silenceDuration: json_.containsKey('silenceDuration')
+              ? json_['silenceDuration'] as core.String
+              : null,
+          silencePercentage: json_.containsKey('silencePercentage')
+              ? (json_['silencePercentage'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (silenceDuration != null) 'silenceDuration': silenceDuration!,
+        if (silencePercentage != null) 'silencePercentage': silencePercentage!,
+      };
+}
+
 /// The call participant speaking for a given utterance.
 class GoogleCloudContactcenterinsightsV1ConversationParticipant {
   /// Use `dialogflow_participant_name` instead.
@@ -4305,7 +4654,7 @@ class GoogleCloudContactcenterinsightsV1ExportIssueModelRequest {
 
 /// Google Cloud Storage Object URI to save the issue model to.
 typedef GoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination
-    = $Shared06;
+    = $Shared09;
 
 /// Agent Assist frequently-asked-question answer data.
 class GoogleCloudContactcenterinsightsV1FaqAnswerData {
@@ -4382,6 +4731,41 @@ class GoogleCloudContactcenterinsightsV1FaqAnswerData {
       };
 }
 
+/// Suggestion generated using free form generator.
+class GoogleCloudContactcenterinsightsV1FreeFormSuggestion {
+  /// Labels for the generator.
+  ///
+  /// Optional.
+  core.List<core.String>? labels;
+
+  /// Free form suggestion.
+  ///
+  /// Required.
+  core.String? response;
+
+  GoogleCloudContactcenterinsightsV1FreeFormSuggestion({
+    this.labels,
+    this.response,
+  });
+
+  GoogleCloudContactcenterinsightsV1FreeFormSuggestion.fromJson(core.Map json_)
+      : this(
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          response: json_.containsKey('response')
+              ? json_['response'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (labels != null) 'labels': labels!,
+        if (response != null) 'response': response!,
+      };
+}
+
 /// A Cloud Storage source of conversation data.
 class GoogleCloudContactcenterinsightsV1GcsSource {
   /// Cloud Storage URI that points to a file that contains the conversation
@@ -4412,6 +4796,358 @@ class GoogleCloudContactcenterinsightsV1GcsSource {
   core.Map<core.String, core.dynamic> toJson() => {
         if (audioUri != null) 'audioUri': audioUri!,
         if (transcriptUri != null) 'transcriptUri': transcriptUri!,
+      };
+}
+
+/// Suggestion generated using a Generator.
+class GoogleCloudContactcenterinsightsV1GeneratorSuggestion {
+  /// Suggestion to coach the agent.
+  ///
+  /// Optional.
+  GoogleCloudContactcenterinsightsV1AgentCoachingSuggestion?
+      agentCoachingSuggestion;
+
+  /// Free form suggestion.
+  ///
+  /// Optional.
+  GoogleCloudContactcenterinsightsV1FreeFormSuggestion? freeFormSuggestion;
+
+  /// Suggested summary.
+  ///
+  /// Optional.
+  GoogleCloudContactcenterinsightsV1SummarySuggestion? summarySuggestion;
+
+  GoogleCloudContactcenterinsightsV1GeneratorSuggestion({
+    this.agentCoachingSuggestion,
+    this.freeFormSuggestion,
+    this.summarySuggestion,
+  });
+
+  GoogleCloudContactcenterinsightsV1GeneratorSuggestion.fromJson(core.Map json_)
+      : this(
+          agentCoachingSuggestion: json_.containsKey('agentCoachingSuggestion')
+              ? GoogleCloudContactcenterinsightsV1AgentCoachingSuggestion
+                  .fromJson(json_['agentCoachingSuggestion']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          freeFormSuggestion: json_.containsKey('freeFormSuggestion')
+              ? GoogleCloudContactcenterinsightsV1FreeFormSuggestion.fromJson(
+                  json_['freeFormSuggestion']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          summarySuggestion: json_.containsKey('summarySuggestion')
+              ? GoogleCloudContactcenterinsightsV1SummarySuggestion.fromJson(
+                  json_['summarySuggestion']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (agentCoachingSuggestion != null)
+          'agentCoachingSuggestion': agentCoachingSuggestion!,
+        if (freeFormSuggestion != null)
+          'freeFormSuggestion': freeFormSuggestion!,
+        if (summarySuggestion != null) 'summarySuggestion': summarySuggestion!,
+      };
+}
+
+/// Represents response from generators.
+class GoogleCloudContactcenterinsightsV1GetGeneratorSuggestionResponse {
+  /// The suggestion generated from the Generator.
+  GoogleCloudContactcenterinsightsV1GeneratorSuggestion? generatorSuggestion;
+
+  GoogleCloudContactcenterinsightsV1GetGeneratorSuggestionResponse({
+    this.generatorSuggestion,
+  });
+
+  GoogleCloudContactcenterinsightsV1GetGeneratorSuggestionResponse.fromJson(
+      core.Map json_)
+      : this(
+          generatorSuggestion: json_.containsKey('generatorSuggestion')
+              ? GoogleCloudContactcenterinsightsV1GeneratorSuggestion.fromJson(
+                  json_['generatorSuggestion']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (generatorSuggestion != null)
+          'generatorSuggestion': generatorSuggestion!,
+      };
+}
+
+/// Response for Knowledge Assist.
+///
+/// Contains suggested query and optionally includes an answer for the query.
+class GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponse {
+  /// The query suggested based on the context.
+  ///
+  /// Suggestion is made only if it is different from the previous suggestion.
+  GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseSuggestedQuery?
+      suggestedQuery;
+
+  /// The answer generated for the suggested query.
+  ///
+  /// Whether or not an answer is generated depends on how confident we are
+  /// about the generated query.
+  GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseKnowledgeAnswer?
+      suggestedQueryAnswer;
+
+  GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponse({
+    this.suggestedQuery,
+    this.suggestedQueryAnswer,
+  });
+
+  GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponse.fromJson(
+      core.Map json_)
+      : this(
+          suggestedQuery: json_.containsKey('suggestedQuery')
+              ? GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseSuggestedQuery
+                  .fromJson(json_['suggestedQuery']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          suggestedQueryAnswer: json_.containsKey('suggestedQueryAnswer')
+              ? GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseKnowledgeAnswer
+                  .fromJson(json_['suggestedQueryAnswer']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (suggestedQuery != null) 'suggestedQuery': suggestedQuery!,
+        if (suggestedQueryAnswer != null)
+          'suggestedQueryAnswer': suggestedQueryAnswer!,
+      };
+}
+
+/// Represents an answer from Knowledge.
+///
+/// Cuurently supports FAQ and Generative answers.
+class GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseKnowledgeAnswer {
+  /// The piece of text from the `source` that answers this suggested query.
+  core.String? answerText;
+
+  /// Populated if the prediction came from FAQ.
+  GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseKnowledgeAnswerFaqSource?
+      faqSource;
+
+  /// Populated if the prediction was Generative.
+  GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseKnowledgeAnswerGenerativeSource?
+      generativeSource;
+
+  /// Populated if the prediction was from intent matching.
+  GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseKnowledgeAnswerIntentMatchingSource?
+      intentMatchingSource;
+
+  /// The system's confidence score that this answer is a good match for this
+  /// conversational query.
+  ///
+  /// The range is from 0.0 (completely uncertain) to 1.0 (completely certain).
+  core.double? matchConfidence;
+
+  GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseKnowledgeAnswer({
+    this.answerText,
+    this.faqSource,
+    this.generativeSource,
+    this.intentMatchingSource,
+    this.matchConfidence,
+  });
+
+  GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseKnowledgeAnswer.fromJson(
+      core.Map json_)
+      : this(
+          answerText: json_.containsKey('answerText')
+              ? json_['answerText'] as core.String
+              : null,
+          faqSource: json_.containsKey('faqSource')
+              ? GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseKnowledgeAnswerFaqSource
+                  .fromJson(
+                      json_['faqSource'] as core.Map<core.String, core.dynamic>)
+              : null,
+          generativeSource: json_.containsKey('generativeSource')
+              ? GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseKnowledgeAnswerGenerativeSource
+                  .fromJson(json_['generativeSource']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          intentMatchingSource: json_.containsKey('intentMatchingSource')
+              ? GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseKnowledgeAnswerIntentMatchingSource
+                  .fromJson(json_['intentMatchingSource']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          matchConfidence: json_.containsKey('matchConfidence')
+              ? (json_['matchConfidence'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (answerText != null) 'answerText': answerText!,
+        if (faqSource != null) 'faqSource': faqSource!,
+        if (generativeSource != null) 'generativeSource': generativeSource!,
+        if (intentMatchingSource != null)
+          'intentMatchingSource': intentMatchingSource!,
+        if (matchConfidence != null) 'matchConfidence': matchConfidence!,
+      };
+}
+
+/// Details about source of FAQ answer.
+class GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseKnowledgeAnswerFaqSource {
+  /// Indicates which Knowledge Document this answer was extracted from.
+  ///
+  /// Format: `projects//knowledgeBases//documents/`.
+  core.String? document;
+
+  /// The corresponding FAQ question.
+  core.String? question;
+
+  GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseKnowledgeAnswerFaqSource({
+    this.document,
+    this.question,
+  });
+
+  GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseKnowledgeAnswerFaqSource.fromJson(
+      core.Map json_)
+      : this(
+          document: json_.containsKey('document')
+              ? json_['document'] as core.String
+              : null,
+          question: json_.containsKey('question')
+              ? json_['question'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (document != null) 'document': document!,
+        if (question != null) 'question': question!,
+      };
+}
+
+/// Details about source of Generative answer.
+class GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseKnowledgeAnswerGenerativeSource {
+  /// All snippets used for this Generative Prediction, with their source URI
+  /// and data.
+  core.List<
+          GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseKnowledgeAnswerGenerativeSourceSnippet>?
+      snippets;
+
+  GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseKnowledgeAnswerGenerativeSource({
+    this.snippets,
+  });
+
+  GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseKnowledgeAnswerGenerativeSource.fromJson(
+      core.Map json_)
+      : this(
+          snippets: json_.containsKey('snippets')
+              ? (json_['snippets'] as core.List)
+                  .map((value) =>
+                      GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseKnowledgeAnswerGenerativeSourceSnippet
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (snippets != null) 'snippets': snippets!,
+      };
+}
+
+/// Snippet Source for a Generative Prediction.
+class GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseKnowledgeAnswerGenerativeSourceSnippet {
+  /// Indicates which Knowledge Document this snippet was extracted from.
+  ///
+  /// Format: `projects//knowledgeBases//documents/`.
+  core.String? document;
+
+  /// text taken from that URI.
+  core.String? text;
+
+  /// Title of the document.
+  core.String? title;
+
+  /// URI the data is sourced from.
+  core.String? uri;
+
+  GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseKnowledgeAnswerGenerativeSourceSnippet({
+    this.document,
+    this.text,
+    this.title,
+    this.uri,
+  });
+
+  GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseKnowledgeAnswerGenerativeSourceSnippet.fromJson(
+      core.Map json_)
+      : this(
+          document: json_.containsKey('document')
+              ? json_['document'] as core.String
+              : null,
+          text: json_.containsKey('text') ? json_['text'] as core.String : null,
+          title:
+              json_.containsKey('title') ? json_['title'] as core.String : null,
+          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (document != null) 'document': document!,
+        if (text != null) 'text': text!,
+        if (title != null) 'title': title!,
+        if (uri != null) 'uri': uri!,
+      };
+}
+
+/// Details about source of Intent Matching answer.
+class GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseKnowledgeAnswerIntentMatchingSource {
+  /// Title of the document.
+  core.String? title;
+
+  /// URI the data is sourced from.
+  core.String? uri;
+
+  GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseKnowledgeAnswerIntentMatchingSource({
+    this.title,
+    this.uri,
+  });
+
+  GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseKnowledgeAnswerIntentMatchingSource.fromJson(
+      core.Map json_)
+      : this(
+          title:
+              json_.containsKey('title') ? json_['title'] as core.String : null,
+          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (title != null) 'title': title!,
+        if (uri != null) 'uri': uri!,
+      };
+}
+
+/// Represents a suggested query.
+class GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseSuggestedQuery {
+  /// Suggested query text.
+  core.String? queryText;
+
+  /// Suggested query score.
+  core.double? score;
+
+  GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseSuggestedQuery({
+    this.queryText,
+    this.score,
+  });
+
+  GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseSuggestedQuery.fromJson(
+      core.Map json_)
+      : this(
+          queryText: json_.containsKey('queryText')
+              ? json_['queryText'] as core.String
+              : null,
+          score: json_.containsKey('score')
+              ? (json_['score'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (queryText != null) 'queryText': queryText!,
+        if (score != null) 'score': score!,
       };
 }
 
@@ -4467,7 +5203,7 @@ class GoogleCloudContactcenterinsightsV1ImportIssueModelRequest {
 
 /// Google Cloud Storage Object URI to get the issue model file from.
 typedef GoogleCloudContactcenterinsightsV1ImportIssueModelRequestGcsSource
-    = $Shared06;
+    = $Shared09;
 
 /// The request to ingest conversations.
 class GoogleCloudContactcenterinsightsV1IngestConversationsRequest {
@@ -4494,6 +5230,16 @@ class GoogleCloudContactcenterinsightsV1IngestConversationsRequest {
   /// Optional.
   GoogleCloudContactcenterinsightsV1RedactionConfig? redactionConfig;
 
+  /// If set, this fields indicates the number of objects to ingest from the
+  /// Cloud Storage bucket.
+  ///
+  /// If empty, the entire bucket will be ingested. Note that conversations
+  /// produced via sampling will not be ingested by subsequent ingest requests
+  /// unless they are first deleted.
+  ///
+  /// Optional.
+  core.int? sampleSize;
+
   /// Default Speech-to-Text configuration.
   ///
   /// Optional, will default to the config specified in Settings.
@@ -4510,6 +5256,7 @@ class GoogleCloudContactcenterinsightsV1IngestConversationsRequest {
     this.gcsSource,
     this.parent,
     this.redactionConfig,
+    this.sampleSize,
     this.speechConfig,
     this.transcriptObjectConfig,
   });
@@ -4535,6 +5282,9 @@ class GoogleCloudContactcenterinsightsV1IngestConversationsRequest {
                   json_['redactionConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          sampleSize: json_.containsKey('sampleSize')
+              ? json_['sampleSize'] as core.int
+              : null,
           speechConfig: json_.containsKey('speechConfig')
               ? GoogleCloudContactcenterinsightsV1SpeechConfig.fromJson(
                   json_['speechConfig'] as core.Map<core.String, core.dynamic>)
@@ -4552,6 +5302,7 @@ class GoogleCloudContactcenterinsightsV1IngestConversationsRequest {
         if (gcsSource != null) 'gcsSource': gcsSource!,
         if (parent != null) 'parent': parent!,
         if (redactionConfig != null) 'redactionConfig': redactionConfig!,
+        if (sampleSize != null) 'sampleSize': sampleSize!,
         if (speechConfig != null) 'speechConfig': speechConfig!,
         if (transcriptObjectConfig != null)
           'transcriptObjectConfig': transcriptObjectConfig!,
@@ -4568,8 +5319,13 @@ class GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationCo
   /// Optional.
   core.int? agentChannel;
 
-  /// An opaque, user-specified string representing the human agent who handled
-  /// the conversations.
+  /// An opaque, user-specified string representing a human agent who handled
+  /// all conversations in the import.
+  ///
+  /// Note that this will be overridden if per-conversation metadata is provided
+  /// via the `metadata_bucket_uri`.
+  ///
+  /// Optional.
   core.String? agentId;
 
   /// Indicates which of the channels, 1 or 2, contains the agent.
@@ -5679,6 +6435,13 @@ class GoogleCloudContactcenterinsightsV1PhraseMatcher {
 }
 
 /// DLP resources used for redaction while ingesting conversations.
+///
+/// DLP settings are applied to conversations ingested from the
+/// UploadConversation and IngestConversations endpoints, including conversation
+/// coming from CCAI Platform. They are not applied to conversations ingested
+/// from the CreateConversation endpoint or the Dialogflow / Agent Assist
+/// runtime integrations. When using Dialogflow / Agent Assist runtime
+/// integrations redaction should be performed in Dialogflow / Agent Assist.
 class GoogleCloudContactcenterinsightsV1RedactionConfig {
   /// The fully-qualified DLP deidentify template resource name.
   ///
@@ -5744,6 +6507,18 @@ class GoogleCloudContactcenterinsightsV1RuntimeAnnotation {
   /// Agent Assist FAQ answer data.
   GoogleCloudContactcenterinsightsV1FaqAnswerData? faqAnswer;
 
+  /// The generator suggestion result.
+  GoogleCloudContactcenterinsightsV1GetGeneratorSuggestionResponse?
+      generatorSuggestionResult;
+
+  /// The Knowledge Assist result.
+  GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponse?
+      knowledgeAssistResult;
+
+  /// The Knowledge Search result.
+  GoogleCloudContactcenterinsightsV1SearchKnowledgeAnswer?
+      knowledgeSearchResult;
+
   /// Agent Assist Smart Compose suggestion data.
   GoogleCloudContactcenterinsightsV1SmartComposeSuggestionData?
       smartComposeSuggestion;
@@ -5763,6 +6538,9 @@ class GoogleCloudContactcenterinsightsV1RuntimeAnnotation {
     this.dialogflowInteraction,
     this.endBoundary,
     this.faqAnswer,
+    this.generatorSuggestionResult,
+    this.knowledgeAssistResult,
+    this.knowledgeSearchResult,
     this.smartComposeSuggestion,
     this.smartReply,
     this.startBoundary,
@@ -5805,6 +6583,22 @@ class GoogleCloudContactcenterinsightsV1RuntimeAnnotation {
               ? GoogleCloudContactcenterinsightsV1FaqAnswerData.fromJson(
                   json_['faqAnswer'] as core.Map<core.String, core.dynamic>)
               : null,
+          generatorSuggestionResult: json_
+                  .containsKey('generatorSuggestionResult')
+              ? GoogleCloudContactcenterinsightsV1GetGeneratorSuggestionResponse
+                  .fromJson(json_['generatorSuggestionResult']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          knowledgeAssistResult: json_.containsKey('knowledgeAssistResult')
+              ? GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponse
+                  .fromJson(json_['knowledgeAssistResult']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          knowledgeSearchResult: json_.containsKey('knowledgeSearchResult')
+              ? GoogleCloudContactcenterinsightsV1SearchKnowledgeAnswer
+                  .fromJson(json_['knowledgeSearchResult']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           smartComposeSuggestion: json_.containsKey('smartComposeSuggestion')
               ? GoogleCloudContactcenterinsightsV1SmartComposeSuggestionData
                   .fromJson(json_['smartComposeSuggestion']
@@ -5832,10 +6626,130 @@ class GoogleCloudContactcenterinsightsV1RuntimeAnnotation {
           'dialogflowInteraction': dialogflowInteraction!,
         if (endBoundary != null) 'endBoundary': endBoundary!,
         if (faqAnswer != null) 'faqAnswer': faqAnswer!,
+        if (generatorSuggestionResult != null)
+          'generatorSuggestionResult': generatorSuggestionResult!,
+        if (knowledgeAssistResult != null)
+          'knowledgeAssistResult': knowledgeAssistResult!,
+        if (knowledgeSearchResult != null)
+          'knowledgeSearchResult': knowledgeSearchResult!,
         if (smartComposeSuggestion != null)
           'smartComposeSuggestion': smartComposeSuggestion!,
         if (smartReply != null) 'smartReply': smartReply!,
         if (startBoundary != null) 'startBoundary': startBoundary!,
+      };
+}
+
+/// Represents a SearchKnowledge answer.
+class GoogleCloudContactcenterinsightsV1SearchKnowledgeAnswer {
+  /// The piece of text from the knowledge base documents that answers the
+  /// search query
+  core.String? answer;
+
+  /// The name of the answer record.
+  ///
+  /// Format: `projects//locations//answer Records/`
+  core.String? answerRecord;
+
+  /// All sources used to generate the answer.
+  core.List<
+          GoogleCloudContactcenterinsightsV1SearchKnowledgeAnswerAnswerSource>?
+      answerSources;
+
+  /// The type of the answer.
+  /// Possible string values are:
+  /// - "ANSWER_TYPE_UNSPECIFIED" : The answer has a unspecified type.
+  /// - "FAQ" : The answer is from FAQ documents.
+  /// - "GENERATIVE" : The answer is from generative model.
+  /// - "INTENT" : The answer is from intent matching.
+  core.String? answerType;
+
+  /// The confidence score in \[0.0, 1.0\] range.
+  core.double? confidenceScore;
+
+  GoogleCloudContactcenterinsightsV1SearchKnowledgeAnswer({
+    this.answer,
+    this.answerRecord,
+    this.answerSources,
+    this.answerType,
+    this.confidenceScore,
+  });
+
+  GoogleCloudContactcenterinsightsV1SearchKnowledgeAnswer.fromJson(
+      core.Map json_)
+      : this(
+          answer: json_.containsKey('answer')
+              ? json_['answer'] as core.String
+              : null,
+          answerRecord: json_.containsKey('answerRecord')
+              ? json_['answerRecord'] as core.String
+              : null,
+          answerSources: json_.containsKey('answerSources')
+              ? (json_['answerSources'] as core.List)
+                  .map((value) =>
+                      GoogleCloudContactcenterinsightsV1SearchKnowledgeAnswerAnswerSource
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          answerType: json_.containsKey('answerType')
+              ? json_['answerType'] as core.String
+              : null,
+          confidenceScore: json_.containsKey('confidenceScore')
+              ? (json_['confidenceScore'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (answer != null) 'answer': answer!,
+        if (answerRecord != null) 'answerRecord': answerRecord!,
+        if (answerSources != null) 'answerSources': answerSources!,
+        if (answerType != null) 'answerType': answerType!,
+        if (confidenceScore != null) 'confidenceScore': confidenceScore!,
+      };
+}
+
+/// The sources of the answers.
+class GoogleCloudContactcenterinsightsV1SearchKnowledgeAnswerAnswerSource {
+  /// The document from which the snippet was extracted.
+  ///
+  /// Format: `projects//knowledgeBases//documents/`
+  core.String? document;
+
+  /// The relevant snippet of the article.
+  core.String? snippet;
+
+  /// The title of the article.
+  core.String? title;
+
+  /// The URI of the article.
+  core.String? uri;
+
+  GoogleCloudContactcenterinsightsV1SearchKnowledgeAnswerAnswerSource({
+    this.document,
+    this.snippet,
+    this.title,
+    this.uri,
+  });
+
+  GoogleCloudContactcenterinsightsV1SearchKnowledgeAnswerAnswerSource.fromJson(
+      core.Map json_)
+      : this(
+          document: json_.containsKey('document')
+              ? json_['document'] as core.String
+              : null,
+          snippet: json_.containsKey('snippet')
+              ? json_['snippet'] as core.String
+              : null,
+          title:
+              json_.containsKey('title') ? json_['title'] as core.String : null,
+          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (document != null) 'document': document!,
+        if (snippet != null) 'snippet': snippet!,
+        if (title != null) 'title': title!,
+        if (uri != null) 'uri': uri!,
       };
 }
 
@@ -5918,11 +6832,18 @@ class GoogleCloudContactcenterinsightsV1Settings {
 
   /// Default DLP redaction resources to be applied while ingesting
   /// conversations.
+  ///
+  /// This applies to conversations ingested from the UploadConversation and
+  /// IngestConversations endpoints, including conversations coming from CCAI
+  /// Platform.
   GoogleCloudContactcenterinsightsV1RedactionConfig? redactionConfig;
 
   /// Default Speech-to-Text resources to be used while ingesting audio files.
   ///
-  /// Optional, CCAI Insights will create a default if not provided.
+  /// Optional, CCAI Insights will create a default if not provided. This
+  /// applies to conversations ingested from the UploadConversation and
+  /// IngestConversations endpoints, including conversations coming from CCAI
+  /// Platform.
   ///
   /// Optional.
   GoogleCloudContactcenterinsightsV1SpeechConfig? speechConfig;
@@ -6168,6 +7089,11 @@ class GoogleCloudContactcenterinsightsV1SmartReplyData {
 }
 
 /// Speech-to-Text configuration.
+///
+/// Speech-to-Text settings are applied to conversations ingested from the
+/// UploadConversation and IngestConversations endpoints, including conversation
+/// coming from CCAI Platform. They are not applied to conversations ingested
+/// from the CreateConversation endpoint.
 class GoogleCloudContactcenterinsightsV1SpeechConfig {
   /// The fully-qualified Speech Recognizer resource name.
   ///
@@ -6188,6 +7114,69 @@ class GoogleCloudContactcenterinsightsV1SpeechConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (speechRecognizer != null) 'speechRecognizer': speechRecognizer!,
+      };
+}
+
+/// Suggested summary of the conversation.
+class GoogleCloudContactcenterinsightsV1SummarySuggestion {
+  /// All the parts of generated summary.
+  ///
+  /// Required.
+  core.List<GoogleCloudContactcenterinsightsV1SummarySuggestionSummarySection>?
+      summarySections;
+
+  GoogleCloudContactcenterinsightsV1SummarySuggestion({
+    this.summarySections,
+  });
+
+  GoogleCloudContactcenterinsightsV1SummarySuggestion.fromJson(core.Map json_)
+      : this(
+          summarySections: json_.containsKey('summarySections')
+              ? (json_['summarySections'] as core.List)
+                  .map((value) =>
+                      GoogleCloudContactcenterinsightsV1SummarySuggestionSummarySection
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (summarySections != null) 'summarySections': summarySections!,
+      };
+}
+
+/// A component of the generated summary.
+class GoogleCloudContactcenterinsightsV1SummarySuggestionSummarySection {
+  /// Name of the section.
+  ///
+  /// Required.
+  core.String? section;
+
+  /// Summary text for the section.
+  ///
+  /// Required.
+  core.String? summary;
+
+  GoogleCloudContactcenterinsightsV1SummarySuggestionSummarySection({
+    this.section,
+    this.summary,
+  });
+
+  GoogleCloudContactcenterinsightsV1SummarySuggestionSummarySection.fromJson(
+      core.Map json_)
+      : this(
+          section: json_.containsKey('section')
+              ? json_['section'] as core.String
+              : null,
+          summary: json_.containsKey('summary')
+              ? json_['summary'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (section != null) 'section': section!,
+        if (summary != null) 'summary': summary!,
       };
 }
 

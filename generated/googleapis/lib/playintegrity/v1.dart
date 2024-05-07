@@ -193,8 +193,6 @@ class AppAccessRiskVerdict {
   /// App access risk verdict related to apps that are not installed by Google
   /// Play, and are not preloaded on the system image by the device
   /// manufacturer.
-  ///
-  /// Required.
   /// Possible string values are:
   /// - "UNKNOWN" : Risk type is unknown.
   /// - "UNEVALUATED" : App access risk was not evaluated because a requirement
@@ -214,8 +212,6 @@ class AppAccessRiskVerdict {
   /// App access risk verdict related to apps that are not installed by the
   /// Google Play Store, and are not preloaded on the system image by the device
   /// manufacturer.
-  ///
-  /// Required.
   /// Possible string values are:
   /// - "UNKNOWN" : Risk type is unknown.
   /// - "UNEVALUATED" : App access risk was not evaluated because a requirement

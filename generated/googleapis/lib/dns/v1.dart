@@ -2859,7 +2859,7 @@ class GoogleIamV1GetIamPolicyRequest {
 }
 
 /// Encapsulates settings provided to GetIamPolicy.
-typedef GoogleIamV1GetPolicyOptions = $GetPolicyOptions;
+typedef GoogleIamV1GetPolicyOptions = $GetPolicyOptions00;
 
 /// An Identity and Access Management (IAM) policy, which specifies access
 /// controls for Google Cloud resources.
@@ -4506,19 +4506,12 @@ class Quota {
 /// geolocation or by weighted random selection.
 class RRSetRoutingPolicy {
   RRSetRoutingPolicyGeoPolicy? geo;
-
-  /// The selfLink attribute of the HealthCheck resource to use for this
-  /// RRSetRoutingPolicy.
-  ///
-  /// https://cloud.google.com/compute/docs/reference/rest/v1/healthChecks
-  core.String? healthCheck;
   core.String? kind;
   RRSetRoutingPolicyPrimaryBackupPolicy? primaryBackup;
   RRSetRoutingPolicyWrrPolicy? wrr;
 
   RRSetRoutingPolicy({
     this.geo,
-    this.healthCheck,
     this.kind,
     this.primaryBackup,
     this.wrr,
@@ -4529,9 +4522,6 @@ class RRSetRoutingPolicy {
           geo: json_.containsKey('geo')
               ? RRSetRoutingPolicyGeoPolicy.fromJson(
                   json_['geo'] as core.Map<core.String, core.dynamic>)
-              : null,
-          healthCheck: json_.containsKey('healthCheck')
-              ? json_['healthCheck'] as core.String
               : null,
           kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
           primaryBackup: json_.containsKey('primaryBackup')
@@ -4546,7 +4536,6 @@ class RRSetRoutingPolicy {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (geo != null) 'geo': geo!,
-        if (healthCheck != null) 'healthCheck': healthCheck!,
         if (kind != null) 'kind': kind!,
         if (primaryBackup != null) 'primaryBackup': primaryBackup!,
         if (wrr != null) 'wrr': wrr!,
@@ -4670,27 +4659,15 @@ class RRSetRoutingPolicyGeoPolicyGeoPolicyItem {
 /// Only the healthy endpoints will be included in the response. Only one of
 /// internal_load_balancer and external_endpoints should be set.
 class RRSetRoutingPolicyHealthCheckTargets {
-  /// The Internet IP addresses to be health checked.
-  ///
-  /// The format matches the format of ResourceRecordSet.rrdata as defined in
-  /// RFC 1035 (section 5) and RFC 1034 (section 3.6.1)
-  core.List<core.String>? externalEndpoints;
-
   /// Configuration for internal load balancers to be health checked.
   core.List<RRSetRoutingPolicyLoadBalancerTarget>? internalLoadBalancers;
 
   RRSetRoutingPolicyHealthCheckTargets({
-    this.externalEndpoints,
     this.internalLoadBalancers,
   });
 
   RRSetRoutingPolicyHealthCheckTargets.fromJson(core.Map json_)
       : this(
-          externalEndpoints: json_.containsKey('externalEndpoints')
-              ? (json_['externalEndpoints'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
           internalLoadBalancers: json_.containsKey('internalLoadBalancers')
               ? (json_['internalLoadBalancers'] as core.List)
                   .map((value) => RRSetRoutingPolicyLoadBalancerTarget.fromJson(
@@ -4700,7 +4677,6 @@ class RRSetRoutingPolicyHealthCheckTargets {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (externalEndpoints != null) 'externalEndpoints': externalEndpoints!,
         if (internalLoadBalancers != null)
           'internalLoadBalancers': internalLoadBalancers!,
       };

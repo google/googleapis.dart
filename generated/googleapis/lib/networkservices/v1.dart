@@ -2133,7 +2133,7 @@ class ProjectsLocationsLbRouteExtensionsResource {
   /// valid UUID with the exception that zero UUID is not supported
   /// (00000000-0000-0000-0000-000000000000).
   ///
-  /// [updateMask] - Required. Used to specify the fields to be overwritten in
+  /// [updateMask] - Optional. Used to specify the fields to be overwritten in
   /// the `LbRouteExtension` resource by the update. The fields specified in the
   /// update_mask are relative to the resource, not the full request. A field is
   /// overwritten if it is in the mask. If the user does not specify a mask,
@@ -2417,7 +2417,7 @@ class ProjectsLocationsLbTrafficExtensionsResource {
   /// valid UUID with the exception that zero UUID is not supported
   /// (00000000-0000-0000-0000-000000000000).
   ///
-  /// [updateMask] - Required. Used to specify the fields to be overwritten in
+  /// [updateMask] - Optional. Used to specify the fields to be overwritten in
   /// the `LbTrafficExtension` resource by the update. The fields specified in
   /// the update_mask are relative to the resource, not the full request. A
   /// field is overwritten if it is in the mask. If the user does not specify a
@@ -8872,7 +8872,7 @@ class TlsRouteRouteMatch {
   /// will be first matched against `www.example.com`, then `*.example.com`,
   /// then `*.com.` Partial wildcards are not supported, and values like
   /// *w.example.com are invalid. At least one of sni_host and alpn is required.
-  /// Up to 5 sni hosts across all matches can be set.
+  /// Up to 100 sni hosts across all matches can be set.
   ///
   /// Optional.
   core.List<core.String>? sniHost;

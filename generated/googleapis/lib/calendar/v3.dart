@@ -1294,7 +1294,10 @@ class EventsResource {
   /// Imports an event.
   ///
   /// This operation is used to add a private copy of an existing event to a
-  /// calendar.
+  /// calendar. Only events with an eventType of default may be imported.
+  /// Deprecated behavior: If a non-default event is imported, its type will be
+  /// changed to default and any event-type-specific properties it may have will
+  /// be dropped.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4122,9 +4125,7 @@ class Event {
   /// - "default" - A regular event or not further specified.
   /// - "outOfOffice" - An out-of-office event.
   /// - "focusTime" - A focus-time event.
-  /// - "workingLocation" - A working location event. Currently, only "default "
-  /// and "workingLocation" events can be created using the API. Extended
-  /// support for other event types will be made available in later releases.
+  /// - "workingLocation" - A working location event.
   core.String? eventType;
 
   /// Extended properties of the event.

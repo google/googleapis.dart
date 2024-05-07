@@ -682,6 +682,8 @@ class BlockchainNode {
   /// - "UPDATING" : The node is currently being updated.
   /// - "REPAIRING" : The node is currently being repaired.
   /// - "RECONCILING" : The node is currently being reconciled.
+  /// - "SYNCING" : The node is syncing, which is the process by which it
+  /// obtains the latest block and current global state.
   core.String? state;
 
   /// The timestamp at which the blockchain node was last updated.
@@ -886,8 +888,7 @@ class EthereumDetails {
   /// be.
   /// - "MAINNET" : The Ethereum Mainnet.
   /// - "TESTNET_GOERLI_PRATER" : Deprecated: The Ethereum Testnet based on
-  /// Goerli protocol. Holesky (TESTNET_HOLESKY) is the recommended testnet to
-  /// replace Goerli.
+  /// Goerli protocol. Please use another test network.
   /// - "TESTNET_SEPOLIA" : The Ethereum Testnet based on Sepolia/Bepolia
   /// protocol. See https://github.com/eth-clients/sepolia.
   /// - "TESTNET_HOLESKY" : The Ethereum Testnet based on Holesky specification.
