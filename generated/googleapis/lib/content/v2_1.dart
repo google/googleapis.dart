@@ -24957,6 +24957,14 @@ class PriceCompetitiveness {
 /// `PriceInsightsProductView`.
 /// https://support.google.com/merchants/answer/11916926
 class PriceInsights {
+  /// The predicted effectiveness of applying the price suggestion, bucketed.
+  /// Possible string values are:
+  /// - "EFFECTIVENESS_UNSPECIFIED" : Effectiveness is unknown.
+  /// - "LOW" : Effectiveness is low.
+  /// - "MEDIUM" : Effectiveness is medium.
+  /// - "HIGH" : Effectiveness is high.
+  core.String? effectiveness;
+
   /// The predicted change in clicks as a fraction after introducing the
   /// suggested price compared to current active price.
   ///
@@ -25005,6 +25013,7 @@ class PriceInsights {
   core.String? suggestedPriceMicros;
 
   PriceInsights({
+    this.effectiveness,
     this.predictedClicksChangeFraction,
     this.predictedConversionsChangeFraction,
     this.predictedGrossProfitChangeFraction,
@@ -25017,6 +25026,9 @@ class PriceInsights {
 
   PriceInsights.fromJson(core.Map json_)
       : this(
+          effectiveness: json_.containsKey('effectiveness')
+              ? json_['effectiveness'] as core.String
+              : null,
           predictedClicksChangeFraction: json_
                   .containsKey('predictedClicksChangeFraction')
               ? (json_['predictedClicksChangeFraction'] as core.num).toDouble()
@@ -25055,6 +25067,7 @@ class PriceInsights {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (effectiveness != null) 'effectiveness': effectiveness!,
         if (predictedClicksChangeFraction != null)
           'predictedClicksChangeFraction': predictedClicksChangeFraction!,
         if (predictedConversionsChangeFraction != null)

@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240424",
+    "revision": "20240430",
     "rootUrl": "https://doubleclickbidmanager.googleapis.com/",
     "servicePath": "v2/",
     "title": "DoubleClick Bid Manager API",

@@ -115,8 +115,9 @@ class FoldersResource {
   ///
   /// The caller must have both `cloudkms.autokeyConfigs.update` permission on
   /// the parent folder and `cloudkms.cryptoKeys.setIamPolicy` permission on the
-  /// provided key project. An empty key project may be provided to clear the
-  /// configuration.
+  /// provided key project. A KeyHandle creation in the folder's descendant
+  /// projects will use this configuration to determine where to create the
+  /// resulting CryptoKey.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3371,15 +3372,16 @@ typedef AuditLogConfig = $AuditLogConfig;
 /// Cloud KMS Autokey configuration for a folder.
 class AutokeyConfig {
   /// Name of the key project, e.g. `projects/{PROJECT_ID}` or
-  /// `projects/{PROJECT_NUMBER}`, where Cloud KMS Autokey will provision new
-  /// CryptoKeys.
+  /// `projects/{PROJECT_NUMBER}`, where Cloud KMS Autokey will provision a new
+  /// CryptoKey when a KeyHandle is created.
   ///
   /// On UpdateAutokeyConfig, the caller will require
   /// `cloudkms.cryptoKeys.setIamPolicy` permission on this key project. Once
   /// configured, for Cloud KMS Autokey to function properly, this key project
   /// must have the Cloud KMS API activated and the Cloud KMS Service Agent for
   /// this key project must be granted the `cloudkms.admin` role (or pertinent
-  /// permissions).
+  /// permissions). A request with an empty key project field will clear the
+  /// configuration.
   ///
   /// Optional.
   core.String? keyProject;
@@ -5197,15 +5199,20 @@ class ImportJob {
 /// resulting provisioning of a CryptoKey.
 class KeyHandle {
   /// Name of a CryptoKey that has been provisioned for Customer Managed
-  /// Encryption Key (CMEK) use in the KeyHandle's project and location for the
+  /// Encryption Key (CMEK) use in the KeyHandle project and location for the
   /// requested resource type.
+  ///
+  /// The CryptoKey project will reflect the value configured in the
+  /// AutokeyConfig on the resource project's ancestor folder at the time of the
+  /// KeyHandle creation. If more than one ancestor folder has a configured
+  /// AutokeyConfig, the nearest of these configurations is used.
   ///
   /// Output only.
   core.String? kmsKey;
 
   /// Identifier.
   ///
-  /// Name of the \[KeyHandle\] resource, e.g.
+  /// Name of the KeyHandle resource, e.g.
   /// `projects/{PROJECT_ID}/locations/{LOCATION}/keyHandles/{KEY_HANDLE_ID}`.
   ///
   /// Output only.

@@ -90,6 +90,8 @@ api.AppGateway buildAppGateway() {
     o.hostType = 'foo';
     o.labels = buildUnnamed1();
     o.name = 'foo';
+    o.satisfiesPzi = true;
+    o.satisfiesPzs = true;
     o.state = 'foo';
     o.type = 'foo';
     o.uid = 'foo';
@@ -121,6 +123,8 @@ void checkAppGateway(api.AppGateway o) {
       o.name!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.satisfiesPzi!, unittest.isTrue);
+    unittest.expect(o.satisfiesPzs!, unittest.isTrue);
     unittest.expect(
       o.state!,
       unittest.equals('foo'),
@@ -209,6 +213,8 @@ api.GoogleCloudBeyondcorpAppconnectionsV1AppConnection
         buildGoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway();
     o.labels = buildUnnamed3();
     o.name = 'foo';
+    o.satisfiesPzi = true;
+    o.satisfiesPzs = true;
     o.state = 'foo';
     o.type = 'foo';
     o.uid = 'foo';
@@ -239,6 +245,8 @@ void checkGoogleCloudBeyondcorpAppconnectionsV1AppConnection(
       o.name!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.satisfiesPzi!, unittest.isTrue);
+    unittest.expect(o.satisfiesPzs!, unittest.isTrue);
     unittest.expect(
       o.state!,
       unittest.equals('foo'),

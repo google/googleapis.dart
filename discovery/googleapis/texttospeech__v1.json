@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240425",
+    "revision": "20240502",
     "rootUrl": "https://texttospeech.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Text-to-Speech API",

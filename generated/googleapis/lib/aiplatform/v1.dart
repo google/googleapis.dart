@@ -3099,6 +3099,54 @@ class ProjectsLocationsDatasetsDatasetVersionsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Updates a DatasetVersion.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. The resource name of the DatasetVersion.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/datasetVersions/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. The update mask applies to the resource. For the
+  /// `FieldMask` definition, see google.protobuf.FieldMask. Updatable fields: *
+  /// `display_name`
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudAiplatformV1DatasetVersion].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudAiplatformV1DatasetVersion> patch(
+    GoogleCloudAiplatformV1DatasetVersion request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAiplatformV1DatasetVersion.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Restores a dataset version.
   ///
   /// Request parameters:
@@ -29353,6 +29401,13 @@ class GoogleCloudAiplatformV1Dataset {
   /// Required.
   core.String? metadataSchemaUri;
 
+  /// Reference to the public base model last used by the dataset.
+  ///
+  /// Only set for prompt datasets.
+  ///
+  /// Optional.
+  core.String? modelReference;
+
   /// The resource name of the Dataset.
   ///
   /// Output only.
@@ -29384,6 +29439,7 @@ class GoogleCloudAiplatformV1Dataset {
     this.metadata,
     this.metadataArtifact,
     this.metadataSchemaUri,
+    this.modelReference,
     this.name,
     this.savedQueries,
     this.updateTime,
@@ -29424,6 +29480,9 @@ class GoogleCloudAiplatformV1Dataset {
           metadataSchemaUri: json_.containsKey('metadataSchemaUri')
               ? json_['metadataSchemaUri'] as core.String
               : null,
+          modelReference: json_.containsKey('modelReference')
+              ? json_['modelReference'] as core.String
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           savedQueries: json_.containsKey('savedQueries')
               ? (json_['savedQueries'] as core.List)
@@ -29447,6 +29506,7 @@ class GoogleCloudAiplatformV1Dataset {
         if (metadata != null) 'metadata': metadata!,
         if (metadataArtifact != null) 'metadataArtifact': metadataArtifact!,
         if (metadataSchemaUri != null) 'metadataSchemaUri': metadataSchemaUri!,
+        if (modelReference != null) 'modelReference': modelReference!,
         if (name != null) 'name': name!,
         if (savedQueries != null) 'savedQueries': savedQueries!,
         if (updateTime != null) 'updateTime': updateTime!,
@@ -29484,6 +29544,13 @@ class GoogleCloudAiplatformV1DatasetVersion {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Object? metadata;
 
+  /// Reference to the public base model last used by the dataset version.
+  ///
+  /// Only set for prompt dataset versions.
+  ///
+  /// Output only.
+  core.String? modelReference;
+
   /// The resource name of the DatasetVersion.
   ///
   /// Output only.
@@ -29500,6 +29567,7 @@ class GoogleCloudAiplatformV1DatasetVersion {
     this.displayName,
     this.etag,
     this.metadata,
+    this.modelReference,
     this.name,
     this.updateTime,
   });
@@ -29517,6 +29585,9 @@ class GoogleCloudAiplatformV1DatasetVersion {
               : null,
           etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
           metadata: json_.containsKey('metadata') ? json_['metadata'] : null,
+          modelReference: json_.containsKey('modelReference')
+              ? json_['modelReference'] as core.String
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           updateTime: json_.containsKey('updateTime')
               ? json_['updateTime'] as core.String
@@ -29530,6 +29601,7 @@ class GoogleCloudAiplatformV1DatasetVersion {
         if (displayName != null) 'displayName': displayName!,
         if (etag != null) 'etag': etag!,
         if (metadata != null) 'metadata': metadata!,
+        if (modelReference != null) 'modelReference': modelReference!,
         if (name != null) 'name': name!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
@@ -33356,9 +33428,9 @@ class GoogleCloudAiplatformV1Feature {
 class GoogleCloudAiplatformV1FeatureGroup {
   /// Indicates that features for this group come from BigQuery Table/View.
   ///
-  /// By default treats the source as a sparse time series source, which is
-  /// required to have an entity_id and a feature_timestamp column in the
-  /// source.
+  /// By default treats the source as a sparse time series source. The BigQuery
+  /// source table or view must have at least one entity ID column and a column
+  /// named `feature_timestamp`.
   GoogleCloudAiplatformV1FeatureGroupBigQuery? bigQuery;
 
   /// Timestamp when this FeatureGroup was created.
@@ -36186,6 +36258,18 @@ class GoogleCloudAiplatformV1GenerationConfig {
   /// Optional.
   core.String? responseMimeType;
 
+  /// Control Three levels of creativity in the model output.
+  ///
+  /// Default: RESPONSE_STYLE_BALANCED
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "RESPONSE_STYLE_UNSPECIFIED" : response style unspecified.
+  /// - "RESPONSE_STYLE_PRECISE" : Precise response.
+  /// - "RESPONSE_STYLE_BALANCED" : Default response style.
+  /// - "RESPONSE_STYLE_CREATIVE" : Creative response style.
+  core.String? responseStyle;
+
   /// Stop sequences.
   ///
   /// Optional.
@@ -36212,6 +36296,7 @@ class GoogleCloudAiplatformV1GenerationConfig {
     this.maxOutputTokens,
     this.presencePenalty,
     this.responseMimeType,
+    this.responseStyle,
     this.stopSequences,
     this.temperature,
     this.topK,
@@ -36235,6 +36320,9 @@ class GoogleCloudAiplatformV1GenerationConfig {
           responseMimeType: json_.containsKey('responseMimeType')
               ? json_['responseMimeType'] as core.String
               : null,
+          responseStyle: json_.containsKey('responseStyle')
+              ? json_['responseStyle'] as core.String
+              : null,
           stopSequences: json_.containsKey('stopSequences')
               ? (json_['stopSequences'] as core.List)
                   .map((value) => value as core.String)
@@ -36257,6 +36345,7 @@ class GoogleCloudAiplatformV1GenerationConfig {
         if (maxOutputTokens != null) 'maxOutputTokens': maxOutputTokens!,
         if (presencePenalty != null) 'presencePenalty': presencePenalty!,
         if (responseMimeType != null) 'responseMimeType': responseMimeType!,
+        if (responseStyle != null) 'responseStyle': responseStyle!,
         if (stopSequences != null) 'stopSequences': stopSequences!,
         if (temperature != null) 'temperature': temperature!,
         if (topK != null) 'topK': topK!,
@@ -37303,12 +37392,12 @@ class GoogleCloudAiplatformV1IndexDatapointRestriction {
 class GoogleCloudAiplatformV1IndexDatapointSparseEmbedding {
   /// The list of indexes for the embedding values of the sparse vector.
   ///
-  /// Optional.
+  /// Required.
   core.List<core.String>? dimensions;
 
   /// The list of embedding values of the sparse vector.
   ///
-  /// Optional.
+  /// Required.
   core.List<core.double>? values;
 
   GoogleCloudAiplatformV1IndexDatapointSparseEmbedding({
@@ -44620,6 +44709,16 @@ class GoogleCloudAiplatformV1NotebookRuntime {
   /// Required.
   core.String? runtimeUser;
 
+  /// Reserved for future use.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzi;
+
+  /// Reserved for future use.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzs;
+
   /// The service account that the NotebookRuntime workload runs as.
   ///
   /// Output only.
@@ -44651,6 +44750,8 @@ class GoogleCloudAiplatformV1NotebookRuntime {
     this.reservationAffinity,
     this.runtimeState,
     this.runtimeUser,
+    this.satisfiesPzi,
+    this.satisfiesPzs,
     this.serviceAccount,
     this.updateTime,
     this.version,
@@ -44713,6 +44814,12 @@ class GoogleCloudAiplatformV1NotebookRuntime {
           runtimeUser: json_.containsKey('runtimeUser')
               ? json_['runtimeUser'] as core.String
               : null,
+          satisfiesPzi: json_.containsKey('satisfiesPzi')
+              ? json_['satisfiesPzi'] as core.bool
+              : null,
+          satisfiesPzs: json_.containsKey('satisfiesPzs')
+              ? json_['satisfiesPzs'] as core.bool
+              : null,
           serviceAccount: json_.containsKey('serviceAccount')
               ? json_['serviceAccount'] as core.String
               : null,
@@ -44743,6 +44850,8 @@ class GoogleCloudAiplatformV1NotebookRuntime {
           'reservationAffinity': reservationAffinity!,
         if (runtimeState != null) 'runtimeState': runtimeState!,
         if (runtimeUser != null) 'runtimeUser': runtimeUser!,
+        if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (version != null) 'version': version!,
@@ -53734,6 +53843,12 @@ class GoogleCloudAiplatformV1TuningJob {
   /// Optional.
   core.String? description;
 
+  /// Customer-managed encryption key options for a TuningJob.
+  ///
+  /// If this is set, then all resources created by the TuningJob will be
+  /// encrypted with the provided encryption key.
+  GoogleCloudAiplatformV1EncryptionSpec? encryptionSpec;
+
   /// Time when the TuningJob entered any of the following JobStates:
   /// `JOB_STATE_SUCCEEDED`, `JOB_STATE_FAILED`, `JOB_STATE_CANCELLED`,
   /// `JOB_STATE_EXPIRED`.
@@ -53831,6 +53946,7 @@ class GoogleCloudAiplatformV1TuningJob {
     this.baseModel,
     this.createTime,
     this.description,
+    this.encryptionSpec,
     this.endTime,
     this.error,
     this.experiment,
@@ -53855,6 +53971,11 @@ class GoogleCloudAiplatformV1TuningJob {
               : null,
           description: json_.containsKey('description')
               ? json_['description'] as core.String
+              : null,
+          encryptionSpec: json_.containsKey('encryptionSpec')
+              ? GoogleCloudAiplatformV1EncryptionSpec.fromJson(
+                  json_['encryptionSpec']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           endTime: json_.containsKey('endTime')
               ? json_['endTime'] as core.String
@@ -53906,6 +54027,7 @@ class GoogleCloudAiplatformV1TuningJob {
         if (baseModel != null) 'baseModel': baseModel!,
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
+        if (encryptionSpec != null) 'encryptionSpec': encryptionSpec!,
         if (endTime != null) 'endTime': endTime!,
         if (error != null) 'error': error!,
         if (experiment != null) 'experiment': experiment!,

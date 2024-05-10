@@ -151,6 +151,10 @@ class ProjectsLocationsCatalogsResource {
   /// `UNKNOWN_DEVICE_TYPE` * `DESKTOP` * `MOBILE` * A customized string starts
   /// with `OTHER_`, e.g. `OTHER_IPHONE`.
   ///
+  /// [enableAttributeSuggestions] - If true, attribute suggestions are enabled
+  /// and provided in response. This field is only available for "cloud-retail"
+  /// dataset.
+  ///
   /// [entity] - The entity for customers who run multiple entities, domains,
   /// sites, or regions, for example, `Google US`, `Google Ads`, `Waymo`,
   /// `google.com`, `youtube.com`, etc. If this is set, it must be an exact
@@ -194,6 +198,7 @@ class ProjectsLocationsCatalogsResource {
     core.String catalog, {
     core.String? dataset,
     core.String? deviceType,
+    core.bool? enableAttributeSuggestions,
     core.String? entity,
     core.List<core.String>? languageCodes,
     core.int? maxSuggestions,
@@ -204,6 +209,8 @@ class ProjectsLocationsCatalogsResource {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (dataset != null) 'dataset': [dataset],
       if (deviceType != null) 'deviceType': [deviceType],
+      if (enableAttributeSuggestions != null)
+        'enableAttributeSuggestions': ['${enableAttributeSuggestions}'],
       if (entity != null) 'entity': [entity],
       if (languageCodes != null) 'languageCodes': languageCodes,
       if (maxSuggestions != null) 'maxSuggestions': ['${maxSuggestions}'],

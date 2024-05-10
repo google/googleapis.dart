@@ -774,6 +774,7 @@ api.GoogleAppsCloudidentityDevicesV1Device
     o.releaseVersion = 'foo';
     o.securityPatchTime = 'foo';
     o.serialNumber = 'foo';
+    o.unifiedDeviceId = 'foo';
     o.wifiMacAddresses = buildUnnamed4();
   }
   buildCounterGoogleAppsCloudidentityDevicesV1Device--;
@@ -889,6 +890,10 @@ void checkGoogleAppsCloudidentityDevicesV1Device(
     );
     unittest.expect(
       o.serialNumber!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.unifiedDeviceId!,
       unittest.equals('foo'),
     );
     checkUnnamed4(o.wifiMacAddresses!);

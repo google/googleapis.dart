@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240428",
+    "revision": "20240505",
     "rootUrl": "https://recommender.googleapis.com/",
     "servicePath": "",
     "title": "Recommender API",

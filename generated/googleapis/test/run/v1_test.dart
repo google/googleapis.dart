@@ -2980,6 +2980,7 @@ api.RevisionSpec buildRevisionSpec() {
     o.enableServiceLinks = true;
     o.imagePullSecrets = buildUnnamed55();
     o.nodeSelector = buildUnnamed56();
+    o.runtimeClassName = 'foo';
     o.serviceAccountName = 'foo';
     o.timeoutSeconds = 42;
     o.volumes = buildUnnamed57();
@@ -2999,6 +3000,10 @@ void checkRevisionSpec(api.RevisionSpec o) {
     unittest.expect(o.enableServiceLinks!, unittest.isTrue);
     checkUnnamed55(o.imagePullSecrets!);
     checkUnnamed56(o.nodeSelector!);
+    unittest.expect(
+      o.runtimeClassName!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.serviceAccountName!,
       unittest.equals('foo'),

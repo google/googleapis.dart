@@ -127,7 +127,8 @@ class GoogleIdentityStsV1ExchangeTokenRequest {
 
   /// An identifier for the type of requested security token.
   ///
-  /// Must be `urn:ietf:params:oauth:token-type:access_token`.
+  /// Can be `urn:ietf:params:oauth:token-type:access_token` or
+  /// `urn:ietf:params:oauth:token-type:access_boundary_intermediate_token`.
   ///
   /// Required.
   core.String? requestedTokenType;

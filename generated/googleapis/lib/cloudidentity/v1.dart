@@ -4215,6 +4215,11 @@ class GoogleAppsCloudidentityDevicesV1Device {
   /// Example: HT82V1A01076.
   core.String? serialNumber;
 
+  /// Unified device id of the device.
+  ///
+  /// Output only.
+  core.String? unifiedDeviceId;
+
   /// WiFi MAC addresses of device.
   core.List<core.String>? wifiMacAddresses;
 
@@ -4249,6 +4254,7 @@ class GoogleAppsCloudidentityDevicesV1Device {
     this.releaseVersion,
     this.securityPatchTime,
     this.serialNumber,
+    this.unifiedDeviceId,
     this.wifiMacAddresses,
   });
 
@@ -4344,6 +4350,9 @@ class GoogleAppsCloudidentityDevicesV1Device {
           serialNumber: json_.containsKey('serialNumber')
               ? json_['serialNumber'] as core.String
               : null,
+          unifiedDeviceId: json_.containsKey('unifiedDeviceId')
+              ? json_['unifiedDeviceId'] as core.String
+              : null,
           wifiMacAddresses: json_.containsKey('wifiMacAddresses')
               ? (json_['wifiMacAddresses'] as core.List)
                   .map((value) => value as core.String)
@@ -4387,6 +4396,7 @@ class GoogleAppsCloudidentityDevicesV1Device {
         if (releaseVersion != null) 'releaseVersion': releaseVersion!,
         if (securityPatchTime != null) 'securityPatchTime': securityPatchTime!,
         if (serialNumber != null) 'serialNumber': serialNumber!,
+        if (unifiedDeviceId != null) 'unifiedDeviceId': unifiedDeviceId!,
         if (wifiMacAddresses != null) 'wifiMacAddresses': wifiMacAddresses!,
       };
 }

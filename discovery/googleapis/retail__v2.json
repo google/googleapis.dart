@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240430",
+    "revision": "20240502",
     "rootUrl": "https://retail.googleapis.com/",
     "servicePath": "",
     "title": "Vertex AI Search for Retail API",
@@ -140,6 +140,11 @@
                                             "description": "The device type context for completion suggestions. We recommend that you leave this field empty. It can apply different suggestions on different device types, e.g. `DESKTOP`, `MOBILE`. If it is empty, the suggestions are across all device types. Supported formats: * `UNKNOWN_DEVICE_TYPE` * `DESKTOP` * `MOBILE` * A customized string starts with `OTHER_`, e.g. `OTHER_IPHONE`.",
                                             "location": "query",
                                             "type": "string"
+                                        },
+                                        "enableAttributeSuggestions": {
+                                            "description": "If true, attribute suggestions are enabled and provided in response. This field is only available for \"cloud-retail\" dataset.",
+                                            "location": "query",
+                                            "type": "boolean"
                                         },
                                         "entity": {
                                             "description": "The entity for customers who run multiple entities, domains, sites, or regions, for example, `Google US`, `Google Ads`, `Waymo`, `google.com`, `youtube.com`, etc. If this is set, it must be an exact match with UserEvent.entity to get per-entity autocomplete results.",

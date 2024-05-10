@@ -6793,6 +6793,7 @@ void main() {
       final arg_catalog = 'foo';
       final arg_dataset = 'foo';
       final arg_deviceType = 'foo';
+      final arg_enableAttributeSuggestions = true;
       final arg_entity = 'foo';
       final arg_languageCodes = buildUnnamed111();
       final arg_maxSuggestions = 42;
@@ -6840,6 +6841,10 @@ void main() {
           unittest.equals(arg_deviceType),
         );
         unittest.expect(
+          queryMap['enableAttributeSuggestions']!.first,
+          unittest.equals('$arg_enableAttributeSuggestions'),
+        );
+        unittest.expect(
           queryMap['entity']!.first,
           unittest.equals(arg_entity),
         );
@@ -6874,6 +6879,7 @@ void main() {
       final response = await res.completeQuery(arg_catalog,
           dataset: arg_dataset,
           deviceType: arg_deviceType,
+          enableAttributeSuggestions: arg_enableAttributeSuggestions,
           entity: arg_entity,
           languageCodes: arg_languageCodes,
           maxSuggestions: arg_maxSuggestions,

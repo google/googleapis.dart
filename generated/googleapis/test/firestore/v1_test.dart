@@ -1095,6 +1095,7 @@ api.GoogleFirestoreAdminV1Database buildGoogleFirestoreAdminV1Database() {
     o.concurrencyMode = 'foo';
     o.createTime = 'foo';
     o.deleteProtectionState = 'foo';
+    o.deleteTime = 'foo';
     o.earliestVersionTime = 'foo';
     o.etag = 'foo';
     o.keyPrefix = 'foo';
@@ -1128,6 +1129,10 @@ void checkGoogleFirestoreAdminV1Database(api.GoogleFirestoreAdminV1Database o) {
     );
     unittest.expect(
       o.deleteProtectionState!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.deleteTime!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -4544,6 +4549,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.FirestoreApi(mock).projects.databases;
       final arg_parent = 'foo';
+      final arg_showDeleted = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -4578,6 +4584,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['showDeleted']!.first,
+          unittest.equals('$arg_showDeleted'),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -4589,7 +4599,8 @@ void main() {
             .encode(buildGoogleFirestoreAdminV1ListDatabasesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      final response = await res.list(arg_parent, $fields: arg_$fields);
+      final response = await res.list(arg_parent,
+          showDeleted: arg_showDeleted, $fields: arg_$fields);
       checkGoogleFirestoreAdminV1ListDatabasesResponse(
           response as api.GoogleFirestoreAdminV1ListDatabasesResponse);
     });

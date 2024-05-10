@@ -27,7 +27,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240420",
+    "revision": "20240430",
     "rootUrl": "https://datastore.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Datastore API",

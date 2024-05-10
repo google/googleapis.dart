@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240507",
+    "revision": "20240509",
     "rootUrl": "https://androidpublisher.googleapis.com/",
     "servicePath": "",
     "title": "Google Play Android Developer API",
@@ -5632,7 +5632,7 @@
             "type": "object"
         },
         "CanceledStateContext": {
-            "description": "Information specific to a subscription in canceled state.",
+            "description": "Information specific to a subscription in the SUBSCRIPTION_STATE_CANCELED or SUBSCRIPTION_STATE_EXPIRED state.",
             "id": "CanceledStateContext",
             "properties": {
                 "developerInitiatedCancellation": {

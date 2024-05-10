@@ -190,6 +190,11 @@ class AccountDetails {
 /// Contains signals about others apps on the device which could be used to
 /// access or control the requesting app.
 class AppAccessRiskVerdict {
+  /// List of detected app types signalled for App Access Risk.
+  core.List<core.String>? appsDetected;
+
+  /// Deprecated: this field will be removed, please use apps_detected instead.
+  ///
   /// App access risk verdict related to apps that are not installed by Google
   /// Play, and are not preloaded on the system image by the device
   /// manufacturer.
@@ -207,8 +212,13 @@ class AppAccessRiskVerdict {
   /// - "CONTROLLING" : Apps under this field are running that could be used to
   /// control the device and inputs and outputs of the requesting app, such as
   /// remote controlling apps.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? otherApps;
 
+  /// Deprecated: this field will be removed, please use apps_detected instead.
+  ///
   /// App access risk verdict related to apps that are not installed by the
   /// Google Play Store, and are not preloaded on the system image by the device
   /// manufacturer.
@@ -226,15 +236,24 @@ class AppAccessRiskVerdict {
   /// - "CONTROLLING" : Apps under this field are running that could be used to
   /// control the device and inputs and outputs of the requesting app, such as
   /// remote controlling apps.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? playOrSystemApps;
 
   AppAccessRiskVerdict({
+    this.appsDetected,
     this.otherApps,
     this.playOrSystemApps,
   });
 
   AppAccessRiskVerdict.fromJson(core.Map json_)
       : this(
+          appsDetected: json_.containsKey('appsDetected')
+              ? (json_['appsDetected'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           otherApps: json_.containsKey('otherApps')
               ? json_['otherApps'] as core.String
               : null,
@@ -244,6 +263,7 @@ class AppAccessRiskVerdict {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (appsDetected != null) 'appsDetected': appsDetected!,
         if (otherApps != null) 'otherApps': otherApps!,
         if (playOrSystemApps != null) 'playOrSystemApps': playOrSystemApps!,
       };

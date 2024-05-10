@@ -70,33 +70,6 @@ void checkAccountDetails(api.AccountDetails o) {
   buildCounterAccountDetails--;
 }
 
-core.int buildCounterAppAccessRiskVerdict = 0;
-api.AppAccessRiskVerdict buildAppAccessRiskVerdict() {
-  final o = api.AppAccessRiskVerdict();
-  buildCounterAppAccessRiskVerdict++;
-  if (buildCounterAppAccessRiskVerdict < 3) {
-    o.otherApps = 'foo';
-    o.playOrSystemApps = 'foo';
-  }
-  buildCounterAppAccessRiskVerdict--;
-  return o;
-}
-
-void checkAppAccessRiskVerdict(api.AppAccessRiskVerdict o) {
-  buildCounterAppAccessRiskVerdict++;
-  if (buildCounterAppAccessRiskVerdict < 3) {
-    unittest.expect(
-      o.otherApps!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.playOrSystemApps!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterAppAccessRiskVerdict--;
-}
-
 core.List<core.String> buildUnnamed0() => [
       'foo',
       'foo',
@@ -114,13 +87,59 @@ void checkUnnamed0(core.List<core.String> o) {
   );
 }
 
+core.int buildCounterAppAccessRiskVerdict = 0;
+api.AppAccessRiskVerdict buildAppAccessRiskVerdict() {
+  final o = api.AppAccessRiskVerdict();
+  buildCounterAppAccessRiskVerdict++;
+  if (buildCounterAppAccessRiskVerdict < 3) {
+    o.appsDetected = buildUnnamed0();
+    o.otherApps = 'foo';
+    o.playOrSystemApps = 'foo';
+  }
+  buildCounterAppAccessRiskVerdict--;
+  return o;
+}
+
+void checkAppAccessRiskVerdict(api.AppAccessRiskVerdict o) {
+  buildCounterAppAccessRiskVerdict++;
+  if (buildCounterAppAccessRiskVerdict < 3) {
+    checkUnnamed0(o.appsDetected!);
+    unittest.expect(
+      o.otherApps!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.playOrSystemApps!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterAppAccessRiskVerdict--;
+}
+
+core.List<core.String> buildUnnamed1() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed1(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterAppIntegrity = 0;
 api.AppIntegrity buildAppIntegrity() {
   final o = api.AppIntegrity();
   buildCounterAppIntegrity++;
   if (buildCounterAppIntegrity < 3) {
     o.appRecognitionVerdict = 'foo';
-    o.certificateSha256Digest = buildUnnamed0();
+    o.certificateSha256Digest = buildUnnamed1();
     o.packageName = 'foo';
     o.versionCode = 'foo';
   }
@@ -135,7 +154,7 @@ void checkAppIntegrity(api.AppIntegrity o) {
       o.appRecognitionVerdict!,
       unittest.equals('foo'),
     );
-    checkUnnamed0(o.certificateSha256Digest!);
+    checkUnnamed1(o.certificateSha256Digest!);
     unittest.expect(
       o.packageName!,
       unittest.equals('foo'),
@@ -189,12 +208,12 @@ void checkDecodeIntegrityTokenResponse(api.DecodeIntegrityTokenResponse o) {
   buildCounterDecodeIntegrityTokenResponse--;
 }
 
-core.List<core.String> buildUnnamed1() => [
+core.List<core.String> buildUnnamed2() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed1(core.List<core.String> o) {
+void checkUnnamed2(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -211,7 +230,7 @@ api.DeviceIntegrity buildDeviceIntegrity() {
   final o = api.DeviceIntegrity();
   buildCounterDeviceIntegrity++;
   if (buildCounterDeviceIntegrity < 3) {
-    o.deviceRecognitionVerdict = buildUnnamed1();
+    o.deviceRecognitionVerdict = buildUnnamed2();
     o.recentDeviceActivity = buildRecentDeviceActivity();
   }
   buildCounterDeviceIntegrity--;
@@ -221,7 +240,7 @@ api.DeviceIntegrity buildDeviceIntegrity() {
 void checkDeviceIntegrity(api.DeviceIntegrity o) {
   buildCounterDeviceIntegrity++;
   if (buildCounterDeviceIntegrity < 3) {
-    checkUnnamed1(o.deviceRecognitionVerdict!);
+    checkUnnamed2(o.deviceRecognitionVerdict!);
     checkRecentDeviceActivity(o.recentDeviceActivity!);
   }
   buildCounterDeviceIntegrity--;

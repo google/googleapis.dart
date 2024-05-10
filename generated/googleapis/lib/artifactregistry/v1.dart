@@ -19,7 +19,6 @@
 ///
 /// Create an instance of [ArtifactRegistryApi] to access these resources:
 ///
-/// - [MediaResource]
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsOperationsResource]
@@ -76,7 +75,6 @@ class ArtifactRegistryApi {
 
   final commons.ApiRequester _requester;
 
-  MediaResource get media => MediaResource(_requester);
   ProjectsResource get projects => ProjectsResource(_requester);
 
   ArtifactRegistryApi(http.Client client,
@@ -84,63 +82,6 @@ class ArtifactRegistryApi {
       core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
-}
-
-class MediaResource {
-  final commons.ApiRequester _requester;
-
-  MediaResource(commons.ApiRequester client) : _requester = client;
-
-  /// Download a file.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Required. The name of the file to download.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+/files/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// [downloadOptions] - Options for downloading. A download can be either a
-  /// Metadata (default) or Media download. Partial Media downloads are possible
-  /// as well.
-  ///
-  /// Completes with a
-  ///
-  /// - [DownloadFileResponse] for Metadata downloads (see [downloadOptions]).
-  ///
-  /// - [commons.Media] for Media downloads (see [downloadOptions]).
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<core.Object> download(
-    core.String name, {
-    core.String? $fields,
-    commons.DownloadOptions downloadOptions = commons.DownloadOptions.metadata,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':download';
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-      downloadOptions: downloadOptions,
-    );
-    if (downloadOptions.isMetadataDownload) {
-      return DownloadFileResponse.fromJson(
-          response_ as core.Map<core.String, core.dynamic>);
-    } else {
-      return response_ as commons.Media;
-    }
-  }
 }
 
 class ProjectsResource {
@@ -728,7 +669,8 @@ class ProjectsLocationsRepositoriesResource {
   /// Request parameters:
   ///
   /// [name] - The name of the repository, for example:
-  /// `projects/p1/locations/us-central1/repositories/repo1`.
+  /// `projects/p1/locations/us-central1/repositories/repo1`. For each location
+  /// in a project, repository names must be unique.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+$`.
   ///
@@ -1076,6 +1018,57 @@ class ProjectsLocationsRepositoriesFilesResource {
 
   ProjectsLocationsRepositoriesFilesResource(commons.ApiRequester client)
       : _requester = client;
+
+  /// Download a file.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the file to download.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+/files/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// [downloadOptions] - Options for downloading. A download can be either a
+  /// Metadata (default) or Media download. Partial Media downloads are possible
+  /// as well.
+  ///
+  /// Completes with a
+  ///
+  /// - [DownloadFileResponse] for Metadata downloads (see [downloadOptions]).
+  ///
+  /// - [commons.Media] for Media downloads (see [downloadOptions]).
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<core.Object> download(
+    core.String name, {
+    core.String? $fields,
+    commons.DownloadOptions downloadOptions = commons.DownloadOptions.metadata,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':download';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+      downloadOptions: downloadOptions,
+    );
+    if (downloadOptions.isMetadataDownload) {
+      return DownloadFileResponse.fromJson(
+          response_ as core.Map<core.String, core.dynamic>);
+    } else {
+      return response_ as commons.Media;
+    }
+  }
 
   /// Gets a file.
   ///
@@ -3078,7 +3071,7 @@ class GoogleDevtoolsArtifactregistryV1File {
   core.List<Hash>? hashes;
 
   /// The name of the file, for example:
-  /// "projects/p1/locations/us-central1/repositories/repo1/files/a%2Fb%2Fc.txt".
+  /// `projects/p1/locations/us-central1/repositories/repo1/files/a%2Fb%2Fc.txt`.
   ///
   /// If the file ID part contains slashes, they are escaped.
   core.String? name;
@@ -4673,10 +4666,17 @@ class Repository {
 
   /// The name of the repository, for example:
   /// `projects/p1/locations/us-central1/repositories/repo1`.
+  ///
+  /// For each location in a project, repository names must be unique.
   core.String? name;
 
   /// Configuration specific for a Remote Repository.
   RemoteRepositoryConfig? remoteRepositoryConfig;
+
+  /// If set, the repository satisfies physical zone isolation.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzi;
 
   /// If set, the repository satisfies physical zone separation.
   ///
@@ -4713,6 +4713,7 @@ class Repository {
     this.mode,
     this.name,
     this.remoteRepositoryConfig,
+    this.satisfiesPzi,
     this.satisfiesPzs,
     this.sizeBytes,
     this.updateTime,
@@ -4772,6 +4773,9 @@ class Repository {
               ? RemoteRepositoryConfig.fromJson(json_['remoteRepositoryConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          satisfiesPzi: json_.containsKey('satisfiesPzi')
+              ? json_['satisfiesPzi'] as core.bool
+              : null,
           satisfiesPzs: json_.containsKey('satisfiesPzs')
               ? json_['satisfiesPzs'] as core.bool
               : null,
@@ -4805,6 +4809,7 @@ class Repository {
         if (name != null) 'name': name!,
         if (remoteRepositoryConfig != null)
           'remoteRepositoryConfig': remoteRepositoryConfig!,
+        if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
         if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (sizeBytes != null) 'sizeBytes': sizeBytes!,
         if (updateTime != null) 'updateTime': updateTime!,
@@ -5354,7 +5359,7 @@ class Version {
       };
 }
 
-/// Virtual repository configuration.
+/// LINT.IfChange Virtual repository configuration.
 class VirtualRepositoryConfig {
   /// Policies that configure the upstream artifacts distributed by the Virtual
   /// Repository.

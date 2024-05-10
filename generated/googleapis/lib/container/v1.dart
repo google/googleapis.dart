@@ -5070,6 +5070,16 @@ class Cluster {
   /// Resource usage export is disabled when this config is unspecified.
   ResourceUsageExportConfig? resourceUsageExportConfig;
 
+  /// Reserved for future use.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzi;
+
+  /// Reserved for future use.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzs;
+
   /// Enable/Disable Security Posture API features for the cluster.
   SecurityPostureConfig? securityPostureConfig;
 
@@ -5211,6 +5221,8 @@ class Cluster {
     this.releaseChannel,
     this.resourceLabels,
     this.resourceUsageExportConfig,
+    this.satisfiesPzi,
+    this.satisfiesPzs,
     this.securityPostureConfig,
     this.selfLink,
     this.servicesIpv4Cidr,
@@ -5445,6 +5457,12 @@ class Cluster {
                       json_['resourceUsageExportConfig']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          satisfiesPzi: json_.containsKey('satisfiesPzi')
+              ? json_['satisfiesPzi'] as core.bool
+              : null,
+          satisfiesPzs: json_.containsKey('satisfiesPzs')
+              ? json_['satisfiesPzs'] as core.bool
+              : null,
           securityPostureConfig: json_.containsKey('securityPostureConfig')
               ? SecurityPostureConfig.fromJson(json_['securityPostureConfig']
                   as core.Map<core.String, core.dynamic>)
@@ -5557,6 +5575,8 @@ class Cluster {
         if (resourceLabels != null) 'resourceLabels': resourceLabels!,
         if (resourceUsageExportConfig != null)
           'resourceUsageExportConfig': resourceUsageExportConfig!,
+        if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (securityPostureConfig != null)
           'securityPostureConfig': securityPostureConfig!,
         if (selfLink != null) 'selfLink': selfLink!,
@@ -5831,6 +5851,13 @@ class ClusterUpdate {
   /// The desired network performance config.
   ClusterNetworkPerformanceConfig? desiredNetworkPerformanceConfig;
 
+  /// The desired node kubelet config for the cluster.
+  NodeKubeletConfig? desiredNodeKubeletConfig;
+
+  /// The desired node kubelet config for all auto-provisioned node pools in
+  /// autopilot clusters and node auto-provisioning enabled clusters.
+  NodeKubeletConfig? desiredNodePoolAutoConfigKubeletConfig;
+
   /// The desired network tags that apply to all auto-provisioned node pools in
   /// autopilot clusters and node auto-provisioning enabled clusters.
   NetworkTags? desiredNodePoolAutoConfigNetworkTags;
@@ -5975,6 +6002,8 @@ class ClusterUpdate {
     this.desiredMonitoringConfig,
     this.desiredMonitoringService,
     this.desiredNetworkPerformanceConfig,
+    this.desiredNodeKubeletConfig,
+    this.desiredNodePoolAutoConfigKubeletConfig,
     this.desiredNodePoolAutoConfigNetworkTags,
     this.desiredNodePoolAutoConfigResourceManagerTags,
     this.desiredNodePoolAutoscaling,
@@ -6156,6 +6185,17 @@ class ClusterUpdate {
                       json_['desiredNetworkPerformanceConfig']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          desiredNodeKubeletConfig:
+              json_.containsKey('desiredNodeKubeletConfig')
+                  ? NodeKubeletConfig.fromJson(json_['desiredNodeKubeletConfig']
+                      as core.Map<core.String, core.dynamic>)
+                  : null,
+          desiredNodePoolAutoConfigKubeletConfig:
+              json_.containsKey('desiredNodePoolAutoConfigKubeletConfig')
+                  ? NodeKubeletConfig.fromJson(
+                      json_['desiredNodePoolAutoConfigKubeletConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           desiredNodePoolAutoConfigNetworkTags:
               json_.containsKey('desiredNodePoolAutoConfigNetworkTags')
                   ? NetworkTags.fromJson(
@@ -6326,6 +6366,11 @@ class ClusterUpdate {
           'desiredMonitoringService': desiredMonitoringService!,
         if (desiredNetworkPerformanceConfig != null)
           'desiredNetworkPerformanceConfig': desiredNetworkPerformanceConfig!,
+        if (desiredNodeKubeletConfig != null)
+          'desiredNodeKubeletConfig': desiredNodeKubeletConfig!,
+        if (desiredNodePoolAutoConfigKubeletConfig != null)
+          'desiredNodePoolAutoConfigKubeletConfig':
+              desiredNodePoolAutoConfigKubeletConfig!,
         if (desiredNodePoolAutoConfigNetworkTags != null)
           'desiredNodePoolAutoConfigNetworkTags':
               desiredNodePoolAutoConfigNetworkTags!,
@@ -9669,10 +9714,16 @@ class NodeConfigDefaults {
   /// Logging configuration for node pools.
   NodePoolLoggingConfig? loggingConfig;
 
+  /// NodeKubeletConfig controls the defaults for new node-pools.
+  ///
+  /// Currently only `insecure_kubelet_readonly_port_enabled` can be set here.
+  NodeKubeletConfig? nodeKubeletConfig;
+
   NodeConfigDefaults({
     this.containerdConfig,
     this.gcfsConfig,
     this.loggingConfig,
+    this.nodeKubeletConfig,
   });
 
   NodeConfigDefaults.fromJson(core.Map json_)
@@ -9689,12 +9740,17 @@ class NodeConfigDefaults {
               ? NodePoolLoggingConfig.fromJson(
                   json_['loggingConfig'] as core.Map<core.String, core.dynamic>)
               : null,
+          nodeKubeletConfig: json_.containsKey('nodeKubeletConfig')
+              ? NodeKubeletConfig.fromJson(json_['nodeKubeletConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (containerdConfig != null) 'containerdConfig': containerdConfig!,
         if (gcfsConfig != null) 'gcfsConfig': gcfsConfig!,
         if (loggingConfig != null) 'loggingConfig': loggingConfig!,
+        if (nodeKubeletConfig != null) 'nodeKubeletConfig': nodeKubeletConfig!,
       };
 }
 
@@ -10250,12 +10306,18 @@ class NodePoolAutoConfig {
   /// the list must comply with RFC1035.
   NetworkTags? networkTags;
 
+  /// NodeKubeletConfig controls the defaults for autoprovisioned node-pools.
+  ///
+  /// Currently only `insecure_kubelet_readonly_port_enabled` can be set here.
+  NodeKubeletConfig? nodeKubeletConfig;
+
   /// Resource manager tag keys and values to be attached to the nodes for
   /// managing Compute Engine firewalls using Network Firewall Policies.
   ResourceManagerTags? resourceManagerTags;
 
   NodePoolAutoConfig({
     this.networkTags,
+    this.nodeKubeletConfig,
     this.resourceManagerTags,
   });
 
@@ -10265,6 +10327,10 @@ class NodePoolAutoConfig {
               ? NetworkTags.fromJson(
                   json_['networkTags'] as core.Map<core.String, core.dynamic>)
               : null,
+          nodeKubeletConfig: json_.containsKey('nodeKubeletConfig')
+              ? NodeKubeletConfig.fromJson(json_['nodeKubeletConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           resourceManagerTags: json_.containsKey('resourceManagerTags')
               ? ResourceManagerTags.fromJson(json_['resourceManagerTags']
                   as core.Map<core.String, core.dynamic>)
@@ -10273,6 +10339,7 @@ class NodePoolAutoConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (networkTags != null) 'networkTags': networkTags!,
+        if (nodeKubeletConfig != null) 'nodeKubeletConfig': nodeKubeletConfig!,
         if (resourceManagerTags != null)
           'resourceManagerTags': resourceManagerTags!,
       };

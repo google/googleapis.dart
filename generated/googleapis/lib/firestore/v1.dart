@@ -328,6 +328,8 @@ class ProjectsDatabasesResource {
   /// [parent] - Required. A parent name of the form `projects/{project_id}`
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
+  /// [showDeleted] - If true, also returns deleted resources.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -340,9 +342,11 @@ class ProjectsDatabasesResource {
   /// this method will complete with the same error.
   async.Future<GoogleFirestoreAdminV1ListDatabasesResponse> list(
     core.String parent, {
+    core.bool? showDeleted,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -3778,6 +3782,13 @@ class GoogleFirestoreAdminV1Database {
   /// - "DELETE_PROTECTION_ENABLED" : Delete protection is enabled
   core.String? deleteProtectionState;
 
+  /// The timestamp at which this database was soft deleted.
+  ///
+  /// Only set if the database has been soft deleted.
+  ///
+  /// Output only.
+  core.String? deleteTime;
+
   /// The earliest timestamp at which older versions of the data can be read
   /// from the database.
   ///
@@ -3870,6 +3881,7 @@ class GoogleFirestoreAdminV1Database {
     this.concurrencyMode,
     this.createTime,
     this.deleteProtectionState,
+    this.deleteTime,
     this.earliestVersionTime,
     this.etag,
     this.keyPrefix,
@@ -3900,6 +3912,9 @@ class GoogleFirestoreAdminV1Database {
               : null,
           deleteProtectionState: json_.containsKey('deleteProtectionState')
               ? json_['deleteProtectionState'] as core.String
+              : null,
+          deleteTime: json_.containsKey('deleteTime')
+              ? json_['deleteTime'] as core.String
               : null,
           earliestVersionTime: json_.containsKey('earliestVersionTime')
               ? json_['earliestVersionTime'] as core.String
@@ -3934,6 +3949,7 @@ class GoogleFirestoreAdminV1Database {
         if (createTime != null) 'createTime': createTime!,
         if (deleteProtectionState != null)
           'deleteProtectionState': deleteProtectionState!,
+        if (deleteTime != null) 'deleteTime': deleteTime!,
         if (earliestVersionTime != null)
           'earliestVersionTime': earliestVersionTime!,
         if (etag != null) 'etag': etag!,

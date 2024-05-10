@@ -2961,6 +2961,16 @@ class AppGateway {
   /// Required.
   core.String? name;
 
+  /// Reserved for future use.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzi;
+
+  /// Reserved for future use.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzs;
+
   /// The current state of the AppGateway.
   ///
   /// Output only.
@@ -3005,6 +3015,8 @@ class AppGateway {
     this.hostType,
     this.labels,
     this.name,
+    this.satisfiesPzi,
+    this.satisfiesPzs,
     this.state,
     this.type,
     this.uid,
@@ -3038,6 +3050,12 @@ class AppGateway {
                 )
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          satisfiesPzi: json_.containsKey('satisfiesPzi')
+              ? json_['satisfiesPzi'] as core.bool
+              : null,
+          satisfiesPzs: json_.containsKey('satisfiesPzs')
+              ? json_['satisfiesPzs'] as core.bool
+              : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
           type: json_.containsKey('type') ? json_['type'] as core.String : null,
@@ -3056,6 +3074,8 @@ class AppGateway {
         if (hostType != null) 'hostType': hostType!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
+        if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (state != null) 'state': state!,
         if (type != null) 'type': type!,
         if (uid != null) 'uid': uid!,
@@ -3121,6 +3141,16 @@ class GoogleCloudBeyondcorpAppconnectionsV1AppConnection {
   /// Required.
   core.String? name;
 
+  /// Reserved for future use.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzi;
+
+  /// Reserved for future use.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzs;
+
   /// The current state of the AppConnection.
   ///
   /// Output only.
@@ -3161,6 +3191,8 @@ class GoogleCloudBeyondcorpAppconnectionsV1AppConnection {
     this.gateway,
     this.labels,
     this.name,
+    this.satisfiesPzi,
+    this.satisfiesPzs,
     this.state,
     this.type,
     this.uid,
@@ -3199,6 +3231,12 @@ class GoogleCloudBeyondcorpAppconnectionsV1AppConnection {
                 )
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          satisfiesPzi: json_.containsKey('satisfiesPzi')
+              ? json_['satisfiesPzi'] as core.bool
+              : null,
+          satisfiesPzs: json_.containsKey('satisfiesPzs')
+              ? json_['satisfiesPzs'] as core.bool
+              : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
           type: json_.containsKey('type') ? json_['type'] as core.String : null,
@@ -3217,6 +3255,8 @@ class GoogleCloudBeyondcorpAppconnectionsV1AppConnection {
         if (gateway != null) 'gateway': gateway!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
+        if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (state != null) 'state': state!,
         if (type != null) 'type': type!,
         if (uid != null) 'uid': uid!,

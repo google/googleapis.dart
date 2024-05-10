@@ -12168,6 +12168,7 @@ api.PriceInsights buildPriceInsights() {
   final o = api.PriceInsights();
   buildCounterPriceInsights++;
   if (buildCounterPriceInsights < 3) {
+    o.effectiveness = 'foo';
     o.predictedClicksChangeFraction = 42.0;
     o.predictedConversionsChangeFraction = 42.0;
     o.predictedGrossProfitChangeFraction = 42.0;
@@ -12184,6 +12185,10 @@ api.PriceInsights buildPriceInsights() {
 void checkPriceInsights(api.PriceInsights o) {
   buildCounterPriceInsights++;
   if (buildCounterPriceInsights < 3) {
+    unittest.expect(
+      o.effectiveness!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.predictedClicksChangeFraction!,
       unittest.equals(42.0),

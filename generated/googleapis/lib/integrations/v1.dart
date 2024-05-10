@@ -5892,6 +5892,56 @@ class EnterpriseCrmEventbusProtoBuganizerNotification {
       };
 }
 
+/// Cloud Logging details, selected by the user for the integration version
+/// (workflow).
+///
+/// This message field will be also used in ExecutionInfo, to indicate the
+/// CloudLoggingDetails config at the time of workflow (integration version)
+/// execution, since this field value can be changed for an unpublished
+/// workflow.
+class EnterpriseCrmEventbusProtoCloudLoggingDetails {
+  /// Severity selected by the customer for the logs to be sent to Cloud
+  /// Logging, for the integration version getting executed.
+  /// Possible string values are:
+  /// - "CLOUD_LOGGING_SEVERITY_UNSPECIFIED" : Unspecified
+  /// - "INFO" : If Severity selected is `INFO`, then all the Integration
+  /// Execution States (`IN_PROCESS`, `ON_HOLD`, `SUCCEEDED`, `SUSPENDED`,
+  /// `ERROR`, `CANCELLED`) will be sent to Cloud Logging.
+  /// - "ERROR" : If Severity selected is `ERROR`, then only the following
+  /// Integration Execution States (`ERROR`, `CANCELLED`) will be sent to Cloud
+  /// Logging.
+  /// - "WARNING" : If Severity selected is `WARNING`, then only the following
+  /// Integration Execution States (`ERROR`, `CANCELLED`) will be sent to Cloud
+  /// Logging.
+  core.String? cloudLoggingSeverity;
+
+  /// Status of whether Cloud Logging is enabled or not for the integration
+  /// version getting executed.
+  core.bool? enableCloudLogging;
+
+  EnterpriseCrmEventbusProtoCloudLoggingDetails({
+    this.cloudLoggingSeverity,
+    this.enableCloudLogging,
+  });
+
+  EnterpriseCrmEventbusProtoCloudLoggingDetails.fromJson(core.Map json_)
+      : this(
+          cloudLoggingSeverity: json_.containsKey('cloudLoggingSeverity')
+              ? json_['cloudLoggingSeverity'] as core.String
+              : null,
+          enableCloudLogging: json_.containsKey('enableCloudLogging')
+              ? json_['enableCloudLogging'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cloudLoggingSeverity != null)
+          'cloudLoggingSeverity': cloudLoggingSeverity!,
+        if (enableCloudLogging != null)
+          'enableCloudLogging': enableCloudLogging!,
+      };
+}
+
 /// Cloud Scheduler Trigger configuration
 typedef EnterpriseCrmEventbusProtoCloudSchedulerConfig = $CloudSchedulerConfig;
 
@@ -8935,10 +8985,13 @@ class EnterpriseCrmFrontendsEventbusProtoEventExecutionDetails {
 
 /// Contains all the execution details for a workflow instance.
 ///
-/// Next available id: 25
+/// Next available id: 26
 class EnterpriseCrmFrontendsEventbusProtoEventExecutionInfo {
   /// The event data user sends as request.
   core.String? clientId;
+
+  /// Cloud Logging details for execution info
+  EnterpriseCrmEventbusProtoCloudLoggingDetails? cloudLoggingDetails;
 
   /// Auto-generated.
   core.String? createTime;
@@ -9028,6 +9081,7 @@ class EnterpriseCrmFrontendsEventbusProtoEventExecutionInfo {
 
   EnterpriseCrmFrontendsEventbusProtoEventExecutionInfo({
     this.clientId,
+    this.cloudLoggingDetails,
     this.createTime,
     this.errorCode,
     this.errors,
@@ -9053,6 +9107,11 @@ class EnterpriseCrmFrontendsEventbusProtoEventExecutionInfo {
       : this(
           clientId: json_.containsKey('clientId')
               ? json_['clientId'] as core.String
+              : null,
+          cloudLoggingDetails: json_.containsKey('cloudLoggingDetails')
+              ? EnterpriseCrmEventbusProtoCloudLoggingDetails.fromJson(
+                  json_['cloudLoggingDetails']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
@@ -9130,6 +9189,8 @@ class EnterpriseCrmFrontendsEventbusProtoEventExecutionInfo {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (clientId != null) 'clientId': clientId!,
+        if (cloudLoggingDetails != null)
+          'cloudLoggingDetails': cloudLoggingDetails!,
         if (createTime != null) 'createTime': createTime!,
         if (errorCode != null) 'errorCode': errorCode!,
         if (errors != null) 'errors': errors!,
@@ -11962,7 +12023,39 @@ typedef GoogleCloudConnectorsV1HPAConfig = $HPAConfig;
 typedef GoogleCloudConnectorsV1LockConfig = $LockConfig;
 
 /// Log configuration for the connection.
-typedef GoogleCloudConnectorsV1LogConfig = $LogConfig;
+class GoogleCloudConnectorsV1LogConfig {
+  /// Enabled represents whether logging is enabled or not for a connection.
+  core.bool? enabled;
+
+  /// Log configuration level.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "LOG_LEVEL_UNSPECIFIED" : Log level unspecified.
+  /// - "ERROR" : Only error logs are enabled.
+  /// - "INFO" : Info and error logs are enabled.
+  /// - "DEBUG" : Debug and high verbosity logs are enabled.
+  core.String? level;
+
+  GoogleCloudConnectorsV1LogConfig({
+    this.enabled,
+    this.level,
+  });
+
+  GoogleCloudConnectorsV1LogConfig.fromJson(core.Map json_)
+      : this(
+          enabled: json_.containsKey('enabled')
+              ? json_['enabled'] as core.bool
+              : null,
+          level:
+              json_.containsKey('level') ? json_['level'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
+        if (level != null) 'level': level!,
+      };
+}
 
 /// Node configuration for the connection.
 typedef GoogleCloudConnectorsV1NodeConfig = $NodeConfig;

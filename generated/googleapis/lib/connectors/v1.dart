@@ -5026,7 +5026,25 @@ class ConnectorVersionInfraConfig {
 }
 
 /// Log configuration for the connection.
-typedef ConnectorsLogConfig = $LogConfig;
+class ConnectorsLogConfig {
+  /// Enabled represents whether logging is enabled or not for a connection.
+  core.bool? enabled;
+
+  ConnectorsLogConfig({
+    this.enabled,
+  });
+
+  ConnectorsLogConfig.fromJson(core.Map json_)
+      : this(
+          enabled: json_.containsKey('enabled')
+              ? json_['enabled'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
+      };
+}
 
 /// CustomConnector represents the custom connector defined by the customer as
 /// part of byoc.

@@ -4632,10 +4632,12 @@ class AppLinkData {
   /// details on the android client.
   AppLinkDataAppLinkInfo? androidAppLinkInfo;
 
-  /// Optional information about the partner app link.
+  /// Links to open iOS apps are not supported.
   ///
-  /// If included, the app link link module will be rendered on the valuable
-  /// details on the ios client.
+  /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   AppLinkDataAppLinkInfo? iosAppLinkInfo;
 
   /// Optional information about the partner app link.

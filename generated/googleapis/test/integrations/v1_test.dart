@@ -291,6 +291,32 @@ void checkEnterpriseCrmEventbusProtoBuganizerNotification(
   buildCounterEnterpriseCrmEventbusProtoBuganizerNotification--;
 }
 
+core.int buildCounterEnterpriseCrmEventbusProtoCloudLoggingDetails = 0;
+api.EnterpriseCrmEventbusProtoCloudLoggingDetails
+    buildEnterpriseCrmEventbusProtoCloudLoggingDetails() {
+  final o = api.EnterpriseCrmEventbusProtoCloudLoggingDetails();
+  buildCounterEnterpriseCrmEventbusProtoCloudLoggingDetails++;
+  if (buildCounterEnterpriseCrmEventbusProtoCloudLoggingDetails < 3) {
+    o.cloudLoggingSeverity = 'foo';
+    o.enableCloudLogging = true;
+  }
+  buildCounterEnterpriseCrmEventbusProtoCloudLoggingDetails--;
+  return o;
+}
+
+void checkEnterpriseCrmEventbusProtoCloudLoggingDetails(
+    api.EnterpriseCrmEventbusProtoCloudLoggingDetails o) {
+  buildCounterEnterpriseCrmEventbusProtoCloudLoggingDetails++;
+  if (buildCounterEnterpriseCrmEventbusProtoCloudLoggingDetails < 3) {
+    unittest.expect(
+      o.cloudLoggingSeverity!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.enableCloudLogging!, unittest.isTrue);
+  }
+  buildCounterEnterpriseCrmEventbusProtoCloudLoggingDetails--;
+}
+
 core.int buildCounterEnterpriseCrmEventbusProtoCloudSchedulerConfig = 0;
 api.EnterpriseCrmEventbusProtoCloudSchedulerConfig
     buildEnterpriseCrmEventbusProtoCloudSchedulerConfig() {
@@ -2986,6 +3012,8 @@ api.EnterpriseCrmFrontendsEventbusProtoEventExecutionInfo
   buildCounterEnterpriseCrmFrontendsEventbusProtoEventExecutionInfo++;
   if (buildCounterEnterpriseCrmFrontendsEventbusProtoEventExecutionInfo < 3) {
     o.clientId = 'foo';
+    o.cloudLoggingDetails =
+        buildEnterpriseCrmEventbusProtoCloudLoggingDetails();
     o.createTime = 'foo';
     o.errorCode = buildCrmlogErrorCode();
     o.errors = buildUnnamed35();
@@ -3021,6 +3049,7 @@ void checkEnterpriseCrmFrontendsEventbusProtoEventExecutionInfo(
       o.clientId!,
       unittest.equals('foo'),
     );
+    checkEnterpriseCrmEventbusProtoCloudLoggingDetails(o.cloudLoggingDetails!);
     unittest.expect(
       o.createTime!,
       unittest.equals('foo'),
@@ -5232,6 +5261,7 @@ api.GoogleCloudConnectorsV1LogConfig buildGoogleCloudConnectorsV1LogConfig() {
   buildCounterGoogleCloudConnectorsV1LogConfig++;
   if (buildCounterGoogleCloudConnectorsV1LogConfig < 3) {
     o.enabled = true;
+    o.level = 'foo';
   }
   buildCounterGoogleCloudConnectorsV1LogConfig--;
   return o;
@@ -5242,6 +5272,10 @@ void checkGoogleCloudConnectorsV1LogConfig(
   buildCounterGoogleCloudConnectorsV1LogConfig++;
   if (buildCounterGoogleCloudConnectorsV1LogConfig < 3) {
     unittest.expect(o.enabled!, unittest.isTrue);
+    unittest.expect(
+      o.level!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudConnectorsV1LogConfig--;
 }
@@ -10505,6 +10539,17 @@ void main() {
       final od = api.EnterpriseCrmEventbusProtoBuganizerNotification.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkEnterpriseCrmEventbusProtoBuganizerNotification(od);
+    });
+  });
+
+  unittest.group('obj-schema-EnterpriseCrmEventbusProtoCloudLoggingDetails',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildEnterpriseCrmEventbusProtoCloudLoggingDetails();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.EnterpriseCrmEventbusProtoCloudLoggingDetails.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkEnterpriseCrmEventbusProtoCloudLoggingDetails(od);
     });
   });
 

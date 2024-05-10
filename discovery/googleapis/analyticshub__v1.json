@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240429",
+    "revision": "20240506",
     "rootUrl": "https://analyticshub.googleapis.com/",
     "servicePath": "",
     "title": "Analytics Hub API",

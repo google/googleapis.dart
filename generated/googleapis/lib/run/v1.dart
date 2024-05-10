@@ -6882,6 +6882,11 @@ class RevisionSpec {
   /// Optional.
   core.Map<core.String, core.String>? nodeSelector;
 
+  /// Runtime.
+  ///
+  /// Leave unset for default.
+  core.String? runtimeClassName;
+
   /// Email address of the IAM service account associated with the revision of
   /// the service.
   ///
@@ -6904,6 +6909,7 @@ class RevisionSpec {
     this.enableServiceLinks,
     this.imagePullSecrets,
     this.nodeSelector,
+    this.runtimeClassName,
     this.serviceAccountName,
     this.timeoutSeconds,
     this.volumes,
@@ -6938,6 +6944,9 @@ class RevisionSpec {
                   ),
                 )
               : null,
+          runtimeClassName: json_.containsKey('runtimeClassName')
+              ? json_['runtimeClassName'] as core.String
+              : null,
           serviceAccountName: json_.containsKey('serviceAccountName')
               ? json_['serviceAccountName'] as core.String
               : null,
@@ -6960,6 +6969,7 @@ class RevisionSpec {
           'enableServiceLinks': enableServiceLinks!,
         if (imagePullSecrets != null) 'imagePullSecrets': imagePullSecrets!,
         if (nodeSelector != null) 'nodeSelector': nodeSelector!,
+        if (runtimeClassName != null) 'runtimeClassName': runtimeClassName!,
         if (serviceAccountName != null)
           'serviceAccountName': serviceAccountName!,
         if (timeoutSeconds != null) 'timeoutSeconds': timeoutSeconds!,

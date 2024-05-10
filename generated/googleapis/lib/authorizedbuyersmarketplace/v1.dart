@@ -106,6 +106,13 @@ class BiddersAuctionPackagesResource {
   /// supported when parent is bidder. Supported columns for filtering are: *
   /// displayName * createTime * updateTime * eligibleSeatIds
   ///
+  /// [orderBy] - Optional. An optional query string to sort auction packages
+  /// using the
+  /// [Cloud API sorting syntax](https://cloud.google.com/apis/design/design_patterns#sorting_order).
+  /// If no sort order is specified, results will be returned in an arbitrary
+  /// order. Only supported when parent is bidder. Supported columns for sorting
+  /// are: * displayName * createTime * updateTime
+  ///
   /// [pageSize] - Requested page size. The server may return fewer results than
   /// requested. Max allowed page size is 500.
   ///
@@ -125,12 +132,14 @@ class BiddersAuctionPackagesResource {
   async.Future<ListAuctionPackagesResponse> list(
     core.String parent, {
     core.String? filter,
+    core.String? orderBy,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -182,7 +191,6 @@ class BiddersFinalizedDealsResource {
   /// deal.flightEndTime * rtbMetrics.bidRequests7Days * rtbMetrics.bids7Days *
   /// rtbMetrics.adImpressions7Days * rtbMetrics.bidRate7Days *
   /// rtbMetrics.filteredBidRate7Days * rtbMetrics.mustBidRateCurrentMonth
-  /// Example: 'deal.displayName, deal.updateTime desc'
   ///
   /// [pageSize] - Requested page size. The server may return fewer results than
   /// requested. If requested more than 500, the server will return 500 results
@@ -308,6 +316,13 @@ class BuyersAuctionPackagesResource {
   /// supported when parent is bidder. Supported columns for filtering are: *
   /// displayName * createTime * updateTime * eligibleSeatIds
   ///
+  /// [orderBy] - Optional. An optional query string to sort auction packages
+  /// using the
+  /// [Cloud API sorting syntax](https://cloud.google.com/apis/design/design_patterns#sorting_order).
+  /// If no sort order is specified, results will be returned in an arbitrary
+  /// order. Only supported when parent is bidder. Supported columns for sorting
+  /// are: * displayName * createTime * updateTime
+  ///
   /// [pageSize] - Requested page size. The server may return fewer results than
   /// requested. Max allowed page size is 500.
   ///
@@ -327,12 +342,14 @@ class BuyersAuctionPackagesResource {
   async.Future<ListAuctionPackagesResponse> list(
     core.String parent, {
     core.String? filter,
+    core.String? orderBy,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -1208,7 +1225,6 @@ class BuyersFinalizedDealsResource {
   /// deal.flightEndTime * rtbMetrics.bidRequests7Days * rtbMetrics.bids7Days *
   /// rtbMetrics.adImpressions7Days * rtbMetrics.bidRate7Days *
   /// rtbMetrics.filteredBidRate7Days * rtbMetrics.mustBidRateCurrentMonth
-  /// Example: 'deal.displayName, deal.updateTime desc'
   ///
   /// [pageSize] - Requested page size. The server may return fewer results than
   /// requested. If requested more than 500, the server will return 500 results
@@ -3759,8 +3775,8 @@ class ListPublisherProfilesResponse {
       };
 }
 
-/// Targeting represents different criteria that can be used to target
-/// inventory.
+/// Targeting represents different criteria that can be used to target deals or
+/// auction packages.
 ///
 /// For example, they can choose to target inventory only if the user is in the
 /// US. Multiple types of targeting are always applied as a logical AND, unless
@@ -3768,6 +3784,15 @@ class ListPublisherProfilesResponse {
 class MarketplaceTargeting {
   /// Daypart targeting information.
   DayPartTargeting? daypartTargeting;
+
+  /// The sensitive content category label IDs excluded.
+  ///
+  /// Refer to this file
+  /// https://storage.googleapis.com/adx-rtb-dictionaries/content-labels.txt for
+  /// category IDs.
+  ///
+  /// Output only.
+  core.List<core.String>? excludedSensitiveCategoryIds;
 
   /// Geo criteria IDs to be included/excluded.
   ///
@@ -3801,6 +3826,12 @@ class MarketplaceTargeting {
   /// https://developers.google.com/authorized-buyers/rtb/bulk-uploader.
   CriteriaTargeting? userListTargeting;
 
+  /// The verticals included or excluded as defined in
+  /// https://developers.google.com/authorized-buyers/rtb/downloads/publisher-verticals
+  ///
+  /// Output only.
+  CriteriaTargeting? verticalTargeting;
+
   /// Video targeting information.
   ///
   /// Output only.
@@ -3808,12 +3839,14 @@ class MarketplaceTargeting {
 
   MarketplaceTargeting({
     this.daypartTargeting,
+    this.excludedSensitiveCategoryIds,
     this.geoTargeting,
     this.inventorySizeTargeting,
     this.inventoryTypeTargeting,
     this.placementTargeting,
     this.technologyTargeting,
     this.userListTargeting,
+    this.verticalTargeting,
     this.videoTargeting,
   });
 
@@ -3823,6 +3856,12 @@ class MarketplaceTargeting {
               ? DayPartTargeting.fromJson(json_['daypartTargeting']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          excludedSensitiveCategoryIds:
+              json_.containsKey('excludedSensitiveCategoryIds')
+                  ? (json_['excludedSensitiveCategoryIds'] as core.List)
+                      .map((value) => value as core.String)
+                      .toList()
+                  : null,
           geoTargeting: json_.containsKey('geoTargeting')
               ? CriteriaTargeting.fromJson(
                   json_['geoTargeting'] as core.Map<core.String, core.dynamic>)
@@ -3847,6 +3886,10 @@ class MarketplaceTargeting {
               ? CriteriaTargeting.fromJson(json_['userListTargeting']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          verticalTargeting: json_.containsKey('verticalTargeting')
+              ? CriteriaTargeting.fromJson(json_['verticalTargeting']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           videoTargeting: json_.containsKey('videoTargeting')
               ? VideoTargeting.fromJson(json_['videoTargeting']
                   as core.Map<core.String, core.dynamic>)
@@ -3855,6 +3898,8 @@ class MarketplaceTargeting {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (daypartTargeting != null) 'daypartTargeting': daypartTargeting!,
+        if (excludedSensitiveCategoryIds != null)
+          'excludedSensitiveCategoryIds': excludedSensitiveCategoryIds!,
         if (geoTargeting != null) 'geoTargeting': geoTargeting!,
         if (inventorySizeTargeting != null)
           'inventorySizeTargeting': inventorySizeTargeting!,
@@ -3865,6 +3910,7 @@ class MarketplaceTargeting {
         if (technologyTargeting != null)
           'technologyTargeting': technologyTargeting!,
         if (userListTargeting != null) 'userListTargeting': userListTargeting!,
+        if (verticalTargeting != null) 'verticalTargeting': verticalTargeting!,
         if (videoTargeting != null) 'videoTargeting': videoTargeting!,
       };
 }

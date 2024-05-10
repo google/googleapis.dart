@@ -1473,8 +1473,114 @@ class GoogleCloudOrgpolicyV2AlternatePolicySpec {
 /// By creating a custom constraint, customers can apply policies of this custom
 /// constraint. *Creating a custom constraint itself does NOT apply any policy
 /// enforcement*.
-typedef GoogleCloudOrgpolicyV2CustomConstraint
-    = $GoogleCloudOrgpolicyV2CustomConstraint;
+class GoogleCloudOrgpolicyV2CustomConstraint {
+  /// Allow or deny type.
+  /// Possible string values are:
+  /// - "ACTION_TYPE_UNSPECIFIED" : Unspecified. Results in an error.
+  /// - "ALLOW" : Allowed action type.
+  /// - "DENY" : Deny action type.
+  core.String? actionType;
+
+  /// Org policy condition/expression.
+  ///
+  /// For example: `resource.instanceName.matches("[production|test]_.*_(\d)+")`
+  /// or, `resource.management.auto_upgrade == true` The max length of the
+  /// condition is 1000 characters.
+  core.String? condition;
+
+  /// Detailed information about this custom policy constraint.
+  ///
+  /// The max length of the description is 2000 characters.
+  core.String? description;
+
+  /// One line display name for the UI.
+  ///
+  /// The max length of the display_name is 200 characters.
+  core.String? displayName;
+
+  /// All the operations being applied for this constraint.
+  core.List<core.String>? methodTypes;
+
+  /// Name of the constraint.
+  ///
+  /// This is unique within the organization. Format of the name should be *
+  /// `organizations/{organization_id}/customConstraints/{custom_constraint_id}`
+  /// Example: `organizations/123/customConstraints/custom.createOnlyE2TypeVms`
+  /// The max length is 70 characters and the minimum length is 1. Note that the
+  /// prefix `organizations/{organization_id}/customConstraints/` is not
+  /// counted.
+  ///
+  /// Immutable.
+  core.String? name;
+
+  /// The resource instance type on which this policy applies.
+  ///
+  /// Format will be of the form : `/` Example: *
+  /// `compute.googleapis.com/Instance`.
+  ///
+  /// Immutable.
+  core.List<core.String>? resourceTypes;
+
+  /// The last time this custom constraint was updated.
+  ///
+  /// This represents the last time that the `CreateCustomConstraint` or
+  /// `UpdateCustomConstraint` RPC was called
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GoogleCloudOrgpolicyV2CustomConstraint({
+    this.actionType,
+    this.condition,
+    this.description,
+    this.displayName,
+    this.methodTypes,
+    this.name,
+    this.resourceTypes,
+    this.updateTime,
+  });
+
+  GoogleCloudOrgpolicyV2CustomConstraint.fromJson(core.Map json_)
+      : this(
+          actionType: json_.containsKey('actionType')
+              ? json_['actionType'] as core.String
+              : null,
+          condition: json_.containsKey('condition')
+              ? json_['condition'] as core.String
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          methodTypes: json_.containsKey('methodTypes')
+              ? (json_['methodTypes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          resourceTypes: json_.containsKey('resourceTypes')
+              ? (json_['resourceTypes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (actionType != null) 'actionType': actionType!,
+        if (condition != null) 'condition': condition!,
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
+        if (methodTypes != null) 'methodTypes': methodTypes!,
+        if (name != null) 'name': name!,
+        if (resourceTypes != null) 'resourceTypes': resourceTypes!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
 
 /// Defines an organization policy which is used to specify constraints for
 /// configurations of Google Cloud resources.

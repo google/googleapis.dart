@@ -951,6 +951,8 @@ api.Cluster buildCluster() {
     o.releaseChannel = buildReleaseChannel();
     o.resourceLabels = buildUnnamed12();
     o.resourceUsageExportConfig = buildResourceUsageExportConfig();
+    o.satisfiesPzi = true;
+    o.satisfiesPzs = true;
     o.securityPostureConfig = buildSecurityPostureConfig();
     o.selfLink = 'foo';
     o.servicesIpv4Cidr = 'foo';
@@ -1084,6 +1086,8 @@ void checkCluster(api.Cluster o) {
     checkReleaseChannel(o.releaseChannel!);
     checkUnnamed12(o.resourceLabels!);
     checkResourceUsageExportConfig(o.resourceUsageExportConfig!);
+    unittest.expect(o.satisfiesPzi!, unittest.isTrue);
+    unittest.expect(o.satisfiesPzs!, unittest.isTrue);
     checkSecurityPostureConfig(o.securityPostureConfig!);
     unittest.expect(
       o.selfLink!,
@@ -1259,6 +1263,8 @@ api.ClusterUpdate buildClusterUpdate() {
     o.desiredMonitoringConfig = buildMonitoringConfig();
     o.desiredMonitoringService = 'foo';
     o.desiredNetworkPerformanceConfig = buildClusterNetworkPerformanceConfig();
+    o.desiredNodeKubeletConfig = buildNodeKubeletConfig();
+    o.desiredNodePoolAutoConfigKubeletConfig = buildNodeKubeletConfig();
     o.desiredNodePoolAutoConfigNetworkTags = buildNetworkTags();
     o.desiredNodePoolAutoConfigResourceManagerTags = buildResourceManagerTags();
     o.desiredNodePoolAutoscaling = buildNodePoolAutoscaling();
@@ -1342,6 +1348,8 @@ void checkClusterUpdate(api.ClusterUpdate o) {
       unittest.equals('foo'),
     );
     checkClusterNetworkPerformanceConfig(o.desiredNetworkPerformanceConfig!);
+    checkNodeKubeletConfig(o.desiredNodeKubeletConfig!);
+    checkNodeKubeletConfig(o.desiredNodePoolAutoConfigKubeletConfig!);
     checkNetworkTags(o.desiredNodePoolAutoConfigNetworkTags!);
     checkResourceManagerTags(o.desiredNodePoolAutoConfigResourceManagerTags!);
     checkNodePoolAutoscaling(o.desiredNodePoolAutoscaling!);
@@ -3727,6 +3735,7 @@ api.NodeConfigDefaults buildNodeConfigDefaults() {
     o.containerdConfig = buildContainerdConfig();
     o.gcfsConfig = buildGcfsConfig();
     o.loggingConfig = buildNodePoolLoggingConfig();
+    o.nodeKubeletConfig = buildNodeKubeletConfig();
   }
   buildCounterNodeConfigDefaults--;
   return o;
@@ -3738,6 +3747,7 @@ void checkNodeConfigDefaults(api.NodeConfigDefaults o) {
     checkContainerdConfig(o.containerdConfig!);
     checkGcfsConfig(o.gcfsConfig!);
     checkNodePoolLoggingConfig(o.loggingConfig!);
+    checkNodeKubeletConfig(o.nodeKubeletConfig!);
   }
   buildCounterNodeConfigDefaults--;
 }
@@ -4037,6 +4047,7 @@ api.NodePoolAutoConfig buildNodePoolAutoConfig() {
   buildCounterNodePoolAutoConfig++;
   if (buildCounterNodePoolAutoConfig < 3) {
     o.networkTags = buildNetworkTags();
+    o.nodeKubeletConfig = buildNodeKubeletConfig();
     o.resourceManagerTags = buildResourceManagerTags();
   }
   buildCounterNodePoolAutoConfig--;
@@ -4047,6 +4058,7 @@ void checkNodePoolAutoConfig(api.NodePoolAutoConfig o) {
   buildCounterNodePoolAutoConfig++;
   if (buildCounterNodePoolAutoConfig < 3) {
     checkNetworkTags(o.networkTags!);
+    checkNodeKubeletConfig(o.nodeKubeletConfig!);
     checkResourceManagerTags(o.resourceManagerTags!);
   }
   buildCounterNodePoolAutoConfig--;

@@ -28550,6 +28550,14 @@ class GoogleCloudApigeeV1SecurityActionConditionConfig {
   /// Optional.
   core.List<core.String>? developers;
 
+  /// Act only on particular HTTP methods.
+  ///
+  /// E.g. A read-only API can block POST/PUT/DELETE methods. Accepted values
+  /// are: GET, HEAD, POST, PUT, DELETE, CONNECT, OPTIONS, TRACE and PATCH.
+  ///
+  /// Optional.
+  core.List<core.String>? httpMethods;
+
   /// A list of IP addresses.
   ///
   /// This could be either IPv4 or IPv6. Limited to 100 per action.
@@ -28579,6 +28587,7 @@ class GoogleCloudApigeeV1SecurityActionConditionConfig {
     this.botReasons,
     this.developerApps,
     this.developers,
+    this.httpMethods,
     this.ipAddressRanges,
     this.regionCodes,
     this.userAgents,
@@ -28621,6 +28630,11 @@ class GoogleCloudApigeeV1SecurityActionConditionConfig {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          httpMethods: json_.containsKey('httpMethods')
+              ? (json_['httpMethods'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           ipAddressRanges: json_.containsKey('ipAddressRanges')
               ? (json_['ipAddressRanges'] as core.List)
                   .map((value) => value as core.String)
@@ -28646,6 +28660,7 @@ class GoogleCloudApigeeV1SecurityActionConditionConfig {
         if (botReasons != null) 'botReasons': botReasons!,
         if (developerApps != null) 'developerApps': developerApps!,
         if (developers != null) 'developers': developers!,
+        if (httpMethods != null) 'httpMethods': httpMethods!,
         if (ipAddressRanges != null) 'ipAddressRanges': ipAddressRanges!,
         if (regionCodes != null) 'regionCodes': regionCodes!,
         if (userAgents != null) 'userAgents': userAgents!,

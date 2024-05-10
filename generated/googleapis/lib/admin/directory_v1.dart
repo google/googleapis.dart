@@ -8356,6 +8356,11 @@ class ChromeOsDevice {
   /// Output only.
   core.String? extendedSupportStart;
 
+  /// Fan information for the device.
+  ///
+  /// Output only.
+  core.List<FanInfo>? fanInfo;
+
   /// The Chrome device's firmware version.
   core.String? firmwareVersion;
 
@@ -8510,6 +8515,7 @@ class ChromeOsDevice {
     this.extendedSupportEligible,
     this.extendedSupportEnabled,
     this.extendedSupportStart,
+    this.fanInfo,
     this.firmwareVersion,
     this.firstEnrollmentTime,
     this.kind,
@@ -8622,6 +8628,12 @@ class ChromeOsDevice {
               : null,
           extendedSupportStart: json_.containsKey('extendedSupportStart')
               ? json_['extendedSupportStart'] as core.String
+              : null,
+          fanInfo: json_.containsKey('fanInfo')
+              ? (json_['fanInfo'] as core.List)
+                  .map((value) => FanInfo.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
               : null,
           firmwareVersion: json_.containsKey('firmwareVersion')
               ? json_['firmwareVersion'] as core.String
@@ -8744,6 +8756,7 @@ class ChromeOsDevice {
           'extendedSupportEnabled': extendedSupportEnabled!,
         if (extendedSupportStart != null)
           'extendedSupportStart': extendedSupportStart!,
+        if (fanInfo != null) 'fanInfo': fanInfo!,
         if (firmwareVersion != null) 'firmwareVersion': firmwareVersion!,
         if (firstEnrollmentTime != null)
           'firstEnrollmentTime': firstEnrollmentTime!,
@@ -9759,6 +9772,29 @@ class FailureInfo {
         if (errorMessage != null) 'errorMessage': errorMessage!,
         if (printer != null) 'printer': printer!,
         if (printerId != null) 'printerId': printerId!,
+      };
+}
+
+/// Information about the device's fan.
+class FanInfo {
+  /// Fan speed in RPM.
+  ///
+  /// Output only.
+  core.int? speedRpm;
+
+  FanInfo({
+    this.speedRpm,
+  });
+
+  FanInfo.fromJson(core.Map json_)
+      : this(
+          speedRpm: json_.containsKey('speedRpm')
+              ? json_['speedRpm'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (speedRpm != null) 'speedRpm': speedRpm!,
       };
 }
 
