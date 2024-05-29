@@ -1,4 +1,9 @@
+## 1.6.1-wip
+
+- Require `sdk: ^3.4.0`
+
 ## 1.6.0
+
 - Added support for custom post-auth html page
 
 ## 1.5.1

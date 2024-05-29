@@ -6,6 +6,6 @@
 
 /// This library has been deprecated. Use [googleapis_auth] instead.
 @Deprecated('Use `googleapis_auth.dart` instead')
-library auth;
+library;
 
 export 'googleapis_auth.dart';

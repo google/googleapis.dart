@@ -23,7 +23,7 @@
 /// {@canonicalFor exceptions.UserConsentException}
 /// {@canonicalFor response_type.ResponseType}
 /// {@canonicalFor service_account_credentials.ServiceAccountCredentials}
-library googleapis_auth;
+library;
 
 export 'src/auth_client.dart';
 export 'src/auth_endpoints.dart';

@@ -1,6 +1,6 @@
 ## 1.1.0-wip
 
-- Require Dart 2.19 or later.
+- Require Dart 3.4 or later.
 - Allow latest `package:http`.
 - Generate `@Deprecated` annotations for associated members.
 - Add positional parameters to all schema types.

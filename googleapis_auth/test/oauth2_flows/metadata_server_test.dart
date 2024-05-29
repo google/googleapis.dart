@@ -3,7 +3,7 @@
 // BSD-style license that can be found in the LICENSE file.
 
 @TestOn('vm')
-library googleapis_auth.metadata_server;
+library;
 
 import 'dart:async';
 import 'dart:convert';

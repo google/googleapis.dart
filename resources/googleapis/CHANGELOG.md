@@ -1,5 +1,10 @@
 ## 13.2.0-wip
 
+- Require Dart 3.4 or later.
+- Require `package:http` `1.0.0`.
+
+### APIs
+
 - `addressvalidation` - new!
 - `cloudcontrolspartner` - new!
 - `solar` - new!

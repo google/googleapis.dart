@@ -131,7 +131,7 @@ class ResumableMediaUploader {
     var length = 0;
     List<int>? bytes;
     if (_body != null) {
-      bytes = utf8.encode(_body!);
+      bytes = utf8.encode(_body);
       length = bytes.length;
     }
     final bodyStream =

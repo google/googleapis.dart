@@ -1,5 +1,5 @@
 @TestOn('vm')
-library googleapis_auth.adc_test;
+library;
 
 import 'dart:convert';
 import 'dart:io';
