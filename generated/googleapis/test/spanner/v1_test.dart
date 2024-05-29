@@ -456,6 +456,35 @@ void checkBinding(api.Binding o) {
   buildCounterBinding--;
 }
 
+core.int buildCounterChangeQuorumRequest = 0;
+api.ChangeQuorumRequest buildChangeQuorumRequest() {
+  final o = api.ChangeQuorumRequest();
+  buildCounterChangeQuorumRequest++;
+  if (buildCounterChangeQuorumRequest < 3) {
+    o.etag = 'foo';
+    o.name = 'foo';
+    o.quorumType = buildQuorumType();
+  }
+  buildCounterChangeQuorumRequest--;
+  return o;
+}
+
+void checkChangeQuorumRequest(api.ChangeQuorumRequest o) {
+  buildCounterChangeQuorumRequest++;
+  if (buildCounterChangeQuorumRequest < 3) {
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    checkQuorumType(o.quorumType!);
+  }
+  buildCounterChangeQuorumRequest--;
+}
+
 core.int buildCounterChildLink = 0;
 api.ChildLink buildChildLink() {
   final o = api.ChildLink();
@@ -864,6 +893,7 @@ api.Database buildDatabase() {
     o.encryptionConfig = buildEncryptionConfig();
     o.encryptionInfo = buildUnnamed10();
     o.name = 'foo';
+    o.quorumInfo = buildQuorumInfo();
     o.reconciling = true;
     o.restoreInfo = buildRestoreInfo();
     o.state = 'foo';
@@ -899,6 +929,7 @@ void checkDatabase(api.Database o) {
       o.name!,
       unittest.equals('foo'),
     );
+    checkQuorumInfo(o.quorumInfo!);
     unittest.expect(o.reconciling!, unittest.isTrue);
     checkRestoreInfo(o.restoreInfo!);
     unittest.expect(
@@ -1029,6 +1060,21 @@ void checkDirectedReadOptions(api.DirectedReadOptions o) {
     checkIncludeReplicas(o.includeReplicas!);
   }
   buildCounterDirectedReadOptions--;
+}
+
+core.int buildCounterDualRegionQuorum = 0;
+api.DualRegionQuorum buildDualRegionQuorum() {
+  final o = api.DualRegionQuorum();
+  buildCounterDualRegionQuorum++;
+  if (buildCounterDualRegionQuorum < 3) {}
+  buildCounterDualRegionQuorum--;
+  return o;
+}
+
+void checkDualRegionQuorum(api.DualRegionQuorum o) {
+  buildCounterDualRegionQuorum++;
+  if (buildCounterDualRegionQuorum < 3) {}
+  buildCounterDualRegionQuorum--;
 }
 
 core.int buildCounterEmpty = 0;
@@ -1817,6 +1863,7 @@ api.InstanceConfig buildInstanceConfig() {
     o.leaderOptions = buildUnnamed25();
     o.name = 'foo';
     o.optionalReplicas = buildUnnamed26();
+    o.quorumType = 'foo';
     o.reconciling = true;
     o.replicas = buildUnnamed27();
     o.state = 'foo';
@@ -1856,6 +1903,10 @@ void checkInstanceConfig(api.InstanceConfig o) {
       unittest.equals('foo'),
     );
     checkUnnamed26(o.optionalReplicas!);
+    unittest.expect(
+      o.quorumType!,
+      unittest.equals('foo'),
+    );
     unittest.expect(o.reconciling!, unittest.isTrue);
     checkUnnamed27(o.replicas!);
     unittest.expect(
@@ -3875,6 +3926,61 @@ void checkQueryPlan(api.QueryPlan o) {
   buildCounterQueryPlan--;
 }
 
+core.int buildCounterQuorumInfo = 0;
+api.QuorumInfo buildQuorumInfo() {
+  final o = api.QuorumInfo();
+  buildCounterQuorumInfo++;
+  if (buildCounterQuorumInfo < 3) {
+    o.etag = 'foo';
+    o.initiator = 'foo';
+    o.quorumType = buildQuorumType();
+    o.startTime = 'foo';
+  }
+  buildCounterQuorumInfo--;
+  return o;
+}
+
+void checkQuorumInfo(api.QuorumInfo o) {
+  buildCounterQuorumInfo++;
+  if (buildCounterQuorumInfo < 3) {
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.initiator!,
+      unittest.equals('foo'),
+    );
+    checkQuorumType(o.quorumType!);
+    unittest.expect(
+      o.startTime!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterQuorumInfo--;
+}
+
+core.int buildCounterQuorumType = 0;
+api.QuorumType buildQuorumType() {
+  final o = api.QuorumType();
+  buildCounterQuorumType++;
+  if (buildCounterQuorumType < 3) {
+    o.dualRegion = buildDualRegionQuorum();
+    o.singleRegion = buildSingleRegionQuorum();
+  }
+  buildCounterQuorumType--;
+  return o;
+}
+
+void checkQuorumType(api.QuorumType o) {
+  buildCounterQuorumType++;
+  if (buildCounterQuorumType < 3) {
+    checkDualRegionQuorum(o.dualRegion!);
+    checkSingleRegionQuorum(o.singleRegion!);
+  }
+  buildCounterQuorumType--;
+}
+
 core.int buildCounterReadOnly = 0;
 api.ReadOnly buildReadOnly() {
   final o = api.ReadOnly();
@@ -4623,6 +4729,28 @@ void checkShortRepresentation(api.ShortRepresentation o) {
     checkUnnamed81(o.subqueries!);
   }
   buildCounterShortRepresentation--;
+}
+
+core.int buildCounterSingleRegionQuorum = 0;
+api.SingleRegionQuorum buildSingleRegionQuorum() {
+  final o = api.SingleRegionQuorum();
+  buildCounterSingleRegionQuorum++;
+  if (buildCounterSingleRegionQuorum < 3) {
+    o.servingLocation = 'foo';
+  }
+  buildCounterSingleRegionQuorum--;
+  return o;
+}
+
+void checkSingleRegionQuorum(api.SingleRegionQuorum o) {
+  buildCounterSingleRegionQuorum++;
+  if (buildCounterSingleRegionQuorum < 3) {
+    unittest.expect(
+      o.servingLocation!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterSingleRegionQuorum--;
 }
 
 core.Map<core.String, api.Type> buildUnnamed82() => {
@@ -5471,6 +5599,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-ChangeQuorumRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildChangeQuorumRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ChangeQuorumRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkChangeQuorumRequest(od);
+    });
+  });
+
   unittest.group('obj-schema-ChildLink', () {
     unittest.test('to-json--from-json', () async {
       final o = buildChildLink();
@@ -5648,6 +5786,16 @@ void main() {
       final od = api.DirectedReadOptions.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkDirectedReadOptions(od);
+    });
+  });
+
+  unittest.group('obj-schema-DualRegionQuorum', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDualRegionQuorum();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DualRegionQuorum.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkDualRegionQuorum(od);
     });
   });
 
@@ -6231,6 +6379,26 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-QuorumInfo', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildQuorumInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.QuorumInfo.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkQuorumInfo(od);
+    });
+  });
+
+  unittest.group('obj-schema-QuorumType', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildQuorumType();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.QuorumType.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkQuorumType(od);
+    });
+  });
+
   unittest.group('obj-schema-ReadOnly', () {
     unittest.test('to-json--from-json', () async {
       final o = buildReadOnly();
@@ -6408,6 +6576,16 @@ void main() {
       final od = api.ShortRepresentation.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkShortRepresentation(od);
+    });
+  });
+
+  unittest.group('obj-schema-SingleRegionQuorum', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSingleRegionQuorum();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SingleRegionQuorum.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSingleRegionQuorum(od);
     });
   });
 
@@ -8869,6 +9047,64 @@ void main() {
   });
 
   unittest.group('resource-ProjectsInstancesDatabasesResource', () {
+    unittest.test('method--changequorum', () async {
+      final mock = HttpServerMock();
+      final res = api.SpannerApi(mock).projects.instances.databases;
+      final arg_request = buildChangeQuorumRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.ChangeQuorumRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkChangeQuorumRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.changequorum(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
       final res = api.SpannerApi(mock).projects.instances.databases;

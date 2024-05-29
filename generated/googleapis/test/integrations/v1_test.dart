@@ -1017,6 +1017,7 @@ api.EnterpriseCrmEventbusProtoFailurePolicy
   if (buildCounterEnterpriseCrmEventbusProtoFailurePolicy < 3) {
     o.intervalInSeconds = 'foo';
     o.maxNumRetries = 42;
+    o.retryCondition = 'foo';
     o.retryStrategy = 'foo';
   }
   buildCounterEnterpriseCrmEventbusProtoFailurePolicy--;
@@ -1034,6 +1035,10 @@ void checkEnterpriseCrmEventbusProtoFailurePolicy(
     unittest.expect(
       o.maxNumRetries!,
       unittest.equals(42),
+    );
+    unittest.expect(
+      o.retryCondition!,
+      unittest.equals('foo'),
     );
     unittest.expect(
       o.retryStrategy!,
@@ -7147,6 +7152,7 @@ api.GoogleCloudIntegrationsV1alphaFailurePolicy
   final o = api.GoogleCloudIntegrationsV1alphaFailurePolicy();
   buildCounterGoogleCloudIntegrationsV1alphaFailurePolicy++;
   if (buildCounterGoogleCloudIntegrationsV1alphaFailurePolicy < 3) {
+    o.condition = 'foo';
     o.intervalTime = 'foo';
     o.maxRetries = 42;
     o.retryStrategy = 'foo';
@@ -7159,6 +7165,10 @@ void checkGoogleCloudIntegrationsV1alphaFailurePolicy(
     api.GoogleCloudIntegrationsV1alphaFailurePolicy o) {
   buildCounterGoogleCloudIntegrationsV1alphaFailurePolicy++;
   if (buildCounterGoogleCloudIntegrationsV1alphaFailurePolicy < 3) {
+    unittest.expect(
+      o.condition!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.intervalTime!,
       unittest.equals('foo'),

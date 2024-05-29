@@ -14791,6 +14791,12 @@ class LogMetric {
   /// Required.
   core.String? name;
 
+  /// The resource name of the metric:
+  /// "projects/\[PROJECT_ID\]/metrics/\[METRIC_ID\]"
+  ///
+  /// Output only.
+  core.String? resourceName;
+
   /// The last update timestamp of the metric.This field may not be present for
   /// older metrics.
   ///
@@ -14840,6 +14846,7 @@ class LogMetric {
     this.labelExtractors,
     this.metricDescriptor,
     this.name,
+    this.resourceName,
     this.updateTime,
     this.valueExtractor,
     this.version,
@@ -14881,6 +14888,9 @@ class LogMetric {
                   as core.Map<core.String, core.dynamic>)
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          resourceName: json_.containsKey('resourceName')
+              ? json_['resourceName'] as core.String
+              : null,
           updateTime: json_.containsKey('updateTime')
               ? json_['updateTime'] as core.String
               : null,
@@ -14902,6 +14912,7 @@ class LogMetric {
         if (labelExtractors != null) 'labelExtractors': labelExtractors!,
         if (metricDescriptor != null) 'metricDescriptor': metricDescriptor!,
         if (name != null) 'name': name!,
+        if (resourceName != null) 'resourceName': resourceName!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (valueExtractor != null) 'valueExtractor': valueExtractor!,
         if (version != null) 'version': version!,

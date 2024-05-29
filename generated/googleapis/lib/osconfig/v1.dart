@@ -610,6 +610,10 @@ class ProjectsLocationsOsPolicyAssignmentsResource {
   /// * Must be between 1-63 characters. * Must end with a number or a letter. *
   /// Must be unique within the project.
   ///
+  /// [requestId] - Optional. A unique identifier for this request. Restricted
+  /// to 36 ASCII characters. A random UUID is recommended. This request is only
+  /// idempotent if a `request_id` is provided.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -624,12 +628,14 @@ class ProjectsLocationsOsPolicyAssignmentsResource {
     OSPolicyAssignment request,
     core.String parent, {
     core.String? osPolicyAssignmentId,
+    core.String? requestId,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       if (osPolicyAssignmentId != null)
         'osPolicyAssignmentId': [osPolicyAssignmentId],
+      if (requestId != null) 'requestId': [requestId],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -660,6 +666,10 @@ class ProjectsLocationsOsPolicyAssignmentsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/osPolicyAssignments/\[^/\]+$`.
   ///
+  /// [requestId] - Optional. A unique identifier for this request. Restricted
+  /// to 36 ASCII characters. A random UUID is recommended. This request is only
+  /// idempotent if a `request_id` is provided.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -672,9 +682,11 @@ class ProjectsLocationsOsPolicyAssignmentsResource {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
     core.String name, {
+    core.String? requestId,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -845,6 +857,14 @@ class ProjectsLocationsOsPolicyAssignmentsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/osPolicyAssignments/\[^/\]+$`.
   ///
+  /// [allowMissing] - Optional. If set to true, and the OS policy assignment is
+  /// not found, a new OS policy assignment will be created. In this situation,
+  /// `update_mask` is ignored.
+  ///
+  /// [requestId] - Optional. A unique identifier for this request. Restricted
+  /// to 36 ASCII characters. A random UUID is recommended. This request is only
+  /// idempotent if a `request_id` is provided.
+  ///
   /// [updateMask] - Optional. Field mask that controls which fields of the
   /// assignment should be updated.
   ///
@@ -861,11 +881,15 @@ class ProjectsLocationsOsPolicyAssignmentsResource {
   async.Future<Operation> patch(
     OSPolicyAssignment request,
     core.String name, {
+    core.bool? allowMissing,
+    core.String? requestId,
     core.String? updateMask,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
+      if (requestId != null) 'requestId': [requestId],
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };

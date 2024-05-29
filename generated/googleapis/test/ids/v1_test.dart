@@ -219,6 +219,8 @@ api.Endpoint buildEndpoint() {
     o.labels = buildUnnamed3();
     o.name = 'foo';
     o.network = 'foo';
+    o.satisfiesPzi = true;
+    o.satisfiesPzs = true;
     o.severity = 'foo';
     o.state = 'foo';
     o.threatExceptions = buildUnnamed4();
@@ -257,6 +259,8 @@ void checkEndpoint(api.Endpoint o) {
       o.network!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.satisfiesPzi!, unittest.isTrue);
+    unittest.expect(o.satisfiesPzs!, unittest.isTrue);
     unittest.expect(
       o.severity!,
       unittest.equals('foo'),

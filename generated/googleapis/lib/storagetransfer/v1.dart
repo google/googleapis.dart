@@ -1612,28 +1612,26 @@ class ListTransferJobsResponse {
 
 /// Specifies the logging behavior for transfer operations.
 ///
-/// For cloud-to-cloud transfers, logs are sent to Cloud Logging. See
+/// Logs can be sent to Cloud Logging for all transfer types. See
 /// [Read transfer logs](https://cloud.google.com/storage-transfer/docs/read-transfer-logs)
-/// for details. For transfers to or from a POSIX file system, logs are stored
-/// in the Cloud Storage bucket that is the source or sink of the transfer. See
-/// \[Managing Transfer for on-premises
-/// jobs\](https://cloud.google.com/storage-transfer/docs/managing-on-prem-jobs#viewing-logs)
 /// for details.
 class LoggingConfig {
-  /// For transfers with a PosixFilesystem source, this option enables the Cloud
-  /// Storage transfer logs for this transfer.
+  /// For PosixFilesystem transfers, enables
+  /// [file system transfer logs](https://cloud.google.com/storage-transfer/docs/on-prem-transfer-log-format)
+  /// instead of, or in addition to, Cloud Logging.
+  ///
+  /// This option ignores \[LoggableAction\] and \[LoggableActionState\]. If
+  /// these are set, Cloud Logging will also be enabled for this transfer.
   core.bool? enableOnpremGcsTransferLogs;
 
   /// States in which `log_actions` are logged.
   ///
-  /// If empty, no logs are generated. Not supported for transfers with
-  /// PosixFilesystem data sources; use enable_onprem_gcs_transfer_logs instead.
+  /// If empty, no logs are generated.
   core.List<core.String>? logActionStates;
 
   /// Specifies the actions to be logged.
   ///
-  /// If empty, no logs are generated. Not supported for transfers with
-  /// PosixFilesystem data sources; use enable_onprem_gcs_transfer_logs instead.
+  /// If empty, no logs are generated.
   core.List<core.String>? logActions;
 
   LoggingConfig({

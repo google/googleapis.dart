@@ -860,6 +860,18 @@ typedef Status = $Status;
 
 /// Workflow program to be executed by Workflows.
 class Workflow {
+  /// A list of all KMS crypto keys used to encrypt or decrpt the data
+  /// associated with the workflow.
+  ///
+  /// Output only.
+  core.List<core.String>? allKmsKeys;
+
+  /// A list of all KMS crypto keys versions used to encrypt or decrpt the data
+  /// associated with the workflow.
+  ///
+  /// Output only.
+  core.List<core.String>? allKmsKeysVersions;
+
   /// Describes the level of platform logging to apply to calls and call
   /// responses during executions of this workflow.
   ///
@@ -894,6 +906,15 @@ class Workflow {
   ///
   /// Optional.
   core.String? cryptoKeyName;
+
+  /// The resource name of a KMS crypto key version used to encrypt or decrypt
+  /// the data associated with the workflow.
+  ///
+  /// Format:
+  /// projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}/cryptoKeyVersions/{cryptoKeyVersion}
+  ///
+  /// Output only.
+  core.String? cryptoKeyVersion;
 
   /// Description of the workflow provided by the user.
   ///
@@ -983,9 +1004,12 @@ class Workflow {
   core.Map<core.String, core.String>? userEnvVars;
 
   Workflow({
+    this.allKmsKeys,
+    this.allKmsKeysVersions,
     this.callLogLevel,
     this.createTime,
     this.cryptoKeyName,
+    this.cryptoKeyVersion,
     this.description,
     this.labels,
     this.name,
@@ -1001,6 +1025,16 @@ class Workflow {
 
   Workflow.fromJson(core.Map json_)
       : this(
+          allKmsKeys: json_.containsKey('allKmsKeys')
+              ? (json_['allKmsKeys'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          allKmsKeysVersions: json_.containsKey('allKmsKeysVersions')
+              ? (json_['allKmsKeysVersions'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           callLogLevel: json_.containsKey('callLogLevel')
               ? json_['callLogLevel'] as core.String
               : null,
@@ -1009,6 +1043,9 @@ class Workflow {
               : null,
           cryptoKeyName: json_.containsKey('cryptoKeyName')
               ? json_['cryptoKeyName'] as core.String
+              : null,
+          cryptoKeyVersion: json_.containsKey('cryptoKeyVersion')
+              ? json_['cryptoKeyVersion'] as core.String
               : null,
           description: json_.containsKey('description')
               ? json_['description'] as core.String
@@ -1055,9 +1092,13 @@ class Workflow {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (allKmsKeys != null) 'allKmsKeys': allKmsKeys!,
+        if (allKmsKeysVersions != null)
+          'allKmsKeysVersions': allKmsKeysVersions!,
         if (callLogLevel != null) 'callLogLevel': callLogLevel!,
         if (createTime != null) 'createTime': createTime!,
         if (cryptoKeyName != null) 'cryptoKeyName': cryptoKeyName!,
+        if (cryptoKeyVersion != null) 'cryptoKeyVersion': cryptoKeyVersion!,
         if (description != null) 'description': description!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,

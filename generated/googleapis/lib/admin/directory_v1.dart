@@ -530,7 +530,8 @@ class ChromeosdevicesResource {
   /// as the specified org unit. If this is set to true, 'orgUnitPath' must be
   /// provided.
   ///
-  /// [maxResults] - Maximum number of results to return.
+  /// [maxResults] - Maximum number of results to return, value should not
+  /// exceed 300.
   ///
   /// [orderBy] - Device property to use for sorting results.
   /// Possible string values are:
@@ -552,7 +553,8 @@ class ChromeosdevicesResource {
   /// page of query results. The follow-on request's `pageToken` query parameter
   /// is the `nextPageToken` from your previous response.
   ///
-  /// [projection] - Restrict information returned to a set of selected fields.
+  /// [projection] - Determines whether the response contains the full list of
+  /// properties or only a subset.
   /// Possible string values are:
   /// - "BASIC" : Includes only the basic metadata fields (e.g., deviceId,
   /// serialNumber, status, and user)
@@ -681,7 +683,8 @@ class ChromeosdevicesResource {
   /// \[chromeosdevices.list\](/admin-sdk/v1/reference/chromeosdevices/list)
   /// method.
   ///
-  /// [projection] - Restrict information returned to a set of selected fields.
+  /// [projection] - Determines whether the response contains the full list of
+  /// properties or only a subset.
   /// Possible string values are:
   /// - "BASIC" : Includes only the basic metadata fields (e.g., deviceId,
   /// serialNumber, status, and user)
@@ -743,7 +746,8 @@ class ChromeosdevicesResource {
   /// \[chromeosdevices.list\](/admin-sdk/v1/reference/chromeosdevices/list)
   /// method.
   ///
-  /// [projection] - Restrict information returned to a set of selected fields.
+  /// [projection] - Determines whether the response contains the full list of
+  /// properties or only a subset.
   /// Possible string values are:
   /// - "BASIC" : Includes only the basic metadata fields (e.g., deviceId,
   /// serialNumber, status, and user)
@@ -8260,6 +8264,15 @@ class ChromeOsDevice {
   /// [Chromebook developer information](https://www.chromium.org/chromium-os/developer-information-for-chrome-os-devices/samsung-series-5-chromebook#TOC-Developer-switch).
   core.String? bootMode;
 
+  /// Chrome OS type of the device.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "chromeOsTypeUnspecified" : Chrome OS Type unspecified.
+  /// - "chromeOsFlex" : Chrome OS Type Chrome OS Flex.
+  /// - "chromeOs" : Chrome OS Type Chrome OS.
+  core.String? chromeOsType;
+
   /// Information regarding CPU specs in the device.
   core.List<ChromeOsDeviceCpuInfo>? cpuInfo;
 
@@ -8501,6 +8514,7 @@ class ChromeOsDevice {
     this.autoUpdateThrough,
     this.backlightInfo,
     this.bootMode,
+    this.chromeOsType,
     this.cpuInfo,
     this.cpuStatusReports,
     this.deprovisionReason,
@@ -8576,6 +8590,9 @@ class ChromeOsDevice {
               : null,
           bootMode: json_.containsKey('bootMode')
               ? json_['bootMode'] as core.String
+              : null,
+          chromeOsType: json_.containsKey('chromeOsType')
+              ? json_['chromeOsType'] as core.String
               : null,
           cpuInfo: json_.containsKey('cpuInfo')
               ? (json_['cpuInfo'] as core.List)
@@ -8737,6 +8754,7 @@ class ChromeOsDevice {
         if (autoUpdateThrough != null) 'autoUpdateThrough': autoUpdateThrough!,
         if (backlightInfo != null) 'backlightInfo': backlightInfo!,
         if (bootMode != null) 'bootMode': bootMode!,
+        if (chromeOsType != null) 'chromeOsType': chromeOsType!,
         if (cpuInfo != null) 'cpuInfo': cpuInfo!,
         if (cpuStatusReports != null) 'cpuStatusReports': cpuStatusReports!,
         if (deprovisionReason != null) 'deprovisionReason': deprovisionReason!,

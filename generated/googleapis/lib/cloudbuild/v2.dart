@@ -1413,7 +1413,7 @@ class BitbucketDataCenterConfig {
   /// The URI of the Bitbucket Data Center instance or cluster this connection
   /// is for.
   ///
-  /// Required.
+  /// Optional.
   core.String? hostUri;
 
   /// A http access token with the `REPO_READ` access.
@@ -1509,6 +1509,8 @@ typedef CancelOperationRequest = $Empty;
 /// Bitbucket Cloud or GitLab.
 class Connection {
   /// Allows clients to store small amounts of arbitrary data.
+  ///
+  /// Optional.
   core.Map<core.String, core.String>? annotations;
 
   /// Configuration for connections to Bitbucket Cloud.
@@ -1526,6 +1528,8 @@ class Connection {
   ///
   /// Repository based API methods and webhooks processing for repositories in
   /// this connection will be disabled.
+  ///
+  /// Optional.
   core.bool? disabled;
 
   /// This checksum is computed by the server based on the value of other
@@ -1735,35 +1739,7 @@ typedef Empty = $Empty;
 typedef Expr = $Expr;
 
 /// Response for fetching git refs
-class FetchGitRefsResponse {
-  /// A token identifying a page of results the server should return.
-  core.String? nextPageToken;
-
-  /// Name of the refs fetched.
-  core.List<core.String>? refNames;
-
-  FetchGitRefsResponse({
-    this.nextPageToken,
-    this.refNames,
-  });
-
-  FetchGitRefsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
-          refNames: json_.containsKey('refNames')
-              ? (json_['refNames'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (refNames != null) 'refNames': refNames!,
-      };
-}
+typedef FetchGitRefsResponse = $FetchGitRefsResponse;
 
 /// Response message for FetchLinkableRepositories.
 class FetchLinkableRepositoriesResponse {
@@ -1801,17 +1777,19 @@ class FetchLinkableRepositoriesResponse {
 typedef FetchReadTokenRequest = $Empty;
 
 /// Message for responding to get read token.
-typedef FetchReadTokenResponse = $TokenResponse;
+typedef FetchReadTokenResponse = $TokenResponse00;
 
 /// Message for fetching SCM read/write token.
 typedef FetchReadWriteTokenRequest = $Empty;
 
 /// Message for responding to get read/write token.
-typedef FetchReadWriteTokenResponse = $TokenResponse;
+typedef FetchReadWriteTokenResponse = $TokenResponse00;
 
 /// Configuration for connections to github.com.
 class GitHubConfig {
   /// GitHub App installation id.
+  ///
+  /// Optional.
   core.String? appInstallationId;
 
   /// OAuth credential of the account that authorized the Cloud Build GitHub
@@ -1819,6 +1797,8 @@ class GitHubConfig {
   ///
   /// It is recommended to use a robot account instead of a human user account.
   /// The OAuth token must be tied to the Cloud Build GitHub App.
+  ///
+  /// Optional.
   OAuthCredential? authorizerCredential;
 
   GitHubConfig({
@@ -1852,12 +1832,18 @@ class GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfig {
   core.String? apiKey;
 
   /// Id of the GitHub App created from the manifest.
+  ///
+  /// Optional.
   core.String? appId;
 
   /// ID of the installation of the GitHub App.
+  ///
+  /// Optional.
   core.String? appInstallationId;
 
   /// The URL-friendly name of the GitHub App.
+  ///
+  /// Optional.
   core.String? appSlug;
 
   /// The URI of the GitHub Enterprise host this connection is for.
@@ -1867,6 +1853,8 @@ class GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfig {
 
   /// SecretManager resource containing the private key of the GitHub App,
   /// formatted as `projects / * /secrets / * /versions / * `.
+  ///
+  /// Optional.
   core.String? privateKeySecretVersion;
 
   /// GitHub Enterprise version installed at the host_uri.
@@ -1881,13 +1869,19 @@ class GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfig {
   /// on-premises and not reachable by public internet. If this field is left
   /// empty, calls to the GitHub Enterprise server will be made over the public
   /// internet.
+  ///
+  /// Optional.
   GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig? serviceDirectoryConfig;
 
   /// SSL certificate to use for requests to GitHub Enterprise.
+  ///
+  /// Optional.
   core.String? sslCa;
 
   /// SecretManager resource containing the webhook secret of the GitHub App,
   /// formatted as `projects / * /secrets / * /versions / * `.
+  ///
+  /// Optional.
   core.String? webhookSecretSecretVersion;
 
   GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfig({
@@ -1966,6 +1960,8 @@ class GoogleDevtoolsCloudbuildV2GitLabConfig {
   /// The URI of the GitLab Enterprise host this connection is for.
   ///
   /// If not specified, the default value is https://gitlab.com.
+  ///
+  /// Optional.
   core.String? hostUri;
 
   /// A GitLab personal access token with the minimum `read_api` scope access.
@@ -1985,9 +1981,13 @@ class GoogleDevtoolsCloudbuildV2GitLabConfig {
   /// on-premises and not reachable by public internet. If this field is left
   /// empty, calls to the GitLab Enterprise server will be made over the public
   /// internet.
+  ///
+  /// Optional.
   GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig? serviceDirectoryConfig;
 
   /// SSL certificate to use for requests to GitLab Enterprise.
+  ///
+  /// Optional.
   core.String? sslCa;
 
   /// SecretManager resource containing the webhook secret of a GitLab
@@ -2103,60 +2103,7 @@ typedef HttpBody = $HttpBody;
 /// the installation.
 ///
 /// Used for GitHub and GitHub Enterprise based connections.
-class InstallationState {
-  /// Link to follow for next action.
-  ///
-  /// Empty string if the installation is already complete.
-  ///
-  /// Output only.
-  core.String? actionUri;
-
-  /// Message of what the user should do next to continue the installation.
-  ///
-  /// Empty string if the installation is already complete.
-  ///
-  /// Output only.
-  core.String? message;
-
-  /// Current step of the installation process.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "STAGE_UNSPECIFIED" : No stage specified.
-  /// - "PENDING_CREATE_APP" : Only for GitHub Enterprise. An App creation has
-  /// been requested. The user needs to confirm the creation in their GitHub
-  /// enterprise host.
-  /// - "PENDING_USER_OAUTH" : User needs to authorize the GitHub (or
-  /// Enterprise) App via OAuth.
-  /// - "PENDING_INSTALL_APP" : User needs to follow the link to install the
-  /// GitHub (or Enterprise) App.
-  /// - "COMPLETE" : Installation process has been completed.
-  core.String? stage;
-
-  InstallationState({
-    this.actionUri,
-    this.message,
-    this.stage,
-  });
-
-  InstallationState.fromJson(core.Map json_)
-      : this(
-          actionUri: json_.containsKey('actionUri')
-              ? json_['actionUri'] as core.String
-              : null,
-          message: json_.containsKey('message')
-              ? json_['message'] as core.String
-              : null,
-          stage:
-              json_.containsKey('stage') ? json_['stage'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (actionUri != null) 'actionUri': actionUri!,
-        if (message != null) 'message': message!,
-        if (stage != null) 'stage': stage!,
-      };
-}
+typedef InstallationState = $InstallationState;
 
 /// Message for response to listing Connections.
 class ListConnectionsResponse {
@@ -2264,6 +2211,8 @@ class OAuthCredential {
   /// Cloud Build connection.
   ///
   /// Format: `projects / * /secrets / * /versions / * `.
+  ///
+  /// Optional.
   core.String? oauthTokenSecretVersion;
 
   /// The username associated to this token.
@@ -2493,6 +2442,8 @@ class Policy {
 /// A repository associated to a parent connection.
 class Repository {
   /// Allows clients to store small amounts of arbitrary data.
+  ///
+  /// Optional.
   core.Map<core.String, core.String>? annotations;
 
   /// Server assigned timestamp for when the connection was created.

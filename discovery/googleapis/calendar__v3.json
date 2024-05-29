@@ -36,7 +36,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240425",
+    "revision": "20240523",
     "rootUrl": "https://www.googleapis.com/",
     "servicePath": "calendar/v3/",
     "title": "Calendar API",
@@ -1097,12 +1097,14 @@
                             "enum": [
                                 "default",
                                 "focusTime",
+                                "fromGmail",
                                 "outOfOffice",
                                 "workingLocation"
                             ],
                             "enumDescriptions": [
                                 "Regular events.",
                                 "Focus time events.",
+                                "Events from Gmail.",
                                 "Out of office events.",
                                 "Working location events."
                             ],
@@ -1222,7 +1224,7 @@
                     "supportsSubscription": true
                 },
                 "move": {
-                    "description": "Moves an event to another calendar, i.e. changes an event's organizer. Note that only default events can be moved; outOfOffice, focusTime and workingLocation events cannot be moved.",
+                    "description": "Moves an event to another calendar, i.e. changes an event's organizer. Note that only default events can be moved; outOfOffice, focusTime, workingLocation and fromGmail events cannot be moved.",
                     "httpMethod": "POST",
                     "id": "calendar.events.move",
                     "parameterOrder": [
@@ -1512,12 +1514,14 @@
                             "enum": [
                                 "default",
                                 "focusTime",
+                                "fromGmail",
                                 "outOfOffice",
                                 "workingLocation"
                             ],
                             "enumDescriptions": [
                                 "Regular events.",
                                 "Focus time events.",
+                                "Events from Gmail.",
                                 "Out of office events.",
                                 "Working location events."
                             ],
@@ -2419,7 +2423,7 @@
                 },
                 "eventType": {
                     "default": "default",
-                    "description": "Specific type of the event. This cannot be modified after the event is created. Possible values are:  \n- \"default\" - A regular event or not further specified. \n- \"outOfOffice\" - An out-of-office event. \n- \"focusTime\" - A focus-time event. \n- \"workingLocation\" - A working location event.",
+                    "description": "Specific type of the event. This cannot be modified after the event is created. Possible values are:  \n- \"default\" - A regular event or not further specified. \n- \"outOfOffice\" - An out-of-office event. \n- \"focusTime\" - A focus-time event. \n- \"workingLocation\" - A working location event. \n- \"fromGmail\" - An event from Gmail. This type of event cannot be created.",
                     "type": "string"
                 },
                 "extendedProperties": {

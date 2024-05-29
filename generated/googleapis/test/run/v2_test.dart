@@ -1064,6 +1064,7 @@ api.GoogleCloudRunV2Job buildGoogleCloudRunV2Job() {
     o.name = 'foo';
     o.observedGeneration = 'foo';
     o.reconciling = true;
+    o.runExecutionToken = 'foo';
     o.satisfiesPzs = true;
     o.startExecutionToken = 'foo';
     o.template = buildGoogleCloudRunV2ExecutionTemplate();
@@ -1136,6 +1137,10 @@ void checkGoogleCloudRunV2Job(api.GoogleCloudRunV2Job o) {
       unittest.equals('foo'),
     );
     unittest.expect(o.reconciling!, unittest.isTrue);
+    unittest.expect(
+      o.runExecutionToken!,
+      unittest.equals('foo'),
+    );
     unittest.expect(o.satisfiesPzs!, unittest.isTrue);
     unittest.expect(
       o.startExecutionToken!,

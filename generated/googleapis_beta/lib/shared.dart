@@ -860,9 +860,9 @@ class $SasPortalInstallationParams {
 
   /// Peak antenna gain in dBi.
   ///
-  /// This parameter is an integer with a value between -127 and +128 (dBi)
-  /// inclusive.
-  core.int? antennaGain;
+  /// This parameter is a double with a value between -127 and +128 (dBi)
+  /// inclusive. Part of Release 2 to support floating-point value
+  core.double? antennaGain;
 
   /// If an external antenna is used, the antenna model is optionally provided
   /// in this field.
@@ -960,7 +960,7 @@ class $SasPortalInstallationParams {
               ? json_['antennaDowntilt'] as core.int
               : null,
           antennaGain: json_.containsKey('antennaGain')
-              ? json_['antennaGain'] as core.int
+              ? (json_['antennaGain'] as core.num).toDouble()
               : null,
           antennaModel: json_.containsKey('antennaModel')
               ? json_['antennaModel'] as core.String

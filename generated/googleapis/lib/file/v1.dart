@@ -1466,6 +1466,11 @@ class Instance {
   /// For this version, only a single network is supported.
   core.List<NetworkConfig>? networks;
 
+  /// Replicaition configuration.
+  ///
+  /// Optional.
+  Replication? replication;
+
   /// Reserved for future use.
   ///
   /// Output only.
@@ -1539,6 +1544,7 @@ class Instance {
     this.labels,
     this.name,
     this.networks,
+    this.replication,
     this.satisfiesPzi,
     this.satisfiesPzs,
     this.state,
@@ -1580,6 +1586,10 @@ class Instance {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          replication: json_.containsKey('replication')
+              ? Replication.fromJson(
+                  json_['replication'] as core.Map<core.String, core.dynamic>)
+              : null,
           satisfiesPzi: json_.containsKey('satisfiesPzi')
               ? json_['satisfiesPzi'] as core.bool
               : null,
@@ -1608,6 +1618,7 @@ class Instance {
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (networks != null) 'networks': networks!,
+        if (replication != null) 'replication': replication!,
         if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
         if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (state != null) 'state': state!,
@@ -2067,6 +2078,112 @@ class Operation {
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (response != null) 'response': response!,
+      };
+}
+
+/// Replica configuration for the instance.
+class ReplicaConfig {
+  /// The timestamp of the latest replication snapshot taken on the active
+  /// instance and is already replicated safely.
+  ///
+  /// Output only.
+  core.String? lastActiveSyncTime;
+
+  /// The peer instance.
+  ///
+  /// Optional.
+  core.String? peerInstance;
+
+  /// The replica state.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : State not set.
+  /// - "CREATING" : The replica is being created.
+  /// - "READY" : The replica is ready.
+  /// - "REMOVING" : The replica is being removed.
+  /// - "FAILED" : The replica is experiencing an issue and might be unusable.
+  /// You can get further details from the `stateReasons` field of the
+  /// `ReplicaConfig` object.
+  core.String? state;
+
+  /// Additional information about the replication state, if available.
+  ///
+  /// Output only.
+  core.List<core.String>? stateReasons;
+
+  ReplicaConfig({
+    this.lastActiveSyncTime,
+    this.peerInstance,
+    this.state,
+    this.stateReasons,
+  });
+
+  ReplicaConfig.fromJson(core.Map json_)
+      : this(
+          lastActiveSyncTime: json_.containsKey('lastActiveSyncTime')
+              ? json_['lastActiveSyncTime'] as core.String
+              : null,
+          peerInstance: json_.containsKey('peerInstance')
+              ? json_['peerInstance'] as core.String
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          stateReasons: json_.containsKey('stateReasons')
+              ? (json_['stateReasons'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (lastActiveSyncTime != null)
+          'lastActiveSyncTime': lastActiveSyncTime!,
+        if (peerInstance != null) 'peerInstance': peerInstance!,
+        if (state != null) 'state': state!,
+        if (stateReasons != null) 'stateReasons': stateReasons!,
+      };
+}
+
+/// Replication specifications.
+class Replication {
+  /// Replicas configuration on the instance.
+  ///
+  /// For now, only a single replica config is supported.
+  ///
+  /// Optional.
+  core.List<ReplicaConfig>? replicas;
+
+  /// The replication role.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "ROLE_UNSPECIFIED" : Role not set.
+  /// - "ACTIVE" : The instance is a Active replication member, functions as the
+  /// replication source instance.
+  /// - "STANDBY" : The instance is a Standby replication member, functions as
+  /// the replication destination instance.
+  core.String? role;
+
+  Replication({
+    this.replicas,
+    this.role,
+  });
+
+  Replication.fromJson(core.Map json_)
+      : this(
+          replicas: json_.containsKey('replicas')
+              ? (json_['replicas'] as core.List)
+                  .map((value) => ReplicaConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          role: json_.containsKey('role') ? json_['role'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (replicas != null) 'replicas': replicas!,
+        if (role != null) 'role': role!,
       };
 }
 

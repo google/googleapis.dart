@@ -2916,10 +2916,9 @@ class ListTriggersResponse {
 /// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
-/// Represents a network config to be used for destination resolution and
-/// connectivity.
+/// Network Configuration that can be inherited by other protos.
 class NetworkConfig {
-  /// Name of the NetworkAttachment that allows access to the destination VPC.
+  /// Name of the NetworkAttachment that allows access to the customer's VPC.
   ///
   /// Format:
   /// `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`

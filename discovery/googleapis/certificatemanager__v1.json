@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240417",
+    "revision": "20240508",
     "rootUrl": "https://certificatemanager.googleapis.com/",
     "servicePath": "",
     "title": "Certificate Manager API",

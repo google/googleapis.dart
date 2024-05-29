@@ -429,6 +429,8 @@ class ProjectsLocationsJobsResource {
 
   /// Lists Jobs.
   ///
+  /// Results are sorted by creation time, descending.
+  ///
   /// Request parameters:
   ///
   /// [parent] - Required. The location and project to list resources on.
@@ -866,6 +868,8 @@ class ProjectsLocationsJobsExecutionsResource {
   }
 
   /// Lists Executions from a Job.
+  ///
+  /// Results are sorted by creation time, descending.
   ///
   /// Request parameters:
   ///
@@ -1432,6 +1436,8 @@ class ProjectsLocationsServicesResource {
 
   /// Lists Services.
   ///
+  /// Results are sorted by creation time, descending.
+  ///
   /// Request parameters:
   ///
   /// [parent] - Required. The location and project to list resources on.
@@ -1784,6 +1790,8 @@ class ProjectsLocationsServicesRevisionsResource {
   }
 
   /// Lists Revisions from a given Service, or from a given location.
+  ///
+  /// Results are sorted by creation time, descending.
   ///
   /// Request parameters:
   ///
@@ -3445,6 +3453,12 @@ class GoogleCloudRunV2Job {
   /// Output only.
   core.bool? reconciling;
 
+  /// A unique string used as a suffix for creating a new execution.
+  ///
+  /// The Job will become ready when the execution is successfully completed.
+  /// The sum of job name and token length must be fewer than 63 characters.
+  core.String? runExecutionToken;
+
   /// Reserved for future use.
   ///
   /// Output only.
@@ -3500,6 +3514,7 @@ class GoogleCloudRunV2Job {
     this.name,
     this.observedGeneration,
     this.reconciling,
+    this.runExecutionToken,
     this.satisfiesPzs,
     this.startExecutionToken,
     this.template,
@@ -3581,6 +3596,9 @@ class GoogleCloudRunV2Job {
           reconciling: json_.containsKey('reconciling')
               ? json_['reconciling'] as core.bool
               : null,
+          runExecutionToken: json_.containsKey('runExecutionToken')
+              ? json_['runExecutionToken'] as core.String
+              : null,
           satisfiesPzs: json_.containsKey('satisfiesPzs')
               ? json_['satisfiesPzs'] as core.bool
               : null,
@@ -3624,6 +3642,7 @@ class GoogleCloudRunV2Job {
         if (observedGeneration != null)
           'observedGeneration': observedGeneration!,
         if (reconciling != null) 'reconciling': reconciling!,
+        if (runExecutionToken != null) 'runExecutionToken': runExecutionToken!,
         if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (startExecutionToken != null)
           'startExecutionToken': startExecutionToken!,

@@ -7179,7 +7179,7 @@ class Rule {
 /// SecurityProfile is a resource that defines the behavior for one of many
 /// ProfileTypes.
 ///
-/// Next ID: 9
+/// Next ID: 10
 class SecurityProfile {
   /// Resource creation timestamp.
   ///
@@ -7286,7 +7286,7 @@ class SecurityProfile {
 /// SecurityProfileGroup is a resource that defines the behavior for various
 /// ProfileTypes.
 ///
-/// Next ID: 8
+/// Next ID: 9
 class SecurityProfileGroup {
   /// Resource creation timestamp.
   ///

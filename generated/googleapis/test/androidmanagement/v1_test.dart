@@ -8104,6 +8104,7 @@ void main() {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
       final res = api.AndroidManagementApi(mock).signupUrls;
+      final arg_adminEmail = 'foo';
       final arg_callbackUrl = 'foo';
       final arg_projectId = 'foo';
       final arg_$fields = 'foo';
@@ -8139,6 +8140,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['adminEmail']!.first,
+          unittest.equals(arg_adminEmail),
+        );
+        unittest.expect(
           queryMap['callbackUrl']!.first,
           unittest.equals(arg_callbackUrl),
         );
@@ -8158,6 +8163,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.create(
+          adminEmail: arg_adminEmail,
           callbackUrl: arg_callbackUrl,
           projectId: arg_projectId,
           $fields: arg_$fields);

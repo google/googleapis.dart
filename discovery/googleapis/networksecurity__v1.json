@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240320",
+    "revision": "20240510",
     "rootUrl": "https://networksecurity.googleapis.com/",
     "servicePath": "",
     "title": "Network Security API",
@@ -4410,7 +4410,7 @@
             "type": "object"
         },
         "SecurityProfile": {
-            "description": "SecurityProfile is a resource that defines the behavior for one of many ProfileTypes. Next ID: 9",
+            "description": "SecurityProfile is a resource that defines the behavior for one of many ProfileTypes. Next ID: 10",
             "id": "SecurityProfile",
             "properties": {
                 "createTime": {
@@ -4465,7 +4465,7 @@
             "type": "object"
         },
         "SecurityProfileGroup": {
-            "description": "SecurityProfileGroup is a resource that defines the behavior for various ProfileTypes. Next ID: 8",
+            "description": "SecurityProfileGroup is a resource that defines the behavior for various ProfileTypes. Next ID: 9",
             "id": "SecurityProfileGroup",
             "properties": {
                 "createTime": {

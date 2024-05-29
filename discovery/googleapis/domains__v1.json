@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240327",
+    "revision": "20240520",
     "rootUrl": "https://domains.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Domains API",
@@ -1476,7 +1476,7 @@
                     "type": "string"
                 },
                 "transferLockState": {
-                    "description": "Controls whether the domain can be transferred to another registrar.",
+                    "description": "This is the desired transfer lock state for this `Registration`. A transfer lock controls whether the domain can be transferred to another registrar.",
                     "enum": [
                         "TRANSFER_LOCK_STATE_UNSPECIFIED",
                         "UNLOCKED",

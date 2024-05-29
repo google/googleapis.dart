@@ -5299,6 +5299,7 @@ void main() {
       final arg_request = buildOSPolicyAssignment();
       final arg_parent = 'foo';
       final arg_osPolicyAssignmentId = 'foo';
+      final arg_requestId = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj = api.OSPolicyAssignment.fromJson(
@@ -5341,6 +5342,10 @@ void main() {
           unittest.equals(arg_osPolicyAssignmentId),
         );
         unittest.expect(
+          queryMap['requestId']!.first,
+          unittest.equals(arg_requestId),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -5352,7 +5357,9 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.create(arg_request, arg_parent,
-          osPolicyAssignmentId: arg_osPolicyAssignmentId, $fields: arg_$fields);
+          osPolicyAssignmentId: arg_osPolicyAssignmentId,
+          requestId: arg_requestId,
+          $fields: arg_$fields);
       checkOperation(response as api.Operation);
     });
 
@@ -5360,6 +5367,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.OSConfigApi(mock).projects.locations.osPolicyAssignments;
       final arg_name = 'foo';
+      final arg_requestId = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -5394,6 +5402,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['requestId']!.first,
+          unittest.equals(arg_requestId),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -5404,7 +5416,8 @@ void main() {
         final resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      final response = await res.delete(arg_name, $fields: arg_$fields);
+      final response = await res.delete(arg_name,
+          requestId: arg_requestId, $fields: arg_$fields);
       checkOperation(response as api.Operation);
     });
 
@@ -5599,6 +5612,8 @@ void main() {
       final res = api.OSConfigApi(mock).projects.locations.osPolicyAssignments;
       final arg_request = buildOSPolicyAssignment();
       final arg_name = 'foo';
+      final arg_allowMissing = true;
+      final arg_requestId = 'foo';
       final arg_updateMask = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5638,6 +5653,14 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['allowMissing']!.first,
+          unittest.equals('$arg_allowMissing'),
+        );
+        unittest.expect(
+          queryMap['requestId']!.first,
+          unittest.equals(arg_requestId),
+        );
+        unittest.expect(
           queryMap['updateMask']!.first,
           unittest.equals(arg_updateMask),
         );
@@ -5653,7 +5676,10 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.patch(arg_request, arg_name,
-          updateMask: arg_updateMask, $fields: arg_$fields);
+          allowMissing: arg_allowMissing,
+          requestId: arg_requestId,
+          updateMask: arg_updateMask,
+          $fields: arg_$fields);
       checkOperation(response as api.Operation);
     });
   });

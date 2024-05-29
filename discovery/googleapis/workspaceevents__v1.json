@@ -55,7 +55,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240507",
+    "revision": "20240526",
     "rootUrl": "https://workspaceevents.googleapis.com/",
     "servicePath": "",
     "title": "Google Workspace Events API",

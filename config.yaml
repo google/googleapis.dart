@@ -113,6 +113,7 @@ packages:
     - datastore:v1 # https://developers.google.com/datastore/
     - datastream:v1
     - deploymentmanager:v2 # https://cloud.google.com/deployment-manager/
+    - developerconnect:v1
     - dfareporting:v3.5
     - dfareporting:v4
     - dialogflow:v2 # https://cloud.google.com/dialogflow-enterprise/

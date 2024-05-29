@@ -451,8 +451,9 @@ class GoogleMapsPlacesV1AutocompletePlacesRequest {
   core.bool? includeQueryPredictions;
 
   /// Included primary Place type (for example, "restaurant" or "gas_station")
-  /// from
-  /// https://developers.google.com/maps/documentation/places/web-service/place-types.
+  /// in Place Types
+  /// (https://developers.google.com/maps/documentation/places/web-service/place-types),
+  /// or only `(regions)`, or only `(cities)`.
   ///
   /// A Place is only returned if its primary type is included in this list. Up
   /// to 5 values can be specified. If no types are specified, all Place types
@@ -1074,6 +1075,299 @@ class GoogleMapsPlacesV1Circle {
       };
 }
 
+/// A block of content that can be served individually.
+class GoogleMapsPlacesV1ContentBlock {
+  /// Content related to the topic.
+  GoogleTypeLocalizedText? content;
+
+  /// Experimental: See
+  /// https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative
+  /// for more details.
+  ///
+  /// References that are related to this block of content.
+  GoogleMapsPlacesV1References? references;
+
+  /// The topic of the content, for example "overview" or "restaurant".
+  core.String? topic;
+
+  GoogleMapsPlacesV1ContentBlock({
+    this.content,
+    this.references,
+    this.topic,
+  });
+
+  GoogleMapsPlacesV1ContentBlock.fromJson(core.Map json_)
+      : this(
+          content: json_.containsKey('content')
+              ? GoogleTypeLocalizedText.fromJson(
+                  json_['content'] as core.Map<core.String, core.dynamic>)
+              : null,
+          references: json_.containsKey('references')
+              ? GoogleMapsPlacesV1References.fromJson(
+                  json_['references'] as core.Map<core.String, core.dynamic>)
+              : null,
+          topic:
+              json_.containsKey('topic') ? json_['topic'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (content != null) 'content': content!,
+        if (references != null) 'references': references!,
+        if (topic != null) 'topic': topic!,
+      };
+}
+
+/// Experimental: See
+/// https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative
+/// for more details.
+///
+/// Content that is contextual to the place query.
+class GoogleMapsPlacesV1ContextualContent {
+  /// Experimental: See
+  /// https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative
+  /// for more details.
+  ///
+  /// Justifications for the place.
+  core.List<GoogleMapsPlacesV1ContextualContentJustification>? justifications;
+
+  /// Information (including references) about photos of this place, contexual
+  /// to the place query.
+  core.List<GoogleMapsPlacesV1Photo>? photos;
+
+  /// List of reviews about this place, contexual to the place query.
+  core.List<GoogleMapsPlacesV1Review>? reviews;
+
+  GoogleMapsPlacesV1ContextualContent({
+    this.justifications,
+    this.photos,
+    this.reviews,
+  });
+
+  GoogleMapsPlacesV1ContextualContent.fromJson(core.Map json_)
+      : this(
+          justifications: json_.containsKey('justifications')
+              ? (json_['justifications'] as core.List)
+                  .map((value) =>
+                      GoogleMapsPlacesV1ContextualContentJustification.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          photos: json_.containsKey('photos')
+              ? (json_['photos'] as core.List)
+                  .map((value) => GoogleMapsPlacesV1Photo.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          reviews: json_.containsKey('reviews')
+              ? (json_['reviews'] as core.List)
+                  .map((value) => GoogleMapsPlacesV1Review.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (justifications != null) 'justifications': justifications!,
+        if (photos != null) 'photos': photos!,
+        if (reviews != null) 'reviews': reviews!,
+      };
+}
+
+/// Experimental: See
+/// https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative
+/// for more details.
+///
+/// Justifications for the place. Justifications answers the question of why a
+/// place could interest an end user.
+class GoogleMapsPlacesV1ContextualContentJustification {
+  /// Experimental: See
+  /// https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative
+  /// for more details.
+  GoogleMapsPlacesV1ContextualContentJustificationBusinessAvailabilityAttributesJustification?
+      businessAvailabilityAttributesJustification;
+
+  /// Experimental: See
+  /// https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative
+  /// for more details.
+  GoogleMapsPlacesV1ContextualContentJustificationReviewJustification?
+      reviewJustification;
+
+  GoogleMapsPlacesV1ContextualContentJustification({
+    this.businessAvailabilityAttributesJustification,
+    this.reviewJustification,
+  });
+
+  GoogleMapsPlacesV1ContextualContentJustification.fromJson(core.Map json_)
+      : this(
+          businessAvailabilityAttributesJustification: json_
+                  .containsKey('businessAvailabilityAttributesJustification')
+              ? GoogleMapsPlacesV1ContextualContentJustificationBusinessAvailabilityAttributesJustification
+                  .fromJson(json_['businessAvailabilityAttributesJustification']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          reviewJustification: json_.containsKey('reviewJustification')
+              ? GoogleMapsPlacesV1ContextualContentJustificationReviewJustification
+                  .fromJson(json_['reviewJustification']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (businessAvailabilityAttributesJustification != null)
+          'businessAvailabilityAttributesJustification':
+              businessAvailabilityAttributesJustification!,
+        if (reviewJustification != null)
+          'reviewJustification': reviewJustification!,
+      };
+}
+
+/// Experimental: See
+/// https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative
+/// for more details.
+///
+/// BusinessAvailabilityAttributes justifications. This shows some attributes a
+/// business has that could interest an end user.
+class GoogleMapsPlacesV1ContextualContentJustificationBusinessAvailabilityAttributesJustification {
+  /// If a place provides delivery.
+  core.bool? delivery;
+
+  /// If a place provides dine-in.
+  core.bool? dineIn;
+
+  /// If a place provides takeout.
+  core.bool? takeout;
+
+  GoogleMapsPlacesV1ContextualContentJustificationBusinessAvailabilityAttributesJustification({
+    this.delivery,
+    this.dineIn,
+    this.takeout,
+  });
+
+  GoogleMapsPlacesV1ContextualContentJustificationBusinessAvailabilityAttributesJustification.fromJson(
+      core.Map json_)
+      : this(
+          delivery: json_.containsKey('delivery')
+              ? json_['delivery'] as core.bool
+              : null,
+          dineIn:
+              json_.containsKey('dineIn') ? json_['dineIn'] as core.bool : null,
+          takeout: json_.containsKey('takeout')
+              ? json_['takeout'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (delivery != null) 'delivery': delivery!,
+        if (dineIn != null) 'dineIn': dineIn!,
+        if (takeout != null) 'takeout': takeout!,
+      };
+}
+
+/// Experimental: See
+/// https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative
+/// for more details.
+///
+/// User review justifications. This highlights a section of the user review
+/// that would interest an end user. For instance, if the search query is
+/// "firewood pizza", the review justification highlights the text relevant to
+/// the search query.
+class GoogleMapsPlacesV1ContextualContentJustificationReviewJustification {
+  GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedText?
+      highlightedText;
+
+  /// The review that the highlighted text is generated from.
+  GoogleMapsPlacesV1Review? review;
+
+  GoogleMapsPlacesV1ContextualContentJustificationReviewJustification({
+    this.highlightedText,
+    this.review,
+  });
+
+  GoogleMapsPlacesV1ContextualContentJustificationReviewJustification.fromJson(
+      core.Map json_)
+      : this(
+          highlightedText: json_.containsKey('highlightedText')
+              ? GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedText
+                  .fromJson(json_['highlightedText']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          review: json_.containsKey('review')
+              ? GoogleMapsPlacesV1Review.fromJson(
+                  json_['review'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (highlightedText != null) 'highlightedText': highlightedText!,
+        if (review != null) 'review': review!,
+      };
+}
+
+/// The text highlighted by the justification.
+///
+/// This is a subset of the review itself. The exact word to highlight is marked
+/// by the HighlightedTextRange. There could be several words in the text being
+/// highlighted.
+class GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedText {
+  /// The list of the ranges of the highlighted text.
+  core.List<
+          GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedTextHighlightedTextRange>?
+      highlightedTextRanges;
+  core.String? text;
+
+  GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedText({
+    this.highlightedTextRanges,
+    this.text,
+  });
+
+  GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedText.fromJson(
+      core.Map json_)
+      : this(
+          highlightedTextRanges: json_.containsKey('highlightedTextRanges')
+              ? (json_['highlightedTextRanges'] as core.List)
+                  .map((value) =>
+                      GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedTextHighlightedTextRange
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          text: json_.containsKey('text') ? json_['text'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (highlightedTextRanges != null)
+          'highlightedTextRanges': highlightedTextRanges!,
+        if (text != null) 'text': text!,
+      };
+}
+
+/// The range of highlighted text.
+class GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedTextHighlightedTextRange {
+  core.int? endIndex;
+  core.int? startIndex;
+
+  GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedTextHighlightedTextRange({
+    this.endIndex,
+    this.startIndex,
+  });
+
+  GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedTextHighlightedTextRange.fromJson(
+      core.Map json_)
+      : this(
+          endIndex: json_.containsKey('endIndex')
+              ? json_['endIndex'] as core.int
+              : null,
+          startIndex: json_.containsKey('startIndex')
+              ? json_['startIndex'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endIndex != null) 'endIndex': endIndex!,
+        if (startIndex != null) 'startIndex': startIndex!,
+      };
+}
+
 /// Information about the EV Charge Station hosted in Place.
 ///
 /// Terminology follows
@@ -1394,6 +1688,13 @@ class GoogleMapsPlacesV1Place {
   /// Place allows dogs.
   core.bool? allowsDogs;
 
+  /// Experimental: See
+  /// https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative
+  /// for more details.
+  ///
+  /// AI-generated summary of the area that the place is in.
+  GoogleMapsPlacesV1PlaceAreaSummary? areaSummary;
+
   /// A set of data provider that must be shown with this result.
   core.List<GoogleMapsPlacesV1PlaceAttribution>? attributions;
 
@@ -1457,6 +1758,13 @@ class GoogleMapsPlacesV1Place {
   ///
   /// This information is updated regularly.
   GoogleMapsPlacesV1FuelOptions? fuelOptions;
+
+  /// Experimental: See
+  /// https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative
+  /// for more details.
+  ///
+  /// AI-generated summary of the place.
+  GoogleMapsPlacesV1PlaceGenerativeSummary? generativeSummary;
 
   /// Place is good for children.
   core.bool? goodForChildren;
@@ -1645,6 +1953,7 @@ class GoogleMapsPlacesV1Place {
     this.addressComponents,
     this.adrFormatAddress,
     this.allowsDogs,
+    this.areaSummary,
     this.attributions,
     this.businessStatus,
     this.curbsidePickup,
@@ -1657,6 +1966,7 @@ class GoogleMapsPlacesV1Place {
     this.evChargeOptions,
     this.formattedAddress,
     this.fuelOptions,
+    this.generativeSummary,
     this.goodForChildren,
     this.goodForGroups,
     this.goodForWatchingSports,
@@ -1724,6 +2034,10 @@ class GoogleMapsPlacesV1Place {
           allowsDogs: json_.containsKey('allowsDogs')
               ? json_['allowsDogs'] as core.bool
               : null,
+          areaSummary: json_.containsKey('areaSummary')
+              ? GoogleMapsPlacesV1PlaceAreaSummary.fromJson(
+                  json_['areaSummary'] as core.Map<core.String, core.dynamic>)
+              : null,
           attributions: json_.containsKey('attributions')
               ? (json_['attributions'] as core.List)
                   .map((value) => GoogleMapsPlacesV1PlaceAttribution.fromJson(
@@ -1772,6 +2086,11 @@ class GoogleMapsPlacesV1Place {
           fuelOptions: json_.containsKey('fuelOptions')
               ? GoogleMapsPlacesV1FuelOptions.fromJson(
                   json_['fuelOptions'] as core.Map<core.String, core.dynamic>)
+              : null,
+          generativeSummary: json_.containsKey('generativeSummary')
+              ? GoogleMapsPlacesV1PlaceGenerativeSummary.fromJson(
+                  json_['generativeSummary']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           goodForChildren: json_.containsKey('goodForChildren')
               ? json_['goodForChildren'] as core.bool
@@ -1939,6 +2258,7 @@ class GoogleMapsPlacesV1Place {
         if (addressComponents != null) 'addressComponents': addressComponents!,
         if (adrFormatAddress != null) 'adrFormatAddress': adrFormatAddress!,
         if (allowsDogs != null) 'allowsDogs': allowsDogs!,
+        if (areaSummary != null) 'areaSummary': areaSummary!,
         if (attributions != null) 'attributions': attributions!,
         if (businessStatus != null) 'businessStatus': businessStatus!,
         if (curbsidePickup != null) 'curbsidePickup': curbsidePickup!,
@@ -1953,6 +2273,7 @@ class GoogleMapsPlacesV1Place {
         if (evChargeOptions != null) 'evChargeOptions': evChargeOptions!,
         if (formattedAddress != null) 'formattedAddress': formattedAddress!,
         if (fuelOptions != null) 'fuelOptions': fuelOptions!,
+        if (generativeSummary != null) 'generativeSummary': generativeSummary!,
         if (goodForChildren != null) 'goodForChildren': goodForChildren!,
         if (goodForGroups != null) 'goodForGroups': goodForGroups!,
         if (goodForWatchingSports != null)
@@ -2117,6 +2438,36 @@ class GoogleMapsPlacesV1PlaceAddressComponent {
       };
 }
 
+/// Experimental: See
+/// https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative
+/// for more details.
+///
+/// AI-generated summary of the area that the place is in.
+class GoogleMapsPlacesV1PlaceAreaSummary {
+  /// Content blocks that compose the area summary.
+  ///
+  /// Each block has a separate topic about the area.
+  core.List<GoogleMapsPlacesV1ContentBlock>? contentBlocks;
+
+  GoogleMapsPlacesV1PlaceAreaSummary({
+    this.contentBlocks,
+  });
+
+  GoogleMapsPlacesV1PlaceAreaSummary.fromJson(core.Map json_)
+      : this(
+          contentBlocks: json_.containsKey('contentBlocks')
+              ? (json_['contentBlocks'] as core.List)
+                  .map((value) => GoogleMapsPlacesV1ContentBlock.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (contentBlocks != null) 'contentBlocks': contentBlocks!,
+      };
+}
+
 /// Information about data providers of this place.
 class GoogleMapsPlacesV1PlaceAttribution {
   /// Name of the Place's data provider.
@@ -2143,6 +2494,50 @@ class GoogleMapsPlacesV1PlaceAttribution {
   core.Map<core.String, core.dynamic> toJson() => {
         if (provider != null) 'provider': provider!,
         if (providerUri != null) 'providerUri': providerUri!,
+      };
+}
+
+/// Experimental: See
+/// https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative
+/// for more details.
+///
+/// AI-generated summary of the place.
+class GoogleMapsPlacesV1PlaceGenerativeSummary {
+  /// The detailed description of the place.
+  GoogleTypeLocalizedText? description;
+
+  /// The overview of the place.
+  GoogleTypeLocalizedText? overview;
+
+  /// References that are used to generate the summary description.
+  GoogleMapsPlacesV1References? references;
+
+  GoogleMapsPlacesV1PlaceGenerativeSummary({
+    this.description,
+    this.overview,
+    this.references,
+  });
+
+  GoogleMapsPlacesV1PlaceGenerativeSummary.fromJson(core.Map json_)
+      : this(
+          description: json_.containsKey('description')
+              ? GoogleTypeLocalizedText.fromJson(
+                  json_['description'] as core.Map<core.String, core.dynamic>)
+              : null,
+          overview: json_.containsKey('overview')
+              ? GoogleTypeLocalizedText.fromJson(
+                  json_['overview'] as core.Map<core.String, core.dynamic>)
+              : null,
+          references: json_.containsKey('references')
+              ? GoogleMapsPlacesV1References.fromJson(
+                  json_['references'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
+        if (overview != null) 'overview': overview!,
+        if (references != null) 'references': references!,
       };
 }
 
@@ -2510,6 +2905,46 @@ class GoogleMapsPlacesV1PlaceSubDestination {
       };
 }
 
+/// Experimental: See
+/// https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative
+/// for more details.
+///
+/// Reference that the generative content is related to.
+class GoogleMapsPlacesV1References {
+  /// The list of resource names of the referenced places.
+  ///
+  /// This name can be used in other APIs that accept Place resource names.
+  core.List<core.String>? places;
+
+  /// Reviews that serve as references.
+  core.List<GoogleMapsPlacesV1Review>? reviews;
+
+  GoogleMapsPlacesV1References({
+    this.places,
+    this.reviews,
+  });
+
+  GoogleMapsPlacesV1References.fromJson(core.Map json_)
+      : this(
+          places: json_.containsKey('places')
+              ? (json_['places'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          reviews: json_.containsKey('reviews')
+              ? (json_['reviews'] as core.List)
+                  .map((value) => GoogleMapsPlacesV1Review.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (places != null) 'places': places!,
+        if (reviews != null) 'reviews': reviews!,
+      };
+}
+
 /// Information about a review of a place.
 class GoogleMapsPlacesV1Review {
   /// This review's author.
@@ -2842,12 +3277,19 @@ class GoogleMapsPlacesV1SearchTextRequest {
   /// location will not be returned. Cannot be set along with location_bias.
   GoogleMapsPlacesV1SearchTextRequestLocationRestriction? locationRestriction;
 
-  /// Maximum number of results to return.
+  /// Deprecated: Use `page_size` instead.
   ///
-  /// It must be between 1 and 20, inclusively. The default is 20. If the number
-  /// is unset, it falls back to the upper limit. If the number is set to
-  /// negative or exceeds the upper limit, an INVALID_ARGUMENT error is
-  /// returned.
+  /// The maximum number of results per page that can be returned. If the number
+  /// of available results is larger than `max_result_count`, a
+  /// `next_page_token` is returned which can be passed to `page_token` to get
+  /// the next page of results in subsequent requests. If 0 or no value is
+  /// provided, a default of 20 is used. The maximum value is 20; values above
+  /// 20 will be coerced to 20. Negative values will return an INVALID_ARGUMENT
+  /// error. If both `max_result_count` and `page_size` are specified,
+  /// `max_result_count` will be ignored.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.int? maxResultCount;
 
   /// Filter out results whose average user rating is strictly less than this
@@ -2863,6 +3305,29 @@ class GoogleMapsPlacesV1SearchTextRequest {
   ///
   /// The default is false.
   core.bool? openNow;
+
+  /// The maximum number of results per page that can be returned.
+  ///
+  /// If the number of available results is larger than `page_size`, a
+  /// `next_page_token` is returned which can be passed to `page_token` to get
+  /// the next page of results in subsequent requests. If 0 or no value is
+  /// provided, a default of 20 is used. The maximum value is 20; values above
+  /// 20 will be set to 20. Negative values will return an INVALID_ARGUMENT
+  /// error. If both `max_result_count` and `page_size` are specified,
+  /// `max_result_count` will be ignored.
+  ///
+  /// Optional.
+  core.int? pageSize;
+
+  /// A page token, received from a previous TextSearch call.
+  ///
+  /// Provide this to retrieve the subsequent page. When paginating, all
+  /// parameters other than `page_token`, `page_size`, and `max_result_count`
+  /// provided to TextSearch must match the initial call that provided the page
+  /// token. Otherwise an INVALID_ARGUMENT error is returned.
+  ///
+  /// Optional.
+  core.String? pageToken;
 
   /// Used to restrict the search to places that are marked as certain price
   /// levels.
@@ -2912,6 +3377,8 @@ class GoogleMapsPlacesV1SearchTextRequest {
     this.maxResultCount,
     this.minRating,
     this.openNow,
+    this.pageSize,
+    this.pageToken,
     this.priceLevels,
     this.rankPreference,
     this.regionCode,
@@ -2949,6 +3416,12 @@ class GoogleMapsPlacesV1SearchTextRequest {
           openNow: json_.containsKey('openNow')
               ? json_['openNow'] as core.bool
               : null,
+          pageSize: json_.containsKey('pageSize')
+              ? json_['pageSize'] as core.int
+              : null,
+          pageToken: json_.containsKey('pageToken')
+              ? json_['pageToken'] as core.String
+              : null,
           priceLevels: json_.containsKey('priceLevels')
               ? (json_['priceLevels'] as core.List)
                   .map((value) => value as core.String)
@@ -2978,6 +3451,8 @@ class GoogleMapsPlacesV1SearchTextRequest {
         if (maxResultCount != null) 'maxResultCount': maxResultCount!,
         if (minRating != null) 'minRating': minRating!,
         if (openNow != null) 'openNow': openNow!,
+        if (pageSize != null) 'pageSize': pageSize!,
+        if (pageToken != null) 'pageToken': pageToken!,
         if (priceLevels != null) 'priceLevels': priceLevels!,
         if (rankPreference != null) 'rankPreference': rankPreference!,
         if (regionCode != null) 'regionCode': regionCode!,
@@ -3102,15 +3577,44 @@ class GoogleMapsPlacesV1SearchTextRequestLocationRestriction {
 
 /// Response proto for SearchText.
 class GoogleMapsPlacesV1SearchTextResponse {
+  /// Experimental: See
+  /// https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative
+  /// for more details.
+  ///
+  /// A list of contextual contents where each entry associates to the
+  /// corresponding place in the same index in the places field. The contents
+  /// that are relevant to the `text_query` in the request are preferred. If the
+  /// contextual content is not available for one of the places, it will return
+  /// non-contextual content. It will be empty only when the content is
+  /// unavailable for this place. This list should have as many entries as the
+  /// list of places if requested.
+  core.List<GoogleMapsPlacesV1ContextualContent>? contextualContents;
+
+  /// A token that can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted or empty, there are no subsequent pages.
+  core.String? nextPageToken;
+
   /// A list of places that meet the user's text search criteria.
   core.List<GoogleMapsPlacesV1Place>? places;
 
   GoogleMapsPlacesV1SearchTextResponse({
+    this.contextualContents,
+    this.nextPageToken,
     this.places,
   });
 
   GoogleMapsPlacesV1SearchTextResponse.fromJson(core.Map json_)
       : this(
+          contextualContents: json_.containsKey('contextualContents')
+              ? (json_['contextualContents'] as core.List)
+                  .map((value) => GoogleMapsPlacesV1ContextualContent.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
           places: json_.containsKey('places')
               ? (json_['places'] as core.List)
                   .map((value) => GoogleMapsPlacesV1Place.fromJson(
@@ -3120,6 +3624,9 @@ class GoogleMapsPlacesV1SearchTextResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (contextualContents != null)
+          'contextualContents': contextualContents!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (places != null) 'places': places!,
       };
 }

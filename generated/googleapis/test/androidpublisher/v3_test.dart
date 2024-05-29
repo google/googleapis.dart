@@ -804,6 +804,7 @@ api.AutoRenewingPlan buildAutoRenewingPlan() {
   buildCounterAutoRenewingPlan++;
   if (buildCounterAutoRenewingPlan < 3) {
     o.autoRenewEnabled = true;
+    o.installmentDetails = buildInstallmentPlan();
     o.priceChangeDetails = buildSubscriptionItemPriceChangeDetails();
   }
   buildCounterAutoRenewingPlan--;
@@ -814,6 +815,7 @@ void checkAutoRenewingPlan(api.AutoRenewingPlan o) {
   buildCounterAutoRenewingPlan++;
   if (buildCounterAutoRenewingPlan < 3) {
     unittest.expect(o.autoRenewEnabled!, unittest.isTrue);
+    checkInstallmentPlan(o.installmentDetails!);
     checkSubscriptionItemPriceChangeDetails(o.priceChangeDetails!);
   }
   buildCounterAutoRenewingPlan--;
@@ -848,6 +850,7 @@ api.BasePlan buildBasePlan() {
   if (buildCounterBasePlan < 3) {
     o.autoRenewingBasePlanType = buildAutoRenewingBasePlanType();
     o.basePlanId = 'foo';
+    o.installmentsBasePlanType = buildInstallmentsBasePlanType();
     o.offerTags = buildUnnamed7();
     o.otherRegionsConfig = buildOtherRegionsBasePlanConfig();
     o.prepaidBasePlanType = buildPrepaidBasePlanType();
@@ -866,6 +869,7 @@ void checkBasePlan(api.BasePlan o) {
       o.basePlanId!,
       unittest.equals('foo'),
     );
+    checkInstallmentsBasePlanType(o.installmentsBasePlanType!);
     checkUnnamed7(o.offerTags!);
     checkOtherRegionsBasePlanConfig(o.otherRegionsConfig!);
     checkPrepaidBasePlanType(o.prepaidBasePlanType!);
@@ -3482,6 +3486,92 @@ void checkInappproductsUpdateRequest(api.InappproductsUpdateRequest o) {
   buildCounterInappproductsUpdateRequest--;
 }
 
+core.int buildCounterInstallmentPlan = 0;
+api.InstallmentPlan buildInstallmentPlan() {
+  final o = api.InstallmentPlan();
+  buildCounterInstallmentPlan++;
+  if (buildCounterInstallmentPlan < 3) {
+    o.initialCommittedPaymentsCount = 42;
+    o.pendingCancellation = buildPendingCancellation();
+    o.remainingCommittedPaymentsCount = 42;
+    o.subsequentCommittedPaymentsCount = 42;
+  }
+  buildCounterInstallmentPlan--;
+  return o;
+}
+
+void checkInstallmentPlan(api.InstallmentPlan o) {
+  buildCounterInstallmentPlan++;
+  if (buildCounterInstallmentPlan < 3) {
+    unittest.expect(
+      o.initialCommittedPaymentsCount!,
+      unittest.equals(42),
+    );
+    checkPendingCancellation(o.pendingCancellation!);
+    unittest.expect(
+      o.remainingCommittedPaymentsCount!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.subsequentCommittedPaymentsCount!,
+      unittest.equals(42),
+    );
+  }
+  buildCounterInstallmentPlan--;
+}
+
+core.int buildCounterInstallmentsBasePlanType = 0;
+api.InstallmentsBasePlanType buildInstallmentsBasePlanType() {
+  final o = api.InstallmentsBasePlanType();
+  buildCounterInstallmentsBasePlanType++;
+  if (buildCounterInstallmentsBasePlanType < 3) {
+    o.accountHoldDuration = 'foo';
+    o.billingPeriodDuration = 'foo';
+    o.committedPaymentsCount = 42;
+    o.gracePeriodDuration = 'foo';
+    o.prorationMode = 'foo';
+    o.renewalType = 'foo';
+    o.resubscribeState = 'foo';
+  }
+  buildCounterInstallmentsBasePlanType--;
+  return o;
+}
+
+void checkInstallmentsBasePlanType(api.InstallmentsBasePlanType o) {
+  buildCounterInstallmentsBasePlanType++;
+  if (buildCounterInstallmentsBasePlanType < 3) {
+    unittest.expect(
+      o.accountHoldDuration!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.billingPeriodDuration!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.committedPaymentsCount!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.gracePeriodDuration!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.prorationMode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.renewalType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.resubscribeState!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterInstallmentsBasePlanType--;
+}
+
 core.int buildCounterInternalAppSharingArtifact = 0;
 api.InternalAppSharingArtifact buildInternalAppSharingArtifact() {
   final o = api.InternalAppSharingArtifact();
@@ -4475,6 +4565,21 @@ void checkPausedStateContext(api.PausedStateContext o) {
   buildCounterPausedStateContext--;
 }
 
+core.int buildCounterPendingCancellation = 0;
+api.PendingCancellation buildPendingCancellation() {
+  final o = api.PendingCancellation();
+  buildCounterPendingCancellation++;
+  if (buildCounterPendingCancellation < 3) {}
+  buildCounterPendingCancellation--;
+  return o;
+}
+
+void checkPendingCancellation(api.PendingCancellation o) {
+  buildCounterPendingCancellation++;
+  if (buildCounterPendingCancellation < 3) {}
+  buildCounterPendingCancellation--;
+}
+
 core.int buildCounterPrepaidBasePlanType = 0;
 api.PrepaidBasePlanType buildPrepaidBasePlanType() {
   final o = api.PrepaidBasePlanType();
@@ -5048,12 +5153,48 @@ void checkReplacementCancellation(api.ReplacementCancellation o) {
   buildCounterReplacementCancellation--;
 }
 
-core.List<api.Comment> buildUnnamed74() => [
+core.List<core.String> buildUnnamed74() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed74(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterRestrictedPaymentCountries = 0;
+api.RestrictedPaymentCountries buildRestrictedPaymentCountries() {
+  final o = api.RestrictedPaymentCountries();
+  buildCounterRestrictedPaymentCountries++;
+  if (buildCounterRestrictedPaymentCountries < 3) {
+    o.regionCodes = buildUnnamed74();
+  }
+  buildCounterRestrictedPaymentCountries--;
+  return o;
+}
+
+void checkRestrictedPaymentCountries(api.RestrictedPaymentCountries o) {
+  buildCounterRestrictedPaymentCountries++;
+  if (buildCounterRestrictedPaymentCountries < 3) {
+    checkUnnamed74(o.regionCodes!);
+  }
+  buildCounterRestrictedPaymentCountries--;
+}
+
+core.List<api.Comment> buildUnnamed75() => [
       buildComment(),
       buildComment(),
     ];
 
-void checkUnnamed74(core.List<api.Comment> o) {
+void checkUnnamed75(core.List<api.Comment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkComment(o[0]);
   checkComment(o[1]);
@@ -5065,7 +5206,7 @@ api.Review buildReview() {
   buildCounterReview++;
   if (buildCounterReview < 3) {
     o.authorName = 'foo';
-    o.comments = buildUnnamed74();
+    o.comments = buildUnnamed75();
     o.reviewId = 'foo';
   }
   buildCounterReview--;
@@ -5079,7 +5220,7 @@ void checkReview(api.Review o) {
       o.authorName!,
       unittest.equals('foo'),
     );
-    checkUnnamed74(o.comments!);
+    checkUnnamed75(o.comments!);
     unittest.expect(
       o.reviewId!,
       unittest.equals('foo'),
@@ -5112,12 +5253,12 @@ void checkReviewReplyResult(api.ReviewReplyResult o) {
   buildCounterReviewReplyResult--;
 }
 
-core.List<api.Review> buildUnnamed75() => [
+core.List<api.Review> buildUnnamed76() => [
       buildReview(),
       buildReview(),
     ];
 
-void checkUnnamed75(core.List<api.Review> o) {
+void checkUnnamed76(core.List<api.Review> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReview(o[0]);
   checkReview(o[1]);
@@ -5129,7 +5270,7 @@ api.ReviewsListResponse buildReviewsListResponse() {
   buildCounterReviewsListResponse++;
   if (buildCounterReviewsListResponse < 3) {
     o.pageInfo = buildPageInfo();
-    o.reviews = buildUnnamed75();
+    o.reviews = buildUnnamed76();
     o.tokenPagination = buildTokenPagination();
   }
   buildCounterReviewsListResponse--;
@@ -5140,7 +5281,7 @@ void checkReviewsListResponse(api.ReviewsListResponse o) {
   buildCounterReviewsListResponse++;
   if (buildCounterReviewsListResponse < 3) {
     checkPageInfo(o.pageInfo!);
-    checkUnnamed75(o.reviews!);
+    checkUnnamed76(o.reviews!);
     checkTokenPagination(o.tokenPagination!);
   }
   buildCounterReviewsListResponse--;
@@ -5323,17 +5464,6 @@ void checkScreenDensity(api.ScreenDensity o) {
   buildCounterScreenDensity--;
 }
 
-core.List<api.ScreenDensity> buildUnnamed76() => [
-      buildScreenDensity(),
-      buildScreenDensity(),
-    ];
-
-void checkUnnamed76(core.List<api.ScreenDensity> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkScreenDensity(o[0]);
-  checkScreenDensity(o[1]);
-}
-
 core.List<api.ScreenDensity> buildUnnamed77() => [
       buildScreenDensity(),
       buildScreenDensity(),
@@ -5345,13 +5475,24 @@ void checkUnnamed77(core.List<api.ScreenDensity> o) {
   checkScreenDensity(o[1]);
 }
 
+core.List<api.ScreenDensity> buildUnnamed78() => [
+      buildScreenDensity(),
+      buildScreenDensity(),
+    ];
+
+void checkUnnamed78(core.List<api.ScreenDensity> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkScreenDensity(o[0]);
+  checkScreenDensity(o[1]);
+}
+
 core.int buildCounterScreenDensityTargeting = 0;
 api.ScreenDensityTargeting buildScreenDensityTargeting() {
   final o = api.ScreenDensityTargeting();
   buildCounterScreenDensityTargeting++;
   if (buildCounterScreenDensityTargeting < 3) {
-    o.alternatives = buildUnnamed76();
-    o.value = buildUnnamed77();
+    o.alternatives = buildUnnamed77();
+    o.value = buildUnnamed78();
   }
   buildCounterScreenDensityTargeting--;
   return o;
@@ -5360,8 +5501,8 @@ api.ScreenDensityTargeting buildScreenDensityTargeting() {
 void checkScreenDensityTargeting(api.ScreenDensityTargeting o) {
   buildCounterScreenDensityTargeting++;
   if (buildCounterScreenDensityTargeting < 3) {
-    checkUnnamed76(o.alternatives!);
-    checkUnnamed77(o.value!);
+    checkUnnamed77(o.alternatives!);
+    checkUnnamed78(o.value!);
   }
   buildCounterScreenDensityTargeting--;
 }
@@ -5388,17 +5529,6 @@ void checkSdkVersion(api.SdkVersion o) {
   buildCounterSdkVersion--;
 }
 
-core.List<api.SdkVersion> buildUnnamed78() => [
-      buildSdkVersion(),
-      buildSdkVersion(),
-    ];
-
-void checkUnnamed78(core.List<api.SdkVersion> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkSdkVersion(o[0]);
-  checkSdkVersion(o[1]);
-}
-
 core.List<api.SdkVersion> buildUnnamed79() => [
       buildSdkVersion(),
       buildSdkVersion(),
@@ -5410,13 +5540,24 @@ void checkUnnamed79(core.List<api.SdkVersion> o) {
   checkSdkVersion(o[1]);
 }
 
+core.List<api.SdkVersion> buildUnnamed80() => [
+      buildSdkVersion(),
+      buildSdkVersion(),
+    ];
+
+void checkUnnamed80(core.List<api.SdkVersion> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkSdkVersion(o[0]);
+  checkSdkVersion(o[1]);
+}
+
 core.int buildCounterSdkVersionTargeting = 0;
 api.SdkVersionTargeting buildSdkVersionTargeting() {
   final o = api.SdkVersionTargeting();
   buildCounterSdkVersionTargeting++;
   if (buildCounterSdkVersionTargeting < 3) {
-    o.alternatives = buildUnnamed78();
-    o.value = buildUnnamed79();
+    o.alternatives = buildUnnamed79();
+    o.value = buildUnnamed80();
   }
   buildCounterSdkVersionTargeting--;
   return o;
@@ -5425,8 +5566,8 @@ api.SdkVersionTargeting buildSdkVersionTargeting() {
 void checkSdkVersionTargeting(api.SdkVersionTargeting o) {
   buildCounterSdkVersionTargeting++;
   if (buildCounterSdkVersionTargeting < 3) {
-    checkUnnamed78(o.alternatives!);
-    checkUnnamed79(o.value!);
+    checkUnnamed79(o.alternatives!);
+    checkUnnamed80(o.value!);
   }
   buildCounterSdkVersionTargeting--;
 }
@@ -5455,12 +5596,12 @@ void checkSplitApkMetadata(api.SplitApkMetadata o) {
   buildCounterSplitApkMetadata--;
 }
 
-core.List<api.ApkSet> buildUnnamed80() => [
+core.List<api.ApkSet> buildUnnamed81() => [
       buildApkSet(),
       buildApkSet(),
     ];
 
-void checkUnnamed80(core.List<api.ApkSet> o) {
+void checkUnnamed81(core.List<api.ApkSet> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkApkSet(o[0]);
   checkApkSet(o[1]);
@@ -5471,7 +5612,7 @@ api.SplitApkVariant buildSplitApkVariant() {
   final o = api.SplitApkVariant();
   buildCounterSplitApkVariant++;
   if (buildCounterSplitApkVariant < 3) {
-    o.apkSet = buildUnnamed80();
+    o.apkSet = buildUnnamed81();
     o.targeting = buildVariantTargeting();
     o.variantNumber = 42;
   }
@@ -5482,7 +5623,7 @@ api.SplitApkVariant buildSplitApkVariant() {
 void checkSplitApkVariant(api.SplitApkVariant o) {
   buildCounterSplitApkVariant++;
   if (buildCounterSplitApkVariant < 3) {
-    checkUnnamed80(o.apkSet!);
+    checkUnnamed81(o.apkSet!);
     checkVariantTargeting(o.targeting!);
     unittest.expect(
       o.variantNumber!,
@@ -5492,12 +5633,12 @@ void checkSplitApkVariant(api.SplitApkVariant o) {
   buildCounterSplitApkVariant--;
 }
 
-core.List<core.String> buildUnnamed81() => [
+core.List<core.String> buildUnnamed82() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed81(core.List<core.String> o) {
+void checkUnnamed82(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -5514,7 +5655,7 @@ api.StandaloneApkMetadata buildStandaloneApkMetadata() {
   final o = api.StandaloneApkMetadata();
   buildCounterStandaloneApkMetadata++;
   if (buildCounterStandaloneApkMetadata < 3) {
-    o.fusedModuleName = buildUnnamed81();
+    o.fusedModuleName = buildUnnamed82();
   }
   buildCounterStandaloneApkMetadata--;
   return o;
@@ -5523,7 +5664,7 @@ api.StandaloneApkMetadata buildStandaloneApkMetadata() {
 void checkStandaloneApkMetadata(api.StandaloneApkMetadata o) {
   buildCounterStandaloneApkMetadata++;
   if (buildCounterStandaloneApkMetadata < 3) {
-    checkUnnamed81(o.fusedModuleName!);
+    checkUnnamed82(o.fusedModuleName!);
   }
   buildCounterStandaloneApkMetadata--;
 }
@@ -5570,23 +5711,23 @@ void checkSubscribeWithGoogleInfo(api.SubscribeWithGoogleInfo o) {
   buildCounterSubscribeWithGoogleInfo--;
 }
 
-core.List<api.BasePlan> buildUnnamed82() => [
+core.List<api.BasePlan> buildUnnamed83() => [
       buildBasePlan(),
       buildBasePlan(),
     ];
 
-void checkUnnamed82(core.List<api.BasePlan> o) {
+void checkUnnamed83(core.List<api.BasePlan> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBasePlan(o[0]);
   checkBasePlan(o[1]);
 }
 
-core.List<api.SubscriptionListing> buildUnnamed83() => [
+core.List<api.SubscriptionListing> buildUnnamed84() => [
       buildSubscriptionListing(),
       buildSubscriptionListing(),
     ];
 
-void checkUnnamed83(core.List<api.SubscriptionListing> o) {
+void checkUnnamed84(core.List<api.SubscriptionListing> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSubscriptionListing(o[0]);
   checkSubscriptionListing(o[1]);
@@ -5598,10 +5739,11 @@ api.Subscription buildSubscription() {
   buildCounterSubscription++;
   if (buildCounterSubscription < 3) {
     o.archived = true;
-    o.basePlans = buildUnnamed82();
-    o.listings = buildUnnamed83();
+    o.basePlans = buildUnnamed83();
+    o.listings = buildUnnamed84();
     o.packageName = 'foo';
     o.productId = 'foo';
+    o.restrictedPaymentCountries = buildRestrictedPaymentCountries();
     o.taxAndComplianceSettings = buildSubscriptionTaxAndComplianceSettings();
   }
   buildCounterSubscription--;
@@ -5612,8 +5754,8 @@ void checkSubscription(api.Subscription o) {
   buildCounterSubscription++;
   if (buildCounterSubscription < 3) {
     unittest.expect(o.archived!, unittest.isTrue);
-    checkUnnamed82(o.basePlans!);
-    checkUnnamed83(o.listings!);
+    checkUnnamed83(o.basePlans!);
+    checkUnnamed84(o.listings!);
     unittest.expect(
       o.packageName!,
       unittest.equals('foo'),
@@ -5622,6 +5764,7 @@ void checkSubscription(api.Subscription o) {
       o.productId!,
       unittest.equals('foo'),
     );
+    checkRestrictedPaymentCountries(o.restrictedPaymentCountries!);
     checkSubscriptionTaxAndComplianceSettings(o.taxAndComplianceSettings!);
   }
   buildCounterSubscription--;
@@ -5717,12 +5860,12 @@ void checkSubscriptionItemPriceChangeDetails(
   buildCounterSubscriptionItemPriceChangeDetails--;
 }
 
-core.List<core.String> buildUnnamed84() => [
+core.List<core.String> buildUnnamed85() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed84(core.List<core.String> o) {
+void checkUnnamed85(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -5739,7 +5882,7 @@ api.SubscriptionListing buildSubscriptionListing() {
   final o = api.SubscriptionListing();
   buildCounterSubscriptionListing++;
   if (buildCounterSubscriptionListing < 3) {
-    o.benefits = buildUnnamed84();
+    o.benefits = buildUnnamed85();
     o.description = 'foo';
     o.languageCode = 'foo';
     o.title = 'foo';
@@ -5751,7 +5894,7 @@ api.SubscriptionListing buildSubscriptionListing() {
 void checkSubscriptionListing(api.SubscriptionListing o) {
   buildCounterSubscriptionListing++;
   if (buildCounterSubscriptionListing < 3) {
-    checkUnnamed84(o.benefits!);
+    checkUnnamed85(o.benefits!);
     unittest.expect(
       o.description!,
       unittest.equals('foo'),
@@ -5768,34 +5911,34 @@ void checkSubscriptionListing(api.SubscriptionListing o) {
   buildCounterSubscriptionListing--;
 }
 
-core.List<api.OfferTag> buildUnnamed85() => [
+core.List<api.OfferTag> buildUnnamed86() => [
       buildOfferTag(),
       buildOfferTag(),
     ];
 
-void checkUnnamed85(core.List<api.OfferTag> o) {
+void checkUnnamed86(core.List<api.OfferTag> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOfferTag(o[0]);
   checkOfferTag(o[1]);
 }
 
-core.List<api.SubscriptionOfferPhase> buildUnnamed86() => [
+core.List<api.SubscriptionOfferPhase> buildUnnamed87() => [
       buildSubscriptionOfferPhase(),
       buildSubscriptionOfferPhase(),
     ];
 
-void checkUnnamed86(core.List<api.SubscriptionOfferPhase> o) {
+void checkUnnamed87(core.List<api.SubscriptionOfferPhase> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSubscriptionOfferPhase(o[0]);
   checkSubscriptionOfferPhase(o[1]);
 }
 
-core.List<api.RegionalSubscriptionOfferConfig> buildUnnamed87() => [
+core.List<api.RegionalSubscriptionOfferConfig> buildUnnamed88() => [
       buildRegionalSubscriptionOfferConfig(),
       buildRegionalSubscriptionOfferConfig(),
     ];
 
-void checkUnnamed87(core.List<api.RegionalSubscriptionOfferConfig> o) {
+void checkUnnamed88(core.List<api.RegionalSubscriptionOfferConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRegionalSubscriptionOfferConfig(o[0]);
   checkRegionalSubscriptionOfferConfig(o[1]);
@@ -5808,12 +5951,12 @@ api.SubscriptionOffer buildSubscriptionOffer() {
   if (buildCounterSubscriptionOffer < 3) {
     o.basePlanId = 'foo';
     o.offerId = 'foo';
-    o.offerTags = buildUnnamed85();
+    o.offerTags = buildUnnamed86();
     o.otherRegionsConfig = buildOtherRegionsSubscriptionOfferConfig();
     o.packageName = 'foo';
-    o.phases = buildUnnamed86();
+    o.phases = buildUnnamed87();
     o.productId = 'foo';
-    o.regionalConfigs = buildUnnamed87();
+    o.regionalConfigs = buildUnnamed88();
     o.state = 'foo';
     o.targeting = buildSubscriptionOfferTargeting();
   }
@@ -5832,18 +5975,18 @@ void checkSubscriptionOffer(api.SubscriptionOffer o) {
       o.offerId!,
       unittest.equals('foo'),
     );
-    checkUnnamed85(o.offerTags!);
+    checkUnnamed86(o.offerTags!);
     checkOtherRegionsSubscriptionOfferConfig(o.otherRegionsConfig!);
     unittest.expect(
       o.packageName!,
       unittest.equals('foo'),
     );
-    checkUnnamed86(o.phases!);
+    checkUnnamed87(o.phases!);
     unittest.expect(
       o.productId!,
       unittest.equals('foo'),
     );
-    checkUnnamed87(o.regionalConfigs!);
+    checkUnnamed88(o.regionalConfigs!);
     unittest.expect(
       o.state!,
       unittest.equals('foo'),
@@ -5853,12 +5996,12 @@ void checkSubscriptionOffer(api.SubscriptionOffer o) {
   buildCounterSubscriptionOffer--;
 }
 
-core.List<api.RegionalSubscriptionOfferPhaseConfig> buildUnnamed88() => [
+core.List<api.RegionalSubscriptionOfferPhaseConfig> buildUnnamed89() => [
       buildRegionalSubscriptionOfferPhaseConfig(),
       buildRegionalSubscriptionOfferPhaseConfig(),
     ];
 
-void checkUnnamed88(core.List<api.RegionalSubscriptionOfferPhaseConfig> o) {
+void checkUnnamed89(core.List<api.RegionalSubscriptionOfferPhaseConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRegionalSubscriptionOfferPhaseConfig(o[0]);
   checkRegionalSubscriptionOfferPhaseConfig(o[1]);
@@ -5872,7 +6015,7 @@ api.SubscriptionOfferPhase buildSubscriptionOfferPhase() {
     o.duration = 'foo';
     o.otherRegionsConfig = buildOtherRegionsSubscriptionOfferPhaseConfig();
     o.recurrenceCount = 42;
-    o.regionalConfigs = buildUnnamed88();
+    o.regionalConfigs = buildUnnamed89();
   }
   buildCounterSubscriptionOfferPhase--;
   return o;
@@ -5890,7 +6033,7 @@ void checkSubscriptionOfferPhase(api.SubscriptionOfferPhase o) {
       o.recurrenceCount!,
       unittest.equals(42),
     );
-    checkUnnamed88(o.regionalConfigs!);
+    checkUnnamed89(o.regionalConfigs!);
   }
   buildCounterSubscriptionOfferPhase--;
 }
@@ -6125,12 +6268,12 @@ void checkSubscriptionPurchaseLineItem(api.SubscriptionPurchaseLineItem o) {
   buildCounterSubscriptionPurchaseLineItem--;
 }
 
-core.List<api.SubscriptionPurchaseLineItem> buildUnnamed89() => [
+core.List<api.SubscriptionPurchaseLineItem> buildUnnamed90() => [
       buildSubscriptionPurchaseLineItem(),
       buildSubscriptionPurchaseLineItem(),
     ];
 
-void checkUnnamed89(core.List<api.SubscriptionPurchaseLineItem> o) {
+void checkUnnamed90(core.List<api.SubscriptionPurchaseLineItem> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSubscriptionPurchaseLineItem(o[0]);
   checkSubscriptionPurchaseLineItem(o[1]);
@@ -6146,7 +6289,7 @@ api.SubscriptionPurchaseV2 buildSubscriptionPurchaseV2() {
     o.externalAccountIdentifiers = buildExternalAccountIdentifiers();
     o.kind = 'foo';
     o.latestOrderId = 'foo';
-    o.lineItems = buildUnnamed89();
+    o.lineItems = buildUnnamed90();
     o.linkedPurchaseToken = 'foo';
     o.pausedStateContext = buildPausedStateContext();
     o.regionCode = 'foo';
@@ -6176,7 +6319,7 @@ void checkSubscriptionPurchaseV2(api.SubscriptionPurchaseV2 o) {
       o.latestOrderId!,
       unittest.equals('foo'),
     );
-    checkUnnamed89(o.lineItems!);
+    checkUnnamed90(o.lineItems!);
     unittest.expect(
       o.linkedPurchaseToken!,
       unittest.equals('foo'),
@@ -6268,12 +6411,12 @@ void checkSubscriptionPurchasesDeferResponse(
   buildCounterSubscriptionPurchasesDeferResponse--;
 }
 
-core.Map<core.String, api.RegionalTaxRateInfo> buildUnnamed90() => {
+core.Map<core.String, api.RegionalTaxRateInfo> buildUnnamed91() => {
       'x': buildRegionalTaxRateInfo(),
       'y': buildRegionalTaxRateInfo(),
     };
 
-void checkUnnamed90(core.Map<core.String, api.RegionalTaxRateInfo> o) {
+void checkUnnamed91(core.Map<core.String, api.RegionalTaxRateInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRegionalTaxRateInfo(o['x']!);
   checkRegionalTaxRateInfo(o['y']!);
@@ -6287,7 +6430,7 @@ api.SubscriptionTaxAndComplianceSettings
   if (buildCounterSubscriptionTaxAndComplianceSettings < 3) {
     o.eeaWithdrawalRightType = 'foo';
     o.isTokenizedDigitalAsset = true;
-    o.taxRateInfoByRegionCode = buildUnnamed90();
+    o.taxRateInfoByRegionCode = buildUnnamed91();
   }
   buildCounterSubscriptionTaxAndComplianceSettings--;
   return o;
@@ -6302,7 +6445,7 @@ void checkSubscriptionTaxAndComplianceSettings(
       unittest.equals('foo'),
     );
     unittest.expect(o.isTokenizedDigitalAsset!, unittest.isTrue);
-    checkUnnamed90(o.taxRateInfoByRegionCode!);
+    checkUnnamed91(o.taxRateInfoByRegionCode!);
   }
   buildCounterSubscriptionTaxAndComplianceSettings--;
 }
@@ -6330,12 +6473,12 @@ void checkSystemApkOptions(api.SystemApkOptions o) {
   buildCounterSystemApkOptions--;
 }
 
-core.List<api.Variant> buildUnnamed91() => [
+core.List<api.Variant> buildUnnamed92() => [
       buildVariant(),
       buildVariant(),
     ];
 
-void checkUnnamed91(core.List<api.Variant> o) {
+void checkUnnamed92(core.List<api.Variant> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVariant(o[0]);
   checkVariant(o[1]);
@@ -6346,7 +6489,7 @@ api.SystemApksListResponse buildSystemApksListResponse() {
   final o = api.SystemApksListResponse();
   buildCounterSystemApksListResponse++;
   if (buildCounterSystemApksListResponse < 3) {
-    o.variants = buildUnnamed91();
+    o.variants = buildUnnamed92();
   }
   buildCounterSystemApksListResponse--;
   return o;
@@ -6355,7 +6498,7 @@ api.SystemApksListResponse buildSystemApksListResponse() {
 void checkSystemApksListResponse(api.SystemApksListResponse o) {
   buildCounterSystemApksListResponse++;
   if (buildCounterSystemApksListResponse < 3) {
-    checkUnnamed91(o.variants!);
+    checkUnnamed92(o.variants!);
   }
   buildCounterSystemApksListResponse--;
 }
@@ -6424,23 +6567,23 @@ void checkTargeting(api.Targeting o) {
   buildCounterTargeting--;
 }
 
-core.List<api.AssetSliceSet> buildUnnamed92() => [
+core.List<api.AssetSliceSet> buildUnnamed93() => [
       buildAssetSliceSet(),
       buildAssetSliceSet(),
     ];
 
-void checkUnnamed92(core.List<api.AssetSliceSet> o) {
+void checkUnnamed93(core.List<api.AssetSliceSet> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAssetSliceSet(o[0]);
   checkAssetSliceSet(o[1]);
 }
 
-core.List<api.SplitApkVariant> buildUnnamed93() => [
+core.List<api.SplitApkVariant> buildUnnamed94() => [
       buildSplitApkVariant(),
       buildSplitApkVariant(),
     ];
 
-void checkUnnamed93(core.List<api.SplitApkVariant> o) {
+void checkUnnamed94(core.List<api.SplitApkVariant> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSplitApkVariant(o[0]);
   checkSplitApkVariant(o[1]);
@@ -6451,9 +6594,9 @@ api.TargetingInfo buildTargetingInfo() {
   final o = api.TargetingInfo();
   buildCounterTargetingInfo++;
   if (buildCounterTargetingInfo < 3) {
-    o.assetSliceSet = buildUnnamed92();
+    o.assetSliceSet = buildUnnamed93();
     o.packageName = 'foo';
-    o.variant = buildUnnamed93();
+    o.variant = buildUnnamed94();
   }
   buildCounterTargetingInfo--;
   return o;
@@ -6462,12 +6605,12 @@ api.TargetingInfo buildTargetingInfo() {
 void checkTargetingInfo(api.TargetingInfo o) {
   buildCounterTargetingInfo++;
   if (buildCounterTargetingInfo < 3) {
-    checkUnnamed92(o.assetSliceSet!);
+    checkUnnamed93(o.assetSliceSet!);
     unittest.expect(
       o.packageName!,
       unittest.equals('foo'),
     );
-    checkUnnamed93(o.variant!);
+    checkUnnamed94(o.variant!);
   }
   buildCounterTargetingInfo--;
 }
@@ -6570,12 +6713,12 @@ void checkTestPurchase(api.TestPurchase o) {
   buildCounterTestPurchase--;
 }
 
-core.List<core.String> buildUnnamed94() => [
+core.List<core.String> buildUnnamed95() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed94(core.List<core.String> o) {
+void checkUnnamed95(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -6592,7 +6735,7 @@ api.Testers buildTesters() {
   final o = api.Testers();
   buildCounterTesters++;
   if (buildCounterTesters < 3) {
-    o.googleGroups = buildUnnamed94();
+    o.googleGroups = buildUnnamed95();
   }
   buildCounterTesters--;
   return o;
@@ -6601,7 +6744,7 @@ api.Testers buildTesters() {
 void checkTesters(api.Testers o) {
   buildCounterTesters++;
   if (buildCounterTesters < 3) {
-    checkUnnamed94(o.googleGroups!);
+    checkUnnamed95(o.googleGroups!);
   }
   buildCounterTesters--;
 }
@@ -6628,17 +6771,6 @@ void checkTextureCompressionFormat(api.TextureCompressionFormat o) {
   buildCounterTextureCompressionFormat--;
 }
 
-core.List<api.TextureCompressionFormat> buildUnnamed95() => [
-      buildTextureCompressionFormat(),
-      buildTextureCompressionFormat(),
-    ];
-
-void checkUnnamed95(core.List<api.TextureCompressionFormat> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkTextureCompressionFormat(o[0]);
-  checkTextureCompressionFormat(o[1]);
-}
-
 core.List<api.TextureCompressionFormat> buildUnnamed96() => [
       buildTextureCompressionFormat(),
       buildTextureCompressionFormat(),
@@ -6650,13 +6782,24 @@ void checkUnnamed96(core.List<api.TextureCompressionFormat> o) {
   checkTextureCompressionFormat(o[1]);
 }
 
+core.List<api.TextureCompressionFormat> buildUnnamed97() => [
+      buildTextureCompressionFormat(),
+      buildTextureCompressionFormat(),
+    ];
+
+void checkUnnamed97(core.List<api.TextureCompressionFormat> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkTextureCompressionFormat(o[0]);
+  checkTextureCompressionFormat(o[1]);
+}
+
 core.int buildCounterTextureCompressionFormatTargeting = 0;
 api.TextureCompressionFormatTargeting buildTextureCompressionFormatTargeting() {
   final o = api.TextureCompressionFormatTargeting();
   buildCounterTextureCompressionFormatTargeting++;
   if (buildCounterTextureCompressionFormatTargeting < 3) {
-    o.alternatives = buildUnnamed95();
-    o.value = buildUnnamed96();
+    o.alternatives = buildUnnamed96();
+    o.value = buildUnnamed97();
   }
   buildCounterTextureCompressionFormatTargeting--;
   return o;
@@ -6666,8 +6809,8 @@ void checkTextureCompressionFormatTargeting(
     api.TextureCompressionFormatTargeting o) {
   buildCounterTextureCompressionFormatTargeting++;
   if (buildCounterTextureCompressionFormatTargeting < 3) {
-    checkUnnamed95(o.alternatives!);
-    checkUnnamed96(o.value!);
+    checkUnnamed96(o.alternatives!);
+    checkUnnamed97(o.value!);
   }
   buildCounterTextureCompressionFormatTargeting--;
 }
@@ -6726,12 +6869,12 @@ void checkTokenPagination(api.TokenPagination o) {
   buildCounterTokenPagination--;
 }
 
-core.List<api.TrackRelease> buildUnnamed97() => [
+core.List<api.TrackRelease> buildUnnamed98() => [
       buildTrackRelease(),
       buildTrackRelease(),
     ];
 
-void checkUnnamed97(core.List<api.TrackRelease> o) {
+void checkUnnamed98(core.List<api.TrackRelease> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTrackRelease(o[0]);
   checkTrackRelease(o[1]);
@@ -6742,7 +6885,7 @@ api.Track buildTrack() {
   final o = api.Track();
   buildCounterTrack++;
   if (buildCounterTrack < 3) {
-    o.releases = buildUnnamed97();
+    o.releases = buildUnnamed98();
     o.track = 'foo';
   }
   buildCounterTrack--;
@@ -6752,7 +6895,7 @@ api.Track buildTrack() {
 void checkTrack(api.Track o) {
   buildCounterTrack++;
   if (buildCounterTrack < 3) {
-    checkUnnamed97(o.releases!);
+    checkUnnamed98(o.releases!);
     unittest.expect(
       o.track!,
       unittest.equals('foo'),
@@ -6793,12 +6936,12 @@ void checkTrackConfig(api.TrackConfig o) {
   buildCounterTrackConfig--;
 }
 
-core.List<api.TrackTargetedCountry> buildUnnamed98() => [
+core.List<api.TrackTargetedCountry> buildUnnamed99() => [
       buildTrackTargetedCountry(),
       buildTrackTargetedCountry(),
     ];
 
-void checkUnnamed98(core.List<api.TrackTargetedCountry> o) {
+void checkUnnamed99(core.List<api.TrackTargetedCountry> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTrackTargetedCountry(o[0]);
   checkTrackTargetedCountry(o[1]);
@@ -6809,7 +6952,7 @@ api.TrackCountryAvailability buildTrackCountryAvailability() {
   final o = api.TrackCountryAvailability();
   buildCounterTrackCountryAvailability++;
   if (buildCounterTrackCountryAvailability < 3) {
-    o.countries = buildUnnamed98();
+    o.countries = buildUnnamed99();
     o.restOfWorld = true;
     o.syncWithProduction = true;
   }
@@ -6820,30 +6963,30 @@ api.TrackCountryAvailability buildTrackCountryAvailability() {
 void checkTrackCountryAvailability(api.TrackCountryAvailability o) {
   buildCounterTrackCountryAvailability++;
   if (buildCounterTrackCountryAvailability < 3) {
-    checkUnnamed98(o.countries!);
+    checkUnnamed99(o.countries!);
     unittest.expect(o.restOfWorld!, unittest.isTrue);
     unittest.expect(o.syncWithProduction!, unittest.isTrue);
   }
   buildCounterTrackCountryAvailability--;
 }
 
-core.List<api.LocalizedText> buildUnnamed99() => [
+core.List<api.LocalizedText> buildUnnamed100() => [
       buildLocalizedText(),
       buildLocalizedText(),
     ];
 
-void checkUnnamed99(core.List<api.LocalizedText> o) {
+void checkUnnamed100(core.List<api.LocalizedText> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLocalizedText(o[0]);
   checkLocalizedText(o[1]);
 }
 
-core.List<core.String> buildUnnamed100() => [
+core.List<core.String> buildUnnamed101() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed100(core.List<core.String> o) {
+void checkUnnamed101(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -6863,10 +7006,10 @@ api.TrackRelease buildTrackRelease() {
     o.countryTargeting = buildCountryTargeting();
     o.inAppUpdatePriority = 42;
     o.name = 'foo';
-    o.releaseNotes = buildUnnamed99();
+    o.releaseNotes = buildUnnamed100();
     o.status = 'foo';
     o.userFraction = 42.0;
-    o.versionCodes = buildUnnamed100();
+    o.versionCodes = buildUnnamed101();
   }
   buildCounterTrackRelease--;
   return o;
@@ -6884,7 +7027,7 @@ void checkTrackRelease(api.TrackRelease o) {
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed99(o.releaseNotes!);
+    checkUnnamed100(o.releaseNotes!);
     unittest.expect(
       o.status!,
       unittest.equals('foo'),
@@ -6893,7 +7036,7 @@ void checkTrackRelease(api.TrackRelease o) {
       o.userFraction!,
       unittest.equals(42.0),
     );
-    checkUnnamed100(o.versionCodes!);
+    checkUnnamed101(o.versionCodes!);
   }
   buildCounterTrackRelease--;
 }
@@ -6920,12 +7063,12 @@ void checkTrackTargetedCountry(api.TrackTargetedCountry o) {
   buildCounterTrackTargetedCountry--;
 }
 
-core.List<api.Track> buildUnnamed101() => [
+core.List<api.Track> buildUnnamed102() => [
       buildTrack(),
       buildTrack(),
     ];
 
-void checkUnnamed101(core.List<api.Track> o) {
+void checkUnnamed102(core.List<api.Track> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTrack(o[0]);
   checkTrack(o[1]);
@@ -6937,7 +7080,7 @@ api.TracksListResponse buildTracksListResponse() {
   buildCounterTracksListResponse++;
   if (buildCounterTracksListResponse < 3) {
     o.kind = 'foo';
-    o.tracks = buildUnnamed101();
+    o.tracks = buildUnnamed102();
   }
   buildCounterTracksListResponse--;
   return o;
@@ -6950,7 +7093,7 @@ void checkTracksListResponse(api.TracksListResponse o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed101(o.tracks!);
+    checkUnnamed102(o.tracks!);
   }
   buildCounterTracksListResponse--;
 }
@@ -7094,12 +7237,12 @@ void checkUpgradeTargetingRule(api.UpgradeTargetingRule o) {
   buildCounterUpgradeTargetingRule--;
 }
 
-core.List<core.String> buildUnnamed102() => [
+core.List<core.String> buildUnnamed103() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed102(core.List<core.String> o) {
+void checkUnnamed103(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -7111,12 +7254,12 @@ void checkUnnamed102(core.List<core.String> o) {
   );
 }
 
-core.List<api.Grant> buildUnnamed103() => [
+core.List<api.Grant> buildUnnamed104() => [
       buildGrant(),
       buildGrant(),
     ];
 
-void checkUnnamed103(core.List<api.Grant> o) {
+void checkUnnamed104(core.List<api.Grant> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGrant(o[0]);
   checkGrant(o[1]);
@@ -7128,10 +7271,10 @@ api.User buildUser() {
   buildCounterUser++;
   if (buildCounterUser < 3) {
     o.accessState = 'foo';
-    o.developerAccountPermissions = buildUnnamed102();
+    o.developerAccountPermissions = buildUnnamed103();
     o.email = 'foo';
     o.expirationTime = 'foo';
-    o.grants = buildUnnamed103();
+    o.grants = buildUnnamed104();
     o.name = 'foo';
     o.partial = true;
   }
@@ -7146,7 +7289,7 @@ void checkUser(api.User o) {
       o.accessState!,
       unittest.equals('foo'),
     );
-    checkUnnamed102(o.developerAccountPermissions!);
+    checkUnnamed103(o.developerAccountPermissions!);
     unittest.expect(
       o.email!,
       unittest.equals('foo'),
@@ -7155,7 +7298,7 @@ void checkUser(api.User o) {
       o.expirationTime!,
       unittest.equals('foo'),
     );
-    checkUnnamed103(o.grants!);
+    checkUnnamed104(o.grants!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -7236,44 +7379,6 @@ void checkUserComment(api.UserComment o) {
   buildCounterUserComment--;
 }
 
-core.List<core.String> buildUnnamed104() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed104(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.int buildCounterUserCountriesTargeting = 0;
-api.UserCountriesTargeting buildUserCountriesTargeting() {
-  final o = api.UserCountriesTargeting();
-  buildCounterUserCountriesTargeting++;
-  if (buildCounterUserCountriesTargeting < 3) {
-    o.countryCodes = buildUnnamed104();
-    o.exclude = true;
-  }
-  buildCounterUserCountriesTargeting--;
-  return o;
-}
-
-void checkUserCountriesTargeting(api.UserCountriesTargeting o) {
-  buildCounterUserCountriesTargeting++;
-  if (buildCounterUserCountriesTargeting < 3) {
-    checkUnnamed104(o.countryCodes!);
-    unittest.expect(o.exclude!, unittest.isTrue);
-  }
-  buildCounterUserCountriesTargeting--;
-}
-
 core.List<core.String> buildUnnamed105() => [
       'foo',
       'foo',
@@ -7291,12 +7396,50 @@ void checkUnnamed105(core.List<core.String> o) {
   );
 }
 
+core.int buildCounterUserCountriesTargeting = 0;
+api.UserCountriesTargeting buildUserCountriesTargeting() {
+  final o = api.UserCountriesTargeting();
+  buildCounterUserCountriesTargeting++;
+  if (buildCounterUserCountriesTargeting < 3) {
+    o.countryCodes = buildUnnamed105();
+    o.exclude = true;
+  }
+  buildCounterUserCountriesTargeting--;
+  return o;
+}
+
+void checkUserCountriesTargeting(api.UserCountriesTargeting o) {
+  buildCounterUserCountriesTargeting++;
+  if (buildCounterUserCountriesTargeting < 3) {
+    checkUnnamed105(o.countryCodes!);
+    unittest.expect(o.exclude!, unittest.isTrue);
+  }
+  buildCounterUserCountriesTargeting--;
+}
+
+core.List<core.String> buildUnnamed106() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed106(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterUserCountrySet = 0;
 api.UserCountrySet buildUserCountrySet() {
   final o = api.UserCountrySet();
   buildCounterUserCountrySet++;
   if (buildCounterUserCountrySet < 3) {
-    o.countryCodes = buildUnnamed105();
+    o.countryCodes = buildUnnamed106();
     o.name = 'foo';
   }
   buildCounterUserCountrySet--;
@@ -7306,7 +7449,7 @@ api.UserCountrySet buildUserCountrySet() {
 void checkUserCountrySet(api.UserCountrySet o) {
   buildCounterUserCountrySet++;
   if (buildCounterUserCountrySet < 3) {
-    checkUnnamed105(o.countryCodes!);
+    checkUnnamed106(o.countryCodes!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -7478,12 +7621,12 @@ void checkVoidedPurchase(api.VoidedPurchase o) {
   buildCounterVoidedPurchase--;
 }
 
-core.List<api.VoidedPurchase> buildUnnamed106() => [
+core.List<api.VoidedPurchase> buildUnnamed107() => [
       buildVoidedPurchase(),
       buildVoidedPurchase(),
     ];
 
-void checkUnnamed106(core.List<api.VoidedPurchase> o) {
+void checkUnnamed107(core.List<api.VoidedPurchase> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVoidedPurchase(o[0]);
   checkVoidedPurchase(o[1]);
@@ -7496,7 +7639,7 @@ api.VoidedPurchasesListResponse buildVoidedPurchasesListResponse() {
   if (buildCounterVoidedPurchasesListResponse < 3) {
     o.pageInfo = buildPageInfo();
     o.tokenPagination = buildTokenPagination();
-    o.voidedPurchases = buildUnnamed106();
+    o.voidedPurchases = buildUnnamed107();
   }
   buildCounterVoidedPurchasesListResponse--;
   return o;
@@ -7507,17 +7650,17 @@ void checkVoidedPurchasesListResponse(api.VoidedPurchasesListResponse o) {
   if (buildCounterVoidedPurchasesListResponse < 3) {
     checkPageInfo(o.pageInfo!);
     checkTokenPagination(o.tokenPagination!);
-    checkUnnamed106(o.voidedPurchases!);
+    checkUnnamed107(o.voidedPurchases!);
   }
   buildCounterVoidedPurchasesListResponse--;
 }
 
-core.List<core.String> buildUnnamed107() => [
+core.List<core.String> buildUnnamed108() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed107(core.List<core.String> o) {
+void checkUnnamed108(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -7529,12 +7672,12 @@ void checkUnnamed107(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed108() => [
+core.List<core.String> buildUnnamed109() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed108(core.List<core.String> o) {
+void checkUnnamed109(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -8595,6 +8738,26 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-InstallmentPlan', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildInstallmentPlan();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.InstallmentPlan.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkInstallmentPlan(od);
+    });
+  });
+
+  unittest.group('obj-schema-InstallmentsBasePlanType', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildInstallmentsBasePlanType();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.InstallmentsBasePlanType.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkInstallmentsBasePlanType(od);
+    });
+  });
+
   unittest.group('obj-schema-InternalAppSharingArtifact', () {
     unittest.test('to-json--from-json', () async {
       final o = buildInternalAppSharingArtifact();
@@ -8907,6 +9070,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-PendingCancellation', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPendingCancellation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PendingCancellation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkPendingCancellation(od);
+    });
+  });
+
   unittest.group('obj-schema-PrepaidBasePlanType', () {
     unittest.test('to-json--from-json', () async {
       final o = buildPrepaidBasePlanType();
@@ -9095,6 +9268,16 @@ void main() {
       final od = api.ReplacementCancellation.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkReplacementCancellation(od);
+    });
+  });
+
+  unittest.group('obj-schema-RestrictedPaymentCountries', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRestrictedPaymentCountries();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RestrictedPaymentCountries.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRestrictedPaymentCountries(od);
     });
   });
 
@@ -14520,7 +14703,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.AndroidPublisherApi(mock).inappproducts;
       final arg_packageName = 'foo';
-      final arg_sku = buildUnnamed107();
+      final arg_sku = buildUnnamed108();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -15470,7 +15653,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.AndroidPublisherApi(mock).monetization.subscriptions;
       final arg_packageName = 'foo';
-      final arg_productIds = buildUnnamed108();
+      final arg_productIds = buildUnnamed109();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;

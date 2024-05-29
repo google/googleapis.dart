@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240506",
+    "revision": "20240527",
     "rootUrl": "https://ondemandscanning.googleapis.com/",
     "servicePath": "",
     "title": "On-Demand Scanning API",

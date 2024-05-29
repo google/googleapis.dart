@@ -253,6 +253,7 @@ api.Release buildRelease() {
     o.fraction = 42.0;
     o.fractionGroup = 'foo';
     o.name = 'foo';
+    o.pinnable = true;
     o.serving = buildInterval();
     o.version = 'foo';
   }
@@ -275,6 +276,7 @@ void checkRelease(api.Release o) {
       o.name!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.pinnable!, unittest.isTrue);
     checkInterval(o.serving!);
     unittest.expect(
       o.version!,

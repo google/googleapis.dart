@@ -10620,8 +10620,8 @@ class RandomizeRangeRequest {
 
 /// The status of a refresh cancellation.
 ///
-/// You can send cancel request to explicitly cancel one or multiple data source
-/// object refreshes.
+/// You can send a cancel request to explicitly cancel one or multiple data
+/// source object refreshes.
 class RefreshCancellationStatus {
   /// The error code.
   /// Possible string values are:

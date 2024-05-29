@@ -726,7 +726,7 @@ api.SasPortalInstallationParams buildSasPortalInstallationParams() {
     o.antennaAzimuth = 42;
     o.antennaBeamwidth = 42;
     o.antennaDowntilt = 42;
-    o.antennaGain = 42;
+    o.antennaGain = 42.0;
     o.antennaModel = 'foo';
     o.cpeCbsdIndication = true;
     o.eirpCapability = 42;
@@ -759,7 +759,7 @@ void checkSasPortalInstallationParams(api.SasPortalInstallationParams o) {
     );
     unittest.expect(
       o.antennaGain!,
-      unittest.equals(42),
+      unittest.equals(42.0),
     );
     unittest.expect(
       o.antennaModel!,

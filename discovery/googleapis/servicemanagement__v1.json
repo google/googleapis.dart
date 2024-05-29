@@ -34,7 +34,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240503",
+    "revision": "20240517",
     "rootUrl": "https://servicemanagement.googleapis.com/",
     "servicePath": "",
     "title": "Service Management API",

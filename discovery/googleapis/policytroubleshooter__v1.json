@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240428",
+    "revision": "20240526",
     "rootUrl": "https://policytroubleshooter.googleapis.com/",
     "servicePath": "",
     "title": "Policy Troubleshooter API",

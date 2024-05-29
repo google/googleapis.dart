@@ -1740,8 +1740,8 @@ class EventsResource {
 
   /// Moves an event to another calendar, i.e. changes an event's organizer.
   ///
-  /// Note that only default events can be moved; outOfOffice, focusTime and
-  /// workingLocation events cannot be moved.
+  /// Note that only default events can be moved; outOfOffice, focusTime,
+  /// workingLocation and fromGmail events cannot be moved.
   ///
   /// Request parameters:
   ///
@@ -4126,6 +4126,7 @@ class Event {
   /// - "outOfOffice" - An out-of-office event.
   /// - "focusTime" - A focus-time event.
   /// - "workingLocation" - A working location event.
+  /// - "fromGmail" - An event from Gmail. This type of event cannot be created.
   core.String? eventType;
 
   /// Extended properties of the event.

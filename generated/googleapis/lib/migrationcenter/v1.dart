@@ -3923,7 +3923,7 @@ class AssetList {
 class AssetPerformanceData {
   /// Daily resource usage aggregations.
   ///
-  /// Contains all of the data available for an asset, up to the last 40 days.
+  /// Contains all of the data available for an asset, up to the last 420 days.
   /// Aggregations are sorted from oldest to most recent.
   core.List<DailyResourceUsageAggregation>? dailyResourceUsageAggregations;
 

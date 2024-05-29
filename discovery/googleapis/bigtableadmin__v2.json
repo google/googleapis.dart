@@ -49,7 +49,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240430",
+    "revision": "20240520",
     "rootUrl": "https://bigtableadmin.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Bigtable Admin API",

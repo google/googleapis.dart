@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240426",
+    "revision": "20240510",
     "rootUrl": "https://pubsublite.googleapis.com/",
     "servicePath": "",
     "title": "Pub/Sub Lite API",

@@ -1815,6 +1815,7 @@ api.ExecutionConfig buildExecutionConfig() {
     o.privatePool = buildPrivatePool();
     o.serviceAccount = 'foo';
     o.usages = buildUnnamed28();
+    o.verbose = true;
     o.workerPool = 'foo';
   }
   buildCounterExecutionConfig--;
@@ -1839,6 +1840,7 @@ void checkExecutionConfig(api.ExecutionConfig o) {
       unittest.equals('foo'),
     );
     checkUnnamed28(o.usages!);
+    unittest.expect(o.verbose!, unittest.isTrue);
     unittest.expect(
       o.workerPool!,
       unittest.equals('foo'),

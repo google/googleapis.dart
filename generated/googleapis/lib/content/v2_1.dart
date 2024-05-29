@@ -18253,22 +18253,25 @@ class MethodQuota {
 /// Values are only set for metrics requested explicitly in the request's search
 /// query.
 class Metrics {
-  /// Average order size - the average number of items in an order.
+  /// *Deprecated*: This field is no longer supported and retrieving it returns
+  /// 0 starting from May 2024.
   ///
-  /// **This metric cannot be segmented by product dimensions and
+  /// Average order size - the average number of items in an order. **This
+  /// metric cannot be segmented by product dimensions and
   /// customer_country_code.**
   core.double? aos;
 
+  /// *Deprecated*: This field is no longer supported and retrieving it returns
+  /// 0 starting from May 2024.
+  ///
   /// Average order value in micros (1 millionth of a standard unit, 1 USD =
   /// 1000000 micros) - the average value (total price of items) of all placed
-  /// orders.
-  ///
-  /// The currency of the returned value is stored in the currency_code segment.
-  /// If this metric is selected, 'segments.currency_code' is automatically
-  /// added to the SELECT clause in the search query (unless it is explicitly
-  /// selected by the user) and the currency_code segment is populated in the
-  /// response. **This metric cannot be segmented by product dimensions and
-  /// customer_country_code.**
+  /// orders. The currency of the returned value is stored in the currency_code
+  /// segment. If this metric is selected, 'segments.currency_code' is
+  /// automatically added to the SELECT clause in the search query (unless it is
+  /// explicitly selected by the user) and the currency_code segment is
+  /// populated in the response. **This metric cannot be segmented by product
+  /// dimensions and customer_country_code.**
   core.double? aovMicros;
 
   /// Number of clicks.
@@ -18277,7 +18280,7 @@ class Metrics {
   /// Number of conversions divided by the number of clicks, reported on the
   /// impression date.
   ///
-  /// The metric is currently available only for the FREE_PRODUCT_LISTING
+  /// The metric is currently available only for the `FREE_PRODUCT_LISTING`
   /// program.
   core.double? conversionRate;
 
@@ -18285,7 +18288,7 @@ class Metrics {
   /// 1000000 micros) attributed to the product, reported on the conversion
   /// date.
   ///
-  /// The metric is currently available only for the FREE_PRODUCT_LISTING
+  /// The metric is currently available only for the `FREE_PRODUCT_LISTING`
   /// program. The currency of the returned value is stored in the currency_code
   /// segment. If this metric is selected, 'segments.currency_code' is
   /// automatically added to the SELECT clause in the search query (unless it is
@@ -18299,7 +18302,7 @@ class Metrics {
   /// Depending on the attribution model, a conversion might be distributed
   /// across multiple clicks, where each click gets its own credit assigned.
   /// This metric is a sum of all such credits. The metric is currently
-  /// available only for the FREE_PRODUCT_LISTING program.
+  /// available only for the `FREE_PRODUCT_LISTING` program.
   core.double? conversions;
 
   /// Click-through rate - the number of clicks merchant's products receive
@@ -18307,121 +18310,146 @@ class Metrics {
   /// (impressions).
   core.double? ctr;
 
-  /// Average number of days between an order being placed and the order being
-  /// fully shipped, reported on the last shipment date.
+  /// *Deprecated*: This field is no longer supported and retrieving it returns
+  /// 0 starting from May 2024.
   ///
-  /// **This metric cannot be segmented by product dimensions and
-  /// customer_country_code.**
+  /// Average number of days between an order being placed and the order being
+  /// fully shipped, reported on the last shipment date. **This metric cannot be
+  /// segmented by product dimensions and customer_country_code.**
   core.double? daysToShip;
 
   /// Number of times merchant's products are shown.
   core.String? impressions;
 
+  /// *Deprecated*: This field is no longer supported and retrieving it returns
+  /// 0 starting from May 2024.
+  ///
   /// Average number of days between an item being ordered and the item being
   /// **This metric cannot be segmented by customer_country_code.**
   core.double? itemDaysToShip;
 
+  /// *Deprecated*: This field is no longer supported and retrieving it returns
+  /// 0 starting from May 2024.
+  ///
   /// Percentage of shipped items in relation to all finalized items (shipped or
   /// rejected by the merchant; unshipped items are not taken into account),
-  /// reported on the order date.
-  ///
-  /// Item fill rate is lowered by merchant rejections. **This metric cannot be
-  /// segmented by customer_country_code.**
+  /// reported on the order date. Item fill rate is lowered by merchant
+  /// rejections. **This metric cannot be segmented by customer_country_code.**
   core.double? itemFillRate;
 
-  /// Total price of ordered items in micros (1 millionth of a standard unit, 1
-  /// USD = 1000000 micros).
+  /// *Deprecated*: This field is no longer supported and retrieving it returns
+  /// 0 starting from May 2024.
   ///
-  /// Excludes shipping, taxes (US only), and customer cancellations that
-  /// happened within 30 minutes of placing the order. The currency of the
-  /// returned value is stored in the currency_code segment. If this metric is
-  /// selected, 'segments.currency_code' is automatically added to the SELECT
-  /// clause in the search query (unless it is explicitly selected by the user)
-  /// and the currency_code segment is populated in the response. **This metric
-  /// cannot be segmented by customer_country_code.**
+  /// Total price of ordered items in micros (1 millionth of a standard unit, 1
+  /// USD = 1000000 micros). Excludes shipping, taxes (US only), and customer
+  /// cancellations that happened within 30 minutes of placing the order. The
+  /// currency of the returned value is stored in the currency_code segment. If
+  /// this metric is selected, 'segments.currency_code' is automatically added
+  /// to the SELECT clause in the search query (unless it is explicitly selected
+  /// by the user) and the currency_code segment is populated in the response.
+  /// **This metric cannot be segmented by customer_country_code.**
   core.String? orderedItemSalesMicros;
 
-  /// Number of ordered items.
+  /// *Deprecated*: This field is no longer supported and retrieving it returns
+  /// 0 starting from May 2024.
   ///
-  /// Excludes customer cancellations that happened within 30 minutes of placing
-  /// the order. **This metric cannot be segmented by customer_country_code.**
+  /// Number of ordered items. Excludes customer cancellations that happened
+  /// within 30 minutes of placing the order. **This metric cannot be segmented
+  /// by customer_country_code.**
   core.String? orderedItems;
 
-  /// Number of placed orders.
+  /// *Deprecated*: This field is no longer supported and retrieving it returns
+  /// 0 starting from May 2024.
   ///
-  /// Excludes customer cancellations that happened within 30 minutes of placing
-  /// the order. **This metric cannot be segmented by product dimensions and
-  /// customer_country_code.**
+  /// Number of placed orders. Excludes customer cancellations that happened
+  /// within 30 minutes of placing the order. **This metric cannot be segmented
+  /// by product dimensions and customer_country_code.**
   core.String? orders;
 
-  /// Number of ordered items canceled by the merchant, reported on the order
-  /// date.
+  /// *Deprecated*: This field is no longer supported and retrieving it returns
+  /// 0 starting from May 2024.
   ///
-  /// **This metric cannot be segmented by customer_country_code.**
+  /// Number of ordered items canceled by the merchant, reported on the order
+  /// date. **This metric cannot be segmented by customer_country_code.**
   core.String? rejectedItems;
 
-  /// Total price of returned items divided by the total price of shipped items,
-  /// reported on the order date.
+  /// *Deprecated*: This field is no longer supported and retrieving it returns
+  /// 0 starting from May 2024.
   ///
-  /// If this metric is selected, 'segments.currency_code' is automatically
-  /// added to the SELECT clause in the search query (unless it is explicitly
-  /// selected by the user) and the currency_code segment is populated in the
-  /// response. **This metric cannot be segmented by customer_country_code.**
+  /// Total price of returned items divided by the total price of shipped items,
+  /// reported on the order date. If this metric is selected,
+  /// 'segments.currency_code' is automatically added to the SELECT clause in
+  /// the search query (unless it is explicitly selected by the user) and the
+  /// currency_code segment is populated in the response. **This metric cannot
+  /// be segmented by customer_country_code.**
   core.double? returnRate;
 
-  /// Number of ordered items sent back for return, reported on the date when
-  /// the merchant accepted the return.
+  /// *Deprecated*: This field is no longer supported and retrieving it returns
+  /// 0 starting from May 2024.
   ///
-  /// **This metric cannot be segmented by customer_country_code.**
+  /// Number of ordered items sent back for return, reported on the date when
+  /// the merchant accepted the return. **This metric cannot be segmented by
+  /// customer_country_code.**
   core.String? returnedItems;
 
+  /// *Deprecated*: This field is no longer supported and retrieving it returns
+  /// 0 starting from May 2024.
+  ///
   /// Total price of ordered items sent back for return in micros (1 millionth
   /// of a standard unit, 1 USD = 1000000 micros), reported on the date when the
-  /// merchant accepted the return.
-  ///
-  /// The currency of the returned value is stored in the currency_code segment.
-  /// If this metric is selected, 'segments.currency_code' is automatically
-  /// added to the SELECT clause in the search query (unless it is explicitly
-  /// selected by the user) and the currency_code segment is populated in the
-  /// response. **This metric cannot be segmented by customer_country_code.**
+  /// merchant accepted the return. The currency of the returned value is stored
+  /// in the currency_code segment. If this metric is selected,
+  /// 'segments.currency_code' is automatically added to the SELECT clause in
+  /// the search query (unless it is explicitly selected by the user) and the
+  /// currency_code segment is populated in the response. **This metric cannot
+  /// be segmented by customer_country_code.**
   core.String? returnsMicros;
 
-  /// Total price of shipped items in micros (1 millionth of a standard unit, 1
-  /// USD = 1000000 micros), reported on the order date.
+  /// *Deprecated*: This field is no longer supported and retrieving it returns
+  /// 0 starting from May 2024.
   ///
-  /// Excludes shipping and taxes (US only). The currency of the returned value
-  /// is stored in the currency_code segment. If this metric is selected,
+  /// Total price of shipped items in micros (1 millionth of a standard unit, 1
+  /// USD = 1000000 micros), reported on the order date. Excludes shipping and
+  /// taxes (US only). The currency of the returned value is stored in the
+  /// currency_code segment. If this metric is selected,
   /// 'segments.currency_code' is automatically added to the SELECT clause in
   /// the search query (unless it is explicitly selected by the user) and the
   /// currency_code segment is populated in the response. **This metric cannot
   /// be segmented by customer_country_code.**
   core.String? shippedItemSalesMicros;
 
-  /// Number of shipped items, reported on the shipment date.
+  /// *Deprecated*: This field is no longer supported and retrieving it returns
+  /// 0 starting from May 2024.
   ///
-  /// **This metric cannot be segmented by customer_country_code.**
+  /// Number of shipped items, reported on the shipment date. **This metric
+  /// cannot be segmented by customer_country_code.**
   core.String? shippedItems;
 
-  /// Number of fully shipped orders, reported on the last shipment date.
+  /// *Deprecated*: This field is no longer supported and retrieving it returns
+  /// 0 starting from May 2024.
   ///
-  /// **This metric cannot be segmented by product dimensions and
+  /// Number of fully shipped orders, reported on the last shipment date. **This
+  /// metric cannot be segmented by product dimensions and
   /// customer_country_code.**
   core.String? shippedOrders;
 
-  /// Number of ordered items not shipped up until the end of the queried day.
+  /// *Deprecated*: This field is no longer supported and retrieving it returns
+  /// 0 starting from May 2024.
   ///
+  /// Number of ordered items not shipped up until the end of the queried day.
   /// If a multi-day period is specified in the search query, the returned value
   /// is the average number of unshipped items over the days in the queried
   /// period. **This metric cannot be segmented by customer_country_code.**
   core.double? unshippedItems;
 
-  /// Number of orders not shipped or partially shipped up until the end of the
-  /// queried day.
+  /// *Deprecated*: This field is no longer supported and retrieving it returns
+  /// 0 starting from May 2024.
   ///
-  /// If a multi-day period is specified in the search query, the returned value
-  /// is the average number of unshipped orders over the days in the queried
-  /// period. **This metric cannot be segmented by product dimensions and
-  /// customer_country_code.**
+  /// Number of orders not shipped or partially shipped up until the end of the
+  /// queried day. If a multi-day period is specified in the search query, the
+  /// returned value is the average number of unshipped orders over the days in
+  /// the queried period. **This metric cannot be segmented by product
+  /// dimensions and customer_country_code.**
   core.double? unshippedOrders;
 
   Metrics({
@@ -25336,8 +25364,19 @@ class Product {
   core.String? linkTemplate;
 
   /// Loyalty program information that is used to surface loyalty benefits ( for
-  /// example pricing, points, etc) to the user for this item.
+  /// example, better pricing, points, etc) to the user of this item.
+  ///
+  /// This signular field points to the latest uploaded loyalty program info.
+  /// This field will be deprecated in the coming weeks and should not be used
+  /// in favor of the plural 'LoyaltyProgram' field below.
   LoyaltyProgram? loyaltyProgram;
+
+  /// A list of loyalty program information that is used to surface loyalty
+  /// benefits (for example, better pricing, points, etc) to the user of this
+  /// item.
+  ///
+  /// Optional.
+  core.List<LoyaltyProgram>? loyaltyPrograms;
 
   /// The material of which the item is made.
   core.String? material;
@@ -25585,6 +25624,7 @@ class Product {
     this.link,
     this.linkTemplate,
     this.loyaltyProgram,
+    this.loyaltyPrograms,
     this.material,
     this.maxEnergyEfficiencyClass,
     this.maxHandlingTime,
@@ -25813,6 +25853,12 @@ class Product {
           loyaltyProgram: json_.containsKey('loyaltyProgram')
               ? LoyaltyProgram.fromJson(json_['loyaltyProgram']
                   as core.Map<core.String, core.dynamic>)
+              : null,
+          loyaltyPrograms: json_.containsKey('loyaltyPrograms')
+              ? (json_['loyaltyPrograms'] as core.List)
+                  .map((value) => LoyaltyProgram.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
               : null,
           material: json_.containsKey('material')
               ? json_['material'] as core.String
@@ -26060,6 +26106,7 @@ class Product {
         if (link != null) 'link': link!,
         if (linkTemplate != null) 'linkTemplate': linkTemplate!,
         if (loyaltyProgram != null) 'loyaltyProgram': loyaltyProgram!,
+        if (loyaltyPrograms != null) 'loyaltyPrograms': loyaltyPrograms!,
         if (material != null) 'material': material!,
         if (maxEnergyEfficiencyClass != null)
           'maxEnergyEfficiencyClass': maxEnergyEfficiencyClass!,
@@ -26179,10 +26226,17 @@ class ProductCertification {
   /// Maximum length is 2000 characters.
   core.String? certificationName;
 
+  /// The certification value (also known as class, level or grade), for example
+  /// "A+", "C", "gold".
+  ///
+  /// Maximum length is 2000 characters.
+  core.String? certificationValue;
+
   ProductCertification({
     this.certificationAuthority,
     this.certificationCode,
     this.certificationName,
+    this.certificationValue,
   });
 
   ProductCertification.fromJson(core.Map json_)
@@ -26196,6 +26250,9 @@ class ProductCertification {
           certificationName: json_.containsKey('certificationName')
               ? json_['certificationName'] as core.String
               : null,
+          certificationValue: json_.containsKey('certificationValue')
+              ? json_['certificationValue'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -26203,6 +26260,8 @@ class ProductCertification {
           'certificationAuthority': certificationAuthority!,
         if (certificationCode != null) 'certificationCode': certificationCode!,
         if (certificationName != null) 'certificationName': certificationName!,
+        if (certificationValue != null)
+          'certificationValue': certificationValue!,
       };
 }
 
@@ -31669,7 +31728,9 @@ class Segments {
   /// - "SHOPPING_ADS" : Shopping Ads.
   /// - "FREE_PRODUCT_LISTING" : Free Product Listing.
   /// - "FREE_LOCAL_PRODUCT_LISTING" : Free Local Product Listing.
-  /// - "BUY_ON_GOOGLE_LISTING" : Buy on Google Listing.
+  /// - "BUY_ON_GOOGLE_LISTING" : *Deprecated*: This value is no longer
+  /// supported. Retrieving all metrics for the `BUY_ON_GOOGLE_LISTING` program
+  /// returns 0 starting from May 2024. Buy on Google Listing.
   core.String? program;
 
   /// Title of the product.

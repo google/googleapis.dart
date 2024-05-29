@@ -3732,7 +3732,29 @@ class GoogleFirestoreAdminV1CmekConfig {
 /// Represents a recurring schedule that runs every day.
 ///
 /// The time zone is UTC.
-typedef GoogleFirestoreAdminV1DailyRecurrence = $Empty;
+class GoogleFirestoreAdminV1DailyRecurrence {
+  /// Time of the day.
+  ///
+  /// The first run scheduled will be either on the same day if schedule
+  /// creation time precedes time_of_day or the next day otherwise.
+  TimeOfDay? time;
+
+  GoogleFirestoreAdminV1DailyRecurrence({
+    this.time,
+  });
+
+  GoogleFirestoreAdminV1DailyRecurrence.fromJson(core.Map json_)
+      : this(
+          time: json_.containsKey('time')
+              ? TimeOfDay.fromJson(
+                  json_['time'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (time != null) 'time': time!,
+      };
+}
 
 /// A Cloud Firestore Database.
 class GoogleFirestoreAdminV1Database {
@@ -3782,9 +3804,9 @@ class GoogleFirestoreAdminV1Database {
   /// - "DELETE_PROTECTION_ENABLED" : Delete protection is enabled
   core.String? deleteProtectionState;
 
-  /// The timestamp at which this database was soft deleted.
+  /// The timestamp at which this database was deleted.
   ///
-  /// Only set if the database has been soft deleted.
+  /// Only set if the database has been deleted.
   ///
   /// Output only.
   core.String? deleteTime;
@@ -3840,6 +3862,13 @@ class GoogleFirestoreAdminV1Database {
   /// of the data from within the past 1 hour.
   core.String? pointInTimeRecoveryEnablement;
 
+  /// The database resource's prior database ID.
+  ///
+  /// This field is only populated for deleted databases.
+  ///
+  /// Output only.
+  core.String? previousId;
+
   /// The type of the database.
   ///
   /// See https://cloud.google.com/datastore/docs/firestore-or-datastore for
@@ -3888,6 +3917,7 @@ class GoogleFirestoreAdminV1Database {
     this.locationId,
     this.name,
     this.pointInTimeRecoveryEnablement,
+    this.previousId,
     this.type,
     this.uid,
     this.updateTime,
@@ -3931,6 +3961,9 @@ class GoogleFirestoreAdminV1Database {
               json_.containsKey('pointInTimeRecoveryEnablement')
                   ? json_['pointInTimeRecoveryEnablement'] as core.String
                   : null,
+          previousId: json_.containsKey('previousId')
+              ? json_['previousId'] as core.String
+              : null,
           type: json_.containsKey('type') ? json_['type'] as core.String : null,
           uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
           updateTime: json_.containsKey('updateTime')
@@ -3958,6 +3991,7 @@ class GoogleFirestoreAdminV1Database {
         if (name != null) 'name': name!,
         if (pointInTimeRecoveryEnablement != null)
           'pointInTimeRecoveryEnablement': pointInTimeRecoveryEnablement!,
+        if (previousId != null) 'previousId': previousId!,
         if (type != null) 'type': type!,
         if (uid != null) 'uid': uid!,
         if (updateTime != null) 'updateTime': updateTime!,
@@ -4005,7 +4039,8 @@ class GoogleFirestoreAdminV1DatabaseSnapshot {
 class GoogleFirestoreAdminV1ExportDocumentsRequest {
   /// Which collection ids to export.
   ///
-  /// Unspecified means all collections.
+  /// Unspecified means all collections. Each collection id in this list must be
+  /// unique.
   core.List<core.String>? collectionIds;
 
   /// An empty list represents all namespaces.
@@ -4148,7 +4183,8 @@ typedef GoogleFirestoreAdminV1FlatIndex = $Empty;
 class GoogleFirestoreAdminV1ImportDocumentsRequest {
   /// Which collection ids to import.
   ///
-  /// Unspecified means all collections included in the import.
+  /// Unspecified means all collections included in the import. Each collection
+  /// id in this list must be unique.
   core.List<core.String>? collectionIds;
 
   /// Location of the exported files.
@@ -4794,17 +4830,29 @@ class GoogleFirestoreAdminV1WeeklyRecurrence {
   /// - "SUNDAY" : Sunday
   core.String? day;
 
+  /// Time of the day.
+  ///
+  /// If day is today, the first run will happen today if schedule creation time
+  /// precedes time_of_day, and the next week otherwise.
+  TimeOfDay? time;
+
   GoogleFirestoreAdminV1WeeklyRecurrence({
     this.day,
+    this.time,
   });
 
   GoogleFirestoreAdminV1WeeklyRecurrence.fromJson(core.Map json_)
       : this(
           day: json_.containsKey('day') ? json_['day'] as core.String : null,
+          time: json_.containsKey('time')
+              ? TimeOfDay.fromJson(
+                  json_['time'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (day != null) 'day': day!,
+        if (time != null) 'time': time!,
       };
 }
 
@@ -5957,6 +6005,13 @@ class Sum {
         if (field != null) 'field': field!,
       };
 }
+
+/// Represents a time of day.
+///
+/// The date and time zone are either not significant or are specified
+/// elsewhere. An API may choose to allow leap seconds. Related types are
+/// google.type.Date and `google.protobuf.Timestamp`.
+typedef TimeOfDay = $TimeOfDay;
 
 /// Options for creating a new transaction.
 class TransactionOptions {

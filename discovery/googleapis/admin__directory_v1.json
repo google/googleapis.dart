@@ -110,7 +110,7 @@
     "ownerName": "Google",
     "packagePath": "admin",
     "protocol": "rest",
-    "revision": "20240507",
+    "revision": "20240528",
     "rootUrl": "https://admin.googleapis.com/",
     "servicePath": "",
     "title": "Admin SDK API",
@@ -406,7 +406,7 @@
                         },
                         "maxResults": {
                             "default": "100",
-                            "description": "Maximum number of results to return.",
+                            "description": "Maximum number of results to return, value should not exceed 300.",
                             "format": "int32",
                             "location": "query",
                             "minimum": "1",
@@ -444,7 +444,7 @@
                             "type": "string"
                         },
                         "projection": {
-                            "description": "Restrict information returned to a set of selected fields.",
+                            "description": "Determines whether the response contains the full list of properties or only a subset.",
                             "enum": [
                                 "BASIC",
                                 "FULL"
@@ -538,7 +538,7 @@
                             "type": "string"
                         },
                         "projection": {
-                            "description": "Restrict information returned to a set of selected fields.",
+                            "description": "Determines whether the response contains the full list of properties or only a subset.",
                             "enum": [
                                 "BASIC",
                                 "FULL"
@@ -585,7 +585,7 @@
                             "type": "string"
                         },
                         "projection": {
-                            "description": "Restrict information returned to a set of selected fields.",
+                            "description": "Determines whether the response contains the full list of properties or only a subset.",
                             "enum": [
                                 "BASIC",
                                 "FULL"
@@ -5424,6 +5424,21 @@
                 },
                 "bootMode": {
                     "description": "The boot mode for the device. The possible values are: * `Verified`: The device is running a valid version of the Chrome OS. * `Dev`: The devices's developer hardware switch is enabled. When booted, the device has a command line shell. For an example of a developer switch, see the [Chromebook developer information](https://www.chromium.org/chromium-os/developer-information-for-chrome-os-devices/samsung-series-5-chromebook#TOC-Developer-switch).",
+                    "type": "string"
+                },
+                "chromeOsType": {
+                    "description": "Output only. Chrome OS type of the device.",
+                    "enum": [
+                        "chromeOsTypeUnspecified",
+                        "chromeOsFlex",
+                        "chromeOs"
+                    ],
+                    "enumDescriptions": [
+                        "Chrome OS Type unspecified.",
+                        "Chrome OS Type Chrome OS Flex.",
+                        "Chrome OS Type Chrome OS."
+                    ],
+                    "readOnly": true,
                     "type": "string"
                 },
                 "cpuInfo": {

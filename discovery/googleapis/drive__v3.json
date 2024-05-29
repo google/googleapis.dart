@@ -14,6 +14,9 @@
                 "https://www.googleapis.com/auth/drive.file": {
                     "description": "See, edit, create, and delete only the specific Google Drive files you use with this app"
                 },
+                "https://www.googleapis.com/auth/drive.meet.readonly": {
+                    "description": "See and download your Google Drive files that were created or edited by Google Meet."
+                },
                 "https://www.googleapis.com/auth/drive.metadata": {
                     "description": "View and manage metadata of files in your Google Drive"
                 },
@@ -48,7 +51,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240429",
+    "revision": "20240521",
     "rootUrl": "https://www.googleapis.com/",
     "servicePath": "drive/v3/",
     "title": "Google Drive API",
@@ -265,6 +268,7 @@
                         "https://www.googleapis.com/auth/drive",
                         "https://www.googleapis.com/auth/drive.appdata",
                         "https://www.googleapis.com/auth/drive.file",
+                        "https://www.googleapis.com/auth/drive.meet.readonly",
                         "https://www.googleapis.com/auth/drive.metadata",
                         "https://www.googleapis.com/auth/drive.metadata.readonly",
                         "https://www.googleapis.com/auth/drive.photos.readonly",
@@ -375,6 +379,7 @@
                         "https://www.googleapis.com/auth/drive",
                         "https://www.googleapis.com/auth/drive.appdata",
                         "https://www.googleapis.com/auth/drive.file",
+                        "https://www.googleapis.com/auth/drive.meet.readonly",
                         "https://www.googleapis.com/auth/drive.metadata",
                         "https://www.googleapis.com/auth/drive.metadata.readonly",
                         "https://www.googleapis.com/auth/drive.photos.readonly",
@@ -490,6 +495,7 @@
                         "https://www.googleapis.com/auth/drive",
                         "https://www.googleapis.com/auth/drive.appdata",
                         "https://www.googleapis.com/auth/drive.file",
+                        "https://www.googleapis.com/auth/drive.meet.readonly",
                         "https://www.googleapis.com/auth/drive.metadata",
                         "https://www.googleapis.com/auth/drive.metadata.readonly",
                         "https://www.googleapis.com/auth/drive.photos.readonly",
@@ -517,6 +523,7 @@
                         "https://www.googleapis.com/auth/drive",
                         "https://www.googleapis.com/auth/drive.appdata",
                         "https://www.googleapis.com/auth/drive.file",
+                        "https://www.googleapis.com/auth/drive.meet.readonly",
                         "https://www.googleapis.com/auth/drive.metadata",
                         "https://www.googleapis.com/auth/drive.metadata.readonly",
                         "https://www.googleapis.com/auth/drive.photos.readonly",
@@ -620,6 +627,7 @@
                     "scopes": [
                         "https://www.googleapis.com/auth/drive",
                         "https://www.googleapis.com/auth/drive.file",
+                        "https://www.googleapis.com/auth/drive.meet.readonly",
                         "https://www.googleapis.com/auth/drive.readonly"
                     ]
                 },
@@ -671,6 +679,7 @@
                     "scopes": [
                         "https://www.googleapis.com/auth/drive",
                         "https://www.googleapis.com/auth/drive.file",
+                        "https://www.googleapis.com/auth/drive.meet.readonly",
                         "https://www.googleapis.com/auth/drive.readonly"
                     ]
                 },
@@ -1192,6 +1201,7 @@
                     "scopes": [
                         "https://www.googleapis.com/auth/drive",
                         "https://www.googleapis.com/auth/drive.file",
+                        "https://www.googleapis.com/auth/drive.meet.readonly",
                         "https://www.googleapis.com/auth/drive.readonly"
                     ],
                     "supportsMediaDownload": true,
@@ -1289,6 +1299,7 @@
                         "https://www.googleapis.com/auth/drive",
                         "https://www.googleapis.com/auth/drive.appdata",
                         "https://www.googleapis.com/auth/drive.file",
+                        "https://www.googleapis.com/auth/drive.meet.readonly",
                         "https://www.googleapis.com/auth/drive.metadata",
                         "https://www.googleapis.com/auth/drive.metadata.readonly",
                         "https://www.googleapis.com/auth/drive.photos.readonly",
@@ -1410,6 +1421,7 @@
                         "https://www.googleapis.com/auth/drive",
                         "https://www.googleapis.com/auth/drive.appdata",
                         "https://www.googleapis.com/auth/drive.file",
+                        "https://www.googleapis.com/auth/drive.meet.readonly",
                         "https://www.googleapis.com/auth/drive.metadata",
                         "https://www.googleapis.com/auth/drive.metadata.readonly",
                         "https://www.googleapis.com/auth/drive.photos.readonly",
@@ -1453,6 +1465,7 @@
                     "scopes": [
                         "https://www.googleapis.com/auth/drive",
                         "https://www.googleapis.com/auth/drive.file",
+                        "https://www.googleapis.com/auth/drive.meet.readonly",
                         "https://www.googleapis.com/auth/drive.metadata",
                         "https://www.googleapis.com/auth/drive.metadata.readonly",
                         "https://www.googleapis.com/auth/drive.readonly"
@@ -1649,6 +1662,7 @@
                         "https://www.googleapis.com/auth/drive",
                         "https://www.googleapis.com/auth/drive.appdata",
                         "https://www.googleapis.com/auth/drive.file",
+                        "https://www.googleapis.com/auth/drive.meet.readonly",
                         "https://www.googleapis.com/auth/drive.metadata",
                         "https://www.googleapis.com/auth/drive.metadata.readonly",
                         "https://www.googleapis.com/auth/drive.photos.readonly",
@@ -1833,6 +1847,7 @@
                     "scopes": [
                         "https://www.googleapis.com/auth/drive",
                         "https://www.googleapis.com/auth/drive.file",
+                        "https://www.googleapis.com/auth/drive.meet.readonly",
                         "https://www.googleapis.com/auth/drive.metadata",
                         "https://www.googleapis.com/auth/drive.metadata.readonly",
                         "https://www.googleapis.com/auth/drive.photos.readonly",
@@ -1899,6 +1914,7 @@
                     "scopes": [
                         "https://www.googleapis.com/auth/drive",
                         "https://www.googleapis.com/auth/drive.file",
+                        "https://www.googleapis.com/auth/drive.meet.readonly",
                         "https://www.googleapis.com/auth/drive.metadata",
                         "https://www.googleapis.com/auth/drive.metadata.readonly",
                         "https://www.googleapis.com/auth/drive.photos.readonly",
@@ -2089,6 +2105,7 @@
                     "scopes": [
                         "https://www.googleapis.com/auth/drive",
                         "https://www.googleapis.com/auth/drive.file",
+                        "https://www.googleapis.com/auth/drive.meet.readonly",
                         "https://www.googleapis.com/auth/drive.readonly"
                     ]
                 },
@@ -2142,6 +2159,7 @@
                     "scopes": [
                         "https://www.googleapis.com/auth/drive",
                         "https://www.googleapis.com/auth/drive.file",
+                        "https://www.googleapis.com/auth/drive.meet.readonly",
                         "https://www.googleapis.com/auth/drive.readonly"
                     ]
                 },
@@ -2258,6 +2276,7 @@
                         "https://www.googleapis.com/auth/drive",
                         "https://www.googleapis.com/auth/drive.appdata",
                         "https://www.googleapis.com/auth/drive.file",
+                        "https://www.googleapis.com/auth/drive.meet.readonly",
                         "https://www.googleapis.com/auth/drive.metadata",
                         "https://www.googleapis.com/auth/drive.metadata.readonly",
                         "https://www.googleapis.com/auth/drive.photos.readonly",
@@ -2304,6 +2323,7 @@
                         "https://www.googleapis.com/auth/drive",
                         "https://www.googleapis.com/auth/drive.appdata",
                         "https://www.googleapis.com/auth/drive.file",
+                        "https://www.googleapis.com/auth/drive.meet.readonly",
                         "https://www.googleapis.com/auth/drive.metadata",
                         "https://www.googleapis.com/auth/drive.metadata.readonly",
                         "https://www.googleapis.com/auth/drive.photos.readonly",
@@ -2592,15 +2612,15 @@
                     "type": "string"
                 },
                 "storageQuota": {
-                    "description": "The user's storage quota limits and usage. All fields are measured in bytes.",
+                    "description": "The user's storage quota limits and usage. For users that are part of an organization with pooled storage, information about the limit and usage across all services is for the organization, rather than the individual user. All fields are measured in bytes.",
                     "properties": {
                         "limit": {
-                            "description": "The usage limit, if applicable. This will not be present if the user has unlimited storage.",
+                            "description": "The usage limit, if applicable. This will not be present if the user has unlimited storage. For users that are part of an organization with pooled storage, this is the limit for the organization, rather than the individual user.",
                             "format": "int64",
                             "type": "string"
                         },
                         "usage": {
-                            "description": "The total usage across all services.",
+                            "description": "The total usage across all services. For users that are part of an organization with pooled storage, this is the usage across all services for the organization, rather than the individual user.",
                             "format": "int64",
                             "type": "string"
                         },

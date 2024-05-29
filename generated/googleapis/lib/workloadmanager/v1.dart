@@ -1207,6 +1207,11 @@ class Execution {
   /// Output only.
   core.String? evaluationId;
 
+  /// External data sources
+  ///
+  /// Optional.
+  core.List<ExternalDataSources>? externalDataSources;
+
   /// Inventory time stamp
   ///
   /// Output only.
@@ -1247,6 +1252,7 @@ class Execution {
   Execution({
     this.endTime,
     this.evaluationId,
+    this.externalDataSources,
     this.inventoryTime,
     this.labels,
     this.name,
@@ -1262,6 +1268,12 @@ class Execution {
               : null,
           evaluationId: json_.containsKey('evaluationId')
               ? json_['evaluationId'] as core.String
+              : null,
+          externalDataSources: json_.containsKey('externalDataSources')
+              ? (json_['externalDataSources'] as core.List)
+                  .map((value) => ExternalDataSources.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
               : null,
           inventoryTime: json_.containsKey('inventoryTime')
               ? json_['inventoryTime'] as core.String
@@ -1288,6 +1300,8 @@ class Execution {
   core.Map<core.String, core.dynamic> toJson() => {
         if (endTime != null) 'endTime': endTime!,
         if (evaluationId != null) 'evaluationId': evaluationId!,
+        if (externalDataSources != null)
+          'externalDataSources': externalDataSources!,
         if (inventoryTime != null) 'inventoryTime': inventoryTime!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
@@ -1355,6 +1369,50 @@ class ExecutionResult {
         if (severity != null) 'severity': severity!,
         if (violationDetails != null) 'violationDetails': violationDetails!,
         if (violationMessage != null) 'violationMessage': violationMessage!,
+      };
+}
+
+/// Message for external data sources
+class ExternalDataSources {
+  /// Name of external data source.
+  ///
+  /// The name will be used inside the rego/sql to refer the external data
+  ///
+  /// Required.
+  core.String? name;
+
+  /// Type of external data source
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Unknown type
+  /// - "BIG_QUERY_TABLE" : BigQuery table
+  core.String? type;
+
+  /// URI of external data source.
+  ///
+  /// example of bq table {project_ID}.{dataset_ID}.{table_ID}
+  ///
+  /// Required.
+  core.String? uri;
+
+  ExternalDataSources({
+    this.name,
+    this.type,
+    this.uri,
+  });
+
+  ExternalDataSources.fromJson(core.Map json_)
+      : this(
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (type != null) 'type': type!,
+        if (uri != null) 'uri': uri!,
       };
 }
 
@@ -2283,6 +2341,11 @@ class SapDiscoveryComponentApplicationProperties {
   /// Optional.
   core.String? ascsUri;
 
+  /// Instance number of the ERS instance.
+  ///
+  /// Optional.
+  core.String? ersInstanceNumber;
+
   /// Kernel version for Netweaver running in the system.
   ///
   /// Optional.
@@ -2301,6 +2364,7 @@ class SapDiscoveryComponentApplicationProperties {
     this.applicationType,
     this.ascsInstanceNumber,
     this.ascsUri,
+    this.ersInstanceNumber,
     this.kernelVersion,
     this.nfsUri,
   });
@@ -2320,6 +2384,9 @@ class SapDiscoveryComponentApplicationProperties {
           ascsUri: json_.containsKey('ascsUri')
               ? json_['ascsUri'] as core.String
               : null,
+          ersInstanceNumber: json_.containsKey('ersInstanceNumber')
+              ? json_['ersInstanceNumber'] as core.String
+              : null,
           kernelVersion: json_.containsKey('kernelVersion')
               ? json_['kernelVersion'] as core.String
               : null,
@@ -2335,6 +2402,7 @@ class SapDiscoveryComponentApplicationProperties {
         if (ascsInstanceNumber != null)
           'ascsInstanceNumber': ascsInstanceNumber!,
         if (ascsUri != null) 'ascsUri': ascsUri!,
+        if (ersInstanceNumber != null) 'ersInstanceNumber': ersInstanceNumber!,
         if (kernelVersion != null) 'kernelVersion': kernelVersion!,
         if (nfsUri != null) 'nfsUri': nfsUri!,
       };
@@ -2576,6 +2644,11 @@ class SapDiscoveryResource {
 
 /// A set of properties only present for an instance type resource
 class SapDiscoveryResourceInstanceProperties {
+  /// App server instances on the host
+  ///
+  /// Optional.
+  core.List<SapDiscoveryResourceInstancePropertiesAppInstance>? appInstances;
+
   /// A list of instance URIs that are part of a cluster with this one.
   ///
   /// Optional.
@@ -2586,19 +2659,40 @@ class SapDiscoveryResourceInstanceProperties {
   /// Optional.
   core.String? instanceNumber;
 
+  /// Bitmask of instance role, a resource may have multiple roles at once.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "INSTANCE_ROLE_UNSPECIFIED" : Unspecified instance role.
+  /// - "INSTANCE_ROLE_ASCS" : Application central services.
+  /// - "INSTANCE_ROLE_ERS" : Enqueue replication server.
+  /// - "INSTANCE_ROLE_APP_SERVER" : Application server.
+  /// - "INSTANCE_ROLE_DATABASE" : Database node.
+  core.String? instanceRole;
+
   /// A virtual hostname of the instance if it has one.
   ///
   /// Optional.
   core.String? virtualHostname;
 
   SapDiscoveryResourceInstanceProperties({
+    this.appInstances,
     this.clusterInstances,
     this.instanceNumber,
+    this.instanceRole,
     this.virtualHostname,
   });
 
   SapDiscoveryResourceInstanceProperties.fromJson(core.Map json_)
       : this(
+          appInstances: json_.containsKey('appInstances')
+              ? (json_['appInstances'] as core.List)
+                  .map((value) =>
+                      SapDiscoveryResourceInstancePropertiesAppInstance
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           clusterInstances: json_.containsKey('clusterInstances')
               ? (json_['clusterInstances'] as core.List)
                   .map((value) => value as core.String)
@@ -2607,15 +2701,51 @@ class SapDiscoveryResourceInstanceProperties {
           instanceNumber: json_.containsKey('instanceNumber')
               ? json_['instanceNumber'] as core.String
               : null,
+          instanceRole: json_.containsKey('instanceRole')
+              ? json_['instanceRole'] as core.String
+              : null,
           virtualHostname: json_.containsKey('virtualHostname')
               ? json_['virtualHostname'] as core.String
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (appInstances != null) 'appInstances': appInstances!,
         if (clusterInstances != null) 'clusterInstances': clusterInstances!,
         if (instanceNumber != null) 'instanceNumber': instanceNumber!,
+        if (instanceRole != null) 'instanceRole': instanceRole!,
         if (virtualHostname != null) 'virtualHostname': virtualHostname!,
+      };
+}
+
+/// Fields to describe an SAP application server instance.
+class SapDiscoveryResourceInstancePropertiesAppInstance {
+  /// Instance name of the SAP application instance.
+  ///
+  /// Optional.
+  core.String? name;
+
+  /// Instance number of the SAP application instance.
+  ///
+  /// Optional.
+  core.String? number;
+
+  SapDiscoveryResourceInstancePropertiesAppInstance({
+    this.name,
+    this.number,
+  });
+
+  SapDiscoveryResourceInstancePropertiesAppInstance.fromJson(core.Map json_)
+      : this(
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          number: json_.containsKey('number')
+              ? json_['number'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (number != null) 'number': number!,
       };
 }
 

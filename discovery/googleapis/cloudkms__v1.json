@@ -45,7 +45,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240502",
+    "revision": "20240516",
     "rootUrl": "https://cloudkms.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Key Management Service (KMS) API",
@@ -3282,8 +3282,7 @@
                     "type": "string"
                 },
                 "name": {
-                    "description": "Output only. Identifier. Name of the KeyHandle resource, e.g. `projects/{PROJECT_ID}/locations/{LOCATION}/keyHandles/{KEY_HANDLE_ID}`.",
-                    "readOnly": true,
+                    "description": "Identifier. Name of the KeyHandle resource, e.g. `projects/{PROJECT_ID}/locations/{LOCATION}/keyHandles/{KEY_HANDLE_ID}`.",
                     "type": "string"
                 },
                 "resourceTypeSelector": {

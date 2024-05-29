@@ -5214,8 +5214,6 @@ class KeyHandle {
   ///
   /// Name of the KeyHandle resource, e.g.
   /// `projects/{PROJECT_ID}/locations/{LOCATION}/keyHandles/{KEY_HANDLE_ID}`.
-  ///
-  /// Output only.
   core.String? name;
 
   /// Indicates the resource type that the resulting CryptoKey is meant to

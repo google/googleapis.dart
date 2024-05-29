@@ -34,7 +34,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240509",
+    "revision": "20240529",
     "rootUrl": "https://displayvideo.googleapis.com/",
     "servicePath": "",
     "title": "Display & Video 360 API",
@@ -12906,7 +12906,8 @@
                         "SDF_VERSION_5_4",
                         "SDF_VERSION_5_5",
                         "SDF_VERSION_6",
-                        "SDF_VERSION_7"
+                        "SDF_VERSION_7",
+                        "SDF_VERSION_7_1"
                     ],
                     "enumDeprecated": [
                         false,
@@ -12919,6 +12920,7 @@
                         true,
                         true,
                         true,
+                        false,
                         false,
                         false,
                         false
@@ -12936,7 +12938,8 @@
                         "SDF version 5.4",
                         "SDF version 5.5",
                         "SDF version 6",
-                        "SDF version 7. Read the [v7 migration guide](/display-video/api/structured-data-file/v7-migration-guide) before migrating to this version."
+                        "SDF version 7. Read the [v7 migration guide](/display-video/api/structured-data-file/v7-migration-guide) before migrating to this version.",
+                        "SDF version 7.1. Read the [v7 migration guide](/display-video/api/structured-data-file/v7-migration-guide) before migrating to this version."
                     ],
                     "type": "string"
                 }
@@ -20557,7 +20560,8 @@
                         "SDF_VERSION_5_4",
                         "SDF_VERSION_5_5",
                         "SDF_VERSION_6",
-                        "SDF_VERSION_7"
+                        "SDF_VERSION_7",
+                        "SDF_VERSION_7_1"
                     ],
                     "enumDeprecated": [
                         false,
@@ -20570,6 +20574,7 @@
                         true,
                         true,
                         true,
+                        false,
                         false,
                         false,
                         false
@@ -20587,7 +20592,8 @@
                         "SDF version 5.4",
                         "SDF version 5.5",
                         "SDF version 6",
-                        "SDF version 7. Read the [v7 migration guide](/display-video/api/structured-data-file/v7-migration-guide) before migrating to this version."
+                        "SDF version 7. Read the [v7 migration guide](/display-video/api/structured-data-file/v7-migration-guide) before migrating to this version.",
+                        "SDF version 7.1. Read the [v7 migration guide](/display-video/api/structured-data-file/v7-migration-guide) before migrating to this version."
                     ],
                     "type": "string"
                 }
@@ -20634,7 +20640,8 @@
                         "SDF_VERSION_5_4",
                         "SDF_VERSION_5_5",
                         "SDF_VERSION_6",
-                        "SDF_VERSION_7"
+                        "SDF_VERSION_7",
+                        "SDF_VERSION_7_1"
                     ],
                     "enumDeprecated": [
                         false,
@@ -20647,6 +20654,7 @@
                         true,
                         true,
                         true,
+                        false,
                         false,
                         false,
                         false
@@ -20664,7 +20672,8 @@
                         "SDF version 5.4",
                         "SDF version 5.5",
                         "SDF version 6",
-                        "SDF version 7. Read the [v7 migration guide](/display-video/api/structured-data-file/v7-migration-guide) before migrating to this version."
+                        "SDF version 7. Read the [v7 migration guide](/display-video/api/structured-data-file/v7-migration-guide) before migrating to this version.",
+                        "SDF version 7.1. Read the [v7 migration guide](/display-video/api/structured-data-file/v7-migration-guide) before migrating to this version."
                     ],
                     "type": "string"
                 }

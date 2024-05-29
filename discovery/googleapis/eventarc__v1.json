@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240426",
+    "revision": "20240510",
     "rootUrl": "https://eventarc.googleapis.com/",
     "servicePath": "",
     "title": "Eventarc API",
@@ -1829,11 +1829,11 @@
             "type": "object"
         },
         "NetworkConfig": {
-            "description": "Represents a network config to be used for destination resolution and connectivity.",
+            "description": "Network Configuration that can be inherited by other protos.",
             "id": "NetworkConfig",
             "properties": {
                 "networkAttachment": {
-                    "description": "Required. Name of the NetworkAttachment that allows access to the destination VPC. Format: `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`",
+                    "description": "Required. Name of the NetworkAttachment that allows access to the customer's VPC. Format: `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`",
                     "type": "string"
                 }
             },

@@ -7298,9 +7298,13 @@ class ListMembershipBindingsResponse {
   /// return.
   core.String? nextPageToken;
 
+  /// List of locations that could not be reached while fetching this list.
+  core.List<core.String>? unreachable;
+
   ListMembershipBindingsResponse({
     this.membershipBindings,
     this.nextPageToken,
+    this.unreachable,
   });
 
   ListMembershipBindingsResponse.fromJson(core.Map json_)
@@ -7314,12 +7318,18 @@ class ListMembershipBindingsResponse {
           nextPageToken: json_.containsKey('nextPageToken')
               ? json_['nextPageToken'] as core.String
               : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (membershipBindings != null)
           'membershipBindings': membershipBindings!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
@@ -9831,43 +9841,7 @@ class ScopeLifecycleState {
 
 /// SecurityPostureConfig defines the flags needed to enable/disable features
 /// for the Security Posture API.
-class SecurityPostureConfig {
-  /// Sets which mode to use for Security Posture features.
-  /// Possible string values are:
-  /// - "MODE_UNSPECIFIED" : Default value not specified.
-  /// - "DISABLED" : Disables Security Posture features on the cluster.
-  /// - "BASIC" : Applies Security Posture features on the cluster.
-  core.String? mode;
-
-  /// Sets which mode to use for vulnerability scanning.
-  /// Possible string values are:
-  /// - "VULNERABILITY_MODE_UNSPECIFIED" : Default value not specified.
-  /// - "VULNERABILITY_DISABLED" : Disables vulnerability scanning on the
-  /// cluster.
-  /// - "VULNERABILITY_BASIC" : Applies basic vulnerability scanning on the
-  /// cluster.
-  /// - "VULNERABILITY_ENTERPRISE" : Applies the Security Posture's
-  /// vulnerability on cluster Enterprise level features.
-  core.String? vulnerabilityMode;
-
-  SecurityPostureConfig({
-    this.mode,
-    this.vulnerabilityMode,
-  });
-
-  SecurityPostureConfig.fromJson(core.Map json_)
-      : this(
-          mode: json_.containsKey('mode') ? json_['mode'] as core.String : null,
-          vulnerabilityMode: json_.containsKey('vulnerabilityMode')
-              ? json_['vulnerabilityMode'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (mode != null) 'mode': mode!,
-        if (vulnerabilityMode != null) 'vulnerabilityMode': vulnerabilityMode!,
-      };
-}
+typedef SecurityPostureConfig = $SecurityPostureConfig;
 
 /// Condition being reported.
 class ServiceMeshCondition {

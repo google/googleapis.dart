@@ -1047,6 +1047,7 @@ api.ConnectorsLogConfig buildConnectorsLogConfig() {
   buildCounterConnectorsLogConfig++;
   if (buildCounterConnectorsLogConfig < 3) {
     o.enabled = true;
+    o.level = 'foo';
   }
   buildCounterConnectorsLogConfig--;
   return o;
@@ -1056,6 +1057,10 @@ void checkConnectorsLogConfig(api.ConnectorsLogConfig o) {
   buildCounterConnectorsLogConfig++;
   if (buildCounterConnectorsLogConfig < 3) {
     unittest.expect(o.enabled!, unittest.isTrue);
+    unittest.expect(
+      o.level!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterConnectorsLogConfig--;
 }
@@ -1309,6 +1314,23 @@ void checkDeadLetterConfig(api.DeadLetterConfig o) {
     );
   }
   buildCounterDeadLetterConfig--;
+}
+
+core.int buildCounterDeprecateCustomConnectorVersionRequest = 0;
+api.DeprecateCustomConnectorVersionRequest
+    buildDeprecateCustomConnectorVersionRequest() {
+  final o = api.DeprecateCustomConnectorVersionRequest();
+  buildCounterDeprecateCustomConnectorVersionRequest++;
+  if (buildCounterDeprecateCustomConnectorVersionRequest < 3) {}
+  buildCounterDeprecateCustomConnectorVersionRequest--;
+  return o;
+}
+
+void checkDeprecateCustomConnectorVersionRequest(
+    api.DeprecateCustomConnectorVersionRequest o) {
+  buildCounterDeprecateCustomConnectorVersionRequest++;
+  if (buildCounterDeprecateCustomConnectorVersionRequest < 3) {}
+  buildCounterDeprecateCustomConnectorVersionRequest--;
 }
 
 core.int buildCounterDestination = 0;
@@ -1608,6 +1630,7 @@ api.EndpointAttachment buildEndpointAttachment() {
   if (buildCounterEndpointAttachment < 3) {
     o.createTime = 'foo';
     o.description = 'foo';
+    o.endpointGlobalAccess = true;
     o.endpointIp = 'foo';
     o.labels = buildUnnamed29();
     o.name = 'foo';
@@ -1629,6 +1652,7 @@ void checkEndpointAttachment(api.EndpointAttachment o) {
       o.description!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.endpointGlobalAccess!, unittest.isTrue);
     unittest.expect(
       o.endpointIp!,
       unittest.equals('foo'),
@@ -5462,6 +5486,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-DeprecateCustomConnectorVersionRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDeprecateCustomConnectorVersionRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DeprecateCustomConnectorVersionRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkDeprecateCustomConnectorVersionRequest(od);
+    });
+  });
+
   unittest.group('obj-schema-Destination', () {
     unittest.test('to-json--from-json', () async {
       final o = buildDestination();
@@ -8416,6 +8450,68 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--deprecate', () async {
+      final mock = HttpServerMock();
+      final res = api.ConnectorsApi(mock)
+          .projects
+          .locations
+          .customConnectors
+          .customConnectorVersions;
+      final arg_request = buildDeprecateCustomConnectorVersionRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.DeprecateCustomConnectorVersionRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkDeprecateCustomConnectorVersionRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.deprecate(arg_request, arg_name, $fields: arg_$fields);
       checkOperation(response as api.Operation);
     });
   });

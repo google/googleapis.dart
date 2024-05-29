@@ -80,6 +80,28 @@ void checkAllowedIpRange(api.AllowedIpRange o) {
   buildCounterAllowedIpRange--;
 }
 
+core.int buildCounterCheckUpgradeRequest = 0;
+api.CheckUpgradeRequest buildCheckUpgradeRequest() {
+  final o = api.CheckUpgradeRequest();
+  buildCounterCheckUpgradeRequest++;
+  if (buildCounterCheckUpgradeRequest < 3) {
+    o.imageVersion = 'foo';
+  }
+  buildCounterCheckUpgradeRequest--;
+  return o;
+}
+
+void checkCheckUpgradeRequest(api.CheckUpgradeRequest o) {
+  buildCounterCheckUpgradeRequest++;
+  if (buildCounterCheckUpgradeRequest < 3) {
+    unittest.expect(
+      o.imageVersion!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterCheckUpgradeRequest--;
+}
+
 core.int buildCounterCidrBlock = 0;
 api.CidrBlock buildCidrBlock() {
   final o = api.CidrBlock();
@@ -2158,6 +2180,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-CheckUpgradeRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCheckUpgradeRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CheckUpgradeRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkCheckUpgradeRequest(od);
+    });
+  });
+
   unittest.group('obj-schema-CidrBlock', () {
     unittest.test('to-json--from-json', () async {
       final o = buildCidrBlock();
@@ -2699,6 +2731,64 @@ void main() {
   });
 
   unittest.group('resource-ProjectsLocationsEnvironmentsResource', () {
+    unittest.test('method--checkUpgrade', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudComposerApi(mock).projects.locations.environments;
+      final arg_request = buildCheckUpgradeRequest();
+      final arg_environment = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.CheckUpgradeRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCheckUpgradeRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.checkUpgrade(arg_request, arg_environment,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
       final res = api.CloudComposerApi(mock).projects.locations.environments;

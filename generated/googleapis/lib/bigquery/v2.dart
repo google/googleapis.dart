@@ -17429,10 +17429,7 @@ class TableReplicationInfo {
 
   /// Specifies the interval at which the source table is polled for updates.
   ///
-  /// It's Optional. If not specified, default replication interval would be
-  /// applied.
-  ///
-  /// Optional.
+  /// Required.
   core.String? replicationIntervalMs;
 
   /// Replication status of configured replication.

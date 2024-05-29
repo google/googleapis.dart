@@ -326,6 +326,7 @@ api.AgentMetadata buildAgentMetadata() {
     o.instance = 'foo';
     o.instanceId = 'foo';
     o.instancePreemptionNoticeReceived = true;
+    o.machineType = 'foo';
     o.osRelease = buildUnnamed6();
     o.version = 'foo';
     o.zone = 'foo';
@@ -358,6 +359,10 @@ void checkAgentMetadata(api.AgentMetadata o) {
       unittest.equals('foo'),
     );
     unittest.expect(o.instancePreemptionNoticeReceived!, unittest.isTrue);
+    unittest.expect(
+      o.machineType!,
+      unittest.equals('foo'),
+    );
     checkUnnamed6(o.osRelease!);
     unittest.expect(
       o.version!,

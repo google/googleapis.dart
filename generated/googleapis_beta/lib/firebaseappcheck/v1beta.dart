@@ -2519,7 +2519,7 @@ class ProjectsServicesResource {
   /// `firebasedatabase.googleapis.com` (Firebase Realtime Database) *
   /// `firestore.googleapis.com` (Cloud Firestore) *
   /// `identitytoolkit.googleapis.com` (Firebase Authentication with Identity
-  /// Platform)
+  /// Platform) * `oauth2.googleapis.com` (Google Identity for iOS)
   /// Value must have pattern `^projects/\[^/\]+/services/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2565,9 +2565,8 @@ class ProjectsServicesResource {
   ///
   /// [pageSize] - The maximum number of Services to return in the response.
   /// Only explicitly configured services are returned. The server may return
-  /// fewer than this at its own discretion. If no value is specified or set to
-  /// zero (or too large a value is specified), the server will impose its own
-  /// limit.
+  /// fewer than this at its own discretion. If no value is specified (or too
+  /// large a value is specified), the server will impose its own limit.
   ///
   /// [pageToken] - Token returned from a previous call to ListServices
   /// indicating where in the set of Services to resume listing. Provide this to
@@ -2934,8 +2933,8 @@ class ProjectsServicesResourcePoliciesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The relative name of the resource policy object, in the
-  /// format: ```
+  /// [name] - Required. Identifier. The relative name of the resource policy
+  /// object, in the format: ```
   /// projects/{project_number}/services/{service_id}/resourcePolicies/{resource_policy_id}
   /// ``` Note that the `service_id` element must be a supported service ID.
   /// Currently, the following service IDs are supported: *
@@ -3375,9 +3374,9 @@ class GoogleFirebaseAppcheckV1betaBatchUpdateServicesRequest {
 
   /// A comma-separated list of names of fields in the Services to update.
   ///
-  /// Example: `display_name`. If this field is present, the `update_mask` field
-  /// in the UpdateServiceRequest messages must all match this field, or the
-  /// entire batch fails and no updates will be committed.
+  /// Example: `display_name`. If the `update_mask` field is set in both this
+  /// request and any of the UpdateServiceRequest messages, they must match or
+  /// the entire batch fails and no updates will be committed.
   ///
   /// Optional.
   core.String? updateMask;
@@ -4624,10 +4623,11 @@ class GoogleFirebaseAppcheckV1betaResourcePolicy {
   /// This etag is strongly validated as defined by RFC 7232.
   core.String? etag;
 
+  /// Identifier.
+  ///
   /// The relative name of the resource policy object, in the format: ```
   /// projects/{project_number}/services/{service_id}/resourcePolicies/{resource_policy_id}
   /// ``` Note that the `service_id` element must be a supported service ID.
-  ///
   /// Currently, the following service IDs are supported: *
   /// `oauth2.googleapis.com` (Google Identity for iOS) `resource_policy_id` is
   /// a system-generated UID.
@@ -4881,8 +4881,8 @@ class GoogleFirebaseAppcheckV1betaUpdateServiceRequest {
   /// `firebasedatabase.googleapis.com` (Firebase Realtime Database) *
   /// `firestore.googleapis.com` (Cloud Firestore) *
   /// `identitytoolkit.googleapis.com` (Firebase Authentication with Identity
-  /// Platform) For Firebase Authentication to work with App Check, you must
-  /// first upgrade to
+  /// Platform) * `oauth2.googleapis.com` (Google Identity for iOS) For Firebase
+  /// Authentication to work with App Check, you must first upgrade to
   /// [Firebase Authentication with Identity Platform](https://firebase.google.com/docs/auth#identity-platform).
   ///
   /// Required.

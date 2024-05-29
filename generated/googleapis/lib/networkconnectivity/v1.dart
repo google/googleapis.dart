@@ -958,6 +958,73 @@ class ProjectsLocationsGlobalHubsGroupsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Updates the parameters of a Network Connectivity Center group.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Immutable. The name of the group. Group names must be unique.
+  /// They use the following form:
+  /// `projects/{project_number}/locations/global/hubs/{hub}/groups/{group_id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/hubs/\[^/\]+/groups/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. A request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server knows
+  /// to ignore the request if it has already been completed. The server
+  /// guarantees that a request doesn't result in creation of duplicate
+  /// commitments for at least 60 minutes. For example, consider a situation
+  /// where you make an initial request and the request times out. If you make
+  /// the request again with the same request ID, the server can check to see
+  /// whether the original operation was received. If it was, the server ignores
+  /// the second request. This behavior prevents clients from mistakenly
+  /// creating duplicate commitments. The request ID must be a valid UUID, with
+  /// the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [updateMask] - Optional. In the case of an update to an existing group,
+  /// field mask is used to specify the fields to be overwritten. The fields
+  /// specified in the update_mask are relative to the resource, not the full
+  /// request. A field is overwritten if it is in the mask. If the user does not
+  /// provide a mask, then all fields are overwritten.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> patch(
+    Group request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Sets the access control policy on the specified resource.
   ///
   /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
@@ -4312,6 +4379,40 @@ class AuditConfig {
 /// exempting jose@example.com from DATA_READ logging.
 typedef AuditLogConfig = $AuditLogConfig;
 
+/// The auto-accept setting for a group controls whether proposed spokes are
+/// automatically attached to the hub.
+///
+/// If auto-accept is enabled, the spoke immediately is attached to the hub and
+/// becomes part of the group. In this case, the new spoke is in the ACTIVE
+/// state. If auto-accept is disabled, the spoke goes to the INACTIVE state, and
+/// it must be reviewed and accepted by a hub administrator.
+class AutoAccept {
+  /// A list of project ids or project numbers for which you want to enable
+  /// auto-accept.
+  ///
+  /// The auto-accept setting is applied to spokes being created or updated in
+  /// these projects.
+  core.List<core.String>? autoAcceptProjects;
+
+  AutoAccept({
+    this.autoAcceptProjects,
+  });
+
+  AutoAccept.fromJson(core.Map json_)
+      : this(
+          autoAcceptProjects: json_.containsKey('autoAcceptProjects')
+              ? (json_['autoAcceptProjects'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (autoAcceptProjects != null)
+          'autoAcceptProjects': autoAcceptProjects!,
+      };
+}
+
 /// Associates `members`, or principals, with a `role`.
 class Binding {
   /// The condition that is associated with this binding.
@@ -4932,6 +5033,11 @@ typedef GoogleRpcStatus = $Status;
 
 /// A group represents a subset of spokes attached to a hub.
 class Group {
+  /// The auto-accept setting for this group.
+  ///
+  /// Optional.
+  AutoAccept? autoAccept;
+
   /// The time the group was created.
   ///
   /// Output only.
@@ -4957,6 +5063,14 @@ class Group {
   ///
   /// Immutable.
   core.String? name;
+
+  /// The name of the route table that corresponds to this group.
+  ///
+  /// They use the following form:
+  /// `projects/{project_number}/locations/global/hubs/{hub_id}/routeTables/{route_table_id}`
+  ///
+  /// Output only.
+  core.String? routeTable;
 
   /// The current lifecycle state of this group.
   ///
@@ -4989,10 +5103,12 @@ class Group {
   core.String? updateTime;
 
   Group({
+    this.autoAccept,
     this.createTime,
     this.description,
     this.labels,
     this.name,
+    this.routeTable,
     this.state,
     this.uid,
     this.updateTime,
@@ -5000,6 +5116,10 @@ class Group {
 
   Group.fromJson(core.Map json_)
       : this(
+          autoAccept: json_.containsKey('autoAccept')
+              ? AutoAccept.fromJson(
+                  json_['autoAccept'] as core.Map<core.String, core.dynamic>)
+              : null,
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
               : null,
@@ -5015,6 +5135,9 @@ class Group {
                 )
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          routeTable: json_.containsKey('routeTable')
+              ? json_['routeTable'] as core.String
+              : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
           uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
@@ -5024,10 +5147,12 @@ class Group {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (autoAccept != null) 'autoAccept': autoAccept!,
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
+        if (routeTable != null) 'routeTable': routeTable!,
         if (state != null) 'state': state!,
         if (uid != null) 'uid': uid!,
         if (updateTime != null) 'updateTime': updateTime!,
@@ -5051,6 +5176,15 @@ class Hub {
   /// An optional description of the hub.
   core.String? description;
 
+  /// Whether Private Service Connect transitivity is enabled for the hub.
+  ///
+  /// If true, Private Service Connect endpoints in VPC spokes attached to the
+  /// hub are made accessible to other VPC spokes attached to the hub. The
+  /// default value is false.
+  ///
+  /// Optional.
+  core.bool? exportPsc;
+
   /// Optional labels in key-value pair format.
   ///
   /// For more information about labels, see
@@ -5064,6 +5198,37 @@ class Hub {
   ///
   /// Immutable.
   core.String? name;
+
+  /// The policy mode of this hub.
+  ///
+  /// This field can be either PRESET or CUSTOM. If unspecified, the policy_mode
+  /// defaults to PRESET.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "POLICY_MODE_UNSPECIFIED" : Policy mode is unspecified. It defaults to
+  /// PRESET with preset_topology = MESH.
+  /// - "PRESET" : Hub uses one of the preset topologies.
+  core.String? policyMode;
+
+  /// The topology implemented in this hub.
+  ///
+  /// Currently, this field is only used when policy_mode = PRESET. The
+  /// available preset topologies are MESH and STAR. If preset_topology is
+  /// unspecified and policy_mode = PRESET, the preset_topology defaults to
+  /// MESH. When policy_mode = CUSTOM, the preset_topology is set to
+  /// PRESET_TOPOLOGY_UNSPECIFIED.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "PRESET_TOPOLOGY_UNSPECIFIED" : Preset topology is unspecified. When
+  /// policy_mode = PRESET, it defaults to MESH.
+  /// - "MESH" : Mesh topology is implemented. Group `default` is automatically
+  /// created. All spokes in the hub are added to group `default`.
+  /// - "STAR" : Star topology is implemented. Two groups, `center` and `edge`,
+  /// are automatically created along with hub creation. Spokes have to join one
+  /// of the groups during creation.
+  core.String? presetTopology;
 
   /// The route tables that belong to this hub.
   ///
@@ -5123,8 +5288,11 @@ class Hub {
   Hub({
     this.createTime,
     this.description,
+    this.exportPsc,
     this.labels,
     this.name,
+    this.policyMode,
+    this.presetTopology,
     this.routeTables,
     this.routingVpcs,
     this.spokeSummary,
@@ -5141,6 +5309,9 @@ class Hub {
           description: json_.containsKey('description')
               ? json_['description'] as core.String
               : null,
+          exportPsc: json_.containsKey('exportPsc')
+              ? json_['exportPsc'] as core.bool
+              : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -5150,6 +5321,12 @@ class Hub {
                 )
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          policyMode: json_.containsKey('policyMode')
+              ? json_['policyMode'] as core.String
+              : null,
+          presetTopology: json_.containsKey('presetTopology')
+              ? json_['presetTopology'] as core.String
+              : null,
           routeTables: json_.containsKey('routeTables')
               ? (json_['routeTables'] as core.List)
                   .map((value) => value as core.String)
@@ -5178,8 +5355,11 @@ class Hub {
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
+        if (exportPsc != null) 'exportPsc': exportPsc!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
+        if (policyMode != null) 'policyMode': policyMode!,
+        if (presetTopology != null) 'presetTopology': presetTopology!,
         if (routeTables != null) 'routeTables': routeTables!,
         if (routingVpcs != null) 'routingVpcs': routingVpcs!,
         if (spokeSummary != null) 'spokeSummary': spokeSummary!,

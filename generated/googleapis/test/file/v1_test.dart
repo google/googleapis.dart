@@ -263,6 +263,7 @@ api.Instance buildInstance() {
     o.labels = buildUnnamed3();
     o.name = 'foo';
     o.networks = buildUnnamed4();
+    o.replication = buildReplication();
     o.satisfiesPzi = true;
     o.satisfiesPzs = true;
     o.state = 'foo';
@@ -300,6 +301,7 @@ void checkInstance(api.Instance o) {
       unittest.equals('foo'),
     );
     checkUnnamed4(o.networks!);
+    checkReplication(o.replication!);
     unittest.expect(o.satisfiesPzi!, unittest.isTrue);
     unittest.expect(o.satisfiesPzs!, unittest.isTrue);
     unittest.expect(
@@ -876,6 +878,92 @@ void checkOperation(api.Operation o) {
   buildCounterOperation--;
 }
 
+core.List<core.String> buildUnnamed20() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed20(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterReplicaConfig = 0;
+api.ReplicaConfig buildReplicaConfig() {
+  final o = api.ReplicaConfig();
+  buildCounterReplicaConfig++;
+  if (buildCounterReplicaConfig < 3) {
+    o.lastActiveSyncTime = 'foo';
+    o.peerInstance = 'foo';
+    o.state = 'foo';
+    o.stateReasons = buildUnnamed20();
+  }
+  buildCounterReplicaConfig--;
+  return o;
+}
+
+void checkReplicaConfig(api.ReplicaConfig o) {
+  buildCounterReplicaConfig++;
+  if (buildCounterReplicaConfig < 3) {
+    unittest.expect(
+      o.lastActiveSyncTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.peerInstance!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.state!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed20(o.stateReasons!);
+  }
+  buildCounterReplicaConfig--;
+}
+
+core.List<api.ReplicaConfig> buildUnnamed21() => [
+      buildReplicaConfig(),
+      buildReplicaConfig(),
+    ];
+
+void checkUnnamed21(core.List<api.ReplicaConfig> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkReplicaConfig(o[0]);
+  checkReplicaConfig(o[1]);
+}
+
+core.int buildCounterReplication = 0;
+api.Replication buildReplication() {
+  final o = api.Replication();
+  buildCounterReplication++;
+  if (buildCounterReplication < 3) {
+    o.replicas = buildUnnamed21();
+    o.role = 'foo';
+  }
+  buildCounterReplication--;
+  return o;
+}
+
+void checkReplication(api.Replication o) {
+  buildCounterReplication++;
+  if (buildCounterReplication < 3) {
+    checkUnnamed21(o.replicas!);
+    unittest.expect(
+      o.role!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterReplication--;
+}
+
 core.int buildCounterRestoreInstanceRequest = 0;
 api.RestoreInstanceRequest buildRestoreInstanceRequest() {
   final o = api.RestoreInstanceRequest();
@@ -925,12 +1013,12 @@ void checkRevertInstanceRequest(api.RevertInstanceRequest o) {
   buildCounterRevertInstanceRequest--;
 }
 
-core.Map<core.String, core.String> buildUnnamed20() => {
+core.Map<core.String, core.String> buildUnnamed22() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed20(core.Map<core.String, core.String> o) {
+void checkUnnamed22(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -950,7 +1038,7 @@ api.Snapshot buildSnapshot() {
     o.createTime = 'foo';
     o.description = 'foo';
     o.filesystemUsedBytes = 'foo';
-    o.labels = buildUnnamed20();
+    o.labels = buildUnnamed22();
     o.name = 'foo';
     o.state = 'foo';
   }
@@ -973,7 +1061,7 @@ void checkSnapshot(api.Snapshot o) {
       o.filesystemUsedBytes!,
       unittest.equals('foo'),
     );
-    checkUnnamed20(o.labels!);
+    checkUnnamed22(o.labels!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -986,7 +1074,7 @@ void checkSnapshot(api.Snapshot o) {
   buildCounterSnapshot--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed21() => {
+core.Map<core.String, core.Object?> buildUnnamed23() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -999,7 +1087,7 @@ core.Map<core.String, core.Object?> buildUnnamed21() => {
       },
     };
 
-void checkUnnamed21(core.Map<core.String, core.Object?> o) {
+void checkUnnamed23(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o['x']!) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
@@ -1031,15 +1119,15 @@ void checkUnnamed21(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed22() => [
-      buildUnnamed21(),
-      buildUnnamed21(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed24() => [
+      buildUnnamed23(),
+      buildUnnamed23(),
     ];
 
-void checkUnnamed22(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed24(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed21(o[0]);
-  checkUnnamed21(o[1]);
+  checkUnnamed23(o[0]);
+  checkUnnamed23(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -1048,7 +1136,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed22();
+    o.details = buildUnnamed24();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -1062,7 +1150,7 @@ void checkStatus(api.Status o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed22(o.details!);
+    checkUnnamed24(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -1209,6 +1297,26 @@ void main() {
       final od =
           api.Operation.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkOperation(od);
+    });
+  });
+
+  unittest.group('obj-schema-ReplicaConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildReplicaConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ReplicaConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkReplicaConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-Replication', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildReplication();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Replication.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkReplication(od);
     });
   });
 

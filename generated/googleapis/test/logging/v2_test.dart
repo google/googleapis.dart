@@ -1828,6 +1828,7 @@ api.LogMetric buildLogMetric() {
     o.labelExtractors = buildUnnamed30();
     o.metricDescriptor = buildMetricDescriptor();
     o.name = 'foo';
+    o.resourceName = 'foo';
     o.updateTime = 'foo';
     o.valueExtractor = 'foo';
     o.version = 'foo';
@@ -1861,6 +1862,10 @@ void checkLogMetric(api.LogMetric o) {
     checkMetricDescriptor(o.metricDescriptor!);
     unittest.expect(
       o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.resourceName!,
       unittest.equals('foo'),
     );
     unittest.expect(

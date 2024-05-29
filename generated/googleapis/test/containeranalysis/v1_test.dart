@@ -1232,6 +1232,7 @@ api.ComplianceOccurrence buildComplianceOccurrence() {
   if (buildCounterComplianceOccurrence < 3) {
     o.nonComplianceReason = 'foo';
     o.nonCompliantFiles = buildUnnamed22();
+    o.version = buildComplianceVersion();
   }
   buildCounterComplianceOccurrence--;
   return o;
@@ -1245,6 +1246,7 @@ void checkComplianceOccurrence(api.ComplianceOccurrence o) {
       unittest.equals('foo'),
     );
     checkUnnamed22(o.nonCompliantFiles!);
+    checkComplianceVersion(o.version!);
   }
   buildCounterComplianceOccurrence--;
 }

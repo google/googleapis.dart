@@ -4783,8 +4783,8 @@ class ExtensionChainExtension {
   /// A set of events during request or response processing for which this
   /// extension is called.
   ///
-  /// This field is required for the `LbTrafficExtension` resource. It's not
-  /// relevant for the `LbRouteExtension` resource.
+  /// This field is required for the `LbTrafficExtension` resource. It must not
+  /// be set for the `LbRouteExtension` resource.
   ///
   /// Optional.
   core.List<core.String>? supportedEvents;
@@ -4876,7 +4876,7 @@ class ExtensionChainMatchCondition {
 ///
 /// It captures the ip:port over which the services are exposed by the proxy,
 /// along with any policy configurations. Routes have reference to to Gateways
-/// to dictate how requests should be routed by this Gateway. Next id: 32
+/// to dictate how requests should be routed by this Gateway. Next id: 33
 class Gateway {
   /// Zero or one IPv4 or IPv6 address on which the Gateway will receive the
   /// traffic.
@@ -6988,6 +6988,21 @@ class LbRouteExtension {
   /// HTTP(S) Load Balancing.
   core.String? loadBalancingScheme;
 
+  /// The metadata provided here will be included as part of the
+  /// `metadata_context` (of type `google.protobuf.Struct`) in the
+  /// `ProcessingRequest` message sent to the extension server.
+  ///
+  /// The metadata will be available under the namespace
+  /// `com.google.lb_route_extension.`. The following variables are supported in
+  /// the metadata Struct: `{forwarding_rule_id}` - substituted with the
+  /// forwarding rule's fully qualified resource name.
+  ///
+  /// Optional.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? metadata;
+
   /// Identifier.
   ///
   /// Name of the `LbRouteExtension` resource in the following format:
@@ -7008,6 +7023,7 @@ class LbRouteExtension {
     this.forwardingRules,
     this.labels,
     this.loadBalancingScheme,
+    this.metadata,
     this.name,
     this.updateTime,
   });
@@ -7042,6 +7058,9 @@ class LbRouteExtension {
           loadBalancingScheme: json_.containsKey('loadBalancingScheme')
               ? json_['loadBalancingScheme'] as core.String
               : null,
+          metadata: json_.containsKey('metadata')
+              ? json_['metadata'] as core.Map<core.String, core.dynamic>
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           updateTime: json_.containsKey('updateTime')
               ? json_['updateTime'] as core.String
@@ -7056,6 +7075,7 @@ class LbRouteExtension {
         if (labels != null) 'labels': labels!,
         if (loadBalancingScheme != null)
           'loadBalancingScheme': loadBalancingScheme!,
+        if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
@@ -7121,6 +7141,20 @@ class LbTrafficExtension {
   /// HTTP(S) Load Balancing.
   core.String? loadBalancingScheme;
 
+  /// The metadata provided here will be included in the
+  /// `ProcessingRequest.metadata_context.filter_metadata` map field.
+  ///
+  /// The metadata will be available under the key
+  /// `com.google.lb_traffic_extension.`. The following variables are supported
+  /// in the metadata: `{forwarding_rule_id}` - substituted with the forwarding
+  /// rule's fully qualified resource name.
+  ///
+  /// Optional.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? metadata;
+
   /// Identifier.
   ///
   /// Name of the `LbTrafficExtension` resource in the following format:
@@ -7141,6 +7175,7 @@ class LbTrafficExtension {
     this.forwardingRules,
     this.labels,
     this.loadBalancingScheme,
+    this.metadata,
     this.name,
     this.updateTime,
   });
@@ -7175,6 +7210,9 @@ class LbTrafficExtension {
           loadBalancingScheme: json_.containsKey('loadBalancingScheme')
               ? json_['loadBalancingScheme'] as core.String
               : null,
+          metadata: json_.containsKey('metadata')
+              ? json_['metadata'] as core.Map<core.String, core.dynamic>
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           updateTime: json_.containsKey('updateTime')
               ? json_['updateTime'] as core.String
@@ -7189,6 +7227,7 @@ class LbTrafficExtension {
         if (labels != null) 'labels': labels!,
         if (loadBalancingScheme != null)
           'loadBalancingScheme': loadBalancingScheme!,
+        if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (updateTime != null) 'updateTime': updateTime!,
       };

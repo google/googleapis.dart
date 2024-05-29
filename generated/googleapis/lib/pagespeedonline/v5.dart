@@ -234,6 +234,11 @@ class Categories {
   LighthouseCategoryV5? performance;
 
   /// The Progressive-Web-App (PWA) category, containing all pwa related audits.
+  ///
+  /// This is deprecated in Lighthouse's 12.0 release.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   LighthouseCategoryV5? pwa;
 
   /// The Search-Engine-Optimization (SEO) category, containing all seo related

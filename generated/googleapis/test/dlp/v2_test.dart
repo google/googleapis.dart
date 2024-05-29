@@ -2073,6 +2073,8 @@ api.GooglePrivacyDlpV2DatabaseResourceReference
   final o = api.GooglePrivacyDlpV2DatabaseResourceReference();
   buildCounterGooglePrivacyDlpV2DatabaseResourceReference++;
   if (buildCounterGooglePrivacyDlpV2DatabaseResourceReference < 3) {
+    o.database = 'foo';
+    o.databaseResource = 'foo';
     o.instance = 'foo';
     o.projectId = 'foo';
   }
@@ -2084,6 +2086,14 @@ void checkGooglePrivacyDlpV2DatabaseResourceReference(
     api.GooglePrivacyDlpV2DatabaseResourceReference o) {
   buildCounterGooglePrivacyDlpV2DatabaseResourceReference++;
   if (buildCounterGooglePrivacyDlpV2DatabaseResourceReference < 3) {
+    unittest.expect(
+      o.database!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.databaseResource!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.instance!,
       unittest.equals('foo'),
@@ -2786,6 +2796,7 @@ api.GooglePrivacyDlpV2DiscoveryBigQueryFilter
   buildCounterGooglePrivacyDlpV2DiscoveryBigQueryFilter++;
   if (buildCounterGooglePrivacyDlpV2DiscoveryBigQueryFilter < 3) {
     o.otherTables = buildGooglePrivacyDlpV2AllOtherBigQueryTables();
+    o.tableReference = buildGooglePrivacyDlpV2TableReference();
     o.tables = buildGooglePrivacyDlpV2BigQueryTableCollection();
   }
   buildCounterGooglePrivacyDlpV2DiscoveryBigQueryFilter--;
@@ -2797,6 +2808,7 @@ void checkGooglePrivacyDlpV2DiscoveryBigQueryFilter(
   buildCounterGooglePrivacyDlpV2DiscoveryBigQueryFilter++;
   if (buildCounterGooglePrivacyDlpV2DiscoveryBigQueryFilter < 3) {
     checkGooglePrivacyDlpV2AllOtherBigQueryTables(o.otherTables!);
+    checkGooglePrivacyDlpV2TableReference(o.tableReference!);
     checkGooglePrivacyDlpV2BigQueryTableCollection(o.tables!);
   }
   buildCounterGooglePrivacyDlpV2DiscoveryBigQueryFilter--;
@@ -3169,6 +3181,7 @@ api.GooglePrivacyDlpV2DiscoveryTarget buildGooglePrivacyDlpV2DiscoveryTarget() {
   if (buildCounterGooglePrivacyDlpV2DiscoveryTarget < 3) {
     o.bigQueryTarget = buildGooglePrivacyDlpV2BigQueryDiscoveryTarget();
     o.cloudSqlTarget = buildGooglePrivacyDlpV2CloudSqlDiscoveryTarget();
+    o.secretsTarget = buildGooglePrivacyDlpV2SecretsDiscoveryTarget();
   }
   buildCounterGooglePrivacyDlpV2DiscoveryTarget--;
   return o;
@@ -3180,6 +3193,7 @@ void checkGooglePrivacyDlpV2DiscoveryTarget(
   if (buildCounterGooglePrivacyDlpV2DiscoveryTarget < 3) {
     checkGooglePrivacyDlpV2BigQueryDiscoveryTarget(o.bigQueryTarget!);
     checkGooglePrivacyDlpV2CloudSqlDiscoveryTarget(o.cloudSqlTarget!);
+    checkGooglePrivacyDlpV2SecretsDiscoveryTarget(o.secretsTarget!);
   }
   buildCounterGooglePrivacyDlpV2DiscoveryTarget--;
 }
@@ -7480,6 +7494,23 @@ void checkGooglePrivacyDlpV2SecretManagerCredential(
   buildCounterGooglePrivacyDlpV2SecretManagerCredential--;
 }
 
+core.int buildCounterGooglePrivacyDlpV2SecretsDiscoveryTarget = 0;
+api.GooglePrivacyDlpV2SecretsDiscoveryTarget
+    buildGooglePrivacyDlpV2SecretsDiscoveryTarget() {
+  final o = api.GooglePrivacyDlpV2SecretsDiscoveryTarget();
+  buildCounterGooglePrivacyDlpV2SecretsDiscoveryTarget++;
+  if (buildCounterGooglePrivacyDlpV2SecretsDiscoveryTarget < 3) {}
+  buildCounterGooglePrivacyDlpV2SecretsDiscoveryTarget--;
+  return o;
+}
+
+void checkGooglePrivacyDlpV2SecretsDiscoveryTarget(
+    api.GooglePrivacyDlpV2SecretsDiscoveryTarget o) {
+  buildCounterGooglePrivacyDlpV2SecretsDiscoveryTarget++;
+  if (buildCounterGooglePrivacyDlpV2SecretsDiscoveryTarget < 3) {}
+  buildCounterGooglePrivacyDlpV2SecretsDiscoveryTarget--;
+}
+
 core.List<api.GooglePrivacyDlpV2InfoType> buildUnnamed101() => [
       buildGooglePrivacyDlpV2InfoType(),
       buildGooglePrivacyDlpV2InfoType(),
@@ -8101,6 +8132,34 @@ void checkGooglePrivacyDlpV2TableOptions(api.GooglePrivacyDlpV2TableOptions o) {
     checkUnnamed110(o.identifyingFields!);
   }
   buildCounterGooglePrivacyDlpV2TableOptions--;
+}
+
+core.int buildCounterGooglePrivacyDlpV2TableReference = 0;
+api.GooglePrivacyDlpV2TableReference buildGooglePrivacyDlpV2TableReference() {
+  final o = api.GooglePrivacyDlpV2TableReference();
+  buildCounterGooglePrivacyDlpV2TableReference++;
+  if (buildCounterGooglePrivacyDlpV2TableReference < 3) {
+    o.datasetId = 'foo';
+    o.tableId = 'foo';
+  }
+  buildCounterGooglePrivacyDlpV2TableReference--;
+  return o;
+}
+
+void checkGooglePrivacyDlpV2TableReference(
+    api.GooglePrivacyDlpV2TableReference o) {
+  buildCounterGooglePrivacyDlpV2TableReference++;
+  if (buildCounterGooglePrivacyDlpV2TableReference < 3) {
+    unittest.expect(
+      o.datasetId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.tableId!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGooglePrivacyDlpV2TableReference--;
 }
 
 core.int buildCounterGooglePrivacyDlpV2TaggedField = 0;
@@ -11223,6 +11282,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-GooglePrivacyDlpV2SecretsDiscoveryTarget', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2SecretsDiscoveryTarget();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GooglePrivacyDlpV2SecretsDiscoveryTarget.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2SecretsDiscoveryTarget(od);
+    });
+  });
+
   unittest.group('obj-schema-GooglePrivacyDlpV2SelectedInfoTypes', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGooglePrivacyDlpV2SelectedInfoTypes();
@@ -11380,6 +11449,16 @@ void main() {
       final od = api.GooglePrivacyDlpV2TableOptions.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2TableOptions(od);
+    });
+  });
+
+  unittest.group('obj-schema-GooglePrivacyDlpV2TableReference', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2TableReference();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GooglePrivacyDlpV2TableReference.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2TableReference(od);
     });
   });
 

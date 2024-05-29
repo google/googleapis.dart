@@ -4627,9 +4627,6 @@ class AirportInfo {
 
 class AppLinkData {
   /// Optional information about the partner app link.
-  ///
-  /// If included, the app link link module will be rendered on the valuable
-  /// details on the android client.
   AppLinkDataAppLinkInfo? androidAppLinkInfo;
 
   /// Links to open iOS apps are not supported.
@@ -4640,10 +4637,7 @@ class AppLinkData {
   )
   AppLinkDataAppLinkInfo? iosAppLinkInfo;
 
-  /// Optional information about the partner app link.
-  ///
-  /// If included, the app link link module will be rendered on the valuable
-  /// details on the web client.
+  /// Optional information about the partner web link.
   AppLinkDataAppLinkInfo? webAppLinkInfo;
 
   AppLinkData({
@@ -4677,19 +4671,33 @@ class AppLinkData {
 }
 
 class AppLinkDataAppLinkInfo {
-  /// Optional image to be displayed in the App Link Module
+  /// Image isn't supported in the app link module.
+  ///
+  /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Image? appLogoImage;
 
-  /// Url to follow when opening the App Link Module on clients.
+  /// Target to follow when opening the app link on clients.
   ///
-  /// It will be used by partners to open their webpage or deeplink into their
-  /// app.
+  /// It will be used by partners to open their app or webpage.
   AppLinkDataAppLinkInfoAppTarget? appTarget;
 
-  /// String to be displayed in the description of the App Link Module Required
+  /// Description isn't supported in the app link module.
+  ///
+  /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   LocalizedString? description;
 
-  /// String to be displayed in the title of the App Link Module Required
+  /// Title isn't supported in the app link module.
+  ///
+  /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   LocalizedString? title;
 
   AppLinkDataAppLinkInfo({
@@ -6277,6 +6285,13 @@ class EventTicketClass {
   )
   core.bool? allowMultipleUsersPerObject;
 
+  /// Optional app or website link that will be displayed as a button on the
+  /// front of the pass.
+  ///
+  /// If AppLinkData is provided for the corresponding object that will be used
+  /// instead.
+  AppLinkData? appLinkData;
+
   /// Callback options to be used to call the issuer back for every save/delete
   /// of an object for this class by the end-user.
   ///
@@ -6653,6 +6668,7 @@ class EventTicketClass {
 
   EventTicketClass({
     this.allowMultipleUsersPerObject,
+    this.appLinkData,
     this.callbackOptions,
     this.classTemplateInfo,
     this.confirmationCodeLabel,
@@ -6703,6 +6719,10 @@ class EventTicketClass {
               json_.containsKey('allowMultipleUsersPerObject')
                   ? json_['allowMultipleUsersPerObject'] as core.bool
                   : null,
+          appLinkData: json_.containsKey('appLinkData')
+              ? AppLinkData.fromJson(
+                  json_['appLinkData'] as core.Map<core.String, core.dynamic>)
+              : null,
           callbackOptions: json_.containsKey('callbackOptions')
               ? CallbackOptions.fromJson(json_['callbackOptions']
                   as core.Map<core.String, core.dynamic>)
@@ -6867,6 +6887,7 @@ class EventTicketClass {
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowMultipleUsersPerObject != null)
           'allowMultipleUsersPerObject': allowMultipleUsersPerObject!,
+        if (appLinkData != null) 'appLinkData': appLinkData!,
         if (callbackOptions != null) 'callbackOptions': callbackOptions!,
         if (classTemplateInfo != null) 'classTemplateInfo': classTemplateInfo!,
         if (confirmationCodeLabel != null)
@@ -6974,7 +6995,11 @@ class EventTicketClassListResponse {
 }
 
 class EventTicketObject {
-  /// Optional information about the partner app link.
+  /// Optional app or website link that will be displayed as a button on the
+  /// front of the pass.
+  ///
+  /// If AppLinkData is provided for the corresponding class only object
+  /// AppLinkData will be displayed.
   AppLinkData? appLinkData;
 
   /// The barcode type and value.
@@ -7699,6 +7724,13 @@ class FlightClass {
   )
   core.bool? allowMultipleUsersPerObject;
 
+  /// Optional app or website link that will be displayed as a button on the
+  /// front of the pass.
+  ///
+  /// If AppLinkData is provided for the corresponding object that will be used
+  /// instead.
+  AppLinkData? appLinkData;
+
   /// Policies for boarding and seating.
   ///
   /// These will inform which labels will be shown to users.
@@ -8033,6 +8065,7 @@ class FlightClass {
 
   FlightClass({
     this.allowMultipleUsersPerObject,
+    this.appLinkData,
     this.boardingAndSeatingPolicy,
     this.callbackOptions,
     this.classTemplateInfo,
@@ -8078,6 +8111,10 @@ class FlightClass {
               json_.containsKey('allowMultipleUsersPerObject')
                   ? json_['allowMultipleUsersPerObject'] as core.bool
                   : null,
+          appLinkData: json_.containsKey('appLinkData')
+              ? AppLinkData.fromJson(
+                  json_['appLinkData'] as core.Map<core.String, core.dynamic>)
+              : null,
           boardingAndSeatingPolicy:
               json_.containsKey('boardingAndSeatingPolicy')
                   ? BoardingAndSeatingPolicy.fromJson(
@@ -8226,6 +8263,7 @@ class FlightClass {
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowMultipleUsersPerObject != null)
           'allowMultipleUsersPerObject': allowMultipleUsersPerObject!,
+        if (appLinkData != null) 'appLinkData': appLinkData!,
         if (boardingAndSeatingPolicy != null)
           'boardingAndSeatingPolicy': boardingAndSeatingPolicy!,
         if (callbackOptions != null) 'callbackOptions': callbackOptions!,
@@ -8413,7 +8451,11 @@ class FlightHeader {
 }
 
 class FlightObject {
-  /// Optional information about the partner app link.
+  /// Optional app or website link that will be displayed as a button on the
+  /// front of the pass.
+  ///
+  /// If AppLinkData is provided for the corresponding class only object
+  /// AppLinkData will be displayed.
   AppLinkData? appLinkData;
 
   /// The barcode type and value.
@@ -8864,6 +8906,13 @@ class FrequentFlyerInfo {
 
 /// Generic Class
 class GenericClass {
+  /// Optional app or website link that will be displayed as a button on the
+  /// front of the pass.
+  ///
+  /// If AppLinkData is provided for the corresponding object that will be used
+  /// instead.
+  AppLinkData? appLinkData;
+
   /// Callback options to be used to call the issuer back for every save/delete
   /// of an object for this class by the end-user.
   ///
@@ -8965,6 +9014,7 @@ class GenericClass {
   core.String? viewUnlockRequirement;
 
   GenericClass({
+    this.appLinkData,
     this.callbackOptions,
     this.classTemplateInfo,
     this.enableSmartTap,
@@ -8981,6 +9031,10 @@ class GenericClass {
 
   GenericClass.fromJson(core.Map json_)
       : this(
+          appLinkData: json_.containsKey('appLinkData')
+              ? AppLinkData.fromJson(
+                  json_['appLinkData'] as core.Map<core.String, core.dynamic>)
+              : null,
           callbackOptions: json_.containsKey('callbackOptions')
               ? CallbackOptions.fromJson(json_['callbackOptions']
                   as core.Map<core.String, core.dynamic>)
@@ -9034,6 +9088,7 @@ class GenericClass {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (appLinkData != null) 'appLinkData': appLinkData!,
         if (callbackOptions != null) 'callbackOptions': callbackOptions!,
         if (classTemplateInfo != null) 'classTemplateInfo': classTemplateInfo!,
         if (enableSmartTap != null) 'enableSmartTap': enableSmartTap!,
@@ -9112,9 +9167,11 @@ class GenericClassListResponse {
 
 /// Generic Object
 class GenericObject {
-  /// Information about the partner app link.
+  /// Optional app or website link that will be displayed as a button on the
+  /// front of the pass.
   ///
-  /// The maximum number of these fields displayed is 10.
+  /// If AppLinkData is provided for the corresponding class only object
+  /// AppLinkData will be displayed.
   AppLinkData? appLinkData;
 
   /// The barcode type and value.
@@ -9496,6 +9553,13 @@ class GiftCardClass {
   )
   core.bool? allowMultipleUsersPerObject;
 
+  /// Optional app or website link that will be displayed as a button on the
+  /// front of the pass.
+  ///
+  /// If AppLinkData is provided for the corresponding object that will be used
+  /// instead.
+  AppLinkData? appLinkData;
+
   /// Callback options to be used to call the issuer back for every save/delete
   /// of an object for this class by the end-user.
   ///
@@ -9741,6 +9805,7 @@ class GiftCardClass {
   GiftCardClass({
     this.allowBarcodeRedemption,
     this.allowMultipleUsersPerObject,
+    this.appLinkData,
     this.callbackOptions,
     this.cardNumberLabel,
     this.classTemplateInfo,
@@ -9787,6 +9852,10 @@ class GiftCardClass {
               json_.containsKey('allowMultipleUsersPerObject')
                   ? json_['allowMultipleUsersPerObject'] as core.bool
                   : null,
+          appLinkData: json_.containsKey('appLinkData')
+              ? AppLinkData.fromJson(
+                  json_['appLinkData'] as core.Map<core.String, core.dynamic>)
+              : null,
           callbackOptions: json_.containsKey('callbackOptions')
               ? CallbackOptions.fromJson(json_['callbackOptions']
                   as core.Map<core.String, core.dynamic>)
@@ -9928,6 +9997,7 @@ class GiftCardClass {
           'allowBarcodeRedemption': allowBarcodeRedemption!,
         if (allowMultipleUsersPerObject != null)
           'allowMultipleUsersPerObject': allowMultipleUsersPerObject!,
+        if (appLinkData != null) 'appLinkData': appLinkData!,
         if (callbackOptions != null) 'callbackOptions': callbackOptions!,
         if (cardNumberLabel != null) 'cardNumberLabel': cardNumberLabel!,
         if (classTemplateInfo != null) 'classTemplateInfo': classTemplateInfo!,
@@ -10028,7 +10098,11 @@ class GiftCardClassListResponse {
 }
 
 class GiftCardObject {
-  /// Optional information about the partner app link.
+  /// Optional app or website link that will be displayed as a button on the
+  /// front of the pass.
+  ///
+  /// If AppLinkData is provided for the corresponding class only object
+  /// AppLinkData will be displayed.
   AppLinkData? appLinkData;
 
   /// The card's monetary balance.
@@ -11107,6 +11181,13 @@ class LoyaltyClass {
   )
   core.bool? allowMultipleUsersPerObject;
 
+  /// Optional app or website link that will be displayed as a button on the
+  /// front of the pass.
+  ///
+  /// If AppLinkData is provided for the corresponding object that will be used
+  /// instead.
+  AppLinkData? appLinkData;
+
   /// Callback options to be used to call the issuer back for every save/delete
   /// of an object for this class by the end-user.
   ///
@@ -11389,6 +11470,7 @@ class LoyaltyClass {
     this.accountIdLabel,
     this.accountNameLabel,
     this.allowMultipleUsersPerObject,
+    this.appLinkData,
     this.callbackOptions,
     this.classTemplateInfo,
     this.countryCode,
@@ -11443,6 +11525,10 @@ class LoyaltyClass {
               json_.containsKey('allowMultipleUsersPerObject')
                   ? json_['allowMultipleUsersPerObject'] as core.bool
                   : null,
+          appLinkData: json_.containsKey('appLinkData')
+              ? AppLinkData.fromJson(
+                  json_['appLinkData'] as core.Map<core.String, core.dynamic>)
+              : null,
           callbackOptions: json_.containsKey('callbackOptions')
               ? CallbackOptions.fromJson(json_['callbackOptions']
                   as core.Map<core.String, core.dynamic>)
@@ -11607,6 +11693,7 @@ class LoyaltyClass {
         if (accountNameLabel != null) 'accountNameLabel': accountNameLabel!,
         if (allowMultipleUsersPerObject != null)
           'allowMultipleUsersPerObject': allowMultipleUsersPerObject!,
+        if (appLinkData != null) 'appLinkData': appLinkData!,
         if (callbackOptions != null) 'callbackOptions': callbackOptions!,
         if (classTemplateInfo != null) 'classTemplateInfo': classTemplateInfo!,
         if (countryCode != null) 'countryCode': countryCode!,
@@ -11730,7 +11817,11 @@ class LoyaltyObject {
   /// screens.
   core.String? accountName;
 
-  /// Optional information about the partner app link.
+  /// Optional app or website link that will be displayed as a button on the
+  /// front of the pass.
+  ///
+  /// If AppLinkData is provided for the corresponding class only object
+  /// AppLinkData will be displayed.
   AppLinkData? appLinkData;
 
   /// The barcode type and value.
@@ -12671,6 +12762,8 @@ class Message {
   /// - "EXPIRATION_NOTIFICATION" : Note: This enum is currently not supported.
   /// - "expirationNotification" : Legacy alias for `EXPIRATION_NOTIFICATION`.
   /// Deprecated.
+  /// - "TEXT_AND_NOTIFY" : Renders the message as text on the card details
+  /// screen and as an Android notification.
   core.String? messageType;
 
   Message({
@@ -12872,6 +12965,13 @@ class OfferClass {
     'Not supported. Member documentation may have more information.',
   )
   core.bool? allowMultipleUsersPerObject;
+
+  /// Optional app or website link that will be displayed as a button on the
+  /// front of the pass.
+  ///
+  /// If AppLinkData is provided for the corresponding object that will be used
+  /// instead.
+  AppLinkData? appLinkData;
 
   /// Callback options to be used to call the issuer back for every save/delete
   /// of an object for this class by the end-user.
@@ -13158,6 +13258,7 @@ class OfferClass {
 
   OfferClass({
     this.allowMultipleUsersPerObject,
+    this.appLinkData,
     this.callbackOptions,
     this.classTemplateInfo,
     this.countryCode,
@@ -13205,6 +13306,10 @@ class OfferClass {
               json_.containsKey('allowMultipleUsersPerObject')
                   ? json_['allowMultipleUsersPerObject'] as core.bool
                   : null,
+          appLinkData: json_.containsKey('appLinkData')
+              ? AppLinkData.fromJson(
+                  json_['appLinkData'] as core.Map<core.String, core.dynamic>)
+              : null,
           callbackOptions: json_.containsKey('callbackOptions')
               ? CallbackOptions.fromJson(json_['callbackOptions']
                   as core.Map<core.String, core.dynamic>)
@@ -13355,6 +13460,7 @@ class OfferClass {
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowMultipleUsersPerObject != null)
           'allowMultipleUsersPerObject': allowMultipleUsersPerObject!,
+        if (appLinkData != null) 'appLinkData': appLinkData!,
         if (callbackOptions != null) 'callbackOptions': callbackOptions!,
         if (classTemplateInfo != null) 'classTemplateInfo': classTemplateInfo!,
         if (countryCode != null) 'countryCode': countryCode!,
@@ -13458,7 +13564,11 @@ class OfferClassListResponse {
 }
 
 class OfferObject {
-  /// Optional information about the partner app link.
+  /// Optional app or website link that will be displayed as a button on the
+  /// front of the pass.
+  ///
+  /// If AppLinkData is provided for the corresponding class only object
+  /// AppLinkData will be displayed.
   AppLinkData? appLinkData;
 
   /// The barcode type and value.
@@ -15158,6 +15268,13 @@ class TransitClass {
   )
   core.bool? allowMultipleUsersPerObject;
 
+  /// Optional app or website link that will be displayed as a button on the
+  /// front of the pass.
+  ///
+  /// If AppLinkData is provided for the corresponding object that will be used
+  /// instead.
+  AppLinkData? appLinkData;
+
   /// Callback options to be used to call the issuer back for every save/delete
   /// of an object for this class by the end-user.
   ///
@@ -15478,6 +15595,7 @@ class TransitClass {
   TransitClass({
     this.activationOptions,
     this.allowMultipleUsersPerObject,
+    this.appLinkData,
     this.callbackOptions,
     this.classTemplateInfo,
     this.countryCode,
@@ -15540,6 +15658,10 @@ class TransitClass {
               json_.containsKey('allowMultipleUsersPerObject')
                   ? json_['allowMultipleUsersPerObject'] as core.bool
                   : null,
+          appLinkData: json_.containsKey('appLinkData')
+              ? AppLinkData.fromJson(
+                  json_['appLinkData'] as core.Map<core.String, core.dynamic>)
+              : null,
           callbackOptions: json_.containsKey('callbackOptions')
               ? CallbackOptions.fromJson(json_['callbackOptions']
                   as core.Map<core.String, core.dynamic>)
@@ -15756,6 +15878,7 @@ class TransitClass {
         if (activationOptions != null) 'activationOptions': activationOptions!,
         if (allowMultipleUsersPerObject != null)
           'allowMultipleUsersPerObject': allowMultipleUsersPerObject!,
+        if (appLinkData != null) 'appLinkData': appLinkData!,
         if (callbackOptions != null) 'callbackOptions': callbackOptions!,
         if (classTemplateInfo != null) 'classTemplateInfo': classTemplateInfo!,
         if (countryCode != null) 'countryCode': countryCode!,
@@ -15892,7 +16015,11 @@ class TransitObject {
   /// Required if the class has `activationOptions` set.
   ActivationStatus? activationStatus;
 
-  /// Optional information about the partner app link.
+  /// Optional app or website link that will be displayed as a button on the
+  /// front of the pass.
+  ///
+  /// If AppLinkData is provided for the corresponding class only object
+  /// AppLinkData will be displayed.
   AppLinkData? appLinkData;
 
   /// The barcode type and value.

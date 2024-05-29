@@ -861,6 +861,49 @@ class BucketsResource {
     return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Returns the storage layout configuration for the specified bucket.
+  ///
+  /// Note that this operation requires storage.objects.list permission.
+  ///
+  /// Request parameters:
+  ///
+  /// [bucket] - Name of a bucket.
+  ///
+  /// [prefix] - An optional prefix used for permission check. It is useful when
+  /// the caller only has storage.objects.list permission under a specific
+  /// prefix.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BucketStorageLayout].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BucketStorageLayout> getStorageLayout(
+    core.String bucket, {
+    core.String? prefix,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (prefix != null) 'prefix': [prefix],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'b/' + commons.escapeVariable('$bucket') + '/storageLayout';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return BucketStorageLayout.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Creates a new bucket.
   ///
   /// [request] - The metadata request object.
@@ -6345,6 +6388,117 @@ class BucketAccessControls {
   core.Map<core.String, core.dynamic> toJson() => {
         if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
+      };
+}
+
+/// The bucket's custom placement configuration for Custom Dual Regions.
+class BucketStorageLayoutCustomPlacementConfig {
+  /// The list of regional locations in which data is placed.
+  core.List<core.String>? dataLocations;
+
+  BucketStorageLayoutCustomPlacementConfig({
+    this.dataLocations,
+  });
+
+  BucketStorageLayoutCustomPlacementConfig.fromJson(core.Map json_)
+      : this(
+          dataLocations: json_.containsKey('dataLocations')
+              ? (json_['dataLocations'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dataLocations != null) 'dataLocations': dataLocations!,
+      };
+}
+
+/// The bucket's hierarchical namespace configuration.
+class BucketStorageLayoutHierarchicalNamespace {
+  /// When set to true, hierarchical namespace is enabled for this bucket.
+  core.bool? enabled;
+
+  BucketStorageLayoutHierarchicalNamespace({
+    this.enabled,
+  });
+
+  BucketStorageLayoutHierarchicalNamespace.fromJson(core.Map json_)
+      : this(
+          enabled: json_.containsKey('enabled')
+              ? json_['enabled'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
+      };
+}
+
+/// The storage layout configuration of a bucket.
+class BucketStorageLayout {
+  /// The name of the bucket.
+  core.String? bucket;
+
+  /// The bucket's custom placement configuration for Custom Dual Regions.
+  BucketStorageLayoutCustomPlacementConfig? customPlacementConfig;
+
+  /// The bucket's hierarchical namespace configuration.
+  BucketStorageLayoutHierarchicalNamespace? hierarchicalNamespace;
+
+  /// The kind of item this is.
+  ///
+  /// For storage layout, this is always storage#storageLayout.
+  core.String? kind;
+
+  /// The location of the bucket.
+  core.String? location;
+
+  /// The type of the bucket location.
+  core.String? locationType;
+
+  BucketStorageLayout({
+    this.bucket,
+    this.customPlacementConfig,
+    this.hierarchicalNamespace,
+    this.kind,
+    this.location,
+    this.locationType,
+  });
+
+  BucketStorageLayout.fromJson(core.Map json_)
+      : this(
+          bucket: json_.containsKey('bucket')
+              ? json_['bucket'] as core.String
+              : null,
+          customPlacementConfig: json_.containsKey('customPlacementConfig')
+              ? BucketStorageLayoutCustomPlacementConfig.fromJson(
+                  json_['customPlacementConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          hierarchicalNamespace: json_.containsKey('hierarchicalNamespace')
+              ? BucketStorageLayoutHierarchicalNamespace.fromJson(
+                  json_['hierarchicalNamespace']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          location: json_.containsKey('location')
+              ? json_['location'] as core.String
+              : null,
+          locationType: json_.containsKey('locationType')
+              ? json_['locationType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bucket != null) 'bucket': bucket!,
+        if (customPlacementConfig != null)
+          'customPlacementConfig': customPlacementConfig!,
+        if (hierarchicalNamespace != null)
+          'hierarchicalNamespace': hierarchicalNamespace!,
+        if (kind != null) 'kind': kind!,
+        if (location != null) 'location': location!,
+        if (locationType != null) 'locationType': locationType!,
       };
 }
 

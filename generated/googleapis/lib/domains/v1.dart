@@ -2332,7 +2332,10 @@ class ManagementSettings {
   /// expiration time.
   core.String? renewalMethod;
 
-  /// Controls whether the domain can be transferred to another registrar.
+  /// This is the desired transfer lock state for this `Registration`.
+  ///
+  /// A transfer lock controls whether the domain can be transferred to another
+  /// registrar.
   /// Possible string values are:
   /// - "TRANSFER_LOCK_STATE_UNSPECIFIED" : The state is unspecified.
   /// - "UNLOCKED" : The domain is unlocked and can be transferred to another

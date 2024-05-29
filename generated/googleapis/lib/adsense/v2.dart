@@ -1212,7 +1212,8 @@ class AccountsPolicyIssuesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists all the policy issues for the specified account.
+  /// Lists all the policy issues where the specified account is involved, both
+  /// directly and through any AFP child accounts.
   ///
   /// Request parameters:
   ///

@@ -528,12 +528,46 @@ void checkStatus(api.Status o) {
   buildCounterStatus--;
 }
 
-core.Map<core.String, core.String> buildUnnamed11() => {
+core.List<core.String> buildUnnamed11() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed11(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed12() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed12(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.Map<core.String, core.String> buildUnnamed13() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed11(core.Map<core.String, core.String> o) {
+void checkUnnamed13(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -545,12 +579,12 @@ void checkUnnamed11(core.Map<core.String, core.String> o) {
   );
 }
 
-core.Map<core.String, core.String> buildUnnamed12() => {
+core.Map<core.String, core.String> buildUnnamed14() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed12(core.Map<core.String, core.String> o) {
+void checkUnnamed14(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -567,11 +601,14 @@ api.Workflow buildWorkflow() {
   final o = api.Workflow();
   buildCounterWorkflow++;
   if (buildCounterWorkflow < 3) {
+    o.allKmsKeys = buildUnnamed11();
+    o.allKmsKeysVersions = buildUnnamed12();
     o.callLogLevel = 'foo';
     o.createTime = 'foo';
     o.cryptoKeyName = 'foo';
+    o.cryptoKeyVersion = 'foo';
     o.description = 'foo';
-    o.labels = buildUnnamed11();
+    o.labels = buildUnnamed13();
     o.name = 'foo';
     o.revisionCreateTime = 'foo';
     o.revisionId = 'foo';
@@ -580,7 +617,7 @@ api.Workflow buildWorkflow() {
     o.state = 'foo';
     o.stateError = buildStateError();
     o.updateTime = 'foo';
-    o.userEnvVars = buildUnnamed12();
+    o.userEnvVars = buildUnnamed14();
   }
   buildCounterWorkflow--;
   return o;
@@ -589,6 +626,8 @@ api.Workflow buildWorkflow() {
 void checkWorkflow(api.Workflow o) {
   buildCounterWorkflow++;
   if (buildCounterWorkflow < 3) {
+    checkUnnamed11(o.allKmsKeys!);
+    checkUnnamed12(o.allKmsKeysVersions!);
     unittest.expect(
       o.callLogLevel!,
       unittest.equals('foo'),
@@ -602,10 +641,14 @@ void checkWorkflow(api.Workflow o) {
       unittest.equals('foo'),
     );
     unittest.expect(
+      o.cryptoKeyVersion!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.description!,
       unittest.equals('foo'),
     );
-    checkUnnamed11(o.labels!);
+    checkUnnamed13(o.labels!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -635,7 +678,7 @@ void checkWorkflow(api.Workflow o) {
       o.updateTime!,
       unittest.equals('foo'),
     );
-    checkUnnamed12(o.userEnvVars!);
+    checkUnnamed14(o.userEnvVars!);
   }
   buildCounterWorkflow--;
 }

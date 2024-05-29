@@ -1025,6 +1025,11 @@ class AgentMetadata {
   /// If the GCP instance has received preemption notice.
   core.bool? instancePreemptionNoticeReceived;
 
+  /// machine type of the VM
+  ///
+  /// Optional.
+  core.String? machineType;
+
   /// parsed contents of /etc/os-release
   core.Map<core.String, core.String>? osRelease;
 
@@ -1041,6 +1046,7 @@ class AgentMetadata {
     this.instance,
     this.instanceId,
     this.instancePreemptionNoticeReceived,
+    this.machineType,
     this.osRelease,
     this.version,
     this.zone,
@@ -1067,6 +1073,9 @@ class AgentMetadata {
               json_.containsKey('instancePreemptionNoticeReceived')
                   ? json_['instancePreemptionNoticeReceived'] as core.bool
                   : null,
+          machineType: json_.containsKey('machineType')
+              ? json_['machineType'] as core.String
+              : null,
           osRelease: json_.containsKey('osRelease')
               ? (json_['osRelease'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -1089,6 +1098,7 @@ class AgentMetadata {
         if (instanceId != null) 'instanceId': instanceId!,
         if (instancePreemptionNoticeReceived != null)
           'instancePreemptionNoticeReceived': instancePreemptionNoticeReceived!,
+        if (machineType != null) 'machineType': machineType!,
         if (osRelease != null) 'osRelease': osRelease!,
         if (version != null) 'version': version!,
         if (zone != null) 'zone': zone!,
@@ -1324,11 +1334,16 @@ class AgentTaskSpec {
   /// Environment variables to set before running the Task.
   AgentEnvironment? environment;
 
-  /// Maximum duration the task should run.
+  /// Maximum duration the task should run before being automatically retried
+  /// (if enabled) or automatically failed.
   ///
-  /// The task will be killed and marked as FAILED if over this limit. The valid
-  /// value range for max_run_duration in seconds is \[0,
-  /// 315576000000.999999999\],
+  /// Format the value of this field as a time limit in seconds followed by
+  /// `s`—for example, `3600s` for 1 hour. The field accepts any value between 0
+  /// and the maximum listed for the `Duration` field type at
+  /// https://protobuf.dev/reference/protobuf/google.protobuf/#duration;
+  /// however, the actual maximum run time for a job will be limited to the
+  /// maximum run time for a job listed at
+  /// https://cloud.google.com/batch/quotas#max-job-duration.
   core.String? maxRunDuration;
 
   /// AgentTaskRunnable is runanbles that will be executed on the agent.
@@ -2140,9 +2155,9 @@ class InstancePolicy {
 /// If undefined, Batch picks the type of VM to use and doesn't include optional
 /// VM resources such as GPUs and extra disks.
 class InstancePolicyOrTemplate {
-  /// Set this field true if users want Batch to help fetch drivers from a third
-  /// party location and install them for GPUs specified in policy.accelerators
-  /// or instance_template on their behalf.
+  /// Set this field true if you want Batch to help fetch drivers from a third
+  /// party location and install them for GPUs specified in
+  /// `policy.accelerators` or `instance_template` on your behalf.
   ///
   /// Default is false. For Container-Optimized Image cases, Batch will install
   /// the accelerator driver following milestones of
@@ -3416,12 +3431,11 @@ class TaskExecution {
   ///
   /// If the task succeeded, the exit code will be 0. If the task failed but not
   /// due to the following reasons, the exit code will be 50000. Otherwise, it
-  /// can be from different sources: - Batch known failures as
-  /// https://cloud.google.com/batch/docs/troubleshooting#reserved-exit-codes. -
-  /// Batch runnable execution failures: You can rely on Batch logs for further
+  /// can be from different sources: * Batch known failures:
+  /// https://cloud.google.com/batch/docs/troubleshooting#reserved-exit-codes. *
+  /// Batch runnable execution failures; you can rely on Batch logs to further
   /// diagnose: https://cloud.google.com/batch/docs/analyze-job-using-logs. If
-  /// there are multiple runnables failures, Batch only exposes the first error
-  /// caught for now.
+  /// there are multiple runnables failures, Batch only exposes the first error.
   core.int? exitCode;
 
   TaskExecution({
@@ -3648,11 +3662,16 @@ class TaskSpec {
   /// 10\].
   core.int? maxRetryCount;
 
-  /// Maximum duration the task should run.
+  /// Maximum duration the task should run before being automatically retried
+  /// (if enabled) or automatically failed.
   ///
-  /// The task will be killed and marked as FAILED if over this limit. The valid
-  /// value range for max_run_duration in seconds is \[0,
-  /// 315576000000.999999999\],
+  /// Format the value of this field as a time limit in seconds followed by
+  /// `s`—for example, `3600s` for 1 hour. The field accepts any value between 0
+  /// and the maximum listed for the `Duration` field type at
+  /// https://protobuf.dev/reference/protobuf/google.protobuf/#duration;
+  /// however, the actual maximum run time for a job will be limited to the
+  /// maximum run time for a job listed at
+  /// https://cloud.google.com/batch/quotas#max-job-duration.
   core.String? maxRunDuration;
 
   /// The sequence of scripts or containers to run for this Task.

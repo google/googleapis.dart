@@ -534,7 +534,9 @@ api.DeliverInfo buildDeliverInfo() {
   buildCounterDeliverInfo++;
   if (buildCounterDeliverInfo < 3) {
     o.ipAddress = 'foo';
+    o.pscGoogleApiTarget = 'foo';
     o.resourceUri = 'foo';
+    o.storageBucket = 'foo';
     o.target = 'foo';
   }
   buildCounterDeliverInfo--;
@@ -549,7 +551,15 @@ void checkDeliverInfo(api.DeliverInfo o) {
       unittest.equals('foo'),
     );
     unittest.expect(
+      o.pscGoogleApiTarget!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.resourceUri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.storageBucket!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -949,9 +959,13 @@ api.ForwardingRuleInfo buildForwardingRuleInfo() {
   buildCounterForwardingRuleInfo++;
   if (buildCounterForwardingRuleInfo < 3) {
     o.displayName = 'foo';
+    o.loadBalancerName = 'foo';
     o.matchedPortRange = 'foo';
     o.matchedProtocol = 'foo';
     o.networkUri = 'foo';
+    o.pscGoogleApiTarget = 'foo';
+    o.pscServiceAttachmentUri = 'foo';
+    o.region = 'foo';
     o.target = 'foo';
     o.uri = 'foo';
     o.vip = 'foo';
@@ -968,6 +982,10 @@ void checkForwardingRuleInfo(api.ForwardingRuleInfo o) {
       unittest.equals('foo'),
     );
     unittest.expect(
+      o.loadBalancerName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.matchedPortRange!,
       unittest.equals('foo'),
     );
@@ -977,6 +995,18 @@ void checkForwardingRuleInfo(api.ForwardingRuleInfo o) {
     );
     unittest.expect(
       o.networkUri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.pscGoogleApiTarget!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.pscServiceAttachmentUri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.region!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -2215,6 +2245,28 @@ void checkRouteInfo(api.RouteInfo o) {
   buildCounterRouteInfo--;
 }
 
+core.int buildCounterServerlessNegInfo = 0;
+api.ServerlessNegInfo buildServerlessNegInfo() {
+  final o = api.ServerlessNegInfo();
+  buildCounterServerlessNegInfo++;
+  if (buildCounterServerlessNegInfo < 3) {
+    o.negUri = 'foo';
+  }
+  buildCounterServerlessNegInfo--;
+  return o;
+}
+
+void checkServerlessNegInfo(api.ServerlessNegInfo o) {
+  buildCounterServerlessNegInfo++;
+  if (buildCounterServerlessNegInfo < 3) {
+    unittest.expect(
+      o.negUri!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterServerlessNegInfo--;
+}
+
 core.int buildCounterSetIamPolicyRequest = 0;
 api.SetIamPolicyRequest buildSetIamPolicyRequest() {
   final o = api.SetIamPolicyRequest();
@@ -2352,6 +2404,7 @@ api.Step buildStep() {
     o.projectId = 'foo';
     o.proxyConnection = buildProxyConnectionInfo();
     o.route = buildRouteInfo();
+    o.serverlessNeg = buildServerlessNegInfo();
     o.state = 'foo';
     o.storageBucket = buildStorageBucketInfo();
     o.vpcConnector = buildVpcConnectorInfo();
@@ -2394,6 +2447,7 @@ void checkStep(api.Step o) {
     );
     checkProxyConnectionInfo(o.proxyConnection!);
     checkRouteInfo(o.route!);
+    checkServerlessNegInfo(o.serverlessNeg!);
     unittest.expect(
       o.state!,
       unittest.equals('foo'),
@@ -3116,6 +3170,16 @@ void main() {
       final od =
           api.RouteInfo.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkRouteInfo(od);
+    });
+  });
+
+  unittest.group('obj-schema-ServerlessNegInfo', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildServerlessNegInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ServerlessNegInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkServerlessNegInfo(od);
     });
   });
 

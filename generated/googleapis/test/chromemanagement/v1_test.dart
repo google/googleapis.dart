@@ -2925,6 +2925,118 @@ void checkGoogleChromeManagementV1StorageStatusReport(
   buildCounterGoogleChromeManagementV1StorageStatusReport--;
 }
 
+core.int buildCounterGoogleChromeManagementV1TelemetryAppInstallEvent = 0;
+api.GoogleChromeManagementV1TelemetryAppInstallEvent
+    buildGoogleChromeManagementV1TelemetryAppInstallEvent() {
+  final o = api.GoogleChromeManagementV1TelemetryAppInstallEvent();
+  buildCounterGoogleChromeManagementV1TelemetryAppInstallEvent++;
+  if (buildCounterGoogleChromeManagementV1TelemetryAppInstallEvent < 3) {
+    o.appId = 'foo';
+    o.appInstallReason = 'foo';
+    o.appInstallSource = 'foo';
+    o.appInstallTime = 'foo';
+    o.appType = 'foo';
+  }
+  buildCounterGoogleChromeManagementV1TelemetryAppInstallEvent--;
+  return o;
+}
+
+void checkGoogleChromeManagementV1TelemetryAppInstallEvent(
+    api.GoogleChromeManagementV1TelemetryAppInstallEvent o) {
+  buildCounterGoogleChromeManagementV1TelemetryAppInstallEvent++;
+  if (buildCounterGoogleChromeManagementV1TelemetryAppInstallEvent < 3) {
+    unittest.expect(
+      o.appId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.appInstallReason!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.appInstallSource!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.appInstallTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.appType!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleChromeManagementV1TelemetryAppInstallEvent--;
+}
+
+core.int buildCounterGoogleChromeManagementV1TelemetryAppLaunchEvent = 0;
+api.GoogleChromeManagementV1TelemetryAppLaunchEvent
+    buildGoogleChromeManagementV1TelemetryAppLaunchEvent() {
+  final o = api.GoogleChromeManagementV1TelemetryAppLaunchEvent();
+  buildCounterGoogleChromeManagementV1TelemetryAppLaunchEvent++;
+  if (buildCounterGoogleChromeManagementV1TelemetryAppLaunchEvent < 3) {
+    o.appId = 'foo';
+    o.appLaunchSource = 'foo';
+    o.appType = 'foo';
+  }
+  buildCounterGoogleChromeManagementV1TelemetryAppLaunchEvent--;
+  return o;
+}
+
+void checkGoogleChromeManagementV1TelemetryAppLaunchEvent(
+    api.GoogleChromeManagementV1TelemetryAppLaunchEvent o) {
+  buildCounterGoogleChromeManagementV1TelemetryAppLaunchEvent++;
+  if (buildCounterGoogleChromeManagementV1TelemetryAppLaunchEvent < 3) {
+    unittest.expect(
+      o.appId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.appLaunchSource!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.appType!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleChromeManagementV1TelemetryAppLaunchEvent--;
+}
+
+core.int buildCounterGoogleChromeManagementV1TelemetryAppUninstallEvent = 0;
+api.GoogleChromeManagementV1TelemetryAppUninstallEvent
+    buildGoogleChromeManagementV1TelemetryAppUninstallEvent() {
+  final o = api.GoogleChromeManagementV1TelemetryAppUninstallEvent();
+  buildCounterGoogleChromeManagementV1TelemetryAppUninstallEvent++;
+  if (buildCounterGoogleChromeManagementV1TelemetryAppUninstallEvent < 3) {
+    o.appId = 'foo';
+    o.appType = 'foo';
+    o.appUninstallSource = 'foo';
+  }
+  buildCounterGoogleChromeManagementV1TelemetryAppUninstallEvent--;
+  return o;
+}
+
+void checkGoogleChromeManagementV1TelemetryAppUninstallEvent(
+    api.GoogleChromeManagementV1TelemetryAppUninstallEvent o) {
+  buildCounterGoogleChromeManagementV1TelemetryAppUninstallEvent++;
+  if (buildCounterGoogleChromeManagementV1TelemetryAppUninstallEvent < 3) {
+    unittest.expect(
+      o.appId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.appType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.appUninstallSource!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleChromeManagementV1TelemetryAppUninstallEvent--;
+}
+
 core.int buildCounterGoogleChromeManagementV1TelemetryAudioSevereUnderrunEvent =
     0;
 api.GoogleChromeManagementV1TelemetryAudioSevereUnderrunEvent
@@ -3286,6 +3398,10 @@ api.GoogleChromeManagementV1TelemetryEvent
   final o = api.GoogleChromeManagementV1TelemetryEvent();
   buildCounterGoogleChromeManagementV1TelemetryEvent++;
   if (buildCounterGoogleChromeManagementV1TelemetryEvent < 3) {
+    o.appInstallEvent = buildGoogleChromeManagementV1TelemetryAppInstallEvent();
+    o.appLaunchEvent = buildGoogleChromeManagementV1TelemetryAppLaunchEvent();
+    o.appUninstallEvent =
+        buildGoogleChromeManagementV1TelemetryAppUninstallEvent();
     o.audioSevereUnderrunEvent =
         buildGoogleChromeManagementV1TelemetryAudioSevereUnderrunEvent();
     o.device = buildGoogleChromeManagementV1TelemetryDeviceInfo();
@@ -3312,6 +3428,10 @@ void checkGoogleChromeManagementV1TelemetryEvent(
     api.GoogleChromeManagementV1TelemetryEvent o) {
   buildCounterGoogleChromeManagementV1TelemetryEvent++;
   if (buildCounterGoogleChromeManagementV1TelemetryEvent < 3) {
+    checkGoogleChromeManagementV1TelemetryAppInstallEvent(o.appInstallEvent!);
+    checkGoogleChromeManagementV1TelemetryAppLaunchEvent(o.appLaunchEvent!);
+    checkGoogleChromeManagementV1TelemetryAppUninstallEvent(
+        o.appUninstallEvent!);
     checkGoogleChromeManagementV1TelemetryAudioSevereUnderrunEvent(
         o.audioSevereUnderrunEvent!);
     checkGoogleChromeManagementV1TelemetryDeviceInfo(o.device!);
@@ -4888,6 +5008,40 @@ void main() {
       final od = api.GoogleChromeManagementV1StorageStatusReport.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleChromeManagementV1StorageStatusReport(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleChromeManagementV1TelemetryAppInstallEvent',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleChromeManagementV1TelemetryAppInstallEvent();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleChromeManagementV1TelemetryAppInstallEvent.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleChromeManagementV1TelemetryAppInstallEvent(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleChromeManagementV1TelemetryAppLaunchEvent',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleChromeManagementV1TelemetryAppLaunchEvent();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleChromeManagementV1TelemetryAppLaunchEvent.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleChromeManagementV1TelemetryAppLaunchEvent(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleChromeManagementV1TelemetryAppUninstallEvent', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleChromeManagementV1TelemetryAppUninstallEvent();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleChromeManagementV1TelemetryAppUninstallEvent.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleChromeManagementV1TelemetryAppUninstallEvent(od);
     });
   });
 

@@ -1375,6 +1375,90 @@ class CohortsRange {
       };
 }
 
+/// Defines an individual comparison.
+///
+/// Most requests will include multiple comparisons so that the report compares
+/// between the comparisons.
+class Comparison {
+  /// A saved comparison identified by the comparison's resource name.
+  ///
+  /// For example, 'comparisons/1234'.
+  core.String? comparison;
+
+  /// A basic comparison.
+  FilterExpression? dimensionFilter;
+
+  /// Each comparison produces separate rows in the response.
+  ///
+  /// In the response, this comparison is identified by this name. If name is
+  /// unspecified, we will use the saved comparisons display name.
+  core.String? name;
+
+  Comparison({
+    this.comparison,
+    this.dimensionFilter,
+    this.name,
+  });
+
+  Comparison.fromJson(core.Map json_)
+      : this(
+          comparison: json_.containsKey('comparison')
+              ? json_['comparison'] as core.String
+              : null,
+          dimensionFilter: json_.containsKey('dimensionFilter')
+              ? FilterExpression.fromJson(json_['dimensionFilter']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (comparison != null) 'comparison': comparison!,
+        if (dimensionFilter != null) 'dimensionFilter': dimensionFilter!,
+        if (name != null) 'name': name!,
+      };
+}
+
+/// The metadata for a single comparison.
+class ComparisonMetadata {
+  /// This comparison's resource name.
+  ///
+  /// Useable in \[Comparison\](#Comparison)'s `comparison` field. For example,
+  /// 'comparisons/1234'.
+  core.String? apiName;
+
+  /// This comparison's description.
+  core.String? description;
+
+  /// This comparison's name within the Google Analytics user interface.
+  core.String? uiName;
+
+  ComparisonMetadata({
+    this.apiName,
+    this.description,
+    this.uiName,
+  });
+
+  ComparisonMetadata.fromJson(core.Map json_)
+      : this(
+          apiName: json_.containsKey('apiName')
+              ? json_['apiName'] as core.String
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          uiName: json_.containsKey('uiName')
+              ? json_['uiName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (apiName != null) 'apiName': apiName!,
+        if (description != null) 'description': description!,
+        if (uiName != null) 'uiName': uiName!,
+      };
+}
+
 /// Used to combine dimension values to a single dimension.
 class ConcatenateExpression {
   /// The delimiter placed between dimension names.
@@ -1897,6 +1981,9 @@ class ListAudienceExportsResponse {
 /// The dimensions, metrics and comparisons currently accepted in reporting
 /// methods.
 class Metadata {
+  /// The comparison descriptions.
+  core.List<ComparisonMetadata>? comparisons;
+
   /// The dimension descriptions.
   core.List<DimensionMetadata>? dimensions;
 
@@ -1907,6 +1994,7 @@ class Metadata {
   core.String? name;
 
   Metadata({
+    this.comparisons,
     this.dimensions,
     this.metrics,
     this.name,
@@ -1914,6 +2002,12 @@ class Metadata {
 
   Metadata.fromJson(core.Map json_)
       : this(
+          comparisons: json_.containsKey('comparisons')
+              ? (json_['comparisons'] as core.List)
+                  .map((value) => ComparisonMetadata.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           dimensions: json_.containsKey('dimensions')
               ? (json_['dimensions'] as core.List)
                   .map((value) => DimensionMetadata.fromJson(
@@ -1930,6 +2024,7 @@ class Metadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (comparisons != null) 'comparisons': comparisons!,
         if (dimensions != null) 'dimensions': dimensions!,
         if (metrics != null) 'metrics': metrics!,
         if (name != null) 'name': name!,
@@ -3056,6 +3151,14 @@ class RunPivotReportRequest {
   /// present.
   CohortSpec? cohortSpec;
 
+  /// The configuration of comparisons requested and displayed.
+  ///
+  /// The request requires both a comparisons field and a comparisons dimension
+  /// to receive a comparison column in the response.
+  ///
+  /// Optional.
+  core.List<Comparison>? comparisons;
+
   /// A currency code in ISO4217 format, such as "AED", "USD", "JPY".
   ///
   /// If the field is empty, the report uses the property's default currency.
@@ -3129,6 +3232,7 @@ class RunPivotReportRequest {
 
   RunPivotReportRequest({
     this.cohortSpec,
+    this.comparisons,
     this.currencyCode,
     this.dateRanges,
     this.dimensionFilter,
@@ -3146,6 +3250,12 @@ class RunPivotReportRequest {
           cohortSpec: json_.containsKey('cohortSpec')
               ? CohortSpec.fromJson(
                   json_['cohortSpec'] as core.Map<core.String, core.dynamic>)
+              : null,
+          comparisons: json_.containsKey('comparisons')
+              ? (json_['comparisons'] as core.List)
+                  .map((value) => Comparison.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
               : null,
           currencyCode: json_.containsKey('currencyCode')
               ? json_['currencyCode'] as core.String
@@ -3195,6 +3305,7 @@ class RunPivotReportRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cohortSpec != null) 'cohortSpec': cohortSpec!,
+        if (comparisons != null) 'comparisons': comparisons!,
         if (currencyCode != null) 'currencyCode': currencyCode!,
         if (dateRanges != null) 'dateRanges': dateRanges!,
         if (dimensionFilter != null) 'dimensionFilter': dimensionFilter!,
@@ -3576,6 +3687,14 @@ class RunReportRequest {
   /// present.
   CohortSpec? cohortSpec;
 
+  /// The configuration of comparisons requested and displayed.
+  ///
+  /// The request only requires a comparisons field in order to receive a
+  /// comparison column in the response.
+  ///
+  /// Optional.
+  core.List<Comparison>? comparisons;
+
   /// A currency code in ISO4217 format, such as "AED", "USD", "JPY".
   ///
   /// If the field is empty, the report uses the property's default currency.
@@ -3668,6 +3787,7 @@ class RunReportRequest {
 
   RunReportRequest({
     this.cohortSpec,
+    this.comparisons,
     this.currencyCode,
     this.dateRanges,
     this.dimensionFilter,
@@ -3688,6 +3808,12 @@ class RunReportRequest {
           cohortSpec: json_.containsKey('cohortSpec')
               ? CohortSpec.fromJson(
                   json_['cohortSpec'] as core.Map<core.String, core.dynamic>)
+              : null,
+          comparisons: json_.containsKey('comparisons')
+              ? (json_['comparisons'] as core.List)
+                  .map((value) => Comparison.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
               : null,
           currencyCode: json_.containsKey('currencyCode')
               ? json_['currencyCode'] as core.String
@@ -3747,6 +3873,7 @@ class RunReportRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cohortSpec != null) 'cohortSpec': cohortSpec!,
+        if (comparisons != null) 'comparisons': comparisons!,
         if (currencyCode != null) 'currencyCode': currencyCode!,
         if (dateRanges != null) 'dateRanges': dateRanges!,
         if (dimensionFilter != null) 'dimensionFilter': dimensionFilter!,

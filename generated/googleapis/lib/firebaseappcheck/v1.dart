@@ -20,6 +20,7 @@
 /// Create an instance of [FirebaseappcheckApi] to access these resources:
 ///
 /// - [JwksResource]
+/// - [OauthClientsResource]
 /// - [ProjectsResource]
 ///   - [ProjectsAppsResource]
 ///     - [ProjectsAppsAppAttestConfigResource]
@@ -59,6 +60,7 @@ class FirebaseappcheckApi {
   final commons.ApiRequester _requester;
 
   JwksResource get jwks => JwksResource(_requester);
+  OauthClientsResource get oauthClients => OauthClientsResource(_requester);
   ProjectsResource get projects => ProjectsResource(_requester);
 
   FirebaseappcheckApi(http.Client client,
@@ -112,6 +114,218 @@ class JwksResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1PublicJwkSet.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class OauthClientsResource {
+  final commons.ApiRequester _requester;
+
+  OauthClientsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Accepts an App Attest assertion and an artifact previously obtained from
+  /// ExchangeAppAttestAttestation and verifies those with Apple.
+  ///
+  /// If valid, returns an AppCheckToken.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [app] - Required. The relative resource name of the iOS app, in the
+  /// format: ``` projects/{project_number}/apps/{app_id} ``` If necessary, the
+  /// `project_number` element can be replaced with the project ID of the
+  /// Firebase project. Learn more about using project identifiers in Google's
+  /// [AIP 2510](https://google.aip.dev/cloud/2510) standard.
+  /// Value must have pattern `^oauthClients/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleFirebaseAppcheckV1AppCheckToken].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirebaseAppcheckV1AppCheckToken>
+      exchangeAppAttestAssertion(
+    GoogleFirebaseAppcheckV1ExchangeAppAttestAssertionRequest request,
+    core.String app, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$app') + ':exchangeAppAttestAssertion';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleFirebaseAppcheckV1AppCheckToken.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Accepts an App Attest CBOR attestation and verifies it with Apple using
+  /// your preconfigured team and bundle IDs.
+  ///
+  /// If valid, returns an attestation artifact that can later be exchanged for
+  /// an AppCheckToken using ExchangeAppAttestAssertion. For convenience and
+  /// performance, this method's response object will also contain an
+  /// AppCheckToken (if the verification is successful).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [app] - Required. The relative resource name of the iOS app, in the
+  /// format: ``` projects/{project_number}/apps/{app_id} ``` If necessary, the
+  /// `project_number` element can be replaced with the project ID of the
+  /// Firebase project. Learn more about using project identifiers in Google's
+  /// [AIP 2510](https://google.aip.dev/cloud/2510) standard.
+  /// Value must have pattern `^oauthClients/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleFirebaseAppcheckV1ExchangeAppAttestAttestationResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirebaseAppcheckV1ExchangeAppAttestAttestationResponse>
+      exchangeAppAttestAttestation(
+    GoogleFirebaseAppcheckV1ExchangeAppAttestAttestationRequest request,
+    core.String app, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$app') + ':exchangeAppAttestAttestation';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleFirebaseAppcheckV1ExchangeAppAttestAttestationResponse
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Validates a debug token secret that you have previously created using
+  /// CreateDebugToken.
+  ///
+  /// If valid, returns an AppCheckToken. Note that a restrictive quota is
+  /// enforced on this method to prevent accidental exposure of the app to
+  /// abuse.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [app] - Required. The relative resource name of the app, in the format:
+  /// ``` projects/{project_number}/apps/{app_id} ``` If necessary, the
+  /// `project_number` element can be replaced with the project ID of the
+  /// Firebase project. Learn more about using project identifiers in Google's
+  /// [AIP 2510](https://google.aip.dev/cloud/2510) standard.
+  /// Value must have pattern `^oauthClients/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleFirebaseAppcheckV1AppCheckToken].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirebaseAppcheckV1AppCheckToken> exchangeDebugToken(
+    GoogleFirebaseAppcheckV1ExchangeDebugTokenRequest request,
+    core.String app, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$app') + ':exchangeDebugToken';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleFirebaseAppcheckV1AppCheckToken.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Generates a challenge that protects the integrity of an immediately
+  /// following call to ExchangeAppAttestAttestation or
+  /// ExchangeAppAttestAssertion.
+  ///
+  /// A challenge should not be reused for multiple calls.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [app] - Required. The relative resource name of the iOS app, in the
+  /// format: ``` projects/{project_number}/apps/{app_id} ``` If necessary, the
+  /// `project_number` element can be replaced with the project ID of the
+  /// Firebase project. Learn more about using project identifiers in Google's
+  /// [AIP 2510](https://google.aip.dev/cloud/2510) standard.
+  /// Value must have pattern `^oauthClients/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleFirebaseAppcheckV1GenerateAppAttestChallengeResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirebaseAppcheckV1GenerateAppAttestChallengeResponse>
+      generateAppAttestChallenge(
+    GoogleFirebaseAppcheckV1GenerateAppAttestChallengeRequest request,
+    core.String app, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$app') + ':generateAppAttestChallenge';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleFirebaseAppcheckV1GenerateAppAttestChallengeResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -1661,8 +1875,8 @@ class ProjectsAppsRecaptchaV3ConfigResource {
   /// Updates the RecaptchaV3Config for the specified app.
   ///
   /// While this configuration is incomplete or invalid, the app will be unable
-  /// to exchange reCAPTCHA tokens for App Check tokens. For security reasons,
-  /// the `site_secret` field is never populated in the response.
+  /// to exchange reCAPTCHA V3 tokens for App Check tokens. For security
+  /// reasons, the `site_secret` field is never populated in the response.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3441,10 +3655,9 @@ class GoogleFirebaseAppcheckV1Service {
   /// app has not launched yet, you should enable enforcement immediately, since
   /// there are no outdated clients in use. Some services require certain
   /// conditions to be met before they will work with App Check, such as
-  /// requiring you to upgrade to a specific service tier or requiring you to
-  /// enable the service first. Until those requirements are met for a service,
-  /// this `ENFORCED` setting will have no effect and App Check will not work
-  /// with that service.
+  /// requiring you to upgrade to a specific service tier. Until those
+  /// requirements are met for a service, this `ENFORCED` setting will have no
+  /// effect and App Check will not work with that service.
   core.String? enforcementMode;
 
   /// The relative resource name of the service configuration object, in the

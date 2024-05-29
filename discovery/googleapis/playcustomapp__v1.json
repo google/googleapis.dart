@@ -24,7 +24,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240509",
+    "revision": "20240528",
     "rootUrl": "https://playcustomapp.googleapis.com/",
     "servicePath": "",
     "title": "Google Play Custom App Publishing API",

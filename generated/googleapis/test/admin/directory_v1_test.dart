@@ -1820,6 +1820,7 @@ api.ChromeOsDevice buildChromeOsDevice() {
     o.autoUpdateThrough = 'foo';
     o.backlightInfo = buildUnnamed22();
     o.bootMode = 'foo';
+    o.chromeOsType = 'foo';
     o.cpuInfo = buildUnnamed25();
     o.cpuStatusReports = buildUnnamed28();
     o.deprovisionReason = 'foo';
@@ -1894,6 +1895,10 @@ void checkChromeOsDevice(api.ChromeOsDevice o) {
     checkUnnamed22(o.backlightInfo!);
     unittest.expect(
       o.bootMode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.chromeOsType!,
       unittest.equals('foo'),
     );
     checkUnnamed25(o.cpuInfo!);
