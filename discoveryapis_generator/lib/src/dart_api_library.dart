@@ -17,6 +17,8 @@ const ignoreForFileSet = {
   // Can remove when https://github.com/dart-lang/linter/issues/2442 is fixed!
   'comment_references',
   'deprecated_member_use_from_same_package',
+  // Need to find-replace these in comment refs
+  'doc_directive_unknown',
   'lines_longer_than_80_chars',
   'non_constant_identifier_names',
   'prefer_interpolation_to_compose_strings',
