@@ -689,6 +689,13 @@ The Google Cloud Deployment Manager v2 API provides services for configuring, de
 - [Original documentation](https://cloud.google.com/deployment-manager)
 - [Dart package details](https://pub.dev/documentation/googleapis/13.2.0-wip/deploymentmanager_v2/deploymentmanager_v2-library.html)
 
+#### Developer Connect API - `developerconnect/v1`
+
+Connect third-party source code management to Google
+
+- [Original documentation](http://cloud.google.com/developer-connect/docs/overview)
+- [Dart package details](https://pub.dev/documentation/googleapis/13.2.0-wip/developerconnect_v1/developerconnect_v1-library.html)
+
 #### Campaign Manager 360 API - `dfareporting/v3_5`
 
 Build applications to efficiently manage large or complex trafficking, reporting, and attribution workflows for Campaign Manager 360.
@@ -1614,9 +1621,9 @@ Solar API.
 
 #### Cloud Source Repositories API - `sourcerepo/v1`
 
-Accesses source code repositories hosted by Google.
+Accesses source code repositories hosted by Google. Important: Cloud Source Repositories is scheduled for end of sales starting June 17, 2024. Customers who have enabled the API prior to this date will not be affected and can continue to use Cloud Source Repositories. Organizations or projects who have not previously enabled the API cannot use Cloud Source Repositories after this date. View Cloud Source Repositories documentation for more info. 
 
-- [Original documentation](https://cloud.google.com/source-repositories/docs/apis)
+- [Original documentation](https://cloud.google.com/source-repositories/docs)
 - [Dart package details](https://pub.dev/documentation/googleapis/13.2.0-wip/sourcerepo_v1/sourcerepo_v1-library.html)
 
 #### Cloud Spanner API - `spanner/v1`

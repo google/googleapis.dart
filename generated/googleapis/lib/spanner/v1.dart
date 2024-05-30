@@ -3,6 +3,7 @@
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
 // ignore_for_file: deprecated_member_use_from_same_package
+// ignore_for_file: doc_directive_unknown
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -2252,6 +2253,57 @@ class ProjectsInstancesDatabasesResource {
   ProjectsInstancesDatabasesResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// ChangeQuorum is strictly restricted to databases that use dual region
+  /// instance configurations.
+  ///
+  /// Initiates a background operation to change quorum a database from
+  /// dual-region mode to single-region mode and vice versa. The returned
+  /// long-running operation will have a name of the format
+  /// `projects//instances//databases//operations/` and can be used to track
+  /// execution of the ChangeQuorum. The metadata field type is
+  /// ChangeQuorumMetadata. Authorization requires
+  /// `spanner.databases.changequorum` permission on the resource database.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the database in which to apply the
+  /// ChangeQuorum. Values are of the form `projects//instances//databases/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/databases/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> changequorum(
+    ChangeQuorumRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':changequorum';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Creates a new Cloud Spanner database and starts to prepare it for serving.
   ///
   /// The returned long-running operation will have a name of the format
@@ -4199,7 +4251,9 @@ class ProjectsInstancesInstancePartitionsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The instance whose instance partitions should be
-  /// listed. Values are of the form `projects//instances/`.
+  /// listed. Values are of the form `projects//instances/`. Use `{instance} =
+  /// '-'` to list instance partitions for all Instances in a project, e.g.,
+  /// `projects/myproject/instances/-`.
   /// Value must have pattern `^projects/\[^/\]+/instances/\[^/\]+$`.
   ///
   /// [instancePartitionDeadline] - Optional. Deadline used while retrieving
@@ -5460,6 +5514,54 @@ class Binding {
       };
 }
 
+/// The request for ChangeQuorum.
+class ChangeQuorumRequest {
+  /// The etag is the hash of the QuorumInfo.
+  ///
+  /// The ChangeQuorum operation will only be performed if the etag matches that
+  /// of the QuorumInfo in the current database resource. Otherwise the API will
+  /// return an `ABORTED` error. The etag is used for optimistic concurrency
+  /// control as a way to help prevent simultaneous change quorum requests that
+  /// could create a race condition.
+  ///
+  /// Optional.
+  core.String? etag;
+
+  /// Name of the database in which to apply the ChangeQuorum.
+  ///
+  /// Values are of the form `projects//instances//databases/`.
+  ///
+  /// Required.
+  core.String? name;
+
+  /// The type of this Quorum.
+  ///
+  /// Required.
+  QuorumType? quorumType;
+
+  ChangeQuorumRequest({
+    this.etag,
+    this.name,
+    this.quorumType,
+  });
+
+  ChangeQuorumRequest.fromJson(core.Map json_)
+      : this(
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          quorumType: json_.containsKey('quorumType')
+              ? QuorumType.fromJson(
+                  json_['quorumType'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (name != null) 'name': name!,
+        if (quorumType != null) 'quorumType': quorumType!,
+      };
+}
+
 /// Metadata associated with a parent-child relationship appearing in a
 /// PlanNode.
 class ChildLink {
@@ -6189,6 +6291,14 @@ class Database {
   /// Required.
   core.String? name;
 
+  /// Applicable only for databases that use dual region instance
+  /// configurations.
+  ///
+  /// Contains information about the quorum.
+  ///
+  /// Output only.
+  QuorumInfo? quorumInfo;
+
   /// If true, the database is being updated.
   ///
   /// If false, there are no ongoing update operations for the database.
@@ -6237,6 +6347,7 @@ class Database {
     this.encryptionConfig,
     this.encryptionInfo,
     this.name,
+    this.quorumInfo,
     this.reconciling,
     this.restoreInfo,
     this.state,
@@ -6271,6 +6382,10 @@ class Database {
                   .toList()
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          quorumInfo: json_.containsKey('quorumInfo')
+              ? QuorumInfo.fromJson(
+                  json_['quorumInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
           reconciling: json_.containsKey('reconciling')
               ? json_['reconciling'] as core.bool
               : null,
@@ -6296,6 +6411,7 @@ class Database {
         if (encryptionConfig != null) 'encryptionConfig': encryptionConfig!,
         if (encryptionInfo != null) 'encryptionInfo': encryptionInfo!,
         if (name != null) 'name': name!,
+        if (quorumInfo != null) 'quorumInfo': quorumInfo!,
         if (reconciling != null) 'reconciling': reconciling!,
         if (restoreInfo != null) 'restoreInfo': restoreInfo!,
         if (state != null) 'state': state!,
@@ -6512,6 +6628,11 @@ class DirectedReadOptions {
         if (includeReplicas != null) 'includeReplicas': includeReplicas!,
       };
 }
+
+/// Message type for a dual-region quorum.
+///
+/// Currently this type has no options.
+typedef DualRegionQuorum = $Empty;
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
@@ -7373,6 +7494,8 @@ class Instance {
   ///
   /// At most one of either node_count or processing_units should be present in
   /// the message. Users can set the node_count field to specify the target
+  /// number of nodes allocated to the instance. If autoscaling is enabled,
+  /// node_count is treated as an OUTPUT_ONLY field and reflects the current
   /// number of nodes allocated to the instance. This may be zero in API
   /// responses for instances that are not yet in state `READY`. See
   /// [the documentation](https://cloud.google.com/spanner/docs/compute-capacity)
@@ -7383,8 +7506,11 @@ class Instance {
   ///
   /// At most one of processing_units or node_count should be present in the
   /// message. Users can set the processing_units field to specify the target
-  /// number of processing units allocated to the instance. This may be zero in
-  /// API responses for instances that are not yet in state `READY`. See
+  /// number of processing units allocated to the instance. If autoscaling is
+  /// enabled, processing_units is treated as an OUTPUT_ONLY field and reflects
+  /// the current number of processing units allocated to the instance. This may
+  /// be zero in API responses for instances that are not yet in state `READY`.
+  /// See
   /// [the documentation](https://cloud.google.com/spanner/docs/compute-capacity)
   /// for more information about nodes and processing units.
   core.int? processingUnits;
@@ -7584,6 +7710,22 @@ class InstanceConfig {
   /// Output only.
   core.List<ReplicaInfo>? optionalReplicas;
 
+  /// The `QuorumType` of the instance configuration.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "QUORUM_TYPE_UNSPECIFIED" : Not specified.
+  /// - "REGION" : An instance configuration tagged with REGION quorum type
+  /// forms a write quorum in a single region.
+  /// - "DUAL_REGION" : An instance configuration tagged with DUAL_REGION quorum
+  /// type forms a write quorums with exactly two read-write regions in a
+  /// multi-region configuration. This instance configurations requires
+  /// reconfiguration in the event of regional failures.
+  /// - "MULTI_REGION" : An instance configuration tagged with MULTI_REGION
+  /// quorum type forms a write quorums from replicas are spread across more
+  /// than one region in a multi-region configuration.
+  core.String? quorumType;
+
   /// If true, the instance config is being created or updated.
   ///
   /// If false, there are no ongoing operations for the instance config.
@@ -7622,6 +7764,7 @@ class InstanceConfig {
     this.leaderOptions,
     this.name,
     this.optionalReplicas,
+    this.quorumType,
     this.reconciling,
     this.replicas,
     this.state,
@@ -7664,6 +7807,9 @@ class InstanceConfig {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          quorumType: json_.containsKey('quorumType')
+              ? json_['quorumType'] as core.String
+              : null,
           reconciling: json_.containsKey('reconciling')
               ? json_['reconciling'] as core.bool
               : null,
@@ -7692,6 +7838,7 @@ class InstanceConfig {
         if (leaderOptions != null) 'leaderOptions': leaderOptions!,
         if (name != null) 'name': name!,
         if (optionalReplicas != null) 'optionalReplicas': optionalReplicas!,
+        if (quorumType != null) 'quorumType': quorumType!,
         if (reconciling != null) 'reconciling': reconciling!,
         if (replicas != null) 'replicas': replicas!,
         if (state != null) 'state': state!,
@@ -8460,10 +8607,10 @@ class ListInstancePartitionsResponse {
   /// to fetch more of the matching instance partitions.
   core.String? nextPageToken;
 
-  /// The list of unreachable instance partitions.
+  /// The list of unreachable instances or instance partitions.
   ///
-  /// It includes the names of instance partitions whose metadata could not be
-  /// retrieved within instance_partition_deadline.
+  /// It includes the names of instances or instance partitions whose metadata
+  /// could not be retrieved within instance_partition_deadline.
   core.List<core.String>? unreachable;
 
   ListInstancePartitionsResponse({
@@ -9881,6 +10028,99 @@ class QueryPlan {
       };
 }
 
+/// Information about the dual region quorum.
+class QuorumInfo {
+  /// The etag is used for optimistic concurrency control as a way to help
+  /// prevent simultaneous ChangeQuorum requests that could create a race
+  /// condition.
+  ///
+  /// Output only.
+  core.String? etag;
+
+  /// Whether this ChangeQuorum is a Google or User initiated.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "INITIATOR_UNSPECIFIED" : Unspecified.
+  /// - "GOOGLE" : ChangeQuorum initiated by Google.
+  /// - "USER" : ChangeQuorum initiated by User.
+  core.String? initiator;
+
+  /// The type of this quorum.
+  ///
+  /// See QuorumType for more information about quorum type specifications.
+  ///
+  /// Output only.
+  QuorumType? quorumType;
+
+  /// The timestamp when the request was triggered.
+  ///
+  /// Output only.
+  core.String? startTime;
+
+  QuorumInfo({
+    this.etag,
+    this.initiator,
+    this.quorumType,
+    this.startTime,
+  });
+
+  QuorumInfo.fromJson(core.Map json_)
+      : this(
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          initiator: json_.containsKey('initiator')
+              ? json_['initiator'] as core.String
+              : null,
+          quorumType: json_.containsKey('quorumType')
+              ? QuorumType.fromJson(
+                  json_['quorumType'] as core.Map<core.String, core.dynamic>)
+              : null,
+          startTime: json_.containsKey('startTime')
+              ? json_['startTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (initiator != null) 'initiator': initiator!,
+        if (quorumType != null) 'quorumType': quorumType!,
+        if (startTime != null) 'startTime': startTime!,
+      };
+}
+
+/// Information about the database quorum type.
+///
+/// this applies only for dual region instance configs.
+class QuorumType {
+  /// Dual region quorum type.
+  DualRegionQuorum? dualRegion;
+
+  /// Single region quorum type.
+  SingleRegionQuorum? singleRegion;
+
+  QuorumType({
+    this.dualRegion,
+    this.singleRegion,
+  });
+
+  QuorumType.fromJson(core.Map json_)
+      : this(
+          dualRegion: json_.containsKey('dualRegion')
+              ? DualRegionQuorum.fromJson(
+                  json_['dualRegion'] as core.Map<core.String, core.dynamic>)
+              : null,
+          singleRegion: json_.containsKey('singleRegion')
+              ? SingleRegionQuorum.fromJson(
+                  json_['singleRegion'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dualRegion != null) 'dualRegion': dualRegion!,
+        if (singleRegion != null) 'singleRegion': singleRegion!,
+      };
+}
+
 /// Message type to initiate a read-only transaction.
 class ReadOnly {
   /// Executes all reads at a timestamp that is `exact_staleness` old.
@@ -10937,6 +11177,35 @@ class ShortRepresentation {
       };
 }
 
+/// Message type for a single-region quorum.
+class SingleRegionQuorum {
+  /// The location of the serving region, e.g. "us-central1".
+  ///
+  /// The location must be one of the regions within the dual region instance
+  /// configuration of your database. The list of valid locations is available
+  /// via \[GetInstanceConfig\[InstanceAdmin.GetInstanceConfig\] API. This
+  /// should only be used if you plan to change quorum in single-region quorum
+  /// type.
+  ///
+  /// Required.
+  core.String? servingLocation;
+
+  SingleRegionQuorum({
+    this.servingLocation,
+  });
+
+  SingleRegionQuorum.fromJson(core.Map json_)
+      : this(
+          servingLocation: json_.containsKey('servingLocation')
+              ? json_['servingLocation'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (servingLocation != null) 'servingLocation': servingLocation!,
+      };
+}
+
 /// A single DML statement.
 class Statement {
   /// It is not always possible for Cloud Spanner to infer the right SQL type
@@ -11127,7 +11396,7 @@ class Transaction {
 /// have committed before the start of the read). Snapshot read-only
 /// transactions do not need to be committed. Queries on change streams must be
 /// performed with the snapshot read-only transaction mode, specifying a strong
-/// read. Please see TransactionOptions.ReadOnly.strong for more details. 3.
+/// read. See TransactionOptions.ReadOnly.strong for more details. 3.
 /// Partitioned DML. This type of transaction is used to execute a single
 /// Partitioned DML statement. Partitioned DML partitions the key space and runs
 /// the DML statement over each partition in parallel using separate, internal

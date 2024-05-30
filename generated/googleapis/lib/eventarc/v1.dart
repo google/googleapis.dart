@@ -3,6 +3,7 @@
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
 // ignore_for_file: deprecated_member_use_from_same_package
+// ignore_for_file: doc_directive_unknown
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -2916,10 +2917,9 @@ class ListTriggersResponse {
 /// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
-/// Represents a network config to be used for destination resolution and
-/// connectivity.
+/// Network Configuration that can be inherited by other protos.
 class NetworkConfig {
-  /// Name of the NetworkAttachment that allows access to the destination VPC.
+  /// Name of the NetworkAttachment that allows access to the customer's VPC.
   ///
   /// Format:
   /// `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`

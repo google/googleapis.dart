@@ -1,6 +1,7 @@
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
 // ignore_for_file: deprecated_member_use_from_same_package
+// ignore_for_file: doc_directive_unknown
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_const_declarations
@@ -1073,7 +1074,9 @@ api.GoogleFirestoreAdminV1DailyRecurrence
     buildGoogleFirestoreAdminV1DailyRecurrence() {
   final o = api.GoogleFirestoreAdminV1DailyRecurrence();
   buildCounterGoogleFirestoreAdminV1DailyRecurrence++;
-  if (buildCounterGoogleFirestoreAdminV1DailyRecurrence < 3) {}
+  if (buildCounterGoogleFirestoreAdminV1DailyRecurrence < 3) {
+    o.time = buildTimeOfDay();
+  }
   buildCounterGoogleFirestoreAdminV1DailyRecurrence--;
   return o;
 }
@@ -1081,7 +1084,9 @@ api.GoogleFirestoreAdminV1DailyRecurrence
 void checkGoogleFirestoreAdminV1DailyRecurrence(
     api.GoogleFirestoreAdminV1DailyRecurrence o) {
   buildCounterGoogleFirestoreAdminV1DailyRecurrence++;
-  if (buildCounterGoogleFirestoreAdminV1DailyRecurrence < 3) {}
+  if (buildCounterGoogleFirestoreAdminV1DailyRecurrence < 3) {
+    checkTimeOfDay(o.time!);
+  }
   buildCounterGoogleFirestoreAdminV1DailyRecurrence--;
 }
 
@@ -1102,6 +1107,7 @@ api.GoogleFirestoreAdminV1Database buildGoogleFirestoreAdminV1Database() {
     o.locationId = 'foo';
     o.name = 'foo';
     o.pointInTimeRecoveryEnablement = 'foo';
+    o.previousId = 'foo';
     o.type = 'foo';
     o.uid = 'foo';
     o.updateTime = 'foo';
@@ -1157,6 +1163,10 @@ void checkGoogleFirestoreAdminV1Database(api.GoogleFirestoreAdminV1Database o) {
     );
     unittest.expect(
       o.pointInTimeRecoveryEnablement!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.previousId!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -1831,6 +1841,7 @@ api.GoogleFirestoreAdminV1WeeklyRecurrence
   buildCounterGoogleFirestoreAdminV1WeeklyRecurrence++;
   if (buildCounterGoogleFirestoreAdminV1WeeklyRecurrence < 3) {
     o.day = 'foo';
+    o.time = buildTimeOfDay();
   }
   buildCounterGoogleFirestoreAdminV1WeeklyRecurrence--;
   return o;
@@ -1844,6 +1855,7 @@ void checkGoogleFirestoreAdminV1WeeklyRecurrence(
       o.day!,
       unittest.equals('foo'),
     );
+    checkTimeOfDay(o.time!);
   }
   buildCounterGoogleFirestoreAdminV1WeeklyRecurrence--;
 }
@@ -2973,6 +2985,43 @@ void checkSum(api.Sum o) {
     checkFieldReference(o.field!);
   }
   buildCounterSum--;
+}
+
+core.int buildCounterTimeOfDay = 0;
+api.TimeOfDay buildTimeOfDay() {
+  final o = api.TimeOfDay();
+  buildCounterTimeOfDay++;
+  if (buildCounterTimeOfDay < 3) {
+    o.hours = 42;
+    o.minutes = 42;
+    o.nanos = 42;
+    o.seconds = 42;
+  }
+  buildCounterTimeOfDay--;
+  return o;
+}
+
+void checkTimeOfDay(api.TimeOfDay o) {
+  buildCounterTimeOfDay++;
+  if (buildCounterTimeOfDay < 3) {
+    unittest.expect(
+      o.hours!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.minutes!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.nanos!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.seconds!,
+      unittest.equals(42),
+    );
+  }
+  buildCounterTimeOfDay--;
 }
 
 core.int buildCounterTransactionOptions = 0;
@@ -4177,6 +4226,16 @@ void main() {
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.Sum.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkSum(od);
+    });
+  });
+
+  unittest.group('obj-schema-TimeOfDay', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildTimeOfDay();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.TimeOfDay.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkTimeOfDay(od);
     });
   });
 

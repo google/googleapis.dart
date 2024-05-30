@@ -1,6 +1,7 @@
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
 // ignore_for_file: deprecated_member_use_from_same_package
+// ignore_for_file: doc_directive_unknown
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_const_declarations
@@ -64,7 +65,9 @@ api.GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings
   buildCounterGoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings++;
   if (buildCounterGoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings < 3) {
     o.enabled = true;
+    o.endpointingTimeoutDuration = 'foo';
     o.finishDigit = 'foo';
+    o.interdigitTimeoutDuration = 'foo';
     o.maxDigits = 42;
   }
   buildCounterGoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings--;
@@ -77,7 +80,15 @@ void checkGoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings(
   if (buildCounterGoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings < 3) {
     unittest.expect(o.enabled!, unittest.isTrue);
     unittest.expect(
+      o.endpointingTimeoutDuration!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.finishDigit!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.interdigitTimeoutDuration!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -6776,6 +6787,7 @@ api.GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings
     o.audioFormat = 'foo';
     o.enableAudioRedaction = true;
     o.gcsBucket = 'foo';
+    o.storeTtsAudio = true;
   }
   buildCounterGoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings--;
   return o;
@@ -6799,6 +6811,7 @@ void checkGoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings(
       o.gcsBucket!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.storeTtsAudio!, unittest.isTrue);
   }
   buildCounterGoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings--;
 }

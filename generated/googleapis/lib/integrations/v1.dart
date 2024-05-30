@@ -3,6 +3,7 @@
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
 // ignore_for_file: deprecated_member_use_from_same_package
+// ignore_for_file: doc_directive_unknown
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -6665,6 +6666,12 @@ class EnterpriseCrmEventbusProtoFailurePolicy {
   /// Defines the number of times the task will be retried if failed.
   core.int? maxNumRetries;
 
+  /// The retry condition that will be evaluated for this failure policy with
+  /// the corresponding retry strategy.
+  ///
+  /// Optional.
+  core.String? retryCondition;
+
   /// Defines what happens to the task upon failure.
   /// Possible string values are:
   /// - "UNSPECIFIED"
@@ -6703,6 +6710,7 @@ class EnterpriseCrmEventbusProtoFailurePolicy {
   EnterpriseCrmEventbusProtoFailurePolicy({
     this.intervalInSeconds,
     this.maxNumRetries,
+    this.retryCondition,
     this.retryStrategy,
   });
 
@@ -6714,6 +6722,9 @@ class EnterpriseCrmEventbusProtoFailurePolicy {
           maxNumRetries: json_.containsKey('maxNumRetries')
               ? json_['maxNumRetries'] as core.int
               : null,
+          retryCondition: json_.containsKey('retryCondition')
+              ? json_['retryCondition'] as core.String
+              : null,
           retryStrategy: json_.containsKey('retryStrategy')
               ? json_['retryStrategy'] as core.String
               : null,
@@ -6722,6 +6733,7 @@ class EnterpriseCrmEventbusProtoFailurePolicy {
   core.Map<core.String, core.dynamic> toJson() => {
         if (intervalInSeconds != null) 'intervalInSeconds': intervalInSeconds!,
         if (maxNumRetries != null) 'maxNumRetries': maxNumRetries!,
+        if (retryCondition != null) 'retryCondition': retryCondition!,
         if (retryStrategy != null) 'retryStrategy': retryStrategy!,
       };
 }
@@ -12023,39 +12035,7 @@ typedef GoogleCloudConnectorsV1HPAConfig = $HPAConfig;
 typedef GoogleCloudConnectorsV1LockConfig = $LockConfig;
 
 /// Log configuration for the connection.
-class GoogleCloudConnectorsV1LogConfig {
-  /// Enabled represents whether logging is enabled or not for a connection.
-  core.bool? enabled;
-
-  /// Log configuration level.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "LOG_LEVEL_UNSPECIFIED" : Log level unspecified.
-  /// - "ERROR" : Only error logs are enabled.
-  /// - "INFO" : Info and error logs are enabled.
-  /// - "DEBUG" : Debug and high verbosity logs are enabled.
-  core.String? level;
-
-  GoogleCloudConnectorsV1LogConfig({
-    this.enabled,
-    this.level,
-  });
-
-  GoogleCloudConnectorsV1LogConfig.fromJson(core.Map json_)
-      : this(
-          enabled: json_.containsKey('enabled')
-              ? json_['enabled'] as core.bool
-              : null,
-          level:
-              json_.containsKey('level') ? json_['level'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (enabled != null) 'enabled': enabled!,
-        if (level != null) 'level': level!,
-      };
-}
+typedef GoogleCloudConnectorsV1LogConfig = $LogConfig;
 
 /// Node configuration for the connection.
 typedef GoogleCloudConnectorsV1NodeConfig = $NodeConfig;
@@ -13606,9 +13586,6 @@ class GoogleCloudIntegrationsV1alphaExecuteIntegrationsRequest {
   /// The id of the ON_HOLD execution to be resumed.
   ///
   /// Optional.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
   core.String? executionId;
 
   /// Input parameters used by integration execution.
@@ -14241,6 +14218,12 @@ class GoogleCloudIntegrationsV1alphaExecutionSnapshotExecutionSnapshotMetadata {
 /// If no FailurePolicy is defined for a task, all its dependent tasks will not
 /// be executed (i.e, a `retry_strategy` of NONE will be applied).
 class GoogleCloudIntegrationsV1alphaFailurePolicy {
+  /// The string condition that will be evaluated to determine if the task
+  /// should be retried with this failure policy.
+  ///
+  /// Optional.
+  core.String? condition;
+
   /// Required if retry_strategy is FIXED_INTERVAL or
   /// LINEAR/EXPONENTIAL_BACKOFF/RESTART_INTEGRATION_WITH_BACKOFF.
   ///
@@ -14289,6 +14272,7 @@ class GoogleCloudIntegrationsV1alphaFailurePolicy {
   core.String? retryStrategy;
 
   GoogleCloudIntegrationsV1alphaFailurePolicy({
+    this.condition,
     this.intervalTime,
     this.maxRetries,
     this.retryStrategy,
@@ -14296,6 +14280,9 @@ class GoogleCloudIntegrationsV1alphaFailurePolicy {
 
   GoogleCloudIntegrationsV1alphaFailurePolicy.fromJson(core.Map json_)
       : this(
+          condition: json_.containsKey('condition')
+              ? json_['condition'] as core.String
+              : null,
           intervalTime: json_.containsKey('intervalTime')
               ? json_['intervalTime'] as core.String
               : null,
@@ -14308,6 +14295,7 @@ class GoogleCloudIntegrationsV1alphaFailurePolicy {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (condition != null) 'condition': condition!,
         if (intervalTime != null) 'intervalTime': intervalTime!,
         if (maxRetries != null) 'maxRetries': maxRetries!,
         if (retryStrategy != null) 'retryStrategy': retryStrategy!,

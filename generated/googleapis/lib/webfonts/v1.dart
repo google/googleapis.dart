@@ -3,6 +3,7 @@
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
 // ignore_for_file: deprecated_member_use_from_same_package
+// ignore_for_file: doc_directive_unknown
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -156,6 +157,9 @@ class Webfont {
   /// The category of the font.
   core.String? category;
 
+  /// The color format(s) available for this family.
+  core.List<core.String>? colorCapabilities;
+
   /// The name of the font.
   core.String? family;
 
@@ -185,6 +189,7 @@ class Webfont {
   Webfont({
     this.axes,
     this.category,
+    this.colorCapabilities,
     this.family,
     this.files,
     this.kind,
@@ -205,6 +210,11 @@ class Webfont {
               : null,
           category: json_.containsKey('category')
               ? json_['category'] as core.String
+              : null,
+          colorCapabilities: json_.containsKey('colorCapabilities')
+              ? (json_['colorCapabilities'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
               : null,
           family: json_.containsKey('family')
               ? json_['family'] as core.String
@@ -240,6 +250,7 @@ class Webfont {
   core.Map<core.String, core.dynamic> toJson() => {
         if (axes != null) 'axes': axes!,
         if (category != null) 'category': category!,
+        if (colorCapabilities != null) 'colorCapabilities': colorCapabilities!,
         if (family != null) 'family': family!,
         if (files != null) 'files': files!,
         if (kind != null) 'kind': kind!,

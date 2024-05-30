@@ -27,6 +27,13 @@ Manages alerts on issues affecting your domain. Note: The current version of thi
 - [Original documentation](https://developers.google.com/admin-sdk/alertcenter/)
 - [Dart package details](https://pub.dev/documentation/googleapis_beta/9.1.0-wip/alertcenter_v1beta1/alertcenter_v1beta1-library.html)
 
+#### Google Analytics Admin API - `analyticsadmin/v1alpha`
+
+Manage properties in Google Analytics. Warning: Creating multiple Customer Applications, Accounts, or Projects to simulate or act as a single Customer Application, Account, or Project (respectively) or to circumvent Service-specific usage limits or quotas is a direct violation of Google Cloud Platform Terms of Service as well as Google APIs Terms of Service. These actions can result in immediate termination of your GCP project(s) without any warning.
+
+- [Original documentation](http://code.google.com/apis/analytics/docs/mgmt/home.html)
+- [Dart package details](https://pub.dev/documentation/googleapis_beta/9.1.0-wip/analyticsadmin_v1alpha/analyticsadmin_v1alpha-library.html)
+
 #### Google Analytics Admin API - `analyticsadmin/v1beta`
 
 Manage properties in Google Analytics. Warning: Creating multiple Customer Applications, Accounts, or Projects to simulate or act as a single Customer Application, Account, or Project (respectively) or to circumvent Service-specific usage limits or quotas is a direct violation of Google Cloud Platform Terms of Service as well as Google APIs Terms of Service. These actions can result in immediate termination of your GCP project(s) without any warning.

@@ -1,6 +1,7 @@
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
 // ignore_for_file: deprecated_member_use_from_same_package
+// ignore_for_file: doc_directive_unknown
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_const_declarations
@@ -1221,6 +1222,7 @@ api.EventTicketClass buildEventTicketClass() {
   buildCounterEventTicketClass++;
   if (buildCounterEventTicketClass < 3) {
     o.allowMultipleUsersPerObject = true;
+    o.appLinkData = buildAppLinkData();
     o.callbackOptions = buildCallbackOptions();
     o.classTemplateInfo = buildClassTemplateInfo();
     o.confirmationCodeLabel = 'foo';
@@ -1272,6 +1274,7 @@ void checkEventTicketClass(api.EventTicketClass o) {
   buildCounterEventTicketClass++;
   if (buildCounterEventTicketClass < 3) {
     unittest.expect(o.allowMultipleUsersPerObject!, unittest.isTrue);
+    checkAppLinkData(o.appLinkData!);
     checkCallbackOptions(o.callbackOptions!);
     checkClassTemplateInfo(o.classTemplateInfo!);
     unittest.expect(
@@ -1869,6 +1872,7 @@ api.FlightClass buildFlightClass() {
   buildCounterFlightClass++;
   if (buildCounterFlightClass < 3) {
     o.allowMultipleUsersPerObject = true;
+    o.appLinkData = buildAppLinkData();
     o.boardingAndSeatingPolicy = buildBoardingAndSeatingPolicy();
     o.callbackOptions = buildCallbackOptions();
     o.classTemplateInfo = buildClassTemplateInfo();
@@ -1915,6 +1919,7 @@ void checkFlightClass(api.FlightClass o) {
   buildCounterFlightClass++;
   if (buildCounterFlightClass < 3) {
     unittest.expect(o.allowMultipleUsersPerObject!, unittest.isTrue);
+    checkAppLinkData(o.appLinkData!);
     checkBoardingAndSeatingPolicy(o.boardingAndSeatingPolicy!);
     checkCallbackOptions(o.callbackOptions!);
     checkClassTemplateInfo(o.classTemplateInfo!);
@@ -2375,6 +2380,7 @@ api.GenericClass buildGenericClass() {
   final o = api.GenericClass();
   buildCounterGenericClass++;
   if (buildCounterGenericClass < 3) {
+    o.appLinkData = buildAppLinkData();
     o.callbackOptions = buildCallbackOptions();
     o.classTemplateInfo = buildClassTemplateInfo();
     o.enableSmartTap = true;
@@ -2395,6 +2401,7 @@ api.GenericClass buildGenericClass() {
 void checkGenericClass(api.GenericClass o) {
   buildCounterGenericClass++;
   if (buildCounterGenericClass < 3) {
+    checkAppLinkData(o.appLinkData!);
     checkCallbackOptions(o.callbackOptions!);
     checkClassTemplateInfo(o.classTemplateInfo!);
     unittest.expect(o.enableSmartTap!, unittest.isTrue);
@@ -2694,6 +2701,7 @@ api.GiftCardClass buildGiftCardClass() {
   if (buildCounterGiftCardClass < 3) {
     o.allowBarcodeRedemption = true;
     o.allowMultipleUsersPerObject = true;
+    o.appLinkData = buildAppLinkData();
     o.callbackOptions = buildCallbackOptions();
     o.cardNumberLabel = 'foo';
     o.classTemplateInfo = buildClassTemplateInfo();
@@ -2739,6 +2747,7 @@ void checkGiftCardClass(api.GiftCardClass o) {
   if (buildCounterGiftCardClass < 3) {
     unittest.expect(o.allowBarcodeRedemption!, unittest.isTrue);
     unittest.expect(o.allowMultipleUsersPerObject!, unittest.isTrue);
+    checkAppLinkData(o.appLinkData!);
     checkCallbackOptions(o.callbackOptions!);
     unittest.expect(
       o.cardNumberLabel!,
@@ -3654,6 +3663,7 @@ api.LoyaltyClass buildLoyaltyClass() {
     o.accountIdLabel = 'foo';
     o.accountNameLabel = 'foo';
     o.allowMultipleUsersPerObject = true;
+    o.appLinkData = buildAppLinkData();
     o.callbackOptions = buildCallbackOptions();
     o.classTemplateInfo = buildClassTemplateInfo();
     o.countryCode = 'foo';
@@ -3711,6 +3721,7 @@ void checkLoyaltyClass(api.LoyaltyClass o) {
       unittest.equals('foo'),
     );
     unittest.expect(o.allowMultipleUsersPerObject!, unittest.isTrue);
+    checkAppLinkData(o.appLinkData!);
     checkCallbackOptions(o.callbackOptions!);
     checkClassTemplateInfo(o.classTemplateInfo!);
     unittest.expect(
@@ -4594,6 +4605,7 @@ api.OfferClass buildOfferClass() {
   buildCounterOfferClass++;
   if (buildCounterOfferClass < 3) {
     o.allowMultipleUsersPerObject = true;
+    o.appLinkData = buildAppLinkData();
     o.callbackOptions = buildCallbackOptions();
     o.classTemplateInfo = buildClassTemplateInfo();
     o.countryCode = 'foo';
@@ -4642,6 +4654,7 @@ void checkOfferClass(api.OfferClass o) {
   buildCounterOfferClass++;
   if (buildCounterOfferClass < 3) {
     unittest.expect(o.allowMultipleUsersPerObject!, unittest.isTrue);
+    checkAppLinkData(o.appLinkData!);
     checkCallbackOptions(o.callbackOptions!);
     checkClassTemplateInfo(o.classTemplateInfo!);
     unittest.expect(
@@ -5959,6 +5972,7 @@ api.TransitClass buildTransitClass() {
   if (buildCounterTransitClass < 3) {
     o.activationOptions = buildActivationOptions();
     o.allowMultipleUsersPerObject = true;
+    o.appLinkData = buildAppLinkData();
     o.callbackOptions = buildCallbackOptions();
     o.classTemplateInfo = buildClassTemplateInfo();
     o.countryCode = 'foo';
@@ -6019,6 +6033,7 @@ void checkTransitClass(api.TransitClass o) {
   if (buildCounterTransitClass < 3) {
     checkActivationOptions(o.activationOptions!);
     unittest.expect(o.allowMultipleUsersPerObject!, unittest.isTrue);
+    checkAppLinkData(o.appLinkData!);
     checkCallbackOptions(o.callbackOptions!);
     checkClassTemplateInfo(o.classTemplateInfo!);
     unittest.expect(

@@ -3,6 +3,7 @@
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
 // ignore_for_file: deprecated_member_use_from_same_package
+// ignore_for_file: doc_directive_unknown
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -976,10 +977,10 @@ class OrganizationsLocationsConnectionsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Parent name, typically an organization, without
-  /// location. For example: "organizations/12345678".
+  /// location. For example: `organizations/12345678`.
   /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [filter] - Optional. * Supported fields/values - `state` -
+  /// [filter] - Optional. Supported field/value: - `state` -
   /// MISSING|AVAILABLE|ERROR
   ///
   /// [pageSize] - Optional. Number of results per page, max 1000.
@@ -4678,7 +4679,7 @@ class ProjectsLocationsConnectionsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Parent resource name in the format:
-  /// "projects/{project}/locations/{location}".
+  /// `projects/{project}/locations/{location}`.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -4719,7 +4720,7 @@ class ProjectsLocationsConnectionsResource {
   ///
   /// [name] - Required. Resource name of the Connection to be deleted, in the
   /// format:
-  /// "projects/{project}/locations/{location}/connections/{connection}".
+  /// `projects/{project}/locations/{location}/connections/{connection}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+$`.
   ///
@@ -4757,7 +4758,7 @@ class ProjectsLocationsConnectionsResource {
   /// Request parameters:
   ///
   /// [name] - Required. Resource name in the format:
-  /// "projects/{project}/locations/{location}/connections/{connection}".
+  /// `projects/{project}/locations/{location}/connections/{connection}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+$`.
   ///
@@ -4795,10 +4796,10 @@ class ProjectsLocationsConnectionsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Parent name, for example:
-  /// "projects/project-id/locations/global".
+  /// `projects/project-id/locations/global`.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [filter] - Optional. * Supported fields/values - `state` -
+  /// [filter] - Optional. Supported field/value: `state` -
   /// MISSING|AVAILABLE|ERROR
   ///
   /// [pageSize] - Optional. Number of results per page, max 1000.
@@ -4849,7 +4850,7 @@ class ProjectsLocationsConnectionsResource {
   /// Request parameters:
   ///
   /// [name] - Required. Resource name in the format:
-  /// "projects/{project}/locations/{location}/connections/{connection}".
+  /// `projects/{project}/locations/{location}/connections/{connection}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+$`.
   ///
@@ -4890,10 +4891,10 @@ class ProjectsLocationsConnectionsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Parent name, typically an organization, without
-  /// location. For example: "organizations/12345678".
+  /// location. For example: `organizations/12345678`.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [filter] - Optional. * Supported fields/values - `state` -
+  /// [filter] - Optional. Supported field/value: - `state` -
   /// MISSING|AVAILABLE|ERROR
   ///
   /// [pageSize] - Optional. Number of results per page, max 1000.
@@ -8760,7 +8761,7 @@ class GooglePrivacyDlpV2CloudSqlDiscoveryTarget {
       };
 }
 
-/// Use IAM auth to connect.
+/// Use IAM authentication to connect.
 ///
 /// This requires the Cloud SQL IAM feature to be enabled on the instance, which
 /// is not the default for Cloud SQL. See
@@ -8779,8 +8780,8 @@ class GooglePrivacyDlpV2CloudSqlProperties {
   /// creation time, and cannot be updated. It is an error to use a
   /// connection_name from different project or region than the one that holds
   /// the connection. For example, a Connection resource for Cloud SQL
-  /// connection_name "project-id:us-central1:sql-instance" must be created
-  /// under the parent "projects/project-id/locations/us-central1"
+  /// connection_name `project-id:us-central1:sql-instance` must be created
+  /// under the parent `projects/project-id/locations/us-central1`
   ///
   /// Optional. Immutable.
   core.String? connectionName;
@@ -8791,9 +8792,9 @@ class GooglePrivacyDlpV2CloudSqlProperties {
   /// Required.
   /// Possible string values are:
   /// - "DATABASE_ENGINE_UNKNOWN" : An engine that is not currently supported by
-  /// SDP.
+  /// Sensitive Data Protection.
   /// - "DATABASE_ENGINE_MYSQL" : Cloud SQL for MySQL instance.
-  /// - "DATABASE_ENGINE_POSTGRES" : Cloud SQL for Postgres instance.
+  /// - "DATABASE_ENGINE_POSTGRES" : Cloud SQL for PostgreSQL instance.
   core.String? databaseEngine;
 
   /// DLP will limit its connections to max_connections.
@@ -9131,9 +9132,9 @@ class GooglePrivacyDlpV2ColumnDataProfile {
   /// - "TYPE_BIGNUMERIC" : Decimal type.
   /// - "TYPE_JSON" : Json type.
   /// - "TYPE_INTERVAL" : Interval type.
-  /// - "TYPE_RANGE_DATE" : Range type.
-  /// - "TYPE_RANGE_DATETIME" : Range type.
-  /// - "TYPE_RANGE_TIMESTAMP" : Range type.
+  /// - "TYPE_RANGE_DATE" : `Range` type.
+  /// - "TYPE_RANGE_DATETIME" : `Range` type.
+  /// - "TYPE_RANGE_TIMESTAMP" : `Range` type.
   core.String? columnType;
 
   /// The data risk level for this column.
@@ -9448,7 +9449,7 @@ class GooglePrivacyDlpV2Connection {
   core.List<GooglePrivacyDlpV2Error>? errors;
 
   /// Name of the connection:
-  /// projects/{project}/locations/{location}/connections/{name}.
+  /// `projects/{project}/locations/{location}/connections/{name}`.
   ///
   /// Output only.
   core.String? name;
@@ -9464,8 +9465,9 @@ class GooglePrivacyDlpV2Connection {
   /// errors.
   /// - "ERROR" : A configured connection that encountered errors during its
   /// last use. It will not be used again until it is set to AVAILABLE. If the
-  /// resolution requires external action, then a request to set the status to
-  /// AVAILABLE will mark this connection for use. Otherwise, any changes to the
+  /// resolution requires external action, then the client must send a request
+  /// to set the status to AVAILABLE when the connection is ready for use. If
+  /// the resolution doesn't require external action, then any changes to the
   /// connection properties will automatically mark it as AVAILABLE.
   core.String? state;
 
@@ -10727,26 +10729,44 @@ class GooglePrivacyDlpV2DatabaseResourceCollection {
 
 /// Identifies a single database resource, like a table within a database.
 class GooglePrivacyDlpV2DatabaseResourceReference {
+  /// Name of a database within the instance.
+  ///
+  /// Required.
+  core.String? database;
+
+  /// Name of a database resource, for example, a table within the database.
+  ///
+  /// Required.
+  core.String? databaseResource;
+
   /// The instance where this resource is located.
   ///
-  /// For example: Cloud SQL's instance id.
+  /// For example: Cloud SQL instance ID.
   ///
   /// Required.
   core.String? instance;
 
   /// If within a project-level config, then this must match the config's
-  /// project id.
+  /// project ID.
   ///
   /// Required.
   core.String? projectId;
 
   GooglePrivacyDlpV2DatabaseResourceReference({
+    this.database,
+    this.databaseResource,
     this.instance,
     this.projectId,
   });
 
   GooglePrivacyDlpV2DatabaseResourceReference.fromJson(core.Map json_)
       : this(
+          database: json_.containsKey('database')
+              ? json_['database'] as core.String
+              : null,
+          databaseResource: json_.containsKey('databaseResource')
+              ? json_['databaseResource'] as core.String
+              : null,
           instance: json_.containsKey('instance')
               ? json_['instance'] as core.String
               : null,
@@ -10756,6 +10776,8 @@ class GooglePrivacyDlpV2DatabaseResourceReference {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (database != null) 'database': database!,
+        if (databaseResource != null) 'databaseResource': databaseResource!,
         if (instance != null) 'instance': instance!,
         if (projectId != null) 'projectId': projectId!,
       };
@@ -10786,7 +10808,7 @@ class GooglePrivacyDlpV2DatabaseResourceRegex {
 
   /// For organizations, if unset, will match all projects.
   ///
-  /// Has no effect for Data Profile configurations created within a project.
+  /// Has no effect for configurations created within a project.
   core.String? projectIdRegex;
 
   GooglePrivacyDlpV2DatabaseResourceRegex({
@@ -11824,6 +11846,12 @@ class GooglePrivacyDlpV2DiscoveryBigQueryFilter {
   /// is specified, a default one will be added automatically.
   GooglePrivacyDlpV2AllOtherBigQueryTables? otherTables;
 
+  /// The table to scan.
+  ///
+  /// Discovery configurations including this can only include one
+  /// DiscoveryTarget (the DiscoveryTarget with this TableReference).
+  GooglePrivacyDlpV2TableReference? tableReference;
+
   /// A specific set of tables for this filter to apply to.
   ///
   /// A table collection must be specified in only one filter per config. If a
@@ -11833,6 +11861,7 @@ class GooglePrivacyDlpV2DiscoveryBigQueryFilter {
 
   GooglePrivacyDlpV2DiscoveryBigQueryFilter({
     this.otherTables,
+    this.tableReference,
     this.tables,
   });
 
@@ -11842,6 +11871,11 @@ class GooglePrivacyDlpV2DiscoveryBigQueryFilter {
               ? GooglePrivacyDlpV2AllOtherBigQueryTables.fromJson(
                   json_['otherTables'] as core.Map<core.String, core.dynamic>)
               : null,
+          tableReference: json_.containsKey('tableReference')
+              ? GooglePrivacyDlpV2TableReference.fromJson(
+                  json_['tableReference']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           tables: json_.containsKey('tables')
               ? GooglePrivacyDlpV2BigQueryTableCollection.fromJson(
                   json_['tables'] as core.Map<core.String, core.dynamic>)
@@ -11850,6 +11884,7 @@ class GooglePrivacyDlpV2DiscoveryBigQueryFilter {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (otherTables != null) 'otherTables': otherTables!,
+        if (tableReference != null) 'tableReference': tableReference!,
         if (tables != null) 'tables': tables!,
       };
 }
@@ -11958,7 +11993,7 @@ class GooglePrivacyDlpV2DiscoveryCloudSqlGenerationCadence {
   /// reprofiling.
   ///
   /// If you set this field, profiles are refreshed at this frequency regardless
-  /// of whether the underlying tables have changes. Defaults to never.
+  /// of whether the underlying tables have changed. Defaults to never.
   /// Possible string values are:
   /// - "UPDATE_FREQUENCY_UNSPECIFIED" : Unspecified.
   /// - "UPDATE_FREQUENCY_NEVER" : After the data profile is created, it will
@@ -12285,9 +12320,17 @@ class GooglePrivacyDlpV2DiscoveryTarget {
   /// The first target to match a table will be the one applied.
   GooglePrivacyDlpV2CloudSqlDiscoveryTarget? cloudSqlTarget;
 
+  /// Discovery target that looks for credentials and secrets stored in cloud
+  /// resource metadata and reports them as vulnerabilities to Security Command
+  /// Center.
+  ///
+  /// Only one target of this type is allowed.
+  GooglePrivacyDlpV2SecretsDiscoveryTarget? secretsTarget;
+
   GooglePrivacyDlpV2DiscoveryTarget({
     this.bigQueryTarget,
     this.cloudSqlTarget,
+    this.secretsTarget,
   });
 
   GooglePrivacyDlpV2DiscoveryTarget.fromJson(core.Map json_)
@@ -12302,11 +12345,16 @@ class GooglePrivacyDlpV2DiscoveryTarget {
                   json_['cloudSqlTarget']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          secretsTarget: json_.containsKey('secretsTarget')
+              ? GooglePrivacyDlpV2SecretsDiscoveryTarget.fromJson(
+                  json_['secretsTarget'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bigQueryTarget != null) 'bigQueryTarget': bigQueryTarget!,
         if (cloudSqlTarget != null) 'cloudSqlTarget': cloudSqlTarget!,
+        if (secretsTarget != null) 'secretsTarget': secretsTarget!,
       };
 }
 
@@ -13681,8 +13729,6 @@ class GooglePrivacyDlpV2InfoType {
 
 /// Classification of infoTypes to organize them according to geographic
 /// location, industry, and data type.
-///
-/// NEXT_ID: 48
 class GooglePrivacyDlpV2InfoTypeCategory {
   /// The group of relevant businesses where this infoType is commonly used
   /// Possible string values are:
@@ -13701,6 +13747,7 @@ class GooglePrivacyDlpV2InfoTypeCategory {
   /// but is used almost everywhere.
   /// - "ARGENTINA" : The infoType is typically used in Argentina.
   /// - "AUSTRALIA" : The infoType is typically used in Australia.
+  /// - "AZERBAIJAN" : The infoType is typically used in Azerbaijan.
   /// - "BELGIUM" : The infoType is typically used in Belgium.
   /// - "BRAZIL" : The infoType is typically used in Brazil.
   /// - "CANADA" : The infoType is typically used in Canada.
@@ -14602,7 +14649,7 @@ class GooglePrivacyDlpV2InspectionRuleSet {
 /// [Essential Contacts](https://cloud.google.com/resource-manager/docs/managing-notification-contacts).
 typedef GooglePrivacyDlpV2JobNotificationEmails = $Empty;
 
-/// Contains a configuration to make api calls on a repeating basis.
+/// Contains a configuration to make API calls on a repeating basis.
 ///
 /// See
 /// https://cloud.google.com/sensitive-data-protection/docs/concepts-job-triggers
@@ -16719,7 +16766,7 @@ class GooglePrivacyDlpV2PubSubNotification {
   /// Possible string values are:
   /// - "DETAIL_LEVEL_UNSPECIFIED" : Unused.
   /// - "TABLE_PROFILE" : The full table data profile.
-  /// - "RESOURCE_NAME" : The resource name of the table.
+  /// - "RESOURCE_NAME" : The name of the profiled resource.
   core.String? detailOfMessage;
 
   /// The type of event that triggers a Pub/Sub.
@@ -16728,10 +16775,9 @@ class GooglePrivacyDlpV2PubSubNotification {
   /// Possible string values are:
   /// - "EVENT_TYPE_UNSPECIFIED" : Unused.
   /// - "NEW_PROFILE" : New profile (not a re-profile).
-  /// - "CHANGED_PROFILE" : Changed one of the following profile metrics: *
-  /// Table data risk score * Table sensitivity score * Table resource
-  /// visibility * Table encryption type * Table predicted infoTypes * Table
-  /// other infoTypes
+  /// - "CHANGED_PROFILE" : One of the following profile metrics changed: Data
+  /// risk score, Sensitivity score, Resource visibility, Encryption type,
+  /// Predicted infoTypes, Other infoTypes
   /// - "SCORE_INCREASED" : Table data risk score or sensitivity score
   /// increased.
   /// - "ERROR_CHANGED" : A user (non-internal) error occurred.
@@ -17635,7 +17681,7 @@ class GooglePrivacyDlpV2Result {
   /// inspect job.
   core.List<GooglePrivacyDlpV2InfoTypeStats>? infoTypeStats;
 
-  /// Number of rows scanned post sampling and time filtering (Applicable for
+  /// Number of rows scanned after sampling and time filtering (applicable for
   /// row based stores such as BigQuery).
   core.String? numRowsProcessed;
 
@@ -17812,7 +17858,7 @@ class GooglePrivacyDlpV2Schedule {
       };
 }
 
-/// How frequency to modify the profile when the table's schema is modified.
+/// How frequently to modify the profile when the table's schema is modified.
 class GooglePrivacyDlpV2SchemaModifiedCadence {
   /// Frequency to regenerate data profiles when the schema is modified.
   ///
@@ -17900,7 +17946,7 @@ class GooglePrivacyDlpV2SearchConnectionsResponse {
 /// [charges apply](https://cloud.google.com/secret-manager/pricing).
 class GooglePrivacyDlpV2SecretManagerCredential {
   /// The name of the Secret Manager resource that stores the password, in the
-  /// form "projects/project-id/secrets/secret-name/versions/version".
+  /// form `projects/project-id/secrets/secret-name/versions/version`.
   ///
   /// Required.
   core.String? passwordSecretVersionName;
@@ -17932,6 +17978,18 @@ class GooglePrivacyDlpV2SecretManagerCredential {
         if (username != null) 'username': username!,
       };
 }
+
+/// Discovery target for credentials and secrets in cloud resource metadata.
+///
+/// This target does not include any filtering or frequency controls. Cloud DLP
+/// will scan cloud resource metadata for secrets daily. No inspect template
+/// should be included in the discovery config for a security benchmarks scan.
+/// Instead, the built-in list of secrets and credentials infoTypes will be used
+/// (see
+/// https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference#credentials_and_secrets).
+/// Credentials and secrets discovered will be reported as vulnerabilities to
+/// Security Command Center.
+typedef GooglePrivacyDlpV2SecretsDiscoveryTarget = $Empty;
 
 /// Apply transformation to the selected info_types.
 class GooglePrivacyDlpV2SelectedInfoTypes {
@@ -18546,6 +18604,9 @@ class GooglePrivacyDlpV2TableDataProfile {
   /// Possible string values are:
   /// - "RESOURCE_VISIBILITY_UNSPECIFIED" : Unused.
   /// - "RESOURCE_VISIBILITY_PUBLIC" : Visible to any user.
+  /// - "RESOURCE_VISIBILITY_INCONCLUSIVE" : May contain public items. For
+  /// example, if a Cloud Storage bucket has uniform bucket level access
+  /// disabled, some objects inside it may be public.
   /// - "RESOURCE_VISIBILITY_RESTRICTED" : Visible only to specific users.
   core.String? resourceVisibility;
 
@@ -18796,6 +18857,36 @@ class GooglePrivacyDlpV2TableOptions {
       };
 }
 
+/// Message defining the location of a BigQuery table with the projectId
+/// inferred from the parent project.
+class GooglePrivacyDlpV2TableReference {
+  /// Dataset ID of the table.
+  core.String? datasetId;
+
+  /// Name of the table.
+  core.String? tableId;
+
+  GooglePrivacyDlpV2TableReference({
+    this.datasetId,
+    this.tableId,
+  });
+
+  GooglePrivacyDlpV2TableReference.fromJson(core.Map json_)
+      : this(
+          datasetId: json_.containsKey('datasetId')
+              ? json_['datasetId'] as core.String
+              : null,
+          tableId: json_.containsKey('tableId')
+              ? json_['tableId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (datasetId != null) 'datasetId': datasetId!,
+        if (tableId != null) 'tableId': tableId!,
+      };
+}
+
 /// A column with a semantic tag attached.
 class GooglePrivacyDlpV2TaggedField {
   /// A column can be tagged with a custom tag.
@@ -18921,10 +19012,11 @@ class GooglePrivacyDlpV2TimespanConfig {
   ///
   /// This will be based on the time of the execution of the last run of the
   /// JobTrigger or the timespan end_time used in the last run of the
-  /// JobTrigger. *For BigQuery* Inspect jobs triggered by automatic population
-  /// will scan data that is at least three hours old when the job starts. This
-  /// is because streaming buffer rows are not read during inspection and
-  /// reading up to the current timestamp will result in skipped rows. See the
+  /// JobTrigger. **For BigQuery** Inspect jobs triggered by automatic
+  /// population will scan data that is at least three hours old when the job
+  /// starts. This is because streaming buffer rows are not read during
+  /// inspection and reading up to the current timestamp will result in skipped
+  /// rows. See the
   /// [known issue](https://cloud.google.com/sensitive-data-protection/docs/known-issues#recently-streamed-data)
   /// related to this operation.
   core.bool? enableAutoPopulationOfTimespanConfig;

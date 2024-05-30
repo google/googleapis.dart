@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240424",
+    "revision": "20240515",
     "rootUrl": "https://privateca.googleapis.com/",
     "servicePath": "",
     "title": "Certificate Authority API",

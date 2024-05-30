@@ -3,6 +3,7 @@
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
 // ignore_for_file: deprecated_member_use_from_same_package
+// ignore_for_file: doc_directive_unknown
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -96,6 +97,51 @@ class ProjectsLocationsEnvironmentsResource {
 
   ProjectsLocationsEnvironmentsResource(commons.ApiRequester client)
       : _requester = client;
+
+  /// Check if an upgrade operation on the environment will succeed.
+  ///
+  /// In case of problems detailed info can be found in the returned Operation.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [environment] - Required. The resource name of the environment to check
+  /// upgrade for, in the form:
+  /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/environments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> checkUpgrade(
+    CheckUpgradeRequest request,
+    core.String environment, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$environment') + ':checkUpgrade';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
 
   /// Create a new environment.
   ///
@@ -1496,6 +1542,49 @@ class AllowedIpRange {
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (value != null) 'value': value!,
+      };
+}
+
+/// Request to check whether image upgrade will succeed.
+class CheckUpgradeRequest {
+  /// The version of the software running in the environment.
+  ///
+  /// This encapsulates both the version of Cloud Composer functionality and the
+  /// version of Apache Airflow. It must match the regular expression
+  /// `composer-([0-9]+(\.[0-9]+\.[0-9]+(-preview\.[0-9]+)?)?|latest)-airflow-([0-9]+(\.[0-9]+(\.[0-9]+)?)?)`.
+  /// When used as input, the server also checks if the provided version is
+  /// supported and denies the request for an unsupported version. The Cloud
+  /// Composer portion of the image version is a full
+  /// [semantic version](https://semver.org), or an alias in the form of major
+  /// version number or `latest`. When an alias is provided, the server replaces
+  /// it with the current Cloud Composer version that satisfies the alias. The
+  /// Apache Airflow portion of the image version is a full semantic version
+  /// that points to one of the supported Apache Airflow versions, or an alias
+  /// in the form of only major or major.minor versions specified. When an alias
+  /// is provided, the server replaces it with the latest Apache Airflow version
+  /// that satisfies the alias and is supported in the given Cloud Composer
+  /// version. In all cases, the resolved image version is stored in the same
+  /// field. See also \[version
+  /// list\](/composer/docs/concepts/versioning/composer-versions) and
+  /// \[versioning
+  /// overview\](/composer/docs/concepts/versioning/composer-versioning-overview).
+  ///
+  /// Optional.
+  core.String? imageVersion;
+
+  CheckUpgradeRequest({
+    this.imageVersion,
+  });
+
+  CheckUpgradeRequest.fromJson(core.Map json_)
+      : this(
+          imageVersion: json_.containsKey('imageVersion')
+              ? json_['imageVersion'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (imageVersion != null) 'imageVersion': imageVersion!,
       };
 }
 

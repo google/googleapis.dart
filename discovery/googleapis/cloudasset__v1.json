@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240427",
+    "revision": "20240525",
     "rootUrl": "https://cloudasset.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Asset API",

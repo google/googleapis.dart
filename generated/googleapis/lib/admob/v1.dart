@@ -3,6 +3,7 @@
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
 // ignore_for_file: deprecated_member_use_from_same_package
+// ignore_for_file: doc_directive_unknown
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -274,7 +275,7 @@ class AccountsMediationReportResource {
   AccountsMediationReportResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Generates an AdMob mediation report based on the provided report
+  /// Generates an AdMob Mediation report based on the provided report
   /// specification.
   ///
   /// Returns result of a server-side streaming RPC. The result is returned in a
@@ -671,7 +672,7 @@ class DateRange {
       };
 }
 
-/// Request to generate an AdMob mediation report.
+/// Request to generate an AdMob Mediation report.
 class GenerateMediationReportRequest {
   /// Network report specification.
   MediationReportSpec? reportSpec;
@@ -734,7 +735,7 @@ class GenerateMediationReportResponseElement {
       };
 }
 
-/// The streaming response for the AdMob mediation report where the first
+/// The streaming response for the AdMob Mediation report where the first
 /// response contains the report header, then a stream of row responses, and
 /// finally a footer as the last response message.
 ///

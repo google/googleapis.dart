@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240429",
+    "revision": "20240513",
     "rootUrl": "https://bigquerydatapolicy.googleapis.com/",
     "servicePath": "",
     "title": "BigQuery Data Policy API",

@@ -3,6 +3,7 @@
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
 // ignore_for_file: deprecated_member_use_from_same_package
+// ignore_for_file: doc_directive_unknown
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -5214,8 +5215,6 @@ class KeyHandle {
   ///
   /// Name of the KeyHandle resource, e.g.
   /// `projects/{PROJECT_ID}/locations/{LOCATION}/keyHandles/{KEY_HANDLE_ID}`.
-  ///
-  /// Output only.
   core.String? name;
 
   /// Indicates the resource type that the resulting CryptoKey is meant to

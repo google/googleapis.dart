@@ -1,6 +1,7 @@
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
 // ignore_for_file: deprecated_member_use_from_same_package
+// ignore_for_file: doc_directive_unknown
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_const_declarations
@@ -1017,6 +1018,7 @@ api.EnterpriseCrmEventbusProtoFailurePolicy
   if (buildCounterEnterpriseCrmEventbusProtoFailurePolicy < 3) {
     o.intervalInSeconds = 'foo';
     o.maxNumRetries = 42;
+    o.retryCondition = 'foo';
     o.retryStrategy = 'foo';
   }
   buildCounterEnterpriseCrmEventbusProtoFailurePolicy--;
@@ -1034,6 +1036,10 @@ void checkEnterpriseCrmEventbusProtoFailurePolicy(
     unittest.expect(
       o.maxNumRetries!,
       unittest.equals(42),
+    );
+    unittest.expect(
+      o.retryCondition!,
+      unittest.equals('foo'),
     );
     unittest.expect(
       o.retryStrategy!,
@@ -7147,6 +7153,7 @@ api.GoogleCloudIntegrationsV1alphaFailurePolicy
   final o = api.GoogleCloudIntegrationsV1alphaFailurePolicy();
   buildCounterGoogleCloudIntegrationsV1alphaFailurePolicy++;
   if (buildCounterGoogleCloudIntegrationsV1alphaFailurePolicy < 3) {
+    o.condition = 'foo';
     o.intervalTime = 'foo';
     o.maxRetries = 42;
     o.retryStrategy = 'foo';
@@ -7159,6 +7166,10 @@ void checkGoogleCloudIntegrationsV1alphaFailurePolicy(
     api.GoogleCloudIntegrationsV1alphaFailurePolicy o) {
   buildCounterGoogleCloudIntegrationsV1alphaFailurePolicy++;
   if (buildCounterGoogleCloudIntegrationsV1alphaFailurePolicy < 3) {
+    unittest.expect(
+      o.condition!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.intervalTime!,
       unittest.equals('foo'),

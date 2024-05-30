@@ -3,6 +3,7 @@
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
 // ignore_for_file: deprecated_member_use_from_same_package
+// ignore_for_file: doc_directive_unknown
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -1189,6 +1190,56 @@ class FoldersLocationsMuteConfigsResource {
   FoldersLocationsMuteConfigsResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Creates a mute config.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Resource name of the new mute configs's parent. Its
+  /// format is "organizations/\[organization_id\]", "folders/\[folder_id\]", or
+  /// "projects/\[project_id\]".
+  /// Value must have pattern `^folders/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [muteConfigId] - Required. Unique identifier provided by the client within
+  /// the parent scope. It must consist of only lowercase letters, numbers, and
+  /// hyphens, must start with a letter, must end with either a letter or a
+  /// number, and must be 63 characters or less.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudSecuritycenterV1MuteConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudSecuritycenterV1MuteConfig> create(
+    GoogleCloudSecuritycenterV1MuteConfig request,
+    core.String parent, {
+    core.String? muteConfigId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (muteConfigId != null) 'muteConfigId': [muteConfigId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/muteConfigs';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudSecuritycenterV1MuteConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Deletes an existing mute config.
   ///
   /// Request parameters:
@@ -1271,6 +1322,58 @@ class FoldersLocationsMuteConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudSecuritycenterV1MuteConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists mute configs.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent, which owns the collection of mute
+  /// configs. Its format is "organizations/\[organization_id\]",
+  /// "folders/\[folder_id\]", "projects/\[project_id\]".
+  /// Value must have pattern `^folders/\[^/\]+/locations/\[^/\]+/muteConfigs$`.
+  ///
+  /// [pageSize] - The maximum number of configs to return. The service may
+  /// return fewer than this value. If unspecified, at most 10 configs will be
+  /// returned. The maximum value is 1000; values above 1000 will be coerced to
+  /// 1000.
+  ///
+  /// [pageToken] - A page token, received from a previous `ListMuteConfigs`
+  /// call. Provide this to retrieve the subsequent page. When paginating, all
+  /// other parameters provided to `ListMuteConfigs` must match the call that
+  /// provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListMuteConfigsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListMuteConfigsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListMuteConfigsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 
@@ -4054,6 +4157,56 @@ class OrganizationsLocationsMuteConfigsResource {
   OrganizationsLocationsMuteConfigsResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Creates a mute config.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Resource name of the new mute configs's parent. Its
+  /// format is "organizations/\[organization_id\]", "folders/\[folder_id\]", or
+  /// "projects/\[project_id\]".
+  /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [muteConfigId] - Required. Unique identifier provided by the client within
+  /// the parent scope. It must consist of only lowercase letters, numbers, and
+  /// hyphens, must start with a letter, must end with either a letter or a
+  /// number, and must be 63 characters or less.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudSecuritycenterV1MuteConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudSecuritycenterV1MuteConfig> create(
+    GoogleCloudSecuritycenterV1MuteConfig request,
+    core.String parent, {
+    core.String? muteConfigId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (muteConfigId != null) 'muteConfigId': [muteConfigId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/muteConfigs';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudSecuritycenterV1MuteConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Deletes an existing mute config.
   ///
   /// Request parameters:
@@ -4136,6 +4289,59 @@ class OrganizationsLocationsMuteConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudSecuritycenterV1MuteConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists mute configs.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent, which owns the collection of mute
+  /// configs. Its format is "organizations/\[organization_id\]",
+  /// "folders/\[folder_id\]", "projects/\[project_id\]".
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/muteConfigs$`.
+  ///
+  /// [pageSize] - The maximum number of configs to return. The service may
+  /// return fewer than this value. If unspecified, at most 10 configs will be
+  /// returned. The maximum value is 1000; values above 1000 will be coerced to
+  /// 1000.
+  ///
+  /// [pageToken] - A page token, received from a previous `ListMuteConfigs`
+  /// call. Provide this to retrieve the subsequent page. When paginating, all
+  /// other parameters provided to `ListMuteConfigs` must match the call that
+  /// provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListMuteConfigsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListMuteConfigsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListMuteConfigsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 
@@ -5044,7 +5250,7 @@ class OrganizationsResourceValueConfigsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Name for the resource value config
+  /// [name] - Name for the resource value configuration
   /// Value must have pattern
   /// `^organizations/\[^/\]+/resourceValueConfigs/\[^/\]+$`.
   ///
@@ -7939,6 +8145,56 @@ class ProjectsLocationsMuteConfigsResource {
   ProjectsLocationsMuteConfigsResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Creates a mute config.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Resource name of the new mute configs's parent. Its
+  /// format is "organizations/\[organization_id\]", "folders/\[folder_id\]", or
+  /// "projects/\[project_id\]".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [muteConfigId] - Required. Unique identifier provided by the client within
+  /// the parent scope. It must consist of only lowercase letters, numbers, and
+  /// hyphens, must start with a letter, must end with either a letter or a
+  /// number, and must be 63 characters or less.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudSecuritycenterV1MuteConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudSecuritycenterV1MuteConfig> create(
+    GoogleCloudSecuritycenterV1MuteConfig request,
+    core.String parent, {
+    core.String? muteConfigId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (muteConfigId != null) 'muteConfigId': [muteConfigId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/muteConfigs';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudSecuritycenterV1MuteConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Deletes an existing mute config.
   ///
   /// Request parameters:
@@ -8021,6 +8277,59 @@ class ProjectsLocationsMuteConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudSecuritycenterV1MuteConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists mute configs.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent, which owns the collection of mute
+  /// configs. Its format is "organizations/\[organization_id\]",
+  /// "folders/\[folder_id\]", "projects/\[project_id\]".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/muteConfigs$`.
+  ///
+  /// [pageSize] - The maximum number of configs to return. The service may
+  /// return fewer than this value. If unspecified, at most 10 configs will be
+  /// returned. The maximum value is 1000; values above 1000 will be coerced to
+  /// 1000.
+  ///
+  /// [pageToken] - A page token, received from a previous `ListMuteConfigs`
+  /// call. Provide this to retrieve the subsequent page. When paginating, all
+  /// other parameters provided to `ListMuteConfigs` must match the call that
+  /// provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListMuteConfigsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListMuteConfigsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListMuteConfigsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 
@@ -13600,8 +13909,8 @@ class GoogleCloudSecuritycenterV1ResourceSelector {
       };
 }
 
-/// A resource value config (RVC) is a mapping configuration of user's resources
-/// to resource values.
+/// A resource value configuration (RVC) is a mapping configuration of user's
+/// resources to resource values.
 ///
 /// Used in Attack path simulations.
 class GoogleCloudSecuritycenterV1ResourceValueConfig {
@@ -13613,27 +13922,27 @@ class GoogleCloudSecuritycenterV1ResourceValueConfig {
   /// - "MICROSOFT_AZURE" : The cloud provider is Microsoft Azure.
   core.String? cloudProvider;
 
-  /// Timestamp this resource value config was created.
+  /// Timestamp this resource value configuration was created.
   ///
   /// Output only.
   core.String? createTime;
 
-  /// Description of the resource value config.
+  /// Description of the resource value configuration.
   core.String? description;
 
-  /// Name for the resource value config
+  /// Name for the resource value configuration
   core.String? name;
 
   /// List of resource labels to search for, evaluated with AND.
   ///
-  /// E.g. "resource_labels_selector": {"key": "value", "env": "prod"} will
-  /// match resources with labels "key": "value" AND "env": "prod"
+  /// For example, "resource_labels_selector": {"key": "value", "env": "prod"}
+  /// will match resources with labels "key": "value" AND "env": "prod"
   /// https://cloud.google.com/resource-manager/docs/creating-managing-labels
   core.Map<core.String, core.String>? resourceLabelsSelector;
 
   /// Apply resource_value only to resources that match resource_type.
   ///
-  /// resource_type will be checked with "AND" of other resources. E.g.
+  /// resource_type will be checked with AND of other resources. For example,
   /// "storage.googleapis.com/Bucket" with resource_value "HIGH" will apply
   /// "HIGH" value only to "storage.googleapis.com/Bucket" resources.
   core.String? resourceType;
@@ -13649,10 +13958,11 @@ class GoogleCloudSecuritycenterV1ResourceValueConfig {
   /// - "NONE" : No resource value, e.g. ignore these resources
   core.String? resourceValue;
 
-  /// Project or folder to scope this config to.
+  /// Project or folder to scope this configuration to.
   ///
-  /// For example, "project/456" would apply this config only to resources in
-  /// "project/456" scope will be checked with "AND" of other resources.
+  /// For example, "project/456" would apply this configuration only to
+  /// resources in "project/456" scope will be checked with AND of other
+  /// resources.
   core.String? scope;
 
   /// A mapping of the sensitivity on Sensitive Data Protection finding to
@@ -13665,14 +13975,14 @@ class GoogleCloudSecuritycenterV1ResourceValueConfig {
 
   /// Tag values combined with AND to check against.
   ///
-  /// Values in the form "tagValues/123" E.g. \[ "tagValues/123",
+  /// Values in the form "tagValues/123" Example: \[ "tagValues/123",
   /// "tagValues/456", "tagValues/789" \]
   /// https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing
   ///
   /// Required.
   core.List<core.String>? tagValues;
 
-  /// Timestamp this resource value config was last updated.
+  /// Timestamp this resource value configuration was last updated.
   ///
   /// Output only.
   core.String? updateTime;

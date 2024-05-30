@@ -3,6 +3,7 @@
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
 // ignore_for_file: deprecated_member_use_from_same_package
+// ignore_for_file: doc_directive_unknown
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -1334,6 +1335,14 @@ class GoogleCloudRecaptchaenterpriseV1Assessment {
   /// Output only.
   core.String? name;
 
+  /// Assessment returned when a site key, a token, and a phone number as
+  /// `user_id` are provided.
+  ///
+  /// Account defender and SMS toll fraud protection need to be enabled.
+  ///
+  /// Output only.
+  GoogleCloudRecaptchaenterpriseV1PhoneFraudAssessment? phoneFraudAssessment;
+
   /// The private password leak verification field contains the parameters that
   /// are used to to check for leaks privately without sharing user credentials.
   ///
@@ -1359,6 +1368,7 @@ class GoogleCloudRecaptchaenterpriseV1Assessment {
     this.fraudPreventionAssessment,
     this.fraudSignals,
     this.name,
+    this.phoneFraudAssessment,
     this.privatePasswordLeakVerification,
     this.riskAnalysis,
     this.tokenProperties,
@@ -1398,6 +1408,11 @@ class GoogleCloudRecaptchaenterpriseV1Assessment {
                   json_['fraudSignals'] as core.Map<core.String, core.dynamic>)
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          phoneFraudAssessment: json_.containsKey('phoneFraudAssessment')
+              ? GoogleCloudRecaptchaenterpriseV1PhoneFraudAssessment.fromJson(
+                  json_['phoneFraudAssessment']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           privatePasswordLeakVerification: json_
                   .containsKey('privatePasswordLeakVerification')
               ? GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification
@@ -1427,6 +1442,8 @@ class GoogleCloudRecaptchaenterpriseV1Assessment {
           'fraudPreventionAssessment': fraudPreventionAssessment!,
         if (fraudSignals != null) 'fraudSignals': fraudSignals!,
         if (name != null) 'name': name!,
+        if (phoneFraudAssessment != null)
+          'phoneFraudAssessment': phoneFraudAssessment!,
         if (privatePasswordLeakVerification != null)
           'privatePasswordLeakVerification': privatePasswordLeakVerification!,
         if (riskAnalysis != null) 'riskAnalysis': riskAnalysis!,
@@ -2708,6 +2725,32 @@ class GoogleCloudRecaptchaenterpriseV1MigrateKeyRequest {
       };
 }
 
+/// Assessment for Phone Fraud
+class GoogleCloudRecaptchaenterpriseV1PhoneFraudAssessment {
+  /// Assessment of this phone event for risk of SMS toll fraud.
+  ///
+  /// Output only.
+  GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdict? smsTollFraudVerdict;
+
+  GoogleCloudRecaptchaenterpriseV1PhoneFraudAssessment({
+    this.smsTollFraudVerdict,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1PhoneFraudAssessment.fromJson(core.Map json_)
+      : this(
+          smsTollFraudVerdict: json_.containsKey('smsTollFraudVerdict')
+              ? GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdict.fromJson(
+                  json_['smsTollFraudVerdict']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (smsTollFraudVerdict != null)
+          'smsTollFraudVerdict': smsTollFraudVerdict!,
+      };
+}
+
 /// Private password leak verification info.
 class GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification {
   /// List of prefixes of the encrypted potential password leaks that matched
@@ -3191,6 +3234,43 @@ class GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsRespon
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (relatedAccountGroupMemberships != null)
           'relatedAccountGroupMemberships': relatedAccountGroupMemberships!,
+      };
+}
+
+/// Information about SMS toll fraud.
+class GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdict {
+  /// Reasons contributing to the SMS toll fraud verdict.
+  ///
+  /// Output only.
+  core.List<core.String>? reasons;
+
+  /// Probability of an SMS event being fraudulent.
+  ///
+  /// Values are from 0.0 (lowest) to 1.0 (highest).
+  ///
+  /// Output only.
+  core.double? risk;
+
+  GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdict({
+    this.reasons,
+    this.risk,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdict.fromJson(core.Map json_)
+      : this(
+          reasons: json_.containsKey('reasons')
+              ? (json_['reasons'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          risk: json_.containsKey('risk')
+              ? (json_['risk'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (reasons != null) 'reasons': reasons!,
+        if (risk != null) 'risk': risk!,
       };
 }
 

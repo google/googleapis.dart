@@ -1,6 +1,7 @@
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
 // ignore_for_file: deprecated_member_use_from_same_package
+// ignore_for_file: doc_directive_unknown
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_const_declarations
@@ -1064,6 +1065,7 @@ api.GoogleCloudRunV2Job buildGoogleCloudRunV2Job() {
     o.name = 'foo';
     o.observedGeneration = 'foo';
     o.reconciling = true;
+    o.runExecutionToken = 'foo';
     o.satisfiesPzs = true;
     o.startExecutionToken = 'foo';
     o.template = buildGoogleCloudRunV2ExecutionTemplate();
@@ -1136,6 +1138,10 @@ void checkGoogleCloudRunV2Job(api.GoogleCloudRunV2Job o) {
       unittest.equals('foo'),
     );
     unittest.expect(o.reconciling!, unittest.isTrue);
+    unittest.expect(
+      o.runExecutionToken!,
+      unittest.equals('foo'),
+    );
     unittest.expect(o.satisfiesPzs!, unittest.isTrue);
     unittest.expect(
       o.startExecutionToken!,

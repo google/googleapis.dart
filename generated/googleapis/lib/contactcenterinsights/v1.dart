@@ -3,6 +3,7 @@
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
 // ignore_for_file: deprecated_member_use_from_same_package
+// ignore_for_file: doc_directive_unknown
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -587,7 +588,12 @@ class ProjectsLocationsConversationsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/conversations/\[^/\]+$`.
   ///
-  /// [updateMask] - The list of fields to be updated.
+  /// [updateMask] - The list of fields to be updated. All possible fields can
+  /// be updated by passing `*`, or a subset of the following updateable fields
+  /// can be provided: * `agent_id` * `language_code` * `labels` * `metadata` *
+  /// `quality_metadata` * `call_metadata` * `start_time` * `expire_time` or
+  /// `ttl` * `data_source.gcs_source.audio_uri` or
+  /// `data_source.dialogflow_source.audio_uri`
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.

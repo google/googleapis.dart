@@ -3,6 +3,7 @@
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
 // ignore_for_file: deprecated_member_use_from_same_package
+// ignore_for_file: doc_directive_unknown
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -16668,6 +16669,9 @@ class CreateSdfDownloadTaskRequest {
   /// - "SDF_VERSION_5_5" : SDF version 5.5
   /// - "SDF_VERSION_6" : SDF version 6
   /// - "SDF_VERSION_7" : SDF version 7. Read the \[v7 migration
+  /// guide\](/display-video/api/structured-data-file/v7-migration-guide) before
+  /// migrating to this version.
+  /// - "SDF_VERSION_7_1" : SDF version 7.1. Read the \[v7 migration
   /// guide\](/display-video/api/structured-data-file/v7-migration-guide) before
   /// migrating to this version.
   core.String? version;

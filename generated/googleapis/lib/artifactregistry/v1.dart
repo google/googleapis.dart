@@ -3,6 +3,7 @@
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
 // ignore_for_file: deprecated_member_use_from_same_package
+// ignore_for_file: doc_directive_unknown
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -972,7 +973,8 @@ class ProjectsLocationsRepositoriesDockerImagesResource {
   ///
   /// [orderBy] - The field to order the results by.
   ///
-  /// [pageSize] - The maximum number of artifacts to return.
+  /// [pageSize] - The maximum number of artifacts to return. Maximum page size
+  /// is 1,000.
   ///
   /// [pageToken] - The next_page_token value returned from a previous list
   /// request, if any.
@@ -1018,6 +1020,45 @@ class ProjectsLocationsRepositoriesFilesResource {
 
   ProjectsLocationsRepositoriesFilesResource(commons.ApiRequester client)
       : _requester = client;
+
+  /// Deletes a file and all of its content.
+  ///
+  /// It is only allowed on generic repositories. The returned operation will
+  /// complete once the file has been deleted.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the file to delete.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+/files/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
 
   /// Download a file.
   ///
@@ -1126,7 +1167,8 @@ class ProjectsLocationsRepositoriesFilesResource {
   ///
   /// [orderBy] - The field to order the results by.
   ///
-  /// [pageSize] - The maximum number of files to return.
+  /// [pageSize] - The maximum number of files to return. Maximum page size is
+  /// 1,000.
   ///
   /// [pageToken] - The next_page_token value returned from a previous list
   /// request, if any.
@@ -1178,10 +1220,10 @@ class ProjectsLocationsRepositoriesGenericArtifactsResource {
 
   /// Directly uploads a Generic artifact.
   ///
-  /// The returned Operation will complete once the resources are uploaded.
-  /// Package, Version, and File resources are created based on the uploaded
+  /// The returned operation will complete once the resources are uploaded.
+  /// Package, version, and file resources are created based on the uploaded
   /// artifact. Uploaded artifacts that conflict with existing resources will
-  /// raise an ALREADY_EXISTS error.
+  /// raise an `ALREADY_EXISTS` error.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1548,7 +1590,8 @@ class ProjectsLocationsRepositoriesMavenArtifactsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+$`.
   ///
-  /// [pageSize] - The maximum number of artifacts to return.
+  /// [pageSize] - The maximum number of artifacts to return. Maximum page size
+  /// is 1,000.
   ///
   /// [pageToken] - The next_page_token value returned from a previous list
   /// request, if any.
@@ -1639,7 +1682,8 @@ class ProjectsLocationsRepositoriesNpmPackagesResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+$`.
   ///
-  /// [pageSize] - The maximum number of artifacts to return.
+  /// [pageSize] - The maximum number of artifacts to return. Maximum page size
+  /// is 1,000.
   ///
   /// [pageToken] - The next_page_token value returned from a previous list
   /// request, if any.
@@ -2001,7 +2045,7 @@ class ProjectsLocationsRepositoriesPackagesTagsResource {
   /// --\> Tags that are applied to the version `1.0` in package `pkg1`.
   ///
   /// [pageSize] - The maximum number of tags to return. Maximum page size is
-  /// 10,000.
+  /// 1,000.
   ///
   /// [pageToken] - The next_page_token value returned from a previous list
   /// request, if any.
@@ -2348,7 +2392,8 @@ class ProjectsLocationsRepositoriesPythonPackagesResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+$`.
   ///
-  /// [pageSize] - The maximum number of artifacts to return.
+  /// [pageSize] - The maximum number of artifacts to return. Maximum page size
+  /// is 1,000.
   ///
   /// [pageToken] - The next_page_token value returned from a previous list
   /// request, if any.
@@ -4601,10 +4646,8 @@ class Repository {
   /// The user-provided description of the repository.
   core.String? description;
 
-  /// If this is true, aunspecified repo type will be treated as error.
-  ///
-  /// Is used for new repo types that don't have any specific fields. Right now
-  /// is used by AOSS team when creating repos for customers.
+  /// If this is true, an unspecified repo type will be treated as error rather
+  /// than defaulting to standard.
   ///
   /// Optional.
   core.bool? disallowUnspecifiedMode;
@@ -4662,6 +4705,7 @@ class Repository {
   /// remote source.
   /// - "AOSS_REPOSITORY" : An AOSS repository provides artifacts from AOSS
   /// upstreams.
+  /// - "ASSURED_OSS_REPOSITORY" : Replacement of AOSS_REPOSITORY.
   core.String? mode;
 
   /// The name of the repository, for example:
@@ -4950,43 +4994,29 @@ class UploadGenericArtifactMediaResponse {
 class UploadGenericArtifactRequest {
   /// The name of the file of the generic artifact to be uploaded.
   ///
-  /// E.g. "example-file.zip" The filename should only include letters, numbers,
-  /// and url safe characters, i.e. \[a-zA-Z0-9-_.~@\].
+  /// E.g. `example-file.zip` The filename is limited to letters, numbers, and
+  /// url safe characters, i.e. \[a-zA-Z0-9-_.~@\].
   core.String? filename;
-
-  /// Use package_id, version_id and filename instead.
-  ///
-  /// The resource name of the generic artifact. E.g.
-  /// "projects/math/locations/us/repositories/operations/genericArtifacts/addition/1.0.0/add.py"
-  ///
-  /// Deprecated.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? name;
 
   /// The ID of the package of the generic artifact.
   ///
-  /// If the package does not exist, a new package will be created. E.g. "pkg-1"
-  /// The package_id must start with a letter, end with a letter or number, only
+  /// If the package does not exist, a new package will be created. The
+  /// `package_id` must start with a letter, end with a letter or number, only
   /// contain letters, numbers, hyphens and periods i.e. \[a-z0-9-.\], and
   /// cannot exceed 256 characters.
   core.String? packageId;
 
   /// The ID of the version of the generic artifact.
   ///
-  /// If the version does not exist, a new version will be created. E.g."1.0.0"
-  /// The version_id must start and end with a letter or number, can only
-  /// contain lowercase letters, numbers, hyphens and periods, i.e. \[a-z0-9-.\]
-  /// and cannot exceed a total of 128 characters. While "latest" is a
-  /// well-known name for the latest version of a package, it is not yet
-  /// supported and is reserved for future use. Creating a version called
-  /// "latest" is not allowed.
+  /// If the version does not exist, a new version will be created. The
+  /// version_id must start and end with a letter or number, can only contain
+  /// lowercase letters, numbers, hyphens and periods, i.e. \[a-z0-9-.\] and
+  /// cannot exceed a total of 128 characters. Creating a version called
+  /// `latest` is not allowed.
   core.String? versionId;
 
   UploadGenericArtifactRequest({
     this.filename,
-    this.name,
     this.packageId,
     this.versionId,
   });
@@ -4996,7 +5026,6 @@ class UploadGenericArtifactRequest {
           filename: json_.containsKey('filename')
               ? json_['filename'] as core.String
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
           packageId: json_.containsKey('packageId')
               ? json_['packageId'] as core.String
               : null,
@@ -5007,7 +5036,6 @@ class UploadGenericArtifactRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (filename != null) 'filename': filename!,
-        if (name != null) 'name': name!,
         if (packageId != null) 'packageId': packageId!,
         if (versionId != null) 'versionId': versionId!,
       };
@@ -5359,7 +5387,7 @@ class Version {
       };
 }
 
-/// LINT.IfChange Virtual repository configuration.
+/// Virtual repository configuration.
 class VirtualRepositoryConfig {
   /// Policies that configure the upstream artifacts distributed by the Virtual
   /// Repository.

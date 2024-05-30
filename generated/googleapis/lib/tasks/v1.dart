@@ -3,6 +3,7 @@
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
 // ignore_for_file: deprecated_member_use_from_same_package
+// ignore_for_file: doc_directive_unknown
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -773,11 +774,15 @@ class Task {
   /// Type of the resource.
   ///
   /// This is always "tasks#task".
+  ///
+  /// Output only.
   core.String? kind;
 
   /// Collection of links.
   ///
   /// This collection is read-only.
+  ///
+  /// Output only.
   core.List<TaskLinks>? links;
 
   /// Notes describing the task.
@@ -790,6 +795,8 @@ class Task {
   /// This field is omitted if it is a top-level task. This field is read-only.
   /// Use the "move" method to move the task under a different parent or to the
   /// top level.
+  ///
+  /// Output only.
   core.String? parent;
 
   /// String indicating the position of the task among its sibling tasks under
@@ -797,14 +804,17 @@ class Task {
   ///
   /// If this string is greater than another task's corresponding position
   /// string according to lexicographical ordering, the task is positioned after
-  /// the other task under the same parent task (or at the top level). This
-  /// field is read-only. Use the "move" method to move the task to another
-  /// position.
+  /// the other task under the same parent task (or at the top level). Use the
+  /// "move" method to move the task to another position.
+  ///
+  /// Output only.
   core.String? position;
 
   /// URL pointing to this task.
   ///
   /// Used to retrieve, update, or delete this task.
+  ///
+  /// Output only.
   core.String? selfLink;
 
   /// Status of the task.
@@ -818,11 +828,13 @@ class Task {
   core.String? title;
 
   /// Last modification time of the task (as a RFC 3339 timestamp).
+  ///
+  /// Output only.
   core.String? updated;
 
   /// An absolute link to the task in the Google Tasks Web UI.
   ///
-  /// This field is read-only.
+  /// Output only.
   core.String? webViewLink;
 
   Task({
@@ -918,11 +930,15 @@ class TaskList {
   /// Type of the resource.
   ///
   /// This is always "tasks#taskList".
+  ///
+  /// Output only.
   core.String? kind;
 
   /// URL pointing to this task list.
   ///
   /// Used to retrieve, update, or delete this task list.
+  ///
+  /// Output only.
   core.String? selfLink;
 
   /// Title of the task list.
@@ -931,6 +947,8 @@ class TaskList {
   core.String? title;
 
   /// Last modification time of the task list (as a RFC 3339 timestamp).
+  ///
+  /// Output only.
   core.String? updated;
 
   TaskList({

@@ -8,6 +8,7 @@ library;
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
 // ignore_for_file: deprecated_member_use_from_same_package
+// ignore_for_file: doc_directive_unknown
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -6568,14 +6569,13 @@ class $EgressSource {
 /// - aiplatform:v1 : GoogleCloudAiplatformV1CheckTrialEarlyStoppingStateRequest
 /// - aiplatform:v1 : GoogleCloudAiplatformV1FeatureOnlineStoreOptimized
 /// - aiplatform:v1 : GoogleCloudAiplatformV1FeatureViewIndexConfigBruteForceConfig
+/// - aiplatform:v1 : GoogleCloudAiplatformV1GoogleSearchRetrieval
 /// - aiplatform:v1 : GoogleCloudAiplatformV1ListOptimalTrialsRequest
 /// - aiplatform:v1 : GoogleCloudAiplatformV1PauseModelDeploymentMonitoringJobRequest
 /// - aiplatform:v1 : GoogleCloudAiplatformV1PauseScheduleRequest
-/// - aiplatform:v1 : GoogleCloudAiplatformV1RaySpec
 /// - aiplatform:v1 : GoogleCloudAiplatformV1RebootPersistentResourceRequest
 /// - aiplatform:v1 : GoogleCloudAiplatformV1RemoveContextChildrenResponse
 /// - aiplatform:v1 : GoogleCloudAiplatformV1RemoveDatapointsResponse
-/// - aiplatform:v1 : GoogleCloudAiplatformV1ResourceRuntime
 /// - aiplatform:v1 : GoogleCloudAiplatformV1ResumeModelDeploymentMonitoringJobRequest
 /// - aiplatform:v1 : GoogleCloudAiplatformV1StartNotebookRuntimeRequest
 /// - aiplatform:v1 : GoogleCloudAiplatformV1StopTrialRequest
@@ -6607,6 +6607,7 @@ class $EgressSource {
 /// - androidpublisher:v3 : MigrateBasePlanPricesResponse
 /// - androidpublisher:v3 : OtherRecurringProduct
 /// - androidpublisher:v3 : OtherRegionsSubscriptionOfferPhaseFreePriceOverride
+/// - androidpublisher:v3 : PendingCancellation
 /// - androidpublisher:v3 : RegionalSubscriptionOfferPhaseFreePriceOverride
 /// - androidpublisher:v3 : ReplacementCancellation
 /// - androidpublisher:v3 : RevocationContextProratedRefund
@@ -6791,6 +6792,7 @@ class $EgressSource {
 /// - config:v1 : ExportRevisionStatefileRequest
 /// - config:v1 : LockDeploymentRequest
 /// - connectors:v1 : CancelOperationRequest
+/// - connectors:v1 : DeprecateCustomConnectorVersionRequest
 /// - connectors:v1 : Empty
 /// - connectors:v1 : ListenEventResponse
 /// - connectors:v1 : RefreshConnectionSchemaMetadataRequest
@@ -6881,6 +6883,10 @@ class $EgressSource {
 /// - datastream:v1 : StaticServiceIpConnectivity
 /// - datastream:v1 : StopBackfillJobRequest
 /// - datastream:v1 : StreamLargeObjects
+/// - developerconnect:v1 : CancelOperationRequest
+/// - developerconnect:v1 : Empty
+/// - developerconnect:v1 : FetchReadTokenRequest
+/// - developerconnect:v1 : FetchReadWriteTokenRequest
 /// - dialogflow:v2 : GoogleCloudDialogflowV2CompleteConversationRequest
 /// - dialogflow:v2 : GoogleCloudDialogflowV2DeployConversationModelRequest
 /// - dialogflow:v2 : GoogleCloudDialogflowV2TrainAgentRequest
@@ -6915,6 +6921,7 @@ class $EgressSource {
 /// - dlp:v2 : GooglePrivacyDlpV2PublishToStackdriver
 /// - dlp:v2 : GooglePrivacyDlpV2RedactConfig
 /// - dlp:v2 : GooglePrivacyDlpV2ReplaceWithInfoTypeConfig
+/// - dlp:v2 : GooglePrivacyDlpV2SecretsDiscoveryTarget
 /// - dlp:v2 : GooglePrivacyDlpV2SurrogateType
 /// - dlp:v2 : GooglePrivacyDlpV2ThrowError
 /// - dlp:v2 : GoogleProtobufEmpty
@@ -6965,7 +6972,6 @@ class $EgressSource {
 /// - firebaseml:v1 : Empty
 /// - firebaserules:v1 : Empty
 /// - firestore:v1 : Empty
-/// - firestore:v1 : GoogleFirestoreAdminV1DailyRecurrence
 /// - firestore:v1 : GoogleFirestoreAdminV1FlatIndex
 /// - firestore:v1 : GoogleLongrunningCancelOperationRequest
 /// - forms:v1 : Empty
@@ -7168,6 +7174,7 @@ class $EgressSource {
 /// - sheets:v4 : ClearValuesRequest
 /// - sourcerepo:v1 : Empty
 /// - sourcerepo:v1 : SyncRepoRequest
+/// - spanner:v1 : DualRegionQuorum
 /// - spanner:v1 : Empty
 /// - spanner:v1 : PartitionedDml
 /// - speech:v1 : Empty
@@ -8855,6 +8862,40 @@ class $FcmOptions {
 
 /// Used by:
 ///
+/// - cloudbuild:v2 : FetchGitRefsResponse
+/// - developerconnect:v1 : FetchGitRefsResponse
+class $FetchGitRefsResponse {
+  /// A token identifying a page of results the server should return.
+  core.String? nextPageToken;
+
+  /// Name of the refs fetched.
+  core.List<core.String>? refNames;
+
+  $FetchGitRefsResponse({
+    this.nextPageToken,
+    this.refNames,
+  });
+
+  $FetchGitRefsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          refNames: json_.containsKey('refNames')
+              ? (json_['refNames'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (refNames != null) 'refNames': refNames!,
+      };
+}
+
+/// Used by:
+///
 /// - containeranalysis:v1 : GrafeasV1FileLocation
 /// - ondemandscanning:v1 : FileLocation
 /// - ondemandscanning:v1 : GrafeasV1FileLocation
@@ -10469,6 +10510,119 @@ class $GoogleCloudDocumentaiV1Vertex {
 
 /// Used by:
 ///
+/// - orgpolicy:v2 : GoogleCloudOrgpolicyV2CustomConstraint
+/// - policysimulator:v1 : GoogleCloudOrgpolicyV2CustomConstraint
+class $GoogleCloudOrgpolicyV2CustomConstraint {
+  /// Allow or deny type.
+  /// Possible string values are:
+  /// - "ACTION_TYPE_UNSPECIFIED" : Unspecified. Results in an error.
+  /// - "ALLOW" : Allowed action type.
+  /// - "DENY" : Deny action type.
+  core.String? actionType;
+
+  /// Org policy condition/expression.
+  ///
+  /// For example: `resource.instanceName.matches("[production|test]_.*_(\d)+")`
+  /// or, `resource.management.auto_upgrade == true` The max length of the
+  /// condition is 1000 characters.
+  core.String? condition;
+
+  /// Detailed information about this custom policy constraint.
+  ///
+  /// The max length of the description is 2000 characters.
+  core.String? description;
+
+  /// One line display name for the UI.
+  ///
+  /// The max length of the display_name is 200 characters.
+  core.String? displayName;
+
+  /// All the operations being applied for this constraint.
+  core.List<core.String>? methodTypes;
+
+  /// Name of the constraint.
+  ///
+  /// This is unique within the organization. Format of the name should be *
+  /// `organizations/{organization_id}/customConstraints/{custom_constraint_id}`
+  /// Example: `organizations/123/customConstraints/custom.createOnlyE2TypeVms`
+  /// The max length is 70 characters and the minimum length is 1. Note that the
+  /// prefix `organizations/{organization_id}/customConstraints/` is not
+  /// counted.
+  ///
+  /// Immutable.
+  core.String? name;
+
+  /// The resource instance type on which this policy applies.
+  ///
+  /// Format will be of the form : `/` Example: *
+  /// `compute.googleapis.com/Instance`.
+  ///
+  /// Immutable.
+  core.List<core.String>? resourceTypes;
+
+  /// The last time this custom constraint was updated.
+  ///
+  /// This represents the last time that the `CreateCustomConstraint` or
+  /// `UpdateCustomConstraint` RPC was called
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  $GoogleCloudOrgpolicyV2CustomConstraint({
+    this.actionType,
+    this.condition,
+    this.description,
+    this.displayName,
+    this.methodTypes,
+    this.name,
+    this.resourceTypes,
+    this.updateTime,
+  });
+
+  $GoogleCloudOrgpolicyV2CustomConstraint.fromJson(core.Map json_)
+      : this(
+          actionType: json_.containsKey('actionType')
+              ? json_['actionType'] as core.String
+              : null,
+          condition: json_.containsKey('condition')
+              ? json_['condition'] as core.String
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          methodTypes: json_.containsKey('methodTypes')
+              ? (json_['methodTypes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          resourceTypes: json_.containsKey('resourceTypes')
+              ? (json_['resourceTypes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (actionType != null) 'actionType': actionType!,
+        if (condition != null) 'condition': condition!,
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
+        if (methodTypes != null) 'methodTypes': methodTypes!,
+        if (name != null) 'name': name!,
+        if (resourceTypes != null) 'resourceTypes': resourceTypes!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// Used by:
+///
 /// - paymentsresellersubscription:v1 : GoogleTypeLocalizedText
 /// - places:v1 : GoogleTypeLocalizedText
 class $GoogleTypeLocalizedText {
@@ -11178,6 +11332,65 @@ class $InlineScopedRouteConfigs {
         if (name != null) 'name': name!,
         if (scopedRouteConfigs != null)
           'scopedRouteConfigs': scopedRouteConfigs!,
+      };
+}
+
+/// Used by:
+///
+/// - cloudbuild:v2 : InstallationState
+/// - developerconnect:v1 : InstallationState
+class $InstallationState {
+  /// Link to follow for next action.
+  ///
+  /// Empty string if the installation is already complete.
+  ///
+  /// Output only.
+  core.String? actionUri;
+
+  /// Message of what the user should do next to continue the installation.
+  ///
+  /// Empty string if the installation is already complete.
+  ///
+  /// Output only.
+  core.String? message;
+
+  /// Current step of the installation process.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STAGE_UNSPECIFIED" : No stage specified.
+  /// - "PENDING_CREATE_APP" : Only for GitHub Enterprise. An App creation has
+  /// been requested. The user needs to confirm the creation in their GitHub
+  /// enterprise host.
+  /// - "PENDING_USER_OAUTH" : User needs to authorize the GitHub (or
+  /// Enterprise) App via OAuth.
+  /// - "PENDING_INSTALL_APP" : User needs to follow the link to install the
+  /// GitHub (or Enterprise) App.
+  /// - "COMPLETE" : Installation process has been completed.
+  core.String? stage;
+
+  $InstallationState({
+    this.actionUri,
+    this.message,
+    this.stage,
+  });
+
+  $InstallationState.fromJson(core.Map json_)
+      : this(
+          actionUri: json_.containsKey('actionUri')
+              ? json_['actionUri'] as core.String
+              : null,
+          message: json_.containsKey('message')
+              ? json_['message'] as core.String
+              : null,
+          stage:
+              json_.containsKey('stage') ? json_['stage'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (actionUri != null) 'actionUri': actionUri!,
+        if (message != null) 'message': message!,
+        if (stage != null) 'stage': stage!,
       };
 }
 
@@ -13005,6 +13218,7 @@ class $LocalizedMessage {
 /// - datafusion:v1 : Location
 /// - datamigration:v1 : Location
 /// - datastream:v1 : Location
+/// - developerconnect:v1 : Location
 /// - dialogflow:v2 : GoogleCloudLocationLocation
 /// - dialogflow:v3 : GoogleCloudLocationLocation
 /// - documentai:v1 : GoogleCloudLocationLocation
@@ -13320,6 +13534,44 @@ class $LockConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (locked != null) 'locked': locked!,
         if (reason != null) 'reason': reason!,
+      };
+}
+
+/// Used by:
+///
+/// - connectors:v1 : ConnectorsLogConfig
+/// - integrations:v1 : GoogleCloudConnectorsV1LogConfig
+class $LogConfig {
+  /// Enabled represents whether logging is enabled or not for a connection.
+  core.bool? enabled;
+
+  /// Log configuration level.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "LOG_LEVEL_UNSPECIFIED" : Log level unspecified.
+  /// - "ERROR" : Only error logs are enabled.
+  /// - "INFO" : Info and error logs are enabled.
+  /// - "DEBUG" : Debug and high verbosity logs are enabled.
+  core.String? level;
+
+  $LogConfig({
+    this.enabled,
+    this.level,
+  });
+
+  $LogConfig.fromJson(core.Map json_)
+      : this(
+          enabled: json_.containsKey('enabled')
+              ? json_['enabled'] as core.bool
+              : null,
+          level:
+              json_.containsKey('level') ? json_['level'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
+        if (level != null) 'level': level!,
       };
 }
 
@@ -14068,6 +14320,48 @@ class $ModelCallSignals {
 
 /// Used by:
 ///
+/// - aiplatform:v1 : GoogleCloudAiplatformV1ModelSourceInfo
+/// - datacatalog:v1 : GoogleCloudDatacatalogV1VertexModelSourceInfo
+class $ModelSourceInfo {
+  /// If this Model is copy of another Model.
+  ///
+  /// If true then source_type pertains to the original.
+  core.bool? copy;
+
+  /// Type of the model source.
+  /// Possible string values are:
+  /// - "MODEL_SOURCE_TYPE_UNSPECIFIED" : Should not be used.
+  /// - "AUTOML" : The Model is uploaded by automl training pipeline.
+  /// - "CUSTOM" : The Model is uploaded by user or custom training pipeline.
+  /// - "BQML" : The Model is registered and sync'ed from BigQuery ML.
+  /// - "MODEL_GARDEN" : The Model is saved or tuned from Model Garden.
+  /// - "GENIE" : The Model is saved or tuned from Genie.
+  /// - "CUSTOM_TEXT_EMBEDDING" : The Model is uploaded by text embedding
+  /// finetuning pipeline.
+  /// - "MARKETPLACE" : The Model is saved or tuned from Marketplace.
+  core.String? sourceType;
+
+  $ModelSourceInfo({
+    this.copy,
+    this.sourceType,
+  });
+
+  $ModelSourceInfo.fromJson(core.Map json_)
+      : this(
+          copy: json_.containsKey('copy') ? json_['copy'] as core.bool : null,
+          sourceType: json_.containsKey('sourceType')
+              ? json_['sourceType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (copy != null) 'copy': copy!,
+        if (sourceType != null) 'sourceType': sourceType!,
+      };
+}
+
+/// Used by:
+///
 /// - aiplatform:v1 : GoogleTypeMoney
 /// - androidpublisher:v3 : Money
 /// - apigee:v1 : GoogleTypeMoney
@@ -14707,33 +15001,6 @@ class $OmidTargetingOptionDetails {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (omid != null) 'omid': omid!,
-      };
-}
-
-/// Used by:
-///
-/// - cloudfunctions:v1 : OnDeployUpdatePolicy
-/// - cloudfunctions:v2 : OnDeployUpdatePolicy
-class $OnDeployUpdatePolicy {
-  /// contains the runtime version which was used during latest function
-  /// deployment.
-  ///
-  /// Output only.
-  core.String? runtimeVersion;
-
-  $OnDeployUpdatePolicy({
-    this.runtimeVersion,
-  });
-
-  $OnDeployUpdatePolicy.fromJson(core.Map json_)
-      : this(
-          runtimeVersion: json_.containsKey('runtimeVersion')
-              ? json_['runtimeVersion'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (runtimeVersion != null) 'runtimeVersion': runtimeVersion!,
       };
 }
 
@@ -18430,6 +18697,9 @@ class $SdfConfig {
   /// - "SDF_VERSION_7" : SDF version 7. Read the \[v7 migration
   /// guide\](/display-video/api/structured-data-file/v7-migration-guide) before
   /// migrating to this version.
+  /// - "SDF_VERSION_7_1" : SDF version 7.1. Read the \[v7 migration
+  /// guide\](/display-video/api/structured-data-file/v7-migration-guide) before
+  /// migrating to this version.
   core.String? version;
 
   $SdfConfig({
@@ -18503,6 +18773,50 @@ class $SecretVersionRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
+      };
+}
+
+/// Used by:
+///
+/// - container:v1 : SecurityPostureConfig
+/// - gkehub:v1 : SecurityPostureConfig
+class $SecurityPostureConfig {
+  /// Sets which mode to use for Security Posture features.
+  /// Possible string values are:
+  /// - "MODE_UNSPECIFIED" : Default value not specified.
+  /// - "DISABLED" : Disables Security Posture features on the cluster.
+  /// - "BASIC" : Applies Security Posture features on the cluster.
+  /// - "ENTERPRISE" : Applies the Security Posture off cluster Enterprise level
+  /// features.
+  core.String? mode;
+
+  /// Sets which mode to use for vulnerability scanning.
+  /// Possible string values are:
+  /// - "VULNERABILITY_MODE_UNSPECIFIED" : Default value not specified.
+  /// - "VULNERABILITY_DISABLED" : Disables vulnerability scanning on the
+  /// cluster.
+  /// - "VULNERABILITY_BASIC" : Applies basic vulnerability scanning on the
+  /// cluster.
+  /// - "VULNERABILITY_ENTERPRISE" : Applies the Security Posture's
+  /// vulnerability on cluster Enterprise level features.
+  core.String? vulnerabilityMode;
+
+  $SecurityPostureConfig({
+    this.mode,
+    this.vulnerabilityMode,
+  });
+
+  $SecurityPostureConfig.fromJson(core.Map json_)
+      : this(
+          mode: json_.containsKey('mode') ? json_['mode'] as core.String : null,
+          vulnerabilityMode: json_.containsKey('vulnerabilityMode')
+              ? json_['vulnerabilityMode'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (mode != null) 'mode': mode!,
+        if (vulnerabilityMode != null) 'vulnerabilityMode': vulnerabilityMode!,
       };
 }
 
@@ -19845,6 +20159,7 @@ class $StaticRouteConfig {
 /// - datastore:v1 : Status
 /// - datastream:v1 : Status
 /// - deploymentmanager:v2 : Status
+/// - developerconnect:v1 : Status
 /// - dialogflow:v2 : GoogleRpcStatus
 /// - dialogflow:v3 : GoogleRpcStatus
 /// - displayvideo:v2 : Status
@@ -20628,6 +20943,7 @@ class $ThirdPartyVendorConfig {
 /// - businessprofileperformance:v1 : TimeOfDay
 /// - classroom:v1 : TimeOfDay
 /// - dlp:v2 : GoogleTypeTimeOfDay
+/// - firestore:v1 : TimeOfDay
 /// - gkebackup:v1 : TimeOfDay
 /// - jobs:v3 : TimeOfDay
 /// - jobs:v4 : TimeOfDay
@@ -20833,7 +21149,7 @@ class $TokenPagination {
 ///
 /// - cloudbuild:v2 : FetchReadTokenResponse
 /// - cloudbuild:v2 : FetchReadWriteTokenResponse
-class $TokenResponse {
+class $TokenResponse00 {
   /// Expiration timestamp.
   ///
   /// Can be empty if unknown or non-expiring.
@@ -20842,12 +21158,12 @@ class $TokenResponse {
   /// The token content.
   core.String? token;
 
-  $TokenResponse({
+  $TokenResponse00({
     this.expirationTime,
     this.token,
   });
 
-  $TokenResponse.fromJson(core.Map json_)
+  $TokenResponse00.fromJson(core.Map json_)
       : this(
           expirationTime: json_.containsKey('expirationTime')
               ? json_['expirationTime'] as core.String
@@ -20858,6 +21174,49 @@ class $TokenResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (expirationTime != null) 'expirationTime': expirationTime!,
+        if (token != null) 'token': token!,
+      };
+}
+
+/// Used by:
+///
+/// - developerconnect:v1 : FetchReadTokenResponse
+/// - developerconnect:v1 : FetchReadWriteTokenResponse
+class $TokenResponse01 {
+  /// Expiration timestamp.
+  ///
+  /// Can be empty if unknown or non-expiring.
+  core.String? expirationTime;
+
+  /// The git_username to specify when making a git clone with the token.
+  ///
+  /// For example, for GitHub GitRepositoryLinks, this would be "x-access-token"
+  core.String? gitUsername;
+
+  /// The token content.
+  core.String? token;
+
+  $TokenResponse01({
+    this.expirationTime,
+    this.gitUsername,
+    this.token,
+  });
+
+  $TokenResponse01.fromJson(core.Map json_)
+      : this(
+          expirationTime: json_.containsKey('expirationTime')
+              ? json_['expirationTime'] as core.String
+              : null,
+          gitUsername: json_.containsKey('gitUsername')
+              ? json_['gitUsername'] as core.String
+              : null,
+          token:
+              json_.containsKey('token') ? json_['token'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (expirationTime != null) 'expirationTime': expirationTime!,
+        if (gitUsername != null) 'gitUsername': gitUsername!,
         if (token != null) 'token': token!,
       };
 }

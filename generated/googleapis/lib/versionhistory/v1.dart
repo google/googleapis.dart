@@ -3,6 +3,7 @@
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
 // ignore_for_file: deprecated_member_use_from_same_package
+// ignore_for_file: doc_directive_unknown
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -602,6 +603,9 @@ class Release {
   /// "{product}/platforms/{platform}/channels/{channel}/versions/{version}/releases/{release}"
   core.String? name;
 
+  /// Whether or not the release was available for version pinning.
+  core.bool? pinnable;
+
   /// Timestamp interval of when the release was live.
   ///
   /// If end_time is unspecified, the release is currently live.
@@ -616,6 +620,7 @@ class Release {
     this.fraction,
     this.fractionGroup,
     this.name,
+    this.pinnable,
     this.serving,
     this.version,
   });
@@ -629,6 +634,9 @@ class Release {
               ? json_['fractionGroup'] as core.String
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          pinnable: json_.containsKey('pinnable')
+              ? json_['pinnable'] as core.bool
+              : null,
           serving: json_.containsKey('serving')
               ? Interval.fromJson(
                   json_['serving'] as core.Map<core.String, core.dynamic>)
@@ -642,6 +650,7 @@ class Release {
         if (fraction != null) 'fraction': fraction!,
         if (fractionGroup != null) 'fractionGroup': fractionGroup!,
         if (name != null) 'name': name!,
+        if (pinnable != null) 'pinnable': pinnable!,
         if (serving != null) 'serving': serving!,
         if (version != null) 'version': version!,
       };

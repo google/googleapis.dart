@@ -113,6 +113,7 @@ packages:
     - datastore:v1 # https://developers.google.com/datastore/
     - datastream:v1
     - deploymentmanager:v2 # https://cloud.google.com/deployment-manager/
+    - developerconnect:v1
     - dfareporting:v3.5
     - dfareporting:v4
     - dialogflow:v2 # https://cloud.google.com/dialogflow-enterprise/
@@ -304,6 +305,7 @@ packages:
     apis:
     - adexchangebuyer2:v2beta1 # https://developers.google.com/ad-exchange/buyer-rest/guides/client-access/
     - alertcenter:v1beta1 # https://developers.google.com/admin-sdk/alertcenter/
+    - analyticsadmin:v1alpha
     - analyticsadmin:v1beta
     - analyticsdata:v1beta
     - area120tables:v1alpha1

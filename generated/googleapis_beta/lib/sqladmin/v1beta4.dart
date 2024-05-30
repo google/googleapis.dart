@@ -3,6 +3,7 @@
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
 // ignore_for_file: deprecated_member_use_from_same_package
+// ignore_for_file: doc_directive_unknown
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -3101,6 +3102,45 @@ class ApiWarning {
       };
 }
 
+/// An available database version.
+///
+/// It can be a major or a minor version.
+class AvailableDatabaseVersion {
+  /// The database version's display name.
+  core.String? displayName;
+
+  /// The version's major version name.
+  core.String? majorVersion;
+
+  /// The database version name.
+  ///
+  /// For MySQL 8.0, this string provides the database major and minor version.
+  core.String? name;
+
+  AvailableDatabaseVersion({
+    this.displayName,
+    this.majorVersion,
+    this.name,
+  });
+
+  AvailableDatabaseVersion.fromJson(core.Map json_)
+      : this(
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          majorVersion: json_.containsKey('majorVersion')
+              ? json_['majorVersion'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (majorVersion != null) 'majorVersion': majorVersion!,
+        if (name != null) 'name': name!,
+      };
+}
+
 /// Database instance backup configuration.
 class BackupConfiguration {
   /// Backup retention settings.
@@ -3624,10 +3664,20 @@ class CloneContext {
   /// is cloned.
   core.String? pointInTime;
 
-  /// (Point-in-time recovery for PostgreSQL only) Clone to an instance in the
+  /// Copy clone and point-in-time recovery clone of a regional instance in the
+  /// specified zones.
+  ///
+  /// If not specified, clone to the same secondary zone as the source instance.
+  /// This value cannot be the same as the preferred_zone field.
+  ///
+  /// Optional.
+  core.String? preferredSecondaryZone;
+
+  /// Copy clone and point-in-time recovery clone of an instance to the
   /// specified zone.
   ///
-  /// If no zone is specified, clone to the same zone as the source instance.
+  /// If no zone is specified, clone to the same primary zone as the source
+  /// instance.
   ///
   /// Optional.
   core.String? preferredZone;
@@ -3640,6 +3690,7 @@ class CloneContext {
     this.kind,
     this.pitrTimestampMs,
     this.pointInTime,
+    this.preferredSecondaryZone,
     this.preferredZone,
   });
 
@@ -3667,6 +3718,9 @@ class CloneContext {
           pointInTime: json_.containsKey('pointInTime')
               ? json_['pointInTime'] as core.String
               : null,
+          preferredSecondaryZone: json_.containsKey('preferredSecondaryZone')
+              ? json_['preferredSecondaryZone'] as core.String
+              : null,
           preferredZone: json_.containsKey('preferredZone')
               ? json_['preferredZone'] as core.String
               : null,
@@ -3681,6 +3735,8 @@ class CloneContext {
         if (kind != null) 'kind': kind!,
         if (pitrTimestampMs != null) 'pitrTimestampMs': pitrTimestampMs!,
         if (pointInTime != null) 'pointInTime': pointInTime!,
+        if (preferredSecondaryZone != null)
+          'preferredSecondaryZone': preferredSecondaryZone!,
         if (preferredZone != null) 'preferredZone': preferredZone!,
       };
 }
@@ -3732,6 +3788,7 @@ class ConnectSettings {
   /// - "POSTGRES_13" : The database version is PostgreSQL 13.
   /// - "POSTGRES_14" : The database version is PostgreSQL 14.
   /// - "POSTGRES_15" : The database version is PostgreSQL 15.
+  /// - "POSTGRES_16" : The database version is PostgreSQL 16.
   /// - "MYSQL_8_0" : The database version is MySQL 8.
   /// - "MYSQL_8_0_18" : The database major version is MySQL 8.0 and the minor
   /// version is 18.
@@ -3765,6 +3822,9 @@ class ConnectSettings {
   /// version is 39.
   /// - "MYSQL_8_0_40" : The database major version is MySQL 8.0 and the minor
   /// version is 40.
+  /// - "MYSQL_8_4" : The database version is MySQL 8.4.
+  /// - "MYSQL_8_4_0" : The database version is MySQL 8.4 and the patch version
+  /// is 0.
   /// - "SQLSERVER_2019_STANDARD" : The database version is SQL Server 2019
   /// Standard.
   /// - "SQLSERVER_2019_ENTERPRISE" : The database version is SQL Server 2019
@@ -4105,6 +4165,7 @@ class DatabaseInstance {
   /// - "POSTGRES_13" : The database version is PostgreSQL 13.
   /// - "POSTGRES_14" : The database version is PostgreSQL 14.
   /// - "POSTGRES_15" : The database version is PostgreSQL 15.
+  /// - "POSTGRES_16" : The database version is PostgreSQL 16.
   /// - "MYSQL_8_0" : The database version is MySQL 8.
   /// - "MYSQL_8_0_18" : The database major version is MySQL 8.0 and the minor
   /// version is 18.
@@ -4138,6 +4199,9 @@ class DatabaseInstance {
   /// version is 39.
   /// - "MYSQL_8_0_40" : The database major version is MySQL 8.0 and the minor
   /// version is 40.
+  /// - "MYSQL_8_4" : The database version is MySQL 8.4.
+  /// - "MYSQL_8_4_0" : The database version is MySQL 8.4 and the patch version
+  /// is 0.
   /// - "SQLSERVER_2019_STANDARD" : The database version is SQL Server 2019
   /// Standard.
   /// - "SQLSERVER_2019_ENTERPRISE" : The database version is SQL Server 2019
@@ -4283,9 +4347,9 @@ class DatabaseInstance {
   /// to PostgreSQL instances.
   core.String? rootPassword;
 
-  /// The status indicating if instance satisfiesPzs.
+  /// This status indicates whether the instance satisfies PZS.
   ///
-  /// Reserved for future use.
+  /// The status is reserved for future use.
   core.bool? satisfiesPzs;
 
   /// The start time of any upcoming scheduled maintenance for this instance.
@@ -4339,6 +4403,11 @@ class DatabaseInstance {
   /// If the instance state is SUSPENDED, the reason for the suspension.
   core.List<core.String>? suspensionReason;
 
+  /// All database versions that are available for upgrade.
+  ///
+  /// Output only.
+  core.List<AvailableDatabaseVersion>? upgradableDatabaseVersions;
+
   /// The dns name of the primary instance in a replication group.
   ///
   /// Output only.
@@ -4387,6 +4456,7 @@ class DatabaseInstance {
     this.sqlNetworkArchitecture,
     this.state,
     this.suspensionReason,
+    this.upgradableDatabaseVersions,
     this.writeEndpoint,
   });
 
@@ -4539,6 +4609,13 @@ class DatabaseInstance {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          upgradableDatabaseVersions:
+              json_.containsKey('upgradableDatabaseVersions')
+                  ? (json_['upgradableDatabaseVersions'] as core.List)
+                      .map((value) => AvailableDatabaseVersion.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
           writeEndpoint: json_.containsKey('writeEndpoint')
               ? json_['writeEndpoint'] as core.String
               : null,
@@ -4600,6 +4677,8 @@ class DatabaseInstance {
           'sqlNetworkArchitecture': sqlNetworkArchitecture!,
         if (state != null) 'state': state!,
         if (suspensionReason != null) 'suspensionReason': suspensionReason!,
+        if (upgradableDatabaseVersions != null)
+          'upgradableDatabaseVersions': upgradableDatabaseVersions!,
         if (writeEndpoint != null) 'writeEndpoint': writeEndpoint!,
       };
 }
@@ -7024,7 +7103,8 @@ class Operation {
   /// - "AUTO_RESTART" : Performs auto-restart of an HA-enabled Cloud SQL
   /// database for auto recovery.
   /// - "REENCRYPT" : Re-encrypts CMEK instances with latest key version.
-  /// - "SWITCHOVER" : Switches over to replica instance from primary.
+  /// - "SWITCHOVER" : Switches the roles of the primary and replica pair. The
+  /// target instance should be the replica.
   /// - "ACQUIRE_SSRS_LEASE" : Acquire a lease for the setup of SQL Server
   /// Reporting Services (SSRS).
   /// - "RELEASE_SSRS_LEASE" : Release a lease for the setup of SQL Server
@@ -7033,6 +7113,18 @@ class Operation {
   /// replica operation. Effect of a promote operation to the old primary is
   /// executed in this operation, asynchronously from the promote replica
   /// operation executed to the replica.
+  /// - "CLUSTER_MAINTENANCE" : Indicates that the instance, its read replicas,
+  /// and its cascading replicas are in maintenance. Maintenance typically gets
+  /// initiated on groups of replicas first, followed by the primary instance.
+  /// For each instance, maintenance typically causes the instance to be
+  /// unavailable for 1-3 minutes.
+  /// - "SELF_SERVICE_MAINTENANCE" : Indicates that the instance (and any of its
+  /// replicas) are currently in maintenance. This is initiated as a
+  /// self-service request by using SSM. Maintenance typically causes the
+  /// instance to be unavailable for 1-3 minutes.
+  /// - "SWITCHOVER_TO_REPLICA" : Switches a primary instance to a replica. This
+  /// operation runs as part of a switchover operation to the original primary
+  /// instance.
   core.String? operationType;
 
   /// The URI of this resource.
@@ -7532,9 +7624,22 @@ class ReplicationCluster {
   /// Optional.
   core.String? failoverDrReplicaName;
 
+  /// If set, it indicates this instance has a private service access (PSA) dns
+  /// endpoint that is pointing to the primary instance of the cluster.
+  ///
+  /// If this instance is the primary, the dns should be pointing to this
+  /// instance. After Switchover or Replica failover, this DNS endpoint points
+  /// to the promoted instance. This is a read-only field, returned to the user
+  /// as information. This field can exist even if a standalone instance does
+  /// not yet have a replica, or had a DR replica that was deleted.
+  ///
+  /// Output only.
+  core.String? psaWriteEndpoint;
+
   ReplicationCluster({
     this.drReplica,
     this.failoverDrReplicaName,
+    this.psaWriteEndpoint,
   });
 
   ReplicationCluster.fromJson(core.Map json_)
@@ -7545,12 +7650,16 @@ class ReplicationCluster {
           failoverDrReplicaName: json_.containsKey('failoverDrReplicaName')
               ? json_['failoverDrReplicaName'] as core.String
               : null,
+          psaWriteEndpoint: json_.containsKey('psaWriteEndpoint')
+              ? json_['psaWriteEndpoint'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (drReplica != null) 'drReplica': drReplica!,
         if (failoverDrReplicaName != null)
           'failoverDrReplicaName': failoverDrReplicaName!,
+        if (psaWriteEndpoint != null) 'psaWriteEndpoint': psaWriteEndpoint!,
       };
 }
 
@@ -7689,8 +7798,8 @@ class Settings {
   /// Server.
   SqlActiveDirectoryConfig? activeDirectoryConfig;
 
-  /// Specifies advance machine configuration for the instance relevant only for
-  /// SQL Server.
+  /// Specifies advanced machine configuration for the instances relevant only
+  /// for SQL Server.
   AdvancedMachineFeatures? advancedMachineFeatures;
 
   /// The App Engine app IDs that can access this instance.

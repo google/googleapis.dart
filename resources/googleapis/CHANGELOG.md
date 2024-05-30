@@ -7,6 +7,7 @@
 
 - `addressvalidation` - new!
 - `cloudcontrolspartner` - new!
+- `developerconnect` - new!
 - `solar` - new!
 
 ## 13.1.0

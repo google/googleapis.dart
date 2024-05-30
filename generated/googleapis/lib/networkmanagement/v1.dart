@@ -3,6 +3,7 @@
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
 // ignore_for_file: deprecated_member_use_from_same_package
+// ignore_for_file: doc_directive_unknown
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -1572,8 +1573,15 @@ class DeliverInfo {
   /// IP address of the target (if applicable).
   core.String? ipAddress;
 
+  /// PSC Google API target the packet is delivered to (if applicable).
+  core.String? pscGoogleApiTarget;
+
   /// URI of the resource that the packet is delivered to.
   core.String? resourceUri;
+
+  /// Name of the Cloud Storage Bucket the packet is delivered to (if
+  /// applicable).
+  core.String? storageBucket;
 
   /// Target type where the packet is delivered to.
   /// Possible string values are:
@@ -1585,7 +1593,7 @@ class DeliverInfo {
   /// - "CLOUD_SQL_INSTANCE" : Target is a Cloud SQL instance.
   /// - "PSC_PUBLISHED_SERVICE" : Target is a published service that uses
   /// [Private Service Connect](https://cloud.google.com/vpc/docs/configure-private-service-connect-services).
-  /// - "PSC_GOOGLE_API" : Target is all Google APIs that use
+  /// - "PSC_GOOGLE_API" : Target is Google APIs that use
   /// [Private Service Connect](https://cloud.google.com/vpc/docs/configure-private-service-connect-apis).
   /// - "PSC_VPC_SC" : Target is a VPC-SC that uses
   /// [Private Service Connect](https://cloud.google.com/vpc/docs/configure-private-service-connect-apis).
@@ -1599,11 +1607,15 @@ class DeliverInfo {
   /// for return traces.
   /// - "CLOUD_RUN_REVISION" : Target is a Cloud Run revision. Used only for
   /// return traces.
+  /// - "GOOGLE_MANAGED_SERVICE" : Target is a Google-managed service. Used only
+  /// for return traces.
   core.String? target;
 
   DeliverInfo({
     this.ipAddress,
+    this.pscGoogleApiTarget,
     this.resourceUri,
+    this.storageBucket,
     this.target,
   });
 
@@ -1612,8 +1624,14 @@ class DeliverInfo {
           ipAddress: json_.containsKey('ipAddress')
               ? json_['ipAddress'] as core.String
               : null,
+          pscGoogleApiTarget: json_.containsKey('pscGoogleApiTarget')
+              ? json_['pscGoogleApiTarget'] as core.String
+              : null,
           resourceUri: json_.containsKey('resourceUri')
               ? json_['resourceUri'] as core.String
+              : null,
+          storageBucket: json_.containsKey('storageBucket')
+              ? json_['storageBucket'] as core.String
               : null,
           target: json_.containsKey('target')
               ? json_['target'] as core.String
@@ -1622,7 +1640,10 @@ class DeliverInfo {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (ipAddress != null) 'ipAddress': ipAddress!,
+        if (pscGoogleApiTarget != null)
+          'pscGoogleApiTarget': pscGoogleApiTarget!,
         if (resourceUri != null) 'resourceUri': resourceUri!,
+        if (storageBucket != null) 'storageBucket': storageBucket!,
         if (target != null) 'target': target!,
       };
 }
@@ -1784,6 +1805,9 @@ class DropInfo {
   /// - "CLOUD_NAT_NO_ADDRESSES" : Packet sent to Cloud Nat without active NAT
   /// IPs.
   /// - "ROUTING_LOOP" : Packet is stuck in a routing loop.
+  /// - "DROPPED_INSIDE_GOOGLE_MANAGED_SERVICE" : Packet is dropped due to an
+  /// unspecified reason inside a Google-managed service. Used only for return
+  /// traces.
   core.String? cause;
 
   /// Destination IP address of the dropped packet (if relevant).
@@ -2354,24 +2378,40 @@ class ForwardInfo {
 ///
 /// Metadata associated with a Compute Engine forwarding rule.
 class ForwardingRuleInfo {
-  /// Name of a Compute Engine forwarding rule.
+  /// Name of the forwarding rule.
   core.String? displayName;
 
-  /// Port range defined in the forwarding rule that matches the test.
+  /// Name of the load balancer the forwarding rule belongs to.
+  ///
+  /// Empty for forwarding rules not related to load balancers (like PSC
+  /// forwarding rules).
+  core.String? loadBalancerName;
+
+  /// Port range defined in the forwarding rule that matches the packet.
   core.String? matchedPortRange;
 
-  /// Protocol defined in the forwarding rule that matches the test.
+  /// Protocol defined in the forwarding rule that matches the packet.
   core.String? matchedProtocol;
 
   /// Network URI.
-  ///
-  /// Only valid for Internal Load Balancer.
   core.String? networkUri;
+
+  /// PSC Google API target this forwarding rule targets (if applicable).
+  core.String? pscGoogleApiTarget;
+
+  /// URI of the PSC service attachment this forwarding rule targets (if
+  /// applicable).
+  core.String? pscServiceAttachmentUri;
+
+  /// Region of the forwarding rule.
+  ///
+  /// Set only for regional forwarding rules.
+  core.String? region;
 
   /// Target type of the forwarding rule.
   core.String? target;
 
-  /// URI of a Compute Engine forwarding rule.
+  /// URI of the forwarding rule.
   core.String? uri;
 
   /// VIP of the forwarding rule.
@@ -2379,9 +2419,13 @@ class ForwardingRuleInfo {
 
   ForwardingRuleInfo({
     this.displayName,
+    this.loadBalancerName,
     this.matchedPortRange,
     this.matchedProtocol,
     this.networkUri,
+    this.pscGoogleApiTarget,
+    this.pscServiceAttachmentUri,
+    this.region,
     this.target,
     this.uri,
     this.vip,
@@ -2392,6 +2436,9 @@ class ForwardingRuleInfo {
           displayName: json_.containsKey('displayName')
               ? json_['displayName'] as core.String
               : null,
+          loadBalancerName: json_.containsKey('loadBalancerName')
+              ? json_['loadBalancerName'] as core.String
+              : null,
           matchedPortRange: json_.containsKey('matchedPortRange')
               ? json_['matchedPortRange'] as core.String
               : null,
@@ -2400,6 +2447,15 @@ class ForwardingRuleInfo {
               : null,
           networkUri: json_.containsKey('networkUri')
               ? json_['networkUri'] as core.String
+              : null,
+          pscGoogleApiTarget: json_.containsKey('pscGoogleApiTarget')
+              ? json_['pscGoogleApiTarget'] as core.String
+              : null,
+          pscServiceAttachmentUri: json_.containsKey('pscServiceAttachmentUri')
+              ? json_['pscServiceAttachmentUri'] as core.String
+              : null,
+          region: json_.containsKey('region')
+              ? json_['region'] as core.String
               : null,
           target: json_.containsKey('target')
               ? json_['target'] as core.String
@@ -2410,9 +2466,15 @@ class ForwardingRuleInfo {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
+        if (loadBalancerName != null) 'loadBalancerName': loadBalancerName!,
         if (matchedPortRange != null) 'matchedPortRange': matchedPortRange!,
         if (matchedProtocol != null) 'matchedProtocol': matchedProtocol!,
         if (networkUri != null) 'networkUri': networkUri!,
+        if (pscGoogleApiTarget != null)
+          'pscGoogleApiTarget': pscGoogleApiTarget!,
+        if (pscServiceAttachmentUri != null)
+          'pscServiceAttachmentUri': pscServiceAttachmentUri!,
+        if (region != null) 'region': region!,
         if (target != null) 'target': target!,
         if (uri != null) 'uri': uri!,
         if (vip != null) 'vip': vip!,
@@ -3923,6 +3985,29 @@ class RouteInfo {
       };
 }
 
+/// For display only.
+///
+/// Metadata associated with the serverless network endpoint group backend.
+class ServerlessNegInfo {
+  /// URI of the serverless network endpoint group.
+  core.String? negUri;
+
+  ServerlessNegInfo({
+    this.negUri,
+  });
+
+  ServerlessNegInfo.fromJson(core.Map json_)
+      : this(
+          negUri: json_.containsKey('negUri')
+              ? json_['negUri'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (negUri != null) 'negUri': negUri!,
+      };
+}
+
 /// Request message for `SetIamPolicy` method.
 class SetIamPolicyRequest {
   /// REQUIRED: The complete policy to be applied to the `resource`.
@@ -4054,6 +4139,11 @@ class Step {
   /// Display information of a Compute Engine route.
   RouteInfo? route;
 
+  /// Display information of a Serverless network endpoint group backend.
+  ///
+  /// Used only for return traces.
+  ServerlessNegInfo? serverlessNeg;
+
   /// Each step is in one of the pre-defined states.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : Unspecified state.
@@ -4089,6 +4179,9 @@ class Step {
   /// - "START_FROM_PSC_PUBLISHED_SERVICE" : Initial state: packet originating
   /// from a published service that uses Private Service Connect. Used only for
   /// return traces.
+  /// - "START_FROM_SERVERLESS_NEG" : Initial state: packet originating from a
+  /// serverless network endpoint group backend. Used only for return traces.
+  /// The serverless_neg information is populated.
   /// - "APPLY_INGRESS_FIREWALL_RULE" : Config checking state: verify ingress
   /// firewall rule.
   /// - "APPLY_EGRESS_FIREWALL_RULE" : Config checking state: verify egress
@@ -4161,6 +4254,7 @@ class Step {
     this.projectId,
     this.proxyConnection,
     this.route,
+    this.serverlessNeg,
     this.state,
     this.storageBucket,
     this.vpcConnector,
@@ -4260,6 +4354,10 @@ class Step {
               ? RouteInfo.fromJson(
                   json_['route'] as core.Map<core.String, core.dynamic>)
               : null,
+          serverlessNeg: json_.containsKey('serverlessNeg')
+              ? ServerlessNegInfo.fromJson(
+                  json_['serverlessNeg'] as core.Map<core.String, core.dynamic>)
+              : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
           storageBucket: json_.containsKey('storageBucket')
@@ -4305,6 +4403,7 @@ class Step {
         if (projectId != null) 'projectId': projectId!,
         if (proxyConnection != null) 'proxyConnection': proxyConnection!,
         if (route != null) 'route': route!,
+        if (serverlessNeg != null) 'serverlessNeg': serverlessNeg!,
         if (state != null) 'state': state!,
         if (storageBucket != null) 'storageBucket': storageBucket!,
         if (vpcConnector != null) 'vpcConnector': vpcConnector!,

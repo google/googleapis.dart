@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240322",
+    "revision": "20240514",
     "rootUrl": "https://containeranalysis.googleapis.com/",
     "servicePath": "",
     "title": "Container Analysis API",
@@ -2088,6 +2088,10 @@
                         "$ref": "NonCompliantFile"
                     },
                     "type": "array"
+                },
+                "version": {
+                    "$ref": "ComplianceVersion",
+                    "description": "The OS and config version the benchmark was run on."
                 }
             },
             "type": "object"
@@ -2322,6 +2326,10 @@
                     "format": "google-datetime",
                     "readOnly": true,
                     "type": "string"
+                },
+                "gitConfig": {
+                    "$ref": "ContaineranalysisGoogleDevtoolsCloudbuildV1GitConfig",
+                    "description": "Optional. Configuration for git operations."
                 },
                 "id": {
                     "description": "Output only. Unique identifier of the build.",
@@ -2922,6 +2930,25 @@
             },
             "type": "object"
         },
+        "ContaineranalysisGoogleDevtoolsCloudbuildV1DeveloperConnectConfig": {
+            "description": "This config defines the location of a source through Developer Connect.",
+            "id": "ContaineranalysisGoogleDevtoolsCloudbuildV1DeveloperConnectConfig",
+            "properties": {
+                "dir": {
+                    "description": "Required. Directory, relative to the source root, in which to run the build.",
+                    "type": "string"
+                },
+                "gitRepositoryLink": {
+                    "description": "Required. The Developer Connect Git repository link, formatted as `projects/*/locations/*/connections/*/gitRepositoryLink/*`.",
+                    "type": "string"
+                },
+                "revision": {
+                    "description": "Required. The revision to fetch from the Git repository such as a branch, a tag, a commit SHA, or any Git ref.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "ContaineranalysisGoogleDevtoolsCloudbuildV1FileHashes": {
             "description": "Container message for hashes of byte content of files, used in SourceProvenance messages to verify integrity of source input to the build.",
             "id": "ContaineranalysisGoogleDevtoolsCloudbuildV1FileHashes",
@@ -2932,6 +2959,52 @@
                         "$ref": "ContaineranalysisGoogleDevtoolsCloudbuildV1Hash"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "ContaineranalysisGoogleDevtoolsCloudbuildV1GCSLocation": {
+            "description": "Represents a storage location in Cloud Storage",
+            "id": "ContaineranalysisGoogleDevtoolsCloudbuildV1GCSLocation",
+            "properties": {
+                "bucket": {
+                    "description": "Cloud Storage bucket. See https://cloud.google.com/storage/docs/naming#requirements",
+                    "type": "string"
+                },
+                "generation": {
+                    "description": "Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "object": {
+                    "description": "Cloud Storage object. See https://cloud.google.com/storage/docs/naming#objectnames",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ContaineranalysisGoogleDevtoolsCloudbuildV1GitConfig": {
+            "description": "GitConfig is a configuration for git operations.",
+            "id": "ContaineranalysisGoogleDevtoolsCloudbuildV1GitConfig",
+            "properties": {
+                "http": {
+                    "$ref": "ContaineranalysisGoogleDevtoolsCloudbuildV1GitConfigHttpConfig",
+                    "description": "Configuration for HTTP related git operations."
+                }
+            },
+            "type": "object"
+        },
+        "ContaineranalysisGoogleDevtoolsCloudbuildV1GitConfigHttpConfig": {
+            "description": "HttpConfig is a configuration for HTTP related git operations.",
+            "id": "ContaineranalysisGoogleDevtoolsCloudbuildV1GitConfigHttpConfig",
+            "properties": {
+                "proxySecretVersionName": {
+                    "description": "SecretVersion resource of the HTTP proxy URL. The proxy URL should be in format protocol://@]proxyhost[:port].",
+                    "type": "string"
+                },
+                "proxySslCaInfo": {
+                    "$ref": "ContaineranalysisGoogleDevtoolsCloudbuildV1GCSLocation",
+                    "description": "Optional. Cloud Storage object storing the certificate to use with the HTTP proxy."
                 }
             },
             "type": "object"
@@ -3064,7 +3137,7 @@
                     "type": "array"
                 },
                 "buildStepOutputs": {
-                    "description": "List of build step outputs, produced by builder images, in the order corresponding to build step indices. [Cloud Builders](https://cloud.google.com/cloud-build/docs/cloud-builders) can produce this output by writing to `$BUILDER_OUTPUT/output`. Only the first 50KB of data is stored.",
+                    "description": "List of build step outputs, produced by builder images, in the order corresponding to build step indices. [Cloud Builders](https://cloud.google.com/cloud-build/docs/cloud-builders) can produce this output by writing to `$BUILDER_OUTPUT/output`. Only the first 50KB of data is stored. Note that the `$BUILDER_OUTPUT` variable is read-only and can't be substituted.",
                     "items": {
                         "format": "byte",
                         "type": "string"
@@ -3169,6 +3242,10 @@
                 "connectedRepository": {
                     "$ref": "ContaineranalysisGoogleDevtoolsCloudbuildV1ConnectedRepository",
                     "description": "Optional. If provided, get the source from this 2nd-gen Google Cloud Build repository resource."
+                },
+                "developerConnectConfig": {
+                    "$ref": "ContaineranalysisGoogleDevtoolsCloudbuildV1DeveloperConnectConfig",
+                    "description": "If provided, get the source from this Developer Connect config."
                 },
                 "gitSource": {
                     "$ref": "ContaineranalysisGoogleDevtoolsCloudbuildV1GitSource",

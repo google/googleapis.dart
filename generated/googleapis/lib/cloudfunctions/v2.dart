@@ -3,6 +3,7 @@
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
 // ignore_for_file: deprecated_member_use_from_same_package
+// ignore_for_file: doc_directive_unknown
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -2051,7 +2052,28 @@ class ListRuntimesResponse {
 typedef Location = $Location00;
 
 /// Security patches are only applied when a function is redeployed.
-typedef OnDeployUpdatePolicy = $OnDeployUpdatePolicy;
+class OnDeployUpdatePolicy {
+  /// contains the runtime version which was used during latest function
+  /// deployment.
+  ///
+  /// Output only.
+  core.String? runtimeVersion;
+
+  OnDeployUpdatePolicy({
+    this.runtimeVersion,
+  });
+
+  OnDeployUpdatePolicy.fromJson(core.Map json_)
+      : this(
+          runtimeVersion: json_.containsKey('runtimeVersion')
+              ? json_['runtimeVersion'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (runtimeVersion != null) 'runtimeVersion': runtimeVersion!,
+      };
+}
 
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
@@ -2591,6 +2613,12 @@ class ServiceConfig {
   /// a full description.
   core.String? availableMemory;
 
+  /// The binary authorization policy to be checked when deploying the Cloud Run
+  /// service.
+  ///
+  /// Optional.
+  core.String? binaryAuthorizationPolicy;
+
   /// Environment variables that shall be available during function execution.
   core.Map<core.String, core.String>? environmentVariables;
 
@@ -2706,6 +2734,7 @@ class ServiceConfig {
     this.allTrafficOnLatestRevision,
     this.availableCpu,
     this.availableMemory,
+    this.binaryAuthorizationPolicy,
     this.environmentVariables,
     this.ingressSettings,
     this.maxInstanceCount,
@@ -2735,6 +2764,10 @@ class ServiceConfig {
           availableMemory: json_.containsKey('availableMemory')
               ? json_['availableMemory'] as core.String
               : null,
+          binaryAuthorizationPolicy:
+              json_.containsKey('binaryAuthorizationPolicy')
+                  ? json_['binaryAuthorizationPolicy'] as core.String
+                  : null,
           environmentVariables: json_.containsKey('environmentVariables')
               ? (json_['environmentVariables']
                       as core.Map<core.String, core.dynamic>)
@@ -2801,6 +2834,8 @@ class ServiceConfig {
           'allTrafficOnLatestRevision': allTrafficOnLatestRevision!,
         if (availableCpu != null) 'availableCpu': availableCpu!,
         if (availableMemory != null) 'availableMemory': availableMemory!,
+        if (binaryAuthorizationPolicy != null)
+          'binaryAuthorizationPolicy': binaryAuthorizationPolicy!,
         if (environmentVariables != null)
           'environmentVariables': environmentVariables!,
         if (ingressSettings != null) 'ingressSettings': ingressSettings!,
@@ -2980,10 +3015,16 @@ class StorageSource {
   /// to build.
   core.String? object;
 
+  /// When the specified storage bucket is a 1st gen function uploard url
+  /// bucket, this field should be set as the generated upload url for 1st gen
+  /// deployment.
+  core.String? sourceUploadUrl;
+
   StorageSource({
     this.bucket,
     this.generation,
     this.object,
+    this.sourceUploadUrl,
   });
 
   StorageSource.fromJson(core.Map json_)
@@ -2997,12 +3038,16 @@ class StorageSource {
           object: json_.containsKey('object')
               ? json_['object'] as core.String
               : null,
+          sourceUploadUrl: json_.containsKey('sourceUploadUrl')
+              ? json_['sourceUploadUrl'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bucket != null) 'bucket': bucket!,
         if (generation != null) 'generation': generation!,
         if (object != null) 'object': object!,
+        if (sourceUploadUrl != null) 'sourceUploadUrl': sourceUploadUrl!,
       };
 }
 

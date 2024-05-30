@@ -3,6 +3,7 @@
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
 // ignore_for_file: deprecated_member_use_from_same_package
+// ignore_for_file: doc_directive_unknown
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -6854,15 +6855,23 @@ class GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings {
   /// business logic (e.g. when 3 is pressed, return the account balance).
   core.bool? enabled;
 
+  /// Endpoint timeout setting for matching dtmf input to regex.
+  core.String? endpointingTimeoutDuration;
+
   /// The digit that terminates a DTMF digit sequence.
   core.String? finishDigit;
+
+  /// Interdigit timeout setting for matching dtmf input to regex.
+  core.String? interdigitTimeoutDuration;
 
   /// Max length of DTMF digits.
   core.int? maxDigits;
 
   GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings({
     this.enabled,
+    this.endpointingTimeoutDuration,
     this.finishDigit,
+    this.interdigitTimeoutDuration,
     this.maxDigits,
   });
 
@@ -6871,9 +6880,17 @@ class GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings {
           enabled: json_.containsKey('enabled')
               ? json_['enabled'] as core.bool
               : null,
+          endpointingTimeoutDuration:
+              json_.containsKey('endpointingTimeoutDuration')
+                  ? json_['endpointingTimeoutDuration'] as core.String
+                  : null,
           finishDigit: json_.containsKey('finishDigit')
               ? json_['finishDigit'] as core.String
               : null,
+          interdigitTimeoutDuration:
+              json_.containsKey('interdigitTimeoutDuration')
+                  ? json_['interdigitTimeoutDuration'] as core.String
+                  : null,
           maxDigits: json_.containsKey('maxDigits')
               ? json_['maxDigits'] as core.int
               : null,
@@ -6881,7 +6898,11 @@ class GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
+        if (endpointingTimeoutDuration != null)
+          'endpointingTimeoutDuration': endpointingTimeoutDuration!,
         if (finishDigit != null) 'finishDigit': finishDigit!,
+        if (interdigitTimeoutDuration != null)
+          'interdigitTimeoutDuration': interdigitTimeoutDuration!,
         if (maxDigits != null) 'maxDigits': maxDigits!,
       };
 }
@@ -13119,7 +13140,7 @@ class GoogleCloudDialogflowCxV3Match {
   /// - "NO_MATCH" : No match was found for the query.
   /// - "NO_INPUT" : Indicates an empty query.
   /// - "EVENT" : The query directly triggered an event.
-  /// - "LLM" : The query was handled by an LLM.
+  /// - "PLAYBOOK" : The query was handled by a `Playbook`.
   core.String? matchType;
 
   /// The collection of parameters extracted from the query.
@@ -15261,11 +15282,17 @@ class GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings {
   /// should have the permission of storage.buckets.setIamPolicy.
   core.String? gcsBucket;
 
+  /// Whether to store TTS audio.
+  ///
+  /// By default, TTS audio from the virtual agent is not exported.
+  core.bool? storeTtsAudio;
+
   GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings({
     this.audioExportPattern,
     this.audioFormat,
     this.enableAudioRedaction,
     this.gcsBucket,
+    this.storeTtsAudio,
   });
 
   GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings.fromJson(
@@ -15283,6 +15310,9 @@ class GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings {
           gcsBucket: json_.containsKey('gcsBucket')
               ? json_['gcsBucket'] as core.String
               : null,
+          storeTtsAudio: json_.containsKey('storeTtsAudio')
+              ? json_['storeTtsAudio'] as core.bool
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -15292,6 +15322,7 @@ class GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings {
         if (enableAudioRedaction != null)
           'enableAudioRedaction': enableAudioRedaction!,
         if (gcsBucket != null) 'gcsBucket': gcsBucket!,
+        if (storeTtsAudio != null) 'storeTtsAudio': storeTtsAudio!,
       };
 }
 

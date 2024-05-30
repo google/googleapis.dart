@@ -3,6 +3,7 @@
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
 // ignore_for_file: deprecated_member_use_from_same_package
+// ignore_for_file: doc_directive_unknown
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -835,8 +836,9 @@ class Message {
   ///
   /// Arbitrary key/value payload, which must be UTF-8 encoded. The key should
   /// not be a reserved word ("from", "message_type", or any word starting with
-  /// "google" or "gcm"). When sending payloads containing only data fields to
-  /// iOS devices, only normal priority (`"apns-priority": "5"`) is allowed in
+  /// "google." or "gcm.notification."). When sending payloads containing only
+  /// data fields to iOS devices, only normal priority (`"apns-priority": "5"`)
+  /// is allowed in
   /// \[`ApnsConfig`\](/docs/reference/fcm/rest/v1/projects.messages#apnsconfig).
   core.Map<core.String, core.String>? data;
 

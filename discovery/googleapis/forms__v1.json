@@ -40,7 +40,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240430",
+    "revision": "20240521",
     "rootUrl": "https://forms.googleapis.com/",
     "servicePath": "",
     "title": "Google Forms API",

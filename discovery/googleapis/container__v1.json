@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240422",
+    "revision": "20240514",
     "rootUrl": "https://container.googleapis.com/",
     "servicePath": "",
     "title": "Kubernetes Engine API",
@@ -5039,7 +5039,9 @@
                             "POD",
                             "DAEMONSET",
                             "DEPLOYMENT",
-                            "STATEFULSET"
+                            "STATEFULSET",
+                            "CADVISOR",
+                            "KUBELET"
                         ],
                         "enumDescriptions": [
                             "Default value. This shouldn't be used.",
@@ -5052,7 +5054,9 @@
                             "Pod",
                             "DaemonSet",
                             "Deployment",
-                            "Statefulset"
+                            "Statefulset",
+                            "CADVISOR",
+                            "KUBELET"
                         ],
                         "type": "string"
                     },

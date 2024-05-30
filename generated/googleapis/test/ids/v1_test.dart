@@ -1,6 +1,7 @@
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
 // ignore_for_file: deprecated_member_use_from_same_package
+// ignore_for_file: doc_directive_unknown
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_const_declarations
@@ -219,6 +220,8 @@ api.Endpoint buildEndpoint() {
     o.labels = buildUnnamed3();
     o.name = 'foo';
     o.network = 'foo';
+    o.satisfiesPzi = true;
+    o.satisfiesPzs = true;
     o.severity = 'foo';
     o.state = 'foo';
     o.threatExceptions = buildUnnamed4();
@@ -257,6 +260,8 @@ void checkEndpoint(api.Endpoint o) {
       o.network!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.satisfiesPzi!, unittest.isTrue);
+    unittest.expect(o.satisfiesPzs!, unittest.isTrue);
     unittest.expect(
       o.severity!,
       unittest.equals('foo'),

@@ -3,6 +3,7 @@
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
 // ignore_for_file: deprecated_member_use_from_same_package
+// ignore_for_file: doc_directive_unknown
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -68,6 +69,11 @@ class DriveApi {
   /// See, edit, create, and delete only the specific Google Drive files you use
   /// with this app
   static const driveFileScope = 'https://www.googleapis.com/auth/drive.file';
+
+  /// See and download your Google Drive files that were created or edited by
+  /// Google Meet.
+  static const driveMeetReadonlyScope =
+      'https://www.googleapis.com/auth/drive.meet.readonly';
 
   /// View and manage metadata of files in your Google Drive
   static const driveMetadataScope =
@@ -3102,14 +3108,22 @@ class AboutDriveThemes {
 
 /// The user's storage quota limits and usage.
 ///
-/// All fields are measured in bytes.
+/// For users that are part of an organization with pooled storage, information
+/// about the limit and usage across all services is for the organization,
+/// rather than the individual user. All fields are measured in bytes.
 class AboutStorageQuota {
   /// The usage limit, if applicable.
   ///
-  /// This will not be present if the user has unlimited storage.
+  /// This will not be present if the user has unlimited storage. For users that
+  /// are part of an organization with pooled storage, this is the limit for the
+  /// organization, rather than the individual user.
   core.String? limit;
 
   /// The total usage across all services.
+  ///
+  /// For users that are part of an organization with pooled storage, this is
+  /// the usage across all services for the organization, rather than the
+  /// individual user.
   core.String? usage;
 
   /// The usage by all files in Google Drive.
@@ -3230,7 +3244,10 @@ class About {
 
   /// The user's storage quota limits and usage.
   ///
-  /// All fields are measured in bytes.
+  /// For users that are part of an organization with pooled storage,
+  /// information about the limit and usage across all services is for the
+  /// organization, rather than the individual user. All fields are measured in
+  /// bytes.
   AboutStorageQuota? storageQuota;
 
   /// Deprecated: Use `driveThemes` instead.

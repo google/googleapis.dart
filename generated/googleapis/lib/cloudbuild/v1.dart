@@ -3,6 +3,7 @@
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
 // ignore_for_file: deprecated_member_use_from_same_package
+// ignore_for_file: doc_directive_unknown
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -4267,6 +4268,8 @@ class Build {
   core.String? serviceAccount;
 
   /// The location of the source files to build.
+  ///
+  /// Optional.
   Source? source;
 
   /// A permanent fixed identifier for source.
@@ -4600,7 +4603,7 @@ class BuildOptions {
   /// Note that this is *NOT* "disk free"; some of the space will be used by the
   /// operating system and build utilities. Also note that this is the minimum
   /// disk size that will be allocated for the build -- the build may run with a
-  /// larger disk than requested. At present, the maximum disk size is 2000GB;
+  /// larger disk than requested. At present, the maximum disk size is 4000GB;
   /// builds that request more than the maximum are rejected with an error.
   core.String? diskSizeGb;
 
@@ -5478,6 +5481,8 @@ typedef CancelOperationRequest = $Empty;
 /// Location of the source in a 2nd-gen Google Cloud Build repository resource.
 class ConnectedRepository {
   /// Directory, relative to the source root, in which to run the build.
+  ///
+  /// Optional.
   core.String? dir;
 
   /// Name of the Google Cloud Build repository, formatted as `projects / *
@@ -5488,6 +5493,8 @@ class ConnectedRepository {
 
   /// The revision to fetch from the Git repository such as a branch, a tag, a
   /// commit SHA, or any Git ref.
+  ///
+  /// Required.
   core.String? revision;
 
   ConnectedRepository({
@@ -5742,6 +5749,49 @@ class FileHashes {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (fileHash != null) 'fileHash': fileHash!,
+      };
+}
+
+/// Represents a storage location in Cloud Storage
+class GCSLocation {
+  /// Cloud Storage bucket.
+  ///
+  /// See https://cloud.google.com/storage/docs/naming#requirements
+  core.String? bucket;
+
+  /// Cloud Storage generation for the object.
+  ///
+  /// If the generation is omitted, the latest generation will be used.
+  core.String? generation;
+
+  /// Cloud Storage object.
+  ///
+  /// See https://cloud.google.com/storage/docs/naming#objectnames
+  core.String? object;
+
+  GCSLocation({
+    this.bucket,
+    this.generation,
+    this.object,
+  });
+
+  GCSLocation.fromJson(core.Map json_)
+      : this(
+          bucket: json_.containsKey('bucket')
+              ? json_['bucket'] as core.String
+              : null,
+          generation: json_.containsKey('generation')
+              ? json_['generation'] as core.String
+              : null,
+          object: json_.containsKey('object')
+              ? json_['object'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bucket != null) 'bucket': bucket!,
+        if (generation != null) 'generation': generation!,
+        if (object != null) 'object': object!,
       };
 }
 
@@ -6617,6 +6667,8 @@ class GitSource {
   ///
   /// This must be a relative path. If a step's `dir` is specified and is an
   /// absolute path, this value is ignored for that step's execution.
+  ///
+  /// Optional.
   core.String? dir;
 
   /// The revision to fetch from the Git repository such as a branch, a tag, a
@@ -6628,12 +6680,16 @@ class GitSource {
   /// `git fetch`, see
   /// https://git-scm.com/docs/gitrevisions#_specifying_revisions. For
   /// information on `git fetch`, see https://git-scm.com/docs/git-fetch.
+  ///
+  /// Optional.
   core.String? revision;
 
   /// Location of the Git repo to build.
   ///
   /// This will be used as a `git remote`, see
   /// https://git-scm.com/docs/git-remote.
+  ///
+  /// Required.
   core.String? url;
 
   GitSource({
@@ -6722,8 +6778,14 @@ class HttpConfig {
   /// The proxy URL should be in format protocol://@\]proxyhost\[:port\].
   core.String? proxySecretVersionName;
 
+  /// Cloud Storage object storing the certificate to use with the HTTP proxy.
+  ///
+  /// Optional.
+  GCSLocation? proxySslCaInfo;
+
   HttpConfig({
     this.proxySecretVersionName,
+    this.proxySslCaInfo,
   });
 
   HttpConfig.fromJson(core.Map json_)
@@ -6731,11 +6793,16 @@ class HttpConfig {
           proxySecretVersionName: json_.containsKey('proxySecretVersionName')
               ? json_['proxySecretVersionName'] as core.String
               : null,
+          proxySslCaInfo: json_.containsKey('proxySslCaInfo')
+              ? GCSLocation.fromJson(json_['proxySslCaInfo']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (proxySecretVersionName != null)
           'proxySecretVersionName': proxySecretVersionName!,
+        if (proxySslCaInfo != null) 'proxySslCaInfo': proxySslCaInfo!,
       };
 }
 
@@ -7615,23 +7682,33 @@ class RepoSource {
   ///
   /// This must be a relative path. If a step's `dir` is specified and is an
   /// absolute path, this value is ignored for that step's execution.
+  ///
+  /// Optional.
   core.String? dir;
 
   /// Only trigger a build if the revision regex does NOT match the revision
   /// regex.
+  ///
+  /// Optional.
   core.bool? invertRegex;
 
   /// ID of the project that owns the Cloud Source Repository.
   ///
   /// If omitted, the project ID requesting the build is assumed.
+  ///
+  /// Optional.
   core.String? projectId;
 
   /// Name of the Cloud Source Repository.
+  ///
+  /// Required.
   core.String? repoName;
 
   /// Substitutions to use in a triggered build.
   ///
   /// Should only be used with RunBuildTrigger
+  ///
+  /// Optional.
   core.Map<core.String, core.String>? substitutions;
 
   /// Regex matching tags to build.
@@ -7773,7 +7850,8 @@ class Results {
   ///
   /// [Cloud Builders](https://cloud.google.com/cloud-build/docs/cloud-builders)
   /// can produce this output by writing to `$BUILDER_OUTPUT/output`. Only the
-  /// first 50KB of data is stored.
+  /// first 50KB of data is stored. Note that the `$BUILDER_OUTPUT` variable is
+  /// read-only and can't be substituted.
   core.List<core.String>? buildStepOutputs;
 
   /// Container images that were built as a part of the build.
@@ -8286,12 +8364,16 @@ class StorageSource {
   /// Cloud Storage generation for the object.
   ///
   /// If the generation is omitted, the latest generation will be used.
+  ///
+  /// Optional.
   core.String? generation;
 
   /// Cloud Storage object containing the source.
   ///
   /// This object must be a zipped (`.zip`) or gzipped archive file (`.tar.gz`)
   /// containing source to build.
+  ///
+  /// Required.
   core.String? object;
 
   /// Option to specify the tool to fetch the source file for the build.
@@ -8342,6 +8424,8 @@ class StorageSource {
 class StorageSourceManifest {
   /// Cloud Storage bucket containing the source manifest (see
   /// [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
+  ///
+  /// Required.
   core.String? bucket;
 
   /// Cloud Storage generation for the object.
@@ -8352,6 +8436,8 @@ class StorageSourceManifest {
   /// Cloud Storage object containing the source manifest.
   ///
   /// This object must be a JSON file.
+  ///
+  /// Required.
   core.String? object;
 
   StorageSourceManifest({

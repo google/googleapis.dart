@@ -3,6 +3,7 @@
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
 // ignore_for_file: deprecated_member_use_from_same_package
+// ignore_for_file: doc_directive_unknown
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -1740,8 +1741,8 @@ class EventsResource {
 
   /// Moves an event to another calendar, i.e. changes an event's organizer.
   ///
-  /// Note that only default events can be moved; outOfOffice, focusTime and
-  /// workingLocation events cannot be moved.
+  /// Note that only default events can be moved; outOfOffice, focusTime,
+  /// workingLocation and fromGmail events cannot be moved.
   ///
   /// Request parameters:
   ///
@@ -4126,6 +4127,7 @@ class Event {
   /// - "outOfOffice" - An out-of-office event.
   /// - "focusTime" - A focus-time event.
   /// - "workingLocation" - A working location event.
+  /// - "fromGmail" - An event from Gmail. This type of event cannot be created.
   core.String? eventType;
 
   /// Extended properties of the event.

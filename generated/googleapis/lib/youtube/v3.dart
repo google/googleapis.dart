@@ -3,6 +3,7 @@
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
 // ignore_for_file: deprecated_member_use_from_same_package
+// ignore_for_file: doc_directive_unknown
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -51,8 +52,6 @@
 /// - [WatermarksResource]
 /// - [YoutubeResource]
 ///   - [YoutubeV3Resource]
-///     - [YoutubeV3LiveChatResource]
-///       - [YoutubeV3LiveChatMessagesResource]
 library;
 
 import 'dart:async' as async;
@@ -2623,6 +2622,49 @@ class LiveChatMessagesResource {
       queryParams: queryParams_,
     );
     return LiveChatMessageListResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Transition a durable chat event.
+  ///
+  /// Request parameters:
+  ///
+  /// [id] - The ID that uniquely identify the chat message event to transition.
+  ///
+  /// [status] - The status to which the chat event is going to transition.
+  /// Possible string values are:
+  /// - "statusUnspecified" : Default unknown enum value.
+  /// - "closed" : The durable chat event is over.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LiveChatMessage].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LiveChatMessage> transition({
+    core.String? id,
+    core.String? status,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (id != null) 'id': [id],
+      if (status != null) 'status': [status],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const url_ = 'youtube/v3/liveChat/messages/transition';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+    );
+    return LiveChatMessage.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -5753,9 +5795,6 @@ class YoutubeResource {
 class YoutubeV3Resource {
   final commons.ApiRequester _requester;
 
-  YoutubeV3LiveChatResource get liveChat =>
-      YoutubeV3LiveChatResource(_requester);
-
   YoutubeV3Resource(commons.ApiRequester client) : _requester = client;
 
   /// Updates an existing resource.
@@ -5799,65 +5838,6 @@ class YoutubeV3Resource {
       queryParams: queryParams_,
     );
     return CommentThread.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-}
-
-class YoutubeV3LiveChatResource {
-  final commons.ApiRequester _requester;
-
-  YoutubeV3LiveChatMessagesResource get messages =>
-      YoutubeV3LiveChatMessagesResource(_requester);
-
-  YoutubeV3LiveChatResource(commons.ApiRequester client) : _requester = client;
-}
-
-class YoutubeV3LiveChatMessagesResource {
-  final commons.ApiRequester _requester;
-
-  YoutubeV3LiveChatMessagesResource(commons.ApiRequester client)
-      : _requester = client;
-
-  /// Transition a durable chat event.
-  ///
-  /// Request parameters:
-  ///
-  /// [id] - The ID that uniquely identify the chat message event to transition.
-  ///
-  /// [status] - The status to which the chat event is going to transition.
-  /// Possible string values are:
-  /// - "statusUnspecified" : Default unknown enum value.
-  /// - "closed" : The durable chat event is over.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [LiveChatMessage].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<LiveChatMessage> transition({
-    core.String? id,
-    core.String? status,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (id != null) 'id': [id],
-      if (status != null) 'status': [status],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    const url_ = 'youtube/v3/liveChat/messages/transition';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      queryParams: queryParams_,
-    );
-    return LiveChatMessage.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }

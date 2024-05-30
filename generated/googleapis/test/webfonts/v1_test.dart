@@ -1,6 +1,7 @@
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
 // ignore_for_file: deprecated_member_use_from_same_package
+// ignore_for_file: doc_directive_unknown
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_const_declarations
@@ -67,29 +68,12 @@ void checkUnnamed0(core.List<api.Axis> o) {
   checkAxis(o[1]);
 }
 
-core.Map<core.String, core.String> buildUnnamed1() => {
-      'x': 'foo',
-      'y': 'foo',
-    };
-
-void checkUnnamed1(core.Map<core.String, core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o['x']!,
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o['y']!,
-    unittest.equals('foo'),
-  );
-}
-
-core.List<core.String> buildUnnamed2() => [
+core.List<core.String> buildUnnamed1() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed2(core.List<core.String> o) {
+void checkUnnamed1(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -97,6 +81,23 @@ void checkUnnamed2(core.List<core.String> o) {
   );
   unittest.expect(
     o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.Map<core.String, core.String> buildUnnamed2() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
+
+void checkUnnamed2(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
     unittest.equals('foo'),
   );
 }
@@ -118,6 +119,23 @@ void checkUnnamed3(core.List<core.String> o) {
   );
 }
 
+core.List<core.String> buildUnnamed4() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed4(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterWebfont = 0;
 api.Webfont buildWebfont() {
   final o = api.Webfont();
@@ -125,13 +143,14 @@ api.Webfont buildWebfont() {
   if (buildCounterWebfont < 3) {
     o.axes = buildUnnamed0();
     o.category = 'foo';
+    o.colorCapabilities = buildUnnamed1();
     o.family = 'foo';
-    o.files = buildUnnamed1();
+    o.files = buildUnnamed2();
     o.kind = 'foo';
     o.lastModified = 'foo';
     o.menu = 'foo';
-    o.subsets = buildUnnamed2();
-    o.variants = buildUnnamed3();
+    o.subsets = buildUnnamed3();
+    o.variants = buildUnnamed4();
     o.version = 'foo';
   }
   buildCounterWebfont--;
@@ -146,11 +165,12 @@ void checkWebfont(api.Webfont o) {
       o.category!,
       unittest.equals('foo'),
     );
+    checkUnnamed1(o.colorCapabilities!);
     unittest.expect(
       o.family!,
       unittest.equals('foo'),
     );
-    checkUnnamed1(o.files!);
+    checkUnnamed2(o.files!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -163,8 +183,8 @@ void checkWebfont(api.Webfont o) {
       o.menu!,
       unittest.equals('foo'),
     );
-    checkUnnamed2(o.subsets!);
-    checkUnnamed3(o.variants!);
+    checkUnnamed3(o.subsets!);
+    checkUnnamed4(o.variants!);
     unittest.expect(
       o.version!,
       unittest.equals('foo'),
@@ -173,12 +193,12 @@ void checkWebfont(api.Webfont o) {
   buildCounterWebfont--;
 }
 
-core.List<api.Webfont> buildUnnamed4() => [
+core.List<api.Webfont> buildUnnamed5() => [
       buildWebfont(),
       buildWebfont(),
     ];
 
-void checkUnnamed4(core.List<api.Webfont> o) {
+void checkUnnamed5(core.List<api.Webfont> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWebfont(o[0]);
   checkWebfont(o[1]);
@@ -189,7 +209,7 @@ api.WebfontList buildWebfontList() {
   final o = api.WebfontList();
   buildCounterWebfontList++;
   if (buildCounterWebfontList < 3) {
-    o.items = buildUnnamed4();
+    o.items = buildUnnamed5();
     o.kind = 'foo';
   }
   buildCounterWebfontList--;
@@ -199,7 +219,7 @@ api.WebfontList buildWebfontList() {
 void checkWebfontList(api.WebfontList o) {
   buildCounterWebfontList++;
   if (buildCounterWebfontList < 3) {
-    checkUnnamed4(o.items!);
+    checkUnnamed5(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -208,12 +228,12 @@ void checkWebfontList(api.WebfontList o) {
   buildCounterWebfontList--;
 }
 
-core.List<core.String> buildUnnamed5() => [
+core.List<core.String> buildUnnamed6() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed5(core.List<core.String> o) {
+void checkUnnamed6(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -225,12 +245,12 @@ void checkUnnamed5(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed6() => [
+core.List<core.String> buildUnnamed7() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed6(core.List<core.String> o) {
+void checkUnnamed7(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -277,8 +297,8 @@ void main() {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.WebfontsApi(mock).webfonts;
-      final arg_capability = buildUnnamed5();
-      final arg_family = buildUnnamed6();
+      final arg_capability = buildUnnamed6();
+      final arg_family = buildUnnamed7();
       final arg_sort = 'foo';
       final arg_subset = 'foo';
       final arg_$fields = 'foo';

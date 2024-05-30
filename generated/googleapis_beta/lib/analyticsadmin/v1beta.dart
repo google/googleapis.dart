@@ -3,6 +3,7 @@
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
 // ignore_for_file: deprecated_member_use_from_same_package
+// ignore_for_file: doc_directive_unknown
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -2713,70 +2714,13 @@ class GoogleAnalyticsAdminV1betaAccessBetweenFilter {
 }
 
 /// A contiguous range of days: startDate, startDate + 1, ..., endDate.
-class GoogleAnalyticsAdminV1betaAccessDateRange {
-  /// The inclusive end date for the query in the format `YYYY-MM-DD`.
-  ///
-  /// Cannot be before `startDate`. The format `NdaysAgo`, `yesterday`, or
-  /// `today` is also accepted, and in that case, the date is inferred based on
-  /// the current time in the request's time zone.
-  core.String? endDate;
-
-  /// The inclusive start date for the query in the format `YYYY-MM-DD`.
-  ///
-  /// Cannot be after `endDate`. The format `NdaysAgo`, `yesterday`, or `today`
-  /// is also accepted, and in that case, the date is inferred based on the
-  /// current time in the request's time zone.
-  core.String? startDate;
-
-  GoogleAnalyticsAdminV1betaAccessDateRange({
-    this.endDate,
-    this.startDate,
-  });
-
-  GoogleAnalyticsAdminV1betaAccessDateRange.fromJson(core.Map json_)
-      : this(
-          endDate: json_.containsKey('endDate')
-              ? json_['endDate'] as core.String
-              : null,
-          startDate: json_.containsKey('startDate')
-              ? json_['startDate'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (endDate != null) 'endDate': endDate!,
-        if (startDate != null) 'startDate': startDate!,
-      };
-}
+typedef GoogleAnalyticsAdminV1betaAccessDateRange = $AccessDateRange;
 
 /// Dimensions are attributes of your data.
 ///
 /// For example, the dimension `userEmail` indicates the email of the user that
 /// accessed reporting data. Dimension values in report responses are strings.
-class GoogleAnalyticsAdminV1betaAccessDimension {
-  /// The API name of the dimension.
-  ///
-  /// See
-  /// [Data Access Schema](https://developers.google.com/analytics/devguides/config/admin/v1/access-api-schema)
-  /// for the list of dimensions supported in this API. Dimensions are
-  /// referenced by name in `dimensionFilter` and `orderBys`.
-  core.String? dimensionName;
-
-  GoogleAnalyticsAdminV1betaAccessDimension({
-    this.dimensionName,
-  });
-
-  GoogleAnalyticsAdminV1betaAccessDimension.fromJson(core.Map json_)
-      : this(
-          dimensionName: json_.containsKey('dimensionName')
-              ? json_['dimensionName'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (dimensionName != null) 'dimensionName': dimensionName!,
-      };
-}
+typedef GoogleAnalyticsAdminV1betaAccessDimension = $AccessDimension;
 
 /// Describes a dimension column in the report.
 ///
@@ -2784,47 +2728,11 @@ class GoogleAnalyticsAdminV1betaAccessDimension {
 /// DimensionHeaders. However, dimensions used exclusively within filters or
 /// expressions do not produce columns in a report; correspondingly, those
 /// dimensions do not produce headers.
-class GoogleAnalyticsAdminV1betaAccessDimensionHeader {
-  /// The dimension's name; for example 'userEmail'.
-  core.String? dimensionName;
-
-  GoogleAnalyticsAdminV1betaAccessDimensionHeader({
-    this.dimensionName,
-  });
-
-  GoogleAnalyticsAdminV1betaAccessDimensionHeader.fromJson(core.Map json_)
-      : this(
-          dimensionName: json_.containsKey('dimensionName')
-              ? json_['dimensionName'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (dimensionName != null) 'dimensionName': dimensionName!,
-      };
-}
+typedef GoogleAnalyticsAdminV1betaAccessDimensionHeader
+    = $AccessDimensionHeader;
 
 /// The value of a dimension.
-class GoogleAnalyticsAdminV1betaAccessDimensionValue {
-  /// The dimension value.
-  ///
-  /// For example, this value may be 'France' for the 'country' dimension.
-  core.String? value;
-
-  GoogleAnalyticsAdminV1betaAccessDimensionValue({
-    this.value,
-  });
-
-  GoogleAnalyticsAdminV1betaAccessDimensionValue.fromJson(core.Map json_)
-      : this(
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (value != null) 'value': value!,
-      };
-}
+typedef GoogleAnalyticsAdminV1betaAccessDimensionValue = $AccessDimensionValue;
 
 /// An expression to filter dimension or metric values.
 class GoogleAnalyticsAdminV1betaAccessFilter {
@@ -2970,30 +2878,7 @@ typedef GoogleAnalyticsAdminV1betaAccessInListFilter = $InListFilter;
 ///
 /// For example, the metric `accessCount` is the total number of data access
 /// records.
-class GoogleAnalyticsAdminV1betaAccessMetric {
-  /// The API name of the metric.
-  ///
-  /// See
-  /// [Data Access Schema](https://developers.google.com/analytics/devguides/config/admin/v1/access-api-schema)
-  /// for the list of metrics supported in this API. Metrics are referenced by
-  /// name in `metricFilter` & `orderBys`.
-  core.String? metricName;
-
-  GoogleAnalyticsAdminV1betaAccessMetric({
-    this.metricName,
-  });
-
-  GoogleAnalyticsAdminV1betaAccessMetric.fromJson(core.Map json_)
-      : this(
-          metricName: json_.containsKey('metricName')
-              ? json_['metricName'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (metricName != null) 'metricName': metricName!,
-      };
-}
+typedef GoogleAnalyticsAdminV1betaAccessMetric = $AccessMetric;
 
 /// Describes a metric column in the report.
 ///
@@ -3001,47 +2886,10 @@ class GoogleAnalyticsAdminV1betaAccessMetric {
 /// MetricHeaders. However, metrics used exclusively within filters or
 /// expressions do not produce columns in a report; correspondingly, those
 /// metrics do not produce headers.
-class GoogleAnalyticsAdminV1betaAccessMetricHeader {
-  /// The metric's name; for example 'accessCount'.
-  core.String? metricName;
-
-  GoogleAnalyticsAdminV1betaAccessMetricHeader({
-    this.metricName,
-  });
-
-  GoogleAnalyticsAdminV1betaAccessMetricHeader.fromJson(core.Map json_)
-      : this(
-          metricName: json_.containsKey('metricName')
-              ? json_['metricName'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (metricName != null) 'metricName': metricName!,
-      };
-}
+typedef GoogleAnalyticsAdminV1betaAccessMetricHeader = $AccessMetricHeader;
 
 /// The value of a metric.
-class GoogleAnalyticsAdminV1betaAccessMetricValue {
-  /// The measurement value.
-  ///
-  /// For example, this value may be '13'.
-  core.String? value;
-
-  GoogleAnalyticsAdminV1betaAccessMetricValue({
-    this.value,
-  });
-
-  GoogleAnalyticsAdminV1betaAccessMetricValue.fromJson(core.Map json_)
-      : this(
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (value != null) 'value': value!,
-      };
-}
+typedef GoogleAnalyticsAdminV1betaAccessMetricValue = $AccessMetricValue;
 
 /// Filters for numeric or date values.
 class GoogleAnalyticsAdminV1betaAccessNumericFilter {
@@ -3257,93 +3105,7 @@ class GoogleAnalyticsAdminV1betaAccessRow {
 typedef GoogleAnalyticsAdminV1betaAccessStringFilter = $StringFilter;
 
 /// A resource message representing a Google Analytics account.
-class GoogleAnalyticsAdminV1betaAccount {
-  /// Time when this account was originally created.
-  ///
-  /// Output only.
-  core.String? createTime;
-
-  /// Indicates whether this Account is soft-deleted or not.
-  ///
-  /// Deleted accounts are excluded from List results unless specifically
-  /// requested.
-  ///
-  /// Output only.
-  core.bool? deleted;
-
-  /// Human-readable display name for this account.
-  ///
-  /// Required.
-  core.String? displayName;
-
-  /// The URI for a Google Marketing Platform organization resource.
-  ///
-  /// Only set when this account is connected to a GMP organization. Format:
-  /// marketingplatformadmin.googleapis.com/organizations/{org_id}
-  ///
-  /// Output only.
-  core.String? gmpOrganization;
-
-  /// Resource name of this account.
-  ///
-  /// Format: accounts/{account} Example: "accounts/100"
-  ///
-  /// Output only.
-  core.String? name;
-
-  /// Country of business.
-  ///
-  /// Must be a Unicode CLDR region code.
-  core.String? regionCode;
-
-  /// Time when account payload fields were last updated.
-  ///
-  /// Output only.
-  core.String? updateTime;
-
-  GoogleAnalyticsAdminV1betaAccount({
-    this.createTime,
-    this.deleted,
-    this.displayName,
-    this.gmpOrganization,
-    this.name,
-    this.regionCode,
-    this.updateTime,
-  });
-
-  GoogleAnalyticsAdminV1betaAccount.fromJson(core.Map json_)
-      : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          deleted: json_.containsKey('deleted')
-              ? json_['deleted'] as core.bool
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          gmpOrganization: json_.containsKey('gmpOrganization')
-              ? json_['gmpOrganization'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          regionCode: json_.containsKey('regionCode')
-              ? json_['regionCode'] as core.String
-              : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (deleted != null) 'deleted': deleted!,
-        if (displayName != null) 'displayName': displayName!,
-        if (gmpOrganization != null) 'gmpOrganization': gmpOrganization!,
-        if (name != null) 'name': name!,
-        if (regionCode != null) 'regionCode': regionCode!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
-}
+typedef GoogleAnalyticsAdminV1betaAccount = $Account;
 
 /// A virtual resource representing an overview of an account and all its child
 /// GA4 properties.
@@ -3397,35 +3159,8 @@ class GoogleAnalyticsAdminV1betaAccountSummary {
 }
 
 /// Request message for AcknowledgeUserDataCollection RPC.
-class GoogleAnalyticsAdminV1betaAcknowledgeUserDataCollectionRequest {
-  /// An acknowledgement that the caller of this method understands the terms of
-  /// user data collection.
-  ///
-  /// This field must contain the exact value: "I acknowledge that I have the
-  /// necessary privacy disclosures and rights from my end users for the
-  /// collection and processing of their data, including the association of such
-  /// data with the visitation information Google Analytics collects from my
-  /// site and/or app property."
-  ///
-  /// Required.
-  core.String? acknowledgement;
-
-  GoogleAnalyticsAdminV1betaAcknowledgeUserDataCollectionRequest({
-    this.acknowledgement,
-  });
-
-  GoogleAnalyticsAdminV1betaAcknowledgeUserDataCollectionRequest.fromJson(
-      core.Map json_)
-      : this(
-          acknowledgement: json_.containsKey('acknowledgement')
-              ? json_['acknowledgement'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (acknowledgement != null) 'acknowledgement': acknowledgement!,
-      };
-}
+typedef GoogleAnalyticsAdminV1betaAcknowledgeUserDataCollectionRequest
+    = $AcknowledgeUserDataCollectionRequest;
 
 /// Response message for AcknowledgeUserDataCollection RPC.
 typedef GoogleAnalyticsAdminV1betaAcknowledgeUserDataCollectionResponse
@@ -3779,387 +3514,24 @@ class GoogleAnalyticsAdminV1betaConversionEvent {
 /// Defines a default value/currency for a conversion event.
 ///
 /// Both value and currency must be provided.
-class GoogleAnalyticsAdminV1betaConversionEventDefaultConversionValue {
-  /// When a conversion event for this event_name has no set currency, this
-  /// currency will be applied as the default.
-  ///
-  /// Must be in ISO 4217 currency code format. See
-  /// https://en.wikipedia.org/wiki/ISO_4217 for more information.
-  core.String? currencyCode;
-
-  /// This value will be used to populate the value for all conversions of the
-  /// specified event_name where the event "value" parameter is unset.
-  core.double? value;
-
-  GoogleAnalyticsAdminV1betaConversionEventDefaultConversionValue({
-    this.currencyCode,
-    this.value,
-  });
-
-  GoogleAnalyticsAdminV1betaConversionEventDefaultConversionValue.fromJson(
-      core.Map json_)
-      : this(
-          currencyCode: json_.containsKey('currencyCode')
-              ? json_['currencyCode'] as core.String
-              : null,
-          value: json_.containsKey('value')
-              ? (json_['value'] as core.num).toDouble()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (currencyCode != null) 'currencyCode': currencyCode!,
-        if (value != null) 'value': value!,
-      };
-}
+typedef GoogleAnalyticsAdminV1betaConversionEventDefaultConversionValue
+    = $ConversionEventDefaultConversionValue;
 
 /// A definition for a CustomDimension.
-class GoogleAnalyticsAdminV1betaCustomDimension {
-  /// Description for this custom dimension.
-  ///
-  /// Max length of 150 characters.
-  ///
-  /// Optional.
-  core.String? description;
-
-  /// If set to true, sets this dimension as NPA and excludes it from ads
-  /// personalization.
-  ///
-  /// This is currently only supported by user-scoped custom dimensions.
-  ///
-  /// Optional.
-  core.bool? disallowAdsPersonalization;
-
-  /// Display name for this custom dimension as shown in the Analytics UI.
-  ///
-  /// Max length of 82 characters, alphanumeric plus space and underscore
-  /// starting with a letter. Legacy system-generated display names may contain
-  /// square brackets, but updates to this field will never permit square
-  /// brackets.
-  ///
-  /// Required.
-  core.String? displayName;
-
-  /// Resource name for this CustomDimension resource.
-  ///
-  /// Format: properties/{property}/customDimensions/{customDimension}
-  ///
-  /// Output only.
-  core.String? name;
-
-  /// Tagging parameter name for this custom dimension.
-  ///
-  /// If this is a user-scoped dimension, then this is the user property name.
-  /// If this is an event-scoped dimension, then this is the event parameter
-  /// name. If this is an item-scoped dimension, then this is the parameter name
-  /// found in the eCommerce items array. May only contain alphanumeric and
-  /// underscore characters, starting with a letter. Max length of 24 characters
-  /// for user-scoped dimensions, 40 characters for event-scoped dimensions.
-  ///
-  /// Required. Immutable.
-  core.String? parameterName;
-
-  /// The scope of this dimension.
-  ///
-  /// Required. Immutable.
-  /// Possible string values are:
-  /// - "DIMENSION_SCOPE_UNSPECIFIED" : Scope unknown or not specified.
-  /// - "EVENT" : Dimension scoped to an event.
-  /// - "USER" : Dimension scoped to a user.
-  /// - "ITEM" : Dimension scoped to eCommerce items
-  core.String? scope;
-
-  GoogleAnalyticsAdminV1betaCustomDimension({
-    this.description,
-    this.disallowAdsPersonalization,
-    this.displayName,
-    this.name,
-    this.parameterName,
-    this.scope,
-  });
-
-  GoogleAnalyticsAdminV1betaCustomDimension.fromJson(core.Map json_)
-      : this(
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          disallowAdsPersonalization:
-              json_.containsKey('disallowAdsPersonalization')
-                  ? json_['disallowAdsPersonalization'] as core.bool
-                  : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          parameterName: json_.containsKey('parameterName')
-              ? json_['parameterName'] as core.String
-              : null,
-          scope:
-              json_.containsKey('scope') ? json_['scope'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (disallowAdsPersonalization != null)
-          'disallowAdsPersonalization': disallowAdsPersonalization!,
-        if (displayName != null) 'displayName': displayName!,
-        if (name != null) 'name': name!,
-        if (parameterName != null) 'parameterName': parameterName!,
-        if (scope != null) 'scope': scope!,
-      };
-}
+typedef GoogleAnalyticsAdminV1betaCustomDimension = $CustomDimension;
 
 /// A definition for a custom metric.
-class GoogleAnalyticsAdminV1betaCustomMetric {
-  /// Description for this custom dimension.
-  ///
-  /// Max length of 150 characters.
-  ///
-  /// Optional.
-  core.String? description;
-
-  /// Display name for this custom metric as shown in the Analytics UI.
-  ///
-  /// Max length of 82 characters, alphanumeric plus space and underscore
-  /// starting with a letter. Legacy system-generated display names may contain
-  /// square brackets, but updates to this field will never permit square
-  /// brackets.
-  ///
-  /// Required.
-  core.String? displayName;
-
-  /// The type for the custom metric's value.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "MEASUREMENT_UNIT_UNSPECIFIED" : MeasurementUnit unspecified or missing.
-  /// - "STANDARD" : This metric uses default units.
-  /// - "CURRENCY" : This metric measures a currency.
-  /// - "FEET" : This metric measures feet.
-  /// - "METERS" : This metric measures meters.
-  /// - "KILOMETERS" : This metric measures kilometers.
-  /// - "MILES" : This metric measures miles.
-  /// - "MILLISECONDS" : This metric measures milliseconds.
-  /// - "SECONDS" : This metric measures seconds.
-  /// - "MINUTES" : This metric measures minutes.
-  /// - "HOURS" : This metric measures hours.
-  core.String? measurementUnit;
-
-  /// Resource name for this CustomMetric resource.
-  ///
-  /// Format: properties/{property}/customMetrics/{customMetric}
-  ///
-  /// Output only.
-  core.String? name;
-
-  /// Tagging name for this custom metric.
-  ///
-  /// If this is an event-scoped metric, then this is the event parameter name.
-  /// May only contain alphanumeric and underscore charactes, starting with a
-  /// letter. Max length of 40 characters for event-scoped metrics.
-  ///
-  /// Required. Immutable.
-  core.String? parameterName;
-
-  /// Types of restricted data that this metric may contain.
-  ///
-  /// Required for metrics with CURRENCY measurement unit. Must be empty for
-  /// metrics with a non-CURRENCY measurement unit.
-  ///
-  /// Optional.
-  core.List<core.String>? restrictedMetricType;
-
-  /// The scope of this custom metric.
-  ///
-  /// Required. Immutable.
-  /// Possible string values are:
-  /// - "METRIC_SCOPE_UNSPECIFIED" : Scope unknown or not specified.
-  /// - "EVENT" : Metric scoped to an event.
-  core.String? scope;
-
-  GoogleAnalyticsAdminV1betaCustomMetric({
-    this.description,
-    this.displayName,
-    this.measurementUnit,
-    this.name,
-    this.parameterName,
-    this.restrictedMetricType,
-    this.scope,
-  });
-
-  GoogleAnalyticsAdminV1betaCustomMetric.fromJson(core.Map json_)
-      : this(
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          measurementUnit: json_.containsKey('measurementUnit')
-              ? json_['measurementUnit'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          parameterName: json_.containsKey('parameterName')
-              ? json_['parameterName'] as core.String
-              : null,
-          restrictedMetricType: json_.containsKey('restrictedMetricType')
-              ? (json_['restrictedMetricType'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          scope:
-              json_.containsKey('scope') ? json_['scope'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (displayName != null) 'displayName': displayName!,
-        if (measurementUnit != null) 'measurementUnit': measurementUnit!,
-        if (name != null) 'name': name!,
-        if (parameterName != null) 'parameterName': parameterName!,
-        if (restrictedMetricType != null)
-          'restrictedMetricType': restrictedMetricType!,
-        if (scope != null) 'scope': scope!,
-      };
-}
+typedef GoogleAnalyticsAdminV1betaCustomMetric = $CustomMetric;
 
 /// Settings values for data retention.
 ///
 /// This is a singleton resource.
-class GoogleAnalyticsAdminV1betaDataRetentionSettings {
-  /// The length of time that event-level data is retained.
-  /// Possible string values are:
-  /// - "RETENTION_DURATION_UNSPECIFIED" : Data retention time duration is not
-  /// specified.
-  /// - "TWO_MONTHS" : The data retention time duration is 2 months.
-  /// - "FOURTEEN_MONTHS" : The data retention time duration is 14 months.
-  /// - "TWENTY_SIX_MONTHS" : The data retention time duration is 26 months.
-  /// Available to 360 properties only.
-  /// - "THIRTY_EIGHT_MONTHS" : The data retention time duration is 38 months.
-  /// Available to 360 properties only.
-  /// - "FIFTY_MONTHS" : The data retention time duration is 50 months.
-  /// Available to 360 properties only.
-  core.String? eventDataRetention;
-
-  /// Resource name for this DataRetentionSetting resource.
-  ///
-  /// Format: properties/{property}/dataRetentionSettings
-  ///
-  /// Output only.
-  core.String? name;
-
-  /// If true, reset the retention period for the user identifier with every
-  /// event from that user.
-  core.bool? resetUserDataOnNewActivity;
-
-  GoogleAnalyticsAdminV1betaDataRetentionSettings({
-    this.eventDataRetention,
-    this.name,
-    this.resetUserDataOnNewActivity,
-  });
-
-  GoogleAnalyticsAdminV1betaDataRetentionSettings.fromJson(core.Map json_)
-      : this(
-          eventDataRetention: json_.containsKey('eventDataRetention')
-              ? json_['eventDataRetention'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          resetUserDataOnNewActivity:
-              json_.containsKey('resetUserDataOnNewActivity')
-                  ? json_['resetUserDataOnNewActivity'] as core.bool
-                  : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (eventDataRetention != null)
-          'eventDataRetention': eventDataRetention!,
-        if (name != null) 'name': name!,
-        if (resetUserDataOnNewActivity != null)
-          'resetUserDataOnNewActivity': resetUserDataOnNewActivity!,
-      };
-}
+typedef GoogleAnalyticsAdminV1betaDataRetentionSettings
+    = $DataRetentionSettings;
 
 /// A resource message representing data sharing settings of a Google Analytics
 /// account.
-class GoogleAnalyticsAdminV1betaDataSharingSettings {
-  /// Resource name.
-  ///
-  /// Format: accounts/{account}/dataSharingSettings Example:
-  /// "accounts/1000/dataSharingSettings"
-  ///
-  /// Output only.
-  core.String? name;
-
-  /// Allows any of Google sales to access the data in order to suggest
-  /// configuration changes to improve results.
-  core.bool? sharingWithGoogleAnySalesEnabled;
-
-  /// Allows Google sales teams that are assigned to the customer to access the
-  /// data in order to suggest configuration changes to improve results.
-  ///
-  /// Sales team restrictions still apply when enabled.
-  core.bool? sharingWithGoogleAssignedSalesEnabled;
-
-  /// Allows Google to use the data to improve other Google products or
-  /// services.
-  core.bool? sharingWithGoogleProductsEnabled;
-
-  /// Allows Google support to access the data in order to help troubleshoot
-  /// issues.
-  core.bool? sharingWithGoogleSupportEnabled;
-
-  /// Allows Google to share the data anonymously in aggregate form with others.
-  core.bool? sharingWithOthersEnabled;
-
-  GoogleAnalyticsAdminV1betaDataSharingSettings({
-    this.name,
-    this.sharingWithGoogleAnySalesEnabled,
-    this.sharingWithGoogleAssignedSalesEnabled,
-    this.sharingWithGoogleProductsEnabled,
-    this.sharingWithGoogleSupportEnabled,
-    this.sharingWithOthersEnabled,
-  });
-
-  GoogleAnalyticsAdminV1betaDataSharingSettings.fromJson(core.Map json_)
-      : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          sharingWithGoogleAnySalesEnabled:
-              json_.containsKey('sharingWithGoogleAnySalesEnabled')
-                  ? json_['sharingWithGoogleAnySalesEnabled'] as core.bool
-                  : null,
-          sharingWithGoogleAssignedSalesEnabled:
-              json_.containsKey('sharingWithGoogleAssignedSalesEnabled')
-                  ? json_['sharingWithGoogleAssignedSalesEnabled'] as core.bool
-                  : null,
-          sharingWithGoogleProductsEnabled:
-              json_.containsKey('sharingWithGoogleProductsEnabled')
-                  ? json_['sharingWithGoogleProductsEnabled'] as core.bool
-                  : null,
-          sharingWithGoogleSupportEnabled:
-              json_.containsKey('sharingWithGoogleSupportEnabled')
-                  ? json_['sharingWithGoogleSupportEnabled'] as core.bool
-                  : null,
-          sharingWithOthersEnabled:
-              json_.containsKey('sharingWithOthersEnabled')
-                  ? json_['sharingWithOthersEnabled'] as core.bool
-                  : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (sharingWithGoogleAnySalesEnabled != null)
-          'sharingWithGoogleAnySalesEnabled': sharingWithGoogleAnySalesEnabled!,
-        if (sharingWithGoogleAssignedSalesEnabled != null)
-          'sharingWithGoogleAssignedSalesEnabled':
-              sharingWithGoogleAssignedSalesEnabled!,
-        if (sharingWithGoogleProductsEnabled != null)
-          'sharingWithGoogleProductsEnabled': sharingWithGoogleProductsEnabled!,
-        if (sharingWithGoogleSupportEnabled != null)
-          'sharingWithGoogleSupportEnabled': sharingWithGoogleSupportEnabled!,
-        if (sharingWithOthersEnabled != null)
-          'sharingWithOthersEnabled': sharingWithOthersEnabled!,
-      };
-}
+typedef GoogleAnalyticsAdminV1betaDataSharingSettings = $DataSharingSettings;
 
 /// A resource message representing a data stream.
 class GoogleAnalyticsAdminV1betaDataStream {
@@ -4267,260 +3639,22 @@ class GoogleAnalyticsAdminV1betaDataStream {
 }
 
 /// Data specific to Android app streams.
-class GoogleAnalyticsAdminV1betaDataStreamAndroidAppStreamData {
-  /// ID of the corresponding Android app in Firebase, if any.
-  ///
-  /// This ID can change if the Android app is deleted and recreated.
-  ///
-  /// Output only.
-  core.String? firebaseAppId;
-
-  /// The package name for the app being measured.
-  ///
-  /// Example: "com.example.myandroidapp"
-  ///
-  /// Immutable.
-  core.String? packageName;
-
-  GoogleAnalyticsAdminV1betaDataStreamAndroidAppStreamData({
-    this.firebaseAppId,
-    this.packageName,
-  });
-
-  GoogleAnalyticsAdminV1betaDataStreamAndroidAppStreamData.fromJson(
-      core.Map json_)
-      : this(
-          firebaseAppId: json_.containsKey('firebaseAppId')
-              ? json_['firebaseAppId'] as core.String
-              : null,
-          packageName: json_.containsKey('packageName')
-              ? json_['packageName'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (firebaseAppId != null) 'firebaseAppId': firebaseAppId!,
-        if (packageName != null) 'packageName': packageName!,
-      };
-}
+typedef GoogleAnalyticsAdminV1betaDataStreamAndroidAppStreamData
+    = $DataStreamAndroidAppStreamData;
 
 /// Data specific to iOS app streams.
-class GoogleAnalyticsAdminV1betaDataStreamIosAppStreamData {
-  /// The Apple App Store Bundle ID for the app Example: "com.example.myiosapp"
-  ///
-  /// Required. Immutable.
-  core.String? bundleId;
-
-  /// ID of the corresponding iOS app in Firebase, if any.
-  ///
-  /// This ID can change if the iOS app is deleted and recreated.
-  ///
-  /// Output only.
-  core.String? firebaseAppId;
-
-  GoogleAnalyticsAdminV1betaDataStreamIosAppStreamData({
-    this.bundleId,
-    this.firebaseAppId,
-  });
-
-  GoogleAnalyticsAdminV1betaDataStreamIosAppStreamData.fromJson(core.Map json_)
-      : this(
-          bundleId: json_.containsKey('bundleId')
-              ? json_['bundleId'] as core.String
-              : null,
-          firebaseAppId: json_.containsKey('firebaseAppId')
-              ? json_['firebaseAppId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (bundleId != null) 'bundleId': bundleId!,
-        if (firebaseAppId != null) 'firebaseAppId': firebaseAppId!,
-      };
-}
+typedef GoogleAnalyticsAdminV1betaDataStreamIosAppStreamData
+    = $DataStreamIosAppStreamData;
 
 /// Data specific to web streams.
-class GoogleAnalyticsAdminV1betaDataStreamWebStreamData {
-  /// Domain name of the web app being measured, or empty.
-  ///
-  /// Example: "http://www.google.com", "https://www.google.com"
-  core.String? defaultUri;
-
-  /// ID of the corresponding web app in Firebase, if any.
-  ///
-  /// This ID can change if the web app is deleted and recreated.
-  ///
-  /// Output only.
-  core.String? firebaseAppId;
-
-  /// Analytics Measurement ID.
-  ///
-  /// Example: "G-1A2BCD345E"
-  ///
-  /// Output only.
-  core.String? measurementId;
-
-  GoogleAnalyticsAdminV1betaDataStreamWebStreamData({
-    this.defaultUri,
-    this.firebaseAppId,
-    this.measurementId,
-  });
-
-  GoogleAnalyticsAdminV1betaDataStreamWebStreamData.fromJson(core.Map json_)
-      : this(
-          defaultUri: json_.containsKey('defaultUri')
-              ? json_['defaultUri'] as core.String
-              : null,
-          firebaseAppId: json_.containsKey('firebaseAppId')
-              ? json_['firebaseAppId'] as core.String
-              : null,
-          measurementId: json_.containsKey('measurementId')
-              ? json_['measurementId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (defaultUri != null) 'defaultUri': defaultUri!,
-        if (firebaseAppId != null) 'firebaseAppId': firebaseAppId!,
-        if (measurementId != null) 'measurementId': measurementId!,
-      };
-}
+typedef GoogleAnalyticsAdminV1betaDataStreamWebStreamData
+    = $DataStreamWebStreamData;
 
 /// A link between a GA4 property and a Firebase project.
-class GoogleAnalyticsAdminV1betaFirebaseLink {
-  /// Time when this FirebaseLink was originally created.
-  ///
-  /// Output only.
-  core.String? createTime;
-
-  /// Example format: properties/1234/firebaseLinks/5678
-  ///
-  /// Output only.
-  core.String? name;
-
-  /// Firebase project resource name.
-  ///
-  /// When creating a FirebaseLink, you may provide this resource name using
-  /// either a project number or project ID. Once this resource has been
-  /// created, returned FirebaseLinks will always have a project_name that
-  /// contains a project number. Format: 'projects/{project number}' Example:
-  /// 'projects/1234'
-  ///
-  /// Immutable.
-  core.String? project;
-
-  GoogleAnalyticsAdminV1betaFirebaseLink({
-    this.createTime,
-    this.name,
-    this.project,
-  });
-
-  GoogleAnalyticsAdminV1betaFirebaseLink.fromJson(core.Map json_)
-      : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          project: json_.containsKey('project')
-              ? json_['project'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (name != null) 'name': name!,
-        if (project != null) 'project': project!,
-      };
-}
+typedef GoogleAnalyticsAdminV1betaFirebaseLink = $FirebaseLink;
 
 /// A link between a GA4 property and a Google Ads account.
-class GoogleAnalyticsAdminV1betaGoogleAdsLink {
-  /// Enable personalized advertising features with this integration.
-  ///
-  /// Automatically publish my Google Analytics audience lists and Google
-  /// Analytics remarketing events/parameters to the linked Google Ads account.
-  /// If this field is not set on create/update, it will be defaulted to true.
-  core.bool? adsPersonalizationEnabled;
-
-  /// If true, this link is for a Google Ads manager account.
-  ///
-  /// Output only.
-  core.bool? canManageClients;
-
-  /// Time when this link was originally created.
-  ///
-  /// Output only.
-  core.String? createTime;
-
-  /// Email address of the user that created the link.
-  ///
-  /// An empty string will be returned if the email address can't be retrieved.
-  ///
-  /// Output only.
-  core.String? creatorEmailAddress;
-
-  /// Google Ads customer ID.
-  ///
-  /// Immutable.
-  core.String? customerId;
-
-  /// Format: properties/{propertyId}/googleAdsLinks/{googleAdsLinkId} Note:
-  /// googleAdsLinkId is not the Google Ads customer ID.
-  ///
-  /// Output only.
-  core.String? name;
-
-  /// Time when this link was last updated.
-  ///
-  /// Output only.
-  core.String? updateTime;
-
-  GoogleAnalyticsAdminV1betaGoogleAdsLink({
-    this.adsPersonalizationEnabled,
-    this.canManageClients,
-    this.createTime,
-    this.creatorEmailAddress,
-    this.customerId,
-    this.name,
-    this.updateTime,
-  });
-
-  GoogleAnalyticsAdminV1betaGoogleAdsLink.fromJson(core.Map json_)
-      : this(
-          adsPersonalizationEnabled:
-              json_.containsKey('adsPersonalizationEnabled')
-                  ? json_['adsPersonalizationEnabled'] as core.bool
-                  : null,
-          canManageClients: json_.containsKey('canManageClients')
-              ? json_['canManageClients'] as core.bool
-              : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          creatorEmailAddress: json_.containsKey('creatorEmailAddress')
-              ? json_['creatorEmailAddress'] as core.String
-              : null,
-          customerId: json_.containsKey('customerId')
-              ? json_['customerId'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (adsPersonalizationEnabled != null)
-          'adsPersonalizationEnabled': adsPersonalizationEnabled!,
-        if (canManageClients != null) 'canManageClients': canManageClients!,
-        if (createTime != null) 'createTime': createTime!,
-        if (creatorEmailAddress != null)
-          'creatorEmailAddress': creatorEmailAddress!,
-        if (customerId != null) 'customerId': customerId!,
-        if (name != null) 'name': name!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
-}
+typedef GoogleAnalyticsAdminV1betaGoogleAdsLink = $GoogleAdsLink;
 
 /// A key event in a Google Analytics property.
 class GoogleAnalyticsAdminV1betaKeyEvent {
@@ -4620,42 +3754,7 @@ class GoogleAnalyticsAdminV1betaKeyEvent {
 }
 
 /// Defines a default value/currency for a key event.
-class GoogleAnalyticsAdminV1betaKeyEventDefaultValue {
-  /// When an occurrence of this Key Event (specified by event_name) has no set
-  /// currency this currency will be applied as the default.
-  ///
-  /// Must be in ISO 4217 currency code format. See
-  /// https://en.wikipedia.org/wiki/ISO_4217 for more information.
-  ///
-  /// Required.
-  core.String? currencyCode;
-
-  /// This will be used to populate the "value" parameter for all occurrences of
-  /// this Key Event (specified by event_name) where that parameter is unset.
-  ///
-  /// Required.
-  core.double? numericValue;
-
-  GoogleAnalyticsAdminV1betaKeyEventDefaultValue({
-    this.currencyCode,
-    this.numericValue,
-  });
-
-  GoogleAnalyticsAdminV1betaKeyEventDefaultValue.fromJson(core.Map json_)
-      : this(
-          currencyCode: json_.containsKey('currencyCode')
-              ? json_['currencyCode'] as core.String
-              : null,
-          numericValue: json_.containsKey('numericValue')
-              ? (json_['numericValue'] as core.num).toDouble()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (currencyCode != null) 'currencyCode': currencyCode!,
-        if (numericValue != null) 'numericValue': numericValue!,
-      };
-}
+typedef GoogleAnalyticsAdminV1betaKeyEventDefaultValue = $KeyEventDefaultValue;
 
 /// Response message for ListAccountSummaries RPC.
 class GoogleAnalyticsAdminV1betaListAccountSummariesResponse {
@@ -5052,310 +4151,17 @@ class GoogleAnalyticsAdminV1betaListPropertiesResponse {
 }
 
 /// A secret value used for sending hits to Measurement Protocol.
-class GoogleAnalyticsAdminV1betaMeasurementProtocolSecret {
-  /// Human-readable display name for this secret.
-  ///
-  /// Required.
-  core.String? displayName;
-
-  /// Resource name of this secret.
-  ///
-  /// This secret may be a child of any type of stream. Format:
-  /// properties/{property}/dataStreams/{dataStream}/measurementProtocolSecrets/{measurementProtocolSecret}
-  ///
-  /// Output only.
-  core.String? name;
-
-  /// The measurement protocol secret value.
-  ///
-  /// Pass this value to the api_secret field of the Measurement Protocol API
-  /// when sending hits to this secret's parent property.
-  ///
-  /// Output only.
-  core.String? secretValue;
-
-  GoogleAnalyticsAdminV1betaMeasurementProtocolSecret({
-    this.displayName,
-    this.name,
-    this.secretValue,
-  });
-
-  GoogleAnalyticsAdminV1betaMeasurementProtocolSecret.fromJson(core.Map json_)
-      : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          secretValue: json_.containsKey('secretValue')
-              ? json_['secretValue'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (name != null) 'name': name!,
-        if (secretValue != null) 'secretValue': secretValue!,
-      };
-}
+typedef GoogleAnalyticsAdminV1betaMeasurementProtocolSecret
+    = $MeasurementProtocolSecret;
 
 /// To represent a number.
 typedef GoogleAnalyticsAdminV1betaNumericValue = $NumericValue;
 
 /// A resource message representing a Google Analytics GA4 property.
-class GoogleAnalyticsAdminV1betaProperty {
-  /// The resource name of the parent account Format: accounts/{account_id}
-  /// Example: "accounts/123"
-  ///
-  /// Immutable.
-  core.String? account;
-
-  /// Time when the entity was originally created.
-  ///
-  /// Output only.
-  core.String? createTime;
-
-  /// The currency type used in reports involving monetary values.
-  ///
-  /// Format: https://en.wikipedia.org/wiki/ISO_4217 Examples: "USD", "EUR",
-  /// "JPY"
-  core.String? currencyCode;
-
-  /// If set, the time at which this property was trashed.
-  ///
-  /// If not set, then this property is not currently in the trash can.
-  ///
-  /// Output only.
-  core.String? deleteTime;
-
-  /// Human-readable display name for this property.
-  ///
-  /// The max allowed display name length is 100 UTF-16 code units.
-  ///
-  /// Required.
-  core.String? displayName;
-
-  /// If set, the time at which this trashed property will be permanently
-  /// deleted.
-  ///
-  /// If not set, then this property is not currently in the trash can and is
-  /// not slated to be deleted.
-  ///
-  /// Output only.
-  core.String? expireTime;
-
-  /// Industry associated with this property Example: AUTOMOTIVE, FOOD_AND_DRINK
-  /// Possible string values are:
-  /// - "INDUSTRY_CATEGORY_UNSPECIFIED" : Industry category unspecified
-  /// - "AUTOMOTIVE" : Automotive
-  /// - "BUSINESS_AND_INDUSTRIAL_MARKETS" : Business and industrial markets
-  /// - "FINANCE" : Finance
-  /// - "HEALTHCARE" : Healthcare
-  /// - "TECHNOLOGY" : Technology
-  /// - "TRAVEL" : Travel
-  /// - "OTHER" : Other
-  /// - "ARTS_AND_ENTERTAINMENT" : Arts and entertainment
-  /// - "BEAUTY_AND_FITNESS" : Beauty and fitness
-  /// - "BOOKS_AND_LITERATURE" : Books and literature
-  /// - "FOOD_AND_DRINK" : Food and drink
-  /// - "GAMES" : Games
-  /// - "HOBBIES_AND_LEISURE" : Hobbies and leisure
-  /// - "HOME_AND_GARDEN" : Home and garden
-  /// - "INTERNET_AND_TELECOM" : Internet and telecom
-  /// - "LAW_AND_GOVERNMENT" : Law and government
-  /// - "NEWS" : News
-  /// - "ONLINE_COMMUNITIES" : Online communities
-  /// - "PEOPLE_AND_SOCIETY" : People and society
-  /// - "PETS_AND_ANIMALS" : Pets and animals
-  /// - "REAL_ESTATE" : Real estate
-  /// - "REFERENCE" : Reference
-  /// - "SCIENCE" : Science
-  /// - "SPORTS" : Sports
-  /// - "JOBS_AND_EDUCATION" : Jobs and education
-  /// - "SHOPPING" : Shopping
-  core.String? industryCategory;
-
-  /// Resource name of this property.
-  ///
-  /// Format: properties/{property_id} Example: "properties/1000"
-  ///
-  /// Output only.
-  core.String? name;
-
-  /// Resource name of this property's logical parent.
-  ///
-  /// Note: The Property-Moving UI can be used to change the parent. Format:
-  /// accounts/{account}, properties/{property} Example: "accounts/100",
-  /// "properties/101"
-  ///
-  /// Immutable.
-  core.String? parent;
-
-  /// The property type for this Property resource.
-  ///
-  /// When creating a property, if the type is "PROPERTY_TYPE_UNSPECIFIED", then
-  /// "ORDINARY_PROPERTY" will be implied.
-  ///
-  /// Immutable.
-  /// Possible string values are:
-  /// - "PROPERTY_TYPE_UNSPECIFIED" : Unknown or unspecified property type
-  /// - "PROPERTY_TYPE_ORDINARY" : Ordinary GA4 property
-  /// - "PROPERTY_TYPE_SUBPROPERTY" : GA4 subproperty
-  /// - "PROPERTY_TYPE_ROLLUP" : GA4 rollup property
-  core.String? propertyType;
-
-  /// The Google Analytics service level that applies to this property.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "SERVICE_LEVEL_UNSPECIFIED" : Service level not specified or invalid.
-  /// - "GOOGLE_ANALYTICS_STANDARD" : The standard version of Google Analytics.
-  /// - "GOOGLE_ANALYTICS_360" : The paid, premium version of Google Analytics.
-  core.String? serviceLevel;
-
-  /// Reporting Time Zone, used as the day boundary for reports, regardless of
-  /// where the data originates.
-  ///
-  /// If the time zone honors DST, Analytics will automatically adjust for the
-  /// changes. NOTE: Changing the time zone only affects data going forward, and
-  /// is not applied retroactively. Format: https://www.iana.org/time-zones
-  /// Example: "America/Los_Angeles"
-  ///
-  /// Required.
-  core.String? timeZone;
-
-  /// Time when entity payload fields were last updated.
-  ///
-  /// Output only.
-  core.String? updateTime;
-
-  GoogleAnalyticsAdminV1betaProperty({
-    this.account,
-    this.createTime,
-    this.currencyCode,
-    this.deleteTime,
-    this.displayName,
-    this.expireTime,
-    this.industryCategory,
-    this.name,
-    this.parent,
-    this.propertyType,
-    this.serviceLevel,
-    this.timeZone,
-    this.updateTime,
-  });
-
-  GoogleAnalyticsAdminV1betaProperty.fromJson(core.Map json_)
-      : this(
-          account: json_.containsKey('account')
-              ? json_['account'] as core.String
-              : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          currencyCode: json_.containsKey('currencyCode')
-              ? json_['currencyCode'] as core.String
-              : null,
-          deleteTime: json_.containsKey('deleteTime')
-              ? json_['deleteTime'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          expireTime: json_.containsKey('expireTime')
-              ? json_['expireTime'] as core.String
-              : null,
-          industryCategory: json_.containsKey('industryCategory')
-              ? json_['industryCategory'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          parent: json_.containsKey('parent')
-              ? json_['parent'] as core.String
-              : null,
-          propertyType: json_.containsKey('propertyType')
-              ? json_['propertyType'] as core.String
-              : null,
-          serviceLevel: json_.containsKey('serviceLevel')
-              ? json_['serviceLevel'] as core.String
-              : null,
-          timeZone: json_.containsKey('timeZone')
-              ? json_['timeZone'] as core.String
-              : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (account != null) 'account': account!,
-        if (createTime != null) 'createTime': createTime!,
-        if (currencyCode != null) 'currencyCode': currencyCode!,
-        if (deleteTime != null) 'deleteTime': deleteTime!,
-        if (displayName != null) 'displayName': displayName!,
-        if (expireTime != null) 'expireTime': expireTime!,
-        if (industryCategory != null) 'industryCategory': industryCategory!,
-        if (name != null) 'name': name!,
-        if (parent != null) 'parent': parent!,
-        if (propertyType != null) 'propertyType': propertyType!,
-        if (serviceLevel != null) 'serviceLevel': serviceLevel!,
-        if (timeZone != null) 'timeZone': timeZone!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
-}
+typedef GoogleAnalyticsAdminV1betaProperty = $Property;
 
 /// A virtual resource representing metadata for a GA4 property.
-class GoogleAnalyticsAdminV1betaPropertySummary {
-  /// Display name for the property referred to in this property summary.
-  core.String? displayName;
-
-  /// Resource name of this property's logical parent.
-  ///
-  /// Note: The Property-Moving UI can be used to change the parent. Format:
-  /// accounts/{account}, properties/{property} Example: "accounts/100",
-  /// "properties/200"
-  core.String? parent;
-
-  /// Resource name of property referred to by this property summary Format:
-  /// properties/{property_id} Example: "properties/1000"
-  core.String? property;
-
-  /// The property's property type.
-  /// Possible string values are:
-  /// - "PROPERTY_TYPE_UNSPECIFIED" : Unknown or unspecified property type
-  /// - "PROPERTY_TYPE_ORDINARY" : Ordinary GA4 property
-  /// - "PROPERTY_TYPE_SUBPROPERTY" : GA4 subproperty
-  /// - "PROPERTY_TYPE_ROLLUP" : GA4 rollup property
-  core.String? propertyType;
-
-  GoogleAnalyticsAdminV1betaPropertySummary({
-    this.displayName,
-    this.parent,
-    this.property,
-    this.propertyType,
-  });
-
-  GoogleAnalyticsAdminV1betaPropertySummary.fromJson(core.Map json_)
-      : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          parent: json_.containsKey('parent')
-              ? json_['parent'] as core.String
-              : null,
-          property: json_.containsKey('property')
-              ? json_['property'] as core.String
-              : null,
-          propertyType: json_.containsKey('propertyType')
-              ? json_['propertyType'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (parent != null) 'parent': parent!,
-        if (property != null) 'property': property!,
-        if (propertyType != null) 'propertyType': propertyType!,
-      };
-}
+typedef GoogleAnalyticsAdminV1betaPropertySummary = $PropertySummary;
 
 /// Request message for ProvisionAccountTicket RPC.
 class GoogleAnalyticsAdminV1betaProvisionAccountTicketRequest {
@@ -5391,26 +4197,8 @@ class GoogleAnalyticsAdminV1betaProvisionAccountTicketRequest {
 }
 
 /// Response message for ProvisionAccountTicket RPC.
-class GoogleAnalyticsAdminV1betaProvisionAccountTicketResponse {
-  /// The param to be passed in the ToS link.
-  core.String? accountTicketId;
-
-  GoogleAnalyticsAdminV1betaProvisionAccountTicketResponse({
-    this.accountTicketId,
-  });
-
-  GoogleAnalyticsAdminV1betaProvisionAccountTicketResponse.fromJson(
-      core.Map json_)
-      : this(
-          accountTicketId: json_.containsKey('accountTicketId')
-              ? json_['accountTicketId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (accountTicketId != null) 'accountTicketId': accountTicketId!,
-      };
-}
+typedef GoogleAnalyticsAdminV1betaProvisionAccountTicketResponse
+    = $ProvisionAccountTicketResponse;
 
 /// The request for a Data Access Record Report.
 class GoogleAnalyticsAdminV1betaRunAccessReportRequest {

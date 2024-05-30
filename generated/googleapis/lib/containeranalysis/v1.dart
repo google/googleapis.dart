@@ -3,6 +3,7 @@
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
 // ignore_for_file: deprecated_member_use_from_same_package
+// ignore_for_file: doc_directive_unknown
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -2569,9 +2570,13 @@ class ComplianceOccurrence {
   core.String? nonComplianceReason;
   core.List<NonCompliantFile>? nonCompliantFiles;
 
+  /// The OS and config version the benchmark was run on.
+  ComplianceVersion? version;
+
   ComplianceOccurrence({
     this.nonComplianceReason,
     this.nonCompliantFiles,
+    this.version,
   });
 
   ComplianceOccurrence.fromJson(core.Map json_)
@@ -2585,12 +2590,17 @@ class ComplianceOccurrence {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          version: json_.containsKey('version')
+              ? ComplianceVersion.fromJson(
+                  json_['version'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nonComplianceReason != null)
           'nonComplianceReason': nonComplianceReason!,
         if (nonCompliantFiles != null) 'nonCompliantFiles': nonCompliantFiles!,
+        if (version != null) 'version': version!,
       };
 }
 

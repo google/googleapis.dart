@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240426",
+    "revision": "20240524",
     "rootUrl": "https://vision.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Vision API",

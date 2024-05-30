@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240428",
+    "revision": "20240515",
     "rootUrl": "https://clouddeploy.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Deploy API",
@@ -413,7 +413,7 @@
                                             "type": "boolean"
                                         },
                                         "name": {
-                                            "description": "Optional. Name of the `CustomTargetType`. Format is `projects/{project}/locations/{location}/customTargetTypes/a-z{0,62}`.",
+                                            "description": "Optional. Name of the `CustomTargetType`. Format is `projects/{project}/locations/{location}/customTargetTypes/{customTargetType}`. The `customTargetType` component must match `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+/customTargetTypes/[^/]+$",
                                             "required": true,
@@ -689,7 +689,7 @@
                                             "type": "boolean"
                                         },
                                         "name": {
-                                            "description": "Optional. Name of the `DeliveryPipeline`. Format is `projects/{project}/locations/{location}/deliveryPipelines/a-z{0,62}`.",
+                                            "description": "Optional. Name of the `DeliveryPipeline`. Format is `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}`. The `deliveryPipeline` component must match `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+/deliveryPipelines/[^/]+$",
                                             "required": true,
@@ -1972,7 +1972,7 @@
                                             "type": "boolean"
                                         },
                                         "name": {
-                                            "description": "Optional. Name of the `Target`. Format is `projects/{project}/locations/{location}/targets/a-z{0,62}`.",
+                                            "description": "Optional. Name of the `Target`. Format is `projects/{project}/locations/{location}/targets/{target}`. The `target` component must match `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+/targets/[^/]+$",
                                             "required": true,
@@ -2093,7 +2093,7 @@
             "id": "AdvanceChildRolloutJobRun",
             "properties": {
                 "rollout": {
-                    "description": "Output only. Name of the `ChildRollout`. Format is `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/a-z{0,62}`.",
+                    "description": "Output only. Name of the `ChildRollout`. Format is `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/{rollout}`.",
                     "readOnly": true,
                     "type": "string"
                 },
@@ -2160,7 +2160,7 @@
                     "readOnly": true
                 },
                 "id": {
-                    "description": "Required. ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `a-z{0,62}`.",
+                    "description": "Required. ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`.",
                     "type": "string"
                 },
                 "sourcePhases": {
@@ -2399,7 +2399,7 @@
             "id": "AutomationRolloutMetadata",
             "properties": {
                 "advanceAutomationRuns": {
-                    "description": "Output only. The IDs of the AutomationRuns initiated by an advance rollout rule.",
+                    "description": "Output only. The names of the AutomationRuns initiated by an advance rollout rule.",
                     "items": {
                         "type": "string"
                     },
@@ -2412,12 +2412,12 @@
                     "type": "string"
                 },
                 "promoteAutomationRun": {
-                    "description": "Output only. The ID of the AutomationRun initiated by a promote release rule.",
+                    "description": "Output only. The name of the AutomationRun initiated by a promote release rule.",
                     "readOnly": true,
                     "type": "string"
                 },
                 "repairAutomationRuns": {
-                    "description": "Output only. The IDs of the AutomationRuns initiated by a repair rollout rule.",
+                    "description": "Output only. The names of the AutomationRuns initiated by a repair rollout rule.",
                     "items": {
                         "type": "string"
                     },
@@ -2888,7 +2888,7 @@
             "id": "CreateChildRolloutJobRun",
             "properties": {
                 "rollout": {
-                    "description": "Output only. Name of the `ChildRollout`. Format is `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/a-z{0,62}`.",
+                    "description": "Output only. Name of the `ChildRollout`. Format is `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/{rollout}`.",
                     "readOnly": true,
                     "type": "string"
                 },
@@ -3016,7 +3016,7 @@
                     "type": "object"
                 },
                 "name": {
-                    "description": "Optional. Name of the `CustomTargetType`. Format is `projects/{project}/locations/{location}/customTargetTypes/a-z{0,62}`.",
+                    "description": "Optional. Name of the `CustomTargetType`. Format is `projects/{project}/locations/{location}/customTargetTypes/{customTargetType}`. The `customTargetType` component must match `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`",
                     "type": "string"
                 },
                 "uid": {
@@ -3108,7 +3108,7 @@
                     "type": "object"
                 },
                 "name": {
-                    "description": "Optional. Name of the `DeliveryPipeline`. Format is `projects/{project}/locations/{location}/deliveryPipelines/a-z{0,62}`.",
+                    "description": "Optional. Name of the `DeliveryPipeline`. Format is `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}`. The `deliveryPipeline` component must match `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`",
                     "type": "string"
                 },
                 "serialPipeline": {
@@ -3388,6 +3388,10 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "verbose": {
+                    "description": "Optional. If true, additional logging will be enabled when running builds in this execution environment.",
+                    "type": "boolean"
                 },
                 "workerPool": {
                     "description": "Optional. The resource name of the `WorkerPool`, with the format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. If this optional field is unspecified, the default Cloud Build pool will be used.",
@@ -4507,7 +4511,7 @@
                     "type": "string"
                 },
                 "id": {
-                    "description": "Required. ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `a-z{0,62}`.",
+                    "description": "Required. ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`.",
                     "type": "string"
                 },
                 "wait": {
@@ -4588,7 +4592,7 @@
                     "type": "object"
                 },
                 "name": {
-                    "description": "Optional. Name of the `Release`. Format is `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/a-z{0,62}`.",
+                    "description": "Optional. Name of the `Release`. Format is `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}`. The `release` component must match `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`",
                     "type": "string"
                 },
                 "renderEndTime": {
@@ -4917,7 +4921,7 @@
                     "readOnly": true
                 },
                 "id": {
-                    "description": "Required. ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `a-z{0,62}`.",
+                    "description": "Required. ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`.",
                     "type": "string"
                 },
                 "jobs": {
@@ -5245,7 +5249,7 @@
                     "type": "string"
                 },
                 "controllerRollout": {
-                    "description": "Output only. Name of the `ControllerRollout`. Format is `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/a-z{0,62}`.",
+                    "description": "Output only. Name of the `ControllerRollout`. Format is `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/{rollout}`.",
                     "readOnly": true,
                     "type": "string"
                 },
@@ -5331,7 +5335,7 @@
                     "readOnly": true
                 },
                 "name": {
-                    "description": "Optional. Name of the `Rollout`. Format is `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/a-z{0,62}`.",
+                    "description": "Optional. Name of the `Rollout`. Format is `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/{rollout}`. The `rollout` component must match `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`",
                     "type": "string"
                 },
                 "phases": {
@@ -5932,7 +5936,7 @@
                     "description": "Optional. Information specifying a multiTarget."
                 },
                 "name": {
-                    "description": "Optional. Name of the `Target`. Format is `projects/{project}/locations/{location}/targets/a-z{0,62}`.",
+                    "description": "Optional. Name of the `Target`. Format is `projects/{project}/locations/{location}/targets/{target}`. The `target` component must match `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`",
                     "type": "string"
                 },
                 "requireApproval": {

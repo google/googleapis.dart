@@ -3,6 +3,7 @@
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
 // ignore_for_file: deprecated_member_use_from_same_package
+// ignore_for_file: doc_directive_unknown
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -1483,10 +1484,6 @@ class GoogleCloudOrgpolicyV2Constraint {
   /// Mutable.
   core.String? displayName;
 
-  /// Defines this constraint as being a GoogleManagedConstraint.
-  GoogleCloudOrgpolicyV2ConstraintGoogleManagedConstraint?
-      googleManagedConstraint;
-
   /// Defines this constraint as being a ListConstraint.
   GoogleCloudOrgpolicyV2ConstraintListConstraint? listConstraint;
 
@@ -1509,7 +1506,6 @@ class GoogleCloudOrgpolicyV2Constraint {
     this.constraintDefault,
     this.description,
     this.displayName,
-    this.googleManagedConstraint,
     this.listConstraint,
     this.name,
     this.supportsDryRun,
@@ -1531,11 +1527,6 @@ class GoogleCloudOrgpolicyV2Constraint {
           displayName: json_.containsKey('displayName')
               ? json_['displayName'] as core.String
               : null,
-          googleManagedConstraint: json_.containsKey('googleManagedConstraint')
-              ? GoogleCloudOrgpolicyV2ConstraintGoogleManagedConstraint
-                  .fromJson(json_['googleManagedConstraint']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
           listConstraint: json_.containsKey('listConstraint')
               ? GoogleCloudOrgpolicyV2ConstraintListConstraint.fromJson(
                   json_['listConstraint']
@@ -1552,8 +1543,6 @@ class GoogleCloudOrgpolicyV2Constraint {
         if (constraintDefault != null) 'constraintDefault': constraintDefault!,
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
-        if (googleManagedConstraint != null)
-          'googleManagedConstraint': googleManagedConstraint!,
         if (listConstraint != null) 'listConstraint': listConstraint!,
         if (name != null) 'name': name!,
         if (supportsDryRun != null) 'supportsDryRun': supportsDryRun!,
@@ -1566,70 +1555,6 @@ class GoogleCloudOrgpolicyV2Constraint {
 /// it is enforced on a VM instance, serial port connections will not be opened
 /// to that instance.
 typedef GoogleCloudOrgpolicyV2ConstraintBooleanConstraint = $Empty;
-
-/// A Google managed constraint.
-///
-/// This represents a subset of fields missing from Constraint proto that are
-/// required to describe CustomConstraint
-class GoogleCloudOrgpolicyV2ConstraintGoogleManagedConstraint {
-  /// Allow or deny type.
-  /// Possible string values are:
-  /// - "ACTION_TYPE_UNSPECIFIED" : Unspecified. Results in an error.
-  /// - "ALLOW" : Allowed action type.
-  /// - "DENY" : Deny action type.
-  core.String? actionType;
-
-  /// Org policy condition/expression.
-  ///
-  /// For example: `resource.instanceName.matches("[production|test]_.*_(\d)+")`
-  /// or, `resource.management.auto_upgrade == true` The max length of the
-  /// condition is 1000 characters.
-  core.String? condition;
-
-  /// All the operations being applied for this constraint.
-  core.List<core.String>? methodTypes;
-
-  /// The resource instance type on which this policy applies.
-  ///
-  /// Format will be of the form : `/` Example: *
-  /// `compute.googleapis.com/Instance`.
-  core.List<core.String>? resourceTypes;
-
-  GoogleCloudOrgpolicyV2ConstraintGoogleManagedConstraint({
-    this.actionType,
-    this.condition,
-    this.methodTypes,
-    this.resourceTypes,
-  });
-
-  GoogleCloudOrgpolicyV2ConstraintGoogleManagedConstraint.fromJson(
-      core.Map json_)
-      : this(
-          actionType: json_.containsKey('actionType')
-              ? json_['actionType'] as core.String
-              : null,
-          condition: json_.containsKey('condition')
-              ? json_['condition'] as core.String
-              : null,
-          methodTypes: json_.containsKey('methodTypes')
-              ? (json_['methodTypes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          resourceTypes: json_.containsKey('resourceTypes')
-              ? (json_['resourceTypes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (actionType != null) 'actionType': actionType!,
-        if (condition != null) 'condition': condition!,
-        if (methodTypes != null) 'methodTypes': methodTypes!,
-        if (resourceTypes != null) 'resourceTypes': resourceTypes!,
-      };
-}
 
 /// A constraint that allows or disallows a list of string values, which are
 /// configured by an Organization Policy administrator with a policy.
@@ -1674,114 +1599,8 @@ class GoogleCloudOrgpolicyV2ConstraintListConstraint {
 /// By creating a custom constraint, customers can apply policies of this custom
 /// constraint. *Creating a custom constraint itself does NOT apply any policy
 /// enforcement*.
-class GoogleCloudOrgpolicyV2CustomConstraint {
-  /// Allow or deny type.
-  /// Possible string values are:
-  /// - "ACTION_TYPE_UNSPECIFIED" : Unspecified. Results in an error.
-  /// - "ALLOW" : Allowed action type.
-  /// - "DENY" : Deny action type.
-  core.String? actionType;
-
-  /// Org policy condition/expression.
-  ///
-  /// For example: `resource.instanceName.matches("[production|test]_.*_(\d)+")`
-  /// or, `resource.management.auto_upgrade == true` The max length of the
-  /// condition is 1000 characters.
-  core.String? condition;
-
-  /// Detailed information about this custom policy constraint.
-  ///
-  /// The max length of the description is 2000 characters.
-  core.String? description;
-
-  /// One line display name for the UI.
-  ///
-  /// The max length of the display_name is 200 characters.
-  core.String? displayName;
-
-  /// All the operations being applied for this constraint.
-  core.List<core.String>? methodTypes;
-
-  /// Name of the constraint.
-  ///
-  /// This is unique within the organization. Format of the name should be *
-  /// `organizations/{organization_id}/customConstraints/{custom_constraint_id}`
-  /// Example: `organizations/123/customConstraints/custom.createOnlyE2TypeVms`
-  /// The max length is 70 characters and the minimum length is 1. Note that the
-  /// prefix `organizations/{organization_id}/customConstraints/` is not
-  /// counted.
-  ///
-  /// Immutable.
-  core.String? name;
-
-  /// The resource instance type on which this policy applies.
-  ///
-  /// Format will be of the form : `/` Example: *
-  /// `compute.googleapis.com/Instance`.
-  ///
-  /// Immutable.
-  core.List<core.String>? resourceTypes;
-
-  /// The last time this custom constraint was updated.
-  ///
-  /// This represents the last time that the `CreateCustomConstraint` or
-  /// `UpdateCustomConstraint` RPC was called
-  ///
-  /// Output only.
-  core.String? updateTime;
-
-  GoogleCloudOrgpolicyV2CustomConstraint({
-    this.actionType,
-    this.condition,
-    this.description,
-    this.displayName,
-    this.methodTypes,
-    this.name,
-    this.resourceTypes,
-    this.updateTime,
-  });
-
-  GoogleCloudOrgpolicyV2CustomConstraint.fromJson(core.Map json_)
-      : this(
-          actionType: json_.containsKey('actionType')
-              ? json_['actionType'] as core.String
-              : null,
-          condition: json_.containsKey('condition')
-              ? json_['condition'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          methodTypes: json_.containsKey('methodTypes')
-              ? (json_['methodTypes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          resourceTypes: json_.containsKey('resourceTypes')
-              ? (json_['resourceTypes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (actionType != null) 'actionType': actionType!,
-        if (condition != null) 'condition': condition!,
-        if (description != null) 'description': description!,
-        if (displayName != null) 'displayName': displayName!,
-        if (methodTypes != null) 'methodTypes': methodTypes!,
-        if (name != null) 'name': name!,
-        if (resourceTypes != null) 'resourceTypes': resourceTypes!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
-}
+typedef GoogleCloudOrgpolicyV2CustomConstraint
+    = $GoogleCloudOrgpolicyV2CustomConstraint;
 
 /// The response returned from the ListConstraints method.
 class GoogleCloudOrgpolicyV2ListConstraintsResponse {

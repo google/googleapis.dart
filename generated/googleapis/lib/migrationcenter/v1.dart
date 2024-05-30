@@ -3,6 +3,7 @@
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
 // ignore_for_file: deprecated_member_use_from_same_package
+// ignore_for_file: doc_directive_unknown
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -3923,7 +3924,7 @@ class AssetList {
 class AssetPerformanceData {
   /// Daily resource usage aggregations.
   ///
-  /// Contains all of the data available for an asset, up to the last 40 days.
+  /// Contains all of the data available for an asset, up to the last 420 days.
   /// Aggregations are sorted from oldest to most recent.
   core.List<DailyResourceUsageAggregation>? dailyResourceUsageAggregations;
 

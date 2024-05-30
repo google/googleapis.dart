@@ -3,6 +3,7 @@
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
 // ignore_for_file: deprecated_member_use_from_same_package
+// ignore_for_file: doc_directive_unknown
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -7781,39 +7782,7 @@ class GoogleCloudDatacatalogV1VertexDatasetSpec {
 }
 
 /// Detail description of the source information of a Vertex model.
-class GoogleCloudDatacatalogV1VertexModelSourceInfo {
-  /// If this Model is copy of another Model.
-  ///
-  /// If true then source_type pertains to the original.
-  core.bool? copy;
-
-  /// Type of the model source.
-  /// Possible string values are:
-  /// - "MODEL_SOURCE_TYPE_UNSPECIFIED" : Should not be used.
-  /// - "AUTOML" : The Model is uploaded by automl training pipeline.
-  /// - "CUSTOM" : The Model is uploaded by user or custom training pipeline.
-  /// - "BQML" : The Model is registered and sync'ed from BigQuery ML.
-  /// - "MODEL_GARDEN" : The Model is saved or tuned from Model Garden.
-  core.String? sourceType;
-
-  GoogleCloudDatacatalogV1VertexModelSourceInfo({
-    this.copy,
-    this.sourceType,
-  });
-
-  GoogleCloudDatacatalogV1VertexModelSourceInfo.fromJson(core.Map json_)
-      : this(
-          copy: json_.containsKey('copy') ? json_['copy'] as core.bool : null,
-          sourceType: json_.containsKey('sourceType')
-              ? json_['sourceType'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (copy != null) 'copy': copy!,
-        if (sourceType != null) 'sourceType': sourceType!,
-      };
-}
+typedef GoogleCloudDatacatalogV1VertexModelSourceInfo = $ModelSourceInfo;
 
 /// Specification for vertex model resources.
 class GoogleCloudDatacatalogV1VertexModelSpec {

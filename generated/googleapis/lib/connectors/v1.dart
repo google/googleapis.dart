@@ -3,6 +3,7 @@
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
 // ignore_for_file: deprecated_member_use_from_same_package
+// ignore_for_file: doc_directive_unknown
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -1652,6 +1653,48 @@ class ProjectsLocationsCustomConnectorsCustomConnectorVersionsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deprecates a single CustomConnectorVersion.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the form:
+  /// `projects/{project}/locations/{location}/customConnectors/{custom_connector}/customConnectorVersions/{custom_connector_version}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/customConnectors/\[^/\]+/customConnectorVersions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> deprecate(
+    DeprecateCustomConnectorVersionRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':deprecate';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -5026,25 +5069,7 @@ class ConnectorVersionInfraConfig {
 }
 
 /// Log configuration for the connection.
-class ConnectorsLogConfig {
-  /// Enabled represents whether logging is enabled or not for a connection.
-  core.bool? enabled;
-
-  ConnectorsLogConfig({
-    this.enabled,
-  });
-
-  ConnectorsLogConfig.fromJson(core.Map json_)
-      : this(
-          enabled: json_.containsKey('enabled')
-              ? json_['enabled'] as core.bool
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (enabled != null) 'enabled': enabled!,
-      };
-}
+typedef ConnectorsLogConfig = $LogConfig;
 
 /// CustomConnector represents the custom connector defined by the customer as
 /// part of byoc.
@@ -5347,6 +5372,9 @@ class CustomConnectorVersion {
 
 /// Dead Letter configuration details provided by the user.
 typedef DeadLetterConfig = $DeadLetterConfig;
+
+/// Request message for ConnectorsService.DeprecateCustomConnectorVersion
+typedef DeprecateCustomConnectorVersionRequest = $Empty;
 typedef Destination = $Destination;
 
 /// Define the Connectors target endpoint.
@@ -5611,6 +5639,13 @@ class EndpointAttachment {
   /// Optional.
   core.String? description;
 
+  /// The Private Service Connect Connection Endpoint Global Access.
+  ///
+  /// https://cloud.google.com/vpc/docs/about-accessing-vpc-hosted-services-endpoints#global-access
+  ///
+  /// Optional.
+  core.bool? endpointGlobalAccess;
+
   /// The Private Service Connect connection endpoint ip
   ///
   /// Output only.
@@ -5645,6 +5680,7 @@ class EndpointAttachment {
   EndpointAttachment({
     this.createTime,
     this.description,
+    this.endpointGlobalAccess,
     this.endpointIp,
     this.labels,
     this.name,
@@ -5659,6 +5695,9 @@ class EndpointAttachment {
               : null,
           description: json_.containsKey('description')
               ? json_['description'] as core.String
+              : null,
+          endpointGlobalAccess: json_.containsKey('endpointGlobalAccess')
+              ? json_['endpointGlobalAccess'] as core.bool
               : null,
           endpointIp: json_.containsKey('endpointIp')
               ? json_['endpointIp'] as core.String
@@ -5683,6 +5722,8 @@ class EndpointAttachment {
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
+        if (endpointGlobalAccess != null)
+          'endpointGlobalAccess': endpointGlobalAccess!,
         if (endpointIp != null) 'endpointIp': endpointIp!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,

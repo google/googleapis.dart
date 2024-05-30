@@ -3,6 +3,7 @@
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
 // ignore_for_file: deprecated_member_use_from_same_package
+// ignore_for_file: doc_directive_unknown
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -5696,6 +5697,328 @@ class GoogleChromeManagementV1StorageStatusReport {
       };
 }
 
+/// App installation data.
+class GoogleChromeManagementV1TelemetryAppInstallEvent {
+  /// App id.
+  ///
+  /// For PWAs this is the start URL, and for extensions this is the extension
+  /// id.
+  core.String? appId;
+
+  /// App installation reason.
+  /// Possible string values are:
+  /// - "APPLICATION_INSTALL_REASON_UNSPECIFIED" : Application install reason is
+  /// unknown.
+  /// - "APPLICATION_INSTALL_REASON_SYSTEM" : Application installed with the
+  /// system and is considered part of the OS.
+  /// - "APPLICATION_INSTALL_REASON_POLICY" : Application installed by policy.
+  /// - "APPLICATION_INSTALL_REASON_OEM" : Application installed by an original
+  /// equipment manufacturer (OEM).
+  /// - "APPLICATION_INSTALL_REASON_DEFAULT" : Application installed by default,
+  /// but is not considered a system app.
+  /// - "APPLICATION_INSTALL_REASON_SYNC" : Application installed by sync.
+  /// - "APPLICATION_INSTALL_REASON_USER" : Application installed by user
+  /// action.
+  /// - "APPLICATION_INSTALL_REASON_SUB_APP" : Application installed bt SubApp
+  /// API call.
+  /// - "APPLICATION_INSTALL_REASON_KIOSK" : Application installed by Kiosk on
+  /// Chrome OS.
+  /// - "APPLICATION_INSTALL_REASON_COMMAND_LINE" : Application installed by
+  /// command line argument.
+  core.String? appInstallReason;
+
+  /// App installation source.
+  /// Possible string values are:
+  /// - "APPLICATION_INSTALL_SOURCE_UNSPECIFIED" : Application install source is
+  /// unknown.
+  /// - "APPLICATION_INSTALL_SOURCE_SYSTEM" : Application installed as part of
+  /// Chrome OS.
+  /// - "APPLICATION_INSTALL_SOURCE_SYNC" : Application install source is a
+  /// sync.
+  /// - "APPLICATION_INSTALL_SOURCE_PLAY_STORE" : Application install source is
+  /// the Play store.
+  /// - "APPLICATION_INSTALL_SOURCE_CHROME_WEB_STORE" : Application install
+  /// source is the Chrome web store.
+  /// - "APPLICATION_INSTALL_SOURCE_BROWSER" : Application install source is a
+  /// browser.
+  core.String? appInstallSource;
+
+  /// App installation time depending on the app lifecycle.
+  /// Possible string values are:
+  /// - "APPLICATION_INSTALL_TIME_UNSPECIFIED" : Application install time
+  /// unknown.
+  /// - "APPLICATION_INSTALL_TIME_INIT" : Application install is initialized.
+  /// - "APPLICATION_INSTALL_TIME_RUNNING" : Application install is currently
+  /// running.
+  core.String? appInstallTime;
+
+  /// Type of app.
+  /// Possible string values are:
+  /// - "TELEMETRY_APPLICATION_TYPE_UNSPECIFIED" : Application type unknown.
+  /// - "APPLICATION_TYPE_ARC" : Application type arc (Android app).
+  /// - "APPLICATION_TYPE_BUILT_IN" : Application type built-in.
+  /// - "APPLICATION_TYPE_CROSTINI" : Application type Linux (via Crostini).
+  /// - "APPLICATION_TYPE_CHROME_APP" : Application type Chrome app.
+  /// - "APPLICATION_TYPE_WEB" : Application type web.
+  /// - "APPLICATION_TYPE_MAC_OS" : Application type Mac OS.
+  /// - "APPLICATION_TYPE_PLUGIN_VM" : Application type Plugin VM.
+  /// - "APPLICATION_TYPE_STANDALONE_BROWSER" : Application type standalone
+  /// browser (Lacros browser app).
+  /// - "APPLICATION_TYPE_REMOTE" : Application type remote.
+  /// - "APPLICATION_TYPE_BOREALIS" : Application type borealis.
+  /// - "APPLICATION_TYPE_SYSTEM_WEB" : Application type system web.
+  /// - "APPLICATION_TYPE_STANDALONE_BROWSER_CHROME_APP" : Application type
+  /// standalone browser chrome app (hosted in Lacros).
+  /// - "APPLICATION_TYPE_EXTENSION" : Application type extension.
+  /// - "APPLICATION_TYPE_STANDALONE_BROWSER_EXTENSION" : Application type
+  /// standalone browser extension.
+  /// - "APPLICATION_TYPE_BRUSCHETTA" : Application type bruschetta.
+  core.String? appType;
+
+  GoogleChromeManagementV1TelemetryAppInstallEvent({
+    this.appId,
+    this.appInstallReason,
+    this.appInstallSource,
+    this.appInstallTime,
+    this.appType,
+  });
+
+  GoogleChromeManagementV1TelemetryAppInstallEvent.fromJson(core.Map json_)
+      : this(
+          appId:
+              json_.containsKey('appId') ? json_['appId'] as core.String : null,
+          appInstallReason: json_.containsKey('appInstallReason')
+              ? json_['appInstallReason'] as core.String
+              : null,
+          appInstallSource: json_.containsKey('appInstallSource')
+              ? json_['appInstallSource'] as core.String
+              : null,
+          appInstallTime: json_.containsKey('appInstallTime')
+              ? json_['appInstallTime'] as core.String
+              : null,
+          appType: json_.containsKey('appType')
+              ? json_['appType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (appId != null) 'appId': appId!,
+        if (appInstallReason != null) 'appInstallReason': appInstallReason!,
+        if (appInstallSource != null) 'appInstallSource': appInstallSource!,
+        if (appInstallTime != null) 'appInstallTime': appInstallTime!,
+        if (appType != null) 'appType': appType!,
+      };
+}
+
+/// App launch data.
+class GoogleChromeManagementV1TelemetryAppLaunchEvent {
+  /// App id.
+  ///
+  /// For PWAs this is the start URL, and for extensions this is the extension
+  /// id.
+  core.String? appId;
+
+  /// App launch source.
+  /// Possible string values are:
+  /// - "APPLICATION_LAUNCH_SOURCE_UNSPECIFIED" : Application launch source
+  /// unknown.
+  /// - "APPLICATION_LAUNCH_SOURCE_APP_LIST_GRID" : Application launched from
+  /// the grid of apps, not the search box.
+  /// - "APPLICATION_LAUNCH_SOURCE_APP_LIST_GRID_CONTEXT_MENU" : Application
+  /// launched from the grid of apps, off of the context menu.
+  /// - "APPLICATION_LAUNCH_SOURCE_APP_LIST_QUERY" : Application launched from
+  /// query-dependent results (larger icons).
+  /// - "APPLICATION_LAUNCH_SOURCE_APP_LIST_QUERY_CONTEXT_MENU" : Application
+  /// launched from query-dependent results, off of the context menu.
+  /// - "APPLICATION_LAUNCH_SOURCE_APP_LIST_RECOMMENDATION" : Application
+  /// launched from query-less recommendations (smaller icons).
+  /// - "APPLICATION_LAUNCH_SOURCE_PARENTAL_CONTROLS" : Application launched
+  /// from the Parental Controls Settings section and Per App time notification.
+  /// - "APPLICATION_LAUNCH_SOURCE_SHELF" : Application launched from shelf.
+  /// - "APPLICATION_LAUNCH_SOURCE_FILE_MANAGER" : Application launched from the
+  /// file manager
+  /// - "APPLICATION_LAUNCH_SOURCE_LINK" : Application launched from left click
+  /// on a link in the browser.
+  /// - "APPLICATION_LAUNCH_SOURCE_OMNIBOX" : Application launched from entering
+  /// a URL in the Omnibox on the browser.
+  /// - "APPLICATION_LAUNCH_SOURCE_CHROME_INTERNAL" : Application launched from
+  /// a Chrome internal call.
+  /// - "APPLICATION_LAUNCH_SOURCE_KEYBOARD" : Application launched from
+  /// keyboard shortcut for opening app.
+  /// - "APPLICATION_LAUNCH_SOURCE_OTHER_APP" : Application launched from
+  /// clicking a link in another app or WebUI.
+  /// - "APPLICATION_LAUNCH_SOURCE_MENU" : Application launched from menu.
+  /// - "APPLICATION_LAUNCH_SOURCE_INSTALLED_NOTIFICATION" : Application
+  /// launched from the installed notification.
+  /// - "APPLICATION_LAUNCH_SOURCE_TEST" : Application launched from a test.
+  /// - "APPLICATION_LAUNCH_SOURCE_ARC" : Application launched from Arc.
+  /// - "APPLICATION_LAUNCH_SOURCE_SHARESHEET" : Application launched from
+  /// Sharesheet.
+  /// - "APPLICATION_LAUNCH_SOURCE_RELEASE_NOTES_NOTIFICATION" : Application
+  /// launched from the release notes notification.
+  /// - "APPLICATION_LAUNCH_SOURCE_FULL_RESTORE" : Application launched from a
+  /// full restore.
+  /// - "APPLICATION_LAUNCH_SOURCE_SMART_TEXT_CONTEXT_MENU" : Application
+  /// launched from a smart text selection context menu.
+  /// - "APPLICATION_LAUNCH_SOURCE_DISCOVER_TAB_NOTIFICATION" : Application
+  /// launched from a discover tab notification.
+  /// - "APPLICATION_LAUNCH_SOURCE_MANAGEMENT_API" : Application launched from
+  /// the Management API.
+  /// - "APPLICATION_LAUNCH_SOURCE_KIOSK" : Application launched from kiosk.
+  /// - "APPLICATION_LAUNCH_SOURCE_COMMAND_LINE" : Application launched from the
+  /// command line.
+  /// - "APPLICATION_LAUNCH_SOURCE_BACKGROUND_MODE" : Application launched from
+  /// background mode.
+  /// - "APPLICATION_LAUNCH_SOURCE_NEW_TAB_PAGE" : Application launched from the
+  /// new tab page.
+  /// - "APPLICATION_LAUNCH_SOURCE_INTENT_URL" : Application launched from an
+  /// intent URL.
+  /// - "APPLICATION_LAUNCH_SOURCE_OS_LOGIN" : Application launched from OS
+  /// login.
+  /// - "APPLICATION_LAUNCH_SOURCE_PROTOCOL_HANDLER" : Application launched from
+  /// protocol handler.
+  /// - "APPLICATION_LAUNCH_SOURCE_URL_HANDLER" : Application launched from URL
+  /// handler.
+  /// - "APPLICATION_LAUNCH_SOURCE_LOCK_SCREEN" : Application launched from lock
+  /// screen app launcher.
+  /// - "APPLICATION_LAUNCH_SOURCE_APP_HOME_PAGE" : Application launched from
+  /// app home (chrome://apps) page.
+  /// - "APPLICATION_LAUNCH_SOURCE_REPARENTING" : Application launched from
+  /// moving content into an app.
+  /// - "APPLICATION_LAUNCH_SOURCE_PROFILE_MENU" : Application launched from
+  /// profile menu of installable chrome://password-manager WebUI.
+  /// - "APPLICATION_LAUNCH_SOURCE_SYSTEM_TRAY_CALENDAR" : Application launched
+  /// from system tray calendar.
+  /// - "APPLICATION_LAUNCH_SOURCE_INSTALLER" : Application launched from source
+  /// installer.
+  /// - "APPLICATION_LAUNCH_SOURCE_FIRST_RUN" : Count first-run Help app
+  /// launches separately so that we can understand the number of user-triggered
+  /// launches.
+  /// - "APPLICATION_LAUNCH_SOURCE_WELCOME_TOUR" : Application launched from
+  /// welcome tour.
+  /// - "APPLICATION_LAUNCH_SOURCE_FOCUS_MODE" : Applicationed launched from
+  /// focus panel.
+  core.String? appLaunchSource;
+
+  /// Type of app.
+  /// Possible string values are:
+  /// - "TELEMETRY_APPLICATION_TYPE_UNSPECIFIED" : Application type unknown.
+  /// - "APPLICATION_TYPE_ARC" : Application type arc (Android app).
+  /// - "APPLICATION_TYPE_BUILT_IN" : Application type built-in.
+  /// - "APPLICATION_TYPE_CROSTINI" : Application type Linux (via Crostini).
+  /// - "APPLICATION_TYPE_CHROME_APP" : Application type Chrome app.
+  /// - "APPLICATION_TYPE_WEB" : Application type web.
+  /// - "APPLICATION_TYPE_MAC_OS" : Application type Mac OS.
+  /// - "APPLICATION_TYPE_PLUGIN_VM" : Application type Plugin VM.
+  /// - "APPLICATION_TYPE_STANDALONE_BROWSER" : Application type standalone
+  /// browser (Lacros browser app).
+  /// - "APPLICATION_TYPE_REMOTE" : Application type remote.
+  /// - "APPLICATION_TYPE_BOREALIS" : Application type borealis.
+  /// - "APPLICATION_TYPE_SYSTEM_WEB" : Application type system web.
+  /// - "APPLICATION_TYPE_STANDALONE_BROWSER_CHROME_APP" : Application type
+  /// standalone browser chrome app (hosted in Lacros).
+  /// - "APPLICATION_TYPE_EXTENSION" : Application type extension.
+  /// - "APPLICATION_TYPE_STANDALONE_BROWSER_EXTENSION" : Application type
+  /// standalone browser extension.
+  /// - "APPLICATION_TYPE_BRUSCHETTA" : Application type bruschetta.
+  core.String? appType;
+
+  GoogleChromeManagementV1TelemetryAppLaunchEvent({
+    this.appId,
+    this.appLaunchSource,
+    this.appType,
+  });
+
+  GoogleChromeManagementV1TelemetryAppLaunchEvent.fromJson(core.Map json_)
+      : this(
+          appId:
+              json_.containsKey('appId') ? json_['appId'] as core.String : null,
+          appLaunchSource: json_.containsKey('appLaunchSource')
+              ? json_['appLaunchSource'] as core.String
+              : null,
+          appType: json_.containsKey('appType')
+              ? json_['appType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (appId != null) 'appId': appId!,
+        if (appLaunchSource != null) 'appLaunchSource': appLaunchSource!,
+        if (appType != null) 'appType': appType!,
+      };
+}
+
+/// App uninstall data.
+class GoogleChromeManagementV1TelemetryAppUninstallEvent {
+  /// App id.
+  ///
+  /// For PWAs this is the start URL, and for extensions this is the extension
+  /// id.
+  core.String? appId;
+
+  /// Type of app.
+  /// Possible string values are:
+  /// - "TELEMETRY_APPLICATION_TYPE_UNSPECIFIED" : Application type unknown.
+  /// - "APPLICATION_TYPE_ARC" : Application type arc (Android app).
+  /// - "APPLICATION_TYPE_BUILT_IN" : Application type built-in.
+  /// - "APPLICATION_TYPE_CROSTINI" : Application type Linux (via Crostini).
+  /// - "APPLICATION_TYPE_CHROME_APP" : Application type Chrome app.
+  /// - "APPLICATION_TYPE_WEB" : Application type web.
+  /// - "APPLICATION_TYPE_MAC_OS" : Application type Mac OS.
+  /// - "APPLICATION_TYPE_PLUGIN_VM" : Application type Plugin VM.
+  /// - "APPLICATION_TYPE_STANDALONE_BROWSER" : Application type standalone
+  /// browser (Lacros browser app).
+  /// - "APPLICATION_TYPE_REMOTE" : Application type remote.
+  /// - "APPLICATION_TYPE_BOREALIS" : Application type borealis.
+  /// - "APPLICATION_TYPE_SYSTEM_WEB" : Application type system web.
+  /// - "APPLICATION_TYPE_STANDALONE_BROWSER_CHROME_APP" : Application type
+  /// standalone browser chrome app (hosted in Lacros).
+  /// - "APPLICATION_TYPE_EXTENSION" : Application type extension.
+  /// - "APPLICATION_TYPE_STANDALONE_BROWSER_EXTENSION" : Application type
+  /// standalone browser extension.
+  /// - "APPLICATION_TYPE_BRUSCHETTA" : Application type bruschetta.
+  core.String? appType;
+
+  /// App uninstall source.
+  /// Possible string values are:
+  /// - "APPLICATION_UNINSTALL_SOURCE_UNSPECIFIED" : Application uninstall
+  /// source unknown.
+  /// - "APPLICATION_UNINSTALL_SOURCE_APP_LIST" : Application uninstalled from
+  /// the App List (Launcher).
+  /// - "APPLICATION_UNINSTALL_SOURCE_APP_MANAGEMENT" : Application uninstalled
+  /// from the App Managedment page.
+  /// - "APPLICATION_UNINSTALL_SOURCE_SHELF" : Application uninstalled from the
+  /// Shelf.
+  /// - "APPLICATION_UNINSTALL_SOURCE_MIGRATION" : Application uninstalled by
+  /// app migration.
+  core.String? appUninstallSource;
+
+  GoogleChromeManagementV1TelemetryAppUninstallEvent({
+    this.appId,
+    this.appType,
+    this.appUninstallSource,
+  });
+
+  GoogleChromeManagementV1TelemetryAppUninstallEvent.fromJson(core.Map json_)
+      : this(
+          appId:
+              json_.containsKey('appId') ? json_['appId'] as core.String : null,
+          appType: json_.containsKey('appType')
+              ? json_['appType'] as core.String
+              : null,
+          appUninstallSource: json_.containsKey('appUninstallSource')
+              ? json_['appUninstallSource'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (appId != null) 'appId': appId!,
+        if (appType != null) 'appType': appType!,
+        if (appUninstallSource != null)
+          'appUninstallSource': appUninstallSource!,
+      };
+}
+
 /// `TelemetryAudioSevereUnderrunEvent` is triggered when a audio devices run
 /// out of buffer data for more than 5 seconds.
 ///
@@ -6130,6 +6453,26 @@ class GoogleChromeManagementV1TelemetryDeviceInfo {
 
 /// Telemetry data reported by a managed device.
 class GoogleChromeManagementV1TelemetryEvent {
+  /// Payload for app install event.
+  ///
+  /// Present only when `event_type` is `APP_INSTALLED`.
+  ///
+  /// Output only.
+  GoogleChromeManagementV1TelemetryAppInstallEvent? appInstallEvent;
+
+  /// Payload for app launch event.Present only when `event_type` is
+  /// `APP_LAUNCHED`.
+  ///
+  /// Output only.
+  GoogleChromeManagementV1TelemetryAppLaunchEvent? appLaunchEvent;
+
+  /// Payload for app uninstall event.
+  ///
+  /// Present only when `event_type` is `APP_UNINSTALLED`.
+  ///
+  /// Output only.
+  GoogleChromeManagementV1TelemetryAppUninstallEvent? appUninstallEvent;
+
   /// Payload for audio severe underrun event.
   ///
   /// Present only when the `event_type` field is `AUDIO_SEVERE_UNDERRUN`.
@@ -6160,6 +6503,9 @@ class GoogleChromeManagementV1TelemetryEvent {
   /// - "WIFI_SIGNAL_STRENGTH_RECOVERED" : Triggered when connected WiFi network
   /// signal strength is recovered from a signal drop.
   /// - "VPN_CONNECTION_STATE_CHANGE" : Triggered on changes to VPN connections.
+  /// - "APP_INSTALLED" : Triggered when an app is installed.
+  /// - "APP_UNINSTALLED" : Triggered when an app is uninstalled.
+  /// - "APP_LAUNCHED" : Triggered when an app is launched.
   core.String? eventType;
 
   /// Payload for HTTPS latency change event.
@@ -6217,6 +6563,9 @@ class GoogleChromeManagementV1TelemetryEvent {
       wifiSignalStrengthEvent;
 
   GoogleChromeManagementV1TelemetryEvent({
+    this.appInstallEvent,
+    this.appLaunchEvent,
+    this.appUninstallEvent,
     this.audioSevereUnderrunEvent,
     this.device,
     this.eventType,
@@ -6232,6 +6581,21 @@ class GoogleChromeManagementV1TelemetryEvent {
 
   GoogleChromeManagementV1TelemetryEvent.fromJson(core.Map json_)
       : this(
+          appInstallEvent: json_.containsKey('appInstallEvent')
+              ? GoogleChromeManagementV1TelemetryAppInstallEvent.fromJson(
+                  json_['appInstallEvent']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          appLaunchEvent: json_.containsKey('appLaunchEvent')
+              ? GoogleChromeManagementV1TelemetryAppLaunchEvent.fromJson(
+                  json_['appLaunchEvent']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          appUninstallEvent: json_.containsKey('appUninstallEvent')
+              ? GoogleChromeManagementV1TelemetryAppUninstallEvent.fromJson(
+                  json_['appUninstallEvent']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           audioSevereUnderrunEvent:
               json_.containsKey('audioSevereUnderrunEvent')
                   ? GoogleChromeManagementV1TelemetryAudioSevereUnderrunEvent
@@ -6282,6 +6646,9 @@ class GoogleChromeManagementV1TelemetryEvent {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (appInstallEvent != null) 'appInstallEvent': appInstallEvent!,
+        if (appLaunchEvent != null) 'appLaunchEvent': appLaunchEvent!,
+        if (appUninstallEvent != null) 'appUninstallEvent': appUninstallEvent!,
         if (audioSevereUnderrunEvent != null)
           'audioSevereUnderrunEvent': audioSevereUnderrunEvent!,
         if (device != null) 'device': device!,

@@ -1,6 +1,7 @@
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
 // ignore_for_file: deprecated_member_use_from_same_package
+// ignore_for_file: doc_directive_unknown
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_const_declarations
@@ -253,6 +254,7 @@ api.Release buildRelease() {
     o.fraction = 42.0;
     o.fractionGroup = 'foo';
     o.name = 'foo';
+    o.pinnable = true;
     o.serving = buildInterval();
     o.version = 'foo';
   }
@@ -275,6 +277,7 @@ void checkRelease(api.Release o) {
       o.name!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.pinnable!, unittest.isTrue);
     checkInterval(o.serving!);
     unittest.expect(
       o.version!,

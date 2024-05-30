@@ -3,6 +3,7 @@
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
 // ignore_for_file: deprecated_member_use_from_same_package
+// ignore_for_file: doc_directive_unknown
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -2758,6 +2759,15 @@ class Backup {
   /// Output only.
   core.String? name;
 
+  /// If false, Backup will fail when Backup for GKE detects Kubernetes
+  /// configuration that is non-standard or requires additional setup to
+  /// restore.
+  ///
+  /// Inherited from the parent BackupPlan's permissive_mode value.
+  ///
+  /// Output only.
+  core.bool? permissiveMode;
+
   /// The total number of Kubernetes Pods contained in the Backup.
   ///
   /// Output only.
@@ -2854,6 +2864,7 @@ class Backup {
     this.labels,
     this.manual,
     this.name,
+    this.permissiveMode,
     this.podCount,
     this.resourceCount,
     this.retainDays,
@@ -2917,6 +2928,9 @@ class Backup {
           manual:
               json_.containsKey('manual') ? json_['manual'] as core.bool : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          permissiveMode: json_.containsKey('permissiveMode')
+              ? json_['permissiveMode'] as core.bool
+              : null,
           podCount: json_.containsKey('podCount')
               ? json_['podCount'] as core.int
               : null,
@@ -2973,6 +2987,7 @@ class Backup {
         if (labels != null) 'labels': labels!,
         if (manual != null) 'manual': manual!,
         if (name != null) 'name': name!,
+        if (permissiveMode != null) 'permissiveMode': permissiveMode!,
         if (podCount != null) 'podCount': podCount!,
         if (resourceCount != null) 'resourceCount': resourceCount!,
         if (retainDays != null) 'retainDays': retainDays!,
@@ -3021,6 +3036,15 @@ class BackupConfig {
   /// Optional.
   core.bool? includeVolumeData;
 
+  /// If false, Backups will fail when Backup for GKE detects Kubernetes
+  /// configuration that is non-standard or requires additional setup to
+  /// restore.
+  ///
+  /// Default: False
+  ///
+  /// Optional.
+  core.bool? permissiveMode;
+
   /// If set, include just the resources referenced by the listed
   /// ProtectedApplications.
   NamespacedNames? selectedApplications;
@@ -3033,6 +3057,7 @@ class BackupConfig {
     this.encryptionKey,
     this.includeSecrets,
     this.includeVolumeData,
+    this.permissiveMode,
     this.selectedApplications,
     this.selectedNamespaces,
   });
@@ -3052,6 +3077,9 @@ class BackupConfig {
           includeVolumeData: json_.containsKey('includeVolumeData')
               ? json_['includeVolumeData'] as core.bool
               : null,
+          permissiveMode: json_.containsKey('permissiveMode')
+              ? json_['permissiveMode'] as core.bool
+              : null,
           selectedApplications: json_.containsKey('selectedApplications')
               ? NamespacedNames.fromJson(json_['selectedApplications']
                   as core.Map<core.String, core.dynamic>)
@@ -3067,6 +3095,7 @@ class BackupConfig {
         if (encryptionKey != null) 'encryptionKey': encryptionKey!,
         if (includeSecrets != null) 'includeSecrets': includeSecrets!,
         if (includeVolumeData != null) 'includeVolumeData': includeVolumeData!,
+        if (permissiveMode != null) 'permissiveMode': permissiveMode!,
         if (selectedApplications != null)
           'selectedApplications': selectedApplications!,
         if (selectedNamespaces != null)
@@ -3725,6 +3754,58 @@ class ExclusionWindow {
 /// information.
 typedef Expr = $Expr;
 
+/// Defines the filter for `Restore`.
+///
+/// This filter can be used to further refine the resource selection of the
+/// `Restore` beyond the coarse-grained scope defined in the `RestorePlan`.
+/// `exclusion_filters` take precedence over `inclusion_filters`. If a resource
+/// matches both `inclusion_filters` and `exclusion_filters`, it will not be
+/// restored.
+class Filter {
+  /// Excludes resources from restoration.
+  ///
+  /// If specified, a resource will not be restored if it matches any
+  /// `ResourceSelector` of the `exclusion_filters`.
+  ///
+  /// Optional.
+  core.List<ResourceSelector>? exclusionFilters;
+
+  /// Selects resources for restoration.
+  ///
+  /// If specified, only resources which match `inclusion_filters` will be
+  /// selected for restoration. A resource will be selected if it matches any
+  /// `ResourceSelector` of the `inclusion_filters`.
+  ///
+  /// Optional.
+  core.List<ResourceSelector>? inclusionFilters;
+
+  Filter({
+    this.exclusionFilters,
+    this.inclusionFilters,
+  });
+
+  Filter.fromJson(core.Map json_)
+      : this(
+          exclusionFilters: json_.containsKey('exclusionFilters')
+              ? (json_['exclusionFilters'] as core.List)
+                  .map((value) => ResourceSelector.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          inclusionFilters: json_.containsKey('inclusionFilters')
+              ? (json_['inclusionFilters'] as core.List)
+                  .map((value) => ResourceSelector.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (exclusionFilters != null) 'exclusionFilters': exclusionFilters!,
+        if (inclusionFilters != null) 'inclusionFilters': inclusionFilters!,
+      };
+}
+
 /// Response message for GetBackupIndexDownloadUrl.
 class GetBackupIndexDownloadUrlResponse {
   core.String? signedUrl;
@@ -3903,6 +3984,43 @@ class GroupKind {
   core.Map<core.String, core.dynamic> toJson() => {
         if (resourceGroup != null) 'resourceGroup': resourceGroup!,
         if (resourceKind != null) 'resourceKind': resourceKind!,
+      };
+}
+
+/// Defines a dependency between two group kinds.
+class GroupKindDependency {
+  /// The requiring group kind requires that the other group kind be restored
+  /// first.
+  ///
+  /// Required.
+  GroupKind? requiring;
+
+  /// The satisfying group kind must be restored first in order to satisfy the
+  /// dependency.
+  ///
+  /// Required.
+  GroupKind? satisfying;
+
+  GroupKindDependency({
+    this.requiring,
+    this.satisfying,
+  });
+
+  GroupKindDependency.fromJson(core.Map json_)
+      : this(
+          requiring: json_.containsKey('requiring')
+              ? GroupKind.fromJson(
+                  json_['requiring'] as core.Map<core.String, core.dynamic>)
+              : null,
+          satisfying: json_.containsKey('satisfying')
+              ? GroupKind.fromJson(
+                  json_['satisfying'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (requiring != null) 'requiring': requiring!,
+        if (satisfying != null) 'satisfying': satisfying!,
       };
 }
 
@@ -4454,6 +4572,84 @@ class ResourceFilter {
       };
 }
 
+/// Defines a selector to identify a single or a group of resources.
+///
+/// Conditions in the selector are optional, but at least one field should be
+/// set to a non-empty value. If a condition is not specified, no restrictions
+/// will be applied on that dimension. If more than one condition is specified,
+/// a resource will be selected if and only if all conditions are met.
+class ResourceSelector {
+  /// Selects resources using their Kubernetes GroupKinds.
+  ///
+  /// If specified, only resources of provided GroupKind will be selected.
+  ///
+  /// Optional.
+  GroupKind? groupKind;
+
+  /// Selects resources using Kubernetes
+  /// [labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/).
+  ///
+  /// If specified, a resource will be selected if and only if the resource has
+  /// all of the provided labels and all the label values match.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Selects resources using their resource names.
+  ///
+  /// If specified, only resources with the provided name will be selected.
+  ///
+  /// Optional.
+  core.String? name;
+
+  /// Selects resources using their namespaces.
+  ///
+  /// This only applies to namespace scoped resources and cannot be used for
+  /// selecting cluster scoped resources. If specified, only resources in the
+  /// provided namespace will be selected. If not specified, the filter will
+  /// apply to both cluster scoped and namespace scoped resources (e.g. name or
+  /// label). The [Namespace](https://pkg.go.dev/k8s.io/api/core/v1#Namespace)
+  /// resource itself will be restored if and only if any resources within the
+  /// namespace are restored.
+  ///
+  /// Optional.
+  core.String? namespace;
+
+  ResourceSelector({
+    this.groupKind,
+    this.labels,
+    this.name,
+    this.namespace,
+  });
+
+  ResourceSelector.fromJson(core.Map json_)
+      : this(
+          groupKind: json_.containsKey('groupKind')
+              ? GroupKind.fromJson(
+                  json_['groupKind'] as core.Map<core.String, core.dynamic>)
+              : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          namespace: json_.containsKey('namespace')
+              ? json_['namespace'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (groupKind != null) 'groupKind': groupKind!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (namespace != null) 'namespace': namespace!,
+      };
+}
+
 /// Represents both a request to Restore some portion of a Backup into a target
 /// GKE cluster and a record of the restore operation itself.
 class Restore {
@@ -4501,6 +4697,19 @@ class Restore {
   ///
   /// Output only.
   core.String? etag;
+
+  /// Filters resources for `Restore`.
+  ///
+  /// If not specified, the scope of the restore will remain the same as defined
+  /// in the `RestorePlan`. If this is specified, and no resources are matched
+  /// by the `inclusion_filters` or everyting is excluded by the
+  /// `exclusion_filters`, nothing will be restored. This filter can only be
+  /// specified if the value of namespaced_resource_restore_mode is set to
+  /// `MERGE_SKIP_ON_CONFLICT`, `MERGE_REPLACE_VOLUME_ON_CONFLICT` or
+  /// `MERGE_REPLACE_ON_CONFLICT`.
+  ///
+  /// Optional. Immutable.
+  Filter? filter;
 
   /// A set of custom labels supplied by user.
   core.Map<core.String, core.String>? labels;
@@ -4568,6 +4777,12 @@ class Restore {
   /// Output only.
   core.String? updateTime;
 
+  /// Overrides the volume data restore policies selected in the Restore Config
+  /// for override-scoped resources.
+  ///
+  /// Optional. Immutable.
+  core.List<VolumeDataRestorePolicyOverride>? volumeDataRestorePolicyOverrides;
+
   /// Number of volumes restored during the restore execution.
   ///
   /// Output only.
@@ -4580,6 +4795,7 @@ class Restore {
     this.createTime,
     this.description,
     this.etag,
+    this.filter,
     this.labels,
     this.name,
     this.resourcesExcludedCount,
@@ -4590,6 +4806,7 @@ class Restore {
     this.stateReason,
     this.uid,
     this.updateTime,
+    this.volumeDataRestorePolicyOverrides,
     this.volumesRestoredCount,
   });
 
@@ -4611,6 +4828,10 @@ class Restore {
               ? json_['description'] as core.String
               : null,
           etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          filter: json_.containsKey('filter')
+              ? Filter.fromJson(
+                  json_['filter'] as core.Map<core.String, core.dynamic>)
+              : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -4642,6 +4863,13 @@ class Restore {
           updateTime: json_.containsKey('updateTime')
               ? json_['updateTime'] as core.String
               : null,
+          volumeDataRestorePolicyOverrides:
+              json_.containsKey('volumeDataRestorePolicyOverrides')
+                  ? (json_['volumeDataRestorePolicyOverrides'] as core.List)
+                      .map((value) => VolumeDataRestorePolicyOverride.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
           volumesRestoredCount: json_.containsKey('volumesRestoredCount')
               ? json_['volumesRestoredCount'] as core.int
               : null,
@@ -4654,6 +4882,7 @@ class Restore {
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
         if (etag != null) 'etag': etag!,
+        if (filter != null) 'filter': filter!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (resourcesExcludedCount != null)
@@ -4667,6 +4896,8 @@ class Restore {
         if (stateReason != null) 'stateReason': stateReason!,
         if (uid != null) 'uid': uid!,
         if (updateTime != null) 'updateTime': updateTime!,
+        if (volumeDataRestorePolicyOverrides != null)
+          'volumeDataRestorePolicyOverrides': volumeDataRestorePolicyOverrides!,
         if (volumesRestoredCount != null)
           'volumesRestoredCount': volumesRestoredCount!,
       };
@@ -4732,12 +4963,43 @@ class RestoreConfig {
   /// If a conflict occurs during the restore process itself (e.g., because an
   /// out of band process creates conflicting resources), a conflict will be
   /// reported.
+  /// - "MERGE_SKIP_ON_CONFLICT" : This mode merges the backup and the target
+  /// cluster and skips the conflicting resources. If a single resource to
+  /// restore exists in the cluster before restoration, the resource will be
+  /// skipped, otherwise it will be restored.
+  /// - "MERGE_REPLACE_VOLUME_ON_CONFLICT" : This mode merges the backup and the
+  /// target cluster and skips the conflicting resources except volume data. If
+  /// a PVC to restore already exists, this mode will restore/reconnect the
+  /// volume without overwriting the PVC. It is similar to
+  /// MERGE_SKIP_ON_CONFLICT except that it will apply the volume data policy
+  /// for the conflicting PVCs: - RESTORE_VOLUME_DATA_FROM_BACKUP: restore data
+  /// only and respect the reclaim policy of the original PV; -
+  /// REUSE_VOLUME_HANDLE_FROM_BACKUP: reconnect and respect the reclaim policy
+  /// of the original PV; - NO_VOLUME_DATA_RESTORATION: new provision and
+  /// respect the reclaim policy of the original PV. Note that this mode could
+  /// cause data loss as the original PV can be retained or deleted depending on
+  /// its reclaim policy.
+  /// - "MERGE_REPLACE_ON_CONFLICT" : This mode merges the backup and the target
+  /// cluster and replaces the conflicting resources with the ones in the
+  /// backup. If a single resource to restore exists in the cluster before
+  /// restoration, the resource will be replaced with the one from the backup.
+  /// To replace an existing resource, the first attempt is to update the
+  /// resource to match the one from the backup; if the update fails, the second
+  /// attempt is to delete the resource and restore it from the backup. Note
+  /// that this mode could cause data loss as it replaces the existing resources
+  /// in the target cluster, and the original PV can be retained or deleted
+  /// depending on its reclaim policy.
   core.String? namespacedResourceRestoreMode;
 
   /// Do not restore any namespaced resources if set to "True".
   ///
   /// Specifying this field to "False" is not allowed.
   core.bool? noNamespaces;
+
+  /// RestoreOrder contains custom ordering to use on a Restore.
+  ///
+  /// Optional.
+  RestoreOrder? restoreOrder;
 
   /// A list of selected ProtectedApplications to restore.
   ///
@@ -4793,6 +5055,14 @@ class RestoreConfig {
   /// provisioned PVs.
   core.String? volumeDataRestorePolicy;
 
+  /// A table that binds volumes by their scope to a restore policy.
+  ///
+  /// Bindings must have a unique scope. Any volumes not scoped in the bindings
+  /// are subject to the policy defined in volume_data_restore_policy.
+  ///
+  /// Optional.
+  core.List<VolumeDataRestorePolicyBinding>? volumeDataRestorePolicyBindings;
+
   RestoreConfig({
     this.allNamespaces,
     this.clusterResourceConflictPolicy,
@@ -4800,11 +5070,13 @@ class RestoreConfig {
     this.excludedNamespaces,
     this.namespacedResourceRestoreMode,
     this.noNamespaces,
+    this.restoreOrder,
     this.selectedApplications,
     this.selectedNamespaces,
     this.substitutionRules,
     this.transformationRules,
     this.volumeDataRestorePolicy,
+    this.volumeDataRestorePolicyBindings,
   });
 
   RestoreConfig.fromJson(core.Map json_)
@@ -4833,6 +5105,10 @@ class RestoreConfig {
           noNamespaces: json_.containsKey('noNamespaces')
               ? json_['noNamespaces'] as core.bool
               : null,
+          restoreOrder: json_.containsKey('restoreOrder')
+              ? RestoreOrder.fromJson(
+                  json_['restoreOrder'] as core.Map<core.String, core.dynamic>)
+              : null,
           selectedApplications: json_.containsKey('selectedApplications')
               ? NamespacedNames.fromJson(json_['selectedApplications']
                   as core.Map<core.String, core.dynamic>)
@@ -4856,6 +5132,13 @@ class RestoreConfig {
           volumeDataRestorePolicy: json_.containsKey('volumeDataRestorePolicy')
               ? json_['volumeDataRestorePolicy'] as core.String
               : null,
+          volumeDataRestorePolicyBindings:
+              json_.containsKey('volumeDataRestorePolicyBindings')
+                  ? (json_['volumeDataRestorePolicyBindings'] as core.List)
+                      .map((value) => VolumeDataRestorePolicyBinding.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4869,6 +5152,7 @@ class RestoreConfig {
         if (namespacedResourceRestoreMode != null)
           'namespacedResourceRestoreMode': namespacedResourceRestoreMode!,
         if (noNamespaces != null) 'noNamespaces': noNamespaces!,
+        if (restoreOrder != null) 'restoreOrder': restoreOrder!,
         if (selectedApplications != null)
           'selectedApplications': selectedApplications!,
         if (selectedNamespaces != null)
@@ -4878,6 +5162,37 @@ class RestoreConfig {
           'transformationRules': transformationRules!,
         if (volumeDataRestorePolicy != null)
           'volumeDataRestorePolicy': volumeDataRestorePolicy!,
+        if (volumeDataRestorePolicyBindings != null)
+          'volumeDataRestorePolicyBindings': volumeDataRestorePolicyBindings!,
+      };
+}
+
+/// Allows customers to specify dependencies between resources that Backup for
+/// GKE can use to compute a resasonable restore order.
+class RestoreOrder {
+  /// Contains a list of group kind dependency pairs provided by the customer,
+  /// that is used by Backup for GKE to generate a group kind restore order.
+  ///
+  /// Optional.
+  core.List<GroupKindDependency>? groupKindDependencies;
+
+  RestoreOrder({
+    this.groupKindDependencies,
+  });
+
+  RestoreOrder.fromJson(core.Map json_)
+      : this(
+          groupKindDependencies: json_.containsKey('groupKindDependencies')
+              ? (json_['groupKindDependencies'] as core.List)
+                  .map((value) => GroupKindDependency.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (groupKindDependencies != null)
+          'groupKindDependencies': groupKindDependencies!,
       };
 }
 
@@ -5688,6 +6003,101 @@ class VolumeBackup {
         if (updateTime != null) 'updateTime': updateTime!,
         if (volumeBackupHandle != null)
           'volumeBackupHandle': volumeBackupHandle!,
+      };
+}
+
+/// Binds resources in the scope to the given VolumeDataRestorePolicy.
+class VolumeDataRestorePolicyBinding {
+  /// The VolumeDataRestorePolicy to apply when restoring volumes in scope.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED" : Unspecified (illegal).
+  /// - "RESTORE_VOLUME_DATA_FROM_BACKUP" : For each PVC to be restored, create
+  /// a new underlying volume and PV from the corresponding VolumeBackup
+  /// contained within the Backup.
+  /// - "REUSE_VOLUME_HANDLE_FROM_BACKUP" : For each PVC to be restored, attempt
+  /// to reuse the original PV contained in the Backup (with its original
+  /// underlying volume). This option is likely only usable when restoring a
+  /// workload to its original cluster.
+  /// - "NO_VOLUME_DATA_RESTORATION" : For each PVC to be restored, create PVC
+  /// without any particular action to restore data. In this case, the normal
+  /// Kubernetes provisioning logic would kick in, and this would likely result
+  /// in either dynamically provisioning blank PVs or binding to statically
+  /// provisioned PVs.
+  core.String? policy;
+
+  /// The volume type, as determined by the PVC's bound PV, to apply the policy
+  /// to.
+  /// Possible string values are:
+  /// - "VOLUME_TYPE_UNSPECIFIED" : Default
+  /// - "GCE_PERSISTENT_DISK" : Compute Engine Persistent Disk volume
+  core.String? volumeType;
+
+  VolumeDataRestorePolicyBinding({
+    this.policy,
+    this.volumeType,
+  });
+
+  VolumeDataRestorePolicyBinding.fromJson(core.Map json_)
+      : this(
+          policy: json_.containsKey('policy')
+              ? json_['policy'] as core.String
+              : null,
+          volumeType: json_.containsKey('volumeType')
+              ? json_['volumeType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (policy != null) 'policy': policy!,
+        if (volumeType != null) 'volumeType': volumeType!,
+      };
+}
+
+/// Defines an override to apply a VolumeDataRestorePolicy for scoped resources.
+class VolumeDataRestorePolicyOverride {
+  /// The VolumeDataRestorePolicy to apply when restoring volumes in scope.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED" : Unspecified (illegal).
+  /// - "RESTORE_VOLUME_DATA_FROM_BACKUP" : For each PVC to be restored, create
+  /// a new underlying volume and PV from the corresponding VolumeBackup
+  /// contained within the Backup.
+  /// - "REUSE_VOLUME_HANDLE_FROM_BACKUP" : For each PVC to be restored, attempt
+  /// to reuse the original PV contained in the Backup (with its original
+  /// underlying volume). This option is likely only usable when restoring a
+  /// workload to its original cluster.
+  /// - "NO_VOLUME_DATA_RESTORATION" : For each PVC to be restored, create PVC
+  /// without any particular action to restore data. In this case, the normal
+  /// Kubernetes provisioning logic would kick in, and this would likely result
+  /// in either dynamically provisioning blank PVs or binding to statically
+  /// provisioned PVs.
+  core.String? policy;
+
+  /// A list of PVCs to apply the policy override to.
+  NamespacedNames? selectedPvcs;
+
+  VolumeDataRestorePolicyOverride({
+    this.policy,
+    this.selectedPvcs,
+  });
+
+  VolumeDataRestorePolicyOverride.fromJson(core.Map json_)
+      : this(
+          policy: json_.containsKey('policy')
+              ? json_['policy'] as core.String
+              : null,
+          selectedPvcs: json_.containsKey('selectedPvcs')
+              ? NamespacedNames.fromJson(
+                  json_['selectedPvcs'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (policy != null) 'policy': policy!,
+        if (selectedPvcs != null) 'selectedPvcs': selectedPvcs!,
       };
 }
 

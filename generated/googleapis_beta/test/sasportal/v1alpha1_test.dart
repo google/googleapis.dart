@@ -1,6 +1,7 @@
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
 // ignore_for_file: deprecated_member_use_from_same_package
+// ignore_for_file: doc_directive_unknown
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_const_declarations
@@ -726,7 +727,7 @@ api.SasPortalInstallationParams buildSasPortalInstallationParams() {
     o.antennaAzimuth = 42;
     o.antennaBeamwidth = 42;
     o.antennaDowntilt = 42;
-    o.antennaGain = 42;
+    o.antennaGain = 42.0;
     o.antennaModel = 'foo';
     o.cpeCbsdIndication = true;
     o.eirpCapability = 42;
@@ -759,7 +760,7 @@ void checkSasPortalInstallationParams(api.SasPortalInstallationParams o) {
     );
     unittest.expect(
       o.antennaGain!,
-      unittest.equals(42),
+      unittest.equals(42.0),
     );
     unittest.expect(
       o.antennaModel!,

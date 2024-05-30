@@ -3,6 +3,7 @@
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
 // ignore_for_file: deprecated_member_use_from_same_package
+// ignore_for_file: doc_directive_unknown
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -187,11 +188,17 @@ class GoogleFirebaseFcmDataV1beta1AndroidDeliveryData {
 
 /// Data detailing messaging delivery
 class GoogleFirebaseFcmDataV1beta1Data {
-  /// Count of messages accepted by FCM intended to Android devices.
+  /// Count of messages accepted by FCM intended for Android devices.
   ///
   /// The targeted device must have opted in to the collection of usage and
   /// diagnostic information.
   core.String? countMessagesAccepted;
+
+  /// Count of notifications accepted by FCM intended for Android devices.
+  ///
+  /// The targeted device must have opted in to the collection of usage and
+  /// diagnostic information.
+  core.String? countNotificationsAccepted;
 
   /// Additional information about delivery performance for messages that were
   /// successfully delivered.
@@ -204,11 +211,17 @@ class GoogleFirebaseFcmDataV1beta1Data {
   /// Mutually exclusive breakdown of message delivery outcomes.
   GoogleFirebaseFcmDataV1beta1MessageOutcomePercents? messageOutcomePercents;
 
+  /// Additional insights about proxy notification delivery.
+  GoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents?
+      proxyNotificationInsightPercents;
+
   GoogleFirebaseFcmDataV1beta1Data({
     this.countMessagesAccepted,
+    this.countNotificationsAccepted,
     this.deliveryPerformancePercents,
     this.messageInsightPercents,
     this.messageOutcomePercents,
+    this.proxyNotificationInsightPercents,
   });
 
   GoogleFirebaseFcmDataV1beta1Data.fromJson(core.Map json_)
@@ -216,6 +229,10 @@ class GoogleFirebaseFcmDataV1beta1Data {
           countMessagesAccepted: json_.containsKey('countMessagesAccepted')
               ? json_['countMessagesAccepted'] as core.String
               : null,
+          countNotificationsAccepted:
+              json_.containsKey('countNotificationsAccepted')
+                  ? json_['countNotificationsAccepted'] as core.String
+                  : null,
           deliveryPerformancePercents:
               json_.containsKey('deliveryPerformancePercents')
                   ? GoogleFirebaseFcmDataV1beta1DeliveryPerformancePercents
@@ -232,17 +249,27 @@ class GoogleFirebaseFcmDataV1beta1Data {
                   json_['messageOutcomePercents']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          proxyNotificationInsightPercents:
+              json_.containsKey('proxyNotificationInsightPercents')
+                  ? GoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents
+                      .fromJson(json_['proxyNotificationInsightPercents']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (countMessagesAccepted != null)
           'countMessagesAccepted': countMessagesAccepted!,
+        if (countNotificationsAccepted != null)
+          'countNotificationsAccepted': countNotificationsAccepted!,
         if (deliveryPerformancePercents != null)
           'deliveryPerformancePercents': deliveryPerformancePercents!,
         if (messageInsightPercents != null)
           'messageInsightPercents': messageInsightPercents!,
         if (messageOutcomePercents != null)
           'messageOutcomePercents': messageOutcomePercents!,
+        if (proxyNotificationInsightPercents != null)
+          'proxyNotificationInsightPercents': proxyNotificationInsightPercents!,
       };
 }
 
@@ -477,6 +504,82 @@ class GoogleFirebaseFcmDataV1beta1MessageOutcomePercents {
         if (droppedTooManyPendingMessages != null)
           'droppedTooManyPendingMessages': droppedTooManyPendingMessages!,
         if (pending != null) 'pending': pending!,
+      };
+}
+
+/// Additional information about proxy notification delivery.
+///
+/// All percentages are calculated with countNotificationsAccepted as the
+/// denominator.
+class GoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents {
+  /// The percentage of accepted notifications that failed to be proxied.
+  ///
+  /// This is usually caused by exceptions that occurred while calling
+  /// [notifyAsPackage](https://developer.android.com/reference/android/app/NotificationManager#notifyAsPackage%28java.lang.String,%20java.lang.String,%20int,%20android.app.Notification%29).
+  core.double? failed;
+
+  /// The percentage of accepted notifications that were successfully proxied by
+  /// [Google Play services](https://developers.google.com/android/guides/overview).
+  core.double? proxied;
+
+  /// The percentage of accepted notifications that were skipped because the
+  /// messages were not throttled.
+  core.double? skippedNotThrottled;
+
+  /// The percentage of accepted notifications that were skipped because the app
+  /// disallowed these messages to be proxied.
+  core.double? skippedOptedOut;
+
+  /// The percentage of accepted notifications that were skipped because
+  /// configurations required for notifications to be proxied were missing.
+  core.double? skippedUnconfigured;
+
+  /// The percentage of accepted notifications that were skipped because proxy
+  /// notification is unsupported for the recipient.
+  core.double? skippedUnsupported;
+
+  GoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents({
+    this.failed,
+    this.proxied,
+    this.skippedNotThrottled,
+    this.skippedOptedOut,
+    this.skippedUnconfigured,
+    this.skippedUnsupported,
+  });
+
+  GoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents.fromJson(
+      core.Map json_)
+      : this(
+          failed: json_.containsKey('failed')
+              ? (json_['failed'] as core.num).toDouble()
+              : null,
+          proxied: json_.containsKey('proxied')
+              ? (json_['proxied'] as core.num).toDouble()
+              : null,
+          skippedNotThrottled: json_.containsKey('skippedNotThrottled')
+              ? (json_['skippedNotThrottled'] as core.num).toDouble()
+              : null,
+          skippedOptedOut: json_.containsKey('skippedOptedOut')
+              ? (json_['skippedOptedOut'] as core.num).toDouble()
+              : null,
+          skippedUnconfigured: json_.containsKey('skippedUnconfigured')
+              ? (json_['skippedUnconfigured'] as core.num).toDouble()
+              : null,
+          skippedUnsupported: json_.containsKey('skippedUnsupported')
+              ? (json_['skippedUnsupported'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (failed != null) 'failed': failed!,
+        if (proxied != null) 'proxied': proxied!,
+        if (skippedNotThrottled != null)
+          'skippedNotThrottled': skippedNotThrottled!,
+        if (skippedOptedOut != null) 'skippedOptedOut': skippedOptedOut!,
+        if (skippedUnconfigured != null)
+          'skippedUnconfigured': skippedUnconfigured!,
+        if (skippedUnsupported != null)
+          'skippedUnsupported': skippedUnsupported!,
       };
 }
 

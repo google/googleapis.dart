@@ -1,6 +1,7 @@
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
 // ignore_for_file: deprecated_member_use_from_same_package
+// ignore_for_file: doc_directive_unknown
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_const_declarations
@@ -8104,6 +8105,7 @@ void main() {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
       final res = api.AndroidManagementApi(mock).signupUrls;
+      final arg_adminEmail = 'foo';
       final arg_callbackUrl = 'foo';
       final arg_projectId = 'foo';
       final arg_$fields = 'foo';
@@ -8139,6 +8141,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['adminEmail']!.first,
+          unittest.equals(arg_adminEmail),
+        );
+        unittest.expect(
           queryMap['callbackUrl']!.first,
           unittest.equals(arg_callbackUrl),
         );
@@ -8158,6 +8164,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.create(
+          adminEmail: arg_adminEmail,
           callbackUrl: arg_callbackUrl,
           projectId: arg_projectId,
           $fields: arg_$fields);

@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240507",
+    "revision": "20240523",
     "rootUrl": "https://prod-tt-sasportal.googleapis.com/",
     "servicePath": "",
     "title": "SAS Portal API (Testing)",
@@ -3203,9 +3203,9 @@
                     "type": "integer"
                 },
                 "antennaGain": {
-                    "description": "Peak antenna gain in dBi. This parameter is an integer with a value between -127 and +128 (dBi) inclusive.",
-                    "format": "int32",
-                    "type": "integer"
+                    "description": "Peak antenna gain in dBi. This parameter is a double with a value between -127 and +128 (dBi) inclusive. Part of Release 2 to support floating-point value",
+                    "format": "double",
+                    "type": "number"
                 },
                 "antennaModel": {
                     "description": "If an external antenna is used, the antenna model is optionally provided in this field. The string has a maximum length of 128 octets.",

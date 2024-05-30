@@ -3,6 +3,7 @@
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
 // ignore_for_file: deprecated_member_use_from_same_package
+// ignore_for_file: doc_directive_unknown
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -1595,6 +1596,10 @@ class SignupUrlsResource {
   ///
   /// Request parameters:
   ///
+  /// [adminEmail] - Optional. Email address used to prefill the admin field of
+  /// the enterprise signup form. This value is a hint only and can be altered
+  /// by the user.
+  ///
   /// [callbackUrl] - The callback URL that the admin will be redirected to
   /// after successfully creating an enterprise. Before redirecting there the
   /// system will add a query parameter to this URL named enterpriseToken which
@@ -1616,11 +1621,13 @@ class SignupUrlsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SignupUrl> create({
+    core.String? adminEmail,
     core.String? callbackUrl,
     core.String? projectId,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (adminEmail != null) 'adminEmail': [adminEmail],
       if (callbackUrl != null) 'callbackUrl': [callbackUrl],
       if (projectId != null) 'projectId': [projectId],
       if ($fields != null) 'fields': [$fields],
@@ -3589,6 +3596,13 @@ class Device {
   /// - "PREPARING_FOR_MIGRATION" : The device is preparing for migrating to
   /// Android Management API. No further action is needed for the migration to
   /// continue.
+  /// - "DEACTIVATED_BY_DEVICE_FINANCE" : This is a financed device that has
+  /// been "locked" by the financing agent. This means certain policy settings
+  /// have been applied which limit device functionality until the device has
+  /// been "unlocked" by the financing agent. The device will continue to apply
+  /// policy settings excluding those overridden by the financing agent. When
+  /// the device is "locked", the state is reported in appliedState as
+  /// DEACTIVATED_BY_DEVICE_FINANCE.
   core.String? appliedState;
 
   /// Information about Common Criteria Mode—security standards defined in the
@@ -3752,6 +3766,13 @@ class Device {
   /// - "PREPARING_FOR_MIGRATION" : The device is preparing for migrating to
   /// Android Management API. No further action is needed for the migration to
   /// continue.
+  /// - "DEACTIVATED_BY_DEVICE_FINANCE" : This is a financed device that has
+  /// been "locked" by the financing agent. This means certain policy settings
+  /// have been applied which limit device functionality until the device has
+  /// been "unlocked" by the financing agent. The device will continue to apply
+  /// policy settings excluding those overridden by the financing agent. When
+  /// the device is "locked", the state is reported in appliedState as
+  /// DEACTIVATED_BY_DEVICE_FINANCE.
   core.String? state;
 
   /// Map of selected system properties name and value related to the device.
@@ -8515,7 +8536,7 @@ class ProvisioningInfo {
   /// The name of the enterprise in the form enterprises/{enterprise}.
   core.String? enterprise;
 
-  /// IMEI number of the GSM device.
+  /// For corporate-owned devices, IMEI number of the GSM device.
   ///
   /// For example, A1000031212.
   core.String? imei;
@@ -8529,7 +8550,7 @@ class ProvisioningInfo {
   /// a managed profile on the device.
   core.String? managementMode;
 
-  /// MEID number of the CDMA device.
+  /// For corporate-owned devices, MEID number of the CDMA device.
   ///
   /// For example, A00000292788E1.
   core.String? meid;
@@ -8550,7 +8571,7 @@ class ProvisioningInfo {
   /// - "PERSONALLY_OWNED" : Device is personally-owned.
   core.String? ownership;
 
-  /// The device serial number.
+  /// For corporate-owned devices, The device serial number.
   core.String? serialNumber;
 
   ProvisioningInfo({

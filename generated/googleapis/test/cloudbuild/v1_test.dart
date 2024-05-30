@@ -1,6 +1,7 @@
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
 // ignore_for_file: deprecated_member_use_from_same_package
+// ignore_for_file: doc_directive_unknown
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_const_declarations
@@ -1544,6 +1545,38 @@ void checkFileHashes(api.FileHashes o) {
   buildCounterFileHashes--;
 }
 
+core.int buildCounterGCSLocation = 0;
+api.GCSLocation buildGCSLocation() {
+  final o = api.GCSLocation();
+  buildCounterGCSLocation++;
+  if (buildCounterGCSLocation < 3) {
+    o.bucket = 'foo';
+    o.generation = 'foo';
+    o.object = 'foo';
+  }
+  buildCounterGCSLocation--;
+  return o;
+}
+
+void checkGCSLocation(api.GCSLocation o) {
+  buildCounterGCSLocation++;
+  if (buildCounterGCSLocation < 3) {
+    unittest.expect(
+      o.bucket!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.generation!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.object!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGCSLocation--;
+}
+
 core.int buildCounterGitConfig = 0;
 api.GitConfig buildGitConfig() {
   final o = api.GitConfig();
@@ -2214,6 +2247,7 @@ api.HttpConfig buildHttpConfig() {
   buildCounterHttpConfig++;
   if (buildCounterHttpConfig < 3) {
     o.proxySecretVersionName = 'foo';
+    o.proxySslCaInfo = buildGCSLocation();
   }
   buildCounterHttpConfig--;
   return o;
@@ -2226,6 +2260,7 @@ void checkHttpConfig(api.HttpConfig o) {
       o.proxySecretVersionName!,
       unittest.equals('foo'),
     );
+    checkGCSLocation(o.proxySslCaInfo!);
   }
   buildCounterHttpConfig--;
 }
@@ -4227,6 +4262,16 @@ void main() {
       final od =
           api.FileHashes.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkFileHashes(od);
+    });
+  });
+
+  unittest.group('obj-schema-GCSLocation', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGCSLocation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GCSLocation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGCSLocation(od);
     });
   });
 

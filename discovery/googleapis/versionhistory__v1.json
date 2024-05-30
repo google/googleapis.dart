@@ -16,7 +16,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240508",
+    "revision": "20240528",
     "rootUrl": "https://versionhistory.googleapis.com/",
     "servicePath": "",
     "title": "versionhistory.googleapis.com API",
@@ -472,6 +472,10 @@
                 "name": {
                     "description": "Release name. Format is \"{product}/platforms/{platform}/channels/{channel}/versions/{version}/releases/{release}\"",
                     "type": "string"
+                },
+                "pinnable": {
+                    "description": "Whether or not the release was available for version pinning.",
+                    "type": "boolean"
                 },
                 "serving": {
                     "$ref": "Interval",

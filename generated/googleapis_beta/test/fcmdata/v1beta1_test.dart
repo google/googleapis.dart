@@ -1,6 +1,7 @@
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
 // ignore_for_file: deprecated_member_use_from_same_package
+// ignore_for_file: doc_directive_unknown
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_const_declarations
@@ -63,12 +64,15 @@ api.GoogleFirebaseFcmDataV1beta1Data buildGoogleFirebaseFcmDataV1beta1Data() {
   buildCounterGoogleFirebaseFcmDataV1beta1Data++;
   if (buildCounterGoogleFirebaseFcmDataV1beta1Data < 3) {
     o.countMessagesAccepted = 'foo';
+    o.countNotificationsAccepted = 'foo';
     o.deliveryPerformancePercents =
         buildGoogleFirebaseFcmDataV1beta1DeliveryPerformancePercents();
     o.messageInsightPercents =
         buildGoogleFirebaseFcmDataV1beta1MessageInsightPercents();
     o.messageOutcomePercents =
         buildGoogleFirebaseFcmDataV1beta1MessageOutcomePercents();
+    o.proxyNotificationInsightPercents =
+        buildGoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents();
   }
   buildCounterGoogleFirebaseFcmDataV1beta1Data--;
   return o;
@@ -82,12 +86,18 @@ void checkGoogleFirebaseFcmDataV1beta1Data(
       o.countMessagesAccepted!,
       unittest.equals('foo'),
     );
+    unittest.expect(
+      o.countNotificationsAccepted!,
+      unittest.equals('foo'),
+    );
     checkGoogleFirebaseFcmDataV1beta1DeliveryPerformancePercents(
         o.deliveryPerformancePercents!);
     checkGoogleFirebaseFcmDataV1beta1MessageInsightPercents(
         o.messageInsightPercents!);
     checkGoogleFirebaseFcmDataV1beta1MessageOutcomePercents(
         o.messageOutcomePercents!);
+    checkGoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents(
+        o.proxyNotificationInsightPercents!);
   }
   buildCounterGoogleFirebaseFcmDataV1beta1Data--;
 }
@@ -247,6 +257,59 @@ void checkGoogleFirebaseFcmDataV1beta1MessageOutcomePercents(
   buildCounterGoogleFirebaseFcmDataV1beta1MessageOutcomePercents--;
 }
 
+core.int
+    buildCounterGoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents =
+    0;
+api.GoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents
+    buildGoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents() {
+  final o = api.GoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents();
+  buildCounterGoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents++;
+  if (buildCounterGoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents <
+      3) {
+    o.failed = 42.0;
+    o.proxied = 42.0;
+    o.skippedNotThrottled = 42.0;
+    o.skippedOptedOut = 42.0;
+    o.skippedUnconfigured = 42.0;
+    o.skippedUnsupported = 42.0;
+  }
+  buildCounterGoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents--;
+  return o;
+}
+
+void checkGoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents(
+    api.GoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents o) {
+  buildCounterGoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents++;
+  if (buildCounterGoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents <
+      3) {
+    unittest.expect(
+      o.failed!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.proxied!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.skippedNotThrottled!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.skippedOptedOut!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.skippedUnconfigured!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.skippedUnsupported!,
+      unittest.equals(42.0),
+    );
+  }
+  buildCounterGoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents--;
+}
+
 core.int buildCounterGoogleTypeDate = 0;
 api.GoogleTypeDate buildGoogleTypeDate() {
   final o = api.GoogleTypeDate();
@@ -347,6 +410,20 @@ void main() {
           api.GoogleFirebaseFcmDataV1beta1MessageOutcomePercents.fromJson(
               oJson as core.Map<core.String, core.dynamic>);
       checkGoogleFirebaseFcmDataV1beta1MessageOutcomePercents(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents(od);
     });
   });
 

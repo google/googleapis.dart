@@ -42,7 +42,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240505",
+    "revision": "20240525",
     "rootUrl": "https://dataproc.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Dataproc API",

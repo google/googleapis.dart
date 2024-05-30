@@ -3,6 +3,7 @@
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
 // ignore_for_file: deprecated_member_use_from_same_package
+// ignore_for_file: doc_directive_unknown
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -509,7 +510,9 @@ class ProjectsLocationsCustomTargetTypesResource {
   /// Request parameters:
   ///
   /// [name] - Optional. Name of the `CustomTargetType`. Format is
-  /// `projects/{project}/locations/{location}/customTargetTypes/a-z{0,62}`.
+  /// `projects/{project}/locations/{location}/customTargetTypes/{customTargetType}`.
+  /// The `customTargetType` component must match
+  /// `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/customTargetTypes/\[^/\]+$`.
   ///
@@ -943,7 +946,9 @@ class ProjectsLocationsDeliveryPipelinesResource {
   /// Request parameters:
   ///
   /// [name] - Optional. Name of the `DeliveryPipeline`. Format is
-  /// `projects/{project}/locations/{location}/deliveryPipelines/a-z{0,62}`.
+  /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}`.
+  /// The `deliveryPipeline` component must match
+  /// `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/deliveryPipelines/\[^/\]+$`.
   ///
@@ -2884,7 +2889,8 @@ class ProjectsLocationsTargetsResource {
   /// Request parameters:
   ///
   /// [name] - Optional. Name of the `Target`. Format is
-  /// `projects/{project}/locations/{location}/targets/a-z{0,62}`.
+  /// `projects/{project}/locations/{location}/targets/{target}`. The `target`
+  /// component must match `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/targets/\[^/\]+$`.
   ///
@@ -3066,7 +3072,7 @@ class AdvanceChildRolloutJobRun {
   /// Name of the `ChildRollout`.
   ///
   /// Format is
-  /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/a-z{0,62}`.
+  /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/{rollout}`.
   ///
   /// Output only.
   core.String? rollout;
@@ -3185,7 +3191,7 @@ class AdvanceRolloutRule {
   /// ID of the rule.
   ///
   /// This id must be unique in the `Automation` resource to which this rule
-  /// belongs. The format is `a-z{0,62}`.
+  /// belongs. The format is `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`.
   ///
   /// Required.
   core.String? id;
@@ -3558,7 +3564,7 @@ class AutomationResourceSelector {
 /// AutomationRolloutMetadata contains Automation-related actions that were
 /// performed on a rollout.
 class AutomationRolloutMetadata {
-  /// The IDs of the AutomationRuns initiated by an advance rollout rule.
+  /// The names of the AutomationRuns initiated by an advance rollout rule.
   ///
   /// Output only.
   core.List<core.String>? advanceAutomationRuns;
@@ -3568,12 +3574,12 @@ class AutomationRolloutMetadata {
   /// Output only.
   core.String? currentRepairAutomationRun;
 
-  /// The ID of the AutomationRun initiated by a promote release rule.
+  /// The name of the AutomationRun initiated by a promote release rule.
   ///
   /// Output only.
   core.String? promoteAutomationRun;
 
-  /// The IDs of the AutomationRuns initiated by a repair rollout rule.
+  /// The names of the AutomationRuns initiated by a repair rollout rule.
   ///
   /// Output only.
   core.List<core.String>? repairAutomationRuns;
@@ -4423,7 +4429,7 @@ class CreateChildRolloutJobRun {
   /// Name of the `ChildRollout`.
   ///
   /// Format is
-  /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/a-z{0,62}`.
+  /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/{rollout}`.
   ///
   /// Output only.
   core.String? rollout;
@@ -4671,7 +4677,9 @@ class CustomTargetType {
   /// Name of the `CustomTargetType`.
   ///
   /// Format is
-  /// `projects/{project}/locations/{location}/customTargetTypes/a-z{0,62}`.
+  /// `projects/{project}/locations/{location}/customTargetTypes/{customTargetType}`.
+  /// The `customTargetType` component must match
+  /// `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`
   ///
   /// Optional.
   core.String? name;
@@ -4851,7 +4859,9 @@ class DeliveryPipeline {
   /// Name of the `DeliveryPipeline`.
   ///
   /// Format is
-  /// `projects/{project}/locations/{location}/deliveryPipelines/a-z{0,62}`.
+  /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}`.
+  /// The `deliveryPipeline` component must match
+  /// `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`
   ///
   /// Optional.
   core.String? name;
@@ -5282,6 +5292,12 @@ class ExecutionConfig {
   /// Required.
   core.List<core.String>? usages;
 
+  /// If true, additional logging will be enabled when running builds in this
+  /// execution environment.
+  ///
+  /// Optional.
+  core.bool? verbose;
+
   /// The resource name of the `WorkerPool`, with the format
   /// `projects/{project}/locations/{location}/workerPools/{worker_pool}`.
   ///
@@ -5298,6 +5314,7 @@ class ExecutionConfig {
     this.privatePool,
     this.serviceAccount,
     this.usages,
+    this.verbose,
     this.workerPool,
   });
 
@@ -5325,6 +5342,9 @@ class ExecutionConfig {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          verbose: json_.containsKey('verbose')
+              ? json_['verbose'] as core.bool
+              : null,
           workerPool: json_.containsKey('workerPool')
               ? json_['workerPool'] as core.String
               : null,
@@ -5337,6 +5357,7 @@ class ExecutionConfig {
         if (privatePool != null) 'privatePool': privatePool!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
         if (usages != null) 'usages': usages!,
+        if (verbose != null) 'verbose': verbose!,
         if (workerPool != null) 'workerPool': workerPool!,
       };
 }
@@ -7180,7 +7201,7 @@ class PromoteReleaseRule {
   /// ID of the rule.
   ///
   /// This id must be unique in the `Automation` resource to which this rule
-  /// belongs. The format is `a-z{0,62}`.
+  /// belongs. The format is `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`.
   ///
   /// Required.
   core.String? id;
@@ -7295,7 +7316,8 @@ class Release {
   /// Name of the `Release`.
   ///
   /// Format is
-  /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/a-z{0,62}`.
+  /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}`.
+  /// The `release` component must match `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`
   ///
   /// Optional.
   core.String? name;
@@ -7767,7 +7789,7 @@ class RepairRolloutRule {
   /// ID of the rule.
   ///
   /// This id must be unique in the `Automation` resource to which this rule
-  /// belongs. The format is `a-z{0,62}`.
+  /// belongs. The format is `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`.
   ///
   /// Required.
   core.String? id;
@@ -8320,7 +8342,7 @@ class Rollout {
   /// Name of the `ControllerRollout`.
   ///
   /// Format is
-  /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/a-z{0,62}`.
+  /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/{rollout}`.
   ///
   /// Output only.
   core.String? controllerRollout;
@@ -8412,7 +8434,8 @@ class Rollout {
   /// Name of the `Rollout`.
   ///
   /// Format is
-  /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/a-z{0,62}`.
+  /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/{rollout}`.
+  /// The `rollout` component must match `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`
   ///
   /// Optional.
   core.String? name;
@@ -9250,7 +9273,8 @@ class Target {
 
   /// Name of the `Target`.
   ///
-  /// Format is `projects/{project}/locations/{location}/targets/a-z{0,62}`.
+  /// Format is `projects/{project}/locations/{location}/targets/{target}`. The
+  /// `target` component must match `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`
   ///
   /// Optional.
   core.String? name;

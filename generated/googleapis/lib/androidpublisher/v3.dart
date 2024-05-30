@@ -3,6 +3,7 @@
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
 // ignore_for_file: deprecated_member_use_from_same_package
+// ignore_for_file: doc_directive_unknown
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -7498,12 +7499,17 @@ class AutoRenewingPlan {
   /// canceled the subscription
   core.bool? autoRenewEnabled;
 
+  /// The installment plan commitment and state related info for the auto
+  /// renewing plan.
+  InstallmentPlan? installmentDetails;
+
   /// The information of the last price change for the item since subscription
   /// signup.
   SubscriptionItemPriceChangeDetails? priceChangeDetails;
 
   AutoRenewingPlan({
     this.autoRenewEnabled,
+    this.installmentDetails,
     this.priceChangeDetails,
   });
 
@@ -7511,6 +7517,10 @@ class AutoRenewingPlan {
       : this(
           autoRenewEnabled: json_.containsKey('autoRenewEnabled')
               ? json_['autoRenewEnabled'] as core.bool
+              : null,
+          installmentDetails: json_.containsKey('installmentDetails')
+              ? InstallmentPlan.fromJson(json_['installmentDetails']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           priceChangeDetails: json_.containsKey('priceChangeDetails')
               ? SubscriptionItemPriceChangeDetails.fromJson(
@@ -7521,6 +7531,8 @@ class AutoRenewingPlan {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (autoRenewEnabled != null) 'autoRenewEnabled': autoRenewEnabled!,
+        if (installmentDetails != null)
+          'installmentDetails': installmentDetails!,
         if (priceChangeDetails != null)
           'priceChangeDetails': priceChangeDetails!,
       };
@@ -7539,6 +7551,10 @@ class BasePlan {
   ///
   /// Required. Immutable.
   core.String? basePlanId;
+
+  /// Set for installments base plans where a user is committed to a specified
+  /// number of payments.
+  InstallmentsBasePlanType? installmentsBasePlanType;
 
   /// List of up to 20 custom tags specified for this base plan, and returned to
   /// the app through the billing library.
@@ -7580,6 +7596,7 @@ class BasePlan {
   BasePlan({
     this.autoRenewingBasePlanType,
     this.basePlanId,
+    this.installmentsBasePlanType,
     this.offerTags,
     this.otherRegionsConfig,
     this.prepaidBasePlanType,
@@ -7598,6 +7615,12 @@ class BasePlan {
           basePlanId: json_.containsKey('basePlanId')
               ? json_['basePlanId'] as core.String
               : null,
+          installmentsBasePlanType:
+              json_.containsKey('installmentsBasePlanType')
+                  ? InstallmentsBasePlanType.fromJson(
+                      json_['installmentsBasePlanType']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           offerTags: json_.containsKey('offerTags')
               ? (json_['offerTags'] as core.List)
                   .map((value) => OfferTag.fromJson(
@@ -7626,6 +7649,8 @@ class BasePlan {
         if (autoRenewingBasePlanType != null)
           'autoRenewingBasePlanType': autoRenewingBasePlanType!,
         if (basePlanId != null) 'basePlanId': basePlanId!,
+        if (installmentsBasePlanType != null)
+          'installmentsBasePlanType': installmentsBasePlanType!,
         if (offerTags != null) 'offerTags': offerTags!,
         if (otherRegionsConfig != null)
           'otherRegionsConfig': otherRegionsConfig!,
@@ -10709,6 +10734,186 @@ class InappproductsUpdateRequest {
       };
 }
 
+/// Information to a installment plan.
+class InstallmentPlan {
+  /// Total number of payments the user is initially committed for.
+  core.int? initialCommittedPaymentsCount;
+
+  /// If present, this installment plan is pending to be canceled.
+  ///
+  /// The cancellation will happen only after the user finished all committed
+  /// payments.
+  PendingCancellation? pendingCancellation;
+
+  /// Total number of committed payments remaining to be paid for in this
+  /// renewal cycle.
+  core.int? remainingCommittedPaymentsCount;
+
+  /// Total number of payments the user will be committed for after each
+  /// commitment period.
+  ///
+  /// Empty means the installment plan will fall back to a normal auto-renew
+  /// subscription after initial commitment.
+  core.int? subsequentCommittedPaymentsCount;
+
+  InstallmentPlan({
+    this.initialCommittedPaymentsCount,
+    this.pendingCancellation,
+    this.remainingCommittedPaymentsCount,
+    this.subsequentCommittedPaymentsCount,
+  });
+
+  InstallmentPlan.fromJson(core.Map json_)
+      : this(
+          initialCommittedPaymentsCount:
+              json_.containsKey('initialCommittedPaymentsCount')
+                  ? json_['initialCommittedPaymentsCount'] as core.int
+                  : null,
+          pendingCancellation: json_.containsKey('pendingCancellation')
+              ? PendingCancellation.fromJson(json_['pendingCancellation']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          remainingCommittedPaymentsCount:
+              json_.containsKey('remainingCommittedPaymentsCount')
+                  ? json_['remainingCommittedPaymentsCount'] as core.int
+                  : null,
+          subsequentCommittedPaymentsCount:
+              json_.containsKey('subsequentCommittedPaymentsCount')
+                  ? json_['subsequentCommittedPaymentsCount'] as core.int
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (initialCommittedPaymentsCount != null)
+          'initialCommittedPaymentsCount': initialCommittedPaymentsCount!,
+        if (pendingCancellation != null)
+          'pendingCancellation': pendingCancellation!,
+        if (remainingCommittedPaymentsCount != null)
+          'remainingCommittedPaymentsCount': remainingCommittedPaymentsCount!,
+        if (subsequentCommittedPaymentsCount != null)
+          'subsequentCommittedPaymentsCount': subsequentCommittedPaymentsCount!,
+      };
+}
+
+/// Represents an installments base plan where a user commits to a specified
+/// number of payments.
+class InstallmentsBasePlanType {
+  /// Account hold period of the subscription, specified exclusively in days and
+  /// in ISO 8601 format.
+  ///
+  /// Acceptable values are P0D (zero days) to P30D (30days). If not specified,
+  /// the default value is P30D (30 days).
+  ///
+  /// Optional.
+  core.String? accountHoldDuration;
+
+  /// Subscription period, specified in ISO 8601 format.
+  ///
+  /// For a list of acceptable billing periods, refer to the help center.
+  ///
+  /// Required.
+  core.String? billingPeriodDuration;
+
+  /// The number of payments the user is committed to.
+  ///
+  /// Required.
+  core.int? committedPaymentsCount;
+
+  /// Grace period of the subscription, specified in ISO 8601 format.
+  ///
+  /// Acceptable values are P0D (zero days), P3D (3 days), P7D (7 days), P14D
+  /// (14 days), and P30D (30 days). If not specified, a default value will be
+  /// used based on the recurring period duration.
+  core.String? gracePeriodDuration;
+
+  /// The proration mode for the base plan determines what happens when a user
+  /// switches to this plan from another base plan.
+  ///
+  /// If unspecified, defaults to CHARGE_ON_NEXT_BILLING_DATE.
+  /// Possible string values are:
+  /// - "SUBSCRIPTION_PRORATION_MODE_UNSPECIFIED" : Unspecified mode.
+  /// - "SUBSCRIPTION_PRORATION_MODE_CHARGE_ON_NEXT_BILLING_DATE" : Users will
+  /// be charged for their new base plan at the end of their current billing
+  /// period.
+  /// - "SUBSCRIPTION_PRORATION_MODE_CHARGE_FULL_PRICE_IMMEDIATELY" : Users will
+  /// be charged for their new base plan immediately and in full. Any remaining
+  /// period of their existing subscription will be used to extend the duration
+  /// of the new billing plan.
+  core.String? prorationMode;
+
+  /// Installments base plan renewal type.
+  ///
+  /// Determines the behavior at the end of the initial commitment.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "RENEWAL_TYPE_UNSPECIFIED" : Unspecified state.
+  /// - "RENEWAL_TYPE_RENEWS_WITHOUT_COMMITMENT" : Renews periodically for the
+  /// billing period duration without commitment.
+  /// - "RENEWAL_TYPE_RENEWS_WITH_COMMITMENT" : Renews with the commitment of
+  /// the same duration as the initial one.
+  core.String? renewalType;
+
+  /// Whether users should be able to resubscribe to this base plan in Google
+  /// Play surfaces.
+  ///
+  /// Defaults to RESUBSCRIBE_STATE_ACTIVE if not specified.
+  /// Possible string values are:
+  /// - "RESUBSCRIBE_STATE_UNSPECIFIED" : Unspecified state.
+  /// - "RESUBSCRIBE_STATE_ACTIVE" : Resubscribe is active.
+  /// - "RESUBSCRIBE_STATE_INACTIVE" : Resubscribe is inactive.
+  core.String? resubscribeState;
+
+  InstallmentsBasePlanType({
+    this.accountHoldDuration,
+    this.billingPeriodDuration,
+    this.committedPaymentsCount,
+    this.gracePeriodDuration,
+    this.prorationMode,
+    this.renewalType,
+    this.resubscribeState,
+  });
+
+  InstallmentsBasePlanType.fromJson(core.Map json_)
+      : this(
+          accountHoldDuration: json_.containsKey('accountHoldDuration')
+              ? json_['accountHoldDuration'] as core.String
+              : null,
+          billingPeriodDuration: json_.containsKey('billingPeriodDuration')
+              ? json_['billingPeriodDuration'] as core.String
+              : null,
+          committedPaymentsCount: json_.containsKey('committedPaymentsCount')
+              ? json_['committedPaymentsCount'] as core.int
+              : null,
+          gracePeriodDuration: json_.containsKey('gracePeriodDuration')
+              ? json_['gracePeriodDuration'] as core.String
+              : null,
+          prorationMode: json_.containsKey('prorationMode')
+              ? json_['prorationMode'] as core.String
+              : null,
+          renewalType: json_.containsKey('renewalType')
+              ? json_['renewalType'] as core.String
+              : null,
+          resubscribeState: json_.containsKey('resubscribeState')
+              ? json_['resubscribeState'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (accountHoldDuration != null)
+          'accountHoldDuration': accountHoldDuration!,
+        if (billingPeriodDuration != null)
+          'billingPeriodDuration': billingPeriodDuration!,
+        if (committedPaymentsCount != null)
+          'committedPaymentsCount': committedPaymentsCount!,
+        if (gracePeriodDuration != null)
+          'gracePeriodDuration': gracePeriodDuration!,
+        if (prorationMode != null) 'prorationMode': prorationMode!,
+        if (renewalType != null) 'renewalType': renewalType!,
+        if (resubscribeState != null) 'resubscribeState': resubscribeState!,
+      };
+}
+
 /// An artifact resource which gets created when uploading an APK or Android App
 /// Bundle through internal app sharing.
 class InternalAppSharingArtifact {
@@ -11813,6 +12018,13 @@ class PausedStateContext {
       };
 }
 
+/// This is an indicator of whether there is a pending cancellation on the
+/// virtual installment plan.
+///
+/// The cancellation will happen only after the user finished all committed
+/// payments.
+typedef PendingCancellation = $Empty;
+
 /// Represents a base plan that does not automatically renew at the end of the
 /// base plan, and must be manually renewed by the user.
 class PrepaidBasePlanType {
@@ -12676,6 +12888,35 @@ class RemoteInAppUpdateDataPerBundle {
 /// Information specific to cancellations caused by subscription replacement.
 typedef ReplacementCancellation = $Empty;
 
+/// Countries where the purchase of this product is restricted to payment
+/// methods registered in the same country.
+///
+/// If empty, no payment location restrictions are imposed.
+class RestrictedPaymentCountries {
+  /// Region codes to impose payment restrictions on, as defined by ISO 3166-2,
+  /// e.g. "US".
+  ///
+  /// Required.
+  core.List<core.String>? regionCodes;
+
+  RestrictedPaymentCountries({
+    this.regionCodes,
+  });
+
+  RestrictedPaymentCountries.fromJson(core.Map json_)
+      : this(
+          regionCodes: json_.containsKey('regionCodes')
+              ? (json_['regionCodes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (regionCodes != null) 'regionCodes': regionCodes!,
+      };
+}
+
 /// An Android app review.
 class Review {
   /// The name of the user who wrote the review.
@@ -13244,6 +13485,14 @@ class Subscription {
   /// Immutable.
   core.String? productId;
 
+  /// Countries where the purchase of this subscription is restricted to payment
+  /// methods registered in the same country.
+  ///
+  /// If empty, no payment location restrictions are imposed.
+  ///
+  /// Optional.
+  RestrictedPaymentCountries? restrictedPaymentCountries;
+
   /// Details about taxes and legal compliance.
   SubscriptionTaxAndComplianceSettings? taxAndComplianceSettings;
 
@@ -13253,6 +13502,7 @@ class Subscription {
     this.listings,
     this.packageName,
     this.productId,
+    this.restrictedPaymentCountries,
     this.taxAndComplianceSettings,
   });
 
@@ -13279,6 +13529,12 @@ class Subscription {
           productId: json_.containsKey('productId')
               ? json_['productId'] as core.String
               : null,
+          restrictedPaymentCountries:
+              json_.containsKey('restrictedPaymentCountries')
+                  ? RestrictedPaymentCountries.fromJson(
+                      json_['restrictedPaymentCountries']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           taxAndComplianceSettings:
               json_.containsKey('taxAndComplianceSettings')
                   ? SubscriptionTaxAndComplianceSettings.fromJson(
@@ -13293,6 +13549,8 @@ class Subscription {
         if (listings != null) 'listings': listings!,
         if (packageName != null) 'packageName': packageName!,
         if (productId != null) 'productId': productId!,
+        if (restrictedPaymentCountries != null)
+          'restrictedPaymentCountries': restrictedPaymentCountries!,
         if (taxAndComplianceSettings != null)
           'taxAndComplianceSettings': taxAndComplianceSettings!,
       };
@@ -14289,6 +14547,10 @@ class SubscriptionPurchaseV2 {
   /// plan. All items have auto_renew_enabled set to false.
   /// - "SUBSCRIPTION_STATE_EXPIRED" : Subscription is expired. All items have
   /// expiry_time in the past.
+  /// - "SUBSCRIPTION_STATE_PENDING_PURCHASE_CANCELED" : Pending transaction for
+  /// subscription is canceled. If this pending purchase was for an existing
+  /// subscription, use linked_purchase_token to get the current state of that
+  /// subscription.
   core.String? subscriptionState;
 
   /// Only present if this subscription purchase is a test purchase.

@@ -27,7 +27,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240507",
+    "revision": "20240524",
     "rootUrl": "https://testing.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Testing API",

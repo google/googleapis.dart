@@ -1,6 +1,7 @@
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
 // ignore_for_file: deprecated_member_use_from_same_package
+// ignore_for_file: doc_directive_unknown
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_const_declarations
@@ -1232,6 +1233,7 @@ api.ComplianceOccurrence buildComplianceOccurrence() {
   if (buildCounterComplianceOccurrence < 3) {
     o.nonComplianceReason = 'foo';
     o.nonCompliantFiles = buildUnnamed22();
+    o.version = buildComplianceVersion();
   }
   buildCounterComplianceOccurrence--;
   return o;
@@ -1245,6 +1247,7 @@ void checkComplianceOccurrence(api.ComplianceOccurrence o) {
       unittest.equals('foo'),
     );
     checkUnnamed22(o.nonCompliantFiles!);
+    checkComplianceVersion(o.version!);
   }
   buildCounterComplianceOccurrence--;
 }
