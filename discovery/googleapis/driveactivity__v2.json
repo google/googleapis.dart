@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240526",
+    "revision": "20240528",
     "rootUrl": "https://driveactivity.googleapis.com/",
     "servicePath": "",
     "title": "Drive Activity API",

@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240520",
+    "revision": "20240527",
     "rootUrl": "https://iap.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Identity-Aware Proxy API",
@@ -1158,7 +1158,7 @@
                     "type": "string"
                 },
                 "type": {
-                    "description": "Resource type. Types are defined in IAM's .service files. Valid values for type might be 'gce', 'gcs', 'project', 'account' etc.",
+                    "description": "Resource type. Types are defined in IAM's .service files. Valid values for type might be 'storage_buckets', 'compute_instances', 'resourcemanager_customers', 'billing_accounts', etc.",
                     "type": "string"
                 }
             },

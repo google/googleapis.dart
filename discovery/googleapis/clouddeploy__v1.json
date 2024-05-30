@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240511",
+    "revision": "20240515",
     "rootUrl": "https://clouddeploy.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Deploy API",

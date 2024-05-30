@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240529",
+    "revision": "20240530",
     "rootUrl": "https://walletobjects.googleapis.com/",
     "servicePath": "",
     "title": "Google Wallet API",

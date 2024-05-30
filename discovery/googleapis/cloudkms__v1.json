@@ -45,7 +45,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240516",
+    "revision": "20240523",
     "rootUrl": "https://cloudkms.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Key Management Service (KMS) API",

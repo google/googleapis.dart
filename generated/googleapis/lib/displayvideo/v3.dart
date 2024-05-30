@@ -23760,56 +23760,7 @@ class ReviewStatusInfo {
 typedef ScriptError = $ScriptError;
 
 /// Structured Data File (SDF) related settings.
-class SdfConfig {
-  /// An administrator email address to which the SDF processing status reports
-  /// will be sent.
-  core.String? adminEmail;
-
-  /// The version of SDF being used.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "SDF_VERSION_UNSPECIFIED" : SDF version value is not specified or is
-  /// unknown in this version.
-  /// - "SDF_VERSION_3_1" : SDF version 3.1
-  /// - "SDF_VERSION_4" : SDF version 4
-  /// - "SDF_VERSION_4_1" : SDF version 4.1
-  /// - "SDF_VERSION_4_2" : SDF version 4.2
-  /// - "SDF_VERSION_5" : SDF version 5.
-  /// - "SDF_VERSION_5_1" : SDF version 5.1
-  /// - "SDF_VERSION_5_2" : SDF version 5.2
-  /// - "SDF_VERSION_5_3" : SDF version 5.3
-  /// - "SDF_VERSION_5_4" : SDF version 5.4
-  /// - "SDF_VERSION_5_5" : SDF version 5.5
-  /// - "SDF_VERSION_6" : SDF version 6
-  /// - "SDF_VERSION_7" : SDF version 7. Read the \[v7 migration
-  /// guide\](/display-video/api/structured-data-file/v7-migration-guide) before
-  /// migrating to this version.
-  /// - "SDF_VERSION_7_1" : SDF version 7.1. Read the \[v7 migration
-  /// guide\](/display-video/api/structured-data-file/v7-migration-guide) before
-  /// migrating to this version.
-  core.String? version;
-
-  SdfConfig({
-    this.adminEmail,
-    this.version,
-  });
-
-  SdfConfig.fromJson(core.Map json_)
-      : this(
-          adminEmail: json_.containsKey('adminEmail')
-              ? json_['adminEmail'] as core.String
-              : null,
-          version: json_.containsKey('version')
-              ? json_['version'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (adminEmail != null) 'adminEmail': adminEmail!,
-        if (version != null) 'version': version!,
-      };
-}
+typedef SdfConfig = $SdfConfig;
 
 /// Request message for SearchTargetingOptions.
 class SearchTargetingOptionsRequest {

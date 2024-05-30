@@ -305,6 +305,7 @@ packages:
     apis:
     - adexchangebuyer2:v2beta1 # https://developers.google.com/ad-exchange/buyer-rest/guides/client-access/
     - alertcenter:v1beta1 # https://developers.google.com/admin-sdk/alertcenter/
+    - analyticsadmin:v1alpha
     - analyticsadmin:v1beta
     - analyticsdata:v1beta
     - area120tables:v1alpha1

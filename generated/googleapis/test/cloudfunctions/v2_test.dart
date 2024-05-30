@@ -1409,6 +1409,7 @@ api.ServiceConfig buildServiceConfig() {
     o.allTrafficOnLatestRevision = true;
     o.availableCpu = 'foo';
     o.availableMemory = 'foo';
+    o.binaryAuthorizationPolicy = 'foo';
     o.environmentVariables = buildUnnamed20();
     o.ingressSettings = 'foo';
     o.maxInstanceCount = 42;
@@ -1439,6 +1440,10 @@ void checkServiceConfig(api.ServiceConfig o) {
     );
     unittest.expect(
       o.availableMemory!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.binaryAuthorizationPolicy!,
       unittest.equals('foo'),
     );
     checkUnnamed20(o.environmentVariables!);
@@ -1681,6 +1686,7 @@ api.StorageSource buildStorageSource() {
     o.bucket = 'foo';
     o.generation = 'foo';
     o.object = 'foo';
+    o.sourceUploadUrl = 'foo';
   }
   buildCounterStorageSource--;
   return o;
@@ -1699,6 +1705,10 @@ void checkStorageSource(api.StorageSource o) {
     );
     unittest.expect(
       o.object!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.sourceUploadUrl!,
       unittest.equals('foo'),
     );
   }

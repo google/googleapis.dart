@@ -2070,7 +2070,8 @@ class PolicyName {
   /// Resource type.
   ///
   /// Types are defined in IAM's .service files. Valid values for type might be
-  /// 'gce', 'gcs', 'project', 'account' etc.
+  /// 'storage_buckets', 'compute_instances', 'resourcemanager_customers',
+  /// 'billing_accounts', etc.
   core.String? type;
 
   PolicyName({

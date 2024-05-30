@@ -13747,6 +13747,7 @@ class GooglePrivacyDlpV2InfoTypeCategory {
   /// but is used almost everywhere.
   /// - "ARGENTINA" : The infoType is typically used in Argentina.
   /// - "AUSTRALIA" : The infoType is typically used in Australia.
+  /// - "AZERBAIJAN" : The infoType is typically used in Azerbaijan.
   /// - "BELGIUM" : The infoType is typically used in Belgium.
   /// - "BRAZIL" : The infoType is typically used in Brazil.
   /// - "CANADA" : The infoType is typically used in Canada.

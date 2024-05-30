@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240528",
+    "revision": "20240529",
     "rootUrl": "https://toolresults.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Tool Results API",
