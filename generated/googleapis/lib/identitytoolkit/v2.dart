@@ -2475,6 +2475,8 @@ class GoogleCloudIdentitytoolkitAdminV2Anonymous {
 class GoogleCloudIdentitytoolkitAdminV2AppleSignInConfig {
   /// A list of Bundle ID's usable by this project
   core.List<core.String>? bundleIds;
+
+  /// Additional config for Apple for code flow.
   GoogleCloudIdentitytoolkitAdminV2CodeFlowConfig? codeFlowConfig;
 
   GoogleCloudIdentitytoolkitAdminV2AppleSignInConfig({

@@ -66,6 +66,7 @@ api.AvroConfig buildAvroConfig() {
   final o = api.AvroConfig();
   buildCounterAvroConfig++;
   if (buildCounterAvroConfig < 3) {
+    o.useTopicSchema = true;
     o.writeMetadata = true;
   }
   buildCounterAvroConfig--;
@@ -75,6 +76,7 @@ api.AvroConfig buildAvroConfig() {
 void checkAvroConfig(api.AvroConfig o) {
   buildCounterAvroConfig++;
   if (buildCounterAvroConfig < 3) {
+    unittest.expect(o.useTopicSchema!, unittest.isTrue);
     unittest.expect(o.writeMetadata!, unittest.isTrue);
   }
   buildCounterAvroConfig--;

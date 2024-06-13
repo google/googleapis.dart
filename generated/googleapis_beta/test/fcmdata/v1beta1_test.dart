@@ -219,10 +219,12 @@ api.GoogleFirebaseFcmDataV1beta1MessageOutcomePercents
   final o = api.GoogleFirebaseFcmDataV1beta1MessageOutcomePercents();
   buildCounterGoogleFirebaseFcmDataV1beta1MessageOutcomePercents++;
   if (buildCounterGoogleFirebaseFcmDataV1beta1MessageOutcomePercents < 3) {
+    o.collapsed = 42.0;
     o.delivered = 42.0;
     o.droppedAppForceStopped = 42.0;
     o.droppedDeviceInactive = 42.0;
     o.droppedTooManyPendingMessages = 42.0;
+    o.droppedTtlExpired = 42.0;
     o.pending = 42.0;
   }
   buildCounterGoogleFirebaseFcmDataV1beta1MessageOutcomePercents--;
@@ -233,6 +235,10 @@ void checkGoogleFirebaseFcmDataV1beta1MessageOutcomePercents(
     api.GoogleFirebaseFcmDataV1beta1MessageOutcomePercents o) {
   buildCounterGoogleFirebaseFcmDataV1beta1MessageOutcomePercents++;
   if (buildCounterGoogleFirebaseFcmDataV1beta1MessageOutcomePercents < 3) {
+    unittest.expect(
+      o.collapsed!,
+      unittest.equals(42.0),
+    );
     unittest.expect(
       o.delivered!,
       unittest.equals(42.0),
@@ -247,6 +253,10 @@ void checkGoogleFirebaseFcmDataV1beta1MessageOutcomePercents(
     );
     unittest.expect(
       o.droppedTooManyPendingMessages!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.droppedTtlExpired!,
       unittest.equals(42.0),
     );
     unittest.expect(

@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240528",
+    "revision": "20240611",
     "rootUrl": "https://resourcesettings.googleapis.com/",
     "servicePath": "",
     "title": "Resource Settings API",
@@ -112,8 +112,10 @@
         "folders": {
             "resources": {
                 "settings": {
+                    "deprecated": true,
                     "methods": {
                         "get": {
+                            "deprecated": true,
                             "description": "Returns a specified setting. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the setting does not exist.",
                             "flatPath": "v1/folders/{foldersId}/settings/{settingsId}",
                             "httpMethod": "GET",
@@ -156,6 +158,7 @@
                             ]
                         },
                         "list": {
+                            "deprecated": true,
                             "description": "Lists all the settings that are available on the Cloud resource `parent`.",
                             "flatPath": "v1/folders/{foldersId}/settings",
                             "httpMethod": "GET",
@@ -209,6 +212,7 @@
                             ]
                         },
                         "patch": {
+                            "deprecated": true,
                             "description": "Updates a specified setting. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the setting does not exist. Returns a `google.rpc.Status` with `google.rpc.Code.FAILED_PRECONDITION` if the setting is flagged as read only. Returns a `google.rpc.Status` with `google.rpc.Code.ABORTED` if the etag supplied in the request does not match the persisted etag of the setting value. On success, the response will contain only `name`, `local_value` and `etag`. The `metadata` and `effective_value` cannot be updated through this API. Note: the supplied setting will perform a full overwrite of the `local_value` field.",
                             "flatPath": "v1/folders/{foldersId}/settings/{settingsId}",
                             "httpMethod": "PATCH",
@@ -243,8 +247,10 @@
         "organizations": {
             "resources": {
                 "settings": {
+                    "deprecated": true,
                     "methods": {
                         "get": {
+                            "deprecated": true,
                             "description": "Returns a specified setting. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the setting does not exist.",
                             "flatPath": "v1/organizations/{organizationsId}/settings/{settingsId}",
                             "httpMethod": "GET",
@@ -287,6 +293,7 @@
                             ]
                         },
                         "list": {
+                            "deprecated": true,
                             "description": "Lists all the settings that are available on the Cloud resource `parent`.",
                             "flatPath": "v1/organizations/{organizationsId}/settings",
                             "httpMethod": "GET",
@@ -340,6 +347,7 @@
                             ]
                         },
                         "patch": {
+                            "deprecated": true,
                             "description": "Updates a specified setting. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the setting does not exist. Returns a `google.rpc.Status` with `google.rpc.Code.FAILED_PRECONDITION` if the setting is flagged as read only. Returns a `google.rpc.Status` with `google.rpc.Code.ABORTED` if the etag supplied in the request does not match the persisted etag of the setting value. On success, the response will contain only `name`, `local_value` and `etag`. The `metadata` and `effective_value` cannot be updated through this API. Note: the supplied setting will perform a full overwrite of the `local_value` field.",
                             "flatPath": "v1/organizations/{organizationsId}/settings/{settingsId}",
                             "httpMethod": "PATCH",
@@ -374,8 +382,10 @@
         "projects": {
             "resources": {
                 "settings": {
+                    "deprecated": true,
                     "methods": {
                         "get": {
+                            "deprecated": true,
                             "description": "Returns a specified setting. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the setting does not exist.",
                             "flatPath": "v1/projects/{projectsId}/settings/{settingsId}",
                             "httpMethod": "GET",
@@ -418,6 +428,7 @@
                             ]
                         },
                         "list": {
+                            "deprecated": true,
                             "description": "Lists all the settings that are available on the Cloud resource `parent`.",
                             "flatPath": "v1/projects/{projectsId}/settings",
                             "httpMethod": "GET",
@@ -471,6 +482,7 @@
                             ]
                         },
                         "patch": {
+                            "deprecated": true,
                             "description": "Updates a specified setting. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the setting does not exist. Returns a `google.rpc.Status` with `google.rpc.Code.FAILED_PRECONDITION` if the setting is flagged as read only. Returns a `google.rpc.Status` with `google.rpc.Code.ABORTED` if the etag supplied in the request does not match the persisted etag of the setting value. On success, the response will contain only `name`, `local_value` and `etag`. The `metadata` and `effective_value` cannot be updated through this API. Note: the supplied setting will perform a full overwrite of the `local_value` field.",
                             "flatPath": "v1/projects/{projectsId}/settings/{settingsId}",
                             "httpMethod": "PATCH",

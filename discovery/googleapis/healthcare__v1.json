@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240521",
+    "revision": "20240605",
     "rootUrl": "https://healthcare.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Healthcare API",

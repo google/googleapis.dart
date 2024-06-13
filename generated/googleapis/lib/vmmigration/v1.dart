@@ -3400,12 +3400,18 @@ class AvailableUpdates {
 /// The details of an AWS instance disk.
 class AwsDiskDetails {
   /// The ordinal number of the disk.
+  ///
+  /// Output only.
   core.int? diskNumber;
 
   /// Size in GB.
+  ///
+  /// Output only.
   core.String? sizeGb;
 
   /// AWS volume ID.
+  ///
+  /// Output only.
   core.String? volumeId;
 
   AwsDiskDetails({
@@ -3579,12 +3585,18 @@ class AwsSourceDetails {
 /// Represent the source AWS VM details.
 class AwsSourceVmDetails {
   /// The total size of the disks being migrated in bytes.
+  ///
+  /// Output only.
   core.String? committedStorageBytes;
 
   /// The disks attached to the source VM.
+  ///
+  /// Output only.
   core.List<AwsDiskDetails>? disks;
 
   /// The firmware type of the source VM.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "FIRMWARE_UNSPECIFIED" : The firmware is unknown.
   /// - "EFI" : The firmware is EFI.
@@ -3848,12 +3860,18 @@ class AwsVmsDetails {
 /// The details of an Azure VM disk.
 class AzureDiskDetails {
   /// Azure disk ID.
+  ///
+  /// Output only.
   core.String? diskId;
 
   /// The ordinal number of the disk.
+  ///
+  /// Output only.
   core.int? diskNumber;
 
   /// Size in GB.
+  ///
+  /// Output only.
   core.String? sizeGb;
 
   AzureDiskDetails({
@@ -3988,12 +4006,18 @@ class AzureSourceDetails {
 /// Represent the source Azure VM details.
 class AzureSourceVmDetails {
   /// The total size of the disks being migrated in bytes.
+  ///
+  /// Output only.
   core.String? committedStorageBytes;
 
   /// The disks attached to the source VM.
+  ///
+  /// Output only.
   core.List<AzureDiskDetails>? disks;
 
   /// The firmware type of the source VM.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "FIRMWARE_UNSPECIFIED" : The firmware is unknown.
   /// - "EFI" : The firmware is EFI.
@@ -7469,6 +7493,8 @@ class MigratingVm {
 /// migration operations.
 class MigrationWarning {
   /// Suggested action for solving the warning.
+  ///
+  /// Output only.
   LocalizedMessage? actionItem;
 
   /// The warning code.
@@ -7478,9 +7504,13 @@ class MigrationWarning {
   core.String? code;
 
   /// URL(s) pointing to additional information on handling the current warning.
+  ///
+  /// Output only.
   core.List<Link>? helpLinks;
 
   /// The localized warning message.
+  ///
+  /// Output only.
   LocalizedMessage? warningMessage;
 
   /// The time the warning occurred.
@@ -7528,12 +7558,16 @@ class MigrationWarning {
 /// NetworkInterface represents a NIC of a VM.
 class NetworkInterface {
   /// The external IP to define in the NIC.
+  ///
+  /// Optional.
   core.String? externalIp;
 
   /// The internal IP to define in the NIC.
   ///
   /// The formats accepted are: `ephemeral` \ ipv4 address \ a named address
   /// resource full path.
+  ///
+  /// Optional.
   core.String? internalIp;
 
   /// The network to connect the NIC to.
@@ -7933,6 +7967,8 @@ class ReplicationCycle {
   core.String? endTime;
 
   /// Provides details on the state of the cycle in case of an error.
+  ///
+  /// Output only.
   Status? error;
 
   /// The identifier of the ReplicationCycle.
@@ -8263,9 +8299,13 @@ typedef Status = $Status;
 /// Tag is an AWS tag representation.
 class Tag {
   /// Key of tag.
+  ///
+  /// Required.
   core.String? key;
 
   /// Value of tag.
+  ///
+  /// Required.
   core.String? value;
 
   Tag({
@@ -8383,6 +8423,8 @@ class UpgradeApplianceRequest {
 class UpgradeStatus {
   /// Provides details on the state of the upgrade operation in case of an
   /// error.
+  ///
+  /// Output only.
   Status? error;
 
   /// The version from which we upgraded.
@@ -8763,12 +8805,18 @@ class VmUtilizationMetrics {
 /// The details of a Vmware VM disk.
 class VmwareDiskDetails {
   /// The ordinal number of the disk.
+  ///
+  /// Output only.
   core.int? diskNumber;
 
   /// The disk label.
+  ///
+  /// Output only.
   core.String? label;
 
   /// Size in GB.
+  ///
+  /// Output only.
   core.String? sizeGb;
 
   VmwareDiskDetails({
@@ -8857,12 +8905,18 @@ class VmwareSourceDetails {
 /// Represent the source Vmware VM details.
 class VmwareSourceVmDetails {
   /// The total size of the disks being migrated in bytes.
+  ///
+  /// Output only.
   core.String? committedStorageBytes;
 
   /// The disks attached to the source VM.
+  ///
+  /// Output only.
   core.List<VmwareDiskDetails>? disks;
 
   /// The firmware type of the source VM.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "FIRMWARE_UNSPECIFIED" : The firmware is unknown.
   /// - "EFI" : The firmware is EFI.

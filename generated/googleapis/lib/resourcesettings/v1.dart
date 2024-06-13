@@ -72,6 +72,9 @@ class FoldersResource {
   FoldersResource(commons.ApiRequester client) : _requester = client;
 }
 
+@core.Deprecated(
+  'Not supported. Member documentation may have more information.',
+)
 class FoldersSettingsResource {
   final commons.ApiRequester _requester;
 
@@ -109,6 +112,9 @@ class FoldersSettingsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleCloudResourcesettingsV1Setting> get(
     core.String name, {
     core.String? view,
@@ -165,6 +171,9 @@ class FoldersSettingsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleCloudResourcesettingsV1ListSettingsResponse> list(
     core.String parent, {
     core.int? pageSize,
@@ -223,6 +232,9 @@ class FoldersSettingsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleCloudResourcesettingsV1Setting> patch(
     GoogleCloudResourcesettingsV1Setting request,
     core.String name, {
@@ -255,6 +267,9 @@ class OrganizationsResource {
   OrganizationsResource(commons.ApiRequester client) : _requester = client;
 }
 
+@core.Deprecated(
+  'Not supported. Member documentation may have more information.',
+)
 class OrganizationsSettingsResource {
   final commons.ApiRequester _requester;
 
@@ -293,6 +308,9 @@ class OrganizationsSettingsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleCloudResourcesettingsV1Setting> get(
     core.String name, {
     core.String? view,
@@ -349,6 +367,9 @@ class OrganizationsSettingsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleCloudResourcesettingsV1ListSettingsResponse> list(
     core.String parent, {
     core.int? pageSize,
@@ -407,6 +428,9 @@ class OrganizationsSettingsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleCloudResourcesettingsV1Setting> patch(
     GoogleCloudResourcesettingsV1Setting request,
     core.String name, {
@@ -438,6 +462,9 @@ class ProjectsResource {
   ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
 
+@core.Deprecated(
+  'Not supported. Member documentation may have more information.',
+)
 class ProjectsSettingsResource {
   final commons.ApiRequester _requester;
 
@@ -475,6 +502,9 @@ class ProjectsSettingsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleCloudResourcesettingsV1Setting> get(
     core.String name, {
     core.String? view,
@@ -531,6 +561,9 @@ class ProjectsSettingsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleCloudResourcesettingsV1ListSettingsResponse> list(
     core.String parent, {
     core.int? pageSize,
@@ -589,6 +622,9 @@ class ProjectsSettingsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleCloudResourcesettingsV1Setting> patch(
     GoogleCloudResourcesettingsV1Setting request,
     core.String name, {

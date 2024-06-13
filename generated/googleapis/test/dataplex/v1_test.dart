@@ -3726,6 +3726,7 @@ api.GoogleCloudDataplexV1EntrySource buildGoogleCloudDataplexV1EntrySource() {
     o.description = 'foo';
     o.displayName = 'foo';
     o.labels = buildUnnamed34();
+    o.location = 'foo';
     o.platform = 'foo';
     o.resource = 'foo';
     o.system = 'foo';
@@ -3753,6 +3754,10 @@ void checkGoogleCloudDataplexV1EntrySource(
       unittest.equals('foo'),
     );
     checkUnnamed34(o.labels!);
+    unittest.expect(
+      o.location!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.platform!,
       unittest.equals('foo'),

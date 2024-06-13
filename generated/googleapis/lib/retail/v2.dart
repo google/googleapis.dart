@@ -153,8 +153,8 @@ class ProjectsLocationsCatalogsResource {
   /// with `OTHER_`, e.g. `OTHER_IPHONE`.
   ///
   /// [enableAttributeSuggestions] - If true, attribute suggestions are enabled
-  /// and provided in response. This field is only available for "cloud-retail"
-  /// dataset.
+  /// and provided in the response. This field is only available for the
+  /// "cloud-retail" dataset.
   ///
   /// [entity] - The entity for customers who run multiple entities, domains,
   /// sites, or regions, for example, `Google US`, `Google Ads`, `Waymo`,

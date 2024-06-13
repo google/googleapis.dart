@@ -4982,7 +4982,7 @@ class ConfigManagementPolicyControllerMigration {
 ///
 /// For example, to specify metrics should be exported to Cloud Monitoring and
 /// Prometheus, specify backends: \["cloudmonitoring", "prometheus"\]
-typedef ConfigManagementPolicyControllerMonitoring = $Shared12;
+typedef ConfigManagementPolicyControllerMonitoring = $Shared11;
 
 /// State for PolicyControllerState.
 class ConfigManagementPolicyControllerState {
@@ -9053,7 +9053,7 @@ class PolicyControllerMembershipState {
 ///
 /// For example, to specify metrics should be exported to Cloud Monitoring and
 /// Prometheus, specify backends: \["cloudmonitoring", "prometheus"\]
-typedef PolicyControllerMonitoringConfig = $Shared12;
+typedef PolicyControllerMonitoringConfig = $Shared11;
 
 /// OnClusterState represents the state of a sub-component of Policy Controller.
 class PolicyControllerOnClusterState {

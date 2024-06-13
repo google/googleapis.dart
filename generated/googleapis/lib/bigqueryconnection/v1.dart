@@ -1132,8 +1132,6 @@ class Connection {
 /// Represents concrete parameter values for Connector Configuration.
 class ConnectorConfiguration {
   /// Data asset.
-  ///
-  /// Optional.
   ConnectorConfigurationAsset? asset;
 
   /// Client authentication.
@@ -1197,8 +1195,6 @@ class ConnectorConfiguration {
 /// For example a database name in a SQL DB.
 class ConnectorConfigurationAsset {
   /// Name of the database.
-  ///
-  /// Optional.
   core.String? database;
 
   /// Full Google Cloud resource name -
@@ -1231,15 +1227,28 @@ class ConnectorConfigurationAsset {
 
 /// Client authentication.
 class ConnectorConfigurationAuthentication {
+  /// Google-managed service account associated with this connection, e.g.,
+  /// `service-{project_number}@gcp-sa-bigqueryconnection.iam.gserviceaccount.com`.
+  ///
+  /// BigQuery jobs using this connection will act as `service_account` identity
+  /// while connecting to the datasource.
+  ///
+  /// Output only.
+  core.String? serviceAccount;
+
   /// Username/password authentication.
   ConnectorConfigurationUsernamePassword? usernamePassword;
 
   ConnectorConfigurationAuthentication({
+    this.serviceAccount,
     this.usernamePassword,
   });
 
   ConnectorConfigurationAuthentication.fromJson(core.Map json_)
       : this(
+          serviceAccount: json_.containsKey('serviceAccount')
+              ? json_['serviceAccount'] as core.String
+              : null,
           usernamePassword: json_.containsKey('usernamePassword')
               ? ConnectorConfigurationUsernamePassword.fromJson(
                   json_['usernamePassword']
@@ -1248,6 +1257,7 @@ class ConnectorConfigurationAuthentication {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (serviceAccount != null) 'serviceAccount': serviceAccount!,
         if (usernamePassword != null) 'usernamePassword': usernamePassword!,
       };
 }

@@ -1119,8 +1119,55 @@ class RecallResource {
 
   RecallResource(commons.ApiRequester client) : _requester = client;
 
+  /// Retrieve the Recall tokens from all requested games that is associated
+  /// with the PGS Player encoded in the provided recall session id.
+  ///
+  /// The API is only available for users that have an active PGS Player
+  /// profile.
+  ///
+  /// Request parameters:
+  ///
+  /// [sessionId] - Required. Opaque server-generated string that encodes all
+  /// the necessary information to identify the PGS player / Google user and
+  /// application.
+  ///
+  /// [applicationIds] - Required. The application IDs from the Google Play
+  /// developer console for the games to return scoped ids for.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RetrieveGamesPlayerTokensResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RetrieveGamesPlayerTokensResponse> gamesPlayerTokens(
+    core.String sessionId, {
+    core.List<core.String>? applicationIds,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (applicationIds != null) 'applicationIds': applicationIds,
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'games/v1/recall/gamesPlayerTokens/' +
+        commons.escapeVariable('$sessionId');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return RetrieveGamesPlayerTokensResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Retrieve the last Recall token from all developer games that is associated
-  /// with the PGS Player principal encoded in the provided recall session id.
+  /// with the PGS Player encoded in the provided recall session id.
   ///
   /// The API is only available for users that have active PGS Player profile.
   ///
@@ -1237,8 +1284,8 @@ class RecallResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Retrieve all Recall tokens associated with the PGS Player principal
-  /// encoded in the provided recall session id.
+  /// Retrieve all Recall tokens associated with the PGS Player encoded in the
+  /// provided recall session id.
   ///
   /// The API is only available for users that have active PGS Player profile.
   ///
@@ -3141,6 +3188,38 @@ class EventUpdateResponse {
         if (eventFailures != null) 'eventFailures': eventFailures!,
         if (kind != null) 'kind': kind!,
         if (playerEvents != null) 'playerEvents': playerEvents!,
+      };
+}
+
+/// Recall tokens for a game.
+class GamePlayerToken {
+  /// The application that this player identifier is for.
+  core.String? applicationId;
+
+  /// Recall token data.
+  core.List<RecallToken>? token;
+
+  GamePlayerToken({
+    this.applicationId,
+    this.token,
+  });
+
+  GamePlayerToken.fromJson(core.Map json_)
+      : this(
+          applicationId: json_.containsKey('applicationId')
+              ? json_['applicationId'] as core.String
+              : null,
+          token: json_.containsKey('token')
+              ? (json_['token'] as core.List)
+                  .map((value) => RecallToken.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (applicationId != null) 'applicationId': applicationId!,
+        if (token != null) 'token': token!,
       };
 }
 
@@ -5084,6 +5163,34 @@ class RetrieveDeveloperGamesLastPlayerTokenResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (token != null) 'token': token!,
+      };
+}
+
+/// A list of recall token data returned from the RetrieveGamesPlayerTokens RPC
+class RetrieveGamesPlayerTokensResponse {
+  /// The requested applications along with the recall tokens for the player.
+  ///
+  /// If the player does not have recall tokens for an application, that
+  /// application is not included in the response.
+  core.List<GamePlayerToken>? applicationRecallTokens;
+
+  RetrieveGamesPlayerTokensResponse({
+    this.applicationRecallTokens,
+  });
+
+  RetrieveGamesPlayerTokensResponse.fromJson(core.Map json_)
+      : this(
+          applicationRecallTokens: json_.containsKey('applicationRecallTokens')
+              ? (json_['applicationRecallTokens'] as core.List)
+                  .map((value) => GamePlayerToken.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (applicationRecallTokens != null)
+          'applicationRecallTokens': applicationRecallTokens!,
       };
 }
 

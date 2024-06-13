@@ -1553,6 +1553,8 @@ class GoogleCloudAssuredworkloadsV1ViolationRemediation {
   /// Remediation type for gcp.restrictCmekCryptoKeyProjects
   /// - "REMEDIATION_RESOURCE_VIOLATION" : Remediation type for resource
   /// violation.
+  /// - "REMEDIATION_RESOURCE_VIOLATION_NON_CMEK_SERVICES" : Remediation type
+  /// for resource violation due to gcp.restrictNonCmekServices
   core.String? remediationType;
 
   GoogleCloudAssuredworkloadsV1ViolationRemediation({

@@ -3569,11 +3569,6 @@ class AutomationRolloutMetadata {
   /// Output only.
   core.List<core.String>? advanceAutomationRuns;
 
-  /// The current AutomationRun repairing the rollout.
-  ///
-  /// Output only.
-  core.String? currentRepairAutomationRun;
-
   /// The name of the AutomationRun initiated by a promote release rule.
   ///
   /// Output only.
@@ -3586,7 +3581,6 @@ class AutomationRolloutMetadata {
 
   AutomationRolloutMetadata({
     this.advanceAutomationRuns,
-    this.currentRepairAutomationRun,
     this.promoteAutomationRun,
     this.repairAutomationRuns,
   });
@@ -3598,10 +3592,6 @@ class AutomationRolloutMetadata {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          currentRepairAutomationRun:
-              json_.containsKey('currentRepairAutomationRun')
-                  ? json_['currentRepairAutomationRun'] as core.String
-                  : null,
           promoteAutomationRun: json_.containsKey('promoteAutomationRun')
               ? json_['promoteAutomationRun'] as core.String
               : null,
@@ -3615,8 +3605,6 @@ class AutomationRolloutMetadata {
   core.Map<core.String, core.dynamic> toJson() => {
         if (advanceAutomationRuns != null)
           'advanceAutomationRuns': advanceAutomationRuns!,
-        if (currentRepairAutomationRun != null)
-          'currentRepairAutomationRun': currentRepairAutomationRun!,
         if (promoteAutomationRun != null)
           'promoteAutomationRun': promoteAutomationRun!,
         if (repairAutomationRuns != null)
@@ -5477,9 +5465,17 @@ class GkeCluster {
   /// Optional.
   core.bool? internalIp;
 
+  /// If set, used to configure a
+  /// [proxy](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#proxy)
+  /// to the Kubernetes server.
+  ///
+  /// Optional.
+  core.String? proxyUrl;
+
   GkeCluster({
     this.cluster,
     this.internalIp,
+    this.proxyUrl,
   });
 
   GkeCluster.fromJson(core.Map json_)
@@ -5490,11 +5486,15 @@ class GkeCluster {
           internalIp: json_.containsKey('internalIp')
               ? json_['internalIp'] as core.bool
               : null,
+          proxyUrl: json_.containsKey('proxyUrl')
+              ? json_['proxyUrl'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cluster != null) 'cluster': cluster!,
         if (internalIp != null) 'internalIp': internalIp!,
+        if (proxyUrl != null) 'proxyUrl': proxyUrl!,
       };
 }
 
@@ -7638,43 +7638,8 @@ class RenderMetadata {
       };
 }
 
-/// Configuration of the repair action.
-class RepairMode {
-  /// Retries a failed job.
-  ///
-  /// Optional.
-  Retry? retry;
-
-  /// Rolls back a `Rollout`.
-  ///
-  /// Optional.
-  Rollback? rollback;
-
-  RepairMode({
-    this.retry,
-    this.rollback,
-  });
-
-  RepairMode.fromJson(core.Map json_)
-      : this(
-          retry: json_.containsKey('retry')
-              ? Retry.fromJson(
-                  json_['retry'] as core.Map<core.String, core.dynamic>)
-              : null,
-          rollback: json_.containsKey('rollback')
-              ? Rollback.fromJson(
-                  json_['rollback'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (retry != null) 'retry': retry!,
-        if (rollback != null) 'rollback': rollback!,
-      };
-}
-
 /// RepairPhase tracks the repair attempts that have been made for each
-/// `RepairMode` specified in the `Automation` resource.
+/// `RepairPhaseConfig` specified in the `Automation` resource.
 class RepairPhase {
   /// Records of the retry attempts for retry repair mode.
   ///
@@ -7711,11 +7676,6 @@ class RepairPhase {
 
 /// Contains the information for an automated `repair rollout` operation.
 class RepairRolloutOperation {
-  /// The index of the current repair action in the repair sequence.
-  ///
-  /// Output only.
-  core.String? currentRepairModeIndex;
-
   /// The job ID for the Job to repair.
   ///
   /// Output only.
@@ -7740,7 +7700,6 @@ class RepairRolloutOperation {
   core.String? rollout;
 
   RepairRolloutOperation({
-    this.currentRepairModeIndex,
     this.jobId,
     this.phaseId,
     this.repairPhases,
@@ -7749,9 +7708,6 @@ class RepairRolloutOperation {
 
   RepairRolloutOperation.fromJson(core.Map json_)
       : this(
-          currentRepairModeIndex: json_.containsKey('currentRepairModeIndex')
-              ? json_['currentRepairModeIndex'] as core.String
-              : null,
           jobId:
               json_.containsKey('jobId') ? json_['jobId'] as core.String : null,
           phaseId: json_.containsKey('phaseId')
@@ -7769,8 +7725,6 @@ class RepairRolloutOperation {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (currentRepairModeIndex != null)
-          'currentRepairModeIndex': currentRepairModeIndex!,
         if (jobId != null) 'jobId': jobId!,
         if (phaseId != null) 'phaseId': phaseId!,
         if (repairPhases != null) 'repairPhases': repairPhases!,
@@ -7807,29 +7761,10 @@ class RepairRolloutRule {
   /// Optional.
   core.List<core.String>? jobs;
 
-  /// Defines the types of automatic repair actions for failed jobs.
-  ///
-  /// Required.
-  core.List<RepairMode>? repairModes;
-
-  /// Phases within which jobs are subject to automatic repair actions on
-  /// failure.
-  ///
-  /// Proceeds only after phase name matched any one in the list, or for all
-  /// phases if unspecified. This value must consist of lower-case letters,
-  /// numbers, and hyphens, start with a letter and end with a letter or a
-  /// number, and have a max length of 63 characters. In other words, it must
-  /// match the following regex: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
-  ///
-  /// Optional.
-  core.List<core.String>? sourcePhases;
-
   RepairRolloutRule({
     this.condition,
     this.id,
     this.jobs,
-    this.repairModes,
-    this.sourcePhases,
   });
 
   RepairRolloutRule.fromJson(core.Map json_)
@@ -7844,77 +7779,12 @@ class RepairRolloutRule {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          repairModes: json_.containsKey('repairModes')
-              ? (json_['repairModes'] as core.List)
-                  .map((value) => RepairMode.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          sourcePhases: json_.containsKey('sourcePhases')
-              ? (json_['sourcePhases'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (condition != null) 'condition': condition!,
         if (id != null) 'id': id!,
         if (jobs != null) 'jobs': jobs!,
-        if (repairModes != null) 'repairModes': repairModes!,
-        if (sourcePhases != null) 'sourcePhases': sourcePhases!,
-      };
-}
-
-/// Retries the failed job.
-class Retry {
-  /// Total number of retries.
-  ///
-  /// Retry is skipped if set to 0; The minimum value is 1, and the maximum
-  /// value is 10.
-  ///
-  /// Required.
-  core.String? attempts;
-
-  /// The pattern of how wait time will be increased.
-  ///
-  /// Default is linear. Backoff mode will be ignored if `wait` is 0.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "BACKOFF_MODE_UNSPECIFIED" : No WaitMode is specified.
-  /// - "BACKOFF_MODE_LINEAR" : Increases the wait time linearly.
-  /// - "BACKOFF_MODE_EXPONENTIAL" : Increases the wait time exponentially.
-  core.String? backoffMode;
-
-  /// How long to wait for the first retry.
-  ///
-  /// Default is 0, and the maximum value is 14d.
-  ///
-  /// Optional.
-  core.String? wait;
-
-  Retry({
-    this.attempts,
-    this.backoffMode,
-    this.wait,
-  });
-
-  Retry.fromJson(core.Map json_)
-      : this(
-          attempts: json_.containsKey('attempts')
-              ? json_['attempts'] as core.String
-              : null,
-          backoffMode: json_.containsKey('backoffMode')
-              ? json_['backoffMode'] as core.String
-              : null,
-          wait: json_.containsKey('wait') ? json_['wait'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (attempts != null) 'attempts': attempts!,
-        if (backoffMode != null) 'backoffMode': backoffMode!,
-        if (wait != null) 'wait': wait!,
       };
 }
 
@@ -7935,7 +7805,6 @@ class RetryAttempt {
   /// - "REPAIR_STATE_FAILED" : The `repair` action has failed.
   /// - "REPAIR_STATE_IN_PROGRESS" : The `repair` action is in progress.
   /// - "REPAIR_STATE_PENDING" : The `repair` action is pending.
-  /// - "REPAIR_STATE_SKIPPED" : The `repair` action was skipped.
   /// - "REPAIR_STATE_ABORTED" : The `repair` action was aborted.
   core.String? state;
 
@@ -8029,22 +7898,6 @@ class RetryPhase {
   /// - "BACKOFF_MODE_EXPONENTIAL" : Increases the wait time exponentially.
   core.String? backoffMode;
 
-  /// The job ID for the Job to retry.
-  ///
-  /// Output only.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? jobId;
-
-  /// The phase ID of the phase that includes the job being retried.
-  ///
-  /// Output only.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? phaseId;
-
   /// The number of attempts that have been made.
   ///
   /// Output only.
@@ -8053,8 +7906,6 @@ class RetryPhase {
   RetryPhase({
     this.attempts,
     this.backoffMode,
-    this.jobId,
-    this.phaseId,
     this.totalAttempts,
   });
 
@@ -8069,11 +7920,6 @@ class RetryPhase {
           backoffMode: json_.containsKey('backoffMode')
               ? json_['backoffMode'] as core.String
               : null,
-          jobId:
-              json_.containsKey('jobId') ? json_['jobId'] as core.String : null,
-          phaseId: json_.containsKey('phaseId')
-              ? json_['phaseId'] as core.String
-              : null,
           totalAttempts: json_.containsKey('totalAttempts')
               ? json_['totalAttempts'] as core.String
               : null,
@@ -8082,34 +7928,7 @@ class RetryPhase {
   core.Map<core.String, core.dynamic> toJson() => {
         if (attempts != null) 'attempts': attempts!,
         if (backoffMode != null) 'backoffMode': backoffMode!,
-        if (jobId != null) 'jobId': jobId!,
-        if (phaseId != null) 'phaseId': phaseId!,
         if (totalAttempts != null) 'totalAttempts': totalAttempts!,
-      };
-}
-
-/// Rolls back a `Rollout`.
-class Rollback {
-  /// The starting phase ID for the `Rollout`.
-  ///
-  /// If unspecified, the `Rollout` will start in the stable phase.
-  ///
-  /// Optional.
-  core.String? destinationPhase;
-
-  Rollback({
-    this.destinationPhase,
-  });
-
-  Rollback.fromJson(core.Map json_)
-      : this(
-          destinationPhase: json_.containsKey('destinationPhase')
-              ? json_['destinationPhase'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (destinationPhase != null) 'destinationPhase': destinationPhase!,
       };
 }
 
@@ -8136,7 +7955,6 @@ class RollbackAttempt {
   /// - "REPAIR_STATE_FAILED" : The `repair` action has failed.
   /// - "REPAIR_STATE_IN_PROGRESS" : The `repair` action is in progress.
   /// - "REPAIR_STATE_PENDING" : The `repair` action is pending.
-  /// - "REPAIR_STATE_SKIPPED" : The `repair` action was skipped.
   /// - "REPAIR_STATE_ABORTED" : The `repair` action was aborted.
   core.String? state;
 

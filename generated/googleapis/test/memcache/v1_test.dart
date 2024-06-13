@@ -258,6 +258,8 @@ api.Instance buildInstance() {
     o.nodeCount = 42;
     o.parameters = buildMemcacheParameters();
     o.reservedIpRangeId = buildUnnamed5();
+    o.satisfiesPzi = true;
+    o.satisfiesPzs = true;
     o.state = 'foo';
     o.updateTime = 'foo';
     o.zones = buildUnnamed6();
@@ -309,6 +311,8 @@ void checkInstance(api.Instance o) {
     );
     checkMemcacheParameters(o.parameters!);
     checkUnnamed5(o.reservedIpRangeId!);
+    unittest.expect(o.satisfiesPzi!, unittest.isTrue);
+    unittest.expect(o.satisfiesPzs!, unittest.isTrue);
     unittest.expect(
       o.state!,
       unittest.equals('foo'),

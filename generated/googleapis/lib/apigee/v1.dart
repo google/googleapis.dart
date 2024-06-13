@@ -15970,7 +15970,7 @@ class GoogleCloudApigeeV1Access {
 /// Get action.
 ///
 /// For example, "Get" : { "name" : "target.name", "value" : "default" }
-typedef GoogleCloudApigeeV1AccessGet = $Shared05;
+typedef GoogleCloudApigeeV1AccessGet = $Shared04;
 
 /// Access logging configuration enables customers to ship the access logs from
 /// the tenant projects to their own project's cloud logging.
@@ -16085,6 +16085,8 @@ class GoogleCloudApigeeV1AddonsConfig {
   GoogleCloudApigeeV1AdvancedApiOpsConfig? advancedApiOpsConfig;
 
   /// Configuration for the Analytics add-on.
+  ///
+  /// Only used in organizations.environments.addonsConfig.
   GoogleCloudApigeeV1AnalyticsConfig? analyticsConfig;
 
   /// Configuration for the API Security add-on.

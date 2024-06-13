@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240530",
+    "revision": "20240613",
     "rootUrl": "https://walletobjects.googleapis.com/",
     "servicePath": "",
     "title": "Google Wallet API",
@@ -6852,7 +6852,7 @@
                 },
                 "hash": {
                     "deprecated": true,
-                    "description": "Deprecated, use one of explicit hash type fields instead. These two hash related fields will only be populated on Scotty based media uploads and will contain the content of the hash group in the NotificationRequest: http://cs/#google3/uploader/service/proto/upload_listener.proto&q=class:Hash Hex encoded hash value of the uploaded media.",
+                    "description": "Deprecated, use one of explicit hash type fields instead. These two hash related fields will only be populated on Scotty based media uploads and will contain the content of the hash group in the NotificationRequest: http://cs/#google3/blobstore2/api/scotty/service/proto/upload_listener.proto&q=class:Hash Hex encoded hash value of the uploaded media.",
                     "type": "string"
                 },
                 "hashVerified": {

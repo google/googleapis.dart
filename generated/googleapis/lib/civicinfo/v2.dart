@@ -178,8 +178,8 @@ class ElectionsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<VoterInfoResponse> voterInfoQuery(
-    core.String address, {
+  async.Future<VoterInfoResponse> voterInfoQuery({
+    core.String? address,
     core.String? electionId,
     core.bool? officialOnly,
     core.bool? productionDataOnly,
@@ -187,7 +187,7 @@ class ElectionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      'address': [address],
+      if (address != null) 'address': [address],
       if (electionId != null) 'electionId': [electionId],
       if (officialOnly != null) 'officialOnly': ['${officialOnly}'],
       if (productionDataOnly != null)

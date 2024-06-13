@@ -6909,10 +6909,10 @@ class GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings {
 
 /// Define behaviors on logging.
 class GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings {
-  /// If true, DF Interaction logging is currently enabled.
+  /// Enables DF Interaction logging.
   core.bool? enableInteractionLogging;
 
-  /// If true, StackDriver logging is currently enabled.
+  /// Enables StackDriver logging.
   core.bool? enableStackdriverLogging;
 
   GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings({
@@ -15356,7 +15356,7 @@ class GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettings {
 /// Sentiment analysis inspects user input and identifies the prevailing
 /// subjective opinion, especially to determine a user's attitude as positive,
 /// negative, or neutral.
-typedef GoogleCloudDialogflowCxV3SentimentAnalysisResult = $Shared11;
+typedef GoogleCloudDialogflowCxV3SentimentAnalysisResult = $Shared10;
 
 /// Session entity types are referred to as **User** entity types and are
 /// entities that are built for an individual user such as favorites,

@@ -2422,6 +2422,11 @@ class InboundSamlSsoProfilesResource {
 
   /// Creates an InboundSamlSsoProfile for a customer.
   ///
+  /// When the target customer has enabled \[Multi-party approval for sensitive
+  /// actions\](https://support.google.com/a/answer/13790448), the `Operation`
+  /// in the response will have `"done": false`, it will not have a response,
+  /// and the metadata will have `"state": "awaiting-multi-party-approval"`.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -2593,6 +2598,11 @@ class InboundSamlSsoProfilesResource {
 
   /// Updates an InboundSamlSsoProfile.
   ///
+  /// When the target customer has enabled \[Multi-party approval for sensitive
+  /// actions\](https://support.google.com/a/answer/13790448), the `Operation`
+  /// in the response will have `"done": false`, it will not have a response,
+  /// and the metadata will have `"state": "awaiting-multi-party-approval"`.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -2646,7 +2656,11 @@ class InboundSamlSsoProfilesIdpCredentialsResource {
 
   /// Adds an IdpCredential.
   ///
-  /// Up to 2 credentials are allowed.
+  /// Up to 2 credentials are allowed. When the target customer has enabled
+  /// \[Multi-party approval for sensitive
+  /// actions\](https://support.google.com/a/answer/13790448), the `Operation`
+  /// in the response will have `"done": false`, it will not have a response,
+  /// and the metadata will have `"state": "awaiting-multi-party-approval"`.
   ///
   /// [request] - The metadata request object.
   ///

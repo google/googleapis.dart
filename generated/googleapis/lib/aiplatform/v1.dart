@@ -17427,6 +17427,55 @@ class ProjectsLocationsNotebookRuntimeTemplatesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Updates a NotebookRuntimeTemplate.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource name of the NotebookRuntimeTemplate.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/notebookRuntimeTemplates/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. The update mask applies to the resource. For the
+  /// `FieldMask` definition, see google.protobuf.FieldMask. Input format:
+  /// `{paths: "${updated_filed}"}` Updatable fields: *
+  /// `encryption_spec.kms_key_name`
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudAiplatformV1NotebookRuntimeTemplate].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudAiplatformV1NotebookRuntimeTemplate> patch(
+    GoogleCloudAiplatformV1NotebookRuntimeTemplate request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAiplatformV1NotebookRuntimeTemplate.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Sets the access control policy on the specified resource.
   ///
   /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
@@ -29514,6 +29563,265 @@ class GoogleCloudAiplatformV1Dataset {
       };
 }
 
+/// Distribution computed over a tuning dataset.
+class GoogleCloudAiplatformV1DatasetDistribution {
+  /// Defines the histogram bucket.
+  ///
+  /// Output only.
+  core.List<GoogleCloudAiplatformV1DatasetDistributionDistributionBucket>?
+      buckets;
+
+  /// The maximum of the population values.
+  ///
+  /// Output only.
+  core.double? max;
+
+  /// The arithmetic mean of the values in the population.
+  ///
+  /// Output only.
+  core.double? mean;
+
+  /// The median of the values in the population.
+  ///
+  /// Output only.
+  core.double? median;
+
+  /// The minimum of the population values.
+  ///
+  /// Output only.
+  core.double? min;
+
+  /// The 5th percentile of the values in the population.
+  ///
+  /// Output only.
+  core.double? p5;
+
+  /// The 95th percentile of the values in the population.
+  ///
+  /// Output only.
+  core.double? p95;
+
+  /// Sum of a given population of values.
+  ///
+  /// Output only.
+  core.double? sum;
+
+  GoogleCloudAiplatformV1DatasetDistribution({
+    this.buckets,
+    this.max,
+    this.mean,
+    this.median,
+    this.min,
+    this.p5,
+    this.p95,
+    this.sum,
+  });
+
+  GoogleCloudAiplatformV1DatasetDistribution.fromJson(core.Map json_)
+      : this(
+          buckets: json_.containsKey('buckets')
+              ? (json_['buckets'] as core.List)
+                  .map((value) =>
+                      GoogleCloudAiplatformV1DatasetDistributionDistributionBucket
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          max: json_.containsKey('max')
+              ? (json_['max'] as core.num).toDouble()
+              : null,
+          mean: json_.containsKey('mean')
+              ? (json_['mean'] as core.num).toDouble()
+              : null,
+          median: json_.containsKey('median')
+              ? (json_['median'] as core.num).toDouble()
+              : null,
+          min: json_.containsKey('min')
+              ? (json_['min'] as core.num).toDouble()
+              : null,
+          p5: json_.containsKey('p5')
+              ? (json_['p5'] as core.num).toDouble()
+              : null,
+          p95: json_.containsKey('p95')
+              ? (json_['p95'] as core.num).toDouble()
+              : null,
+          sum: json_.containsKey('sum')
+              ? (json_['sum'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (buckets != null) 'buckets': buckets!,
+        if (max != null) 'max': max!,
+        if (mean != null) 'mean': mean!,
+        if (median != null) 'median': median!,
+        if (min != null) 'min': min!,
+        if (p5 != null) 'p5': p5!,
+        if (p95 != null) 'p95': p95!,
+        if (sum != null) 'sum': sum!,
+      };
+}
+
+/// Dataset bucket used to create a histogram for the distribution given a
+/// population of values.
+class GoogleCloudAiplatformV1DatasetDistributionDistributionBucket {
+  /// Number of values in the bucket.
+  ///
+  /// Output only.
+  core.String? count;
+
+  /// Left bound of the bucket.
+  ///
+  /// Output only.
+  core.double? left;
+
+  /// Right bound of the bucket.
+  ///
+  /// Output only.
+  core.double? right;
+
+  GoogleCloudAiplatformV1DatasetDistributionDistributionBucket({
+    this.count,
+    this.left,
+    this.right,
+  });
+
+  GoogleCloudAiplatformV1DatasetDistributionDistributionBucket.fromJson(
+      core.Map json_)
+      : this(
+          count:
+              json_.containsKey('count') ? json_['count'] as core.String : null,
+          left: json_.containsKey('left')
+              ? (json_['left'] as core.num).toDouble()
+              : null,
+          right: json_.containsKey('right')
+              ? (json_['right'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (count != null) 'count': count!,
+        if (left != null) 'left': left!,
+        if (right != null) 'right': right!,
+      };
+}
+
+/// Statistics computed over a tuning dataset.
+class GoogleCloudAiplatformV1DatasetStats {
+  /// Number of billable characters in the tuning dataset.
+  ///
+  /// Output only.
+  core.String? totalBillableCharacterCount;
+
+  /// Number of tuning characters in the tuning dataset.
+  ///
+  /// Output only.
+  core.String? totalTuningCharacterCount;
+
+  /// Number of examples in the tuning dataset.
+  ///
+  /// Output only.
+  core.String? tuningDatasetExampleCount;
+
+  /// Number of tuning steps for this Tuning Job.
+  ///
+  /// Output only.
+  core.String? tuningStepCount;
+
+  /// Sample user messages in the training dataset uri.
+  ///
+  /// Output only.
+  core.List<GoogleCloudAiplatformV1Content>? userDatasetExamples;
+
+  /// Dataset distributions for the user input tokens.
+  ///
+  /// Output only.
+  GoogleCloudAiplatformV1DatasetDistribution? userInputTokenDistribution;
+
+  /// Dataset distributions for the messages per example.
+  ///
+  /// Output only.
+  GoogleCloudAiplatformV1DatasetDistribution? userMessagePerExampleDistribution;
+
+  /// Dataset distributions for the user output tokens.
+  ///
+  /// Output only.
+  GoogleCloudAiplatformV1DatasetDistribution? userOutputTokenDistribution;
+
+  GoogleCloudAiplatformV1DatasetStats({
+    this.totalBillableCharacterCount,
+    this.totalTuningCharacterCount,
+    this.tuningDatasetExampleCount,
+    this.tuningStepCount,
+    this.userDatasetExamples,
+    this.userInputTokenDistribution,
+    this.userMessagePerExampleDistribution,
+    this.userOutputTokenDistribution,
+  });
+
+  GoogleCloudAiplatformV1DatasetStats.fromJson(core.Map json_)
+      : this(
+          totalBillableCharacterCount:
+              json_.containsKey('totalBillableCharacterCount')
+                  ? json_['totalBillableCharacterCount'] as core.String
+                  : null,
+          totalTuningCharacterCount:
+              json_.containsKey('totalTuningCharacterCount')
+                  ? json_['totalTuningCharacterCount'] as core.String
+                  : null,
+          tuningDatasetExampleCount:
+              json_.containsKey('tuningDatasetExampleCount')
+                  ? json_['tuningDatasetExampleCount'] as core.String
+                  : null,
+          tuningStepCount: json_.containsKey('tuningStepCount')
+              ? json_['tuningStepCount'] as core.String
+              : null,
+          userDatasetExamples: json_.containsKey('userDatasetExamples')
+              ? (json_['userDatasetExamples'] as core.List)
+                  .map((value) => GoogleCloudAiplatformV1Content.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          userInputTokenDistribution:
+              json_.containsKey('userInputTokenDistribution')
+                  ? GoogleCloudAiplatformV1DatasetDistribution.fromJson(
+                      json_['userInputTokenDistribution']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          userMessagePerExampleDistribution:
+              json_.containsKey('userMessagePerExampleDistribution')
+                  ? GoogleCloudAiplatformV1DatasetDistribution.fromJson(
+                      json_['userMessagePerExampleDistribution']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          userOutputTokenDistribution:
+              json_.containsKey('userOutputTokenDistribution')
+                  ? GoogleCloudAiplatformV1DatasetDistribution.fromJson(
+                      json_['userOutputTokenDistribution']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (totalBillableCharacterCount != null)
+          'totalBillableCharacterCount': totalBillableCharacterCount!,
+        if (totalTuningCharacterCount != null)
+          'totalTuningCharacterCount': totalTuningCharacterCount!,
+        if (tuningDatasetExampleCount != null)
+          'tuningDatasetExampleCount': tuningDatasetExampleCount!,
+        if (tuningStepCount != null) 'tuningStepCount': tuningStepCount!,
+        if (userDatasetExamples != null)
+          'userDatasetExamples': userDatasetExamples!,
+        if (userInputTokenDistribution != null)
+          'userInputTokenDistribution': userInputTokenDistribution!,
+        if (userMessagePerExampleDistribution != null)
+          'userMessagePerExampleDistribution':
+              userMessagePerExampleDistribution!,
+        if (userOutputTokenDistribution != null)
+          'userOutputTokenDistribution': userOutputTokenDistribution!,
+      };
+}
+
 /// Describes the dataset version.
 class GoogleCloudAiplatformV1DatasetVersion {
   /// Name of the associated BigQuery dataset.
@@ -30700,7 +31008,33 @@ class GoogleCloudAiplatformV1DirectRawPredictResponse {
 }
 
 /// Represents the spec of disk options.
-typedef GoogleCloudAiplatformV1DiskSpec = $Shared04;
+typedef GoogleCloudAiplatformV1DiskSpec = $Shared03;
+
+/// Statistics computed for datasets used for distillation.
+class GoogleCloudAiplatformV1DistillationDataStats {
+  /// Statistics computed for the training dataset.
+  ///
+  /// Output only.
+  GoogleCloudAiplatformV1DatasetStats? trainingDatasetStats;
+
+  GoogleCloudAiplatformV1DistillationDataStats({
+    this.trainingDatasetStats,
+  });
+
+  GoogleCloudAiplatformV1DistillationDataStats.fromJson(core.Map json_)
+      : this(
+          trainingDatasetStats: json_.containsKey('trainingDatasetStats')
+              ? GoogleCloudAiplatformV1DatasetStats.fromJson(
+                  json_['trainingDatasetStats']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (trainingDatasetStats != null)
+          'trainingDatasetStats': trainingDatasetStats!,
+      };
+}
 
 /// A list of double values.
 class GoogleCloudAiplatformV1DoubleArray {
@@ -33737,6 +34071,13 @@ class GoogleCloudAiplatformV1FeatureOnlineStore {
   GoogleCloudAiplatformV1FeatureOnlineStoreDedicatedServingEndpoint?
       dedicatedServingEndpoint;
 
+  /// Customer-managed encryption key spec for data storage.
+  ///
+  /// If set, online store will be secured by this key.
+  ///
+  /// Optional.
+  GoogleCloudAiplatformV1EncryptionSpec? encryptionSpec;
+
   /// Used to perform consistent read-modify-write updates.
   ///
   /// If not set, a blind "overwrite" update happens.
@@ -33794,6 +34135,7 @@ class GoogleCloudAiplatformV1FeatureOnlineStore {
     this.bigtable,
     this.createTime,
     this.dedicatedServingEndpoint,
+    this.encryptionSpec,
     this.etag,
     this.labels,
     this.name,
@@ -33815,6 +34157,11 @@ class GoogleCloudAiplatformV1FeatureOnlineStore {
                   .containsKey('dedicatedServingEndpoint')
               ? GoogleCloudAiplatformV1FeatureOnlineStoreDedicatedServingEndpoint
                   .fromJson(json_['dedicatedServingEndpoint']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          encryptionSpec: json_.containsKey('encryptionSpec')
+              ? GoogleCloudAiplatformV1EncryptionSpec.fromJson(
+                  json_['encryptionSpec']
                       as core.Map<core.String, core.dynamic>)
               : null,
           etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
@@ -33843,6 +34190,7 @@ class GoogleCloudAiplatformV1FeatureOnlineStore {
         if (createTime != null) 'createTime': createTime!,
         if (dedicatedServingEndpoint != null)
           'dedicatedServingEndpoint': dedicatedServingEndpoint!,
+        if (encryptionSpec != null) 'encryptionSpec': encryptionSpec!,
         if (etag != null) 'etag': etag!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
@@ -35892,6 +36240,55 @@ class GoogleCloudAiplatformV1FunctionCall {
       };
 }
 
+/// Function calling config.
+class GoogleCloudAiplatformV1FunctionCallingConfig {
+  /// Function names to call.
+  ///
+  /// Only set when the Mode is ANY. Function names should match
+  /// \[FunctionDeclaration.name\]. With mode set to ANY, model will predict a
+  /// function call from the set of function names provided.
+  ///
+  /// Optional.
+  core.List<core.String>? allowedFunctionNames;
+
+  /// Function calling mode.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "MODE_UNSPECIFIED" : Unspecified function calling mode. This value
+  /// should not be used.
+  /// - "AUTO" : Default model behavior, model decides to predict either a
+  /// function call or a natural language repspose.
+  /// - "ANY" : Model is constrained to always predicting a function call only.
+  /// If "allowed_function_names" are set, the predicted function call will be
+  /// limited to any one of "allowed_function_names", else the predicted
+  /// function call will be any one of the provided "function_declarations".
+  /// - "NONE" : Model will not predict any function call. Model behavior is
+  /// same as when not passing any function declarations.
+  core.String? mode;
+
+  GoogleCloudAiplatformV1FunctionCallingConfig({
+    this.allowedFunctionNames,
+    this.mode,
+  });
+
+  GoogleCloudAiplatformV1FunctionCallingConfig.fromJson(core.Map json_)
+      : this(
+          allowedFunctionNames: json_.containsKey('allowedFunctionNames')
+              ? (json_['allowedFunctionNames'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          mode: json_.containsKey('mode') ? json_['mode'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (allowedFunctionNames != null)
+          'allowedFunctionNames': allowedFunctionNames!,
+        if (mode != null) 'mode': mode!,
+      };
+}
+
 /// Structured representation of a function declaration as defined by the
 /// [OpenAPI 3.0 specification](https://spec.openapis.org/oas/v3.0.3).
 ///
@@ -36079,6 +36476,13 @@ class GoogleCloudAiplatformV1GenerateContentRequest {
   /// Optional.
   GoogleCloudAiplatformV1Content? systemInstruction;
 
+  /// Tool config.
+  ///
+  /// This config is shared for all tools provided in the request.
+  ///
+  /// Optional.
+  GoogleCloudAiplatformV1ToolConfig? toolConfig;
+
   /// A list of `Tools` the model may use to generate the next response.
   ///
   /// A `Tool` is a piece of code that enables the system to interact with
@@ -36093,6 +36497,7 @@ class GoogleCloudAiplatformV1GenerateContentRequest {
     this.generationConfig,
     this.safetySettings,
     this.systemInstruction,
+    this.toolConfig,
     this.tools,
   });
 
@@ -36120,6 +36525,10 @@ class GoogleCloudAiplatformV1GenerateContentRequest {
                   json_['systemInstruction']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          toolConfig: json_.containsKey('toolConfig')
+              ? GoogleCloudAiplatformV1ToolConfig.fromJson(
+                  json_['toolConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
           tools: json_.containsKey('tools')
               ? (json_['tools'] as core.List)
                   .map((value) => GoogleCloudAiplatformV1Tool.fromJson(
@@ -36133,6 +36542,7 @@ class GoogleCloudAiplatformV1GenerateContentRequest {
         if (generationConfig != null) 'generationConfig': generationConfig!,
         if (safetySettings != null) 'safetySettings': safetySettings!,
         if (systemInstruction != null) 'systemInstruction': systemInstruction!,
+        if (toolConfig != null) 'toolConfig': toolConfig!,
         if (tools != null) 'tools': tools!,
       };
 }
@@ -36312,6 +36722,17 @@ class GoogleCloudAiplatformV1GenerationConfig {
   /// Optional.
   core.String? responseMimeType;
 
+  /// The `Schema` object allows the definition of input and output data types.
+  ///
+  /// These types can be objects, but also primitives and arrays. Represents a
+  /// select subset of an
+  /// [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#schema).
+  /// If set, a compatible response_mime_type must also be set. Compatible
+  /// mimetypes: `application/json`: Schema for JSON response.
+  ///
+  /// Optional.
+  GoogleCloudAiplatformV1Schema? responseSchema;
+
   /// Stop sequences.
   ///
   /// Optional.
@@ -36338,6 +36759,7 @@ class GoogleCloudAiplatformV1GenerationConfig {
     this.maxOutputTokens,
     this.presencePenalty,
     this.responseMimeType,
+    this.responseSchema,
     this.stopSequences,
     this.temperature,
     this.topK,
@@ -36361,6 +36783,10 @@ class GoogleCloudAiplatformV1GenerationConfig {
           responseMimeType: json_.containsKey('responseMimeType')
               ? json_['responseMimeType'] as core.String
               : null,
+          responseSchema: json_.containsKey('responseSchema')
+              ? GoogleCloudAiplatformV1Schema.fromJson(json_['responseSchema']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           stopSequences: json_.containsKey('stopSequences')
               ? (json_['stopSequences'] as core.List)
                   .map((value) => value as core.String)
@@ -36383,6 +36809,7 @@ class GoogleCloudAiplatformV1GenerationConfig {
         if (maxOutputTokens != null) 'maxOutputTokens': maxOutputTokens!,
         if (presencePenalty != null) 'presencePenalty': presencePenalty!,
         if (responseMimeType != null) 'responseMimeType': responseMimeType!,
+        if (responseSchema != null) 'responseSchema': responseSchema!,
         if (stopSequences != null) 'stopSequences': stopSequences!,
         if (temperature != null) 'temperature': temperature!,
         if (topK != null) 'topK': topK!,
@@ -44589,6 +45016,11 @@ class GoogleCloudAiplatformV1NotebookRuntime {
   /// Required.
   core.String? displayName;
 
+  /// Customer-managed encryption key spec for the notebook runtime.
+  ///
+  /// Output only.
+  GoogleCloudAiplatformV1EncryptionSpec? encryptionSpec;
+
   /// Timestamp when this NotebookRuntime will be expired: 1.
   ///
   /// System Predefined NotebookRuntime: 24 hours after creation. After
@@ -44719,6 +45151,7 @@ class GoogleCloudAiplatformV1NotebookRuntime {
     this.createTime,
     this.description,
     this.displayName,
+    this.encryptionSpec,
     this.expirationTime,
     this.healthState,
     this.idleShutdownConfig,
@@ -44748,6 +45181,11 @@ class GoogleCloudAiplatformV1NotebookRuntime {
               : null,
           displayName: json_.containsKey('displayName')
               ? json_['displayName'] as core.String
+              : null,
+          encryptionSpec: json_.containsKey('encryptionSpec')
+              ? GoogleCloudAiplatformV1EncryptionSpec.fromJson(
+                  json_['encryptionSpec']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           expirationTime: json_.containsKey('expirationTime')
               ? json_['expirationTime'] as core.String
@@ -44816,6 +45254,7 @@ class GoogleCloudAiplatformV1NotebookRuntime {
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
+        if (encryptionSpec != null) 'encryptionSpec': encryptionSpec!,
         if (expirationTime != null) 'expirationTime': expirationTime!,
         if (healthState != null) 'healthState': healthState!,
         if (idleShutdownConfig != null)
@@ -47032,12 +47471,6 @@ class GoogleCloudAiplatformV1PublisherModelCallToAction {
   /// Optional.
   GoogleCloudAiplatformV1PublisherModelCallToActionDeployGke? deployGke;
 
-  /// Fine tune the PublisherModel with the third-party model tuning UI.
-  ///
-  /// Optional.
-  GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences?
-      fineTune;
-
   /// Open evaluation pipeline of the PublisherModel.
   ///
   /// Optional.
@@ -47100,7 +47533,6 @@ class GoogleCloudAiplatformV1PublisherModelCallToAction {
     this.createApplication,
     this.deploy,
     this.deployGke,
-    this.fineTune,
     this.openEvaluationPipeline,
     this.openFineTuningPipeline,
     this.openFineTuningPipelines,
@@ -47129,11 +47561,6 @@ class GoogleCloudAiplatformV1PublisherModelCallToAction {
               ? GoogleCloudAiplatformV1PublisherModelCallToActionDeployGke
                   .fromJson(
                       json_['deployGke'] as core.Map<core.String, core.dynamic>)
-              : null,
-          fineTune: json_.containsKey('fineTune')
-              ? GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences
-                  .fromJson(
-                      json_['fineTune'] as core.Map<core.String, core.dynamic>)
               : null,
           openEvaluationPipeline: json_.containsKey('openEvaluationPipeline')
               ? GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences
@@ -47192,7 +47619,6 @@ class GoogleCloudAiplatformV1PublisherModelCallToAction {
         if (createApplication != null) 'createApplication': createApplication!,
         if (deploy != null) 'deploy': deploy!,
         if (deployGke != null) 'deployGke': deployGke!,
-        if (fineTune != null) 'fineTune': fineTune!,
         if (openEvaluationPipeline != null)
           'openEvaluationPipeline': openEvaluationPipeline!,
         if (openFineTuningPipeline != null)
@@ -48447,6 +48873,49 @@ class GoogleCloudAiplatformV1ReadTensorboardUsageResponsePerUserUsageData {
 
 /// Request message for PersistentResourceService.RebootPersistentResource.
 typedef GoogleCloudAiplatformV1RebootPersistentResourceRequest = $Empty;
+
+/// Statistics computed for datasets used for reinforcement learning.
+class GoogleCloudAiplatformV1ReinforcementLearningDataStats {
+  /// Statistics computed for the preference dataset.
+  ///
+  /// This can be either a human preference dataset or a preference dataset
+  /// generated from AI feedback.
+  ///
+  /// Output only.
+  GoogleCloudAiplatformV1DatasetStats? preferenceDatasetStats;
+
+  /// Statistics computed for the prompt dataset used during reinforcement
+  /// learning.
+  ///
+  /// Output only.
+  GoogleCloudAiplatformV1DatasetStats? promptDatasetStats;
+
+  GoogleCloudAiplatformV1ReinforcementLearningDataStats({
+    this.preferenceDatasetStats,
+    this.promptDatasetStats,
+  });
+
+  GoogleCloudAiplatformV1ReinforcementLearningDataStats.fromJson(core.Map json_)
+      : this(
+          preferenceDatasetStats: json_.containsKey('preferenceDatasetStats')
+              ? GoogleCloudAiplatformV1DatasetStats.fromJson(
+                  json_['preferenceDatasetStats']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          promptDatasetStats: json_.containsKey('promptDatasetStats')
+              ? GoogleCloudAiplatformV1DatasetStats.fromJson(
+                  json_['promptDatasetStats']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (preferenceDatasetStats != null)
+          'preferenceDatasetStats': preferenceDatasetStats!,
+        if (promptDatasetStats != null)
+          'promptDatasetStats': promptDatasetStats!,
+      };
+}
 
 /// Request message for MetadataService.DeleteContextChildrenRequest.
 typedef GoogleCloudAiplatformV1RemoveContextChildrenRequest
@@ -53385,6 +53854,34 @@ class GoogleCloudAiplatformV1Tool {
       };
 }
 
+/// Tool config.
+///
+/// This config is shared for all tools provided in the request.
+class GoogleCloudAiplatformV1ToolConfig {
+  /// Function calling config.
+  ///
+  /// Optional.
+  GoogleCloudAiplatformV1FunctionCallingConfig? functionCallingConfig;
+
+  GoogleCloudAiplatformV1ToolConfig({
+    this.functionCallingConfig,
+  });
+
+  GoogleCloudAiplatformV1ToolConfig.fromJson(core.Map json_)
+      : this(
+          functionCallingConfig: json_.containsKey('functionCallingConfig')
+              ? GoogleCloudAiplatformV1FunctionCallingConfig.fromJson(
+                  json_['functionCallingConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (functionCallingConfig != null)
+          'functionCallingConfig': functionCallingConfig!,
+      };
+}
+
 /// CMLE training config.
 ///
 /// For every active learning labeling iteration, system will train a machine
@@ -53979,15 +54476,35 @@ class GoogleCloudAiplatformV1TunedModel {
 
 /// The tuning data statistic values for TuningJob.
 class GoogleCloudAiplatformV1TuningDataStats {
+  /// Statistics for distillation.
+  GoogleCloudAiplatformV1DistillationDataStats? distillationDataStats;
+
+  /// Statistics for reinforcement learning.
+  GoogleCloudAiplatformV1ReinforcementLearningDataStats?
+      reinforcementLearningDataStats;
+
   /// The SFT Tuning data stats.
   GoogleCloudAiplatformV1SupervisedTuningDataStats? supervisedTuningDataStats;
 
   GoogleCloudAiplatformV1TuningDataStats({
+    this.distillationDataStats,
+    this.reinforcementLearningDataStats,
     this.supervisedTuningDataStats,
   });
 
   GoogleCloudAiplatformV1TuningDataStats.fromJson(core.Map json_)
       : this(
+          distillationDataStats: json_.containsKey('distillationDataStats')
+              ? GoogleCloudAiplatformV1DistillationDataStats.fromJson(
+                  json_['distillationDataStats']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          reinforcementLearningDataStats: json_
+                  .containsKey('reinforcementLearningDataStats')
+              ? GoogleCloudAiplatformV1ReinforcementLearningDataStats.fromJson(
+                  json_['reinforcementLearningDataStats']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           supervisedTuningDataStats:
               json_.containsKey('supervisedTuningDataStats')
                   ? GoogleCloudAiplatformV1SupervisedTuningDataStats.fromJson(
@@ -53997,6 +54514,10 @@ class GoogleCloudAiplatformV1TuningDataStats {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (distillationDataStats != null)
+          'distillationDataStats': distillationDataStats!,
+        if (reinforcementLearningDataStats != null)
+          'reinforcementLearningDataStats': reinforcementLearningDataStats!,
         if (supervisedTuningDataStats != null)
           'supervisedTuningDataStats': supervisedTuningDataStats!,
       };

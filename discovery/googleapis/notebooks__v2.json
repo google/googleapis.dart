@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240422",
+    "revision": "20240604",
     "rootUrl": "https://notebooks.googleapis.com/",
     "servicePath": "",
     "title": "Notebooks API",
@@ -923,6 +923,17 @@
             },
             "type": "object"
         },
+        "AccessConfig": {
+            "description": "An access configuration attached to an instance's network interface.",
+            "id": "AccessConfig",
+            "properties": {
+                "externalIp": {
+                    "description": "An external IP address associated with this instance. Specify an unused static external IP address available to the project or leave this field undefined to use an IP from a shared ephemeral IP address pool. If you specify a static external IP address, it must live in the same region as the zone of the instance.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "Binding": {
             "description": "Associates `members`, or principals, with a `role`.",
             "id": "Binding",
@@ -1425,6 +1436,16 @@
                     "readOnly": true,
                     "type": "string"
                 },
+                "satisfiesPzi": {
+                    "description": "Output only. Reserved for future use for Zone Isolation.",
+                    "readOnly": true,
+                    "type": "boolean"
+                },
+                "satisfiesPzs": {
+                    "description": "Output only. Reserved for future use for Zone Separation.",
+                    "readOnly": true,
+                    "type": "boolean"
+                },
                 "state": {
                     "description": "Output only. The state of this instance.",
                     "enum": [
@@ -1577,6 +1598,13 @@
             "description": "The definition of a network interface resource attached to a VM.",
             "id": "NetworkInterface",
             "properties": {
+                "accessConfigs": {
+                    "description": "Optional. An array of configurations for this interface. Currently, only one access config, ONE_TO_ONE_NAT, is supported. If no accessConfigs specified, the instance will have an external internet access through an ephemeral external IP address.",
+                    "items": {
+                        "$ref": "AccessConfig"
+                    },
+                    "type": "array"
+                },
                 "network": {
                     "description": "Optional. The name of the VPC that this VM instance is in. Format: `projects/{project_id}/global/networks/{network_id}`",
                     "type": "string"

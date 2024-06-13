@@ -6874,8 +6874,9 @@ class ListWorkloadIdentityPoolsResponse {
 
 /// Represents an OauthClient.
 ///
-/// Used to access Google Cloud resources on behave of a user by using OAuth 2.0
-/// Protocol to obtain an access token from Google Cloud Platform.
+/// Used to access Google Cloud resources on behalf of a Workforce Identity
+/// Federation user by using OAuth 2.0 Protocol to obtain an access token from
+/// Google Cloud.
 class OauthClient {
   /// The list of OAuth grant types is allowed for the OauthClient.
   ///
@@ -6894,8 +6895,7 @@ class OauthClient {
   /// The following scopes are supported: *
   /// `https://www.googleapis.com/auth/cloud-platform`: See, edit, configure,
   /// and delete your Google Cloud data and see the email address for your
-  /// Google Account. * `openid`: Associate you with your personal info on
-  /// Google Cloud. * `email`: See your Google Cloud Account email address.
+  /// Google Account.
   ///
   /// Required.
   core.List<core.String>? allowedScopes;

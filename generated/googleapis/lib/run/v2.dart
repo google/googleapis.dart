@@ -3085,6 +3085,9 @@ class GoogleCloudRunV2ExportStatusResponse {
 /// FUSE.
 class GoogleCloudRunV2GCSVolumeSource {
   /// Cloud Storage Bucket name.
+  ///
+  /// TODO (b/344678062) Fix the error validation once dynamic mounting is
+  /// public.
   core.String? bucket;
 
   /// If true, the volume will be mounted as read only for all mounts.

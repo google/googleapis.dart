@@ -428,6 +428,11 @@ class GoogleFirebaseFcmDataV1beta1MessageInsightPercents {
 /// countMessagesAccepted as the denominator. These categories may not account
 /// for all message outcomes.
 class GoogleFirebaseFcmDataV1beta1MessageOutcomePercents {
+  /// The percentage of accepted messages that were
+  /// [collapsed](https://firebase.google.com/docs/cloud-messaging/concept-options#collapsible_and_non-collapsible_messages)
+  /// by another message.
+  core.double? collapsed;
+
   /// The percentage of all accepted messages that were successfully delivered
   /// to the device.
   core.double? delivered;
@@ -458,6 +463,11 @@ class GoogleFirebaseFcmDataV1beta1MessageOutcomePercents {
   /// in our SDK instead of delivering the messages.
   core.double? droppedTooManyPendingMessages;
 
+  /// The percentage of accepted messages that expired because \[Time To Live
+  /// (TTL)\](https://firebase.google.com/docs/cloud-messaging/concept-options#ttl)
+  /// elapsed before the target device reconnected.
+  core.double? droppedTtlExpired;
+
   /// The percentage of messages accepted on this day that were not dropped and
   /// not delivered, due to the device being disconnected (as of the end of the
   /// America/Los_Angeles day when the message was sent to FCM).
@@ -468,15 +478,20 @@ class GoogleFirebaseFcmDataV1beta1MessageOutcomePercents {
   core.double? pending;
 
   GoogleFirebaseFcmDataV1beta1MessageOutcomePercents({
+    this.collapsed,
     this.delivered,
     this.droppedAppForceStopped,
     this.droppedDeviceInactive,
     this.droppedTooManyPendingMessages,
+    this.droppedTtlExpired,
     this.pending,
   });
 
   GoogleFirebaseFcmDataV1beta1MessageOutcomePercents.fromJson(core.Map json_)
       : this(
+          collapsed: json_.containsKey('collapsed')
+              ? (json_['collapsed'] as core.num).toDouble()
+              : null,
           delivered: json_.containsKey('delivered')
               ? (json_['delivered'] as core.num).toDouble()
               : null,
@@ -490,12 +505,16 @@ class GoogleFirebaseFcmDataV1beta1MessageOutcomePercents {
                   .containsKey('droppedTooManyPendingMessages')
               ? (json_['droppedTooManyPendingMessages'] as core.num).toDouble()
               : null,
+          droppedTtlExpired: json_.containsKey('droppedTtlExpired')
+              ? (json_['droppedTtlExpired'] as core.num).toDouble()
+              : null,
           pending: json_.containsKey('pending')
               ? (json_['pending'] as core.num).toDouble()
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (collapsed != null) 'collapsed': collapsed!,
         if (delivered != null) 'delivered': delivered!,
         if (droppedAppForceStopped != null)
           'droppedAppForceStopped': droppedAppForceStopped!,
@@ -503,11 +522,14 @@ class GoogleFirebaseFcmDataV1beta1MessageOutcomePercents {
           'droppedDeviceInactive': droppedDeviceInactive!,
         if (droppedTooManyPendingMessages != null)
           'droppedTooManyPendingMessages': droppedTooManyPendingMessages!,
+        if (droppedTtlExpired != null) 'droppedTtlExpired': droppedTtlExpired!,
         if (pending != null) 'pending': pending!,
       };
 }
 
-/// Additional information about proxy notification delivery.
+/// Additional information about
+/// [proxy notification](https://firebase.google.com/docs/cloud-messaging/android/message-priority#proxy)
+/// delivery.
 ///
 /// All percentages are calculated with countNotificationsAccepted as the
 /// denominator.

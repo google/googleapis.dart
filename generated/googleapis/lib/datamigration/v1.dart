@@ -3884,6 +3884,7 @@ class CloudSqlSettings {
   /// - "POSTGRES_13" : PostgreSQL 13.
   /// - "POSTGRES_14" : PostgreSQL 14.
   /// - "POSTGRES_15" : PostgreSQL 15.
+  /// - "POSTGRES_16" : PostgreSQL 16.
   core.String? databaseVersion;
 
   /// The edition of the given Cloud SQL instance.
@@ -9388,9 +9389,15 @@ class SqlServerHomogeneousMigrationJobConfig {
   /// Required.
   core.List<SqlServerDatabaseBackup>? databaseBackups;
 
+  /// Enable differential backups.
+  ///
+  /// Optional.
+  core.bool? useDiffBackup;
+
   SqlServerHomogeneousMigrationJobConfig({
     this.backupFilePattern,
     this.databaseBackups,
+    this.useDiffBackup,
   });
 
   SqlServerHomogeneousMigrationJobConfig.fromJson(core.Map json_)
@@ -9404,11 +9411,15 @@ class SqlServerHomogeneousMigrationJobConfig {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          useDiffBackup: json_.containsKey('useDiffBackup')
+              ? json_['useDiffBackup'] as core.bool
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (backupFilePattern != null) 'backupFilePattern': backupFilePattern!,
         if (databaseBackups != null) 'databaseBackups': databaseBackups!,
+        if (useDiffBackup != null) 'useDiffBackup': useDiffBackup!,
       };
 }
 

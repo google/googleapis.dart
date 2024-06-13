@@ -1094,6 +1094,16 @@ class ManagementServer {
   /// Output only.
   core.String? oauth2ClientId;
 
+  /// Reserved for future use.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzi;
+
+  /// Reserved for future use.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzs;
+
   /// The ManagementServer state.
   ///
   /// Output only.
@@ -1147,6 +1157,8 @@ class ManagementServer {
     this.name,
     this.networks,
     this.oauth2ClientId,
+    this.satisfiesPzi,
+    this.satisfiesPzs,
     this.state,
     this.type,
     this.updateTime,
@@ -1190,6 +1202,12 @@ class ManagementServer {
           oauth2ClientId: json_.containsKey('oauth2ClientId')
               ? json_['oauth2ClientId'] as core.String
               : null,
+          satisfiesPzi: json_.containsKey('satisfiesPzi')
+              ? json_['satisfiesPzi'] as core.bool
+              : null,
+          satisfiesPzs: json_.containsKey('satisfiesPzs')
+              ? json_['satisfiesPzs'] as core.bool
+              : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
           type: json_.containsKey('type') ? json_['type'] as core.String : null,
@@ -1220,6 +1238,8 @@ class ManagementServer {
         if (name != null) 'name': name!,
         if (networks != null) 'networks': networks!,
         if (oauth2ClientId != null) 'oauth2ClientId': oauth2ClientId!,
+        if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (state != null) 'state': state!,
         if (type != null) 'type': type!,
         if (updateTime != null) 'updateTime': updateTime!,

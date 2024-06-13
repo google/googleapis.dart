@@ -372,6 +372,7 @@ api.DiscoverConnectionProfileRequest buildDiscoverConnectionProfileRequest() {
     o.mysqlRdbms = buildMysqlRdbms();
     o.oracleRdbms = buildOracleRdbms();
     o.postgresqlRdbms = buildPostgresqlRdbms();
+    o.sqlServerRdbms = buildSqlServerRdbms();
   }
   buildCounterDiscoverConnectionProfileRequest--;
   return o;
@@ -394,6 +395,7 @@ void checkDiscoverConnectionProfileRequest(
     checkMysqlRdbms(o.mysqlRdbms!);
     checkOracleRdbms(o.oracleRdbms!);
     checkPostgresqlRdbms(o.postgresqlRdbms!);
+    checkSqlServerRdbms(o.sqlServerRdbms!);
   }
   buildCounterDiscoverConnectionProfileRequest--;
 }
@@ -406,6 +408,7 @@ api.DiscoverConnectionProfileResponse buildDiscoverConnectionProfileResponse() {
     o.mysqlRdbms = buildMysqlRdbms();
     o.oracleRdbms = buildOracleRdbms();
     o.postgresqlRdbms = buildPostgresqlRdbms();
+    o.sqlServerRdbms = buildSqlServerRdbms();
   }
   buildCounterDiscoverConnectionProfileResponse--;
   return o;
@@ -418,6 +421,7 @@ void checkDiscoverConnectionProfileResponse(
     checkMysqlRdbms(o.mysqlRdbms!);
     checkOracleRdbms(o.oracleRdbms!);
     checkPostgresqlRdbms(o.postgresqlRdbms!);
+    checkSqlServerRdbms(o.sqlServerRdbms!);
   }
   buildCounterDiscoverConnectionProfileResponse--;
 }
@@ -2474,6 +2478,21 @@ void checkSpecificStartPosition(api.SpecificStartPosition o) {
   buildCounterSpecificStartPosition--;
 }
 
+core.int buildCounterSqlServerChangeTables = 0;
+api.SqlServerChangeTables buildSqlServerChangeTables() {
+  final o = api.SqlServerChangeTables();
+  buildCounterSqlServerChangeTables++;
+  if (buildCounterSqlServerChangeTables < 3) {}
+  buildCounterSqlServerChangeTables--;
+  return o;
+}
+
+void checkSqlServerChangeTables(api.SqlServerChangeTables o) {
+  buildCounterSqlServerChangeTables++;
+  if (buildCounterSqlServerChangeTables < 3) {}
+  buildCounterSqlServerChangeTables--;
+}
+
 core.int buildCounterSqlServerColumn = 0;
 api.SqlServerColumn buildSqlServerColumn() {
   final o = api.SqlServerColumn();
@@ -2664,10 +2683,12 @@ api.SqlServerSourceConfig buildSqlServerSourceConfig() {
   final o = api.SqlServerSourceConfig();
   buildCounterSqlServerSourceConfig++;
   if (buildCounterSqlServerSourceConfig < 3) {
+    o.changeTables = buildSqlServerChangeTables();
     o.excludeObjects = buildSqlServerRdbms();
     o.includeObjects = buildSqlServerRdbms();
     o.maxConcurrentBackfillTasks = 42;
     o.maxConcurrentCdcTasks = 42;
+    o.transactionLogs = buildSqlServerTransactionLogs();
   }
   buildCounterSqlServerSourceConfig--;
   return o;
@@ -2676,6 +2697,7 @@ api.SqlServerSourceConfig buildSqlServerSourceConfig() {
 void checkSqlServerSourceConfig(api.SqlServerSourceConfig o) {
   buildCounterSqlServerSourceConfig++;
   if (buildCounterSqlServerSourceConfig < 3) {
+    checkSqlServerChangeTables(o.changeTables!);
     checkSqlServerRdbms(o.excludeObjects!);
     checkSqlServerRdbms(o.includeObjects!);
     unittest.expect(
@@ -2686,6 +2708,7 @@ void checkSqlServerSourceConfig(api.SqlServerSourceConfig o) {
       o.maxConcurrentCdcTasks!,
       unittest.equals(42),
     );
+    checkSqlServerTransactionLogs(o.transactionLogs!);
   }
   buildCounterSqlServerSourceConfig--;
 }
@@ -2723,6 +2746,21 @@ void checkSqlServerTable(api.SqlServerTable o) {
     );
   }
   buildCounterSqlServerTable--;
+}
+
+core.int buildCounterSqlServerTransactionLogs = 0;
+api.SqlServerTransactionLogs buildSqlServerTransactionLogs() {
+  final o = api.SqlServerTransactionLogs();
+  buildCounterSqlServerTransactionLogs++;
+  if (buildCounterSqlServerTransactionLogs < 3) {}
+  buildCounterSqlServerTransactionLogs--;
+  return o;
+}
+
+void checkSqlServerTransactionLogs(api.SqlServerTransactionLogs o) {
+  buildCounterSqlServerTransactionLogs++;
+  if (buildCounterSqlServerTransactionLogs < 3) {}
+  buildCounterSqlServerTransactionLogs--;
 }
 
 core.int buildCounterStartBackfillJobRequest = 0;
@@ -3772,6 +3810,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-SqlServerChangeTables', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSqlServerChangeTables();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SqlServerChangeTables.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSqlServerChangeTables(od);
+    });
+  });
+
   unittest.group('obj-schema-SqlServerColumn', () {
     unittest.test('to-json--from-json', () async {
       final o = buildSqlServerColumn();
@@ -3839,6 +3887,16 @@ void main() {
       final od = api.SqlServerTable.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkSqlServerTable(od);
+    });
+  });
+
+  unittest.group('obj-schema-SqlServerTransactionLogs', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSqlServerTransactionLogs();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SqlServerTransactionLogs.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSqlServerTransactionLogs(od);
     });
   });
 

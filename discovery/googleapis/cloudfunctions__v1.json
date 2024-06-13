@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240523",
+    "revision": "20240610",
     "rootUrl": "https://cloudfunctions.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Functions API",

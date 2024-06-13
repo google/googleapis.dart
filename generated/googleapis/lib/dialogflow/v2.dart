@@ -47,6 +47,7 @@
 ///     - [ProjectsConversationsParticipantsResource]
 ///       - [ProjectsConversationsParticipantsSuggestionsResource]
 ///     - [ProjectsConversationsSuggestionsResource]
+///   - [ProjectsGeneratorsResource]
 ///   - [ProjectsKnowledgeBasesResource]
 ///     - [ProjectsKnowledgeBasesDocumentsResource]
 ///   - [ProjectsLocationsResource]
@@ -74,9 +75,11 @@
 ///       - [ProjectsLocationsConversationsParticipantsResource]
 ///         - [ProjectsLocationsConversationsParticipantsSuggestionsResource]
 ///       - [ProjectsLocationsConversationsSuggestionsResource]
+///     - [ProjectsLocationsGeneratorsResource]
 ///     - [ProjectsLocationsKnowledgeBasesResource]
 ///       - [ProjectsLocationsKnowledgeBasesDocumentsResource]
 ///     - [ProjectsLocationsOperationsResource]
+///     - [ProjectsLocationsStatelessSuggestionResource]
 ///     - [ProjectsLocationsSuggestionsResource]
 ///   - [ProjectsOperationsResource]
 ///   - [ProjectsSuggestionsResource]
@@ -131,6 +134,8 @@ class ProjectsResource {
       ProjectsConversationProfilesResource(_requester);
   ProjectsConversationsResource get conversations =>
       ProjectsConversationsResource(_requester);
+  ProjectsGeneratorsResource get generators =>
+      ProjectsGeneratorsResource(_requester);
   ProjectsKnowledgeBasesResource get knowledgeBases =>
       ProjectsKnowledgeBasesResource(_requester);
   ProjectsLocationsResource get locations =>
@@ -5616,6 +5621,52 @@ class ProjectsConversationsParticipantsSuggestionsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Gets knowledge assist suggestions based on historical messages.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the participant to fetch suggestions for.
+  /// Format: `projects//locations//conversations//participants/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/conversations/\[^/\]+/participants/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2SuggestKnowledgeAssistResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2SuggestKnowledgeAssistResponse>
+      suggestKnowledgeAssist(
+    GoogleCloudDialogflowV2SuggestKnowledgeAssistRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' +
+        core.Uri.encodeFull('$parent') +
+        '/suggestions:suggestKnowledgeAssist';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDialogflowV2SuggestKnowledgeAssistResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets smart replies for a participant based on specific historical
   /// messages.
   ///
@@ -5761,6 +5812,112 @@ class ProjectsConversationsSuggestionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2SuggestConversationSummaryResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsGeneratorsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsGeneratorsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Creates a generator.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project/location to create generator for. Format:
+  /// `projects//locations/`
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [generatorId] - Optional. The ID to use for the generator, which will
+  /// become the final component of the generator's resource name. The generator
+  /// ID must be compliant with the regression fomula `a-zA-Z*` with the
+  /// characters length in range of \[3,64\]. If the field is not provided, an
+  /// Id will be auto-generated. If the field is provided, the caller is
+  /// resposible for 1. the uniqueness of the ID, otherwise the request will be
+  /// rejected. 2. the consistency for whether to use custom ID or not under a
+  /// project to better ensure uniqueness.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2Generator].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2Generator> create(
+    GoogleCloudDialogflowV2Generator request,
+    core.String parent, {
+    core.String? generatorId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (generatorId != null) 'generatorId': [generatorId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/generators';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDialogflowV2Generator.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists generators.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project/location to list generators for. Format:
+  /// `projects//locations/`
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. Maximum number of conversation models to return in
+  /// a single page. Default to 10.
+  ///
+  /// [pageToken] - Optional. The next_page_token value returned from a previous
+  /// list request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2ListGeneratorsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2ListGeneratorsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/generators';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDialogflowV2ListGeneratorsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -6426,10 +6583,14 @@ class ProjectsLocationsResource {
       ProjectsLocationsConversationProfilesResource(_requester);
   ProjectsLocationsConversationsResource get conversations =>
       ProjectsLocationsConversationsResource(_requester);
+  ProjectsLocationsGeneratorsResource get generators =>
+      ProjectsLocationsGeneratorsResource(_requester);
   ProjectsLocationsKnowledgeBasesResource get knowledgeBases =>
       ProjectsLocationsKnowledgeBasesResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
       ProjectsLocationsOperationsResource(_requester);
+  ProjectsLocationsStatelessSuggestionResource get statelessSuggestion =>
+      ProjectsLocationsStatelessSuggestionResource(_requester);
   ProjectsLocationsSuggestionsResource get suggestions =>
       ProjectsLocationsSuggestionsResource(_requester);
 
@@ -11637,6 +11798,52 @@ class ProjectsLocationsConversationsParticipantsSuggestionsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Gets knowledge assist suggestions based on historical messages.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the participant to fetch suggestions for.
+  /// Format: `projects//locations//conversations//participants/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/conversations/\[^/\]+/participants/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2SuggestKnowledgeAssistResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2SuggestKnowledgeAssistResponse>
+      suggestKnowledgeAssist(
+    GoogleCloudDialogflowV2SuggestKnowledgeAssistRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' +
+        core.Uri.encodeFull('$parent') +
+        '/suggestions:suggestKnowledgeAssist';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDialogflowV2SuggestKnowledgeAssistResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets smart replies for a participant based on specific historical
   /// messages.
   ///
@@ -11784,6 +11991,236 @@ class ProjectsLocationsConversationsSuggestionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2SuggestConversationSummaryResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsGeneratorsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsGeneratorsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a generator.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project/location to create generator for. Format:
+  /// `projects//locations/`
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [generatorId] - Optional. The ID to use for the generator, which will
+  /// become the final component of the generator's resource name. The generator
+  /// ID must be compliant with the regression fomula `a-zA-Z*` with the
+  /// characters length in range of \[3,64\]. If the field is not provided, an
+  /// Id will be auto-generated. If the field is provided, the caller is
+  /// resposible for 1. the uniqueness of the ID, otherwise the request will be
+  /// rejected. 2. the consistency for whether to use custom ID or not under a
+  /// project to better ensure uniqueness.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2Generator].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2Generator> create(
+    GoogleCloudDialogflowV2Generator request,
+    core.String parent, {
+    core.String? generatorId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (generatorId != null) 'generatorId': [generatorId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/generators';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDialogflowV2Generator.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a generator.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The generator resource name to delete. Format:
+  /// `projects//locations//generators/`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/generators/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves a generator.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The generator resource name to retrieve. Format:
+  /// \`projects//locations/\`/generators/\`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/generators/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2Generator].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2Generator> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDialogflowV2Generator.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists generators.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project/location to list generators for. Format:
+  /// `projects//locations/`
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. Maximum number of conversation models to return in
+  /// a single page. Default to 10.
+  ///
+  /// [pageToken] - Optional. The next_page_token value returned from a previous
+  /// list request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2ListGeneratorsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2ListGeneratorsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/generators';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDialogflowV2ListGeneratorsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a generator.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. Identifier. The resource name of the generator.
+  /// Format: `projects//locations//generators/`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/generators/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. The list of fields to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2Generator].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2Generator> patch(
+    GoogleCloudDialogflowV2Generator request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDialogflowV2Generator.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -12583,6 +13020,60 @@ class ProjectsLocationsOperationsResource {
   }
 }
 
+class ProjectsLocationsStatelessSuggestionResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsStatelessSuggestionResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Generates and returns a suggestion for a conversation that does not have a
+  /// resource created for it.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource to charge for the Suggestion's
+  /// generation. Format: `projects//locations/`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudDialogflowV2GenerateStatelessSuggestionResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2GenerateStatelessSuggestionResponse>
+      generate(
+    GoogleCloudDialogflowV2GenerateStatelessSuggestionRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' +
+        core.Uri.encodeFull('$parent') +
+        '/statelessSuggestion:generate';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDialogflowV2GenerateStatelessSuggestionResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsLocationsSuggestionsResource {
   final commons.ApiRequester _requester;
 
@@ -13156,6 +13647,12 @@ class GoogleCloudDialogflowV2AgentAssistantFeedback {
   /// - "EFFICIENT" : Document is efficient.
   core.String? documentEfficiency;
 
+  /// Feedback for knowledge assist.
+  ///
+  /// Optional.
+  GoogleCloudDialogflowV2AgentAssistantFeedbackKnowledgeAssistFeedback?
+      knowledgeAssistFeedback;
+
   /// Feedback for knowledge search.
   ///
   /// Optional.
@@ -13172,6 +13669,7 @@ class GoogleCloudDialogflowV2AgentAssistantFeedback {
     this.answerRelevance,
     this.documentCorrectness,
     this.documentEfficiency,
+    this.knowledgeAssistFeedback,
     this.knowledgeSearchFeedback,
     this.summarizationFeedback,
   });
@@ -13186,6 +13684,11 @@ class GoogleCloudDialogflowV2AgentAssistantFeedback {
               : null,
           documentEfficiency: json_.containsKey('documentEfficiency')
               ? json_['documentEfficiency'] as core.String
+              : null,
+          knowledgeAssistFeedback: json_.containsKey('knowledgeAssistFeedback')
+              ? GoogleCloudDialogflowV2AgentAssistantFeedbackKnowledgeAssistFeedback
+                  .fromJson(json_['knowledgeAssistFeedback']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           knowledgeSearchFeedback: json_.containsKey('knowledgeSearchFeedback')
               ? GoogleCloudDialogflowV2AgentAssistantFeedbackKnowledgeSearchFeedback
@@ -13205,10 +13708,50 @@ class GoogleCloudDialogflowV2AgentAssistantFeedback {
           'documentCorrectness': documentCorrectness!,
         if (documentEfficiency != null)
           'documentEfficiency': documentEfficiency!,
+        if (knowledgeAssistFeedback != null)
+          'knowledgeAssistFeedback': knowledgeAssistFeedback!,
         if (knowledgeSearchFeedback != null)
           'knowledgeSearchFeedback': knowledgeSearchFeedback!,
         if (summarizationFeedback != null)
           'summarizationFeedback': summarizationFeedback!,
+      };
+}
+
+/// Feedback for knowledge assist.
+class GoogleCloudDialogflowV2AgentAssistantFeedbackKnowledgeAssistFeedback {
+  /// Whether the suggested answer was copied by the human agent.
+  ///
+  /// If the value is set to be true, AnswerFeedback.clicked will be updated to
+  /// be true.
+  core.bool? answerCopied;
+
+  /// The URIs clicked by the human agent.
+  ///
+  /// The value is appended for each UpdateAnswerRecordRequest. If the value is
+  /// not empty, AnswerFeedback.clicked will be updated to be true.
+  core.List<core.String>? clickedUris;
+
+  GoogleCloudDialogflowV2AgentAssistantFeedbackKnowledgeAssistFeedback({
+    this.answerCopied,
+    this.clickedUris,
+  });
+
+  GoogleCloudDialogflowV2AgentAssistantFeedbackKnowledgeAssistFeedback.fromJson(
+      core.Map json_)
+      : this(
+          answerCopied: json_.containsKey('answerCopied')
+              ? json_['answerCopied'] as core.bool
+              : null,
+          clickedUris: json_.containsKey('clickedUris')
+              ? (json_['clickedUris'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (answerCopied != null) 'answerCopied': answerCopied!,
+        if (clickedUris != null) 'clickedUris': clickedUris!,
       };
 }
 
@@ -14361,6 +14904,8 @@ class GoogleCloudDialogflowV2ClearSuggestionFeatureConfigRequest {
   /// - "SMART_REPLY" : Run smart reply model for chat.
   /// - "KNOWLEDGE_SEARCH" : Run knowledge search with text input from agent or
   /// text generated query.
+  /// - "KNOWLEDGE_ASSIST" : Run knowledge assist with automatic query
+  /// generation.
   core.String? suggestionFeatureType;
 
   GoogleCloudDialogflowV2ClearSuggestionFeatureConfigRequest({
@@ -14579,6 +15124,32 @@ class GoogleCloudDialogflowV2Conversation {
         if (name != null) 'name': name!,
         if (phoneNumber != null) 'phoneNumber': phoneNumber!,
         if (startTime != null) 'startTime': startTime!,
+      };
+}
+
+/// Context of the conversation, including transcripts.
+class GoogleCloudDialogflowV2ConversationContext {
+  /// List of message transcripts in the conversation.
+  ///
+  /// Optional.
+  core.List<GoogleCloudDialogflowV2MessageEntry>? messageEntries;
+
+  GoogleCloudDialogflowV2ConversationContext({
+    this.messageEntries,
+  });
+
+  GoogleCloudDialogflowV2ConversationContext.fromJson(core.Map json_)
+      : this(
+          messageEntries: json_.containsKey('messageEntries')
+              ? (json_['messageEntries'] as core.List)
+                  .map((value) => GoogleCloudDialogflowV2MessageEntry.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (messageEntries != null) 'messageEntries': messageEntries!,
       };
 }
 
@@ -16279,6 +16850,77 @@ class GoogleCloudDialogflowV2FaqAnswer {
       };
 }
 
+/// Providing examples in the generator (i.e. building a few-shot generator)
+/// helps convey the desired format of the LLM response.
+///
+/// NEXT_ID: 10
+class GoogleCloudDialogflowV2FewShotExample {
+  /// Conversation transcripts.
+  ///
+  /// Optional.
+  GoogleCloudDialogflowV2ConversationContext? conversationContext;
+
+  /// Key is the placeholder field name in input, value is the value of the
+  /// placeholder.
+  ///
+  /// E.g. instruction contains "@price", and ingested data has \<"price",
+  /// "10"\>
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? extraInfo;
+
+  /// Example output of the model.
+  ///
+  /// Required.
+  GoogleCloudDialogflowV2GeneratorSuggestion? output;
+
+  /// Summarization sections.
+  GoogleCloudDialogflowV2SummarizationSectionList? summarizationSectionList;
+
+  GoogleCloudDialogflowV2FewShotExample({
+    this.conversationContext,
+    this.extraInfo,
+    this.output,
+    this.summarizationSectionList,
+  });
+
+  GoogleCloudDialogflowV2FewShotExample.fromJson(core.Map json_)
+      : this(
+          conversationContext: json_.containsKey('conversationContext')
+              ? GoogleCloudDialogflowV2ConversationContext.fromJson(
+                  json_['conversationContext']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          extraInfo: json_.containsKey('extraInfo')
+              ? (json_['extraInfo'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          output: json_.containsKey('output')
+              ? GoogleCloudDialogflowV2GeneratorSuggestion.fromJson(
+                  json_['output'] as core.Map<core.String, core.dynamic>)
+              : null,
+          summarizationSectionList:
+              json_.containsKey('summarizationSectionList')
+                  ? GoogleCloudDialogflowV2SummarizationSectionList.fromJson(
+                      json_['summarizationSectionList']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (conversationContext != null)
+          'conversationContext': conversationContext!,
+        if (extraInfo != null) 'extraInfo': extraInfo!,
+        if (output != null) 'output': output!,
+        if (summarizationSectionList != null)
+          'summarizationSectionList': summarizationSectionList!,
+      };
+}
+
 /// By default, your agent responds to a matched intent with a static response.
 ///
 /// As an alternative, you can provide a more dynamic response by using
@@ -16512,6 +17154,96 @@ class GoogleCloudDialogflowV2GcsSources {
       };
 }
 
+/// The request message for Conversations.GenerateStatelessSuggestion.
+class GoogleCloudDialogflowV2GenerateStatelessSuggestionRequest {
+  /// Context of the conversation, including transcripts.
+  ///
+  /// Optional.
+  GoogleCloudDialogflowV2ConversationContext? conversationContext;
+
+  /// Uncreated generator.
+  ///
+  /// It should be a complete generator that includes all information about the
+  /// generator.
+  GoogleCloudDialogflowV2Generator? generator;
+
+  /// The resource name of the existing created generator.
+  ///
+  /// Format: `projects//locations//generators/`
+  core.String? generatorName;
+
+  /// A list of trigger events.
+  ///
+  /// Generator will be triggered only if it's trigger event is included here.
+  ///
+  /// Optional.
+  core.List<core.String>? triggerEvents;
+
+  GoogleCloudDialogflowV2GenerateStatelessSuggestionRequest({
+    this.conversationContext,
+    this.generator,
+    this.generatorName,
+    this.triggerEvents,
+  });
+
+  GoogleCloudDialogflowV2GenerateStatelessSuggestionRequest.fromJson(
+      core.Map json_)
+      : this(
+          conversationContext: json_.containsKey('conversationContext')
+              ? GoogleCloudDialogflowV2ConversationContext.fromJson(
+                  json_['conversationContext']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          generator: json_.containsKey('generator')
+              ? GoogleCloudDialogflowV2Generator.fromJson(
+                  json_['generator'] as core.Map<core.String, core.dynamic>)
+              : null,
+          generatorName: json_.containsKey('generatorName')
+              ? json_['generatorName'] as core.String
+              : null,
+          triggerEvents: json_.containsKey('triggerEvents')
+              ? (json_['triggerEvents'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (conversationContext != null)
+          'conversationContext': conversationContext!,
+        if (generator != null) 'generator': generator!,
+        if (generatorName != null) 'generatorName': generatorName!,
+        if (triggerEvents != null) 'triggerEvents': triggerEvents!,
+      };
+}
+
+/// The response message for Conversations.GenerateStatelessSuggestion.
+class GoogleCloudDialogflowV2GenerateStatelessSuggestionResponse {
+  /// Generated suggestion for a conversation.
+  ///
+  /// Required.
+  GoogleCloudDialogflowV2GeneratorSuggestion? generatorSuggestion;
+
+  GoogleCloudDialogflowV2GenerateStatelessSuggestionResponse({
+    this.generatorSuggestion,
+  });
+
+  GoogleCloudDialogflowV2GenerateStatelessSuggestionResponse.fromJson(
+      core.Map json_)
+      : this(
+          generatorSuggestion: json_.containsKey('generatorSuggestion')
+              ? GoogleCloudDialogflowV2GeneratorSuggestion.fromJson(
+                  json_['generatorSuggestion']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (generatorSuggestion != null)
+          'generatorSuggestion': generatorSuggestion!,
+      };
+}
+
 /// The request message for Conversations.GenerateStatelessSummary.
 class GoogleCloudDialogflowV2GenerateStatelessSummaryRequest {
   /// A ConversationProfile containing information required for Summary
@@ -16709,6 +17441,128 @@ class GoogleCloudDialogflowV2GenerateStatelessSummaryResponseSummary {
       };
 }
 
+/// LLM generator.
+class GoogleCloudDialogflowV2Generator {
+  /// Creation time of this generator.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Human readable description of the generator.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// Inference parameters for this generator.
+  ///
+  /// Optional.
+  GoogleCloudDialogflowV2InferenceParameter? inferenceParameter;
+
+  /// Identifier.
+  ///
+  /// The resource name of the generator. Format:
+  /// `projects//locations//generators/`
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Input of prebuilt Summarization feature.
+  GoogleCloudDialogflowV2SummarizationContext? summarizationContext;
+
+  /// The trigger event of the generator.
+  ///
+  /// It defines when the generator is triggered in a conversation.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "TRIGGER_EVENT_UNSPECIFIED" : Default value for TriggerEvent.
+  /// - "END_OF_UTTERANCE" : Triggers when each chat message or voice utterance
+  /// ends.
+  /// - "MANUAL_CALL" : Triggers on the conversation manually by API calls, such
+  /// as Conversations.GenerateStatelessSuggestion and
+  /// Conversations.GenerateSuggestions.
+  core.String? triggerEvent;
+
+  /// Update time of this generator.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GoogleCloudDialogflowV2Generator({
+    this.createTime,
+    this.description,
+    this.inferenceParameter,
+    this.name,
+    this.summarizationContext,
+    this.triggerEvent,
+    this.updateTime,
+  });
+
+  GoogleCloudDialogflowV2Generator.fromJson(core.Map json_)
+      : this(
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          inferenceParameter: json_.containsKey('inferenceParameter')
+              ? GoogleCloudDialogflowV2InferenceParameter.fromJson(
+                  json_['inferenceParameter']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          summarizationContext: json_.containsKey('summarizationContext')
+              ? GoogleCloudDialogflowV2SummarizationContext.fromJson(
+                  json_['summarizationContext']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          triggerEvent: json_.containsKey('triggerEvent')
+              ? json_['triggerEvent'] as core.String
+              : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (inferenceParameter != null)
+          'inferenceParameter': inferenceParameter!,
+        if (name != null) 'name': name!,
+        if (summarizationContext != null)
+          'summarizationContext': summarizationContext!,
+        if (triggerEvent != null) 'triggerEvent': triggerEvent!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// Suggestion generated using a Generator.
+class GoogleCloudDialogflowV2GeneratorSuggestion {
+  /// Suggested summary.
+  ///
+  /// Optional.
+  GoogleCloudDialogflowV2SummarySuggestion? summarySuggestion;
+
+  GoogleCloudDialogflowV2GeneratorSuggestion({
+    this.summarySuggestion,
+  });
+
+  GoogleCloudDialogflowV2GeneratorSuggestion.fromJson(core.Map json_)
+      : this(
+          summarySuggestion: json_.containsKey('summarySuggestion')
+              ? GoogleCloudDialogflowV2SummarySuggestion.fromJson(
+                  json_['summarySuggestion']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (summarySuggestion != null) 'summarySuggestion': summarySuggestion!,
+      };
+}
+
 /// Defines the Human Agent Assist to connect to a conversation.
 class GoogleCloudDialogflowV2HumanAgentAssistantConfig {
   /// Configuration for agent assistance of end user participant.
@@ -16887,12 +17741,29 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfig {
 
 /// Detail human agent assistant config.
 class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig {
+  /// When disable_high_latency_features_sync_delivery is true and using the
+  /// AnalyzeContent API, we will not deliver the responses from high latency
+  /// features in the API response.
+  ///
+  /// The human_agent_assistant_config.notification_config must be configured
+  /// and enable_event_based_suggestion must be set to true to receive the
+  /// responses from high latency features in Pub/Sub. High latency feature(s):
+  /// KNOWLEDGE_ASSIST.
+  ///
+  /// Optional.
+  core.bool? disableHighLatencyFeaturesSyncDelivery;
+
   /// Configuration of different suggestion features.
   ///
   /// One feature can have only one config.
   core.List<
           GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig>?
       featureConfigs;
+
+  /// List of various generator resource names used in the conversation profile.
+  ///
+  /// Optional.
+  core.List<core.String>? generators;
 
   /// If `group_suggestion_responses` is false, and there are multiple
   /// `feature_configs` in `event based suggestion` or StreamingAnalyzeContent,
@@ -16907,19 +17778,30 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig {
   core.bool? groupSuggestionResponses;
 
   GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig({
+    this.disableHighLatencyFeaturesSyncDelivery,
     this.featureConfigs,
+    this.generators,
     this.groupSuggestionResponses,
   });
 
   GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig.fromJson(
       core.Map json_)
       : this(
+          disableHighLatencyFeaturesSyncDelivery:
+              json_.containsKey('disableHighLatencyFeaturesSyncDelivery')
+                  ? json_['disableHighLatencyFeaturesSyncDelivery'] as core.bool
+                  : null,
           featureConfigs: json_.containsKey('featureConfigs')
               ? (json_['featureConfigs'] as core.List)
                   .map((value) =>
                       GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig
                           .fromJson(
                               value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          generators: json_.containsKey('generators')
+              ? (json_['generators'] as core.List)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           groupSuggestionResponses:
@@ -16929,7 +17811,11 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (disableHighLatencyFeaturesSyncDelivery != null)
+          'disableHighLatencyFeaturesSyncDelivery':
+              disableHighLatencyFeaturesSyncDelivery!,
         if (featureConfigs != null) 'featureConfigs': featureConfigs!,
+        if (generators != null) 'generators': generators!,
         if (groupSuggestionResponses != null)
           'groupSuggestionResponses': groupSuggestionResponses!,
       };
@@ -16966,6 +17852,21 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig {
   /// KNOWLEDGE_ASSIST.
   core.bool? enableEventBasedSuggestion;
 
+  /// Enable query suggestion only.
+  ///
+  /// Supported features: KNOWLEDGE_ASSIST
+  ///
+  /// Optional.
+  core.bool? enableQuerySuggestionOnly;
+
+  /// Enable query suggestion even if we can't find its answer.
+  ///
+  /// By default, queries are suggested only if we find its answer. Supported
+  /// features: KNOWLEDGE_ASSIST
+  ///
+  /// Optional.
+  core.bool? enableQuerySuggestionWhenNoAnswer;
+
   /// Configs of query.
   GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfig?
       queryConfig;
@@ -16985,6 +17886,8 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig {
     this.disableAgentQueryLogging,
     this.enableConversationAugmentedQuery,
     this.enableEventBasedSuggestion,
+    this.enableQuerySuggestionOnly,
+    this.enableQuerySuggestionWhenNoAnswer,
     this.queryConfig,
     this.suggestionFeature,
     this.suggestionTriggerSettings,
@@ -17016,6 +17919,14 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig {
               json_.containsKey('enableEventBasedSuggestion')
                   ? json_['enableEventBasedSuggestion'] as core.bool
                   : null,
+          enableQuerySuggestionOnly:
+              json_.containsKey('enableQuerySuggestionOnly')
+                  ? json_['enableQuerySuggestionOnly'] as core.bool
+                  : null,
+          enableQuerySuggestionWhenNoAnswer:
+              json_.containsKey('enableQuerySuggestionWhenNoAnswer')
+                  ? json_['enableQuerySuggestionWhenNoAnswer'] as core.bool
+                  : null,
           queryConfig: json_.containsKey('queryConfig')
               ? GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfig
                   .fromJson(json_['queryConfig']
@@ -17045,6 +17956,11 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig {
           'enableConversationAugmentedQuery': enableConversationAugmentedQuery!,
         if (enableEventBasedSuggestion != null)
           'enableEventBasedSuggestion': enableEventBasedSuggestion!,
+        if (enableQuerySuggestionOnly != null)
+          'enableQuerySuggestionOnly': enableQuerySuggestionOnly!,
+        if (enableQuerySuggestionWhenNoAnswer != null)
+          'enableQuerySuggestionWhenNoAnswer':
+              enableQuerySuggestionWhenNoAnswer!,
         if (queryConfig != null) 'queryConfig': queryConfig!,
         if (suggestionFeature != null) 'suggestionFeature': suggestionFeature!,
         if (suggestionTriggerSettings != null)
@@ -17412,7 +18328,7 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettings 
 /// Currently, this feature is not general available, please contact Google to
 /// get access.
 class GoogleCloudDialogflowV2HumanAgentHandoffConfig {
-  /// Uses LivePerson (https://www.liveperson.com).
+  /// Uses [LivePerson](https://www.liveperson.com).
   GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig?
       livePersonConfig;
 
@@ -17447,7 +18363,7 @@ class GoogleCloudDialogflowV2HumanAgentHandoffConfig {
       };
 }
 
-/// Configuration specific to LivePerson (https://www.liveperson.com).
+/// Configuration specific to [LivePerson](https://www.liveperson.com).
 class GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig {
   /// Account number of the LivePerson account to connect.
   ///
@@ -17698,6 +18614,79 @@ class GoogleCloudDialogflowV2ImportDocumentsRequest {
         if (gcsSource != null) 'gcsSource': gcsSource!,
         if (importGcsCustomMetadata != null)
           'importGcsCustomMetadata': importGcsCustomMetadata!,
+      };
+}
+
+/// The parameters of inference.
+class GoogleCloudDialogflowV2InferenceParameter {
+  /// Maximum number of the output tokens for the generator.
+  ///
+  /// Optional.
+  core.int? maxOutputTokens;
+
+  /// Controls the randomness of LLM predictions.
+  ///
+  /// Low temperature = less random. High temperature = more random. If unset
+  /// (or 0), uses a default value of 0.
+  ///
+  /// Optional.
+  core.double? temperature;
+
+  /// Top-k changes how the model selects tokens for output.
+  ///
+  /// A top-k of 1 means the selected token is the most probable among all
+  /// tokens in the model's vocabulary (also called greedy decoding), while a
+  /// top-k of 3 means that the next token is selected from among the 3 most
+  /// probable tokens (using temperature). For each token selection step, the
+  /// top K tokens with the highest probabilities are sampled. Then tokens are
+  /// further filtered based on topP with the final token selected using
+  /// temperature sampling. Specify a lower value for less random responses and
+  /// a higher value for more random responses. Acceptable value is \[1, 40\],
+  /// default to 40.
+  ///
+  /// Optional.
+  core.int? topK;
+
+  /// Top-p changes how the model selects tokens for output.
+  ///
+  /// Tokens are selected from most K (see topK parameter) probable to least
+  /// until the sum of their probabilities equals the top-p value. For example,
+  /// if tokens A, B, and C have a probability of 0.3, 0.2, and 0.1 and the
+  /// top-p value is 0.5, then the model will select either A or B as the next
+  /// token (using temperature) and doesn't consider C. The default top-p value
+  /// is 0.95. Specify a lower value for less random responses and a higher
+  /// value for more random responses. Acceptable value is \[0.0, 1.0\], default
+  /// to 0.95.
+  ///
+  /// Optional.
+  core.double? topP;
+
+  GoogleCloudDialogflowV2InferenceParameter({
+    this.maxOutputTokens,
+    this.temperature,
+    this.topK,
+    this.topP,
+  });
+
+  GoogleCloudDialogflowV2InferenceParameter.fromJson(core.Map json_)
+      : this(
+          maxOutputTokens: json_.containsKey('maxOutputTokens')
+              ? json_['maxOutputTokens'] as core.int
+              : null,
+          temperature: json_.containsKey('temperature')
+              ? (json_['temperature'] as core.num).toDouble()
+              : null,
+          topK: json_.containsKey('topK') ? json_['topK'] as core.int : null,
+          topP: json_.containsKey('topP')
+              ? (json_['topP'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (maxOutputTokens != null) 'maxOutputTokens': maxOutputTokens!,
+        if (temperature != null) 'temperature': temperature!,
+        if (topK != null) 'topK': topK!,
+        if (topP != null) 'topP': topP!,
       };
 }
 
@@ -19951,6 +20940,209 @@ class GoogleCloudDialogflowV2IntentTrainingPhrasePart {
       };
 }
 
+/// Represents a Knowledge Assist answer.
+class GoogleCloudDialogflowV2KnowledgeAssistAnswer {
+  /// The name of the answer record.
+  ///
+  /// Format: `projects//locations//answer Records/`.
+  core.String? answerRecord;
+
+  /// The query suggested based on the context.
+  ///
+  /// Suggestion is made only if it is different from the previous suggestion.
+  GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuery? suggestedQuery;
+
+  /// The answer generated for the suggested query.
+  ///
+  /// Whether or not an answer is generated depends on how confident we are
+  /// about the generated query.
+  GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswer?
+      suggestedQueryAnswer;
+
+  GoogleCloudDialogflowV2KnowledgeAssistAnswer({
+    this.answerRecord,
+    this.suggestedQuery,
+    this.suggestedQueryAnswer,
+  });
+
+  GoogleCloudDialogflowV2KnowledgeAssistAnswer.fromJson(core.Map json_)
+      : this(
+          answerRecord: json_.containsKey('answerRecord')
+              ? json_['answerRecord'] as core.String
+              : null,
+          suggestedQuery: json_.containsKey('suggestedQuery')
+              ? GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuery
+                  .fromJson(json_['suggestedQuery']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          suggestedQueryAnswer: json_.containsKey('suggestedQueryAnswer')
+              ? GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswer
+                  .fromJson(json_['suggestedQueryAnswer']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (answerRecord != null) 'answerRecord': answerRecord!,
+        if (suggestedQuery != null) 'suggestedQuery': suggestedQuery!,
+        if (suggestedQueryAnswer != null)
+          'suggestedQueryAnswer': suggestedQueryAnswer!,
+      };
+}
+
+/// Represents an answer from Knowledge.
+///
+/// Currently supports FAQ and Generative answers.
+class GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswer {
+  /// The piece of text from the `source` that answers this suggested query.
+  core.String? answerText;
+
+  /// Populated if the prediction came from FAQ.
+  GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerFaqSource?
+      faqSource;
+
+  /// Populated if the prediction was Generative.
+  GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource?
+      generativeSource;
+
+  GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswer({
+    this.answerText,
+    this.faqSource,
+    this.generativeSource,
+  });
+
+  GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswer.fromJson(
+      core.Map json_)
+      : this(
+          answerText: json_.containsKey('answerText')
+              ? json_['answerText'] as core.String
+              : null,
+          faqSource: json_.containsKey('faqSource')
+              ? GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerFaqSource
+                  .fromJson(
+                      json_['faqSource'] as core.Map<core.String, core.dynamic>)
+              : null,
+          generativeSource: json_.containsKey('generativeSource')
+              ? GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource
+                  .fromJson(json_['generativeSource']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (answerText != null) 'answerText': answerText!,
+        if (faqSource != null) 'faqSource': faqSource!,
+        if (generativeSource != null) 'generativeSource': generativeSource!,
+      };
+}
+
+/// Details about source of FAQ answer.
+class GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerFaqSource {
+  /// The corresponding FAQ question.
+  core.String? question;
+
+  GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerFaqSource({
+    this.question,
+  });
+
+  GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerFaqSource.fromJson(
+      core.Map json_)
+      : this(
+          question: json_.containsKey('question')
+              ? json_['question'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (question != null) 'question': question!,
+      };
+}
+
+/// Details about source of Generative answer.
+class GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource {
+  /// All snippets used for this Generative Prediction, with their source URI
+  /// and data.
+  core.List<
+          GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet>?
+      snippets;
+
+  GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource({
+    this.snippets,
+  });
+
+  GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource.fromJson(
+      core.Map json_)
+      : this(
+          snippets: json_.containsKey('snippets')
+              ? (json_['snippets'] as core.List)
+                  .map((value) =>
+                      GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (snippets != null) 'snippets': snippets!,
+      };
+}
+
+/// Snippet Source for a Generative Prediction.
+class GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet {
+  /// Text taken from that URI.
+  core.String? text;
+
+  /// Title of the document.
+  core.String? title;
+
+  /// URI the data is sourced from.
+  core.String? uri;
+
+  GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet({
+    this.text,
+    this.title,
+    this.uri,
+  });
+
+  GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet.fromJson(
+      core.Map json_)
+      : this(
+          text: json_.containsKey('text') ? json_['text'] as core.String : null,
+          title:
+              json_.containsKey('title') ? json_['title'] as core.String : null,
+          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (text != null) 'text': text!,
+        if (title != null) 'title': title!,
+        if (uri != null) 'uri': uri!,
+      };
+}
+
+/// Represents a suggested query.
+class GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuery {
+  /// Suggested query text.
+  core.String? queryText;
+
+  GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuery({
+    this.queryText,
+  });
+
+  GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuery.fromJson(
+      core.Map json_)
+      : this(
+          queryText: json_.containsKey('queryText')
+              ? json_['queryText'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (queryText != null) 'queryText': queryText!,
+      };
+}
+
 /// A knowledge base represents a collection of knowledge documents that you
 /// provide to Dialogflow.
 ///
@@ -20369,6 +21561,39 @@ class GoogleCloudDialogflowV2ListEnvironmentsResponse {
       };
 }
 
+/// Response of ListGenerators.
+class GoogleCloudDialogflowV2ListGeneratorsResponse {
+  /// List of generators retrieved.
+  core.List<GoogleCloudDialogflowV2Generator>? generators;
+
+  /// Token to retrieve the next page of results, or empty if there are no more
+  /// results in the list.
+  core.String? nextPageToken;
+
+  GoogleCloudDialogflowV2ListGeneratorsResponse({
+    this.generators,
+    this.nextPageToken,
+  });
+
+  GoogleCloudDialogflowV2ListGeneratorsResponse.fromJson(core.Map json_)
+      : this(
+          generators: json_.containsKey('generators')
+              ? (json_['generators'] as core.List)
+                  .map((value) => GoogleCloudDialogflowV2Generator.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (generators != null) 'generators': generators!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
 /// The response message for Intents.ListIntents.
 class GoogleCloudDialogflowV2ListIntentsResponse {
   /// The list of agent intents.
@@ -20761,6 +21986,66 @@ class GoogleCloudDialogflowV2MessageAnnotation {
   core.Map<core.String, core.dynamic> toJson() => {
         if (containEntities != null) 'containEntities': containEntities!,
         if (parts != null) 'parts': parts!,
+      };
+}
+
+/// Represents a message entry of a conversation.
+class GoogleCloudDialogflowV2MessageEntry {
+  /// Create time of the message entry.
+  ///
+  /// Optional.
+  core.String? createTime;
+
+  /// The language of the text.
+  ///
+  /// See
+  /// [Language Support](https://cloud.google.com/dialogflow/docs/reference/language)
+  /// for a list of the currently supported language codes.
+  ///
+  /// Optional.
+  core.String? languageCode;
+
+  /// Participant role of the message.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "ROLE_UNSPECIFIED" : Participant role not set.
+  /// - "HUMAN_AGENT" : Participant is a human agent.
+  /// - "AUTOMATED_AGENT" : Participant is an automated agent, such as a
+  /// Dialogflow agent.
+  /// - "END_USER" : Participant is an end user that has called or chatted with
+  /// Dialogflow services.
+  core.String? role;
+
+  /// Transcript content of the message.
+  ///
+  /// Optional.
+  core.String? text;
+
+  GoogleCloudDialogflowV2MessageEntry({
+    this.createTime,
+    this.languageCode,
+    this.role,
+    this.text,
+  });
+
+  GoogleCloudDialogflowV2MessageEntry.fromJson(core.Map json_)
+      : this(
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          languageCode: json_.containsKey('languageCode')
+              ? json_['languageCode'] as core.String
+              : null,
+          role: json_.containsKey('role') ? json_['role'] as core.String : null,
+          text: json_.containsKey('text') ? json_['text'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (languageCode != null) 'languageCode': languageCode!,
+        if (role != null) 'role': role!,
+        if (text != null) 'text': text!,
       };
 }
 
@@ -21767,7 +23052,7 @@ class GoogleCloudDialogflowV2SearchKnowledgeResponse {
 /// See:
 /// https://cloud.google.com/natural-language/docs/basics#interpreting_sentiment_analysis_values
 /// for how to interpret the result.
-typedef GoogleCloudDialogflowV2Sentiment = $Shared11;
+typedef GoogleCloudDialogflowV2Sentiment = $Shared10;
 
 /// Configures the types of sentiment analysis to perform.
 class GoogleCloudDialogflowV2SentimentAnalysisRequestConfig {
@@ -22573,6 +23858,109 @@ class GoogleCloudDialogflowV2SuggestFaqAnswersResponse {
       };
 }
 
+/// The request message for Participants.SuggestKnowledgeAssist.
+class GoogleCloudDialogflowV2SuggestKnowledgeAssistRequest {
+  /// Max number of messages prior to and including latest_message to use as
+  /// context when compiling the suggestion.
+  ///
+  /// The context size is by default 100 and at most 100.
+  ///
+  /// Optional.
+  core.int? contextSize;
+
+  /// The name of the latest conversation message to compile suggestions for.
+  ///
+  /// If empty, it will be the latest message of the conversation. Format:
+  /// `projects//locations//conversations//messages/`.
+  ///
+  /// Optional.
+  core.String? latestMessage;
+
+  /// The previously suggested query for the given conversation.
+  ///
+  /// This helps identify whether the next suggestion we generate is resonably
+  /// different from the previous one. This is useful to avoid similar
+  /// suggestions within the conversation.
+  ///
+  /// Optional.
+  core.String? previousSuggestedQuery;
+
+  GoogleCloudDialogflowV2SuggestKnowledgeAssistRequest({
+    this.contextSize,
+    this.latestMessage,
+    this.previousSuggestedQuery,
+  });
+
+  GoogleCloudDialogflowV2SuggestKnowledgeAssistRequest.fromJson(core.Map json_)
+      : this(
+          contextSize: json_.containsKey('contextSize')
+              ? json_['contextSize'] as core.int
+              : null,
+          latestMessage: json_.containsKey('latestMessage')
+              ? json_['latestMessage'] as core.String
+              : null,
+          previousSuggestedQuery: json_.containsKey('previousSuggestedQuery')
+              ? json_['previousSuggestedQuery'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (contextSize != null) 'contextSize': contextSize!,
+        if (latestMessage != null) 'latestMessage': latestMessage!,
+        if (previousSuggestedQuery != null)
+          'previousSuggestedQuery': previousSuggestedQuery!,
+      };
+}
+
+/// The response message for Participants.SuggestKnowledgeAssist.
+class GoogleCloudDialogflowV2SuggestKnowledgeAssistResponse {
+  /// Number of messages prior to and including latest_message to compile the
+  /// suggestion.
+  ///
+  /// It may be smaller than the SuggestKnowledgeAssistRequest.context_size
+  /// field in the request if there are fewer messages in the conversation.
+  core.int? contextSize;
+
+  /// Knowledge Assist suggestion.
+  ///
+  /// Output only.
+  GoogleCloudDialogflowV2KnowledgeAssistAnswer? knowledgeAssistAnswer;
+
+  /// The name of the latest conversation message used to compile suggestion
+  /// for.
+  ///
+  /// Format: `projects//locations//conversations//messages/`.
+  core.String? latestMessage;
+
+  GoogleCloudDialogflowV2SuggestKnowledgeAssistResponse({
+    this.contextSize,
+    this.knowledgeAssistAnswer,
+    this.latestMessage,
+  });
+
+  GoogleCloudDialogflowV2SuggestKnowledgeAssistResponse.fromJson(core.Map json_)
+      : this(
+          contextSize: json_.containsKey('contextSize')
+              ? json_['contextSize'] as core.int
+              : null,
+          knowledgeAssistAnswer: json_.containsKey('knowledgeAssistAnswer')
+              ? GoogleCloudDialogflowV2KnowledgeAssistAnswer.fromJson(
+                  json_['knowledgeAssistAnswer']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          latestMessage: json_.containsKey('latestMessage')
+              ? json_['latestMessage'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (contextSize != null) 'contextSize': contextSize!,
+        if (knowledgeAssistAnswer != null)
+          'knowledgeAssistAnswer': knowledgeAssistAnswer!,
+        if (latestMessage != null) 'latestMessage': latestMessage!,
+      };
+}
+
 /// The request message for Participants.SuggestSmartReplies.
 class GoogleCloudDialogflowV2SuggestSmartRepliesRequest {
   /// Max number of messages prior to and including \[latest_message\] to use as
@@ -22687,6 +24075,8 @@ class GoogleCloudDialogflowV2SuggestionFeature {
   /// - "SMART_REPLY" : Run smart reply model for chat.
   /// - "KNOWLEDGE_SEARCH" : Run knowledge search with text input from agent or
   /// text generated query.
+  /// - "KNOWLEDGE_ASSIST" : Run knowledge assist with automatic query
+  /// generation.
   core.String? type;
 
   GoogleCloudDialogflowV2SuggestionFeature({
@@ -22743,6 +24133,10 @@ class GoogleCloudDialogflowV2SuggestionResult {
   /// SuggestFaqAnswersResponse if request is for FAQ_ANSWER.
   GoogleCloudDialogflowV2SuggestFaqAnswersResponse? suggestFaqAnswersResponse;
 
+  /// SuggestKnowledgeAssistResponse if request is for KNOWLEDGE_ASSIST.
+  GoogleCloudDialogflowV2SuggestKnowledgeAssistResponse?
+      suggestKnowledgeAssistResponse;
+
   /// SuggestSmartRepliesResponse if request is for SMART_REPLY.
   GoogleCloudDialogflowV2SuggestSmartRepliesResponse?
       suggestSmartRepliesResponse;
@@ -22751,6 +24145,7 @@ class GoogleCloudDialogflowV2SuggestionResult {
     this.error,
     this.suggestArticlesResponse,
     this.suggestFaqAnswersResponse,
+    this.suggestKnowledgeAssistResponse,
     this.suggestSmartRepliesResponse,
   });
 
@@ -22771,6 +24166,12 @@ class GoogleCloudDialogflowV2SuggestionResult {
                       json_['suggestFaqAnswersResponse']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          suggestKnowledgeAssistResponse: json_
+                  .containsKey('suggestKnowledgeAssistResponse')
+              ? GoogleCloudDialogflowV2SuggestKnowledgeAssistResponse.fromJson(
+                  json_['suggestKnowledgeAssistResponse']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           suggestSmartRepliesResponse:
               json_.containsKey('suggestSmartRepliesResponse')
                   ? GoogleCloudDialogflowV2SuggestSmartRepliesResponse.fromJson(
@@ -22785,8 +24186,229 @@ class GoogleCloudDialogflowV2SuggestionResult {
           'suggestArticlesResponse': suggestArticlesResponse!,
         if (suggestFaqAnswersResponse != null)
           'suggestFaqAnswersResponse': suggestFaqAnswersResponse!,
+        if (suggestKnowledgeAssistResponse != null)
+          'suggestKnowledgeAssistResponse': suggestKnowledgeAssistResponse!,
         if (suggestSmartRepliesResponse != null)
           'suggestSmartRepliesResponse': suggestSmartRepliesResponse!,
+      };
+}
+
+/// Summarization context that customer can configure.
+class GoogleCloudDialogflowV2SummarizationContext {
+  /// List of few shot examples.
+  ///
+  /// Optional.
+  core.List<GoogleCloudDialogflowV2FewShotExample>? fewShotExamples;
+
+  /// The target language of the generated summary.
+  ///
+  /// The language code for conversation will be used if this field is empty.
+  /// Supported 2.0 and later versions.
+  ///
+  /// Optional.
+  core.String? outputLanguageCode;
+
+  /// List of sections.
+  ///
+  /// Note it contains both predefined section sand customer defined sections.
+  ///
+  /// Optional.
+  core.List<GoogleCloudDialogflowV2SummarizationSection>? summarizationSections;
+
+  /// Version of the feature.
+  ///
+  /// If not set, default to latest version. Current candidates are \["1.0"\].
+  ///
+  /// Optional.
+  core.String? version;
+
+  GoogleCloudDialogflowV2SummarizationContext({
+    this.fewShotExamples,
+    this.outputLanguageCode,
+    this.summarizationSections,
+    this.version,
+  });
+
+  GoogleCloudDialogflowV2SummarizationContext.fromJson(core.Map json_)
+      : this(
+          fewShotExamples: json_.containsKey('fewShotExamples')
+              ? (json_['fewShotExamples'] as core.List)
+                  .map((value) =>
+                      GoogleCloudDialogflowV2FewShotExample.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          outputLanguageCode: json_.containsKey('outputLanguageCode')
+              ? json_['outputLanguageCode'] as core.String
+              : null,
+          summarizationSections: json_.containsKey('summarizationSections')
+              ? (json_['summarizationSections'] as core.List)
+                  .map((value) =>
+                      GoogleCloudDialogflowV2SummarizationSection.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          version: json_.containsKey('version')
+              ? json_['version'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fewShotExamples != null) 'fewShotExamples': fewShotExamples!,
+        if (outputLanguageCode != null)
+          'outputLanguageCode': outputLanguageCode!,
+        if (summarizationSections != null)
+          'summarizationSections': summarizationSections!,
+        if (version != null) 'version': version!,
+      };
+}
+
+/// Represents the section of summarization.
+class GoogleCloudDialogflowV2SummarizationSection {
+  /// Definition of the section, for example, "what the customer needs help with
+  /// or has question about."
+  ///
+  /// Optional.
+  core.String? definition;
+
+  /// Name of the section, for example, "situation".
+  ///
+  /// Optional.
+  core.String? key;
+
+  /// Type of the summarization section.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Undefined section type, does not return anything.
+  /// - "SITUATION" : What the customer needs help with or has question about.
+  /// Section name: "situation".
+  /// - "ACTION" : What the agent does to help the customer. Section name:
+  /// "action".
+  /// - "RESOLUTION" : Result of the customer service. A single word describing
+  /// the result of the conversation. Section name: "resolution".
+  /// - "REASON_FOR_CANCELLATION" : Reason for cancellation if the customer
+  /// requests for a cancellation. "N/A" otherwise. Section name:
+  /// "reason_for_cancellation".
+  /// - "CUSTOMER_SATISFACTION" : "Unsatisfied" or "Satisfied" depending on the
+  /// customer's feelings at the end of the conversation. Section name:
+  /// "customer_satisfaction".
+  /// - "ENTITIES" : Key entities extracted from the conversation, such as
+  /// ticket number, order number, dollar amount, etc. Section names are
+  /// prefixed by "entities/".
+  /// - "CUSTOMER_DEFINED" : Customer defined sections.
+  core.String? type;
+
+  GoogleCloudDialogflowV2SummarizationSection({
+    this.definition,
+    this.key,
+    this.type,
+  });
+
+  GoogleCloudDialogflowV2SummarizationSection.fromJson(core.Map json_)
+      : this(
+          definition: json_.containsKey('definition')
+              ? json_['definition'] as core.String
+              : null,
+          key: json_.containsKey('key') ? json_['key'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (definition != null) 'definition': definition!,
+        if (key != null) 'key': key!,
+        if (type != null) 'type': type!,
+      };
+}
+
+/// List of summarization sections.
+class GoogleCloudDialogflowV2SummarizationSectionList {
+  /// Summarization sections.
+  ///
+  /// Optional.
+  core.List<GoogleCloudDialogflowV2SummarizationSection>? summarizationSections;
+
+  GoogleCloudDialogflowV2SummarizationSectionList({
+    this.summarizationSections,
+  });
+
+  GoogleCloudDialogflowV2SummarizationSectionList.fromJson(core.Map json_)
+      : this(
+          summarizationSections: json_.containsKey('summarizationSections')
+              ? (json_['summarizationSections'] as core.List)
+                  .map((value) =>
+                      GoogleCloudDialogflowV2SummarizationSection.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (summarizationSections != null)
+          'summarizationSections': summarizationSections!,
+      };
+}
+
+/// Suggested summary of the conversation.
+class GoogleCloudDialogflowV2SummarySuggestion {
+  /// All the parts of generated summary.
+  ///
+  /// Required.
+  core.List<GoogleCloudDialogflowV2SummarySuggestionSummarySection>?
+      summarySections;
+
+  GoogleCloudDialogflowV2SummarySuggestion({
+    this.summarySections,
+  });
+
+  GoogleCloudDialogflowV2SummarySuggestion.fromJson(core.Map json_)
+      : this(
+          summarySections: json_.containsKey('summarySections')
+              ? (json_['summarySections'] as core.List)
+                  .map((value) =>
+                      GoogleCloudDialogflowV2SummarySuggestionSummarySection
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (summarySections != null) 'summarySections': summarySections!,
+      };
+}
+
+/// A component of the generated summary.
+class GoogleCloudDialogflowV2SummarySuggestionSummarySection {
+  /// Name of the section.
+  ///
+  /// Required.
+  core.String? section;
+
+  /// Summary text for the section.
+  ///
+  /// Required.
+  core.String? summary;
+
+  GoogleCloudDialogflowV2SummarySuggestionSummarySection({
+    this.section,
+    this.summary,
+  });
+
+  GoogleCloudDialogflowV2SummarySuggestionSummarySection.fromJson(
+      core.Map json_)
+      : this(
+          section: json_.containsKey('section')
+              ? json_['section'] as core.String
+              : null,
+          summary: json_.containsKey('summary')
+              ? json_['summary'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (section != null) 'section': section!,
+        if (summary != null) 'summary': summary!,
       };
 }
 

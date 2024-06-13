@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240528",
+    "revision": "20240611",
     "rootUrl": "https://firebaseremoteconfig.googleapis.com/",
     "servicePath": "",
     "title": "Firebase Remote Config API",
@@ -260,7 +260,7 @@
                                         "Catch-all for unrecognized enum values.",
                                         "Returns a response in XML format.",
                                         "Returns a response in property list (plist) format.",
-                                        "Returns a response in JSON format."
+                                        "Returns a response in raw JSON format (not packaged in an HttpBody object)."
                                     ],
                                     "location": "query",
                                     "type": "string"
@@ -701,7 +701,7 @@
             "type": "object"
         },
         "RemoteConfig": {
-            "description": "A RemoteConfig represents a Remote Config template. A project's Remote Config template is evaluated during each application instance's fetch. The resolved value of a parameter is determined as follows: Given the conditional values that refer to `true` conditions for the application instance, the parameter's resolved value is the conditional value whose name is the earliest in the conditions list. Else, if the parameter has a default value, the resolved value is set to the default value. Else, the parameter has no value and is omitted from the result that the application instance fetches. For example, assume we have parameter key `fruit`, with default value `pear` and conditional value submap `{\"is_ios\": \"apple\", \"is_in_20_percent\": \"banana\"}` where `\"is_ios\"` and `\"is_20_percent\"` are names of conditions in the ordered condition list. The value of `fruit` would evaluate to `apple` if `is_ios` is true. Otherwise, if `is_in_20_percent` is `true`, `fruit` would evaluate to `banana`, and if `is_ios` and `is_in_20_percent` are both false, `fruit` would evaluate to `pear`. If no default value were specified, and `is_ios` and `is_in_20_percent` were both false, no value for `fruit` would be returned from the Remote Config server to the client. Once a project's Remote Config template has been published via a successful UpdateRemoteConfig call, clients can fetch these parameter values and display them to users.",
+            "description": "A RemoteConfig represents a Remote Config template. A project's Remote Config template is evaluated during each application instance's fetch. Note: Server templates currently support percentage conditions. Publishing a server template with unsupported conditional values will return a validation error. See [Remote Config in Server Environments](https://firebase.google.com/docs/remote-config/server) for more information. The resolved value of a parameter is determined as follows: Given the conditional values that refer to `true` conditions for the application instance, the parameter's resolved value is the conditional value whose name is the earliest in the conditions list. Else, if the parameter has a default value, the resolved value is set to the default value. Else, the parameter has no value and is omitted from the result that the application instance fetches. For example, assume we have parameter key `fruit`, with default value `pear` and conditional value submap `{\"is_ios\": \"apple\", \"is_in_20_percent\": \"banana\"}` where `\"is_ios\"` and `\"is_20_percent\"` are names of conditions in the ordered condition list. The value of `fruit` would evaluate to `apple` if `is_ios` is true. Otherwise, if `is_in_20_percent` is `true`, `fruit` would evaluate to `banana`, and if `is_ios` and `is_in_20_percent` are both false, `fruit` would evaluate to `pear`. If no default value were specified, and `is_ios` and `is_in_20_percent` were both false, no value for `fruit` would be returned from the Remote Config server to the client. Once a project's Remote Config template has been published via a successful UpdateRemoteConfig call, clients can fetch these parameter values and display them to users.",
             "id": "RemoteConfig",
             "properties": {
                 "conditions": {

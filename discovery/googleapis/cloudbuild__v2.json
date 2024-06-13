@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240519",
+    "revision": "20240609",
     "rootUrl": "https://cloudbuild.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Build API",
@@ -979,7 +979,7 @@
                     "description": "Required. A http access token with the `REPO_ADMIN` scope access."
                 },
                 "hostUri": {
-                    "description": "Optional. The URI of the Bitbucket Data Center instance or cluster this connection is for.",
+                    "description": "Required. The URI of the Bitbucket Data Center instance or cluster this connection is for.",
                     "type": "string"
                 },
                 "readAuthorizerCredential": {
@@ -2723,6 +2723,20 @@
                 },
                 "name": {
                     "description": "Name of the container specified as a DNS_LABEL.",
+                    "type": "string"
+                },
+                "onError": {
+                    "description": "Optional. OnError defines the exiting behavior on error can be set to [ continue | stopAndFail ]",
+                    "enum": [
+                        "ON_ERROR_TYPE_UNSPECIFIED",
+                        "STOP_AND_FAIL",
+                        "CONTINUE"
+                    ],
+                    "enumDescriptions": [
+                        "Default enum type; should not be used.",
+                        "StopAndFail indicates exit if the step/task exits with non-zero exit code",
+                        "Continue indicates continue executing the rest of the steps/tasks irrespective of the exit code"
+                    ],
                     "type": "string"
                 },
                 "params": {

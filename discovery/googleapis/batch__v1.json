@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240517",
+    "revision": "20240523",
     "rootUrl": "https://batch.googleapis.com/",
     "servicePath": "",
     "title": "Batch API",

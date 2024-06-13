@@ -2,7 +2,7 @@
 # should be ignored.
 packages:
 - googleapis:
-    version: 13.2.0-wip
+    version: 13.2.0
     repository: https://github.com/google/googleapis.dart/tree/master/generated/googleapis
     readme: resources/README.md
     license: resources/LICENSE
@@ -28,6 +28,7 @@ packages:
     - adsensehost:v4.1 # https://developers.google.com/adsense/host/
     - advisorynotifications:v1
     - aiplatform:v1
+    - airquality:v1
     - alloydb:v1
     - analytics:v3 # https://developers.google.com/analytics/
     - analyticshub:v1
@@ -75,6 +76,7 @@ packages:
     - cloudbuild:v1 # https://cloud.google.com/container-builder/docs/
     - cloudbuild:v2
     - cloudchannel:v1
+    - cloudcommerceprocurement:v1
     - cloudcontrolspartner:v1
     - clouddeploy:v1
     - cloudfunctions:v1 # https://cloud.google.com/functions/docs/
@@ -217,6 +219,7 @@ packages:
     - policyanalyzer:v1
     - policysimulator:v1
     - policytroubleshooter:v1
+    - pollen:v1
     - privateca:v1
     - publicca:v1
     - pubsub:v1 # https://cloud.google.com/pubsub/
@@ -388,6 +391,7 @@ skipped_apis:
 - deploymentmanager:v2beta # v1 included
 - dialogflow:v2beta1 # v2 included
 - dialogflow:v3beta1 # v3 included
+- apim:v1alpha
 - discoveryengine:v1 # https://cloud.google.com/discovery-engine/media/docs
 - discoveryengine:v1alpha
 - discoveryengine:v1beta
@@ -419,6 +423,16 @@ skipped_apis:
 - managedidentities:v1beta1 # v1 included
 - marketingplatformadmin:v1alpha
 - memcache:v1beta2 # v1 included
+- merchantapi:accounts_v1beta
+- merchantapi:conversions_v1beta
+- merchantapi:datasources_v1beta
+- merchantapi:inventories_v1beta
+- merchantapi:lfp_v1beta
+- merchantapi:notifications_v1beta
+- merchantapi:products_v1beta
+- merchantapi:promotions_v1beta
+- merchantapi:quota_v1beta
+- merchantapi:reports_v1beta
 - metastore:v1alpha # v1beta included
 - metastore:v1beta
 - migrationcenter:v1alpha1

@@ -17,6 +17,14 @@
 ///
 /// Create an instance of [PolicyAnalyzerApi] to access these resources:
 ///
+/// - [FoldersResource]
+///   - [FoldersLocationsResource]
+///     - [FoldersLocationsActivityTypesResource]
+///       - [FoldersLocationsActivityTypesActivitiesResource]
+/// - [OrganizationsResource]
+///   - [OrganizationsLocationsResource]
+///     - [OrganizationsLocationsActivityTypesResource]
+///       - [OrganizationsLocationsActivityTypesActivitiesResource]
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsActivityTypesResource]
@@ -42,6 +50,8 @@ class PolicyAnalyzerApi {
 
   final commons.ApiRequester _requester;
 
+  FoldersResource get folders => FoldersResource(_requester);
+  OrganizationsResource get organizations => OrganizationsResource(_requester);
   ProjectsResource get projects => ProjectsResource(_requester);
 
   PolicyAnalyzerApi(http.Client client,
@@ -49,6 +59,212 @@ class PolicyAnalyzerApi {
       core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+}
+
+class FoldersResource {
+  final commons.ApiRequester _requester;
+
+  FoldersLocationsResource get locations =>
+      FoldersLocationsResource(_requester);
+
+  FoldersResource(commons.ApiRequester client) : _requester = client;
+}
+
+class FoldersLocationsResource {
+  final commons.ApiRequester _requester;
+
+  FoldersLocationsActivityTypesResource get activityTypes =>
+      FoldersLocationsActivityTypesResource(_requester);
+
+  FoldersLocationsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class FoldersLocationsActivityTypesResource {
+  final commons.ApiRequester _requester;
+
+  FoldersLocationsActivityTypesActivitiesResource get activities =>
+      FoldersLocationsActivityTypesActivitiesResource(_requester);
+
+  FoldersLocationsActivityTypesResource(commons.ApiRequester client)
+      : _requester = client;
+}
+
+class FoldersLocationsActivityTypesActivitiesResource {
+  final commons.ApiRequester _requester;
+
+  FoldersLocationsActivityTypesActivitiesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Queries policy activities on Google Cloud resources.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The container resource on which to execute the
+  /// request. Acceptable formats:
+  /// `projects/[PROJECT_ID|PROJECT_NUMBER]/locations/[LOCATION]/activityTypes/[ACTIVITY_TYPE]`
+  /// LOCATION here refers to Google Cloud Locations:
+  /// https://cloud.google.com/about/locations/
+  /// Value must have pattern
+  /// `^folders/\[^/\]+/locations/\[^/\]+/activityTypes/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filter expression to restrict the activities
+  /// returned. For serviceAccountLastAuthentication activities, supported
+  /// filters are: - `activities.full_resource_name {=} [STRING]` -
+  /// `activities.fullResourceName {=} [STRING]` where `[STRING]` is the full
+  /// resource name of the service account. For
+  /// serviceAccountKeyLastAuthentication activities, supported filters are: -
+  /// `activities.full_resource_name {=} [STRING]` -
+  /// `activities.fullResourceName {=} [STRING]` where `[STRING]` is the full
+  /// resource name of the service account key.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Max limit is 1000. Non-positive values are ignored. The presence
+  /// of `nextPageToken` in the response indicates that more results might be
+  /// available.
+  ///
+  /// [pageToken] - Optional. If present, then retrieve the next batch of
+  /// results from the preceding call to this method. `pageToken` must be the
+  /// value of `nextPageToken` from the previous response. The values of other
+  /// method parameters should be identical to those in the previous call.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudPolicyanalyzerV1QueryActivityResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudPolicyanalyzerV1QueryActivityResponse> query(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/activities:query';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudPolicyanalyzerV1QueryActivityResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class OrganizationsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsResource get locations =>
+      OrganizationsLocationsResource(_requester);
+
+  OrganizationsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class OrganizationsLocationsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsActivityTypesResource get activityTypes =>
+      OrganizationsLocationsActivityTypesResource(_requester);
+
+  OrganizationsLocationsResource(commons.ApiRequester client)
+      : _requester = client;
+}
+
+class OrganizationsLocationsActivityTypesResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsActivityTypesActivitiesResource get activities =>
+      OrganizationsLocationsActivityTypesActivitiesResource(_requester);
+
+  OrganizationsLocationsActivityTypesResource(commons.ApiRequester client)
+      : _requester = client;
+}
+
+class OrganizationsLocationsActivityTypesActivitiesResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsActivityTypesActivitiesResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Queries policy activities on Google Cloud resources.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The container resource on which to execute the
+  /// request. Acceptable formats:
+  /// `projects/[PROJECT_ID|PROJECT_NUMBER]/locations/[LOCATION]/activityTypes/[ACTIVITY_TYPE]`
+  /// LOCATION here refers to Google Cloud Locations:
+  /// https://cloud.google.com/about/locations/
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/activityTypes/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filter expression to restrict the activities
+  /// returned. For serviceAccountLastAuthentication activities, supported
+  /// filters are: - `activities.full_resource_name {=} [STRING]` -
+  /// `activities.fullResourceName {=} [STRING]` where `[STRING]` is the full
+  /// resource name of the service account. For
+  /// serviceAccountKeyLastAuthentication activities, supported filters are: -
+  /// `activities.full_resource_name {=} [STRING]` -
+  /// `activities.fullResourceName {=} [STRING]` where `[STRING]` is the full
+  /// resource name of the service account key.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Max limit is 1000. Non-positive values are ignored. The presence
+  /// of `nextPageToken` in the response indicates that more results might be
+  /// available.
+  ///
+  /// [pageToken] - Optional. If present, then retrieve the next batch of
+  /// results from the preceding call to this method. `pageToken` must be the
+  /// value of `nextPageToken` from the previous response. The values of other
+  /// method parameters should be identical to those in the previous call.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudPolicyanalyzerV1QueryActivityResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudPolicyanalyzerV1QueryActivityResponse> query(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/activities:query';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudPolicyanalyzerV1QueryActivityResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsResource {
@@ -153,6 +369,7 @@ class ProjectsLocationsActivityTypesActivitiesResource {
   }
 }
 
+/// Represents Activity on a GCP resource over specific observation period.
 class GoogleCloudPolicyanalyzerV1Activity {
   /// A struct of custom fields to explain the activity.
   ///

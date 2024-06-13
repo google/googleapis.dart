@@ -27,6 +27,7 @@
 ///       - [ProjectsLocationsConnectionsActionsResource]
 ///       - [ProjectsLocationsConnectionsEntityTypesResource]
 ///         - [ProjectsLocationsConnectionsEntityTypesEntitiesResource]
+///         - [ProjectsLocationsConnectionsEntityTypesEntitieswithaclsResource]
 library;
 
 import 'dart:async' as async;
@@ -460,6 +461,10 @@ class ProjectsLocationsConnectionsEntityTypesResource {
 
   ProjectsLocationsConnectionsEntityTypesEntitiesResource get entities =>
       ProjectsLocationsConnectionsEntityTypesEntitiesResource(_requester);
+  ProjectsLocationsConnectionsEntityTypesEntitieswithaclsResource
+      get entitieswithacls =>
+          ProjectsLocationsConnectionsEntityTypesEntitieswithaclsResource(
+              _requester);
 
   ProjectsLocationsConnectionsEntityTypesResource(commons.ApiRequester client)
       : _requester = client;
@@ -912,6 +917,73 @@ class ProjectsLocationsConnectionsEntityTypesEntitiesResource {
     );
     return UpdateEntitiesWithConditionsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsConnectionsEntityTypesEntitieswithaclsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsConnectionsEntityTypesEntitieswithaclsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists entity rows with ACLs of a particular entity type contained in the
+  /// request.
+  ///
+  /// Note: 1. Currently, only max of one 'sort_by' column is supported. 2. If
+  /// no 'sort_by' column is provided, the primary key of the table is used. If
+  /// zero or more than one primary key is available, we default to the
+  /// unpaginated list entities logic which only returns the first page. 3. The
+  /// values of the 'sort_by' columns must uniquely identify an entity row,
+  /// otherwise undefined behaviors may be observed during pagination. 4. Since
+  /// transactions are not supported, any updates, inserts or deletes during
+  /// pagination can lead to stale data being returned or other unexpected
+  /// behaviors.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Resource name of the Entity Type. Format:
+  /// projects/{project}/locations/{location}/connections/{connection}/entityTypes/{type}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+/entityTypes/\[^/\]+$`.
+  ///
+  /// [conditions] - Conditions to be used when listing entities. From a proto
+  /// standpoint, There are no restrictions on what can be passed using this
+  /// field. The connector documentation should have information about what
+  /// format of filters/conditions are supported.
+  ///
+  /// [gsutilUri] - Format: gs://object_path
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> list(
+    core.String parent, {
+    core.String? conditions,
+    core.String? gsutilUri,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (conditions != null) 'conditions': [conditions],
+      if (gsutilUri != null) 'gsutilUri': [gsutilUri],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/entitieswithacls';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1877,6 +1949,82 @@ class ListEntityTypesResponse {
       };
 }
 
+/// This resource represents a long-running operation that is the result of a
+/// network API call.
+class Operation {
+  /// If the value is `false`, it means the operation is still in progress.
+  ///
+  /// If `true`, the operation is completed, and either `error` or `response` is
+  /// available.
+  core.bool? done;
+
+  /// The error result of the operation in case of failure or cancellation.
+  Status? error;
+
+  /// Service-specific metadata associated with the operation.
+  ///
+  /// It typically contains progress information and common metadata such as
+  /// create time. Some services might not provide such metadata. Any method
+  /// that returns a long-running operation should document the metadata type,
+  /// if any.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? metadata;
+
+  /// The server-assigned name, which is only unique within the same service
+  /// that originally returns it.
+  ///
+  /// If you use the default HTTP mapping, the `name` should be a resource name
+  /// ending with `operations/{unique_id}`.
+  core.String? name;
+
+  /// The normal, successful response of the operation.
+  ///
+  /// If the original method returns no data on success, such as `Delete`, the
+  /// response is `google.protobuf.Empty`. If the original method is standard
+  /// `Get`/`Create`/`Update`, the response should be the resource. For other
+  /// methods, the response should have the type `XxxResponse`, where `Xxx` is
+  /// the original method name. For example, if the original method name is
+  /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? response;
+
+  Operation({
+    this.done,
+    this.error,
+    this.metadata,
+    this.name,
+    this.response,
+  });
+
+  Operation.fromJson(core.Map json_)
+      : this(
+          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          error: json_.containsKey('error')
+              ? Status.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>)
+              : null,
+          metadata: json_.containsKey('metadata')
+              ? json_['metadata'] as core.Map<core.String, core.dynamic>
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          response: json_.containsKey('response')
+              ? json_['response'] as core.Map<core.String, core.dynamic>
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!,
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (response != null) 'response': response!,
+      };
+}
+
 /// A wrapper around the SQL query statement.
 ///
 /// This is needed so that the JSON representation of ExecuteSqlQueryRequest has
@@ -2146,6 +2294,15 @@ class ResultMetadata {
         if (name != null) 'name': name!,
       };
 }
+
+/// The `Status` type defines a logical error model that is suitable for
+/// different programming environments, including REST APIs and RPC APIs.
+///
+/// It is used by [gRPC](https://github.com/grpc). Each `Status` message
+/// contains three pieces of data: error code, error message, and error details.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
+typedef Status = $Status;
 
 /// Response message for EntityService.UpdateEntitiesWithConditions
 class UpdateEntitiesWithConditionsResponse {

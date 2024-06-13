@@ -1879,6 +1879,104 @@ class GoogleChromeManagementV1AppDetails {
       };
 }
 
+/// App report.
+class GoogleChromeManagementV1AppReport {
+  /// Timestamp when the report was collected.
+  core.String? reportTime;
+
+  /// App usage data.
+  core.List<GoogleChromeManagementV1AppUsageData>? usageData;
+
+  GoogleChromeManagementV1AppReport({
+    this.reportTime,
+    this.usageData,
+  });
+
+  GoogleChromeManagementV1AppReport.fromJson(core.Map json_)
+      : this(
+          reportTime: json_.containsKey('reportTime')
+              ? json_['reportTime'] as core.String
+              : null,
+          usageData: json_.containsKey('usageData')
+              ? (json_['usageData'] as core.List)
+                  .map((value) => GoogleChromeManagementV1AppUsageData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (reportTime != null) 'reportTime': reportTime!,
+        if (usageData != null) 'usageData': usageData!,
+      };
+}
+
+/// App usage data.
+class GoogleChromeManagementV1AppUsageData {
+  /// App id.
+  core.String? appId;
+
+  /// Application instance id.
+  ///
+  /// This will be unique per window/instance.
+  core.String? appInstanceId;
+
+  /// Type of app.
+  /// Possible string values are:
+  /// - "TELEMETRY_APPLICATION_TYPE_UNSPECIFIED" : Application type unknown.
+  /// - "APPLICATION_TYPE_ARC" : Application type arc (Android app).
+  /// - "APPLICATION_TYPE_BUILT_IN" : Application type built-in.
+  /// - "APPLICATION_TYPE_CROSTINI" : Application type Linux (via Crostini).
+  /// - "APPLICATION_TYPE_CHROME_APP" : Application type Chrome app.
+  /// - "APPLICATION_TYPE_WEB" : Application type web.
+  /// - "APPLICATION_TYPE_MAC_OS" : Application type Mac OS.
+  /// - "APPLICATION_TYPE_PLUGIN_VM" : Application type Plugin VM.
+  /// - "APPLICATION_TYPE_STANDALONE_BROWSER" : Application type standalone
+  /// browser (Lacros browser app).
+  /// - "APPLICATION_TYPE_REMOTE" : Application type remote.
+  /// - "APPLICATION_TYPE_BOREALIS" : Application type borealis.
+  /// - "APPLICATION_TYPE_SYSTEM_WEB" : Application type system web.
+  /// - "APPLICATION_TYPE_STANDALONE_BROWSER_CHROME_APP" : Application type
+  /// standalone browser chrome app (hosted in Lacros).
+  /// - "APPLICATION_TYPE_EXTENSION" : Application type extension.
+  /// - "APPLICATION_TYPE_STANDALONE_BROWSER_EXTENSION" : Application type
+  /// standalone browser extension.
+  /// - "APPLICATION_TYPE_BRUSCHETTA" : Application type bruschetta.
+  core.String? appType;
+
+  /// App foreground running time.
+  core.String? runningDuration;
+
+  GoogleChromeManagementV1AppUsageData({
+    this.appId,
+    this.appInstanceId,
+    this.appType,
+    this.runningDuration,
+  });
+
+  GoogleChromeManagementV1AppUsageData.fromJson(core.Map json_)
+      : this(
+          appId:
+              json_.containsKey('appId') ? json_['appId'] as core.String : null,
+          appInstanceId: json_.containsKey('appInstanceId')
+              ? json_['appInstanceId'] as core.String
+              : null,
+          appType: json_.containsKey('appType')
+              ? json_['appType'] as core.String
+              : null,
+          runningDuration: json_.containsKey('runningDuration')
+              ? json_['runningDuration'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (appId != null) 'appId': appId!,
+        if (appInstanceId != null) 'appInstanceId': appInstanceId!,
+        if (appType != null) 'appType': appType!,
+        if (runningDuration != null) 'runningDuration': runningDuration!,
+      };
+}
+
 /// Status data for storage.
 ///
 /// * This field is telemetry information and this will change over time as the
@@ -6029,6 +6127,12 @@ typedef GoogleChromeManagementV1TelemetryAudioSevereUnderrunEvent = $Empty;
 ///
 /// * Granular permission needed: TELEMETRY_API_DEVICE
 class GoogleChromeManagementV1TelemetryDevice {
+  /// App reports collected periodically sorted in a decreasing order of
+  /// report_time.
+  ///
+  /// Output only.
+  core.List<GoogleChromeManagementV1AppReport>? appReport;
+
   /// Audio reports collected periodically sorted in a decreasing order of
   /// report_time.
   ///
@@ -6184,6 +6288,7 @@ class GoogleChromeManagementV1TelemetryDevice {
   core.List<GoogleChromeManagementV1ThunderboltInfo>? thunderboltInfo;
 
   GoogleChromeManagementV1TelemetryDevice({
+    this.appReport,
     this.audioStatusReport,
     this.batteryInfo,
     this.batteryStatusReport,
@@ -6215,6 +6320,12 @@ class GoogleChromeManagementV1TelemetryDevice {
 
   GoogleChromeManagementV1TelemetryDevice.fromJson(core.Map json_)
       : this(
+          appReport: json_.containsKey('appReport')
+              ? (json_['appReport'] as core.List)
+                  .map((value) => GoogleChromeManagementV1AppReport.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           audioStatusReport: json_.containsKey('audioStatusReport')
               ? (json_['audioStatusReport'] as core.List)
                   .map((value) =>
@@ -6372,6 +6483,7 @@ class GoogleChromeManagementV1TelemetryDevice {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (appReport != null) 'appReport': appReport!,
         if (audioStatusReport != null) 'audioStatusReport': audioStatusReport!,
         if (batteryInfo != null) 'batteryInfo': batteryInfo!,
         if (batteryStatusReport != null)
@@ -7018,6 +7130,12 @@ class GoogleChromeManagementV1TelemetryUser {
 ///
 /// * Granular permission needed: TELEMETRY_API_DEVICE
 class GoogleChromeManagementV1TelemetryUserDevice {
+  /// App reports collected periodically sorted in a decreasing order of
+  /// report_time.
+  ///
+  /// Output only.
+  core.List<GoogleChromeManagementV1AppReport>? appReport;
+
   /// Audio reports collected periodically sorted in a decreasing order of
   /// report_time.
   ///
@@ -7050,6 +7168,7 @@ class GoogleChromeManagementV1TelemetryUserDevice {
   core.List<GoogleChromeManagementV1PeripheralsReport>? peripheralsReport;
 
   GoogleChromeManagementV1TelemetryUserDevice({
+    this.appReport,
     this.audioStatusReport,
     this.deviceActivityReport,
     this.deviceId,
@@ -7059,6 +7178,12 @@ class GoogleChromeManagementV1TelemetryUserDevice {
 
   GoogleChromeManagementV1TelemetryUserDevice.fromJson(core.Map json_)
       : this(
+          appReport: json_.containsKey('appReport')
+              ? (json_['appReport'] as core.List)
+                  .map((value) => GoogleChromeManagementV1AppReport.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           audioStatusReport: json_.containsKey('audioStatusReport')
               ? (json_['audioStatusReport'] as core.List)
                   .map((value) =>
@@ -7093,6 +7218,7 @@ class GoogleChromeManagementV1TelemetryUserDevice {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (appReport != null) 'appReport': appReport!,
         if (audioStatusReport != null) 'audioStatusReport': audioStatusReport!,
         if (deviceActivityReport != null)
           'deviceActivityReport': deviceActivityReport!,

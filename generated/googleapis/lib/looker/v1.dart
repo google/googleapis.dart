@@ -1468,8 +1468,6 @@ class ImportInstanceRequest {
 }
 
 /// A Looker instance.
-///
-/// LINT.IfChange
 class Instance {
   /// Looker Instance Admin settings.
   AdminSettings? adminSettings;

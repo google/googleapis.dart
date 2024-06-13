@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240529",
+    "revision": "20240612",
     "rootUrl": "https://authorizedbuyersmarketplace.googleapis.com/",
     "servicePath": "",
     "title": "Authorized Buyers Marketplace API",
@@ -868,7 +868,7 @@
                             ]
                         },
                         "pause": {
-                            "description": "Pauses serving of the given finalized deal. This call only pauses the serving status, and does not affect other fields of the finalized deal. Calling this method for an already paused deal has no effect. This method only applies to programmatic guaranteed deals.",
+                            "description": "Pauses serving of the given finalized deal. This call only pauses the serving status, and does not affect other fields of the finalized deal. Calling this method for an already paused deal has no effect. This method only applies to programmatic guaranteed deals and preferred deals.",
                             "flatPath": "v1/buyers/{buyersId}/finalizedDeals/{finalizedDealsId}:pause",
                             "httpMethod": "POST",
                             "id": "authorizedbuyersmarketplace.buyers.finalizedDeals.pause",
@@ -896,7 +896,7 @@
                             ]
                         },
                         "resume": {
-                            "description": "Resumes serving of the given finalized deal. Calling this method for an running deal has no effect. If a deal is initially paused by the seller, calling this method will not resume serving of the deal until the seller also resumes the deal. This method only applies to programmatic guaranteed deals.",
+                            "description": "Resumes serving of the given finalized deal. Calling this method for an running deal has no effect. If a deal is initially paused by the seller, calling this method will not resume serving of the deal until the seller also resumes the deal. This method only applies to programmatic guaranteed deals and preferred deals.",
                             "flatPath": "v1/buyers/{buyersId}/finalizedDeals/{finalizedDealsId}:resume",
                             "httpMethod": "POST",
                             "id": "authorizedbuyersmarketplace.buyers.finalizedDeals.resume",

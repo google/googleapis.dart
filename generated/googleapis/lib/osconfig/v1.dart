@@ -3171,7 +3171,7 @@ class OSPolicyAssignmentInstanceFilter {
 }
 
 /// VM inventory details.
-typedef OSPolicyAssignmentInstanceFilterInventory = $Shared13;
+typedef OSPolicyAssignmentInstanceFilterInventory = $Shared12;
 
 /// Message representing label set.
 ///
@@ -3316,7 +3316,10 @@ class OSPolicyAssignmentReportOSPolicyCompliance {
   /// unexpectedly started working on a different task. This mostly happens when
   /// the agent or VM unexpectedly restarts while applying OS policies. *
   /// `internal-service-errors`: Internal service errors were encountered while
-  /// attempting to apply the policy.
+  /// attempting to apply the policy. * `os-policy-execution-pending`: OS policy
+  /// was assigned to the given VM, but was not executed yet. Typically this is
+  /// a transient condition that will go away after the next policy execution
+  /// cycle.
   core.String? complianceStateReason;
 
   /// The OS policy id
@@ -3388,7 +3391,8 @@ class OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompliance {
   /// because errors were encountered while executing prior resources in the OS
   /// policy. * `os-policy-execution-attempt-failed`: The execution of the OS
   /// policy containing this resource failed and the compliance state couldn't
-  /// be determined.
+  /// be determined. * `os-policy-execution-pending`: OS policy that owns this
+  /// resource was assigned to the given VM, but was not executed yet.
   core.String? complianceStateReason;
 
   /// Ordered list of configuration completed by the agent for the OS policy
@@ -3567,7 +3571,7 @@ class OSPolicyAssignmentRollout {
 }
 
 /// Filtering criteria to select VMs based on inventory details.
-typedef OSPolicyInventoryFilter = $Shared13;
+typedef OSPolicyInventoryFilter = $Shared12;
 
 /// An OS policy resource is used to define the desired state configuration and
 /// provides a specific functionality like installing/removing packages,

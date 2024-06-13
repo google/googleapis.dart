@@ -16,7 +16,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240529",
+    "revision": "20240610",
     "rootUrl": "https://androiddeviceprovisioning.googleapis.com/",
     "servicePath": "",
     "title": "Android Device Provisioning Partner API",

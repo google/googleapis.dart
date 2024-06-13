@@ -1017,6 +1017,16 @@ class Instance {
   /// Optional.
   core.List<core.String>? reservedIpRangeId;
 
+  /// Reserved for future use.
+  ///
+  /// Optional. Output only.
+  core.bool? satisfiesPzi;
+
+  /// Reserved for future use.
+  ///
+  /// Optional. Output only.
+  core.bool? satisfiesPzs;
+
   /// The state of this Memcached instance.
   ///
   /// Output only.
@@ -1062,6 +1072,8 @@ class Instance {
     this.nodeCount,
     this.parameters,
     this.reservedIpRangeId,
+    this.satisfiesPzi,
+    this.satisfiesPzs,
     this.state,
     this.updateTime,
     this.zones,
@@ -1133,6 +1145,12 @@ class Instance {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          satisfiesPzi: json_.containsKey('satisfiesPzi')
+              ? json_['satisfiesPzi'] as core.bool
+              : null,
+          satisfiesPzs: json_.containsKey('satisfiesPzs')
+              ? json_['satisfiesPzs'] as core.bool
+              : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
           updateTime: json_.containsKey('updateTime')
@@ -1164,6 +1182,8 @@ class Instance {
         if (nodeCount != null) 'nodeCount': nodeCount!,
         if (parameters != null) 'parameters': parameters!,
         if (reservedIpRangeId != null) 'reservedIpRangeId': reservedIpRangeId!,
+        if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (state != null) 'state': state!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (zones != null) 'zones': zones!,

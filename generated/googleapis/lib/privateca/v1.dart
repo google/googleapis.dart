@@ -2730,22 +2730,23 @@ class Binding {
       };
 }
 
-/// Describes values that are relevant in a CA certificate.
+/// Describes the X.509 basic constraints extension, per
+/// [RFC 5280 section 4.2.1.9](https://tools.ietf.org/html/rfc5280#section-4.2.1.9)
 class CaOptions {
-  /// Refers to the "CA" X.509 extension, which is a boolean value.
+  /// Refers to the "CA" boolean field in the X.509 extension.
   ///
-  /// When this value is missing, the extension will be omitted from the CA
-  /// certificate.
+  /// When this value is missing, the basic constraints extension will be
+  /// omitted from the certificate.
   ///
   /// Optional.
   core.bool? isCa;
 
-  /// Refers to the path length restriction X.509 extension.
+  /// Refers to the path length constraint field in the X.509 extension.
   ///
   /// For a CA certificate, this value describes the depth of subordinate CA
   /// certificates that are allowed. If this value is less than 0, the request
   /// will fail. If this value is missing, the max path length will be omitted
-  /// from the CA certificate.
+  /// from the certificate.
   ///
   /// Optional.
   core.int? maxIssuerPathLength;
@@ -5957,6 +5958,9 @@ class X509Parameters {
 
   /// Describes options in this X509Parameters that are relevant in a CA
   /// certificate.
+  ///
+  /// If not specified, a default basic constraints extension with `is_ca=false`
+  /// will be added for leaf certificates.
   ///
   /// Optional.
   CaOptions? caOptions;

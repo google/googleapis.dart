@@ -451,6 +451,40 @@ void checkEnterpriseCrmEventbusProtoConditionResult(
   buildCounterEnterpriseCrmEventbusProtoConditionResult--;
 }
 
+core.List<api.EnterpriseCrmEventbusProtoFailurePolicy> buildUnnamed5() => [
+      buildEnterpriseCrmEventbusProtoFailurePolicy(),
+      buildEnterpriseCrmEventbusProtoFailurePolicy(),
+    ];
+
+void checkUnnamed5(core.List<api.EnterpriseCrmEventbusProtoFailurePolicy> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkEnterpriseCrmEventbusProtoFailurePolicy(o[0]);
+  checkEnterpriseCrmEventbusProtoFailurePolicy(o[1]);
+}
+
+core.int buildCounterEnterpriseCrmEventbusProtoConditionalFailurePolicies = 0;
+api.EnterpriseCrmEventbusProtoConditionalFailurePolicies
+    buildEnterpriseCrmEventbusProtoConditionalFailurePolicies() {
+  final o = api.EnterpriseCrmEventbusProtoConditionalFailurePolicies();
+  buildCounterEnterpriseCrmEventbusProtoConditionalFailurePolicies++;
+  if (buildCounterEnterpriseCrmEventbusProtoConditionalFailurePolicies < 3) {
+    o.defaultFailurePolicy = buildEnterpriseCrmEventbusProtoFailurePolicy();
+    o.failurePolicies = buildUnnamed5();
+  }
+  buildCounterEnterpriseCrmEventbusProtoConditionalFailurePolicies--;
+  return o;
+}
+
+void checkEnterpriseCrmEventbusProtoConditionalFailurePolicies(
+    api.EnterpriseCrmEventbusProtoConditionalFailurePolicies o) {
+  buildCounterEnterpriseCrmEventbusProtoConditionalFailurePolicies++;
+  if (buildCounterEnterpriseCrmEventbusProtoConditionalFailurePolicies < 3) {
+    checkEnterpriseCrmEventbusProtoFailurePolicy(o.defaultFailurePolicy!);
+    checkUnnamed5(o.failurePolicies!);
+  }
+  buildCounterEnterpriseCrmEventbusProtoConditionalFailurePolicies--;
+}
+
 core.int buildCounterEnterpriseCrmEventbusProtoCoordinate = 0;
 api.EnterpriseCrmEventbusProtoCoordinate
     buildEnterpriseCrmEventbusProtoCoordinate() {
@@ -508,44 +542,6 @@ void checkEnterpriseCrmEventbusProtoCustomSuspensionRequest(
   buildCounterEnterpriseCrmEventbusProtoCustomSuspensionRequest--;
 }
 
-core.List<core.double> buildUnnamed5() => [
-      42.0,
-      42.0,
-    ];
-
-void checkUnnamed5(core.List<core.double> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals(42.0),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals(42.0),
-  );
-}
-
-core.int buildCounterEnterpriseCrmEventbusProtoDoubleArray = 0;
-api.EnterpriseCrmEventbusProtoDoubleArray
-    buildEnterpriseCrmEventbusProtoDoubleArray() {
-  final o = api.EnterpriseCrmEventbusProtoDoubleArray();
-  buildCounterEnterpriseCrmEventbusProtoDoubleArray++;
-  if (buildCounterEnterpriseCrmEventbusProtoDoubleArray < 3) {
-    o.values = buildUnnamed5();
-  }
-  buildCounterEnterpriseCrmEventbusProtoDoubleArray--;
-  return o;
-}
-
-void checkEnterpriseCrmEventbusProtoDoubleArray(
-    api.EnterpriseCrmEventbusProtoDoubleArray o) {
-  buildCounterEnterpriseCrmEventbusProtoDoubleArray++;
-  if (buildCounterEnterpriseCrmEventbusProtoDoubleArray < 3) {
-    checkUnnamed5(o.values!);
-  }
-  buildCounterEnterpriseCrmEventbusProtoDoubleArray--;
-}
-
 core.List<core.double> buildUnnamed6() => [
       42.0,
       42.0,
@@ -563,13 +559,51 @@ void checkUnnamed6(core.List<core.double> o) {
   );
 }
 
+core.int buildCounterEnterpriseCrmEventbusProtoDoubleArray = 0;
+api.EnterpriseCrmEventbusProtoDoubleArray
+    buildEnterpriseCrmEventbusProtoDoubleArray() {
+  final o = api.EnterpriseCrmEventbusProtoDoubleArray();
+  buildCounterEnterpriseCrmEventbusProtoDoubleArray++;
+  if (buildCounterEnterpriseCrmEventbusProtoDoubleArray < 3) {
+    o.values = buildUnnamed6();
+  }
+  buildCounterEnterpriseCrmEventbusProtoDoubleArray--;
+  return o;
+}
+
+void checkEnterpriseCrmEventbusProtoDoubleArray(
+    api.EnterpriseCrmEventbusProtoDoubleArray o) {
+  buildCounterEnterpriseCrmEventbusProtoDoubleArray++;
+  if (buildCounterEnterpriseCrmEventbusProtoDoubleArray < 3) {
+    checkUnnamed6(o.values!);
+  }
+  buildCounterEnterpriseCrmEventbusProtoDoubleArray--;
+}
+
+core.List<core.double> buildUnnamed7() => [
+      42.0,
+      42.0,
+    ];
+
+void checkUnnamed7(core.List<core.double> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals(42.0),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals(42.0),
+  );
+}
+
 core.int buildCounterEnterpriseCrmEventbusProtoDoubleParameterArray = 0;
 api.EnterpriseCrmEventbusProtoDoubleParameterArray
     buildEnterpriseCrmEventbusProtoDoubleParameterArray() {
   final o = api.EnterpriseCrmEventbusProtoDoubleParameterArray();
   buildCounterEnterpriseCrmEventbusProtoDoubleParameterArray++;
   if (buildCounterEnterpriseCrmEventbusProtoDoubleParameterArray < 3) {
-    o.doubleValues = buildUnnamed6();
+    o.doubleValues = buildUnnamed7();
   }
   buildCounterEnterpriseCrmEventbusProtoDoubleParameterArray--;
   return o;
@@ -579,7 +613,7 @@ void checkEnterpriseCrmEventbusProtoDoubleParameterArray(
     api.EnterpriseCrmEventbusProtoDoubleParameterArray o) {
   buildCounterEnterpriseCrmEventbusProtoDoubleParameterArray++;
   if (buildCounterEnterpriseCrmEventbusProtoDoubleParameterArray < 3) {
-    checkUnnamed6(o.doubleValues!);
+    checkUnnamed7(o.doubleValues!);
   }
   buildCounterEnterpriseCrmEventbusProtoDoubleParameterArray--;
 }
@@ -620,12 +654,12 @@ void checkEnterpriseCrmEventbusProtoErrorDetail(
   buildCounterEnterpriseCrmEventbusProtoErrorDetail--;
 }
 
-core.List<api.EnterpriseCrmEventbusProtoPropertyEntry> buildUnnamed7() => [
+core.List<api.EnterpriseCrmEventbusProtoPropertyEntry> buildUnnamed8() => [
       buildEnterpriseCrmEventbusProtoPropertyEntry(),
       buildEnterpriseCrmEventbusProtoPropertyEntry(),
     ];
 
-void checkUnnamed7(core.List<api.EnterpriseCrmEventbusProtoPropertyEntry> o) {
+void checkUnnamed8(core.List<api.EnterpriseCrmEventbusProtoPropertyEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEnterpriseCrmEventbusProtoPropertyEntry(o[0]);
   checkEnterpriseCrmEventbusProtoPropertyEntry(o[1]);
@@ -637,7 +671,7 @@ api.EnterpriseCrmEventbusProtoEventBusProperties
   final o = api.EnterpriseCrmEventbusProtoEventBusProperties();
   buildCounterEnterpriseCrmEventbusProtoEventBusProperties++;
   if (buildCounterEnterpriseCrmEventbusProtoEventBusProperties < 3) {
-    o.properties = buildUnnamed7();
+    o.properties = buildUnnamed8();
   }
   buildCounterEnterpriseCrmEventbusProtoEventBusProperties--;
   return o;
@@ -647,18 +681,18 @@ void checkEnterpriseCrmEventbusProtoEventBusProperties(
     api.EnterpriseCrmEventbusProtoEventBusProperties o) {
   buildCounterEnterpriseCrmEventbusProtoEventBusProperties++;
   if (buildCounterEnterpriseCrmEventbusProtoEventBusProperties < 3) {
-    checkUnnamed7(o.properties!);
+    checkUnnamed8(o.properties!);
   }
   buildCounterEnterpriseCrmEventbusProtoEventBusProperties--;
 }
 
 core.List<api.EnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStats>
-    buildUnnamed8() => [
+    buildUnnamed9() => [
           buildEnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStats(),
           buildEnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStats(),
         ];
 
-void checkUnnamed8(
+void checkUnnamed9(
     core.List<
             api
             .EnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStats>
@@ -669,12 +703,12 @@ void checkUnnamed8(
 }
 
 core.List<api.EnterpriseCrmEventbusProtoEventExecutionSnapshot>
-    buildUnnamed9() => [
+    buildUnnamed10() => [
           buildEnterpriseCrmEventbusProtoEventExecutionSnapshot(),
           buildEnterpriseCrmEventbusProtoEventExecutionSnapshot(),
         ];
 
-void checkUnnamed9(
+void checkUnnamed10(
     core.List<api.EnterpriseCrmEventbusProtoEventExecutionSnapshot> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEnterpriseCrmEventbusProtoEventExecutionSnapshot(o[0]);
@@ -687,8 +721,8 @@ api.EnterpriseCrmEventbusProtoEventExecutionDetails
   final o = api.EnterpriseCrmEventbusProtoEventExecutionDetails();
   buildCounterEnterpriseCrmEventbusProtoEventExecutionDetails++;
   if (buildCounterEnterpriseCrmEventbusProtoEventExecutionDetails < 3) {
-    o.eventAttemptStats = buildUnnamed8();
-    o.eventExecutionSnapshot = buildUnnamed9();
+    o.eventAttemptStats = buildUnnamed9();
+    o.eventExecutionSnapshot = buildUnnamed10();
     o.eventExecutionSnapshotsSize = 'foo';
     o.eventExecutionState = 'foo';
     o.eventRetriesFromBeginningCount = 42;
@@ -705,8 +739,8 @@ void checkEnterpriseCrmEventbusProtoEventExecutionDetails(
     api.EnterpriseCrmEventbusProtoEventExecutionDetails o) {
   buildCounterEnterpriseCrmEventbusProtoEventExecutionDetails++;
   if (buildCounterEnterpriseCrmEventbusProtoEventExecutionDetails < 3) {
-    checkUnnamed8(o.eventAttemptStats!);
-    checkUnnamed9(o.eventExecutionSnapshot!);
+    checkUnnamed9(o.eventAttemptStats!);
+    checkUnnamed10(o.eventExecutionSnapshot!);
     unittest.expect(
       o.eventExecutionSnapshotsSize!,
       unittest.equals('foo'),
@@ -773,12 +807,12 @@ void checkEnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStats(
   buildCounterEnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStats--;
 }
 
-core.List<api.EnterpriseCrmEventbusProtoConditionResult> buildUnnamed10() => [
+core.List<api.EnterpriseCrmEventbusProtoConditionResult> buildUnnamed11() => [
       buildEnterpriseCrmEventbusProtoConditionResult(),
       buildEnterpriseCrmEventbusProtoConditionResult(),
     ];
 
-void checkUnnamed10(
+void checkUnnamed11(
     core.List<api.EnterpriseCrmEventbusProtoConditionResult> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEnterpriseCrmEventbusProtoConditionResult(o[0]);
@@ -786,12 +820,12 @@ void checkUnnamed10(
 }
 
 core.List<api.EnterpriseCrmEventbusProtoTaskExecutionDetails>
-    buildUnnamed11() => [
+    buildUnnamed12() => [
           buildEnterpriseCrmEventbusProtoTaskExecutionDetails(),
           buildEnterpriseCrmEventbusProtoTaskExecutionDetails(),
         ];
 
-void checkUnnamed11(
+void checkUnnamed12(
     core.List<api.EnterpriseCrmEventbusProtoTaskExecutionDetails> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEnterpriseCrmEventbusProtoTaskExecutionDetails(o[0]);
@@ -805,7 +839,8 @@ api.EnterpriseCrmEventbusProtoEventExecutionSnapshot
   buildCounterEnterpriseCrmEventbusProtoEventExecutionSnapshot++;
   if (buildCounterEnterpriseCrmEventbusProtoEventExecutionSnapshot < 3) {
     o.checkpointTaskNumber = 'foo';
-    o.conditionResults = buildUnnamed10();
+    o.clientId = 'foo';
+    o.conditionResults = buildUnnamed11();
     o.diffParams = buildEnterpriseCrmEventbusProtoEventParameters();
     o.eventExecutionInfoId = 'foo';
     o.eventExecutionSnapshotId = 'foo';
@@ -814,8 +849,9 @@ api.EnterpriseCrmEventbusProtoEventExecutionSnapshot
     o.eventParams = buildEnterpriseCrmEventbusProtoEventParameters();
     o.exceedMaxSize = true;
     o.snapshotTime = 'foo';
-    o.taskExecutionDetails = buildUnnamed11();
+    o.taskExecutionDetails = buildUnnamed12();
     o.taskName = 'foo';
+    o.workflowName = 'foo';
   }
   buildCounterEnterpriseCrmEventbusProtoEventExecutionSnapshot--;
   return o;
@@ -829,7 +865,11 @@ void checkEnterpriseCrmEventbusProtoEventExecutionSnapshot(
       o.checkpointTaskNumber!,
       unittest.equals('foo'),
     );
-    checkUnnamed10(o.conditionResults!);
+    unittest.expect(
+      o.clientId!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed11(o.conditionResults!);
     checkEnterpriseCrmEventbusProtoEventParameters(o.diffParams!);
     unittest.expect(
       o.eventExecutionInfoId!,
@@ -847,21 +887,25 @@ void checkEnterpriseCrmEventbusProtoEventExecutionSnapshot(
       o.snapshotTime!,
       unittest.equals('foo'),
     );
-    checkUnnamed11(o.taskExecutionDetails!);
+    checkUnnamed12(o.taskExecutionDetails!);
     unittest.expect(
       o.taskName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.workflowName!,
       unittest.equals('foo'),
     );
   }
   buildCounterEnterpriseCrmEventbusProtoEventExecutionSnapshot--;
 }
 
-core.List<core.String> buildUnnamed12() => [
+core.List<core.String> buildUnnamed13() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed12(core.List<core.String> o) {
+void checkUnnamed13(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -873,12 +917,12 @@ void checkUnnamed12(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed13() => [
+core.List<core.String> buildUnnamed14() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed13(core.List<core.String> o) {
+void checkUnnamed14(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -900,8 +944,8 @@ api.EnterpriseCrmEventbusProtoEventExecutionSnapshotEventExecutionSnapshotMetada
   buildCounterEnterpriseCrmEventbusProtoEventExecutionSnapshotEventExecutionSnapshotMetadata++;
   if (buildCounterEnterpriseCrmEventbusProtoEventExecutionSnapshotEventExecutionSnapshotMetadata <
       3) {
-    o.ancestorIterationNumbers = buildUnnamed12();
-    o.ancestorTaskNumbers = buildUnnamed13();
+    o.ancestorIterationNumbers = buildUnnamed13();
+    o.ancestorTaskNumbers = buildUnnamed14();
     o.eventAttemptNum = 42;
     o.integrationName = 'foo';
     o.taskAttemptNum = 42;
@@ -919,8 +963,8 @@ void checkEnterpriseCrmEventbusProtoEventExecutionSnapshotEventExecutionSnapshot
   buildCounterEnterpriseCrmEventbusProtoEventExecutionSnapshotEventExecutionSnapshotMetadata++;
   if (buildCounterEnterpriseCrmEventbusProtoEventExecutionSnapshotEventExecutionSnapshotMetadata <
       3) {
-    checkUnnamed12(o.ancestorIterationNumbers!);
-    checkUnnamed13(o.ancestorTaskNumbers!);
+    checkUnnamed13(o.ancestorIterationNumbers!);
+    checkUnnamed14(o.ancestorTaskNumbers!);
     unittest.expect(
       o.eventAttemptNum!,
       unittest.equals(42),
@@ -949,12 +993,12 @@ void checkEnterpriseCrmEventbusProtoEventExecutionSnapshotEventExecutionSnapshot
   buildCounterEnterpriseCrmEventbusProtoEventExecutionSnapshotEventExecutionSnapshotMetadata--;
 }
 
-core.List<api.EnterpriseCrmEventbusProtoParameterEntry> buildUnnamed14() => [
+core.List<api.EnterpriseCrmEventbusProtoParameterEntry> buildUnnamed15() => [
       buildEnterpriseCrmEventbusProtoParameterEntry(),
       buildEnterpriseCrmEventbusProtoParameterEntry(),
     ];
 
-void checkUnnamed14(core.List<api.EnterpriseCrmEventbusProtoParameterEntry> o) {
+void checkUnnamed15(core.List<api.EnterpriseCrmEventbusProtoParameterEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEnterpriseCrmEventbusProtoParameterEntry(o[0]);
   checkEnterpriseCrmEventbusProtoParameterEntry(o[1]);
@@ -966,7 +1010,7 @@ api.EnterpriseCrmEventbusProtoEventParameters
   final o = api.EnterpriseCrmEventbusProtoEventParameters();
   buildCounterEnterpriseCrmEventbusProtoEventParameters++;
   if (buildCounterEnterpriseCrmEventbusProtoEventParameters < 3) {
-    o.parameters = buildUnnamed14();
+    o.parameters = buildUnnamed15();
   }
   buildCounterEnterpriseCrmEventbusProtoEventParameters--;
   return o;
@@ -976,7 +1020,7 @@ void checkEnterpriseCrmEventbusProtoEventParameters(
     api.EnterpriseCrmEventbusProtoEventParameters o) {
   buildCounterEnterpriseCrmEventbusProtoEventParameters++;
   if (buildCounterEnterpriseCrmEventbusProtoEventParameters < 3) {
-    checkUnnamed14(o.parameters!);
+    checkUnnamed15(o.parameters!);
   }
   buildCounterEnterpriseCrmEventbusProtoEventParameters--;
 }
@@ -1049,44 +1093,6 @@ void checkEnterpriseCrmEventbusProtoFailurePolicy(
   buildCounterEnterpriseCrmEventbusProtoFailurePolicy--;
 }
 
-core.List<core.String> buildUnnamed15() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed15(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.int buildCounterEnterpriseCrmEventbusProtoIntArray = 0;
-api.EnterpriseCrmEventbusProtoIntArray
-    buildEnterpriseCrmEventbusProtoIntArray() {
-  final o = api.EnterpriseCrmEventbusProtoIntArray();
-  buildCounterEnterpriseCrmEventbusProtoIntArray++;
-  if (buildCounterEnterpriseCrmEventbusProtoIntArray < 3) {
-    o.values = buildUnnamed15();
-  }
-  buildCounterEnterpriseCrmEventbusProtoIntArray--;
-  return o;
-}
-
-void checkEnterpriseCrmEventbusProtoIntArray(
-    api.EnterpriseCrmEventbusProtoIntArray o) {
-  buildCounterEnterpriseCrmEventbusProtoIntArray++;
-  if (buildCounterEnterpriseCrmEventbusProtoIntArray < 3) {
-    checkUnnamed15(o.values!);
-  }
-  buildCounterEnterpriseCrmEventbusProtoIntArray--;
-}
-
 core.List<core.String> buildUnnamed16() => [
       'foo',
       'foo',
@@ -1104,13 +1110,51 @@ void checkUnnamed16(core.List<core.String> o) {
   );
 }
 
+core.int buildCounterEnterpriseCrmEventbusProtoIntArray = 0;
+api.EnterpriseCrmEventbusProtoIntArray
+    buildEnterpriseCrmEventbusProtoIntArray() {
+  final o = api.EnterpriseCrmEventbusProtoIntArray();
+  buildCounterEnterpriseCrmEventbusProtoIntArray++;
+  if (buildCounterEnterpriseCrmEventbusProtoIntArray < 3) {
+    o.values = buildUnnamed16();
+  }
+  buildCounterEnterpriseCrmEventbusProtoIntArray--;
+  return o;
+}
+
+void checkEnterpriseCrmEventbusProtoIntArray(
+    api.EnterpriseCrmEventbusProtoIntArray o) {
+  buildCounterEnterpriseCrmEventbusProtoIntArray++;
+  if (buildCounterEnterpriseCrmEventbusProtoIntArray < 3) {
+    checkUnnamed16(o.values!);
+  }
+  buildCounterEnterpriseCrmEventbusProtoIntArray--;
+}
+
+core.List<core.String> buildUnnamed17() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed17(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterEnterpriseCrmEventbusProtoIntParameterArray = 0;
 api.EnterpriseCrmEventbusProtoIntParameterArray
     buildEnterpriseCrmEventbusProtoIntParameterArray() {
   final o = api.EnterpriseCrmEventbusProtoIntParameterArray();
   buildCounterEnterpriseCrmEventbusProtoIntParameterArray++;
   if (buildCounterEnterpriseCrmEventbusProtoIntParameterArray < 3) {
-    o.intValues = buildUnnamed16();
+    o.intValues = buildUnnamed17();
   }
   buildCounterEnterpriseCrmEventbusProtoIntParameterArray--;
   return o;
@@ -1120,7 +1164,7 @@ void checkEnterpriseCrmEventbusProtoIntParameterArray(
     api.EnterpriseCrmEventbusProtoIntParameterArray o) {
   buildCounterEnterpriseCrmEventbusProtoIntParameterArray++;
   if (buildCounterEnterpriseCrmEventbusProtoIntParameterArray < 3) {
-    checkUnnamed16(o.intValues!);
+    checkUnnamed17(o.intValues!);
   }
   buildCounterEnterpriseCrmEventbusProtoIntParameterArray--;
 }
@@ -1163,12 +1207,12 @@ void checkEnterpriseCrmEventbusProtoLogSettings(
   buildCounterEnterpriseCrmEventbusProtoLogSettings--;
 }
 
-core.List<api.EnterpriseCrmEventbusProtoCombinedCondition> buildUnnamed17() => [
+core.List<api.EnterpriseCrmEventbusProtoCombinedCondition> buildUnnamed18() => [
       buildEnterpriseCrmEventbusProtoCombinedCondition(),
       buildEnterpriseCrmEventbusProtoCombinedCondition(),
     ];
 
-void checkUnnamed17(
+void checkUnnamed18(
     core.List<api.EnterpriseCrmEventbusProtoCombinedCondition> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEnterpriseCrmEventbusProtoCombinedCondition(o[0]);
@@ -1181,7 +1225,7 @@ api.EnterpriseCrmEventbusProtoNextTask
   final o = api.EnterpriseCrmEventbusProtoNextTask();
   buildCounterEnterpriseCrmEventbusProtoNextTask++;
   if (buildCounterEnterpriseCrmEventbusProtoNextTask < 3) {
-    o.combinedConditions = buildUnnamed17();
+    o.combinedConditions = buildUnnamed18();
     o.condition = 'foo';
     o.description = 'foo';
     o.label = 'foo';
@@ -1196,7 +1240,7 @@ void checkEnterpriseCrmEventbusProtoNextTask(
     api.EnterpriseCrmEventbusProtoNextTask o) {
   buildCounterEnterpriseCrmEventbusProtoNextTask++;
   if (buildCounterEnterpriseCrmEventbusProtoNextTask < 3) {
-    checkUnnamed17(o.combinedConditions!);
+    checkUnnamed18(o.combinedConditions!);
     unittest.expect(
       o.condition!,
       unittest.equals('foo'),
@@ -1557,7 +1601,7 @@ void checkEnterpriseCrmEventbusProtoParameterEntry(
   buildCounterEnterpriseCrmEventbusProtoParameterEntry--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed18() => {
+core.Map<core.String, core.Object?> buildUnnamed19() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -1570,7 +1614,7 @@ core.Map<core.String, core.Object?> buildUnnamed18() => {
       },
     };
 
-void checkUnnamed18(core.Map<core.String, core.Object?> o) {
+void checkUnnamed19(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -1615,7 +1659,7 @@ api.EnterpriseCrmEventbusProtoParameterValueType
     o.intArray = buildEnterpriseCrmEventbusProtoIntParameterArray();
     o.intValue = 'foo';
     o.protoArray = buildEnterpriseCrmEventbusProtoProtoParameterArray();
-    o.protoValue = buildUnnamed18();
+    o.protoValue = buildUnnamed19();
     o.serializedObjectValue =
         buildEnterpriseCrmEventbusProtoSerializedObjectParameter();
     o.stringArray = buildEnterpriseCrmEventbusProtoStringParameterArray();
@@ -1642,7 +1686,7 @@ void checkEnterpriseCrmEventbusProtoParameterValueType(
       unittest.equals('foo'),
     );
     checkEnterpriseCrmEventbusProtoProtoParameterArray(o.protoArray!);
-    checkUnnamed18(o.protoValue!);
+    checkUnnamed19(o.protoValue!);
     checkEnterpriseCrmEventbusProtoSerializedObjectParameter(
         o.serializedObjectValue!);
     checkEnterpriseCrmEventbusProtoStringParameterArray(o.stringArray!);
@@ -1680,7 +1724,7 @@ void checkEnterpriseCrmEventbusProtoPropertyEntry(
   buildCounterEnterpriseCrmEventbusProtoPropertyEntry--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed19() => {
+core.Map<core.String, core.Object?> buildUnnamed20() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -1693,7 +1737,7 @@ core.Map<core.String, core.Object?> buildUnnamed19() => {
       },
     };
 
-void checkUnnamed19(core.Map<core.String, core.Object?> o) {
+void checkUnnamed20(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -1725,15 +1769,15 @@ void checkUnnamed19(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed20() => [
-      buildUnnamed19(),
-      buildUnnamed19(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed21() => [
+      buildUnnamed20(),
+      buildUnnamed20(),
     ];
 
-void checkUnnamed20(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed21(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed19(o[0]);
-  checkUnnamed19(o[1]);
+  checkUnnamed20(o[0]);
+  checkUnnamed20(o[1]);
 }
 
 core.int buildCounterEnterpriseCrmEventbusProtoProtoParameterArray = 0;
@@ -1742,7 +1786,7 @@ api.EnterpriseCrmEventbusProtoProtoParameterArray
   final o = api.EnterpriseCrmEventbusProtoProtoParameterArray();
   buildCounterEnterpriseCrmEventbusProtoProtoParameterArray++;
   if (buildCounterEnterpriseCrmEventbusProtoProtoParameterArray < 3) {
-    o.protoValues = buildUnnamed20();
+    o.protoValues = buildUnnamed21();
   }
   buildCounterEnterpriseCrmEventbusProtoProtoParameterArray--;
   return o;
@@ -1752,7 +1796,7 @@ void checkEnterpriseCrmEventbusProtoProtoParameterArray(
     api.EnterpriseCrmEventbusProtoProtoParameterArray o) {
   buildCounterEnterpriseCrmEventbusProtoProtoParameterArray++;
   if (buildCounterEnterpriseCrmEventbusProtoProtoParameterArray < 3) {
-    checkUnnamed20(o.protoValues!);
+    checkUnnamed21(o.protoValues!);
   }
   buildCounterEnterpriseCrmEventbusProtoProtoParameterArray--;
 }
@@ -1781,44 +1825,6 @@ void checkEnterpriseCrmEventbusProtoSerializedObjectParameter(
   buildCounterEnterpriseCrmEventbusProtoSerializedObjectParameter--;
 }
 
-core.List<core.String> buildUnnamed21() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed21(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.int buildCounterEnterpriseCrmEventbusProtoStringArray = 0;
-api.EnterpriseCrmEventbusProtoStringArray
-    buildEnterpriseCrmEventbusProtoStringArray() {
-  final o = api.EnterpriseCrmEventbusProtoStringArray();
-  buildCounterEnterpriseCrmEventbusProtoStringArray++;
-  if (buildCounterEnterpriseCrmEventbusProtoStringArray < 3) {
-    o.values = buildUnnamed21();
-  }
-  buildCounterEnterpriseCrmEventbusProtoStringArray--;
-  return o;
-}
-
-void checkEnterpriseCrmEventbusProtoStringArray(
-    api.EnterpriseCrmEventbusProtoStringArray o) {
-  buildCounterEnterpriseCrmEventbusProtoStringArray++;
-  if (buildCounterEnterpriseCrmEventbusProtoStringArray < 3) {
-    checkUnnamed21(o.values!);
-  }
-  buildCounterEnterpriseCrmEventbusProtoStringArray--;
-}
-
 core.List<core.String> buildUnnamed22() => [
       'foo',
       'foo',
@@ -1836,13 +1842,51 @@ void checkUnnamed22(core.List<core.String> o) {
   );
 }
 
+core.int buildCounterEnterpriseCrmEventbusProtoStringArray = 0;
+api.EnterpriseCrmEventbusProtoStringArray
+    buildEnterpriseCrmEventbusProtoStringArray() {
+  final o = api.EnterpriseCrmEventbusProtoStringArray();
+  buildCounterEnterpriseCrmEventbusProtoStringArray++;
+  if (buildCounterEnterpriseCrmEventbusProtoStringArray < 3) {
+    o.values = buildUnnamed22();
+  }
+  buildCounterEnterpriseCrmEventbusProtoStringArray--;
+  return o;
+}
+
+void checkEnterpriseCrmEventbusProtoStringArray(
+    api.EnterpriseCrmEventbusProtoStringArray o) {
+  buildCounterEnterpriseCrmEventbusProtoStringArray++;
+  if (buildCounterEnterpriseCrmEventbusProtoStringArray < 3) {
+    checkUnnamed22(o.values!);
+  }
+  buildCounterEnterpriseCrmEventbusProtoStringArray--;
+}
+
+core.List<core.String> buildUnnamed23() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed23(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterEnterpriseCrmEventbusProtoStringParameterArray = 0;
 api.EnterpriseCrmEventbusProtoStringParameterArray
     buildEnterpriseCrmEventbusProtoStringParameterArray() {
   final o = api.EnterpriseCrmEventbusProtoStringParameterArray();
   buildCounterEnterpriseCrmEventbusProtoStringParameterArray++;
   if (buildCounterEnterpriseCrmEventbusProtoStringParameterArray < 3) {
-    o.stringValues = buildUnnamed22();
+    o.stringValues = buildUnnamed23();
   }
   buildCounterEnterpriseCrmEventbusProtoStringParameterArray--;
   return o;
@@ -1852,7 +1896,7 @@ void checkEnterpriseCrmEventbusProtoStringParameterArray(
     api.EnterpriseCrmEventbusProtoStringParameterArray o) {
   buildCounterEnterpriseCrmEventbusProtoStringParameterArray++;
   if (buildCounterEnterpriseCrmEventbusProtoStringParameterArray < 3) {
-    checkUnnamed22(o.stringValues!);
+    checkUnnamed23(o.stringValues!);
   }
   buildCounterEnterpriseCrmEventbusProtoStringParameterArray--;
 }
@@ -1952,24 +1996,24 @@ void checkEnterpriseCrmEventbusProtoSuspensionAuthPermissionsGaiaIdentity(
   buildCounterEnterpriseCrmEventbusProtoSuspensionAuthPermissionsGaiaIdentity--;
 }
 
-core.List<api.EnterpriseCrmEventbusProtoNotification> buildUnnamed23() => [
+core.List<api.EnterpriseCrmEventbusProtoNotification> buildUnnamed24() => [
       buildEnterpriseCrmEventbusProtoNotification(),
       buildEnterpriseCrmEventbusProtoNotification(),
     ];
 
-void checkUnnamed23(core.List<api.EnterpriseCrmEventbusProtoNotification> o) {
+void checkUnnamed24(core.List<api.EnterpriseCrmEventbusProtoNotification> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEnterpriseCrmEventbusProtoNotification(o[0]);
   checkEnterpriseCrmEventbusProtoNotification(o[1]);
 }
 
 core.List<api.EnterpriseCrmEventbusProtoSuspensionAuthPermissions>
-    buildUnnamed24() => [
+    buildUnnamed25() => [
           buildEnterpriseCrmEventbusProtoSuspensionAuthPermissions(),
           buildEnterpriseCrmEventbusProtoSuspensionAuthPermissions(),
         ];
 
-void checkUnnamed24(
+void checkUnnamed25(
     core.List<api.EnterpriseCrmEventbusProtoSuspensionAuthPermissions> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEnterpriseCrmEventbusProtoSuspensionAuthPermissions(o[0]);
@@ -1983,10 +2027,10 @@ api.EnterpriseCrmEventbusProtoSuspensionConfig
   buildCounterEnterpriseCrmEventbusProtoSuspensionConfig++;
   if (buildCounterEnterpriseCrmEventbusProtoSuspensionConfig < 3) {
     o.customMessage = 'foo';
-    o.notifications = buildUnnamed23();
+    o.notifications = buildUnnamed24();
     o.suspensionExpiration =
         buildEnterpriseCrmEventbusProtoSuspensionExpiration();
-    o.whoMayResolve = buildUnnamed24();
+    o.whoMayResolve = buildUnnamed25();
   }
   buildCounterEnterpriseCrmEventbusProtoSuspensionConfig--;
   return o;
@@ -2000,10 +2044,10 @@ void checkEnterpriseCrmEventbusProtoSuspensionConfig(
       o.customMessage!,
       unittest.equals('foo'),
     );
-    checkUnnamed23(o.notifications!);
+    checkUnnamed24(o.notifications!);
     checkEnterpriseCrmEventbusProtoSuspensionExpiration(
         o.suspensionExpiration!);
-    checkUnnamed24(o.whoMayResolve!);
+    checkUnnamed25(o.whoMayResolve!);
   }
   buildCounterEnterpriseCrmEventbusProtoSuspensionConfig--;
 }
@@ -2115,12 +2159,12 @@ void checkEnterpriseCrmEventbusProtoTaskAlertConfig(
 }
 
 core.List<api.EnterpriseCrmEventbusProtoTaskExecutionDetailsTaskAttemptStats>
-    buildUnnamed25() => [
+    buildUnnamed26() => [
           buildEnterpriseCrmEventbusProtoTaskExecutionDetailsTaskAttemptStats(),
           buildEnterpriseCrmEventbusProtoTaskExecutionDetailsTaskAttemptStats(),
         ];
 
-void checkUnnamed25(
+void checkUnnamed26(
     core.List<
             api.EnterpriseCrmEventbusProtoTaskExecutionDetailsTaskAttemptStats>
         o) {
@@ -2135,7 +2179,7 @@ api.EnterpriseCrmEventbusProtoTaskExecutionDetails
   final o = api.EnterpriseCrmEventbusProtoTaskExecutionDetails();
   buildCounterEnterpriseCrmEventbusProtoTaskExecutionDetails++;
   if (buildCounterEnterpriseCrmEventbusProtoTaskExecutionDetails < 3) {
-    o.taskAttemptStats = buildUnnamed25();
+    o.taskAttemptStats = buildUnnamed26();
     o.taskExecutionState = 'foo';
     o.taskNumber = 'foo';
   }
@@ -2147,7 +2191,7 @@ void checkEnterpriseCrmEventbusProtoTaskExecutionDetails(
     api.EnterpriseCrmEventbusProtoTaskExecutionDetails o) {
   buildCounterEnterpriseCrmEventbusProtoTaskExecutionDetails++;
   if (buildCounterEnterpriseCrmEventbusProtoTaskExecutionDetails < 3) {
-    checkUnnamed25(o.taskAttemptStats!);
+    checkUnnamed26(o.taskAttemptStats!);
     unittest.expect(
       o.taskExecutionState!,
       unittest.equals('foo'),
@@ -2194,24 +2238,24 @@ void checkEnterpriseCrmEventbusProtoTaskExecutionDetailsTaskAttemptStats(
   buildCounterEnterpriseCrmEventbusProtoTaskExecutionDetailsTaskAttemptStats--;
 }
 
-core.List<api.EnterpriseCrmEventbusProtoTaskMetadataAdmin> buildUnnamed26() => [
+core.List<api.EnterpriseCrmEventbusProtoTaskMetadataAdmin> buildUnnamed27() => [
       buildEnterpriseCrmEventbusProtoTaskMetadataAdmin(),
       buildEnterpriseCrmEventbusProtoTaskMetadataAdmin(),
     ];
 
-void checkUnnamed26(
+void checkUnnamed27(
     core.List<api.EnterpriseCrmEventbusProtoTaskMetadataAdmin> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEnterpriseCrmEventbusProtoTaskMetadataAdmin(o[0]);
   checkEnterpriseCrmEventbusProtoTaskMetadataAdmin(o[1]);
 }
 
-core.List<core.String> buildUnnamed27() => [
+core.List<core.String> buildUnnamed28() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed27(core.List<core.String> o) {
+void checkUnnamed28(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2230,7 +2274,7 @@ api.EnterpriseCrmEventbusProtoTaskMetadata
   buildCounterEnterpriseCrmEventbusProtoTaskMetadata++;
   if (buildCounterEnterpriseCrmEventbusProtoTaskMetadata < 3) {
     o.activeTaskName = 'foo';
-    o.admins = buildUnnamed26();
+    o.admins = buildUnnamed27();
     o.category = 'foo';
     o.codeSearchLink = 'foo';
     o.defaultJsonValidationOption = 'foo';
@@ -2250,7 +2294,7 @@ api.EnterpriseCrmEventbusProtoTaskMetadata
     o.standaloneExternalDocHtml = 'foo';
     o.status = 'foo';
     o.system = 'foo';
-    o.tags = buildUnnamed27();
+    o.tags = buildUnnamed28();
   }
   buildCounterEnterpriseCrmEventbusProtoTaskMetadata--;
   return o;
@@ -2264,7 +2308,7 @@ void checkEnterpriseCrmEventbusProtoTaskMetadata(
       o.activeTaskName!,
       unittest.equals('foo'),
     );
-    checkUnnamed26(o.admins!);
+    checkUnnamed27(o.admins!);
     unittest.expect(
       o.category!,
       unittest.equals('foo'),
@@ -2338,7 +2382,7 @@ void checkEnterpriseCrmEventbusProtoTaskMetadata(
       o.system!,
       unittest.equals('foo'),
     );
-    checkUnnamed27(o.tags!);
+    checkUnnamed28(o.tags!);
   }
   buildCounterEnterpriseCrmEventbusProtoTaskMetadata--;
 }
@@ -2372,13 +2416,13 @@ void checkEnterpriseCrmEventbusProtoTaskMetadataAdmin(
   buildCounterEnterpriseCrmEventbusProtoTaskMetadataAdmin--;
 }
 
-core.List<api.EnterpriseCrmEventbusProtoTaskUiModuleConfig> buildUnnamed28() =>
+core.List<api.EnterpriseCrmEventbusProtoTaskUiModuleConfig> buildUnnamed29() =>
     [
       buildEnterpriseCrmEventbusProtoTaskUiModuleConfig(),
       buildEnterpriseCrmEventbusProtoTaskUiModuleConfig(),
     ];
 
-void checkUnnamed28(
+void checkUnnamed29(
     core.List<api.EnterpriseCrmEventbusProtoTaskUiModuleConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEnterpriseCrmEventbusProtoTaskUiModuleConfig(o[0]);
@@ -2391,7 +2435,7 @@ api.EnterpriseCrmEventbusProtoTaskUiConfig
   final o = api.EnterpriseCrmEventbusProtoTaskUiConfig();
   buildCounterEnterpriseCrmEventbusProtoTaskUiConfig++;
   if (buildCounterEnterpriseCrmEventbusProtoTaskUiConfig < 3) {
-    o.taskUiModuleConfigs = buildUnnamed28();
+    o.taskUiModuleConfigs = buildUnnamed29();
   }
   buildCounterEnterpriseCrmEventbusProtoTaskUiConfig--;
   return o;
@@ -2401,7 +2445,7 @@ void checkEnterpriseCrmEventbusProtoTaskUiConfig(
     api.EnterpriseCrmEventbusProtoTaskUiConfig o) {
   buildCounterEnterpriseCrmEventbusProtoTaskUiConfig++;
   if (buildCounterEnterpriseCrmEventbusProtoTaskUiConfig < 3) {
-    checkUnnamed28(o.taskUiModuleConfigs!);
+    checkUnnamed29(o.taskUiModuleConfigs!);
   }
   buildCounterEnterpriseCrmEventbusProtoTaskUiConfig--;
 }
@@ -2430,13 +2474,13 @@ void checkEnterpriseCrmEventbusProtoTaskUiModuleConfig(
   buildCounterEnterpriseCrmEventbusProtoTaskUiModuleConfig--;
 }
 
-core.List<api.EnterpriseCrmEventbusProtoTeardownTaskConfig> buildUnnamed29() =>
+core.List<api.EnterpriseCrmEventbusProtoTeardownTaskConfig> buildUnnamed30() =>
     [
       buildEnterpriseCrmEventbusProtoTeardownTaskConfig(),
       buildEnterpriseCrmEventbusProtoTeardownTaskConfig(),
     ];
 
-void checkUnnamed29(
+void checkUnnamed30(
     core.List<api.EnterpriseCrmEventbusProtoTeardownTaskConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEnterpriseCrmEventbusProtoTeardownTaskConfig(o[0]);
@@ -2449,7 +2493,7 @@ api.EnterpriseCrmEventbusProtoTeardown
   final o = api.EnterpriseCrmEventbusProtoTeardown();
   buildCounterEnterpriseCrmEventbusProtoTeardown++;
   if (buildCounterEnterpriseCrmEventbusProtoTeardown < 3) {
-    o.teardownTaskConfigs = buildUnnamed29();
+    o.teardownTaskConfigs = buildUnnamed30();
   }
   buildCounterEnterpriseCrmEventbusProtoTeardown--;
   return o;
@@ -2459,7 +2503,7 @@ void checkEnterpriseCrmEventbusProtoTeardown(
     api.EnterpriseCrmEventbusProtoTeardown o) {
   buildCounterEnterpriseCrmEventbusProtoTeardown++;
   if (buildCounterEnterpriseCrmEventbusProtoTeardown < 3) {
-    checkUnnamed29(o.teardownTaskConfigs!);
+    checkUnnamed30(o.teardownTaskConfigs!);
   }
   buildCounterEnterpriseCrmEventbusProtoTeardown--;
 }
@@ -2563,7 +2607,7 @@ void checkEnterpriseCrmEventbusProtoTriggerCriteria(
   buildCounterEnterpriseCrmEventbusProtoTriggerCriteria--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed30() => {
+core.Map<core.String, core.Object?> buildUnnamed31() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -2576,7 +2620,7 @@ core.Map<core.String, core.Object?> buildUnnamed30() => {
       },
     };
 
-void checkUnnamed30(core.Map<core.String, core.Object?> o) {
+void checkUnnamed31(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -2619,7 +2663,7 @@ api.EnterpriseCrmEventbusProtoValueType
     o.doubleValue = 42.0;
     o.intArray = buildEnterpriseCrmEventbusProtoIntArray();
     o.intValue = 'foo';
-    o.protoValue = buildUnnamed30();
+    o.protoValue = buildUnnamed31();
     o.stringArray = buildEnterpriseCrmEventbusProtoStringArray();
     o.stringValue = 'foo';
   }
@@ -2642,7 +2686,7 @@ void checkEnterpriseCrmEventbusProtoValueType(
       o.intValue!,
       unittest.equals('foo'),
     );
-    checkUnnamed30(o.protoValue!);
+    checkUnnamed31(o.protoValue!);
     checkEnterpriseCrmEventbusProtoStringArray(o.stringArray!);
     unittest.expect(
       o.stringValue!,
@@ -2835,12 +2879,12 @@ void checkEnterpriseCrmEventbusStatsDimensions(
   buildCounterEnterpriseCrmEventbusStatsDimensions--;
 }
 
-core.List<core.bool> buildUnnamed31() => [
+core.List<core.bool> buildUnnamed32() => [
       true,
       true,
     ];
 
-void checkUnnamed31(core.List<core.bool> o) {
+void checkUnnamed32(core.List<core.bool> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.isTrue);
   unittest.expect(o[1], unittest.isTrue);
@@ -2854,7 +2898,7 @@ api.EnterpriseCrmFrontendsEventbusProtoBooleanParameterArray
   buildCounterEnterpriseCrmFrontendsEventbusProtoBooleanParameterArray++;
   if (buildCounterEnterpriseCrmFrontendsEventbusProtoBooleanParameterArray <
       3) {
-    o.booleanValues = buildUnnamed31();
+    o.booleanValues = buildUnnamed32();
   }
   buildCounterEnterpriseCrmFrontendsEventbusProtoBooleanParameterArray--;
   return o;
@@ -2865,17 +2909,17 @@ void checkEnterpriseCrmFrontendsEventbusProtoBooleanParameterArray(
   buildCounterEnterpriseCrmFrontendsEventbusProtoBooleanParameterArray++;
   if (buildCounterEnterpriseCrmFrontendsEventbusProtoBooleanParameterArray <
       3) {
-    checkUnnamed31(o.booleanValues!);
+    checkUnnamed32(o.booleanValues!);
   }
   buildCounterEnterpriseCrmFrontendsEventbusProtoBooleanParameterArray--;
 }
 
-core.List<core.double> buildUnnamed32() => [
+core.List<core.double> buildUnnamed33() => [
       42.0,
       42.0,
     ];
 
-void checkUnnamed32(core.List<core.double> o) {
+void checkUnnamed33(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2894,7 +2938,7 @@ api.EnterpriseCrmFrontendsEventbusProtoDoubleParameterArray
   final o = api.EnterpriseCrmFrontendsEventbusProtoDoubleParameterArray();
   buildCounterEnterpriseCrmFrontendsEventbusProtoDoubleParameterArray++;
   if (buildCounterEnterpriseCrmFrontendsEventbusProtoDoubleParameterArray < 3) {
-    o.doubleValues = buildUnnamed32();
+    o.doubleValues = buildUnnamed33();
   }
   buildCounterEnterpriseCrmFrontendsEventbusProtoDoubleParameterArray--;
   return o;
@@ -2904,18 +2948,18 @@ void checkEnterpriseCrmFrontendsEventbusProtoDoubleParameterArray(
     api.EnterpriseCrmFrontendsEventbusProtoDoubleParameterArray o) {
   buildCounterEnterpriseCrmFrontendsEventbusProtoDoubleParameterArray++;
   if (buildCounterEnterpriseCrmFrontendsEventbusProtoDoubleParameterArray < 3) {
-    checkUnnamed32(o.doubleValues!);
+    checkUnnamed33(o.doubleValues!);
   }
   buildCounterEnterpriseCrmFrontendsEventbusProtoDoubleParameterArray--;
 }
 
 core.List<api.EnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStats>
-    buildUnnamed33() => [
+    buildUnnamed34() => [
           buildEnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStats(),
           buildEnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStats(),
         ];
 
-void checkUnnamed33(
+void checkUnnamed34(
     core.List<
             api
             .EnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStats>
@@ -2926,12 +2970,12 @@ void checkUnnamed33(
 }
 
 core.List<api.EnterpriseCrmFrontendsEventbusProtoEventExecutionSnapshot>
-    buildUnnamed34() => [
+    buildUnnamed35() => [
           buildEnterpriseCrmFrontendsEventbusProtoEventExecutionSnapshot(),
           buildEnterpriseCrmFrontendsEventbusProtoEventExecutionSnapshot(),
         ];
 
-void checkUnnamed34(
+void checkUnnamed35(
     core.List<api.EnterpriseCrmFrontendsEventbusProtoEventExecutionSnapshot>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2947,8 +2991,8 @@ api.EnterpriseCrmFrontendsEventbusProtoEventExecutionDetails
   buildCounterEnterpriseCrmFrontendsEventbusProtoEventExecutionDetails++;
   if (buildCounterEnterpriseCrmFrontendsEventbusProtoEventExecutionDetails <
       3) {
-    o.eventAttemptStats = buildUnnamed33();
-    o.eventExecutionSnapshot = buildUnnamed34();
+    o.eventAttemptStats = buildUnnamed34();
+    o.eventExecutionSnapshot = buildUnnamed35();
     o.eventExecutionSnapshotsSize = 'foo';
     o.eventExecutionState = 'foo';
     o.eventRetriesFromBeginningCount = 42;
@@ -2966,8 +3010,8 @@ void checkEnterpriseCrmFrontendsEventbusProtoEventExecutionDetails(
   buildCounterEnterpriseCrmFrontendsEventbusProtoEventExecutionDetails++;
   if (buildCounterEnterpriseCrmFrontendsEventbusProtoEventExecutionDetails <
       3) {
-    checkUnnamed33(o.eventAttemptStats!);
-    checkUnnamed34(o.eventExecutionSnapshot!);
+    checkUnnamed34(o.eventAttemptStats!);
+    checkUnnamed35(o.eventExecutionSnapshot!);
     unittest.expect(
       o.eventExecutionSnapshotsSize!,
       unittest.equals('foo'),
@@ -3000,12 +3044,12 @@ void checkEnterpriseCrmFrontendsEventbusProtoEventExecutionDetails(
   buildCounterEnterpriseCrmFrontendsEventbusProtoEventExecutionDetails--;
 }
 
-core.List<api.EnterpriseCrmEventbusProtoErrorDetail> buildUnnamed35() => [
+core.List<api.EnterpriseCrmEventbusProtoErrorDetail> buildUnnamed36() => [
       buildEnterpriseCrmEventbusProtoErrorDetail(),
       buildEnterpriseCrmEventbusProtoErrorDetail(),
     ];
 
-void checkUnnamed35(core.List<api.EnterpriseCrmEventbusProtoErrorDetail> o) {
+void checkUnnamed36(core.List<api.EnterpriseCrmEventbusProtoErrorDetail> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEnterpriseCrmEventbusProtoErrorDetail(o[0]);
   checkEnterpriseCrmEventbusProtoErrorDetail(o[1]);
@@ -3022,7 +3066,7 @@ api.EnterpriseCrmFrontendsEventbusProtoEventExecutionInfo
         buildEnterpriseCrmEventbusProtoCloudLoggingDetails();
     o.createTime = 'foo';
     o.errorCode = buildCrmlogErrorCode();
-    o.errors = buildUnnamed35();
+    o.errors = buildUnnamed36();
     o.eventExecutionDetails =
         buildEnterpriseCrmFrontendsEventbusProtoEventExecutionDetails();
     o.eventExecutionInfoId = 'foo';
@@ -3061,7 +3105,7 @@ void checkEnterpriseCrmFrontendsEventbusProtoEventExecutionInfo(
       unittest.equals('foo'),
     );
     checkCrmlogErrorCode(o.errorCode!);
-    checkUnnamed35(o.errors!);
+    checkUnnamed36(o.errors!);
     checkEnterpriseCrmFrontendsEventbusProtoEventExecutionDetails(
         o.eventExecutionDetails!);
     unittest.expect(
@@ -3117,12 +3161,12 @@ void checkEnterpriseCrmFrontendsEventbusProtoEventExecutionInfo(
   buildCounterEnterpriseCrmFrontendsEventbusProtoEventExecutionInfo--;
 }
 
-core.List<core.String> buildUnnamed36() => [
+core.List<core.String> buildUnnamed37() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed36(core.List<core.String> o) {
+void checkUnnamed37(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -3146,7 +3190,7 @@ api.EnterpriseCrmFrontendsEventbusProtoEventExecutionInfoReplayInfo
       3) {
     o.originalExecutionInfoId = 'foo';
     o.replayReason = 'foo';
-    o.replayedExecutionInfoIds = buildUnnamed36();
+    o.replayedExecutionInfoIds = buildUnnamed37();
   }
   buildCounterEnterpriseCrmFrontendsEventbusProtoEventExecutionInfoReplayInfo--;
   return o;
@@ -3165,17 +3209,17 @@ void checkEnterpriseCrmFrontendsEventbusProtoEventExecutionInfoReplayInfo(
       o.replayReason!,
       unittest.equals('foo'),
     );
-    checkUnnamed36(o.replayedExecutionInfoIds!);
+    checkUnnamed37(o.replayedExecutionInfoIds!);
   }
   buildCounterEnterpriseCrmFrontendsEventbusProtoEventExecutionInfoReplayInfo--;
 }
 
-core.List<api.EnterpriseCrmEventbusProtoConditionResult> buildUnnamed37() => [
+core.List<api.EnterpriseCrmEventbusProtoConditionResult> buildUnnamed38() => [
       buildEnterpriseCrmEventbusProtoConditionResult(),
       buildEnterpriseCrmEventbusProtoConditionResult(),
     ];
 
-void checkUnnamed37(
+void checkUnnamed38(
     core.List<api.EnterpriseCrmEventbusProtoConditionResult> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEnterpriseCrmEventbusProtoConditionResult(o[0]);
@@ -3183,12 +3227,12 @@ void checkUnnamed37(
 }
 
 core.List<api.EnterpriseCrmEventbusProtoTaskExecutionDetails>
-    buildUnnamed38() => [
+    buildUnnamed39() => [
           buildEnterpriseCrmEventbusProtoTaskExecutionDetails(),
           buildEnterpriseCrmEventbusProtoTaskExecutionDetails(),
         ];
 
-void checkUnnamed38(
+void checkUnnamed39(
     core.List<api.EnterpriseCrmEventbusProtoTaskExecutionDetails> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEnterpriseCrmEventbusProtoTaskExecutionDetails(o[0]);
@@ -3204,7 +3248,7 @@ api.EnterpriseCrmFrontendsEventbusProtoEventExecutionSnapshot
   if (buildCounterEnterpriseCrmFrontendsEventbusProtoEventExecutionSnapshot <
       3) {
     o.checkpointTaskNumber = 'foo';
-    o.conditionResults = buildUnnamed37();
+    o.conditionResults = buildUnnamed38();
     o.diffParams = buildEnterpriseCrmFrontendsEventbusProtoEventParameters();
     o.eventExecutionInfoId = 'foo';
     o.eventExecutionSnapshotId = 'foo';
@@ -3212,7 +3256,7 @@ api.EnterpriseCrmFrontendsEventbusProtoEventExecutionSnapshot
         buildEnterpriseCrmEventbusProtoEventExecutionSnapshotEventExecutionSnapshotMetadata();
     o.eventParams = buildEnterpriseCrmFrontendsEventbusProtoEventParameters();
     o.snapshotTime = 'foo';
-    o.taskExecutionDetails = buildUnnamed38();
+    o.taskExecutionDetails = buildUnnamed39();
     o.taskName = 'foo';
   }
   buildCounterEnterpriseCrmFrontendsEventbusProtoEventExecutionSnapshot--;
@@ -3228,7 +3272,7 @@ void checkEnterpriseCrmFrontendsEventbusProtoEventExecutionSnapshot(
       o.checkpointTaskNumber!,
       unittest.equals('foo'),
     );
-    checkUnnamed37(o.conditionResults!);
+    checkUnnamed38(o.conditionResults!);
     checkEnterpriseCrmFrontendsEventbusProtoEventParameters(o.diffParams!);
     unittest.expect(
       o.eventExecutionInfoId!,
@@ -3245,7 +3289,7 @@ void checkEnterpriseCrmFrontendsEventbusProtoEventExecutionSnapshot(
       o.snapshotTime!,
       unittest.equals('foo'),
     );
-    checkUnnamed38(o.taskExecutionDetails!);
+    checkUnnamed39(o.taskExecutionDetails!);
     unittest.expect(
       o.taskName!,
       unittest.equals('foo'),
@@ -3255,12 +3299,12 @@ void checkEnterpriseCrmFrontendsEventbusProtoEventExecutionSnapshot(
 }
 
 core.List<api.EnterpriseCrmFrontendsEventbusProtoParameterEntry>
-    buildUnnamed39() => [
+    buildUnnamed40() => [
           buildEnterpriseCrmFrontendsEventbusProtoParameterEntry(),
           buildEnterpriseCrmFrontendsEventbusProtoParameterEntry(),
         ];
 
-void checkUnnamed39(
+void checkUnnamed40(
     core.List<api.EnterpriseCrmFrontendsEventbusProtoParameterEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEnterpriseCrmFrontendsEventbusProtoParameterEntry(o[0]);
@@ -3273,7 +3317,7 @@ api.EnterpriseCrmFrontendsEventbusProtoEventParameters
   final o = api.EnterpriseCrmFrontendsEventbusProtoEventParameters();
   buildCounterEnterpriseCrmFrontendsEventbusProtoEventParameters++;
   if (buildCounterEnterpriseCrmFrontendsEventbusProtoEventParameters < 3) {
-    o.parameters = buildUnnamed39();
+    o.parameters = buildUnnamed40();
   }
   buildCounterEnterpriseCrmFrontendsEventbusProtoEventParameters--;
   return o;
@@ -3283,17 +3327,17 @@ void checkEnterpriseCrmFrontendsEventbusProtoEventParameters(
     api.EnterpriseCrmFrontendsEventbusProtoEventParameters o) {
   buildCounterEnterpriseCrmFrontendsEventbusProtoEventParameters++;
   if (buildCounterEnterpriseCrmFrontendsEventbusProtoEventParameters < 3) {
-    checkUnnamed39(o.parameters!);
+    checkUnnamed40(o.parameters!);
   }
   buildCounterEnterpriseCrmFrontendsEventbusProtoEventParameters--;
 }
 
-core.List<core.String> buildUnnamed40() => [
+core.List<core.String> buildUnnamed41() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed40(core.List<core.String> o) {
+void checkUnnamed41(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -3311,7 +3355,7 @@ api.EnterpriseCrmFrontendsEventbusProtoIntParameterArray
   final o = api.EnterpriseCrmFrontendsEventbusProtoIntParameterArray();
   buildCounterEnterpriseCrmFrontendsEventbusProtoIntParameterArray++;
   if (buildCounterEnterpriseCrmFrontendsEventbusProtoIntParameterArray < 3) {
-    o.intValues = buildUnnamed40();
+    o.intValues = buildUnnamed41();
   }
   buildCounterEnterpriseCrmFrontendsEventbusProtoIntParameterArray--;
   return o;
@@ -3321,7 +3365,7 @@ void checkEnterpriseCrmFrontendsEventbusProtoIntParameterArray(
     api.EnterpriseCrmFrontendsEventbusProtoIntParameterArray o) {
   buildCounterEnterpriseCrmFrontendsEventbusProtoIntParameterArray++;
   if (buildCounterEnterpriseCrmFrontendsEventbusProtoIntParameterArray < 3) {
-    checkUnnamed40(o.intValues!);
+    checkUnnamed41(o.intValues!);
   }
   buildCounterEnterpriseCrmFrontendsEventbusProtoIntParameterArray--;
 }
@@ -3388,12 +3432,12 @@ void checkEnterpriseCrmFrontendsEventbusProtoParamSpecEntry(
 }
 
 core.List<api.EnterpriseCrmFrontendsEventbusProtoParamSpecEntry>
-    buildUnnamed41() => [
+    buildUnnamed42() => [
           buildEnterpriseCrmFrontendsEventbusProtoParamSpecEntry(),
           buildEnterpriseCrmFrontendsEventbusProtoParamSpecEntry(),
         ];
 
-void checkUnnamed41(
+void checkUnnamed42(
     core.List<api.EnterpriseCrmFrontendsEventbusProtoParamSpecEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEnterpriseCrmFrontendsEventbusProtoParamSpecEntry(o[0]);
@@ -3406,7 +3450,7 @@ api.EnterpriseCrmFrontendsEventbusProtoParamSpecsMessage
   final o = api.EnterpriseCrmFrontendsEventbusProtoParamSpecsMessage();
   buildCounterEnterpriseCrmFrontendsEventbusProtoParamSpecsMessage++;
   if (buildCounterEnterpriseCrmFrontendsEventbusProtoParamSpecsMessage < 3) {
-    o.parameters = buildUnnamed41();
+    o.parameters = buildUnnamed42();
   }
   buildCounterEnterpriseCrmFrontendsEventbusProtoParamSpecsMessage--;
   return o;
@@ -3416,7 +3460,7 @@ void checkEnterpriseCrmFrontendsEventbusProtoParamSpecsMessage(
     api.EnterpriseCrmFrontendsEventbusProtoParamSpecsMessage o) {
   buildCounterEnterpriseCrmFrontendsEventbusProtoParamSpecsMessage++;
   if (buildCounterEnterpriseCrmFrontendsEventbusProtoParamSpecsMessage < 3) {
-    checkUnnamed41(o.parameters!);
+    checkUnnamed42(o.parameters!);
   }
   buildCounterEnterpriseCrmFrontendsEventbusProtoParamSpecsMessage--;
 }
@@ -3454,7 +3498,7 @@ void checkEnterpriseCrmFrontendsEventbusProtoParameterEntry(
   buildCounterEnterpriseCrmFrontendsEventbusProtoParameterEntry--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed42() => {
+core.Map<core.String, core.Object?> buildUnnamed43() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -3467,7 +3511,7 @@ core.Map<core.String, core.Object?> buildUnnamed42() => {
       },
     };
 
-void checkUnnamed42(core.Map<core.String, core.Object?> o) {
+void checkUnnamed43(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o['x']!) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
@@ -3516,7 +3560,7 @@ api.EnterpriseCrmFrontendsEventbusProtoParameterValueType
     o.jsonValue = 'foo';
     o.protoArray =
         buildEnterpriseCrmFrontendsEventbusProtoProtoParameterArray();
-    o.protoValue = buildUnnamed42();
+    o.protoValue = buildUnnamed43();
     o.serializedObjectValue =
         buildEnterpriseCrmFrontendsEventbusProtoSerializedObjectParameter();
     o.stringArray =
@@ -3550,7 +3594,7 @@ void checkEnterpriseCrmFrontendsEventbusProtoParameterValueType(
       unittest.equals('foo'),
     );
     checkEnterpriseCrmFrontendsEventbusProtoProtoParameterArray(o.protoArray!);
-    checkUnnamed42(o.protoValue!);
+    checkUnnamed43(o.protoValue!);
     checkEnterpriseCrmFrontendsEventbusProtoSerializedObjectParameter(
         o.serializedObjectValue!);
     checkEnterpriseCrmFrontendsEventbusProtoStringParameterArray(
@@ -3563,7 +3607,7 @@ void checkEnterpriseCrmFrontendsEventbusProtoParameterValueType(
   buildCounterEnterpriseCrmFrontendsEventbusProtoParameterValueType--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed43() => {
+core.Map<core.String, core.Object?> buildUnnamed44() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -3576,7 +3620,7 @@ core.Map<core.String, core.Object?> buildUnnamed43() => {
       },
     };
 
-void checkUnnamed43(core.Map<core.String, core.Object?> o) {
+void checkUnnamed44(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted9 = (o['x']!) as core.Map;
   unittest.expect(casted9, unittest.hasLength(3));
@@ -3608,15 +3652,15 @@ void checkUnnamed43(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed44() => [
-      buildUnnamed43(),
-      buildUnnamed43(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed45() => [
+      buildUnnamed44(),
+      buildUnnamed44(),
     ];
 
-void checkUnnamed44(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed45(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed43(o[0]);
-  checkUnnamed43(o[1]);
+  checkUnnamed44(o[0]);
+  checkUnnamed44(o[1]);
 }
 
 core.int buildCounterEnterpriseCrmFrontendsEventbusProtoProtoParameterArray = 0;
@@ -3625,7 +3669,7 @@ api.EnterpriseCrmFrontendsEventbusProtoProtoParameterArray
   final o = api.EnterpriseCrmFrontendsEventbusProtoProtoParameterArray();
   buildCounterEnterpriseCrmFrontendsEventbusProtoProtoParameterArray++;
   if (buildCounterEnterpriseCrmFrontendsEventbusProtoProtoParameterArray < 3) {
-    o.protoValues = buildUnnamed44();
+    o.protoValues = buildUnnamed45();
   }
   buildCounterEnterpriseCrmFrontendsEventbusProtoProtoParameterArray--;
   return o;
@@ -3635,17 +3679,17 @@ void checkEnterpriseCrmFrontendsEventbusProtoProtoParameterArray(
     api.EnterpriseCrmFrontendsEventbusProtoProtoParameterArray o) {
   buildCounterEnterpriseCrmFrontendsEventbusProtoProtoParameterArray++;
   if (buildCounterEnterpriseCrmFrontendsEventbusProtoProtoParameterArray < 3) {
-    checkUnnamed44(o.protoValues!);
+    checkUnnamed45(o.protoValues!);
   }
   buildCounterEnterpriseCrmFrontendsEventbusProtoProtoParameterArray--;
 }
 
-core.List<core.String> buildUnnamed45() => [
+core.List<core.String> buildUnnamed46() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed45(core.List<core.String> o) {
+void checkUnnamed46(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -3665,7 +3709,7 @@ api.EnterpriseCrmFrontendsEventbusProtoRollbackStrategy
   if (buildCounterEnterpriseCrmFrontendsEventbusProtoRollbackStrategy < 3) {
     o.parameters = buildEnterpriseCrmFrontendsEventbusProtoEventParameters();
     o.rollbackTaskImplementationClassName = 'foo';
-    o.taskNumbersToRollback = buildUnnamed45();
+    o.taskNumbersToRollback = buildUnnamed46();
   }
   buildCounterEnterpriseCrmFrontendsEventbusProtoRollbackStrategy--;
   return o;
@@ -3680,7 +3724,7 @@ void checkEnterpriseCrmFrontendsEventbusProtoRollbackStrategy(
       o.rollbackTaskImplementationClassName!,
       unittest.equals('foo'),
     );
-    checkUnnamed45(o.taskNumbersToRollback!);
+    checkUnnamed46(o.taskNumbersToRollback!);
   }
   buildCounterEnterpriseCrmFrontendsEventbusProtoRollbackStrategy--;
 }
@@ -3713,12 +3757,12 @@ void checkEnterpriseCrmFrontendsEventbusProtoSerializedObjectParameter(
   buildCounterEnterpriseCrmFrontendsEventbusProtoSerializedObjectParameter--;
 }
 
-core.List<core.String> buildUnnamed46() => [
+core.List<core.String> buildUnnamed47() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed46(core.List<core.String> o) {
+void checkUnnamed47(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -3737,7 +3781,7 @@ api.EnterpriseCrmFrontendsEventbusProtoStringParameterArray
   final o = api.EnterpriseCrmFrontendsEventbusProtoStringParameterArray();
   buildCounterEnterpriseCrmFrontendsEventbusProtoStringParameterArray++;
   if (buildCounterEnterpriseCrmFrontendsEventbusProtoStringParameterArray < 3) {
-    o.stringValues = buildUnnamed46();
+    o.stringValues = buildUnnamed47();
   }
   buildCounterEnterpriseCrmFrontendsEventbusProtoStringParameterArray--;
   return o;
@@ -3747,41 +3791,41 @@ void checkEnterpriseCrmFrontendsEventbusProtoStringParameterArray(
     api.EnterpriseCrmFrontendsEventbusProtoStringParameterArray o) {
   buildCounterEnterpriseCrmFrontendsEventbusProtoStringParameterArray++;
   if (buildCounterEnterpriseCrmFrontendsEventbusProtoStringParameterArray < 3) {
-    checkUnnamed46(o.stringValues!);
+    checkUnnamed47(o.stringValues!);
   }
   buildCounterEnterpriseCrmFrontendsEventbusProtoStringParameterArray--;
 }
 
-core.List<api.EnterpriseCrmEventbusProtoTaskAlertConfig> buildUnnamed47() => [
+core.List<api.EnterpriseCrmEventbusProtoTaskAlertConfig> buildUnnamed48() => [
       buildEnterpriseCrmEventbusProtoTaskAlertConfig(),
       buildEnterpriseCrmEventbusProtoTaskAlertConfig(),
     ];
 
-void checkUnnamed47(
+void checkUnnamed48(
     core.List<api.EnterpriseCrmEventbusProtoTaskAlertConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEnterpriseCrmEventbusProtoTaskAlertConfig(o[0]);
   checkEnterpriseCrmEventbusProtoTaskAlertConfig(o[1]);
 }
 
-core.List<api.EnterpriseCrmEventbusProtoNextTask> buildUnnamed48() => [
+core.List<api.EnterpriseCrmEventbusProtoNextTask> buildUnnamed49() => [
       buildEnterpriseCrmEventbusProtoNextTask(),
       buildEnterpriseCrmEventbusProtoNextTask(),
     ];
 
-void checkUnnamed48(core.List<api.EnterpriseCrmEventbusProtoNextTask> o) {
+void checkUnnamed49(core.List<api.EnterpriseCrmEventbusProtoNextTask> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEnterpriseCrmEventbusProtoNextTask(o[0]);
   checkEnterpriseCrmEventbusProtoNextTask(o[1]);
 }
 
 core.Map<core.String, api.EnterpriseCrmFrontendsEventbusProtoParameterEntry>
-    buildUnnamed49() => {
+    buildUnnamed50() => {
           'x': buildEnterpriseCrmFrontendsEventbusProtoParameterEntry(),
           'y': buildEnterpriseCrmFrontendsEventbusProtoParameterEntry(),
         };
 
-void checkUnnamed49(
+void checkUnnamed50(
     core.Map<core.String, api.EnterpriseCrmFrontendsEventbusProtoParameterEntry>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -3795,7 +3839,9 @@ api.EnterpriseCrmFrontendsEventbusProtoTaskConfig
   final o = api.EnterpriseCrmFrontendsEventbusProtoTaskConfig();
   buildCounterEnterpriseCrmFrontendsEventbusProtoTaskConfig++;
   if (buildCounterEnterpriseCrmFrontendsEventbusProtoTaskConfig < 3) {
-    o.alertConfigs = buildUnnamed47();
+    o.alertConfigs = buildUnnamed48();
+    o.conditionalFailurePolicies =
+        buildEnterpriseCrmEventbusProtoConditionalFailurePolicies();
     o.createTime = 'foo';
     o.creatorEmail = 'foo';
     o.description = 'foo';
@@ -3807,9 +3853,9 @@ api.EnterpriseCrmFrontendsEventbusProtoTaskConfig
     o.jsonValidationOption = 'foo';
     o.label = 'foo';
     o.lastModifiedTime = 'foo';
-    o.nextTasks = buildUnnamed48();
+    o.nextTasks = buildUnnamed49();
     o.nextTasksExecutionPolicy = 'foo';
-    o.parameters = buildUnnamed49();
+    o.parameters = buildUnnamed50();
     o.position = buildEnterpriseCrmEventbusProtoCoordinate();
     o.precondition = 'foo';
     o.preconditionLabel = 'foo';
@@ -3834,7 +3880,9 @@ void checkEnterpriseCrmFrontendsEventbusProtoTaskConfig(
     api.EnterpriseCrmFrontendsEventbusProtoTaskConfig o) {
   buildCounterEnterpriseCrmFrontendsEventbusProtoTaskConfig++;
   if (buildCounterEnterpriseCrmFrontendsEventbusProtoTaskConfig < 3) {
-    checkUnnamed47(o.alertConfigs!);
+    checkUnnamed48(o.alertConfigs!);
+    checkEnterpriseCrmEventbusProtoConditionalFailurePolicies(
+        o.conditionalFailurePolicies!);
     unittest.expect(
       o.createTime!,
       unittest.equals('foo'),
@@ -3873,12 +3921,12 @@ void checkEnterpriseCrmFrontendsEventbusProtoTaskConfig(
       o.lastModifiedTime!,
       unittest.equals('foo'),
     );
-    checkUnnamed48(o.nextTasks!);
+    checkUnnamed49(o.nextTasks!);
     unittest.expect(
       o.nextTasksExecutionPolicy!,
       unittest.equals('foo'),
     );
-    checkUnnamed49(o.parameters!);
+    checkUnnamed50(o.parameters!);
     checkEnterpriseCrmEventbusProtoCoordinate(o.position!);
     unittest.expect(
       o.precondition!,
@@ -3956,25 +4004,25 @@ void checkEnterpriseCrmFrontendsEventbusProtoTaskEntity(
   buildCounterEnterpriseCrmFrontendsEventbusProtoTaskEntity--;
 }
 
-core.List<api.EnterpriseCrmEventbusProtoWorkflowAlertConfig> buildUnnamed50() =>
+core.List<api.EnterpriseCrmEventbusProtoWorkflowAlertConfig> buildUnnamed51() =>
     [
       buildEnterpriseCrmEventbusProtoWorkflowAlertConfig(),
       buildEnterpriseCrmEventbusProtoWorkflowAlertConfig(),
     ];
 
-void checkUnnamed50(
+void checkUnnamed51(
     core.List<api.EnterpriseCrmEventbusProtoWorkflowAlertConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEnterpriseCrmEventbusProtoWorkflowAlertConfig(o[0]);
   checkEnterpriseCrmEventbusProtoWorkflowAlertConfig(o[1]);
 }
 
-core.List<core.String> buildUnnamed51() => [
+core.List<core.String> buildUnnamed52() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed51(core.List<core.String> o) {
+void checkUnnamed52(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -3986,12 +4034,12 @@ void checkUnnamed51(core.List<core.String> o) {
   );
 }
 
-core.Map<core.String, core.String> buildUnnamed52() => {
+core.Map<core.String, core.String> buildUnnamed53() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed52(core.Map<core.String, core.String> o) {
+void checkUnnamed53(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -4003,12 +4051,12 @@ void checkUnnamed52(core.Map<core.String, core.String> o) {
   );
 }
 
-core.List<api.EnterpriseCrmEventbusProtoNextTask> buildUnnamed53() => [
+core.List<api.EnterpriseCrmEventbusProtoNextTask> buildUnnamed54() => [
       buildEnterpriseCrmEventbusProtoNextTask(),
       buildEnterpriseCrmEventbusProtoNextTask(),
     ];
 
-void checkUnnamed53(core.List<api.EnterpriseCrmEventbusProtoNextTask> o) {
+void checkUnnamed54(core.List<api.EnterpriseCrmEventbusProtoNextTask> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEnterpriseCrmEventbusProtoNextTask(o[0]);
   checkEnterpriseCrmEventbusProtoNextTask(o[1]);
@@ -4020,18 +4068,18 @@ api.EnterpriseCrmFrontendsEventbusProtoTriggerConfig
   final o = api.EnterpriseCrmFrontendsEventbusProtoTriggerConfig();
   buildCounterEnterpriseCrmFrontendsEventbusProtoTriggerConfig++;
   if (buildCounterEnterpriseCrmFrontendsEventbusProtoTriggerConfig < 3) {
-    o.alertConfig = buildUnnamed50();
+    o.alertConfig = buildUnnamed51();
     o.cloudSchedulerConfig =
         buildEnterpriseCrmEventbusProtoCloudSchedulerConfig();
     o.description = 'foo';
-    o.enabledClients = buildUnnamed51();
+    o.enabledClients = buildUnnamed52();
     o.errorCatcherId = 'foo';
     o.label = 'foo';
     o.nextTasksExecutionPolicy = 'foo';
     o.pauseWorkflowExecutions = true;
     o.position = buildEnterpriseCrmEventbusProtoCoordinate();
-    o.properties = buildUnnamed52();
-    o.startTasks = buildUnnamed53();
+    o.properties = buildUnnamed53();
+    o.startTasks = buildUnnamed54();
     o.triggerCriteria = buildEnterpriseCrmEventbusProtoTriggerCriteria();
     o.triggerId = 'foo';
     o.triggerName = 'foo';
@@ -4046,14 +4094,14 @@ void checkEnterpriseCrmFrontendsEventbusProtoTriggerConfig(
     api.EnterpriseCrmFrontendsEventbusProtoTriggerConfig o) {
   buildCounterEnterpriseCrmFrontendsEventbusProtoTriggerConfig++;
   if (buildCounterEnterpriseCrmFrontendsEventbusProtoTriggerConfig < 3) {
-    checkUnnamed50(o.alertConfig!);
+    checkUnnamed51(o.alertConfig!);
     checkEnterpriseCrmEventbusProtoCloudSchedulerConfig(
         o.cloudSchedulerConfig!);
     unittest.expect(
       o.description!,
       unittest.equals('foo'),
     );
-    checkUnnamed51(o.enabledClients!);
+    checkUnnamed52(o.enabledClients!);
     unittest.expect(
       o.errorCatcherId!,
       unittest.equals('foo'),
@@ -4068,8 +4116,8 @@ void checkEnterpriseCrmFrontendsEventbusProtoTriggerConfig(
     );
     unittest.expect(o.pauseWorkflowExecutions!, unittest.isTrue);
     checkEnterpriseCrmEventbusProtoCoordinate(o.position!);
-    checkUnnamed52(o.properties!);
-    checkUnnamed53(o.startTasks!);
+    checkUnnamed53(o.properties!);
+    checkUnnamed54(o.startTasks!);
     checkEnterpriseCrmEventbusProtoTriggerCriteria(o.triggerCriteria!);
     unittest.expect(
       o.triggerId!,
@@ -4092,12 +4140,12 @@ void checkEnterpriseCrmFrontendsEventbusProtoTriggerConfig(
 }
 
 core.List<api.EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry>
-    buildUnnamed54() => [
+    buildUnnamed55() => [
           buildEnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry(),
           buildEnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry(),
         ];
 
-void checkUnnamed54(
+void checkUnnamed55(
     core.List<api.EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -4114,7 +4162,7 @@ api.EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry
   if (buildCounterEnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry <
       3) {
     o.attributes = buildEnterpriseCrmEventbusProtoAttributes();
-    o.children = buildUnnamed54();
+    o.children = buildUnnamed55();
     o.containsLargeData = true;
     o.dataType = 'foo';
     o.defaultValue =
@@ -4141,7 +4189,7 @@ void checkEnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry(
   if (buildCounterEnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry <
       3) {
     checkEnterpriseCrmEventbusProtoAttributes(o.attributes!);
-    checkUnnamed54(o.children!);
+    checkUnnamed55(o.children!);
     unittest.expect(o.containsLargeData!, unittest.isTrue);
     unittest.expect(
       o.dataType!,
@@ -4188,12 +4236,12 @@ void checkEnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry(
 }
 
 core.List<api.EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry>
-    buildUnnamed55() => [
+    buildUnnamed56() => [
           buildEnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry(),
           buildEnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry(),
         ];
 
-void checkUnnamed55(
+void checkUnnamed56(
     core.List<api.EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -4207,7 +4255,7 @@ api.EnterpriseCrmFrontendsEventbusProtoWorkflowParameters
   final o = api.EnterpriseCrmFrontendsEventbusProtoWorkflowParameters();
   buildCounterEnterpriseCrmFrontendsEventbusProtoWorkflowParameters++;
   if (buildCounterEnterpriseCrmFrontendsEventbusProtoWorkflowParameters < 3) {
-    o.parameters = buildUnnamed55();
+    o.parameters = buildUnnamed56();
   }
   buildCounterEnterpriseCrmFrontendsEventbusProtoWorkflowParameters--;
   return o;
@@ -4217,67 +4265,9 @@ void checkEnterpriseCrmFrontendsEventbusProtoWorkflowParameters(
     api.EnterpriseCrmFrontendsEventbusProtoWorkflowParameters o) {
   buildCounterEnterpriseCrmFrontendsEventbusProtoWorkflowParameters++;
   if (buildCounterEnterpriseCrmFrontendsEventbusProtoWorkflowParameters < 3) {
-    checkUnnamed55(o.parameters!);
+    checkUnnamed56(o.parameters!);
   }
   buildCounterEnterpriseCrmFrontendsEventbusProtoWorkflowParameters--;
-}
-
-core.List<core.String> buildUnnamed56() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed56(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.int buildCounterEnterpriseCrmLoggingGwsFieldLimits = 0;
-api.EnterpriseCrmLoggingGwsFieldLimits
-    buildEnterpriseCrmLoggingGwsFieldLimits() {
-  final o = api.EnterpriseCrmLoggingGwsFieldLimits();
-  buildCounterEnterpriseCrmLoggingGwsFieldLimits++;
-  if (buildCounterEnterpriseCrmLoggingGwsFieldLimits < 3) {
-    o.logAction = 'foo';
-    o.logType = buildUnnamed56();
-    o.maxArraySize = 42;
-    o.maxStringLength = 42;
-    o.shortenerType = 'foo';
-  }
-  buildCounterEnterpriseCrmLoggingGwsFieldLimits--;
-  return o;
-}
-
-void checkEnterpriseCrmLoggingGwsFieldLimits(
-    api.EnterpriseCrmLoggingGwsFieldLimits o) {
-  buildCounterEnterpriseCrmLoggingGwsFieldLimits++;
-  if (buildCounterEnterpriseCrmLoggingGwsFieldLimits < 3) {
-    unittest.expect(
-      o.logAction!,
-      unittest.equals('foo'),
-    );
-    checkUnnamed56(o.logType!);
-    unittest.expect(
-      o.maxArraySize!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.maxStringLength!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.shortenerType!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterEnterpriseCrmLoggingGwsFieldLimits--;
 }
 
 core.List<core.String> buildUnnamed57() => [
@@ -4297,6 +4287,64 @@ void checkUnnamed57(core.List<core.String> o) {
   );
 }
 
+core.int buildCounterEnterpriseCrmLoggingGwsFieldLimits = 0;
+api.EnterpriseCrmLoggingGwsFieldLimits
+    buildEnterpriseCrmLoggingGwsFieldLimits() {
+  final o = api.EnterpriseCrmLoggingGwsFieldLimits();
+  buildCounterEnterpriseCrmLoggingGwsFieldLimits++;
+  if (buildCounterEnterpriseCrmLoggingGwsFieldLimits < 3) {
+    o.logAction = 'foo';
+    o.logType = buildUnnamed57();
+    o.maxArraySize = 42;
+    o.maxStringLength = 42;
+    o.shortenerType = 'foo';
+  }
+  buildCounterEnterpriseCrmLoggingGwsFieldLimits--;
+  return o;
+}
+
+void checkEnterpriseCrmLoggingGwsFieldLimits(
+    api.EnterpriseCrmLoggingGwsFieldLimits o) {
+  buildCounterEnterpriseCrmLoggingGwsFieldLimits++;
+  if (buildCounterEnterpriseCrmLoggingGwsFieldLimits < 3) {
+    unittest.expect(
+      o.logAction!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed57(o.logType!);
+    unittest.expect(
+      o.maxArraySize!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.maxStringLength!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.shortenerType!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterEnterpriseCrmLoggingGwsFieldLimits--;
+}
+
+core.List<core.String> buildUnnamed58() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed58(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterEnterpriseCrmLoggingGwsSanitizeOptions = 0;
 api.EnterpriseCrmLoggingGwsSanitizeOptions
     buildEnterpriseCrmLoggingGwsSanitizeOptions() {
@@ -4304,7 +4352,7 @@ api.EnterpriseCrmLoggingGwsSanitizeOptions
   buildCounterEnterpriseCrmLoggingGwsSanitizeOptions++;
   if (buildCounterEnterpriseCrmLoggingGwsSanitizeOptions < 3) {
     o.isAlreadySanitized = true;
-    o.logType = buildUnnamed57();
+    o.logType = buildUnnamed58();
     o.privacy = 'foo';
     o.sanitizeType = 'foo';
   }
@@ -4317,7 +4365,7 @@ void checkEnterpriseCrmLoggingGwsSanitizeOptions(
   buildCounterEnterpriseCrmLoggingGwsSanitizeOptions++;
   if (buildCounterEnterpriseCrmLoggingGwsSanitizeOptions < 3) {
     unittest.expect(o.isAlreadySanitized!, unittest.isTrue);
-    checkUnnamed57(o.logType!);
+    checkUnnamed58(o.logType!);
     unittest.expect(
       o.privacy!,
       unittest.equals('foo'),
@@ -4330,12 +4378,12 @@ void checkEnterpriseCrmLoggingGwsSanitizeOptions(
   buildCounterEnterpriseCrmLoggingGwsSanitizeOptions--;
 }
 
-core.List<api.GoogleCloudConnectorsV1ConfigVariable> buildUnnamed58() => [
+core.List<api.GoogleCloudConnectorsV1ConfigVariable> buildUnnamed59() => [
       buildGoogleCloudConnectorsV1ConfigVariable(),
       buildGoogleCloudConnectorsV1ConfigVariable(),
     ];
 
-void checkUnnamed58(core.List<api.GoogleCloudConnectorsV1ConfigVariable> o) {
+void checkUnnamed59(core.List<api.GoogleCloudConnectorsV1ConfigVariable> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudConnectorsV1ConfigVariable(o[0]);
   checkGoogleCloudConnectorsV1ConfigVariable(o[1]);
@@ -4346,7 +4394,7 @@ api.GoogleCloudConnectorsV1AuthConfig buildGoogleCloudConnectorsV1AuthConfig() {
   final o = api.GoogleCloudConnectorsV1AuthConfig();
   buildCounterGoogleCloudConnectorsV1AuthConfig++;
   if (buildCounterGoogleCloudConnectorsV1AuthConfig < 3) {
-    o.additionalVariables = buildUnnamed58();
+    o.additionalVariables = buildUnnamed59();
     o.authKey = 'foo';
     o.authType = 'foo';
     o.oauth2AuthCodeFlow =
@@ -4365,7 +4413,7 @@ void checkGoogleCloudConnectorsV1AuthConfig(
     api.GoogleCloudConnectorsV1AuthConfig o) {
   buildCounterGoogleCloudConnectorsV1AuthConfig++;
   if (buildCounterGoogleCloudConnectorsV1AuthConfig < 3) {
-    checkUnnamed58(o.additionalVariables!);
+    checkUnnamed59(o.additionalVariables!);
     unittest.expect(
       o.authKey!,
       unittest.equals('foo'),
@@ -4385,12 +4433,12 @@ void checkGoogleCloudConnectorsV1AuthConfig(
   buildCounterGoogleCloudConnectorsV1AuthConfig--;
 }
 
-core.List<core.String> buildUnnamed59() => [
+core.List<core.String> buildUnnamed60() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed59(core.List<core.String> o) {
+void checkUnnamed60(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -4415,7 +4463,7 @@ api.GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlow
     o.enablePkce = true;
     o.pkceVerifier = 'foo';
     o.redirectUri = 'foo';
-    o.scopes = buildUnnamed59();
+    o.scopes = buildUnnamed60();
   }
   buildCounterGoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlow--;
   return o;
@@ -4447,7 +4495,7 @@ void checkGoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlow(
       o.redirectUri!,
       unittest.equals('foo'),
     );
-    checkUnnamed59(o.scopes!);
+    checkUnnamed60(o.scopes!);
   }
   buildCounterGoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlow--;
 }
@@ -4666,34 +4714,34 @@ void checkGoogleCloudConnectorsV1ConfigVariable(
   buildCounterGoogleCloudConnectorsV1ConfigVariable--;
 }
 
-core.List<api.GoogleCloudConnectorsV1ConfigVariable> buildUnnamed60() => [
+core.List<api.GoogleCloudConnectorsV1ConfigVariable> buildUnnamed61() => [
       buildGoogleCloudConnectorsV1ConfigVariable(),
       buildGoogleCloudConnectorsV1ConfigVariable(),
     ];
 
-void checkUnnamed60(core.List<api.GoogleCloudConnectorsV1ConfigVariable> o) {
+void checkUnnamed61(core.List<api.GoogleCloudConnectorsV1ConfigVariable> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudConnectorsV1ConfigVariable(o[0]);
   checkGoogleCloudConnectorsV1ConfigVariable(o[1]);
 }
 
-core.List<api.GoogleCloudConnectorsV1DestinationConfig> buildUnnamed61() => [
+core.List<api.GoogleCloudConnectorsV1DestinationConfig> buildUnnamed62() => [
       buildGoogleCloudConnectorsV1DestinationConfig(),
       buildGoogleCloudConnectorsV1DestinationConfig(),
     ];
 
-void checkUnnamed61(core.List<api.GoogleCloudConnectorsV1DestinationConfig> o) {
+void checkUnnamed62(core.List<api.GoogleCloudConnectorsV1DestinationConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudConnectorsV1DestinationConfig(o[0]);
   checkGoogleCloudConnectorsV1DestinationConfig(o[1]);
 }
 
-core.Map<core.String, core.String> buildUnnamed62() => {
+core.Map<core.String, core.String> buildUnnamed63() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed62(core.Map<core.String, core.String> o) {
+void checkUnnamed63(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -4712,7 +4760,7 @@ api.GoogleCloudConnectorsV1Connection buildGoogleCloudConnectorsV1Connection() {
   if (buildCounterGoogleCloudConnectorsV1Connection < 3) {
     o.authConfig = buildGoogleCloudConnectorsV1AuthConfig();
     o.billingConfig = buildGoogleCloudConnectorsV1BillingConfig();
-    o.configVariables = buildUnnamed60();
+    o.configVariables = buildUnnamed61();
     o.connectionRevision = 'foo';
     o.connectorVersion = 'foo';
     o.connectorVersionInfraConfig =
@@ -4720,14 +4768,14 @@ api.GoogleCloudConnectorsV1Connection buildGoogleCloudConnectorsV1Connection() {
     o.connectorVersionLaunchStage = 'foo';
     o.createTime = 'foo';
     o.description = 'foo';
-    o.destinationConfigs = buildUnnamed61();
+    o.destinationConfigs = buildUnnamed62();
     o.envoyImageLocation = 'foo';
     o.eventingConfig = buildGoogleCloudConnectorsV1EventingConfig();
     o.eventingEnablementType = 'foo';
     o.eventingRuntimeData = buildGoogleCloudConnectorsV1EventingRuntimeData();
     o.imageLocation = 'foo';
     o.isTrustedTester = true;
-    o.labels = buildUnnamed62();
+    o.labels = buildUnnamed63();
     o.lockConfig = buildGoogleCloudConnectorsV1LockConfig();
     o.logConfig = buildGoogleCloudConnectorsV1LogConfig();
     o.name = 'foo';
@@ -4750,7 +4798,7 @@ void checkGoogleCloudConnectorsV1Connection(
   if (buildCounterGoogleCloudConnectorsV1Connection < 3) {
     checkGoogleCloudConnectorsV1AuthConfig(o.authConfig!);
     checkGoogleCloudConnectorsV1BillingConfig(o.billingConfig!);
-    checkUnnamed60(o.configVariables!);
+    checkUnnamed61(o.configVariables!);
     unittest.expect(
       o.connectionRevision!,
       unittest.equals('foo'),
@@ -4773,7 +4821,7 @@ void checkGoogleCloudConnectorsV1Connection(
       o.description!,
       unittest.equals('foo'),
     );
-    checkUnnamed61(o.destinationConfigs!);
+    checkUnnamed62(o.destinationConfigs!);
     unittest.expect(
       o.envoyImageLocation!,
       unittest.equals('foo'),
@@ -4789,7 +4837,7 @@ void checkGoogleCloudConnectorsV1Connection(
       unittest.equals('foo'),
     );
     unittest.expect(o.isTrustedTester!, unittest.isTrue);
-    checkUnnamed62(o.labels!);
+    checkUnnamed63(o.labels!);
     checkGoogleCloudConnectorsV1LockConfig(o.lockConfig!);
     checkGoogleCloudConnectorsV1LogConfig(o.logConfig!);
     unittest.expect(
@@ -4938,12 +4986,12 @@ void checkGoogleCloudConnectorsV1Destination(
   buildCounterGoogleCloudConnectorsV1Destination--;
 }
 
-core.List<api.GoogleCloudConnectorsV1Destination> buildUnnamed63() => [
+core.List<api.GoogleCloudConnectorsV1Destination> buildUnnamed64() => [
       buildGoogleCloudConnectorsV1Destination(),
       buildGoogleCloudConnectorsV1Destination(),
     ];
 
-void checkUnnamed63(core.List<api.GoogleCloudConnectorsV1Destination> o) {
+void checkUnnamed64(core.List<api.GoogleCloudConnectorsV1Destination> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudConnectorsV1Destination(o[0]);
   checkGoogleCloudConnectorsV1Destination(o[1]);
@@ -4955,7 +5003,7 @@ api.GoogleCloudConnectorsV1DestinationConfig
   final o = api.GoogleCloudConnectorsV1DestinationConfig();
   buildCounterGoogleCloudConnectorsV1DestinationConfig++;
   if (buildCounterGoogleCloudConnectorsV1DestinationConfig < 3) {
-    o.destinations = buildUnnamed63();
+    o.destinations = buildUnnamed64();
     o.key = 'foo';
   }
   buildCounterGoogleCloudConnectorsV1DestinationConfig--;
@@ -4966,7 +5014,7 @@ void checkGoogleCloudConnectorsV1DestinationConfig(
     api.GoogleCloudConnectorsV1DestinationConfig o) {
   buildCounterGoogleCloudConnectorsV1DestinationConfig++;
   if (buildCounterGoogleCloudConnectorsV1DestinationConfig < 3) {
-    checkUnnamed63(o.destinations!);
+    checkUnnamed64(o.destinations!);
     unittest.expect(
       o.key!,
       unittest.equals('foo'),
@@ -5004,12 +5052,12 @@ void checkGoogleCloudConnectorsV1EncryptionKey(
   buildCounterGoogleCloudConnectorsV1EncryptionKey--;
 }
 
-core.List<api.GoogleCloudConnectorsV1ConfigVariable> buildUnnamed64() => [
+core.List<api.GoogleCloudConnectorsV1ConfigVariable> buildUnnamed65() => [
       buildGoogleCloudConnectorsV1ConfigVariable(),
       buildGoogleCloudConnectorsV1ConfigVariable(),
     ];
 
-void checkUnnamed64(core.List<api.GoogleCloudConnectorsV1ConfigVariable> o) {
+void checkUnnamed65(core.List<api.GoogleCloudConnectorsV1ConfigVariable> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudConnectorsV1ConfigVariable(o[0]);
   checkGoogleCloudConnectorsV1ConfigVariable(o[1]);
@@ -5021,7 +5069,7 @@ api.GoogleCloudConnectorsV1EventingConfig
   final o = api.GoogleCloudConnectorsV1EventingConfig();
   buildCounterGoogleCloudConnectorsV1EventingConfig++;
   if (buildCounterGoogleCloudConnectorsV1EventingConfig < 3) {
-    o.additionalVariables = buildUnnamed64();
+    o.additionalVariables = buildUnnamed65();
     o.authConfig = buildGoogleCloudConnectorsV1AuthConfig();
     o.deadLetterConfig =
         buildGoogleCloudConnectorsV1EventingConfigDeadLetterConfig();
@@ -5041,7 +5089,7 @@ void checkGoogleCloudConnectorsV1EventingConfig(
     api.GoogleCloudConnectorsV1EventingConfig o) {
   buildCounterGoogleCloudConnectorsV1EventingConfig++;
   if (buildCounterGoogleCloudConnectorsV1EventingConfig < 3) {
-    checkUnnamed64(o.additionalVariables!);
+    checkUnnamed65(o.additionalVariables!);
     checkGoogleCloudConnectorsV1AuthConfig(o.authConfig!);
     checkGoogleCloudConnectorsV1EventingConfigDeadLetterConfig(
         o.deadLetterConfig!);
@@ -5122,12 +5170,12 @@ void checkGoogleCloudConnectorsV1EventingRuntimeData(
   buildCounterGoogleCloudConnectorsV1EventingRuntimeData--;
 }
 
-core.List<api.GoogleCloudConnectorsV1ConfigVariable> buildUnnamed65() => [
+core.List<api.GoogleCloudConnectorsV1ConfigVariable> buildUnnamed66() => [
       buildGoogleCloudConnectorsV1ConfigVariable(),
       buildGoogleCloudConnectorsV1ConfigVariable(),
     ];
 
-void checkUnnamed65(core.List<api.GoogleCloudConnectorsV1ConfigVariable> o) {
+void checkUnnamed66(core.List<api.GoogleCloudConnectorsV1ConfigVariable> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudConnectorsV1ConfigVariable(o[0]);
   checkGoogleCloudConnectorsV1ConfigVariable(o[1]);
@@ -5139,7 +5187,7 @@ api.GoogleCloudConnectorsV1EventingRuntimeDataWebhookData
   final o = api.GoogleCloudConnectorsV1EventingRuntimeDataWebhookData();
   buildCounterGoogleCloudConnectorsV1EventingRuntimeDataWebhookData++;
   if (buildCounterGoogleCloudConnectorsV1EventingRuntimeDataWebhookData < 3) {
-    o.additionalVariables = buildUnnamed65();
+    o.additionalVariables = buildUnnamed66();
     o.createTime = 'foo';
     o.id = 'foo';
     o.name = 'foo';
@@ -5154,7 +5202,7 @@ void checkGoogleCloudConnectorsV1EventingRuntimeDataWebhookData(
     api.GoogleCloudConnectorsV1EventingRuntimeDataWebhookData o) {
   buildCounterGoogleCloudConnectorsV1EventingRuntimeDataWebhookData++;
   if (buildCounterGoogleCloudConnectorsV1EventingRuntimeDataWebhookData < 3) {
-    checkUnnamed65(o.additionalVariables!);
+    checkUnnamed66(o.additionalVariables!);
     unittest.expect(
       o.createTime!,
       unittest.equals('foo'),
@@ -5394,12 +5442,12 @@ void checkGoogleCloudConnectorsV1Secret(api.GoogleCloudConnectorsV1Secret o) {
   buildCounterGoogleCloudConnectorsV1Secret--;
 }
 
-core.List<api.GoogleCloudConnectorsV1ConfigVariable> buildUnnamed66() => [
+core.List<api.GoogleCloudConnectorsV1ConfigVariable> buildUnnamed67() => [
       buildGoogleCloudConnectorsV1ConfigVariable(),
       buildGoogleCloudConnectorsV1ConfigVariable(),
     ];
 
-void checkUnnamed66(core.List<api.GoogleCloudConnectorsV1ConfigVariable> o) {
+void checkUnnamed67(core.List<api.GoogleCloudConnectorsV1ConfigVariable> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudConnectorsV1ConfigVariable(o[0]);
   checkGoogleCloudConnectorsV1ConfigVariable(o[1]);
@@ -5410,7 +5458,7 @@ api.GoogleCloudConnectorsV1SslConfig buildGoogleCloudConnectorsV1SslConfig() {
   final o = api.GoogleCloudConnectorsV1SslConfig();
   buildCounterGoogleCloudConnectorsV1SslConfig++;
   if (buildCounterGoogleCloudConnectorsV1SslConfig < 3) {
-    o.additionalVariables = buildUnnamed66();
+    o.additionalVariables = buildUnnamed67();
     o.clientCertType = 'foo';
     o.clientCertificate = buildGoogleCloudConnectorsV1Secret();
     o.clientPrivateKey = buildGoogleCloudConnectorsV1Secret();
@@ -5429,7 +5477,7 @@ void checkGoogleCloudConnectorsV1SslConfig(
     api.GoogleCloudConnectorsV1SslConfig o) {
   buildCounterGoogleCloudConnectorsV1SslConfig++;
   if (buildCounterGoogleCloudConnectorsV1SslConfig < 3) {
-    checkUnnamed66(o.additionalVariables!);
+    checkUnnamed67(o.additionalVariables!);
     unittest.expect(
       o.clientCertType!,
       unittest.equals('foo'),
@@ -5528,12 +5576,12 @@ void checkGoogleCloudIntegrationsV1alphaAttemptStats(
   buildCounterGoogleCloudIntegrationsV1alphaAttemptStats--;
 }
 
-core.List<core.String> buildUnnamed67() => [
+core.List<core.String> buildUnnamed68() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed67(core.List<core.String> o) {
+void checkUnnamed68(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -5559,7 +5607,7 @@ api.GoogleCloudIntegrationsV1alphaAuthConfig
     o.description = 'foo';
     o.displayName = 'foo';
     o.encryptedCredential = 'foo';
-    o.expiryNotificationDuration = buildUnnamed67();
+    o.expiryNotificationDuration = buildUnnamed68();
     o.lastModifierEmail = 'foo';
     o.name = 'foo';
     o.overrideValidTime = 'foo';
@@ -5606,7 +5654,7 @@ void checkGoogleCloudIntegrationsV1alphaAuthConfig(
       o.encryptedCredential!,
       unittest.equals('foo'),
     );
-    checkUnnamed67(o.expiryNotificationDuration!);
+    checkUnnamed68(o.expiryNotificationDuration!);
     unittest.expect(
       o.lastModifierEmail!,
       unittest.equals('foo'),
@@ -5672,12 +5720,12 @@ void checkGoogleCloudIntegrationsV1alphaAuthToken(
   buildCounterGoogleCloudIntegrationsV1alphaAuthToken--;
 }
 
-core.List<core.bool> buildUnnamed68() => [
+core.List<core.bool> buildUnnamed69() => [
       true,
       true,
     ];
 
-void checkUnnamed68(core.List<core.bool> o) {
+void checkUnnamed69(core.List<core.bool> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.isTrue);
   unittest.expect(o[1], unittest.isTrue);
@@ -5689,7 +5737,7 @@ api.GoogleCloudIntegrationsV1alphaBooleanParameterArray
   final o = api.GoogleCloudIntegrationsV1alphaBooleanParameterArray();
   buildCounterGoogleCloudIntegrationsV1alphaBooleanParameterArray++;
   if (buildCounterGoogleCloudIntegrationsV1alphaBooleanParameterArray < 3) {
-    o.booleanValues = buildUnnamed68();
+    o.booleanValues = buildUnnamed69();
   }
   buildCounterGoogleCloudIntegrationsV1alphaBooleanParameterArray--;
   return o;
@@ -5699,7 +5747,7 @@ void checkGoogleCloudIntegrationsV1alphaBooleanParameterArray(
     api.GoogleCloudIntegrationsV1alphaBooleanParameterArray o) {
   buildCounterGoogleCloudIntegrationsV1alphaBooleanParameterArray++;
   if (buildCounterGoogleCloudIntegrationsV1alphaBooleanParameterArray < 3) {
-    checkUnnamed68(o.booleanValues!);
+    checkUnnamed69(o.booleanValues!);
   }
   buildCounterGoogleCloudIntegrationsV1alphaBooleanParameterArray--;
 }
@@ -6016,12 +6064,50 @@ void checkGoogleCloudIntegrationsV1alphaCloudSchedulerConfig(
   buildCounterGoogleCloudIntegrationsV1alphaCloudSchedulerConfig--;
 }
 
-core.List<core.String> buildUnnamed69() => [
+core.List<api.GoogleCloudIntegrationsV1alphaFailurePolicy> buildUnnamed70() => [
+      buildGoogleCloudIntegrationsV1alphaFailurePolicy(),
+      buildGoogleCloudIntegrationsV1alphaFailurePolicy(),
+    ];
+
+void checkUnnamed70(
+    core.List<api.GoogleCloudIntegrationsV1alphaFailurePolicy> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudIntegrationsV1alphaFailurePolicy(o[0]);
+  checkGoogleCloudIntegrationsV1alphaFailurePolicy(o[1]);
+}
+
+core.int buildCounterGoogleCloudIntegrationsV1alphaConditionalFailurePolicies =
+    0;
+api.GoogleCloudIntegrationsV1alphaConditionalFailurePolicies
+    buildGoogleCloudIntegrationsV1alphaConditionalFailurePolicies() {
+  final o = api.GoogleCloudIntegrationsV1alphaConditionalFailurePolicies();
+  buildCounterGoogleCloudIntegrationsV1alphaConditionalFailurePolicies++;
+  if (buildCounterGoogleCloudIntegrationsV1alphaConditionalFailurePolicies <
+      3) {
+    o.defaultFailurePolicy = buildGoogleCloudIntegrationsV1alphaFailurePolicy();
+    o.failurePolicies = buildUnnamed70();
+  }
+  buildCounterGoogleCloudIntegrationsV1alphaConditionalFailurePolicies--;
+  return o;
+}
+
+void checkGoogleCloudIntegrationsV1alphaConditionalFailurePolicies(
+    api.GoogleCloudIntegrationsV1alphaConditionalFailurePolicies o) {
+  buildCounterGoogleCloudIntegrationsV1alphaConditionalFailurePolicies++;
+  if (buildCounterGoogleCloudIntegrationsV1alphaConditionalFailurePolicies <
+      3) {
+    checkGoogleCloudIntegrationsV1alphaFailurePolicy(o.defaultFailurePolicy!);
+    checkUnnamed70(o.failurePolicies!);
+  }
+  buildCounterGoogleCloudIntegrationsV1alphaConditionalFailurePolicies--;
+}
+
+core.List<core.String> buildUnnamed71() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed69(core.List<core.String> o) {
+void checkUnnamed71(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -6033,12 +6119,12 @@ void checkUnnamed69(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed70() => [
+core.List<core.String> buildUnnamed72() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed70(core.List<core.String> o) {
+void checkUnnamed72(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -6056,8 +6142,8 @@ api.GoogleCloudIntegrationsV1alphaConnectionSchemaMetadata
   final o = api.GoogleCloudIntegrationsV1alphaConnectionSchemaMetadata();
   buildCounterGoogleCloudIntegrationsV1alphaConnectionSchemaMetadata++;
   if (buildCounterGoogleCloudIntegrationsV1alphaConnectionSchemaMetadata < 3) {
-    o.actions = buildUnnamed69();
-    o.entities = buildUnnamed70();
+    o.actions = buildUnnamed71();
+    o.entities = buildUnnamed72();
   }
   buildCounterGoogleCloudIntegrationsV1alphaConnectionSchemaMetadata--;
   return o;
@@ -6067,8 +6153,8 @@ void checkGoogleCloudIntegrationsV1alphaConnectionSchemaMetadata(
     api.GoogleCloudIntegrationsV1alphaConnectionSchemaMetadata o) {
   buildCounterGoogleCloudIntegrationsV1alphaConnectionSchemaMetadata++;
   if (buildCounterGoogleCloudIntegrationsV1alphaConnectionSchemaMetadata < 3) {
-    checkUnnamed69(o.actions!);
-    checkUnnamed70(o.entities!);
+    checkUnnamed71(o.actions!);
+    checkUnnamed72(o.entities!);
   }
   buildCounterGoogleCloudIntegrationsV1alphaConnectionSchemaMetadata--;
 }
@@ -6294,12 +6380,12 @@ void checkGoogleCloudIntegrationsV1alphaDeprovisionClientRequest(
   buildCounterGoogleCloudIntegrationsV1alphaDeprovisionClientRequest--;
 }
 
-core.List<core.double> buildUnnamed71() => [
+core.List<core.double> buildUnnamed73() => [
       42.0,
       42.0,
     ];
 
-void checkUnnamed71(core.List<core.double> o) {
+void checkUnnamed73(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -6317,7 +6403,7 @@ api.GoogleCloudIntegrationsV1alphaDoubleParameterArray
   final o = api.GoogleCloudIntegrationsV1alphaDoubleParameterArray();
   buildCounterGoogleCloudIntegrationsV1alphaDoubleParameterArray++;
   if (buildCounterGoogleCloudIntegrationsV1alphaDoubleParameterArray < 3) {
-    o.doubleValues = buildUnnamed71();
+    o.doubleValues = buildUnnamed73();
   }
   buildCounterGoogleCloudIntegrationsV1alphaDoubleParameterArray--;
   return o;
@@ -6327,7 +6413,7 @@ void checkGoogleCloudIntegrationsV1alphaDoubleParameterArray(
     api.GoogleCloudIntegrationsV1alphaDoubleParameterArray o) {
   buildCounterGoogleCloudIntegrationsV1alphaDoubleParameterArray++;
   if (buildCounterGoogleCloudIntegrationsV1alphaDoubleParameterArray < 3) {
-    checkUnnamed71(o.doubleValues!);
+    checkUnnamed73(o.doubleValues!);
   }
   buildCounterGoogleCloudIntegrationsV1alphaDoubleParameterArray--;
 }
@@ -6357,13 +6443,13 @@ void checkGoogleCloudIntegrationsV1alphaDownloadExecutionResponse(
   buildCounterGoogleCloudIntegrationsV1alphaDownloadExecutionResponse--;
 }
 
-core.List<api.GoogleCloudIntegrationsV1alphaSerializedFile> buildUnnamed72() =>
+core.List<api.GoogleCloudIntegrationsV1alphaSerializedFile> buildUnnamed74() =>
     [
       buildGoogleCloudIntegrationsV1alphaSerializedFile(),
       buildGoogleCloudIntegrationsV1alphaSerializedFile(),
     ];
 
-void checkUnnamed72(
+void checkUnnamed74(
     core.List<api.GoogleCloudIntegrationsV1alphaSerializedFile> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudIntegrationsV1alphaSerializedFile(o[0]);
@@ -6381,7 +6467,7 @@ api.GoogleCloudIntegrationsV1alphaDownloadIntegrationVersionResponse
   if (buildCounterGoogleCloudIntegrationsV1alphaDownloadIntegrationVersionResponse <
       3) {
     o.content = 'foo';
-    o.files = buildUnnamed72();
+    o.files = buildUnnamed74();
   }
   buildCounterGoogleCloudIntegrationsV1alphaDownloadIntegrationVersionResponse--;
   return o;
@@ -6396,17 +6482,17 @@ void checkGoogleCloudIntegrationsV1alphaDownloadIntegrationVersionResponse(
       o.content!,
       unittest.equals('foo'),
     );
-    checkUnnamed72(o.files!);
+    checkUnnamed74(o.files!);
   }
   buildCounterGoogleCloudIntegrationsV1alphaDownloadIntegrationVersionResponse--;
 }
 
-core.List<api.GoogleCloudIntegrationsV1alphaFile> buildUnnamed73() => [
+core.List<api.GoogleCloudIntegrationsV1alphaFile> buildUnnamed75() => [
       buildGoogleCloudIntegrationsV1alphaFile(),
       buildGoogleCloudIntegrationsV1alphaFile(),
     ];
 
-void checkUnnamed73(core.List<api.GoogleCloudIntegrationsV1alphaFile> o) {
+void checkUnnamed75(core.List<api.GoogleCloudIntegrationsV1alphaFile> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudIntegrationsV1alphaFile(o[0]);
   checkGoogleCloudIntegrationsV1alphaFile(o[1]);
@@ -6420,7 +6506,7 @@ api.GoogleCloudIntegrationsV1alphaDownloadJsonPackageResponse
   buildCounterGoogleCloudIntegrationsV1alphaDownloadJsonPackageResponse++;
   if (buildCounterGoogleCloudIntegrationsV1alphaDownloadJsonPackageResponse <
       3) {
-    o.files = buildUnnamed73();
+    o.files = buildUnnamed75();
   }
   buildCounterGoogleCloudIntegrationsV1alphaDownloadJsonPackageResponse--;
   return o;
@@ -6431,17 +6517,17 @@ void checkGoogleCloudIntegrationsV1alphaDownloadJsonPackageResponse(
   buildCounterGoogleCloudIntegrationsV1alphaDownloadJsonPackageResponse++;
   if (buildCounterGoogleCloudIntegrationsV1alphaDownloadJsonPackageResponse <
       3) {
-    checkUnnamed73(o.files!);
+    checkUnnamed75(o.files!);
   }
   buildCounterGoogleCloudIntegrationsV1alphaDownloadJsonPackageResponse--;
 }
 
-core.List<core.String> buildUnnamed74() => [
+core.List<core.String> buildUnnamed76() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed74(core.List<core.String> o) {
+void checkUnnamed76(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -6463,7 +6549,7 @@ api.GoogleCloudIntegrationsV1alphaEnumerateConnectorPlatformRegionsResponse
   buildCounterGoogleCloudIntegrationsV1alphaEnumerateConnectorPlatformRegionsResponse++;
   if (buildCounterGoogleCloudIntegrationsV1alphaEnumerateConnectorPlatformRegionsResponse <
       3) {
-    o.regions = buildUnnamed74();
+    o.regions = buildUnnamed76();
   }
   buildCounterGoogleCloudIntegrationsV1alphaEnumerateConnectorPlatformRegionsResponse--;
   return o;
@@ -6475,17 +6561,17 @@ void checkGoogleCloudIntegrationsV1alphaEnumerateConnectorPlatformRegionsRespons
   buildCounterGoogleCloudIntegrationsV1alphaEnumerateConnectorPlatformRegionsResponse++;
   if (buildCounterGoogleCloudIntegrationsV1alphaEnumerateConnectorPlatformRegionsResponse <
       3) {
-    checkUnnamed74(o.regions!);
+    checkUnnamed76(o.regions!);
   }
   buildCounterGoogleCloudIntegrationsV1alphaEnumerateConnectorPlatformRegionsResponse--;
 }
 
-core.List<api.GoogleCloudIntegrationsV1alphaNextTask> buildUnnamed75() => [
+core.List<api.GoogleCloudIntegrationsV1alphaNextTask> buildUnnamed77() => [
       buildGoogleCloudIntegrationsV1alphaNextTask(),
       buildGoogleCloudIntegrationsV1alphaNextTask(),
     ];
 
-void checkUnnamed75(core.List<api.GoogleCloudIntegrationsV1alphaNextTask> o) {
+void checkUnnamed77(core.List<api.GoogleCloudIntegrationsV1alphaNextTask> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudIntegrationsV1alphaNextTask(o[0]);
   checkGoogleCloudIntegrationsV1alphaNextTask(o[1]);
@@ -6502,7 +6588,7 @@ api.GoogleCloudIntegrationsV1alphaErrorCatcherConfig
     o.errorCatcherNumber = 'foo';
     o.label = 'foo';
     o.position = buildGoogleCloudIntegrationsV1alphaCoordinate();
-    o.startErrorTasks = buildUnnamed75();
+    o.startErrorTasks = buildUnnamed77();
   }
   buildCounterGoogleCloudIntegrationsV1alphaErrorCatcherConfig--;
   return o;
@@ -6529,7 +6615,7 @@ void checkGoogleCloudIntegrationsV1alphaErrorCatcherConfig(
       unittest.equals('foo'),
     );
     checkGoogleCloudIntegrationsV1alphaCoordinate(o.position!);
-    checkUnnamed75(o.startErrorTasks!);
+    checkUnnamed77(o.startErrorTasks!);
   }
   buildCounterGoogleCloudIntegrationsV1alphaErrorCatcherConfig--;
 }
@@ -6587,12 +6673,12 @@ void checkGoogleCloudIntegrationsV1alphaExecuteEventResponse(
 }
 
 core.Map<core.String, api.GoogleCloudIntegrationsV1alphaValueType>
-    buildUnnamed76() => {
+    buildUnnamed78() => {
           'x': buildGoogleCloudIntegrationsV1alphaValueType(),
           'y': buildGoogleCloudIntegrationsV1alphaValueType(),
         };
 
-void checkUnnamed76(
+void checkUnnamed78(
     core.Map<core.String, api.GoogleCloudIntegrationsV1alphaValueType> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudIntegrationsV1alphaValueType(o['x']!);
@@ -6600,12 +6686,12 @@ void checkUnnamed76(
 }
 
 core.List<api.EnterpriseCrmFrontendsEventbusProtoParameterEntry>
-    buildUnnamed77() => [
+    buildUnnamed79() => [
           buildEnterpriseCrmFrontendsEventbusProtoParameterEntry(),
           buildEnterpriseCrmFrontendsEventbusProtoParameterEntry(),
         ];
 
-void checkUnnamed77(
+void checkUnnamed79(
     core.List<api.EnterpriseCrmFrontendsEventbusProtoParameterEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEnterpriseCrmFrontendsEventbusProtoParameterEntry(o[0]);
@@ -6622,8 +6708,8 @@ api.GoogleCloudIntegrationsV1alphaExecuteIntegrationsRequest
       3) {
     o.doNotPropagateError = true;
     o.executionId = 'foo';
-    o.inputParameters = buildUnnamed76();
-    o.parameterEntries = buildUnnamed77();
+    o.inputParameters = buildUnnamed78();
+    o.parameterEntries = buildUnnamed79();
     o.parameters = buildEnterpriseCrmFrontendsEventbusProtoEventParameters();
     o.requestId = 'foo';
     o.triggerId = 'foo';
@@ -6642,8 +6728,8 @@ void checkGoogleCloudIntegrationsV1alphaExecuteIntegrationsRequest(
       o.executionId!,
       unittest.equals('foo'),
     );
-    checkUnnamed76(o.inputParameters!);
-    checkUnnamed77(o.parameterEntries!);
+    checkUnnamed78(o.inputParameters!);
+    checkUnnamed79(o.parameterEntries!);
     checkEnterpriseCrmFrontendsEventbusProtoEventParameters(o.parameters!);
     unittest.expect(
       o.requestId!,
@@ -6657,7 +6743,7 @@ void checkGoogleCloudIntegrationsV1alphaExecuteIntegrationsRequest(
   buildCounterGoogleCloudIntegrationsV1alphaExecuteIntegrationsRequest--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed78() => {
+core.Map<core.String, core.Object?> buildUnnamed80() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -6670,7 +6756,7 @@ core.Map<core.String, core.Object?> buildUnnamed78() => {
       },
     };
 
-void checkUnnamed78(core.Map<core.String, core.Object?> o) {
+void checkUnnamed80(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted11 = (o['x']!) as core.Map;
   unittest.expect(casted11, unittest.hasLength(3));
@@ -6703,12 +6789,12 @@ void checkUnnamed78(core.Map<core.String, core.Object?> o) {
 }
 
 core.List<api.EnterpriseCrmFrontendsEventbusProtoParameterEntry>
-    buildUnnamed79() => [
+    buildUnnamed81() => [
           buildEnterpriseCrmFrontendsEventbusProtoParameterEntry(),
           buildEnterpriseCrmFrontendsEventbusProtoParameterEntry(),
         ];
 
-void checkUnnamed79(
+void checkUnnamed81(
     core.List<api.EnterpriseCrmFrontendsEventbusProtoParameterEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEnterpriseCrmFrontendsEventbusProtoParameterEntry(o[0]);
@@ -6727,8 +6813,8 @@ api.GoogleCloudIntegrationsV1alphaExecuteIntegrationsResponse
         buildEnterpriseCrmFrontendsEventbusProtoEventParameters();
     o.executionFailed = true;
     o.executionId = 'foo';
-    o.outputParameters = buildUnnamed78();
-    o.parameterEntries = buildUnnamed79();
+    o.outputParameters = buildUnnamed80();
+    o.parameterEntries = buildUnnamed81();
   }
   buildCounterGoogleCloudIntegrationsV1alphaExecuteIntegrationsResponse--;
   return o;
@@ -6745,47 +6831,21 @@ void checkGoogleCloudIntegrationsV1alphaExecuteIntegrationsResponse(
       o.executionId!,
       unittest.equals('foo'),
     );
-    checkUnnamed78(o.outputParameters!);
-    checkUnnamed79(o.parameterEntries!);
+    checkUnnamed80(o.outputParameters!);
+    checkUnnamed81(o.parameterEntries!);
   }
   buildCounterGoogleCloudIntegrationsV1alphaExecuteIntegrationsResponse--;
 }
 
-core.List<api.GoogleCloudIntegrationsV1alphaExecution> buildUnnamed80() => [
+core.List<api.GoogleCloudIntegrationsV1alphaExecution> buildUnnamed82() => [
       buildGoogleCloudIntegrationsV1alphaExecution(),
       buildGoogleCloudIntegrationsV1alphaExecution(),
     ];
 
-void checkUnnamed80(core.List<api.GoogleCloudIntegrationsV1alphaExecution> o) {
+void checkUnnamed82(core.List<api.GoogleCloudIntegrationsV1alphaExecution> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudIntegrationsV1alphaExecution(o[0]);
   checkGoogleCloudIntegrationsV1alphaExecution(o[1]);
-}
-
-core.Map<core.String, api.GoogleCloudIntegrationsV1alphaValueType>
-    buildUnnamed81() => {
-          'x': buildGoogleCloudIntegrationsV1alphaValueType(),
-          'y': buildGoogleCloudIntegrationsV1alphaValueType(),
-        };
-
-void checkUnnamed81(
-    core.Map<core.String, api.GoogleCloudIntegrationsV1alphaValueType> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudIntegrationsV1alphaValueType(o['x']!);
-  checkGoogleCloudIntegrationsV1alphaValueType(o['y']!);
-}
-
-core.List<api.EnterpriseCrmFrontendsEventbusProtoParameterEntry>
-    buildUnnamed82() => [
-          buildEnterpriseCrmFrontendsEventbusProtoParameterEntry(),
-          buildEnterpriseCrmFrontendsEventbusProtoParameterEntry(),
-        ];
-
-void checkUnnamed82(
-    core.List<api.EnterpriseCrmFrontendsEventbusProtoParameterEntry> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkEnterpriseCrmFrontendsEventbusProtoParameterEntry(o[0]);
-  checkEnterpriseCrmFrontendsEventbusProtoParameterEntry(o[1]);
 }
 
 core.Map<core.String, api.GoogleCloudIntegrationsV1alphaValueType>
@@ -6814,6 +6874,32 @@ void checkUnnamed84(
   checkEnterpriseCrmFrontendsEventbusProtoParameterEntry(o[1]);
 }
 
+core.Map<core.String, api.GoogleCloudIntegrationsV1alphaValueType>
+    buildUnnamed85() => {
+          'x': buildGoogleCloudIntegrationsV1alphaValueType(),
+          'y': buildGoogleCloudIntegrationsV1alphaValueType(),
+        };
+
+void checkUnnamed85(
+    core.Map<core.String, api.GoogleCloudIntegrationsV1alphaValueType> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudIntegrationsV1alphaValueType(o['x']!);
+  checkGoogleCloudIntegrationsV1alphaValueType(o['y']!);
+}
+
+core.List<api.EnterpriseCrmFrontendsEventbusProtoParameterEntry>
+    buildUnnamed86() => [
+          buildEnterpriseCrmFrontendsEventbusProtoParameterEntry(),
+          buildEnterpriseCrmFrontendsEventbusProtoParameterEntry(),
+        ];
+
+void checkUnnamed86(
+    core.List<api.EnterpriseCrmFrontendsEventbusProtoParameterEntry> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkEnterpriseCrmFrontendsEventbusProtoParameterEntry(o[0]);
+  checkEnterpriseCrmFrontendsEventbusProtoParameterEntry(o[1]);
+}
+
 core.int buildCounterGoogleCloudIntegrationsV1alphaExecution = 0;
 api.GoogleCloudIntegrationsV1alphaExecution
     buildGoogleCloudIntegrationsV1alphaExecution() {
@@ -6823,7 +6909,7 @@ api.GoogleCloudIntegrationsV1alphaExecution
     o.cloudLoggingDetails =
         buildGoogleCloudIntegrationsV1alphaCloudLoggingDetails();
     o.createTime = 'foo';
-    o.directSubExecutions = buildUnnamed80();
+    o.directSubExecutions = buildUnnamed82();
     o.eventExecutionDetails =
         buildEnterpriseCrmEventbusProtoEventExecutionDetails();
     o.executionDetails = buildGoogleCloudIntegrationsV1alphaExecutionDetails();
@@ -6831,10 +6917,10 @@ api.GoogleCloudIntegrationsV1alphaExecution
     o.integrationVersionState = 'foo';
     o.name = 'foo';
     o.replayInfo = buildGoogleCloudIntegrationsV1alphaExecutionReplayInfo();
-    o.requestParameters = buildUnnamed81();
-    o.requestParams = buildUnnamed82();
-    o.responseParameters = buildUnnamed83();
-    o.responseParams = buildUnnamed84();
+    o.requestParameters = buildUnnamed83();
+    o.requestParams = buildUnnamed84();
+    o.responseParameters = buildUnnamed85();
+    o.responseParams = buildUnnamed86();
     o.snapshotNumber = 'foo';
     o.triggerId = 'foo';
     o.updateTime = 'foo';
@@ -6853,7 +6939,7 @@ void checkGoogleCloudIntegrationsV1alphaExecution(
       o.createTime!,
       unittest.equals('foo'),
     );
-    checkUnnamed80(o.directSubExecutions!);
+    checkUnnamed82(o.directSubExecutions!);
     checkEnterpriseCrmEventbusProtoEventExecutionDetails(
         o.eventExecutionDetails!);
     checkGoogleCloudIntegrationsV1alphaExecutionDetails(o.executionDetails!);
@@ -6870,10 +6956,10 @@ void checkGoogleCloudIntegrationsV1alphaExecution(
       unittest.equals('foo'),
     );
     checkGoogleCloudIntegrationsV1alphaExecutionReplayInfo(o.replayInfo!);
-    checkUnnamed81(o.requestParameters!);
-    checkUnnamed82(o.requestParams!);
-    checkUnnamed83(o.responseParameters!);
-    checkUnnamed84(o.responseParams!);
+    checkUnnamed83(o.requestParameters!);
+    checkUnnamed84(o.requestParams!);
+    checkUnnamed85(o.responseParameters!);
+    checkUnnamed86(o.responseParams!);
     unittest.expect(
       o.snapshotNumber!,
       unittest.equals('foo'),
@@ -6890,12 +6976,12 @@ void checkGoogleCloudIntegrationsV1alphaExecution(
   buildCounterGoogleCloudIntegrationsV1alphaExecution--;
 }
 
-core.List<api.GoogleCloudIntegrationsV1alphaAttemptStats> buildUnnamed85() => [
+core.List<api.GoogleCloudIntegrationsV1alphaAttemptStats> buildUnnamed87() => [
       buildGoogleCloudIntegrationsV1alphaAttemptStats(),
       buildGoogleCloudIntegrationsV1alphaAttemptStats(),
     ];
 
-void checkUnnamed85(
+void checkUnnamed87(
     core.List<api.GoogleCloudIntegrationsV1alphaAttemptStats> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudIntegrationsV1alphaAttemptStats(o[0]);
@@ -6903,12 +6989,12 @@ void checkUnnamed85(
 }
 
 core.List<api.GoogleCloudIntegrationsV1alphaExecutionSnapshot>
-    buildUnnamed86() => [
+    buildUnnamed88() => [
           buildGoogleCloudIntegrationsV1alphaExecutionSnapshot(),
           buildGoogleCloudIntegrationsV1alphaExecutionSnapshot(),
         ];
 
-void checkUnnamed86(
+void checkUnnamed88(
     core.List<api.GoogleCloudIntegrationsV1alphaExecutionSnapshot> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudIntegrationsV1alphaExecutionSnapshot(o[0]);
@@ -6921,9 +7007,9 @@ api.GoogleCloudIntegrationsV1alphaExecutionDetails
   final o = api.GoogleCloudIntegrationsV1alphaExecutionDetails();
   buildCounterGoogleCloudIntegrationsV1alphaExecutionDetails++;
   if (buildCounterGoogleCloudIntegrationsV1alphaExecutionDetails < 3) {
-    o.attemptStats = buildUnnamed85();
+    o.attemptStats = buildUnnamed87();
     o.eventExecutionSnapshotsSize = 'foo';
-    o.executionSnapshots = buildUnnamed86();
+    o.executionSnapshots = buildUnnamed88();
     o.state = 'foo';
   }
   buildCounterGoogleCloudIntegrationsV1alphaExecutionDetails--;
@@ -6934,12 +7020,12 @@ void checkGoogleCloudIntegrationsV1alphaExecutionDetails(
     api.GoogleCloudIntegrationsV1alphaExecutionDetails o) {
   buildCounterGoogleCloudIntegrationsV1alphaExecutionDetails++;
   if (buildCounterGoogleCloudIntegrationsV1alphaExecutionDetails < 3) {
-    checkUnnamed85(o.attemptStats!);
+    checkUnnamed87(o.attemptStats!);
     unittest.expect(
       o.eventExecutionSnapshotsSize!,
       unittest.equals('foo'),
     );
-    checkUnnamed86(o.executionSnapshots!);
+    checkUnnamed88(o.executionSnapshots!);
     unittest.expect(
       o.state!,
       unittest.equals('foo'),
@@ -6948,12 +7034,12 @@ void checkGoogleCloudIntegrationsV1alphaExecutionDetails(
   buildCounterGoogleCloudIntegrationsV1alphaExecutionDetails--;
 }
 
-core.List<core.String> buildUnnamed87() => [
+core.List<core.String> buildUnnamed89() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed87(core.List<core.String> o) {
+void checkUnnamed89(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -6973,7 +7059,7 @@ api.GoogleCloudIntegrationsV1alphaExecutionReplayInfo
   if (buildCounterGoogleCloudIntegrationsV1alphaExecutionReplayInfo < 3) {
     o.originalExecutionInfoId = 'foo';
     o.replayReason = 'foo';
-    o.replayedExecutionInfoIds = buildUnnamed87();
+    o.replayedExecutionInfoIds = buildUnnamed89();
   }
   buildCounterGoogleCloudIntegrationsV1alphaExecutionReplayInfo--;
   return o;
@@ -6991,18 +7077,18 @@ void checkGoogleCloudIntegrationsV1alphaExecutionReplayInfo(
       o.replayReason!,
       unittest.equals('foo'),
     );
-    checkUnnamed87(o.replayedExecutionInfoIds!);
+    checkUnnamed89(o.replayedExecutionInfoIds!);
   }
   buildCounterGoogleCloudIntegrationsV1alphaExecutionReplayInfo--;
 }
 
 core.Map<core.String, api.GoogleCloudIntegrationsV1alphaValueType>
-    buildUnnamed88() => {
+    buildUnnamed90() => {
           'x': buildGoogleCloudIntegrationsV1alphaValueType(),
           'y': buildGoogleCloudIntegrationsV1alphaValueType(),
         };
 
-void checkUnnamed88(
+void checkUnnamed90(
     core.Map<core.String, api.GoogleCloudIntegrationsV1alphaValueType> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudIntegrationsV1alphaValueType(o['x']!);
@@ -7010,12 +7096,12 @@ void checkUnnamed88(
 }
 
 core.List<api.GoogleCloudIntegrationsV1alphaTaskExecutionDetails>
-    buildUnnamed89() => [
+    buildUnnamed91() => [
           buildGoogleCloudIntegrationsV1alphaTaskExecutionDetails(),
           buildGoogleCloudIntegrationsV1alphaTaskExecutionDetails(),
         ];
 
-void checkUnnamed89(
+void checkUnnamed91(
     core.List<api.GoogleCloudIntegrationsV1alphaTaskExecutionDetails> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudIntegrationsV1alphaTaskExecutionDetails(o[0]);
@@ -7031,8 +7117,8 @@ api.GoogleCloudIntegrationsV1alphaExecutionSnapshot
     o.checkpointTaskNumber = 'foo';
     o.executionSnapshotMetadata =
         buildGoogleCloudIntegrationsV1alphaExecutionSnapshotExecutionSnapshotMetadata();
-    o.params = buildUnnamed88();
-    o.taskExecutionDetails = buildUnnamed89();
+    o.params = buildUnnamed90();
+    o.taskExecutionDetails = buildUnnamed91();
   }
   buildCounterGoogleCloudIntegrationsV1alphaExecutionSnapshot--;
   return o;
@@ -7048,18 +7134,18 @@ void checkGoogleCloudIntegrationsV1alphaExecutionSnapshot(
     );
     checkGoogleCloudIntegrationsV1alphaExecutionSnapshotExecutionSnapshotMetadata(
         o.executionSnapshotMetadata!);
-    checkUnnamed88(o.params!);
-    checkUnnamed89(o.taskExecutionDetails!);
+    checkUnnamed90(o.params!);
+    checkUnnamed91(o.taskExecutionDetails!);
   }
   buildCounterGoogleCloudIntegrationsV1alphaExecutionSnapshot--;
 }
 
-core.List<core.String> buildUnnamed90() => [
+core.List<core.String> buildUnnamed92() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed90(core.List<core.String> o) {
+void checkUnnamed92(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -7071,12 +7157,12 @@ void checkUnnamed90(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed91() => [
+core.List<core.String> buildUnnamed93() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed91(core.List<core.String> o) {
+void checkUnnamed93(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -7098,8 +7184,8 @@ api.GoogleCloudIntegrationsV1alphaExecutionSnapshotExecutionSnapshotMetadata
   buildCounterGoogleCloudIntegrationsV1alphaExecutionSnapshotExecutionSnapshotMetadata++;
   if (buildCounterGoogleCloudIntegrationsV1alphaExecutionSnapshotExecutionSnapshotMetadata <
       3) {
-    o.ancestorIterationNumbers = buildUnnamed90();
-    o.ancestorTaskNumbers = buildUnnamed91();
+    o.ancestorIterationNumbers = buildUnnamed92();
+    o.ancestorTaskNumbers = buildUnnamed93();
     o.executionAttempt = 42;
     o.integrationName = 'foo';
     o.task = 'foo';
@@ -7117,8 +7203,8 @@ void checkGoogleCloudIntegrationsV1alphaExecutionSnapshotExecutionSnapshotMetada
   buildCounterGoogleCloudIntegrationsV1alphaExecutionSnapshotExecutionSnapshotMetadata++;
   if (buildCounterGoogleCloudIntegrationsV1alphaExecutionSnapshotExecutionSnapshotMetadata <
       3) {
-    checkUnnamed90(o.ancestorIterationNumbers!);
-    checkUnnamed91(o.ancestorTaskNumbers!);
+    checkUnnamed92(o.ancestorIterationNumbers!);
+    checkUnnamed93(o.ancestorTaskNumbers!);
     unittest.expect(
       o.executionAttempt!,
       unittest.equals(42),
@@ -7186,7 +7272,7 @@ void checkGoogleCloudIntegrationsV1alphaFailurePolicy(
   buildCounterGoogleCloudIntegrationsV1alphaFailurePolicy--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed92() => {
+core.Map<core.String, core.Object?> buildUnnamed94() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -7199,7 +7285,7 @@ core.Map<core.String, core.Object?> buildUnnamed92() => {
       },
     };
 
-void checkUnnamed92(core.Map<core.String, core.Object?> o) {
+void checkUnnamed94(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted13 = (o['x']!) as core.Map;
   unittest.expect(casted13, unittest.hasLength(3));
@@ -7237,7 +7323,7 @@ api.GoogleCloudIntegrationsV1alphaFile
   final o = api.GoogleCloudIntegrationsV1alphaFile();
   buildCounterGoogleCloudIntegrationsV1alphaFile++;
   if (buildCounterGoogleCloudIntegrationsV1alphaFile < 3) {
-    o.integrationConfig = buildUnnamed92();
+    o.integrationConfig = buildUnnamed94();
     o.integrationVersion =
         buildGoogleCloudIntegrationsV1alphaIntegrationVersion();
     o.type = 'foo';
@@ -7250,7 +7336,7 @@ void checkGoogleCloudIntegrationsV1alphaFile(
     api.GoogleCloudIntegrationsV1alphaFile o) {
   buildCounterGoogleCloudIntegrationsV1alphaFile++;
   if (buildCounterGoogleCloudIntegrationsV1alphaFile < 3) {
-    checkUnnamed92(o.integrationConfig!);
+    checkUnnamed94(o.integrationConfig!);
     checkGoogleCloudIntegrationsV1alphaIntegrationVersion(
         o.integrationVersion!);
     unittest.expect(
@@ -7328,12 +7414,12 @@ void checkGoogleCloudIntegrationsV1alphaGetClientResponse(
   buildCounterGoogleCloudIntegrationsV1alphaGetClientResponse--;
 }
 
-core.List<core.String> buildUnnamed93() => [
+core.List<core.String> buildUnnamed95() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed93(core.List<core.String> o) {
+void checkUnnamed95(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -7351,7 +7437,7 @@ api.GoogleCloudIntegrationsV1alphaIntParameterArray
   final o = api.GoogleCloudIntegrationsV1alphaIntParameterArray();
   buildCounterGoogleCloudIntegrationsV1alphaIntParameterArray++;
   if (buildCounterGoogleCloudIntegrationsV1alphaIntParameterArray < 3) {
-    o.intValues = buildUnnamed93();
+    o.intValues = buildUnnamed95();
   }
   buildCounterGoogleCloudIntegrationsV1alphaIntParameterArray--;
   return o;
@@ -7361,7 +7447,7 @@ void checkGoogleCloudIntegrationsV1alphaIntParameterArray(
     api.GoogleCloudIntegrationsV1alphaIntParameterArray o) {
   buildCounterGoogleCloudIntegrationsV1alphaIntParameterArray++;
   if (buildCounterGoogleCloudIntegrationsV1alphaIntParameterArray < 3) {
-    checkUnnamed93(o.intValues!);
+    checkUnnamed95(o.intValues!);
   }
   buildCounterGoogleCloudIntegrationsV1alphaIntParameterArray--;
 }
@@ -7594,12 +7680,12 @@ void checkGoogleCloudIntegrationsV1alphaIntegrationParameter(
 }
 
 core.List<api.GoogleCloudIntegrationsV1alphaErrorCatcherConfig>
-    buildUnnamed94() => [
+    buildUnnamed96() => [
           buildGoogleCloudIntegrationsV1alphaErrorCatcherConfig(),
           buildGoogleCloudIntegrationsV1alphaErrorCatcherConfig(),
         ];
 
-void checkUnnamed94(
+void checkUnnamed96(
     core.List<api.GoogleCloudIntegrationsV1alphaErrorCatcherConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudIntegrationsV1alphaErrorCatcherConfig(o[0]);
@@ -7607,12 +7693,12 @@ void checkUnnamed94(
 }
 
 core.List<api.GoogleCloudIntegrationsV1alphaIntegrationConfigParameter>
-    buildUnnamed95() => [
+    buildUnnamed97() => [
           buildGoogleCloudIntegrationsV1alphaIntegrationConfigParameter(),
           buildGoogleCloudIntegrationsV1alphaIntegrationConfigParameter(),
         ];
 
-void checkUnnamed95(
+void checkUnnamed97(
     core.List<api.GoogleCloudIntegrationsV1alphaIntegrationConfigParameter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudIntegrationsV1alphaIntegrationConfigParameter(o[0]);
@@ -7620,48 +7706,49 @@ void checkUnnamed95(
 }
 
 core.List<api.GoogleCloudIntegrationsV1alphaIntegrationParameter>
-    buildUnnamed96() => [
+    buildUnnamed98() => [
           buildGoogleCloudIntegrationsV1alphaIntegrationParameter(),
           buildGoogleCloudIntegrationsV1alphaIntegrationParameter(),
         ];
 
-void checkUnnamed96(
+void checkUnnamed98(
     core.List<api.GoogleCloudIntegrationsV1alphaIntegrationParameter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudIntegrationsV1alphaIntegrationParameter(o[0]);
   checkGoogleCloudIntegrationsV1alphaIntegrationParameter(o[1]);
 }
 
-core.List<api.GoogleCloudIntegrationsV1alphaTaskConfig> buildUnnamed97() => [
+core.List<api.GoogleCloudIntegrationsV1alphaTaskConfig> buildUnnamed99() => [
       buildGoogleCloudIntegrationsV1alphaTaskConfig(),
       buildGoogleCloudIntegrationsV1alphaTaskConfig(),
     ];
 
-void checkUnnamed97(core.List<api.GoogleCloudIntegrationsV1alphaTaskConfig> o) {
+void checkUnnamed99(core.List<api.GoogleCloudIntegrationsV1alphaTaskConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudIntegrationsV1alphaTaskConfig(o[0]);
   checkGoogleCloudIntegrationsV1alphaTaskConfig(o[1]);
 }
 
-core.List<api.EnterpriseCrmFrontendsEventbusProtoTaskConfig> buildUnnamed98() =>
-    [
-      buildEnterpriseCrmFrontendsEventbusProtoTaskConfig(),
-      buildEnterpriseCrmFrontendsEventbusProtoTaskConfig(),
-    ];
+core.List<api.EnterpriseCrmFrontendsEventbusProtoTaskConfig>
+    buildUnnamed100() => [
+          buildEnterpriseCrmFrontendsEventbusProtoTaskConfig(),
+          buildEnterpriseCrmFrontendsEventbusProtoTaskConfig(),
+        ];
 
-void checkUnnamed98(
+void checkUnnamed100(
     core.List<api.EnterpriseCrmFrontendsEventbusProtoTaskConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEnterpriseCrmFrontendsEventbusProtoTaskConfig(o[0]);
   checkEnterpriseCrmFrontendsEventbusProtoTaskConfig(o[1]);
 }
 
-core.List<api.GoogleCloudIntegrationsV1alphaTriggerConfig> buildUnnamed99() => [
+core.List<api.GoogleCloudIntegrationsV1alphaTriggerConfig> buildUnnamed101() =>
+    [
       buildGoogleCloudIntegrationsV1alphaTriggerConfig(),
       buildGoogleCloudIntegrationsV1alphaTriggerConfig(),
     ];
 
-void checkUnnamed99(
+void checkUnnamed101(
     core.List<api.GoogleCloudIntegrationsV1alphaTriggerConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudIntegrationsV1alphaTriggerConfig(o[0]);
@@ -7669,12 +7756,12 @@ void checkUnnamed99(
 }
 
 core.List<api.EnterpriseCrmFrontendsEventbusProtoTriggerConfig>
-    buildUnnamed100() => [
+    buildUnnamed102() => [
           buildEnterpriseCrmFrontendsEventbusProtoTriggerConfig(),
           buildEnterpriseCrmFrontendsEventbusProtoTriggerConfig(),
         ];
 
-void checkUnnamed100(
+void checkUnnamed102(
     core.List<api.EnterpriseCrmFrontendsEventbusProtoTriggerConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEnterpriseCrmFrontendsEventbusProtoTriggerConfig(o[0]);
@@ -7694,9 +7781,9 @@ api.GoogleCloudIntegrationsV1alphaIntegrationVersion
     o.databasePersistencePolicy = 'foo';
     o.description = 'foo';
     o.enableVariableMasking = true;
-    o.errorCatcherConfigs = buildUnnamed94();
-    o.integrationConfigParameters = buildUnnamed95();
-    o.integrationParameters = buildUnnamed96();
+    o.errorCatcherConfigs = buildUnnamed96();
+    o.integrationConfigParameters = buildUnnamed97();
+    o.integrationParameters = buildUnnamed98();
     o.integrationParametersInternal =
         buildEnterpriseCrmFrontendsEventbusProtoWorkflowParameters();
     o.lastModifierEmail = 'foo';
@@ -7708,11 +7795,11 @@ api.GoogleCloudIntegrationsV1alphaIntegrationVersion
     o.snapshotNumber = 'foo';
     o.state = 'foo';
     o.status = 'foo';
-    o.taskConfigs = buildUnnamed97();
-    o.taskConfigsInternal = buildUnnamed98();
+    o.taskConfigs = buildUnnamed99();
+    o.taskConfigsInternal = buildUnnamed100();
     o.teardown = buildEnterpriseCrmEventbusProtoTeardown();
-    o.triggerConfigs = buildUnnamed99();
-    o.triggerConfigsInternal = buildUnnamed100();
+    o.triggerConfigs = buildUnnamed101();
+    o.triggerConfigsInternal = buildUnnamed102();
     o.updateTime = 'foo';
     o.userLabel = 'foo';
   }
@@ -7743,9 +7830,9 @@ void checkGoogleCloudIntegrationsV1alphaIntegrationVersion(
       unittest.equals('foo'),
     );
     unittest.expect(o.enableVariableMasking!, unittest.isTrue);
-    checkUnnamed94(o.errorCatcherConfigs!);
-    checkUnnamed95(o.integrationConfigParameters!);
-    checkUnnamed96(o.integrationParameters!);
+    checkUnnamed96(o.errorCatcherConfigs!);
+    checkUnnamed97(o.integrationConfigParameters!);
+    checkUnnamed98(o.integrationParameters!);
     checkEnterpriseCrmFrontendsEventbusProtoWorkflowParameters(
         o.integrationParametersInternal!);
     unittest.expect(
@@ -7784,11 +7871,11 @@ void checkGoogleCloudIntegrationsV1alphaIntegrationVersion(
       o.status!,
       unittest.equals('foo'),
     );
-    checkUnnamed97(o.taskConfigs!);
-    checkUnnamed98(o.taskConfigsInternal!);
+    checkUnnamed99(o.taskConfigs!);
+    checkUnnamed100(o.taskConfigsInternal!);
     checkEnterpriseCrmEventbusProtoTeardown(o.teardown!);
-    checkUnnamed99(o.triggerConfigs!);
-    checkUnnamed100(o.triggerConfigsInternal!);
+    checkUnnamed101(o.triggerConfigs!);
+    checkUnnamed102(o.triggerConfigsInternal!);
     unittest.expect(
       o.updateTime!,
       unittest.equals('foo'),
@@ -7941,12 +8028,12 @@ void checkGoogleCloudIntegrationsV1alphaLinkAppsScriptProjectResponse(
   buildCounterGoogleCloudIntegrationsV1alphaLinkAppsScriptProjectResponse--;
 }
 
-core.List<api.GoogleCloudIntegrationsV1alphaAuthConfig> buildUnnamed101() => [
+core.List<api.GoogleCloudIntegrationsV1alphaAuthConfig> buildUnnamed103() => [
       buildGoogleCloudIntegrationsV1alphaAuthConfig(),
       buildGoogleCloudIntegrationsV1alphaAuthConfig(),
     ];
 
-void checkUnnamed101(
+void checkUnnamed103(
     core.List<api.GoogleCloudIntegrationsV1alphaAuthConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudIntegrationsV1alphaAuthConfig(o[0]);
@@ -7959,7 +8046,7 @@ api.GoogleCloudIntegrationsV1alphaListAuthConfigsResponse
   final o = api.GoogleCloudIntegrationsV1alphaListAuthConfigsResponse();
   buildCounterGoogleCloudIntegrationsV1alphaListAuthConfigsResponse++;
   if (buildCounterGoogleCloudIntegrationsV1alphaListAuthConfigsResponse < 3) {
-    o.authConfigs = buildUnnamed101();
+    o.authConfigs = buildUnnamed103();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudIntegrationsV1alphaListAuthConfigsResponse--;
@@ -7970,7 +8057,7 @@ void checkGoogleCloudIntegrationsV1alphaListAuthConfigsResponse(
     api.GoogleCloudIntegrationsV1alphaListAuthConfigsResponse o) {
   buildCounterGoogleCloudIntegrationsV1alphaListAuthConfigsResponse++;
   if (buildCounterGoogleCloudIntegrationsV1alphaListAuthConfigsResponse < 3) {
-    checkUnnamed101(o.authConfigs!);
+    checkUnnamed103(o.authConfigs!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -7979,12 +8066,12 @@ void checkGoogleCloudIntegrationsV1alphaListAuthConfigsResponse(
   buildCounterGoogleCloudIntegrationsV1alphaListAuthConfigsResponse--;
 }
 
-core.List<api.GoogleCloudIntegrationsV1alphaCertificate> buildUnnamed102() => [
+core.List<api.GoogleCloudIntegrationsV1alphaCertificate> buildUnnamed104() => [
       buildGoogleCloudIntegrationsV1alphaCertificate(),
       buildGoogleCloudIntegrationsV1alphaCertificate(),
     ];
 
-void checkUnnamed102(
+void checkUnnamed104(
     core.List<api.GoogleCloudIntegrationsV1alphaCertificate> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudIntegrationsV1alphaCertificate(o[0]);
@@ -7997,7 +8084,7 @@ api.GoogleCloudIntegrationsV1alphaListCertificatesResponse
   final o = api.GoogleCloudIntegrationsV1alphaListCertificatesResponse();
   buildCounterGoogleCloudIntegrationsV1alphaListCertificatesResponse++;
   if (buildCounterGoogleCloudIntegrationsV1alphaListCertificatesResponse < 3) {
-    o.certificates = buildUnnamed102();
+    o.certificates = buildUnnamed104();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudIntegrationsV1alphaListCertificatesResponse--;
@@ -8008,7 +8095,7 @@ void checkGoogleCloudIntegrationsV1alphaListCertificatesResponse(
     api.GoogleCloudIntegrationsV1alphaListCertificatesResponse o) {
   buildCounterGoogleCloudIntegrationsV1alphaListCertificatesResponse++;
   if (buildCounterGoogleCloudIntegrationsV1alphaListCertificatesResponse < 3) {
-    checkUnnamed102(o.certificates!);
+    checkUnnamed104(o.certificates!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -8017,12 +8104,12 @@ void checkGoogleCloudIntegrationsV1alphaListCertificatesResponse(
   buildCounterGoogleCloudIntegrationsV1alphaListCertificatesResponse--;
 }
 
-core.List<api.GoogleCloudConnectorsV1Connection> buildUnnamed103() => [
+core.List<api.GoogleCloudConnectorsV1Connection> buildUnnamed105() => [
       buildGoogleCloudConnectorsV1Connection(),
       buildGoogleCloudConnectorsV1Connection(),
     ];
 
-void checkUnnamed103(core.List<api.GoogleCloudConnectorsV1Connection> o) {
+void checkUnnamed105(core.List<api.GoogleCloudConnectorsV1Connection> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudConnectorsV1Connection(o[0]);
   checkGoogleCloudConnectorsV1Connection(o[1]);
@@ -8034,7 +8121,7 @@ api.GoogleCloudIntegrationsV1alphaListConnectionsResponse
   final o = api.GoogleCloudIntegrationsV1alphaListConnectionsResponse();
   buildCounterGoogleCloudIntegrationsV1alphaListConnectionsResponse++;
   if (buildCounterGoogleCloudIntegrationsV1alphaListConnectionsResponse < 3) {
-    o.connections = buildUnnamed103();
+    o.connections = buildUnnamed105();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudIntegrationsV1alphaListConnectionsResponse--;
@@ -8045,7 +8132,7 @@ void checkGoogleCloudIntegrationsV1alphaListConnectionsResponse(
     api.GoogleCloudIntegrationsV1alphaListConnectionsResponse o) {
   buildCounterGoogleCloudIntegrationsV1alphaListConnectionsResponse++;
   if (buildCounterGoogleCloudIntegrationsV1alphaListConnectionsResponse < 3) {
-    checkUnnamed103(o.connections!);
+    checkUnnamed105(o.connections!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -8055,24 +8142,24 @@ void checkGoogleCloudIntegrationsV1alphaListConnectionsResponse(
 }
 
 core.List<api.EnterpriseCrmFrontendsEventbusProtoEventExecutionInfo>
-    buildUnnamed104() => [
+    buildUnnamed106() => [
           buildEnterpriseCrmFrontendsEventbusProtoEventExecutionInfo(),
           buildEnterpriseCrmFrontendsEventbusProtoEventExecutionInfo(),
         ];
 
-void checkUnnamed104(
+void checkUnnamed106(
     core.List<api.EnterpriseCrmFrontendsEventbusProtoEventExecutionInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEnterpriseCrmFrontendsEventbusProtoEventExecutionInfo(o[0]);
   checkEnterpriseCrmFrontendsEventbusProtoEventExecutionInfo(o[1]);
 }
 
-core.List<api.GoogleCloudIntegrationsV1alphaExecution> buildUnnamed105() => [
+core.List<api.GoogleCloudIntegrationsV1alphaExecution> buildUnnamed107() => [
       buildGoogleCloudIntegrationsV1alphaExecution(),
       buildGoogleCloudIntegrationsV1alphaExecution(),
     ];
 
-void checkUnnamed105(core.List<api.GoogleCloudIntegrationsV1alphaExecution> o) {
+void checkUnnamed107(core.List<api.GoogleCloudIntegrationsV1alphaExecution> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudIntegrationsV1alphaExecution(o[0]);
   checkGoogleCloudIntegrationsV1alphaExecution(o[1]);
@@ -8084,8 +8171,8 @@ api.GoogleCloudIntegrationsV1alphaListExecutionsResponse
   final o = api.GoogleCloudIntegrationsV1alphaListExecutionsResponse();
   buildCounterGoogleCloudIntegrationsV1alphaListExecutionsResponse++;
   if (buildCounterGoogleCloudIntegrationsV1alphaListExecutionsResponse < 3) {
-    o.executionInfos = buildUnnamed104();
-    o.executions = buildUnnamed105();
+    o.executionInfos = buildUnnamed106();
+    o.executions = buildUnnamed107();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudIntegrationsV1alphaListExecutionsResponse--;
@@ -8096,8 +8183,8 @@ void checkGoogleCloudIntegrationsV1alphaListExecutionsResponse(
     api.GoogleCloudIntegrationsV1alphaListExecutionsResponse o) {
   buildCounterGoogleCloudIntegrationsV1alphaListExecutionsResponse++;
   if (buildCounterGoogleCloudIntegrationsV1alphaListExecutionsResponse < 3) {
-    checkUnnamed104(o.executionInfos!);
-    checkUnnamed105(o.executions!);
+    checkUnnamed106(o.executionInfos!);
+    checkUnnamed107(o.executions!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -8107,12 +8194,12 @@ void checkGoogleCloudIntegrationsV1alphaListExecutionsResponse(
 }
 
 core.List<api.GoogleCloudIntegrationsV1alphaIntegrationVersion>
-    buildUnnamed106() => [
+    buildUnnamed108() => [
           buildGoogleCloudIntegrationsV1alphaIntegrationVersion(),
           buildGoogleCloudIntegrationsV1alphaIntegrationVersion(),
         ];
 
-void checkUnnamed106(
+void checkUnnamed108(
     core.List<api.GoogleCloudIntegrationsV1alphaIntegrationVersion> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudIntegrationsV1alphaIntegrationVersion(o[0]);
@@ -8128,7 +8215,7 @@ api.GoogleCloudIntegrationsV1alphaListIntegrationVersionsResponse
   buildCounterGoogleCloudIntegrationsV1alphaListIntegrationVersionsResponse++;
   if (buildCounterGoogleCloudIntegrationsV1alphaListIntegrationVersionsResponse <
       3) {
-    o.integrationVersions = buildUnnamed106();
+    o.integrationVersions = buildUnnamed108();
     o.nextPageToken = 'foo';
     o.noPermission = true;
   }
@@ -8141,7 +8228,7 @@ void checkGoogleCloudIntegrationsV1alphaListIntegrationVersionsResponse(
   buildCounterGoogleCloudIntegrationsV1alphaListIntegrationVersionsResponse++;
   if (buildCounterGoogleCloudIntegrationsV1alphaListIntegrationVersionsResponse <
       3) {
-    checkUnnamed106(o.integrationVersions!);
+    checkUnnamed108(o.integrationVersions!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -8151,12 +8238,12 @@ void checkGoogleCloudIntegrationsV1alphaListIntegrationVersionsResponse(
   buildCounterGoogleCloudIntegrationsV1alphaListIntegrationVersionsResponse--;
 }
 
-core.List<api.GoogleCloudIntegrationsV1alphaIntegration> buildUnnamed107() => [
+core.List<api.GoogleCloudIntegrationsV1alphaIntegration> buildUnnamed109() => [
       buildGoogleCloudIntegrationsV1alphaIntegration(),
       buildGoogleCloudIntegrationsV1alphaIntegration(),
     ];
 
-void checkUnnamed107(
+void checkUnnamed109(
     core.List<api.GoogleCloudIntegrationsV1alphaIntegration> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudIntegrationsV1alphaIntegration(o[0]);
@@ -8169,7 +8256,7 @@ api.GoogleCloudIntegrationsV1alphaListIntegrationsResponse
   final o = api.GoogleCloudIntegrationsV1alphaListIntegrationsResponse();
   buildCounterGoogleCloudIntegrationsV1alphaListIntegrationsResponse++;
   if (buildCounterGoogleCloudIntegrationsV1alphaListIntegrationsResponse < 3) {
-    o.integrations = buildUnnamed107();
+    o.integrations = buildUnnamed109();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudIntegrationsV1alphaListIntegrationsResponse--;
@@ -8180,7 +8267,7 @@ void checkGoogleCloudIntegrationsV1alphaListIntegrationsResponse(
     api.GoogleCloudIntegrationsV1alphaListIntegrationsResponse o) {
   buildCounterGoogleCloudIntegrationsV1alphaListIntegrationsResponse++;
   if (buildCounterGoogleCloudIntegrationsV1alphaListIntegrationsResponse < 3) {
-    checkUnnamed107(o.integrations!);
+    checkUnnamed109(o.integrations!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -8190,12 +8277,12 @@ void checkGoogleCloudIntegrationsV1alphaListIntegrationsResponse(
 }
 
 core.List<api.GoogleCloudIntegrationsV1alphaRuntimeActionSchema>
-    buildUnnamed108() => [
+    buildUnnamed110() => [
           buildGoogleCloudIntegrationsV1alphaRuntimeActionSchema(),
           buildGoogleCloudIntegrationsV1alphaRuntimeActionSchema(),
         ];
 
-void checkUnnamed108(
+void checkUnnamed110(
     core.List<api.GoogleCloudIntegrationsV1alphaRuntimeActionSchema> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudIntegrationsV1alphaRuntimeActionSchema(o[0]);
@@ -8213,7 +8300,7 @@ api.GoogleCloudIntegrationsV1alphaListRuntimeActionSchemasResponse
   if (buildCounterGoogleCloudIntegrationsV1alphaListRuntimeActionSchemasResponse <
       3) {
     o.nextPageToken = 'foo';
-    o.runtimeActionSchemas = buildUnnamed108();
+    o.runtimeActionSchemas = buildUnnamed110();
   }
   buildCounterGoogleCloudIntegrationsV1alphaListRuntimeActionSchemasResponse--;
   return o;
@@ -8228,18 +8315,18 @@ void checkGoogleCloudIntegrationsV1alphaListRuntimeActionSchemasResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed108(o.runtimeActionSchemas!);
+    checkUnnamed110(o.runtimeActionSchemas!);
   }
   buildCounterGoogleCloudIntegrationsV1alphaListRuntimeActionSchemasResponse--;
 }
 
 core.List<api.GoogleCloudIntegrationsV1alphaRuntimeEntitySchema>
-    buildUnnamed109() => [
+    buildUnnamed111() => [
           buildGoogleCloudIntegrationsV1alphaRuntimeEntitySchema(),
           buildGoogleCloudIntegrationsV1alphaRuntimeEntitySchema(),
         ];
 
-void checkUnnamed109(
+void checkUnnamed111(
     core.List<api.GoogleCloudIntegrationsV1alphaRuntimeEntitySchema> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudIntegrationsV1alphaRuntimeEntitySchema(o[0]);
@@ -8257,7 +8344,7 @@ api.GoogleCloudIntegrationsV1alphaListRuntimeEntitySchemasResponse
   if (buildCounterGoogleCloudIntegrationsV1alphaListRuntimeEntitySchemasResponse <
       3) {
     o.nextPageToken = 'foo';
-    o.runtimeEntitySchemas = buildUnnamed109();
+    o.runtimeEntitySchemas = buildUnnamed111();
   }
   buildCounterGoogleCloudIntegrationsV1alphaListRuntimeEntitySchemasResponse--;
   return o;
@@ -8272,17 +8359,17 @@ void checkGoogleCloudIntegrationsV1alphaListRuntimeEntitySchemasResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed109(o.runtimeEntitySchemas!);
+    checkUnnamed111(o.runtimeEntitySchemas!);
   }
   buildCounterGoogleCloudIntegrationsV1alphaListRuntimeEntitySchemasResponse--;
 }
 
-core.List<api.GoogleCloudIntegrationsV1alphaSfdcChannel> buildUnnamed110() => [
+core.List<api.GoogleCloudIntegrationsV1alphaSfdcChannel> buildUnnamed112() => [
       buildGoogleCloudIntegrationsV1alphaSfdcChannel(),
       buildGoogleCloudIntegrationsV1alphaSfdcChannel(),
     ];
 
-void checkUnnamed110(
+void checkUnnamed112(
     core.List<api.GoogleCloudIntegrationsV1alphaSfdcChannel> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudIntegrationsV1alphaSfdcChannel(o[0]);
@@ -8296,7 +8383,7 @@ api.GoogleCloudIntegrationsV1alphaListSfdcChannelsResponse
   buildCounterGoogleCloudIntegrationsV1alphaListSfdcChannelsResponse++;
   if (buildCounterGoogleCloudIntegrationsV1alphaListSfdcChannelsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.sfdcChannels = buildUnnamed110();
+    o.sfdcChannels = buildUnnamed112();
   }
   buildCounterGoogleCloudIntegrationsV1alphaListSfdcChannelsResponse--;
   return o;
@@ -8310,17 +8397,17 @@ void checkGoogleCloudIntegrationsV1alphaListSfdcChannelsResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed110(o.sfdcChannels!);
+    checkUnnamed112(o.sfdcChannels!);
   }
   buildCounterGoogleCloudIntegrationsV1alphaListSfdcChannelsResponse--;
 }
 
-core.List<api.GoogleCloudIntegrationsV1alphaSfdcInstance> buildUnnamed111() => [
+core.List<api.GoogleCloudIntegrationsV1alphaSfdcInstance> buildUnnamed113() => [
       buildGoogleCloudIntegrationsV1alphaSfdcInstance(),
       buildGoogleCloudIntegrationsV1alphaSfdcInstance(),
     ];
 
-void checkUnnamed111(
+void checkUnnamed113(
     core.List<api.GoogleCloudIntegrationsV1alphaSfdcInstance> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudIntegrationsV1alphaSfdcInstance(o[0]);
@@ -8335,7 +8422,7 @@ api.GoogleCloudIntegrationsV1alphaListSfdcInstancesResponse
   buildCounterGoogleCloudIntegrationsV1alphaListSfdcInstancesResponse++;
   if (buildCounterGoogleCloudIntegrationsV1alphaListSfdcInstancesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.sfdcInstances = buildUnnamed111();
+    o.sfdcInstances = buildUnnamed113();
   }
   buildCounterGoogleCloudIntegrationsV1alphaListSfdcInstancesResponse--;
   return o;
@@ -8349,17 +8436,17 @@ void checkGoogleCloudIntegrationsV1alphaListSfdcInstancesResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed111(o.sfdcInstances!);
+    checkUnnamed113(o.sfdcInstances!);
   }
   buildCounterGoogleCloudIntegrationsV1alphaListSfdcInstancesResponse--;
 }
 
-core.List<api.GoogleCloudIntegrationsV1alphaSuspension> buildUnnamed112() => [
+core.List<api.GoogleCloudIntegrationsV1alphaSuspension> buildUnnamed114() => [
       buildGoogleCloudIntegrationsV1alphaSuspension(),
       buildGoogleCloudIntegrationsV1alphaSuspension(),
     ];
 
-void checkUnnamed112(
+void checkUnnamed114(
     core.List<api.GoogleCloudIntegrationsV1alphaSuspension> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudIntegrationsV1alphaSuspension(o[0]);
@@ -8373,7 +8460,7 @@ api.GoogleCloudIntegrationsV1alphaListSuspensionsResponse
   buildCounterGoogleCloudIntegrationsV1alphaListSuspensionsResponse++;
   if (buildCounterGoogleCloudIntegrationsV1alphaListSuspensionsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.suspensions = buildUnnamed112();
+    o.suspensions = buildUnnamed114();
   }
   buildCounterGoogleCloudIntegrationsV1alphaListSuspensionsResponse--;
   return o;
@@ -8387,7 +8474,7 @@ void checkGoogleCloudIntegrationsV1alphaListSuspensionsResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed112(o.suspensions!);
+    checkUnnamed114(o.suspensions!);
   }
   buildCounterGoogleCloudIntegrationsV1alphaListSuspensionsResponse--;
 }
@@ -8648,12 +8735,12 @@ void checkGoogleCloudIntegrationsV1alphaOidcToken(
 }
 
 core.List<api.GoogleCloudIntegrationsV1alphaParameterMapEntry>
-    buildUnnamed113() => [
+    buildUnnamed115() => [
           buildGoogleCloudIntegrationsV1alphaParameterMapEntry(),
           buildGoogleCloudIntegrationsV1alphaParameterMapEntry(),
         ];
 
-void checkUnnamed113(
+void checkUnnamed115(
     core.List<api.GoogleCloudIntegrationsV1alphaParameterMapEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudIntegrationsV1alphaParameterMapEntry(o[0]);
@@ -8666,7 +8753,7 @@ api.GoogleCloudIntegrationsV1alphaParameterMap
   final o = api.GoogleCloudIntegrationsV1alphaParameterMap();
   buildCounterGoogleCloudIntegrationsV1alphaParameterMap++;
   if (buildCounterGoogleCloudIntegrationsV1alphaParameterMap < 3) {
-    o.entries = buildUnnamed113();
+    o.entries = buildUnnamed115();
     o.keyType = 'foo';
     o.valueType = 'foo';
   }
@@ -8678,7 +8765,7 @@ void checkGoogleCloudIntegrationsV1alphaParameterMap(
     api.GoogleCloudIntegrationsV1alphaParameterMap o) {
   buildCounterGoogleCloudIntegrationsV1alphaParameterMap++;
   if (buildCounterGoogleCloudIntegrationsV1alphaParameterMap < 3) {
-    checkUnnamed113(o.entries!);
+    checkUnnamed115(o.entries!);
     unittest.expect(
       o.keyType!,
       unittest.equals('foo'),
@@ -8740,12 +8827,12 @@ void checkGoogleCloudIntegrationsV1alphaParameterMapField(
   buildCounterGoogleCloudIntegrationsV1alphaParameterMapField--;
 }
 
-core.List<core.String> buildUnnamed114() => [
+core.List<core.String> buildUnnamed116() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed114(core.List<core.String> o) {
+void checkUnnamed116(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -8765,7 +8852,7 @@ api.GoogleCloudIntegrationsV1alphaProjectProperties
   if (buildCounterGoogleCloudIntegrationsV1alphaProjectProperties < 3) {
     o.billingType = 'foo';
     o.ipEnablementState = 'foo';
-    o.provisionedRegions = buildUnnamed114();
+    o.provisionedRegions = buildUnnamed116();
   }
   buildCounterGoogleCloudIntegrationsV1alphaProjectProperties--;
   return o;
@@ -8783,7 +8870,7 @@ void checkGoogleCloudIntegrationsV1alphaProjectProperties(
       o.ipEnablementState!,
       unittest.equals('foo'),
     );
-    checkUnnamed114(o.provisionedRegions!);
+    checkUnnamed116(o.provisionedRegions!);
   }
   buildCounterGoogleCloudIntegrationsV1alphaProjectProperties--;
 }
@@ -8820,7 +8907,7 @@ void checkGoogleCloudIntegrationsV1alphaProvisionClientRequest(
   buildCounterGoogleCloudIntegrationsV1alphaProvisionClientRequest--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed115() => {
+core.Map<core.String, core.Object?> buildUnnamed117() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -8833,7 +8920,7 @@ core.Map<core.String, core.Object?> buildUnnamed115() => {
       },
     };
 
-void checkUnnamed115(core.Map<core.String, core.Object?> o) {
+void checkUnnamed117(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted15 = (o['x']!) as core.Map;
   unittest.expect(casted15, unittest.hasLength(3));
@@ -8875,7 +8962,7 @@ api.GoogleCloudIntegrationsV1alphaPublishIntegrationVersionRequest
   buildCounterGoogleCloudIntegrationsV1alphaPublishIntegrationVersionRequest++;
   if (buildCounterGoogleCloudIntegrationsV1alphaPublishIntegrationVersionRequest <
       3) {
-    o.configParameters = buildUnnamed115();
+    o.configParameters = buildUnnamed117();
   }
   buildCounterGoogleCloudIntegrationsV1alphaPublishIntegrationVersionRequest--;
   return o;
@@ -8886,7 +8973,7 @@ void checkGoogleCloudIntegrationsV1alphaPublishIntegrationVersionRequest(
   buildCounterGoogleCloudIntegrationsV1alphaPublishIntegrationVersionRequest++;
   if (buildCounterGoogleCloudIntegrationsV1alphaPublishIntegrationVersionRequest <
       3) {
-    checkUnnamed115(o.configParameters!);
+    checkUnnamed117(o.configParameters!);
   }
   buildCounterGoogleCloudIntegrationsV1alphaPublishIntegrationVersionRequest--;
 }
@@ -8938,6 +9025,106 @@ void checkGoogleCloudIntegrationsV1alphaReplaceServiceAccountRequest(
     );
   }
   buildCounterGoogleCloudIntegrationsV1alphaReplaceServiceAccountRequest--;
+}
+
+core.int buildCounterGoogleCloudIntegrationsV1alphaReplayExecutionRequest = 0;
+api.GoogleCloudIntegrationsV1alphaReplayExecutionRequest
+    buildGoogleCloudIntegrationsV1alphaReplayExecutionRequest() {
+  final o = api.GoogleCloudIntegrationsV1alphaReplayExecutionRequest();
+  buildCounterGoogleCloudIntegrationsV1alphaReplayExecutionRequest++;
+  if (buildCounterGoogleCloudIntegrationsV1alphaReplayExecutionRequest < 3) {
+    o.replayReason = 'foo';
+  }
+  buildCounterGoogleCloudIntegrationsV1alphaReplayExecutionRequest--;
+  return o;
+}
+
+void checkGoogleCloudIntegrationsV1alphaReplayExecutionRequest(
+    api.GoogleCloudIntegrationsV1alphaReplayExecutionRequest o) {
+  buildCounterGoogleCloudIntegrationsV1alphaReplayExecutionRequest++;
+  if (buildCounterGoogleCloudIntegrationsV1alphaReplayExecutionRequest < 3) {
+    unittest.expect(
+      o.replayReason!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleCloudIntegrationsV1alphaReplayExecutionRequest--;
+}
+
+core.Map<core.String, core.Object?> buildUnnamed118() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
+
+void checkUnnamed118(core.Map<core.String, core.Object?> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  var casted17 = (o['x']!) as core.Map;
+  unittest.expect(casted17, unittest.hasLength(3));
+  unittest.expect(
+    casted17['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted17['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted17['string'],
+    unittest.equals('foo'),
+  );
+  var casted18 = (o['y']!) as core.Map;
+  unittest.expect(casted18, unittest.hasLength(3));
+  unittest.expect(
+    casted18['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted18['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted18['string'],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterGoogleCloudIntegrationsV1alphaReplayExecutionResponse = 0;
+api.GoogleCloudIntegrationsV1alphaReplayExecutionResponse
+    buildGoogleCloudIntegrationsV1alphaReplayExecutionResponse() {
+  final o = api.GoogleCloudIntegrationsV1alphaReplayExecutionResponse();
+  buildCounterGoogleCloudIntegrationsV1alphaReplayExecutionResponse++;
+  if (buildCounterGoogleCloudIntegrationsV1alphaReplayExecutionResponse < 3) {
+    o.executionId = 'foo';
+    o.outputParameters = buildUnnamed118();
+    o.replayedExecutionId = 'foo';
+  }
+  buildCounterGoogleCloudIntegrationsV1alphaReplayExecutionResponse--;
+  return o;
+}
+
+void checkGoogleCloudIntegrationsV1alphaReplayExecutionResponse(
+    api.GoogleCloudIntegrationsV1alphaReplayExecutionResponse o) {
+  buildCounterGoogleCloudIntegrationsV1alphaReplayExecutionResponse++;
+  if (buildCounterGoogleCloudIntegrationsV1alphaReplayExecutionResponse < 3) {
+    unittest.expect(
+      o.executionId!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed118(o.outputParameters!);
+    unittest.expect(
+      o.replayedExecutionId!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleCloudIntegrationsV1alphaReplayExecutionResponse--;
 }
 
 core.int buildCounterGoogleCloudIntegrationsV1alphaResolveSuspensionRequest = 0;
@@ -9050,12 +9237,12 @@ void checkGoogleCloudIntegrationsV1alphaRuntimeEntitySchema(
 }
 
 core.Map<core.String, api.GoogleCloudIntegrationsV1alphaValueType>
-    buildUnnamed116() => {
+    buildUnnamed119() => {
           'x': buildGoogleCloudIntegrationsV1alphaValueType(),
           'y': buildGoogleCloudIntegrationsV1alphaValueType(),
         };
 
-void checkUnnamed116(
+void checkUnnamed119(
     core.Map<core.String, api.GoogleCloudIntegrationsV1alphaValueType> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudIntegrationsV1alphaValueType(o['x']!);
@@ -9063,12 +9250,12 @@ void checkUnnamed116(
 }
 
 core.List<api.EnterpriseCrmFrontendsEventbusProtoParameterEntry>
-    buildUnnamed117() => [
+    buildUnnamed120() => [
           buildEnterpriseCrmFrontendsEventbusProtoParameterEntry(),
           buildEnterpriseCrmFrontendsEventbusProtoParameterEntry(),
         ];
 
-void checkUnnamed117(
+void checkUnnamed120(
     core.List<api.EnterpriseCrmFrontendsEventbusProtoParameterEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEnterpriseCrmFrontendsEventbusProtoParameterEntry(o[0]);
@@ -9083,8 +9270,8 @@ api.GoogleCloudIntegrationsV1alphaScheduleIntegrationsRequest
   buildCounterGoogleCloudIntegrationsV1alphaScheduleIntegrationsRequest++;
   if (buildCounterGoogleCloudIntegrationsV1alphaScheduleIntegrationsRequest <
       3) {
-    o.inputParameters = buildUnnamed116();
-    o.parameterEntries = buildUnnamed117();
+    o.inputParameters = buildUnnamed119();
+    o.parameterEntries = buildUnnamed120();
     o.parameters = buildEnterpriseCrmEventbusProtoEventParameters();
     o.requestId = 'foo';
     o.scheduleTime = 'foo';
@@ -9100,8 +9287,8 @@ void checkGoogleCloudIntegrationsV1alphaScheduleIntegrationsRequest(
   buildCounterGoogleCloudIntegrationsV1alphaScheduleIntegrationsRequest++;
   if (buildCounterGoogleCloudIntegrationsV1alphaScheduleIntegrationsRequest <
       3) {
-    checkUnnamed116(o.inputParameters!);
-    checkUnnamed117(o.parameterEntries!);
+    checkUnnamed119(o.inputParameters!);
+    checkUnnamed120(o.parameterEntries!);
     checkEnterpriseCrmEventbusProtoEventParameters(o.parameters!);
     unittest.expect(
       o.requestId!,
@@ -9123,12 +9310,12 @@ void checkGoogleCloudIntegrationsV1alphaScheduleIntegrationsRequest(
   buildCounterGoogleCloudIntegrationsV1alphaScheduleIntegrationsRequest--;
 }
 
-core.List<core.String> buildUnnamed118() => [
+core.List<core.String> buildUnnamed121() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed118(core.List<core.String> o) {
+void checkUnnamed121(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -9148,7 +9335,7 @@ api.GoogleCloudIntegrationsV1alphaScheduleIntegrationsResponse
   buildCounterGoogleCloudIntegrationsV1alphaScheduleIntegrationsResponse++;
   if (buildCounterGoogleCloudIntegrationsV1alphaScheduleIntegrationsResponse <
       3) {
-    o.executionInfoIds = buildUnnamed118();
+    o.executionInfoIds = buildUnnamed121();
   }
   buildCounterGoogleCloudIntegrationsV1alphaScheduleIntegrationsResponse--;
   return o;
@@ -9159,7 +9346,7 @@ void checkGoogleCloudIntegrationsV1alphaScheduleIntegrationsResponse(
   buildCounterGoogleCloudIntegrationsV1alphaScheduleIntegrationsResponse++;
   if (buildCounterGoogleCloudIntegrationsV1alphaScheduleIntegrationsResponse <
       3) {
-    checkUnnamed118(o.executionInfoIds!);
+    checkUnnamed121(o.executionInfoIds!);
   }
   buildCounterGoogleCloudIntegrationsV1alphaScheduleIntegrationsResponse--;
 }
@@ -9284,12 +9471,12 @@ void checkGoogleCloudIntegrationsV1alphaSfdcChannel(
   buildCounterGoogleCloudIntegrationsV1alphaSfdcChannel--;
 }
 
-core.List<core.String> buildUnnamed119() => [
+core.List<core.String> buildUnnamed122() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed119(core.List<core.String> o) {
+void checkUnnamed122(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -9307,7 +9494,7 @@ api.GoogleCloudIntegrationsV1alphaSfdcInstance
   final o = api.GoogleCloudIntegrationsV1alphaSfdcInstance();
   buildCounterGoogleCloudIntegrationsV1alphaSfdcInstance++;
   if (buildCounterGoogleCloudIntegrationsV1alphaSfdcInstance < 3) {
-    o.authConfigId = buildUnnamed119();
+    o.authConfigId = buildUnnamed122();
     o.createTime = 'foo';
     o.deleteTime = 'foo';
     o.description = 'foo';
@@ -9325,7 +9512,7 @@ void checkGoogleCloudIntegrationsV1alphaSfdcInstance(
     api.GoogleCloudIntegrationsV1alphaSfdcInstance o) {
   buildCounterGoogleCloudIntegrationsV1alphaSfdcInstance++;
   if (buildCounterGoogleCloudIntegrationsV1alphaSfdcInstance < 3) {
-    checkUnnamed119(o.authConfigId!);
+    checkUnnamed122(o.authConfigId!);
     unittest.expect(
       o.createTime!,
       unittest.equals('foo'),
@@ -9362,12 +9549,12 @@ void checkGoogleCloudIntegrationsV1alphaSfdcInstance(
   buildCounterGoogleCloudIntegrationsV1alphaSfdcInstance--;
 }
 
-core.List<core.String> buildUnnamed120() => [
+core.List<core.String> buildUnnamed123() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed120(core.List<core.String> o) {
+void checkUnnamed123(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -9385,7 +9572,7 @@ api.GoogleCloudIntegrationsV1alphaStringParameterArray
   final o = api.GoogleCloudIntegrationsV1alphaStringParameterArray();
   buildCounterGoogleCloudIntegrationsV1alphaStringParameterArray++;
   if (buildCounterGoogleCloudIntegrationsV1alphaStringParameterArray < 3) {
-    o.stringValues = buildUnnamed120();
+    o.stringValues = buildUnnamed123();
   }
   buildCounterGoogleCloudIntegrationsV1alphaStringParameterArray--;
   return o;
@@ -9395,7 +9582,7 @@ void checkGoogleCloudIntegrationsV1alphaStringParameterArray(
     api.GoogleCloudIntegrationsV1alphaStringParameterArray o) {
   buildCounterGoogleCloudIntegrationsV1alphaStringParameterArray++;
   if (buildCounterGoogleCloudIntegrationsV1alphaStringParameterArray < 3) {
-    checkUnnamed120(o.stringValues!);
+    checkUnnamed123(o.stringValues!);
   }
   buildCounterGoogleCloudIntegrationsV1alphaStringParameterArray--;
 }
@@ -9486,12 +9673,12 @@ void checkGoogleCloudIntegrationsV1alphaSuspension(
   buildCounterGoogleCloudIntegrationsV1alphaSuspension--;
 }
 
-core.List<core.String> buildUnnamed121() => [
+core.List<core.String> buildUnnamed124() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed121(core.List<core.String> o) {
+void checkUnnamed124(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -9510,7 +9697,7 @@ api.GoogleCloudIntegrationsV1alphaSuspensionApprovalConfig
   buildCounterGoogleCloudIntegrationsV1alphaSuspensionApprovalConfig++;
   if (buildCounterGoogleCloudIntegrationsV1alphaSuspensionApprovalConfig < 3) {
     o.customMessage = 'foo';
-    o.emailAddresses = buildUnnamed121();
+    o.emailAddresses = buildUnnamed124();
     o.expiration =
         buildGoogleCloudIntegrationsV1alphaSuspensionApprovalExpiration();
   }
@@ -9526,7 +9713,7 @@ void checkGoogleCloudIntegrationsV1alphaSuspensionApprovalConfig(
       o.customMessage!,
       unittest.equals('foo'),
     );
-    checkUnnamed121(o.emailAddresses!);
+    checkUnnamed124(o.emailAddresses!);
     checkGoogleCloudIntegrationsV1alphaSuspensionApprovalExpiration(
         o.expiration!);
   }
@@ -9681,24 +9868,24 @@ void checkGoogleCloudIntegrationsV1alphaTakeoverEditLockResponse(
   buildCounterGoogleCloudIntegrationsV1alphaTakeoverEditLockResponse--;
 }
 
-core.List<api.GoogleCloudIntegrationsV1alphaNextTask> buildUnnamed122() => [
+core.List<api.GoogleCloudIntegrationsV1alphaNextTask> buildUnnamed125() => [
       buildGoogleCloudIntegrationsV1alphaNextTask(),
       buildGoogleCloudIntegrationsV1alphaNextTask(),
     ];
 
-void checkUnnamed122(core.List<api.GoogleCloudIntegrationsV1alphaNextTask> o) {
+void checkUnnamed125(core.List<api.GoogleCloudIntegrationsV1alphaNextTask> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudIntegrationsV1alphaNextTask(o[0]);
   checkGoogleCloudIntegrationsV1alphaNextTask(o[1]);
 }
 
 core.Map<core.String, api.GoogleCloudIntegrationsV1alphaEventParameter>
-    buildUnnamed123() => {
+    buildUnnamed126() => {
           'x': buildGoogleCloudIntegrationsV1alphaEventParameter(),
           'y': buildGoogleCloudIntegrationsV1alphaEventParameter(),
         };
 
-void checkUnnamed123(
+void checkUnnamed126(
     core.Map<core.String, api.GoogleCloudIntegrationsV1alphaEventParameter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudIntegrationsV1alphaEventParameter(o['x']!);
@@ -9711,15 +9898,17 @@ api.GoogleCloudIntegrationsV1alphaTaskConfig
   final o = api.GoogleCloudIntegrationsV1alphaTaskConfig();
   buildCounterGoogleCloudIntegrationsV1alphaTaskConfig++;
   if (buildCounterGoogleCloudIntegrationsV1alphaTaskConfig < 3) {
+    o.conditionalFailurePolicies =
+        buildGoogleCloudIntegrationsV1alphaConditionalFailurePolicies();
     o.description = 'foo';
     o.displayName = 'foo';
     o.errorCatcherId = 'foo';
     o.externalTaskType = 'foo';
     o.failurePolicy = buildGoogleCloudIntegrationsV1alphaFailurePolicy();
     o.jsonValidationOption = 'foo';
-    o.nextTasks = buildUnnamed122();
+    o.nextTasks = buildUnnamed125();
     o.nextTasksExecutionPolicy = 'foo';
-    o.parameters = buildUnnamed123();
+    o.parameters = buildUnnamed126();
     o.position = buildGoogleCloudIntegrationsV1alphaCoordinate();
     o.successPolicy = buildGoogleCloudIntegrationsV1alphaSuccessPolicy();
     o.synchronousCallFailurePolicy =
@@ -9737,6 +9926,8 @@ void checkGoogleCloudIntegrationsV1alphaTaskConfig(
     api.GoogleCloudIntegrationsV1alphaTaskConfig o) {
   buildCounterGoogleCloudIntegrationsV1alphaTaskConfig++;
   if (buildCounterGoogleCloudIntegrationsV1alphaTaskConfig < 3) {
+    checkGoogleCloudIntegrationsV1alphaConditionalFailurePolicies(
+        o.conditionalFailurePolicies!);
     unittest.expect(
       o.description!,
       unittest.equals('foo'),
@@ -9758,12 +9949,12 @@ void checkGoogleCloudIntegrationsV1alphaTaskConfig(
       o.jsonValidationOption!,
       unittest.equals('foo'),
     );
-    checkUnnamed122(o.nextTasks!);
+    checkUnnamed125(o.nextTasks!);
     unittest.expect(
       o.nextTasksExecutionPolicy!,
       unittest.equals('foo'),
     );
-    checkUnnamed123(o.parameters!);
+    checkUnnamed126(o.parameters!);
     checkGoogleCloudIntegrationsV1alphaCoordinate(o.position!);
     checkGoogleCloudIntegrationsV1alphaSuccessPolicy(o.successPolicy!);
     checkGoogleCloudIntegrationsV1alphaFailurePolicy(
@@ -9788,12 +9979,12 @@ void checkGoogleCloudIntegrationsV1alphaTaskConfig(
   buildCounterGoogleCloudIntegrationsV1alphaTaskConfig--;
 }
 
-core.List<api.GoogleCloudIntegrationsV1alphaAttemptStats> buildUnnamed124() => [
+core.List<api.GoogleCloudIntegrationsV1alphaAttemptStats> buildUnnamed127() => [
       buildGoogleCloudIntegrationsV1alphaAttemptStats(),
       buildGoogleCloudIntegrationsV1alphaAttemptStats(),
     ];
 
-void checkUnnamed124(
+void checkUnnamed127(
     core.List<api.GoogleCloudIntegrationsV1alphaAttemptStats> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudIntegrationsV1alphaAttemptStats(o[0]);
@@ -9806,7 +9997,7 @@ api.GoogleCloudIntegrationsV1alphaTaskExecutionDetails
   final o = api.GoogleCloudIntegrationsV1alphaTaskExecutionDetails();
   buildCounterGoogleCloudIntegrationsV1alphaTaskExecutionDetails++;
   if (buildCounterGoogleCloudIntegrationsV1alphaTaskExecutionDetails < 3) {
-    o.taskAttemptStats = buildUnnamed124();
+    o.taskAttemptStats = buildUnnamed127();
     o.taskExecutionState = 'foo';
     o.taskNumber = 'foo';
   }
@@ -9818,7 +10009,7 @@ void checkGoogleCloudIntegrationsV1alphaTaskExecutionDetails(
     api.GoogleCloudIntegrationsV1alphaTaskExecutionDetails o) {
   buildCounterGoogleCloudIntegrationsV1alphaTaskExecutionDetails++;
   if (buildCounterGoogleCloudIntegrationsV1alphaTaskExecutionDetails < 3) {
-    checkUnnamed124(o.taskAttemptStats!);
+    checkUnnamed127(o.taskAttemptStats!);
     unittest.expect(
       o.taskExecutionState!,
       unittest.equals('foo'),
@@ -9831,7 +10022,7 @@ void checkGoogleCloudIntegrationsV1alphaTaskExecutionDetails(
   buildCounterGoogleCloudIntegrationsV1alphaTaskExecutionDetails--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed125() => {
+core.Map<core.String, core.Object?> buildUnnamed128() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -9844,45 +10035,45 @@ core.Map<core.String, core.Object?> buildUnnamed125() => {
       },
     };
 
-void checkUnnamed125(core.Map<core.String, core.Object?> o) {
+void checkUnnamed128(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted17 = (o['x']!) as core.Map;
-  unittest.expect(casted17, unittest.hasLength(3));
+  var casted19 = (o['x']!) as core.Map;
+  unittest.expect(casted19, unittest.hasLength(3));
   unittest.expect(
-    casted17['list'],
+    casted19['list'],
     unittest.equals([1, 2, 3]),
   );
   unittest.expect(
-    casted17['bool'],
+    casted19['bool'],
     unittest.equals(true),
   );
   unittest.expect(
-    casted17['string'],
+    casted19['string'],
     unittest.equals('foo'),
   );
-  var casted18 = (o['y']!) as core.Map;
-  unittest.expect(casted18, unittest.hasLength(3));
+  var casted20 = (o['y']!) as core.Map;
+  unittest.expect(casted20, unittest.hasLength(3));
   unittest.expect(
-    casted18['list'],
+    casted20['list'],
     unittest.equals([1, 2, 3]),
   );
   unittest.expect(
-    casted18['bool'],
+    casted20['bool'],
     unittest.equals(true),
   );
   unittest.expect(
-    casted18['string'],
+    casted20['string'],
     unittest.equals('foo'),
   );
 }
 
 core.Map<core.String, api.GoogleCloudIntegrationsV1alphaValueType>
-    buildUnnamed126() => {
+    buildUnnamed129() => {
           'x': buildGoogleCloudIntegrationsV1alphaValueType(),
           'y': buildGoogleCloudIntegrationsV1alphaValueType(),
         };
 
-void checkUnnamed126(
+void checkUnnamed129(
     core.Map<core.String, api.GoogleCloudIntegrationsV1alphaValueType> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudIntegrationsV1alphaValueType(o['x']!);
@@ -9896,9 +10087,9 @@ api.GoogleCloudIntegrationsV1alphaTestIntegrationsRequest
   buildCounterGoogleCloudIntegrationsV1alphaTestIntegrationsRequest++;
   if (buildCounterGoogleCloudIntegrationsV1alphaTestIntegrationsRequest < 3) {
     o.clientId = 'foo';
-    o.configParameters = buildUnnamed125();
+    o.configParameters = buildUnnamed128();
     o.deadlineSecondsTime = 'foo';
-    o.inputParameters = buildUnnamed126();
+    o.inputParameters = buildUnnamed129();
     o.integrationVersion =
         buildGoogleCloudIntegrationsV1alphaIntegrationVersion();
     o.parameters = buildEnterpriseCrmFrontendsEventbusProtoEventParameters();
@@ -9917,12 +10108,12 @@ void checkGoogleCloudIntegrationsV1alphaTestIntegrationsRequest(
       o.clientId!,
       unittest.equals('foo'),
     );
-    checkUnnamed125(o.configParameters!);
+    checkUnnamed128(o.configParameters!);
     unittest.expect(
       o.deadlineSecondsTime!,
       unittest.equals('foo'),
     );
-    checkUnnamed126(o.inputParameters!);
+    checkUnnamed129(o.inputParameters!);
     checkGoogleCloudIntegrationsV1alphaIntegrationVersion(
         o.integrationVersion!);
     checkEnterpriseCrmFrontendsEventbusProtoEventParameters(o.parameters!);
@@ -9936,12 +10127,12 @@ void checkGoogleCloudIntegrationsV1alphaTestIntegrationsRequest(
 }
 
 core.List<api.EnterpriseCrmFrontendsEventbusProtoParameterEntry>
-    buildUnnamed127() => [
+    buildUnnamed130() => [
           buildEnterpriseCrmFrontendsEventbusProtoParameterEntry(),
           buildEnterpriseCrmFrontendsEventbusProtoParameterEntry(),
         ];
 
-void checkUnnamed127(
+void checkUnnamed130(
     core.List<api.EnterpriseCrmFrontendsEventbusProtoParameterEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEnterpriseCrmFrontendsEventbusProtoParameterEntry(o[0]);
@@ -9949,12 +10140,12 @@ void checkUnnamed127(
 }
 
 core.Map<core.String, api.GoogleCloudIntegrationsV1alphaValueType>
-    buildUnnamed128() => {
+    buildUnnamed131() => {
           'x': buildGoogleCloudIntegrationsV1alphaValueType(),
           'y': buildGoogleCloudIntegrationsV1alphaValueType(),
         };
 
-void checkUnnamed128(
+void checkUnnamed131(
     core.Map<core.String, api.GoogleCloudIntegrationsV1alphaValueType> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudIntegrationsV1alphaValueType(o['x']!);
@@ -9971,8 +10162,8 @@ api.GoogleCloudIntegrationsV1alphaTestIntegrationsResponse
         buildEnterpriseCrmFrontendsEventbusProtoEventParameters();
     o.executionFailed = true;
     o.executionId = 'foo';
-    o.parameterEntries = buildUnnamed127();
-    o.parameters = buildUnnamed128();
+    o.parameterEntries = buildUnnamed130();
+    o.parameters = buildUnnamed131();
   }
   buildCounterGoogleCloudIntegrationsV1alphaTestIntegrationsResponse--;
   return o;
@@ -9988,31 +10179,31 @@ void checkGoogleCloudIntegrationsV1alphaTestIntegrationsResponse(
       o.executionId!,
       unittest.equals('foo'),
     );
-    checkUnnamed127(o.parameterEntries!);
-    checkUnnamed128(o.parameters!);
+    checkUnnamed130(o.parameterEntries!);
+    checkUnnamed131(o.parameters!);
   }
   buildCounterGoogleCloudIntegrationsV1alphaTestIntegrationsResponse--;
 }
 
 core.List<api.GoogleCloudIntegrationsV1alphaIntegrationAlertConfig>
-    buildUnnamed129() => [
+    buildUnnamed132() => [
           buildGoogleCloudIntegrationsV1alphaIntegrationAlertConfig(),
           buildGoogleCloudIntegrationsV1alphaIntegrationAlertConfig(),
         ];
 
-void checkUnnamed129(
+void checkUnnamed132(
     core.List<api.GoogleCloudIntegrationsV1alphaIntegrationAlertConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudIntegrationsV1alphaIntegrationAlertConfig(o[0]);
   checkGoogleCloudIntegrationsV1alphaIntegrationAlertConfig(o[1]);
 }
 
-core.Map<core.String, core.String> buildUnnamed130() => {
+core.Map<core.String, core.String> buildUnnamed133() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed130(core.Map<core.String, core.String> o) {
+void checkUnnamed133(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -10024,12 +10215,12 @@ void checkUnnamed130(core.Map<core.String, core.String> o) {
   );
 }
 
-core.List<api.GoogleCloudIntegrationsV1alphaNextTask> buildUnnamed131() => [
+core.List<api.GoogleCloudIntegrationsV1alphaNextTask> buildUnnamed134() => [
       buildGoogleCloudIntegrationsV1alphaNextTask(),
       buildGoogleCloudIntegrationsV1alphaNextTask(),
     ];
 
-void checkUnnamed131(core.List<api.GoogleCloudIntegrationsV1alphaNextTask> o) {
+void checkUnnamed134(core.List<api.GoogleCloudIntegrationsV1alphaNextTask> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudIntegrationsV1alphaNextTask(o[0]);
   checkGoogleCloudIntegrationsV1alphaNextTask(o[1]);
@@ -10041,7 +10232,7 @@ api.GoogleCloudIntegrationsV1alphaTriggerConfig
   final o = api.GoogleCloudIntegrationsV1alphaTriggerConfig();
   buildCounterGoogleCloudIntegrationsV1alphaTriggerConfig++;
   if (buildCounterGoogleCloudIntegrationsV1alphaTriggerConfig < 3) {
-    o.alertConfig = buildUnnamed129();
+    o.alertConfig = buildUnnamed132();
     o.cloudSchedulerConfig =
         buildGoogleCloudIntegrationsV1alphaCloudSchedulerConfig();
     o.description = 'foo';
@@ -10049,8 +10240,8 @@ api.GoogleCloudIntegrationsV1alphaTriggerConfig
     o.label = 'foo';
     o.nextTasksExecutionPolicy = 'foo';
     o.position = buildGoogleCloudIntegrationsV1alphaCoordinate();
-    o.properties = buildUnnamed130();
-    o.startTasks = buildUnnamed131();
+    o.properties = buildUnnamed133();
+    o.startTasks = buildUnnamed134();
     o.trigger = 'foo';
     o.triggerId = 'foo';
     o.triggerNumber = 'foo';
@@ -10064,7 +10255,7 @@ void checkGoogleCloudIntegrationsV1alphaTriggerConfig(
     api.GoogleCloudIntegrationsV1alphaTriggerConfig o) {
   buildCounterGoogleCloudIntegrationsV1alphaTriggerConfig++;
   if (buildCounterGoogleCloudIntegrationsV1alphaTriggerConfig < 3) {
-    checkUnnamed129(o.alertConfig!);
+    checkUnnamed132(o.alertConfig!);
     checkGoogleCloudIntegrationsV1alphaCloudSchedulerConfig(
         o.cloudSchedulerConfig!);
     unittest.expect(
@@ -10084,8 +10275,8 @@ void checkGoogleCloudIntegrationsV1alphaTriggerConfig(
       unittest.equals('foo'),
     );
     checkGoogleCloudIntegrationsV1alphaCoordinate(o.position!);
-    checkUnnamed130(o.properties!);
-    checkUnnamed131(o.startTasks!);
+    checkUnnamed133(o.properties!);
+    checkUnnamed134(o.startTasks!);
     unittest.expect(
       o.trigger!,
       unittest.equals('foo'),
@@ -10357,57 +10548,6 @@ void checkGoogleProtobufEmpty(api.GoogleProtobufEmpty o) {
   buildCounterGoogleProtobufEmpty--;
 }
 
-core.List<core.String> buildUnnamed132() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed132(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.List<core.String> buildUnnamed133() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed133(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.List<core.String> buildUnnamed134() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed134(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
 core.List<core.String> buildUnnamed135() => [
       'foo',
       'foo',
@@ -10465,6 +10605,57 @@ core.List<core.String> buildUnnamed138() => [
     ];
 
 void checkUnnamed138(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed139() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed139(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed140() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed140(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed141() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed141(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -10602,6 +10793,18 @@ void main() {
       final od = api.EnterpriseCrmEventbusProtoConditionResult.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkEnterpriseCrmEventbusProtoConditionResult(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-EnterpriseCrmEventbusProtoConditionalFailurePolicies', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildEnterpriseCrmEventbusProtoConditionalFailurePolicies();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.EnterpriseCrmEventbusProtoConditionalFailurePolicies.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkEnterpriseCrmEventbusProtoConditionalFailurePolicies(od);
     });
   });
 
@@ -11897,6 +12100,19 @@ void main() {
   });
 
   unittest.group(
+      'obj-schema-GoogleCloudIntegrationsV1alphaConditionalFailurePolicies',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudIntegrationsV1alphaConditionalFailurePolicies();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudIntegrationsV1alphaConditionalFailurePolicies.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudIntegrationsV1alphaConditionalFailurePolicies(od);
+    });
+  });
+
+  unittest.group(
       'obj-schema-GoogleCloudIntegrationsV1alphaConnectionSchemaMetadata', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleCloudIntegrationsV1alphaConnectionSchemaMetadata();
@@ -12665,6 +12881,30 @@ void main() {
       final od = api.GoogleCloudIntegrationsV1alphaReplaceServiceAccountRequest
           .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudIntegrationsV1alphaReplaceServiceAccountRequest(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleCloudIntegrationsV1alphaReplayExecutionRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudIntegrationsV1alphaReplayExecutionRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudIntegrationsV1alphaReplayExecutionRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudIntegrationsV1alphaReplayExecutionRequest(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleCloudIntegrationsV1alphaReplayExecutionResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudIntegrationsV1alphaReplayExecutionResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudIntegrationsV1alphaReplayExecutionResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudIntegrationsV1alphaReplayExecutionResponse(od);
     });
   });
 
@@ -15250,7 +15490,7 @@ void main() {
       final arg_filter = 'foo';
       final arg_filterParams_customFilter = 'foo';
       final arg_filterParams_endTime = 'foo';
-      final arg_filterParams_eventStatuses = buildUnnamed132();
+      final arg_filterParams_eventStatuses = buildUnnamed135();
       final arg_filterParams_executionId = 'foo';
       final arg_filterParams_parameterKey = 'foo';
       final arg_filterParams_parameterPairKey = 'foo';
@@ -15258,7 +15498,7 @@ void main() {
       final arg_filterParams_parameterType = 'foo';
       final arg_filterParams_parameterValue = 'foo';
       final arg_filterParams_startTime = 'foo';
-      final arg_filterParams_taskStatuses = buildUnnamed133();
+      final arg_filterParams_taskStatuses = buildUnnamed136();
       final arg_filterParams_workflowName = 'foo';
       final arg_orderBy = 'foo';
       final arg_pageSize = 42;
@@ -15416,6 +15656,69 @@ void main() {
           $fields: arg_$fields);
       checkGoogleCloudIntegrationsV1alphaListExecutionsResponse(
           response as api.GoogleCloudIntegrationsV1alphaListExecutionsResponse);
+    });
+
+    unittest.test('method--replay', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.IntegrationsApi(mock).projects.locations.integrations.executions;
+      final arg_request =
+          buildGoogleCloudIntegrationsV1alphaReplayExecutionRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj =
+            api.GoogleCloudIntegrationsV1alphaReplayExecutionRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>);
+        checkGoogleCloudIntegrationsV1alphaReplayExecutionRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(
+            buildGoogleCloudIntegrationsV1alphaReplayExecutionResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.replay(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleCloudIntegrationsV1alphaReplayExecutionResponse(response
+          as api.GoogleCloudIntegrationsV1alphaReplayExecutionResponse);
     });
   });
 
@@ -15776,7 +16079,7 @@ void main() {
           api.IntegrationsApi(mock).projects.locations.integrations.versions;
       final arg_name = 'foo';
       final arg_fileFormat = 'foo';
-      final arg_files = buildUnnamed134();
+      final arg_files = buildUnnamed137();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -15842,7 +16145,7 @@ void main() {
       final res =
           api.IntegrationsApi(mock).projects.locations.integrations.versions;
       final arg_name = 'foo';
-      final arg_files = buildUnnamed135();
+      final arg_files = buildUnnamed138();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -17509,7 +17812,7 @@ void main() {
       final arg_filter = 'foo';
       final arg_filterParams_customFilter = 'foo';
       final arg_filterParams_endTime = 'foo';
-      final arg_filterParams_eventStatuses = buildUnnamed136();
+      final arg_filterParams_eventStatuses = buildUnnamed139();
       final arg_filterParams_executionId = 'foo';
       final arg_filterParams_parameterKey = 'foo';
       final arg_filterParams_parameterPairKey = 'foo';
@@ -17517,7 +17820,7 @@ void main() {
       final arg_filterParams_parameterType = 'foo';
       final arg_filterParams_parameterValue = 'foo';
       final arg_filterParams_startTime = 'foo';
-      final arg_filterParams_taskStatuses = buildUnnamed137();
+      final arg_filterParams_taskStatuses = buildUnnamed140();
       final arg_filterParams_workflowName = 'foo';
       final arg_orderBy = 'foo';
       final arg_pageSize = 42;
@@ -18051,7 +18354,7 @@ void main() {
           .versions;
       final arg_name = 'foo';
       final arg_fileFormat = 'foo';
-      final arg_files = buildUnnamed138();
+      final arg_files = buildUnnamed141();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;

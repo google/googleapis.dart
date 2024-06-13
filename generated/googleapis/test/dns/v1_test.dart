@@ -107,7 +107,6 @@ api.ChangesListResponse buildChangesListResponse() {
   buildCounterChangesListResponse++;
   if (buildCounterChangesListResponse < 3) {
     o.changes = buildUnnamed2();
-    o.header = buildResponseHeader();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
   }
@@ -119,7 +118,6 @@ void checkChangesListResponse(api.ChangesListResponse o) {
   buildCounterChangesListResponse++;
   if (buildCounterChangesListResponse < 3) {
     checkUnnamed2(o.changes!);
-    checkResponseHeader(o.header!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -290,7 +288,6 @@ api.DnsKeysListResponse buildDnsKeysListResponse() {
   buildCounterDnsKeysListResponse++;
   if (buildCounterDnsKeysListResponse < 3) {
     o.dnsKeys = buildUnnamed4();
-    o.header = buildResponseHeader();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
   }
@@ -302,7 +299,6 @@ void checkDnsKeysListResponse(api.DnsKeysListResponse o) {
   buildCounterDnsKeysListResponse++;
   if (buildCounterDnsKeysListResponse < 3) {
     checkUnnamed4(o.dnsKeys!);
-    checkResponseHeader(o.header!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -934,7 +930,6 @@ api.ManagedZoneOperationsListResponse buildManagedZoneOperationsListResponse() {
   final o = api.ManagedZoneOperationsListResponse();
   buildCounterManagedZoneOperationsListResponse++;
   if (buildCounterManagedZoneOperationsListResponse < 3) {
-    o.header = buildResponseHeader();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
     o.operations = buildUnnamed16();
@@ -947,7 +942,6 @@ void checkManagedZoneOperationsListResponse(
     api.ManagedZoneOperationsListResponse o) {
   buildCounterManagedZoneOperationsListResponse++;
   if (buildCounterManagedZoneOperationsListResponse < 3) {
-    checkResponseHeader(o.header!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -1227,7 +1221,6 @@ api.ManagedZonesListResponse buildManagedZonesListResponse() {
   final o = api.ManagedZonesListResponse();
   buildCounterManagedZonesListResponse++;
   if (buildCounterManagedZonesListResponse < 3) {
-    o.header = buildResponseHeader();
     o.kind = 'foo';
     o.managedZones = buildUnnamed19();
     o.nextPageToken = 'foo';
@@ -1239,7 +1232,6 @@ api.ManagedZonesListResponse buildManagedZonesListResponse() {
 void checkManagedZonesListResponse(api.ManagedZonesListResponse o) {
   buildCounterManagedZonesListResponse++;
   if (buildCounterManagedZonesListResponse < 3) {
-    checkResponseHeader(o.header!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -1362,7 +1354,6 @@ api.PoliciesListResponse buildPoliciesListResponse() {
   final o = api.PoliciesListResponse();
   buildCounterPoliciesListResponse++;
   if (buildCounterPoliciesListResponse < 3) {
-    o.header = buildResponseHeader();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
     o.policies = buildUnnamed20();
@@ -1374,7 +1365,6 @@ api.PoliciesListResponse buildPoliciesListResponse() {
 void checkPoliciesListResponse(api.PoliciesListResponse o) {
   buildCounterPoliciesListResponse++;
   if (buildCounterPoliciesListResponse < 3) {
-    checkResponseHeader(o.header!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -1393,7 +1383,6 @@ api.PoliciesPatchResponse buildPoliciesPatchResponse() {
   final o = api.PoliciesPatchResponse();
   buildCounterPoliciesPatchResponse++;
   if (buildCounterPoliciesPatchResponse < 3) {
-    o.header = buildResponseHeader();
     o.policy = buildPolicy();
   }
   buildCounterPoliciesPatchResponse--;
@@ -1403,7 +1392,6 @@ api.PoliciesPatchResponse buildPoliciesPatchResponse() {
 void checkPoliciesPatchResponse(api.PoliciesPatchResponse o) {
   buildCounterPoliciesPatchResponse++;
   if (buildCounterPoliciesPatchResponse < 3) {
-    checkResponseHeader(o.header!);
     checkPolicy(o.policy!);
   }
   buildCounterPoliciesPatchResponse--;
@@ -1414,7 +1402,6 @@ api.PoliciesUpdateResponse buildPoliciesUpdateResponse() {
   final o = api.PoliciesUpdateResponse();
   buildCounterPoliciesUpdateResponse++;
   if (buildCounterPoliciesUpdateResponse < 3) {
-    o.header = buildResponseHeader();
     o.policy = buildPolicy();
   }
   buildCounterPoliciesUpdateResponse--;
@@ -1424,7 +1411,6 @@ api.PoliciesUpdateResponse buildPoliciesUpdateResponse() {
 void checkPoliciesUpdateResponse(api.PoliciesUpdateResponse o) {
   buildCounterPoliciesUpdateResponse++;
   if (buildCounterPoliciesUpdateResponse < 3) {
-    checkResponseHeader(o.header!);
     checkPolicy(o.policy!);
   }
   buildCounterPoliciesUpdateResponse--;
@@ -2245,7 +2231,6 @@ api.ResourceRecordSetsListResponse buildResourceRecordSetsListResponse() {
   final o = api.ResourceRecordSetsListResponse();
   buildCounterResourceRecordSetsListResponse++;
   if (buildCounterResourceRecordSetsListResponse < 3) {
-    o.header = buildResponseHeader();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
     o.rrsets = buildUnnamed33();
@@ -2257,7 +2242,6 @@ api.ResourceRecordSetsListResponse buildResourceRecordSetsListResponse() {
 void checkResourceRecordSetsListResponse(api.ResourceRecordSetsListResponse o) {
   buildCounterResourceRecordSetsListResponse++;
   if (buildCounterResourceRecordSetsListResponse < 3) {
-    checkResponseHeader(o.header!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -2269,28 +2253,6 @@ void checkResourceRecordSetsListResponse(api.ResourceRecordSetsListResponse o) {
     checkUnnamed33(o.rrsets!);
   }
   buildCounterResourceRecordSetsListResponse--;
-}
-
-core.int buildCounterResponseHeader = 0;
-api.ResponseHeader buildResponseHeader() {
-  final o = api.ResponseHeader();
-  buildCounterResponseHeader++;
-  if (buildCounterResponseHeader < 3) {
-    o.operationId = 'foo';
-  }
-  buildCounterResponseHeader--;
-  return o;
-}
-
-void checkResponseHeader(api.ResponseHeader o) {
-  buildCounterResponseHeader++;
-  if (buildCounterResponseHeader < 3) {
-    unittest.expect(
-      o.operationId!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterResponseHeader--;
 }
 
 core.List<api.ResponsePolicy> buildUnnamed34() => [
@@ -2309,7 +2271,6 @@ api.ResponsePoliciesListResponse buildResponsePoliciesListResponse() {
   final o = api.ResponsePoliciesListResponse();
   buildCounterResponsePoliciesListResponse++;
   if (buildCounterResponsePoliciesListResponse < 3) {
-    o.header = buildResponseHeader();
     o.nextPageToken = 'foo';
     o.responsePolicies = buildUnnamed34();
   }
@@ -2320,7 +2281,6 @@ api.ResponsePoliciesListResponse buildResponsePoliciesListResponse() {
 void checkResponsePoliciesListResponse(api.ResponsePoliciesListResponse o) {
   buildCounterResponsePoliciesListResponse++;
   if (buildCounterResponsePoliciesListResponse < 3) {
-    checkResponseHeader(o.header!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -2335,7 +2295,6 @@ api.ResponsePoliciesPatchResponse buildResponsePoliciesPatchResponse() {
   final o = api.ResponsePoliciesPatchResponse();
   buildCounterResponsePoliciesPatchResponse++;
   if (buildCounterResponsePoliciesPatchResponse < 3) {
-    o.header = buildResponseHeader();
     o.responsePolicy = buildResponsePolicy();
   }
   buildCounterResponsePoliciesPatchResponse--;
@@ -2345,7 +2304,6 @@ api.ResponsePoliciesPatchResponse buildResponsePoliciesPatchResponse() {
 void checkResponsePoliciesPatchResponse(api.ResponsePoliciesPatchResponse o) {
   buildCounterResponsePoliciesPatchResponse++;
   if (buildCounterResponsePoliciesPatchResponse < 3) {
-    checkResponseHeader(o.header!);
     checkResponsePolicy(o.responsePolicy!);
   }
   buildCounterResponsePoliciesPatchResponse--;
@@ -2356,7 +2314,6 @@ api.ResponsePoliciesUpdateResponse buildResponsePoliciesUpdateResponse() {
   final o = api.ResponsePoliciesUpdateResponse();
   buildCounterResponsePoliciesUpdateResponse++;
   if (buildCounterResponsePoliciesUpdateResponse < 3) {
-    o.header = buildResponseHeader();
     o.responsePolicy = buildResponsePolicy();
   }
   buildCounterResponsePoliciesUpdateResponse--;
@@ -2366,7 +2323,6 @@ api.ResponsePoliciesUpdateResponse buildResponsePoliciesUpdateResponse() {
 void checkResponsePoliciesUpdateResponse(api.ResponsePoliciesUpdateResponse o) {
   buildCounterResponsePoliciesUpdateResponse++;
   if (buildCounterResponsePoliciesUpdateResponse < 3) {
-    checkResponseHeader(o.header!);
     checkResponsePolicy(o.responsePolicy!);
   }
   buildCounterResponsePoliciesUpdateResponse--;
@@ -2593,7 +2549,6 @@ api.ResponsePolicyRulesListResponse buildResponsePolicyRulesListResponse() {
   final o = api.ResponsePolicyRulesListResponse();
   buildCounterResponsePolicyRulesListResponse++;
   if (buildCounterResponsePolicyRulesListResponse < 3) {
-    o.header = buildResponseHeader();
     o.nextPageToken = 'foo';
     o.responsePolicyRules = buildUnnamed39();
   }
@@ -2605,7 +2560,6 @@ void checkResponsePolicyRulesListResponse(
     api.ResponsePolicyRulesListResponse o) {
   buildCounterResponsePolicyRulesListResponse++;
   if (buildCounterResponsePolicyRulesListResponse < 3) {
-    checkResponseHeader(o.header!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -2620,7 +2574,6 @@ api.ResponsePolicyRulesPatchResponse buildResponsePolicyRulesPatchResponse() {
   final o = api.ResponsePolicyRulesPatchResponse();
   buildCounterResponsePolicyRulesPatchResponse++;
   if (buildCounterResponsePolicyRulesPatchResponse < 3) {
-    o.header = buildResponseHeader();
     o.responsePolicyRule = buildResponsePolicyRule();
   }
   buildCounterResponsePolicyRulesPatchResponse--;
@@ -2631,7 +2584,6 @@ void checkResponsePolicyRulesPatchResponse(
     api.ResponsePolicyRulesPatchResponse o) {
   buildCounterResponsePolicyRulesPatchResponse++;
   if (buildCounterResponsePolicyRulesPatchResponse < 3) {
-    checkResponseHeader(o.header!);
     checkResponsePolicyRule(o.responsePolicyRule!);
   }
   buildCounterResponsePolicyRulesPatchResponse--;
@@ -2642,7 +2594,6 @@ api.ResponsePolicyRulesUpdateResponse buildResponsePolicyRulesUpdateResponse() {
   final o = api.ResponsePolicyRulesUpdateResponse();
   buildCounterResponsePolicyRulesUpdateResponse++;
   if (buildCounterResponsePolicyRulesUpdateResponse < 3) {
-    o.header = buildResponseHeader();
     o.responsePolicyRule = buildResponsePolicyRule();
   }
   buildCounterResponsePolicyRulesUpdateResponse--;
@@ -2653,7 +2604,6 @@ void checkResponsePolicyRulesUpdateResponse(
     api.ResponsePolicyRulesUpdateResponse o) {
   buildCounterResponsePolicyRulesUpdateResponse++;
   if (buildCounterResponsePolicyRulesUpdateResponse < 3) {
-    checkResponseHeader(o.header!);
     checkResponsePolicyRule(o.responsePolicyRule!);
   }
   buildCounterResponsePolicyRulesUpdateResponse--;
@@ -3198,16 +3148,6 @@ void main() {
       final od = api.ResourceRecordSetsListResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkResourceRecordSetsListResponse(od);
-    });
-  });
-
-  unittest.group('obj-schema-ResponseHeader', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildResponseHeader();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.ResponseHeader.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkResponseHeader(od);
     });
   });
 

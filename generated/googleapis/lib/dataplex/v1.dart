@@ -1271,15 +1271,18 @@ class ProjectsLocationsDataScansResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Generates recommended DataQualityRule from a data profiling DataScan.
+  /// Generates recommended data quality rules based on the results of a data
+  /// profiling scan.Use the recommendations to build rules for a data quality
+  /// scan.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name should be either * the name of a datascan with
-  /// at least one successful completed data profiling job, or * the name of a
-  /// successful completed data profiling datascan job.
+  /// [name] - Required. The name must be one of the following: The name of a
+  /// data scan with at least one successful, completed data profiling job The
+  /// name of a successful, completed data profiling job (a data scan job where
+  /// the job type is data profiling)
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/dataScans/\[^/\]+$`.
   ///
@@ -1689,15 +1692,18 @@ class ProjectsLocationsDataScansJobsResource {
   ProjectsLocationsDataScansJobsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Generates recommended DataQualityRule from a data profiling DataScan.
+  /// Generates recommended data quality rules based on the results of a data
+  /// profiling scan.Use the recommendations to build rules for a data quality
+  /// scan.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name should be either * the name of a datascan with
-  /// at least one successful completed data profiling job, or * the name of a
-  /// successful completed data profiling datascan job.
+  /// [name] - Required. The name must be one of the following: The name of a
+  /// data scan with at least one successful, completed data profiling job The
+  /// name of a successful, completed data profiling job (a data scan job where
+  /// the job type is data profiling)
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/dataScans/\[^/\]+/jobs/\[^/\]+$`.
   ///
@@ -10986,6 +10992,8 @@ class GoogleCloudDataplexV1DataQualityRule {
 
   /// Aggregate rule which evaluates the number of rows returned for the
   /// provided statement.
+  ///
+  /// If any rows are returned, this rule fails.
   GoogleCloudDataplexV1DataQualityRuleSqlAssertion? sqlAssertion;
 
   /// Aggregate rule which evaluates whether the column aggregate statistic lies
@@ -11208,8 +11216,8 @@ class GoogleCloudDataplexV1DataQualityRuleRegexExpectation {
 /// DataQualityRuleResult provides a more detailed, per-rule view of the
 /// results.
 class GoogleCloudDataplexV1DataQualityRuleResult {
-  /// The number of rows returned by the sql statement in the SqlAssertion
-  /// rule.This field is only valid for SqlAssertion rules.
+  /// The number of rows returned by the SQL statement in a SQL assertion
+  /// rule.This field is only valid for SQL assertion rules.
   ///
   /// Output only.
   core.String? assertionRowCount;
@@ -11324,13 +11332,17 @@ class GoogleCloudDataplexV1DataQualityRuleSetExpectation {
       };
 }
 
-/// Queries for rows returned by the provided SQL statement.
+/// A SQL statement that is evaluated to return rows that match an invalid
+/// state.
 ///
-/// If any rows are are returned, this rule fails.The SQL statement needs to use
-/// BigQuery standard SQL syntax, and must not contain any semicolons.${data()}
-/// can be used to reference the rows being evaluated, i.e. the table after all
-/// additional filters (row filters, incremental data filters, sampling) are
-/// applied.Example: SELECT * FROM ${data()} WHERE price \< 0
+/// If any rows are are returned, this rule fails.The SQL statement must use
+/// BigQuery standard SQL syntax, and must not contain any semicolons.You can
+/// use the data reference parameter ${data()} to reference the source table
+/// with all of its precondition filters applied. Examples of precondition
+/// filters include row filters, incremental data filters, and sampling. For
+/// more information, see Data reference parameter
+/// (https://cloud.google.com/dataplex/docs/auto-data-quality-overview#data-reference-parameter).Example:
+/// SELECT * FROM ${data()} WHERE price \< 0
 class GoogleCloudDataplexV1DataQualityRuleSqlAssertion {
   /// The SQL statement.
   ///
@@ -12828,6 +12840,15 @@ class GoogleCloudDataplexV1EntrySource {
   /// The maximum size of keys and values is 128 characters each.
   core.Map<core.String, core.String>? labels;
 
+  /// Location of the resource in the source system.
+  ///
+  /// Entry will be searchable by this location. By default, this should match
+  /// the location of the EntryGroup containing this entry. A different value
+  /// allows capturing source location for data external to GCP.
+  ///
+  /// Output only.
+  core.String? location;
+
   /// The platform containing the source system.
   ///
   /// The maximum size of the field is 64 characters.
@@ -12852,6 +12873,7 @@ class GoogleCloudDataplexV1EntrySource {
     this.description,
     this.displayName,
     this.labels,
+    this.location,
     this.platform,
     this.resource,
     this.system,
@@ -12884,6 +12906,9 @@ class GoogleCloudDataplexV1EntrySource {
                   ),
                 )
               : null,
+          location: json_.containsKey('location')
+              ? json_['location'] as core.String
+              : null,
           platform: json_.containsKey('platform')
               ? json_['platform'] as core.String
               : null,
@@ -12904,6 +12929,7 @@ class GoogleCloudDataplexV1EntrySource {
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
         if (labels != null) 'labels': labels!,
+        if (location != null) 'location': location!,
         if (platform != null) 'platform': platform!,
         if (resource != null) 'resource': resource!,
         if (system != null) 'system': system!,
@@ -13544,12 +13570,13 @@ class GoogleCloudDataplexV1EnvironmentSessionStatus {
       };
 }
 
-/// Generate recommended DataQualityRules request.
+/// Request details for generating data quality rule recommendations.
 typedef GoogleCloudDataplexV1GenerateDataQualityRulesRequest = $Empty;
 
-/// Generate recommended DataQualityRules response.
+/// Response details for data quality rule recommendations.
 class GoogleCloudDataplexV1GenerateDataQualityRulesResponse {
-  /// Generated recommended {@link DataQualityRule}s.
+  /// The data quality rules that Dataplex generates based on the results of a
+  /// data profiling scan.
   core.List<GoogleCloudDataplexV1DataQualityRule>? rule;
 
   GoogleCloudDataplexV1GenerateDataQualityRulesResponse({
@@ -15272,13 +15299,18 @@ class GoogleCloudDataplexV1SearchEntriesResponse {
 
 /// A single result of a SearchEntries request.
 class GoogleCloudDataplexV1SearchEntriesResult {
-  /// Entry format of the result.
   GoogleCloudDataplexV1Entry? dataplexEntry;
 
   /// Linked resource name.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? linkedResource;
 
   /// Snippets.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   GoogleCloudDataplexV1SearchEntriesResultSnippets? snippets;
 
   GoogleCloudDataplexV1SearchEntriesResult({
@@ -15313,6 +15345,9 @@ class GoogleCloudDataplexV1SearchEntriesResult {
 /// will be used in UI.
 class GoogleCloudDataplexV1SearchEntriesResultSnippets {
   /// Entry
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   GoogleCloudDataplexV1Entry? dataplexEntry;
 
   GoogleCloudDataplexV1SearchEntriesResultSnippets({

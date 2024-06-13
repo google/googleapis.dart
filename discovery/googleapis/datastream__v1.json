@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240501",
+    "revision": "20240529",
     "rootUrl": "https://datastream.googleapis.com/",
     "servicePath": "",
     "title": "Datastream API",
@@ -1562,6 +1562,10 @@
                 "postgresqlRdbms": {
                     "$ref": "PostgresqlRdbms",
                     "description": "PostgreSQL RDBMS to enrich with child data objects and metadata."
+                },
+                "sqlServerRdbms": {
+                    "$ref": "SqlServerRdbms",
+                    "description": "SQLServer RDBMS to enrich with child data objects and metadata."
                 }
             },
             "type": "object"
@@ -1581,6 +1585,10 @@
                 "postgresqlRdbms": {
                     "$ref": "PostgresqlRdbms",
                     "description": "Enriched PostgreSQL RDBMS object."
+                },
+                "sqlServerRdbms": {
+                    "$ref": "SqlServerRdbms",
+                    "description": "Enriched SQLServer RDBMS object."
                 }
             },
             "type": "object"
@@ -2863,6 +2871,12 @@
             },
             "type": "object"
         },
+        "SqlServerChangeTables": {
+            "description": "Configuration to use Change Tables CDC read method.",
+            "id": "SqlServerChangeTables",
+            "properties": {},
+            "type": "object"
+        },
         "SqlServerColumn": {
             "description": "SQLServer Column.",
             "id": "SqlServerColumn",
@@ -2985,6 +2999,10 @@
             "description": "SQLServer data source configuration",
             "id": "SqlServerSourceConfig",
             "properties": {
+                "changeTables": {
+                    "$ref": "SqlServerChangeTables",
+                    "description": "CDC reader reads from change tables."
+                },
                 "excludeObjects": {
                     "$ref": "SqlServerRdbms",
                     "description": "SQLServer objects to exclude from the stream."
@@ -3002,6 +3020,10 @@
                     "description": "Max concurrent CDC tasks.",
                     "format": "int32",
                     "type": "integer"
+                },
+                "transactionLogs": {
+                    "$ref": "SqlServerTransactionLogs",
+                    "description": "CDC reader reads from transaction logs."
                 }
             },
             "type": "object"
@@ -3022,6 +3044,12 @@
                     "type": "string"
                 }
             },
+            "type": "object"
+        },
+        "SqlServerTransactionLogs": {
+            "description": "Configuration to use Transaction Logs CDC read method.",
+            "id": "SqlServerTransactionLogs",
+            "properties": {},
             "type": "object"
         },
         "StartBackfillJobRequest": {

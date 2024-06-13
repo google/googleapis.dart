@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240522",
+    "revision": "20240605",
     "rootUrl": "https://biglake.googleapis.com/",
     "servicePath": "",
     "title": "BigLake API",
