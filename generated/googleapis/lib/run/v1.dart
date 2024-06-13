@@ -203,6 +203,8 @@ class NamespacesConfigurationsResource {
 
   /// List configurations.
   ///
+  /// Results are sorted by creation time, descending.
+  ///
   /// Request parameters:
   ///
   /// [parent] - The namespace from which the configurations should be listed.
@@ -641,6 +643,8 @@ class NamespacesExecutionsResource {
 
   /// List executions.
   ///
+  /// Results are sorted by creation time, descending.
+  ///
   /// Request parameters:
   ///
   /// [parent] - Required. The namespace from which the executions should be
@@ -851,6 +855,8 @@ class NamespacesJobsResource {
   }
 
   /// List jobs.
+  ///
+  /// Results are sorted by creation time, descending.
   ///
   /// Request parameters:
   ///
@@ -1112,6 +1118,8 @@ class NamespacesRevisionsResource {
 
   /// List revisions.
   ///
+  /// Results are sorted by creation time, descending.
+  ///
   /// Request parameters:
   ///
   /// [parent] - The namespace from which the revisions should be listed. For
@@ -1229,6 +1237,8 @@ class NamespacesRoutesResource {
   }
 
   /// List routes.
+  ///
+  /// Results are sorted by creation time, descending.
   ///
   /// Request parameters:
   ///
@@ -1468,6 +1478,8 @@ class NamespacesServicesResource {
   }
 
   /// Lists services for the given project and region.
+  ///
+  /// Results are sorted by creation time, descending.
   ///
   /// Request parameters:
   ///
@@ -1957,6 +1969,8 @@ class ProjectsLocationsConfigurationsResource {
   }
 
   /// List configurations.
+  ///
+  /// Results are sorted by creation time, descending.
   ///
   /// Request parameters:
   ///
@@ -2708,6 +2722,8 @@ class ProjectsLocationsRevisionsResource {
 
   /// List revisions.
   ///
+  /// Results are sorted by creation time, descending.
+  ///
   /// Request parameters:
   ///
   /// [parent] - The namespace from which the revisions should be listed. For
@@ -2825,6 +2841,8 @@ class ProjectsLocationsRoutesResource {
   }
 
   /// List routes.
+  ///
+  /// Results are sorted by creation time, descending.
   ///
   /// Request parameters:
   ///
@@ -3120,6 +3138,8 @@ class ProjectsLocationsServicesResource {
   }
 
   /// Lists services for the given project and region.
+  ///
+  /// Results are sorted by creation time, descending.
   ///
   /// Request parameters:
   ///

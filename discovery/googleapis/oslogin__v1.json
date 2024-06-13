@@ -34,7 +34,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240519",
+    "revision": "20240609",
     "rootUrl": "https://oslogin.googleapis.com/",
     "servicePath": "",
     "title": "Cloud OS Login API",

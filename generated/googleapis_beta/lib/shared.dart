@@ -1837,6 +1837,37 @@ class $QuotaStatus {
 
 /// Used by:
 ///
+/// - analyticsadmin:v1alpha : GoogleAnalyticsAdminV1alphaReorderEventEditRulesRequest
+/// - analyticsadmin:v1beta : GoogleAnalyticsAdminV1betaReorderEventEditRulesRequest
+class $ReorderEventEditRulesRequest {
+  /// EventEditRule resource names for the specified data stream, in the needed
+  /// processing order.
+  ///
+  /// All EventEditRules for the stream must be present in the list.
+  ///
+  /// Required.
+  core.List<core.String>? eventEditRules;
+
+  $ReorderEventEditRulesRequest({
+    this.eventEditRules,
+  });
+
+  $ReorderEventEditRulesRequest.fromJson(core.Map json_)
+      : this(
+          eventEditRules: json_.containsKey('eventEditRules')
+              ? (json_['eventEditRules'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (eventEditRules != null) 'eventEditRules': eventEditRules!,
+      };
+}
+
+/// Used by:
+///
 /// - prod_tt_sasportal:v1alpha1 : SasPortalAssignment
 /// - sasportal:v1alpha1 : SasPortalAssignment
 class $SasPortalAssignment {

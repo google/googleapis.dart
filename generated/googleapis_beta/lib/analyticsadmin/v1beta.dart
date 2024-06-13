@@ -33,6 +33,7 @@
 ///   - [PropertiesCustomDimensionsResource]
 ///   - [PropertiesCustomMetricsResource]
 ///   - [PropertiesDataStreamsResource]
+///     - [PropertiesDataStreamsEventEditRulesResource]
 ///     - [PropertiesDataStreamsMeasurementProtocolSecretsResource]
 ///   - [PropertiesFirebaseLinksResource]
 ///   - [PropertiesGoogleAdsLinksResource]
@@ -1675,6 +1676,8 @@ class PropertiesCustomMetricsResource {
 class PropertiesDataStreamsResource {
   final commons.ApiRequester _requester;
 
+  PropertiesDataStreamsEventEditRulesResource get eventEditRules =>
+      PropertiesDataStreamsEventEditRulesResource(_requester);
   PropertiesDataStreamsMeasurementProtocolSecretsResource
       get measurementProtocolSecrets =>
           PropertiesDataStreamsMeasurementProtocolSecretsResource(_requester);
@@ -1892,6 +1895,55 @@ class PropertiesDataStreamsResource {
       queryParams: queryParams_,
     );
     return GoogleAnalyticsAdminV1betaDataStream.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class PropertiesDataStreamsEventEditRulesResource {
+  final commons.ApiRequester _requester;
+
+  PropertiesDataStreamsEventEditRulesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Changes the processing order of event edit rules on the specified stream.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Example format: properties/123/dataStreams/456
+  /// Value must have pattern `^properties/\[^/\]+/dataStreams/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> reorder(
+    GoogleAnalyticsAdminV1betaReorderEventEditRulesRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1beta/' + core.Uri.encodeFull('$parent') + '/eventEditRules:reorder';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -4199,6 +4251,10 @@ class GoogleAnalyticsAdminV1betaProvisionAccountTicketRequest {
 /// Response message for ProvisionAccountTicket RPC.
 typedef GoogleAnalyticsAdminV1betaProvisionAccountTicketResponse
     = $ProvisionAccountTicketResponse;
+
+/// Request message for ReorderEventEditRules RPC.
+typedef GoogleAnalyticsAdminV1betaReorderEventEditRulesRequest
+    = $ReorderEventEditRulesRequest;
 
 /// The request for a Data Access Record Report.
 class GoogleAnalyticsAdminV1betaRunAccessReportRequest {

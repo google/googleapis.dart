@@ -336,8 +336,9 @@ class ProjectsLocationsWorkflowsExecutionsResource {
   /// results. The following fields are supported for filtering: `executionId`,
   /// `state`, `createTime`, `startTime`, `endTime`, `duration`,
   /// `workflowRevisionId`, `stepName`, and `label`. For details, see AIP-160.
-  /// For example, if you are using the Google APIs Explorer:
-  /// `state="SUCCEEDED"` or `startTime>"2023-08-01" AND state="FAILED"`
+  /// For more information, see Filter executions. For example, if you are using
+  /// the Google APIs Explorer: `state="SUCCEEDED"` or `startTime>"2023-08-01"
+  /// AND state="FAILED"`
   ///
   /// [orderBy] - Optional. Comma-separated list of fields that specify the
   /// ordering applied to the `[Executions.ListExecutions]` results. By default
@@ -1436,6 +1437,10 @@ class StepEntry {
 
 /// StepEntryMetadata contains metadata information about this step.
 class StepEntryMetadata {
+  /// Expected iteration represents the expected number of iterations in the
+  /// step's progress.
+  core.String? expectedIteration;
+
   /// Progress number represents the current state of the current progress.
   ///
   /// eg: A step entry represents the 4th iteration in a progress of
@@ -1461,6 +1466,7 @@ class StepEntryMetadata {
   core.String? threadId;
 
   StepEntryMetadata({
+    this.expectedIteration,
     this.progressNumber,
     this.progressType,
     this.threadId,
@@ -1468,6 +1474,9 @@ class StepEntryMetadata {
 
   StepEntryMetadata.fromJson(core.Map json_)
       : this(
+          expectedIteration: json_.containsKey('expectedIteration')
+              ? json_['expectedIteration'] as core.String
+              : null,
           progressNumber: json_.containsKey('progressNumber')
               ? json_['progressNumber'] as core.String
               : null,
@@ -1480,6 +1489,7 @@ class StepEntryMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (expectedIteration != null) 'expectedIteration': expectedIteration!,
         if (progressNumber != null) 'progressNumber': progressNumber!,
         if (progressType != null) 'progressType': progressType!,
         if (threadId != null) 'threadId': threadId!,

@@ -2342,6 +2342,12 @@ class AcknowledgeRequest {
 ///
 /// Message payloads and metadata will be written to files as an Avro binary.
 class AvroConfig {
+  /// When true, the output Cloud Storage file will be serialized using the
+  /// topic schema, if it exists.
+  ///
+  /// Optional.
+  core.bool? useTopicSchema;
+
   /// When true, write the subscription name, message_id, publish_time,
   /// attributes, and ordering_key as additional fields in the output.
   ///
@@ -2354,17 +2360,22 @@ class AvroConfig {
   core.bool? writeMetadata;
 
   AvroConfig({
+    this.useTopicSchema,
     this.writeMetadata,
   });
 
   AvroConfig.fromJson(core.Map json_)
       : this(
+          useTopicSchema: json_.containsKey('useTopicSchema')
+              ? json_['useTopicSchema'] as core.bool
+              : null,
           writeMetadata: json_.containsKey('writeMetadata')
               ? json_['writeMetadata'] as core.bool
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (useTopicSchema != null) 'useTopicSchema': useTopicSchema!,
         if (writeMetadata != null) 'writeMetadata': writeMetadata!,
       };
 }

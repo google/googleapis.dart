@@ -87,7 +87,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240523",
+    "revision": "20240604",
     "rootUrl": "https://classroom.googleapis.com/",
     "servicePath": "",
     "title": "Google Classroom API",

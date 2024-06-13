@@ -211,7 +211,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240528",
+    "revision": "20240611",
     "rootUrl": "https://dataportability.googleapis.com/",
     "servicePath": "",
     "title": "Data Portability API",

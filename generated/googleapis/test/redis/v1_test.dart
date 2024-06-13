@@ -180,6 +180,7 @@ api.Cluster buildCluster() {
     o.stateInfo = buildStateInfo();
     o.transitEncryptionMode = 'foo';
     o.uid = 'foo';
+    o.zoneDistributionConfig = buildZoneDistributionConfig();
   }
   buildCounterCluster--;
   return o;
@@ -239,6 +240,7 @@ void checkCluster(api.Cluster o) {
       o.uid!,
       unittest.equals('foo'),
     );
+    checkZoneDistributionConfig(o.zoneDistributionConfig!);
   }
   buildCounterCluster--;
 }
@@ -1681,6 +1683,33 @@ void checkWeeklyMaintenanceWindow(api.WeeklyMaintenanceWindow o) {
   buildCounterWeeklyMaintenanceWindow--;
 }
 
+core.int buildCounterZoneDistributionConfig = 0;
+api.ZoneDistributionConfig buildZoneDistributionConfig() {
+  final o = api.ZoneDistributionConfig();
+  buildCounterZoneDistributionConfig++;
+  if (buildCounterZoneDistributionConfig < 3) {
+    o.mode = 'foo';
+    o.zone = 'foo';
+  }
+  buildCounterZoneDistributionConfig--;
+  return o;
+}
+
+void checkZoneDistributionConfig(api.ZoneDistributionConfig o) {
+  buildCounterZoneDistributionConfig++;
+  if (buildCounterZoneDistributionConfig < 3) {
+    unittest.expect(
+      o.mode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.zone!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterZoneDistributionConfig--;
+}
+
 void main() {
   unittest.group('obj-schema-AOFConfig', () {
     unittest.test('to-json--from-json', () async {
@@ -2059,6 +2088,16 @@ void main() {
       final od = api.WeeklyMaintenanceWindow.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkWeeklyMaintenanceWindow(od);
+    });
+  });
+
+  unittest.group('obj-schema-ZoneDistributionConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildZoneDistributionConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ZoneDistributionConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkZoneDistributionConfig(od);
     });
   });
 

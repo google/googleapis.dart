@@ -438,6 +438,47 @@ void checkDomain(api.Domain o) {
   buildCounterDomain--;
 }
 
+core.int buildCounterDomainForwarding = 0;
+api.DomainForwarding buildDomainForwarding() {
+  final o = api.DomainForwarding();
+  buildCounterDomainForwarding++;
+  if (buildCounterDomainForwarding < 3) {
+    o.pathForwarding = true;
+    o.pemCertificate = 'foo';
+    o.redirectType = 'foo';
+    o.sslEnabled = true;
+    o.subdomain = 'foo';
+    o.targetUri = 'foo';
+  }
+  buildCounterDomainForwarding--;
+  return o;
+}
+
+void checkDomainForwarding(api.DomainForwarding o) {
+  buildCounterDomainForwarding++;
+  if (buildCounterDomainForwarding < 3) {
+    unittest.expect(o.pathForwarding!, unittest.isTrue);
+    unittest.expect(
+      o.pemCertificate!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.redirectType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.sslEnabled!, unittest.isTrue);
+    unittest.expect(
+      o.subdomain!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.targetUri!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterDomainForwarding--;
+}
+
 core.int buildCounterDsRecord = 0;
 api.DsRecord buildDsRecord() {
   final o = api.DsRecord();
@@ -473,6 +514,33 @@ void checkDsRecord(api.DsRecord o) {
     );
   }
   buildCounterDsRecord--;
+}
+
+core.int buildCounterEmailForwarding = 0;
+api.EmailForwarding buildEmailForwarding() {
+  final o = api.EmailForwarding();
+  buildCounterEmailForwarding++;
+  if (buildCounterEmailForwarding < 3) {
+    o.alias = 'foo';
+    o.targetEmailAddress = 'foo';
+  }
+  buildCounterEmailForwarding--;
+  return o;
+}
+
+void checkEmailForwarding(api.EmailForwarding o) {
+  buildCounterEmailForwarding++;
+  if (buildCounterEmailForwarding < 3) {
+    unittest.expect(
+      o.alias!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.targetEmailAddress!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterEmailForwarding--;
 }
 
 core.int buildCounterExportRegistrationRequest = 0;
@@ -680,6 +748,28 @@ void checkImportDomainRequest(api.ImportDomainRequest o) {
     checkUnnamed11(o.labels!);
   }
   buildCounterImportDomainRequest--;
+}
+
+core.int buildCounterInitiatePushTransferRequest = 0;
+api.InitiatePushTransferRequest buildInitiatePushTransferRequest() {
+  final o = api.InitiatePushTransferRequest();
+  buildCounterInitiatePushTransferRequest++;
+  if (buildCounterInitiatePushTransferRequest < 3) {
+    o.tag = 'foo';
+  }
+  buildCounterInitiatePushTransferRequest--;
+  return o;
+}
+
+void checkInitiatePushTransferRequest(api.InitiatePushTransferRequest o) {
+  buildCounterInitiatePushTransferRequest++;
+  if (buildCounterInitiatePushTransferRequest < 3) {
+    unittest.expect(
+      o.tag!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterInitiatePushTransferRequest--;
 }
 
 core.List<api.Location> buildUnnamed12() => [
@@ -890,6 +980,7 @@ api.ManagementSettings buildManagementSettings() {
   final o = api.ManagementSettings();
   buildCounterManagementSettings++;
   if (buildCounterManagementSettings < 3) {
+    o.effectiveTransferLockState = 'foo';
     o.preferredRenewalMethod = 'foo';
     o.renewalMethod = 'foo';
     o.transferLockState = 'foo';
@@ -901,6 +992,10 @@ api.ManagementSettings buildManagementSettings() {
 void checkManagementSettings(api.ManagementSettings o) {
   buildCounterManagementSettings++;
   if (buildCounterManagementSettings < 3) {
+    unittest.expect(
+      o.effectiveTransferLockState!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.preferredRenewalMethod!,
       unittest.equals('foo'),
@@ -1367,12 +1462,29 @@ void checkUnnamed27(core.List<core.String> o) {
   );
 }
 
-core.Map<core.String, core.String> buildUnnamed28() => {
+core.List<core.String> buildUnnamed28() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed28(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.Map<core.String, core.String> buildUnnamed29() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed28(core.Map<core.String, core.String> o) {
+void checkUnnamed29(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -1384,12 +1496,12 @@ void checkUnnamed28(core.Map<core.String, core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed29() => [
+core.List<core.String> buildUnnamed30() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed29(core.List<core.String> o) {
+void checkUnnamed30(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1410,15 +1522,16 @@ api.Registration buildRegistration() {
     o.createTime = 'foo';
     o.dnsSettings = buildDnsSettings();
     o.domainName = 'foo';
+    o.domainProperties = buildUnnamed27();
     o.expireTime = 'foo';
-    o.issues = buildUnnamed27();
-    o.labels = buildUnnamed28();
+    o.issues = buildUnnamed28();
+    o.labels = buildUnnamed29();
     o.managementSettings = buildManagementSettings();
     o.name = 'foo';
     o.pendingContactSettings = buildContactSettings();
     o.registerFailureReason = 'foo';
     o.state = 'foo';
-    o.supportedPrivacy = buildUnnamed29();
+    o.supportedPrivacy = buildUnnamed30();
     o.transferFailureReason = 'foo';
   }
   buildCounterRegistration--;
@@ -1438,12 +1551,13 @@ void checkRegistration(api.Registration o) {
       o.domainName!,
       unittest.equals('foo'),
     );
+    checkUnnamed27(o.domainProperties!);
     unittest.expect(
       o.expireTime!,
       unittest.equals('foo'),
     );
-    checkUnnamed27(o.issues!);
-    checkUnnamed28(o.labels!);
+    checkUnnamed28(o.issues!);
+    checkUnnamed29(o.labels!);
     checkManagementSettings(o.managementSettings!);
     unittest.expect(
       o.name!,
@@ -1458,13 +1572,34 @@ void checkRegistration(api.Registration o) {
       o.state!,
       unittest.equals('foo'),
     );
-    checkUnnamed29(o.supportedPrivacy!);
+    checkUnnamed30(o.supportedPrivacy!);
     unittest.expect(
       o.transferFailureReason!,
       unittest.equals('foo'),
     );
   }
   buildCounterRegistration--;
+}
+
+core.int buildCounterRenewDomainRequest = 0;
+api.RenewDomainRequest buildRenewDomainRequest() {
+  final o = api.RenewDomainRequest();
+  buildCounterRenewDomainRequest++;
+  if (buildCounterRenewDomainRequest < 3) {
+    o.validateOnly = true;
+    o.yearlyPrice = buildMoney();
+  }
+  buildCounterRenewDomainRequest--;
+  return o;
+}
+
+void checkRenewDomainRequest(api.RenewDomainRequest o) {
+  buildCounterRenewDomainRequest++;
+  if (buildCounterRenewDomainRequest < 3) {
+    unittest.expect(o.validateOnly!, unittest.isTrue);
+    checkMoney(o.yearlyPrice!);
+  }
+  buildCounterRenewDomainRequest--;
 }
 
 core.int buildCounterResetAuthorizationCodeRequest = 0;
@@ -1482,12 +1617,57 @@ void checkResetAuthorizationCodeRequest(api.ResetAuthorizationCodeRequest o) {
   buildCounterResetAuthorizationCodeRequest--;
 }
 
-core.List<api.Domain> buildUnnamed30() => [
+core.List<api.DomainForwarding> buildUnnamed31() => [
+      buildDomainForwarding(),
+      buildDomainForwarding(),
+    ];
+
+void checkUnnamed31(core.List<api.DomainForwarding> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkDomainForwarding(o[0]);
+  checkDomainForwarding(o[1]);
+}
+
+core.List<api.EmailForwarding> buildUnnamed32() => [
+      buildEmailForwarding(),
+      buildEmailForwarding(),
+    ];
+
+void checkUnnamed32(core.List<api.EmailForwarding> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkEmailForwarding(o[0]);
+  checkEmailForwarding(o[1]);
+}
+
+core.int buildCounterRetrieveGoogleDomainsForwardingConfigResponse = 0;
+api.RetrieveGoogleDomainsForwardingConfigResponse
+    buildRetrieveGoogleDomainsForwardingConfigResponse() {
+  final o = api.RetrieveGoogleDomainsForwardingConfigResponse();
+  buildCounterRetrieveGoogleDomainsForwardingConfigResponse++;
+  if (buildCounterRetrieveGoogleDomainsForwardingConfigResponse < 3) {
+    o.domainForwardings = buildUnnamed31();
+    o.emailForwardings = buildUnnamed32();
+  }
+  buildCounterRetrieveGoogleDomainsForwardingConfigResponse--;
+  return o;
+}
+
+void checkRetrieveGoogleDomainsForwardingConfigResponse(
+    api.RetrieveGoogleDomainsForwardingConfigResponse o) {
+  buildCounterRetrieveGoogleDomainsForwardingConfigResponse++;
+  if (buildCounterRetrieveGoogleDomainsForwardingConfigResponse < 3) {
+    checkUnnamed31(o.domainForwardings!);
+    checkUnnamed32(o.emailForwardings!);
+  }
+  buildCounterRetrieveGoogleDomainsForwardingConfigResponse--;
+}
+
+core.List<api.Domain> buildUnnamed33() => [
       buildDomain(),
       buildDomain(),
     ];
 
-void checkUnnamed30(core.List<api.Domain> o) {
+void checkUnnamed33(core.List<api.Domain> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDomain(o[0]);
   checkDomain(o[1]);
@@ -1498,7 +1678,7 @@ api.RetrieveImportableDomainsResponse buildRetrieveImportableDomainsResponse() {
   final o = api.RetrieveImportableDomainsResponse();
   buildCounterRetrieveImportableDomainsResponse++;
   if (buildCounterRetrieveImportableDomainsResponse < 3) {
-    o.domains = buildUnnamed30();
+    o.domains = buildUnnamed33();
     o.nextPageToken = 'foo';
   }
   buildCounterRetrieveImportableDomainsResponse--;
@@ -1509,7 +1689,7 @@ void checkRetrieveImportableDomainsResponse(
     api.RetrieveImportableDomainsResponse o) {
   buildCounterRetrieveImportableDomainsResponse++;
   if (buildCounterRetrieveImportableDomainsResponse < 3) {
-    checkUnnamed30(o.domains!);
+    checkUnnamed33(o.domains!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1560,12 +1740,12 @@ void checkRetrieveTransferParametersResponse(
   buildCounterRetrieveTransferParametersResponse--;
 }
 
-core.List<api.RegisterParameters> buildUnnamed31() => [
+core.List<api.RegisterParameters> buildUnnamed34() => [
       buildRegisterParameters(),
       buildRegisterParameters(),
     ];
 
-void checkUnnamed31(core.List<api.RegisterParameters> o) {
+void checkUnnamed34(core.List<api.RegisterParameters> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRegisterParameters(o[0]);
   checkRegisterParameters(o[1]);
@@ -1576,7 +1756,7 @@ api.SearchDomainsResponse buildSearchDomainsResponse() {
   final o = api.SearchDomainsResponse();
   buildCounterSearchDomainsResponse++;
   if (buildCounterSearchDomainsResponse < 3) {
-    o.registerParameters = buildUnnamed31();
+    o.registerParameters = buildUnnamed34();
   }
   buildCounterSearchDomainsResponse--;
   return o;
@@ -1585,7 +1765,7 @@ api.SearchDomainsResponse buildSearchDomainsResponse() {
 void checkSearchDomainsResponse(api.SearchDomainsResponse o) {
   buildCounterSearchDomainsResponse++;
   if (buildCounterSearchDomainsResponse < 3) {
-    checkUnnamed31(o.registerParameters!);
+    checkUnnamed34(o.registerParameters!);
   }
   buildCounterSearchDomainsResponse--;
 }
@@ -1614,7 +1794,7 @@ void checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
   buildCounterSetIamPolicyRequest--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed32() => {
+core.Map<core.String, core.Object?> buildUnnamed35() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -1627,7 +1807,7 @@ core.Map<core.String, core.Object?> buildUnnamed32() => {
       },
     };
 
-void checkUnnamed32(core.Map<core.String, core.Object?> o) {
+void checkUnnamed35(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o['x']!) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
@@ -1659,15 +1839,15 @@ void checkUnnamed32(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed33() => [
-      buildUnnamed32(),
-      buildUnnamed32(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed36() => [
+      buildUnnamed35(),
+      buildUnnamed35(),
     ];
 
-void checkUnnamed33(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed36(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed32(o[0]);
-  checkUnnamed32(o[1]);
+  checkUnnamed35(o[0]);
+  checkUnnamed35(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -1676,7 +1856,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed33();
+    o.details = buildUnnamed36();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -1690,129 +1870,13 @@ void checkStatus(api.Status o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed33(o.details!);
+    checkUnnamed36(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
     );
   }
   buildCounterStatus--;
-}
-
-core.List<core.String> buildUnnamed34() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed34(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.int buildCounterTestIamPermissionsRequest = 0;
-api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
-  final o = api.TestIamPermissionsRequest();
-  buildCounterTestIamPermissionsRequest++;
-  if (buildCounterTestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed34();
-  }
-  buildCounterTestIamPermissionsRequest--;
-  return o;
-}
-
-void checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
-  buildCounterTestIamPermissionsRequest++;
-  if (buildCounterTestIamPermissionsRequest < 3) {
-    checkUnnamed34(o.permissions!);
-  }
-  buildCounterTestIamPermissionsRequest--;
-}
-
-core.List<core.String> buildUnnamed35() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed35(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.int buildCounterTestIamPermissionsResponse = 0;
-api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
-  final o = api.TestIamPermissionsResponse();
-  buildCounterTestIamPermissionsResponse++;
-  if (buildCounterTestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed35();
-  }
-  buildCounterTestIamPermissionsResponse--;
-  return o;
-}
-
-void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
-  buildCounterTestIamPermissionsResponse++;
-  if (buildCounterTestIamPermissionsResponse < 3) {
-    checkUnnamed35(o.permissions!);
-  }
-  buildCounterTestIamPermissionsResponse--;
-}
-
-core.List<core.String> buildUnnamed36() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed36(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.int buildCounterTransferDomainRequest = 0;
-api.TransferDomainRequest buildTransferDomainRequest() {
-  final o = api.TransferDomainRequest();
-  buildCounterTransferDomainRequest++;
-  if (buildCounterTransferDomainRequest < 3) {
-    o.authorizationCode = buildAuthorizationCode();
-    o.contactNotices = buildUnnamed36();
-    o.registration = buildRegistration();
-    o.validateOnly = true;
-    o.yearlyPrice = buildMoney();
-  }
-  buildCounterTransferDomainRequest--;
-  return o;
-}
-
-void checkTransferDomainRequest(api.TransferDomainRequest o) {
-  buildCounterTransferDomainRequest++;
-  if (buildCounterTransferDomainRequest < 3) {
-    checkAuthorizationCode(o.authorizationCode!);
-    checkUnnamed36(o.contactNotices!);
-    checkRegistration(o.registration!);
-    unittest.expect(o.validateOnly!, unittest.isTrue);
-    checkMoney(o.yearlyPrice!);
-  }
-  buildCounterTransferDomainRequest--;
 }
 
 core.List<core.String> buildUnnamed37() => [
@@ -1832,12 +1896,128 @@ void checkUnnamed37(core.List<core.String> o) {
   );
 }
 
+core.int buildCounterTestIamPermissionsRequest = 0;
+api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
+  final o = api.TestIamPermissionsRequest();
+  buildCounterTestIamPermissionsRequest++;
+  if (buildCounterTestIamPermissionsRequest < 3) {
+    o.permissions = buildUnnamed37();
+  }
+  buildCounterTestIamPermissionsRequest--;
+  return o;
+}
+
+void checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
+  buildCounterTestIamPermissionsRequest++;
+  if (buildCounterTestIamPermissionsRequest < 3) {
+    checkUnnamed37(o.permissions!);
+  }
+  buildCounterTestIamPermissionsRequest--;
+}
+
 core.List<core.String> buildUnnamed38() => [
       'foo',
       'foo',
     ];
 
 void checkUnnamed38(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterTestIamPermissionsResponse = 0;
+api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
+  final o = api.TestIamPermissionsResponse();
+  buildCounterTestIamPermissionsResponse++;
+  if (buildCounterTestIamPermissionsResponse < 3) {
+    o.permissions = buildUnnamed38();
+  }
+  buildCounterTestIamPermissionsResponse--;
+  return o;
+}
+
+void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
+  buildCounterTestIamPermissionsResponse++;
+  if (buildCounterTestIamPermissionsResponse < 3) {
+    checkUnnamed38(o.permissions!);
+  }
+  buildCounterTestIamPermissionsResponse--;
+}
+
+core.List<core.String> buildUnnamed39() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed39(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterTransferDomainRequest = 0;
+api.TransferDomainRequest buildTransferDomainRequest() {
+  final o = api.TransferDomainRequest();
+  buildCounterTransferDomainRequest++;
+  if (buildCounterTransferDomainRequest < 3) {
+    o.authorizationCode = buildAuthorizationCode();
+    o.contactNotices = buildUnnamed39();
+    o.registration = buildRegistration();
+    o.validateOnly = true;
+    o.yearlyPrice = buildMoney();
+  }
+  buildCounterTransferDomainRequest--;
+  return o;
+}
+
+void checkTransferDomainRequest(api.TransferDomainRequest o) {
+  buildCounterTransferDomainRequest++;
+  if (buildCounterTransferDomainRequest < 3) {
+    checkAuthorizationCode(o.authorizationCode!);
+    checkUnnamed39(o.contactNotices!);
+    checkRegistration(o.registration!);
+    unittest.expect(o.validateOnly!, unittest.isTrue);
+    checkMoney(o.yearlyPrice!);
+  }
+  buildCounterTransferDomainRequest--;
+}
+
+core.List<core.String> buildUnnamed40() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed40(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed41() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed41(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1857,8 +2037,8 @@ api.TransferParameters buildTransferParameters() {
     o.currentRegistrar = 'foo';
     o.currentRegistrarUri = 'foo';
     o.domainName = 'foo';
-    o.nameServers = buildUnnamed37();
-    o.supportedPrivacy = buildUnnamed38();
+    o.nameServers = buildUnnamed40();
+    o.supportedPrivacy = buildUnnamed41();
     o.transferLockState = 'foo';
     o.yearlyPrice = buildMoney();
   }
@@ -1881,8 +2061,8 @@ void checkTransferParameters(api.TransferParameters o) {
       o.domainName!,
       unittest.equals('foo'),
     );
-    checkUnnamed37(o.nameServers!);
-    checkUnnamed38(o.supportedPrivacy!);
+    checkUnnamed40(o.nameServers!);
+    checkUnnamed41(o.supportedPrivacy!);
     unittest.expect(
       o.transferLockState!,
       unittest.equals('foo'),
@@ -2013,6 +2193,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-DomainForwarding', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDomainForwarding();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DomainForwarding.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkDomainForwarding(od);
+    });
+  });
+
   unittest.group('obj-schema-DsRecord', () {
     unittest.test('to-json--from-json', () async {
       final o = buildDsRecord();
@@ -2020,6 +2210,16 @@ void main() {
       final od =
           api.DsRecord.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkDsRecord(od);
+    });
+  });
+
+  unittest.group('obj-schema-EmailForwarding', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildEmailForwarding();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.EmailForwarding.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkEmailForwarding(od);
     });
   });
 
@@ -2070,6 +2270,16 @@ void main() {
       final od = api.ImportDomainRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkImportDomainRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-InitiatePushTransferRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildInitiatePushTransferRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.InitiatePushTransferRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkInitiatePushTransferRequest(od);
     });
   });
 
@@ -2193,6 +2403,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-RenewDomainRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRenewDomainRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RenewDomainRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRenewDomainRequest(od);
+    });
+  });
+
   unittest.group('obj-schema-ResetAuthorizationCodeRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildResetAuthorizationCodeRequest();
@@ -2200,6 +2420,17 @@ void main() {
       final od = api.ResetAuthorizationCodeRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkResetAuthorizationCodeRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-RetrieveGoogleDomainsForwardingConfigResponse',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRetrieveGoogleDomainsForwardingConfigResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RetrieveGoogleDomainsForwardingConfigResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRetrieveGoogleDomainsForwardingConfigResponse(od);
     });
   });
 
@@ -3010,6 +3241,65 @@ void main() {
       checkOperation(response as api.Operation);
     });
 
+    unittest.test('method--initiatePushTransfer', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudDomainsApi(mock).projects.locations.registrations;
+      final arg_request = buildInitiatePushTransferRequest();
+      final arg_registration = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.InitiatePushTransferRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkInitiatePushTransferRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.initiatePushTransfer(
+          arg_request, arg_registration,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.CloudDomainsApi(mock).projects.locations.registrations;
@@ -3202,6 +3492,64 @@ void main() {
       checkOperation(response as api.Operation);
     });
 
+    unittest.test('method--renewDomain', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudDomainsApi(mock).projects.locations.registrations;
+      final arg_request = buildRenewDomainRequest();
+      final arg_registration = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.RenewDomainRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkRenewDomainRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.renewDomain(arg_request, arg_registration,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+
     unittest.test('method--resetAuthorizationCode', () async {
       final mock = HttpServerMock();
       final res = api.CloudDomainsApi(mock).projects.locations.registrations;
@@ -3312,6 +3660,62 @@ void main() {
       final response = await res.retrieveAuthorizationCode(arg_registration,
           $fields: arg_$fields);
       checkAuthorizationCode(response as api.AuthorizationCode);
+    });
+
+    unittest.test('method--retrieveGoogleDomainsForwardingConfig', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudDomainsApi(mock).projects.locations.registrations;
+      final arg_registration = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildRetrieveGoogleDomainsForwardingConfigResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.retrieveGoogleDomainsForwardingConfig(
+          arg_registration,
+          $fields: arg_$fields);
+      checkRetrieveGoogleDomainsForwardingConfigResponse(
+          response as api.RetrieveGoogleDomainsForwardingConfigResponse);
     });
 
     unittest.test('method--retrieveImportableDomains', () async {

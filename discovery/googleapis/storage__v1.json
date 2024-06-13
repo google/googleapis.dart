@@ -33,7 +33,7 @@
             "location": "me-central2"
         }
     ],
-    "etag": "\"3132383134303835313436343635393933303731\"",
+    "etag": "\"3135333230323737323330303239393232303334\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/cloud_storage-16.png",
         "x32": "https://www.google.com/images/icons/product/cloud_storage-32.png"
@@ -47,7 +47,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240524",
+    "revision": "20240610",
     "rootUrl": "https://storage.googleapis.com/",
     "servicePath": "storage/v1/",
     "title": "Cloud Storage JSON API",

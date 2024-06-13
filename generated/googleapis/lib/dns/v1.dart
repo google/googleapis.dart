@@ -2231,14 +2231,14 @@ class ResponsePolicyRulesResource {
   }
 }
 
-/// A Change represents a set of ResourceRecordSet additions and deletions
+/// A Change represents a set of `ResourceRecordSet` additions and deletions
 /// applied atomically to a ManagedZone.
 ///
 /// ResourceRecordSets within a ManagedZone are modified by creating a new
 /// Change element in the Changes collection. In turn the Changes collection
-/// also records the past modifications to the ResourceRecordSets in a
-/// ManagedZone. The current state of the ManagedZone is the sum effect of
-/// applying all Change elements in the Changes collection in sequence.
+/// also records the past modifications to the `ResourceRecordSets` in a
+/// `ManagedZone`. The current state of the `ManagedZone` is the sum effect of
+/// applying all `Change` elements in the `Changes` collection in sequence.
 class Change {
   /// Which ResourceRecordSets to add?
   core.List<ResourceRecordSet>? additions;
@@ -2320,26 +2320,24 @@ class Change {
 class ChangesListResponse {
   /// The requested changes.
   core.List<Change>? changes;
-  ResponseHeader? header;
 
   /// Type of resource.
   core.String? kind;
 
-  /// The presence of this field indicates that there exist more results
-  /// following your last page of results in pagination order.
+  /// This field indicates that more results are available beyond the last page
+  /// displayed.
   ///
-  /// To fetch them, make another list request using this value as your
-  /// pagination token. This lets you retrieve the complete contents of even
-  /// very large collections one page at a time. However, if the contents of the
-  /// collection change between the first and last paginated list request, the
-  /// set of all elements returned are an inconsistent view of the collection.
-  /// You cannot retrieve a "snapshot" of collections larger than the maximum
+  /// To fetch the results, make another list request and use this value as your
+  /// page token. This lets you retrieve the complete contents of a very large
+  /// collection one page at a time. However, if the contents of the collection
+  /// change between the first and last paginated list request, the set of all
+  /// elements returned are an inconsistent view of the collection. You can't
+  /// retrieve a consistent snapshot of a collection larger than the maximum
   /// page size.
   core.String? nextPageToken;
 
   ChangesListResponse({
     this.changes,
-    this.header,
     this.kind,
     this.nextPageToken,
   });
@@ -2352,10 +2350,6 @@ class ChangesListResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          header: json_.containsKey('header')
-              ? ResponseHeader.fromJson(
-                  json_['header'] as core.Map<core.String, core.dynamic>)
-              : null,
           kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
           nextPageToken: json_.containsKey('nextPageToken')
               ? json_['nextPageToken'] as core.String
@@ -2364,7 +2358,6 @@ class ChangesListResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (changes != null) 'changes': changes!,
-        if (header != null) 'header': header!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
@@ -2600,26 +2593,24 @@ class DnsKeySpec {
 class DnsKeysListResponse {
   /// The requested resources.
   core.List<DnsKey>? dnsKeys;
-  ResponseHeader? header;
 
   /// Type of resource.
   core.String? kind;
 
-  /// The presence of this field indicates that there exist more results
-  /// following your last page of results in pagination order.
+  /// This field indicates that more results are available beyond the last page
+  /// displayed.
   ///
-  /// To fetch them, make another list request using this value as your
-  /// pagination token. In this way you can retrieve the complete contents of
-  /// even very large collections one page at a time. However, if the contents
-  /// of the collection change between the first and last paginated list
-  /// request, the set of all elements returned are an inconsistent view of the
-  /// collection. There is no way to retrieve a "snapshot" of collections larger
-  /// than the maximum page size.
+  /// To fetch the results, make another list request and use this value as your
+  /// page token. This lets you retrieve the complete contents of a very large
+  /// collection one page at a time. However, if the contents of the collection
+  /// change between the first and last paginated list request, the set of all
+  /// elements returned are an inconsistent view of the collection. You can't
+  /// retrieve a consistent snapshot of a collection larger than the maximum
+  /// page size.
   core.String? nextPageToken;
 
   DnsKeysListResponse({
     this.dnsKeys,
-    this.header,
     this.kind,
     this.nextPageToken,
   });
@@ -2632,10 +2623,6 @@ class DnsKeysListResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          header: json_.containsKey('header')
-              ? ResponseHeader.fromJson(
-                  json_['header'] as core.Map<core.String, core.dynamic>)
-              : null,
           kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
           nextPageToken: json_.containsKey('nextPageToken')
               ? json_['nextPageToken'] as core.String
@@ -2644,7 +2631,6 @@ class DnsKeysListResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dnsKeys != null) 'dnsKeys': dnsKeys!,
-        if (header != null) 'header': header!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
@@ -3107,8 +3093,11 @@ class ManagedZone {
   /// The zone's visibility: public zones are exposed to the Internet, while
   /// private zones are visible only to Virtual Private Cloud resources.
   /// Possible string values are:
-  /// - "public"
-  /// - "private"
+  /// - "public" : Indicates that records in this zone can be queried from the
+  /// public internet.
+  /// - "private" : Indicates that records in this zone cannot be queried from
+  /// the public internet. Access to private zones depends on the zone
+  /// configuration.
   core.String? visibility;
 
   ManagedZone({
@@ -3261,8 +3250,12 @@ class ManagedZoneDnsSecConfig {
   ///
   /// Can only be changed while the state is OFF.
   /// Possible string values are:
-  /// - "nsec"
-  /// - "nsec3"
+  /// - "nsec" : Indicates that Cloud DNS will sign records in the managed zone
+  /// according to RFC 4034 and respond with NSEC records for names that do not
+  /// exist.
+  /// - "nsec3" : Indicates that Cloud DNS will sign records in the managed zone
+  /// according to RFC 5155 and respond with NSEC3 records for names that do not
+  /// exist.
   core.String? nonExistence;
 
   /// Specifies whether DNSSEC is enabled, and what mode it is in.
@@ -3389,19 +3382,17 @@ class ManagedZoneForwardingConfigNameServerTarget {
 }
 
 class ManagedZoneOperationsListResponse {
-  ResponseHeader? header;
-
   /// Type of resource.
   core.String? kind;
 
-  /// The presence of this field indicates that there exist more results
-  /// following your last page of results in pagination order.
+  /// This field indicates that more results are available beyond the last page
+  /// displayed.
   ///
-  /// To fetch them, make another list request using this value as your page
-  /// token. This lets you retrieve the complete contents of even very large
-  /// collections one page at a time. However, if the contents of the collection
+  /// To fetch the results, make another list request and use this value as your
+  /// page token. This lets you retrieve the complete contents of a very large
+  /// collection one page at a time. However, if the contents of the collection
   /// change between the first and last paginated list request, the set of all
-  /// elements returned are an inconsistent view of the collection. You cannot
+  /// elements returned are an inconsistent view of the collection. You can't
   /// retrieve a consistent snapshot of a collection larger than the maximum
   /// page size.
   core.String? nextPageToken;
@@ -3410,7 +3401,6 @@ class ManagedZoneOperationsListResponse {
   core.List<Operation>? operations;
 
   ManagedZoneOperationsListResponse({
-    this.header,
     this.kind,
     this.nextPageToken,
     this.operations,
@@ -3418,10 +3408,6 @@ class ManagedZoneOperationsListResponse {
 
   ManagedZoneOperationsListResponse.fromJson(core.Map json_)
       : this(
-          header: json_.containsKey('header')
-              ? ResponseHeader.fromJson(
-                  json_['header'] as core.Map<core.String, core.dynamic>)
-              : null,
           kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
           nextPageToken: json_.containsKey('nextPageToken')
               ? json_['nextPageToken'] as core.String
@@ -3435,7 +3421,6 @@ class ManagedZoneOperationsListResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (header != null) 'header': header!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null) 'operations': operations!,
@@ -3481,7 +3466,7 @@ class ManagedZonePeeringConfigTargetNetwork {
   /// The fully qualified URL of the VPC network to forward queries to.
   ///
   /// This should be formatted like
-  /// https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
+  /// `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
   core.String? networkUrl;
 
   ManagedZonePeeringConfigTargetNetwork({
@@ -3583,7 +3568,7 @@ class ManagedZonePrivateVisibilityConfigNetwork {
   /// The fully qualified URL of the VPC network to bind to.
   ///
   /// Format this URL like
-  /// https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
+  /// `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
   core.String? networkUrl;
 
   ManagedZonePrivateVisibilityConfigNetwork({
@@ -3660,7 +3645,7 @@ class ManagedZoneServiceDirectoryConfigNamespace {
   /// The fully qualified URL of the namespace associated with the zone.
   ///
   /// Format must be
-  /// https://servicedirectory.googleapis.com/v1/projects/{project}/locations/{location}/namespaces/{namespace}
+  /// `https://servicedirectory.googleapis.com/v1/projects/{project}/locations/{location}/namespaces/{namespace}`
   core.String? namespaceUrl;
 
   ManagedZoneServiceDirectoryConfigNamespace({
@@ -3688,27 +3673,25 @@ class ManagedZoneServiceDirectoryConfigNamespace {
 }
 
 class ManagedZonesListResponse {
-  ResponseHeader? header;
-
   /// Type of resource.
   core.String? kind;
 
   /// The managed zone resources.
   core.List<ManagedZone>? managedZones;
 
-  /// The presence of this field indicates that there exist more results
-  /// following your last page of results in pagination order.
+  /// This field indicates that more results are available beyond the last page
+  /// displayed.
   ///
-  /// To fetch them, make another list request using this value as your page
-  /// token. This lets you the complete contents of even very large collections
-  /// one page at a time. However, if the contents of the collection change
-  /// between the first and last paginated list request, the set of all elements
-  /// returned are an inconsistent view of the collection. You cannot retrieve a
-  /// consistent snapshot of a collection larger than the maximum page size.
+  /// To fetch the results, make another list request and use this value as your
+  /// page token. This lets you retrieve the complete contents of a very large
+  /// collection one page at a time. However, if the contents of the collection
+  /// change between the first and last paginated list request, the set of all
+  /// elements returned are an inconsistent view of the collection. You can't
+  /// retrieve a consistent snapshot of a collection larger than the maximum
+  /// page size.
   core.String? nextPageToken;
 
   ManagedZonesListResponse({
-    this.header,
     this.kind,
     this.managedZones,
     this.nextPageToken,
@@ -3716,10 +3699,6 @@ class ManagedZonesListResponse {
 
   ManagedZonesListResponse.fromJson(core.Map json_)
       : this(
-          header: json_.containsKey('header')
-              ? ResponseHeader.fromJson(
-                  json_['header'] as core.Map<core.String, core.dynamic>)
-              : null,
           kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
           managedZones: json_.containsKey('managedZones')
               ? (json_['managedZones'] as core.List)
@@ -3733,7 +3712,6 @@ class ManagedZonesListResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (header != null) 'header': header!,
         if (kind != null) 'kind': kind!,
         if (managedZones != null) 'managedZones': managedZones!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -3894,27 +3872,25 @@ class OperationManagedZoneContext {
 }
 
 class PoliciesListResponse {
-  ResponseHeader? header;
-
   /// Type of resource.
   core.String? kind;
 
-  /// The presence of this field indicates that there exist more results
-  /// following your last page of results in pagination order.
+  /// This field indicates that more results are available beyond the last page
+  /// displayed.
   ///
-  /// To fetch them, make another list request using this value as your page
-  /// token. This lets you the complete contents of even very large collections
-  /// one page at a time. However, if the contents of the collection change
-  /// between the first and last paginated list request, the set of all elements
-  /// returned are an inconsistent view of the collection. You cannot retrieve a
-  /// consistent snapshot of a collection larger than the maximum page size.
+  /// To fetch the results, make another list request and use this value as your
+  /// page token. This lets you retrieve the complete contents of a very large
+  /// collection one page at a time. However, if the contents of the collection
+  /// change between the first and last paginated list request, the set of all
+  /// elements returned are an inconsistent view of the collection. You can't
+  /// retrieve a consistent snapshot of a collection larger than the maximum
+  /// page size.
   core.String? nextPageToken;
 
   /// The policy resources.
   core.List<Policy>? policies;
 
   PoliciesListResponse({
-    this.header,
     this.kind,
     this.nextPageToken,
     this.policies,
@@ -3922,10 +3898,6 @@ class PoliciesListResponse {
 
   PoliciesListResponse.fromJson(core.Map json_)
       : this(
-          header: json_.containsKey('header')
-              ? ResponseHeader.fromJson(
-                  json_['header'] as core.Map<core.String, core.dynamic>)
-              : null,
           kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
           nextPageToken: json_.containsKey('nextPageToken')
               ? json_['nextPageToken'] as core.String
@@ -3939,7 +3911,6 @@ class PoliciesListResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (header != null) 'header': header!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (policies != null) 'policies': policies!,
@@ -3947,20 +3918,14 @@ class PoliciesListResponse {
 }
 
 class PoliciesPatchResponse {
-  ResponseHeader? header;
   Policy? policy;
 
   PoliciesPatchResponse({
-    this.header,
     this.policy,
   });
 
   PoliciesPatchResponse.fromJson(core.Map json_)
       : this(
-          header: json_.containsKey('header')
-              ? ResponseHeader.fromJson(
-                  json_['header'] as core.Map<core.String, core.dynamic>)
-              : null,
           policy: json_.containsKey('policy')
               ? Policy.fromJson(
                   json_['policy'] as core.Map<core.String, core.dynamic>)
@@ -3968,26 +3933,19 @@ class PoliciesPatchResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (header != null) 'header': header!,
         if (policy != null) 'policy': policy!,
       };
 }
 
 class PoliciesUpdateResponse {
-  ResponseHeader? header;
   Policy? policy;
 
   PoliciesUpdateResponse({
-    this.header,
     this.policy,
   });
 
   PoliciesUpdateResponse.fromJson(core.Map json_)
       : this(
-          header: json_.containsKey('header')
-              ? ResponseHeader.fromJson(
-                  json_['header'] as core.Map<core.String, core.dynamic>)
-              : null,
           policy: json_.containsKey('policy')
               ? Policy.fromJson(
                   json_['policy'] as core.Map<core.String, core.dynamic>)
@@ -3995,7 +3953,6 @@ class PoliciesUpdateResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (header != null) 'header': header!,
         if (policy != null) 'policy': policy!,
       };
 }
@@ -4210,7 +4167,7 @@ class PolicyNetwork {
 /// A project resource.
 ///
 /// The project is a top level container for resources including Cloud DNS
-/// ManagedZones. Projects can be created only in the APIs console. Next tag: 7.
+/// ManagedZones. Projects can be created only in the APIs console.
 class Project {
   /// User assigned unique identifier for the resource (output only).
   core.String? id;
@@ -4543,8 +4500,8 @@ class RRSetRoutingPolicy {
       };
 }
 
-/// Configures a RRSetRoutingPolicy that routes based on the geo location of the
-/// querying user.
+/// Configures a `RRSetRoutingPolicy` that routes based on the geo location of
+/// the querying user.
 class RRSetRoutingPolicyGeoPolicy {
   /// Without fencing, if health check fails for all configured items in the
   /// current geo bucket, we failover to the next nearest geo bucket.
@@ -4596,7 +4553,7 @@ class RRSetRoutingPolicyGeoPolicyGeoPolicyItem {
   /// For A and AAAA types only.
   ///
   /// Endpoints to return in the query result only if they are healthy. These
-  /// can be specified along with rrdata within this item.
+  /// can be specified along with `rrdata` within this item.
   RRSetRoutingPolicyHealthCheckTargets? healthCheckedTargets;
   core.String? kind;
 
@@ -4607,7 +4564,7 @@ class RRSetRoutingPolicyGeoPolicyGeoPolicyItem {
   core.String? location;
   core.List<core.String>? rrdatas;
 
-  /// DNSSEC generated signatures for all the rrdata within this item.
+  /// DNSSEC generated signatures for all the `rrdata` within this item.
   ///
   /// If health checked targets are provided for DNSSEC enabled zones, there's a
   /// restriction of 1 IP address per item.
@@ -4657,8 +4614,7 @@ class RRSetRoutingPolicyGeoPolicyGeoPolicyItem {
 /// HealthCheckTargets describes endpoints to health-check when responding to
 /// Routing Policy queries.
 ///
-/// Only the healthy endpoints will be included in the response. Only one of
-/// internal_load_balancer and external_endpoints should be set.
+/// Only the healthy endpoints will be included in the response.
 class RRSetRoutingPolicyHealthCheckTargets {
   /// Configuration for internal load balancers to be health checked.
   core.List<RRSetRoutingPolicyLoadBalancerTarget>? internalLoadBalancers;
@@ -4691,8 +4647,8 @@ class RRSetRoutingPolicyLoadBalancerTarget {
   /// The protocol of the load balancer to health check.
   /// Possible string values are:
   /// - "undefined"
-  /// - "tcp"
-  /// - "udp"
+  /// - "tcp" : Indicates the load balancer is accessible via TCP.
+  /// - "udp" : Indicates the load balancer is accessible via UDP.
   core.String? ipProtocol;
   core.String? kind;
 
@@ -4706,17 +4662,19 @@ class RRSetRoutingPolicyLoadBalancerTarget {
   /// Balancer.
   /// Possible string values are:
   /// - "none"
-  /// - "globalL7ilb"
-  /// - "regionalL4ilb"
-  /// - "regionalL7ilb"
+  /// - "globalL7ilb" : Indicates the load balancer is a Cross-Region
+  /// Application Load Balancer.
+  /// - "regionalL4ilb" : Indicates the load balancer is a Regional Network
+  /// Passthrough Load Balancer.
+  /// - "regionalL7ilb" : Indicates the load balancer is a Regional Application
+  /// Load Balancer.
   core.String? loadBalancerType;
 
   /// The fully qualified URL of the network that the load balancer is attached
   /// to.
   ///
   /// This should be formatted like
-  /// https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
-  /// .
+  /// `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
   core.String? networkUrl;
 
   /// The configured port of the load balancer.
@@ -4784,7 +4742,7 @@ class RRSetRoutingPolicyPrimaryBackupPolicy {
   /// Backup targets provide a regional failover policy for the otherwise global
   /// primary targets.
   ///
-  /// If serving state is set to BACKUP, this policy essentially becomes a geo
+  /// If serving state is set to `BACKUP`, this policy essentially becomes a geo
   /// routing policy.
   RRSetRoutingPolicyGeoPolicy? backupGeoTargets;
   core.String? kind;
@@ -4792,11 +4750,11 @@ class RRSetRoutingPolicyPrimaryBackupPolicy {
   /// Endpoints that are health checked before making the routing decision.
   ///
   /// Unhealthy endpoints are omitted from the results. If all endpoints are
-  /// unhealthy, we serve a response based on the backup_geo_targets.
+  /// unhealthy, we serve a response based on the `backup_geo_targets`.
   RRSetRoutingPolicyHealthCheckTargets? primaryTargets;
 
-  /// When serving state is PRIMARY, this field provides the option of sending a
-  /// small percentage of the traffic to the backup targets.
+  /// When serving state is `PRIMARY`, this field provides the option of sending
+  /// a small percentage of the traffic to the backup targets.
   core.double? trickleTraffic;
 
   RRSetRoutingPolicyPrimaryBackupPolicy({
@@ -4867,21 +4825,21 @@ class RRSetRoutingPolicyWrrPolicyWrrPolicyItem {
   /// The unhealthy endpoints are omitted from the result. If all endpoints
   /// within a bucket are unhealthy, we choose a different bucket (sampled with
   /// respect to its weight) for responding. If DNSSEC is enabled for this zone,
-  /// only one of rrdata or health_checked_targets can be set.
+  /// only one of `rrdata` or `health_checked_targets` can be set.
   RRSetRoutingPolicyHealthCheckTargets? healthCheckedTargets;
   core.String? kind;
   core.List<core.String>? rrdatas;
 
-  /// DNSSEC generated signatures for all the rrdata within this item.
+  /// DNSSEC generated signatures for all the `rrdata` within this item.
   ///
   /// Note that if health checked targets are provided for DNSSEC enabled zones,
   /// there's a restriction of 1 IP address per item.
   core.List<core.String>? signatureRrdatas;
 
-  /// The weight corresponding to this WrrPolicyItem object.
+  /// The weight corresponding to this `WrrPolicyItem` object.
   ///
-  /// When multiple WrrPolicyItem objects are configured, the probability of
-  /// returning an WrrPolicyItem object's data is proportional to its weight
+  /// When multiple `WrrPolicyItem` objects are configured, the probability of
+  /// returning an `WrrPolicyItem` object's data is proportional to its weight
   /// relative to the sum of weights configured for all items. This weight must
   /// be non-negative.
   core.double? weight;
@@ -4937,8 +4895,8 @@ class ResourceRecordSet {
   /// Configures dynamic query responses based on either the geo location of the
   /// querying user or a weighted round robin based routing policy.
   ///
-  /// A valid ResourceRecordSet contains only rrdata (for static resolution) or
-  /// a routing_policy (for dynamic resolution).
+  /// A valid `ResourceRecordSet` contains only `rrdata` (for static resolution)
+  /// or a `routing_policy` (for dynamic resolution).
   RRSetRoutingPolicy? routingPolicy;
 
   /// As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see
@@ -4948,7 +4906,8 @@ class ResourceRecordSet {
   /// As defined in RFC 4034 (section 3.2).
   core.List<core.String>? signatureRrdatas;
 
-  /// Number of seconds that this ResourceRecordSet can be cached by resolvers.
+  /// Number of seconds that this `ResourceRecordSet` can be cached by
+  /// resolvers.
   core.int? ttl;
 
   /// The identifier of a supported record type.
@@ -5002,27 +4961,25 @@ class ResourceRecordSet {
 typedef ResourceRecordSetsDeleteResponse = $Empty;
 
 class ResourceRecordSetsListResponse {
-  ResponseHeader? header;
-
   /// Type of resource.
   core.String? kind;
 
-  /// The presence of this field indicates that there exist more results
-  /// following your last page of results in pagination order.
+  /// This field indicates that more results are available beyond the last page
+  /// displayed.
   ///
-  /// To fetch them, make another list request using this value as your
-  /// pagination token. This lets you retrieve the complete contents of even
-  /// larger collections, one page at a time. However, if the collection changes
-  /// between paginated list requests, the set of elements returned is an
-  /// inconsistent view of the collection. You cannot retrieve a consistent
-  /// snapshot of a collection larger than the maximum page size.
+  /// To fetch the results, make another list request and use this value as your
+  /// page token. This lets you retrieve the complete contents of a very large
+  /// collection one page at a time. However, if the contents of the collection
+  /// change between the first and last paginated list request, the set of all
+  /// elements returned are an inconsistent view of the collection. You can't
+  /// retrieve a consistent snapshot of a collection larger than the maximum
+  /// page size.
   core.String? nextPageToken;
 
   /// The resource record set resources.
   core.List<ResourceRecordSet>? rrsets;
 
   ResourceRecordSetsListResponse({
-    this.header,
     this.kind,
     this.nextPageToken,
     this.rrsets,
@@ -5030,10 +4987,6 @@ class ResourceRecordSetsListResponse {
 
   ResourceRecordSetsListResponse.fromJson(core.Map json_)
       : this(
-          header: json_.containsKey('header')
-              ? ResponseHeader.fromJson(
-                  json_['header'] as core.Map<core.String, core.dynamic>)
-              : null,
           kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
           nextPageToken: json_.containsKey('nextPageToken')
               ? json_['nextPageToken'] as core.String
@@ -5047,48 +5000,21 @@ class ResourceRecordSetsListResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (header != null) 'header': header!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (rrsets != null) 'rrsets': rrsets!,
       };
 }
 
-/// Elements common to every response.
-class ResponseHeader {
-  /// For mutating operation requests that completed successfully.
-  ///
-  /// This is the client_operation_id if the client specified it, otherwise it
-  /// is generated by the server (output only).
-  core.String? operationId;
-
-  ResponseHeader({
-    this.operationId,
-  });
-
-  ResponseHeader.fromJson(core.Map json_)
-      : this(
-          operationId: json_.containsKey('operationId')
-              ? json_['operationId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (operationId != null) 'operationId': operationId!,
-      };
-}
-
 class ResponsePoliciesListResponse {
-  ResponseHeader? header;
-
-  /// The presence of this field indicates that more results exist following
-  /// your last page of results in pagination order.
+  /// This field indicates that more results are available beyond the last page
+  /// displayed.
   ///
-  /// To fetch them, make another list request by using this value as your page
-  /// token. This lets you view the complete contents of even very large
-  /// collections one page at a time. However, if the contents of the collection
+  /// To fetch the results, make another list request and use this value as your
+  /// page token. This lets you retrieve the complete contents of a very large
+  /// collection one page at a time. However, if the contents of the collection
   /// change between the first and last paginated list request, the set of all
-  /// elements returned are an inconsistent view of the collection. You cannot
+  /// elements returned are an inconsistent view of the collection. You can't
   /// retrieve a consistent snapshot of a collection larger than the maximum
   /// page size.
   core.String? nextPageToken;
@@ -5097,17 +5023,12 @@ class ResponsePoliciesListResponse {
   core.List<ResponsePolicy>? responsePolicies;
 
   ResponsePoliciesListResponse({
-    this.header,
     this.nextPageToken,
     this.responsePolicies,
   });
 
   ResponsePoliciesListResponse.fromJson(core.Map json_)
       : this(
-          header: json_.containsKey('header')
-              ? ResponseHeader.fromJson(
-                  json_['header'] as core.Map<core.String, core.dynamic>)
-              : null,
           nextPageToken: json_.containsKey('nextPageToken')
               ? json_['nextPageToken'] as core.String
               : null,
@@ -5120,27 +5041,20 @@ class ResponsePoliciesListResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (header != null) 'header': header!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (responsePolicies != null) 'responsePolicies': responsePolicies!,
       };
 }
 
 class ResponsePoliciesPatchResponse {
-  ResponseHeader? header;
   ResponsePolicy? responsePolicy;
 
   ResponsePoliciesPatchResponse({
-    this.header,
     this.responsePolicy,
   });
 
   ResponsePoliciesPatchResponse.fromJson(core.Map json_)
       : this(
-          header: json_.containsKey('header')
-              ? ResponseHeader.fromJson(
-                  json_['header'] as core.Map<core.String, core.dynamic>)
-              : null,
           responsePolicy: json_.containsKey('responsePolicy')
               ? ResponsePolicy.fromJson(json_['responsePolicy']
                   as core.Map<core.String, core.dynamic>)
@@ -5148,26 +5062,19 @@ class ResponsePoliciesPatchResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (header != null) 'header': header!,
         if (responsePolicy != null) 'responsePolicy': responsePolicy!,
       };
 }
 
 class ResponsePoliciesUpdateResponse {
-  ResponseHeader? header;
   ResponsePolicy? responsePolicy;
 
   ResponsePoliciesUpdateResponse({
-    this.header,
     this.responsePolicy,
   });
 
   ResponsePoliciesUpdateResponse.fromJson(core.Map json_)
       : this(
-          header: json_.containsKey('header')
-              ? ResponseHeader.fromJson(
-                  json_['header'] as core.Map<core.String, core.dynamic>)
-              : null,
           responsePolicy: json_.containsKey('responsePolicy')
               ? ResponsePolicy.fromJson(json_['responsePolicy']
                   as core.Map<core.String, core.dynamic>)
@@ -5175,7 +5082,6 @@ class ResponsePoliciesUpdateResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (header != null) 'header': header!,
         if (responsePolicy != null) 'responsePolicy': responsePolicy!,
       };
 }
@@ -5292,7 +5198,7 @@ class ResponsePolicyNetwork {
   /// The fully qualified URL of the VPC network to bind to.
   ///
   /// This should be formatted like
-  /// https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
+  /// `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
   core.String? networkUrl;
 
   ResponsePolicyNetwork({
@@ -5324,19 +5230,19 @@ class ResponsePolicyRule {
   /// Answer this query with a behavior rather than DNS data.
   /// Possible string values are:
   /// - "behaviorUnspecified"
-  /// - "bypassResponsePolicy" : Skip a less-specific ResponsePolicyRule and
-  /// continue normal query logic. This can be used with a less-specific
-  /// wildcard selector to exempt a subset of the wildcard ResponsePolicyRule
-  /// from the ResponsePolicy behavior and query the public Internet instead.
-  /// For instance, if these rules exist: *.example.com -\> LocalData 1.2.3.4
-  /// foo.example.com -\> Behavior 'bypassResponsePolicy' Then a query for
-  /// 'foo.example.com' skips the wildcard. This additionally functions to
-  /// facilitate the allowlist feature. RPZs can be applied to multiple levels
-  /// in the (eventually org, folder, project, network) hierarchy. If a rule is
-  /// applied at a higher level of the hierarchy, adding a passthru rule at a
-  /// lower level will supersede that, and a query from an affected vm to that
-  /// domain will be exempt from the RPZ and proceed to normal resolution
-  /// behavior.
+  /// - "bypassResponsePolicy" : Skip a less-specific Response Policy Rule and
+  /// let the query logic continue. This mechanism, when used with wildcard
+  /// selectors, lets you exempt specific subdomains from a broader Response
+  /// Policy Rule and direct the queries to the public internet instead. For
+  /// example, if the following rules exist: ``` *.example.com -> LocalData
+  /// 1.2.3.4 foo.example.com -> Behavior 'passthrough' ``` A query for
+  /// foo.example.com skips the wildcard rule. This functionality also
+  /// facilitates allowlisting. Response Policy Zones (RPZs) can be applied at
+  /// multiple levels within the hierarchy: for example, an organization, a
+  /// folder, a project, or a VPC network. If an RPZ rule is applied at a higher
+  /// level, adding a `passthrough` rule at a lower level will override it.
+  /// Queries from affected virtual machines (VMs) to that domain bypass the RPZ
+  /// and proceed with normal resolution.
   core.String? behavior;
 
   /// The DNS name (wildcard or exact) to apply this rule to.
@@ -5418,34 +5324,28 @@ class ResponsePolicyRuleLocalData {
 }
 
 class ResponsePolicyRulesListResponse {
-  ResponseHeader? header;
-
-  /// The presence of this field indicates that there exist more results
-  /// following your last page of results in pagination order.
+  /// This field indicates that more results are available beyond the last page
+  /// displayed.
   ///
-  /// To fetch them, make another list request using this value as your page
-  /// token. This lets you the complete contents of even very large collections
-  /// one page at a time. However, if the contents of the collection change
-  /// between the first and last paginated list request, the set of all elements
-  /// returned are an inconsistent view of the collection. You cannot retrieve a
-  /// consistent snapshot of a collection larger than the maximum page size.
+  /// To fetch the results, make another list request and use this value as your
+  /// page token. This lets you retrieve the complete contents of a very large
+  /// collection one page at a time. However, if the contents of the collection
+  /// change between the first and last paginated list request, the set of all
+  /// elements returned are an inconsistent view of the collection. You can't
+  /// retrieve a consistent snapshot of a collection larger than the maximum
+  /// page size.
   core.String? nextPageToken;
 
   /// The Response Policy Rule resources.
   core.List<ResponsePolicyRule>? responsePolicyRules;
 
   ResponsePolicyRulesListResponse({
-    this.header,
     this.nextPageToken,
     this.responsePolicyRules,
   });
 
   ResponsePolicyRulesListResponse.fromJson(core.Map json_)
       : this(
-          header: json_.containsKey('header')
-              ? ResponseHeader.fromJson(
-                  json_['header'] as core.Map<core.String, core.dynamic>)
-              : null,
           nextPageToken: json_.containsKey('nextPageToken')
               ? json_['nextPageToken'] as core.String
               : null,
@@ -5458,7 +5358,6 @@ class ResponsePolicyRulesListResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (header != null) 'header': header!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (responsePolicyRules != null)
           'responsePolicyRules': responsePolicyRules!,
@@ -5466,20 +5365,14 @@ class ResponsePolicyRulesListResponse {
 }
 
 class ResponsePolicyRulesPatchResponse {
-  ResponseHeader? header;
   ResponsePolicyRule? responsePolicyRule;
 
   ResponsePolicyRulesPatchResponse({
-    this.header,
     this.responsePolicyRule,
   });
 
   ResponsePolicyRulesPatchResponse.fromJson(core.Map json_)
       : this(
-          header: json_.containsKey('header')
-              ? ResponseHeader.fromJson(
-                  json_['header'] as core.Map<core.String, core.dynamic>)
-              : null,
           responsePolicyRule: json_.containsKey('responsePolicyRule')
               ? ResponsePolicyRule.fromJson(json_['responsePolicyRule']
                   as core.Map<core.String, core.dynamic>)
@@ -5487,27 +5380,20 @@ class ResponsePolicyRulesPatchResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (header != null) 'header': header!,
         if (responsePolicyRule != null)
           'responsePolicyRule': responsePolicyRule!,
       };
 }
 
 class ResponsePolicyRulesUpdateResponse {
-  ResponseHeader? header;
   ResponsePolicyRule? responsePolicyRule;
 
   ResponsePolicyRulesUpdateResponse({
-    this.header,
     this.responsePolicyRule,
   });
 
   ResponsePolicyRulesUpdateResponse.fromJson(core.Map json_)
       : this(
-          header: json_.containsKey('header')
-              ? ResponseHeader.fromJson(
-                  json_['header'] as core.Map<core.String, core.dynamic>)
-              : null,
           responsePolicyRule: json_.containsKey('responsePolicyRule')
               ? ResponsePolicyRule.fromJson(json_['responsePolicyRule']
                   as core.Map<core.String, core.dynamic>)
@@ -5515,7 +5401,6 @@ class ResponsePolicyRulesUpdateResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (header != null) 'header': header!,
         if (responsePolicyRule != null)
           'responsePolicyRule': responsePolicyRule!,
       };

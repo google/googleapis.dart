@@ -1260,6 +1260,32 @@ class AcceleratorConfig {
       };
 }
 
+/// An access configuration attached to an instance's network interface.
+class AccessConfig {
+  /// An external IP address associated with this instance.
+  ///
+  /// Specify an unused static external IP address available to the project or
+  /// leave this field undefined to use an IP from a shared ephemeral IP address
+  /// pool. If you specify a static external IP address, it must live in the
+  /// same region as the zone of the instance.
+  core.String? externalIp;
+
+  AccessConfig({
+    this.externalIp,
+  });
+
+  AccessConfig.fromJson(core.Map json_)
+      : this(
+          externalIp: json_.containsKey('externalIp')
+              ? json_['externalIp'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (externalIp != null) 'externalIp': externalIp!,
+      };
+}
+
 /// Associates `members`, or principals, with a `role`.
 class Binding {
   /// The condition that is associated with this binding.
@@ -2181,6 +2207,16 @@ class Instance {
   /// Output only.
   core.String? proxyUri;
 
+  /// Reserved for future use for Zone Isolation.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzi;
+
+  /// Reserved for future use for Zone Separation.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzs;
+
   /// The state of this instance.
   ///
   /// Output only.
@@ -2227,6 +2263,8 @@ class Instance {
     this.labels,
     this.name,
     this.proxyUri,
+    this.satisfiesPzi,
+    this.satisfiesPzs,
     this.state,
     this.thirdPartyProxyUrl,
     this.updateTime,
@@ -2278,6 +2316,12 @@ class Instance {
           proxyUri: json_.containsKey('proxyUri')
               ? json_['proxyUri'] as core.String
               : null,
+          satisfiesPzi: json_.containsKey('satisfiesPzi')
+              ? json_['satisfiesPzi'] as core.bool
+              : null,
+          satisfiesPzs: json_.containsKey('satisfiesPzs')
+              ? json_['satisfiesPzs'] as core.bool
+              : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
           thirdPartyProxyUrl: json_.containsKey('thirdPartyProxyUrl')
@@ -2307,6 +2351,8 @@ class Instance {
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (proxyUri != null) 'proxyUri': proxyUri!,
+        if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (state != null) 'state': state!,
         if (thirdPartyProxyUrl != null)
           'thirdPartyProxyUrl': thirdPartyProxyUrl!,
@@ -2430,6 +2476,15 @@ typedef Location = $Location00;
 
 /// The definition of a network interface resource attached to a VM.
 class NetworkInterface {
+  /// An array of configurations for this interface.
+  ///
+  /// Currently, only one access config, ONE_TO_ONE_NAT, is supported. If no
+  /// accessConfigs specified, the instance will have an external internet
+  /// access through an ephemeral external IP address.
+  ///
+  /// Optional.
+  core.List<AccessConfig>? accessConfigs;
+
   /// The name of the VPC that this VM instance is in.
   ///
   /// Format: `projects/{project_id}/global/networks/{network_id}`
@@ -2457,6 +2512,7 @@ class NetworkInterface {
   core.String? subnet;
 
   NetworkInterface({
+    this.accessConfigs,
     this.network,
     this.nicType,
     this.subnet,
@@ -2464,6 +2520,12 @@ class NetworkInterface {
 
   NetworkInterface.fromJson(core.Map json_)
       : this(
+          accessConfigs: json_.containsKey('accessConfigs')
+              ? (json_['accessConfigs'] as core.List)
+                  .map((value) => AccessConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           network: json_.containsKey('network')
               ? json_['network'] as core.String
               : null,
@@ -2476,6 +2538,7 @@ class NetworkInterface {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (accessConfigs != null) 'accessConfigs': accessConfigs!,
         if (network != null) 'network': network!,
         if (nicType != null) 'nicType': nicType!,
         if (subnet != null) 'subnet': subnet!,

@@ -4830,9 +4830,9 @@ class Dataset {
 
   /// The default encryption key for all tables in the dataset.
   ///
-  /// Once this property is set, all newly-created partitioned tables in the
-  /// dataset will have encryption key set to this value, unless table creation
-  /// request (or query) overrides the key.
+  /// After this property is set, the encryption key of all newly-created tables
+  /// in the dataset is set to this value unless the table creation request or
+  /// query explicitly overrides the key.
   EncryptionConfiguration? defaultEncryptionConfiguration;
 
   /// This default partition expiration, expressed in milliseconds.
@@ -4986,6 +4986,18 @@ class Dataset {
   /// Optional.
   core.String? maxTimeTravelHours;
 
+  /// The \[tags\](/bigquery/docs/tags) attached to this dataset.
+  ///
+  /// Tag keys are globally unique. Tag key is expected to be in the namespaced
+  /// format, for example "123456789012/environment" where 123456789012 is the
+  /// ID of the parent organization or project resource for this tag key. Tag
+  /// value is expected to be the short name, for example "Production". See
+  /// \[Tag definitions\](/iam/docs/tags-access-control#definitions) for more
+  /// details.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? resourceTags;
+
   /// Restriction config for all tables and dataset.
   ///
   /// If set, restrict certain accesses on the dataset and all its tables based
@@ -5060,6 +5072,7 @@ class Dataset {
     this.linkedDatasetSource,
     this.location,
     this.maxTimeTravelHours,
+    this.resourceTags,
     this.restrictions,
     this.satisfiesPzi,
     this.satisfiesPzs,
@@ -5153,6 +5166,15 @@ class Dataset {
           maxTimeTravelHours: json_.containsKey('maxTimeTravelHours')
               ? json_['maxTimeTravelHours'] as core.String
               : null,
+          resourceTags: json_.containsKey('resourceTags')
+              ? (json_['resourceTags'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
           restrictions: json_.containsKey('restrictions')
               ? RestrictionConfig.fromJson(
                   json_['restrictions'] as core.Map<core.String, core.dynamic>)
@@ -5210,6 +5232,7 @@ class Dataset {
         if (location != null) 'location': location!,
         if (maxTimeTravelHours != null)
           'maxTimeTravelHours': maxTimeTravelHours!,
+        if (resourceTags != null) 'resourceTags': resourceTags!,
         if (restrictions != null) 'restrictions': restrictions!,
         if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
         if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
@@ -7029,6 +7052,41 @@ class ForeignTypeInfo {
       };
 }
 
+/// A view can be represented in multiple ways.
+///
+/// Each representation has its own dialect. This message stores the metadata
+/// required for these representations.
+class ForeignViewDefinition {
+  /// Represents the dialect of the query.
+  ///
+  /// Optional.
+  core.String? dialect;
+
+  /// The query that defines the view.
+  ///
+  /// Required.
+  core.String? query;
+
+  ForeignViewDefinition({
+    this.dialect,
+    this.query,
+  });
+
+  ForeignViewDefinition.fromJson(core.Map json_)
+      : this(
+          dialect: json_.containsKey('dialect')
+              ? json_['dialect'] as core.String
+              : null,
+          query:
+              json_.containsKey('query') ? json_['query'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dialect != null) 'dialect': dialect!,
+        if (query != null) 'query': query!,
+      };
+}
+
 /// Request message for `GetIamPolicy` method.
 class GetIamPolicyRequest {
   /// OPTIONAL: A `GetPolicyOptions` object for specifying options to
@@ -8294,7 +8352,11 @@ class JobConfiguration {
 
   /// Job timeout in milliseconds.
   ///
-  /// If this time limit is exceeded, BigQuery might attempt to stop the job.
+  /// If this time limit is exceeded, BigQuery will attempt to stop a longer
+  /// job, but may not always succeed in canceling it before the job completes.
+  /// For example, a job that takes more than 60 seconds to complete has a
+  /// better chance of being stopped than a job that takes 10 seconds to
+  /// complete.
   ///
   /// Optional.
   core.String? jobTimeoutMs;
@@ -8540,6 +8602,22 @@ class JobConfigurationLoad {
 
   /// Clustering specification for the destination table.
   Clustering? clustering;
+
+  /// Character map supported for column names in CSV/Parquet loads.
+  ///
+  /// Defaults to STRICT and can be overridden by Project Config Service. Using
+  /// this option with unsupporting load formats will result in an error.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "COLUMN_NAME_CHARACTER_MAP_UNSPECIFIED" : Unspecified column name
+  /// character map.
+  /// - "STRICT" : Support flexible column name and reject invalid column names.
+  /// - "V1" : Support alphanumeric + underscore characters and names must start
+  /// with a letter or underscore. Invalid column names will be normalized.
+  /// - "V2" : Support flexible column name. Invalid column names will be
+  /// normalized.
+  core.String? columnNameCharacterMap;
 
   /// Connection properties which can modify the load job behavior.
   ///
@@ -8889,6 +8967,7 @@ class JobConfigurationLoad {
     this.allowQuotedNewlines,
     this.autodetect,
     this.clustering,
+    this.columnNameCharacterMap,
     this.connectionProperties,
     this.copyFilesOnly,
     this.createDisposition,
@@ -8937,6 +9016,9 @@ class JobConfigurationLoad {
           clustering: json_.containsKey('clustering')
               ? Clustering.fromJson(
                   json_['clustering'] as core.Map<core.String, core.dynamic>)
+              : null,
+          columnNameCharacterMap: json_.containsKey('columnNameCharacterMap')
+              ? json_['columnNameCharacterMap'] as core.String
               : null,
           connectionProperties: json_.containsKey('connectionProperties')
               ? (json_['connectionProperties'] as core.List)
@@ -9066,6 +9148,8 @@ class JobConfigurationLoad {
           'allowQuotedNewlines': allowQuotedNewlines!,
         if (autodetect != null) 'autodetect': autodetect!,
         if (clustering != null) 'clustering': clustering!,
+        if (columnNameCharacterMap != null)
+          'columnNameCharacterMap': columnNameCharacterMap!,
         if (connectionProperties != null)
           'connectionProperties': connectionProperties!,
         if (copyFilesOnly != null) 'copyFilesOnly': copyFilesOnly!,
@@ -12303,15 +12387,15 @@ class ParquetOptions {
   /// Optional.
   core.bool? enumAsString;
 
-  /// Will indicate how to represent a parquet map if present.
+  /// Indicates how to represent a Parquet map if present.
   ///
   /// Optional.
   /// Possible string values are:
-  /// - "MAP_TARGET_TYPE_UNSPECIFIED" : In this mode, we fall back to the
-  /// default. Currently (3/24) we represent the map as: struct map_field_name {
-  /// repeated struct key_value { key value } }
-  /// - "ARRAY_OF_STRUCT" : In this mode, we omit parquet's key_value struct and
-  /// represent the map as: repeated struct map_field_name { key value }
+  /// - "MAP_TARGET_TYPE_UNSPECIFIED" : In this mode, the map will have the
+  /// following schema: struct map_field_name { repeated struct key_value { key
+  /// value } }.
+  /// - "ARRAY_OF_STRUCT" : In this mode, the map will have the following
+  /// schema: repeated struct map_field_name { key value }.
   core.String? mapTargetType;
 
   ParquetOptions({
@@ -15885,6 +15969,14 @@ class Table {
   /// Output only.
   core.String? numBytes;
 
+  /// Number of physical bytes used by current live data storage.
+  ///
+  /// This data is not kept in real time, and might be delayed by a few seconds
+  /// to a few minutes.
+  ///
+  /// Output only.
+  core.String? numCurrentPhysicalBytes;
+
   /// The number of logical bytes in the table that are considered "long-term
   /// storage".
   ///
@@ -16079,6 +16171,7 @@ class Table {
     this.numActiveLogicalBytes,
     this.numActivePhysicalBytes,
     this.numBytes,
+    this.numCurrentPhysicalBytes,
     this.numLongTermBytes,
     this.numLongTermLogicalBytes,
     this.numLongTermPhysicalBytes,
@@ -16195,6 +16288,9 @@ class Table {
               : null,
           numBytes: json_.containsKey('numBytes')
               ? json_['numBytes'] as core.String
+              : null,
+          numCurrentPhysicalBytes: json_.containsKey('numCurrentPhysicalBytes')
+              ? json_['numCurrentPhysicalBytes'] as core.String
               : null,
           numLongTermBytes: json_.containsKey('numLongTermBytes')
               ? json_['numLongTermBytes'] as core.String
@@ -16327,6 +16423,8 @@ class Table {
         if (numActivePhysicalBytes != null)
           'numActivePhysicalBytes': numActivePhysicalBytes!,
         if (numBytes != null) 'numBytes': numBytes!,
+        if (numCurrentPhysicalBytes != null)
+          'numCurrentPhysicalBytes': numCurrentPhysicalBytes!,
         if (numLongTermBytes != null) 'numLongTermBytes': numLongTermBytes!,
         if (numLongTermLogicalBytes != null)
           'numLongTermLogicalBytes': numLongTermLogicalBytes!,
@@ -17430,7 +17528,10 @@ class TableReplicationInfo {
 
   /// Specifies the interval at which the source table is polled for updates.
   ///
-  /// Required.
+  /// It's Optional. If not specified, default replication interval would be
+  /// applied.
+  ///
+  /// Optional.
   core.String? replicationIntervalMs;
 
   /// Replication status of configured replication.
@@ -18829,6 +18930,7 @@ class UndeleteDatasetRequest {
   /// The exact time when the dataset was deleted.
   ///
   /// If not specified, the most recently deleted version is undeleted.
+  /// Undeleting a dataset using deletion time is not supported.
   ///
   /// Optional.
   core.String? deletionTime;
@@ -18940,6 +19042,11 @@ class VectorSearchStatistics {
 
 /// Describes the definition of a logical view.
 class ViewDefinition {
+  /// Foreign view representations.
+  ///
+  /// Optional.
+  core.List<ForeignViewDefinition>? foreignDefinitions;
+
   /// Specifices the privacy policy for the view.
   ///
   /// Optional.
@@ -18968,6 +19075,7 @@ class ViewDefinition {
   core.List<UserDefinedFunctionResource>? userDefinedFunctionResources;
 
   ViewDefinition({
+    this.foreignDefinitions,
     this.privacyPolicy,
     this.query,
     this.useExplicitColumnNames,
@@ -18977,6 +19085,12 @@ class ViewDefinition {
 
   ViewDefinition.fromJson(core.Map json_)
       : this(
+          foreignDefinitions: json_.containsKey('foreignDefinitions')
+              ? (json_['foreignDefinitions'] as core.List)
+                  .map((value) => ForeignViewDefinition.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           privacyPolicy: json_.containsKey('privacyPolicy')
               ? PrivacyPolicy.fromJson(
                   json_['privacyPolicy'] as core.Map<core.String, core.dynamic>)
@@ -18999,6 +19113,8 @@ class ViewDefinition {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (foreignDefinitions != null)
+          'foreignDefinitions': foreignDefinitions!,
         if (privacyPolicy != null) 'privacyPolicy': privacyPolicy!,
         if (query != null) 'query': query!,
         if (useExplicitColumnNames != null)

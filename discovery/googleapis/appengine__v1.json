@@ -30,7 +30,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240513",
+    "revision": "20240610",
     "rootUrl": "https://appengine.googleapis.com/",
     "servicePath": "",
     "title": "App Engine Admin API",

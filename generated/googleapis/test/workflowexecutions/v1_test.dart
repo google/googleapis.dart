@@ -719,6 +719,7 @@ api.StepEntryMetadata buildStepEntryMetadata() {
   final o = api.StepEntryMetadata();
   buildCounterStepEntryMetadata++;
   if (buildCounterStepEntryMetadata < 3) {
+    o.expectedIteration = 'foo';
     o.progressNumber = 'foo';
     o.progressType = 'foo';
     o.threadId = 'foo';
@@ -730,6 +731,10 @@ api.StepEntryMetadata buildStepEntryMetadata() {
 void checkStepEntryMetadata(api.StepEntryMetadata o) {
   buildCounterStepEntryMetadata++;
   if (buildCounterStepEntryMetadata < 3) {
+    unittest.expect(
+      o.expectedIteration!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.progressNumber!,
       unittest.equals('foo'),

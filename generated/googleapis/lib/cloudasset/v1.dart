@@ -4614,9 +4614,10 @@ class GoogleIdentityAccesscontextmanagerV1AccessLevel {
   /// Does not affect behavior.
   core.String? description;
 
-  /// Resource name for the `AccessLevel`.
+  /// Identifier.
   ///
-  /// Format: `accessPolicies/{access_policy}/accessLevels/{access_level}`. The
+  /// Resource name for the `AccessLevel`. Format:
+  /// `accessPolicies/{access_policy}/accessLevels/{access_level}`. The
   /// `access_level` component must begin with a letter, followed by
   /// alphanumeric characters or `_`. Its maximum length is 50 characters. After
   /// you create an `AccessLevel`, you cannot change its `name`.
@@ -4668,7 +4669,86 @@ class GoogleIdentityAccesscontextmanagerV1AccessLevel {
 ///
 /// An access policy is globally visible within an organization, and the
 /// restrictions it specifies apply to all projects within an organization.
-typedef GoogleIdentityAccesscontextmanagerV1AccessPolicy = $AccessPolicy;
+class GoogleIdentityAccesscontextmanagerV1AccessPolicy {
+  /// An opaque identifier for the current version of the `AccessPolicy`.
+  ///
+  /// This will always be a strongly validated etag, meaning that two Access
+  /// Policies will be identical if and only if their etags are identical.
+  /// Clients should not expect this to be in any specific format.
+  ///
+  /// Output only.
+  core.String? etag;
+
+  /// Identifier.
+  ///
+  /// Resource name of the `AccessPolicy`. Format:
+  /// `accessPolicies/{access_policy}`
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The parent of this `AccessPolicy` in the Cloud Resource Hierarchy.
+  ///
+  /// Currently immutable once created. Format:
+  /// `organizations/{organization_id}`
+  ///
+  /// Required.
+  core.String? parent;
+
+  /// The scopes of the AccessPolicy.
+  ///
+  /// Scopes define which resources a policy can restrict and where its
+  /// resources can be referenced. For example, policy A with
+  /// `scopes=["folders/123"]` has the following behavior: - ServicePerimeter
+  /// can only restrict projects within `folders/123`. - ServicePerimeter within
+  /// policy A can only reference access levels defined within policy A. - Only
+  /// one policy can include a given scope; thus, attempting to create a second
+  /// policy which includes `folders/123` will result in an error. If no scopes
+  /// are provided, then any resource within the organization can be restricted.
+  /// Scopes cannot be modified after a policy is created. Policies can only
+  /// have a single scope. Format: list of `folders/{folder_number}` or
+  /// `projects/{project_number}`
+  core.List<core.String>? scopes;
+
+  /// Human readable title.
+  ///
+  /// Does not affect behavior.
+  ///
+  /// Required.
+  core.String? title;
+
+  GoogleIdentityAccesscontextmanagerV1AccessPolicy({
+    this.etag,
+    this.name,
+    this.parent,
+    this.scopes,
+    this.title,
+  });
+
+  GoogleIdentityAccesscontextmanagerV1AccessPolicy.fromJson(core.Map json_)
+      : this(
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          parent: json_.containsKey('parent')
+              ? json_['parent'] as core.String
+              : null,
+          scopes: json_.containsKey('scopes')
+              ? (json_['scopes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          title:
+              json_.containsKey('title') ? json_['title'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (name != null) 'name': name!,
+        if (parent != null) 'parent': parent!,
+        if (scopes != null) 'scopes': scopes!,
+        if (title != null) 'title': title!,
+      };
+}
 
 /// Identification for an API Operation.
 class GoogleIdentityAccesscontextmanagerV1ApiOperation {
@@ -5377,9 +5457,9 @@ class GoogleIdentityAccesscontextmanagerV1ServicePerimeter {
   /// Does not affect behavior.
   core.String? description;
 
-  /// Resource name for the `ServicePerimeter`.
+  /// Identifier.
   ///
-  /// Format:
+  /// Resource name for the `ServicePerimeter`. Format:
   /// `accessPolicies/{access_policy}/servicePerimeters/{service_perimeter}`.
   /// The `service_perimeter` component must begin with a letter, followed by
   /// alphanumeric characters or `_`. After you create a `ServicePerimeter`, you
@@ -7636,7 +7716,7 @@ class Resource {
 
 /// A result of Resource Search, containing information of a cloud resource.
 ///
-/// Next ID: 34
+/// Next ID: 36
 class ResourceSearchResult {
   /// The additional searchable attributes of this resource.
   ///
@@ -7751,7 +7831,7 @@ class ResourceSearchResult {
   /// * Use a free text query. Example: `key`
   core.List<core.String>? kmsKeys;
 
-  /// Labels associated with this resource.
+  /// User labels associated with this resource.
   ///
   /// See
   /// [Labelling and grouping Google Cloud resources](https://cloud.google.com/blog/products/gcp/labelling-and-grouping-your-google-cloud-platform-resources)

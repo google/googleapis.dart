@@ -1377,6 +1377,12 @@ class Cluster {
   /// Output only.
   core.String? uid;
 
+  /// This config will be used to determine how the customer wants us to
+  /// distribute cluster resources within the region.
+  ///
+  /// Optional.
+  ZoneDistributionConfig? zoneDistributionConfig;
+
   Cluster({
     this.authorizationMode,
     this.createTime,
@@ -1396,6 +1402,7 @@ class Cluster {
     this.stateInfo,
     this.transitEncryptionMode,
     this.uid,
+    this.zoneDistributionConfig,
   });
 
   Cluster.fromJson(core.Map json_)
@@ -1466,6 +1473,10 @@ class Cluster {
               ? json_['transitEncryptionMode'] as core.String
               : null,
           uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
+          zoneDistributionConfig: json_.containsKey('zoneDistributionConfig')
+              ? ZoneDistributionConfig.fromJson(json_['zoneDistributionConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1490,6 +1501,8 @@ class Cluster {
         if (transitEncryptionMode != null)
           'transitEncryptionMode': transitEncryptionMode!,
         if (uid != null) 'uid': uid!,
+        if (zoneDistributionConfig != null)
+          'zoneDistributionConfig': zoneDistributionConfig!,
       };
 }
 
@@ -3271,5 +3284,46 @@ class WeeklyMaintenanceWindow {
         if (day != null) 'day': day!,
         if (duration != null) 'duration': duration!,
         if (startTime != null) 'startTime': startTime!,
+      };
+}
+
+/// Zone distribution config for allocation of cluster resources.
+class ZoneDistributionConfig {
+  /// The mode of zone distribution.
+  ///
+  /// Defaults to MULTI_ZONE, when not specified.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "ZONE_DISTRIBUTION_MODE_UNSPECIFIED" : Not Set. Default: MULTI_ZONE
+  /// - "MULTI_ZONE" : Distribute all resources across 3 zones picked at random,
+  /// within the region.
+  /// - "SINGLE_ZONE" : Distribute all resources in a single zone. The zone
+  /// field must be specified, when this mode is selected.
+  core.String? mode;
+
+  /// When SINGLE ZONE distribution is selected, zone field would be used to
+  /// allocate all resources in that zone.
+  ///
+  /// This is not applicable to MULTI_ZONE, and would be ignored for MULTI_ZONE
+  /// clusters.
+  ///
+  /// Optional.
+  core.String? zone;
+
+  ZoneDistributionConfig({
+    this.mode,
+    this.zone,
+  });
+
+  ZoneDistributionConfig.fromJson(core.Map json_)
+      : this(
+          mode: json_.containsKey('mode') ? json_['mode'] as core.String : null,
+          zone: json_.containsKey('zone') ? json_['zone'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (mode != null) 'mode': mode!,
+        if (zone != null) 'zone': zone!,
       };
 }

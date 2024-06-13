@@ -2016,6 +2016,50 @@ class ProjectsLocationsIntegrationsExecutionsResource {
     return GoogleCloudIntegrationsV1alphaListExecutionsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
+
+  /// Re-execute an existing execution, with same request parameters and
+  /// execution strategy
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The execution resource name. Format:
+  /// projects/{gcp_project_id}/locations/{location}/integrations/{integration}/executions/{execution_id}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/integrations/\[^/\]+/executions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudIntegrationsV1alphaReplayExecutionResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudIntegrationsV1alphaReplayExecutionResponse> replay(
+    GoogleCloudIntegrationsV1alphaReplayExecutionRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':replay';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudIntegrationsV1alphaReplayExecutionResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsLocationsIntegrationsExecutionsSuspensionsResource {
@@ -6064,6 +6108,42 @@ class EnterpriseCrmEventbusProtoConditionResult {
       };
 }
 
+class EnterpriseCrmEventbusProtoConditionalFailurePolicies {
+  /// The default failure policy to be applied if no conditional failure policy
+  /// matches
+  EnterpriseCrmEventbusProtoFailurePolicy? defaultFailurePolicy;
+
+  /// The list of failure policies that will be applied to the task in order.
+  core.List<EnterpriseCrmEventbusProtoFailurePolicy>? failurePolicies;
+
+  EnterpriseCrmEventbusProtoConditionalFailurePolicies({
+    this.defaultFailurePolicy,
+    this.failurePolicies,
+  });
+
+  EnterpriseCrmEventbusProtoConditionalFailurePolicies.fromJson(core.Map json_)
+      : this(
+          defaultFailurePolicy: json_.containsKey('defaultFailurePolicy')
+              ? EnterpriseCrmEventbusProtoFailurePolicy.fromJson(
+                  json_['defaultFailurePolicy']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          failurePolicies: json_.containsKey('failurePolicies')
+              ? (json_['failurePolicies'] as core.List)
+                  .map((value) =>
+                      EnterpriseCrmEventbusProtoFailurePolicy.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (defaultFailurePolicy != null)
+          'defaultFailurePolicy': defaultFailurePolicy!,
+        if (failurePolicies != null) 'failurePolicies': failurePolicies!,
+      };
+}
+
 /// Represents two-dimensional positions.
 class EnterpriseCrmEventbusProtoCoordinate {
   core.int? x;
@@ -6122,7 +6202,7 @@ class EnterpriseCrmEventbusProtoCustomSuspensionRequest {
       };
 }
 
-typedef EnterpriseCrmEventbusProtoDoubleArray = $Shared06;
+typedef EnterpriseCrmEventbusProtoDoubleArray = $Shared05;
 typedef EnterpriseCrmEventbusProtoDoubleParameterArray
     = $EventbusProtoDoubleParameterArray;
 
@@ -6365,11 +6445,14 @@ class EnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStats {
 
 /// Contains the snapshot of the event execution for a given checkpoint.
 ///
-/// Next available id: 13
+/// Next available id: 15
 class EnterpriseCrmEventbusProtoEventExecutionSnapshot {
   /// Indicates "right after which checkpoint task's execution" this snapshot is
   /// taken.
   core.String? checkpointTaskNumber;
+
+  /// Client that the execution snapshot is associated to.
+  core.String? clientId;
 
   /// All of the computed conditions that been calculated.
   core.List<EnterpriseCrmEventbusProtoConditionResult>? conditionResults;
@@ -6408,8 +6491,12 @@ class EnterpriseCrmEventbusProtoEventExecutionSnapshot {
   )
   core.String? taskName;
 
+  /// Name of the workflow this event execution snapshot belongs to.
+  core.String? workflowName;
+
   EnterpriseCrmEventbusProtoEventExecutionSnapshot({
     this.checkpointTaskNumber,
+    this.clientId,
     this.conditionResults,
     this.diffParams,
     this.eventExecutionInfoId,
@@ -6420,12 +6507,16 @@ class EnterpriseCrmEventbusProtoEventExecutionSnapshot {
     this.snapshotTime,
     this.taskExecutionDetails,
     this.taskName,
+    this.workflowName,
   });
 
   EnterpriseCrmEventbusProtoEventExecutionSnapshot.fromJson(core.Map json_)
       : this(
           checkpointTaskNumber: json_.containsKey('checkpointTaskNumber')
               ? json_['checkpointTaskNumber'] as core.String
+              : null,
+          clientId: json_.containsKey('clientId')
+              ? json_['clientId'] as core.String
               : null,
           conditionResults: json_.containsKey('conditionResults')
               ? (json_['conditionResults'] as core.List)
@@ -6471,11 +6562,15 @@ class EnterpriseCrmEventbusProtoEventExecutionSnapshot {
           taskName: json_.containsKey('taskName')
               ? json_['taskName'] as core.String
               : null,
+          workflowName: json_.containsKey('workflowName')
+              ? json_['workflowName'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (checkpointTaskNumber != null)
           'checkpointTaskNumber': checkpointTaskNumber!,
+        if (clientId != null) 'clientId': clientId!,
         if (conditionResults != null) 'conditionResults': conditionResults!,
         if (diffParams != null) 'diffParams': diffParams!,
         if (eventExecutionInfoId != null)
@@ -6490,6 +6585,7 @@ class EnterpriseCrmEventbusProtoEventExecutionSnapshot {
         if (taskExecutionDetails != null)
           'taskExecutionDetails': taskExecutionDetails!,
         if (taskName != null) 'taskName': taskName!,
+        if (workflowName != null) 'workflowName': workflowName!,
       };
 }
 
@@ -6738,7 +6834,7 @@ class EnterpriseCrmEventbusProtoFailurePolicy {
       };
 }
 
-typedef EnterpriseCrmEventbusProtoIntArray = $Shared07;
+typedef EnterpriseCrmEventbusProtoIntArray = $Shared06;
 typedef EnterpriseCrmEventbusProtoIntParameterArray
     = $EventbusProtoIntParameterArray;
 
@@ -8416,7 +8512,7 @@ class EnterpriseCrmEventbusProtoTeardownTaskConfig {
       };
 }
 
-typedef EnterpriseCrmEventbusProtoToken = $Shared05;
+typedef EnterpriseCrmEventbusProtoToken = $Shared04;
 
 class EnterpriseCrmEventbusProtoTriggerCriteria {
   /// Standard filter expression, when true the workflow will be executed.
@@ -9804,6 +9900,15 @@ class EnterpriseCrmFrontendsEventbusProtoTaskConfig {
   /// durations, etc.
   core.List<EnterpriseCrmEventbusProtoTaskAlertConfig>? alertConfigs;
 
+  /// Determines the number of times the task will be retried on failure and
+  /// with what retry strategy.
+  ///
+  /// This is applicable for synchronous calls to Eventbus alone (Post).
+  ///
+  /// Optional.
+  EnterpriseCrmEventbusProtoConditionalFailurePolicies?
+      conditionalFailurePolicies;
+
   /// Auto-generated.
   core.String? createTime;
 
@@ -9972,6 +10077,7 @@ class EnterpriseCrmFrontendsEventbusProtoTaskConfig {
 
   EnterpriseCrmFrontendsEventbusProtoTaskConfig({
     this.alertConfigs,
+    this.conditionalFailurePolicies,
     this.createTime,
     this.creatorEmail,
     this.description,
@@ -10009,6 +10115,12 @@ class EnterpriseCrmFrontendsEventbusProtoTaskConfig {
                       EnterpriseCrmEventbusProtoTaskAlertConfig.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
+              : null,
+          conditionalFailurePolicies: json_
+                  .containsKey('conditionalFailurePolicies')
+              ? EnterpriseCrmEventbusProtoConditionalFailurePolicies.fromJson(
+                  json_['conditionalFailurePolicies']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
@@ -10115,6 +10227,8 @@ class EnterpriseCrmFrontendsEventbusProtoTaskConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (alertConfigs != null) 'alertConfigs': alertConfigs!,
+        if (conditionalFailurePolicies != null)
+          'conditionalFailurePolicies': conditionalFailurePolicies!,
         if (createTime != null) 'createTime': createTime!,
         if (creatorEmail != null) 'creatorEmail': creatorEmail!,
         if (description != null) 'description': description!,
@@ -12986,6 +13100,44 @@ class GoogleCloudIntegrationsV1alphaCloudLoggingDetails {
 /// Cloud Scheduler Trigger configuration
 typedef GoogleCloudIntegrationsV1alphaCloudSchedulerConfig
     = $CloudSchedulerConfig;
+
+/// Conditional task failur retry strategies
+class GoogleCloudIntegrationsV1alphaConditionalFailurePolicies {
+  /// The default failure policy to be applied if no conditional failure policy
+  /// matches.
+  GoogleCloudIntegrationsV1alphaFailurePolicy? defaultFailurePolicy;
+
+  /// The list of failure policies that will be applied to the task in order.
+  core.List<GoogleCloudIntegrationsV1alphaFailurePolicy>? failurePolicies;
+
+  GoogleCloudIntegrationsV1alphaConditionalFailurePolicies({
+    this.defaultFailurePolicy,
+    this.failurePolicies,
+  });
+
+  GoogleCloudIntegrationsV1alphaConditionalFailurePolicies.fromJson(
+      core.Map json_)
+      : this(
+          defaultFailurePolicy: json_.containsKey('defaultFailurePolicy')
+              ? GoogleCloudIntegrationsV1alphaFailurePolicy.fromJson(
+                  json_['defaultFailurePolicy']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          failurePolicies: json_.containsKey('failurePolicies')
+              ? (json_['failurePolicies'] as core.List)
+                  .map((value) =>
+                      GoogleCloudIntegrationsV1alphaFailurePolicy.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (defaultFailurePolicy != null)
+          'defaultFailurePolicy': defaultFailurePolicy!,
+        if (failurePolicies != null) 'failurePolicies': failurePolicies!,
+      };
+}
 
 /// Metadata of runtime connection schema.
 class GoogleCloudIntegrationsV1alphaConnectionSchemaMetadata {
@@ -16584,6 +16736,75 @@ class GoogleCloudIntegrationsV1alphaReplaceServiceAccountRequest {
       };
 }
 
+/// Request for replaying an execution Next ID: 3
+class GoogleCloudIntegrationsV1alphaReplayExecutionRequest {
+  /// The user provided reason for replaying the execution.
+  ///
+  /// Optional.
+  core.String? replayReason;
+
+  GoogleCloudIntegrationsV1alphaReplayExecutionRequest({
+    this.replayReason,
+  });
+
+  GoogleCloudIntegrationsV1alphaReplayExecutionRequest.fromJson(core.Map json_)
+      : this(
+          replayReason: json_.containsKey('replayReason')
+              ? json_['replayReason'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (replayReason != null) 'replayReason': replayReason!,
+      };
+}
+
+/// Response for replaying an execution Next ID: 4
+class GoogleCloudIntegrationsV1alphaReplayExecutionResponse {
+  /// The id of the execution corresponding to this run of integration.
+  core.String? executionId;
+
+  /// OUTPUT parameters in format of Map.
+  ///
+  /// Where Key is the name of the parameter. The parameters would only be
+  /// present in case of synchrounous execution Note: Name of the system
+  /// generated parameters are wrapped by backtick(\`) to distinguish them from
+  /// the user defined parameters.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? outputParameters;
+
+  /// The execution id which is replayed
+  core.String? replayedExecutionId;
+
+  GoogleCloudIntegrationsV1alphaReplayExecutionResponse({
+    this.executionId,
+    this.outputParameters,
+    this.replayedExecutionId,
+  });
+
+  GoogleCloudIntegrationsV1alphaReplayExecutionResponse.fromJson(core.Map json_)
+      : this(
+          executionId: json_.containsKey('executionId')
+              ? json_['executionId'] as core.String
+              : null,
+          outputParameters: json_.containsKey('outputParameters')
+              ? json_['outputParameters'] as core.Map<core.String, core.dynamic>
+              : null,
+          replayedExecutionId: json_.containsKey('replayedExecutionId')
+              ? json_['replayedExecutionId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (executionId != null) 'executionId': executionId!,
+        if (outputParameters != null) 'outputParameters': outputParameters!,
+        if (replayedExecutionId != null)
+          'replayedExecutionId': replayedExecutionId!,
+      };
+}
+
 /// Request for \[Suspensions.ResolveSuspensions\].
 class GoogleCloudIntegrationsV1alphaResolveSuspensionRequest {
   /// Suspension, containing the event_execution_info_id, task_id, and state to
@@ -17447,6 +17668,13 @@ class GoogleCloudIntegrationsV1alphaTakeoverEditLockResponse {
 /// This is not the implementation of Task. There might be multiple TaskConfigs
 /// for the same Task.
 class GoogleCloudIntegrationsV1alphaTaskConfig {
+  /// The list of conditional failure policies that will be applied to the task
+  /// in order.
+  ///
+  /// Optional.
+  GoogleCloudIntegrationsV1alphaConditionalFailurePolicies?
+      conditionalFailurePolicies;
+
   /// User-provided description intended to give additional business context
   /// about the task.
   ///
@@ -17582,6 +17810,7 @@ class GoogleCloudIntegrationsV1alphaTaskConfig {
   core.String? taskTemplate;
 
   GoogleCloudIntegrationsV1alphaTaskConfig({
+    this.conditionalFailurePolicies,
     this.description,
     this.displayName,
     this.errorCatcherId,
@@ -17602,6 +17831,12 @@ class GoogleCloudIntegrationsV1alphaTaskConfig {
 
   GoogleCloudIntegrationsV1alphaTaskConfig.fromJson(core.Map json_)
       : this(
+          conditionalFailurePolicies:
+              json_.containsKey('conditionalFailurePolicies')
+                  ? GoogleCloudIntegrationsV1alphaConditionalFailurePolicies
+                      .fromJson(json_['conditionalFailurePolicies']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           description: json_.containsKey('description')
               ? json_['description'] as core.String
               : null,
@@ -17669,6 +17904,8 @@ class GoogleCloudIntegrationsV1alphaTaskConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (conditionalFailurePolicies != null)
+          'conditionalFailurePolicies': conditionalFailurePolicies!,
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
         if (errorCatcherId != null) 'errorCatcherId': errorCatcherId!,

@@ -6223,7 +6223,54 @@ class GrantDnsBindPermissionRequest {
 }
 
 /// Details about a HCX Cloud Manager appliance.
-typedef Hcx = $Shared03;
+class Hcx {
+  /// Fully qualified domain name of the appliance.
+  core.String? fqdn;
+
+  /// Internal IP address of the appliance.
+  core.String? internalIp;
+
+  /// The state of the appliance.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Unspecified appliance state. This is the default
+  /// value.
+  /// - "ACTIVE" : The appliance is operational and can be used.
+  /// - "CREATING" : The appliance is being deployed.
+  /// - "ACTIVATING" : The appliance is being activated.
+  core.String? state;
+
+  /// Version of the appliance.
+  core.String? version;
+
+  Hcx({
+    this.fqdn,
+    this.internalIp,
+    this.state,
+    this.version,
+  });
+
+  Hcx.fromJson(core.Map json_)
+      : this(
+          fqdn: json_.containsKey('fqdn') ? json_['fqdn'] as core.String : null,
+          internalIp: json_.containsKey('internalIp')
+              ? json_['internalIp'] as core.String
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          version: json_.containsKey('version')
+              ? json_['version'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fqdn != null) 'fqdn': fqdn!,
+        if (internalIp != null) 'internalIp': internalIp!,
+        if (state != null) 'state': state!,
+        if (version != null) 'version': version!,
+      };
+}
 
 /// HCX activation key.
 ///
@@ -7572,6 +7619,8 @@ class NetworkPeering {
   /// service.
   /// - "DELL_POWERSCALE" : Peering connection used for connecting to Dell
   /// PowerScale Filers
+  /// - "GOOGLE_CLOUD_NETAPP_VOLUMES" : Peering connection used for connecting
+  /// to Google Cloud NetApp Volumes.
   core.String? peerNetworkType;
 
   /// State of the network peering.
@@ -8158,7 +8207,7 @@ class NodeTypeConfig {
 }
 
 /// Details about a NSX Manager appliance.
-typedef Nsx = $Shared03;
+typedef Nsx = $Shared13;
 
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
@@ -9236,7 +9285,7 @@ class UndeletePrivateCloudRequest {
 }
 
 /// Details about a vCenter Server management appliance.
-typedef Vcenter = $Shared03;
+typedef Vcenter = $Shared13;
 
 /// VMware Engine network resource that provides connectivity for VMware Engine
 /// private clouds.

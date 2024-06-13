@@ -29,7 +29,7 @@
     "ownerName": "Google",
     "packagePath": "admin",
     "protocol": "rest",
-    "revision": "20240528",
+    "revision": "20240611",
     "rootUrl": "https://admin.googleapis.com/",
     "servicePath": "",
     "title": "Admin SDK API",

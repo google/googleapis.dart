@@ -4873,6 +4873,7 @@ api.SqlServerHomogeneousMigrationJobConfig
   if (buildCounterSqlServerHomogeneousMigrationJobConfig < 3) {
     o.backupFilePattern = 'foo';
     o.databaseBackups = buildUnnamed64();
+    o.useDiffBackup = true;
   }
   buildCounterSqlServerHomogeneousMigrationJobConfig--;
   return o;
@@ -4887,6 +4888,7 @@ void checkSqlServerHomogeneousMigrationJobConfig(
       unittest.equals('foo'),
     );
     checkUnnamed64(o.databaseBackups!);
+    unittest.expect(o.useDiffBackup!, unittest.isTrue);
   }
   buildCounterSqlServerHomogeneousMigrationJobConfig--;
 }

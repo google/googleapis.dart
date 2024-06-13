@@ -3882,6 +3882,12 @@ class ConfigVariableTemplate {
   /// - "PATH_PARAM" : Request path param.
   core.String? locationType;
 
+  /// MultipleSelectConfig represents the multiple options for a config
+  /// variable.
+  ///
+  /// Optional.
+  MultipleSelectConfig? multipleSelectConfig;
+
   /// Flag represents that this `ConfigVariable` must be provided for a
   /// connection.
   core.bool? required;
@@ -3917,6 +3923,7 @@ class ConfigVariableTemplate {
   /// - "ENUM" : Value type is enum.
   /// - "AUTHORIZATION_CODE" : Value type is authorization code.
   /// - "ENCRYPTION_KEY" : Encryption Key.
+  /// - "MULTIPLE_SELECT" : Value type is multiple select.
   core.String? valueType;
 
   ConfigVariableTemplate({
@@ -3928,6 +3935,7 @@ class ConfigVariableTemplate {
     this.isAdvanced,
     this.key,
     this.locationType,
+    this.multipleSelectConfig,
     this.required,
     this.requiredCondition,
     this.roleGrant,
@@ -3964,6 +3972,10 @@ class ConfigVariableTemplate {
           locationType: json_.containsKey('locationType')
               ? json_['locationType'] as core.String
               : null,
+          multipleSelectConfig: json_.containsKey('multipleSelectConfig')
+              ? MultipleSelectConfig.fromJson(json_['multipleSelectConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           required: json_.containsKey('required')
               ? json_['required'] as core.bool
               : null,
@@ -3995,6 +4007,8 @@ class ConfigVariableTemplate {
         if (isAdvanced != null) 'isAdvanced': isAdvanced!,
         if (key != null) 'key': key!,
         if (locationType != null) 'locationType': locationType!,
+        if (multipleSelectConfig != null)
+          'multipleSelectConfig': multipleSelectConfig!,
         if (required != null) 'required': required!,
         if (requiredCondition != null) 'requiredCondition': requiredCondition!,
         if (roleGrant != null) 'roleGrant': roleGrant!,
@@ -4468,6 +4482,11 @@ typedef ConnectionStatus = $ConnectionStatus;
 
 /// Connectors indicates a specific connector type, e.x. Salesforce, SAP etc.
 class Connector {
+  /// Category of the connector.
+  ///
+  /// Output only.
+  core.String? category;
+
   /// Created time.
   ///
   /// Output only.
@@ -4528,6 +4547,11 @@ class Connector {
   /// Output only.
   core.String? name;
 
+  /// Tags of the connector.
+  ///
+  /// Output only.
+  core.List<core.String>? tags;
+
   /// Updated time.
   ///
   /// Output only.
@@ -4539,6 +4563,7 @@ class Connector {
   core.String? webAssetsLocation;
 
   Connector({
+    this.category,
     this.createTime,
     this.description,
     this.displayName,
@@ -4548,12 +4573,16 @@ class Connector {
     this.labels,
     this.launchStage,
     this.name,
+    this.tags,
     this.updateTime,
     this.webAssetsLocation,
   });
 
   Connector.fromJson(core.Map json_)
       : this(
+          category: json_.containsKey('category')
+              ? json_['category'] as core.String
+              : null,
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
               : null,
@@ -4585,6 +4614,11 @@ class Connector {
               ? json_['launchStage'] as core.String
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          tags: json_.containsKey('tags')
+              ? (json_['tags'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           updateTime: json_.containsKey('updateTime')
               ? json_['updateTime'] as core.String
               : null,
@@ -4594,6 +4628,7 @@ class Connector {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (category != null) 'category': category!,
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
@@ -4603,6 +4638,7 @@ class Connector {
         if (labels != null) 'labels': labels!,
         if (launchStage != null) 'launchStage': launchStage!,
         if (name != null) 'name': name!,
+        if (tags != null) 'tags': tags!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (webAssetsLocation != null) 'webAssetsLocation': webAssetsLocation!,
       };
@@ -7882,6 +7918,104 @@ class ManagedZone {
         if (targetProject != null) 'targetProject': targetProject!,
         if (targetVpc != null) 'targetVpc': targetVpc!,
         if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// MultipleSelectConfig represents the multiple options for a config variable.
+class MultipleSelectConfig {
+  /// Allow custom values.
+  ///
+  /// Optional.
+  core.bool? allowCustomValues;
+
+  /// Multiple select options.
+  ///
+  /// Required.
+  core.List<MultipleSelectOption>? multipleSelectOptions;
+
+  /// Value separator.
+  ///
+  /// Required.
+  core.String? valueSeparator;
+
+  MultipleSelectConfig({
+    this.allowCustomValues,
+    this.multipleSelectOptions,
+    this.valueSeparator,
+  });
+
+  MultipleSelectConfig.fromJson(core.Map json_)
+      : this(
+          allowCustomValues: json_.containsKey('allowCustomValues')
+              ? json_['allowCustomValues'] as core.bool
+              : null,
+          multipleSelectOptions: json_.containsKey('multipleSelectOptions')
+              ? (json_['multipleSelectOptions'] as core.List)
+                  .map((value) => MultipleSelectOption.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          valueSeparator: json_.containsKey('valueSeparator')
+              ? json_['valueSeparator'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (allowCustomValues != null) 'allowCustomValues': allowCustomValues!,
+        if (multipleSelectOptions != null)
+          'multipleSelectOptions': multipleSelectOptions!,
+        if (valueSeparator != null) 'valueSeparator': valueSeparator!,
+      };
+}
+
+/// MultiplSelecteOption represents the single option for a config variable.
+class MultipleSelectOption {
+  /// Value of the option.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// Display name of the option.
+  ///
+  /// Required.
+  core.String? displayName;
+
+  /// Key of the option.
+  ///
+  /// Required.
+  core.String? key;
+
+  /// Indicates if the option is preselected.
+  ///
+  /// Optional.
+  core.bool? preselected;
+
+  MultipleSelectOption({
+    this.description,
+    this.displayName,
+    this.key,
+    this.preselected,
+  });
+
+  MultipleSelectOption.fromJson(core.Map json_)
+      : this(
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          key: json_.containsKey('key') ? json_['key'] as core.String : null,
+          preselected: json_.containsKey('preselected')
+              ? json_['preselected'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
+        if (key != null) 'key': key!,
+        if (preselected != null) 'preselected': preselected!,
       };
 }
 

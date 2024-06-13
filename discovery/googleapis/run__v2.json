@@ -227,7 +227,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240524",
+    "revision": "20240607",
     "rootUrl": "https://run.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Run Admin API",
@@ -2143,7 +2143,7 @@
             "id": "GoogleCloudRunV2GCSVolumeSource",
             "properties": {
                 "bucket": {
-                    "description": "Cloud Storage Bucket name.",
+                    "description": "Cloud Storage Bucket name. TODO (b/344678062) Fix the error validation once dynamic mounting is public.",
                     "type": "string"
                 },
                 "readOnly": {

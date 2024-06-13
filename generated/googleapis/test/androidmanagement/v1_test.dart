@@ -591,6 +591,7 @@ api.ApplicationPolicy buildApplicationPolicy() {
     o.minimumVersionCode = 42;
     o.packageName = 'foo';
     o.permissionGrants = buildUnnamed13();
+    o.userControlSettings = 'foo';
     o.workProfileWidgets = 'foo';
   }
   buildCounterApplicationPolicy--;
@@ -645,6 +646,10 @@ void checkApplicationPolicy(api.ApplicationPolicy o) {
       unittest.equals('foo'),
     );
     checkUnnamed13(o.permissionGrants!);
+    unittest.expect(
+      o.userControlSettings!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.workProfileWidgets!,
       unittest.equals('foo'),
@@ -1795,6 +1800,7 @@ api.Enterprise buildEnterprise() {
     o.contactInfo = buildContactInfo();
     o.enabledNotificationTypes = buildUnnamed32();
     o.enterpriseDisplayName = 'foo';
+    o.googleAuthenticationSettings = buildGoogleAuthenticationSettings();
     o.logo = buildExternalData();
     o.name = 'foo';
     o.primaryColor = 42;
@@ -1816,6 +1822,7 @@ void checkEnterprise(api.Enterprise o) {
       o.enterpriseDisplayName!,
       unittest.equals('foo'),
     );
+    checkGoogleAuthenticationSettings(o.googleAuthenticationSettings!);
     checkExternalData(o.logo!);
     unittest.expect(
       o.name!,
@@ -1922,6 +1929,28 @@ void checkFreezePeriod(api.FreezePeriod o) {
     checkDate(o.startDate!);
   }
   buildCounterFreezePeriod--;
+}
+
+core.int buildCounterGoogleAuthenticationSettings = 0;
+api.GoogleAuthenticationSettings buildGoogleAuthenticationSettings() {
+  final o = api.GoogleAuthenticationSettings();
+  buildCounterGoogleAuthenticationSettings++;
+  if (buildCounterGoogleAuthenticationSettings < 3) {
+    o.googleAuthenticationRequired = 'foo';
+  }
+  buildCounterGoogleAuthenticationSettings--;
+  return o;
+}
+
+void checkGoogleAuthenticationSettings(api.GoogleAuthenticationSettings o) {
+  buildCounterGoogleAuthenticationSettings++;
+  if (buildCounterGoogleAuthenticationSettings < 3) {
+    unittest.expect(
+      o.googleAuthenticationRequired!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleAuthenticationSettings--;
 }
 
 core.List<core.double> buildUnnamed36() => [
@@ -4181,6 +4210,7 @@ api.ProvisioningInfo buildProvisioningInfo() {
   buildCounterProvisioningInfo++;
   if (buildCounterProvisioningInfo < 3) {
     o.apiLevel = 42;
+    o.authenticatedUserEmail = 'foo';
     o.brand = 'foo';
     o.enterprise = 'foo';
     o.imei = 'foo';
@@ -4201,6 +4231,10 @@ void checkProvisioningInfo(api.ProvisioningInfo o) {
     unittest.expect(
       o.apiLevel!,
       unittest.equals(42),
+    );
+    unittest.expect(
+      o.authenticatedUserEmail!,
+      unittest.equals('foo'),
     );
     unittest.expect(
       o.brand!,
@@ -5544,6 +5578,16 @@ void main() {
       final od = api.FreezePeriod.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkFreezePeriod(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleAuthenticationSettings', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleAuthenticationSettings();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleAuthenticationSettings.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleAuthenticationSettings(od);
     });
   });
 

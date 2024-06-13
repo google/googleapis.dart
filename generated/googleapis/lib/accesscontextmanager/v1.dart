@@ -2016,7 +2016,85 @@ class AccessLevel {
 ///
 /// An access policy is globally visible within an organization, and the
 /// restrictions it specifies apply to all projects within an organization.
-typedef AccessPolicy = $AccessPolicy;
+class AccessPolicy {
+  /// An opaque identifier for the current version of the `AccessPolicy`.
+  ///
+  /// This will always be a strongly validated etag, meaning that two Access
+  /// Polices will be identical if and only if their etags are identical.
+  /// Clients should not expect this to be in any specific format.
+  ///
+  /// Output only.
+  core.String? etag;
+
+  /// Resource name of the `AccessPolicy`.
+  ///
+  /// Format: `accessPolicies/{access_policy}`
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The parent of this `AccessPolicy` in the Cloud Resource Hierarchy.
+  ///
+  /// Currently immutable once created. Format:
+  /// `organizations/{organization_id}`
+  ///
+  /// Required.
+  core.String? parent;
+
+  /// The scopes of the AccessPolicy.
+  ///
+  /// Scopes define which resources a policy can restrict and where its
+  /// resources can be referenced. For example, policy A with
+  /// `scopes=["folders/123"]` has the following behavior: - ServicePerimeter
+  /// can only restrict projects within `folders/123`. - ServicePerimeter within
+  /// policy A can only reference access levels defined within policy A. - Only
+  /// one policy can include a given scope; thus, attempting to create a second
+  /// policy which includes `folders/123` will result in an error. If no scopes
+  /// are provided, then any resource within the organization can be restricted.
+  /// Scopes cannot be modified after a policy is created. Policies can only
+  /// have a single scope. Format: list of `folders/{folder_number}` or
+  /// `projects/{project_number}`
+  core.List<core.String>? scopes;
+
+  /// Human readable title.
+  ///
+  /// Does not affect behavior.
+  ///
+  /// Required.
+  core.String? title;
+
+  AccessPolicy({
+    this.etag,
+    this.name,
+    this.parent,
+    this.scopes,
+    this.title,
+  });
+
+  AccessPolicy.fromJson(core.Map json_)
+      : this(
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          parent: json_.containsKey('parent')
+              ? json_['parent'] as core.String
+              : null,
+          scopes: json_.containsKey('scopes')
+              ? (json_['scopes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          title:
+              json_.containsKey('title') ? json_['title'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (name != null) 'name': name!,
+        if (parent != null) 'parent': parent!,
+        if (scopes != null) 'scopes': scopes!,
+        if (title != null) 'title': title!,
+      };
+}
 
 /// Identification for an API Operation.
 class ApiOperation {

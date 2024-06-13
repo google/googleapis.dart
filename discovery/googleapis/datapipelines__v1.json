@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240512",
+    "revision": "20240602",
     "rootUrl": "https://datapipelines.googleapis.com/",
     "servicePath": "",
     "title": "Data pipelines API",

@@ -867,11 +867,11 @@ class EnterprisesEnrollmentTokensResource {
 
   /// Gets an active, unexpired enrollment token.
   ///
-  /// Only a partial view of EnrollmentToken is returned: all the fields but
-  /// name and expiration_timestamp are empty. This method is meant to help
-  /// manage active enrollment tokens lifecycle. For security reasons, it's
-  /// recommended to delete active enrollment tokens as soon as they're not
-  /// intended to be used anymore.
+  /// A partial view of the enrollment token is returned. Only the following
+  /// fields are populated: name, expirationTimestamp, allowPersonalUsage,
+  /// value, qrCode. This method is meant to help manage active enrollment
+  /// tokens lifecycle. For security reasons, it's recommended to delete active
+  /// enrollment tokens as soon as they're not intended to be used anymore.
   ///
   /// Request parameters:
   ///
@@ -910,11 +910,12 @@ class EnterprisesEnrollmentTokensResource {
 
   /// Lists active, unexpired enrollment tokens for a given enterprise.
   ///
-  /// The list items contain only a partial view of EnrollmentToken: all the
-  /// fields but name and expiration_timestamp are empty. This method is meant
-  /// to help manage active enrollment tokens lifecycle. For security reasons,
-  /// it's recommended to delete active enrollment tokens as soon as they're not
-  /// intended to be used anymore.
+  /// The list items contain only a partial view of EnrollmentToken object. Only
+  /// the following fields are populated: name, expirationTimestamp,
+  /// allowPersonalUsage, value, qrCode. This method is meant to help manage
+  /// active enrollment tokens lifecycle. For security reasons, it's recommended
+  /// to delete active enrollment tokens as soon as they're not intended to be
+  /// used anymore.
   ///
   /// Request parameters:
   ///
@@ -2318,7 +2319,8 @@ class ApplicationPolicy {
   /// the Play Store at any time.
   /// - "AUTO_UPDATE_HIGH_PRIORITY" : The app is updated as soon as possible. No
   /// constraints are applied.The device is notified as soon as possible about a
-  /// new update after it becomes available.
+  /// new update after it becomes available.*NOTE:* Updates to apps with larger
+  /// deployments across Android's ecosystem can take up to 24h.
   core.String? autoUpdateMode;
 
   /// Controls whether the app can communicate with itself across a device’s
@@ -2479,6 +2481,24 @@ class ApplicationPolicy {
   /// which apply to all apps.
   core.List<PermissionGrant>? permissionGrants;
 
+  /// Specifies whether user control is permitted for the app.
+  ///
+  /// User control includes user actions like force-stopping and clearing app
+  /// data. Supported on Android 11 and above.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "USER_CONTROL_SETTINGS_UNSPECIFIED" : Uses the default behaviour of the
+  /// app to determine if user control is allowed or disallowed. For most apps,
+  /// user control is allowed by default, but for some critical apps such as
+  /// companion apps (extensionConfig set to true), kiosk apps and other
+  /// critical system apps, user control is disallowed.
+  /// - "USER_CONTROL_ALLOWED" : User control is allowed for the app. Kiosk apps
+  /// can use this to allow user control.
+  /// - "USER_CONTROL_DISALLOWED" : User control is disallowed for the app.
+  /// API_LEVEL is reported if the Android version is less than 11.
+  core.String? userControlSettings;
+
   /// Specifies whether the app installed in the work profile is allowed to add
   /// widgets to the home screen.
   /// Possible string values are:
@@ -2510,6 +2530,7 @@ class ApplicationPolicy {
     this.minimumVersionCode,
     this.packageName,
     this.permissionGrants,
+    this.userControlSettings,
     this.workProfileWidgets,
   });
 
@@ -2587,6 +2608,9 @@ class ApplicationPolicy {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          userControlSettings: json_.containsKey('userControlSettings')
+              ? json_['userControlSettings'] as core.String
+              : null,
           workProfileWidgets: json_.containsKey('workProfileWidgets')
               ? json_['workProfileWidgets'] as core.String
               : null,
@@ -2619,6 +2643,8 @@ class ApplicationPolicy {
           'minimumVersionCode': minimumVersionCode!,
         if (packageName != null) 'packageName': packageName!,
         if (permissionGrants != null) 'permissionGrants': permissionGrants!,
+        if (userControlSettings != null)
+          'userControlSettings': userControlSettings!,
         if (workProfileWidgets != null)
           'workProfileWidgets': workProfileWidgets!,
       };
@@ -4502,6 +4528,9 @@ class EnrollmentToken {
   /// specified
   /// - "PERSONAL_USAGE_ALLOWED" : Personal usage is allowed
   /// - "PERSONAL_USAGE_DISALLOWED" : Personal usage is disallowed
+  /// - "PERSONAL_USAGE_DISALLOWED_USERLESS" : Device is not associated with a
+  /// single user, and thus both personal usage and corporate identity
+  /// authentication are not expected.
   core.String? allowPersonalUsage;
 
   /// The length of time the enrollment token is valid, ranging from 1 minute to
@@ -4641,6 +4670,9 @@ class Enterprise {
   /// This field has a maximum length of 100 characters.
   core.String? enterpriseDisplayName;
 
+  /// Settings for Google-provided user authentication.
+  GoogleAuthenticationSettings? googleAuthenticationSettings;
+
   /// An image displayed as a logo during device provisioning.
   ///
   /// Supported types are: image/bmp, image/gif, image/x-ico, image/jpeg,
@@ -4678,6 +4710,7 @@ class Enterprise {
     this.contactInfo,
     this.enabledNotificationTypes,
     this.enterpriseDisplayName,
+    this.googleAuthenticationSettings,
     this.logo,
     this.name,
     this.primaryColor,
@@ -4704,6 +4737,12 @@ class Enterprise {
           enterpriseDisplayName: json_.containsKey('enterpriseDisplayName')
               ? json_['enterpriseDisplayName'] as core.String
               : null,
+          googleAuthenticationSettings:
+              json_.containsKey('googleAuthenticationSettings')
+                  ? GoogleAuthenticationSettings.fromJson(
+                      json_['googleAuthenticationSettings']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           logo: json_.containsKey('logo')
               ? ExternalData.fromJson(
                   json_['logo'] as core.Map<core.String, core.dynamic>)
@@ -4737,6 +4776,8 @@ class Enterprise {
           'enabledNotificationTypes': enabledNotificationTypes!,
         if (enterpriseDisplayName != null)
           'enterpriseDisplayName': enterpriseDisplayName!,
+        if (googleAuthenticationSettings != null)
+          'googleAuthenticationSettings': googleAuthenticationSettings!,
         if (logo != null) 'logo': logo!,
         if (name != null) 'name': name!,
         if (primaryColor != null) 'primaryColor': primaryColor!,
@@ -4887,6 +4928,44 @@ class FreezePeriod {
   core.Map<core.String, core.dynamic> toJson() => {
         if (endDate != null) 'endDate': endDate!,
         if (startDate != null) 'startDate': startDate!,
+      };
+}
+
+/// Contains settings for Google-provided user authentication.
+class GoogleAuthenticationSettings {
+  /// Whether users need to be authenticated by Google during the enrollment
+  /// process.
+  ///
+  /// IT admin can specify if Google authentication is enabled for the
+  /// enterprise for knowledge worker devices. This value can be set only via
+  /// the Google Admin Console. Google authentication can be used with
+  /// signin_url In the case where Google authentication is required and a
+  /// signin_url is specified, Google authentication will be launched before
+  /// signin_url.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "GOOGLE_AUTHENTICATION_REQUIRED_UNSPECIFIED" : This value is not used.
+  /// - "NOT_REQUIRED" : Google authentication is not required.
+  /// - "REQUIRED" : User is required to be successfully authenticated by
+  /// Google.
+  core.String? googleAuthenticationRequired;
+
+  GoogleAuthenticationSettings({
+    this.googleAuthenticationRequired,
+  });
+
+  GoogleAuthenticationSettings.fromJson(core.Map json_)
+      : this(
+          googleAuthenticationRequired:
+              json_.containsKey('googleAuthenticationRequired')
+                  ? json_['googleAuthenticationRequired'] as core.String
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (googleAuthenticationRequired != null)
+          'googleAuthenticationRequired': googleAuthenticationRequired!,
       };
 }
 
@@ -8528,6 +8607,10 @@ class ProvisioningInfo {
   /// The API level of the Android platform version running on the device.
   core.int? apiLevel;
 
+  /// The email address of the authenticated user (only present for Google
+  /// Account provisioning method).
+  core.String? authenticatedUserEmail;
+
   /// The brand of the device.
   ///
   /// For example, Google.
@@ -8576,6 +8659,7 @@ class ProvisioningInfo {
 
   ProvisioningInfo({
     this.apiLevel,
+    this.authenticatedUserEmail,
     this.brand,
     this.enterprise,
     this.imei,
@@ -8591,6 +8675,9 @@ class ProvisioningInfo {
       : this(
           apiLevel: json_.containsKey('apiLevel')
               ? json_['apiLevel'] as core.int
+              : null,
+          authenticatedUserEmail: json_.containsKey('authenticatedUserEmail')
+              ? json_['authenticatedUserEmail'] as core.String
               : null,
           brand:
               json_.containsKey('brand') ? json_['brand'] as core.String : null,
@@ -8615,6 +8702,8 @@ class ProvisioningInfo {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (apiLevel != null) 'apiLevel': apiLevel!,
+        if (authenticatedUserEmail != null)
+          'authenticatedUserEmail': authenticatedUserEmail!,
         if (brand != null) 'brand': brand!,
         if (enterprise != null) 'enterprise': enterprise!,
         if (imei != null) 'imei': imei!,
@@ -8796,6 +8885,9 @@ class SigninDetail {
   /// specified
   /// - "PERSONAL_USAGE_ALLOWED" : Personal usage is allowed
   /// - "PERSONAL_USAGE_DISALLOWED" : Personal usage is disallowed
+  /// - "PERSONAL_USAGE_DISALLOWED_USERLESS" : Device is not associated with a
+  /// single user, and thus both personal usage and corporate identity
+  /// authentication are not expected.
   core.String? allowPersonalUsage;
 
   /// A JSON string whose UTF-8 representation can be used to generate a QR code

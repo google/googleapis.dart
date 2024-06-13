@@ -4921,6 +4921,31 @@ class AutoscalingPolicy {
       };
 }
 
+/// Autotuning configuration of the workload.
+class AutotuningConfig {
+  /// Scenarios for which tunings are applied.
+  ///
+  /// Optional.
+  core.List<core.String>? scenarios;
+
+  AutotuningConfig({
+    this.scenarios,
+  });
+
+  AutotuningConfig.fromJson(core.Map json_)
+      : this(
+          scenarios: json_.containsKey('scenarios')
+              ? (json_['scenarios'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (scenarios != null) 'scenarios': scenarios!,
+      };
+}
+
 /// Node group identification and configuration information.
 class AuxiliaryNodeGroup {
   /// Node group configuration.
@@ -11168,6 +11193,19 @@ class ResizeNodeGroupRequest {
 
 /// Runtime configuration for a workload.
 class RuntimeConfig {
+  /// Autotuning configuration of the workload.
+  ///
+  /// Optional.
+  AutotuningConfig? autotuningConfig;
+
+  /// Cohort identifier.
+  ///
+  /// Identifies families of the workloads having the same shape, e.g. daily ETL
+  /// jobs.
+  ///
+  /// Optional.
+  core.String? cohort;
+
   /// Optional custom container image for the job runtime environment.
   ///
   /// If not specified, a default container image will be used.
@@ -11192,6 +11230,8 @@ class RuntimeConfig {
   core.String? version;
 
   RuntimeConfig({
+    this.autotuningConfig,
+    this.cohort,
     this.containerImage,
     this.properties,
     this.repositoryConfig,
@@ -11200,6 +11240,13 @@ class RuntimeConfig {
 
   RuntimeConfig.fromJson(core.Map json_)
       : this(
+          autotuningConfig: json_.containsKey('autotuningConfig')
+              ? AutotuningConfig.fromJson(json_['autotuningConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          cohort: json_.containsKey('cohort')
+              ? json_['cohort'] as core.String
+              : null,
           containerImage: json_.containsKey('containerImage')
               ? json_['containerImage'] as core.String
               : null,
@@ -11222,6 +11269,8 @@ class RuntimeConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (autotuningConfig != null) 'autotuningConfig': autotuningConfig!,
+        if (cohort != null) 'cohort': cohort!,
         if (containerImage != null) 'containerImage': containerImage!,
         if (properties != null) 'properties': properties!,
         if (repositoryConfig != null) 'repositoryConfig': repositoryConfig!,

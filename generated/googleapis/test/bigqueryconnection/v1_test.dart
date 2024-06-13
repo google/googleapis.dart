@@ -496,6 +496,7 @@ api.ConnectorConfigurationAuthentication
   final o = api.ConnectorConfigurationAuthentication();
   buildCounterConnectorConfigurationAuthentication++;
   if (buildCounterConnectorConfigurationAuthentication < 3) {
+    o.serviceAccount = 'foo';
     o.usernamePassword = buildConnectorConfigurationUsernamePassword();
   }
   buildCounterConnectorConfigurationAuthentication--;
@@ -506,6 +507,10 @@ void checkConnectorConfigurationAuthentication(
     api.ConnectorConfigurationAuthentication o) {
   buildCounterConnectorConfigurationAuthentication++;
   if (buildCounterConnectorConfigurationAuthentication < 3) {
+    unittest.expect(
+      o.serviceAccount!,
+      unittest.equals('foo'),
+    );
     checkConnectorConfigurationUsernamePassword(o.usernamePassword!);
   }
   buildCounterConnectorConfigurationAuthentication--;

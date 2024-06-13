@@ -492,6 +492,8 @@ api.ManagementServer buildManagementServer() {
     o.name = 'foo';
     o.networks = buildUnnamed11();
     o.oauth2ClientId = 'foo';
+    o.satisfiesPzi = true;
+    o.satisfiesPzs = true;
     o.state = 'foo';
     o.type = 'foo';
     o.updateTime = 'foo';
@@ -531,6 +533,8 @@ void checkManagementServer(api.ManagementServer o) {
       o.oauth2ClientId!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.satisfiesPzi!, unittest.isTrue);
+    unittest.expect(o.satisfiesPzs!, unittest.isTrue);
     unittest.expect(
       o.state!,
       unittest.equals('foo'),

@@ -43,7 +43,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240522",
+    "revision": "20240610",
     "rootUrl": "https://tagmanager.googleapis.com/",
     "servicePath": "",
     "title": "Tag Manager API",
@@ -4355,7 +4355,7 @@
                         "",
                         "",
                         "",
-                        "NOTE(lanzone): When defining a ConditionType here, don't forget to also define a matching PredicateType (in condition.proto)."
+                        ""
                     ],
                     "type": "string"
                 }

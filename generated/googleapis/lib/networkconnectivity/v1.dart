@@ -1342,15 +1342,15 @@ class ProjectsLocationsGlobalPolicyBasedRoutesResource {
   ///
   /// [requestId] - Optional. An optional request ID to identify requests.
   /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// The server will guarantee that for at least 60 minutes since the first
-  /// request. For example, consider a situation where you make an initial
-  /// request and the request times out. If you make the request again with the
-  /// same request ID, the server can check if original operation with the same
-  /// request ID was received, and if so, will ignore the second request. This
-  /// prevents clients from accidentally creating duplicate commitments. The
-  /// request ID must be a valid UUID with the exception that zero UUID is not
-  /// supported (00000000-0000-0000-0000-000000000000).
+  /// server knows to ignore the request if it has already been completed. The
+  /// server guarantees that for at least 60 minutes since the first request.
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, ignores the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1399,15 +1399,15 @@ class ProjectsLocationsGlobalPolicyBasedRoutesResource {
   ///
   /// [requestId] - Optional. An optional request ID to identify requests.
   /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// The server will guarantee that for at least 60 minutes after the first
-  /// request. For example, consider a situation where you make an initial
-  /// request and the request times out. If you make the request again with the
-  /// same request ID, the server can check if original operation with the same
-  /// request ID was received, and if so, will ignore the second request. This
-  /// prevents clients from accidentally creating duplicate commitments. The
-  /// request ID must be a valid UUID with the exception that zero UUID is not
-  /// supported (00000000-0000-0000-0000-000000000000).
+  /// server knows to ignore the request if it has already been completed. The
+  /// server guarantees that for at least 60 minutes after the first request.
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, ignores the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4543,6 +4543,14 @@ class ConsumerPscConfig {
   /// The consumer project where PSC connections are allowed to be created in.
   core.String? project;
 
+  /// A map to store mapping between customer vip and target service attachment.
+  ///
+  /// Only service attachment with producer specified ip addresses are stored
+  /// here.
+  ///
+  /// Output only.
+  core.Map<core.String, core.String>? serviceAttachmentIpAddressMap;
+
   /// Overall state of PSC Connections management for this consumer psc config.
   ///
   /// Output only.
@@ -4563,6 +4571,7 @@ class ConsumerPscConfig {
     this.network,
     this.producerInstanceId,
     this.project,
+    this.serviceAttachmentIpAddressMap,
     this.state,
   });
 
@@ -4580,6 +4589,17 @@ class ConsumerPscConfig {
           project: json_.containsKey('project')
               ? json_['project'] as core.String
               : null,
+          serviceAttachmentIpAddressMap:
+              json_.containsKey('serviceAttachmentIpAddressMap')
+                  ? (json_['serviceAttachmentIpAddressMap']
+                          as core.Map<core.String, core.dynamic>)
+                      .map(
+                      (key, value) => core.MapEntry(
+                        key,
+                        value as core.String,
+                      ),
+                    )
+                  : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
         );
@@ -4591,6 +4611,8 @@ class ConsumerPscConfig {
         if (producerInstanceId != null)
           'producerInstanceId': producerInstanceId!,
         if (project != null) 'project': project!,
+        if (serviceAttachmentIpAddressMap != null)
+          'serviceAttachmentIpAddressMap': serviceAttachmentIpAddressMap!,
         if (state != null) 'state': state!,
       };
 }
@@ -4795,7 +4817,7 @@ class Filter {
 
   /// Internet protocol versions this policy-based route applies to.
   ///
-  /// For this version, only IPV4 is supported.
+  /// For this version, only IPV4 is supported. IPV6 is supported in preview.
   ///
   /// Required.
   /// Possible string values are:
@@ -5701,6 +5723,11 @@ class LinkedVpcNetwork {
   /// Optional.
   core.List<core.String>? excludeExportRanges;
 
+  /// IP ranges allowed to be included from peering.
+  ///
+  /// Optional.
+  core.List<core.String>? includeExportRanges;
+
   /// The URI of the VPC network resource.
   ///
   /// Required.
@@ -5708,6 +5735,7 @@ class LinkedVpcNetwork {
 
   LinkedVpcNetwork({
     this.excludeExportRanges,
+    this.includeExportRanges,
     this.uri,
   });
 
@@ -5718,12 +5746,19 @@ class LinkedVpcNetwork {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          includeExportRanges: json_.containsKey('includeExportRanges')
+              ? (json_['includeExportRanges'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (excludeExportRanges != null)
           'excludeExportRanges': excludeExportRanges!,
+        if (includeExportRanges != null)
+          'includeExportRanges': includeExportRanges!,
         if (uri != null) 'uri': uri!,
       };
 }
@@ -6406,6 +6441,126 @@ class ListSpokesResponse {
 /// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
+/// A route next hop that leads to an interconnect attachment resource.
+class NextHopInterconnectAttachment {
+  /// Indicates whether site-to-site data transfer is allowed for this
+  /// interconnect attachment resource.
+  ///
+  /// Data transfer is available only in
+  /// [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
+  core.bool? siteToSiteDataTransfer;
+
+  /// The URI of the interconnect attachment resource.
+  core.String? uri;
+
+  /// The VPC network where this interconnect attachment is located.
+  core.String? vpcNetwork;
+
+  NextHopInterconnectAttachment({
+    this.siteToSiteDataTransfer,
+    this.uri,
+    this.vpcNetwork,
+  });
+
+  NextHopInterconnectAttachment.fromJson(core.Map json_)
+      : this(
+          siteToSiteDataTransfer: json_.containsKey('siteToSiteDataTransfer')
+              ? json_['siteToSiteDataTransfer'] as core.bool
+              : null,
+          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+          vpcNetwork: json_.containsKey('vpcNetwork')
+              ? json_['vpcNetwork'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (siteToSiteDataTransfer != null)
+          'siteToSiteDataTransfer': siteToSiteDataTransfer!,
+        if (uri != null) 'uri': uri!,
+        if (vpcNetwork != null) 'vpcNetwork': vpcNetwork!,
+      };
+}
+
+/// A route next hop that leads to a Router appliance instance.
+class NextHopRouterApplianceInstance {
+  /// Indicates whether site-to-site data transfer is allowed for this Router
+  /// appliance instance resource.
+  ///
+  /// Data transfer is available only in
+  /// [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
+  core.bool? siteToSiteDataTransfer;
+
+  /// The URI of the Router appliance instance.
+  core.String? uri;
+
+  /// The VPC network where this VM is located.
+  core.String? vpcNetwork;
+
+  NextHopRouterApplianceInstance({
+    this.siteToSiteDataTransfer,
+    this.uri,
+    this.vpcNetwork,
+  });
+
+  NextHopRouterApplianceInstance.fromJson(core.Map json_)
+      : this(
+          siteToSiteDataTransfer: json_.containsKey('siteToSiteDataTransfer')
+              ? json_['siteToSiteDataTransfer'] as core.bool
+              : null,
+          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+          vpcNetwork: json_.containsKey('vpcNetwork')
+              ? json_['vpcNetwork'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (siteToSiteDataTransfer != null)
+          'siteToSiteDataTransfer': siteToSiteDataTransfer!,
+        if (uri != null) 'uri': uri!,
+        if (vpcNetwork != null) 'vpcNetwork': vpcNetwork!,
+      };
+}
+
+/// A route next hop that leads to a VPN tunnel resource.
+class NextHopVPNTunnel {
+  /// Indicates whether site-to-site data transfer is allowed for this VPN
+  /// tunnel resource.
+  ///
+  /// Data transfer is available only in
+  /// [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
+  core.bool? siteToSiteDataTransfer;
+
+  /// The URI of the VPN tunnel resource.
+  core.String? uri;
+
+  /// The VPC network where this VPN tunnel is located.
+  core.String? vpcNetwork;
+
+  NextHopVPNTunnel({
+    this.siteToSiteDataTransfer,
+    this.uri,
+    this.vpcNetwork,
+  });
+
+  NextHopVPNTunnel.fromJson(core.Map json_)
+      : this(
+          siteToSiteDataTransfer: json_.containsKey('siteToSiteDataTransfer')
+              ? json_['siteToSiteDataTransfer'] as core.bool
+              : null,
+          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+          vpcNetwork: json_.containsKey('vpcNetwork')
+              ? json_['vpcNetwork'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (siteToSiteDataTransfer != null)
+          'siteToSiteDataTransfer': siteToSiteDataTransfer!,
+        if (uri != null) 'uri': uri!,
+        if (vpcNetwork != null) 'vpcNetwork': vpcNetwork!,
+      };
+}
+
 class NextHopVpcNetwork {
   /// The URI of the VPC network resource
   core.String? uri;
@@ -6549,7 +6704,7 @@ class Policy {
 /// IP address, but also source IP address, protocol, and more.
 ///
 /// If a policy-based route conflicts with other types of routes, the
-/// policy-based route always take precedence.
+/// policy-based route always takes precedence.
 class PolicyBasedRoute {
   /// Time when the policy-based route was created.
   ///
@@ -6612,7 +6767,7 @@ class PolicyBasedRoute {
   /// - "OTHER_ROUTES_UNSPECIFIED" : Default value.
   /// - "DEFAULT_ROUTING" : Use the routes from the default routing tables
   /// (system-generated routes, custom routes, peering route) to determine the
-  /// next hop. This will effectively exclude matching packets being applied on
+  /// next hop. This effectively excludes matching packets being applied on
   /// other PBRs with a lower priority.
   core.String? nextHopOtherRoutes;
 
@@ -6637,7 +6792,7 @@ class PolicyBasedRoute {
   /// Output only.
   core.String? updateTime;
 
-  /// VM instances to which this policy-based route applies to.
+  /// VM instances that this policy-based route applies to.
   ///
   /// Optional.
   VirtualMachine? virtualMachine;
@@ -7192,10 +7347,34 @@ class Route {
   /// Immutable.
   core.String? name;
 
+  /// The next-hop VLAN attachment for packets on this route.
+  ///
+  /// Immutable.
+  NextHopInterconnectAttachment? nextHopInterconnectAttachment;
+
+  /// The next-hop Router appliance instance for packets on this route.
+  ///
+  /// Immutable.
+  NextHopRouterApplianceInstance? nextHopRouterApplianceInstance;
+
   /// The destination VPC network for packets on this route.
   ///
   /// Immutable.
   NextHopVpcNetwork? nextHopVpcNetwork;
+
+  /// The next-hop VPN tunnel for packets on this route.
+  ///
+  /// Immutable.
+  NextHopVPNTunnel? nextHopVpnTunnel;
+
+  /// The priority of this route.
+  ///
+  /// Priority is used to break ties in cases where a destination matches more
+  /// than one route. In these cases the route with the lowest-numbered priority
+  /// value wins.
+  ///
+  /// Output only.
+  core.String? priority;
 
   /// The spoke that this route leads to.
   ///
@@ -7231,6 +7410,9 @@ class Route {
   /// primary address range of the VPC network's subnet.
   /// - "VPC_SECONDARY_SUBNET" : The route leads to a destination within the
   /// secondary address range of the VPC network's subnet.
+  /// - "DYNAMIC_ROUTE" : The route leads to a destination in a dynamic route.
+  /// Dynamic routes are derived from Border Gateway Protocol (BGP)
+  /// advertisements received from an NCC hybrid spoke.
   core.String? type;
 
   /// The Google-generated UUID for the route.
@@ -7254,7 +7436,11 @@ class Route {
     this.labels,
     this.location,
     this.name,
+    this.nextHopInterconnectAttachment,
+    this.nextHopRouterApplianceInstance,
     this.nextHopVpcNetwork,
+    this.nextHopVpnTunnel,
+    this.priority,
     this.spoke,
     this.state,
     this.type,
@@ -7285,9 +7471,28 @@ class Route {
               ? json_['location'] as core.String
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          nextHopInterconnectAttachment:
+              json_.containsKey('nextHopInterconnectAttachment')
+                  ? NextHopInterconnectAttachment.fromJson(
+                      json_['nextHopInterconnectAttachment']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          nextHopRouterApplianceInstance:
+              json_.containsKey('nextHopRouterApplianceInstance')
+                  ? NextHopRouterApplianceInstance.fromJson(
+                      json_['nextHopRouterApplianceInstance']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           nextHopVpcNetwork: json_.containsKey('nextHopVpcNetwork')
               ? NextHopVpcNetwork.fromJson(json_['nextHopVpcNetwork']
                   as core.Map<core.String, core.dynamic>)
+              : null,
+          nextHopVpnTunnel: json_.containsKey('nextHopVpnTunnel')
+              ? NextHopVPNTunnel.fromJson(json_['nextHopVpnTunnel']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          priority: json_.containsKey('priority')
+              ? json_['priority'] as core.String
               : null,
           spoke:
               json_.containsKey('spoke') ? json_['spoke'] as core.String : null,
@@ -7307,7 +7512,13 @@ class Route {
         if (labels != null) 'labels': labels!,
         if (location != null) 'location': location!,
         if (name != null) 'name': name!,
+        if (nextHopInterconnectAttachment != null)
+          'nextHopInterconnectAttachment': nextHopInterconnectAttachment!,
+        if (nextHopRouterApplianceInstance != null)
+          'nextHopRouterApplianceInstance': nextHopRouterApplianceInstance!,
         if (nextHopVpcNetwork != null) 'nextHopVpcNetwork': nextHopVpcNetwork!,
+        if (nextHopVpnTunnel != null) 'nextHopVpnTunnel': nextHopVpnTunnel!,
+        if (priority != null) 'priority': priority!,
         if (spoke != null) 'spoke': spoke!,
         if (state != null) 'state': state!,
         if (type != null) 'type': type!,
@@ -8455,11 +8666,11 @@ typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;
 
-/// VM instances to which this policy-based route applies to.
+/// VM instances that this policy-based route applies to.
 class VirtualMachine {
-  /// A list of VM instance tags the this policy-based route applies to.
+  /// A list of VM instance tags that this policy-based route applies to.
   ///
-  /// VM instances that have ANY of tags specified here will install this PBR.
+  /// VM instances that have ANY of tags specified here installs this PBR.
   ///
   /// Optional.
   core.List<core.String>? tags;
@@ -8490,8 +8701,8 @@ class Warnings {
   /// Possible string values are:
   /// - "WARNING_UNSPECIFIED" : Default value.
   /// - "RESOURCE_NOT_ACTIVE" : The policy-based route is not active and
-  /// functioning. Common causes are the dependent network was deleted or the
-  /// resource project was turned off.
+  /// functioning. Common causes are that the dependent network was deleted or
+  /// the resource project was turned off.
   /// - "RESOURCE_BEING_MODIFIED" : The policy-based route is being modified
   /// (e.g. created/deleted) at this time.
   core.String? code;

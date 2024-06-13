@@ -1455,6 +1455,21 @@ class AccessApprovalSettings {
   /// The approver ultimately can set the expiration at approval time.
   core.int? preferredRequestExpirationDays;
 
+  /// A setting to indicate the maximum width of an Access Approval request.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "REQUEST_SCOPE_MAX_WIDTH_PREFERENCE_UNSPECIFIED" : Default value for
+  /// proto, shouldn't be used.
+  /// - "ORGANIZATION" : This is the widest scope possible. It means the
+  /// customer has no scope restriction when it comes to Access Approval
+  /// requests.
+  /// - "FOLDER" : Customer allows the scope of Access Approval requests as
+  /// broad as the Folder level.
+  /// - "PROJECT" : Customer allows the scope of Access Approval requests as
+  /// broad as the Project level.
+  core.String? requestScopeMaxWidthPreference;
+
   /// A setting to require approval request justifications to be customer
   /// visible.
   ///
@@ -1472,6 +1487,7 @@ class AccessApprovalSettings {
     this.notificationPubsubTopic,
     this.preferNoBroadApprovalRequests,
     this.preferredRequestExpirationDays,
+    this.requestScopeMaxWidthPreference,
     this.requireCustomerVisibleJustification,
   });
 
@@ -1513,6 +1529,10 @@ class AccessApprovalSettings {
               json_.containsKey('preferredRequestExpirationDays')
                   ? json_['preferredRequestExpirationDays'] as core.int
                   : null,
+          requestScopeMaxWidthPreference:
+              json_.containsKey('requestScopeMaxWidthPreference')
+                  ? json_['requestScopeMaxWidthPreference'] as core.String
+                  : null,
           requireCustomerVisibleJustification:
               json_.containsKey('requireCustomerVisibleJustification')
                   ? json_['requireCustomerVisibleJustification'] as core.bool
@@ -1535,6 +1555,8 @@ class AccessApprovalSettings {
           'preferNoBroadApprovalRequests': preferNoBroadApprovalRequests!,
         if (preferredRequestExpirationDays != null)
           'preferredRequestExpirationDays': preferredRequestExpirationDays!,
+        if (requestScopeMaxWidthPreference != null)
+          'requestScopeMaxWidthPreference': requestScopeMaxWidthPreference!,
         if (requireCustomerVisibleJustification != null)
           'requireCustomerVisibleJustification':
               requireCustomerVisibleJustification!,

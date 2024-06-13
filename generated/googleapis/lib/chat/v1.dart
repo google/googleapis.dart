@@ -56,6 +56,30 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// The Google Chat API lets you build Chat apps to integrate your services with
 /// Google Chat and manage Chat resources such as spaces, members, and messages.
 class HangoutsChatApi {
+  /// Delete conversations and spaces owned by your organization and remove
+  /// access to associated files in Google Chat
+  static const chatAdminDeleteScope =
+      'https://www.googleapis.com/auth/chat.admin.delete';
+
+  /// View, add, update and remove members and managers in conversations owned
+  /// by your organization
+  static const chatAdminMembershipsScope =
+      'https://www.googleapis.com/auth/chat.admin.memberships';
+
+  /// View members and managers in conversations owned by your organization
+  static const chatAdminMembershipsReadonlyScope =
+      'https://www.googleapis.com/auth/chat.admin.memberships.readonly';
+
+  /// View or edit display name, description, and other metadata for all Google
+  /// Chat conversations owned by your organization
+  static const chatAdminSpacesScope =
+      'https://www.googleapis.com/auth/chat.admin.spaces';
+
+  /// View display name, description, and other metadata for all Google Chat
+  /// conversations owned by your organization
+  static const chatAdminSpacesReadonlyScope =
+      'https://www.googleapis.com/auth/chat.admin.spaces.readonly';
+
   /// Private Service: https://www.googleapis.com/auth/chat.bot
   static const chatBotScope = 'https://www.googleapis.com/auth/chat.bot';
 
@@ -535,8 +559,9 @@ class SpacesResource {
   /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
   /// Lists spaces visible to the caller or authenticated user. Group chats and
   /// DMs aren't listed until the first message is sent. To list all named
-  /// spaces by Google Workspace organization, use the `spaces.search()` method
-  /// using Workspace administrator privileges instead.
+  /// spaces by Google Workspace organization, use the
+  /// \[`spaces.search()`\](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces/search)
+  /// method using Workspace administrator privileges instead.
   ///
   /// Request parameters:
   ///
@@ -4665,6 +4690,7 @@ class GoogleAppsCardV1PlatformDataSource {
   /// - "UNKNOWN" : Default value. Don't use.
   /// - "USER" : Google Workspace users. The user can only view and select users
   /// from their Google Workspace organization.
+  /// - "DRIVE" : Represents a data source from Google Drive OnePick.
   core.String? commonDataSource;
 
   /// A data source that's unique to a Google Workspace host application, such

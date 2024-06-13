@@ -615,7 +615,7 @@ class ProjectsGithubEnterpriseConfigsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Name of the parent project. For example:
+  /// [parent] - Required. Name of the parent project. For example:
   /// projects/{$project_number} or projects/{$project_id}
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
@@ -806,8 +806,8 @@ class ProjectsGithubEnterpriseConfigsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Optional. The full resource name for the GitHubEnterpriseConfig
-  /// For example:
+  /// [name] - The full resource name for the GitHubEnterpriseConfig For
+  /// example:
   /// "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
   /// Value must have pattern
   /// `^projects/\[^/\]+/githubEnterpriseConfigs/\[^/\]+$`.
@@ -2047,7 +2047,7 @@ class ProjectsLocationsGithubEnterpriseConfigsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Name of the parent project. For example:
+  /// [parent] - Required. Name of the parent project. For example:
   /// projects/{$project_number} or projects/{$project_id}
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
@@ -2238,8 +2238,8 @@ class ProjectsLocationsGithubEnterpriseConfigsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Optional. The full resource name for the GitHubEnterpriseConfig
-  /// For example:
+  /// [name] - The full resource name for the GitHubEnterpriseConfig For
+  /// example:
   /// "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/githubEnterpriseConfigs/\[^/\]+$`.
@@ -2946,7 +2946,8 @@ class ProjectsLocationsWorkerPoolsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/workerPools/\[^/\]+$`.
   ///
-  /// [updateMask] - A mask specifying which fields in `worker_pool` to update.
+  /// [updateMask] - Optional. A mask specifying which fields in `worker_pool`
+  /// to update.
   ///
   /// [validateOnly] - If set, validate the request and preview the response,
   /// but do not actually post it.
@@ -5929,6 +5930,8 @@ class GitHubEnterpriseConfig {
   core.String? createTime;
 
   /// Name to display for this config.
+  ///
+  /// Optional.
   core.String? displayName;
 
   /// The URL of the github enterprise host the configuration is for.
@@ -5936,8 +5939,6 @@ class GitHubEnterpriseConfig {
 
   /// The full resource name for the GitHubEnterpriseConfig For example:
   /// "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
-  ///
-  /// Optional.
   core.String? name;
 
   /// The network to be used when reaching out to the GitHub Enterprise server.
@@ -5955,6 +5956,8 @@ class GitHubEnterpriseConfig {
   core.String? peeredNetwork;
 
   /// Names of secrets in Secret Manager.
+  ///
+  /// Optional.
   GitHubEnterpriseSecrets? secrets;
 
   /// SSL certificate to use for requests to GitHub Enterprise.
@@ -6126,8 +6129,6 @@ class GitHubEventsConfig {
   ///
   /// For example:
   /// "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
-  ///
-  /// Optional.
   core.String? enterpriseConfigResourceName;
 
   /// The installationID that emits the GitHub event.
@@ -7437,6 +7438,8 @@ class PubsubConfig {
   /// The name of the topic from which this subscription is receiving messages.
   ///
   /// Format is `projects/{project}/topics/{topic}`.
+  ///
+  /// Optional.
   core.String? topic;
 
   PubsubConfig({
@@ -8730,6 +8733,8 @@ class WorkerConfig {
   /// See
   /// [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema).
   /// If left blank, Cloud Build will use a sensible default.
+  ///
+  /// Optional.
   core.String? machineType;
 
   WorkerConfig({

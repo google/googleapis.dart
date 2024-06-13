@@ -2295,6 +2295,9 @@ class DiscoverConnectionProfileRequest {
   /// PostgreSQL RDBMS to enrich with child data objects and metadata.
   PostgresqlRdbms? postgresqlRdbms;
 
+  /// SQLServer RDBMS to enrich with child data objects and metadata.
+  SqlServerRdbms? sqlServerRdbms;
+
   DiscoverConnectionProfileRequest({
     this.connectionProfile,
     this.connectionProfileName,
@@ -2303,6 +2306,7 @@ class DiscoverConnectionProfileRequest {
     this.mysqlRdbms,
     this.oracleRdbms,
     this.postgresqlRdbms,
+    this.sqlServerRdbms,
   });
 
   DiscoverConnectionProfileRequest.fromJson(core.Map json_)
@@ -2332,6 +2336,10 @@ class DiscoverConnectionProfileRequest {
               ? PostgresqlRdbms.fromJson(json_['postgresqlRdbms']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          sqlServerRdbms: json_.containsKey('sqlServerRdbms')
+              ? SqlServerRdbms.fromJson(json_['sqlServerRdbms']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2343,6 +2351,7 @@ class DiscoverConnectionProfileRequest {
         if (mysqlRdbms != null) 'mysqlRdbms': mysqlRdbms!,
         if (oracleRdbms != null) 'oracleRdbms': oracleRdbms!,
         if (postgresqlRdbms != null) 'postgresqlRdbms': postgresqlRdbms!,
+        if (sqlServerRdbms != null) 'sqlServerRdbms': sqlServerRdbms!,
       };
 }
 
@@ -2357,10 +2366,14 @@ class DiscoverConnectionProfileResponse {
   /// Enriched PostgreSQL RDBMS object.
   PostgresqlRdbms? postgresqlRdbms;
 
+  /// Enriched SQLServer RDBMS object.
+  SqlServerRdbms? sqlServerRdbms;
+
   DiscoverConnectionProfileResponse({
     this.mysqlRdbms,
     this.oracleRdbms,
     this.postgresqlRdbms,
+    this.sqlServerRdbms,
   });
 
   DiscoverConnectionProfileResponse.fromJson(core.Map json_)
@@ -2377,12 +2390,17 @@ class DiscoverConnectionProfileResponse {
               ? PostgresqlRdbms.fromJson(json_['postgresqlRdbms']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          sqlServerRdbms: json_.containsKey('sqlServerRdbms')
+              ? SqlServerRdbms.fromJson(json_['sqlServerRdbms']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (mysqlRdbms != null) 'mysqlRdbms': mysqlRdbms!,
         if (oracleRdbms != null) 'oracleRdbms': oracleRdbms!,
         if (postgresqlRdbms != null) 'postgresqlRdbms': postgresqlRdbms!,
+        if (sqlServerRdbms != null) 'sqlServerRdbms': sqlServerRdbms!,
       };
 }
 
@@ -4565,6 +4583,9 @@ class SpecificStartPosition {
       };
 }
 
+/// Configuration to use Change Tables CDC read method.
+typedef SqlServerChangeTables = $Empty;
+
 /// SQLServer Column.
 class SqlServerColumn {
   /// Column name.
@@ -4759,6 +4780,9 @@ class SqlServerSchema {
 
 /// SQLServer data source configuration
 class SqlServerSourceConfig {
+  /// CDC reader reads from change tables.
+  SqlServerChangeTables? changeTables;
+
   /// SQLServer objects to exclude from the stream.
   SqlServerRdbms? excludeObjects;
 
@@ -4771,15 +4795,24 @@ class SqlServerSourceConfig {
   /// Max concurrent CDC tasks.
   core.int? maxConcurrentCdcTasks;
 
+  /// CDC reader reads from transaction logs.
+  SqlServerTransactionLogs? transactionLogs;
+
   SqlServerSourceConfig({
+    this.changeTables,
     this.excludeObjects,
     this.includeObjects,
     this.maxConcurrentBackfillTasks,
     this.maxConcurrentCdcTasks,
+    this.transactionLogs,
   });
 
   SqlServerSourceConfig.fromJson(core.Map json_)
       : this(
+          changeTables: json_.containsKey('changeTables')
+              ? SqlServerChangeTables.fromJson(
+                  json_['changeTables'] as core.Map<core.String, core.dynamic>)
+              : null,
           excludeObjects: json_.containsKey('excludeObjects')
               ? SqlServerRdbms.fromJson(json_['excludeObjects']
                   as core.Map<core.String, core.dynamic>)
@@ -4795,15 +4828,21 @@ class SqlServerSourceConfig {
           maxConcurrentCdcTasks: json_.containsKey('maxConcurrentCdcTasks')
               ? json_['maxConcurrentCdcTasks'] as core.int
               : null,
+          transactionLogs: json_.containsKey('transactionLogs')
+              ? SqlServerTransactionLogs.fromJson(json_['transactionLogs']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (changeTables != null) 'changeTables': changeTables!,
         if (excludeObjects != null) 'excludeObjects': excludeObjects!,
         if (includeObjects != null) 'includeObjects': includeObjects!,
         if (maxConcurrentBackfillTasks != null)
           'maxConcurrentBackfillTasks': maxConcurrentBackfillTasks!,
         if (maxConcurrentCdcTasks != null)
           'maxConcurrentCdcTasks': maxConcurrentCdcTasks!,
+        if (transactionLogs != null) 'transactionLogs': transactionLogs!,
       };
 }
 
@@ -4840,6 +4879,9 @@ class SqlServerTable {
         if (table != null) 'table': table!,
       };
 }
+
+/// Configuration to use Transaction Logs CDC read method.
+typedef SqlServerTransactionLogs = $Empty;
 
 /// Request for manually initiating a backfill job for a specific stream object.
 typedef StartBackfillJobRequest = $Empty;

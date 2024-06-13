@@ -95,6 +95,7 @@ api.AccessApprovalSettings buildAccessApprovalSettings() {
     o.notificationPubsubTopic = 'foo';
     o.preferNoBroadApprovalRequests = true;
     o.preferredRequestExpirationDays = 42;
+    o.requestScopeMaxWidthPreference = 'foo';
     o.requireCustomerVisibleJustification = true;
   }
   buildCounterAccessApprovalSettings--;
@@ -125,6 +126,10 @@ void checkAccessApprovalSettings(api.AccessApprovalSettings o) {
     unittest.expect(
       o.preferredRequestExpirationDays!,
       unittest.equals(42),
+    );
+    unittest.expect(
+      o.requestScopeMaxWidthPreference!,
+      unittest.equals('foo'),
     );
     unittest.expect(o.requireCustomerVisibleJustification!, unittest.isTrue);
   }

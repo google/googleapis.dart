@@ -21,90 +21,6 @@ import 'dart:core' as core;
 
 /// Used by:
 ///
-/// - accesscontextmanager:v1 : AccessPolicy
-/// - cloudasset:v1 : GoogleIdentityAccesscontextmanagerV1AccessPolicy
-class $AccessPolicy {
-  /// An opaque identifier for the current version of the `AccessPolicy`.
-  ///
-  /// This will always be a strongly validated etag, meaning that two Access
-  /// Polices will be identical if and only if their etags are identical.
-  /// Clients should not expect this to be in any specific format.
-  ///
-  /// Output only.
-  core.String? etag;
-
-  /// Resource name of the `AccessPolicy`.
-  ///
-  /// Format: `accessPolicies/{access_policy}`
-  ///
-  /// Output only.
-  core.String? name;
-
-  /// The parent of this `AccessPolicy` in the Cloud Resource Hierarchy.
-  ///
-  /// Currently immutable once created. Format:
-  /// `organizations/{organization_id}`
-  ///
-  /// Required.
-  core.String? parent;
-
-  /// The scopes of the AccessPolicy.
-  ///
-  /// Scopes define which resources a policy can restrict and where its
-  /// resources can be referenced. For example, policy A with
-  /// `scopes=["folders/123"]` has the following behavior: - ServicePerimeter
-  /// can only restrict projects within `folders/123`. - ServicePerimeter within
-  /// policy A can only reference access levels defined within policy A. - Only
-  /// one policy can include a given scope; thus, attempting to create a second
-  /// policy which includes `folders/123` will result in an error. If no scopes
-  /// are provided, then any resource within the organization can be restricted.
-  /// Scopes cannot be modified after a policy is created. Policies can only
-  /// have a single scope. Format: list of `folders/{folder_number}` or
-  /// `projects/{project_number}`
-  core.List<core.String>? scopes;
-
-  /// Human readable title.
-  ///
-  /// Does not affect behavior.
-  ///
-  /// Required.
-  core.String? title;
-
-  $AccessPolicy({
-    this.etag,
-    this.name,
-    this.parent,
-    this.scopes,
-    this.title,
-  });
-
-  $AccessPolicy.fromJson(core.Map json_)
-      : this(
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          parent: json_.containsKey('parent')
-              ? json_['parent'] as core.String
-              : null,
-          scopes: json_.containsKey('scopes')
-              ? (json_['scopes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          title:
-              json_.containsKey('title') ? json_['title'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (etag != null) 'etag': etag!,
-        if (name != null) 'name': name!,
-        if (parent != null) 'parent': parent!,
-        if (scopes != null) 'scopes': scopes!,
-        if (title != null) 'title': title!,
-      };
-}
-
-/// Used by:
-///
 /// - chat:v1 : ActionParameter
 /// - chat:v1 : GoogleAppsCardV1ActionParameter
 class $ActionParameter {
@@ -3232,11 +3148,13 @@ class $CmTrackingAd {
 
 /// Used by:
 ///
+/// - airquality:v1 : Color
 /// - chat:v1 : Color
 /// - contentwarehouse:v1 : GoogleTypeColor
 /// - documentai:v1 : GoogleTypeColor
 /// - drivelabels:v2 : GoogleTypeColor
 /// - fcm:v1 : Color
+/// - pollen:v1 : Color
 /// - sheets:v4 : Color
 /// - vision:v1 : Color
 class $Color {
@@ -4758,6 +4676,7 @@ class $CustomListTargetingSetting {
 /// - people:v1 : Date
 /// - places:v1 : GoogleTypeDate
 /// - policysimulator:v1 : GoogleTypeDate
+/// - pollen:v1 : Date
 /// - realtimebidding:v1 : Date
 /// - retail:v2 : GoogleTypeDate
 /// - solar:v1 : Date
@@ -6727,6 +6646,8 @@ class $EgressSource {
 /// - cloudbuild:v2 : FetchReadWriteTokenRequest
 /// - cloudchannel:v1 : GoogleLongrunningCancelOperationRequest
 /// - cloudchannel:v1 : GoogleProtobufEmpty
+/// - cloudcommerceprocurement:v1 : Empty
+/// - cloudcommerceprocurement:v1 : ResetAccountRequest
 /// - clouddeploy:v1 : AbandonReleaseRequest
 /// - clouddeploy:v1 : AbandonReleaseResponse
 /// - clouddeploy:v1 : AdvanceChildRolloutJob
@@ -6879,6 +6800,8 @@ class $EgressSource {
 /// - datastream:v1 : Merge
 /// - datastream:v1 : MostRecentStartPosition
 /// - datastream:v1 : NextAvailableStartPosition
+/// - datastream:v1 : SqlServerChangeTables
+/// - datastream:v1 : SqlServerTransactionLogs
 /// - datastream:v1 : StartBackfillJobRequest
 /// - datastream:v1 : StaticServiceIpConnectivity
 /// - datastream:v1 : StopBackfillJobRequest
@@ -11059,6 +10982,7 @@ class $HouseholdIncomeTargetingOptionDetails {
 ///
 /// - adsense:v2 : HttpBody
 /// - aiplatform:v1 : GoogleApiHttpBody
+/// - airquality:v1 : HttpBody
 /// - apigee:v1 : GoogleApiHttpBody
 /// - apigeeregistry:v1 : HttpBody
 /// - cloudbuild:v1 : HttpBody
@@ -11067,6 +10991,7 @@ class $HouseholdIncomeTargetingOptionDetails {
 /// - domainsrdap:v1 : HttpBody
 /// - healthcare:v1 : HttpBody
 /// - ml:v1 : GoogleApi__HttpBody
+/// - pollen:v1 : HttpBody
 /// - retail:v2 : GoogleApiHttpBody
 /// - solar:v1 : HttpBody
 class $HttpBody {
@@ -11762,6 +11687,7 @@ class $IntegrationDetails {
 /// Used by:
 ///
 /// - aiplatform:v1 : GoogleTypeInterval
+/// - airquality:v1 : Interval
 /// - apigee:v1 : GoogleTypeInterval
 /// - contentwarehouse:v1 : GoogleTypeInterval
 /// - sheets:v4 : Interval
@@ -12633,6 +12559,7 @@ class $LanguageTargetingOptionDetails {
 /// Used by:
 ///
 /// - addressvalidation:v1 : GoogleTypeLatLng
+/// - airquality:v1 : LatLng
 /// - datastore:v1 : LatLng
 /// - dialogflow:v2 : GoogleTypeLatLng
 /// - dialogflow:v3 : GoogleTypeLatLng
@@ -19242,62 +19169,9 @@ class $Shared02 {
 
 /// Used by:
 ///
-/// - vmwareengine:v1 : Hcx
-/// - vmwareengine:v1 : Nsx
-/// - vmwareengine:v1 : Vcenter
-class $Shared03 {
-  /// Fully qualified domain name of the appliance.
-  core.String? fqdn;
-
-  /// Internal IP address of the appliance.
-  core.String? internalIp;
-
-  /// The state of the appliance.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : Unspecified appliance state. This is the default
-  /// value.
-  /// - "ACTIVE" : The appliance is operational and can be used.
-  /// - "CREATING" : The appliance is being deployed.
-  core.String? state;
-
-  /// Version of the appliance.
-  core.String? version;
-
-  $Shared03({
-    this.fqdn,
-    this.internalIp,
-    this.state,
-    this.version,
-  });
-
-  $Shared03.fromJson(core.Map json_)
-      : this(
-          fqdn: json_.containsKey('fqdn') ? json_['fqdn'] as core.String : null,
-          internalIp: json_.containsKey('internalIp')
-              ? json_['internalIp'] as core.String
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
-          version: json_.containsKey('version')
-              ? json_['version'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (fqdn != null) 'fqdn': fqdn!,
-        if (internalIp != null) 'internalIp': internalIp!,
-        if (state != null) 'state': state!,
-        if (version != null) 'version': version!,
-      };
-}
-
-/// Used by:
-///
 /// - aiplatform:v1 : GoogleCloudAiplatformV1DiskSpec
 /// - ml:v1 : GoogleCloudMlV1__DiskConfig
-class $Shared04 {
+class $Shared03 {
   /// Size in GB of the boot disk (default is 100GB).
   core.int? bootDiskSizeGb;
 
@@ -19307,12 +19181,12 @@ class $Shared04 {
   /// "pd-standard" (Persistent Disk Hard Disk Drive).
   core.String? bootDiskType;
 
-  $Shared04({
+  $Shared03({
     this.bootDiskSizeGb,
     this.bootDiskType,
   });
 
-  $Shared04.fromJson(core.Map json_)
+  $Shared03.fromJson(core.Map json_)
       : this(
           bootDiskSizeGb: json_.containsKey('bootDiskSizeGb')
               ? json_['bootDiskSizeGb'] as core.int
@@ -19332,16 +19206,16 @@ class $Shared04 {
 ///
 /// - apigee:v1 : GoogleCloudApigeeV1AccessGet
 /// - integrations:v1 : EnterpriseCrmEventbusProtoToken
-class $Shared05 {
+class $Shared04 {
   core.String? name;
   core.String? value;
 
-  $Shared05({
+  $Shared04({
     this.name,
     this.value,
   });
 
-  $Shared05.fromJson(core.Map json_)
+  $Shared04.fromJson(core.Map json_)
       : this(
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           value:
@@ -19358,14 +19232,14 @@ class $Shared05 {
 ///
 /// - cloudsearch:v1 : DoubleValues
 /// - integrations:v1 : EnterpriseCrmEventbusProtoDoubleArray
-class $Shared06 {
+class $Shared05 {
   core.List<core.double>? values;
 
-  $Shared06({
+  $Shared05({
     this.values,
   });
 
-  $Shared06.fromJson(core.Map json_)
+  $Shared05.fromJson(core.Map json_)
       : this(
           values: json_.containsKey('values')
               ? (json_['values'] as core.List)
@@ -19383,14 +19257,14 @@ class $Shared06 {
 ///
 /// - cloudsearch:v1 : IntegerValues
 /// - integrations:v1 : EnterpriseCrmEventbusProtoIntArray
-class $Shared07 {
+class $Shared06 {
   core.List<core.String>? values;
 
-  $Shared07({
+  $Shared06({
     this.values,
   });
 
-  $Shared07.fromJson(core.Map json_)
+  $Shared06.fromJson(core.Map json_)
       : this(
           values: json_.containsKey('values')
               ? (json_['values'] as core.List)
@@ -19408,19 +19282,19 @@ class $Shared07 {
 ///
 /// - compute:v1 : InstancesSetServiceAccountRequest
 /// - compute:v1 : ServiceAccount
-class $Shared08 {
+class $Shared07 {
   /// Email address of the service account.
   core.String? email;
 
   /// The list of scopes to be made available for this service account.
   core.List<core.String>? scopes;
 
-  $Shared08({
+  $Shared07({
     this.email,
     this.scopes,
   });
 
-  $Shared08.fromJson(core.Map json_)
+  $Shared07.fromJson(core.Map json_)
       : this(
           email:
               json_.containsKey('email') ? json_['email'] as core.String : null,
@@ -19441,17 +19315,17 @@ class $Shared08 {
 ///
 /// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination
 /// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1ImportIssueModelRequestGcsSource
-class $Shared09 {
+class $Shared08 {
   /// Format: `gs:///`
   ///
   /// Required.
   core.String? objectUri;
 
-  $Shared09({
+  $Shared08({
     this.objectUri,
   });
 
-  $Shared09.fromJson(core.Map json_)
+  $Shared08.fromJson(core.Map json_)
       : this(
           objectUri: json_.containsKey('objectUri')
               ? json_['objectUri'] as core.String
@@ -19467,19 +19341,19 @@ class $Shared09 {
 ///
 /// - content:v2.1 : Price
 /// - content:v2.1 : PriceAmount
-class $Shared10 {
+class $Shared09 {
   /// The currency of the price.
   core.String? currency;
 
   /// The price represented as a number.
   core.String? value;
 
-  $Shared10({
+  $Shared09({
     this.currency,
     this.value,
   });
 
-  $Shared10.fromJson(core.Map json_)
+  $Shared09.fromJson(core.Map json_)
       : this(
           currency: json_.containsKey('currency')
               ? json_['currency'] as core.String
@@ -19498,7 +19372,7 @@ class $Shared10 {
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2Sentiment
 /// - dialogflow:v3 : GoogleCloudDialogflowCxV3SentimentAnalysisResult
-class $Shared11 {
+class $Shared10 {
   /// A non-negative number in the \[0, +inf) range, which represents the
   /// absolute magnitude of sentiment, regardless of score (positive or
   /// negative).
@@ -19508,12 +19382,12 @@ class $Shared11 {
   /// sentiment).
   core.double? score;
 
-  $Shared11({
+  $Shared10({
     this.magnitude,
     this.score,
   });
 
-  $Shared11.fromJson(core.Map json_)
+  $Shared10.fromJson(core.Map json_)
       : this(
           magnitude: json_.containsKey('magnitude')
               ? (json_['magnitude'] as core.num).toDouble()
@@ -19533,17 +19407,17 @@ class $Shared11 {
 ///
 /// - gkehub:v1 : ConfigManagementPolicyControllerMonitoring
 /// - gkehub:v1 : PolicyControllerMonitoringConfig
-class $Shared12 {
+class $Shared11 {
   /// Specifies the list of backends Policy Controller will export to.
   ///
   /// An empty list would effectively disable metrics export.
   core.List<core.String>? backends;
 
-  $Shared12({
+  $Shared11({
     this.backends,
   });
 
-  $Shared12.fromJson(core.Map json_)
+  $Shared11.fromJson(core.Map json_)
       : this(
           backends: json_.containsKey('backends')
               ? (json_['backends'] as core.List)
@@ -19561,7 +19435,7 @@ class $Shared12 {
 ///
 /// - osconfig:v1 : OSPolicyAssignmentInstanceFilterInventory
 /// - osconfig:v1 : OSPolicyInventoryFilter
-class $Shared13 {
+class $Shared12 {
   /// The OS short name
   ///
   /// Required.
@@ -19575,12 +19449,12 @@ class $Shared13 {
   /// versions.
   core.String? osVersion;
 
-  $Shared13({
+  $Shared12({
     this.osShortName,
     this.osVersion,
   });
 
-  $Shared13.fromJson(core.Map json_)
+  $Shared12.fromJson(core.Map json_)
       : this(
           osShortName: json_.containsKey('osShortName')
               ? json_['osShortName'] as core.String
@@ -19593,6 +19467,58 @@ class $Shared13 {
   core.Map<core.String, core.dynamic> toJson() => {
         if (osShortName != null) 'osShortName': osShortName!,
         if (osVersion != null) 'osVersion': osVersion!,
+      };
+}
+
+/// Used by:
+///
+/// - vmwareengine:v1 : Nsx
+/// - vmwareengine:v1 : Vcenter
+class $Shared13 {
+  /// Fully qualified domain name of the appliance.
+  core.String? fqdn;
+
+  /// Internal IP address of the appliance.
+  core.String? internalIp;
+
+  /// The state of the appliance.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Unspecified appliance state. This is the default
+  /// value.
+  /// - "ACTIVE" : The appliance is operational and can be used.
+  /// - "CREATING" : The appliance is being deployed.
+  core.String? state;
+
+  /// Version of the appliance.
+  core.String? version;
+
+  $Shared13({
+    this.fqdn,
+    this.internalIp,
+    this.state,
+    this.version,
+  });
+
+  $Shared13.fromJson(core.Map json_)
+      : this(
+          fqdn: json_.containsKey('fqdn') ? json_['fqdn'] as core.String : null,
+          internalIp: json_.containsKey('internalIp')
+              ? json_['internalIp'] as core.String
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          version: json_.containsKey('version')
+              ? json_['version'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fqdn != null) 'fqdn': fqdn!,
+        if (internalIp != null) 'internalIp': internalIp!,
+        if (state != null) 'state': state!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -20145,6 +20071,7 @@ class $StaticRouteConfig {
 /// - compute:v1 : Status
 /// - config:v1 : Status
 /// - connectors:v1 : Status
+/// - connectors:v2 : Status
 /// - contactcenterinsights:v1 : GoogleRpcStatus
 /// - container:v1 : Status
 /// - containeranalysis:v1 : Status

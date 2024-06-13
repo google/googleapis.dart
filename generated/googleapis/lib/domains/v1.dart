@@ -664,6 +664,60 @@ class ProjectsLocationsRegistrationsResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Initiates the `Push Transfer` process to transfer the domain to another
+  /// registrar.
+  ///
+  /// The process might complete instantly or might require confirmation or
+  /// additional work. Check the emails sent to the email address of the
+  /// registrant. The process is aborted after a timeout if it's not completed.
+  /// This method is only supported for domains that have the
+  /// `REQUIRE_PUSH_TRANSFER` property in the list of `domain_properties`. The
+  /// domain must also be unlocked before it can be transferred to a different
+  /// registrar. For more information, see
+  /// [Transfer a registered domain to another registrar](https://cloud.google.com/domains/docs/transfer-domain-to-another-registrar).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [registration] - Required. The name of the `Registration` for which the
+  /// push transfer is initiated, in the format `projects / * /locations / *
+  /// /registrations / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/registrations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> initiatePushTransfer(
+    InitiatePushTransferRequest request,
+    core.String registration, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$registration') + ':initiatePushTransfer';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Lists the `Registration` resources in a project.
   ///
   /// Request parameters:
@@ -830,11 +884,61 @@ class ProjectsLocationsRegistrationsResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Renews a recently expired domain.
+  ///
+  /// This method can only be called on domains that expired in the previous 30
+  /// days. After the renewal, the new expiration time of the domain is one year
+  /// after the old expiration time and you are charged a `yearly_price` for the
+  /// renewal.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [registration] - Required. The name of the `Registration` whish is being
+  /// renewed, in the format `projects / * /locations / * /registrations / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/registrations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> renewDomain(
+    RenewDomainRequest request,
+    core.String registration, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$registration') + ':renewDomain';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Resets the authorization code of the `Registration` to a new random
   /// string.
   ///
   /// You can call this method only after 60 days have elapsed since the initial
-  /// domain registration.
+  /// domain registration. Domains that have the `REQUIRE_PUSH_TRANSFER`
+  /// property in the list of `domain_properties` don't support authorization
+  /// codes and must use the `InitiatePushTransfer` method to initiate the
+  /// process to transfer the domain to a different registrar.
   ///
   /// [request] - The metadata request object.
   ///
@@ -884,7 +988,10 @@ class ProjectsLocationsRegistrationsResource {
   /// transferring the domain to another registrar.
   ///
   /// You can call this method only after 60 days have elapsed since the initial
-  /// domain registration.
+  /// domain registration. Domains that have the `REQUIRE_PUSH_TRANSFER`
+  /// property in the list of `domain_properties` don't support authorization
+  /// codes and must use the `InitiatePushTransfer` method to initiate the
+  /// process to transfer the domain to a different registrar.
   ///
   /// Request parameters:
   ///
@@ -922,6 +1029,55 @@ class ProjectsLocationsRegistrationsResource {
       queryParams: queryParams_,
     );
     return AuthorizationCode.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists the deprecated domain and email forwarding configurations you set up
+  /// in the deprecated Google Domains UI.
+  ///
+  /// The configuration is present only for domains with the
+  /// `google_domains_redirects_data_available` set to `true` in the
+  /// `Registration`'s `dns_settings`. A forwarding configuration might not work
+  /// correctly if required DNS records are not present in the domain's
+  /// authoritative DNS Zone.
+  ///
+  /// Request parameters:
+  ///
+  /// [registration] - Required. The name of the `Registration` whose Google
+  /// Domains forwarding configuration details are being retrieved, in the
+  /// format `projects / * /locations / * /registrations / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/registrations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RetrieveGoogleDomainsForwardingConfigResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RetrieveGoogleDomainsForwardingConfigResponse>
+      retrieveGoogleDomainsForwardingConfig(
+    core.String registration, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$registration') +
+        ':retrieveGoogleDomainsForwardingConfig';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return RetrieveGoogleDomainsForwardingConfigResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 
@@ -1912,6 +2068,79 @@ class Domain {
       };
 }
 
+/// Domain forwarding configuration.
+class DomainForwarding {
+  /// If true, forwards the path after the domain name to the same path at the
+  /// new address.
+  core.bool? pathForwarding;
+
+  /// The PEM-encoded certificate chain.
+  core.String? pemCertificate;
+
+  /// The redirect type.
+  /// Possible string values are:
+  /// - "REDIRECT_TYPE_UNSPECIFIED" : Redirect Type is unspecified.
+  /// - "TEMPORARY" : 301 redirect. Allows to propagate changes to the
+  /// forwarding address quickly.
+  /// - "PERMANENT" : 302 redirect. Allows browsers to cache the forwarding
+  /// address. This may help the address resolve more quickly. Changes may take
+  /// longer to propagate
+  core.String? redirectType;
+
+  /// If true, the forwarding works also over HTTPS.
+  core.bool? sslEnabled;
+
+  /// The subdomain of the registered domain that is being forwarded.
+  ///
+  /// E.g. `www.example.com`, `example.com` (i.e. the registered domain itself)
+  /// or `*.example.com` (i.e. all subdomains).
+  core.String? subdomain;
+
+  /// The target of the domain forwarding, i.e. the path to redirect the
+  /// `subdomain` to.
+  core.String? targetUri;
+
+  DomainForwarding({
+    this.pathForwarding,
+    this.pemCertificate,
+    this.redirectType,
+    this.sslEnabled,
+    this.subdomain,
+    this.targetUri,
+  });
+
+  DomainForwarding.fromJson(core.Map json_)
+      : this(
+          pathForwarding: json_.containsKey('pathForwarding')
+              ? json_['pathForwarding'] as core.bool
+              : null,
+          pemCertificate: json_.containsKey('pemCertificate')
+              ? json_['pemCertificate'] as core.String
+              : null,
+          redirectType: json_.containsKey('redirectType')
+              ? json_['redirectType'] as core.String
+              : null,
+          sslEnabled: json_.containsKey('sslEnabled')
+              ? json_['sslEnabled'] as core.bool
+              : null,
+          subdomain: json_.containsKey('subdomain')
+              ? json_['subdomain'] as core.String
+              : null,
+          targetUri: json_.containsKey('targetUri')
+              ? json_['targetUri'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (pathForwarding != null) 'pathForwarding': pathForwarding!,
+        if (pemCertificate != null) 'pemCertificate': pemCertificate!,
+        if (redirectType != null) 'redirectType': redirectType!,
+        if (sslEnabled != null) 'sslEnabled': sslEnabled!,
+        if (subdomain != null) 'subdomain': subdomain!,
+        if (targetUri != null) 'targetUri': targetUri!,
+      };
+}
+
 /// Defines a Delegation Signer (DS) record, which is needed to enable DNSSEC
 /// for a domain.
 ///
@@ -1987,6 +2216,39 @@ class DsRecord {
         if (digest != null) 'digest': digest!,
         if (digestType != null) 'digestType': digestType!,
         if (keyTag != null) 'keyTag': keyTag!,
+      };
+}
+
+/// Email forwarding configuration.
+class EmailForwarding {
+  /// An alias recipient email that forwards emails to the
+  /// `target_email_address`.
+  ///
+  /// For example, `admin@example.com` or `*@example.com` (wildcard alias
+  /// forwards all the emails under the registered domain).
+  core.String? alias;
+
+  /// Target email that receives emails sent to the `alias`.
+  core.String? targetEmailAddress;
+
+  EmailForwarding({
+    this.alias,
+    this.targetEmailAddress,
+  });
+
+  EmailForwarding.fromJson(core.Map json_)
+      : this(
+          alias:
+              json_.containsKey('alias') ? json_['alias'] as core.String : null,
+          targetEmailAddress: json_.containsKey('targetEmailAddress')
+              ? json_['targetEmailAddress'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (alias != null) 'alias': alias!,
+        if (targetEmailAddress != null)
+          'targetEmailAddress': targetEmailAddress!,
       };
 }
 
@@ -2184,6 +2446,29 @@ class ImportDomainRequest {
       };
 }
 
+/// Request for the `InitiatePushTransfer` method.
+class InitiatePushTransferRequest {
+  /// The Tag of the new registrar.
+  ///
+  /// Can be found at [List of registrars](https://nominet.uk/registrar-list/).
+  ///
+  /// Required.
+  core.String? tag;
+
+  InitiatePushTransferRequest({
+    this.tag,
+  });
+
+  InitiatePushTransferRequest.fromJson(core.Map json_)
+      : this(
+          tag: json_.containsKey('tag') ? json_['tag'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (tag != null) 'tag': tag!,
+      };
+}
+
 /// The response message for Locations.ListLocations.
 class ListLocationsResponse {
   /// A list of locations that matches the specified filter in the request.
@@ -2288,6 +2573,17 @@ typedef Location = $Location00;
 
 /// Defines renewal, billing, and transfer settings for a `Registration`.
 class ManagementSettings {
+  /// The actual transfer lock state for this `Registration`.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "TRANSFER_LOCK_STATE_UNSPECIFIED" : The state is unspecified.
+  /// - "UNLOCKED" : The domain is unlocked and can be transferred to another
+  /// registrar.
+  /// - "LOCKED" : The domain is locked and cannot be transferred to another
+  /// registrar.
+  core.String? effectiveTransferLockState;
+
   /// The desired renewal method for this `Registration`.
   ///
   /// The actual `renewal_method` is automatically updated to reflect this
@@ -2336,7 +2632,12 @@ class ManagementSettings {
   /// This is the desired transfer lock state for this `Registration`.
   ///
   /// A transfer lock controls whether the domain can be transferred to another
-  /// registrar.
+  /// registrar. The transfer lock state of the domain is returned in the
+  /// `effective_transfer_lock_state` property. The transfer lock state values
+  /// might be different for the following reasons: * `transfer_lock_state` was
+  /// updated only a short time ago. * Domains with the
+  /// `TRANSFER_LOCK_UNSUPPORTED_BY_REGISTRY` state are in the list of
+  /// `domain_properties`. These domains are always in the `UNLOCKED` state.
   /// Possible string values are:
   /// - "TRANSFER_LOCK_STATE_UNSPECIFIED" : The state is unspecified.
   /// - "UNLOCKED" : The domain is unlocked and can be transferred to another
@@ -2346,6 +2647,7 @@ class ManagementSettings {
   core.String? transferLockState;
 
   ManagementSettings({
+    this.effectiveTransferLockState,
     this.preferredRenewalMethod,
     this.renewalMethod,
     this.transferLockState,
@@ -2353,6 +2655,10 @@ class ManagementSettings {
 
   ManagementSettings.fromJson(core.Map json_)
       : this(
+          effectiveTransferLockState:
+              json_.containsKey('effectiveTransferLockState')
+                  ? json_['effectiveTransferLockState'] as core.String
+                  : null,
           preferredRenewalMethod: json_.containsKey('preferredRenewalMethod')
               ? json_['preferredRenewalMethod'] as core.String
               : null,
@@ -2365,6 +2671,8 @@ class ManagementSettings {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (effectiveTransferLockState != null)
+          'effectiveTransferLockState': effectiveTransferLockState!,
         if (preferredRenewalMethod != null)
           'preferredRenewalMethod': preferredRenewalMethod!,
         if (renewalMethod != null) 'renewalMethod': renewalMethod!,
@@ -2785,6 +3093,11 @@ class Registration {
   /// Required. Immutable.
   core.String? domainName;
 
+  /// Special properties of the domain.
+  ///
+  /// Output only.
+  core.List<core.String>? domainProperties;
+
   /// The expiration timestamp of the `Registration`.
   ///
   /// Output only.
@@ -2910,6 +3223,7 @@ class Registration {
     this.createTime,
     this.dnsSettings,
     this.domainName,
+    this.domainProperties,
     this.expireTime,
     this.issues,
     this.labels,
@@ -2937,6 +3251,11 @@ class Registration {
               : null,
           domainName: json_.containsKey('domainName')
               ? json_['domainName'] as core.String
+              : null,
+          domainProperties: json_.containsKey('domainProperties')
+              ? (json_['domainProperties'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
               : null,
           expireTime: json_.containsKey('expireTime')
               ? json_['expireTime'] as core.String
@@ -2983,6 +3302,7 @@ class Registration {
         if (createTime != null) 'createTime': createTime!,
         if (dnsSettings != null) 'dnsSettings': dnsSettings!,
         if (domainName != null) 'domainName': domainName!,
+        if (domainProperties != null) 'domainProperties': domainProperties!,
         if (expireTime != null) 'expireTime': expireTime!,
         if (issues != null) 'issues': issues!,
         if (labels != null) 'labels': labels!,
@@ -3000,8 +3320,91 @@ class Registration {
       };
 }
 
+/// Request for the `RenewDomain` method.
+class RenewDomainRequest {
+  /// When true, only validation is performed, without actually renewing the
+  /// domain.
+  ///
+  /// For more information, see
+  /// [Request validation](https://cloud.google.com/apis/design/design_patterns#request_validation)
+  ///
+  /// Optional.
+  core.bool? validateOnly;
+
+  /// Acknowledgement of the price to renew the domain for one year.
+  ///
+  /// To get the price, see
+  /// [Cloud Domains pricing](https://cloud.google.com/domains/pricing). If not
+  /// provided, the expected price is returned in the error message.
+  ///
+  /// Required.
+  Money? yearlyPrice;
+
+  RenewDomainRequest({
+    this.validateOnly,
+    this.yearlyPrice,
+  });
+
+  RenewDomainRequest.fromJson(core.Map json_)
+      : this(
+          validateOnly: json_.containsKey('validateOnly')
+              ? json_['validateOnly'] as core.bool
+              : null,
+          yearlyPrice: json_.containsKey('yearlyPrice')
+              ? Money.fromJson(
+                  json_['yearlyPrice'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (validateOnly != null) 'validateOnly': validateOnly!,
+        if (yearlyPrice != null) 'yearlyPrice': yearlyPrice!,
+      };
+}
+
 /// Request for the `ResetAuthorizationCode` method.
 typedef ResetAuthorizationCodeRequest = $Empty;
+
+/// Response for the `RetrieveGoogleDomainsForwardingConfig` method.
+class RetrieveGoogleDomainsForwardingConfigResponse {
+  /// The list of domain forwarding configurations.
+  ///
+  /// A forwarding configuration might not work correctly if the required DNS
+  /// records are not present in the domain's authoritative DNS zone.
+  core.List<DomainForwarding>? domainForwardings;
+
+  /// The list of email forwarding configurations.
+  ///
+  /// A forwarding configuration might not work correctly if the required DNS
+  /// records are not present in the domain's authoritative DNS zone.
+  core.List<EmailForwarding>? emailForwardings;
+
+  RetrieveGoogleDomainsForwardingConfigResponse({
+    this.domainForwardings,
+    this.emailForwardings,
+  });
+
+  RetrieveGoogleDomainsForwardingConfigResponse.fromJson(core.Map json_)
+      : this(
+          domainForwardings: json_.containsKey('domainForwardings')
+              ? (json_['domainForwardings'] as core.List)
+                  .map((value) => DomainForwarding.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          emailForwardings: json_.containsKey('emailForwardings')
+              ? (json_['emailForwardings'] as core.List)
+                  .map((value) => EmailForwarding.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (domainForwardings != null) 'domainForwardings': domainForwardings!,
+        if (emailForwardings != null) 'emailForwardings': emailForwardings!,
+      };
+}
 
 /// Deprecated: For more information, see
 /// [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations).

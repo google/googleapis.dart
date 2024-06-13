@@ -2415,7 +2415,11 @@ class Binding {
 
   /// Role that is assigned to the list of `members`, or principals.
   ///
-  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an
+  /// overview of the IAM roles and permissions, see the
+  /// [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For
+  /// a list of the available pre-defined roles, see
+  /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
   Binding({
@@ -2628,8 +2632,10 @@ class Domain {
 
   /// Locations where domain needs to be provisioned.
   ///
-  /// regions e.g. us-west1 or us-east4 Service supports up to 4 locations at
-  /// once. Each location will use a /26 block.
+  /// The locations can be specified according to
+  /// https://cloud.google.com/compute/docs/regions-zones, such as `us-west1` or
+  /// `us-east4`. Each domain supports up to 4 locations, separated by commas.
+  /// Each location will use a /26 block.
   ///
   /// Required.
   core.List<core.String>? locations;

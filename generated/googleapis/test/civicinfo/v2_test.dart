@@ -1997,7 +1997,8 @@ void main() {
         final resp = convert.json.encode(buildVoterInfoResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      final response = await res.voterInfoQuery(arg_address,
+      final response = await res.voterInfoQuery(
+          address: arg_address,
           electionId: arg_electionId,
           officialOnly: arg_officialOnly,
           productionDataOnly: arg_productionDataOnly,

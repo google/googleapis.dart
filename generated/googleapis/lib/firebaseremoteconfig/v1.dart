@@ -307,7 +307,8 @@ class ProjectsRemoteConfigResource {
   /// - "FORMAT_UNSPECIFIED" : Catch-all for unrecognized enum values.
   /// - "XML" : Returns a response in XML format.
   /// - "PLIST" : Returns a response in property list (plist) format.
-  /// - "JSON" : Returns a response in JSON format.
+  /// - "JSON" : Returns a response in raw JSON format (not packaged in an
+  /// HttpBody object).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1143,7 +1144,11 @@ class PersonalizationValue {
 /// A RemoteConfig represents a Remote Config template.
 ///
 /// A project's Remote Config template is evaluated during each application
-/// instance's fetch. The resolved value of a parameter is determined as
+/// instance's fetch. Note: Server templates currently support percentage
+/// conditions. Publishing a server template with unsupported conditional values
+/// will return a validation error. See
+/// [Remote Config in Server Environments](https://firebase.google.com/docs/remote-config/server)
+/// for more information. The resolved value of a parameter is determined as
 /// follows: Given the conditional values that refer to `true` conditions for
 /// the application instance, the parameter's resolved value is the conditional
 /// value whose name is the earliest in the conditions list. Else, if the

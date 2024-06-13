@@ -1303,6 +1303,50 @@ class QueryResource {
 
   QueryResource(commons.ApiRequester client) : _requester = client;
 
+  /// Returns Debug information for Cloud Search Query API provides the search
+  /// method.
+  ///
+  /// **Note:** This API requires a standard end user account to execute. A
+  /// service account can't perform Query API requests directly; to use a
+  /// service account to perform queries, set up \[Google Workspace domain-wide
+  /// delegation of
+  /// authority\](https://developers.google.com/cloud-search/docs/guides/delegation/).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [DebugResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DebugResponse> debugSearch(
+    SearchRequest request, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const url_ = 'v1/query:debugSearch';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return DebugResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Provides functionality to remove logged activity for a user.
   ///
   /// Currently to be used only for Chat 1p clients **Note:** This API requires
@@ -3721,6 +3765,58 @@ class DebugOptions {
       };
 }
 
+/// Debug Search Response.
+class DebugResponse {
+  /// Serialized string of GenericSearchRequest.
+  core.String? gsrRequest;
+  core.List<core.int> get gsrRequestAsBytes =>
+      convert.base64.decode(gsrRequest!);
+
+  set gsrRequestAsBytes(core.List<core.int> bytes_) {
+    gsrRequest =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// Serialized string of GenericSearchResponse.
+  core.String? gsrResponse;
+  core.List<core.int> get gsrResponseAsBytes =>
+      convert.base64.decode(gsrResponse!);
+
+  set gsrResponseAsBytes(core.List<core.int> bytes_) {
+    gsrResponse =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// Search response.
+  SearchResponse? searchResponse;
+
+  DebugResponse({
+    this.gsrRequest,
+    this.gsrResponse,
+    this.searchResponse,
+  });
+
+  DebugResponse.fromJson(core.Map json_)
+      : this(
+          gsrRequest: json_.containsKey('gsrRequest')
+              ? json_['gsrRequest'] as core.String
+              : null,
+          gsrResponse: json_.containsKey('gsrResponse')
+              ? json_['gsrResponse'] as core.String
+              : null,
+          searchResponse: json_.containsKey('searchResponse')
+              ? SearchResponse.fromJson(json_['searchResponse']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (gsrRequest != null) 'gsrRequest': gsrRequest!,
+        if (gsrResponse != null) 'gsrResponse': gsrResponse!,
+        if (searchResponse != null) 'searchResponse': searchResponse!,
+      };
+}
+
 class DeleteQueueItemsRequest {
   /// The name of connector making this call.
   ///
@@ -3840,7 +3936,7 @@ class DoublePropertyOptions {
 }
 
 /// List of double values.
-typedef DoubleValues = $Shared06;
+typedef DoubleValues = $Shared05;
 
 /// A person's email address.
 class EmailAddress {
@@ -5094,7 +5190,7 @@ class IntegerPropertyOptions {
 }
 
 /// List of integer values.
-typedef IntegerValues = $Shared07;
+typedef IntegerValues = $Shared06;
 
 /// Represents an interaction between a user and an item.
 class Interaction {

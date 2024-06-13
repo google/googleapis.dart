@@ -1414,7 +1414,7 @@ class BitbucketDataCenterConfig {
   /// The URI of the Bitbucket Data Center instance or cluster this connection
   /// is for.
   ///
-  /// Optional.
+  /// Required.
   core.String? hostUri;
 
   /// A http access token with the `REPO_READ` access.
