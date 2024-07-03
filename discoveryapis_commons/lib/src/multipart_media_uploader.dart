@@ -55,9 +55,7 @@ class MultipartMediaUploader {
     Future.microtask(() async {
       try {
         await bodyController.addStream(
-          _uploadMedia.stream
-              .transform(_base64Encoder)
-              .transform(ascii.encoder),
+          _base64Encoder.bind(_uploadMedia.stream).transform(ascii.encoder),
         );
         bodyController.add(ascii.encode(bodyTail));
       } catch (e, stack) {

@@ -5,6 +5,7 @@
 import 'dart:async';
 import 'dart:convert' hide Base64Encoder;
 import 'dart:convert';
+import 'dart:typed_data';
 
 import 'package:_discoveryapis_commons/src/api_requester.dart';
 import 'package:_discoveryapis_commons/src/multipart_media_uploader.dart';
@@ -405,10 +406,10 @@ void main() {
     // Tests for media uploads
 
     group('media-upload', () {
-      Stream<List<int>> streamFromByteArrays(List<List<int>> byteArrays) {
-        final controller = StreamController<List<int>>();
+      Stream<Uint8List> streamFromByteArrays(List<List<int>> byteArrays) {
+        final controller = StreamController<Uint8List>();
         for (var array in byteArrays) {
-          controller.add(array);
+          controller.add(Uint8List.fromList(array));
         }
         controller.close();
         return controller.stream;

@@ -1,6 +1,7 @@
-## 1.0.7-wip
+## 1.0.7
 
 - Require Dart 3.4 or later.
+- Support streaming media from `Stream<Uint8List>`.
 
 ## 1.0.6
 
