@@ -33,9 +33,9 @@ class ApiRequester {
   /// [body] and/or [uploadMedia] in the request.
   ///
   /// If [uploadMedia] was specified [downloadOptions] must be
-  /// [client_requests.DownloadOptions.Metadata] or `null`.
+  /// [client_requests.DownloadOptions]`.Metadata` or `null`.
   ///
-  /// If [downloadOptions] is [client_requests.DownloadOptions.Metadata] the
+  /// If [downloadOptions] is [client_requests.DownloadOptions]`.Metadata` the
   /// result will be decoded as JSON.
   ///
   /// If [downloadOptions] is `null` the result will be a Future completing with
