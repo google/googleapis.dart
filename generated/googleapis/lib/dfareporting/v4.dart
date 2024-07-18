@@ -12617,7 +12617,9 @@ class Ad {
                   as core.Map<core.String, core.dynamic>)
               : null,
           dynamicClickTracker: json_['dynamicClickTracker'] as core.bool?,
-          endTime: json_['endTime'] as core.DateTime?,
+          endTime: json_.containsKey('endTime')
+              ? core.DateTime.parse(json_['endTime'] as core.String)
+              : null,
           eventTagOverrides: json_.containsKey('eventTagOverrides')
               ? (json_['eventTagOverrides'] as core.List)
                   .map((value) => EventTagOverride.fromJson(
@@ -12667,7 +12669,9 @@ class Ad {
               : null,
           sslCompliant: json_['sslCompliant'] as core.bool?,
           sslRequired: json_['sslRequired'] as core.bool?,
-          startTime: json_['startTime'] as core.DateTime?,
+          startTime: json_.containsKey('startTime')
+              ? core.DateTime.parse(json_['startTime'] as core.String)
+              : null,
           subaccountId: json_['subaccountId'] as core.String?,
           targetingTemplateId: json_['targetingTemplateId'] as core.String?,
           technologyTargeting: json_.containsKey('technologyTargeting')
@@ -14056,7 +14060,9 @@ class Campaign {
                           as core.Map<core.String, core.dynamic>)
                   : null,
           defaultLandingPageId: json_['defaultLandingPageId'] as core.String?,
-          endDate: json_['endDate'] as core.DateTime?,
+          endDate: json_.containsKey('endDate')
+              ? core.DateTime.parse(json_['endDate'] as core.String)
+              : null,
           eventTagOverrides: json_.containsKey('eventTagOverrides')
               ? (json_['eventTagOverrides'] as core.List)
                   .map((value) => EventTagOverride.fromJson(
@@ -14080,7 +14086,9 @@ class Campaign {
                       as core.Map<core.String, core.dynamic>)
               : null,
           name: json_['name'] as core.String?,
-          startDate: json_['startDate'] as core.DateTime?,
+          startDate: json_.containsKey('startDate')
+              ? core.DateTime.parse(json_['startDate'] as core.String)
+              : null,
           subaccountId: json_['subaccountId'] as core.String?,
         );
 
@@ -14356,7 +14364,9 @@ class ChangeLog {
       : this(
           accountId: json_['accountId'] as core.String?,
           action: json_['action'] as core.String?,
-          changeTime: json_['changeTime'] as core.DateTime?,
+          changeTime: json_.containsKey('changeTime')
+              ? core.DateTime.parse(json_['changeTime'] as core.String)
+              : null,
           fieldName: json_['fieldName'] as core.String?,
           id: json_['id'] as core.String?,
           kind: json_['kind'] as core.String?,
@@ -17384,7 +17394,9 @@ class CreativeAssignment {
                   ? DimensionValue.fromJson(json_['creativeIdDimensionValue']
                       as core.Map<core.String, core.dynamic>)
                   : null,
-          endTime: json_['endTime'] as core.DateTime?,
+          endTime: json_.containsKey('endTime')
+              ? core.DateTime.parse(json_['endTime'] as core.String)
+              : null,
           richMediaExitOverrides: json_.containsKey('richMediaExitOverrides')
               ? (json_['richMediaExitOverrides'] as core.List)
                   .map((value) => RichMediaExitOverride.fromJson(
@@ -17393,7 +17405,9 @@ class CreativeAssignment {
               : null,
           sequence: json_['sequence'] as core.int?,
           sslCompliant: json_['sslCompliant'] as core.bool?,
-          startTime: json_['startTime'] as core.DateTime?,
+          startTime: json_.containsKey('startTime')
+              ? core.DateTime.parse(json_['startTime'] as core.String)
+              : null,
           weight: json_['weight'] as core.int?,
         );
 
@@ -18441,10 +18455,14 @@ class DateRange {
 
   DateRange.fromJson(core.Map json_)
       : this(
-          endDate: json_['endDate'] as core.DateTime?,
+          endDate: json_.containsKey('endDate')
+              ? core.DateTime.parse(json_['endDate'] as core.String)
+              : null,
           kind: json_['kind'] as core.String?,
           relativeDateRange: json_['relativeDateRange'] as core.String?,
-          startDate: json_['startDate'] as core.DateTime?,
+          startDate: json_.containsKey('startDate')
+              ? core.DateTime.parse(json_['startDate'] as core.String)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -18850,7 +18868,9 @@ class DimensionValueRequest {
   DimensionValueRequest.fromJson(core.Map json_)
       : this(
           dimensionName: json_['dimensionName'] as core.String?,
-          endDate: json_['endDate'] as core.DateTime?,
+          endDate: json_.containsKey('endDate')
+              ? core.DateTime.parse(json_['endDate'] as core.String)
+              : null,
           filters: json_.containsKey('filters')
               ? (json_['filters'] as core.List)
                   .map((value) => DimensionFilter.fromJson(
@@ -18858,7 +18878,9 @@ class DimensionValueRequest {
                   .toList()
               : null,
           kind: json_['kind'] as core.String?,
-          startDate: json_['startDate'] as core.DateTime?,
+          startDate: json_.containsKey('startDate')
+              ? core.DateTime.parse(json_['startDate'] as core.String)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -19711,9 +19733,13 @@ class Flight {
 
   Flight.fromJson(core.Map json_)
       : this(
-          endDate: json_['endDate'] as core.DateTime?,
+          endDate: json_.containsKey('endDate')
+              ? core.DateTime.parse(json_['endDate'] as core.String)
+              : null,
           rateOrCost: json_['rateOrCost'] as core.String?,
-          startDate: json_['startDate'] as core.DateTime?,
+          startDate: json_.containsKey('startDate')
+              ? core.DateTime.parse(json_['startDate'] as core.String)
+              : null,
           units: json_['units'] as core.String?,
         );
 
@@ -24433,7 +24459,9 @@ class Pricing {
   Pricing.fromJson(core.Map json_)
       : this(
           capCostType: json_['capCostType'] as core.String?,
-          endDate: json_['endDate'] as core.DateTime?,
+          endDate: json_.containsKey('endDate')
+              ? core.DateTime.parse(json_['endDate'] as core.String)
+              : null,
           flights: json_.containsKey('flights')
               ? (json_['flights'] as core.List)
                   .map((value) => Flight.fromJson(
@@ -24442,7 +24470,9 @@ class Pricing {
               : null,
           groupType: json_['groupType'] as core.String?,
           pricingType: json_['pricingType'] as core.String?,
-          startDate: json_['startDate'] as core.DateTime?,
+          startDate: json_.containsKey('startDate')
+              ? core.DateTime.parse(json_['startDate'] as core.String)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -24511,7 +24541,9 @@ class PricingSchedule {
   PricingSchedule.fromJson(core.Map json_)
       : this(
           capCostOption: json_['capCostOption'] as core.String?,
-          endDate: json_['endDate'] as core.DateTime?,
+          endDate: json_.containsKey('endDate')
+              ? core.DateTime.parse(json_['endDate'] as core.String)
+              : null,
           flighted: json_['flighted'] as core.bool?,
           floodlightActivityId: json_['floodlightActivityId'] as core.String?,
           pricingPeriods: json_.containsKey('pricingPeriods')
@@ -24521,8 +24553,12 @@ class PricingSchedule {
                   .toList()
               : null,
           pricingType: json_['pricingType'] as core.String?,
-          startDate: json_['startDate'] as core.DateTime?,
-          testingStartDate: json_['testingStartDate'] as core.DateTime?,
+          startDate: json_.containsKey('startDate')
+              ? core.DateTime.parse(json_['startDate'] as core.String)
+              : null,
+          testingStartDate: json_.containsKey('testingStartDate')
+              ? core.DateTime.parse(json_['testingStartDate'] as core.String)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -24573,10 +24609,14 @@ class PricingSchedulePricingPeriod {
 
   PricingSchedulePricingPeriod.fromJson(core.Map json_)
       : this(
-          endDate: json_['endDate'] as core.DateTime?,
+          endDate: json_.containsKey('endDate')
+              ? core.DateTime.parse(json_['endDate'] as core.String)
+              : null,
           pricingComment: json_['pricingComment'] as core.String?,
           rateOrCostNanos: json_['rateOrCostNanos'] as core.String?,
-          startDate: json_['startDate'] as core.DateTime?,
+          startDate: json_.containsKey('startDate')
+              ? core.DateTime.parse(json_['startDate'] as core.String)
+              : null,
           units: json_['units'] as core.String?,
         );
 
@@ -24710,7 +24750,9 @@ class Project {
           budget: json_['budget'] as core.String?,
           clientBillingCode: json_['clientBillingCode'] as core.String?,
           clientName: json_['clientName'] as core.String?,
-          endDate: json_['endDate'] as core.DateTime?,
+          endDate: json_.containsKey('endDate')
+              ? core.DateTime.parse(json_['endDate'] as core.String)
+              : null,
           id: json_['id'] as core.String?,
           kind: json_['kind'] as core.String?,
           lastModifiedInfo: json_.containsKey('lastModifiedInfo')
@@ -24719,7 +24761,9 @@ class Project {
               : null,
           name: json_['name'] as core.String?,
           overview: json_['overview'] as core.String?,
-          startDate: json_['startDate'] as core.DateTime?,
+          startDate: json_.containsKey('startDate')
+              ? core.DateTime.parse(json_['startDate'] as core.String)
+              : null,
           subaccountId: json_['subaccountId'] as core.String?,
           targetClicks: json_['targetClicks'] as core.String?,
           targetConversions: json_['targetConversions'] as core.String?,
@@ -26137,7 +26181,9 @@ class ReportSchedule {
       : this(
           active: json_['active'] as core.bool?,
           every: json_['every'] as core.int?,
-          expirationDate: json_['expirationDate'] as core.DateTime?,
+          expirationDate: json_.containsKey('expirationDate')
+              ? core.DateTime.parse(json_['expirationDate'] as core.String)
+              : null,
           repeats: json_['repeats'] as core.String?,
           repeatsOnWeekDays: json_.containsKey('repeatsOnWeekDays')
               ? (json_['repeatsOnWeekDays'] as core.List)
@@ -26145,7 +26191,9 @@ class ReportSchedule {
                   .toList()
               : null,
           runsOnDayOfMonth: json_['runsOnDayOfMonth'] as core.String?,
-          startDate: json_['startDate'] as core.DateTime?,
+          startDate: json_.containsKey('startDate')
+              ? core.DateTime.parse(json_['startDate'] as core.String)
+              : null,
           timezone: json_['timezone'] as core.String?,
         );
 

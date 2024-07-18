@@ -4968,14 +4968,18 @@ class AnywhereCache {
           admissionPolicy: json_['admissionPolicy'] as core.String?,
           anywhereCacheId: json_['anywhereCacheId'] as core.String?,
           bucket: json_['bucket'] as core.String?,
-          createTime: json_['createTime'] as core.DateTime?,
+          createTime: json_.containsKey('createTime')
+              ? core.DateTime.parse(json_['createTime'] as core.String)
+              : null,
           id: json_['id'] as core.String?,
           kind: json_['kind'] as core.String?,
           pendingUpdate: json_['pendingUpdate'] as core.bool?,
           selfLink: json_['selfLink'] as core.String?,
           state: json_['state'] as core.String?,
           ttl: json_['ttl'] as core.String?,
-          updateTime: json_['updateTime'] as core.DateTime?,
+          updateTime: json_.containsKey('updateTime')
+              ? core.DateTime.parse(json_['updateTime'] as core.String)
+              : null,
           zone: json_['zone'] as core.String?,
         );
 
@@ -5069,8 +5073,13 @@ class BucketAutoclass {
           enabled: json_['enabled'] as core.bool?,
           terminalStorageClass: json_['terminalStorageClass'] as core.String?,
           terminalStorageClassUpdateTime:
-              json_['terminalStorageClassUpdateTime'] as core.DateTime?,
-          toggleTime: json_['toggleTime'] as core.DateTime?,
+              json_.containsKey('terminalStorageClassUpdateTime')
+                  ? core.DateTime.parse(
+                      json_['terminalStorageClassUpdateTime'] as core.String)
+                  : null,
+          toggleTime: json_.containsKey('toggleTime')
+              ? core.DateTime.parse(json_['toggleTime'] as core.String)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5245,7 +5254,9 @@ class BucketIamConfigurationBucketPolicyOnly {
   BucketIamConfigurationBucketPolicyOnly.fromJson(core.Map json_)
       : this(
           enabled: json_['enabled'] as core.bool?,
-          lockedTime: json_['lockedTime'] as core.DateTime?,
+          lockedTime: json_.containsKey('lockedTime')
+              ? core.DateTime.parse(json_['lockedTime'] as core.String)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5276,7 +5287,9 @@ class BucketIamConfigurationUniformBucketLevelAccess {
   BucketIamConfigurationUniformBucketLevelAccess.fromJson(core.Map json_)
       : this(
           enabled: json_['enabled'] as core.bool?,
-          lockedTime: json_['lockedTime'] as core.DateTime?,
+          lockedTime: json_.containsKey('lockedTime')
+              ? core.DateTime.parse(json_['lockedTime'] as core.String)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5470,8 +5483,12 @@ class BucketLifecycleRuleCondition {
   BucketLifecycleRuleCondition.fromJson(core.Map json_)
       : this(
           age: json_['age'] as core.int?,
-          createdBefore: json_['createdBefore'] as core.DateTime?,
-          customTimeBefore: json_['customTimeBefore'] as core.DateTime?,
+          createdBefore: json_.containsKey('createdBefore')
+              ? core.DateTime.parse(json_['createdBefore'] as core.String)
+              : null,
+          customTimeBefore: json_.containsKey('customTimeBefore')
+              ? core.DateTime.parse(json_['customTimeBefore'] as core.String)
+              : null,
           daysSinceCustomTime: json_['daysSinceCustomTime'] as core.int?,
           daysSinceNoncurrentTime:
               json_['daysSinceNoncurrentTime'] as core.int?,
@@ -5492,7 +5509,10 @@ class BucketLifecycleRuleCondition {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          noncurrentTimeBefore: json_['noncurrentTimeBefore'] as core.DateTime?,
+          noncurrentTimeBefore: json_.containsKey('noncurrentTimeBefore')
+              ? core.DateTime.parse(
+                  json_['noncurrentTimeBefore'] as core.String)
+              : null,
           numNewerVersions: json_['numNewerVersions'] as core.int?,
         );
 
@@ -5687,7 +5707,9 @@ class BucketRetentionPolicy {
 
   BucketRetentionPolicy.fromJson(core.Map json_)
       : this(
-          effectiveTime: json_['effectiveTime'] as core.DateTime?,
+          effectiveTime: json_.containsKey('effectiveTime')
+              ? core.DateTime.parse(json_['effectiveTime'] as core.String)
+              : null,
           isLocked: json_['isLocked'] as core.bool?,
           retentionPeriod: json_['retentionPeriod'] as core.String?,
         );
@@ -5720,7 +5742,9 @@ class BucketSoftDeletePolicy {
 
   BucketSoftDeletePolicy.fromJson(core.Map json_)
       : this(
-          effectiveTime: json_['effectiveTime'] as core.DateTime?,
+          effectiveTime: json_.containsKey('effectiveTime')
+              ? core.DateTime.parse(json_['effectiveTime'] as core.String)
+              : null,
           retentionDurationSeconds:
               json_['retentionDurationSeconds'] as core.String?,
         );
@@ -6064,8 +6088,12 @@ class Bucket {
                   as core.Map<core.String, core.dynamic>)
               : null,
           storageClass: json_['storageClass'] as core.String?,
-          timeCreated: json_['timeCreated'] as core.DateTime?,
-          updated: json_['updated'] as core.DateTime?,
+          timeCreated: json_.containsKey('timeCreated')
+              ? core.DateTime.parse(json_['timeCreated'] as core.String)
+              : null,
+          updated: json_.containsKey('updated')
+              ? core.DateTime.parse(json_['updated'] as core.String)
+              : null,
           versioning: json_.containsKey('versioning')
               ? BucketVersioning.fromJson(
                   json_['versioning'] as core.Map<core.String, core.dynamic>)
@@ -6466,9 +6494,14 @@ class BulkRestoreObjectsRequest {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          softDeletedAfterTime: json_['softDeletedAfterTime'] as core.DateTime?,
-          softDeletedBeforeTime:
-              json_['softDeletedBeforeTime'] as core.DateTime?,
+          softDeletedAfterTime: json_.containsKey('softDeletedAfterTime')
+              ? core.DateTime.parse(
+                  json_['softDeletedAfterTime'] as core.String)
+              : null,
+          softDeletedBeforeTime: json_.containsKey('softDeletedBeforeTime')
+              ? core.DateTime.parse(
+                  json_['softDeletedBeforeTime'] as core.String)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6802,7 +6835,9 @@ class Folder {
   Folder.fromJson(core.Map json_)
       : this(
           bucket: json_['bucket'] as core.String?,
-          createTime: json_['createTime'] as core.DateTime?,
+          createTime: json_.containsKey('createTime')
+              ? core.DateTime.parse(json_['createTime'] as core.String)
+              : null,
           id: json_['id'] as core.String?,
           kind: json_['kind'] as core.String?,
           metageneration: json_['metageneration'] as core.String?,
@@ -6812,7 +6847,9 @@ class Folder {
                   as core.Map<core.String, core.dynamic>)
               : null,
           selfLink: json_['selfLink'] as core.String?,
-          updateTime: json_['updateTime'] as core.DateTime?,
+          updateTime: json_.containsKey('updateTime')
+              ? core.DateTime.parse(json_['updateTime'] as core.String)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7122,8 +7159,12 @@ class HmacKeyMetadata {
           selfLink: json_['selfLink'] as core.String?,
           serviceAccountEmail: json_['serviceAccountEmail'] as core.String?,
           state: json_['state'] as core.String?,
-          timeCreated: json_['timeCreated'] as core.DateTime?,
-          updated: json_['updated'] as core.DateTime?,
+          timeCreated: json_.containsKey('timeCreated')
+              ? core.DateTime.parse(json_['timeCreated'] as core.String)
+              : null,
+          updated: json_.containsKey('updated')
+              ? core.DateTime.parse(json_['updated'] as core.String)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7230,13 +7271,17 @@ class ManagedFolder {
   ManagedFolder.fromJson(core.Map json_)
       : this(
           bucket: json_['bucket'] as core.String?,
-          createTime: json_['createTime'] as core.DateTime?,
+          createTime: json_.containsKey('createTime')
+              ? core.DateTime.parse(json_['createTime'] as core.String)
+              : null,
           id: json_['id'] as core.String?,
           kind: json_['kind'] as core.String?,
           metageneration: json_['metageneration'] as core.String?,
           name: json_['name'] as core.String?,
           selfLink: json_['selfLink'] as core.String?,
-          updateTime: json_['updateTime'] as core.DateTime?,
+          updateTime: json_.containsKey('updateTime')
+              ? core.DateTime.parse(json_['updateTime'] as core.String)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7486,7 +7531,9 @@ class ObjectRetention {
   ObjectRetention.fromJson(core.Map json_)
       : this(
           mode: json_['mode'] as core.String?,
-          retainUntilTime: json_['retainUntilTime'] as core.DateTime?,
+          retainUntilTime: json_.containsKey('retainUntilTime')
+              ? core.DateTime.parse(json_['retainUntilTime'] as core.String)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7729,7 +7776,9 @@ class Object {
           contentLanguage: json_['contentLanguage'] as core.String?,
           contentType: json_['contentType'] as core.String?,
           crc32c: json_['crc32c'] as core.String?,
-          customTime: json_['customTime'] as core.DateTime?,
+          customTime: json_.containsKey('customTime')
+              ? core.DateTime.parse(json_['customTime'] as core.String)
+              : null,
           customerEncryption: json_.containsKey('customerEncryption')
               ? ObjectCustomerEncryption.fromJson(json_['customerEncryption']
                   as core.Map<core.String, core.dynamic>)
@@ -7737,7 +7786,9 @@ class Object {
           etag: json_['etag'] as core.String?,
           eventBasedHold: json_['eventBasedHold'] as core.bool?,
           generation: json_['generation'] as core.String?,
-          hardDeleteTime: json_['hardDeleteTime'] as core.DateTime?,
+          hardDeleteTime: json_.containsKey('hardDeleteTime')
+              ? core.DateTime.parse(json_['hardDeleteTime'] as core.String)
+              : null,
           id: json_['id'] as core.String?,
           kind: json_['kind'] as core.String?,
           kmsKeyName: json_['kmsKeyName'] as core.String?,
@@ -7761,18 +7812,30 @@ class Object {
               ? ObjectRetention.fromJson(
                   json_['retention'] as core.Map<core.String, core.dynamic>)
               : null,
-          retentionExpirationTime:
-              json_['retentionExpirationTime'] as core.DateTime?,
+          retentionExpirationTime: json_.containsKey('retentionExpirationTime')
+              ? core.DateTime.parse(
+                  json_['retentionExpirationTime'] as core.String)
+              : null,
           selfLink: json_['selfLink'] as core.String?,
           size: json_['size'] as core.String?,
-          softDeleteTime: json_['softDeleteTime'] as core.DateTime?,
+          softDeleteTime: json_.containsKey('softDeleteTime')
+              ? core.DateTime.parse(json_['softDeleteTime'] as core.String)
+              : null,
           storageClass: json_['storageClass'] as core.String?,
           temporaryHold: json_['temporaryHold'] as core.bool?,
-          timeCreated: json_['timeCreated'] as core.DateTime?,
-          timeDeleted: json_['timeDeleted'] as core.DateTime?,
-          timeStorageClassUpdated:
-              json_['timeStorageClassUpdated'] as core.DateTime?,
-          updated: json_['updated'] as core.DateTime?,
+          timeCreated: json_.containsKey('timeCreated')
+              ? core.DateTime.parse(json_['timeCreated'] as core.String)
+              : null,
+          timeDeleted: json_.containsKey('timeDeleted')
+              ? core.DateTime.parse(json_['timeDeleted'] as core.String)
+              : null,
+          timeStorageClassUpdated: json_.containsKey('timeStorageClassUpdated')
+              ? core.DateTime.parse(
+                  json_['timeStorageClassUpdated'] as core.String)
+              : null,
+          updated: json_.containsKey('updated')
+              ? core.DateTime.parse(json_['updated'] as core.String)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

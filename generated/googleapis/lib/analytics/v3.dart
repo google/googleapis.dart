@@ -4999,7 +4999,9 @@ class Account {
               ? AccountChildLink.fromJson(
                   json_['childLink'] as core.Map<core.String, core.dynamic>)
               : null,
-          created: json_['created'] as core.DateTime?,
+          created: json_.containsKey('created')
+              ? core.DateTime.parse(json_['created'] as core.String)
+              : null,
           id: json_['id'] as core.String?,
           kind: json_['kind'] as core.String?,
           name: json_['name'] as core.String?,
@@ -5009,7 +5011,9 @@ class Account {
               : null,
           selfLink: json_['selfLink'] as core.String?,
           starred: json_['starred'] as core.bool?,
-          updated: json_['updated'] as core.DateTime?,
+          updated: json_.containsKey('updated')
+              ? core.DateTime.parse(json_['updated'] as core.String)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5703,7 +5707,9 @@ class CustomDataSource {
               ? CustomDataSourceChildLink.fromJson(
                   json_['childLink'] as core.Map<core.String, core.dynamic>)
               : null,
-          created: json_['created'] as core.DateTime?,
+          created: json_.containsKey('created')
+              ? core.DateTime.parse(json_['created'] as core.String)
+              : null,
           description: json_['description'] as core.String?,
           id: json_['id'] as core.String?,
           importBehavior: json_['importBehavior'] as core.String?,
@@ -5725,7 +5731,9 @@ class CustomDataSource {
               : null,
           selfLink: json_['selfLink'] as core.String?,
           type: json_['type'] as core.String?,
-          updated: json_['updated'] as core.DateTime?,
+          updated: json_.containsKey('updated')
+              ? core.DateTime.parse(json_['updated'] as core.String)
+              : null,
           uploadType: json_['uploadType'] as core.String?,
           webPropertyId: json_['webPropertyId'] as core.String?,
         );
@@ -5915,7 +5923,9 @@ class CustomDimension {
       : this(
           accountId: json_['accountId'] as core.String?,
           active: json_['active'] as core.bool?,
-          created: json_['created'] as core.DateTime?,
+          created: json_.containsKey('created')
+              ? core.DateTime.parse(json_['created'] as core.String)
+              : null,
           id: json_['id'] as core.String?,
           index: json_['index'] as core.int?,
           kind: json_['kind'] as core.String?,
@@ -5926,7 +5936,9 @@ class CustomDimension {
               : null,
           scope: json_['scope'] as core.String?,
           selfLink: json_['selfLink'] as core.String?,
-          updated: json_['updated'] as core.DateTime?,
+          updated: json_.containsKey('updated')
+              ? core.DateTime.parse(json_['updated'] as core.String)
+              : null,
           webPropertyId: json_['webPropertyId'] as core.String?,
         );
 
@@ -6124,7 +6136,9 @@ class CustomMetric {
       : this(
           accountId: json_['accountId'] as core.String?,
           active: json_['active'] as core.bool?,
-          created: json_['created'] as core.DateTime?,
+          created: json_.containsKey('created')
+              ? core.DateTime.parse(json_['created'] as core.String)
+              : null,
           id: json_['id'] as core.String?,
           index: json_['index'] as core.int?,
           kind: json_['kind'] as core.String?,
@@ -6138,7 +6152,9 @@ class CustomMetric {
           scope: json_['scope'] as core.String?,
           selfLink: json_['selfLink'] as core.String?,
           type: json_['type'] as core.String?,
-          updated: json_['updated'] as core.DateTime?,
+          updated: json_.containsKey('updated')
+              ? core.DateTime.parse(json_['updated'] as core.String)
+              : null,
           webPropertyId: json_['webPropertyId'] as core.String?,
         );
 
@@ -6907,10 +6923,14 @@ class Experiment {
   Experiment.fromJson(core.Map json_)
       : this(
           accountId: json_['accountId'] as core.String?,
-          created: json_['created'] as core.DateTime?,
+          created: json_.containsKey('created')
+              ? core.DateTime.parse(json_['created'] as core.String)
+              : null,
           description: json_['description'] as core.String?,
           editableInGaUi: json_['editableInGaUi'] as core.bool?,
-          endTime: json_['endTime'] as core.DateTime?,
+          endTime: json_.containsKey('endTime')
+              ? core.DateTime.parse(json_['endTime'] as core.String)
+              : null,
           equalWeighting: json_['equalWeighting'] as core.bool?,
           id: json_['id'] as core.String?,
           internalWebPropertyId: json_['internalWebPropertyId'] as core.String?,
@@ -6931,10 +6951,14 @@ class Experiment {
           selfLink: json_['selfLink'] as core.String?,
           servingFramework: json_['servingFramework'] as core.String?,
           snippet: json_['snippet'] as core.String?,
-          startTime: json_['startTime'] as core.DateTime?,
+          startTime: json_.containsKey('startTime')
+              ? core.DateTime.parse(json_['startTime'] as core.String)
+              : null,
           status: json_['status'] as core.String?,
           trafficCoverage: (json_['trafficCoverage'] as core.num?)?.toDouble(),
-          updated: json_['updated'] as core.DateTime?,
+          updated: json_.containsKey('updated')
+              ? core.DateTime.parse(json_['updated'] as core.String)
+              : null,
           variations: json_.containsKey('variations')
               ? (json_['variations'] as core.List)
                   .map((value) => ExperimentVariations.fromJson(
@@ -7364,7 +7388,9 @@ class Filter {
               ? FilterAdvancedDetails.fromJson(json_['advancedDetails']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          created: json_['created'] as core.DateTime?,
+          created: json_.containsKey('created')
+              ? core.DateTime.parse(json_['created'] as core.String)
+              : null,
           excludeDetails: json_.containsKey('excludeDetails')
               ? FilterExpression.fromJson(json_['excludeDetails']
                   as core.Map<core.String, core.dynamic>)
@@ -7391,7 +7417,9 @@ class Filter {
               : null,
           selfLink: json_['selfLink'] as core.String?,
           type: json_['type'] as core.String?,
-          updated: json_['updated'] as core.DateTime?,
+          updated: json_.containsKey('updated')
+              ? core.DateTime.parse(json_['updated'] as core.String)
+              : null,
           uppercaseDetails: json_.containsKey('uppercaseDetails')
               ? FilterUppercaseDetails.fromJson(json_['uppercaseDetails']
                   as core.Map<core.String, core.dynamic>)
@@ -8434,7 +8462,9 @@ class Goal {
       : this(
           accountId: json_['accountId'] as core.String?,
           active: json_['active'] as core.bool?,
-          created: json_['created'] as core.DateTime?,
+          created: json_.containsKey('created')
+              ? core.DateTime.parse(json_['created'] as core.String)
+              : null,
           eventDetails: json_.containsKey('eventDetails')
               ? GoalEventDetails.fromJson(
                   json_['eventDetails'] as core.Map<core.String, core.dynamic>)
@@ -8450,7 +8480,9 @@ class Goal {
           profileId: json_['profileId'] as core.String?,
           selfLink: json_['selfLink'] as core.String?,
           type: json_['type'] as core.String?,
-          updated: json_['updated'] as core.DateTime?,
+          updated: json_.containsKey('updated')
+              ? core.DateTime.parse(json_['updated'] as core.String)
+              : null,
           urlDestinationDetails: json_.containsKey('urlDestinationDetails')
               ? GoalUrlDestinationDetails.fromJson(
                   json_['urlDestinationDetails']
@@ -9362,7 +9394,9 @@ class Profile {
               ? ProfileChildLink.fromJson(
                   json_['childLink'] as core.Map<core.String, core.dynamic>)
               : null,
-          created: json_['created'] as core.DateTime?,
+          created: json_.containsKey('created')
+              ? core.DateTime.parse(json_['created'] as core.String)
+              : null,
           currency: json_['currency'] as core.String?,
           defaultPage: json_['defaultPage'] as core.String?,
           eCommerceTracking: json_['eCommerceTracking'] as core.bool?,
@@ -9394,7 +9428,9 @@ class Profile {
               json_['stripSiteSearchQueryParameters'] as core.bool?,
           timezone: json_['timezone'] as core.String?,
           type: json_['type'] as core.String?,
-          updated: json_['updated'] as core.DateTime?,
+          updated: json_.containsKey('updated')
+              ? core.DateTime.parse(json_['updated'] as core.String)
+              : null,
           webPropertyId: json_['webPropertyId'] as core.String?,
           websiteUrl: json_['websiteUrl'] as core.String?,
         );
@@ -10169,7 +10205,9 @@ class RemarketingAudience {
                       as core.Map<core.String, core.dynamic>)
               : null,
           audienceType: json_['audienceType'] as core.String?,
-          created: json_['created'] as core.DateTime?,
+          created: json_.containsKey('created')
+              ? core.DateTime.parse(json_['created'] as core.String)
+              : null,
           description: json_['description'] as core.String?,
           id: json_['id'] as core.String?,
           internalWebPropertyId: json_['internalWebPropertyId'] as core.String?,
@@ -10192,7 +10230,9 @@ class RemarketingAudience {
                       json_['stateBasedAudienceDefinition']
                           as core.Map<core.String, core.dynamic>)
                   : null,
-          updated: json_['updated'] as core.DateTime?,
+          updated: json_.containsKey('updated')
+              ? core.DateTime.parse(json_['updated'] as core.String)
+              : null,
           webPropertyId: json_['webPropertyId'] as core.String?,
         );
 
@@ -10340,7 +10380,9 @@ class Segment {
 
   Segment.fromJson(core.Map json_)
       : this(
-          created: json_['created'] as core.DateTime?,
+          created: json_.containsKey('created')
+              ? core.DateTime.parse(json_['created'] as core.String)
+              : null,
           definition: json_['definition'] as core.String?,
           id: json_['id'] as core.String?,
           kind: json_['kind'] as core.String?,
@@ -10348,7 +10390,9 @@ class Segment {
           segmentId: json_['segmentId'] as core.String?,
           selfLink: json_['selfLink'] as core.String?,
           type: json_['type'] as core.String?,
-          updated: json_['updated'] as core.DateTime?,
+          updated: json_.containsKey('updated')
+              ? core.DateTime.parse(json_['updated'] as core.String)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10581,7 +10625,9 @@ class UnsampledReport {
                       json_['cloudStorageDownloadDetails']
                           as core.Map<core.String, core.dynamic>)
                   : null,
-          created: json_['created'] as core.DateTime?,
+          created: json_.containsKey('created')
+              ? core.DateTime.parse(json_['created'] as core.String)
+              : null,
           dimensions: json_['dimensions'] as core.String?,
           downloadType: json_['downloadType'] as core.String?,
           driveDownloadDetails: json_.containsKey('driveDownloadDetails')
@@ -10600,7 +10646,9 @@ class UnsampledReport {
           startDate: json_['start-date'] as core.String?,
           status: json_['status'] as core.String?,
           title: json_['title'] as core.String?,
-          updated: json_['updated'] as core.DateTime?,
+          updated: json_.containsKey('updated')
+              ? core.DateTime.parse(json_['updated'] as core.String)
+              : null,
           webPropertyId: json_['webPropertyId'] as core.String?,
         );
 
@@ -10753,7 +10801,9 @@ class Upload {
           id: json_['id'] as core.String?,
           kind: json_['kind'] as core.String?,
           status: json_['status'] as core.String?,
-          uploadTime: json_['uploadTime'] as core.DateTime?,
+          uploadTime: json_.containsKey('uploadTime')
+              ? core.DateTime.parse(json_['uploadTime'] as core.String)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10895,7 +10945,9 @@ class UserDeletionRequest {
 
   UserDeletionRequest.fromJson(core.Map json_)
       : this(
-          deletionRequestTime: json_['deletionRequestTime'] as core.DateTime?,
+          deletionRequestTime: json_.containsKey('deletionRequestTime')
+              ? core.DateTime.parse(json_['deletionRequestTime'] as core.String)
+              : null,
           firebaseProjectId: json_['firebaseProjectId'] as core.String?,
           id: json_.containsKey('id')
               ? UserDeletionRequestId.fromJson(
@@ -11328,7 +11380,9 @@ class Webproperty {
               ? WebpropertyChildLink.fromJson(
                   json_['childLink'] as core.Map<core.String, core.dynamic>)
               : null,
-          created: json_['created'] as core.DateTime?,
+          created: json_.containsKey('created')
+              ? core.DateTime.parse(json_['created'] as core.String)
+              : null,
           dataRetentionResetOnNewActivity:
               json_['dataRetentionResetOnNewActivity'] as core.bool?,
           dataRetentionTtl: json_['dataRetentionTtl'] as core.String?,
@@ -11350,7 +11404,9 @@ class Webproperty {
           profileCount: json_['profileCount'] as core.int?,
           selfLink: json_['selfLink'] as core.String?,
           starred: json_['starred'] as core.bool?,
-          updated: json_['updated'] as core.DateTime?,
+          updated: json_.containsKey('updated')
+              ? core.DateTime.parse(json_['updated'] as core.String)
+              : null,
           websiteUrl: json_['websiteUrl'] as core.String?,
         );
 

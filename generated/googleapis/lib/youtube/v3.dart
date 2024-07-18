@@ -6669,7 +6669,9 @@ class ActivitySnippet {
           channelTitle: json_['channelTitle'] as core.String?,
           description: json_['description'] as core.String?,
           groupId: json_['groupId'] as core.String?,
-          publishedAt: json_['publishedAt'] as core.DateTime?,
+          publishedAt: json_.containsKey('publishedAt')
+              ? core.DateTime.parse(json_['publishedAt'] as core.String)
+              : null,
           thumbnails: json_.containsKey('thumbnails')
               ? ThumbnailDetails.fromJson(
                   json_['thumbnails'] as core.Map<core.String, core.dynamic>)
@@ -6904,7 +6906,9 @@ class CaptionSnippet {
           isEasyReader: json_['isEasyReader'] as core.bool?,
           isLarge: json_['isLarge'] as core.bool?,
           language: json_['language'] as core.String?,
-          lastUpdated: json_['lastUpdated'] as core.DateTime?,
+          lastUpdated: json_.containsKey('lastUpdated')
+              ? core.DateTime.parse(json_['lastUpdated'] as core.String)
+              : null,
           name: json_['name'] as core.String?,
           status: json_['status'] as core.String?,
           trackKind: json_['trackKind'] as core.String?,
@@ -7370,7 +7374,9 @@ class ChannelContentOwnerDetails {
   ChannelContentOwnerDetails.fromJson(core.Map json_)
       : this(
           contentOwner: json_['contentOwner'] as core.String?,
-          timeLinked: json_['timeLinked'] as core.DateTime?,
+          timeLinked: json_.containsKey('timeLinked')
+              ? core.DateTime.parse(json_['timeLinked'] as core.String)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8118,7 +8124,9 @@ class ChannelSnippet {
               ? ChannelLocalization.fromJson(
                   json_['localized'] as core.Map<core.String, core.dynamic>)
               : null,
-          publishedAt: json_['publishedAt'] as core.DateTime?,
+          publishedAt: json_.containsKey('publishedAt')
+              ? core.DateTime.parse(json_['publishedAt'] as core.String)
+              : null,
           thumbnails: json_.containsKey('thumbnails')
               ? ThumbnailDetails.fromJson(
                   json_['thumbnails'] as core.Map<core.String, core.dynamic>)
@@ -8570,10 +8578,14 @@ class CommentSnippet {
           likeCount: json_['likeCount'] as core.int?,
           moderationStatus: json_['moderationStatus'] as core.String?,
           parentId: json_['parentId'] as core.String?,
-          publishedAt: json_['publishedAt'] as core.DateTime?,
+          publishedAt: json_.containsKey('publishedAt')
+              ? core.DateTime.parse(json_['publishedAt'] as core.String)
+              : null,
           textDisplay: json_['textDisplay'] as core.String?,
           textOriginal: json_['textOriginal'] as core.String?,
-          updatedAt: json_['updatedAt'] as core.DateTime?,
+          updatedAt: json_.containsKey('updatedAt')
+              ? core.DateTime.parse(json_['updatedAt'] as core.String)
+              : null,
           videoId: json_['videoId'] as core.String?,
           viewerRating: json_['viewerRating'] as core.String?,
         );
@@ -11167,7 +11179,10 @@ class LiveBroadcastContentDetails {
       : this(
           boundStreamId: json_['boundStreamId'] as core.String?,
           boundStreamLastUpdateTimeMs:
-              json_['boundStreamLastUpdateTimeMs'] as core.DateTime?,
+              json_.containsKey('boundStreamLastUpdateTimeMs')
+                  ? core.DateTime.parse(
+                      json_['boundStreamLastUpdateTimeMs'] as core.String)
+                  : null,
           closedCaptionsType: json_['closedCaptionsType'] as core.String?,
           enableAutoStart: json_['enableAutoStart'] as core.bool?,
           enableAutoStop: json_['enableAutoStop'] as core.bool?,
@@ -11395,15 +11410,25 @@ class LiveBroadcastSnippet {
 
   LiveBroadcastSnippet.fromJson(core.Map json_)
       : this(
-          actualEndTime: json_['actualEndTime'] as core.DateTime?,
-          actualStartTime: json_['actualStartTime'] as core.DateTime?,
+          actualEndTime: json_.containsKey('actualEndTime')
+              ? core.DateTime.parse(json_['actualEndTime'] as core.String)
+              : null,
+          actualStartTime: json_.containsKey('actualStartTime')
+              ? core.DateTime.parse(json_['actualStartTime'] as core.String)
+              : null,
           channelId: json_['channelId'] as core.String?,
           description: json_['description'] as core.String?,
           isDefaultBroadcast: json_['isDefaultBroadcast'] as core.bool?,
           liveChatId: json_['liveChatId'] as core.String?,
-          publishedAt: json_['publishedAt'] as core.DateTime?,
-          scheduledEndTime: json_['scheduledEndTime'] as core.DateTime?,
-          scheduledStartTime: json_['scheduledStartTime'] as core.DateTime?,
+          publishedAt: json_.containsKey('publishedAt')
+              ? core.DateTime.parse(json_['publishedAt'] as core.String)
+              : null,
+          scheduledEndTime: json_.containsKey('scheduledEndTime')
+              ? core.DateTime.parse(json_['scheduledEndTime'] as core.String)
+              : null,
+          scheduledStartTime: json_.containsKey('scheduledStartTime')
+              ? core.DateTime.parse(json_['scheduledStartTime'] as core.String)
+              : null,
           thumbnails: json_.containsKey('thumbnails')
               ? ThumbnailDetails.fromJson(
                   json_['thumbnails'] as core.Map<core.String, core.dynamic>)
@@ -11986,7 +12011,9 @@ class LiveChatMessageListResponse {
               : null,
           kind: json_['kind'] as core.String?,
           nextPageToken: json_['nextPageToken'] as core.String?,
-          offlineAt: json_['offlineAt'] as core.DateTime?,
+          offlineAt: json_.containsKey('offlineAt')
+              ? core.DateTime.parse(json_['offlineAt'] as core.String)
+              : null,
           pageInfo: json_.containsKey('pageInfo')
               ? PageInfo.fromJson(
                   json_['pageInfo'] as core.Map<core.String, core.dynamic>)
@@ -12197,7 +12224,9 @@ class LiveChatMessageSnippet {
               ? LiveChatPollDetails.fromJson(
                   json_['pollDetails'] as core.Map<core.String, core.dynamic>)
               : null,
-          publishedAt: json_['publishedAt'] as core.DateTime?,
+          publishedAt: json_.containsKey('publishedAt')
+              ? core.DateTime.parse(json_['publishedAt'] as core.String)
+              : null,
           superChatDetails: json_.containsKey('superChatDetails')
               ? LiveChatSuperChatDetails.fromJson(json_['superChatDetails']
                   as core.Map<core.String, core.dynamic>)
@@ -13022,7 +13051,9 @@ class LiveStreamSnippet {
           channelId: json_['channelId'] as core.String?,
           description: json_['description'] as core.String?,
           isDefaultStream: json_['isDefaultStream'] as core.bool?,
-          publishedAt: json_['publishedAt'] as core.DateTime?,
+          publishedAt: json_.containsKey('publishedAt')
+              ? core.DateTime.parse(json_['publishedAt'] as core.String)
+              : null,
           title: json_['title'] as core.String?,
         );
 
@@ -13996,7 +14027,9 @@ class PlaylistItemContentDetails {
           note: json_['note'] as core.String?,
           startAt: json_['startAt'] as core.String?,
           videoId: json_['videoId'] as core.String?,
-          videoPublishedAt: json_['videoPublishedAt'] as core.DateTime?,
+          videoPublishedAt: json_.containsKey('videoPublishedAt')
+              ? core.DateTime.parse(json_['videoPublishedAt'] as core.String)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -14156,7 +14189,9 @@ class PlaylistItemSnippet {
           description: json_['description'] as core.String?,
           playlistId: json_['playlistId'] as core.String?,
           position: json_['position'] as core.int?,
-          publishedAt: json_['publishedAt'] as core.DateTime?,
+          publishedAt: json_.containsKey('publishedAt')
+              ? core.DateTime.parse(json_['publishedAt'] as core.String)
+              : null,
           resourceId: json_.containsKey('resourceId')
               ? ResourceId.fromJson(
                   json_['resourceId'] as core.Map<core.String, core.dynamic>)
@@ -14415,7 +14450,9 @@ class PlaylistSnippet {
               ? PlaylistLocalization.fromJson(
                   json_['localized'] as core.Map<core.String, core.dynamic>)
               : null,
-          publishedAt: json_['publishedAt'] as core.DateTime?,
+          publishedAt: json_.containsKey('publishedAt')
+              ? core.DateTime.parse(json_['publishedAt'] as core.String)
+              : null,
           tags: json_.containsKey('tags')
               ? (json_['tags'] as core.List)
                   .map((value) => value as core.String)
@@ -14753,7 +14790,9 @@ class SearchResultSnippet {
           channelTitle: json_['channelTitle'] as core.String?,
           description: json_['description'] as core.String?,
           liveBroadcastContent: json_['liveBroadcastContent'] as core.String?,
-          publishedAt: json_['publishedAt'] as core.DateTime?,
+          publishedAt: json_.containsKey('publishedAt')
+              ? core.DateTime.parse(json_['publishedAt'] as core.String)
+              : null,
           thumbnails: json_.containsKey('thumbnails')
               ? ThumbnailDetails.fromJson(
                   json_['thumbnails'] as core.Map<core.String, core.dynamic>)
@@ -15008,7 +15047,9 @@ class SubscriptionSnippet {
           channelId: json_['channelId'] as core.String?,
           channelTitle: json_['channelTitle'] as core.String?,
           description: json_['description'] as core.String?,
-          publishedAt: json_['publishedAt'] as core.DateTime?,
+          publishedAt: json_.containsKey('publishedAt')
+              ? core.DateTime.parse(json_['publishedAt'] as core.String)
+              : null,
           resourceId: json_.containsKey('resourceId')
               ? ResourceId.fromJson(
                   json_['resourceId'] as core.Map<core.String, core.dynamic>)
@@ -15253,7 +15294,9 @@ class SuperChatEventSnippet {
           amountMicros: json_['amountMicros'] as core.String?,
           channelId: json_['channelId'] as core.String?,
           commentText: json_['commentText'] as core.String?,
-          createdAt: json_['createdAt'] as core.DateTime?,
+          createdAt: json_.containsKey('createdAt')
+              ? core.DateTime.parse(json_['createdAt'] as core.String)
+              : null,
           currency: json_['currency'] as core.String?,
           displayString: json_['displayString'] as core.String?,
           isSuperStickerEvent: json_['isSuperStickerEvent'] as core.bool?,
@@ -16853,11 +16896,19 @@ class VideoLiveStreamingDetails {
   VideoLiveStreamingDetails.fromJson(core.Map json_)
       : this(
           activeLiveChatId: json_['activeLiveChatId'] as core.String?,
-          actualEndTime: json_['actualEndTime'] as core.DateTime?,
-          actualStartTime: json_['actualStartTime'] as core.DateTime?,
+          actualEndTime: json_.containsKey('actualEndTime')
+              ? core.DateTime.parse(json_['actualEndTime'] as core.String)
+              : null,
+          actualStartTime: json_.containsKey('actualStartTime')
+              ? core.DateTime.parse(json_['actualStartTime'] as core.String)
+              : null,
           concurrentViewers: json_['concurrentViewers'] as core.String?,
-          scheduledEndTime: json_['scheduledEndTime'] as core.DateTime?,
-          scheduledStartTime: json_['scheduledStartTime'] as core.DateTime?,
+          scheduledEndTime: json_.containsKey('scheduledEndTime')
+              ? core.DateTime.parse(json_['scheduledEndTime'] as core.String)
+              : null,
+          scheduledStartTime: json_.containsKey('scheduledStartTime')
+              ? core.DateTime.parse(json_['scheduledStartTime'] as core.String)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -17180,7 +17231,9 @@ class VideoRecordingDetails {
                   json_['location'] as core.Map<core.String, core.dynamic>)
               : null,
           locationDescription: json_['locationDescription'] as core.String?,
-          recordingDate: json_['recordingDate'] as core.DateTime?,
+          recordingDate: json_.containsKey('recordingDate')
+              ? core.DateTime.parse(json_['recordingDate'] as core.String)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -17281,7 +17334,9 @@ class VideoSnippet {
               ? VideoLocalization.fromJson(
                   json_['localized'] as core.Map<core.String, core.dynamic>)
               : null,
-          publishedAt: json_['publishedAt'] as core.DateTime?,
+          publishedAt: json_.containsKey('publishedAt')
+              ? core.DateTime.parse(json_['publishedAt'] as core.String)
+              : null,
           tags: json_.containsKey('tags')
               ? (json_['tags'] as core.List)
                   .map((value) => value as core.String)
@@ -17461,7 +17516,9 @@ class VideoStatus {
           madeForKids: json_['madeForKids'] as core.bool?,
           privacyStatus: json_['privacyStatus'] as core.String?,
           publicStatsViewable: json_['publicStatsViewable'] as core.bool?,
-          publishAt: json_['publishAt'] as core.DateTime?,
+          publishAt: json_.containsKey('publishAt')
+              ? core.DateTime.parse(json_['publishAt'] as core.String)
+              : null,
           rejectionReason: json_['rejectionReason'] as core.String?,
           selfDeclaredMadeForKids:
               json_['selfDeclaredMadeForKids'] as core.bool?,

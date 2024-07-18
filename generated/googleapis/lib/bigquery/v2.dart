@@ -3915,7 +3915,9 @@ class BqmlTrainingRun {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          startTime: json_['startTime'] as core.DateTime?,
+          startTime: json_.containsKey('startTime')
+              ? core.DateTime.parse(json_['startTime'] as core.String)
+              : null,
           state: json_['state'] as core.String?,
           trainingOptions: json_.containsKey('trainingOptions')
               ? BqmlTrainingRunTrainingOptions.fromJson(json_['trainingOptions']
@@ -4010,7 +4012,9 @@ class CloneDefinition {
               ? TableReference.fromJson(json_['baseTableReference']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          cloneTime: json_['cloneTime'] as core.DateTime?,
+          cloneTime: json_.containsKey('cloneTime')
+              ? core.DateTime.parse(json_['cloneTime'] as core.String)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5277,7 +5281,9 @@ class DestinationTableProperties {
   DestinationTableProperties.fromJson(core.Map json_)
       : this(
           description: json_['description'] as core.String?,
-          expirationTime: json_['expirationTime'] as core.DateTime?,
+          expirationTime: json_.containsKey('expirationTime')
+              ? core.DateTime.parse(json_['expirationTime'] as core.String)
+              : null,
           friendlyName: json_['friendlyName'] as core.String?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
@@ -14160,7 +14166,9 @@ class SnapshotDefinition {
               ? TableReference.fromJson(json_['baseTableReference']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          snapshotTime: json_['snapshotTime'] as core.DateTime?,
+          snapshotTime: json_.containsKey('snapshotTime')
+              ? core.DateTime.parse(json_['snapshotTime'] as core.String)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

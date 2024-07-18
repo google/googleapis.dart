@@ -426,8 +426,12 @@ class StringType extends PrimitiveDartSchemaType {
   String get declaration => '${imports.core.ref()}String';
 
   @override
-  String decodeFromMap(String jsonName) =>
-      "json_['${escapeString(jsonName)}'] as $declaration?";
+  String decodeFromMap(String jsonName) {
+    if (runtimeType == StringType) {
+      return "json_['${escapeString(jsonName)}'] as $declaration?";
+    }
+    return super.decodeFromMap(jsonName);
+  }
 }
 
 /// Here to support the fix for https://github.com/google/googleapis.dart/issues/211
@@ -473,7 +477,7 @@ class EnumType extends StringType {
           "'NULL_VALUE' : null";
     }
 
-    return super.decodeFromMap(jsonName);
+    return "json_['${escapeString(jsonName)}'] as $declaration?";
   }
 }
 

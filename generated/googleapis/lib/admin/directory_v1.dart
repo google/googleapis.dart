@@ -7609,7 +7609,9 @@ class ChromeOsDeviceActiveTimeRanges {
   ChromeOsDeviceActiveTimeRanges.fromJson(core.Map json_)
       : this(
           activeTime: json_['activeTime'] as core.int?,
-          date: json_['date'] as core.DateTime?,
+          date: json_.containsKey('date')
+              ? core.DateTime.parse(json_['date'] as core.String)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7792,7 +7794,9 @@ class ChromeOsDeviceCpuStatusReports {
                       .map((value) => value as core.int)
                       .toList()
                   : null,
-          reportTime: json_['reportTime'] as core.DateTime?,
+          reportTime: json_.containsKey('reportTime')
+              ? core.DateTime.parse(json_['reportTime'] as core.String)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7827,7 +7831,9 @@ class ChromeOsDeviceDeviceFiles {
 
   ChromeOsDeviceDeviceFiles.fromJson(core.Map json_)
       : this(
-          createTime: json_['createTime'] as core.DateTime?,
+          createTime: json_.containsKey('createTime')
+              ? core.DateTime.parse(json_['createTime'] as core.String)
+              : null,
           downloadUrl: json_['downloadUrl'] as core.String?,
           name: json_['name'] as core.String?,
           type: json_['type'] as core.String?,
@@ -7970,7 +7976,9 @@ class ChromeOsDeviceScreenshotFiles {
 
   ChromeOsDeviceScreenshotFiles.fromJson(core.Map json_)
       : this(
-          createTime: json_['createTime'] as core.DateTime?,
+          createTime: json_.containsKey('createTime')
+              ? core.DateTime.parse(json_['createTime'] as core.String)
+              : null,
           downloadUrl: json_['downloadUrl'] as core.String?,
           name: json_['name'] as core.String?,
           type: json_['type'] as core.String?,
@@ -7997,7 +8005,9 @@ class ChromeOsDeviceSystemRamFreeReports {
 
   ChromeOsDeviceSystemRamFreeReports.fromJson(core.Map json_)
       : this(
-          reportTime: json_['reportTime'] as core.DateTime?,
+          reportTime: json_.containsKey('reportTime')
+              ? core.DateTime.parse(json_['reportTime'] as core.String)
+              : null,
           systemRamFreeInfo: json_.containsKey('systemRamFreeInfo')
               ? (json_['systemRamFreeInfo'] as core.List)
                   .map((value) => value as core.String)
@@ -8480,14 +8490,18 @@ class ChromeOsDevice {
           kind: json_['kind'] as core.String?,
           lastDeprovisionTimestamp:
               json_['lastDeprovisionTimestamp'] as core.String?,
-          lastEnrollmentTime: json_['lastEnrollmentTime'] as core.DateTime?,
+          lastEnrollmentTime: json_.containsKey('lastEnrollmentTime')
+              ? core.DateTime.parse(json_['lastEnrollmentTime'] as core.String)
+              : null,
           lastKnownNetwork: json_.containsKey('lastKnownNetwork')
               ? (json_['lastKnownNetwork'] as core.List)
                   .map((value) => ChromeOsDeviceLastKnownNetwork.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          lastSync: json_['lastSync'] as core.DateTime?,
+          lastSync: json_.containsKey('lastSync')
+              ? core.DateTime.parse(json_['lastSync'] as core.String)
+              : null,
           macAddress: json_['macAddress'] as core.String?,
           manufactureDate: json_['manufactureDate'] as core.String?,
           meid: json_['meid'] as core.String?,
@@ -8516,7 +8530,9 @@ class ChromeOsDevice {
               : null,
           serialNumber: json_['serialNumber'] as core.String?,
           status: json_['status'] as core.String?,
-          supportEndDate: json_['supportEndDate'] as core.DateTime?,
+          supportEndDate: json_.containsKey('supportEndDate')
+              ? core.DateTime.parse(json_['supportEndDate'] as core.String)
+              : null,
           systemRamFreeReports: json_.containsKey('systemRamFreeReports')
               ? (json_['systemRamFreeReports'] as core.List)
                   .map((value) => ChromeOsDeviceSystemRamFreeReports.fromJson(
@@ -8828,7 +8844,10 @@ class Customer {
   Customer.fromJson(core.Map json_)
       : this(
           alternateEmail: json_['alternateEmail'] as core.String?,
-          customerCreationTime: json_['customerCreationTime'] as core.DateTime?,
+          customerCreationTime: json_.containsKey('customerCreationTime')
+              ? core.DateTime.parse(
+                  json_['customerCreationTime'] as core.String)
+              : null,
           customerDomain: json_['customerDomain'] as core.String?,
           etag: json_['etag'] as core.String?,
           id: json_['id'] as core.String?,
@@ -10326,13 +10345,17 @@ class MobileDevice {
               : null,
           encryptionStatus: json_['encryptionStatus'] as core.String?,
           etag: json_['etag'] as core.String?,
-          firstSync: json_['firstSync'] as core.DateTime?,
+          firstSync: json_.containsKey('firstSync')
+              ? core.DateTime.parse(json_['firstSync'] as core.String)
+              : null,
           hardware: json_['hardware'] as core.String?,
           hardwareId: json_['hardwareId'] as core.String?,
           imei: json_['imei'] as core.String?,
           kernelVersion: json_['kernelVersion'] as core.String?,
           kind: json_['kind'] as core.String?,
-          lastSync: json_['lastSync'] as core.DateTime?,
+          lastSync: json_.containsKey('lastSync')
+              ? core.DateTime.parse(json_['lastSync'] as core.String)
+              : null,
           managedAccountIsOnOwnerProfile:
               json_['managedAccountIsOnOwnerProfile'] as core.bool?,
           manufacturer: json_['manufacturer'] as core.String?,
@@ -12097,7 +12120,9 @@ class User {
           archived: json_['archived'] as core.bool?,
           changePasswordAtNextLogin:
               json_['changePasswordAtNextLogin'] as core.bool?,
-          creationTime: json_['creationTime'] as core.DateTime?,
+          creationTime: json_.containsKey('creationTime')
+              ? core.DateTime.parse(json_['creationTime'] as core.String)
+              : null,
           customSchemas: json_.containsKey('customSchemas')
               ? (json_['customSchemas'] as core.Map<core.String, core.dynamic>)
                   .map(
@@ -12108,7 +12133,9 @@ class User {
                 )
               : null,
           customerId: json_['customerId'] as core.String?,
-          deletionTime: json_['deletionTime'] as core.DateTime?,
+          deletionTime: json_.containsKey('deletionTime')
+              ? core.DateTime.parse(json_['deletionTime'] as core.String)
+              : null,
           emails: json_['emails'],
           etag: json_['etag'] as core.String?,
           externalIds: json_['externalIds'],
@@ -12127,7 +12154,9 @@ class User {
           keywords: json_['keywords'],
           kind: json_['kind'] as core.String?,
           languages: json_['languages'],
-          lastLoginTime: json_['lastLoginTime'] as core.DateTime?,
+          lastLoginTime: json_.containsKey('lastLoginTime')
+              ? core.DateTime.parse(json_['lastLoginTime'] as core.String)
+              : null,
           locations: json_['locations'],
           name: json_.containsKey('name')
               ? UserName.fromJson(

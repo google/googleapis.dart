@@ -3727,7 +3727,9 @@ class Change {
                   json_['teamDrive'] as core.Map<core.String, core.dynamic>)
               : null,
           teamDriveId: json_['teamDriveId'] as core.String?,
-          time: json_['time'] as core.DateTime?,
+          time: json_.containsKey('time')
+              ? core.DateTime.parse(json_['time'] as core.String)
+              : null,
           type: json_['type'] as core.String?,
         );
 
@@ -3928,12 +3930,16 @@ class Comment {
                   json_['author'] as core.Map<core.String, core.dynamic>)
               : null,
           content: json_['content'] as core.String?,
-          createdTime: json_['createdTime'] as core.DateTime?,
+          createdTime: json_.containsKey('createdTime')
+              ? core.DateTime.parse(json_['createdTime'] as core.String)
+              : null,
           deleted: json_['deleted'] as core.bool?,
           htmlContent: json_['htmlContent'] as core.String?,
           id: json_['id'] as core.String?,
           kind: json_['kind'] as core.String?,
-          modifiedTime: json_['modifiedTime'] as core.DateTime?,
+          modifiedTime: json_.containsKey('modifiedTime')
+              ? core.DateTime.parse(json_['modifiedTime'] as core.String)
+              : null,
           quotedFileContent: json_.containsKey('quotedFileContent')
               ? CommentQuotedFileContent.fromJson(json_['quotedFileContent']
                   as core.Map<core.String, core.dynamic>)
@@ -4080,7 +4086,9 @@ class ContentRestriction {
               ? User.fromJson(json_['restrictingUser']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          restrictionTime: json_['restrictionTime'] as core.DateTime?,
+          restrictionTime: json_.containsKey('restrictionTime')
+              ? core.DateTime.parse(json_['restrictionTime'] as core.String)
+              : null,
           systemRestricted: json_['systemRestricted'] as core.bool?,
           type: json_['type'] as core.String?,
         );
@@ -4533,7 +4541,9 @@ class Drive {
                   json_['capabilities'] as core.Map<core.String, core.dynamic>)
               : null,
           colorRgb: json_['colorRgb'] as core.String?,
-          createdTime: json_['createdTime'] as core.DateTime?,
+          createdTime: json_.containsKey('createdTime')
+              ? core.DateTime.parse(json_['createdTime'] as core.String)
+              : null,
           hidden: json_['hidden'] as core.bool?,
           id: json_['id'] as core.String?,
           kind: json_['kind'] as core.String?,
@@ -6004,7 +6014,9 @@ class File {
               : null,
           copyRequiresWriterPermission:
               json_['copyRequiresWriterPermission'] as core.bool?,
-          createdTime: json_['createdTime'] as core.DateTime?,
+          createdTime: json_.containsKey('createdTime')
+              ? core.DateTime.parse(json_['createdTime'] as core.String)
+              : null,
           description: json_['description'] as core.String?,
           driveId: json_['driveId'] as core.String?,
           explicitlyTrashed: json_['explicitlyTrashed'] as core.bool?,
@@ -6047,8 +6059,12 @@ class File {
           md5Checksum: json_['md5Checksum'] as core.String?,
           mimeType: json_['mimeType'] as core.String?,
           modifiedByMe: json_['modifiedByMe'] as core.bool?,
-          modifiedByMeTime: json_['modifiedByMeTime'] as core.DateTime?,
-          modifiedTime: json_['modifiedTime'] as core.DateTime?,
+          modifiedByMeTime: json_.containsKey('modifiedByMeTime')
+              ? core.DateTime.parse(json_['modifiedByMeTime'] as core.String)
+              : null,
+          modifiedTime: json_.containsKey('modifiedTime')
+              ? core.DateTime.parse(json_['modifiedTime'] as core.String)
+              : null,
           name: json_['name'] as core.String?,
           originalFilename: json_['originalFilename'] as core.String?,
           ownedByMe: json_['ownedByMe'] as core.bool?,
@@ -6088,7 +6104,9 @@ class File {
           sha1Checksum: json_['sha1Checksum'] as core.String?,
           sha256Checksum: json_['sha256Checksum'] as core.String?,
           shared: json_['shared'] as core.bool?,
-          sharedWithMeTime: json_['sharedWithMeTime'] as core.DateTime?,
+          sharedWithMeTime: json_.containsKey('sharedWithMeTime')
+              ? core.DateTime.parse(json_['sharedWithMeTime'] as core.String)
+              : null,
           sharingUser: json_.containsKey('sharingUser')
               ? User.fromJson(
                   json_['sharingUser'] as core.Map<core.String, core.dynamic>)
@@ -6108,7 +6126,9 @@ class File {
           thumbnailLink: json_['thumbnailLink'] as core.String?,
           thumbnailVersion: json_['thumbnailVersion'] as core.String?,
           trashed: json_['trashed'] as core.bool?,
-          trashedTime: json_['trashedTime'] as core.DateTime?,
+          trashedTime: json_.containsKey('trashedTime')
+              ? core.DateTime.parse(json_['trashedTime'] as core.String)
+              : null,
           trashingUser: json_.containsKey('trashingUser')
               ? User.fromJson(
                   json_['trashingUser'] as core.Map<core.String, core.dynamic>)
@@ -6119,7 +6139,9 @@ class File {
                   as core.Map<core.String, core.dynamic>)
               : null,
           viewedByMe: json_['viewedByMe'] as core.bool?,
-          viewedByMeTime: json_['viewedByMeTime'] as core.DateTime?,
+          viewedByMeTime: json_.containsKey('viewedByMeTime')
+              ? core.DateTime.parse(json_['viewedByMeTime'] as core.String)
+              : null,
           viewersCanCopyContent: json_['viewersCanCopyContent'] as core.bool?,
           webContentLink: json_['webContentLink'] as core.String?,
           webViewLink: json_['webViewLink'] as core.String?,
@@ -6928,7 +6950,9 @@ class Permission {
           displayName: json_['displayName'] as core.String?,
           domain: json_['domain'] as core.String?,
           emailAddress: json_['emailAddress'] as core.String?,
-          expirationTime: json_['expirationTime'] as core.DateTime?,
+          expirationTime: json_.containsKey('expirationTime')
+              ? core.DateTime.parse(json_['expirationTime'] as core.String)
+              : null,
           id: json_['id'] as core.String?,
           kind: json_['kind'] as core.String?,
           pendingOwner: json_['pendingOwner'] as core.bool?,
@@ -7093,12 +7117,16 @@ class Reply {
                   json_['author'] as core.Map<core.String, core.dynamic>)
               : null,
           content: json_['content'] as core.String?,
-          createdTime: json_['createdTime'] as core.DateTime?,
+          createdTime: json_.containsKey('createdTime')
+              ? core.DateTime.parse(json_['createdTime'] as core.String)
+              : null,
           deleted: json_['deleted'] as core.bool?,
           htmlContent: json_['htmlContent'] as core.String?,
           id: json_['id'] as core.String?,
           kind: json_['kind'] as core.String?,
-          modifiedTime: json_['modifiedTime'] as core.DateTime?,
+          modifiedTime: json_.containsKey('modifiedTime')
+              ? core.DateTime.parse(json_['modifiedTime'] as core.String)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7286,7 +7314,9 @@ class Revision {
               : null,
           md5Checksum: json_['md5Checksum'] as core.String?,
           mimeType: json_['mimeType'] as core.String?,
-          modifiedTime: json_['modifiedTime'] as core.DateTime?,
+          modifiedTime: json_.containsKey('modifiedTime')
+              ? core.DateTime.parse(json_['modifiedTime'] as core.String)
+              : null,
           originalFilename: json_['originalFilename'] as core.String?,
           publishAuto: json_['publishAuto'] as core.bool?,
           published: json_['published'] as core.bool?,
@@ -7772,7 +7802,9 @@ class TeamDrive {
                   json_['capabilities'] as core.Map<core.String, core.dynamic>)
               : null,
           colorRgb: json_['colorRgb'] as core.String?,
-          createdTime: json_['createdTime'] as core.DateTime?,
+          createdTime: json_.containsKey('createdTime')
+              ? core.DateTime.parse(json_['createdTime'] as core.String)
+              : null,
           id: json_['id'] as core.String?,
           kind: json_['kind'] as core.String?,
           name: json_['name'] as core.String?,

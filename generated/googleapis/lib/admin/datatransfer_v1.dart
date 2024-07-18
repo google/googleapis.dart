@@ -528,7 +528,9 @@ class DataTransfer {
           oldOwnerUserId: json_['oldOwnerUserId'] as core.String?,
           overallTransferStatusCode:
               json_['overallTransferStatusCode'] as core.String?,
-          requestTime: json_['requestTime'] as core.DateTime?,
+          requestTime: json_.containsKey('requestTime')
+              ? core.DateTime.parse(json_['requestTime'] as core.String)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

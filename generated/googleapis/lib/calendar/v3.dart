@@ -3162,7 +3162,9 @@ class Colors {
                 )
               : null,
           kind: json_['kind'] as core.String?,
-          updated: json_['updated'] as core.DateTime?,
+          updated: json_.containsKey('updated')
+              ? core.DateTime.parse(json_['updated'] as core.String)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4302,7 +4304,9 @@ class Event {
               ? ConferenceData.fromJson(json_['conferenceData']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          created: json_['created'] as core.DateTime?,
+          created: json_.containsKey('created')
+              ? core.DateTime.parse(json_['created'] as core.String)
+              : null,
           creator: json_.containsKey('creator')
               ? EventCreator.fromJson(
                   json_['creator'] as core.Map<core.String, core.dynamic>)
@@ -4374,7 +4378,9 @@ class Event {
           status: json_['status'] as core.String?,
           summary: json_['summary'] as core.String?,
           transparency: json_['transparency'] as core.String?,
-          updated: json_['updated'] as core.DateTime?,
+          updated: json_.containsKey('updated')
+              ? core.DateTime.parse(json_['updated'] as core.String)
+              : null,
           visibility: json_['visibility'] as core.String?,
           workingLocationProperties:
               json_.containsKey('workingLocationProperties')
@@ -4618,8 +4624,12 @@ class EventDateTime {
 
   EventDateTime.fromJson(core.Map json_)
       : this(
-          date: json_['date'] as core.DateTime?,
-          dateTime: json_['dateTime'] as core.DateTime?,
+          date: json_.containsKey('date')
+              ? core.DateTime.parse(json_['date'] as core.String)
+              : null,
+          dateTime: json_.containsKey('dateTime')
+              ? core.DateTime.parse(json_['dateTime'] as core.String)
+              : null,
           timeZone: json_['timeZone'] as core.String?,
         );
 
@@ -4961,7 +4971,9 @@ class Events {
           nextSyncToken: json_['nextSyncToken'] as core.String?,
           summary: json_['summary'] as core.String?,
           timeZone: json_['timeZone'] as core.String?,
-          updated: json_['updated'] as core.DateTime?,
+          updated: json_.containsKey('updated')
+              ? core.DateTime.parse(json_['updated'] as core.String)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5092,8 +5104,12 @@ class FreeBusyRequest {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          timeMax: json_['timeMax'] as core.DateTime?,
-          timeMin: json_['timeMin'] as core.DateTime?,
+          timeMax: json_.containsKey('timeMax')
+              ? core.DateTime.parse(json_['timeMax'] as core.String)
+              : null,
+          timeMin: json_.containsKey('timeMin')
+              ? core.DateTime.parse(json_['timeMin'] as core.String)
+              : null,
           timeZone: json_['timeZone'] as core.String?,
         );
 
@@ -5171,8 +5187,12 @@ class FreeBusyResponse {
                 )
               : null,
           kind: json_['kind'] as core.String?,
-          timeMax: json_['timeMax'] as core.DateTime?,
-          timeMin: json_['timeMin'] as core.DateTime?,
+          timeMax: json_.containsKey('timeMax')
+              ? core.DateTime.parse(json_['timeMax'] as core.String)
+              : null,
+          timeMin: json_.containsKey('timeMin')
+              ? core.DateTime.parse(json_['timeMin'] as core.String)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5291,8 +5311,12 @@ class TimePeriod {
 
   TimePeriod.fromJson(core.Map json_)
       : this(
-          end: json_['end'] as core.DateTime?,
-          start: json_['start'] as core.DateTime?,
+          end: json_.containsKey('end')
+              ? core.DateTime.parse(json_['end'] as core.String)
+              : null,
+          start: json_.containsKey('start')
+              ? core.DateTime.parse(json_['start'] as core.String)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

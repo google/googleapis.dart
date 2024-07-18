@@ -1231,7 +1231,9 @@ class ActivityId {
       : this(
           applicationName: json_['applicationName'] as core.String?,
           customerId: json_['customerId'] as core.String?,
-          time: json_['time'] as core.DateTime?,
+          time: json_.containsKey('time')
+              ? core.DateTime.parse(json_['time'] as core.String)
+              : null,
           uniqueQualifier: json_['uniqueQualifier'] as core.String?,
         );
 
@@ -1591,7 +1593,9 @@ class UsageReportParameters {
   UsageReportParameters.fromJson(core.Map json_)
       : this(
           boolValue: json_['boolValue'] as core.bool?,
-          datetimeValue: json_['datetimeValue'] as core.DateTime?,
+          datetimeValue: json_.containsKey('datetimeValue')
+              ? core.DateTime.parse(json_['datetimeValue'] as core.String)
+              : null,
           intValue: json_['intValue'] as core.String?,
           msgValue: json_.containsKey('msgValue')
               ? (json_['msgValue'] as core.List)
