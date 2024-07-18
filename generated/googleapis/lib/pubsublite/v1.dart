@@ -1528,12 +1528,8 @@ class Capacity {
 
   Capacity.fromJson(core.Map json_)
       : this(
-          publishMibPerSec: json_.containsKey('publishMibPerSec')
-              ? json_['publishMibPerSec'] as core.int
-              : null,
-          subscribeMibPerSec: json_.containsKey('subscribeMibPerSec')
-              ? json_['subscribeMibPerSec'] as core.int
-              : null,
+          publishMibPerSec: json_['publishMibPerSec'] as core.int?,
+          subscribeMibPerSec: json_['subscribeMibPerSec'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1565,9 +1561,7 @@ class CommitCursorRequest {
               ? Cursor.fromJson(
                   json_['cursor'] as core.Map<core.String, core.dynamic>)
               : null,
-          partition: json_.containsKey('partition')
-              ? json_['partition'] as core.String
-              : null,
+          partition: json_['partition'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1592,9 +1586,7 @@ class ComputeHeadCursorRequest {
 
   ComputeHeadCursorRequest.fromJson(core.Map json_)
       : this(
-          partition: json_.containsKey('partition')
-              ? json_['partition'] as core.String
-              : null,
+          partition: json_['partition'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1653,9 +1645,7 @@ class ComputeMessageStatsRequest {
               ? Cursor.fromJson(
                   json_['endCursor'] as core.Map<core.String, core.dynamic>)
               : null,
-          partition: json_.containsKey('partition')
-              ? json_['partition'] as core.String
-              : null,
+          partition: json_['partition'] as core.String?,
           startCursor: json_.containsKey('startCursor')
               ? Cursor.fromJson(
                   json_['startCursor'] as core.Map<core.String, core.dynamic>)
@@ -1699,18 +1689,10 @@ class ComputeMessageStatsResponse {
 
   ComputeMessageStatsResponse.fromJson(core.Map json_)
       : this(
-          messageBytes: json_.containsKey('messageBytes')
-              ? json_['messageBytes'] as core.String
-              : null,
-          messageCount: json_.containsKey('messageCount')
-              ? json_['messageCount'] as core.String
-              : null,
-          minimumEventTime: json_.containsKey('minimumEventTime')
-              ? json_['minimumEventTime'] as core.String
-              : null,
-          minimumPublishTime: json_.containsKey('minimumPublishTime')
-              ? json_['minimumPublishTime'] as core.String
-              : null,
+          messageBytes: json_['messageBytes'] as core.String?,
+          messageCount: json_['messageCount'] as core.String?,
+          minimumEventTime: json_['minimumEventTime'] as core.String?,
+          minimumPublishTime: json_['minimumPublishTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1744,9 +1726,7 @@ class ComputeTimeCursorRequest {
 
   ComputeTimeCursorRequest.fromJson(core.Map json_)
       : this(
-          partition: json_.containsKey('partition')
-              ? json_['partition'] as core.String
-              : null,
+          partition: json_['partition'] as core.String?,
           target: json_.containsKey('target')
               ? TimeTarget.fromJson(
                   json_['target'] as core.Map<core.String, core.dynamic>)
@@ -1799,9 +1779,7 @@ class Cursor {
 
   Cursor.fromJson(core.Map json_)
       : this(
-          offset: json_.containsKey('offset')
-              ? json_['offset'] as core.String
-              : null,
+          offset: json_['offset'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1828,9 +1806,7 @@ class DeliveryConfig {
 
   DeliveryConfig.fromJson(core.Map json_)
       : this(
-          deliveryRequirement: json_.containsKey('deliveryRequirement')
-              ? json_['deliveryRequirement'] as core.String
-              : null,
+          deliveryRequirement: json_['deliveryRequirement'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1908,15 +1884,9 @@ class ExportConfig {
 
   ExportConfig.fromJson(core.Map json_)
       : this(
-          currentState: json_.containsKey('currentState')
-              ? json_['currentState'] as core.String
-              : null,
-          deadLetterTopic: json_.containsKey('deadLetterTopic')
-              ? json_['deadLetterTopic'] as core.String
-              : null,
-          desiredState: json_.containsKey('desiredState')
-              ? json_['desiredState'] as core.String
-              : null,
+          currentState: json_['currentState'] as core.String?,
+          deadLetterTopic: json_['deadLetterTopic'] as core.String?,
+          desiredState: json_['desiredState'] as core.String?,
           pubsubConfig: json_.containsKey('pubsubConfig')
               ? PubSubConfig.fromJson(
                   json_['pubsubConfig'] as core.Map<core.String, core.dynamic>)
@@ -1946,9 +1916,7 @@ class ListOperationsResponse {
 
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           operations: json_.containsKey('operations')
               ? (json_['operations'] as core.List)
                   .map((value) => Operation.fromJson(
@@ -1980,9 +1948,7 @@ class ListPartitionCursorsResponse {
 
   ListPartitionCursorsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           partitionCursors: json_.containsKey('partitionCursors')
               ? (json_['partitionCursors'] as core.List)
                   .map((value) => PartitionCursor.fromJson(
@@ -2017,9 +1983,7 @@ class ListReservationTopicsResponse {
 
   ListReservationTopicsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           topics: json_.containsKey('topics')
               ? (json_['topics'] as core.List)
                   .map((value) => value as core.String)
@@ -2053,9 +2017,7 @@ class ListReservationsResponse {
 
   ListReservationsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           reservations: json_.containsKey('reservations')
               ? (json_['reservations'] as core.List)
                   .map((value) => Reservation.fromJson(
@@ -2090,9 +2052,7 @@ class ListSubscriptionsResponse {
 
   ListSubscriptionsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           subscriptions: json_.containsKey('subscriptions')
               ? (json_['subscriptions'] as core.List)
                   .map((value) => Subscription.fromJson(
@@ -2127,9 +2087,7 @@ class ListTopicSubscriptionsResponse {
 
   ListTopicSubscriptionsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           subscriptions: json_.containsKey('subscriptions')
               ? (json_['subscriptions'] as core.List)
                   .map((value) => value as core.String)
@@ -2163,9 +2121,7 @@ class ListTopicsResponse {
 
   ListTopicsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           topics: json_.containsKey('topics')
               ? (json_['topics'] as core.List)
                   .map((value) => Topic.fromJson(
@@ -2233,7 +2189,7 @@ class Operation {
 
   Operation.fromJson(core.Map json_)
       : this(
-          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
@@ -2241,7 +2197,7 @@ class Operation {
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           response: json_.containsKey('response')
               ? json_['response'] as core.Map<core.String, core.dynamic>
               : null,
@@ -2293,9 +2249,8 @@ class PartitionConfig {
               ? Capacity.fromJson(
                   json_['capacity'] as core.Map<core.String, core.dynamic>)
               : null,
-          count:
-              json_.containsKey('count') ? json_['count'] as core.String : null,
-          scale: json_.containsKey('scale') ? json_['scale'] as core.int : null,
+          count: json_['count'] as core.String?,
+          scale: json_['scale'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2324,9 +2279,7 @@ class PartitionCursor {
               ? Cursor.fromJson(
                   json_['cursor'] as core.Map<core.String, core.dynamic>)
               : null,
-          partition: json_.containsKey('partition')
-              ? json_['partition'] as core.String
-              : null,
+          partition: json_['partition'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2349,8 +2302,7 @@ class PubSubConfig {
 
   PubSubConfig.fromJson(core.Map json_)
       : this(
-          topic:
-              json_.containsKey('topic') ? json_['topic'] as core.String : null,
+          topic: json_['topic'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2381,10 +2333,8 @@ class Reservation {
 
   Reservation.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          throughputCapacity: json_.containsKey('throughputCapacity')
-              ? json_['throughputCapacity'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          throughputCapacity: json_['throughputCapacity'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2408,9 +2358,7 @@ class ReservationConfig {
 
   ReservationConfig.fromJson(core.Map json_)
       : this(
-          throughputReservation: json_.containsKey('throughputReservation')
-              ? json_['throughputReservation'] as core.String
-              : null,
+          throughputReservation: json_['throughputReservation'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2441,12 +2389,8 @@ class RetentionConfig {
 
   RetentionConfig.fromJson(core.Map json_)
       : this(
-          perPartitionBytes: json_.containsKey('perPartitionBytes')
-              ? json_['perPartitionBytes'] as core.String
-              : null,
-          period: json_.containsKey('period')
-              ? json_['period'] as core.String
-              : null,
+          perPartitionBytes: json_['perPartitionBytes'] as core.String?,
+          period: json_['period'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2479,9 +2423,7 @@ class SeekSubscriptionRequest {
 
   SeekSubscriptionRequest.fromJson(core.Map json_)
       : this(
-          namedTarget: json_.containsKey('namedTarget')
-              ? json_['namedTarget'] as core.String
-              : null,
+          namedTarget: json_['namedTarget'] as core.String?,
           timeTarget: json_.containsKey('timeTarget')
               ? TimeTarget.fromJson(
                   json_['timeTarget'] as core.Map<core.String, core.dynamic>)
@@ -2541,9 +2483,8 @@ class Subscription {
               ? ExportConfig.fromJson(
                   json_['exportConfig'] as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          topic:
-              json_.containsKey('topic') ? json_['topic'] as core.String : null,
+          name: json_['name'] as core.String?,
+          topic: json_['topic'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2581,12 +2522,8 @@ class TimeTarget {
 
   TimeTarget.fromJson(core.Map json_)
       : this(
-          eventTime: json_.containsKey('eventTime')
-              ? json_['eventTime'] as core.String
-              : null,
-          publishTime: json_.containsKey('publishTime')
-              ? json_['publishTime'] as core.String
-              : null,
+          eventTime: json_['eventTime'] as core.String?,
+          publishTime: json_['publishTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2621,7 +2558,7 @@ class Topic {
 
   Topic.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           partitionConfig: json_.containsKey('partitionConfig')
               ? PartitionConfig.fromJson(json_['partitionConfig']
                   as core.Map<core.String, core.dynamic>)
@@ -2655,9 +2592,7 @@ class TopicPartitions {
 
   TopicPartitions.fromJson(core.Map json_)
       : this(
-          partitionCount: json_.containsKey('partitionCount')
-              ? json_['partitionCount'] as core.String
-              : null,
+          partitionCount: json_['partitionCount'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

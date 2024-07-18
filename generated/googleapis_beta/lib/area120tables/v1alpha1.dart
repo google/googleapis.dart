@@ -853,14 +853,12 @@ class ColumnDescription {
 
   ColumnDescription.fromJson(core.Map json_)
       : this(
-          dataType: json_.containsKey('dataType')
-              ? json_['dataType'] as core.String
-              : null,
+          dataType: json_['dataType'] as core.String?,
           dateDetails: json_.containsKey('dateDetails')
               ? DateDetails.fromJson(
                   json_['dateDetails'] as core.Map<core.String, core.dynamic>)
               : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          id: json_['id'] as core.String?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.List)
                   .map((value) => LabeledItem.fromJson(
@@ -872,13 +870,9 @@ class ColumnDescription {
                   json_['lookupDetails'] as core.Map<core.String, core.dynamic>)
               : null,
           multipleValuesDisallowed:
-              json_.containsKey('multipleValuesDisallowed')
-                  ? json_['multipleValuesDisallowed'] as core.bool
-                  : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          readonly: json_.containsKey('readonly')
-              ? json_['readonly'] as core.bool
-              : null,
+              json_['multipleValuesDisallowed'] as core.bool?,
+          name: json_['name'] as core.String?,
+          readonly: json_['readonly'] as core.bool?,
           relationshipDetails: json_.containsKey('relationshipDetails')
               ? RelationshipDetails.fromJson(json_['relationshipDetails']
                   as core.Map<core.String, core.dynamic>)
@@ -933,14 +927,12 @@ class CreateRowRequest {
 
   CreateRowRequest.fromJson(core.Map json_)
       : this(
-          parent: json_.containsKey('parent')
-              ? json_['parent'] as core.String
-              : null,
+          parent: json_['parent'] as core.String?,
           row: json_.containsKey('row')
               ? Row.fromJson(
                   json_['row'] as core.Map<core.String, core.dynamic>)
               : null,
-          view: json_.containsKey('view') ? json_['view'] as core.String : null,
+          view: json_['view'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -961,9 +953,7 @@ class DateDetails {
 
   DateDetails.fromJson(core.Map json_)
       : this(
-          hasTime: json_.containsKey('hasTime')
-              ? json_['hasTime'] as core.bool
-              : null,
+          hasTime: json_['hasTime'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -994,8 +984,8 @@ class LabeledItem {
 
   LabeledItem.fromJson(core.Map json_)
       : this(
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          id: json_['id'] as core.String?,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1021,9 +1011,7 @@ class ListRowsResponse {
 
   ListRowsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           rows: json_.containsKey('rows')
               ? (json_['rows'] as core.List)
                   .map((value) => Row.fromJson(
@@ -1055,9 +1043,7 @@ class ListTablesResponse {
 
   ListTablesResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           tables: json_.containsKey('tables')
               ? (json_['tables'] as core.List)
                   .map((value) => Table.fromJson(
@@ -1089,9 +1075,7 @@ class ListWorkspacesResponse {
 
   ListWorkspacesResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           workspaces: json_.containsKey('workspaces')
               ? (json_['workspaces'] as core.List)
                   .map((value) => Workspace.fromJson(
@@ -1122,12 +1106,8 @@ class LookupDetails {
 
   LookupDetails.fromJson(core.Map json_)
       : this(
-          relationshipColumn: json_.containsKey('relationshipColumn')
-              ? json_['relationshipColumn'] as core.String
-              : null,
-          relationshipColumnId: json_.containsKey('relationshipColumnId')
-              ? json_['relationshipColumnId'] as core.String
-              : null,
+          relationshipColumn: json_['relationshipColumn'] as core.String?,
+          relationshipColumnId: json_['relationshipColumnId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1149,9 +1129,7 @@ class RelationshipDetails {
 
   RelationshipDetails.fromJson(core.Map json_)
       : this(
-          linkedTable: json_.containsKey('linkedTable')
-              ? json_['linkedTable'] as core.String
-              : null,
+          linkedTable: json_['linkedTable'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1191,13 +1169,9 @@ class Row {
 
   Row.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          name: json_['name'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
           values: json_.containsKey('values')
               ? json_['values'] as core.Map<core.String, core.dynamic>
               : null,
@@ -1228,8 +1202,8 @@ class SavedView {
 
   SavedView.fromJson(core.Map json_)
       : this(
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          id: json_['id'] as core.String?,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1287,25 +1261,17 @@ class Table {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          createTime: json_['createTime'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          name: json_['name'] as core.String?,
           savedViews: json_.containsKey('savedViews')
               ? (json_['savedViews'] as core.List)
                   .map((value) => SavedView.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          timeZone: json_.containsKey('timeZone')
-              ? json_['timeZone'] as core.String
-              : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          timeZone: json_['timeZone'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1352,10 +1318,8 @@ class UpdateRowRequest {
               ? Row.fromJson(
                   json_['row'] as core.Map<core.String, core.dynamic>)
               : null,
-          updateMask: json_.containsKey('updateMask')
-              ? json_['updateMask'] as core.String
-              : null,
-          view: json_.containsKey('view') ? json_['view'] as core.String : null,
+          updateMask: json_['updateMask'] as core.String?,
+          view: json_['view'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1394,22 +1358,16 @@ class Workspace {
 
   Workspace.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          createTime: json_['createTime'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          name: json_['name'] as core.String?,
           tables: json_.containsKey('tables')
               ? (json_['tables'] as core.List)
                   .map((value) => Table.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

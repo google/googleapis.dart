@@ -496,7 +496,7 @@ class AddPublicKeyRequest {
 
   AddPublicKeyRequest.fromJson(core.Map json_)
       : this(
-          key: json_.containsKey('key') ? json_['key'] as core.String : null,
+          key: json_['key'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -526,15 +526,9 @@ class AuthorizeEnvironmentRequest {
 
   AuthorizeEnvironmentRequest.fromJson(core.Map json_)
       : this(
-          accessToken: json_.containsKey('accessToken')
-              ? json_['accessToken'] as core.String
-              : null,
-          expireTime: json_.containsKey('expireTime')
-              ? json_['expireTime'] as core.String
-              : null,
-          idToken: json_.containsKey('idToken')
-              ? json_['idToken'] as core.String
-              : null,
+          accessToken: json_['accessToken'] as core.String?,
+          expireTime: json_['expireTime'] as core.String?,
+          idToken: json_['idToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -645,30 +639,19 @@ class Environment {
 
   Environment.fromJson(core.Map json_)
       : this(
-          dockerImage: json_.containsKey('dockerImage')
-              ? json_['dockerImage'] as core.String
-              : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          dockerImage: json_['dockerImage'] as core.String?,
+          id: json_['id'] as core.String?,
+          name: json_['name'] as core.String?,
           publicKeys: json_.containsKey('publicKeys')
               ? (json_['publicKeys'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          sshHost: json_.containsKey('sshHost')
-              ? json_['sshHost'] as core.String
-              : null,
-          sshPort: json_.containsKey('sshPort')
-              ? json_['sshPort'] as core.int
-              : null,
-          sshUsername: json_.containsKey('sshUsername')
-              ? json_['sshUsername'] as core.String
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
-          webHost: json_.containsKey('webHost')
-              ? json_['webHost'] as core.String
-              : null,
+          sshHost: json_['sshHost'] as core.String?,
+          sshPort: json_['sshPort'] as core.int?,
+          sshUsername: json_['sshUsername'] as core.String?,
+          state: json_['state'] as core.String?,
+          webHost: json_['webHost'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -699,9 +682,7 @@ class ListOperationsResponse {
 
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           operations: json_.containsKey('operations')
               ? (json_['operations'] as core.List)
                   .map((value) => Operation.fromJson(
@@ -769,7 +750,7 @@ class Operation {
 
   Operation.fromJson(core.Map json_)
       : this(
-          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
@@ -777,7 +758,7 @@ class Operation {
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           response: json_.containsKey('response')
               ? json_['response'] as core.Map<core.String, core.dynamic>
               : null,
@@ -803,7 +784,7 @@ class RemovePublicKeyRequest {
 
   RemovePublicKeyRequest.fromJson(core.Map json_)
       : this(
-          key: json_.containsKey('key') ? json_['key'] as core.String : null,
+          key: json_['key'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -831,9 +812,7 @@ class StartEnvironmentRequest {
 
   StartEnvironmentRequest.fromJson(core.Map json_)
       : this(
-          accessToken: json_.containsKey('accessToken')
-              ? json_['accessToken'] as core.String
-              : null,
+          accessToken: json_['accessToken'] as core.String?,
           publicKeys: json_.containsKey('publicKeys')
               ? (json_['publicKeys'] as core.List)
                   .map((value) => value as core.String)

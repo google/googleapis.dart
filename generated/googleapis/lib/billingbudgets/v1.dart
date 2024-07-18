@@ -411,19 +411,15 @@ class GoogleCloudBillingBudgetsV1Budget {
               ? GoogleCloudBillingBudgetsV1Filter.fromJson(
                   json_['budgetFilter'] as core.Map<core.String, core.dynamic>)
               : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          displayName: json_['displayName'] as core.String?,
+          etag: json_['etag'] as core.String?,
+          name: json_['name'] as core.String?,
           notificationsRule: json_.containsKey('notificationsRule')
               ? GoogleCloudBillingBudgetsV1NotificationsRule.fromJson(
                   json_['notificationsRule']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          ownershipScope: json_.containsKey('ownershipScope')
-              ? json_['ownershipScope'] as core.String
-              : null,
+          ownershipScope: json_['ownershipScope'] as core.String?,
           thresholdRules: json_.containsKey('thresholdRules')
               ? (json_['thresholdRules'] as core.List)
                   .map((value) =>
@@ -649,17 +645,13 @@ class GoogleCloudBillingBudgetsV1Filter {
 
   GoogleCloudBillingBudgetsV1Filter.fromJson(core.Map json_)
       : this(
-          calendarPeriod: json_.containsKey('calendarPeriod')
-              ? json_['calendarPeriod'] as core.String
-              : null,
+          calendarPeriod: json_['calendarPeriod'] as core.String?,
           creditTypes: json_.containsKey('creditTypes')
               ? (json_['creditTypes'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          creditTypesTreatment: json_.containsKey('creditTypesTreatment')
-              ? json_['creditTypesTreatment'] as core.String
-              : null,
+          creditTypesTreatment: json_['creditTypesTreatment'] as core.String?,
           customPeriod: json_.containsKey('customPeriod')
               ? GoogleCloudBillingBudgetsV1CustomPeriod.fromJson(
                   json_['customPeriod'] as core.Map<core.String, core.dynamic>)
@@ -737,9 +729,7 @@ class GoogleCloudBillingBudgetsV1ListBudgetsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -835,25 +825,17 @@ class GoogleCloudBillingBudgetsV1NotificationsRule {
   GoogleCloudBillingBudgetsV1NotificationsRule.fromJson(core.Map json_)
       : this(
           disableDefaultIamRecipients:
-              json_.containsKey('disableDefaultIamRecipients')
-                  ? json_['disableDefaultIamRecipients'] as core.bool
-                  : null,
+              json_['disableDefaultIamRecipients'] as core.bool?,
           enableProjectLevelRecipients:
-              json_.containsKey('enableProjectLevelRecipients')
-                  ? json_['enableProjectLevelRecipients'] as core.bool
-                  : null,
+              json_['enableProjectLevelRecipients'] as core.bool?,
           monitoringNotificationChannels:
               json_.containsKey('monitoringNotificationChannels')
                   ? (json_['monitoringNotificationChannels'] as core.List)
                       .map((value) => value as core.String)
                       .toList()
                   : null,
-          pubsubTopic: json_.containsKey('pubsubTopic')
-              ? json_['pubsubTopic'] as core.String
-              : null,
-          schemaVersion: json_.containsKey('schemaVersion')
-              ? json_['schemaVersion'] as core.String
-              : null,
+          pubsubTopic: json_['pubsubTopic'] as core.String?,
+          schemaVersion: json_['schemaVersion'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -913,12 +895,9 @@ class GoogleCloudBillingBudgetsV1ThresholdRule {
 
   GoogleCloudBillingBudgetsV1ThresholdRule.fromJson(core.Map json_)
       : this(
-          spendBasis: json_.containsKey('spendBasis')
-              ? json_['spendBasis'] as core.String
-              : null,
-          thresholdPercent: json_.containsKey('thresholdPercent')
-              ? (json_['thresholdPercent'] as core.num).toDouble()
-              : null,
+          spendBasis: json_['spendBasis'] as core.String?,
+          thresholdPercent:
+              (json_['thresholdPercent'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

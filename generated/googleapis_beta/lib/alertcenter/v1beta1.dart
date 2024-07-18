@@ -711,43 +711,25 @@ class Alert {
 
   Alert.fromJson(core.Map json_)
       : this(
-          alertId: json_.containsKey('alertId')
-              ? json_['alertId'] as core.String
-              : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          customerId: json_.containsKey('customerId')
-              ? json_['customerId'] as core.String
-              : null,
+          alertId: json_['alertId'] as core.String?,
+          createTime: json_['createTime'] as core.String?,
+          customerId: json_['customerId'] as core.String?,
           data: json_.containsKey('data')
               ? json_['data'] as core.Map<core.String, core.dynamic>
               : null,
-          deleted: json_.containsKey('deleted')
-              ? json_['deleted'] as core.bool
-              : null,
-          endTime: json_.containsKey('endTime')
-              ? json_['endTime'] as core.String
-              : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          deleted: json_['deleted'] as core.bool?,
+          endTime: json_['endTime'] as core.String?,
+          etag: json_['etag'] as core.String?,
           metadata: json_.containsKey('metadata')
               ? AlertMetadata.fromJson(
                   json_['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
           securityInvestigationToolLink:
-              json_.containsKey('securityInvestigationToolLink')
-                  ? json_['securityInvestigationToolLink'] as core.String
-                  : null,
-          source: json_.containsKey('source')
-              ? json_['source'] as core.String
-              : null,
-          startTime: json_.containsKey('startTime')
-              ? json_['startTime'] as core.String
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+              json_['securityInvestigationToolLink'] as core.String?,
+          source: json_['source'] as core.String?,
+          startTime: json_['startTime'] as core.String?,
+          type: json_['type'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -816,21 +798,12 @@ class AlertFeedback {
 
   AlertFeedback.fromJson(core.Map json_)
       : this(
-          alertId: json_.containsKey('alertId')
-              ? json_['alertId'] as core.String
-              : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          customerId: json_.containsKey('customerId')
-              ? json_['customerId'] as core.String
-              : null,
-          email:
-              json_.containsKey('email') ? json_['email'] as core.String : null,
-          feedbackId: json_.containsKey('feedbackId')
-              ? json_['feedbackId'] as core.String
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          alertId: json_['alertId'] as core.String?,
+          createTime: json_['createTime'] as core.String?,
+          customerId: json_['customerId'] as core.String?,
+          email: json_['email'] as core.String?,
+          feedbackId: json_['feedbackId'] as core.String?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -903,25 +876,13 @@ class AlertMetadata {
 
   AlertMetadata.fromJson(core.Map json_)
       : this(
-          alertId: json_.containsKey('alertId')
-              ? json_['alertId'] as core.String
-              : null,
-          assignee: json_.containsKey('assignee')
-              ? json_['assignee'] as core.String
-              : null,
-          customerId: json_.containsKey('customerId')
-              ? json_['customerId'] as core.String
-              : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          severity: json_.containsKey('severity')
-              ? json_['severity'] as core.String
-              : null,
-          status: json_.containsKey('status')
-              ? json_['status'] as core.String
-              : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          alertId: json_['alertId'] as core.String?,
+          assignee: json_['assignee'] as core.String?,
+          customerId: json_['customerId'] as core.String?,
+          etag: json_['etag'] as core.String?,
+          severity: json_['severity'] as core.String?,
+          status: json_['status'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -964,9 +925,7 @@ class BatchDeleteAlertsRequest {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          customerId: json_.containsKey('customerId')
-              ? json_['customerId'] as core.String
-              : null,
+          customerId: json_['customerId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1043,9 +1002,7 @@ class BatchUndeleteAlertsRequest {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          customerId: json_.containsKey('customerId')
-              ? json_['customerId'] as core.String
-              : null,
+          customerId: json_['customerId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1121,12 +1078,8 @@ class CloudPubsubTopic {
 
   CloudPubsubTopic.fromJson(core.Map json_)
       : this(
-          payloadFormat: json_.containsKey('payloadFormat')
-              ? json_['payloadFormat'] as core.String
-              : null,
-          topicName: json_.containsKey('topicName')
-              ? json_['topicName'] as core.String
-              : null,
+          payloadFormat: json_['payloadFormat'] as core.String?,
+          topicName: json_['topicName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1194,9 +1147,7 @@ class ListAlertsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1281,9 +1232,7 @@ class UndeleteAlertRequest {
 
   UndeleteAlertRequest.fromJson(core.Map json_)
       : this(
-          customerId: json_.containsKey('customerId')
-              ? json_['customerId'] as core.String
-              : null,
+          customerId: json_['customerId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

@@ -548,9 +548,7 @@ class InitiatePortabilityArchiveResponse {
 
   InitiatePortabilityArchiveResponse.fromJson(core.Map json_)
       : this(
-          archiveJobId: json_.containsKey('archiveJobId')
-              ? json_['archiveJobId'] as core.String
-              : null,
+          archiveJobId: json_['archiveJobId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -587,9 +585,8 @@ class PortabilityArchiveState {
 
   PortabilityArchiveState.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
+          name: json_['name'] as core.String?,
+          state: json_['state'] as core.String?,
           urls: json_.containsKey('urls')
               ? (json_['urls'] as core.List)
                   .map((value) => value as core.String)
@@ -623,9 +620,7 @@ class RetryPortabilityArchiveResponse {
 
   RetryPortabilityArchiveResponse.fromJson(core.Map json_)
       : this(
-          archiveJobId: json_.containsKey('archiveJobId')
-              ? json_['archiveJobId'] as core.String
-              : null,
+          archiveJobId: json_['archiveJobId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

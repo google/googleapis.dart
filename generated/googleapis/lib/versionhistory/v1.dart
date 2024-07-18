@@ -372,10 +372,8 @@ class Channel {
 
   Channel.fromJson(core.Map json_)
       : this(
-          channelType: json_.containsKey('channelType')
-              ? json_['channelType'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          channelType: json_['channelType'] as core.String?,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -415,9 +413,7 @@ class ListChannelsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -443,9 +439,7 @@ class ListPlatformsResponse {
 
   ListPlatformsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           platforms: json_.containsKey('platforms')
               ? (json_['platforms'] as core.List)
                   .map((value) => Platform.fromJson(
@@ -477,9 +471,7 @@ class ListReleasesResponse {
 
   ListReleasesResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           releases: json_.containsKey('releases')
               ? (json_['releases'] as core.List)
                   .map((value) => Release.fromJson(
@@ -511,9 +503,7 @@ class ListVersionsResponse {
 
   ListVersionsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           versions: json_.containsKey('versions')
               ? (json_['versions'] as core.List)
                   .map((value) => Version.fromJson(
@@ -565,10 +555,8 @@ class Platform {
 
   Platform.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          platformType: json_.containsKey('platformType')
-              ? json_['platformType'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          platformType: json_['platformType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -627,23 +615,15 @@ class Release {
 
   Release.fromJson(core.Map json_)
       : this(
-          fraction: json_.containsKey('fraction')
-              ? (json_['fraction'] as core.num).toDouble()
-              : null,
-          fractionGroup: json_.containsKey('fractionGroup')
-              ? json_['fractionGroup'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          pinnable: json_.containsKey('pinnable')
-              ? json_['pinnable'] as core.bool
-              : null,
+          fraction: (json_['fraction'] as core.num?)?.toDouble(),
+          fractionGroup: json_['fractionGroup'] as core.String?,
+          name: json_['name'] as core.String?,
+          pinnable: json_['pinnable'] as core.bool?,
           serving: json_.containsKey('serving')
               ? Interval.fromJson(
                   json_['serving'] as core.Map<core.String, core.dynamic>)
               : null,
-          version: json_.containsKey('version')
-              ? json_['version'] as core.String
-              : null,
+          version: json_['version'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -680,10 +660,8 @@ class Version {
 
   Version.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          version: json_.containsKey('version')
-              ? json_['version'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          version: json_['version'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

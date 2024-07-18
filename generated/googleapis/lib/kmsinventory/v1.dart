@@ -308,9 +308,7 @@ class GoogleCloudKmsInventoryV1ListCryptoKeysResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -389,15 +387,9 @@ class GoogleCloudKmsInventoryV1ProtectedResource {
 
   GoogleCloudKmsInventoryV1ProtectedResource.fromJson(core.Map json_)
       : this(
-          cloudProduct: json_.containsKey('cloudProduct')
-              ? json_['cloudProduct'] as core.String
-              : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          cryptoKeyVersion: json_.containsKey('cryptoKeyVersion')
-              ? json_['cryptoKeyVersion'] as core.String
-              : null,
+          cloudProduct: json_['cloudProduct'] as core.String?,
+          createTime: json_['createTime'] as core.String?,
+          cryptoKeyVersion: json_['cryptoKeyVersion'] as core.String?,
           cryptoKeyVersions: json_.containsKey('cryptoKeyVersions')
               ? (json_['cryptoKeyVersions'] as core.List)
                   .map((value) => value as core.String)
@@ -411,19 +403,11 @@ class GoogleCloudKmsInventoryV1ProtectedResource {
                   ),
                 )
               : null,
-          location: json_.containsKey('location')
-              ? json_['location'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          project: json_.containsKey('project')
-              ? json_['project'] as core.String
-              : null,
-          projectId: json_.containsKey('projectId')
-              ? json_['projectId'] as core.String
-              : null,
-          resourceType: json_.containsKey('resourceType')
-              ? json_['resourceType'] as core.String
-              : null,
+          location: json_['location'] as core.String?,
+          name: json_['name'] as core.String?,
+          project: json_['project'] as core.String?,
+          projectId: json_['projectId'] as core.String?,
+          resourceType: json_['resourceType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -494,13 +478,9 @@ class GoogleCloudKmsInventoryV1ProtectedResourcesSummary {
                   ),
                 )
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          projectCount: json_.containsKey('projectCount')
-              ? json_['projectCount'] as core.int
-              : null,
-          resourceCount: json_.containsKey('resourceCount')
-              ? json_['resourceCount'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          projectCount: json_['projectCount'] as core.int?,
+          resourceCount: json_['resourceCount'] as core.String?,
           resourceTypes: json_.containsKey('resourceTypes')
               ? (json_['resourceTypes'] as core.Map<core.String, core.dynamic>)
                   .map(
@@ -540,9 +520,7 @@ class GoogleCloudKmsInventoryV1SearchProtectedResourcesResponse {
   GoogleCloudKmsInventoryV1SearchProtectedResourcesResponse.fromJson(
       core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           protectedResources: json_.containsKey('protectedResources')
               ? (json_['protectedResources'] as core.List)
                   .map((value) =>
@@ -675,19 +653,11 @@ class GoogleCloudKmsV1CryptoKey {
 
   GoogleCloudKmsV1CryptoKey.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          cryptoKeyBackend: json_.containsKey('cryptoKeyBackend')
-              ? json_['cryptoKeyBackend'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          cryptoKeyBackend: json_['cryptoKeyBackend'] as core.String?,
           destroyScheduledDuration:
-              json_.containsKey('destroyScheduledDuration')
-                  ? json_['destroyScheduledDuration'] as core.String
-                  : null,
-          importOnly: json_.containsKey('importOnly')
-              ? json_['importOnly'] as core.bool
-              : null,
+              json_['destroyScheduledDuration'] as core.String?,
+          importOnly: json_['importOnly'] as core.bool?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -696,20 +666,14 @@ class GoogleCloudKmsV1CryptoKey {
                   ),
                 )
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          nextRotationTime: json_.containsKey('nextRotationTime')
-              ? json_['nextRotationTime'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          nextRotationTime: json_['nextRotationTime'] as core.String?,
           primary: json_.containsKey('primary')
               ? GoogleCloudKmsV1CryptoKeyVersion.fromJson(
                   json_['primary'] as core.Map<core.String, core.dynamic>)
               : null,
-          purpose: json_.containsKey('purpose')
-              ? json_['purpose'] as core.String
-              : null,
-          rotationPeriod: json_.containsKey('rotationPeriod')
-              ? json_['rotationPeriod'] as core.String
-              : null,
+          purpose: json_['purpose'] as core.String?,
+          rotationPeriod: json_['rotationPeriod'] as core.String?,
           versionTemplate: json_.containsKey('versionTemplate')
               ? GoogleCloudKmsV1CryptoKeyVersionTemplate.fromJson(
                   json_['versionTemplate']
@@ -968,56 +932,32 @@ class GoogleCloudKmsV1CryptoKeyVersion {
 
   GoogleCloudKmsV1CryptoKeyVersion.fromJson(core.Map json_)
       : this(
-          algorithm: json_.containsKey('algorithm')
-              ? json_['algorithm'] as core.String
-              : null,
+          algorithm: json_['algorithm'] as core.String?,
           attestation: json_.containsKey('attestation')
               ? GoogleCloudKmsV1KeyOperationAttestation.fromJson(
                   json_['attestation'] as core.Map<core.String, core.dynamic>)
               : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          destroyEventTime: json_.containsKey('destroyEventTime')
-              ? json_['destroyEventTime'] as core.String
-              : null,
-          destroyTime: json_.containsKey('destroyTime')
-              ? json_['destroyTime'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          destroyEventTime: json_['destroyEventTime'] as core.String?,
+          destroyTime: json_['destroyTime'] as core.String?,
           externalDestructionFailureReason:
-              json_.containsKey('externalDestructionFailureReason')
-                  ? json_['externalDestructionFailureReason'] as core.String
-                  : null,
+              json_['externalDestructionFailureReason'] as core.String?,
           externalProtectionLevelOptions:
               json_.containsKey('externalProtectionLevelOptions')
                   ? GoogleCloudKmsV1ExternalProtectionLevelOptions.fromJson(
                       json_['externalProtectionLevelOptions']
                           as core.Map<core.String, core.dynamic>)
                   : null,
-          generateTime: json_.containsKey('generateTime')
-              ? json_['generateTime'] as core.String
-              : null,
-          generationFailureReason: json_.containsKey('generationFailureReason')
-              ? json_['generationFailureReason'] as core.String
-              : null,
-          importFailureReason: json_.containsKey('importFailureReason')
-              ? json_['importFailureReason'] as core.String
-              : null,
-          importJob: json_.containsKey('importJob')
-              ? json_['importJob'] as core.String
-              : null,
-          importTime: json_.containsKey('importTime')
-              ? json_['importTime'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          protectionLevel: json_.containsKey('protectionLevel')
-              ? json_['protectionLevel'] as core.String
-              : null,
-          reimportEligible: json_.containsKey('reimportEligible')
-              ? json_['reimportEligible'] as core.bool
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
+          generateTime: json_['generateTime'] as core.String?,
+          generationFailureReason:
+              json_['generationFailureReason'] as core.String?,
+          importFailureReason: json_['importFailureReason'] as core.String?,
+          importJob: json_['importJob'] as core.String?,
+          importTime: json_['importTime'] as core.String?,
+          name: json_['name'] as core.String?,
+          protectionLevel: json_['protectionLevel'] as core.String?,
+          reimportEligible: json_['reimportEligible'] as core.bool?,
+          state: json_['state'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1103,12 +1043,8 @@ class GoogleCloudKmsV1KeyOperationAttestation {
                   .fromJson(json_['certChains']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          content: json_.containsKey('content')
-              ? json_['content'] as core.String
-              : null,
-          format: json_.containsKey('format')
-              ? json_['format'] as core.String
-              : null,
+          content: json_['content'] as core.String?,
+          format: json_['format'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

@@ -854,25 +854,13 @@ class CreateAuthUriResponse {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          authUri: json_.containsKey('authUri')
-              ? json_['authUri'] as core.String
-              : null,
-          captchaRequired: json_.containsKey('captchaRequired')
-              ? json_['captchaRequired'] as core.bool
-              : null,
-          forExistingProvider: json_.containsKey('forExistingProvider')
-              ? json_['forExistingProvider'] as core.bool
-              : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          providerId: json_.containsKey('providerId')
-              ? json_['providerId'] as core.String
-              : null,
-          registered: json_.containsKey('registered')
-              ? json_['registered'] as core.bool
-              : null,
-          sessionId: json_.containsKey('sessionId')
-              ? json_['sessionId'] as core.String
-              : null,
+          authUri: json_['authUri'] as core.String?,
+          captchaRequired: json_['captchaRequired'] as core.bool?,
+          forExistingProvider: json_['forExistingProvider'] as core.bool?,
+          kind: json_['kind'] as core.String?,
+          providerId: json_['providerId'] as core.String?,
+          registered: json_['registered'] as core.bool?,
+          sessionId: json_['sessionId'] as core.String?,
           signinMethods: json_.containsKey('signinMethods')
               ? (json_['signinMethods'] as core.List)
                   .map((value) => value as core.String)
@@ -905,7 +893,7 @@ class DeleteAccountResponse {
 
   DeleteAccountResponse.fromJson(core.Map json_)
       : this(
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          kind: json_['kind'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -934,10 +922,8 @@ class DownloadAccountResponse {
 
   DownloadAccountResponse.fromJson(core.Map json_)
       : this(
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          kind: json_['kind'] as core.String?,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           users: json_.containsKey('users')
               ? (json_['users'] as core.List)
                   .map((value) => UserInfo.fromJson(
@@ -988,24 +974,13 @@ class EmailLinkSigninResponse {
 
   EmailLinkSigninResponse.fromJson(core.Map json_)
       : this(
-          email:
-              json_.containsKey('email') ? json_['email'] as core.String : null,
-          expiresIn: json_.containsKey('expiresIn')
-              ? json_['expiresIn'] as core.String
-              : null,
-          idToken: json_.containsKey('idToken')
-              ? json_['idToken'] as core.String
-              : null,
-          isNewUser: json_.containsKey('isNewUser')
-              ? json_['isNewUser'] as core.bool
-              : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          localId: json_.containsKey('localId')
-              ? json_['localId'] as core.String
-              : null,
-          refreshToken: json_.containsKey('refreshToken')
-              ? json_['refreshToken'] as core.String
-              : null,
+          email: json_['email'] as core.String?,
+          expiresIn: json_['expiresIn'] as core.String?,
+          idToken: json_['idToken'] as core.String?,
+          isNewUser: json_['isNewUser'] as core.bool?,
+          kind: json_['kind'] as core.String?,
+          localId: json_['localId'] as core.String?,
+          refreshToken: json_['refreshToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1050,20 +1025,12 @@ class EmailTemplate {
 
   EmailTemplate.fromJson(core.Map json_)
       : this(
-          body: json_.containsKey('body') ? json_['body'] as core.String : null,
-          format: json_.containsKey('format')
-              ? json_['format'] as core.String
-              : null,
-          from: json_.containsKey('from') ? json_['from'] as core.String : null,
-          fromDisplayName: json_.containsKey('fromDisplayName')
-              ? json_['fromDisplayName'] as core.String
-              : null,
-          replyTo: json_.containsKey('replyTo')
-              ? json_['replyTo'] as core.String
-              : null,
-          subject: json_.containsKey('subject')
-              ? json_['subject'] as core.String
-              : null,
+          body: json_['body'] as core.String?,
+          format: json_['format'] as core.String?,
+          from: json_['from'] as core.String?,
+          fromDisplayName: json_['fromDisplayName'] as core.String?,
+          replyTo: json_['replyTo'] as core.String?,
+          subject: json_['subject'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1091,7 +1058,7 @@ class GetAccountInfoResponse {
 
   GetAccountInfoResponse.fromJson(core.Map json_)
       : this(
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          kind: json_['kind'] as core.String?,
           users: json_.containsKey('users')
               ? (json_['users'] as core.List)
                   .map((value) => UserInfo.fromJson(
@@ -1126,12 +1093,9 @@ class GetOobConfirmationCodeResponse {
 
   GetOobConfirmationCodeResponse.fromJson(core.Map json_)
       : this(
-          email:
-              json_.containsKey('email') ? json_['email'] as core.String : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          oobCode: json_.containsKey('oobCode')
-              ? json_['oobCode'] as core.String
-              : null,
+          email: json_['email'] as core.String?,
+          kind: json_['kind'] as core.String?,
+          oobCode: json_['oobCode'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1161,13 +1125,9 @@ class GetRecaptchaParamResponse {
 
   GetRecaptchaParamResponse.fromJson(core.Map json_)
       : this(
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          recaptchaSiteKey: json_.containsKey('recaptchaSiteKey')
-              ? json_['recaptchaSiteKey'] as core.String
-              : null,
-          recaptchaStoken: json_.containsKey('recaptchaStoken')
-              ? json_['recaptchaStoken'] as core.String
-              : null,
+          kind: json_['kind'] as core.String?,
+          recaptchaSiteKey: json_['recaptchaSiteKey'] as core.String?,
+          recaptchaStoken: json_['recaptchaStoken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1268,20 +1228,11 @@ class IdentitytoolkitRelyingpartyCreateAuthUriRequest {
 
   IdentitytoolkitRelyingpartyCreateAuthUriRequest.fromJson(core.Map json_)
       : this(
-          appId:
-              json_.containsKey('appId') ? json_['appId'] as core.String : null,
-          authFlowType: json_.containsKey('authFlowType')
-              ? json_['authFlowType'] as core.String
-              : null,
-          clientId: json_.containsKey('clientId')
-              ? json_['clientId'] as core.String
-              : null,
-          context: json_.containsKey('context')
-              ? json_['context'] as core.String
-              : null,
-          continueUri: json_.containsKey('continueUri')
-              ? json_['continueUri'] as core.String
-              : null,
+          appId: json_['appId'] as core.String?,
+          authFlowType: json_['authFlowType'] as core.String?,
+          clientId: json_['clientId'] as core.String?,
+          context: json_['context'] as core.String?,
+          continueUri: json_['continueUri'] as core.String?,
           customParameter: json_.containsKey('customParameter')
               ? (json_['customParameter']
                       as core.Map<core.String, core.dynamic>)
@@ -1292,36 +1243,16 @@ class IdentitytoolkitRelyingpartyCreateAuthUriRequest {
                   ),
                 )
               : null,
-          hostedDomain: json_.containsKey('hostedDomain')
-              ? json_['hostedDomain'] as core.String
-              : null,
-          identifier: json_.containsKey('identifier')
-              ? json_['identifier'] as core.String
-              : null,
-          oauthConsumerKey: json_.containsKey('oauthConsumerKey')
-              ? json_['oauthConsumerKey'] as core.String
-              : null,
-          oauthScope: json_.containsKey('oauthScope')
-              ? json_['oauthScope'] as core.String
-              : null,
-          openidRealm: json_.containsKey('openidRealm')
-              ? json_['openidRealm'] as core.String
-              : null,
-          otaApp: json_.containsKey('otaApp')
-              ? json_['otaApp'] as core.String
-              : null,
-          providerId: json_.containsKey('providerId')
-              ? json_['providerId'] as core.String
-              : null,
-          sessionId: json_.containsKey('sessionId')
-              ? json_['sessionId'] as core.String
-              : null,
-          tenantId: json_.containsKey('tenantId')
-              ? json_['tenantId'] as core.String
-              : null,
-          tenantProjectNumber: json_.containsKey('tenantProjectNumber')
-              ? json_['tenantProjectNumber'] as core.String
-              : null,
+          hostedDomain: json_['hostedDomain'] as core.String?,
+          identifier: json_['identifier'] as core.String?,
+          oauthConsumerKey: json_['oauthConsumerKey'] as core.String?,
+          oauthScope: json_['oauthScope'] as core.String?,
+          openidRealm: json_['openidRealm'] as core.String?,
+          otaApp: json_['otaApp'] as core.String?,
+          providerId: json_['providerId'] as core.String?,
+          sessionId: json_['sessionId'] as core.String?,
+          tenantId: json_['tenantId'] as core.String?,
+          tenantProjectNumber: json_['tenantProjectNumber'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1366,15 +1297,10 @@ class IdentitytoolkitRelyingpartyDeleteAccountRequest {
 
   IdentitytoolkitRelyingpartyDeleteAccountRequest.fromJson(core.Map json_)
       : this(
-          delegatedProjectNumber: json_.containsKey('delegatedProjectNumber')
-              ? json_['delegatedProjectNumber'] as core.String
-              : null,
-          idToken: json_.containsKey('idToken')
-              ? json_['idToken'] as core.String
-              : null,
-          localId: json_.containsKey('localId')
-              ? json_['localId'] as core.String
-              : null,
+          delegatedProjectNumber:
+              json_['delegatedProjectNumber'] as core.String?,
+          idToken: json_['idToken'] as core.String?,
+          localId: json_['localId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1414,18 +1340,11 @@ class IdentitytoolkitRelyingpartyDownloadAccountRequest {
 
   IdentitytoolkitRelyingpartyDownloadAccountRequest.fromJson(core.Map json_)
       : this(
-          delegatedProjectNumber: json_.containsKey('delegatedProjectNumber')
-              ? json_['delegatedProjectNumber'] as core.String
-              : null,
-          maxResults: json_.containsKey('maxResults')
-              ? json_['maxResults'] as core.int
-              : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
-          targetProjectId: json_.containsKey('targetProjectId')
-              ? json_['targetProjectId'] as core.String
-              : null,
+          delegatedProjectNumber:
+              json_['delegatedProjectNumber'] as core.String?,
+          maxResults: json_['maxResults'] as core.int?,
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          targetProjectId: json_['targetProjectId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1456,14 +1375,9 @@ class IdentitytoolkitRelyingpartyEmailLinkSigninRequest {
 
   IdentitytoolkitRelyingpartyEmailLinkSigninRequest.fromJson(core.Map json_)
       : this(
-          email:
-              json_.containsKey('email') ? json_['email'] as core.String : null,
-          idToken: json_.containsKey('idToken')
-              ? json_['idToken'] as core.String
-              : null,
-          oobCode: json_.containsKey('oobCode')
-              ? json_['oobCode'] as core.String
-              : null,
+          email: json_['email'] as core.String?,
+          idToken: json_['idToken'] as core.String?,
+          oobCode: json_['oobCode'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1502,17 +1416,14 @@ class IdentitytoolkitRelyingpartyGetAccountInfoRequest {
 
   IdentitytoolkitRelyingpartyGetAccountInfoRequest.fromJson(core.Map json_)
       : this(
-          delegatedProjectNumber: json_.containsKey('delegatedProjectNumber')
-              ? json_['delegatedProjectNumber'] as core.String
-              : null,
+          delegatedProjectNumber:
+              json_['delegatedProjectNumber'] as core.String?,
           email: json_.containsKey('email')
               ? (json_['email'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          idToken: json_.containsKey('idToken')
-              ? json_['idToken'] as core.String
-              : null,
+          idToken: json_['idToken'] as core.String?,
           localId: json_.containsKey('localId')
               ? (json_['localId'] as core.List)
                   .map((value) => value as core.String)
@@ -1588,12 +1499,8 @@ class IdentitytoolkitRelyingpartyGetProjectConfigResponse {
 
   IdentitytoolkitRelyingpartyGetProjectConfigResponse.fromJson(core.Map json_)
       : this(
-          allowPasswordUser: json_.containsKey('allowPasswordUser')
-              ? json_['allowPasswordUser'] as core.bool
-              : null,
-          apiKey: json_.containsKey('apiKey')
-              ? json_['apiKey'] as core.String
-              : null,
+          allowPasswordUser: json_['allowPasswordUser'] as core.bool?,
+          apiKey: json_['apiKey'] as core.String?,
           authorizedDomains: json_.containsKey('authorizedDomains')
               ? (json_['authorizedDomains'] as core.List)
                   .map((value) => value as core.String)
@@ -1603,12 +1510,8 @@ class IdentitytoolkitRelyingpartyGetProjectConfigResponse {
               ? EmailTemplate.fromJson(json_['changeEmailTemplate']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          dynamicLinksDomain: json_.containsKey('dynamicLinksDomain')
-              ? json_['dynamicLinksDomain'] as core.String
-              : null,
-          enableAnonymousUser: json_.containsKey('enableAnonymousUser')
-              ? json_['enableAnonymousUser'] as core.bool
-              : null,
+          dynamicLinksDomain: json_['dynamicLinksDomain'] as core.String?,
+          enableAnonymousUser: json_['enableAnonymousUser'] as core.bool?,
           idpConfig: json_.containsKey('idpConfig')
               ? (json_['idpConfig'] as core.List)
                   .map((value) => IdpConfig.fromJson(
@@ -1620,16 +1523,12 @@ class IdentitytoolkitRelyingpartyGetProjectConfigResponse {
                   ? EmailTemplate.fromJson(json_['legacyResetPasswordTemplate']
                       as core.Map<core.String, core.dynamic>)
                   : null,
-          projectId: json_.containsKey('projectId')
-              ? json_['projectId'] as core.String
-              : null,
+          projectId: json_['projectId'] as core.String?,
           resetPasswordTemplate: json_.containsKey('resetPasswordTemplate')
               ? EmailTemplate.fromJson(json_['resetPasswordTemplate']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          useEmailSending: json_.containsKey('useEmailSending')
-              ? json_['useEmailSending'] as core.bool
-              : null,
+          useEmailSending: json_['useEmailSending'] as core.bool?,
           verifyEmailTemplate: json_.containsKey('verifyEmailTemplate')
               ? EmailTemplate.fromJson(json_['verifyEmailTemplate']
                   as core.Map<core.String, core.dynamic>)
@@ -1685,17 +1584,10 @@ class IdentitytoolkitRelyingpartyResetPasswordRequest {
 
   IdentitytoolkitRelyingpartyResetPasswordRequest.fromJson(core.Map json_)
       : this(
-          email:
-              json_.containsKey('email') ? json_['email'] as core.String : null,
-          newPassword: json_.containsKey('newPassword')
-              ? json_['newPassword'] as core.String
-              : null,
-          oldPassword: json_.containsKey('oldPassword')
-              ? json_['oldPassword'] as core.String
-              : null,
-          oobCode: json_.containsKey('oobCode')
-              ? json_['oobCode'] as core.String
-              : null,
+          email: json_['email'] as core.String?,
+          newPassword: json_['newPassword'] as core.String?,
+          oldPassword: json_['oldPassword'] as core.String?,
+          oobCode: json_['oobCode'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1730,18 +1622,10 @@ class IdentitytoolkitRelyingpartySendVerificationCodeRequest {
   IdentitytoolkitRelyingpartySendVerificationCodeRequest.fromJson(
       core.Map json_)
       : this(
-          iosReceipt: json_.containsKey('iosReceipt')
-              ? json_['iosReceipt'] as core.String
-              : null,
-          iosSecret: json_.containsKey('iosSecret')
-              ? json_['iosSecret'] as core.String
-              : null,
-          phoneNumber: json_.containsKey('phoneNumber')
-              ? json_['phoneNumber'] as core.String
-              : null,
-          recaptchaToken: json_.containsKey('recaptchaToken')
-              ? json_['recaptchaToken'] as core.String
-              : null,
+          iosReceipt: json_['iosReceipt'] as core.String?,
+          iosSecret: json_['iosSecret'] as core.String?,
+          phoneNumber: json_['phoneNumber'] as core.String?,
+          recaptchaToken: json_['recaptchaToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1764,9 +1648,7 @@ class IdentitytoolkitRelyingpartySendVerificationCodeResponse {
   IdentitytoolkitRelyingpartySendVerificationCodeResponse.fromJson(
       core.Map json_)
       : this(
-          sessionInfo: json_.containsKey('sessionInfo')
-              ? json_['sessionInfo'] as core.String
-              : null,
+          sessionInfo: json_['sessionInfo'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1875,21 +1757,12 @@ class IdentitytoolkitRelyingpartySetAccountInfoRequest {
 
   IdentitytoolkitRelyingpartySetAccountInfoRequest.fromJson(core.Map json_)
       : this(
-          captchaChallenge: json_.containsKey('captchaChallenge')
-              ? json_['captchaChallenge'] as core.String
-              : null,
-          captchaResponse: json_.containsKey('captchaResponse')
-              ? json_['captchaResponse'] as core.String
-              : null,
-          createdAt: json_.containsKey('createdAt')
-              ? json_['createdAt'] as core.String
-              : null,
-          customAttributes: json_.containsKey('customAttributes')
-              ? json_['customAttributes'] as core.String
-              : null,
-          delegatedProjectNumber: json_.containsKey('delegatedProjectNumber')
-              ? json_['delegatedProjectNumber'] as core.String
-              : null,
+          captchaChallenge: json_['captchaChallenge'] as core.String?,
+          captchaResponse: json_['captchaResponse'] as core.String?,
+          createdAt: json_['createdAt'] as core.String?,
+          customAttributes: json_['customAttributes'] as core.String?,
+          delegatedProjectNumber:
+              json_['delegatedProjectNumber'] as core.String?,
           deleteAttribute: json_.containsKey('deleteAttribute')
               ? (json_['deleteAttribute'] as core.List)
                   .map((value) => value as core.String)
@@ -1900,55 +1773,27 @@ class IdentitytoolkitRelyingpartySetAccountInfoRequest {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          disableUser: json_.containsKey('disableUser')
-              ? json_['disableUser'] as core.bool
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          email:
-              json_.containsKey('email') ? json_['email'] as core.String : null,
-          emailVerified: json_.containsKey('emailVerified')
-              ? json_['emailVerified'] as core.bool
-              : null,
-          idToken: json_.containsKey('idToken')
-              ? json_['idToken'] as core.String
-              : null,
-          instanceId: json_.containsKey('instanceId')
-              ? json_['instanceId'] as core.String
-              : null,
-          lastLoginAt: json_.containsKey('lastLoginAt')
-              ? json_['lastLoginAt'] as core.String
-              : null,
-          localId: json_.containsKey('localId')
-              ? json_['localId'] as core.String
-              : null,
-          oobCode: json_.containsKey('oobCode')
-              ? json_['oobCode'] as core.String
-              : null,
-          password: json_.containsKey('password')
-              ? json_['password'] as core.String
-              : null,
-          phoneNumber: json_.containsKey('phoneNumber')
-              ? json_['phoneNumber'] as core.String
-              : null,
-          photoUrl: json_.containsKey('photoUrl')
-              ? json_['photoUrl'] as core.String
-              : null,
+          disableUser: json_['disableUser'] as core.bool?,
+          displayName: json_['displayName'] as core.String?,
+          email: json_['email'] as core.String?,
+          emailVerified: json_['emailVerified'] as core.bool?,
+          idToken: json_['idToken'] as core.String?,
+          instanceId: json_['instanceId'] as core.String?,
+          lastLoginAt: json_['lastLoginAt'] as core.String?,
+          localId: json_['localId'] as core.String?,
+          oobCode: json_['oobCode'] as core.String?,
+          password: json_['password'] as core.String?,
+          phoneNumber: json_['phoneNumber'] as core.String?,
+          photoUrl: json_['photoUrl'] as core.String?,
           provider: json_.containsKey('provider')
               ? (json_['provider'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          returnSecureToken: json_.containsKey('returnSecureToken')
-              ? json_['returnSecureToken'] as core.bool
-              : null,
-          upgradeToFederatedLogin: json_.containsKey('upgradeToFederatedLogin')
-              ? json_['upgradeToFederatedLogin'] as core.bool
-              : null,
-          validSince: json_.containsKey('validSince')
-              ? json_['validSince'] as core.String
-              : null,
+          returnSecureToken: json_['returnSecureToken'] as core.bool?,
+          upgradeToFederatedLogin:
+              json_['upgradeToFederatedLogin'] as core.bool?,
+          validSince: json_['validSince'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2033,12 +1878,8 @@ class IdentitytoolkitRelyingpartySetProjectConfigRequest {
 
   IdentitytoolkitRelyingpartySetProjectConfigRequest.fromJson(core.Map json_)
       : this(
-          allowPasswordUser: json_.containsKey('allowPasswordUser')
-              ? json_['allowPasswordUser'] as core.bool
-              : null,
-          apiKey: json_.containsKey('apiKey')
-              ? json_['apiKey'] as core.String
-              : null,
+          allowPasswordUser: json_['allowPasswordUser'] as core.bool?,
+          apiKey: json_['apiKey'] as core.String?,
           authorizedDomains: json_.containsKey('authorizedDomains')
               ? (json_['authorizedDomains'] as core.List)
                   .map((value) => value as core.String)
@@ -2048,12 +1889,9 @@ class IdentitytoolkitRelyingpartySetProjectConfigRequest {
               ? EmailTemplate.fromJson(json_['changeEmailTemplate']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          delegatedProjectNumber: json_.containsKey('delegatedProjectNumber')
-              ? json_['delegatedProjectNumber'] as core.String
-              : null,
-          enableAnonymousUser: json_.containsKey('enableAnonymousUser')
-              ? json_['enableAnonymousUser'] as core.bool
-              : null,
+          delegatedProjectNumber:
+              json_['delegatedProjectNumber'] as core.String?,
+          enableAnonymousUser: json_['enableAnonymousUser'] as core.bool?,
           idpConfig: json_.containsKey('idpConfig')
               ? (json_['idpConfig'] as core.List)
                   .map((value) => IdpConfig.fromJson(
@@ -2069,9 +1907,7 @@ class IdentitytoolkitRelyingpartySetProjectConfigRequest {
               ? EmailTemplate.fromJson(json_['resetPasswordTemplate']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          useEmailSending: json_.containsKey('useEmailSending')
-              ? json_['useEmailSending'] as core.bool
-              : null,
+          useEmailSending: json_['useEmailSending'] as core.bool?,
           verifyEmailTemplate: json_.containsKey('verifyEmailTemplate')
               ? EmailTemplate.fromJson(json_['verifyEmailTemplate']
                   as core.Map<core.String, core.dynamic>)
@@ -2110,9 +1946,7 @@ class IdentitytoolkitRelyingpartySetProjectConfigResponse {
 
   IdentitytoolkitRelyingpartySetProjectConfigResponse.fromJson(core.Map json_)
       : this(
-          projectId: json_.containsKey('projectId')
-              ? json_['projectId'] as core.String
-              : null,
+          projectId: json_['projectId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2135,12 +1969,8 @@ class IdentitytoolkitRelyingpartySignOutUserRequest {
 
   IdentitytoolkitRelyingpartySignOutUserRequest.fromJson(core.Map json_)
       : this(
-          instanceId: json_.containsKey('instanceId')
-              ? json_['instanceId'] as core.String
-              : null,
-          localId: json_.containsKey('localId')
-              ? json_['localId'] as core.String
-              : null,
+          instanceId: json_['instanceId'] as core.String?,
+          localId: json_['localId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2160,9 +1990,7 @@ class IdentitytoolkitRelyingpartySignOutUserResponse {
 
   IdentitytoolkitRelyingpartySignOutUserResponse.fromJson(core.Map json_)
       : this(
-          localId: json_.containsKey('localId')
-              ? json_['localId'] as core.String
-              : null,
+          localId: json_['localId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2239,47 +2067,20 @@ class IdentitytoolkitRelyingpartySignupNewUserRequest {
 
   IdentitytoolkitRelyingpartySignupNewUserRequest.fromJson(core.Map json_)
       : this(
-          captchaChallenge: json_.containsKey('captchaChallenge')
-              ? json_['captchaChallenge'] as core.String
-              : null,
-          captchaResponse: json_.containsKey('captchaResponse')
-              ? json_['captchaResponse'] as core.String
-              : null,
-          disabled: json_.containsKey('disabled')
-              ? json_['disabled'] as core.bool
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          email:
-              json_.containsKey('email') ? json_['email'] as core.String : null,
-          emailVerified: json_.containsKey('emailVerified')
-              ? json_['emailVerified'] as core.bool
-              : null,
-          idToken: json_.containsKey('idToken')
-              ? json_['idToken'] as core.String
-              : null,
-          instanceId: json_.containsKey('instanceId')
-              ? json_['instanceId'] as core.String
-              : null,
-          localId: json_.containsKey('localId')
-              ? json_['localId'] as core.String
-              : null,
-          password: json_.containsKey('password')
-              ? json_['password'] as core.String
-              : null,
-          phoneNumber: json_.containsKey('phoneNumber')
-              ? json_['phoneNumber'] as core.String
-              : null,
-          photoUrl: json_.containsKey('photoUrl')
-              ? json_['photoUrl'] as core.String
-              : null,
-          tenantId: json_.containsKey('tenantId')
-              ? json_['tenantId'] as core.String
-              : null,
-          tenantProjectNumber: json_.containsKey('tenantProjectNumber')
-              ? json_['tenantProjectNumber'] as core.String
-              : null,
+          captchaChallenge: json_['captchaChallenge'] as core.String?,
+          captchaResponse: json_['captchaResponse'] as core.String?,
+          disabled: json_['disabled'] as core.bool?,
+          displayName: json_['displayName'] as core.String?,
+          email: json_['email'] as core.String?,
+          emailVerified: json_['emailVerified'] as core.bool?,
+          idToken: json_['idToken'] as core.String?,
+          instanceId: json_['instanceId'] as core.String?,
+          localId: json_['localId'] as core.String?,
+          password: json_['password'] as core.String?,
+          phoneNumber: json_['phoneNumber'] as core.String?,
+          photoUrl: json_['photoUrl'] as core.String?,
+          tenantId: json_['tenantId'] as core.String?,
+          tenantProjectNumber: json_['tenantProjectNumber'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2380,42 +2181,20 @@ class IdentitytoolkitRelyingpartyUploadAccountRequest {
 
   IdentitytoolkitRelyingpartyUploadAccountRequest.fromJson(core.Map json_)
       : this(
-          allowOverwrite: json_.containsKey('allowOverwrite')
-              ? json_['allowOverwrite'] as core.bool
-              : null,
-          blockSize: json_.containsKey('blockSize')
-              ? json_['blockSize'] as core.int
-              : null,
-          cpuMemCost: json_.containsKey('cpuMemCost')
-              ? json_['cpuMemCost'] as core.int
-              : null,
-          delegatedProjectNumber: json_.containsKey('delegatedProjectNumber')
-              ? json_['delegatedProjectNumber'] as core.String
-              : null,
-          dkLen: json_.containsKey('dkLen') ? json_['dkLen'] as core.int : null,
-          hashAlgorithm: json_.containsKey('hashAlgorithm')
-              ? json_['hashAlgorithm'] as core.String
-              : null,
-          memoryCost: json_.containsKey('memoryCost')
-              ? json_['memoryCost'] as core.int
-              : null,
-          parallelization: json_.containsKey('parallelization')
-              ? json_['parallelization'] as core.int
-              : null,
-          rounds:
-              json_.containsKey('rounds') ? json_['rounds'] as core.int : null,
-          saltSeparator: json_.containsKey('saltSeparator')
-              ? json_['saltSeparator'] as core.String
-              : null,
-          sanityCheck: json_.containsKey('sanityCheck')
-              ? json_['sanityCheck'] as core.bool
-              : null,
-          signerKey: json_.containsKey('signerKey')
-              ? json_['signerKey'] as core.String
-              : null,
-          targetProjectId: json_.containsKey('targetProjectId')
-              ? json_['targetProjectId'] as core.String
-              : null,
+          allowOverwrite: json_['allowOverwrite'] as core.bool?,
+          blockSize: json_['blockSize'] as core.int?,
+          cpuMemCost: json_['cpuMemCost'] as core.int?,
+          delegatedProjectNumber:
+              json_['delegatedProjectNumber'] as core.String?,
+          dkLen: json_['dkLen'] as core.int?,
+          hashAlgorithm: json_['hashAlgorithm'] as core.String?,
+          memoryCost: json_['memoryCost'] as core.int?,
+          parallelization: json_['parallelization'] as core.int?,
+          rounds: json_['rounds'] as core.int?,
+          saltSeparator: json_['saltSeparator'] as core.String?,
+          sanityCheck: json_['sanityCheck'] as core.bool?,
+          signerKey: json_['signerKey'] as core.String?,
+          targetProjectId: json_['targetProjectId'] as core.String?,
           users: json_.containsKey('users')
               ? (json_['users'] as core.List)
                   .map((value) => UserInfo.fromJson(
@@ -2514,45 +2293,20 @@ class IdentitytoolkitRelyingpartyVerifyAssertionRequest {
 
   IdentitytoolkitRelyingpartyVerifyAssertionRequest.fromJson(core.Map json_)
       : this(
-          autoCreate: json_.containsKey('autoCreate')
-              ? json_['autoCreate'] as core.bool
-              : null,
-          delegatedProjectNumber: json_.containsKey('delegatedProjectNumber')
-              ? json_['delegatedProjectNumber'] as core.String
-              : null,
-          idToken: json_.containsKey('idToken')
-              ? json_['idToken'] as core.String
-              : null,
-          instanceId: json_.containsKey('instanceId')
-              ? json_['instanceId'] as core.String
-              : null,
-          pendingIdToken: json_.containsKey('pendingIdToken')
-              ? json_['pendingIdToken'] as core.String
-              : null,
-          postBody: json_.containsKey('postBody')
-              ? json_['postBody'] as core.String
-              : null,
-          requestUri: json_.containsKey('requestUri')
-              ? json_['requestUri'] as core.String
-              : null,
-          returnIdpCredential: json_.containsKey('returnIdpCredential')
-              ? json_['returnIdpCredential'] as core.bool
-              : null,
-          returnRefreshToken: json_.containsKey('returnRefreshToken')
-              ? json_['returnRefreshToken'] as core.bool
-              : null,
-          returnSecureToken: json_.containsKey('returnSecureToken')
-              ? json_['returnSecureToken'] as core.bool
-              : null,
-          sessionId: json_.containsKey('sessionId')
-              ? json_['sessionId'] as core.String
-              : null,
-          tenantId: json_.containsKey('tenantId')
-              ? json_['tenantId'] as core.String
-              : null,
-          tenantProjectNumber: json_.containsKey('tenantProjectNumber')
-              ? json_['tenantProjectNumber'] as core.String
-              : null,
+          autoCreate: json_['autoCreate'] as core.bool?,
+          delegatedProjectNumber:
+              json_['delegatedProjectNumber'] as core.String?,
+          idToken: json_['idToken'] as core.String?,
+          instanceId: json_['instanceId'] as core.String?,
+          pendingIdToken: json_['pendingIdToken'] as core.String?,
+          postBody: json_['postBody'] as core.String?,
+          requestUri: json_['requestUri'] as core.String?,
+          returnIdpCredential: json_['returnIdpCredential'] as core.bool?,
+          returnRefreshToken: json_['returnRefreshToken'] as core.bool?,
+          returnSecureToken: json_['returnSecureToken'] as core.bool?,
+          sessionId: json_['sessionId'] as core.String?,
+          tenantId: json_['tenantId'] as core.String?,
+          tenantProjectNumber: json_['tenantProjectNumber'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2601,17 +2355,11 @@ class IdentitytoolkitRelyingpartyVerifyCustomTokenRequest {
 
   IdentitytoolkitRelyingpartyVerifyCustomTokenRequest.fromJson(core.Map json_)
       : this(
-          delegatedProjectNumber: json_.containsKey('delegatedProjectNumber')
-              ? json_['delegatedProjectNumber'] as core.String
-              : null,
-          instanceId: json_.containsKey('instanceId')
-              ? json_['instanceId'] as core.String
-              : null,
-          returnSecureToken: json_.containsKey('returnSecureToken')
-              ? json_['returnSecureToken'] as core.bool
-              : null,
-          token:
-              json_.containsKey('token') ? json_['token'] as core.String : null,
+          delegatedProjectNumber:
+              json_['delegatedProjectNumber'] as core.String?,
+          instanceId: json_['instanceId'] as core.String?,
+          returnSecureToken: json_['returnSecureToken'] as core.bool?,
+          token: json_['token'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2679,38 +2427,18 @@ class IdentitytoolkitRelyingpartyVerifyPasswordRequest {
 
   IdentitytoolkitRelyingpartyVerifyPasswordRequest.fromJson(core.Map json_)
       : this(
-          captchaChallenge: json_.containsKey('captchaChallenge')
-              ? json_['captchaChallenge'] as core.String
-              : null,
-          captchaResponse: json_.containsKey('captchaResponse')
-              ? json_['captchaResponse'] as core.String
-              : null,
-          delegatedProjectNumber: json_.containsKey('delegatedProjectNumber')
-              ? json_['delegatedProjectNumber'] as core.String
-              : null,
-          email:
-              json_.containsKey('email') ? json_['email'] as core.String : null,
-          idToken: json_.containsKey('idToken')
-              ? json_['idToken'] as core.String
-              : null,
-          instanceId: json_.containsKey('instanceId')
-              ? json_['instanceId'] as core.String
-              : null,
-          password: json_.containsKey('password')
-              ? json_['password'] as core.String
-              : null,
-          pendingIdToken: json_.containsKey('pendingIdToken')
-              ? json_['pendingIdToken'] as core.String
-              : null,
-          returnSecureToken: json_.containsKey('returnSecureToken')
-              ? json_['returnSecureToken'] as core.bool
-              : null,
-          tenantId: json_.containsKey('tenantId')
-              ? json_['tenantId'] as core.String
-              : null,
-          tenantProjectNumber: json_.containsKey('tenantProjectNumber')
-              ? json_['tenantProjectNumber'] as core.String
-              : null,
+          captchaChallenge: json_['captchaChallenge'] as core.String?,
+          captchaResponse: json_['captchaResponse'] as core.String?,
+          delegatedProjectNumber:
+              json_['delegatedProjectNumber'] as core.String?,
+          email: json_['email'] as core.String?,
+          idToken: json_['idToken'] as core.String?,
+          instanceId: json_['instanceId'] as core.String?,
+          password: json_['password'] as core.String?,
+          pendingIdToken: json_['pendingIdToken'] as core.String?,
+          returnSecureToken: json_['returnSecureToken'] as core.bool?,
+          tenantId: json_['tenantId'] as core.String?,
+          tenantProjectNumber: json_['tenantProjectNumber'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2755,25 +2483,13 @@ class IdentitytoolkitRelyingpartyVerifyPhoneNumberRequest {
 
   IdentitytoolkitRelyingpartyVerifyPhoneNumberRequest.fromJson(core.Map json_)
       : this(
-          code: json_.containsKey('code') ? json_['code'] as core.String : null,
-          idToken: json_.containsKey('idToken')
-              ? json_['idToken'] as core.String
-              : null,
-          operation: json_.containsKey('operation')
-              ? json_['operation'] as core.String
-              : null,
-          phoneNumber: json_.containsKey('phoneNumber')
-              ? json_['phoneNumber'] as core.String
-              : null,
-          sessionInfo: json_.containsKey('sessionInfo')
-              ? json_['sessionInfo'] as core.String
-              : null,
-          temporaryProof: json_.containsKey('temporaryProof')
-              ? json_['temporaryProof'] as core.String
-              : null,
-          verificationProof: json_.containsKey('verificationProof')
-              ? json_['verificationProof'] as core.String
-              : null,
+          code: json_['code'] as core.String?,
+          idToken: json_['idToken'] as core.String?,
+          operation: json_['operation'] as core.String?,
+          phoneNumber: json_['phoneNumber'] as core.String?,
+          sessionInfo: json_['sessionInfo'] as core.String?,
+          temporaryProof: json_['temporaryProof'] as core.String?,
+          verificationProof: json_['verificationProof'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2815,37 +2531,18 @@ class IdentitytoolkitRelyingpartyVerifyPhoneNumberResponse {
 
   IdentitytoolkitRelyingpartyVerifyPhoneNumberResponse.fromJson(core.Map json_)
       : this(
-          expiresIn: json_.containsKey('expiresIn')
-              ? json_['expiresIn'] as core.String
-              : null,
-          idToken: json_.containsKey('idToken')
-              ? json_['idToken'] as core.String
-              : null,
-          isNewUser: json_.containsKey('isNewUser')
-              ? json_['isNewUser'] as core.bool
-              : null,
-          localId: json_.containsKey('localId')
-              ? json_['localId'] as core.String
-              : null,
-          phoneNumber: json_.containsKey('phoneNumber')
-              ? json_['phoneNumber'] as core.String
-              : null,
-          refreshToken: json_.containsKey('refreshToken')
-              ? json_['refreshToken'] as core.String
-              : null,
-          temporaryProof: json_.containsKey('temporaryProof')
-              ? json_['temporaryProof'] as core.String
-              : null,
-          temporaryProofExpiresIn: json_.containsKey('temporaryProofExpiresIn')
-              ? json_['temporaryProofExpiresIn'] as core.String
-              : null,
-          verificationProof: json_.containsKey('verificationProof')
-              ? json_['verificationProof'] as core.String
-              : null,
+          expiresIn: json_['expiresIn'] as core.String?,
+          idToken: json_['idToken'] as core.String?,
+          isNewUser: json_['isNewUser'] as core.bool?,
+          localId: json_['localId'] as core.String?,
+          phoneNumber: json_['phoneNumber'] as core.String?,
+          refreshToken: json_['refreshToken'] as core.String?,
+          temporaryProof: json_['temporaryProof'] as core.String?,
+          temporaryProofExpiresIn:
+              json_['temporaryProofExpiresIn'] as core.String?,
+          verificationProof: json_['verificationProof'] as core.String?,
           verificationProofExpiresIn:
-              json_.containsKey('verificationProofExpiresIn')
-                  ? json_['verificationProofExpiresIn'] as core.String
-                  : null,
+              json_['verificationProofExpiresIn'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2896,21 +2593,11 @@ class IdpConfig {
 
   IdpConfig.fromJson(core.Map json_)
       : this(
-          clientId: json_.containsKey('clientId')
-              ? json_['clientId'] as core.String
-              : null,
-          enabled: json_.containsKey('enabled')
-              ? json_['enabled'] as core.bool
-              : null,
-          experimentPercent: json_.containsKey('experimentPercent')
-              ? json_['experimentPercent'] as core.int
-              : null,
-          provider: json_.containsKey('provider')
-              ? json_['provider'] as core.String
-              : null,
-          secret: json_.containsKey('secret')
-              ? json_['secret'] as core.String
-              : null,
+          clientId: json_['clientId'] as core.String?,
+          enabled: json_['enabled'] as core.bool?,
+          experimentPercent: json_['experimentPercent'] as core.int?,
+          provider: json_['provider'] as core.String?,
+          secret: json_['secret'] as core.String?,
           whitelistedAudiences: json_.containsKey('whitelistedAudiences')
               ? (json_['whitelistedAudiences'] as core.List)
                   .map((value) => value as core.String)
@@ -3001,48 +2688,21 @@ class Relyingparty {
 
   Relyingparty.fromJson(core.Map json_)
       : this(
-          androidInstallApp: json_.containsKey('androidInstallApp')
-              ? json_['androidInstallApp'] as core.bool
-              : null,
-          androidMinimumVersion: json_.containsKey('androidMinimumVersion')
-              ? json_['androidMinimumVersion'] as core.String
-              : null,
-          androidPackageName: json_.containsKey('androidPackageName')
-              ? json_['androidPackageName'] as core.String
-              : null,
-          canHandleCodeInApp: json_.containsKey('canHandleCodeInApp')
-              ? json_['canHandleCodeInApp'] as core.bool
-              : null,
-          captchaResp: json_.containsKey('captchaResp')
-              ? json_['captchaResp'] as core.String
-              : null,
-          challenge: json_.containsKey('challenge')
-              ? json_['challenge'] as core.String
-              : null,
-          continueUrl: json_.containsKey('continueUrl')
-              ? json_['continueUrl'] as core.String
-              : null,
-          email:
-              json_.containsKey('email') ? json_['email'] as core.String : null,
-          iOSAppStoreId: json_.containsKey('iOSAppStoreId')
-              ? json_['iOSAppStoreId'] as core.String
-              : null,
-          iOSBundleId: json_.containsKey('iOSBundleId')
-              ? json_['iOSBundleId'] as core.String
-              : null,
-          idToken: json_.containsKey('idToken')
-              ? json_['idToken'] as core.String
-              : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          newEmail: json_.containsKey('newEmail')
-              ? json_['newEmail'] as core.String
-              : null,
-          requestType: json_.containsKey('requestType')
-              ? json_['requestType'] as core.String
-              : null,
-          userIp: json_.containsKey('userIp')
-              ? json_['userIp'] as core.String
-              : null,
+          androidInstallApp: json_['androidInstallApp'] as core.bool?,
+          androidMinimumVersion: json_['androidMinimumVersion'] as core.String?,
+          androidPackageName: json_['androidPackageName'] as core.String?,
+          canHandleCodeInApp: json_['canHandleCodeInApp'] as core.bool?,
+          captchaResp: json_['captchaResp'] as core.String?,
+          challenge: json_['challenge'] as core.String?,
+          continueUrl: json_['continueUrl'] as core.String?,
+          email: json_['email'] as core.String?,
+          iOSAppStoreId: json_['iOSAppStoreId'] as core.String?,
+          iOSBundleId: json_['iOSBundleId'] as core.String?,
+          idToken: json_['idToken'] as core.String?,
+          kind: json_['kind'] as core.String?,
+          newEmail: json_['newEmail'] as core.String?,
+          requestType: json_['requestType'] as core.String?,
+          userIp: json_['userIp'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3092,15 +2752,10 @@ class ResetPasswordResponse {
 
   ResetPasswordResponse.fromJson(core.Map json_)
       : this(
-          email:
-              json_.containsKey('email') ? json_['email'] as core.String : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          newEmail: json_.containsKey('newEmail')
-              ? json_['newEmail'] as core.String
-              : null,
-          requestType: json_.containsKey('requestType')
-              ? json_['requestType'] as core.String
-              : null,
+          email: json_['email'] as core.String?,
+          kind: json_['kind'] as core.String?,
+          newEmail: json_['newEmail'] as core.String?,
+          requestType: json_['requestType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3136,18 +2791,10 @@ class SetAccountInfoResponseProviderUserInfo {
 
   SetAccountInfoResponseProviderUserInfo.fromJson(core.Map json_)
       : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          federatedId: json_.containsKey('federatedId')
-              ? json_['federatedId'] as core.String
-              : null,
-          photoUrl: json_.containsKey('photoUrl')
-              ? json_['photoUrl'] as core.String
-              : null,
-          providerId: json_.containsKey('providerId')
-              ? json_['providerId'] as core.String
-              : null,
+          displayName: json_['displayName'] as core.String?,
+          federatedId: json_['federatedId'] as core.String?,
+          photoUrl: json_['photoUrl'] as core.String?,
+          providerId: json_['providerId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3221,33 +2868,16 @@ class SetAccountInfoResponse {
 
   SetAccountInfoResponse.fromJson(core.Map json_)
       : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          email:
-              json_.containsKey('email') ? json_['email'] as core.String : null,
-          emailVerified: json_.containsKey('emailVerified')
-              ? json_['emailVerified'] as core.bool
-              : null,
-          expiresIn: json_.containsKey('expiresIn')
-              ? json_['expiresIn'] as core.String
-              : null,
-          idToken: json_.containsKey('idToken')
-              ? json_['idToken'] as core.String
-              : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          localId: json_.containsKey('localId')
-              ? json_['localId'] as core.String
-              : null,
-          newEmail: json_.containsKey('newEmail')
-              ? json_['newEmail'] as core.String
-              : null,
-          passwordHash: json_.containsKey('passwordHash')
-              ? json_['passwordHash'] as core.String
-              : null,
-          photoUrl: json_.containsKey('photoUrl')
-              ? json_['photoUrl'] as core.String
-              : null,
+          displayName: json_['displayName'] as core.String?,
+          email: json_['email'] as core.String?,
+          emailVerified: json_['emailVerified'] as core.bool?,
+          expiresIn: json_['expiresIn'] as core.String?,
+          idToken: json_['idToken'] as core.String?,
+          kind: json_['kind'] as core.String?,
+          localId: json_['localId'] as core.String?,
+          newEmail: json_['newEmail'] as core.String?,
+          passwordHash: json_['passwordHash'] as core.String?,
+          photoUrl: json_['photoUrl'] as core.String?,
           providerUserInfo: json_.containsKey('providerUserInfo')
               ? (json_['providerUserInfo'] as core.List)
                   .map((value) =>
@@ -3255,9 +2885,7 @@ class SetAccountInfoResponse {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          refreshToken: json_.containsKey('refreshToken')
-              ? json_['refreshToken'] as core.String
-              : null,
+          refreshToken: json_['refreshToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3313,24 +2941,13 @@ class SignupNewUserResponse {
 
   SignupNewUserResponse.fromJson(core.Map json_)
       : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          email:
-              json_.containsKey('email') ? json_['email'] as core.String : null,
-          expiresIn: json_.containsKey('expiresIn')
-              ? json_['expiresIn'] as core.String
-              : null,
-          idToken: json_.containsKey('idToken')
-              ? json_['idToken'] as core.String
-              : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          localId: json_.containsKey('localId')
-              ? json_['localId'] as core.String
-              : null,
-          refreshToken: json_.containsKey('refreshToken')
-              ? json_['refreshToken'] as core.String
-              : null,
+          displayName: json_['displayName'] as core.String?,
+          email: json_['email'] as core.String?,
+          expiresIn: json_['expiresIn'] as core.String?,
+          idToken: json_['idToken'] as core.String?,
+          kind: json_['kind'] as core.String?,
+          localId: json_['localId'] as core.String?,
+          refreshToken: json_['refreshToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3358,10 +2975,8 @@ class UploadAccountResponseError {
 
   UploadAccountResponseError.fromJson(core.Map json_)
       : this(
-          index: json_.containsKey('index') ? json_['index'] as core.int : null,
-          message: json_.containsKey('message')
-              ? json_['message'] as core.String
-              : null,
+          index: json_['index'] as core.int?,
+          message: json_['message'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3391,7 +3006,7 @@ class UploadAccountResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          kind: json_['kind'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3441,28 +3056,14 @@ class UserInfoProviderUserInfo {
 
   UserInfoProviderUserInfo.fromJson(core.Map json_)
       : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          email:
-              json_.containsKey('email') ? json_['email'] as core.String : null,
-          federatedId: json_.containsKey('federatedId')
-              ? json_['federatedId'] as core.String
-              : null,
-          phoneNumber: json_.containsKey('phoneNumber')
-              ? json_['phoneNumber'] as core.String
-              : null,
-          photoUrl: json_.containsKey('photoUrl')
-              ? json_['photoUrl'] as core.String
-              : null,
-          providerId: json_.containsKey('providerId')
-              ? json_['providerId'] as core.String
-              : null,
-          rawId:
-              json_.containsKey('rawId') ? json_['rawId'] as core.String : null,
-          screenName: json_.containsKey('screenName')
-              ? json_['screenName'] as core.String
-              : null,
+          displayName: json_['displayName'] as core.String?,
+          email: json_['email'] as core.String?,
+          federatedId: json_['federatedId'] as core.String?,
+          phoneNumber: json_['phoneNumber'] as core.String?,
+          photoUrl: json_['photoUrl'] as core.String?,
+          providerId: json_['providerId'] as core.String?,
+          rawId: json_['rawId'] as core.String?,
+          screenName: json_['screenName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3573,63 +3174,31 @@ class UserInfo {
 
   UserInfo.fromJson(core.Map json_)
       : this(
-          createdAt: json_.containsKey('createdAt')
-              ? json_['createdAt'] as core.String
-              : null,
-          customAttributes: json_.containsKey('customAttributes')
-              ? json_['customAttributes'] as core.String
-              : null,
-          customAuth: json_.containsKey('customAuth')
-              ? json_['customAuth'] as core.bool
-              : null,
-          disabled: json_.containsKey('disabled')
-              ? json_['disabled'] as core.bool
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          email:
-              json_.containsKey('email') ? json_['email'] as core.String : null,
-          emailVerified: json_.containsKey('emailVerified')
-              ? json_['emailVerified'] as core.bool
-              : null,
-          lastLoginAt: json_.containsKey('lastLoginAt')
-              ? json_['lastLoginAt'] as core.String
-              : null,
-          localId: json_.containsKey('localId')
-              ? json_['localId'] as core.String
-              : null,
-          passwordHash: json_.containsKey('passwordHash')
-              ? json_['passwordHash'] as core.String
-              : null,
-          passwordUpdatedAt: json_.containsKey('passwordUpdatedAt')
-              ? (json_['passwordUpdatedAt'] as core.num).toDouble()
-              : null,
-          phoneNumber: json_.containsKey('phoneNumber')
-              ? json_['phoneNumber'] as core.String
-              : null,
-          photoUrl: json_.containsKey('photoUrl')
-              ? json_['photoUrl'] as core.String
-              : null,
+          createdAt: json_['createdAt'] as core.String?,
+          customAttributes: json_['customAttributes'] as core.String?,
+          customAuth: json_['customAuth'] as core.bool?,
+          disabled: json_['disabled'] as core.bool?,
+          displayName: json_['displayName'] as core.String?,
+          email: json_['email'] as core.String?,
+          emailVerified: json_['emailVerified'] as core.bool?,
+          lastLoginAt: json_['lastLoginAt'] as core.String?,
+          localId: json_['localId'] as core.String?,
+          passwordHash: json_['passwordHash'] as core.String?,
+          passwordUpdatedAt:
+              (json_['passwordUpdatedAt'] as core.num?)?.toDouble(),
+          phoneNumber: json_['phoneNumber'] as core.String?,
+          photoUrl: json_['photoUrl'] as core.String?,
           providerUserInfo: json_.containsKey('providerUserInfo')
               ? (json_['providerUserInfo'] as core.List)
                   .map((value) => UserInfoProviderUserInfo.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          rawPassword: json_.containsKey('rawPassword')
-              ? json_['rawPassword'] as core.String
-              : null,
-          salt: json_.containsKey('salt') ? json_['salt'] as core.String : null,
-          screenName: json_.containsKey('screenName')
-              ? json_['screenName'] as core.String
-              : null,
-          validSince: json_.containsKey('validSince')
-              ? json_['validSince'] as core.String
-              : null,
-          version: json_.containsKey('version')
-              ? json_['version'] as core.int
-              : null,
+          rawPassword: json_['rawPassword'] as core.String?,
+          salt: json_['salt'] as core.String?,
+          screenName: json_['screenName'] as core.String?,
+          validSince: json_['validSince'] as core.String?,
+          version: json_['version'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3839,117 +3408,45 @@ class VerifyAssertionResponse {
 
   VerifyAssertionResponse.fromJson(core.Map json_)
       : this(
-          action: json_.containsKey('action')
-              ? json_['action'] as core.String
-              : null,
-          appInstallationUrl: json_.containsKey('appInstallationUrl')
-              ? json_['appInstallationUrl'] as core.String
-              : null,
-          appScheme: json_.containsKey('appScheme')
-              ? json_['appScheme'] as core.String
-              : null,
-          context: json_.containsKey('context')
-              ? json_['context'] as core.String
-              : null,
-          dateOfBirth: json_.containsKey('dateOfBirth')
-              ? json_['dateOfBirth'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          email:
-              json_.containsKey('email') ? json_['email'] as core.String : null,
-          emailRecycled: json_.containsKey('emailRecycled')
-              ? json_['emailRecycled'] as core.bool
-              : null,
-          emailVerified: json_.containsKey('emailVerified')
-              ? json_['emailVerified'] as core.bool
-              : null,
-          errorMessage: json_.containsKey('errorMessage')
-              ? json_['errorMessage'] as core.String
-              : null,
-          expiresIn: json_.containsKey('expiresIn')
-              ? json_['expiresIn'] as core.String
-              : null,
-          federatedId: json_.containsKey('federatedId')
-              ? json_['federatedId'] as core.String
-              : null,
-          firstName: json_.containsKey('firstName')
-              ? json_['firstName'] as core.String
-              : null,
-          fullName: json_.containsKey('fullName')
-              ? json_['fullName'] as core.String
-              : null,
-          idToken: json_.containsKey('idToken')
-              ? json_['idToken'] as core.String
-              : null,
-          inputEmail: json_.containsKey('inputEmail')
-              ? json_['inputEmail'] as core.String
-              : null,
-          isNewUser: json_.containsKey('isNewUser')
-              ? json_['isNewUser'] as core.bool
-              : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          language: json_.containsKey('language')
-              ? json_['language'] as core.String
-              : null,
-          lastName: json_.containsKey('lastName')
-              ? json_['lastName'] as core.String
-              : null,
-          localId: json_.containsKey('localId')
-              ? json_['localId'] as core.String
-              : null,
-          needConfirmation: json_.containsKey('needConfirmation')
-              ? json_['needConfirmation'] as core.bool
-              : null,
-          needEmail: json_.containsKey('needEmail')
-              ? json_['needEmail'] as core.bool
-              : null,
-          nickName: json_.containsKey('nickName')
-              ? json_['nickName'] as core.String
-              : null,
-          oauthAccessToken: json_.containsKey('oauthAccessToken')
-              ? json_['oauthAccessToken'] as core.String
-              : null,
-          oauthAuthorizationCode: json_.containsKey('oauthAuthorizationCode')
-              ? json_['oauthAuthorizationCode'] as core.String
-              : null,
-          oauthExpireIn: json_.containsKey('oauthExpireIn')
-              ? json_['oauthExpireIn'] as core.int
-              : null,
-          oauthIdToken: json_.containsKey('oauthIdToken')
-              ? json_['oauthIdToken'] as core.String
-              : null,
-          oauthRequestToken: json_.containsKey('oauthRequestToken')
-              ? json_['oauthRequestToken'] as core.String
-              : null,
-          oauthScope: json_.containsKey('oauthScope')
-              ? json_['oauthScope'] as core.String
-              : null,
-          oauthTokenSecret: json_.containsKey('oauthTokenSecret')
-              ? json_['oauthTokenSecret'] as core.String
-              : null,
-          originalEmail: json_.containsKey('originalEmail')
-              ? json_['originalEmail'] as core.String
-              : null,
-          photoUrl: json_.containsKey('photoUrl')
-              ? json_['photoUrl'] as core.String
-              : null,
-          providerId: json_.containsKey('providerId')
-              ? json_['providerId'] as core.String
-              : null,
-          rawUserInfo: json_.containsKey('rawUserInfo')
-              ? json_['rawUserInfo'] as core.String
-              : null,
-          refreshToken: json_.containsKey('refreshToken')
-              ? json_['refreshToken'] as core.String
-              : null,
-          screenName: json_.containsKey('screenName')
-              ? json_['screenName'] as core.String
-              : null,
-          timeZone: json_.containsKey('timeZone')
-              ? json_['timeZone'] as core.String
-              : null,
+          action: json_['action'] as core.String?,
+          appInstallationUrl: json_['appInstallationUrl'] as core.String?,
+          appScheme: json_['appScheme'] as core.String?,
+          context: json_['context'] as core.String?,
+          dateOfBirth: json_['dateOfBirth'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          email: json_['email'] as core.String?,
+          emailRecycled: json_['emailRecycled'] as core.bool?,
+          emailVerified: json_['emailVerified'] as core.bool?,
+          errorMessage: json_['errorMessage'] as core.String?,
+          expiresIn: json_['expiresIn'] as core.String?,
+          federatedId: json_['federatedId'] as core.String?,
+          firstName: json_['firstName'] as core.String?,
+          fullName: json_['fullName'] as core.String?,
+          idToken: json_['idToken'] as core.String?,
+          inputEmail: json_['inputEmail'] as core.String?,
+          isNewUser: json_['isNewUser'] as core.bool?,
+          kind: json_['kind'] as core.String?,
+          language: json_['language'] as core.String?,
+          lastName: json_['lastName'] as core.String?,
+          localId: json_['localId'] as core.String?,
+          needConfirmation: json_['needConfirmation'] as core.bool?,
+          needEmail: json_['needEmail'] as core.bool?,
+          nickName: json_['nickName'] as core.String?,
+          oauthAccessToken: json_['oauthAccessToken'] as core.String?,
+          oauthAuthorizationCode:
+              json_['oauthAuthorizationCode'] as core.String?,
+          oauthExpireIn: json_['oauthExpireIn'] as core.int?,
+          oauthIdToken: json_['oauthIdToken'] as core.String?,
+          oauthRequestToken: json_['oauthRequestToken'] as core.String?,
+          oauthScope: json_['oauthScope'] as core.String?,
+          oauthTokenSecret: json_['oauthTokenSecret'] as core.String?,
+          originalEmail: json_['originalEmail'] as core.String?,
+          photoUrl: json_['photoUrl'] as core.String?,
+          providerId: json_['providerId'] as core.String?,
+          rawUserInfo: json_['rawUserInfo'] as core.String?,
+          refreshToken: json_['refreshToken'] as core.String?,
+          screenName: json_['screenName'] as core.String?,
+          timeZone: json_['timeZone'] as core.String?,
           verifiedProvider: json_.containsKey('verifiedProvider')
               ? (json_['verifiedProvider'] as core.List)
                   .map((value) => value as core.String)
@@ -4030,19 +3527,11 @@ class VerifyCustomTokenResponse {
 
   VerifyCustomTokenResponse.fromJson(core.Map json_)
       : this(
-          expiresIn: json_.containsKey('expiresIn')
-              ? json_['expiresIn'] as core.String
-              : null,
-          idToken: json_.containsKey('idToken')
-              ? json_['idToken'] as core.String
-              : null,
-          isNewUser: json_.containsKey('isNewUser')
-              ? json_['isNewUser'] as core.bool
-              : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          refreshToken: json_.containsKey('refreshToken')
-              ? json_['refreshToken'] as core.String
-              : null,
+          expiresIn: json_['expiresIn'] as core.String?,
+          idToken: json_['idToken'] as core.String?,
+          isNewUser: json_['isNewUser'] as core.bool?,
+          kind: json_['kind'] as core.String?,
+          refreshToken: json_['refreshToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4113,39 +3602,19 @@ class VerifyPasswordResponse {
 
   VerifyPasswordResponse.fromJson(core.Map json_)
       : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          email:
-              json_.containsKey('email') ? json_['email'] as core.String : null,
-          expiresIn: json_.containsKey('expiresIn')
-              ? json_['expiresIn'] as core.String
-              : null,
-          idToken: json_.containsKey('idToken')
-              ? json_['idToken'] as core.String
-              : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          localId: json_.containsKey('localId')
-              ? json_['localId'] as core.String
-              : null,
-          oauthAccessToken: json_.containsKey('oauthAccessToken')
-              ? json_['oauthAccessToken'] as core.String
-              : null,
-          oauthAuthorizationCode: json_.containsKey('oauthAuthorizationCode')
-              ? json_['oauthAuthorizationCode'] as core.String
-              : null,
-          oauthExpireIn: json_.containsKey('oauthExpireIn')
-              ? json_['oauthExpireIn'] as core.int
-              : null,
-          photoUrl: json_.containsKey('photoUrl')
-              ? json_['photoUrl'] as core.String
-              : null,
-          refreshToken: json_.containsKey('refreshToken')
-              ? json_['refreshToken'] as core.String
-              : null,
-          registered: json_.containsKey('registered')
-              ? json_['registered'] as core.bool
-              : null,
+          displayName: json_['displayName'] as core.String?,
+          email: json_['email'] as core.String?,
+          expiresIn: json_['expiresIn'] as core.String?,
+          idToken: json_['idToken'] as core.String?,
+          kind: json_['kind'] as core.String?,
+          localId: json_['localId'] as core.String?,
+          oauthAccessToken: json_['oauthAccessToken'] as core.String?,
+          oauthAuthorizationCode:
+              json_['oauthAuthorizationCode'] as core.String?,
+          oauthExpireIn: json_['oauthExpireIn'] as core.int?,
+          photoUrl: json_['photoUrl'] as core.String?,
+          refreshToken: json_['refreshToken'] as core.String?,
+          registered: json_['registered'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

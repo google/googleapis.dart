@@ -1123,9 +1123,7 @@ class GoogleCloudEssentialcontactsV1ComputeContactsResponse {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1196,24 +1194,17 @@ class GoogleCloudEssentialcontactsV1Contact {
 
   GoogleCloudEssentialcontactsV1Contact.fromJson(core.Map json_)
       : this(
-          email:
-              json_.containsKey('email') ? json_['email'] as core.String : null,
-          languageTag: json_.containsKey('languageTag')
-              ? json_['languageTag'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          email: json_['email'] as core.String?,
+          languageTag: json_['languageTag'] as core.String?,
+          name: json_['name'] as core.String?,
           notificationCategorySubscriptions:
               json_.containsKey('notificationCategorySubscriptions')
                   ? (json_['notificationCategorySubscriptions'] as core.List)
                       .map((value) => value as core.String)
                       .toList()
                   : null,
-          validateTime: json_.containsKey('validateTime')
-              ? json_['validateTime'] as core.String
-              : null,
-          validationState: json_.containsKey('validationState')
-              ? json_['validationState'] as core.String
-              : null,
+          validateTime: json_['validateTime'] as core.String?,
+          validationState: json_['validationState'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1255,9 +1246,7 @@ class GoogleCloudEssentialcontactsV1ListContactsResponse {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1315,9 +1304,7 @@ class GoogleCloudEssentialcontactsV1SendTestMessageRequest {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          notificationCategory: json_.containsKey('notificationCategory')
-              ? json_['notificationCategory'] as core.String
-              : null,
+          notificationCategory: json_['notificationCategory'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

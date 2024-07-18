@@ -567,7 +567,7 @@ class Operation {
 
   Operation.fromJson(core.Map json_)
       : this(
-          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
@@ -575,7 +575,7 @@ class Operation {
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           response: json_.containsKey('response')
               ? json_['response'] as core.Map<core.String, core.dynamic>
               : null,
@@ -618,12 +618,8 @@ class V2AndroidApplication {
 
   V2AndroidApplication.fromJson(core.Map json_)
       : this(
-          packageName: json_.containsKey('packageName')
-              ? json_['packageName'] as core.String
-              : null,
-          sha1Fingerprint: json_.containsKey('sha1Fingerprint')
-              ? json_['sha1Fingerprint'] as core.String
-              : null,
+          packageName: json_['packageName'] as core.String?,
+          sha1Fingerprint: json_['sha1Fingerprint'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -693,9 +689,7 @@ class V2ApiTarget {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          service: json_.containsKey('service')
-              ? json_['service'] as core.String
-              : null,
+          service: json_['service'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -739,9 +733,7 @@ class V2GetKeyStringResponse {
 
   V2GetKeyStringResponse.fromJson(core.Map json_)
       : this(
-          keyString: json_.containsKey('keyString')
-              ? json_['keyString'] as core.String
-              : null,
+          keyString: json_['keyString'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -860,28 +852,18 @@ class V2Key {
                   ),
                 )
               : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          deleteTime: json_.containsKey('deleteTime')
-              ? json_['deleteTime'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          keyString: json_.containsKey('keyString')
-              ? json_['keyString'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          createTime: json_['createTime'] as core.String?,
+          deleteTime: json_['deleteTime'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          etag: json_['etag'] as core.String?,
+          keyString: json_['keyString'] as core.String?,
+          name: json_['name'] as core.String?,
           restrictions: json_.containsKey('restrictions')
               ? V2Restrictions.fromJson(
                   json_['restrictions'] as core.Map<core.String, core.dynamic>)
               : null,
-          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          uid: json_['uid'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -919,9 +901,7 @@ class V2ListKeysResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -947,10 +927,8 @@ class V2LookupKeyResponse {
 
   V2LookupKeyResponse.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          parent: json_.containsKey('parent')
-              ? json_['parent'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          parent: json_['parent'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

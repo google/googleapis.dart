@@ -1184,9 +1184,7 @@ class AuditConfig {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          service: json_.containsKey('service')
-              ? json_['service'] as core.String
-              : null,
+          service: json_['service'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1326,7 +1324,7 @@ class Binding {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          role: json_.containsKey('role') ? json_['role'] as core.String : null,
+          role: json_['role'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1385,12 +1383,8 @@ class BitbucketCloudConfig {
                       as core.Map<core.String, core.dynamic>)
                   : null,
           webhookSecretSecretVersion:
-              json_.containsKey('webhookSecretSecretVersion')
-                  ? json_['webhookSecretSecretVersion'] as core.String
-                  : null,
-          workspace: json_.containsKey('workspace')
-              ? json_['workspace'] as core.String
-              : null,
+              json_['webhookSecretSecretVersion'] as core.String?,
+          workspace: json_['workspace'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1464,28 +1458,21 @@ class BitbucketDataCenterConfig {
               ? UserCredential.fromJson(json_['authorizerCredential']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          hostUri: json_.containsKey('hostUri')
-              ? json_['hostUri'] as core.String
-              : null,
+          hostUri: json_['hostUri'] as core.String?,
           readAuthorizerCredential:
               json_.containsKey('readAuthorizerCredential')
                   ? UserCredential.fromJson(json_['readAuthorizerCredential']
                       as core.Map<core.String, core.dynamic>)
                   : null,
-          serverVersion: json_.containsKey('serverVersion')
-              ? json_['serverVersion'] as core.String
-              : null,
+          serverVersion: json_['serverVersion'] as core.String?,
           serviceDirectoryConfig: json_.containsKey('serviceDirectoryConfig')
               ? GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig.fromJson(
                   json_['serviceDirectoryConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          sslCa:
-              json_.containsKey('sslCa') ? json_['sslCa'] as core.String : null,
+          sslCa: json_['sslCa'] as core.String?,
           webhookSecretSecretVersion:
-              json_.containsKey('webhookSecretSecretVersion')
-                  ? json_['webhookSecretSecretVersion'] as core.String
-                  : null,
+              json_['webhookSecretSecretVersion'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1607,13 +1594,9 @@ class Connection {
                       json_['bitbucketDataCenterConfig']
                           as core.Map<core.String, core.dynamic>)
                   : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          disabled: json_.containsKey('disabled')
-              ? json_['disabled'] as core.bool
-              : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          createTime: json_['createTime'] as core.String?,
+          disabled: json_['disabled'] as core.bool?,
+          etag: json_['etag'] as core.String?,
           githubConfig: json_.containsKey('githubConfig')
               ? GitHubConfig.fromJson(
                   json_['githubConfig'] as core.Map<core.String, core.dynamic>)
@@ -1631,13 +1614,9 @@ class Connection {
               ? InstallationState.fromJson(json_['installationState']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          reconciling: json_.containsKey('reconciling')
-              ? json_['reconciling'] as core.bool
-              : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          reconciling: json_['reconciling'] as core.bool?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1692,16 +1671,12 @@ class CreateRepositoryRequest {
 
   CreateRepositoryRequest.fromJson(core.Map json_)
       : this(
-          parent: json_.containsKey('parent')
-              ? json_['parent'] as core.String
-              : null,
+          parent: json_['parent'] as core.String?,
           repository: json_.containsKey('repository')
               ? Repository.fromJson(
                   json_['repository'] as core.Map<core.String, core.dynamic>)
               : null,
-          repositoryId: json_.containsKey('repositoryId')
-              ? json_['repositoryId'] as core.String
-              : null,
+          repositoryId: json_['repositoryId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1757,9 +1732,7 @@ class FetchLinkableRepositoriesResponse {
 
   FetchLinkableRepositoriesResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           repositories: json_.containsKey('repositories')
               ? (json_['repositories'] as core.List)
                   .map((value) => Repository.fromJson(
@@ -1809,9 +1782,7 @@ class GitHubConfig {
 
   GitHubConfig.fromJson(core.Map json_)
       : this(
-          appInstallationId: json_.containsKey('appInstallationId')
-              ? json_['appInstallationId'] as core.String
-              : null,
+          appInstallationId: json_['appInstallationId'] as core.String?,
           authorizerCredential: json_.containsKey('authorizerCredential')
               ? OAuthCredential.fromJson(json_['authorizerCredential']
                   as core.Map<core.String, core.dynamic>)
@@ -1900,37 +1871,22 @@ class GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfig {
 
   GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfig.fromJson(core.Map json_)
       : this(
-          apiKey: json_.containsKey('apiKey')
-              ? json_['apiKey'] as core.String
-              : null,
-          appId:
-              json_.containsKey('appId') ? json_['appId'] as core.String : null,
-          appInstallationId: json_.containsKey('appInstallationId')
-              ? json_['appInstallationId'] as core.String
-              : null,
-          appSlug: json_.containsKey('appSlug')
-              ? json_['appSlug'] as core.String
-              : null,
-          hostUri: json_.containsKey('hostUri')
-              ? json_['hostUri'] as core.String
-              : null,
-          privateKeySecretVersion: json_.containsKey('privateKeySecretVersion')
-              ? json_['privateKeySecretVersion'] as core.String
-              : null,
-          serverVersion: json_.containsKey('serverVersion')
-              ? json_['serverVersion'] as core.String
-              : null,
+          apiKey: json_['apiKey'] as core.String?,
+          appId: json_['appId'] as core.String?,
+          appInstallationId: json_['appInstallationId'] as core.String?,
+          appSlug: json_['appSlug'] as core.String?,
+          hostUri: json_['hostUri'] as core.String?,
+          privateKeySecretVersion:
+              json_['privateKeySecretVersion'] as core.String?,
+          serverVersion: json_['serverVersion'] as core.String?,
           serviceDirectoryConfig: json_.containsKey('serviceDirectoryConfig')
               ? GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig.fromJson(
                   json_['serviceDirectoryConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          sslCa:
-              json_.containsKey('sslCa') ? json_['sslCa'] as core.String : null,
+          sslCa: json_['sslCa'] as core.String?,
           webhookSecretSecretVersion:
-              json_.containsKey('webhookSecretSecretVersion')
-                  ? json_['webhookSecretSecretVersion'] as core.String
-                  : null,
+              json_['webhookSecretSecretVersion'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2014,28 +1970,21 @@ class GoogleDevtoolsCloudbuildV2GitLabConfig {
               ? UserCredential.fromJson(json_['authorizerCredential']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          hostUri: json_.containsKey('hostUri')
-              ? json_['hostUri'] as core.String
-              : null,
+          hostUri: json_['hostUri'] as core.String?,
           readAuthorizerCredential:
               json_.containsKey('readAuthorizerCredential')
                   ? UserCredential.fromJson(json_['readAuthorizerCredential']
                       as core.Map<core.String, core.dynamic>)
                   : null,
-          serverVersion: json_.containsKey('serverVersion')
-              ? json_['serverVersion'] as core.String
-              : null,
+          serverVersion: json_['serverVersion'] as core.String?,
           serviceDirectoryConfig: json_.containsKey('serviceDirectoryConfig')
               ? GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig.fromJson(
                   json_['serviceDirectoryConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          sslCa:
-              json_.containsKey('sslCa') ? json_['sslCa'] as core.String : null,
+          sslCa: json_['sslCa'] as core.String?,
           webhookSecretSecretVersion:
-              json_.containsKey('webhookSecretSecretVersion')
-                  ? json_['webhookSecretSecretVersion'] as core.String
-                  : null,
+              json_['webhookSecretSecretVersion'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2070,9 +2019,7 @@ class GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig {
 
   GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig.fromJson(core.Map json_)
       : this(
-          service: json_.containsKey('service')
-              ? json_['service'] as core.String
-              : null,
+          service: json_['service'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2127,9 +2074,7 @@ class ListConnectionsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2159,9 +2104,7 @@ class ListLocationsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2185,9 +2128,7 @@ class ListRepositoriesResponse {
 
   ListRepositoriesResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           repositories: json_.containsKey('repositories')
               ? (json_['repositories'] as core.List)
                   .map((value) => Repository.fromJson(
@@ -2228,12 +2169,9 @@ class OAuthCredential {
 
   OAuthCredential.fromJson(core.Map json_)
       : this(
-          oauthTokenSecretVersion: json_.containsKey('oauthTokenSecretVersion')
-              ? json_['oauthTokenSecretVersion'] as core.String
-              : null,
-          username: json_.containsKey('username')
-              ? json_['username'] as core.String
-              : null,
+          oauthTokenSecretVersion:
+              json_['oauthTokenSecretVersion'] as core.String?,
+          username: json_['username'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2296,7 +2234,7 @@ class Operation {
 
   Operation.fromJson(core.Map json_)
       : this(
-          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
@@ -2304,7 +2242,7 @@ class Operation {
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           response: json_.containsKey('response')
               ? json_['response'] as core.Map<core.String, core.dynamic>
               : null,
@@ -2426,10 +2364,8 @@ class Policy {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          version: json_.containsKey('version')
-              ? json_['version'] as core.int
-              : null,
+          etag: json_['etag'] as core.String?,
+          version: json_['version'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2499,20 +2435,12 @@ class Repository {
                   ),
                 )
               : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          remoteUri: json_.containsKey('remoteUri')
-              ? json_['remoteUri'] as core.String
-              : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
-          webhookId: json_.containsKey('webhookId')
-              ? json_['webhookId'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          etag: json_['etag'] as core.String?,
+          name: json_['name'] as core.String?,
+          remoteUri: json_['remoteUri'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
+          webhookId: json_['webhookId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2552,9 +2480,7 @@ class SetIamPolicyRequest {
               ? Policy.fromJson(
                   json_['policy'] as core.Map<core.String, core.dynamic>)
               : null,
-          updateMask: json_.containsKey('updateMask')
-              ? json_['updateMask'] as core.String
-              : null,
+          updateMask: json_['updateMask'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2601,12 +2527,9 @@ class UserCredential {
 
   UserCredential.fromJson(core.Map json_)
       : this(
-          userTokenSecretVersion: json_.containsKey('userTokenSecretVersion')
-              ? json_['userTokenSecretVersion'] as core.String
-              : null,
-          username: json_.containsKey('username')
-              ? json_['username'] as core.String
-              : null,
+          userTokenSecretVersion:
+              json_['userTokenSecretVersion'] as core.String?,
+          username: json_['username'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

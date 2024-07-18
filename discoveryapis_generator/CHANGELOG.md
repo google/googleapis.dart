@@ -7,6 +7,7 @@
 - Package version must be provided or default is to set `publish_to: none`.
 - Added `Function` to the set of reserved names.
 - Remove extra parenthesis from date encoding.
+- Generate much smaller code for trivial types: `String`, `bool`, `int`, `double`.
 
 ## 1.0.0
 

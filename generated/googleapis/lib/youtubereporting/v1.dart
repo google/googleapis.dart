@@ -560,21 +560,12 @@ class GdataBlobstore2Info {
 
   GdataBlobstore2Info.fromJson(core.Map json_)
       : this(
-          blobGeneration: json_.containsKey('blobGeneration')
-              ? json_['blobGeneration'] as core.String
-              : null,
-          blobId: json_.containsKey('blobId')
-              ? json_['blobId'] as core.String
-              : null,
-          downloadReadHandle: json_.containsKey('downloadReadHandle')
-              ? json_['downloadReadHandle'] as core.String
-              : null,
-          readToken: json_.containsKey('readToken')
-              ? json_['readToken'] as core.String
-              : null,
-          uploadMetadataContainer: json_.containsKey('uploadMetadataContainer')
-              ? json_['uploadMetadataContainer'] as core.String
-              : null,
+          blobGeneration: json_['blobGeneration'] as core.String?,
+          blobId: json_['blobId'] as core.String?,
+          downloadReadHandle: json_['downloadReadHandle'] as core.String?,
+          readToken: json_['readToken'] as core.String?,
+          uploadMetadataContainer:
+              json_['uploadMetadataContainer'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -679,39 +670,23 @@ class GdataCompositeMedia {
 
   GdataCompositeMedia.fromJson(core.Map json_)
       : this(
-          blobRef: json_.containsKey('blobRef')
-              ? json_['blobRef'] as core.String
-              : null,
+          blobRef: json_['blobRef'] as core.String?,
           blobstore2Info: json_.containsKey('blobstore2Info')
               ? GdataBlobstore2Info.fromJson(json_['blobstore2Info']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          cosmoBinaryReference: json_.containsKey('cosmoBinaryReference')
-              ? json_['cosmoBinaryReference'] as core.String
-              : null,
-          crc32cHash: json_.containsKey('crc32cHash')
-              ? json_['crc32cHash'] as core.int
-              : null,
-          inline: json_.containsKey('inline')
-              ? json_['inline'] as core.String
-              : null,
-          length: json_.containsKey('length')
-              ? json_['length'] as core.String
-              : null,
-          md5Hash: json_.containsKey('md5Hash')
-              ? json_['md5Hash'] as core.String
-              : null,
+          cosmoBinaryReference: json_['cosmoBinaryReference'] as core.String?,
+          crc32cHash: json_['crc32cHash'] as core.int?,
+          inline: json_['inline'] as core.String?,
+          length: json_['length'] as core.String?,
+          md5Hash: json_['md5Hash'] as core.String?,
           objectId: json_.containsKey('objectId')
               ? GdataObjectId.fromJson(
                   json_['objectId'] as core.Map<core.String, core.dynamic>)
               : null,
-          path: json_.containsKey('path') ? json_['path'] as core.String : null,
-          referenceType: json_.containsKey('referenceType')
-              ? json_['referenceType'] as core.String
-              : null,
-          sha1Hash: json_.containsKey('sha1Hash')
-              ? json_['sha1Hash'] as core.String
-              : null,
+          path: json_['path'] as core.String?,
+          referenceType: json_['referenceType'] as core.String?,
+          sha1Hash: json_['sha1Hash'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -757,21 +732,11 @@ class GdataContentTypeInfo {
 
   GdataContentTypeInfo.fromJson(core.Map json_)
       : this(
-          bestGuess: json_.containsKey('bestGuess')
-              ? json_['bestGuess'] as core.String
-              : null,
-          fromBytes: json_.containsKey('fromBytes')
-              ? json_['fromBytes'] as core.String
-              : null,
-          fromFileName: json_.containsKey('fromFileName')
-              ? json_['fromFileName'] as core.String
-              : null,
-          fromHeader: json_.containsKey('fromHeader')
-              ? json_['fromHeader'] as core.String
-              : null,
-          fromUrlPath: json_.containsKey('fromUrlPath')
-              ? json_['fromUrlPath'] as core.String
-              : null,
+          bestGuess: json_['bestGuess'] as core.String?,
+          fromBytes: json_['fromBytes'] as core.String?,
+          fromFileName: json_['fromFileName'] as core.String?,
+          fromHeader: json_['fromHeader'] as core.String?,
+          fromUrlPath: json_['fromUrlPath'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -814,19 +779,13 @@ class GdataDiffChecksumsResponse {
               ? GdataCompositeMedia.fromJson(json_['checksumsLocation']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          chunkSizeBytes: json_.containsKey('chunkSizeBytes')
-              ? json_['chunkSizeBytes'] as core.String
-              : null,
+          chunkSizeBytes: json_['chunkSizeBytes'] as core.String?,
           objectLocation: json_.containsKey('objectLocation')
               ? GdataCompositeMedia.fromJson(json_['objectLocation']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          objectSizeBytes: json_.containsKey('objectSizeBytes')
-              ? json_['objectSizeBytes'] as core.String
-              : null,
-          objectVersion: json_.containsKey('objectVersion')
-              ? json_['objectVersion'] as core.String
-              : null,
+          objectSizeBytes: json_['objectSizeBytes'] as core.String?,
+          objectVersion: json_['objectVersion'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -887,9 +846,7 @@ class GdataDiffUploadRequest {
               ? GdataCompositeMedia.fromJson(
                   json_['objectInfo'] as core.Map<core.String, core.dynamic>)
               : null,
-          objectVersion: json_.containsKey('objectVersion')
-              ? json_['objectVersion'] as core.String
-              : null,
+          objectVersion: json_['objectVersion'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -914,9 +871,7 @@ class GdataDiffUploadResponse {
 
   GdataDiffUploadResponse.fromJson(core.Map json_)
       : this(
-          objectVersion: json_.containsKey('objectVersion')
-              ? json_['objectVersion'] as core.String
-              : null,
+          objectVersion: json_['objectVersion'] as core.String?,
           originalObject: json_.containsKey('originalObject')
               ? GdataCompositeMedia.fromJson(json_['originalObject']
                   as core.Map<core.String, core.dynamic>)
@@ -944,12 +899,8 @@ class GdataDiffVersionResponse {
 
   GdataDiffVersionResponse.fromJson(core.Map json_)
       : this(
-          objectSizeBytes: json_.containsKey('objectSizeBytes')
-              ? json_['objectSizeBytes'] as core.String
-              : null,
-          objectVersion: json_.containsKey('objectVersion')
-              ? json_['objectVersion'] as core.String
-              : null,
+          objectSizeBytes: json_['objectSizeBytes'] as core.String?,
+          objectVersion: json_['objectVersion'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -973,12 +924,8 @@ class GdataDownloadParameters {
 
   GdataDownloadParameters.fromJson(core.Map json_)
       : this(
-          allowGzipCompression: json_.containsKey('allowGzipCompression')
-              ? json_['allowGzipCompression'] as core.bool
-              : null,
-          ignoreRange: json_.containsKey('ignoreRange')
-              ? json_['ignoreRange'] as core.bool
-              : null,
+          allowGzipCompression: json_['allowGzipCompression'] as core.bool?,
+          ignoreRange: json_['ignoreRange'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1192,15 +1139,9 @@ class GdataMedia {
 
   GdataMedia.fromJson(core.Map json_)
       : this(
-          algorithm: json_.containsKey('algorithm')
-              ? json_['algorithm'] as core.String
-              : null,
-          bigstoreObjectRef: json_.containsKey('bigstoreObjectRef')
-              ? json_['bigstoreObjectRef'] as core.String
-              : null,
-          blobRef: json_.containsKey('blobRef')
-              ? json_['blobRef'] as core.String
-              : null,
+          algorithm: json_['algorithm'] as core.String?,
+          bigstoreObjectRef: json_['bigstoreObjectRef'] as core.String?,
+          blobRef: json_['blobRef'] as core.String?,
           blobstore2Info: json_.containsKey('blobstore2Info')
               ? GdataBlobstore2Info.fromJson(json_['blobstore2Info']
                   as core.Map<core.String, core.dynamic>)
@@ -1211,19 +1152,13 @@ class GdataMedia {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          contentType: json_.containsKey('contentType')
-              ? json_['contentType'] as core.String
-              : null,
+          contentType: json_['contentType'] as core.String?,
           contentTypeInfo: json_.containsKey('contentTypeInfo')
               ? GdataContentTypeInfo.fromJson(json_['contentTypeInfo']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          cosmoBinaryReference: json_.containsKey('cosmoBinaryReference')
-              ? json_['cosmoBinaryReference'] as core.String
-              : null,
-          crc32cHash: json_.containsKey('crc32cHash')
-              ? json_['crc32cHash'] as core.int
-              : null,
+          cosmoBinaryReference: json_['cosmoBinaryReference'] as core.String?,
+          crc32cHash: json_['crc32cHash'] as core.int?,
           diffChecksumsResponse: json_.containsKey('diffChecksumsResponse')
               ? GdataDiffChecksumsResponse.fromJson(
                   json_['diffChecksumsResponse']
@@ -1249,47 +1184,24 @@ class GdataMedia {
               ? GdataDownloadParameters.fromJson(json_['downloadParameters']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          filename: json_.containsKey('filename')
-              ? json_['filename'] as core.String
-              : null,
-          hash: json_.containsKey('hash') ? json_['hash'] as core.String : null,
-          hashVerified: json_.containsKey('hashVerified')
-              ? json_['hashVerified'] as core.bool
-              : null,
-          inline: json_.containsKey('inline')
-              ? json_['inline'] as core.String
-              : null,
-          isPotentialRetry: json_.containsKey('isPotentialRetry')
-              ? json_['isPotentialRetry'] as core.bool
-              : null,
-          length: json_.containsKey('length')
-              ? json_['length'] as core.String
-              : null,
-          md5Hash: json_.containsKey('md5Hash')
-              ? json_['md5Hash'] as core.String
-              : null,
-          mediaId: json_.containsKey('mediaId')
-              ? json_['mediaId'] as core.String
-              : null,
+          filename: json_['filename'] as core.String?,
+          hash: json_['hash'] as core.String?,
+          hashVerified: json_['hashVerified'] as core.bool?,
+          inline: json_['inline'] as core.String?,
+          isPotentialRetry: json_['isPotentialRetry'] as core.bool?,
+          length: json_['length'] as core.String?,
+          md5Hash: json_['md5Hash'] as core.String?,
+          mediaId: json_['mediaId'] as core.String?,
           objectId: json_.containsKey('objectId')
               ? GdataObjectId.fromJson(
                   json_['objectId'] as core.Map<core.String, core.dynamic>)
               : null,
-          path: json_.containsKey('path') ? json_['path'] as core.String : null,
-          referenceType: json_.containsKey('referenceType')
-              ? json_['referenceType'] as core.String
-              : null,
-          sha1Hash: json_.containsKey('sha1Hash')
-              ? json_['sha1Hash'] as core.String
-              : null,
-          sha256Hash: json_.containsKey('sha256Hash')
-              ? json_['sha256Hash'] as core.String
-              : null,
-          timestamp: json_.containsKey('timestamp')
-              ? json_['timestamp'] as core.String
-              : null,
-          token:
-              json_.containsKey('token') ? json_['token'] as core.String : null,
+          path: json_['path'] as core.String?,
+          referenceType: json_['referenceType'] as core.String?,
+          sha1Hash: json_['sha1Hash'] as core.String?,
+          sha256Hash: json_['sha256Hash'] as core.String?,
+          timestamp: json_['timestamp'] as core.String?,
+          token: json_['token'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1351,15 +1263,9 @@ class GdataObjectId {
 
   GdataObjectId.fromJson(core.Map json_)
       : this(
-          bucketName: json_.containsKey('bucketName')
-              ? json_['bucketName'] as core.String
-              : null,
-          generation: json_.containsKey('generation')
-              ? json_['generation'] as core.String
-              : null,
-          objectName: json_.containsKey('objectName')
-              ? json_['objectName'] as core.String
-              : null,
+          bucketName: json_['bucketName'] as core.String?,
+          generation: json_['generation'] as core.String?,
+          objectName: json_['objectName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1409,20 +1315,12 @@ class Job {
 
   Job.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          expireTime: json_.containsKey('expireTime')
-              ? json_['expireTime'] as core.String
-              : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          reportTypeId: json_.containsKey('reportTypeId')
-              ? json_['reportTypeId'] as core.String
-              : null,
-          systemManaged: json_.containsKey('systemManaged')
-              ? json_['systemManaged'] as core.bool
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          expireTime: json_['expireTime'] as core.String?,
+          id: json_['id'] as core.String?,
+          name: json_['name'] as core.String?,
+          reportTypeId: json_['reportTypeId'] as core.String?,
+          systemManaged: json_['systemManaged'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1459,9 +1357,7 @@ class ListJobsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1489,9 +1385,7 @@ class ListReportTypesResponse {
 
   ListReportTypesResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           reportTypes: json_.containsKey('reportTypes')
               ? (json_['reportTypes'] as core.List)
                   .map((value) => ReportType.fromJson(
@@ -1525,9 +1419,7 @@ class ListReportsResponse {
 
   ListReportsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           reports: json_.containsKey('reports')
               ? (json_['reports'] as core.List)
                   .map((value) => Report.fromJson(
@@ -1584,24 +1476,13 @@ class Report {
 
   Report.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          downloadUrl: json_.containsKey('downloadUrl')
-              ? json_['downloadUrl'] as core.String
-              : null,
-          endTime: json_.containsKey('endTime')
-              ? json_['endTime'] as core.String
-              : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          jobExpireTime: json_.containsKey('jobExpireTime')
-              ? json_['jobExpireTime'] as core.String
-              : null,
-          jobId:
-              json_.containsKey('jobId') ? json_['jobId'] as core.String : null,
-          startTime: json_.containsKey('startTime')
-              ? json_['startTime'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          downloadUrl: json_['downloadUrl'] as core.String?,
+          endTime: json_['endTime'] as core.String?,
+          id: json_['id'] as core.String?,
+          jobExpireTime: json_['jobExpireTime'] as core.String?,
+          jobId: json_['jobId'] as core.String?,
+          startTime: json_['startTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1645,14 +1526,10 @@ class ReportType {
 
   ReportType.fromJson(core.Map json_)
       : this(
-          deprecateTime: json_.containsKey('deprecateTime')
-              ? json_['deprecateTime'] as core.String
-              : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          systemManaged: json_.containsKey('systemManaged')
-              ? json_['systemManaged'] as core.bool
-              : null,
+          deprecateTime: json_['deprecateTime'] as core.String?,
+          id: json_['id'] as core.String?,
+          name: json_['name'] as core.String?,
+          systemManaged: json_['systemManaged'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

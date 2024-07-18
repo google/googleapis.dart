@@ -358,12 +358,8 @@ class Deployment {
                   ),
                 )
               : null,
-          projectId: json_.containsKey('projectId')
-              ? json_['projectId'] as core.String
-              : null,
-          target: json_.containsKey('target')
-              ? json_['target'] as core.String
-              : null,
+          projectId: json_['projectId'] as core.String?,
+          target: json_['target'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -400,18 +396,14 @@ class ListProfilesResponse {
 
   ListProfilesResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           profiles: json_.containsKey('profiles')
               ? (json_['profiles'] as core.List)
                   .map((value) => Profile.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          skippedProfiles: json_.containsKey('skippedProfiles')
-              ? json_['skippedProfiles'] as core.int
-              : null,
+          skippedProfiles: json_['skippedProfiles'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -504,9 +496,7 @@ class Profile {
               ? Deployment.fromJson(
                   json_['deployment'] as core.Map<core.String, core.dynamic>)
               : null,
-          duration: json_.containsKey('duration')
-              ? json_['duration'] as core.String
-              : null,
+          duration: json_['duration'] as core.String?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -515,16 +505,10 @@ class Profile {
                   ),
                 )
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          profileBytes: json_.containsKey('profileBytes')
-              ? json_['profileBytes'] as core.String
-              : null,
-          profileType: json_.containsKey('profileType')
-              ? json_['profileType'] as core.String
-              : null,
-          startTime: json_.containsKey('startTime')
-              ? json_['startTime'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          profileBytes: json_['profileBytes'] as core.String?,
+          profileType: json_['profileType'] as core.String?,
+          startTime: json_['startTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

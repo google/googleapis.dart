@@ -146,9 +146,7 @@ class Action {
               ? TimeRange.fromJson(
                   json_['timeRange'] as core.Map<core.String, core.dynamic>)
               : null,
-          timestamp: json_.containsKey('timestamp')
-              ? json_['timestamp'] as core.String
-              : null,
+          timestamp: json_['timestamp'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -365,7 +363,7 @@ class ApplicationReference {
 
   ApplicationReference.fromJson(core.Map json_)
       : this(
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -431,10 +429,8 @@ class AppliedLabelChangeDetail {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          label:
-              json_.containsKey('label') ? json_['label'] as core.String : null,
-          title:
-              json_.containsKey('title') ? json_['title'] as core.String : null,
+          label: json_['label'] as core.String?,
+          title: json_['title'] as core.String?,
           types: json_.containsKey('types')
               ? (json_['types'] as core.List)
                   .map((value) => value as core.String)
@@ -478,9 +474,7 @@ class Assignment {
               ? User.fromJson(
                   json_['assignedUser'] as core.Map<core.String, core.dynamic>)
               : null,
-          subtype: json_.containsKey('subtype')
-              ? json_['subtype'] as core.String
-              : null,
+          subtype: json_['subtype'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -658,7 +652,7 @@ class DataLeakPreventionChange {
 
   DataLeakPreventionChange.fromJson(core.Map json_)
       : this(
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -677,8 +671,7 @@ class Date {
 
   Date.fromJson(core.Map json_)
       : this(
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
+          value: json_['value'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -701,7 +694,7 @@ class Delete {
 
   Delete.fromJson(core.Map json_)
       : this(
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -727,10 +720,8 @@ class Domain {
 
   Domain.fromJson(core.Map json_)
       : this(
-          legacyId: json_.containsKey('legacyId')
-              ? json_['legacyId'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          legacyId: json_['legacyId'] as core.String?,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -761,13 +752,12 @@ class Drive {
 
   Drive.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           root: json_.containsKey('root')
               ? DriveItem.fromJson(
                   json_['root'] as core.Map<core.String, core.dynamic>)
               : null,
-          title:
-              json_.containsKey('title') ? json_['title'] as core.String : null,
+          title: json_['title'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -848,9 +838,7 @@ class DriveActivity {
               ? TimeRange.fromJson(
                   json_['timeRange'] as core.Map<core.String, core.dynamic>)
               : null,
-          timestamp: json_.containsKey('timestamp')
-              ? json_['timestamp'] as core.String
-              : null,
+          timestamp: json_['timestamp'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -883,7 +871,7 @@ class DriveFolder {
 
   DriveFolder.fromJson(core.Map json_)
       : this(
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -958,16 +946,13 @@ class DriveItem {
               ? Folder.fromJson(
                   json_['folder'] as core.Map<core.String, core.dynamic>)
               : null,
-          mimeType: json_.containsKey('mimeType')
-              ? json_['mimeType'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          mimeType: json_['mimeType'] as core.String?,
+          name: json_['name'] as core.String?,
           owner: json_.containsKey('owner')
               ? Owner.fromJson(
                   json_['owner'] as core.Map<core.String, core.dynamic>)
               : null,
-          title:
-              json_.containsKey('title') ? json_['title'] as core.String : null,
+          title: json_['title'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1039,9 +1024,8 @@ class DriveItemReference {
               ? Folder.fromJson(
                   json_['folder'] as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          title:
-              json_.containsKey('title') ? json_['title'] as core.String : null,
+          name: json_['name'] as core.String?,
+          title: json_['title'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1072,9 +1056,8 @@ class DriveReference {
 
   DriveReference.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          title:
-              json_.containsKey('title') ? json_['title'] as core.String : null,
+          name: json_['name'] as core.String?,
+          title: json_['title'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1202,12 +1185,8 @@ class FieldValueChange {
 
   FieldValueChange.fromJson(core.Map json_)
       : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          fieldId: json_.containsKey('fieldId')
-              ? json_['fieldId'] as core.String
-              : null,
+          displayName: json_['displayName'] as core.String?,
+          fieldId: json_['fieldId'] as core.String?,
           newValue: json_.containsKey('newValue')
               ? FieldValue.fromJson(
                   json_['newValue'] as core.Map<core.String, core.dynamic>)
@@ -1260,15 +1239,9 @@ class FileComment {
 
   FileComment.fromJson(core.Map json_)
       : this(
-          legacyCommentId: json_.containsKey('legacyCommentId')
-              ? json_['legacyCommentId'] as core.String
-              : null,
-          legacyDiscussionId: json_.containsKey('legacyDiscussionId')
-              ? json_['legacyDiscussionId'] as core.String
-              : null,
-          linkToDiscussion: json_.containsKey('linkToDiscussion')
-              ? json_['linkToDiscussion'] as core.String
-              : null,
+          legacyCommentId: json_['legacyCommentId'] as core.String?,
+          legacyDiscussionId: json_['legacyDiscussionId'] as core.String?,
+          linkToDiscussion: json_['linkToDiscussion'] as core.String?,
           parent: json_.containsKey('parent')
               ? DriveItem.fromJson(
                   json_['parent'] as core.Map<core.String, core.dynamic>)
@@ -1304,7 +1277,7 @@ class Folder {
 
   Folder.fromJson(core.Map json_)
       : this(
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1327,10 +1300,8 @@ class Group {
 
   Group.fromJson(core.Map json_)
       : this(
-          email:
-              json_.containsKey('email') ? json_['email'] as core.String : null,
-          title:
-              json_.containsKey('title') ? json_['title'] as core.String : null,
+          email: json_['email'] as core.String?,
+          title: json_['title'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1375,8 +1346,7 @@ class Integer {
 
   Integer.fromJson(core.Map json_)
       : this(
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
+          value: json_['value'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1403,12 +1373,8 @@ class KnownUser {
 
   KnownUser.fromJson(core.Map json_)
       : this(
-          isCurrentUser: json_.containsKey('isCurrentUser')
-              ? json_['isCurrentUser'] as core.bool
-              : null,
-          personName: json_.containsKey('personName')
-              ? json_['personName'] as core.String
-              : null,
+          isCurrentUser: json_['isCurrentUser'] as core.bool?,
+          personName: json_['personName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1570,9 +1536,7 @@ class Permission {
 
   Permission.fromJson(core.Map json_)
       : this(
-          allowDiscovery: json_.containsKey('allowDiscovery')
-              ? json_['allowDiscovery'] as core.bool
-              : null,
+          allowDiscovery: json_['allowDiscovery'] as core.bool?,
           anyone: json_.containsKey('anyone')
               ? Anyone.fromJson(
                   json_['anyone'] as core.Map<core.String, core.dynamic>)
@@ -1585,7 +1549,7 @@ class Permission {
               ? Group.fromJson(
                   json_['group'] as core.Map<core.String, core.dynamic>)
               : null,
-          role: json_.containsKey('role') ? json_['role'] as core.String : null,
+          role: json_['role'] as core.String?,
           user: json_.containsKey('user')
               ? User.fromJson(
                   json_['user'] as core.Map<core.String, core.dynamic>)
@@ -1657,9 +1621,7 @@ class Post {
 
   Post.fromJson(core.Map json_)
       : this(
-          subtype: json_.containsKey('subtype')
-              ? json_['subtype'] as core.String
-              : null,
+          subtype: json_['subtype'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1726,25 +1688,15 @@ class QueryDriveActivityRequest {
 
   QueryDriveActivityRequest.fromJson(core.Map json_)
       : this(
-          ancestorName: json_.containsKey('ancestorName')
-              ? json_['ancestorName'] as core.String
-              : null,
+          ancestorName: json_['ancestorName'] as core.String?,
           consolidationStrategy: json_.containsKey('consolidationStrategy')
               ? ConsolidationStrategy.fromJson(json_['consolidationStrategy']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          filter: json_.containsKey('filter')
-              ? json_['filter'] as core.String
-              : null,
-          itemName: json_.containsKey('itemName')
-              ? json_['itemName'] as core.String
-              : null,
-          pageSize: json_.containsKey('pageSize')
-              ? json_['pageSize'] as core.int
-              : null,
-          pageToken: json_.containsKey('pageToken')
-              ? json_['pageToken'] as core.String
-              : null,
+          filter: json_['filter'] as core.String?,
+          itemName: json_['itemName'] as core.String?,
+          pageSize: json_['pageSize'] as core.int?,
+          pageToken: json_['pageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1780,9 +1732,7 @@ class QueryDriveActivityResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1806,12 +1756,8 @@ class Rename {
 
   Rename.fromJson(core.Map json_)
       : this(
-          newTitle: json_.containsKey('newTitle')
-              ? json_['newTitle'] as core.String
-              : null,
-          oldTitle: json_.containsKey('oldTitle')
-              ? json_['oldTitle'] as core.String
-              : null,
+          newTitle: json_['newTitle'] as core.String?,
+          oldTitle: json_['oldTitle'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1834,7 +1780,7 @@ class Restore {
 
   Restore.fromJson(core.Map json_)
       : this(
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1874,12 +1820,8 @@ class RestrictionChange {
 
   RestrictionChange.fromJson(core.Map json_)
       : this(
-          feature: json_.containsKey('feature')
-              ? json_['feature'] as core.String
-              : null,
-          newRestriction: json_.containsKey('newRestriction')
-              ? json_['newRestriction'] as core.String
-              : null,
+          feature: json_['feature'] as core.String?,
+          newRestriction: json_['newRestriction'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1904,11 +1846,8 @@ class Selection {
 
   Selection.fromJson(core.Map json_)
       : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
+          displayName: json_['displayName'] as core.String?,
+          value: json_['value'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1977,8 +1916,7 @@ class SingleUser {
 
   SingleUser.fromJson(core.Map json_)
       : this(
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
+          value: json_['value'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2007,9 +1945,7 @@ class Suggestion {
 
   Suggestion.fromJson(core.Map json_)
       : this(
-          subtype: json_.containsKey('subtype')
-              ? json_['subtype'] as core.String
-              : null,
+          subtype: json_['subtype'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2034,7 +1970,7 @@ class SystemEvent {
 
   SystemEvent.fromJson(core.Map json_)
       : this(
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2159,13 +2095,12 @@ class TeamDrive {
 
   TeamDrive.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           root: json_.containsKey('root')
               ? DriveItem.fromJson(
                   json_['root'] as core.Map<core.String, core.dynamic>)
               : null,
-          title:
-              json_.containsKey('title') ? json_['title'] as core.String : null,
+          title: json_['title'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2190,9 +2125,8 @@ class TeamDriveReference {
 
   TeamDriveReference.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          title:
-              json_.containsKey('title') ? json_['title'] as core.String : null,
+          name: json_['name'] as core.String?,
+          title: json_['title'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2212,8 +2146,7 @@ class Text {
 
   Text.fromJson(core.Map json_)
       : this(
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
+          value: json_['value'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2260,12 +2193,8 @@ class TimeRange {
 
   TimeRange.fromJson(core.Map json_)
       : this(
-          endTime: json_.containsKey('endTime')
-              ? json_['endTime'] as core.String
-              : null,
-          startTime: json_.containsKey('startTime')
-              ? json_['startTime'] as core.String
-              : null,
+          endTime: json_['endTime'] as core.String?,
+          startTime: json_['startTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

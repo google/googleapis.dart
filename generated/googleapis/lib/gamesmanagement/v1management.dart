@@ -782,7 +782,7 @@ class AchievementResetAllResponse {
 
   AchievementResetAllResponse.fromJson(core.Map json_)
       : this(
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          kind: json_['kind'] as core.String?,
           results: json_.containsKey('results')
               ? (json_['results'] as core.List)
                   .map((value) => AchievementResetResponse.fromJson(
@@ -819,7 +819,7 @@ class AchievementResetMultipleForAllRequest {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          kind: json_['kind'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -858,16 +858,10 @@ class AchievementResetResponse {
 
   AchievementResetResponse.fromJson(core.Map json_)
       : this(
-          currentState: json_.containsKey('currentState')
-              ? json_['currentState'] as core.String
-              : null,
-          definitionId: json_.containsKey('definitionId')
-              ? json_['definitionId'] as core.String
-              : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          updateOccurred: json_.containsKey('updateOccurred')
-              ? json_['updateOccurred'] as core.bool
-              : null,
+          currentState: json_['currentState'] as core.String?,
+          definitionId: json_['definitionId'] as core.String?,
+          kind: json_['kind'] as core.String?,
+          updateOccurred: json_['updateOccurred'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -901,7 +895,7 @@ class EventsResetMultipleForAllRequest {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          kind: json_['kind'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -937,17 +931,14 @@ class GamesPlayerExperienceInfoResource {
 
   GamesPlayerExperienceInfoResource.fromJson(core.Map json_)
       : this(
-          currentExperiencePoints: json_.containsKey('currentExperiencePoints')
-              ? json_['currentExperiencePoints'] as core.String
-              : null,
+          currentExperiencePoints:
+              json_['currentExperiencePoints'] as core.String?,
           currentLevel: json_.containsKey('currentLevel')
               ? GamesPlayerLevelResource.fromJson(
                   json_['currentLevel'] as core.Map<core.String, core.dynamic>)
               : null,
           lastLevelUpTimestampMillis:
-              json_.containsKey('lastLevelUpTimestampMillis')
-                  ? json_['lastLevelUpTimestampMillis'] as core.String
-                  : null,
+              json_['lastLevelUpTimestampMillis'] as core.String?,
           nextLevel: json_.containsKey('nextLevel')
               ? GamesPlayerLevelResource.fromJson(
                   json_['nextLevel'] as core.Map<core.String, core.dynamic>)
@@ -983,13 +974,9 @@ class GamesPlayerLevelResource {
 
   GamesPlayerLevelResource.fromJson(core.Map json_)
       : this(
-          level: json_.containsKey('level') ? json_['level'] as core.int : null,
-          maxExperiencePoints: json_.containsKey('maxExperiencePoints')
-              ? json_['maxExperiencePoints'] as core.String
-              : null,
-          minExperiencePoints: json_.containsKey('minExperiencePoints')
-              ? json_['minExperiencePoints'] as core.String
-              : null,
+          level: json_['level'] as core.int?,
+          maxExperiencePoints: json_['maxExperiencePoints'] as core.String?,
+          minExperiencePoints: json_['minExperiencePoints'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1028,10 +1015,8 @@ class HiddenPlayer {
 
   HiddenPlayer.fromJson(core.Map json_)
       : this(
-          hiddenTimeMillis: json_.containsKey('hiddenTimeMillis')
-              ? json_['hiddenTimeMillis'] as core.String
-              : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          hiddenTimeMillis: json_['hiddenTimeMillis'] as core.String?,
+          kind: json_['kind'] as core.String?,
           player: json_.containsKey('player')
               ? Player.fromJson(
                   json_['player'] as core.Map<core.String, core.dynamic>)
@@ -1072,10 +1057,8 @@ class HiddenPlayerList {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          kind: json_['kind'] as core.String?,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1106,12 +1089,8 @@ class PlayerName {
 
   PlayerName.fromJson(core.Map json_)
       : this(
-          familyName: json_.containsKey('familyName')
-              ? json_['familyName'] as core.String
-              : null,
-          givenName: json_.containsKey('givenName')
-              ? json_['givenName'] as core.String
-              : null,
+          familyName: json_['familyName'] as core.String?,
+          givenName: json_['givenName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1183,40 +1162,27 @@ class Player {
 
   Player.fromJson(core.Map json_)
       : this(
-          avatarImageUrl: json_.containsKey('avatarImageUrl')
-              ? json_['avatarImageUrl'] as core.String
-              : null,
-          bannerUrlLandscape: json_.containsKey('bannerUrlLandscape')
-              ? json_['bannerUrlLandscape'] as core.String
-              : null,
-          bannerUrlPortrait: json_.containsKey('bannerUrlPortrait')
-              ? json_['bannerUrlPortrait'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+          avatarImageUrl: json_['avatarImageUrl'] as core.String?,
+          bannerUrlLandscape: json_['bannerUrlLandscape'] as core.String?,
+          bannerUrlPortrait: json_['bannerUrlPortrait'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
           experienceInfo: json_.containsKey('experienceInfo')
               ? GamesPlayerExperienceInfoResource.fromJson(
                   json_['experienceInfo']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          kind: json_['kind'] as core.String?,
           name: json_.containsKey('name')
               ? PlayerName.fromJson(
                   json_['name'] as core.Map<core.String, core.dynamic>)
               : null,
-          originalPlayerId: json_.containsKey('originalPlayerId')
-              ? json_['originalPlayerId'] as core.String
-              : null,
-          playerId: json_.containsKey('playerId')
-              ? json_['playerId'] as core.String
-              : null,
+          originalPlayerId: json_['originalPlayerId'] as core.String?,
+          playerId: json_['playerId'] as core.String?,
           profileSettings: json_.containsKey('profileSettings')
               ? ProfileSettings.fromJson(json_['profileSettings']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          title:
-              json_.containsKey('title') ? json_['title'] as core.String : null,
+          title: json_['title'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1253,7 +1219,7 @@ class PlayerScoreResetAllResponse {
 
   PlayerScoreResetAllResponse.fromJson(core.Map json_)
       : this(
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          kind: json_['kind'] as core.String?,
           results: json_.containsKey('results')
               ? (json_['results'] as core.List)
                   .map((value) => PlayerScoreResetResponse.fromJson(
@@ -1294,10 +1260,8 @@ class PlayerScoreResetResponse {
 
   PlayerScoreResetResponse.fromJson(core.Map json_)
       : this(
-          definitionId: json_.containsKey('definitionId')
-              ? json_['definitionId'] as core.String
-              : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          definitionId: json_['definitionId'] as core.String?,
+          kind: json_['kind'] as core.String?,
           resetScoreTimeSpans: json_.containsKey('resetScoreTimeSpans')
               ? (json_['resetScoreTimeSpans'] as core.List)
                   .map((value) => value as core.String)
@@ -1328,10 +1292,8 @@ class ProfileSettings {
 
   ProfileSettings.fromJson(core.Map json_)
       : this(
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          profileVisible: json_.containsKey('profileVisible')
-              ? json_['profileVisible'] as core.bool
-              : null,
+          kind: json_['kind'] as core.String?,
+          profileVisible: json_['profileVisible'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1357,7 +1319,7 @@ class ScoresResetMultipleForAllRequest {
 
   ScoresResetMultipleForAllRequest.fromJson(core.Map json_)
       : this(
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          kind: json_['kind'] as core.String?,
           leaderboardIds: json_.containsKey('leaderboard_ids')
               ? (json_['leaderboard_ids'] as core.List)
                   .map((value) => value as core.String)

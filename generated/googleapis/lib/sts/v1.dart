@@ -252,26 +252,13 @@ class GoogleIdentityStsV1ExchangeTokenRequest {
 
   GoogleIdentityStsV1ExchangeTokenRequest.fromJson(core.Map json_)
       : this(
-          audience: json_.containsKey('audience')
-              ? json_['audience'] as core.String
-              : null,
-          grantType: json_.containsKey('grantType')
-              ? json_['grantType'] as core.String
-              : null,
-          options: json_.containsKey('options')
-              ? json_['options'] as core.String
-              : null,
-          requestedTokenType: json_.containsKey('requestedTokenType')
-              ? json_['requestedTokenType'] as core.String
-              : null,
-          scope:
-              json_.containsKey('scope') ? json_['scope'] as core.String : null,
-          subjectToken: json_.containsKey('subjectToken')
-              ? json_['subjectToken'] as core.String
-              : null,
-          subjectTokenType: json_.containsKey('subjectTokenType')
-              ? json_['subjectTokenType'] as core.String
-              : null,
+          audience: json_['audience'] as core.String?,
+          grantType: json_['grantType'] as core.String?,
+          options: json_['options'] as core.String?,
+          requestedTokenType: json_['requestedTokenType'] as core.String?,
+          scope: json_['scope'] as core.String?,
+          subjectToken: json_['subjectToken'] as core.String?,
+          subjectTokenType: json_['subjectTokenType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -323,18 +310,10 @@ class GoogleIdentityStsV1ExchangeTokenResponse {
 
   GoogleIdentityStsV1ExchangeTokenResponse.fromJson(core.Map json_)
       : this(
-          accessToken: json_.containsKey('access_token')
-              ? json_['access_token'] as core.String
-              : null,
-          expiresIn: json_.containsKey('expires_in')
-              ? json_['expires_in'] as core.int
-              : null,
-          issuedTokenType: json_.containsKey('issued_token_type')
-              ? json_['issued_token_type'] as core.String
-              : null,
-          tokenType: json_.containsKey('token_type')
-              ? json_['token_type'] as core.String
-              : null,
+          accessToken: json_['access_token'] as core.String?,
+          expiresIn: json_['expires_in'] as core.int?,
+          issuedTokenType: json_['issued_token_type'] as core.String?,
+          tokenType: json_['token_type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

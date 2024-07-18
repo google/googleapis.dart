@@ -25263,12 +25263,8 @@ class GoogleCloudAiplatformV1ActiveLearningConfig {
 
   GoogleCloudAiplatformV1ActiveLearningConfig.fromJson(core.Map json_)
       : this(
-          maxDataItemCount: json_.containsKey('maxDataItemCount')
-              ? json_['maxDataItemCount'] as core.String
-              : null,
-          maxDataItemPercentage: json_.containsKey('maxDataItemPercentage')
-              ? json_['maxDataItemPercentage'] as core.int
-              : null,
+          maxDataItemCount: json_['maxDataItemCount'] as core.String?,
+          maxDataItemPercentage: json_['maxDataItemPercentage'] as core.int?,
           sampleConfig: json_.containsKey('sampleConfig')
               ? GoogleCloudAiplatformV1SampleConfig.fromJson(
                   json_['sampleConfig'] as core.Map<core.String, core.dynamic>)
@@ -25476,10 +25472,8 @@ class GoogleCloudAiplatformV1Annotation {
                   json_['annotationSource']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          createTime: json_['createTime'] as core.String?,
+          etag: json_['etag'] as core.String?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -25488,14 +25482,10 @@ class GoogleCloudAiplatformV1Annotation {
                   ),
                 )
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          payload: json_.containsKey('payload') ? json_['payload'] : null,
-          payloadSchemaUri: json_.containsKey('payloadSchemaUri')
-              ? json_['payloadSchemaUri'] as core.String
-              : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          payload: json_['payload'],
+          payloadSchemaUri: json_['payloadSchemaUri'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -25552,17 +25542,11 @@ class GoogleCloudAiplatformV1AnnotationSpec {
 
   GoogleCloudAiplatformV1AnnotationSpec.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          etag: json_['etag'] as core.String?,
+          name: json_['name'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -25673,16 +25657,10 @@ class GoogleCloudAiplatformV1Artifact {
 
   GoogleCloudAiplatformV1Artifact.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          createTime: json_['createTime'] as core.String?,
+          description: json_['description'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          etag: json_['etag'] as core.String?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -25694,19 +25672,12 @@ class GoogleCloudAiplatformV1Artifact {
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          schemaTitle: json_.containsKey('schemaTitle')
-              ? json_['schemaTitle'] as core.String
-              : null,
-          schemaVersion: json_.containsKey('schemaVersion')
-              ? json_['schemaVersion'] as core.String
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
-          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+          name: json_['name'] as core.String?,
+          schemaTitle: json_['schemaTitle'] as core.String?,
+          schemaVersion: json_['schemaVersion'] as core.String?,
+          state: json_['state'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
+          uri: json_['uri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -25757,12 +25728,9 @@ class GoogleCloudAiplatformV1AssignNotebookRuntimeRequest {
                   json_['notebookRuntime']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          notebookRuntimeId: json_.containsKey('notebookRuntimeId')
-              ? json_['notebookRuntimeId'] as core.String
-              : null,
-          notebookRuntimeTemplate: json_.containsKey('notebookRuntimeTemplate')
-              ? json_['notebookRuntimeTemplate'] as core.String
-              : null,
+          notebookRuntimeId: json_['notebookRuntimeId'] as core.String?,
+          notebookRuntimeTemplate:
+              json_['notebookRuntimeTemplate'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -25874,29 +25842,20 @@ class GoogleCloudAiplatformV1Attribution {
 
   GoogleCloudAiplatformV1Attribution.fromJson(core.Map json_)
       : this(
-          approximationError: json_.containsKey('approximationError')
-              ? (json_['approximationError'] as core.num).toDouble()
-              : null,
-          baselineOutputValue: json_.containsKey('baselineOutputValue')
-              ? (json_['baselineOutputValue'] as core.num).toDouble()
-              : null,
-          featureAttributions: json_.containsKey('featureAttributions')
-              ? json_['featureAttributions']
-              : null,
-          instanceOutputValue: json_.containsKey('instanceOutputValue')
-              ? (json_['instanceOutputValue'] as core.num).toDouble()
-              : null,
-          outputDisplayName: json_.containsKey('outputDisplayName')
-              ? json_['outputDisplayName'] as core.String
-              : null,
+          approximationError:
+              (json_['approximationError'] as core.num?)?.toDouble(),
+          baselineOutputValue:
+              (json_['baselineOutputValue'] as core.num?)?.toDouble(),
+          featureAttributions: json_['featureAttributions'],
+          instanceOutputValue:
+              (json_['instanceOutputValue'] as core.num?)?.toDouble(),
+          outputDisplayName: json_['outputDisplayName'] as core.String?,
           outputIndex: json_.containsKey('outputIndex')
               ? (json_['outputIndex'] as core.List)
                   .map((value) => value as core.int)
                   .toList()
               : null,
-          outputName: json_.containsKey('outputName')
-              ? json_['outputName'] as core.String
-              : null,
+          outputName: json_['outputName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -25951,12 +25910,8 @@ class GoogleCloudAiplatformV1AutomaticResources {
 
   GoogleCloudAiplatformV1AutomaticResources.fromJson(core.Map json_)
       : this(
-          maxReplicaCount: json_.containsKey('maxReplicaCount')
-              ? json_['maxReplicaCount'] as core.int
-              : null,
-          minReplicaCount: json_.containsKey('minReplicaCount')
-              ? json_['minReplicaCount'] as core.int
-              : null,
+          maxReplicaCount: json_['maxReplicaCount'] as core.int?,
+          minReplicaCount: json_['minReplicaCount'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -25992,11 +25947,8 @@ class GoogleCloudAiplatformV1AutoscalingMetricSpec {
 
   GoogleCloudAiplatformV1AutoscalingMetricSpec.fromJson(core.Map json_)
       : this(
-          metricName: json_.containsKey('metricName')
-              ? json_['metricName'] as core.String
-              : null,
-          target:
-              json_.containsKey('target') ? json_['target'] as core.int : null,
+          metricName: json_['metricName'] as core.String?,
+          target: json_['target'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -26242,12 +26194,8 @@ class GoogleCloudAiplatformV1BatchDedicatedResources {
               ? GoogleCloudAiplatformV1MachineSpec.fromJson(
                   json_['machineSpec'] as core.Map<core.String, core.dynamic>)
               : null,
-          maxReplicaCount: json_.containsKey('maxReplicaCount')
-              ? json_['maxReplicaCount'] as core.int
-              : null,
-          startingReplicaCount: json_.containsKey('startingReplicaCount')
-              ? json_['startingReplicaCount'] as core.int
-              : null,
+          maxReplicaCount: json_['maxReplicaCount'] as core.int?,
+          startingReplicaCount: json_['startingReplicaCount'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -26330,9 +26278,7 @@ class GoogleCloudAiplatformV1BatchImportEvaluatedAnnotationsResponse {
       core.Map json_)
       : this(
           importedEvaluatedAnnotationsCount:
-              json_.containsKey('importedEvaluatedAnnotationsCount')
-                  ? json_['importedEvaluatedAnnotationsCount'] as core.int
-                  : null,
+              json_['importedEvaluatedAnnotationsCount'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -26631,28 +26577,21 @@ class GoogleCloudAiplatformV1BatchPredictionJob {
                   json_['completionStats']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
           dedicatedResources: json_.containsKey('dedicatedResources')
               ? GoogleCloudAiplatformV1BatchDedicatedResources.fromJson(
                   json_['dedicatedResources']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          disableContainerLogging: json_.containsKey('disableContainerLogging')
-              ? json_['disableContainerLogging'] as core.bool
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+          disableContainerLogging:
+              json_['disableContainerLogging'] as core.bool?,
+          displayName: json_['displayName'] as core.String?,
           encryptionSpec: json_.containsKey('encryptionSpec')
               ? GoogleCloudAiplatformV1EncryptionSpec.fromJson(
                   json_['encryptionSpec']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          endTime: json_.containsKey('endTime')
-              ? json_['endTime'] as core.String
-              : null,
+          endTime: json_['endTime'] as core.String?,
           error: json_.containsKey('error')
               ? GoogleRpcStatus.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
@@ -26662,9 +26601,7 @@ class GoogleCloudAiplatformV1BatchPredictionJob {
                   json_['explanationSpec']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          generateExplanation: json_.containsKey('generateExplanation')
-              ? json_['generateExplanation'] as core.bool
-              : null,
+          generateExplanation: json_['generateExplanation'] as core.bool?,
           inputConfig: json_.containsKey('inputConfig')
               ? GoogleCloudAiplatformV1BatchPredictionJobInputConfig.fromJson(
                   json_['inputConfig'] as core.Map<core.String, core.dynamic>)
@@ -26688,15 +26625,10 @@ class GoogleCloudAiplatformV1BatchPredictionJob {
                       json_['manualBatchTuningParameters']
                           as core.Map<core.String, core.dynamic>)
                   : null,
-          model:
-              json_.containsKey('model') ? json_['model'] as core.String : null,
-          modelParameters: json_.containsKey('modelParameters')
-              ? json_['modelParameters']
-              : null,
-          modelVersionId: json_.containsKey('modelVersionId')
-              ? json_['modelVersionId'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          model: json_['model'] as core.String?,
+          modelParameters: json_['modelParameters'],
+          modelVersionId: json_['modelVersionId'] as core.String?,
+          name: json_['name'] as core.String?,
           outputConfig: json_.containsKey('outputConfig')
               ? GoogleCloudAiplatformV1BatchPredictionJobOutputConfig.fromJson(
                   json_['outputConfig'] as core.Map<core.String, core.dynamic>)
@@ -26716,22 +26648,15 @@ class GoogleCloudAiplatformV1BatchPredictionJob {
                   json_['resourcesConsumed']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          serviceAccount: json_.containsKey('serviceAccount')
-              ? json_['serviceAccount'] as core.String
-              : null,
-          startTime: json_.containsKey('startTime')
-              ? json_['startTime'] as core.String
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
+          serviceAccount: json_['serviceAccount'] as core.String?,
+          startTime: json_['startTime'] as core.String?,
+          state: json_['state'] as core.String?,
           unmanagedContainerModel: json_.containsKey('unmanagedContainerModel')
               ? GoogleCloudAiplatformV1UnmanagedContainerModel.fromJson(
                   json_['unmanagedContainerModel']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -26809,9 +26734,7 @@ class GoogleCloudAiplatformV1BatchPredictionJobInputConfig {
               ? GoogleCloudAiplatformV1GcsSource.fromJson(
                   json_['gcsSource'] as core.Map<core.String, core.dynamic>)
               : null,
-          instancesFormat: json_.containsKey('instancesFormat')
-              ? json_['instancesFormat'] as core.String
-              : null,
+          instancesFormat: json_['instancesFormat'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -26901,12 +26824,8 @@ class GoogleCloudAiplatformV1BatchPredictionJobInstanceConfig {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          instanceType: json_.containsKey('instanceType')
-              ? json_['instanceType'] as core.String
-              : null,
-          keyField: json_.containsKey('keyField')
-              ? json_['keyField'] as core.String
-              : null,
+          instanceType: json_['instanceType'] as core.String?,
+          keyField: json_['keyField'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -26982,9 +26901,7 @@ class GoogleCloudAiplatformV1BatchPredictionJobOutputConfig {
                   json_['gcsDestination']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          predictionsFormat: json_.containsKey('predictionsFormat')
-              ? json_['predictionsFormat'] as core.String
-              : null,
+          predictionsFormat: json_['predictionsFormat'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -27027,15 +26944,9 @@ class GoogleCloudAiplatformV1BatchPredictionJobOutputInfo {
 
   GoogleCloudAiplatformV1BatchPredictionJobOutputInfo.fromJson(core.Map json_)
       : this(
-          bigqueryOutputDataset: json_.containsKey('bigqueryOutputDataset')
-              ? json_['bigqueryOutputDataset'] as core.String
-              : null,
-          bigqueryOutputTable: json_.containsKey('bigqueryOutputTable')
-              ? json_['bigqueryOutputTable'] as core.String
-              : null,
-          gcsOutputDirectory: json_.containsKey('gcsOutputDirectory')
-              ? json_['gcsOutputDirectory'] as core.String
-              : null,
+          bigqueryOutputDataset: json_['bigqueryOutputDataset'] as core.String?,
+          bigqueryOutputTable: json_['bigqueryOutputTable'] as core.String?,
+          gcsOutputDirectory: json_['gcsOutputDirectory'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -27142,9 +27053,7 @@ class GoogleCloudAiplatformV1BatchReadFeatureValuesRequest {
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          startTime: json_.containsKey('startTime')
-              ? json_['startTime'] as core.String
-              : null,
+          startTime: json_['startTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -27186,9 +27095,7 @@ class GoogleCloudAiplatformV1BatchReadFeatureValuesRequestEntityTypeSpec {
   GoogleCloudAiplatformV1BatchReadFeatureValuesRequestEntityTypeSpec.fromJson(
       core.Map json_)
       : this(
-          entityTypeId: json_.containsKey('entityTypeId')
-              ? json_['entityTypeId'] as core.String
-              : null,
+          entityTypeId: json_['entityTypeId'] as core.String?,
           featureSelector: json_.containsKey('featureSelector')
               ? GoogleCloudAiplatformV1FeatureSelector.fromJson(
                   json_['featureSelector']
@@ -27227,9 +27134,7 @@ class GoogleCloudAiplatformV1BatchReadFeatureValuesRequestPassThroughField {
   GoogleCloudAiplatformV1BatchReadFeatureValuesRequestPassThroughField.fromJson(
       core.Map json_)
       : this(
-          fieldName: json_.containsKey('fieldName')
-              ? json_['fieldName'] as core.String
-              : null,
+          fieldName: json_['fieldName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -27282,9 +27187,7 @@ class GoogleCloudAiplatformV1BigQueryDestination {
 
   GoogleCloudAiplatformV1BigQueryDestination.fromJson(core.Map json_)
       : this(
-          outputUri: json_.containsKey('outputUri')
-              ? json_['outputUri'] as core.String
-              : null,
+          outputUri: json_['outputUri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -27308,9 +27211,7 @@ class GoogleCloudAiplatformV1BigQuerySource {
 
   GoogleCloudAiplatformV1BigQuerySource.fromJson(core.Map json_)
       : this(
-          inputUri: json_.containsKey('inputUri')
-              ? json_['inputUri'] as core.String
-              : null,
+          inputUri: json_['inputUri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -27345,10 +27246,8 @@ class GoogleCloudAiplatformV1Blob {
 
   GoogleCloudAiplatformV1Blob.fromJson(core.Map json_)
       : this(
-          data: json_.containsKey('data') ? json_['data'] as core.String : null,
-          mimeType: json_.containsKey('mimeType')
-              ? json_['mimeType'] as core.String
-              : null,
+          data: json_['data'] as core.String?,
+          mimeType: json_['mimeType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -27377,9 +27276,7 @@ class GoogleCloudAiplatformV1BlurBaselineConfig {
 
   GoogleCloudAiplatformV1BlurBaselineConfig.fromJson(core.Map json_)
       : this(
-          maxBlurSigma: json_.containsKey('maxBlurSigma')
-              ? (json_['maxBlurSigma'] as core.num).toDouble()
-              : null,
+          maxBlurSigma: (json_['maxBlurSigma'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -27515,18 +27412,14 @@ class GoogleCloudAiplatformV1Candidate {
               ? GoogleCloudAiplatformV1Content.fromJson(
                   json_['content'] as core.Map<core.String, core.dynamic>)
               : null,
-          finishMessage: json_.containsKey('finishMessage')
-              ? json_['finishMessage'] as core.String
-              : null,
-          finishReason: json_.containsKey('finishReason')
-              ? json_['finishReason'] as core.String
-              : null,
+          finishMessage: json_['finishMessage'] as core.String?,
+          finishReason: json_['finishReason'] as core.String?,
           groundingMetadata: json_.containsKey('groundingMetadata')
               ? GoogleCloudAiplatformV1GroundingMetadata.fromJson(
                   json_['groundingMetadata']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          index: json_.containsKey('index') ? json_['index'] as core.int : null,
+          index: json_['index'] as core.int?,
           safetyRatings: json_.containsKey('safetyRatings')
               ? (json_['safetyRatings'] as core.List)
                   .map((value) => GoogleCloudAiplatformV1SafetyRating.fromJson(
@@ -27592,22 +27485,15 @@ class GoogleCloudAiplatformV1Citation {
 
   GoogleCloudAiplatformV1Citation.fromJson(core.Map json_)
       : this(
-          endIndex: json_.containsKey('endIndex')
-              ? json_['endIndex'] as core.int
-              : null,
-          license: json_.containsKey('license')
-              ? json_['license'] as core.String
-              : null,
+          endIndex: json_['endIndex'] as core.int?,
+          license: json_['license'] as core.String?,
           publicationDate: json_.containsKey('publicationDate')
               ? GoogleTypeDate.fromJson(json_['publicationDate']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          startIndex: json_.containsKey('startIndex')
-              ? json_['startIndex'] as core.int
-              : null,
-          title:
-              json_.containsKey('title') ? json_['title'] as core.String : null,
-          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+          startIndex: json_['startIndex'] as core.int?,
+          title: json_['title'] as core.String?,
+          uri: json_['uri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -27681,12 +27567,8 @@ class GoogleCloudAiplatformV1CompleteTrialRequest {
                   json_['finalMeasurement']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          infeasibleReason: json_.containsKey('infeasibleReason')
-              ? json_['infeasibleReason'] as core.String
-              : null,
-          trialInfeasible: json_.containsKey('trialInfeasible')
-              ? json_['trialInfeasible'] as core.bool
-              : null,
+          infeasibleReason: json_['infeasibleReason'] as core.String?,
+          trialInfeasible: json_['trialInfeasible'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -27737,19 +27619,11 @@ class GoogleCloudAiplatformV1CompletionStats {
 
   GoogleCloudAiplatformV1CompletionStats.fromJson(core.Map json_)
       : this(
-          failedCount: json_.containsKey('failedCount')
-              ? json_['failedCount'] as core.String
-              : null,
-          incompleteCount: json_.containsKey('incompleteCount')
-              ? json_['incompleteCount'] as core.String
-              : null,
-          successfulCount: json_.containsKey('successfulCount')
-              ? json_['successfulCount'] as core.String
-              : null,
+          failedCount: json_['failedCount'] as core.String?,
+          incompleteCount: json_['incompleteCount'] as core.String?,
+          successfulCount: json_['successfulCount'] as core.String?,
           successfulForecastPointCount:
-              json_.containsKey('successfulForecastPointCount')
-                  ? json_['successfulForecastPointCount'] as core.String
-                  : null,
+              json_['successfulForecastPointCount'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -27837,9 +27711,7 @@ class GoogleCloudAiplatformV1ContainerRegistryDestination {
 
   GoogleCloudAiplatformV1ContainerRegistryDestination.fromJson(core.Map json_)
       : this(
-          outputUri: json_.containsKey('outputUri')
-              ? json_['outputUri'] as core.String
-              : null,
+          outputUri: json_['outputUri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -27893,9 +27765,7 @@ class GoogleCloudAiplatformV1ContainerSpec {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          imageUri: json_.containsKey('imageUri')
-              ? json_['imageUri'] as core.String
-              : null,
+          imageUri: json_['imageUri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -27940,7 +27810,7 @@ class GoogleCloudAiplatformV1Content {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          role: json_.containsKey('role') ? json_['role'] as core.String : null,
+          role: json_['role'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -28034,16 +27904,10 @@ class GoogleCloudAiplatformV1Context {
 
   GoogleCloudAiplatformV1Context.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          createTime: json_['createTime'] as core.String?,
+          description: json_['description'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          etag: json_['etag'] as core.String?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -28055,21 +27919,15 @@ class GoogleCloudAiplatformV1Context {
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           parentContexts: json_.containsKey('parentContexts')
               ? (json_['parentContexts'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          schemaTitle: json_.containsKey('schemaTitle')
-              ? json_['schemaTitle'] as core.String
-              : null,
-          schemaVersion: json_.containsKey('schemaVersion')
-              ? json_['schemaVersion'] as core.String
-              : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          schemaTitle: json_['schemaTitle'] as core.String?,
+          schemaVersion: json_['schemaVersion'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -28134,15 +27992,9 @@ class GoogleCloudAiplatformV1CopyModelRequest {
                   json_['encryptionSpec']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          modelId: json_.containsKey('modelId')
-              ? json_['modelId'] as core.String
-              : null,
-          parentModel: json_.containsKey('parentModel')
-              ? json_['parentModel'] as core.String
-              : null,
-          sourceModel: json_.containsKey('sourceModel')
-              ? json_['sourceModel'] as core.String
-              : null,
+          modelId: json_['modelId'] as core.String?,
+          parentModel: json_['parentModel'] as core.String?,
+          sourceModel: json_['sourceModel'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -28195,8 +28047,7 @@ class GoogleCloudAiplatformV1CountTokensRequest {
           instances: json_.containsKey('instances')
               ? json_['instances'] as core.List
               : null,
-          model:
-              json_.containsKey('model') ? json_['model'] as core.String : null,
+          model: json_['model'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -28222,12 +28073,9 @@ class GoogleCloudAiplatformV1CountTokensResponse {
 
   GoogleCloudAiplatformV1CountTokensResponse.fromJson(core.Map json_)
       : this(
-          totalBillableCharacters: json_.containsKey('totalBillableCharacters')
-              ? json_['totalBillableCharacters'] as core.int
-              : null,
-          totalTokens: json_.containsKey('totalTokens')
-              ? json_['totalTokens'] as core.int
-              : null,
+          totalBillableCharacters:
+              json_['totalBillableCharacters'] as core.int?,
+          totalTokens: json_['totalTokens'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -28267,9 +28115,7 @@ class GoogleCloudAiplatformV1CreateDeploymentResourcePoolRequest {
                       as core.Map<core.String, core.dynamic>)
               : null,
           deploymentResourcePoolId:
-              json_.containsKey('deploymentResourcePoolId')
-                  ? json_['deploymentResourcePoolId'] as core.String
-                  : null,
+              json_['deploymentResourcePoolId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -28321,12 +28167,8 @@ class GoogleCloudAiplatformV1CreateFeatureRequest {
               ? GoogleCloudAiplatformV1Feature.fromJson(
                   json_['feature'] as core.Map<core.String, core.dynamic>)
               : null,
-          featureId: json_.containsKey('featureId')
-              ? json_['featureId'] as core.String
-              : null,
-          parent: json_.containsKey('parent')
-              ? json_['parent'] as core.String
-              : null,
+          featureId: json_['featureId'] as core.String?,
+          parent: json_['parent'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -28365,16 +28207,12 @@ class GoogleCloudAiplatformV1CreatePipelineJobRequest {
 
   GoogleCloudAiplatformV1CreatePipelineJobRequest.fromJson(core.Map json_)
       : this(
-          parent: json_.containsKey('parent')
-              ? json_['parent'] as core.String
-              : null,
+          parent: json_['parent'] as core.String?,
           pipelineJob: json_.containsKey('pipelineJob')
               ? GoogleCloudAiplatformV1PipelineJob.fromJson(
                   json_['pipelineJob'] as core.Map<core.String, core.dynamic>)
               : null,
-          pipelineJobId: json_.containsKey('pipelineJobId')
-              ? json_['pipelineJobId'] as core.String
-              : null,
+          pipelineJobId: json_['pipelineJobId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -28416,17 +28254,13 @@ class GoogleCloudAiplatformV1CreateTensorboardRunRequest {
 
   GoogleCloudAiplatformV1CreateTensorboardRunRequest.fromJson(core.Map json_)
       : this(
-          parent: json_.containsKey('parent')
-              ? json_['parent'] as core.String
-              : null,
+          parent: json_['parent'] as core.String?,
           tensorboardRun: json_.containsKey('tensorboardRun')
               ? GoogleCloudAiplatformV1TensorboardRun.fromJson(
                   json_['tensorboardRun']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          tensorboardRunId: json_.containsKey('tensorboardRunId')
-              ? json_['tensorboardRunId'] as core.String
-              : null,
+          tensorboardRunId: json_['tensorboardRunId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -28469,17 +28303,14 @@ class GoogleCloudAiplatformV1CreateTensorboardTimeSeriesRequest {
   GoogleCloudAiplatformV1CreateTensorboardTimeSeriesRequest.fromJson(
       core.Map json_)
       : this(
-          parent: json_.containsKey('parent')
-              ? json_['parent'] as core.String
-              : null,
+          parent: json_['parent'] as core.String?,
           tensorboardTimeSeries: json_.containsKey('tensorboardTimeSeries')
               ? GoogleCloudAiplatformV1TensorboardTimeSeries.fromJson(
                   json_['tensorboardTimeSeries']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          tensorboardTimeSeriesId: json_.containsKey('tensorboardTimeSeriesId')
-              ? json_['tensorboardTimeSeriesId'] as core.String
-              : null,
+          tensorboardTimeSeriesId:
+              json_['tensorboardTimeSeriesId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -28661,20 +28492,14 @@ class GoogleCloudAiplatformV1CustomJob {
 
   GoogleCloudAiplatformV1CustomJob.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
           encryptionSpec: json_.containsKey('encryptionSpec')
               ? GoogleCloudAiplatformV1EncryptionSpec.fromJson(
                   json_['encryptionSpec']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          endTime: json_.containsKey('endTime')
-              ? json_['endTime'] as core.String
-              : null,
+          endTime: json_['endTime'] as core.String?,
           error: json_.containsKey('error')
               ? GoogleRpcStatus.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
@@ -28691,15 +28516,10 @@ class GoogleCloudAiplatformV1CustomJob {
                   ),
                 )
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          startTime: json_.containsKey('startTime')
-              ? json_['startTime'] as core.String
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          startTime: json_['startTime'] as core.String?,
+          state: json_['state'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
           webAccessUris: json_.containsKey('webAccessUris')
               ? (json_['webAccessUris'] as core.Map<core.String, core.dynamic>)
                   .map(
@@ -28891,33 +28711,19 @@ class GoogleCloudAiplatformV1CustomJobSpec {
                   json_['baseOutputDirectory']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          enableDashboardAccess: json_.containsKey('enableDashboardAccess')
-              ? json_['enableDashboardAccess'] as core.bool
-              : null,
-          enableWebAccess: json_.containsKey('enableWebAccess')
-              ? json_['enableWebAccess'] as core.bool
-              : null,
-          experiment: json_.containsKey('experiment')
-              ? json_['experiment'] as core.String
-              : null,
-          experimentRun: json_.containsKey('experimentRun')
-              ? json_['experimentRun'] as core.String
-              : null,
+          enableDashboardAccess: json_['enableDashboardAccess'] as core.bool?,
+          enableWebAccess: json_['enableWebAccess'] as core.bool?,
+          experiment: json_['experiment'] as core.String?,
+          experimentRun: json_['experimentRun'] as core.String?,
           models: json_.containsKey('models')
               ? (json_['models'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          network: json_.containsKey('network')
-              ? json_['network'] as core.String
-              : null,
-          persistentResourceId: json_.containsKey('persistentResourceId')
-              ? json_['persistentResourceId'] as core.String
-              : null,
+          network: json_['network'] as core.String?,
+          persistentResourceId: json_['persistentResourceId'] as core.String?,
           protectedArtifactLocationId:
-              json_.containsKey('protectedArtifactLocationId')
-                  ? json_['protectedArtifactLocationId'] as core.String
-                  : null,
+              json_['protectedArtifactLocationId'] as core.String?,
           reservedIpRanges: json_.containsKey('reservedIpRanges')
               ? (json_['reservedIpRanges'] as core.List)
                   .map((value) => value as core.String)
@@ -28927,12 +28733,8 @@ class GoogleCloudAiplatformV1CustomJobSpec {
               ? GoogleCloudAiplatformV1Scheduling.fromJson(
                   json_['scheduling'] as core.Map<core.String, core.dynamic>)
               : null,
-          serviceAccount: json_.containsKey('serviceAccount')
-              ? json_['serviceAccount'] as core.String
-              : null,
-          tensorboard: json_.containsKey('tensorboard')
-              ? json_['tensorboard'] as core.String
-              : null,
+          serviceAccount: json_['serviceAccount'] as core.String?,
+          tensorboard: json_['tensorboard'] as core.String?,
           workerPoolSpecs: json_.containsKey('workerPoolSpecs')
               ? (json_['workerPoolSpecs'] as core.List)
                   .map((value) =>
@@ -29026,10 +28828,8 @@ class GoogleCloudAiplatformV1DataItem {
 
   GoogleCloudAiplatformV1DataItem.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          createTime: json_['createTime'] as core.String?,
+          etag: json_['etag'] as core.String?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -29038,11 +28838,9 @@ class GoogleCloudAiplatformV1DataItem {
                   ),
                 )
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          payload: json_.containsKey('payload') ? json_['payload'] : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          payload: json_['payload'],
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -29094,9 +28892,8 @@ class GoogleCloudAiplatformV1DataItemView {
               ? GoogleCloudAiplatformV1DataItem.fromJson(
                   json_['dataItem'] as core.Map<core.String, core.dynamic>)
               : null,
-          hasTruncatedAnnotations: json_.containsKey('hasTruncatedAnnotations')
-              ? json_['hasTruncatedAnnotations'] as core.bool
-              : null,
+          hasTruncatedAnnotations:
+              json_['hasTruncatedAnnotations'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -29293,9 +29090,7 @@ class GoogleCloudAiplatformV1DataLabelingJob {
                   ),
                 )
               : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
           currentSpend: json_.containsKey('currentSpend')
               ? GoogleTypeMoney.fromJson(
                   json_['currentSpend'] as core.Map<core.String, core.dynamic>)
@@ -29305,9 +29100,7 @@ class GoogleCloudAiplatformV1DataLabelingJob {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+          displayName: json_['displayName'] as core.String?,
           encryptionSpec: json_.containsKey('encryptionSpec')
               ? GoogleCloudAiplatformV1EncryptionSpec.fromJson(
                   json_['encryptionSpec']
@@ -29317,19 +29110,11 @@ class GoogleCloudAiplatformV1DataLabelingJob {
               ? GoogleRpcStatus.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
               : null,
-          inputs: json_.containsKey('inputs') ? json_['inputs'] : null,
-          inputsSchemaUri: json_.containsKey('inputsSchemaUri')
-              ? json_['inputsSchemaUri'] as core.String
-              : null,
-          instructionUri: json_.containsKey('instructionUri')
-              ? json_['instructionUri'] as core.String
-              : null,
-          labelerCount: json_.containsKey('labelerCount')
-              ? json_['labelerCount'] as core.int
-              : null,
-          labelingProgress: json_.containsKey('labelingProgress')
-              ? json_['labelingProgress'] as core.int
-              : null,
+          inputs: json_['inputs'],
+          inputsSchemaUri: json_['inputsSchemaUri'] as core.String?,
+          instructionUri: json_['instructionUri'] as core.String?,
+          labelerCount: json_['labelerCount'] as core.int?,
+          labelingProgress: json_['labelingProgress'] as core.int?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -29338,17 +29123,14 @@ class GoogleCloudAiplatformV1DataLabelingJob {
                   ),
                 )
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           specialistPools: json_.containsKey('specialistPools')
               ? (json_['specialistPools'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          state: json_['state'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -29497,24 +29279,16 @@ class GoogleCloudAiplatformV1Dataset {
 
   GoogleCloudAiplatformV1Dataset.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          dataItemCount: json_.containsKey('dataItemCount')
-              ? json_['dataItemCount'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          dataItemCount: json_['dataItemCount'] as core.String?,
+          description: json_['description'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
           encryptionSpec: json_.containsKey('encryptionSpec')
               ? GoogleCloudAiplatformV1EncryptionSpec.fromJson(
                   json_['encryptionSpec']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          etag: json_['etag'] as core.String?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -29523,26 +29297,18 @@ class GoogleCloudAiplatformV1Dataset {
                   ),
                 )
               : null,
-          metadata: json_.containsKey('metadata') ? json_['metadata'] : null,
-          metadataArtifact: json_.containsKey('metadataArtifact')
-              ? json_['metadataArtifact'] as core.String
-              : null,
-          metadataSchemaUri: json_.containsKey('metadataSchemaUri')
-              ? json_['metadataSchemaUri'] as core.String
-              : null,
-          modelReference: json_.containsKey('modelReference')
-              ? json_['modelReference'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          metadata: json_['metadata'],
+          metadataArtifact: json_['metadataArtifact'] as core.String?,
+          metadataSchemaUri: json_['metadataSchemaUri'] as core.String?,
+          modelReference: json_['modelReference'] as core.String?,
+          name: json_['name'] as core.String?,
           savedQueries: json_.containsKey('savedQueries')
               ? (json_['savedQueries'] as core.List)
                   .map((value) => GoogleCloudAiplatformV1SavedQuery.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -29627,27 +29393,13 @@ class GoogleCloudAiplatformV1DatasetDistribution {
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          max: json_.containsKey('max')
-              ? (json_['max'] as core.num).toDouble()
-              : null,
-          mean: json_.containsKey('mean')
-              ? (json_['mean'] as core.num).toDouble()
-              : null,
-          median: json_.containsKey('median')
-              ? (json_['median'] as core.num).toDouble()
-              : null,
-          min: json_.containsKey('min')
-              ? (json_['min'] as core.num).toDouble()
-              : null,
-          p5: json_.containsKey('p5')
-              ? (json_['p5'] as core.num).toDouble()
-              : null,
-          p95: json_.containsKey('p95')
-              ? (json_['p95'] as core.num).toDouble()
-              : null,
-          sum: json_.containsKey('sum')
-              ? (json_['sum'] as core.num).toDouble()
-              : null,
+          max: (json_['max'] as core.num?)?.toDouble(),
+          mean: (json_['mean'] as core.num?)?.toDouble(),
+          median: (json_['median'] as core.num?)?.toDouble(),
+          min: (json_['min'] as core.num?)?.toDouble(),
+          p5: (json_['p5'] as core.num?)?.toDouble(),
+          p95: (json_['p95'] as core.num?)?.toDouble(),
+          sum: (json_['sum'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -29689,14 +29441,9 @@ class GoogleCloudAiplatformV1DatasetDistributionDistributionBucket {
   GoogleCloudAiplatformV1DatasetDistributionDistributionBucket.fromJson(
       core.Map json_)
       : this(
-          count:
-              json_.containsKey('count') ? json_['count'] as core.String : null,
-          left: json_.containsKey('left')
-              ? (json_['left'] as core.num).toDouble()
-              : null,
-          right: json_.containsKey('right')
-              ? (json_['right'] as core.num).toDouble()
-              : null,
+          count: json_['count'] as core.String?,
+          left: (json_['left'] as core.num?)?.toDouble(),
+          right: (json_['right'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -29762,20 +29509,12 @@ class GoogleCloudAiplatformV1DatasetStats {
   GoogleCloudAiplatformV1DatasetStats.fromJson(core.Map json_)
       : this(
           totalBillableCharacterCount:
-              json_.containsKey('totalBillableCharacterCount')
-                  ? json_['totalBillableCharacterCount'] as core.String
-                  : null,
+              json_['totalBillableCharacterCount'] as core.String?,
           totalTuningCharacterCount:
-              json_.containsKey('totalTuningCharacterCount')
-                  ? json_['totalTuningCharacterCount'] as core.String
-                  : null,
+              json_['totalTuningCharacterCount'] as core.String?,
           tuningDatasetExampleCount:
-              json_.containsKey('tuningDatasetExampleCount')
-                  ? json_['tuningDatasetExampleCount'] as core.String
-                  : null,
-          tuningStepCount: json_.containsKey('tuningStepCount')
-              ? json_['tuningStepCount'] as core.String
-              : null,
+              json_['tuningDatasetExampleCount'] as core.String?,
+          tuningStepCount: json_['tuningStepCount'] as core.String?,
           userDatasetExamples: json_.containsKey('userDatasetExamples')
               ? (json_['userDatasetExamples'] as core.List)
                   .map((value) => GoogleCloudAiplatformV1Content.fromJson(
@@ -29883,24 +29622,14 @@ class GoogleCloudAiplatformV1DatasetVersion {
 
   GoogleCloudAiplatformV1DatasetVersion.fromJson(core.Map json_)
       : this(
-          bigQueryDatasetName: json_.containsKey('bigQueryDatasetName')
-              ? json_['bigQueryDatasetName'] as core.String
-              : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          metadata: json_.containsKey('metadata') ? json_['metadata'] : null,
-          modelReference: json_.containsKey('modelReference')
-              ? json_['modelReference'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          bigQueryDatasetName: json_['bigQueryDatasetName'] as core.String?,
+          createTime: json_['createTime'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          etag: json_['etag'] as core.String?,
+          metadata: json_['metadata'],
+          modelReference: json_['modelReference'] as core.String?,
+          name: json_['name'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -29993,12 +29722,8 @@ class GoogleCloudAiplatformV1DedicatedResources {
               ? GoogleCloudAiplatformV1MachineSpec.fromJson(
                   json_['machineSpec'] as core.Map<core.String, core.dynamic>)
               : null,
-          maxReplicaCount: json_.containsKey('maxReplicaCount')
-              ? json_['maxReplicaCount'] as core.int
-              : null,
-          minReplicaCount: json_.containsKey('minReplicaCount')
-              ? json_['minReplicaCount'] as core.int
-              : null,
+          maxReplicaCount: json_['maxReplicaCount'] as core.int?,
+          minReplicaCount: json_['minReplicaCount'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -30116,9 +29841,8 @@ class GoogleCloudAiplatformV1DeleteFeatureValuesRequestSelectTimeRangeAndFeature
                   json_['featureSelector']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          skipOnlineStorageDelete: json_.containsKey('skipOnlineStorageDelete')
-              ? json_['skipOnlineStorageDelete'] as core.bool
-              : null,
+          skipOnlineStorageDelete:
+              json_['skipOnlineStorageDelete'] as core.bool?,
           timeRange: json_.containsKey('timeRange')
               ? GoogleTypeInterval.fromJson(
                   json_['timeRange'] as core.Map<core.String, core.dynamic>)
@@ -30356,9 +30080,7 @@ class GoogleCloudAiplatformV1DeployedIndex {
                   json_['automaticResources']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
           dedicatedResources: json_.containsKey('dedicatedResources')
               ? GoogleCloudAiplatformV1DedicatedResources.fromJson(
                   json_['dedicatedResources']
@@ -30369,21 +30091,12 @@ class GoogleCloudAiplatformV1DeployedIndex {
                   json_['deployedIndexAuthConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          deploymentGroup: json_.containsKey('deploymentGroup')
-              ? json_['deploymentGroup'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          enableAccessLogging: json_.containsKey('enableAccessLogging')
-              ? json_['enableAccessLogging'] as core.bool
-              : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          index:
-              json_.containsKey('index') ? json_['index'] as core.String : null,
-          indexSyncTime: json_.containsKey('indexSyncTime')
-              ? json_['indexSyncTime'] as core.String
-              : null,
+          deploymentGroup: json_['deploymentGroup'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          enableAccessLogging: json_['enableAccessLogging'] as core.bool?,
+          id: json_['id'] as core.String?,
+          index: json_['index'] as core.String?,
+          indexSyncTime: json_['indexSyncTime'] as core.String?,
           privateEndpoints: json_.containsKey('privateEndpoints')
               ? GoogleCloudAiplatformV1IndexPrivateEndpoints.fromJson(
                   json_['privateEndpoints']
@@ -30507,15 +30220,9 @@ class GoogleCloudAiplatformV1DeployedIndexRef {
 
   GoogleCloudAiplatformV1DeployedIndexRef.fromJson(core.Map json_)
       : this(
-          deployedIndexId: json_.containsKey('deployedIndexId')
-              ? json_['deployedIndexId'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          indexEndpoint: json_.containsKey('indexEndpoint')
-              ? json_['indexEndpoint'] as core.String
-              : null,
+          deployedIndexId: json_['deployedIndexId'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          indexEndpoint: json_['indexEndpoint'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -30653,48 +30360,32 @@ class GoogleCloudAiplatformV1DeployedModel {
                   json_['automaticResources']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
           dedicatedResources: json_.containsKey('dedicatedResources')
               ? GoogleCloudAiplatformV1DedicatedResources.fromJson(
                   json_['dedicatedResources']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          disableContainerLogging: json_.containsKey('disableContainerLogging')
-              ? json_['disableContainerLogging'] as core.bool
-              : null,
-          disableExplanations: json_.containsKey('disableExplanations')
-              ? json_['disableExplanations'] as core.bool
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          enableAccessLogging: json_.containsKey('enableAccessLogging')
-              ? json_['enableAccessLogging'] as core.bool
-              : null,
+          disableContainerLogging:
+              json_['disableContainerLogging'] as core.bool?,
+          disableExplanations: json_['disableExplanations'] as core.bool?,
+          displayName: json_['displayName'] as core.String?,
+          enableAccessLogging: json_['enableAccessLogging'] as core.bool?,
           explanationSpec: json_.containsKey('explanationSpec')
               ? GoogleCloudAiplatformV1ExplanationSpec.fromJson(
                   json_['explanationSpec']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          model:
-              json_.containsKey('model') ? json_['model'] as core.String : null,
-          modelVersionId: json_.containsKey('modelVersionId')
-              ? json_['modelVersionId'] as core.String
-              : null,
+          id: json_['id'] as core.String?,
+          model: json_['model'] as core.String?,
+          modelVersionId: json_['modelVersionId'] as core.String?,
           privateEndpoints: json_.containsKey('privateEndpoints')
               ? GoogleCloudAiplatformV1PrivateEndpoints.fromJson(
                   json_['privateEndpoints']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          serviceAccount: json_.containsKey('serviceAccount')
-              ? json_['serviceAccount'] as core.String
-              : null,
-          sharedResources: json_.containsKey('sharedResources')
-              ? json_['sharedResources'] as core.String
-              : null,
+          serviceAccount: json_['serviceAccount'] as core.String?,
+          sharedResources: json_['sharedResources'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -30739,12 +30430,8 @@ class GoogleCloudAiplatformV1DeployedModelRef {
 
   GoogleCloudAiplatformV1DeployedModelRef.fromJson(core.Map json_)
       : this(
-          deployedModelId: json_.containsKey('deployedModelId')
-              ? json_['deployedModelId'] as core.String
-              : null,
-          endpoint: json_.containsKey('endpoint')
-              ? json_['endpoint'] as core.String
-              : null,
+          deployedModelId: json_['deployedModelId'] as core.String?,
+          endpoint: json_['endpoint'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -30810,26 +30497,21 @@ class GoogleCloudAiplatformV1DeploymentResourcePool {
 
   GoogleCloudAiplatformV1DeploymentResourcePool.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
           dedicatedResources: json_.containsKey('dedicatedResources')
               ? GoogleCloudAiplatformV1DedicatedResources.fromJson(
                   json_['dedicatedResources']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          disableContainerLogging: json_.containsKey('disableContainerLogging')
-              ? json_['disableContainerLogging'] as core.bool
-              : null,
+          disableContainerLogging:
+              json_['disableContainerLogging'] as core.bool?,
           encryptionSpec: json_.containsKey('encryptionSpec')
               ? GoogleCloudAiplatformV1EncryptionSpec.fromJson(
                   json_['encryptionSpec']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          serviceAccount: json_.containsKey('serviceAccount')
-              ? json_['serviceAccount'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          serviceAccount: json_['serviceAccount'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -30862,12 +30544,8 @@ class GoogleCloudAiplatformV1DestinationFeatureSetting {
 
   GoogleCloudAiplatformV1DestinationFeatureSetting.fromJson(core.Map json_)
       : this(
-          destinationField: json_.containsKey('destinationField')
-              ? json_['destinationField'] as core.String
-              : null,
-          featureId: json_.containsKey('featureId')
-              ? json_['featureId'] as core.String
-              : null,
+          destinationField: json_['destinationField'] as core.String?,
+          featureId: json_['featureId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -30967,11 +30645,8 @@ class GoogleCloudAiplatformV1DirectRawPredictRequest {
 
   GoogleCloudAiplatformV1DirectRawPredictRequest.fromJson(core.Map json_)
       : this(
-          input:
-              json_.containsKey('input') ? json_['input'] as core.String : null,
-          methodName: json_.containsKey('methodName')
-              ? json_['methodName'] as core.String
-              : null,
+          input: json_['input'] as core.String?,
+          methodName: json_['methodName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -30997,9 +30672,7 @@ class GoogleCloudAiplatformV1DirectRawPredictResponse {
 
   GoogleCloudAiplatformV1DirectRawPredictResponse.fromJson(core.Map json_)
       : this(
-          output: json_.containsKey('output')
-              ? json_['output'] as core.String
-              : null,
+          output: json_['output'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -31079,9 +30752,7 @@ class GoogleCloudAiplatformV1EncryptionSpec {
 
   GoogleCloudAiplatformV1EncryptionSpec.fromJson(core.Map json_)
       : this(
-          kmsKeyName: json_.containsKey('kmsKeyName')
-              ? json_['kmsKeyName'] as core.String
-              : null,
+          kmsKeyName: json_['kmsKeyName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -31217,31 +30888,23 @@ class GoogleCloudAiplatformV1Endpoint {
 
   GoogleCloudAiplatformV1Endpoint.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
           deployedModels: json_.containsKey('deployedModels')
               ? (json_['deployedModels'] as core.List)
                   .map((value) => GoogleCloudAiplatformV1DeployedModel.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+          description: json_['description'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
           enablePrivateServiceConnect:
-              json_.containsKey('enablePrivateServiceConnect')
-                  ? json_['enablePrivateServiceConnect'] as core.bool
-                  : null,
+              json_['enablePrivateServiceConnect'] as core.bool?,
           encryptionSpec: json_.containsKey('encryptionSpec')
               ? GoogleCloudAiplatformV1EncryptionSpec.fromJson(
                   json_['encryptionSpec']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          etag: json_['etag'] as core.String?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -31251,13 +30914,9 @@ class GoogleCloudAiplatformV1Endpoint {
                 )
               : null,
           modelDeploymentMonitoringJob:
-              json_.containsKey('modelDeploymentMonitoringJob')
-                  ? json_['modelDeploymentMonitoringJob'] as core.String
-                  : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          network: json_.containsKey('network')
-              ? json_['network'] as core.String
-              : null,
+              json_['modelDeploymentMonitoringJob'] as core.String?,
+          name: json_['name'] as core.String?,
+          network: json_['network'] as core.String?,
           predictRequestResponseLoggingConfig:
               json_.containsKey('predictRequestResponseLoggingConfig')
                   ? GoogleCloudAiplatformV1PredictRequestResponseLoggingConfig
@@ -31279,9 +30938,7 @@ class GoogleCloudAiplatformV1Endpoint {
                   ),
                 )
               : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -31331,9 +30988,7 @@ class GoogleCloudAiplatformV1EntityIdSelector {
               ? GoogleCloudAiplatformV1CsvSource.fromJson(
                   json_['csvSource'] as core.Map<core.String, core.dynamic>)
               : null,
-          entityIdField: json_.containsKey('entityIdField')
-              ? json_['entityIdField'] as core.String
-              : null,
+          entityIdField: json_['entityIdField'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -31429,13 +31084,9 @@ class GoogleCloudAiplatformV1EntityType {
 
   GoogleCloudAiplatformV1EntityType.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          createTime: json_['createTime'] as core.String?,
+          description: json_['description'] as core.String?,
+          etag: json_['etag'] as core.String?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -31449,13 +31100,9 @@ class GoogleCloudAiplatformV1EntityType {
                   json_['monitoringConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          offlineStorageTtlDays: json_.containsKey('offlineStorageTtlDays')
-              ? json_['offlineStorageTtlDays'] as core.int
-              : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          offlineStorageTtlDays: json_['offlineStorageTtlDays'] as core.int?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -31499,9 +31146,8 @@ class GoogleCloudAiplatformV1EnvVar {
 
   GoogleCloudAiplatformV1EnvVar.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
+          name: json_['name'] as core.String?,
+          value: json_['value'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -31553,15 +31199,10 @@ class GoogleCloudAiplatformV1ErrorAnalysisAnnotation {
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          outlierScore: json_.containsKey('outlierScore')
-              ? (json_['outlierScore'] as core.num).toDouble()
-              : null,
-          outlierThreshold: json_.containsKey('outlierThreshold')
-              ? (json_['outlierThreshold'] as core.num).toDouble()
-              : null,
-          queryType: json_.containsKey('queryType')
-              ? json_['queryType'] as core.String
-              : null,
+          outlierScore: (json_['outlierScore'] as core.num?)?.toDouble(),
+          outlierThreshold:
+              (json_['outlierThreshold'] as core.num?)?.toDouble(),
+          queryType: json_['queryType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -31591,12 +31232,9 @@ class GoogleCloudAiplatformV1ErrorAnalysisAnnotationAttributedItem {
   GoogleCloudAiplatformV1ErrorAnalysisAnnotationAttributedItem.fromJson(
       core.Map json_)
       : this(
-          annotationResourceName: json_.containsKey('annotationResourceName')
-              ? json_['annotationResourceName'] as core.String
-              : null,
-          distance: json_.containsKey('distance')
-              ? (json_['distance'] as core.num).toDouble()
-              : null,
+          annotationResourceName:
+              json_['annotationResourceName'] as core.String?,
+          distance: (json_['distance'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -31703,9 +31341,7 @@ class GoogleCloudAiplatformV1EvaluatedAnnotation {
 
   GoogleCloudAiplatformV1EvaluatedAnnotation.fromJson(core.Map json_)
       : this(
-          dataItemPayload: json_.containsKey('dataItemPayload')
-              ? json_['dataItemPayload']
-              : null,
+          dataItemPayload: json_['dataItemPayload'],
           errorAnalysisAnnotations: json_
                   .containsKey('errorAnalysisAnnotations')
               ? (json_['errorAnalysisAnnotations'] as core.List)
@@ -31714,9 +31350,8 @@ class GoogleCloudAiplatformV1EvaluatedAnnotation {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          evaluatedDataItemViewId: json_.containsKey('evaluatedDataItemViewId')
-              ? json_['evaluatedDataItemViewId'] as core.String
-              : null,
+          evaluatedDataItemViewId:
+              json_['evaluatedDataItemViewId'] as core.String?,
           explanations: json_.containsKey('explanations')
               ? (json_['explanations'] as core.List)
                   .map((value) =>
@@ -31731,7 +31366,7 @@ class GoogleCloudAiplatformV1EvaluatedAnnotation {
           predictions: json_.containsKey('predictions')
               ? json_['predictions'] as core.List
               : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -31769,9 +31404,7 @@ class GoogleCloudAiplatformV1EvaluatedAnnotationExplanation {
               ? GoogleCloudAiplatformV1Explanation.fromJson(
                   json_['explanation'] as core.Map<core.String, core.dynamic>)
               : null,
-          explanationType: json_.containsKey('explanationType')
-              ? json_['explanationType'] as core.String
-              : null,
+          explanationType: json_['explanationType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -31829,15 +31462,9 @@ class GoogleCloudAiplatformV1Event {
 
   GoogleCloudAiplatformV1Event.fromJson(core.Map json_)
       : this(
-          artifact: json_.containsKey('artifact')
-              ? json_['artifact'] as core.String
-              : null,
-          eventTime: json_.containsKey('eventTime')
-              ? json_['eventTime'] as core.String
-              : null,
-          execution: json_.containsKey('execution')
-              ? json_['execution'] as core.String
-              : null,
+          artifact: json_['artifact'] as core.String?,
+          eventTime: json_['eventTime'] as core.String?,
+          execution: json_['execution'] as core.String?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -31846,7 +31473,7 @@ class GoogleCloudAiplatformV1Event {
                   ),
                 )
               : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -31893,13 +31520,8 @@ class GoogleCloudAiplatformV1Examples {
                   json_['exampleGcsSource']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          nearestNeighborSearchConfig:
-              json_.containsKey('nearestNeighborSearchConfig')
-                  ? json_['nearestNeighborSearchConfig']
-                  : null,
-          neighborCount: json_.containsKey('neighborCount')
-              ? json_['neighborCount'] as core.int
-              : null,
+          nearestNeighborSearchConfig: json_['nearestNeighborSearchConfig'],
+          neighborCount: json_['neighborCount'] as core.int?,
           presets: json_.containsKey('presets')
               ? GoogleCloudAiplatformV1Presets.fromJson(
                   json_['presets'] as core.Map<core.String, core.dynamic>)
@@ -31936,9 +31558,7 @@ class GoogleCloudAiplatformV1ExamplesExampleGcsSource {
 
   GoogleCloudAiplatformV1ExamplesExampleGcsSource.fromJson(core.Map json_)
       : this(
-          dataFormat: json_.containsKey('dataFormat')
-              ? json_['dataFormat'] as core.String
-              : null,
+          dataFormat: json_['dataFormat'] as core.String?,
           gcsSource: json_.containsKey('gcsSource')
               ? GoogleCloudAiplatformV1GcsSource.fromJson(
                   json_['gcsSource'] as core.Map<core.String, core.dynamic>)
@@ -31982,15 +31602,9 @@ class GoogleCloudAiplatformV1ExamplesOverride {
 
   GoogleCloudAiplatformV1ExamplesOverride.fromJson(core.Map json_)
       : this(
-          crowdingCount: json_.containsKey('crowdingCount')
-              ? json_['crowdingCount'] as core.int
-              : null,
-          dataFormat: json_.containsKey('dataFormat')
-              ? json_['dataFormat'] as core.String
-              : null,
-          neighborCount: json_.containsKey('neighborCount')
-              ? json_['neighborCount'] as core.int
-              : null,
+          crowdingCount: json_['crowdingCount'] as core.int?,
+          dataFormat: json_['dataFormat'] as core.String?,
+          neighborCount: json_['neighborCount'] as core.int?,
           restrictions: json_.containsKey('restrictions')
               ? (json_['restrictions'] as core.List)
                   .map((value) =>
@@ -31999,9 +31613,7 @@ class GoogleCloudAiplatformV1ExamplesOverride {
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          returnEmbeddings: json_.containsKey('returnEmbeddings')
-              ? json_['returnEmbeddings'] as core.bool
-              : null,
+          returnEmbeddings: json_['returnEmbeddings'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -32042,9 +31654,7 @@ class GoogleCloudAiplatformV1ExamplesRestrictionsNamespace {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          namespaceName: json_.containsKey('namespaceName')
-              ? json_['namespaceName'] as core.String
-              : null,
+          namespaceName: json_['namespaceName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -32148,16 +31758,10 @@ class GoogleCloudAiplatformV1Execution {
 
   GoogleCloudAiplatformV1Execution.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          createTime: json_['createTime'] as core.String?,
+          description: json_['description'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          etag: json_['etag'] as core.String?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -32169,18 +31773,11 @@ class GoogleCloudAiplatformV1Execution {
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          schemaTitle: json_.containsKey('schemaTitle')
-              ? json_['schemaTitle'] as core.String
-              : null,
-          schemaVersion: json_.containsKey('schemaVersion')
-              ? json_['schemaVersion'] as core.String
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          schemaTitle: json_['schemaTitle'] as core.String?,
+          schemaVersion: json_['schemaVersion'] as core.String?,
+          state: json_['state'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -32246,9 +31843,7 @@ class GoogleCloudAiplatformV1ExplainRequest {
 
   GoogleCloudAiplatformV1ExplainRequest.fromJson(core.Map json_)
       : this(
-          deployedModelId: json_.containsKey('deployedModelId')
-              ? json_['deployedModelId'] as core.String
-              : null,
+          deployedModelId: json_['deployedModelId'] as core.String?,
           explanationSpecOverride: json_.containsKey('explanationSpecOverride')
               ? GoogleCloudAiplatformV1ExplanationSpecOverride.fromJson(
                   json_['explanationSpecOverride']
@@ -32257,8 +31852,7 @@ class GoogleCloudAiplatformV1ExplainRequest {
           instances: json_.containsKey('instances')
               ? json_['instances'] as core.List
               : null,
-          parameters:
-              json_.containsKey('parameters') ? json_['parameters'] : null,
+          parameters: json_['parameters'],
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -32296,9 +31890,7 @@ class GoogleCloudAiplatformV1ExplainResponse {
 
   GoogleCloudAiplatformV1ExplainResponse.fromJson(core.Map json_)
       : this(
-          deployedModelId: json_.containsKey('deployedModelId')
-              ? json_['deployedModelId'] as core.String
-              : null,
+          deployedModelId: json_['deployedModelId'] as core.String?,
           explanations: json_.containsKey('explanations')
               ? (json_['explanations'] as core.List)
                   .map((value) => GoogleCloudAiplatformV1Explanation.fromJson(
@@ -32431,9 +32023,7 @@ class GoogleCloudAiplatformV1ExplanationMetadata {
   GoogleCloudAiplatformV1ExplanationMetadata.fromJson(core.Map json_)
       : this(
           featureAttributionsSchemaUri:
-              json_.containsKey('featureAttributionsSchemaUri')
-                  ? json_['featureAttributionsSchemaUri'] as core.String
-                  : null,
+              json_['featureAttributionsSchemaUri'] as core.String?,
           inputs: json_.containsKey('inputs')
               ? (json_['inputs'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -32443,9 +32033,7 @@ class GoogleCloudAiplatformV1ExplanationMetadata {
                   ),
                 )
               : null,
-          latentSpaceSource: json_.containsKey('latentSpaceSource')
-              ? json_['latentSpaceSource'] as core.String
-              : null,
+          latentSpaceSource: json_['latentSpaceSource'] as core.String?,
           outputs: json_.containsKey('outputs')
               ? (json_['outputs'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -32606,43 +32194,29 @@ class GoogleCloudAiplatformV1ExplanationMetadataInputMetadata {
   GoogleCloudAiplatformV1ExplanationMetadataInputMetadata.fromJson(
       core.Map json_)
       : this(
-          denseShapeTensorName: json_.containsKey('denseShapeTensorName')
-              ? json_['denseShapeTensorName'] as core.String
-              : null,
+          denseShapeTensorName: json_['denseShapeTensorName'] as core.String?,
           encodedBaselines: json_.containsKey('encodedBaselines')
               ? json_['encodedBaselines'] as core.List
               : null,
-          encodedTensorName: json_.containsKey('encodedTensorName')
-              ? json_['encodedTensorName'] as core.String
-              : null,
-          encoding: json_.containsKey('encoding')
-              ? json_['encoding'] as core.String
-              : null,
+          encodedTensorName: json_['encodedTensorName'] as core.String?,
+          encoding: json_['encoding'] as core.String?,
           featureValueDomain: json_.containsKey('featureValueDomain')
               ? GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomain
                   .fromJson(json_['featureValueDomain']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          groupName: json_.containsKey('groupName')
-              ? json_['groupName'] as core.String
-              : null,
+          groupName: json_['groupName'] as core.String?,
           indexFeatureMapping: json_.containsKey('indexFeatureMapping')
               ? (json_['indexFeatureMapping'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          indicesTensorName: json_.containsKey('indicesTensorName')
-              ? json_['indicesTensorName'] as core.String
-              : null,
+          indicesTensorName: json_['indicesTensorName'] as core.String?,
           inputBaselines: json_.containsKey('inputBaselines')
               ? json_['inputBaselines'] as core.List
               : null,
-          inputTensorName: json_.containsKey('inputTensorName')
-              ? json_['inputTensorName'] as core.String
-              : null,
-          modality: json_.containsKey('modality')
-              ? json_['modality'] as core.String
-              : null,
+          inputTensorName: json_['inputTensorName'] as core.String?,
+          modality: json_['modality'] as core.String?,
           visualization: json_.containsKey('visualization')
               ? GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualization
                   .fromJson(json_['visualization']
@@ -32705,18 +32279,10 @@ class GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomain 
   GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomain.fromJson(
       core.Map json_)
       : this(
-          maxValue: json_.containsKey('maxValue')
-              ? (json_['maxValue'] as core.num).toDouble()
-              : null,
-          minValue: json_.containsKey('minValue')
-              ? (json_['minValue'] as core.num).toDouble()
-              : null,
-          originalMean: json_.containsKey('originalMean')
-              ? (json_['originalMean'] as core.num).toDouble()
-              : null,
-          originalStddev: json_.containsKey('originalStddev')
-              ? (json_['originalStddev'] as core.num).toDouble()
-              : null,
+          maxValue: (json_['maxValue'] as core.num?)?.toDouble(),
+          minValue: (json_['minValue'] as core.num?)?.toDouble(),
+          originalMean: (json_['originalMean'] as core.num?)?.toDouble(),
+          originalStddev: (json_['originalStddev'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -32812,22 +32378,14 @@ class GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualization {
   GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualization.fromJson(
       core.Map json_)
       : this(
-          clipPercentLowerbound: json_.containsKey('clipPercentLowerbound')
-              ? (json_['clipPercentLowerbound'] as core.num).toDouble()
-              : null,
-          clipPercentUpperbound: json_.containsKey('clipPercentUpperbound')
-              ? (json_['clipPercentUpperbound'] as core.num).toDouble()
-              : null,
-          colorMap: json_.containsKey('colorMap')
-              ? json_['colorMap'] as core.String
-              : null,
-          overlayType: json_.containsKey('overlayType')
-              ? json_['overlayType'] as core.String
-              : null,
-          polarity: json_.containsKey('polarity')
-              ? json_['polarity'] as core.String
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          clipPercentLowerbound:
+              (json_['clipPercentLowerbound'] as core.num?)?.toDouble(),
+          clipPercentUpperbound:
+              (json_['clipPercentUpperbound'] as core.num?)?.toDouble(),
+          colorMap: json_['colorMap'] as core.String?,
+          overlayType: json_['overlayType'] as core.String?,
+          polarity: json_['polarity'] as core.String?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -32882,15 +32440,9 @@ class GoogleCloudAiplatformV1ExplanationMetadataOutputMetadata {
   GoogleCloudAiplatformV1ExplanationMetadataOutputMetadata.fromJson(
       core.Map json_)
       : this(
-          displayNameMappingKey: json_.containsKey('displayNameMappingKey')
-              ? json_['displayNameMappingKey'] as core.String
-              : null,
-          indexDisplayNameMapping: json_.containsKey('indexDisplayNameMapping')
-              ? json_['indexDisplayNameMapping']
-              : null,
-          outputTensorName: json_.containsKey('outputTensorName')
-              ? json_['outputTensorName'] as core.String
-              : null,
+          displayNameMappingKey: json_['displayNameMappingKey'] as core.String?,
+          indexDisplayNameMapping: json_['indexDisplayNameMapping'],
+          outputTensorName: json_['outputTensorName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -33051,7 +32603,7 @@ class GoogleCloudAiplatformV1ExplanationParameters {
                       json_['sampledShapleyAttribution']
                           as core.Map<core.String, core.dynamic>)
                   : null,
-          topK: json_.containsKey('topK') ? json_['topK'] as core.int : null,
+          topK: json_['topK'] as core.int?,
           xraiAttribution: json_.containsKey('xraiAttribution')
               ? GoogleCloudAiplatformV1XraiAttribution.fromJson(
                   json_['xraiAttribution']
@@ -33226,15 +32778,9 @@ class GoogleCloudAiplatformV1ExportDataConfig {
 
   GoogleCloudAiplatformV1ExportDataConfig.fromJson(core.Map json_)
       : this(
-          annotationSchemaUri: json_.containsKey('annotationSchemaUri')
-              ? json_['annotationSchemaUri'] as core.String
-              : null,
-          annotationsFilter: json_.containsKey('annotationsFilter')
-              ? json_['annotationsFilter'] as core.String
-              : null,
-          exportUse: json_.containsKey('exportUse')
-              ? json_['exportUse'] as core.String
-              : null,
+          annotationSchemaUri: json_['annotationSchemaUri'] as core.String?,
+          annotationsFilter: json_['annotationsFilter'] as core.String?,
+          exportUse: json_['exportUse'] as core.String?,
           filterSplit: json_.containsKey('filterSplit')
               ? GoogleCloudAiplatformV1ExportFilterSplit.fromJson(
                   json_['filterSplit'] as core.Map<core.String, core.dynamic>)
@@ -33248,9 +32794,7 @@ class GoogleCloudAiplatformV1ExportDataConfig {
                   json_['gcsDestination']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          savedQueryId: json_.containsKey('savedQueryId')
-              ? json_['savedQueryId'] as core.String
-              : null,
+          savedQueryId: json_['savedQueryId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -33384,12 +32928,8 @@ class GoogleCloudAiplatformV1ExportFeatureValuesRequestFullExport {
   GoogleCloudAiplatformV1ExportFeatureValuesRequestFullExport.fromJson(
       core.Map json_)
       : this(
-          endTime: json_.containsKey('endTime')
-              ? json_['endTime'] as core.String
-              : null,
-          startTime: json_.containsKey('startTime')
-              ? json_['startTime'] as core.String
-              : null,
+          endTime: json_['endTime'] as core.String?,
+          startTime: json_['startTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -33422,12 +32962,8 @@ class GoogleCloudAiplatformV1ExportFeatureValuesRequestSnapshotExport {
   GoogleCloudAiplatformV1ExportFeatureValuesRequestSnapshotExport.fromJson(
       core.Map json_)
       : this(
-          snapshotTime: json_.containsKey('snapshotTime')
-              ? json_['snapshotTime'] as core.String
-              : null,
-          startTime: json_.containsKey('startTime')
-              ? json_['startTime'] as core.String
-              : null,
+          snapshotTime: json_['snapshotTime'] as core.String?,
+          startTime: json_['startTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -33517,9 +33053,7 @@ class GoogleCloudAiplatformV1ExportModelRequestOutputConfig {
                   json_['artifactDestination']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          exportFormatId: json_.containsKey('exportFormatId')
-              ? json_['exportFormatId'] as core.String
-              : null,
+          exportFormatId: json_['exportFormatId'] as core.String?,
           imageDestination: json_.containsKey('imageDestination')
               ? GoogleCloudAiplatformV1ContainerRegistryDestination.fromJson(
                   json_['imageDestination']
@@ -33570,18 +33104,10 @@ class GoogleCloudAiplatformV1ExportTensorboardTimeSeriesDataRequest {
   GoogleCloudAiplatformV1ExportTensorboardTimeSeriesDataRequest.fromJson(
       core.Map json_)
       : this(
-          filter: json_.containsKey('filter')
-              ? json_['filter'] as core.String
-              : null,
-          orderBy: json_.containsKey('orderBy')
-              ? json_['orderBy'] as core.String
-              : null,
-          pageSize: json_.containsKey('pageSize')
-              ? json_['pageSize'] as core.int
-              : null,
-          pageToken: json_.containsKey('pageToken')
-              ? json_['pageToken'] as core.String
-              : null,
+          filter: json_['filter'] as core.String?,
+          orderBy: json_['orderBy'] as core.String?,
+          pageSize: json_['pageSize'] as core.int?,
+          pageToken: json_['pageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -33610,9 +33136,7 @@ class GoogleCloudAiplatformV1ExportTensorboardTimeSeriesDataResponse {
   GoogleCloudAiplatformV1ExportTensorboardTimeSeriesDataResponse.fromJson(
       core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           timeSeriesDataPoints: json_.containsKey('timeSeriesDataPoints')
               ? (json_['timeSeriesDataPoints'] as core.List)
                   .map((value) =>
@@ -33745,16 +33269,10 @@ class GoogleCloudAiplatformV1Feature {
 
   GoogleCloudAiplatformV1Feature.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          disableMonitoring: json_.containsKey('disableMonitoring')
-              ? json_['disableMonitoring'] as core.bool
-              : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          createTime: json_['createTime'] as core.String?,
+          description: json_['description'] as core.String?,
+          disableMonitoring: json_['disableMonitoring'] as core.bool?,
+          etag: json_['etag'] as core.String?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -33772,19 +33290,11 @@ class GoogleCloudAiplatformV1Feature {
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          pointOfContact: json_.containsKey('pointOfContact')
-              ? json_['pointOfContact'] as core.String
-              : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
-          valueType: json_.containsKey('valueType')
-              ? json_['valueType'] as core.String
-              : null,
-          versionColumnName: json_.containsKey('versionColumnName')
-              ? json_['versionColumnName'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          pointOfContact: json_['pointOfContact'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
+          valueType: json_['valueType'] as core.String?,
+          versionColumnName: json_['versionColumnName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -33869,13 +33379,9 @@ class GoogleCloudAiplatformV1FeatureGroup {
               ? GoogleCloudAiplatformV1FeatureGroupBigQuery.fromJson(
                   json_['bigQuery'] as core.Map<core.String, core.dynamic>)
               : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          createTime: json_['createTime'] as core.String?,
+          description: json_['description'] as core.String?,
+          etag: json_['etag'] as core.String?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -33884,10 +33390,8 @@ class GoogleCloudAiplatformV1FeatureGroup {
                   ),
                 )
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -33971,9 +33475,7 @@ class GoogleCloudAiplatformV1FeatureMonitoringStatsAnomaly {
                   json_['featureStatsAnomaly']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          objective: json_.containsKey('objective')
-              ? json_['objective'] as core.String
-              : null,
+          objective: json_['objective'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -34038,10 +33540,8 @@ class GoogleCloudAiplatformV1FeatureNoiseSigmaNoiseSigmaForFeature {
   GoogleCloudAiplatformV1FeatureNoiseSigmaNoiseSigmaForFeature.fromJson(
       core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          sigma: json_.containsKey('sigma')
-              ? (json_['sigma'] as core.num).toDouble()
-              : null,
+          name: json_['name'] as core.String?,
+          sigma: (json_['sigma'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -34150,9 +33650,7 @@ class GoogleCloudAiplatformV1FeatureOnlineStore {
               ? GoogleCloudAiplatformV1FeatureOnlineStoreBigtable.fromJson(
                   json_['bigtable'] as core.Map<core.String, core.dynamic>)
               : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
           dedicatedServingEndpoint: json_
                   .containsKey('dedicatedServingEndpoint')
               ? GoogleCloudAiplatformV1FeatureOnlineStoreDedicatedServingEndpoint
@@ -34164,7 +33662,7 @@ class GoogleCloudAiplatformV1FeatureOnlineStore {
                   json_['encryptionSpec']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          etag: json_['etag'] as core.String?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -34173,16 +33671,13 @@ class GoogleCloudAiplatformV1FeatureOnlineStore {
                   ),
                 )
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           optimized: json_.containsKey('optimized')
               ? GoogleCloudAiplatformV1FeatureOnlineStoreOptimized.fromJson(
                   json_['optimized'] as core.Map<core.String, core.dynamic>)
               : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          state: json_['state'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -34259,15 +33754,9 @@ class GoogleCloudAiplatformV1FeatureOnlineStoreBigtableAutoScaling {
   GoogleCloudAiplatformV1FeatureOnlineStoreBigtableAutoScaling.fromJson(
       core.Map json_)
       : this(
-          cpuUtilizationTarget: json_.containsKey('cpuUtilizationTarget')
-              ? json_['cpuUtilizationTarget'] as core.int
-              : null,
-          maxNodeCount: json_.containsKey('maxNodeCount')
-              ? json_['maxNodeCount'] as core.int
-              : null,
-          minNodeCount: json_.containsKey('minNodeCount')
-              ? json_['minNodeCount'] as core.int
-              : null,
+          cpuUtilizationTarget: json_['cpuUtilizationTarget'] as core.int?,
+          maxNodeCount: json_['maxNodeCount'] as core.int?,
+          minNodeCount: json_['minNodeCount'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -34297,9 +33786,7 @@ class GoogleCloudAiplatformV1FeatureOnlineStoreDedicatedServingEndpoint {
       core.Map json_)
       : this(
           publicEndpointDomainName:
-              json_.containsKey('publicEndpointDomainName')
-                  ? json_['publicEndpointDomainName'] as core.String
-                  : null,
+              json_['publicEndpointDomainName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -34411,27 +33898,14 @@ class GoogleCloudAiplatformV1FeatureStatsAnomaly {
   GoogleCloudAiplatformV1FeatureStatsAnomaly.fromJson(core.Map json_)
       : this(
           anomalyDetectionThreshold:
-              json_.containsKey('anomalyDetectionThreshold')
-                  ? (json_['anomalyDetectionThreshold'] as core.num).toDouble()
-                  : null,
-          anomalyUri: json_.containsKey('anomalyUri')
-              ? json_['anomalyUri'] as core.String
-              : null,
-          distributionDeviation: json_.containsKey('distributionDeviation')
-              ? (json_['distributionDeviation'] as core.num).toDouble()
-              : null,
-          endTime: json_.containsKey('endTime')
-              ? json_['endTime'] as core.String
-              : null,
-          score: json_.containsKey('score')
-              ? (json_['score'] as core.num).toDouble()
-              : null,
-          startTime: json_.containsKey('startTime')
-              ? json_['startTime'] as core.String
-              : null,
-          statsUri: json_.containsKey('statsUri')
-              ? json_['statsUri'] as core.String
-              : null,
+              (json_['anomalyDetectionThreshold'] as core.num?)?.toDouble(),
+          anomalyUri: json_['anomalyUri'] as core.String?,
+          distributionDeviation:
+              (json_['distributionDeviation'] as core.num?)?.toDouble(),
+          endTime: json_['endTime'] as core.String?,
+          score: (json_['score'] as core.num?)?.toDouble(),
+          startTime: json_['startTime'] as core.String?,
+          statsUri: json_['statsUri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -34510,28 +33984,20 @@ class GoogleCloudAiplatformV1FeatureValue {
                   json_['boolArrayValue']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          boolValue: json_.containsKey('boolValue')
-              ? json_['boolValue'] as core.bool
-              : null,
-          bytesValue: json_.containsKey('bytesValue')
-              ? json_['bytesValue'] as core.String
-              : null,
+          boolValue: json_['boolValue'] as core.bool?,
+          bytesValue: json_['bytesValue'] as core.String?,
           doubleArrayValue: json_.containsKey('doubleArrayValue')
               ? GoogleCloudAiplatformV1DoubleArray.fromJson(
                   json_['doubleArrayValue']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          doubleValue: json_.containsKey('doubleValue')
-              ? (json_['doubleValue'] as core.num).toDouble()
-              : null,
+          doubleValue: (json_['doubleValue'] as core.num?)?.toDouble(),
           int64ArrayValue: json_.containsKey('int64ArrayValue')
               ? GoogleCloudAiplatformV1Int64Array.fromJson(
                   json_['int64ArrayValue']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          int64Value: json_.containsKey('int64Value')
-              ? json_['int64Value'] as core.String
-              : null,
+          int64Value: json_['int64Value'] as core.String?,
           metadata: json_.containsKey('metadata')
               ? GoogleCloudAiplatformV1FeatureValueMetadata.fromJson(
                   json_['metadata'] as core.Map<core.String, core.dynamic>)
@@ -34541,9 +34007,7 @@ class GoogleCloudAiplatformV1FeatureValue {
                   json_['stringArrayValue']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          stringValue: json_.containsKey('stringValue')
-              ? json_['stringValue'] as core.String
-              : null,
+          stringValue: json_['stringValue'] as core.String?,
           structValue: json_.containsKey('structValue')
               ? GoogleCloudAiplatformV1StructValue.fromJson(
                   json_['structValue'] as core.Map<core.String, core.dynamic>)
@@ -34664,9 +34128,7 @@ class GoogleCloudAiplatformV1FeatureValueMetadata {
 
   GoogleCloudAiplatformV1FeatureValueMetadata.fromJson(core.Map json_)
       : this(
-          generateTime: json_.containsKey('generateTime')
-              ? json_['generateTime'] as core.String
-              : null,
+          generateTime: json_['generateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -34760,10 +34222,8 @@ class GoogleCloudAiplatformV1FeatureView {
                   json_['bigQuerySource']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          createTime: json_['createTime'] as core.String?,
+          etag: json_['etag'] as core.String?,
           featureRegistrySource: json_.containsKey('featureRegistrySource')
               ? GoogleCloudAiplatformV1FeatureViewFeatureRegistrySource
                   .fromJson(json_['featureRegistrySource']
@@ -34781,14 +34241,12 @@ class GoogleCloudAiplatformV1FeatureView {
                   ),
                 )
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           syncConfig: json_.containsKey('syncConfig')
               ? GoogleCloudAiplatformV1FeatureViewSyncConfig.fromJson(
                   json_['syncConfig'] as core.Map<core.String, core.dynamic>)
               : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -34829,7 +34287,7 @@ class GoogleCloudAiplatformV1FeatureViewBigQuerySource {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+          uri: json_['uri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -34859,7 +34317,7 @@ class GoogleCloudAiplatformV1FeatureViewDataKey {
               ? GoogleCloudAiplatformV1FeatureViewDataKeyCompositeKey.fromJson(
                   json_['compositeKey'] as core.Map<core.String, core.dynamic>)
               : null,
-          key: json_.containsKey('key') ? json_['key'] as core.String : null,
+          key: json_['key'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -34925,9 +34383,7 @@ class GoogleCloudAiplatformV1FeatureViewFeatureRegistrySource {
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          projectNumber: json_.containsKey('projectNumber')
-              ? json_['projectNumber'] as core.String
-              : null,
+          projectNumber: json_['projectNumber'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -34957,9 +34413,7 @@ class GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceFeatureGroup {
   GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceFeatureGroup.fromJson(
       core.Map json_)
       : this(
-          featureGroupId: json_.containsKey('featureGroupId')
-              ? json_['featureGroupId'] as core.String
-              : null,
+          featureGroupId: json_['featureGroupId'] as core.String?,
           featureIds: json_.containsKey('featureIds')
               ? (json_['featureIds'] as core.List)
                   .map((value) => value as core.String)
@@ -35056,18 +34510,10 @@ class GoogleCloudAiplatformV1FeatureViewIndexConfig {
                   .fromJson(json_['bruteForceConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          crowdingColumn: json_.containsKey('crowdingColumn')
-              ? json_['crowdingColumn'] as core.String
-              : null,
-          distanceMeasureType: json_.containsKey('distanceMeasureType')
-              ? json_['distanceMeasureType'] as core.String
-              : null,
-          embeddingColumn: json_.containsKey('embeddingColumn')
-              ? json_['embeddingColumn'] as core.String
-              : null,
-          embeddingDimension: json_.containsKey('embeddingDimension')
-              ? json_['embeddingDimension'] as core.int
-              : null,
+          crowdingColumn: json_['crowdingColumn'] as core.String?,
+          distanceMeasureType: json_['distanceMeasureType'] as core.String?,
+          embeddingColumn: json_['embeddingColumn'] as core.String?,
+          embeddingDimension: json_['embeddingDimension'] as core.int?,
           filterColumns: json_.containsKey('filterColumns')
               ? (json_['filterColumns'] as core.List)
                   .map((value) => value as core.String)
@@ -35112,9 +34558,8 @@ class GoogleCloudAiplatformV1FeatureViewIndexConfigTreeAHConfig {
   GoogleCloudAiplatformV1FeatureViewIndexConfigTreeAHConfig.fromJson(
       core.Map json_)
       : this(
-          leafNodeEmbeddingCount: json_.containsKey('leafNodeEmbeddingCount')
-              ? json_['leafNodeEmbeddingCount'] as core.String
-              : null,
+          leafNodeEmbeddingCount:
+              json_['leafNodeEmbeddingCount'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -35166,14 +34611,12 @@ class GoogleCloudAiplatformV1FeatureViewSync {
 
   GoogleCloudAiplatformV1FeatureViewSync.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
           finalStatus: json_.containsKey('finalStatus')
               ? GoogleRpcStatus.fromJson(
                   json_['finalStatus'] as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           runTime: json_.containsKey('runTime')
               ? GoogleTypeInterval.fromJson(
                   json_['runTime'] as core.Map<core.String, core.dynamic>)
@@ -35213,7 +34656,7 @@ class GoogleCloudAiplatformV1FeatureViewSyncConfig {
 
   GoogleCloudAiplatformV1FeatureViewSyncConfig.fromJson(core.Map json_)
       : this(
-          cron: json_.containsKey('cron') ? json_['cron'] as core.String : null,
+          cron: json_['cron'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -35243,12 +34686,8 @@ class GoogleCloudAiplatformV1FeatureViewSyncSyncSummary {
 
   GoogleCloudAiplatformV1FeatureViewSyncSyncSummary.fromJson(core.Map json_)
       : this(
-          rowSynced: json_.containsKey('rowSynced')
-              ? json_['rowSynced'] as core.String
-              : null,
-          totalSlot: json_.containsKey('totalSlot')
-              ? json_['totalSlot'] as core.String
-              : null,
+          rowSynced: json_['rowSynced'] as core.String?,
+          totalSlot: json_['totalSlot'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -35365,15 +34804,13 @@ class GoogleCloudAiplatformV1Featurestore {
 
   GoogleCloudAiplatformV1Featurestore.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
           encryptionSpec: json_.containsKey('encryptionSpec')
               ? GoogleCloudAiplatformV1EncryptionSpec.fromJson(
                   json_['encryptionSpec']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          etag: json_['etag'] as core.String?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -35382,20 +34819,15 @@ class GoogleCloudAiplatformV1Featurestore {
                   ),
                 )
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           onlineServingConfig: json_.containsKey('onlineServingConfig')
               ? GoogleCloudAiplatformV1FeaturestoreOnlineServingConfig.fromJson(
                   json_['onlineServingConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          onlineStorageTtlDays: json_.containsKey('onlineStorageTtlDays')
-              ? json_['onlineStorageTtlDays'] as core.int
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          onlineStorageTtlDays: json_['onlineStorageTtlDays'] as core.int?,
+          state: json_['state'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -35525,11 +34957,8 @@ class GoogleCloudAiplatformV1FeaturestoreMonitoringConfigImportFeaturesAnalysis 
       core.Map json_)
       : this(
           anomalyDetectionBaseline:
-              json_.containsKey('anomalyDetectionBaseline')
-                  ? json_['anomalyDetectionBaseline'] as core.String
-                  : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
+              json_['anomalyDetectionBaseline'] as core.String?,
+          state: json_['state'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -35578,15 +35007,9 @@ class GoogleCloudAiplatformV1FeaturestoreMonitoringConfigSnapshotAnalysis {
   GoogleCloudAiplatformV1FeaturestoreMonitoringConfigSnapshotAnalysis.fromJson(
       core.Map json_)
       : this(
-          disabled: json_.containsKey('disabled')
-              ? json_['disabled'] as core.bool
-              : null,
-          monitoringIntervalDays: json_.containsKey('monitoringIntervalDays')
-              ? json_['monitoringIntervalDays'] as core.int
-              : null,
-          stalenessDays: json_.containsKey('stalenessDays')
-              ? json_['stalenessDays'] as core.int
-              : null,
+          disabled: json_['disabled'] as core.bool?,
+          monitoringIntervalDays: json_['monitoringIntervalDays'] as core.int?,
+          stalenessDays: json_['stalenessDays'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -35615,9 +35038,7 @@ class GoogleCloudAiplatformV1FeaturestoreMonitoringConfigThresholdConfig {
   GoogleCloudAiplatformV1FeaturestoreMonitoringConfigThresholdConfig.fromJson(
       core.Map json_)
       : this(
-          value: json_.containsKey('value')
-              ? (json_['value'] as core.num).toDouble()
-              : null,
+          value: (json_['value'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -35649,9 +35070,7 @@ class GoogleCloudAiplatformV1FeaturestoreOnlineServingConfig {
   GoogleCloudAiplatformV1FeaturestoreOnlineServingConfig.fromJson(
       core.Map json_)
       : this(
-          fixedNodeCount: json_.containsKey('fixedNodeCount')
-              ? json_['fixedNodeCount'] as core.int
-              : null,
+          fixedNodeCount: json_['fixedNodeCount'] as core.int?,
           scaling: json_.containsKey('scaling')
               ? GoogleCloudAiplatformV1FeaturestoreOnlineServingConfigScaling
                   .fromJson(
@@ -35704,15 +35123,9 @@ class GoogleCloudAiplatformV1FeaturestoreOnlineServingConfigScaling {
   GoogleCloudAiplatformV1FeaturestoreOnlineServingConfigScaling.fromJson(
       core.Map json_)
       : this(
-          cpuUtilizationTarget: json_.containsKey('cpuUtilizationTarget')
-              ? json_['cpuUtilizationTarget'] as core.int
-              : null,
-          maxNodeCount: json_.containsKey('maxNodeCount')
-              ? json_['maxNodeCount'] as core.int
-              : null,
-          minNodeCount: json_.containsKey('minNodeCount')
-              ? json_['minNodeCount'] as core.int
-              : null,
+          cpuUtilizationTarget: json_['cpuUtilizationTarget'] as core.int?,
+          maxNodeCount: json_['maxNodeCount'] as core.int?,
+          minNodeCount: json_['minNodeCount'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -35751,9 +35164,7 @@ class GoogleCloudAiplatformV1FetchFeatureValuesRequest {
 
   GoogleCloudAiplatformV1FetchFeatureValuesRequest.fromJson(core.Map json_)
       : this(
-          dataFormat: json_.containsKey('dataFormat')
-              ? json_['dataFormat'] as core.String
-              : null,
+          dataFormat: json_['dataFormat'] as core.String?,
           dataKey: json_.containsKey('dataKey')
               ? GoogleCloudAiplatformV1FeatureViewDataKey.fromJson(
                   json_['dataKey'] as core.Map<core.String, core.dynamic>)
@@ -35859,7 +35270,7 @@ class GoogleCloudAiplatformV1FetchFeatureValuesResponseFeatureNameValuePairListF
   GoogleCloudAiplatformV1FetchFeatureValuesResponseFeatureNameValuePairListFeatureNameValuePair.fromJson(
       core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           value: json_.containsKey('value')
               ? GoogleCloudAiplatformV1FeatureValue.fromJson(
                   json_['value'] as core.Map<core.String, core.dynamic>)
@@ -35891,12 +35302,8 @@ class GoogleCloudAiplatformV1FileData {
 
   GoogleCloudAiplatformV1FileData.fromJson(core.Map json_)
       : this(
-          fileUri: json_.containsKey('fileUri')
-              ? json_['fileUri'] as core.String
-              : null,
-          mimeType: json_.containsKey('mimeType')
-              ? json_['mimeType'] as core.String
-              : null,
+          fileUri: json_['fileUri'] as core.String?,
+          mimeType: json_['mimeType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -35942,9 +35349,7 @@ class GoogleCloudAiplatformV1FindNeighborsRequest {
 
   GoogleCloudAiplatformV1FindNeighborsRequest.fromJson(core.Map json_)
       : this(
-          deployedIndexId: json_.containsKey('deployedIndexId')
-              ? json_['deployedIndexId'] as core.String
-              : null,
+          deployedIndexId: json_['deployedIndexId'] as core.String?,
           queries: json_.containsKey('queries')
               ? (json_['queries'] as core.List)
                   .map((value) =>
@@ -35952,9 +35357,7 @@ class GoogleCloudAiplatformV1FindNeighborsRequest {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          returnFullDatapoint: json_.containsKey('returnFullDatapoint')
-              ? json_['returnFullDatapoint'] as core.bool
-              : null,
+          returnFullDatapoint: json_['returnFullDatapoint'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -36021,25 +35424,17 @@ class GoogleCloudAiplatformV1FindNeighborsRequestQuery {
   GoogleCloudAiplatformV1FindNeighborsRequestQuery.fromJson(core.Map json_)
       : this(
           approximateNeighborCount:
-              json_.containsKey('approximateNeighborCount')
-                  ? json_['approximateNeighborCount'] as core.int
-                  : null,
+              json_['approximateNeighborCount'] as core.int?,
           datapoint: json_.containsKey('datapoint')
               ? GoogleCloudAiplatformV1IndexDatapoint.fromJson(
                   json_['datapoint'] as core.Map<core.String, core.dynamic>)
               : null,
           fractionLeafNodesToSearchOverride:
-              json_.containsKey('fractionLeafNodesToSearchOverride')
-                  ? (json_['fractionLeafNodesToSearchOverride'] as core.num)
-                      .toDouble()
-                  : null,
-          neighborCount: json_.containsKey('neighborCount')
-              ? json_['neighborCount'] as core.int
-              : null,
+              (json_['fractionLeafNodesToSearchOverride'] as core.num?)
+                  ?.toDouble(),
+          neighborCount: json_['neighborCount'] as core.int?,
           perCrowdingAttributeNeighborCount:
-              json_.containsKey('perCrowdingAttributeNeighborCount')
-                  ? json_['perCrowdingAttributeNeighborCount'] as core.int
-                  : null,
+              json_['perCrowdingAttributeNeighborCount'] as core.int?,
           rrf: json_.containsKey('rrf')
               ? GoogleCloudAiplatformV1FindNeighborsRequestQueryRRF.fromJson(
                   json_['rrf'] as core.Map<core.String, core.dynamic>)
@@ -36078,9 +35473,7 @@ class GoogleCloudAiplatformV1FindNeighborsRequestQueryRRF {
 
   GoogleCloudAiplatformV1FindNeighborsRequestQueryRRF.fromJson(core.Map json_)
       : this(
-          alpha: json_.containsKey('alpha')
-              ? (json_['alpha'] as core.num).toDouble()
-              : null,
+          alpha: (json_['alpha'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -36131,7 +35524,7 @@ class GoogleCloudAiplatformV1FindNeighborsResponseNearestNeighbors {
   GoogleCloudAiplatformV1FindNeighborsResponseNearestNeighbors.fromJson(
       core.Map json_)
       : this(
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          id: json_['id'] as core.String?,
           neighbors: json_.containsKey('neighbors')
               ? (json_['neighbors'] as core.List)
                   .map((value) =>
@@ -36175,12 +35568,8 @@ class GoogleCloudAiplatformV1FindNeighborsResponseNeighbor {
               ? GoogleCloudAiplatformV1IndexDatapoint.fromJson(
                   json_['datapoint'] as core.Map<core.String, core.dynamic>)
               : null,
-          distance: json_.containsKey('distance')
-              ? (json_['distance'] as core.num).toDouble()
-              : null,
-          sparseDistance: json_.containsKey('sparseDistance')
-              ? (json_['sparseDistance'] as core.num).toDouble()
-              : null,
+          distance: (json_['distance'] as core.num?)?.toDouble(),
+          sparseDistance: (json_['sparseDistance'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -36231,7 +35620,7 @@ class GoogleCloudAiplatformV1FunctionCall {
           args: json_.containsKey('args')
               ? json_['args'] as core.Map<core.String, core.dynamic>
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -36279,7 +35668,7 @@ class GoogleCloudAiplatformV1FunctionCallingConfig {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          mode: json_.containsKey('mode') ? json_['mode'] as core.String : null,
+          mode: json_['mode'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -36333,10 +35722,8 @@ class GoogleCloudAiplatformV1FunctionDeclaration {
 
   GoogleCloudAiplatformV1FunctionDeclaration.fromJson(core.Map json_)
       : this(
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          description: json_['description'] as core.String?,
+          name: json_['name'] as core.String?,
           parameters: json_.containsKey('parameters')
               ? GoogleCloudAiplatformV1Schema.fromJson(
                   json_['parameters'] as core.Map<core.String, core.dynamic>)
@@ -36379,7 +35766,7 @@ class GoogleCloudAiplatformV1FunctionResponse {
 
   GoogleCloudAiplatformV1FunctionResponse.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           response: json_.containsKey('response')
               ? json_['response'] as core.Map<core.String, core.dynamic>
               : null,
@@ -36407,9 +35794,7 @@ class GoogleCloudAiplatformV1GcsDestination {
 
   GoogleCloudAiplatformV1GcsDestination.fromJson(core.Map json_)
       : this(
-          outputUriPrefix: json_.containsKey('outputUriPrefix')
-              ? json_['outputUriPrefix'] as core.String
-              : null,
+          outputUriPrefix: json_['outputUriPrefix'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -36631,12 +36016,8 @@ class GoogleCloudAiplatformV1GenerateContentResponsePromptFeedback {
   GoogleCloudAiplatformV1GenerateContentResponsePromptFeedback.fromJson(
       core.Map json_)
       : this(
-          blockReason: json_.containsKey('blockReason')
-              ? json_['blockReason'] as core.String
-              : null,
-          blockReasonMessage: json_.containsKey('blockReasonMessage')
-              ? json_['blockReasonMessage'] as core.String
-              : null,
+          blockReason: json_['blockReason'] as core.String?,
+          blockReasonMessage: json_['blockReasonMessage'] as core.String?,
           safetyRatings: json_.containsKey('safetyRatings')
               ? (json_['safetyRatings'] as core.List)
                   .map((value) => GoogleCloudAiplatformV1SafetyRating.fromJson(
@@ -36671,15 +36052,9 @@ class GoogleCloudAiplatformV1GenerateContentResponseUsageMetadata {
   GoogleCloudAiplatformV1GenerateContentResponseUsageMetadata.fromJson(
       core.Map json_)
       : this(
-          candidatesTokenCount: json_.containsKey('candidatesTokenCount')
-              ? json_['candidatesTokenCount'] as core.int
-              : null,
-          promptTokenCount: json_.containsKey('promptTokenCount')
-              ? json_['promptTokenCount'] as core.int
-              : null,
-          totalTokenCount: json_.containsKey('totalTokenCount')
-              ? json_['totalTokenCount'] as core.int
-              : null,
+          candidatesTokenCount: json_['candidatesTokenCount'] as core.int?,
+          promptTokenCount: json_['promptTokenCount'] as core.int?,
+          totalTokenCount: json_['totalTokenCount'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -36768,21 +36143,12 @@ class GoogleCloudAiplatformV1GenerationConfig {
 
   GoogleCloudAiplatformV1GenerationConfig.fromJson(core.Map json_)
       : this(
-          candidateCount: json_.containsKey('candidateCount')
-              ? json_['candidateCount'] as core.int
-              : null,
-          frequencyPenalty: json_.containsKey('frequencyPenalty')
-              ? (json_['frequencyPenalty'] as core.num).toDouble()
-              : null,
-          maxOutputTokens: json_.containsKey('maxOutputTokens')
-              ? json_['maxOutputTokens'] as core.int
-              : null,
-          presencePenalty: json_.containsKey('presencePenalty')
-              ? (json_['presencePenalty'] as core.num).toDouble()
-              : null,
-          responseMimeType: json_.containsKey('responseMimeType')
-              ? json_['responseMimeType'] as core.String
-              : null,
+          candidateCount: json_['candidateCount'] as core.int?,
+          frequencyPenalty:
+              (json_['frequencyPenalty'] as core.num?)?.toDouble(),
+          maxOutputTokens: json_['maxOutputTokens'] as core.int?,
+          presencePenalty: (json_['presencePenalty'] as core.num?)?.toDouble(),
+          responseMimeType: json_['responseMimeType'] as core.String?,
           responseSchema: json_.containsKey('responseSchema')
               ? GoogleCloudAiplatformV1Schema.fromJson(json_['responseSchema']
                   as core.Map<core.String, core.dynamic>)
@@ -36792,15 +36158,9 @@ class GoogleCloudAiplatformV1GenerationConfig {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          temperature: json_.containsKey('temperature')
-              ? (json_['temperature'] as core.num).toDouble()
-              : null,
-          topK: json_.containsKey('topK')
-              ? (json_['topK'] as core.num).toDouble()
-              : null,
-          topP: json_.containsKey('topP')
-              ? (json_['topP'] as core.num).toDouble()
-              : null,
+          temperature: (json_['temperature'] as core.num?)?.toDouble(),
+          topK: (json_['topK'] as core.num?)?.toDouble(),
+          topP: (json_['topP'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -36831,9 +36191,7 @@ class GoogleCloudAiplatformV1GenieSource {
 
   GoogleCloudAiplatformV1GenieSource.fromJson(core.Map json_)
       : this(
-          baseModelUri: json_.containsKey('baseModelUri')
-              ? json_['baseModelUri'] as core.String
-              : null,
+          baseModelUri: json_['baseModelUri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -37021,20 +36379,14 @@ class GoogleCloudAiplatformV1HyperparameterTuningJob {
 
   GoogleCloudAiplatformV1HyperparameterTuningJob.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
           encryptionSpec: json_.containsKey('encryptionSpec')
               ? GoogleCloudAiplatformV1EncryptionSpec.fromJson(
                   json_['encryptionSpec']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          endTime: json_.containsKey('endTime')
-              ? json_['endTime'] as core.String
-              : null,
+          endTime: json_['endTime'] as core.String?,
           error: json_.containsKey('error')
               ? GoogleRpcStatus.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
@@ -37047,21 +36399,12 @@ class GoogleCloudAiplatformV1HyperparameterTuningJob {
                   ),
                 )
               : null,
-          maxFailedTrialCount: json_.containsKey('maxFailedTrialCount')
-              ? json_['maxFailedTrialCount'] as core.int
-              : null,
-          maxTrialCount: json_.containsKey('maxTrialCount')
-              ? json_['maxTrialCount'] as core.int
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          parallelTrialCount: json_.containsKey('parallelTrialCount')
-              ? json_['parallelTrialCount'] as core.int
-              : null,
-          startTime: json_.containsKey('startTime')
-              ? json_['startTime'] as core.String
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
+          maxFailedTrialCount: json_['maxFailedTrialCount'] as core.int?,
+          maxTrialCount: json_['maxTrialCount'] as core.int?,
+          name: json_['name'] as core.String?,
+          parallelTrialCount: json_['parallelTrialCount'] as core.int?,
+          startTime: json_['startTime'] as core.String?,
+          state: json_['state'] as core.String?,
           studySpec: json_.containsKey('studySpec')
               ? GoogleCloudAiplatformV1StudySpec.fromJson(
                   json_['studySpec'] as core.Map<core.String, core.dynamic>)
@@ -37076,9 +36419,7 @@ class GoogleCloudAiplatformV1HyperparameterTuningJob {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -37201,9 +36542,7 @@ class GoogleCloudAiplatformV1ImportDataConfig {
               ? GoogleCloudAiplatformV1GcsSource.fromJson(
                   json_['gcsSource'] as core.Map<core.String, core.dynamic>)
               : null,
-          importSchemaUri: json_.containsKey('importSchemaUri')
-              ? json_['importSchemaUri'] as core.String
-              : null,
+          importSchemaUri: json_['importSchemaUri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -37320,15 +36659,9 @@ class GoogleCloudAiplatformV1ImportFeatureValuesRequest {
                   json_['csvSource'] as core.Map<core.String, core.dynamic>)
               : null,
           disableIngestionAnalysis:
-              json_.containsKey('disableIngestionAnalysis')
-                  ? json_['disableIngestionAnalysis'] as core.bool
-                  : null,
-          disableOnlineServing: json_.containsKey('disableOnlineServing')
-              ? json_['disableOnlineServing'] as core.bool
-              : null,
-          entityIdField: json_.containsKey('entityIdField')
-              ? json_['entityIdField'] as core.String
-              : null,
+              json_['disableIngestionAnalysis'] as core.bool?,
+          disableOnlineServing: json_['disableOnlineServing'] as core.bool?,
+          entityIdField: json_['entityIdField'] as core.String?,
           featureSpecs: json_.containsKey('featureSpecs')
               ? (json_['featureSpecs'] as core.List)
                   .map((value) =>
@@ -37337,15 +36670,9 @@ class GoogleCloudAiplatformV1ImportFeatureValuesRequest {
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          featureTime: json_.containsKey('featureTime')
-              ? json_['featureTime'] as core.String
-              : null,
-          featureTimeField: json_.containsKey('featureTimeField')
-              ? json_['featureTimeField'] as core.String
-              : null,
-          workerCount: json_.containsKey('workerCount')
-              ? json_['workerCount'] as core.int
-              : null,
+          featureTime: json_['featureTime'] as core.String?,
+          featureTimeField: json_['featureTimeField'] as core.String?,
+          workerCount: json_['workerCount'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -37387,10 +36714,8 @@ class GoogleCloudAiplatformV1ImportFeatureValuesRequestFeatureSpec {
   GoogleCloudAiplatformV1ImportFeatureValuesRequestFeatureSpec.fromJson(
       core.Map json_)
       : this(
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          sourceField: json_.containsKey('sourceField')
-              ? json_['sourceField'] as core.String
-              : null,
+          id: json_['id'] as core.String?,
+          sourceField: json_['sourceField'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -37546,9 +36871,7 @@ class GoogleCloudAiplatformV1Index {
 
   GoogleCloudAiplatformV1Index.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
           deployedIndexes: json_.containsKey('deployedIndexes')
               ? (json_['deployedIndexes'] as core.List)
                   .map((value) =>
@@ -37556,25 +36879,19 @@ class GoogleCloudAiplatformV1Index {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+          description: json_['description'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
           encryptionSpec: json_.containsKey('encryptionSpec')
               ? GoogleCloudAiplatformV1EncryptionSpec.fromJson(
                   json_['encryptionSpec']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          etag: json_['etag'] as core.String?,
           indexStats: json_.containsKey('indexStats')
               ? GoogleCloudAiplatformV1IndexStats.fromJson(
                   json_['indexStats'] as core.Map<core.String, core.dynamic>)
               : null,
-          indexUpdateMethod: json_.containsKey('indexUpdateMethod')
-              ? json_['indexUpdateMethod'] as core.String
-              : null,
+          indexUpdateMethod: json_['indexUpdateMethod'] as core.String?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -37583,14 +36900,10 @@ class GoogleCloudAiplatformV1Index {
                   ),
                 )
               : null,
-          metadata: json_.containsKey('metadata') ? json_['metadata'] : null,
-          metadataSchemaUri: json_.containsKey('metadataSchemaUri')
-              ? json_['metadataSchemaUri'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          metadata: json_['metadata'],
+          metadataSchemaUri: json_['metadataSchemaUri'] as core.String?,
+          name: json_['name'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -37671,9 +36984,7 @@ class GoogleCloudAiplatformV1IndexDatapoint {
               ? GoogleCloudAiplatformV1IndexDatapointCrowdingTag.fromJson(
                   json_['crowdingTag'] as core.Map<core.String, core.dynamic>)
               : null,
-          datapointId: json_.containsKey('datapointId')
-              ? json_['datapointId'] as core.String
-              : null,
+          datapointId: json_['datapointId'] as core.String?,
           featureVector: json_.containsKey('featureVector')
               ? (json_['featureVector'] as core.List)
                   .map((value) => (value as core.num).toDouble())
@@ -37729,9 +37040,7 @@ class GoogleCloudAiplatformV1IndexDatapointCrowdingTag {
 
   GoogleCloudAiplatformV1IndexDatapointCrowdingTag.fromJson(core.Map json_)
       : this(
-          crowdingAttribute: json_.containsKey('crowdingAttribute')
-              ? json_['crowdingAttribute'] as core.String
-              : null,
+          crowdingAttribute: json_['crowdingAttribute'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -37781,19 +37090,11 @@ class GoogleCloudAiplatformV1IndexDatapointNumericRestriction {
   GoogleCloudAiplatformV1IndexDatapointNumericRestriction.fromJson(
       core.Map json_)
       : this(
-          namespace: json_.containsKey('namespace')
-              ? json_['namespace'] as core.String
-              : null,
-          op: json_.containsKey('op') ? json_['op'] as core.String : null,
-          valueDouble: json_.containsKey('valueDouble')
-              ? (json_['valueDouble'] as core.num).toDouble()
-              : null,
-          valueFloat: json_.containsKey('valueFloat')
-              ? (json_['valueFloat'] as core.num).toDouble()
-              : null,
-          valueInt: json_.containsKey('valueInt')
-              ? json_['valueInt'] as core.String
-              : null,
+          namespace: json_['namespace'] as core.String?,
+          op: json_['op'] as core.String?,
+          valueDouble: (json_['valueDouble'] as core.num?)?.toDouble(),
+          valueFloat: (json_['valueFloat'] as core.num?)?.toDouble(),
+          valueInt: json_['valueInt'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -37841,9 +37142,7 @@ class GoogleCloudAiplatformV1IndexDatapointRestriction {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          namespace: json_.containsKey('namespace')
-              ? json_['namespace'] as core.String
-              : null,
+          namespace: json_['namespace'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -38015,31 +37314,23 @@ class GoogleCloudAiplatformV1IndexEndpoint {
 
   GoogleCloudAiplatformV1IndexEndpoint.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
           deployedIndexes: json_.containsKey('deployedIndexes')
               ? (json_['deployedIndexes'] as core.List)
                   .map((value) => GoogleCloudAiplatformV1DeployedIndex.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+          description: json_['description'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
           enablePrivateServiceConnect:
-              json_.containsKey('enablePrivateServiceConnect')
-                  ? json_['enablePrivateServiceConnect'] as core.bool
-                  : null,
+              json_['enablePrivateServiceConnect'] as core.bool?,
           encryptionSpec: json_.containsKey('encryptionSpec')
               ? GoogleCloudAiplatformV1EncryptionSpec.fromJson(
                   json_['encryptionSpec']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          etag: json_['etag'] as core.String?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -38048,10 +37339,8 @@ class GoogleCloudAiplatformV1IndexEndpoint {
                   ),
                 )
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          network: json_.containsKey('network')
-              ? json_['network'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          network: json_['network'] as core.String?,
           privateServiceConnectConfig:
               json_.containsKey('privateServiceConnectConfig')
                   ? GoogleCloudAiplatformV1PrivateServiceConnectConfig.fromJson(
@@ -38059,15 +37348,9 @@ class GoogleCloudAiplatformV1IndexEndpoint {
                           as core.Map<core.String, core.dynamic>)
                   : null,
           publicEndpointDomainName:
-              json_.containsKey('publicEndpointDomainName')
-                  ? json_['publicEndpointDomainName'] as core.String
-                  : null,
-          publicEndpointEnabled: json_.containsKey('publicEndpointEnabled')
-              ? json_['publicEndpointEnabled'] as core.bool
-              : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+              json_['publicEndpointDomainName'] as core.String?,
+          publicEndpointEnabled: json_['publicEndpointEnabled'] as core.bool?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -38126,9 +37409,7 @@ class GoogleCloudAiplatformV1IndexPrivateEndpoints {
 
   GoogleCloudAiplatformV1IndexPrivateEndpoints.fromJson(core.Map json_)
       : this(
-          matchGrpcAddress: json_.containsKey('matchGrpcAddress')
-              ? json_['matchGrpcAddress'] as core.String
-              : null,
+          matchGrpcAddress: json_['matchGrpcAddress'] as core.String?,
           pscAutomatedEndpoints: json_.containsKey('pscAutomatedEndpoints')
               ? (json_['pscAutomatedEndpoints'] as core.List)
                   .map((value) =>
@@ -38136,9 +37417,7 @@ class GoogleCloudAiplatformV1IndexPrivateEndpoints {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          serviceAttachment: json_.containsKey('serviceAttachment')
-              ? json_['serviceAttachment'] as core.String
-              : null,
+          serviceAttachment: json_['serviceAttachment'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -38174,15 +37453,9 @@ class GoogleCloudAiplatformV1IndexStats {
 
   GoogleCloudAiplatformV1IndexStats.fromJson(core.Map json_)
       : this(
-          shardsCount: json_.containsKey('shardsCount')
-              ? json_['shardsCount'] as core.int
-              : null,
-          sparseVectorsCount: json_.containsKey('sparseVectorsCount')
-              ? json_['sparseVectorsCount'] as core.String
-              : null,
-          vectorsCount: json_.containsKey('vectorsCount')
-              ? json_['vectorsCount'] as core.String
-              : null,
+          shardsCount: json_['shardsCount'] as core.int?,
+          sparseVectorsCount: json_['sparseVectorsCount'] as core.String?,
+          vectorsCount: json_['vectorsCount'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -38316,20 +37589,14 @@ class GoogleCloudAiplatformV1InputDataConfig {
 
   GoogleCloudAiplatformV1InputDataConfig.fromJson(core.Map json_)
       : this(
-          annotationSchemaUri: json_.containsKey('annotationSchemaUri')
-              ? json_['annotationSchemaUri'] as core.String
-              : null,
-          annotationsFilter: json_.containsKey('annotationsFilter')
-              ? json_['annotationsFilter'] as core.String
-              : null,
+          annotationSchemaUri: json_['annotationSchemaUri'] as core.String?,
+          annotationsFilter: json_['annotationsFilter'] as core.String?,
           bigqueryDestination: json_.containsKey('bigqueryDestination')
               ? GoogleCloudAiplatformV1BigQueryDestination.fromJson(
                   json_['bigqueryDestination']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          datasetId: json_.containsKey('datasetId')
-              ? json_['datasetId'] as core.String
-              : null,
+          datasetId: json_['datasetId'] as core.String?,
           filterSplit: json_.containsKey('filterSplit')
               ? GoogleCloudAiplatformV1FilterSplit.fromJson(
                   json_['filterSplit'] as core.Map<core.String, core.dynamic>)
@@ -38343,17 +37610,13 @@ class GoogleCloudAiplatformV1InputDataConfig {
                   json_['gcsDestination']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          persistMlUseAssignment: json_.containsKey('persistMlUseAssignment')
-              ? json_['persistMlUseAssignment'] as core.bool
-              : null,
+          persistMlUseAssignment: json_['persistMlUseAssignment'] as core.bool?,
           predefinedSplit: json_.containsKey('predefinedSplit')
               ? GoogleCloudAiplatformV1PredefinedSplit.fromJson(
                   json_['predefinedSplit']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          savedQueryId: json_.containsKey('savedQueryId')
-              ? json_['savedQueryId'] as core.String
-              : null,
+          savedQueryId: json_['savedQueryId'] as core.String?,
           stratifiedSplit: json_.containsKey('stratifiedSplit')
               ? GoogleCloudAiplatformV1StratifiedSplit.fromJson(
                   json_['stratifiedSplit']
@@ -38456,9 +37719,7 @@ class GoogleCloudAiplatformV1IntegratedGradientsAttribution {
                   json_['smoothGradConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          stepCount: json_.containsKey('stepCount')
-              ? json_['stepCount'] as core.int
-              : null,
+          stepCount: json_['stepCount'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -38485,7 +37746,7 @@ class GoogleCloudAiplatformV1LargeModelReference {
 
   GoogleCloudAiplatformV1LargeModelReference.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -38562,9 +37823,7 @@ class GoogleCloudAiplatformV1ListAnnotationsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -38597,9 +37856,7 @@ class GoogleCloudAiplatformV1ListArtifactsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -38633,9 +37890,7 @@ class GoogleCloudAiplatformV1ListBatchPredictionJobsResponse {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -38669,9 +37924,7 @@ class GoogleCloudAiplatformV1ListContextsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -38703,9 +37956,7 @@ class GoogleCloudAiplatformV1ListCustomJobsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -38735,9 +37986,7 @@ class GoogleCloudAiplatformV1ListDataItemsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -38769,9 +38018,7 @@ class GoogleCloudAiplatformV1ListDataLabelingJobsResponse {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -38803,9 +38050,7 @@ class GoogleCloudAiplatformV1ListDatasetVersionsResponse {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -38835,9 +38080,7 @@ class GoogleCloudAiplatformV1ListDatasetsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -38872,9 +38115,7 @@ class GoogleCloudAiplatformV1ListDeploymentResourcePoolsResponse {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -38907,9 +38148,7 @@ class GoogleCloudAiplatformV1ListEndpointsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -38942,9 +38181,7 @@ class GoogleCloudAiplatformV1ListEntityTypesResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -38977,9 +38214,7 @@ class GoogleCloudAiplatformV1ListExecutionsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -39012,9 +38247,7 @@ class GoogleCloudAiplatformV1ListFeatureGroupsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -39049,9 +38282,7 @@ class GoogleCloudAiplatformV1ListFeatureOnlineStoresResponse {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -39086,9 +38317,7 @@ class GoogleCloudAiplatformV1ListFeatureViewSyncsResponse {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -39121,9 +38350,7 @@ class GoogleCloudAiplatformV1ListFeatureViewsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -39158,9 +38385,7 @@ class GoogleCloudAiplatformV1ListFeaturesResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -39193,9 +38418,7 @@ class GoogleCloudAiplatformV1ListFeaturestoresResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -39234,9 +38457,7 @@ class GoogleCloudAiplatformV1ListHyperparameterTuningJobsResponse {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -39269,9 +38490,7 @@ class GoogleCloudAiplatformV1ListIndexEndpointsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -39303,9 +38522,7 @@ class GoogleCloudAiplatformV1ListIndexesResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -39339,9 +38556,7 @@ class GoogleCloudAiplatformV1ListMetadataSchemasResponse {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -39374,9 +38589,7 @@ class GoogleCloudAiplatformV1ListMetadataStoresResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -39412,9 +38625,7 @@ class GoogleCloudAiplatformV1ListModelDeploymentMonitoringJobsResponse {
                                   value as core.Map<core.String, core.dynamic>))
                       .toList()
                   : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -39449,9 +38660,7 @@ class GoogleCloudAiplatformV1ListModelEvaluationSlicesResponse {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -39485,9 +38694,7 @@ class GoogleCloudAiplatformV1ListModelEvaluationsResponse {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -39522,9 +38729,7 @@ class GoogleCloudAiplatformV1ListModelVersionsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -39556,9 +38761,7 @@ class GoogleCloudAiplatformV1ListModelsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -39592,9 +38795,7 @@ class GoogleCloudAiplatformV1ListNasJobsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -39627,9 +38828,7 @@ class GoogleCloudAiplatformV1ListNasTrialDetailsResponse {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -39658,9 +38857,7 @@ class GoogleCloudAiplatformV1ListNotebookRuntimeTemplatesResponse {
   GoogleCloudAiplatformV1ListNotebookRuntimeTemplatesResponse.fromJson(
       core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           notebookRuntimeTemplates: json_
                   .containsKey('notebookRuntimeTemplates')
               ? (json_['notebookRuntimeTemplates'] as core.List)
@@ -39695,9 +38892,7 @@ class GoogleCloudAiplatformV1ListNotebookRuntimesResponse {
 
   GoogleCloudAiplatformV1ListNotebookRuntimesResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           notebookRuntimes: json_.containsKey('notebookRuntimes')
               ? (json_['notebookRuntimes'] as core.List)
                   .map((value) =>
@@ -39760,9 +38955,7 @@ class GoogleCloudAiplatformV1ListPersistentResourcesResponse {
   GoogleCloudAiplatformV1ListPersistentResourcesResponse.fromJson(
       core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           persistentResources: json_.containsKey('persistentResources')
               ? (json_['persistentResources'] as core.List)
                   .map((value) =>
@@ -39796,9 +38989,7 @@ class GoogleCloudAiplatformV1ListPipelineJobsResponse {
 
   GoogleCloudAiplatformV1ListPipelineJobsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           pipelineJobs: json_.containsKey('pipelineJobs')
               ? (json_['pipelineJobs'] as core.List)
                   .map((value) => GoogleCloudAiplatformV1PipelineJob.fromJson(
@@ -39828,9 +39019,7 @@ class GoogleCloudAiplatformV1ListSavedQueriesResponse {
 
   GoogleCloudAiplatformV1ListSavedQueriesResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           savedQueries: json_.containsKey('savedQueries')
               ? (json_['savedQueries'] as core.List)
                   .map((value) => GoogleCloudAiplatformV1SavedQuery.fromJson(
@@ -39862,9 +39051,7 @@ class GoogleCloudAiplatformV1ListSchedulesResponse {
 
   GoogleCloudAiplatformV1ListSchedulesResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           schedules: json_.containsKey('schedules')
               ? (json_['schedules'] as core.List)
                   .map((value) => GoogleCloudAiplatformV1Schedule.fromJson(
@@ -39895,9 +39082,7 @@ class GoogleCloudAiplatformV1ListSpecialistPoolsResponse {
 
   GoogleCloudAiplatformV1ListSpecialistPoolsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           specialistPools: json_.containsKey('specialistPools')
               ? (json_['specialistPools'] as core.List)
                   .map((value) =>
@@ -39931,9 +39116,7 @@ class GoogleCloudAiplatformV1ListStudiesResponse {
 
   GoogleCloudAiplatformV1ListStudiesResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           studies: json_.containsKey('studies')
               ? (json_['studies'] as core.List)
                   .map((value) => GoogleCloudAiplatformV1Study.fromJson(
@@ -39968,9 +39151,7 @@ class GoogleCloudAiplatformV1ListTensorboardExperimentsResponse {
   GoogleCloudAiplatformV1ListTensorboardExperimentsResponse.fromJson(
       core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           tensorboardExperiments: json_.containsKey('tensorboardExperiments')
               ? (json_['tensorboardExperiments'] as core.List)
                   .map((value) =>
@@ -40005,9 +39186,7 @@ class GoogleCloudAiplatformV1ListTensorboardRunsResponse {
 
   GoogleCloudAiplatformV1ListTensorboardRunsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           tensorboardRuns: json_.containsKey('tensorboardRuns')
               ? (json_['tensorboardRuns'] as core.List)
                   .map((value) =>
@@ -40043,9 +39222,7 @@ class GoogleCloudAiplatformV1ListTensorboardTimeSeriesResponse {
   GoogleCloudAiplatformV1ListTensorboardTimeSeriesResponse.fromJson(
       core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           tensorboardTimeSeries: json_.containsKey('tensorboardTimeSeries')
               ? (json_['tensorboardTimeSeries'] as core.List)
                   .map((value) =>
@@ -40080,9 +39257,7 @@ class GoogleCloudAiplatformV1ListTensorboardsResponse {
 
   GoogleCloudAiplatformV1ListTensorboardsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           tensorboards: json_.containsKey('tensorboards')
               ? (json_['tensorboards'] as core.List)
                   .map((value) => GoogleCloudAiplatformV1Tensorboard.fromJson(
@@ -40114,9 +39289,7 @@ class GoogleCloudAiplatformV1ListTrainingPipelinesResponse {
 
   GoogleCloudAiplatformV1ListTrainingPipelinesResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           trainingPipelines: json_.containsKey('trainingPipelines')
               ? (json_['trainingPipelines'] as core.List)
                   .map((value) =>
@@ -40150,9 +39323,7 @@ class GoogleCloudAiplatformV1ListTrialsResponse {
 
   GoogleCloudAiplatformV1ListTrialsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           trials: json_.containsKey('trials')
               ? (json_['trials'] as core.List)
                   .map((value) => GoogleCloudAiplatformV1Trial.fromJson(
@@ -40184,9 +39355,7 @@ class GoogleCloudAiplatformV1ListTuningJobsResponse {
 
   GoogleCloudAiplatformV1ListTuningJobsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           tuningJobs: json_.containsKey('tuningJobs')
               ? (json_['tuningJobs'] as core.List)
                   .map((value) => GoogleCloudAiplatformV1TuningJob.fromJson(
@@ -40214,9 +39383,7 @@ class GoogleCloudAiplatformV1LookupStudyRequest {
 
   GoogleCloudAiplatformV1LookupStudyRequest.fromJson(core.Map json_)
       : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+          displayName: json_['displayName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -40281,18 +39448,10 @@ class GoogleCloudAiplatformV1MachineSpec {
 
   GoogleCloudAiplatformV1MachineSpec.fromJson(core.Map json_)
       : this(
-          acceleratorCount: json_.containsKey('acceleratorCount')
-              ? json_['acceleratorCount'] as core.int
-              : null,
-          acceleratorType: json_.containsKey('acceleratorType')
-              ? json_['acceleratorType'] as core.String
-              : null,
-          machineType: json_.containsKey('machineType')
-              ? json_['machineType'] as core.String
-              : null,
-          tpuTopology: json_.containsKey('tpuTopology')
-              ? json_['tpuTopology'] as core.String
-              : null,
+          acceleratorCount: json_['acceleratorCount'] as core.int?,
+          acceleratorType: json_['acceleratorType'] as core.String?,
+          machineType: json_['machineType'] as core.String?,
+          tpuTopology: json_['tpuTopology'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -40323,9 +39482,7 @@ class GoogleCloudAiplatformV1ManualBatchTuningParameters {
 
   GoogleCloudAiplatformV1ManualBatchTuningParameters.fromJson(core.Map json_)
       : this(
-          batchSize: json_.containsKey('batchSize')
-              ? json_['batchSize'] as core.int
-              : null,
+          batchSize: json_['batchSize'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -40364,9 +39521,7 @@ class GoogleCloudAiplatformV1Measurement {
 
   GoogleCloudAiplatformV1Measurement.fromJson(core.Map json_)
       : this(
-          elapsedDuration: json_.containsKey('elapsedDuration')
-              ? json_['elapsedDuration'] as core.String
-              : null,
+          elapsedDuration: json_['elapsedDuration'] as core.String?,
           metrics: json_.containsKey('metrics')
               ? (json_['metrics'] as core.List)
                   .map((value) =>
@@ -40374,9 +39529,7 @@ class GoogleCloudAiplatformV1Measurement {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          stepCount: json_.containsKey('stepCount')
-              ? json_['stepCount'] as core.String
-              : null,
+          stepCount: json_['stepCount'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -40407,12 +39560,8 @@ class GoogleCloudAiplatformV1MeasurementMetric {
 
   GoogleCloudAiplatformV1MeasurementMetric.fromJson(core.Map json_)
       : this(
-          metricId: json_.containsKey('metricId')
-              ? json_['metricId'] as core.String
-              : null,
-          value: json_.containsKey('value')
-              ? (json_['value'] as core.num).toDouble()
-              : null,
+          metricId: json_['metricId'] as core.String?,
+          value: (json_['value'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -40513,22 +39662,12 @@ class GoogleCloudAiplatformV1MetadataSchema {
 
   GoogleCloudAiplatformV1MetadataSchema.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          schema: json_.containsKey('schema')
-              ? json_['schema'] as core.String
-              : null,
-          schemaType: json_.containsKey('schemaType')
-              ? json_['schemaType'] as core.String
-              : null,
-          schemaVersion: json_.containsKey('schemaVersion')
-              ? json_['schemaVersion'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          description: json_['description'] as core.String?,
+          name: json_['name'] as core.String?,
+          schema: json_['schema'] as core.String?,
+          schemaType: json_['schemaType'] as core.String?,
+          schemaVersion: json_['schemaVersion'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -40591,30 +39730,24 @@ class GoogleCloudAiplatformV1MetadataStore {
 
   GoogleCloudAiplatformV1MetadataStore.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
           dataplexConfig: json_.containsKey('dataplexConfig')
               ? GoogleCloudAiplatformV1MetadataStoreDataplexConfig.fromJson(
                   json_['dataplexConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
+          description: json_['description'] as core.String?,
           encryptionSpec: json_.containsKey('encryptionSpec')
               ? GoogleCloudAiplatformV1EncryptionSpec.fromJson(
                   json_['encryptionSpec']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           state: json_.containsKey('state')
               ? GoogleCloudAiplatformV1MetadataStoreMetadataStoreState.fromJson(
                   json_['state'] as core.Map<core.String, core.dynamic>)
               : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -40642,9 +39775,8 @@ class GoogleCloudAiplatformV1MetadataStoreDataplexConfig {
 
   GoogleCloudAiplatformV1MetadataStoreDataplexConfig.fromJson(core.Map json_)
       : this(
-          enabledPipelinesLineage: json_.containsKey('enabledPipelinesLineage')
-              ? json_['enabledPipelinesLineage'] as core.bool
-              : null,
+          enabledPipelinesLineage:
+              json_['enabledPipelinesLineage'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -40665,9 +39797,7 @@ class GoogleCloudAiplatformV1MetadataStoreMetadataStoreState {
   GoogleCloudAiplatformV1MetadataStoreMetadataStoreState.fromJson(
       core.Map json_)
       : this(
-          diskUtilizationBytes: json_.containsKey('diskUtilizationBytes')
-              ? json_['diskUtilizationBytes'] as core.String
-              : null,
+          diskUtilizationBytes: json_['diskUtilizationBytes'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -40739,12 +39869,8 @@ class GoogleCloudAiplatformV1MigratableResource {
                   .fromJson(json_['dataLabelingDataset']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          lastMigrateTime: json_.containsKey('lastMigrateTime')
-              ? json_['lastMigrateTime'] as core.String
-              : null,
-          lastUpdateTime: json_.containsKey('lastUpdateTime')
-              ? json_['lastUpdateTime'] as core.String
-              : null,
+          lastMigrateTime: json_['lastMigrateTime'] as core.String?,
+          lastUpdateTime: json_['lastUpdateTime'] as core.String?,
           mlEngineModelVersion: json_.containsKey('mlEngineModelVersion')
               ? GoogleCloudAiplatformV1MigratableResourceMlEngineModelVersion
                   .fromJson(json_['mlEngineModelVersion']
@@ -40782,12 +39908,8 @@ class GoogleCloudAiplatformV1MigratableResourceAutomlDataset {
   GoogleCloudAiplatformV1MigratableResourceAutomlDataset.fromJson(
       core.Map json_)
       : this(
-          dataset: json_.containsKey('dataset')
-              ? json_['dataset'] as core.String
-              : null,
-          datasetDisplayName: json_.containsKey('datasetDisplayName')
-              ? json_['datasetDisplayName'] as core.String
-              : null,
+          dataset: json_['dataset'] as core.String?,
+          datasetDisplayName: json_['datasetDisplayName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -40814,11 +39936,8 @@ class GoogleCloudAiplatformV1MigratableResourceAutomlModel {
 
   GoogleCloudAiplatformV1MigratableResourceAutomlModel.fromJson(core.Map json_)
       : this(
-          model:
-              json_.containsKey('model') ? json_['model'] as core.String : null,
-          modelDisplayName: json_.containsKey('modelDisplayName')
-              ? json_['modelDisplayName'] as core.String
-              : null,
+          model: json_['model'] as core.String?,
+          modelDisplayName: json_['modelDisplayName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -40861,12 +39980,8 @@ class GoogleCloudAiplatformV1MigratableResourceDataLabelingDataset {
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          dataset: json_.containsKey('dataset')
-              ? json_['dataset'] as core.String
-              : null,
-          datasetDisplayName: json_.containsKey('datasetDisplayName')
-              ? json_['datasetDisplayName'] as core.String
-              : null,
+          dataset: json_['dataset'] as core.String?,
+          datasetDisplayName: json_['datasetDisplayName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -40897,13 +40012,9 @@ class GoogleCloudAiplatformV1MigratableResourceDataLabelingDatasetDataLabelingAn
   GoogleCloudAiplatformV1MigratableResourceDataLabelingDatasetDataLabelingAnnotatedDataset.fromJson(
       core.Map json_)
       : this(
-          annotatedDataset: json_.containsKey('annotatedDataset')
-              ? json_['annotatedDataset'] as core.String
-              : null,
+          annotatedDataset: json_['annotatedDataset'] as core.String?,
           annotatedDatasetDisplayName:
-              json_.containsKey('annotatedDatasetDisplayName')
-                  ? json_['annotatedDatasetDisplayName'] as core.String
-                  : null,
+              json_['annotatedDatasetDisplayName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -40934,12 +40045,8 @@ class GoogleCloudAiplatformV1MigratableResourceMlEngineModelVersion {
   GoogleCloudAiplatformV1MigratableResourceMlEngineModelVersion.fromJson(
       core.Map json_)
       : this(
-          endpoint: json_.containsKey('endpoint')
-              ? json_['endpoint'] as core.String
-              : null,
-          version: json_.containsKey('version')
-              ? json_['version'] as core.String
-              : null,
+          endpoint: json_['endpoint'] as core.String?,
+          version: json_['version'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -41042,12 +40149,8 @@ class GoogleCloudAiplatformV1MigrateResourceRequestMigrateAutomlDatasetConfig {
   GoogleCloudAiplatformV1MigrateResourceRequestMigrateAutomlDatasetConfig.fromJson(
       core.Map json_)
       : this(
-          dataset: json_.containsKey('dataset')
-              ? json_['dataset'] as core.String
-              : null,
-          datasetDisplayName: json_.containsKey('datasetDisplayName')
-              ? json_['datasetDisplayName'] as core.String
-              : null,
+          dataset: json_['dataset'] as core.String?,
+          datasetDisplayName: json_['datasetDisplayName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -41081,11 +40184,8 @@ class GoogleCloudAiplatformV1MigrateResourceRequestMigrateAutomlModelConfig {
   GoogleCloudAiplatformV1MigrateResourceRequestMigrateAutomlModelConfig.fromJson(
       core.Map json_)
       : this(
-          model:
-              json_.containsKey('model') ? json_['model'] as core.String : null,
-          modelDisplayName: json_.containsKey('modelDisplayName')
-              ? json_['modelDisplayName'] as core.String
-              : null,
+          model: json_['model'] as core.String?,
+          modelDisplayName: json_['modelDisplayName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -41131,12 +40231,8 @@ class GoogleCloudAiplatformV1MigrateResourceRequestMigrateDataLabelingDatasetCon
   GoogleCloudAiplatformV1MigrateResourceRequestMigrateDataLabelingDatasetConfig.fromJson(
       core.Map json_)
       : this(
-          dataset: json_.containsKey('dataset')
-              ? json_['dataset'] as core.String
-              : null,
-          datasetDisplayName: json_.containsKey('datasetDisplayName')
-              ? json_['datasetDisplayName'] as core.String
-              : null,
+          dataset: json_['dataset'] as core.String?,
+          datasetDisplayName: json_['datasetDisplayName'] as core.String?,
           migrateDataLabelingAnnotatedDatasetConfigs: json_
                   .containsKey('migrateDataLabelingAnnotatedDatasetConfigs')
               ? (json_['migrateDataLabelingAnnotatedDatasetConfigs']
@@ -41177,9 +40273,7 @@ class GoogleCloudAiplatformV1MigrateResourceRequestMigrateDataLabelingDatasetCon
   GoogleCloudAiplatformV1MigrateResourceRequestMigrateDataLabelingDatasetConfigMigrateDataLabelingAnnotatedDatasetConfig.fromJson(
       core.Map json_)
       : this(
-          annotatedDataset: json_.containsKey('annotatedDataset')
-              ? json_['annotatedDataset'] as core.String
-              : null,
+          annotatedDataset: json_['annotatedDataset'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -41221,15 +40315,9 @@ class GoogleCloudAiplatformV1MigrateResourceRequestMigrateMlEngineModelVersionCo
   GoogleCloudAiplatformV1MigrateResourceRequestMigrateMlEngineModelVersionConfig.fromJson(
       core.Map json_)
       : this(
-          endpoint: json_.containsKey('endpoint')
-              ? json_['endpoint'] as core.String
-              : null,
-          modelDisplayName: json_.containsKey('modelDisplayName')
-              ? json_['modelDisplayName'] as core.String
-              : null,
-          modelVersion: json_.containsKey('modelVersion')
-              ? json_['modelVersion'] as core.String
-              : null,
+          endpoint: json_['endpoint'] as core.String?,
+          modelDisplayName: json_['modelDisplayName'] as core.String?,
+          modelVersion: json_['modelVersion'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -41531,9 +40619,7 @@ class GoogleCloudAiplatformV1Model {
 
   GoogleCloudAiplatformV1Model.fromJson(core.Map json_)
       : this(
-          artifactUri: json_.containsKey('artifactUri')
-              ? json_['artifactUri'] as core.String
-              : null,
+          artifactUri: json_['artifactUri'] as core.String?,
           baseModelSource: json_.containsKey('baseModelSource')
               ? GoogleCloudAiplatformV1ModelBaseModelSource.fromJson(
                   json_['baseModelSource']
@@ -41543,9 +40629,7 @@ class GoogleCloudAiplatformV1Model {
               ? GoogleCloudAiplatformV1ModelContainerSpec.fromJson(
                   json_['containerSpec'] as core.Map<core.String, core.dynamic>)
               : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
           dataStats: json_.containsKey('dataStats')
               ? GoogleCloudAiplatformV1ModelDataStats.fromJson(
                   json_['dataStats'] as core.Map<core.String, core.dynamic>)
@@ -41557,18 +40641,14 @@ class GoogleCloudAiplatformV1Model {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+          description: json_['description'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
           encryptionSpec: json_.containsKey('encryptionSpec')
               ? GoogleCloudAiplatformV1EncryptionSpec.fromJson(
                   json_['encryptionSpec']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          etag: json_['etag'] as core.String?,
           explanationSpec: json_.containsKey('explanationSpec')
               ? GoogleCloudAiplatformV1ExplanationSpec.fromJson(
                   json_['explanationSpec']
@@ -41582,27 +40662,21 @@ class GoogleCloudAiplatformV1Model {
                   ),
                 )
               : null,
-          metadata: json_.containsKey('metadata') ? json_['metadata'] : null,
-          metadataArtifact: json_.containsKey('metadataArtifact')
-              ? json_['metadataArtifact'] as core.String
-              : null,
-          metadataSchemaUri: json_.containsKey('metadataSchemaUri')
-              ? json_['metadataSchemaUri'] as core.String
-              : null,
+          metadata: json_['metadata'],
+          metadataArtifact: json_['metadataArtifact'] as core.String?,
+          metadataSchemaUri: json_['metadataSchemaUri'] as core.String?,
           modelSourceInfo: json_.containsKey('modelSourceInfo')
               ? GoogleCloudAiplatformV1ModelSourceInfo.fromJson(
                   json_['modelSourceInfo']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           originalModelInfo: json_.containsKey('originalModelInfo')
               ? GoogleCloudAiplatformV1ModelOriginalModelInfo.fromJson(
                   json_['originalModelInfo']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          pipelineJob: json_.containsKey('pipelineJob')
-              ? json_['pipelineJob'] as core.String
-              : null,
+          pipelineJob: json_['pipelineJob'] as core.String?,
           predictSchemata: json_.containsKey('predictSchemata')
               ? GoogleCloudAiplatformV1PredictSchemata.fromJson(
                   json_['predictSchemata']
@@ -41633,29 +40707,17 @@ class GoogleCloudAiplatformV1Model {
                       .map((value) => value as core.String)
                       .toList()
                   : null,
-          trainingPipeline: json_.containsKey('trainingPipeline')
-              ? json_['trainingPipeline'] as core.String
-              : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          trainingPipeline: json_['trainingPipeline'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
           versionAliases: json_.containsKey('versionAliases')
               ? (json_['versionAliases'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          versionCreateTime: json_.containsKey('versionCreateTime')
-              ? json_['versionCreateTime'] as core.String
-              : null,
-          versionDescription: json_.containsKey('versionDescription')
-              ? json_['versionDescription'] as core.String
-              : null,
-          versionId: json_.containsKey('versionId')
-              ? json_['versionId'] as core.String
-              : null,
-          versionUpdateTime: json_.containsKey('versionUpdateTime')
-              ? json_['versionUpdateTime'] as core.String
-              : null,
+          versionCreateTime: json_['versionCreateTime'] as core.String?,
+          versionDescription: json_['versionDescription'] as core.String?,
+          versionId: json_['versionId'] as core.String?,
+          versionUpdateTime: json_['versionUpdateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -41965,9 +41027,7 @@ class GoogleCloudAiplatformV1ModelContainerSpec {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          deploymentTimeout: json_.containsKey('deploymentTimeout')
-              ? json_['deploymentTimeout'] as core.String
-              : null,
+          deploymentTimeout: json_['deploymentTimeout'] as core.String?,
           env: json_.containsKey('env')
               ? (json_['env'] as core.List)
                   .map((value) => GoogleCloudAiplatformV1EnvVar.fromJson(
@@ -41984,24 +41044,16 @@ class GoogleCloudAiplatformV1ModelContainerSpec {
               ? GoogleCloudAiplatformV1Probe.fromJson(
                   json_['healthProbe'] as core.Map<core.String, core.dynamic>)
               : null,
-          healthRoute: json_.containsKey('healthRoute')
-              ? json_['healthRoute'] as core.String
-              : null,
-          imageUri: json_.containsKey('imageUri')
-              ? json_['imageUri'] as core.String
-              : null,
+          healthRoute: json_['healthRoute'] as core.String?,
+          imageUri: json_['imageUri'] as core.String?,
           ports: json_.containsKey('ports')
               ? (json_['ports'] as core.List)
                   .map((value) => GoogleCloudAiplatformV1Port.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          predictRoute: json_.containsKey('predictRoute')
-              ? json_['predictRoute'] as core.String
-              : null,
-          sharedMemorySizeMb: json_.containsKey('sharedMemorySizeMb')
-              ? json_['sharedMemorySizeMb'] as core.String
-              : null,
+          predictRoute: json_['predictRoute'] as core.String?,
+          sharedMemorySizeMb: json_['sharedMemorySizeMb'] as core.String?,
           startupProbe: json_.containsKey('startupProbe')
               ? GoogleCloudAiplatformV1Probe.fromJson(
                   json_['startupProbe'] as core.Map<core.String, core.dynamic>)
@@ -42066,27 +41118,16 @@ class GoogleCloudAiplatformV1ModelDataStats {
 
   GoogleCloudAiplatformV1ModelDataStats.fromJson(core.Map json_)
       : this(
-          testAnnotationsCount: json_.containsKey('testAnnotationsCount')
-              ? json_['testAnnotationsCount'] as core.String
-              : null,
-          testDataItemsCount: json_.containsKey('testDataItemsCount')
-              ? json_['testDataItemsCount'] as core.String
-              : null,
+          testAnnotationsCount: json_['testAnnotationsCount'] as core.String?,
+          testDataItemsCount: json_['testDataItemsCount'] as core.String?,
           trainingAnnotationsCount:
-              json_.containsKey('trainingAnnotationsCount')
-                  ? json_['trainingAnnotationsCount'] as core.String
-                  : null,
-          trainingDataItemsCount: json_.containsKey('trainingDataItemsCount')
-              ? json_['trainingDataItemsCount'] as core.String
-              : null,
+              json_['trainingAnnotationsCount'] as core.String?,
+          trainingDataItemsCount:
+              json_['trainingDataItemsCount'] as core.String?,
           validationAnnotationsCount:
-              json_.containsKey('validationAnnotationsCount')
-                  ? json_['validationAnnotationsCount'] as core.String
-                  : null,
+              json_['validationAnnotationsCount'] as core.String?,
           validationDataItemsCount:
-              json_.containsKey('validationDataItemsCount')
-                  ? json_['validationDataItemsCount'] as core.String
-                  : null,
+              json_['validationDataItemsCount'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -42145,19 +41186,11 @@ class GoogleCloudAiplatformV1ModelDeploymentMonitoringBigQueryTable {
   GoogleCloudAiplatformV1ModelDeploymentMonitoringBigQueryTable.fromJson(
       core.Map json_)
       : this(
-          bigqueryTablePath: json_.containsKey('bigqueryTablePath')
-              ? json_['bigqueryTablePath'] as core.String
-              : null,
-          logSource: json_.containsKey('logSource')
-              ? json_['logSource'] as core.String
-              : null,
-          logType: json_.containsKey('logType')
-              ? json_['logType'] as core.String
-              : null,
+          bigqueryTablePath: json_['bigqueryTablePath'] as core.String?,
+          logSource: json_['logSource'] as core.String?,
+          logType: json_['logType'] as core.String?,
           requestResponseLoggingSchemaVersion:
-              json_.containsKey('requestResponseLoggingSchemaVersion')
-                  ? json_['requestResponseLoggingSchemaVersion'] as core.String
-                  : null,
+              json_['requestResponseLoggingSchemaVersion'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -42387,9 +41420,7 @@ class GoogleCloudAiplatformV1ModelDeploymentMonitoringJob {
   GoogleCloudAiplatformV1ModelDeploymentMonitoringJob.fromJson(core.Map json_)
       : this(
           analysisInstanceSchemaUri:
-              json_.containsKey('analysisInstanceSchemaUri')
-                  ? json_['analysisInstanceSchemaUri'] as core.String
-                  : null,
+              json_['analysisInstanceSchemaUri'] as core.String?,
           bigqueryTables: json_.containsKey('bigqueryTables')
               ? (json_['bigqueryTables'] as core.List)
                   .map((value) =>
@@ -42398,24 +41429,16 @@ class GoogleCloudAiplatformV1ModelDeploymentMonitoringJob {
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
           enableMonitoringPipelineLogs:
-              json_.containsKey('enableMonitoringPipelineLogs')
-                  ? json_['enableMonitoringPipelineLogs'] as core.bool
-                  : null,
+              json_['enableMonitoringPipelineLogs'] as core.bool?,
           encryptionSpec: json_.containsKey('encryptionSpec')
               ? GoogleCloudAiplatformV1EncryptionSpec.fromJson(
                   json_['encryptionSpec']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          endpoint: json_.containsKey('endpoint')
-              ? json_['endpoint'] as core.String
-              : null,
+          endpoint: json_['endpoint'] as core.String?,
           error: json_.containsKey('error')
               ? GoogleRpcStatus.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
@@ -42434,9 +41457,7 @@ class GoogleCloudAiplatformV1ModelDeploymentMonitoringJob {
                   .fromJson(json_['latestMonitoringPipelineMetadata']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          logTtl: json_.containsKey('logTtl')
-              ? json_['logTtl'] as core.String
-              : null,
+          logTtl: json_['logTtl'] as core.String?,
           loggingSamplingStrategy: json_.containsKey('loggingSamplingStrategy')
               ? GoogleCloudAiplatformV1SamplingStrategy.fromJson(
                   json_['loggingSamplingStrategy']
@@ -42464,31 +41485,20 @@ class GoogleCloudAiplatformV1ModelDeploymentMonitoringJob {
                       json_['modelMonitoringAlertConfig']
                           as core.Map<core.String, core.dynamic>)
                   : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          nextScheduleTime: json_.containsKey('nextScheduleTime')
-              ? json_['nextScheduleTime'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          nextScheduleTime: json_['nextScheduleTime'] as core.String?,
           predictInstanceSchemaUri:
-              json_.containsKey('predictInstanceSchemaUri')
-                  ? json_['predictInstanceSchemaUri'] as core.String
-                  : null,
-          samplePredictInstance: json_.containsKey('samplePredictInstance')
-              ? json_['samplePredictInstance']
-              : null,
-          scheduleState: json_.containsKey('scheduleState')
-              ? json_['scheduleState'] as core.String
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
+              json_['predictInstanceSchemaUri'] as core.String?,
+          samplePredictInstance: json_['samplePredictInstance'],
+          scheduleState: json_['scheduleState'] as core.String?,
+          state: json_['state'] as core.String?,
           statsAnomaliesBaseDirectory:
               json_.containsKey('statsAnomaliesBaseDirectory')
                   ? GoogleCloudAiplatformV1GcsDestination.fromJson(
                       json_['statsAnomaliesBaseDirectory']
                           as core.Map<core.String, core.dynamic>)
                   : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -42547,9 +41557,7 @@ class GoogleCloudAiplatformV1ModelDeploymentMonitoringJobLatestMonitoringPipelin
   GoogleCloudAiplatformV1ModelDeploymentMonitoringJobLatestMonitoringPipelineMetadata.fromJson(
       core.Map json_)
       : this(
-          runTime: json_.containsKey('runTime')
-              ? json_['runTime'] as core.String
-              : null,
+          runTime: json_['runTime'] as core.String?,
           status: json_.containsKey('status')
               ? GoogleRpcStatus.fromJson(
                   json_['status'] as core.Map<core.String, core.dynamic>)
@@ -42580,9 +41588,7 @@ class GoogleCloudAiplatformV1ModelDeploymentMonitoringObjectiveConfig {
   GoogleCloudAiplatformV1ModelDeploymentMonitoringObjectiveConfig.fromJson(
       core.Map json_)
       : this(
-          deployedModelId: json_.containsKey('deployedModelId')
-              ? json_['deployedModelId'] as core.String
-              : null,
+          deployedModelId: json_['deployedModelId'] as core.String?,
           objectiveConfig: json_.containsKey('objectiveConfig')
               ? GoogleCloudAiplatformV1ModelMonitoringObjectiveConfig.fromJson(
                   json_['objectiveConfig']
@@ -42626,12 +41632,8 @@ class GoogleCloudAiplatformV1ModelDeploymentMonitoringScheduleConfig {
   GoogleCloudAiplatformV1ModelDeploymentMonitoringScheduleConfig.fromJson(
       core.Map json_)
       : this(
-          monitorInterval: json_.containsKey('monitorInterval')
-              ? json_['monitorInterval'] as core.String
-              : null,
-          monitorWindow: json_.containsKey('monitorWindow')
-              ? json_['monitorWindow'] as core.String
-              : null,
+          monitorInterval: json_['monitorInterval'] as core.String?,
+          monitorWindow: json_['monitorWindow'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -42738,18 +41740,10 @@ class GoogleCloudAiplatformV1ModelEvaluation {
 
   GoogleCloudAiplatformV1ModelEvaluation.fromJson(core.Map json_)
       : this(
-          annotationSchemaUri: json_.containsKey('annotationSchemaUri')
-              ? json_['annotationSchemaUri'] as core.String
-              : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          dataItemSchemaUri: json_.containsKey('dataItemSchemaUri')
-              ? json_['dataItemSchemaUri'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+          annotationSchemaUri: json_['annotationSchemaUri'] as core.String?,
+          createTime: json_['createTime'] as core.String?,
+          dataItemSchemaUri: json_['dataItemSchemaUri'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
           explanationSpecs: json_.containsKey('explanationSpecs')
               ? (json_['explanationSpecs'] as core.List)
                   .map((value) =>
@@ -42758,17 +41752,15 @@ class GoogleCloudAiplatformV1ModelEvaluation {
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          metadata: json_.containsKey('metadata') ? json_['metadata'] : null,
-          metrics: json_.containsKey('metrics') ? json_['metrics'] : null,
-          metricsSchemaUri: json_.containsKey('metricsSchemaUri')
-              ? json_['metricsSchemaUri'] as core.String
-              : null,
+          metadata: json_['metadata'],
+          metrics: json_['metrics'],
+          metricsSchemaUri: json_['metricsSchemaUri'] as core.String?,
           modelExplanation: json_.containsKey('modelExplanation')
               ? GoogleCloudAiplatformV1ModelExplanation.fromJson(
                   json_['modelExplanation']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           sliceDimensions: json_.containsKey('sliceDimensions')
               ? (json_['sliceDimensions'] as core.List)
                   .map((value) => value as core.String)
@@ -42815,9 +41807,7 @@ class GoogleCloudAiplatformV1ModelEvaluationModelEvaluationExplanationSpec {
                   json_['explanationSpec']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          explanationType: json_.containsKey('explanationType')
-              ? json_['explanationType'] as core.String
-              : null,
+          explanationType: json_['explanationType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -42883,19 +41873,15 @@ class GoogleCloudAiplatformV1ModelEvaluationSlice {
 
   GoogleCloudAiplatformV1ModelEvaluationSlice.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          metrics: json_.containsKey('metrics') ? json_['metrics'] : null,
-          metricsSchemaUri: json_.containsKey('metricsSchemaUri')
-              ? json_['metricsSchemaUri'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          metrics: json_['metrics'],
+          metricsSchemaUri: json_['metricsSchemaUri'] as core.String?,
           modelExplanation: json_.containsKey('modelExplanation')
               ? GoogleCloudAiplatformV1ModelExplanation.fromJson(
                   json_['modelExplanation']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           slice: json_.containsKey('slice')
               ? GoogleCloudAiplatformV1ModelEvaluationSliceSlice.fromJson(
                   json_['slice'] as core.Map<core.String, core.dynamic>)
@@ -42942,16 +41928,13 @@ class GoogleCloudAiplatformV1ModelEvaluationSliceSlice {
 
   GoogleCloudAiplatformV1ModelEvaluationSliceSlice.fromJson(core.Map json_)
       : this(
-          dimension: json_.containsKey('dimension')
-              ? json_['dimension'] as core.String
-              : null,
+          dimension: json_['dimension'] as core.String?,
           sliceSpec: json_.containsKey('sliceSpec')
               ? GoogleCloudAiplatformV1ModelEvaluationSliceSliceSliceSpec
                   .fromJson(
                       json_['sliceSpec'] as core.Map<core.String, core.dynamic>)
               : null,
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
+          value: json_['value'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -43013,12 +41996,8 @@ class GoogleCloudAiplatformV1ModelEvaluationSliceSliceSliceSpecRange {
   GoogleCloudAiplatformV1ModelEvaluationSliceSliceSliceSpecRange.fromJson(
       core.Map json_)
       : this(
-          high: json_.containsKey('high')
-              ? (json_['high'] as core.num).toDouble()
-              : null,
-          low: json_.containsKey('low')
-              ? (json_['low'] as core.num).toDouble()
-              : null,
+          high: (json_['high'] as core.num?)?.toDouble(),
+          low: (json_['low'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -43077,9 +42056,7 @@ class GoogleCloudAiplatformV1ModelEvaluationSliceSliceSliceSpecSliceConfig {
   GoogleCloudAiplatformV1ModelEvaluationSliceSliceSliceSpecSliceConfig.fromJson(
       core.Map json_)
       : this(
-          allValues: json_.containsKey('allValues')
-              ? json_['allValues'] as core.bool
-              : null,
+          allValues: json_['allValues'] as core.bool?,
           range: json_.containsKey('range')
               ? GoogleCloudAiplatformV1ModelEvaluationSliceSliceSliceSpecRange
                   .fromJson(
@@ -43115,12 +42092,8 @@ class GoogleCloudAiplatformV1ModelEvaluationSliceSliceSliceSpecValue {
   GoogleCloudAiplatformV1ModelEvaluationSliceSliceSliceSpecValue.fromJson(
       core.Map json_)
       : this(
-          floatValue: json_.containsKey('floatValue')
-              ? (json_['floatValue'] as core.num).toDouble()
-              : null,
-          stringValue: json_.containsKey('stringValue')
-              ? json_['stringValue'] as core.String
-              : null,
+          floatValue: (json_['floatValue'] as core.num?)?.toDouble(),
+          stringValue: json_['stringValue'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -43202,7 +42175,7 @@ class GoogleCloudAiplatformV1ModelExportFormat {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          id: json_['id'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -43226,9 +42199,7 @@ class GoogleCloudAiplatformV1ModelGardenSource {
 
   GoogleCloudAiplatformV1ModelGardenSource.fromJson(core.Map json_)
       : this(
-          publicModelName: json_.containsKey('publicModelName')
-              ? json_['publicModelName'] as core.String
-              : null,
+          publicModelName: json_['publicModelName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -43268,9 +42239,7 @@ class GoogleCloudAiplatformV1ModelMonitoringAlertConfig {
                   .fromJson(json_['emailAlertConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          enableLogging: json_.containsKey('enableLogging')
-              ? json_['enableLogging'] as core.bool
-              : null,
+          enableLogging: json_['enableLogging'] as core.bool?,
           notificationChannels: json_.containsKey('notificationChannels')
               ? (json_['notificationChannels'] as core.List)
                   .map((value) => value as core.String)
@@ -43399,9 +42368,8 @@ class GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigExplanationConfig {
   GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigExplanationConfig.fromJson(
       core.Map json_)
       : this(
-          enableFeatureAttributes: json_.containsKey('enableFeatureAttributes')
-              ? json_['enableFeatureAttributes'] as core.bool
-              : null,
+          enableFeatureAttributes:
+              json_['enableFeatureAttributes'] as core.bool?,
           explanationBaseline: json_.containsKey('explanationBaseline')
               ? GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaseline
                   .fromJson(json_['explanationBaseline']
@@ -43450,9 +42418,7 @@ class GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigExplanationConfigExpl
               ? GoogleCloudAiplatformV1GcsDestination.fromJson(
                   json_['gcs'] as core.Map<core.String, core.dynamic>)
               : null,
-          predictionFormat: json_.containsKey('predictionFormat')
-              ? json_['predictionFormat'] as core.String
-              : null,
+          predictionFormat: json_['predictionFormat'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -43581,12 +42547,8 @@ class GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingDataset {
                   json_['bigquerySource']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          dataFormat: json_.containsKey('dataFormat')
-              ? json_['dataFormat'] as core.String
-              : null,
-          dataset: json_.containsKey('dataset')
-              ? json_['dataset'] as core.String
-              : null,
+          dataFormat: json_['dataFormat'] as core.String?,
+          dataset: json_['dataset'] as core.String?,
           gcsSource: json_.containsKey('gcsSource')
               ? GoogleCloudAiplatformV1GcsSource.fromJson(
                   json_['gcsSource'] as core.Map<core.String, core.dynamic>)
@@ -43596,9 +42558,7 @@ class GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingDataset {
                   json_['loggingSamplingStrategy']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          targetField: json_.containsKey('targetField')
-              ? json_['targetField'] as core.String
-              : null,
+          targetField: json_['targetField'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -43719,12 +42679,8 @@ class GoogleCloudAiplatformV1ModelMonitoringStatsAnomalies {
 
   GoogleCloudAiplatformV1ModelMonitoringStatsAnomalies.fromJson(core.Map json_)
       : this(
-          anomalyCount: json_.containsKey('anomalyCount')
-              ? json_['anomalyCount'] as core.int
-              : null,
-          deployedModelId: json_.containsKey('deployedModelId')
-              ? json_['deployedModelId'] as core.String
-              : null,
+          anomalyCount: json_['anomalyCount'] as core.int?,
+          deployedModelId: json_['deployedModelId'] as core.String?,
           featureStats: json_.containsKey('featureStats')
               ? (json_['featureStats'] as core.List)
                   .map((value) =>
@@ -43733,9 +42689,7 @@ class GoogleCloudAiplatformV1ModelMonitoringStatsAnomalies {
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          objective: json_.containsKey('objective')
-              ? json_['objective'] as core.String
-              : null,
+          objective: json_['objective'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -43771,9 +42725,7 @@ class GoogleCloudAiplatformV1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAn
   GoogleCloudAiplatformV1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomalies.fromJson(
       core.Map json_)
       : this(
-          featureDisplayName: json_.containsKey('featureDisplayName')
-              ? json_['featureDisplayName'] as core.String
-              : null,
+          featureDisplayName: json_['featureDisplayName'] as core.String?,
           predictionStats: json_.containsKey('predictionStats')
               ? (json_['predictionStats'] as core.List)
                   .map((value) =>
@@ -43817,8 +42769,7 @@ class GoogleCloudAiplatformV1ModelOriginalModelInfo {
 
   GoogleCloudAiplatformV1ModelOriginalModelInfo.fromJson(core.Map json_)
       : this(
-          model:
-              json_.containsKey('model') ? json_['model'] as core.String : null,
+          model: json_['model'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -43860,9 +42811,7 @@ class GoogleCloudAiplatformV1MutateDeployedModelRequest {
               ? GoogleCloudAiplatformV1DeployedModel.fromJson(
                   json_['deployedModel'] as core.Map<core.String, core.dynamic>)
               : null,
-          updateMask: json_.containsKey('updateMask')
-              ? json_['updateMask'] as core.String
-              : null,
+          updateMask: json_['updateMask'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -43989,24 +42938,16 @@ class GoogleCloudAiplatformV1NasJob {
 
   GoogleCloudAiplatformV1NasJob.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
           enableRestrictedImageTraining:
-              json_.containsKey('enableRestrictedImageTraining')
-                  ? json_['enableRestrictedImageTraining'] as core.bool
-                  : null,
+              json_['enableRestrictedImageTraining'] as core.bool?,
           encryptionSpec: json_.containsKey('encryptionSpec')
               ? GoogleCloudAiplatformV1EncryptionSpec.fromJson(
                   json_['encryptionSpec']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          endTime: json_.containsKey('endTime')
-              ? json_['endTime'] as core.String
-              : null,
+          endTime: json_['endTime'] as core.String?,
           error: json_.containsKey('error')
               ? GoogleRpcStatus.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
@@ -44019,7 +42960,7 @@ class GoogleCloudAiplatformV1NasJob {
                   ),
                 )
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           nasJobOutput: json_.containsKey('nasJobOutput')
               ? GoogleCloudAiplatformV1NasJobOutput.fromJson(
                   json_['nasJobOutput'] as core.Map<core.String, core.dynamic>)
@@ -44028,14 +42969,9 @@ class GoogleCloudAiplatformV1NasJob {
               ? GoogleCloudAiplatformV1NasJobSpec.fromJson(
                   json_['nasJobSpec'] as core.Map<core.String, core.dynamic>)
               : null,
-          startTime: json_.containsKey('startTime')
-              ? json_['startTime'] as core.String
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          startTime: json_['startTime'] as core.String?,
+          state: json_['state'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -44151,12 +43087,8 @@ class GoogleCloudAiplatformV1NasJobSpec {
                   .fromJson(json_['multiTrialAlgorithmSpec']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          resumeNasJobId: json_.containsKey('resumeNasJobId')
-              ? json_['resumeNasJobId'] as core.String
-              : null,
-          searchSpaceSpec: json_.containsKey('searchSpaceSpec')
-              ? json_['searchSpaceSpec'] as core.String
-              : null,
+          resumeNasJobId: json_['resumeNasJobId'] as core.String?,
+          searchSpaceSpec: json_['searchSpaceSpec'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -44214,9 +43146,7 @@ class GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpec {
                   .fromJson(
                       json_['metric'] as core.Map<core.String, core.dynamic>)
               : null,
-          multiTrialAlgorithm: json_.containsKey('multiTrialAlgorithm')
-              ? json_['multiTrialAlgorithm'] as core.String
-              : null,
+          multiTrialAlgorithm: json_['multiTrialAlgorithm'] as core.String?,
           searchTrialSpec: json_.containsKey('searchTrialSpec')
               ? GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecSearchTrialSpec
                   .fromJson(json_['searchTrialSpec']
@@ -44264,10 +43194,8 @@ class GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecMetricSpec {
   GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecMetricSpec.fromJson(
       core.Map json_)
       : this(
-          goal: json_.containsKey('goal') ? json_['goal'] as core.String : null,
-          metricId: json_.containsKey('metricId')
-              ? json_['metricId'] as core.String
-              : null,
+          goal: json_['goal'] as core.String?,
+          metricId: json_['metricId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -44312,15 +43240,9 @@ class GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecSearchTrialSpec {
   GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecSearchTrialSpec.fromJson(
       core.Map json_)
       : this(
-          maxFailedTrialCount: json_.containsKey('maxFailedTrialCount')
-              ? json_['maxFailedTrialCount'] as core.int
-              : null,
-          maxParallelTrialCount: json_.containsKey('maxParallelTrialCount')
-              ? json_['maxParallelTrialCount'] as core.int
-              : null,
-          maxTrialCount: json_.containsKey('maxTrialCount')
-              ? json_['maxTrialCount'] as core.int
-              : null,
+          maxFailedTrialCount: json_['maxFailedTrialCount'] as core.int?,
+          maxParallelTrialCount: json_['maxParallelTrialCount'] as core.int?,
+          maxTrialCount: json_['maxTrialCount'] as core.int?,
           searchTrialJobSpec: json_.containsKey('searchTrialJobSpec')
               ? GoogleCloudAiplatformV1CustomJobSpec.fromJson(
                   json_['searchTrialJobSpec']
@@ -44370,12 +43292,8 @@ class GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecTrainTrialSpec {
   GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecTrainTrialSpec.fromJson(
       core.Map json_)
       : this(
-          frequency: json_.containsKey('frequency')
-              ? json_['frequency'] as core.int
-              : null,
-          maxParallelTrialCount: json_.containsKey('maxParallelTrialCount')
-              ? json_['maxParallelTrialCount'] as core.int
-              : null,
+          frequency: json_['frequency'] as core.int?,
+          maxParallelTrialCount: json_['maxParallelTrialCount'] as core.int?,
           trainTrialJobSpec: json_.containsKey('trainTrialJobSpec')
               ? GoogleCloudAiplatformV1CustomJobSpec.fromJson(
                   json_['trainTrialJobSpec']
@@ -44439,20 +43357,15 @@ class GoogleCloudAiplatformV1NasTrial {
 
   GoogleCloudAiplatformV1NasTrial.fromJson(core.Map json_)
       : this(
-          endTime: json_.containsKey('endTime')
-              ? json_['endTime'] as core.String
-              : null,
+          endTime: json_['endTime'] as core.String?,
           finalMeasurement: json_.containsKey('finalMeasurement')
               ? GoogleCloudAiplatformV1Measurement.fromJson(
                   json_['finalMeasurement']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          startTime: json_.containsKey('startTime')
-              ? json_['startTime'] as core.String
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
+          id: json_['id'] as core.String?,
+          startTime: json_['startTime'] as core.String?,
+          state: json_['state'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -44494,10 +43407,8 @@ class GoogleCloudAiplatformV1NasTrialDetail {
 
   GoogleCloudAiplatformV1NasTrialDetail.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          parameters: json_.containsKey('parameters')
-              ? json_['parameters'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          parameters: json_['parameters'] as core.String?,
           searchTrial: json_.containsKey('searchTrial')
               ? GoogleCloudAiplatformV1NasTrial.fromJson(
                   json_['searchTrial'] as core.Map<core.String, core.dynamic>)
@@ -44571,20 +43482,14 @@ class GoogleCloudAiplatformV1NearestNeighborQuery {
               ? GoogleCloudAiplatformV1NearestNeighborQueryEmbedding.fromJson(
                   json_['embedding'] as core.Map<core.String, core.dynamic>)
               : null,
-          entityId: json_.containsKey('entityId')
-              ? json_['entityId'] as core.String
-              : null,
-          neighborCount: json_.containsKey('neighborCount')
-              ? json_['neighborCount'] as core.int
-              : null,
+          entityId: json_['entityId'] as core.String?,
+          neighborCount: json_['neighborCount'] as core.int?,
           parameters: json_.containsKey('parameters')
               ? GoogleCloudAiplatformV1NearestNeighborQueryParameters.fromJson(
                   json_['parameters'] as core.Map<core.String, core.dynamic>)
               : null,
           perCrowdingAttributeNeighborCount:
-              json_.containsKey('perCrowdingAttributeNeighborCount')
-                  ? json_['perCrowdingAttributeNeighborCount'] as core.int
-                  : null,
+              json_['perCrowdingAttributeNeighborCount'] as core.int?,
           stringFilters: json_.containsKey('stringFilters')
               ? (json_['stringFilters'] as core.List)
                   .map((value) =>
@@ -44658,12 +43563,9 @@ class GoogleCloudAiplatformV1NearestNeighborQueryParameters {
   GoogleCloudAiplatformV1NearestNeighborQueryParameters.fromJson(core.Map json_)
       : this(
           approximateNeighborCandidates:
-              json_.containsKey('approximateNeighborCandidates')
-                  ? json_['approximateNeighborCandidates'] as core.int
-                  : null,
-          leafNodesSearchFraction: json_.containsKey('leafNodesSearchFraction')
-              ? (json_['leafNodesSearchFraction'] as core.num).toDouble()
-              : null,
+              json_['approximateNeighborCandidates'] as core.int?,
+          leafNodesSearchFraction:
+              (json_['leafNodesSearchFraction'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -44717,7 +43619,7 @@ class GoogleCloudAiplatformV1NearestNeighborQueryStringFilter {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -44775,12 +43677,8 @@ class GoogleCloudAiplatformV1NearestNeighborsNeighbor {
 
   GoogleCloudAiplatformV1NearestNeighborsNeighbor.fromJson(core.Map json_)
       : this(
-          distance: json_.containsKey('distance')
-              ? (json_['distance'] as core.num).toDouble()
-              : null,
-          entityId: json_.containsKey('entityId')
-              ? json_['entityId'] as core.String
-              : null,
+          distance: (json_['distance'] as core.num?)?.toDouble(),
+          entityId: json_['entityId'] as core.String?,
           entityKeyValues: json_.containsKey('entityKeyValues')
               ? GoogleCloudAiplatformV1FetchFeatureValuesResponse.fromJson(
                   json_['entityKeyValues']
@@ -44814,12 +43712,9 @@ class GoogleCloudAiplatformV1Neighbor {
 
   GoogleCloudAiplatformV1Neighbor.fromJson(core.Map json_)
       : this(
-          neighborDistance: json_.containsKey('neighborDistance')
-              ? (json_['neighborDistance'] as core.num).toDouble()
-              : null,
-          neighborId: json_.containsKey('neighborId')
-              ? json_['neighborId'] as core.String
-              : null,
+          neighborDistance:
+              (json_['neighborDistance'] as core.num?)?.toDouble(),
+          neighborId: json_['neighborId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -44853,15 +43748,9 @@ class GoogleCloudAiplatformV1NetworkSpec {
 
   GoogleCloudAiplatformV1NetworkSpec.fromJson(core.Map json_)
       : this(
-          enableInternetAccess: json_.containsKey('enableInternetAccess')
-              ? json_['enableInternetAccess'] as core.bool
-              : null,
-          network: json_.containsKey('network')
-              ? json_['network'] as core.String
-              : null,
-          subnetwork: json_.containsKey('subnetwork')
-              ? json_['subnetwork'] as core.String
-              : null,
+          enableInternetAccess: json_['enableInternetAccess'] as core.bool?,
+          network: json_['network'] as core.String?,
+          subnetwork: json_['subnetwork'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -44902,13 +43791,9 @@ class GoogleCloudAiplatformV1NfsMount {
 
   GoogleCloudAiplatformV1NfsMount.fromJson(core.Map json_)
       : this(
-          mountPoint: json_.containsKey('mountPoint')
-              ? json_['mountPoint'] as core.String
-              : null,
-          path: json_.containsKey('path') ? json_['path'] as core.String : null,
-          server: json_.containsKey('server')
-              ? json_['server'] as core.String
-              : null,
+          mountPoint: json_['mountPoint'] as core.String?,
+          path: json_['path'] as core.String?,
+          server: json_['server'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -44946,12 +43831,8 @@ class GoogleCloudAiplatformV1NotebookEucConfig {
 
   GoogleCloudAiplatformV1NotebookEucConfig.fromJson(core.Map json_)
       : this(
-          bypassActasCheck: json_.containsKey('bypassActasCheck')
-              ? json_['bypassActasCheck'] as core.bool
-              : null,
-          eucDisabled: json_.containsKey('eucDisabled')
-              ? json_['eucDisabled'] as core.bool
-              : null,
+          bypassActasCheck: json_['bypassActasCheck'] as core.bool?,
+          eucDisabled: json_['eucDisabled'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -44981,12 +43862,8 @@ class GoogleCloudAiplatformV1NotebookIdleShutdownConfig {
 
   GoogleCloudAiplatformV1NotebookIdleShutdownConfig.fromJson(core.Map json_)
       : this(
-          idleShutdownDisabled: json_.containsKey('idleShutdownDisabled')
-              ? json_['idleShutdownDisabled'] as core.bool
-              : null,
-          idleTimeout: json_.containsKey('idleTimeout')
-              ? json_['idleTimeout'] as core.String
-              : null,
+          idleShutdownDisabled: json_['idleShutdownDisabled'] as core.bool?,
+          idleTimeout: json_['idleTimeout'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -45173,34 +44050,22 @@ class GoogleCloudAiplatformV1NotebookRuntime {
 
   GoogleCloudAiplatformV1NotebookRuntime.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          description: json_['description'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
           encryptionSpec: json_.containsKey('encryptionSpec')
               ? GoogleCloudAiplatformV1EncryptionSpec.fromJson(
                   json_['encryptionSpec']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          expirationTime: json_.containsKey('expirationTime')
-              ? json_['expirationTime'] as core.String
-              : null,
-          healthState: json_.containsKey('healthState')
-              ? json_['healthState'] as core.String
-              : null,
+          expirationTime: json_['expirationTime'] as core.String?,
+          healthState: json_['healthState'] as core.String?,
           idleShutdownConfig: json_.containsKey('idleShutdownConfig')
               ? GoogleCloudAiplatformV1NotebookIdleShutdownConfig.fromJson(
                   json_['idleShutdownConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          isUpgradable: json_.containsKey('isUpgradable')
-              ? json_['isUpgradable'] as core.bool
-              : null,
+          isUpgradable: json_['isUpgradable'] as core.bool?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -45209,7 +44074,7 @@ class GoogleCloudAiplatformV1NotebookRuntime {
                   ),
                 )
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           networkTags: json_.containsKey('networkTags')
               ? (json_['networkTags'] as core.List)
                   .map((value) => value as core.String)
@@ -45221,33 +44086,15 @@ class GoogleCloudAiplatformV1NotebookRuntime {
                       json_['notebookRuntimeTemplateRef']
                           as core.Map<core.String, core.dynamic>)
                   : null,
-          notebookRuntimeType: json_.containsKey('notebookRuntimeType')
-              ? json_['notebookRuntimeType'] as core.String
-              : null,
-          proxyUri: json_.containsKey('proxyUri')
-              ? json_['proxyUri'] as core.String
-              : null,
-          runtimeState: json_.containsKey('runtimeState')
-              ? json_['runtimeState'] as core.String
-              : null,
-          runtimeUser: json_.containsKey('runtimeUser')
-              ? json_['runtimeUser'] as core.String
-              : null,
-          satisfiesPzi: json_.containsKey('satisfiesPzi')
-              ? json_['satisfiesPzi'] as core.bool
-              : null,
-          satisfiesPzs: json_.containsKey('satisfiesPzs')
-              ? json_['satisfiesPzs'] as core.bool
-              : null,
-          serviceAccount: json_.containsKey('serviceAccount')
-              ? json_['serviceAccount'] as core.String
-              : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
-          version: json_.containsKey('version')
-              ? json_['version'] as core.String
-              : null,
+          notebookRuntimeType: json_['notebookRuntimeType'] as core.String?,
+          proxyUri: json_['proxyUri'] as core.String?,
+          runtimeState: json_['runtimeState'] as core.String?,
+          runtimeUser: json_['runtimeUser'] as core.String?,
+          satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
+          satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
+          serviceAccount: json_['serviceAccount'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
+          version: json_['version'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -45407,26 +44254,20 @@ class GoogleCloudAiplatformV1NotebookRuntimeTemplate {
 
   GoogleCloudAiplatformV1NotebookRuntimeTemplate.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
           dataPersistentDiskSpec: json_.containsKey('dataPersistentDiskSpec')
               ? GoogleCloudAiplatformV1PersistentDiskSpec.fromJson(
                   json_['dataPersistentDiskSpec']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+          description: json_['description'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
           encryptionSpec: json_.containsKey('encryptionSpec')
               ? GoogleCloudAiplatformV1EncryptionSpec.fromJson(
                   json_['encryptionSpec']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          etag: json_['etag'] as core.String?,
           eucConfig: json_.containsKey('eucConfig')
               ? GoogleCloudAiplatformV1NotebookEucConfig.fromJson(
                   json_['eucConfig'] as core.Map<core.String, core.dynamic>)
@@ -45436,9 +44277,7 @@ class GoogleCloudAiplatformV1NotebookRuntimeTemplate {
                   json_['idleShutdownConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          isDefault: json_.containsKey('isDefault')
-              ? json_['isDefault'] as core.bool
-              : null,
+          isDefault: json_['isDefault'] as core.bool?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -45451,7 +44290,7 @@ class GoogleCloudAiplatformV1NotebookRuntimeTemplate {
               ? GoogleCloudAiplatformV1MachineSpec.fromJson(
                   json_['machineSpec'] as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           networkSpec: json_.containsKey('networkSpec')
               ? GoogleCloudAiplatformV1NetworkSpec.fromJson(
                   json_['networkSpec'] as core.Map<core.String, core.dynamic>)
@@ -45461,20 +44300,14 @@ class GoogleCloudAiplatformV1NotebookRuntimeTemplate {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          notebookRuntimeType: json_.containsKey('notebookRuntimeType')
-              ? json_['notebookRuntimeType'] as core.String
-              : null,
-          serviceAccount: json_.containsKey('serviceAccount')
-              ? json_['serviceAccount'] as core.String
-              : null,
+          notebookRuntimeType: json_['notebookRuntimeType'] as core.String?,
+          serviceAccount: json_['serviceAccount'] as core.String?,
           shieldedVmConfig: json_.containsKey('shieldedVmConfig')
               ? GoogleCloudAiplatformV1ShieldedVmConfig.fromJson(
                   json_['shieldedVmConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -45515,9 +44348,8 @@ class GoogleCloudAiplatformV1NotebookRuntimeTemplateRef {
 
   GoogleCloudAiplatformV1NotebookRuntimeTemplateRef.fromJson(core.Map json_)
       : this(
-          notebookRuntimeTemplate: json_.containsKey('notebookRuntimeTemplate')
-              ? json_['notebookRuntimeTemplate'] as core.String
-              : null,
+          notebookRuntimeTemplate:
+              json_['notebookRuntimeTemplate'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -45600,7 +44432,7 @@ class GoogleCloudAiplatformV1Part {
               ? GoogleCloudAiplatformV1Blob.fromJson(
                   json_['inlineData'] as core.Map<core.String, core.dynamic>)
               : null,
-          text: json_.containsKey('text') ? json_['text'] as core.String : null,
+          text: json_['text'] as core.String?,
           videoMetadata: json_.containsKey('videoMetadata')
               ? GoogleCloudAiplatformV1VideoMetadata.fromJson(
                   json_['videoMetadata'] as core.Map<core.String, core.dynamic>)
@@ -45643,12 +44475,8 @@ class GoogleCloudAiplatformV1PersistentDiskSpec {
 
   GoogleCloudAiplatformV1PersistentDiskSpec.fromJson(core.Map json_)
       : this(
-          diskSizeGb: json_.containsKey('diskSizeGb')
-              ? json_['diskSizeGb'] as core.String
-              : null,
-          diskType: json_.containsKey('diskType')
-              ? json_['diskType'] as core.String
-              : null,
+          diskSizeGb: json_['diskSizeGb'] as core.String?,
+          diskType: json_['diskType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -45797,12 +44625,8 @@ class GoogleCloudAiplatformV1PersistentResource {
 
   GoogleCloudAiplatformV1PersistentResource.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
           encryptionSpec: json_.containsKey('encryptionSpec')
               ? GoogleCloudAiplatformV1EncryptionSpec.fromJson(
                   json_['encryptionSpec']
@@ -45820,10 +44644,8 @@ class GoogleCloudAiplatformV1PersistentResource {
                   ),
                 )
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          network: json_.containsKey('network')
-              ? json_['network'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          network: json_['network'] as core.String?,
           reservedIpRanges: json_.containsKey('reservedIpRanges')
               ? (json_['reservedIpRanges'] as core.List)
                   .map((value) => value as core.String)
@@ -45845,14 +44667,9 @@ class GoogleCloudAiplatformV1PersistentResource {
                   json_['resourceRuntimeSpec']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          startTime: json_.containsKey('startTime')
-              ? json_['startTime'] as core.String
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          startTime: json_['startTime'] as core.String?,
+          state: json_['state'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -46043,20 +44860,14 @@ class GoogleCloudAiplatformV1PipelineJob {
 
   GoogleCloudAiplatformV1PipelineJob.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
           encryptionSpec: json_.containsKey('encryptionSpec')
               ? GoogleCloudAiplatformV1EncryptionSpec.fromJson(
                   json_['encryptionSpec']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          endTime: json_.containsKey('endTime')
-              ? json_['endTime'] as core.String
-              : null,
+          endTime: json_['endTime'] as core.String?,
           error: json_.containsKey('error')
               ? GoogleRpcStatus.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
@@ -46073,10 +44884,8 @@ class GoogleCloudAiplatformV1PipelineJob {
                   ),
                 )
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          network: json_.containsKey('network')
-              ? json_['network'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          network: json_['network'] as core.String?,
           pipelineSpec: json_.containsKey('pipelineSpec')
               ? json_['pipelineSpec'] as core.Map<core.String, core.dynamic>
               : null,
@@ -46089,28 +44898,17 @@ class GoogleCloudAiplatformV1PipelineJob {
               ? GoogleCloudAiplatformV1PipelineJobRuntimeConfig.fromJson(
                   json_['runtimeConfig'] as core.Map<core.String, core.dynamic>)
               : null,
-          scheduleName: json_.containsKey('scheduleName')
-              ? json_['scheduleName'] as core.String
-              : null,
-          serviceAccount: json_.containsKey('serviceAccount')
-              ? json_['serviceAccount'] as core.String
-              : null,
-          startTime: json_.containsKey('startTime')
-              ? json_['startTime'] as core.String
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
+          scheduleName: json_['scheduleName'] as core.String?,
+          serviceAccount: json_['serviceAccount'] as core.String?,
+          startTime: json_['startTime'] as core.String?,
+          state: json_['state'] as core.String?,
           templateMetadata: json_.containsKey('templateMetadata')
               ? GoogleCloudAiplatformV1PipelineTemplateMetadata.fromJson(
                   json_['templateMetadata']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          templateUri: json_.containsKey('templateUri')
-              ? json_['templateUri'] as core.String
-              : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          templateUri: json_['templateUri'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -46262,12 +45060,8 @@ class GoogleCloudAiplatformV1PipelineJobRuntimeConfig {
 
   GoogleCloudAiplatformV1PipelineJobRuntimeConfig.fromJson(core.Map json_)
       : this(
-          failurePolicy: json_.containsKey('failurePolicy')
-              ? json_['failurePolicy'] as core.String
-              : null,
-          gcsOutputDirectory: json_.containsKey('gcsOutputDirectory')
-              ? json_['gcsOutputDirectory'] as core.String
-              : null,
+          failurePolicy: json_['failurePolicy'] as core.String?,
+          gcsOutputDirectory: json_['gcsOutputDirectory'] as core.String?,
           inputArtifacts: json_.containsKey('inputArtifacts')
               ? (json_['inputArtifacts'] as core.Map<core.String, core.dynamic>)
                   .map(
@@ -46320,9 +45114,7 @@ class GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifact {
   GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifact.fromJson(
       core.Map json_)
       : this(
-          artifactId: json_.containsKey('artifactId')
-              ? json_['artifactId'] as core.String
-              : null,
+          artifactId: json_['artifactId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -46437,12 +45229,8 @@ class GoogleCloudAiplatformV1PipelineTaskDetail {
 
   GoogleCloudAiplatformV1PipelineTaskDetail.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          endTime: json_.containsKey('endTime')
-              ? json_['endTime'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          endTime: json_['endTime'] as core.String?,
           error: json_.containsKey('error')
               ? GoogleRpcStatus.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
@@ -46474,9 +45262,7 @@ class GoogleCloudAiplatformV1PipelineTaskDetail {
                   ),
                 )
               : null,
-          parentTaskId: json_.containsKey('parentTaskId')
-              ? json_['parentTaskId'] as core.String
-              : null,
+          parentTaskId: json_['parentTaskId'] as core.String?,
           pipelineTaskStatus: json_.containsKey('pipelineTaskStatus')
               ? (json_['pipelineTaskStatus'] as core.List)
                   .map((value) =>
@@ -46485,17 +45271,10 @@ class GoogleCloudAiplatformV1PipelineTaskDetail {
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          startTime: json_.containsKey('startTime')
-              ? json_['startTime'] as core.String
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
-          taskId: json_.containsKey('taskId')
-              ? json_['taskId'] as core.String
-              : null,
-          taskName: json_.containsKey('taskName')
-              ? json_['taskName'] as core.String
-              : null,
+          startTime: json_['startTime'] as core.String?,
+          state: json_['state'] as core.String?,
+          taskId: json_['taskId'] as core.String?,
+          taskName: json_['taskName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -46590,11 +45369,8 @@ class GoogleCloudAiplatformV1PipelineTaskDetailPipelineTaskStatus {
               ? GoogleRpcStatus.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
               : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          state: json_['state'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -46699,12 +45475,8 @@ class GoogleCloudAiplatformV1PipelineTaskExecutorDetailContainerDetail {
                       .map((value) => value as core.String)
                       .toList()
                   : null,
-          mainJob: json_.containsKey('mainJob')
-              ? json_['mainJob'] as core.String
-              : null,
-          preCachingCheckJob: json_.containsKey('preCachingCheckJob')
-              ? json_['preCachingCheckJob'] as core.String
-              : null,
+          mainJob: json_['mainJob'] as core.String?,
+          preCachingCheckJob: json_['preCachingCheckJob'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -46744,7 +45516,7 @@ class GoogleCloudAiplatformV1PipelineTaskExecutorDetailCustomJobDetail {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          job: json_.containsKey('job') ? json_['job'] as core.String : null,
+          job: json_['job'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -46770,9 +45542,7 @@ class GoogleCloudAiplatformV1PipelineTemplateMetadata {
 
   GoogleCloudAiplatformV1PipelineTemplateMetadata.fromJson(core.Map json_)
       : this(
-          version: json_.containsKey('version')
-              ? json_['version'] as core.String
-              : null,
+          version: json_['version'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -46793,9 +45563,7 @@ class GoogleCloudAiplatformV1Port {
 
   GoogleCloudAiplatformV1Port.fromJson(core.Map json_)
       : this(
-          containerPort: json_.containsKey('containerPort')
-              ? json_['containerPort'] as core.int
-              : null,
+          containerPort: json_['containerPort'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -46825,7 +45593,7 @@ class GoogleCloudAiplatformV1PredefinedSplit {
 
   GoogleCloudAiplatformV1PredefinedSplit.fromJson(core.Map json_)
       : this(
-          key: json_.containsKey('key') ? json_['key'] as core.String : null,
+          key: json_['key'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -46869,8 +45637,7 @@ class GoogleCloudAiplatformV1PredictRequest {
           instances: json_.containsKey('instances')
               ? json_['instances'] as core.List
               : null,
-          parameters:
-              json_.containsKey('parameters') ? json_['parameters'] : null,
+          parameters: json_['parameters'],
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -46910,12 +45677,8 @@ class GoogleCloudAiplatformV1PredictRequestResponseLoggingConfig {
                   json_['bigqueryDestination']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          enabled: json_.containsKey('enabled')
-              ? json_['enabled'] as core.bool
-              : null,
-          samplingRate: json_.containsKey('samplingRate')
-              ? (json_['samplingRate'] as core.num).toDouble()
-              : null,
+          enabled: json_['enabled'] as core.bool?,
+          samplingRate: (json_['samplingRate'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -46979,18 +45742,11 @@ class GoogleCloudAiplatformV1PredictResponse {
 
   GoogleCloudAiplatformV1PredictResponse.fromJson(core.Map json_)
       : this(
-          deployedModelId: json_.containsKey('deployedModelId')
-              ? json_['deployedModelId'] as core.String
-              : null,
-          metadata: json_.containsKey('metadata') ? json_['metadata'] : null,
-          model:
-              json_.containsKey('model') ? json_['model'] as core.String : null,
-          modelDisplayName: json_.containsKey('modelDisplayName')
-              ? json_['modelDisplayName'] as core.String
-              : null,
-          modelVersionId: json_.containsKey('modelVersionId')
-              ? json_['modelVersionId'] as core.String
-              : null,
+          deployedModelId: json_['deployedModelId'] as core.String?,
+          metadata: json_['metadata'],
+          model: json_['model'] as core.String?,
+          modelDisplayName: json_['modelDisplayName'] as core.String?,
+          modelVersionId: json_['modelVersionId'] as core.String?,
           predictions: json_.containsKey('predictions')
               ? json_['predictions'] as core.List
               : null,
@@ -47061,15 +45817,9 @@ class GoogleCloudAiplatformV1PredictSchemata {
 
   GoogleCloudAiplatformV1PredictSchemata.fromJson(core.Map json_)
       : this(
-          instanceSchemaUri: json_.containsKey('instanceSchemaUri')
-              ? json_['instanceSchemaUri'] as core.String
-              : null,
-          parametersSchemaUri: json_.containsKey('parametersSchemaUri')
-              ? json_['parametersSchemaUri'] as core.String
-              : null,
-          predictionSchemaUri: json_.containsKey('predictionSchemaUri')
-              ? json_['predictionSchemaUri'] as core.String
-              : null,
+          instanceSchemaUri: json_['instanceSchemaUri'] as core.String?,
+          parametersSchemaUri: json_['parametersSchemaUri'] as core.String?,
+          predictionSchemaUri: json_['predictionSchemaUri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -47114,11 +45864,8 @@ class GoogleCloudAiplatformV1Presets {
 
   GoogleCloudAiplatformV1Presets.fromJson(core.Map json_)
       : this(
-          modality: json_.containsKey('modality')
-              ? json_['modality'] as core.String
-              : null,
-          query:
-              json_.containsKey('query') ? json_['query'] as core.String : null,
+          modality: json_['modality'] as core.String?,
+          query: json_['query'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -47165,18 +45912,10 @@ class GoogleCloudAiplatformV1PrivateEndpoints {
 
   GoogleCloudAiplatformV1PrivateEndpoints.fromJson(core.Map json_)
       : this(
-          explainHttpUri: json_.containsKey('explainHttpUri')
-              ? json_['explainHttpUri'] as core.String
-              : null,
-          healthHttpUri: json_.containsKey('healthHttpUri')
-              ? json_['healthHttpUri'] as core.String
-              : null,
-          predictHttpUri: json_.containsKey('predictHttpUri')
-              ? json_['predictHttpUri'] as core.String
-              : null,
-          serviceAttachment: json_.containsKey('serviceAttachment')
-              ? json_['serviceAttachment'] as core.String
-              : null,
+          explainHttpUri: json_['explainHttpUri'] as core.String?,
+          healthHttpUri: json_['healthHttpUri'] as core.String?,
+          predictHttpUri: json_['predictHttpUri'] as core.String?,
+          serviceAttachment: json_['serviceAttachment'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -47206,9 +45945,7 @@ class GoogleCloudAiplatformV1PrivateServiceConnectConfig {
   GoogleCloudAiplatformV1PrivateServiceConnectConfig.fromJson(core.Map json_)
       : this(
           enablePrivateServiceConnect:
-              json_.containsKey('enablePrivateServiceConnect')
-                  ? json_['enablePrivateServiceConnect'] as core.bool
-                  : null,
+              json_['enablePrivateServiceConnect'] as core.bool?,
           projectAllowlist: json_.containsKey('projectAllowlist')
               ? (json_['projectAllowlist'] as core.List)
                   .map((value) => value as core.String)
@@ -47253,12 +45990,8 @@ class GoogleCloudAiplatformV1Probe {
               ? GoogleCloudAiplatformV1ProbeExecAction.fromJson(
                   json_['exec'] as core.Map<core.String, core.dynamic>)
               : null,
-          periodSeconds: json_.containsKey('periodSeconds')
-              ? json_['periodSeconds'] as core.int
-              : null,
-          timeoutSeconds: json_.containsKey('timeoutSeconds')
-              ? json_['timeoutSeconds'] as core.int
-              : null,
+          periodSeconds: json_['periodSeconds'] as core.int?,
+          timeoutSeconds: json_['timeoutSeconds'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -47291,15 +46024,9 @@ class GoogleCloudAiplatformV1PscAutomatedEndpoints {
 
   GoogleCloudAiplatformV1PscAutomatedEndpoints.fromJson(core.Map json_)
       : this(
-          matchAddress: json_.containsKey('matchAddress')
-              ? json_['matchAddress'] as core.String
-              : null,
-          network: json_.containsKey('network')
-              ? json_['network'] as core.String
-              : null,
-          projectId: json_.containsKey('projectId')
-              ? json_['projectId'] as core.String
-              : null,
+          matchAddress: json_['matchAddress'] as core.String?,
+          network: json_['network'] as core.String?,
+          projectId: json_['projectId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -47410,32 +46137,23 @@ class GoogleCloudAiplatformV1PublisherModel {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          launchStage: json_.containsKey('launchStage')
-              ? json_['launchStage'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          openSourceCategory: json_.containsKey('openSourceCategory')
-              ? json_['openSourceCategory'] as core.String
-              : null,
+          launchStage: json_['launchStage'] as core.String?,
+          name: json_['name'] as core.String?,
+          openSourceCategory: json_['openSourceCategory'] as core.String?,
           predictSchemata: json_.containsKey('predictSchemata')
               ? GoogleCloudAiplatformV1PredictSchemata.fromJson(
                   json_['predictSchemata']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          publisherModelTemplate: json_.containsKey('publisherModelTemplate')
-              ? json_['publisherModelTemplate'] as core.String
-              : null,
+          publisherModelTemplate:
+              json_['publisherModelTemplate'] as core.String?,
           supportedActions: json_.containsKey('supportedActions')
               ? GoogleCloudAiplatformV1PublisherModelCallToAction.fromJson(
                   json_['supportedActions']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          versionId: json_.containsKey('versionId')
-              ? json_['versionId'] as core.String
-              : null,
-          versionState: json_.containsKey('versionState')
-              ? json_['versionState'] as core.String
-              : null,
+          versionId: json_['versionId'] as core.String?,
+          versionState: json_['versionState'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -47711,9 +46429,7 @@ class GoogleCloudAiplatformV1PublisherModelCallToActionDeploy {
   GoogleCloudAiplatformV1PublisherModelCallToActionDeploy.fromJson(
       core.Map json_)
       : this(
-          artifactUri: json_.containsKey('artifactUri')
-              ? json_['artifactUri'] as core.String
-              : null,
+          artifactUri: json_['artifactUri'] as core.String?,
           automaticResources: json_.containsKey('automaticResources')
               ? GoogleCloudAiplatformV1AutomaticResources.fromJson(
                   json_['automaticResources']
@@ -47728,25 +46444,16 @@ class GoogleCloudAiplatformV1PublisherModelCallToActionDeploy {
                   json_['dedicatedResources']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          deployTaskName: json_.containsKey('deployTaskName')
-              ? json_['deployTaskName'] as core.String
-              : null,
+          deployTaskName: json_['deployTaskName'] as core.String?,
           largeModelReference: json_.containsKey('largeModelReference')
               ? GoogleCloudAiplatformV1LargeModelReference.fromJson(
                   json_['largeModelReference']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          modelDisplayName: json_.containsKey('modelDisplayName')
-              ? json_['modelDisplayName'] as core.String
-              : null,
-          publicArtifactUri: json_.containsKey('publicArtifactUri')
-              ? json_['publicArtifactUri'] as core.String
-              : null,
-          sharedResources: json_.containsKey('sharedResources')
-              ? json_['sharedResources'] as core.String
-              : null,
-          title:
-              json_.containsKey('title') ? json_['title'] as core.String : null,
+          modelDisplayName: json_['modelDisplayName'] as core.String?,
+          publicArtifactUri: json_['publicArtifactUri'] as core.String?,
+          sharedResources: json_['sharedResources'] as core.String?,
+          title: json_['title'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -47904,17 +46611,10 @@ class GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReference
                   ),
                 )
               : null,
-          resourceDescription: json_.containsKey('resourceDescription')
-              ? json_['resourceDescription'] as core.String
-              : null,
-          resourceTitle: json_.containsKey('resourceTitle')
-              ? json_['resourceTitle'] as core.String
-              : null,
-          resourceUseCase: json_.containsKey('resourceUseCase')
-              ? json_['resourceUseCase'] as core.String
-              : null,
-          title:
-              json_.containsKey('title') ? json_['title'] as core.String : null,
+          resourceDescription: json_['resourceDescription'] as core.String?,
+          resourceTitle: json_['resourceTitle'] as core.String?,
+          resourceUseCase: json_['resourceUseCase'] as core.String?,
+          title: json_['title'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -47953,8 +46653,7 @@ class GoogleCloudAiplatformV1PublisherModelCallToActionViewRestApi {
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          title:
-              json_.containsKey('title') ? json_['title'] as core.String : null,
+          title: json_['title'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -47983,11 +46682,8 @@ class GoogleCloudAiplatformV1PublisherModelDocumentation {
 
   GoogleCloudAiplatformV1PublisherModelDocumentation.fromJson(core.Map json_)
       : this(
-          content: json_.containsKey('content')
-              ? json_['content'] as core.String
-              : null,
-          title:
-              json_.containsKey('title') ? json_['title'] as core.String : null,
+          content: json_['content'] as core.String?,
+          title: json_['title'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -48026,16 +46722,10 @@ class GoogleCloudAiplatformV1PublisherModelResourceReference {
   GoogleCloudAiplatformV1PublisherModelResourceReference.fromJson(
       core.Map json_)
       : this(
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          resourceName: json_.containsKey('resourceName')
-              ? json_['resourceName'] as core.String
-              : null,
-          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
-          useCase: json_.containsKey('useCase')
-              ? json_['useCase'] as core.String
-              : null,
+          description: json_['description'] as core.String?,
+          resourceName: json_['resourceName'] as core.String?,
+          uri: json_['uri'] as core.String?,
+          useCase: json_['useCase'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -48070,11 +46760,8 @@ class GoogleCloudAiplatformV1PurgeArtifactsRequest {
 
   GoogleCloudAiplatformV1PurgeArtifactsRequest.fromJson(core.Map json_)
       : this(
-          filter: json_.containsKey('filter')
-              ? json_['filter'] as core.String
-              : null,
-          force:
-              json_.containsKey('force') ? json_['force'] as core.bool : null,
+          filter: json_['filter'] as core.String?,
+          force: json_['force'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -48107,11 +46794,8 @@ class GoogleCloudAiplatformV1PurgeContextsRequest {
 
   GoogleCloudAiplatformV1PurgeContextsRequest.fromJson(core.Map json_)
       : this(
-          filter: json_.containsKey('filter')
-              ? json_['filter'] as core.String
-              : null,
-          force:
-              json_.containsKey('force') ? json_['force'] as core.bool : null,
+          filter: json_['filter'] as core.String?,
+          force: json_['force'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -48144,11 +46828,8 @@ class GoogleCloudAiplatformV1PurgeExecutionsRequest {
 
   GoogleCloudAiplatformV1PurgeExecutionsRequest.fromJson(core.Map json_)
       : this(
-          filter: json_.containsKey('filter')
-              ? json_['filter'] as core.String
-              : null,
-          force:
-              json_.containsKey('force') ? json_['force'] as core.bool : null,
+          filter: json_['filter'] as core.String?,
+          force: json_['force'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -48213,17 +46894,13 @@ class GoogleCloudAiplatformV1PythonPackageSpec {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          executorImageUri: json_.containsKey('executorImageUri')
-              ? json_['executorImageUri'] as core.String
-              : null,
+          executorImageUri: json_['executorImageUri'] as core.String?,
           packageUris: json_.containsKey('packageUris')
               ? (json_['packageUris'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          pythonModule: json_.containsKey('pythonModule')
-              ? json_['pythonModule'] as core.String
-              : null,
+          pythonModule: json_['pythonModule'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -48282,15 +46959,10 @@ class GoogleCloudAiplatformV1QueryDeployedModelsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
-          totalDeployedModelCount: json_.containsKey('totalDeployedModelCount')
-              ? json_['totalDeployedModelCount'] as core.int
-              : null,
-          totalEndpointCount: json_.containsKey('totalEndpointCount')
-              ? json_['totalEndpointCount'] as core.int
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          totalDeployedModelCount:
+              json_['totalDeployedModelCount'] as core.int?,
+          totalEndpointCount: json_['totalEndpointCount'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -48348,9 +47020,7 @@ class GoogleCloudAiplatformV1RayMetricSpec {
 
   GoogleCloudAiplatformV1RayMetricSpec.fromJson(core.Map json_)
       : this(
-          disabled: json_.containsKey('disabled')
-              ? json_['disabled'] as core.bool
-              : null,
+          disabled: json_['disabled'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -48409,12 +47079,9 @@ class GoogleCloudAiplatformV1RaySpec {
 
   GoogleCloudAiplatformV1RaySpec.fromJson(core.Map json_)
       : this(
-          headNodeResourcePoolId: json_.containsKey('headNodeResourcePoolId')
-              ? json_['headNodeResourcePoolId'] as core.String
-              : null,
-          imageUri: json_.containsKey('imageUri')
-              ? json_['imageUri'] as core.String
-              : null,
+          headNodeResourcePoolId:
+              json_['headNodeResourcePoolId'] as core.String?,
+          imageUri: json_['imageUri'] as core.String?,
           rayMetricSpec: json_.containsKey('rayMetricSpec')
               ? GoogleCloudAiplatformV1RayMetricSpec.fromJson(
                   json_['rayMetricSpec'] as core.Map<core.String, core.dynamic>)
@@ -48463,9 +47130,7 @@ class GoogleCloudAiplatformV1ReadFeatureValuesRequest {
 
   GoogleCloudAiplatformV1ReadFeatureValuesRequest.fromJson(core.Map json_)
       : this(
-          entityId: json_.containsKey('entityId')
-              ? json_['entityId'] as core.String
-              : null,
+          entityId: json_['entityId'] as core.String?,
           featureSelector: json_.containsKey('featureSelector')
               ? GoogleCloudAiplatformV1FeatureSelector.fromJson(
                   json_['featureSelector']
@@ -48544,9 +47209,7 @@ class GoogleCloudAiplatformV1ReadFeatureValuesResponseEntityView {
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          entityId: json_.containsKey('entityId')
-              ? json_['entityId'] as core.String
-              : null,
+          entityId: json_['entityId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -48604,7 +47267,7 @@ class GoogleCloudAiplatformV1ReadFeatureValuesResponseFeatureDescriptor {
   GoogleCloudAiplatformV1ReadFeatureValuesResponseFeatureDescriptor.fromJson(
       core.Map json_)
       : this(
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          id: json_['id'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -48634,9 +47297,7 @@ class GoogleCloudAiplatformV1ReadFeatureValuesResponseHeader {
   GoogleCloudAiplatformV1ReadFeatureValuesResponseHeader.fromJson(
       core.Map json_)
       : this(
-          entityType: json_.containsKey('entityType')
-              ? json_['entityType'] as core.String
-              : null,
+          entityType: json_['entityType'] as core.String?,
           featureDescriptors: json_.containsKey('featureDescriptors')
               ? (json_['featureDescriptors'] as core.List)
                   .map((value) =>
@@ -48669,9 +47330,7 @@ class GoogleCloudAiplatformV1ReadIndexDatapointsRequest {
 
   GoogleCloudAiplatformV1ReadIndexDatapointsRequest.fromJson(core.Map json_)
       : this(
-          deployedIndexId: json_.containsKey('deployedIndexId')
-              ? json_['deployedIndexId'] as core.String
-              : null,
+          deployedIndexId: json_['deployedIndexId'] as core.String?,
           ids: json_.containsKey('ids')
               ? (json_['ids'] as core.List)
                   .map((value) => value as core.String)
@@ -48747,9 +47406,7 @@ class GoogleCloudAiplatformV1ReadTensorboardSizeResponse {
 
   GoogleCloudAiplatformV1ReadTensorboardSizeResponse.fromJson(core.Map json_)
       : this(
-          storageSizeByte: json_.containsKey('storageSizeByte')
-              ? json_['storageSizeByte'] as core.String
-              : null,
+          storageSizeByte: json_['storageSizeByte'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -48857,12 +47514,8 @@ class GoogleCloudAiplatformV1ReadTensorboardUsageResponsePerUserUsageData {
   GoogleCloudAiplatformV1ReadTensorboardUsageResponsePerUserUsageData.fromJson(
       core.Map json_)
       : this(
-          username: json_.containsKey('username')
-              ? json_['username'] as core.String
-              : null,
-          viewCount: json_.containsKey('viewCount')
-              ? json_['viewCount'] as core.String
-              : null,
+          username: json_['username'] as core.String?,
+          viewCount: json_['viewCount'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -49008,17 +47661,13 @@ class GoogleCloudAiplatformV1ResourcePool {
               ? GoogleCloudAiplatformV1DiskSpec.fromJson(
                   json_['diskSpec'] as core.Map<core.String, core.dynamic>)
               : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          id: json_['id'] as core.String?,
           machineSpec: json_.containsKey('machineSpec')
               ? GoogleCloudAiplatformV1MachineSpec.fromJson(
                   json_['machineSpec'] as core.Map<core.String, core.dynamic>)
               : null,
-          replicaCount: json_.containsKey('replicaCount')
-              ? json_['replicaCount'] as core.String
-              : null,
-          usedReplicaCount: json_.containsKey('usedReplicaCount')
-              ? json_['usedReplicaCount'] as core.String
-              : null,
+          replicaCount: json_['replicaCount'] as core.String?,
+          usedReplicaCount: json_['usedReplicaCount'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -49052,12 +47701,8 @@ class GoogleCloudAiplatformV1ResourcePoolAutoscalingSpec {
 
   GoogleCloudAiplatformV1ResourcePoolAutoscalingSpec.fromJson(core.Map json_)
       : this(
-          maxReplicaCount: json_.containsKey('maxReplicaCount')
-              ? json_['maxReplicaCount'] as core.String
-              : null,
-          minReplicaCount: json_.containsKey('minReplicaCount')
-              ? json_['minReplicaCount'] as core.String
-              : null,
+          maxReplicaCount: json_['maxReplicaCount'] as core.String?,
+          minReplicaCount: json_['minReplicaCount'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -49157,9 +47802,7 @@ class GoogleCloudAiplatformV1ResourcesConsumed {
 
   GoogleCloudAiplatformV1ResourcesConsumed.fromJson(core.Map json_)
       : this(
-          replicaHours: json_.containsKey('replicaHours')
-              ? (json_['replicaHours'] as core.num).toDouble()
-              : null,
+          replicaHours: (json_['replicaHours'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -49189,9 +47832,7 @@ class GoogleCloudAiplatformV1ResumeScheduleRequest {
 
   GoogleCloudAiplatformV1ResumeScheduleRequest.fromJson(core.Map json_)
       : this(
-          catchUp: json_.containsKey('catchUp')
-              ? json_['catchUp'] as core.bool
-              : null,
+          catchUp: json_['catchUp'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -49219,9 +47860,7 @@ class GoogleCloudAiplatformV1Retrieval {
 
   GoogleCloudAiplatformV1Retrieval.fromJson(core.Map json_)
       : this(
-          disableAttribution: json_.containsKey('disableAttribution')
-              ? json_['disableAttribution'] as core.bool
-              : null,
+          disableAttribution: json_['disableAttribution'] as core.bool?,
           vertexAiSearch: json_.containsKey('vertexAiSearch')
               ? GoogleCloudAiplatformV1VertexAISearch.fromJson(
                   json_['vertexAiSearch']
@@ -49299,24 +47938,13 @@ class GoogleCloudAiplatformV1SafetyRating {
 
   GoogleCloudAiplatformV1SafetyRating.fromJson(core.Map json_)
       : this(
-          blocked: json_.containsKey('blocked')
-              ? json_['blocked'] as core.bool
-              : null,
-          category: json_.containsKey('category')
-              ? json_['category'] as core.String
-              : null,
-          probability: json_.containsKey('probability')
-              ? json_['probability'] as core.String
-              : null,
-          probabilityScore: json_.containsKey('probabilityScore')
-              ? (json_['probabilityScore'] as core.num).toDouble()
-              : null,
-          severity: json_.containsKey('severity')
-              ? json_['severity'] as core.String
-              : null,
-          severityScore: json_.containsKey('severityScore')
-              ? (json_['severityScore'] as core.num).toDouble()
-              : null,
+          blocked: json_['blocked'] as core.bool?,
+          category: json_['category'] as core.String?,
+          probability: json_['probability'] as core.String?,
+          probabilityScore:
+              (json_['probabilityScore'] as core.num?)?.toDouble(),
+          severity: json_['severity'] as core.String?,
+          severityScore: (json_['severityScore'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -49375,15 +48003,9 @@ class GoogleCloudAiplatformV1SafetySetting {
 
   GoogleCloudAiplatformV1SafetySetting.fromJson(core.Map json_)
       : this(
-          category: json_.containsKey('category')
-              ? json_['category'] as core.String
-              : null,
-          method: json_.containsKey('method')
-              ? json_['method'] as core.String
-              : null,
-          threshold: json_.containsKey('threshold')
-              ? json_['threshold'] as core.String
-              : null,
+          category: json_['category'] as core.String?,
+          method: json_['method'] as core.String?,
+          threshold: json_['threshold'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -49423,16 +48045,10 @@ class GoogleCloudAiplatformV1SampleConfig {
   GoogleCloudAiplatformV1SampleConfig.fromJson(core.Map json_)
       : this(
           followingBatchSamplePercentage:
-              json_.containsKey('followingBatchSamplePercentage')
-                  ? json_['followingBatchSamplePercentage'] as core.int
-                  : null,
+              json_['followingBatchSamplePercentage'] as core.int?,
           initialBatchSamplePercentage:
-              json_.containsKey('initialBatchSamplePercentage')
-                  ? json_['initialBatchSamplePercentage'] as core.int
-                  : null,
-          sampleStrategy: json_.containsKey('sampleStrategy')
-              ? json_['sampleStrategy'] as core.String
-              : null,
+              json_['initialBatchSamplePercentage'] as core.int?,
+          sampleStrategy: json_['sampleStrategy'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -49464,9 +48080,7 @@ class GoogleCloudAiplatformV1SampledShapleyAttribution {
 
   GoogleCloudAiplatformV1SampledShapleyAttribution.fromJson(core.Map json_)
       : this(
-          pathCount: json_.containsKey('pathCount')
-              ? json_['pathCount'] as core.int
-              : null,
+          pathCount: json_['pathCount'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -49513,9 +48127,7 @@ class GoogleCloudAiplatformV1SamplingStrategyRandomSampleConfig {
   GoogleCloudAiplatformV1SamplingStrategyRandomSampleConfig.fromJson(
       core.Map json_)
       : this(
-          sampleRate: json_.containsKey('sampleRate')
-              ? (json_['sampleRate'] as core.num).toDouble()
-              : null,
+          sampleRate: (json_['sampleRate'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -49603,30 +48215,16 @@ class GoogleCloudAiplatformV1SavedQuery {
 
   GoogleCloudAiplatformV1SavedQuery.fromJson(core.Map json_)
       : this(
-          annotationFilter: json_.containsKey('annotationFilter')
-              ? json_['annotationFilter'] as core.String
-              : null,
-          annotationSpecCount: json_.containsKey('annotationSpecCount')
-              ? json_['annotationSpecCount'] as core.int
-              : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          metadata: json_.containsKey('metadata') ? json_['metadata'] : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          problemType: json_.containsKey('problemType')
-              ? json_['problemType'] as core.String
-              : null,
-          supportAutomlTraining: json_.containsKey('supportAutomlTraining')
-              ? json_['supportAutomlTraining'] as core.bool
-              : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          annotationFilter: json_['annotationFilter'] as core.String?,
+          annotationSpecCount: json_['annotationSpecCount'] as core.int?,
+          createTime: json_['createTime'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          etag: json_['etag'] as core.String?,
+          metadata: json_['metadata'],
+          name: json_['name'] as core.String?,
+          problemType: json_['problemType'] as core.String?,
+          supportAutomlTraining: json_['supportAutomlTraining'] as core.bool?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -49656,9 +48254,7 @@ class GoogleCloudAiplatformV1Scalar {
 
   GoogleCloudAiplatformV1Scalar.fromJson(core.Map json_)
       : this(
-          value: json_.containsKey('value')
-              ? (json_['value'] as core.num).toDouble()
-              : null,
+          value: (json_['value'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -49836,61 +48432,34 @@ class GoogleCloudAiplatformV1Schedule {
 
   GoogleCloudAiplatformV1Schedule.fromJson(core.Map json_)
       : this(
-          allowQueueing: json_.containsKey('allowQueueing')
-              ? json_['allowQueueing'] as core.bool
-              : null,
-          catchUp: json_.containsKey('catchUp')
-              ? json_['catchUp'] as core.bool
-              : null,
+          allowQueueing: json_['allowQueueing'] as core.bool?,
+          catchUp: json_['catchUp'] as core.bool?,
           createPipelineJobRequest:
               json_.containsKey('createPipelineJobRequest')
                   ? GoogleCloudAiplatformV1CreatePipelineJobRequest.fromJson(
                       json_['createPipelineJobRequest']
                           as core.Map<core.String, core.dynamic>)
                   : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          cron: json_.containsKey('cron') ? json_['cron'] as core.String : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          endTime: json_.containsKey('endTime')
-              ? json_['endTime'] as core.String
-              : null,
-          lastPauseTime: json_.containsKey('lastPauseTime')
-              ? json_['lastPauseTime'] as core.String
-              : null,
-          lastResumeTime: json_.containsKey('lastResumeTime')
-              ? json_['lastResumeTime'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          cron: json_['cron'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          endTime: json_['endTime'] as core.String?,
+          lastPauseTime: json_['lastPauseTime'] as core.String?,
+          lastResumeTime: json_['lastResumeTime'] as core.String?,
           lastScheduledRunResponse:
               json_.containsKey('lastScheduledRunResponse')
                   ? GoogleCloudAiplatformV1ScheduleRunResponse.fromJson(
                       json_['lastScheduledRunResponse']
                           as core.Map<core.String, core.dynamic>)
                   : null,
-          maxConcurrentRunCount: json_.containsKey('maxConcurrentRunCount')
-              ? json_['maxConcurrentRunCount'] as core.String
-              : null,
-          maxRunCount: json_.containsKey('maxRunCount')
-              ? json_['maxRunCount'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          nextRunTime: json_.containsKey('nextRunTime')
-              ? json_['nextRunTime'] as core.String
-              : null,
-          startTime: json_.containsKey('startTime')
-              ? json_['startTime'] as core.String
-              : null,
-          startedRunCount: json_.containsKey('startedRunCount')
-              ? json_['startedRunCount'] as core.String
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          maxConcurrentRunCount: json_['maxConcurrentRunCount'] as core.String?,
+          maxRunCount: json_['maxRunCount'] as core.String?,
+          name: json_['name'] as core.String?,
+          nextRunTime: json_['nextRunTime'] as core.String?,
+          startTime: json_['startTime'] as core.String?,
+          startedRunCount: json_['startedRunCount'] as core.String?,
+          state: json_['state'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -49933,12 +48502,8 @@ class GoogleCloudAiplatformV1ScheduleRunResponse {
 
   GoogleCloudAiplatformV1ScheduleRunResponse.fromJson(core.Map json_)
       : this(
-          runResponse: json_.containsKey('runResponse')
-              ? json_['runResponse'] as core.String
-              : null,
-          scheduledRunTime: json_.containsKey('scheduledRunTime')
-              ? json_['scheduledRunTime'] as core.String
-              : null,
+          runResponse: json_['runResponse'] as core.String?,
+          scheduledRunTime: json_['scheduledRunTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -49976,16 +48541,10 @@ class GoogleCloudAiplatformV1Scheduling {
 
   GoogleCloudAiplatformV1Scheduling.fromJson(core.Map json_)
       : this(
-          disableRetries: json_.containsKey('disableRetries')
-              ? json_['disableRetries'] as core.bool
-              : null,
+          disableRetries: json_['disableRetries'] as core.bool?,
           restartJobOnWorkerRestart:
-              json_.containsKey('restartJobOnWorkerRestart')
-                  ? json_['restartJobOnWorkerRestart'] as core.bool
-                  : null,
-          timeout: json_.containsKey('timeout')
-              ? json_['timeout'] as core.String
-              : null,
+              json_['restartJobOnWorkerRestart'] as core.bool?,
+          timeout: json_['timeout'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -50150,53 +48709,29 @@ class GoogleCloudAiplatformV1Schema {
 
   GoogleCloudAiplatformV1Schema.fromJson(core.Map json_)
       : this(
-          default_: json_.containsKey('default') ? json_['default'] : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
+          default_: json_['default'],
+          description: json_['description'] as core.String?,
           enum_: json_.containsKey('enum')
               ? (json_['enum'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          example: json_.containsKey('example') ? json_['example'] : null,
-          format: json_.containsKey('format')
-              ? json_['format'] as core.String
-              : null,
+          example: json_['example'],
+          format: json_['format'] as core.String?,
           items: json_.containsKey('items')
               ? GoogleCloudAiplatformV1Schema.fromJson(
                   json_['items'] as core.Map<core.String, core.dynamic>)
               : null,
-          maxItems: json_.containsKey('maxItems')
-              ? json_['maxItems'] as core.String
-              : null,
-          maxLength: json_.containsKey('maxLength')
-              ? json_['maxLength'] as core.String
-              : null,
-          maxProperties: json_.containsKey('maxProperties')
-              ? json_['maxProperties'] as core.String
-              : null,
-          maximum: json_.containsKey('maximum')
-              ? (json_['maximum'] as core.num).toDouble()
-              : null,
-          minItems: json_.containsKey('minItems')
-              ? json_['minItems'] as core.String
-              : null,
-          minLength: json_.containsKey('minLength')
-              ? json_['minLength'] as core.String
-              : null,
-          minProperties: json_.containsKey('minProperties')
-              ? json_['minProperties'] as core.String
-              : null,
-          minimum: json_.containsKey('minimum')
-              ? (json_['minimum'] as core.num).toDouble()
-              : null,
-          nullable: json_.containsKey('nullable')
-              ? json_['nullable'] as core.bool
-              : null,
-          pattern: json_.containsKey('pattern')
-              ? json_['pattern'] as core.String
-              : null,
+          maxItems: json_['maxItems'] as core.String?,
+          maxLength: json_['maxLength'] as core.String?,
+          maxProperties: json_['maxProperties'] as core.String?,
+          maximum: (json_['maximum'] as core.num?)?.toDouble(),
+          minItems: json_['minItems'] as core.String?,
+          minLength: json_['minLength'] as core.String?,
+          minProperties: json_['minProperties'] as core.String?,
+          minimum: (json_['minimum'] as core.num?)?.toDouble(),
+          nullable: json_['nullable'] as core.bool?,
+          pattern: json_['pattern'] as core.String?,
           properties: json_.containsKey('properties')
               ? (json_['properties'] as core.Map<core.String, core.dynamic>)
                   .map(
@@ -50212,9 +48747,8 @@ class GoogleCloudAiplatformV1Schema {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          title:
-              json_.containsKey('title') ? json_['title'] as core.String : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          title: json_['title'] as core.String?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -50264,9 +48798,7 @@ class GoogleCloudAiplatformV1SearchDataItemsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -50300,12 +48832,8 @@ class GoogleCloudAiplatformV1SearchEntryPoint {
 
   GoogleCloudAiplatformV1SearchEntryPoint.fromJson(core.Map json_)
       : this(
-          renderedContent: json_.containsKey('renderedContent')
-              ? json_['renderedContent'] as core.String
-              : null,
-          sdkBlob: json_.containsKey('sdkBlob')
-              ? json_['sdkBlob'] as core.String
-              : null,
+          renderedContent: json_['renderedContent'] as core.String?,
+          sdkBlob: json_['sdkBlob'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -50341,9 +48869,7 @@ class GoogleCloudAiplatformV1SearchFeaturesResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -50382,15 +48908,9 @@ class GoogleCloudAiplatformV1SearchMigratableResourcesRequest {
   GoogleCloudAiplatformV1SearchMigratableResourcesRequest.fromJson(
       core.Map json_)
       : this(
-          filter: json_.containsKey('filter')
-              ? json_['filter'] as core.String
-              : null,
-          pageSize: json_.containsKey('pageSize')
-              ? json_['pageSize'] as core.int
-              : null,
-          pageToken: json_.containsKey('pageToken')
-              ? json_['pageToken'] as core.String
-              : null,
+          filter: json_['filter'] as core.String?,
+          pageSize: json_['pageSize'] as core.int?,
+          pageToken: json_['pageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -50427,9 +48947,7 @@ class GoogleCloudAiplatformV1SearchMigratableResourcesResponse {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -50492,15 +49010,9 @@ class GoogleCloudAiplatformV1SearchModelDeploymentMonitoringStatsAnomaliesReques
   GoogleCloudAiplatformV1SearchModelDeploymentMonitoringStatsAnomaliesRequest.fromJson(
       core.Map json_)
       : this(
-          deployedModelId: json_.containsKey('deployedModelId')
-              ? json_['deployedModelId'] as core.String
-              : null,
-          endTime: json_.containsKey('endTime')
-              ? json_['endTime'] as core.String
-              : null,
-          featureDisplayName: json_.containsKey('featureDisplayName')
-              ? json_['featureDisplayName'] as core.String
-              : null,
+          deployedModelId: json_['deployedModelId'] as core.String?,
+          endTime: json_['endTime'] as core.String?,
+          featureDisplayName: json_['featureDisplayName'] as core.String?,
           objectives: json_.containsKey('objectives')
               ? (json_['objectives'] as core.List)
                   .map((value) =>
@@ -50509,15 +49021,9 @@ class GoogleCloudAiplatformV1SearchModelDeploymentMonitoringStatsAnomaliesReques
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          pageSize: json_.containsKey('pageSize')
-              ? json_['pageSize'] as core.int
-              : null,
-          pageToken: json_.containsKey('pageToken')
-              ? json_['pageToken'] as core.String
-              : null,
-          startTime: json_.containsKey('startTime')
-              ? json_['startTime'] as core.String
-              : null,
+          pageSize: json_['pageSize'] as core.int?,
+          pageToken: json_['pageToken'] as core.String?,
+          startTime: json_['startTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -50565,10 +49071,8 @@ class GoogleCloudAiplatformV1SearchModelDeploymentMonitoringStatsAnomaliesReques
   GoogleCloudAiplatformV1SearchModelDeploymentMonitoringStatsAnomaliesRequestStatsAnomaliesObjective.fromJson(
       core.Map json_)
       : this(
-          topFeatureCount: json_.containsKey('topFeatureCount')
-              ? json_['topFeatureCount'] as core.int
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          topFeatureCount: json_['topFeatureCount'] as core.int?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -50608,9 +49112,7 @@ class GoogleCloudAiplatformV1SearchModelDeploymentMonitoringStatsAnomaliesRespon
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -50647,9 +49149,7 @@ class GoogleCloudAiplatformV1SearchNearestEntitiesRequest {
               ? GoogleCloudAiplatformV1NearestNeighborQuery.fromJson(
                   json_['query'] as core.Map<core.String, core.dynamic>)
               : null,
-          returnFullEntity: json_.containsKey('returnFullEntity')
-              ? json_['returnFullEntity'] as core.bool
-              : null,
+          returnFullEntity: json_['returnFullEntity'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -50713,12 +49213,8 @@ class GoogleCloudAiplatformV1ServiceAccountSpec {
   GoogleCloudAiplatformV1ServiceAccountSpec.fromJson(core.Map json_)
       : this(
           enableCustomServiceAccount:
-              json_.containsKey('enableCustomServiceAccount')
-                  ? json_['enableCustomServiceAccount'] as core.bool
-                  : null,
-          serviceAccount: json_.containsKey('serviceAccount')
-              ? json_['serviceAccount'] as core.String
-              : null,
+              json_['enableCustomServiceAccount'] as core.bool?,
+          serviceAccount: json_['serviceAccount'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -50748,9 +49244,7 @@ class GoogleCloudAiplatformV1ShieldedVmConfig {
 
   GoogleCloudAiplatformV1ShieldedVmConfig.fromJson(core.Map json_)
       : this(
-          enableSecureBoot: json_.containsKey('enableSecureBoot')
-              ? json_['enableSecureBoot'] as core.bool
-              : null,
+          enableSecureBoot: json_['enableSecureBoot'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -50807,12 +49301,8 @@ class GoogleCloudAiplatformV1SmoothGradConfig {
                   json_['featureNoiseSigma']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          noiseSigma: json_.containsKey('noiseSigma')
-              ? (json_['noiseSigma'] as core.num).toDouble()
-              : null,
-          noisySampleCount: json_.containsKey('noisySampleCount')
-              ? json_['noisySampleCount'] as core.int
-              : null,
+          noiseSigma: (json_['noiseSigma'] as core.num?)?.toDouble(),
+          noisySampleCount: json_['noisySampleCount'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -50871,10 +49361,8 @@ class GoogleCloudAiplatformV1SpecialistPool {
 
   GoogleCloudAiplatformV1SpecialistPool.fromJson(core.Map json_)
       : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          displayName: json_['displayName'] as core.String?,
+          name: json_['name'] as core.String?,
           pendingDataLabelingJobs: json_.containsKey('pendingDataLabelingJobs')
               ? (json_['pendingDataLabelingJobs'] as core.List)
                   .map((value) => value as core.String)
@@ -50885,9 +49373,8 @@ class GoogleCloudAiplatformV1SpecialistPool {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          specialistManagersCount: json_.containsKey('specialistManagersCount')
-              ? json_['specialistManagersCount'] as core.int
-              : null,
+          specialistManagersCount:
+              json_['specialistManagersCount'] as core.int?,
           specialistWorkerEmails: json_.containsKey('specialistWorkerEmails')
               ? (json_['specialistWorkerEmails'] as core.List)
                   .map((value) => value as core.String)
@@ -50955,16 +49442,12 @@ class GoogleCloudAiplatformV1StratifiedSplit {
 
   GoogleCloudAiplatformV1StratifiedSplit.fromJson(core.Map json_)
       : this(
-          key: json_.containsKey('key') ? json_['key'] as core.String : null,
-          testFraction: json_.containsKey('testFraction')
-              ? (json_['testFraction'] as core.num).toDouble()
-              : null,
-          trainingFraction: json_.containsKey('trainingFraction')
-              ? (json_['trainingFraction'] as core.num).toDouble()
-              : null,
-          validationFraction: json_.containsKey('validationFraction')
-              ? (json_['validationFraction'] as core.num).toDouble()
-              : null,
+          key: json_['key'] as core.String?,
+          testFraction: (json_['testFraction'] as core.num?)?.toDouble(),
+          trainingFraction:
+              (json_['trainingFraction'] as core.num?)?.toDouble(),
+          validationFraction:
+              (json_['validationFraction'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -51152,7 +49635,7 @@ class GoogleCloudAiplatformV1StructFieldValue {
 
   GoogleCloudAiplatformV1StructFieldValue.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           value: json_.containsKey('value')
               ? GoogleCloudAiplatformV1FeatureValue.fromJson(
                   json_['value'] as core.Map<core.String, core.dynamic>)
@@ -51244,18 +49727,11 @@ class GoogleCloudAiplatformV1Study {
 
   GoogleCloudAiplatformV1Study.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          inactiveReason: json_.containsKey('inactiveReason')
-              ? json_['inactiveReason'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
+          createTime: json_['createTime'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          inactiveReason: json_['inactiveReason'] as core.String?,
+          name: json_['name'] as core.String?,
+          state: json_['state'] as core.String?,
           studySpec: json_.containsKey('studySpec')
               ? GoogleCloudAiplatformV1StudySpec.fromJson(
                   json_['studySpec'] as core.Map<core.String, core.dynamic>)
@@ -51347,9 +49823,7 @@ class GoogleCloudAiplatformV1StudySpec {
 
   GoogleCloudAiplatformV1StudySpec.fromJson(core.Map json_)
       : this(
-          algorithm: json_.containsKey('algorithm')
-              ? json_['algorithm'] as core.String
-              : null,
+          algorithm: json_['algorithm'] as core.String?,
           convexAutomatedStoppingSpec:
               json_.containsKey('convexAutomatedStoppingSpec')
                   ? GoogleCloudAiplatformV1StudySpecConvexAutomatedStoppingSpec
@@ -51362,9 +49836,7 @@ class GoogleCloudAiplatformV1StudySpec {
                       as core.Map<core.String, core.dynamic>)
               : null,
           measurementSelectionType:
-              json_.containsKey('measurementSelectionType')
-                  ? json_['measurementSelectionType'] as core.String
-                  : null,
+              json_['measurementSelectionType'] as core.String?,
           medianAutomatedStoppingSpec:
               json_.containsKey('medianAutomatedStoppingSpec')
                   ? GoogleCloudAiplatformV1StudySpecMedianAutomatedStoppingSpec
@@ -51378,9 +49850,7 @@ class GoogleCloudAiplatformV1StudySpec {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          observationNoise: json_.containsKey('observationNoise')
-              ? json_['observationNoise'] as core.String
-              : null,
+          observationNoise: json_['observationNoise'] as core.String?,
           parameters: json_.containsKey('parameters')
               ? (json_['parameters'] as core.List)
                   .map((value) =>
@@ -51490,24 +49960,12 @@ class GoogleCloudAiplatformV1StudySpecConvexAutomatedStoppingSpec {
       core.Map json_)
       : this(
           learningRateParameterName:
-              json_.containsKey('learningRateParameterName')
-                  ? json_['learningRateParameterName'] as core.String
-                  : null,
-          maxStepCount: json_.containsKey('maxStepCount')
-              ? json_['maxStepCount'] as core.String
-              : null,
-          minMeasurementCount: json_.containsKey('minMeasurementCount')
-              ? json_['minMeasurementCount'] as core.String
-              : null,
-          minStepCount: json_.containsKey('minStepCount')
-              ? json_['minStepCount'] as core.String
-              : null,
-          updateAllStoppedTrials: json_.containsKey('updateAllStoppedTrials')
-              ? json_['updateAllStoppedTrials'] as core.bool
-              : null,
-          useElapsedDuration: json_.containsKey('useElapsedDuration')
-              ? json_['useElapsedDuration'] as core.bool
-              : null,
+              json_['learningRateParameterName'] as core.String?,
+          maxStepCount: json_['maxStepCount'] as core.String?,
+          minMeasurementCount: json_['minMeasurementCount'] as core.String?,
+          minStepCount: json_['minStepCount'] as core.String?,
+          updateAllStoppedTrials: json_['updateAllStoppedTrials'] as core.bool?,
+          useElapsedDuration: json_['useElapsedDuration'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -51544,9 +50002,7 @@ class GoogleCloudAiplatformV1StudySpecDecayCurveAutomatedStoppingSpec {
   GoogleCloudAiplatformV1StudySpecDecayCurveAutomatedStoppingSpec.fromJson(
       core.Map json_)
       : this(
-          useElapsedDuration: json_.containsKey('useElapsedDuration')
-              ? json_['useElapsedDuration'] as core.bool
-              : null,
+          useElapsedDuration: json_['useElapsedDuration'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -51576,9 +50032,7 @@ class GoogleCloudAiplatformV1StudySpecMedianAutomatedStoppingSpec {
   GoogleCloudAiplatformV1StudySpecMedianAutomatedStoppingSpec.fromJson(
       core.Map json_)
       : this(
-          useElapsedDuration: json_.containsKey('useElapsedDuration')
-              ? json_['useElapsedDuration'] as core.bool
-              : null,
+          useElapsedDuration: json_['useElapsedDuration'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -51619,10 +50073,8 @@ class GoogleCloudAiplatformV1StudySpecMetricSpec {
 
   GoogleCloudAiplatformV1StudySpecMetricSpec.fromJson(core.Map json_)
       : this(
-          goal: json_.containsKey('goal') ? json_['goal'] as core.String : null,
-          metricId: json_.containsKey('metricId')
-              ? json_['metricId'] as core.String
-              : null,
+          goal: json_['goal'] as core.String?,
+          metricId: json_['metricId'] as core.String?,
           safetyConfig: json_.containsKey('safetyConfig')
               ? GoogleCloudAiplatformV1StudySpecMetricSpecSafetyMetricConfig
                   .fromJson(json_['safetyConfig']
@@ -51663,13 +50115,9 @@ class GoogleCloudAiplatformV1StudySpecMetricSpecSafetyMetricConfig {
   GoogleCloudAiplatformV1StudySpecMetricSpecSafetyMetricConfig.fromJson(
       core.Map json_)
       : this(
-          desiredMinSafeTrialsFraction: json_
-                  .containsKey('desiredMinSafeTrialsFraction')
-              ? (json_['desiredMinSafeTrialsFraction'] as core.num).toDouble()
-              : null,
-          safetyThreshold: json_.containsKey('safetyThreshold')
-              ? (json_['safetyThreshold'] as core.num).toDouble()
-              : null,
+          desiredMinSafeTrialsFraction:
+              (json_['desiredMinSafeTrialsFraction'] as core.num?)?.toDouble(),
+          safetyThreshold: (json_['safetyThreshold'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -51768,12 +50216,8 @@ class GoogleCloudAiplatformV1StudySpecParameterSpec {
                   .fromJson(json_['integerValueSpec']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          parameterId: json_.containsKey('parameterId')
-              ? json_['parameterId'] as core.String
-              : null,
-          scaleType: json_.containsKey('scaleType')
-              ? json_['scaleType'] as core.String
-              : null,
+          parameterId: json_['parameterId'] as core.String?,
+          scaleType: json_['scaleType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -51812,9 +50256,7 @@ class GoogleCloudAiplatformV1StudySpecParameterSpecCategoricalValueSpec {
   GoogleCloudAiplatformV1StudySpecParameterSpecCategoricalValueSpec.fromJson(
       core.Map json_)
       : this(
-          defaultValue: json_.containsKey('defaultValue')
-              ? json_['defaultValue'] as core.String
-              : null,
+          defaultValue: json_['defaultValue'] as core.String?,
           values: json_.containsKey('values')
               ? (json_['values'] as core.List)
                   .map((value) => value as core.String)
@@ -52002,9 +50444,7 @@ class GoogleCloudAiplatformV1StudySpecParameterSpecDiscreteValueSpec {
   GoogleCloudAiplatformV1StudySpecParameterSpecDiscreteValueSpec.fromJson(
       core.Map json_)
       : this(
-          defaultValue: json_.containsKey('defaultValue')
-              ? (json_['defaultValue'] as core.num).toDouble()
-              : null,
+          defaultValue: (json_['defaultValue'] as core.num?)?.toDouble(),
           values: json_.containsKey('values')
               ? (json_['values'] as core.List)
                   .map((value) => (value as core.num).toDouble())
@@ -52047,15 +50487,9 @@ class GoogleCloudAiplatformV1StudySpecParameterSpecDoubleValueSpec {
   GoogleCloudAiplatformV1StudySpecParameterSpecDoubleValueSpec.fromJson(
       core.Map json_)
       : this(
-          defaultValue: json_.containsKey('defaultValue')
-              ? (json_['defaultValue'] as core.num).toDouble()
-              : null,
-          maxValue: json_.containsKey('maxValue')
-              ? (json_['maxValue'] as core.num).toDouble()
-              : null,
-          minValue: json_.containsKey('minValue')
-              ? (json_['minValue'] as core.num).toDouble()
-              : null,
+          defaultValue: (json_['defaultValue'] as core.num?)?.toDouble(),
+          maxValue: (json_['maxValue'] as core.num?)?.toDouble(),
+          minValue: (json_['minValue'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -52094,15 +50528,9 @@ class GoogleCloudAiplatformV1StudySpecParameterSpecIntegerValueSpec {
   GoogleCloudAiplatformV1StudySpecParameterSpecIntegerValueSpec.fromJson(
       core.Map json_)
       : this(
-          defaultValue: json_.containsKey('defaultValue')
-              ? json_['defaultValue'] as core.String
-              : null,
-          maxValue: json_.containsKey('maxValue')
-              ? json_['maxValue'] as core.String
-              : null,
-          minValue: json_.containsKey('minValue')
-              ? json_['minValue'] as core.String
-              : null,
+          defaultValue: json_['defaultValue'] as core.String?,
+          maxValue: json_['maxValue'] as core.String?,
+          minValue: json_['minValue'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -52179,33 +50607,23 @@ class GoogleCloudAiplatformV1StudySpecStudyStoppingConfig {
 
   GoogleCloudAiplatformV1StudySpecStudyStoppingConfig.fromJson(core.Map json_)
       : this(
-          maxDurationNoProgress: json_.containsKey('maxDurationNoProgress')
-              ? json_['maxDurationNoProgress'] as core.String
-              : null,
-          maxNumTrials: json_.containsKey('maxNumTrials')
-              ? json_['maxNumTrials'] as core.int
-              : null,
-          maxNumTrialsNoProgress: json_.containsKey('maxNumTrialsNoProgress')
-              ? json_['maxNumTrialsNoProgress'] as core.int
-              : null,
+          maxDurationNoProgress: json_['maxDurationNoProgress'] as core.String?,
+          maxNumTrials: json_['maxNumTrials'] as core.int?,
+          maxNumTrialsNoProgress: json_['maxNumTrialsNoProgress'] as core.int?,
           maximumRuntimeConstraint:
               json_.containsKey('maximumRuntimeConstraint')
                   ? GoogleCloudAiplatformV1StudyTimeConstraint.fromJson(
                       json_['maximumRuntimeConstraint']
                           as core.Map<core.String, core.dynamic>)
                   : null,
-          minNumTrials: json_.containsKey('minNumTrials')
-              ? json_['minNumTrials'] as core.int
-              : null,
+          minNumTrials: json_['minNumTrials'] as core.int?,
           minimumRuntimeConstraint:
               json_.containsKey('minimumRuntimeConstraint')
                   ? GoogleCloudAiplatformV1StudyTimeConstraint.fromJson(
                       json_['minimumRuntimeConstraint']
                           as core.Map<core.String, core.dynamic>)
                   : null,
-          shouldStopAsap: json_.containsKey('shouldStopAsap')
-              ? json_['shouldStopAsap'] as core.bool
-              : null,
+          shouldStopAsap: json_['shouldStopAsap'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -52240,12 +50658,8 @@ class GoogleCloudAiplatformV1StudyTimeConstraint {
 
   GoogleCloudAiplatformV1StudyTimeConstraint.fromJson(core.Map json_)
       : this(
-          endTime: json_.containsKey('endTime')
-              ? json_['endTime'] as core.String
-              : null,
-          maxDuration: json_.containsKey('maxDuration')
-              ? json_['maxDuration'] as core.String
-              : null,
+          endTime: json_['endTime'] as core.String?,
+          maxDuration: json_['maxDuration'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -52313,18 +50727,14 @@ class GoogleCloudAiplatformV1SuggestTrialsRequest {
 
   GoogleCloudAiplatformV1SuggestTrialsRequest.fromJson(core.Map json_)
       : this(
-          clientId: json_.containsKey('clientId')
-              ? json_['clientId'] as core.String
-              : null,
+          clientId: json_['clientId'] as core.String?,
           contexts: json_.containsKey('contexts')
               ? (json_['contexts'] as core.List)
                   .map((value) => GoogleCloudAiplatformV1TrialContext.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          suggestionCount: json_.containsKey('suggestionCount')
-              ? json_['suggestionCount'] as core.int
-              : null,
+          suggestionCount: json_['suggestionCount'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -52366,15 +50776,10 @@ class GoogleCloudAiplatformV1SupervisedHyperParameters {
 
   GoogleCloudAiplatformV1SupervisedHyperParameters.fromJson(core.Map json_)
       : this(
-          adapterSize: json_.containsKey('adapterSize')
-              ? json_['adapterSize'] as core.String
-              : null,
-          epochCount: json_.containsKey('epochCount')
-              ? json_['epochCount'] as core.String
-              : null,
-          learningRateMultiplier: json_.containsKey('learningRateMultiplier')
-              ? (json_['learningRateMultiplier'] as core.num).toDouble()
-              : null,
+          adapterSize: json_['adapterSize'] as core.String?,
+          epochCount: json_['epochCount'] as core.String?,
+          learningRateMultiplier:
+              (json_['learningRateMultiplier'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -52444,20 +50849,12 @@ class GoogleCloudAiplatformV1SupervisedTuningDataStats {
   GoogleCloudAiplatformV1SupervisedTuningDataStats.fromJson(core.Map json_)
       : this(
           totalBillableCharacterCount:
-              json_.containsKey('totalBillableCharacterCount')
-                  ? json_['totalBillableCharacterCount'] as core.String
-                  : null,
+              json_['totalBillableCharacterCount'] as core.String?,
           totalTuningCharacterCount:
-              json_.containsKey('totalTuningCharacterCount')
-                  ? json_['totalTuningCharacterCount'] as core.String
-                  : null,
+              json_['totalTuningCharacterCount'] as core.String?,
           tuningDatasetExampleCount:
-              json_.containsKey('tuningDatasetExampleCount')
-                  ? json_['tuningDatasetExampleCount'] as core.String
-                  : null,
-          tuningStepCount: json_.containsKey('tuningStepCount')
-              ? json_['tuningStepCount'] as core.String
-              : null,
+              json_['tuningDatasetExampleCount'] as core.String?,
+          tuningStepCount: json_['tuningStepCount'] as core.String?,
           userDatasetExamples: json_.containsKey('userDatasetExamples')
               ? (json_['userDatasetExamples'] as core.List)
                   .map((value) => GoogleCloudAiplatformV1Content.fromJson(
@@ -52570,25 +50967,13 @@ class GoogleCloudAiplatformV1SupervisedTuningDatasetDistribution {
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          max: json_.containsKey('max')
-              ? (json_['max'] as core.num).toDouble()
-              : null,
-          mean: json_.containsKey('mean')
-              ? (json_['mean'] as core.num).toDouble()
-              : null,
-          median: json_.containsKey('median')
-              ? (json_['median'] as core.num).toDouble()
-              : null,
-          min: json_.containsKey('min')
-              ? (json_['min'] as core.num).toDouble()
-              : null,
-          p5: json_.containsKey('p5')
-              ? (json_['p5'] as core.num).toDouble()
-              : null,
-          p95: json_.containsKey('p95')
-              ? (json_['p95'] as core.num).toDouble()
-              : null,
-          sum: json_.containsKey('sum') ? json_['sum'] as core.String : null,
+          max: (json_['max'] as core.num?)?.toDouble(),
+          mean: (json_['mean'] as core.num?)?.toDouble(),
+          median: (json_['median'] as core.num?)?.toDouble(),
+          min: (json_['min'] as core.num?)?.toDouble(),
+          p5: (json_['p5'] as core.num?)?.toDouble(),
+          p95: (json_['p95'] as core.num?)?.toDouble(),
+          sum: json_['sum'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -52630,15 +51015,9 @@ class GoogleCloudAiplatformV1SupervisedTuningDatasetDistributionDatasetBucket {
   GoogleCloudAiplatformV1SupervisedTuningDatasetDistributionDatasetBucket.fromJson(
       core.Map json_)
       : this(
-          count: json_.containsKey('count')
-              ? (json_['count'] as core.num).toDouble()
-              : null,
-          left: json_.containsKey('left')
-              ? (json_['left'] as core.num).toDouble()
-              : null,
-          right: json_.containsKey('right')
-              ? (json_['right'] as core.num).toDouble()
-              : null,
+          count: (json_['count'] as core.num?)?.toDouble(),
+          left: (json_['left'] as core.num?)?.toDouble(),
+          right: (json_['right'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -52682,12 +51061,8 @@ class GoogleCloudAiplatformV1SupervisedTuningSpec {
                   json_['hyperParameters']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          trainingDatasetUri: json_.containsKey('trainingDatasetUri')
-              ? json_['trainingDatasetUri'] as core.String
-              : null,
-          validationDatasetUri: json_.containsKey('validationDatasetUri')
-              ? json_['validationDatasetUri'] as core.String
-              : null,
+          trainingDatasetUri: json_['trainingDatasetUri'] as core.String?,
+          validationDatasetUri: json_['validationDatasetUri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -52714,9 +51089,7 @@ class GoogleCloudAiplatformV1SyncFeatureViewResponse {
 
   GoogleCloudAiplatformV1SyncFeatureViewResponse.fromJson(core.Map json_)
       : this(
-          featureViewSync: json_.containsKey('featureViewSync')
-              ? json_['featureViewSync'] as core.String
-              : null,
+          featureViewSync: json_['featureViewSync'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -52853,8 +51226,7 @@ class GoogleCloudAiplatformV1Tensor {
                   .map((value) => (value as core.num).toDouble())
                   .toList()
               : null,
-          dtype:
-              json_.containsKey('dtype') ? json_['dtype'] as core.String : null,
+          dtype: json_['dtype'] as core.String?,
           floatVal: json_.containsKey('floatVal')
               ? (json_['floatVal'] as core.List)
                   .map((value) => (value as core.num).toDouble())
@@ -52895,9 +51267,7 @@ class GoogleCloudAiplatformV1Tensor {
                   ),
                 )
               : null,
-          tensorVal: json_.containsKey('tensorVal')
-              ? json_['tensorVal'] as core.String
-              : null,
+          tensorVal: json_['tensorVal'] as core.String?,
           uint64Val: json_.containsKey('uint64Val')
               ? (json_['uint64Val'] as core.List)
                   .map((value) => value as core.String)
@@ -53018,27 +51388,17 @@ class GoogleCloudAiplatformV1Tensorboard {
 
   GoogleCloudAiplatformV1Tensorboard.fromJson(core.Map json_)
       : this(
-          blobStoragePathPrefix: json_.containsKey('blobStoragePathPrefix')
-              ? json_['blobStoragePathPrefix'] as core.String
-              : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+          blobStoragePathPrefix: json_['blobStoragePathPrefix'] as core.String?,
+          createTime: json_['createTime'] as core.String?,
+          description: json_['description'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
           encryptionSpec: json_.containsKey('encryptionSpec')
               ? GoogleCloudAiplatformV1EncryptionSpec.fromJson(
                   json_['encryptionSpec']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          isDefault: json_.containsKey('isDefault')
-              ? json_['isDefault'] as core.bool
-              : null,
+          etag: json_['etag'] as core.String?,
+          isDefault: json_['isDefault'] as core.bool?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -53047,13 +51407,9 @@ class GoogleCloudAiplatformV1Tensorboard {
                   ),
                 )
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          runCount: json_.containsKey('runCount')
-              ? json_['runCount'] as core.int
-              : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          runCount: json_['runCount'] as core.int?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -53101,8 +51457,8 @@ class GoogleCloudAiplatformV1TensorboardBlob {
 
   GoogleCloudAiplatformV1TensorboardBlob.fromJson(core.Map json_)
       : this(
-          data: json_.containsKey('data') ? json_['data'] as core.String : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          data: json_['data'] as core.String?,
+          id: json_['id'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -53204,16 +51560,10 @@ class GoogleCloudAiplatformV1TensorboardExperiment {
 
   GoogleCloudAiplatformV1TensorboardExperiment.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          createTime: json_['createTime'] as core.String?,
+          description: json_['description'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          etag: json_['etag'] as core.String?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -53222,13 +51572,9 @@ class GoogleCloudAiplatformV1TensorboardExperiment {
                   ),
                 )
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          source: json_.containsKey('source')
-              ? json_['source'] as core.String
-              : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          source: json_['source'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -53309,16 +51655,10 @@ class GoogleCloudAiplatformV1TensorboardRun {
 
   GoogleCloudAiplatformV1TensorboardRun.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          createTime: json_['createTime'] as core.String?,
+          description: json_['description'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          etag: json_['etag'] as core.String?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -53327,10 +51667,8 @@ class GoogleCloudAiplatformV1TensorboardRun {
                   ),
                 )
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -53370,11 +51708,8 @@ class GoogleCloudAiplatformV1TensorboardTensor {
 
   GoogleCloudAiplatformV1TensorboardTensor.fromJson(core.Map json_)
       : this(
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
-          versionNumber: json_.containsKey('versionNumber')
-              ? json_['versionNumber'] as core.int
-              : null,
+          value: json_['value'] as core.String?,
+          versionNumber: json_['versionNumber'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -53466,33 +51801,19 @@ class GoogleCloudAiplatformV1TensorboardTimeSeries {
 
   GoogleCloudAiplatformV1TensorboardTimeSeries.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          createTime: json_['createTime'] as core.String?,
+          description: json_['description'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          etag: json_['etag'] as core.String?,
           metadata: json_.containsKey('metadata')
               ? GoogleCloudAiplatformV1TensorboardTimeSeriesMetadata.fromJson(
                   json_['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          pluginData: json_.containsKey('pluginData')
-              ? json_['pluginData'] as core.String
-              : null,
-          pluginName: json_.containsKey('pluginName')
-              ? json_['pluginName'] as core.String
-              : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
-          valueType: json_.containsKey('valueType')
-              ? json_['valueType'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          pluginData: json_['pluginData'] as core.String?,
+          pluginName: json_['pluginName'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
+          valueType: json_['valueType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -53536,15 +51857,9 @@ class GoogleCloudAiplatformV1TensorboardTimeSeriesMetadata {
 
   GoogleCloudAiplatformV1TensorboardTimeSeriesMetadata.fromJson(core.Map json_)
       : this(
-          maxBlobSequenceLength: json_.containsKey('maxBlobSequenceLength')
-              ? json_['maxBlobSequenceLength'] as core.String
-              : null,
-          maxStep: json_.containsKey('maxStep')
-              ? json_['maxStep'] as core.String
-              : null,
-          maxWallTime: json_.containsKey('maxWallTime')
-              ? json_['maxWallTime'] as core.String
-              : null,
+          maxBlobSequenceLength: json_['maxBlobSequenceLength'] as core.String?,
+          maxStep: json_['maxStep'] as core.String?,
+          maxWallTime: json_['maxWallTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -53573,9 +51888,7 @@ class GoogleCloudAiplatformV1ThresholdConfig {
 
   GoogleCloudAiplatformV1ThresholdConfig.fromJson(core.Map json_)
       : this(
-          value: json_.containsKey('value')
-              ? (json_['value'] as core.num).toDouble()
-              : null,
+          value: (json_['value'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -53619,12 +51932,9 @@ class GoogleCloudAiplatformV1TimeSeriesData {
 
   GoogleCloudAiplatformV1TimeSeriesData.fromJson(core.Map json_)
       : this(
-          tensorboardTimeSeriesId: json_.containsKey('tensorboardTimeSeriesId')
-              ? json_['tensorboardTimeSeriesId'] as core.String
-              : null,
-          valueType: json_.containsKey('valueType')
-              ? json_['valueType'] as core.String
-              : null,
+          tensorboardTimeSeriesId:
+              json_['tensorboardTimeSeriesId'] as core.String?,
+          valueType: json_['valueType'] as core.String?,
           values: json_.containsKey('values')
               ? (json_['values'] as core.List)
                   .map((value) =>
@@ -53677,14 +51987,12 @@ class GoogleCloudAiplatformV1TimeSeriesDataPoint {
               ? GoogleCloudAiplatformV1Scalar.fromJson(
                   json_['scalar'] as core.Map<core.String, core.dynamic>)
               : null,
-          step: json_.containsKey('step') ? json_['step'] as core.String : null,
+          step: json_['step'] as core.String?,
           tensor: json_.containsKey('tensor')
               ? GoogleCloudAiplatformV1TensorboardTensor.fromJson(
                   json_['tensor'] as core.Map<core.String, core.dynamic>)
               : null,
-          wallTime: json_.containsKey('wallTime')
-              ? json_['wallTime'] as core.String
-              : null,
+          wallTime: json_['wallTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -53730,16 +52038,12 @@ class GoogleCloudAiplatformV1TimestampSplit {
 
   GoogleCloudAiplatformV1TimestampSplit.fromJson(core.Map json_)
       : this(
-          key: json_.containsKey('key') ? json_['key'] as core.String : null,
-          testFraction: json_.containsKey('testFraction')
-              ? (json_['testFraction'] as core.num).toDouble()
-              : null,
-          trainingFraction: json_.containsKey('trainingFraction')
-              ? (json_['trainingFraction'] as core.num).toDouble()
-              : null,
-          validationFraction: json_.containsKey('validationFraction')
-              ? (json_['validationFraction'] as core.num).toDouble()
-              : null,
+          key: json_['key'] as core.String?,
+          testFraction: (json_['testFraction'] as core.num?)?.toDouble(),
+          trainingFraction:
+              (json_['trainingFraction'] as core.num?)?.toDouble(),
+          validationFraction:
+              (json_['validationFraction'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -53899,9 +52203,7 @@ class GoogleCloudAiplatformV1TrainingConfig {
   GoogleCloudAiplatformV1TrainingConfig.fromJson(core.Map json_)
       : this(
           timeoutTrainingMilliHours:
-              json_.containsKey('timeoutTrainingMilliHours')
-                  ? json_['timeoutTrainingMilliHours'] as core.String
-                  : null,
+              json_['timeoutTrainingMilliHours'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -54088,20 +52390,14 @@ class GoogleCloudAiplatformV1TrainingPipeline {
 
   GoogleCloudAiplatformV1TrainingPipeline.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
           encryptionSpec: json_.containsKey('encryptionSpec')
               ? GoogleCloudAiplatformV1EncryptionSpec.fromJson(
                   json_['encryptionSpec']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          endTime: json_.containsKey('endTime')
-              ? json_['endTime'] as core.String
-              : null,
+          endTime: json_['endTime'] as core.String?,
           error: json_.containsKey('error')
               ? GoogleRpcStatus.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
@@ -54119,34 +52415,20 @@ class GoogleCloudAiplatformV1TrainingPipeline {
                   ),
                 )
               : null,
-          modelId: json_.containsKey('modelId')
-              ? json_['modelId'] as core.String
-              : null,
+          modelId: json_['modelId'] as core.String?,
           modelToUpload: json_.containsKey('modelToUpload')
               ? GoogleCloudAiplatformV1Model.fromJson(
                   json_['modelToUpload'] as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          parentModel: json_.containsKey('parentModel')
-              ? json_['parentModel'] as core.String
-              : null,
-          startTime: json_.containsKey('startTime')
-              ? json_['startTime'] as core.String
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
-          trainingTaskDefinition: json_.containsKey('trainingTaskDefinition')
-              ? json_['trainingTaskDefinition'] as core.String
-              : null,
-          trainingTaskInputs: json_.containsKey('trainingTaskInputs')
-              ? json_['trainingTaskInputs']
-              : null,
-          trainingTaskMetadata: json_.containsKey('trainingTaskMetadata')
-              ? json_['trainingTaskMetadata']
-              : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          parentModel: json_['parentModel'] as core.String?,
+          startTime: json_['startTime'] as core.String?,
+          state: json_['state'] as core.String?,
+          trainingTaskDefinition:
+              json_['trainingTaskDefinition'] as core.String?,
+          trainingTaskInputs: json_['trainingTaskInputs'],
+          trainingTaskMetadata: json_['trainingTaskMetadata'],
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -54290,31 +52572,23 @@ class GoogleCloudAiplatformV1Trial {
 
   GoogleCloudAiplatformV1Trial.fromJson(core.Map json_)
       : this(
-          clientId: json_.containsKey('clientId')
-              ? json_['clientId'] as core.String
-              : null,
-          customJob: json_.containsKey('customJob')
-              ? json_['customJob'] as core.String
-              : null,
-          endTime: json_.containsKey('endTime')
-              ? json_['endTime'] as core.String
-              : null,
+          clientId: json_['clientId'] as core.String?,
+          customJob: json_['customJob'] as core.String?,
+          endTime: json_['endTime'] as core.String?,
           finalMeasurement: json_.containsKey('finalMeasurement')
               ? GoogleCloudAiplatformV1Measurement.fromJson(
                   json_['finalMeasurement']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          infeasibleReason: json_.containsKey('infeasibleReason')
-              ? json_['infeasibleReason'] as core.String
-              : null,
+          id: json_['id'] as core.String?,
+          infeasibleReason: json_['infeasibleReason'] as core.String?,
           measurements: json_.containsKey('measurements')
               ? (json_['measurements'] as core.List)
                   .map((value) => GoogleCloudAiplatformV1Measurement.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           parameters: json_.containsKey('parameters')
               ? (json_['parameters'] as core.List)
                   .map((value) =>
@@ -54322,11 +52596,8 @@ class GoogleCloudAiplatformV1Trial {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          startTime: json_.containsKey('startTime')
-              ? json_['startTime'] as core.String
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
+          startTime: json_['startTime'] as core.String?,
+          state: json_['state'] as core.String?,
           webAccessUris: json_.containsKey('webAccessUris')
               ? (json_['webAccessUris'] as core.Map<core.String, core.dynamic>)
                   .map(
@@ -54379,9 +52650,7 @@ class GoogleCloudAiplatformV1TrialContext {
 
   GoogleCloudAiplatformV1TrialContext.fromJson(core.Map json_)
       : this(
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
+          description: json_['description'] as core.String?,
           parameters: json_.containsKey('parameters')
               ? (json_['parameters'] as core.List)
                   .map((value) =>
@@ -54425,10 +52694,8 @@ class GoogleCloudAiplatformV1TrialParameter {
 
   GoogleCloudAiplatformV1TrialParameter.fromJson(core.Map json_)
       : this(
-          parameterId: json_.containsKey('parameterId')
-              ? json_['parameterId'] as core.String
-              : null,
-          value: json_.containsKey('value') ? json_['value'] : null,
+          parameterId: json_['parameterId'] as core.String?,
+          value: json_['value'],
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -54461,11 +52728,8 @@ class GoogleCloudAiplatformV1TunedModel {
 
   GoogleCloudAiplatformV1TunedModel.fromJson(core.Map json_)
       : this(
-          endpoint: json_.containsKey('endpoint')
-              ? json_['endpoint'] as core.String
-              : null,
-          model:
-              json_.containsKey('model') ? json_['model'] as core.String : null,
+          endpoint: json_['endpoint'] as core.String?,
+          model: json_['model'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -54658,30 +52922,20 @@ class GoogleCloudAiplatformV1TuningJob {
 
   GoogleCloudAiplatformV1TuningJob.fromJson(core.Map json_)
       : this(
-          baseModel: json_.containsKey('baseModel')
-              ? json_['baseModel'] as core.String
-              : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
+          baseModel: json_['baseModel'] as core.String?,
+          createTime: json_['createTime'] as core.String?,
+          description: json_['description'] as core.String?,
           encryptionSpec: json_.containsKey('encryptionSpec')
               ? GoogleCloudAiplatformV1EncryptionSpec.fromJson(
                   json_['encryptionSpec']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          endTime: json_.containsKey('endTime')
-              ? json_['endTime'] as core.String
-              : null,
+          endTime: json_['endTime'] as core.String?,
           error: json_.containsKey('error')
               ? GoogleRpcStatus.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
               : null,
-          experiment: json_.containsKey('experiment')
-              ? json_['experiment'] as core.String
-              : null,
+          experiment: json_['experiment'] as core.String?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -54690,12 +52944,9 @@ class GoogleCloudAiplatformV1TuningJob {
                   ),
                 )
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          startTime: json_.containsKey('startTime')
-              ? json_['startTime'] as core.String
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
+          name: json_['name'] as core.String?,
+          startTime: json_['startTime'] as core.String?,
+          state: json_['state'] as core.String?,
           supervisedTuningSpec: json_.containsKey('supervisedTuningSpec')
               ? GoogleCloudAiplatformV1SupervisedTuningSpec.fromJson(
                   json_['supervisedTuningSpec']
@@ -54705,17 +52956,13 @@ class GoogleCloudAiplatformV1TuningJob {
               ? GoogleCloudAiplatformV1TunedModel.fromJson(
                   json_['tunedModel'] as core.Map<core.String, core.dynamic>)
               : null,
-          tunedModelDisplayName: json_.containsKey('tunedModelDisplayName')
-              ? json_['tunedModelDisplayName'] as core.String
-              : null,
+          tunedModelDisplayName: json_['tunedModelDisplayName'] as core.String?,
           tuningDataStats: json_.containsKey('tuningDataStats')
               ? GoogleCloudAiplatformV1TuningDataStats.fromJson(
                   json_['tuningDataStats']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -54753,9 +53000,7 @@ class GoogleCloudAiplatformV1UndeployIndexRequest {
 
   GoogleCloudAiplatformV1UndeployIndexRequest.fromJson(core.Map json_)
       : this(
-          deployedIndexId: json_.containsKey('deployedIndexId')
-              ? json_['deployedIndexId'] as core.String
-              : null,
+          deployedIndexId: json_['deployedIndexId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -54787,9 +53032,7 @@ class GoogleCloudAiplatformV1UndeployModelRequest {
 
   GoogleCloudAiplatformV1UndeployModelRequest.fromJson(core.Map json_)
       : this(
-          deployedModelId: json_.containsKey('deployedModelId')
-              ? json_['deployedModelId'] as core.String
-              : null,
+          deployedModelId: json_['deployedModelId'] as core.String?,
           trafficSplit: json_.containsKey('trafficSplit')
               ? (json_['trafficSplit'] as core.Map<core.String, core.dynamic>)
                   .map(
@@ -54831,9 +53074,7 @@ class GoogleCloudAiplatformV1UnmanagedContainerModel {
 
   GoogleCloudAiplatformV1UnmanagedContainerModel.fromJson(core.Map json_)
       : this(
-          artifactUri: json_.containsKey('artifactUri')
-              ? json_['artifactUri'] as core.String
-              : null,
+          artifactUri: json_['artifactUri'] as core.String?,
           containerSpec: json_.containsKey('containerSpec')
               ? GoogleCloudAiplatformV1ModelContainerSpec.fromJson(
                   json_['containerSpec'] as core.Map<core.String, core.dynamic>)
@@ -54927,15 +53168,9 @@ class GoogleCloudAiplatformV1UploadModelRequest {
               ? GoogleCloudAiplatformV1Model.fromJson(
                   json_['model'] as core.Map<core.String, core.dynamic>)
               : null,
-          modelId: json_.containsKey('modelId')
-              ? json_['modelId'] as core.String
-              : null,
-          parentModel: json_.containsKey('parentModel')
-              ? json_['parentModel'] as core.String
-              : null,
-          serviceAccount: json_.containsKey('serviceAccount')
-              ? json_['serviceAccount'] as core.String
-              : null,
+          modelId: json_['modelId'] as core.String?,
+          parentModel: json_['parentModel'] as core.String?,
+          serviceAccount: json_['serviceAccount'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -54975,9 +53210,7 @@ class GoogleCloudAiplatformV1UpsertDatapointsRequest {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          updateMask: json_.containsKey('updateMask')
-              ? json_['updateMask'] as core.String
-              : null,
+          updateMask: json_['updateMask'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -55020,15 +53253,9 @@ class GoogleCloudAiplatformV1UserActionReference {
 
   GoogleCloudAiplatformV1UserActionReference.fromJson(core.Map json_)
       : this(
-          dataLabelingJob: json_.containsKey('dataLabelingJob')
-              ? json_['dataLabelingJob'] as core.String
-              : null,
-          method: json_.containsKey('method')
-              ? json_['method'] as core.String
-              : null,
-          operation: json_.containsKey('operation')
-              ? json_['operation'] as core.String
-              : null,
+          dataLabelingJob: json_['dataLabelingJob'] as core.String?,
+          method: json_['method'] as core.String?,
+          operation: json_['operation'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -55057,15 +53284,9 @@ class GoogleCloudAiplatformV1Value {
 
   GoogleCloudAiplatformV1Value.fromJson(core.Map json_)
       : this(
-          doubleValue: json_.containsKey('doubleValue')
-              ? (json_['doubleValue'] as core.num).toDouble()
-              : null,
-          intValue: json_.containsKey('intValue')
-              ? json_['intValue'] as core.String
-              : null,
-          stringValue: json_.containsKey('stringValue')
-              ? json_['stringValue'] as core.String
-              : null,
+          doubleValue: (json_['doubleValue'] as core.num?)?.toDouble(),
+          intValue: json_['intValue'] as core.String?,
+          stringValue: json_['stringValue'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -55093,9 +53314,7 @@ class GoogleCloudAiplatformV1VertexAISearch {
 
   GoogleCloudAiplatformV1VertexAISearch.fromJson(core.Map json_)
       : this(
-          datastore: json_.containsKey('datastore')
-              ? json_['datastore'] as core.String
-              : null,
+          datastore: json_['datastore'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -55122,12 +53341,8 @@ class GoogleCloudAiplatformV1VideoMetadata {
 
   GoogleCloudAiplatformV1VideoMetadata.fromJson(core.Map json_)
       : this(
-          endOffset: json_.containsKey('endOffset')
-              ? json_['endOffset'] as core.String
-              : null,
-          startOffset: json_.containsKey('startOffset')
-              ? json_['startOffset'] as core.String
-              : null,
+          endOffset: json_['endOffset'] as core.String?,
+          startOffset: json_['startOffset'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -55196,9 +53411,7 @@ class GoogleCloudAiplatformV1WorkerPoolSpec {
                   json_['pythonPackageSpec']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          replicaCount: json_.containsKey('replicaCount')
-              ? json_['replicaCount'] as core.String
-              : null,
+          replicaCount: json_['replicaCount'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -55234,9 +53447,7 @@ class GoogleCloudAiplatformV1WriteFeatureValuesPayload {
 
   GoogleCloudAiplatformV1WriteFeatureValuesPayload.fromJson(core.Map json_)
       : this(
-          entityId: json_.containsKey('entityId')
-              ? json_['entityId'] as core.String
-              : null,
+          entityId: json_['entityId'] as core.String?,
           featureValues: json_.containsKey('featureValues')
               ? (json_['featureValues'] as core.Map<core.String, core.dynamic>)
                   .map(
@@ -55347,9 +53558,7 @@ class GoogleCloudAiplatformV1WriteTensorboardRunDataRequest {
 
   GoogleCloudAiplatformV1WriteTensorboardRunDataRequest.fromJson(core.Map json_)
       : this(
-          tensorboardRun: json_.containsKey('tensorboardRun')
-              ? json_['tensorboardRun'] as core.String
-              : null,
+          tensorboardRun: json_['tensorboardRun'] as core.String?,
           timeSeriesData: json_.containsKey('timeSeriesData')
               ? (json_['timeSeriesData'] as core.List)
                   .map((value) =>
@@ -55418,9 +53627,7 @@ class GoogleCloudAiplatformV1XraiAttribution {
                   json_['smoothGradConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          stepCount: json_.containsKey('stepCount')
-              ? json_['stepCount'] as core.int
-              : null,
+          stepCount: json_['stepCount'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -55452,9 +53659,7 @@ class GoogleCloudLocationListLocationsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -55563,7 +53768,7 @@ class GoogleIamV1Binding {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          role: json_.containsKey('role') ? json_['role'] as core.String : null,
+          role: json_['role'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -55670,10 +53875,8 @@ class GoogleIamV1Policy {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          version: json_.containsKey('version')
-              ? json_['version'] as core.int
-              : null,
+          etag: json_['etag'] as core.String?,
+          version: json_['version'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -55727,9 +53930,7 @@ class GoogleLongrunningListOperationsResponse {
 
   GoogleLongrunningListOperationsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           operations: json_.containsKey('operations')
               ? (json_['operations'] as core.List)
                   .map((value) => GoogleLongrunningOperation.fromJson(
@@ -55797,7 +53998,7 @@ class GoogleLongrunningOperation {
 
   GoogleLongrunningOperation.fromJson(core.Map json_)
       : this(
-          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? GoogleRpcStatus.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
@@ -55805,7 +54006,7 @@ class GoogleLongrunningOperation {
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           response: json_.containsKey('response')
               ? json_['response'] as core.Map<core.String, core.dynamic>
               : null,

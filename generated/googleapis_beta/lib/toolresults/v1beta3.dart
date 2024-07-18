@@ -1911,16 +1911,10 @@ class AndroidAppInfo {
 
   AndroidAppInfo.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          packageName: json_.containsKey('packageName')
-              ? json_['packageName'] as core.String
-              : null,
-          versionCode: json_.containsKey('versionCode')
-              ? json_['versionCode'] as core.String
-              : null,
-          versionName: json_.containsKey('versionName')
-              ? json_['versionName'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          packageName: json_['packageName'] as core.String?,
+          versionCode: json_['versionCode'] as core.String?,
+          versionName: json_['versionName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1965,20 +1959,14 @@ class AndroidInstrumentationTest {
 
   AndroidInstrumentationTest.fromJson(core.Map json_)
       : this(
-          testPackageId: json_.containsKey('testPackageId')
-              ? json_['testPackageId'] as core.String
-              : null,
-          testRunnerClass: json_.containsKey('testRunnerClass')
-              ? json_['testRunnerClass'] as core.String
-              : null,
+          testPackageId: json_['testPackageId'] as core.String?,
+          testRunnerClass: json_['testRunnerClass'] as core.String?,
           testTargets: json_.containsKey('testTargets')
               ? (json_['testTargets'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          useOrchestrator: json_.containsKey('useOrchestrator')
-              ? json_['useOrchestrator'] as core.bool
-              : null,
+          useOrchestrator: json_['useOrchestrator'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2027,21 +2015,11 @@ class AndroidRoboTest {
 
   AndroidRoboTest.fromJson(core.Map json_)
       : this(
-          appInitialActivity: json_.containsKey('appInitialActivity')
-              ? json_['appInitialActivity'] as core.String
-              : null,
-          bootstrapPackageId: json_.containsKey('bootstrapPackageId')
-              ? json_['bootstrapPackageId'] as core.String
-              : null,
-          bootstrapRunnerClass: json_.containsKey('bootstrapRunnerClass')
-              ? json_['bootstrapRunnerClass'] as core.String
-              : null,
-          maxDepth: json_.containsKey('maxDepth')
-              ? json_['maxDepth'] as core.int
-              : null,
-          maxSteps: json_.containsKey('maxSteps')
-              ? json_['maxSteps'] as core.int
-              : null,
+          appInitialActivity: json_['appInitialActivity'] as core.String?,
+          bootstrapPackageId: json_['bootstrapPackageId'] as core.String?,
+          bootstrapRunnerClass: json_['bootstrapRunnerClass'] as core.String?,
+          maxDepth: json_['maxDepth'] as core.int?,
+          maxSteps: json_['maxSteps'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2187,11 +2165,8 @@ class Any {
 
   Any.fromJson(core.Map json_)
       : this(
-          typeUrl: json_.containsKey('typeUrl')
-              ? json_['typeUrl'] as core.String
-              : null,
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
+          typeUrl: json_['typeUrl'] as core.String?,
+          value: json_['value'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2289,15 +2264,9 @@ class BasicPerfSampleSeries {
 
   BasicPerfSampleSeries.fromJson(core.Map json_)
       : this(
-          perfMetricType: json_.containsKey('perfMetricType')
-              ? json_['perfMetricType'] as core.String
-              : null,
-          perfUnit: json_.containsKey('perfUnit')
-              ? json_['perfUnit'] as core.String
-              : null,
-          sampleSeriesLabel: json_.containsKey('sampleSeriesLabel')
-              ? json_['sampleSeriesLabel'] as core.String
-              : null,
+          perfMetricType: json_['perfMetricType'] as core.String?,
+          perfUnit: json_['perfUnit'] as core.String?,
+          sampleSeriesLabel: json_['sampleSeriesLabel'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2372,15 +2341,9 @@ class CPUInfo {
 
   CPUInfo.fromJson(core.Map json_)
       : this(
-          cpuProcessor: json_.containsKey('cpuProcessor')
-              ? json_['cpuProcessor'] as core.String
-              : null,
-          cpuSpeedInGhz: json_.containsKey('cpuSpeedInGhz')
-              ? (json_['cpuSpeedInGhz'] as core.num).toDouble()
-              : null,
-          numberOfCores: json_.containsKey('numberOfCores')
-              ? json_['numberOfCores'] as core.int
-              : null,
+          cpuProcessor: json_['cpuProcessor'] as core.String?,
+          cpuSpeedInGhz: (json_['cpuSpeedInGhz'] as core.num?)?.toDouble(),
+          numberOfCores: json_['numberOfCores'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2420,10 +2383,8 @@ class Duration {
 
   Duration.fromJson(core.Map json_)
       : this(
-          nanos: json_.containsKey('nanos') ? json_['nanos'] as core.int : null,
-          seconds: json_.containsKey('seconds')
-              ? json_['seconds'] as core.String
-              : null,
+          nanos: json_['nanos'] as core.int?,
+          seconds: json_['seconds'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2528,25 +2489,15 @@ class Environment {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          environmentId: json_.containsKey('environmentId')
-              ? json_['environmentId'] as core.String
-              : null,
+          displayName: json_['displayName'] as core.String?,
+          environmentId: json_['environmentId'] as core.String?,
           environmentResult: json_.containsKey('environmentResult')
               ? MergedResult.fromJson(json_['environmentResult']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          executionId: json_.containsKey('executionId')
-              ? json_['executionId'] as core.String
-              : null,
-          historyId: json_.containsKey('historyId')
-              ? json_['historyId'] as core.String
-              : null,
-          projectId: json_.containsKey('projectId')
-              ? json_['projectId'] as core.String
-              : null,
+          executionId: json_['executionId'] as core.String?,
+          historyId: json_['historyId'] as core.String?,
+          projectId: json_['projectId'] as core.String?,
           resultsStorage: json_.containsKey('resultsStorage')
               ? ResultsStorage.fromJson(json_['resultsStorage']
                   as core.Map<core.String, core.dynamic>)
@@ -2678,9 +2629,7 @@ class Execution {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          executionId: json_.containsKey('executionId')
-              ? json_['executionId'] as core.String
-              : null,
+          executionId: json_['executionId'] as core.String?,
           outcome: json_.containsKey('outcome')
               ? Outcome.fromJson(
                   json_['outcome'] as core.Map<core.String, core.dynamic>)
@@ -2689,11 +2638,8 @@ class Execution {
               ? Specification.fromJson(
                   json_['specification'] as core.Map<core.String, core.dynamic>)
               : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
-          testExecutionMatrixId: json_.containsKey('testExecutionMatrixId')
-              ? json_['testExecutionMatrixId'] as core.String
-              : null,
+          state: json_['state'] as core.String?,
+          testExecutionMatrixId: json_['testExecutionMatrixId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2750,27 +2696,13 @@ class FailureDetail {
 
   FailureDetail.fromJson(core.Map json_)
       : this(
-          crashed: json_.containsKey('crashed')
-              ? json_['crashed'] as core.bool
-              : null,
-          deviceOutOfMemory: json_.containsKey('deviceOutOfMemory')
-              ? json_['deviceOutOfMemory'] as core.bool
-              : null,
-          failedRoboscript: json_.containsKey('failedRoboscript')
-              ? json_['failedRoboscript'] as core.bool
-              : null,
-          notInstalled: json_.containsKey('notInstalled')
-              ? json_['notInstalled'] as core.bool
-              : null,
-          otherNativeCrash: json_.containsKey('otherNativeCrash')
-              ? json_['otherNativeCrash'] as core.bool
-              : null,
-          timedOut: json_.containsKey('timedOut')
-              ? json_['timedOut'] as core.bool
-              : null,
-          unableToCrawl: json_.containsKey('unableToCrawl')
-              ? json_['unableToCrawl'] as core.bool
-              : null,
+          crashed: json_['crashed'] as core.bool?,
+          deviceOutOfMemory: json_['deviceOutOfMemory'] as core.bool?,
+          failedRoboscript: json_['failedRoboscript'] as core.bool?,
+          notInstalled: json_['notInstalled'] as core.bool?,
+          otherNativeCrash: json_['otherNativeCrash'] as core.bool?,
+          timedOut: json_['timedOut'] as core.bool?,
+          unableToCrawl: json_['unableToCrawl'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2801,9 +2733,7 @@ class FileReference {
 
   FileReference.fromJson(core.Map json_)
       : this(
-          fileUri: json_.containsKey('fileUri')
-              ? json_['fileUri'] as core.String
-              : null,
+          fileUri: json_['fileUri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2882,39 +2812,17 @@ class GraphicsStats {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          highInputLatencyCount: json_.containsKey('highInputLatencyCount')
-              ? json_['highInputLatencyCount'] as core.String
-              : null,
-          jankyFrames: json_.containsKey('jankyFrames')
-              ? json_['jankyFrames'] as core.String
-              : null,
-          missedVsyncCount: json_.containsKey('missedVsyncCount')
-              ? json_['missedVsyncCount'] as core.String
-              : null,
-          p50Millis: json_.containsKey('p50Millis')
-              ? json_['p50Millis'] as core.String
-              : null,
-          p90Millis: json_.containsKey('p90Millis')
-              ? json_['p90Millis'] as core.String
-              : null,
-          p95Millis: json_.containsKey('p95Millis')
-              ? json_['p95Millis'] as core.String
-              : null,
-          p99Millis: json_.containsKey('p99Millis')
-              ? json_['p99Millis'] as core.String
-              : null,
-          slowBitmapUploadCount: json_.containsKey('slowBitmapUploadCount')
-              ? json_['slowBitmapUploadCount'] as core.String
-              : null,
-          slowDrawCount: json_.containsKey('slowDrawCount')
-              ? json_['slowDrawCount'] as core.String
-              : null,
-          slowUiThreadCount: json_.containsKey('slowUiThreadCount')
-              ? json_['slowUiThreadCount'] as core.String
-              : null,
-          totalFrames: json_.containsKey('totalFrames')
-              ? json_['totalFrames'] as core.String
-              : null,
+          highInputLatencyCount: json_['highInputLatencyCount'] as core.String?,
+          jankyFrames: json_['jankyFrames'] as core.String?,
+          missedVsyncCount: json_['missedVsyncCount'] as core.String?,
+          p50Millis: json_['p50Millis'] as core.String?,
+          p90Millis: json_['p90Millis'] as core.String?,
+          p95Millis: json_['p95Millis'] as core.String?,
+          p99Millis: json_['p99Millis'] as core.String?,
+          slowBitmapUploadCount: json_['slowBitmapUploadCount'] as core.String?,
+          slowDrawCount: json_['slowDrawCount'] as core.String?,
+          slowUiThreadCount: json_['slowUiThreadCount'] as core.String?,
+          totalFrames: json_['totalFrames'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2949,12 +2857,8 @@ class GraphicsStatsBucket {
 
   GraphicsStatsBucket.fromJson(core.Map json_)
       : this(
-          frameCount: json_.containsKey('frameCount')
-              ? json_['frameCount'] as core.String
-              : null,
-          renderMillis: json_.containsKey('renderMillis')
-              ? json_['renderMillis'] as core.String
-              : null,
+          frameCount: json_['frameCount'] as core.String?,
+          renderMillis: json_['renderMillis'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3008,16 +2912,10 @@ class History {
 
   History.fromJson(core.Map json_)
       : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          historyId: json_.containsKey('historyId')
-              ? json_['historyId'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          testPlatform: json_.containsKey('testPlatform')
-              ? json_['testPlatform'] as core.String
-              : null,
+          displayName: json_['displayName'] as core.String?,
+          historyId: json_['historyId'] as core.String?,
+          name: json_['name'] as core.String?,
+          testPlatform: json_['testPlatform'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3064,9 +2962,7 @@ class Image {
               ? ToolOutputReference.fromJson(
                   json_['sourceImage'] as core.Map<core.String, core.dynamic>)
               : null,
-          stepId: json_.containsKey('stepId')
-              ? json_['stepId'] as core.String
-              : null,
+          stepId: json_['stepId'] as core.String?,
           thumbnail: json_.containsKey('thumbnail')
               ? Thumbnail.fromJson(
                   json_['thumbnail'] as core.Map<core.String, core.dynamic>)
@@ -3109,15 +3005,9 @@ class InconclusiveDetail {
 
   InconclusiveDetail.fromJson(core.Map json_)
       : this(
-          abortedByUser: json_.containsKey('abortedByUser')
-              ? json_['abortedByUser'] as core.bool
-              : null,
-          hasErrorLogs: json_.containsKey('hasErrorLogs')
-              ? json_['hasErrorLogs'] as core.bool
-              : null,
-          infrastructureFailure: json_.containsKey('infrastructureFailure')
-              ? json_['infrastructureFailure'] as core.bool
-              : null,
+          abortedByUser: json_['abortedByUser'] as core.bool?,
+          hasErrorLogs: json_['hasErrorLogs'] as core.bool?,
+          infrastructureFailure: json_['infrastructureFailure'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3167,19 +3057,13 @@ class IndividualOutcome {
 
   IndividualOutcome.fromJson(core.Map json_)
       : this(
-          multistepNumber: json_.containsKey('multistepNumber')
-              ? json_['multistepNumber'] as core.int
-              : null,
-          outcomeSummary: json_.containsKey('outcomeSummary')
-              ? json_['outcomeSummary'] as core.String
-              : null,
+          multistepNumber: json_['multistepNumber'] as core.int?,
+          outcomeSummary: json_['outcomeSummary'] as core.String?,
           runDuration: json_.containsKey('runDuration')
               ? Duration.fromJson(
                   json_['runDuration'] as core.Map<core.String, core.dynamic>)
               : null,
-          stepId: json_.containsKey('stepId')
-              ? json_['stepId'] as core.String
-              : null,
+          stepId: json_['stepId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3203,7 +3087,7 @@ class IosAppInfo {
 
   IosAppInfo.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3283,9 +3167,7 @@ class IosTestLoop {
 
   IosTestLoop.fromJson(core.Map json_)
       : this(
-          bundleId: json_.containsKey('bundleId')
-              ? json_['bundleId'] as core.String
-              : null,
+          bundleId: json_['bundleId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3308,12 +3190,8 @@ class IosXcTest {
 
   IosXcTest.fromJson(core.Map json_)
       : this(
-          bundleId: json_.containsKey('bundleId')
-              ? json_['bundleId'] as core.String
-              : null,
-          xcodeVersion: json_.containsKey('xcodeVersion')
-              ? json_['xcodeVersion'] as core.String
-              : null,
+          bundleId: json_['bundleId'] as core.String?,
+          xcodeVersion: json_['xcodeVersion'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3363,18 +3241,10 @@ class ListEnvironmentsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          executionId: json_.containsKey('executionId')
-              ? json_['executionId'] as core.String
-              : null,
-          historyId: json_.containsKey('historyId')
-              ? json_['historyId'] as core.String
-              : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
-          projectId: json_.containsKey('projectId')
-              ? json_['projectId'] as core.String
-              : null,
+          executionId: json_['executionId'] as core.String?,
+          historyId: json_['historyId'] as core.String?,
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          projectId: json_['projectId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3410,9 +3280,7 @@ class ListExecutionsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3448,9 +3316,7 @@ class ListHistoriesResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3498,9 +3364,7 @@ class ListPerfSamplesResponse {
 
   ListPerfSamplesResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           perfSamples: json_.containsKey('perfSamples')
               ? (json_['perfSamples'] as core.List)
                   .map((value) => PerfSample.fromJson(
@@ -3567,7 +3431,7 @@ class ListStepAccessibilityClustersResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3601,9 +3465,7 @@ class ListStepThumbnailsResponse {
 
   ListStepThumbnailsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           thumbnails: json_.containsKey('thumbnails')
               ? (json_['thumbnails'] as core.List)
                   .map((value) => Image.fromJson(
@@ -3636,9 +3498,7 @@ class ListStepsResponse {
 
   ListStepsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           steps: json_.containsKey('steps')
               ? (json_['steps'] as core.List)
                   .map((value) => Step.fromJson(
@@ -3667,9 +3527,7 @@ class ListTestCasesResponse {
 
   ListTestCasesResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           testCases: json_.containsKey('testCases')
               ? (json_['testCases'] as core.List)
                   .map((value) => TestCase.fromJson(
@@ -3701,12 +3559,8 @@ class MemoryInfo {
 
   MemoryInfo.fromJson(core.Map json_)
       : this(
-          memoryCapInKibibyte: json_.containsKey('memoryCapInKibibyte')
-              ? json_['memoryCapInKibibyte'] as core.String
-              : null,
-          memoryTotalInKibibyte: json_.containsKey('memoryTotalInKibibyte')
-              ? json_['memoryTotalInKibibyte'] as core.String
-              : null,
+          memoryCapInKibibyte: json_['memoryCapInKibibyte'] as core.String?,
+          memoryTotalInKibibyte: json_['memoryTotalInKibibyte'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3763,8 +3617,7 @@ class MergedResult {
               ? Outcome.fromJson(
                   json_['outcome'] as core.Map<core.String, core.dynamic>)
               : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
+          state: json_['state'] as core.String?,
           testSuiteOverviews: json_.containsKey('testSuiteOverviews')
               ? (json_['testSuiteOverviews'] as core.List)
                   .map((value) => TestSuiteOverview.fromJson(
@@ -3803,16 +3656,12 @@ class MultiStep {
 
   MultiStep.fromJson(core.Map json_)
       : this(
-          multistepNumber: json_.containsKey('multistepNumber')
-              ? json_['multistepNumber'] as core.int
-              : null,
+          multistepNumber: json_['multistepNumber'] as core.int?,
           primaryStep: json_.containsKey('primaryStep')
               ? PrimaryStep.fromJson(
                   json_['primaryStep'] as core.Map<core.String, core.dynamic>)
               : null,
-          primaryStepId: json_.containsKey('primaryStepId')
-              ? json_['primaryStepId'] as core.String
-              : null,
+          primaryStepId: json_['primaryStepId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3893,9 +3742,7 @@ class Outcome {
               ? SuccessDetail.fromJson(
                   json_['successDetail'] as core.Map<core.String, core.dynamic>)
               : null,
-          summary: json_.containsKey('summary')
-              ? json_['summary'] as core.String
-              : null,
+          summary: json_['summary'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3993,16 +3840,12 @@ class PerfMetricsSummary {
               ? AppStartTime.fromJson(
                   json_['appStartTime'] as core.Map<core.String, core.dynamic>)
               : null,
-          executionId: json_.containsKey('executionId')
-              ? json_['executionId'] as core.String
-              : null,
+          executionId: json_['executionId'] as core.String?,
           graphicsStats: json_.containsKey('graphicsStats')
               ? GraphicsStats.fromJson(
                   json_['graphicsStats'] as core.Map<core.String, core.dynamic>)
               : null,
-          historyId: json_.containsKey('historyId')
-              ? json_['historyId'] as core.String
-              : null,
+          historyId: json_['historyId'] as core.String?,
           perfEnvironment: json_.containsKey('perfEnvironment')
               ? PerfEnvironment.fromJson(json_['perfEnvironment']
                   as core.Map<core.String, core.dynamic>)
@@ -4012,12 +3855,8 @@ class PerfMetricsSummary {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          projectId: json_.containsKey('projectId')
-              ? json_['projectId'] as core.String
-              : null,
-          stepId: json_.containsKey('stepId')
-              ? json_['stepId'] as core.String
-              : null,
+          projectId: json_['projectId'] as core.String?,
+          stepId: json_['stepId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4051,9 +3890,7 @@ class PerfSample {
               ? Timestamp.fromJson(
                   json_['sampleTime'] as core.Map<core.String, core.dynamic>)
               : null,
-          value: json_.containsKey('value')
-              ? (json_['value'] as core.num).toDouble()
-              : null,
+          value: (json_['value'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4103,21 +3940,11 @@ class PerfSampleSeries {
               ? BasicPerfSampleSeries.fromJson(json_['basicPerfSampleSeries']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          executionId: json_.containsKey('executionId')
-              ? json_['executionId'] as core.String
-              : null,
-          historyId: json_.containsKey('historyId')
-              ? json_['historyId'] as core.String
-              : null,
-          projectId: json_.containsKey('projectId')
-              ? json_['projectId'] as core.String
-              : null,
-          sampleSeriesId: json_.containsKey('sampleSeriesId')
-              ? json_['sampleSeriesId'] as core.String
-              : null,
-          stepId: json_.containsKey('stepId')
-              ? json_['stepId'] as core.String
-              : null,
+          executionId: json_['executionId'] as core.String?,
+          historyId: json_['historyId'] as core.String?,
+          projectId: json_['projectId'] as core.String?,
+          sampleSeriesId: json_['sampleSeriesId'] as core.String?,
+          stepId: json_['stepId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4168,9 +3995,7 @@ class PrimaryStep {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          rollUp: json_.containsKey('rollUp')
-              ? json_['rollUp'] as core.String
-              : null,
+          rollUp: json_['rollUp'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4200,10 +4025,8 @@ class ProjectSettings {
 
   ProjectSettings.fromJson(core.Map json_)
       : this(
-          defaultBucket: json_.containsKey('defaultBucket')
-              ? json_['defaultBucket'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          defaultBucket: json_['defaultBucket'] as core.String?,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4270,15 +4093,10 @@ class RegionProto {
 
   RegionProto.fromJson(core.Map json_)
       : this(
-          heightPx: json_.containsKey('heightPx')
-              ? json_['heightPx'] as core.int
-              : null,
-          leftPx:
-              json_.containsKey('leftPx') ? json_['leftPx'] as core.int : null,
-          topPx: json_.containsKey('topPx') ? json_['topPx'] as core.int : null,
-          widthPx: json_.containsKey('widthPx')
-              ? json_['widthPx'] as core.int
-              : null,
+          heightPx: json_['heightPx'] as core.int?,
+          leftPx: json_['leftPx'] as core.int?,
+          topPx: json_['topPx'] as core.int?,
+          widthPx: json_['widthPx'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4343,10 +4161,8 @@ class SafeHtmlProto {
   SafeHtmlProto.fromJson(core.Map json_)
       : this(
           privateDoNotAccessOrElseSafeHtmlWrappedValue:
-              json_.containsKey('privateDoNotAccessOrElseSafeHtmlWrappedValue')
-                  ? json_['privateDoNotAccessOrElseSafeHtmlWrappedValue']
-                      as core.String
-                  : null,
+              json_['privateDoNotAccessOrElseSafeHtmlWrappedValue']
+                  as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4386,17 +4202,10 @@ class Screen {
 
   Screen.fromJson(core.Map json_)
       : this(
-          fileReference: json_.containsKey('fileReference')
-              ? json_['fileReference'] as core.String
-              : null,
-          locale: json_.containsKey('locale')
-              ? json_['locale'] as core.String
-              : null,
-          model:
-              json_.containsKey('model') ? json_['model'] as core.String : null,
-          version: json_.containsKey('version')
-              ? json_['version'] as core.String
-              : null,
+          fileReference: json_['fileReference'] as core.String?,
+          locale: json_['locale'] as core.String?,
+          model: json_['model'] as core.String?,
+          version: json_['version'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4435,12 +4244,8 @@ class ScreenshotCluster {
 
   ScreenshotCluster.fromJson(core.Map json_)
       : this(
-          activity: json_.containsKey('activity')
-              ? json_['activity'] as core.String
-              : null,
-          clusterId: json_.containsKey('clusterId')
-              ? json_['clusterId'] as core.String
-              : null,
+          activity: json_['activity'] as core.String?,
+          clusterId: json_['clusterId'] as core.String?,
           keyScreen: json_.containsKey('keyScreen')
               ? Screen.fromJson(
                   json_['keyScreen'] as core.Map<core.String, core.dynamic>)
@@ -4516,16 +4321,10 @@ class SkippedDetail {
 
   SkippedDetail.fromJson(core.Map json_)
       : this(
-          incompatibleAppVersion: json_.containsKey('incompatibleAppVersion')
-              ? json_['incompatibleAppVersion'] as core.bool
-              : null,
+          incompatibleAppVersion: json_['incompatibleAppVersion'] as core.bool?,
           incompatibleArchitecture:
-              json_.containsKey('incompatibleArchitecture')
-                  ? json_['incompatibleArchitecture'] as core.bool
-                  : null,
-          incompatibleDevice: json_.containsKey('incompatibleDevice')
-              ? json_['incompatibleDevice'] as core.bool
-              : null,
+              json_['incompatibleArchitecture'] as core.bool?,
+          incompatibleDevice: json_['incompatibleDevice'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4582,9 +4381,7 @@ class StackTrace {
 
   StackTrace.fromJson(core.Map json_)
       : this(
-          exception: json_.containsKey('exception')
-              ? json_['exception'] as core.String
-              : null,
+          exception: json_['exception'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4781,9 +4578,7 @@ class Step {
               ? Timestamp.fromJson(
                   json_['creationTime'] as core.Map<core.String, core.dynamic>)
               : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
+          description: json_['description'] as core.String?,
           deviceUsageDuration: json_.containsKey('deviceUsageDuration')
               ? Duration.fromJson(json_['deviceUsageDuration']
                   as core.Map<core.String, core.dynamic>)
@@ -4794,9 +4589,7 @@ class Step {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          hasImages: json_.containsKey('hasImages')
-              ? json_['hasImages'] as core.bool
-              : null,
+          hasImages: json_['hasImages'] as core.bool?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.List)
                   .map((value) => StepLabelsEntry.fromJson(
@@ -4807,7 +4600,7 @@ class Step {
               ? MultiStep.fromJson(
                   json_['multiStep'] as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           outcome: json_.containsKey('outcome')
               ? Outcome.fromJson(
                   json_['outcome'] as core.Map<core.String, core.dynamic>)
@@ -4816,11 +4609,8 @@ class Step {
               ? Duration.fromJson(
                   json_['runDuration'] as core.Map<core.String, core.dynamic>)
               : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
-          stepId: json_.containsKey('stepId')
-              ? json_['stepId'] as core.String
-              : null,
+          state: json_['state'] as core.String?,
+          stepId: json_['stepId'] as core.String?,
           testExecutionStep: json_.containsKey('testExecutionStep')
               ? TestExecutionStep.fromJson(json_['testExecutionStep']
                   as core.Map<core.String, core.dynamic>)
@@ -4870,9 +4660,7 @@ class SuccessDetail {
 
   SuccessDetail.fromJson(core.Map json_)
       : this(
-          otherNativeCrash: json_.containsKey('otherNativeCrash')
-              ? json_['otherNativeCrash'] as core.bool
-              : null,
+          otherNativeCrash: json_['otherNativeCrash'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4911,9 +4699,7 @@ class SuggestionClusterProto {
 
   SuggestionClusterProto.fromJson(core.Map json_)
       : this(
-          category: json_.containsKey('category')
-              ? json_['category'] as core.String
-              : null,
+          category: json_['category'] as core.String?,
           suggestions: json_.containsKey('suggestions')
               ? (json_['suggestions'] as core.List)
                   .map((value) => SuggestionProto.fromJson(
@@ -5006,38 +4792,26 @@ class SuggestionProto {
 
   SuggestionProto.fromJson(core.Map json_)
       : this(
-          helpUrl: json_.containsKey('helpUrl')
-              ? json_['helpUrl'] as core.String
-              : null,
+          helpUrl: json_['helpUrl'] as core.String?,
           longMessage: json_.containsKey('longMessage')
               ? SafeHtmlProto.fromJson(
                   json_['longMessage'] as core.Map<core.String, core.dynamic>)
               : null,
-          priority: json_.containsKey('priority')
-              ? json_['priority'] as core.String
-              : null,
-          pseudoResourceId: json_.containsKey('pseudoResourceId')
-              ? json_['pseudoResourceId'] as core.String
-              : null,
+          priority: json_['priority'] as core.String?,
+          pseudoResourceId: json_['pseudoResourceId'] as core.String?,
           region: json_.containsKey('region')
               ? RegionProto.fromJson(
                   json_['region'] as core.Map<core.String, core.dynamic>)
               : null,
-          resourceName: json_.containsKey('resourceName')
-              ? json_['resourceName'] as core.String
-              : null,
-          screenId: json_.containsKey('screenId')
-              ? json_['screenId'] as core.String
-              : null,
-          secondaryPriority: json_.containsKey('secondaryPriority')
-              ? (json_['secondaryPriority'] as core.num).toDouble()
-              : null,
+          resourceName: json_['resourceName'] as core.String?,
+          screenId: json_['screenId'] as core.String?,
+          secondaryPriority:
+              (json_['secondaryPriority'] as core.num?)?.toDouble(),
           shortMessage: json_.containsKey('shortMessage')
               ? SafeHtmlProto.fromJson(
                   json_['shortMessage'] as core.Map<core.String, core.dynamic>)
               : null,
-          title:
-              json_.containsKey('title') ? json_['title'] as core.String : null,
+          title: json_['title'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5125,9 +4899,7 @@ class TestCase {
               ? Timestamp.fromJson(
                   json_['endTime'] as core.Map<core.String, core.dynamic>)
               : null,
-          skippedMessage: json_.containsKey('skippedMessage')
-              ? json_['skippedMessage'] as core.String
-              : null,
+          skippedMessage: json_['skippedMessage'] as core.String?,
           stackTraces: json_.containsKey('stackTraces')
               ? (json_['stackTraces'] as core.List)
                   .map((value) => StackTrace.fromJson(
@@ -5138,12 +4910,8 @@ class TestCase {
               ? Timestamp.fromJson(
                   json_['startTime'] as core.Map<core.String, core.dynamic>)
               : null,
-          status: json_.containsKey('status')
-              ? json_['status'] as core.String
-              : null,
-          testCaseId: json_.containsKey('testCaseId')
-              ? json_['testCaseId'] as core.String
-              : null,
+          status: json_['status'] as core.String?,
+          testCaseId: json_['testCaseId'] as core.String?,
           testCaseReference: json_.containsKey('testCaseReference')
               ? TestCaseReference.fromJson(json_['testCaseReference']
                   as core.Map<core.String, core.dynamic>)
@@ -5194,13 +4962,9 @@ class TestCaseReference {
 
   TestCaseReference.fromJson(core.Map json_)
       : this(
-          className: json_.containsKey('className')
-              ? json_['className'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          testSuiteName: json_.containsKey('testSuiteName')
-              ? json_['testSuiteName'] as core.String
-              : null,
+          className: json_['className'] as core.String?,
+          name: json_['name'] as core.String?,
+          testSuiteName: json_['testSuiteName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5394,20 +5158,14 @@ class TestIssue {
 
   TestIssue.fromJson(core.Map json_)
       : this(
-          category: json_.containsKey('category')
-              ? json_['category'] as core.String
-              : null,
-          errorMessage: json_.containsKey('errorMessage')
-              ? json_['errorMessage'] as core.String
-              : null,
-          severity: json_.containsKey('severity')
-              ? json_['severity'] as core.String
-              : null,
+          category: json_['category'] as core.String?,
+          errorMessage: json_['errorMessage'] as core.String?,
+          severity: json_['severity'] as core.String?,
           stackTrace: json_.containsKey('stackTrace')
               ? StackTrace.fromJson(
                   json_['stackTrace'] as core.Map<core.String, core.dynamic>)
               : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          type: json_['type'] as core.String?,
           warning: json_.containsKey('warning')
               ? Any.fromJson(
                   json_['warning'] as core.Map<core.String, core.dynamic>)
@@ -5496,22 +5254,12 @@ class TestSuiteOverview {
               ? Duration.fromJson(
                   json_['elapsedTime'] as core.Map<core.String, core.dynamic>)
               : null,
-          errorCount: json_.containsKey('errorCount')
-              ? json_['errorCount'] as core.int
-              : null,
-          failureCount: json_.containsKey('failureCount')
-              ? json_['failureCount'] as core.int
-              : null,
-          flakyCount: json_.containsKey('flakyCount')
-              ? json_['flakyCount'] as core.int
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          skippedCount: json_.containsKey('skippedCount')
-              ? json_['skippedCount'] as core.int
-              : null,
-          totalCount: json_.containsKey('totalCount')
-              ? json_['totalCount'] as core.int
-              : null,
+          errorCount: json_['errorCount'] as core.int?,
+          failureCount: json_['failureCount'] as core.int?,
+          flakyCount: json_['flakyCount'] as core.int?,
+          name: json_['name'] as core.String?,
+          skippedCount: json_['skippedCount'] as core.int?,
+          totalCount: json_['totalCount'] as core.int?,
           xmlSource: json_.containsKey('xmlSource')
               ? FileReference.fromJson(
                   json_['xmlSource'] as core.Map<core.String, core.dynamic>)
@@ -5595,16 +5343,10 @@ class Thumbnail {
 
   Thumbnail.fromJson(core.Map json_)
       : this(
-          contentType: json_.containsKey('contentType')
-              ? json_['contentType'] as core.String
-              : null,
-          data: json_.containsKey('data') ? json_['data'] as core.String : null,
-          heightPx: json_.containsKey('heightPx')
-              ? json_['heightPx'] as core.int
-              : null,
-          widthPx: json_.containsKey('widthPx')
-              ? json_['widthPx'] as core.int
-              : null,
+          contentType: json_['contentType'] as core.String?,
+          data: json_['data'] as core.String?,
+          heightPx: json_['heightPx'] as core.int?,
+          widthPx: json_['widthPx'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5647,10 +5389,8 @@ class Timestamp {
 
   Timestamp.fromJson(core.Map json_)
       : this(
-          nanos: json_.containsKey('nanos') ? json_['nanos'] as core.int : null,
-          seconds: json_.containsKey('seconds')
-              ? json_['seconds'] as core.String
-              : null,
+          nanos: json_['nanos'] as core.int?,
+          seconds: json_['seconds'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5778,8 +5518,7 @@ class ToolExitCode {
 
   ToolExitCode.fromJson(core.Map json_)
       : this(
-          number:
-              json_.containsKey('number') ? json_['number'] as core.int : null,
+          number: json_['number'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

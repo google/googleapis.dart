@@ -189,11 +189,9 @@ class UrlNotification {
 
   UrlNotification.fromJson(core.Map json_)
       : this(
-          notifyTime: json_.containsKey('notifyTime')
-              ? json_['notifyTime'] as core.String
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
-          url: json_.containsKey('url') ? json_['url'] as core.String : null,
+          notifyTime: json_['notifyTime'] as core.String?,
+          type: json_['type'] as core.String?,
+          url: json_['url'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -231,7 +229,7 @@ class UrlNotificationMetadata {
               ? UrlNotification.fromJson(
                   json_['latestUpdate'] as core.Map<core.String, core.dynamic>)
               : null,
-          url: json_.containsKey('url') ? json_['url'] as core.String : null,
+          url: json_['url'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

@@ -172,20 +172,15 @@ class CustomApp {
 
   CustomApp.fromJson(core.Map json_)
       : this(
-          languageCode: json_.containsKey('languageCode')
-              ? json_['languageCode'] as core.String
-              : null,
+          languageCode: json_['languageCode'] as core.String?,
           organizations: json_.containsKey('organizations')
               ? (json_['organizations'] as core.List)
                   .map((value) => Organization.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          packageName: json_.containsKey('packageName')
-              ? json_['packageName'] as core.String
-              : null,
-          title:
-              json_.containsKey('title') ? json_['title'] as core.String : null,
+          packageName: json_['packageName'] as core.String?,
+          title: json_['title'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -216,12 +211,8 @@ class Organization {
 
   Organization.fromJson(core.Map json_)
       : this(
-          organizationId: json_.containsKey('organizationId')
-              ? json_['organizationId'] as core.String
-              : null,
-          organizationName: json_.containsKey('organizationName')
-              ? json_['organizationName'] as core.String
-              : null,
+          organizationId: json_['organizationId'] as core.String?,
+          organizationName: json_['organizationName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

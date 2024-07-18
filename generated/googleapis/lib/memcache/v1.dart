@@ -793,9 +793,7 @@ class ApplyParametersRequest {
 
   ApplyParametersRequest.fromJson(core.Map json_)
       : this(
-          applyAll: json_.containsKey('applyAll')
-              ? json_['applyAll'] as core.bool
-              : null,
+          applyAll: json_['applyAll'] as core.bool?,
           nodeIds: json_.containsKey('nodeIds')
               ? (json_['nodeIds'] as core.List)
                   .map((value) => value as core.String)
@@ -855,15 +853,9 @@ class GoogleCloudMemcacheV1MaintenancePolicy {
 
   GoogleCloudMemcacheV1MaintenancePolicy.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          description: json_['description'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
           weeklyMaintenanceWindow: json_.containsKey('weeklyMaintenanceWindow')
               ? (json_['weeklyMaintenanceWindow'] as core.List)
                   .map((value) => WeeklyMaintenanceWindow.fromJson(
@@ -899,9 +891,7 @@ class GoogleCloudMemcacheV1UpgradeInstanceRequest {
 
   GoogleCloudMemcacheV1UpgradeInstanceRequest.fromJson(core.Map json_)
       : this(
-          memcacheVersion: json_.containsKey('memcacheVersion')
-              ? json_['memcacheVersion'] as core.String
-              : null,
+          memcacheVersion: json_['memcacheVersion'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1081,18 +1071,10 @@ class Instance {
 
   Instance.fromJson(core.Map json_)
       : this(
-          authorizedNetwork: json_.containsKey('authorizedNetwork')
-              ? json_['authorizedNetwork'] as core.String
-              : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          discoveryEndpoint: json_.containsKey('discoveryEndpoint')
-              ? json_['discoveryEndpoint'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+          authorizedNetwork: json_['authorizedNetwork'] as core.String?,
+          createTime: json_['createTime'] as core.String?,
+          discoveryEndpoint: json_['discoveryEndpoint'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
           instanceMessages: json_.containsKey('instanceMessages')
               ? (json_['instanceMessages'] as core.List)
                   .map((value) => InstanceMessage.fromJson(
@@ -1116,26 +1098,20 @@ class Instance {
               ? MaintenanceSchedule.fromJson(json_['maintenanceSchedule']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          memcacheFullVersion: json_.containsKey('memcacheFullVersion')
-              ? json_['memcacheFullVersion'] as core.String
-              : null,
+          memcacheFullVersion: json_['memcacheFullVersion'] as core.String?,
           memcacheNodes: json_.containsKey('memcacheNodes')
               ? (json_['memcacheNodes'] as core.List)
                   .map((value) => Node.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          memcacheVersion: json_.containsKey('memcacheVersion')
-              ? json_['memcacheVersion'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          memcacheVersion: json_['memcacheVersion'] as core.String?,
+          name: json_['name'] as core.String?,
           nodeConfig: json_.containsKey('nodeConfig')
               ? NodeConfig.fromJson(
                   json_['nodeConfig'] as core.Map<core.String, core.dynamic>)
               : null,
-          nodeCount: json_.containsKey('nodeCount')
-              ? json_['nodeCount'] as core.int
-              : null,
+          nodeCount: json_['nodeCount'] as core.int?,
           parameters: json_.containsKey('parameters')
               ? MemcacheParameters.fromJson(
                   json_['parameters'] as core.Map<core.String, core.dynamic>)
@@ -1145,17 +1121,10 @@ class Instance {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          satisfiesPzi: json_.containsKey('satisfiesPzi')
-              ? json_['satisfiesPzi'] as core.bool
-              : null,
-          satisfiesPzs: json_.containsKey('satisfiesPzs')
-              ? json_['satisfiesPzs'] as core.bool
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
+          satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
+          state: json_['state'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
           zones: json_.containsKey('zones')
               ? (json_['zones'] as core.List)
                   .map((value) => value as core.String)
@@ -1208,10 +1177,8 @@ class InstanceMessage {
 
   InstanceMessage.fromJson(core.Map json_)
       : this(
-          code: json_.containsKey('code') ? json_['code'] as core.String : null,
-          message: json_.containsKey('message')
-              ? json_['message'] as core.String
-              : null,
+          code: json_['code'] as core.String?,
+          message: json_['message'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1250,9 +1217,7 @@ class ListInstancesResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: json_.containsKey('unreachable')
               ? (json_['unreachable'] as core.List)
                   .map((value) => value as core.String)
@@ -1288,9 +1253,7 @@ class ListLocationsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1314,9 +1277,7 @@ class ListOperationsResponse {
 
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           operations: json_.containsKey('operations')
               ? (json_['operations'] as core.List)
                   .map((value) => Operation.fromJson(
@@ -1360,15 +1321,9 @@ class MaintenanceSchedule {
 
   MaintenanceSchedule.fromJson(core.Map json_)
       : this(
-          endTime: json_.containsKey('endTime')
-              ? json_['endTime'] as core.String
-              : null,
-          scheduleDeadlineTime: json_.containsKey('scheduleDeadlineTime')
-              ? json_['scheduleDeadlineTime'] as core.String
-              : null,
-          startTime: json_.containsKey('startTime')
-              ? json_['startTime'] as core.String
-              : null,
+          endTime: json_['endTime'] as core.String?,
+          scheduleDeadlineTime: json_['scheduleDeadlineTime'] as core.String?,
+          startTime: json_['startTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1400,7 +1355,7 @@ class MemcacheParameters {
 
   MemcacheParameters.fromJson(core.Map json_)
       : this(
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          id: json_['id'] as core.String?,
           params: json_.containsKey('params')
               ? (json_['params'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -1486,24 +1441,17 @@ class Node {
 
   Node.fromJson(core.Map json_)
       : this(
-          host: json_.containsKey('host') ? json_['host'] as core.String : null,
-          memcacheFullVersion: json_.containsKey('memcacheFullVersion')
-              ? json_['memcacheFullVersion'] as core.String
-              : null,
-          memcacheVersion: json_.containsKey('memcacheVersion')
-              ? json_['memcacheVersion'] as core.String
-              : null,
-          nodeId: json_.containsKey('nodeId')
-              ? json_['nodeId'] as core.String
-              : null,
+          host: json_['host'] as core.String?,
+          memcacheFullVersion: json_['memcacheFullVersion'] as core.String?,
+          memcacheVersion: json_['memcacheVersion'] as core.String?,
+          nodeId: json_['nodeId'] as core.String?,
           parameters: json_.containsKey('parameters')
               ? MemcacheParameters.fromJson(
                   json_['parameters'] as core.Map<core.String, core.dynamic>)
               : null,
-          port: json_.containsKey('port') ? json_['port'] as core.int : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
-          zone: json_.containsKey('zone') ? json_['zone'] as core.String : null,
+          port: json_['port'] as core.int?,
+          state: json_['state'] as core.String?,
+          zone: json_['zone'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1538,12 +1486,8 @@ class NodeConfig {
 
   NodeConfig.fromJson(core.Map json_)
       : this(
-          cpuCount: json_.containsKey('cpuCount')
-              ? json_['cpuCount'] as core.int
-              : null,
-          memorySizeMb: json_.containsKey('memorySizeMb')
-              ? json_['memorySizeMb'] as core.int
-              : null,
+          cpuCount: json_['cpuCount'] as core.int?,
+          memorySizeMb: json_['memorySizeMb'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1605,7 +1549,7 @@ class Operation {
 
   Operation.fromJson(core.Map json_)
       : this(
-          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
@@ -1613,7 +1557,7 @@ class Operation {
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           response: json_.containsKey('response')
               ? json_['response'] as core.Map<core.String, core.dynamic>
               : null,
@@ -1655,12 +1599,8 @@ class RescheduleMaintenanceRequest {
 
   RescheduleMaintenanceRequest.fromJson(core.Map json_)
       : this(
-          rescheduleType: json_.containsKey('rescheduleType')
-              ? json_['rescheduleType'] as core.String
-              : null,
-          scheduleTime: json_.containsKey('scheduleTime')
-              ? json_['scheduleTime'] as core.String
-              : null,
+          rescheduleType: json_['rescheduleType'] as core.String?,
+          scheduleTime: json_['scheduleTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1706,9 +1646,7 @@ class UpdateParametersRequest {
               ? MemcacheParameters.fromJson(
                   json_['parameters'] as core.Map<core.String, core.dynamic>)
               : null,
-          updateMask: json_.containsKey('updateMask')
-              ? json_['updateMask'] as core.String
-              : null,
+          updateMask: json_['updateMask'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1751,10 +1689,8 @@ class WeeklyMaintenanceWindow {
 
   WeeklyMaintenanceWindow.fromJson(core.Map json_)
       : this(
-          day: json_.containsKey('day') ? json_['day'] as core.String : null,
-          duration: json_.containsKey('duration')
-              ? json_['duration'] as core.String
-              : null,
+          day: json_['day'] as core.String?,
+          duration: json_['duration'] as core.String?,
           startTime: json_.containsKey('startTime')
               ? TimeOfDay.fromJson(
                   json_['startTime'] as core.Map<core.String, core.dynamic>)

@@ -290,7 +290,7 @@ class AutoText {
               ? TextStyle.fromJson(
                   json_['textStyle'] as core.Map<core.String, core.dynamic>)
               : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -343,9 +343,7 @@ class BackgroundSuggestionState {
   BackgroundSuggestionState.fromJson(core.Map json_)
       : this(
           backgroundColorSuggested:
-              json_.containsKey('backgroundColorSuggested')
-                  ? json_['backgroundColorSuggested'] as core.bool
-                  : null,
+              json_['backgroundColorSuggested'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -409,9 +407,7 @@ class BatchUpdateDocumentResponse {
 
   BatchUpdateDocumentResponse.fromJson(core.Map json_)
       : this(
-          documentId: json_.containsKey('documentId')
-              ? json_['documentId'] as core.String
-              : null,
+          documentId: json_['documentId'] as core.String?,
           replies: json_.containsKey('replies')
               ? (json_['replies'] as core.List)
                   .map((value) => Response.fromJson(
@@ -479,12 +475,8 @@ class Bullet {
 
   Bullet.fromJson(core.Map json_)
       : this(
-          listId: json_.containsKey('listId')
-              ? json_['listId'] as core.String
-              : null,
-          nestingLevel: json_.containsKey('nestingLevel')
-              ? json_['nestingLevel'] as core.int
-              : null,
+          listId: json_['listId'] as core.String?,
+          nestingLevel: json_['nestingLevel'] as core.int?,
           textStyle: json_.containsKey('textStyle')
               ? TextStyle.fromJson(
                   json_['textStyle'] as core.Map<core.String, core.dynamic>)
@@ -521,12 +513,8 @@ class BulletSuggestionState {
 
   BulletSuggestionState.fromJson(core.Map json_)
       : this(
-          listIdSuggested: json_.containsKey('listIdSuggested')
-              ? json_['listIdSuggested'] as core.bool
-              : null,
-          nestingLevelSuggested: json_.containsKey('nestingLevelSuggested')
-              ? json_['nestingLevelSuggested'] as core.bool
-              : null,
+          listIdSuggested: json_['listIdSuggested'] as core.bool?,
+          nestingLevelSuggested: json_['nestingLevelSuggested'] as core.bool?,
           textStyleSuggestionState:
               json_.containsKey('textStyleSuggestionState')
                   ? TextStyleSuggestionState.fromJson(
@@ -673,7 +661,7 @@ class CreateFooterRequest {
               ? Location.fromJson(json_['sectionBreakLocation']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -694,9 +682,7 @@ class CreateFooterResponse {
 
   CreateFooterResponse.fromJson(core.Map json_)
       : this(
-          footerId: json_.containsKey('footerId')
-              ? json_['footerId'] as core.String
-              : null,
+          footerId: json_['footerId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -762,9 +748,7 @@ class CreateFootnoteResponse {
 
   CreateFootnoteResponse.fromJson(core.Map json_)
       : this(
-          footnoteId: json_.containsKey('footnoteId')
-              ? json_['footnoteId'] as core.String
-              : null,
+          footnoteId: json_['footnoteId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -804,7 +788,7 @@ class CreateHeaderRequest {
               ? Location.fromJson(json_['sectionBreakLocation']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -825,9 +809,7 @@ class CreateHeaderResponse {
 
   CreateHeaderResponse.fromJson(core.Map json_)
       : this(
-          headerId: json_.containsKey('headerId')
-              ? json_['headerId'] as core.String
-              : null,
+          headerId: json_['headerId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -853,7 +835,7 @@ class CreateNamedRangeRequest {
 
   CreateNamedRangeRequest.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           range: json_.containsKey('range')
               ? Range.fromJson(
                   json_['range'] as core.Map<core.String, core.dynamic>)
@@ -877,9 +859,7 @@ class CreateNamedRangeResponse {
 
   CreateNamedRangeResponse.fromJson(core.Map json_)
       : this(
-          namedRangeId: json_.containsKey('namedRangeId')
-              ? json_['namedRangeId'] as core.String
-              : null,
+          namedRangeId: json_['namedRangeId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -951,9 +931,7 @@ class CreateParagraphBulletsRequest {
 
   CreateParagraphBulletsRequest.fromJson(core.Map json_)
       : this(
-          bulletPreset: json_.containsKey('bulletPreset')
-              ? json_['bulletPreset'] as core.String
-              : null,
+          bulletPreset: json_['bulletPreset'] as core.String?,
           range: json_.containsKey('range')
               ? Range.fromJson(
                   json_['range'] as core.Map<core.String, core.dynamic>)
@@ -1012,21 +990,11 @@ class CropProperties {
 
   CropProperties.fromJson(core.Map json_)
       : this(
-          angle: json_.containsKey('angle')
-              ? (json_['angle'] as core.num).toDouble()
-              : null,
-          offsetBottom: json_.containsKey('offsetBottom')
-              ? (json_['offsetBottom'] as core.num).toDouble()
-              : null,
-          offsetLeft: json_.containsKey('offsetLeft')
-              ? (json_['offsetLeft'] as core.num).toDouble()
-              : null,
-          offsetRight: json_.containsKey('offsetRight')
-              ? (json_['offsetRight'] as core.num).toDouble()
-              : null,
-          offsetTop: json_.containsKey('offsetTop')
-              ? (json_['offsetTop'] as core.num).toDouble()
-              : null,
+          angle: (json_['angle'] as core.num?)?.toDouble(),
+          offsetBottom: (json_['offsetBottom'] as core.num?)?.toDouble(),
+          offsetLeft: (json_['offsetLeft'] as core.num?)?.toDouble(),
+          offsetRight: (json_['offsetRight'] as core.num?)?.toDouble(),
+          offsetTop: (json_['offsetTop'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1068,21 +1036,11 @@ class CropPropertiesSuggestionState {
 
   CropPropertiesSuggestionState.fromJson(core.Map json_)
       : this(
-          angleSuggested: json_.containsKey('angleSuggested')
-              ? json_['angleSuggested'] as core.bool
-              : null,
-          offsetBottomSuggested: json_.containsKey('offsetBottomSuggested')
-              ? json_['offsetBottomSuggested'] as core.bool
-              : null,
-          offsetLeftSuggested: json_.containsKey('offsetLeftSuggested')
-              ? json_['offsetLeftSuggested'] as core.bool
-              : null,
-          offsetRightSuggested: json_.containsKey('offsetRightSuggested')
-              ? json_['offsetRightSuggested'] as core.bool
-              : null,
-          offsetTopSuggested: json_.containsKey('offsetTopSuggested')
-              ? json_['offsetTopSuggested'] as core.bool
-              : null,
+          angleSuggested: json_['angleSuggested'] as core.bool?,
+          offsetBottomSuggested: json_['offsetBottomSuggested'] as core.bool?,
+          offsetLeftSuggested: json_['offsetLeftSuggested'] as core.bool?,
+          offsetRightSuggested: json_['offsetRightSuggested'] as core.bool?,
+          offsetTopSuggested: json_['offsetTopSuggested'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1150,9 +1108,7 @@ class DeleteFooterRequest {
 
   DeleteFooterRequest.fromJson(core.Map json_)
       : this(
-          footerId: json_.containsKey('footerId')
-              ? json_['footerId'] as core.String
-              : null,
+          footerId: json_['footerId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1177,9 +1133,7 @@ class DeleteHeaderRequest {
 
   DeleteHeaderRequest.fromJson(core.Map json_)
       : this(
-          headerId: json_.containsKey('headerId')
-              ? json_['headerId'] as core.String
-              : null,
+          headerId: json_['headerId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1204,10 +1158,8 @@ class DeleteNamedRangeRequest {
 
   DeleteNamedRangeRequest.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          namedRangeId: json_.containsKey('namedRangeId')
-              ? json_['namedRangeId'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          namedRangeId: json_['namedRangeId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1253,9 +1205,7 @@ class DeletePositionedObjectRequest {
 
   DeletePositionedObjectRequest.fromJson(core.Map json_)
       : this(
-          objectId: json_.containsKey('objectId')
-              ? json_['objectId'] as core.String
-              : null,
+          objectId: json_['objectId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1334,10 +1284,8 @@ class Dimension {
 
   Dimension.fromJson(core.Map json_)
       : this(
-          magnitude: json_.containsKey('magnitude')
-              ? (json_['magnitude'] as core.num).toDouble()
-              : null,
-          unit: json_.containsKey('unit') ? json_['unit'] as core.String : null,
+          magnitude: (json_['magnitude'] as core.num?)?.toDouble(),
+          unit: json_['unit'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1484,9 +1432,7 @@ class Document {
               ? Body.fromJson(
                   json_['body'] as core.Map<core.String, core.dynamic>)
               : null,
-          documentId: json_.containsKey('documentId')
-              ? json_['documentId'] as core.String
-              : null,
+          documentId: json_['documentId'] as core.String?,
           documentStyle: json_.containsKey('documentStyle')
               ? DocumentStyle.fromJson(
                   json_['documentStyle'] as core.Map<core.String, core.dynamic>)
@@ -1561,9 +1507,7 @@ class Document {
                   ),
                 )
               : null,
-          revisionId: json_.containsKey('revisionId')
-              ? json_['revisionId'] as core.String
-              : null,
+          revisionId: json_['revisionId'] as core.String?,
           suggestedDocumentStyleChanges:
               json_.containsKey('suggestedDocumentStyleChanges')
                   ? (json_['suggestedDocumentStyleChanges']
@@ -1588,11 +1532,8 @@ class Document {
                       ),
                     )
                   : null,
-          suggestionsViewMode: json_.containsKey('suggestionsViewMode')
-              ? json_['suggestionsViewMode'] as core.String
-              : null,
-          title:
-              json_.containsKey('title') ? json_['title'] as core.String : null,
+          suggestionsViewMode: json_['suggestionsViewMode'] as core.String?,
+          title: json_['title'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1754,27 +1695,13 @@ class DocumentStyle {
               ? Background.fromJson(
                   json_['background'] as core.Map<core.String, core.dynamic>)
               : null,
-          defaultFooterId: json_.containsKey('defaultFooterId')
-              ? json_['defaultFooterId'] as core.String
-              : null,
-          defaultHeaderId: json_.containsKey('defaultHeaderId')
-              ? json_['defaultHeaderId'] as core.String
-              : null,
-          evenPageFooterId: json_.containsKey('evenPageFooterId')
-              ? json_['evenPageFooterId'] as core.String
-              : null,
-          evenPageHeaderId: json_.containsKey('evenPageHeaderId')
-              ? json_['evenPageHeaderId'] as core.String
-              : null,
-          firstPageFooterId: json_.containsKey('firstPageFooterId')
-              ? json_['firstPageFooterId'] as core.String
-              : null,
-          firstPageHeaderId: json_.containsKey('firstPageHeaderId')
-              ? json_['firstPageHeaderId'] as core.String
-              : null,
-          flipPageOrientation: json_.containsKey('flipPageOrientation')
-              ? json_['flipPageOrientation'] as core.bool
-              : null,
+          defaultFooterId: json_['defaultFooterId'] as core.String?,
+          defaultHeaderId: json_['defaultHeaderId'] as core.String?,
+          evenPageFooterId: json_['evenPageFooterId'] as core.String?,
+          evenPageHeaderId: json_['evenPageHeaderId'] as core.String?,
+          firstPageFooterId: json_['firstPageFooterId'] as core.String?,
+          firstPageHeaderId: json_['firstPageHeaderId'] as core.String?,
+          flipPageOrientation: json_['flipPageOrientation'] as core.bool?,
           marginBottom: json_.containsKey('marginBottom')
               ? Dimension.fromJson(
                   json_['marginBottom'] as core.Map<core.String, core.dynamic>)
@@ -1799,24 +1726,17 @@ class DocumentStyle {
               ? Dimension.fromJson(
                   json_['marginTop'] as core.Map<core.String, core.dynamic>)
               : null,
-          pageNumberStart: json_.containsKey('pageNumberStart')
-              ? json_['pageNumberStart'] as core.int
-              : null,
+          pageNumberStart: json_['pageNumberStart'] as core.int?,
           pageSize: json_.containsKey('pageSize')
               ? Size.fromJson(
                   json_['pageSize'] as core.Map<core.String, core.dynamic>)
               : null,
           useCustomHeaderFooterMargins:
-              json_.containsKey('useCustomHeaderFooterMargins')
-                  ? json_['useCustomHeaderFooterMargins'] as core.bool
-                  : null,
-          useEvenPageHeaderFooter: json_.containsKey('useEvenPageHeaderFooter')
-              ? json_['useEvenPageHeaderFooter'] as core.bool
-              : null,
+              json_['useCustomHeaderFooterMargins'] as core.bool?,
+          useEvenPageHeaderFooter:
+              json_['useEvenPageHeaderFooter'] as core.bool?,
           useFirstPageHeaderFooter:
-              json_.containsKey('useFirstPageHeaderFooter')
-                  ? json_['useFirstPageHeaderFooter'] as core.bool
-                  : null,
+              json_['useFirstPageHeaderFooter'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1944,71 +1864,37 @@ class DocumentStyleSuggestionState {
                           as core.Map<core.String, core.dynamic>)
                   : null,
           defaultFooterIdSuggested:
-              json_.containsKey('defaultFooterIdSuggested')
-                  ? json_['defaultFooterIdSuggested'] as core.bool
-                  : null,
+              json_['defaultFooterIdSuggested'] as core.bool?,
           defaultHeaderIdSuggested:
-              json_.containsKey('defaultHeaderIdSuggested')
-                  ? json_['defaultHeaderIdSuggested'] as core.bool
-                  : null,
+              json_['defaultHeaderIdSuggested'] as core.bool?,
           evenPageFooterIdSuggested:
-              json_.containsKey('evenPageFooterIdSuggested')
-                  ? json_['evenPageFooterIdSuggested'] as core.bool
-                  : null,
+              json_['evenPageFooterIdSuggested'] as core.bool?,
           evenPageHeaderIdSuggested:
-              json_.containsKey('evenPageHeaderIdSuggested')
-                  ? json_['evenPageHeaderIdSuggested'] as core.bool
-                  : null,
+              json_['evenPageHeaderIdSuggested'] as core.bool?,
           firstPageFooterIdSuggested:
-              json_.containsKey('firstPageFooterIdSuggested')
-                  ? json_['firstPageFooterIdSuggested'] as core.bool
-                  : null,
+              json_['firstPageFooterIdSuggested'] as core.bool?,
           firstPageHeaderIdSuggested:
-              json_.containsKey('firstPageHeaderIdSuggested')
-                  ? json_['firstPageHeaderIdSuggested'] as core.bool
-                  : null,
+              json_['firstPageHeaderIdSuggested'] as core.bool?,
           flipPageOrientationSuggested:
-              json_.containsKey('flipPageOrientationSuggested')
-                  ? json_['flipPageOrientationSuggested'] as core.bool
-                  : null,
-          marginBottomSuggested: json_.containsKey('marginBottomSuggested')
-              ? json_['marginBottomSuggested'] as core.bool
-              : null,
-          marginFooterSuggested: json_.containsKey('marginFooterSuggested')
-              ? json_['marginFooterSuggested'] as core.bool
-              : null,
-          marginHeaderSuggested: json_.containsKey('marginHeaderSuggested')
-              ? json_['marginHeaderSuggested'] as core.bool
-              : null,
-          marginLeftSuggested: json_.containsKey('marginLeftSuggested')
-              ? json_['marginLeftSuggested'] as core.bool
-              : null,
-          marginRightSuggested: json_.containsKey('marginRightSuggested')
-              ? json_['marginRightSuggested'] as core.bool
-              : null,
-          marginTopSuggested: json_.containsKey('marginTopSuggested')
-              ? json_['marginTopSuggested'] as core.bool
-              : null,
+              json_['flipPageOrientationSuggested'] as core.bool?,
+          marginBottomSuggested: json_['marginBottomSuggested'] as core.bool?,
+          marginFooterSuggested: json_['marginFooterSuggested'] as core.bool?,
+          marginHeaderSuggested: json_['marginHeaderSuggested'] as core.bool?,
+          marginLeftSuggested: json_['marginLeftSuggested'] as core.bool?,
+          marginRightSuggested: json_['marginRightSuggested'] as core.bool?,
+          marginTopSuggested: json_['marginTopSuggested'] as core.bool?,
           pageNumberStartSuggested:
-              json_.containsKey('pageNumberStartSuggested')
-                  ? json_['pageNumberStartSuggested'] as core.bool
-                  : null,
+              json_['pageNumberStartSuggested'] as core.bool?,
           pageSizeSuggestionState: json_.containsKey('pageSizeSuggestionState')
               ? SizeSuggestionState.fromJson(json_['pageSizeSuggestionState']
                   as core.Map<core.String, core.dynamic>)
               : null,
           useCustomHeaderFooterMarginsSuggested:
-              json_.containsKey('useCustomHeaderFooterMarginsSuggested')
-                  ? json_['useCustomHeaderFooterMarginsSuggested'] as core.bool
-                  : null,
+              json_['useCustomHeaderFooterMarginsSuggested'] as core.bool?,
           useEvenPageHeaderFooterSuggested:
-              json_.containsKey('useEvenPageHeaderFooterSuggested')
-                  ? json_['useEvenPageHeaderFooterSuggested'] as core.bool
-                  : null,
+              json_['useEvenPageHeaderFooterSuggested'] as core.bool?,
           useFirstPageHeaderFooterSuggested:
-              json_.containsKey('useFirstPageHeaderFooterSuggested')
-                  ? json_['useFirstPageHeaderFooterSuggested'] as core.bool
-                  : null,
+              json_['useFirstPageHeaderFooterSuggested'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2127,9 +2013,7 @@ class EmbeddedObject {
 
   EmbeddedObject.fromJson(core.Map json_)
       : this(
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
+          description: json_['description'] as core.String?,
           embeddedDrawingProperties:
               json_.containsKey('embeddedDrawingProperties')
                   ? EmbeddedDrawingProperties.fromJson(
@@ -2168,8 +2052,7 @@ class EmbeddedObject {
               ? Size.fromJson(
                   json_['size'] as core.Map<core.String, core.dynamic>)
               : null,
-          title:
-              json_.containsKey('title') ? json_['title'] as core.String : null,
+          title: json_['title'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2231,12 +2114,8 @@ class EmbeddedObjectBorder {
               ? OptionalColor.fromJson(
                   json_['color'] as core.Map<core.String, core.dynamic>)
               : null,
-          dashStyle: json_.containsKey('dashStyle')
-              ? json_['dashStyle'] as core.String
-              : null,
-          propertyState: json_.containsKey('propertyState')
-              ? json_['propertyState'] as core.String
-              : null,
+          dashStyle: json_['dashStyle'] as core.String?,
+          propertyState: json_['propertyState'] as core.String?,
           width: json_.containsKey('width')
               ? Dimension.fromJson(
                   json_['width'] as core.Map<core.String, core.dynamic>)
@@ -2277,18 +2156,10 @@ class EmbeddedObjectBorderSuggestionState {
 
   EmbeddedObjectBorderSuggestionState.fromJson(core.Map json_)
       : this(
-          colorSuggested: json_.containsKey('colorSuggested')
-              ? json_['colorSuggested'] as core.bool
-              : null,
-          dashStyleSuggested: json_.containsKey('dashStyleSuggested')
-              ? json_['dashStyleSuggested'] as core.bool
-              : null,
-          propertyStateSuggested: json_.containsKey('propertyStateSuggested')
-              ? json_['propertyStateSuggested'] as core.bool
-              : null,
-          widthSuggested: json_.containsKey('widthSuggested')
-              ? json_['widthSuggested'] as core.bool
-              : null,
+          colorSuggested: json_['colorSuggested'] as core.bool?,
+          dashStyleSuggested: json_['dashStyleSuggested'] as core.bool?,
+          propertyStateSuggested: json_['propertyStateSuggested'] as core.bool?,
+          widthSuggested: json_['widthSuggested'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2361,9 +2232,7 @@ class EmbeddedObjectSuggestionState {
 
   EmbeddedObjectSuggestionState.fromJson(core.Map json_)
       : this(
-          descriptionSuggested: json_.containsKey('descriptionSuggested')
-              ? json_['descriptionSuggested'] as core.bool
-              : null,
+          descriptionSuggested: json_['descriptionSuggested'] as core.bool?,
           embeddedDrawingPropertiesSuggestionState:
               json_.containsKey('embeddedDrawingPropertiesSuggestionState')
                   ? EmbeddedDrawingPropertiesSuggestionState.fromJson(
@@ -2388,25 +2257,15 @@ class EmbeddedObjectSuggestionState {
                       json_['linkedContentReferenceSuggestionState']
                           as core.Map<core.String, core.dynamic>)
                   : null,
-          marginBottomSuggested: json_.containsKey('marginBottomSuggested')
-              ? json_['marginBottomSuggested'] as core.bool
-              : null,
-          marginLeftSuggested: json_.containsKey('marginLeftSuggested')
-              ? json_['marginLeftSuggested'] as core.bool
-              : null,
-          marginRightSuggested: json_.containsKey('marginRightSuggested')
-              ? json_['marginRightSuggested'] as core.bool
-              : null,
-          marginTopSuggested: json_.containsKey('marginTopSuggested')
-              ? json_['marginTopSuggested'] as core.bool
-              : null,
+          marginBottomSuggested: json_['marginBottomSuggested'] as core.bool?,
+          marginLeftSuggested: json_['marginLeftSuggested'] as core.bool?,
+          marginRightSuggested: json_['marginRightSuggested'] as core.bool?,
+          marginTopSuggested: json_['marginTopSuggested'] as core.bool?,
           sizeSuggestionState: json_.containsKey('sizeSuggestionState')
               ? SizeSuggestionState.fromJson(json_['sizeSuggestionState']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          titleSuggested: json_.containsKey('titleSuggested')
-              ? json_['titleSuggested'] as core.bool
-              : null,
+          titleSuggested: json_['titleSuggested'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2452,9 +2311,7 @@ class EndOfSegmentLocation {
 
   EndOfSegmentLocation.fromJson(core.Map json_)
       : this(
-          segmentId: json_.containsKey('segmentId')
-              ? json_['segmentId'] as core.String
-              : null,
+          segmentId: json_['segmentId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2525,9 +2382,7 @@ class Footer {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          footerId: json_.containsKey('footerId')
-              ? json_['footerId'] as core.String
-              : null,
+          footerId: json_['footerId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2559,9 +2414,7 @@ class Footnote {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          footnoteId: json_.containsKey('footnoteId')
-              ? json_['footnoteId'] as core.String
-              : null,
+          footnoteId: json_['footnoteId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2611,12 +2464,8 @@ class FootnoteReference {
 
   FootnoteReference.fromJson(core.Map json_)
       : this(
-          footnoteId: json_.containsKey('footnoteId')
-              ? json_['footnoteId'] as core.String
-              : null,
-          footnoteNumber: json_.containsKey('footnoteNumber')
-              ? json_['footnoteNumber'] as core.String
-              : null,
+          footnoteId: json_['footnoteId'] as core.String?,
+          footnoteNumber: json_['footnoteNumber'] as core.String?,
           suggestedDeletionIds: json_.containsKey('suggestedDeletionIds')
               ? (json_['suggestedDeletionIds'] as core.List)
                   .map((value) => value as core.String)
@@ -2681,9 +2530,7 @@ class Header {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          headerId: json_.containsKey('headerId')
-              ? json_['headerId'] as core.String
-              : null,
+          headerId: json_['headerId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2814,28 +2661,16 @@ class ImageProperties {
 
   ImageProperties.fromJson(core.Map json_)
       : this(
-          angle: json_.containsKey('angle')
-              ? (json_['angle'] as core.num).toDouble()
-              : null,
-          brightness: json_.containsKey('brightness')
-              ? (json_['brightness'] as core.num).toDouble()
-              : null,
-          contentUri: json_.containsKey('contentUri')
-              ? json_['contentUri'] as core.String
-              : null,
-          contrast: json_.containsKey('contrast')
-              ? (json_['contrast'] as core.num).toDouble()
-              : null,
+          angle: (json_['angle'] as core.num?)?.toDouble(),
+          brightness: (json_['brightness'] as core.num?)?.toDouble(),
+          contentUri: json_['contentUri'] as core.String?,
+          contrast: (json_['contrast'] as core.num?)?.toDouble(),
           cropProperties: json_.containsKey('cropProperties')
               ? CropProperties.fromJson(json_['cropProperties']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          sourceUri: json_.containsKey('sourceUri')
-              ? json_['sourceUri'] as core.String
-              : null,
-          transparency: json_.containsKey('transparency')
-              ? (json_['transparency'] as core.num).toDouble()
-              : null,
+          sourceUri: json_['sourceUri'] as core.String?,
+          transparency: (json_['transparency'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2888,30 +2723,18 @@ class ImagePropertiesSuggestionState {
 
   ImagePropertiesSuggestionState.fromJson(core.Map json_)
       : this(
-          angleSuggested: json_.containsKey('angleSuggested')
-              ? json_['angleSuggested'] as core.bool
-              : null,
-          brightnessSuggested: json_.containsKey('brightnessSuggested')
-              ? json_['brightnessSuggested'] as core.bool
-              : null,
-          contentUriSuggested: json_.containsKey('contentUriSuggested')
-              ? json_['contentUriSuggested'] as core.bool
-              : null,
-          contrastSuggested: json_.containsKey('contrastSuggested')
-              ? json_['contrastSuggested'] as core.bool
-              : null,
+          angleSuggested: json_['angleSuggested'] as core.bool?,
+          brightnessSuggested: json_['brightnessSuggested'] as core.bool?,
+          contentUriSuggested: json_['contentUriSuggested'] as core.bool?,
+          contrastSuggested: json_['contrastSuggested'] as core.bool?,
           cropPropertiesSuggestionState:
               json_.containsKey('cropPropertiesSuggestionState')
                   ? CropPropertiesSuggestionState.fromJson(
                       json_['cropPropertiesSuggestionState']
                           as core.Map<core.String, core.dynamic>)
                   : null,
-          sourceUriSuggested: json_.containsKey('sourceUriSuggested')
-              ? json_['sourceUriSuggested'] as core.bool
-              : null,
-          transparencySuggested: json_.containsKey('transparencySuggested')
-              ? json_['transparencySuggested'] as core.bool
-              : null,
+          sourceUriSuggested: json_['sourceUriSuggested'] as core.bool?,
+          transparencySuggested: json_['transparencySuggested'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2971,9 +2794,7 @@ class InlineObject {
               ? InlineObjectProperties.fromJson(json_['inlineObjectProperties']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          objectId: json_.containsKey('objectId')
-              ? json_['objectId'] as core.String
-              : null,
+          objectId: json_['objectId'] as core.String?,
           suggestedDeletionIds: json_.containsKey('suggestedDeletionIds')
               ? (json_['suggestedDeletionIds'] as core.List)
                   .map((value) => value as core.String)
@@ -2991,9 +2812,7 @@ class InlineObject {
                       ),
                     )
                   : null,
-          suggestedInsertionId: json_.containsKey('suggestedInsertionId')
-              ? json_['suggestedInsertionId'] as core.String
-              : null,
+          suggestedInsertionId: json_['suggestedInsertionId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3047,9 +2866,7 @@ class InlineObjectElement {
 
   InlineObjectElement.fromJson(core.Map json_)
       : this(
-          inlineObjectId: json_.containsKey('inlineObjectId')
-              ? json_['inlineObjectId'] as core.String
-              : null,
+          inlineObjectId: json_['inlineObjectId'] as core.String?,
           suggestedDeletionIds: json_.containsKey('suggestedDeletionIds')
               ? (json_['suggestedDeletionIds'] as core.List)
                   .map((value) => value as core.String)
@@ -3198,7 +3015,7 @@ class InsertInlineImageRequest {
               ? Size.fromJson(
                   json_['objectSize'] as core.Map<core.String, core.dynamic>)
               : null,
-          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+          uri: json_['uri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3221,9 +3038,7 @@ class InsertInlineImageResponse {
 
   InsertInlineImageResponse.fromJson(core.Map json_)
       : this(
-          objectId: json_.containsKey('objectId')
-              ? json_['objectId'] as core.String
-              : null,
+          objectId: json_['objectId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3242,9 +3057,7 @@ class InsertInlineSheetsChartResponse {
 
   InsertInlineSheetsChartResponse.fromJson(core.Map json_)
       : this(
-          objectId: json_.containsKey('objectId')
-              ? json_['objectId'] as core.String
-              : null,
+          objectId: json_['objectId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3340,9 +3153,7 @@ class InsertSectionBreakRequest {
               ? Location.fromJson(
                   json_['location'] as core.Map<core.String, core.dynamic>)
               : null,
-          sectionType: json_.containsKey('sectionType')
-              ? json_['sectionType'] as core.String
-              : null,
+          sectionType: json_['sectionType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3374,9 +3185,7 @@ class InsertTableColumnRequest {
 
   InsertTableColumnRequest.fromJson(core.Map json_)
       : this(
-          insertRight: json_.containsKey('insertRight')
-              ? json_['insertRight'] as core.bool
-              : null,
+          insertRight: json_['insertRight'] as core.bool?,
           tableCellLocation: json_.containsKey('tableCellLocation')
               ? TableCellLocation.fromJson(json_['tableCellLocation']
                   as core.Map<core.String, core.dynamic>)
@@ -3424,9 +3233,7 @@ class InsertTableRequest {
 
   InsertTableRequest.fromJson(core.Map json_)
       : this(
-          columns: json_.containsKey('columns')
-              ? json_['columns'] as core.int
-              : null,
+          columns: json_['columns'] as core.int?,
           endOfSegmentLocation: json_.containsKey('endOfSegmentLocation')
               ? EndOfSegmentLocation.fromJson(json_['endOfSegmentLocation']
                   as core.Map<core.String, core.dynamic>)
@@ -3435,7 +3242,7 @@ class InsertTableRequest {
               ? Location.fromJson(
                   json_['location'] as core.Map<core.String, core.dynamic>)
               : null,
-          rows: json_.containsKey('rows') ? json_['rows'] as core.int : null,
+          rows: json_['rows'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3468,9 +3275,7 @@ class InsertTableRowRequest {
 
   InsertTableRowRequest.fromJson(core.Map json_)
       : this(
-          insertBelow: json_.containsKey('insertBelow')
-              ? json_['insertBelow'] as core.bool
-              : null,
+          insertBelow: json_['insertBelow'] as core.bool?,
           tableCellLocation: json_.containsKey('tableCellLocation')
               ? TableCellLocation.fromJson(json_['tableCellLocation']
                   as core.Map<core.String, core.dynamic>)
@@ -3526,7 +3331,7 @@ class InsertTextRequest {
               ? Location.fromJson(
                   json_['location'] as core.Map<core.String, core.dynamic>)
               : null,
-          text: json_.containsKey('text') ? json_['text'] as core.String : null,
+          text: json_['text'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3556,13 +3361,9 @@ class Link {
 
   Link.fromJson(core.Map json_)
       : this(
-          bookmarkId: json_.containsKey('bookmarkId')
-              ? json_['bookmarkId'] as core.String
-              : null,
-          headingId: json_.containsKey('headingId')
-              ? json_['headingId'] as core.String
-              : null,
-          url: json_.containsKey('url') ? json_['url'] as core.String : null,
+          bookmarkId: json_['bookmarkId'] as core.String?,
+          headingId: json_['headingId'] as core.String?,
+          url: json_['url'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3666,9 +3467,7 @@ class List {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          suggestedInsertionId: json_.containsKey('suggestedInsertionId')
-              ? json_['suggestedInsertionId'] as core.String
-              : null,
+          suggestedInsertionId: json_['suggestedInsertionId'] as core.String?,
           suggestedListPropertiesChanges:
               json_.containsKey('suggestedListPropertiesChanges')
                   ? (json_['suggestedListPropertiesChanges']
@@ -3777,10 +3576,8 @@ class Location {
 
   Location.fromJson(core.Map json_)
       : this(
-          index: json_.containsKey('index') ? json_['index'] as core.int : null,
-          segmentId: json_.containsKey('segmentId')
-              ? json_['segmentId'] as core.String
-              : null,
+          index: json_['index'] as core.int?,
+          segmentId: json_['segmentId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3846,10 +3643,8 @@ class NamedRange {
 
   NamedRange.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          namedRangeId: json_.containsKey('namedRangeId')
-              ? json_['namedRangeId'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          namedRangeId: json_['namedRangeId'] as core.String?,
           ranges: json_.containsKey('ranges')
               ? (json_['ranges'] as core.List)
                   .map((value) => Range.fromJson(
@@ -3880,7 +3675,7 @@ class NamedRanges {
 
   NamedRanges.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           namedRanges: json_.containsKey('namedRanges')
               ? (json_['namedRanges'] as core.List)
                   .map((value) => NamedRange.fromJson(
@@ -3928,9 +3723,7 @@ class NamedStyle {
 
   NamedStyle.fromJson(core.Map json_)
       : this(
-          namedStyleType: json_.containsKey('namedStyleType')
-              ? json_['namedStyleType'] as core.String
-              : null,
+          namedStyleType: json_['namedStyleType'] as core.String?,
           paragraphStyle: json_.containsKey('paragraphStyle')
               ? ParagraphStyle.fromJson(json_['paragraphStyle']
                   as core.Map<core.String, core.dynamic>)
@@ -3983,9 +3776,7 @@ class NamedStyleSuggestionState {
 
   NamedStyleSuggestionState.fromJson(core.Map json_)
       : this(
-          namedStyleType: json_.containsKey('namedStyleType')
-              ? json_['namedStyleType'] as core.String
-              : null,
+          namedStyleType: json_['namedStyleType'] as core.String?,
           paragraphStyleSuggestionState:
               json_.containsKey('paragraphStyleSuggestionState')
                   ? ParagraphStyleSuggestionState.fromJson(
@@ -4169,18 +3960,10 @@ class NestingLevel {
 
   NestingLevel.fromJson(core.Map json_)
       : this(
-          bulletAlignment: json_.containsKey('bulletAlignment')
-              ? json_['bulletAlignment'] as core.String
-              : null,
-          glyphFormat: json_.containsKey('glyphFormat')
-              ? json_['glyphFormat'] as core.String
-              : null,
-          glyphSymbol: json_.containsKey('glyphSymbol')
-              ? json_['glyphSymbol'] as core.String
-              : null,
-          glyphType: json_.containsKey('glyphType')
-              ? json_['glyphType'] as core.String
-              : null,
+          bulletAlignment: json_['bulletAlignment'] as core.String?,
+          glyphFormat: json_['glyphFormat'] as core.String?,
+          glyphSymbol: json_['glyphSymbol'] as core.String?,
+          glyphType: json_['glyphType'] as core.String?,
           indentFirstLine: json_.containsKey('indentFirstLine')
               ? Dimension.fromJson(json_['indentFirstLine']
                   as core.Map<core.String, core.dynamic>)
@@ -4189,9 +3972,7 @@ class NestingLevel {
               ? Dimension.fromJson(
                   json_['indentStart'] as core.Map<core.String, core.dynamic>)
               : null,
-          startNumber: json_.containsKey('startNumber')
-              ? json_['startNumber'] as core.int
-              : null,
+          startNumber: json_['startNumber'] as core.int?,
           textStyle: json_.containsKey('textStyle')
               ? TextStyle.fromJson(
                   json_['textStyle'] as core.Map<core.String, core.dynamic>)
@@ -4254,28 +4035,14 @@ class NestingLevelSuggestionState {
   NestingLevelSuggestionState.fromJson(core.Map json_)
       : this(
           bulletAlignmentSuggested:
-              json_.containsKey('bulletAlignmentSuggested')
-                  ? json_['bulletAlignmentSuggested'] as core.bool
-                  : null,
-          glyphFormatSuggested: json_.containsKey('glyphFormatSuggested')
-              ? json_['glyphFormatSuggested'] as core.bool
-              : null,
-          glyphSymbolSuggested: json_.containsKey('glyphSymbolSuggested')
-              ? json_['glyphSymbolSuggested'] as core.bool
-              : null,
-          glyphTypeSuggested: json_.containsKey('glyphTypeSuggested')
-              ? json_['glyphTypeSuggested'] as core.bool
-              : null,
+              json_['bulletAlignmentSuggested'] as core.bool?,
+          glyphFormatSuggested: json_['glyphFormatSuggested'] as core.bool?,
+          glyphSymbolSuggested: json_['glyphSymbolSuggested'] as core.bool?,
+          glyphTypeSuggested: json_['glyphTypeSuggested'] as core.bool?,
           indentFirstLineSuggested:
-              json_.containsKey('indentFirstLineSuggested')
-                  ? json_['indentFirstLineSuggested'] as core.bool
-                  : null,
-          indentStartSuggested: json_.containsKey('indentStartSuggested')
-              ? json_['indentStartSuggested'] as core.bool
-              : null,
-          startNumberSuggested: json_.containsKey('startNumberSuggested')
-              ? json_['startNumberSuggested'] as core.bool
-              : null,
+              json_['indentFirstLineSuggested'] as core.bool?,
+          indentStartSuggested: json_['indentStartSuggested'] as core.bool?,
+          startNumberSuggested: json_['startNumberSuggested'] as core.bool?,
           textStyleSuggestionState:
               json_.containsKey('textStyleSuggestionState')
                   ? TextStyleSuggestionState.fromJson(
@@ -4574,9 +4341,7 @@ class ParagraphBorder {
               ? OptionalColor.fromJson(
                   json_['color'] as core.Map<core.String, core.dynamic>)
               : null,
-          dashStyle: json_.containsKey('dashStyle')
-              ? json_['dashStyle'] as core.String
-              : null,
+          dashStyle: json_['dashStyle'] as core.String?,
           padding: json_.containsKey('padding')
               ? Dimension.fromJson(
                   json_['padding'] as core.Map<core.String, core.dynamic>)
@@ -4661,9 +4426,7 @@ class ParagraphElement {
               ? ColumnBreak.fromJson(
                   json_['columnBreak'] as core.Map<core.String, core.dynamic>)
               : null,
-          endIndex: json_.containsKey('endIndex')
-              ? json_['endIndex'] as core.int
-              : null,
+          endIndex: json_['endIndex'] as core.int?,
           equation: json_.containsKey('equation')
               ? Equation.fromJson(
                   json_['equation'] as core.Map<core.String, core.dynamic>)
@@ -4692,9 +4455,7 @@ class ParagraphElement {
               ? RichLink.fromJson(
                   json_['richLink'] as core.Map<core.String, core.dynamic>)
               : null,
-          startIndex: json_.containsKey('startIndex')
-              ? json_['startIndex'] as core.int
-              : null,
+          startIndex: json_['startIndex'] as core.int?,
           textRun: json_.containsKey('textRun')
               ? TextRun.fromJson(
                   json_['textRun'] as core.Map<core.String, core.dynamic>)
@@ -4919,12 +4680,8 @@ class ParagraphStyle {
 
   ParagraphStyle.fromJson(core.Map json_)
       : this(
-          alignment: json_.containsKey('alignment')
-              ? json_['alignment'] as core.String
-              : null,
-          avoidWidowAndOrphan: json_.containsKey('avoidWidowAndOrphan')
-              ? json_['avoidWidowAndOrphan'] as core.bool
-              : null,
+          alignment: json_['alignment'] as core.String?,
+          avoidWidowAndOrphan: json_['avoidWidowAndOrphan'] as core.bool?,
           borderBetween: json_.containsKey('borderBetween')
               ? ParagraphBorder.fromJson(
                   json_['borderBetween'] as core.Map<core.String, core.dynamic>)
@@ -4945,12 +4702,8 @@ class ParagraphStyle {
               ? ParagraphBorder.fromJson(
                   json_['borderTop'] as core.Map<core.String, core.dynamic>)
               : null,
-          direction: json_.containsKey('direction')
-              ? json_['direction'] as core.String
-              : null,
-          headingId: json_.containsKey('headingId')
-              ? json_['headingId'] as core.String
-              : null,
+          direction: json_['direction'] as core.String?,
+          headingId: json_['headingId'] as core.String?,
           indentEnd: json_.containsKey('indentEnd')
               ? Dimension.fromJson(
                   json_['indentEnd'] as core.Map<core.String, core.dynamic>)
@@ -4963,21 +4716,11 @@ class ParagraphStyle {
               ? Dimension.fromJson(
                   json_['indentStart'] as core.Map<core.String, core.dynamic>)
               : null,
-          keepLinesTogether: json_.containsKey('keepLinesTogether')
-              ? json_['keepLinesTogether'] as core.bool
-              : null,
-          keepWithNext: json_.containsKey('keepWithNext')
-              ? json_['keepWithNext'] as core.bool
-              : null,
-          lineSpacing: json_.containsKey('lineSpacing')
-              ? (json_['lineSpacing'] as core.num).toDouble()
-              : null,
-          namedStyleType: json_.containsKey('namedStyleType')
-              ? json_['namedStyleType'] as core.String
-              : null,
-          pageBreakBefore: json_.containsKey('pageBreakBefore')
-              ? json_['pageBreakBefore'] as core.bool
-              : null,
+          keepLinesTogether: json_['keepLinesTogether'] as core.bool?,
+          keepWithNext: json_['keepWithNext'] as core.bool?,
+          lineSpacing: (json_['lineSpacing'] as core.num?)?.toDouble(),
+          namedStyleType: json_['namedStyleType'] as core.String?,
+          pageBreakBefore: json_['pageBreakBefore'] as core.bool?,
           shading: json_.containsKey('shading')
               ? Shading.fromJson(
                   json_['shading'] as core.Map<core.String, core.dynamic>)
@@ -4990,9 +4733,7 @@ class ParagraphStyle {
               ? Dimension.fromJson(
                   json_['spaceBelow'] as core.Map<core.String, core.dynamic>)
               : null,
-          spacingMode: json_.containsKey('spacingMode')
-              ? json_['spacingMode'] as core.String
-              : null,
+          spacingMode: json_['spacingMode'] as core.String?,
           tabStops: json_.containsKey('tabStops')
               ? (json_['tabStops'] as core.List)
                   .map((value) => TabStop.fromJson(
@@ -5123,74 +4864,35 @@ class ParagraphStyleSuggestionState {
 
   ParagraphStyleSuggestionState.fromJson(core.Map json_)
       : this(
-          alignmentSuggested: json_.containsKey('alignmentSuggested')
-              ? json_['alignmentSuggested'] as core.bool
-              : null,
+          alignmentSuggested: json_['alignmentSuggested'] as core.bool?,
           avoidWidowAndOrphanSuggested:
-              json_.containsKey('avoidWidowAndOrphanSuggested')
-                  ? json_['avoidWidowAndOrphanSuggested'] as core.bool
-                  : null,
-          borderBetweenSuggested: json_.containsKey('borderBetweenSuggested')
-              ? json_['borderBetweenSuggested'] as core.bool
-              : null,
-          borderBottomSuggested: json_.containsKey('borderBottomSuggested')
-              ? json_['borderBottomSuggested'] as core.bool
-              : null,
-          borderLeftSuggested: json_.containsKey('borderLeftSuggested')
-              ? json_['borderLeftSuggested'] as core.bool
-              : null,
-          borderRightSuggested: json_.containsKey('borderRightSuggested')
-              ? json_['borderRightSuggested'] as core.bool
-              : null,
-          borderTopSuggested: json_.containsKey('borderTopSuggested')
-              ? json_['borderTopSuggested'] as core.bool
-              : null,
-          directionSuggested: json_.containsKey('directionSuggested')
-              ? json_['directionSuggested'] as core.bool
-              : null,
-          headingIdSuggested: json_.containsKey('headingIdSuggested')
-              ? json_['headingIdSuggested'] as core.bool
-              : null,
-          indentEndSuggested: json_.containsKey('indentEndSuggested')
-              ? json_['indentEndSuggested'] as core.bool
-              : null,
+              json_['avoidWidowAndOrphanSuggested'] as core.bool?,
+          borderBetweenSuggested: json_['borderBetweenSuggested'] as core.bool?,
+          borderBottomSuggested: json_['borderBottomSuggested'] as core.bool?,
+          borderLeftSuggested: json_['borderLeftSuggested'] as core.bool?,
+          borderRightSuggested: json_['borderRightSuggested'] as core.bool?,
+          borderTopSuggested: json_['borderTopSuggested'] as core.bool?,
+          directionSuggested: json_['directionSuggested'] as core.bool?,
+          headingIdSuggested: json_['headingIdSuggested'] as core.bool?,
+          indentEndSuggested: json_['indentEndSuggested'] as core.bool?,
           indentFirstLineSuggested:
-              json_.containsKey('indentFirstLineSuggested')
-                  ? json_['indentFirstLineSuggested'] as core.bool
-                  : null,
-          indentStartSuggested: json_.containsKey('indentStartSuggested')
-              ? json_['indentStartSuggested'] as core.bool
-              : null,
+              json_['indentFirstLineSuggested'] as core.bool?,
+          indentStartSuggested: json_['indentStartSuggested'] as core.bool?,
           keepLinesTogetherSuggested:
-              json_.containsKey('keepLinesTogetherSuggested')
-                  ? json_['keepLinesTogetherSuggested'] as core.bool
-                  : null,
-          keepWithNextSuggested: json_.containsKey('keepWithNextSuggested')
-              ? json_['keepWithNextSuggested'] as core.bool
-              : null,
-          lineSpacingSuggested: json_.containsKey('lineSpacingSuggested')
-              ? json_['lineSpacingSuggested'] as core.bool
-              : null,
-          namedStyleTypeSuggested: json_.containsKey('namedStyleTypeSuggested')
-              ? json_['namedStyleTypeSuggested'] as core.bool
-              : null,
+              json_['keepLinesTogetherSuggested'] as core.bool?,
+          keepWithNextSuggested: json_['keepWithNextSuggested'] as core.bool?,
+          lineSpacingSuggested: json_['lineSpacingSuggested'] as core.bool?,
+          namedStyleTypeSuggested:
+              json_['namedStyleTypeSuggested'] as core.bool?,
           pageBreakBeforeSuggested:
-              json_.containsKey('pageBreakBeforeSuggested')
-                  ? json_['pageBreakBeforeSuggested'] as core.bool
-                  : null,
+              json_['pageBreakBeforeSuggested'] as core.bool?,
           shadingSuggestionState: json_.containsKey('shadingSuggestionState')
               ? ShadingSuggestionState.fromJson(json_['shadingSuggestionState']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          spaceAboveSuggested: json_.containsKey('spaceAboveSuggested')
-              ? json_['spaceAboveSuggested'] as core.bool
-              : null,
-          spaceBelowSuggested: json_.containsKey('spaceBelowSuggested')
-              ? json_['spaceBelowSuggested'] as core.bool
-              : null,
-          spacingModeSuggested: json_.containsKey('spacingModeSuggested')
-              ? json_['spacingModeSuggested'] as core.bool
-              : null,
+          spaceAboveSuggested: json_['spaceAboveSuggested'] as core.bool?,
+          spaceBelowSuggested: json_['spaceBelowSuggested'] as core.bool?,
+          spacingModeSuggested: json_['spacingModeSuggested'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5287,9 +4989,7 @@ class Person {
 
   Person.fromJson(core.Map json_)
       : this(
-          personId: json_.containsKey('personId')
-              ? json_['personId'] as core.String
-              : null,
+          personId: json_['personId'] as core.String?,
           personProperties: json_.containsKey('personProperties')
               ? PersonProperties.fromJson(json_['personProperties']
                   as core.Map<core.String, core.dynamic>)
@@ -5357,9 +5057,8 @@ class PersonProperties {
 
   PersonProperties.fromJson(core.Map json_)
       : this(
-          email:
-              json_.containsKey('email') ? json_['email'] as core.String : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          email: json_['email'] as core.String?,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5384,9 +5083,7 @@ class PinTableHeaderRowsRequest {
 
   PinTableHeaderRowsRequest.fromJson(core.Map json_)
       : this(
-          pinnedHeaderRowsCount: json_.containsKey('pinnedHeaderRowsCount')
-              ? json_['pinnedHeaderRowsCount'] as core.int
-              : null,
+          pinnedHeaderRowsCount: json_['pinnedHeaderRowsCount'] as core.int?,
           tableStartLocation: json_.containsKey('tableStartLocation')
               ? Location.fromJson(json_['tableStartLocation']
                   as core.Map<core.String, core.dynamic>)
@@ -5437,9 +5134,7 @@ class PositionedObject {
 
   PositionedObject.fromJson(core.Map json_)
       : this(
-          objectId: json_.containsKey('objectId')
-              ? json_['objectId'] as core.String
-              : null,
+          objectId: json_['objectId'] as core.String?,
           positionedObjectProperties:
               json_.containsKey('positionedObjectProperties')
                   ? PositionedObjectProperties.fromJson(
@@ -5451,9 +5146,7 @@ class PositionedObject {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          suggestedInsertionId: json_.containsKey('suggestedInsertionId')
-              ? json_['suggestedInsertionId'] as core.String
-              : null,
+          suggestedInsertionId: json_['suggestedInsertionId'] as core.String?,
           suggestedPositionedObjectPropertiesChanges:
               json_.containsKey('suggestedPositionedObjectPropertiesChanges')
                   ? (json_['suggestedPositionedObjectPropertiesChanges']
@@ -5523,9 +5216,7 @@ class PositionedObjectPositioning {
 
   PositionedObjectPositioning.fromJson(core.Map json_)
       : this(
-          layout: json_.containsKey('layout')
-              ? json_['layout'] as core.String
-              : null,
+          layout: json_['layout'] as core.String?,
           leftOffset: json_.containsKey('leftOffset')
               ? Dimension.fromJson(
                   json_['leftOffset'] as core.Map<core.String, core.dynamic>)
@@ -5565,15 +5256,9 @@ class PositionedObjectPositioningSuggestionState {
 
   PositionedObjectPositioningSuggestionState.fromJson(core.Map json_)
       : this(
-          layoutSuggested: json_.containsKey('layoutSuggested')
-              ? json_['layoutSuggested'] as core.bool
-              : null,
-          leftOffsetSuggested: json_.containsKey('leftOffsetSuggested')
-              ? json_['leftOffsetSuggested'] as core.bool
-              : null,
-          topOffsetSuggested: json_.containsKey('topOffsetSuggested')
-              ? json_['topOffsetSuggested'] as core.bool
-              : null,
+          layoutSuggested: json_['layoutSuggested'] as core.bool?,
+          leftOffsetSuggested: json_['leftOffsetSuggested'] as core.bool?,
+          topOffsetSuggested: json_['topOffsetSuggested'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5688,15 +5373,9 @@ class Range {
 
   Range.fromJson(core.Map json_)
       : this(
-          endIndex: json_.containsKey('endIndex')
-              ? json_['endIndex'] as core.int
-              : null,
-          segmentId: json_.containsKey('segmentId')
-              ? json_['segmentId'] as core.String
-              : null,
-          startIndex: json_.containsKey('startIndex')
-              ? json_['startIndex'] as core.int
-              : null,
+          endIndex: json_['endIndex'] as core.int?,
+          segmentId: json_['segmentId'] as core.String?,
+          startIndex: json_['startIndex'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5725,9 +5404,7 @@ class ReplaceAllTextRequest {
               ? SubstringMatchCriteria.fromJson(
                   json_['containsText'] as core.Map<core.String, core.dynamic>)
               : null,
-          replaceText: json_.containsKey('replaceText')
-              ? json_['replaceText'] as core.String
-              : null,
+          replaceText: json_['replaceText'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5776,13 +5453,9 @@ class ReplaceImageRequest {
 
   ReplaceImageRequest.fromJson(core.Map json_)
       : this(
-          imageObjectId: json_.containsKey('imageObjectId')
-              ? json_['imageObjectId'] as core.String
-              : null,
-          imageReplaceMethod: json_.containsKey('imageReplaceMethod')
-              ? json_['imageReplaceMethod'] as core.String
-              : null,
-          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+          imageObjectId: json_['imageObjectId'] as core.String?,
+          imageReplaceMethod: json_['imageReplaceMethod'] as core.String?,
+          uri: json_['uri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5826,13 +5499,9 @@ class ReplaceNamedRangeContentRequest {
 
   ReplaceNamedRangeContentRequest.fromJson(core.Map json_)
       : this(
-          namedRangeId: json_.containsKey('namedRangeId')
-              ? json_['namedRangeId'] as core.String
-              : null,
-          namedRangeName: json_.containsKey('namedRangeName')
-              ? json_['namedRangeName'] as core.String
-              : null,
-          text: json_.containsKey('text') ? json_['text'] as core.String : null,
+          namedRangeId: json_['namedRangeId'] as core.String?,
+          namedRangeName: json_['namedRangeName'] as core.String?,
+          text: json_['text'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6301,9 +5970,7 @@ class RichLink {
 
   RichLink.fromJson(core.Map json_)
       : this(
-          richLinkId: json_.containsKey('richLinkId')
-              ? json_['richLinkId'] as core.String
-              : null,
+          richLinkId: json_['richLinkId'] as core.String?,
           richLinkProperties: json_.containsKey('richLinkProperties')
               ? RichLinkProperties.fromJson(json_['richLinkProperties']
                   as core.Map<core.String, core.dynamic>)
@@ -6381,12 +6048,9 @@ class RichLinkProperties {
 
   RichLinkProperties.fromJson(core.Map json_)
       : this(
-          mimeType: json_.containsKey('mimeType')
-              ? json_['mimeType'] as core.String
-              : null,
-          title:
-              json_.containsKey('title') ? json_['title'] as core.String : null,
-          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+          mimeType: json_['mimeType'] as core.String?,
+          title: json_['title'] as core.String?,
+          uri: json_['uri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6693,33 +6357,15 @@ class SectionStyle {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          columnSeparatorStyle: json_.containsKey('columnSeparatorStyle')
-              ? json_['columnSeparatorStyle'] as core.String
-              : null,
-          contentDirection: json_.containsKey('contentDirection')
-              ? json_['contentDirection'] as core.String
-              : null,
-          defaultFooterId: json_.containsKey('defaultFooterId')
-              ? json_['defaultFooterId'] as core.String
-              : null,
-          defaultHeaderId: json_.containsKey('defaultHeaderId')
-              ? json_['defaultHeaderId'] as core.String
-              : null,
-          evenPageFooterId: json_.containsKey('evenPageFooterId')
-              ? json_['evenPageFooterId'] as core.String
-              : null,
-          evenPageHeaderId: json_.containsKey('evenPageHeaderId')
-              ? json_['evenPageHeaderId'] as core.String
-              : null,
-          firstPageFooterId: json_.containsKey('firstPageFooterId')
-              ? json_['firstPageFooterId'] as core.String
-              : null,
-          firstPageHeaderId: json_.containsKey('firstPageHeaderId')
-              ? json_['firstPageHeaderId'] as core.String
-              : null,
-          flipPageOrientation: json_.containsKey('flipPageOrientation')
-              ? json_['flipPageOrientation'] as core.bool
-              : null,
+          columnSeparatorStyle: json_['columnSeparatorStyle'] as core.String?,
+          contentDirection: json_['contentDirection'] as core.String?,
+          defaultFooterId: json_['defaultFooterId'] as core.String?,
+          defaultHeaderId: json_['defaultHeaderId'] as core.String?,
+          evenPageFooterId: json_['evenPageFooterId'] as core.String?,
+          evenPageHeaderId: json_['evenPageHeaderId'] as core.String?,
+          firstPageFooterId: json_['firstPageFooterId'] as core.String?,
+          firstPageHeaderId: json_['firstPageHeaderId'] as core.String?,
+          flipPageOrientation: json_['flipPageOrientation'] as core.bool?,
           marginBottom: json_.containsKey('marginBottom')
               ? Dimension.fromJson(
                   json_['marginBottom'] as core.Map<core.String, core.dynamic>)
@@ -6744,16 +6390,10 @@ class SectionStyle {
               ? Dimension.fromJson(
                   json_['marginTop'] as core.Map<core.String, core.dynamic>)
               : null,
-          pageNumberStart: json_.containsKey('pageNumberStart')
-              ? json_['pageNumberStart'] as core.int
-              : null,
-          sectionType: json_.containsKey('sectionType')
-              ? json_['sectionType'] as core.String
-              : null,
+          pageNumberStart: json_['pageNumberStart'] as core.int?,
+          sectionType: json_['sectionType'] as core.String?,
           useFirstPageHeaderFooter:
-              json_.containsKey('useFirstPageHeaderFooter')
-                  ? json_['useFirstPageHeaderFooter'] as core.bool
-                  : null,
+              json_['useFirstPageHeaderFooter'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6819,9 +6459,7 @@ class ShadingSuggestionState {
   ShadingSuggestionState.fromJson(core.Map json_)
       : this(
           backgroundColorSuggested:
-              json_.containsKey('backgroundColorSuggested')
-                  ? json_['backgroundColorSuggested'] as core.bool
-                  : null,
+              json_['backgroundColorSuggested'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6846,12 +6484,8 @@ class SheetsChartReference {
 
   SheetsChartReference.fromJson(core.Map json_)
       : this(
-          chartId: json_.containsKey('chartId')
-              ? json_['chartId'] as core.int
-              : null,
-          spreadsheetId: json_.containsKey('spreadsheetId')
-              ? json_['spreadsheetId'] as core.String
-              : null,
+          chartId: json_['chartId'] as core.int?,
+          spreadsheetId: json_['spreadsheetId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6878,12 +6512,8 @@ class SheetsChartReferenceSuggestionState {
 
   SheetsChartReferenceSuggestionState.fromJson(core.Map json_)
       : this(
-          chartIdSuggested: json_.containsKey('chartIdSuggested')
-              ? json_['chartIdSuggested'] as core.bool
-              : null,
-          spreadsheetIdSuggested: json_.containsKey('spreadsheetIdSuggested')
-              ? json_['spreadsheetIdSuggested'] as core.bool
-              : null,
+          chartIdSuggested: json_['chartIdSuggested'] as core.bool?,
+          spreadsheetIdSuggested: json_['spreadsheetIdSuggested'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6942,12 +6572,8 @@ class SizeSuggestionState {
 
   SizeSuggestionState.fromJson(core.Map json_)
       : this(
-          heightSuggested: json_.containsKey('heightSuggested')
-              ? json_['heightSuggested'] as core.bool
-              : null,
-          widthSuggested: json_.containsKey('widthSuggested')
-              ? json_['widthSuggested'] as core.bool
-              : null,
+          heightSuggested: json_['heightSuggested'] as core.bool?,
+          widthSuggested: json_['widthSuggested'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6990,9 +6616,7 @@ class StructuralElement {
 
   StructuralElement.fromJson(core.Map json_)
       : this(
-          endIndex: json_.containsKey('endIndex')
-              ? json_['endIndex'] as core.int
-              : null,
+          endIndex: json_['endIndex'] as core.int?,
           paragraph: json_.containsKey('paragraph')
               ? Paragraph.fromJson(
                   json_['paragraph'] as core.Map<core.String, core.dynamic>)
@@ -7001,9 +6625,7 @@ class StructuralElement {
               ? SectionBreak.fromJson(
                   json_['sectionBreak'] as core.Map<core.String, core.dynamic>)
               : null,
-          startIndex: json_.containsKey('startIndex')
-              ? json_['startIndex'] as core.int
-              : null,
+          startIndex: json_['startIndex'] as core.int?,
           table: json_.containsKey('table')
               ? Table.fromJson(
                   json_['table'] as core.Map<core.String, core.dynamic>)
@@ -7042,10 +6664,8 @@ class SubstringMatchCriteria {
 
   SubstringMatchCriteria.fromJson(core.Map json_)
       : this(
-          matchCase: json_.containsKey('matchCase')
-              ? json_['matchCase'] as core.bool
-              : null,
-          text: json_.containsKey('text') ? json_['text'] as core.String : null,
+          matchCase: json_['matchCase'] as core.bool?,
+          text: json_['text'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7466,9 +7086,7 @@ class TabStop {
 
   TabStop.fromJson(core.Map json_)
       : this(
-          alignment: json_.containsKey('alignment')
-              ? json_['alignment'] as core.String
-              : null,
+          alignment: json_['alignment'] as core.String?,
           offset: json_.containsKey('offset')
               ? Dimension.fromJson(
                   json_['offset'] as core.Map<core.String, core.dynamic>)
@@ -7520,10 +7138,8 @@ class Table {
 
   Table.fromJson(core.Map json_)
       : this(
-          columns: json_.containsKey('columns')
-              ? json_['columns'] as core.int
-              : null,
-          rows: json_.containsKey('rows') ? json_['rows'] as core.int : null,
+          columns: json_['columns'] as core.int?,
+          rows: json_['rows'] as core.int?,
           suggestedDeletionIds: json_.containsKey('suggestedDeletionIds')
               ? (json_['suggestedDeletionIds'] as core.List)
                   .map((value) => value as core.String)
@@ -7605,12 +7221,8 @@ class TableCell {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          endIndex: json_.containsKey('endIndex')
-              ? json_['endIndex'] as core.int
-              : null,
-          startIndex: json_.containsKey('startIndex')
-              ? json_['startIndex'] as core.int
-              : null,
+          endIndex: json_['endIndex'] as core.int?,
+          startIndex: json_['startIndex'] as core.int?,
           suggestedDeletionIds: json_.containsKey('suggestedDeletionIds')
               ? (json_['suggestedDeletionIds'] as core.List)
                   .map((value) => value as core.String)
@@ -7689,9 +7301,7 @@ class TableCellBorder {
               ? OptionalColor.fromJson(
                   json_['color'] as core.Map<core.String, core.dynamic>)
               : null,
-          dashStyle: json_.containsKey('dashStyle')
-              ? json_['dashStyle'] as core.String
-              : null,
+          dashStyle: json_['dashStyle'] as core.String?,
           width: json_.containsKey('width')
               ? Dimension.fromJson(
                   json_['width'] as core.Map<core.String, core.dynamic>)
@@ -7728,12 +7338,8 @@ class TableCellLocation {
 
   TableCellLocation.fromJson(core.Map json_)
       : this(
-          columnIndex: json_.containsKey('columnIndex')
-              ? json_['columnIndex'] as core.int
-              : null,
-          rowIndex: json_.containsKey('rowIndex')
-              ? json_['rowIndex'] as core.int
-              : null,
+          columnIndex: json_['columnIndex'] as core.int?,
+          rowIndex: json_['rowIndex'] as core.int?,
           tableStartLocation: json_.containsKey('tableStartLocation')
               ? Location.fromJson(json_['tableStartLocation']
                   as core.Map<core.String, core.dynamic>)
@@ -7843,12 +7449,8 @@ class TableCellStyle {
               ? TableCellBorder.fromJson(
                   json_['borderTop'] as core.Map<core.String, core.dynamic>)
               : null,
-          columnSpan: json_.containsKey('columnSpan')
-              ? json_['columnSpan'] as core.int
-              : null,
-          contentAlignment: json_.containsKey('contentAlignment')
-              ? json_['contentAlignment'] as core.String
-              : null,
+          columnSpan: json_['columnSpan'] as core.int?,
+          contentAlignment: json_['contentAlignment'] as core.String?,
           paddingBottom: json_.containsKey('paddingBottom')
               ? Dimension.fromJson(
                   json_['paddingBottom'] as core.Map<core.String, core.dynamic>)
@@ -7865,9 +7467,7 @@ class TableCellStyle {
               ? Dimension.fromJson(
                   json_['paddingTop'] as core.Map<core.String, core.dynamic>)
               : null,
-          rowSpan: json_.containsKey('rowSpan')
-              ? json_['rowSpan'] as core.int
-              : null,
+          rowSpan: json_['rowSpan'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7945,43 +7545,19 @@ class TableCellStyleSuggestionState {
   TableCellStyleSuggestionState.fromJson(core.Map json_)
       : this(
           backgroundColorSuggested:
-              json_.containsKey('backgroundColorSuggested')
-                  ? json_['backgroundColorSuggested'] as core.bool
-                  : null,
-          borderBottomSuggested: json_.containsKey('borderBottomSuggested')
-              ? json_['borderBottomSuggested'] as core.bool
-              : null,
-          borderLeftSuggested: json_.containsKey('borderLeftSuggested')
-              ? json_['borderLeftSuggested'] as core.bool
-              : null,
-          borderRightSuggested: json_.containsKey('borderRightSuggested')
-              ? json_['borderRightSuggested'] as core.bool
-              : null,
-          borderTopSuggested: json_.containsKey('borderTopSuggested')
-              ? json_['borderTopSuggested'] as core.bool
-              : null,
-          columnSpanSuggested: json_.containsKey('columnSpanSuggested')
-              ? json_['columnSpanSuggested'] as core.bool
-              : null,
+              json_['backgroundColorSuggested'] as core.bool?,
+          borderBottomSuggested: json_['borderBottomSuggested'] as core.bool?,
+          borderLeftSuggested: json_['borderLeftSuggested'] as core.bool?,
+          borderRightSuggested: json_['borderRightSuggested'] as core.bool?,
+          borderTopSuggested: json_['borderTopSuggested'] as core.bool?,
+          columnSpanSuggested: json_['columnSpanSuggested'] as core.bool?,
           contentAlignmentSuggested:
-              json_.containsKey('contentAlignmentSuggested')
-                  ? json_['contentAlignmentSuggested'] as core.bool
-                  : null,
-          paddingBottomSuggested: json_.containsKey('paddingBottomSuggested')
-              ? json_['paddingBottomSuggested'] as core.bool
-              : null,
-          paddingLeftSuggested: json_.containsKey('paddingLeftSuggested')
-              ? json_['paddingLeftSuggested'] as core.bool
-              : null,
-          paddingRightSuggested: json_.containsKey('paddingRightSuggested')
-              ? json_['paddingRightSuggested'] as core.bool
-              : null,
-          paddingTopSuggested: json_.containsKey('paddingTopSuggested')
-              ? json_['paddingTopSuggested'] as core.bool
-              : null,
-          rowSpanSuggested: json_.containsKey('rowSpanSuggested')
-              ? json_['rowSpanSuggested'] as core.bool
-              : null,
+              json_['contentAlignmentSuggested'] as core.bool?,
+          paddingBottomSuggested: json_['paddingBottomSuggested'] as core.bool?,
+          paddingLeftSuggested: json_['paddingLeftSuggested'] as core.bool?,
+          paddingRightSuggested: json_['paddingRightSuggested'] as core.bool?,
+          paddingTopSuggested: json_['paddingTopSuggested'] as core.bool?,
+          rowSpanSuggested: json_['rowSpanSuggested'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8040,9 +7616,7 @@ class TableColumnProperties {
               ? Dimension.fromJson(
                   json_['width'] as core.Map<core.String, core.dynamic>)
               : null,
-          widthType: json_.containsKey('widthType')
-              ? json_['widthType'] as core.String
-              : null,
+          widthType: json_['widthType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8128,12 +7702,8 @@ class TableRange {
 
   TableRange.fromJson(core.Map json_)
       : this(
-          columnSpan: json_.containsKey('columnSpan')
-              ? json_['columnSpan'] as core.int
-              : null,
-          rowSpan: json_.containsKey('rowSpan')
-              ? json_['rowSpan'] as core.int
-              : null,
+          columnSpan: json_['columnSpan'] as core.int?,
+          rowSpan: json_['rowSpan'] as core.int?,
           tableCellLocation: json_.containsKey('tableCellLocation')
               ? TableCellLocation.fromJson(json_['tableCellLocation']
                   as core.Map<core.String, core.dynamic>)
@@ -8190,12 +7760,8 @@ class TableRow {
 
   TableRow.fromJson(core.Map json_)
       : this(
-          endIndex: json_.containsKey('endIndex')
-              ? json_['endIndex'] as core.int
-              : null,
-          startIndex: json_.containsKey('startIndex')
-              ? json_['startIndex'] as core.int
-              : null,
+          endIndex: json_['endIndex'] as core.int?,
+          startIndex: json_['startIndex'] as core.int?,
           suggestedDeletionIds: json_.containsKey('suggestedDeletionIds')
               ? (json_['suggestedDeletionIds'] as core.List)
                   .map((value) => value as core.String)
@@ -8271,12 +7837,8 @@ class TableRowStyle {
               ? Dimension.fromJson(
                   json_['minRowHeight'] as core.Map<core.String, core.dynamic>)
               : null,
-          preventOverflow: json_.containsKey('preventOverflow')
-              ? json_['preventOverflow'] as core.bool
-              : null,
-          tableHeader: json_.containsKey('tableHeader')
-              ? json_['tableHeader'] as core.bool
-              : null,
+          preventOverflow: json_['preventOverflow'] as core.bool?,
+          tableHeader: json_['tableHeader'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8300,9 +7862,7 @@ class TableRowStyleSuggestionState {
 
   TableRowStyleSuggestionState.fromJson(core.Map json_)
       : this(
-          minRowHeightSuggested: json_.containsKey('minRowHeightSuggested')
-              ? json_['minRowHeightSuggested'] as core.bool
-              : null,
+          minRowHeightSuggested: json_['minRowHeightSuggested'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8376,9 +7936,7 @@ class TextRun {
 
   TextRun.fromJson(core.Map json_)
       : this(
-          content: json_.containsKey('content')
-              ? json_['content'] as core.String
-              : null,
+          content: json_['content'] as core.String?,
           suggestedDeletionIds: json_.containsKey('suggestedDeletionIds')
               ? (json_['suggestedDeletionIds'] as core.List)
                   .map((value) => value as core.String)
@@ -8524,10 +8082,8 @@ class TextStyle {
               ? OptionalColor.fromJson(json_['backgroundColor']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          baselineOffset: json_.containsKey('baselineOffset')
-              ? json_['baselineOffset'] as core.String
-              : null,
-          bold: json_.containsKey('bold') ? json_['bold'] as core.bool : null,
+          baselineOffset: json_['baselineOffset'] as core.String?,
+          bold: json_['bold'] as core.bool?,
           fontSize: json_.containsKey('fontSize')
               ? Dimension.fromJson(
                   json_['fontSize'] as core.Map<core.String, core.dynamic>)
@@ -8536,21 +8092,14 @@ class TextStyle {
               ? OptionalColor.fromJson(json_['foregroundColor']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          italic:
-              json_.containsKey('italic') ? json_['italic'] as core.bool : null,
+          italic: json_['italic'] as core.bool?,
           link: json_.containsKey('link')
               ? Link.fromJson(
                   json_['link'] as core.Map<core.String, core.dynamic>)
               : null,
-          smallCaps: json_.containsKey('smallCaps')
-              ? json_['smallCaps'] as core.bool
-              : null,
-          strikethrough: json_.containsKey('strikethrough')
-              ? json_['strikethrough'] as core.bool
-              : null,
-          underline: json_.containsKey('underline')
-              ? json_['underline'] as core.bool
-              : null,
+          smallCaps: json_['smallCaps'] as core.bool?,
+          strikethrough: json_['strikethrough'] as core.bool?,
+          underline: json_['underline'] as core.bool?,
           weightedFontFamily: json_.containsKey('weightedFontFamily')
               ? WeightedFontFamily.fromJson(json_['weightedFontFamily']
                   as core.Map<core.String, core.dynamic>)
@@ -8628,41 +8177,20 @@ class TextStyleSuggestionState {
   TextStyleSuggestionState.fromJson(core.Map json_)
       : this(
           backgroundColorSuggested:
-              json_.containsKey('backgroundColorSuggested')
-                  ? json_['backgroundColorSuggested'] as core.bool
-                  : null,
-          baselineOffsetSuggested: json_.containsKey('baselineOffsetSuggested')
-              ? json_['baselineOffsetSuggested'] as core.bool
-              : null,
-          boldSuggested: json_.containsKey('boldSuggested')
-              ? json_['boldSuggested'] as core.bool
-              : null,
-          fontSizeSuggested: json_.containsKey('fontSizeSuggested')
-              ? json_['fontSizeSuggested'] as core.bool
-              : null,
+              json_['backgroundColorSuggested'] as core.bool?,
+          baselineOffsetSuggested:
+              json_['baselineOffsetSuggested'] as core.bool?,
+          boldSuggested: json_['boldSuggested'] as core.bool?,
+          fontSizeSuggested: json_['fontSizeSuggested'] as core.bool?,
           foregroundColorSuggested:
-              json_.containsKey('foregroundColorSuggested')
-                  ? json_['foregroundColorSuggested'] as core.bool
-                  : null,
-          italicSuggested: json_.containsKey('italicSuggested')
-              ? json_['italicSuggested'] as core.bool
-              : null,
-          linkSuggested: json_.containsKey('linkSuggested')
-              ? json_['linkSuggested'] as core.bool
-              : null,
-          smallCapsSuggested: json_.containsKey('smallCapsSuggested')
-              ? json_['smallCapsSuggested'] as core.bool
-              : null,
-          strikethroughSuggested: json_.containsKey('strikethroughSuggested')
-              ? json_['strikethroughSuggested'] as core.bool
-              : null,
-          underlineSuggested: json_.containsKey('underlineSuggested')
-              ? json_['underlineSuggested'] as core.bool
-              : null,
+              json_['foregroundColorSuggested'] as core.bool?,
+          italicSuggested: json_['italicSuggested'] as core.bool?,
+          linkSuggested: json_['linkSuggested'] as core.bool?,
+          smallCapsSuggested: json_['smallCapsSuggested'] as core.bool?,
+          strikethroughSuggested: json_['strikethroughSuggested'] as core.bool?,
+          underlineSuggested: json_['underlineSuggested'] as core.bool?,
           weightedFontFamilySuggested:
-              json_.containsKey('weightedFontFamilySuggested')
-                  ? json_['weightedFontFamilySuggested'] as core.bool
-                  : null,
+              json_['weightedFontFamilySuggested'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8744,9 +8272,7 @@ class UpdateDocumentStyleRequest {
               ? DocumentStyle.fromJson(
                   json_['documentStyle'] as core.Map<core.String, core.dynamic>)
               : null,
-          fields: json_.containsKey('fields')
-              ? json_['fields'] as core.String
-              : null,
+          fields: json_['fields'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8785,9 +8311,7 @@ class UpdateParagraphStyleRequest {
 
   UpdateParagraphStyleRequest.fromJson(core.Map json_)
       : this(
-          fields: json_.containsKey('fields')
-              ? json_['fields'] as core.String
-              : null,
+          fields: json_['fields'] as core.String?,
           paragraphStyle: json_.containsKey('paragraphStyle')
               ? ParagraphStyle.fromJson(json_['paragraphStyle']
                   as core.Map<core.String, core.dynamic>)
@@ -8836,9 +8360,7 @@ class UpdateSectionStyleRequest {
 
   UpdateSectionStyleRequest.fromJson(core.Map json_)
       : this(
-          fields: json_.containsKey('fields')
-              ? json_['fields'] as core.String
-              : null,
+          fields: json_['fields'] as core.String?,
           range: json_.containsKey('range')
               ? Range.fromJson(
                   json_['range'] as core.Map<core.String, core.dynamic>)
@@ -8896,9 +8418,7 @@ class UpdateTableCellStyleRequest {
 
   UpdateTableCellStyleRequest.fromJson(core.Map json_)
       : this(
-          fields: json_.containsKey('fields')
-              ? json_['fields'] as core.String
-              : null,
+          fields: json_['fields'] as core.String?,
           tableCellStyle: json_.containsKey('tableCellStyle')
               ? TableCellStyle.fromJson(json_['tableCellStyle']
                   as core.Map<core.String, core.dynamic>)
@@ -8960,9 +8480,7 @@ class UpdateTableColumnPropertiesRequest {
                   .map((value) => value as core.int)
                   .toList()
               : null,
-          fields: json_.containsKey('fields')
-              ? json_['fields'] as core.String
-              : null,
+          fields: json_['fields'] as core.String?,
           tableColumnProperties: json_.containsKey('tableColumnProperties')
               ? TableColumnProperties.fromJson(json_['tableColumnProperties']
                   as core.Map<core.String, core.dynamic>)
@@ -9013,9 +8531,7 @@ class UpdateTableRowStyleRequest {
 
   UpdateTableRowStyleRequest.fromJson(core.Map json_)
       : this(
-          fields: json_.containsKey('fields')
-              ? json_['fields'] as core.String
-              : null,
+          fields: json_['fields'] as core.String?,
           rowIndices: json_.containsKey('rowIndices')
               ? (json_['rowIndices'] as core.List)
                   .map((value) => value as core.int)
@@ -9075,9 +8591,7 @@ class UpdateTextStyleRequest {
 
   UpdateTextStyleRequest.fromJson(core.Map json_)
       : this(
-          fields: json_.containsKey('fields')
-              ? json_['fields'] as core.String
-              : null,
+          fields: json_['fields'] as core.String?,
           range: json_.containsKey('range')
               ? Range.fromJson(
                   json_['range'] as core.Map<core.String, core.dynamic>)
@@ -9129,11 +8643,8 @@ class WeightedFontFamily {
 
   WeightedFontFamily.fromJson(core.Map json_)
       : this(
-          fontFamily: json_.containsKey('fontFamily')
-              ? json_['fontFamily'] as core.String
-              : null,
-          weight:
-              json_.containsKey('weight') ? json_['weight'] as core.int : null,
+          fontFamily: json_['fontFamily'] as core.String?,
+          weight: json_['weight'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9177,12 +8688,8 @@ class WriteControl {
 
   WriteControl.fromJson(core.Map json_)
       : this(
-          requiredRevisionId: json_.containsKey('requiredRevisionId')
-              ? json_['requiredRevisionId'] as core.String
-              : null,
-          targetRevisionId: json_.containsKey('targetRevisionId')
-              ? json_['targetRevisionId'] as core.String
-              : null,
+          requiredRevisionId: json_['requiredRevisionId'] as core.String?,
+          targetRevisionId: json_['targetRevisionId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

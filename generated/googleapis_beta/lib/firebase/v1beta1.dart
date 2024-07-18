@@ -2110,9 +2110,7 @@ class AddFirebaseRequest {
 
   AddFirebaseRequest.fromJson(core.Map json_)
       : this(
-          locationId: json_.containsKey('locationId')
-              ? json_['locationId'] as core.String
-              : null,
+          locationId: json_['locationId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2141,12 +2139,8 @@ class AddGoogleAnalyticsRequest {
 
   AddGoogleAnalyticsRequest.fromJson(core.Map json_)
       : this(
-          analyticsAccountId: json_.containsKey('analyticsAccountId')
-              ? json_['analyticsAccountId'] as core.String
-              : null,
-          analyticsPropertyId: json_.containsKey('analyticsPropertyId')
-              ? json_['analyticsPropertyId'] as core.String
-              : null,
+          analyticsAccountId: json_['analyticsAccountId'] as core.String?,
+          analyticsPropertyId: json_['analyticsPropertyId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2217,18 +2211,10 @@ class AdminSdkConfig {
 
   AdminSdkConfig.fromJson(core.Map json_)
       : this(
-          databaseURL: json_.containsKey('databaseURL')
-              ? json_['databaseURL'] as core.String
-              : null,
-          locationId: json_.containsKey('locationId')
-              ? json_['locationId'] as core.String
-              : null,
-          projectId: json_.containsKey('projectId')
-              ? json_['projectId'] as core.String
-              : null,
-          storageBucket: json_.containsKey('storageBucket')
-              ? json_['storageBucket'] as core.String
-              : null,
+          databaseURL: json_['databaseURL'] as core.String?,
+          locationId: json_['locationId'] as core.String?,
+          projectId: json_['projectId'] as core.String?,
+          storageBucket: json_['storageBucket'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2312,13 +2298,9 @@ class AnalyticsProperty {
 
   AnalyticsProperty.fromJson(core.Map json_)
       : this(
-          analyticsAccountId: json_.containsKey('analyticsAccountId')
-              ? json_['analyticsAccountId'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          analyticsAccountId: json_['analyticsAccountId'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          id: json_['id'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2440,25 +2422,14 @@ class AndroidApp {
 
   AndroidApp.fromJson(core.Map json_)
       : this(
-          apiKeyId: json_.containsKey('apiKeyId')
-              ? json_['apiKeyId'] as core.String
-              : null,
-          appId:
-              json_.containsKey('appId') ? json_['appId'] as core.String : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          expireTime: json_.containsKey('expireTime')
-              ? json_['expireTime'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          packageName: json_.containsKey('packageName')
-              ? json_['packageName'] as core.String
-              : null,
-          projectId: json_.containsKey('projectId')
-              ? json_['projectId'] as core.String
-              : null,
+          apiKeyId: json_['apiKeyId'] as core.String?,
+          appId: json_['appId'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          etag: json_['etag'] as core.String?,
+          expireTime: json_['expireTime'] as core.String?,
+          name: json_['name'] as core.String?,
+          packageName: json_['packageName'] as core.String?,
+          projectId: json_['projectId'] as core.String?,
           sha1Hashes: json_.containsKey('sha1Hashes')
               ? (json_['sha1Hashes'] as core.List)
                   .map((value) => value as core.String)
@@ -2469,8 +2440,7 @@ class AndroidApp {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
+          state: json_['state'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2513,12 +2483,8 @@ class AndroidAppConfig {
 
   AndroidAppConfig.fromJson(core.Map json_)
       : this(
-          configFileContents: json_.containsKey('configFileContents')
-              ? json_['configFileContents'] as core.String
-              : null,
-          configFilename: json_.containsKey('configFilename')
-              ? json_['configFilename'] as core.String
-              : null,
+          configFileContents: json_['configFileContents'] as core.String?,
+          configFilename: json_['configFilename'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2622,19 +2588,11 @@ class DefaultResources {
 
   DefaultResources.fromJson(core.Map json_)
       : this(
-          hostingSite: json_.containsKey('hostingSite')
-              ? json_['hostingSite'] as core.String
-              : null,
-          locationId: json_.containsKey('locationId')
-              ? json_['locationId'] as core.String
-              : null,
+          hostingSite: json_['hostingSite'] as core.String?,
+          locationId: json_['locationId'] as core.String?,
           realtimeDatabaseInstance:
-              json_.containsKey('realtimeDatabaseInstance')
-                  ? json_['realtimeDatabaseInstance'] as core.String
-                  : null,
-          storageBucket: json_.containsKey('storageBucket')
-              ? json_['storageBucket'] as core.String
-              : null,
+              json_['realtimeDatabaseInstance'] as core.String?,
+          storageBucket: json_['storageBucket'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2667,9 +2625,7 @@ class FinalizeDefaultLocationRequest {
 
   FinalizeDefaultLocationRequest.fromJson(core.Map json_)
       : this(
-          locationId: json_.containsKey('locationId')
-              ? json_['locationId'] as core.String
-              : null,
+          locationId: json_['locationId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2770,26 +2726,14 @@ class FirebaseAppInfo {
 
   FirebaseAppInfo.fromJson(core.Map json_)
       : this(
-          apiKeyId: json_.containsKey('apiKeyId')
-              ? json_['apiKeyId'] as core.String
-              : null,
-          appId:
-              json_.containsKey('appId') ? json_['appId'] as core.String : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          expireTime: json_.containsKey('expireTime')
-              ? json_['expireTime'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          namespace: json_.containsKey('namespace')
-              ? json_['namespace'] as core.String
-              : null,
-          platform: json_.containsKey('platform')
-              ? json_['platform'] as core.String
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
+          apiKeyId: json_['apiKeyId'] as core.String?,
+          appId: json_['appId'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          expireTime: json_['expireTime'] as core.String?,
+          name: json_['name'] as core.String?,
+          namespace: json_['namespace'] as core.String?,
+          platform: json_['platform'] as core.String?,
+          state: json_['state'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2909,23 +2853,16 @@ class FirebaseProject {
                   ),
                 )
               : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          projectId: json_.containsKey('projectId')
-              ? json_['projectId'] as core.String
-              : null,
-          projectNumber: json_.containsKey('projectNumber')
-              ? json_['projectNumber'] as core.String
-              : null,
+          displayName: json_['displayName'] as core.String?,
+          etag: json_['etag'] as core.String?,
+          name: json_['name'] as core.String?,
+          projectId: json_['projectId'] as core.String?,
+          projectNumber: json_['projectNumber'] as core.String?,
           resources: json_.containsKey('resources')
               ? DefaultResources.fromJson(
                   json_['resources'] as core.Map<core.String, core.dynamic>)
               : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
+          state: json_['state'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3052,33 +2989,17 @@ class IosApp {
 
   IosApp.fromJson(core.Map json_)
       : this(
-          apiKeyId: json_.containsKey('apiKeyId')
-              ? json_['apiKeyId'] as core.String
-              : null,
-          appId:
-              json_.containsKey('appId') ? json_['appId'] as core.String : null,
-          appStoreId: json_.containsKey('appStoreId')
-              ? json_['appStoreId'] as core.String
-              : null,
-          bundleId: json_.containsKey('bundleId')
-              ? json_['bundleId'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          expireTime: json_.containsKey('expireTime')
-              ? json_['expireTime'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          projectId: json_.containsKey('projectId')
-              ? json_['projectId'] as core.String
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
-          teamId: json_.containsKey('teamId')
-              ? json_['teamId'] as core.String
-              : null,
+          apiKeyId: json_['apiKeyId'] as core.String?,
+          appId: json_['appId'] as core.String?,
+          appStoreId: json_['appStoreId'] as core.String?,
+          bundleId: json_['bundleId'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          etag: json_['etag'] as core.String?,
+          expireTime: json_['expireTime'] as core.String?,
+          name: json_['name'] as core.String?,
+          projectId: json_['projectId'] as core.String?,
+          state: json_['state'] as core.String?,
+          teamId: json_['teamId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3121,12 +3042,8 @@ class IosAppConfig {
 
   IosAppConfig.fromJson(core.Map json_)
       : this(
-          configFileContents: json_.containsKey('configFileContents')
-              ? json_['configFileContents'] as core.String
-              : null,
-          configFilename: json_.containsKey('configFilename')
-              ? json_['configFilename'] as core.String
-              : null,
+          configFileContents: json_['configFileContents'] as core.String?,
+          configFilename: json_['configFilename'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3162,9 +3079,7 @@ class ListAndroidAppsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3199,9 +3114,7 @@ class ListAvailableLocationsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3231,9 +3144,7 @@ class ListAvailableProjectsResponse {
 
   ListAvailableProjectsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           projectInfo: json_.containsKey('projectInfo')
               ? (json_['projectInfo'] as core.List)
                   .map((value) => ProjectInfo.fromJson(
@@ -3268,9 +3179,7 @@ class ListFirebaseProjectsResponse {
 
   ListFirebaseProjectsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           results: json_.containsKey('results')
               ? (json_['results'] as core.List)
                   .map((value) => FirebaseProject.fromJson(
@@ -3311,9 +3220,7 @@ class ListIosAppsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3371,9 +3278,7 @@ class ListWebAppsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3425,10 +3330,8 @@ class Location {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          locationId: json_.containsKey('locationId')
-              ? json_['locationId'] as core.String
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          locationId: json_['locationId'] as core.String?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3491,7 +3394,7 @@ class Operation {
 
   Operation.fromJson(core.Map json_)
       : this(
-          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
@@ -3499,7 +3402,7 @@ class Operation {
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           response: json_.containsKey('response')
               ? json_['response'] as core.Map<core.String, core.dynamic>
               : null,
@@ -3544,15 +3447,9 @@ class ProjectInfo {
 
   ProjectInfo.fromJson(core.Map json_)
       : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          locationId: json_.containsKey('locationId')
-              ? json_['locationId'] as core.String
-              : null,
-          project: json_.containsKey('project')
-              ? json_['project'] as core.String
-              : null,
+          displayName: json_['displayName'] as core.String?,
+          locationId: json_['locationId'] as core.String?,
+          project: json_['project'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3581,9 +3478,7 @@ class RemoveAnalyticsRequest {
 
   RemoveAnalyticsRequest.fromJson(core.Map json_)
       : this(
-          analyticsPropertyId: json_.containsKey('analyticsPropertyId')
-              ? json_['analyticsPropertyId'] as core.String
-              : null,
+          analyticsPropertyId: json_['analyticsPropertyId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3625,16 +3520,10 @@ class RemoveAndroidAppRequest {
 
   RemoveAndroidAppRequest.fromJson(core.Map json_)
       : this(
-          allowMissing: json_.containsKey('allowMissing')
-              ? json_['allowMissing'] as core.bool
-              : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          immediate: json_.containsKey('immediate')
-              ? json_['immediate'] as core.bool
-              : null,
-          validateOnly: json_.containsKey('validateOnly')
-              ? json_['validateOnly'] as core.bool
-              : null,
+          allowMissing: json_['allowMissing'] as core.bool?,
+          etag: json_['etag'] as core.String?,
+          immediate: json_['immediate'] as core.bool?,
+          validateOnly: json_['validateOnly'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3678,16 +3567,10 @@ class RemoveIosAppRequest {
 
   RemoveIosAppRequest.fromJson(core.Map json_)
       : this(
-          allowMissing: json_.containsKey('allowMissing')
-              ? json_['allowMissing'] as core.bool
-              : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          immediate: json_.containsKey('immediate')
-              ? json_['immediate'] as core.bool
-              : null,
-          validateOnly: json_.containsKey('validateOnly')
-              ? json_['validateOnly'] as core.bool
-              : null,
+          allowMissing: json_['allowMissing'] as core.bool?,
+          etag: json_['etag'] as core.String?,
+          immediate: json_['immediate'] as core.bool?,
+          validateOnly: json_['validateOnly'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3731,16 +3614,10 @@ class RemoveWebAppRequest {
 
   RemoveWebAppRequest.fromJson(core.Map json_)
       : this(
-          allowMissing: json_.containsKey('allowMissing')
-              ? json_['allowMissing'] as core.bool
-              : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          immediate: json_.containsKey('immediate')
-              ? json_['immediate'] as core.bool
-              : null,
-          validateOnly: json_.containsKey('validateOnly')
-              ? json_['validateOnly'] as core.bool
-              : null,
+          allowMissing: json_['allowMissing'] as core.bool?,
+          etag: json_['etag'] as core.String?,
+          immediate: json_['immediate'] as core.bool?,
+          validateOnly: json_['validateOnly'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3776,9 +3653,7 @@ class SearchFirebaseAppsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3824,13 +3699,9 @@ class ShaCertificate {
 
   ShaCertificate.fromJson(core.Map json_)
       : this(
-          certType: json_.containsKey('certType')
-              ? json_['certType'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          shaHash: json_.containsKey('shaHash')
-              ? json_['shaHash'] as core.String
-              : null,
+          certType: json_['certType'] as core.String?,
+          name: json_['name'] as core.String?,
+          shaHash: json_['shaHash'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3883,13 +3754,9 @@ class StreamMapping {
 
   StreamMapping.fromJson(core.Map json_)
       : this(
-          app: json_.containsKey('app') ? json_['app'] as core.String : null,
-          measurementId: json_.containsKey('measurementId')
-              ? json_['measurementId'] as core.String
-              : null,
-          streamId: json_.containsKey('streamId')
-              ? json_['streamId'] as core.String
-              : null,
+          app: json_['app'] as core.String?,
+          measurementId: json_['measurementId'] as core.String?,
+          streamId: json_['streamId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3918,10 +3785,8 @@ class UndeleteAndroidAppRequest {
 
   UndeleteAndroidAppRequest.fromJson(core.Map json_)
       : this(
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          validateOnly: json_.containsKey('validateOnly')
-              ? json_['validateOnly'] as core.bool
-              : null,
+          etag: json_['etag'] as core.String?,
+          validateOnly: json_['validateOnly'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3949,10 +3814,8 @@ class UndeleteIosAppRequest {
 
   UndeleteIosAppRequest.fromJson(core.Map json_)
       : this(
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          validateOnly: json_.containsKey('validateOnly')
-              ? json_['validateOnly'] as core.bool
-              : null,
+          etag: json_['etag'] as core.String?,
+          validateOnly: json_['validateOnly'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3980,10 +3843,8 @@ class UndeleteWebAppRequest {
 
   UndeleteWebAppRequest.fromJson(core.Map json_)
       : this(
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          validateOnly: json_.containsKey('validateOnly')
-              ? json_['validateOnly'] as core.bool
-              : null,
+          etag: json_['etag'] as core.String?,
+          validateOnly: json_['validateOnly'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4106,31 +3967,20 @@ class WebApp {
 
   WebApp.fromJson(core.Map json_)
       : this(
-          apiKeyId: json_.containsKey('apiKeyId')
-              ? json_['apiKeyId'] as core.String
-              : null,
-          appId:
-              json_.containsKey('appId') ? json_['appId'] as core.String : null,
+          apiKeyId: json_['apiKeyId'] as core.String?,
+          appId: json_['appId'] as core.String?,
           appUrls: json_.containsKey('appUrls')
               ? (json_['appUrls'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          expireTime: json_.containsKey('expireTime')
-              ? json_['expireTime'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          projectId: json_.containsKey('projectId')
-              ? json_['projectId'] as core.String
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
-          webId:
-              json_.containsKey('webId') ? json_['webId'] as core.String : null,
+          displayName: json_['displayName'] as core.String?,
+          etag: json_['etag'] as core.String?,
+          expireTime: json_['expireTime'] as core.String?,
+          name: json_['name'] as core.String?,
+          projectId: json_['projectId'] as core.String?,
+          state: json_['state'] as core.String?,
+          webId: json_['webId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4247,32 +4097,15 @@ class WebAppConfig {
 
   WebAppConfig.fromJson(core.Map json_)
       : this(
-          apiKey: json_.containsKey('apiKey')
-              ? json_['apiKey'] as core.String
-              : null,
-          appId:
-              json_.containsKey('appId') ? json_['appId'] as core.String : null,
-          authDomain: json_.containsKey('authDomain')
-              ? json_['authDomain'] as core.String
-              : null,
-          databaseURL: json_.containsKey('databaseURL')
-              ? json_['databaseURL'] as core.String
-              : null,
-          locationId: json_.containsKey('locationId')
-              ? json_['locationId'] as core.String
-              : null,
-          measurementId: json_.containsKey('measurementId')
-              ? json_['measurementId'] as core.String
-              : null,
-          messagingSenderId: json_.containsKey('messagingSenderId')
-              ? json_['messagingSenderId'] as core.String
-              : null,
-          projectId: json_.containsKey('projectId')
-              ? json_['projectId'] as core.String
-              : null,
-          storageBucket: json_.containsKey('storageBucket')
-              ? json_['storageBucket'] as core.String
-              : null,
+          apiKey: json_['apiKey'] as core.String?,
+          appId: json_['appId'] as core.String?,
+          authDomain: json_['authDomain'] as core.String?,
+          databaseURL: json_['databaseURL'] as core.String?,
+          locationId: json_['locationId'] as core.String?,
+          measurementId: json_['measurementId'] as core.String?,
+          messagingSenderId: json_['messagingSenderId'] as core.String?,
+          projectId: json_['projectId'] as core.String?,
+          storageBucket: json_['storageBucket'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

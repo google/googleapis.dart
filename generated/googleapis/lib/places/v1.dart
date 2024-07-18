@@ -426,13 +426,9 @@ class GoogleMapsPlacesV1AuthorAttribution {
 
   GoogleMapsPlacesV1AuthorAttribution.fromJson(core.Map json_)
       : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          photoUri: json_.containsKey('photoUri')
-              ? json_['photoUri'] as core.String
-              : null,
-          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+          displayName: json_['displayName'] as core.String?,
+          photoUri: json_['photoUri'] as core.String?,
+          uri: json_['uri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -575,9 +571,8 @@ class GoogleMapsPlacesV1AutocompletePlacesRequest {
 
   GoogleMapsPlacesV1AutocompletePlacesRequest.fromJson(core.Map json_)
       : this(
-          includeQueryPredictions: json_.containsKey('includeQueryPredictions')
-              ? json_['includeQueryPredictions'] as core.bool
-              : null,
+          includeQueryPredictions:
+              json_['includeQueryPredictions'] as core.bool?,
           includedPrimaryTypes: json_.containsKey('includedPrimaryTypes')
               ? (json_['includedPrimaryTypes'] as core.List)
                   .map((value) => value as core.String)
@@ -588,14 +583,9 @@ class GoogleMapsPlacesV1AutocompletePlacesRequest {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          input:
-              json_.containsKey('input') ? json_['input'] as core.String : null,
-          inputOffset: json_.containsKey('inputOffset')
-              ? json_['inputOffset'] as core.int
-              : null,
-          languageCode: json_.containsKey('languageCode')
-              ? json_['languageCode'] as core.String
-              : null,
+          input: json_['input'] as core.String?,
+          inputOffset: json_['inputOffset'] as core.int?,
+          languageCode: json_['languageCode'] as core.String?,
           locationBias: json_.containsKey('locationBias')
               ? GoogleMapsPlacesV1AutocompletePlacesRequestLocationBias
                   .fromJson(json_['locationBias']
@@ -610,12 +600,8 @@ class GoogleMapsPlacesV1AutocompletePlacesRequest {
               ? GoogleTypeLatLng.fromJson(
                   json_['origin'] as core.Map<core.String, core.dynamic>)
               : null,
-          regionCode: json_.containsKey('regionCode')
-              ? json_['regionCode'] as core.String
-              : null,
-          sessionToken: json_.containsKey('sessionToken')
-              ? json_['sessionToken'] as core.String
-              : null,
+          regionCode: json_['regionCode'] as core.String?,
+          sessionToken: json_['sessionToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -802,7 +788,7 @@ class GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText {
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          text: json_.containsKey('text') ? json_['text'] as core.String : null,
+          text: json_['text'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -874,14 +860,9 @@ class GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionPlacePrediction {
   GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionPlacePrediction.fromJson(
       core.Map json_)
       : this(
-          distanceMeters: json_.containsKey('distanceMeters')
-              ? json_['distanceMeters'] as core.int
-              : null,
-          place:
-              json_.containsKey('place') ? json_['place'] as core.String : null,
-          placeId: json_.containsKey('placeId')
-              ? json_['placeId'] as core.String
-              : null,
+          distanceMeters: json_['distanceMeters'] as core.int?,
+          place: json_['place'] as core.String?,
+          placeId: json_['placeId'] as core.String?,
           structuredFormat: json_.containsKey('structuredFormat')
               ? GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStructuredFormat
                   .fromJson(json_['structuredFormat']
@@ -980,12 +961,8 @@ class GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStringRange {
   GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStringRange.fromJson(
       core.Map json_)
       : this(
-          endOffset: json_.containsKey('endOffset')
-              ? json_['endOffset'] as core.int
-              : null,
-          startOffset: json_.containsKey('startOffset')
-              ? json_['startOffset'] as core.int
-              : null,
+          endOffset: json_['endOffset'] as core.int?,
+          startOffset: json_['startOffset'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1065,9 +1042,7 @@ class GoogleMapsPlacesV1Circle {
               ? GoogleTypeLatLng.fromJson(
                   json_['center'] as core.Map<core.String, core.dynamic>)
               : null,
-          radius: json_.containsKey('radius')
-              ? (json_['radius'] as core.num).toDouble()
-              : null,
+          radius: (json_['radius'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1107,8 +1082,7 @@ class GoogleMapsPlacesV1ContentBlock {
               ? GoogleMapsPlacesV1References.fromJson(
                   json_['references'] as core.Map<core.String, core.dynamic>)
               : null,
-          topic:
-              json_.containsKey('topic') ? json_['topic'] as core.String : null,
+          topic: json_['topic'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1247,14 +1221,9 @@ class GoogleMapsPlacesV1ContextualContentJustificationBusinessAvailabilityAttrib
   GoogleMapsPlacesV1ContextualContentJustificationBusinessAvailabilityAttributesJustification.fromJson(
       core.Map json_)
       : this(
-          delivery: json_.containsKey('delivery')
-              ? json_['delivery'] as core.bool
-              : null,
-          dineIn:
-              json_.containsKey('dineIn') ? json_['dineIn'] as core.bool : null,
-          takeout: json_.containsKey('takeout')
-              ? json_['takeout'] as core.bool
-              : null,
+          delivery: json_['delivery'] as core.bool?,
+          dineIn: json_['dineIn'] as core.bool?,
+          takeout: json_['takeout'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1332,7 +1301,7 @@ class GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlig
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          text: json_.containsKey('text') ? json_['text'] as core.String : null,
+          text: json_['text'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1355,12 +1324,8 @@ class GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlig
   GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedTextHighlightedTextRange.fromJson(
       core.Map json_)
       : this(
-          endIndex: json_.containsKey('endIndex')
-              ? json_['endIndex'] as core.int
-              : null,
-          startIndex: json_.containsKey('startIndex')
-              ? json_['startIndex'] as core.int
-              : null,
+          endIndex: json_['endIndex'] as core.int?,
+          startIndex: json_['startIndex'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1403,9 +1368,7 @@ class GoogleMapsPlacesV1EVChargeOptions {
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          connectorCount: json_.containsKey('connectorCount')
-              ? json_['connectorCount'] as core.int
-              : null,
+          connectorCount: json_['connectorCount'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1471,20 +1434,12 @@ class GoogleMapsPlacesV1EVChargeOptionsConnectorAggregation {
   GoogleMapsPlacesV1EVChargeOptionsConnectorAggregation.fromJson(core.Map json_)
       : this(
           availabilityLastUpdateTime:
-              json_.containsKey('availabilityLastUpdateTime')
-                  ? json_['availabilityLastUpdateTime'] as core.String
-                  : null,
-          availableCount: json_.containsKey('availableCount')
-              ? json_['availableCount'] as core.int
-              : null,
-          count: json_.containsKey('count') ? json_['count'] as core.int : null,
-          maxChargeRateKw: json_.containsKey('maxChargeRateKw')
-              ? (json_['maxChargeRateKw'] as core.num).toDouble()
-              : null,
-          outOfServiceCount: json_.containsKey('outOfServiceCount')
-              ? json_['outOfServiceCount'] as core.int
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+              json_['availabilityLastUpdateTime'] as core.String?,
+          availableCount: json_['availableCount'] as core.int?,
+          count: json_['count'] as core.int?,
+          maxChargeRateKw: (json_['maxChargeRateKw'] as core.num?)?.toDouble(),
+          outOfServiceCount: json_['outOfServiceCount'] as core.int?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1570,10 +1525,8 @@ class GoogleMapsPlacesV1FuelOptionsFuelPrice {
               ? GoogleTypeMoney.fromJson(
                   json_['price'] as core.Map<core.String, core.dynamic>)
               : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          type: json_['type'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1616,13 +1569,9 @@ class GoogleMapsPlacesV1Photo {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          heightPx: json_.containsKey('heightPx')
-              ? json_['heightPx'] as core.int
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          widthPx: json_.containsKey('widthPx')
-              ? json_['widthPx'] as core.int
-              : null,
+          heightPx: json_['heightPx'] as core.int?,
+          name: json_['name'] as core.String?,
+          widthPx: json_['widthPx'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1650,10 +1599,8 @@ class GoogleMapsPlacesV1PhotoMedia {
 
   GoogleMapsPlacesV1PhotoMedia.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          photoUri: json_.containsKey('photoUri')
-              ? json_['photoUri'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          photoUri: json_['photoUri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2029,12 +1976,8 @@ class GoogleMapsPlacesV1Place {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          adrFormatAddress: json_.containsKey('adrFormatAddress')
-              ? json_['adrFormatAddress'] as core.String
-              : null,
-          allowsDogs: json_.containsKey('allowsDogs')
-              ? json_['allowsDogs'] as core.bool
-              : null,
+          adrFormatAddress: json_['adrFormatAddress'] as core.String?,
+          allowsDogs: json_['allowsDogs'] as core.bool?,
           areaSummary: json_.containsKey('areaSummary')
               ? GoogleMapsPlacesV1PlaceAreaSummary.fromJson(
                   json_['areaSummary'] as core.Map<core.String, core.dynamic>)
@@ -2045,12 +1988,8 @@ class GoogleMapsPlacesV1Place {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          businessStatus: json_.containsKey('businessStatus')
-              ? json_['businessStatus'] as core.String
-              : null,
-          curbsidePickup: json_.containsKey('curbsidePickup')
-              ? json_['curbsidePickup'] as core.bool
-              : null,
+          businessStatus: json_['businessStatus'] as core.String?,
+          curbsidePickup: json_['curbsidePickup'] as core.bool?,
           currentOpeningHours: json_.containsKey('currentOpeningHours')
               ? GoogleMapsPlacesV1PlaceOpeningHours.fromJson(
                   json_['currentOpeningHours']
@@ -2063,11 +2002,8 @@ class GoogleMapsPlacesV1Place {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          delivery: json_.containsKey('delivery')
-              ? json_['delivery'] as core.bool
-              : null,
-          dineIn:
-              json_.containsKey('dineIn') ? json_['dineIn'] as core.bool : null,
+          delivery: json_['delivery'] as core.bool?,
+          dineIn: json_['dineIn'] as core.bool?,
           displayName: json_.containsKey('displayName')
               ? GoogleTypeLocalizedText.fromJson(
                   json_['displayName'] as core.Map<core.String, core.dynamic>)
@@ -2081,9 +2017,7 @@ class GoogleMapsPlacesV1Place {
                   json_['evChargeOptions']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          formattedAddress: json_.containsKey('formattedAddress')
-              ? json_['formattedAddress'] as core.String
-              : null,
+          formattedAddress: json_['formattedAddress'] as core.String?,
           fuelOptions: json_.containsKey('fuelOptions')
               ? GoogleMapsPlacesV1FuelOptions.fromJson(
                   json_['fuelOptions'] as core.Map<core.String, core.dynamic>)
@@ -2093,46 +2027,24 @@ class GoogleMapsPlacesV1Place {
                   json_['generativeSummary']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          goodForChildren: json_.containsKey('goodForChildren')
-              ? json_['goodForChildren'] as core.bool
-              : null,
-          goodForGroups: json_.containsKey('goodForGroups')
-              ? json_['goodForGroups'] as core.bool
-              : null,
-          goodForWatchingSports: json_.containsKey('goodForWatchingSports')
-              ? json_['goodForWatchingSports'] as core.bool
-              : null,
-          googleMapsUri: json_.containsKey('googleMapsUri')
-              ? json_['googleMapsUri'] as core.String
-              : null,
-          iconBackgroundColor: json_.containsKey('iconBackgroundColor')
-              ? json_['iconBackgroundColor'] as core.String
-              : null,
-          iconMaskBaseUri: json_.containsKey('iconMaskBaseUri')
-              ? json_['iconMaskBaseUri'] as core.String
-              : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          goodForChildren: json_['goodForChildren'] as core.bool?,
+          goodForGroups: json_['goodForGroups'] as core.bool?,
+          goodForWatchingSports: json_['goodForWatchingSports'] as core.bool?,
+          googleMapsUri: json_['googleMapsUri'] as core.String?,
+          iconBackgroundColor: json_['iconBackgroundColor'] as core.String?,
+          iconMaskBaseUri: json_['iconMaskBaseUri'] as core.String?,
+          id: json_['id'] as core.String?,
           internationalPhoneNumber:
-              json_.containsKey('internationalPhoneNumber')
-                  ? json_['internationalPhoneNumber'] as core.String
-                  : null,
-          liveMusic: json_.containsKey('liveMusic')
-              ? json_['liveMusic'] as core.bool
-              : null,
+              json_['internationalPhoneNumber'] as core.String?,
+          liveMusic: json_['liveMusic'] as core.bool?,
           location: json_.containsKey('location')
               ? GoogleTypeLatLng.fromJson(
                   json_['location'] as core.Map<core.String, core.dynamic>)
               : null,
-          menuForChildren: json_.containsKey('menuForChildren')
-              ? json_['menuForChildren'] as core.bool
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          nationalPhoneNumber: json_.containsKey('nationalPhoneNumber')
-              ? json_['nationalPhoneNumber'] as core.String
-              : null,
-          outdoorSeating: json_.containsKey('outdoorSeating')
-              ? json_['outdoorSeating'] as core.bool
-              : null,
+          menuForChildren: json_['menuForChildren'] as core.bool?,
+          name: json_['name'] as core.String?,
+          nationalPhoneNumber: json_['nationalPhoneNumber'] as core.String?,
+          outdoorSeating: json_['outdoorSeating'] as core.bool?,
           parkingOptions: json_.containsKey('parkingOptions')
               ? GoogleMapsPlacesV1PlaceParkingOptions.fromJson(
                   json_['parkingOptions']
@@ -2153,19 +2065,13 @@ class GoogleMapsPlacesV1Place {
               ? GoogleMapsPlacesV1PlacePlusCode.fromJson(
                   json_['plusCode'] as core.Map<core.String, core.dynamic>)
               : null,
-          priceLevel: json_.containsKey('priceLevel')
-              ? json_['priceLevel'] as core.String
-              : null,
-          primaryType: json_.containsKey('primaryType')
-              ? json_['primaryType'] as core.String
-              : null,
+          priceLevel: json_['priceLevel'] as core.String?,
+          primaryType: json_['primaryType'] as core.String?,
           primaryTypeDisplayName: json_.containsKey('primaryTypeDisplayName')
               ? GoogleTypeLocalizedText.fromJson(json_['primaryTypeDisplayName']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          rating: json_.containsKey('rating')
-              ? (json_['rating'] as core.num).toDouble()
-              : null,
+          rating: (json_['rating'] as core.num?)?.toDouble(),
           regularOpeningHours: json_.containsKey('regularOpeningHours')
               ? GoogleMapsPlacesV1PlaceOpeningHours.fromJson(
                   json_['regularOpeningHours']
@@ -2178,51 +2084,25 @@ class GoogleMapsPlacesV1Place {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          reservable: json_.containsKey('reservable')
-              ? json_['reservable'] as core.bool
-              : null,
-          restroom: json_.containsKey('restroom')
-              ? json_['restroom'] as core.bool
-              : null,
+          reservable: json_['reservable'] as core.bool?,
+          restroom: json_['restroom'] as core.bool?,
           reviews: json_.containsKey('reviews')
               ? (json_['reviews'] as core.List)
                   .map((value) => GoogleMapsPlacesV1Review.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          servesBeer: json_.containsKey('servesBeer')
-              ? json_['servesBeer'] as core.bool
-              : null,
-          servesBreakfast: json_.containsKey('servesBreakfast')
-              ? json_['servesBreakfast'] as core.bool
-              : null,
-          servesBrunch: json_.containsKey('servesBrunch')
-              ? json_['servesBrunch'] as core.bool
-              : null,
-          servesCocktails: json_.containsKey('servesCocktails')
-              ? json_['servesCocktails'] as core.bool
-              : null,
-          servesCoffee: json_.containsKey('servesCoffee')
-              ? json_['servesCoffee'] as core.bool
-              : null,
-          servesDessert: json_.containsKey('servesDessert')
-              ? json_['servesDessert'] as core.bool
-              : null,
-          servesDinner: json_.containsKey('servesDinner')
-              ? json_['servesDinner'] as core.bool
-              : null,
-          servesLunch: json_.containsKey('servesLunch')
-              ? json_['servesLunch'] as core.bool
-              : null,
-          servesVegetarianFood: json_.containsKey('servesVegetarianFood')
-              ? json_['servesVegetarianFood'] as core.bool
-              : null,
-          servesWine: json_.containsKey('servesWine')
-              ? json_['servesWine'] as core.bool
-              : null,
-          shortFormattedAddress: json_.containsKey('shortFormattedAddress')
-              ? json_['shortFormattedAddress'] as core.String
-              : null,
+          servesBeer: json_['servesBeer'] as core.bool?,
+          servesBreakfast: json_['servesBreakfast'] as core.bool?,
+          servesBrunch: json_['servesBrunch'] as core.bool?,
+          servesCocktails: json_['servesCocktails'] as core.bool?,
+          servesCoffee: json_['servesCoffee'] as core.bool?,
+          servesDessert: json_['servesDessert'] as core.bool?,
+          servesDinner: json_['servesDinner'] as core.bool?,
+          servesLunch: json_['servesLunch'] as core.bool?,
+          servesVegetarianFood: json_['servesVegetarianFood'] as core.bool?,
+          servesWine: json_['servesWine'] as core.bool?,
+          shortFormattedAddress: json_['shortFormattedAddress'] as core.String?,
           subDestinations: json_.containsKey('subDestinations')
               ? (json_['subDestinations'] as core.List)
                   .map((value) =>
@@ -2230,27 +2110,19 @@ class GoogleMapsPlacesV1Place {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          takeout: json_.containsKey('takeout')
-              ? json_['takeout'] as core.bool
-              : null,
+          takeout: json_['takeout'] as core.bool?,
           types: json_.containsKey('types')
               ? (json_['types'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          userRatingCount: json_.containsKey('userRatingCount')
-              ? json_['userRatingCount'] as core.int
-              : null,
-          utcOffsetMinutes: json_.containsKey('utcOffsetMinutes')
-              ? json_['utcOffsetMinutes'] as core.int
-              : null,
+          userRatingCount: json_['userRatingCount'] as core.int?,
+          utcOffsetMinutes: json_['utcOffsetMinutes'] as core.int?,
           viewport: json_.containsKey('viewport')
               ? GoogleGeoTypeViewport.fromJson(
                   json_['viewport'] as core.Map<core.String, core.dynamic>)
               : null,
-          websiteUri: json_.containsKey('websiteUri')
-              ? json_['websiteUri'] as core.String
-              : null,
+          websiteUri: json_['websiteUri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2356,21 +2228,13 @@ class GoogleMapsPlacesV1PlaceAccessibilityOptions {
   GoogleMapsPlacesV1PlaceAccessibilityOptions.fromJson(core.Map json_)
       : this(
           wheelchairAccessibleEntrance:
-              json_.containsKey('wheelchairAccessibleEntrance')
-                  ? json_['wheelchairAccessibleEntrance'] as core.bool
-                  : null,
+              json_['wheelchairAccessibleEntrance'] as core.bool?,
           wheelchairAccessibleParking:
-              json_.containsKey('wheelchairAccessibleParking')
-                  ? json_['wheelchairAccessibleParking'] as core.bool
-                  : null,
+              json_['wheelchairAccessibleParking'] as core.bool?,
           wheelchairAccessibleRestroom:
-              json_.containsKey('wheelchairAccessibleRestroom')
-                  ? json_['wheelchairAccessibleRestroom'] as core.bool
-                  : null,
+              json_['wheelchairAccessibleRestroom'] as core.bool?,
           wheelchairAccessibleSeating:
-              json_.containsKey('wheelchairAccessibleSeating')
-                  ? json_['wheelchairAccessibleSeating'] as core.bool
-                  : null,
+              json_['wheelchairAccessibleSeating'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2415,15 +2279,9 @@ class GoogleMapsPlacesV1PlaceAddressComponent {
 
   GoogleMapsPlacesV1PlaceAddressComponent.fromJson(core.Map json_)
       : this(
-          languageCode: json_.containsKey('languageCode')
-              ? json_['languageCode'] as core.String
-              : null,
-          longText: json_.containsKey('longText')
-              ? json_['longText'] as core.String
-              : null,
-          shortText: json_.containsKey('shortText')
-              ? json_['shortText'] as core.String
-              : null,
+          languageCode: json_['languageCode'] as core.String?,
+          longText: json_['longText'] as core.String?,
+          shortText: json_['shortText'] as core.String?,
           types: json_.containsKey('types')
               ? (json_['types'] as core.List)
                   .map((value) => value as core.String)
@@ -2484,12 +2342,8 @@ class GoogleMapsPlacesV1PlaceAttribution {
 
   GoogleMapsPlacesV1PlaceAttribution.fromJson(core.Map json_)
       : this(
-          provider: json_.containsKey('provider')
-              ? json_['provider'] as core.String
-              : null,
-          providerUri: json_.containsKey('providerUri')
-              ? json_['providerUri'] as core.String
-              : null,
+          provider: json_['provider'] as core.String?,
+          providerUri: json_['providerUri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2600,9 +2454,7 @@ class GoogleMapsPlacesV1PlaceOpeningHours {
 
   GoogleMapsPlacesV1PlaceOpeningHours.fromJson(core.Map json_)
       : this(
-          openNow: json_.containsKey('openNow')
-              ? json_['openNow'] as core.bool
-              : null,
+          openNow: json_['openNow'] as core.bool?,
           periods: json_.containsKey('periods')
               ? (json_['periods'] as core.List)
                   .map((value) =>
@@ -2610,9 +2462,7 @@ class GoogleMapsPlacesV1PlaceOpeningHours {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          secondaryHoursType: json_.containsKey('secondaryHoursType')
-              ? json_['secondaryHoursType'] as core.String
-              : null,
+          secondaryHoursType: json_['secondaryHoursType'] as core.String?,
           specialDays: json_.containsKey('specialDays')
               ? (json_['specialDays'] as core.List)
                   .map((value) =>
@@ -2711,13 +2561,10 @@ class GoogleMapsPlacesV1PlaceOpeningHoursPeriodPoint {
               ? GoogleTypeDate.fromJson(
                   json_['date'] as core.Map<core.String, core.dynamic>)
               : null,
-          day: json_.containsKey('day') ? json_['day'] as core.int : null,
-          hour: json_.containsKey('hour') ? json_['hour'] as core.int : null,
-          minute:
-              json_.containsKey('minute') ? json_['minute'] as core.int : null,
-          truncated: json_.containsKey('truncated')
-              ? json_['truncated'] as core.bool
-              : null,
+          day: json_['day'] as core.int?,
+          hour: json_['hour'] as core.int?,
+          minute: json_['minute'] as core.int?,
+          truncated: json_['truncated'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2792,27 +2639,13 @@ class GoogleMapsPlacesV1PlaceParkingOptions {
 
   GoogleMapsPlacesV1PlaceParkingOptions.fromJson(core.Map json_)
       : this(
-          freeGarageParking: json_.containsKey('freeGarageParking')
-              ? json_['freeGarageParking'] as core.bool
-              : null,
-          freeParkingLot: json_.containsKey('freeParkingLot')
-              ? json_['freeParkingLot'] as core.bool
-              : null,
-          freeStreetParking: json_.containsKey('freeStreetParking')
-              ? json_['freeStreetParking'] as core.bool
-              : null,
-          paidGarageParking: json_.containsKey('paidGarageParking')
-              ? json_['paidGarageParking'] as core.bool
-              : null,
-          paidParkingLot: json_.containsKey('paidParkingLot')
-              ? json_['paidParkingLot'] as core.bool
-              : null,
-          paidStreetParking: json_.containsKey('paidStreetParking')
-              ? json_['paidStreetParking'] as core.bool
-              : null,
-          valetParking: json_.containsKey('valetParking')
-              ? json_['valetParking'] as core.bool
-              : null,
+          freeGarageParking: json_['freeGarageParking'] as core.bool?,
+          freeParkingLot: json_['freeParkingLot'] as core.bool?,
+          freeStreetParking: json_['freeStreetParking'] as core.bool?,
+          paidGarageParking: json_['paidGarageParking'] as core.bool?,
+          paidParkingLot: json_['paidParkingLot'] as core.bool?,
+          paidStreetParking: json_['paidStreetParking'] as core.bool?,
+          valetParking: json_['valetParking'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2851,18 +2684,10 @@ class GoogleMapsPlacesV1PlacePaymentOptions {
 
   GoogleMapsPlacesV1PlacePaymentOptions.fromJson(core.Map json_)
       : this(
-          acceptsCashOnly: json_.containsKey('acceptsCashOnly')
-              ? json_['acceptsCashOnly'] as core.bool
-              : null,
-          acceptsCreditCards: json_.containsKey('acceptsCreditCards')
-              ? json_['acceptsCreditCards'] as core.bool
-              : null,
-          acceptsDebitCards: json_.containsKey('acceptsDebitCards')
-              ? json_['acceptsDebitCards'] as core.bool
-              : null,
-          acceptsNfc: json_.containsKey('acceptsNfc')
-              ? json_['acceptsNfc'] as core.bool
-              : null,
+          acceptsCashOnly: json_['acceptsCashOnly'] as core.bool?,
+          acceptsCreditCards: json_['acceptsCreditCards'] as core.bool?,
+          acceptsDebitCards: json_['acceptsDebitCards'] as core.bool?,
+          acceptsNfc: json_['acceptsNfc'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2896,8 +2721,8 @@ class GoogleMapsPlacesV1PlaceSubDestination {
 
   GoogleMapsPlacesV1PlaceSubDestination.fromJson(core.Map json_)
       : this(
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          id: json_['id'] as core.String?,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2989,21 +2814,15 @@ class GoogleMapsPlacesV1Review {
                   json_['authorAttribution']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           originalText: json_.containsKey('originalText')
               ? GoogleTypeLocalizedText.fromJson(
                   json_['originalText'] as core.Map<core.String, core.dynamic>)
               : null,
-          publishTime: json_.containsKey('publishTime')
-              ? json_['publishTime'] as core.String
-              : null,
-          rating: json_.containsKey('rating')
-              ? (json_['rating'] as core.num).toDouble()
-              : null,
+          publishTime: json_['publishTime'] as core.String?,
+          rating: (json_['rating'] as core.num?)?.toDouble(),
           relativePublishTimeDescription:
-              json_.containsKey('relativePublishTimeDescription')
-                  ? json_['relativePublishTimeDescription'] as core.String
-                  : null,
+              json_['relativePublishTimeDescription'] as core.String?,
           text: json_.containsKey('text')
               ? GoogleTypeLocalizedText.fromJson(
                   json_['text'] as core.Map<core.String, core.dynamic>)
@@ -3161,23 +2980,15 @@ class GoogleMapsPlacesV1SearchNearbyRequest {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          languageCode: json_.containsKey('languageCode')
-              ? json_['languageCode'] as core.String
-              : null,
+          languageCode: json_['languageCode'] as core.String?,
           locationRestriction: json_.containsKey('locationRestriction')
               ? GoogleMapsPlacesV1SearchNearbyRequestLocationRestriction
                   .fromJson(json_['locationRestriction']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          maxResultCount: json_.containsKey('maxResultCount')
-              ? json_['maxResultCount'] as core.int
-              : null,
-          rankPreference: json_.containsKey('rankPreference')
-              ? json_['rankPreference'] as core.String
-              : null,
-          regionCode: json_.containsKey('regionCode')
-              ? json_['regionCode'] as core.String
-              : null,
+          maxResultCount: json_['maxResultCount'] as core.int?,
+          rankPreference: json_['rankPreference'] as core.String?,
+          regionCode: json_['regionCode'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3393,12 +3204,8 @@ class GoogleMapsPlacesV1SearchTextRequest {
               ? GoogleMapsPlacesV1SearchTextRequestEVOptions.fromJson(
                   json_['evOptions'] as core.Map<core.String, core.dynamic>)
               : null,
-          includedType: json_.containsKey('includedType')
-              ? json_['includedType'] as core.String
-              : null,
-          languageCode: json_.containsKey('languageCode')
-              ? json_['languageCode'] as core.String
-              : null,
+          includedType: json_['includedType'] as core.String?,
+          languageCode: json_['languageCode'] as core.String?,
           locationBias: json_.containsKey('locationBias')
               ? GoogleMapsPlacesV1SearchTextRequestLocationBias.fromJson(
                   json_['locationBias'] as core.Map<core.String, core.dynamic>)
@@ -3408,38 +3215,20 @@ class GoogleMapsPlacesV1SearchTextRequest {
                   json_['locationRestriction']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          maxResultCount: json_.containsKey('maxResultCount')
-              ? json_['maxResultCount'] as core.int
-              : null,
-          minRating: json_.containsKey('minRating')
-              ? (json_['minRating'] as core.num).toDouble()
-              : null,
-          openNow: json_.containsKey('openNow')
-              ? json_['openNow'] as core.bool
-              : null,
-          pageSize: json_.containsKey('pageSize')
-              ? json_['pageSize'] as core.int
-              : null,
-          pageToken: json_.containsKey('pageToken')
-              ? json_['pageToken'] as core.String
-              : null,
+          maxResultCount: json_['maxResultCount'] as core.int?,
+          minRating: (json_['minRating'] as core.num?)?.toDouble(),
+          openNow: json_['openNow'] as core.bool?,
+          pageSize: json_['pageSize'] as core.int?,
+          pageToken: json_['pageToken'] as core.String?,
           priceLevels: json_.containsKey('priceLevels')
               ? (json_['priceLevels'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          rankPreference: json_.containsKey('rankPreference')
-              ? json_['rankPreference'] as core.String
-              : null,
-          regionCode: json_.containsKey('regionCode')
-              ? json_['regionCode'] as core.String
-              : null,
-          strictTypeFiltering: json_.containsKey('strictTypeFiltering')
-              ? json_['strictTypeFiltering'] as core.bool
-              : null,
-          textQuery: json_.containsKey('textQuery')
-              ? json_['textQuery'] as core.String
-              : null,
+          rankPreference: json_['rankPreference'] as core.String?,
+          regionCode: json_['regionCode'] as core.String?,
+          strictTypeFiltering: json_['strictTypeFiltering'] as core.bool?,
+          textQuery: json_['textQuery'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3492,9 +3281,8 @@ class GoogleMapsPlacesV1SearchTextRequestEVOptions {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          minimumChargingRateKw: json_.containsKey('minimumChargingRateKw')
-              ? (json_['minimumChargingRateKw'] as core.num).toDouble()
-              : null,
+          minimumChargingRateKw:
+              (json_['minimumChargingRateKw'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3613,9 +3401,7 @@ class GoogleMapsPlacesV1SearchTextResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           places: json_.containsKey('places')
               ? (json_['places'] as core.List)
                   .map((value) => GoogleMapsPlacesV1Place.fromJson(

@@ -1743,9 +1743,7 @@ class AuditConfig {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          service: json_.containsKey('service')
-              ? json_['service'] as core.String
-              : null,
+          service: json_['service'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1859,7 +1857,7 @@ class Binding {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          role: json_.containsKey('role') ? json_['role'] as core.String : null,
+          role: json_['role'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1973,31 +1971,16 @@ class Channel {
 
   Channel.fromJson(core.Map json_)
       : this(
-          activationToken: json_.containsKey('activationToken')
-              ? json_['activationToken'] as core.String
-              : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          cryptoKeyName: json_.containsKey('cryptoKeyName')
-              ? json_['cryptoKeyName'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          provider: json_.containsKey('provider')
-              ? json_['provider'] as core.String
-              : null,
-          pubsubTopic: json_.containsKey('pubsubTopic')
-              ? json_['pubsubTopic'] as core.String
-              : null,
-          satisfiesPzs: json_.containsKey('satisfiesPzs')
-              ? json_['satisfiesPzs'] as core.bool
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
-          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          activationToken: json_['activationToken'] as core.String?,
+          createTime: json_['createTime'] as core.String?,
+          cryptoKeyName: json_['cryptoKeyName'] as core.String?,
+          name: json_['name'] as core.String?,
+          provider: json_['provider'] as core.String?,
+          pubsubTopic: json_['pubsubTopic'] as core.String?,
+          satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
+          state: json_['state'] as core.String?,
+          uid: json_['uid'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2069,20 +2052,12 @@ class ChannelConnection {
 
   ChannelConnection.fromJson(core.Map json_)
       : this(
-          activationToken: json_.containsKey('activationToken')
-              ? json_['activationToken'] as core.String
-              : null,
-          channel: json_.containsKey('channel')
-              ? json_['channel'] as core.String
-              : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          activationToken: json_['activationToken'] as core.String?,
+          channel: json_['channel'] as core.String?,
+          createTime: json_['createTime'] as core.String?,
+          name: json_['name'] as core.String?,
+          uid: json_['uid'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2128,13 +2103,9 @@ class CloudRun {
 
   CloudRun.fromJson(core.Map json_)
       : this(
-          path: json_.containsKey('path') ? json_['path'] as core.String : null,
-          region: json_.containsKey('region')
-              ? json_['region'] as core.String
-              : null,
-          service: json_.containsKey('service')
-              ? json_['service'] as core.String
-              : null,
+          path: json_['path'] as core.String?,
+          region: json_['region'] as core.String?,
+          service: json_['service'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2195,9 +2166,7 @@ class Destination {
 
   Destination.fromJson(core.Map json_)
       : this(
-          cloudFunction: json_.containsKey('cloudFunction')
-              ? json_['cloudFunction'] as core.String
-              : null,
+          cloudFunction: json_['cloudFunction'] as core.String?,
           cloudRun: json_.containsKey('cloudRun')
               ? CloudRun.fromJson(
                   json_['cloudRun'] as core.Map<core.String, core.dynamic>)
@@ -2214,9 +2183,7 @@ class Destination {
               ? NetworkConfig.fromJson(
                   json_['networkConfig'] as core.Map<core.String, core.dynamic>)
               : null,
-          workflow: json_.containsKey('workflow')
-              ? json_['workflow'] as core.String
-              : null,
+          workflow: json_['workflow'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2271,14 +2238,9 @@ class EventFilter {
 
   EventFilter.fromJson(core.Map json_)
       : this(
-          attribute: json_.containsKey('attribute')
-              ? json_['attribute'] as core.String
-              : null,
-          operator: json_.containsKey('operator')
-              ? json_['operator'] as core.String
-              : null,
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
+          attribute: json_['attribute'] as core.String?,
+          operator: json_['operator'] as core.String?,
+          value: json_['value'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2330,19 +2292,15 @@ class EventType {
 
   EventType.fromJson(core.Map json_)
       : this(
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          eventSchemaUri: json_.containsKey('eventSchemaUri')
-              ? json_['eventSchemaUri'] as core.String
-              : null,
+          description: json_['description'] as core.String?,
+          eventSchemaUri: json_['eventSchemaUri'] as core.String?,
           filteringAttributes: json_.containsKey('filteringAttributes')
               ? (json_['filteringAttributes'] as core.List)
                   .map((value) => FilteringAttribute.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2411,18 +2369,10 @@ class FilteringAttribute {
 
   FilteringAttribute.fromJson(core.Map json_)
       : this(
-          attribute: json_.containsKey('attribute')
-              ? json_['attribute'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          pathPatternSupported: json_.containsKey('pathPatternSupported')
-              ? json_['pathPatternSupported'] as core.bool
-              : null,
-          required: json_.containsKey('required')
-              ? json_['required'] as core.bool
-              : null,
+          attribute: json_['attribute'] as core.String?,
+          description: json_['description'] as core.String?,
+          pathPatternSupported: json_['pathPatternSupported'] as core.bool?,
+          required: json_['required'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2479,19 +2429,11 @@ class GKE {
 
   GKE.fromJson(core.Map json_)
       : this(
-          cluster: json_.containsKey('cluster')
-              ? json_['cluster'] as core.String
-              : null,
-          location: json_.containsKey('location')
-              ? json_['location'] as core.String
-              : null,
-          namespace: json_.containsKey('namespace')
-              ? json_['namespace'] as core.String
-              : null,
-          path: json_.containsKey('path') ? json_['path'] as core.String : null,
-          service: json_.containsKey('service')
-              ? json_['service'] as core.String
-              : null,
+          cluster: json_['cluster'] as core.String?,
+          location: json_['location'] as core.String?,
+          namespace: json_['namespace'] as core.String?,
+          path: json_['path'] as core.String?,
+          service: json_['service'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2540,13 +2482,9 @@ class GoogleChannelConfig {
 
   GoogleChannelConfig.fromJson(core.Map json_)
       : this(
-          cryptoKeyName: json_.containsKey('cryptoKeyName')
-              ? json_['cryptoKeyName'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          cryptoKeyName: json_['cryptoKeyName'] as core.String?,
+          name: json_['name'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2574,9 +2512,7 @@ class GoogleLongrunningListOperationsResponse {
 
   GoogleLongrunningListOperationsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           operations: json_.containsKey('operations')
               ? (json_['operations'] as core.List)
                   .map((value) => GoogleLongrunningOperation.fromJson(
@@ -2644,7 +2580,7 @@ class GoogleLongrunningOperation {
 
   GoogleLongrunningOperation.fromJson(core.Map json_)
       : this(
-          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? GoogleRpcStatus.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
@@ -2652,7 +2588,7 @@ class GoogleLongrunningOperation {
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           response: json_.containsKey('response')
               ? json_['response'] as core.Map<core.String, core.dynamic>
               : null,
@@ -2695,7 +2631,7 @@ class HttpEndpoint {
 
   HttpEndpoint.fromJson(core.Map json_)
       : this(
-          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+          uri: json_['uri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2732,9 +2668,7 @@ class ListChannelConnectionsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: json_.containsKey('unreachable')
               ? (json_['unreachable'] as core.List)
                   .map((value) => value as core.String)
@@ -2777,9 +2711,7 @@ class ListChannelsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: json_.containsKey('unreachable')
               ? (json_['unreachable'] as core.List)
                   .map((value) => value as core.String)
@@ -2815,9 +2747,7 @@ class ListLocationsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2847,9 +2777,7 @@ class ListProvidersResponse {
 
   ListProvidersResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           providers: json_.containsKey('providers')
               ? (json_['providers'] as core.List)
                   .map((value) => Provider.fromJson(
@@ -2891,9 +2819,7 @@ class ListTriggersResponse {
 
   ListTriggersResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           triggers: json_.containsKey('triggers')
               ? (json_['triggers'] as core.List)
                   .map((value) => Trigger.fromJson(
@@ -2933,9 +2859,7 @@ class NetworkConfig {
 
   NetworkConfig.fromJson(core.Map json_)
       : this(
-          networkAttachment: json_.containsKey('networkAttachment')
-              ? json_['networkAttachment'] as core.String
-              : null,
+          networkAttachment: json_['networkAttachment'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3050,10 +2974,8 @@ class Policy {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          version: json_.containsKey('version')
-              ? json_['version'] as core.int
-              : null,
+          etag: json_['etag'] as core.String?,
+          version: json_['version'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3092,16 +3014,14 @@ class Provider {
 
   Provider.fromJson(core.Map json_)
       : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+          displayName: json_['displayName'] as core.String?,
           eventTypes: json_.containsKey('eventTypes')
               ? (json_['eventTypes'] as core.List)
                   .map((value) => EventType.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3139,11 +3059,8 @@ class Pubsub {
 
   Pubsub.fromJson(core.Map json_)
       : this(
-          subscription: json_.containsKey('subscription')
-              ? json_['subscription'] as core.String
-              : null,
-          topic:
-              json_.containsKey('topic') ? json_['topic'] as core.String : null,
+          subscription: json_['subscription'] as core.String?,
+          topic: json_['topic'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3178,9 +3095,7 @@ class SetIamPolicyRequest {
               ? Policy.fromJson(
                   json_['policy'] as core.Map<core.String, core.dynamic>)
               : null,
-          updateMask: json_.containsKey('updateMask')
-              ? json_['updateMask'] as core.String
-              : null,
+          updateMask: json_['updateMask'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3284,10 +3199,8 @@ class StateCondition {
 
   StateCondition.fromJson(core.Map json_)
       : this(
-          code: json_.containsKey('code') ? json_['code'] as core.String : null,
-          message: json_.containsKey('message')
-              ? json_['message'] as core.String
-              : null,
+          code: json_['code'] as core.String?,
+          message: json_['message'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3446,9 +3359,7 @@ class Trigger {
 
   Trigger.fromJson(core.Map json_)
       : this(
-          channel: json_.containsKey('channel')
-              ? json_['channel'] as core.String
-              : null,
+          channel: json_['channel'] as core.String?,
           conditions: json_.containsKey('conditions')
               ? (json_['conditions'] as core.Map<core.String, core.dynamic>)
                   .map(
@@ -3459,17 +3370,13 @@ class Trigger {
                   ),
                 )
               : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
           destination: json_.containsKey('destination')
               ? Destination.fromJson(
                   json_['destination'] as core.Map<core.String, core.dynamic>)
               : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          eventDataContentType: json_.containsKey('eventDataContentType')
-              ? json_['eventDataContentType'] as core.String
-              : null,
+          etag: json_['etag'] as core.String?,
+          eventDataContentType: json_['eventDataContentType'] as core.String?,
           eventFilters: json_.containsKey('eventFilters')
               ? (json_['eventFilters'] as core.List)
                   .map((value) => EventFilter.fromJson(
@@ -3484,21 +3391,15 @@ class Trigger {
                   ),
                 )
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          satisfiesPzs: json_.containsKey('satisfiesPzs')
-              ? json_['satisfiesPzs'] as core.bool
-              : null,
-          serviceAccount: json_.containsKey('serviceAccount')
-              ? json_['serviceAccount'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
+          serviceAccount: json_['serviceAccount'] as core.String?,
           transport: json_.containsKey('transport')
               ? Transport.fromJson(
                   json_['transport'] as core.Map<core.String, core.dynamic>)
               : null,
-          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          uid: json_['uid'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

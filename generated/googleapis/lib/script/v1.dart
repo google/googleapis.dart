@@ -986,9 +986,7 @@ class Content {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          scriptId: json_.containsKey('scriptId')
-              ? json_['scriptId'] as core.String
-              : null,
+          scriptId: json_['scriptId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1017,11 +1015,8 @@ class CreateProjectRequest {
 
   CreateProjectRequest.fromJson(core.Map json_)
       : this(
-          parentId: json_.containsKey('parentId')
-              ? json_['parentId'] as core.String
-              : null,
-          title:
-              json_.containsKey('title') ? json_['title'] as core.String : null,
+          parentId: json_['parentId'] as core.String?,
+          title: json_['title'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1057,18 +1052,14 @@ class Deployment {
               ? DeploymentConfig.fromJson(json_['deploymentConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          deploymentId: json_.containsKey('deploymentId')
-              ? json_['deploymentId'] as core.String
-              : null,
+          deploymentId: json_['deploymentId'] as core.String?,
           entryPoints: json_.containsKey('entryPoints')
               ? (json_['entryPoints'] as core.List)
                   .map((value) => EntryPoint.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1102,18 +1093,10 @@ class DeploymentConfig {
 
   DeploymentConfig.fromJson(core.Map json_)
       : this(
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          manifestFileName: json_.containsKey('manifestFileName')
-              ? json_['manifestFileName'] as core.String
-              : null,
-          scriptId: json_.containsKey('scriptId')
-              ? json_['scriptId'] as core.String
-              : null,
-          versionNumber: json_.containsKey('versionNumber')
-              ? json_['versionNumber'] as core.int
-              : null,
+          description: json_['description'] as core.String?,
+          manifestFileName: json_['manifestFileName'] as core.String?,
+          scriptId: json_['scriptId'] as core.String?,
+          versionNumber: json_['versionNumber'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1164,9 +1147,7 @@ class EntryPoint {
               ? GoogleAppsScriptTypeAddOnEntryPoint.fromJson(
                   json_['addOn'] as core.Map<core.String, core.dynamic>)
               : null,
-          entryPointType: json_.containsKey('entryPointType')
-              ? json_['entryPointType'] as core.String
-              : null,
+          entryPointType: json_['entryPointType'] as core.String?,
           executionApi: json_.containsKey('executionApi')
               ? GoogleAppsScriptTypeExecutionApiEntryPoint.fromJson(
                   json_['executionApi'] as core.Map<core.String, core.dynamic>)
@@ -1239,18 +1220,12 @@ class ExecutionRequest {
 
   ExecutionRequest.fromJson(core.Map json_)
       : this(
-          devMode: json_.containsKey('devMode')
-              ? json_['devMode'] as core.bool
-              : null,
-          function: json_.containsKey('function')
-              ? json_['function'] as core.String
-              : null,
+          devMode: json_['devMode'] as core.bool?,
+          function: json_['function'] as core.String?,
           parameters: json_.containsKey('parameters')
               ? json_['parameters'] as core.List
               : null,
-          sessionState: json_.containsKey('sessionState')
-              ? json_['sessionState'] as core.String
-              : null,
+          sessionState: json_['sessionState'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1319,9 +1294,7 @@ class File {
 
   File.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
           functionSet: json_.containsKey('functionSet')
               ? GoogleAppsScriptTypeFunctionSet.fromJson(
                   json_['functionSet'] as core.Map<core.String, core.dynamic>)
@@ -1330,14 +1303,10 @@ class File {
               ? GoogleAppsScriptTypeUser.fromJson(json_['lastModifyUser']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          source: json_.containsKey('source')
-              ? json_['source'] as core.String
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          source: json_['source'] as core.String?,
+          type: json_['type'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1386,23 +1355,12 @@ class GoogleAppsScriptTypeAddOnEntryPoint {
 
   GoogleAppsScriptTypeAddOnEntryPoint.fromJson(core.Map json_)
       : this(
-          addOnType: json_.containsKey('addOnType')
-              ? json_['addOnType'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          helpUrl: json_.containsKey('helpUrl')
-              ? json_['helpUrl'] as core.String
-              : null,
-          postInstallTipUrl: json_.containsKey('postInstallTipUrl')
-              ? json_['postInstallTipUrl'] as core.String
-              : null,
-          reportIssueUrl: json_.containsKey('reportIssueUrl')
-              ? json_['reportIssueUrl'] as core.String
-              : null,
-          title:
-              json_.containsKey('title') ? json_['title'] as core.String : null,
+          addOnType: json_['addOnType'] as core.String?,
+          description: json_['description'] as core.String?,
+          helpUrl: json_['helpUrl'] as core.String?,
+          postInstallTipUrl: json_['postInstallTipUrl'] as core.String?,
+          reportIssueUrl: json_['reportIssueUrl'] as core.String?,
+          title: json_['title'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1436,9 +1394,7 @@ class GoogleAppsScriptTypeExecutionApiConfig {
 
   GoogleAppsScriptTypeExecutionApiConfig.fromJson(core.Map json_)
       : this(
-          access: json_.containsKey('access')
-              ? json_['access'] as core.String
-              : null,
+          access: json_['access'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1484,7 +1440,7 @@ class GoogleAppsScriptTypeFunction {
 
   GoogleAppsScriptTypeFunction.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           parameters: json_.containsKey('parameters')
               ? (json_['parameters'] as core.List)
                   .map((value) => value as core.String)
@@ -1600,30 +1556,14 @@ class GoogleAppsScriptTypeProcess {
 
   GoogleAppsScriptTypeProcess.fromJson(core.Map json_)
       : this(
-          duration: json_.containsKey('duration')
-              ? json_['duration'] as core.String
-              : null,
-          functionName: json_.containsKey('functionName')
-              ? json_['functionName'] as core.String
-              : null,
-          processStatus: json_.containsKey('processStatus')
-              ? json_['processStatus'] as core.String
-              : null,
-          processType: json_.containsKey('processType')
-              ? json_['processType'] as core.String
-              : null,
-          projectName: json_.containsKey('projectName')
-              ? json_['projectName'] as core.String
-              : null,
-          runtimeVersion: json_.containsKey('runtimeVersion')
-              ? json_['runtimeVersion'] as core.String
-              : null,
-          startTime: json_.containsKey('startTime')
-              ? json_['startTime'] as core.String
-              : null,
-          userAccessLevel: json_.containsKey('userAccessLevel')
-              ? json_['userAccessLevel'] as core.String
-              : null,
+          duration: json_['duration'] as core.String?,
+          functionName: json_['functionName'] as core.String?,
+          processStatus: json_['processStatus'] as core.String?,
+          processType: json_['processType'] as core.String?,
+          projectName: json_['projectName'] as core.String?,
+          runtimeVersion: json_['runtimeVersion'] as core.String?,
+          startTime: json_['startTime'] as core.String?,
+          userAccessLevel: json_['userAccessLevel'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1661,15 +1601,10 @@ class GoogleAppsScriptTypeUser {
 
   GoogleAppsScriptTypeUser.fromJson(core.Map json_)
       : this(
-          domain: json_.containsKey('domain')
-              ? json_['domain'] as core.String
-              : null,
-          email:
-              json_.containsKey('email') ? json_['email'] as core.String : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          photoUrl: json_.containsKey('photoUrl')
-              ? json_['photoUrl'] as core.String
-              : null,
+          domain: json_['domain'] as core.String?,
+          email: json_['email'] as core.String?,
+          name: json_['name'] as core.String?,
+          photoUrl: json_['photoUrl'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1710,12 +1645,8 @@ class GoogleAppsScriptTypeWebAppConfig {
 
   GoogleAppsScriptTypeWebAppConfig.fromJson(core.Map json_)
       : this(
-          access: json_.containsKey('access')
-              ? json_['access'] as core.String
-              : null,
-          executeAs: json_.containsKey('executeAs')
-              ? json_['executeAs'] as core.String
-              : null,
+          access: json_['access'] as core.String?,
+          executeAs: json_['executeAs'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1744,7 +1675,7 @@ class GoogleAppsScriptTypeWebAppEntryPoint {
                   json_['entryPointConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          url: json_.containsKey('url') ? json_['url'] as core.String : null,
+          url: json_['url'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1775,9 +1706,7 @@ class ListDeploymentsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1803,9 +1732,7 @@ class ListScriptProcessesResponse {
 
   ListScriptProcessesResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           processes: json_.containsKey('processes')
               ? (json_['processes'] as core.List)
                   .map((value) => GoogleAppsScriptTypeProcess.fromJson(
@@ -1837,9 +1764,7 @@ class ListUserProcessesResponse {
 
   ListUserProcessesResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           processes: json_.containsKey('processes')
               ? (json_['processes'] as core.List)
                   .map((value) => GoogleAppsScriptTypeProcess.fromJson(
@@ -1871,9 +1796,7 @@ class ListVersionsResponse {
 
   ListVersionsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           versions: json_.containsKey('versions')
               ? (json_['versions'] as core.List)
                   .map((value) => Version.fromJson(
@@ -1954,14 +1877,9 @@ class MetricsValue {
 
   MetricsValue.fromJson(core.Map json_)
       : this(
-          endTime: json_.containsKey('endTime')
-              ? json_['endTime'] as core.String
-              : null,
-          startTime: json_.containsKey('startTime')
-              ? json_['startTime'] as core.String
-              : null,
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
+          endTime: json_['endTime'] as core.String?,
+          startTime: json_['startTime'] as core.String?,
+          value: json_['value'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2020,7 +1938,7 @@ class Operation {
 
   Operation.fromJson(core.Map json_)
       : this(
-          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
@@ -2075,9 +1993,7 @@ class Project {
 
   Project.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
           creator: json_.containsKey('creator')
               ? GoogleAppsScriptTypeUser.fromJson(
                   json_['creator'] as core.Map<core.String, core.dynamic>)
@@ -2086,17 +2002,10 @@ class Project {
               ? GoogleAppsScriptTypeUser.fromJson(json_['lastModifyUser']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          parentId: json_.containsKey('parentId')
-              ? json_['parentId'] as core.String
-              : null,
-          scriptId: json_.containsKey('scriptId')
-              ? json_['scriptId'] as core.String
-              : null,
-          title:
-              json_.containsKey('title') ? json_['title'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          parentId: json_['parentId'] as core.String?,
+          scriptId: json_['scriptId'] as core.String?,
+          title: json_['title'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2142,15 +2051,13 @@ class Status {
 
   Status.fromJson(core.Map json_)
       : this(
-          code: json_.containsKey('code') ? json_['code'] as core.int : null,
+          code: json_['code'] as core.int?,
           details: json_.containsKey('details')
               ? (json_['details'] as core.List)
                   .map((value) => value as core.Map<core.String, core.dynamic>)
                   .toList()
               : null,
-          message: json_.containsKey('message')
-              ? json_['message'] as core.String
-              : null,
+          message: json_['message'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2212,18 +2119,10 @@ class Version {
 
   Version.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          scriptId: json_.containsKey('scriptId')
-              ? json_['scriptId'] as core.String
-              : null,
-          versionNumber: json_.containsKey('versionNumber')
-              ? json_['versionNumber'] as core.int
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          description: json_['description'] as core.String?,
+          scriptId: json_['scriptId'] as core.String?,
+          versionNumber: json_['versionNumber'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

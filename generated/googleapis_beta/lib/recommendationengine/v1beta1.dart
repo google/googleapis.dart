@@ -1300,10 +1300,8 @@ class GoogleApiHttpBody {
 
   GoogleApiHttpBody.fromJson(core.Map json_)
       : this(
-          contentType: json_.containsKey('contentType')
-              ? json_['contentType'] as core.String
-              : null,
-          data: json_.containsKey('data') ? json_['data'] as core.String : null,
+          contentType: json_['contentType'] as core.String?,
+          data: json_['data'] as core.String?,
           extensions: json_.containsKey('extensions')
               ? (json_['extensions'] as core.List)
                   .map((value) => value as core.Map<core.String, core.dynamic>)
@@ -1370,21 +1368,11 @@ class GoogleCloudRecommendationengineV1beta1BigQuerySource {
 
   GoogleCloudRecommendationengineV1beta1BigQuerySource.fromJson(core.Map json_)
       : this(
-          dataSchema: json_.containsKey('dataSchema')
-              ? json_['dataSchema'] as core.String
-              : null,
-          datasetId: json_.containsKey('datasetId')
-              ? json_['datasetId'] as core.String
-              : null,
-          gcsStagingDir: json_.containsKey('gcsStagingDir')
-              ? json_['gcsStagingDir'] as core.String
-              : null,
-          projectId: json_.containsKey('projectId')
-              ? json_['projectId'] as core.String
-              : null,
-          tableId: json_.containsKey('tableId')
-              ? json_['tableId'] as core.String
-              : null,
+          dataSchema: json_['dataSchema'] as core.String?,
+          datasetId: json_['datasetId'] as core.String?,
+          gcsStagingDir: json_['gcsStagingDir'] as core.String?,
+          projectId: json_['projectId'] as core.String?,
+          tableId: json_['tableId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1433,13 +1421,9 @@ class GoogleCloudRecommendationengineV1beta1Catalog {
                   .fromJson(json_['catalogItemLevelConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          defaultEventStoreId: json_.containsKey('defaultEventStoreId')
-              ? json_['defaultEventStoreId'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          defaultEventStoreId: json_['defaultEventStoreId'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1588,21 +1572,15 @@ class GoogleCloudRecommendationengineV1beta1CatalogItem {
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          description: json_['description'] as core.String?,
+          id: json_['id'] as core.String?,
           itemAttributes: json_.containsKey('itemAttributes')
               ? GoogleCloudRecommendationengineV1beta1FeatureMap.fromJson(
                   json_['itemAttributes']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          itemGroupId: json_.containsKey('itemGroupId')
-              ? json_['itemGroupId'] as core.String
-              : null,
-          languageCode: json_.containsKey('languageCode')
-              ? json_['languageCode'] as core.String
-              : null,
+          itemGroupId: json_['itemGroupId'] as core.String?,
+          languageCode: json_['languageCode'] as core.String?,
           productMetadata: json_.containsKey('productMetadata')
               ? GoogleCloudRecommendationengineV1beta1ProductCatalogItem
                   .fromJson(json_['productMetadata']
@@ -1613,8 +1591,7 @@ class GoogleCloudRecommendationengineV1beta1CatalogItem {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          title:
-              json_.containsKey('title') ? json_['title'] as core.String : null,
+          title: json_['title'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1698,12 +1675,8 @@ class GoogleCloudRecommendationengineV1beta1CatalogItemLevelConfig {
   GoogleCloudRecommendationengineV1beta1CatalogItemLevelConfig.fromJson(
       core.Map json_)
       : this(
-          eventItemLevel: json_.containsKey('eventItemLevel')
-              ? json_['eventItemLevel'] as core.String
-              : null,
-          predictItemLevel: json_.containsKey('predictItemLevel')
-              ? json_['predictItemLevel'] as core.String
-              : null,
+          eventItemLevel: json_['eventItemLevel'] as core.String?,
+          predictItemLevel: json_['predictItemLevel'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1826,16 +1799,10 @@ class GoogleCloudRecommendationengineV1beta1EventDetail {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          pageViewId: json_.containsKey('pageViewId')
-              ? json_['pageViewId'] as core.String
-              : null,
-          recommendationToken: json_.containsKey('recommendationToken')
-              ? json_['recommendationToken'] as core.String
-              : null,
-          referrerUri: json_.containsKey('referrerUri')
-              ? json_['referrerUri'] as core.String
-              : null,
-          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+          pageViewId: json_['pageViewId'] as core.String?,
+          recommendationToken: json_['recommendationToken'] as core.String?,
+          referrerUri: json_['referrerUri'] as core.String?,
+          uri: json_['uri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2002,9 +1969,7 @@ class GoogleCloudRecommendationengineV1beta1GcsSource {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          jsonSchema: json_.containsKey('jsonSchema')
-              ? json_['jsonSchema'] as core.String
-              : null,
+          jsonSchema: json_['jsonSchema'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2038,10 +2003,9 @@ class GoogleCloudRecommendationengineV1beta1Image {
 
   GoogleCloudRecommendationengineV1beta1Image.fromJson(core.Map json_)
       : this(
-          height:
-              json_.containsKey('height') ? json_['height'] as core.int : null,
-          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
-          width: json_.containsKey('width') ? json_['width'] as core.int : null,
+          height: json_['height'] as core.int?,
+          uri: json_['uri'] as core.String?,
+          width: json_['width'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2098,12 +2062,8 @@ class GoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest {
               ? GoogleCloudRecommendationengineV1beta1InputConfig.fromJson(
                   json_['inputConfig'] as core.Map<core.String, core.dynamic>)
               : null,
-          requestId: json_.containsKey('requestId')
-              ? json_['requestId'] as core.String
-              : null,
-          updateMask: json_.containsKey('updateMask')
-              ? json_['updateMask'] as core.String
-              : null,
+          requestId: json_['requestId'] as core.String?,
+          updateMask: json_['updateMask'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2130,9 +2090,7 @@ class GoogleCloudRecommendationengineV1beta1ImportErrorsConfig {
   GoogleCloudRecommendationengineV1beta1ImportErrorsConfig.fromJson(
       core.Map json_)
       : this(
-          gcsPrefix: json_.containsKey('gcsPrefix')
-              ? json_['gcsPrefix'] as core.String
-              : null,
+          gcsPrefix: json_['gcsPrefix'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2181,9 +2139,7 @@ class GoogleCloudRecommendationengineV1beta1ImportUserEventsRequest {
               ? GoogleCloudRecommendationengineV1beta1InputConfig.fromJson(
                   json_['inputConfig'] as core.Map<core.String, core.dynamic>)
               : null,
-          requestId: json_.containsKey('requestId')
-              ? json_['requestId'] as core.String
-              : null,
+          requestId: json_['requestId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2276,9 +2232,7 @@ class GoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse {
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2312,9 +2266,7 @@ class GoogleCloudRecommendationengineV1beta1ListCatalogsResponse {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2343,9 +2295,7 @@ class GoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsRes
   GoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsResponse.fromJson(
       core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           predictionApiKeyRegistrations: json_
                   .containsKey('predictionApiKeyRegistrations')
               ? (json_['predictionApiKeyRegistrations'] as core.List)
@@ -2383,9 +2333,7 @@ class GoogleCloudRecommendationengineV1beta1ListUserEventsResponse {
   GoogleCloudRecommendationengineV1beta1ListUserEventsResponse.fromJson(
       core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           userEvents: json_.containsKey('userEvents')
               ? (json_['userEvents'] as core.List)
                   .map((value) =>
@@ -2531,11 +2479,8 @@ class GoogleCloudRecommendationengineV1beta1PredictRequest {
 
   GoogleCloudRecommendationengineV1beta1PredictRequest.fromJson(core.Map json_)
       : this(
-          dryRun:
-              json_.containsKey('dryRun') ? json_['dryRun'] as core.bool : null,
-          filter: json_.containsKey('filter')
-              ? json_['filter'] as core.String
-              : null,
+          dryRun: json_['dryRun'] as core.bool?,
+          filter: json_['filter'] as core.String?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -2544,12 +2489,8 @@ class GoogleCloudRecommendationengineV1beta1PredictRequest {
                   ),
                 )
               : null,
-          pageSize: json_.containsKey('pageSize')
-              ? json_['pageSize'] as core.int
-              : null,
-          pageToken: json_.containsKey('pageToken')
-              ? json_['pageToken'] as core.String
-              : null,
+          pageSize: json_['pageSize'] as core.int?,
+          pageToken: json_['pageToken'] as core.String?,
           params: json_.containsKey('params')
               ? json_['params'] as core.Map<core.String, core.dynamic>
               : null,
@@ -2616,8 +2557,7 @@ class GoogleCloudRecommendationengineV1beta1PredictResponse {
 
   GoogleCloudRecommendationengineV1beta1PredictResponse.fromJson(core.Map json_)
       : this(
-          dryRun:
-              json_.containsKey('dryRun') ? json_['dryRun'] as core.bool : null,
+          dryRun: json_['dryRun'] as core.bool?,
           itemsMissingInCatalog: json_.containsKey('itemsMissingInCatalog')
               ? (json_['itemsMissingInCatalog'] as core.List)
                   .map((value) => value as core.String)
@@ -2626,12 +2566,8 @@ class GoogleCloudRecommendationengineV1beta1PredictResponse {
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
-          recommendationToken: json_.containsKey('recommendationToken')
-              ? json_['recommendationToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          recommendationToken: json_['recommendationToken'] as core.String?,
           results: json_.containsKey('results')
               ? (json_['results'] as core.List)
                   .map((value) =>
@@ -2678,7 +2614,7 @@ class GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult {
   GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult.fromJson(
       core.Map json_)
       : this(
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          id: json_['id'] as core.String?,
           itemMetadata: json_.containsKey('itemMetadata')
               ? json_['itemMetadata'] as core.Map<core.String, core.dynamic>
               : null,
@@ -2702,9 +2638,7 @@ class GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration {
   GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration.fromJson(
       core.Map json_)
       : this(
-          apiKey: json_.containsKey('apiKey')
-              ? json_['apiKey'] as core.String
-              : null,
+          apiKey: json_['apiKey'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2786,12 +2720,8 @@ class GoogleCloudRecommendationengineV1beta1ProductCatalogItem {
   GoogleCloudRecommendationengineV1beta1ProductCatalogItem.fromJson(
       core.Map json_)
       : this(
-          availableQuantity: json_.containsKey('availableQuantity')
-              ? json_['availableQuantity'] as core.String
-              : null,
-          canonicalProductUri: json_.containsKey('canonicalProductUri')
-              ? json_['canonicalProductUri'] as core.String
-              : null,
+          availableQuantity: json_['availableQuantity'] as core.String?,
+          canonicalProductUri: json_['canonicalProductUri'] as core.String?,
           costs: json_.containsKey('costs')
               ? (json_['costs'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -2800,9 +2730,7 @@ class GoogleCloudRecommendationengineV1beta1ProductCatalogItem {
                   ),
                 )
               : null,
-          currencyCode: json_.containsKey('currencyCode')
-              ? json_['currencyCode'] as core.String
-              : null,
+          currencyCode: json_['currencyCode'] as core.String?,
           exactPrice: json_.containsKey('exactPrice')
               ? GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice
                   .fromJson(json_['exactPrice']
@@ -2820,9 +2748,7 @@ class GoogleCloudRecommendationengineV1beta1ProductCatalogItem {
                   .fromJson(json_['priceRange']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          stockState: json_.containsKey('stockState')
-              ? json_['stockState'] as core.String
-              : null,
+          stockState: json_['stockState'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2860,12 +2786,8 @@ class GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice {
   GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice.fromJson(
       core.Map json_)
       : this(
-          displayPrice: json_.containsKey('displayPrice')
-              ? (json_['displayPrice'] as core.num).toDouble()
-              : null,
-          originalPrice: json_.containsKey('originalPrice')
-              ? (json_['originalPrice'] as core.num).toDouble()
-              : null,
+          displayPrice: (json_['displayPrice'] as core.num?)?.toDouble(),
+          originalPrice: (json_['originalPrice'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2895,12 +2817,8 @@ class GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange {
   GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange.fromJson(
       core.Map json_)
       : this(
-          max: json_.containsKey('max')
-              ? (json_['max'] as core.num).toDouble()
-              : null,
-          min: json_.containsKey('min')
-              ? (json_['min'] as core.num).toDouble()
-              : null,
+          max: (json_['max'] as core.num?)?.toDouble(),
+          min: (json_['min'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2996,30 +2914,18 @@ class GoogleCloudRecommendationengineV1beta1ProductDetail {
 
   GoogleCloudRecommendationengineV1beta1ProductDetail.fromJson(core.Map json_)
       : this(
-          availableQuantity: json_.containsKey('availableQuantity')
-              ? json_['availableQuantity'] as core.int
-              : null,
-          currencyCode: json_.containsKey('currencyCode')
-              ? json_['currencyCode'] as core.String
-              : null,
-          displayPrice: json_.containsKey('displayPrice')
-              ? (json_['displayPrice'] as core.num).toDouble()
-              : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          availableQuantity: json_['availableQuantity'] as core.int?,
+          currencyCode: json_['currencyCode'] as core.String?,
+          displayPrice: (json_['displayPrice'] as core.num?)?.toDouble(),
+          id: json_['id'] as core.String?,
           itemAttributes: json_.containsKey('itemAttributes')
               ? GoogleCloudRecommendationengineV1beta1FeatureMap.fromJson(
                   json_['itemAttributes']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          originalPrice: json_.containsKey('originalPrice')
-              ? (json_['originalPrice'] as core.num).toDouble()
-              : null,
-          quantity: json_.containsKey('quantity')
-              ? json_['quantity'] as core.int
-              : null,
-          stockState: json_.containsKey('stockState')
-              ? json_['stockState'] as core.String
-              : null,
+          originalPrice: (json_['originalPrice'] as core.num?)?.toDouble(),
+          quantity: json_['quantity'] as core.int?,
+          stockState: json_['stockState'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3109,12 +3015,8 @@ class GoogleCloudRecommendationengineV1beta1ProductEventDetail {
   GoogleCloudRecommendationengineV1beta1ProductEventDetail.fromJson(
       core.Map json_)
       : this(
-          cartId: json_.containsKey('cartId')
-              ? json_['cartId'] as core.String
-              : null,
-          listId: json_.containsKey('listId')
-              ? json_['listId'] as core.String
-              : null,
+          cartId: json_['cartId'] as core.String?,
+          listId: json_['listId'] as core.String?,
           pageCategories: json_.containsKey('pageCategories')
               ? (json_['pageCategories'] as core.List)
                   .map((value) =>
@@ -3136,9 +3038,7 @@ class GoogleCloudRecommendationengineV1beta1ProductEventDetail {
                   .fromJson(json_['purchaseTransaction']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          searchQuery: json_.containsKey('searchQuery')
-              ? json_['searchQuery'] as core.String
-              : null,
+          searchQuery: json_['searchQuery'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3212,13 +3112,9 @@ class GoogleCloudRecommendationengineV1beta1PurchaseTransaction {
                   ),
                 )
               : null,
-          currencyCode: json_.containsKey('currencyCode')
-              ? json_['currencyCode'] as core.String
-              : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          revenue: json_.containsKey('revenue')
-              ? (json_['revenue'] as core.num).toDouble()
-              : null,
+          currencyCode: json_['currencyCode'] as core.String?,
+          id: json_['id'] as core.String?,
+          revenue: (json_['revenue'] as core.num?)?.toDouble(),
           taxes: json_.containsKey('taxes')
               ? (json_['taxes'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -3273,11 +3169,8 @@ class GoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest {
   GoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest.fromJson(
       core.Map json_)
       : this(
-          filter: json_.containsKey('filter')
-              ? json_['filter'] as core.String
-              : null,
-          force:
-              json_.containsKey('force') ? json_['force'] as core.bool : null,
+          filter: json_['filter'] as core.String?,
+          force: json_['force'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3306,9 +3199,7 @@ class GoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest {
   GoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest.fromJson(
       core.Map json_)
       : this(
-          userEventRejoinScope: json_.containsKey('userEventRejoinScope')
-              ? json_['userEventRejoinScope'] as core.String
-              : null,
+          userEventRejoinScope: json_['userEventRejoinScope'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3400,15 +3291,9 @@ class GoogleCloudRecommendationengineV1beta1UserEvent {
               ? GoogleCloudRecommendationengineV1beta1EventDetail.fromJson(
                   json_['eventDetail'] as core.Map<core.String, core.dynamic>)
               : null,
-          eventSource: json_.containsKey('eventSource')
-              ? json_['eventSource'] as core.String
-              : null,
-          eventTime: json_.containsKey('eventTime')
-              ? json_['eventTime'] as core.String
-              : null,
-          eventType: json_.containsKey('eventType')
-              ? json_['eventType'] as core.String
-              : null,
+          eventSource: json_['eventSource'] as core.String?,
+          eventTime: json_['eventTime'] as core.String?,
+          eventType: json_['eventType'] as core.String?,
           productEventDetail: json_.containsKey('productEventDetail')
               ? GoogleCloudRecommendationengineV1beta1ProductEventDetail
                   .fromJson(json_['productEventDetail']
@@ -3526,21 +3411,11 @@ class GoogleCloudRecommendationengineV1beta1UserInfo {
 
   GoogleCloudRecommendationengineV1beta1UserInfo.fromJson(core.Map json_)
       : this(
-          directUserRequest: json_.containsKey('directUserRequest')
-              ? json_['directUserRequest'] as core.bool
-              : null,
-          ipAddress: json_.containsKey('ipAddress')
-              ? json_['ipAddress'] as core.String
-              : null,
-          userAgent: json_.containsKey('userAgent')
-              ? json_['userAgent'] as core.String
-              : null,
-          userId: json_.containsKey('userId')
-              ? json_['userId'] as core.String
-              : null,
-          visitorId: json_.containsKey('visitorId')
-              ? json_['visitorId'] as core.String
-              : null,
+          directUserRequest: json_['directUserRequest'] as core.bool?,
+          ipAddress: json_['ipAddress'] as core.String?,
+          userAgent: json_['userAgent'] as core.String?,
+          userId: json_['userId'] as core.String?,
+          visitorId: json_['visitorId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3567,9 +3442,7 @@ class GoogleLongrunningListOperationsResponse {
 
   GoogleLongrunningListOperationsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           operations: json_.containsKey('operations')
               ? (json_['operations'] as core.List)
                   .map((value) => GoogleLongrunningOperation.fromJson(
@@ -3637,7 +3510,7 @@ class GoogleLongrunningOperation {
 
   GoogleLongrunningOperation.fromJson(core.Map json_)
       : this(
-          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? GoogleRpcStatus.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
@@ -3645,7 +3518,7 @@ class GoogleLongrunningOperation {
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           response: json_.containsKey('response')
               ? json_['response'] as core.Map<core.String, core.dynamic>
               : null,

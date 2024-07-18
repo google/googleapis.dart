@@ -2113,9 +2113,7 @@ class AuthorizedNetwork {
 
   AuthorizedNetwork.fromJson(core.Map json_)
       : this(
-          cidrRange: json_.containsKey('cidrRange')
-              ? json_['cidrRange'] as core.String
-              : null,
+          cidrRange: json_['cidrRange'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2180,12 +2178,8 @@ class AutomatedBackupPolicy {
 
   AutomatedBackupPolicy.fromJson(core.Map json_)
       : this(
-          backupWindow: json_.containsKey('backupWindow')
-              ? json_['backupWindow'] as core.String
-              : null,
-          enabled: json_.containsKey('enabled')
-              ? json_['enabled'] as core.bool
-              : null,
+          backupWindow: json_['backupWindow'] as core.String?,
+          enabled: json_['enabled'] as core.bool?,
           encryptionConfig: json_.containsKey('encryptionConfig')
               ? EncryptionConfig.fromJson(json_['encryptionConfig']
                   as core.Map<core.String, core.dynamic>)
@@ -2198,9 +2192,7 @@ class AutomatedBackupPolicy {
                   ),
                 )
               : null,
-          location: json_.containsKey('location')
-              ? json_['location'] as core.String
-              : null,
+          location: json_['location'] as core.String?,
           quantityBasedRetention: json_.containsKey('quantityBasedRetention')
               ? QuantityBasedRetention.fromJson(json_['quantityBasedRetention']
                   as core.Map<core.String, core.dynamic>)
@@ -2419,27 +2411,13 @@ class Backup {
                   ),
                 )
               : null,
-          clusterName: json_.containsKey('clusterName')
-              ? json_['clusterName'] as core.String
-              : null,
-          clusterUid: json_.containsKey('clusterUid')
-              ? json_['clusterUid'] as core.String
-              : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          databaseVersion: json_.containsKey('databaseVersion')
-              ? json_['databaseVersion'] as core.String
-              : null,
-          deleteTime: json_.containsKey('deleteTime')
-              ? json_['deleteTime'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+          clusterName: json_['clusterName'] as core.String?,
+          clusterUid: json_['clusterUid'] as core.String?,
+          createTime: json_['createTime'] as core.String?,
+          databaseVersion: json_['databaseVersion'] as core.String?,
+          deleteTime: json_['deleteTime'] as core.String?,
+          description: json_['description'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
           encryptionConfig: json_.containsKey('encryptionConfig')
               ? EncryptionConfig.fromJson(json_['encryptionConfig']
                   as core.Map<core.String, core.dynamic>)
@@ -2448,14 +2426,12 @@ class Backup {
               ? EncryptionInfo.fromJson(json_['encryptionInfo']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          etag: json_['etag'] as core.String?,
           expiryQuantity: json_.containsKey('expiryQuantity')
               ? QuantityBasedExpiry.fromJson(json_['expiryQuantity']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          expiryTime: json_.containsKey('expiryTime')
-              ? json_['expiryTime'] as core.String
-              : null,
+          expiryTime: json_['expiryTime'] as core.String?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -2464,23 +2440,14 @@ class Backup {
                   ),
                 )
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          reconciling: json_.containsKey('reconciling')
-              ? json_['reconciling'] as core.bool
-              : null,
-          satisfiesPzs: json_.containsKey('satisfiesPzs')
-              ? json_['satisfiesPzs'] as core.bool
-              : null,
-          sizeBytes: json_.containsKey('sizeBytes')
-              ? json_['sizeBytes'] as core.String
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
-          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          reconciling: json_['reconciling'] as core.bool?,
+          satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
+          sizeBytes: json_['sizeBytes'] as core.String?,
+          state: json_['state'] as core.String?,
+          type: json_['type'] as core.String?,
+          uid: json_['uid'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2533,12 +2500,8 @@ class BackupSource {
 
   BackupSource.fromJson(core.Map json_)
       : this(
-          backupName: json_.containsKey('backupName')
-              ? json_['backupName'] as core.String
-              : null,
-          backupUid: json_.containsKey('backupUid')
-              ? json_['backupUid'] as core.String
-              : null,
+          backupName: json_['backupName'] as core.String?,
+          backupUid: json_['backupUid'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2570,9 +2533,7 @@ class ClientConnectionConfig {
 
   ClientConnectionConfig.fromJson(core.Map json_)
       : this(
-          requireConnectors: json_.containsKey('requireConnectors')
-              ? json_['requireConnectors'] as core.bool
-              : null,
+          requireConnectors: json_['requireConnectors'] as core.bool?,
           sslConfig: json_.containsKey('sslConfig')
               ? SslConfig.fromJson(
                   json_['sslConfig'] as core.Map<core.String, core.dynamic>)
@@ -2854,9 +2815,7 @@ class Cluster {
               ? BackupSource.fromJson(
                   json_['backupSource'] as core.Map<core.String, core.dynamic>)
               : null,
-          clusterType: json_.containsKey('clusterType')
-              ? json_['clusterType'] as core.String
-              : null,
+          clusterType: json_['clusterType'] as core.String?,
           continuousBackupConfig: json_.containsKey('continuousBackupConfig')
               ? ContinuousBackupConfig.fromJson(json_['continuousBackupConfig']
                   as core.Map<core.String, core.dynamic>)
@@ -2865,18 +2824,10 @@ class Cluster {
               ? ContinuousBackupInfo.fromJson(json_['continuousBackupInfo']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          databaseVersion: json_.containsKey('databaseVersion')
-              ? json_['databaseVersion'] as core.String
-              : null,
-          deleteTime: json_.containsKey('deleteTime')
-              ? json_['deleteTime'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          databaseVersion: json_['databaseVersion'] as core.String?,
+          deleteTime: json_['deleteTime'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
           encryptionConfig: json_.containsKey('encryptionConfig')
               ? EncryptionConfig.fromJson(json_['encryptionConfig']
                   as core.Map<core.String, core.dynamic>)
@@ -2885,7 +2836,7 @@ class Cluster {
               ? EncryptionInfo.fromJson(json_['encryptionInfo']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          etag: json_['etag'] as core.String?,
           initialUser: json_.containsKey('initialUser')
               ? UserPassword.fromJson(
                   json_['initialUser'] as core.Map<core.String, core.dynamic>)
@@ -2911,10 +2862,8 @@ class Cluster {
               ? MigrationSource.fromJson(json_['migrationSource']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          network: json_.containsKey('network')
-              ? json_['network'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          network: json_['network'] as core.String?,
           networkConfig: json_.containsKey('networkConfig')
               ? NetworkConfig.fromJson(
                   json_['networkConfig'] as core.Map<core.String, core.dynamic>)
@@ -2927,12 +2876,8 @@ class Cluster {
               ? PscConfig.fromJson(
                   json_['pscConfig'] as core.Map<core.String, core.dynamic>)
               : null,
-          reconciling: json_.containsKey('reconciling')
-              ? json_['reconciling'] as core.bool
-              : null,
-          satisfiesPzs: json_.containsKey('satisfiesPzs')
-              ? json_['satisfiesPzs'] as core.bool
-              : null,
+          reconciling: json_['reconciling'] as core.bool?,
+          satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
           secondaryConfig: json_.containsKey('secondaryConfig')
               ? SecondaryConfig.fromJson(json_['secondaryConfig']
                   as core.Map<core.String, core.dynamic>)
@@ -2941,12 +2886,9 @@ class Cluster {
               ? SslConfig.fromJson(
                   json_['sslConfig'] as core.Map<core.String, core.dynamic>)
               : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
-          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          state: json_['state'] as core.String?,
+          uid: json_['uid'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3028,16 +2970,10 @@ class ConnectionInfo {
 
   ConnectionInfo.fromJson(core.Map json_)
       : this(
-          instanceUid: json_.containsKey('instanceUid')
-              ? json_['instanceUid'] as core.String
-              : null,
-          ipAddress: json_.containsKey('ipAddress')
-              ? json_['ipAddress'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          publicIpAddress: json_.containsKey('publicIpAddress')
-              ? json_['publicIpAddress'] as core.String
-              : null,
+          instanceUid: json_['instanceUid'] as core.String?,
+          ipAddress: json_['ipAddress'] as core.String?,
+          name: json_['name'] as core.String?,
+          publicIpAddress: json_['publicIpAddress'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3075,16 +3011,12 @@ class ContinuousBackupConfig {
 
   ContinuousBackupConfig.fromJson(core.Map json_)
       : this(
-          enabled: json_.containsKey('enabled')
-              ? json_['enabled'] as core.bool
-              : null,
+          enabled: json_['enabled'] as core.bool?,
           encryptionConfig: json_.containsKey('encryptionConfig')
               ? EncryptionConfig.fromJson(json_['encryptionConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          recoveryWindowDays: json_.containsKey('recoveryWindowDays')
-              ? json_['recoveryWindowDays'] as core.int
-              : null,
+          recoveryWindowDays: json_['recoveryWindowDays'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3134,12 +3066,9 @@ class ContinuousBackupInfo {
 
   ContinuousBackupInfo.fromJson(core.Map json_)
       : this(
-          earliestRestorableTime: json_.containsKey('earliestRestorableTime')
-              ? json_['earliestRestorableTime'] as core.String
-              : null,
-          enabledTime: json_.containsKey('enabledTime')
-              ? json_['enabledTime'] as core.String
-              : null,
+          earliestRestorableTime:
+              json_['earliestRestorableTime'] as core.String?,
+          enabledTime: json_['enabledTime'] as core.String?,
           encryptionInfo: json_.containsKey('encryptionInfo')
               ? EncryptionInfo.fromJson(json_['encryptionInfo']
                   as core.Map<core.String, core.dynamic>)
@@ -3183,12 +3112,8 @@ class ContinuousBackupSource {
 
   ContinuousBackupSource.fromJson(core.Map json_)
       : this(
-          cluster: json_.containsKey('cluster')
-              ? json_['cluster'] as core.String
-              : null,
-          pointInTime: json_.containsKey('pointInTime')
-              ? json_['pointInTime'] as core.String
-              : null,
+          cluster: json_['cluster'] as core.String?,
+          pointInTime: json_['pointInTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3238,9 +3163,7 @@ class EncryptionInfo {
 
   EncryptionInfo.fromJson(core.Map json_)
       : this(
-          encryptionType: json_.containsKey('encryptionType')
-              ? json_['encryptionType'] as core.String
-              : null,
+          encryptionType: json_['encryptionType'] as core.String?,
           kmsKeyVersions: json_.containsKey('kmsKeyVersions')
               ? (json_['kmsKeyVersions'] as core.List)
                   .map((value) => value as core.String)
@@ -3285,12 +3208,8 @@ class FailoverInstanceRequest {
 
   FailoverInstanceRequest.fromJson(core.Map json_)
       : this(
-          requestId: json_.containsKey('requestId')
-              ? json_['requestId'] as core.String
-              : null,
-          validateOnly: json_.containsKey('validateOnly')
-              ? json_['validateOnly'] as core.bool
-              : null,
+          requestId: json_['requestId'] as core.String?,
+          validateOnly: json_['validateOnly'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3320,9 +3239,7 @@ class GoogleCloudLocationListLocationsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3381,15 +3298,9 @@ class InjectFaultRequest {
 
   InjectFaultRequest.fromJson(core.Map json_)
       : this(
-          faultType: json_.containsKey('faultType')
-              ? json_['faultType'] as core.String
-              : null,
-          requestId: json_.containsKey('requestId')
-              ? json_['requestId'] as core.String
-              : null,
-          validateOnly: json_.containsKey('validateOnly')
-              ? json_['validateOnly'] as core.bool
-              : null,
+          faultType: json_['faultType'] as core.String?,
+          requestId: json_['requestId'] as core.String?,
+          validateOnly: json_['validateOnly'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3635,16 +3546,12 @@ class Instance {
                   ),
                 )
               : null,
-          availabilityType: json_.containsKey('availabilityType')
-              ? json_['availabilityType'] as core.String
-              : null,
+          availabilityType: json_['availabilityType'] as core.String?,
           clientConnectionConfig: json_.containsKey('clientConnectionConfig')
               ? ClientConnectionConfig.fromJson(json_['clientConnectionConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
           databaseFlags: json_.containsKey('databaseFlags')
               ? (json_['databaseFlags'] as core.Map<core.String, core.dynamic>)
                   .map(
@@ -3654,22 +3561,12 @@ class Instance {
                   ),
                 )
               : null,
-          deleteTime: json_.containsKey('deleteTime')
-              ? json_['deleteTime'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          gceZone: json_.containsKey('gceZone')
-              ? json_['gceZone'] as core.String
-              : null,
-          instanceType: json_.containsKey('instanceType')
-              ? json_['instanceType'] as core.String
-              : null,
-          ipAddress: json_.containsKey('ipAddress')
-              ? json_['ipAddress'] as core.String
-              : null,
+          deleteTime: json_['deleteTime'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          etag: json_['etag'] as core.String?,
+          gceZone: json_['gceZone'] as core.String?,
+          instanceType: json_['instanceType'] as core.String?,
+          ipAddress: json_['ipAddress'] as core.String?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -3682,7 +3579,7 @@ class Instance {
               ? MachineConfig.fromJson(
                   json_['machineConfig'] as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           networkConfig: json_.containsKey('networkConfig')
               ? InstanceNetworkConfig.fromJson(
                   json_['networkConfig'] as core.Map<core.String, core.dynamic>)
@@ -3697,9 +3594,7 @@ class Instance {
               ? PscInstanceConfig.fromJson(json_['pscInstanceConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          publicIpAddress: json_.containsKey('publicIpAddress')
-              ? json_['publicIpAddress'] as core.String
-              : null,
+          publicIpAddress: json_['publicIpAddress'] as core.String?,
           queryInsightsConfig: json_.containsKey('queryInsightsConfig')
               ? QueryInsightsInstanceConfig.fromJson(
                   json_['queryInsightsConfig']
@@ -3709,18 +3604,11 @@ class Instance {
               ? ReadPoolConfig.fromJson(json_['readPoolConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          reconciling: json_.containsKey('reconciling')
-              ? json_['reconciling'] as core.bool
-              : null,
-          satisfiesPzs: json_.containsKey('satisfiesPzs')
-              ? json_['satisfiesPzs'] as core.bool
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
-          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          reconciling: json_['reconciling'] as core.bool?,
+          satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
+          state: json_['state'] as core.String?,
+          uid: json_['uid'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
           writableNode: json_.containsKey('writableNode')
               ? Node.fromJson(
                   json_['writableNode'] as core.Map<core.String, core.dynamic>)
@@ -3785,9 +3673,7 @@ class InstanceNetworkConfig {
                           value as core.Map<core.String, core.dynamic>))
                       .toList()
                   : null,
-          enablePublicIp: json_.containsKey('enablePublicIp')
-              ? json_['enablePublicIp'] as core.bool
-              : null,
+          enablePublicIp: json_['enablePublicIp'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3812,12 +3698,8 @@ class IntegerRestrictions {
 
   IntegerRestrictions.fromJson(core.Map json_)
       : this(
-          maxValue: json_.containsKey('maxValue')
-              ? json_['maxValue'] as core.String
-              : null,
-          minValue: json_.containsKey('minValue')
-              ? json_['minValue'] as core.String
-              : null,
+          maxValue: json_['maxValue'] as core.String?,
+          minValue: json_['minValue'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3851,9 +3733,7 @@ class ListBackupsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: json_.containsKey('unreachable')
               ? (json_['unreachable'] as core.List)
                   .map((value) => value as core.String)
@@ -3893,9 +3773,7 @@ class ListClustersResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: json_.containsKey('unreachable')
               ? (json_['unreachable'] as core.List)
                   .map((value) => value as core.String)
@@ -3935,9 +3813,7 @@ class ListInstancesResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: json_.containsKey('unreachable')
               ? (json_['unreachable'] as core.List)
                   .map((value) => value as core.String)
@@ -3967,9 +3843,7 @@ class ListOperationsResponse {
 
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           operations: json_.containsKey('operations')
               ? (json_['operations'] as core.List)
                   .map((value) => Operation.fromJson(
@@ -3999,9 +3873,7 @@ class ListSupportedDatabaseFlagsResponse {
 
   ListSupportedDatabaseFlagsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           supportedDatabaseFlags: json_.containsKey('supportedDatabaseFlags')
               ? (json_['supportedDatabaseFlags'] as core.List)
                   .map((value) => SupportedDatabaseFlag.fromJson(
@@ -4036,9 +3908,7 @@ class ListUsersResponse {
 
   ListUsersResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: json_.containsKey('unreachable')
               ? (json_['unreachable'] as core.List)
                   .map((value) => value as core.String)
@@ -4080,9 +3950,7 @@ class MaintenanceSchedule {
 
   MaintenanceSchedule.fromJson(core.Map json_)
       : this(
-          startTime: json_.containsKey('startTime')
-              ? json_['startTime'] as core.String
-              : null,
+          startTime: json_['startTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4143,7 +4011,7 @@ class MaintenanceWindow {
 
   MaintenanceWindow.fromJson(core.Map json_)
       : this(
-          day: json_.containsKey('day') ? json_['day'] as core.String : null,
+          day: json_['day'] as core.String?,
           startTime: json_.containsKey('startTime')
               ? GoogleTypeTimeOfDay.fromJson(
                   json_['startTime'] as core.Map<core.String, core.dynamic>)
@@ -4186,15 +4054,9 @@ class MigrationSource {
 
   MigrationSource.fromJson(core.Map json_)
       : this(
-          hostPort: json_.containsKey('hostPort')
-              ? json_['hostPort'] as core.String
-              : null,
-          referenceId: json_.containsKey('referenceId')
-              ? json_['referenceId'] as core.String
-              : null,
-          sourceType: json_.containsKey('sourceType')
-              ? json_['sourceType'] as core.String
-              : null,
+          hostPort: json_['hostPort'] as core.String?,
+          referenceId: json_['referenceId'] as core.String?,
+          sourceType: json_['sourceType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4236,12 +4098,8 @@ class NetworkConfig {
 
   NetworkConfig.fromJson(core.Map json_)
       : this(
-          allocatedIpRange: json_.containsKey('allocatedIpRange')
-              ? json_['allocatedIpRange'] as core.String
-              : null,
-          network: json_.containsKey('network')
-              ? json_['network'] as core.String
-              : null,
+          allocatedIpRange: json_['allocatedIpRange'] as core.String?,
+          network: json_['network'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4280,13 +4138,10 @@ class Node {
 
   Node.fromJson(core.Map json_)
       : this(
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          ip: json_.containsKey('ip') ? json_['ip'] as core.String : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
-          zoneId: json_.containsKey('zoneId')
-              ? json_['zoneId'] as core.String
-              : null,
+          id: json_['id'] as core.String?,
+          ip: json_['ip'] as core.String?,
+          state: json_['state'] as core.String?,
+          zoneId: json_['zoneId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4350,7 +4205,7 @@ class Operation {
 
   Operation.fromJson(core.Map json_)
       : this(
-          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
@@ -4358,7 +4213,7 @@ class Operation {
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           response: json_.containsKey('response')
               ? json_['response'] as core.Map<core.String, core.dynamic>
               : null,
@@ -4442,13 +4297,9 @@ class PromoteClusterRequest {
 
   PromoteClusterRequest.fromJson(core.Map json_)
       : this(
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          requestId: json_.containsKey('requestId')
-              ? json_['requestId'] as core.String
-              : null,
-          validateOnly: json_.containsKey('validateOnly')
-              ? json_['validateOnly'] as core.bool
-              : null,
+          etag: json_['etag'] as core.String?,
+          requestId: json_['requestId'] as core.String?,
+          validateOnly: json_['validateOnly'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4472,9 +4323,7 @@ class PscConfig {
 
   PscConfig.fromJson(core.Map json_)
       : this(
-          pscEnabled: json_.containsKey('pscEnabled')
-              ? json_['pscEnabled'] as core.bool
-              : null,
+          pscEnabled: json_['pscEnabled'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4519,12 +4368,8 @@ class PscInstanceConfig {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          pscDnsName: json_.containsKey('pscDnsName')
-              ? json_['pscDnsName'] as core.String
-              : null,
-          serviceAttachmentLink: json_.containsKey('serviceAttachmentLink')
-              ? json_['serviceAttachmentLink'] as core.String
-              : null,
+          pscDnsName: json_['pscDnsName'] as core.String?,
+          serviceAttachmentLink: json_['serviceAttachmentLink'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4565,12 +4410,8 @@ class QuantityBasedExpiry {
 
   QuantityBasedExpiry.fromJson(core.Map json_)
       : this(
-          retentionCount: json_.containsKey('retentionCount')
-              ? json_['retentionCount'] as core.int
-              : null,
-          totalRetentionCount: json_.containsKey('totalRetentionCount')
-              ? json_['totalRetentionCount'] as core.int
-              : null,
+          retentionCount: json_['retentionCount'] as core.int?,
+          totalRetentionCount: json_['totalRetentionCount'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4592,7 +4433,7 @@ class QuantityBasedRetention {
 
   QuantityBasedRetention.fromJson(core.Map json_)
       : this(
-          count: json_.containsKey('count') ? json_['count'] as core.int : null,
+          count: json_['count'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4633,18 +4474,10 @@ class QueryInsightsInstanceConfig {
 
   QueryInsightsInstanceConfig.fromJson(core.Map json_)
       : this(
-          queryPlansPerMinute: json_.containsKey('queryPlansPerMinute')
-              ? json_['queryPlansPerMinute'] as core.int
-              : null,
-          queryStringLength: json_.containsKey('queryStringLength')
-              ? json_['queryStringLength'] as core.int
-              : null,
-          recordApplicationTags: json_.containsKey('recordApplicationTags')
-              ? json_['recordApplicationTags'] as core.bool
-              : null,
-          recordClientAddress: json_.containsKey('recordClientAddress')
-              ? json_['recordClientAddress'] as core.bool
-              : null,
+          queryPlansPerMinute: json_['queryPlansPerMinute'] as core.int?,
+          queryStringLength: json_['queryStringLength'] as core.int?,
+          recordApplicationTags: json_['recordApplicationTags'] as core.bool?,
+          recordClientAddress: json_['recordClientAddress'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4669,9 +4502,7 @@ class ReadPoolConfig {
 
   ReadPoolConfig.fromJson(core.Map json_)
       : this(
-          nodeCount: json_.containsKey('nodeCount')
-              ? json_['nodeCount'] as core.int
-              : null,
+          nodeCount: json_['nodeCount'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4709,12 +4540,8 @@ class RestartInstanceRequest {
 
   RestartInstanceRequest.fromJson(core.Map json_)
       : this(
-          requestId: json_.containsKey('requestId')
-              ? json_['requestId'] as core.String
-              : null,
-          validateOnly: json_.containsKey('validateOnly')
-              ? json_['validateOnly'] as core.bool
-              : null,
+          requestId: json_['requestId'] as core.String?,
+          validateOnly: json_['validateOnly'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4786,19 +4613,13 @@ class RestoreClusterRequest {
               ? Cluster.fromJson(
                   json_['cluster'] as core.Map<core.String, core.dynamic>)
               : null,
-          clusterId: json_.containsKey('clusterId')
-              ? json_['clusterId'] as core.String
-              : null,
+          clusterId: json_['clusterId'] as core.String?,
           continuousBackupSource: json_.containsKey('continuousBackupSource')
               ? ContinuousBackupSource.fromJson(json_['continuousBackupSource']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          requestId: json_.containsKey('requestId')
-              ? json_['requestId'] as core.String
-              : null,
-          validateOnly: json_.containsKey('validateOnly')
-              ? json_['validateOnly'] as core.bool
-              : null,
+          requestId: json_['requestId'] as core.String?,
+          validateOnly: json_['validateOnly'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4826,9 +4647,7 @@ class SecondaryConfig {
 
   SecondaryConfig.fromJson(core.Map json_)
       : this(
-          primaryClusterName: json_.containsKey('primaryClusterName')
-              ? json_['primaryClusterName'] as core.String
-              : null,
+          primaryClusterName: json_['primaryClusterName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4880,12 +4699,8 @@ class SslConfig {
 
   SslConfig.fromJson(core.Map json_)
       : this(
-          caSource: json_.containsKey('caSource')
-              ? json_['caSource'] as core.String
-              : null,
-          sslMode: json_.containsKey('sslMode')
-              ? json_['sslMode'] as core.String
-              : null,
+          caSource: json_['caSource'] as core.String?,
+          sslMode: json_['sslMode'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4989,20 +4804,14 @@ class SupportedDatabaseFlag {
 
   SupportedDatabaseFlag.fromJson(core.Map json_)
       : this(
-          acceptsMultipleValues: json_.containsKey('acceptsMultipleValues')
-              ? json_['acceptsMultipleValues'] as core.bool
-              : null,
-          flagName: json_.containsKey('flagName')
-              ? json_['flagName'] as core.String
-              : null,
+          acceptsMultipleValues: json_['acceptsMultipleValues'] as core.bool?,
+          flagName: json_['flagName'] as core.String?,
           integerRestrictions: json_.containsKey('integerRestrictions')
               ? IntegerRestrictions.fromJson(json_['integerRestrictions']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          requiresDbRestart: json_.containsKey('requiresDbRestart')
-              ? json_['requiresDbRestart'] as core.bool
-              : null,
+          name: json_['name'] as core.String?,
+          requiresDbRestart: json_['requiresDbRestart'] as core.bool?,
           stringRestrictions: json_.containsKey('stringRestrictions')
               ? StringRestrictions.fromJson(json_['stringRestrictions']
                   as core.Map<core.String, core.dynamic>)
@@ -5012,9 +4821,7 @@ class SupportedDatabaseFlag {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          valueType: json_.containsKey('valueType')
-              ? json_['valueType'] as core.String
-              : null,
+          valueType: json_['valueType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5045,9 +4852,7 @@ class TimeBasedRetention {
 
   TimeBasedRetention.fromJson(core.Map json_)
       : this(
-          retentionPeriod: json_.containsKey('retentionPeriod')
-              ? json_['retentionPeriod'] as core.String
-              : null,
+          retentionPeriod: json_['retentionPeriod'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5101,13 +4906,9 @@ class User {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          password: json_.containsKey('password')
-              ? json_['password'] as core.String
-              : null,
-          userType: json_.containsKey('userType')
-              ? json_['userType'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          password: json_['password'] as core.String?,
+          userType: json_['userType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5135,10 +4936,8 @@ class UserPassword {
 
   UserPassword.fromJson(core.Map json_)
       : this(
-          password: json_.containsKey('password')
-              ? json_['password'] as core.String
-              : null,
-          user: json_.containsKey('user') ? json_['user'] as core.String : null,
+          password: json_['password'] as core.String?,
+          user: json_['user'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

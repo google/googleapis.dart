@@ -2903,12 +2903,8 @@ class AllocatedConnection {
 
   AllocatedConnection.fromJson(core.Map json_)
       : this(
-          ingressPort: json_.containsKey('ingressPort')
-              ? json_['ingressPort'] as core.int
-              : null,
-          pscUri: json_.containsKey('pscUri')
-              ? json_['pscUri'] as core.String
-              : null,
+          ingressPort: json_['ingressPort'] as core.int?,
+          pscUri: json_['pscUri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3033,15 +3029,9 @@ class AppGateway {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          hostType: json_.containsKey('hostType')
-              ? json_['hostType'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          hostType: json_['hostType'] as core.String?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -3050,21 +3040,14 @@ class AppGateway {
                   ),
                 )
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          satisfiesPzi: json_.containsKey('satisfiesPzi')
-              ? json_['satisfiesPzi'] as core.bool
-              : null,
-          satisfiesPzs: json_.containsKey('satisfiesPzs')
-              ? json_['satisfiesPzs'] as core.bool
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
-          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
-          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+          name: json_['name'] as core.String?,
+          satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
+          satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
+          state: json_['state'] as core.String?,
+          type: json_['type'] as core.String?,
+          uid: json_['uid'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
+          uri: json_['uri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3212,12 +3195,8 @@ class GoogleCloudBeyondcorpAppconnectionsV1AppConnection {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
           gateway: json_.containsKey('gateway')
               ? GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway
                   .fromJson(
@@ -3231,20 +3210,13 @@ class GoogleCloudBeyondcorpAppconnectionsV1AppConnection {
                   ),
                 )
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          satisfiesPzi: json_.containsKey('satisfiesPzi')
-              ? json_['satisfiesPzi'] as core.bool
-              : null,
-          satisfiesPzs: json_.containsKey('satisfiesPzs')
-              ? json_['satisfiesPzs'] as core.bool
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
-          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
+          satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
+          state: json_['state'] as core.String?,
+          type: json_['type'] as core.String?,
+          uid: json_['uid'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3285,8 +3257,8 @@ class GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpoint {
   GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpoint.fromJson(
       core.Map json_)
       : this(
-          host: json_.containsKey('host') ? json_['host'] as core.String : null,
-          port: json_.containsKey('port') ? json_['port'] as core.int : null,
+          host: json_['host'] as core.String?,
+          port: json_['port'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3340,16 +3312,11 @@ class GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway {
   GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway.fromJson(
       core.Map json_)
       : this(
-          appGateway: json_.containsKey('appGateway')
-              ? json_['appGateway'] as core.String
-              : null,
-          ingressPort: json_.containsKey('ingressPort')
-              ? json_['ingressPort'] as core.int
-              : null,
-          l7psc:
-              json_.containsKey('l7psc') ? json_['l7psc'] as core.String : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
-          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+          appGateway: json_['appGateway'] as core.String?,
+          ingressPort: json_['ingressPort'] as core.int?,
+          l7psc: json_['l7psc'] as core.String?,
+          type: json_['type'] as core.String?,
+          uri: json_['uri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3390,9 +3357,7 @@ class GoogleCloudBeyondcorpAppconnectionsV1ListAppConnectionsResponse {
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: json_.containsKey('unreachable')
               ? (json_['unreachable'] as core.List)
                   .map((value) => value as core.String)
@@ -3438,9 +3403,7 @@ class GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponse {
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: json_.containsKey('unreachable')
               ? (json_['unreachable'] as core.List)
                   .map((value) => value as core.String)
@@ -3569,12 +3532,8 @@ class GoogleCloudBeyondcorpAppconnectorsV1AppConnector {
 
   GoogleCloudBeyondcorpAppconnectorsV1AppConnector.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -3583,7 +3542,7 @@ class GoogleCloudBeyondcorpAppconnectorsV1AppConnector {
                   ),
                 )
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           principalInfo: json_.containsKey('principalInfo')
               ? GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo
                   .fromJson(json_['principalInfo']
@@ -3593,12 +3552,9 @@ class GoogleCloudBeyondcorpAppconnectorsV1AppConnector {
               ? GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo.fromJson(
                   json_['resourceInfo'] as core.Map<core.String, core.dynamic>)
               : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
-          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          state: json_['state'] as core.String?,
+          uid: json_['uid'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3661,9 +3617,7 @@ class GoogleCloudBeyondcorpAppconnectorsV1AppConnectorInstanceConfig {
                   json_['notificationConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          sequenceNumber: json_.containsKey('sequenceNumber')
-              ? json_['sequenceNumber'] as core.String
-              : null,
+          sequenceNumber: json_['sequenceNumber'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3712,8 +3666,7 @@ class GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccoun
   GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount.fromJson(
       core.Map json_)
       : this(
-          email:
-              json_.containsKey('email') ? json_['email'] as core.String : null,
+          email: json_['email'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3742,12 +3695,8 @@ class GoogleCloudBeyondcorpAppconnectorsV1ImageConfig {
 
   GoogleCloudBeyondcorpAppconnectorsV1ImageConfig.fromJson(core.Map json_)
       : this(
-          stableImage: json_.containsKey('stableImage')
-              ? json_['stableImage'] as core.String
-              : null,
-          targetImage: json_.containsKey('targetImage')
-              ? json_['targetImage'] as core.String
-              : null,
+          stableImage: json_['stableImage'] as core.String?,
+          targetImage: json_['targetImage'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3784,9 +3733,7 @@ class GoogleCloudBeyondcorpAppconnectorsV1ListAppConnectorsResponse {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: json_.containsKey('unreachable')
               ? (json_['unreachable'] as core.List)
                   .map((value) => value as core.String)
@@ -3839,9 +3786,7 @@ class GoogleCloudBeyondcorpAppconnectorsV1NotificationConfigCloudPubSubNotificat
   GoogleCloudBeyondcorpAppconnectorsV1NotificationConfigCloudPubSubNotificationConfig.fromJson(
       core.Map json_)
       : this(
-          pubsubSubscription: json_.containsKey('pubsubSubscription')
-              ? json_['pubsubSubscription'] as core.String
-              : null,
+          pubsubSubscription: json_['pubsubSubscription'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3888,16 +3833,12 @@ class GoogleCloudBeyondcorpAppconnectorsV1ReportStatusRequest {
   GoogleCloudBeyondcorpAppconnectorsV1ReportStatusRequest.fromJson(
       core.Map json_)
       : this(
-          requestId: json_.containsKey('requestId')
-              ? json_['requestId'] as core.String
-              : null,
+          requestId: json_['requestId'] as core.String?,
           resourceInfo: json_.containsKey('resourceInfo')
               ? GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo.fromJson(
                   json_['resourceInfo'] as core.Map<core.String, core.dynamic>)
               : null,
-          validateOnly: json_.containsKey('validateOnly')
-              ? json_['validateOnly'] as core.bool
-              : null,
+          validateOnly: json_['validateOnly'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3980,13 +3921,11 @@ class GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo {
 
   GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo.fromJson(core.Map json_)
       : this(
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          id: json_['id'] as core.String?,
           resource: json_.containsKey('resource')
               ? json_['resource'] as core.Map<core.String, core.dynamic>
               : null,
-          status: json_.containsKey('status')
-              ? json_['status'] as core.String
-              : null,
+          status: json_['status'] as core.String?,
           sub: json_.containsKey('sub')
               ? (json_['sub'] as core.List)
                   .map((value) =>
@@ -3994,7 +3933,7 @@ class GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          time: json_.containsKey('time') ? json_['time'] as core.String : null,
+          time: json_['time'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4027,9 +3966,7 @@ class GoogleCloudLocationListLocationsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4081,9 +4018,7 @@ class GoogleIamV1AuditConfig {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          service: json_.containsKey('service')
-              ? json_['service'] as core.String
-              : null,
+          service: json_['service'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4197,7 +4132,7 @@ class GoogleIamV1Binding {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          role: json_.containsKey('role') ? json_['role'] as core.String : null,
+          role: json_['role'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4314,10 +4249,8 @@ class GoogleIamV1Policy {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          version: json_.containsKey('version')
-              ? json_['version'] as core.int
-              : null,
+          etag: json_['etag'] as core.String?,
+          version: json_['version'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4354,9 +4287,7 @@ class GoogleIamV1SetIamPolicyRequest {
               ? GoogleIamV1Policy.fromJson(
                   json_['policy'] as core.Map<core.String, core.dynamic>)
               : null,
-          updateMask: json_.containsKey('updateMask')
-              ? json_['updateMask'] as core.String
-              : null,
+          updateMask: json_['updateMask'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4389,9 +4320,7 @@ class GoogleLongrunningListOperationsResponse {
 
   GoogleLongrunningListOperationsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           operations: json_.containsKey('operations')
               ? (json_['operations'] as core.List)
                   .map((value) => GoogleLongrunningOperation.fromJson(
@@ -4459,7 +4388,7 @@ class GoogleLongrunningOperation {
 
   GoogleLongrunningOperation.fromJson(core.Map json_)
       : this(
-          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? GoogleRpcStatus.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
@@ -4467,7 +4396,7 @@ class GoogleLongrunningOperation {
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           response: json_.containsKey('response')
               ? json_['response'] as core.Map<core.String, core.dynamic>
               : null,
@@ -4537,9 +4466,7 @@ class ListAppGatewaysResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: json_.containsKey('unreachable')
               ? (json_['unreachable'] as core.List)
                   .map((value) => value as core.String)

@@ -211,16 +211,10 @@ class EmissionsGramsPerPax {
 
   EmissionsGramsPerPax.fromJson(core.Map json_)
       : this(
-          business: json_.containsKey('business')
-              ? json_['business'] as core.int
-              : null,
-          economy: json_.containsKey('economy')
-              ? json_['economy'] as core.int
-              : null,
-          first: json_.containsKey('first') ? json_['first'] as core.int : null,
-          premiumEconomy: json_.containsKey('premiumEconomy')
-              ? json_['premiumEconomy'] as core.int
-              : null,
+          business: json_['business'] as core.int?,
+          economy: json_['economy'] as core.int?,
+          first: json_['first'] as core.int?,
+          premiumEconomy: json_['premiumEconomy'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -275,18 +269,10 @@ class Flight {
               ? Date.fromJson(
                   json_['departureDate'] as core.Map<core.String, core.dynamic>)
               : null,
-          destination: json_.containsKey('destination')
-              ? json_['destination'] as core.String
-              : null,
-          flightNumber: json_.containsKey('flightNumber')
-              ? json_['flightNumber'] as core.int
-              : null,
-          operatingCarrierCode: json_.containsKey('operatingCarrierCode')
-              ? json_['operatingCarrierCode'] as core.String
-              : null,
-          origin: json_.containsKey('origin')
-              ? json_['origin'] as core.String
-              : null,
+          destination: json_['destination'] as core.String?,
+          flightNumber: json_['flightNumber'] as core.int?,
+          operatingCarrierCode: json_['operatingCarrierCode'] as core.String?,
+          origin: json_['origin'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -377,11 +363,10 @@ class ModelVersion {
 
   ModelVersion.fromJson(core.Map json_)
       : this(
-          dated:
-              json_.containsKey('dated') ? json_['dated'] as core.String : null,
-          major: json_.containsKey('major') ? json_['major'] as core.int : null,
-          minor: json_.containsKey('minor') ? json_['minor'] as core.int : null,
-          patch: json_.containsKey('patch') ? json_['patch'] as core.int : null,
+          dated: json_['dated'] as core.String?,
+          major: json_['major'] as core.int?,
+          minor: json_['minor'] as core.int?,
+          patch: json_['patch'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

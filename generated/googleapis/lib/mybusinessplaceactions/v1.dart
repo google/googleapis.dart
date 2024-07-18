@@ -393,9 +393,7 @@ class ListPlaceActionLinksResponse {
 
   ListPlaceActionLinksResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           placeActionLinks: json_.containsKey('placeActionLinks')
               ? (json_['placeActionLinks'] as core.List)
                   .map((value) => PlaceActionLink.fromJson(
@@ -430,9 +428,7 @@ class ListPlaceActionTypeMetadataResponse {
 
   ListPlaceActionTypeMetadataResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           placeActionTypeMetadata: json_.containsKey('placeActionTypeMetadata')
               ? (json_['placeActionTypeMetadata'] as core.List)
                   .map((value) => PlaceActionTypeMetadata.fromJson(
@@ -536,26 +532,14 @@ class PlaceActionLink {
 
   PlaceActionLink.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          isEditable: json_.containsKey('isEditable')
-              ? json_['isEditable'] as core.bool
-              : null,
-          isPreferred: json_.containsKey('isPreferred')
-              ? json_['isPreferred'] as core.bool
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          placeActionType: json_.containsKey('placeActionType')
-              ? json_['placeActionType'] as core.String
-              : null,
-          providerType: json_.containsKey('providerType')
-              ? json_['providerType'] as core.String
-              : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
-          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+          createTime: json_['createTime'] as core.String?,
+          isEditable: json_['isEditable'] as core.bool?,
+          isPreferred: json_['isPreferred'] as core.bool?,
+          name: json_['name'] as core.String?,
+          placeActionType: json_['placeActionType'] as core.String?,
+          providerType: json_['providerType'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
+          uri: json_['uri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -597,12 +581,8 @@ class PlaceActionTypeMetadata {
 
   PlaceActionTypeMetadata.fromJson(core.Map json_)
       : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          placeActionType: json_.containsKey('placeActionType')
-              ? json_['placeActionType'] as core.String
-              : null,
+          displayName: json_['displayName'] as core.String?,
+          placeActionType: json_['placeActionType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

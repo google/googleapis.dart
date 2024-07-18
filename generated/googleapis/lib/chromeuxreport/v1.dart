@@ -175,11 +175,9 @@ class Bin {
 
   Bin.fromJson(core.Map json_)
       : this(
-          density: json_.containsKey('density')
-              ? (json_['density'] as core.num).toDouble()
-              : null,
-          end: json_.containsKey('end') ? json_['end'] : null,
-          start: json_.containsKey('start') ? json_['start'] : null,
+          density: (json_['density'] as core.num?)?.toDouble(),
+          end: json_['end'],
+          start: json_['start'],
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -294,13 +292,9 @@ class HistoryKey {
 
   HistoryKey.fromJson(core.Map json_)
       : this(
-          formFactor: json_.containsKey('formFactor')
-              ? json_['formFactor'] as core.String
-              : null,
-          origin: json_.containsKey('origin')
-              ? json_['origin'] as core.String
-              : null,
-          url: json_.containsKey('url') ? json_['url'] as core.String : null,
+          formFactor: json_['formFactor'] as core.String?,
+          origin: json_['origin'] as core.String?,
+          url: json_['url'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -418,16 +412,11 @@ class Key {
 
   Key.fromJson(core.Map json_)
       : this(
-          effectiveConnectionType: json_.containsKey('effectiveConnectionType')
-              ? json_['effectiveConnectionType'] as core.String
-              : null,
-          formFactor: json_.containsKey('formFactor')
-              ? json_['formFactor'] as core.String
-              : null,
-          origin: json_.containsKey('origin')
-              ? json_['origin'] as core.String
-              : null,
-          url: json_.containsKey('url') ? json_['url'] as core.String : null,
+          effectiveConnectionType:
+              json_['effectiveConnectionType'] as core.String?,
+          formFactor: json_['formFactor'] as core.String?,
+          origin: json_['origin'] as core.String?,
+          url: json_['url'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -575,7 +564,7 @@ class Percentiles {
 
   Percentiles.fromJson(core.Map json_)
       : this(
-          p75: json_.containsKey('p75') ? json_['p75'] : null,
+          p75: json_['p75'],
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -631,18 +620,14 @@ class QueryHistoryRequest {
 
   QueryHistoryRequest.fromJson(core.Map json_)
       : this(
-          formFactor: json_.containsKey('formFactor')
-              ? json_['formFactor'] as core.String
-              : null,
+          formFactor: json_['formFactor'] as core.String?,
           metrics: json_.containsKey('metrics')
               ? (json_['metrics'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          origin: json_.containsKey('origin')
-              ? json_['origin'] as core.String
-              : null,
-          url: json_.containsKey('url') ? json_['url'] as core.String : null,
+          origin: json_['origin'] as core.String?,
+          url: json_['url'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -749,21 +734,16 @@ class QueryRequest {
 
   QueryRequest.fromJson(core.Map json_)
       : this(
-          effectiveConnectionType: json_.containsKey('effectiveConnectionType')
-              ? json_['effectiveConnectionType'] as core.String
-              : null,
-          formFactor: json_.containsKey('formFactor')
-              ? json_['formFactor'] as core.String
-              : null,
+          effectiveConnectionType:
+              json_['effectiveConnectionType'] as core.String?,
+          formFactor: json_['formFactor'] as core.String?,
           metrics: json_.containsKey('metrics')
               ? (json_['metrics'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          origin: json_.containsKey('origin')
-              ? json_['origin'] as core.String
-              : null,
-          url: json_.containsKey('url') ? json_['url'] as core.String : null,
+          origin: json_['origin'] as core.String?,
+          url: json_['url'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -919,8 +899,8 @@ class TimeseriesBin {
                   .map((value) => (value as core.num).toDouble())
                   .toList()
               : null,
-          end: json_.containsKey('end') ? json_['end'] : null,
-          start: json_.containsKey('start') ? json_['start'] : null,
+          end: json_['end'],
+          start: json_['start'],
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -982,12 +962,8 @@ class UrlNormalization {
 
   UrlNormalization.fromJson(core.Map json_)
       : this(
-          normalizedUrl: json_.containsKey('normalizedUrl')
-              ? json_['normalizedUrl'] as core.String
-              : null,
-          originalUrl: json_.containsKey('originalUrl')
-              ? json_['originalUrl'] as core.String
-              : null,
+          normalizedUrl: json_['normalizedUrl'] as core.String?,
+          originalUrl: json_['originalUrl'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

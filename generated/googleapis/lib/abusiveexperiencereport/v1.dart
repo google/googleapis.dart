@@ -188,27 +188,13 @@ class SiteSummaryResponse {
 
   SiteSummaryResponse.fromJson(core.Map json_)
       : this(
-          abusiveStatus: json_.containsKey('abusiveStatus')
-              ? json_['abusiveStatus'] as core.String
-              : null,
-          enforcementTime: json_.containsKey('enforcementTime')
-              ? json_['enforcementTime'] as core.String
-              : null,
-          filterStatus: json_.containsKey('filterStatus')
-              ? json_['filterStatus'] as core.String
-              : null,
-          lastChangeTime: json_.containsKey('lastChangeTime')
-              ? json_['lastChangeTime'] as core.String
-              : null,
-          reportUrl: json_.containsKey('reportUrl')
-              ? json_['reportUrl'] as core.String
-              : null,
-          reviewedSite: json_.containsKey('reviewedSite')
-              ? json_['reviewedSite'] as core.String
-              : null,
-          underReview: json_.containsKey('underReview')
-              ? json_['underReview'] as core.bool
-              : null,
+          abusiveStatus: json_['abusiveStatus'] as core.String?,
+          enforcementTime: json_['enforcementTime'] as core.String?,
+          filterStatus: json_['filterStatus'] as core.String?,
+          lastChangeTime: json_['lastChangeTime'] as core.String?,
+          reportUrl: json_['reportUrl'] as core.String?,
+          reviewedSite: json_['reviewedSite'] as core.String?,
+          underReview: json_['underReview'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

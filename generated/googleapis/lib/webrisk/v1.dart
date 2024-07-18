@@ -575,19 +575,13 @@ class GoogleCloudWebriskV1ComputeThreatListDiffResponse {
                   .fromJson(
                       json_['checksum'] as core.Map<core.String, core.dynamic>)
               : null,
-          newVersionToken: json_.containsKey('newVersionToken')
-              ? json_['newVersionToken'] as core.String
-              : null,
-          recommendedNextDiff: json_.containsKey('recommendedNextDiff')
-              ? json_['recommendedNextDiff'] as core.String
-              : null,
+          newVersionToken: json_['newVersionToken'] as core.String?,
+          recommendedNextDiff: json_['recommendedNextDiff'] as core.String?,
           removals: json_.containsKey('removals')
               ? GoogleCloudWebriskV1ThreatEntryRemovals.fromJson(
                   json_['removals'] as core.Map<core.String, core.dynamic>)
               : null,
-          responseType: json_.containsKey('responseType')
-              ? json_['responseType'] as core.String
-              : null,
+          responseType: json_['responseType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -638,12 +632,8 @@ class GoogleCloudWebriskV1RawHashes {
 
   GoogleCloudWebriskV1RawHashes.fromJson(core.Map json_)
       : this(
-          prefixSize: json_.containsKey('prefixSize')
-              ? json_['prefixSize'] as core.int
-              : null,
-          rawHashes: json_.containsKey('rawHashes')
-              ? json_['rawHashes'] as core.String
-              : null,
+          prefixSize: json_['prefixSize'] as core.int?,
+          rawHashes: json_['rawHashes'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -695,18 +685,10 @@ class GoogleCloudWebriskV1RiceDeltaEncoding {
 
   GoogleCloudWebriskV1RiceDeltaEncoding.fromJson(core.Map json_)
       : this(
-          encodedData: json_.containsKey('encodedData')
-              ? json_['encodedData'] as core.String
-              : null,
-          entryCount: json_.containsKey('entryCount')
-              ? json_['entryCount'] as core.int
-              : null,
-          firstValue: json_.containsKey('firstValue')
-              ? json_['firstValue'] as core.String
-              : null,
-          riceParameter: json_.containsKey('riceParameter')
-              ? json_['riceParameter'] as core.int
-              : null,
+          encodedData: json_['encodedData'] as core.String?,
+          entryCount: json_['entryCount'] as core.int?,
+          firstValue: json_['firstValue'] as core.String?,
+          riceParameter: json_['riceParameter'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -734,9 +716,7 @@ class GoogleCloudWebriskV1SearchHashesResponse {
 
   GoogleCloudWebriskV1SearchHashesResponse.fromJson(core.Map json_)
       : this(
-          negativeExpireTime: json_.containsKey('negativeExpireTime')
-              ? json_['negativeExpireTime'] as core.String
-              : null,
+          negativeExpireTime: json_['negativeExpireTime'] as core.String?,
           threats: json_.containsKey('threats')
               ? (json_['threats'] as core.List)
                   .map((value) =>
@@ -787,10 +767,8 @@ class GoogleCloudWebriskV1SearchHashesResponseThreatHash {
 
   GoogleCloudWebriskV1SearchHashesResponseThreatHash.fromJson(core.Map json_)
       : this(
-          expireTime: json_.containsKey('expireTime')
-              ? json_['expireTime'] as core.String
-              : null,
-          hash: json_.containsKey('hash') ? json_['hash'] as core.String : null,
+          expireTime: json_['expireTime'] as core.String?,
+          hash: json_['hash'] as core.String?,
           threatTypes: json_.containsKey('threatTypes')
               ? (json_['threatTypes'] as core.List)
                   .map((value) => value as core.String)
@@ -846,9 +824,7 @@ class GoogleCloudWebriskV1SearchUrisResponseThreatUri {
 
   GoogleCloudWebriskV1SearchUrisResponseThreatUri.fromJson(core.Map json_)
       : this(
-          expireTime: json_.containsKey('expireTime')
-              ? json_['expireTime'] as core.String
-              : null,
+          expireTime: json_['expireTime'] as core.String?,
           threatTypes: json_.containsKey('threatTypes')
               ? (json_['threatTypes'] as core.List)
                   .map((value) => value as core.String)
@@ -875,7 +851,7 @@ class GoogleCloudWebriskV1Submission {
 
   GoogleCloudWebriskV1Submission.fromJson(core.Map json_)
       : this(
-          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+          uri: json_['uri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -978,9 +954,7 @@ class GoogleLongrunningListOperationsResponse {
 
   GoogleLongrunningListOperationsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           operations: json_.containsKey('operations')
               ? (json_['operations'] as core.List)
                   .map((value) => GoogleLongrunningOperation.fromJson(
@@ -1039,7 +1013,7 @@ class GoogleLongrunningOperation {
 
   GoogleLongrunningOperation.fromJson(core.Map json_)
       : this(
-          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? GoogleRpcStatus.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
@@ -1047,7 +1021,7 @@ class GoogleLongrunningOperation {
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           response: json_.containsKey('response')
               ? json_['response'] as core.Map<core.String, core.dynamic>
               : null,

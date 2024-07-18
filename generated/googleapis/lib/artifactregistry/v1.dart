@@ -2614,9 +2614,7 @@ class BatchDeleteVersionsRequest {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          validateOnly: json_.containsKey('validateOnly')
-              ? json_['validateOnly'] as core.bool
-              : null,
+          validateOnly: json_['validateOnly'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2722,7 +2720,7 @@ class Binding {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          role: json_.containsKey('role') ? json_['role'] as core.String : null,
+          role: json_['role'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2761,14 +2759,12 @@ class CleanupPolicy {
 
   CleanupPolicy.fromJson(core.Map json_)
       : this(
-          action: json_.containsKey('action')
-              ? json_['action'] as core.String
-              : null,
+          action: json_['action'] as core.String?,
           condition: json_.containsKey('condition')
               ? CleanupPolicyCondition.fromJson(
                   json_['condition'] as core.Map<core.String, core.dynamic>)
               : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          id: json_['id'] as core.String?,
           mostRecentVersions: json_.containsKey('mostRecentVersions')
               ? CleanupPolicyMostRecentVersions.fromJson(
                   json_['mostRecentVersions']
@@ -2830,12 +2826,8 @@ class CleanupPolicyCondition {
 
   CleanupPolicyCondition.fromJson(core.Map json_)
       : this(
-          newerThan: json_.containsKey('newerThan')
-              ? json_['newerThan'] as core.String
-              : null,
-          olderThan: json_.containsKey('olderThan')
-              ? json_['olderThan'] as core.String
-              : null,
+          newerThan: json_['newerThan'] as core.String?,
+          olderThan: json_['olderThan'] as core.String?,
           packageNamePrefixes: json_.containsKey('packageNamePrefixes')
               ? (json_['packageNamePrefixes'] as core.List)
                   .map((value) => value as core.String)
@@ -2846,9 +2838,7 @@ class CleanupPolicyCondition {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          tagState: json_.containsKey('tagState')
-              ? json_['tagState'] as core.String
-              : null,
+          tagState: json_['tagState'] as core.String?,
           versionNamePrefixes: json_.containsKey('versionNamePrefixes')
               ? (json_['versionNamePrefixes'] as core.List)
                   .map((value) => value as core.String)
@@ -2884,9 +2874,7 @@ class CleanupPolicyMostRecentVersions {
 
   CleanupPolicyMostRecentVersions.fromJson(core.Map json_)
       : this(
-          keepCount: json_.containsKey('keepCount')
-              ? json_['keepCount'] as core.int
-              : null,
+          keepCount: json_['keepCount'] as core.int?,
           packageNamePrefixes: json_.containsKey('packageNamePrefixes')
               ? (json_['packageNamePrefixes'] as core.List)
                   .map((value) => value as core.String)
@@ -2973,28 +2961,18 @@ class DockerImage {
 
   DockerImage.fromJson(core.Map json_)
       : this(
-          buildTime: json_.containsKey('buildTime')
-              ? json_['buildTime'] as core.String
-              : null,
-          imageSizeBytes: json_.containsKey('imageSizeBytes')
-              ? json_['imageSizeBytes'] as core.String
-              : null,
-          mediaType: json_.containsKey('mediaType')
-              ? json_['mediaType'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          buildTime: json_['buildTime'] as core.String?,
+          imageSizeBytes: json_['imageSizeBytes'] as core.String?,
+          mediaType: json_['mediaType'] as core.String?,
+          name: json_['name'] as core.String?,
           tags: json_.containsKey('tags')
               ? (json_['tags'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
-          uploadTime: json_.containsKey('uploadTime')
-              ? json_['uploadTime'] as core.String
-              : null,
-          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+          updateTime: json_['updateTime'] as core.String?,
+          uploadTime: json_['uploadTime'] as core.String?,
+          uri: json_['uri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3034,9 +3012,7 @@ class DockerRepository {
                   .fromJson(json_['customRepository']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          publicRepository: json_.containsKey('publicRepository')
-              ? json_['publicRepository'] as core.String
-              : null,
+          publicRepository: json_['publicRepository'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3062,9 +3038,7 @@ class DockerRepositoryConfig {
 
   DockerRepositoryConfig.fromJson(core.Map json_)
       : this(
-          immutableTags: json_.containsKey('immutableTags')
-              ? json_['immutableTags'] as core.bool
-              : null,
+          immutableTags: json_['immutableTags'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3150,27 +3124,18 @@ class GoogleDevtoolsArtifactregistryV1File {
 
   GoogleDevtoolsArtifactregistryV1File.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          fetchTime: json_.containsKey('fetchTime')
-              ? json_['fetchTime'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          fetchTime: json_['fetchTime'] as core.String?,
           hashes: json_.containsKey('hashes')
               ? (json_['hashes'] as core.List)
                   .map((value) => Hash.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          owner:
-              json_.containsKey('owner') ? json_['owner'] as core.String : null,
-          sizeBytes: json_.containsKey('sizeBytes')
-              ? json_['sizeBytes'] as core.String
-              : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          owner: json_['owner'] as core.String?,
+          sizeBytes: json_['sizeBytes'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3197,7 +3162,7 @@ class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomR
   GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository.fromJson(
       core.Map json_)
       : this(
-          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+          uri: json_['uri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3227,12 +3192,8 @@ class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicR
   GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository.fromJson(
       core.Map json_)
       : this(
-          repositoryBase: json_.containsKey('repositoryBase')
-              ? json_['repositoryBase'] as core.String
-              : null,
-          repositoryPath: json_.containsKey('repositoryPath')
-              ? json_['repositoryPath'] as core.String
-              : null,
+          repositoryBase: json_['repositoryBase'] as core.String?,
+          repositoryPath: json_['repositoryPath'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3254,7 +3215,7 @@ class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCust
   GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository.fromJson(
       core.Map json_)
       : this(
-          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+          uri: json_['uri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3275,7 +3236,7 @@ class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCusto
   GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository.fromJson(
       core.Map json_)
       : this(
-          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+          uri: json_['uri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3296,7 +3257,7 @@ class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomR
   GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository.fromJson(
       core.Map json_)
       : this(
-          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+          uri: json_['uri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3317,7 +3278,7 @@ class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCust
   GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository.fromJson(
       core.Map json_)
       : this(
-          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+          uri: json_['uri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3338,7 +3299,7 @@ class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomR
   GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository.fromJson(
       core.Map json_)
       : this(
-          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+          uri: json_['uri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3371,12 +3332,8 @@ class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicR
   GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository.fromJson(
       core.Map json_)
       : this(
-          repositoryBase: json_.containsKey('repositoryBase')
-              ? json_['repositoryBase'] as core.String
-              : null,
-          repositoryPath: json_.containsKey('repositoryPath')
-              ? json_['repositoryPath'] as core.String
-              : null,
+          repositoryBase: json_['repositoryBase'] as core.String?,
+          repositoryPath: json_['repositoryPath'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3410,9 +3367,8 @@ class Hash {
 
   Hash.fromJson(core.Map json_)
       : this(
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
+          type: json_['type'] as core.String?,
+          value: json_['value'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3466,9 +3422,7 @@ class ImportGoogetArtifactsGcsSource {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          useWildcards: json_.containsKey('useWildcards')
-              ? json_['useWildcards'] as core.bool
-              : null,
+          useWildcards: json_['useWildcards'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3546,9 +3500,7 @@ class ListDockerImagesResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3579,9 +3531,7 @@ class ListFilesResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3611,9 +3561,7 @@ class ListLocationsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3644,9 +3592,7 @@ class ListMavenArtifactsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3671,9 +3617,7 @@ class ListNpmPackagesResponse {
 
   ListNpmPackagesResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           npmPackages: json_.containsKey('npmPackages')
               ? (json_['npmPackages'] as core.List)
                   .map((value) => NpmPackage.fromJson(
@@ -3704,9 +3648,7 @@ class ListPackagesResponse {
 
   ListPackagesResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           packages: json_.containsKey('packages')
               ? (json_['packages'] as core.List)
                   .map((value) => Package.fromJson(
@@ -3737,9 +3679,7 @@ class ListPythonPackagesResponse {
 
   ListPythonPackagesResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           pythonPackages: json_.containsKey('pythonPackages')
               ? (json_['pythonPackages'] as core.List)
                   .map((value) => PythonPackage.fromJson(
@@ -3770,9 +3710,7 @@ class ListRepositoriesResponse {
 
   ListRepositoriesResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           repositories: json_.containsKey('repositories')
               ? (json_['repositories'] as core.List)
                   .map((value) => Repository.fromJson(
@@ -3803,9 +3741,7 @@ class ListTagsResponse {
 
   ListTagsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           tags: json_.containsKey('tags')
               ? (json_['tags'] as core.List)
                   .map((value) => Tag.fromJson(
@@ -3836,9 +3772,7 @@ class ListVersionsResponse {
 
   ListVersionsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           versions: json_.containsKey('versions')
               ? (json_['versions'] as core.List)
                   .map((value) => Version.fromJson(
@@ -3910,25 +3844,13 @@ class MavenArtifact {
 
   MavenArtifact.fromJson(core.Map json_)
       : this(
-          artifactId: json_.containsKey('artifactId')
-              ? json_['artifactId'] as core.String
-              : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          groupId: json_.containsKey('groupId')
-              ? json_['groupId'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          pomUri: json_.containsKey('pomUri')
-              ? json_['pomUri'] as core.String
-              : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
-          version: json_.containsKey('version')
-              ? json_['version'] as core.String
-              : null,
+          artifactId: json_['artifactId'] as core.String?,
+          createTime: json_['createTime'] as core.String?,
+          groupId: json_['groupId'] as core.String?,
+          name: json_['name'] as core.String?,
+          pomUri: json_['pomUri'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
+          version: json_['version'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3967,9 +3889,7 @@ class MavenRepository {
                   .fromJson(json_['customRepository']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          publicRepository: json_.containsKey('publicRepository')
-              ? json_['publicRepository'] as core.String
-              : null,
+          publicRepository: json_['publicRepository'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4003,12 +3923,9 @@ class MavenRepositoryConfig {
 
   MavenRepositoryConfig.fromJson(core.Map json_)
       : this(
-          allowSnapshotOverwrites: json_.containsKey('allowSnapshotOverwrites')
-              ? json_['allowSnapshotOverwrites'] as core.bool
-              : null,
-          versionPolicy: json_.containsKey('versionPolicy')
-              ? json_['versionPolicy'] as core.String
-              : null,
+          allowSnapshotOverwrites:
+              json_['allowSnapshotOverwrites'] as core.bool?,
+          versionPolicy: json_['versionPolicy'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4060,24 +3977,16 @@ class NpmPackage {
 
   NpmPackage.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          packageName: json_.containsKey('packageName')
-              ? json_['packageName'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          name: json_['name'] as core.String?,
+          packageName: json_['packageName'] as core.String?,
           tags: json_.containsKey('tags')
               ? (json_['tags'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
-          version: json_.containsKey('version')
-              ? json_['version'] as core.String
-              : null,
+          updateTime: json_['updateTime'] as core.String?,
+          version: json_['version'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4115,9 +4024,7 @@ class NpmRepository {
                   .fromJson(json_['customRepository']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          publicRepository: json_.containsKey('publicRepository')
-              ? json_['publicRepository'] as core.String
-              : null,
+          publicRepository: json_['publicRepository'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4179,7 +4086,7 @@ class Operation {
 
   Operation.fromJson(core.Map json_)
       : this(
-          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
@@ -4187,7 +4094,7 @@ class Operation {
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           response: json_.containsKey('response')
               ? json_['response'] as core.Map<core.String, core.dynamic>
               : null,
@@ -4245,16 +4152,10 @@ class Package {
                   ),
                 )
               : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          name: json_['name'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4363,10 +4264,8 @@ class Policy {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          version: json_.containsKey('version')
-              ? json_['version'] as core.int
-              : null,
+          etag: json_['etag'] as core.String?,
+          version: json_['version'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4404,10 +4303,9 @@ class ProjectSettings {
 
   ProjectSettings.fromJson(core.Map json_)
       : this(
-          legacyRedirectionState: json_.containsKey('legacyRedirectionState')
-              ? json_['legacyRedirectionState'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          legacyRedirectionState:
+              json_['legacyRedirectionState'] as core.String?,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4466,20 +4364,12 @@ class PythonPackage {
 
   PythonPackage.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          packageName: json_.containsKey('packageName')
-              ? json_['packageName'] as core.String
-              : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
-          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
-          version: json_.containsKey('version')
-              ? json_['version'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          name: json_['name'] as core.String?,
+          packageName: json_['packageName'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
+          uri: json_['uri'] as core.String?,
+          version: json_['version'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4517,9 +4407,7 @@ class PythonRepository {
                   .fromJson(json_['customRepository']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          publicRepository: json_.containsKey('publicRepository')
-              ? json_['publicRepository'] as core.String
-              : null,
+          publicRepository: json_['publicRepository'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4580,13 +4468,9 @@ class RemoteRepositoryConfig {
               ? AptRepository.fromJson(
                   json_['aptRepository'] as core.Map<core.String, core.dynamic>)
               : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
+          description: json_['description'] as core.String?,
           disableUpstreamValidation:
-              json_.containsKey('disableUpstreamValidation')
-                  ? json_['disableUpstreamValidation'] as core.bool
-                  : null,
+              json_['disableUpstreamValidation'] as core.bool?,
           dockerRepository: json_.containsKey('dockerRepository')
               ? DockerRepository.fromJson(json_['dockerRepository']
                   as core.Map<core.String, core.dynamic>)
@@ -4785,28 +4669,17 @@ class Repository {
                   ),
                 )
               : null,
-          cleanupPolicyDryRun: json_.containsKey('cleanupPolicyDryRun')
-              ? json_['cleanupPolicyDryRun'] as core.bool
-              : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          disallowUnspecifiedMode: json_.containsKey('disallowUnspecifiedMode')
-              ? json_['disallowUnspecifiedMode'] as core.bool
-              : null,
+          cleanupPolicyDryRun: json_['cleanupPolicyDryRun'] as core.bool?,
+          createTime: json_['createTime'] as core.String?,
+          description: json_['description'] as core.String?,
+          disallowUnspecifiedMode:
+              json_['disallowUnspecifiedMode'] as core.bool?,
           dockerConfig: json_.containsKey('dockerConfig')
               ? DockerRepositoryConfig.fromJson(
                   json_['dockerConfig'] as core.Map<core.String, core.dynamic>)
               : null,
-          format: json_.containsKey('format')
-              ? json_['format'] as core.String
-              : null,
-          kmsKeyName: json_.containsKey('kmsKeyName')
-              ? json_['kmsKeyName'] as core.String
-              : null,
+          format: json_['format'] as core.String?,
+          kmsKeyName: json_['kmsKeyName'] as core.String?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -4819,24 +4692,16 @@ class Repository {
               ? MavenRepositoryConfig.fromJson(
                   json_['mavenConfig'] as core.Map<core.String, core.dynamic>)
               : null,
-          mode: json_.containsKey('mode') ? json_['mode'] as core.String : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          mode: json_['mode'] as core.String?,
+          name: json_['name'] as core.String?,
           remoteRepositoryConfig: json_.containsKey('remoteRepositoryConfig')
               ? RemoteRepositoryConfig.fromJson(json_['remoteRepositoryConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          satisfiesPzi: json_.containsKey('satisfiesPzi')
-              ? json_['satisfiesPzi'] as core.bool
-              : null,
-          satisfiesPzs: json_.containsKey('satisfiesPzs')
-              ? json_['satisfiesPzs'] as core.bool
-              : null,
-          sizeBytes: json_.containsKey('sizeBytes')
-              ? json_['sizeBytes'] as core.String
-              : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
+          satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
+          sizeBytes: json_['sizeBytes'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
           virtualRepositoryConfig: json_.containsKey('virtualRepositoryConfig')
               ? VirtualRepositoryConfig.fromJson(
                   json_['virtualRepositoryConfig']
@@ -4929,10 +4794,8 @@ class Tag {
 
   Tag.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          version: json_.containsKey('version')
-              ? json_['version'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          version: json_['version'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5031,15 +4894,9 @@ class UploadGenericArtifactRequest {
 
   UploadGenericArtifactRequest.fromJson(core.Map json_)
       : this(
-          filename: json_.containsKey('filename')
-              ? json_['filename'] as core.String
-              : null,
-          packageId: json_.containsKey('packageId')
-              ? json_['packageId'] as core.String
-              : null,
-          versionId: json_.containsKey('versionId')
-              ? json_['versionId'] as core.String
-              : null,
+          filename: json_['filename'] as core.String?,
+          packageId: json_['packageId'] as core.String?,
+          versionId: json_['versionId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5136,9 +4993,7 @@ class UploadKfpArtifactRequest {
 
   UploadKfpArtifactRequest.fromJson(core.Map json_)
       : this(
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
+          description: json_['description'] as core.String?,
           tags: json_.containsKey('tags')
               ? (json_['tags'] as core.List)
                   .map((value) => value as core.String)
@@ -5222,13 +5077,9 @@ class UpstreamPolicy {
 
   UpstreamPolicy.fromJson(core.Map json_)
       : this(
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          priority: json_.containsKey('priority')
-              ? json_['priority'] as core.int
-              : null,
-          repository: json_.containsKey('repository')
-              ? json_['repository'] as core.String
-              : null,
+          id: json_['id'] as core.String?,
+          priority: json_['priority'] as core.int?,
+          repository: json_['repository'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5257,12 +5108,8 @@ class UsernamePasswordCredentials {
 
   UsernamePasswordCredentials.fromJson(core.Map json_)
       : this(
-          passwordSecretVersion: json_.containsKey('passwordSecretVersion')
-              ? json_['passwordSecretVersion'] as core.String
-              : null,
-          username: json_.containsKey('username')
-              ? json_['username'] as core.String
-              : null,
+          passwordSecretVersion: json_['passwordSecretVersion'] as core.String?,
+          username: json_['username'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5299,10 +5146,8 @@ class VPCSCConfig {
 
   VPCSCConfig.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          vpcscPolicy: json_.containsKey('vpcscPolicy')
-              ? json_['vpcscPolicy'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          vpcscPolicy: json_['vpcscPolicy'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5364,25 +5209,19 @@ class Version {
 
   Version.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          description: json_['description'] as core.String?,
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           relatedTags: json_.containsKey('relatedTags')
               ? (json_['relatedTags'] as core.List)
                   .map((value) => Tag.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

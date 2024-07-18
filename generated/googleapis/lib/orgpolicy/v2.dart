@@ -1430,9 +1430,7 @@ class GoogleCloudOrgpolicyV2AlternatePolicySpec {
 
   GoogleCloudOrgpolicyV2AlternatePolicySpec.fromJson(core.Map json_)
       : this(
-          launch: json_.containsKey('launch')
-              ? json_['launch'] as core.String
-              : null,
+          launch: json_['launch'] as core.String?,
           spec: json_.containsKey('spec')
               ? GoogleCloudOrgpolicyV2PolicySpec.fromJson(
                   json_['spec'] as core.Map<core.String, core.dynamic>)
@@ -1518,24 +1516,16 @@ class GoogleCloudOrgpolicyV2Constraint {
                   json_['booleanConstraint']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          constraintDefault: json_.containsKey('constraintDefault')
-              ? json_['constraintDefault'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+          constraintDefault: json_['constraintDefault'] as core.String?,
+          description: json_['description'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
           listConstraint: json_.containsKey('listConstraint')
               ? GoogleCloudOrgpolicyV2ConstraintListConstraint.fromJson(
                   json_['listConstraint']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          supportsDryRun: json_.containsKey('supportsDryRun')
-              ? json_['supportsDryRun'] as core.bool
-              : null,
+          name: json_['name'] as core.String?,
+          supportsDryRun: json_['supportsDryRun'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1579,12 +1569,8 @@ class GoogleCloudOrgpolicyV2ConstraintListConstraint {
 
   GoogleCloudOrgpolicyV2ConstraintListConstraint.fromJson(core.Map json_)
       : this(
-          supportsIn: json_.containsKey('supportsIn')
-              ? json_['supportsIn'] as core.bool
-              : null,
-          supportsUnder: json_.containsKey('supportsUnder')
-              ? json_['supportsUnder'] as core.bool
-              : null,
+          supportsIn: json_['supportsIn'] as core.bool?,
+          supportsUnder: json_['supportsUnder'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1625,9 +1611,7 @@ class GoogleCloudOrgpolicyV2ListConstraintsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1666,9 +1650,7 @@ class GoogleCloudOrgpolicyV2ListCustomConstraintsResponse {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1699,9 +1681,7 @@ class GoogleCloudOrgpolicyV2ListPoliciesResponse {
 
   GoogleCloudOrgpolicyV2ListPoliciesResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           policies: json_.containsKey('policies')
               ? (json_['policies'] as core.List)
                   .map((value) => GoogleCloudOrgpolicyV2Policy.fromJson(
@@ -1777,8 +1757,8 @@ class GoogleCloudOrgpolicyV2Policy {
               ? GoogleCloudOrgpolicyV2PolicySpec.fromJson(
                   json_['dryRunSpec'] as core.Map<core.String, core.dynamic>)
               : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          etag: json_['etag'] as core.String?,
+          name: json_['name'] as core.String?,
           spec: json_.containsKey('spec')
               ? GoogleCloudOrgpolicyV2PolicySpec.fromJson(
                   json_['spec'] as core.Map<core.String, core.dynamic>)
@@ -1851,12 +1831,9 @@ class GoogleCloudOrgpolicyV2PolicySpec {
 
   GoogleCloudOrgpolicyV2PolicySpec.fromJson(core.Map json_)
       : this(
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          inheritFromParent: json_.containsKey('inheritFromParent')
-              ? json_['inheritFromParent'] as core.bool
-              : null,
-          reset:
-              json_.containsKey('reset') ? json_['reset'] as core.bool : null,
+          etag: json_['etag'] as core.String?,
+          inheritFromParent: json_['inheritFromParent'] as core.bool?,
+          reset: json_['reset'] as core.bool?,
           rules: json_.containsKey('rules')
               ? (json_['rules'] as core.List)
                   .map((value) =>
@@ -1864,9 +1841,7 @@ class GoogleCloudOrgpolicyV2PolicySpec {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1925,19 +1900,13 @@ class GoogleCloudOrgpolicyV2PolicySpecPolicyRule {
 
   GoogleCloudOrgpolicyV2PolicySpecPolicyRule.fromJson(core.Map json_)
       : this(
-          allowAll: json_.containsKey('allowAll')
-              ? json_['allowAll'] as core.bool
-              : null,
+          allowAll: json_['allowAll'] as core.bool?,
           condition: json_.containsKey('condition')
               ? GoogleTypeExpr.fromJson(
                   json_['condition'] as core.Map<core.String, core.dynamic>)
               : null,
-          denyAll: json_.containsKey('denyAll')
-              ? json_['denyAll'] as core.bool
-              : null,
-          enforce: json_.containsKey('enforce')
-              ? json_['enforce'] as core.bool
-              : null,
+          denyAll: json_['denyAll'] as core.bool?,
+          enforce: json_['enforce'] as core.bool?,
           values: json_.containsKey('values')
               ? GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues.fromJson(
                   json_['values'] as core.Map<core.String, core.dynamic>)

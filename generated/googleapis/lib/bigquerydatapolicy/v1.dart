@@ -532,9 +532,7 @@ class AuditConfig {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          service: json_.containsKey('service')
-              ? json_['service'] as core.String
-              : null,
+          service: json_['service'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -648,7 +646,7 @@ class Binding {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          role: json_.containsKey('role') ? json_['role'] as core.String : null,
+          role: json_['role'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -705,12 +703,8 @@ class DataMaskingPolicy {
 
   DataMaskingPolicy.fromJson(core.Map json_)
       : this(
-          predefinedExpression: json_.containsKey('predefinedExpression')
-              ? json_['predefinedExpression'] as core.String
-              : null,
-          routine: json_.containsKey('routine')
-              ? json_['routine'] as core.String
-              : null,
+          predefinedExpression: json_['predefinedExpression'] as core.String?,
+          routine: json_['routine'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -764,16 +758,10 @@ class DataPolicy {
               ? DataMaskingPolicy.fromJson(json_['dataMaskingPolicy']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          dataPolicyId: json_.containsKey('dataPolicyId')
-              ? json_['dataPolicyId'] as core.String
-              : null,
-          dataPolicyType: json_.containsKey('dataPolicyType')
-              ? json_['dataPolicyType'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          policyTag: json_.containsKey('policyTag')
-              ? json_['policyTag'] as core.String
-              : null,
+          dataPolicyId: json_['dataPolicyId'] as core.String?,
+          dataPolicyType: json_['dataPolicyType'] as core.String?,
+          name: json_['name'] as core.String?,
+          policyTag: json_['policyTag'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -861,9 +849,7 @@ class ListDataPoliciesResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -979,10 +965,8 @@ class Policy {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          version: json_.containsKey('version')
-              ? json_['version'] as core.int
-              : null,
+          etag: json_['etag'] as core.String?,
+          version: json_['version'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1006,9 +990,7 @@ class RenameDataPolicyRequest {
 
   RenameDataPolicyRequest.fromJson(core.Map json_)
       : this(
-          newDataPolicyId: json_.containsKey('newDataPolicyId')
-              ? json_['newDataPolicyId'] as core.String
-              : null,
+          newDataPolicyId: json_['newDataPolicyId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1042,9 +1024,7 @@ class SetIamPolicyRequest {
               ? Policy.fromJson(
                   json_['policy'] as core.Map<core.String, core.dynamic>)
               : null,
-          updateMask: json_.containsKey('updateMask')
-              ? json_['updateMask'] as core.String
-              : null,
+          updateMask: json_['updateMask'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

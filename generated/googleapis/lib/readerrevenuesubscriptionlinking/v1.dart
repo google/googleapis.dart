@@ -292,18 +292,10 @@ class Entitlement {
 
   Entitlement.fromJson(core.Map json_)
       : this(
-          detail: json_.containsKey('detail')
-              ? json_['detail'] as core.String
-              : null,
-          expireTime: json_.containsKey('expireTime')
-              ? json_['expireTime'] as core.String
-              : null,
-          productId: json_.containsKey('productId')
-              ? json_['productId'] as core.String
-              : null,
-          subscriptionToken: json_.containsKey('subscriptionToken')
-              ? json_['subscriptionToken'] as core.String
-              : null,
+          detail: json_['detail'] as core.String?,
+          expireTime: json_['expireTime'] as core.String?,
+          productId: json_['productId'] as core.String?,
+          subscriptionToken: json_['subscriptionToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -335,10 +327,8 @@ class Reader {
 
   Reader.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          createTime: json_['createTime'] as core.String?,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -370,7 +360,7 @@ class ReaderEntitlements {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

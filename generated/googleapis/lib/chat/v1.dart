@@ -2203,12 +2203,12 @@ class ActionResponse {
               ? DialogAction.fromJson(
                   json_['dialogAction'] as core.Map<core.String, core.dynamic>)
               : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          type: json_['type'] as core.String?,
           updatedWidget: json_.containsKey('updatedWidget')
               ? UpdatedWidget.fromJson(
                   json_['updatedWidget'] as core.Map<core.String, core.dynamic>)
               : null,
-          url: json_.containsKey('url') ? json_['url'] as core.String : null,
+          url: json_['url'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2317,12 +2317,8 @@ class ActionStatus {
 
   ActionStatus.fromJson(core.Map json_)
       : this(
-          statusCode: json_.containsKey('statusCode')
-              ? json_['statusCode'] as core.String
-              : null,
-          userFacingMessage: json_.containsKey('userFacingMessage')
-              ? json_['userFacingMessage'] as core.String
-              : null,
+          statusCode: json_['statusCode'] as core.String?,
+          userFacingMessage: json_['userFacingMessage'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2380,8 +2376,7 @@ class Annotation {
 
   Annotation.fromJson(core.Map json_)
       : this(
-          length:
-              json_.containsKey('length') ? json_['length'] as core.int : null,
+          length: json_['length'] as core.int?,
           richLinkMetadata: json_.containsKey('richLinkMetadata')
               ? RichLinkMetadata.fromJson(json_['richLinkMetadata']
                   as core.Map<core.String, core.dynamic>)
@@ -2390,10 +2385,8 @@ class Annotation {
               ? SlashCommandMetadata.fromJson(
                   json_['slashCommand'] as core.Map<core.String, core.dynamic>)
               : null,
-          startIndex: json_.containsKey('startIndex')
-              ? json_['startIndex'] as core.int
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          startIndex: json_['startIndex'] as core.int?,
+          type: json_['type'] as core.String?,
           userMention: json_.containsKey('userMention')
               ? UserMentionMetadata.fromJson(
                   json_['userMention'] as core.Map<core.String, core.dynamic>)
@@ -2423,7 +2416,7 @@ class AttachedGif {
 
   AttachedGif.fromJson(core.Map json_)
       : this(
-          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+          uri: json_['uri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2501,26 +2494,16 @@ class Attachment {
               ? AttachmentDataRef.fromJson(json_['attachmentDataRef']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          contentName: json_.containsKey('contentName')
-              ? json_['contentName'] as core.String
-              : null,
-          contentType: json_.containsKey('contentType')
-              ? json_['contentType'] as core.String
-              : null,
-          downloadUri: json_.containsKey('downloadUri')
-              ? json_['downloadUri'] as core.String
-              : null,
+          contentName: json_['contentName'] as core.String?,
+          contentType: json_['contentType'] as core.String?,
+          downloadUri: json_['downloadUri'] as core.String?,
           driveDataRef: json_.containsKey('driveDataRef')
               ? DriveDataRef.fromJson(
                   json_['driveDataRef'] as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          source: json_.containsKey('source')
-              ? json_['source'] as core.String
-              : null,
-          thumbnailUri: json_.containsKey('thumbnailUri')
-              ? json_['thumbnailUri'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          source: json_['source'] as core.String?,
+          thumbnailUri: json_['thumbnailUri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2555,12 +2538,8 @@ class AttachmentDataRef {
 
   AttachmentDataRef.fromJson(core.Map json_)
       : this(
-          attachmentUploadToken: json_.containsKey('attachmentUploadToken')
-              ? json_['attachmentUploadToken'] as core.String
-              : null,
-          resourceName: json_.containsKey('resourceName')
-              ? json_['resourceName'] as core.String
-              : null,
+          attachmentUploadToken: json_['attachmentUploadToken'] as core.String?,
+          resourceName: json_['resourceName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2638,7 +2617,7 @@ class Card {
               ? CardHeader.fromJson(
                   json_['header'] as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           sections: json_.containsKey('sections')
               ? (json_['sections'] as core.List)
                   .map((value) => Section.fromJson(
@@ -2673,9 +2652,7 @@ class CardAction {
 
   CardAction.fromJson(core.Map json_)
       : this(
-          actionLabel: json_.containsKey('actionLabel')
-              ? json_['actionLabel'] as core.String
-              : null,
+          actionLabel: json_['actionLabel'] as core.String?,
           onClick: json_.containsKey('onClick')
               ? OnClick.fromJson(
                   json_['onClick'] as core.Map<core.String, core.dynamic>)
@@ -2718,17 +2695,10 @@ class CardHeader {
 
   CardHeader.fromJson(core.Map json_)
       : this(
-          imageStyle: json_.containsKey('imageStyle')
-              ? json_['imageStyle'] as core.String
-              : null,
-          imageUrl: json_.containsKey('imageUrl')
-              ? json_['imageUrl'] as core.String
-              : null,
-          subtitle: json_.containsKey('subtitle')
-              ? json_['subtitle'] as core.String
-              : null,
-          title:
-              json_.containsKey('title') ? json_['title'] as core.String : null,
+          imageStyle: json_['imageStyle'] as core.String?,
+          imageUrl: json_['imageUrl'] as core.String?,
+          subtitle: json_['subtitle'] as core.String?,
+          title: json_['title'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2769,9 +2739,7 @@ class CardWithId {
               ? GoogleAppsCardV1Card.fromJson(
                   json_['card'] as core.Map<core.String, core.dynamic>)
               : null,
-          cardId: json_.containsKey('cardId')
-              ? json_['cardId'] as core.String
-              : null,
+          cardId: json_['cardId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2896,7 +2864,7 @@ class CustomEmoji {
 
   CustomEmoji.fromJson(core.Map json_)
       : this(
-          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
+          uid: json_['uid'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2928,9 +2896,7 @@ class DeletionMetadata {
 
   DeletionMetadata.fromJson(core.Map json_)
       : this(
-          deletionType: json_.containsKey('deletionType')
-              ? json_['deletionType'] as core.String
-              : null,
+          deletionType: json_['deletionType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3016,9 +2982,7 @@ class DriveDataRef {
 
   DriveDataRef.fromJson(core.Map json_)
       : this(
-          driveFileId: json_.containsKey('driveFileId')
-              ? json_['driveFileId'] as core.String
-              : null,
+          driveFileId: json_['driveFileId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3047,9 +3011,7 @@ class DriveLinkData {
               ? DriveDataRef.fromJson(
                   json_['driveDataRef'] as core.Map<core.String, core.dynamic>)
               : null,
-          mimeType: json_.containsKey('mimeType')
-              ? json_['mimeType'] as core.String
-              : null,
+          mimeType: json_['mimeType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3079,9 +3041,7 @@ class Emoji {
               ? CustomEmoji.fromJson(
                   json_['customEmoji'] as core.Map<core.String, core.dynamic>)
               : null,
-          unicode: json_.containsKey('unicode')
-              ? json_['unicode'] as core.String
-              : null,
+          unicode: json_['unicode'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3109,9 +3069,7 @@ class EmojiReactionSummary {
               ? Emoji.fromJson(
                   json_['emoji'] as core.Map<core.String, core.dynamic>)
               : null,
-          reactionCount: json_.containsKey('reactionCount')
-              ? json_['reactionCount'] as core.int
-              : null,
+          reactionCount: json_['reactionCount'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3150,9 +3108,7 @@ class FormAction {
 
   FormAction.fromJson(core.Map json_)
       : this(
-          actionMethodName: json_.containsKey('actionMethodName')
-              ? json_['actionMethodName'] as core.String
-              : null,
+          actionMethodName: json_['actionMethodName'] as core.String?,
           parameters: json_.containsKey('parameters')
               ? (json_['parameters'] as core.List)
                   .map((value) => ActionParameter.fromJson(
@@ -3246,24 +3202,16 @@ class GoogleAppsCardV1Action {
 
   GoogleAppsCardV1Action.fromJson(core.Map json_)
       : this(
-          function: json_.containsKey('function')
-              ? json_['function'] as core.String
-              : null,
-          interaction: json_.containsKey('interaction')
-              ? json_['interaction'] as core.String
-              : null,
-          loadIndicator: json_.containsKey('loadIndicator')
-              ? json_['loadIndicator'] as core.String
-              : null,
+          function: json_['function'] as core.String?,
+          interaction: json_['interaction'] as core.String?,
+          loadIndicator: json_['loadIndicator'] as core.String?,
           parameters: json_.containsKey('parameters')
               ? (json_['parameters'] as core.List)
                   .map((value) => GoogleAppsCardV1ActionParameter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          persistValues: json_.containsKey('persistValues')
-              ? json_['persistValues'] as core.bool
-              : null,
+          persistValues: json_['persistValues'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3313,14 +3261,12 @@ class GoogleAppsCardV1BorderStyle {
 
   GoogleAppsCardV1BorderStyle.fromJson(core.Map json_)
       : this(
-          cornerRadius: json_.containsKey('cornerRadius')
-              ? json_['cornerRadius'] as core.int
-              : null,
+          cornerRadius: json_['cornerRadius'] as core.int?,
           strokeColor: json_.containsKey('strokeColor')
               ? Color.fromJson(
                   json_['strokeColor'] as core.Map<core.String, core.dynamic>)
               : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3393,16 +3339,12 @@ class GoogleAppsCardV1Button {
 
   GoogleAppsCardV1Button.fromJson(core.Map json_)
       : this(
-          altText: json_.containsKey('altText')
-              ? json_['altText'] as core.String
-              : null,
+          altText: json_['altText'] as core.String?,
           color: json_.containsKey('color')
               ? Color.fromJson(
                   json_['color'] as core.Map<core.String, core.dynamic>)
               : null,
-          disabled: json_.containsKey('disabled')
-              ? json_['disabled'] as core.bool
-              : null,
+          disabled: json_['disabled'] as core.bool?,
           icon: json_.containsKey('icon')
               ? GoogleAppsCardV1Icon.fromJson(
                   json_['icon'] as core.Map<core.String, core.dynamic>)
@@ -3411,7 +3353,7 @@ class GoogleAppsCardV1Button {
               ? GoogleAppsCardV1OnClick.fromJson(
                   json_['onClick'] as core.Map<core.String, core.dynamic>)
               : null,
-          text: json_.containsKey('text') ? json_['text'] as core.String : null,
+          text: json_['text'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3574,9 +3516,7 @@ class GoogleAppsCardV1Card {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          displayStyle: json_.containsKey('displayStyle')
-              ? json_['displayStyle'] as core.String
-              : null,
+          displayStyle: json_['displayStyle'] as core.String?,
           fixedFooter: json_.containsKey('fixedFooter')
               ? GoogleAppsCardV1CardFixedFooter.fromJson(
                   json_['fixedFooter'] as core.Map<core.String, core.dynamic>)
@@ -3585,14 +3525,12 @@ class GoogleAppsCardV1Card {
               ? GoogleAppsCardV1CardHeader.fromJson(
                   json_['header'] as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           peekCardHeader: json_.containsKey('peekCardHeader')
               ? GoogleAppsCardV1CardHeader.fromJson(json_['peekCardHeader']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          sectionDividerStyle: json_.containsKey('sectionDividerStyle')
-              ? json_['sectionDividerStyle'] as core.String
-              : null,
+          sectionDividerStyle: json_['sectionDividerStyle'] as core.String?,
           sections: json_.containsKey('sections')
               ? (json_['sections'] as core.List)
                   .map((value) => GoogleAppsCardV1Section.fromJson(
@@ -3633,9 +3571,7 @@ class GoogleAppsCardV1CardAction {
 
   GoogleAppsCardV1CardAction.fromJson(core.Map json_)
       : this(
-          actionLabel: json_.containsKey('actionLabel')
-              ? json_['actionLabel'] as core.String
-              : null,
+          actionLabel: json_['actionLabel'] as core.String?,
           onClick: json_.containsKey('onClick')
               ? GoogleAppsCardV1OnClick.fromJson(
                   json_['onClick'] as core.Map<core.String, core.dynamic>)
@@ -3741,20 +3677,11 @@ class GoogleAppsCardV1CardHeader {
 
   GoogleAppsCardV1CardHeader.fromJson(core.Map json_)
       : this(
-          imageAltText: json_.containsKey('imageAltText')
-              ? json_['imageAltText'] as core.String
-              : null,
-          imageType: json_.containsKey('imageType')
-              ? json_['imageType'] as core.String
-              : null,
-          imageUrl: json_.containsKey('imageUrl')
-              ? json_['imageUrl'] as core.String
-              : null,
-          subtitle: json_.containsKey('subtitle')
-              ? json_['subtitle'] as core.String
-              : null,
-          title:
-              json_.containsKey('title') ? json_['title'] as core.String : null,
+          imageAltText: json_['imageAltText'] as core.String?,
+          imageType: json_['imageType'] as core.String?,
+          imageUrl: json_['imageUrl'] as core.String?,
+          subtitle: json_['subtitle'] as core.String?,
+          title: json_['title'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3816,15 +3743,9 @@ class GoogleAppsCardV1Column {
 
   GoogleAppsCardV1Column.fromJson(core.Map json_)
       : this(
-          horizontalAlignment: json_.containsKey('horizontalAlignment')
-              ? json_['horizontalAlignment'] as core.String
-              : null,
-          horizontalSizeStyle: json_.containsKey('horizontalSizeStyle')
-              ? json_['horizontalSizeStyle'] as core.String
-              : null,
-          verticalAlignment: json_.containsKey('verticalAlignment')
-              ? json_['verticalAlignment'] as core.String
-              : null,
+          horizontalAlignment: json_['horizontalAlignment'] as core.String?,
+          horizontalSizeStyle: json_['horizontalSizeStyle'] as core.String?,
+          verticalAlignment: json_['verticalAlignment'] as core.String?,
           widgets: json_.containsKey('widgets')
               ? (json_['widgets'] as core.List)
                   .map((value) => GoogleAppsCardV1Widgets.fromJson(
@@ -3949,20 +3870,15 @@ class GoogleAppsCardV1DateTimePicker {
 
   GoogleAppsCardV1DateTimePicker.fromJson(core.Map json_)
       : this(
-          label:
-              json_.containsKey('label') ? json_['label'] as core.String : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          label: json_['label'] as core.String?,
+          name: json_['name'] as core.String?,
           onChangeAction: json_.containsKey('onChangeAction')
               ? GoogleAppsCardV1Action.fromJson(json_['onChangeAction']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          timezoneOffsetDate: json_.containsKey('timezoneOffsetDate')
-              ? json_['timezoneOffsetDate'] as core.int
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
-          valueMsEpoch: json_.containsKey('valueMsEpoch')
-              ? json_['valueMsEpoch'] as core.String
-              : null,
+          timezoneOffsetDate: json_['timezoneOffsetDate'] as core.int?,
+          type: json_['type'] as core.String?,
+          valueMsEpoch: json_['valueMsEpoch'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4056,9 +3972,7 @@ class GoogleAppsCardV1DecoratedText {
 
   GoogleAppsCardV1DecoratedText.fromJson(core.Map json_)
       : this(
-          bottomLabel: json_.containsKey('bottomLabel')
-              ? json_['bottomLabel'] as core.String
-              : null,
+          bottomLabel: json_['bottomLabel'] as core.String?,
           button: json_.containsKey('button')
               ? GoogleAppsCardV1Button.fromJson(
                   json_['button'] as core.Map<core.String, core.dynamic>)
@@ -4083,13 +3997,9 @@ class GoogleAppsCardV1DecoratedText {
               ? GoogleAppsCardV1SwitchControl.fromJson(
                   json_['switchControl'] as core.Map<core.String, core.dynamic>)
               : null,
-          text: json_.containsKey('text') ? json_['text'] as core.String : null,
-          topLabel: json_.containsKey('topLabel')
-              ? json_['topLabel'] as core.String
-              : null,
-          wrapText: json_.containsKey('wrapText')
-              ? json_['wrapText'] as core.bool
-              : null,
+          text: json_['text'] as core.String?,
+          topLabel: json_['topLabel'] as core.String?,
+          wrapText: json_['wrapText'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4168,9 +4078,7 @@ class GoogleAppsCardV1Grid {
               ? GoogleAppsCardV1BorderStyle.fromJson(
                   json_['borderStyle'] as core.Map<core.String, core.dynamic>)
               : null,
-          columnCount: json_.containsKey('columnCount')
-              ? json_['columnCount'] as core.int
-              : null,
+          columnCount: json_['columnCount'] as core.int?,
           items: json_.containsKey('items')
               ? (json_['items'] as core.List)
                   .map((value) => GoogleAppsCardV1GridItem.fromJson(
@@ -4181,8 +4089,7 @@ class GoogleAppsCardV1Grid {
               ? GoogleAppsCardV1OnClick.fromJson(
                   json_['onClick'] as core.Map<core.String, core.dynamic>)
               : null,
-          title:
-              json_.containsKey('title') ? json_['title'] as core.String : null,
+          title: json_['title'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4234,19 +4141,14 @@ class GoogleAppsCardV1GridItem {
 
   GoogleAppsCardV1GridItem.fromJson(core.Map json_)
       : this(
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          id: json_['id'] as core.String?,
           image: json_.containsKey('image')
               ? GoogleAppsCardV1ImageComponent.fromJson(
                   json_['image'] as core.Map<core.String, core.dynamic>)
               : null,
-          layout: json_.containsKey('layout')
-              ? json_['layout'] as core.String
-              : null,
-          subtitle: json_.containsKey('subtitle')
-              ? json_['subtitle'] as core.String
-              : null,
-          title:
-              json_.containsKey('title') ? json_['title'] as core.String : null,
+          layout: json_['layout'] as core.String?,
+          subtitle: json_['subtitle'] as core.String?,
+          title: json_['title'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4327,18 +4229,10 @@ class GoogleAppsCardV1Icon {
 
   GoogleAppsCardV1Icon.fromJson(core.Map json_)
       : this(
-          altText: json_.containsKey('altText')
-              ? json_['altText'] as core.String
-              : null,
-          iconUrl: json_.containsKey('iconUrl')
-              ? json_['iconUrl'] as core.String
-              : null,
-          imageType: json_.containsKey('imageType')
-              ? json_['imageType'] as core.String
-              : null,
-          knownIcon: json_.containsKey('knownIcon')
-              ? json_['knownIcon'] as core.String
-              : null,
+          altText: json_['altText'] as core.String?,
+          iconUrl: json_['iconUrl'] as core.String?,
+          imageType: json_['imageType'] as core.String?,
+          knownIcon: json_['knownIcon'] as core.String?,
           materialIcon: json_.containsKey('materialIcon')
               ? GoogleAppsCardV1MaterialIcon.fromJson(
                   json_['materialIcon'] as core.Map<core.String, core.dynamic>)
@@ -4382,12 +4276,8 @@ class GoogleAppsCardV1Image {
 
   GoogleAppsCardV1Image.fromJson(core.Map json_)
       : this(
-          altText: json_.containsKey('altText')
-              ? json_['altText'] as core.String
-              : null,
-          imageUrl: json_.containsKey('imageUrl')
-              ? json_['imageUrl'] as core.String
-              : null,
+          altText: json_['altText'] as core.String?,
+          imageUrl: json_['imageUrl'] as core.String?,
           onClick: json_.containsKey('onClick')
               ? GoogleAppsCardV1OnClick.fromJson(
                   json_['onClick'] as core.Map<core.String, core.dynamic>)
@@ -4427,9 +4317,7 @@ class GoogleAppsCardV1ImageComponent {
 
   GoogleAppsCardV1ImageComponent.fromJson(core.Map json_)
       : this(
-          altText: json_.containsKey('altText')
-              ? json_['altText'] as core.String
-              : null,
+          altText: json_['altText'] as core.String?,
           borderStyle: json_.containsKey('borderStyle')
               ? GoogleAppsCardV1BorderStyle.fromJson(
                   json_['borderStyle'] as core.Map<core.String, core.dynamic>)
@@ -4438,9 +4326,7 @@ class GoogleAppsCardV1ImageComponent {
               ? GoogleAppsCardV1ImageCropStyle.fromJson(
                   json_['cropStyle'] as core.Map<core.String, core.dynamic>)
               : null,
-          imageUri: json_.containsKey('imageUri')
-              ? json_['imageUri'] as core.String
-              : null,
+          imageUri: json_['imageUri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4481,10 +4367,8 @@ class GoogleAppsCardV1ImageCropStyle {
 
   GoogleAppsCardV1ImageCropStyle.fromJson(core.Map json_)
       : this(
-          aspectRatio: json_.containsKey('aspectRatio')
-              ? (json_['aspectRatio'] as core.num).toDouble()
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          aspectRatio: (json_['aspectRatio'] as core.num?)?.toDouble(),
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4545,11 +4429,10 @@ class GoogleAppsCardV1MaterialIcon {
 
   GoogleAppsCardV1MaterialIcon.fromJson(core.Map json_)
       : this(
-          fill: json_.containsKey('fill') ? json_['fill'] as core.bool : null,
-          grade: json_.containsKey('grade') ? json_['grade'] as core.int : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          weight:
-              json_.containsKey('weight') ? json_['weight'] as core.int : null,
+          fill: json_['fill'] as core.bool?,
+          grade: json_['grade'] as core.int?,
+          name: json_['name'] as core.String?,
+          weight: json_['weight'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4662,13 +4545,9 @@ class GoogleAppsCardV1OpenLink {
 
   GoogleAppsCardV1OpenLink.fromJson(core.Map json_)
       : this(
-          onClose: json_.containsKey('onClose')
-              ? json_['onClose'] as core.String
-              : null,
-          openAs: json_.containsKey('openAs')
-              ? json_['openAs'] as core.String
-              : null,
-          url: json_.containsKey('url') ? json_['url'] as core.String : null,
+          onClose: json_['onClose'] as core.String?,
+          openAs: json_['openAs'] as core.String?,
+          url: json_['url'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4704,9 +4583,7 @@ class GoogleAppsCardV1PlatformDataSource {
 
   GoogleAppsCardV1PlatformDataSource.fromJson(core.Map json_)
       : this(
-          commonDataSource: json_.containsKey('commonDataSource')
-              ? json_['commonDataSource'] as core.String
-              : null,
+          commonDataSource: json_['commonDataSource'] as core.String?,
           hostAppDataSource: json_.containsKey('hostAppDataSource')
               ? HostAppDataSourceMarkup.fromJson(json_['hostAppDataSource']
                   as core.Map<core.String, core.dynamic>)
@@ -4766,16 +4643,10 @@ class GoogleAppsCardV1Section {
 
   GoogleAppsCardV1Section.fromJson(core.Map json_)
       : this(
-          collapsible: json_.containsKey('collapsible')
-              ? json_['collapsible'] as core.bool
-              : null,
-          header: json_.containsKey('header')
-              ? json_['header'] as core.String
-              : null,
+          collapsible: json_['collapsible'] as core.bool?,
+          header: json_['header'] as core.String?,
           uncollapsibleWidgetsCount:
-              json_.containsKey('uncollapsibleWidgetsCount')
-                  ? json_['uncollapsibleWidgetsCount'] as core.int
-                  : null,
+              json_['uncollapsibleWidgetsCount'] as core.int?,
           widgets: json_.containsKey('widgets')
               ? (json_['widgets'] as core.List)
                   .map((value) => GoogleAppsCardV1Widget.fromJson(
@@ -4906,17 +4777,12 @@ class GoogleAppsCardV1SelectionInput {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          label:
-              json_.containsKey('label') ? json_['label'] as core.String : null,
+          label: json_['label'] as core.String?,
           multiSelectMaxSelectedItems:
-              json_.containsKey('multiSelectMaxSelectedItems')
-                  ? json_['multiSelectMaxSelectedItems'] as core.int
-                  : null,
+              json_['multiSelectMaxSelectedItems'] as core.int?,
           multiSelectMinQueryLength:
-              json_.containsKey('multiSelectMinQueryLength')
-                  ? json_['multiSelectMinQueryLength'] as core.int
-                  : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+              json_['multiSelectMinQueryLength'] as core.int?,
+          name: json_['name'] as core.String?,
           onChangeAction: json_.containsKey('onChangeAction')
               ? GoogleAppsCardV1Action.fromJson(json_['onChangeAction']
                   as core.Map<core.String, core.dynamic>)
@@ -4926,7 +4792,7 @@ class GoogleAppsCardV1SelectionInput {
                   json_['platformDataSource']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4989,18 +4855,11 @@ class GoogleAppsCardV1SelectionItem {
 
   GoogleAppsCardV1SelectionItem.fromJson(core.Map json_)
       : this(
-          bottomText: json_.containsKey('bottomText')
-              ? json_['bottomText'] as core.String
-              : null,
-          selected: json_.containsKey('selected')
-              ? json_['selected'] as core.bool
-              : null,
-          startIconUri: json_.containsKey('startIconUri')
-              ? json_['startIconUri'] as core.String
-              : null,
-          text: json_.containsKey('text') ? json_['text'] as core.String : null,
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
+          bottomText: json_['bottomText'] as core.String?,
+          selected: json_['selected'] as core.bool?,
+          startIconUri: json_['startIconUri'] as core.String?,
+          text: json_['text'] as core.String?,
+          value: json_['value'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5028,7 +4887,7 @@ class GoogleAppsCardV1SuggestionItem {
 
   GoogleAppsCardV1SuggestionItem.fromJson(core.Map json_)
       : this(
-          text: json_.containsKey('text') ? json_['text'] as core.String : null,
+          text: json_['text'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5118,19 +4977,14 @@ class GoogleAppsCardV1SwitchControl {
 
   GoogleAppsCardV1SwitchControl.fromJson(core.Map json_)
       : this(
-          controlType: json_.containsKey('controlType')
-              ? json_['controlType'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          controlType: json_['controlType'] as core.String?,
+          name: json_['name'] as core.String?,
           onChangeAction: json_.containsKey('onChangeAction')
               ? GoogleAppsCardV1Action.fromJson(json_['onChangeAction']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          selected: json_.containsKey('selected')
-              ? json_['selected'] as core.bool
-              : null,
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
+          selected: json_['selected'] as core.bool?,
+          value: json_['value'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5251,26 +5105,20 @@ class GoogleAppsCardV1TextInput {
               ? GoogleAppsCardV1Action.fromJson(json_['autoCompleteAction']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          hintText: json_.containsKey('hintText')
-              ? json_['hintText'] as core.String
-              : null,
+          hintText: json_['hintText'] as core.String?,
           initialSuggestions: json_.containsKey('initialSuggestions')
               ? GoogleAppsCardV1Suggestions.fromJson(json_['initialSuggestions']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          label:
-              json_.containsKey('label') ? json_['label'] as core.String : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          label: json_['label'] as core.String?,
+          name: json_['name'] as core.String?,
           onChangeAction: json_.containsKey('onChangeAction')
               ? GoogleAppsCardV1Action.fromJson(json_['onChangeAction']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          placeholderText: json_.containsKey('placeholderText')
-              ? json_['placeholderText'] as core.String
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
+          placeholderText: json_['placeholderText'] as core.String?,
+          type: json_['type'] as core.String?,
+          value: json_['value'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5308,7 +5156,7 @@ class GoogleAppsCardV1TextParagraph {
 
   GoogleAppsCardV1TextParagraph.fromJson(core.Map json_)
       : this(
-          text: json_.containsKey('text') ? json_['text'] as core.String : null,
+          text: json_['text'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5476,9 +5324,7 @@ class GoogleAppsCardV1Widget {
               ? GoogleAppsCardV1Grid.fromJson(
                   json_['grid'] as core.Map<core.String, core.dynamic>)
               : null,
-          horizontalAlignment: json_.containsKey('horizontalAlignment')
-              ? json_['horizontalAlignment'] as core.String
-              : null,
+          horizontalAlignment: json_['horizontalAlignment'] as core.String?,
           image: json_.containsKey('image')
               ? GoogleAppsCardV1Image.fromJson(
                   json_['image'] as core.Map<core.String, core.dynamic>)
@@ -5608,7 +5454,7 @@ class Group {
 
   Group.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5665,12 +5511,8 @@ class Image {
 
   Image.fromJson(core.Map json_)
       : this(
-          aspectRatio: json_.containsKey('aspectRatio')
-              ? (json_['aspectRatio'] as core.num).toDouble()
-              : null,
-          imageUrl: json_.containsKey('imageUrl')
-              ? json_['imageUrl'] as core.String
-              : null,
+          aspectRatio: (json_['aspectRatio'] as core.num?)?.toDouble(),
+          imageUrl: json_['imageUrl'] as core.String?,
           onClick: json_.containsKey('onClick')
               ? OnClick.fromJson(
                   json_['onClick'] as core.Map<core.String, core.dynamic>)
@@ -5742,11 +5584,9 @@ class ImageButton {
 
   ImageButton.fromJson(core.Map json_)
       : this(
-          icon: json_.containsKey('icon') ? json_['icon'] as core.String : null,
-          iconUrl: json_.containsKey('iconUrl')
-              ? json_['iconUrl'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          icon: json_['icon'] as core.String?,
+          iconUrl: json_['iconUrl'] as core.String?,
+          name: json_['name'] as core.String?,
           onClick: json_.containsKey('onClick')
               ? OnClick.fromJson(
                   json_['onClick'] as core.Map<core.String, core.dynamic>)
@@ -5853,30 +5693,20 @@ class KeyValue {
 
   KeyValue.fromJson(core.Map json_)
       : this(
-          bottomLabel: json_.containsKey('bottomLabel')
-              ? json_['bottomLabel'] as core.String
-              : null,
+          bottomLabel: json_['bottomLabel'] as core.String?,
           button: json_.containsKey('button')
               ? Button.fromJson(
                   json_['button'] as core.Map<core.String, core.dynamic>)
               : null,
-          content: json_.containsKey('content')
-              ? json_['content'] as core.String
-              : null,
-          contentMultiline: json_.containsKey('contentMultiline')
-              ? json_['contentMultiline'] as core.bool
-              : null,
-          icon: json_.containsKey('icon') ? json_['icon'] as core.String : null,
-          iconUrl: json_.containsKey('iconUrl')
-              ? json_['iconUrl'] as core.String
-              : null,
+          content: json_['content'] as core.String?,
+          contentMultiline: json_['contentMultiline'] as core.bool?,
+          icon: json_['icon'] as core.String?,
+          iconUrl: json_['iconUrl'] as core.String?,
           onClick: json_.containsKey('onClick')
               ? OnClick.fromJson(
                   json_['onClick'] as core.Map<core.String, core.dynamic>)
               : null,
-          topLabel: json_.containsKey('topLabel')
-              ? json_['topLabel'] as core.String
-              : null,
+          topLabel: json_['topLabel'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5917,9 +5747,7 @@ class ListMembershipsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5951,9 +5779,7 @@ class ListMessagesResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5979,9 +5805,7 @@ class ListReactionsResponse {
 
   ListReactionsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           reactions: json_.containsKey('reactions')
               ? (json_['reactions'] as core.List)
                   .map((value) => Reaction.fromJson(
@@ -6013,9 +5837,7 @@ class ListSpaceEventsResponse {
 
   ListSpaceEventsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           spaceEvents: json_.containsKey('spaceEvents')
               ? (json_['spaceEvents'] as core.List)
                   .map((value) => SpaceEvent.fromJson(
@@ -6047,9 +5869,7 @@ class ListSpacesResponse {
 
   ListSpacesResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           spaces: json_.containsKey('spaces')
               ? (json_['spaces'] as core.List)
                   .map((value) => Space.fromJson(
@@ -6080,7 +5900,7 @@ class MatchedUrl {
 
   MatchedUrl.fromJson(core.Map json_)
       : this(
-          url: json_.containsKey('url') ? json_['url'] as core.String : null,
+          url: json_['url'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6174,12 +5994,8 @@ class Membership {
 
   Membership.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          deleteTime: json_.containsKey('deleteTime')
-              ? json_['deleteTime'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          deleteTime: json_['deleteTime'] as core.String?,
           groupMember: json_.containsKey('groupMember')
               ? Group.fromJson(
                   json_['groupMember'] as core.Map<core.String, core.dynamic>)
@@ -6188,10 +6004,9 @@ class Membership {
               ? User.fromJson(
                   json_['member'] as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          role: json_.containsKey('role') ? json_['role'] as core.String : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
+          name: json_['name'] as core.String?,
+          role: json_['role'] as core.String?,
+          state: json_['state'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6624,9 +6439,7 @@ class Message {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          argumentText: json_.containsKey('argumentText')
-              ? json_['argumentText'] as core.String
-              : null,
+          argumentText: json_['argumentText'] as core.String?,
           attachedGifs: json_.containsKey('attachedGifs')
               ? (json_['attachedGifs'] as core.List)
                   .map((value) => AttachedGif.fromJson(
@@ -6651,15 +6464,10 @@ class Message {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          clientAssignedMessageId: json_.containsKey('clientAssignedMessageId')
-              ? json_['clientAssignedMessageId'] as core.String
-              : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          deleteTime: json_.containsKey('deleteTime')
-              ? json_['deleteTime'] as core.String
-              : null,
+          clientAssignedMessageId:
+              json_['clientAssignedMessageId'] as core.String?,
+          createTime: json_['createTime'] as core.String?,
+          deleteTime: json_['deleteTime'] as core.String?,
           deletionMetadata: json_.containsKey('deletionMetadata')
               ? DeletionMetadata.fromJson(json_['deletionMetadata']
                   as core.Map<core.String, core.dynamic>)
@@ -6670,20 +6478,14 @@ class Message {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          fallbackText: json_.containsKey('fallbackText')
-              ? json_['fallbackText'] as core.String
-              : null,
-          formattedText: json_.containsKey('formattedText')
-              ? json_['formattedText'] as core.String
-              : null,
-          lastUpdateTime: json_.containsKey('lastUpdateTime')
-              ? json_['lastUpdateTime'] as core.String
-              : null,
+          fallbackText: json_['fallbackText'] as core.String?,
+          formattedText: json_['formattedText'] as core.String?,
+          lastUpdateTime: json_['lastUpdateTime'] as core.String?,
           matchedUrl: json_.containsKey('matchedUrl')
               ? MatchedUrl.fromJson(
                   json_['matchedUrl'] as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           privateMessageViewer: json_.containsKey('privateMessageViewer')
               ? User.fromJson(json_['privateMessageViewer']
                   as core.Map<core.String, core.dynamic>)
@@ -6704,14 +6506,12 @@ class Message {
               ? Space.fromJson(
                   json_['space'] as core.Map<core.String, core.dynamic>)
               : null,
-          text: json_.containsKey('text') ? json_['text'] as core.String : null,
+          text: json_['text'] as core.String?,
           thread: json_.containsKey('thread')
               ? Thread.fromJson(
                   json_['thread'] as core.Map<core.String, core.dynamic>)
               : null,
-          threadReply: json_.containsKey('threadReply')
-              ? json_['threadReply'] as core.bool
-              : null,
+          threadReply: json_['threadReply'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6943,7 +6743,7 @@ class OpenLink {
 
   OpenLink.fromJson(core.Map json_)
       : this(
-          url: json_.containsKey('url') ? json_['url'] as core.String : null,
+          url: json_['url'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6973,10 +6773,8 @@ class QuotedMessageMetadata {
 
   QuotedMessageMetadata.fromJson(core.Map json_)
       : this(
-          lastUpdateTime: json_.containsKey('lastUpdateTime')
-              ? json_['lastUpdateTime'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          lastUpdateTime: json_['lastUpdateTime'] as core.String?,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7012,7 +6810,7 @@ class Reaction {
               ? Emoji.fromJson(
                   json_['emoji'] as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           user: json_.containsKey('user')
               ? User.fromJson(
                   json_['user'] as core.Map<core.String, core.dynamic>)
@@ -7152,10 +6950,8 @@ class RichLinkMetadata {
               ? DriveLinkData.fromJson(
                   json_['driveLinkData'] as core.Map<core.String, core.dynamic>)
               : null,
-          richLinkType: json_.containsKey('richLinkType')
-              ? json_['richLinkType'] as core.String
-              : null,
-          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+          richLinkType: json_['richLinkType'] as core.String?,
+          uri: json_['uri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7190,9 +6986,7 @@ class Section {
 
   Section.fromJson(core.Map json_)
       : this(
-          header: json_.containsKey('header')
-              ? json_['header'] as core.String
-              : null,
+          header: json_['header'] as core.String?,
           widgets: json_.containsKey('widgets')
               ? (json_['widgets'] as core.List)
                   .map((value) => WidgetMarkup.fromJson(
@@ -7298,9 +7092,7 @@ class SetUpSpaceRequest {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          requestId: json_.containsKey('requestId')
-              ? json_['requestId'] as core.String
-              : null,
+          requestId: json_['requestId'] as core.String?,
           space: json_.containsKey('space')
               ? Space.fromJson(
                   json_['space'] as core.Map<core.String, core.dynamic>)
@@ -7327,9 +7119,7 @@ class SlashCommand {
 
   SlashCommand.fromJson(core.Map json_)
       : this(
-          commandId: json_.containsKey('commandId')
-              ? json_['commandId'] as core.String
-              : null,
+          commandId: json_['commandId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7372,16 +7162,10 @@ class SlashCommandMetadata {
               ? User.fromJson(
                   json_['bot'] as core.Map<core.String, core.dynamic>)
               : null,
-          commandId: json_.containsKey('commandId')
-              ? json_['commandId'] as core.String
-              : null,
-          commandName: json_.containsKey('commandName')
-              ? json_['commandName'] as core.String
-              : null,
-          triggersDialog: json_.containsKey('triggersDialog')
-              ? json_['triggersDialog'] as core.bool
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          commandId: json_['commandId'] as core.String?,
+          commandName: json_['commandName'] as core.String?,
+          triggersDialog: json_['triggersDialog'] as core.bool?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7552,42 +7336,22 @@ class Space {
 
   Space.fromJson(core.Map json_)
       : this(
-          adminInstalled: json_.containsKey('adminInstalled')
-              ? json_['adminInstalled'] as core.bool
-              : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          externalUserAllowed: json_.containsKey('externalUserAllowed')
-              ? json_['externalUserAllowed'] as core.bool
-              : null,
-          importMode: json_.containsKey('importMode')
-              ? json_['importMode'] as core.bool
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          singleUserBotDm: json_.containsKey('singleUserBotDm')
-              ? json_['singleUserBotDm'] as core.bool
-              : null,
+          adminInstalled: json_['adminInstalled'] as core.bool?,
+          createTime: json_['createTime'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          externalUserAllowed: json_['externalUserAllowed'] as core.bool?,
+          importMode: json_['importMode'] as core.bool?,
+          name: json_['name'] as core.String?,
+          singleUserBotDm: json_['singleUserBotDm'] as core.bool?,
           spaceDetails: json_.containsKey('spaceDetails')
               ? SpaceDetails.fromJson(
                   json_['spaceDetails'] as core.Map<core.String, core.dynamic>)
               : null,
-          spaceHistoryState: json_.containsKey('spaceHistoryState')
-              ? json_['spaceHistoryState'] as core.String
-              : null,
-          spaceThreadingState: json_.containsKey('spaceThreadingState')
-              ? json_['spaceThreadingState'] as core.String
-              : null,
-          spaceType: json_.containsKey('spaceType')
-              ? json_['spaceType'] as core.String
-              : null,
-          threaded: json_.containsKey('threaded')
-              ? json_['threaded'] as core.bool
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          spaceHistoryState: json_['spaceHistoryState'] as core.String?,
+          spaceThreadingState: json_['spaceThreadingState'] as core.String?,
+          spaceType: json_['spaceType'] as core.String?,
+          threaded: json_['threaded'] as core.bool?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7651,9 +7415,7 @@ class SpaceDataSource {
 
   SpaceDataSource.fromJson(core.Map json_)
       : this(
-          defaultToCurrentSpace: json_.containsKey('defaultToCurrentSpace')
-              ? json_['defaultToCurrentSpace'] as core.bool
-              : null,
+          defaultToCurrentSpace: json_['defaultToCurrentSpace'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7686,12 +7448,8 @@ class SpaceDetails {
 
   SpaceDetails.fromJson(core.Map json_)
       : this(
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          guidelines: json_.containsKey('guidelines')
-              ? json_['guidelines'] as core.String
-              : null,
+          description: json_['description'] as core.String?,
+          guidelines: json_['guidelines'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7864,12 +7622,8 @@ class SpaceEvent {
 
   SpaceEvent.fromJson(core.Map json_)
       : this(
-          eventTime: json_.containsKey('eventTime')
-              ? json_['eventTime'] as core.String
-              : null,
-          eventType: json_.containsKey('eventType')
-              ? json_['eventType'] as core.String
-              : null,
+          eventTime: json_['eventTime'] as core.String?,
+          eventType: json_['eventType'] as core.String?,
           membershipBatchCreatedEventData:
               json_.containsKey('membershipBatchCreatedEventData')
                   ? MembershipBatchCreatedEventData.fromJson(
@@ -7939,7 +7693,7 @@ class SpaceEvent {
                   json_['messageUpdatedEventData']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           reactionBatchCreatedEventData:
               json_.containsKey('reactionBatchCreatedEventData')
                   ? ReactionBatchCreatedEventData.fromJson(
@@ -8043,10 +7797,8 @@ class SpaceReadState {
 
   SpaceReadState.fromJson(core.Map json_)
       : this(
-          lastReadTime: json_.containsKey('lastReadTime')
-              ? json_['lastReadTime'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          lastReadTime: json_['lastReadTime'] as core.String?,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8098,7 +7850,7 @@ class TextButton {
               ? OnClick.fromJson(
                   json_['onClick'] as core.Map<core.String, core.dynamic>)
               : null,
-          text: json_.containsKey('text') ? json_['text'] as core.String : null,
+          text: json_['text'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8122,7 +7874,7 @@ class TextParagraph {
 
   TextParagraph.fromJson(core.Map json_)
       : this(
-          text: json_.containsKey('text') ? json_['text'] as core.String : null,
+          text: json_['text'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8163,10 +7915,8 @@ class Thread {
 
   Thread.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          threadKey: json_.containsKey('threadKey')
-              ? json_['threadKey'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          threadKey: json_['threadKey'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8196,10 +7946,8 @@ class ThreadReadState {
 
   ThreadReadState.fromJson(core.Map json_)
       : this(
-          lastReadTime: json_.containsKey('lastReadTime')
-              ? json_['lastReadTime'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          lastReadTime: json_['lastReadTime'] as core.String?,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8232,9 +7980,7 @@ class UpdatedWidget {
               ? SelectionItems.fromJson(
                   json_['suggestions'] as core.Map<core.String, core.dynamic>)
               : null,
-          widget: json_.containsKey('widget')
-              ? json_['widget'] as core.String
-              : null,
+          widget: json_['widget'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8256,9 +8002,7 @@ class UploadAttachmentRequest {
 
   UploadAttachmentRequest.fromJson(core.Map json_)
       : this(
-          filename: json_.containsKey('filename')
-              ? json_['filename'] as core.String
-              : null,
+          filename: json_['filename'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8343,17 +8087,11 @@ class User {
 
   User.fromJson(core.Map json_)
       : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          domainId: json_.containsKey('domainId')
-              ? json_['domainId'] as core.String
-              : null,
-          isAnonymous: json_.containsKey('isAnonymous')
-              ? json_['isAnonymous'] as core.bool
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          displayName: json_['displayName'] as core.String?,
+          domainId: json_['domainId'] as core.String?,
+          isAnonymous: json_['isAnonymous'] as core.bool?,
+          name: json_['name'] as core.String?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8384,7 +8122,7 @@ class UserMentionMetadata {
 
   UserMentionMetadata.fromJson(core.Map json_)
       : this(
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          type: json_['type'] as core.String?,
           user: json_.containsKey('user')
               ? User.fromJson(
                   json_['user'] as core.Map<core.String, core.dynamic>)

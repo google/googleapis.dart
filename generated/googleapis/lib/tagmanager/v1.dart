@@ -2460,16 +2460,10 @@ class Account {
 
   Account.fromJson(core.Map json_)
       : this(
-          accountId: json_.containsKey('accountId')
-              ? json_['accountId'] as core.String
-              : null,
-          fingerprint: json_.containsKey('fingerprint')
-              ? json_['fingerprint'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          shareData: json_.containsKey('shareData')
-              ? json_['shareData'] as core.bool
-              : null,
+          accountId: json_['accountId'] as core.String?,
+          fingerprint: json_['fingerprint'] as core.String?,
+          name: json_['name'] as core.String?,
+          shareData: json_['shareData'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2553,7 +2547,7 @@ class Condition {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2643,12 +2637,8 @@ class Container {
 
   Container.fromJson(core.Map json_)
       : this(
-          accountId: json_.containsKey('accountId')
-              ? json_['accountId'] as core.String
-              : null,
-          containerId: json_.containsKey('containerId')
-              ? json_['containerId'] as core.String
-              : null,
+          accountId: json_['accountId'] as core.String?,
+          containerId: json_['containerId'] as core.String?,
           domainName: json_.containsKey('domainName')
               ? (json_['domainName'] as core.List)
                   .map((value) => value as core.String)
@@ -2659,21 +2649,12 @@ class Container {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          fingerprint: json_.containsKey('fingerprint')
-              ? json_['fingerprint'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          notes:
-              json_.containsKey('notes') ? json_['notes'] as core.String : null,
-          publicId: json_.containsKey('publicId')
-              ? json_['publicId'] as core.String
-              : null,
-          timeZoneCountryId: json_.containsKey('timeZoneCountryId')
-              ? json_['timeZoneCountryId'] as core.String
-              : null,
-          timeZoneId: json_.containsKey('timeZoneId')
-              ? json_['timeZoneId'] as core.String
-              : null,
+          fingerprint: json_['fingerprint'] as core.String?,
+          name: json_['name'] as core.String?,
+          notes: json_['notes'] as core.String?,
+          publicId: json_['publicId'] as core.String?,
+          timeZoneCountryId: json_['timeZoneCountryId'] as core.String?,
+          timeZoneId: json_['timeZoneId'] as core.String?,
           usageContext: json_.containsKey('usageContext')
               ? (json_['usageContext'] as core.List)
                   .map((value) => value as core.String)
@@ -2719,9 +2700,7 @@ class ContainerAccess {
 
   ContainerAccess.fromJson(core.Map json_)
       : this(
-          containerId: json_.containsKey('containerId')
-              ? json_['containerId'] as core.String
-              : null,
+          containerId: json_['containerId'] as core.String?,
           permission: json_.containsKey('permission')
               ? (json_['permission'] as core.List)
                   .map((value) => value as core.String)
@@ -2810,25 +2789,15 @@ class ContainerVersion {
 
   ContainerVersion.fromJson(core.Map json_)
       : this(
-          accountId: json_.containsKey('accountId')
-              ? json_['accountId'] as core.String
-              : null,
+          accountId: json_['accountId'] as core.String?,
           container: json_.containsKey('container')
               ? Container.fromJson(
                   json_['container'] as core.Map<core.String, core.dynamic>)
               : null,
-          containerId: json_.containsKey('containerId')
-              ? json_['containerId'] as core.String
-              : null,
-          containerVersionId: json_.containsKey('containerVersionId')
-              ? json_['containerVersionId'] as core.String
-              : null,
-          deleted: json_.containsKey('deleted')
-              ? json_['deleted'] as core.bool
-              : null,
-          fingerprint: json_.containsKey('fingerprint')
-              ? json_['fingerprint'] as core.String
-              : null,
+          containerId: json_['containerId'] as core.String?,
+          containerVersionId: json_['containerVersionId'] as core.String?,
+          deleted: json_['deleted'] as core.bool?,
+          fingerprint: json_['fingerprint'] as core.String?,
           folder: json_.containsKey('folder')
               ? (json_['folder'] as core.List)
                   .map((value) => Folder.fromJson(
@@ -2841,9 +2810,8 @@ class ContainerVersion {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          notes:
-              json_.containsKey('notes') ? json_['notes'] as core.String : null,
+          name: json_['name'] as core.String?,
+          notes: json_['notes'] as core.String?,
           rule: json_.containsKey('rule')
               ? (json_['rule'] as core.List)
                   .map((value) => Rule.fromJson(
@@ -2942,34 +2910,16 @@ class ContainerVersionHeader {
 
   ContainerVersionHeader.fromJson(core.Map json_)
       : this(
-          accountId: json_.containsKey('accountId')
-              ? json_['accountId'] as core.String
-              : null,
-          containerId: json_.containsKey('containerId')
-              ? json_['containerId'] as core.String
-              : null,
-          containerVersionId: json_.containsKey('containerVersionId')
-              ? json_['containerVersionId'] as core.String
-              : null,
-          deleted: json_.containsKey('deleted')
-              ? json_['deleted'] as core.bool
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          numMacros: json_.containsKey('numMacros')
-              ? json_['numMacros'] as core.String
-              : null,
-          numRules: json_.containsKey('numRules')
-              ? json_['numRules'] as core.String
-              : null,
-          numTags: json_.containsKey('numTags')
-              ? json_['numTags'] as core.String
-              : null,
-          numTriggers: json_.containsKey('numTriggers')
-              ? json_['numTriggers'] as core.String
-              : null,
-          numVariables: json_.containsKey('numVariables')
-              ? json_['numVariables'] as core.String
-              : null,
+          accountId: json_['accountId'] as core.String?,
+          containerId: json_['containerId'] as core.String?,
+          containerVersionId: json_['containerVersionId'] as core.String?,
+          deleted: json_['deleted'] as core.bool?,
+          name: json_['name'] as core.String?,
+          numMacros: json_['numMacros'] as core.String?,
+          numRules: json_['numRules'] as core.String?,
+          numTags: json_['numTags'] as core.String?,
+          numTriggers: json_['numTriggers'] as core.String?,
+          numVariables: json_['numVariables'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3007,12 +2957,9 @@ class CreateContainerVersionRequestVersionOptions {
 
   CreateContainerVersionRequestVersionOptions.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          notes:
-              json_.containsKey('notes') ? json_['notes'] as core.String : null,
-          quickPreview: json_.containsKey('quickPreview')
-              ? json_['quickPreview'] as core.bool
-              : null,
+          name: json_['name'] as core.String?,
+          notes: json_['notes'] as core.String?,
+          quickPreview: json_['quickPreview'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3037,9 +2984,7 @@ class CreateContainerVersionResponse {
 
   CreateContainerVersionResponse.fromJson(core.Map json_)
       : this(
-          compilerError: json_.containsKey('compilerError')
-              ? json_['compilerError'] as core.bool
-              : null,
+          compilerError: json_['compilerError'] as core.bool?,
           containerVersion: json_.containsKey('containerVersion')
               ? ContainerVersion.fromJson(json_['containerVersion']
                   as core.Map<core.String, core.dynamic>)
@@ -3133,37 +3078,19 @@ class Environment {
 
   Environment.fromJson(core.Map json_)
       : this(
-          accountId: json_.containsKey('accountId')
-              ? json_['accountId'] as core.String
-              : null,
-          authorizationCode: json_.containsKey('authorizationCode')
-              ? json_['authorizationCode'] as core.String
-              : null,
+          accountId: json_['accountId'] as core.String?,
+          authorizationCode: json_['authorizationCode'] as core.String?,
           authorizationTimestampMs:
-              json_.containsKey('authorizationTimestampMs')
-                  ? json_['authorizationTimestampMs'] as core.String
-                  : null,
-          containerId: json_.containsKey('containerId')
-              ? json_['containerId'] as core.String
-              : null,
-          containerVersionId: json_.containsKey('containerVersionId')
-              ? json_['containerVersionId'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          enableDebug: json_.containsKey('enableDebug')
-              ? json_['enableDebug'] as core.bool
-              : null,
-          environmentId: json_.containsKey('environmentId')
-              ? json_['environmentId'] as core.String
-              : null,
-          fingerprint: json_.containsKey('fingerprint')
-              ? json_['fingerprint'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
-          url: json_.containsKey('url') ? json_['url'] as core.String : null,
+              json_['authorizationTimestampMs'] as core.String?,
+          containerId: json_['containerId'] as core.String?,
+          containerVersionId: json_['containerVersionId'] as core.String?,
+          description: json_['description'] as core.String?,
+          enableDebug: json_['enableDebug'] as core.bool?,
+          environmentId: json_['environmentId'] as core.String?,
+          fingerprint: json_['fingerprint'] as core.String?,
+          name: json_['name'] as core.String?,
+          type: json_['type'] as core.String?,
+          url: json_['url'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3216,19 +3143,11 @@ class Folder {
 
   Folder.fromJson(core.Map json_)
       : this(
-          accountId: json_.containsKey('accountId')
-              ? json_['accountId'] as core.String
-              : null,
-          containerId: json_.containsKey('containerId')
-              ? json_['containerId'] as core.String
-              : null,
-          fingerprint: json_.containsKey('fingerprint')
-              ? json_['fingerprint'] as core.String
-              : null,
-          folderId: json_.containsKey('folderId')
-              ? json_['folderId'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          accountId: json_['accountId'] as core.String?,
+          containerId: json_['containerId'] as core.String?,
+          fingerprint: json_['fingerprint'] as core.String?,
+          folderId: json_['folderId'] as core.String?,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3605,12 +3524,8 @@ class Macro {
 
   Macro.fromJson(core.Map json_)
       : this(
-          accountId: json_.containsKey('accountId')
-              ? json_['accountId'] as core.String
-              : null,
-          containerId: json_.containsKey('containerId')
-              ? json_['containerId'] as core.String
-              : null,
+          accountId: json_['accountId'] as core.String?,
+          containerId: json_['containerId'] as core.String?,
           disablingRuleId: json_.containsKey('disablingRuleId')
               ? (json_['disablingRuleId'] as core.List)
                   .map((value) => value as core.String)
@@ -3621,31 +3536,20 @@ class Macro {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          fingerprint: json_.containsKey('fingerprint')
-              ? json_['fingerprint'] as core.String
-              : null,
-          macroId: json_.containsKey('macroId')
-              ? json_['macroId'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          notes:
-              json_.containsKey('notes') ? json_['notes'] as core.String : null,
+          fingerprint: json_['fingerprint'] as core.String?,
+          macroId: json_['macroId'] as core.String?,
+          name: json_['name'] as core.String?,
+          notes: json_['notes'] as core.String?,
           parameter: json_.containsKey('parameter')
               ? (json_['parameter'] as core.List)
                   .map((value) => Parameter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          parentFolderId: json_.containsKey('parentFolderId')
-              ? json_['parentFolderId'] as core.String
-              : null,
-          scheduleEndMs: json_.containsKey('scheduleEndMs')
-              ? json_['scheduleEndMs'] as core.String
-              : null,
-          scheduleStartMs: json_.containsKey('scheduleStartMs')
-              ? json_['scheduleStartMs'] as core.String
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          parentFolderId: json_['parentFolderId'] as core.String?,
+          scheduleEndMs: json_['scheduleEndMs'] as core.String?,
+          scheduleStartMs: json_['scheduleStartMs'] as core.String?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3745,7 +3649,7 @@ class Parameter {
 
   Parameter.fromJson(core.Map json_)
       : this(
-          key: json_.containsKey('key') ? json_['key'] as core.String : null,
+          key: json_['key'] as core.String?,
           list: json_.containsKey('list')
               ? (json_['list'] as core.List)
                   .map((value) => Parameter.fromJson(
@@ -3758,9 +3662,8 @@ class Parameter {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
+          type: json_['type'] as core.String?,
+          value: json_['value'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3787,9 +3690,7 @@ class PublishContainerVersionResponse {
 
   PublishContainerVersionResponse.fromJson(core.Map json_)
       : this(
-          compilerError: json_.containsKey('compilerError')
-              ? json_['compilerError'] as core.bool
-              : null,
+          compilerError: json_['compilerError'] as core.bool?,
           containerVersion: json_.containsKey('containerVersion')
               ? ContainerVersion.fromJson(json_['containerVersion']
                   as core.Map<core.String, core.dynamic>)
@@ -3848,27 +3749,18 @@ class Rule {
 
   Rule.fromJson(core.Map json_)
       : this(
-          accountId: json_.containsKey('accountId')
-              ? json_['accountId'] as core.String
-              : null,
+          accountId: json_['accountId'] as core.String?,
           condition: json_.containsKey('condition')
               ? (json_['condition'] as core.List)
                   .map((value) => Condition.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          containerId: json_.containsKey('containerId')
-              ? json_['containerId'] as core.String
-              : null,
-          fingerprint: json_.containsKey('fingerprint')
-              ? json_['fingerprint'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          notes:
-              json_.containsKey('notes') ? json_['notes'] as core.String : null,
-          ruleId: json_.containsKey('ruleId')
-              ? json_['ruleId'] as core.String
-              : null,
+          containerId: json_['containerId'] as core.String?,
+          fingerprint: json_['fingerprint'] as core.String?,
+          name: json_['name'] as core.String?,
+          notes: json_['notes'] as core.String?,
+          ruleId: json_['ruleId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4042,9 +3934,7 @@ class Tag {
 
   Tag.fromJson(core.Map json_)
       : this(
-          accountId: json_.containsKey('accountId')
-              ? json_['accountId'] as core.String
-              : null,
+          accountId: json_['accountId'] as core.String?,
           blockingRuleId: json_.containsKey('blockingRuleId')
               ? (json_['blockingRuleId'] as core.List)
                   .map((value) => value as core.String)
@@ -4055,12 +3945,8 @@ class Tag {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          containerId: json_.containsKey('containerId')
-              ? json_['containerId'] as core.String
-              : null,
-          fingerprint: json_.containsKey('fingerprint')
-              ? json_['fingerprint'] as core.String
-              : null,
+          containerId: json_['containerId'] as core.String?,
+          fingerprint: json_['fingerprint'] as core.String?,
           firingRuleId: json_.containsKey('firingRuleId')
               ? (json_['firingRuleId'] as core.List)
                   .map((value) => value as core.String)
@@ -4071,51 +3957,38 @@ class Tag {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          liveOnly: json_.containsKey('liveOnly')
-              ? json_['liveOnly'] as core.bool
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          notes:
-              json_.containsKey('notes') ? json_['notes'] as core.String : null,
+          liveOnly: json_['liveOnly'] as core.bool?,
+          name: json_['name'] as core.String?,
+          notes: json_['notes'] as core.String?,
           parameter: json_.containsKey('parameter')
               ? (json_['parameter'] as core.List)
                   .map((value) => Parameter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          parentFolderId: json_.containsKey('parentFolderId')
-              ? json_['parentFolderId'] as core.String
-              : null,
-          paused:
-              json_.containsKey('paused') ? json_['paused'] as core.bool : null,
+          parentFolderId: json_['parentFolderId'] as core.String?,
+          paused: json_['paused'] as core.bool?,
           priority: json_.containsKey('priority')
               ? Parameter.fromJson(
                   json_['priority'] as core.Map<core.String, core.dynamic>)
               : null,
-          scheduleEndMs: json_.containsKey('scheduleEndMs')
-              ? json_['scheduleEndMs'] as core.String
-              : null,
-          scheduleStartMs: json_.containsKey('scheduleStartMs')
-              ? json_['scheduleStartMs'] as core.String
-              : null,
+          scheduleEndMs: json_['scheduleEndMs'] as core.String?,
+          scheduleStartMs: json_['scheduleStartMs'] as core.String?,
           setupTag: json_.containsKey('setupTag')
               ? (json_['setupTag'] as core.List)
                   .map((value) => SetupTag.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          tagFiringOption: json_.containsKey('tagFiringOption')
-              ? json_['tagFiringOption'] as core.String
-              : null,
-          tagId:
-              json_.containsKey('tagId') ? json_['tagId'] as core.String : null,
+          tagFiringOption: json_['tagFiringOption'] as core.String?,
+          tagId: json_['tagId'] as core.String?,
           teardownTag: json_.containsKey('teardownTag')
               ? (json_['teardownTag'] as core.List)
                   .map((value) => TeardownTag.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4385,9 +4258,7 @@ class Trigger {
 
   Trigger.fromJson(core.Map json_)
       : this(
-          accountId: json_.containsKey('accountId')
-              ? json_['accountId'] as core.String
-              : null,
+          accountId: json_['accountId'] as core.String?,
           autoEventFilter: json_.containsKey('autoEventFilter')
               ? (json_['autoEventFilter'] as core.List)
                   .map((value) => Condition.fromJson(
@@ -4398,9 +4269,7 @@ class Trigger {
               ? Parameter.fromJson(json_['checkValidation']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          containerId: json_.containsKey('containerId')
-              ? json_['containerId'] as core.String
-              : null,
+          containerId: json_['containerId'] as core.String?,
           continuousTimeMinMilliseconds:
               json_.containsKey('continuousTimeMinMilliseconds')
                   ? Parameter.fromJson(json_['continuousTimeMinMilliseconds']
@@ -4422,9 +4291,7 @@ class Trigger {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          fingerprint: json_.containsKey('fingerprint')
-              ? json_['fingerprint'] as core.String
-              : null,
+          fingerprint: json_['fingerprint'] as core.String?,
           horizontalScrollPercentageList:
               json_.containsKey('horizontalScrollPercentageList')
                   ? Parameter.fromJson(json_['horizontalScrollPercentageList']
@@ -4446,16 +4313,14 @@ class Trigger {
               ? Parameter.fromJson(json_['maxTimerLengthSeconds']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           parameter: json_.containsKey('parameter')
               ? (json_['parameter'] as core.List)
                   .map((value) => Parameter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          parentFolderId: json_.containsKey('parentFolderId')
-              ? json_['parentFolderId'] as core.String
-              : null,
+          parentFolderId: json_['parentFolderId'] as core.String?,
           selector: json_.containsKey('selector')
               ? Parameter.fromJson(
                   json_['selector'] as core.Map<core.String, core.dynamic>)
@@ -4465,10 +4330,8 @@ class Trigger {
                   ? Parameter.fromJson(json_['totalTimeMinMilliseconds']
                       as core.Map<core.String, core.dynamic>)
                   : null,
-          triggerId: json_.containsKey('triggerId')
-              ? json_['triggerId'] as core.String
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          triggerId: json_['triggerId'] as core.String?,
+          type: json_['type'] as core.String?,
           uniqueTriggerId: json_.containsKey('uniqueTriggerId')
               ? Parameter.fromJson(json_['uniqueTriggerId']
                   as core.Map<core.String, core.dynamic>)
@@ -4580,21 +4443,15 @@ class UserAccess {
               ? AccountAccess.fromJson(
                   json_['accountAccess'] as core.Map<core.String, core.dynamic>)
               : null,
-          accountId: json_.containsKey('accountId')
-              ? json_['accountId'] as core.String
-              : null,
+          accountId: json_['accountId'] as core.String?,
           containerAccess: json_.containsKey('containerAccess')
               ? (json_['containerAccess'] as core.List)
                   .map((value) => ContainerAccess.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          emailAddress: json_.containsKey('emailAddress')
-              ? json_['emailAddress'] as core.String
-              : null,
-          permissionId: json_.containsKey('permissionId')
-              ? json_['permissionId'] as core.String
-              : null,
+          emailAddress: json_['emailAddress'] as core.String?,
+          permissionId: json_['permissionId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4697,12 +4554,8 @@ class Variable {
 
   Variable.fromJson(core.Map json_)
       : this(
-          accountId: json_.containsKey('accountId')
-              ? json_['accountId'] as core.String
-              : null,
-          containerId: json_.containsKey('containerId')
-              ? json_['containerId'] as core.String
-              : null,
+          accountId: json_['accountId'] as core.String?,
+          containerId: json_['containerId'] as core.String?,
           disablingTriggerId: json_.containsKey('disablingTriggerId')
               ? (json_['disablingTriggerId'] as core.List)
                   .map((value) => value as core.String)
@@ -4713,31 +4566,20 @@ class Variable {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          fingerprint: json_.containsKey('fingerprint')
-              ? json_['fingerprint'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          notes:
-              json_.containsKey('notes') ? json_['notes'] as core.String : null,
+          fingerprint: json_['fingerprint'] as core.String?,
+          name: json_['name'] as core.String?,
+          notes: json_['notes'] as core.String?,
           parameter: json_.containsKey('parameter')
               ? (json_['parameter'] as core.List)
                   .map((value) => Parameter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          parentFolderId: json_.containsKey('parentFolderId')
-              ? json_['parentFolderId'] as core.String
-              : null,
-          scheduleEndMs: json_.containsKey('scheduleEndMs')
-              ? json_['scheduleEndMs'] as core.String
-              : null,
-          scheduleStartMs: json_.containsKey('scheduleStartMs')
-              ? json_['scheduleStartMs'] as core.String
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
-          variableId: json_.containsKey('variableId')
-              ? json_['variableId'] as core.String
-              : null,
+          parentFolderId: json_['parentFolderId'] as core.String?,
+          scheduleEndMs: json_['scheduleEndMs'] as core.String?,
+          scheduleStartMs: json_['scheduleStartMs'] as core.String?,
+          type: json_['type'] as core.String?,
+          variableId: json_['variableId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

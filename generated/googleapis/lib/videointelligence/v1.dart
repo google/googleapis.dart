@@ -557,18 +557,10 @@ class GoogleCloudVideointelligenceV1AnnotateVideoRequest {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          inputContent: json_.containsKey('inputContent')
-              ? json_['inputContent'] as core.String
-              : null,
-          inputUri: json_.containsKey('inputUri')
-              ? json_['inputUri'] as core.String
-              : null,
-          locationId: json_.containsKey('locationId')
-              ? json_['locationId'] as core.String
-              : null,
-          outputUri: json_.containsKey('outputUri')
-              ? json_['outputUri'] as core.String
-              : null,
+          inputContent: json_['inputContent'] as core.String?,
+          inputUri: json_['inputUri'] as core.String?,
+          locationId: json_['locationId'] as core.String?,
+          outputUri: json_['outputUri'] as core.String?,
           videoContext: json_.containsKey('videoContext')
               ? GoogleCloudVideointelligenceV1VideoContext.fromJson(
                   json_['videoContext'] as core.Map<core.String, core.dynamic>)
@@ -600,8 +592,7 @@ class GoogleCloudVideointelligenceV1ExplicitContentDetectionConfig {
   GoogleCloudVideointelligenceV1ExplicitContentDetectionConfig.fromJson(
       core.Map json_)
       : this(
-          model:
-              json_.containsKey('model') ? json_['model'] as core.String : null,
+          model: json_['model'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -634,14 +625,9 @@ class GoogleCloudVideointelligenceV1FaceDetectionConfig {
 
   GoogleCloudVideointelligenceV1FaceDetectionConfig.fromJson(core.Map json_)
       : this(
-          includeAttributes: json_.containsKey('includeAttributes')
-              ? json_['includeAttributes'] as core.bool
-              : null,
-          includeBoundingBoxes: json_.containsKey('includeBoundingBoxes')
-              ? json_['includeBoundingBoxes'] as core.bool
-              : null,
-          model:
-              json_.containsKey('model') ? json_['model'] as core.String : null,
+          includeAttributes: json_['includeAttributes'] as core.bool?,
+          includeBoundingBoxes: json_['includeBoundingBoxes'] as core.bool?,
+          model: json_['model'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -707,21 +693,12 @@ class GoogleCloudVideointelligenceV1LabelDetectionConfig {
   GoogleCloudVideointelligenceV1LabelDetectionConfig.fromJson(core.Map json_)
       : this(
           frameConfidenceThreshold:
-              json_.containsKey('frameConfidenceThreshold')
-                  ? (json_['frameConfidenceThreshold'] as core.num).toDouble()
-                  : null,
-          labelDetectionMode: json_.containsKey('labelDetectionMode')
-              ? json_['labelDetectionMode'] as core.String
-              : null,
-          model:
-              json_.containsKey('model') ? json_['model'] as core.String : null,
-          stationaryCamera: json_.containsKey('stationaryCamera')
-              ? json_['stationaryCamera'] as core.bool
-              : null,
+              (json_['frameConfidenceThreshold'] as core.num?)?.toDouble(),
+          labelDetectionMode: json_['labelDetectionMode'] as core.String?,
+          model: json_['model'] as core.String?,
+          stationaryCamera: json_['stationaryCamera'] as core.bool?,
           videoConfidenceThreshold:
-              json_.containsKey('videoConfidenceThreshold')
-                  ? (json_['videoConfidenceThreshold'] as core.num).toDouble()
-                  : null,
+              (json_['videoConfidenceThreshold'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -750,8 +727,7 @@ class GoogleCloudVideointelligenceV1ObjectTrackingConfig {
 
   GoogleCloudVideointelligenceV1ObjectTrackingConfig.fromJson(core.Map json_)
       : this(
-          model:
-              json_.containsKey('model') ? json_['model'] as core.String : null,
+          model: json_['model'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -785,15 +761,9 @@ class GoogleCloudVideointelligenceV1PersonDetectionConfig {
 
   GoogleCloudVideointelligenceV1PersonDetectionConfig.fromJson(core.Map json_)
       : this(
-          includeAttributes: json_.containsKey('includeAttributes')
-              ? json_['includeAttributes'] as core.bool
-              : null,
-          includeBoundingBoxes: json_.containsKey('includeBoundingBoxes')
-              ? json_['includeBoundingBoxes'] as core.bool
-              : null,
-          includePoseLandmarks: json_.containsKey('includePoseLandmarks')
-              ? json_['includePoseLandmarks'] as core.bool
-              : null,
+          includeAttributes: json_['includeAttributes'] as core.bool?,
+          includeBoundingBoxes: json_['includeBoundingBoxes'] as core.bool?,
+          includePoseLandmarks: json_['includePoseLandmarks'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -820,8 +790,7 @@ class GoogleCloudVideointelligenceV1ShotChangeDetectionConfig {
   GoogleCloudVideointelligenceV1ShotChangeDetectionConfig.fromJson(
       core.Map json_)
       : this(
-          model:
-              json_.containsKey('model') ? json_['model'] as core.String : null,
+          model: json_['model'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -966,29 +935,16 @@ class GoogleCloudVideointelligenceV1SpeechTranscriptionConfig {
                   .map((value) => value as core.int)
                   .toList()
               : null,
-          diarizationSpeakerCount: json_.containsKey('diarizationSpeakerCount')
-              ? json_['diarizationSpeakerCount'] as core.int
-              : null,
+          diarizationSpeakerCount:
+              json_['diarizationSpeakerCount'] as core.int?,
           enableAutomaticPunctuation:
-              json_.containsKey('enableAutomaticPunctuation')
-                  ? json_['enableAutomaticPunctuation'] as core.bool
-                  : null,
+              json_['enableAutomaticPunctuation'] as core.bool?,
           enableSpeakerDiarization:
-              json_.containsKey('enableSpeakerDiarization')
-                  ? json_['enableSpeakerDiarization'] as core.bool
-                  : null,
-          enableWordConfidence: json_.containsKey('enableWordConfidence')
-              ? json_['enableWordConfidence'] as core.bool
-              : null,
-          filterProfanity: json_.containsKey('filterProfanity')
-              ? json_['filterProfanity'] as core.bool
-              : null,
-          languageCode: json_.containsKey('languageCode')
-              ? json_['languageCode'] as core.String
-              : null,
-          maxAlternatives: json_.containsKey('maxAlternatives')
-              ? json_['maxAlternatives'] as core.int
-              : null,
+              json_['enableSpeakerDiarization'] as core.bool?,
+          enableWordConfidence: json_['enableWordConfidence'] as core.bool?,
+          filterProfanity: json_['filterProfanity'] as core.bool?,
+          languageCode: json_['languageCode'] as core.String?,
+          maxAlternatives: json_['maxAlternatives'] as core.int?,
           speechContexts: json_.containsKey('speechContexts')
               ? (json_['speechContexts'] as core.List)
                   .map((value) =>
@@ -1043,8 +999,7 @@ class GoogleCloudVideointelligenceV1TextDetectionConfig {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          model:
-              json_.containsKey('model') ? json_['model'] as core.String : null,
+          model: json_['model'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1192,12 +1147,8 @@ class GoogleCloudVideointelligenceV1VideoSegment {
 
   GoogleCloudVideointelligenceV1VideoSegment.fromJson(core.Map json_)
       : this(
-          endTimeOffset: json_.containsKey('endTimeOffset')
-              ? json_['endTimeOffset'] as core.String
-              : null,
-          startTimeOffset: json_.containsKey('startTimeOffset')
-              ? json_['startTimeOffset'] as core.String
-              : null,
+          endTimeOffset: json_['endTimeOffset'] as core.String?,
+          startTimeOffset: json_['startTimeOffset'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1224,9 +1175,7 @@ class GoogleLongrunningListOperationsResponse {
 
   GoogleLongrunningListOperationsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           operations: json_.containsKey('operations')
               ? (json_['operations'] as core.List)
                   .map((value) => GoogleLongrunningOperation.fromJson(
@@ -1294,7 +1243,7 @@ class GoogleLongrunningOperation {
 
   GoogleLongrunningOperation.fromJson(core.Map json_)
       : this(
-          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? GoogleRpcStatus.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
@@ -1302,7 +1251,7 @@ class GoogleLongrunningOperation {
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           response: json_.containsKey('response')
               ? json_['response'] as core.Map<core.String, core.dynamic>
               : null,

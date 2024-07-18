@@ -665,9 +665,7 @@ class GoogleCloudResourcesettingsV1ListSettingsResponse {
 
   GoogleCloudResourcesettingsV1ListSettingsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           settings: json_.containsKey('settings')
               ? (json_['settings'] as core.List)
                   .map((value) => GoogleCloudResourcesettingsV1Setting.fromJson(
@@ -740,7 +738,7 @@ class GoogleCloudResourcesettingsV1Setting {
                   json_['effectiveValue']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          etag: json_['etag'] as core.String?,
           localValue: json_.containsKey('localValue')
               ? GoogleCloudResourcesettingsV1Value.fromJson(
                   json_['localValue'] as core.Map<core.String, core.dynamic>)
@@ -749,7 +747,7 @@ class GoogleCloudResourcesettingsV1Setting {
               ? GoogleCloudResourcesettingsV1SettingMetadata.fromJson(
                   json_['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -801,22 +799,14 @@ class GoogleCloudResourcesettingsV1SettingMetadata {
 
   GoogleCloudResourcesettingsV1SettingMetadata.fromJson(core.Map json_)
       : this(
-          dataType: json_.containsKey('dataType')
-              ? json_['dataType'] as core.String
-              : null,
+          dataType: json_['dataType'] as core.String?,
           defaultValue: json_.containsKey('defaultValue')
               ? GoogleCloudResourcesettingsV1Value.fromJson(
                   json_['defaultValue'] as core.Map<core.String, core.dynamic>)
               : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          readOnly: json_.containsKey('readOnly')
-              ? json_['readOnly'] as core.bool
-              : null,
+          description: json_['description'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          readOnly: json_['readOnly'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -859,12 +849,8 @@ class GoogleCloudResourcesettingsV1Value {
 
   GoogleCloudResourcesettingsV1Value.fromJson(core.Map json_)
       : this(
-          booleanValue: json_.containsKey('booleanValue')
-              ? json_['booleanValue'] as core.bool
-              : null,
-          durationValue: json_.containsKey('durationValue')
-              ? json_['durationValue'] as core.String
-              : null,
+          booleanValue: json_['booleanValue'] as core.bool?,
+          durationValue: json_['durationValue'] as core.String?,
           enumValue: json_.containsKey('enumValue')
               ? GoogleCloudResourcesettingsV1ValueEnumValue.fromJson(
                   json_['enumValue'] as core.Map<core.String, core.dynamic>)
@@ -879,9 +865,7 @@ class GoogleCloudResourcesettingsV1Value {
                   json_['stringSetValue']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          stringValue: json_.containsKey('stringValue')
-              ? json_['stringValue'] as core.String
-              : null,
+          stringValue: json_['stringValue'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -908,8 +892,7 @@ class GoogleCloudResourcesettingsV1ValueEnumValue {
 
   GoogleCloudResourcesettingsV1ValueEnumValue.fromJson(core.Map json_)
       : this(
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
+          value: json_['value'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

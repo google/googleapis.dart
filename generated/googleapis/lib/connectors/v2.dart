@@ -1007,15 +1007,9 @@ class AccessCredentials {
 
   AccessCredentials.fromJson(core.Map json_)
       : this(
-          accessToken: json_.containsKey('accessToken')
-              ? json_['accessToken'] as core.String
-              : null,
-          expiresIn: json_.containsKey('expiresIn')
-              ? json_['expiresIn'] as core.String
-              : null,
-          refreshToken: json_.containsKey('refreshToken')
-              ? json_['refreshToken'] as core.String
-              : null,
+          accessToken: json_['accessToken'] as core.String?,
+          expiresIn: json_['expiresIn'] as core.String?,
+          refreshToken: json_['refreshToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1061,12 +1055,8 @@ class Action {
 
   Action.fromJson(core.Map json_)
       : this(
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+          description: json_['description'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
           inputJsonSchema: json_.containsKey('inputJsonSchema')
               ? JsonSchema.fromJson(json_['inputJsonSchema']
                   as core.Map<core.String, core.dynamic>)
@@ -1077,7 +1067,7 @@ class Action {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           resultJsonSchema: json_.containsKey('resultJsonSchema')
               ? JsonSchema.fromJson(json_['resultJsonSchema']
                   as core.Map<core.String, core.dynamic>)
@@ -1111,9 +1101,7 @@ class CheckReadinessResponse {
 
   CheckReadinessResponse.fromJson(core.Map json_)
       : this(
-          status: json_.containsKey('status')
-              ? json_['status'] as core.String
-              : null,
+          status: json_['status'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1149,11 +1137,8 @@ class CheckStatusResponse {
 
   CheckStatusResponse.fromJson(core.Map json_)
       : this(
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
+          description: json_['description'] as core.String?,
+          state: json_['state'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1199,7 +1184,7 @@ class Entity {
           fields: json_.containsKey('fields')
               ? json_['fields'] as core.Map<core.String, core.dynamic>
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1240,7 +1225,7 @@ class EntityType {
               ? JsonSchema.fromJson(
                   json_['jsonSchema'] as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           operations: json_.containsKey('operations')
               ? (json_['operations'] as core.List)
                   .map((value) => value as core.String)
@@ -1501,23 +1486,16 @@ class Field {
               ? json_['additionalDetails']
                   as core.Map<core.String, core.dynamic>
               : null,
-          dataType: json_.containsKey('dataType')
-              ? json_['dataType'] as core.String
-              : null,
-          defaultValue:
-              json_.containsKey('defaultValue') ? json_['defaultValue'] : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
+          dataType: json_['dataType'] as core.String?,
+          defaultValue: json_['defaultValue'],
+          description: json_['description'] as core.String?,
           jsonSchema: json_.containsKey('jsonSchema')
               ? JsonSchema.fromJson(
                   json_['jsonSchema'] as core.Map<core.String, core.dynamic>)
               : null,
-          key: json_.containsKey('key') ? json_['key'] as core.bool : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          nullable: json_.containsKey('nullable')
-              ? json_['nullable'] as core.bool
-              : null,
+          key: json_['key'] as core.bool?,
+          name: json_['name'] as core.String?,
+          nullable: json_['nullable'] as core.bool?,
           reference: json_.containsKey('reference')
               ? Reference.fromJson(
                   json_['reference'] as core.Map<core.String, core.dynamic>)
@@ -1632,22 +1610,15 @@ class InputParameter {
               ? json_['additionalDetails']
                   as core.Map<core.String, core.dynamic>
               : null,
-          dataType: json_.containsKey('dataType')
-              ? json_['dataType'] as core.String
-              : null,
-          defaultValue:
-              json_.containsKey('defaultValue') ? json_['defaultValue'] : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
+          dataType: json_['dataType'] as core.String?,
+          defaultValue: json_['defaultValue'],
+          description: json_['description'] as core.String?,
           jsonSchema: json_.containsKey('jsonSchema')
               ? JsonSchema.fromJson(
                   json_['jsonSchema'] as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          nullable: json_.containsKey('nullable')
-              ? json_['nullable'] as core.bool
-              : null,
+          name: json_['name'] as core.String?,
+          nullable: json_['nullable'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1776,21 +1747,15 @@ class JsonSchema {
               ? json_['additionalDetails']
                   as core.Map<core.String, core.dynamic>
               : null,
-          default_: json_.containsKey('default') ? json_['default'] : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
+          default_: json_['default'],
+          description: json_['description'] as core.String?,
           enum_: json_.containsKey('enum') ? json_['enum'] as core.List : null,
-          format: json_.containsKey('format')
-              ? json_['format'] as core.String
-              : null,
+          format: json_['format'] as core.String?,
           items: json_.containsKey('items')
               ? JsonSchema.fromJson(
                   json_['items'] as core.Map<core.String, core.dynamic>)
               : null,
-          jdbcType: json_.containsKey('jdbcType')
-              ? json_['jdbcType'] as core.String
-              : null,
+          jdbcType: json_['jdbcType'] as core.String?,
           properties: json_.containsKey('properties')
               ? (json_['properties'] as core.Map<core.String, core.dynamic>)
                   .map(
@@ -1854,9 +1819,7 @@ class ListActionsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           unsupportedActionNames: json_.containsKey('unsupportedActionNames')
               ? (json_['unsupportedActionNames'] as core.List)
                   .map((value) => value as core.String)
@@ -1893,9 +1856,7 @@ class ListEntitiesResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1925,9 +1886,7 @@ class ListEntityTypesResponse {
 
   ListEntityTypesResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           types: json_.containsKey('types')
               ? (json_['types'] as core.List)
                   .map((value) => EntityType.fromJson(
@@ -2002,7 +1961,7 @@ class Operation {
 
   Operation.fromJson(core.Map json_)
       : this(
-          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
@@ -2010,7 +1969,7 @@ class Operation {
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           response: json_.containsKey('response')
               ? json_['response'] as core.Map<core.String, core.dynamic>
               : null,
@@ -2055,20 +2014,15 @@ class Query {
 
   Query.fromJson(core.Map json_)
       : this(
-          maxRows: json_.containsKey('maxRows')
-              ? json_['maxRows'] as core.String
-              : null,
-          query:
-              json_.containsKey('query') ? json_['query'] as core.String : null,
+          maxRows: json_['maxRows'] as core.String?,
+          query: json_['query'] as core.String?,
           queryParameters: json_.containsKey('queryParameters')
               ? (json_['queryParameters'] as core.List)
                   .map((value) => QueryParameter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          timeout: json_.containsKey('timeout')
-              ? json_['timeout'] as core.String
-              : null,
+          timeout: json_['timeout'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2143,10 +2097,8 @@ class QueryParameter {
 
   QueryParameter.fromJson(core.Map json_)
       : this(
-          dataType: json_.containsKey('dataType')
-              ? json_['dataType'] as core.String
-              : null,
-          value: json_.containsKey('value') ? json_['value'] : null,
+          dataType: json_['dataType'] as core.String?,
+          value: json_['value'],
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2169,8 +2121,8 @@ class Reference {
 
   Reference.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          name: json_['name'] as core.String?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2274,17 +2226,13 @@ class ResultMetadata {
 
   ResultMetadata.fromJson(core.Map json_)
       : this(
-          dataType: json_.containsKey('dataType')
-              ? json_['dataType'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
+          dataType: json_['dataType'] as core.String?,
+          description: json_['description'] as core.String?,
           jsonSchema: json_.containsKey('jsonSchema')
               ? JsonSchema.fromJson(
                   json_['jsonSchema'] as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

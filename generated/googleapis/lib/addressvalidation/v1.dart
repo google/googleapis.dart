@@ -276,9 +276,7 @@ class GoogleMapsAddressvalidationV1Address {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          formattedAddress: json_.containsKey('formattedAddress')
-              ? json_['formattedAddress'] as core.String
-              : null,
+          formattedAddress: json_['formattedAddress'] as core.String?,
           missingComponentTypes: json_.containsKey('missingComponentTypes')
               ? (json_['missingComponentTypes'] as core.List)
                   .map((value) => value as core.String)
@@ -383,24 +381,12 @@ class GoogleMapsAddressvalidationV1AddressComponent {
               ? GoogleMapsAddressvalidationV1ComponentName.fromJson(
                   json_['componentName'] as core.Map<core.String, core.dynamic>)
               : null,
-          componentType: json_.containsKey('componentType')
-              ? json_['componentType'] as core.String
-              : null,
-          confirmationLevel: json_.containsKey('confirmationLevel')
-              ? json_['confirmationLevel'] as core.String
-              : null,
-          inferred: json_.containsKey('inferred')
-              ? json_['inferred'] as core.bool
-              : null,
-          replaced: json_.containsKey('replaced')
-              ? json_['replaced'] as core.bool
-              : null,
-          spellCorrected: json_.containsKey('spellCorrected')
-              ? json_['spellCorrected'] as core.bool
-              : null,
-          unexpected: json_.containsKey('unexpected')
-              ? json_['unexpected'] as core.bool
-              : null,
+          componentType: json_['componentType'] as core.String?,
+          confirmationLevel: json_['confirmationLevel'] as core.String?,
+          inferred: json_['inferred'] as core.bool?,
+          replaced: json_['replaced'] as core.bool?,
+          spellCorrected: json_['spellCorrected'] as core.bool?,
+          unexpected: json_['unexpected'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -442,14 +428,9 @@ class GoogleMapsAddressvalidationV1AddressMetadata {
 
   GoogleMapsAddressvalidationV1AddressMetadata.fromJson(core.Map json_)
       : this(
-          business: json_.containsKey('business')
-              ? json_['business'] as core.bool
-              : null,
-          poBox:
-              json_.containsKey('poBox') ? json_['poBox'] as core.bool : null,
-          residential: json_.containsKey('residential')
-              ? json_['residential'] as core.bool
-              : null,
+          business: json_['business'] as core.bool?,
+          poBox: json_['poBox'] as core.bool?,
+          residential: json_['residential'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -479,10 +460,8 @@ class GoogleMapsAddressvalidationV1ComponentName {
 
   GoogleMapsAddressvalidationV1ComponentName.fromJson(core.Map json_)
       : this(
-          languageCode: json_.containsKey('languageCode')
-              ? json_['languageCode'] as core.String
-              : null,
-          text: json_.containsKey('text') ? json_['text'] as core.String : null,
+          languageCode: json_['languageCode'] as core.String?,
+          text: json_['text'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -544,16 +523,13 @@ class GoogleMapsAddressvalidationV1Geocode {
               ? GoogleGeoTypeViewport.fromJson(
                   json_['bounds'] as core.Map<core.String, core.dynamic>)
               : null,
-          featureSizeMeters: json_.containsKey('featureSizeMeters')
-              ? (json_['featureSizeMeters'] as core.num).toDouble()
-              : null,
+          featureSizeMeters:
+              (json_['featureSizeMeters'] as core.num?)?.toDouble(),
           location: json_.containsKey('location')
               ? GoogleTypeLatLng.fromJson(
                   json_['location'] as core.Map<core.String, core.dynamic>)
               : null,
-          placeId: json_.containsKey('placeId')
-              ? json_['placeId'] as core.String
-              : null,
+          placeId: json_['placeId'] as core.String?,
           placeTypes: json_.containsKey('placeTypes')
               ? (json_['placeTypes'] as core.List)
                   .map((value) => value as core.String)
@@ -600,9 +576,7 @@ class GoogleMapsAddressvalidationV1LanguageOptions {
   GoogleMapsAddressvalidationV1LanguageOptions.fromJson(core.Map json_)
       : this(
           returnEnglishLatinAddress:
-              json_.containsKey('returnEnglishLatinAddress')
-                  ? json_['returnEnglishLatinAddress'] as core.bool
-                  : null,
+              json_['returnEnglishLatinAddress'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -655,12 +629,8 @@ class GoogleMapsAddressvalidationV1ProvideValidationFeedbackRequest {
   GoogleMapsAddressvalidationV1ProvideValidationFeedbackRequest.fromJson(
       core.Map json_)
       : this(
-          conclusion: json_.containsKey('conclusion')
-              ? json_['conclusion'] as core.String
-              : null,
-          responseId: json_.containsKey('responseId')
-              ? json_['responseId'] as core.String
-              : null,
+          conclusion: json_['conclusion'] as core.String?,
+          responseId: json_['responseId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -717,28 +687,16 @@ class GoogleMapsAddressvalidationV1UspsAddress {
 
   GoogleMapsAddressvalidationV1UspsAddress.fromJson(core.Map json_)
       : this(
-          city: json_.containsKey('city') ? json_['city'] as core.String : null,
-          cityStateZipAddressLine: json_.containsKey('cityStateZipAddressLine')
-              ? json_['cityStateZipAddressLine'] as core.String
-              : null,
-          firm: json_.containsKey('firm') ? json_['firm'] as core.String : null,
-          firstAddressLine: json_.containsKey('firstAddressLine')
-              ? json_['firstAddressLine'] as core.String
-              : null,
-          secondAddressLine: json_.containsKey('secondAddressLine')
-              ? json_['secondAddressLine'] as core.String
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
-          urbanization: json_.containsKey('urbanization')
-              ? json_['urbanization'] as core.String
-              : null,
-          zipCode: json_.containsKey('zipCode')
-              ? json_['zipCode'] as core.String
-              : null,
-          zipCodeExtension: json_.containsKey('zipCodeExtension')
-              ? json_['zipCodeExtension'] as core.String
-              : null,
+          city: json_['city'] as core.String?,
+          cityStateZipAddressLine:
+              json_['cityStateZipAddressLine'] as core.String?,
+          firm: json_['firm'] as core.String?,
+          firstAddressLine: json_['firstAddressLine'] as core.String?,
+          secondAddressLine: json_['secondAddressLine'] as core.String?,
+          state: json_['state'] as core.String?,
+          urbanization: json_['urbanization'] as core.String?,
+          zipCode: json_['zipCode'] as core.String?,
+          zipCodeExtension: json_['zipCodeExtension'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1030,120 +988,50 @@ class GoogleMapsAddressvalidationV1UspsData {
 
   GoogleMapsAddressvalidationV1UspsData.fromJson(core.Map json_)
       : this(
-          abbreviatedCity: json_.containsKey('abbreviatedCity')
-              ? json_['abbreviatedCity'] as core.String
-              : null,
-          addressRecordType: json_.containsKey('addressRecordType')
-              ? json_['addressRecordType'] as core.String
-              : null,
-          carrierRoute: json_.containsKey('carrierRoute')
-              ? json_['carrierRoute'] as core.String
-              : null,
-          carrierRouteIndicator: json_.containsKey('carrierRouteIndicator')
-              ? json_['carrierRouteIndicator'] as core.String
-              : null,
-          cassProcessed: json_.containsKey('cassProcessed')
-              ? json_['cassProcessed'] as core.bool
-              : null,
-          county: json_.containsKey('county')
-              ? json_['county'] as core.String
-              : null,
-          defaultAddress: json_.containsKey('defaultAddress')
-              ? json_['defaultAddress'] as core.bool
-              : null,
-          deliveryPointCheckDigit: json_.containsKey('deliveryPointCheckDigit')
-              ? json_['deliveryPointCheckDigit'] as core.String
-              : null,
-          deliveryPointCode: json_.containsKey('deliveryPointCode')
-              ? json_['deliveryPointCode'] as core.String
-              : null,
-          dpvCmra: json_.containsKey('dpvCmra')
-              ? json_['dpvCmra'] as core.String
-              : null,
-          dpvConfirmation: json_.containsKey('dpvConfirmation')
-              ? json_['dpvConfirmation'] as core.String
-              : null,
-          dpvDoorNotAccessible: json_.containsKey('dpvDoorNotAccessible')
-              ? json_['dpvDoorNotAccessible'] as core.String
-              : null,
-          dpvDrop: json_.containsKey('dpvDrop')
-              ? json_['dpvDrop'] as core.String
-              : null,
-          dpvEnhancedDeliveryCode: json_.containsKey('dpvEnhancedDeliveryCode')
-              ? json_['dpvEnhancedDeliveryCode'] as core.String
-              : null,
-          dpvFootnote: json_.containsKey('dpvFootnote')
-              ? json_['dpvFootnote'] as core.String
-              : null,
-          dpvNoSecureLocation: json_.containsKey('dpvNoSecureLocation')
-              ? json_['dpvNoSecureLocation'] as core.String
-              : null,
-          dpvNoStat: json_.containsKey('dpvNoStat')
-              ? json_['dpvNoStat'] as core.String
-              : null,
-          dpvNoStatReasonCode: json_.containsKey('dpvNoStatReasonCode')
-              ? json_['dpvNoStatReasonCode'] as core.int
-              : null,
-          dpvNonDeliveryDays: json_.containsKey('dpvNonDeliveryDays')
-              ? json_['dpvNonDeliveryDays'] as core.String
-              : null,
+          abbreviatedCity: json_['abbreviatedCity'] as core.String?,
+          addressRecordType: json_['addressRecordType'] as core.String?,
+          carrierRoute: json_['carrierRoute'] as core.String?,
+          carrierRouteIndicator: json_['carrierRouteIndicator'] as core.String?,
+          cassProcessed: json_['cassProcessed'] as core.bool?,
+          county: json_['county'] as core.String?,
+          defaultAddress: json_['defaultAddress'] as core.bool?,
+          deliveryPointCheckDigit:
+              json_['deliveryPointCheckDigit'] as core.String?,
+          deliveryPointCode: json_['deliveryPointCode'] as core.String?,
+          dpvCmra: json_['dpvCmra'] as core.String?,
+          dpvConfirmation: json_['dpvConfirmation'] as core.String?,
+          dpvDoorNotAccessible: json_['dpvDoorNotAccessible'] as core.String?,
+          dpvDrop: json_['dpvDrop'] as core.String?,
+          dpvEnhancedDeliveryCode:
+              json_['dpvEnhancedDeliveryCode'] as core.String?,
+          dpvFootnote: json_['dpvFootnote'] as core.String?,
+          dpvNoSecureLocation: json_['dpvNoSecureLocation'] as core.String?,
+          dpvNoStat: json_['dpvNoStat'] as core.String?,
+          dpvNoStatReasonCode: json_['dpvNoStatReasonCode'] as core.int?,
+          dpvNonDeliveryDays: json_['dpvNonDeliveryDays'] as core.String?,
           dpvNonDeliveryDaysValues:
-              json_.containsKey('dpvNonDeliveryDaysValues')
-                  ? json_['dpvNonDeliveryDaysValues'] as core.int
-                  : null,
-          dpvPbsa: json_.containsKey('dpvPbsa')
-              ? json_['dpvPbsa'] as core.String
-              : null,
-          dpvThrowback: json_.containsKey('dpvThrowback')
-              ? json_['dpvThrowback'] as core.String
-              : null,
-          dpvVacant: json_.containsKey('dpvVacant')
-              ? json_['dpvVacant'] as core.String
-              : null,
-          elotFlag: json_.containsKey('elotFlag')
-              ? json_['elotFlag'] as core.String
-              : null,
-          elotNumber: json_.containsKey('elotNumber')
-              ? json_['elotNumber'] as core.String
-              : null,
-          errorMessage: json_.containsKey('errorMessage')
-              ? json_['errorMessage'] as core.String
-              : null,
-          ewsNoMatch: json_.containsKey('ewsNoMatch')
-              ? json_['ewsNoMatch'] as core.bool
-              : null,
-          fipsCountyCode: json_.containsKey('fipsCountyCode')
-              ? json_['fipsCountyCode'] as core.String
-              : null,
-          lacsLinkIndicator: json_.containsKey('lacsLinkIndicator')
-              ? json_['lacsLinkIndicator'] as core.String
-              : null,
-          lacsLinkReturnCode: json_.containsKey('lacsLinkReturnCode')
-              ? json_['lacsLinkReturnCode'] as core.String
-              : null,
-          pmbDesignator: json_.containsKey('pmbDesignator')
-              ? json_['pmbDesignator'] as core.String
-              : null,
-          pmbNumber: json_.containsKey('pmbNumber')
-              ? json_['pmbNumber'] as core.String
-              : null,
-          poBoxOnlyPostalCode: json_.containsKey('poBoxOnlyPostalCode')
-              ? json_['poBoxOnlyPostalCode'] as core.bool
-              : null,
-          postOfficeCity: json_.containsKey('postOfficeCity')
-              ? json_['postOfficeCity'] as core.String
-              : null,
-          postOfficeState: json_.containsKey('postOfficeState')
-              ? json_['postOfficeState'] as core.String
-              : null,
+              json_['dpvNonDeliveryDaysValues'] as core.int?,
+          dpvPbsa: json_['dpvPbsa'] as core.String?,
+          dpvThrowback: json_['dpvThrowback'] as core.String?,
+          dpvVacant: json_['dpvVacant'] as core.String?,
+          elotFlag: json_['elotFlag'] as core.String?,
+          elotNumber: json_['elotNumber'] as core.String?,
+          errorMessage: json_['errorMessage'] as core.String?,
+          ewsNoMatch: json_['ewsNoMatch'] as core.bool?,
+          fipsCountyCode: json_['fipsCountyCode'] as core.String?,
+          lacsLinkIndicator: json_['lacsLinkIndicator'] as core.String?,
+          lacsLinkReturnCode: json_['lacsLinkReturnCode'] as core.String?,
+          pmbDesignator: json_['pmbDesignator'] as core.String?,
+          pmbNumber: json_['pmbNumber'] as core.String?,
+          poBoxOnlyPostalCode: json_['poBoxOnlyPostalCode'] as core.bool?,
+          postOfficeCity: json_['postOfficeCity'] as core.String?,
+          postOfficeState: json_['postOfficeState'] as core.String?,
           standardizedAddress: json_.containsKey('standardizedAddress')
               ? GoogleMapsAddressvalidationV1UspsAddress.fromJson(
                   json_['standardizedAddress']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          suitelinkFootnote: json_.containsKey('suitelinkFootnote')
-              ? json_['suitelinkFootnote'] as core.String
-              : null,
+          suitelinkFootnote: json_['suitelinkFootnote'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1288,20 +1176,14 @@ class GoogleMapsAddressvalidationV1ValidateAddressRequest {
               ? GoogleTypePostalAddress.fromJson(
                   json_['address'] as core.Map<core.String, core.dynamic>)
               : null,
-          enableUspsCass: json_.containsKey('enableUspsCass')
-              ? json_['enableUspsCass'] as core.bool
-              : null,
+          enableUspsCass: json_['enableUspsCass'] as core.bool?,
           languageOptions: json_.containsKey('languageOptions')
               ? GoogleMapsAddressvalidationV1LanguageOptions.fromJson(
                   json_['languageOptions']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          previousResponseId: json_.containsKey('previousResponseId')
-              ? json_['previousResponseId'] as core.String
-              : null,
-          sessionToken: json_.containsKey('sessionToken')
-              ? json_['sessionToken'] as core.String
-              : null,
+          previousResponseId: json_['previousResponseId'] as core.String?,
+          sessionToken: json_['sessionToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1332,9 +1214,7 @@ class GoogleMapsAddressvalidationV1ValidateAddressResponse {
 
   GoogleMapsAddressvalidationV1ValidateAddressResponse.fromJson(core.Map json_)
       : this(
-          responseId: json_.containsKey('responseId')
-              ? json_['responseId'] as core.String
-              : null,
+          responseId: json_['responseId'] as core.String?,
           result: json_.containsKey('result')
               ? GoogleMapsAddressvalidationV1ValidationResult.fromJson(
                   json_['result'] as core.Map<core.String, core.dynamic>)
@@ -1549,28 +1429,14 @@ class GoogleMapsAddressvalidationV1Verdict {
 
   GoogleMapsAddressvalidationV1Verdict.fromJson(core.Map json_)
       : this(
-          addressComplete: json_.containsKey('addressComplete')
-              ? json_['addressComplete'] as core.bool
-              : null,
-          geocodeGranularity: json_.containsKey('geocodeGranularity')
-              ? json_['geocodeGranularity'] as core.String
-              : null,
-          hasInferredComponents: json_.containsKey('hasInferredComponents')
-              ? json_['hasInferredComponents'] as core.bool
-              : null,
-          hasReplacedComponents: json_.containsKey('hasReplacedComponents')
-              ? json_['hasReplacedComponents'] as core.bool
-              : null,
+          addressComplete: json_['addressComplete'] as core.bool?,
+          geocodeGranularity: json_['geocodeGranularity'] as core.String?,
+          hasInferredComponents: json_['hasInferredComponents'] as core.bool?,
+          hasReplacedComponents: json_['hasReplacedComponents'] as core.bool?,
           hasUnconfirmedComponents:
-              json_.containsKey('hasUnconfirmedComponents')
-                  ? json_['hasUnconfirmedComponents'] as core.bool
-                  : null,
-          inputGranularity: json_.containsKey('inputGranularity')
-              ? json_['inputGranularity'] as core.String
-              : null,
-          validationGranularity: json_.containsKey('validationGranularity')
-              ? json_['validationGranularity'] as core.String
-              : null,
+              json_['hasUnconfirmedComponents'] as core.bool?,
+          inputGranularity: json_['inputGranularity'] as core.String?,
+          validationGranularity: json_['validationGranularity'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

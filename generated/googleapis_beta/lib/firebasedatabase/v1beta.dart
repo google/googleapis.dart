@@ -514,16 +514,11 @@ class DatabaseInstance {
 
   DatabaseInstance.fromJson(core.Map json_)
       : this(
-          databaseUrl: json_.containsKey('databaseUrl')
-              ? json_['databaseUrl'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          project: json_.containsKey('project')
-              ? json_['project'] as core.String
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          databaseUrl: json_['databaseUrl'] as core.String?,
+          name: json_['name'] as core.String?,
+          project: json_['project'] as core.String?,
+          state: json_['state'] as core.String?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -565,9 +560,7 @@ class ListDatabaseInstancesResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

@@ -706,16 +706,12 @@ class BlockchainNode {
 
   BlockchainNode.fromJson(core.Map json_)
       : this(
-          blockchainType: json_.containsKey('blockchainType')
-              ? json_['blockchainType'] as core.String
-              : null,
+          blockchainType: json_['blockchainType'] as core.String?,
           connectionInfo: json_.containsKey('connectionInfo')
               ? ConnectionInfo.fromJson(json_['connectionInfo']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
           ethereumDetails: json_.containsKey('ethereumDetails')
               ? EthereumDetails.fromJson(json_['ethereumDetails']
                   as core.Map<core.String, core.dynamic>)
@@ -728,16 +724,11 @@ class BlockchainNode {
                   ),
                 )
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           privateServiceConnectEnabled:
-              json_.containsKey('privateServiceConnectEnabled')
-                  ? json_['privateServiceConnectEnabled'] as core.bool
-                  : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+              json_['privateServiceConnectEnabled'] as core.bool?,
+          state: json_['state'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -781,9 +772,7 @@ class ConnectionInfo {
               ? EndpointInfo.fromJson(
                   json_['endpointInfo'] as core.Map<core.String, core.dynamic>)
               : null,
-          serviceAttachment: json_.containsKey('serviceAttachment')
-              ? json_['serviceAttachment'] as core.String
-              : null,
+          serviceAttachment: json_['serviceAttachment'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -812,12 +801,8 @@ class EndpointInfo {
 
   EndpointInfo.fromJson(core.Map json_)
       : this(
-          jsonRpcApiEndpoint: json_.containsKey('jsonRpcApiEndpoint')
-              ? json_['jsonRpcApiEndpoint'] as core.String
-              : null,
-          websocketsApiEndpoint: json_.containsKey('websocketsApiEndpoint')
-              ? json_['websocketsApiEndpoint'] as core.String
-              : null,
+          jsonRpcApiEndpoint: json_['jsonRpcApiEndpoint'] as core.String?,
+          websocketsApiEndpoint: json_['websocketsApiEndpoint'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -931,28 +916,16 @@ class EthereumDetails {
               ? EthereumEndpoints.fromJson(json_['additionalEndpoints']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          apiEnableAdmin: json_.containsKey('apiEnableAdmin')
-              ? json_['apiEnableAdmin'] as core.bool
-              : null,
-          apiEnableDebug: json_.containsKey('apiEnableDebug')
-              ? json_['apiEnableDebug'] as core.bool
-              : null,
-          consensusClient: json_.containsKey('consensusClient')
-              ? json_['consensusClient'] as core.String
-              : null,
-          executionClient: json_.containsKey('executionClient')
-              ? json_['executionClient'] as core.String
-              : null,
+          apiEnableAdmin: json_['apiEnableAdmin'] as core.bool?,
+          apiEnableDebug: json_['apiEnableDebug'] as core.bool?,
+          consensusClient: json_['consensusClient'] as core.String?,
+          executionClient: json_['executionClient'] as core.String?,
           gethDetails: json_.containsKey('gethDetails')
               ? GethDetails.fromJson(
                   json_['gethDetails'] as core.Map<core.String, core.dynamic>)
               : null,
-          network: json_.containsKey('network')
-              ? json_['network'] as core.String
-              : null,
-          nodeType: json_.containsKey('nodeType')
-              ? json_['nodeType'] as core.String
-              : null,
+          network: json_['network'] as core.String?,
+          nodeType: json_['nodeType'] as core.String?,
           validatorConfig: json_.containsKey('validatorConfig')
               ? ValidatorConfig.fromJson(json_['validatorConfig']
                   as core.Map<core.String, core.dynamic>)
@@ -1003,18 +976,12 @@ class EthereumEndpoints {
 
   EthereumEndpoints.fromJson(core.Map json_)
       : this(
-          beaconApiEndpoint: json_.containsKey('beaconApiEndpoint')
-              ? json_['beaconApiEndpoint'] as core.String
-              : null,
+          beaconApiEndpoint: json_['beaconApiEndpoint'] as core.String?,
           beaconPrometheusMetricsApiEndpoint:
-              json_.containsKey('beaconPrometheusMetricsApiEndpoint')
-                  ? json_['beaconPrometheusMetricsApiEndpoint'] as core.String
-                  : null,
+              json_['beaconPrometheusMetricsApiEndpoint'] as core.String?,
           executionClientPrometheusMetricsApiEndpoint:
-              json_.containsKey('executionClientPrometheusMetricsApiEndpoint')
-                  ? json_['executionClientPrometheusMetricsApiEndpoint']
-                      as core.String
-                  : null,
+              json_['executionClientPrometheusMetricsApiEndpoint']
+                  as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1057,9 +1024,7 @@ class GethDetails {
 
   GethDetails.fromJson(core.Map json_)
       : this(
-          garbageCollectionMode: json_.containsKey('garbageCollectionMode')
-              ? json_['garbageCollectionMode'] as core.String
-              : null,
+          garbageCollectionMode: json_['garbageCollectionMode'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1101,9 +1066,7 @@ class ListBlockchainNodesResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: json_.containsKey('unreachable')
               ? (json_['unreachable'] as core.List)
                   .map((value) => value as core.String)
@@ -1139,9 +1102,7 @@ class ListLocationsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1165,9 +1126,7 @@ class ListOperationsResponse {
 
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           operations: json_.containsKey('operations')
               ? (json_['operations'] as core.List)
                   .map((value) => Operation.fromJson(
@@ -1238,7 +1197,7 @@ class Operation {
 
   Operation.fromJson(core.Map json_)
       : this(
-          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
@@ -1246,7 +1205,7 @@ class Operation {
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           response: json_.containsKey('response')
               ? json_['response'] as core.Map<core.String, core.dynamic>
               : null,
@@ -1303,12 +1262,8 @@ class ValidatorConfig {
 
   ValidatorConfig.fromJson(core.Map json_)
       : this(
-          beaconFeeRecipient: json_.containsKey('beaconFeeRecipient')
-              ? json_['beaconFeeRecipient'] as core.String
-              : null,
-          managedValidatorClient: json_.containsKey('managedValidatorClient')
-              ? json_['managedValidatorClient'] as core.bool
-              : null,
+          beaconFeeRecipient: json_['beaconFeeRecipient'] as core.String?,
+          managedValidatorClient: json_['managedValidatorClient'] as core.bool?,
           mevRelayUrls: json_.containsKey('mevRelayUrls')
               ? (json_['mevRelayUrls'] as core.List)
                   .map((value) => value as core.String)

@@ -334,15 +334,9 @@ class DeliveryError {
 
   DeliveryError.fromJson(core.Map json_)
       : this(
-          errorClass: json_.containsKey('errorClass')
-              ? json_['errorClass'] as core.String
-              : null,
-          errorRatio: json_.containsKey('errorRatio')
-              ? (json_['errorRatio'] as core.num).toDouble()
-              : null,
-          errorType: json_.containsKey('errorType')
-              ? json_['errorType'] as core.String
-              : null,
+          errorClass: json_['errorClass'] as core.String?,
+          errorRatio: (json_['errorRatio'] as core.num?)?.toDouble(),
+          errorType: json_['errorType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -387,13 +381,9 @@ class Domain {
 
   Domain.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          permission: json_.containsKey('permission')
-              ? json_['permission'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          name: json_['name'] as core.String?,
+          permission: json_['permission'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -420,10 +410,8 @@ class FeedbackLoop {
 
   FeedbackLoop.fromJson(core.Map json_)
       : this(
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          spamRatio: json_.containsKey('spamRatio')
-              ? (json_['spamRatio'] as core.num).toDouble()
-              : null,
+          id: json_['id'] as core.String?,
+          spamRatio: (json_['spamRatio'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -471,12 +459,8 @@ class IpReputation {
 
   IpReputation.fromJson(core.Map json_)
       : this(
-          ipCount: json_.containsKey('ipCount')
-              ? json_['ipCount'] as core.String
-              : null,
-          reputation: json_.containsKey('reputation')
-              ? json_['reputation'] as core.String
-              : null,
+          ipCount: json_['ipCount'] as core.String?,
+          reputation: json_['reputation'] as core.String?,
           sampleIps: json_.containsKey('sampleIps')
               ? (json_['sampleIps'] as core.List)
                   .map((value) => value as core.String)
@@ -513,9 +497,7 @@ class ListDomainsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -540,9 +522,7 @@ class ListTrafficStatsResponse {
 
   ListTrafficStatsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           trafficStats: json_.containsKey('trafficStats')
               ? (json_['trafficStats'] as core.List)
                   .map((value) => TrafficStats.fromJson(
@@ -690,50 +670,37 @@ class TrafficStats {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          dkimSuccessRatio: json_.containsKey('dkimSuccessRatio')
-              ? (json_['dkimSuccessRatio'] as core.num).toDouble()
-              : null,
-          dmarcSuccessRatio: json_.containsKey('dmarcSuccessRatio')
-              ? (json_['dmarcSuccessRatio'] as core.num).toDouble()
-              : null,
-          domainReputation: json_.containsKey('domainReputation')
-              ? json_['domainReputation'] as core.String
-              : null,
-          inboundEncryptionRatio: json_.containsKey('inboundEncryptionRatio')
-              ? (json_['inboundEncryptionRatio'] as core.num).toDouble()
-              : null,
+          dkimSuccessRatio:
+              (json_['dkimSuccessRatio'] as core.num?)?.toDouble(),
+          dmarcSuccessRatio:
+              (json_['dmarcSuccessRatio'] as core.num?)?.toDouble(),
+          domainReputation: json_['domainReputation'] as core.String?,
+          inboundEncryptionRatio:
+              (json_['inboundEncryptionRatio'] as core.num?)?.toDouble(),
           ipReputations: json_.containsKey('ipReputations')
               ? (json_['ipReputations'] as core.List)
                   .map((value) => IpReputation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          outboundEncryptionRatio: json_.containsKey('outboundEncryptionRatio')
-              ? (json_['outboundEncryptionRatio'] as core.num).toDouble()
-              : null,
+          name: json_['name'] as core.String?,
+          outboundEncryptionRatio:
+              (json_['outboundEncryptionRatio'] as core.num?)?.toDouble(),
           spammyFeedbackLoops: json_.containsKey('spammyFeedbackLoops')
               ? (json_['spammyFeedbackLoops'] as core.List)
                   .map((value) => FeedbackLoop.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          spfSuccessRatio: json_.containsKey('spfSuccessRatio')
-              ? (json_['spfSuccessRatio'] as core.num).toDouble()
-              : null,
-          userReportedSpamRatio: json_.containsKey('userReportedSpamRatio')
-              ? (json_['userReportedSpamRatio'] as core.num).toDouble()
-              : null,
+          spfSuccessRatio: (json_['spfSuccessRatio'] as core.num?)?.toDouble(),
+          userReportedSpamRatio:
+              (json_['userReportedSpamRatio'] as core.num?)?.toDouble(),
           userReportedSpamRatioLowerBound:
-              json_.containsKey('userReportedSpamRatioLowerBound')
-                  ? (json_['userReportedSpamRatioLowerBound'] as core.num)
-                      .toDouble()
-                  : null,
+              (json_['userReportedSpamRatioLowerBound'] as core.num?)
+                  ?.toDouble(),
           userReportedSpamRatioUpperBound:
-              json_.containsKey('userReportedSpamRatioUpperBound')
-                  ? (json_['userReportedSpamRatioUpperBound'] as core.num)
-                      .toDouble()
-                  : null,
+              (json_['userReportedSpamRatioUpperBound'] as core.num?)
+                  ?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

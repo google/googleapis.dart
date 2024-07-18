@@ -633,33 +633,19 @@ class AmpInspectionResult {
 
   AmpInspectionResult.fromJson(core.Map json_)
       : this(
-          ampIndexStatusVerdict: json_.containsKey('ampIndexStatusVerdict')
-              ? json_['ampIndexStatusVerdict'] as core.String
-              : null,
-          ampUrl: json_.containsKey('ampUrl')
-              ? json_['ampUrl'] as core.String
-              : null,
-          indexingState: json_.containsKey('indexingState')
-              ? json_['indexingState'] as core.String
-              : null,
+          ampIndexStatusVerdict: json_['ampIndexStatusVerdict'] as core.String?,
+          ampUrl: json_['ampUrl'] as core.String?,
+          indexingState: json_['indexingState'] as core.String?,
           issues: json_.containsKey('issues')
               ? (json_['issues'] as core.List)
                   .map((value) => AmpIssue.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          lastCrawlTime: json_.containsKey('lastCrawlTime')
-              ? json_['lastCrawlTime'] as core.String
-              : null,
-          pageFetchState: json_.containsKey('pageFetchState')
-              ? json_['pageFetchState'] as core.String
-              : null,
-          robotsTxtState: json_.containsKey('robotsTxtState')
-              ? json_['robotsTxtState'] as core.String
-              : null,
-          verdict: json_.containsKey('verdict')
-              ? json_['verdict'] as core.String
-              : null,
+          lastCrawlTime: json_['lastCrawlTime'] as core.String?,
+          pageFetchState: json_['pageFetchState'] as core.String?,
+          robotsTxtState: json_['robotsTxtState'] as core.String?,
+          verdict: json_['verdict'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -694,12 +680,8 @@ class AmpIssue {
 
   AmpIssue.fromJson(core.Map json_)
       : this(
-          issueMessage: json_.containsKey('issueMessage')
-              ? json_['issueMessage'] as core.String
-              : null,
-          severity: json_.containsKey('severity')
-              ? json_['severity'] as core.String
-              : null,
+          issueMessage: json_['issueMessage'] as core.String?,
+          severity: json_['severity'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -725,23 +707,15 @@ class ApiDataRow {
 
   ApiDataRow.fromJson(core.Map json_)
       : this(
-          clicks: json_.containsKey('clicks')
-              ? (json_['clicks'] as core.num).toDouble()
-              : null,
-          ctr: json_.containsKey('ctr')
-              ? (json_['ctr'] as core.num).toDouble()
-              : null,
-          impressions: json_.containsKey('impressions')
-              ? (json_['impressions'] as core.num).toDouble()
-              : null,
+          clicks: (json_['clicks'] as core.num?)?.toDouble(),
+          ctr: (json_['ctr'] as core.num?)?.toDouble(),
+          impressions: (json_['impressions'] as core.num?)?.toDouble(),
           keys: json_.containsKey('keys')
               ? (json_['keys'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          position: json_.containsKey('position')
-              ? (json_['position'] as core.num).toDouble()
-              : null,
+          position: (json_['position'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -789,15 +763,9 @@ class ApiDimensionFilter {
 
   ApiDimensionFilter.fromJson(core.Map json_)
       : this(
-          dimension: json_.containsKey('dimension')
-              ? json_['dimension'] as core.String
-              : null,
-          expression: json_.containsKey('expression')
-              ? json_['expression'] as core.String
-              : null,
-          operator: json_.containsKey('operator')
-              ? json_['operator'] as core.String
-              : null,
+          dimension: json_['dimension'] as core.String?,
+          expression: json_['expression'] as core.String?,
+          operator: json_['operator'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -833,9 +801,7 @@ class ApiDimensionFilterGroup {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          groupType: json_.containsKey('groupType')
-              ? json_['groupType'] as core.String
-              : null,
+          groupType: json_['groupType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -855,7 +821,7 @@ class BlockedResource {
 
   BlockedResource.fromJson(core.Map json_)
       : this(
-          url: json_.containsKey('url') ? json_['url'] as core.String : null,
+          url: json_['url'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -884,9 +850,7 @@ class DetectedItems {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          richResultType: json_.containsKey('richResultType')
-              ? json_['richResultType'] as core.String
-              : null,
+          richResultType: json_['richResultType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -919,10 +883,8 @@ class Image {
 
   Image.fromJson(core.Map json_)
       : this(
-          data: json_.containsKey('data') ? json_['data'] as core.String : null,
-          mimeType: json_.containsKey('mimeType')
-              ? json_['mimeType'] as core.String
-              : null,
+          data: json_['data'] as core.String?,
+          mimeType: json_['mimeType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1044,43 +1006,25 @@ class IndexStatusInspectionResult {
 
   IndexStatusInspectionResult.fromJson(core.Map json_)
       : this(
-          coverageState: json_.containsKey('coverageState')
-              ? json_['coverageState'] as core.String
-              : null,
-          crawledAs: json_.containsKey('crawledAs')
-              ? json_['crawledAs'] as core.String
-              : null,
-          googleCanonical: json_.containsKey('googleCanonical')
-              ? json_['googleCanonical'] as core.String
-              : null,
-          indexingState: json_.containsKey('indexingState')
-              ? json_['indexingState'] as core.String
-              : null,
-          lastCrawlTime: json_.containsKey('lastCrawlTime')
-              ? json_['lastCrawlTime'] as core.String
-              : null,
-          pageFetchState: json_.containsKey('pageFetchState')
-              ? json_['pageFetchState'] as core.String
-              : null,
+          coverageState: json_['coverageState'] as core.String?,
+          crawledAs: json_['crawledAs'] as core.String?,
+          googleCanonical: json_['googleCanonical'] as core.String?,
+          indexingState: json_['indexingState'] as core.String?,
+          lastCrawlTime: json_['lastCrawlTime'] as core.String?,
+          pageFetchState: json_['pageFetchState'] as core.String?,
           referringUrls: json_.containsKey('referringUrls')
               ? (json_['referringUrls'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          robotsTxtState: json_.containsKey('robotsTxtState')
-              ? json_['robotsTxtState'] as core.String
-              : null,
+          robotsTxtState: json_['robotsTxtState'] as core.String?,
           sitemap: json_.containsKey('sitemap')
               ? (json_['sitemap'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          userCanonical: json_.containsKey('userCanonical')
-              ? json_['userCanonical'] as core.String
-              : null,
-          verdict: json_.containsKey('verdict')
-              ? json_['verdict'] as core.String
-              : null,
+          userCanonical: json_['userCanonical'] as core.String?,
+          verdict: json_['verdict'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1132,15 +1076,9 @@ class InspectUrlIndexRequest {
 
   InspectUrlIndexRequest.fromJson(core.Map json_)
       : this(
-          inspectionUrl: json_.containsKey('inspectionUrl')
-              ? json_['inspectionUrl'] as core.String
-              : null,
-          languageCode: json_.containsKey('languageCode')
-              ? json_['languageCode'] as core.String
-              : null,
-          siteUrl: json_.containsKey('siteUrl')
-              ? json_['siteUrl'] as core.String
-              : null,
+          inspectionUrl: json_['inspectionUrl'] as core.String?,
+          languageCode: json_['languageCode'] as core.String?,
+          siteUrl: json_['siteUrl'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1193,7 +1131,7 @@ class Item {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1231,7 +1169,7 @@ class MobileFriendlyIssue {
 
   MobileFriendlyIssue.fromJson(core.Map json_)
       : this(
-          rule: json_.containsKey('rule') ? json_['rule'] as core.String : null,
+          rule: json_['rule'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1268,9 +1206,7 @@ class MobileUsabilityInspectionResult {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          verdict: json_.containsKey('verdict')
-              ? json_['verdict'] as core.String
-              : null,
+          verdict: json_['verdict'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1320,15 +1256,9 @@ class MobileUsabilityIssue {
 
   MobileUsabilityIssue.fromJson(core.Map json_)
       : this(
-          issueType: json_.containsKey('issueType')
-              ? json_['issueType'] as core.String
-              : null,
-          message: json_.containsKey('message')
-              ? json_['message'] as core.String
-              : null,
-          severity: json_.containsKey('severity')
-              ? json_['severity'] as core.String
-              : null,
+          issueType: json_['issueType'] as core.String?,
+          message: json_['message'] as core.String?,
+          severity: json_['severity'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1393,9 +1323,7 @@ class RichResultsInspectionResult {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          verdict: json_.containsKey('verdict')
-              ? json_['verdict'] as core.String
-              : null,
+          verdict: json_['verdict'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1427,12 +1355,8 @@ class RichResultsIssue {
 
   RichResultsIssue.fromJson(core.Map json_)
       : this(
-          issueMessage: json_.containsKey('issueMessage')
-              ? json_['issueMessage'] as core.String
-              : null,
-          severity: json_.containsKey('severity')
-              ? json_['severity'] as core.String
-              : null,
+          issueMessage: json_['issueMessage'] as core.String?,
+          severity: json_['severity'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1458,10 +1382,8 @@ class RunMobileFriendlyTestRequest {
 
   RunMobileFriendlyTestRequest.fromJson(core.Map json_)
       : this(
-          requestScreenshot: json_.containsKey('requestScreenshot')
-              ? json_['requestScreenshot'] as core.bool
-              : null,
-          url: json_.containsKey('url') ? json_['url'] as core.String : null,
+          requestScreenshot: json_['requestScreenshot'] as core.bool?,
+          url: json_['url'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1503,9 +1425,7 @@ class RunMobileFriendlyTestResponse {
 
   RunMobileFriendlyTestResponse.fromJson(core.Map json_)
       : this(
-          mobileFriendliness: json_.containsKey('mobileFriendliness')
-              ? json_['mobileFriendliness'] as core.String
-              : null,
+          mobileFriendliness: json_['mobileFriendliness'] as core.String?,
           mobileFriendlyIssues: json_.containsKey('mobileFriendlyIssues')
               ? (json_['mobileFriendlyIssues'] as core.List)
                   .map((value) => MobileFriendlyIssue.fromJson(
@@ -1650,12 +1570,8 @@ class SearchAnalyticsQueryRequest {
 
   SearchAnalyticsQueryRequest.fromJson(core.Map json_)
       : this(
-          aggregationType: json_.containsKey('aggregationType')
-              ? json_['aggregationType'] as core.String
-              : null,
-          dataState: json_.containsKey('dataState')
-              ? json_['dataState'] as core.String
-              : null,
+          aggregationType: json_['aggregationType'] as core.String?,
+          dataState: json_['dataState'] as core.String?,
           dimensionFilterGroups: json_.containsKey('dimensionFilterGroups')
               ? (json_['dimensionFilterGroups'] as core.List)
                   .map((value) => ApiDimensionFilterGroup.fromJson(
@@ -1667,22 +1583,12 @@ class SearchAnalyticsQueryRequest {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          endDate: json_.containsKey('endDate')
-              ? json_['endDate'] as core.String
-              : null,
-          rowLimit: json_.containsKey('rowLimit')
-              ? json_['rowLimit'] as core.int
-              : null,
-          searchType: json_.containsKey('searchType')
-              ? json_['searchType'] as core.String
-              : null,
-          startDate: json_.containsKey('startDate')
-              ? json_['startDate'] as core.String
-              : null,
-          startRow: json_.containsKey('startRow')
-              ? json_['startRow'] as core.int
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          endDate: json_['endDate'] as core.String?,
+          rowLimit: json_['rowLimit'] as core.int?,
+          searchType: json_['searchType'] as core.String?,
+          startDate: json_['startDate'] as core.String?,
+          startRow: json_['startRow'] as core.int?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1723,9 +1629,8 @@ class SearchAnalyticsQueryResponse {
 
   SearchAnalyticsQueryResponse.fromJson(core.Map json_)
       : this(
-          responseAggregationType: json_.containsKey('responseAggregationType')
-              ? json_['responseAggregationType'] as core.String
-              : null,
+          responseAggregationType:
+              json_['responseAggregationType'] as core.String?,
           rows: json_.containsKey('rows')
               ? (json_['rows'] as core.List)
                   .map((value) => ApiDataRow.fromJson(
@@ -1819,12 +1724,8 @@ class TestStatus {
 
   TestStatus.fromJson(core.Map json_)
       : this(
-          details: json_.containsKey('details')
-              ? json_['details'] as core.String
-              : null,
-          status: json_.containsKey('status')
-              ? json_['status'] as core.String
-              : null,
+          details: json_['details'] as core.String?,
+          status: json_['status'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1872,9 +1773,7 @@ class UrlInspectionResult {
               ? IndexStatusInspectionResult.fromJson(json_['indexStatusResult']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          inspectionResultLink: json_.containsKey('inspectionResultLink')
-              ? json_['inspectionResultLink'] as core.String
-              : null,
+          inspectionResultLink: json_['inspectionResultLink'] as core.String?,
           mobileUsabilityResult: json_.containsKey('mobileUsabilityResult')
               ? MobileUsabilityInspectionResult.fromJson(
                   json_['mobileUsabilityResult']
@@ -1923,12 +1822,8 @@ class WmxSite {
 
   WmxSite.fromJson(core.Map json_)
       : this(
-          permissionLevel: json_.containsKey('permissionLevel')
-              ? json_['permissionLevel'] as core.String
-              : null,
-          siteUrl: json_.containsKey('siteUrl')
-              ? json_['siteUrl'] as core.String
-              : null,
+          permissionLevel: json_['permissionLevel'] as core.String?,
+          siteUrl: json_['siteUrl'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2006,26 +1901,14 @@ class WmxSitemap {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          errors: json_.containsKey('errors')
-              ? json_['errors'] as core.String
-              : null,
-          isPending: json_.containsKey('isPending')
-              ? json_['isPending'] as core.bool
-              : null,
-          isSitemapsIndex: json_.containsKey('isSitemapsIndex')
-              ? json_['isSitemapsIndex'] as core.bool
-              : null,
-          lastDownloaded: json_.containsKey('lastDownloaded')
-              ? json_['lastDownloaded'] as core.String
-              : null,
-          lastSubmitted: json_.containsKey('lastSubmitted')
-              ? json_['lastSubmitted'] as core.String
-              : null,
-          path: json_.containsKey('path') ? json_['path'] as core.String : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
-          warnings: json_.containsKey('warnings')
-              ? json_['warnings'] as core.String
-              : null,
+          errors: json_['errors'] as core.String?,
+          isPending: json_['isPending'] as core.bool?,
+          isSitemapsIndex: json_['isSitemapsIndex'] as core.bool?,
+          lastDownloaded: json_['lastDownloaded'] as core.String?,
+          lastSubmitted: json_['lastSubmitted'] as core.String?,
+          path: json_['path'] as core.String?,
+          type: json_['type'] as core.String?,
+          warnings: json_['warnings'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2075,13 +1958,9 @@ class WmxSitemapContent {
 
   WmxSitemapContent.fromJson(core.Map json_)
       : this(
-          indexed: json_.containsKey('indexed')
-              ? json_['indexed'] as core.String
-              : null,
-          submitted: json_.containsKey('submitted')
-              ? json_['submitted'] as core.String
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          indexed: json_['indexed'] as core.String?,
+          submitted: json_['submitted'] as core.String?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

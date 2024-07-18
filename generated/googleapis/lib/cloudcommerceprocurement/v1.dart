@@ -751,21 +751,14 @@ class Account {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
           inputProperties: json_.containsKey('inputProperties')
               ? json_['inputProperties'] as core.Map<core.String, core.dynamic>
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          provider: json_.containsKey('provider')
-              ? json_['provider'] as core.String
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          provider: json_['provider'] as core.String?,
+          state: json_['state'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -819,15 +812,10 @@ class Approval {
 
   Approval.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          reason: json_.containsKey('reason')
-              ? json_['reason'] as core.String
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          reason: json_['reason'] as core.String?,
+          state: json_['state'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -865,9 +853,7 @@ class ApproveAccountRequest {
 
   ApproveAccountRequest.fromJson(core.Map json_)
       : this(
-          approvalName: json_.containsKey('approvalName')
-              ? json_['approvalName'] as core.String
-              : null,
+          approvalName: json_['approvalName'] as core.String?,
           properties: json_.containsKey('properties')
               ? (json_['properties'] as core.Map<core.String, core.dynamic>)
                   .map(
@@ -877,9 +863,7 @@ class ApproveAccountRequest {
                   ),
                 )
               : null,
-          reason: json_.containsKey('reason')
-              ? json_['reason'] as core.String
-              : null,
+          reason: json_['reason'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -903,9 +887,7 @@ class ApproveEntitlementPlanChangeRequest {
 
   ApproveEntitlementPlanChangeRequest.fromJson(core.Map json_)
       : this(
-          pendingPlanName: json_.containsKey('pendingPlanName')
-              ? json_['pendingPlanName'] as core.String
-              : null,
+          pendingPlanName: json_['pendingPlanName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -939,9 +921,7 @@ class ApproveEntitlementRequest {
 
   ApproveEntitlementRequest.fromJson(core.Map json_)
       : this(
-          entitlementMigrated: json_.containsKey('entitlementMigrated')
-              ? json_['entitlementMigrated'] as core.String
-              : null,
+          entitlementMigrated: json_['entitlementMigrated'] as core.String?,
           properties: json_.containsKey('properties')
               ? (json_['properties'] as core.Map<core.String, core.dynamic>)
                   .map(
@@ -971,9 +951,7 @@ class Consumer {
 
   Consumer.fromJson(core.Map json_)
       : this(
-          project: json_.containsKey('project')
-              ? json_['project'] as core.String
-              : null,
+          project: json_['project'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1295,21 +1273,15 @@ class Entitlement {
 
   Entitlement.fromJson(core.Map json_)
       : this(
-          account: json_.containsKey('account')
-              ? json_['account'] as core.String
-              : null,
-          cancellationReason: json_.containsKey('cancellationReason')
-              ? json_['cancellationReason'] as core.String
-              : null,
+          account: json_['account'] as core.String?,
+          cancellationReason: json_['cancellationReason'] as core.String?,
           consumers: json_.containsKey('consumers')
               ? (json_['consumers'] as core.List)
                   .map((value) => Consumer.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
           entitlementBenefitIds: json_.containsKey('entitlementBenefitIds')
               ? (json_['entitlementBenefitIds'] as core.List)
                   .map((value) => value as core.String)
@@ -1318,60 +1290,27 @@ class Entitlement {
           inputProperties: json_.containsKey('inputProperties')
               ? json_['inputProperties'] as core.Map<core.String, core.dynamic>
               : null,
-          messageToUser: json_.containsKey('messageToUser')
-              ? json_['messageToUser'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          newOfferEndTime: json_.containsKey('newOfferEndTime')
-              ? json_['newOfferEndTime'] as core.String
-              : null,
-          newOfferStartTime: json_.containsKey('newOfferStartTime')
-              ? json_['newOfferStartTime'] as core.String
-              : null,
-          newPendingOffer: json_.containsKey('newPendingOffer')
-              ? json_['newPendingOffer'] as core.String
-              : null,
-          newPendingOfferDuration: json_.containsKey('newPendingOfferDuration')
-              ? json_['newPendingOfferDuration'] as core.String
-              : null,
-          newPendingPlan: json_.containsKey('newPendingPlan')
-              ? json_['newPendingPlan'] as core.String
-              : null,
-          offer:
-              json_.containsKey('offer') ? json_['offer'] as core.String : null,
-          offerDuration: json_.containsKey('offerDuration')
-              ? json_['offerDuration'] as core.String
-              : null,
-          offerEndTime: json_.containsKey('offerEndTime')
-              ? json_['offerEndTime'] as core.String
-              : null,
-          orderId: json_.containsKey('orderId')
-              ? json_['orderId'] as core.String
-              : null,
-          plan: json_.containsKey('plan') ? json_['plan'] as core.String : null,
-          product: json_.containsKey('product')
-              ? json_['product'] as core.String
-              : null,
-          productExternalName: json_.containsKey('productExternalName')
-              ? json_['productExternalName'] as core.String
-              : null,
-          provider: json_.containsKey('provider')
-              ? json_['provider'] as core.String
-              : null,
-          quoteExternalName: json_.containsKey('quoteExternalName')
-              ? json_['quoteExternalName'] as core.String
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
-          subscriptionEndTime: json_.containsKey('subscriptionEndTime')
-              ? json_['subscriptionEndTime'] as core.String
-              : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
-          usageReportingId: json_.containsKey('usageReportingId')
-              ? json_['usageReportingId'] as core.String
-              : null,
+          messageToUser: json_['messageToUser'] as core.String?,
+          name: json_['name'] as core.String?,
+          newOfferEndTime: json_['newOfferEndTime'] as core.String?,
+          newOfferStartTime: json_['newOfferStartTime'] as core.String?,
+          newPendingOffer: json_['newPendingOffer'] as core.String?,
+          newPendingOfferDuration:
+              json_['newPendingOfferDuration'] as core.String?,
+          newPendingPlan: json_['newPendingPlan'] as core.String?,
+          offer: json_['offer'] as core.String?,
+          offerDuration: json_['offerDuration'] as core.String?,
+          offerEndTime: json_['offerEndTime'] as core.String?,
+          orderId: json_['orderId'] as core.String?,
+          plan: json_['plan'] as core.String?,
+          product: json_['product'] as core.String?,
+          productExternalName: json_['productExternalName'] as core.String?,
+          provider: json_['provider'] as core.String?,
+          quoteExternalName: json_['quoteExternalName'] as core.String?,
+          state: json_['state'] as core.String?,
+          subscriptionEndTime: json_['subscriptionEndTime'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
+          usageReportingId: json_['usageReportingId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1430,9 +1369,7 @@ class ListAccountsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1462,9 +1399,7 @@ class ListEntitlementsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1494,12 +1429,8 @@ class RejectAccountRequest {
 
   RejectAccountRequest.fromJson(core.Map json_)
       : this(
-          approvalName: json_.containsKey('approvalName')
-              ? json_['approvalName'] as core.String
-              : null,
-          reason: json_.containsKey('reason')
-              ? json_['reason'] as core.String
-              : null,
+          approvalName: json_['approvalName'] as core.String?,
+          reason: json_['reason'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1527,12 +1458,8 @@ class RejectEntitlementPlanChangeRequest {
 
   RejectEntitlementPlanChangeRequest.fromJson(core.Map json_)
       : this(
-          pendingPlanName: json_.containsKey('pendingPlanName')
-              ? json_['pendingPlanName'] as core.String
-              : null,
-          reason: json_.containsKey('reason')
-              ? json_['reason'] as core.String
-              : null,
+          pendingPlanName: json_['pendingPlanName'] as core.String?,
+          reason: json_['reason'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1554,9 +1481,7 @@ class RejectEntitlementRequest {
 
   RejectEntitlementRequest.fromJson(core.Map json_)
       : this(
-          reason: json_.containsKey('reason')
-              ? json_['reason'] as core.String
-              : null,
+          reason: json_['reason'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1580,9 +1505,7 @@ class SuspendEntitlementRequest {
 
   SuspendEntitlementRequest.fromJson(core.Map json_)
       : this(
-          reason: json_.containsKey('reason')
-              ? json_['reason'] as core.String
-              : null,
+          reason: json_['reason'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

@@ -8000,9 +8000,7 @@ class GooglePrivacyDlpV2BigQueryKey {
 
   GooglePrivacyDlpV2BigQueryKey.fromJson(core.Map json_)
       : this(
-          rowNumber: json_.containsKey('rowNumber')
-              ? json_['rowNumber'] as core.String
-              : null,
+          rowNumber: json_['rowNumber'] as core.String?,
           tableReference: json_.containsKey('tableReference')
               ? GooglePrivacyDlpV2BigQueryTable.fromJson(json_['tableReference']
                   as core.Map<core.String, core.dynamic>)
@@ -8101,15 +8099,9 @@ class GooglePrivacyDlpV2BigQueryOptions {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          rowsLimit: json_.containsKey('rowsLimit')
-              ? json_['rowsLimit'] as core.String
-              : null,
-          rowsLimitPercent: json_.containsKey('rowsLimitPercent')
-              ? json_['rowsLimitPercent'] as core.int
-              : null,
-          sampleMethod: json_.containsKey('sampleMethod')
-              ? json_['sampleMethod'] as core.String
-              : null,
+          rowsLimit: json_['rowsLimit'] as core.String?,
+          rowsLimitPercent: json_['rowsLimitPercent'] as core.int?,
+          sampleMethod: json_['sampleMethod'] as core.String?,
           tableReference: json_.containsKey('tableReference')
               ? GooglePrivacyDlpV2BigQueryTable.fromJson(json_['tableReference']
                   as core.Map<core.String, core.dynamic>)
@@ -8153,15 +8145,9 @@ class GooglePrivacyDlpV2BigQueryRegex {
 
   GooglePrivacyDlpV2BigQueryRegex.fromJson(core.Map json_)
       : this(
-          datasetIdRegex: json_.containsKey('datasetIdRegex')
-              ? json_['datasetIdRegex'] as core.String
-              : null,
-          projectIdRegex: json_.containsKey('projectIdRegex')
-              ? json_['projectIdRegex'] as core.String
-              : null,
-          tableIdRegex: json_.containsKey('tableIdRegex')
-              ? json_['tableIdRegex'] as core.String
-              : null,
+          datasetIdRegex: json_['datasetIdRegex'] as core.String?,
+          projectIdRegex: json_['projectIdRegex'] as core.String?,
+          tableIdRegex: json_['tableIdRegex'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8222,15 +8208,9 @@ class GooglePrivacyDlpV2BigQueryTable {
 
   GooglePrivacyDlpV2BigQueryTable.fromJson(core.Map json_)
       : this(
-          datasetId: json_.containsKey('datasetId')
-              ? json_['datasetId'] as core.String
-              : null,
-          projectId: json_.containsKey('projectId')
-              ? json_['projectId'] as core.String
-              : null,
-          tableId: json_.containsKey('tableId')
-              ? json_['tableId'] as core.String
-              : null,
+          datasetId: json_['datasetId'] as core.String?,
+          projectId: json_['projectId'] as core.String?,
+          tableId: json_['tableId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8315,11 +8295,10 @@ class GooglePrivacyDlpV2BoundingBox {
 
   GooglePrivacyDlpV2BoundingBox.fromJson(core.Map json_)
       : this(
-          height:
-              json_.containsKey('height') ? json_['height'] as core.int : null,
-          left: json_.containsKey('left') ? json_['left'] as core.int : null,
-          top: json_.containsKey('top') ? json_['top'] as core.int : null,
-          width: json_.containsKey('width') ? json_['width'] as core.int : null,
+          height: json_['height'] as core.int?,
+          left: json_['left'] as core.int?,
+          top: json_['top'] as core.int?,
+          width: json_['width'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8447,8 +8426,8 @@ class GooglePrivacyDlpV2ByteContentItem {
 
   GooglePrivacyDlpV2ByteContentItem.fromJson(core.Map json_)
       : this(
-          data: json_.containsKey('data') ? json_['data'] as core.String : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          data: json_['data'] as core.String?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8516,12 +8495,8 @@ class GooglePrivacyDlpV2CategoricalStatsHistogramBucket {
 
   GooglePrivacyDlpV2CategoricalStatsHistogramBucket.fromJson(core.Map json_)
       : this(
-          bucketSize: json_.containsKey('bucketSize')
-              ? json_['bucketSize'] as core.String
-              : null,
-          bucketValueCount: json_.containsKey('bucketValueCount')
-              ? json_['bucketValueCount'] as core.String
-              : null,
+          bucketSize: json_['bucketSize'] as core.String?,
+          bucketValueCount: json_['bucketValueCount'] as core.String?,
           bucketValues: json_.containsKey('bucketValues')
               ? (json_['bucketValues'] as core.List)
                   .map((value) => GooglePrivacyDlpV2ValueFrequency.fromJson(
@@ -8529,13 +8504,9 @@ class GooglePrivacyDlpV2CategoricalStatsHistogramBucket {
                   .toList()
               : null,
           valueFrequencyLowerBound:
-              json_.containsKey('valueFrequencyLowerBound')
-                  ? json_['valueFrequencyLowerBound'] as core.String
-                  : null,
+              json_['valueFrequencyLowerBound'] as core.String?,
           valueFrequencyUpperBound:
-              json_.containsKey('valueFrequencyUpperBound')
-                  ? json_['valueFrequencyUpperBound'] as core.String
-                  : null,
+              json_['valueFrequencyUpperBound'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8639,15 +8610,9 @@ class GooglePrivacyDlpV2CharacterMaskConfig {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          maskingCharacter: json_.containsKey('maskingCharacter')
-              ? json_['maskingCharacter'] as core.String
-              : null,
-          numberToMask: json_.containsKey('numberToMask')
-              ? json_['numberToMask'] as core.int
-              : null,
-          reverseOrder: json_.containsKey('reverseOrder')
-              ? json_['reverseOrder'] as core.bool
-              : null,
+          maskingCharacter: json_['maskingCharacter'] as core.String?,
+          numberToMask: json_['numberToMask'] as core.int?,
+          reverseOrder: json_['reverseOrder'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8686,13 +8651,9 @@ class GooglePrivacyDlpV2CharsToIgnore {
 
   GooglePrivacyDlpV2CharsToIgnore.fromJson(core.Map json_)
       : this(
-          charactersToSkip: json_.containsKey('charactersToSkip')
-              ? json_['charactersToSkip'] as core.String
-              : null,
+          charactersToSkip: json_['charactersToSkip'] as core.String?,
           commonCharactersToIgnore:
-              json_.containsKey('commonCharactersToIgnore')
-                  ? json_['commonCharactersToIgnore'] as core.String
-                  : null,
+              json_['commonCharactersToIgnore'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8821,15 +8782,9 @@ class GooglePrivacyDlpV2CloudSqlProperties {
               ? GooglePrivacyDlpV2CloudSqlIamCredential.fromJson(
                   json_['cloudSqlIam'] as core.Map<core.String, core.dynamic>)
               : null,
-          connectionName: json_.containsKey('connectionName')
-              ? json_['connectionName'] as core.String
-              : null,
-          databaseEngine: json_.containsKey('databaseEngine')
-              ? json_['databaseEngine'] as core.String
-              : null,
-          maxConnections: json_.containsKey('maxConnections')
-              ? json_['maxConnections'] as core.int
-              : null,
+          connectionName: json_['connectionName'] as core.String?,
+          databaseEngine: json_['databaseEngine'] as core.String?,
+          maxConnections: json_['maxConnections'] as core.int?,
           usernamePassword: json_.containsKey('usernamePassword')
               ? GooglePrivacyDlpV2SecretManagerCredential.fromJson(
                   json_['usernamePassword']
@@ -8859,7 +8814,7 @@ class GooglePrivacyDlpV2CloudStorageFileSet {
 
   GooglePrivacyDlpV2CloudStorageFileSet.fromJson(core.Map json_)
       : this(
-          url: json_.containsKey('url') ? json_['url'] as core.String : null,
+          url: json_['url'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8929,13 +8884,9 @@ class GooglePrivacyDlpV2CloudStorageOptions {
 
   GooglePrivacyDlpV2CloudStorageOptions.fromJson(core.Map json_)
       : this(
-          bytesLimitPerFile: json_.containsKey('bytesLimitPerFile')
-              ? json_['bytesLimitPerFile'] as core.String
-              : null,
+          bytesLimitPerFile: json_['bytesLimitPerFile'] as core.String?,
           bytesLimitPerFilePercent:
-              json_.containsKey('bytesLimitPerFilePercent')
-                  ? json_['bytesLimitPerFilePercent'] as core.int
-                  : null,
+              json_['bytesLimitPerFilePercent'] as core.int?,
           fileSet: json_.containsKey('fileSet')
               ? GooglePrivacyDlpV2FileSet.fromJson(
                   json_['fileSet'] as core.Map<core.String, core.dynamic>)
@@ -8945,12 +8896,8 @@ class GooglePrivacyDlpV2CloudStorageOptions {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          filesLimitPercent: json_.containsKey('filesLimitPercent')
-              ? json_['filesLimitPercent'] as core.int
-              : null,
-          sampleMethod: json_.containsKey('sampleMethod')
-              ? json_['sampleMethod'] as core.String
-              : null,
+          filesLimitPercent: json_['filesLimitPercent'] as core.int?,
+          sampleMethod: json_['sampleMethod'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8977,7 +8924,7 @@ class GooglePrivacyDlpV2CloudStoragePath {
 
   GooglePrivacyDlpV2CloudStoragePath.fromJson(core.Map json_)
       : this(
-          path: json_.containsKey('path') ? json_['path'] as core.String : null,
+          path: json_['path'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9039,9 +8986,7 @@ class GooglePrivacyDlpV2CloudStorageRegexFileSet {
 
   GooglePrivacyDlpV2CloudStorageRegexFileSet.fromJson(core.Map json_)
       : this(
-          bucketName: json_.containsKey('bucketName')
-              ? json_['bucketName'] as core.String
-              : null,
+          bucketName: json_['bucketName'] as core.String?,
           excludeRegex: json_.containsKey('excludeRegex')
               ? (json_['excludeRegex'] as core.List)
                   .map((value) => value as core.String)
@@ -9080,15 +9025,9 @@ class GooglePrivacyDlpV2Color {
 
   GooglePrivacyDlpV2Color.fromJson(core.Map json_)
       : this(
-          blue: json_.containsKey('blue')
-              ? (json_['blue'] as core.num).toDouble()
-              : null,
-          green: json_.containsKey('green')
-              ? (json_['green'] as core.num).toDouble()
-              : null,
-          red: json_.containsKey('red')
-              ? (json_['red'] as core.num).toDouble()
-              : null,
+          blue: (json_['blue'] as core.num?)?.toDouble(),
+          green: (json_['green'] as core.num?)?.toDouble(),
+          red: (json_['red'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9247,41 +9186,26 @@ class GooglePrivacyDlpV2ColumnDataProfile {
 
   GooglePrivacyDlpV2ColumnDataProfile.fromJson(core.Map json_)
       : this(
-          column: json_.containsKey('column')
-              ? json_['column'] as core.String
-              : null,
+          column: json_['column'] as core.String?,
           columnInfoType: json_.containsKey('columnInfoType')
               ? GooglePrivacyDlpV2InfoTypeSummary.fromJson(
                   json_['columnInfoType']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          columnType: json_.containsKey('columnType')
-              ? json_['columnType'] as core.String
-              : null,
+          columnType: json_['columnType'] as core.String?,
           dataRiskLevel: json_.containsKey('dataRiskLevel')
               ? GooglePrivacyDlpV2DataRiskLevel.fromJson(
                   json_['dataRiskLevel'] as core.Map<core.String, core.dynamic>)
               : null,
-          datasetId: json_.containsKey('datasetId')
-              ? json_['datasetId'] as core.String
-              : null,
-          datasetLocation: json_.containsKey('datasetLocation')
-              ? json_['datasetLocation'] as core.String
-              : null,
-          datasetProjectId: json_.containsKey('datasetProjectId')
-              ? json_['datasetProjectId'] as core.String
-              : null,
-          estimatedNullPercentage: json_.containsKey('estimatedNullPercentage')
-              ? json_['estimatedNullPercentage'] as core.String
-              : null,
+          datasetId: json_['datasetId'] as core.String?,
+          datasetLocation: json_['datasetLocation'] as core.String?,
+          datasetProjectId: json_['datasetProjectId'] as core.String?,
+          estimatedNullPercentage:
+              json_['estimatedNullPercentage'] as core.String?,
           estimatedUniquenessScore:
-              json_.containsKey('estimatedUniquenessScore')
-                  ? json_['estimatedUniquenessScore'] as core.String
-                  : null,
-          freeTextScore: json_.containsKey('freeTextScore')
-              ? (json_['freeTextScore'] as core.num).toDouble()
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+              json_['estimatedUniquenessScore'] as core.String?,
+          freeTextScore: (json_['freeTextScore'] as core.num?)?.toDouble(),
+          name: json_['name'] as core.String?,
           otherMatches: json_.containsKey('otherMatches')
               ? (json_['otherMatches'] as core.List)
                   .map((value) =>
@@ -9289,12 +9213,8 @@ class GooglePrivacyDlpV2ColumnDataProfile {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          policyState: json_.containsKey('policyState')
-              ? json_['policyState'] as core.String
-              : null,
-          profileLastGenerated: json_.containsKey('profileLastGenerated')
-              ? json_['profileLastGenerated'] as core.String
-              : null,
+          policyState: json_['policyState'] as core.String?,
+          profileLastGenerated: json_['profileLastGenerated'] as core.String?,
           profileStatus: json_.containsKey('profileStatus')
               ? GooglePrivacyDlpV2ProfileStatus.fromJson(
                   json_['profileStatus'] as core.Map<core.String, core.dynamic>)
@@ -9304,17 +9224,10 @@ class GooglePrivacyDlpV2ColumnDataProfile {
                   json_['sensitivityScore']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
-          tableDataProfile: json_.containsKey('tableDataProfile')
-              ? json_['tableDataProfile'] as core.String
-              : null,
-          tableFullResource: json_.containsKey('tableFullResource')
-              ? json_['tableFullResource'] as core.String
-              : null,
-          tableId: json_.containsKey('tableId')
-              ? json_['tableId'] as core.String
-              : null,
+          state: json_['state'] as core.String?,
+          tableDataProfile: json_['tableDataProfile'] as core.String?,
+          tableFullResource: json_['tableFullResource'] as core.String?,
+          tableId: json_['tableId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9395,9 +9308,7 @@ class GooglePrivacyDlpV2Condition {
               ? GooglePrivacyDlpV2FieldId.fromJson(
                   json_['field'] as core.Map<core.String, core.dynamic>)
               : null,
-          operator: json_.containsKey('operator')
-              ? json_['operator'] as core.String
-              : null,
+          operator: json_['operator'] as core.String?,
           value: json_.containsKey('value')
               ? GooglePrivacyDlpV2Value.fromJson(
                   json_['value'] as core.Map<core.String, core.dynamic>)
@@ -9490,9 +9401,8 @@ class GooglePrivacyDlpV2Connection {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
+          name: json_['name'] as core.String?,
+          state: json_['state'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9558,25 +9468,13 @@ class GooglePrivacyDlpV2Container {
 
   GooglePrivacyDlpV2Container.fromJson(core.Map json_)
       : this(
-          fullPath: json_.containsKey('fullPath')
-              ? json_['fullPath'] as core.String
-              : null,
-          projectId: json_.containsKey('projectId')
-              ? json_['projectId'] as core.String
-              : null,
-          relativePath: json_.containsKey('relativePath')
-              ? json_['relativePath'] as core.String
-              : null,
-          rootPath: json_.containsKey('rootPath')
-              ? json_['rootPath'] as core.String
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
-          version: json_.containsKey('version')
-              ? json_['version'] as core.String
-              : null,
+          fullPath: json_['fullPath'] as core.String?,
+          projectId: json_['projectId'] as core.String?,
+          relativePath: json_['relativePath'] as core.String?,
+          rootPath: json_['rootPath'] as core.String?,
+          type: json_['type'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
+          version: json_['version'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9623,8 +9521,7 @@ class GooglePrivacyDlpV2ContentItem {
               ? GooglePrivacyDlpV2Table.fromJson(
                   json_['table'] as core.Map<core.String, core.dynamic>)
               : null,
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
+          value: json_['value'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9681,15 +9578,9 @@ class GooglePrivacyDlpV2ContentLocation {
 
   GooglePrivacyDlpV2ContentLocation.fromJson(core.Map json_)
       : this(
-          containerName: json_.containsKey('containerName')
-              ? json_['containerName'] as core.String
-              : null,
-          containerTimestamp: json_.containsKey('containerTimestamp')
-              ? json_['containerTimestamp'] as core.String
-              : null,
-          containerVersion: json_.containsKey('containerVersion')
-              ? json_['containerVersion'] as core.String
-              : null,
+          containerName: json_['containerName'] as core.String?,
+          containerTimestamp: json_['containerTimestamp'] as core.String?,
+          containerVersion: json_['containerVersion'] as core.String?,
           documentLocation: json_.containsKey('documentLocation')
               ? GooglePrivacyDlpV2DocumentLocation.fromJson(
                   json_['documentLocation']
@@ -9779,12 +9670,8 @@ class GooglePrivacyDlpV2CreateDeidentifyTemplateRequest {
                   json_['deidentifyTemplate']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          locationId: json_.containsKey('locationId')
-              ? json_['locationId'] as core.String
-              : null,
-          templateId: json_.containsKey('templateId')
-              ? json_['templateId'] as core.String
-              : null,
+          locationId: json_['locationId'] as core.String?,
+          templateId: json_['templateId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9816,9 +9703,7 @@ class GooglePrivacyDlpV2CreateDiscoveryConfigRequest {
 
   GooglePrivacyDlpV2CreateDiscoveryConfigRequest.fromJson(core.Map json_)
       : this(
-          configId: json_.containsKey('configId')
-              ? json_['configId'] as core.String
-              : null,
+          configId: json_['configId'] as core.String?,
           discoveryConfig: json_.containsKey('discoveryConfig')
               ? GooglePrivacyDlpV2DiscoveryConfig.fromJson(
                   json_['discoveryConfig']
@@ -9869,11 +9754,8 @@ class GooglePrivacyDlpV2CreateDlpJobRequest {
               ? GooglePrivacyDlpV2InspectJobConfig.fromJson(
                   json_['inspectJob'] as core.Map<core.String, core.dynamic>)
               : null,
-          jobId:
-              json_.containsKey('jobId') ? json_['jobId'] as core.String : null,
-          locationId: json_.containsKey('locationId')
-              ? json_['locationId'] as core.String
-              : null,
+          jobId: json_['jobId'] as core.String?,
+          locationId: json_['locationId'] as core.String?,
           riskJob: json_.containsKey('riskJob')
               ? GooglePrivacyDlpV2RiskAnalysisJobConfig.fromJson(
                   json_['riskJob'] as core.Map<core.String, core.dynamic>)
@@ -9920,12 +9802,8 @@ class GooglePrivacyDlpV2CreateInspectTemplateRequest {
                   json_['inspectTemplate']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          locationId: json_.containsKey('locationId')
-              ? json_['locationId'] as core.String
-              : null,
-          templateId: json_.containsKey('templateId')
-              ? json_['templateId'] as core.String
-              : null,
+          locationId: json_['locationId'] as core.String?,
+          templateId: json_['templateId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9966,12 +9844,8 @@ class GooglePrivacyDlpV2CreateJobTriggerRequest {
               ? GooglePrivacyDlpV2JobTrigger.fromJson(
                   json_['jobTrigger'] as core.Map<core.String, core.dynamic>)
               : null,
-          locationId: json_.containsKey('locationId')
-              ? json_['locationId'] as core.String
-              : null,
-          triggerId: json_.containsKey('triggerId')
-              ? json_['triggerId'] as core.String
-              : null,
+          locationId: json_['locationId'] as core.String?,
+          triggerId: json_['triggerId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10013,12 +9887,8 @@ class GooglePrivacyDlpV2CreateStoredInfoTypeRequest {
               ? GooglePrivacyDlpV2StoredInfoTypeConfig.fromJson(
                   json_['config'] as core.Map<core.String, core.dynamic>)
               : null,
-          locationId: json_.containsKey('locationId')
-              ? json_['locationId'] as core.String
-              : null,
-          storedInfoTypeId: json_.containsKey('storedInfoTypeId')
-              ? json_['storedInfoTypeId'] as core.String
-              : null,
+          locationId: json_['locationId'] as core.String?,
+          storedInfoTypeId: json_['storedInfoTypeId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10277,9 +10147,7 @@ class GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig {
 
   GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig.fromJson(core.Map json_)
       : this(
-          commonAlphabet: json_.containsKey('commonAlphabet')
-              ? json_['commonAlphabet'] as core.String
-              : null,
+          commonAlphabet: json_['commonAlphabet'] as core.String?,
           context: json_.containsKey('context')
               ? GooglePrivacyDlpV2FieldId.fromJson(
                   json_['context'] as core.Map<core.String, core.dynamic>)
@@ -10288,10 +10156,8 @@ class GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig {
               ? GooglePrivacyDlpV2CryptoKey.fromJson(
                   json_['cryptoKey'] as core.Map<core.String, core.dynamic>)
               : null,
-          customAlphabet: json_.containsKey('customAlphabet')
-              ? json_['customAlphabet'] as core.String
-              : null,
-          radix: json_.containsKey('radix') ? json_['radix'] as core.int : null,
+          customAlphabet: json_['customAlphabet'] as core.String?,
+          radix: json_['radix'] as core.int?,
           surrogateInfoType: json_.containsKey('surrogateInfoType')
               ? GooglePrivacyDlpV2InfoType.fromJson(json_['surrogateInfoType']
                   as core.Map<core.String, core.dynamic>)
@@ -10401,16 +10267,12 @@ class GooglePrivacyDlpV2CustomInfoType {
               ? GooglePrivacyDlpV2Dictionary.fromJson(
                   json_['dictionary'] as core.Map<core.String, core.dynamic>)
               : null,
-          exclusionType: json_.containsKey('exclusionType')
-              ? json_['exclusionType'] as core.String
-              : null,
+          exclusionType: json_['exclusionType'] as core.String?,
           infoType: json_.containsKey('infoType')
               ? GooglePrivacyDlpV2InfoType.fromJson(
                   json_['infoType'] as core.Map<core.String, core.dynamic>)
               : null,
-          likelihood: json_.containsKey('likelihood')
-              ? json_['likelihood'] as core.String
-              : null,
+          likelihood: json_['likelihood'] as core.String?,
           regex: json_.containsKey('regex')
               ? GooglePrivacyDlpV2Regex.fromJson(
                   json_['regex'] as core.Map<core.String, core.dynamic>)
@@ -10529,12 +10391,8 @@ class GooglePrivacyDlpV2DataProfileConfigSnapshot {
                   json_['inspectConfig'] as core.Map<core.String, core.dynamic>)
               : null,
           inspectTemplateModifiedTime:
-              json_.containsKey('inspectTemplateModifiedTime')
-                  ? json_['inspectTemplateModifiedTime'] as core.String
-                  : null,
-          inspectTemplateName: json_.containsKey('inspectTemplateName')
-              ? json_['inspectTemplateName'] as core.String
-              : null,
+              json_['inspectTemplateModifiedTime'] as core.String?,
+          inspectTemplateName: json_['inspectTemplateName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10604,9 +10462,7 @@ class GooglePrivacyDlpV2DataProfileJobConfig {
               ? GooglePrivacyDlpV2DataProfileLocation.fromJson(
                   json_['location'] as core.Map<core.String, core.dynamic>)
               : null,
-          projectId: json_.containsKey('projectId')
-              ? json_['projectId'] as core.String
-              : null,
+          projectId: json_['projectId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10668,8 +10524,7 @@ class GooglePrivacyDlpV2DataRiskLevel {
 
   GooglePrivacyDlpV2DataRiskLevel.fromJson(core.Map json_)
       : this(
-          score:
-              json_.containsKey('score') ? json_['score'] as core.String : null,
+          score: json_['score'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10692,9 +10547,7 @@ class GooglePrivacyDlpV2DataSourceType {
 
   GooglePrivacyDlpV2DataSourceType.fromJson(core.Map json_)
       : this(
-          dataSource: json_.containsKey('dataSource')
-              ? json_['dataSource'] as core.String
-              : null,
+          dataSource: json_['dataSource'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10761,18 +10614,10 @@ class GooglePrivacyDlpV2DatabaseResourceReference {
 
   GooglePrivacyDlpV2DatabaseResourceReference.fromJson(core.Map json_)
       : this(
-          database: json_.containsKey('database')
-              ? json_['database'] as core.String
-              : null,
-          databaseResource: json_.containsKey('databaseResource')
-              ? json_['databaseResource'] as core.String
-              : null,
-          instance: json_.containsKey('instance')
-              ? json_['instance'] as core.String
-              : null,
-          projectId: json_.containsKey('projectId')
-              ? json_['projectId'] as core.String
-              : null,
+          database: json_['database'] as core.String?,
+          databaseResource: json_['databaseResource'] as core.String?,
+          instance: json_['instance'] as core.String?,
+          projectId: json_['projectId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10820,19 +10665,11 @@ class GooglePrivacyDlpV2DatabaseResourceRegex {
 
   GooglePrivacyDlpV2DatabaseResourceRegex.fromJson(core.Map json_)
       : this(
-          databaseRegex: json_.containsKey('databaseRegex')
-              ? json_['databaseRegex'] as core.String
-              : null,
+          databaseRegex: json_['databaseRegex'] as core.String?,
           databaseResourceNameRegex:
-              json_.containsKey('databaseResourceNameRegex')
-                  ? json_['databaseResourceNameRegex'] as core.String
-                  : null,
-          instanceRegex: json_.containsKey('instanceRegex')
-              ? json_['instanceRegex'] as core.String
-              : null,
-          projectIdRegex: json_.containsKey('projectIdRegex')
-              ? json_['projectIdRegex'] as core.String
-              : null,
+              json_['databaseResourceNameRegex'] as core.String?,
+          instanceRegex: json_['instanceRegex'] as core.String?,
+          projectIdRegex: json_['projectIdRegex'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10981,12 +10818,8 @@ class GooglePrivacyDlpV2DateShiftConfig {
               ? GooglePrivacyDlpV2CryptoKey.fromJson(
                   json_['cryptoKey'] as core.Map<core.String, core.dynamic>)
               : null,
-          lowerBoundDays: json_.containsKey('lowerBoundDays')
-              ? json_['lowerBoundDays'] as core.int
-              : null,
-          upperBoundDays: json_.containsKey('upperBoundDays')
-              ? json_['upperBoundDays'] as core.int
-              : null,
+          lowerBoundDays: json_['lowerBoundDays'] as core.int?,
+          upperBoundDays: json_['upperBoundDays'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -11037,9 +10870,7 @@ class GooglePrivacyDlpV2DateTime {
               ? GoogleTypeDate.fromJson(
                   json_['date'] as core.Map<core.String, core.dynamic>)
               : null,
-          dayOfWeek: json_.containsKey('dayOfWeek')
-              ? json_['dayOfWeek'] as core.String
-              : null,
+          dayOfWeek: json_['dayOfWeek'] as core.String?,
           time: json_.containsKey('time')
               ? GoogleTypeTimeOfDay.fromJson(
                   json_['time'] as core.Map<core.String, core.dynamic>)
@@ -11114,9 +10945,7 @@ class GooglePrivacyDlpV2Deidentify {
 
   GooglePrivacyDlpV2Deidentify.fromJson(core.Map json_)
       : this(
-          cloudStorageOutput: json_.containsKey('cloudStorageOutput')
-              ? json_['cloudStorageOutput'] as core.String
-              : null,
+          cloudStorageOutput: json_['cloudStorageOutput'] as core.String?,
           fileTypesToTransform: json_.containsKey('fileTypesToTransform')
               ? (json_['fileTypesToTransform'] as core.List)
                   .map((value) => value as core.String)
@@ -11270,23 +11099,18 @@ class GooglePrivacyDlpV2DeidentifyContentRequest {
                   json_['deidentifyConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          deidentifyTemplateName: json_.containsKey('deidentifyTemplateName')
-              ? json_['deidentifyTemplateName'] as core.String
-              : null,
+          deidentifyTemplateName:
+              json_['deidentifyTemplateName'] as core.String?,
           inspectConfig: json_.containsKey('inspectConfig')
               ? GooglePrivacyDlpV2InspectConfig.fromJson(
                   json_['inspectConfig'] as core.Map<core.String, core.dynamic>)
               : null,
-          inspectTemplateName: json_.containsKey('inspectTemplateName')
-              ? json_['inspectTemplateName'] as core.String
-              : null,
+          inspectTemplateName: json_['inspectTemplateName'] as core.String?,
           item: json_.containsKey('item')
               ? GooglePrivacyDlpV2ContentItem.fromJson(
                   json_['item'] as core.Map<core.String, core.dynamic>)
               : null,
-          locationId: json_.containsKey('locationId')
-              ? json_['locationId'] as core.String
-              : null,
+          locationId: json_['locationId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -11384,16 +11208,10 @@ class GooglePrivacyDlpV2DeidentifyDataSourceStats {
 
   GooglePrivacyDlpV2DeidentifyDataSourceStats.fromJson(core.Map json_)
       : this(
-          transformationCount: json_.containsKey('transformationCount')
-              ? json_['transformationCount'] as core.String
-              : null,
+          transformationCount: json_['transformationCount'] as core.String?,
           transformationErrorCount:
-              json_.containsKey('transformationErrorCount')
-                  ? json_['transformationErrorCount'] as core.String
-                  : null,
-          transformedBytes: json_.containsKey('transformedBytes')
-              ? json_['transformedBytes'] as core.String
-              : null,
+              json_['transformationErrorCount'] as core.String?,
+          transformedBytes: json_['transformedBytes'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -11450,24 +11268,16 @@ class GooglePrivacyDlpV2DeidentifyTemplate {
 
   GooglePrivacyDlpV2DeidentifyTemplate.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
           deidentifyConfig: json_.containsKey('deidentifyConfig')
               ? GooglePrivacyDlpV2DeidentifyConfig.fromJson(
                   json_['deidentifyConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          description: json_['description'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          name: json_['name'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -11525,9 +11335,7 @@ class GooglePrivacyDlpV2DeltaPresenceEstimationConfig {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          regionCode: json_.containsKey('regionCode')
-              ? json_['regionCode'] as core.String
-              : null,
+          regionCode: json_['regionCode'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -11574,12 +11382,8 @@ class GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket {
   GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket.fromJson(
       core.Map json_)
       : this(
-          bucketSize: json_.containsKey('bucketSize')
-              ? json_['bucketSize'] as core.String
-              : null,
-          bucketValueCount: json_.containsKey('bucketValueCount')
-              ? json_['bucketValueCount'] as core.String
-              : null,
+          bucketSize: json_['bucketSize'] as core.String?,
+          bucketValueCount: json_['bucketValueCount'] as core.String?,
           bucketValues: json_.containsKey('bucketValues')
               ? (json_['bucketValues'] as core.List)
                   .map((value) =>
@@ -11588,12 +11392,8 @@ class GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket {
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          maxProbability: json_.containsKey('maxProbability')
-              ? (json_['maxProbability'] as core.num).toDouble()
-              : null,
-          minProbability: json_.containsKey('minProbability')
-              ? (json_['minProbability'] as core.num).toDouble()
-              : null,
+          maxProbability: (json_['maxProbability'] as core.num?)?.toDouble(),
+          minProbability: (json_['minProbability'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -11629,9 +11429,8 @@ class GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues {
   GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues.fromJson(
       core.Map json_)
       : this(
-          estimatedProbability: json_.containsKey('estimatedProbability')
-              ? (json_['estimatedProbability'] as core.num).toDouble()
-              : null,
+          estimatedProbability:
+              (json_['estimatedProbability'] as core.num?)?.toDouble(),
           quasiIdsValues: json_.containsKey('quasiIdsValues')
               ? (json_['quasiIdsValues'] as core.List)
                   .map((value) => GooglePrivacyDlpV2Value.fromJson(
@@ -11809,16 +11608,12 @@ class GooglePrivacyDlpV2DiscoveryBigQueryConditions {
 
   GooglePrivacyDlpV2DiscoveryBigQueryConditions.fromJson(core.Map json_)
       : this(
-          createdAfter: json_.containsKey('createdAfter')
-              ? json_['createdAfter'] as core.String
-              : null,
+          createdAfter: json_['createdAfter'] as core.String?,
           orConditions: json_.containsKey('orConditions')
               ? GooglePrivacyDlpV2OrConditions.fromJson(
                   json_['orConditions'] as core.Map<core.String, core.dynamic>)
               : null,
-          typeCollection: json_.containsKey('typeCollection')
-              ? json_['typeCollection'] as core.String
-              : null,
+          typeCollection: json_['typeCollection'] as core.String?,
           types: json_.containsKey('types')
               ? GooglePrivacyDlpV2BigQueryTableTypes.fromJson(
                   json_['types'] as core.Map<core.String, core.dynamic>)
@@ -12014,9 +11809,7 @@ class GooglePrivacyDlpV2DiscoveryCloudSqlGenerationCadence {
 
   GooglePrivacyDlpV2DiscoveryCloudSqlGenerationCadence.fromJson(core.Map json_)
       : this(
-          refreshFrequency: json_.containsKey('refreshFrequency')
-              ? json_['refreshFrequency'] as core.String
-              : null,
+          refreshFrequency: json_['refreshFrequency'] as core.String?,
           schemaModifiedCadence: json_.containsKey('schemaModifiedCadence')
               ? GooglePrivacyDlpV2SchemaModifiedCadence.fromJson(
                   json_['schemaModifiedCadence']
@@ -12123,12 +11916,8 @@ class GooglePrivacyDlpV2DiscoveryConfig {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
           errors: json_.containsKey('errors')
               ? (json_['errors'] as core.List)
                   .map((value) => GooglePrivacyDlpV2Error.fromJson(
@@ -12140,26 +11929,20 @@ class GooglePrivacyDlpV2DiscoveryConfig {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          lastRunTime: json_.containsKey('lastRunTime')
-              ? json_['lastRunTime'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          lastRunTime: json_['lastRunTime'] as core.String?,
+          name: json_['name'] as core.String?,
           orgConfig: json_.containsKey('orgConfig')
               ? GooglePrivacyDlpV2OrgConfig.fromJson(
                   json_['orgConfig'] as core.Map<core.String, core.dynamic>)
               : null,
-          status: json_.containsKey('status')
-              ? json_['status'] as core.String
-              : null,
+          status: json_['status'] as core.String?,
           targets: json_.containsKey('targets')
               ? (json_['targets'] as core.List)
                   .map((value) => GooglePrivacyDlpV2DiscoveryTarget.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12243,9 +12026,7 @@ class GooglePrivacyDlpV2DiscoverySchemaModifiedCadence {
 
   GooglePrivacyDlpV2DiscoverySchemaModifiedCadence.fromJson(core.Map json_)
       : this(
-          frequency: json_.containsKey('frequency')
-              ? json_['frequency'] as core.String
-              : null,
+          frequency: json_['frequency'] as core.String?,
           types: json_.containsKey('types')
               ? (json_['types'] as core.List)
                   .map((value) => value as core.String)
@@ -12292,9 +12073,7 @@ class GooglePrivacyDlpV2DiscoveryTableModifiedCadence {
 
   GooglePrivacyDlpV2DiscoveryTableModifiedCadence.fromJson(core.Map json_)
       : this(
-          frequency: json_.containsKey('frequency')
-              ? json_['frequency'] as core.String
-              : null,
+          frequency: json_['frequency'] as core.String?,
           types: json_.containsKey('types')
               ? (json_['types'] as core.List)
                   .map((value) => value as core.String)
@@ -12436,12 +12215,8 @@ class GooglePrivacyDlpV2DlpJob {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          endTime: json_.containsKey('endTime')
-              ? json_['endTime'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          endTime: json_['endTime'] as core.String?,
           errors: json_.containsKey('errors')
               ? (json_['errors'] as core.List)
                   .map((value) => GooglePrivacyDlpV2Error.fromJson(
@@ -12453,23 +12228,16 @@ class GooglePrivacyDlpV2DlpJob {
                   json_['inspectDetails']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          jobTriggerName: json_.containsKey('jobTriggerName')
-              ? json_['jobTriggerName'] as core.String
-              : null,
-          lastModified: json_.containsKey('lastModified')
-              ? json_['lastModified'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          jobTriggerName: json_['jobTriggerName'] as core.String?,
+          lastModified: json_['lastModified'] as core.String?,
+          name: json_['name'] as core.String?,
           riskDetails: json_.containsKey('riskDetails')
               ? GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails.fromJson(
                   json_['riskDetails'] as core.Map<core.String, core.dynamic>)
               : null,
-          startTime: json_.containsKey('startTime')
-              ? json_['startTime'] as core.String
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          startTime: json_['startTime'] as core.String?,
+          state: json_['state'] as core.String?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12500,9 +12268,7 @@ class GooglePrivacyDlpV2DocumentLocation {
 
   GooglePrivacyDlpV2DocumentLocation.fromJson(core.Map json_)
       : this(
-          fileOffset: json_.containsKey('fileOffset')
-              ? json_['fileOffset'] as core.String
-              : null,
+          fileOffset: json_['fileOffset'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12701,9 +12467,7 @@ class GooglePrivacyDlpV2ExclusionRule {
                   json_['excludeInfoTypes']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          matchingType: json_.containsKey('matchingType')
-              ? json_['matchingType'] as core.String
-              : null,
+          matchingType: json_['matchingType'] as core.String?,
           regex: json_.containsKey('regex')
               ? GooglePrivacyDlpV2Regex.fromJson(
                   json_['regex'] as core.Map<core.String, core.dynamic>)
@@ -12775,9 +12539,7 @@ class GooglePrivacyDlpV2Expressions {
               ? GooglePrivacyDlpV2Conditions.fromJson(
                   json_['conditions'] as core.Map<core.String, core.dynamic>)
               : null,
-          logicalOperator: json_.containsKey('logicalOperator')
-              ? json_['logicalOperator'] as core.String
-              : null,
+          logicalOperator: json_['logicalOperator'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12797,7 +12559,7 @@ class GooglePrivacyDlpV2FieldId {
 
   GooglePrivacyDlpV2FieldId.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12902,7 +12664,7 @@ class GooglePrivacyDlpV2FileSet {
               ? GooglePrivacyDlpV2CloudStorageRegexFileSet.fromJson(
                   json_['regexFileSet'] as core.Map<core.String, core.dynamic>)
               : null,
-          url: json_.containsKey('url') ? json_['url'] as core.String : null,
+          url: json_['url'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12998,22 +12760,14 @@ class GooglePrivacyDlpV2Finding {
 
   GooglePrivacyDlpV2Finding.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          findingId: json_.containsKey('findingId')
-              ? json_['findingId'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          findingId: json_['findingId'] as core.String?,
           infoType: json_.containsKey('infoType')
               ? GooglePrivacyDlpV2InfoType.fromJson(
                   json_['infoType'] as core.Map<core.String, core.dynamic>)
               : null,
-          jobCreateTime: json_.containsKey('jobCreateTime')
-              ? json_['jobCreateTime'] as core.String
-              : null,
-          jobName: json_.containsKey('jobName')
-              ? json_['jobName'] as core.String
-              : null,
+          jobCreateTime: json_['jobCreateTime'] as core.String?,
+          jobName: json_['jobName'] as core.String?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -13022,26 +12776,19 @@ class GooglePrivacyDlpV2Finding {
                   ),
                 )
               : null,
-          likelihood: json_.containsKey('likelihood')
-              ? json_['likelihood'] as core.String
-              : null,
+          likelihood: json_['likelihood'] as core.String?,
           location: json_.containsKey('location')
               ? GooglePrivacyDlpV2Location.fromJson(
                   json_['location'] as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          quote:
-              json_.containsKey('quote') ? json_['quote'] as core.String : null,
+          name: json_['name'] as core.String?,
+          quote: json_['quote'] as core.String?,
           quoteInfo: json_.containsKey('quoteInfo')
               ? GooglePrivacyDlpV2QuoteInfo.fromJson(
                   json_['quoteInfo'] as core.Map<core.String, core.dynamic>)
               : null,
-          resourceName: json_.containsKey('resourceName')
-              ? json_['resourceName'] as core.String
-              : null,
-          triggerName: json_.containsKey('triggerName')
-              ? json_['triggerName'] as core.String
-              : null,
+          resourceName: json_['resourceName'] as core.String?,
+          triggerName: json_['triggerName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -13104,12 +12851,8 @@ class GooglePrivacyDlpV2FindingLimits {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          maxFindingsPerItem: json_.containsKey('maxFindingsPerItem')
-              ? json_['maxFindingsPerItem'] as core.int
-              : null,
-          maxFindingsPerRequest: json_.containsKey('maxFindingsPerRequest')
-              ? json_['maxFindingsPerRequest'] as core.int
-              : null,
+          maxFindingsPerItem: json_['maxFindingsPerItem'] as core.int?,
+          maxFindingsPerRequest: json_['maxFindingsPerRequest'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -13174,9 +12917,7 @@ class GooglePrivacyDlpV2FixedSizeBucketingConfig {
 
   GooglePrivacyDlpV2FixedSizeBucketingConfig.fromJson(core.Map json_)
       : this(
-          bucketSize: json_.containsKey('bucketSize')
-              ? (json_['bucketSize'] as core.num).toDouble()
-              : null,
+          bucketSize: (json_['bucketSize'] as core.num?)?.toDouble(),
           lowerBound: json_.containsKey('lowerBound')
               ? GooglePrivacyDlpV2Value.fromJson(
                   json_['lowerBound'] as core.Map<core.String, core.dynamic>)
@@ -13335,9 +13076,7 @@ class GooglePrivacyDlpV2HybridFindingDetails {
               ? GooglePrivacyDlpV2Container.fromJson(json_['containerDetails']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          fileOffset: json_.containsKey('fileOffset')
-              ? json_['fileOffset'] as core.String
-              : null,
+          fileOffset: json_['fileOffset'] as core.String?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -13346,9 +13085,7 @@ class GooglePrivacyDlpV2HybridFindingDetails {
                   ),
                 )
               : null,
-          rowOffset: json_.containsKey('rowOffset')
-              ? json_['rowOffset'] as core.String
-              : null,
+          rowOffset: json_['rowOffset'] as core.String?,
           tableOptions: json_.containsKey('tableOptions')
               ? GooglePrivacyDlpV2TableOptions.fromJson(
                   json_['tableOptions'] as core.Map<core.String, core.dynamic>)
@@ -13436,15 +13173,9 @@ class GooglePrivacyDlpV2HybridInspectStatistics {
 
   GooglePrivacyDlpV2HybridInspectStatistics.fromJson(core.Map json_)
       : this(
-          abortedCount: json_.containsKey('abortedCount')
-              ? json_['abortedCount'] as core.String
-              : null,
-          pendingCount: json_.containsKey('pendingCount')
-              ? json_['pendingCount'] as core.String
-              : null,
-          processedCount: json_.containsKey('processedCount')
-              ? json_['processedCount'] as core.String
-              : null,
+          abortedCount: json_['abortedCount'] as core.String?,
+          pendingCount: json_['pendingCount'] as core.String?,
+          processedCount: json_['processedCount'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -13494,9 +13225,7 @@ class GooglePrivacyDlpV2HybridOptions {
 
   GooglePrivacyDlpV2HybridOptions.fromJson(core.Map json_)
       : this(
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
+          description: json_['description'] as core.String?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -13583,9 +13312,7 @@ class GooglePrivacyDlpV2ImageRedactionConfig {
               ? GooglePrivacyDlpV2InfoType.fromJson(
                   json_['infoType'] as core.Map<core.String, core.dynamic>)
               : null,
-          redactAllText: json_.containsKey('redactAllText')
-              ? json_['redactAllText'] as core.bool
-              : null,
+          redactAllText: json_['redactAllText'] as core.bool?,
           redactionColor: json_.containsKey('redactionColor')
               ? GooglePrivacyDlpV2Color.fromJson(json_['redactionColor']
                   as core.Map<core.String, core.dynamic>)
@@ -13709,15 +13436,13 @@ class GooglePrivacyDlpV2InfoType {
 
   GooglePrivacyDlpV2InfoType.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           sensitivityScore: json_.containsKey('sensitivityScore')
               ? GooglePrivacyDlpV2SensitivityScore.fromJson(
                   json_['sensitivityScore']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          version: json_.containsKey('version')
-              ? json_['version'] as core.String
-              : null,
+          version: json_['version'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -13821,15 +13546,9 @@ class GooglePrivacyDlpV2InfoTypeCategory {
 
   GooglePrivacyDlpV2InfoTypeCategory.fromJson(core.Map json_)
       : this(
-          industryCategory: json_.containsKey('industryCategory')
-              ? json_['industryCategory'] as core.String
-              : null,
-          locationCategory: json_.containsKey('locationCategory')
-              ? json_['locationCategory'] as core.String
-              : null,
-          typeCategory: json_.containsKey('typeCategory')
-              ? json_['typeCategory'] as core.String
-              : null,
+          industryCategory: json_['industryCategory'] as core.String?,
+          locationCategory: json_['locationCategory'] as core.String?,
+          typeCategory: json_['typeCategory'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -13882,13 +13601,9 @@ class GooglePrivacyDlpV2InfoTypeDescription {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          description: json_['description'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          name: json_['name'] as core.String?,
           sensitivityScore: json_.containsKey('sensitivityScore')
               ? GooglePrivacyDlpV2SensitivityScore.fromJson(
                   json_['sensitivityScore']
@@ -13955,9 +13670,7 @@ class GooglePrivacyDlpV2InfoTypeLikelihood {
               ? GooglePrivacyDlpV2InfoType.fromJson(
                   json_['infoType'] as core.Map<core.String, core.dynamic>)
               : null,
-          minLikelihood: json_.containsKey('minLikelihood')
-              ? json_['minLikelihood'] as core.String
-              : null,
+          minLikelihood: json_['minLikelihood'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -13990,9 +13703,7 @@ class GooglePrivacyDlpV2InfoTypeLimit {
               ? GooglePrivacyDlpV2InfoType.fromJson(
                   json_['infoType'] as core.Map<core.String, core.dynamic>)
               : null,
-          maxFindings: json_.containsKey('maxFindings')
-              ? json_['maxFindings'] as core.int
-              : null,
+          maxFindings: json_['maxFindings'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -14016,8 +13727,7 @@ class GooglePrivacyDlpV2InfoTypeStats {
 
   GooglePrivacyDlpV2InfoTypeStats.fromJson(core.Map json_)
       : this(
-          count:
-              json_.containsKey('count') ? json_['count'] as core.String : null,
+          count: json_['count'] as core.String?,
           infoType: json_.containsKey('infoType')
               ? GooglePrivacyDlpV2InfoType.fromJson(
                   json_['infoType'] as core.Map<core.String, core.dynamic>)
@@ -14048,9 +13758,7 @@ class GooglePrivacyDlpV2InfoTypeSummary {
 
   GooglePrivacyDlpV2InfoTypeSummary.fromJson(core.Map json_)
       : this(
-          estimatedPrevalence: json_.containsKey('estimatedPrevalence')
-              ? json_['estimatedPrevalence'] as core.int
-              : null,
+          estimatedPrevalence: json_['estimatedPrevalence'] as core.int?,
           infoType: json_.containsKey('infoType')
               ? GooglePrivacyDlpV2InfoType.fromJson(
                   json_['infoType'] as core.Map<core.String, core.dynamic>)
@@ -14242,12 +13950,8 @@ class GooglePrivacyDlpV2InspectConfig {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          excludeInfoTypes: json_.containsKey('excludeInfoTypes')
-              ? json_['excludeInfoTypes'] as core.bool
-              : null,
-          includeQuote: json_.containsKey('includeQuote')
-              ? json_['includeQuote'] as core.bool
-              : null,
+          excludeInfoTypes: json_['excludeInfoTypes'] as core.bool?,
+          includeQuote: json_['includeQuote'] as core.bool?,
           infoTypes: json_.containsKey('infoTypes')
               ? (json_['infoTypes'] as core.List)
                   .map((value) => GooglePrivacyDlpV2InfoType.fromJson(
@@ -14258,9 +13962,7 @@ class GooglePrivacyDlpV2InspectConfig {
               ? GooglePrivacyDlpV2FindingLimits.fromJson(
                   json_['limits'] as core.Map<core.String, core.dynamic>)
               : null,
-          minLikelihood: json_.containsKey('minLikelihood')
-              ? json_['minLikelihood'] as core.String
-              : null,
+          minLikelihood: json_['minLikelihood'] as core.String?,
           minLikelihoodPerInfoType: json_
                   .containsKey('minLikelihoodPerInfoType')
               ? (json_['minLikelihoodPerInfoType'] as core.List)
@@ -14327,16 +14029,12 @@ class GooglePrivacyDlpV2InspectContentRequest {
               ? GooglePrivacyDlpV2InspectConfig.fromJson(
                   json_['inspectConfig'] as core.Map<core.String, core.dynamic>)
               : null,
-          inspectTemplateName: json_.containsKey('inspectTemplateName')
-              ? json_['inspectTemplateName'] as core.String
-              : null,
+          inspectTemplateName: json_['inspectTemplateName'] as core.String?,
           item: json_.containsKey('item')
               ? GooglePrivacyDlpV2ContentItem.fromJson(
                   json_['item'] as core.Map<core.String, core.dynamic>)
               : null,
-          locationId: json_.containsKey('locationId')
-              ? json_['locationId'] as core.String
-              : null,
+          locationId: json_['locationId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -14438,9 +14136,7 @@ class GooglePrivacyDlpV2InspectJobConfig {
               ? GooglePrivacyDlpV2InspectConfig.fromJson(
                   json_['inspectConfig'] as core.Map<core.String, core.dynamic>)
               : null,
-          inspectTemplateName: json_.containsKey('inspectTemplateName')
-              ? json_['inspectTemplateName'] as core.String
-              : null,
+          inspectTemplateName: json_['inspectTemplateName'] as core.String?,
           storageConfig: json_.containsKey('storageConfig')
               ? GooglePrivacyDlpV2StorageConfig.fromJson(
                   json_['storageConfig'] as core.Map<core.String, core.dynamic>)
@@ -14483,9 +14179,7 @@ class GooglePrivacyDlpV2InspectResult {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          findingsTruncated: json_.containsKey('findingsTruncated')
-              ? json_['findingsTruncated'] as core.bool
-              : null,
+          findingsTruncated: json_['findingsTruncated'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -14543,23 +14237,15 @@ class GooglePrivacyDlpV2InspectTemplate {
 
   GooglePrivacyDlpV2InspectTemplate.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          description: json_['description'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
           inspectConfig: json_.containsKey('inspectConfig')
               ? GooglePrivacyDlpV2InspectConfig.fromJson(
                   json_['inspectConfig'] as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -14725,15 +14411,9 @@ class GooglePrivacyDlpV2JobTrigger {
 
   GooglePrivacyDlpV2JobTrigger.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          description: json_['description'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
           errors: json_.containsKey('errors')
               ? (json_['errors'] as core.List)
                   .map((value) => GooglePrivacyDlpV2Error.fromJson(
@@ -14744,22 +14424,16 @@ class GooglePrivacyDlpV2JobTrigger {
               ? GooglePrivacyDlpV2InspectJobConfig.fromJson(
                   json_['inspectJob'] as core.Map<core.String, core.dynamic>)
               : null,
-          lastRunTime: json_.containsKey('lastRunTime')
-              ? json_['lastRunTime'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          status: json_.containsKey('status')
-              ? json_['status'] as core.String
-              : null,
+          lastRunTime: json_['lastRunTime'] as core.String?,
+          name: json_['name'] as core.String?,
+          status: json_['status'] as core.String?,
           triggers: json_.containsKey('triggers')
               ? (json_['triggers'] as core.List)
                   .map((value) => GooglePrivacyDlpV2Trigger.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -14842,9 +14516,7 @@ class GooglePrivacyDlpV2KAnonymityEquivalenceClass {
 
   GooglePrivacyDlpV2KAnonymityEquivalenceClass.fromJson(core.Map json_)
       : this(
-          equivalenceClassSize: json_.containsKey('equivalenceClassSize')
-              ? json_['equivalenceClassSize'] as core.String
-              : null,
+          equivalenceClassSize: json_['equivalenceClassSize'] as core.String?,
           quasiIdsValues: json_.containsKey('quasiIdsValues')
               ? (json_['quasiIdsValues'] as core.List)
                   .map((value) => GooglePrivacyDlpV2Value.fromJson(
@@ -14889,12 +14561,8 @@ class GooglePrivacyDlpV2KAnonymityHistogramBucket {
 
   GooglePrivacyDlpV2KAnonymityHistogramBucket.fromJson(core.Map json_)
       : this(
-          bucketSize: json_.containsKey('bucketSize')
-              ? json_['bucketSize'] as core.String
-              : null,
-          bucketValueCount: json_.containsKey('bucketValueCount')
-              ? json_['bucketValueCount'] as core.String
-              : null,
+          bucketSize: json_['bucketSize'] as core.String?,
+          bucketValueCount: json_['bucketValueCount'] as core.String?,
           bucketValues: json_.containsKey('bucketValues')
               ? (json_['bucketValues'] as core.List)
                   .map((value) =>
@@ -14903,13 +14571,9 @@ class GooglePrivacyDlpV2KAnonymityHistogramBucket {
                   .toList()
               : null,
           equivalenceClassSizeLowerBound:
-              json_.containsKey('equivalenceClassSizeLowerBound')
-                  ? json_['equivalenceClassSizeLowerBound'] as core.String
-                  : null,
+              json_['equivalenceClassSizeLowerBound'] as core.String?,
           equivalenceClassSizeUpperBound:
-              json_.containsKey('equivalenceClassSizeUpperBound')
-                  ? json_['equivalenceClassSizeUpperBound'] as core.String
-                  : null,
+              json_['equivalenceClassSizeUpperBound'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -14999,9 +14663,7 @@ class GooglePrivacyDlpV2KMapEstimationConfig {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          regionCode: json_.containsKey('regionCode')
-              ? json_['regionCode'] as core.String
-              : null,
+          regionCode: json_['regionCode'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -15047,12 +14709,8 @@ class GooglePrivacyDlpV2KMapEstimationHistogramBucket {
 
   GooglePrivacyDlpV2KMapEstimationHistogramBucket.fromJson(core.Map json_)
       : this(
-          bucketSize: json_.containsKey('bucketSize')
-              ? json_['bucketSize'] as core.String
-              : null,
-          bucketValueCount: json_.containsKey('bucketValueCount')
-              ? json_['bucketValueCount'] as core.String
-              : null,
+          bucketSize: json_['bucketSize'] as core.String?,
+          bucketValueCount: json_['bucketValueCount'] as core.String?,
           bucketValues: json_.containsKey('bucketValues')
               ? (json_['bucketValues'] as core.List)
                   .map((value) =>
@@ -15060,12 +14718,8 @@ class GooglePrivacyDlpV2KMapEstimationHistogramBucket {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          maxAnonymity: json_.containsKey('maxAnonymity')
-              ? json_['maxAnonymity'] as core.String
-              : null,
-          minAnonymity: json_.containsKey('minAnonymity')
-              ? json_['minAnonymity'] as core.String
-              : null,
+          maxAnonymity: json_['maxAnonymity'] as core.String?,
+          minAnonymity: json_['minAnonymity'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -15092,9 +14746,7 @@ class GooglePrivacyDlpV2KMapEstimationQuasiIdValues {
 
   GooglePrivacyDlpV2KMapEstimationQuasiIdValues.fromJson(core.Map json_)
       : this(
-          estimatedAnonymity: json_.containsKey('estimatedAnonymity')
-              ? json_['estimatedAnonymity'] as core.String
-              : null,
+          estimatedAnonymity: json_['estimatedAnonymity'] as core.String?,
           quasiIdsValues: json_.containsKey('quasiIdsValues')
               ? (json_['quasiIdsValues'] as core.List)
                   .map((value) => GooglePrivacyDlpV2Value.fromJson(
@@ -15231,12 +14883,8 @@ class GooglePrivacyDlpV2KmsWrappedCryptoKey {
 
   GooglePrivacyDlpV2KmsWrappedCryptoKey.fromJson(core.Map json_)
       : this(
-          cryptoKeyName: json_.containsKey('cryptoKeyName')
-              ? json_['cryptoKeyName'] as core.String
-              : null,
-          wrappedKey: json_.containsKey('wrappedKey')
-              ? json_['wrappedKey'] as core.String
-              : null,
+          cryptoKeyName: json_['cryptoKeyName'] as core.String?,
+          wrappedKey: json_['wrappedKey'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -15308,13 +14956,9 @@ class GooglePrivacyDlpV2LDiversityEquivalenceClass {
 
   GooglePrivacyDlpV2LDiversityEquivalenceClass.fromJson(core.Map json_)
       : this(
-          equivalenceClassSize: json_.containsKey('equivalenceClassSize')
-              ? json_['equivalenceClassSize'] as core.String
-              : null,
+          equivalenceClassSize: json_['equivalenceClassSize'] as core.String?,
           numDistinctSensitiveValues:
-              json_.containsKey('numDistinctSensitiveValues')
-                  ? json_['numDistinctSensitiveValues'] as core.String
-                  : null,
+              json_['numDistinctSensitiveValues'] as core.String?,
           quasiIdsValues: json_.containsKey('quasiIdsValues')
               ? (json_['quasiIdsValues'] as core.List)
                   .map((value) => GooglePrivacyDlpV2Value.fromJson(
@@ -15371,12 +15015,8 @@ class GooglePrivacyDlpV2LDiversityHistogramBucket {
 
   GooglePrivacyDlpV2LDiversityHistogramBucket.fromJson(core.Map json_)
       : this(
-          bucketSize: json_.containsKey('bucketSize')
-              ? json_['bucketSize'] as core.String
-              : null,
-          bucketValueCount: json_.containsKey('bucketValueCount')
-              ? json_['bucketValueCount'] as core.String
-              : null,
+          bucketSize: json_['bucketSize'] as core.String?,
+          bucketValueCount: json_['bucketValueCount'] as core.String?,
           bucketValues: json_.containsKey('bucketValues')
               ? (json_['bucketValues'] as core.List)
                   .map((value) =>
@@ -15385,13 +15025,9 @@ class GooglePrivacyDlpV2LDiversityHistogramBucket {
                   .toList()
               : null,
           sensitiveValueFrequencyLowerBound:
-              json_.containsKey('sensitiveValueFrequencyLowerBound')
-                  ? json_['sensitiveValueFrequencyLowerBound'] as core.String
-                  : null,
+              json_['sensitiveValueFrequencyLowerBound'] as core.String?,
           sensitiveValueFrequencyUpperBound:
-              json_.containsKey('sensitiveValueFrequencyUpperBound')
-                  ? json_['sensitiveValueFrequencyUpperBound'] as core.String
-                  : null,
+              json_['sensitiveValueFrequencyUpperBound'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -15499,9 +15135,7 @@ class GooglePrivacyDlpV2LargeCustomDictionaryStats {
 
   GooglePrivacyDlpV2LargeCustomDictionaryStats.fromJson(core.Map json_)
       : this(
-          approxNumPhrases: json_.containsKey('approxNumPhrases')
-              ? json_['approxNumPhrases'] as core.String
-              : null,
+          approxNumPhrases: json_['approxNumPhrases'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -15547,12 +15181,8 @@ class GooglePrivacyDlpV2LikelihoodAdjustment {
 
   GooglePrivacyDlpV2LikelihoodAdjustment.fromJson(core.Map json_)
       : this(
-          fixedLikelihood: json_.containsKey('fixedLikelihood')
-              ? json_['fixedLikelihood'] as core.String
-              : null,
-          relativeLikelihood: json_.containsKey('relativeLikelihood')
-              ? json_['relativeLikelihood'] as core.int
-              : null,
+          fixedLikelihood: json_['fixedLikelihood'] as core.String?,
+          relativeLikelihood: json_['relativeLikelihood'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -15583,9 +15213,7 @@ class GooglePrivacyDlpV2ListColumnDataProfilesResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -15618,9 +15246,7 @@ class GooglePrivacyDlpV2ListConnectionsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -15652,9 +15278,7 @@ class GooglePrivacyDlpV2ListDeidentifyTemplatesResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -15686,9 +15310,7 @@ class GooglePrivacyDlpV2ListDiscoveryConfigsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -15718,9 +15340,7 @@ class GooglePrivacyDlpV2ListDlpJobsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -15776,9 +15396,7 @@ class GooglePrivacyDlpV2ListInspectTemplatesResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -15809,9 +15427,7 @@ class GooglePrivacyDlpV2ListJobTriggersResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -15835,9 +15451,7 @@ class GooglePrivacyDlpV2ListProjectDataProfilesResponse {
 
   GooglePrivacyDlpV2ListProjectDataProfilesResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           projectDataProfiles: json_.containsKey('projectDataProfiles')
               ? (json_['projectDataProfiles'] as core.List)
                   .map((value) => GooglePrivacyDlpV2ProjectDataProfile.fromJson(
@@ -15869,9 +15483,7 @@ class GooglePrivacyDlpV2ListStoredInfoTypesResponse {
 
   GooglePrivacyDlpV2ListStoredInfoTypesResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           storedInfoTypes: json_.containsKey('storedInfoTypes')
               ? (json_['storedInfoTypes'] as core.List)
                   .map((value) => GooglePrivacyDlpV2StoredInfoType.fromJson(
@@ -15901,9 +15513,7 @@ class GooglePrivacyDlpV2ListTableDataProfilesResponse {
 
   GooglePrivacyDlpV2ListTableDataProfilesResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           tableDataProfiles: json_.containsKey('tableDataProfiles')
               ? (json_['tableDataProfiles'] as core.List)
                   .map((value) => GooglePrivacyDlpV2TableDataProfile.fromJson(
@@ -16004,7 +15614,7 @@ class GooglePrivacyDlpV2MetadataLocation {
               ? GooglePrivacyDlpV2StorageMetadataLabel.fromJson(
                   json_['storageLabel'] as core.Map<core.String, core.dynamic>)
               : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -16101,12 +15711,8 @@ class GooglePrivacyDlpV2OrConditions {
 
   GooglePrivacyDlpV2OrConditions.fromJson(core.Map json_)
       : this(
-          minAge: json_.containsKey('minAge')
-              ? json_['minAge'] as core.String
-              : null,
-          minRowCount: json_.containsKey('minRowCount')
-              ? json_['minRowCount'] as core.int
-              : null,
+          minAge: json_['minAge'] as core.String?,
+          minRowCount: json_['minRowCount'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -16139,9 +15745,7 @@ class GooglePrivacyDlpV2OrgConfig {
               ? GooglePrivacyDlpV2DiscoveryStartingLocation.fromJson(
                   json_['location'] as core.Map<core.String, core.dynamic>)
               : null,
-          projectId: json_.containsKey('projectId')
-              ? json_['projectId'] as core.String
-              : null,
+          projectId: json_['projectId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -16171,12 +15775,8 @@ class GooglePrivacyDlpV2OtherInfoTypeSummary {
 
   GooglePrivacyDlpV2OtherInfoTypeSummary.fromJson(core.Map json_)
       : this(
-          estimatedPrevalence: json_.containsKey('estimatedPrevalence')
-              ? json_['estimatedPrevalence'] as core.int
-              : null,
-          excludedFromAnalysis: json_.containsKey('excludedFromAnalysis')
-              ? json_['excludedFromAnalysis'] as core.bool
-              : null,
+          estimatedPrevalence: json_['estimatedPrevalence'] as core.int?,
+          excludedFromAnalysis: json_['excludedFromAnalysis'] as core.bool?,
           infoType: json_.containsKey('infoType')
               ? GooglePrivacyDlpV2InfoType.fromJson(
                   json_['infoType'] as core.Map<core.String, core.dynamic>)
@@ -16236,9 +15836,7 @@ class GooglePrivacyDlpV2OutputStorageConfig {
 
   GooglePrivacyDlpV2OutputStorageConfig.fromJson(core.Map json_)
       : this(
-          outputSchema: json_.containsKey('outputSchema')
-              ? json_['outputSchema'] as core.String
-              : null,
+          outputSchema: json_['outputSchema'] as core.String?,
           table: json_.containsKey('table')
               ? GooglePrivacyDlpV2BigQueryTable.fromJson(
                   json_['table'] as core.Map<core.String, core.dynamic>)
@@ -16270,12 +15868,8 @@ class GooglePrivacyDlpV2PartitionId {
 
   GooglePrivacyDlpV2PartitionId.fromJson(core.Map json_)
       : this(
-          namespaceId: json_.containsKey('namespaceId')
-              ? json_['namespaceId'] as core.String
-              : null,
-          projectId: json_.containsKey('projectId')
-              ? json_['projectId'] as core.String
-              : null,
+          namespaceId: json_['namespaceId'] as core.String?,
+          projectId: json_['projectId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -16315,9 +15909,9 @@ class GooglePrivacyDlpV2PathElement {
 
   GooglePrivacyDlpV2PathElement.fromJson(core.Map json_)
       : this(
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          id: json_['id'] as core.String?,
+          kind: json_['kind'] as core.String?,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -16568,9 +16162,7 @@ class GooglePrivacyDlpV2ProfileStatus {
               ? GoogleRpcStatus.fromJson(
                   json_['status'] as core.Map<core.String, core.dynamic>)
               : null,
-          timestamp: json_.containsKey('timestamp')
-              ? json_['timestamp'] as core.String
-              : null,
+          timestamp: json_['timestamp'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -16615,17 +16207,13 @@ class GooglePrivacyDlpV2ProjectDataProfile {
               ? GooglePrivacyDlpV2DataRiskLevel.fromJson(
                   json_['dataRiskLevel'] as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          profileLastGenerated: json_.containsKey('profileLastGenerated')
-              ? json_['profileLastGenerated'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          profileLastGenerated: json_['profileLastGenerated'] as core.String?,
           profileStatus: json_.containsKey('profileStatus')
               ? GooglePrivacyDlpV2ProfileStatus.fromJson(
                   json_['profileStatus'] as core.Map<core.String, core.dynamic>)
               : null,
-          projectId: json_.containsKey('projectId')
-              ? json_['projectId'] as core.String
-              : null,
+          projectId: json_['projectId'] as core.String?,
           sensitivityScore: json_.containsKey('sensitivityScore')
               ? GooglePrivacyDlpV2SensitivityScore.fromJson(
                   json_['sensitivityScore']
@@ -16664,12 +16252,8 @@ class GooglePrivacyDlpV2Proximity {
 
   GooglePrivacyDlpV2Proximity.fromJson(core.Map json_)
       : this(
-          windowAfter: json_.containsKey('windowAfter')
-              ? json_['windowAfter'] as core.int
-              : null,
-          windowBefore: json_.containsKey('windowBefore')
-              ? json_['windowBefore'] as core.int
-              : null,
+          windowAfter: json_['windowAfter'] as core.int?,
+          windowBefore: json_['windowBefore'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -16701,12 +16285,9 @@ class GooglePrivacyDlpV2PubSubCondition {
 
   GooglePrivacyDlpV2PubSubCondition.fromJson(core.Map json_)
       : this(
-          minimumRiskScore: json_.containsKey('minimumRiskScore')
-              ? json_['minimumRiskScore'] as core.String
-              : null,
-          minimumSensitivityScore: json_.containsKey('minimumSensitivityScore')
-              ? json_['minimumSensitivityScore'] as core.String
-              : null,
+          minimumRiskScore: json_['minimumRiskScore'] as core.String?,
+          minimumSensitivityScore:
+              json_['minimumSensitivityScore'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -16741,9 +16322,7 @@ class GooglePrivacyDlpV2PubSubExpressions {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          logicalOperator: json_.containsKey('logicalOperator')
-              ? json_['logicalOperator'] as core.String
-              : null,
+          logicalOperator: json_['logicalOperator'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -16801,18 +16380,14 @@ class GooglePrivacyDlpV2PubSubNotification {
 
   GooglePrivacyDlpV2PubSubNotification.fromJson(core.Map json_)
       : this(
-          detailOfMessage: json_.containsKey('detailOfMessage')
-              ? json_['detailOfMessage'] as core.String
-              : null,
-          event:
-              json_.containsKey('event') ? json_['event'] as core.String : null,
+          detailOfMessage: json_['detailOfMessage'] as core.String?,
+          event: json_['event'] as core.String?,
           pubsubCondition: json_.containsKey('pubsubCondition')
               ? GooglePrivacyDlpV2DataProfilePubSubCondition.fromJson(
                   json_['pubsubCondition']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          topic:
-              json_.containsKey('topic') ? json_['topic'] as core.String : null,
+          topic: json_['topic'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -16872,8 +16447,7 @@ class GooglePrivacyDlpV2PublishToPubSub {
 
   GooglePrivacyDlpV2PublishToPubSub.fromJson(core.Map json_)
       : this(
-          topic:
-              json_.containsKey('topic') ? json_['topic'] as core.String : null,
+          topic: json_['topic'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -16922,9 +16496,7 @@ class GooglePrivacyDlpV2QuasiId {
 
   GooglePrivacyDlpV2QuasiId.fromJson(core.Map json_)
       : this(
-          customTag: json_.containsKey('customTag')
-              ? json_['customTag'] as core.String
-              : null,
+          customTag: json_['customTag'] as core.String?,
           field: json_.containsKey('field')
               ? GooglePrivacyDlpV2FieldId.fromJson(
                   json_['field'] as core.Map<core.String, core.dynamic>)
@@ -16963,9 +16535,7 @@ class GooglePrivacyDlpV2QuasiIdField {
 
   GooglePrivacyDlpV2QuasiIdField.fromJson(core.Map json_)
       : this(
-          customTag: json_.containsKey('customTag')
-              ? json_['customTag'] as core.String
-              : null,
+          customTag: json_['customTag'] as core.String?,
           field: json_.containsKey('field')
               ? GooglePrivacyDlpV2FieldId.fromJson(
                   json_['field'] as core.Map<core.String, core.dynamic>)
@@ -16997,9 +16567,7 @@ class GooglePrivacyDlpV2QuasiIdentifierField {
 
   GooglePrivacyDlpV2QuasiIdentifierField.fromJson(core.Map json_)
       : this(
-          customTag: json_.containsKey('customTag')
-              ? json_['customTag'] as core.String
-              : null,
+          customTag: json_['customTag'] as core.String?,
           field: json_.containsKey('field')
               ? GooglePrivacyDlpV2FieldId.fromJson(
                   json_['field'] as core.Map<core.String, core.dynamic>)
@@ -17049,9 +16617,8 @@ class GooglePrivacyDlpV2Range {
 
   GooglePrivacyDlpV2Range.fromJson(core.Map json_)
       : this(
-          end: json_.containsKey('end') ? json_['end'] as core.String : null,
-          start:
-              json_.containsKey('start') ? json_['start'] as core.String : null,
+          end: json_['end'] as core.String?,
+          start: json_['start'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -17281,16 +16848,12 @@ class GooglePrivacyDlpV2RedactImageRequest {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          includeFindings: json_.containsKey('includeFindings')
-              ? json_['includeFindings'] as core.bool
-              : null,
+          includeFindings: json_['includeFindings'] as core.bool?,
           inspectConfig: json_.containsKey('inspectConfig')
               ? GooglePrivacyDlpV2InspectConfig.fromJson(
                   json_['inspectConfig'] as core.Map<core.String, core.dynamic>)
               : null,
-          locationId: json_.containsKey('locationId')
-              ? json_['locationId'] as core.String
-              : null,
+          locationId: json_['locationId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -17335,16 +16898,12 @@ class GooglePrivacyDlpV2RedactImageResponse {
 
   GooglePrivacyDlpV2RedactImageResponse.fromJson(core.Map json_)
       : this(
-          extractedText: json_.containsKey('extractedText')
-              ? json_['extractedText'] as core.String
-              : null,
+          extractedText: json_['extractedText'] as core.String?,
           inspectResult: json_.containsKey('inspectResult')
               ? GooglePrivacyDlpV2InspectResult.fromJson(
                   json_['inspectResult'] as core.Map<core.String, core.dynamic>)
               : null,
-          redactedImage: json_.containsKey('redactedImage')
-              ? json_['redactedImage'] as core.String
-              : null,
+          redactedImage: json_['redactedImage'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -17380,9 +16939,7 @@ class GooglePrivacyDlpV2Regex {
                   .map((value) => value as core.int)
                   .toList()
               : null,
-          pattern: json_.containsKey('pattern')
-              ? json_['pattern'] as core.String
-              : null,
+          pattern: json_['pattern'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -17450,24 +17007,19 @@ class GooglePrivacyDlpV2ReidentifyContentRequest {
               ? GooglePrivacyDlpV2InspectConfig.fromJson(
                   json_['inspectConfig'] as core.Map<core.String, core.dynamic>)
               : null,
-          inspectTemplateName: json_.containsKey('inspectTemplateName')
-              ? json_['inspectTemplateName'] as core.String
-              : null,
+          inspectTemplateName: json_['inspectTemplateName'] as core.String?,
           item: json_.containsKey('item')
               ? GooglePrivacyDlpV2ContentItem.fromJson(
                   json_['item'] as core.Map<core.String, core.dynamic>)
               : null,
-          locationId: json_.containsKey('locationId')
-              ? json_['locationId'] as core.String
-              : null,
+          locationId: json_['locationId'] as core.String?,
           reidentifyConfig: json_.containsKey('reidentifyConfig')
               ? GooglePrivacyDlpV2DeidentifyConfig.fromJson(
                   json_['reidentifyConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          reidentifyTemplateName: json_.containsKey('reidentifyTemplateName')
-              ? json_['reidentifyTemplateName'] as core.String
-              : null,
+          reidentifyTemplateName:
+              json_['reidentifyTemplateName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -17711,15 +17263,9 @@ class GooglePrivacyDlpV2Result {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          numRowsProcessed: json_.containsKey('numRowsProcessed')
-              ? json_['numRowsProcessed'] as core.String
-              : null,
-          processedBytes: json_.containsKey('processedBytes')
-              ? json_['processedBytes'] as core.String
-              : null,
-          totalEstimatedBytes: json_.containsKey('totalEstimatedBytes')
-              ? json_['totalEstimatedBytes'] as core.String
-              : null,
+          numRowsProcessed: json_['numRowsProcessed'] as core.String?,
+          processedBytes: json_['processedBytes'] as core.String?,
+          totalEstimatedBytes: json_['totalEstimatedBytes'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -17847,9 +17393,7 @@ class GooglePrivacyDlpV2Schedule {
   GooglePrivacyDlpV2Schedule.fromJson(core.Map json_)
       : this(
           recurrencePeriodDuration:
-              json_.containsKey('recurrencePeriodDuration')
-                  ? json_['recurrencePeriodDuration'] as core.String
-                  : null,
+              json_['recurrencePeriodDuration'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -17885,9 +17429,7 @@ class GooglePrivacyDlpV2SchemaModifiedCadence {
 
   GooglePrivacyDlpV2SchemaModifiedCadence.fromJson(core.Map json_)
       : this(
-          frequency: json_.containsKey('frequency')
-              ? json_['frequency'] as core.String
-              : null,
+          frequency: json_['frequency'] as core.String?,
           types: json_.containsKey('types')
               ? (json_['types'] as core.List)
                   .map((value) => value as core.String)
@@ -17928,9 +17470,7 @@ class GooglePrivacyDlpV2SearchConnectionsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -17964,12 +17504,8 @@ class GooglePrivacyDlpV2SecretManagerCredential {
   GooglePrivacyDlpV2SecretManagerCredential.fromJson(core.Map json_)
       : this(
           passwordSecretVersionName:
-              json_.containsKey('passwordSecretVersionName')
-                  ? json_['passwordSecretVersionName'] as core.String
-                  : null,
-          username: json_.containsKey('username')
-              ? json_['username'] as core.String
-              : null,
+              json_['passwordSecretVersionName'] as core.String?,
+          username: json_['username'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -18045,8 +17581,7 @@ class GooglePrivacyDlpV2SensitivityScore {
 
   GooglePrivacyDlpV2SensitivityScore.fromJson(core.Map json_)
       : this(
-          score:
-              json_.containsKey('score') ? json_['score'] as core.String : null,
+          score: json_['score'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -18187,7 +17722,7 @@ class GooglePrivacyDlpV2StorageMetadataLabel {
 
   GooglePrivacyDlpV2StorageMetadataLabel.fromJson(core.Map json_)
       : this(
-          key: json_.containsKey('key') ? json_['key'] as core.String : null,
+          key: json_['key'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -18222,7 +17757,7 @@ class GooglePrivacyDlpV2StoredInfoType {
                   json_['currentVersion']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           pendingVersions: json_.containsKey('pendingVersions')
               ? (json_['pendingVersions'] as core.List)
                   .map((value) =>
@@ -18269,16 +17804,12 @@ class GooglePrivacyDlpV2StoredInfoTypeConfig {
 
   GooglePrivacyDlpV2StoredInfoTypeConfig.fromJson(core.Map json_)
       : this(
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
+          description: json_['description'] as core.String?,
           dictionary: json_.containsKey('dictionary')
               ? GooglePrivacyDlpV2Dictionary.fromJson(
                   json_['dictionary'] as core.Map<core.String, core.dynamic>)
               : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+          displayName: json_['displayName'] as core.String?,
           largeCustomDictionary: json_.containsKey('largeCustomDictionary')
               ? GooglePrivacyDlpV2LargeCustomDictionaryConfig.fromJson(
                   json_['largeCustomDictionary']
@@ -18380,17 +17911,14 @@ class GooglePrivacyDlpV2StoredInfoTypeVersion {
               ? GooglePrivacyDlpV2StoredInfoTypeConfig.fromJson(
                   json_['config'] as core.Map<core.String, core.dynamic>)
               : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
           errors: json_.containsKey('errors')
               ? (json_['errors'] as core.List)
                   .map((value) => GooglePrivacyDlpV2Error.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
+          state: json_['state'] as core.String?,
           stats: json_.containsKey('stats')
               ? GooglePrivacyDlpV2StoredInfoTypeStats.fromJson(
                   json_['stats'] as core.Map<core.String, core.dynamic>)
@@ -18426,10 +17954,8 @@ class GooglePrivacyDlpV2StoredType {
 
   GooglePrivacyDlpV2StoredType.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          createTime: json_['createTime'] as core.String?,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -18463,12 +17989,9 @@ class GooglePrivacyDlpV2SummaryResult {
 
   GooglePrivacyDlpV2SummaryResult.fromJson(core.Map json_)
       : this(
-          code: json_.containsKey('code') ? json_['code'] as core.String : null,
-          count:
-              json_.containsKey('count') ? json_['count'] as core.String : null,
-          details: json_.containsKey('details')
-              ? json_['details'] as core.String
-              : null,
+          code: json_['code'] as core.String?,
+          count: json_['count'] as core.String?,
+          details: json_['details'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -18673,9 +18196,7 @@ class GooglePrivacyDlpV2TableDataProfile {
                   json_['configSnapshot']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
           dataRiskLevel: json_.containsKey('dataRiskLevel')
               ? GooglePrivacyDlpV2DataRiskLevel.fromJson(
                   json_['dataRiskLevel'] as core.Map<core.String, core.dynamic>)
@@ -18685,31 +18206,15 @@ class GooglePrivacyDlpV2TableDataProfile {
                   json_['dataSourceType']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          datasetId: json_.containsKey('datasetId')
-              ? json_['datasetId'] as core.String
-              : null,
-          datasetLocation: json_.containsKey('datasetLocation')
-              ? json_['datasetLocation'] as core.String
-              : null,
-          datasetProjectId: json_.containsKey('datasetProjectId')
-              ? json_['datasetProjectId'] as core.String
-              : null,
-          encryptionStatus: json_.containsKey('encryptionStatus')
-              ? json_['encryptionStatus'] as core.String
-              : null,
-          expirationTime: json_.containsKey('expirationTime')
-              ? json_['expirationTime'] as core.String
-              : null,
-          failedColumnCount: json_.containsKey('failedColumnCount')
-              ? json_['failedColumnCount'] as core.String
-              : null,
-          fullResource: json_.containsKey('fullResource')
-              ? json_['fullResource'] as core.String
-              : null,
-          lastModifiedTime: json_.containsKey('lastModifiedTime')
-              ? json_['lastModifiedTime'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          datasetId: json_['datasetId'] as core.String?,
+          datasetLocation: json_['datasetLocation'] as core.String?,
+          datasetProjectId: json_['datasetProjectId'] as core.String?,
+          encryptionStatus: json_['encryptionStatus'] as core.String?,
+          expirationTime: json_['expirationTime'] as core.String?,
+          failedColumnCount: json_['failedColumnCount'] as core.String?,
+          fullResource: json_['fullResource'] as core.String?,
+          lastModifiedTime: json_['lastModifiedTime'] as core.String?,
+          name: json_['name'] as core.String?,
           otherInfoTypes: json_.containsKey('otherInfoTypes')
               ? (json_['otherInfoTypes'] as core.List)
                   .map((value) =>
@@ -18723,16 +18228,12 @@ class GooglePrivacyDlpV2TableDataProfile {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          profileLastGenerated: json_.containsKey('profileLastGenerated')
-              ? json_['profileLastGenerated'] as core.String
-              : null,
+          profileLastGenerated: json_['profileLastGenerated'] as core.String?,
           profileStatus: json_.containsKey('profileStatus')
               ? GooglePrivacyDlpV2ProfileStatus.fromJson(
                   json_['profileStatus'] as core.Map<core.String, core.dynamic>)
               : null,
-          projectDataProfile: json_.containsKey('projectDataProfile')
-              ? json_['projectDataProfile'] as core.String
-              : null,
+          projectDataProfile: json_['projectDataProfile'] as core.String?,
           resourceLabels: json_.containsKey('resourceLabels')
               ? (json_['resourceLabels'] as core.Map<core.String, core.dynamic>)
                   .map(
@@ -18742,28 +18243,17 @@ class GooglePrivacyDlpV2TableDataProfile {
                   ),
                 )
               : null,
-          resourceVisibility: json_.containsKey('resourceVisibility')
-              ? json_['resourceVisibility'] as core.String
-              : null,
-          rowCount: json_.containsKey('rowCount')
-              ? json_['rowCount'] as core.String
-              : null,
-          scannedColumnCount: json_.containsKey('scannedColumnCount')
-              ? json_['scannedColumnCount'] as core.String
-              : null,
+          resourceVisibility: json_['resourceVisibility'] as core.String?,
+          rowCount: json_['rowCount'] as core.String?,
+          scannedColumnCount: json_['scannedColumnCount'] as core.String?,
           sensitivityScore: json_.containsKey('sensitivityScore')
               ? GooglePrivacyDlpV2SensitivityScore.fromJson(
                   json_['sensitivityScore']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
-          tableId: json_.containsKey('tableId')
-              ? json_['tableId'] as core.String
-              : null,
-          tableSizeBytes: json_.containsKey('tableSizeBytes')
-              ? json_['tableSizeBytes'] as core.String
-              : null,
+          state: json_['state'] as core.String?,
+          tableId: json_['tableId'] as core.String?,
+          tableSizeBytes: json_['tableSizeBytes'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -18818,9 +18308,7 @@ class GooglePrivacyDlpV2TableLocation {
 
   GooglePrivacyDlpV2TableLocation.fromJson(core.Map json_)
       : this(
-          rowIndex: json_.containsKey('rowIndex')
-              ? json_['rowIndex'] as core.String
-              : null,
+          rowIndex: json_['rowIndex'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -18873,12 +18361,8 @@ class GooglePrivacyDlpV2TableReference {
 
   GooglePrivacyDlpV2TableReference.fromJson(core.Map json_)
       : this(
-          datasetId: json_.containsKey('datasetId')
-              ? json_['datasetId'] as core.String
-              : null,
-          tableId: json_.containsKey('tableId')
-              ? json_['tableId'] as core.String
-              : null,
+          datasetId: json_['datasetId'] as core.String?,
+          tableId: json_['tableId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -18921,9 +18405,7 @@ class GooglePrivacyDlpV2TaggedField {
 
   GooglePrivacyDlpV2TaggedField.fromJson(core.Map json_)
       : this(
-          customTag: json_.containsKey('customTag')
-              ? json_['customTag'] as core.String
-              : null,
+          customTag: json_['customTag'] as core.String?,
           field: json_.containsKey('field')
               ? GooglePrivacyDlpV2FieldId.fromJson(
                   json_['field'] as core.Map<core.String, core.dynamic>)
@@ -18969,9 +18451,7 @@ class GooglePrivacyDlpV2TimePartConfig {
 
   GooglePrivacyDlpV2TimePartConfig.fromJson(core.Map json_)
       : this(
-          partToExtract: json_.containsKey('partToExtract')
-              ? json_['partToExtract'] as core.String
-              : null,
+          partToExtract: json_['partToExtract'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -18992,9 +18472,7 @@ class GooglePrivacyDlpV2TimeZone {
 
   GooglePrivacyDlpV2TimeZone.fromJson(core.Map json_)
       : this(
-          offsetMinutes: json_.containsKey('offsetMinutes')
-              ? json_['offsetMinutes'] as core.int
-              : null,
+          offsetMinutes: json_['offsetMinutes'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -19062,15 +18540,9 @@ class GooglePrivacyDlpV2TimespanConfig {
   GooglePrivacyDlpV2TimespanConfig.fromJson(core.Map json_)
       : this(
           enableAutoPopulationOfTimespanConfig:
-              json_.containsKey('enableAutoPopulationOfTimespanConfig')
-                  ? json_['enableAutoPopulationOfTimespanConfig'] as core.bool
-                  : null,
-          endTime: json_.containsKey('endTime')
-              ? json_['endTime'] as core.String
-              : null,
-          startTime: json_.containsKey('startTime')
-              ? json_['startTime'] as core.String
-              : null,
+              json_['enableAutoPopulationOfTimespanConfig'] as core.bool?,
+          endTime: json_['endTime'] as core.String?,
+          startTime: json_['startTime'] as core.String?,
           timestampField: json_.containsKey('timestampField')
               ? GooglePrivacyDlpV2FieldId.fromJson(json_['timestampField']
                   as core.Map<core.String, core.dynamic>)
@@ -19127,16 +18599,10 @@ class GooglePrivacyDlpV2TransformationConfig {
 
   GooglePrivacyDlpV2TransformationConfig.fromJson(core.Map json_)
       : this(
-          deidentifyTemplate: json_.containsKey('deidentifyTemplate')
-              ? json_['deidentifyTemplate'] as core.String
-              : null,
-          imageRedactTemplate: json_.containsKey('imageRedactTemplate')
-              ? json_['imageRedactTemplate'] as core.String
-              : null,
+          deidentifyTemplate: json_['deidentifyTemplate'] as core.String?,
+          imageRedactTemplate: json_['imageRedactTemplate'] as core.String?,
           structuredDeidentifyTemplate:
-              json_.containsKey('structuredDeidentifyTemplate')
-                  ? json_['structuredDeidentifyTemplate'] as core.String
-                  : null,
+              json_['structuredDeidentifyTemplate'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -19238,9 +18704,7 @@ class GooglePrivacyDlpV2TransformationOverview {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          transformedBytes: json_.containsKey('transformedBytes')
-              ? json_['transformedBytes'] as core.String
-              : null,
+          transformedBytes: json_['transformedBytes'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -19322,9 +18786,7 @@ class GooglePrivacyDlpV2TransformationSummary {
                   json_['transformation']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          transformedBytes: json_.containsKey('transformedBytes')
-              ? json_['transformedBytes'] as core.String
-              : null,
+          transformedBytes: json_['transformedBytes'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -19360,7 +18822,7 @@ class GooglePrivacyDlpV2TransientCryptoKey {
 
   GooglePrivacyDlpV2TransientCryptoKey.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -19423,7 +18885,7 @@ class GooglePrivacyDlpV2UnwrappedCryptoKey {
 
   GooglePrivacyDlpV2UnwrappedCryptoKey.fromJson(core.Map json_)
       : this(
-          key: json_.containsKey('key') ? json_['key'] as core.String : null,
+          key: json_['key'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -19454,9 +18916,7 @@ class GooglePrivacyDlpV2UpdateConnectionRequest {
               ? GooglePrivacyDlpV2Connection.fromJson(
                   json_['connection'] as core.Map<core.String, core.dynamic>)
               : null,
-          updateMask: json_.containsKey('updateMask')
-              ? json_['updateMask'] as core.String
-              : null,
+          updateMask: json_['updateMask'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -19485,9 +18945,7 @@ class GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest {
                   json_['deidentifyTemplate']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          updateMask: json_.containsKey('updateMask')
-              ? json_['updateMask'] as core.String
-              : null,
+          updateMask: json_['updateMask'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -19519,9 +18977,7 @@ class GooglePrivacyDlpV2UpdateDiscoveryConfigRequest {
                   json_['discoveryConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          updateMask: json_.containsKey('updateMask')
-              ? json_['updateMask'] as core.String
-              : null,
+          updateMask: json_['updateMask'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -19550,9 +19006,7 @@ class GooglePrivacyDlpV2UpdateInspectTemplateRequest {
                   json_['inspectTemplate']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          updateMask: json_.containsKey('updateMask')
-              ? json_['updateMask'] as core.String
-              : null,
+          updateMask: json_['updateMask'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -19580,9 +19034,7 @@ class GooglePrivacyDlpV2UpdateJobTriggerRequest {
               ? GooglePrivacyDlpV2JobTrigger.fromJson(
                   json_['jobTrigger'] as core.Map<core.String, core.dynamic>)
               : null,
-          updateMask: json_.containsKey('updateMask')
-              ? json_['updateMask'] as core.String
-              : null,
+          updateMask: json_['updateMask'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -19613,9 +19065,7 @@ class GooglePrivacyDlpV2UpdateStoredInfoTypeRequest {
               ? GooglePrivacyDlpV2StoredInfoTypeConfig.fromJson(
                   json_['config'] as core.Map<core.String, core.dynamic>)
               : null,
-          updateMask: json_.containsKey('updateMask')
-              ? json_['updateMask'] as core.String
-              : null,
+          updateMask: json_['updateMask'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -19678,32 +19128,20 @@ class GooglePrivacyDlpV2Value {
 
   GooglePrivacyDlpV2Value.fromJson(core.Map json_)
       : this(
-          booleanValue: json_.containsKey('booleanValue')
-              ? json_['booleanValue'] as core.bool
-              : null,
+          booleanValue: json_['booleanValue'] as core.bool?,
           dateValue: json_.containsKey('dateValue')
               ? GoogleTypeDate.fromJson(
                   json_['dateValue'] as core.Map<core.String, core.dynamic>)
               : null,
-          dayOfWeekValue: json_.containsKey('dayOfWeekValue')
-              ? json_['dayOfWeekValue'] as core.String
-              : null,
-          floatValue: json_.containsKey('floatValue')
-              ? (json_['floatValue'] as core.num).toDouble()
-              : null,
-          integerValue: json_.containsKey('integerValue')
-              ? json_['integerValue'] as core.String
-              : null,
-          stringValue: json_.containsKey('stringValue')
-              ? json_['stringValue'] as core.String
-              : null,
+          dayOfWeekValue: json_['dayOfWeekValue'] as core.String?,
+          floatValue: (json_['floatValue'] as core.num?)?.toDouble(),
+          integerValue: json_['integerValue'] as core.String?,
+          stringValue: json_['stringValue'] as core.String?,
           timeValue: json_.containsKey('timeValue')
               ? GoogleTypeTimeOfDay.fromJson(
                   json_['timeValue'] as core.Map<core.String, core.dynamic>)
               : null,
-          timestampValue: json_.containsKey('timestampValue')
-              ? json_['timestampValue'] as core.String
-              : null,
+          timestampValue: json_['timestampValue'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -19733,8 +19171,7 @@ class GooglePrivacyDlpV2ValueFrequency {
 
   GooglePrivacyDlpV2ValueFrequency.fromJson(core.Map json_)
       : this(
-          count:
-              json_.containsKey('count') ? json_['count'] as core.String : null,
+          count: json_['count'] as core.String?,
           value: json_.containsKey('value')
               ? GooglePrivacyDlpV2Value.fromJson(
                   json_['value'] as core.Map<core.String, core.dynamic>)
@@ -19762,12 +19199,8 @@ class GooglePrivacyDlpV2VersionDescription {
 
   GooglePrivacyDlpV2VersionDescription.fromJson(core.Map json_)
       : this(
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          version: json_.containsKey('version')
-              ? json_['version'] as core.String
-              : null,
+          description: json_['description'] as core.String?,
+          version: json_['version'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

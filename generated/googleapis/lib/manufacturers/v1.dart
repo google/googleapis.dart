@@ -807,11 +807,8 @@ class Attributes {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          ageGroup: json_.containsKey('ageGroup')
-              ? json_['ageGroup'] as core.String
-              : null,
-          brand:
-              json_.containsKey('brand') ? json_['brand'] as core.String : null,
+          ageGroup: json_['ageGroup'] as core.String?,
+          brand: json_['brand'] as core.String?,
           capacity: json_.containsKey('capacity')
               ? Capacity.fromJson(
                   json_['capacity'] as core.Map<core.String, core.dynamic>)
@@ -824,18 +821,13 @@ class Attributes {
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          color:
-              json_.containsKey('color') ? json_['color'] as core.String : null,
+          color: json_['color'] as core.String?,
           count: json_.containsKey('count')
               ? Count.fromJson(
                   json_['count'] as core.Map<core.String, core.dynamic>)
               : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          disclosureDate: json_.containsKey('disclosureDate')
-              ? json_['disclosureDate'] as core.String
-              : null,
+          description: json_['description'] as core.String?,
+          disclosureDate: json_['disclosureDate'] as core.String?,
           excludedDestination: json_.containsKey('excludedDestination')
               ? (json_['excludedDestination'] as core.List)
                   .map((value) => value as core.String)
@@ -847,15 +839,9 @@ class Attributes {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          flavor: json_.containsKey('flavor')
-              ? json_['flavor'] as core.String
-              : null,
-          format: json_.containsKey('format')
-              ? json_['format'] as core.String
-              : null,
-          gender: json_.containsKey('gender')
-              ? json_['gender'] as core.String
-              : null,
+          flavor: json_['flavor'] as core.String?,
+          format: json_['format'] as core.String?,
+          gender: json_['gender'] as core.String?,
           grocery: json_.containsKey('grocery')
               ? Grocery.fromJson(
                   json_['grocery'] as core.Map<core.String, core.dynamic>)
@@ -874,20 +860,14 @@ class Attributes {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          itemGroupId: json_.containsKey('itemGroupId')
-              ? json_['itemGroupId'] as core.String
-              : null,
-          material: json_.containsKey('material')
-              ? json_['material'] as core.String
-              : null,
-          mpn: json_.containsKey('mpn') ? json_['mpn'] as core.String : null,
+          itemGroupId: json_['itemGroupId'] as core.String?,
+          material: json_['material'] as core.String?,
+          mpn: json_['mpn'] as core.String?,
           nutrition: json_.containsKey('nutrition')
               ? Nutrition.fromJson(
                   json_['nutrition'] as core.Map<core.String, core.dynamic>)
               : null,
-          pattern: json_.containsKey('pattern')
-              ? json_['pattern'] as core.String
-              : null,
+          pattern: json_['pattern'] as core.String?,
           productDetail: json_.containsKey('productDetail')
               ? (json_['productDetail'] as core.List)
                   .map((value) => ProductDetail.fromJson(
@@ -899,34 +879,23 @@ class Attributes {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          productLine: json_.containsKey('productLine')
-              ? json_['productLine'] as core.String
-              : null,
-          productName: json_.containsKey('productName')
-              ? json_['productName'] as core.String
-              : null,
-          productPageUrl: json_.containsKey('productPageUrl')
-              ? json_['productPageUrl'] as core.String
-              : null,
+          productLine: json_['productLine'] as core.String?,
+          productName: json_['productName'] as core.String?,
+          productPageUrl: json_['productPageUrl'] as core.String?,
           productType: json_.containsKey('productType')
               ? (json_['productType'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          releaseDate: json_.containsKey('releaseDate')
-              ? json_['releaseDate'] as core.String
-              : null,
+          releaseDate: json_['releaseDate'] as core.String?,
           richProductContent: json_.containsKey('richProductContent')
               ? (json_['richProductContent'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          scent:
-              json_.containsKey('scent') ? json_['scent'] as core.String : null,
-          size: json_.containsKey('size') ? json_['size'] as core.String : null,
-          sizeSystem: json_.containsKey('sizeSystem')
-              ? json_['sizeSystem'] as core.String
-              : null,
+          scent: json_['scent'] as core.String?,
+          size: json_['size'] as core.String?,
+          sizeSystem: json_['sizeSystem'] as core.String?,
           sizeType: json_.containsKey('sizeType')
               ? (json_['sizeType'] as core.List)
                   .map((value) => value as core.String)
@@ -936,21 +905,15 @@ class Attributes {
               ? Price.fromJson(json_['suggestedRetailPrice']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          targetClientId: json_.containsKey('targetClientId')
-              ? json_['targetClientId'] as core.String
-              : null,
-          theme:
-              json_.containsKey('theme') ? json_['theme'] as core.String : null,
-          title:
-              json_.containsKey('title') ? json_['title'] as core.String : null,
+          targetClientId: json_['targetClientId'] as core.String?,
+          theme: json_['theme'] as core.String?,
+          title: json_['title'] as core.String?,
           videoLink: json_.containsKey('videoLink')
               ? (json_['videoLink'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          virtualModelLink: json_.containsKey('virtualModelLink')
-              ? json_['virtualModelLink'] as core.String
-              : null,
+          virtualModelLink: json_['virtualModelLink'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1022,9 +985,8 @@ class Capacity {
 
   Capacity.fromJson(core.Map json_)
       : this(
-          unit: json_.containsKey('unit') ? json_['unit'] as core.String : null,
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
+          unit: json_['unit'] as core.String?,
+          value: json_['value'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1082,18 +1044,13 @@ class Certification {
 
   Certification.fromJson(core.Map json_)
       : this(
-          authority: json_.containsKey('authority')
-              ? json_['authority'] as core.String
-              : null,
-          code: json_.containsKey('code') ? json_['code'] as core.String : null,
-          link: json_.containsKey('link') ? json_['link'] as core.String : null,
-          logo: json_.containsKey('logo') ? json_['logo'] as core.String : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          validUntil: json_.containsKey('validUntil')
-              ? json_['validUntil'] as core.String
-              : null,
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
+          authority: json_['authority'] as core.String?,
+          code: json_['code'] as core.String?,
+          link: json_['link'] as core.String?,
+          logo: json_['logo'] as core.String?,
+          name: json_['name'] as core.String?,
+          validUntil: json_['validUntil'] as core.String?,
+          value: json_['value'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1125,9 +1082,8 @@ class Count {
 
   Count.fromJson(core.Map json_)
       : this(
-          unit: json_.containsKey('unit') ? json_['unit'] as core.String : null,
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
+          unit: json_['unit'] as core.String?,
+          value: json_['value'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1156,12 +1112,8 @@ class DestinationStatus {
 
   DestinationStatus.fromJson(core.Map json_)
       : this(
-          destination: json_.containsKey('destination')
-              ? json_['destination'] as core.String
-              : null,
-          status: json_.containsKey('status')
-              ? json_['status'] as core.String
-              : null,
+          destination: json_['destination'] as core.String?,
+          status: json_['status'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1200,14 +1152,12 @@ class FeatureDescription {
 
   FeatureDescription.fromJson(core.Map json_)
       : this(
-          headline: json_.containsKey('headline')
-              ? json_['headline'] as core.String
-              : null,
+          headline: json_['headline'] as core.String?,
           image: json_.containsKey('image')
               ? Image.fromJson(
                   json_['image'] as core.Map<core.String, core.dynamic>)
               : null,
-          text: json_.containsKey('text') ? json_['text'] as core.String : null,
+          text: json_['text'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1232,10 +1182,8 @@ class FloatUnit {
 
   FloatUnit.fromJson(core.Map json_)
       : this(
-          amount: json_.containsKey('amount')
-              ? (json_['amount'] as core.num).toDouble()
-              : null,
-          unit: json_.containsKey('unit') ? json_['unit'] as core.String : null,
+          amount: (json_['amount'] as core.num?)?.toDouble(),
+          unit: json_['unit'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1269,11 +1217,9 @@ class GoogleShoppingManufacturersV1ProductCertification {
 
   GoogleShoppingManufacturersV1ProductCertification.fromJson(core.Map json_)
       : this(
-          authority: json_.containsKey('authority')
-              ? json_['authority'] as core.String
-              : null,
-          code: json_.containsKey('code') ? json_['code'] as core.String : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          authority: json_['authority'] as core.String?,
+          code: json_['code'] as core.String?,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1325,37 +1271,23 @@ class Grocery {
 
   Grocery.fromJson(core.Map json_)
       : this(
-          activeIngredients: json_.containsKey('activeIngredients')
-              ? json_['activeIngredients'] as core.String
-              : null,
-          alcoholByVolume: json_.containsKey('alcoholByVolume')
-              ? (json_['alcoholByVolume'] as core.num).toDouble()
-              : null,
-          allergens: json_.containsKey('allergens')
-              ? json_['allergens'] as core.String
-              : null,
+          activeIngredients: json_['activeIngredients'] as core.String?,
+          alcoholByVolume: (json_['alcoholByVolume'] as core.num?)?.toDouble(),
+          allergens: json_['allergens'] as core.String?,
           derivedNutritionClaim: json_.containsKey('derivedNutritionClaim')
               ? (json_['derivedNutritionClaim'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          directions: json_.containsKey('directions')
-              ? json_['directions'] as core.String
-              : null,
-          indications: json_.containsKey('indications')
-              ? json_['indications'] as core.String
-              : null,
-          ingredients: json_.containsKey('ingredients')
-              ? json_['ingredients'] as core.String
-              : null,
+          directions: json_['directions'] as core.String?,
+          indications: json_['indications'] as core.String?,
+          ingredients: json_['ingredients'] as core.String?,
           nutritionClaim: json_.containsKey('nutritionClaim')
               ? (json_['nutritionClaim'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          storageInstructions: json_.containsKey('storageInstructions')
-              ? json_['storageInstructions'] as core.String
-              : null,
+          storageInstructions: json_['storageInstructions'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1422,13 +1354,9 @@ class Image {
 
   Image.fromJson(core.Map json_)
       : this(
-          imageUrl: json_.containsKey('imageUrl')
-              ? json_['imageUrl'] as core.String
-              : null,
-          status: json_.containsKey('status')
-              ? json_['status'] as core.String
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          imageUrl: json_['imageUrl'] as core.String?,
+          status: json_['status'] as core.String?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1498,27 +1426,14 @@ class Issue {
 
   Issue.fromJson(core.Map json_)
       : this(
-          attribute: json_.containsKey('attribute')
-              ? json_['attribute'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          destination: json_.containsKey('destination')
-              ? json_['destination'] as core.String
-              : null,
-          resolution: json_.containsKey('resolution')
-              ? json_['resolution'] as core.String
-              : null,
-          severity: json_.containsKey('severity')
-              ? json_['severity'] as core.String
-              : null,
-          timestamp: json_.containsKey('timestamp')
-              ? json_['timestamp'] as core.String
-              : null,
-          title:
-              json_.containsKey('title') ? json_['title'] as core.String : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          attribute: json_['attribute'] as core.String?,
+          description: json_['description'] as core.String?,
+          destination: json_['destination'] as core.String?,
+          resolution: json_['resolution'] as core.String?,
+          severity: json_['severity'] as core.String?,
+          timestamp: json_['timestamp'] as core.String?,
+          title: json_['title'] as core.String?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1550,9 +1465,7 @@ class ListProductCertificationsResponse {
 
   ListProductCertificationsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           productCertifications: json_.containsKey('productCertifications')
               ? (json_['productCertifications'] as core.List)
                   .map((value) => ProductCertification.fromJson(
@@ -1582,9 +1495,7 @@ class ListProductsResponse {
 
   ListProductsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           products: json_.containsKey('products')
               ? (json_['products'] as core.List)
                   .map((value) => Product.fromJson(
@@ -1786,32 +1697,25 @@ class Nutrition {
                   json_['addedSugars'] as core.Map<core.String, core.dynamic>)
               : null,
           addedSugarsDailyPercentage:
-              json_.containsKey('addedSugarsDailyPercentage')
-                  ? (json_['addedSugarsDailyPercentage'] as core.num).toDouble()
-                  : null,
+              (json_['addedSugarsDailyPercentage'] as core.num?)?.toDouble(),
           calcium: json_.containsKey('calcium')
               ? FloatUnit.fromJson(
                   json_['calcium'] as core.Map<core.String, core.dynamic>)
               : null,
-          calciumDailyPercentage: json_.containsKey('calciumDailyPercentage')
-              ? (json_['calciumDailyPercentage'] as core.num).toDouble()
-              : null,
+          calciumDailyPercentage:
+              (json_['calciumDailyPercentage'] as core.num?)?.toDouble(),
           cholesterol: json_.containsKey('cholesterol')
               ? FloatUnit.fromJson(
                   json_['cholesterol'] as core.Map<core.String, core.dynamic>)
               : null,
           cholesterolDailyPercentage:
-              json_.containsKey('cholesterolDailyPercentage')
-                  ? (json_['cholesterolDailyPercentage'] as core.num).toDouble()
-                  : null,
+              (json_['cholesterolDailyPercentage'] as core.num?)?.toDouble(),
           dietaryFiber: json_.containsKey('dietaryFiber')
               ? FloatUnit.fromJson(
                   json_['dietaryFiber'] as core.Map<core.String, core.dynamic>)
               : null,
-          dietaryFiberDailyPercentage: json_
-                  .containsKey('dietaryFiberDailyPercentage')
-              ? (json_['dietaryFiberDailyPercentage'] as core.num).toDouble()
-              : null,
+          dietaryFiberDailyPercentage:
+              (json_['dietaryFiberDailyPercentage'] as core.num?)?.toDouble(),
           energy: json_.containsKey('energy')
               ? FloatUnit.fromJson(
                   json_['energy'] as core.Map<core.String, core.dynamic>)
@@ -1820,30 +1724,24 @@ class Nutrition {
               ? FloatUnit.fromJson(
                   json_['energyFromFat'] as core.Map<core.String, core.dynamic>)
               : null,
-          folateDailyPercentage: json_.containsKey('folateDailyPercentage')
-              ? (json_['folateDailyPercentage'] as core.num).toDouble()
-              : null,
+          folateDailyPercentage:
+              (json_['folateDailyPercentage'] as core.num?)?.toDouble(),
           folateFolicAcid: json_.containsKey('folateFolicAcid')
               ? FloatUnit.fromJson(json_['folateFolicAcid']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          folateMcgDfe: json_.containsKey('folateMcgDfe')
-              ? (json_['folateMcgDfe'] as core.num).toDouble()
-              : null,
+          folateMcgDfe: (json_['folateMcgDfe'] as core.num?)?.toDouble(),
           iron: json_.containsKey('iron')
               ? FloatUnit.fromJson(
                   json_['iron'] as core.Map<core.String, core.dynamic>)
               : null,
-          ironDailyPercentage: json_.containsKey('ironDailyPercentage')
-              ? (json_['ironDailyPercentage'] as core.num).toDouble()
-              : null,
+          ironDailyPercentage:
+              (json_['ironDailyPercentage'] as core.num?)?.toDouble(),
           monounsaturatedFat: json_.containsKey('monounsaturatedFat')
               ? FloatUnit.fromJson(json_['monounsaturatedFat']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          nutritionFactMeasure: json_.containsKey('nutritionFactMeasure')
-              ? json_['nutritionFactMeasure'] as core.String
-              : null,
+          nutritionFactMeasure: json_['nutritionFactMeasure'] as core.String?,
           polyols: json_.containsKey('polyols')
               ? FloatUnit.fromJson(
                   json_['polyols'] as core.Map<core.String, core.dynamic>)
@@ -1857,44 +1755,34 @@ class Nutrition {
                   json_['potassium'] as core.Map<core.String, core.dynamic>)
               : null,
           potassiumDailyPercentage:
-              json_.containsKey('potassiumDailyPercentage')
-                  ? (json_['potassiumDailyPercentage'] as core.num).toDouble()
-                  : null,
-          preparedSizeDescription: json_.containsKey('preparedSizeDescription')
-              ? json_['preparedSizeDescription'] as core.String
-              : null,
+              (json_['potassiumDailyPercentage'] as core.num?)?.toDouble(),
+          preparedSizeDescription:
+              json_['preparedSizeDescription'] as core.String?,
           protein: json_.containsKey('protein')
               ? FloatUnit.fromJson(
                   json_['protein'] as core.Map<core.String, core.dynamic>)
               : null,
-          proteinDailyPercentage: json_.containsKey('proteinDailyPercentage')
-              ? (json_['proteinDailyPercentage'] as core.num).toDouble()
-              : null,
+          proteinDailyPercentage:
+              (json_['proteinDailyPercentage'] as core.num?)?.toDouble(),
           saturatedFat: json_.containsKey('saturatedFat')
               ? FloatUnit.fromJson(
                   json_['saturatedFat'] as core.Map<core.String, core.dynamic>)
               : null,
-          saturatedFatDailyPercentage: json_
-                  .containsKey('saturatedFatDailyPercentage')
-              ? (json_['saturatedFatDailyPercentage'] as core.num).toDouble()
-              : null,
-          servingSizeDescription: json_.containsKey('servingSizeDescription')
-              ? json_['servingSizeDescription'] as core.String
-              : null,
+          saturatedFatDailyPercentage:
+              (json_['saturatedFatDailyPercentage'] as core.num?)?.toDouble(),
+          servingSizeDescription:
+              json_['servingSizeDescription'] as core.String?,
           servingSizeMeasure: json_.containsKey('servingSizeMeasure')
               ? FloatUnit.fromJson(json_['servingSizeMeasure']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          servingsPerContainer: json_.containsKey('servingsPerContainer')
-              ? json_['servingsPerContainer'] as core.String
-              : null,
+          servingsPerContainer: json_['servingsPerContainer'] as core.String?,
           sodium: json_.containsKey('sodium')
               ? FloatUnit.fromJson(
                   json_['sodium'] as core.Map<core.String, core.dynamic>)
               : null,
-          sodiumDailyPercentage: json_.containsKey('sodiumDailyPercentage')
-              ? (json_['sodiumDailyPercentage'] as core.num).toDouble()
-              : null,
+          sodiumDailyPercentage:
+              (json_['sodiumDailyPercentage'] as core.num?)?.toDouble(),
           starch: json_.containsKey('starch')
               ? FloatUnit.fromJson(
                   json_['starch'] as core.Map<core.String, core.dynamic>)
@@ -1904,39 +1792,32 @@ class Nutrition {
                   as core.Map<core.String, core.dynamic>)
               : null,
           totalCarbohydrateDailyPercentage:
-              json_.containsKey('totalCarbohydrateDailyPercentage')
-                  ? (json_['totalCarbohydrateDailyPercentage'] as core.num)
-                      .toDouble()
-                  : null,
+              (json_['totalCarbohydrateDailyPercentage'] as core.num?)
+                  ?.toDouble(),
           totalFat: json_.containsKey('totalFat')
               ? FloatUnit.fromJson(
                   json_['totalFat'] as core.Map<core.String, core.dynamic>)
               : null,
-          totalFatDailyPercentage: json_.containsKey('totalFatDailyPercentage')
-              ? (json_['totalFatDailyPercentage'] as core.num).toDouble()
-              : null,
+          totalFatDailyPercentage:
+              (json_['totalFatDailyPercentage'] as core.num?)?.toDouble(),
           totalSugars: json_.containsKey('totalSugars')
               ? FloatUnit.fromJson(
                   json_['totalSugars'] as core.Map<core.String, core.dynamic>)
               : null,
           totalSugarsDailyPercentage:
-              json_.containsKey('totalSugarsDailyPercentage')
-                  ? (json_['totalSugarsDailyPercentage'] as core.num).toDouble()
-                  : null,
+              (json_['totalSugarsDailyPercentage'] as core.num?)?.toDouble(),
           transFat: json_.containsKey('transFat')
               ? FloatUnit.fromJson(
                   json_['transFat'] as core.Map<core.String, core.dynamic>)
               : null,
-          transFatDailyPercentage: json_.containsKey('transFatDailyPercentage')
-              ? (json_['transFatDailyPercentage'] as core.num).toDouble()
-              : null,
+          transFatDailyPercentage:
+              (json_['transFatDailyPercentage'] as core.num?)?.toDouble(),
           vitaminD: json_.containsKey('vitaminD')
               ? FloatUnit.fromJson(
                   json_['vitaminD'] as core.Map<core.String, core.dynamic>)
               : null,
-          vitaminDDailyPercentage: json_.containsKey('vitaminDDailyPercentage')
-              ? (json_['vitaminDDailyPercentage'] as core.num).toDouble()
-              : null,
+          vitaminDDailyPercentage:
+              (json_['vitaminDDailyPercentage'] as core.num?)?.toDouble(),
           voluntaryNutritionFact: json_.containsKey('voluntaryNutritionFact')
               ? (json_['voluntaryNutritionFact'] as core.List)
                   .map((value) => VoluntaryNutritionFact.fromJson(
@@ -2030,12 +1911,8 @@ class Price {
 
   Price.fromJson(core.Map json_)
       : this(
-          amount: json_.containsKey('amount')
-              ? json_['amount'] as core.String
-              : null,
-          currency: json_.containsKey('currency')
-              ? json_['currency'] as core.String
-              : null,
+          amount: json_['amount'] as core.String?,
+          currency: json_['currency'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2102,9 +1979,7 @@ class Product {
               ? Attributes.fromJson(
                   json_['attributes'] as core.Map<core.String, core.dynamic>)
               : null,
-          contentLanguage: json_.containsKey('contentLanguage')
-              ? json_['contentLanguage'] as core.String
-              : null,
+          contentLanguage: json_['contentLanguage'] as core.String?,
           destinationStatuses: json_.containsKey('destinationStatuses')
               ? (json_['destinationStatuses'] as core.List)
                   .map((value) => DestinationStatus.fromJson(
@@ -2117,16 +1992,10 @@ class Product {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          parent: json_.containsKey('parent')
-              ? json_['parent'] as core.String
-              : null,
-          productId: json_.containsKey('productId')
-              ? json_['productId'] as core.String
-              : null,
-          targetCountry: json_.containsKey('targetCountry')
-              ? json_['targetCountry'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          parent: json_['parent'] as core.String?,
+          productId: json_['productId'] as core.String?,
+          targetCountry: json_['targetCountry'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2218,8 +2087,7 @@ class ProductCertification {
 
   ProductCertification.fromJson(core.Map json_)
       : this(
-          brand:
-              json_.containsKey('brand') ? json_['brand'] as core.String : null,
+          brand: json_['brand'] as core.String?,
           certification: json_.containsKey('certification')
               ? (json_['certification'] as core.List)
                   .map((value) => Certification.fromJson(
@@ -2248,7 +2116,7 @@ class ProductCertification {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           productCode: json_.containsKey('productCode')
               ? (json_['productCode'] as core.List)
                   .map((value) => value as core.String)
@@ -2259,8 +2127,7 @@ class ProductCertification {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          title:
-              json_.containsKey('title') ? json_['title'] as core.String : null,
+          title: json_['title'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2300,15 +2167,9 @@ class ProductDetail {
 
   ProductDetail.fromJson(core.Map json_)
       : this(
-          attributeName: json_.containsKey('attributeName')
-              ? json_['attributeName'] as core.String
-              : null,
-          attributeValue: json_.containsKey('attributeValue')
-              ? json_['attributeValue'] as core.String
-              : null,
-          sectionName: json_.containsKey('sectionName')
-              ? json_['sectionName'] as core.String
-              : null,
+          attributeName: json_['attributeName'] as core.String?,
+          attributeValue: json_['attributeValue'] as core.String?,
+          sectionName: json_['sectionName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2337,10 +2198,8 @@ class VoluntaryNutritionFact {
 
   VoluntaryNutritionFact.fromJson(core.Map json_)
       : this(
-          dailyPercentage: json_.containsKey('dailyPercentage')
-              ? (json_['dailyPercentage'] as core.num).toDouble()
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          dailyPercentage: (json_['dailyPercentage'] as core.num?)?.toDouble(),
+          name: json_['name'] as core.String?,
           value: json_.containsKey('value')
               ? FloatUnit.fromJson(
                   json_['value'] as core.Map<core.String, core.dynamic>)

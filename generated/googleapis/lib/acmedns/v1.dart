@@ -200,13 +200,9 @@ class AcmeTxtRecord {
 
   AcmeTxtRecord.fromJson(core.Map json_)
       : this(
-          digest: json_.containsKey('digest')
-              ? json_['digest'] as core.String
-              : null,
-          fqdn: json_.containsKey('fqdn') ? json_['fqdn'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          digest: json_['digest'] as core.String?,
+          fqdn: json_['fqdn'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -262,12 +258,8 @@ class RotateChallengesRequest {
 
   RotateChallengesRequest.fromJson(core.Map json_)
       : this(
-          accessToken: json_.containsKey('accessToken')
-              ? json_['accessToken'] as core.String
-              : null,
-          keepExpiredRecords: json_.containsKey('keepExpiredRecords')
-              ? json_['keepExpiredRecords'] as core.bool
-              : null,
+          accessToken: json_['accessToken'] as core.String?,
+          keepExpiredRecords: json_['keepExpiredRecords'] as core.bool?,
           recordsToAdd: json_.containsKey('recordsToAdd')
               ? (json_['recordsToAdd'] as core.List)
                   .map((value) => AcmeTxtRecord.fromJson(

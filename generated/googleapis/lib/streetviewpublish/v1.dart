@@ -1010,12 +1010,8 @@ class GpsDataGapFailureDetails {
 
   GpsDataGapFailureDetails.fromJson(core.Map json_)
       : this(
-          gapDuration: json_.containsKey('gapDuration')
-              ? json_['gapDuration'] as core.String
-              : null,
-          gapStartTime: json_.containsKey('gapStartTime')
-              ? json_['gapStartTime'] as core.String
-              : null,
+          gapDuration: json_['gapDuration'] as core.String?,
+          gapStartTime: json_['gapStartTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1091,12 +1087,8 @@ class ImuDataGapFailureDetails {
 
   ImuDataGapFailureDetails.fromJson(core.Map json_)
       : this(
-          gapDuration: json_.containsKey('gapDuration')
-              ? json_['gapDuration'] as core.String
-              : null,
-          gapStartTime: json_.containsKey('gapStartTime')
-              ? json_['gapStartTime'] as core.String
-              : null,
+          gapDuration: json_['gapDuration'] as core.String?,
+          gapStartTime: json_['gapStartTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1116,9 +1108,7 @@ class InsufficientGpsFailureDetails {
 
   InsufficientGpsFailureDetails.fromJson(core.Map json_)
       : this(
-          gpsPointsFound: json_.containsKey('gpsPointsFound')
-              ? json_['gpsPointsFound'] as core.int
-              : null,
+          gpsPointsFound: json_['gpsPointsFound'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1190,10 +1180,8 @@ class Level {
 
   Level.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          number: json_.containsKey('number')
-              ? (json_['number'] as core.num).toDouble()
-              : null,
+          name: json_['name'] as core.String?,
+          number: (json_['number'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1226,9 +1214,7 @@ class ListPhotoSequencesResponse {
 
   ListPhotoSequencesResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           photoSequences: json_.containsKey('photoSequences')
               ? (json_['photoSequences'] as core.List)
                   .map((value) => Operation.fromJson(
@@ -1261,9 +1247,7 @@ class ListPhotosResponse {
 
   ListPhotosResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           photos: json_.containsKey('photos')
               ? (json_['photos'] as core.List)
                   .map((value) => Photo.fromJson(
@@ -1301,18 +1285,10 @@ class Measurement3d {
 
   Measurement3d.fromJson(core.Map json_)
       : this(
-          captureTime: json_.containsKey('captureTime')
-              ? json_['captureTime'] as core.String
-              : null,
-          x: json_.containsKey('x')
-              ? (json_['x'] as core.num).toDouble()
-              : null,
-          y: json_.containsKey('y')
-              ? (json_['y'] as core.num).toDouble()
-              : null,
-          z: json_.containsKey('z')
-              ? (json_['z'] as core.num).toDouble()
-              : null,
+          captureTime: json_['captureTime'] as core.String?,
+          x: (json_['x'] as core.num?)?.toDouble(),
+          y: (json_['y'] as core.num?)?.toDouble(),
+          z: (json_['z'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1346,18 +1322,10 @@ class NoOverlapGpsFailureDetails {
 
   NoOverlapGpsFailureDetails.fromJson(core.Map json_)
       : this(
-          gpsEndTime: json_.containsKey('gpsEndTime')
-              ? json_['gpsEndTime'] as core.String
-              : null,
-          gpsStartTime: json_.containsKey('gpsStartTime')
-              ? json_['gpsStartTime'] as core.String
-              : null,
-          videoEndTime: json_.containsKey('videoEndTime')
-              ? json_['videoEndTime'] as core.String
-              : null,
-          videoStartTime: json_.containsKey('videoStartTime')
-              ? json_['videoStartTime'] as core.String
-              : null,
+          gpsEndTime: json_['gpsEndTime'] as core.String?,
+          gpsStartTime: json_['gpsStartTime'] as core.String?,
+          videoEndTime: json_['videoEndTime'] as core.String?,
+          videoStartTime: json_['videoStartTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1382,9 +1350,7 @@ class NotOutdoorsFailureDetails {
 
   NotOutdoorsFailureDetails.fromJson(core.Map json_)
       : this(
-          startTime: json_.containsKey('startTime')
-              ? json_['startTime'] as core.String
-              : null,
+          startTime: json_['startTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1445,7 +1411,7 @@ class Operation {
 
   Operation.fromJson(core.Map json_)
       : this(
-          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
@@ -1453,7 +1419,7 @@ class Operation {
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           response: json_.containsKey('response')
               ? json_['response'] as core.Map<core.String, core.dynamic>
               : null,
@@ -1582,21 +1548,15 @@ class Photo {
 
   Photo.fromJson(core.Map json_)
       : this(
-          captureTime: json_.containsKey('captureTime')
-              ? json_['captureTime'] as core.String
-              : null,
+          captureTime: json_['captureTime'] as core.String?,
           connections: json_.containsKey('connections')
               ? (json_['connections'] as core.List)
                   .map((value) => Connection.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          downloadUrl: json_.containsKey('downloadUrl')
-              ? json_['downloadUrl'] as core.String
-              : null,
-          mapsPublishStatus: json_.containsKey('mapsPublishStatus')
-              ? json_['mapsPublishStatus'] as core.String
-              : null,
+          downloadUrl: json_['downloadUrl'] as core.String?,
+          mapsPublishStatus: json_['mapsPublishStatus'] as core.String?,
           photoId: json_.containsKey('photoId')
               ? PhotoId.fromJson(
                   json_['photoId'] as core.Map<core.String, core.dynamic>)
@@ -1611,25 +1571,15 @@ class Photo {
               ? Pose.fromJson(
                   json_['pose'] as core.Map<core.String, core.dynamic>)
               : null,
-          shareLink: json_.containsKey('shareLink')
-              ? json_['shareLink'] as core.String
-              : null,
-          thumbnailUrl: json_.containsKey('thumbnailUrl')
-              ? json_['thumbnailUrl'] as core.String
-              : null,
-          transferStatus: json_.containsKey('transferStatus')
-              ? json_['transferStatus'] as core.String
-              : null,
+          shareLink: json_['shareLink'] as core.String?,
+          thumbnailUrl: json_['thumbnailUrl'] as core.String?,
+          transferStatus: json_['transferStatus'] as core.String?,
           uploadReference: json_.containsKey('uploadReference')
               ? UploadRef.fromJson(json_['uploadReference']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          uploadTime: json_.containsKey('uploadTime')
-              ? json_['uploadTime'] as core.String
-              : null,
-          viewCount: json_.containsKey('viewCount')
-              ? json_['viewCount'] as core.String
-              : null,
+          uploadTime: json_['uploadTime'] as core.String?,
+          viewCount: json_['viewCount'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1660,7 +1610,7 @@ class PhotoId {
 
   PhotoId.fromJson(core.Map json_)
       : this(
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          id: json_['id'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1874,26 +1824,16 @@ class PhotoSequence {
 
   PhotoSequence.fromJson(core.Map json_)
       : this(
-          captureTimeOverride: json_.containsKey('captureTimeOverride')
-              ? json_['captureTimeOverride'] as core.String
-              : null,
-          distanceMeters: json_.containsKey('distanceMeters')
-              ? (json_['distanceMeters'] as core.num).toDouble()
-              : null,
+          captureTimeOverride: json_['captureTimeOverride'] as core.String?,
+          distanceMeters: (json_['distanceMeters'] as core.num?)?.toDouble(),
           failureDetails: json_.containsKey('failureDetails')
               ? ProcessingFailureDetails.fromJson(json_['failureDetails']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          failureReason: json_.containsKey('failureReason')
-              ? json_['failureReason'] as core.String
-              : null,
-          filename: json_.containsKey('filename')
-              ? json_['filename'] as core.String
-              : null,
-          gpsSource: json_.containsKey('gpsSource')
-              ? json_['gpsSource'] as core.String
-              : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          failureReason: json_['failureReason'] as core.String?,
+          filename: json_['filename'] as core.String?,
+          gpsSource: json_['gpsSource'] as core.String?,
+          id: json_['id'] as core.String?,
           imu: json_.containsKey('imu')
               ? Imu.fromJson(
                   json_['imu'] as core.Map<core.String, core.dynamic>)
@@ -1904,9 +1844,7 @@ class PhotoSequence {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          processingState: json_.containsKey('processingState')
-              ? json_['processingState'] as core.String
-              : null,
+          processingState: json_['processingState'] as core.String?,
           rawGpsTimeline: json_.containsKey('rawGpsTimeline')
               ? (json_['rawGpsTimeline'] as core.List)
                   .map((value) => Pose.fromJson(
@@ -1921,12 +1859,8 @@ class PhotoSequence {
               ? UploadRef.fromJson(json_['uploadReference']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          uploadTime: json_.containsKey('uploadTime')
-              ? json_['uploadTime'] as core.String
-              : null,
-          viewCount: json_.containsKey('viewCount')
-              ? json_['viewCount'] as core.String
-              : null,
+          uploadTime: json_['uploadTime'] as core.String?,
+          viewCount: json_['viewCount'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1976,13 +1910,9 @@ class Place {
 
   Place.fromJson(core.Map json_)
       : this(
-          languageCode: json_.containsKey('languageCode')
-              ? json_['languageCode'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          placeId: json_.containsKey('placeId')
-              ? json_['placeId'] as core.String
-              : null,
+          languageCode: json_['languageCode'] as core.String?,
+          name: json_['name'] as core.String?,
+          placeId: json_['placeId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2057,19 +1987,11 @@ class Pose {
 
   Pose.fromJson(core.Map json_)
       : this(
-          accuracyMeters: json_.containsKey('accuracyMeters')
-              ? (json_['accuracyMeters'] as core.num).toDouble()
-              : null,
-          altitude: json_.containsKey('altitude')
-              ? (json_['altitude'] as core.num).toDouble()
-              : null,
+          accuracyMeters: (json_['accuracyMeters'] as core.num?)?.toDouble(),
+          altitude: (json_['altitude'] as core.num?)?.toDouble(),
           gpsRecordTimestampUnixEpoch:
-              json_.containsKey('gpsRecordTimestampUnixEpoch')
-                  ? json_['gpsRecordTimestampUnixEpoch'] as core.String
-                  : null,
-          heading: json_.containsKey('heading')
-              ? (json_['heading'] as core.num).toDouble()
-              : null,
+              json_['gpsRecordTimestampUnixEpoch'] as core.String?,
+          heading: (json_['heading'] as core.num?)?.toDouble(),
           latLngPair: json_.containsKey('latLngPair')
               ? LatLng.fromJson(
                   json_['latLngPair'] as core.Map<core.String, core.dynamic>)
@@ -2078,12 +2000,8 @@ class Pose {
               ? Level.fromJson(
                   json_['level'] as core.Map<core.String, core.dynamic>)
               : null,
-          pitch: json_.containsKey('pitch')
-              ? (json_['pitch'] as core.num).toDouble()
-              : null,
-          roll: json_.containsKey('roll')
-              ? (json_['roll'] as core.num).toDouble()
-              : null,
+          pitch: (json_['pitch'] as core.num?)?.toDouble(),
+          roll: (json_['roll'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2210,9 +2128,7 @@ class UpdatePhotoRequest {
               ? Photo.fromJson(
                   json_['photo'] as core.Map<core.String, core.dynamic>)
               : null,
-          updateMask: json_.containsKey('updateMask')
-              ? json_['updateMask'] as core.String
-              : null,
+          updateMask: json_['updateMask'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2235,9 +2151,7 @@ class UploadRef {
 
   UploadRef.fromJson(core.Map json_)
       : this(
-          uploadUrl: json_.containsKey('uploadUrl')
-              ? json_['uploadUrl'] as core.String
-              : null,
+          uploadUrl: json_['uploadUrl'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

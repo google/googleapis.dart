@@ -151,9 +151,7 @@ class Challenge {
 
   Challenge.fromJson(core.Map json_)
       : this(
-          challenge: json_.containsKey('challenge')
-              ? json_['challenge'] as core.String
-              : null,
+          challenge: json_['challenge'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -176,12 +174,8 @@ class CrowdStrikeAgent {
 
   CrowdStrikeAgent.fromJson(core.Map json_)
       : this(
-          agentId: json_.containsKey('agentId')
-              ? json_['agentId'] as core.String
-              : null,
-          customerId: json_.containsKey('customerId')
-              ? json_['customerId'] as core.String
-              : null,
+          agentId: json_['agentId'] as core.String?,
+          customerId: json_['customerId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -452,19 +446,12 @@ class DeviceSignals {
 
   DeviceSignals.fromJson(core.Map json_)
       : this(
-          allowScreenLock: json_.containsKey('allowScreenLock')
-              ? json_['allowScreenLock'] as core.bool
-              : null,
-          browserVersion: json_.containsKey('browserVersion')
-              ? json_['browserVersion'] as core.String
-              : null,
-          builtInDnsClientEnabled: json_.containsKey('builtInDnsClientEnabled')
-              ? json_['builtInDnsClientEnabled'] as core.bool
-              : null,
+          allowScreenLock: json_['allowScreenLock'] as core.bool?,
+          browserVersion: json_['browserVersion'] as core.String?,
+          builtInDnsClientEnabled:
+              json_['builtInDnsClientEnabled'] as core.bool?,
           chromeRemoteDesktopAppBlocked:
-              json_.containsKey('chromeRemoteDesktopAppBlocked')
-                  ? json_['chromeRemoteDesktopAppBlocked'] as core.bool
-                  : null,
+              json_['chromeRemoteDesktopAppBlocked'] as core.bool?,
           crowdStrikeAgent: json_.containsKey('crowdStrikeAgent')
               ? CrowdStrikeAgent.fromJson(json_['crowdStrikeAgent']
                   as core.Map<core.String, core.dynamic>)
@@ -474,24 +461,13 @@ class DeviceSignals {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          deviceEnrollmentDomain: json_.containsKey('deviceEnrollmentDomain')
-              ? json_['deviceEnrollmentDomain'] as core.String
-              : null,
-          deviceManufacturer: json_.containsKey('deviceManufacturer')
-              ? json_['deviceManufacturer'] as core.String
-              : null,
-          deviceModel: json_.containsKey('deviceModel')
-              ? json_['deviceModel'] as core.String
-              : null,
-          diskEncryption: json_.containsKey('diskEncryption')
-              ? json_['diskEncryption'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          hostname: json_.containsKey('hostname')
-              ? json_['hostname'] as core.String
-              : null,
+          deviceEnrollmentDomain:
+              json_['deviceEnrollmentDomain'] as core.String?,
+          deviceManufacturer: json_['deviceManufacturer'] as core.String?,
+          deviceModel: json_['deviceModel'] as core.String?,
+          diskEncryption: json_['diskEncryption'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          hostname: json_['hostname'] as core.String?,
           imei: json_.containsKey('imei')
               ? (json_['imei'] as core.List)
                   .map((value) => value as core.String)
@@ -507,64 +483,35 @@ class DeviceSignals {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          operatingSystem: json_.containsKey('operatingSystem')
-              ? json_['operatingSystem'] as core.String
-              : null,
-          osFirewall: json_.containsKey('osFirewall')
-              ? json_['osFirewall'] as core.String
-              : null,
-          osVersion: json_.containsKey('osVersion')
-              ? json_['osVersion'] as core.String
-              : null,
+          operatingSystem: json_['operatingSystem'] as core.String?,
+          osFirewall: json_['osFirewall'] as core.String?,
+          osVersion: json_['osVersion'] as core.String?,
           passwordProtectionWarningTrigger:
-              json_.containsKey('passwordProtectionWarningTrigger')
-                  ? json_['passwordProtectionWarningTrigger'] as core.String
-                  : null,
+              json_['passwordProtectionWarningTrigger'] as core.String?,
           profileAffiliationIds: json_.containsKey('profileAffiliationIds')
               ? (json_['profileAffiliationIds'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          profileEnrollmentDomain: json_.containsKey('profileEnrollmentDomain')
-              ? json_['profileEnrollmentDomain'] as core.String
-              : null,
-          realtimeUrlCheckMode: json_.containsKey('realtimeUrlCheckMode')
-              ? json_['realtimeUrlCheckMode'] as core.String
-              : null,
+          profileEnrollmentDomain:
+              json_['profileEnrollmentDomain'] as core.String?,
+          realtimeUrlCheckMode: json_['realtimeUrlCheckMode'] as core.String?,
           safeBrowsingProtectionLevel:
-              json_.containsKey('safeBrowsingProtectionLevel')
-                  ? json_['safeBrowsingProtectionLevel'] as core.String
-                  : null,
-          screenLockSecured: json_.containsKey('screenLockSecured')
-              ? json_['screenLockSecured'] as core.String
-              : null,
-          secureBootMode: json_.containsKey('secureBootMode')
-              ? json_['secureBootMode'] as core.String
-              : null,
-          serialNumber: json_.containsKey('serialNumber')
-              ? json_['serialNumber'] as core.String
-              : null,
-          siteIsolationEnabled: json_.containsKey('siteIsolationEnabled')
-              ? json_['siteIsolationEnabled'] as core.bool
-              : null,
+              json_['safeBrowsingProtectionLevel'] as core.String?,
+          screenLockSecured: json_['screenLockSecured'] as core.String?,
+          secureBootMode: json_['secureBootMode'] as core.String?,
+          serialNumber: json_['serialNumber'] as core.String?,
+          siteIsolationEnabled: json_['siteIsolationEnabled'] as core.bool?,
           systemDnsServers: json_.containsKey('systemDnsServers')
               ? (json_['systemDnsServers'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
           thirdPartyBlockingEnabled:
-              json_.containsKey('thirdPartyBlockingEnabled')
-                  ? json_['thirdPartyBlockingEnabled'] as core.bool
-                  : null,
-          trigger: json_.containsKey('trigger')
-              ? json_['trigger'] as core.String
-              : null,
-          windowsMachineDomain: json_.containsKey('windowsMachineDomain')
-              ? json_['windowsMachineDomain'] as core.String
-              : null,
-          windowsUserDomain: json_.containsKey('windowsUserDomain')
-              ? json_['windowsUserDomain'] as core.String
-              : null,
+              json_['thirdPartyBlockingEnabled'] as core.bool?,
+          trigger: json_['trigger'] as core.String?,
+          windowsMachineDomain: json_['windowsMachineDomain'] as core.String?,
+          windowsUserDomain: json_['windowsUserDomain'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -656,12 +603,8 @@ class VerifyChallengeResponseRequest {
 
   VerifyChallengeResponseRequest.fromJson(core.Map json_)
       : this(
-          challengeResponse: json_.containsKey('challengeResponse')
-              ? json_['challengeResponse'] as core.String
-              : null,
-          expectedIdentity: json_.containsKey('expectedIdentity')
-              ? json_['expectedIdentity'] as core.String
-              : null,
+          challengeResponse: json_['challengeResponse'] as core.String?,
+          expectedIdentity: json_['expectedIdentity'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -759,44 +702,22 @@ class VerifyChallengeResponseResult {
 
   VerifyChallengeResponseResult.fromJson(core.Map json_)
       : this(
-          attestedDeviceId: json_.containsKey('attestedDeviceId')
-              ? json_['attestedDeviceId'] as core.String
-              : null,
-          customerId: json_.containsKey('customerId')
-              ? json_['customerId'] as core.String
-              : null,
-          deviceEnrollmentId: json_.containsKey('deviceEnrollmentId')
-              ? json_['deviceEnrollmentId'] as core.String
-              : null,
-          devicePermanentId: json_.containsKey('devicePermanentId')
-              ? json_['devicePermanentId'] as core.String
-              : null,
-          deviceSignal: json_.containsKey('deviceSignal')
-              ? json_['deviceSignal'] as core.String
-              : null,
+          attestedDeviceId: json_['attestedDeviceId'] as core.String?,
+          customerId: json_['customerId'] as core.String?,
+          deviceEnrollmentId: json_['deviceEnrollmentId'] as core.String?,
+          devicePermanentId: json_['devicePermanentId'] as core.String?,
+          deviceSignal: json_['deviceSignal'] as core.String?,
           deviceSignals: json_.containsKey('deviceSignals')
               ? DeviceSignals.fromJson(
                   json_['deviceSignals'] as core.Map<core.String, core.dynamic>)
               : null,
-          keyTrustLevel: json_.containsKey('keyTrustLevel')
-              ? json_['keyTrustLevel'] as core.String
-              : null,
-          profileCustomerId: json_.containsKey('profileCustomerId')
-              ? json_['profileCustomerId'] as core.String
-              : null,
-          profileKeyTrustLevel: json_.containsKey('profileKeyTrustLevel')
-              ? json_['profileKeyTrustLevel'] as core.String
-              : null,
+          keyTrustLevel: json_['keyTrustLevel'] as core.String?,
+          profileCustomerId: json_['profileCustomerId'] as core.String?,
+          profileKeyTrustLevel: json_['profileKeyTrustLevel'] as core.String?,
           signedPublicKeyAndChallenge:
-              json_.containsKey('signedPublicKeyAndChallenge')
-                  ? json_['signedPublicKeyAndChallenge'] as core.String
-                  : null,
-          virtualDeviceId: json_.containsKey('virtualDeviceId')
-              ? json_['virtualDeviceId'] as core.String
-              : null,
-          virtualProfileId: json_.containsKey('virtualProfileId')
-              ? json_['virtualProfileId'] as core.String
-              : null,
+              json_['signedPublicKeyAndChallenge'] as core.String?,
+          virtualDeviceId: json_['virtualDeviceId'] as core.String?,
+          virtualProfileId: json_['virtualProfileId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

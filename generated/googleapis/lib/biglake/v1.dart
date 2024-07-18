@@ -824,19 +824,11 @@ class Catalog {
 
   Catalog.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          deleteTime: json_.containsKey('deleteTime')
-              ? json_['deleteTime'] as core.String
-              : null,
-          expireTime: json_.containsKey('expireTime')
-              ? json_['expireTime'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          deleteTime: json_['deleteTime'] as core.String?,
+          expireTime: json_['expireTime'] as core.String?,
+          name: json_['name'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -904,24 +896,16 @@ class Database {
 
   Database.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          deleteTime: json_.containsKey('deleteTime')
-              ? json_['deleteTime'] as core.String
-              : null,
-          expireTime: json_.containsKey('expireTime')
-              ? json_['expireTime'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          deleteTime: json_['deleteTime'] as core.String?,
+          expireTime: json_['expireTime'] as core.String?,
           hiveOptions: json_.containsKey('hiveOptions')
               ? HiveDatabaseOptions.fromJson(
                   json_['hiveOptions'] as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          type: json_['type'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -951,9 +935,7 @@ class HiveDatabaseOptions {
 
   HiveDatabaseOptions.fromJson(core.Map json_)
       : this(
-          locationUri: json_.containsKey('locationUri')
-              ? json_['locationUri'] as core.String
-              : null,
+          locationUri: json_['locationUri'] as core.String?,
           parameters: json_.containsKey('parameters')
               ? (json_['parameters'] as core.Map<core.String, core.dynamic>)
                   .map(
@@ -1005,9 +987,7 @@ class HiveTableOptions {
               ? StorageDescriptor.fromJson(json_['storageDescriptor']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          tableType: json_.containsKey('tableType')
-              ? json_['tableType'] as core.String
-              : null,
+          tableType: json_['tableType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1040,9 +1020,7 @@ class ListCatalogsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1074,9 +1052,7 @@ class ListDatabasesResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1102,9 +1078,7 @@ class ListTablesResponse {
 
   ListTablesResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           tables: json_.containsKey('tables')
               ? (json_['tables'] as core.List)
                   .map((value) => Table.fromJson(
@@ -1135,9 +1109,7 @@ class RenameTableRequest {
 
   RenameTableRequest.fromJson(core.Map json_)
       : this(
-          newName: json_.containsKey('newName')
-              ? json_['newName'] as core.String
-              : null,
+          newName: json_['newName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1156,9 +1128,7 @@ class SerDeInfo {
 
   SerDeInfo.fromJson(core.Map json_)
       : this(
-          serializationLib: json_.containsKey('serializationLib')
-              ? json_['serializationLib'] as core.String
-              : null,
+          serializationLib: json_['serializationLib'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1190,15 +1160,9 @@ class StorageDescriptor {
 
   StorageDescriptor.fromJson(core.Map json_)
       : this(
-          inputFormat: json_.containsKey('inputFormat')
-              ? json_['inputFormat'] as core.String
-              : null,
-          locationUri: json_.containsKey('locationUri')
-              ? json_['locationUri'] as core.String
-              : null,
-          outputFormat: json_.containsKey('outputFormat')
-              ? json_['outputFormat'] as core.String
-              : null,
+          inputFormat: json_['inputFormat'] as core.String?,
+          locationUri: json_['locationUri'] as core.String?,
+          outputFormat: json_['outputFormat'] as core.String?,
           serdeInfo: json_.containsKey('serdeInfo')
               ? SerDeInfo.fromJson(
                   json_['serdeInfo'] as core.Map<core.String, core.dynamic>)
@@ -1276,25 +1240,17 @@ class Table {
 
   Table.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          deleteTime: json_.containsKey('deleteTime')
-              ? json_['deleteTime'] as core.String
-              : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          expireTime: json_.containsKey('expireTime')
-              ? json_['expireTime'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          deleteTime: json_['deleteTime'] as core.String?,
+          etag: json_['etag'] as core.String?,
+          expireTime: json_['expireTime'] as core.String?,
           hiveOptions: json_.containsKey('hiveOptions')
               ? HiveTableOptions.fromJson(
                   json_['hiveOptions'] as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          type: json_['type'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

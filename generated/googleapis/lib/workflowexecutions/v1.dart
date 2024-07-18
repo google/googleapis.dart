@@ -632,13 +632,9 @@ class Callback {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          method: json_.containsKey('method')
-              ? json_['method'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          waiters: json_.containsKey('waiters')
-              ? json_['waiters'] as core.String
-              : null,
+          method: json_['method'] as core.String?,
+          name: json_['name'] as core.String?,
+          waiters: json_['waiters'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -671,12 +667,8 @@ class Error {
 
   Error.fromJson(core.Map json_)
       : this(
-          context: json_.containsKey('context')
-              ? json_['context'] as core.String
-              : null,
-          payload: json_.containsKey('payload')
-              ? json_['payload'] as core.String
-              : null,
+          context: json_['context'] as core.String?,
+          payload: json_['payload'] as core.String?,
           stackTrace: json_.containsKey('stackTrace')
               ? StackTrace.fromJson(
                   json_['stackTrace'] as core.Map<core.String, core.dynamic>)
@@ -701,9 +693,7 @@ class Exception {
 
   Exception.fromJson(core.Map json_)
       : this(
-          payload: json_.containsKey('payload')
-              ? json_['payload'] as core.String
-              : null,
+          payload: json_['payload'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -846,25 +836,13 @@ class Execution {
 
   Execution.fromJson(core.Map json_)
       : this(
-          argument: json_.containsKey('argument')
-              ? json_['argument'] as core.String
-              : null,
-          callLogLevel: json_.containsKey('callLogLevel')
-              ? json_['callLogLevel'] as core.String
-              : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          disableConcurrencyQuotaOverflowBuffering: json_
-                  .containsKey('disableConcurrencyQuotaOverflowBuffering')
-              ? json_['disableConcurrencyQuotaOverflowBuffering'] as core.bool
-              : null,
-          duration: json_.containsKey('duration')
-              ? json_['duration'] as core.String
-              : null,
-          endTime: json_.containsKey('endTime')
-              ? json_['endTime'] as core.String
-              : null,
+          argument: json_['argument'] as core.String?,
+          callLogLevel: json_['callLogLevel'] as core.String?,
+          createTime: json_['createTime'] as core.String?,
+          disableConcurrencyQuotaOverflowBuffering:
+              json_['disableConcurrencyQuotaOverflowBuffering'] as core.bool?,
+          duration: json_['duration'] as core.String?,
+          endTime: json_['endTime'] as core.String?,
           error: json_.containsKey('error')
               ? Error.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
@@ -877,15 +855,10 @@ class Execution {
                   ),
                 )
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          result: json_.containsKey('result')
-              ? json_['result'] as core.String
-              : null,
-          startTime: json_.containsKey('startTime')
-              ? json_['startTime'] as core.String
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
+          name: json_['name'] as core.String?,
+          result: json_['result'] as core.String?,
+          startTime: json_['startTime'] as core.String?,
+          state: json_['state'] as core.String?,
           stateError: json_.containsKey('stateError')
               ? StateError.fromJson(
                   json_['stateError'] as core.Map<core.String, core.dynamic>)
@@ -894,9 +867,7 @@ class Execution {
               ? Status.fromJson(
                   json_['status'] as core.Map<core.String, core.dynamic>)
               : null,
-          workflowRevisionId: json_.containsKey('workflowRevisionId')
-              ? json_['workflowRevisionId'] as core.String
-              : null,
+          workflowRevisionId: json_['workflowRevisionId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -933,7 +904,7 @@ class ExportDataResponse {
 
   ExportDataResponse.fromJson(core.Map json_)
       : this(
-          data: json_.containsKey('data') ? json_['data'] as core.String : null,
+          data: json_['data'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -964,9 +935,7 @@ class ListCallbacksResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -998,9 +967,7 @@ class ListExecutionsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1035,18 +1002,14 @@ class ListStepEntriesResponse {
 
   ListStepEntriesResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           stepEntries: json_.containsKey('stepEntries')
               ? (json_['stepEntries'] as core.List)
                   .map((value) => StepEntry.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          totalSize: json_.containsKey('totalSize')
-              ? json_['totalSize'] as core.int
-              : null,
+          totalSize: json_['totalSize'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1087,13 +1050,9 @@ class NavigationInfo {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          next: json_.containsKey('next') ? json_['next'] as core.String : null,
-          parent: json_.containsKey('parent')
-              ? json_['parent'] as core.String
-              : null,
-          previous: json_.containsKey('previous')
-              ? json_['previous'] as core.String
-              : null,
+          next: json_['next'] as core.String?,
+          parent: json_['parent'] as core.String?,
+          previous: json_['previous'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1125,13 +1084,9 @@ class Position {
 
   Position.fromJson(core.Map json_)
       : this(
-          column: json_.containsKey('column')
-              ? json_['column'] as core.String
-              : null,
-          length: json_.containsKey('length')
-              ? json_['length'] as core.String
-              : null,
-          line: json_.containsKey('line') ? json_['line'] as core.String : null,
+          column: json_['column'] as core.String?,
+          length: json_['length'] as core.String?,
+          line: json_['line'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1199,10 +1154,8 @@ class StackTraceElement {
               ? Position.fromJson(
                   json_['position'] as core.Map<core.String, core.dynamic>)
               : null,
-          routine: json_.containsKey('routine')
-              ? json_['routine'] as core.String
-              : null,
-          step: json_.containsKey('step') ? json_['step'] as core.String : null,
+          routine: json_['routine'] as core.String?,
+          step: json_['step'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1261,10 +1214,8 @@ class Step {
 
   Step.fromJson(core.Map json_)
       : this(
-          routine: json_.containsKey('routine')
-              ? json_['routine'] as core.String
-              : null,
-          step: json_.containsKey('step') ? json_['step'] as core.String : null,
+          routine: json_['routine'] as core.String?,
+          step: json_['step'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1387,37 +1338,26 @@ class StepEntry {
 
   StepEntry.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          entryId: json_.containsKey('entryId')
-              ? json_['entryId'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          entryId: json_['entryId'] as core.String?,
           exception: json_.containsKey('exception')
               ? Exception.fromJson(
                   json_['exception'] as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           navigationInfo: json_.containsKey('navigationInfo')
               ? NavigationInfo.fromJson(json_['navigationInfo']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          routine: json_.containsKey('routine')
-              ? json_['routine'] as core.String
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
-          step: json_.containsKey('step') ? json_['step'] as core.String : null,
+          routine: json_['routine'] as core.String?,
+          state: json_['state'] as core.String?,
+          step: json_['step'] as core.String?,
           stepEntryMetadata: json_.containsKey('stepEntryMetadata')
               ? StepEntryMetadata.fromJson(json_['stepEntryMetadata']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          stepType: json_.containsKey('stepType')
-              ? json_['stepType'] as core.String
-              : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          stepType: json_['stepType'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1474,18 +1414,10 @@ class StepEntryMetadata {
 
   StepEntryMetadata.fromJson(core.Map json_)
       : this(
-          expectedIteration: json_.containsKey('expectedIteration')
-              ? json_['expectedIteration'] as core.String
-              : null,
-          progressNumber: json_.containsKey('progressNumber')
-              ? json_['progressNumber'] as core.String
-              : null,
-          progressType: json_.containsKey('progressType')
-              ? json_['progressType'] as core.String
-              : null,
-          threadId: json_.containsKey('threadId')
-              ? json_['threadId'] as core.String
-              : null,
+          expectedIteration: json_['expectedIteration'] as core.String?,
+          progressNumber: json_['progressNumber'] as core.String?,
+          progressType: json_['progressType'] as core.String?,
+          threadId: json_['threadId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1532,19 +1464,13 @@ class TriggerPubsubExecutionRequest {
 
   TriggerPubsubExecutionRequest.fromJson(core.Map json_)
       : this(
-          GCPCloudEventsMode: json_.containsKey('GCPCloudEventsMode')
-              ? json_['GCPCloudEventsMode'] as core.String
-              : null,
-          deliveryAttempt: json_.containsKey('deliveryAttempt')
-              ? json_['deliveryAttempt'] as core.int
-              : null,
+          GCPCloudEventsMode: json_['GCPCloudEventsMode'] as core.String?,
+          deliveryAttempt: json_['deliveryAttempt'] as core.int?,
           message: json_.containsKey('message')
               ? PubsubMessage.fromJson(
                   json_['message'] as core.Map<core.String, core.dynamic>)
               : null,
-          subscription: json_.containsKey('subscription')
-              ? json_['subscription'] as core.String
-              : null,
+          subscription: json_['subscription'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

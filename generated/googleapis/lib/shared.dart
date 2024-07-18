@@ -37,9 +37,8 @@ class $ActionParameter {
 
   $ActionParameter.fromJson(core.Map json_)
       : this(
-          key: json_.containsKey('key') ? json_['key'] as core.String : null,
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
+          key: json_['key'] as core.String?,
+          value: json_['value'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -140,21 +139,11 @@ class $ActiveViewVideoViewabilityMetricConfig {
 
   $ActiveViewVideoViewabilityMetricConfig.fromJson(core.Map json_)
       : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          minimumDuration: json_.containsKey('minimumDuration')
-              ? json_['minimumDuration'] as core.String
-              : null,
-          minimumQuartile: json_.containsKey('minimumQuartile')
-              ? json_['minimumQuartile'] as core.String
-              : null,
-          minimumViewability: json_.containsKey('minimumViewability')
-              ? json_['minimumViewability'] as core.String
-              : null,
-          minimumVolume: json_.containsKey('minimumVolume')
-              ? json_['minimumVolume'] as core.String
-              : null,
+          displayName: json_['displayName'] as core.String?,
+          minimumDuration: json_['minimumDuration'] as core.String?,
+          minimumQuartile: json_['minimumQuartile'] as core.String?,
+          minimumViewability: json_['minimumViewability'] as core.String?,
+          minimumVolume: json_['minimumVolume'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -195,8 +184,8 @@ class $AdUrl {
 
   $AdUrl.fromJson(core.Map json_)
       : this(
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
-          url: json_.containsKey('url') ? json_['url'] as core.String : null,
+          type: json_['type'] as core.String?,
+          url: json_['url'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -246,13 +235,9 @@ class $AddressPool {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          avoidBuggyIps: json_.containsKey('avoidBuggyIps')
-              ? json_['avoidBuggyIps'] as core.bool
-              : null,
-          manualAssign: json_.containsKey('manualAssign')
-              ? json_['manualAssign'] as core.bool
-              : null,
-          pool: json_.containsKey('pool') ? json_['pool'] as core.String : null,
+          avoidBuggyIps: json_['avoidBuggyIps'] as core.bool?,
+          manualAssign: json_['manualAssign'] as core.bool?,
+          pool: json_['pool'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -307,9 +292,7 @@ class $AdvertiserBillingConfig {
 
   $AdvertiserBillingConfig.fromJson(core.Map json_)
       : this(
-          billingProfileId: json_.containsKey('billingProfileId')
-              ? json_['billingProfileId'] as core.String
-              : null,
+          billingProfileId: json_['billingProfileId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -370,19 +353,11 @@ class $AdvertiserCreativeConfig {
 
   $AdvertiserCreativeConfig.fromJson(core.Map json_)
       : this(
-          dynamicCreativeEnabled: json_.containsKey('dynamicCreativeEnabled')
-              ? json_['dynamicCreativeEnabled'] as core.bool
-              : null,
-          iasClientId: json_.containsKey('iasClientId')
-              ? json_['iasClientId'] as core.String
-              : null,
-          obaComplianceDisabled: json_.containsKey('obaComplianceDisabled')
-              ? json_['obaComplianceDisabled'] as core.bool
-              : null,
+          dynamicCreativeEnabled: json_['dynamicCreativeEnabled'] as core.bool?,
+          iasClientId: json_['iasClientId'] as core.String?,
+          obaComplianceDisabled: json_['obaComplianceDisabled'] as core.bool?,
           videoCreativeDataSharingAuthorized:
-              json_.containsKey('videoCreativeDataSharingAuthorized')
-                  ? json_['videoCreativeDataSharingAuthorized'] as core.bool
-                  : null,
+              json_['videoCreativeDataSharingAuthorized'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -450,15 +425,9 @@ class $AdvertiserGeneralConfig {
 
   $AdvertiserGeneralConfig.fromJson(core.Map json_)
       : this(
-          currencyCode: json_.containsKey('currencyCode')
-              ? json_['currencyCode'] as core.String
-              : null,
-          domainUrl: json_.containsKey('domainUrl')
-              ? json_['domainUrl'] as core.String
-              : null,
-          timeZone: json_.containsKey('timeZone')
-              ? json_['timeZone'] as core.String
-              : null,
+          currencyCode: json_['currencyCode'] as core.String?,
+          domainUrl: json_['domainUrl'] as core.String?,
+          timeZone: json_['timeZone'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -484,9 +453,7 @@ class $AdvertiserTargetingConfig {
   $AdvertiserTargetingConfig.fromJson(core.Map json_)
       : this(
           exemptTvFromViewabilityTargeting:
-              json_.containsKey('exemptTvFromViewabilityTargeting')
-                  ? json_['exemptTvFromViewabilityTargeting'] as core.bool
-                  : null,
+              json_['exemptTvFromViewabilityTargeting'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -547,9 +514,7 @@ class $AgeRangeAssignedTargetingOptionDetails {
 
   $AgeRangeAssignedTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          ageRange: json_.containsKey('ageRange')
-              ? json_['ageRange'] as core.String
-              : null,
+          ageRange: json_['ageRange'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -604,9 +569,7 @@ class $AgeRangeTargetingOptionDetails {
 
   $AgeRangeTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          ageRange: json_.containsKey('ageRange')
-              ? json_['ageRange'] as core.String
-              : null,
+          ageRange: json_['ageRange'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -638,8 +601,8 @@ class $AliasContext {
 
   $AliasContext.fromJson(core.Map json_)
       : this(
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          kind: json_['kind'] as core.String?,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -728,17 +691,10 @@ class $AppAssignedTargetingOptionDetails {
 
   $AppAssignedTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          appId:
-              json_.containsKey('appId') ? json_['appId'] as core.String : null,
-          appPlatform: json_.containsKey('appPlatform')
-              ? json_['appPlatform'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          negative: json_.containsKey('negative')
-              ? json_['negative'] as core.bool
-              : null,
+          appId: json_['appId'] as core.String?,
+          appPlatform: json_['appPlatform'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          negative: json_['negative'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -776,15 +732,9 @@ class $AppCategoryAssignedTargetingOptionDetails {
 
   $AppCategoryAssignedTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          negative: json_.containsKey('negative')
-              ? json_['negative'] as core.bool
-              : null,
-          targetingOptionId: json_.containsKey('targetingOptionId')
-              ? json_['targetingOptionId'] as core.String
-              : null,
+          displayName: json_['displayName'] as core.String?,
+          negative: json_['negative'] as core.bool?,
+          targetingOptionId: json_['targetingOptionId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -810,9 +760,7 @@ class $AppCategoryTargetingOptionDetails {
 
   $AppCategoryTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+          displayName: json_['displayName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -850,10 +798,8 @@ class $Artifact {
 
   $Artifact.fromJson(core.Map json_)
       : this(
-          checksum: json_.containsKey('checksum')
-              ? json_['checksum'] as core.String
-              : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          checksum: json_['checksum'] as core.String?,
+          id: json_['id'] as core.String?,
           names: json_.containsKey('names')
               ? (json_['names'] as core.List)
                   .map((value) => value as core.String)
@@ -891,9 +837,7 @@ class $ArtifactsGcsSource {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          useWildcards: json_.containsKey('useWildcards')
-              ? json_['useWildcards'] as core.bool
-              : null,
+          useWildcards: json_['useWildcards'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -928,12 +872,8 @@ class $Asset {
 
   $Asset.fromJson(core.Map json_)
       : this(
-          content: json_.containsKey('content')
-              ? json_['content'] as core.String
-              : null,
-          mediaId: json_.containsKey('mediaId')
-              ? json_['mediaId'] as core.String
-              : null,
+          content: json_['content'] as core.String?,
+          mediaId: json_['mediaId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -974,13 +914,9 @@ class $AssignedInventorySource {
   $AssignedInventorySource.fromJson(core.Map json_)
       : this(
           assignedInventorySourceId:
-              json_.containsKey('assignedInventorySourceId')
-                  ? json_['assignedInventorySourceId'] as core.String
-                  : null,
-          inventorySourceId: json_.containsKey('inventorySourceId')
-              ? json_['inventorySourceId'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+              json_['assignedInventorySourceId'] as core.String?,
+          inventorySourceId: json_['inventorySourceId'] as core.String?,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1022,13 +958,9 @@ class $AssignedLocation {
 
   $AssignedLocation.fromJson(core.Map json_)
       : this(
-          assignedLocationId: json_.containsKey('assignedLocationId')
-              ? json_['assignedLocationId'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          targetingOptionId: json_.containsKey('targetingOptionId')
-              ? json_['targetingOptionId'] as core.String
-              : null,
+          assignedLocationId: json_['assignedLocationId'] as core.String?,
+          name: json_['name'] as core.String?,
+          targetingOptionId: json_['targetingOptionId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1109,18 +1041,10 @@ class $AssignedUserRole {
 
   $AssignedUserRole.fromJson(core.Map json_)
       : this(
-          advertiserId: json_.containsKey('advertiserId')
-              ? json_['advertiserId'] as core.String
-              : null,
-          assignedUserRoleId: json_.containsKey('assignedUserRoleId')
-              ? json_['assignedUserRoleId'] as core.String
-              : null,
-          partnerId: json_.containsKey('partnerId')
-              ? json_['partnerId'] as core.String
-              : null,
-          userRole: json_.containsKey('userRole')
-              ? json_['userRole'] as core.String
-              : null,
+          advertiserId: json_['advertiserId'] as core.String?,
+          assignedUserRoleId: json_['assignedUserRoleId'] as core.String?,
+          partnerId: json_['partnerId'] as core.String?,
+          userRole: json_['userRole'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1149,9 +1073,7 @@ class $Attribution {
 
   $Attribution.fromJson(core.Map json_)
       : this(
-          numIntegralSteps: json_.containsKey('numIntegralSteps')
-              ? json_['numIntegralSteps'] as core.int
-              : null,
+          numIntegralSteps: json_['numIntegralSteps'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1183,9 +1105,7 @@ class $AudioContentTypeAssignedTargetingOptionDetails {
 
   $AudioContentTypeAssignedTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          audioContentType: json_.containsKey('audioContentType')
-              ? json_['audioContentType'] as core.String
-              : null,
+          audioContentType: json_['audioContentType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1217,9 +1137,7 @@ class $AudioContentTypeTargetingOptionDetails {
 
   $AudioContentTypeTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          audioContentType: json_.containsKey('audioContentType')
-              ? json_['audioContentType'] as core.String
-              : null,
+          audioContentType: json_['audioContentType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1245,12 +1163,8 @@ class $AudioVideoOffset {
 
   $AudioVideoOffset.fromJson(core.Map json_)
       : this(
-          percentage: json_.containsKey('percentage')
-              ? json_['percentage'] as core.String
-              : null,
-          seconds: json_.containsKey('seconds')
-              ? json_['seconds'] as core.String
-              : null,
+          percentage: json_['percentage'] as core.String?,
+          seconds: json_['seconds'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1334,33 +1248,17 @@ class $AuditAdvertiserResponse {
 
   $AuditAdvertiserResponse.fromJson(core.Map json_)
       : this(
-          adGroupCriteriaCount: json_.containsKey('adGroupCriteriaCount')
-              ? json_['adGroupCriteriaCount'] as core.String
-              : null,
-          campaignCriteriaCount: json_.containsKey('campaignCriteriaCount')
-              ? json_['campaignCriteriaCount'] as core.String
-              : null,
-          channelsCount: json_.containsKey('channelsCount')
-              ? json_['channelsCount'] as core.String
-              : null,
+          adGroupCriteriaCount: json_['adGroupCriteriaCount'] as core.String?,
+          campaignCriteriaCount: json_['campaignCriteriaCount'] as core.String?,
+          channelsCount: json_['channelsCount'] as core.String?,
           negativeKeywordListsCount:
-              json_.containsKey('negativeKeywordListsCount')
-                  ? json_['negativeKeywordListsCount'] as core.String
-                  : null,
+              json_['negativeKeywordListsCount'] as core.String?,
           negativelyTargetedChannelsCount:
-              json_.containsKey('negativelyTargetedChannelsCount')
-                  ? json_['negativelyTargetedChannelsCount'] as core.String
-                  : null,
-          usedCampaignsCount: json_.containsKey('usedCampaignsCount')
-              ? json_['usedCampaignsCount'] as core.String
-              : null,
+              json_['negativelyTargetedChannelsCount'] as core.String?,
+          usedCampaignsCount: json_['usedCampaignsCount'] as core.String?,
           usedInsertionOrdersCount:
-              json_.containsKey('usedInsertionOrdersCount')
-                  ? json_['usedInsertionOrdersCount'] as core.String
-                  : null,
-          usedLineItemsCount: json_.containsKey('usedLineItemsCount')
-              ? json_['usedLineItemsCount'] as core.String
-              : null,
+              json_['usedInsertionOrdersCount'] as core.String?,
+          usedLineItemsCount: json_['usedLineItemsCount'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1467,9 +1365,7 @@ class $AuditLogConfig {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          logType: json_.containsKey('logType')
-              ? json_['logType'] as core.String
-              : null,
+          logType: json_['logType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1510,12 +1406,8 @@ class $AuthRequirement {
 
   $AuthRequirement.fromJson(core.Map json_)
       : this(
-          audiences: json_.containsKey('audiences')
-              ? json_['audiences'] as core.String
-              : null,
-          providerId: json_.containsKey('providerId')
-              ? json_['providerId'] as core.String
-              : null,
+          audiences: json_['audiences'] as core.String?,
+          providerId: json_['providerId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1561,12 +1453,9 @@ class $AuthorizedSellerStatusAssignedTargetingOptionDetails {
 
   $AuthorizedSellerStatusAssignedTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          authorizedSellerStatus: json_.containsKey('authorizedSellerStatus')
-              ? json_['authorizedSellerStatus'] as core.String
-              : null,
-          targetingOptionId: json_.containsKey('targetingOptionId')
-              ? json_['targetingOptionId'] as core.String
-              : null,
+          authorizedSellerStatus:
+              json_['authorizedSellerStatus'] as core.String?,
+          targetingOptionId: json_['targetingOptionId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1606,9 +1495,8 @@ class $AuthorizedSellerStatusTargetingOptionDetails {
 
   $AuthorizedSellerStatusTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          authorizedSellerStatus: json_.containsKey('authorizedSellerStatus')
-              ? json_['authorizedSellerStatus'] as core.String
-              : null,
+          authorizedSellerStatus:
+              json_['authorizedSellerStatus'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1632,9 +1520,7 @@ class $AutoRetrievalInfo {
 
   $AutoRetrievalInfo.fromJson(core.Map json_)
       : this(
-          appSignatureHash: json_.containsKey('appSignatureHash')
-              ? json_['appSignatureHash'] as core.String
-              : null,
+          appSignatureHash: json_['appSignatureHash'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1662,9 +1548,7 @@ class $BillingConfig {
 
   $BillingConfig.fromJson(core.Map json_)
       : this(
-          billingCategory: json_.containsKey('billingCategory')
-              ? json_['billingCategory'] as core.String
-              : null,
+          billingCategory: json_['billingCategory'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1727,21 +1611,12 @@ class $Blobstore2Info {
 
   $Blobstore2Info.fromJson(core.Map json_)
       : this(
-          blobGeneration: json_.containsKey('blobGeneration')
-              ? json_['blobGeneration'] as core.String
-              : null,
-          blobId: json_.containsKey('blobId')
-              ? json_['blobId'] as core.String
-              : null,
-          downloadReadHandle: json_.containsKey('downloadReadHandle')
-              ? json_['downloadReadHandle'] as core.String
-              : null,
-          readToken: json_.containsKey('readToken')
-              ? json_['readToken'] as core.String
-              : null,
-          uploadMetadataContainer: json_.containsKey('uploadMetadataContainer')
-              ? json_['uploadMetadataContainer'] as core.String
-              : null,
+          blobGeneration: json_['blobGeneration'] as core.String?,
+          blobId: json_['blobId'] as core.String?,
+          downloadReadHandle: json_['downloadReadHandle'] as core.String?,
+          readToken: json_['readToken'] as core.String?,
+          uploadMetadataContainer:
+              json_['uploadMetadataContainer'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1794,9 +1669,7 @@ class $BooleanPolicy {
 
   $BooleanPolicy.fromJson(core.Map json_)
       : this(
-          enforced: json_.containsKey('enforced')
-              ? json_['enforced'] as core.bool
-              : null,
+          enforced: json_['enforced'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1834,15 +1707,9 @@ class $BrowserAssignedTargetingOptionDetails {
 
   $BrowserAssignedTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          negative: json_.containsKey('negative')
-              ? json_['negative'] as core.bool
-              : null,
-          targetingOptionId: json_.containsKey('targetingOptionId')
-              ? json_['targetingOptionId'] as core.String
-              : null,
+          displayName: json_['displayName'] as core.String?,
+          negative: json_['negative'] as core.bool?,
+          targetingOptionId: json_['targetingOptionId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1868,9 +1735,7 @@ class $BrowserTargetingOptionDetails {
 
   $BrowserTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+          displayName: json_['displayName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1895,15 +1760,9 @@ class $BuildMetadata {
 
   $BuildMetadata.fromJson(core.Map json_)
       : this(
-          finishedOn: json_.containsKey('finishedOn')
-              ? json_['finishedOn'] as core.String
-              : null,
-          invocationId: json_.containsKey('invocationId')
-              ? json_['invocationId'] as core.String
-              : null,
-          startedOn: json_.containsKey('startedOn')
-              ? json_['startedOn'] as core.String
-              : null,
+          finishedOn: json_['finishedOn'] as core.String?,
+          invocationId: json_['invocationId'] as core.String?,
+          startedOn: json_['startedOn'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1962,18 +1821,11 @@ class $BusinessChainAssignedTargetingOptionDetails {
 
   $BusinessChainAssignedTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          proximityRadiusAmount: json_.containsKey('proximityRadiusAmount')
-              ? (json_['proximityRadiusAmount'] as core.num).toDouble()
-              : null,
-          proximityRadiusUnit: json_.containsKey('proximityRadiusUnit')
-              ? json_['proximityRadiusUnit'] as core.String
-              : null,
-          targetingOptionId: json_.containsKey('targetingOptionId')
-              ? json_['targetingOptionId'] as core.String
-              : null,
+          displayName: json_['displayName'] as core.String?,
+          proximityRadiusAmount:
+              (json_['proximityRadiusAmount'] as core.num?)?.toDouble(),
+          proximityRadiusUnit: json_['proximityRadiusUnit'] as core.String?,
+          targetingOptionId: json_['targetingOptionId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2008,12 +1860,8 @@ class $BusinessChainSearchTerms {
 
   $BusinessChainSearchTerms.fromJson(core.Map json_)
       : this(
-          businessChainQuery: json_.containsKey('businessChainQuery')
-              ? json_['businessChainQuery'] as core.String
-              : null,
-          regionQuery: json_.containsKey('regionQuery')
-              ? json_['regionQuery'] as core.String
-              : null,
+          businessChainQuery: json_['businessChainQuery'] as core.String?,
+          regionQuery: json_['regionQuery'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2090,15 +1938,9 @@ class $BusinessChainTargetingOptionDetails {
 
   $BusinessChainTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          businessChain: json_.containsKey('businessChain')
-              ? json_['businessChain'] as core.String
-              : null,
-          geoRegion: json_.containsKey('geoRegion')
-              ? json_['geoRegion'] as core.String
-              : null,
-          geoRegionType: json_.containsKey('geoRegionType')
-              ? json_['geoRegionType'] as core.String
-              : null,
+          businessChain: json_['businessChain'] as core.String?,
+          geoRegion: json_['geoRegion'] as core.String?,
+          geoRegionType: json_['geoRegionType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2213,41 +2055,19 @@ class $CVSS {
 
   $CVSS.fromJson(core.Map json_)
       : this(
-          attackComplexity: json_.containsKey('attackComplexity')
-              ? json_['attackComplexity'] as core.String
-              : null,
-          attackVector: json_.containsKey('attackVector')
-              ? json_['attackVector'] as core.String
-              : null,
-          authentication: json_.containsKey('authentication')
-              ? json_['authentication'] as core.String
-              : null,
-          availabilityImpact: json_.containsKey('availabilityImpact')
-              ? json_['availabilityImpact'] as core.String
-              : null,
-          baseScore: json_.containsKey('baseScore')
-              ? (json_['baseScore'] as core.num).toDouble()
-              : null,
-          confidentialityImpact: json_.containsKey('confidentialityImpact')
-              ? json_['confidentialityImpact'] as core.String
-              : null,
-          exploitabilityScore: json_.containsKey('exploitabilityScore')
-              ? (json_['exploitabilityScore'] as core.num).toDouble()
-              : null,
-          impactScore: json_.containsKey('impactScore')
-              ? (json_['impactScore'] as core.num).toDouble()
-              : null,
-          integrityImpact: json_.containsKey('integrityImpact')
-              ? json_['integrityImpact'] as core.String
-              : null,
-          privilegesRequired: json_.containsKey('privilegesRequired')
-              ? json_['privilegesRequired'] as core.String
-              : null,
-          scope:
-              json_.containsKey('scope') ? json_['scope'] as core.String : null,
-          userInteraction: json_.containsKey('userInteraction')
-              ? json_['userInteraction'] as core.String
-              : null,
+          attackComplexity: json_['attackComplexity'] as core.String?,
+          attackVector: json_['attackVector'] as core.String?,
+          authentication: json_['authentication'] as core.String?,
+          availabilityImpact: json_['availabilityImpact'] as core.String?,
+          baseScore: (json_['baseScore'] as core.num?)?.toDouble(),
+          confidentialityImpact: json_['confidentialityImpact'] as core.String?,
+          exploitabilityScore:
+              (json_['exploitabilityScore'] as core.num?)?.toDouble(),
+          impactScore: (json_['impactScore'] as core.num?)?.toDouble(),
+          integrityImpact: json_['integrityImpact'] as core.String?,
+          privilegesRequired: json_['privilegesRequired'] as core.String?,
+          scope: json_['scope'] as core.String?,
+          userInteraction: json_['userInteraction'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2300,15 +2120,9 @@ class $CarrierAndIspAssignedTargetingOptionDetails {
 
   $CarrierAndIspAssignedTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          negative: json_.containsKey('negative')
-              ? json_['negative'] as core.bool
-              : null,
-          targetingOptionId: json_.containsKey('targetingOptionId')
-              ? json_['targetingOptionId'] as core.String
-              : null,
+          displayName: json_['displayName'] as core.String?,
+          negative: json_['negative'] as core.bool?,
+          targetingOptionId: json_['targetingOptionId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2347,10 +2161,8 @@ class $CarrierAndIspTargetingOptionDetails {
 
   $CarrierAndIspTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          displayName: json_['displayName'] as core.String?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2377,10 +2189,8 @@ class $Category {
 
   $Category.fromJson(core.Map json_)
       : this(
-          categoryId: json_.containsKey('categoryId')
-              ? json_['categoryId'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          categoryId: json_['categoryId'] as core.String?,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2416,15 +2226,9 @@ class $CategoryAssignedTargetingOptionDetails {
 
   $CategoryAssignedTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          negative: json_.containsKey('negative')
-              ? json_['negative'] as core.bool
-              : null,
-          targetingOptionId: json_.containsKey('targetingOptionId')
-              ? json_['targetingOptionId'] as core.String
-              : null,
+          displayName: json_['displayName'] as core.String?,
+          negative: json_['negative'] as core.bool?,
+          targetingOptionId: json_['targetingOptionId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2450,9 +2254,7 @@ class $CategoryTargetingOptionDetails {
 
   $CategoryTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+          displayName: json_['displayName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2476,9 +2278,7 @@ class $CdnPolicyBypassCacheOnRequestHeader {
 
   $CdnPolicyBypassCacheOnRequestHeader.fromJson(core.Map json_)
       : this(
-          headerName: json_.containsKey('headerName')
-              ? json_['headerName'] as core.String
-              : null,
+          headerName: json_['headerName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2512,8 +2312,8 @@ class $CdnPolicyNegativeCachingPolicy {
 
   $CdnPolicyNegativeCachingPolicy.fromJson(core.Map json_)
       : this(
-          code: json_.containsKey('code') ? json_['code'] as core.int : null,
-          ttl: json_.containsKey('ttl') ? json_['ttl'] as core.int : null,
+          code: json_['code'] as core.int?,
+          ttl: json_['ttl'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2647,27 +2447,15 @@ class $Channel00 {
 
   $Channel00.fromJson(core.Map json_)
       : this(
-          advertiserId: json_.containsKey('advertiserId')
-              ? json_['advertiserId'] as core.String
-              : null,
-          channelId: json_.containsKey('channelId')
-              ? json_['channelId'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          advertiserId: json_['advertiserId'] as core.String?,
+          channelId: json_['channelId'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          name: json_['name'] as core.String?,
           negativelyTargetedLineItemCount:
-              json_.containsKey('negativelyTargetedLineItemCount')
-                  ? json_['negativelyTargetedLineItemCount'] as core.String
-                  : null,
-          partnerId: json_.containsKey('partnerId')
-              ? json_['partnerId'] as core.String
-              : null,
+              json_['negativelyTargetedLineItemCount'] as core.String?,
+          partnerId: json_['partnerId'] as core.String?,
           positivelyTargetedLineItemCount:
-              json_.containsKey('positivelyTargetedLineItemCount')
-                  ? json_['positivelyTargetedLineItemCount'] as core.String
-                  : null,
+              json_['positivelyTargetedLineItemCount'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2748,14 +2536,10 @@ class $Channel01 {
 
   $Channel01.fromJson(core.Map json_)
       : this(
-          address: json_.containsKey('address')
-              ? json_['address'] as core.String
-              : null,
-          expiration: json_.containsKey('expiration')
-              ? json_['expiration'] as core.String
-              : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          address: json_['address'] as core.String?,
+          expiration: json_['expiration'] as core.String?,
+          id: json_['id'] as core.String?,
+          kind: json_['kind'] as core.String?,
           params: json_.containsKey('params')
               ? (json_['params'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -2764,18 +2548,11 @@ class $Channel01 {
                   ),
                 )
               : null,
-          payload: json_.containsKey('payload')
-              ? json_['payload'] as core.bool
-              : null,
-          resourceId: json_.containsKey('resourceId')
-              ? json_['resourceId'] as core.String
-              : null,
-          resourceUri: json_.containsKey('resourceUri')
-              ? json_['resourceUri'] as core.String
-              : null,
-          token:
-              json_.containsKey('token') ? json_['token'] as core.String : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          payload: json_['payload'] as core.bool?,
+          resourceId: json_['resourceId'] as core.String?,
+          resourceUri: json_['resourceUri'] as core.String?,
+          token: json_['token'] as core.String?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2819,12 +2596,8 @@ class $ChannelAssignedTargetingOptionDetails {
 
   $ChannelAssignedTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          channelId: json_.containsKey('channelId')
-              ? json_['channelId'] as core.String
-              : null,
-          negative: json_.containsKey('negative')
-              ? json_['negative'] as core.bool
-              : null,
+          channelId: json_['channelId'] as core.String?,
+          negative: json_['negative'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2854,9 +2627,7 @@ class $Checksum {
 
   $Checksum.fromJson(core.Map json_)
       : this(
-          sha256: json_.containsKey('sha256')
-              ? json_['sha256'] as core.String
-              : null,
+          sha256: json_['sha256'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2878,8 +2649,7 @@ class $ClassItem {
 
   $ClassItem.fromJson(core.Map json_)
       : this(
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
+          value: json_['value'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2908,10 +2678,8 @@ class $ClassificationCategory {
 
   $ClassificationCategory.fromJson(core.Map json_)
       : this(
-          confidence: json_.containsKey('confidence')
-              ? (json_['confidence'] as core.num).toDouble()
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          confidence: (json_['confidence'] as core.num?)?.toDouble(),
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2956,18 +2724,10 @@ class $CloudSchedulerConfig {
 
   $CloudSchedulerConfig.fromJson(core.Map json_)
       : this(
-          cronTab: json_.containsKey('cronTab')
-              ? json_['cronTab'] as core.String
-              : null,
-          errorMessage: json_.containsKey('errorMessage')
-              ? json_['errorMessage'] as core.String
-              : null,
-          location: json_.containsKey('location')
-              ? json_['location'] as core.String
-              : null,
-          serviceAccountEmail: json_.containsKey('serviceAccountEmail')
-              ? json_['serviceAccountEmail'] as core.String
-              : null,
+          cronTab: json_['cronTab'] as core.String?,
+          errorMessage: json_['errorMessage'] as core.String?,
+          location: json_['location'] as core.String?,
+          serviceAccountEmail: json_['serviceAccountEmail'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2994,9 +2754,7 @@ class $ClusterOperationsConfig {
 
   $ClusterOperationsConfig.fromJson(core.Map json_)
       : this(
-          enableApplicationLogs: json_.containsKey('enableApplicationLogs')
-              ? json_['enableApplicationLogs'] as core.bool
-              : null,
+          enableApplicationLogs: json_['enableApplicationLogs'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3061,34 +2819,24 @@ class $CmHybridConfig {
 
   $CmHybridConfig.fromJson(core.Map json_)
       : this(
-          cmAccountId: json_.containsKey('cmAccountId')
-              ? json_['cmAccountId'] as core.String
-              : null,
+          cmAccountId: json_['cmAccountId'] as core.String?,
           cmAdvertiserIds: json_.containsKey('cmAdvertiserIds')
               ? (json_['cmAdvertiserIds'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          cmFloodlightConfigId: json_.containsKey('cmFloodlightConfigId')
-              ? json_['cmFloodlightConfigId'] as core.String
-              : null,
+          cmFloodlightConfigId: json_['cmFloodlightConfigId'] as core.String?,
           cmFloodlightLinkingAuthorized:
-              json_.containsKey('cmFloodlightLinkingAuthorized')
-                  ? json_['cmFloodlightLinkingAuthorized'] as core.bool
-                  : null,
+              json_['cmFloodlightLinkingAuthorized'] as core.bool?,
           cmSyncableSiteIds: json_.containsKey('cmSyncableSiteIds')
               ? (json_['cmSyncableSiteIds'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
           dv360ToCmCostReportingEnabled:
-              json_.containsKey('dv360ToCmCostReportingEnabled')
-                  ? json_['dv360ToCmCostReportingEnabled'] as core.bool
-                  : null,
+              json_['dv360ToCmCostReportingEnabled'] as core.bool?,
           dv360ToCmDataSharingEnabled:
-              json_.containsKey('dv360ToCmDataSharingEnabled')
-                  ? json_['dv360ToCmDataSharingEnabled'] as core.bool
-                  : null,
+              json_['dv360ToCmDataSharingEnabled'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3128,15 +2876,9 @@ class $CmTrackingAd {
 
   $CmTrackingAd.fromJson(core.Map json_)
       : this(
-          cmAdId: json_.containsKey('cmAdId')
-              ? json_['cmAdId'] as core.String
-              : null,
-          cmCreativeId: json_.containsKey('cmCreativeId')
-              ? json_['cmCreativeId'] as core.String
-              : null,
-          cmPlacementId: json_.containsKey('cmPlacementId')
-              ? json_['cmPlacementId'] as core.String
-              : null,
+          cmAdId: json_['cmAdId'] as core.String?,
+          cmCreativeId: json_['cmCreativeId'] as core.String?,
+          cmPlacementId: json_['cmPlacementId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3188,18 +2930,10 @@ class $Color {
 
   $Color.fromJson(core.Map json_)
       : this(
-          alpha: json_.containsKey('alpha')
-              ? (json_['alpha'] as core.num).toDouble()
-              : null,
-          blue: json_.containsKey('blue')
-              ? (json_['blue'] as core.num).toDouble()
-              : null,
-          green: json_.containsKey('green')
-              ? (json_['green'] as core.num).toDouble()
-              : null,
-          red: json_.containsKey('red')
-              ? (json_['red'] as core.num).toDouble()
-              : null,
+          alpha: (json_['alpha'] as core.num?)?.toDouble(),
+          blue: (json_['blue'] as core.num?)?.toDouble(),
+          green: (json_['green'] as core.num?)?.toDouble(),
+          red: (json_['red'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3242,13 +2976,9 @@ class $CombinedAudience {
 
   $CombinedAudience.fromJson(core.Map json_)
       : this(
-          combinedAudienceId: json_.containsKey('combinedAudienceId')
-              ? json_['combinedAudienceId'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          combinedAudienceId: json_['combinedAudienceId'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3277,9 +3007,7 @@ class $CombinedAudienceTargetingSetting {
 
   $CombinedAudienceTargetingSetting.fromJson(core.Map json_)
       : this(
-          combinedAudienceId: json_.containsKey('combinedAudienceId')
-              ? json_['combinedAudienceId'] as core.String
-              : null,
+          combinedAudienceId: json_['combinedAudienceId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3332,14 +3060,14 @@ class $Command {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          dir: json_.containsKey('dir') ? json_['dir'] as core.String : null,
+          dir: json_['dir'] as core.String?,
           env: json_.containsKey('env')
               ? (json_['env'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          id: json_['id'] as core.String?,
+          name: json_['name'] as core.String?,
           waitFor: json_.containsKey('waitFor')
               ? (json_['waitFor'] as core.List)
                   .map((value) => value as core.String)
@@ -3386,15 +3114,9 @@ class $Completeness {
 
   $Completeness.fromJson(core.Map json_)
       : this(
-          arguments: json_.containsKey('arguments')
-              ? json_['arguments'] as core.bool
-              : null,
-          environment: json_.containsKey('environment')
-              ? json_['environment'] as core.bool
-              : null,
-          materials: json_.containsKey('materials')
-              ? json_['materials'] as core.bool
-              : null,
+          arguments: json_['arguments'] as core.bool?,
+          environment: json_['environment'] as core.bool?,
+          materials: json_['materials'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3431,15 +3153,9 @@ class $ComplianceVersion {
 
   $ComplianceVersion.fromJson(core.Map json_)
       : this(
-          benchmarkDocument: json_.containsKey('benchmarkDocument')
-              ? json_['benchmarkDocument'] as core.String
-              : null,
-          cpeUri: json_.containsKey('cpeUri')
-              ? json_['cpeUri'] as core.String
-              : null,
-          version: json_.containsKey('version')
-              ? json_['version'] as core.String
-              : null,
+          benchmarkDocument: json_['benchmarkDocument'] as core.String?,
+          cpeUri: json_['cpeUri'] as core.String?,
+          version: json_['version'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3465,9 +3181,7 @@ class $ConditionExpectation {
 
   $ConditionExpectation.fromJson(core.Map json_)
       : this(
-          sqlExpression: json_.containsKey('sqlExpression')
-              ? json_['sqlExpression'] as core.String
-              : null,
+          sqlExpression: json_['sqlExpression'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3507,14 +3221,9 @@ class $ConnectionStatus {
 
   $ConnectionStatus.fromJson(core.Map json_)
       : this(
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
-          status: json_.containsKey('status')
-              ? json_['status'] as core.String
-              : null,
+          description: json_['description'] as core.String?,
+          state: json_['state'] as core.String?,
+          status: json_['status'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3552,12 +3261,8 @@ class $Consent {
 
   $Consent.fromJson(core.Map json_)
       : this(
-          adPersonalization: json_.containsKey('adPersonalization')
-              ? json_['adPersonalization'] as core.String
-              : null,
-          adUserData: json_.containsKey('adUserData')
-              ? json_['adUserData'] as core.String
-              : null,
+          adPersonalization: json_['adPersonalization'] as core.String?,
+          adUserData: json_['adUserData'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3667,20 +3372,14 @@ class $ContactInfo {
 
   $ContactInfo.fromJson(core.Map json_)
       : this(
-          countryCode: json_.containsKey('countryCode')
-              ? json_['countryCode'] as core.String
-              : null,
+          countryCode: json_['countryCode'] as core.String?,
           hashedEmails: json_.containsKey('hashedEmails')
               ? (json_['hashedEmails'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          hashedFirstName: json_.containsKey('hashedFirstName')
-              ? json_['hashedFirstName'] as core.String
-              : null,
-          hashedLastName: json_.containsKey('hashedLastName')
-              ? json_['hashedLastName'] as core.String
-              : null,
+          hashedFirstName: json_['hashedFirstName'] as core.String?,
+          hashedLastName: json_['hashedLastName'] as core.String?,
           hashedPhoneNumbers: json_.containsKey('hashedPhoneNumbers')
               ? (json_['hashedPhoneNumbers'] as core.List)
                   .map((value) => value as core.String)
@@ -3738,12 +3437,8 @@ class $ContentDurationAssignedTargetingOptionDetails {
 
   $ContentDurationAssignedTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          contentDuration: json_.containsKey('contentDuration')
-              ? json_['contentDuration'] as core.String
-              : null,
-          targetingOptionId: json_.containsKey('targetingOptionId')
-              ? json_['targetingOptionId'] as core.String
-              : null,
+          contentDuration: json_['contentDuration'] as core.String?,
+          targetingOptionId: json_['targetingOptionId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3779,9 +3474,7 @@ class $ContentDurationTargetingOptionDetails {
 
   $ContentDurationTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          contentDuration: json_.containsKey('contentDuration')
-              ? json_['contentDuration'] as core.String
-              : null,
+          contentDuration: json_['contentDuration'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3816,15 +3509,9 @@ class $ContentGenreAssignedTargetingOptionDetails {
 
   $ContentGenreAssignedTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          negative: json_.containsKey('negative')
-              ? json_['negative'] as core.bool
-              : null,
-          targetingOptionId: json_.containsKey('targetingOptionId')
-              ? json_['targetingOptionId'] as core.String
-              : null,
+          displayName: json_['displayName'] as core.String?,
+          negative: json_['negative'] as core.bool?,
+          targetingOptionId: json_['targetingOptionId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3850,9 +3537,7 @@ class $ContentGenreTargetingOptionDetails {
 
   $ContentGenreTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+          displayName: json_['displayName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3909,12 +3594,9 @@ class $ContentInstreamPositionAssignedTargetingOptionDetails {
   $ContentInstreamPositionAssignedTargetingOptionDetails.fromJson(
       core.Map json_)
       : this(
-          adType: json_.containsKey('adType')
-              ? json_['adType'] as core.String
-              : null,
-          contentInstreamPosition: json_.containsKey('contentInstreamPosition')
-              ? json_['contentInstreamPosition'] as core.String
-              : null,
+          adType: json_['adType'] as core.String?,
+          contentInstreamPosition:
+              json_['contentInstreamPosition'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3951,9 +3633,8 @@ class $ContentInstreamPositionTargetingOptionDetails {
 
   $ContentInstreamPositionTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          contentInstreamPosition: json_.containsKey('contentInstreamPosition')
-              ? json_['contentInstreamPosition'] as core.String
-              : null,
+          contentInstreamPosition:
+              json_['contentInstreamPosition'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4015,13 +3696,9 @@ class $ContentOutstreamPositionAssignedTargetingOptionDetails {
   $ContentOutstreamPositionAssignedTargetingOptionDetails.fromJson(
       core.Map json_)
       : this(
-          adType: json_.containsKey('adType')
-              ? json_['adType'] as core.String
-              : null,
+          adType: json_['adType'] as core.String?,
           contentOutstreamPosition:
-              json_.containsKey('contentOutstreamPosition')
-                  ? json_['contentOutstreamPosition'] as core.String
-                  : null,
+              json_['contentOutstreamPosition'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4063,9 +3740,7 @@ class $ContentOutstreamPositionTargetingOptionDetails {
   $ContentOutstreamPositionTargetingOptionDetails.fromJson(core.Map json_)
       : this(
           contentOutstreamPosition:
-              json_.containsKey('contentOutstreamPosition')
-                  ? json_['contentOutstreamPosition'] as core.String
-                  : null,
+              json_['contentOutstreamPosition'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4103,12 +3778,8 @@ class $ContentStreamTypeAssignedTargetingOptionDetails {
 
   $ContentStreamTypeAssignedTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          contentStreamType: json_.containsKey('contentStreamType')
-              ? json_['contentStreamType'] as core.String
-              : null,
-          targetingOptionId: json_.containsKey('targetingOptionId')
-              ? json_['targetingOptionId'] as core.String
-              : null,
+          contentStreamType: json_['contentStreamType'] as core.String?,
+          targetingOptionId: json_['targetingOptionId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4139,9 +3810,7 @@ class $ContentStreamTypeTargetingOptionDetails {
 
   $ContentStreamTypeTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          contentStreamType: json_.containsKey('contentStreamType')
-              ? json_['contentStreamType'] as core.String
-              : null,
+          contentStreamType: json_['contentStreamType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4186,21 +3855,11 @@ class $ContentTypeInfo {
 
   $ContentTypeInfo.fromJson(core.Map json_)
       : this(
-          bestGuess: json_.containsKey('bestGuess')
-              ? json_['bestGuess'] as core.String
-              : null,
-          fromBytes: json_.containsKey('fromBytes')
-              ? json_['fromBytes'] as core.String
-              : null,
-          fromFileName: json_.containsKey('fromFileName')
-              ? json_['fromFileName'] as core.String
-              : null,
-          fromHeader: json_.containsKey('fromHeader')
-              ? json_['fromHeader'] as core.String
-              : null,
-          fromUrlPath: json_.containsKey('fromUrlPath')
-              ? json_['fromUrlPath'] as core.String
-              : null,
+          bestGuess: json_['bestGuess'] as core.String?,
+          fromBytes: json_['fromBytes'] as core.String?,
+          fromFileName: json_['fromFileName'] as core.String?,
+          fromHeader: json_['fromHeader'] as core.String?,
+          fromUrlPath: json_['fromUrlPath'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4260,10 +3919,8 @@ class $CounterEvent {
 
   $CounterEvent.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          reportingName: json_.containsKey('reportingName')
-              ? json_['reportingName'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          reportingName: json_['reportingName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4290,9 +3947,7 @@ class $CreateAssetRequest {
 
   $CreateAssetRequest.fromJson(core.Map json_)
       : this(
-          filename: json_.containsKey('filename')
-              ? json_['filename'] as core.String
-              : null,
+          filename: json_['filename'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4333,8 +3988,8 @@ class $CreativeAssetId {
 
   $CreativeAssetId.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          name: json_['name'] as core.String?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4372,15 +4027,10 @@ class $CreativeClickThroughUrl {
 
   $CreativeClickThroughUrl.fromJson(core.Map json_)
       : this(
-          computedClickThroughUrl: json_.containsKey('computedClickThroughUrl')
-              ? json_['computedClickThroughUrl'] as core.String
-              : null,
-          customClickThroughUrl: json_.containsKey('customClickThroughUrl')
-              ? json_['customClickThroughUrl'] as core.String
-              : null,
-          landingPageId: json_.containsKey('landingPageId')
-              ? json_['landingPageId'] as core.String
-              : null,
+          computedClickThroughUrl:
+              json_['computedClickThroughUrl'] as core.String?,
+          customClickThroughUrl: json_['customClickThroughUrl'] as core.String?,
+          landingPageId: json_['landingPageId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4489,12 +4139,8 @@ class $CryptoKeyVersionTemplate {
 
   $CryptoKeyVersionTemplate.fromJson(core.Map json_)
       : this(
-          algorithm: json_.containsKey('algorithm')
-              ? json_['algorithm'] as core.String
-              : null,
-          protectionLevel: json_.containsKey('protectionLevel')
-              ? json_['protectionLevel'] as core.String
-              : null,
+          algorithm: json_['algorithm'] as core.String?,
+          protectionLevel: json_['protectionLevel'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4520,9 +4166,7 @@ class $CustomBiddingScriptRef {
 
   $CustomBiddingScriptRef.fromJson(core.Map json_)
       : this(
-          resourceName: json_.containsKey('resourceName')
-              ? json_['resourceName'] as core.String
-              : null,
+          resourceName: json_['resourceName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4555,9 +4199,8 @@ class $CustomLabel {
 
   $CustomLabel.fromJson(core.Map json_)
       : this(
-          key: json_.containsKey('key') ? json_['key'] as core.String : null,
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
+          key: json_['key'] as core.String?,
+          value: json_['value'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4598,13 +4241,9 @@ class $CustomList {
 
   $CustomList.fromJson(core.Map json_)
       : this(
-          customListId: json_.containsKey('customListId')
-              ? json_['customListId'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          customListId: json_['customListId'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4632,9 +4271,7 @@ class $CustomListTargetingSetting {
 
   $CustomListTargetingSetting.fromJson(core.Map json_)
       : this(
-          customListId: json_.containsKey('customListId')
-              ? json_['customListId'] as core.String
-              : null,
+          customListId: json_['customListId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4708,9 +4345,9 @@ class $Date {
 
   $Date.fromJson(core.Map json_)
       : this(
-          day: json_.containsKey('day') ? json_['day'] as core.int : null,
-          month: json_.containsKey('month') ? json_['month'] as core.int : null,
-          year: json_.containsKey('year') ? json_['year'] as core.int : null,
+          day: json_['day'] as core.int?,
+          month: json_['month'] as core.int?,
+          year: json_['year'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4775,18 +4412,10 @@ class $DayAndTimeAssignedTargetingOptionDetails {
 
   $DayAndTimeAssignedTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          dayOfWeek: json_.containsKey('dayOfWeek')
-              ? json_['dayOfWeek'] as core.String
-              : null,
-          endHour: json_.containsKey('endHour')
-              ? json_['endHour'] as core.int
-              : null,
-          startHour: json_.containsKey('startHour')
-              ? json_['startHour'] as core.int
-              : null,
-          timeZoneResolution: json_.containsKey('timeZoneResolution')
-              ? json_['timeZoneResolution'] as core.String
-              : null,
+          dayOfWeek: json_['dayOfWeek'] as core.String?,
+          endHour: json_['endHour'] as core.int?,
+          startHour: json_['startHour'] as core.int?,
+          timeZoneResolution: json_['timeZoneResolution'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4820,11 +4449,8 @@ class $DeadLetterConfig {
 
   $DeadLetterConfig.fromJson(core.Map json_)
       : this(
-          projectId: json_.containsKey('projectId')
-              ? json_['projectId'] as core.String
-              : null,
-          topic:
-              json_.containsKey('topic') ? json_['topic'] as core.String : null,
+          projectId: json_['projectId'] as core.String?,
+          topic: json_['topic'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4847,9 +4473,7 @@ class $DebugInfo {
 
   $DebugInfo.fromJson(core.Map json_)
       : this(
-          formattedDebugInfo: json_.containsKey('formattedDebugInfo')
-              ? json_['formattedDebugInfo'] as core.String
-              : null,
+          formattedDebugInfo: json_['formattedDebugInfo'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4995,9 +4619,7 @@ class $DeleteAssignedTargetingOptionsRequest {
                       .map((value) => value as core.String)
                       .toList()
                   : null,
-          targetingType: json_.containsKey('targetingType')
-              ? json_['targetingType'] as core.String
-              : null,
+          targetingType: json_['targetingType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5055,29 +4677,17 @@ class $DeploymentOccurrence {
 
   $DeploymentOccurrence.fromJson(core.Map json_)
       : this(
-          address: json_.containsKey('address')
-              ? json_['address'] as core.String
-              : null,
-          config: json_.containsKey('config')
-              ? json_['config'] as core.String
-              : null,
-          deployTime: json_.containsKey('deployTime')
-              ? json_['deployTime'] as core.String
-              : null,
-          platform: json_.containsKey('platform')
-              ? json_['platform'] as core.String
-              : null,
+          address: json_['address'] as core.String?,
+          config: json_['config'] as core.String?,
+          deployTime: json_['deployTime'] as core.String?,
+          platform: json_['platform'] as core.String?,
           resourceUri: json_.containsKey('resourceUri')
               ? (json_['resourceUri'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          undeployTime: json_.containsKey('undeployTime')
-              ? json_['undeployTime'] as core.String
-              : null,
-          userEmail: json_.containsKey('userEmail')
-              ? json_['userEmail'] as core.String
-              : null,
+          undeployTime: json_['undeployTime'] as core.String?,
+          userEmail: json_['userEmail'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5118,11 +4728,9 @@ class $Destination {
 
   $Destination.fromJson(core.Map json_)
       : this(
-          host: json_.containsKey('host') ? json_['host'] as core.String : null,
-          port: json_.containsKey('port') ? json_['port'] as core.int : null,
-          serviceAttachment: json_.containsKey('serviceAttachment')
-              ? json_['serviceAttachment'] as core.String
-              : null,
+          host: json_['host'] as core.String?,
+          port: json_['port'] as core.int?,
+          serviceAttachment: json_['serviceAttachment'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5159,15 +4767,9 @@ class $DeviceMakeModelAssignedTargetingOptionDetails {
 
   $DeviceMakeModelAssignedTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          negative: json_.containsKey('negative')
-              ? json_['negative'] as core.bool
-              : null,
-          targetingOptionId: json_.containsKey('targetingOptionId')
-              ? json_['targetingOptionId'] as core.String
-              : null,
+          displayName: json_['displayName'] as core.String?,
+          negative: json_['negative'] as core.bool?,
+          targetingOptionId: json_['targetingOptionId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5193,9 +4795,7 @@ class $DeviceMakeModelTargetingOptionDetails {
 
   $DeviceMakeModelTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+          displayName: json_['displayName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5240,14 +4840,10 @@ class $DeviceTypeAssignedTargetingOptionDetails {
 
   $DeviceTypeAssignedTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          deviceType: json_.containsKey('deviceType')
-              ? json_['deviceType'] as core.String
-              : null,
+          deviceType: json_['deviceType'] as core.String?,
           youtubeAndPartnersBidMultiplier:
-              json_.containsKey('youtubeAndPartnersBidMultiplier')
-                  ? (json_['youtubeAndPartnersBidMultiplier'] as core.num)
-                      .toDouble()
-                  : null,
+              (json_['youtubeAndPartnersBidMultiplier'] as core.num?)
+                  ?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5281,9 +4877,7 @@ class $DeviceTypeTargetingOptionDetails {
 
   $DeviceTypeTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          deviceType: json_.containsKey('deviceType')
-              ? json_['deviceType'] as core.String
-              : null,
+          deviceType: json_['deviceType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5309,12 +4903,8 @@ class $DiffVersionResponse {
 
   $DiffVersionResponse.fromJson(core.Map json_)
       : this(
-          objectSizeBytes: json_.containsKey('objectSizeBytes')
-              ? json_['objectSizeBytes'] as core.String
-              : null,
-          objectVersion: json_.containsKey('objectVersion')
-              ? json_['objectVersion'] as core.String
-              : null,
+          objectSizeBytes: json_['objectSizeBytes'] as core.String?,
+          objectVersion: json_['objectVersion'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5355,9 +4945,7 @@ class $DigitalContentLabelAssignedTargetingOptionDetails {
   $DigitalContentLabelAssignedTargetingOptionDetails.fromJson(core.Map json_)
       : this(
           excludedContentRatingTier:
-              json_.containsKey('excludedContentRatingTier')
-                  ? json_['excludedContentRatingTier'] as core.String
-                  : null,
+              json_['excludedContentRatingTier'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5397,9 +4985,7 @@ class $DigitalContentLabelTargetingOptionDetails {
 
   $DigitalContentLabelTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          contentRatingTier: json_.containsKey('contentRatingTier')
-              ? json_['contentRatingTier'] as core.String
-              : null,
+          contentRatingTier: json_['contentRatingTier'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5451,17 +5037,12 @@ class $DimensionValue {
 
   $DimensionValue.fromJson(core.Map json_)
       : this(
-          dimensionName: json_.containsKey('dimensionName')
-              ? json_['dimensionName'] as core.String
-              : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          matchType: json_.containsKey('matchType')
-              ? json_['matchType'] as core.String
-              : null,
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
+          dimensionName: json_['dimensionName'] as core.String?,
+          etag: json_['etag'] as core.String?,
+          id: json_['id'] as core.String?,
+          kind: json_['kind'] as core.String?,
+          matchType: json_['matchType'] as core.String?,
+          value: json_['value'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5492,12 +5073,8 @@ class $Dimensions {
 
   $Dimensions.fromJson(core.Map json_)
       : this(
-          heightPixels: json_.containsKey('heightPixels')
-              ? json_['heightPixels'] as core.int
-              : null,
-          widthPixels: json_.containsKey('widthPixels')
-              ? json_['widthPixels'] as core.int
-              : null,
+          heightPixels: json_['heightPixels'] as core.int?,
+          widthPixels: json_['widthPixels'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5547,18 +5124,10 @@ class $DiscoverySpecCsvOptions {
 
   $DiscoverySpecCsvOptions.fromJson(core.Map json_)
       : this(
-          delimiter: json_.containsKey('delimiter')
-              ? json_['delimiter'] as core.String
-              : null,
-          disableTypeInference: json_.containsKey('disableTypeInference')
-              ? json_['disableTypeInference'] as core.bool
-              : null,
-          encoding: json_.containsKey('encoding')
-              ? json_['encoding'] as core.String
-              : null,
-          headerRows: json_.containsKey('headerRows')
-              ? json_['headerRows'] as core.int
-              : null,
+          delimiter: json_['delimiter'] as core.String?,
+          disableTypeInference: json_['disableTypeInference'] as core.bool?,
+          encoding: json_['encoding'] as core.String?,
+          headerRows: json_['headerRows'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5597,12 +5166,8 @@ class $DiscoverySpecJsonOptions {
 
   $DiscoverySpecJsonOptions.fromJson(core.Map json_)
       : this(
-          disableTypeInference: json_.containsKey('disableTypeInference')
-              ? json_['disableTypeInference'] as core.bool
-              : null,
-          encoding: json_.containsKey('encoding')
-              ? json_['encoding'] as core.String
-              : null,
+          disableTypeInference: json_['disableTypeInference'] as core.bool?,
+          encoding: json_['encoding'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5661,9 +5226,7 @@ class $DisksStartAsyncReplicationRequest {
 
   $DisksStartAsyncReplicationRequest.fromJson(core.Map json_)
       : this(
-          asyncSecondaryDisk: json_.containsKey('asyncSecondaryDisk')
-              ? json_['asyncSecondaryDisk'] as core.String
-              : null,
+          asyncSecondaryDisk: json_['asyncSecondaryDisk'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5686,9 +5249,7 @@ class $DisplayVideoSourceAd {
 
   $DisplayVideoSourceAd.fromJson(core.Map json_)
       : this(
-          creativeId: json_.containsKey('creativeId')
-              ? json_['creativeId'] as core.String
-              : null,
+          creativeId: json_['creativeId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5737,18 +5298,12 @@ class $DocumentationRule {
 
   $DocumentationRule.fromJson(core.Map json_)
       : this(
-          deprecationDescription: json_.containsKey('deprecationDescription')
-              ? json_['deprecationDescription'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          disableReplacementWords: json_.containsKey('disableReplacementWords')
-              ? json_['disableReplacementWords'] as core.String
-              : null,
-          selector: json_.containsKey('selector')
-              ? json_['selector'] as core.String
-              : null,
+          deprecationDescription:
+              json_['deprecationDescription'] as core.String?,
+          description: json_['description'] as core.String?,
+          disableReplacementWords:
+              json_['disableReplacementWords'] as core.String?,
+          selector: json_['selector'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5779,12 +5334,8 @@ class $DoubleRange {
 
   $DoubleRange.fromJson(core.Map json_)
       : this(
-          end: json_.containsKey('end')
-              ? (json_['end'] as core.num).toDouble()
-              : null,
-          start: json_.containsKey('start')
-              ? (json_['start'] as core.num).toDouble()
-              : null,
+          end: (json_['end'] as core.num?)?.toDouble(),
+          start: (json_['start'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5822,12 +5373,8 @@ class $DoubleVerifyAppStarRating {
   $DoubleVerifyAppStarRating.fromJson(core.Map json_)
       : this(
           avoidInsufficientStarRating:
-              json_.containsKey('avoidInsufficientStarRating')
-                  ? json_['avoidInsufficientStarRating'] as core.bool
-                  : null,
-          avoidedStarRating: json_.containsKey('avoidedStarRating')
-              ? json_['avoidedStarRating'] as core.String
-              : null,
+              json_['avoidInsufficientStarRating'] as core.bool?,
+          avoidedStarRating: json_['avoidedStarRating'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5860,9 +5407,7 @@ class $DoubleVerifyBrandSafetyCategories {
   $DoubleVerifyBrandSafetyCategories.fromJson(core.Map json_)
       : this(
           avoidUnknownBrandSafetyCategory:
-              json_.containsKey('avoidUnknownBrandSafetyCategory')
-                  ? json_['avoidUnknownBrandSafetyCategory'] as core.bool
-                  : null,
+              json_['avoidUnknownBrandSafetyCategory'] as core.bool?,
           avoidedHighSeverityCategories:
               json_.containsKey('avoidedHighSeverityCategories')
                   ? (json_['avoidedHighSeverityCategories'] as core.List)
@@ -5935,10 +5480,8 @@ class $DoubleVerifyDisplayViewability {
 
   $DoubleVerifyDisplayViewability.fromJson(core.Map json_)
       : this(
-          iab: json_.containsKey('iab') ? json_['iab'] as core.String : null,
-          viewableDuring: json_.containsKey('viewableDuring')
-              ? json_['viewableDuring'] as core.String
-              : null,
+          iab: json_['iab'] as core.String?,
+          viewableDuring: json_['viewableDuring'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5976,12 +5519,9 @@ class $DoubleVerifyFraudInvalidTraffic {
 
   $DoubleVerifyFraudInvalidTraffic.fromJson(core.Map json_)
       : this(
-          avoidInsufficientOption: json_.containsKey('avoidInsufficientOption')
-              ? json_['avoidInsufficientOption'] as core.bool
-              : null,
-          avoidedFraudOption: json_.containsKey('avoidedFraudOption')
-              ? json_['avoidedFraudOption'] as core.String
-              : null,
+          avoidInsufficientOption:
+              json_['avoidInsufficientOption'] as core.bool?,
+          avoidedFraudOption: json_['avoidedFraudOption'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6058,15 +5598,9 @@ class $DoubleVerifyVideoViewability {
 
   $DoubleVerifyVideoViewability.fromJson(core.Map json_)
       : this(
-          playerImpressionRate: json_.containsKey('playerImpressionRate')
-              ? json_['playerImpressionRate'] as core.String
-              : null,
-          videoIab: json_.containsKey('videoIab')
-              ? json_['videoIab'] as core.String
-              : null,
-          videoViewableRate: json_.containsKey('videoViewableRate')
-              ? json_['videoViewableRate'] as core.String
-              : null,
+          playerImpressionRate: json_['playerImpressionRate'] as core.String?,
+          videoIab: json_['videoIab'] as core.String?,
+          videoViewableRate: json_['videoViewableRate'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6100,12 +5634,8 @@ class $DownloadParameters {
 
   $DownloadParameters.fromJson(core.Map json_)
       : this(
-          allowGzipCompression: json_.containsKey('allowGzipCompression')
-              ? json_['allowGzipCompression'] as core.bool
-              : null,
-          ignoreRange: json_.containsKey('ignoreRange')
-              ? json_['ignoreRange'] as core.bool
-              : null,
+          allowGzipCompression: json_['allowGzipCompression'] as core.bool?,
+          ignoreRange: json_['ignoreRange'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6129,9 +5659,7 @@ class $DrainedMachine {
 
   $DrainedMachine.fromJson(core.Map json_)
       : this(
-          nodeIp: json_.containsKey('nodeIp')
-              ? json_['nodeIp'] as core.String
-              : null,
+          nodeIp: json_['nodeIp'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6157,12 +5685,8 @@ class $DrainingMachine {
 
   $DrainingMachine.fromJson(core.Map json_)
       : this(
-          nodeIp: json_.containsKey('nodeIp')
-              ? json_['nodeIp'] as core.String
-              : null,
-          podCount: json_.containsKey('podCount')
-              ? json_['podCount'] as core.int
-              : null,
+          nodeIp: json_['nodeIp'] as core.String?,
+          podCount: json_['podCount'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6187,9 +5711,7 @@ class $DuplicateLineItemRequest {
 
   $DuplicateLineItemRequest.fromJson(core.Map json_)
       : this(
-          targetDisplayName: json_.containsKey('targetDisplayName')
-              ? json_['targetDisplayName'] as core.String
-              : null,
+          targetDisplayName: json_['targetDisplayName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6211,9 +5733,7 @@ class $DuplicateLineItemResponse {
 
   $DuplicateLineItemResponse.fromJson(core.Map json_)
       : this(
-          duplicateLineItemId: json_.containsKey('duplicateLineItemId')
-              ? json_['duplicateLineItemId'] as core.String
-              : null,
+          duplicateLineItemId: json_['duplicateLineItemId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6251,15 +5771,11 @@ class $DynamicListenerState {
 
   $DynamicListenerState.fromJson(core.Map json_)
       : this(
-          lastUpdated: json_.containsKey('lastUpdated')
-              ? json_['lastUpdated'] as core.String
-              : null,
+          lastUpdated: json_['lastUpdated'] as core.String?,
           listener: json_.containsKey('listener')
               ? json_['listener'] as core.Map<core.String, core.dynamic>
               : null,
-          versionInfo: json_.containsKey('versionInfo')
-              ? json_['versionInfo'] as core.String
-              : null,
+          versionInfo: json_['versionInfo'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6286,9 +5802,7 @@ class $EditCustomerMatchMembersResponse {
   $EditCustomerMatchMembersResponse.fromJson(core.Map json_)
       : this(
           firstAndThirdPartyAudienceId:
-              json_.containsKey('firstAndThirdPartyAudienceId')
-                  ? json_['firstAndThirdPartyAudienceId'] as core.String
-                  : null,
+              json_['firstAndThirdPartyAudienceId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6333,12 +5847,8 @@ class $EditGuaranteedOrderReadAccessorsRequest {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          partnerId: json_.containsKey('partnerId')
-              ? json_['partnerId'] as core.String
-              : null,
-          readAccessInherited: json_.containsKey('readAccessInherited')
-              ? json_['readAccessInherited'] as core.bool
-              : null,
+          partnerId: json_['partnerId'] as core.String?,
+          readAccessInherited: json_['readAccessInherited'] as core.bool?,
           removedAdvertisers: json_.containsKey('removedAdvertisers')
               ? (json_['removedAdvertisers'] as core.List)
                   .map((value) => value as core.String)
@@ -6375,9 +5885,7 @@ class $EditGuaranteedOrderReadAccessorsResponse {
 
   $EditGuaranteedOrderReadAccessorsResponse.fromJson(core.Map json_)
       : this(
-          readAccessInherited: json_.containsKey('readAccessInherited')
-              ? json_['readAccessInherited'] as core.bool
-              : null,
+          readAccessInherited: json_['readAccessInherited'] as core.bool?,
           readAdvertiserIds: json_.containsKey('readAdvertiserIds')
               ? (json_['readAdvertiserIds'] as core.List)
                   .map((value) => value as core.String)
@@ -6453,9 +5961,7 @@ class $EgressSource {
 
   $EgressSource.fromJson(core.Map json_)
       : this(
-          accessLevel: json_.containsKey('accessLevel')
-              ? json_['accessLevel'] as core.String
-              : null,
+          accessLevel: json_['accessLevel'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7230,9 +6736,7 @@ class $EncryptionConfig {
 
   $EncryptionConfig.fromJson(core.Map json_)
       : this(
-          kmsKeyName: json_.containsKey('kmsKeyName')
-              ? json_['kmsKeyName'] as core.String
-              : null,
+          kmsKeyName: json_['kmsKeyName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7265,10 +6769,8 @@ class $EncryptionKey {
 
   $EncryptionKey.fromJson(core.Map json_)
       : this(
-          kmsKeyName: json_.containsKey('kmsKeyName')
-              ? json_['kmsKeyName'] as core.String
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          kmsKeyName: json_['kmsKeyName'] as core.String?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7321,13 +6823,9 @@ class $Endpoint {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          allowCors: json_.containsKey('allowCors')
-              ? json_['allowCors'] as core.bool
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          target: json_.containsKey('target')
-              ? json_['target'] as core.String
-              : null,
+          allowCors: json_['allowCors'] as core.bool?,
+          name: json_['name'] as core.String?,
+          target: json_['target'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7391,15 +6889,9 @@ class $Entry {
 
   $Entry.fromJson(core.Map json_)
       : this(
-          caseSensitive: json_.containsKey('caseSensitive')
-              ? json_['caseSensitive'] as core.bool
-              : null,
-          replace: json_.containsKey('replace')
-              ? json_['replace'] as core.String
-              : null,
-          search: json_.containsKey('search')
-              ? json_['search'] as core.String
-              : null,
+          caseSensitive: json_['caseSensitive'] as core.bool?,
+          replace: json_['replace'] as core.String?,
+          search: json_['search'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7430,9 +6922,8 @@ class $EnvelopeSignature {
 
   $EnvelopeSignature.fromJson(core.Map json_)
       : this(
-          keyid:
-              json_.containsKey('keyid') ? json_['keyid'] as core.String : null,
-          sig: json_.containsKey('sig') ? json_['sig'] as core.String : null,
+          keyid: json_['keyid'] as core.String?,
+          sig: json_['sig'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7472,9 +6963,7 @@ class $EnvironmentAssignedTargetingOptionDetails {
 
   $EnvironmentAssignedTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          environment: json_.containsKey('environment')
-              ? json_['environment'] as core.String
-              : null,
+          environment: json_['environment'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7513,9 +7002,7 @@ class $EnvironmentTargetingOptionDetails {
 
   $EnvironmentTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          environment: json_.containsKey('environment')
-              ? json_['environment'] as core.String
-              : null,
+          environment: json_['environment'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7537,9 +7024,7 @@ class $Error {
 
   $Error.fromJson(core.Map json_)
       : this(
-          errorMessage: json_.containsKey('errorMessage')
-              ? json_['errorMessage'] as core.String
-              : null,
+          errorMessage: json_['errorMessage'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7671,9 +7156,7 @@ class $EventbusProtoSerializedObjectParameter {
 
   $EventbusProtoSerializedObjectParameter.fromJson(core.Map json_)
       : this(
-          objectValue: json_.containsKey('objectValue')
-              ? json_['objectValue'] as core.String
-              : null,
+          objectValue: json_['objectValue'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7733,11 +7216,8 @@ class $EventingStatus {
 
   $EventingStatus.fromJson(core.Map json_)
       : this(
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
+          description: json_['description'] as core.String?,
+          state: json_['state'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7847,9 +7327,7 @@ class $ExchangeAssignedTargetingOptionDetails {
 
   $ExchangeAssignedTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          exchange: json_.containsKey('exchange')
-              ? json_['exchange'] as core.String
-              : null,
+          exchange: json_['exchange'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7978,19 +7456,12 @@ class $ExchangeConfigEnabledExchange {
 
   $ExchangeConfigEnabledExchange.fromJson(core.Map json_)
       : this(
-          exchange: json_.containsKey('exchange')
-              ? json_['exchange'] as core.String
-              : null,
-          googleAdManagerAgencyId: json_.containsKey('googleAdManagerAgencyId')
-              ? json_['googleAdManagerAgencyId'] as core.String
-              : null,
+          exchange: json_['exchange'] as core.String?,
+          googleAdManagerAgencyId:
+              json_['googleAdManagerAgencyId'] as core.String?,
           googleAdManagerBuyerNetworkId:
-              json_.containsKey('googleAdManagerBuyerNetworkId')
-                  ? json_['googleAdManagerBuyerNetworkId'] as core.String
-                  : null,
-          seatId: json_.containsKey('seatId')
-              ? json_['seatId'] as core.String
-              : null,
+              json_['googleAdManagerBuyerNetworkId'] as core.String?,
+          seatId: json_['seatId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8112,12 +7583,8 @@ class $ExchangeReviewStatus {
 
   $ExchangeReviewStatus.fromJson(core.Map json_)
       : this(
-          exchange: json_.containsKey('exchange')
-              ? json_['exchange'] as core.String
-              : null,
-          status: json_.containsKey('status')
-              ? json_['status'] as core.String
-              : null,
+          exchange: json_['exchange'] as core.String?,
+          status: json_['status'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8227,9 +7694,7 @@ class $ExchangeTargetingOptionDetails {
 
   $ExchangeTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          exchange: json_.containsKey('exchange')
-              ? json_['exchange'] as core.String
-              : null,
+          exchange: json_['exchange'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8307,15 +7772,9 @@ class $ExecutionStats {
           debugStats: json_.containsKey('debugStats')
               ? json_['debugStats'] as core.Map<core.String, core.dynamic>
               : null,
-          executionDuration: json_.containsKey('executionDuration')
-              ? json_['executionDuration'] as core.String
-              : null,
-          readOperations: json_.containsKey('readOperations')
-              ? json_['readOperations'] as core.String
-              : null,
-          resultsReturned: json_.containsKey('resultsReturned')
-              ? json_['resultsReturned'] as core.String
-              : null,
+          executionDuration: json_['executionDuration'] as core.String?,
+          readOperations: json_['readOperations'] as core.String?,
+          resultsReturned: json_['resultsReturned'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8370,12 +7829,10 @@ class $ExitEvent {
 
   $ExitEvent.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          reportingName: json_.containsKey('reportingName')
-              ? json_['reportingName'] as core.String
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
-          url: json_.containsKey('url') ? json_['url'] as core.String : null,
+          name: json_['name'] as core.String?,
+          reportingName: json_['reportingName'] as core.String?,
+          type: json_['type'] as core.String?,
+          url: json_['url'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8407,9 +7864,7 @@ class $ExplainOptions {
 
   $ExplainOptions.fromJson(core.Map json_)
       : this(
-          analyze: json_.containsKey('analyze')
-              ? json_['analyze'] as core.bool
-              : null,
+          analyze: json_['analyze'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8465,15 +7920,9 @@ class $Exponential {
 
   $Exponential.fromJson(core.Map json_)
       : this(
-          growthFactor: json_.containsKey('growthFactor')
-              ? (json_['growthFactor'] as core.num).toDouble()
-              : null,
-          numFiniteBuckets: json_.containsKey('numFiniteBuckets')
-              ? json_['numFiniteBuckets'] as core.int
-              : null,
-          scale: json_.containsKey('scale')
-              ? (json_['scale'] as core.num).toDouble()
-              : null,
+          growthFactor: (json_['growthFactor'] as core.num?)?.toDouble(),
+          numFiniteBuckets: json_['numFiniteBuckets'] as core.int?,
+          scale: (json_['scale'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8504,9 +7953,7 @@ class $ExportOptions00 {
 
   $ExportOptions00.fromJson(core.Map json_)
       : this(
-          exportFormat: json_.containsKey('exportFormat')
-              ? json_['exportFormat'] as core.String
-              : null,
+          exportFormat: json_['exportFormat'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8535,9 +7982,7 @@ class $ExportOptions01 {
 
   $ExportOptions01.fromJson(core.Map json_)
       : this(
-          exportFormat: json_.containsKey('exportFormat')
-              ? json_['exportFormat'] as core.String
-              : null,
+          exportFormat: json_['exportFormat'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8657,17 +8102,10 @@ class $Expr {
 
   $Expr.fromJson(core.Map json_)
       : this(
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          expression: json_.containsKey('expression')
-              ? json_['expression'] as core.String
-              : null,
-          location: json_.containsKey('location')
-              ? json_['location'] as core.String
-              : null,
-          title:
-              json_.containsKey('title') ? json_['title'] as core.String : null,
+          description: json_['description'] as core.String?,
+          expression: json_['expression'] as core.String?,
+          location: json_['location'] as core.String?,
+          title: json_['title'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8699,12 +8137,8 @@ class $ExternalProtectionLevelOptions {
 
   $ExternalProtectionLevelOptions.fromJson(core.Map json_)
       : this(
-          ekmConnectionKeyPath: json_.containsKey('ekmConnectionKeyPath')
-              ? json_['ekmConnectionKeyPath'] as core.String
-              : null,
-          externalKeyUri: json_.containsKey('externalKeyUri')
-              ? json_['externalKeyUri'] as core.String
-              : null,
+          ekmConnectionKeyPath: json_['ekmConnectionKeyPath'] as core.String?,
+          externalKeyUri: json_['externalKeyUri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8741,15 +8175,9 @@ class $F5BigIpConfig {
 
   $F5BigIpConfig.fromJson(core.Map json_)
       : this(
-          address: json_.containsKey('address')
-              ? json_['address'] as core.String
-              : null,
-          partition: json_.containsKey('partition')
-              ? json_['partition'] as core.String
-              : null,
-          snatPool: json_.containsKey('snatPool')
-              ? json_['snatPool'] as core.String
-              : null,
+          address: json_['address'] as core.String?,
+          partition: json_['partition'] as core.String?,
+          snatPool: json_['snatPool'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8773,9 +8201,7 @@ class $FcmOptions {
 
   $FcmOptions.fromJson(core.Map json_)
       : this(
-          analyticsLabel: json_.containsKey('analyticsLabel')
-              ? json_['analyticsLabel'] as core.String
-              : null,
+          analyticsLabel: json_['analyticsLabel'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8801,9 +8227,7 @@ class $FetchGitRefsResponse {
 
   $FetchGitRefsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           refNames: json_.containsKey('refNames')
               ? (json_['refNames'] as core.List)
                   .map((value) => value as core.String)
@@ -8833,9 +8257,7 @@ class $FileLocation {
 
   $FileLocation.fromJson(core.Map json_)
       : this(
-          filePath: json_.containsKey('filePath')
-              ? json_['filePath'] as core.String
-              : null,
+          filePath: json_['filePath'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8889,15 +8311,9 @@ class $FilterSplit {
 
   $FilterSplit.fromJson(core.Map json_)
       : this(
-          testFilter: json_.containsKey('testFilter')
-              ? json_['testFilter'] as core.String
-              : null,
-          trainingFilter: json_.containsKey('trainingFilter')
-              ? json_['trainingFilter'] as core.String
-              : null,
-          validationFilter: json_.containsKey('validationFilter')
-              ? json_['validationFilter'] as core.String
-              : null,
+          testFilter: json_['testFilter'] as core.String?,
+          trainingFilter: json_['trainingFilter'] as core.String?,
+          validationFilter: json_['validationFilter'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8937,17 +8353,13 @@ class $Fingerprint {
 
   $Fingerprint.fromJson(core.Map json_)
       : this(
-          v1Name: json_.containsKey('v1Name')
-              ? json_['v1Name'] as core.String
-              : null,
+          v1Name: json_['v1Name'] as core.String?,
           v2Blob: json_.containsKey('v2Blob')
               ? (json_['v2Blob'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          v2Name: json_.containsKey('v2Name')
-              ? json_['v2Name'] as core.String
-              : null,
+          v2Name: json_['v2Name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9017,12 +8429,8 @@ class $FirstAndThirdPartyAudienceTargetingSetting {
   $FirstAndThirdPartyAudienceTargetingSetting.fromJson(core.Map json_)
       : this(
           firstAndThirdPartyAudienceId:
-              json_.containsKey('firstAndThirdPartyAudienceId')
-                  ? json_['firstAndThirdPartyAudienceId'] as core.String
-                  : null,
-          recency: json_.containsKey('recency')
-              ? json_['recency'] as core.String
-              : null,
+              json_['firstAndThirdPartyAudienceId'] as core.String?,
+          recency: json_['recency'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9052,9 +8460,7 @@ class $FixedBidStrategy {
 
   $FixedBidStrategy.fromJson(core.Map json_)
       : this(
-          bidAmountMicros: json_.containsKey('bidAmountMicros')
-              ? json_['bidAmountMicros'] as core.String
-              : null,
+          bidAmountMicros: json_['bidAmountMicros'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9100,19 +8506,11 @@ class $ForwardSshTunnelConnectivity {
 
   $ForwardSshTunnelConnectivity.fromJson(core.Map json_)
       : this(
-          hostname: json_.containsKey('hostname')
-              ? json_['hostname'] as core.String
-              : null,
-          password: json_.containsKey('password')
-              ? json_['password'] as core.String
-              : null,
-          port: json_.containsKey('port') ? json_['port'] as core.int : null,
-          privateKey: json_.containsKey('privateKey')
-              ? json_['privateKey'] as core.String
-              : null,
-          username: json_.containsKey('username')
-              ? json_['username'] as core.String
-              : null,
+          hostname: json_['hostname'] as core.String?,
+          password: json_['password'] as core.String?,
+          port: json_['port'] as core.int?,
+          privateKey: json_['privateKey'] as core.String?,
+          username: json_['username'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9146,15 +8544,11 @@ class $FractionSplit {
 
   $FractionSplit.fromJson(core.Map json_)
       : this(
-          testFraction: json_.containsKey('testFraction')
-              ? (json_['testFraction'] as core.num).toDouble()
-              : null,
-          trainingFraction: json_.containsKey('trainingFraction')
-              ? (json_['trainingFraction'] as core.num).toDouble()
-              : null,
-          validationFraction: json_.containsKey('validationFraction')
-              ? (json_['validationFraction'] as core.num).toDouble()
-              : null,
+          testFraction: (json_['testFraction'] as core.num?)?.toDouble(),
+          trainingFraction:
+              (json_['trainingFraction'] as core.num?)?.toDouble(),
+          validationFraction:
+              (json_['validationFraction'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9232,21 +8626,11 @@ class $FrequencyCap {
 
   $FrequencyCap.fromJson(core.Map json_)
       : this(
-          maxImpressions: json_.containsKey('maxImpressions')
-              ? json_['maxImpressions'] as core.int
-              : null,
-          maxViews: json_.containsKey('maxViews')
-              ? json_['maxViews'] as core.int
-              : null,
-          timeUnit: json_.containsKey('timeUnit')
-              ? json_['timeUnit'] as core.String
-              : null,
-          timeUnitCount: json_.containsKey('timeUnitCount')
-              ? json_['timeUnitCount'] as core.int
-              : null,
-          unlimited: json_.containsKey('unlimited')
-              ? json_['unlimited'] as core.bool
-              : null,
+          maxImpressions: json_['maxImpressions'] as core.int?,
+          maxViews: json_['maxViews'] as core.int?,
+          timeUnit: json_['timeUnit'] as core.String?,
+          timeUnitCount: json_['timeUnitCount'] as core.int?,
+          unlimited: json_['unlimited'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9330,7 +8714,7 @@ class $GcsSource {
 
   $GcsSource.fromJson(core.Map json_)
       : this(
-          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+          uri: json_['uri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9361,9 +8745,7 @@ class $GenderAssignedTargetingOptionDetails {
 
   $GenderAssignedTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          gender: json_.containsKey('gender')
-              ? json_['gender'] as core.String
-              : null,
+          gender: json_['gender'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9394,9 +8776,7 @@ class $GenderTargetingOptionDetails {
 
   $GenderTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          gender: json_.containsKey('gender')
-              ? json_['gender'] as core.String
-              : null,
+          gender: json_['gender'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9419,9 +8799,7 @@ class $GenerateDownloadUrlResponse {
 
   $GenerateDownloadUrlResponse.fromJson(core.Map json_)
       : this(
-          downloadUrl: json_.containsKey('downloadUrl')
-              ? json_['downloadUrl'] as core.String
-              : null,
+          downloadUrl: json_['downloadUrl'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9501,18 +8879,10 @@ class $GeoRegionAssignedTargetingOptionDetails {
 
   $GeoRegionAssignedTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          geoRegionType: json_.containsKey('geoRegionType')
-              ? json_['geoRegionType'] as core.String
-              : null,
-          negative: json_.containsKey('negative')
-              ? json_['negative'] as core.bool
-              : null,
-          targetingOptionId: json_.containsKey('targetingOptionId')
-              ? json_['targetingOptionId'] as core.String
-              : null,
+          displayName: json_['displayName'] as core.String?,
+          geoRegionType: json_['geoRegionType'] as core.String?,
+          negative: json_['negative'] as core.bool?,
+          targetingOptionId: json_['targetingOptionId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9539,9 +8909,7 @@ class $GeoRegionSearchTerms {
 
   $GeoRegionSearchTerms.fromJson(core.Map json_)
       : this(
-          geoRegionQuery: json_.containsKey('geoRegionQuery')
-              ? json_['geoRegionQuery'] as core.String
-              : null,
+          geoRegionQuery: json_['geoRegionQuery'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9610,12 +8978,8 @@ class $GeoRegionTargetingOptionDetails {
 
   $GeoRegionTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          geoRegionType: json_.containsKey('geoRegionType')
-              ? json_['geoRegionType'] as core.String
-              : null,
+          displayName: json_['displayName'] as core.String?,
+          geoRegionType: json_['geoRegionType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9668,9 +9032,7 @@ class $GetPolicyOptions00 {
 
   $GetPolicyOptions00.fromJson(core.Map json_)
       : this(
-          requestedPolicyVersion: json_.containsKey('requestedPolicyVersion')
-              ? json_['requestedPolicyVersion'] as core.int
-              : null,
+          requestedPolicyVersion: json_['requestedPolicyVersion'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9706,9 +9068,7 @@ class $GetPolicyOptions01 {
 
   $GetPolicyOptions01.fromJson(core.Map json_)
       : this(
-          requestedPolicyVersion: json_.containsKey('requestedPolicyVersion')
-              ? json_['requestedPolicyVersion'] as core.int
-              : null,
+          requestedPolicyVersion: json_['requestedPolicyVersion'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9735,10 +9095,8 @@ class $GitSourceContext {
 
   $GitSourceContext.fromJson(core.Map json_)
       : this(
-          revisionId: json_.containsKey('revisionId')
-              ? json_['revisionId'] as core.String
-              : null,
-          url: json_.containsKey('url') ? json_['url'] as core.String : null,
+          revisionId: json_['revisionId'] as core.String?,
+          url: json_['url'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9799,16 +9157,10 @@ class $GoogleAudience {
 
   $GoogleAudience.fromJson(core.Map json_)
       : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          googleAudienceId: json_.containsKey('googleAudienceId')
-              ? json_['googleAudienceId'] as core.String
-              : null,
-          googleAudienceType: json_.containsKey('googleAudienceType')
-              ? json_['googleAudienceType'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          displayName: json_['displayName'] as core.String?,
+          googleAudienceId: json_['googleAudienceId'] as core.String?,
+          googleAudienceType: json_['googleAudienceType'] as core.String?,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9838,9 +9190,7 @@ class $GoogleAudienceTargetingSetting {
 
   $GoogleAudienceTargetingSetting.fromJson(core.Map json_)
       : this(
-          googleAudienceId: json_.containsKey('googleAudienceId')
-              ? json_['googleAudienceId'] as core.String
-              : null,
+          googleAudienceId: json_['googleAudienceId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9886,15 +9236,9 @@ class $GoogleCloudDocumentaiV1Barcode {
 
   $GoogleCloudDocumentaiV1Barcode.fromJson(core.Map json_)
       : this(
-          format: json_.containsKey('format')
-              ? json_['format'] as core.String
-              : null,
-          rawValue: json_.containsKey('rawValue')
-              ? json_['rawValue'] as core.String
-              : null,
-          valueFormat: json_.containsKey('valueFormat')
-              ? json_['valueFormat'] as core.String
-              : null,
+          format: json_['format'] as core.String?,
+          rawValue: json_['rawValue'] as core.String?,
+          valueFormat: json_['valueFormat'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9926,15 +9270,9 @@ class $GoogleCloudDocumentaiV1DocumentEntityRelation {
 
   $GoogleCloudDocumentaiV1DocumentEntityRelation.fromJson(core.Map json_)
       : this(
-          objectId: json_.containsKey('objectId')
-              ? json_['objectId'] as core.String
-              : null,
-          relation: json_.containsKey('relation')
-              ? json_['relation'] as core.String
-              : null,
-          subjectId: json_.containsKey('subjectId')
-              ? json_['subjectId'] as core.String
-              : null,
+          objectId: json_['objectId'] as core.String?,
+          relation: json_['relation'] as core.String?,
+          subjectId: json_['subjectId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9966,12 +9304,8 @@ class $GoogleCloudDocumentaiV1DocumentPageDetectedLanguage {
 
   $GoogleCloudDocumentaiV1DocumentPageDetectedLanguage.fromJson(core.Map json_)
       : this(
-          confidence: json_.containsKey('confidence')
-              ? (json_['confidence'] as core.num).toDouble()
-              : null,
-          languageCode: json_.containsKey('languageCode')
-              ? json_['languageCode'] as core.String
-              : null,
+          confidence: (json_['confidence'] as core.num?)?.toDouble(),
+          languageCode: json_['languageCode'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10002,13 +9336,9 @@ class $GoogleCloudDocumentaiV1DocumentPageDimension {
 
   $GoogleCloudDocumentaiV1DocumentPageDimension.fromJson(core.Map json_)
       : this(
-          height: json_.containsKey('height')
-              ? (json_['height'] as core.num).toDouble()
-              : null,
-          unit: json_.containsKey('unit') ? json_['unit'] as core.String : null,
-          width: json_.containsKey('width')
-              ? (json_['width'] as core.num).toDouble()
-              : null,
+          height: (json_['height'] as core.num?)?.toDouble(),
+          unit: json_['unit'] as core.String?,
+          width: (json_['width'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10052,15 +9382,10 @@ class $GoogleCloudDocumentaiV1DocumentPageImage {
 
   $GoogleCloudDocumentaiV1DocumentPageImage.fromJson(core.Map json_)
       : this(
-          content: json_.containsKey('content')
-              ? json_['content'] as core.String
-              : null,
-          height:
-              json_.containsKey('height') ? json_['height'] as core.int : null,
-          mimeType: json_.containsKey('mimeType')
-              ? json_['mimeType'] as core.String
-              : null,
-          width: json_.containsKey('width') ? json_['width'] as core.int : null,
+          content: json_['content'] as core.String?,
+          height: json_['height'] as core.int?,
+          mimeType: json_['mimeType'] as core.String?,
+          width: json_['width'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10098,10 +9423,8 @@ class $GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect {
   $GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect.fromJson(
       core.Map json_)
       : this(
-          confidence: json_.containsKey('confidence')
-              ? (json_['confidence'] as core.num).toDouble()
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          confidence: (json_['confidence'] as core.num?)?.toDouble(),
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10146,10 +9469,10 @@ class $GoogleCloudDocumentaiV1DocumentPageMatrix {
 
   $GoogleCloudDocumentaiV1DocumentPageMatrix.fromJson(core.Map json_)
       : this(
-          cols: json_.containsKey('cols') ? json_['cols'] as core.int : null,
-          data: json_.containsKey('data') ? json_['data'] as core.String : null,
-          rows: json_.containsKey('rows') ? json_['rows'] as core.int : null,
-          type: json_.containsKey('type') ? json_['type'] as core.int : null,
+          cols: json_['cols'] as core.int?,
+          data: json_['data'] as core.String?,
+          rows: json_['rows'] as core.int?,
+          type: json_['type'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10181,7 +9504,7 @@ class $GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak {
   $GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak.fromJson(
       core.Map json_)
       : this(
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10217,11 +9540,9 @@ class $GoogleCloudDocumentaiV1DocumentProvenanceParent {
 
   $GoogleCloudDocumentaiV1DocumentProvenanceParent.fromJson(core.Map json_)
       : this(
-          id: json_.containsKey('id') ? json_['id'] as core.int : null,
-          index: json_.containsKey('index') ? json_['index'] as core.int : null,
-          revision: json_.containsKey('revision')
-              ? json_['revision'] as core.int
-              : null,
+          id: json_['id'] as core.int?,
+          index: json_['index'] as core.int?,
+          revision: json_['revision'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10253,11 +9574,8 @@ class $GoogleCloudDocumentaiV1DocumentRevisionHumanReview {
 
   $GoogleCloudDocumentaiV1DocumentRevisionHumanReview.fromJson(core.Map json_)
       : this(
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
-          stateMessage: json_.containsKey('stateMessage')
-              ? json_['stateMessage'] as core.String
-              : null,
+          state: json_['state'] as core.String?,
+          stateMessage: json_['stateMessage'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10289,15 +9607,9 @@ class $GoogleCloudDocumentaiV1DocumentShardInfo {
 
   $GoogleCloudDocumentaiV1DocumentShardInfo.fromJson(core.Map json_)
       : this(
-          shardCount: json_.containsKey('shardCount')
-              ? json_['shardCount'] as core.String
-              : null,
-          shardIndex: json_.containsKey('shardIndex')
-              ? json_['shardIndex'] as core.String
-              : null,
-          textOffset: json_.containsKey('textOffset')
-              ? json_['textOffset'] as core.String
-              : null,
+          shardCount: json_['shardCount'] as core.String?,
+          shardIndex: json_['shardIndex'] as core.String?,
+          textOffset: json_['textOffset'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10327,10 +9639,8 @@ class $GoogleCloudDocumentaiV1DocumentStyleFontSize {
 
   $GoogleCloudDocumentaiV1DocumentStyleFontSize.fromJson(core.Map json_)
       : this(
-          size: json_.containsKey('size')
-              ? (json_['size'] as core.num).toDouble()
-              : null,
-          unit: json_.containsKey('unit') ? json_['unit'] as core.String : null,
+          size: (json_['size'] as core.num?)?.toDouble(),
+          unit: json_['unit'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10357,12 +9667,8 @@ class $GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment {
 
   $GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment.fromJson(core.Map json_)
       : this(
-          endIndex: json_.containsKey('endIndex')
-              ? json_['endIndex'] as core.String
-              : null,
-          startIndex: json_.containsKey('startIndex')
-              ? json_['startIndex'] as core.String
-              : null,
+          endIndex: json_['endIndex'] as core.String?,
+          startIndex: json_['startIndex'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10389,12 +9695,8 @@ class $GoogleCloudDocumentaiV1NormalizedVertex {
 
   $GoogleCloudDocumentaiV1NormalizedVertex.fromJson(core.Map json_)
       : this(
-          x: json_.containsKey('x')
-              ? (json_['x'] as core.num).toDouble()
-              : null,
-          y: json_.containsKey('y')
-              ? (json_['y'] as core.num).toDouble()
-              : null,
+          x: (json_['x'] as core.num?)?.toDouble(),
+          y: (json_['y'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10421,8 +9723,8 @@ class $GoogleCloudDocumentaiV1Vertex {
 
   $GoogleCloudDocumentaiV1Vertex.fromJson(core.Map json_)
       : this(
-          x: json_.containsKey('x') ? json_['x'] as core.int : null,
-          y: json_.containsKey('y') ? json_['y'] as core.int : null,
+          x: json_['x'] as core.int?,
+          y: json_['y'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10504,32 +9806,22 @@ class $GoogleCloudOrgpolicyV2CustomConstraint {
 
   $GoogleCloudOrgpolicyV2CustomConstraint.fromJson(core.Map json_)
       : this(
-          actionType: json_.containsKey('actionType')
-              ? json_['actionType'] as core.String
-              : null,
-          condition: json_.containsKey('condition')
-              ? json_['condition'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+          actionType: json_['actionType'] as core.String?,
+          condition: json_['condition'] as core.String?,
+          description: json_['description'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
           methodTypes: json_.containsKey('methodTypes')
               ? (json_['methodTypes'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           resourceTypes: json_.containsKey('resourceTypes')
               ? (json_['resourceTypes'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10565,10 +9857,8 @@ class $GoogleTypeLocalizedText {
 
   $GoogleTypeLocalizedText.fromJson(core.Map json_)
       : this(
-          languageCode: json_.containsKey('languageCode')
-              ? json_['languageCode'] as core.String
-              : null,
-          text: json_.containsKey('text') ? json_['text'] as core.String : null,
+          languageCode: json_['languageCode'] as core.String?,
+          text: json_['text'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10594,15 +9884,9 @@ class $GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness {
 
   $GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness.fromJson(core.Map json_)
       : this(
-          environment: json_.containsKey('environment')
-              ? json_['environment'] as core.bool
-              : null,
-          materials: json_.containsKey('materials')
-              ? json_['materials'] as core.bool
-              : null,
-          parameters: json_.containsKey('parameters')
-              ? json_['parameters'] as core.bool
-              : null,
+          environment: json_['environment'] as core.bool?,
+          materials: json_['materials'] as core.bool?,
+          parameters: json_['parameters'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10637,10 +9921,8 @@ class $GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource {
                   ),
                 )
               : null,
-          entryPoint: json_.containsKey('entryPoint')
-              ? json_['entryPoint'] as core.String
-              : null,
-          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+          entryPoint: json_['entryPoint'] as core.String?,
+          uri: json_['uri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10704,15 +9986,9 @@ class $GuaranteedOrderStatus {
 
   $GuaranteedOrderStatus.fromJson(core.Map json_)
       : this(
-          configStatus: json_.containsKey('configStatus')
-              ? json_['configStatus'] as core.String
-              : null,
-          entityPauseReason: json_.containsKey('entityPauseReason')
-              ? json_['entityPauseReason'] as core.String
-              : null,
-          entityStatus: json_.containsKey('entityStatus')
-              ? json_['entityStatus'] as core.String
-              : null,
+          configStatus: json_['configStatus'] as core.String?,
+          entityPauseReason: json_['entityPauseReason'] as core.String?,
+          entityStatus: json_['entityStatus'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10744,12 +10020,9 @@ class $GuestAttributesEntry {
 
   $GuestAttributesEntry.fromJson(core.Map json_)
       : this(
-          key: json_.containsKey('key') ? json_['key'] as core.String : null,
-          namespace: json_.containsKey('namespace')
-              ? json_['namespace'] as core.String
-              : null,
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
+          key: json_['key'] as core.String?,
+          namespace: json_['namespace'] as core.String?,
+          value: json_['value'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10781,13 +10054,10 @@ class $HPAConfig {
 
   $HPAConfig.fromJson(core.Map json_)
       : this(
-          cpuUtilizationThreshold: json_.containsKey('cpuUtilizationThreshold')
-              ? json_['cpuUtilizationThreshold'] as core.String
-              : null,
+          cpuUtilizationThreshold:
+              json_['cpuUtilizationThreshold'] as core.String?,
           memoryUtilizationThreshold:
-              json_.containsKey('memoryUtilizationThreshold')
-                  ? json_['memoryUtilizationThreshold'] as core.String
-                  : null,
+              json_['memoryUtilizationThreshold'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10812,9 +10082,7 @@ class $Handler {
 
   $Handler.fromJson(core.Map json_)
       : this(
-          scriptPath: json_.containsKey('scriptPath')
-              ? json_['scriptPath'] as core.String
-              : null,
+          scriptPath: json_['scriptPath'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10850,9 +10118,8 @@ class $Hash {
 
   $Hash.fromJson(core.Map json_)
       : this(
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
+          type: json_['type'] as core.String?,
+          value: json_['value'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10879,9 +10146,8 @@ class $Header {
 
   $Header.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
+          name: json_['name'] as core.String?,
+          value: json_['value'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10924,9 +10190,7 @@ class $HouseholdIncomeAssignedTargetingOptionDetails {
 
   $HouseholdIncomeAssignedTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          householdIncome: json_.containsKey('householdIncome')
-              ? json_['householdIncome'] as core.String
-              : null,
+          householdIncome: json_['householdIncome'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10968,9 +10232,7 @@ class $HouseholdIncomeTargetingOptionDetails {
 
   $HouseholdIncomeTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          householdIncome: json_.containsKey('householdIncome')
-              ? json_['householdIncome'] as core.String
-              : null,
+          householdIncome: json_['householdIncome'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -11024,10 +10286,8 @@ class $HttpBody {
 
   $HttpBody.fromJson(core.Map json_)
       : this(
-          contentType: json_.containsKey('contentType')
-              ? json_['contentType'] as core.String
-              : null,
-          data: json_.containsKey('data') ? json_['data'] as core.String : null,
+          contentType: json_['contentType'] as core.String?,
+          data: json_['data'] as core.String?,
           extensions: json_.containsKey('extensions')
               ? (json_['extensions'] as core.List)
                   .map((value) => value as core.Map<core.String, core.dynamic>)
@@ -11154,12 +10414,8 @@ class $Identity {
 
   $Identity.fromJson(core.Map json_)
       : this(
-          revision: json_.containsKey('revision')
-              ? json_['revision'] as core.int
-              : null,
-          updateId: json_.containsKey('updateId')
-              ? json_['updateId'] as core.String
-              : null,
+          revision: json_['revision'] as core.int?,
+          updateId: json_['updateId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -11202,12 +10458,8 @@ class $IngressSource {
 
   $IngressSource.fromJson(core.Map json_)
       : this(
-          accessLevel: json_.containsKey('accessLevel')
-              ? json_['accessLevel'] as core.String
-              : null,
-          resource: json_.containsKey('resource')
-              ? json_['resource'] as core.String
-              : null,
+          accessLevel: json_['accessLevel'] as core.String?,
+          resource: json_['resource'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -11241,10 +10493,8 @@ class $InlineScopedRouteConfigs {
 
   $InlineScopedRouteConfigs.fromJson(core.Map json_)
       : this(
-          lastUpdated: json_.containsKey('lastUpdated')
-              ? json_['lastUpdated'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          lastUpdated: json_['lastUpdated'] as core.String?,
+          name: json_['name'] as core.String?,
           scopedRouteConfigs: json_.containsKey('scopedRouteConfigs')
               ? (json_['scopedRouteConfigs'] as core.List)
                   .map((value) => value as core.Map<core.String, core.dynamic>)
@@ -11302,14 +10552,9 @@ class $InstallationState {
 
   $InstallationState.fromJson(core.Map json_)
       : this(
-          actionUri: json_.containsKey('actionUri')
-              ? json_['actionUri'] as core.String
-              : null,
-          message: json_.containsKey('message')
-              ? json_['message'] as core.String
-              : null,
-          stage:
-              json_.containsKey('stage') ? json_['stage'] as core.String : null,
+          actionUri: json_['actionUri'] as core.String?,
+          message: json_['message'] as core.String?,
+          stage: json_['stage'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -11407,21 +10652,15 @@ class $InstanceGroupManagersApplyUpdatesRequest {
 
   $InstanceGroupManagersApplyUpdatesRequest.fromJson(core.Map json_)
       : this(
-          allInstances: json_.containsKey('allInstances')
-              ? json_['allInstances'] as core.bool
-              : null,
+          allInstances: json_['allInstances'] as core.bool?,
           instances: json_.containsKey('instances')
               ? (json_['instances'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          minimalAction: json_.containsKey('minimalAction')
-              ? json_['minimalAction'] as core.String
-              : null,
+          minimalAction: json_['minimalAction'] as core.String?,
           mostDisruptiveAllowedAction:
-              json_.containsKey('mostDisruptiveAllowedAction')
-                  ? json_['mostDisruptiveAllowedAction'] as core.String
-                  : null,
+              json_['mostDisruptiveAllowedAction'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -11577,47 +10816,22 @@ class $IntegralAdScience {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          displayViewability: json_.containsKey('displayViewability')
-              ? json_['displayViewability'] as core.String
-              : null,
-          excludeUnrateable: json_.containsKey('excludeUnrateable')
-              ? json_['excludeUnrateable'] as core.bool
-              : null,
-          excludedAdFraudRisk: json_.containsKey('excludedAdFraudRisk')
-              ? json_['excludedAdFraudRisk'] as core.String
-              : null,
-          excludedAdultRisk: json_.containsKey('excludedAdultRisk')
-              ? json_['excludedAdultRisk'] as core.String
-              : null,
-          excludedAlcoholRisk: json_.containsKey('excludedAlcoholRisk')
-              ? json_['excludedAlcoholRisk'] as core.String
-              : null,
-          excludedDrugsRisk: json_.containsKey('excludedDrugsRisk')
-              ? json_['excludedDrugsRisk'] as core.String
-              : null,
-          excludedGamblingRisk: json_.containsKey('excludedGamblingRisk')
-              ? json_['excludedGamblingRisk'] as core.String
-              : null,
-          excludedHateSpeechRisk: json_.containsKey('excludedHateSpeechRisk')
-              ? json_['excludedHateSpeechRisk'] as core.String
-              : null,
+          displayViewability: json_['displayViewability'] as core.String?,
+          excludeUnrateable: json_['excludeUnrateable'] as core.bool?,
+          excludedAdFraudRisk: json_['excludedAdFraudRisk'] as core.String?,
+          excludedAdultRisk: json_['excludedAdultRisk'] as core.String?,
+          excludedAlcoholRisk: json_['excludedAlcoholRisk'] as core.String?,
+          excludedDrugsRisk: json_['excludedDrugsRisk'] as core.String?,
+          excludedGamblingRisk: json_['excludedGamblingRisk'] as core.String?,
+          excludedHateSpeechRisk:
+              json_['excludedHateSpeechRisk'] as core.String?,
           excludedIllegalDownloadsRisk:
-              json_.containsKey('excludedIllegalDownloadsRisk')
-                  ? json_['excludedIllegalDownloadsRisk'] as core.String
-                  : null,
+              json_['excludedIllegalDownloadsRisk'] as core.String?,
           excludedOffensiveLanguageRisk:
-              json_.containsKey('excludedOffensiveLanguageRisk')
-                  ? json_['excludedOffensiveLanguageRisk'] as core.String
-                  : null,
-          excludedViolenceRisk: json_.containsKey('excludedViolenceRisk')
-              ? json_['excludedViolenceRisk'] as core.String
-              : null,
-          traqScoreOption: json_.containsKey('traqScoreOption')
-              ? json_['traqScoreOption'] as core.String
-              : null,
-          videoViewability: json_.containsKey('videoViewability')
-              ? json_['videoViewability'] as core.String
-              : null,
+              json_['excludedOffensiveLanguageRisk'] as core.String?,
+          excludedViolenceRisk: json_['excludedViolenceRisk'] as core.String?,
+          traqScoreOption: json_['traqScoreOption'] as core.String?,
+          videoViewability: json_['videoViewability'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -11670,12 +10884,8 @@ class $IntegrationDetails {
 
   $IntegrationDetails.fromJson(core.Map json_)
       : this(
-          details: json_.containsKey('details')
-              ? json_['details'] as core.String
-              : null,
-          integrationCode: json_.containsKey('integrationCode')
-              ? json_['integrationCode'] as core.String
-              : null,
+          details: json_['details'] as core.String?,
+          integrationCode: json_['integrationCode'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -11717,12 +10927,8 @@ class $Interval {
 
   $Interval.fromJson(core.Map json_)
       : this(
-          endTime: json_.containsKey('endTime')
-              ? json_['endTime'] as core.String
-              : null,
-          startTime: json_.containsKey('startTime')
-              ? json_['startTime'] as core.String
-              : null,
+          endTime: json_['endTime'] as core.String?,
+          startTime: json_['startTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -11771,9 +10977,7 @@ class $InventorySourceAccessorsPartnerAccessor {
 
   $InventorySourceAccessorsPartnerAccessor.fromJson(core.Map json_)
       : this(
-          partnerId: json_.containsKey('partnerId')
-              ? json_['partnerId'] as core.String
-              : null,
+          partnerId: json_['partnerId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -11800,9 +11004,7 @@ class $InventorySourceAssignedTargetingOptionDetails {
 
   $InventorySourceAssignedTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          inventorySourceId: json_.containsKey('inventorySourceId')
-              ? json_['inventorySourceId'] as core.String
-              : null,
+          inventorySourceId: json_['inventorySourceId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -11873,13 +11075,10 @@ class $InventorySourceGroup {
 
   $InventorySourceGroup.fromJson(core.Map json_)
       : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          inventorySourceGroupId: json_.containsKey('inventorySourceGroupId')
-              ? json_['inventorySourceGroupId'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          displayName: json_['displayName'] as core.String?,
+          inventorySourceGroupId:
+              json_['inventorySourceGroupId'] as core.String?,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -11909,9 +11108,8 @@ class $InventorySourceGroupAssignedTargetingOptionDetails {
 
   $InventorySourceGroupAssignedTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          inventorySourceGroupId: json_.containsKey('inventorySourceGroupId')
-              ? json_['inventorySourceGroupId'] as core.String
-              : null,
+          inventorySourceGroupId:
+              json_['inventorySourceGroupId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12008,21 +11206,11 @@ class $InventorySourceStatus {
 
   $InventorySourceStatus.fromJson(core.Map json_)
       : this(
-          configStatus: json_.containsKey('configStatus')
-              ? json_['configStatus'] as core.String
-              : null,
-          entityPauseReason: json_.containsKey('entityPauseReason')
-              ? json_['entityPauseReason'] as core.String
-              : null,
-          entityStatus: json_.containsKey('entityStatus')
-              ? json_['entityStatus'] as core.String
-              : null,
-          sellerPauseReason: json_.containsKey('sellerPauseReason')
-              ? json_['sellerPauseReason'] as core.String
-              : null,
-          sellerStatus: json_.containsKey('sellerStatus')
-              ? json_['sellerStatus'] as core.String
-              : null,
+          configStatus: json_['configStatus'] as core.String?,
+          entityPauseReason: json_['entityPauseReason'] as core.String?,
+          entityStatus: json_['entityStatus'] as core.String?,
+          sellerPauseReason: json_['sellerPauseReason'] as core.String?,
+          sellerStatus: json_['sellerStatus'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12049,9 +11237,7 @@ class $InventorySourceVideoCreativeConfig {
 
   $InventorySourceVideoCreativeConfig.fromJson(core.Map json_)
       : this(
-          duration: json_.containsKey('duration')
-              ? json_['duration'] as core.String
-              : null,
+          duration: json_['duration'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12103,12 +11289,8 @@ class $IssuesRequestPayload {
 
   $IssuesRequestPayload.fromJson(core.Map json_)
       : this(
-          contentOption: json_.containsKey('contentOption')
-              ? json_['contentOption'] as core.String
-              : null,
-          userInputActionOption: json_.containsKey('userInputActionOption')
-              ? json_['userInputActionOption'] as core.String
-              : null,
+          contentOption: json_['contentOption'] as core.String?,
+          userInputActionOption: json_['userInputActionOption'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12153,12 +11335,8 @@ class $Justification {
 
   $Justification.fromJson(core.Map json_)
       : this(
-          details: json_.containsKey('details')
-              ? json_['details'] as core.String
-              : null,
-          justificationType: json_.containsKey('justificationType')
-              ? json_['justificationType'] as core.String
-              : null,
+          details: json_['details'] as core.String?,
+          justificationType: json_['justificationType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12185,9 +11363,7 @@ class $Jwt {
 
   $Jwt.fromJson(core.Map json_)
       : this(
-          compactJwt: json_.containsKey('compactJwt')
-              ? json_['compactJwt'] as core.String
-              : null,
+          compactJwt: json_['compactJwt'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12217,15 +11393,9 @@ class $JwtClaims {
 
   $JwtClaims.fromJson(core.Map json_)
       : this(
-          audience: json_.containsKey('audience')
-              ? json_['audience'] as core.String
-              : null,
-          issuer: json_.containsKey('issuer')
-              ? json_['issuer'] as core.String
-              : null,
-          subject: json_.containsKey('subject')
-              ? json_['subject'] as core.String
-              : null,
+          audience: json_['audience'] as core.String?,
+          issuer: json_['issuer'] as core.String?,
+          subject: json_['subject'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12268,17 +11438,10 @@ class $JwtLocation {
 
   $JwtLocation.fromJson(core.Map json_)
       : this(
-          cookie: json_.containsKey('cookie')
-              ? json_['cookie'] as core.String
-              : null,
-          header: json_.containsKey('header')
-              ? json_['header'] as core.String
-              : null,
-          query:
-              json_.containsKey('query') ? json_['query'] as core.String : null,
-          valuePrefix: json_.containsKey('valuePrefix')
-              ? json_['valuePrefix'] as core.String
-              : null,
+          cookie: json_['cookie'] as core.String?,
+          header: json_['header'] as core.String?,
+          query: json_['query'] as core.String?,
+          valuePrefix: json_['valuePrefix'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12307,12 +11470,8 @@ class $KMSEnvMap {
 
   $KMSEnvMap.fromJson(core.Map json_)
       : this(
-          cipherText: json_.containsKey('cipherText')
-              ? json_['cipherText'] as core.String
-              : null,
-          keyName: json_.containsKey('keyName')
-              ? json_['keyName'] as core.String
-              : null,
+          cipherText: json_['cipherText'] as core.String?,
+          keyName: json_['keyName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12345,12 +11504,8 @@ class $KeywordAssignedTargetingOptionDetails {
 
   $KeywordAssignedTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          keyword: json_.containsKey('keyword')
-              ? json_['keyword'] as core.String
-              : null,
-          negative: json_.containsKey('negative')
-              ? json_['negative'] as core.bool
-              : null,
+          keyword: json_['keyword'] as core.String?,
+          negative: json_['negative'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12373,7 +11528,7 @@ class $KindExpression {
 
   $KindExpression.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12408,13 +11563,9 @@ class $LabelDescriptor {
 
   $LabelDescriptor.fromJson(core.Map json_)
       : this(
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          key: json_.containsKey('key') ? json_['key'] as core.String : null,
-          valueType: json_.containsKey('valueType')
-              ? json_['valueType'] as core.String
-              : null,
+          description: json_['description'] as core.String?,
+          key: json_['key'] as core.String?,
+          valueType: json_['valueType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12442,9 +11593,8 @@ class $LabelEntry {
 
   $LabelEntry.fromJson(core.Map json_)
       : this(
-          key: json_.containsKey('key') ? json_['key'] as core.String : null,
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
+          key: json_['key'] as core.String?,
+          value: json_['value'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12512,15 +11662,9 @@ class $LanguageAssignedTargetingOptionDetails {
 
   $LanguageAssignedTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          negative: json_.containsKey('negative')
-              ? json_['negative'] as core.bool
-              : null,
-          targetingOptionId: json_.containsKey('targetingOptionId')
-              ? json_['targetingOptionId'] as core.String
-              : null,
+          displayName: json_['displayName'] as core.String?,
+          negative: json_['negative'] as core.bool?,
+          targetingOptionId: json_['targetingOptionId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12546,9 +11690,7 @@ class $LanguageTargetingOptionDetails {
 
   $LanguageTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+          displayName: json_['displayName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12590,12 +11732,8 @@ class $LatLng {
 
   $LatLng.fromJson(core.Map json_)
       : this(
-          latitude: json_.containsKey('latitude')
-              ? (json_['latitude'] as core.num).toDouble()
-              : null,
-          longitude: json_.containsKey('longitude')
-              ? (json_['longitude'] as core.num).toDouble()
-              : null,
+          latitude: (json_['latitude'] as core.num?)?.toDouble(),
+          longitude: (json_['longitude'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12627,12 +11765,8 @@ class $Layer {
 
   $Layer.fromJson(core.Map json_)
       : this(
-          arguments: json_.containsKey('arguments')
-              ? json_['arguments'] as core.String
-              : null,
-          directive: json_.containsKey('directive')
-              ? json_['directive'] as core.String
-              : null,
+          arguments: json_['arguments'] as core.String?,
+          directive: json_['directive'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12663,12 +11797,8 @@ class $License {
 
   $License.fromJson(core.Map json_)
       : this(
-          comments: json_.containsKey('comments')
-              ? json_['comments'] as core.String
-              : null,
-          expression: json_.containsKey('expression')
-              ? json_['expression'] as core.String
-              : null,
+          comments: json_['comments'] as core.String?,
+          expression: json_['expression'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12727,19 +11857,11 @@ class $Lien {
 
   $Lien.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          origin: json_.containsKey('origin')
-              ? json_['origin'] as core.String
-              : null,
-          parent: json_.containsKey('parent')
-              ? json_['parent'] as core.String
-              : null,
-          reason: json_.containsKey('reason')
-              ? json_['reason'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          name: json_['name'] as core.String?,
+          origin: json_['origin'] as core.String?,
+          parent: json_['parent'] as core.String?,
+          reason: json_['reason'] as core.String?,
           restrictions: json_.containsKey('restrictions')
               ? (json_['restrictions'] as core.List)
                   .map((value) => value as core.String)
@@ -12813,15 +11935,9 @@ class $LineItemBudget {
 
   $LineItemBudget.fromJson(core.Map json_)
       : this(
-          budgetAllocationType: json_.containsKey('budgetAllocationType')
-              ? json_['budgetAllocationType'] as core.String
-              : null,
-          budgetUnit: json_.containsKey('budgetUnit')
-              ? json_['budgetUnit'] as core.String
-              : null,
-          maxAmount: json_.containsKey('maxAmount')
-              ? json_['maxAmount'] as core.String
-              : null,
+          budgetAllocationType: json_['budgetAllocationType'] as core.String?,
+          budgetUnit: json_['budgetUnit'] as core.String?,
+          maxAmount: json_['maxAmount'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12854,15 +11970,9 @@ class $Linear {
 
   $Linear.fromJson(core.Map json_)
       : this(
-          numFiniteBuckets: json_.containsKey('numFiniteBuckets')
-              ? json_['numFiniteBuckets'] as core.int
-              : null,
-          offset: json_.containsKey('offset')
-              ? (json_['offset'] as core.num).toDouble()
-              : null,
-          width: json_.containsKey('width')
-              ? (json_['width'] as core.num).toDouble()
-              : null,
+          numFiniteBuckets: json_['numFiniteBuckets'] as core.int?,
+          offset: (json_['offset'] as core.num?)?.toDouble(),
+          width: (json_['width'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12890,10 +12000,8 @@ class $Link {
 
   $Link.fromJson(core.Map json_)
       : this(
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          url: json_.containsKey('url') ? json_['url'] as core.String : null,
+          description: json_['description'] as core.String?,
+          url: json_['url'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -13007,9 +12115,7 @@ class $ListPolicy {
 
   $ListPolicy.fromJson(core.Map json_)
       : this(
-          allValues: json_.containsKey('allValues')
-              ? json_['allValues'] as core.String
-              : null,
+          allValues: json_['allValues'] as core.String?,
           allowedValues: json_.containsKey('allowedValues')
               ? (json_['allowedValues'] as core.List)
                   .map((value) => value as core.String)
@@ -13020,12 +12126,8 @@ class $ListPolicy {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          inheritFromParent: json_.containsKey('inheritFromParent')
-              ? json_['inheritFromParent'] as core.bool
-              : null,
-          suggestedValue: json_.containsKey('suggestedValue')
-              ? json_['suggestedValue'] as core.String
-              : null,
+          inheritFromParent: json_['inheritFromParent'] as core.bool?,
+          suggestedValue: json_['suggestedValue'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -13066,13 +12168,9 @@ class $Locality {
 
   $Locality.fromJson(core.Map json_)
       : this(
-          region: json_.containsKey('region')
-              ? json_['region'] as core.String
-              : null,
-          subZone: json_.containsKey('subZone')
-              ? json_['subZone'] as core.String
-              : null,
-          zone: json_.containsKey('zone') ? json_['zone'] as core.String : null,
+          region: json_['region'] as core.String?,
+          subZone: json_['subZone'] as core.String?,
+          zone: json_['zone'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -13103,12 +12201,8 @@ class $LocalizedMessage {
 
   $LocalizedMessage.fromJson(core.Map json_)
       : this(
-          locale: json_.containsKey('locale')
-              ? json_['locale'] as core.String
-              : null,
-          message: json_.containsKey('message')
-              ? json_['message'] as core.String
-              : null,
+          locale: json_['locale'] as core.String?,
+          message: json_['message'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -13222,9 +12316,7 @@ class $Location00 {
 
   $Location00.fromJson(core.Map json_)
       : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+          displayName: json_['displayName'] as core.String?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -13233,13 +12325,11 @@ class $Location00 {
                   ),
                 )
               : null,
-          locationId: json_.containsKey('locationId')
-              ? json_['locationId'] as core.String
-              : null,
+          locationId: json_['locationId'] as core.String?,
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -13296,9 +12386,7 @@ class $Location01 {
 
   $Location01.fromJson(core.Map json_)
       : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+          displayName: json_['displayName'] as core.String?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -13307,13 +12395,11 @@ class $Location01 {
                   ),
                 )
               : null,
-          locationId: json_.containsKey('locationId')
-              ? json_['locationId'] as core.String
-              : null,
+          locationId: json_['locationId'] as core.String?,
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -13343,12 +12429,8 @@ class $Location02 {
 
   $Location02.fromJson(core.Map json_)
       : this(
-          folderId: json_.containsKey('folderId')
-              ? json_['folderId'] as core.String
-              : null,
-          organizationId: json_.containsKey('organizationId')
-              ? json_['organizationId'] as core.String
-              : null,
+          folderId: json_['folderId'] as core.String?,
+          organizationId: json_['organizationId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -13409,19 +12491,11 @@ class $LocationList {
 
   $LocationList.fromJson(core.Map json_)
       : this(
-          advertiserId: json_.containsKey('advertiserId')
-              ? json_['advertiserId'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          locationListId: json_.containsKey('locationListId')
-              ? json_['locationListId'] as core.String
-              : null,
-          locationType: json_.containsKey('locationType')
-              ? json_['locationType'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          advertiserId: json_['advertiserId'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          locationListId: json_['locationListId'] as core.String?,
+          locationType: json_['locationType'] as core.String?,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -13451,11 +12525,8 @@ class $LockConfig {
 
   $LockConfig.fromJson(core.Map json_)
       : this(
-          locked:
-              json_.containsKey('locked') ? json_['locked'] as core.bool : null,
-          reason: json_.containsKey('reason')
-              ? json_['reason'] as core.String
-              : null,
+          locked: json_['locked'] as core.bool?,
+          reason: json_['reason'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -13489,11 +12560,8 @@ class $LogConfig {
 
   $LogConfig.fromJson(core.Map json_)
       : this(
-          enabled: json_.containsKey('enabled')
-              ? json_['enabled'] as core.bool
-              : null,
-          level:
-              json_.containsKey('level') ? json_['level'] as core.String : null,
+          enabled: json_['enabled'] as core.bool?,
+          level: json_['level'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -13522,12 +12590,8 @@ class $LookbackWindow {
 
   $LookbackWindow.fromJson(core.Map json_)
       : this(
-          clickDays: json_.containsKey('clickDays')
-              ? json_['clickDays'] as core.int
-              : null,
-          impressionDays: json_.containsKey('impressionDays')
-              ? json_['impressionDays'] as core.int
-              : null,
+          clickDays: json_['clickDays'] as core.int?,
+          impressionDays: json_['impressionDays'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -13550,9 +12614,7 @@ class $LookupInvoiceCurrencyResponse {
 
   $LookupInvoiceCurrencyResponse.fromJson(core.Map json_)
       : this(
-          currencyCode: json_.containsKey('currencyCode')
-              ? json_['currencyCode'] as core.String
-              : null,
+          currencyCode: json_['currencyCode'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -13574,9 +12636,7 @@ class $MachineConfig {
 
   $MachineConfig.fromJson(core.Map json_)
       : this(
-          cpuCount: json_.containsKey('cpuCount')
-              ? json_['cpuCount'] as core.int
-              : null,
+          cpuCount: json_['cpuCount'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -13632,9 +12692,7 @@ class $ManualLbConfig {
 
   $ManualLbConfig.fromJson(core.Map json_)
       : this(
-          enabled: json_.containsKey('enabled')
-              ? json_['enabled'] as core.bool
-              : null,
+          enabled: json_['enabled'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -13667,7 +12725,7 @@ class $Material {
                   ),
                 )
               : null,
-          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+          uri: json_['uri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -13730,19 +12788,11 @@ class $MaximizeSpendBidStrategy {
   $MaximizeSpendBidStrategy.fromJson(core.Map json_)
       : this(
           customBiddingAlgorithmId:
-              json_.containsKey('customBiddingAlgorithmId')
-                  ? json_['customBiddingAlgorithmId'] as core.String
-                  : null,
+              json_['customBiddingAlgorithmId'] as core.String?,
           maxAverageCpmBidAmountMicros:
-              json_.containsKey('maxAverageCpmBidAmountMicros')
-                  ? json_['maxAverageCpmBidAmountMicros'] as core.String
-                  : null,
-          performanceGoalType: json_.containsKey('performanceGoalType')
-              ? json_['performanceGoalType'] as core.String
-              : null,
-          raiseBidForDeals: json_.containsKey('raiseBidForDeals')
-              ? json_['raiseBidForDeals'] as core.bool
-              : null,
+              json_['maxAverageCpmBidAmountMicros'] as core.String?,
+          performanceGoalType: json_['performanceGoalType'] as core.String?,
+          raiseBidForDeals: json_['raiseBidForDeals'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -13775,13 +12825,9 @@ class $MeasurementConfig {
   $MeasurementConfig.fromJson(core.Map json_)
       : this(
           dv360ToCmCostReportingEnabled:
-              json_.containsKey('dv360ToCmCostReportingEnabled')
-                  ? json_['dv360ToCmCostReportingEnabled'] as core.bool
-                  : null,
+              json_['dv360ToCmCostReportingEnabled'] as core.bool?,
           dv360ToCmDataSharingEnabled:
-              json_.containsKey('dv360ToCmDataSharingEnabled')
-                  ? json_['dv360ToCmDataSharingEnabled'] as core.bool
-                  : null,
+              json_['dv360ToCmDataSharingEnabled'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -13808,9 +12854,7 @@ class $Media {
 
   $Media.fromJson(core.Map json_)
       : this(
-          resourceName: json_.containsKey('resourceName')
-              ? json_['resourceName'] as core.String
-              : null,
+          resourceName: json_['resourceName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -13912,34 +12956,16 @@ class $MediaRequestInfo {
 
   $MediaRequestInfo.fromJson(core.Map json_)
       : this(
-          currentBytes: json_.containsKey('currentBytes')
-              ? json_['currentBytes'] as core.String
-              : null,
-          customData: json_.containsKey('customData')
-              ? json_['customData'] as core.String
-              : null,
-          diffObjectVersion: json_.containsKey('diffObjectVersion')
-              ? json_['diffObjectVersion'] as core.String
-              : null,
-          finalStatus: json_.containsKey('finalStatus')
-              ? json_['finalStatus'] as core.int
-              : null,
-          notificationType: json_.containsKey('notificationType')
-              ? json_['notificationType'] as core.String
-              : null,
-          requestId: json_.containsKey('requestId')
-              ? json_['requestId'] as core.String
-              : null,
+          currentBytes: json_['currentBytes'] as core.String?,
+          customData: json_['customData'] as core.String?,
+          diffObjectVersion: json_['diffObjectVersion'] as core.String?,
+          finalStatus: json_['finalStatus'] as core.int?,
+          notificationType: json_['notificationType'] as core.String?,
+          requestId: json_['requestId'] as core.String?,
           requestReceivedParamsServingInfo:
-              json_.containsKey('requestReceivedParamsServingInfo')
-                  ? json_['requestReceivedParamsServingInfo'] as core.String
-                  : null,
-          totalBytes: json_.containsKey('totalBytes')
-              ? json_['totalBytes'] as core.String
-              : null,
-          totalBytesIsEstimated: json_.containsKey('totalBytesIsEstimated')
-              ? json_['totalBytesIsEstimated'] as core.bool
-              : null,
+              json_['requestReceivedParamsServingInfo'] as core.String?,
+          totalBytes: json_['totalBytes'] as core.String?,
+          totalBytesIsEstimated: json_['totalBytesIsEstimated'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -13979,12 +13005,8 @@ class $MethodSelector {
 
   $MethodSelector.fromJson(core.Map json_)
       : this(
-          method: json_.containsKey('method')
-              ? json_['method'] as core.String
-              : null,
-          permission: json_.containsKey('permission')
-              ? json_['permission'] as core.String
-              : null,
+          method: json_['method'] as core.String?,
+          permission: json_['permission'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -14059,15 +13081,9 @@ class $MetricDescriptorMetadata {
 
   $MetricDescriptorMetadata.fromJson(core.Map json_)
       : this(
-          ingestDelay: json_.containsKey('ingestDelay')
-              ? json_['ingestDelay'] as core.String
-              : null,
-          launchStage: json_.containsKey('launchStage')
-              ? json_['launchStage'] as core.String
-              : null,
-          samplePeriod: json_.containsKey('samplePeriod')
-              ? json_['samplePeriod'] as core.String
-              : null,
+          ingestDelay: json_['ingestDelay'] as core.String?,
+          launchStage: json_['launchStage'] as core.String?,
+          samplePeriod: json_['samplePeriod'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -14111,9 +13127,7 @@ class $MetricRule {
                   ),
                 )
               : null,
-          selector: json_.containsKey('selector')
-              ? json_['selector'] as core.String
-              : null,
+          selector: json_['selector'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -14140,8 +13154,8 @@ class $Mixin {
 
   $Mixin.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          root: json_.containsKey('root') ? json_['root'] as core.String : null,
+          name: json_['name'] as core.String?,
+          root: json_['root'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -14192,17 +13206,10 @@ class $MobileApp {
 
   $MobileApp.fromJson(core.Map json_)
       : this(
-          appId:
-              json_.containsKey('appId') ? json_['appId'] as core.String : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          platform: json_.containsKey('platform')
-              ? json_['platform'] as core.String
-              : null,
-          publisher: json_.containsKey('publisher')
-              ? json_['publisher'] as core.String
-              : null,
+          appId: json_['appId'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          platform: json_['platform'] as core.String?,
+          publisher: json_['publisher'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -14231,12 +13238,8 @@ class $ModelCallSignals {
 
   $ModelCallSignals.fromJson(core.Map json_)
       : this(
-          modelOutput: json_.containsKey('modelOutput')
-              ? json_['modelOutput'] as core.String
-              : null,
-          renderedPrompt: json_.containsKey('renderedPrompt')
-              ? json_['renderedPrompt'] as core.String
-              : null,
+          modelOutput: json_['modelOutput'] as core.String?,
+          renderedPrompt: json_['renderedPrompt'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -14275,10 +13278,8 @@ class $ModelSourceInfo {
 
   $ModelSourceInfo.fromJson(core.Map json_)
       : this(
-          copy: json_.containsKey('copy') ? json_['copy'] as core.bool : null,
-          sourceType: json_.containsKey('sourceType')
-              ? json_['sourceType'] as core.String
-              : null,
+          copy: json_['copy'] as core.bool?,
+          sourceType: json_['sourceType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -14335,12 +13336,9 @@ class $Money {
 
   $Money.fromJson(core.Map json_)
       : this(
-          currencyCode: json_.containsKey('currencyCode')
-              ? json_['currencyCode'] as core.String
-              : null,
-          nanos: json_.containsKey('nanos') ? json_['nanos'] as core.int : null,
-          units:
-              json_.containsKey('units') ? json_['units'] as core.String : null,
+          currencyCode: json_['currencyCode'] as core.String?,
+          nanos: json_['nanos'] as core.int?,
+          units: json_['units'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -14428,9 +13426,7 @@ class $MonitoringDestination {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          monitoredResource: json_.containsKey('monitoredResource')
-              ? json_['monitoredResource'] as core.String
-              : null,
+          monitoredResource: json_['monitoredResource'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -14472,9 +13468,7 @@ class $NativeContentPositionAssignedTargetingOptionDetails {
 
   $NativeContentPositionAssignedTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          contentPosition: json_.containsKey('contentPosition')
-              ? json_['contentPosition'] as core.String
-              : null,
+          contentPosition: json_['contentPosition'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -14515,9 +13509,7 @@ class $NativeContentPositionTargetingOptionDetails {
 
   $NativeContentPositionTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          contentPosition: json_.containsKey('contentPosition')
-              ? json_['contentPosition'] as core.String
-              : null,
+          contentPosition: json_['contentPosition'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -14553,10 +13545,8 @@ class $NegativeKeyword {
 
   $NegativeKeyword.fromJson(core.Map json_)
       : this(
-          keywordValue: json_.containsKey('keywordValue')
-              ? json_['keywordValue'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          keywordValue: json_['keywordValue'] as core.String?,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -14610,19 +13600,11 @@ class $NegativeKeywordList {
 
   $NegativeKeywordList.fromJson(core.Map json_)
       : this(
-          advertiserId: json_.containsKey('advertiserId')
-              ? json_['advertiserId'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          negativeKeywordListId: json_.containsKey('negativeKeywordListId')
-              ? json_['negativeKeywordListId'] as core.String
-              : null,
-          targetedLineItemCount: json_.containsKey('targetedLineItemCount')
-              ? json_['targetedLineItemCount'] as core.String
-              : null,
+          advertiserId: json_['advertiserId'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          name: json_['name'] as core.String?,
+          negativeKeywordListId: json_['negativeKeywordListId'] as core.String?,
+          targetedLineItemCount: json_['targetedLineItemCount'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -14655,9 +13637,7 @@ class $NegativeKeywordListAssignedTargetingOptionDetails {
 
   $NegativeKeywordListAssignedTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          negativeKeywordListId: json_.containsKey('negativeKeywordListId')
-              ? json_['negativeKeywordListId'] as core.String
-              : null,
+          negativeKeywordListId: json_['negativeKeywordListId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -14684,12 +13664,8 @@ class $NodeConfig {
 
   $NodeConfig.fromJson(core.Map json_)
       : this(
-          maxNodeCount: json_.containsKey('maxNodeCount')
-              ? json_['maxNodeCount'] as core.int
-              : null,
-          minNodeCount: json_.containsKey('minNodeCount')
-              ? json_['minNodeCount'] as core.int
-              : null,
+          maxNodeCount: json_['maxNodeCount'] as core.int?,
+          minNodeCount: json_['minNodeCount'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -14720,13 +13696,9 @@ class $NonCompliantFile {
 
   $NonCompliantFile.fromJson(core.Map json_)
       : this(
-          displayCommand: json_.containsKey('displayCommand')
-              ? json_['displayCommand'] as core.String
-              : null,
-          path: json_.containsKey('path') ? json_['path'] as core.String : null,
-          reason: json_.containsKey('reason')
-              ? json_['reason'] as core.String
-              : null,
+          displayCommand: json_['displayCommand'] as core.String?,
+          path: json_['path'] as core.String?,
+          reason: json_['reason'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -14754,9 +13726,7 @@ class $OAuthRequirements {
 
   $OAuthRequirements.fromJson(core.Map json_)
       : this(
-          canonicalScopes: json_.containsKey('canonicalScopes')
-              ? json_['canonicalScopes'] as core.String
-              : null,
+          canonicalScopes: json_['canonicalScopes'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -14791,15 +13761,9 @@ class $ObjectId {
 
   $ObjectId.fromJson(core.Map json_)
       : this(
-          bucketName: json_.containsKey('bucketName')
-              ? json_['bucketName'] as core.String
-              : null,
-          generation: json_.containsKey('generation')
-              ? json_['generation'] as core.String
-              : null,
-          objectName: json_.containsKey('objectName')
-              ? json_['objectName'] as core.String
-              : null,
+          bucketName: json_['bucketName'] as core.String?,
+          generation: json_['generation'] as core.String?,
+          objectName: json_['objectName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -14832,11 +13796,8 @@ class $ObjectIdentifier {
 
   $ObjectIdentifier.fromJson(core.Map json_)
       : this(
-          schema: json_.containsKey('schema')
-              ? json_['schema'] as core.String
-              : null,
-          table:
-              json_.containsKey('table') ? json_['table'] as core.String : null,
+          schema: json_['schema'] as core.String?,
+          table: json_['table'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -14863,8 +13824,8 @@ class $OffsetPosition {
 
   $OffsetPosition.fromJson(core.Map json_)
       : this(
-          left: json_.containsKey('left') ? json_['left'] as core.int : null,
-          top: json_.containsKey('top') ? json_['top'] as core.int : null,
+          left: json_['left'] as core.int?,
+          top: json_['top'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -14894,7 +13855,7 @@ class $OmidAssignedTargetingOptionDetails {
 
   $OmidAssignedTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          omid: json_.containsKey('omid') ? json_['omid'] as core.String : null,
+          omid: json_['omid'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -14923,7 +13884,7 @@ class $OmidTargetingOptionDetails {
 
   $OmidTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          omid: json_.containsKey('omid') ? json_['omid'] as core.String : null,
+          omid: json_['omid'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -14982,15 +13943,9 @@ class $OnScreenPositionAssignedTargetingOptionDetails {
 
   $OnScreenPositionAssignedTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          adType: json_.containsKey('adType')
-              ? json_['adType'] as core.String
-              : null,
-          onScreenPosition: json_.containsKey('onScreenPosition')
-              ? json_['onScreenPosition'] as core.String
-              : null,
-          targetingOptionId: json_.containsKey('targetingOptionId')
-              ? json_['targetingOptionId'] as core.String
-              : null,
+          adType: json_['adType'] as core.String?,
+          onScreenPosition: json_['onScreenPosition'] as core.String?,
+          targetingOptionId: json_['targetingOptionId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -15023,9 +13978,7 @@ class $OnScreenPositionTargetingOptionDetails {
 
   $OnScreenPositionTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          onScreenPosition: json_.containsKey('onScreenPosition')
-              ? json_['onScreenPosition'] as core.String
-              : null,
+          onScreenPosition: json_['onScreenPosition'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -15060,15 +14013,9 @@ class $OperatingSystemAssignedTargetingOptionDetails {
 
   $OperatingSystemAssignedTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          negative: json_.containsKey('negative')
-              ? json_['negative'] as core.bool
-              : null,
-          targetingOptionId: json_.containsKey('targetingOptionId')
-              ? json_['targetingOptionId'] as core.String
-              : null,
+          displayName: json_['displayName'] as core.String?,
+          negative: json_['negative'] as core.bool?,
+          targetingOptionId: json_['targetingOptionId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -15094,9 +14041,7 @@ class $OperatingSystemTargetingOptionDetails {
 
   $OperatingSystemTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+          displayName: json_['displayName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -15134,7 +14079,7 @@ class $Option {
 
   $Option.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           value: json_.containsKey('value')
               ? json_['value'] as core.Map<core.String, core.dynamic>
               : null,
@@ -15198,29 +14143,17 @@ class $OrderAddress {
 
   $OrderAddress.fromJson(core.Map json_)
       : this(
-          country: json_.containsKey('country')
-              ? json_['country'] as core.String
-              : null,
+          country: json_['country'] as core.String?,
           fullAddress: json_.containsKey('fullAddress')
               ? (json_['fullAddress'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          isPostOfficeBox: json_.containsKey('isPostOfficeBox')
-              ? json_['isPostOfficeBox'] as core.bool
-              : null,
-          locality: json_.containsKey('locality')
-              ? json_['locality'] as core.String
-              : null,
-          postalCode: json_.containsKey('postalCode')
-              ? json_['postalCode'] as core.String
-              : null,
-          recipientName: json_.containsKey('recipientName')
-              ? json_['recipientName'] as core.String
-              : null,
-          region: json_.containsKey('region')
-              ? json_['region'] as core.String
-              : null,
+          isPostOfficeBox: json_['isPostOfficeBox'] as core.bool?,
+          locality: json_['locality'] as core.String?,
+          postalCode: json_['postalCode'] as core.String?,
+          recipientName: json_['recipientName'] as core.String?,
+          region: json_['region'] as core.String?,
           streetAddress: json_.containsKey('streetAddress')
               ? (json_['streetAddress'] as core.List)
                   .map((value) => value as core.String)
@@ -15280,15 +14213,10 @@ class $OsConstraint {
 
   $OsConstraint.fromJson(core.Map json_)
       : this(
-          minimumVersion: json_.containsKey('minimumVersion')
-              ? json_['minimumVersion'] as core.String
-              : null,
-          osType: json_.containsKey('osType')
-              ? json_['osType'] as core.String
-              : null,
-          requireVerifiedChromeOs: json_.containsKey('requireVerifiedChromeOs')
-              ? json_['requireVerifiedChromeOs'] as core.bool
-              : null,
+          minimumVersion: json_['minimumVersion'] as core.String?,
+          osType: json_['osType'] as core.String?,
+          requireVerifiedChromeOs:
+              json_['requireVerifiedChromeOs'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -15346,30 +14274,14 @@ class $OsInfo {
 
   $OsInfo.fromJson(core.Map json_)
       : this(
-          architecture: json_.containsKey('architecture')
-              ? json_['architecture'] as core.String
-              : null,
-          hostname: json_.containsKey('hostname')
-              ? json_['hostname'] as core.String
-              : null,
-          kernelRelease: json_.containsKey('kernelRelease')
-              ? json_['kernelRelease'] as core.String
-              : null,
-          kernelVersion: json_.containsKey('kernelVersion')
-              ? json_['kernelVersion'] as core.String
-              : null,
-          longName: json_.containsKey('longName')
-              ? json_['longName'] as core.String
-              : null,
-          osconfigAgentVersion: json_.containsKey('osconfigAgentVersion')
-              ? json_['osconfigAgentVersion'] as core.String
-              : null,
-          shortName: json_.containsKey('shortName')
-              ? json_['shortName'] as core.String
-              : null,
-          version: json_.containsKey('version')
-              ? json_['version'] as core.String
-              : null,
+          architecture: json_['architecture'] as core.String?,
+          hostname: json_['hostname'] as core.String?,
+          kernelRelease: json_['kernelRelease'] as core.String?,
+          kernelVersion: json_['kernelVersion'] as core.String?,
+          longName: json_['longName'] as core.String?,
+          osconfigAgentVersion: json_['osconfigAgentVersion'] as core.String?,
+          shortName: json_['shortName'] as core.String?,
+          version: json_['version'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -15450,18 +14362,10 @@ class $Pacing {
 
   $Pacing.fromJson(core.Map json_)
       : this(
-          dailyMaxImpressions: json_.containsKey('dailyMaxImpressions')
-              ? json_['dailyMaxImpressions'] as core.String
-              : null,
-          dailyMaxMicros: json_.containsKey('dailyMaxMicros')
-              ? json_['dailyMaxMicros'] as core.String
-              : null,
-          pacingPeriod: json_.containsKey('pacingPeriod')
-              ? json_['pacingPeriod'] as core.String
-              : null,
-          pacingType: json_.containsKey('pacingType')
-              ? json_['pacingType'] as core.String
-              : null,
+          dailyMaxImpressions: json_['dailyMaxImpressions'] as core.String?,
+          dailyMaxMicros: json_['dailyMaxMicros'] as core.String?,
+          pacingPeriod: json_['pacingPeriod'] as core.String?,
+          pacingType: json_['pacingType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -15498,15 +14402,9 @@ class $PageInfo {
 
   $PageInfo.fromJson(core.Map json_)
       : this(
-          resultPerPage: json_.containsKey('resultPerPage')
-              ? json_['resultPerPage'] as core.int
-              : null,
-          startIndex: json_.containsKey('startIndex')
-              ? json_['startIndex'] as core.int
-              : null,
-          totalResults: json_.containsKey('totalResults')
-              ? json_['totalResults'] as core.int
-              : null,
+          resultPerPage: json_['resultPerPage'] as core.int?,
+          startIndex: json_['startIndex'] as core.int?,
+          totalResults: json_['totalResults'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -15580,9 +14478,7 @@ class $ParentEntityFilter {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          filterType: json_.containsKey('filterType')
-              ? json_['filterType'] as core.String
-              : null,
+          filterType: json_['filterType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -15616,9 +14512,7 @@ class $ParentalStatusAssignedTargetingOptionDetails {
 
   $ParentalStatusAssignedTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          parentalStatus: json_.containsKey('parentalStatus')
-              ? json_['parentalStatus'] as core.String
-              : null,
+          parentalStatus: json_['parentalStatus'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -15650,9 +14544,7 @@ class $ParentalStatusTargetingOptionDetails {
 
   $ParentalStatusTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          parentalStatus: json_.containsKey('parentalStatus')
-              ? json_['parentalStatus'] as core.String
-              : null,
+          parentalStatus: json_['parentalStatus'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -15789,21 +14681,11 @@ class $PartnerCost {
 
   $PartnerCost.fromJson(core.Map json_)
       : this(
-          costType: json_.containsKey('costType')
-              ? json_['costType'] as core.String
-              : null,
-          feeAmount: json_.containsKey('feeAmount')
-              ? json_['feeAmount'] as core.String
-              : null,
-          feePercentageMillis: json_.containsKey('feePercentageMillis')
-              ? json_['feePercentageMillis'] as core.String
-              : null,
-          feeType: json_.containsKey('feeType')
-              ? json_['feeType'] as core.String
-              : null,
-          invoiceType: json_.containsKey('invoiceType')
-              ? json_['invoiceType'] as core.String
-              : null,
+          costType: json_['costType'] as core.String?,
+          feeAmount: json_['feeAmount'] as core.String?,
+          feePercentageMillis: json_['feePercentageMillis'] as core.String?,
+          feeType: json_['feeType'] as core.String?,
+          invoiceType: json_['invoiceType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -15841,12 +14723,8 @@ class $PartnerGeneralConfig {
 
   $PartnerGeneralConfig.fromJson(core.Map json_)
       : this(
-          currencyCode: json_.containsKey('currencyCode')
-              ? json_['currencyCode'] as core.String
-              : null,
-          timeZone: json_.containsKey('timeZone')
-              ? json_['timeZone'] as core.String
-              : null,
+          currencyCode: json_['currencyCode'] as core.String?,
+          timeZone: json_['timeZone'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -15898,12 +14776,8 @@ class $PartnerRevenueModel {
 
   $PartnerRevenueModel.fromJson(core.Map json_)
       : this(
-          markupAmount: json_.containsKey('markupAmount')
-              ? json_['markupAmount'] as core.String
-              : null,
-          markupType: json_.containsKey('markupType')
-              ? json_['markupType'] as core.String
-              : null,
+          markupAmount: json_['markupAmount'] as core.String?,
+          markupType: json_['markupType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -15926,7 +14800,7 @@ class $PathSegment {
 
   $PathSegment.fromJson(core.Map json_)
       : this(
-          key: json_.containsKey('key') ? json_['key'] as core.String : null,
+          key: json_['key'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -16013,19 +14887,11 @@ class $PerformanceGoal {
   $PerformanceGoal.fromJson(core.Map json_)
       : this(
           performanceGoalAmountMicros:
-              json_.containsKey('performanceGoalAmountMicros')
-                  ? json_['performanceGoalAmountMicros'] as core.String
-                  : null,
+              json_['performanceGoalAmountMicros'] as core.String?,
           performanceGoalPercentageMicros:
-              json_.containsKey('performanceGoalPercentageMicros')
-                  ? json_['performanceGoalPercentageMicros'] as core.String
-                  : null,
-          performanceGoalString: json_.containsKey('performanceGoalString')
-              ? json_['performanceGoalString'] as core.String
-              : null,
-          performanceGoalType: json_.containsKey('performanceGoalType')
-              ? json_['performanceGoalType'] as core.String
-              : null,
+              json_['performanceGoalPercentageMicros'] as core.String?,
+          performanceGoalString: json_['performanceGoalString'] as core.String?,
+          performanceGoalType: json_['performanceGoalType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -16121,20 +14987,12 @@ class $PerformanceGoalBidStrategy {
   $PerformanceGoalBidStrategy.fromJson(core.Map json_)
       : this(
           customBiddingAlgorithmId:
-              json_.containsKey('customBiddingAlgorithmId')
-                  ? json_['customBiddingAlgorithmId'] as core.String
-                  : null,
+              json_['customBiddingAlgorithmId'] as core.String?,
           maxAverageCpmBidAmountMicros:
-              json_.containsKey('maxAverageCpmBidAmountMicros')
-                  ? json_['maxAverageCpmBidAmountMicros'] as core.String
-                  : null,
+              json_['maxAverageCpmBidAmountMicros'] as core.String?,
           performanceGoalAmountMicros:
-              json_.containsKey('performanceGoalAmountMicros')
-                  ? json_['performanceGoalAmountMicros'] as core.String
-                  : null,
-          performanceGoalType: json_.containsKey('performanceGoalType')
-              ? json_['performanceGoalType'] as core.String
-              : null,
+              json_['performanceGoalAmountMicros'] as core.String?,
+          performanceGoalType: json_['performanceGoalType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -16169,12 +15027,8 @@ class $Permissions {
 
   $Permissions.fromJson(core.Map json_)
       : this(
-          disabledUserDeletion: json_.containsKey('disabledUserDeletion')
-              ? json_['disabledUserDeletion'] as core.bool
-              : null,
-          disabledUserSignup: json_.containsKey('disabledUserSignup')
-              ? json_['disabledUserSignup'] as core.bool
-              : null,
+          disabledUserDeletion: json_['disabledUserDeletion'] as core.bool?,
+          disabledUserSignup: json_['disabledUserSignup'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -16299,8 +15153,8 @@ class $Pipe {
 
   $Pipe.fromJson(core.Map json_)
       : this(
-          mode: json_.containsKey('mode') ? json_['mode'] as core.int : null,
-          path: json_.containsKey('path') ? json_['path'] as core.String : null,
+          mode: json_['mode'] as core.int?,
+          path: json_['path'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -16363,12 +15217,8 @@ class $PlusCode {
 
   $PlusCode.fromJson(core.Map json_)
       : this(
-          compoundCode: json_.containsKey('compoundCode')
-              ? json_['compoundCode'] as core.String
-              : null,
-          globalCode: json_.containsKey('globalCode')
-              ? json_['globalCode'] as core.String
-              : null,
+          compoundCode: json_['compoundCode'] as core.String?,
+          globalCode: json_['globalCode'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -16444,24 +15294,13 @@ class $PoiAssignedTargetingOptionDetails {
 
   $PoiAssignedTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          latitude: json_.containsKey('latitude')
-              ? (json_['latitude'] as core.num).toDouble()
-              : null,
-          longitude: json_.containsKey('longitude')
-              ? (json_['longitude'] as core.num).toDouble()
-              : null,
-          proximityRadiusAmount: json_.containsKey('proximityRadiusAmount')
-              ? (json_['proximityRadiusAmount'] as core.num).toDouble()
-              : null,
-          proximityRadiusUnit: json_.containsKey('proximityRadiusUnit')
-              ? json_['proximityRadiusUnit'] as core.String
-              : null,
-          targetingOptionId: json_.containsKey('targetingOptionId')
-              ? json_['targetingOptionId'] as core.String
-              : null,
+          displayName: json_['displayName'] as core.String?,
+          latitude: (json_['latitude'] as core.num?)?.toDouble(),
+          longitude: (json_['longitude'] as core.num?)?.toDouble(),
+          proximityRadiusAmount:
+              (json_['proximityRadiusAmount'] as core.num?)?.toDouble(),
+          proximityRadiusUnit: json_['proximityRadiusUnit'] as core.String?,
+          targetingOptionId: json_['targetingOptionId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -16494,9 +15333,7 @@ class $PoiSearchTerms {
 
   $PoiSearchTerms.fromJson(core.Map json_)
       : this(
-          poiQuery: json_.containsKey('poiQuery')
-              ? json_['poiQuery'] as core.String
-              : null,
+          poiQuery: json_['poiQuery'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -16533,15 +15370,9 @@ class $PoiTargetingOptionDetails {
 
   $PoiTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          latitude: json_.containsKey('latitude')
-              ? (json_['latitude'] as core.num).toDouble()
-              : null,
-          longitude: json_.containsKey('longitude')
-              ? (json_['longitude'] as core.num).toDouble()
-              : null,
+          displayName: json_['displayName'] as core.String?,
+          latitude: (json_['latitude'] as core.num?)?.toDouble(),
+          longitude: (json_['longitude'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -16566,9 +15397,7 @@ class $PortConfig {
   $PortConfig.fromJson(core.Map json_)
       : this(
           controlPlaneLoadBalancerPort:
-              json_.containsKey('controlPlaneLoadBalancerPort')
-                  ? json_['controlPlaneLoadBalancerPort'] as core.int
-                  : null,
+              json_['controlPlaneLoadBalancerPort'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -16720,38 +15549,20 @@ class $PostalAddress {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          administrativeArea: json_.containsKey('administrativeArea')
-              ? json_['administrativeArea'] as core.String
-              : null,
-          languageCode: json_.containsKey('languageCode')
-              ? json_['languageCode'] as core.String
-              : null,
-          locality: json_.containsKey('locality')
-              ? json_['locality'] as core.String
-              : null,
-          organization: json_.containsKey('organization')
-              ? json_['organization'] as core.String
-              : null,
-          postalCode: json_.containsKey('postalCode')
-              ? json_['postalCode'] as core.String
-              : null,
+          administrativeArea: json_['administrativeArea'] as core.String?,
+          languageCode: json_['languageCode'] as core.String?,
+          locality: json_['locality'] as core.String?,
+          organization: json_['organization'] as core.String?,
+          postalCode: json_['postalCode'] as core.String?,
           recipients: json_.containsKey('recipients')
               ? (json_['recipients'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          regionCode: json_.containsKey('regionCode')
-              ? json_['regionCode'] as core.String
-              : null,
-          revision: json_.containsKey('revision')
-              ? json_['revision'] as core.int
-              : null,
-          sortingCode: json_.containsKey('sortingCode')
-              ? json_['sortingCode'] as core.String
-              : null,
-          sublocality: json_.containsKey('sublocality')
-              ? json_['sublocality'] as core.String
-              : null,
+          regionCode: json_['regionCode'] as core.String?,
+          revision: json_['revision'] as core.int?,
+          sortingCode: json_['sortingCode'] as core.String?,
+          sublocality: json_['sublocality'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -16792,15 +15603,9 @@ class $PrismaCpeCode {
 
   $PrismaCpeCode.fromJson(core.Map json_)
       : this(
-          prismaClientCode: json_.containsKey('prismaClientCode')
-              ? json_['prismaClientCode'] as core.String
-              : null,
-          prismaEstimateCode: json_.containsKey('prismaEstimateCode')
-              ? json_['prismaEstimateCode'] as core.String
-              : null,
-          prismaProductCode: json_.containsKey('prismaProductCode')
-              ? json_['prismaProductCode'] as core.String
-              : null,
+          prismaClientCode: json_['prismaClientCode'] as core.String?,
+          prismaEstimateCode: json_['prismaEstimateCode'] as core.String?,
+          prismaProductCode: json_['prismaProductCode'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -16826,9 +15631,7 @@ class $ProgramStatusReviewIneligibilityReasonDetails {
 
   $ProgramStatusReviewIneligibilityReasonDetails.fromJson(core.Map json_)
       : this(
-          cooldownTime: json_.containsKey('cooldownTime')
-              ? json_['cooldownTime'] as core.String
-              : null,
+          cooldownTime: json_['cooldownTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -16856,12 +15659,8 @@ class $ProjectRepoId {
 
   $ProjectRepoId.fromJson(core.Map json_)
       : this(
-          projectId: json_.containsKey('projectId')
-              ? json_['projectId'] as core.String
-              : null,
-          repoName: json_.containsKey('repoName')
-              ? json_['repoName'] as core.String
-              : null,
+          projectId: json_['projectId'] as core.String?,
+          repoName: json_['repoName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -16889,9 +15688,7 @@ class $ProxiesSetProxyHeaderRequest {
 
   $ProxiesSetProxyHeaderRequest.fromJson(core.Map json_)
       : this(
-          proxyHeader: json_.containsKey('proxyHeader')
-              ? json_['proxyHeader'] as core.String
-              : null,
+          proxyHeader: json_['proxyHeader'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -16939,15 +15736,10 @@ class $ProximityLocationListAssignedTargetingOptionDetails {
 
   $ProximityLocationListAssignedTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          proximityLocationListId: json_.containsKey('proximityLocationListId')
-              ? json_['proximityLocationListId'] as core.String
-              : null,
-          proximityRadius: json_.containsKey('proximityRadius')
-              ? (json_['proximityRadius'] as core.num).toDouble()
-              : null,
-          proximityRadiusUnit: json_.containsKey('proximityRadiusUnit')
-              ? json_['proximityRadiusUnit'] as core.String
-              : null,
+          proximityLocationListId:
+              json_['proximityLocationListId'] as core.String?,
+          proximityRadius: (json_['proximityRadius'] as core.num?)?.toDouble(),
+          proximityRadiusUnit: json_['proximityRadiusUnit'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -16983,12 +15775,8 @@ class $PublisherReviewStatus {
 
   $PublisherReviewStatus.fromJson(core.Map json_)
       : this(
-          publisherName: json_.containsKey('publisherName')
-              ? json_['publisherName'] as core.String
-              : null,
-          status: json_.containsKey('status')
-              ? json_['status'] as core.String
-              : null,
+          publisherName: json_['publisherName'] as core.String?,
+          status: json_['status'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -17068,16 +15856,10 @@ class $PubsubMessage {
                   ),
                 )
               : null,
-          data: json_.containsKey('data') ? json_['data'] as core.String : null,
-          messageId: json_.containsKey('messageId')
-              ? json_['messageId'] as core.String
-              : null,
-          orderingKey: json_.containsKey('orderingKey')
-              ? json_['orderingKey'] as core.String
-              : null,
-          publishTime: json_.containsKey('publishTime')
-              ? json_['publishTime'] as core.String
-              : null,
+          data: json_['data'] as core.String?,
+          messageId: json_['messageId'] as core.String?,
+          orderingKey: json_['orderingKey'] as core.String?,
+          publishTime: json_['publishTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -17103,9 +15885,7 @@ class $PurchasesAcknowledgeRequest {
 
   $PurchasesAcknowledgeRequest.fromJson(core.Map json_)
       : this(
-          developerPayload: json_.containsKey('developerPayload')
-              ? json_['developerPayload'] as core.String
-              : null,
+          developerPayload: json_['developerPayload'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -17140,14 +15920,9 @@ class $Query {
 
   $Query.fromJson(core.Map json_)
       : this(
-          endTime: json_.containsKey('endTime')
-              ? json_['endTime'] as core.String
-              : null,
-          startTime: json_.containsKey('startTime')
-              ? json_['startTime'] as core.String
-              : null,
-          terms:
-              json_.containsKey('terms') ? json_['terms'] as core.String : null,
+          endTime: json_['endTime'] as core.String?,
+          startTime: json_['startTime'] as core.String?,
+          terms: json_['terms'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -17256,29 +16031,15 @@ class $QuotaLimit {
 
   $QuotaLimit.fromJson(core.Map json_)
       : this(
-          defaultLimit: json_.containsKey('defaultLimit')
-              ? json_['defaultLimit'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          duration: json_.containsKey('duration')
-              ? json_['duration'] as core.String
-              : null,
-          freeTier: json_.containsKey('freeTier')
-              ? json_['freeTier'] as core.String
-              : null,
-          maxLimit: json_.containsKey('maxLimit')
-              ? json_['maxLimit'] as core.String
-              : null,
-          metric: json_.containsKey('metric')
-              ? json_['metric'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          unit: json_.containsKey('unit') ? json_['unit'] as core.String : null,
+          defaultLimit: json_['defaultLimit'] as core.String?,
+          description: json_['description'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          duration: json_['duration'] as core.String?,
+          freeTier: json_['freeTier'] as core.String?,
+          maxLimit: json_['maxLimit'] as core.String?,
+          metric: json_['metric'] as core.String?,
+          name: json_['name'] as core.String?,
+          unit: json_['unit'] as core.String?,
           values: json_.containsKey('values')
               ? (json_['values'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -17396,18 +16157,14 @@ class $Recipe {
                   .map((value) => value as core.Map<core.String, core.dynamic>)
                   .toList()
               : null,
-          definedInMaterial: json_.containsKey('definedInMaterial')
-              ? json_['definedInMaterial'] as core.String
-              : null,
-          entryPoint: json_.containsKey('entryPoint')
-              ? json_['entryPoint'] as core.String
-              : null,
+          definedInMaterial: json_['definedInMaterial'] as core.String?,
+          entryPoint: json_['entryPoint'] as core.String?,
           environment: json_.containsKey('environment')
               ? (json_['environment'] as core.List)
                   .map((value) => value as core.Map<core.String, core.dynamic>)
                   .toList()
               : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -17442,12 +16199,9 @@ class $RegionalLocationListAssignedTargetingOptionDetails {
 
   $RegionalLocationListAssignedTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          negative: json_.containsKey('negative')
-              ? json_['negative'] as core.bool
-              : null,
-          regionalLocationListId: json_.containsKey('regionalLocationListId')
-              ? json_['regionalLocationListId'] as core.String
-              : null,
+          negative: json_['negative'] as core.bool?,
+          regionalLocationListId:
+              json_['regionalLocationListId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -17475,9 +16229,8 @@ class $RelatedUrl {
 
   $RelatedUrl.fromJson(core.Map json_)
       : this(
-          label:
-              json_.containsKey('label') ? json_['label'] as core.String : null,
-          url: json_.containsKey('url') ? json_['url'] as core.String : null,
+          label: json_['label'] as core.String?,
+          url: json_['url'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -17509,12 +16262,8 @@ class $RemarketingConfig {
 
   $RemarketingConfig.fromJson(core.Map json_)
       : this(
-          advertiserId: json_.containsKey('advertiserId')
-              ? json_['advertiserId'] as core.String
-              : null,
-          remarketingEnabled: json_.containsKey('remarketingEnabled')
-              ? json_['remarketingEnabled'] as core.bool
-              : null,
+          advertiserId: json_['advertiserId'] as core.String?,
+          remarketingEnabled: json_['remarketingEnabled'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -17538,9 +16287,7 @@ class $ReplaceAllTextResponse {
 
   $ReplaceAllTextResponse.fromJson(core.Map json_)
       : this(
-          occurrencesChanged: json_.containsKey('occurrencesChanged')
-              ? json_['occurrencesChanged'] as core.int
-              : null,
+          occurrencesChanged: json_['occurrencesChanged'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -17573,12 +16320,9 @@ class $ReplayInfo {
 
   $ReplayInfo.fromJson(core.Map json_)
       : this(
-          originalExecutionInfoId: json_.containsKey('originalExecutionInfoId')
-              ? json_['originalExecutionInfoId'] as core.String
-              : null,
-          replayReason: json_.containsKey('replayReason')
-              ? json_['replayReason'] as core.String
-              : null,
+          originalExecutionInfoId:
+              json_['originalExecutionInfoId'] as core.String?,
+          replayReason: json_['replayReason'] as core.String?,
           replayedExecutionInfoIds:
               json_.containsKey('replayedExecutionInfoIds')
                   ? (json_['replayedExecutionInfoIds'] as core.List)
@@ -17648,9 +16392,7 @@ class $Request00 {
 
   $Request00.fromJson(core.Map json_)
       : this(
-          customer: json_.containsKey('customer')
-              ? json_['customer'] as core.String
-              : null,
+          customer: json_['customer'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -17688,9 +16430,7 @@ class $Request01 {
 
   $Request01.fromJson(core.Map json_)
       : this(
-          requestId: json_.containsKey('requestId')
-              ? json_['requestId'] as core.String
-              : null,
+          requestId: json_['requestId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -17724,9 +16464,7 @@ class $Request02 {
 
   $Request02.fromJson(core.Map json_)
       : this(
-          requestId: json_.containsKey('requestId')
-              ? json_['requestId'] as core.String
-              : null,
+          requestId: json_['requestId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -17762,9 +16500,7 @@ class $Request03 {
 
   $Request03.fromJson(core.Map json_)
       : this(
-          requestId: json_.containsKey('requestId')
-              ? json_['requestId'] as core.String
-              : null,
+          requestId: json_['requestId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -17799,7 +16535,7 @@ class $Request04 {
 
   $Request04.fromJson(core.Map json_)
       : this(
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          etag: json_['etag'] as core.String?,
           stateMetadata: json_.containsKey('stateMetadata')
               ? (json_['stateMetadata'] as core.Map<core.String, core.dynamic>)
                   .map(
@@ -17841,12 +16577,8 @@ class $Request05 {
 
   $Request05.fromJson(core.Map json_)
       : this(
-          pageSize: json_.containsKey('pageSize')
-              ? json_['pageSize'] as core.int
-              : null,
-          pageToken: json_.containsKey('pageToken')
-              ? json_['pageToken'] as core.String
-              : null,
+          pageSize: json_['pageSize'] as core.int?,
+          pageToken: json_['pageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -17900,9 +16632,7 @@ class $Request07 {
 
   $Request07.fromJson(core.Map json_)
       : this(
-          regionCode: json_.containsKey('regionCode')
-              ? json_['regionCode'] as core.String
-              : null,
+          regionCode: json_['regionCode'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -17924,9 +16654,7 @@ class $Request08 {
 
   $Request08.fromJson(core.Map json_)
       : this(
-          languageCode: json_.containsKey('languageCode')
-              ? json_['languageCode'] as core.String
-              : null,
+          languageCode: json_['languageCode'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -17952,7 +16680,7 @@ class $Request09 {
 
   $Request09.fromJson(core.Map json_)
       : this(
-          vmId: json_.containsKey('vmId') ? json_['vmId'] as core.String : null,
+          vmId: json_['vmId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -17999,9 +16727,7 @@ class $ResourceDescriptor {
           annotations: json_.containsKey('annotations')
               ? json_['annotations'] as core.Map<core.String, core.dynamic>
               : null,
-          content: json_.containsKey('content')
-              ? json_['content'] as core.String
-              : null,
+          content: json_['content'] as core.String?,
           digest: json_.containsKey('digest')
               ? (json_['digest'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -18010,14 +16736,10 @@ class $ResourceDescriptor {
                   ),
                 )
               : null,
-          downloadLocation: json_.containsKey('downloadLocation')
-              ? json_['downloadLocation'] as core.String
-              : null,
-          mediaType: json_.containsKey('mediaType')
-              ? json_['mediaType'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+          downloadLocation: json_['downloadLocation'] as core.String?,
+          mediaType: json_['mediaType'] as core.String?,
+          name: json_['name'] as core.String?,
+          uri: json_['uri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -18053,10 +16775,8 @@ class $ResourceLimits {
 
   $ResourceLimits.fromJson(core.Map json_)
       : this(
-          cpu: json_.containsKey('cpu') ? json_['cpu'] as core.String : null,
-          memory: json_.containsKey('memory')
-              ? json_['memory'] as core.String
-              : null,
+          cpu: json_['cpu'] as core.String?,
+          memory: json_['memory'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -18087,10 +16807,8 @@ class $ResourceRequests {
 
   $ResourceRequests.fromJson(core.Map json_)
       : this(
-          cpu: json_.containsKey('cpu') ? json_['cpu'] as core.String : null,
-          memory: json_.containsKey('memory')
-              ? json_['memory'] as core.String
-              : null,
+          cpu: json_['cpu'] as core.String?,
+          memory: json_['memory'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -18131,18 +16849,10 @@ class $Response {
 
   $Response.fromJson(core.Map json_)
       : this(
-          upgradeImage: json_.containsKey('upgradeImage')
-              ? json_['upgradeImage'] as core.String
-              : null,
-          upgradeInfo: json_.containsKey('upgradeInfo')
-              ? json_['upgradeInfo'] as core.String
-              : null,
-          upgradeVersion: json_.containsKey('upgradeVersion')
-              ? json_['upgradeVersion'] as core.String
-              : null,
-          upgradeable: json_.containsKey('upgradeable')
-              ? json_['upgradeable'] as core.bool
-              : null,
+          upgradeImage: json_['upgradeImage'] as core.String?,
+          upgradeInfo: json_['upgradeInfo'] as core.String?,
+          upgradeVersion: json_['upgradeVersion'] as core.String?,
+          upgradeable: json_['upgradeable'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -18169,9 +16879,7 @@ class $ResponseMetadata {
 
   $ResponseMetadata.fromJson(core.Map json_)
       : this(
-          requestId: json_.containsKey('requestId')
-              ? json_['requestId'] as core.String
-              : null,
+          requestId: json_['requestId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -18207,11 +16915,8 @@ class $ResultPostScanActionsResultBigQueryExportResult {
 
   $ResultPostScanActionsResultBigQueryExportResult.fromJson(core.Map json_)
       : this(
-          message: json_.containsKey('message')
-              ? json_['message'] as core.String
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
+          message: json_['message'] as core.String?,
+          state: json_['state'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -18238,7 +16943,7 @@ class $RevisionRequest {
 
   $RevisionRequest.fromJson(core.Map json_)
       : this(
-          tag: json_.containsKey('tag') ? json_['tag'] as core.String : null,
+          tag: json_['tag'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -18268,15 +16973,9 @@ class $RgbColor {
 
   $RgbColor.fromJson(core.Map json_)
       : this(
-          blue: json_.containsKey('blue')
-              ? (json_['blue'] as core.num).toDouble()
-              : null,
-          green: json_.containsKey('green')
-              ? (json_['green'] as core.num).toDouble()
-              : null,
-          red: json_.containsKey('red')
-              ? (json_['red'] as core.num).toDouble()
-              : null,
+          blue: (json_['blue'] as core.num?)?.toDouble(),
+          green: (json_['green'] as core.num?)?.toDouble(),
+          red: (json_['red'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -18308,12 +17007,8 @@ class $RouteFaultInjectionPolicyAbort {
 
   $RouteFaultInjectionPolicyAbort.fromJson(core.Map json_)
       : this(
-          httpStatus: json_.containsKey('httpStatus')
-              ? json_['httpStatus'] as core.int
-              : null,
-          percentage: json_.containsKey('percentage')
-              ? json_['percentage'] as core.int
-              : null,
+          httpStatus: json_['httpStatus'] as core.int?,
+          percentage: json_['percentage'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -18342,12 +17037,8 @@ class $RouteFaultInjectionPolicyDelay {
 
   $RouteFaultInjectionPolicyDelay.fromJson(core.Map json_)
       : this(
-          fixedDelay: json_.containsKey('fixedDelay')
-              ? json_['fixedDelay'] as core.String
-              : null,
-          percentage: json_.containsKey('percentage')
-              ? json_['percentage'] as core.int
-              : null,
+          fixedDelay: json_['fixedDelay'] as core.String?,
+          percentage: json_['percentage'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -18376,9 +17067,7 @@ class $RouteStatefulSessionAffinityPolicy {
 
   $RouteStatefulSessionAffinityPolicy.fromJson(core.Map json_)
       : this(
-          cookieTtl: json_.containsKey('cookieTtl')
-              ? json_['cookieTtl'] as core.String
-              : null,
+          cookieTtl: json_['cookieTtl'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -18402,9 +17091,7 @@ class $RuntimeRequest {
 
   $RuntimeRequest.fromJson(core.Map json_)
       : this(
-          requestId: json_.containsKey('requestId')
-              ? json_['requestId'] as core.String
-              : null,
+          requestId: json_['requestId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -18435,11 +17122,8 @@ class $SBOMStatus {
 
   $SBOMStatus.fromJson(core.Map json_)
       : this(
-          error:
-              json_.containsKey('error') ? json_['error'] as core.String : null,
-          sbomState: json_.containsKey('sbomState')
-              ? json_['sbomState'] as core.String
-              : null,
+          error: json_['error'] as core.String?,
+          sbomState: json_['sbomState'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -18482,15 +17166,9 @@ class $SbomReferenceIntotoPredicate {
                   ),
                 )
               : null,
-          location: json_.containsKey('location')
-              ? json_['location'] as core.String
-              : null,
-          mimeType: json_.containsKey('mimeType')
-              ? json_['mimeType'] as core.String
-              : null,
-          referrerId: json_.containsKey('referrerId')
-              ? json_['referrerId'] as core.String
-              : null,
+          location: json_['location'] as core.String?,
+          mimeType: json_['mimeType'] as core.String?,
+          referrerId: json_['referrerId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -18532,8 +17210,8 @@ class $Script {
 
   $Script.fromJson(core.Map json_)
       : this(
-          path: json_.containsKey('path') ? json_['path'] as core.String : null,
-          text: json_.containsKey('text') ? json_['text'] as core.String : null,
+          path: json_['path'] as core.String?,
+          text: json_['text'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -18575,16 +17253,10 @@ class $ScriptError {
 
   $ScriptError.fromJson(core.Map json_)
       : this(
-          column: json_.containsKey('column')
-              ? json_['column'] as core.String
-              : null,
-          errorCode: json_.containsKey('errorCode')
-              ? json_['errorCode'] as core.String
-              : null,
-          errorMessage: json_.containsKey('errorMessage')
-              ? json_['errorMessage'] as core.String
-              : null,
-          line: json_.containsKey('line') ? json_['line'] as core.String : null,
+          column: json_['column'] as core.String?,
+          errorCode: json_['errorCode'] as core.String?,
+          errorMessage: json_['errorMessage'] as core.String?,
+          line: json_['line'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -18636,12 +17308,8 @@ class $SdfConfig {
 
   $SdfConfig.fromJson(core.Map json_)
       : this(
-          adminEmail: json_.containsKey('adminEmail')
-              ? json_['adminEmail'] as core.String
-              : null,
-          version: json_.containsKey('version')
-              ? json_['version'] as core.String
-              : null,
+          adminEmail: json_['adminEmail'] as core.String?,
+          version: json_['version'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -18665,9 +17333,7 @@ class $Secret {
 
   $Secret.fromJson(core.Map json_)
       : this(
-          secretVersion: json_.containsKey('secretVersion')
-              ? json_['secretVersion'] as core.String
-              : null,
+          secretVersion: json_['secretVersion'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -18695,7 +17361,7 @@ class $SecretVersionRequest {
 
   $SecretVersionRequest.fromJson(core.Map json_)
       : this(
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          etag: json_['etag'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -18735,10 +17401,8 @@ class $SecurityPostureConfig {
 
   $SecurityPostureConfig.fromJson(core.Map json_)
       : this(
-          mode: json_.containsKey('mode') ? json_['mode'] as core.String : null,
-          vulnerabilityMode: json_.containsKey('vulnerabilityMode')
-              ? json_['vulnerabilityMode'] as core.String
-              : null,
+          mode: json_['mode'] as core.String?,
+          vulnerabilityMode: json_['vulnerabilityMode'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -18764,13 +17428,9 @@ class $SemanticVersion {
 
   $SemanticVersion.fromJson(core.Map json_)
       : this(
-          majorNumber: json_.containsKey('majorNumber')
-              ? json_['majorNumber'] as core.int
-              : null,
-          minorNumber: json_.containsKey('minorNumber')
-              ? json_['minorNumber'] as core.int
-              : null,
-          patch: json_.containsKey('patch') ? json_['patch'] as core.int : null,
+          majorNumber: json_['majorNumber'] as core.int?,
+          minorNumber: json_['minorNumber'] as core.int?,
+          patch: json_['patch'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -18855,9 +17515,7 @@ class $SensitiveCategoryAssignedTargetingOptionDetails {
   $SensitiveCategoryAssignedTargetingOptionDetails.fromJson(core.Map json_)
       : this(
           excludedSensitiveCategory:
-              json_.containsKey('excludedSensitiveCategory')
-                  ? json_['excludedSensitiveCategory'] as core.String
-                  : null,
+              json_['excludedSensitiveCategory'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -18939,9 +17597,7 @@ class $SensitiveCategoryTargetingOptionDetails {
 
   $SensitiveCategoryTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          sensitiveCategory: json_.containsKey('sensitiveCategory')
-              ? json_['sensitiveCategory'] as core.String
-              : null,
+          sensitiveCategory: json_['sensitiveCategory'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -18970,12 +17626,8 @@ class $Sentiment {
 
   $Sentiment.fromJson(core.Map json_)
       : this(
-          magnitude: json_.containsKey('magnitude')
-              ? (json_['magnitude'] as core.num).toDouble()
-              : null,
-          score: json_.containsKey('score')
-              ? (json_['score'] as core.num).toDouble()
-              : null,
+          magnitude: (json_['magnitude'] as core.num?)?.toDouble(),
+          score: (json_['score'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -19003,9 +17655,7 @@ class $SessionPositionAssignedTargetingOptionDetails {
 
   $SessionPositionAssignedTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          sessionPosition: json_.containsKey('sessionPosition')
-              ? json_['sessionPosition'] as core.String
-              : null,
+          sessionPosition: json_['sessionPosition'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -19044,9 +17694,7 @@ class $SetLabelsRequest {
 
   $SetLabelsRequest.fromJson(core.Map json_)
       : this(
-          labelFingerprint: json_.containsKey('labelFingerprint')
-              ? json_['labelFingerprint'] as core.String
-              : null,
+          labelFingerprint: json_['labelFingerprint'] as core.String?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -19084,12 +17732,8 @@ class $SetupTag {
 
   $SetupTag.fromJson(core.Map json_)
       : this(
-          stopOnSetupFailure: json_.containsKey('stopOnSetupFailure')
-              ? json_['stopOnSetupFailure'] as core.bool
-              : null,
-          tagName: json_.containsKey('tagName')
-              ? json_['tagName'] as core.String
-              : null,
+          stopOnSetupFailure: json_['stopOnSetupFailure'] as core.bool?,
+          tagName: json_['tagName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -19117,7 +17761,7 @@ class $Shared00 {
 
   $Shared00.fromJson(core.Map json_)
       : this(
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          id: json_['id'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -19159,7 +17803,7 @@ class $Shared02 {
 
   $Shared02.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -19188,12 +17832,8 @@ class $Shared03 {
 
   $Shared03.fromJson(core.Map json_)
       : this(
-          bootDiskSizeGb: json_.containsKey('bootDiskSizeGb')
-              ? json_['bootDiskSizeGb'] as core.int
-              : null,
-          bootDiskType: json_.containsKey('bootDiskType')
-              ? json_['bootDiskType'] as core.String
-              : null,
+          bootDiskSizeGb: json_['bootDiskSizeGb'] as core.int?,
+          bootDiskType: json_['bootDiskType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -19217,9 +17857,8 @@ class $Shared04 {
 
   $Shared04.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
+          name: json_['name'] as core.String?,
+          value: json_['value'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -19296,8 +17935,7 @@ class $Shared07 {
 
   $Shared07.fromJson(core.Map json_)
       : this(
-          email:
-              json_.containsKey('email') ? json_['email'] as core.String : null,
+          email: json_['email'] as core.String?,
           scopes: json_.containsKey('scopes')
               ? (json_['scopes'] as core.List)
                   .map((value) => value as core.String)
@@ -19327,9 +17965,7 @@ class $Shared08 {
 
   $Shared08.fromJson(core.Map json_)
       : this(
-          objectUri: json_.containsKey('objectUri')
-              ? json_['objectUri'] as core.String
-              : null,
+          objectUri: json_['objectUri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -19355,11 +17991,8 @@ class $Shared09 {
 
   $Shared09.fromJson(core.Map json_)
       : this(
-          currency: json_.containsKey('currency')
-              ? json_['currency'] as core.String
-              : null,
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
+          currency: json_['currency'] as core.String?,
+          value: json_['value'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -19389,12 +18022,8 @@ class $Shared10 {
 
   $Shared10.fromJson(core.Map json_)
       : this(
-          magnitude: json_.containsKey('magnitude')
-              ? (json_['magnitude'] as core.num).toDouble()
-              : null,
-          score: json_.containsKey('score')
-              ? (json_['score'] as core.num).toDouble()
-              : null,
+          magnitude: (json_['magnitude'] as core.num?)?.toDouble(),
+          score: (json_['score'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -19456,12 +18085,8 @@ class $Shared12 {
 
   $Shared12.fromJson(core.Map json_)
       : this(
-          osShortName: json_.containsKey('osShortName')
-              ? json_['osShortName'] as core.String
-              : null,
-          osVersion: json_.containsKey('osVersion')
-              ? json_['osVersion'] as core.String
-              : null,
+          osShortName: json_['osShortName'] as core.String?,
+          osVersion: json_['osVersion'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -19503,15 +18128,10 @@ class $Shared13 {
 
   $Shared13.fromJson(core.Map json_)
       : this(
-          fqdn: json_.containsKey('fqdn') ? json_['fqdn'] as core.String : null,
-          internalIp: json_.containsKey('internalIp')
-              ? json_['internalIp'] as core.String
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
-          version: json_.containsKey('version')
-              ? json_['version'] as core.String
-              : null,
+          fqdn: json_['fqdn'] as core.String?,
+          internalIp: json_['internalIp'] as core.String?,
+          state: json_['state'] as core.String?,
+          version: json_['version'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -19535,8 +18155,7 @@ class $Shared14 {
 
   $Shared14.fromJson(core.Map json_)
       : this(
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
+          value: json_['value'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -19578,15 +18197,9 @@ class $ShieldedInstanceConfig {
   $ShieldedInstanceConfig.fromJson(core.Map json_)
       : this(
           enableIntegrityMonitoring:
-              json_.containsKey('enableIntegrityMonitoring')
-                  ? json_['enableIntegrityMonitoring'] as core.bool
-                  : null,
-          enableSecureBoot: json_.containsKey('enableSecureBoot')
-              ? json_['enableSecureBoot'] as core.bool
-              : null,
-          enableVtpm: json_.containsKey('enableVtpm')
-              ? json_['enableVtpm'] as core.bool
-              : null,
+              json_['enableIntegrityMonitoring'] as core.bool?,
+          enableSecureBoot: json_['enableSecureBoot'] as core.bool?,
+          enableVtpm: json_['enableVtpm'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -19639,12 +18252,8 @@ class $Signature {
 
   $Signature.fromJson(core.Map json_)
       : this(
-          publicKeyId: json_.containsKey('publicKeyId')
-              ? json_['publicKeyId'] as core.String
-              : null,
-          signature: json_.containsKey('signature')
-              ? json_['signature'] as core.String
-              : null,
+          publicKeyId: json_['publicKeyId'] as core.String?,
+          signature: json_['signature'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -19677,10 +18286,8 @@ class $Site {
 
   $Site.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          urlOrAppId: json_.containsKey('urlOrAppId')
-              ? json_['urlOrAppId'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          urlOrAppId: json_['urlOrAppId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -19729,12 +18336,11 @@ class $Size {
 
   $Size.fromJson(core.Map json_)
       : this(
-          height:
-              json_.containsKey('height') ? json_['height'] as core.int : null,
-          iab: json_.containsKey('iab') ? json_['iab'] as core.bool : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          width: json_.containsKey('width') ? json_['width'] as core.int : null,
+          height: json_['height'] as core.int?,
+          iab: json_['iab'] as core.bool?,
+          id: json_['id'] as core.String?,
+          kind: json_['kind'] as core.String?,
+          width: json_['width'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -19809,16 +18415,12 @@ class $SlsaRecipe {
           arguments: json_.containsKey('arguments')
               ? json_['arguments'] as core.Map<core.String, core.dynamic>
               : null,
-          definedInMaterial: json_.containsKey('definedInMaterial')
-              ? json_['definedInMaterial'] as core.String
-              : null,
-          entryPoint: json_.containsKey('entryPoint')
-              ? json_['entryPoint'] as core.String
-              : null,
+          definedInMaterial: json_['definedInMaterial'] as core.String?,
+          entryPoint: json_['entryPoint'] as core.String?,
           environment: json_.containsKey('environment')
               ? json_['environment'] as core.Map<core.String, core.dynamic>
               : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -19848,9 +18450,7 @@ class $Source {
 
   $Source.fromJson(core.Map json_)
       : this(
-          inputUri: json_.containsKey('inputUri')
-              ? json_['inputUri'] as core.String
-              : null,
+          inputUri: json_['inputUri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -19875,9 +18475,7 @@ class $SourceContext {
 
   $SourceContext.fromJson(core.Map json_)
       : this(
-          fileName: json_.containsKey('fileName')
-              ? json_['fileName'] as core.String
-              : null,
+          fileName: json_['fileName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -19906,10 +18504,8 @@ class $StateError {
 
   $StateError.fromJson(core.Map json_)
       : this(
-          details: json_.containsKey('details')
-              ? json_['details'] as core.String
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          details: json_['details'] as core.String?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -19942,9 +18538,7 @@ class $StaticCluster {
           cluster: json_.containsKey('cluster')
               ? json_['cluster'] as core.Map<core.String, core.dynamic>
               : null,
-          lastUpdated: json_.containsKey('lastUpdated')
-              ? json_['lastUpdated'] as core.String
-              : null,
+          lastUpdated: json_['lastUpdated'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -19974,9 +18568,7 @@ class $StaticListener {
 
   $StaticListener.fromJson(core.Map json_)
       : this(
-          lastUpdated: json_.containsKey('lastUpdated')
-              ? json_['lastUpdated'] as core.String
-              : null,
+          lastUpdated: json_['lastUpdated'] as core.String?,
           listener: json_.containsKey('listener')
               ? json_['listener'] as core.Map<core.String, core.dynamic>
               : null,
@@ -20009,9 +18601,7 @@ class $StaticRouteConfig {
 
   $StaticRouteConfig.fromJson(core.Map json_)
       : this(
-          lastUpdated: json_.containsKey('lastUpdated')
-              ? json_['lastUpdated'] as core.String
-              : null,
+          lastUpdated: json_['lastUpdated'] as core.String?,
           routeConfig: json_.containsKey('routeConfig')
               ? json_['routeConfig'] as core.Map<core.String, core.dynamic>
               : null,
@@ -20192,15 +18782,13 @@ class $Status {
 
   $Status.fromJson(core.Map json_)
       : this(
-          code: json_.containsKey('code') ? json_['code'] as core.int : null,
+          code: json_['code'] as core.int?,
           details: json_.containsKey('details')
               ? (json_['details'] as core.List)
                   .map((value) => value as core.Map<core.String, core.dynamic>)
                   .toList()
               : null,
-          message: json_.containsKey('message')
-              ? json_['message'] as core.String
-              : null,
+          message: json_['message'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -20264,9 +18852,7 @@ class $SubExchangeAssignedTargetingOptionDetails {
 
   $SubExchangeAssignedTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          targetingOptionId: json_.containsKey('targetingOptionId')
-              ? json_['targetingOptionId'] as core.String
-              : null,
+          targetingOptionId: json_['targetingOptionId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -20290,9 +18876,7 @@ class $SubExchangeTargetingOptionDetails {
 
   $SubExchangeTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+          displayName: json_['displayName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -20325,7 +18909,7 @@ class $Subject {
                   ),
                 )
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -20370,18 +18954,10 @@ class $Symptom {
 
   $Symptom.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          details: json_.containsKey('details')
-              ? json_['details'] as core.String
-              : null,
-          symptomType: json_.containsKey('symptomType')
-              ? json_['symptomType'] as core.String
-              : null,
-          workerId: json_.containsKey('workerId')
-              ? json_['workerId'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          details: json_['details'] as core.String?,
+          symptomType: json_['symptomType'] as core.String?,
+          workerId: json_['workerId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -20435,15 +19011,9 @@ class $TargetFrequency {
 
   $TargetFrequency.fromJson(core.Map json_)
       : this(
-          targetCount: json_.containsKey('targetCount')
-              ? json_['targetCount'] as core.String
-              : null,
-          timeUnit: json_.containsKey('timeUnit')
-              ? json_['timeUnit'] as core.String
-              : null,
-          timeUnitCount: json_.containsKey('timeUnitCount')
-              ? json_['timeUnitCount'] as core.int
-              : null,
+          targetCount: json_['targetCount'] as core.String?,
+          timeUnit: json_['timeUnit'] as core.String?,
+          timeUnitCount: json_['timeUnitCount'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -20474,12 +19044,8 @@ class $TeardownTag {
 
   $TeardownTag.fromJson(core.Map json_)
       : this(
-          stopTeardownOnFailure: json_.containsKey('stopTeardownOnFailure')
-              ? json_['stopTeardownOnFailure'] as core.bool
-              : null,
-          tagName: json_.containsKey('tagName')
-              ? json_['tagName'] as core.String
-              : null,
+          stopTeardownOnFailure: json_['stopTeardownOnFailure'] as core.bool?,
+          tagName: json_['tagName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -20506,7 +19072,7 @@ class $TenantProjectRequest {
 
   $TenantProjectRequest.fromJson(core.Map json_)
       : this(
-          tag: json_.containsKey('tag') ? json_['tag'] as core.String : null,
+          tag: json_['tag'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -20710,12 +19276,8 @@ class $TextSpan {
 
   $TextSpan.fromJson(core.Map json_)
       : this(
-          beginOffset: json_.containsKey('beginOffset')
-              ? json_['beginOffset'] as core.int
-              : null,
-          content: json_.containsKey('content')
-              ? json_['content'] as core.String
-              : null,
+          beginOffset: json_['beginOffset'] as core.int?,
+          content: json_['content'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -20741,9 +19303,7 @@ class $ThirdPartyOnlyConfig {
   $ThirdPartyOnlyConfig.fromJson(core.Map json_)
       : this(
           pixelOrderIdReportingEnabled:
-              json_.containsKey('pixelOrderIdReportingEnabled')
-                  ? json_['pixelOrderIdReportingEnabled'] as core.bool
-                  : null,
+              json_['pixelOrderIdReportingEnabled'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -20808,8 +19368,8 @@ class $ThirdPartyUrl {
 
   $ThirdPartyUrl.fromJson(core.Map json_)
       : this(
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
-          url: json_.containsKey('url') ? json_['url'] as core.String : null,
+          type: json_['type'] as core.String?,
+          url: json_['url'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -20849,12 +19409,8 @@ class $ThirdPartyVendorConfig {
 
   $ThirdPartyVendorConfig.fromJson(core.Map json_)
       : this(
-          placementId: json_.containsKey('placementId')
-              ? json_['placementId'] as core.String
-              : null,
-          vendor: json_.containsKey('vendor')
-              ? json_['vendor'] as core.String
-              : null,
+          placementId: json_['placementId'] as core.String?,
+          vendor: json_['vendor'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -20914,14 +19470,10 @@ class $TimeOfDay {
 
   $TimeOfDay.fromJson(core.Map json_)
       : this(
-          hours: json_.containsKey('hours') ? json_['hours'] as core.int : null,
-          minutes: json_.containsKey('minutes')
-              ? json_['minutes'] as core.int
-              : null,
-          nanos: json_.containsKey('nanos') ? json_['nanos'] as core.int : null,
-          seconds: json_.containsKey('seconds')
-              ? json_['seconds'] as core.int
-              : null,
+          hours: json_['hours'] as core.int?,
+          minutes: json_['minutes'] as core.int?,
+          nanos: json_['nanos'] as core.int?,
+          seconds: json_['seconds'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -20954,12 +19506,8 @@ class $TimeRange {
 
   $TimeRange.fromJson(core.Map json_)
       : this(
-          endTime: json_.containsKey('endTime')
-              ? json_['endTime'] as core.String
-              : null,
-          startTime: json_.containsKey('startTime')
-              ? json_['startTime'] as core.String
-              : null,
+          endTime: json_['endTime'] as core.String?,
+          startTime: json_['startTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -20994,10 +19542,8 @@ class $TimeZone {
 
   $TimeZone.fromJson(core.Map json_)
       : this(
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          version: json_.containsKey('version')
-              ? json_['version'] as core.String
-              : null,
+          id: json_['id'] as core.String?,
+          version: json_['version'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -21028,10 +19574,8 @@ class $TimerEvent {
 
   $TimerEvent.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          reportingName: json_.containsKey('reportingName')
-              ? json_['reportingName'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          reportingName: json_['reportingName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -21058,12 +19602,8 @@ class $TokenPagination {
 
   $TokenPagination.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
-          previousPageToken: json_.containsKey('previousPageToken')
-              ? json_['previousPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          previousPageToken: json_['previousPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -21092,11 +19632,8 @@ class $TokenResponse00 {
 
   $TokenResponse00.fromJson(core.Map json_)
       : this(
-          expirationTime: json_.containsKey('expirationTime')
-              ? json_['expirationTime'] as core.String
-              : null,
-          token:
-              json_.containsKey('token') ? json_['token'] as core.String : null,
+          expirationTime: json_['expirationTime'] as core.String?,
+          token: json_['token'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -21131,14 +19668,9 @@ class $TokenResponse01 {
 
   $TokenResponse01.fromJson(core.Map json_)
       : this(
-          expirationTime: json_.containsKey('expirationTime')
-              ? json_['expirationTime'] as core.String
-              : null,
-          gitUsername: json_.containsKey('gitUsername')
-              ? json_['gitUsername'] as core.String
-              : null,
-          token:
-              json_.containsKey('token') ? json_['token'] as core.String : null,
+          expirationTime: json_['expirationTime'] as core.String?,
+          gitUsername: json_['gitUsername'] as core.String?,
+          token: json_['token'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -21178,12 +19710,8 @@ class $TraceSamplingConfig {
 
   $TraceSamplingConfig.fromJson(core.Map json_)
       : this(
-          sampler: json_.containsKey('sampler')
-              ? json_['sampler'] as core.String
-              : null,
-          samplingRate: json_.containsKey('samplingRate')
-              ? (json_['samplingRate'] as core.num).toDouble()
-              : null,
+          sampler: json_['sampler'] as core.String?,
+          samplingRate: (json_['samplingRate'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -21226,17 +19754,11 @@ class $TrackingFloodlightActivityConfig {
 
   $TrackingFloodlightActivityConfig.fromJson(core.Map json_)
       : this(
-          floodlightActivityId: json_.containsKey('floodlightActivityId')
-              ? json_['floodlightActivityId'] as core.String
-              : null,
+          floodlightActivityId: json_['floodlightActivityId'] as core.String?,
           postClickLookbackWindowDays:
-              json_.containsKey('postClickLookbackWindowDays')
-                  ? json_['postClickLookbackWindowDays'] as core.int
-                  : null,
+              json_['postClickLookbackWindowDays'] as core.int?,
           postViewLookbackWindowDays:
-              json_.containsKey('postViewLookbackWindowDays')
-                  ? json_['postViewLookbackWindowDays'] as core.int
-                  : null,
+              json_['postViewLookbackWindowDays'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -21275,11 +19797,8 @@ class $TruncatableString {
 
   $TruncatableString.fromJson(core.Map json_)
       : this(
-          truncatedByteCount: json_.containsKey('truncatedByteCount')
-              ? json_['truncatedByteCount'] as core.int
-              : null,
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
+          truncatedByteCount: json_['truncatedByteCount'] as core.int?,
+          value: json_['value'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -21320,10 +19839,8 @@ class $UniversalAdId {
 
   $UniversalAdId.fromJson(core.Map json_)
       : this(
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          registry: json_.containsKey('registry')
-              ? json_['registry'] as core.String
-              : null,
+          id: json_['id'] as core.String?,
+          registry: json_['registry'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -21364,20 +19881,14 @@ class $UpgradeDistribution {
 
   $UpgradeDistribution.fromJson(core.Map json_)
       : this(
-          classification: json_.containsKey('classification')
-              ? json_['classification'] as core.String
-              : null,
-          cpeUri: json_.containsKey('cpeUri')
-              ? json_['cpeUri'] as core.String
-              : null,
+          classification: json_['classification'] as core.String?,
+          cpeUri: json_['cpeUri'] as core.String?,
           cve: json_.containsKey('cve')
               ? (json_['cve'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          severity: json_.containsKey('severity')
-              ? json_['severity'] as core.String
-              : null,
+          severity: json_['severity'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -21412,10 +19923,8 @@ class $UrlAssignedTargetingOptionDetails {
 
   $UrlAssignedTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          negative: json_.containsKey('negative')
-              ? json_['negative'] as core.bool
-              : null,
-          url: json_.containsKey('url') ? json_['url'] as core.String : null,
+          negative: json_['negative'] as core.bool?,
+          url: json_['url'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -21454,15 +19963,9 @@ class $UsageRule {
 
   $UsageRule.fromJson(core.Map json_)
       : this(
-          allowUnregisteredCalls: json_.containsKey('allowUnregisteredCalls')
-              ? json_['allowUnregisteredCalls'] as core.bool
-              : null,
-          selector: json_.containsKey('selector')
-              ? json_['selector'] as core.String
-              : null,
-          skipServiceControl: json_.containsKey('skipServiceControl')
-              ? json_['skipServiceControl'] as core.bool
-              : null,
+          allowUnregisteredCalls: json_['allowUnregisteredCalls'] as core.bool?,
+          selector: json_['selector'] as core.String?,
+          skipServiceControl: json_['skipServiceControl'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -21504,12 +20007,8 @@ class $UserRewardedContentAssignedTargetingOptionDetails {
 
   $UserRewardedContentAssignedTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          targetingOptionId: json_.containsKey('targetingOptionId')
-              ? json_['targetingOptionId'] as core.String
-              : null,
-          userRewardedContent: json_.containsKey('userRewardedContent')
-              ? json_['userRewardedContent'] as core.String
-              : null,
+          targetingOptionId: json_['targetingOptionId'] as core.String?,
+          userRewardedContent: json_['userRewardedContent'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -21542,9 +20041,7 @@ class $UserRewardedContentTargetingOptionDetails {
 
   $UserRewardedContentTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          userRewardedContent: json_.containsKey('userRewardedContent')
-              ? json_['userRewardedContent'] as core.String
-              : null,
+          userRewardedContent: json_['userRewardedContent'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -21597,15 +20094,9 @@ class $V1AccessTuple {
 
   $V1AccessTuple.fromJson(core.Map json_)
       : this(
-          fullResourceName: json_.containsKey('fullResourceName')
-              ? json_['fullResourceName'] as core.String
-              : null,
-          permission: json_.containsKey('permission')
-              ? json_['permission'] as core.String
-              : null,
-          principal: json_.containsKey('principal')
-              ? json_['principal'] as core.String
-              : null,
+          fullResourceName: json_['fullResourceName'] as core.String?,
+          permission: json_['permission'] as core.String?,
+          principal: json_['principal'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -21654,27 +20145,15 @@ class $V2CustomStrengthOptions {
   $V2CustomStrengthOptions.fromJson(core.Map json_)
       : this(
           containsLowercaseCharacter:
-              json_.containsKey('containsLowercaseCharacter')
-                  ? json_['containsLowercaseCharacter'] as core.bool
-                  : null,
+              json_['containsLowercaseCharacter'] as core.bool?,
           containsNonAlphanumericCharacter:
-              json_.containsKey('containsNonAlphanumericCharacter')
-                  ? json_['containsNonAlphanumericCharacter'] as core.bool
-                  : null,
+              json_['containsNonAlphanumericCharacter'] as core.bool?,
           containsNumericCharacter:
-              json_.containsKey('containsNumericCharacter')
-                  ? json_['containsNumericCharacter'] as core.bool
-                  : null,
+              json_['containsNumericCharacter'] as core.bool?,
           containsUppercaseCharacter:
-              json_.containsKey('containsUppercaseCharacter')
-                  ? json_['containsUppercaseCharacter'] as core.bool
-                  : null,
-          maxPasswordLength: json_.containsKey('maxPasswordLength')
-              ? json_['maxPasswordLength'] as core.int
-              : null,
-          minPasswordLength: json_.containsKey('minPasswordLength')
-              ? json_['minPasswordLength'] as core.int
-              : null,
+              json_['containsUppercaseCharacter'] as core.bool?,
+          maxPasswordLength: json_['maxPasswordLength'] as core.int?,
+          minPasswordLength: json_['minPasswordLength'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -21742,18 +20221,12 @@ class $Version {
 
   $Version.fromJson(core.Map json_)
       : this(
-          epoch: json_.containsKey('epoch') ? json_['epoch'] as core.int : null,
-          fullName: json_.containsKey('fullName')
-              ? json_['fullName'] as core.String
-              : null,
-          inclusive: json_.containsKey('inclusive')
-              ? json_['inclusive'] as core.bool
-              : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          revision: json_.containsKey('revision')
-              ? json_['revision'] as core.String
-              : null,
+          epoch: json_['epoch'] as core.int?,
+          fullName: json_['fullName'] as core.String?,
+          inclusive: json_['inclusive'] as core.bool?,
+          kind: json_['kind'] as core.String?,
+          name: json_['name'] as core.String?,
+          revision: json_['revision'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -21788,15 +20261,9 @@ class $VersionedPackage {
 
   $VersionedPackage.fromJson(core.Map json_)
       : this(
-          architecture: json_.containsKey('architecture')
-              ? json_['architecture'] as core.String
-              : null,
-          packageName: json_.containsKey('packageName')
-              ? json_['packageName'] as core.String
-              : null,
-          version: json_.containsKey('version')
-              ? json_['version'] as core.String
-              : null,
+          architecture: json_['architecture'] as core.String?,
+          packageName: json_['packageName'] as core.String?,
+          version: json_['version'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -21845,18 +20312,10 @@ class $VideoAdSequenceStep {
 
   $VideoAdSequenceStep.fromJson(core.Map json_)
       : this(
-          adGroupId: json_.containsKey('adGroupId')
-              ? json_['adGroupId'] as core.String
-              : null,
-          interactionType: json_.containsKey('interactionType')
-              ? json_['interactionType'] as core.String
-              : null,
-          previousStepId: json_.containsKey('previousStepId')
-              ? json_['previousStepId'] as core.String
-              : null,
-          stepId: json_.containsKey('stepId')
-              ? json_['stepId'] as core.String
-              : null,
+          adGroupId: json_['adGroupId'] as core.String?,
+          interactionType: json_['interactionType'] as core.String?,
+          previousStepId: json_['previousStepId'] as core.String?,
+          stepId: json_['stepId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -21896,9 +20355,7 @@ class $VideoPlayerSizeAssignedTargetingOptionDetails {
 
   $VideoPlayerSizeAssignedTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          videoPlayerSize: json_.containsKey('videoPlayerSize')
-              ? json_['videoPlayerSize'] as core.String
-              : null,
+          videoPlayerSize: json_['videoPlayerSize'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -21935,9 +20392,7 @@ class $VideoPlayerSizeTargetingOptionDetails {
 
   $VideoPlayerSizeTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          videoPlayerSize: json_.containsKey('videoPlayerSize')
-              ? json_['videoPlayerSize'] as core.String
-              : null,
+          videoPlayerSize: json_['videoPlayerSize'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -21983,9 +20438,7 @@ class $ViewabilityAssignedTargetingOptionDetails {
 
   $ViewabilityAssignedTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          viewability: json_.containsKey('viewability')
-              ? json_['viewability'] as core.String
-              : null,
+          viewability: json_['viewability'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -22031,9 +20484,7 @@ class $ViewabilityTargetingOptionDetails {
 
   $ViewabilityTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          viewability: json_.containsKey('viewability')
-              ? json_['viewability'] as core.String
-              : null,
+          viewability: json_['viewability'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -22070,9 +20521,7 @@ class $VpcAccessibleServices {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          enableRestriction: json_.containsKey('enableRestriction')
-              ? json_['enableRestriction'] as core.bool
-              : null,
+          enableRestriction: json_['enableRestriction'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -22100,9 +20549,7 @@ class $VpcServiceControlsRequest {
 
   $VpcServiceControlsRequest.fromJson(core.Map json_)
       : this(
-          consumerNetwork: json_.containsKey('consumerNetwork')
-              ? json_['consumerNetwork'] as core.String
-              : null,
+          consumerNetwork: json_['consumerNetwork'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -22143,9 +20590,7 @@ class $VpcSubNetwork {
 
   $VpcSubNetwork.fromJson(core.Map json_)
       : this(
-          network: json_.containsKey('network')
-              ? json_['network'] as core.String
-              : null,
+          network: json_['network'] as core.String?,
           vpcIpSubnetworks: json_.containsKey('vpcIpSubnetworks')
               ? (json_['vpcIpSubnetworks'] as core.List)
                   .map((value) => value as core.String)
@@ -22179,9 +20624,7 @@ class $WaitOperationRequest {
 
   $WaitOperationRequest.fromJson(core.Map json_)
       : this(
-          timeout: json_.containsKey('timeout')
-              ? json_['timeout'] as core.String
-              : null,
+          timeout: json_['timeout'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -22207,9 +20650,7 @@ class $WebAppIcon {
 
   $WebAppIcon.fromJson(core.Map json_)
       : this(
-          imageData: json_.containsKey('imageData')
-              ? json_['imageData'] as core.String
-              : null,
+          imageData: json_['imageData'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -22245,18 +20686,10 @@ class $WindowsQuickFixEngineeringPackage {
 
   $WindowsQuickFixEngineeringPackage.fromJson(core.Map json_)
       : this(
-          caption: json_.containsKey('caption')
-              ? json_['caption'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          hotFixId: json_.containsKey('hotFixId')
-              ? json_['hotFixId'] as core.String
-              : null,
-          installTime: json_.containsKey('installTime')
-              ? json_['installTime'] as core.String
-              : null,
+          caption: json_['caption'] as core.String?,
+          description: json_['description'] as core.String?,
+          hotFixId: json_['hotFixId'] as core.String?,
+          installTime: json_['installTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -22285,8 +20718,8 @@ class $WindowsUpdateCategory {
 
   $WindowsUpdateCategory.fromJson(core.Map json_)
       : this(
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          id: json_['id'] as core.String?,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -22319,10 +20752,8 @@ class $WorkstationRequest {
 
   $WorkstationRequest.fromJson(core.Map json_)
       : this(
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          validateOnly: json_.containsKey('validateOnly')
-              ? json_['validateOnly'] as core.bool
-              : null,
+          etag: json_['etag'] as core.String?,
+          validateOnly: json_['validateOnly'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -22409,16 +20840,11 @@ class $YoutubeAndPartnersBiddingStrategy {
   $YoutubeAndPartnersBiddingStrategy.fromJson(core.Map json_)
       : this(
           adGroupEffectiveTargetCpaSource:
-              json_.containsKey('adGroupEffectiveTargetCpaSource')
-                  ? json_['adGroupEffectiveTargetCpaSource'] as core.String
-                  : null,
+              json_['adGroupEffectiveTargetCpaSource'] as core.String?,
           adGroupEffectiveTargetCpaValue:
-              json_.containsKey('adGroupEffectiveTargetCpaValue')
-                  ? json_['adGroupEffectiveTargetCpaValue'] as core.String
-                  : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
+              json_['adGroupEffectiveTargetCpaValue'] as core.String?,
+          type: json_['type'] as core.String?,
+          value: json_['value'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -22449,12 +20875,8 @@ class $YoutubeChannelAssignedTargetingOptionDetails {
 
   $YoutubeChannelAssignedTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          channelId: json_.containsKey('channelId')
-              ? json_['channelId'] as core.String
-              : null,
-          negative: json_.containsKey('negative')
-              ? json_['negative'] as core.bool
-              : null,
+          channelId: json_['channelId'] as core.String?,
+          negative: json_['negative'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -22481,12 +20903,8 @@ class $YoutubeVideoAssignedTargetingOptionDetails {
 
   $YoutubeVideoAssignedTargetingOptionDetails.fromJson(core.Map json_)
       : this(
-          negative: json_.containsKey('negative')
-              ? json_['negative'] as core.bool
-              : null,
-          videoId: json_.containsKey('videoId')
-              ? json_['videoId'] as core.String
-              : null,
+          negative: json_['negative'] as core.bool?,
+          videoId: json_['videoId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -22517,10 +20935,8 @@ class $YoutubeVideoDetails {
 
   $YoutubeVideoDetails.fromJson(core.Map json_)
       : this(
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          unavailableReason: json_.containsKey('unavailableReason')
-              ? json_['unavailableReason'] as core.String
-              : null,
+          id: json_['id'] as core.String?,
+          unavailableReason: json_['unavailableReason'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -22555,18 +20971,10 @@ class $ZypperPatch {
 
   $ZypperPatch.fromJson(core.Map json_)
       : this(
-          category: json_.containsKey('category')
-              ? json_['category'] as core.String
-              : null,
-          patchName: json_.containsKey('patchName')
-              ? json_['patchName'] as core.String
-              : null,
-          severity: json_.containsKey('severity')
-              ? json_['severity'] as core.String
-              : null,
-          summary: json_.containsKey('summary')
-              ? json_['summary'] as core.String
-              : null,
+          category: json_['category'] as core.String?,
+          patchName: json_['patchName'] as core.String?,
+          severity: json_['severity'] as core.String?,
+          summary: json_['summary'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

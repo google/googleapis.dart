@@ -891,199 +891,84 @@ class Groups {
 
   Groups.fromJson(core.Map json_)
       : this(
-          allowExternalMembers: json_.containsKey('allowExternalMembers')
-              ? json_['allowExternalMembers'] as core.String
-              : null,
+          allowExternalMembers: json_['allowExternalMembers'] as core.String?,
           allowGoogleCommunication:
-              json_.containsKey('allowGoogleCommunication')
-                  ? json_['allowGoogleCommunication'] as core.String
-                  : null,
-          allowWebPosting: json_.containsKey('allowWebPosting')
-              ? json_['allowWebPosting'] as core.String
-              : null,
-          archiveOnly: json_.containsKey('archiveOnly')
-              ? json_['archiveOnly'] as core.String
-              : null,
-          customFooterText: json_.containsKey('customFooterText')
-              ? json_['customFooterText'] as core.String
-              : null,
-          customReplyTo: json_.containsKey('customReplyTo')
-              ? json_['customReplyTo'] as core.String
-              : null,
-          customRolesEnabledForSettingsToBeMerged: json_
-                  .containsKey('customRolesEnabledForSettingsToBeMerged')
-              ? json_['customRolesEnabledForSettingsToBeMerged'] as core.String
-              : null,
+              json_['allowGoogleCommunication'] as core.String?,
+          allowWebPosting: json_['allowWebPosting'] as core.String?,
+          archiveOnly: json_['archiveOnly'] as core.String?,
+          customFooterText: json_['customFooterText'] as core.String?,
+          customReplyTo: json_['customReplyTo'] as core.String?,
+          customRolesEnabledForSettingsToBeMerged:
+              json_['customRolesEnabledForSettingsToBeMerged'] as core.String?,
           defaultMessageDenyNotificationText:
-              json_.containsKey('defaultMessageDenyNotificationText')
-                  ? json_['defaultMessageDenyNotificationText'] as core.String
-                  : null,
-          defaultSender: json_.containsKey('default_sender')
-              ? json_['default_sender'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          email:
-              json_.containsKey('email') ? json_['email'] as core.String : null,
+              json_['defaultMessageDenyNotificationText'] as core.String?,
+          defaultSender: json_['default_sender'] as core.String?,
+          description: json_['description'] as core.String?,
+          email: json_['email'] as core.String?,
           enableCollaborativeInbox:
-              json_.containsKey('enableCollaborativeInbox')
-                  ? json_['enableCollaborativeInbox'] as core.String
-                  : null,
-          favoriteRepliesOnTop: json_.containsKey('favoriteRepliesOnTop')
-              ? json_['favoriteRepliesOnTop'] as core.String
-              : null,
-          includeCustomFooter: json_.containsKey('includeCustomFooter')
-              ? json_['includeCustomFooter'] as core.String
-              : null,
+              json_['enableCollaborativeInbox'] as core.String?,
+          favoriteRepliesOnTop: json_['favoriteRepliesOnTop'] as core.String?,
+          includeCustomFooter: json_['includeCustomFooter'] as core.String?,
           includeInGlobalAddressList:
-              json_.containsKey('includeInGlobalAddressList')
-                  ? json_['includeInGlobalAddressList'] as core.String
-                  : null,
-          isArchived: json_.containsKey('isArchived')
-              ? json_['isArchived'] as core.String
-              : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          maxMessageBytes: json_.containsKey('maxMessageBytes')
-              ? json_['maxMessageBytes'] as core.int
-              : null,
+              json_['includeInGlobalAddressList'] as core.String?,
+          isArchived: json_['isArchived'] as core.String?,
+          kind: json_['kind'] as core.String?,
+          maxMessageBytes: json_['maxMessageBytes'] as core.int?,
           membersCanPostAsTheGroup:
-              json_.containsKey('membersCanPostAsTheGroup')
-                  ? json_['membersCanPostAsTheGroup'] as core.String
-                  : null,
-          messageDisplayFont: json_.containsKey('messageDisplayFont')
-              ? json_['messageDisplayFont'] as core.String
-              : null,
-          messageModerationLevel: json_.containsKey('messageModerationLevel')
-              ? json_['messageModerationLevel'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          primaryLanguage: json_.containsKey('primaryLanguage')
-              ? json_['primaryLanguage'] as core.String
-              : null,
-          replyTo: json_.containsKey('replyTo')
-              ? json_['replyTo'] as core.String
-              : null,
+              json_['membersCanPostAsTheGroup'] as core.String?,
+          messageDisplayFont: json_['messageDisplayFont'] as core.String?,
+          messageModerationLevel:
+              json_['messageModerationLevel'] as core.String?,
+          name: json_['name'] as core.String?,
+          primaryLanguage: json_['primaryLanguage'] as core.String?,
+          replyTo: json_['replyTo'] as core.String?,
           sendMessageDenyNotification:
-              json_.containsKey('sendMessageDenyNotification')
-                  ? json_['sendMessageDenyNotification'] as core.String
-                  : null,
-          showInGroupDirectory: json_.containsKey('showInGroupDirectory')
-              ? json_['showInGroupDirectory'] as core.String
-              : null,
-          spamModerationLevel: json_.containsKey('spamModerationLevel')
-              ? json_['spamModerationLevel'] as core.String
-              : null,
-          whoCanAdd: json_.containsKey('whoCanAdd')
-              ? json_['whoCanAdd'] as core.String
-              : null,
-          whoCanAddReferences: json_.containsKey('whoCanAddReferences')
-              ? json_['whoCanAddReferences'] as core.String
-              : null,
-          whoCanApproveMembers: json_.containsKey('whoCanApproveMembers')
-              ? json_['whoCanApproveMembers'] as core.String
-              : null,
-          whoCanApproveMessages: json_.containsKey('whoCanApproveMessages')
-              ? json_['whoCanApproveMessages'] as core.String
-              : null,
-          whoCanAssignTopics: json_.containsKey('whoCanAssignTopics')
-              ? json_['whoCanAssignTopics'] as core.String
-              : null,
-          whoCanAssistContent: json_.containsKey('whoCanAssistContent')
-              ? json_['whoCanAssistContent'] as core.String
-              : null,
-          whoCanBanUsers: json_.containsKey('whoCanBanUsers')
-              ? json_['whoCanBanUsers'] as core.String
-              : null,
-          whoCanContactOwner: json_.containsKey('whoCanContactOwner')
-              ? json_['whoCanContactOwner'] as core.String
-              : null,
-          whoCanDeleteAnyPost: json_.containsKey('whoCanDeleteAnyPost')
-              ? json_['whoCanDeleteAnyPost'] as core.String
-              : null,
-          whoCanDeleteTopics: json_.containsKey('whoCanDeleteTopics')
-              ? json_['whoCanDeleteTopics'] as core.String
-              : null,
-          whoCanDiscoverGroup: json_.containsKey('whoCanDiscoverGroup')
-              ? json_['whoCanDiscoverGroup'] as core.String
-              : null,
-          whoCanEnterFreeFormTags: json_.containsKey('whoCanEnterFreeFormTags')
-              ? json_['whoCanEnterFreeFormTags'] as core.String
-              : null,
-          whoCanHideAbuse: json_.containsKey('whoCanHideAbuse')
-              ? json_['whoCanHideAbuse'] as core.String
-              : null,
-          whoCanInvite: json_.containsKey('whoCanInvite')
-              ? json_['whoCanInvite'] as core.String
-              : null,
-          whoCanJoin: json_.containsKey('whoCanJoin')
-              ? json_['whoCanJoin'] as core.String
-              : null,
-          whoCanLeaveGroup: json_.containsKey('whoCanLeaveGroup')
-              ? json_['whoCanLeaveGroup'] as core.String
-              : null,
-          whoCanLockTopics: json_.containsKey('whoCanLockTopics')
-              ? json_['whoCanLockTopics'] as core.String
-              : null,
-          whoCanMakeTopicsSticky: json_.containsKey('whoCanMakeTopicsSticky')
-              ? json_['whoCanMakeTopicsSticky'] as core.String
-              : null,
-          whoCanMarkDuplicate: json_.containsKey('whoCanMarkDuplicate')
-              ? json_['whoCanMarkDuplicate'] as core.String
-              : null,
+              json_['sendMessageDenyNotification'] as core.String?,
+          showInGroupDirectory: json_['showInGroupDirectory'] as core.String?,
+          spamModerationLevel: json_['spamModerationLevel'] as core.String?,
+          whoCanAdd: json_['whoCanAdd'] as core.String?,
+          whoCanAddReferences: json_['whoCanAddReferences'] as core.String?,
+          whoCanApproveMembers: json_['whoCanApproveMembers'] as core.String?,
+          whoCanApproveMessages: json_['whoCanApproveMessages'] as core.String?,
+          whoCanAssignTopics: json_['whoCanAssignTopics'] as core.String?,
+          whoCanAssistContent: json_['whoCanAssistContent'] as core.String?,
+          whoCanBanUsers: json_['whoCanBanUsers'] as core.String?,
+          whoCanContactOwner: json_['whoCanContactOwner'] as core.String?,
+          whoCanDeleteAnyPost: json_['whoCanDeleteAnyPost'] as core.String?,
+          whoCanDeleteTopics: json_['whoCanDeleteTopics'] as core.String?,
+          whoCanDiscoverGroup: json_['whoCanDiscoverGroup'] as core.String?,
+          whoCanEnterFreeFormTags:
+              json_['whoCanEnterFreeFormTags'] as core.String?,
+          whoCanHideAbuse: json_['whoCanHideAbuse'] as core.String?,
+          whoCanInvite: json_['whoCanInvite'] as core.String?,
+          whoCanJoin: json_['whoCanJoin'] as core.String?,
+          whoCanLeaveGroup: json_['whoCanLeaveGroup'] as core.String?,
+          whoCanLockTopics: json_['whoCanLockTopics'] as core.String?,
+          whoCanMakeTopicsSticky:
+              json_['whoCanMakeTopicsSticky'] as core.String?,
+          whoCanMarkDuplicate: json_['whoCanMarkDuplicate'] as core.String?,
           whoCanMarkFavoriteReplyOnAnyTopic:
-              json_.containsKey('whoCanMarkFavoriteReplyOnAnyTopic')
-                  ? json_['whoCanMarkFavoriteReplyOnAnyTopic'] as core.String
-                  : null,
+              json_['whoCanMarkFavoriteReplyOnAnyTopic'] as core.String?,
           whoCanMarkFavoriteReplyOnOwnTopic:
-              json_.containsKey('whoCanMarkFavoriteReplyOnOwnTopic')
-                  ? json_['whoCanMarkFavoriteReplyOnOwnTopic'] as core.String
-                  : null,
+              json_['whoCanMarkFavoriteReplyOnOwnTopic'] as core.String?,
           whoCanMarkNoResponseNeeded:
-              json_.containsKey('whoCanMarkNoResponseNeeded')
-                  ? json_['whoCanMarkNoResponseNeeded'] as core.String
-                  : null,
-          whoCanModerateContent: json_.containsKey('whoCanModerateContent')
-              ? json_['whoCanModerateContent'] as core.String
-              : null,
-          whoCanModerateMembers: json_.containsKey('whoCanModerateMembers')
-              ? json_['whoCanModerateMembers'] as core.String
-              : null,
-          whoCanModifyMembers: json_.containsKey('whoCanModifyMembers')
-              ? json_['whoCanModifyMembers'] as core.String
-              : null,
+              json_['whoCanMarkNoResponseNeeded'] as core.String?,
+          whoCanModerateContent: json_['whoCanModerateContent'] as core.String?,
+          whoCanModerateMembers: json_['whoCanModerateMembers'] as core.String?,
+          whoCanModifyMembers: json_['whoCanModifyMembers'] as core.String?,
           whoCanModifyTagsAndCategories:
-              json_.containsKey('whoCanModifyTagsAndCategories')
-                  ? json_['whoCanModifyTagsAndCategories'] as core.String
-                  : null,
-          whoCanMoveTopicsIn: json_.containsKey('whoCanMoveTopicsIn')
-              ? json_['whoCanMoveTopicsIn'] as core.String
-              : null,
-          whoCanMoveTopicsOut: json_.containsKey('whoCanMoveTopicsOut')
-              ? json_['whoCanMoveTopicsOut'] as core.String
-              : null,
-          whoCanPostAnnouncements: json_.containsKey('whoCanPostAnnouncements')
-              ? json_['whoCanPostAnnouncements'] as core.String
-              : null,
-          whoCanPostMessage: json_.containsKey('whoCanPostMessage')
-              ? json_['whoCanPostMessage'] as core.String
-              : null,
-          whoCanTakeTopics: json_.containsKey('whoCanTakeTopics')
-              ? json_['whoCanTakeTopics'] as core.String
-              : null,
-          whoCanUnassignTopic: json_.containsKey('whoCanUnassignTopic')
-              ? json_['whoCanUnassignTopic'] as core.String
-              : null,
+              json_['whoCanModifyTagsAndCategories'] as core.String?,
+          whoCanMoveTopicsIn: json_['whoCanMoveTopicsIn'] as core.String?,
+          whoCanMoveTopicsOut: json_['whoCanMoveTopicsOut'] as core.String?,
+          whoCanPostAnnouncements:
+              json_['whoCanPostAnnouncements'] as core.String?,
+          whoCanPostMessage: json_['whoCanPostMessage'] as core.String?,
+          whoCanTakeTopics: json_['whoCanTakeTopics'] as core.String?,
+          whoCanUnassignTopic: json_['whoCanUnassignTopic'] as core.String?,
           whoCanUnmarkFavoriteReplyOnAnyTopic:
-              json_.containsKey('whoCanUnmarkFavoriteReplyOnAnyTopic')
-                  ? json_['whoCanUnmarkFavoriteReplyOnAnyTopic'] as core.String
-                  : null,
-          whoCanViewGroup: json_.containsKey('whoCanViewGroup')
-              ? json_['whoCanViewGroup'] as core.String
-              : null,
-          whoCanViewMembership: json_.containsKey('whoCanViewMembership')
-              ? json_['whoCanViewMembership'] as core.String
-              : null,
+              json_['whoCanUnmarkFavoriteReplyOnAnyTopic'] as core.String?,
+          whoCanViewGroup: json_['whoCanViewGroup'] as core.String?,
+          whoCanViewMembership: json_['whoCanViewMembership'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

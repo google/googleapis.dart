@@ -2461,9 +2461,7 @@ class GoogleCloudIdentitytoolkitAdminV2Anonymous {
 
   GoogleCloudIdentitytoolkitAdminV2Anonymous.fromJson(core.Map json_)
       : this(
-          enabled: json_.containsKey('enabled')
-              ? json_['enabled'] as core.bool
-              : null,
+          enabled: json_['enabled'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2574,12 +2572,8 @@ class GoogleCloudIdentitytoolkitAdminV2ClientConfig {
 
   GoogleCloudIdentitytoolkitAdminV2ClientConfig.fromJson(core.Map json_)
       : this(
-          apiKey: json_.containsKey('apiKey')
-              ? json_['apiKey'] as core.String
-              : null,
-          firebaseSubdomain: json_.containsKey('firebaseSubdomain')
-              ? json_['firebaseSubdomain'] as core.String
-              : null,
+          apiKey: json_['apiKey'] as core.String?,
+          firebaseSubdomain: json_['firebaseSubdomain'] as core.String?,
           permissions: json_.containsKey('permissions')
               ? GoogleCloudIdentitytoolkitAdminV2Permissions.fromJson(
                   json_['permissions'] as core.Map<core.String, core.dynamic>)
@@ -2641,14 +2635,9 @@ class GoogleCloudIdentitytoolkitAdminV2CodeFlowConfig {
 
   GoogleCloudIdentitytoolkitAdminV2CodeFlowConfig.fromJson(core.Map json_)
       : this(
-          keyId:
-              json_.containsKey('keyId') ? json_['keyId'] as core.String : null,
-          privateKey: json_.containsKey('privateKey')
-              ? json_['privateKey'] as core.String
-              : null,
-          teamId: json_.containsKey('teamId')
-              ? json_['teamId'] as core.String
-              : null,
+          keyId: json_['keyId'] as core.String?,
+          privateKey: json_['privateKey'] as core.String?,
+          teamId: json_['teamId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2747,9 +2736,7 @@ class GoogleCloudIdentitytoolkitAdminV2Config {
                   .toList()
               : null,
           autodeleteAnonymousUsers:
-              json_.containsKey('autodeleteAnonymousUsers')
-                  ? json_['autodeleteAnonymousUsers'] as core.bool
-                  : null,
+              json_['autodeleteAnonymousUsers'] as core.bool?,
           blockingFunctions: json_.containsKey('blockingFunctions')
               ? GoogleCloudIdentitytoolkitAdminV2BlockingFunctionsConfig
                   .fromJson(json_['blockingFunctions']
@@ -2776,7 +2763,7 @@ class GoogleCloudIdentitytoolkitAdminV2Config {
               ? GoogleCloudIdentitytoolkitAdminV2MultiTenantConfig.fromJson(
                   json_['multiTenant'] as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           notification: json_.containsKey('notification')
               ? GoogleCloudIdentitytoolkitAdminV2NotificationConfig.fromJson(
                   json_['notification'] as core.Map<core.String, core.dynamic>)
@@ -2804,9 +2791,7 @@ class GoogleCloudIdentitytoolkitAdminV2Config {
                   json_['smsRegionConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          subtype: json_.containsKey('subtype')
-              ? json_['subtype'] as core.String
-              : null,
+          subtype: json_['subtype'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2851,11 +2836,8 @@ class GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdp {
 
   GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdp.fromJson(core.Map json_)
       : this(
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          idpId:
-              json_.containsKey('idpId') ? json_['idpId'] as core.String : null,
+          description: json_['description'] as core.String?,
+          idpId: json_['idpId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2899,16 +2881,10 @@ class GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdpConfig {
                   json_['appleSignInConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          clientId: json_.containsKey('clientId')
-              ? json_['clientId'] as core.String
-              : null,
-          clientSecret: json_.containsKey('clientSecret')
-              ? json_['clientSecret'] as core.String
-              : null,
-          enabled: json_.containsKey('enabled')
-              ? json_['enabled'] as core.bool
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          clientId: json_['clientId'] as core.String?,
+          clientSecret: json_['clientSecret'] as core.String?,
+          enabled: json_['enabled'] as core.bool?,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2967,22 +2943,12 @@ class GoogleCloudIdentitytoolkitAdminV2DnsInfo {
 
   GoogleCloudIdentitytoolkitAdminV2DnsInfo.fromJson(core.Map json_)
       : this(
-          customDomain: json_.containsKey('customDomain')
-              ? json_['customDomain'] as core.String
-              : null,
-          customDomainState: json_.containsKey('customDomainState')
-              ? json_['customDomainState'] as core.String
-              : null,
+          customDomain: json_['customDomain'] as core.String?,
+          customDomainState: json_['customDomainState'] as core.String?,
           domainVerificationRequestTime:
-              json_.containsKey('domainVerificationRequestTime')
-                  ? json_['domainVerificationRequestTime'] as core.String
-                  : null,
-          pendingCustomDomain: json_.containsKey('pendingCustomDomain')
-              ? json_['pendingCustomDomain'] as core.String
-              : null,
-          useCustomDomain: json_.containsKey('useCustomDomain')
-              ? json_['useCustomDomain'] as core.bool
-              : null,
+              json_['domainVerificationRequestTime'] as core.String?,
+          pendingCustomDomain: json_['pendingCustomDomain'] as core.String?,
+          useCustomDomain: json_['useCustomDomain'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3015,12 +2981,8 @@ class GoogleCloudIdentitytoolkitAdminV2Email {
 
   GoogleCloudIdentitytoolkitAdminV2Email.fromJson(core.Map json_)
       : this(
-          enabled: json_.containsKey('enabled')
-              ? json_['enabled'] as core.bool
-              : null,
-          passwordRequired: json_.containsKey('passwordRequired')
-              ? json_['passwordRequired'] as core.bool
-              : null,
+          enabled: json_['enabled'] as core.bool?,
+          passwordRequired: json_['passwordRequired'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3052,9 +3014,7 @@ class GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfig {
   GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfig.fromJson(core.Map json_)
       : this(
           enableImprovedEmailPrivacy:
-              json_.containsKey('enableImprovedEmailPrivacy')
-                  ? json_['enableImprovedEmailPrivacy'] as core.bool
-                  : null,
+              json_['enableImprovedEmailPrivacy'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3111,25 +3071,13 @@ class GoogleCloudIdentitytoolkitAdminV2EmailTemplate {
 
   GoogleCloudIdentitytoolkitAdminV2EmailTemplate.fromJson(core.Map json_)
       : this(
-          body: json_.containsKey('body') ? json_['body'] as core.String : null,
-          bodyFormat: json_.containsKey('bodyFormat')
-              ? json_['bodyFormat'] as core.String
-              : null,
-          customized: json_.containsKey('customized')
-              ? json_['customized'] as core.bool
-              : null,
-          replyTo: json_.containsKey('replyTo')
-              ? json_['replyTo'] as core.String
-              : null,
-          senderDisplayName: json_.containsKey('senderDisplayName')
-              ? json_['senderDisplayName'] as core.String
-              : null,
-          senderLocalPart: json_.containsKey('senderLocalPart')
-              ? json_['senderLocalPart'] as core.String
-              : null,
-          subject: json_.containsKey('subject')
-              ? json_['subject'] as core.String
-              : null,
+          body: json_['body'] as core.String?,
+          bodyFormat: json_['bodyFormat'] as core.String?,
+          customized: json_['customized'] as core.bool?,
+          replyTo: json_['replyTo'] as core.String?,
+          senderDisplayName: json_['senderDisplayName'] as core.String?,
+          senderLocalPart: json_['senderLocalPart'] as core.String?,
+          subject: json_['subject'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3163,15 +3111,9 @@ class GoogleCloudIdentitytoolkitAdminV2ForwardInboundCredentials {
   GoogleCloudIdentitytoolkitAdminV2ForwardInboundCredentials.fromJson(
       core.Map json_)
       : this(
-          accessToken: json_.containsKey('accessToken')
-              ? json_['accessToken'] as core.bool
-              : null,
-          idToken: json_.containsKey('idToken')
-              ? json_['idToken'] as core.bool
-              : null,
-          refreshToken: json_.containsKey('refreshToken')
-              ? json_['refreshToken'] as core.bool
-              : null,
+          accessToken: json_['accessToken'] as core.bool?,
+          idToken: json_['idToken'] as core.bool?,
+          refreshToken: json_['refreshToken'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3241,20 +3183,11 @@ class GoogleCloudIdentitytoolkitAdminV2HashConfig {
 
   GoogleCloudIdentitytoolkitAdminV2HashConfig.fromJson(core.Map json_)
       : this(
-          algorithm: json_.containsKey('algorithm')
-              ? json_['algorithm'] as core.String
-              : null,
-          memoryCost: json_.containsKey('memoryCost')
-              ? json_['memoryCost'] as core.int
-              : null,
-          rounds:
-              json_.containsKey('rounds') ? json_['rounds'] as core.int : null,
-          saltSeparator: json_.containsKey('saltSeparator')
-              ? json_['saltSeparator'] as core.String
-              : null,
-          signerKey: json_.containsKey('signerKey')
-              ? json_['signerKey'] as core.String
-              : null,
+          algorithm: json_['algorithm'] as core.String?,
+          memoryCost: json_['memoryCost'] as core.int?,
+          rounds: json_['rounds'] as core.int?,
+          saltSeparator: json_['saltSeparator'] as core.String?,
+          signerKey: json_['signerKey'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3278,9 +3211,7 @@ class GoogleCloudIdentitytoolkitAdminV2IdpCertificate {
 
   GoogleCloudIdentitytoolkitAdminV2IdpCertificate.fromJson(core.Map json_)
       : this(
-          x509Certificate: json_.containsKey('x509Certificate')
-              ? json_['x509Certificate'] as core.String
-              : null,
+          x509Certificate: json_['x509Certificate'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3319,15 +3250,9 @@ class GoogleCloudIdentitytoolkitAdminV2IdpConfig {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          idpEntityId: json_.containsKey('idpEntityId')
-              ? json_['idpEntityId'] as core.String
-              : null,
-          signRequest: json_.containsKey('signRequest')
-              ? json_['signRequest'] as core.bool
-              : null,
-          ssoUrl: json_.containsKey('ssoUrl')
-              ? json_['ssoUrl'] as core.String
-              : null,
+          idpEntityId: json_['idpEntityId'] as core.String?,
+          signRequest: json_['signRequest'] as core.bool?,
+          ssoUrl: json_['ssoUrl'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3372,17 +3297,13 @@ class GoogleCloudIdentitytoolkitAdminV2InboundSamlConfig {
 
   GoogleCloudIdentitytoolkitAdminV2InboundSamlConfig.fromJson(core.Map json_)
       : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          enabled: json_.containsKey('enabled')
-              ? json_['enabled'] as core.bool
-              : null,
+          displayName: json_['displayName'] as core.String?,
+          enabled: json_['enabled'] as core.bool?,
           idpConfig: json_.containsKey('idpConfig')
               ? GoogleCloudIdentitytoolkitAdminV2IdpConfig.fromJson(
                   json_['idpConfig'] as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           spConfig: json_.containsKey('spConfig')
               ? GoogleCloudIdentitytoolkitAdminV2SpConfig.fromJson(
                   json_['spConfig'] as core.Map<core.String, core.dynamic>)
@@ -3414,9 +3335,7 @@ class GoogleCloudIdentitytoolkitAdminV2Inheritance {
 
   GoogleCloudIdentitytoolkitAdminV2Inheritance.fromJson(core.Map json_)
       : this(
-          emailSendingConfig: json_.containsKey('emailSendingConfig')
-              ? json_['emailSendingConfig'] as core.bool
-              : null,
+          emailSendingConfig: json_['emailSendingConfig'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3462,9 +3381,7 @@ class GoogleCloudIdentitytoolkitAdminV2ListDefaultSupportedIdpConfigsResponse {
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3500,9 +3417,7 @@ class GoogleCloudIdentitytoolkitAdminV2ListDefaultSupportedIdpsResponse {
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3538,9 +3453,7 @@ class GoogleCloudIdentitytoolkitAdminV2ListInboundSamlConfigsResponse {
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3567,9 +3480,7 @@ class GoogleCloudIdentitytoolkitAdminV2ListOAuthIdpConfigsResponse {
   GoogleCloudIdentitytoolkitAdminV2ListOAuthIdpConfigsResponse.fromJson(
       core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           oauthIdpConfigs: json_.containsKey('oauthIdpConfigs')
               ? (json_['oauthIdpConfigs'] as core.List)
                   .map((value) =>
@@ -3600,9 +3511,7 @@ class GoogleCloudIdentitytoolkitAdminV2ListTenantsResponse {
 
   GoogleCloudIdentitytoolkitAdminV2ListTenantsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           tenants: json_.containsKey('tenants')
               ? (json_['tenants'] as core.List)
                   .map((value) =>
@@ -3684,8 +3593,7 @@ class GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
+          state: json_['state'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3716,12 +3624,8 @@ class GoogleCloudIdentitytoolkitAdminV2MultiTenantConfig {
 
   GoogleCloudIdentitytoolkitAdminV2MultiTenantConfig.fromJson(core.Map json_)
       : this(
-          allowTenants: json_.containsKey('allowTenants')
-              ? json_['allowTenants'] as core.bool
-              : null,
-          defaultTenantLocation: json_.containsKey('defaultTenantLocation')
-              ? json_['defaultTenantLocation'] as core.String
-              : null,
+          allowTenants: json_['allowTenants'] as core.bool?,
+          defaultTenantLocation: json_['defaultTenantLocation'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3750,9 +3654,7 @@ class GoogleCloudIdentitytoolkitAdminV2NotificationConfig {
 
   GoogleCloudIdentitytoolkitAdminV2NotificationConfig.fromJson(core.Map json_)
       : this(
-          defaultLocale: json_.containsKey('defaultLocale')
-              ? json_['defaultLocale'] as core.String
-              : null,
+          defaultLocale: json_['defaultLocale'] as core.String?,
           sendEmail: json_.containsKey('sendEmail')
               ? GoogleCloudIdentitytoolkitAdminV2SendEmail.fromJson(
                   json_['sendEmail'] as core.Map<core.String, core.dynamic>)
@@ -3812,22 +3714,12 @@ class GoogleCloudIdentitytoolkitAdminV2OAuthIdpConfig {
 
   GoogleCloudIdentitytoolkitAdminV2OAuthIdpConfig.fromJson(core.Map json_)
       : this(
-          clientId: json_.containsKey('clientId')
-              ? json_['clientId'] as core.String
-              : null,
-          clientSecret: json_.containsKey('clientSecret')
-              ? json_['clientSecret'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          enabled: json_.containsKey('enabled')
-              ? json_['enabled'] as core.bool
-              : null,
-          issuer: json_.containsKey('issuer')
-              ? json_['issuer'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          clientId: json_['clientId'] as core.String?,
+          clientSecret: json_['clientSecret'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          enabled: json_['enabled'] as core.bool?,
+          issuer: json_['issuer'] as core.String?,
+          name: json_['name'] as core.String?,
           responseType: json_.containsKey('responseType')
               ? GoogleCloudIdentitytoolkitAdminV2OAuthResponseType.fromJson(
                   json_['responseType'] as core.Map<core.String, core.dynamic>)
@@ -3875,12 +3767,9 @@ class GoogleCloudIdentitytoolkitAdminV2OAuthResponseType {
 
   GoogleCloudIdentitytoolkitAdminV2OAuthResponseType.fromJson(core.Map json_)
       : this(
-          code: json_.containsKey('code') ? json_['code'] as core.bool : null,
-          idToken: json_.containsKey('idToken')
-              ? json_['idToken'] as core.bool
-              : null,
-          token:
-              json_.containsKey('token') ? json_['token'] as core.bool : null,
+          code: json_['code'] as core.bool?,
+          idToken: json_['idToken'] as core.bool?,
+          token: json_['token'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3924,16 +3813,10 @@ class GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig {
 
   GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig.fromJson(core.Map json_)
       : this(
-          forceUpgradeOnSignin: json_.containsKey('forceUpgradeOnSignin')
-              ? json_['forceUpgradeOnSignin'] as core.bool
-              : null,
-          lastUpdateTime: json_.containsKey('lastUpdateTime')
-              ? json_['lastUpdateTime'] as core.String
-              : null,
+          forceUpgradeOnSignin: json_['forceUpgradeOnSignin'] as core.bool?,
+          lastUpdateTime: json_['lastUpdateTime'] as core.String?,
           passwordPolicyEnforcementState:
-              json_.containsKey('passwordPolicyEnforcementState')
-                  ? json_['passwordPolicyEnforcementState'] as core.String
-                  : null,
+              json_['passwordPolicyEnforcementState'] as core.String?,
           passwordPolicyVersions: json_.containsKey('passwordPolicyVersions')
               ? (json_['passwordPolicyVersions'] as core.List)
                   .map((value) =>
@@ -3978,9 +3861,7 @@ class GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion {
                   json_['customStrengthOptions']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          schemaVersion: json_.containsKey('schemaVersion')
-              ? json_['schemaVersion'] as core.int
-              : null,
+          schemaVersion: json_['schemaVersion'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4009,9 +3890,7 @@ class GoogleCloudIdentitytoolkitAdminV2PhoneNumber {
 
   GoogleCloudIdentitytoolkitAdminV2PhoneNumber.fromJson(core.Map json_)
       : this(
-          enabled: json_.containsKey('enabled')
-              ? json_['enabled'] as core.bool
-              : null,
+          enabled: json_['enabled'] as core.bool?,
           testPhoneNumbers: json_.containsKey('testPhoneNumbers')
               ? (json_['testPhoneNumbers']
                       as core.Map<core.String, core.dynamic>)
@@ -4053,8 +3932,7 @@ class GoogleCloudIdentitytoolkitAdminV2ProviderConfig {
 
   GoogleCloudIdentitytoolkitAdminV2ProviderConfig.fromJson(core.Map json_)
       : this(
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
+          state: json_['state'] as core.String?,
           totpProviderConfig: json_.containsKey('totpProviderConfig')
               ? GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfig.fromJson(
                   json_['totpProviderConfig']
@@ -4134,9 +4012,7 @@ class GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig {
   GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig.fromJson(core.Map json_)
       : this(
           emailPasswordEnforcementState:
-              json_.containsKey('emailPasswordEnforcementState')
-                  ? json_['emailPasswordEnforcementState'] as core.String
-                  : null,
+              json_['emailPasswordEnforcementState'] as core.String?,
           managedRules: json_.containsKey('managedRules')
               ? (json_['managedRules'] as core.List)
                   .map((value) =>
@@ -4152,9 +4028,7 @@ class GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          useAccountDefender: json_.containsKey('useAccountDefender')
-              ? json_['useAccountDefender'] as core.bool
-              : null,
+          useAccountDefender: json_['useAccountDefender'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4190,8 +4064,8 @@ class GoogleCloudIdentitytoolkitAdminV2RecaptchaKey {
 
   GoogleCloudIdentitytoolkitAdminV2RecaptchaKey.fromJson(core.Map json_)
       : this(
-          key: json_.containsKey('key') ? json_['key'] as core.String : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          key: json_['key'] as core.String?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4229,12 +4103,8 @@ class GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule {
 
   GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule.fromJson(core.Map json_)
       : this(
-          action: json_.containsKey('action')
-              ? json_['action'] as core.String
-              : null,
-          endScore: json_.containsKey('endScore')
-              ? (json_['endScore'] as core.num).toDouble()
-              : null,
+          action: json_['action'] as core.String?,
+          endScore: (json_['endScore'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4255,9 +4125,7 @@ class GoogleCloudIdentitytoolkitAdminV2RequestLogging {
 
   GoogleCloudIdentitytoolkitAdminV2RequestLogging.fromJson(core.Map json_)
       : this(
-          enabled: json_.containsKey('enabled')
-              ? json_['enabled'] as core.bool
-              : null,
+          enabled: json_['enabled'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4314,9 +4182,7 @@ class GoogleCloudIdentitytoolkitAdminV2SendEmail {
 
   GoogleCloudIdentitytoolkitAdminV2SendEmail.fromJson(core.Map json_)
       : this(
-          callbackUri: json_.containsKey('callbackUri')
-              ? json_['callbackUri'] as core.String
-              : null,
+          callbackUri: json_['callbackUri'] as core.String?,
           changeEmailTemplate: json_.containsKey('changeEmailTemplate')
               ? GoogleCloudIdentitytoolkitAdminV2EmailTemplate.fromJson(
                   json_['changeEmailTemplate']
@@ -4332,9 +4198,7 @@ class GoogleCloudIdentitytoolkitAdminV2SendEmail {
                       json_['legacyResetPasswordTemplate']
                           as core.Map<core.String, core.dynamic>)
                   : null,
-          method: json_.containsKey('method')
-              ? json_['method'] as core.String
-              : null,
+          method: json_['method'] as core.String?,
           resetPasswordTemplate: json_.containsKey('resetPasswordTemplate')
               ? GoogleCloudIdentitytoolkitAdminV2EmailTemplate.fromJson(
                   json_['resetPasswordTemplate']
@@ -4397,9 +4261,7 @@ class GoogleCloudIdentitytoolkitAdminV2SendSms {
               ? GoogleCloudIdentitytoolkitAdminV2SmsTemplate.fromJson(
                   json_['smsTemplate'] as core.Map<core.String, core.dynamic>)
               : null,
-          useDeviceLocale: json_.containsKey('useDeviceLocale')
-              ? json_['useDeviceLocale'] as core.bool
-              : null,
+          useDeviceLocale: json_['useDeviceLocale'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4439,9 +4301,7 @@ class GoogleCloudIdentitytoolkitAdminV2SignInConfig {
 
   GoogleCloudIdentitytoolkitAdminV2SignInConfig.fromJson(core.Map json_)
       : this(
-          allowDuplicateEmails: json_.containsKey('allowDuplicateEmails')
-              ? json_['allowDuplicateEmails'] as core.bool
-              : null,
+          allowDuplicateEmails: json_['allowDuplicateEmails'] as core.bool?,
           anonymous: json_.containsKey('anonymous')
               ? GoogleCloudIdentitytoolkitAdminV2Anonymous.fromJson(
                   json_['anonymous'] as core.Map<core.String, core.dynamic>)
@@ -4525,9 +4385,7 @@ class GoogleCloudIdentitytoolkitAdminV2SmsTemplate {
 
   GoogleCloudIdentitytoolkitAdminV2SmsTemplate.fromJson(core.Map json_)
       : this(
-          content: json_.containsKey('content')
-              ? json_['content'] as core.String
-              : null,
+          content: json_['content'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4570,20 +4428,12 @@ class GoogleCloudIdentitytoolkitAdminV2Smtp {
 
   GoogleCloudIdentitytoolkitAdminV2Smtp.fromJson(core.Map json_)
       : this(
-          host: json_.containsKey('host') ? json_['host'] as core.String : null,
-          password: json_.containsKey('password')
-              ? json_['password'] as core.String
-              : null,
-          port: json_.containsKey('port') ? json_['port'] as core.int : null,
-          securityMode: json_.containsKey('securityMode')
-              ? json_['securityMode'] as core.String
-              : null,
-          senderEmail: json_.containsKey('senderEmail')
-              ? json_['senderEmail'] as core.String
-              : null,
-          username: json_.containsKey('username')
-              ? json_['username'] as core.String
-              : null,
+          host: json_['host'] as core.String?,
+          password: json_['password'] as core.String?,
+          port: json_['port'] as core.int?,
+          securityMode: json_['securityMode'] as core.String?,
+          senderEmail: json_['senderEmail'] as core.String?,
+          username: json_['username'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4612,12 +4462,8 @@ class GoogleCloudIdentitytoolkitAdminV2SpCertificate {
 
   GoogleCloudIdentitytoolkitAdminV2SpCertificate.fromJson(core.Map json_)
       : this(
-          expiresAt: json_.containsKey('expiresAt')
-              ? json_['expiresAt'] as core.String
-              : null,
-          x509Certificate: json_.containsKey('x509Certificate')
-              ? json_['x509Certificate'] as core.String
-              : null,
+          expiresAt: json_['expiresAt'] as core.String?,
+          x509Certificate: json_['x509Certificate'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4650,9 +4496,7 @@ class GoogleCloudIdentitytoolkitAdminV2SpConfig {
 
   GoogleCloudIdentitytoolkitAdminV2SpConfig.fromJson(core.Map json_)
       : this(
-          callbackUri: json_.containsKey('callbackUri')
-              ? json_['callbackUri'] as core.String
-              : null,
+          callbackUri: json_['callbackUri'] as core.String?,
           spCertificates: json_.containsKey('spCertificates')
               ? (json_['spCertificates'] as core.List)
                   .map((value) =>
@@ -4660,9 +4504,7 @@ class GoogleCloudIdentitytoolkitAdminV2SpConfig {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          spEntityId: json_.containsKey('spEntityId')
-              ? json_['spEntityId'] as core.String
-              : null,
+          spEntityId: json_['spEntityId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4691,14 +4533,9 @@ class GoogleCloudIdentitytoolkitAdminV2TemporaryQuota {
 
   GoogleCloudIdentitytoolkitAdminV2TemporaryQuota.fromJson(core.Map json_)
       : this(
-          quota:
-              json_.containsKey('quota') ? json_['quota'] as core.String : null,
-          quotaDuration: json_.containsKey('quotaDuration')
-              ? json_['quotaDuration'] as core.String
-              : null,
-          startTime: json_.containsKey('startTime')
-              ? json_['startTime'] as core.String
-              : null,
+          quota: json_['quota'] as core.String?,
+          quotaDuration: json_['quotaDuration'] as core.String?,
+          startTime: json_['startTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4803,35 +4640,23 @@ class GoogleCloudIdentitytoolkitAdminV2Tenant {
 
   GoogleCloudIdentitytoolkitAdminV2Tenant.fromJson(core.Map json_)
       : this(
-          allowPasswordSignup: json_.containsKey('allowPasswordSignup')
-              ? json_['allowPasswordSignup'] as core.bool
-              : null,
+          allowPasswordSignup: json_['allowPasswordSignup'] as core.bool?,
           autodeleteAnonymousUsers:
-              json_.containsKey('autodeleteAnonymousUsers')
-                  ? json_['autodeleteAnonymousUsers'] as core.bool
-                  : null,
+              json_['autodeleteAnonymousUsers'] as core.bool?,
           client: json_.containsKey('client')
               ? GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfig
                   .fromJson(
                       json_['client'] as core.Map<core.String, core.dynamic>)
               : null,
-          disableAuth: json_.containsKey('disableAuth')
-              ? json_['disableAuth'] as core.bool
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+          disableAuth: json_['disableAuth'] as core.bool?,
+          displayName: json_['displayName'] as core.String?,
           emailPrivacyConfig: json_.containsKey('emailPrivacyConfig')
               ? GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfig.fromJson(
                   json_['emailPrivacyConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          enableAnonymousUser: json_.containsKey('enableAnonymousUser')
-              ? json_['enableAnonymousUser'] as core.bool
-              : null,
-          enableEmailLinkSignin: json_.containsKey('enableEmailLinkSignin')
-              ? json_['enableEmailLinkSignin'] as core.bool
-              : null,
+          enableAnonymousUser: json_['enableAnonymousUser'] as core.bool?,
+          enableEmailLinkSignin: json_['enableEmailLinkSignin'] as core.bool?,
           hashConfig: json_.containsKey('hashConfig')
               ? GoogleCloudIdentitytoolkitAdminV2HashConfig.fromJson(
                   json_['hashConfig'] as core.Map<core.String, core.dynamic>)
@@ -4848,7 +4673,7 @@ class GoogleCloudIdentitytoolkitAdminV2Tenant {
               ? GoogleCloudIdentitytoolkitAdminV2MonitoringConfig.fromJson(
                   json_['monitoring'] as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           passwordPolicyConfig: json_.containsKey('passwordPolicyConfig')
               ? GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig.fromJson(
                   json_['passwordPolicyConfig']
@@ -4916,9 +4741,7 @@ class GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfig {
   GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfig.fromJson(
       core.Map json_)
       : this(
-          adjacentIntervals: json_.containsKey('adjacentIntervals')
-              ? json_['adjacentIntervals'] as core.int
-              : null,
+          adjacentIntervals: json_['adjacentIntervals'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4941,12 +4764,8 @@ class GoogleCloudIdentitytoolkitAdminV2Trigger {
 
   GoogleCloudIdentitytoolkitAdminV2Trigger.fromJson(core.Map json_)
       : this(
-          functionUri: json_.containsKey('functionUri')
-              ? json_['functionUri'] as core.String
-              : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          functionUri: json_['functionUri'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4998,20 +4817,14 @@ class GoogleCloudIdentitytoolkitV2FinalizeMfaEnrollmentRequest {
   GoogleCloudIdentitytoolkitV2FinalizeMfaEnrollmentRequest.fromJson(
       core.Map json_)
       : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          idToken: json_.containsKey('idToken')
-              ? json_['idToken'] as core.String
-              : null,
+          displayName: json_['displayName'] as core.String?,
+          idToken: json_['idToken'] as core.String?,
           phoneVerificationInfo: json_.containsKey('phoneVerificationInfo')
               ? GoogleCloudIdentitytoolkitV2FinalizeMfaPhoneRequestInfo
                   .fromJson(json_['phoneVerificationInfo']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          tenantId: json_.containsKey('tenantId')
-              ? json_['tenantId'] as core.String
-              : null,
+          tenantId: json_['tenantId'] as core.String?,
           totpVerificationInfo: json_.containsKey('totpVerificationInfo')
               ? GoogleCloudIdentitytoolkitV2FinalizeMfaTotpEnrollmentRequestInfo
                   .fromJson(json_['totpVerificationInfo']
@@ -5055,17 +4868,13 @@ class GoogleCloudIdentitytoolkitV2FinalizeMfaEnrollmentResponse {
   GoogleCloudIdentitytoolkitV2FinalizeMfaEnrollmentResponse.fromJson(
       core.Map json_)
       : this(
-          idToken: json_.containsKey('idToken')
-              ? json_['idToken'] as core.String
-              : null,
+          idToken: json_['idToken'] as core.String?,
           phoneAuthInfo: json_.containsKey('phoneAuthInfo')
               ? GoogleCloudIdentitytoolkitV2FinalizeMfaPhoneResponseInfo
                   .fromJson(json_['phoneAuthInfo']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          refreshToken: json_.containsKey('refreshToken')
-              ? json_['refreshToken'] as core.String
-              : null,
+          refreshToken: json_['refreshToken'] as core.String?,
           totpAuthInfo: json_.containsKey('totpAuthInfo')
               ? GoogleCloudIdentitytoolkitV2FinalizeMfaTotpEnrollmentResponseInfo
                   .fromJson(json_['totpAuthInfo']
@@ -5108,16 +4917,10 @@ class GoogleCloudIdentitytoolkitV2FinalizeMfaPhoneRequestInfo {
       core.Map json_)
       : this(
           androidVerificationProof:
-              json_.containsKey('androidVerificationProof')
-                  ? json_['androidVerificationProof'] as core.String
-                  : null,
-          code: json_.containsKey('code') ? json_['code'] as core.String : null,
-          phoneNumber: json_.containsKey('phoneNumber')
-              ? json_['phoneNumber'] as core.String
-              : null,
-          sessionInfo: json_.containsKey('sessionInfo')
-              ? json_['sessionInfo'] as core.String
-              : null,
+              json_['androidVerificationProof'] as core.String?,
+          code: json_['code'] as core.String?,
+          phoneNumber: json_['phoneNumber'] as core.String?,
+          sessionInfo: json_['sessionInfo'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5154,16 +4957,10 @@ class GoogleCloudIdentitytoolkitV2FinalizeMfaPhoneResponseInfo {
       core.Map json_)
       : this(
           androidVerificationProof:
-              json_.containsKey('androidVerificationProof')
-                  ? json_['androidVerificationProof'] as core.String
-                  : null,
+              json_['androidVerificationProof'] as core.String?,
           androidVerificationProofExpireTime:
-              json_.containsKey('androidVerificationProofExpireTime')
-                  ? json_['androidVerificationProofExpireTime'] as core.String
-                  : null,
-          phoneNumber: json_.containsKey('phoneNumber')
-              ? json_['phoneNumber'] as core.String
-              : null,
+              json_['androidVerificationProofExpireTime'] as core.String?,
+          phoneNumber: json_['phoneNumber'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5209,20 +5006,14 @@ class GoogleCloudIdentitytoolkitV2FinalizeMfaSignInRequest {
 
   GoogleCloudIdentitytoolkitV2FinalizeMfaSignInRequest.fromJson(core.Map json_)
       : this(
-          mfaEnrollmentId: json_.containsKey('mfaEnrollmentId')
-              ? json_['mfaEnrollmentId'] as core.String
-              : null,
-          mfaPendingCredential: json_.containsKey('mfaPendingCredential')
-              ? json_['mfaPendingCredential'] as core.String
-              : null,
+          mfaEnrollmentId: json_['mfaEnrollmentId'] as core.String?,
+          mfaPendingCredential: json_['mfaPendingCredential'] as core.String?,
           phoneVerificationInfo: json_.containsKey('phoneVerificationInfo')
               ? GoogleCloudIdentitytoolkitV2FinalizeMfaPhoneRequestInfo
                   .fromJson(json_['phoneVerificationInfo']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          tenantId: json_.containsKey('tenantId')
-              ? json_['tenantId'] as core.String
-              : null,
+          tenantId: json_['tenantId'] as core.String?,
           totpVerificationInfo: json_.containsKey('totpVerificationInfo')
               ? GoogleCloudIdentitytoolkitV2MfaTotpSignInRequestInfo.fromJson(
                   json_['totpVerificationInfo']
@@ -5261,17 +5052,13 @@ class GoogleCloudIdentitytoolkitV2FinalizeMfaSignInResponse {
 
   GoogleCloudIdentitytoolkitV2FinalizeMfaSignInResponse.fromJson(core.Map json_)
       : this(
-          idToken: json_.containsKey('idToken')
-              ? json_['idToken'] as core.String
-              : null,
+          idToken: json_['idToken'] as core.String?,
           phoneAuthInfo: json_.containsKey('phoneAuthInfo')
               ? GoogleCloudIdentitytoolkitV2FinalizeMfaPhoneResponseInfo
                   .fromJson(json_['phoneAuthInfo']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          refreshToken: json_.containsKey('refreshToken')
-              ? json_['refreshToken'] as core.String
-              : null,
+          refreshToken: json_['refreshToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5297,12 +5084,8 @@ class GoogleCloudIdentitytoolkitV2FinalizeMfaTotpEnrollmentRequestInfo {
   GoogleCloudIdentitytoolkitV2FinalizeMfaTotpEnrollmentRequestInfo.fromJson(
       core.Map json_)
       : this(
-          sessionInfo: json_.containsKey('sessionInfo')
-              ? json_['sessionInfo'] as core.String
-              : null,
-          verificationCode: json_.containsKey('verificationCode')
-              ? json_['verificationCode'] as core.String
-              : null,
+          sessionInfo: json_['sessionInfo'] as core.String?,
+          verificationCode: json_['verificationCode'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5326,9 +5109,7 @@ class GoogleCloudIdentitytoolkitV2MfaTotpSignInRequestInfo {
 
   GoogleCloudIdentitytoolkitV2MfaTotpSignInRequestInfo.fromJson(core.Map json_)
       : this(
-          verificationCode: json_.containsKey('verificationCode')
-              ? json_['verificationCode'] as core.String
-              : null,
+          verificationCode: json_['verificationCode'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5385,15 +5166,9 @@ class GoogleCloudIdentitytoolkitV2PasswordPolicy {
                   json_['customStrengthOptions']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          enforcementState: json_.containsKey('enforcementState')
-              ? json_['enforcementState'] as core.String
-              : null,
-          forceUpgradeOnSignin: json_.containsKey('forceUpgradeOnSignin')
-              ? json_['forceUpgradeOnSignin'] as core.bool
-              : null,
-          schemaVersion: json_.containsKey('schemaVersion')
-              ? json_['schemaVersion'] as core.int
-              : null,
+          enforcementState: json_['enforcementState'] as core.String?,
+          forceUpgradeOnSignin: json_['forceUpgradeOnSignin'] as core.bool?,
+          schemaVersion: json_['schemaVersion'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5438,9 +5213,7 @@ class GoogleCloudIdentitytoolkitV2RecaptchaConfig {
                                   value as core.Map<core.String, core.dynamic>))
                       .toList()
                   : null,
-          recaptchaKey: json_.containsKey('recaptchaKey')
-              ? json_['recaptchaKey'] as core.String
-              : null,
+          recaptchaKey: json_['recaptchaKey'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5474,12 +5247,8 @@ class GoogleCloudIdentitytoolkitV2RecaptchaEnforcementState {
 
   GoogleCloudIdentitytoolkitV2RecaptchaEnforcementState.fromJson(core.Map json_)
       : this(
-          enforcementState: json_.containsKey('enforcementState')
-              ? json_['enforcementState'] as core.String
-              : null,
-          provider: json_.containsKey('provider')
-              ? json_['provider'] as core.String
-              : null,
+          enforcementState: json_['enforcementState'] as core.String?,
+          provider: json_['provider'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5548,23 +5317,12 @@ class GoogleCloudIdentitytoolkitV2RevokeTokenRequest {
 
   GoogleCloudIdentitytoolkitV2RevokeTokenRequest.fromJson(core.Map json_)
       : this(
-          idToken: json_.containsKey('idToken')
-              ? json_['idToken'] as core.String
-              : null,
-          providerId: json_.containsKey('providerId')
-              ? json_['providerId'] as core.String
-              : null,
-          redirectUri: json_.containsKey('redirectUri')
-              ? json_['redirectUri'] as core.String
-              : null,
-          tenantId: json_.containsKey('tenantId')
-              ? json_['tenantId'] as core.String
-              : null,
-          token:
-              json_.containsKey('token') ? json_['token'] as core.String : null,
-          tokenType: json_.containsKey('tokenType')
-              ? json_['tokenType'] as core.String
-              : null,
+          idToken: json_['idToken'] as core.String?,
+          providerId: json_['providerId'] as core.String?,
+          redirectUri: json_['redirectUri'] as core.String?,
+          tenantId: json_['tenantId'] as core.String?,
+          token: json_['token'] as core.String?,
+          tokenType: json_['tokenType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5611,17 +5369,13 @@ class GoogleCloudIdentitytoolkitV2StartMfaEnrollmentRequest {
 
   GoogleCloudIdentitytoolkitV2StartMfaEnrollmentRequest.fromJson(core.Map json_)
       : this(
-          idToken: json_.containsKey('idToken')
-              ? json_['idToken'] as core.String
-              : null,
+          idToken: json_['idToken'] as core.String?,
           phoneEnrollmentInfo: json_.containsKey('phoneEnrollmentInfo')
               ? GoogleCloudIdentitytoolkitV2StartMfaPhoneRequestInfo.fromJson(
                   json_['phoneEnrollmentInfo']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          tenantId: json_.containsKey('tenantId')
-              ? json_['tenantId'] as core.String
-              : null,
+          tenantId: json_['tenantId'] as core.String?,
           totpEnrollmentInfo: json_.containsKey('totpEnrollmentInfo')
               ? GoogleCloudIdentitytoolkitV2StartMfaTotpEnrollmentRequestInfo
                   .fromJson(json_['totpEnrollmentInfo']
@@ -5734,24 +5488,12 @@ class GoogleCloudIdentitytoolkitV2StartMfaPhoneRequestInfo {
                   json_['autoRetrievalInfo']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          iosReceipt: json_.containsKey('iosReceipt')
-              ? json_['iosReceipt'] as core.String
-              : null,
-          iosSecret: json_.containsKey('iosSecret')
-              ? json_['iosSecret'] as core.String
-              : null,
-          phoneNumber: json_.containsKey('phoneNumber')
-              ? json_['phoneNumber'] as core.String
-              : null,
-          playIntegrityToken: json_.containsKey('playIntegrityToken')
-              ? json_['playIntegrityToken'] as core.String
-              : null,
-          recaptchaToken: json_.containsKey('recaptchaToken')
-              ? json_['recaptchaToken'] as core.String
-              : null,
-          safetyNetToken: json_.containsKey('safetyNetToken')
-              ? json_['safetyNetToken'] as core.String
-              : null,
+          iosReceipt: json_['iosReceipt'] as core.String?,
+          iosSecret: json_['iosSecret'] as core.String?,
+          phoneNumber: json_['phoneNumber'] as core.String?,
+          playIntegrityToken: json_['playIntegrityToken'] as core.String?,
+          recaptchaToken: json_['recaptchaToken'] as core.String?,
+          safetyNetToken: json_['safetyNetToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5777,9 +5519,7 @@ class GoogleCloudIdentitytoolkitV2StartMfaPhoneResponseInfo {
 
   GoogleCloudIdentitytoolkitV2StartMfaPhoneResponseInfo.fromJson(core.Map json_)
       : this(
-          sessionInfo: json_.containsKey('sessionInfo')
-              ? json_['sessionInfo'] as core.String
-              : null,
+          sessionInfo: json_['sessionInfo'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5817,20 +5557,14 @@ class GoogleCloudIdentitytoolkitV2StartMfaSignInRequest {
 
   GoogleCloudIdentitytoolkitV2StartMfaSignInRequest.fromJson(core.Map json_)
       : this(
-          mfaEnrollmentId: json_.containsKey('mfaEnrollmentId')
-              ? json_['mfaEnrollmentId'] as core.String
-              : null,
-          mfaPendingCredential: json_.containsKey('mfaPendingCredential')
-              ? json_['mfaPendingCredential'] as core.String
-              : null,
+          mfaEnrollmentId: json_['mfaEnrollmentId'] as core.String?,
+          mfaPendingCredential: json_['mfaPendingCredential'] as core.String?,
           phoneSignInInfo: json_.containsKey('phoneSignInInfo')
               ? GoogleCloudIdentitytoolkitV2StartMfaPhoneRequestInfo.fromJson(
                   json_['phoneSignInInfo']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          tenantId: json_.containsKey('tenantId')
-              ? json_['tenantId'] as core.String
-              : null,
+          tenantId: json_['tenantId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5910,24 +5644,13 @@ class GoogleCloudIdentitytoolkitV2StartMfaTotpEnrollmentResponseInfo {
   GoogleCloudIdentitytoolkitV2StartMfaTotpEnrollmentResponseInfo.fromJson(
       core.Map json_)
       : this(
-          finalizeEnrollmentTime: json_.containsKey('finalizeEnrollmentTime')
-              ? json_['finalizeEnrollmentTime'] as core.String
-              : null,
-          hashingAlgorithm: json_.containsKey('hashingAlgorithm')
-              ? json_['hashingAlgorithm'] as core.String
-              : null,
-          periodSec: json_.containsKey('periodSec')
-              ? json_['periodSec'] as core.int
-              : null,
-          sessionInfo: json_.containsKey('sessionInfo')
-              ? json_['sessionInfo'] as core.String
-              : null,
-          sharedSecretKey: json_.containsKey('sharedSecretKey')
-              ? json_['sharedSecretKey'] as core.String
-              : null,
-          verificationCodeLength: json_.containsKey('verificationCodeLength')
-              ? json_['verificationCodeLength'] as core.int
-              : null,
+          finalizeEnrollmentTime:
+              json_['finalizeEnrollmentTime'] as core.String?,
+          hashingAlgorithm: json_['hashingAlgorithm'] as core.String?,
+          periodSec: json_['periodSec'] as core.int?,
+          sessionInfo: json_['sessionInfo'] as core.String?,
+          sharedSecretKey: json_['sharedSecretKey'] as core.String?,
+          verificationCodeLength: json_['verificationCodeLength'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5968,15 +5691,9 @@ class GoogleCloudIdentitytoolkitV2WithdrawMfaRequest {
 
   GoogleCloudIdentitytoolkitV2WithdrawMfaRequest.fromJson(core.Map json_)
       : this(
-          idToken: json_.containsKey('idToken')
-              ? json_['idToken'] as core.String
-              : null,
-          mfaEnrollmentId: json_.containsKey('mfaEnrollmentId')
-              ? json_['mfaEnrollmentId'] as core.String
-              : null,
-          tenantId: json_.containsKey('tenantId')
-              ? json_['tenantId'] as core.String
-              : null,
+          idToken: json_['idToken'] as core.String?,
+          mfaEnrollmentId: json_['mfaEnrollmentId'] as core.String?,
+          tenantId: json_['tenantId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6001,12 +5718,8 @@ class GoogleCloudIdentitytoolkitV2WithdrawMfaResponse {
 
   GoogleCloudIdentitytoolkitV2WithdrawMfaResponse.fromJson(core.Map json_)
       : this(
-          idToken: json_.containsKey('idToken')
-              ? json_['idToken'] as core.String
-              : null,
-          refreshToken: json_.containsKey('refreshToken')
-              ? json_['refreshToken'] as core.String
-              : null,
+          idToken: json_['idToken'] as core.String?,
+          refreshToken: json_['refreshToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6055,9 +5768,7 @@ class GoogleIamV1AuditConfig {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          service: json_.containsKey('service')
-              ? json_['service'] as core.String
-              : null,
+          service: json_['service'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6171,7 +5882,7 @@ class GoogleIamV1Binding {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          role: json_.containsKey('role') ? json_['role'] as core.String : null,
+          role: json_['role'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6314,10 +6025,8 @@ class GoogleIamV1Policy {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          version: json_.containsKey('version')
-              ? json_['version'] as core.int
-              : null,
+          etag: json_['etag'] as core.String?,
+          version: json_['version'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6354,9 +6063,7 @@ class GoogleIamV1SetIamPolicyRequest {
               ? GoogleIamV1Policy.fromJson(
                   json_['policy'] as core.Map<core.String, core.dynamic>)
               : null,
-          updateMask: json_.containsKey('updateMask')
-              ? json_['updateMask'] as core.String
-              : null,
+          updateMask: json_['updateMask'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

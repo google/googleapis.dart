@@ -340,10 +340,8 @@ class SiteVerificationWebResourceGettokenRequestSite {
 
   SiteVerificationWebResourceGettokenRequestSite.fromJson(core.Map json_)
       : this(
-          identifier: json_.containsKey('identifier')
-              ? json_['identifier'] as core.String
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          identifier: json_['identifier'] as core.String?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -373,9 +371,7 @@ class SiteVerificationWebResourceGettokenRequest {
               ? SiteVerificationWebResourceGettokenRequestSite.fromJson(
                   json_['site'] as core.Map<core.String, core.dynamic>)
               : null,
-          verificationMethod: json_.containsKey('verificationMethod')
-              ? json_['verificationMethod'] as core.String
-              : null,
+          verificationMethod: json_['verificationMethod'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -407,11 +403,8 @@ class SiteVerificationWebResourceGettokenResponse {
 
   SiteVerificationWebResourceGettokenResponse.fromJson(core.Map json_)
       : this(
-          method: json_.containsKey('method')
-              ? json_['method'] as core.String
-              : null,
-          token:
-              json_.containsKey('token') ? json_['token'] as core.String : null,
+          method: json_['method'] as core.String?,
+          token: json_['token'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -463,10 +456,8 @@ class SiteVerificationWebResourceResourceSite {
 
   SiteVerificationWebResourceResourceSite.fromJson(core.Map json_)
       : this(
-          identifier: json_.containsKey('identifier')
-              ? json_['identifier'] as core.String
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          identifier: json_['identifier'] as core.String?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -496,7 +487,7 @@ class SiteVerificationWebResourceResource {
 
   SiteVerificationWebResourceResource.fromJson(core.Map json_)
       : this(
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          id: json_['id'] as core.String?,
           owners: json_.containsKey('owners')
               ? (json_['owners'] as core.List)
                   .map((value) => value as core.String)

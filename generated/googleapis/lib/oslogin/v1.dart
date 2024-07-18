@@ -415,9 +415,7 @@ class ImportSshPublicKeyResponse {
 
   ImportSshPublicKeyResponse.fromJson(core.Map json_)
       : this(
-          details: json_.containsKey('details')
-              ? json_['details'] as core.String
-              : null,
+          details: json_['details'] as core.String?,
           loginProfile: json_.containsKey('loginProfile')
               ? LoginProfile.fromJson(
                   json_['loginProfile'] as core.Map<core.String, core.dynamic>)
@@ -452,7 +450,7 @@ class LoginProfile {
 
   LoginProfile.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           posixAccounts: json_.containsKey('posixAccounts')
               ? (json_['posixAccounts'] as core.List)
                   .map((value) => PosixAccount.fromJson(
@@ -540,31 +538,17 @@ class PosixAccount {
 
   PosixAccount.fromJson(core.Map json_)
       : this(
-          accountId: json_.containsKey('accountId')
-              ? json_['accountId'] as core.String
-              : null,
-          gecos:
-              json_.containsKey('gecos') ? json_['gecos'] as core.String : null,
-          gid: json_.containsKey('gid') ? json_['gid'] as core.String : null,
-          homeDirectory: json_.containsKey('homeDirectory')
-              ? json_['homeDirectory'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          operatingSystemType: json_.containsKey('operatingSystemType')
-              ? json_['operatingSystemType'] as core.String
-              : null,
-          primary: json_.containsKey('primary')
-              ? json_['primary'] as core.bool
-              : null,
-          shell:
-              json_.containsKey('shell') ? json_['shell'] as core.String : null,
-          systemId: json_.containsKey('systemId')
-              ? json_['systemId'] as core.String
-              : null,
-          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
-          username: json_.containsKey('username')
-              ? json_['username'] as core.String
-              : null,
+          accountId: json_['accountId'] as core.String?,
+          gecos: json_['gecos'] as core.String?,
+          gid: json_['gid'] as core.String?,
+          homeDirectory: json_['homeDirectory'] as core.String?,
+          name: json_['name'] as core.String?,
+          operatingSystemType: json_['operatingSystemType'] as core.String?,
+          primary: json_['primary'] as core.bool?,
+          shell: json_['shell'] as core.String?,
+          systemId: json_['systemId'] as core.String?,
+          uid: json_['uid'] as core.String?,
+          username: json_['username'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -610,14 +594,10 @@ class SshPublicKey {
 
   SshPublicKey.fromJson(core.Map json_)
       : this(
-          expirationTimeUsec: json_.containsKey('expirationTimeUsec')
-              ? json_['expirationTimeUsec'] as core.String
-              : null,
-          fingerprint: json_.containsKey('fingerprint')
-              ? json_['fingerprint'] as core.String
-              : null,
-          key: json_.containsKey('key') ? json_['key'] as core.String : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          expirationTimeUsec: json_['expirationTimeUsec'] as core.String?,
+          fingerprint: json_['fingerprint'] as core.String?,
+          key: json_['key'] as core.String?,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

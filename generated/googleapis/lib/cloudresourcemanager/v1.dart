@@ -1900,9 +1900,7 @@ class AuditConfig {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          service: json_.containsKey('service')
-              ? json_['service'] as core.String
-              : null,
+          service: json_['service'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2016,7 +2014,7 @@ class Binding {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          role: json_.containsKey('role') ? json_['role'] as core.String : null,
+          role: json_['role'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2060,10 +2058,8 @@ class ClearOrgPolicyRequest {
 
   ClearOrgPolicyRequest.fromJson(core.Map json_)
       : this(
-          constraint: json_.containsKey('constraint')
-              ? json_['constraint'] as core.String
-              : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          constraint: json_['constraint'] as core.String?,
+          etag: json_['etag'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2141,23 +2137,15 @@ class Constraint {
               ? BooleanConstraint.fromJson(json_['booleanConstraint']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          constraintDefault: json_.containsKey('constraintDefault')
-              ? json_['constraintDefault'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+          constraintDefault: json_['constraintDefault'] as core.String?,
+          description: json_['description'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
           listConstraint: json_.containsKey('listConstraint')
               ? ListConstraint.fromJson(json_['listConstraint']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          version: json_.containsKey('version')
-              ? json_['version'] as core.int
-              : null,
+          name: json_['name'] as core.String?,
+          version: json_['version'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2240,9 +2228,7 @@ class GetEffectiveOrgPolicyRequest {
 
   GetEffectiveOrgPolicyRequest.fromJson(core.Map json_)
       : this(
-          constraint: json_.containsKey('constraint')
-              ? json_['constraint'] as core.String
-              : null,
+          constraint: json_['constraint'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2284,9 +2270,7 @@ class GetOrgPolicyRequest {
 
   GetOrgPolicyRequest.fromJson(core.Map json_)
       : this(
-          constraint: json_.containsKey('constraint')
-              ? json_['constraint'] as core.String
-              : null,
+          constraint: json_['constraint'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2332,9 +2316,7 @@ class ListAvailableOrgPolicyConstraintsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2366,12 +2348,8 @@ class ListConstraint {
 
   ListConstraint.fromJson(core.Map json_)
       : this(
-          suggestedValue: json_.containsKey('suggestedValue')
-              ? json_['suggestedValue'] as core.String
-              : null,
-          supportsUnder: json_.containsKey('supportsUnder')
-              ? json_['supportsUnder'] as core.bool
-              : null,
+          suggestedValue: json_['suggestedValue'] as core.String?,
+          supportsUnder: json_['supportsUnder'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2402,9 +2380,7 @@ class ListLiensResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2438,9 +2414,7 @@ class ListOrgPoliciesResponse {
 
   ListOrgPoliciesResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           policies: json_.containsKey('policies')
               ? (json_['policies'] as core.List)
                   .map((value) => OrgPolicy.fromJson(
@@ -2503,9 +2477,7 @@ class ListProjectsResponse {
 
   ListProjectsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           projects: json_.containsKey('projects')
               ? (json_['projects'] as core.List)
                   .map((value) => Project.fromJson(
@@ -2573,7 +2545,7 @@ class Operation {
 
   Operation.fromJson(core.Map json_)
       : this(
-          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
@@ -2581,7 +2553,7 @@ class Operation {
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           response: json_.containsKey('response')
               ? json_['response'] as core.Map<core.String, core.dynamic>
               : null,
@@ -2665,10 +2637,8 @@ class OrgPolicy {
               ? BooleanPolicy.fromJson(
                   json_['booleanPolicy'] as core.Map<core.String, core.dynamic>)
               : null,
-          constraint: json_.containsKey('constraint')
-              ? json_['constraint'] as core.String
-              : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          constraint: json_['constraint'] as core.String?,
+          etag: json_['etag'] as core.String?,
           listPolicy: json_.containsKey('listPolicy')
               ? ListPolicy.fromJson(
                   json_['listPolicy'] as core.Map<core.String, core.dynamic>)
@@ -2677,12 +2647,8 @@ class OrgPolicy {
               ? RestoreDefault.fromJson(json_['restoreDefault']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
-          version: json_.containsKey('version')
-              ? json_['version'] as core.int
-              : null,
+          updateTime: json_['updateTime'] as core.String?,
+          version: json_['version'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2747,16 +2713,10 @@ class Organization {
 
   Organization.fromJson(core.Map json_)
       : this(
-          creationTime: json_.containsKey('creationTime')
-              ? json_['creationTime'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          lifecycleState: json_.containsKey('lifecycleState')
-              ? json_['lifecycleState'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          creationTime: json_['creationTime'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          lifecycleState: json_['lifecycleState'] as core.String?,
+          name: json_['name'] as core.String?,
           owner: json_.containsKey('owner')
               ? OrganizationOwner.fromJson(
                   json_['owner'] as core.Map<core.String, core.dynamic>)
@@ -2787,9 +2747,7 @@ class OrganizationOwner {
 
   OrganizationOwner.fromJson(core.Map json_)
       : this(
-          directoryCustomerId: json_.containsKey('directoryCustomerId')
-              ? json_['directoryCustomerId'] as core.String
-              : null,
+          directoryCustomerId: json_['directoryCustomerId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2905,10 +2863,8 @@ class Policy {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          version: json_.containsKey('version')
-              ? json_['version'] as core.int
-              : null,
+          etag: json_['etag'] as core.String?,
+          version: json_['version'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3005,9 +2961,7 @@ class Project {
 
   Project.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -3016,20 +2970,14 @@ class Project {
                   ),
                 )
               : null,
-          lifecycleState: json_.containsKey('lifecycleState')
-              ? json_['lifecycleState'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          lifecycleState: json_['lifecycleState'] as core.String?,
+          name: json_['name'] as core.String?,
           parent: json_.containsKey('parent')
               ? ResourceId.fromJson(
                   json_['parent'] as core.Map<core.String, core.dynamic>)
               : null,
-          projectId: json_.containsKey('projectId')
-              ? json_['projectId'] as core.String
-              : null,
-          projectNumber: json_.containsKey('projectNumber')
-              ? json_['projectNumber'] as core.String
-              : null,
+          projectId: json_['projectId'] as core.String?,
+          projectNumber: json_['projectNumber'] as core.String?,
           tags: json_.containsKey('tags')
               ? (json_['tags'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -3076,8 +3024,8 @@ class ResourceId {
 
   ResourceId.fromJson(core.Map json_)
       : this(
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          id: json_['id'] as core.String?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3133,15 +3081,9 @@ class SearchOrganizationsRequest {
 
   SearchOrganizationsRequest.fromJson(core.Map json_)
       : this(
-          filter: json_.containsKey('filter')
-              ? json_['filter'] as core.String
-              : null,
-          pageSize: json_.containsKey('pageSize')
-              ? json_['pageSize'] as core.int
-              : null,
-          pageToken: json_.containsKey('pageToken')
-              ? json_['pageToken'] as core.String
-              : null,
+          filter: json_['filter'] as core.String?,
+          pageSize: json_['pageSize'] as core.int?,
+          pageToken: json_['pageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3172,9 +3114,7 @@ class SearchOrganizationsResponse {
 
   SearchOrganizationsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           organizations: json_.containsKey('organizations')
               ? (json_['organizations'] as core.List)
                   .map((value) => Organization.fromJson(
@@ -3215,9 +3155,7 @@ class SetIamPolicyRequest {
               ? Policy.fromJson(
                   json_['policy'] as core.Map<core.String, core.dynamic>)
               : null,
-          updateMask: json_.containsKey('updateMask')
-              ? json_['updateMask'] as core.String
-              : null,
+          updateMask: json_['updateMask'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

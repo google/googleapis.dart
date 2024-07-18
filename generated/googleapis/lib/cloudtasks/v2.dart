@@ -1297,7 +1297,7 @@ class AppEngineHttpRequest {
               ? AppEngineRouting.fromJson(json_['appEngineRouting']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          body: json_.containsKey('body') ? json_['body'] as core.String : null,
+          body: json_['body'] as core.String?,
           headers: json_.containsKey('headers')
               ? (json_['headers'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -1306,12 +1306,8 @@ class AppEngineHttpRequest {
                   ),
                 )
               : null,
-          httpMethod: json_.containsKey('httpMethod')
-              ? json_['httpMethod'] as core.String
-              : null,
-          relativeUri: json_.containsKey('relativeUri')
-              ? json_['relativeUri'] as core.String
-              : null,
+          httpMethod: json_['httpMethod'] as core.String?,
+          relativeUri: json_['relativeUri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1391,16 +1387,10 @@ class AppEngineRouting {
 
   AppEngineRouting.fromJson(core.Map json_)
       : this(
-          host: json_.containsKey('host') ? json_['host'] as core.String : null,
-          instance: json_.containsKey('instance')
-              ? json_['instance'] as core.String
-              : null,
-          service: json_.containsKey('service')
-              ? json_['service'] as core.String
-              : null,
-          version: json_.containsKey('version')
-              ? json_['version'] as core.String
-              : null,
+          host: json_['host'] as core.String?,
+          instance: json_['instance'] as core.String?,
+          service: json_['service'] as core.String?,
+          version: json_['version'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1451,19 +1441,13 @@ class Attempt {
 
   Attempt.fromJson(core.Map json_)
       : this(
-          dispatchTime: json_.containsKey('dispatchTime')
-              ? json_['dispatchTime'] as core.String
-              : null,
+          dispatchTime: json_['dispatchTime'] as core.String?,
           responseStatus: json_.containsKey('responseStatus')
               ? Status.fromJson(json_['responseStatus']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          responseTime: json_.containsKey('responseTime')
-              ? json_['responseTime'] as core.String
-              : null,
-          scheduleTime: json_.containsKey('scheduleTime')
-              ? json_['scheduleTime'] as core.String
-              : null,
+          responseTime: json_['responseTime'] as core.String?,
+          scheduleTime: json_['scheduleTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1571,7 +1555,7 @@ class Binding {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          role: json_.containsKey('role') ? json_['role'] as core.String : null,
+          role: json_['role'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1654,10 +1638,8 @@ class CmekConfig {
 
   CmekConfig.fromJson(core.Map json_)
       : this(
-          kmsKey: json_.containsKey('kmsKey')
-              ? json_['kmsKey'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          kmsKey: json_['kmsKey'] as core.String?,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1721,9 +1703,7 @@ class CreateTaskRequest {
 
   CreateTaskRequest.fromJson(core.Map json_)
       : this(
-          responseView: json_.containsKey('responseView')
-              ? json_['responseView'] as core.String
-              : null,
+          responseView: json_['responseView'] as core.String?,
           task: json_.containsKey('task')
               ? Task.fromJson(
                   json_['task'] as core.Map<core.String, core.dynamic>)
@@ -1807,9 +1787,8 @@ class Header {
 
   Header.fromJson(core.Map json_)
       : this(
-          key: json_.containsKey('key') ? json_['key'] as core.String : null,
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
+          key: json_['key'] as core.String?,
+          value: json_['value'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1972,7 +1951,7 @@ class HttpRequest {
 
   HttpRequest.fromJson(core.Map json_)
       : this(
-          body: json_.containsKey('body') ? json_['body'] as core.String : null,
+          body: json_['body'] as core.String?,
           headers: json_.containsKey('headers')
               ? (json_['headers'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -1981,9 +1960,7 @@ class HttpRequest {
                   ),
                 )
               : null,
-          httpMethod: json_.containsKey('httpMethod')
-              ? json_['httpMethod'] as core.String
-              : null,
+          httpMethod: json_['httpMethod'] as core.String?,
           oauthToken: json_.containsKey('oauthToken')
               ? OAuthToken.fromJson(
                   json_['oauthToken'] as core.Map<core.String, core.dynamic>)
@@ -1992,7 +1969,7 @@ class HttpRequest {
               ? OidcToken.fromJson(
                   json_['oidcToken'] as core.Map<core.String, core.dynamic>)
               : null,
-          url: json_.containsKey('url') ? json_['url'] as core.String : null,
+          url: json_['url'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2091,9 +2068,7 @@ class HttpTarget {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          httpMethod: json_.containsKey('httpMethod')
-              ? json_['httpMethod'] as core.String
-              : null,
+          httpMethod: json_['httpMethod'] as core.String?,
           oauthToken: json_.containsKey('oauthToken')
               ? OAuthToken.fromJson(
                   json_['oauthToken'] as core.Map<core.String, core.dynamic>)
@@ -2138,9 +2113,7 @@ class ListLocationsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2168,9 +2141,7 @@ class ListQueuesResponse {
 
   ListQueuesResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           queues: json_.containsKey('queues')
               ? (json_['queues'] as core.List)
                   .map((value) => Queue.fromJson(
@@ -2203,9 +2174,7 @@ class ListTasksResponse {
 
   ListTasksResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           tasks: json_.containsKey('tasks')
               ? (json_['tasks'] as core.List)
                   .map((value) => Task.fromJson(
@@ -2250,11 +2219,8 @@ class OAuthToken {
 
   OAuthToken.fromJson(core.Map json_)
       : this(
-          scope:
-              json_.containsKey('scope') ? json_['scope'] as core.String : null,
-          serviceAccountEmail: json_.containsKey('serviceAccountEmail')
-              ? json_['serviceAccountEmail'] as core.String
-              : null,
+          scope: json_['scope'] as core.String?,
+          serviceAccountEmail: json_['serviceAccountEmail'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2290,12 +2256,8 @@ class OidcToken {
 
   OidcToken.fromJson(core.Map json_)
       : this(
-          audience: json_.containsKey('audience')
-              ? json_['audience'] as core.String
-              : null,
-          serviceAccountEmail: json_.containsKey('serviceAccountEmail')
-              ? json_['serviceAccountEmail'] as core.String
-              : null,
+          audience: json_['audience'] as core.String?,
+          serviceAccountEmail: json_['serviceAccountEmail'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2320,7 +2282,7 @@ class PathOverride {
 
   PathOverride.fromJson(core.Map json_)
       : this(
-          path: json_.containsKey('path') ? json_['path'] as core.String : null,
+          path: json_['path'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2428,10 +2390,8 @@ class Policy {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          version: json_.containsKey('version')
-              ? json_['version'] as core.int
-              : null,
+          etag: json_['etag'] as core.String?,
+          version: json_['version'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2459,9 +2419,7 @@ class QueryOverride {
 
   QueryOverride.fromJson(core.Map json_)
       : this(
-          queryParams: json_.containsKey('queryParams')
-              ? json_['queryParams'] as core.String
-              : null,
+          queryParams: json_['queryParams'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2594,10 +2552,8 @@ class Queue {
               ? HttpTarget.fromJson(
                   json_['httpTarget'] as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          purgeTime: json_.containsKey('purgeTime')
-              ? json_['purgeTime'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          purgeTime: json_['purgeTime'] as core.String?,
           rateLimits: json_.containsKey('rateLimits')
               ? RateLimits.fromJson(
                   json_['rateLimits'] as core.Map<core.String, core.dynamic>)
@@ -2612,8 +2568,7 @@ class Queue {
                       json_['stackdriverLoggingConfig']
                           as core.Map<core.String, core.dynamic>)
                   : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
+          state: json_['state'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2688,15 +2643,11 @@ class RateLimits {
 
   RateLimits.fromJson(core.Map json_)
       : this(
-          maxBurstSize: json_.containsKey('maxBurstSize')
-              ? json_['maxBurstSize'] as core.int
-              : null,
-          maxConcurrentDispatches: json_.containsKey('maxConcurrentDispatches')
-              ? json_['maxConcurrentDispatches'] as core.int
-              : null,
-          maxDispatchesPerSecond: json_.containsKey('maxDispatchesPerSecond')
-              ? (json_['maxDispatchesPerSecond'] as core.num).toDouble()
-              : null,
+          maxBurstSize: json_['maxBurstSize'] as core.int?,
+          maxConcurrentDispatches:
+              json_['maxConcurrentDispatches'] as core.int?,
+          maxDispatchesPerSecond:
+              (json_['maxDispatchesPerSecond'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2794,21 +2745,11 @@ class RetryConfig {
 
   RetryConfig.fromJson(core.Map json_)
       : this(
-          maxAttempts: json_.containsKey('maxAttempts')
-              ? json_['maxAttempts'] as core.int
-              : null,
-          maxBackoff: json_.containsKey('maxBackoff')
-              ? json_['maxBackoff'] as core.String
-              : null,
-          maxDoublings: json_.containsKey('maxDoublings')
-              ? json_['maxDoublings'] as core.int
-              : null,
-          maxRetryDuration: json_.containsKey('maxRetryDuration')
-              ? json_['maxRetryDuration'] as core.String
-              : null,
-          minBackoff: json_.containsKey('minBackoff')
-              ? json_['minBackoff'] as core.String
-              : null,
+          maxAttempts: json_['maxAttempts'] as core.int?,
+          maxBackoff: json_['maxBackoff'] as core.String?,
+          maxDoublings: json_['maxDoublings'] as core.int?,
+          maxRetryDuration: json_['maxRetryDuration'] as core.String?,
+          minBackoff: json_['minBackoff'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2848,9 +2789,7 @@ class RunTaskRequest {
 
   RunTaskRequest.fromJson(core.Map json_)
       : this(
-          responseView: json_.containsKey('responseView')
-              ? json_['responseView'] as core.String
-              : null,
+          responseView: json_['responseView'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2900,9 +2839,7 @@ class StackdriverLoggingConfig {
 
   StackdriverLoggingConfig.fromJson(core.Map json_)
       : this(
-          samplingRatio: json_.containsKey('samplingRatio')
-              ? (json_['samplingRatio'] as core.num).toDouble()
-              : null,
+          samplingRatio: (json_['samplingRatio'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3051,15 +2988,9 @@ class Task {
               ? AppEngineHttpRequest.fromJson(json_['appEngineHttpRequest']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          dispatchCount: json_.containsKey('dispatchCount')
-              ? json_['dispatchCount'] as core.int
-              : null,
-          dispatchDeadline: json_.containsKey('dispatchDeadline')
-              ? json_['dispatchDeadline'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          dispatchCount: json_['dispatchCount'] as core.int?,
+          dispatchDeadline: json_['dispatchDeadline'] as core.String?,
           firstAttempt: json_.containsKey('firstAttempt')
               ? Attempt.fromJson(
                   json_['firstAttempt'] as core.Map<core.String, core.dynamic>)
@@ -3072,14 +3003,10 @@ class Task {
               ? Attempt.fromJson(
                   json_['lastAttempt'] as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          responseCount: json_.containsKey('responseCount')
-              ? json_['responseCount'] as core.int
-              : null,
-          scheduleTime: json_.containsKey('scheduleTime')
-              ? json_['scheduleTime'] as core.String
-              : null,
-          view: json_.containsKey('view') ? json_['view'] as core.String : null,
+          name: json_['name'] as core.String?,
+          responseCount: json_['responseCount'] as core.int?,
+          scheduleTime: json_['scheduleTime'] as core.String?,
+          view: json_['view'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3174,22 +3101,19 @@ class UriOverride {
 
   UriOverride.fromJson(core.Map json_)
       : this(
-          host: json_.containsKey('host') ? json_['host'] as core.String : null,
+          host: json_['host'] as core.String?,
           pathOverride: json_.containsKey('pathOverride')
               ? PathOverride.fromJson(
                   json_['pathOverride'] as core.Map<core.String, core.dynamic>)
               : null,
-          port: json_.containsKey('port') ? json_['port'] as core.String : null,
+          port: json_['port'] as core.String?,
           queryOverride: json_.containsKey('queryOverride')
               ? QueryOverride.fromJson(
                   json_['queryOverride'] as core.Map<core.String, core.dynamic>)
               : null,
-          scheme: json_.containsKey('scheme')
-              ? json_['scheme'] as core.String
-              : null,
-          uriOverrideEnforceMode: json_.containsKey('uriOverrideEnforceMode')
-              ? json_['uriOverrideEnforceMode'] as core.String
-              : null,
+          scheme: json_['scheme'] as core.String?,
+          uriOverrideEnforceMode:
+              json_['uriOverrideEnforceMode'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

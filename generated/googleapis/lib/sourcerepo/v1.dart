@@ -613,9 +613,7 @@ class AuditConfig {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          service: json_.containsKey('service')
-              ? json_['service'] as core.String
-              : null,
+          service: json_['service'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -729,7 +727,7 @@ class Binding {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          role: json_.containsKey('role') ? json_['role'] as core.String : null,
+          role: json_['role'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -787,9 +785,7 @@ class ListReposResponse {
 
   ListReposResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           repos: json_.containsKey('repos')
               ? (json_['repos'] as core.List)
                   .map((value) => Repo.fromJson(
@@ -831,13 +827,9 @@ class MirrorConfig {
 
   MirrorConfig.fromJson(core.Map json_)
       : this(
-          deployKeyId: json_.containsKey('deployKeyId')
-              ? json_['deployKeyId'] as core.String
-              : null,
-          url: json_.containsKey('url') ? json_['url'] as core.String : null,
-          webhookId: json_.containsKey('webhookId')
-              ? json_['webhookId'] as core.String
-              : null,
+          deployKeyId: json_['deployKeyId'] as core.String?,
+          url: json_['url'] as core.String?,
+          webhookId: json_['webhookId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -900,7 +892,7 @@ class Operation {
 
   Operation.fromJson(core.Map json_)
       : this(
-          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
@@ -908,7 +900,7 @@ class Operation {
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           response: json_.containsKey('response')
               ? json_['response'] as core.Map<core.String, core.dynamic>
               : null,
@@ -1030,10 +1022,8 @@ class Policy {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          version: json_.containsKey('version')
-              ? json_['version'] as core.int
-              : null,
+          etag: json_['etag'] as core.String?,
+          version: json_['version'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1068,10 +1058,8 @@ class ProjectConfig {
 
   ProjectConfig.fromJson(core.Map json_)
       : this(
-          enablePrivateKeyCheck: json_.containsKey('enablePrivateKeyCheck')
-              ? json_['enablePrivateKeyCheck'] as core.bool
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          enablePrivateKeyCheck: json_['enablePrivateKeyCheck'] as core.bool?,
+          name: json_['name'] as core.String?,
           pubsubConfigs: json_.containsKey('pubsubConfigs')
               ? (json_['pubsubConfigs'] as core.Map<core.String, core.dynamic>)
                   .map(
@@ -1125,14 +1113,9 @@ class PubsubConfig {
 
   PubsubConfig.fromJson(core.Map json_)
       : this(
-          messageFormat: json_.containsKey('messageFormat')
-              ? json_['messageFormat'] as core.String
-              : null,
-          serviceAccountEmail: json_.containsKey('serviceAccountEmail')
-              ? json_['serviceAccountEmail'] as core.String
-              : null,
-          topic:
-              json_.containsKey('topic') ? json_['topic'] as core.String : null,
+          messageFormat: json_['messageFormat'] as core.String?,
+          serviceAccountEmail: json_['serviceAccountEmail'] as core.String?,
+          topic: json_['topic'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1186,7 +1169,7 @@ class Repo {
               ? MirrorConfig.fromJson(
                   json_['mirrorConfig'] as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           pubsubConfigs: json_.containsKey('pubsubConfigs')
               ? (json_['pubsubConfigs'] as core.Map<core.String, core.dynamic>)
                   .map(
@@ -1197,8 +1180,8 @@ class Repo {
                   ),
                 )
               : null,
-          size: json_.containsKey('size') ? json_['size'] as core.String : null,
-          url: json_.containsKey('url') ? json_['url'] as core.String : null,
+          size: json_['size'] as core.String?,
+          url: json_['url'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1236,9 +1219,7 @@ class SetIamPolicyRequest {
               ? Policy.fromJson(
                   json_['policy'] as core.Map<core.String, core.dynamic>)
               : null,
-          updateMask: json_.containsKey('updateMask')
-              ? json_['updateMask'] as core.String
-              : null,
+          updateMask: json_['updateMask'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1287,9 +1268,7 @@ class UpdateProjectConfigRequest {
               ? ProjectConfig.fromJson(
                   json_['projectConfig'] as core.Map<core.String, core.dynamic>)
               : null,
-          updateMask: json_.containsKey('updateMask')
-              ? json_['updateMask'] as core.String
-              : null,
+          updateMask: json_['updateMask'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1320,9 +1299,7 @@ class UpdateRepoRequest {
               ? Repo.fromJson(
                   json_['repo'] as core.Map<core.String, core.dynamic>)
               : null,
-          updateMask: json_.containsKey('updateMask')
-              ? json_['updateMask'] as core.String
-              : null,
+          updateMask: json_['updateMask'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

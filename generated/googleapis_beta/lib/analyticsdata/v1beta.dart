@@ -690,9 +690,7 @@ class ActiveMetricRestriction {
 
   ActiveMetricRestriction.fromJson(core.Map json_)
       : this(
-          metricName: json_.containsKey('metricName')
-              ? json_['metricName'] as core.String
-              : null,
+          metricName: json_['metricName'] as core.String?,
           restrictedMetricTypes: json_.containsKey('restrictedMetricTypes')
               ? (json_['restrictedMetricTypes'] as core.List)
                   .map((value) => value as core.String)
@@ -805,37 +803,23 @@ class AudienceExport {
 
   AudienceExport.fromJson(core.Map json_)
       : this(
-          audience: json_.containsKey('audience')
-              ? json_['audience'] as core.String
-              : null,
-          audienceDisplayName: json_.containsKey('audienceDisplayName')
-              ? json_['audienceDisplayName'] as core.String
-              : null,
-          beginCreatingTime: json_.containsKey('beginCreatingTime')
-              ? json_['beginCreatingTime'] as core.String
-              : null,
+          audience: json_['audience'] as core.String?,
+          audienceDisplayName: json_['audienceDisplayName'] as core.String?,
+          beginCreatingTime: json_['beginCreatingTime'] as core.String?,
           creationQuotaTokensCharged:
-              json_.containsKey('creationQuotaTokensCharged')
-                  ? json_['creationQuotaTokensCharged'] as core.int
-                  : null,
+              json_['creationQuotaTokensCharged'] as core.int?,
           dimensions: json_.containsKey('dimensions')
               ? (json_['dimensions'] as core.List)
                   .map((value) => V1betaAudienceDimension.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          errorMessage: json_.containsKey('errorMessage')
-              ? json_['errorMessage'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          percentageCompleted: json_.containsKey('percentageCompleted')
-              ? (json_['percentageCompleted'] as core.num).toDouble()
-              : null,
-          rowCount: json_.containsKey('rowCount')
-              ? json_['rowCount'] as core.int
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
+          errorMessage: json_['errorMessage'] as core.String?,
+          name: json_['name'] as core.String?,
+          percentageCompleted:
+              (json_['percentageCompleted'] as core.num?)?.toDouble(),
+          rowCount: json_['rowCount'] as core.int?,
+          state: json_['state'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -903,7 +887,7 @@ class BatchRunPivotReportsResponse {
 
   BatchRunPivotReportsResponse.fromJson(core.Map json_)
       : this(
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          kind: json_['kind'] as core.String?,
           pivotReports: json_.containsKey('pivotReports')
               ? (json_['pivotReports'] as core.List)
                   .map((value) => RunPivotReportResponse.fromJson(
@@ -965,7 +949,7 @@ class BatchRunReportsResponse {
 
   BatchRunReportsResponse.fromJson(core.Map json_)
       : this(
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          kind: json_['kind'] as core.String?,
           reports: json_.containsKey('reports')
               ? (json_['reports'] as core.List)
                   .map((value) => RunReportResponse.fromJson(
@@ -1024,9 +1008,7 @@ class CaseExpression {
 
   CaseExpression.fromJson(core.Map json_)
       : this(
-          dimensionName: json_.containsKey('dimensionName')
-              ? json_['dimensionName'] as core.String
-              : null,
+          dimensionName: json_['dimensionName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1084,9 +1066,7 @@ class CheckCompatibilityRequest {
 
   CheckCompatibilityRequest.fromJson(core.Map json_)
       : this(
-          compatibilityFilter: json_.containsKey('compatibilityFilter')
-              ? json_['compatibilityFilter'] as core.String
-              : null,
+          compatibilityFilter: json_['compatibilityFilter'] as core.String?,
           dimensionFilter: json_.containsKey('dimensionFilter')
               ? FilterExpression.fromJson(json_['dimensionFilter']
                   as core.Map<core.String, core.dynamic>)
@@ -1205,10 +1185,8 @@ class Cohort {
               ? DateRange.fromJson(
                   json_['dateRange'] as core.Map<core.String, core.dynamic>)
               : null,
-          dimension: json_.containsKey('dimension')
-              ? json_['dimension'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          dimension: json_['dimension'] as core.String?,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1231,9 +1209,7 @@ class CohortReportSettings {
 
   CohortReportSettings.fromJson(core.Map json_)
       : this(
-          accumulate: json_.containsKey('accumulate')
-              ? json_['accumulate'] as core.bool
-              : null,
+          accumulate: json_['accumulate'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1358,15 +1334,9 @@ class CohortsRange {
 
   CohortsRange.fromJson(core.Map json_)
       : this(
-          endOffset: json_.containsKey('endOffset')
-              ? json_['endOffset'] as core.int
-              : null,
-          granularity: json_.containsKey('granularity')
-              ? json_['granularity'] as core.String
-              : null,
-          startOffset: json_.containsKey('startOffset')
-              ? json_['startOffset'] as core.int
-              : null,
+          endOffset: json_['endOffset'] as core.int?,
+          granularity: json_['granularity'] as core.String?,
+          startOffset: json_['startOffset'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1403,14 +1373,12 @@ class Comparison {
 
   Comparison.fromJson(core.Map json_)
       : this(
-          comparison: json_.containsKey('comparison')
-              ? json_['comparison'] as core.String
-              : null,
+          comparison: json_['comparison'] as core.String?,
           dimensionFilter: json_.containsKey('dimensionFilter')
               ? FilterExpression.fromJson(json_['dimensionFilter']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1442,15 +1410,9 @@ class ComparisonMetadata {
 
   ComparisonMetadata.fromJson(core.Map json_)
       : this(
-          apiName: json_.containsKey('apiName')
-              ? json_['apiName'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          uiName: json_.containsKey('uiName')
-              ? json_['uiName'] as core.String
-              : null,
+          apiName: json_['apiName'] as core.String?,
+          description: json_['description'] as core.String?,
+          uiName: json_['uiName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1483,9 +1445,7 @@ class ConcatenateExpression {
 
   ConcatenateExpression.fromJson(core.Map json_)
       : this(
-          delimiter: json_.containsKey('delimiter')
-              ? json_['delimiter'] as core.String
-              : null,
+          delimiter: json_['delimiter'] as core.String?,
           dimensionNames: json_.containsKey('dimensionNames')
               ? (json_['dimensionNames'] as core.List)
                   .map((value) => value as core.String)
@@ -1533,13 +1493,9 @@ class DateRange {
 
   DateRange.fromJson(core.Map json_)
       : this(
-          endDate: json_.containsKey('endDate')
-              ? json_['endDate'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          startDate: json_.containsKey('startDate')
-              ? json_['startDate'] as core.String
-              : null,
+          endDate: json_['endDate'] as core.String?,
+          name: json_['name'] as core.String?,
+          startDate: json_['startDate'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1592,7 +1548,7 @@ class Dimension {
               ? DimensionExpression.fromJson(json_['dimensionExpression']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1630,9 +1586,7 @@ class DimensionCompatibility {
 
   DimensionCompatibility.fromJson(core.Map json_)
       : this(
-          compatibility: json_.containsKey('compatibility')
-              ? json_['compatibility'] as core.String
-              : null,
+          compatibility: json_['compatibility'] as core.String?,
           dimensionMetadata: json_.containsKey('dimensionMetadata')
               ? DimensionMetadata.fromJson(json_['dimensionMetadata']
                   as core.Map<core.String, core.dynamic>)
@@ -1707,7 +1661,7 @@ class DimensionHeader {
 
   DimensionHeader.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1762,26 +1716,16 @@ class DimensionMetadata {
 
   DimensionMetadata.fromJson(core.Map json_)
       : this(
-          apiName: json_.containsKey('apiName')
-              ? json_['apiName'] as core.String
-              : null,
-          category: json_.containsKey('category')
-              ? json_['category'] as core.String
-              : null,
-          customDefinition: json_.containsKey('customDefinition')
-              ? json_['customDefinition'] as core.bool
-              : null,
+          apiName: json_['apiName'] as core.String?,
+          category: json_['category'] as core.String?,
+          customDefinition: json_['customDefinition'] as core.bool?,
           deprecatedApiNames: json_.containsKey('deprecatedApiNames')
               ? (json_['deprecatedApiNames'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          uiName: json_.containsKey('uiName')
-              ? json_['uiName'] as core.String
-              : null,
+          description: json_['description'] as core.String?,
+          uiName: json_['uiName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1837,9 +1781,7 @@ class Filter {
               ? BetweenFilter.fromJson(
                   json_['betweenFilter'] as core.Map<core.String, core.dynamic>)
               : null,
-          fieldName: json_.containsKey('fieldName')
-              ? json_['fieldName'] as core.String
-              : null,
+          fieldName: json_['fieldName'] as core.String?,
           inListFilter: json_.containsKey('inListFilter')
               ? InListFilter.fromJson(
                   json_['inListFilter'] as core.Map<core.String, core.dynamic>)
@@ -1968,9 +1910,7 @@ class ListAudienceExportsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2021,7 +1961,7 @@ class Metadata {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2076,13 +2016,9 @@ class Metric {
 
   Metric.fromJson(core.Map json_)
       : this(
-          expression: json_.containsKey('expression')
-              ? json_['expression'] as core.String
-              : null,
-          invisible: json_.containsKey('invisible')
-              ? json_['invisible'] as core.bool
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          expression: json_['expression'] as core.String?,
+          invisible: json_['invisible'] as core.bool?,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2120,9 +2056,7 @@ class MetricCompatibility {
 
   MetricCompatibility.fromJson(core.Map json_)
       : this(
-          compatibility: json_.containsKey('compatibility')
-              ? json_['compatibility'] as core.String
-              : null,
+          compatibility: json_['compatibility'] as core.String?,
           metricMetadata: json_.containsKey('metricMetadata')
               ? MetricMetadata.fromJson(json_['metricMetadata']
                   as core.Map<core.String, core.dynamic>)
@@ -2172,8 +2106,8 @@ class MetricHeader {
 
   MetricHeader.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          name: json_['name'] as core.String?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2264,35 +2198,23 @@ class MetricMetadata {
 
   MetricMetadata.fromJson(core.Map json_)
       : this(
-          apiName: json_.containsKey('apiName')
-              ? json_['apiName'] as core.String
-              : null,
+          apiName: json_['apiName'] as core.String?,
           blockedReasons: json_.containsKey('blockedReasons')
               ? (json_['blockedReasons'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          category: json_.containsKey('category')
-              ? json_['category'] as core.String
-              : null,
-          customDefinition: json_.containsKey('customDefinition')
-              ? json_['customDefinition'] as core.bool
-              : null,
+          category: json_['category'] as core.String?,
+          customDefinition: json_['customDefinition'] as core.bool?,
           deprecatedApiNames: json_.containsKey('deprecatedApiNames')
               ? (json_['deprecatedApiNames'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          expression: json_.containsKey('expression')
-              ? json_['expression'] as core.String
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
-          uiName: json_.containsKey('uiName')
-              ? json_['uiName'] as core.String
-              : null,
+          description: json_['description'] as core.String?,
+          expression: json_['expression'] as core.String?,
+          type: json_['type'] as core.String?,
+          uiName: json_['uiName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2325,8 +2247,7 @@ class MetricValue {
 
   MetricValue.fromJson(core.Map json_)
       : this(
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
+          value: json_['value'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2376,13 +2297,9 @@ class MinuteRange {
 
   MinuteRange.fromJson(core.Map json_)
       : this(
-          endMinutesAgo: json_.containsKey('endMinutesAgo')
-              ? json_['endMinutesAgo'] as core.int
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          startMinutesAgo: json_.containsKey('startMinutesAgo')
-              ? json_['startMinutesAgo'] as core.int
-              : null,
+          endMinutesAgo: json_['endMinutesAgo'] as core.int?,
+          name: json_['name'] as core.String?,
+          startMinutesAgo: json_['startMinutesAgo'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2414,9 +2331,7 @@ class NumericFilter {
 
   NumericFilter.fromJson(core.Map json_)
       : this(
-          operation: json_.containsKey('operation')
-              ? json_['operation'] as core.String
-              : null,
+          operation: json_['operation'] as core.String?,
           value: json_.containsKey('value')
               ? NumericValue.fromJson(
                   json_['value'] as core.Map<core.String, core.dynamic>)
@@ -2485,7 +2400,7 @@ class Operation {
 
   Operation.fromJson(core.Map json_)
       : this(
-          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
@@ -2493,7 +2408,7 @@ class Operation {
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           response: json_.containsKey('response')
               ? json_['response'] as core.Map<core.String, core.dynamic>
               : null,
@@ -2534,7 +2449,7 @@ class OrderBy {
 
   OrderBy.fromJson(core.Map json_)
       : this(
-          desc: json_.containsKey('desc') ? json_['desc'] as core.bool : null,
+          desc: json_['desc'] as core.bool?,
           dimension: json_.containsKey('dimension')
               ? DimensionOrderBy.fromJson(
                   json_['dimension'] as core.Map<core.String, core.dynamic>)
@@ -2608,16 +2523,13 @@ class Pivot {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          limit:
-              json_.containsKey('limit') ? json_['limit'] as core.String : null,
+          limit: json_['limit'] as core.String?,
           metricAggregations: json_.containsKey('metricAggregations')
               ? (json_['metricAggregations'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          offset: json_.containsKey('offset')
-              ? json_['offset'] as core.String
-              : null,
+          offset: json_['offset'] as core.String?,
           orderBys: json_.containsKey('orderBys')
               ? (json_['orderBys'] as core.List)
                   .map((value) => OrderBy.fromJson(
@@ -2685,9 +2597,7 @@ class PivotHeader {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          rowCount: json_.containsKey('rowCount')
-              ? json_['rowCount'] as core.int
-              : null,
+          rowCount: json_['rowCount'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2718,9 +2628,7 @@ class PivotOrderBy {
 
   PivotOrderBy.fromJson(core.Map json_)
       : this(
-          metricName: json_.containsKey('metricName')
-              ? json_['metricName'] as core.String
-              : null,
+          metricName: json_['metricName'] as core.String?,
           pivotSelections: json_.containsKey('pivotSelections')
               ? (json_['pivotSelections'] as core.List)
                   .map((value) => PivotSelection.fromJson(
@@ -2762,12 +2670,8 @@ class PivotSelection {
 
   PivotSelection.fromJson(core.Map json_)
       : this(
-          dimensionName: json_.containsKey('dimensionName')
-              ? json_['dimensionName'] as core.String
-              : null,
-          dimensionValue: json_.containsKey('dimensionValue')
-              ? json_['dimensionValue'] as core.String
-              : null,
+          dimensionName: json_['dimensionName'] as core.String?,
+          dimensionValue: json_['dimensionValue'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2908,11 +2812,8 @@ class QueryAudienceExportRequest {
 
   QueryAudienceExportRequest.fromJson(core.Map json_)
       : this(
-          limit:
-              json_.containsKey('limit') ? json_['limit'] as core.String : null,
-          offset: json_.containsKey('offset')
-              ? json_['offset'] as core.String
-              : null,
+          limit: json_['limit'] as core.String?,
+          offset: json_['offset'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2964,9 +2865,7 @@ class QueryAudienceExportResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          rowCount: json_.containsKey('rowCount')
-              ? json_['rowCount'] as core.int
-              : null,
+          rowCount: json_['rowCount'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3056,15 +2955,9 @@ class ResponseMetaData {
 
   ResponseMetaData.fromJson(core.Map json_)
       : this(
-          currencyCode: json_.containsKey('currencyCode')
-              ? json_['currencyCode'] as core.String
-              : null,
-          dataLossFromOtherRow: json_.containsKey('dataLossFromOtherRow')
-              ? json_['dataLossFromOtherRow'] as core.bool
-              : null,
-          emptyReason: json_.containsKey('emptyReason')
-              ? json_['emptyReason'] as core.String
-              : null,
+          currencyCode: json_['currencyCode'] as core.String?,
+          dataLossFromOtherRow: json_['dataLossFromOtherRow'] as core.bool?,
+          emptyReason: json_['emptyReason'] as core.String?,
           samplingMetadatas: json_.containsKey('samplingMetadatas')
               ? (json_['samplingMetadatas'] as core.List)
                   .map((value) => SamplingMetadata.fromJson(
@@ -3077,12 +2970,8 @@ class ResponseMetaData {
                       json_['schemaRestrictionResponse']
                           as core.Map<core.String, core.dynamic>)
                   : null,
-          subjectToThresholding: json_.containsKey('subjectToThresholding')
-              ? json_['subjectToThresholding'] as core.bool
-              : null,
-          timeZone: json_.containsKey('timeZone')
-              ? json_['timeZone'] as core.String
-              : null,
+          subjectToThresholding: json_['subjectToThresholding'] as core.bool?,
+          timeZone: json_['timeZone'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3258,9 +3147,7 @@ class RunPivotReportRequest {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          currencyCode: json_.containsKey('currencyCode')
-              ? json_['currencyCode'] as core.String
-              : null,
+          currencyCode: json_['currencyCode'] as core.String?,
           dateRanges: json_.containsKey('dateRanges')
               ? (json_['dateRanges'] as core.List)
                   .map((value) => DateRange.fromJson(
@@ -3277,9 +3164,7 @@ class RunPivotReportRequest {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          keepEmptyRows: json_.containsKey('keepEmptyRows')
-              ? json_['keepEmptyRows'] as core.bool
-              : null,
+          keepEmptyRows: json_['keepEmptyRows'] as core.bool?,
           metricFilter: json_.containsKey('metricFilter')
               ? FilterExpression.fromJson(
                   json_['metricFilter'] as core.Map<core.String, core.dynamic>)
@@ -3296,12 +3181,8 @@ class RunPivotReportRequest {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          property: json_.containsKey('property')
-              ? json_['property'] as core.String
-              : null,
-          returnPropertyQuota: json_.containsKey('returnPropertyQuota')
-              ? json_['returnPropertyQuota'] as core.bool
-              : null,
+          property: json_['property'] as core.String?,
+          returnPropertyQuota: json_['returnPropertyQuota'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3396,7 +3277,7 @@ class RunPivotReportResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          kind: json_['kind'] as core.String?,
           metadata: json_.containsKey('metadata')
               ? ResponseMetaData.fromJson(
                   json_['metadata'] as core.Map<core.String, core.dynamic>)
@@ -3515,8 +3396,7 @@ class RunRealtimeReportRequest {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          limit:
-              json_.containsKey('limit') ? json_['limit'] as core.String : null,
+          limit: json_['limit'] as core.String?,
           metricAggregations: json_.containsKey('metricAggregations')
               ? (json_['metricAggregations'] as core.List)
                   .map((value) => value as core.String)
@@ -3544,9 +3424,7 @@ class RunRealtimeReportRequest {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          returnPropertyQuota: json_.containsKey('returnPropertyQuota')
-              ? json_['returnPropertyQuota'] as core.bool
-              : null,
+          returnPropertyQuota: json_['returnPropertyQuota'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3627,7 +3505,7 @@ class RunRealtimeReportResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          kind: json_['kind'] as core.String?,
           maximums: json_.containsKey('maximums')
               ? (json_['maximums'] as core.List)
                   .map((value) => Row.fromJson(
@@ -3650,9 +3528,7 @@ class RunRealtimeReportResponse {
               ? PropertyQuota.fromJson(
                   json_['propertyQuota'] as core.Map<core.String, core.dynamic>)
               : null,
-          rowCount: json_.containsKey('rowCount')
-              ? json_['rowCount'] as core.int
-              : null,
+          rowCount: json_['rowCount'] as core.int?,
           rows: json_.containsKey('rows')
               ? (json_['rows'] as core.List)
                   .map((value) => Row.fromJson(
@@ -3816,9 +3692,7 @@ class RunReportRequest {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          currencyCode: json_.containsKey('currencyCode')
-              ? json_['currencyCode'] as core.String
-              : null,
+          currencyCode: json_['currencyCode'] as core.String?,
           dateRanges: json_.containsKey('dateRanges')
               ? (json_['dateRanges'] as core.List)
                   .map((value) => DateRange.fromJson(
@@ -3835,11 +3709,8 @@ class RunReportRequest {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          keepEmptyRows: json_.containsKey('keepEmptyRows')
-              ? json_['keepEmptyRows'] as core.bool
-              : null,
-          limit:
-              json_.containsKey('limit') ? json_['limit'] as core.String : null,
+          keepEmptyRows: json_['keepEmptyRows'] as core.bool?,
+          limit: json_['limit'] as core.String?,
           metricAggregations: json_.containsKey('metricAggregations')
               ? (json_['metricAggregations'] as core.List)
                   .map((value) => value as core.String)
@@ -3855,21 +3726,15 @@ class RunReportRequest {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          offset: json_.containsKey('offset')
-              ? json_['offset'] as core.String
-              : null,
+          offset: json_['offset'] as core.String?,
           orderBys: json_.containsKey('orderBys')
               ? (json_['orderBys'] as core.List)
                   .map((value) => OrderBy.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          property: json_.containsKey('property')
-              ? json_['property'] as core.String
-              : null,
-          returnPropertyQuota: json_.containsKey('returnPropertyQuota')
-              ? json_['returnPropertyQuota'] as core.bool
-              : null,
+          property: json_['property'] as core.String?,
+          returnPropertyQuota: json_['returnPropertyQuota'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3962,7 +3827,7 @@ class RunReportResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          kind: json_['kind'] as core.String?,
           maximums: json_.containsKey('maximums')
               ? (json_['maximums'] as core.List)
                   .map((value) => Row.fromJson(
@@ -3989,9 +3854,7 @@ class RunReportResponse {
               ? PropertyQuota.fromJson(
                   json_['propertyQuota'] as core.Map<core.String, core.dynamic>)
               : null,
-          rowCount: json_.containsKey('rowCount')
-              ? json_['rowCount'] as core.int
-              : null,
+          rowCount: json_['rowCount'] as core.int?,
           rows: json_.containsKey('rows')
               ? (json_['rows'] as core.List)
                   .map((value) => Row.fromJson(
@@ -4049,12 +3912,8 @@ class SamplingMetadata {
 
   SamplingMetadata.fromJson(core.Map json_)
       : this(
-          samplesReadCount: json_.containsKey('samplesReadCount')
-              ? json_['samplesReadCount'] as core.String
-              : null,
-          samplingSpaceSize: json_.containsKey('samplingSpaceSize')
-              ? json_['samplingSpaceSize'] as core.String
-              : null,
+          samplesReadCount: json_['samplesReadCount'] as core.String?,
+          samplingSpaceSize: json_['samplingSpaceSize'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4128,9 +3987,7 @@ class V1betaAudienceDimension {
 
   V1betaAudienceDimension.fromJson(core.Map json_)
       : this(
-          dimensionName: json_.containsKey('dimensionName')
-              ? json_['dimensionName'] as core.String
-              : null,
+          dimensionName: json_['dimensionName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

@@ -623,7 +623,7 @@ class AppEngineHttpTarget {
               ? AppEngineRouting.fromJson(json_['appEngineRouting']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          body: json_.containsKey('body') ? json_['body'] as core.String : null,
+          body: json_['body'] as core.String?,
           headers: json_.containsKey('headers')
               ? (json_['headers'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -632,12 +632,8 @@ class AppEngineHttpTarget {
                   ),
                 )
               : null,
-          httpMethod: json_.containsKey('httpMethod')
-              ? json_['httpMethod'] as core.String
-              : null,
-          relativeUri: json_.containsKey('relativeUri')
-              ? json_['relativeUri'] as core.String
-              : null,
+          httpMethod: json_['httpMethod'] as core.String?,
+          relativeUri: json_['relativeUri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -719,16 +715,10 @@ class AppEngineRouting {
 
   AppEngineRouting.fromJson(core.Map json_)
       : this(
-          host: json_.containsKey('host') ? json_['host'] as core.String : null,
-          instance: json_.containsKey('instance')
-              ? json_['instance'] as core.String
-              : null,
-          service: json_.containsKey('service')
-              ? json_['service'] as core.String
-              : null,
-          version: json_.containsKey('version')
-              ? json_['version'] as core.String
-              : null,
+          host: json_['host'] as core.String?,
+          instance: json_['instance'] as core.String?,
+          service: json_['service'] as core.String?,
+          version: json_['version'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -844,7 +834,7 @@ class HttpTarget {
 
   HttpTarget.fromJson(core.Map json_)
       : this(
-          body: json_.containsKey('body') ? json_['body'] as core.String : null,
+          body: json_['body'] as core.String?,
           headers: json_.containsKey('headers')
               ? (json_['headers'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -853,9 +843,7 @@ class HttpTarget {
                   ),
                 )
               : null,
-          httpMethod: json_.containsKey('httpMethod')
-              ? json_['httpMethod'] as core.String
-              : null,
+          httpMethod: json_['httpMethod'] as core.String?,
           oauthToken: json_.containsKey('oauthToken')
               ? OAuthToken.fromJson(
                   json_['oauthToken'] as core.Map<core.String, core.dynamic>)
@@ -864,7 +852,7 @@ class HttpTarget {
               ? OidcToken.fromJson(
                   json_['oidcToken'] as core.Map<core.String, core.dynamic>)
               : null,
-          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+          uri: json_['uri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1022,20 +1010,14 @@ class Job {
               ? AppEngineHttpTarget.fromJson(json_['appEngineHttpTarget']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          attemptDeadline: json_.containsKey('attemptDeadline')
-              ? json_['attemptDeadline'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
+          attemptDeadline: json_['attemptDeadline'] as core.String?,
+          description: json_['description'] as core.String?,
           httpTarget: json_.containsKey('httpTarget')
               ? HttpTarget.fromJson(
                   json_['httpTarget'] as core.Map<core.String, core.dynamic>)
               : null,
-          lastAttemptTime: json_.containsKey('lastAttemptTime')
-              ? json_['lastAttemptTime'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          lastAttemptTime: json_['lastAttemptTime'] as core.String?,
+          name: json_['name'] as core.String?,
           pubsubTarget: json_.containsKey('pubsubTarget')
               ? PubsubTarget.fromJson(
                   json_['pubsubTarget'] as core.Map<core.String, core.dynamic>)
@@ -1044,24 +1026,15 @@ class Job {
               ? RetryConfig.fromJson(
                   json_['retryConfig'] as core.Map<core.String, core.dynamic>)
               : null,
-          schedule: json_.containsKey('schedule')
-              ? json_['schedule'] as core.String
-              : null,
-          scheduleTime: json_.containsKey('scheduleTime')
-              ? json_['scheduleTime'] as core.String
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
+          schedule: json_['schedule'] as core.String?,
+          scheduleTime: json_['scheduleTime'] as core.String?,
+          state: json_['state'] as core.String?,
           status: json_.containsKey('status')
               ? Status.fromJson(
                   json_['status'] as core.Map<core.String, core.dynamic>)
               : null,
-          timeZone: json_.containsKey('timeZone')
-              ? json_['timeZone'] as core.String
-              : null,
-          userUpdateTime: json_.containsKey('userUpdateTime')
-              ? json_['userUpdateTime'] as core.String
-              : null,
+          timeZone: json_['timeZone'] as core.String?,
+          userUpdateTime: json_['userUpdateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1109,9 +1082,7 @@ class ListJobsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1141,9 +1112,7 @@ class ListLocationsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1181,11 +1150,8 @@ class OAuthToken {
 
   OAuthToken.fromJson(core.Map json_)
       : this(
-          scope:
-              json_.containsKey('scope') ? json_['scope'] as core.String : null,
-          serviceAccountEmail: json_.containsKey('serviceAccountEmail')
-              ? json_['serviceAccountEmail'] as core.String
-              : null,
+          scope: json_['scope'] as core.String?,
+          serviceAccountEmail: json_['serviceAccountEmail'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1220,12 +1186,8 @@ class OidcToken {
 
   OidcToken.fromJson(core.Map json_)
       : this(
-          audience: json_.containsKey('audience')
-              ? json_['audience'] as core.String
-              : null,
-          serviceAccountEmail: json_.containsKey('serviceAccountEmail')
-              ? json_['serviceAccountEmail'] as core.String
-              : null,
+          audience: json_['audience'] as core.String?,
+          serviceAccountEmail: json_['serviceAccountEmail'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1289,10 +1251,8 @@ class PubsubTarget {
                   ),
                 )
               : null,
-          data: json_.containsKey('data') ? json_['data'] as core.String : null,
-          topicName: json_.containsKey('topicName')
-              ? json_['topicName'] as core.String
-              : null,
+          data: json_['data'] as core.String?,
+          topicName: json_['topicName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1367,21 +1327,11 @@ class RetryConfig {
 
   RetryConfig.fromJson(core.Map json_)
       : this(
-          maxBackoffDuration: json_.containsKey('maxBackoffDuration')
-              ? json_['maxBackoffDuration'] as core.String
-              : null,
-          maxDoublings: json_.containsKey('maxDoublings')
-              ? json_['maxDoublings'] as core.int
-              : null,
-          maxRetryDuration: json_.containsKey('maxRetryDuration')
-              ? json_['maxRetryDuration'] as core.String
-              : null,
-          minBackoffDuration: json_.containsKey('minBackoffDuration')
-              ? json_['minBackoffDuration'] as core.String
-              : null,
-          retryCount: json_.containsKey('retryCount')
-              ? json_['retryCount'] as core.int
-              : null,
+          maxBackoffDuration: json_['maxBackoffDuration'] as core.String?,
+          maxDoublings: json_['maxDoublings'] as core.int?,
+          maxRetryDuration: json_['maxRetryDuration'] as core.String?,
+          minBackoffDuration: json_['minBackoffDuration'] as core.String?,
+          retryCount: json_['retryCount'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

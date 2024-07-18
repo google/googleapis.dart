@@ -151,8 +151,8 @@ class SearchResponse {
 
   SearchResponse.fromJson(core.Map json_)
       : this(
-          P_context: json_.containsKey('@context') ? json_['@context'] : null,
-          P_type: json_.containsKey('@type') ? json_['@type'] : null,
+          P_context: json_['@context'],
+          P_type: json_['@type'],
           itemListElement: json_.containsKey('itemListElement')
               ? json_['itemListElement'] as core.List
               : null,
