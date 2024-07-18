@@ -187,15 +187,13 @@ class NotificationSetting {
 
   NotificationSetting.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           notificationTypes: json_.containsKey('notificationTypes')
               ? (json_['notificationTypes'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          pubsubTopic: json_.containsKey('pubsubTopic')
-              ? json_['pubsubTopic'] as core.String
-              : null,
+          pubsubTopic: json_['pubsubTopic'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

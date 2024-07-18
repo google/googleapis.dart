@@ -539,9 +539,7 @@ class GoogleIamV2ListPoliciesResponse {
 
   GoogleIamV2ListPoliciesResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           policies: json_.containsKey('policies')
               ? (json_['policies'] as core.List)
                   .map((value) => GoogleIamV2Policy.fromJson(
@@ -649,28 +647,20 @@ class GoogleIamV2Policy {
                   ),
                 )
               : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          deleteTime: json_.containsKey('deleteTime')
-              ? json_['deleteTime'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          createTime: json_['createTime'] as core.String?,
+          deleteTime: json_['deleteTime'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          etag: json_['etag'] as core.String?,
+          kind: json_['kind'] as core.String?,
+          name: json_['name'] as core.String?,
           rules: json_.containsKey('rules')
               ? (json_['rules'] as core.List)
                   .map((value) => GoogleIamV2PolicyRule.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          uid: json_['uid'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -708,9 +698,7 @@ class GoogleIamV2PolicyRule {
               ? GoogleIamV2DenyRule.fromJson(
                   json_['denyRule'] as core.Map<core.String, core.dynamic>)
               : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
+          description: json_['description'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -772,7 +760,7 @@ class GoogleLongrunningOperation {
 
   GoogleLongrunningOperation.fromJson(core.Map json_)
       : this(
-          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? GoogleRpcStatus.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
@@ -780,7 +768,7 @@ class GoogleLongrunningOperation {
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           response: json_.containsKey('response')
               ? json_['response'] as core.Map<core.String, core.dynamic>
               : null,

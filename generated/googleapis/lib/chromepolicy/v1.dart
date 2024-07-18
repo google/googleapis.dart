@@ -813,10 +813,8 @@ class GoogleChromePolicyVersionsV1AdditionalTargetKeyName {
 
   GoogleChromePolicyVersionsV1AdditionalTargetKeyName.fromJson(core.Map json_)
       : this(
-          key: json_.containsKey('key') ? json_['key'] as core.String : null,
-          keyDescription: json_.containsKey('keyDescription')
-              ? json_['keyDescription'] as core.String
-              : null,
+          key: json_['key'] as core.String?,
+          keyDescription: json_['keyDescription'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1004,12 +1002,8 @@ class GoogleChromePolicyVersionsV1DefineCertificateRequest {
 
   GoogleChromePolicyVersionsV1DefineCertificateRequest.fromJson(core.Map json_)
       : this(
-          ceritificateName: json_.containsKey('ceritificateName')
-              ? json_['ceritificateName'] as core.String
-              : null,
-          certificate: json_.containsKey('certificate')
-              ? json_['certificate'] as core.String
-              : null,
+          ceritificateName: json_['ceritificateName'] as core.String?,
+          certificate: json_['certificate'] as core.String?,
           settings: json_.containsKey('settings')
               ? (json_['settings'] as core.List)
                   .map((value) =>
@@ -1017,9 +1011,7 @@ class GoogleChromePolicyVersionsV1DefineCertificateRequest {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          targetResource: json_.containsKey('targetResource')
-              ? json_['targetResource'] as core.String
-              : null,
+          targetResource: json_['targetResource'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1049,9 +1041,7 @@ class GoogleChromePolicyVersionsV1DefineCertificateResponse {
 
   GoogleChromePolicyVersionsV1DefineCertificateResponse.fromJson(core.Map json_)
       : this(
-          networkId: json_.containsKey('networkId')
-              ? json_['networkId'] as core.String
-              : null,
+          networkId: json_['networkId'] as core.String?,
           settings: json_.containsKey('settings')
               ? (json_['settings'] as core.List)
                   .map((value) =>
@@ -1059,9 +1049,7 @@ class GoogleChromePolicyVersionsV1DefineCertificateResponse {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          targetResource: json_.containsKey('targetResource')
-              ? json_['targetResource'] as core.String
-              : null,
+          targetResource: json_['targetResource'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1099,7 +1087,7 @@ class GoogleChromePolicyVersionsV1DefineNetworkRequest {
 
   GoogleChromePolicyVersionsV1DefineNetworkRequest.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           settings: json_.containsKey('settings')
               ? (json_['settings'] as core.List)
                   .map((value) =>
@@ -1107,9 +1095,7 @@ class GoogleChromePolicyVersionsV1DefineNetworkRequest {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          targetResource: json_.containsKey('targetResource')
-              ? json_['targetResource'] as core.String
-              : null,
+          targetResource: json_['targetResource'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1141,9 +1127,7 @@ class GoogleChromePolicyVersionsV1DefineNetworkResponse {
 
   GoogleChromePolicyVersionsV1DefineNetworkResponse.fromJson(core.Map json_)
       : this(
-          networkId: json_.containsKey('networkId')
-              ? json_['networkId'] as core.String
-              : null,
+          networkId: json_['networkId'] as core.String?,
           settings: json_.containsKey('settings')
               ? (json_['settings'] as core.List)
                   .map((value) =>
@@ -1151,9 +1135,7 @@ class GoogleChromePolicyVersionsV1DefineNetworkResponse {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          targetResource: json_.containsKey('targetResource')
-              ? json_['targetResource'] as core.String
-              : null,
+          targetResource: json_['targetResource'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1182,9 +1164,7 @@ class GoogleChromePolicyVersionsV1DeleteGroupPolicyRequest {
 
   GoogleChromePolicyVersionsV1DeleteGroupPolicyRequest.fromJson(core.Map json_)
       : this(
-          policySchema: json_.containsKey('policySchema')
-              ? json_['policySchema'] as core.String
-              : null,
+          policySchema: json_['policySchema'] as core.String?,
           policyTargetKey: json_.containsKey('policyTargetKey')
               ? GoogleChromePolicyVersionsV1PolicyTargetKey.fromJson(
                   json_['policyTargetKey']
@@ -1257,9 +1237,7 @@ class GoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequest {
   GoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequest.fromJson(
       core.Map json_)
       : this(
-          policySchema: json_.containsKey('policySchema')
-              ? json_['policySchema'] as core.String
-              : null,
+          policySchema: json_['policySchema'] as core.String?,
           policyTargetKey: json_.containsKey('policyTargetKey')
               ? GoogleChromePolicyVersionsV1PolicyTargetKey.fromJson(
                   json_['policyTargetKey']
@@ -1298,12 +1276,8 @@ class GoogleChromePolicyVersionsV1ListGroupPriorityOrderingRequest {
   GoogleChromePolicyVersionsV1ListGroupPriorityOrderingRequest.fromJson(
       core.Map json_)
       : this(
-          policyNamespace: json_.containsKey('policyNamespace')
-              ? json_['policyNamespace'] as core.String
-              : null,
-          policySchema: json_.containsKey('policySchema')
-              ? json_['policySchema'] as core.String
-              : null,
+          policyNamespace: json_['policyNamespace'] as core.String?,
+          policySchema: json_['policySchema'] as core.String?,
           policyTargetKey: json_.containsKey('policyTargetKey')
               ? GoogleChromePolicyVersionsV1PolicyTargetKey.fromJson(
                   json_['policyTargetKey']
@@ -1356,12 +1330,8 @@ class GoogleChromePolicyVersionsV1ListGroupPriorityOrderingResponse {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          policyNamespace: json_.containsKey('policyNamespace')
-              ? json_['policyNamespace'] as core.String
-              : null,
-          policySchema: json_.containsKey('policySchema')
-              ? json_['policySchema'] as core.String
-              : null,
+          policyNamespace: json_['policyNamespace'] as core.String?,
+          policySchema: json_['policySchema'] as core.String?,
           policyTargetKey: json_.containsKey('policyTargetKey')
               ? GoogleChromePolicyVersionsV1PolicyTargetKey.fromJson(
                   json_['policyTargetKey']
@@ -1392,9 +1362,7 @@ class GoogleChromePolicyVersionsV1ListPolicySchemasResponse {
 
   GoogleChromePolicyVersionsV1ListPolicySchemasResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           policySchemas: json_.containsKey('policySchemas')
               ? (json_['policySchemas'] as core.List)
                   .map((value) =>
@@ -1448,9 +1416,7 @@ class GoogleChromePolicyVersionsV1ModifyGroupPolicyRequest {
               ? GoogleChromePolicyVersionsV1PolicyValue.fromJson(
                   json_['policyValue'] as core.Map<core.String, core.dynamic>)
               : null,
-          updateMask: json_.containsKey('updateMask')
-              ? json_['updateMask'] as core.String
-              : null,
+          updateMask: json_['updateMask'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1500,9 +1466,7 @@ class GoogleChromePolicyVersionsV1ModifyOrgUnitPolicyRequest {
               ? GoogleChromePolicyVersionsV1PolicyValue.fromJson(
                   json_['policyValue'] as core.Map<core.String, core.dynamic>)
               : null,
-          updateMask: json_.containsKey('updateMask')
-              ? json_['updateMask'] as core.String
-              : null,
+          updateMask: json_['updateMask'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1530,9 +1494,7 @@ class GoogleChromePolicyVersionsV1NetworkSetting {
 
   GoogleChromePolicyVersionsV1NetworkSetting.fromJson(core.Map json_)
       : this(
-          policySchema: json_.containsKey('policySchema')
-              ? json_['policySchema'] as core.String
-              : null,
+          policySchema: json_['policySchema'] as core.String?,
           value: json_.containsKey('value')
               ? json_['value'] as core.Map<core.String, core.dynamic>
               : null,
@@ -1559,12 +1521,8 @@ class GoogleChromePolicyVersionsV1NumericRangeConstraint {
 
   GoogleChromePolicyVersionsV1NumericRangeConstraint.fromJson(core.Map json_)
       : this(
-          maximum: json_.containsKey('maximum')
-              ? json_['maximum'] as core.String
-              : null,
-          minimum: json_.containsKey('minimum')
-              ? json_['minimum'] as core.String
-              : null,
+          maximum: json_['maximum'] as core.String?,
+          minimum: json_['minimum'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1633,16 +1591,13 @@ class GoogleChromePolicyVersionsV1PolicyApiLifecycle {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
+          description: json_['description'] as core.String?,
           endSupport: json_.containsKey('endSupport')
               ? GoogleTypeDate.fromJson(
                   json_['endSupport'] as core.Map<core.String, core.dynamic>)
               : null,
-          policyApiLifecycleStage: json_.containsKey('policyApiLifecycleStage')
-              ? json_['policyApiLifecycleStage'] as core.String
-              : null,
+          policyApiLifecycleStage:
+              json_['policyApiLifecycleStage'] as core.String?,
           scheduledToDeprecatePolicies:
               json_.containsKey('scheduledToDeprecatePolicies')
                   ? (json_['scheduledToDeprecatePolicies'] as core.List)
@@ -1771,9 +1726,7 @@ class GoogleChromePolicyVersionsV1PolicySchema {
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          categoryTitle: json_.containsKey('categoryTitle')
-              ? json_['categoryTitle'] as core.String
-              : null,
+          categoryTitle: json_['categoryTitle'] as core.String?,
           definition: json_.containsKey('definition')
               ? Proto2FileDescriptorProto.fromJson(
                   json_['definition'] as core.Map<core.String, core.dynamic>)
@@ -1786,7 +1739,7 @@ class GoogleChromePolicyVersionsV1PolicySchema {
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           notices: json_.containsKey('notices')
               ? (json_['notices'] as core.List)
                   .map((value) =>
@@ -1800,15 +1753,9 @@ class GoogleChromePolicyVersionsV1PolicySchema {
                   json_['policyApiLifecycle']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          policyDescription: json_.containsKey('policyDescription')
-              ? json_['policyDescription'] as core.String
-              : null,
-          schemaName: json_.containsKey('schemaName')
-              ? json_['schemaName'] as core.String
-              : null,
-          supportUri: json_.containsKey('supportUri')
-              ? json_['supportUri'] as core.String
-              : null,
+          policyDescription: json_['policyDescription'] as core.String?,
+          schemaName: json_['schemaName'] as core.String?,
+          supportUri: json_['supportUri'] as core.String?,
           supportedPlatforms: json_.containsKey('supportedPlatforms')
               ? (json_['supportedPlatforms'] as core.List)
                   .map((value) => value as core.String)
@@ -1861,12 +1808,8 @@ class GoogleChromePolicyVersionsV1PolicySchemaFieldDependencies {
   GoogleChromePolicyVersionsV1PolicySchemaFieldDependencies.fromJson(
       core.Map json_)
       : this(
-          sourceField: json_.containsKey('sourceField')
-              ? json_['sourceField'] as core.String
-              : null,
-          sourceFieldValue: json_.containsKey('sourceFieldValue')
-              ? json_['sourceFieldValue'] as core.String
-              : null,
+          sourceField: json_['sourceField'] as core.String?,
+          sourceFieldValue: json_['sourceFieldValue'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1972,13 +1915,9 @@ class GoogleChromePolicyVersionsV1PolicySchemaFieldDescription {
   GoogleChromePolicyVersionsV1PolicySchemaFieldDescription.fromJson(
       core.Map json_)
       : this(
-          defaultValue:
-              json_.containsKey('defaultValue') ? json_['defaultValue'] : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          field:
-              json_.containsKey('field') ? json_['field'] as core.String : null,
+          defaultValue: json_['defaultValue'],
+          description: json_['description'] as core.String?,
+          field: json_['field'] as core.String?,
           fieldConstraints: json_.containsKey('fieldConstraints')
               ? GoogleChromePolicyVersionsV1FieldConstraints.fromJson(
                   json_['fieldConstraints']
@@ -1992,12 +1931,8 @@ class GoogleChromePolicyVersionsV1PolicySchemaFieldDescription {
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          fieldDescription: json_.containsKey('fieldDescription')
-              ? json_['fieldDescription'] as core.String
-              : null,
-          inputConstraint: json_.containsKey('inputConstraint')
-              ? json_['inputConstraint'] as core.String
-              : null,
+          fieldDescription: json_['fieldDescription'] as core.String?,
+          inputConstraint: json_['inputConstraint'] as core.String?,
           knownValueDescriptions: json_.containsKey('knownValueDescriptions')
               ? (json_['knownValueDescriptions'] as core.List)
                   .map((value) =>
@@ -2006,7 +1941,7 @@ class GoogleChromePolicyVersionsV1PolicySchemaFieldDescription {
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           nestedFieldDescriptions: json_.containsKey('nestedFieldDescriptions')
               ? (json_['nestedFieldDescriptions'] as core.List)
                   .map((value) =>
@@ -2070,9 +2005,7 @@ class GoogleChromePolicyVersionsV1PolicySchemaFieldKnownValueDescription {
   GoogleChromePolicyVersionsV1PolicySchemaFieldKnownValueDescription.fromJson(
       core.Map json_)
       : this(
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
+          description: json_['description'] as core.String?,
           fieldDependencies: json_.containsKey('fieldDependencies')
               ? (json_['fieldDependencies'] as core.List)
                   .map((value) =>
@@ -2081,8 +2014,7 @@ class GoogleChromePolicyVersionsV1PolicySchemaFieldKnownValueDescription {
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
+          value: json_['value'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2129,17 +2061,11 @@ class GoogleChromePolicyVersionsV1PolicySchemaNoticeDescription {
   GoogleChromePolicyVersionsV1PolicySchemaNoticeDescription.fromJson(
       core.Map json_)
       : this(
-          acknowledgementRequired: json_.containsKey('acknowledgementRequired')
-              ? json_['acknowledgementRequired'] as core.bool
-              : null,
-          field:
-              json_.containsKey('field') ? json_['field'] as core.String : null,
-          noticeMessage: json_.containsKey('noticeMessage')
-              ? json_['noticeMessage'] as core.String
-              : null,
-          noticeValue: json_.containsKey('noticeValue')
-              ? json_['noticeValue'] as core.String
-              : null,
+          acknowledgementRequired:
+              json_['acknowledgementRequired'] as core.bool?,
+          field: json_['field'] as core.String?,
+          noticeMessage: json_['noticeMessage'] as core.String?,
+          noticeValue: json_['noticeValue'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2216,9 +2142,7 @@ class GoogleChromePolicyVersionsV1PolicyTargetKey {
                   ),
                 )
               : null,
-          targetResource: json_.containsKey('targetResource')
-              ? json_['targetResource'] as core.String
-              : null,
+          targetResource: json_['targetResource'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2247,9 +2171,7 @@ class GoogleChromePolicyVersionsV1PolicyValue {
 
   GoogleChromePolicyVersionsV1PolicyValue.fromJson(core.Map json_)
       : this(
-          policySchema: json_.containsKey('policySchema')
-              ? json_['policySchema'] as core.String
-              : null,
+          policySchema: json_['policySchema'] as core.String?,
           value: json_.containsKey('value')
               ? json_['value'] as core.Map<core.String, core.dynamic>
               : null,
@@ -2283,12 +2205,8 @@ class GoogleChromePolicyVersionsV1RemoveCertificateRequest {
 
   GoogleChromePolicyVersionsV1RemoveCertificateRequest.fromJson(core.Map json_)
       : this(
-          networkId: json_.containsKey('networkId')
-              ? json_['networkId'] as core.String
-              : null,
-          targetResource: json_.containsKey('targetResource')
-              ? json_['targetResource'] as core.String
-              : null,
+          networkId: json_['networkId'] as core.String?,
+          targetResource: json_['targetResource'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2322,12 +2240,8 @@ class GoogleChromePolicyVersionsV1RemoveNetworkRequest {
 
   GoogleChromePolicyVersionsV1RemoveNetworkRequest.fromJson(core.Map json_)
       : this(
-          networkId: json_.containsKey('networkId')
-              ? json_['networkId'] as core.String
-              : null,
-          targetResource: json_.containsKey('targetResource')
-              ? json_['targetResource'] as core.String
-              : null,
+          networkId: json_['networkId'] as core.String?,
+          targetResource: json_['targetResource'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2376,15 +2290,9 @@ class GoogleChromePolicyVersionsV1ResolveRequest {
 
   GoogleChromePolicyVersionsV1ResolveRequest.fromJson(core.Map json_)
       : this(
-          pageSize: json_.containsKey('pageSize')
-              ? json_['pageSize'] as core.int
-              : null,
-          pageToken: json_.containsKey('pageToken')
-              ? json_['pageToken'] as core.String
-              : null,
-          policySchemaFilter: json_.containsKey('policySchemaFilter')
-              ? json_['policySchemaFilter'] as core.String
-              : null,
+          pageSize: json_['pageSize'] as core.int?,
+          pageToken: json_['pageToken'] as core.String?,
+          policySchemaFilter: json_['policySchemaFilter'] as core.String?,
           policyTargetKey: json_.containsKey('policyTargetKey')
               ? GoogleChromePolicyVersionsV1PolicyTargetKey.fromJson(
                   json_['policyTargetKey']
@@ -2418,9 +2326,7 @@ class GoogleChromePolicyVersionsV1ResolveResponse {
 
   GoogleChromePolicyVersionsV1ResolveResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           resolvedPolicies: json_.containsKey('resolvedPolicies')
               ? (json_['resolvedPolicies'] as core.List)
                   .map((value) =>
@@ -2543,12 +2449,8 @@ class GoogleChromePolicyVersionsV1UpdateGroupPriorityOrderingRequest {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          policyNamespace: json_.containsKey('policyNamespace')
-              ? json_['policyNamespace'] as core.String
-              : null,
-          policySchema: json_.containsKey('policySchema')
-              ? json_['policySchema'] as core.String
-              : null,
+          policyNamespace: json_['policyNamespace'] as core.String?,
+          policySchema: json_['policySchema'] as core.String?,
           policyTargetKey: json_.containsKey('policyTargetKey')
               ? GoogleChromePolicyVersionsV1PolicyTargetKey.fromJson(
                   json_['policyTargetKey']
@@ -2580,9 +2482,7 @@ class GoogleChromePolicyVersionsV1UploadPolicyFileRequest {
 
   GoogleChromePolicyVersionsV1UploadPolicyFileRequest.fromJson(core.Map json_)
       : this(
-          policyField: json_.containsKey('policyField')
-              ? json_['policyField'] as core.String
-              : null,
+          policyField: json_['policyField'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2601,9 +2501,7 @@ class GoogleChromePolicyVersionsV1UploadPolicyFileResponse {
 
   GoogleChromePolicyVersionsV1UploadPolicyFileResponse.fromJson(core.Map json_)
       : this(
-          downloadUri: json_.containsKey('downloadUri')
-              ? json_['downloadUri'] as core.String
-              : null,
+          downloadUri: json_['downloadUri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2626,9 +2524,7 @@ class GoogleChromePolicyVersionsV1UploadedFileConstraints {
 
   GoogleChromePolicyVersionsV1UploadedFileConstraints.fromJson(core.Map json_)
       : this(
-          sizeLimitBytes: json_.containsKey('sizeLimitBytes')
-              ? json_['sizeLimitBytes'] as core.String
-              : null,
+          sizeLimitBytes: json_['sizeLimitBytes'] as core.String?,
           supportedContentTypes: json_.containsKey('supportedContentTypes')
               ? (json_['supportedContentTypes'] as core.List)
                   .map((value) => value as core.String)
@@ -2693,7 +2589,7 @@ class Proto2DescriptorProto {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           nestedType: json_.containsKey('nestedType')
               ? (json_['nestedType'] as core.List)
                   .map((value) => Proto2DescriptorProto.fromJson(
@@ -2729,7 +2625,7 @@ class Proto2EnumDescriptorProto {
 
   Proto2EnumDescriptorProto.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           value: json_.containsKey('value')
               ? (json_['value'] as core.List)
                   .map((value) => Proto2EnumValueDescriptorProto.fromJson(
@@ -2756,9 +2652,8 @@ class Proto2EnumValueDescriptorProto {
 
   Proto2EnumValueDescriptorProto.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          number:
-              json_.containsKey('number') ? json_['number'] as core.int : null,
+          name: json_['name'] as core.String?,
+          number: json_['number'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2874,27 +2769,15 @@ class Proto2FieldDescriptorProto {
 
   Proto2FieldDescriptorProto.fromJson(core.Map json_)
       : this(
-          defaultValue: json_.containsKey('defaultValue')
-              ? json_['defaultValue'] as core.String
-              : null,
-          jsonName: json_.containsKey('jsonName')
-              ? json_['jsonName'] as core.String
-              : null,
-          label:
-              json_.containsKey('label') ? json_['label'] as core.String : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          number:
-              json_.containsKey('number') ? json_['number'] as core.int : null,
-          oneofIndex: json_.containsKey('oneofIndex')
-              ? json_['oneofIndex'] as core.int
-              : null,
-          proto3Optional: json_.containsKey('proto3Optional')
-              ? json_['proto3Optional'] as core.bool
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
-          typeName: json_.containsKey('typeName')
-              ? json_['typeName'] as core.String
-              : null,
+          defaultValue: json_['defaultValue'] as core.String?,
+          jsonName: json_['jsonName'] as core.String?,
+          label: json_['label'] as core.String?,
+          name: json_['name'] as core.String?,
+          number: json_['number'] as core.int?,
+          oneofIndex: json_['oneofIndex'] as core.int?,
+          proto3Optional: json_['proto3Optional'] as core.bool?,
+          type: json_['type'] as core.String?,
+          typeName: json_['typeName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2948,9 +2831,7 @@ class Proto2FileDescriptorProto {
 
   Proto2FileDescriptorProto.fromJson(core.Map json_)
       : this(
-          editionDeprecated: json_.containsKey('editionDeprecated')
-              ? json_['editionDeprecated'] as core.String
-              : null,
+          editionDeprecated: json_['editionDeprecated'] as core.String?,
           enumType: json_.containsKey('enumType')
               ? (json_['enumType'] as core.List)
                   .map((value) => Proto2EnumDescriptorProto.fromJson(
@@ -2963,13 +2844,9 @@ class Proto2FileDescriptorProto {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          package: json_.containsKey('package')
-              ? json_['package'] as core.String
-              : null,
-          syntax: json_.containsKey('syntax')
-              ? json_['syntax'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          package: json_['package'] as core.String?,
+          syntax: json_['syntax'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2992,7 +2869,7 @@ class Proto2OneofDescriptorProto {
 
   Proto2OneofDescriptorProto.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

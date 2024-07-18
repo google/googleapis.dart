@@ -1886,9 +1886,7 @@ class CheckValidCredsResponse {
 
   CheckValidCredsResponse.fromJson(core.Map json_)
       : this(
-          hasValidCreds: json_.containsKey('hasValidCreds')
-              ? json_['hasValidCreds'] as core.bool
-              : null,
+          hasValidCreds: json_['hasValidCreds'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2026,41 +2024,20 @@ class DataSource {
 
   DataSource.fromJson(core.Map json_)
       : this(
-          authorizationType: json_.containsKey('authorizationType')
-              ? json_['authorizationType'] as core.String
-              : null,
-          clientId: json_.containsKey('clientId')
-              ? json_['clientId'] as core.String
-              : null,
-          dataRefreshType: json_.containsKey('dataRefreshType')
-              ? json_['dataRefreshType'] as core.String
-              : null,
-          dataSourceId: json_.containsKey('dataSourceId')
-              ? json_['dataSourceId'] as core.String
-              : null,
+          authorizationType: json_['authorizationType'] as core.String?,
+          clientId: json_['clientId'] as core.String?,
+          dataRefreshType: json_['dataRefreshType'] as core.String?,
+          dataSourceId: json_['dataSourceId'] as core.String?,
           defaultDataRefreshWindowDays:
-              json_.containsKey('defaultDataRefreshWindowDays')
-                  ? json_['defaultDataRefreshWindowDays'] as core.int
-                  : null,
-          defaultSchedule: json_.containsKey('defaultSchedule')
-              ? json_['defaultSchedule'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          helpUrl: json_.containsKey('helpUrl')
-              ? json_['helpUrl'] as core.String
-              : null,
-          manualRunsDisabled: json_.containsKey('manualRunsDisabled')
-              ? json_['manualRunsDisabled'] as core.bool
-              : null,
-          minimumScheduleInterval: json_.containsKey('minimumScheduleInterval')
-              ? json_['minimumScheduleInterval'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+              json_['defaultDataRefreshWindowDays'] as core.int?,
+          defaultSchedule: json_['defaultSchedule'] as core.String?,
+          description: json_['description'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          helpUrl: json_['helpUrl'] as core.String?,
+          manualRunsDisabled: json_['manualRunsDisabled'] as core.bool?,
+          minimumScheduleInterval:
+              json_['minimumScheduleInterval'] as core.String?,
+          name: json_['name'] as core.String?,
           parameters: json_.containsKey('parameters')
               ? (json_['parameters'] as core.List)
                   .map((value) => DataSourceParameter.fromJson(
@@ -2072,19 +2049,11 @@ class DataSource {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          supportsCustomSchedule: json_.containsKey('supportsCustomSchedule')
-              ? json_['supportsCustomSchedule'] as core.bool
-              : null,
+          supportsCustomSchedule: json_['supportsCustomSchedule'] as core.bool?,
           supportsMultipleTransfers:
-              json_.containsKey('supportsMultipleTransfers')
-                  ? json_['supportsMultipleTransfers'] as core.bool
-                  : null,
-          transferType: json_.containsKey('transferType')
-              ? json_['transferType'] as core.String
-              : null,
-          updateDeadlineSeconds: json_.containsKey('updateDeadlineSeconds')
-              ? json_['updateDeadlineSeconds'] as core.int
-              : null,
+              json_['supportsMultipleTransfers'] as core.bool?,
+          transferType: json_['transferType'] as core.String?,
+          updateDeadlineSeconds: json_['updateDeadlineSeconds'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2209,52 +2178,26 @@ class DataSourceParameter {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          deprecated: json_.containsKey('deprecated')
-              ? json_['deprecated'] as core.bool
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+          deprecated: json_['deprecated'] as core.bool?,
+          description: json_['description'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
           fields: json_.containsKey('fields')
               ? (json_['fields'] as core.List)
                   .map((value) => DataSourceParameter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          immutable: json_.containsKey('immutable')
-              ? json_['immutable'] as core.bool
-              : null,
-          maxValue: json_.containsKey('maxValue')
-              ? (json_['maxValue'] as core.num).toDouble()
-              : null,
-          minValue: json_.containsKey('minValue')
-              ? (json_['minValue'] as core.num).toDouble()
-              : null,
-          paramId: json_.containsKey('paramId')
-              ? json_['paramId'] as core.String
-              : null,
-          recurse: json_.containsKey('recurse')
-              ? json_['recurse'] as core.bool
-              : null,
-          repeated: json_.containsKey('repeated')
-              ? json_['repeated'] as core.bool
-              : null,
-          required: json_.containsKey('required')
-              ? json_['required'] as core.bool
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
-          validationDescription: json_.containsKey('validationDescription')
-              ? json_['validationDescription'] as core.String
-              : null,
-          validationHelpUrl: json_.containsKey('validationHelpUrl')
-              ? json_['validationHelpUrl'] as core.String
-              : null,
-          validationRegex: json_.containsKey('validationRegex')
-              ? json_['validationRegex'] as core.String
-              : null,
+          immutable: json_['immutable'] as core.bool?,
+          maxValue: (json_['maxValue'] as core.num?)?.toDouble(),
+          minValue: (json_['minValue'] as core.num?)?.toDouble(),
+          paramId: json_['paramId'] as core.String?,
+          recurse: json_['recurse'] as core.bool?,
+          repeated: json_['repeated'] as core.bool?,
+          required: json_['required'] as core.bool?,
+          type: json_['type'] as core.String?,
+          validationDescription: json_['validationDescription'] as core.String?,
+          validationHelpUrl: json_['validationHelpUrl'] as core.String?,
+          validationRegex: json_['validationRegex'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2290,9 +2233,7 @@ class EmailPreferences {
 
   EmailPreferences.fromJson(core.Map json_)
       : this(
-          enableFailureEmail: json_.containsKey('enableFailureEmail')
-              ? json_['enableFailureEmail'] as core.bool
-              : null,
+          enableFailureEmail: json_['enableFailureEmail'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2320,9 +2261,7 @@ class EncryptionConfiguration {
 
   EncryptionConfiguration.fromJson(core.Map json_)
       : this(
-          kmsKeyName: json_.containsKey('kmsKeyName')
-              ? json_['kmsKeyName'] as core.String
-              : null,
+          kmsKeyName: json_['kmsKeyName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2383,9 +2322,7 @@ class ListDataSourcesResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2415,9 +2352,7 @@ class ListLocationsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2449,9 +2384,7 @@ class ListTransferConfigsResponse {
 
   ListTransferConfigsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           transferConfigs: json_.containsKey('transferConfigs')
               ? (json_['transferConfigs'] as core.List)
                   .map((value) => TransferConfig.fromJson(
@@ -2489,9 +2422,7 @@ class ListTransferLogsResponse {
 
   ListTransferLogsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           transferMessages: json_.containsKey('transferMessages')
               ? (json_['transferMessages'] as core.List)
                   .map((value) => TransferMessage.fromJson(
@@ -2529,9 +2460,7 @@ class ListTransferRunsResponse {
 
   ListTransferRunsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           transferRuns: json_.containsKey('transferRuns')
               ? (json_['transferRuns'] as core.List)
                   .map((value) => TransferRun.fromJson(
@@ -2582,15 +2511,9 @@ class ScheduleOptions {
 
   ScheduleOptions.fromJson(core.Map json_)
       : this(
-          disableAutoScheduling: json_.containsKey('disableAutoScheduling')
-              ? json_['disableAutoScheduling'] as core.bool
-              : null,
-          endTime: json_.containsKey('endTime')
-              ? json_['endTime'] as core.String
-              : null,
-          startTime: json_.containsKey('startTime')
-              ? json_['startTime'] as core.String
-              : null,
+          disableAutoScheduling: json_['disableAutoScheduling'] as core.bool?,
+          endTime: json_['endTime'] as core.String?,
+          startTime: json_['startTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2624,12 +2547,8 @@ class ScheduleTransferRunsRequest {
 
   ScheduleTransferRunsRequest.fromJson(core.Map json_)
       : this(
-          endTime: json_.containsKey('endTime')
-              ? json_['endTime'] as core.String
-              : null,
-          startTime: json_.containsKey('startTime')
-              ? json_['startTime'] as core.String
-              : null,
+          endTime: json_['endTime'] as core.String?,
+          startTime: json_['startTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2685,9 +2604,7 @@ class StartManualTransferRunsRequest {
 
   StartManualTransferRunsRequest.fromJson(core.Map json_)
       : this(
-          requestedRunTime: json_.containsKey('requestedRunTime')
-              ? json_['requestedRunTime'] as core.String
-              : null,
+          requestedRunTime: json_['requestedRunTime'] as core.String?,
           requestedTimeRange: json_.containsKey('requestedTimeRange')
               ? TimeRange.fromJson(json_['requestedTimeRange']
                   as core.Map<core.String, core.dynamic>)
@@ -2758,12 +2675,8 @@ class TimeRange {
 
   TimeRange.fromJson(core.Map json_)
       : this(
-          endTime: json_.containsKey('endTime')
-              ? json_['endTime'] as core.String
-              : null,
-          startTime: json_.containsKey('startTime')
-              ? json_['startTime'] as core.String
-              : null,
+          endTime: json_['endTime'] as core.String?,
+          startTime: json_['startTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2928,24 +2841,12 @@ class TransferConfig {
 
   TransferConfig.fromJson(core.Map json_)
       : this(
-          dataRefreshWindowDays: json_.containsKey('dataRefreshWindowDays')
-              ? json_['dataRefreshWindowDays'] as core.int
-              : null,
-          dataSourceId: json_.containsKey('dataSourceId')
-              ? json_['dataSourceId'] as core.String
-              : null,
-          datasetRegion: json_.containsKey('datasetRegion')
-              ? json_['datasetRegion'] as core.String
-              : null,
-          destinationDatasetId: json_.containsKey('destinationDatasetId')
-              ? json_['destinationDatasetId'] as core.String
-              : null,
-          disabled: json_.containsKey('disabled')
-              ? json_['disabled'] as core.bool
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+          dataRefreshWindowDays: json_['dataRefreshWindowDays'] as core.int?,
+          dataSourceId: json_['dataSourceId'] as core.String?,
+          datasetRegion: json_['datasetRegion'] as core.String?,
+          destinationDatasetId: json_['destinationDatasetId'] as core.String?,
+          disabled: json_['disabled'] as core.bool?,
+          displayName: json_['displayName'] as core.String?,
           emailPreferences: json_.containsKey('emailPreferences')
               ? EmailPreferences.fromJson(json_['emailPreferences']
                   as core.Map<core.String, core.dynamic>)
@@ -2955,13 +2856,10 @@ class TransferConfig {
                   json_['encryptionConfiguration']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          nextRunTime: json_.containsKey('nextRunTime')
-              ? json_['nextRunTime'] as core.String
-              : null,
-          notificationPubsubTopic: json_.containsKey('notificationPubsubTopic')
-              ? json_['notificationPubsubTopic'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          nextRunTime: json_['nextRunTime'] as core.String?,
+          notificationPubsubTopic:
+              json_['notificationPubsubTopic'] as core.String?,
           ownerInfo: json_.containsKey('ownerInfo')
               ? UserInfo.fromJson(
                   json_['ownerInfo'] as core.Map<core.String, core.dynamic>)
@@ -2969,21 +2867,14 @@ class TransferConfig {
           params: json_.containsKey('params')
               ? json_['params'] as core.Map<core.String, core.dynamic>
               : null,
-          schedule: json_.containsKey('schedule')
-              ? json_['schedule'] as core.String
-              : null,
+          schedule: json_['schedule'] as core.String?,
           scheduleOptions: json_.containsKey('scheduleOptions')
               ? ScheduleOptions.fromJson(json_['scheduleOptions']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
-          userId: json_.containsKey('userId')
-              ? json_['userId'] as core.String
-              : null,
+          state: json_['state'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
+          userId: json_['userId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3036,15 +2927,9 @@ class TransferMessage {
 
   TransferMessage.fromJson(core.Map json_)
       : this(
-          messageText: json_.containsKey('messageText')
-              ? json_['messageText'] as core.String
-              : null,
-          messageTime: json_.containsKey('messageTime')
-              ? json_['messageTime'] as core.String
-              : null,
-          severity: json_.containsKey('severity')
-              ? json_['severity'] as core.String
-              : null,
+          messageText: json_['messageText'] as core.String?,
+          messageTime: json_['messageTime'] as core.String?,
+          severity: json_['severity'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3179,50 +3064,30 @@ class TransferRun {
 
   TransferRun.fromJson(core.Map json_)
       : this(
-          dataSourceId: json_.containsKey('dataSourceId')
-              ? json_['dataSourceId'] as core.String
-              : null,
-          destinationDatasetId: json_.containsKey('destinationDatasetId')
-              ? json_['destinationDatasetId'] as core.String
-              : null,
+          dataSourceId: json_['dataSourceId'] as core.String?,
+          destinationDatasetId: json_['destinationDatasetId'] as core.String?,
           emailPreferences: json_.containsKey('emailPreferences')
               ? EmailPreferences.fromJson(json_['emailPreferences']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          endTime: json_.containsKey('endTime')
-              ? json_['endTime'] as core.String
-              : null,
+          endTime: json_['endTime'] as core.String?,
           errorStatus: json_.containsKey('errorStatus')
               ? Status.fromJson(
                   json_['errorStatus'] as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          notificationPubsubTopic: json_.containsKey('notificationPubsubTopic')
-              ? json_['notificationPubsubTopic'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          notificationPubsubTopic:
+              json_['notificationPubsubTopic'] as core.String?,
           params: json_.containsKey('params')
               ? json_['params'] as core.Map<core.String, core.dynamic>
               : null,
-          runTime: json_.containsKey('runTime')
-              ? json_['runTime'] as core.String
-              : null,
-          schedule: json_.containsKey('schedule')
-              ? json_['schedule'] as core.String
-              : null,
-          scheduleTime: json_.containsKey('scheduleTime')
-              ? json_['scheduleTime'] as core.String
-              : null,
-          startTime: json_.containsKey('startTime')
-              ? json_['startTime'] as core.String
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
-          userId: json_.containsKey('userId')
-              ? json_['userId'] as core.String
-              : null,
+          runTime: json_['runTime'] as core.String?,
+          schedule: json_['schedule'] as core.String?,
+          scheduleTime: json_['scheduleTime'] as core.String?,
+          startTime: json_['startTime'] as core.String?,
+          state: json_['state'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
+          userId: json_['userId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3283,8 +3148,7 @@ class UserInfo {
 
   UserInfo.fromJson(core.Map json_)
       : this(
-          email:
-              json_.containsKey('email') ? json_['email'] as core.String : null,
+          email: json_['email'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

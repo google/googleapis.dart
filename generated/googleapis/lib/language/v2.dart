@@ -287,9 +287,7 @@ class AnalyzeEntitiesRequest {
               ? Document.fromJson(
                   json_['document'] as core.Map<core.String, core.dynamic>)
               : null,
-          encodingType: json_.containsKey('encodingType')
-              ? json_['encodingType'] as core.String
-              : null,
+          encodingType: json_['encodingType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -329,12 +327,8 @@ class AnalyzeEntitiesResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          languageCode: json_.containsKey('languageCode')
-              ? json_['languageCode'] as core.String
-              : null,
-          languageSupported: json_.containsKey('languageSupported')
-              ? json_['languageSupported'] as core.bool
-              : null,
+          languageCode: json_['languageCode'] as core.String?,
+          languageSupported: json_['languageSupported'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -377,9 +371,7 @@ class AnalyzeSentimentRequest {
               ? Document.fromJson(
                   json_['document'] as core.Map<core.String, core.dynamic>)
               : null,
-          encodingType: json_.containsKey('encodingType')
-              ? json_['encodingType'] as core.String
-              : null,
+          encodingType: json_['encodingType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -421,12 +413,8 @@ class AnalyzeSentimentResponse {
               ? Sentiment.fromJson(json_['documentSentiment']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          languageCode: json_.containsKey('languageCode')
-              ? json_['languageCode'] as core.String
-              : null,
-          languageSupported: json_.containsKey('languageSupported')
-              ? json_['languageSupported'] as core.bool
-              : null,
+          languageCode: json_['languageCode'] as core.String?,
+          languageSupported: json_['languageSupported'] as core.bool?,
           sentences: json_.containsKey('sentences')
               ? (json_['sentences'] as core.List)
                   .map((value) => Sentence.fromJson(
@@ -483,9 +471,7 @@ class AnnotateTextRequest {
               ? Document.fromJson(
                   json_['document'] as core.Map<core.String, core.dynamic>)
               : null,
-          encodingType: json_.containsKey('encodingType')
-              ? json_['encodingType'] as core.String
-              : null,
+          encodingType: json_['encodingType'] as core.String?,
           features: json_.containsKey('features')
               ? AnnotateTextRequestFeatures.fromJson(
                   json_['features'] as core.Map<core.String, core.dynamic>)
@@ -532,19 +518,11 @@ class AnnotateTextRequestFeatures {
 
   AnnotateTextRequestFeatures.fromJson(core.Map json_)
       : this(
-          classifyText: json_.containsKey('classifyText')
-              ? json_['classifyText'] as core.bool
-              : null,
+          classifyText: json_['classifyText'] as core.bool?,
           extractDocumentSentiment:
-              json_.containsKey('extractDocumentSentiment')
-                  ? json_['extractDocumentSentiment'] as core.bool
-                  : null,
-          extractEntities: json_.containsKey('extractEntities')
-              ? json_['extractEntities'] as core.bool
-              : null,
-          moderateText: json_.containsKey('moderateText')
-              ? json_['moderateText'] as core.bool
-              : null,
+              json_['extractDocumentSentiment'] as core.bool?,
+          extractEntities: json_['extractEntities'] as core.bool?,
+          moderateText: json_['moderateText'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -623,12 +601,8 @@ class AnnotateTextResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          languageCode: json_.containsKey('languageCode')
-              ? json_['languageCode'] as core.String
-              : null,
-          languageSupported: json_.containsKey('languageSupported')
-              ? json_['languageSupported'] as core.bool
-              : null,
+          languageCode: json_['languageCode'] as core.String?,
+          languageSupported: json_['languageSupported'] as core.bool?,
           moderationCategories: json_.containsKey('moderationCategories')
               ? (json_['moderationCategories'] as core.List)
                   .map((value) => ClassificationCategory.fromJson(
@@ -713,12 +687,8 @@ class ClassifyTextResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          languageCode: json_.containsKey('languageCode')
-              ? json_['languageCode'] as core.String
-              : null,
-          languageSupported: json_.containsKey('languageSupported')
-              ? json_['languageSupported'] as core.bool
-              : null,
+          languageCode: json_['languageCode'] as core.String?,
+          languageSupported: json_['languageSupported'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -774,16 +744,10 @@ class Document {
 
   Document.fromJson(core.Map json_)
       : this(
-          content: json_.containsKey('content')
-              ? json_['content'] as core.String
-              : null,
-          gcsContentUri: json_.containsKey('gcsContentUri')
-              ? json_['gcsContentUri'] as core.String
-              : null,
-          languageCode: json_.containsKey('languageCode')
-              ? json_['languageCode'] as core.String
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          content: json_['content'] as core.String?,
+          gcsContentUri: json_['gcsContentUri'] as core.String?,
+          languageCode: json_['languageCode'] as core.String?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -875,12 +839,12 @@ class Entity {
                   ),
                 )
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           sentiment: json_.containsKey('sentiment')
               ? Sentiment.fromJson(
                   json_['sentiment'] as core.Map<core.String, core.dynamic>)
               : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -927,9 +891,7 @@ class EntityMention {
 
   EntityMention.fromJson(core.Map json_)
       : this(
-          probability: json_.containsKey('probability')
-              ? (json_['probability'] as core.num).toDouble()
-              : null,
+          probability: (json_['probability'] as core.num?)?.toDouble(),
           sentiment: json_.containsKey('sentiment')
               ? Sentiment.fromJson(
                   json_['sentiment'] as core.Map<core.String, core.dynamic>)
@@ -938,7 +900,7 @@ class EntityMention {
               ? TextSpan.fromJson(
                   json_['text'] as core.Map<core.String, core.dynamic>)
               : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -998,12 +960,8 @@ class ModerateTextResponse {
 
   ModerateTextResponse.fromJson(core.Map json_)
       : this(
-          languageCode: json_.containsKey('languageCode')
-              ? json_['languageCode'] as core.String
-              : null,
-          languageSupported: json_.containsKey('languageSupported')
-              ? json_['languageSupported'] as core.bool
-              : null,
+          languageCode: json_['languageCode'] as core.String?,
+          languageSupported: json_['languageSupported'] as core.bool?,
           moderationCategories: json_.containsKey('moderationCategories')
               ? (json_['moderationCategories'] as core.List)
                   .map((value) => ClassificationCategory.fromJson(

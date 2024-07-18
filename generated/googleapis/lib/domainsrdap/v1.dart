@@ -528,18 +528,13 @@ class Link {
 
   Link.fromJson(core.Map json_)
       : this(
-          href: json_.containsKey('href') ? json_['href'] as core.String : null,
-          hreflang: json_.containsKey('hreflang')
-              ? json_['hreflang'] as core.String
-              : null,
-          media:
-              json_.containsKey('media') ? json_['media'] as core.String : null,
-          rel: json_.containsKey('rel') ? json_['rel'] as core.String : null,
-          title:
-              json_.containsKey('title') ? json_['title'] as core.String : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
+          href: json_['href'] as core.String?,
+          hreflang: json_['hreflang'] as core.String?,
+          media: json_['media'] as core.String?,
+          rel: json_['rel'] as core.String?,
+          title: json_['title'] as core.String?,
+          type: json_['type'] as core.String?,
+          value: json_['value'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -594,9 +589,8 @@ class Notice {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          title:
-              json_.containsKey('title') ? json_['title'] as core.String : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          title: json_['title'] as core.String?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -652,14 +646,12 @@ class RdapResponse {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          errorCode: json_.containsKey('errorCode')
-              ? json_['errorCode'] as core.int
-              : null,
+          errorCode: json_['errorCode'] as core.int?,
           jsonResponse: json_.containsKey('jsonResponse')
               ? HttpBody.fromJson(
                   json_['jsonResponse'] as core.Map<core.String, core.dynamic>)
               : null,
-          lang: json_.containsKey('lang') ? json_['lang'] as core.String : null,
+          lang: json_['lang'] as core.String?,
           notices: json_.containsKey('notices')
               ? (json_['notices'] as core.List)
                   .map((value) => Notice.fromJson(
@@ -671,8 +663,7 @@ class RdapResponse {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          title:
-              json_.containsKey('title') ? json_['title'] as core.String : null,
+          title: json_['title'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

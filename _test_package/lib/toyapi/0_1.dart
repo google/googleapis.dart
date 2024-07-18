@@ -959,9 +959,7 @@ class NestedResponse {
 
   NestedResponse.fromJson(core.Map json_)
       : this(
-          nestedResult: json_.containsKey('nestedResult')
-              ? json_['nestedResult'] as core.String
-              : null,
+          nestedResult: json_['nestedResult'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -978,7 +976,7 @@ class ToyAgeRequest {
 
   ToyAgeRequest.fromJson(core.Map json_)
       : this(
-          age: json_.containsKey('age') ? json_['age'] as core.int : null,
+          age: json_['age'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1048,10 +1046,8 @@ class ToyMapResponse {
                   ),
                 )
               : null,
-          result: json_.containsKey('result')
-              ? json_['result'] as core.String
-              : null,
-          v: json_.containsKey('v') ? json_['v'] : null,
+          result: json_['result'] as core.String?,
+          v: json_['v'],
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1075,8 +1071,8 @@ class ToyRequest {
 
   ToyRequest.fromJson(core.Map json_)
       : this(
-          age: json_.containsKey('age') ? json_['age'] as core.int : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          age: json_['age'] as core.int?,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

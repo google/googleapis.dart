@@ -5089,18 +5089,10 @@ class Api {
                   ),
                 )
               : null,
-          availability: json_.containsKey('availability')
-              ? json_['availability'] as core.String
-              : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+          availability: json_['availability'] as core.String?,
+          createTime: json_['createTime'] as core.String?,
+          description: json_['description'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -5109,16 +5101,10 @@ class Api {
                   ),
                 )
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          recommendedDeployment: json_.containsKey('recommendedDeployment')
-              ? json_['recommendedDeployment'] as core.String
-              : null,
-          recommendedVersion: json_.containsKey('recommendedVersion')
-              ? json_['recommendedVersion'] as core.String
-              : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          recommendedDeployment: json_['recommendedDeployment'] as core.String?,
+          recommendedVersion: json_['recommendedVersion'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5242,9 +5228,7 @@ class ApiDeployment {
 
   ApiDeployment.fromJson(core.Map json_)
       : this(
-          accessGuidance: json_.containsKey('accessGuidance')
-              ? json_['accessGuidance'] as core.String
-              : null,
+          accessGuidance: json_['accessGuidance'] as core.String?,
           annotations: json_.containsKey('annotations')
               ? (json_['annotations'] as core.Map<core.String, core.dynamic>)
                   .map(
@@ -5254,27 +5238,13 @@ class ApiDeployment {
                   ),
                 )
               : null,
-          apiSpecRevision: json_.containsKey('apiSpecRevision')
-              ? json_['apiSpecRevision'] as core.String
-              : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          endpointUri: json_.containsKey('endpointUri')
-              ? json_['endpointUri'] as core.String
-              : null,
-          externalChannelUri: json_.containsKey('externalChannelUri')
-              ? json_['externalChannelUri'] as core.String
-              : null,
-          intendedAudience: json_.containsKey('intendedAudience')
-              ? json_['intendedAudience'] as core.String
-              : null,
+          apiSpecRevision: json_['apiSpecRevision'] as core.String?,
+          createTime: json_['createTime'] as core.String?,
+          description: json_['description'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          endpointUri: json_['endpointUri'] as core.String?,
+          externalChannelUri: json_['externalChannelUri'] as core.String?,
+          intendedAudience: json_['intendedAudience'] as core.String?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -5283,16 +5253,10 @@ class ApiDeployment {
                   ),
                 )
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          revisionCreateTime: json_.containsKey('revisionCreateTime')
-              ? json_['revisionCreateTime'] as core.String
-              : null,
-          revisionId: json_.containsKey('revisionId')
-              ? json_['revisionId'] as core.String
-              : null,
-          revisionUpdateTime: json_.containsKey('revisionUpdateTime')
-              ? json_['revisionUpdateTime'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          revisionCreateTime: json_['revisionCreateTime'] as core.String?,
+          revisionId: json_['revisionId'] as core.String?,
+          revisionUpdateTime: json_['revisionUpdateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5450,19 +5414,11 @@ class ApiSpec {
                   ),
                 )
               : null,
-          contents: json_.containsKey('contents')
-              ? json_['contents'] as core.String
-              : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          filename: json_.containsKey('filename')
-              ? json_['filename'] as core.String
-              : null,
-          hash: json_.containsKey('hash') ? json_['hash'] as core.String : null,
+          contents: json_['contents'] as core.String?,
+          createTime: json_['createTime'] as core.String?,
+          description: json_['description'] as core.String?,
+          filename: json_['filename'] as core.String?,
+          hash: json_['hash'] as core.String?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -5471,25 +5427,13 @@ class ApiSpec {
                   ),
                 )
               : null,
-          mimeType: json_.containsKey('mimeType')
-              ? json_['mimeType'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          revisionCreateTime: json_.containsKey('revisionCreateTime')
-              ? json_['revisionCreateTime'] as core.String
-              : null,
-          revisionId: json_.containsKey('revisionId')
-              ? json_['revisionId'] as core.String
-              : null,
-          revisionUpdateTime: json_.containsKey('revisionUpdateTime')
-              ? json_['revisionUpdateTime'] as core.String
-              : null,
-          sizeBytes: json_.containsKey('sizeBytes')
-              ? json_['sizeBytes'] as core.int
-              : null,
-          sourceUri: json_.containsKey('sourceUri')
-              ? json_['sourceUri'] as core.String
-              : null,
+          mimeType: json_['mimeType'] as core.String?,
+          name: json_['name'] as core.String?,
+          revisionCreateTime: json_['revisionCreateTime'] as core.String?,
+          revisionId: json_['revisionId'] as core.String?,
+          revisionUpdateTime: json_['revisionUpdateTime'] as core.String?,
+          sizeBytes: json_['sizeBytes'] as core.int?,
+          sourceUri: json_['sourceUri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5590,15 +5534,9 @@ class ApiVersion {
                   ),
                 )
               : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          description: json_['description'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -5607,15 +5545,10 @@ class ApiVersion {
                   ),
                 )
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          primarySpec: json_.containsKey('primarySpec')
-              ? json_['primarySpec'] as core.String
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          primarySpec: json_['primarySpec'] as core.String?,
+          state: json_['state'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5733,13 +5666,9 @@ class Artifact {
                   ),
                 )
               : null,
-          contents: json_.containsKey('contents')
-              ? json_['contents'] as core.String
-              : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          hash: json_.containsKey('hash') ? json_['hash'] as core.String : null,
+          contents: json_['contents'] as core.String?,
+          createTime: json_['createTime'] as core.String?,
+          hash: json_['hash'] as core.String?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -5748,16 +5677,10 @@ class Artifact {
                   ),
                 )
               : null,
-          mimeType: json_.containsKey('mimeType')
-              ? json_['mimeType'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          sizeBytes: json_.containsKey('sizeBytes')
-              ? json_['sizeBytes'] as core.int
-              : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          mimeType: json_['mimeType'] as core.String?,
+          name: json_['name'] as core.String?,
+          sizeBytes: json_['sizeBytes'] as core.int?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5846,7 +5769,7 @@ class Binding {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          role: json_.containsKey('role') ? json_['role'] as core.String : null,
+          role: json_['role'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5881,13 +5804,9 @@ class Build {
 
   Build.fromJson(core.Map json_)
       : this(
-          commitId: json_.containsKey('commitId')
-              ? json_['commitId'] as core.String
-              : null,
-          commitTime: json_.containsKey('commitTime')
-              ? json_['commitTime'] as core.String
-              : null,
-          repo: json_.containsKey('repo') ? json_['repo'] as core.String : null,
+          commitId: json_['commitId'] as core.String?,
+          commitTime: json_['commitTime'] as core.String?,
+          repo: json_['repo'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5923,12 +5842,8 @@ class Config {
 
   Config.fromJson(core.Map json_)
       : this(
-          cmekKeyName: json_.containsKey('cmekKeyName')
-              ? json_['cmekKeyName'] as core.String
-              : null,
-          location: json_.containsKey('location')
-              ? json_['location'] as core.String
-              : null,
+          cmekKeyName: json_['cmekKeyName'] as core.String?,
+          location: json_['location'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6053,18 +5968,11 @@ class Instance {
               ? Config.fromJson(
                   json_['config'] as core.Map<core.String, core.dynamic>)
               : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
-          stateMessage: json_.containsKey('stateMessage')
-              ? json_['stateMessage'] as core.String
-              : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          name: json_['name'] as core.String?,
+          state: json_['state'] as core.String?,
+          stateMessage: json_['stateMessage'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6101,9 +6009,7 @@ class ListApiDeploymentRevisionsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6135,9 +6041,7 @@ class ListApiDeploymentsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6169,9 +6073,7 @@ class ListApiSpecRevisionsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6203,9 +6105,7 @@ class ListApiSpecsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6237,9 +6137,7 @@ class ListApiVersionsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6271,9 +6169,7 @@ class ListApisResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6305,9 +6201,7 @@ class ListArtifactsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6337,9 +6231,7 @@ class ListLocationsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6363,9 +6255,7 @@ class ListOperationsResponse {
 
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           operations: json_.containsKey('operations')
               ? (json_['operations'] as core.List)
                   .map((value) => Operation.fromJson(
@@ -6436,7 +6326,7 @@ class Operation {
 
   Operation.fromJson(core.Map json_)
       : this(
-          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
@@ -6444,7 +6334,7 @@ class Operation {
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           response: json_.containsKey('response')
               ? json_['response'] as core.Map<core.String, core.dynamic>
               : null,
@@ -6556,10 +6446,8 @@ class Policy {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          version: json_.containsKey('version')
-              ? json_['version'] as core.int
-              : null,
+          etag: json_['etag'] as core.String?,
+          version: json_['version'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6584,9 +6472,7 @@ class RollbackApiDeploymentRequest {
 
   RollbackApiDeploymentRequest.fromJson(core.Map json_)
       : this(
-          revisionId: json_.containsKey('revisionId')
-              ? json_['revisionId'] as core.String
-              : null,
+          revisionId: json_['revisionId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6609,9 +6495,7 @@ class RollbackApiSpecRequest {
 
   RollbackApiSpecRequest.fromJson(core.Map json_)
       : this(
-          revisionId: json_.containsKey('revisionId')
-              ? json_['revisionId'] as core.String
-              : null,
+          revisionId: json_['revisionId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

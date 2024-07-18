@@ -346,13 +346,10 @@ class GoogleExampleLibraryagentV1Book {
 
   GoogleExampleLibraryagentV1Book.fromJson(core.Map json_)
       : this(
-          author: json_.containsKey('author')
-              ? json_['author'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          read: json_.containsKey('read') ? json_['read'] as core.bool : null,
-          title:
-              json_.containsKey('title') ? json_['title'] as core.String : null,
+          author: json_['author'] as core.String?,
+          name: json_['name'] as core.String?,
+          read: json_['read'] as core.bool?,
+          title: json_['title'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -387,9 +384,7 @@ class GoogleExampleLibraryagentV1ListBooksResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -417,9 +412,7 @@ class GoogleExampleLibraryagentV1ListShelvesResponse {
 
   GoogleExampleLibraryagentV1ListShelvesResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           shelves: json_.containsKey('shelves')
               ? (json_['shelves'] as core.List)
                   .map((value) => GoogleExampleLibraryagentV1Shelf.fromJson(
@@ -454,9 +447,8 @@ class GoogleExampleLibraryagentV1Shelf {
 
   GoogleExampleLibraryagentV1Shelf.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          theme:
-              json_.containsKey('theme') ? json_['theme'] as core.String : null,
+          name: json_['name'] as core.String?,
+          theme: json_['theme'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

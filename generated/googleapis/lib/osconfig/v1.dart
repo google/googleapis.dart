@@ -1604,7 +1604,7 @@ class AptSettings {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1746,38 +1746,18 @@ class CVSSv3 {
 
   CVSSv3.fromJson(core.Map json_)
       : this(
-          attackComplexity: json_.containsKey('attackComplexity')
-              ? json_['attackComplexity'] as core.String
-              : null,
-          attackVector: json_.containsKey('attackVector')
-              ? json_['attackVector'] as core.String
-              : null,
-          availabilityImpact: json_.containsKey('availabilityImpact')
-              ? json_['availabilityImpact'] as core.String
-              : null,
-          baseScore: json_.containsKey('baseScore')
-              ? (json_['baseScore'] as core.num).toDouble()
-              : null,
-          confidentialityImpact: json_.containsKey('confidentialityImpact')
-              ? json_['confidentialityImpact'] as core.String
-              : null,
-          exploitabilityScore: json_.containsKey('exploitabilityScore')
-              ? (json_['exploitabilityScore'] as core.num).toDouble()
-              : null,
-          impactScore: json_.containsKey('impactScore')
-              ? (json_['impactScore'] as core.num).toDouble()
-              : null,
-          integrityImpact: json_.containsKey('integrityImpact')
-              ? json_['integrityImpact'] as core.String
-              : null,
-          privilegesRequired: json_.containsKey('privilegesRequired')
-              ? json_['privilegesRequired'] as core.String
-              : null,
-          scope:
-              json_.containsKey('scope') ? json_['scope'] as core.String : null,
-          userInteraction: json_.containsKey('userInteraction')
-              ? json_['userInteraction'] as core.String
-              : null,
+          attackComplexity: json_['attackComplexity'] as core.String?,
+          attackVector: json_['attackVector'] as core.String?,
+          availabilityImpact: json_['availabilityImpact'] as core.String?,
+          baseScore: (json_['baseScore'] as core.num?)?.toDouble(),
+          confidentialityImpact: json_['confidentialityImpact'] as core.String?,
+          exploitabilityScore:
+              (json_['exploitabilityScore'] as core.num?)?.toDouble(),
+          impactScore: (json_['impactScore'] as core.num?)?.toDouble(),
+          integrityImpact: json_['integrityImpact'] as core.String?,
+          privilegesRequired: json_['privilegesRequired'] as core.String?,
+          scope: json_['scope'] as core.String?,
+          userInteraction: json_['userInteraction'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1908,12 +1888,8 @@ class ExecStepConfig {
               ? GcsObject.fromJson(
                   json_['gcsObject'] as core.Map<core.String, core.dynamic>)
               : null,
-          interpreter: json_.containsKey('interpreter')
-              ? json_['interpreter'] as core.String
-              : null,
-          localPath: json_.containsKey('localPath')
-              ? json_['localPath'] as core.String
-              : null,
+          interpreter: json_['interpreter'] as core.String?,
+          localPath: json_['localPath'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1972,17 +1948,10 @@ class ExecutePatchJobRequest {
 
   ExecutePatchJobRequest.fromJson(core.Map json_)
       : this(
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          dryRun:
-              json_.containsKey('dryRun') ? json_['dryRun'] as core.bool : null,
-          duration: json_.containsKey('duration')
-              ? json_['duration'] as core.String
-              : null,
+          description: json_['description'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          dryRun: json_['dryRun'] as core.bool?,
+          duration: json_['duration'] as core.String?,
           instanceFilter: json_.containsKey('instanceFilter')
               ? PatchInstanceFilter.fromJson(json_['instanceFilter']
                   as core.Map<core.String, core.dynamic>)
@@ -2025,10 +1994,8 @@ class FixedOrPercent {
 
   FixedOrPercent.fromJson(core.Map json_)
       : this(
-          fixed: json_.containsKey('fixed') ? json_['fixed'] as core.int : null,
-          percent: json_.containsKey('percent')
-              ? json_['percent'] as core.int
-              : null,
+          fixed: json_['fixed'] as core.int?,
+          percent: json_['percent'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2065,15 +2032,9 @@ class GcsObject {
 
   GcsObject.fromJson(core.Map json_)
       : this(
-          bucket: json_.containsKey('bucket')
-              ? json_['bucket'] as core.String
-              : null,
-          generationNumber: json_.containsKey('generationNumber')
-              ? json_['generationNumber'] as core.String
-              : null,
-          object: json_.containsKey('object')
-              ? json_['object'] as core.String
-              : null,
+          bucket: json_['bucket'] as core.String?,
+          generationNumber: json_['generationNumber'] as core.String?,
+          object: json_['object'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2134,14 +2095,12 @@ class Inventory {
                   ),
                 )
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           osInfo: json_.containsKey('osInfo')
               ? InventoryOsInfo.fromJson(
                   json_['osInfo'] as core.Map<core.String, core.dynamic>)
               : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2201,21 +2160,15 @@ class InventoryItem {
               ? InventorySoftwarePackage.fromJson(json_['availablePackage']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          createTime: json_['createTime'] as core.String?,
+          id: json_['id'] as core.String?,
           installedPackage: json_.containsKey('installedPackage')
               ? InventorySoftwarePackage.fromJson(json_['installedPackage']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          originType: json_.containsKey('originType')
-              ? json_['originType'] as core.String
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          originType: json_['originType'] as core.String?,
+          type: json_['type'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2390,22 +2343,14 @@ class InventoryWindowsApplication {
 
   InventoryWindowsApplication.fromJson(core.Map json_)
       : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          displayVersion: json_.containsKey('displayVersion')
-              ? json_['displayVersion'] as core.String
-              : null,
-          helpLink: json_.containsKey('helpLink')
-              ? json_['helpLink'] as core.String
-              : null,
+          displayName: json_['displayName'] as core.String?,
+          displayVersion: json_['displayVersion'] as core.String?,
+          helpLink: json_['helpLink'] as core.String?,
           installDate: json_.containsKey('installDate')
               ? Date.fromJson(
                   json_['installDate'] as core.Map<core.String, core.dynamic>)
               : null,
-          publisher: json_.containsKey('publisher')
-              ? json_['publisher'] as core.String
-              : null,
+          publisher: json_['publisher'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2485,34 +2430,23 @@ class InventoryWindowsUpdatePackage {
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
+          description: json_['description'] as core.String?,
           kbArticleIds: json_.containsKey('kbArticleIds')
               ? (json_['kbArticleIds'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
           lastDeploymentChangeTime:
-              json_.containsKey('lastDeploymentChangeTime')
-                  ? json_['lastDeploymentChangeTime'] as core.String
-                  : null,
+              json_['lastDeploymentChangeTime'] as core.String?,
           moreInfoUrls: json_.containsKey('moreInfoUrls')
               ? (json_['moreInfoUrls'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          revisionNumber: json_.containsKey('revisionNumber')
-              ? json_['revisionNumber'] as core.int
-              : null,
-          supportUrl: json_.containsKey('supportUrl')
-              ? json_['supportUrl'] as core.String
-              : null,
-          title:
-              json_.containsKey('title') ? json_['title'] as core.String : null,
-          updateId: json_.containsKey('updateId')
-              ? json_['updateId'] as core.String
-              : null,
+          revisionNumber: json_['revisionNumber'] as core.int?,
+          supportUrl: json_['supportUrl'] as core.String?,
+          title: json_['title'] as core.String?,
+          updateId: json_['updateId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2558,9 +2492,7 @@ class ListInventoriesResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2586,9 +2518,7 @@ class ListOSPolicyAssignmentReportsResponse {
 
   ListOSPolicyAssignmentReportsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           osPolicyAssignmentReports:
               json_.containsKey('osPolicyAssignmentReports')
                   ? (json_['osPolicyAssignmentReports'] as core.List)
@@ -2621,9 +2551,7 @@ class ListOSPolicyAssignmentRevisionsResponse {
 
   ListOSPolicyAssignmentRevisionsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           osPolicyAssignments: json_.containsKey('osPolicyAssignments')
               ? (json_['osPolicyAssignments'] as core.List)
                   .map((value) => OSPolicyAssignment.fromJson(
@@ -2654,9 +2582,7 @@ class ListOSPolicyAssignmentsResponse {
 
   ListOSPolicyAssignmentsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           osPolicyAssignments: json_.containsKey('osPolicyAssignments')
               ? (json_['osPolicyAssignments'] as core.List)
                   .map((value) => OSPolicyAssignment.fromJson(
@@ -2688,9 +2614,7 @@ class ListPatchDeploymentsResponse {
 
   ListPatchDeploymentsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           patchDeployments: json_.containsKey('patchDeployments')
               ? (json_['patchDeployments'] as core.List)
                   .map((value) => PatchDeployment.fromJson(
@@ -2720,9 +2644,7 @@ class ListPatchJobInstanceDetailsResponse {
 
   ListPatchJobInstanceDetailsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           patchJobInstanceDetails: json_.containsKey('patchJobInstanceDetails')
               ? (json_['patchJobInstanceDetails'] as core.List)
                   .map((value) => PatchJobInstanceDetails.fromJson(
@@ -2753,9 +2675,7 @@ class ListPatchJobsResponse {
 
   ListPatchJobsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           patchJobs: json_.containsKey('patchJobs')
               ? (json_['patchJobs'] as core.List)
                   .map((value) => PatchJob.fromJson(
@@ -2787,9 +2707,7 @@ class ListVulnerabilityReportsResponse {
 
   ListVulnerabilityReportsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           vulnerabilityReports: json_.containsKey('vulnerabilityReports')
               ? (json_['vulnerabilityReports'] as core.List)
                   .map((value) => VulnerabilityReport.fromJson(
@@ -2832,9 +2750,7 @@ class MonthlySchedule {
 
   MonthlySchedule.fromJson(core.Map json_)
       : this(
-          monthDay: json_.containsKey('monthDay')
-              ? json_['monthDay'] as core.int
-              : null,
+          monthDay: json_['monthDay'] as core.int?,
           weekDayOfMonth: json_.containsKey('weekDayOfMonth')
               ? WeekDayOfMonth.fromJson(json_['weekDayOfMonth']
                   as core.Map<core.String, core.dynamic>)
@@ -2904,14 +2820,10 @@ class OSPolicy {
   OSPolicy.fromJson(core.Map json_)
       : this(
           allowNoResourceGroupMatch:
-              json_.containsKey('allowNoResourceGroupMatch')
-                  ? json_['allowNoResourceGroupMatch'] as core.bool
-                  : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          mode: json_.containsKey('mode') ? json_['mode'] as core.String : null,
+              json_['allowNoResourceGroupMatch'] as core.bool?,
+          description: json_['description'] as core.String?,
+          id: json_['id'] as core.String?,
+          mode: json_['mode'] as core.String?,
           resourceGroups: json_.containsKey('resourceGroups')
               ? (json_['resourceGroups'] as core.List)
                   .map((value) => OSPolicyResourceGroup.fromJson(
@@ -3044,45 +2956,31 @@ class OSPolicyAssignment {
 
   OSPolicyAssignment.fromJson(core.Map json_)
       : this(
-          baseline: json_.containsKey('baseline')
-              ? json_['baseline'] as core.bool
-              : null,
-          deleted: json_.containsKey('deleted')
-              ? json_['deleted'] as core.bool
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          baseline: json_['baseline'] as core.bool?,
+          deleted: json_['deleted'] as core.bool?,
+          description: json_['description'] as core.String?,
+          etag: json_['etag'] as core.String?,
           instanceFilter: json_.containsKey('instanceFilter')
               ? OSPolicyAssignmentInstanceFilter.fromJson(
                   json_['instanceFilter']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           osPolicies: json_.containsKey('osPolicies')
               ? (json_['osPolicies'] as core.List)
                   .map((value) => OSPolicy.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          reconciling: json_.containsKey('reconciling')
-              ? json_['reconciling'] as core.bool
-              : null,
-          revisionCreateTime: json_.containsKey('revisionCreateTime')
-              ? json_['revisionCreateTime'] as core.String
-              : null,
-          revisionId: json_.containsKey('revisionId')
-              ? json_['revisionId'] as core.String
-              : null,
+          reconciling: json_['reconciling'] as core.bool?,
+          revisionCreateTime: json_['revisionCreateTime'] as core.String?,
+          revisionId: json_['revisionId'] as core.String?,
           rollout: json_.containsKey('rollout')
               ? OSPolicyAssignmentRollout.fromJson(
                   json_['rollout'] as core.Map<core.String, core.dynamic>)
               : null,
-          rolloutState: json_.containsKey('rolloutState')
-              ? json_['rolloutState'] as core.String
-              : null,
-          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
+          rolloutState: json_['rolloutState'] as core.String?,
+          uid: json_['uid'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3140,7 +3038,7 @@ class OSPolicyAssignmentInstanceFilter {
 
   OSPolicyAssignmentInstanceFilter.fromJson(core.Map json_)
       : this(
-          all: json_.containsKey('all') ? json_['all'] as core.bool : null,
+          all: json_['all'] as core.bool?,
           exclusionLabels: json_.containsKey('exclusionLabels')
               ? (json_['exclusionLabels'] as core.List)
                   .map((value) => OSPolicyAssignmentLabelSet.fromJson(
@@ -3252,16 +3150,10 @@ class OSPolicyAssignmentReport {
 
   OSPolicyAssignmentReport.fromJson(core.Map json_)
       : this(
-          instance: json_.containsKey('instance')
-              ? json_['instance'] as core.String
-              : null,
-          lastRunId: json_.containsKey('lastRunId')
-              ? json_['lastRunId'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          osPolicyAssignment: json_.containsKey('osPolicyAssignment')
-              ? json_['osPolicyAssignment'] as core.String
-              : null,
+          instance: json_['instance'] as core.String?,
+          lastRunId: json_['lastRunId'] as core.String?,
+          name: json_['name'] as core.String?,
+          osPolicyAssignment: json_['osPolicyAssignment'] as core.String?,
           osPolicyCompliances: json_.containsKey('osPolicyCompliances')
               ? (json_['osPolicyCompliances'] as core.List)
                   .map((value) =>
@@ -3269,9 +3161,7 @@ class OSPolicyAssignmentReport {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3340,15 +3230,9 @@ class OSPolicyAssignmentReportOSPolicyCompliance {
 
   OSPolicyAssignmentReportOSPolicyCompliance.fromJson(core.Map json_)
       : this(
-          complianceState: json_.containsKey('complianceState')
-              ? json_['complianceState'] as core.String
-              : null,
-          complianceStateReason: json_.containsKey('complianceStateReason')
-              ? json_['complianceStateReason'] as core.String
-              : null,
-          osPolicyId: json_.containsKey('osPolicyId')
-              ? json_['osPolicyId'] as core.String
-              : null,
+          complianceState: json_['complianceState'] as core.String?,
+          complianceStateReason: json_['complianceStateReason'] as core.String?,
+          osPolicyId: json_['osPolicyId'] as core.String?,
           osPolicyResourceCompliances: json_
                   .containsKey('osPolicyResourceCompliances')
               ? (json_['osPolicyResourceCompliances'] as core.List)
@@ -3419,12 +3303,8 @@ class OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompliance {
   OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompliance.fromJson(
       core.Map json_)
       : this(
-          complianceState: json_.containsKey('complianceState')
-              ? json_['complianceState'] as core.String
-              : null,
-          complianceStateReason: json_.containsKey('complianceStateReason')
-              ? json_['complianceStateReason'] as core.String
-              : null,
+          complianceState: json_['complianceState'] as core.String?,
+          complianceStateReason: json_['complianceStateReason'] as core.String?,
           configSteps: json_.containsKey('configSteps')
               ? (json_['configSteps'] as core.List)
                   .map((value) =>
@@ -3438,9 +3318,7 @@ class OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompliance {
                   .fromJson(json_['execResourceOutput']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          osPolicyResourceId: json_.containsKey('osPolicyResourceId')
-              ? json_['osPolicyResourceId'] as core.String
-              : null,
+          osPolicyResourceId: json_['osPolicyResourceId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3476,9 +3354,7 @@ class OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceExecRe
   OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceExecResourceOutput.fromJson(
       core.Map json_)
       : this(
-          enforcementOutput: json_.containsKey('enforcementOutput')
-              ? json_['enforcementOutput'] as core.String
-              : null,
+          enforcementOutput: json_['enforcementOutput'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3518,10 +3394,8 @@ class OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPoli
   OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStep.fromJson(
       core.Map json_)
       : this(
-          errorMessage: json_.containsKey('errorMessage')
-              ? json_['errorMessage'] as core.String
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          errorMessage: json_['errorMessage'] as core.String?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3559,9 +3433,7 @@ class OSPolicyAssignmentRollout {
               ? FixedOrPercent.fromJson(json_['disruptionBudget']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          minWaitDuration: json_.containsKey('minWaitDuration')
-              ? json_['minWaitDuration'] as core.String
-              : null,
+          minWaitDuration: json_['minWaitDuration'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3619,7 +3491,7 @@ class OSPolicyResource {
               ? OSPolicyResourceFileResource.fromJson(
                   json_['file'] as core.Map<core.String, core.dynamic>)
               : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          id: json_['id'] as core.String?,
           pkg: json_.containsKey('pkg')
               ? OSPolicyResourcePackageResource.fromJson(
                   json_['pkg'] as core.Map<core.String, core.dynamic>)
@@ -3752,15 +3624,9 @@ class OSPolicyResourceExecResourceExec {
               ? OSPolicyResourceFile.fromJson(
                   json_['file'] as core.Map<core.String, core.dynamic>)
               : null,
-          interpreter: json_.containsKey('interpreter')
-              ? json_['interpreter'] as core.String
-              : null,
-          outputFilePath: json_.containsKey('outputFilePath')
-              ? json_['outputFilePath'] as core.String
-              : null,
-          script: json_.containsKey('script')
-              ? json_['script'] as core.String
-              : null,
+          interpreter: json_['interpreter'] as core.String?,
+          outputFilePath: json_['outputFilePath'] as core.String?,
+          script: json_['script'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3799,16 +3665,12 @@ class OSPolicyResourceFile {
 
   OSPolicyResourceFile.fromJson(core.Map json_)
       : this(
-          allowInsecure: json_.containsKey('allowInsecure')
-              ? json_['allowInsecure'] as core.bool
-              : null,
+          allowInsecure: json_['allowInsecure'] as core.bool?,
           gcs: json_.containsKey('gcs')
               ? OSPolicyResourceFileGcs.fromJson(
                   json_['gcs'] as core.Map<core.String, core.dynamic>)
               : null,
-          localPath: json_.containsKey('localPath')
-              ? json_['localPath'] as core.String
-              : null,
+          localPath: json_['localPath'] as core.String?,
           remote: json_.containsKey('remote')
               ? OSPolicyResourceFileRemote.fromJson(
                   json_['remote'] as core.Map<core.String, core.dynamic>)
@@ -3846,15 +3708,9 @@ class OSPolicyResourceFileGcs {
 
   OSPolicyResourceFileGcs.fromJson(core.Map json_)
       : this(
-          bucket: json_.containsKey('bucket')
-              ? json_['bucket'] as core.String
-              : null,
-          generation: json_.containsKey('generation')
-              ? json_['generation'] as core.String
-              : null,
-          object: json_.containsKey('object')
-              ? json_['object'] as core.String
-              : null,
+          bucket: json_['bucket'] as core.String?,
+          generation: json_['generation'] as core.String?,
+          object: json_['object'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3884,10 +3740,8 @@ class OSPolicyResourceFileRemote {
 
   OSPolicyResourceFileRemote.fromJson(core.Map json_)
       : this(
-          sha256Checksum: json_.containsKey('sha256Checksum')
-              ? json_['sha256Checksum'] as core.String
-              : null,
-          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+          sha256Checksum: json_['sha256Checksum'] as core.String?,
+          uri: json_['uri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3943,19 +3797,14 @@ class OSPolicyResourceFileResource {
 
   OSPolicyResourceFileResource.fromJson(core.Map json_)
       : this(
-          content: json_.containsKey('content')
-              ? json_['content'] as core.String
-              : null,
+          content: json_['content'] as core.String?,
           file: json_.containsKey('file')
               ? OSPolicyResourceFile.fromJson(
                   json_['file'] as core.Map<core.String, core.dynamic>)
               : null,
-          path: json_.containsKey('path') ? json_['path'] as core.String : null,
-          permissions: json_.containsKey('permissions')
-              ? json_['permissions'] as core.String
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
+          path: json_['path'] as core.String?,
+          permissions: json_['permissions'] as core.String?,
+          state: json_['state'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4073,9 +3922,7 @@ class OSPolicyResourcePackageResource {
               ? OSPolicyResourcePackageResourceDeb.fromJson(
                   json_['deb'] as core.Map<core.String, core.dynamic>)
               : null,
-          desiredState: json_.containsKey('desiredState')
-              ? json_['desiredState'] as core.String
-              : null,
+          desiredState: json_['desiredState'] as core.String?,
           googet: json_.containsKey('googet')
               ? OSPolicyResourcePackageResourceGooGet.fromJson(
                   json_['googet'] as core.Map<core.String, core.dynamic>)
@@ -4138,9 +3985,7 @@ class OSPolicyResourcePackageResourceDeb {
 
   OSPolicyResourcePackageResourceDeb.fromJson(core.Map json_)
       : this(
-          pullDeps: json_.containsKey('pullDeps')
-              ? json_['pullDeps'] as core.bool
-              : null,
+          pullDeps: json_['pullDeps'] as core.bool?,
           source: json_.containsKey('source')
               ? OSPolicyResourceFile.fromJson(
                   json_['source'] as core.Map<core.String, core.dynamic>)
@@ -4220,9 +4065,7 @@ class OSPolicyResourcePackageResourceRPM {
 
   OSPolicyResourcePackageResourceRPM.fromJson(core.Map json_)
       : this(
-          pullDeps: json_.containsKey('pullDeps')
-              ? json_['pullDeps'] as core.bool
-              : null,
+          pullDeps: json_['pullDeps'] as core.bool?,
           source: json_.containsKey('source')
               ? OSPolicyResourceFile.fromJson(
                   json_['source'] as core.Map<core.String, core.dynamic>)
@@ -4341,21 +4184,15 @@ class OSPolicyResourceRepositoryResourceAptRepository {
 
   OSPolicyResourceRepositoryResourceAptRepository.fromJson(core.Map json_)
       : this(
-          archiveType: json_.containsKey('archiveType')
-              ? json_['archiveType'] as core.String
-              : null,
+          archiveType: json_['archiveType'] as core.String?,
           components: json_.containsKey('components')
               ? (json_['components'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          distribution: json_.containsKey('distribution')
-              ? json_['distribution'] as core.String
-              : null,
-          gpgKey: json_.containsKey('gpgKey')
-              ? json_['gpgKey'] as core.String
-              : null,
-          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+          distribution: json_['distribution'] as core.String?,
+          gpgKey: json_['gpgKey'] as core.String?,
+          uri: json_['uri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4389,8 +4226,8 @@ class OSPolicyResourceRepositoryResourceGooRepository {
 
   OSPolicyResourceRepositoryResourceGooRepository.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          url: json_.containsKey('url') ? json_['url'] as core.String : null,
+          name: json_['name'] as core.String?,
+          url: json_['url'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4433,18 +4270,14 @@ class OSPolicyResourceRepositoryResourceYumRepository {
 
   OSPolicyResourceRepositoryResourceYumRepository.fromJson(core.Map json_)
       : this(
-          baseUrl: json_.containsKey('baseUrl')
-              ? json_['baseUrl'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+          baseUrl: json_['baseUrl'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
           gpgKeys: json_.containsKey('gpgKeys')
               ? (json_['gpgKeys'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          id: json_['id'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4489,18 +4322,14 @@ class OSPolicyResourceRepositoryResourceZypperRepository {
 
   OSPolicyResourceRepositoryResourceZypperRepository.fromJson(core.Map json_)
       : this(
-          baseUrl: json_.containsKey('baseUrl')
-              ? json_['baseUrl'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+          baseUrl: json_['baseUrl'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
           gpgKeys: json_.containsKey('gpgKeys')
               ? (json_['gpgKeys'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          id: json_['id'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4526,9 +4355,7 @@ class OneTimeSchedule {
 
   OneTimeSchedule.fromJson(core.Map json_)
       : this(
-          executeTime: json_.containsKey('executeTime')
-              ? json_['executeTime'] as core.String
-              : null,
+          executeTime: json_['executeTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4589,7 +4416,7 @@ class Operation {
 
   Operation.fromJson(core.Map json_)
       : this(
-          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
@@ -4597,7 +4424,7 @@ class Operation {
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           response: json_.containsKey('response')
               ? json_['response'] as core.Map<core.String, core.dynamic>
               : null,
@@ -4683,9 +4510,7 @@ class PatchConfig {
               ? GooSettings.fromJson(
                   json_['goo'] as core.Map<core.String, core.dynamic>)
               : null,
-          migInstancesAllowed: json_.containsKey('migInstancesAllowed')
-              ? json_['migInstancesAllowed'] as core.bool
-              : null,
+          migInstancesAllowed: json_['migInstancesAllowed'] as core.bool?,
           postStep: json_.containsKey('postStep')
               ? ExecStep.fromJson(
                   json_['postStep'] as core.Map<core.String, core.dynamic>)
@@ -4694,9 +4519,7 @@ class PatchConfig {
               ? ExecStep.fromJson(
                   json_['preStep'] as core.Map<core.String, core.dynamic>)
               : null,
-          rebootConfig: json_.containsKey('rebootConfig')
-              ? json_['rebootConfig'] as core.String
-              : null,
+          rebootConfig: json_['rebootConfig'] as core.String?,
           windowsUpdate: json_.containsKey('windowsUpdate')
               ? WindowsUpdateSettings.fromJson(
                   json_['windowsUpdate'] as core.Map<core.String, core.dynamic>)
@@ -4832,23 +4655,15 @@ class PatchDeployment {
 
   PatchDeployment.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          duration: json_.containsKey('duration')
-              ? json_['duration'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          description: json_['description'] as core.String?,
+          duration: json_['duration'] as core.String?,
           instanceFilter: json_.containsKey('instanceFilter')
               ? PatchInstanceFilter.fromJson(json_['instanceFilter']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          lastExecuteTime: json_.containsKey('lastExecuteTime')
-              ? json_['lastExecuteTime'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          lastExecuteTime: json_['lastExecuteTime'] as core.String?,
+          name: json_['name'] as core.String?,
           oneTimeSchedule: json_.containsKey('oneTimeSchedule')
               ? OneTimeSchedule.fromJson(json_['oneTimeSchedule']
                   as core.Map<core.String, core.dynamic>)
@@ -4865,11 +4680,8 @@ class PatchDeployment {
               ? PatchRollout.fromJson(
                   json_['rollout'] as core.Map<core.String, core.dynamic>)
               : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          state: json_['state'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4933,7 +4745,7 @@ class PatchInstanceFilter {
 
   PatchInstanceFilter.fromJson(core.Map json_)
       : this(
-          all: json_.containsKey('all') ? json_['all'] as core.bool : null,
+          all: json_['all'] as core.bool?,
           groupLabels: json_.containsKey('groupLabels')
               ? (json_['groupLabels'] as core.List)
                   .map((value) => PatchInstanceFilterGroupLabel.fromJson(
@@ -5096,23 +4908,12 @@ class PatchJob {
 
   PatchJob.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          dryRun:
-              json_.containsKey('dryRun') ? json_['dryRun'] as core.bool : null,
-          duration: json_.containsKey('duration')
-              ? json_['duration'] as core.String
-              : null,
-          errorMessage: json_.containsKey('errorMessage')
-              ? json_['errorMessage'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          description: json_['description'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          dryRun: json_['dryRun'] as core.bool?,
+          duration: json_['duration'] as core.String?,
+          errorMessage: json_['errorMessage'] as core.String?,
           instanceDetailsSummary: json_.containsKey('instanceDetailsSummary')
               ? PatchJobInstanceDetailsSummary.fromJson(
                   json_['instanceDetailsSummary']
@@ -5122,26 +4923,19 @@ class PatchJob {
               ? PatchInstanceFilter.fromJson(json_['instanceFilter']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           patchConfig: json_.containsKey('patchConfig')
               ? PatchConfig.fromJson(
                   json_['patchConfig'] as core.Map<core.String, core.dynamic>)
               : null,
-          patchDeployment: json_.containsKey('patchDeployment')
-              ? json_['patchDeployment'] as core.String
-              : null,
-          percentComplete: json_.containsKey('percentComplete')
-              ? (json_['percentComplete'] as core.num).toDouble()
-              : null,
+          patchDeployment: json_['patchDeployment'] as core.String?,
+          percentComplete: (json_['percentComplete'] as core.num?)?.toDouble(),
           rollout: json_.containsKey('rollout')
               ? PatchRollout.fromJson(
                   json_['rollout'] as core.Map<core.String, core.dynamic>)
               : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          state: json_['state'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5217,18 +5011,11 @@ class PatchJobInstanceDetails {
 
   PatchJobInstanceDetails.fromJson(core.Map json_)
       : this(
-          attemptCount: json_.containsKey('attemptCount')
-              ? json_['attemptCount'] as core.String
-              : null,
-          failureReason: json_.containsKey('failureReason')
-              ? json_['failureReason'] as core.String
-              : null,
-          instanceSystemId: json_.containsKey('instanceSystemId')
-              ? json_['instanceSystemId'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
+          attemptCount: json_['attemptCount'] as core.String?,
+          failureReason: json_['failureReason'] as core.String?,
+          instanceSystemId: json_['instanceSystemId'] as core.String?,
+          name: json_['name'] as core.String?,
+          state: json_['state'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5315,57 +5102,29 @@ class PatchJobInstanceDetailsSummary {
 
   PatchJobInstanceDetailsSummary.fromJson(core.Map json_)
       : this(
-          ackedInstanceCount: json_.containsKey('ackedInstanceCount')
-              ? json_['ackedInstanceCount'] as core.String
-              : null,
+          ackedInstanceCount: json_['ackedInstanceCount'] as core.String?,
           applyingPatchesInstanceCount:
-              json_.containsKey('applyingPatchesInstanceCount')
-                  ? json_['applyingPatchesInstanceCount'] as core.String
-                  : null,
+              json_['applyingPatchesInstanceCount'] as core.String?,
           downloadingPatchesInstanceCount:
-              json_.containsKey('downloadingPatchesInstanceCount')
-                  ? json_['downloadingPatchesInstanceCount'] as core.String
-                  : null,
-          failedInstanceCount: json_.containsKey('failedInstanceCount')
-              ? json_['failedInstanceCount'] as core.String
-              : null,
-          inactiveInstanceCount: json_.containsKey('inactiveInstanceCount')
-              ? json_['inactiveInstanceCount'] as core.String
-              : null,
+              json_['downloadingPatchesInstanceCount'] as core.String?,
+          failedInstanceCount: json_['failedInstanceCount'] as core.String?,
+          inactiveInstanceCount: json_['inactiveInstanceCount'] as core.String?,
           noAgentDetectedInstanceCount:
-              json_.containsKey('noAgentDetectedInstanceCount')
-                  ? json_['noAgentDetectedInstanceCount'] as core.String
-                  : null,
-          notifiedInstanceCount: json_.containsKey('notifiedInstanceCount')
-              ? json_['notifiedInstanceCount'] as core.String
-              : null,
-          pendingInstanceCount: json_.containsKey('pendingInstanceCount')
-              ? json_['pendingInstanceCount'] as core.String
-              : null,
+              json_['noAgentDetectedInstanceCount'] as core.String?,
+          notifiedInstanceCount: json_['notifiedInstanceCount'] as core.String?,
+          pendingInstanceCount: json_['pendingInstanceCount'] as core.String?,
           postPatchStepInstanceCount:
-              json_.containsKey('postPatchStepInstanceCount')
-                  ? json_['postPatchStepInstanceCount'] as core.String
-                  : null,
+              json_['postPatchStepInstanceCount'] as core.String?,
           prePatchStepInstanceCount:
-              json_.containsKey('prePatchStepInstanceCount')
-                  ? json_['prePatchStepInstanceCount'] as core.String
-                  : null,
-          rebootingInstanceCount: json_.containsKey('rebootingInstanceCount')
-              ? json_['rebootingInstanceCount'] as core.String
-              : null,
-          startedInstanceCount: json_.containsKey('startedInstanceCount')
-              ? json_['startedInstanceCount'] as core.String
-              : null,
-          succeededInstanceCount: json_.containsKey('succeededInstanceCount')
-              ? json_['succeededInstanceCount'] as core.String
-              : null,
+              json_['prePatchStepInstanceCount'] as core.String?,
+          rebootingInstanceCount:
+              json_['rebootingInstanceCount'] as core.String?,
+          startedInstanceCount: json_['startedInstanceCount'] as core.String?,
+          succeededInstanceCount:
+              json_['succeededInstanceCount'] as core.String?,
           succeededRebootRequiredInstanceCount:
-              json_.containsKey('succeededRebootRequiredInstanceCount')
-                  ? json_['succeededRebootRequiredInstanceCount'] as core.String
-                  : null,
-          timedOutInstanceCount: json_.containsKey('timedOutInstanceCount')
-              ? json_['timedOutInstanceCount'] as core.String
-              : null,
+              json_['succeededRebootRequiredInstanceCount'] as core.String?,
+          timedOutInstanceCount: json_['timedOutInstanceCount'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5454,7 +5213,7 @@ class PatchRollout {
               ? FixedOrPercent.fromJson(json_['disruptionBudget']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          mode: json_.containsKey('mode') ? json_['mode'] as core.String : null,
+          mode: json_['mode'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5492,11 +5251,9 @@ class ProjectFeatureSettings {
 
   ProjectFeatureSettings.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           patchAndConfigFeatureSet:
-              json_.containsKey('patchAndConfigFeatureSet')
-                  ? json_['patchAndConfigFeatureSet'] as core.String
-                  : null,
+              json_['patchAndConfigFeatureSet'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5580,25 +5337,15 @@ class RecurringSchedule {
 
   RecurringSchedule.fromJson(core.Map json_)
       : this(
-          endTime: json_.containsKey('endTime')
-              ? json_['endTime'] as core.String
-              : null,
-          frequency: json_.containsKey('frequency')
-              ? json_['frequency'] as core.String
-              : null,
-          lastExecuteTime: json_.containsKey('lastExecuteTime')
-              ? json_['lastExecuteTime'] as core.String
-              : null,
+          endTime: json_['endTime'] as core.String?,
+          frequency: json_['frequency'] as core.String?,
+          lastExecuteTime: json_['lastExecuteTime'] as core.String?,
           monthly: json_.containsKey('monthly')
               ? MonthlySchedule.fromJson(
                   json_['monthly'] as core.Map<core.String, core.dynamic>)
               : null,
-          nextExecuteTime: json_.containsKey('nextExecuteTime')
-              ? json_['nextExecuteTime'] as core.String
-              : null,
-          startTime: json_.containsKey('startTime')
-              ? json_['startTime'] as core.String
-              : null,
+          nextExecuteTime: json_['nextExecuteTime'] as core.String?,
+          startTime: json_['startTime'] as core.String?,
           timeOfDay: json_.containsKey('timeOfDay')
               ? TimeOfDay.fromJson(
                   json_['timeOfDay'] as core.Map<core.String, core.dynamic>)
@@ -5682,10 +5429,8 @@ class VulnerabilityReport {
 
   VulnerabilityReport.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
           vulnerabilities: json_.containsKey('vulnerabilities')
               ? (json_['vulnerabilities'] as core.List)
                   .map((value) => VulnerabilityReportVulnerability.fromJson(
@@ -5755,9 +5500,7 @@ class VulnerabilityReportVulnerability {
                       .map((value) => value as core.String)
                       .toList()
                   : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
           details: json_.containsKey('details')
               ? VulnerabilityReportVulnerabilityDetails.fromJson(
                   json_['details'] as core.Map<core.String, core.dynamic>)
@@ -5774,9 +5517,7 @@ class VulnerabilityReportVulnerability {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5831,17 +5572,13 @@ class VulnerabilityReportVulnerabilityDetails {
 
   VulnerabilityReportVulnerabilityDetails.fromJson(core.Map json_)
       : this(
-          cve: json_.containsKey('cve') ? json_['cve'] as core.String : null,
-          cvssV2Score: json_.containsKey('cvssV2Score')
-              ? (json_['cvssV2Score'] as core.num).toDouble()
-              : null,
+          cve: json_['cve'] as core.String?,
+          cvssV2Score: (json_['cvssV2Score'] as core.num?)?.toDouble(),
           cvssV3: json_.containsKey('cvssV3')
               ? CVSSv3.fromJson(
                   json_['cvssV3'] as core.Map<core.String, core.dynamic>)
               : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
+          description: json_['description'] as core.String?,
           references: json_.containsKey('references')
               ? (json_['references'] as core.List)
                   .map((value) =>
@@ -5849,9 +5586,7 @@ class VulnerabilityReportVulnerabilityDetails {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          severity: json_.containsKey('severity')
-              ? json_['severity'] as core.String
-              : null,
+          severity: json_['severity'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5879,10 +5614,8 @@ class VulnerabilityReportVulnerabilityDetailsReference {
 
   VulnerabilityReportVulnerabilityDetailsReference.fromJson(core.Map json_)
       : this(
-          source: json_.containsKey('source')
-              ? json_['source'] as core.String
-              : null,
-          url: json_.containsKey('url') ? json_['url'] as core.String : null,
+          source: json_['source'] as core.String?,
+          url: json_['url'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5927,19 +5660,11 @@ class VulnerabilityReportVulnerabilityItem {
   VulnerabilityReportVulnerabilityItem.fromJson(core.Map json_)
       : this(
           availableInventoryItemId:
-              json_.containsKey('availableInventoryItemId')
-                  ? json_['availableInventoryItemId'] as core.String
-                  : null,
-          fixedCpeUri: json_.containsKey('fixedCpeUri')
-              ? json_['fixedCpeUri'] as core.String
-              : null,
+              json_['availableInventoryItemId'] as core.String?,
+          fixedCpeUri: json_['fixedCpeUri'] as core.String?,
           installedInventoryItemId:
-              json_.containsKey('installedInventoryItemId')
-                  ? json_['installedInventoryItemId'] as core.String
-                  : null,
-          upstreamFix: json_.containsKey('upstreamFix')
-              ? json_['upstreamFix'] as core.String
-              : null,
+              json_['installedInventoryItemId'] as core.String?,
+          upstreamFix: json_['upstreamFix'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5999,15 +5724,9 @@ class WeekDayOfMonth {
 
   WeekDayOfMonth.fromJson(core.Map json_)
       : this(
-          dayOfWeek: json_.containsKey('dayOfWeek')
-              ? json_['dayOfWeek'] as core.String
-              : null,
-          dayOffset: json_.containsKey('dayOffset')
-              ? json_['dayOffset'] as core.int
-              : null,
-          weekOrdinal: json_.containsKey('weekOrdinal')
-              ? json_['weekOrdinal'] as core.int
-              : null,
+          dayOfWeek: json_['dayOfWeek'] as core.String?,
+          dayOffset: json_['dayOffset'] as core.int?,
+          weekOrdinal: json_['weekOrdinal'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6039,9 +5758,7 @@ class WeeklySchedule {
 
   WeeklySchedule.fromJson(core.Map json_)
       : this(
-          dayOfWeek: json_.containsKey('dayOfWeek')
-              ? json_['dayOfWeek'] as core.String
-              : null,
+          dayOfWeek: json_['dayOfWeek'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6141,12 +5858,8 @@ class YumSettings {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          minimal: json_.containsKey('minimal')
-              ? json_['minimal'] as core.bool
-              : null,
-          security: json_.containsKey('security')
-              ? json_['security'] as core.bool
-              : null,
+          minimal: json_['minimal'] as core.bool?,
+          security: json_['security'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6218,12 +5931,8 @@ class ZypperSettings {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          withOptional: json_.containsKey('withOptional')
-              ? json_['withOptional'] as core.bool
-              : null,
-          withUpdate: json_.containsKey('withUpdate')
-              ? json_['withUpdate'] as core.bool
-              : null,
+          withOptional: json_['withOptional'] as core.bool?,
+          withUpdate: json_['withUpdate'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

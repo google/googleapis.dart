@@ -1375,12 +1375,8 @@ class ClaimDeviceRequest {
 
   ClaimDeviceRequest.fromJson(core.Map json_)
       : this(
-          configurationId: json_.containsKey('configurationId')
-              ? json_['configurationId'] as core.String
-              : null,
-          customerId: json_.containsKey('customerId')
-              ? json_['customerId'] as core.String
-              : null,
+          configurationId: json_['configurationId'] as core.String?,
+          customerId: json_['customerId'] as core.String?,
           deviceIdentifier: json_.containsKey('deviceIdentifier')
               ? DeviceIdentifier.fromJson(json_['deviceIdentifier']
                   as core.Map<core.String, core.dynamic>)
@@ -1390,18 +1386,10 @@ class ClaimDeviceRequest {
                   as core.Map<core.String, core.dynamic>)
               : null,
           googleWorkspaceCustomerId:
-              json_.containsKey('googleWorkspaceCustomerId')
-                  ? json_['googleWorkspaceCustomerId'] as core.String
-                  : null,
-          preProvisioningToken: json_.containsKey('preProvisioningToken')
-              ? json_['preProvisioningToken'] as core.String
-              : null,
-          sectionType: json_.containsKey('sectionType')
-              ? json_['sectionType'] as core.String
-              : null,
-          simlockProfileId: json_.containsKey('simlockProfileId')
-              ? json_['simlockProfileId'] as core.String
-              : null,
+              json_['googleWorkspaceCustomerId'] as core.String?,
+          preProvisioningToken: json_['preProvisioningToken'] as core.String?,
+          sectionType: json_['sectionType'] as core.String?,
+          simlockProfileId: json_['simlockProfileId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1434,12 +1422,8 @@ class ClaimDeviceResponse {
 
   ClaimDeviceResponse.fromJson(core.Map json_)
       : this(
-          deviceId: json_.containsKey('deviceId')
-              ? json_['deviceId'] as core.String
-              : null,
-          deviceName: json_.containsKey('deviceName')
-              ? json_['deviceName'] as core.String
-              : null,
+          deviceId: json_['deviceId'] as core.String?,
+          deviceName: json_['deviceName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1589,31 +1573,21 @@ class Company {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          companyId: json_.containsKey('companyId')
-              ? json_['companyId'] as core.String
-              : null,
-          companyName: json_.containsKey('companyName')
-              ? json_['companyName'] as core.String
-              : null,
+          companyId: json_['companyId'] as core.String?,
+          companyName: json_['companyName'] as core.String?,
           googleWorkspaceAccount: json_.containsKey('googleWorkspaceAccount')
               ? GoogleWorkspaceAccount.fromJson(json_['googleWorkspaceAccount']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          languageCode: json_.containsKey('languageCode')
-              ? json_['languageCode'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          languageCode: json_['languageCode'] as core.String?,
+          name: json_['name'] as core.String?,
           ownerEmails: json_.containsKey('ownerEmails')
               ? (json_['ownerEmails'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          skipWelcomeEmail: json_.containsKey('skipWelcomeEmail')
-              ? json_['skipWelcomeEmail'] as core.bool
-              : null,
-          termsStatus: json_.containsKey('termsStatus')
-              ? json_['termsStatus'] as core.String
-              : null,
+          skipWelcomeEmail: json_['skipWelcomeEmail'] as core.bool?,
+          termsStatus: json_['termsStatus'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1740,37 +1714,17 @@ class Configuration {
 
   Configuration.fromJson(core.Map json_)
       : this(
-          companyName: json_.containsKey('companyName')
-              ? json_['companyName'] as core.String
-              : null,
-          configurationId: json_.containsKey('configurationId')
-              ? json_['configurationId'] as core.String
-              : null,
-          configurationName: json_.containsKey('configurationName')
-              ? json_['configurationName'] as core.String
-              : null,
-          contactEmail: json_.containsKey('contactEmail')
-              ? json_['contactEmail'] as core.String
-              : null,
-          contactPhone: json_.containsKey('contactPhone')
-              ? json_['contactPhone'] as core.String
-              : null,
-          customMessage: json_.containsKey('customMessage')
-              ? json_['customMessage'] as core.String
-              : null,
-          dpcExtras: json_.containsKey('dpcExtras')
-              ? json_['dpcExtras'] as core.String
-              : null,
-          dpcResourcePath: json_.containsKey('dpcResourcePath')
-              ? json_['dpcResourcePath'] as core.String
-              : null,
-          forcedResetTime: json_.containsKey('forcedResetTime')
-              ? json_['forcedResetTime'] as core.String
-              : null,
-          isDefault: json_.containsKey('isDefault')
-              ? json_['isDefault'] as core.bool
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          companyName: json_['companyName'] as core.String?,
+          configurationId: json_['configurationId'] as core.String?,
+          configurationName: json_['configurationName'] as core.String?,
+          contactEmail: json_['contactEmail'] as core.String?,
+          contactPhone: json_['contactPhone'] as core.String?,
+          customMessage: json_['customMessage'] as core.String?,
+          dpcExtras: json_['dpcExtras'] as core.String?,
+          dpcResourcePath: json_['dpcResourcePath'] as core.String?,
+          forcedResetTime: json_['forcedResetTime'] as core.String?,
+          isDefault: json_['isDefault'] as core.bool?,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1838,9 +1792,7 @@ class CustomerApplyConfigurationRequest {
 
   CustomerApplyConfigurationRequest.fromJson(core.Map json_)
       : this(
-          configuration: json_.containsKey('configuration')
-              ? json_['configuration'] as core.String
-              : null,
+          configuration: json_['configuration'] as core.String?,
           device: json_.containsKey('device')
               ? DeviceReference.fromJson(
                   json_['device'] as core.Map<core.String, core.dynamic>)
@@ -1900,9 +1852,7 @@ class CustomerListCustomersResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1934,9 +1884,7 @@ class CustomerListDevicesResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2081,12 +2029,8 @@ class Device {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          configuration: json_.containsKey('configuration')
-              ? json_['configuration'] as core.String
-              : null,
-          deviceId: json_.containsKey('deviceId')
-              ? json_['deviceId'] as core.String
-              : null,
+          configuration: json_['configuration'] as core.String?,
+          deviceId: json_['deviceId'] as core.String?,
           deviceIdentifier: json_.containsKey('deviceIdentifier')
               ? DeviceIdentifier.fromJson(json_['deviceIdentifier']
                   as core.Map<core.String, core.dynamic>)
@@ -2095,7 +2039,7 @@ class Device {
               ? DeviceMetadata.fromJson(json_['deviceMetadata']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2162,28 +2106,15 @@ class DeviceClaim {
 
   DeviceClaim.fromJson(core.Map json_)
       : this(
-          additionalService: json_.containsKey('additionalService')
-              ? json_['additionalService'] as core.String
-              : null,
+          additionalService: json_['additionalService'] as core.String?,
           googleWorkspaceCustomerId:
-              json_.containsKey('googleWorkspaceCustomerId')
-                  ? json_['googleWorkspaceCustomerId'] as core.String
-                  : null,
-          ownerCompanyId: json_.containsKey('ownerCompanyId')
-              ? json_['ownerCompanyId'] as core.String
-              : null,
-          resellerId: json_.containsKey('resellerId')
-              ? json_['resellerId'] as core.String
-              : null,
-          sectionType: json_.containsKey('sectionType')
-              ? json_['sectionType'] as core.String
-              : null,
-          vacationModeExpireTime: json_.containsKey('vacationModeExpireTime')
-              ? json_['vacationModeExpireTime'] as core.String
-              : null,
-          vacationModeStartTime: json_.containsKey('vacationModeStartTime')
-              ? json_['vacationModeStartTime'] as core.String
-              : null,
+              json_['googleWorkspaceCustomerId'] as core.String?,
+          ownerCompanyId: json_['ownerCompanyId'] as core.String?,
+          resellerId: json_['resellerId'] as core.String?,
+          sectionType: json_['sectionType'] as core.String?,
+          vacationModeExpireTime:
+              json_['vacationModeExpireTime'] as core.String?,
+          vacationModeStartTime: json_['vacationModeStartTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2258,22 +2189,13 @@ class DeviceIdentifier {
   DeviceIdentifier.fromJson(core.Map json_)
       : this(
           chromeOsAttestedDeviceId:
-              json_.containsKey('chromeOsAttestedDeviceId')
-                  ? json_['chromeOsAttestedDeviceId'] as core.String
-                  : null,
-          deviceType: json_.containsKey('deviceType')
-              ? json_['deviceType'] as core.String
-              : null,
-          imei: json_.containsKey('imei') ? json_['imei'] as core.String : null,
-          manufacturer: json_.containsKey('manufacturer')
-              ? json_['manufacturer'] as core.String
-              : null,
-          meid: json_.containsKey('meid') ? json_['meid'] as core.String : null,
-          model:
-              json_.containsKey('model') ? json_['model'] as core.String : null,
-          serialNumber: json_.containsKey('serialNumber')
-              ? json_['serialNumber'] as core.String
-              : null,
+              json_['chromeOsAttestedDeviceId'] as core.String?,
+          deviceType: json_['deviceType'] as core.String?,
+          imei: json_['imei'] as core.String?,
+          manufacturer: json_['manufacturer'] as core.String?,
+          meid: json_['meid'] as core.String?,
+          model: json_['model'] as core.String?,
+          serialNumber: json_['serialNumber'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2340,9 +2262,7 @@ class DeviceReference {
 
   DeviceReference.fromJson(core.Map json_)
       : this(
-          deviceId: json_.containsKey('deviceId')
-              ? json_['deviceId'] as core.String
-              : null,
+          deviceId: json_['deviceId'] as core.String?,
           deviceIdentifier: json_.containsKey('deviceIdentifier')
               ? DeviceIdentifier.fromJson(json_['deviceIdentifier']
                   as core.Map<core.String, core.dynamic>)
@@ -2395,13 +2315,9 @@ class Dpc {
 
   Dpc.fromJson(core.Map json_)
       : this(
-          dpcName: json_.containsKey('dpcName')
-              ? json_['dpcName'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          packageName: json_.containsKey('packageName')
-              ? json_['packageName'] as core.String
-              : null,
+          dpcName: json_['dpcName'] as core.String?,
+          name: json_['name'] as core.String?,
+          packageName: json_['packageName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2448,11 +2364,8 @@ class FindDevicesByDeviceIdentifierRequest {
               ? DeviceIdentifier.fromJson(json_['deviceIdentifier']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          limit:
-              json_.containsKey('limit') ? json_['limit'] as core.String : null,
-          pageToken: json_.containsKey('pageToken')
-              ? json_['pageToken'] as core.String
-              : null,
+          limit: json_['limit'] as core.String?,
+          pageToken: json_['pageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2489,12 +2402,8 @@ class FindDevicesByDeviceIdentifierResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
-          totalSize: json_.containsKey('totalSize')
-              ? json_['totalSize'] as core.int
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          totalSize: json_['totalSize'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2552,14 +2461,9 @@ class FindDevicesByOwnerRequest {
                       .map((value) => value as core.String)
                       .toList()
                   : null,
-          limit:
-              json_.containsKey('limit') ? json_['limit'] as core.String : null,
-          pageToken: json_.containsKey('pageToken')
-              ? json_['pageToken'] as core.String
-              : null,
-          sectionType: json_.containsKey('sectionType')
-              ? json_['sectionType'] as core.String
-              : null,
+          limit: json_['limit'] as core.String?,
+          pageToken: json_['pageToken'] as core.String?,
+          sectionType: json_['sectionType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2599,12 +2503,8 @@ class FindDevicesByOwnerResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
-          totalSize: json_.containsKey('totalSize')
-              ? json_['totalSize'] as core.int
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          totalSize: json_['totalSize'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2655,9 +2555,7 @@ class GetDeviceSimLockStateResponse {
 
   GetDeviceSimLockStateResponse.fromJson(core.Map json_)
       : this(
-          simLockState: json_.containsKey('simLockState')
-              ? json_['simLockState'] as core.String
-              : null,
+          simLockState: json_['simLockState'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2684,9 +2582,7 @@ class GoogleWorkspaceAccount {
 
   GoogleWorkspaceAccount.fromJson(core.Map json_)
       : this(
-          customerId: json_.containsKey('customerId')
-              ? json_['customerId'] as core.String
-              : null,
+          customerId: json_['customerId'] as core.String?,
           preProvisioningTokens: json_.containsKey('preProvisioningTokens')
               ? (json_['preProvisioningTokens'] as core.List)
                   .map((value) => value as core.String)
@@ -2728,12 +2624,8 @@ class ListCustomersResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
-          totalSize: json_.containsKey('totalSize')
-              ? json_['totalSize'] as core.int
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          totalSize: json_['totalSize'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2770,12 +2662,8 @@ class ListVendorCustomersResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
-          totalSize: json_.containsKey('totalSize')
-              ? json_['totalSize'] as core.int
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          totalSize: json_['totalSize'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2809,12 +2697,8 @@ class ListVendorsResponse {
 
   ListVendorsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
-          totalSize: json_.containsKey('totalSize')
-              ? json_['totalSize'] as core.int
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          totalSize: json_['totalSize'] as core.int?,
           vendors: json_.containsKey('vendors')
               ? (json_['vendors'] as core.List)
                   .map((value) => Company.fromJson(
@@ -2879,7 +2763,7 @@ class Operation {
 
   Operation.fromJson(core.Map json_)
       : this(
-          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
@@ -2887,7 +2771,7 @@ class Operation {
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           response: json_.containsKey('response')
               ? json_['response'] as core.Map<core.String, core.dynamic>
               : null,
@@ -2960,12 +2844,8 @@ class PartnerClaim {
 
   PartnerClaim.fromJson(core.Map json_)
       : this(
-          configurationId: json_.containsKey('configurationId')
-              ? json_['configurationId'] as core.String
-              : null,
-          customerId: json_.containsKey('customerId')
-              ? json_['customerId'] as core.String
-              : null,
+          configurationId: json_['configurationId'] as core.String?,
+          customerId: json_['customerId'] as core.String?,
           deviceIdentifier: json_.containsKey('deviceIdentifier')
               ? DeviceIdentifier.fromJson(json_['deviceIdentifier']
                   as core.Map<core.String, core.dynamic>)
@@ -2975,18 +2855,10 @@ class PartnerClaim {
                   as core.Map<core.String, core.dynamic>)
               : null,
           googleWorkspaceCustomerId:
-              json_.containsKey('googleWorkspaceCustomerId')
-                  ? json_['googleWorkspaceCustomerId'] as core.String
-                  : null,
-          preProvisioningToken: json_.containsKey('preProvisioningToken')
-              ? json_['preProvisioningToken'] as core.String
-              : null,
-          sectionType: json_.containsKey('sectionType')
-              ? json_['sectionType'] as core.String
-              : null,
-          simlockProfileId: json_.containsKey('simlockProfileId')
-              ? json_['simlockProfileId'] as core.String
-              : null,
+              json_['googleWorkspaceCustomerId'] as core.String?,
+          preProvisioningToken: json_['preProvisioningToken'] as core.String?,
+          sectionType: json_['sectionType'] as core.String?,
+          simlockProfileId: json_['simlockProfileId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3047,22 +2919,15 @@ class PartnerUnclaim {
 
   PartnerUnclaim.fromJson(core.Map json_)
       : this(
-          deviceId: json_.containsKey('deviceId')
-              ? json_['deviceId'] as core.String
-              : null,
+          deviceId: json_['deviceId'] as core.String?,
           deviceIdentifier: json_.containsKey('deviceIdentifier')
               ? DeviceIdentifier.fromJson(json_['deviceIdentifier']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          sectionType: json_.containsKey('sectionType')
-              ? json_['sectionType'] as core.String
-              : null,
-          vacationModeDays: json_.containsKey('vacationModeDays')
-              ? json_['vacationModeDays'] as core.int
-              : null,
-          vacationModeExpireTime: json_.containsKey('vacationModeExpireTime')
-              ? json_['vacationModeExpireTime'] as core.String
-              : null,
+          sectionType: json_['sectionType'] as core.String?,
+          vacationModeDays: json_['vacationModeDays'] as core.int?,
+          vacationModeExpireTime:
+              json_['vacationModeExpireTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3124,22 +2989,15 @@ class UnclaimDeviceRequest {
 
   UnclaimDeviceRequest.fromJson(core.Map json_)
       : this(
-          deviceId: json_.containsKey('deviceId')
-              ? json_['deviceId'] as core.String
-              : null,
+          deviceId: json_['deviceId'] as core.String?,
           deviceIdentifier: json_.containsKey('deviceIdentifier')
               ? DeviceIdentifier.fromJson(json_['deviceIdentifier']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          sectionType: json_.containsKey('sectionType')
-              ? json_['sectionType'] as core.String
-              : null,
-          vacationModeDays: json_.containsKey('vacationModeDays')
-              ? json_['vacationModeDays'] as core.int
-              : null,
-          vacationModeExpireTime: json_.containsKey('vacationModeExpireTime')
-              ? json_['vacationModeExpireTime'] as core.String
-              : null,
+          sectionType: json_['sectionType'] as core.String?,
+          vacationModeDays: json_['vacationModeDays'] as core.int?,
+          vacationModeExpireTime:
+              json_['vacationModeExpireTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3253,9 +3111,7 @@ class UpdateMetadataArguments {
 
   UpdateMetadataArguments.fromJson(core.Map json_)
       : this(
-          deviceId: json_.containsKey('deviceId')
-              ? json_['deviceId'] as core.String
-              : null,
+          deviceId: json_['deviceId'] as core.String?,
           deviceIdentifier: json_.containsKey('deviceIdentifier')
               ? DeviceIdentifier.fromJson(json_['deviceIdentifier']
                   as core.Map<core.String, core.dynamic>)

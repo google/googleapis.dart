@@ -4827,9 +4827,7 @@ class AddAddressGroupItemsRequest {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          requestId: json_.containsKey('requestId')
-              ? json_['requestId'] as core.String
-              : null,
+          requestId: json_['requestId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4908,15 +4906,9 @@ class AddressGroup {
 
   AddressGroup.fromJson(core.Map json_)
       : this(
-          capacity: json_.containsKey('capacity')
-              ? json_['capacity'] as core.int
-              : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
+          capacity: json_['capacity'] as core.int?,
+          createTime: json_['createTime'] as core.String?,
+          description: json_['description'] as core.String?,
           items: json_.containsKey('items')
               ? (json_['items'] as core.List)
                   .map((value) => value as core.String)
@@ -4930,14 +4922,10 @@ class AddressGroup {
                   ),
                 )
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          selfLink: json_.containsKey('selfLink')
-              ? json_['selfLink'] as core.String
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          selfLink: json_['selfLink'] as core.String?,
+          type: json_['type'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5021,15 +5009,9 @@ class AuthorizationPolicy {
 
   AuthorizationPolicy.fromJson(core.Map json_)
       : this(
-          action: json_.containsKey('action')
-              ? json_['action'] as core.String
-              : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
+          action: json_['action'] as core.String?,
+          createTime: json_['createTime'] as core.String?,
+          description: json_['description'] as core.String?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -5038,16 +5020,14 @@ class AuthorizationPolicy {
                   ),
                 )
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           rules: json_.containsKey('rules')
               ? (json_['rules'] as core.List)
                   .map((value) => Rule.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5086,9 +5066,7 @@ class CertificateProviderInstance {
 
   CertificateProviderInstance.fromJson(core.Map json_)
       : this(
-          pluginInstance: json_.containsKey('pluginInstance')
-              ? json_['pluginInstance'] as core.String
-              : null,
+          pluginInstance: json_['pluginInstance'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5172,12 +5150,8 @@ class ClientTlsPolicy {
                   json_['clientCertificate']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          description: json_['description'] as core.String?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -5186,17 +5160,15 @@ class ClientTlsPolicy {
                   ),
                 )
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           serverValidationCa: json_.containsKey('serverValidationCa')
               ? (json_['serverValidationCa'] as core.List)
                   .map((value) => ValidationCA.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          sni: json_.containsKey('sni') ? json_['sni'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          sni: json_['sni'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5242,12 +5214,8 @@ class CloneAddressGroupItemsRequest {
 
   CloneAddressGroupItemsRequest.fromJson(core.Map json_)
       : this(
-          requestId: json_.containsKey('requestId')
-              ? json_['requestId'] as core.String
-              : null,
-          sourceAddressGroup: json_.containsKey('sourceAddressGroup')
-              ? json_['sourceAddressGroup'] as core.String
-              : null,
+          requestId: json_['requestId'] as core.String?,
+          sourceAddressGroup: json_['sourceAddressGroup'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5458,15 +5426,9 @@ class FirewallEndpoint {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          billingProjectId: json_.containsKey('billingProjectId')
-              ? json_['billingProjectId'] as core.String
-              : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
+          billingProjectId: json_['billingProjectId'] as core.String?,
+          createTime: json_['createTime'] as core.String?,
+          description: json_['description'] as core.String?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -5475,15 +5437,10 @@ class FirewallEndpoint {
                   ),
                 )
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          reconciling: json_.containsKey('reconciling')
-              ? json_['reconciling'] as core.bool
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          reconciling: json_['reconciling'] as core.bool?,
+          state: json_['state'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5579,15 +5536,9 @@ class FirewallEndpointAssociation {
 
   FirewallEndpointAssociation.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          disabled: json_.containsKey('disabled')
-              ? json_['disabled'] as core.bool
-              : null,
-          firewallEndpoint: json_.containsKey('firewallEndpoint')
-              ? json_['firewallEndpoint'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          disabled: json_['disabled'] as core.bool?,
+          firewallEndpoint: json_['firewallEndpoint'] as core.String?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -5596,21 +5547,12 @@ class FirewallEndpointAssociation {
                   ),
                 )
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          network: json_.containsKey('network')
-              ? json_['network'] as core.String
-              : null,
-          reconciling: json_.containsKey('reconciling')
-              ? json_['reconciling'] as core.bool
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
-          tlsInspectionPolicy: json_.containsKey('tlsInspectionPolicy')
-              ? json_['tlsInspectionPolicy'] as core.String
-              : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          network: json_['network'] as core.String?,
+          reconciling: json_['reconciling'] as core.bool?,
+          state: json_['state'] as core.String?,
+          tlsInspectionPolicy: json_['tlsInspectionPolicy'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5653,10 +5595,8 @@ class FirewallEndpointAssociationReference {
 
   FirewallEndpointAssociationReference.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          network: json_.containsKey('network')
-              ? json_['network'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          network: json_['network'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5709,19 +5649,11 @@ class GatewaySecurityPolicy {
 
   GatewaySecurityPolicy.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          tlsInspectionPolicy: json_.containsKey('tlsInspectionPolicy')
-              ? json_['tlsInspectionPolicy'] as core.String
-              : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          description: json_['description'] as core.String?,
+          name: json_['name'] as core.String?,
+          tlsInspectionPolicy: json_['tlsInspectionPolicy'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5815,34 +5747,16 @@ class GatewaySecurityPolicyRule {
 
   GatewaySecurityPolicyRule.fromJson(core.Map json_)
       : this(
-          applicationMatcher: json_.containsKey('applicationMatcher')
-              ? json_['applicationMatcher'] as core.String
-              : null,
-          basicProfile: json_.containsKey('basicProfile')
-              ? json_['basicProfile'] as core.String
-              : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          enabled: json_.containsKey('enabled')
-              ? json_['enabled'] as core.bool
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          priority: json_.containsKey('priority')
-              ? json_['priority'] as core.int
-              : null,
-          sessionMatcher: json_.containsKey('sessionMatcher')
-              ? json_['sessionMatcher'] as core.String
-              : null,
-          tlsInspectionEnabled: json_.containsKey('tlsInspectionEnabled')
-              ? json_['tlsInspectionEnabled'] as core.bool
-              : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          applicationMatcher: json_['applicationMatcher'] as core.String?,
+          basicProfile: json_['basicProfile'] as core.String?,
+          createTime: json_['createTime'] as core.String?,
+          description: json_['description'] as core.String?,
+          enabled: json_['enabled'] as core.bool?,
+          name: json_['name'] as core.String?,
+          priority: json_['priority'] as core.int?,
+          sessionMatcher: json_['sessionMatcher'] as core.String?,
+          tlsInspectionEnabled: json_['tlsInspectionEnabled'] as core.bool?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5915,9 +5829,7 @@ class GoogleCloudNetworksecurityV1GrpcEndpoint {
 
   GoogleCloudNetworksecurityV1GrpcEndpoint.fromJson(core.Map json_)
       : this(
-          targetUri: json_.containsKey('targetUri')
-              ? json_['targetUri'] as core.String
-              : null,
+          targetUri: json_['targetUri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5965,9 +5877,7 @@ class GoogleIamV1AuditConfig {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          service: json_.containsKey('service')
-              ? json_['service'] as core.String
-              : null,
+          service: json_['service'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6081,7 +5991,7 @@ class GoogleIamV1Binding {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          role: json_.containsKey('role') ? json_['role'] as core.String : null,
+          role: json_['role'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6198,10 +6108,8 @@ class GoogleIamV1Policy {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          version: json_.containsKey('version')
-              ? json_['version'] as core.int
-              : null,
+          etag: json_['etag'] as core.String?,
+          version: json_['version'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6238,9 +6146,7 @@ class GoogleIamV1SetIamPolicyRequest {
               ? GoogleIamV1Policy.fromJson(
                   json_['policy'] as core.Map<core.String, core.dynamic>)
               : null,
-          updateMask: json_.containsKey('updateMask')
-              ? json_['updateMask'] as core.String
-              : null,
+          updateMask: json_['updateMask'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6285,12 +6191,8 @@ class HttpHeaderMatch {
 
   HttpHeaderMatch.fromJson(core.Map json_)
       : this(
-          headerName: json_.containsKey('headerName')
-              ? json_['headerName'] as core.String
-              : null,
-          regexMatch: json_.containsKey('regexMatch')
-              ? json_['regexMatch'] as core.String
-              : null,
+          headerName: json_['headerName'] as core.String?,
+          regexMatch: json_['regexMatch'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6327,9 +6229,7 @@ class ListAddressGroupReferencesResponse {
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6359,15 +6259,9 @@ class ListAddressGroupReferencesResponseAddressGroupReference {
   ListAddressGroupReferencesResponseAddressGroupReference.fromJson(
       core.Map json_)
       : this(
-          firewallPolicy: json_.containsKey('firewallPolicy')
-              ? json_['firewallPolicy'] as core.String
-              : null,
-          rulePriority: json_.containsKey('rulePriority')
-              ? json_['rulePriority'] as core.int
-              : null,
-          securityPolicy: json_.containsKey('securityPolicy')
-              ? json_['securityPolicy'] as core.String
-              : null,
+          firewallPolicy: json_['firewallPolicy'] as core.String?,
+          rulePriority: json_['rulePriority'] as core.int?,
+          securityPolicy: json_['securityPolicy'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6402,9 +6296,7 @@ class ListAddressGroupsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6438,9 +6330,7 @@ class ListAuthorizationPoliciesResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6475,9 +6365,7 @@ class ListClientTlsPoliciesResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6512,9 +6400,7 @@ class ListFirewallEndpointAssociationsResponse {
                           value as core.Map<core.String, core.dynamic>))
                       .toList()
                   : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: json_.containsKey('unreachable')
               ? (json_['unreachable'] as core.List)
                   .map((value) => value as core.String)
@@ -6555,9 +6441,7 @@ class ListFirewallEndpointsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: json_.containsKey('unreachable')
               ? (json_['unreachable'] as core.List)
                   .map((value) => value as core.String)
@@ -6601,9 +6485,7 @@ class ListGatewaySecurityPoliciesResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: json_.containsKey('unreachable')
               ? (json_['unreachable'] as core.List)
                   .map((value) => value as core.String)
@@ -6649,9 +6531,7 @@ class ListGatewaySecurityPolicyRulesResponse {
                           value as core.Map<core.String, core.dynamic>))
                       .toList()
                   : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: json_.containsKey('unreachable')
               ? (json_['unreachable'] as core.List)
                   .map((value) => value as core.String)
@@ -6688,9 +6568,7 @@ class ListLocationsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6714,9 +6592,7 @@ class ListOperationsResponse {
 
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           operations: json_.containsKey('operations')
               ? (json_['operations'] as core.List)
                   .map((value) => Operation.fromJson(
@@ -6750,9 +6626,7 @@ class ListSecurityProfileGroupsResponse {
 
   ListSecurityProfileGroupsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           securityProfileGroups: json_.containsKey('securityProfileGroups')
               ? (json_['securityProfileGroups'] as core.List)
                   .map((value) => SecurityProfileGroup.fromJson(
@@ -6787,9 +6661,7 @@ class ListSecurityProfilesResponse {
 
   ListSecurityProfilesResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           securityProfiles: json_.containsKey('securityProfiles')
               ? (json_['securityProfiles'] as core.List)
                   .map((value) => SecurityProfile.fromJson(
@@ -6823,9 +6695,7 @@ class ListServerTlsPoliciesResponse {
 
   ListServerTlsPoliciesResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           serverTlsPolicies: json_.containsKey('serverTlsPolicies')
               ? (json_['serverTlsPolicies'] as core.List)
                   .map((value) => ServerTlsPolicy.fromJson(
@@ -6863,9 +6733,7 @@ class ListTlsInspectionPoliciesResponse {
 
   ListTlsInspectionPoliciesResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           tlsInspectionPolicies: json_.containsKey('tlsInspectionPolicies')
               ? (json_['tlsInspectionPolicies'] as core.List)
                   .map((value) => TlsInspectionPolicy.fromJson(
@@ -6910,9 +6778,7 @@ class ListUrlListsResponse {
 
   ListUrlListsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: json_.containsKey('unreachable')
               ? (json_['unreachable'] as core.List)
                   .map((value) => value as core.String)
@@ -6988,13 +6854,9 @@ class MTLSPolicy {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          clientValidationMode: json_.containsKey('clientValidationMode')
-              ? json_['clientValidationMode'] as core.String
-              : null,
+          clientValidationMode: json_['clientValidationMode'] as core.String?,
           clientValidationTrustConfig:
-              json_.containsKey('clientValidationTrustConfig')
-                  ? json_['clientValidationTrustConfig'] as core.String
-                  : null,
+              json_['clientValidationTrustConfig'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7060,7 +6922,7 @@ class Operation {
 
   Operation.fromJson(core.Map json_)
       : this(
-          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
@@ -7068,7 +6930,7 @@ class Operation {
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           response: json_.containsKey('response')
               ? json_['response'] as core.Map<core.String, core.dynamic>
               : null,
@@ -7118,9 +6980,7 @@ class RemoveAddressGroupItemsRequest {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          requestId: json_.containsKey('requestId')
-              ? json_['requestId'] as core.String
-              : null,
+          requestId: json_['requestId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7244,13 +7104,9 @@ class SecurityProfile {
 
   SecurityProfile.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          createTime: json_['createTime'] as core.String?,
+          description: json_['description'] as core.String?,
+          etag: json_['etag'] as core.String?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -7259,16 +7115,14 @@ class SecurityProfile {
                   ),
                 )
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           threatPreventionProfile: json_.containsKey('threatPreventionProfile')
               ? ThreatPreventionProfile.fromJson(
                   json_['threatPreventionProfile']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          type: json_['type'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7345,13 +7199,9 @@ class SecurityProfileGroup {
 
   SecurityProfileGroup.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          createTime: json_['createTime'] as core.String?,
+          description: json_['description'] as core.String?,
+          etag: json_['etag'] as core.String?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -7360,13 +7210,10 @@ class SecurityProfileGroup {
                   ),
                 )
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          threatPreventionProfile: json_.containsKey('threatPreventionProfile')
-              ? json_['threatPreventionProfile'] as core.String
-              : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          threatPreventionProfile:
+              json_['threatPreventionProfile'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7461,15 +7308,9 @@ class ServerTlsPolicy {
 
   ServerTlsPolicy.fromJson(core.Map json_)
       : this(
-          allowOpen: json_.containsKey('allowOpen')
-              ? json_['allowOpen'] as core.bool
-              : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
+          allowOpen: json_['allowOpen'] as core.bool?,
+          createTime: json_['createTime'] as core.String?,
+          description: json_['description'] as core.String?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -7482,15 +7323,13 @@ class ServerTlsPolicy {
               ? MTLSPolicy.fromJson(
                   json_['mtlsPolicy'] as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           serverCertificate: json_.containsKey('serverCertificate')
               ? GoogleCloudNetworksecurityV1CertificateProvider.fromJson(
                   json_['serverCertificate']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7555,12 +7394,8 @@ class SeverityOverride {
 
   SeverityOverride.fromJson(core.Map json_)
       : this(
-          action: json_.containsKey('action')
-              ? json_['action'] as core.String
-              : null,
-          severity: json_.containsKey('severity')
-              ? json_['severity'] as core.String
-              : null,
+          action: json_['action'] as core.String?,
+          severity: json_['severity'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7675,13 +7510,9 @@ class ThreatOverride {
 
   ThreatOverride.fromJson(core.Map json_)
       : this(
-          action: json_.containsKey('action')
-              ? json_['action'] as core.String
-              : null,
-          threatId: json_.containsKey('threatId')
-              ? json_['threatId'] as core.String
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          action: json_['action'] as core.String?,
+          threatId: json_['threatId'] as core.String?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7863,36 +7694,20 @@ class TlsInspectionPolicy {
 
   TlsInspectionPolicy.fromJson(core.Map json_)
       : this(
-          caPool: json_.containsKey('caPool')
-              ? json_['caPool'] as core.String
-              : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
+          caPool: json_['caPool'] as core.String?,
+          createTime: json_['createTime'] as core.String?,
           customTlsFeatures: json_.containsKey('customTlsFeatures')
               ? (json_['customTlsFeatures'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          excludePublicCaSet: json_.containsKey('excludePublicCaSet')
-              ? json_['excludePublicCaSet'] as core.bool
-              : null,
-          minTlsVersion: json_.containsKey('minTlsVersion')
-              ? json_['minTlsVersion'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          tlsFeatureProfile: json_.containsKey('tlsFeatureProfile')
-              ? json_['tlsFeatureProfile'] as core.String
-              : null,
-          trustConfig: json_.containsKey('trustConfig')
-              ? json_['trustConfig'] as core.String
-              : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          description: json_['description'] as core.String?,
+          excludePublicCaSet: json_['excludePublicCaSet'] as core.bool?,
+          minTlsVersion: json_['minTlsVersion'] as core.String?,
+          name: json_['name'] as core.String?,
+          tlsFeatureProfile: json_['tlsFeatureProfile'] as core.String?,
+          trustConfig: json_['trustConfig'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7952,16 +7767,10 @@ class UrlList {
 
   UrlList.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          description: json_['description'] as core.String?,
+          name: json_['name'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
           values: json_.containsKey('values')
               ? (json_['values'] as core.List)
                   .map((value) => value as core.String)

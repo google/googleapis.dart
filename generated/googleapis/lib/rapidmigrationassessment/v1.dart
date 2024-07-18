@@ -863,9 +863,7 @@ class Annotation {
 
   Annotation.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -874,11 +872,9 @@ class Annotation {
                   ),
                 )
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          type: json_['type'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -987,30 +983,14 @@ class Collector {
 
   Collector.fromJson(core.Map json_)
       : this(
-          bucket: json_.containsKey('bucket')
-              ? json_['bucket'] as core.String
-              : null,
-          clientVersion: json_.containsKey('clientVersion')
-              ? json_['clientVersion'] as core.String
-              : null,
-          collectionDays: json_.containsKey('collectionDays')
-              ? json_['collectionDays'] as core.int
-              : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          eulaUri: json_.containsKey('eulaUri')
-              ? json_['eulaUri'] as core.String
-              : null,
-          expectedAssetCount: json_.containsKey('expectedAssetCount')
-              ? json_['expectedAssetCount'] as core.String
-              : null,
+          bucket: json_['bucket'] as core.String?,
+          clientVersion: json_['clientVersion'] as core.String?,
+          collectionDays: json_['collectionDays'] as core.int?,
+          createTime: json_['createTime'] as core.String?,
+          description: json_['description'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          eulaUri: json_['eulaUri'] as core.String?,
+          expectedAssetCount: json_['expectedAssetCount'] as core.String?,
           guestOsScan: json_.containsKey('guestOsScan')
               ? GuestOsScan.fromJson(
                   json_['guestOsScan'] as core.Map<core.String, core.dynamic>)
@@ -1023,15 +1003,10 @@ class Collector {
                   ),
                 )
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          serviceAccount: json_.containsKey('serviceAccount')
-              ? json_['serviceAccount'] as core.String
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          serviceAccount: json_['serviceAccount'] as core.String?,
+          state: json_['state'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
           vsphereScan: json_.containsKey('vsphereScan')
               ? VSphereScan.fromJson(
                   json_['vsphereScan'] as core.Map<core.String, core.dynamic>)
@@ -1077,9 +1052,7 @@ class GuestOsScan {
 
   GuestOsScan.fromJson(core.Map json_)
       : this(
-          coreSource: json_.containsKey('coreSource')
-              ? json_['coreSource'] as core.String
-              : null,
+          coreSource: json_['coreSource'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1112,9 +1085,7 @@ class ListCollectorsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: json_.containsKey('unreachable')
               ? (json_['unreachable'] as core.List)
                   .map((value) => value as core.String)
@@ -1150,9 +1121,7 @@ class ListLocationsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1176,9 +1145,7 @@ class ListOperationsResponse {
 
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           operations: json_.containsKey('operations')
               ? (json_['operations'] as core.List)
                   .map((value) => Operation.fromJson(
@@ -1249,7 +1216,7 @@ class Operation {
 
   Operation.fromJson(core.Map json_)
       : this(
-          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
@@ -1257,7 +1224,7 @@ class Operation {
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           response: json_.containsKey('response')
               ? json_['response'] as core.Map<core.String, core.dynamic>
               : null,
@@ -1301,9 +1268,7 @@ class VSphereScan {
 
   VSphereScan.fromJson(core.Map json_)
       : this(
-          coreSource: json_.containsKey('coreSource')
-              ? json_['coreSource'] as core.String
-              : null,
+          coreSource: json_['coreSource'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

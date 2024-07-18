@@ -129,10 +129,8 @@ class Groups {
 
   Groups.fromJson(core.Map json_)
       : this(
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          responseCode: json_.containsKey('responseCode')
-              ? json_['responseCode'] as core.String
-              : null,
+          kind: json_['kind'] as core.String?,
+          responseCode: json_['responseCode'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

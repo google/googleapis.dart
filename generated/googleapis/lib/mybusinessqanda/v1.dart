@@ -454,17 +454,11 @@ class Answer {
               ? Author.fromJson(
                   json_['author'] as core.Map<core.String, core.dynamic>)
               : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          text: json_.containsKey('text') ? json_['text'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
-          upvoteCount: json_.containsKey('upvoteCount')
-              ? json_['upvoteCount'] as core.int
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          name: json_['name'] as core.String?,
+          text: json_['text'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
+          upvoteCount: json_['upvoteCount'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -501,13 +495,9 @@ class Author {
 
   Author.fromJson(core.Map json_)
       : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          profilePhotoUri: json_.containsKey('profilePhotoUri')
-              ? json_['profilePhotoUri'] as core.String
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          displayName: json_['displayName'] as core.String?,
+          profilePhotoUri: json_['profilePhotoUri'] as core.String?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -554,12 +544,8 @@ class ListAnswersResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
-          totalSize: json_.containsKey('totalSize')
-              ? json_['totalSize'] as core.int
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          totalSize: json_['totalSize'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -592,18 +578,14 @@ class ListQuestionsResponse {
 
   ListQuestionsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           questions: json_.containsKey('questions')
               ? (json_['questions'] as core.List)
                   .map((value) => Question.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          totalSize: json_.containsKey('totalSize')
-              ? json_['totalSize'] as core.int
-              : null,
+          totalSize: json_['totalSize'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -682,26 +664,18 @@ class Question {
               ? Author.fromJson(
                   json_['author'] as core.Map<core.String, core.dynamic>)
               : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          text: json_.containsKey('text') ? json_['text'] as core.String : null,
+          createTime: json_['createTime'] as core.String?,
+          name: json_['name'] as core.String?,
+          text: json_['text'] as core.String?,
           topAnswers: json_.containsKey('topAnswers')
               ? (json_['topAnswers'] as core.List)
                   .map((value) => Answer.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          totalAnswerCount: json_.containsKey('totalAnswerCount')
-              ? json_['totalAnswerCount'] as core.int
-              : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
-          upvoteCount: json_.containsKey('upvoteCount')
-              ? json_['upvoteCount'] as core.int
-              : null,
+          totalAnswerCount: json_['totalAnswerCount'] as core.int?,
+          updateTime: json_['updateTime'] as core.String?,
+          upvoteCount: json_['upvoteCount'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

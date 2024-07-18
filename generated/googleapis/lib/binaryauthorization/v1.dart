@@ -1148,12 +1148,8 @@ class AdmissionRule {
 
   AdmissionRule.fromJson(core.Map json_)
       : this(
-          enforcementMode: json_.containsKey('enforcementMode')
-              ? json_['enforcementMode'] as core.String
-              : null,
-          evaluationMode: json_.containsKey('evaluationMode')
-              ? json_['evaluationMode'] as core.String
-              : null,
+          enforcementMode: json_['enforcementMode'] as core.String?,
+          evaluationMode: json_['evaluationMode'] as core.String?,
           requireAttestationsBy: json_.containsKey('requireAttestationsBy')
               ? (json_['requireAttestationsBy'] as core.List)
                   .map((value) => value as core.String)
@@ -1185,9 +1181,7 @@ class AdmissionWhitelistPattern {
 
   AdmissionWhitelistPattern.fromJson(core.Map json_)
       : this(
-          namePattern: json_.containsKey('namePattern')
-              ? json_['namePattern'] as core.String
-              : null,
+          namePattern: json_['namePattern'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1206,9 +1200,7 @@ class AllowlistResult {
 
   AllowlistResult.fromJson(core.Map json_)
       : this(
-          matchedPattern: json_.containsKey('matchedPattern')
-              ? json_['matchedPattern'] as core.String
-              : null,
+          matchedPattern: json_['matchedPattern'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1249,9 +1241,7 @@ class AttestationAuthenticator {
 
   AttestationAuthenticator.fromJson(core.Map json_)
       : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+          displayName: json_['displayName'] as core.String?,
           pkixPublicKeySet: json_.containsKey('pkixPublicKeySet')
               ? PkixPublicKeySet.fromJson(json_['pkixPublicKeySet']
                   as core.Map<core.String, core.dynamic>)
@@ -1318,9 +1308,7 @@ class AttestationOccurrence {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          serializedPayload: json_.containsKey('serializedPayload')
-              ? json_['serializedPayload'] as core.String
-              : null,
+          serializedPayload: json_['serializedPayload'] as core.String?,
           signatures: json_.containsKey('signatures')
               ? (json_['signatures'] as core.List)
                   .map((value) => Signature.fromJson(
@@ -1412,14 +1400,10 @@ class Attestor {
 
   Attestor.fromJson(core.Map json_)
       : this(
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          description: json_['description'] as core.String?,
+          etag: json_['etag'] as core.String?,
+          name: json_['name'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
           userOwnedGrafeasNote: json_.containsKey('userOwnedGrafeasNote')
               ? UserOwnedGrafeasNote.fromJson(json_['userOwnedGrafeasNote']
                   as core.Map<core.String, core.dynamic>)
@@ -1484,13 +1468,9 @@ class AttestorPublicKey {
   AttestorPublicKey.fromJson(core.Map json_)
       : this(
           asciiArmoredPgpPublicKey:
-              json_.containsKey('asciiArmoredPgpPublicKey')
-                  ? json_['asciiArmoredPgpPublicKey'] as core.String
-                  : null,
-          comment: json_.containsKey('comment')
-              ? json_['comment'] as core.String
-              : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+              json_['asciiArmoredPgpPublicKey'] as core.String?,
+          comment: json_['comment'] as core.String?,
+          id: json_['id'] as core.String?,
           pkixPublicKey: json_.containsKey('pkixPublicKey')
               ? PkixPublicKey.fromJson(
                   json_['pkixPublicKey'] as core.Map<core.String, core.dynamic>)
@@ -1603,7 +1583,7 @@ class Binding {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          role: json_.containsKey('role') ? json_['role'] as core.String : null,
+          role: json_['role'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1697,12 +1677,8 @@ class Check {
 
   Check.fromJson(core.Map json_)
       : this(
-          alwaysDeny: json_.containsKey('alwaysDeny')
-              ? json_['alwaysDeny'] as core.bool
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+          alwaysDeny: json_['alwaysDeny'] as core.bool?,
+          displayName: json_['displayName'] as core.String?,
           imageAllowlist: json_.containsKey('imageAllowlist')
               ? ImageAllowlist.fromJson(json_['imageAllowlist']
                   as core.Map<core.String, core.dynamic>)
@@ -1789,19 +1765,14 @@ class CheckResult {
               ? AllowlistResult.fromJson(json_['allowlistResult']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+          displayName: json_['displayName'] as core.String?,
           evaluationResult: json_.containsKey('evaluationResult')
               ? EvaluationResult.fromJson(json_['evaluationResult']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          explanation: json_.containsKey('explanation')
-              ? json_['explanation'] as core.String
-              : null,
-          index:
-              json_.containsKey('index') ? json_['index'] as core.String : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          explanation: json_['explanation'] as core.String?,
+          index: json_['index'] as core.String?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1895,9 +1866,7 @@ class CheckSet {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+          displayName: json_['displayName'] as core.String?,
           imageAllowlist: json_.containsKey('imageAllowlist')
               ? ImageAllowlist.fromJson(json_['imageAllowlist']
                   as core.Map<core.String, core.dynamic>)
@@ -1958,14 +1927,9 @@ class CheckSetResult {
               ? CheckResults.fromJson(
                   json_['checkResults'] as core.Map<core.String, core.dynamic>)
               : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          explanation: json_.containsKey('explanation')
-              ? json_['explanation'] as core.String
-              : null,
-          index:
-              json_.containsKey('index') ? json_['index'] as core.String : null,
+          displayName: json_['displayName'] as core.String?,
+          explanation: json_['explanation'] as core.String?,
+          index: json_['index'] as core.String?,
           scope: json_.containsKey('scope')
               ? Scope.fromJson(
                   json_['scope'] as core.Map<core.String, core.dynamic>)
@@ -2043,9 +2007,7 @@ class EvaluateGkePolicyResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          verdict: json_.containsKey('verdict')
-              ? json_['verdict'] as core.String
-              : null,
+          verdict: json_['verdict'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2072,9 +2034,7 @@ class EvaluationResult {
 
   EvaluationResult.fromJson(core.Map json_)
       : this(
-          verdict: json_.containsKey('verdict')
-              ? json_['verdict'] as core.String
-              : null,
+          verdict: json_['verdict'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2259,10 +2219,8 @@ class IamPolicy {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          version: json_.containsKey('version')
-              ? json_['version'] as core.int
-              : null,
+          etag: json_['etag'] as core.String?,
+          version: json_['version'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2316,9 +2274,7 @@ class ImageFreshnessCheck {
 
   ImageFreshnessCheck.fromJson(core.Map json_)
       : this(
-          maxUploadAgeDays: json_.containsKey('maxUploadAgeDays')
-              ? json_['maxUploadAgeDays'] as core.int
-              : null,
+          maxUploadAgeDays: json_['maxUploadAgeDays'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2372,15 +2328,9 @@ class ImageResult {
               ? CheckSetResult.fromJson(json_['checkSetResult']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          explanation: json_.containsKey('explanation')
-              ? json_['explanation'] as core.String
-              : null,
-          imageUri: json_.containsKey('imageUri')
-              ? json_['imageUri'] as core.String
-              : null,
-          verdict: json_.containsKey('verdict')
-              ? json_['verdict'] as core.String
-              : null,
+          explanation: json_['explanation'] as core.String?,
+          imageUri: json_['imageUri'] as core.String?,
+          verdict: json_['verdict'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2419,9 +2369,7 @@ class ListAttestorsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2449,9 +2397,7 @@ class ListPlatformPoliciesResponse {
 
   ListPlatformPoliciesResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           platformPolicies: json_.containsKey('platformPolicies')
               ? (json_['platformPolicies'] as core.List)
                   .map((value) => PlatformPolicy.fromJson(
@@ -2543,14 +2489,9 @@ class PkixPublicKey {
 
   PkixPublicKey.fromJson(core.Map json_)
       : this(
-          keyId:
-              json_.containsKey('keyId') ? json_['keyId'] as core.String : null,
-          publicKeyPem: json_.containsKey('publicKeyPem')
-              ? json_['publicKeyPem'] as core.String
-              : null,
-          signatureAlgorithm: json_.containsKey('signatureAlgorithm')
-              ? json_['signatureAlgorithm'] as core.String
-              : null,
+          keyId: json_['keyId'] as core.String?,
+          publicKeyPem: json_['publicKeyPem'] as core.String?,
+          signatureAlgorithm: json_['signatureAlgorithm'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2623,17 +2564,13 @@ class PlatformPolicy {
 
   PlatformPolicy.fromJson(core.Map json_)
       : this(
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
+          description: json_['description'] as core.String?,
           gkePolicy: json_.containsKey('gkePolicy')
               ? GkePolicy.fromJson(
                   json_['gkePolicy'] as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2684,19 +2621,11 @@ class PodResult {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          kubernetesNamespace: json_.containsKey('kubernetesNamespace')
-              ? json_['kubernetesNamespace'] as core.String
-              : null,
+          kubernetesNamespace: json_['kubernetesNamespace'] as core.String?,
           kubernetesServiceAccount:
-              json_.containsKey('kubernetesServiceAccount')
-                  ? json_['kubernetesServiceAccount'] as core.String
-                  : null,
-          podName: json_.containsKey('podName')
-              ? json_['podName'] as core.String
-              : null,
-          verdict: json_.containsKey('verdict')
-              ? json_['verdict'] as core.String
-              : null,
+              json_['kubernetesServiceAccount'] as core.String?,
+          podName: json_['podName'] as core.String?,
+          verdict: json_['verdict'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2839,14 +2768,10 @@ class Policy {
               ? AdmissionRule.fromJson(json_['defaultAdmissionRule']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          description: json_['description'] as core.String?,
+          etag: json_['etag'] as core.String?,
           globalPolicyEvaluationMode:
-              json_.containsKey('globalPolicyEvaluationMode')
-                  ? json_['globalPolicyEvaluationMode'] as core.String
-                  : null,
+              json_['globalPolicyEvaluationMode'] as core.String?,
           istioServiceIdentityAdmissionRules:
               json_.containsKey('istioServiceIdentityAdmissionRules')
                   ? (json_['istioServiceIdentityAdmissionRules']
@@ -2883,10 +2808,8 @@ class Policy {
                       ),
                     )
                   : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2938,13 +2861,9 @@ class Scope {
 
   Scope.fromJson(core.Map json_)
       : this(
-          kubernetesNamespace: json_.containsKey('kubernetesNamespace')
-              ? json_['kubernetesNamespace'] as core.String
-              : null,
+          kubernetesNamespace: json_['kubernetesNamespace'] as core.String?,
           kubernetesServiceAccount:
-              json_.containsKey('kubernetesServiceAccount')
-                  ? json_['kubernetesServiceAccount'] as core.String
-                  : null,
+              json_['kubernetesServiceAccount'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3031,9 +2950,7 @@ class SigstoreAuthority {
 
   SigstoreAuthority.fromJson(core.Map json_)
       : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+          displayName: json_['displayName'] as core.String?,
           publicKeySet: json_.containsKey('publicKeySet')
               ? SigstorePublicKeySet.fromJson(
                   json_['publicKeySet'] as core.Map<core.String, core.dynamic>)
@@ -3060,9 +2977,7 @@ class SigstorePublicKey {
 
   SigstorePublicKey.fromJson(core.Map json_)
       : this(
-          publicKeyPem: json_.containsKey('publicKeyPem')
-              ? json_['publicKeyPem'] as core.String
-              : null,
+          publicKeyPem: json_['publicKeyPem'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3313,12 +3228,8 @@ class UserOwnedGrafeasNote {
   UserOwnedGrafeasNote.fromJson(core.Map json_)
       : this(
           delegationServiceAccountEmail:
-              json_.containsKey('delegationServiceAccountEmail')
-                  ? json_['delegationServiceAccountEmail'] as core.String
-                  : null,
-          noteReference: json_.containsKey('noteReference')
-              ? json_['noteReference'] as core.String
-              : null,
+              json_['delegationServiceAccountEmail'] as core.String?,
+          noteReference: json_['noteReference'] as core.String?,
           publicKeys: json_.containsKey('publicKeys')
               ? (json_['publicKeys'] as core.List)
                   .map((value) => AttestorPublicKey.fromJson(
@@ -3370,12 +3281,8 @@ class ValidateAttestationOccurrenceRequest {
               ? AttestationOccurrence.fromJson(
                   json_['attestation'] as core.Map<core.String, core.dynamic>)
               : null,
-          occurrenceNote: json_.containsKey('occurrenceNote')
-              ? json_['occurrenceNote'] as core.String
-              : null,
-          occurrenceResourceUri: json_.containsKey('occurrenceResourceUri')
-              ? json_['occurrenceResourceUri'] as core.String
-              : null,
+          occurrenceNote: json_['occurrenceNote'] as core.String?,
+          occurrenceResourceUri: json_['occurrenceResourceUri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3406,12 +3313,8 @@ class ValidateAttestationOccurrenceResponse {
 
   ValidateAttestationOccurrenceResponse.fromJson(core.Map json_)
       : this(
-          denialReason: json_.containsKey('denialReason')
-              ? json_['denialReason'] as core.String
-              : null,
-          result: json_.containsKey('result')
-              ? json_['result'] as core.String
-              : null,
+          denialReason: json_['denialReason'] as core.String?,
+          result: json_['result'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3483,12 +3386,8 @@ class VerificationRule {
                   as core.Map<core.String, core.dynamic>)
               : null,
           configBasedBuildRequired:
-              json_.containsKey('configBasedBuildRequired')
-                  ? json_['configBasedBuildRequired'] as core.bool
-                  : null,
-          trustedBuilder: json_.containsKey('trustedBuilder')
-              ? json_['trustedBuilder'] as core.String
-              : null,
+              json_['configBasedBuildRequired'] as core.bool?,
+          trustedBuilder: json_['trustedBuilder'] as core.String?,
           trustedSourceRepoPatterns:
               json_.containsKey('trustedSourceRepoPatterns')
                   ? (json_['trustedSourceRepoPatterns'] as core.List)
@@ -3612,13 +3511,10 @@ class VulnerabilityCheck {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          maximumFixableSeverity: json_.containsKey('maximumFixableSeverity')
-              ? json_['maximumFixableSeverity'] as core.String
-              : null,
+          maximumFixableSeverity:
+              json_['maximumFixableSeverity'] as core.String?,
           maximumUnfixableSeverity:
-              json_.containsKey('maximumUnfixableSeverity')
-                  ? json_['maximumUnfixableSeverity'] as core.String
-                  : null,
+              json_['maximumUnfixableSeverity'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

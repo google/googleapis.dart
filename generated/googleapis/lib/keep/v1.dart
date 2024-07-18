@@ -432,7 +432,7 @@ class Attachment {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -547,9 +547,7 @@ class CreatePermissionRequest {
 
   CreatePermissionRequest.fromJson(core.Map json_)
       : this(
-          parent: json_.containsKey('parent')
-              ? json_['parent'] as core.String
-              : null,
+          parent: json_['parent'] as core.String?,
           permission: json_.containsKey('permission')
               ? Permission.fromJson(
                   json_['permission'] as core.Map<core.String, core.dynamic>)
@@ -584,8 +582,7 @@ class Group {
 
   Group.fromJson(core.Map json_)
       : this(
-          email:
-              json_.containsKey('email') ? json_['email'] as core.String : null,
+          email: json_['email'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -642,9 +639,7 @@ class ListItem {
 
   ListItem.fromJson(core.Map json_)
       : this(
-          checked: json_.containsKey('checked')
-              ? json_['checked'] as core.bool
-              : null,
+          checked: json_['checked'] as core.bool?,
           childListItems: json_.containsKey('childListItems')
               ? (json_['childListItems'] as core.List)
                   .map((value) => ListItem.fromJson(
@@ -679,9 +674,7 @@ class ListNotesResponse {
 
   ListNotesResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           notes: json_.containsKey('notes')
               ? (json_['notes'] as core.List)
                   .map((value) => Note.fromJson(
@@ -774,27 +767,18 @@ class Note {
               ? Section.fromJson(
                   json_['body'] as core.Map<core.String, core.dynamic>)
               : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          createTime: json_['createTime'] as core.String?,
+          name: json_['name'] as core.String?,
           permissions: json_.containsKey('permissions')
               ? (json_['permissions'] as core.List)
                   .map((value) => Permission.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          title:
-              json_.containsKey('title') ? json_['title'] as core.String : null,
-          trashTime: json_.containsKey('trashTime')
-              ? json_['trashTime'] as core.String
-              : null,
-          trashed: json_.containsKey('trashed')
-              ? json_['trashed'] as core.bool
-              : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          title: json_['title'] as core.String?,
+          trashTime: json_['trashTime'] as core.String?,
+          trashed: json_['trashed'] as core.bool?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -872,11 +856,8 @@ class Permission {
 
   Permission.fromJson(core.Map json_)
       : this(
-          deleted: json_.containsKey('deleted')
-              ? json_['deleted'] as core.bool
-              : null,
-          email:
-              json_.containsKey('email') ? json_['email'] as core.String : null,
+          deleted: json_['deleted'] as core.bool?,
+          email: json_['email'] as core.String?,
           family: json_.containsKey('family')
               ? Family.fromJson(
                   json_['family'] as core.Map<core.String, core.dynamic>)
@@ -885,8 +866,8 @@ class Permission {
               ? Group.fromJson(
                   json_['group'] as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          role: json_.containsKey('role') ? json_['role'] as core.String : null,
+          name: json_['name'] as core.String?,
+          role: json_['role'] as core.String?,
           user: json_.containsKey('user')
               ? User.fromJson(
                   json_['user'] as core.Map<core.String, core.dynamic>)
@@ -950,7 +931,7 @@ class TextContent {
 
   TextContent.fromJson(core.Map json_)
       : this(
-          text: json_.containsKey('text') ? json_['text'] as core.String : null,
+          text: json_['text'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -969,8 +950,7 @@ class User {
 
   User.fromJson(core.Map json_)
       : this(
-          email:
-              json_.containsKey('email') ? json_['email'] as core.String : null,
+          email: json_['email'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

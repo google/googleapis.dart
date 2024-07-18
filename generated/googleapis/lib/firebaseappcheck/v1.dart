@@ -2316,10 +2316,8 @@ class GoogleFirebaseAppcheckV1AppAttestConfig {
 
   GoogleFirebaseAppcheckV1AppAttestConfig.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          tokenTtl: json_.containsKey('tokenTtl')
-              ? json_['tokenTtl'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          tokenTtl: json_['tokenTtl'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2355,9 +2353,8 @@ class GoogleFirebaseAppcheckV1AppCheckToken {
 
   GoogleFirebaseAppcheckV1AppCheckToken.fromJson(core.Map json_)
       : this(
-          token:
-              json_.containsKey('token') ? json_['token'] as core.String : null,
-          ttl: json_.containsKey('ttl') ? json_['ttl'] as core.String : null,
+          token: json_['token'] as core.String?,
+          ttl: json_['ttl'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2555,9 +2552,7 @@ class GoogleFirebaseAppcheckV1BatchUpdateServicesRequest {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          updateMask: json_.containsKey('updateMask')
-              ? json_['updateMask'] as core.String
-              : null,
+          updateMask: json_['updateMask'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2633,15 +2628,10 @@ class GoogleFirebaseAppcheckV1DebugToken {
 
   GoogleFirebaseAppcheckV1DebugToken.fromJson(core.Map json_)
       : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          token:
-              json_.containsKey('token') ? json_['token'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          displayName: json_['displayName'] as core.String?,
+          name: json_['name'] as core.String?,
+          token: json_['token'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2707,18 +2697,11 @@ class GoogleFirebaseAppcheckV1DeviceCheckConfig {
 
   GoogleFirebaseAppcheckV1DeviceCheckConfig.fromJson(core.Map json_)
       : this(
-          keyId:
-              json_.containsKey('keyId') ? json_['keyId'] as core.String : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          privateKey: json_.containsKey('privateKey')
-              ? json_['privateKey'] as core.String
-              : null,
-          privateKeySet: json_.containsKey('privateKeySet')
-              ? json_['privateKeySet'] as core.bool
-              : null,
-          tokenTtl: json_.containsKey('tokenTtl')
-              ? json_['tokenTtl'] as core.String
-              : null,
+          keyId: json_['keyId'] as core.String?,
+          name: json_['name'] as core.String?,
+          privateKey: json_['privateKey'] as core.String?,
+          privateKeySet: json_['privateKeySet'] as core.bool?,
+          tokenTtl: json_['tokenTtl'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2783,18 +2766,10 @@ class GoogleFirebaseAppcheckV1ExchangeAppAttestAssertionRequest {
   GoogleFirebaseAppcheckV1ExchangeAppAttestAssertionRequest.fromJson(
       core.Map json_)
       : this(
-          artifact: json_.containsKey('artifact')
-              ? json_['artifact'] as core.String
-              : null,
-          assertion: json_.containsKey('assertion')
-              ? json_['assertion'] as core.String
-              : null,
-          challenge: json_.containsKey('challenge')
-              ? json_['challenge'] as core.String
-              : null,
-          limitedUse: json_.containsKey('limitedUse')
-              ? json_['limitedUse'] as core.bool
-              : null,
+          artifact: json_['artifact'] as core.String?,
+          assertion: json_['assertion'] as core.String?,
+          challenge: json_['challenge'] as core.String?,
+          limitedUse: json_['limitedUse'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2861,17 +2836,10 @@ class GoogleFirebaseAppcheckV1ExchangeAppAttestAttestationRequest {
   GoogleFirebaseAppcheckV1ExchangeAppAttestAttestationRequest.fromJson(
       core.Map json_)
       : this(
-          attestationStatement: json_.containsKey('attestationStatement')
-              ? json_['attestationStatement'] as core.String
-              : null,
-          challenge: json_.containsKey('challenge')
-              ? json_['challenge'] as core.String
-              : null,
-          keyId:
-              json_.containsKey('keyId') ? json_['keyId'] as core.String : null,
-          limitedUse: json_.containsKey('limitedUse')
-              ? json_['limitedUse'] as core.bool
-              : null,
+          attestationStatement: json_['attestationStatement'] as core.String?,
+          challenge: json_['challenge'] as core.String?,
+          keyId: json_['keyId'] as core.String?,
+          limitedUse: json_['limitedUse'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2910,9 +2878,7 @@ class GoogleFirebaseAppcheckV1ExchangeAppAttestAttestationResponse {
               ? GoogleFirebaseAppcheckV1AppCheckToken.fromJson(
                   json_['appCheckToken'] as core.Map<core.String, core.dynamic>)
               : null,
-          artifact: json_.containsKey('artifact')
-              ? json_['artifact'] as core.String
-              : null,
+          artifact: json_['artifact'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2943,12 +2909,8 @@ class GoogleFirebaseAppcheckV1ExchangeCustomTokenRequest {
 
   GoogleFirebaseAppcheckV1ExchangeCustomTokenRequest.fromJson(core.Map json_)
       : this(
-          customToken: json_.containsKey('customToken')
-              ? json_['customToken'] as core.String
-              : null,
-          limitedUse: json_.containsKey('limitedUse')
-              ? json_['limitedUse'] as core.bool
-              : null,
+          customToken: json_['customToken'] as core.String?,
+          limitedUse: json_['limitedUse'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2981,12 +2943,8 @@ class GoogleFirebaseAppcheckV1ExchangeDebugTokenRequest {
 
   GoogleFirebaseAppcheckV1ExchangeDebugTokenRequest.fromJson(core.Map json_)
       : this(
-          debugToken: json_.containsKey('debugToken')
-              ? json_['debugToken'] as core.String
-              : null,
-          limitedUse: json_.containsKey('limitedUse')
-              ? json_['limitedUse'] as core.bool
-              : null,
+          debugToken: json_['debugToken'] as core.String?,
+          limitedUse: json_['limitedUse'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3020,12 +2978,8 @@ class GoogleFirebaseAppcheckV1ExchangeDeviceCheckTokenRequest {
   GoogleFirebaseAppcheckV1ExchangeDeviceCheckTokenRequest.fromJson(
       core.Map json_)
       : this(
-          deviceToken: json_.containsKey('deviceToken')
-              ? json_['deviceToken'] as core.String
-              : null,
-          limitedUse: json_.containsKey('limitedUse')
-              ? json_['limitedUse'] as core.bool
-              : null,
+          deviceToken: json_['deviceToken'] as core.String?,
+          limitedUse: json_['limitedUse'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3058,12 +3012,8 @@ class GoogleFirebaseAppcheckV1ExchangePlayIntegrityTokenRequest {
   GoogleFirebaseAppcheckV1ExchangePlayIntegrityTokenRequest.fromJson(
       core.Map json_)
       : this(
-          limitedUse: json_.containsKey('limitedUse')
-              ? json_['limitedUse'] as core.bool
-              : null,
-          playIntegrityToken: json_.containsKey('playIntegrityToken')
-              ? json_['playIntegrityToken'] as core.String
-              : null,
+          limitedUse: json_['limitedUse'] as core.bool?,
+          playIntegrityToken: json_['playIntegrityToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3096,13 +3046,9 @@ class GoogleFirebaseAppcheckV1ExchangeRecaptchaEnterpriseTokenRequest {
   GoogleFirebaseAppcheckV1ExchangeRecaptchaEnterpriseTokenRequest.fromJson(
       core.Map json_)
       : this(
-          limitedUse: json_.containsKey('limitedUse')
-              ? json_['limitedUse'] as core.bool
-              : null,
+          limitedUse: json_['limitedUse'] as core.bool?,
           recaptchaEnterpriseToken:
-              json_.containsKey('recaptchaEnterpriseToken')
-                  ? json_['recaptchaEnterpriseToken'] as core.String
-                  : null,
+              json_['recaptchaEnterpriseToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3135,12 +3081,8 @@ class GoogleFirebaseAppcheckV1ExchangeRecaptchaV3TokenRequest {
   GoogleFirebaseAppcheckV1ExchangeRecaptchaV3TokenRequest.fromJson(
       core.Map json_)
       : this(
-          limitedUse: json_.containsKey('limitedUse')
-              ? json_['limitedUse'] as core.bool
-              : null,
-          recaptchaV3Token: json_.containsKey('recaptchaV3Token')
-              ? json_['recaptchaV3Token'] as core.String
-              : null,
+          limitedUse: json_['limitedUse'] as core.bool?,
+          recaptchaV3Token: json_['recaptchaV3Token'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3164,9 +3106,7 @@ class GoogleFirebaseAppcheckV1ExchangeSafetyNetTokenRequest {
 
   GoogleFirebaseAppcheckV1ExchangeSafetyNetTokenRequest.fromJson(core.Map json_)
       : this(
-          safetyNetToken: json_.containsKey('safetyNetToken')
-              ? json_['safetyNetToken'] as core.String
-              : null,
+          safetyNetToken: json_['safetyNetToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3203,10 +3143,8 @@ class GoogleFirebaseAppcheckV1GenerateAppAttestChallengeResponse {
   GoogleFirebaseAppcheckV1GenerateAppAttestChallengeResponse.fromJson(
       core.Map json_)
       : this(
-          challenge: json_.containsKey('challenge')
-              ? json_['challenge'] as core.String
-              : null,
-          ttl: json_.containsKey('ttl') ? json_['ttl'] as core.String : null,
+          challenge: json_['challenge'] as core.String?,
+          ttl: json_['ttl'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3240,10 +3178,8 @@ class GoogleFirebaseAppcheckV1GeneratePlayIntegrityChallengeResponse {
   GoogleFirebaseAppcheckV1GeneratePlayIntegrityChallengeResponse.fromJson(
       core.Map json_)
       : this(
-          challenge: json_.containsKey('challenge')
-              ? json_['challenge'] as core.String
-              : null,
-          ttl: json_.containsKey('ttl') ? json_['ttl'] as core.String : null,
+          challenge: json_['challenge'] as core.String?,
+          ttl: json_['ttl'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3279,9 +3215,7 @@ class GoogleFirebaseAppcheckV1ListDebugTokensResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3311,9 +3245,7 @@ class GoogleFirebaseAppcheckV1ListServicesResponse {
 
   GoogleFirebaseAppcheckV1ListServicesResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           services: json_.containsKey('services')
               ? (json_['services'] as core.List)
                   .map((value) => GoogleFirebaseAppcheckV1Service.fromJson(
@@ -3358,10 +3290,8 @@ class GoogleFirebaseAppcheckV1PlayIntegrityConfig {
 
   GoogleFirebaseAppcheckV1PlayIntegrityConfig.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          tokenTtl: json_.containsKey('tokenTtl')
-              ? json_['tokenTtl'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          tokenTtl: json_['tokenTtl'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3409,12 +3339,12 @@ class GoogleFirebaseAppcheckV1PublicJwk {
 
   GoogleFirebaseAppcheckV1PublicJwk.fromJson(core.Map json_)
       : this(
-          alg: json_.containsKey('alg') ? json_['alg'] as core.String : null,
-          e: json_.containsKey('e') ? json_['e'] as core.String : null,
-          kid: json_.containsKey('kid') ? json_['kid'] as core.String : null,
-          kty: json_.containsKey('kty') ? json_['kty'] as core.String : null,
-          n: json_.containsKey('n') ? json_['n'] as core.String : null,
-          use: json_.containsKey('use') ? json_['use'] as core.String : null,
+          alg: json_['alg'] as core.String?,
+          e: json_['e'] as core.String?,
+          kid: json_['kid'] as core.String?,
+          kty: json_['kty'] as core.String?,
+          n: json_['n'] as core.String?,
+          use: json_['use'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3497,13 +3427,9 @@ class GoogleFirebaseAppcheckV1RecaptchaEnterpriseConfig {
 
   GoogleFirebaseAppcheckV1RecaptchaEnterpriseConfig.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          siteKey: json_.containsKey('siteKey')
-              ? json_['siteKey'] as core.String
-              : null,
-          tokenTtl: json_.containsKey('tokenTtl')
-              ? json_['tokenTtl'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          siteKey: json_['siteKey'] as core.String?,
+          tokenTtl: json_['tokenTtl'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3559,16 +3485,10 @@ class GoogleFirebaseAppcheckV1RecaptchaV3Config {
 
   GoogleFirebaseAppcheckV1RecaptchaV3Config.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          siteSecret: json_.containsKey('siteSecret')
-              ? json_['siteSecret'] as core.String
-              : null,
-          siteSecretSet: json_.containsKey('siteSecretSet')
-              ? json_['siteSecretSet'] as core.bool
-              : null,
-          tokenTtl: json_.containsKey('tokenTtl')
-              ? json_['tokenTtl'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          siteSecret: json_['siteSecret'] as core.String?,
+          siteSecretSet: json_['siteSecretSet'] as core.bool?,
+          tokenTtl: json_['tokenTtl'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3608,10 +3528,8 @@ class GoogleFirebaseAppcheckV1SafetyNetConfig {
 
   GoogleFirebaseAppcheckV1SafetyNetConfig.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          tokenTtl: json_.containsKey('tokenTtl')
-              ? json_['tokenTtl'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          tokenTtl: json_['tokenTtl'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3680,10 +3598,8 @@ class GoogleFirebaseAppcheckV1Service {
 
   GoogleFirebaseAppcheckV1Service.fromJson(core.Map json_)
       : this(
-          enforcementMode: json_.containsKey('enforcementMode')
-              ? json_['enforcementMode'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          enforcementMode: json_['enforcementMode'] as core.String?,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3726,9 +3642,7 @@ class GoogleFirebaseAppcheckV1UpdateServiceRequest {
               ? GoogleFirebaseAppcheckV1Service.fromJson(
                   json_['service'] as core.Map<core.String, core.dynamic>)
               : null,
-          updateMask: json_.containsKey('updateMask')
-              ? json_['updateMask'] as core.String
-              : null,
+          updateMask: json_['updateMask'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

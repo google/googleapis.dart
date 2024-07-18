@@ -1743,12 +1743,8 @@ class ApplyResults {
 
   ApplyResults.fromJson(core.Map json_)
       : this(
-          artifacts: json_.containsKey('artifacts')
-              ? json_['artifacts'] as core.String
-              : null,
-          content: json_.containsKey('content')
-              ? json_['content'] as core.String
-              : null,
+          artifacts: json_['artifacts'] as core.String?,
+          content: json_['content'] as core.String?,
           outputs: json_.containsKey('outputs')
               ? (json_['outputs'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -1807,9 +1803,7 @@ class AuditConfig {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          service: json_.containsKey('service')
-              ? json_['service'] as core.String
-              : null,
+          service: json_['service'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1923,7 +1917,7 @@ class Binding {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          role: json_.containsKey('role') ? json_['role'] as core.String : null,
+          role: json_['role'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1950,9 +1944,7 @@ class DeleteStatefileRequest {
 
   DeleteStatefileRequest.fromJson(core.Map json_)
       : this(
-          lockId: json_.containsKey('lockId')
-              ? json_['lockId'] as core.String
-              : null,
+          lockId: json_['lockId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2197,31 +2189,18 @@ class Deployment {
                   ),
                 )
               : null,
-          artifactsGcsBucket: json_.containsKey('artifactsGcsBucket')
-              ? json_['artifactsGcsBucket'] as core.String
-              : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          deleteBuild: json_.containsKey('deleteBuild')
-              ? json_['deleteBuild'] as core.String
-              : null,
-          deleteLogs: json_.containsKey('deleteLogs')
-              ? json_['deleteLogs'] as core.String
-              : null,
+          artifactsGcsBucket: json_['artifactsGcsBucket'] as core.String?,
+          createTime: json_['createTime'] as core.String?,
+          deleteBuild: json_['deleteBuild'] as core.String?,
+          deleteLogs: json_['deleteLogs'] as core.String?,
           deleteResults: json_.containsKey('deleteResults')
               ? ApplyResults.fromJson(
                   json_['deleteResults'] as core.Map<core.String, core.dynamic>)
               : null,
-          errorCode: json_.containsKey('errorCode')
-              ? json_['errorCode'] as core.String
-              : null,
-          errorLogs: json_.containsKey('errorLogs')
-              ? json_['errorLogs'] as core.String
-              : null,
-          importExistingResources: json_.containsKey('importExistingResources')
-              ? json_['importExistingResources'] as core.bool
-              : null,
+          errorCode: json_['errorCode'] as core.String?,
+          errorLogs: json_['errorLogs'] as core.String?,
+          importExistingResources:
+              json_['importExistingResources'] as core.bool?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -2230,24 +2209,13 @@ class Deployment {
                   ),
                 )
               : null,
-          latestRevision: json_.containsKey('latestRevision')
-              ? json_['latestRevision'] as core.String
-              : null,
-          lockState: json_.containsKey('lockState')
-              ? json_['lockState'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          quotaValidation: json_.containsKey('quotaValidation')
-              ? json_['quotaValidation'] as core.String
-              : null,
-          serviceAccount: json_.containsKey('serviceAccount')
-              ? json_['serviceAccount'] as core.String
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
-          stateDetail: json_.containsKey('stateDetail')
-              ? json_['stateDetail'] as core.String
-              : null,
+          latestRevision: json_['latestRevision'] as core.String?,
+          lockState: json_['lockState'] as core.String?,
+          name: json_['name'] as core.String?,
+          quotaValidation: json_['quotaValidation'] as core.String?,
+          serviceAccount: json_['serviceAccount'] as core.String?,
+          state: json_['state'] as core.String?,
+          stateDetail: json_['stateDetail'] as core.String?,
           terraformBlueprint: json_.containsKey('terraformBlueprint')
               ? TerraformBlueprint.fromJson(json_['terraformBlueprint']
                   as core.Map<core.String, core.dynamic>)
@@ -2258,18 +2226,10 @@ class Deployment {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          tfVersion: json_.containsKey('tfVersion')
-              ? json_['tfVersion'] as core.String
-              : null,
-          tfVersionConstraint: json_.containsKey('tfVersionConstraint')
-              ? json_['tfVersionConstraint'] as core.String
-              : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
-          workerPool: json_.containsKey('workerPool')
-              ? json_['workerPool'] as core.String
-              : null,
+          tfVersion: json_['tfVersion'] as core.String?,
+          tfVersionConstraint: json_['tfVersionConstraint'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
+          workerPool: json_['workerPool'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2329,8 +2289,7 @@ class ExportDeploymentStatefileRequest {
 
   ExportDeploymentStatefileRequest.fromJson(core.Map json_)
       : this(
-          draft:
-              json_.containsKey('draft') ? json_['draft'] as core.bool : null,
+          draft: json_['draft'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2419,11 +2378,9 @@ class GitSource {
 
   GitSource.fromJson(core.Map json_)
       : this(
-          directory: json_.containsKey('directory')
-              ? json_['directory'] as core.String
-              : null,
-          ref: json_.containsKey('ref') ? json_['ref'] as core.String : null,
-          repo: json_.containsKey('repo') ? json_['repo'] as core.String : null,
+          directory: json_['directory'] as core.String?,
+          ref: json_['ref'] as core.String?,
+          repo: json_['repo'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2447,9 +2404,7 @@ class ImportStatefileRequest {
 
   ImportStatefileRequest.fromJson(core.Map json_)
       : this(
-          lockId: json_.containsKey('lockId')
-              ? json_['lockId'] as core.String
-              : null,
+          lockId: json_['lockId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2482,9 +2437,7 @@ class ListDeploymentsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: json_.containsKey('unreachable')
               ? (json_['unreachable'] as core.List)
                   .map((value) => value as core.String)
@@ -2520,9 +2473,7 @@ class ListLocationsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2546,9 +2497,7 @@ class ListOperationsResponse {
 
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           operations: json_.containsKey('operations')
               ? (json_['operations'] as core.List)
                   .map((value) => Operation.fromJson(
@@ -2585,9 +2534,7 @@ class ListPreviewsResponse {
 
   ListPreviewsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           previews: json_.containsKey('previews')
               ? (json_['previews'] as core.List)
                   .map((value) => Preview.fromJson(
@@ -2633,9 +2580,7 @@ class ListResourcesResponse {
 
   ListResourcesResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           resources: json_.containsKey('resources')
               ? (json_['resources'] as core.List)
                   .map((value) => Resource.fromJson(
@@ -2681,9 +2626,7 @@ class ListRevisionsResponse {
 
   ListRevisionsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           revisions: json_.containsKey('revisions')
               ? (json_['revisions'] as core.List)
                   .map((value) => Revision.fromJson(
@@ -2724,9 +2667,7 @@ class ListTerraformVersionsResponse {
 
   ListTerraformVersionsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           terraformVersions: json_.containsKey('terraformVersions')
               ? (json_['terraformVersions'] as core.List)
                   .map((value) => TerraformVersion.fromJson(
@@ -2784,20 +2725,12 @@ class LockInfo {
 
   LockInfo.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          info: json_.containsKey('info') ? json_['info'] as core.String : null,
-          lockId: json_.containsKey('lockId')
-              ? json_['lockId'] as core.String
-              : null,
-          operation: json_.containsKey('operation')
-              ? json_['operation'] as core.String
-              : null,
-          version: json_.containsKey('version')
-              ? json_['version'] as core.String
-              : null,
-          who: json_.containsKey('who') ? json_['who'] as core.String : null,
+          createTime: json_['createTime'] as core.String?,
+          info: json_['info'] as core.String?,
+          lockId: json_['lockId'] as core.String?,
+          operation: json_['operation'] as core.String?,
+          version: json_['version'] as core.String?,
+          who: json_['who'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2863,7 +2796,7 @@ class Operation {
 
   Operation.fromJson(core.Map json_)
       : this(
-          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
@@ -2871,7 +2804,7 @@ class Operation {
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           response: json_.containsKey('response')
               ? json_['response'] as core.Map<core.String, core.dynamic>
               : null,
@@ -2993,10 +2926,8 @@ class Policy {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          version: json_.containsKey('version')
-              ? json_['version'] as core.int
-              : null,
+          etag: json_['etag'] as core.String?,
+          version: json_['version'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3211,23 +3142,12 @@ class Preview {
                   ),
                 )
               : null,
-          artifactsGcsBucket: json_.containsKey('artifactsGcsBucket')
-              ? json_['artifactsGcsBucket'] as core.String
-              : null,
-          build:
-              json_.containsKey('build') ? json_['build'] as core.String : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          deployment: json_.containsKey('deployment')
-              ? json_['deployment'] as core.String
-              : null,
-          errorCode: json_.containsKey('errorCode')
-              ? json_['errorCode'] as core.String
-              : null,
-          errorLogs: json_.containsKey('errorLogs')
-              ? json_['errorLogs'] as core.String
-              : null,
+          artifactsGcsBucket: json_['artifactsGcsBucket'] as core.String?,
+          build: json_['build'] as core.String?,
+          createTime: json_['createTime'] as core.String?,
+          deployment: json_['deployment'] as core.String?,
+          errorCode: json_['errorCode'] as core.String?,
+          errorLogs: json_['errorLogs'] as core.String?,
           errorStatus: json_.containsKey('errorStatus')
               ? Status.fromJson(
                   json_['errorStatus'] as core.Map<core.String, core.dynamic>)
@@ -3240,20 +3160,15 @@ class Preview {
                   ),
                 )
               : null,
-          logs: json_.containsKey('logs') ? json_['logs'] as core.String : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          logs: json_['logs'] as core.String?,
+          name: json_['name'] as core.String?,
           previewArtifacts: json_.containsKey('previewArtifacts')
               ? PreviewArtifacts.fromJson(json_['previewArtifacts']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          previewMode: json_.containsKey('previewMode')
-              ? json_['previewMode'] as core.String
-              : null,
-          serviceAccount: json_.containsKey('serviceAccount')
-              ? json_['serviceAccount'] as core.String
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
+          previewMode: json_['previewMode'] as core.String?,
+          serviceAccount: json_['serviceAccount'] as core.String?,
+          state: json_['state'] as core.String?,
           terraformBlueprint: json_.containsKey('terraformBlueprint')
               ? TerraformBlueprint.fromJson(json_['terraformBlueprint']
                   as core.Map<core.String, core.dynamic>)
@@ -3264,15 +3179,9 @@ class Preview {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          tfVersion: json_.containsKey('tfVersion')
-              ? json_['tfVersion'] as core.String
-              : null,
-          tfVersionConstraint: json_.containsKey('tfVersionConstraint')
-              ? json_['tfVersionConstraint'] as core.String
-              : null,
-          workerPool: json_.containsKey('workerPool')
-              ? json_['workerPool'] as core.String
-              : null,
+          tfVersion: json_['tfVersion'] as core.String?,
+          tfVersionConstraint: json_['tfVersionConstraint'] as core.String?,
+          workerPool: json_['workerPool'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3325,12 +3234,8 @@ class PreviewArtifacts {
 
   PreviewArtifacts.fromJson(core.Map json_)
       : this(
-          artifacts: json_.containsKey('artifacts')
-              ? json_['artifacts'] as core.String
-              : null,
-          content: json_.containsKey('content')
-              ? json_['content'] as core.String
-              : null,
+          artifacts: json_['artifacts'] as core.String?,
+          content: json_['content'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3358,12 +3263,8 @@ class PreviewResult {
 
   PreviewResult.fromJson(core.Map json_)
       : this(
-          binarySignedUri: json_.containsKey('binarySignedUri')
-              ? json_['binarySignedUri'] as core.String
-              : null,
-          jsonSignedUri: json_.containsKey('jsonSignedUri')
-              ? json_['jsonSignedUri'] as core.String
-              : null,
+          binarySignedUri: json_['binarySignedUri'] as core.String?,
+          jsonSignedUri: json_['jsonSignedUri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3442,12 +3343,9 @@ class Resource {
                   ),
                 )
               : null,
-          intent: json_.containsKey('intent')
-              ? json_['intent'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
+          intent: json_['intent'] as core.String?,
+          name: json_['name'] as core.String?,
+          state: json_['state'] as core.String?,
           terraformInfo: json_.containsKey('terraformInfo')
               ? ResourceTerraformInfo.fromJson(
                   json_['terraformInfo'] as core.Map<core.String, core.dynamic>)
@@ -3475,9 +3373,7 @@ class ResourceCAIInfo {
 
   ResourceCAIInfo.fromJson(core.Map json_)
       : this(
-          fullResourceName: json_.containsKey('fullResourceName')
-              ? json_['fullResourceName'] as core.String
-              : null,
+          fullResourceName: json_['fullResourceName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3505,11 +3401,9 @@ class ResourceTerraformInfo {
 
   ResourceTerraformInfo.fromJson(core.Map json_)
       : this(
-          address: json_.containsKey('address')
-              ? json_['address'] as core.String
-              : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          address: json_['address'] as core.String?,
+          id: json_['id'] as core.String?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3713,43 +3607,25 @@ class Revision {
 
   Revision.fromJson(core.Map json_)
       : this(
-          action: json_.containsKey('action')
-              ? json_['action'] as core.String
-              : null,
+          action: json_['action'] as core.String?,
           applyResults: json_.containsKey('applyResults')
               ? ApplyResults.fromJson(
                   json_['applyResults'] as core.Map<core.String, core.dynamic>)
               : null,
-          build:
-              json_.containsKey('build') ? json_['build'] as core.String : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          errorCode: json_.containsKey('errorCode')
-              ? json_['errorCode'] as core.String
-              : null,
-          errorLogs: json_.containsKey('errorLogs')
-              ? json_['errorLogs'] as core.String
-              : null,
-          importExistingResources: json_.containsKey('importExistingResources')
-              ? json_['importExistingResources'] as core.bool
-              : null,
-          logs: json_.containsKey('logs') ? json_['logs'] as core.String : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          quotaValidation: json_.containsKey('quotaValidation')
-              ? json_['quotaValidation'] as core.String
-              : null,
-          quotaValidationResults: json_.containsKey('quotaValidationResults')
-              ? json_['quotaValidationResults'] as core.String
-              : null,
-          serviceAccount: json_.containsKey('serviceAccount')
-              ? json_['serviceAccount'] as core.String
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
-          stateDetail: json_.containsKey('stateDetail')
-              ? json_['stateDetail'] as core.String
-              : null,
+          build: json_['build'] as core.String?,
+          createTime: json_['createTime'] as core.String?,
+          errorCode: json_['errorCode'] as core.String?,
+          errorLogs: json_['errorLogs'] as core.String?,
+          importExistingResources:
+              json_['importExistingResources'] as core.bool?,
+          logs: json_['logs'] as core.String?,
+          name: json_['name'] as core.String?,
+          quotaValidation: json_['quotaValidation'] as core.String?,
+          quotaValidationResults:
+              json_['quotaValidationResults'] as core.String?,
+          serviceAccount: json_['serviceAccount'] as core.String?,
+          state: json_['state'] as core.String?,
+          stateDetail: json_['stateDetail'] as core.String?,
           terraformBlueprint: json_.containsKey('terraformBlueprint')
               ? TerraformBlueprint.fromJson(json_['terraformBlueprint']
                   as core.Map<core.String, core.dynamic>)
@@ -3760,18 +3636,10 @@ class Revision {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          tfVersion: json_.containsKey('tfVersion')
-              ? json_['tfVersion'] as core.String
-              : null,
-          tfVersionConstraint: json_.containsKey('tfVersionConstraint')
-              ? json_['tfVersionConstraint'] as core.String
-              : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
-          workerPool: json_.containsKey('workerPool')
-              ? json_['workerPool'] as core.String
-              : null,
+          tfVersion: json_['tfVersion'] as core.String?,
+          tfVersionConstraint: json_['tfVersionConstraint'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
+          workerPool: json_['workerPool'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3828,9 +3696,7 @@ class SetIamPolicyRequest {
               ? Policy.fromJson(
                   json_['policy'] as core.Map<core.String, core.dynamic>)
               : null,
-          updateMask: json_.containsKey('updateMask')
-              ? json_['updateMask'] as core.String
-              : null,
+          updateMask: json_['updateMask'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3852,9 +3718,7 @@ class Statefile {
 
   Statefile.fromJson(core.Map json_)
       : this(
-          signedUri: json_.containsKey('signedUri')
-              ? json_['signedUri'] as core.String
-              : null,
+          signedUri: json_['signedUri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3898,9 +3762,7 @@ class TerraformBlueprint {
 
   TerraformBlueprint.fromJson(core.Map json_)
       : this(
-          gcsSource: json_.containsKey('gcsSource')
-              ? json_['gcsSource'] as core.String
-              : null,
+          gcsSource: json_['gcsSource'] as core.String?,
           gitSource: json_.containsKey('gitSource')
               ? GitSource.fromJson(
                   json_['gitSource'] as core.Map<core.String, core.dynamic>)
@@ -3955,15 +3817,9 @@ class TerraformError {
               ? Status.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
               : null,
-          errorDescription: json_.containsKey('errorDescription')
-              ? json_['errorDescription'] as core.String
-              : null,
-          httpResponseCode: json_.containsKey('httpResponseCode')
-              ? json_['httpResponseCode'] as core.int
-              : null,
-          resourceAddress: json_.containsKey('resourceAddress')
-              ? json_['resourceAddress'] as core.String
-              : null,
+          errorDescription: json_['errorDescription'] as core.String?,
+          httpResponseCode: json_['httpResponseCode'] as core.int?,
+          resourceAddress: json_['resourceAddress'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3993,10 +3849,8 @@ class TerraformOutput {
 
   TerraformOutput.fromJson(core.Map json_)
       : this(
-          sensitive: json_.containsKey('sensitive')
-              ? json_['sensitive'] as core.bool
-              : null,
-          value: json_.containsKey('value') ? json_['value'] : null,
+          sensitive: json_['sensitive'] as core.bool?,
+          value: json_['value'],
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4019,8 +3873,7 @@ class TerraformVariable {
 
   TerraformVariable.fromJson(core.Map json_)
       : this(
-          inputValue:
-              json_.containsKey('inputValue') ? json_['inputValue'] : null,
+          inputValue: json_['inputValue'],
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4073,18 +3926,11 @@ class TerraformVersion {
 
   TerraformVersion.fromJson(core.Map json_)
       : this(
-          deprecateTime: json_.containsKey('deprecateTime')
-              ? json_['deprecateTime'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          obsoleteTime: json_.containsKey('obsoleteTime')
-              ? json_['obsoleteTime'] as core.String
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
-          supportTime: json_.containsKey('supportTime')
-              ? json_['supportTime'] as core.String
-              : null,
+          deprecateTime: json_['deprecateTime'] as core.String?,
+          name: json_['name'] as core.String?,
+          obsoleteTime: json_['obsoleteTime'] as core.String?,
+          state: json_['state'] as core.String?,
+          supportTime: json_['supportTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4115,9 +3961,7 @@ class UnlockDeploymentRequest {
 
   UnlockDeploymentRequest.fromJson(core.Map json_)
       : this(
-          lockId: json_.containsKey('lockId')
-              ? json_['lockId'] as core.String
-              : null,
+          lockId: json_['lockId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

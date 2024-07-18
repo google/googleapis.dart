@@ -133,9 +133,7 @@ class AccountActivity {
 
   AccountActivity.fromJson(core.Map json_)
       : this(
-          activityLevel: json_.containsKey('activityLevel')
-              ? json_['activityLevel'] as core.String
-              : null,
+          activityLevel: json_['activityLevel'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -176,9 +174,7 @@ class AccountDetails {
               ? AccountActivity.fromJson(json_['accountActivity']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          appLicensingVerdict: json_.containsKey('appLicensingVerdict')
-              ? json_['appLicensingVerdict'] as core.String
-              : null,
+          appLicensingVerdict: json_['appLicensingVerdict'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -255,12 +251,8 @@ class AppAccessRiskVerdict {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          otherApps: json_.containsKey('otherApps')
-              ? json_['otherApps'] as core.String
-              : null,
-          playOrSystemApps: json_.containsKey('playOrSystemApps')
-              ? json_['playOrSystemApps'] as core.String
-              : null,
+          otherApps: json_['otherApps'] as core.String?,
+          playOrSystemApps: json_['playOrSystemApps'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -312,20 +304,14 @@ class AppIntegrity {
 
   AppIntegrity.fromJson(core.Map json_)
       : this(
-          appRecognitionVerdict: json_.containsKey('appRecognitionVerdict')
-              ? json_['appRecognitionVerdict'] as core.String
-              : null,
+          appRecognitionVerdict: json_['appRecognitionVerdict'] as core.String?,
           certificateSha256Digest: json_.containsKey('certificateSha256Digest')
               ? (json_['certificateSha256Digest'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          packageName: json_.containsKey('packageName')
-              ? json_['packageName'] as core.String
-              : null,
-          versionCode: json_.containsKey('versionCode')
-              ? json_['versionCode'] as core.String
-              : null,
+          packageName: json_['packageName'] as core.String?,
+          versionCode: json_['versionCode'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -349,9 +335,7 @@ class DecodeIntegrityTokenRequest {
 
   DecodeIntegrityTokenRequest.fromJson(core.Map json_)
       : this(
-          integrityToken: json_.containsKey('integrityToken')
-              ? json_['integrityToken'] as core.String
-              : null,
+          integrityToken: json_['integrityToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -450,9 +434,7 @@ class EnvironmentDetails {
               ? AppAccessRiskVerdict.fromJson(json_['appAccessRiskVerdict']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          playProtectVerdict: json_.containsKey('playProtectVerdict')
-              ? json_['playProtectVerdict'] as core.String
-              : null,
+          playProtectVerdict: json_['playProtectVerdict'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -490,9 +472,7 @@ class RecentDeviceActivity {
 
   RecentDeviceActivity.fromJson(core.Map json_)
       : this(
-          deviceActivityLevel: json_.containsKey('deviceActivityLevel')
-              ? json_['deviceActivityLevel'] as core.String
-              : null,
+          deviceActivityLevel: json_['deviceActivityLevel'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -531,17 +511,10 @@ class RequestDetails {
 
   RequestDetails.fromJson(core.Map json_)
       : this(
-          nonce:
-              json_.containsKey('nonce') ? json_['nonce'] as core.String : null,
-          requestHash: json_.containsKey('requestHash')
-              ? json_['requestHash'] as core.String
-              : null,
-          requestPackageName: json_.containsKey('requestPackageName')
-              ? json_['requestPackageName'] as core.String
-              : null,
-          timestampMillis: json_.containsKey('timestampMillis')
-              ? json_['timestampMillis'] as core.String
-              : null,
+          nonce: json_['nonce'] as core.String?,
+          requestHash: json_['requestHash'] as core.String?,
+          requestPackageName: json_['requestPackageName'] as core.String?,
+          timestampMillis: json_['timestampMillis'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -567,9 +540,7 @@ class TestingDetails {
 
   TestingDetails.fromJson(core.Map json_)
       : this(
-          isTestingResponse: json_.containsKey('isTestingResponse')
-              ? json_['isTestingResponse'] as core.bool
-              : null,
+          isTestingResponse: json_['isTestingResponse'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

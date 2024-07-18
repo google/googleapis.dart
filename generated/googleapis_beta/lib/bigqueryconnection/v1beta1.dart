@@ -533,9 +533,7 @@ class AuditConfig {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          service: json_.containsKey('service')
-              ? json_['service'] as core.String
-              : null,
+          service: json_['service'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -577,9 +575,7 @@ class AuditLogConfig {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          logType: json_.containsKey('logType')
-              ? json_['logType'] as core.String
-              : null,
+          logType: json_['logType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -685,7 +681,7 @@ class Binding {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          role: json_.containsKey('role') ? json_['role'] as core.String : null,
+          role: json_['role'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -710,12 +706,8 @@ class CloudSqlCredential {
 
   CloudSqlCredential.fromJson(core.Map json_)
       : this(
-          password: json_.containsKey('password')
-              ? json_['password'] as core.String
-              : null,
-          username: json_.containsKey('username')
-              ? json_['username'] as core.String
-              : null,
+          password: json_['password'] as core.String?,
+          username: json_['username'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -767,16 +759,10 @@ class CloudSqlProperties {
               ? CloudSqlCredential.fromJson(
                   json_['credential'] as core.Map<core.String, core.dynamic>)
               : null,
-          database: json_.containsKey('database')
-              ? json_['database'] as core.String
-              : null,
-          instanceId: json_.containsKey('instanceId')
-              ? json_['instanceId'] as core.String
-              : null,
-          serviceAccountId: json_.containsKey('serviceAccountId')
-              ? json_['serviceAccountId'] as core.String
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          database: json_['database'] as core.String?,
+          instanceId: json_['instanceId'] as core.String?,
+          serviceAccountId: json_['serviceAccountId'] as core.String?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -835,22 +821,12 @@ class Connection {
               ? CloudSqlProperties.fromJson(
                   json_['cloudSql'] as core.Map<core.String, core.dynamic>)
               : null,
-          creationTime: json_.containsKey('creationTime')
-              ? json_['creationTime'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          friendlyName: json_.containsKey('friendlyName')
-              ? json_['friendlyName'] as core.String
-              : null,
-          hasCredential: json_.containsKey('hasCredential')
-              ? json_['hasCredential'] as core.bool
-              : null,
-          lastModifiedTime: json_.containsKey('lastModifiedTime')
-              ? json_['lastModifiedTime'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          creationTime: json_['creationTime'] as core.String?,
+          description: json_['description'] as core.String?,
+          friendlyName: json_['friendlyName'] as core.String?,
+          hasCredential: json_['hasCredential'] as core.bool?,
+          lastModifiedTime: json_['lastModifiedTime'] as core.String?,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -947,17 +923,10 @@ class Expr {
 
   Expr.fromJson(core.Map json_)
       : this(
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          expression: json_.containsKey('expression')
-              ? json_['expression'] as core.String
-              : null,
-          location: json_.containsKey('location')
-              ? json_['location'] as core.String
-              : null,
-          title:
-              json_.containsKey('title') ? json_['title'] as core.String : null,
+          description: json_['description'] as core.String?,
+          expression: json_['expression'] as core.String?,
+          location: json_['location'] as core.String?,
+          title: json_['title'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1014,9 +983,7 @@ class GetPolicyOptions {
 
   GetPolicyOptions.fromJson(core.Map json_)
       : this(
-          requestedPolicyVersion: json_.containsKey('requestedPolicyVersion')
-              ? json_['requestedPolicyVersion'] as core.int
-              : null,
+          requestedPolicyVersion: json_['requestedPolicyVersion'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1046,9 +1013,7 @@ class ListConnectionsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1164,10 +1129,8 @@ class Policy {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          version: json_.containsKey('version')
-              ? json_['version'] as core.int
-              : null,
+          etag: json_['etag'] as core.String?,
+          version: json_['version'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1204,9 +1167,7 @@ class SetIamPolicyRequest {
               ? Policy.fromJson(
                   json_['policy'] as core.Map<core.String, core.dynamic>)
               : null,
-          updateMask: json_.containsKey('updateMask')
-              ? json_['updateMask'] as core.String
-              : null,
+          updateMask: json_['updateMask'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

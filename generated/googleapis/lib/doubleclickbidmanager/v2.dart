@@ -418,8 +418,7 @@ class DataRange {
               ? Date.fromJson(json_['customStartDate']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          range:
-              json_.containsKey('range') ? json_['range'] as core.String : null,
+          range: json_['range'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -456,9 +455,8 @@ class FilterPair {
 
   FilterPair.fromJson(core.Map json_)
       : this(
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
+          type: json_['type'] as core.String?,
+          value: json_['value'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -484,9 +482,7 @@ class ListQueriesResponse {
 
   ListQueriesResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           queries: json_.containsKey('queries')
               ? (json_['queries'] as core.List)
                   .map((value) => Query.fromJson(
@@ -518,9 +514,7 @@ class ListReportsResponse {
 
   ListReportsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           reports: json_.containsKey('reports')
               ? (json_['reports'] as core.List)
                   .map((value) => Report.fromJson(
@@ -549,9 +543,7 @@ class Options {
   Options.fromJson(core.Map json_)
       : this(
           includeOnlyTargetedUserLists:
-              json_.containsKey('includeOnlyTargetedUserLists')
-                  ? json_['includeOnlyTargetedUserLists'] as core.bool
-                  : null,
+              json_['includeOnlyTargetedUserLists'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -623,7 +615,7 @@ class Parameters {
               ? Options.fromJson(
                   json_['options'] as core.Map<core.String, core.dynamic>)
               : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -671,9 +663,7 @@ class Query {
               ? Parameters.fromJson(
                   json_['params'] as core.Map<core.String, core.dynamic>)
               : null,
-          queryId: json_.containsKey('queryId')
-              ? json_['queryId'] as core.String
-              : null,
+          queryId: json_['queryId'] as core.String?,
           schedule: json_.containsKey('schedule')
               ? QuerySchedule.fromJson(
                   json_['schedule'] as core.Map<core.String, core.dynamic>)
@@ -733,19 +723,14 @@ class QueryMetadata {
               ? DataRange.fromJson(
                   json_['dataRange'] as core.Map<core.String, core.dynamic>)
               : null,
-          format: json_.containsKey('format')
-              ? json_['format'] as core.String
-              : null,
-          sendNotification: json_.containsKey('sendNotification')
-              ? json_['sendNotification'] as core.bool
-              : null,
+          format: json_['format'] as core.String?,
+          sendNotification: json_['sendNotification'] as core.bool?,
           shareEmailAddress: json_.containsKey('shareEmailAddress')
               ? (json_['shareEmailAddress'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          title:
-              json_.containsKey('title') ? json_['title'] as core.String : null,
+          title: json_['title'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -800,12 +785,8 @@ class QuerySchedule {
               ? Date.fromJson(
                   json_['endDate'] as core.Map<core.String, core.dynamic>)
               : null,
-          frequency: json_.containsKey('frequency')
-              ? json_['frequency'] as core.String
-              : null,
-          nextRunTimezoneCode: json_.containsKey('nextRunTimezoneCode')
-              ? json_['nextRunTimezoneCode'] as core.String
-              : null,
+          frequency: json_['frequency'] as core.String?,
+          nextRunTimezoneCode: json_['nextRunTimezoneCode'] as core.String?,
           startDate: json_.containsKey('startDate')
               ? Date.fromJson(
                   json_['startDate'] as core.Map<core.String, core.dynamic>)
@@ -880,12 +861,8 @@ class ReportKey {
 
   ReportKey.fromJson(core.Map json_)
       : this(
-          queryId: json_.containsKey('queryId')
-              ? json_['queryId'] as core.String
-              : null,
-          reportId: json_.containsKey('reportId')
-              ? json_['reportId'] as core.String
-              : null,
+          queryId: json_['queryId'] as core.String?,
+          reportId: json_['reportId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -920,9 +897,8 @@ class ReportMetadata {
 
   ReportMetadata.fromJson(core.Map json_)
       : this(
-          googleCloudStoragePath: json_.containsKey('googleCloudStoragePath')
-              ? json_['googleCloudStoragePath'] as core.String
-              : null,
+          googleCloudStoragePath:
+              json_['googleCloudStoragePath'] as core.String?,
           reportDataEndDate: json_.containsKey('reportDataEndDate')
               ? Date.fromJson(json_['reportDataEndDate']
                   as core.Map<core.String, core.dynamic>)
@@ -982,14 +958,9 @@ class ReportStatus {
 
   ReportStatus.fromJson(core.Map json_)
       : this(
-          finishTime: json_.containsKey('finishTime')
-              ? json_['finishTime'] as core.String
-              : null,
-          format: json_.containsKey('format')
-              ? json_['format'] as core.String
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
+          finishTime: json_['finishTime'] as core.String?,
+          format: json_['format'] as core.String?,
+          state: json_['state'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

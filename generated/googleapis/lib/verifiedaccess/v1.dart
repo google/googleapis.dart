@@ -202,10 +202,8 @@ class SignedData {
 
   SignedData.fromJson(core.Map json_)
       : this(
-          data: json_.containsKey('data') ? json_['data'] as core.String : null,
-          signature: json_.containsKey('signature')
-              ? json_['signature'] as core.String
-              : null,
+          data: json_['data'] as core.String?,
+          signature: json_['signature'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -238,9 +236,7 @@ class VerifyChallengeResponseRequest {
               ? SignedData.fromJson(json_['challengeResponse']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          expectedIdentity: json_.containsKey('expectedIdentity')
-              ? json_['expectedIdentity'] as core.String
-              : null,
+          expectedIdentity: json_['expectedIdentity'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -291,22 +287,12 @@ class VerifyChallengeResponseResult {
 
   VerifyChallengeResponseResult.fromJson(core.Map json_)
       : this(
-          attestedDeviceId: json_.containsKey('attestedDeviceId')
-              ? json_['attestedDeviceId'] as core.String
-              : null,
-          deviceEnrollmentId: json_.containsKey('deviceEnrollmentId')
-              ? json_['deviceEnrollmentId'] as core.String
-              : null,
-          devicePermanentId: json_.containsKey('devicePermanentId')
-              ? json_['devicePermanentId'] as core.String
-              : null,
+          attestedDeviceId: json_['attestedDeviceId'] as core.String?,
+          deviceEnrollmentId: json_['deviceEnrollmentId'] as core.String?,
+          devicePermanentId: json_['devicePermanentId'] as core.String?,
           signedPublicKeyAndChallenge:
-              json_.containsKey('signedPublicKeyAndChallenge')
-                  ? json_['signedPublicKeyAndChallenge'] as core.String
-                  : null,
-          verificationOutput: json_.containsKey('verificationOutput')
-              ? json_['verificationOutput'] as core.String
-              : null,
+              json_['signedPublicKeyAndChallenge'] as core.String?,
+          verificationOutput: json_['verificationOutput'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

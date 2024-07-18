@@ -928,31 +928,19 @@ class Account {
 
   Account.fromJson(core.Map json_)
       : this(
-          accountName: json_.containsKey('accountName')
-              ? json_['accountName'] as core.String
-              : null,
-          accountNumber: json_.containsKey('accountNumber')
-              ? json_['accountNumber'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          accountName: json_['accountName'] as core.String?,
+          accountNumber: json_['accountNumber'] as core.String?,
+          name: json_['name'] as core.String?,
           organizationInfo: json_.containsKey('organizationInfo')
               ? OrganizationInfo.fromJson(json_['organizationInfo']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          permissionLevel: json_.containsKey('permissionLevel')
-              ? json_['permissionLevel'] as core.String
-              : null,
-          primaryOwner: json_.containsKey('primaryOwner')
-              ? json_['primaryOwner'] as core.String
-              : null,
-          role: json_.containsKey('role') ? json_['role'] as core.String : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
-          verificationState: json_.containsKey('verificationState')
-              ? json_['verificationState'] as core.String
-              : null,
-          vettedState: json_.containsKey('vettedState')
-              ? json_['vettedState'] as core.String
-              : null,
+          permissionLevel: json_['permissionLevel'] as core.String?,
+          primaryOwner: json_['primaryOwner'] as core.String?,
+          role: json_['role'] as core.String?,
+          type: json_['type'] as core.String?,
+          verificationState: json_['verificationState'] as core.String?,
+          vettedState: json_['vettedState'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1032,16 +1020,11 @@ class Admin {
 
   Admin.fromJson(core.Map json_)
       : this(
-          account: json_.containsKey('account')
-              ? json_['account'] as core.String
-              : null,
-          admin:
-              json_.containsKey('admin') ? json_['admin'] as core.String : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          pendingInvitation: json_.containsKey('pendingInvitation')
-              ? json_['pendingInvitation'] as core.bool
-              : null,
-          role: json_.containsKey('role') ? json_['role'] as core.String : null,
+          account: json_['account'] as core.String?,
+          admin: json_['admin'] as core.String?,
+          name: json_['name'] as core.String?,
+          pendingInvitation: json_['pendingInvitation'] as core.bool?,
+          role: json_['role'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1112,8 +1095,8 @@ class Invitation {
 
   Invitation.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          role: json_.containsKey('role') ? json_['role'] as core.String : null,
+          name: json_['name'] as core.String?,
+          role: json_['role'] as core.String?,
           targetAccount: json_.containsKey('targetAccount')
               ? Account.fromJson(
                   json_['targetAccount'] as core.Map<core.String, core.dynamic>)
@@ -1122,9 +1105,7 @@ class Invitation {
               ? TargetLocation.fromJson(json_['targetLocation']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          targetType: json_.containsKey('targetType')
-              ? json_['targetType'] as core.String
-              : null,
+          targetType: json_['targetType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1188,9 +1169,7 @@ class ListAccountsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1278,12 +1257,8 @@ class OrganizationInfo {
               ? PostalAddress.fromJson(
                   json_['address'] as core.Map<core.String, core.dynamic>)
               : null,
-          phoneNumber: json_.containsKey('phoneNumber')
-              ? json_['phoneNumber'] as core.String
-              : null,
-          registeredDomain: json_.containsKey('registeredDomain')
-              ? json_['registeredDomain'] as core.String
-              : null,
+          phoneNumber: json_['phoneNumber'] as core.String?,
+          registeredDomain: json_['registeredDomain'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1322,12 +1297,8 @@ class TargetLocation {
 
   TargetLocation.fromJson(core.Map json_)
       : this(
-          address: json_.containsKey('address')
-              ? json_['address'] as core.String
-              : null,
-          locationName: json_.containsKey('locationName')
-              ? json_['locationName'] as core.String
-              : null,
+          address: json_['address'] as core.String?,
+          locationName: json_['locationName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1350,9 +1321,7 @@ class TransferLocationRequest {
 
   TransferLocationRequest.fromJson(core.Map json_)
       : this(
-          destinationAccount: json_.containsKey('destinationAccount')
-              ? json_['destinationAccount'] as core.String
-              : null,
+          destinationAccount: json_['destinationAccount'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

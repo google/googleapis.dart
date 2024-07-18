@@ -220,25 +220,13 @@ class Tokeninfo {
 
   Tokeninfo.fromJson(core.Map json_)
       : this(
-          audience: json_.containsKey('audience')
-              ? json_['audience'] as core.String
-              : null,
-          email:
-              json_.containsKey('email') ? json_['email'] as core.String : null,
-          expiresIn: json_.containsKey('expires_in')
-              ? json_['expires_in'] as core.int
-              : null,
-          issuedTo: json_.containsKey('issued_to')
-              ? json_['issued_to'] as core.String
-              : null,
-          scope:
-              json_.containsKey('scope') ? json_['scope'] as core.String : null,
-          userId: json_.containsKey('user_id')
-              ? json_['user_id'] as core.String
-              : null,
-          verifiedEmail: json_.containsKey('verified_email')
-              ? json_['verified_email'] as core.bool
-              : null,
+          audience: json_['audience'] as core.String?,
+          email: json_['email'] as core.String?,
+          expiresIn: json_['expires_in'] as core.int?,
+          issuedTo: json_['issued_to'] as core.String?,
+          scope: json_['scope'] as core.String?,
+          userId: json_['user_id'] as core.String?,
+          verifiedEmail: json_['verified_email'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -304,30 +292,17 @@ class Userinfo {
 
   Userinfo.fromJson(core.Map json_)
       : this(
-          email:
-              json_.containsKey('email') ? json_['email'] as core.String : null,
-          familyName: json_.containsKey('family_name')
-              ? json_['family_name'] as core.String
-              : null,
-          gender: json_.containsKey('gender')
-              ? json_['gender'] as core.String
-              : null,
-          givenName: json_.containsKey('given_name')
-              ? json_['given_name'] as core.String
-              : null,
-          hd: json_.containsKey('hd') ? json_['hd'] as core.String : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          link: json_.containsKey('link') ? json_['link'] as core.String : null,
-          locale: json_.containsKey('locale')
-              ? json_['locale'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          picture: json_.containsKey('picture')
-              ? json_['picture'] as core.String
-              : null,
-          verifiedEmail: json_.containsKey('verified_email')
-              ? json_['verified_email'] as core.bool
-              : null,
+          email: json_['email'] as core.String?,
+          familyName: json_['family_name'] as core.String?,
+          gender: json_['gender'] as core.String?,
+          givenName: json_['given_name'] as core.String?,
+          hd: json_['hd'] as core.String?,
+          id: json_['id'] as core.String?,
+          link: json_['link'] as core.String?,
+          locale: json_['locale'] as core.String?,
+          name: json_['name'] as core.String?,
+          picture: json_['picture'] as core.String?,
+          verifiedEmail: json_['verified_email'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

@@ -512,26 +512,14 @@ class LicenseAssignment {
 
   LicenseAssignment.fromJson(core.Map json_)
       : this(
-          etags:
-              json_.containsKey('etags') ? json_['etags'] as core.String : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          productId: json_.containsKey('productId')
-              ? json_['productId'] as core.String
-              : null,
-          productName: json_.containsKey('productName')
-              ? json_['productName'] as core.String
-              : null,
-          selfLink: json_.containsKey('selfLink')
-              ? json_['selfLink'] as core.String
-              : null,
-          skuId:
-              json_.containsKey('skuId') ? json_['skuId'] as core.String : null,
-          skuName: json_.containsKey('skuName')
-              ? json_['skuName'] as core.String
-              : null,
-          userId: json_.containsKey('userId')
-              ? json_['userId'] as core.String
-              : null,
+          etags: json_['etags'] as core.String?,
+          kind: json_['kind'] as core.String?,
+          productId: json_['productId'] as core.String?,
+          productName: json_['productName'] as core.String?,
+          selfLink: json_['selfLink'] as core.String?,
+          skuId: json_['skuId'] as core.String?,
+          skuName: json_['skuName'] as core.String?,
+          userId: json_['userId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -557,9 +545,7 @@ class LicenseAssignmentInsert {
 
   LicenseAssignmentInsert.fromJson(core.Map json_)
       : this(
-          userId: json_.containsKey('userId')
-              ? json_['userId'] as core.String
-              : null,
+          userId: json_['userId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -593,17 +579,15 @@ class LicenseAssignmentList {
 
   LicenseAssignmentList.fromJson(core.Map json_)
       : this(
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          etag: json_['etag'] as core.String?,
           items: json_.containsKey('items')
               ? (json_['items'] as core.List)
                   .map((value) => LicenseAssignment.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          kind: json_['kind'] as core.String?,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

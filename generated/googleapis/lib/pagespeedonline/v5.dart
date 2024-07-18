@@ -162,20 +162,15 @@ class AuditRefs {
 
   AuditRefs.fromJson(core.Map json_)
       : this(
-          acronym: json_.containsKey('acronym')
-              ? json_['acronym'] as core.String
-              : null,
-          group:
-              json_.containsKey('group') ? json_['group'] as core.String : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          acronym: json_['acronym'] as core.String?,
+          group: json_['group'] as core.String?,
+          id: json_['id'] as core.String?,
           relevantAudits: json_.containsKey('relevantAudits')
               ? (json_['relevantAudits'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          weight: json_.containsKey('weight')
-              ? (json_['weight'] as core.num).toDouble()
-              : null,
+          weight: (json_['weight'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -209,11 +204,9 @@ class Bucket {
 
   Bucket.fromJson(core.Map json_)
       : this(
-          max: json_.containsKey('max') ? json_['max'] as core.int : null,
-          min: json_.containsKey('min') ? json_['min'] as core.int : null,
-          proportion: json_.containsKey('proportion')
-              ? (json_['proportion'] as core.num).toDouble()
-              : null,
+          max: json_['max'] as core.int?,
+          min: json_['min'] as core.int?,
+          proportion: (json_['proportion'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -302,11 +295,8 @@ class CategoryGroupV5 {
 
   CategoryGroupV5.fromJson(core.Map json_)
       : this(
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          title:
-              json_.containsKey('title') ? json_['title'] as core.String : null,
+          description: json_['description'] as core.String?,
+          title: json_['title'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -352,21 +342,11 @@ class ConfigSettings {
 
   ConfigSettings.fromJson(core.Map json_)
       : this(
-          channel: json_.containsKey('channel')
-              ? json_['channel'] as core.String
-              : null,
-          emulatedFormFactor: json_.containsKey('emulatedFormFactor')
-              ? json_['emulatedFormFactor'] as core.String
-              : null,
-          formFactor: json_.containsKey('formFactor')
-              ? json_['formFactor'] as core.String
-              : null,
-          locale: json_.containsKey('locale')
-              ? json_['locale'] as core.String
-              : null,
-          onlyCategories: json_.containsKey('onlyCategories')
-              ? json_['onlyCategories']
-              : null,
+          channel: json_['channel'] as core.String?,
+          emulatedFormFactor: json_['emulatedFormFactor'] as core.String?,
+          formFactor: json_['formFactor'] as core.String?,
+          locale: json_['locale'] as core.String?,
+          onlyCategories: json_['onlyCategories'],
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -404,9 +384,7 @@ class Environment {
 
   Environment.fromJson(core.Map json_)
       : this(
-          benchmarkIndex: json_.containsKey('benchmarkIndex')
-              ? (json_['benchmarkIndex'] as core.num).toDouble()
-              : null,
+          benchmarkIndex: (json_['benchmarkIndex'] as core.num?)?.toDouble(),
           credits: json_.containsKey('credits')
               ? (json_['credits'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -415,12 +393,8 @@ class Environment {
                   ),
                 )
               : null,
-          hostUserAgent: json_.containsKey('hostUserAgent')
-              ? json_['hostUserAgent'] as core.String
-              : null,
-          networkUserAgent: json_.containsKey('networkUserAgent')
-              ? json_['networkUserAgent'] as core.String
-              : null,
+          hostUserAgent: json_['hostUserAgent'] as core.String?,
+          networkUserAgent: json_['networkUserAgent'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -500,19 +474,11 @@ class LhrEntity {
 
   LhrEntity.fromJson(core.Map json_)
       : this(
-          category: json_.containsKey('category')
-              ? json_['category'] as core.String
-              : null,
-          homepage: json_.containsKey('homepage')
-              ? json_['homepage'] as core.String
-              : null,
-          isFirstParty: json_.containsKey('isFirstParty')
-              ? json_['isFirstParty'] as core.bool
-              : null,
-          isUnrecognized: json_.containsKey('isUnrecognized')
-              ? json_['isUnrecognized'] as core.bool
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          category: json_['category'] as core.String?,
+          homepage: json_['homepage'] as core.String?,
+          isFirstParty: json_['isFirstParty'] as core.bool?,
+          isUnrecognized: json_['isUnrecognized'] as core.bool?,
+          name: json_['name'] as core.String?,
           origins: json_.containsKey('origins')
               ? (json_['origins'] as core.List)
                   .map((value) => value as core.String)
@@ -599,35 +565,20 @@ class LighthouseAuditResultV5 {
 
   LighthouseAuditResultV5.fromJson(core.Map json_)
       : this(
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
+          description: json_['description'] as core.String?,
           details: json_.containsKey('details')
               ? json_['details'] as core.Map<core.String, core.dynamic>
               : null,
-          displayValue: json_.containsKey('displayValue')
-              ? json_['displayValue'] as core.String
-              : null,
-          errorMessage: json_.containsKey('errorMessage')
-              ? json_['errorMessage'] as core.String
-              : null,
-          explanation: json_.containsKey('explanation')
-              ? json_['explanation'] as core.String
-              : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          numericUnit: json_.containsKey('numericUnit')
-              ? json_['numericUnit'] as core.String
-              : null,
-          numericValue: json_.containsKey('numericValue')
-              ? (json_['numericValue'] as core.num).toDouble()
-              : null,
-          score: json_.containsKey('score') ? json_['score'] : null,
-          scoreDisplayMode: json_.containsKey('scoreDisplayMode')
-              ? json_['scoreDisplayMode'] as core.String
-              : null,
-          title:
-              json_.containsKey('title') ? json_['title'] as core.String : null,
-          warnings: json_.containsKey('warnings') ? json_['warnings'] : null,
+          displayValue: json_['displayValue'] as core.String?,
+          errorMessage: json_['errorMessage'] as core.String?,
+          explanation: json_['explanation'] as core.String?,
+          id: json_['id'] as core.String?,
+          numericUnit: json_['numericUnit'] as core.String?,
+          numericValue: (json_['numericValue'] as core.num?)?.toDouble(),
+          score: json_['score'],
+          scoreDisplayMode: json_['scoreDisplayMode'] as core.String?,
+          title: json_['title'] as core.String?,
+          warnings: json_['warnings'],
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -688,16 +639,11 @@ class LighthouseCategoryV5 {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          manualDescription: json_.containsKey('manualDescription')
-              ? json_['manualDescription'] as core.String
-              : null,
-          score: json_.containsKey('score') ? json_['score'] : null,
-          title:
-              json_.containsKey('title') ? json_['title'] as core.String : null,
+          description: json_['description'] as core.String?,
+          id: json_['id'] as core.String?,
+          manualDescription: json_['manualDescription'] as core.String?,
+          score: json_['score'],
+          title: json_['title'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -840,31 +786,17 @@ class LighthouseResultV5 {
               ? Environment.fromJson(
                   json_['environment'] as core.Map<core.String, core.dynamic>)
               : null,
-          fetchTime: json_.containsKey('fetchTime')
-              ? json_['fetchTime'] as core.String
-              : null,
-          finalDisplayedUrl: json_.containsKey('finalDisplayedUrl')
-              ? json_['finalDisplayedUrl'] as core.String
-              : null,
-          finalUrl: json_.containsKey('finalUrl')
-              ? json_['finalUrl'] as core.String
-              : null,
-          fullPageScreenshot: json_.containsKey('fullPageScreenshot')
-              ? json_['fullPageScreenshot']
-              : null,
+          fetchTime: json_['fetchTime'] as core.String?,
+          finalDisplayedUrl: json_['finalDisplayedUrl'] as core.String?,
+          finalUrl: json_['finalUrl'] as core.String?,
+          fullPageScreenshot: json_['fullPageScreenshot'],
           i18n: json_.containsKey('i18n')
               ? I18n.fromJson(
                   json_['i18n'] as core.Map<core.String, core.dynamic>)
               : null,
-          lighthouseVersion: json_.containsKey('lighthouseVersion')
-              ? json_['lighthouseVersion'] as core.String
-              : null,
-          mainDocumentUrl: json_.containsKey('mainDocumentUrl')
-              ? json_['mainDocumentUrl'] as core.String
-              : null,
-          requestedUrl: json_.containsKey('requestedUrl')
-              ? json_['requestedUrl'] as core.String
-              : null,
+          lighthouseVersion: json_['lighthouseVersion'] as core.String?,
+          mainDocumentUrl: json_['mainDocumentUrl'] as core.String?,
+          requestedUrl: json_['requestedUrl'] as core.String?,
           runWarnings: json_.containsKey('runWarnings')
               ? json_['runWarnings'] as core.List
               : null,
@@ -882,9 +814,7 @@ class LighthouseResultV5 {
               ? Timing.fromJson(
                   json_['timing'] as core.Map<core.String, core.dynamic>)
               : null,
-          userAgent: json_.containsKey('userAgent')
-              ? json_['userAgent'] as core.String
-              : null,
+          userAgent: json_['userAgent'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -938,10 +868,8 @@ class PagespeedApiLoadingExperienceV5 {
 
   PagespeedApiLoadingExperienceV5.fromJson(core.Map json_)
       : this(
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          initialUrl: json_.containsKey('initial_url')
-              ? json_['initial_url'] as core.String
-              : null,
+          id: json_['id'] as core.String?,
+          initialUrl: json_['initial_url'] as core.String?,
           metrics: json_.containsKey('metrics')
               ? (json_['metrics'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -951,12 +879,8 @@ class PagespeedApiLoadingExperienceV5 {
                   ),
                 )
               : null,
-          originFallback: json_.containsKey('origin_fallback')
-              ? json_['origin_fallback'] as core.bool
-              : null,
-          overallCategory: json_.containsKey('overall_category')
-              ? json_['overall_category'] as core.String
-              : null,
+          originFallback: json_['origin_fallback'] as core.bool?,
+          overallCategory: json_['overall_category'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1008,14 +932,10 @@ class PagespeedApiPagespeedResponseV5 {
 
   PagespeedApiPagespeedResponseV5.fromJson(core.Map json_)
       : this(
-          analysisUTCTimestamp: json_.containsKey('analysisUTCTimestamp')
-              ? json_['analysisUTCTimestamp'] as core.String
-              : null,
-          captchaResult: json_.containsKey('captchaResult')
-              ? json_['captchaResult'] as core.String
-              : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          analysisUTCTimestamp: json_['analysisUTCTimestamp'] as core.String?,
+          captchaResult: json_['captchaResult'] as core.String?,
+          id: json_['id'] as core.String?,
+          kind: json_['kind'] as core.String?,
           lighthouseResult: json_.containsKey('lighthouseResult')
               ? LighthouseResultV5.fromJson(json_['lighthouseResult']
                   as core.Map<core.String, core.dynamic>)
@@ -1065,10 +985,8 @@ class PagespeedVersion {
 
   PagespeedVersion.fromJson(core.Map json_)
       : this(
-          major:
-              json_.containsKey('major') ? json_['major'] as core.String : null,
-          minor:
-              json_.containsKey('minor') ? json_['minor'] as core.String : null,
+          major: json_['major'] as core.String?,
+          minor: json_['minor'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1315,163 +1233,76 @@ class RendererFormattedStrings {
 
   RendererFormattedStrings.fromJson(core.Map json_)
       : this(
-          auditGroupExpandTooltip: json_.containsKey('auditGroupExpandTooltip')
-              ? json_['auditGroupExpandTooltip'] as core.String
-              : null,
-          calculatorLink: json_.containsKey('calculatorLink')
-              ? json_['calculatorLink'] as core.String
-              : null,
-          crcInitialNavigation: json_.containsKey('crcInitialNavigation')
-              ? json_['crcInitialNavigation'] as core.String
-              : null,
-          crcLongestDurationLabel: json_.containsKey('crcLongestDurationLabel')
-              ? json_['crcLongestDurationLabel'] as core.String
-              : null,
-          dropdownCopyJSON: json_.containsKey('dropdownCopyJSON')
-              ? json_['dropdownCopyJSON'] as core.String
-              : null,
-          dropdownDarkTheme: json_.containsKey('dropdownDarkTheme')
-              ? json_['dropdownDarkTheme'] as core.String
-              : null,
-          dropdownPrintExpanded: json_.containsKey('dropdownPrintExpanded')
-              ? json_['dropdownPrintExpanded'] as core.String
-              : null,
-          dropdownPrintSummary: json_.containsKey('dropdownPrintSummary')
-              ? json_['dropdownPrintSummary'] as core.String
-              : null,
-          dropdownSaveGist: json_.containsKey('dropdownSaveGist')
-              ? json_['dropdownSaveGist'] as core.String
-              : null,
-          dropdownSaveHTML: json_.containsKey('dropdownSaveHTML')
-              ? json_['dropdownSaveHTML'] as core.String
-              : null,
-          dropdownSaveJSON: json_.containsKey('dropdownSaveJSON')
-              ? json_['dropdownSaveJSON'] as core.String
-              : null,
-          dropdownViewer: json_.containsKey('dropdownViewer')
-              ? json_['dropdownViewer'] as core.String
-              : null,
-          errorLabel: json_.containsKey('errorLabel')
-              ? json_['errorLabel'] as core.String
-              : null,
-          errorMissingAuditInfo: json_.containsKey('errorMissingAuditInfo')
-              ? json_['errorMissingAuditInfo'] as core.String
-              : null,
-          footerIssue: json_.containsKey('footerIssue')
-              ? json_['footerIssue'] as core.String
-              : null,
-          labDataTitle: json_.containsKey('labDataTitle')
-              ? json_['labDataTitle'] as core.String
-              : null,
+          auditGroupExpandTooltip:
+              json_['auditGroupExpandTooltip'] as core.String?,
+          calculatorLink: json_['calculatorLink'] as core.String?,
+          crcInitialNavigation: json_['crcInitialNavigation'] as core.String?,
+          crcLongestDurationLabel:
+              json_['crcLongestDurationLabel'] as core.String?,
+          dropdownCopyJSON: json_['dropdownCopyJSON'] as core.String?,
+          dropdownDarkTheme: json_['dropdownDarkTheme'] as core.String?,
+          dropdownPrintExpanded: json_['dropdownPrintExpanded'] as core.String?,
+          dropdownPrintSummary: json_['dropdownPrintSummary'] as core.String?,
+          dropdownSaveGist: json_['dropdownSaveGist'] as core.String?,
+          dropdownSaveHTML: json_['dropdownSaveHTML'] as core.String?,
+          dropdownSaveJSON: json_['dropdownSaveJSON'] as core.String?,
+          dropdownViewer: json_['dropdownViewer'] as core.String?,
+          errorLabel: json_['errorLabel'] as core.String?,
+          errorMissingAuditInfo: json_['errorMissingAuditInfo'] as core.String?,
+          footerIssue: json_['footerIssue'] as core.String?,
+          labDataTitle: json_['labDataTitle'] as core.String?,
           lsPerformanceCategoryDescription:
-              json_.containsKey('lsPerformanceCategoryDescription')
-                  ? json_['lsPerformanceCategoryDescription'] as core.String
-                  : null,
-          manualAuditsGroupTitle: json_.containsKey('manualAuditsGroupTitle')
-              ? json_['manualAuditsGroupTitle'] as core.String
-              : null,
+              json_['lsPerformanceCategoryDescription'] as core.String?,
+          manualAuditsGroupTitle:
+              json_['manualAuditsGroupTitle'] as core.String?,
           notApplicableAuditsGroupTitle:
-              json_.containsKey('notApplicableAuditsGroupTitle')
-                  ? json_['notApplicableAuditsGroupTitle'] as core.String
-                  : null,
+              json_['notApplicableAuditsGroupTitle'] as core.String?,
           opportunityResourceColumnLabel:
-              json_.containsKey('opportunityResourceColumnLabel')
-                  ? json_['opportunityResourceColumnLabel'] as core.String
-                  : null,
+              json_['opportunityResourceColumnLabel'] as core.String?,
           opportunitySavingsColumnLabel:
-              json_.containsKey('opportunitySavingsColumnLabel')
-                  ? json_['opportunitySavingsColumnLabel'] as core.String
-                  : null,
-          passedAuditsGroupTitle: json_.containsKey('passedAuditsGroupTitle')
-              ? json_['passedAuditsGroupTitle'] as core.String
-              : null,
-          runtimeDesktopEmulation: json_.containsKey('runtimeDesktopEmulation')
-              ? json_['runtimeDesktopEmulation'] as core.String
-              : null,
-          runtimeMobileEmulation: json_.containsKey('runtimeMobileEmulation')
-              ? json_['runtimeMobileEmulation'] as core.String
-              : null,
-          runtimeNoEmulation: json_.containsKey('runtimeNoEmulation')
-              ? json_['runtimeNoEmulation'] as core.String
-              : null,
+              json_['opportunitySavingsColumnLabel'] as core.String?,
+          passedAuditsGroupTitle:
+              json_['passedAuditsGroupTitle'] as core.String?,
+          runtimeDesktopEmulation:
+              json_['runtimeDesktopEmulation'] as core.String?,
+          runtimeMobileEmulation:
+              json_['runtimeMobileEmulation'] as core.String?,
+          runtimeNoEmulation: json_['runtimeNoEmulation'] as core.String?,
           runtimeSettingsAxeVersion:
-              json_.containsKey('runtimeSettingsAxeVersion')
-                  ? json_['runtimeSettingsAxeVersion'] as core.String
-                  : null,
+              json_['runtimeSettingsAxeVersion'] as core.String?,
           runtimeSettingsBenchmark:
-              json_.containsKey('runtimeSettingsBenchmark')
-                  ? json_['runtimeSettingsBenchmark'] as core.String
-                  : null,
+              json_['runtimeSettingsBenchmark'] as core.String?,
           runtimeSettingsCPUThrottling:
-              json_.containsKey('runtimeSettingsCPUThrottling')
-                  ? json_['runtimeSettingsCPUThrottling'] as core.String
-                  : null,
-          runtimeSettingsChannel: json_.containsKey('runtimeSettingsChannel')
-              ? json_['runtimeSettingsChannel'] as core.String
-              : null,
-          runtimeSettingsDevice: json_.containsKey('runtimeSettingsDevice')
-              ? json_['runtimeSettingsDevice'] as core.String
-              : null,
+              json_['runtimeSettingsCPUThrottling'] as core.String?,
+          runtimeSettingsChannel:
+              json_['runtimeSettingsChannel'] as core.String?,
+          runtimeSettingsDevice: json_['runtimeSettingsDevice'] as core.String?,
           runtimeSettingsFetchTime:
-              json_.containsKey('runtimeSettingsFetchTime')
-                  ? json_['runtimeSettingsFetchTime'] as core.String
-                  : null,
+              json_['runtimeSettingsFetchTime'] as core.String?,
           runtimeSettingsNetworkThrottling:
-              json_.containsKey('runtimeSettingsNetworkThrottling')
-                  ? json_['runtimeSettingsNetworkThrottling'] as core.String
-                  : null,
-          runtimeSettingsTitle: json_.containsKey('runtimeSettingsTitle')
-              ? json_['runtimeSettingsTitle'] as core.String
-              : null,
-          runtimeSettingsUA: json_.containsKey('runtimeSettingsUA')
-              ? json_['runtimeSettingsUA'] as core.String
-              : null,
+              json_['runtimeSettingsNetworkThrottling'] as core.String?,
+          runtimeSettingsTitle: json_['runtimeSettingsTitle'] as core.String?,
+          runtimeSettingsUA: json_['runtimeSettingsUA'] as core.String?,
           runtimeSettingsUANetwork:
-              json_.containsKey('runtimeSettingsUANetwork')
-                  ? json_['runtimeSettingsUANetwork'] as core.String
-                  : null,
-          runtimeSettingsUrl: json_.containsKey('runtimeSettingsUrl')
-              ? json_['runtimeSettingsUrl'] as core.String
-              : null,
-          runtimeUnknown: json_.containsKey('runtimeUnknown')
-              ? json_['runtimeUnknown'] as core.String
-              : null,
-          scorescaleLabel: json_.containsKey('scorescaleLabel')
-              ? json_['scorescaleLabel'] as core.String
-              : null,
-          showRelevantAudits: json_.containsKey('showRelevantAudits')
-              ? json_['showRelevantAudits'] as core.String
-              : null,
+              json_['runtimeSettingsUANetwork'] as core.String?,
+          runtimeSettingsUrl: json_['runtimeSettingsUrl'] as core.String?,
+          runtimeUnknown: json_['runtimeUnknown'] as core.String?,
+          scorescaleLabel: json_['scorescaleLabel'] as core.String?,
+          showRelevantAudits: json_['showRelevantAudits'] as core.String?,
           snippetCollapseButtonLabel:
-              json_.containsKey('snippetCollapseButtonLabel')
-                  ? json_['snippetCollapseButtonLabel'] as core.String
-                  : null,
+              json_['snippetCollapseButtonLabel'] as core.String?,
           snippetExpandButtonLabel:
-              json_.containsKey('snippetExpandButtonLabel')
-                  ? json_['snippetExpandButtonLabel'] as core.String
-                  : null,
+              json_['snippetExpandButtonLabel'] as core.String?,
           thirdPartyResourcesLabel:
-              json_.containsKey('thirdPartyResourcesLabel')
-                  ? json_['thirdPartyResourcesLabel'] as core.String
-                  : null,
-          throttlingProvided: json_.containsKey('throttlingProvided')
-              ? json_['throttlingProvided'] as core.String
-              : null,
-          toplevelWarningsMessage: json_.containsKey('toplevelWarningsMessage')
-              ? json_['toplevelWarningsMessage'] as core.String
-              : null,
-          varianceDisclaimer: json_.containsKey('varianceDisclaimer')
-              ? json_['varianceDisclaimer'] as core.String
-              : null,
-          viewTreemapLabel: json_.containsKey('viewTreemapLabel')
-              ? json_['viewTreemapLabel'] as core.String
-              : null,
-          warningAuditsGroupTitle: json_.containsKey('warningAuditsGroupTitle')
-              ? json_['warningAuditsGroupTitle'] as core.String
-              : null,
-          warningHeader: json_.containsKey('warningHeader')
-              ? json_['warningHeader'] as core.String
-              : null,
+              json_['thirdPartyResourcesLabel'] as core.String?,
+          throttlingProvided: json_['throttlingProvided'] as core.String?,
+          toplevelWarningsMessage:
+              json_['toplevelWarningsMessage'] as core.String?,
+          varianceDisclaimer: json_['varianceDisclaimer'] as core.String?,
+          viewTreemapLabel: json_['viewTreemapLabel'] as core.String?,
+          warningAuditsGroupTitle:
+              json_['warningAuditsGroupTitle'] as core.String?,
+          warningHeader: json_['warningHeader'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1574,10 +1405,8 @@ class RuntimeError {
 
   RuntimeError.fromJson(core.Map json_)
       : this(
-          code: json_.containsKey('code') ? json_['code'] as core.String : null,
-          message: json_.containsKey('message')
-              ? json_['message'] as core.String
-              : null,
+          code: json_['code'] as core.String?,
+          message: json_['message'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1618,12 +1447,9 @@ class StackPack {
                   ),
                 )
               : null,
-          iconDataURL: json_.containsKey('iconDataURL')
-              ? json_['iconDataURL'] as core.String
-              : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          title:
-              json_.containsKey('title') ? json_['title'] as core.String : null,
+          iconDataURL: json_['iconDataURL'] as core.String?,
+          id: json_['id'] as core.String?,
+          title: json_['title'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1645,9 +1471,7 @@ class Timing {
 
   Timing.fromJson(core.Map json_)
       : this(
-          total: json_.containsKey('total')
-              ? (json_['total'] as core.num).toDouble()
-              : null,
+          total: (json_['total'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1690,26 +1514,17 @@ class UserPageLoadMetricV5 {
 
   UserPageLoadMetricV5.fromJson(core.Map json_)
       : this(
-          category: json_.containsKey('category')
-              ? json_['category'] as core.String
-              : null,
+          category: json_['category'] as core.String?,
           distributions: json_.containsKey('distributions')
               ? (json_['distributions'] as core.List)
                   .map((value) => Bucket.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          formFactor: json_.containsKey('formFactor')
-              ? json_['formFactor'] as core.String
-              : null,
-          median:
-              json_.containsKey('median') ? json_['median'] as core.int : null,
-          metricId: json_.containsKey('metricId')
-              ? json_['metricId'] as core.String
-              : null,
-          percentile: json_.containsKey('percentile')
-              ? json_['percentile'] as core.int
-              : null,
+          formFactor: json_['formFactor'] as core.String?,
+          median: json_['median'] as core.int?,
+          metricId: json_['metricId'] as core.String?,
+          percentile: json_['percentile'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

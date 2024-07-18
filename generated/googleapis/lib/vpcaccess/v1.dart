@@ -532,30 +532,15 @@ class Connector {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          ipCidrRange: json_.containsKey('ipCidrRange')
-              ? json_['ipCidrRange'] as core.String
-              : null,
-          machineType: json_.containsKey('machineType')
-              ? json_['machineType'] as core.String
-              : null,
-          maxInstances: json_.containsKey('maxInstances')
-              ? json_['maxInstances'] as core.int
-              : null,
-          maxThroughput: json_.containsKey('maxThroughput')
-              ? json_['maxThroughput'] as core.int
-              : null,
-          minInstances: json_.containsKey('minInstances')
-              ? json_['minInstances'] as core.int
-              : null,
-          minThroughput: json_.containsKey('minThroughput')
-              ? json_['minThroughput'] as core.int
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          network: json_.containsKey('network')
-              ? json_['network'] as core.String
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
+          ipCidrRange: json_['ipCidrRange'] as core.String?,
+          machineType: json_['machineType'] as core.String?,
+          maxInstances: json_['maxInstances'] as core.int?,
+          maxThroughput: json_['maxThroughput'] as core.int?,
+          minInstances: json_['minInstances'] as core.int?,
+          minThroughput: json_['minThroughput'] as core.int?,
+          name: json_['name'] as core.String?,
+          network: json_['network'] as core.String?,
+          state: json_['state'] as core.String?,
           subnet: json_.containsKey('subnet')
               ? Subnet.fromJson(
                   json_['subnet'] as core.Map<core.String, core.dynamic>)
@@ -598,9 +583,7 @@ class ListConnectorsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -630,9 +613,7 @@ class ListLocationsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -656,9 +637,7 @@ class ListOperationsResponse {
 
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           operations: json_.containsKey('operations')
               ? (json_['operations'] as core.List)
                   .map((value) => Operation.fromJson(
@@ -729,7 +708,7 @@ class Operation {
 
   Operation.fromJson(core.Map json_)
       : this(
-          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
@@ -737,7 +716,7 @@ class Operation {
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           response: json_.containsKey('response')
               ? json_['response'] as core.Map<core.String, core.dynamic>
               : null,
@@ -783,10 +762,8 @@ class Subnet {
 
   Subnet.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          projectId: json_.containsKey('projectId')
-              ? json_['projectId'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          projectId: json_['projectId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

@@ -4915,8 +4915,8 @@ class AccountChildLink {
 
   AccountChildLink.fromJson(core.Map json_)
       : this(
-          href: json_.containsKey('href') ? json_['href'] as core.String : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          href: json_['href'] as core.String?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5002,19 +5002,15 @@ class Account {
           created: json_.containsKey('created')
               ? core.DateTime.parse(json_['created'] as core.String)
               : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          id: json_['id'] as core.String?,
+          kind: json_['kind'] as core.String?,
+          name: json_['name'] as core.String?,
           permissions: json_.containsKey('permissions')
               ? AccountPermissions.fromJson(
                   json_['permissions'] as core.Map<core.String, core.dynamic>)
               : null,
-          selfLink: json_.containsKey('selfLink')
-              ? json_['selfLink'] as core.String
-              : null,
-          starred: json_.containsKey('starred')
-              ? json_['starred'] as core.bool
-              : null,
+          selfLink: json_['selfLink'] as core.String?,
+          starred: json_['starred'] as core.bool?,
           updated: json_.containsKey('updated')
               ? core.DateTime.parse(json_['updated'] as core.String)
               : null,
@@ -5056,10 +5052,10 @@ class AccountRef {
 
   AccountRef.fromJson(core.Map json_)
       : this(
-          href: json_.containsKey('href') ? json_['href'] as core.String : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          href: json_['href'] as core.String?,
+          id: json_['id'] as core.String?,
+          kind: json_['kind'] as core.String?,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5124,25 +5120,13 @@ class AccountSummaries {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          itemsPerPage: json_.containsKey('itemsPerPage')
-              ? json_['itemsPerPage'] as core.int
-              : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          nextLink: json_.containsKey('nextLink')
-              ? json_['nextLink'] as core.String
-              : null,
-          previousLink: json_.containsKey('previousLink')
-              ? json_['previousLink'] as core.String
-              : null,
-          startIndex: json_.containsKey('startIndex')
-              ? json_['startIndex'] as core.int
-              : null,
-          totalResults: json_.containsKey('totalResults')
-              ? json_['totalResults'] as core.int
-              : null,
-          username: json_.containsKey('username')
-              ? json_['username'] as core.String
-              : null,
+          itemsPerPage: json_['itemsPerPage'] as core.int?,
+          kind: json_['kind'] as core.String?,
+          nextLink: json_['nextLink'] as core.String?,
+          previousLink: json_['previousLink'] as core.String?,
+          startIndex: json_['startIndex'] as core.int?,
+          totalResults: json_['totalResults'] as core.int?,
+          username: json_['username'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5186,12 +5170,10 @@ class AccountSummary {
 
   AccountSummary.fromJson(core.Map json_)
       : this(
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          starred: json_.containsKey('starred')
-              ? json_['starred'] as core.bool
-              : null,
+          id: json_['id'] as core.String?,
+          kind: json_['kind'] as core.String?,
+          name: json_['name'] as core.String?,
+          starred: json_['starred'] as core.bool?,
           webProperties: json_.containsKey('webProperties')
               ? (json_['webProperties'] as core.List)
                   .map((value) => WebPropertySummary.fromJson(
@@ -5249,15 +5231,13 @@ class AccountTicket {
               ? Account.fromJson(
                   json_['account'] as core.Map<core.String, core.dynamic>)
               : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          id: json_['id'] as core.String?,
+          kind: json_['kind'] as core.String?,
           profile: json_.containsKey('profile')
               ? Profile.fromJson(
                   json_['profile'] as core.Map<core.String, core.dynamic>)
               : null,
-          redirectUri: json_.containsKey('redirectUri')
-              ? json_['redirectUri'] as core.String
-              : null,
+          redirectUri: json_['redirectUri'] as core.String?,
           webproperty: json_.containsKey('webproperty')
               ? Webproperty.fromJson(
                   json_['webproperty'] as core.Map<core.String, core.dynamic>)
@@ -5300,22 +5280,12 @@ class AccountTreeRequest {
 
   AccountTreeRequest.fromJson(core.Map json_)
       : this(
-          accountName: json_.containsKey('accountName')
-              ? json_['accountName'] as core.String
-              : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          profileName: json_.containsKey('profileName')
-              ? json_['profileName'] as core.String
-              : null,
-          timezone: json_.containsKey('timezone')
-              ? json_['timezone'] as core.String
-              : null,
-          webpropertyName: json_.containsKey('webpropertyName')
-              ? json_['webpropertyName'] as core.String
-              : null,
-          websiteUrl: json_.containsKey('websiteUrl')
-              ? json_['websiteUrl'] as core.String
-              : null,
+          accountName: json_['accountName'] as core.String?,
+          kind: json_['kind'] as core.String?,
+          profileName: json_['profileName'] as core.String?,
+          timezone: json_['timezone'] as core.String?,
+          webpropertyName: json_['webpropertyName'] as core.String?,
+          websiteUrl: json_['websiteUrl'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5358,7 +5328,7 @@ class AccountTreeResponse {
               ? Account.fromJson(
                   json_['account'] as core.Map<core.String, core.dynamic>)
               : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          kind: json_['kind'] as core.String?,
           profile: json_.containsKey('profile')
               ? Profile.fromJson(
                   json_['profile'] as core.Map<core.String, core.dynamic>)
@@ -5432,25 +5402,13 @@ class Accounts {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          itemsPerPage: json_.containsKey('itemsPerPage')
-              ? json_['itemsPerPage'] as core.int
-              : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          nextLink: json_.containsKey('nextLink')
-              ? json_['nextLink'] as core.String
-              : null,
-          previousLink: json_.containsKey('previousLink')
-              ? json_['previousLink'] as core.String
-              : null,
-          startIndex: json_.containsKey('startIndex')
-              ? json_['startIndex'] as core.int
-              : null,
-          totalResults: json_.containsKey('totalResults')
-              ? json_['totalResults'] as core.int
-              : null,
-          username: json_.containsKey('username')
-              ? json_['username'] as core.String
-              : null,
+          itemsPerPage: json_['itemsPerPage'] as core.int?,
+          kind: json_['kind'] as core.String?,
+          nextLink: json_['nextLink'] as core.String?,
+          previousLink: json_['previousLink'] as core.String?,
+          startIndex: json_['startIndex'] as core.int?,
+          totalResults: json_['totalResults'] as core.int?,
+          username: json_['username'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5488,13 +5446,9 @@ class AdWordsAccount {
 
   AdWordsAccount.fromJson(core.Map json_)
       : this(
-          autoTaggingEnabled: json_.containsKey('autoTaggingEnabled')
-              ? json_['autoTaggingEnabled'] as core.bool
-              : null,
-          customerId: json_.containsKey('customerId')
-              ? json_['customerId'] as core.String
-              : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          autoTaggingEnabled: json_['autoTaggingEnabled'] as core.bool?,
+          customerId: json_['customerId'] as core.String?,
+          kind: json_['kind'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5557,8 +5511,8 @@ class Column {
                   ),
                 )
               : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          id: json_['id'] as core.String?,
+          kind: json_['kind'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5603,17 +5557,15 @@ class Columns {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          etag: json_['etag'] as core.String?,
           items: json_.containsKey('items')
               ? (json_['items'] as core.List)
                   .map((value) => Column.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          totalResults: json_.containsKey('totalResults')
-              ? json_['totalResults'] as core.int
-              : null,
+          kind: json_['kind'] as core.String?,
+          totalResults: json_['totalResults'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5643,8 +5595,8 @@ class CustomDataSourceChildLink {
 
   CustomDataSourceChildLink.fromJson(core.Map json_)
       : this(
-          href: json_.containsKey('href') ? json_['href'] as core.String : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          href: json_['href'] as core.String?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5670,8 +5622,8 @@ class CustomDataSourceParentLink {
 
   CustomDataSourceParentLink.fromJson(core.Map json_)
       : this(
-          href: json_.containsKey('href') ? json_['href'] as core.String : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          href: json_['href'] as core.String?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5750,9 +5702,7 @@ class CustomDataSource {
 
   CustomDataSource.fromJson(core.Map json_)
       : this(
-          accountId: json_.containsKey('accountId')
-              ? json_['accountId'] as core.String
-              : null,
+          accountId: json_['accountId'] as core.String?,
           childLink: json_.containsKey('childLink')
               ? CustomDataSourceChildLink.fromJson(
                   json_['childLink'] as core.Map<core.String, core.dynamic>)
@@ -5760,15 +5710,11 @@ class CustomDataSource {
           created: json_.containsKey('created')
               ? core.DateTime.parse(json_['created'] as core.String)
               : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          importBehavior: json_.containsKey('importBehavior')
-              ? json_['importBehavior'] as core.String
-              : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          description: json_['description'] as core.String?,
+          id: json_['id'] as core.String?,
+          importBehavior: json_['importBehavior'] as core.String?,
+          kind: json_['kind'] as core.String?,
+          name: json_['name'] as core.String?,
           parentLink: json_.containsKey('parentLink')
               ? CustomDataSourceParentLink.fromJson(
                   json_['parentLink'] as core.Map<core.String, core.dynamic>)
@@ -5783,19 +5729,13 @@ class CustomDataSource {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          selfLink: json_.containsKey('selfLink')
-              ? json_['selfLink'] as core.String
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          selfLink: json_['selfLink'] as core.String?,
+          type: json_['type'] as core.String?,
           updated: json_.containsKey('updated')
               ? core.DateTime.parse(json_['updated'] as core.String)
               : null,
-          uploadType: json_.containsKey('uploadType')
-              ? json_['uploadType'] as core.String
-              : null,
-          webPropertyId: json_.containsKey('webPropertyId')
-              ? json_['webPropertyId'] as core.String
-              : null,
+          uploadType: json_['uploadType'] as core.String?,
+          webPropertyId: json_['webPropertyId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5872,25 +5812,13 @@ class CustomDataSources {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          itemsPerPage: json_.containsKey('itemsPerPage')
-              ? json_['itemsPerPage'] as core.int
-              : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          nextLink: json_.containsKey('nextLink')
-              ? json_['nextLink'] as core.String
-              : null,
-          previousLink: json_.containsKey('previousLink')
-              ? json_['previousLink'] as core.String
-              : null,
-          startIndex: json_.containsKey('startIndex')
-              ? json_['startIndex'] as core.int
-              : null,
-          totalResults: json_.containsKey('totalResults')
-              ? json_['totalResults'] as core.int
-              : null,
-          username: json_.containsKey('username')
-              ? json_['username'] as core.String
-              : null,
+          itemsPerPage: json_['itemsPerPage'] as core.int?,
+          kind: json_['kind'] as core.String?,
+          nextLink: json_['nextLink'] as core.String?,
+          previousLink: json_['previousLink'] as core.String?,
+          startIndex: json_['startIndex'] as core.int?,
+          totalResults: json_['totalResults'] as core.int?,
+          username: json_['username'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5924,8 +5852,8 @@ class CustomDimensionParentLink {
 
   CustomDimensionParentLink.fromJson(core.Map json_)
       : this(
-          href: json_.containsKey('href') ? json_['href'] as core.String : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          href: json_['href'] as core.String?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5993,33 +5921,25 @@ class CustomDimension {
 
   CustomDimension.fromJson(core.Map json_)
       : this(
-          accountId: json_.containsKey('accountId')
-              ? json_['accountId'] as core.String
-              : null,
-          active:
-              json_.containsKey('active') ? json_['active'] as core.bool : null,
+          accountId: json_['accountId'] as core.String?,
+          active: json_['active'] as core.bool?,
           created: json_.containsKey('created')
               ? core.DateTime.parse(json_['created'] as core.String)
               : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          index: json_.containsKey('index') ? json_['index'] as core.int : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          id: json_['id'] as core.String?,
+          index: json_['index'] as core.int?,
+          kind: json_['kind'] as core.String?,
+          name: json_['name'] as core.String?,
           parentLink: json_.containsKey('parentLink')
               ? CustomDimensionParentLink.fromJson(
                   json_['parentLink'] as core.Map<core.String, core.dynamic>)
               : null,
-          scope:
-              json_.containsKey('scope') ? json_['scope'] as core.String : null,
-          selfLink: json_.containsKey('selfLink')
-              ? json_['selfLink'] as core.String
-              : null,
+          scope: json_['scope'] as core.String?,
+          selfLink: json_['selfLink'] as core.String?,
           updated: json_.containsKey('updated')
               ? core.DateTime.parse(json_['updated'] as core.String)
               : null,
-          webPropertyId: json_.containsKey('webPropertyId')
-              ? json_['webPropertyId'] as core.String
-              : null,
+          webPropertyId: json_['webPropertyId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6093,25 +6013,13 @@ class CustomDimensions {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          itemsPerPage: json_.containsKey('itemsPerPage')
-              ? json_['itemsPerPage'] as core.int
-              : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          nextLink: json_.containsKey('nextLink')
-              ? json_['nextLink'] as core.String
-              : null,
-          previousLink: json_.containsKey('previousLink')
-              ? json_['previousLink'] as core.String
-              : null,
-          startIndex: json_.containsKey('startIndex')
-              ? json_['startIndex'] as core.int
-              : null,
-          totalResults: json_.containsKey('totalResults')
-              ? json_['totalResults'] as core.int
-              : null,
-          username: json_.containsKey('username')
-              ? json_['username'] as core.String
-              : null,
+          itemsPerPage: json_['itemsPerPage'] as core.int?,
+          kind: json_['kind'] as core.String?,
+          nextLink: json_['nextLink'] as core.String?,
+          previousLink: json_['previousLink'] as core.String?,
+          startIndex: json_['startIndex'] as core.int?,
+          totalResults: json_['totalResults'] as core.int?,
+          username: json_['username'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6145,8 +6053,8 @@ class CustomMetricParentLink {
 
   CustomMetricParentLink.fromJson(core.Map json_)
       : this(
-          href: json_.containsKey('href') ? json_['href'] as core.String : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          href: json_['href'] as core.String?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6226,40 +6134,28 @@ class CustomMetric {
 
   CustomMetric.fromJson(core.Map json_)
       : this(
-          accountId: json_.containsKey('accountId')
-              ? json_['accountId'] as core.String
-              : null,
-          active:
-              json_.containsKey('active') ? json_['active'] as core.bool : null,
+          accountId: json_['accountId'] as core.String?,
+          active: json_['active'] as core.bool?,
           created: json_.containsKey('created')
               ? core.DateTime.parse(json_['created'] as core.String)
               : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          index: json_.containsKey('index') ? json_['index'] as core.int : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          maxValue: json_.containsKey('max_value')
-              ? json_['max_value'] as core.String
-              : null,
-          minValue: json_.containsKey('min_value')
-              ? json_['min_value'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          id: json_['id'] as core.String?,
+          index: json_['index'] as core.int?,
+          kind: json_['kind'] as core.String?,
+          maxValue: json_['max_value'] as core.String?,
+          minValue: json_['min_value'] as core.String?,
+          name: json_['name'] as core.String?,
           parentLink: json_.containsKey('parentLink')
               ? CustomMetricParentLink.fromJson(
                   json_['parentLink'] as core.Map<core.String, core.dynamic>)
               : null,
-          scope:
-              json_.containsKey('scope') ? json_['scope'] as core.String : null,
-          selfLink: json_.containsKey('selfLink')
-              ? json_['selfLink'] as core.String
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          scope: json_['scope'] as core.String?,
+          selfLink: json_['selfLink'] as core.String?,
+          type: json_['type'] as core.String?,
           updated: json_.containsKey('updated')
               ? core.DateTime.parse(json_['updated'] as core.String)
               : null,
-          webPropertyId: json_.containsKey('webPropertyId')
-              ? json_['webPropertyId'] as core.String
-              : null,
+          webPropertyId: json_['webPropertyId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6336,25 +6232,13 @@ class CustomMetrics {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          itemsPerPage: json_.containsKey('itemsPerPage')
-              ? json_['itemsPerPage'] as core.int
-              : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          nextLink: json_.containsKey('nextLink')
-              ? json_['nextLink'] as core.String
-              : null,
-          previousLink: json_.containsKey('previousLink')
-              ? json_['previousLink'] as core.String
-              : null,
-          startIndex: json_.containsKey('startIndex')
-              ? json_['startIndex'] as core.int
-              : null,
-          totalResults: json_.containsKey('totalResults')
-              ? json_['totalResults'] as core.int
-              : null,
-          username: json_.containsKey('username')
-              ? json_['username'] as core.String
-              : null,
+          itemsPerPage: json_['itemsPerPage'] as core.int?,
+          kind: json_['kind'] as core.String?,
+          nextLink: json_['nextLink'] as core.String?,
+          previousLink: json_['previousLink'] as core.String?,
+          startIndex: json_['startIndex'] as core.int?,
+          totalResults: json_['totalResults'] as core.int?,
+          username: json_['username'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6440,17 +6324,15 @@ class EntityAdWordsLink {
               ? EntityAdWordsLinkEntity.fromJson(
                   json_['entity'] as core.Map<core.String, core.dynamic>)
               : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          id: json_['id'] as core.String?,
+          kind: json_['kind'] as core.String?,
+          name: json_['name'] as core.String?,
           profileIds: json_.containsKey('profileIds')
               ? (json_['profileIds'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          selfLink: json_.containsKey('selfLink')
-              ? json_['selfLink'] as core.String
-              : null,
+          selfLink: json_['selfLink'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6512,22 +6394,12 @@ class EntityAdWordsLinks {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          itemsPerPage: json_.containsKey('itemsPerPage')
-              ? json_['itemsPerPage'] as core.int
-              : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          nextLink: json_.containsKey('nextLink')
-              ? json_['nextLink'] as core.String
-              : null,
-          previousLink: json_.containsKey('previousLink')
-              ? json_['previousLink'] as core.String
-              : null,
-          startIndex: json_.containsKey('startIndex')
-              ? json_['startIndex'] as core.int
-              : null,
-          totalResults: json_.containsKey('totalResults')
-              ? json_['totalResults'] as core.int
-              : null,
+          itemsPerPage: json_['itemsPerPage'] as core.int?,
+          kind: json_['kind'] as core.String?,
+          nextLink: json_['nextLink'] as core.String?,
+          previousLink: json_['previousLink'] as core.String?,
+          startIndex: json_['startIndex'] as core.int?,
+          totalResults: json_['totalResults'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6663,15 +6535,13 @@ class EntityUserLink {
               ? EntityUserLinkEntity.fromJson(
                   json_['entity'] as core.Map<core.String, core.dynamic>)
               : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          id: json_['id'] as core.String?,
+          kind: json_['kind'] as core.String?,
           permissions: json_.containsKey('permissions')
               ? EntityUserLinkPermissions.fromJson(
                   json_['permissions'] as core.Map<core.String, core.dynamic>)
               : null,
-          selfLink: json_.containsKey('selfLink')
-              ? json_['selfLink'] as core.String
-              : null,
+          selfLink: json_['selfLink'] as core.String?,
           userRef: json_.containsKey('userRef')
               ? UserRef.fromJson(
                   json_['userRef'] as core.Map<core.String, core.dynamic>)
@@ -6736,22 +6606,12 @@ class EntityUserLinks {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          itemsPerPage: json_.containsKey('itemsPerPage')
-              ? json_['itemsPerPage'] as core.int
-              : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          nextLink: json_.containsKey('nextLink')
-              ? json_['nextLink'] as core.String
-              : null,
-          previousLink: json_.containsKey('previousLink')
-              ? json_['previousLink'] as core.String
-              : null,
-          startIndex: json_.containsKey('startIndex')
-              ? json_['startIndex'] as core.int
-              : null,
-          totalResults: json_.containsKey('totalResults')
-              ? json_['totalResults'] as core.int
-              : null,
+          itemsPerPage: json_['itemsPerPage'] as core.int?,
+          kind: json_['kind'] as core.String?,
+          nextLink: json_['nextLink'] as core.String?,
+          previousLink: json_['previousLink'] as core.String?,
+          startIndex: json_['startIndex'] as core.int?,
+          totalResults: json_['totalResults'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6786,8 +6646,8 @@ class ExperimentParentLink {
 
   ExperimentParentLink.fromJson(core.Map json_)
       : this(
-          href: json_.containsKey('href') ? json_['href'] as core.String : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          href: json_['href'] as core.String?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6836,15 +6696,11 @@ class ExperimentVariations {
 
   ExperimentVariations.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          status: json_.containsKey('status')
-              ? json_['status'] as core.String
-              : null,
-          url: json_.containsKey('url') ? json_['url'] as core.String : null,
-          weight: json_.containsKey('weight')
-              ? (json_['weight'] as core.num).toDouble()
-              : null,
-          won: json_.containsKey('won') ? json_['won'] as core.bool : null,
+          name: json_['name'] as core.String?,
+          status: json_['status'] as core.String?,
+          url: json_['url'] as core.String?,
+          weight: (json_['weight'] as core.num?)?.toDouble(),
+          won: json_['won'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7066,72 +6922,40 @@ class Experiment {
 
   Experiment.fromJson(core.Map json_)
       : this(
-          accountId: json_.containsKey('accountId')
-              ? json_['accountId'] as core.String
-              : null,
+          accountId: json_['accountId'] as core.String?,
           created: json_.containsKey('created')
               ? core.DateTime.parse(json_['created'] as core.String)
               : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          editableInGaUi: json_.containsKey('editableInGaUi')
-              ? json_['editableInGaUi'] as core.bool
-              : null,
+          description: json_['description'] as core.String?,
+          editableInGaUi: json_['editableInGaUi'] as core.bool?,
           endTime: json_.containsKey('endTime')
               ? core.DateTime.parse(json_['endTime'] as core.String)
               : null,
-          equalWeighting: json_.containsKey('equalWeighting')
-              ? json_['equalWeighting'] as core.bool
-              : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          internalWebPropertyId: json_.containsKey('internalWebPropertyId')
-              ? json_['internalWebPropertyId'] as core.String
-              : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          equalWeighting: json_['equalWeighting'] as core.bool?,
+          id: json_['id'] as core.String?,
+          internalWebPropertyId: json_['internalWebPropertyId'] as core.String?,
+          kind: json_['kind'] as core.String?,
           minimumExperimentLengthInDays:
-              json_.containsKey('minimumExperimentLengthInDays')
-                  ? json_['minimumExperimentLengthInDays'] as core.int
-                  : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          objectiveMetric: json_.containsKey('objectiveMetric')
-              ? json_['objectiveMetric'] as core.String
-              : null,
-          optimizationType: json_.containsKey('optimizationType')
-              ? json_['optimizationType'] as core.String
-              : null,
+              json_['minimumExperimentLengthInDays'] as core.int?,
+          name: json_['name'] as core.String?,
+          objectiveMetric: json_['objectiveMetric'] as core.String?,
+          optimizationType: json_['optimizationType'] as core.String?,
           parentLink: json_.containsKey('parentLink')
               ? ExperimentParentLink.fromJson(
                   json_['parentLink'] as core.Map<core.String, core.dynamic>)
               : null,
-          profileId: json_.containsKey('profileId')
-              ? json_['profileId'] as core.String
-              : null,
-          reasonExperimentEnded: json_.containsKey('reasonExperimentEnded')
-              ? json_['reasonExperimentEnded'] as core.String
-              : null,
+          profileId: json_['profileId'] as core.String?,
+          reasonExperimentEnded: json_['reasonExperimentEnded'] as core.String?,
           rewriteVariationUrlsAsOriginal:
-              json_.containsKey('rewriteVariationUrlsAsOriginal')
-                  ? json_['rewriteVariationUrlsAsOriginal'] as core.bool
-                  : null,
-          selfLink: json_.containsKey('selfLink')
-              ? json_['selfLink'] as core.String
-              : null,
-          servingFramework: json_.containsKey('servingFramework')
-              ? json_['servingFramework'] as core.String
-              : null,
-          snippet: json_.containsKey('snippet')
-              ? json_['snippet'] as core.String
-              : null,
+              json_['rewriteVariationUrlsAsOriginal'] as core.bool?,
+          selfLink: json_['selfLink'] as core.String?,
+          servingFramework: json_['servingFramework'] as core.String?,
+          snippet: json_['snippet'] as core.String?,
           startTime: json_.containsKey('startTime')
               ? core.DateTime.parse(json_['startTime'] as core.String)
               : null,
-          status: json_.containsKey('status')
-              ? json_['status'] as core.String
-              : null,
-          trafficCoverage: json_.containsKey('trafficCoverage')
-              ? (json_['trafficCoverage'] as core.num).toDouble()
-              : null,
+          status: json_['status'] as core.String?,
+          trafficCoverage: (json_['trafficCoverage'] as core.num?)?.toDouble(),
           updated: json_.containsKey('updated')
               ? core.DateTime.parse(json_['updated'] as core.String)
               : null,
@@ -7141,15 +6965,10 @@ class Experiment {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          webPropertyId: json_.containsKey('webPropertyId')
-              ? json_['webPropertyId'] as core.String
-              : null,
-          winnerConfidenceLevel: json_.containsKey('winnerConfidenceLevel')
-              ? (json_['winnerConfidenceLevel'] as core.num).toDouble()
-              : null,
-          winnerFound: json_.containsKey('winnerFound')
-              ? json_['winnerFound'] as core.bool
-              : null,
+          webPropertyId: json_['webPropertyId'] as core.String?,
+          winnerConfidenceLevel:
+              (json_['winnerConfidenceLevel'] as core.num?)?.toDouble(),
+          winnerFound: json_['winnerFound'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7245,25 +7064,13 @@ class Experiments {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          itemsPerPage: json_.containsKey('itemsPerPage')
-              ? json_['itemsPerPage'] as core.int
-              : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          nextLink: json_.containsKey('nextLink')
-              ? json_['nextLink'] as core.String
-              : null,
-          previousLink: json_.containsKey('previousLink')
-              ? json_['previousLink'] as core.String
-              : null,
-          startIndex: json_.containsKey('startIndex')
-              ? json_['startIndex'] as core.int
-              : null,
-          totalResults: json_.containsKey('totalResults')
-              ? json_['totalResults'] as core.int
-              : null,
-          username: json_.containsKey('username')
-              ? json_['username'] as core.String
-              : null,
+          itemsPerPage: json_['itemsPerPage'] as core.int?,
+          kind: json_['kind'] as core.String?,
+          nextLink: json_['nextLink'] as core.String?,
+          previousLink: json_['previousLink'] as core.String?,
+          startIndex: json_['startIndex'] as core.int?,
+          totalResults: json_['totalResults'] as core.int?,
+          username: json_['username'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7344,45 +7151,19 @@ class FilterAdvancedDetails {
 
   FilterAdvancedDetails.fromJson(core.Map json_)
       : this(
-          caseSensitive: json_.containsKey('caseSensitive')
-              ? json_['caseSensitive'] as core.bool
-              : null,
-          extractA: json_.containsKey('extractA')
-              ? json_['extractA'] as core.String
-              : null,
-          extractB: json_.containsKey('extractB')
-              ? json_['extractB'] as core.String
-              : null,
-          fieldA: json_.containsKey('fieldA')
-              ? json_['fieldA'] as core.String
-              : null,
-          fieldAIndex: json_.containsKey('fieldAIndex')
-              ? json_['fieldAIndex'] as core.int
-              : null,
-          fieldARequired: json_.containsKey('fieldARequired')
-              ? json_['fieldARequired'] as core.bool
-              : null,
-          fieldB: json_.containsKey('fieldB')
-              ? json_['fieldB'] as core.String
-              : null,
-          fieldBIndex: json_.containsKey('fieldBIndex')
-              ? json_['fieldBIndex'] as core.int
-              : null,
-          fieldBRequired: json_.containsKey('fieldBRequired')
-              ? json_['fieldBRequired'] as core.bool
-              : null,
-          outputConstructor: json_.containsKey('outputConstructor')
-              ? json_['outputConstructor'] as core.String
-              : null,
-          outputToField: json_.containsKey('outputToField')
-              ? json_['outputToField'] as core.String
-              : null,
-          outputToFieldIndex: json_.containsKey('outputToFieldIndex')
-              ? json_['outputToFieldIndex'] as core.int
-              : null,
-          overrideOutputField: json_.containsKey('overrideOutputField')
-              ? json_['overrideOutputField'] as core.bool
-              : null,
+          caseSensitive: json_['caseSensitive'] as core.bool?,
+          extractA: json_['extractA'] as core.String?,
+          extractB: json_['extractB'] as core.String?,
+          fieldA: json_['fieldA'] as core.String?,
+          fieldAIndex: json_['fieldAIndex'] as core.int?,
+          fieldARequired: json_['fieldARequired'] as core.bool?,
+          fieldB: json_['fieldB'] as core.String?,
+          fieldBIndex: json_['fieldBIndex'] as core.int?,
+          fieldBRequired: json_['fieldBRequired'] as core.bool?,
+          outputConstructor: json_['outputConstructor'] as core.String?,
+          outputToField: json_['outputToField'] as core.String?,
+          outputToFieldIndex: json_['outputToFieldIndex'] as core.int?,
+          overrideOutputField: json_['overrideOutputField'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7421,11 +7202,8 @@ class FilterLowercaseDetails {
 
   FilterLowercaseDetails.fromJson(core.Map json_)
       : this(
-          field:
-              json_.containsKey('field') ? json_['field'] as core.String : null,
-          fieldIndex: json_.containsKey('fieldIndex')
-              ? json_['fieldIndex'] as core.int
-              : null,
+          field: json_['field'] as core.String?,
+          fieldIndex: json_['fieldIndex'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7451,8 +7229,8 @@ class FilterParentLink {
 
   FilterParentLink.fromJson(core.Map json_)
       : this(
-          href: json_.containsKey('href') ? json_['href'] as core.String : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          href: json_['href'] as core.String?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7490,20 +7268,11 @@ class FilterSearchAndReplaceDetails {
 
   FilterSearchAndReplaceDetails.fromJson(core.Map json_)
       : this(
-          caseSensitive: json_.containsKey('caseSensitive')
-              ? json_['caseSensitive'] as core.bool
-              : null,
-          field:
-              json_.containsKey('field') ? json_['field'] as core.String : null,
-          fieldIndex: json_.containsKey('fieldIndex')
-              ? json_['fieldIndex'] as core.int
-              : null,
-          replaceString: json_.containsKey('replaceString')
-              ? json_['replaceString'] as core.String
-              : null,
-          searchString: json_.containsKey('searchString')
-              ? json_['searchString'] as core.String
-              : null,
+          caseSensitive: json_['caseSensitive'] as core.bool?,
+          field: json_['field'] as core.String?,
+          fieldIndex: json_['fieldIndex'] as core.int?,
+          replaceString: json_['replaceString'] as core.String?,
+          searchString: json_['searchString'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7532,11 +7301,8 @@ class FilterUppercaseDetails {
 
   FilterUppercaseDetails.fromJson(core.Map json_)
       : this(
-          field:
-              json_.containsKey('field') ? json_['field'] as core.String : null,
-          fieldIndex: json_.containsKey('fieldIndex')
-              ? json_['fieldIndex'] as core.int
-              : null,
+          field: json_['field'] as core.String?,
+          fieldIndex: json_['fieldIndex'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7617,9 +7383,7 @@ class Filter {
 
   Filter.fromJson(core.Map json_)
       : this(
-          accountId: json_.containsKey('accountId')
-              ? json_['accountId'] as core.String
-              : null,
+          accountId: json_['accountId'] as core.String?,
           advancedDetails: json_.containsKey('advancedDetails')
               ? FilterAdvancedDetails.fromJson(json_['advancedDetails']
                   as core.Map<core.String, core.dynamic>)
@@ -7631,17 +7395,17 @@ class Filter {
               ? FilterExpression.fromJson(json_['excludeDetails']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          id: json_['id'] as core.String?,
           includeDetails: json_.containsKey('includeDetails')
               ? FilterExpression.fromJson(json_['includeDetails']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          kind: json_['kind'] as core.String?,
           lowercaseDetails: json_.containsKey('lowercaseDetails')
               ? FilterLowercaseDetails.fromJson(json_['lowercaseDetails']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           parentLink: json_.containsKey('parentLink')
               ? FilterParentLink.fromJson(
                   json_['parentLink'] as core.Map<core.String, core.dynamic>)
@@ -7651,10 +7415,8 @@ class Filter {
                   json_['searchAndReplaceDetails']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          selfLink: json_.containsKey('selfLink')
-              ? json_['selfLink'] as core.String
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          selfLink: json_['selfLink'] as core.String?,
+          type: json_['type'] as core.String?,
           updated: json_.containsKey('updated')
               ? core.DateTime.parse(json_['updated'] as core.String)
               : null,
@@ -7809,21 +7571,12 @@ class FilterExpression {
 
   FilterExpression.fromJson(core.Map json_)
       : this(
-          caseSensitive: json_.containsKey('caseSensitive')
-              ? json_['caseSensitive'] as core.bool
-              : null,
-          expressionValue: json_.containsKey('expressionValue')
-              ? json_['expressionValue'] as core.String
-              : null,
-          field:
-              json_.containsKey('field') ? json_['field'] as core.String : null,
-          fieldIndex: json_.containsKey('fieldIndex')
-              ? json_['fieldIndex'] as core.int
-              : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          matchType: json_.containsKey('matchType')
-              ? json_['matchType'] as core.String
-              : null,
+          caseSensitive: json_['caseSensitive'] as core.bool?,
+          expressionValue: json_['expressionValue'] as core.String?,
+          field: json_['field'] as core.String?,
+          fieldIndex: json_['fieldIndex'] as core.int?,
+          kind: json_['kind'] as core.String?,
+          matchType: json_['matchType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7863,13 +7616,11 @@ class FilterRef {
 
   FilterRef.fromJson(core.Map json_)
       : this(
-          accountId: json_.containsKey('accountId')
-              ? json_['accountId'] as core.String
-              : null,
-          href: json_.containsKey('href') ? json_['href'] as core.String : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          accountId: json_['accountId'] as core.String?,
+          href: json_['href'] as core.String?,
+          id: json_['id'] as core.String?,
+          kind: json_['kind'] as core.String?,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7934,25 +7685,13 @@ class Filters {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          itemsPerPage: json_.containsKey('itemsPerPage')
-              ? json_['itemsPerPage'] as core.int
-              : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          nextLink: json_.containsKey('nextLink')
-              ? json_['nextLink'] as core.String
-              : null,
-          previousLink: json_.containsKey('previousLink')
-              ? json_['previousLink'] as core.String
-              : null,
-          startIndex: json_.containsKey('startIndex')
-              ? json_['startIndex'] as core.int
-              : null,
-          totalResults: json_.containsKey('totalResults')
-              ? json_['totalResults'] as core.int
-              : null,
-          username: json_.containsKey('username')
-              ? json_['username'] as core.String
-              : null,
+          itemsPerPage: json_['itemsPerPage'] as core.int?,
+          kind: json_['kind'] as core.String?,
+          nextLink: json_['nextLink'] as core.String?,
+          previousLink: json_['previousLink'] as core.String?,
+          startIndex: json_['startIndex'] as core.int?,
+          totalResults: json_['totalResults'] as core.int?,
+          username: json_['username'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7991,13 +7730,9 @@ class GaDataColumnHeaders {
 
   GaDataColumnHeaders.fromJson(core.Map json_)
       : this(
-          columnType: json_.containsKey('columnType')
-              ? json_['columnType'] as core.String
-              : null,
-          dataType: json_.containsKey('dataType')
-              ? json_['dataType'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          columnType: json_['columnType'] as core.String?,
+          dataType: json_['dataType'] as core.String?,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8020,10 +7755,9 @@ class GaDataDataTableCols {
 
   GaDataDataTableCols.fromJson(core.Map json_)
       : this(
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          label:
-              json_.containsKey('label') ? json_['label'] as core.String : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          id: json_['id'] as core.String?,
+          label: json_['label'] as core.String?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8042,7 +7776,7 @@ class GaDataDataTableRowsC {
 
   GaDataDataTableRowsC.fromJson(core.Map json_)
       : this(
-          v: json_.containsKey('v') ? json_['v'] as core.String : null,
+          v: json_['v'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8135,24 +7869,12 @@ class GaDataProfileInfo {
 
   GaDataProfileInfo.fromJson(core.Map json_)
       : this(
-          accountId: json_.containsKey('accountId')
-              ? json_['accountId'] as core.String
-              : null,
-          internalWebPropertyId: json_.containsKey('internalWebPropertyId')
-              ? json_['internalWebPropertyId'] as core.String
-              : null,
-          profileId: json_.containsKey('profileId')
-              ? json_['profileId'] as core.String
-              : null,
-          profileName: json_.containsKey('profileName')
-              ? json_['profileName'] as core.String
-              : null,
-          tableId: json_.containsKey('tableId')
-              ? json_['tableId'] as core.String
-              : null,
-          webPropertyId: json_.containsKey('webPropertyId')
-              ? json_['webPropertyId'] as core.String
-              : null,
+          accountId: json_['accountId'] as core.String?,
+          internalWebPropertyId: json_['internalWebPropertyId'] as core.String?,
+          profileId: json_['profileId'] as core.String?,
+          profileName: json_['profileName'] as core.String?,
+          tableId: json_['tableId'] as core.String?,
+          webPropertyId: json_['webPropertyId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8217,41 +7939,25 @@ class GaDataQuery {
 
   GaDataQuery.fromJson(core.Map json_)
       : this(
-          dimensions: json_.containsKey('dimensions')
-              ? json_['dimensions'] as core.String
-              : null,
-          endDate: json_.containsKey('end-date')
-              ? json_['end-date'] as core.String
-              : null,
-          filters: json_.containsKey('filters')
-              ? json_['filters'] as core.String
-              : null,
-          ids: json_.containsKey('ids') ? json_['ids'] as core.String : null,
-          maxResults: json_.containsKey('max-results')
-              ? json_['max-results'] as core.int
-              : null,
+          dimensions: json_['dimensions'] as core.String?,
+          endDate: json_['end-date'] as core.String?,
+          filters: json_['filters'] as core.String?,
+          ids: json_['ids'] as core.String?,
+          maxResults: json_['max-results'] as core.int?,
           metrics: json_.containsKey('metrics')
               ? (json_['metrics'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          samplingLevel: json_.containsKey('samplingLevel')
-              ? json_['samplingLevel'] as core.String
-              : null,
-          segment: json_.containsKey('segment')
-              ? json_['segment'] as core.String
-              : null,
+          samplingLevel: json_['samplingLevel'] as core.String?,
+          segment: json_['segment'] as core.String?,
           sort: json_.containsKey('sort')
               ? (json_['sort'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          startDate: json_.containsKey('start-date')
-              ? json_['start-date'] as core.String
-              : null,
-          startIndex: json_.containsKey('start-index')
-              ? json_['start-index'] as core.int
-              : null,
+          startDate: json_['start-date'] as core.String?,
+          startIndex: json_['start-index'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8363,27 +8069,17 @@ class GaData {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          containsSampledData: json_.containsKey('containsSampledData')
-              ? json_['containsSampledData'] as core.bool
-              : null,
-          dataLastRefreshed: json_.containsKey('dataLastRefreshed')
-              ? json_['dataLastRefreshed'] as core.String
-              : null,
+          containsSampledData: json_['containsSampledData'] as core.bool?,
+          dataLastRefreshed: json_['dataLastRefreshed'] as core.String?,
           dataTable: json_.containsKey('dataTable')
               ? GaDataDataTable.fromJson(
                   json_['dataTable'] as core.Map<core.String, core.dynamic>)
               : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          itemsPerPage: json_.containsKey('itemsPerPage')
-              ? json_['itemsPerPage'] as core.int
-              : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          nextLink: json_.containsKey('nextLink')
-              ? json_['nextLink'] as core.String
-              : null,
-          previousLink: json_.containsKey('previousLink')
-              ? json_['previousLink'] as core.String
-              : null,
+          id: json_['id'] as core.String?,
+          itemsPerPage: json_['itemsPerPage'] as core.int?,
+          kind: json_['kind'] as core.String?,
+          nextLink: json_['nextLink'] as core.String?,
+          previousLink: json_['previousLink'] as core.String?,
           profileInfo: json_.containsKey('profileInfo')
               ? GaDataProfileInfo.fromJson(
                   json_['profileInfo'] as core.Map<core.String, core.dynamic>)
@@ -8399,18 +8095,10 @@ class GaData {
                       .toList())
                   .toList()
               : null,
-          sampleSize: json_.containsKey('sampleSize')
-              ? json_['sampleSize'] as core.String
-              : null,
-          sampleSpace: json_.containsKey('sampleSpace')
-              ? json_['sampleSpace'] as core.String
-              : null,
-          selfLink: json_.containsKey('selfLink')
-              ? json_['selfLink'] as core.String
-              : null,
-          totalResults: json_.containsKey('totalResults')
-              ? json_['totalResults'] as core.int
-              : null,
+          sampleSize: json_['sampleSize'] as core.String?,
+          sampleSpace: json_['sampleSpace'] as core.String?,
+          selfLink: json_['selfLink'] as core.String?,
+          totalResults: json_['totalResults'] as core.int?,
           totalsForAllResults: json_.containsKey('totalsForAllResults')
               ? (json_['totalsForAllResults']
                       as core.Map<core.String, core.dynamic>)
@@ -8478,19 +8166,11 @@ class GoalEventDetailsEventConditions {
 
   GoalEventDetailsEventConditions.fromJson(core.Map json_)
       : this(
-          comparisonType: json_.containsKey('comparisonType')
-              ? json_['comparisonType'] as core.String
-              : null,
-          comparisonValue: json_.containsKey('comparisonValue')
-              ? json_['comparisonValue'] as core.String
-              : null,
-          expression: json_.containsKey('expression')
-              ? json_['expression'] as core.String
-              : null,
-          matchType: json_.containsKey('matchType')
-              ? json_['matchType'] as core.String
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          comparisonType: json_['comparisonType'] as core.String?,
+          comparisonValue: json_['comparisonValue'] as core.String?,
+          expression: json_['expression'] as core.String?,
+          matchType: json_['matchType'] as core.String?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8523,9 +8203,7 @@ class GoalEventDetails {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          useEventValue: json_.containsKey('useEventValue')
-              ? json_['useEventValue'] as core.bool
-              : null,
+          useEventValue: json_['useEventValue'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8551,8 +8229,8 @@ class GoalParentLink {
 
   GoalParentLink.fromJson(core.Map json_)
       : this(
-          href: json_.containsKey('href') ? json_['href'] as core.String : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          href: json_['href'] as core.String?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8579,10 +8257,9 @@ class GoalUrlDestinationDetailsSteps {
 
   GoalUrlDestinationDetailsSteps.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          number:
-              json_.containsKey('number') ? json_['number'] as core.int : null,
-          url: json_.containsKey('url') ? json_['url'] as core.String : null,
+          name: json_['name'] as core.String?,
+          number: json_['number'] as core.int?,
+          url: json_['url'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8622,22 +8299,16 @@ class GoalUrlDestinationDetails {
 
   GoalUrlDestinationDetails.fromJson(core.Map json_)
       : this(
-          caseSensitive: json_.containsKey('caseSensitive')
-              ? json_['caseSensitive'] as core.bool
-              : null,
-          firstStepRequired: json_.containsKey('firstStepRequired')
-              ? json_['firstStepRequired'] as core.bool
-              : null,
-          matchType: json_.containsKey('matchType')
-              ? json_['matchType'] as core.String
-              : null,
+          caseSensitive: json_['caseSensitive'] as core.bool?,
+          firstStepRequired: json_['firstStepRequired'] as core.bool?,
+          matchType: json_['matchType'] as core.String?,
           steps: json_.containsKey('steps')
               ? (json_['steps'] as core.List)
                   .map((value) => GoalUrlDestinationDetailsSteps.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          url: json_.containsKey('url') ? json_['url'] as core.String : null,
+          url: json_['url'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8666,12 +8337,8 @@ class GoalVisitNumPagesDetails {
 
   GoalVisitNumPagesDetails.fromJson(core.Map json_)
       : this(
-          comparisonType: json_.containsKey('comparisonType')
-              ? json_['comparisonType'] as core.String
-              : null,
-          comparisonValue: json_.containsKey('comparisonValue')
-              ? json_['comparisonValue'] as core.String
-              : null,
+          comparisonType: json_['comparisonType'] as core.String?,
+          comparisonValue: json_['comparisonValue'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8697,12 +8364,8 @@ class GoalVisitTimeOnSiteDetails {
 
   GoalVisitTimeOnSiteDetails.fromJson(core.Map json_)
       : this(
-          comparisonType: json_.containsKey('comparisonType')
-              ? json_['comparisonType'] as core.String
-              : null,
-          comparisonValue: json_.containsKey('comparisonValue')
-              ? json_['comparisonValue'] as core.String
-              : null,
+          comparisonType: json_['comparisonType'] as core.String?,
+          comparisonValue: json_['comparisonValue'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8797,11 +8460,8 @@ class Goal {
 
   Goal.fromJson(core.Map json_)
       : this(
-          accountId: json_.containsKey('accountId')
-              ? json_['accountId'] as core.String
-              : null,
-          active:
-              json_.containsKey('active') ? json_['active'] as core.bool : null,
+          accountId: json_['accountId'] as core.String?,
+          active: json_['active'] as core.bool?,
           created: json_.containsKey('created')
               ? core.DateTime.parse(json_['created'] as core.String)
               : null,
@@ -8809,23 +8469,17 @@ class Goal {
               ? GoalEventDetails.fromJson(
                   json_['eventDetails'] as core.Map<core.String, core.dynamic>)
               : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          internalWebPropertyId: json_.containsKey('internalWebPropertyId')
-              ? json_['internalWebPropertyId'] as core.String
-              : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          id: json_['id'] as core.String?,
+          internalWebPropertyId: json_['internalWebPropertyId'] as core.String?,
+          kind: json_['kind'] as core.String?,
+          name: json_['name'] as core.String?,
           parentLink: json_.containsKey('parentLink')
               ? GoalParentLink.fromJson(
                   json_['parentLink'] as core.Map<core.String, core.dynamic>)
               : null,
-          profileId: json_.containsKey('profileId')
-              ? json_['profileId'] as core.String
-              : null,
-          selfLink: json_.containsKey('selfLink')
-              ? json_['selfLink'] as core.String
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          profileId: json_['profileId'] as core.String?,
+          selfLink: json_['selfLink'] as core.String?,
+          type: json_['type'] as core.String?,
           updated: json_.containsKey('updated')
               ? core.DateTime.parse(json_['updated'] as core.String)
               : null,
@@ -8834,9 +8488,7 @@ class Goal {
                   json_['urlDestinationDetails']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          value: json_.containsKey('value')
-              ? (json_['value'] as core.num).toDouble()
-              : null,
+          value: (json_['value'] as core.num?)?.toDouble(),
           visitNumPagesDetails: json_.containsKey('visitNumPagesDetails')
               ? GoalVisitNumPagesDetails.fromJson(json_['visitNumPagesDetails']
                   as core.Map<core.String, core.dynamic>)
@@ -8846,9 +8498,7 @@ class Goal {
                   json_['visitTimeOnSiteDetails']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          webPropertyId: json_.containsKey('webPropertyId')
-              ? json_['webPropertyId'] as core.String
-              : null,
+          webPropertyId: json_['webPropertyId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8931,25 +8581,13 @@ class Goals {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          itemsPerPage: json_.containsKey('itemsPerPage')
-              ? json_['itemsPerPage'] as core.int
-              : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          nextLink: json_.containsKey('nextLink')
-              ? json_['nextLink'] as core.String
-              : null,
-          previousLink: json_.containsKey('previousLink')
-              ? json_['previousLink'] as core.String
-              : null,
-          startIndex: json_.containsKey('startIndex')
-              ? json_['startIndex'] as core.int
-              : null,
-          totalResults: json_.containsKey('totalResults')
-              ? json_['totalResults'] as core.int
-              : null,
-          username: json_.containsKey('username')
-              ? json_['username'] as core.String
-              : null,
+          itemsPerPage: json_['itemsPerPage'] as core.int?,
+          kind: json_['kind'] as core.String?,
+          nextLink: json_['nextLink'] as core.String?,
+          previousLink: json_['previousLink'] as core.String?,
+          startIndex: json_['startIndex'] as core.int?,
+          totalResults: json_['totalResults'] as core.int?,
+          username: json_['username'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8978,13 +8616,9 @@ class HashClientIdRequest {
 
   HashClientIdRequest.fromJson(core.Map json_)
       : this(
-          clientId: json_.containsKey('clientId')
-              ? json_['clientId'] as core.String
-              : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          webPropertyId: json_.containsKey('webPropertyId')
-              ? json_['webPropertyId'] as core.String
-              : null,
+          clientId: json_['clientId'] as core.String?,
+          kind: json_['kind'] as core.String?,
+          webPropertyId: json_['webPropertyId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9010,16 +8644,10 @@ class HashClientIdResponse {
 
   HashClientIdResponse.fromJson(core.Map json_)
       : this(
-          clientId: json_.containsKey('clientId')
-              ? json_['clientId'] as core.String
-              : null,
-          hashedClientId: json_.containsKey('hashedClientId')
-              ? json_['hashedClientId'] as core.String
-              : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          webPropertyId: json_.containsKey('webPropertyId')
-              ? json_['webPropertyId'] as core.String
-              : null,
+          clientId: json_['clientId'] as core.String?,
+          hashedClientId: json_['hashedClientId'] as core.String?,
+          kind: json_['kind'] as core.String?,
+          webPropertyId: json_['webPropertyId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9065,19 +8693,11 @@ class IncludeConditions {
 
   IncludeConditions.fromJson(core.Map json_)
       : this(
-          daysToLookBack: json_.containsKey('daysToLookBack')
-              ? json_['daysToLookBack'] as core.int
-              : null,
-          isSmartList: json_.containsKey('isSmartList')
-              ? json_['isSmartList'] as core.bool
-              : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          membershipDurationDays: json_.containsKey('membershipDurationDays')
-              ? json_['membershipDurationDays'] as core.int
-              : null,
-          segment: json_.containsKey('segment')
-              ? json_['segment'] as core.String
-              : null,
+          daysToLookBack: json_['daysToLookBack'] as core.int?,
+          isSmartList: json_['isSmartList'] as core.bool?,
+          kind: json_['kind'] as core.String?,
+          membershipDurationDays: json_['membershipDurationDays'] as core.int?,
+          segment: json_['segment'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9144,30 +8764,16 @@ class LinkedForeignAccount {
 
   LinkedForeignAccount.fromJson(core.Map json_)
       : this(
-          accountId: json_.containsKey('accountId')
-              ? json_['accountId'] as core.String
-              : null,
-          eligibleForSearch: json_.containsKey('eligibleForSearch')
-              ? json_['eligibleForSearch'] as core.bool
-              : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          internalWebPropertyId: json_.containsKey('internalWebPropertyId')
-              ? json_['internalWebPropertyId'] as core.String
-              : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          linkedAccountId: json_.containsKey('linkedAccountId')
-              ? json_['linkedAccountId'] as core.String
-              : null,
-          remarketingAudienceId: json_.containsKey('remarketingAudienceId')
-              ? json_['remarketingAudienceId'] as core.String
-              : null,
-          status: json_.containsKey('status')
-              ? json_['status'] as core.String
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
-          webPropertyId: json_.containsKey('webPropertyId')
-              ? json_['webPropertyId'] as core.String
-              : null,
+          accountId: json_['accountId'] as core.String?,
+          eligibleForSearch: json_['eligibleForSearch'] as core.bool?,
+          id: json_['id'] as core.String?,
+          internalWebPropertyId: json_['internalWebPropertyId'] as core.String?,
+          kind: json_['kind'] as core.String?,
+          linkedAccountId: json_['linkedAccountId'] as core.String?,
+          remarketingAudienceId: json_['remarketingAudienceId'] as core.String?,
+          status: json_['status'] as core.String?,
+          type: json_['type'] as core.String?,
+          webPropertyId: json_['webPropertyId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9209,13 +8815,9 @@ class McfDataColumnHeaders {
 
   McfDataColumnHeaders.fromJson(core.Map json_)
       : this(
-          columnType: json_.containsKey('columnType')
-              ? json_['columnType'] as core.String
-              : null,
-          dataType: json_.containsKey('dataType')
-              ? json_['dataType'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          columnType: json_['columnType'] as core.String?,
+          dataType: json_['dataType'] as core.String?,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9257,24 +8859,12 @@ class McfDataProfileInfo {
 
   McfDataProfileInfo.fromJson(core.Map json_)
       : this(
-          accountId: json_.containsKey('accountId')
-              ? json_['accountId'] as core.String
-              : null,
-          internalWebPropertyId: json_.containsKey('internalWebPropertyId')
-              ? json_['internalWebPropertyId'] as core.String
-              : null,
-          profileId: json_.containsKey('profileId')
-              ? json_['profileId'] as core.String
-              : null,
-          profileName: json_.containsKey('profileName')
-              ? json_['profileName'] as core.String
-              : null,
-          tableId: json_.containsKey('tableId')
-              ? json_['tableId'] as core.String
-              : null,
-          webPropertyId: json_.containsKey('webPropertyId')
-              ? json_['webPropertyId'] as core.String
-              : null,
+          accountId: json_['accountId'] as core.String?,
+          internalWebPropertyId: json_['internalWebPropertyId'] as core.String?,
+          profileId: json_['profileId'] as core.String?,
+          profileName: json_['profileName'] as core.String?,
+          tableId: json_['tableId'] as core.String?,
+          webPropertyId: json_['webPropertyId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9339,41 +8929,25 @@ class McfDataQuery {
 
   McfDataQuery.fromJson(core.Map json_)
       : this(
-          dimensions: json_.containsKey('dimensions')
-              ? json_['dimensions'] as core.String
-              : null,
-          endDate: json_.containsKey('end-date')
-              ? json_['end-date'] as core.String
-              : null,
-          filters: json_.containsKey('filters')
-              ? json_['filters'] as core.String
-              : null,
-          ids: json_.containsKey('ids') ? json_['ids'] as core.String : null,
-          maxResults: json_.containsKey('max-results')
-              ? json_['max-results'] as core.int
-              : null,
+          dimensions: json_['dimensions'] as core.String?,
+          endDate: json_['end-date'] as core.String?,
+          filters: json_['filters'] as core.String?,
+          ids: json_['ids'] as core.String?,
+          maxResults: json_['max-results'] as core.int?,
           metrics: json_.containsKey('metrics')
               ? (json_['metrics'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          samplingLevel: json_.containsKey('samplingLevel')
-              ? json_['samplingLevel'] as core.String
-              : null,
-          segment: json_.containsKey('segment')
-              ? json_['segment'] as core.String
-              : null,
+          samplingLevel: json_['samplingLevel'] as core.String?,
+          segment: json_['segment'] as core.String?,
           sort: json_.containsKey('sort')
               ? (json_['sort'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          startDate: json_.containsKey('start-date')
-              ? json_['start-date'] as core.String
-              : null,
-          startIndex: json_.containsKey('start-index')
-              ? json_['start-index'] as core.int
-              : null,
+          startDate: json_['start-date'] as core.String?,
+          startIndex: json_['start-index'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9409,12 +8983,8 @@ class McfDataRowsConversionPathValue {
 
   McfDataRowsConversionPathValue.fromJson(core.Map json_)
       : this(
-          interactionType: json_.containsKey('interactionType')
-              ? json_['interactionType'] as core.String
-              : null,
-          nodeValue: json_.containsKey('nodeValue')
-              ? json_['nodeValue'] as core.String
-              : null,
+          interactionType: json_['interactionType'] as core.String?,
+          nodeValue: json_['nodeValue'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9450,9 +9020,7 @@ class McfDataRows {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          primitiveValue: json_.containsKey('primitiveValue')
-              ? json_['primitiveValue'] as core.String
-              : null,
+          primitiveValue: json_['primitiveValue'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9550,20 +9118,12 @@ class McfData {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          containsSampledData: json_.containsKey('containsSampledData')
-              ? json_['containsSampledData'] as core.bool
-              : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          itemsPerPage: json_.containsKey('itemsPerPage')
-              ? json_['itemsPerPage'] as core.int
-              : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          nextLink: json_.containsKey('nextLink')
-              ? json_['nextLink'] as core.String
-              : null,
-          previousLink: json_.containsKey('previousLink')
-              ? json_['previousLink'] as core.String
-              : null,
+          containsSampledData: json_['containsSampledData'] as core.bool?,
+          id: json_['id'] as core.String?,
+          itemsPerPage: json_['itemsPerPage'] as core.int?,
+          kind: json_['kind'] as core.String?,
+          nextLink: json_['nextLink'] as core.String?,
+          previousLink: json_['previousLink'] as core.String?,
           profileInfo: json_.containsKey('profileInfo')
               ? McfDataProfileInfo.fromJson(
                   json_['profileInfo'] as core.Map<core.String, core.dynamic>)
@@ -9580,18 +9140,10 @@ class McfData {
                       .toList())
                   .toList()
               : null,
-          sampleSize: json_.containsKey('sampleSize')
-              ? json_['sampleSize'] as core.String
-              : null,
-          sampleSpace: json_.containsKey('sampleSpace')
-              ? json_['sampleSpace'] as core.String
-              : null,
-          selfLink: json_.containsKey('selfLink')
-              ? json_['selfLink'] as core.String
-              : null,
-          totalResults: json_.containsKey('totalResults')
-              ? json_['totalResults'] as core.int
-              : null,
+          sampleSize: json_['sampleSize'] as core.String?,
+          sampleSpace: json_['sampleSpace'] as core.String?,
+          selfLink: json_['selfLink'] as core.String?,
+          totalResults: json_['totalResults'] as core.int?,
           totalsForAllResults: json_.containsKey('totalsForAllResults')
               ? (json_['totalsForAllResults']
                       as core.Map<core.String, core.dynamic>)
@@ -9642,8 +9194,8 @@ class ProfileChildLink {
 
   ProfileChildLink.fromJson(core.Map json_)
       : this(
-          href: json_.containsKey('href') ? json_['href'] as core.String : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          href: json_['href'] as core.String?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9669,8 +9221,8 @@ class ProfileParentLink {
 
   ProfileParentLink.fromJson(core.Map json_)
       : this(
-          href: json_.containsKey('href') ? json_['href'] as core.String : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          href: json_['href'] as core.String?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9836,12 +9388,8 @@ class Profile {
 
   Profile.fromJson(core.Map json_)
       : this(
-          accountId: json_.containsKey('accountId')
-              ? json_['accountId'] as core.String
-              : null,
-          botFilteringEnabled: json_.containsKey('botFilteringEnabled')
-              ? json_['botFilteringEnabled'] as core.bool
-              : null,
+          accountId: json_['accountId'] as core.String?,
+          botFilteringEnabled: json_['botFilteringEnabled'] as core.bool?,
           childLink: json_.containsKey('childLink')
               ? ProfileChildLink.fromJson(
                   json_['childLink'] as core.Map<core.String, core.dynamic>)
@@ -9849,28 +9397,17 @@ class Profile {
           created: json_.containsKey('created')
               ? core.DateTime.parse(json_['created'] as core.String)
               : null,
-          currency: json_.containsKey('currency')
-              ? json_['currency'] as core.String
-              : null,
-          defaultPage: json_.containsKey('defaultPage')
-              ? json_['defaultPage'] as core.String
-              : null,
-          eCommerceTracking: json_.containsKey('eCommerceTracking')
-              ? json_['eCommerceTracking'] as core.bool
-              : null,
+          currency: json_['currency'] as core.String?,
+          defaultPage: json_['defaultPage'] as core.String?,
+          eCommerceTracking: json_['eCommerceTracking'] as core.bool?,
           enhancedECommerceTracking:
-              json_.containsKey('enhancedECommerceTracking')
-                  ? json_['enhancedECommerceTracking'] as core.bool
-                  : null,
-          excludeQueryParameters: json_.containsKey('excludeQueryParameters')
-              ? json_['excludeQueryParameters'] as core.String
-              : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          internalWebPropertyId: json_.containsKey('internalWebPropertyId')
-              ? json_['internalWebPropertyId'] as core.String
-              : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+              json_['enhancedECommerceTracking'] as core.bool?,
+          excludeQueryParameters:
+              json_['excludeQueryParameters'] as core.String?,
+          id: json_['id'] as core.String?,
+          internalWebPropertyId: json_['internalWebPropertyId'] as core.String?,
+          kind: json_['kind'] as core.String?,
+          name: json_['name'] as core.String?,
           parentLink: json_.containsKey('parentLink')
               ? ProfileParentLink.fromJson(
                   json_['parentLink'] as core.Map<core.String, core.dynamic>)
@@ -9879,41 +9416,23 @@ class Profile {
               ? ProfilePermissions.fromJson(
                   json_['permissions'] as core.Map<core.String, core.dynamic>)
               : null,
-          selfLink: json_.containsKey('selfLink')
-              ? json_['selfLink'] as core.String
-              : null,
+          selfLink: json_['selfLink'] as core.String?,
           siteSearchCategoryParameters:
-              json_.containsKey('siteSearchCategoryParameters')
-                  ? json_['siteSearchCategoryParameters'] as core.String
-                  : null,
+              json_['siteSearchCategoryParameters'] as core.String?,
           siteSearchQueryParameters:
-              json_.containsKey('siteSearchQueryParameters')
-                  ? json_['siteSearchQueryParameters'] as core.String
-                  : null,
-          starred: json_.containsKey('starred')
-              ? json_['starred'] as core.bool
-              : null,
+              json_['siteSearchQueryParameters'] as core.String?,
+          starred: json_['starred'] as core.bool?,
           stripSiteSearchCategoryParameters:
-              json_.containsKey('stripSiteSearchCategoryParameters')
-                  ? json_['stripSiteSearchCategoryParameters'] as core.bool
-                  : null,
+              json_['stripSiteSearchCategoryParameters'] as core.bool?,
           stripSiteSearchQueryParameters:
-              json_.containsKey('stripSiteSearchQueryParameters')
-                  ? json_['stripSiteSearchQueryParameters'] as core.bool
-                  : null,
-          timezone: json_.containsKey('timezone')
-              ? json_['timezone'] as core.String
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+              json_['stripSiteSearchQueryParameters'] as core.bool?,
+          timezone: json_['timezone'] as core.String?,
+          type: json_['type'] as core.String?,
           updated: json_.containsKey('updated')
               ? core.DateTime.parse(json_['updated'] as core.String)
               : null,
-          webPropertyId: json_.containsKey('webPropertyId')
-              ? json_['webPropertyId'] as core.String
-              : null,
-          websiteUrl: json_.containsKey('websiteUrl')
-              ? json_['websiteUrl'] as core.String
-              : null,
+          webPropertyId: json_['webPropertyId'] as core.String?,
+          websiteUrl: json_['websiteUrl'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10002,16 +9521,14 @@ class ProfileFilterLink {
               ? FilterRef.fromJson(
                   json_['filterRef'] as core.Map<core.String, core.dynamic>)
               : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          id: json_['id'] as core.String?,
+          kind: json_['kind'] as core.String?,
           profileRef: json_.containsKey('profileRef')
               ? ProfileRef.fromJson(
                   json_['profileRef'] as core.Map<core.String, core.dynamic>)
               : null,
-          rank: json_.containsKey('rank') ? json_['rank'] as core.int : null,
-          selfLink: json_.containsKey('selfLink')
-              ? json_['selfLink'] as core.String
-              : null,
+          rank: json_['rank'] as core.int?,
+          selfLink: json_['selfLink'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10078,25 +9595,13 @@ class ProfileFilterLinks {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          itemsPerPage: json_.containsKey('itemsPerPage')
-              ? json_['itemsPerPage'] as core.int
-              : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          nextLink: json_.containsKey('nextLink')
-              ? json_['nextLink'] as core.String
-              : null,
-          previousLink: json_.containsKey('previousLink')
-              ? json_['previousLink'] as core.String
-              : null,
-          startIndex: json_.containsKey('startIndex')
-              ? json_['startIndex'] as core.int
-              : null,
-          totalResults: json_.containsKey('totalResults')
-              ? json_['totalResults'] as core.int
-              : null,
-          username: json_.containsKey('username')
-              ? json_['username'] as core.String
-              : null,
+          itemsPerPage: json_['itemsPerPage'] as core.int?,
+          kind: json_['kind'] as core.String?,
+          nextLink: json_['nextLink'] as core.String?,
+          previousLink: json_['previousLink'] as core.String?,
+          startIndex: json_['startIndex'] as core.int?,
+          totalResults: json_['totalResults'] as core.int?,
+          username: json_['username'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10147,19 +9652,13 @@ class ProfileRef {
 
   ProfileRef.fromJson(core.Map json_)
       : this(
-          accountId: json_.containsKey('accountId')
-              ? json_['accountId'] as core.String
-              : null,
-          href: json_.containsKey('href') ? json_['href'] as core.String : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          internalWebPropertyId: json_.containsKey('internalWebPropertyId')
-              ? json_['internalWebPropertyId'] as core.String
-              : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          webPropertyId: json_.containsKey('webPropertyId')
-              ? json_['webPropertyId'] as core.String
-              : null,
+          accountId: json_['accountId'] as core.String?,
+          href: json_['href'] as core.String?,
+          id: json_['id'] as core.String?,
+          internalWebPropertyId: json_['internalWebPropertyId'] as core.String?,
+          kind: json_['kind'] as core.String?,
+          name: json_['name'] as core.String?,
+          webPropertyId: json_['webPropertyId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10205,13 +9704,11 @@ class ProfileSummary {
 
   ProfileSummary.fromJson(core.Map json_)
       : this(
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          starred: json_.containsKey('starred')
-              ? json_['starred'] as core.bool
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          id: json_['id'] as core.String?,
+          kind: json_['kind'] as core.String?,
+          name: json_['name'] as core.String?,
+          starred: json_['starred'] as core.bool?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10278,25 +9775,13 @@ class Profiles {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          itemsPerPage: json_.containsKey('itemsPerPage')
-              ? json_['itemsPerPage'] as core.int
-              : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          nextLink: json_.containsKey('nextLink')
-              ? json_['nextLink'] as core.String
-              : null,
-          previousLink: json_.containsKey('previousLink')
-              ? json_['previousLink'] as core.String
-              : null,
-          startIndex: json_.containsKey('startIndex')
-              ? json_['startIndex'] as core.int
-              : null,
-          totalResults: json_.containsKey('totalResults')
-              ? json_['totalResults'] as core.int
-              : null,
-          username: json_.containsKey('username')
-              ? json_['username'] as core.String
-              : null,
+          itemsPerPage: json_['itemsPerPage'] as core.int?,
+          kind: json_['kind'] as core.String?,
+          nextLink: json_['nextLink'] as core.String?,
+          previousLink: json_['previousLink'] as core.String?,
+          startIndex: json_['startIndex'] as core.int?,
+          totalResults: json_['totalResults'] as core.int?,
+          username: json_['username'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10335,13 +9820,9 @@ class RealtimeDataColumnHeaders {
 
   RealtimeDataColumnHeaders.fromJson(core.Map json_)
       : this(
-          columnType: json_.containsKey('columnType')
-              ? json_['columnType'] as core.String
-              : null,
-          dataType: json_.containsKey('dataType')
-              ? json_['dataType'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          columnType: json_['columnType'] as core.String?,
+          dataType: json_['dataType'] as core.String?,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10383,24 +9864,12 @@ class RealtimeDataProfileInfo {
 
   RealtimeDataProfileInfo.fromJson(core.Map json_)
       : this(
-          accountId: json_.containsKey('accountId')
-              ? json_['accountId'] as core.String
-              : null,
-          internalWebPropertyId: json_.containsKey('internalWebPropertyId')
-              ? json_['internalWebPropertyId'] as core.String
-              : null,
-          profileId: json_.containsKey('profileId')
-              ? json_['profileId'] as core.String
-              : null,
-          profileName: json_.containsKey('profileName')
-              ? json_['profileName'] as core.String
-              : null,
-          tableId: json_.containsKey('tableId')
-              ? json_['tableId'] as core.String
-              : null,
-          webPropertyId: json_.containsKey('webPropertyId')
-              ? json_['webPropertyId'] as core.String
-              : null,
+          accountId: json_['accountId'] as core.String?,
+          internalWebPropertyId: json_['internalWebPropertyId'] as core.String?,
+          profileId: json_['profileId'] as core.String?,
+          profileName: json_['profileName'] as core.String?,
+          tableId: json_['tableId'] as core.String?,
+          webPropertyId: json_['webPropertyId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10445,16 +9914,10 @@ class RealtimeDataQuery {
 
   RealtimeDataQuery.fromJson(core.Map json_)
       : this(
-          dimensions: json_.containsKey('dimensions')
-              ? json_['dimensions'] as core.String
-              : null,
-          filters: json_.containsKey('filters')
-              ? json_['filters'] as core.String
-              : null,
-          ids: json_.containsKey('ids') ? json_['ids'] as core.String : null,
-          maxResults: json_.containsKey('max-results')
-              ? json_['max-results'] as core.int
-              : null,
+          dimensions: json_['dimensions'] as core.String?,
+          filters: json_['filters'] as core.String?,
+          ids: json_['ids'] as core.String?,
+          maxResults: json_['max-results'] as core.int?,
           metrics: json_.containsKey('metrics')
               ? (json_['metrics'] as core.List)
                   .map((value) => value as core.String)
@@ -10537,8 +10000,8 @@ class RealtimeData {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          id: json_['id'] as core.String?,
+          kind: json_['kind'] as core.String?,
           profileInfo: json_.containsKey('profileInfo')
               ? RealtimeDataProfileInfo.fromJson(
                   json_['profileInfo'] as core.Map<core.String, core.dynamic>)
@@ -10554,12 +10017,8 @@ class RealtimeData {
                       .toList())
                   .toList()
               : null,
-          selfLink: json_.containsKey('selfLink')
-              ? json_['selfLink'] as core.String
-              : null,
-          totalResults: json_.containsKey('totalResults')
-              ? json_['totalResults'] as core.int
-              : null,
+          selfLink: json_['selfLink'] as core.String?,
+          totalResults: json_['totalResults'] as core.int?,
           totalsForAllResults: json_.containsKey('totalsForAllResults')
               ? (json_['totalsForAllResults']
                       as core.Map<core.String, core.dynamic>)
@@ -10626,12 +10085,8 @@ class RemarketingAudienceStateBasedAudienceDefinitionExcludeConditions {
   RemarketingAudienceStateBasedAudienceDefinitionExcludeConditions.fromJson(
       core.Map json_)
       : this(
-          exclusionDuration: json_.containsKey('exclusionDuration')
-              ? json_['exclusionDuration'] as core.String
-              : null,
-          segment: json_.containsKey('segment')
-              ? json_['segment'] as core.String
-              : null,
+          exclusionDuration: json_['exclusionDuration'] as core.String?,
+          segment: json_['segment'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10743,28 +10198,20 @@ class RemarketingAudience {
 
   RemarketingAudience.fromJson(core.Map json_)
       : this(
-          accountId: json_.containsKey('accountId')
-              ? json_['accountId'] as core.String
-              : null,
+          accountId: json_['accountId'] as core.String?,
           audienceDefinition: json_.containsKey('audienceDefinition')
               ? RemarketingAudienceAudienceDefinition.fromJson(
                   json_['audienceDefinition']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          audienceType: json_.containsKey('audienceType')
-              ? json_['audienceType'] as core.String
-              : null,
+          audienceType: json_['audienceType'] as core.String?,
           created: json_.containsKey('created')
               ? core.DateTime.parse(json_['created'] as core.String)
               : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          internalWebPropertyId: json_.containsKey('internalWebPropertyId')
-              ? json_['internalWebPropertyId'] as core.String
-              : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          description: json_['description'] as core.String?,
+          id: json_['id'] as core.String?,
+          internalWebPropertyId: json_['internalWebPropertyId'] as core.String?,
+          kind: json_['kind'] as core.String?,
           linkedAdAccounts: json_.containsKey('linkedAdAccounts')
               ? (json_['linkedAdAccounts'] as core.List)
                   .map((value) => LinkedForeignAccount.fromJson(
@@ -10776,7 +10223,7 @@ class RemarketingAudience {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           stateBasedAudienceDefinition:
               json_.containsKey('stateBasedAudienceDefinition')
                   ? RemarketingAudienceStateBasedAudienceDefinition.fromJson(
@@ -10786,9 +10233,7 @@ class RemarketingAudience {
           updated: json_.containsKey('updated')
               ? core.DateTime.parse(json_['updated'] as core.String)
               : null,
-          webPropertyId: json_.containsKey('webPropertyId')
-              ? json_['webPropertyId'] as core.String
-              : null,
+          webPropertyId: json_['webPropertyId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10867,25 +10312,13 @@ class RemarketingAudiences {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          itemsPerPage: json_.containsKey('itemsPerPage')
-              ? json_['itemsPerPage'] as core.int
-              : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          nextLink: json_.containsKey('nextLink')
-              ? json_['nextLink'] as core.String
-              : null,
-          previousLink: json_.containsKey('previousLink')
-              ? json_['previousLink'] as core.String
-              : null,
-          startIndex: json_.containsKey('startIndex')
-              ? json_['startIndex'] as core.int
-              : null,
-          totalResults: json_.containsKey('totalResults')
-              ? json_['totalResults'] as core.int
-              : null,
-          username: json_.containsKey('username')
-              ? json_['username'] as core.String
-              : null,
+          itemsPerPage: json_['itemsPerPage'] as core.int?,
+          kind: json_['kind'] as core.String?,
+          nextLink: json_['nextLink'] as core.String?,
+          previousLink: json_['previousLink'] as core.String?,
+          startIndex: json_['startIndex'] as core.int?,
+          totalResults: json_['totalResults'] as core.int?,
+          username: json_['username'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10950,19 +10383,13 @@ class Segment {
           created: json_.containsKey('created')
               ? core.DateTime.parse(json_['created'] as core.String)
               : null,
-          definition: json_.containsKey('definition')
-              ? json_['definition'] as core.String
-              : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          segmentId: json_.containsKey('segmentId')
-              ? json_['segmentId'] as core.String
-              : null,
-          selfLink: json_.containsKey('selfLink')
-              ? json_['selfLink'] as core.String
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          definition: json_['definition'] as core.String?,
+          id: json_['id'] as core.String?,
+          kind: json_['kind'] as core.String?,
+          name: json_['name'] as core.String?,
+          segmentId: json_['segmentId'] as core.String?,
+          selfLink: json_['selfLink'] as core.String?,
+          type: json_['type'] as core.String?,
           updated: json_.containsKey('updated')
               ? core.DateTime.parse(json_['updated'] as core.String)
               : null,
@@ -11034,25 +10461,13 @@ class Segments {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          itemsPerPage: json_.containsKey('itemsPerPage')
-              ? json_['itemsPerPage'] as core.int
-              : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          nextLink: json_.containsKey('nextLink')
-              ? json_['nextLink'] as core.String
-              : null,
-          previousLink: json_.containsKey('previousLink')
-              ? json_['previousLink'] as core.String
-              : null,
-          startIndex: json_.containsKey('startIndex')
-              ? json_['startIndex'] as core.int
-              : null,
-          totalResults: json_.containsKey('totalResults')
-              ? json_['totalResults'] as core.int
-              : null,
-          username: json_.containsKey('username')
-              ? json_['username'] as core.String
-              : null,
+          itemsPerPage: json_['itemsPerPage'] as core.int?,
+          kind: json_['kind'] as core.String?,
+          nextLink: json_['nextLink'] as core.String?,
+          previousLink: json_['previousLink'] as core.String?,
+          startIndex: json_['startIndex'] as core.int?,
+          totalResults: json_['totalResults'] as core.int?,
+          username: json_['username'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -11082,12 +10497,8 @@ class UnsampledReportCloudStorageDownloadDetails {
 
   UnsampledReportCloudStorageDownloadDetails.fromJson(core.Map json_)
       : this(
-          bucketId: json_.containsKey('bucketId')
-              ? json_['bucketId'] as core.String
-              : null,
-          objectId: json_.containsKey('objectId')
-              ? json_['objectId'] as core.String
-              : null,
+          bucketId: json_['bucketId'] as core.String?,
+          objectId: json_['objectId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -11107,9 +10518,7 @@ class UnsampledReportDriveDownloadDetails {
 
   UnsampledReportDriveDownloadDetails.fromJson(core.Map json_)
       : this(
-          documentId: json_.containsKey('documentId')
-              ? json_['documentId'] as core.String
-              : null,
+          documentId: json_['documentId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -11209,9 +10618,7 @@ class UnsampledReport {
 
   UnsampledReport.fromJson(core.Map json_)
       : this(
-          accountId: json_.containsKey('accountId')
-              ? json_['accountId'] as core.String
-              : null,
+          accountId: json_['accountId'] as core.String?,
           cloudStorageDownloadDetails:
               json_.containsKey('cloudStorageDownloadDetails')
                   ? UnsampledReportCloudStorageDownloadDetails.fromJson(
@@ -11221,51 +10628,28 @@ class UnsampledReport {
           created: json_.containsKey('created')
               ? core.DateTime.parse(json_['created'] as core.String)
               : null,
-          dimensions: json_.containsKey('dimensions')
-              ? json_['dimensions'] as core.String
-              : null,
-          downloadType: json_.containsKey('downloadType')
-              ? json_['downloadType'] as core.String
-              : null,
+          dimensions: json_['dimensions'] as core.String?,
+          downloadType: json_['downloadType'] as core.String?,
           driveDownloadDetails: json_.containsKey('driveDownloadDetails')
               ? UnsampledReportDriveDownloadDetails.fromJson(
                   json_['driveDownloadDetails']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          endDate: json_.containsKey('end-date')
-              ? json_['end-date'] as core.String
-              : null,
-          filters: json_.containsKey('filters')
-              ? json_['filters'] as core.String
-              : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          metrics: json_.containsKey('metrics')
-              ? json_['metrics'] as core.String
-              : null,
-          profileId: json_.containsKey('profileId')
-              ? json_['profileId'] as core.String
-              : null,
-          segment: json_.containsKey('segment')
-              ? json_['segment'] as core.String
-              : null,
-          selfLink: json_.containsKey('selfLink')
-              ? json_['selfLink'] as core.String
-              : null,
-          startDate: json_.containsKey('start-date')
-              ? json_['start-date'] as core.String
-              : null,
-          status: json_.containsKey('status')
-              ? json_['status'] as core.String
-              : null,
-          title:
-              json_.containsKey('title') ? json_['title'] as core.String : null,
+          endDate: json_['end-date'] as core.String?,
+          filters: json_['filters'] as core.String?,
+          id: json_['id'] as core.String?,
+          kind: json_['kind'] as core.String?,
+          metrics: json_['metrics'] as core.String?,
+          profileId: json_['profileId'] as core.String?,
+          segment: json_['segment'] as core.String?,
+          selfLink: json_['selfLink'] as core.String?,
+          startDate: json_['start-date'] as core.String?,
+          status: json_['status'] as core.String?,
+          title: json_['title'] as core.String?,
           updated: json_.containsKey('updated')
               ? core.DateTime.parse(json_['updated'] as core.String)
               : null,
-          webPropertyId: json_.containsKey('webPropertyId')
-              ? json_['webPropertyId'] as core.String
-              : null,
+          webPropertyId: json_['webPropertyId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -11349,25 +10733,13 @@ class UnsampledReports {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          itemsPerPage: json_.containsKey('itemsPerPage')
-              ? json_['itemsPerPage'] as core.int
-              : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          nextLink: json_.containsKey('nextLink')
-              ? json_['nextLink'] as core.String
-              : null,
-          previousLink: json_.containsKey('previousLink')
-              ? json_['previousLink'] as core.String
-              : null,
-          startIndex: json_.containsKey('startIndex')
-              ? json_['startIndex'] as core.int
-              : null,
-          totalResults: json_.containsKey('totalResults')
-              ? json_['totalResults'] as core.int
-              : null,
-          username: json_.containsKey('username')
-              ? json_['username'] as core.String
-              : null,
+          itemsPerPage: json_['itemsPerPage'] as core.int?,
+          kind: json_['kind'] as core.String?,
+          nextLink: json_['nextLink'] as core.String?,
+          previousLink: json_['previousLink'] as core.String?,
+          startIndex: json_['startIndex'] as core.int?,
+          totalResults: json_['totalResults'] as core.int?,
+          username: json_['username'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -11419,22 +10791,16 @@ class Upload {
 
   Upload.fromJson(core.Map json_)
       : this(
-          accountId: json_.containsKey('accountId')
-              ? json_['accountId'] as core.String
-              : null,
-          customDataSourceId: json_.containsKey('customDataSourceId')
-              ? json_['customDataSourceId'] as core.String
-              : null,
+          accountId: json_['accountId'] as core.String?,
+          customDataSourceId: json_['customDataSourceId'] as core.String?,
           errors: json_.containsKey('errors')
               ? (json_['errors'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          status: json_.containsKey('status')
-              ? json_['status'] as core.String
-              : null,
+          id: json_['id'] as core.String?,
+          kind: json_['kind'] as core.String?,
+          status: json_['status'] as core.String?,
           uploadTime: json_.containsKey('uploadTime')
               ? core.DateTime.parse(json_['uploadTime'] as core.String)
               : null,
@@ -11503,22 +10869,12 @@ class Uploads {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          itemsPerPage: json_.containsKey('itemsPerPage')
-              ? json_['itemsPerPage'] as core.int
-              : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          nextLink: json_.containsKey('nextLink')
-              ? json_['nextLink'] as core.String
-              : null,
-          previousLink: json_.containsKey('previousLink')
-              ? json_['previousLink'] as core.String
-              : null,
-          startIndex: json_.containsKey('startIndex')
-              ? json_['startIndex'] as core.int
-              : null,
-          totalResults: json_.containsKey('totalResults')
-              ? json_['totalResults'] as core.int
-              : null,
+          itemsPerPage: json_['itemsPerPage'] as core.int?,
+          kind: json_['kind'] as core.String?,
+          nextLink: json_['nextLink'] as core.String?,
+          previousLink: json_['previousLink'] as core.String?,
+          startIndex: json_['startIndex'] as core.int?,
+          totalResults: json_['totalResults'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -11547,10 +10903,8 @@ class UserDeletionRequestId {
 
   UserDeletionRequestId.fromJson(core.Map json_)
       : this(
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
-          userId: json_.containsKey('userId')
-              ? json_['userId'] as core.String
-              : null,
+          type: json_['type'] as core.String?,
+          userId: json_['userId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -11594,20 +10948,14 @@ class UserDeletionRequest {
           deletionRequestTime: json_.containsKey('deletionRequestTime')
               ? core.DateTime.parse(json_['deletionRequestTime'] as core.String)
               : null,
-          firebaseProjectId: json_.containsKey('firebaseProjectId')
-              ? json_['firebaseProjectId'] as core.String
-              : null,
+          firebaseProjectId: json_['firebaseProjectId'] as core.String?,
           id: json_.containsKey('id')
               ? UserDeletionRequestId.fromJson(
                   json_['id'] as core.Map<core.String, core.dynamic>)
               : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          propertyId: json_.containsKey('propertyId')
-              ? json_['propertyId'] as core.String
-              : null,
-          webPropertyId: json_.containsKey('webPropertyId')
-              ? json_['webPropertyId'] as core.String
-              : null,
+          kind: json_['kind'] as core.String?,
+          propertyId: json_['propertyId'] as core.String?,
+          webPropertyId: json_['webPropertyId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -11638,10 +10986,9 @@ class UserRef {
 
   UserRef.fromJson(core.Map json_)
       : this(
-          email:
-              json_.containsKey('email') ? json_['email'] as core.String : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          email: json_['email'] as core.String?,
+          id: json_['id'] as core.String?,
+          kind: json_['kind'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -11682,16 +11029,12 @@ class WebPropertyRef {
 
   WebPropertyRef.fromJson(core.Map json_)
       : this(
-          accountId: json_.containsKey('accountId')
-              ? json_['accountId'] as core.String
-              : null,
-          href: json_.containsKey('href') ? json_['href'] as core.String : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          internalWebPropertyId: json_.containsKey('internalWebPropertyId')
-              ? json_['internalWebPropertyId'] as core.String
-              : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          accountId: json_['accountId'] as core.String?,
+          href: json_['href'] as core.String?,
+          id: json_['id'] as core.String?,
+          internalWebPropertyId: json_['internalWebPropertyId'] as core.String?,
+          kind: json_['kind'] as core.String?,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -11749,26 +11092,19 @@ class WebPropertySummary {
 
   WebPropertySummary.fromJson(core.Map json_)
       : this(
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          internalWebPropertyId: json_.containsKey('internalWebPropertyId')
-              ? json_['internalWebPropertyId'] as core.String
-              : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          level:
-              json_.containsKey('level') ? json_['level'] as core.String : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          id: json_['id'] as core.String?,
+          internalWebPropertyId: json_['internalWebPropertyId'] as core.String?,
+          kind: json_['kind'] as core.String?,
+          level: json_['level'] as core.String?,
+          name: json_['name'] as core.String?,
           profiles: json_.containsKey('profiles')
               ? (json_['profiles'] as core.List)
                   .map((value) => ProfileSummary.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          starred: json_.containsKey('starred')
-              ? json_['starred'] as core.bool
-              : null,
-          websiteUrl: json_.containsKey('websiteUrl')
-              ? json_['websiteUrl'] as core.String
-              : null,
+          starred: json_['starred'] as core.bool?,
+          websiteUrl: json_['websiteUrl'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -11839,25 +11175,13 @@ class Webproperties {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          itemsPerPage: json_.containsKey('itemsPerPage')
-              ? json_['itemsPerPage'] as core.int
-              : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          nextLink: json_.containsKey('nextLink')
-              ? json_['nextLink'] as core.String
-              : null,
-          previousLink: json_.containsKey('previousLink')
-              ? json_['previousLink'] as core.String
-              : null,
-          startIndex: json_.containsKey('startIndex')
-              ? json_['startIndex'] as core.int
-              : null,
-          totalResults: json_.containsKey('totalResults')
-              ? json_['totalResults'] as core.int
-              : null,
-          username: json_.containsKey('username')
-              ? json_['username'] as core.String
-              : null,
+          itemsPerPage: json_['itemsPerPage'] as core.int?,
+          kind: json_['kind'] as core.String?,
+          nextLink: json_['nextLink'] as core.String?,
+          previousLink: json_['previousLink'] as core.String?,
+          startIndex: json_['startIndex'] as core.int?,
+          totalResults: json_['totalResults'] as core.int?,
+          username: json_['username'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -11891,8 +11215,8 @@ class WebpropertyChildLink {
 
   WebpropertyChildLink.fromJson(core.Map json_)
       : this(
-          href: json_.containsKey('href') ? json_['href'] as core.String : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          href: json_['href'] as core.String?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -11920,8 +11244,8 @@ class WebpropertyParentLink {
 
   WebpropertyParentLink.fromJson(core.Map json_)
       : this(
-          href: json_.containsKey('href') ? json_['href'] as core.String : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          href: json_['href'] as core.String?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12051,9 +11375,7 @@ class Webproperty {
 
   Webproperty.fromJson(core.Map json_)
       : this(
-          accountId: json_.containsKey('accountId')
-              ? json_['accountId'] as core.String
-              : null,
+          accountId: json_['accountId'] as core.String?,
           childLink: json_.containsKey('childLink')
               ? WebpropertyChildLink.fromJson(
                   json_['childLink'] as core.Map<core.String, core.dynamic>)
@@ -12062,26 +11384,15 @@ class Webproperty {
               ? core.DateTime.parse(json_['created'] as core.String)
               : null,
           dataRetentionResetOnNewActivity:
-              json_.containsKey('dataRetentionResetOnNewActivity')
-                  ? json_['dataRetentionResetOnNewActivity'] as core.bool
-                  : null,
-          dataRetentionTtl: json_.containsKey('dataRetentionTtl')
-              ? json_['dataRetentionTtl'] as core.String
-              : null,
-          defaultProfileId: json_.containsKey('defaultProfileId')
-              ? json_['defaultProfileId'] as core.String
-              : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          industryVertical: json_.containsKey('industryVertical')
-              ? json_['industryVertical'] as core.String
-              : null,
-          internalWebPropertyId: json_.containsKey('internalWebPropertyId')
-              ? json_['internalWebPropertyId'] as core.String
-              : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          level:
-              json_.containsKey('level') ? json_['level'] as core.String : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+              json_['dataRetentionResetOnNewActivity'] as core.bool?,
+          dataRetentionTtl: json_['dataRetentionTtl'] as core.String?,
+          defaultProfileId: json_['defaultProfileId'] as core.String?,
+          id: json_['id'] as core.String?,
+          industryVertical: json_['industryVertical'] as core.String?,
+          internalWebPropertyId: json_['internalWebPropertyId'] as core.String?,
+          kind: json_['kind'] as core.String?,
+          level: json_['level'] as core.String?,
+          name: json_['name'] as core.String?,
           parentLink: json_.containsKey('parentLink')
               ? WebpropertyParentLink.fromJson(
                   json_['parentLink'] as core.Map<core.String, core.dynamic>)
@@ -12090,21 +11401,13 @@ class Webproperty {
               ? WebpropertyPermissions.fromJson(
                   json_['permissions'] as core.Map<core.String, core.dynamic>)
               : null,
-          profileCount: json_.containsKey('profileCount')
-              ? json_['profileCount'] as core.int
-              : null,
-          selfLink: json_.containsKey('selfLink')
-              ? json_['selfLink'] as core.String
-              : null,
-          starred: json_.containsKey('starred')
-              ? json_['starred'] as core.bool
-              : null,
+          profileCount: json_['profileCount'] as core.int?,
+          selfLink: json_['selfLink'] as core.String?,
+          starred: json_['starred'] as core.bool?,
           updated: json_.containsKey('updated')
               ? core.DateTime.parse(json_['updated'] as core.String)
               : null,
-          websiteUrl: json_.containsKey('websiteUrl')
-              ? json_['websiteUrl'] as core.String
-              : null,
+          websiteUrl: json_['websiteUrl'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

@@ -1880,15 +1880,10 @@ class GoogleCloudRunV2BinaryAuthorization {
 
   GoogleCloudRunV2BinaryAuthorization.fromJson(core.Map json_)
       : this(
-          breakglassJustification: json_.containsKey('breakglassJustification')
-              ? json_['breakglassJustification'] as core.String
-              : null,
-          policy: json_.containsKey('policy')
-              ? json_['policy'] as core.String
-              : null,
-          useDefault: json_.containsKey('useDefault')
-              ? json_['useDefault'] as core.bool
-              : null,
+          breakglassJustification:
+              json_['breakglassJustification'] as core.String?,
+          policy: json_['policy'] as core.String?,
+          useDefault: json_['useDefault'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1917,10 +1912,8 @@ class GoogleCloudRunV2CancelExecutionRequest {
 
   GoogleCloudRunV2CancelExecutionRequest.fromJson(core.Map json_)
       : this(
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          validateOnly: json_.containsKey('validateOnly')
-              ? json_['validateOnly'] as core.bool
-              : null,
+          etag: json_['etag'] as core.String?,
+          validateOnly: json_['validateOnly'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2082,27 +2075,14 @@ class GoogleCloudRunV2Condition {
 
   GoogleCloudRunV2Condition.fromJson(core.Map json_)
       : this(
-          executionReason: json_.containsKey('executionReason')
-              ? json_['executionReason'] as core.String
-              : null,
-          lastTransitionTime: json_.containsKey('lastTransitionTime')
-              ? json_['lastTransitionTime'] as core.String
-              : null,
-          message: json_.containsKey('message')
-              ? json_['message'] as core.String
-              : null,
-          reason: json_.containsKey('reason')
-              ? json_['reason'] as core.String
-              : null,
-          revisionReason: json_.containsKey('revisionReason')
-              ? json_['revisionReason'] as core.String
-              : null,
-          severity: json_.containsKey('severity')
-              ? json_['severity'] as core.String
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          executionReason: json_['executionReason'] as core.String?,
+          lastTransitionTime: json_['lastTransitionTime'] as core.String?,
+          message: json_['message'] as core.String?,
+          reason: json_['reason'] as core.String?,
+          revisionReason: json_['revisionReason'] as core.String?,
+          severity: json_['severity'] as core.String?,
+          state: json_['state'] as core.String?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2222,13 +2202,12 @@ class GoogleCloudRunV2Container {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          image:
-              json_.containsKey('image') ? json_['image'] as core.String : null,
+          image: json_['image'] as core.String?,
           livenessProbe: json_.containsKey('livenessProbe')
               ? GoogleCloudRunV2Probe.fromJson(
                   json_['livenessProbe'] as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           ports: json_.containsKey('ports')
               ? (json_['ports'] as core.List)
                   .map((value) => GoogleCloudRunV2ContainerPort.fromJson(
@@ -2249,9 +2228,7 @@ class GoogleCloudRunV2Container {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          workingDir: json_.containsKey('workingDir')
-              ? json_['workingDir'] as core.String
-              : null,
+          workingDir: json_['workingDir'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2306,16 +2283,14 @@ class GoogleCloudRunV2ContainerOverride {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          clearArgs: json_.containsKey('clearArgs')
-              ? json_['clearArgs'] as core.bool
-              : null,
+          clearArgs: json_['clearArgs'] as core.bool?,
           env: json_.containsKey('env')
               ? (json_['env'] as core.List)
                   .map((value) => GoogleCloudRunV2EnvVar.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2345,10 +2320,8 @@ class GoogleCloudRunV2ContainerPort {
 
   GoogleCloudRunV2ContainerPort.fromJson(core.Map json_)
       : this(
-          containerPort: json_.containsKey('containerPort')
-              ? json_['containerPort'] as core.int
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          containerPort: json_['containerPort'] as core.int?,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2390,12 +2363,8 @@ class GoogleCloudRunV2EmptyDirVolumeSource {
 
   GoogleCloudRunV2EmptyDirVolumeSource.fromJson(core.Map json_)
       : this(
-          medium: json_.containsKey('medium')
-              ? json_['medium'] as core.String
-              : null,
-          sizeLimit: json_.containsKey('sizeLimit')
-              ? json_['sizeLimit'] as core.String
-              : null,
+          medium: json_['medium'] as core.String?,
+          sizeLimit: json_['sizeLimit'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2435,9 +2404,8 @@ class GoogleCloudRunV2EnvVar {
 
   GoogleCloudRunV2EnvVar.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
+          name: json_['name'] as core.String?,
+          value: json_['value'] as core.String?,
           valueSource: json_.containsKey('valueSource')
               ? GoogleCloudRunV2EnvVarSource.fromJson(
                   json_['valueSource'] as core.Map<core.String, core.dynamic>)
@@ -2738,35 +2706,21 @@ class GoogleCloudRunV2Execution {
                   ),
                 )
               : null,
-          cancelledCount: json_.containsKey('cancelledCount')
-              ? json_['cancelledCount'] as core.int
-              : null,
-          completionTime: json_.containsKey('completionTime')
-              ? json_['completionTime'] as core.String
-              : null,
+          cancelledCount: json_['cancelledCount'] as core.int?,
+          completionTime: json_['completionTime'] as core.String?,
           conditions: json_.containsKey('conditions')
               ? (json_['conditions'] as core.List)
                   .map((value) => GoogleCloudRunV2Condition.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          deleteTime: json_.containsKey('deleteTime')
-              ? json_['deleteTime'] as core.String
-              : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          expireTime: json_.containsKey('expireTime')
-              ? json_['expireTime'] as core.String
-              : null,
-          failedCount: json_.containsKey('failedCount')
-              ? json_['failedCount'] as core.int
-              : null,
-          generation: json_.containsKey('generation')
-              ? json_['generation'] as core.String
-              : null,
-          job: json_.containsKey('job') ? json_['job'] as core.String : null,
+          createTime: json_['createTime'] as core.String?,
+          deleteTime: json_['deleteTime'] as core.String?,
+          etag: json_['etag'] as core.String?,
+          expireTime: json_['expireTime'] as core.String?,
+          failedCount: json_['failedCount'] as core.int?,
+          generation: json_['generation'] as core.String?,
+          job: json_['job'] as core.String?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -2775,48 +2729,24 @@ class GoogleCloudRunV2Execution {
                   ),
                 )
               : null,
-          launchStage: json_.containsKey('launchStage')
-              ? json_['launchStage'] as core.String
-              : null,
-          logUri: json_.containsKey('logUri')
-              ? json_['logUri'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          observedGeneration: json_.containsKey('observedGeneration')
-              ? json_['observedGeneration'] as core.String
-              : null,
-          parallelism: json_.containsKey('parallelism')
-              ? json_['parallelism'] as core.int
-              : null,
-          reconciling: json_.containsKey('reconciling')
-              ? json_['reconciling'] as core.bool
-              : null,
-          retriedCount: json_.containsKey('retriedCount')
-              ? json_['retriedCount'] as core.int
-              : null,
-          runningCount: json_.containsKey('runningCount')
-              ? json_['runningCount'] as core.int
-              : null,
-          satisfiesPzs: json_.containsKey('satisfiesPzs')
-              ? json_['satisfiesPzs'] as core.bool
-              : null,
-          startTime: json_.containsKey('startTime')
-              ? json_['startTime'] as core.String
-              : null,
-          succeededCount: json_.containsKey('succeededCount')
-              ? json_['succeededCount'] as core.int
-              : null,
-          taskCount: json_.containsKey('taskCount')
-              ? json_['taskCount'] as core.int
-              : null,
+          launchStage: json_['launchStage'] as core.String?,
+          logUri: json_['logUri'] as core.String?,
+          name: json_['name'] as core.String?,
+          observedGeneration: json_['observedGeneration'] as core.String?,
+          parallelism: json_['parallelism'] as core.int?,
+          reconciling: json_['reconciling'] as core.bool?,
+          retriedCount: json_['retriedCount'] as core.int?,
+          runningCount: json_['runningCount'] as core.int?,
+          satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
+          startTime: json_['startTime'] as core.String?,
+          succeededCount: json_['succeededCount'] as core.int?,
+          taskCount: json_['taskCount'] as core.int?,
           template: json_.containsKey('template')
               ? GoogleCloudRunV2TaskTemplate.fromJson(
                   json_['template'] as core.Map<core.String, core.dynamic>)
               : null,
-          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          uid: json_['uid'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2873,13 +2803,9 @@ class GoogleCloudRunV2ExecutionReference {
 
   GoogleCloudRunV2ExecutionReference.fromJson(core.Map json_)
       : this(
-          completionTime: json_.containsKey('completionTime')
-              ? json_['completionTime'] as core.String
-              : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          completionTime: json_['completionTime'] as core.String?,
+          createTime: json_['createTime'] as core.String?,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2966,12 +2892,8 @@ class GoogleCloudRunV2ExecutionTemplate {
                   ),
                 )
               : null,
-          parallelism: json_.containsKey('parallelism')
-              ? json_['parallelism'] as core.int
-              : null,
-          taskCount: json_.containsKey('taskCount')
-              ? json_['taskCount'] as core.int
-              : null,
+          parallelism: json_['parallelism'] as core.int?,
+          taskCount: json_['taskCount'] as core.int?,
           template: json_.containsKey('template')
               ? GoogleCloudRunV2TaskTemplate.fromJson(
                   json_['template'] as core.Map<core.String, core.dynamic>)
@@ -3000,9 +2922,7 @@ class GoogleCloudRunV2ExportImageRequest {
 
   GoogleCloudRunV2ExportImageRequest.fromJson(core.Map json_)
       : this(
-          destinationRepo: json_.containsKey('destinationRepo')
-              ? json_['destinationRepo'] as core.String
-              : null,
+          destinationRepo: json_['destinationRepo'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3023,9 +2943,7 @@ class GoogleCloudRunV2ExportImageResponse {
 
   GoogleCloudRunV2ExportImageResponse.fromJson(core.Map json_)
       : this(
-          operationId: json_.containsKey('operationId')
-              ? json_['operationId'] as core.String
-              : null,
+          operationId: json_['operationId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3065,12 +2983,8 @@ class GoogleCloudRunV2ExportStatusResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          operationId: json_.containsKey('operationId')
-              ? json_['operationId'] as core.String
-              : null,
-          operationState: json_.containsKey('operationState')
-              ? json_['operationState'] as core.String
-              : null,
+          operationId: json_['operationId'] as core.String?,
+          operationState: json_['operationState'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3100,12 +3014,8 @@ class GoogleCloudRunV2GCSVolumeSource {
 
   GoogleCloudRunV2GCSVolumeSource.fromJson(core.Map json_)
       : this(
-          bucket: json_.containsKey('bucket')
-              ? json_['bucket'] as core.String
-              : null,
-          readOnly: json_.containsKey('readOnly')
-              ? json_['readOnly'] as core.bool
-              : null,
+          bucket: json_['bucket'] as core.String?,
+          readOnly: json_['readOnly'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3140,10 +3050,8 @@ class GoogleCloudRunV2GRPCAction {
 
   GoogleCloudRunV2GRPCAction.fromJson(core.Map json_)
       : this(
-          port: json_.containsKey('port') ? json_['port'] as core.int : null,
-          service: json_.containsKey('service')
-              ? json_['service'] as core.String
-              : null,
+          port: json_['port'] as core.int?,
+          service: json_['service'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3191,8 +3099,8 @@ class GoogleCloudRunV2HTTPGetAction {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          path: json_.containsKey('path') ? json_['path'] as core.String : null,
-          port: json_.containsKey('port') ? json_['port'] as core.int : null,
+          path: json_['path'] as core.String?,
+          port: json_['port'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3221,9 +3129,8 @@ class GoogleCloudRunV2HTTPHeader {
 
   GoogleCloudRunV2HTTPHeader.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
+          name: json_['name'] as core.String?,
+          value: json_['value'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3261,17 +3168,13 @@ class GoogleCloudRunV2ImageExportStatus {
 
   GoogleCloudRunV2ImageExportStatus.fromJson(core.Map json_)
       : this(
-          exportJobState: json_.containsKey('exportJobState')
-              ? json_['exportJobState'] as core.String
-              : null,
-          exportedImageDigest: json_.containsKey('exportedImageDigest')
-              ? json_['exportedImageDigest'] as core.String
-              : null,
+          exportJobState: json_['exportJobState'] as core.String?,
+          exportedImageDigest: json_['exportedImageDigest'] as core.String?,
           status: json_.containsKey('status')
               ? UtilStatusProto.fromJson(
                   json_['status'] as core.Map<core.String, core.dynamic>)
               : null,
-          tag: json_.containsKey('tag') ? json_['tag'] as core.String : null,
+          tag: json_['tag'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3543,37 +3446,21 @@ class GoogleCloudRunV2Job {
                   json_['binaryAuthorization']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          client: json_.containsKey('client')
-              ? json_['client'] as core.String
-              : null,
-          clientVersion: json_.containsKey('clientVersion')
-              ? json_['clientVersion'] as core.String
-              : null,
+          client: json_['client'] as core.String?,
+          clientVersion: json_['clientVersion'] as core.String?,
           conditions: json_.containsKey('conditions')
               ? (json_['conditions'] as core.List)
                   .map((value) => GoogleCloudRunV2Condition.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          creator: json_.containsKey('creator')
-              ? json_['creator'] as core.String
-              : null,
-          deleteTime: json_.containsKey('deleteTime')
-              ? json_['deleteTime'] as core.String
-              : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          executionCount: json_.containsKey('executionCount')
-              ? json_['executionCount'] as core.int
-              : null,
-          expireTime: json_.containsKey('expireTime')
-              ? json_['expireTime'] as core.String
-              : null,
-          generation: json_.containsKey('generation')
-              ? json_['generation'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          creator: json_['creator'] as core.String?,
+          deleteTime: json_['deleteTime'] as core.String?,
+          etag: json_['etag'] as core.String?,
+          executionCount: json_['executionCount'] as core.int?,
+          expireTime: json_['expireTime'] as core.String?,
+          generation: json_['generation'] as core.String?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -3582,33 +3469,19 @@ class GoogleCloudRunV2Job {
                   ),
                 )
               : null,
-          lastModifier: json_.containsKey('lastModifier')
-              ? json_['lastModifier'] as core.String
-              : null,
+          lastModifier: json_['lastModifier'] as core.String?,
           latestCreatedExecution: json_.containsKey('latestCreatedExecution')
               ? GoogleCloudRunV2ExecutionReference.fromJson(
                   json_['latestCreatedExecution']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          launchStage: json_.containsKey('launchStage')
-              ? json_['launchStage'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          observedGeneration: json_.containsKey('observedGeneration')
-              ? json_['observedGeneration'] as core.String
-              : null,
-          reconciling: json_.containsKey('reconciling')
-              ? json_['reconciling'] as core.bool
-              : null,
-          runExecutionToken: json_.containsKey('runExecutionToken')
-              ? json_['runExecutionToken'] as core.String
-              : null,
-          satisfiesPzs: json_.containsKey('satisfiesPzs')
-              ? json_['satisfiesPzs'] as core.bool
-              : null,
-          startExecutionToken: json_.containsKey('startExecutionToken')
-              ? json_['startExecutionToken'] as core.String
-              : null,
+          launchStage: json_['launchStage'] as core.String?,
+          name: json_['name'] as core.String?,
+          observedGeneration: json_['observedGeneration'] as core.String?,
+          reconciling: json_['reconciling'] as core.bool?,
+          runExecutionToken: json_['runExecutionToken'] as core.String?,
+          satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
+          startExecutionToken: json_['startExecutionToken'] as core.String?,
           template: json_.containsKey('template')
               ? GoogleCloudRunV2ExecutionTemplate.fromJson(
                   json_['template'] as core.Map<core.String, core.dynamic>)
@@ -3617,10 +3490,8 @@ class GoogleCloudRunV2Job {
               ? GoogleCloudRunV2Condition.fromJson(json_['terminalCondition']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          uid: json_['uid'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3680,9 +3551,7 @@ class GoogleCloudRunV2ListExecutionsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3714,9 +3583,7 @@ class GoogleCloudRunV2ListJobsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3742,9 +3609,7 @@ class GoogleCloudRunV2ListRevisionsResponse {
 
   GoogleCloudRunV2ListRevisionsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           revisions: json_.containsKey('revisions')
               ? (json_['revisions'] as core.List)
                   .map((value) => GoogleCloudRunV2Revision.fromJson(
@@ -3776,9 +3641,7 @@ class GoogleCloudRunV2ListServicesResponse {
 
   GoogleCloudRunV2ListServicesResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           services: json_.containsKey('services')
               ? (json_['services'] as core.List)
                   .map((value) => GoogleCloudRunV2Service.fromJson(
@@ -3810,9 +3673,7 @@ class GoogleCloudRunV2ListTasksResponse {
 
   GoogleCloudRunV2ListTasksResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           tasks: json_.containsKey('tasks')
               ? (json_['tasks'] as core.List)
                   .map((value) => GoogleCloudRunV2Task.fromJson(
@@ -3839,9 +3700,7 @@ class GoogleCloudRunV2Metadata {
 
   GoogleCloudRunV2Metadata.fromJson(core.Map json_)
       : this(
-          metadata: json_.containsKey('metadata')
-              ? json_['metadata'] as core.String
-              : null,
+          metadata: json_['metadata'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3868,13 +3727,9 @@ class GoogleCloudRunV2NFSVolumeSource {
 
   GoogleCloudRunV2NFSVolumeSource.fromJson(core.Map json_)
       : this(
-          path: json_.containsKey('path') ? json_['path'] as core.String : null,
-          readOnly: json_.containsKey('readOnly')
-              ? json_['readOnly'] as core.bool
-              : null,
-          server: json_.containsKey('server')
-              ? json_['server'] as core.String
-              : null,
+          path: json_['path'] as core.String?,
+          readOnly: json_['readOnly'] as core.bool?,
+          server: json_['server'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3920,12 +3775,8 @@ class GoogleCloudRunV2NetworkInterface {
 
   GoogleCloudRunV2NetworkInterface.fromJson(core.Map json_)
       : this(
-          network: json_.containsKey('network')
-              ? json_['network'] as core.String
-              : null,
-          subnetwork: json_.containsKey('subnetwork')
-              ? json_['subnetwork'] as core.String
-              : null,
+          network: json_['network'] as core.String?,
+          subnetwork: json_['subnetwork'] as core.String?,
           tags: json_.containsKey('tags')
               ? (json_['tags'] as core.List)
                   .map((value) => value as core.String)
@@ -3953,9 +3804,7 @@ class GoogleCloudRunV2NodeSelector {
 
   GoogleCloudRunV2NodeSelector.fromJson(core.Map json_)
       : this(
-          accelerator: json_.containsKey('accelerator')
-              ? json_['accelerator'] as core.String
-              : null,
+          accelerator: json_['accelerator'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3995,12 +3844,8 @@ class GoogleCloudRunV2Overrides {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          taskCount: json_.containsKey('taskCount')
-              ? json_['taskCount'] as core.int
-              : null,
-          timeout: json_.containsKey('timeout')
-              ? json_['timeout'] as core.String
-              : null,
+          taskCount: json_['taskCount'] as core.int?,
+          timeout: json_['timeout'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4081,9 +3926,7 @@ class GoogleCloudRunV2Probe {
 
   GoogleCloudRunV2Probe.fromJson(core.Map json_)
       : this(
-          failureThreshold: json_.containsKey('failureThreshold')
-              ? json_['failureThreshold'] as core.int
-              : null,
+          failureThreshold: json_['failureThreshold'] as core.int?,
           grpc: json_.containsKey('grpc')
               ? GoogleCloudRunV2GRPCAction.fromJson(
                   json_['grpc'] as core.Map<core.String, core.dynamic>)
@@ -4092,19 +3935,13 @@ class GoogleCloudRunV2Probe {
               ? GoogleCloudRunV2HTTPGetAction.fromJson(
                   json_['httpGet'] as core.Map<core.String, core.dynamic>)
               : null,
-          initialDelaySeconds: json_.containsKey('initialDelaySeconds')
-              ? json_['initialDelaySeconds'] as core.int
-              : null,
-          periodSeconds: json_.containsKey('periodSeconds')
-              ? json_['periodSeconds'] as core.int
-              : null,
+          initialDelaySeconds: json_['initialDelaySeconds'] as core.int?,
+          periodSeconds: json_['periodSeconds'] as core.int?,
           tcpSocket: json_.containsKey('tcpSocket')
               ? GoogleCloudRunV2TCPSocketAction.fromJson(
                   json_['tcpSocket'] as core.Map<core.String, core.dynamic>)
               : null,
-          timeoutSeconds: json_.containsKey('timeoutSeconds')
-              ? json_['timeoutSeconds'] as core.int
-              : null,
+          timeoutSeconds: json_['timeoutSeconds'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4150,9 +3987,7 @@ class GoogleCloudRunV2ResourceRequirements {
 
   GoogleCloudRunV2ResourceRequirements.fromJson(core.Map json_)
       : this(
-          cpuIdle: json_.containsKey('cpuIdle')
-              ? json_['cpuIdle'] as core.bool
-              : null,
+          cpuIdle: json_['cpuIdle'] as core.bool?,
           limits: json_.containsKey('limits')
               ? (json_['limits'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -4161,9 +3996,7 @@ class GoogleCloudRunV2ResourceRequirements {
                   ),
                 )
               : null,
-          startupCpuBoost: json_.containsKey('startupCpuBoost')
-              ? json_['startupCpuBoost'] as core.bool
-              : null,
+          startupCpuBoost: json_['startupCpuBoost'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4454,33 +4287,17 @@ class GoogleCloudRunV2Revision {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          deleteTime: json_.containsKey('deleteTime')
-              ? json_['deleteTime'] as core.String
-              : null,
-          encryptionKey: json_.containsKey('encryptionKey')
-              ? json_['encryptionKey'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          deleteTime: json_['deleteTime'] as core.String?,
+          encryptionKey: json_['encryptionKey'] as core.String?,
           encryptionKeyRevocationAction:
-              json_.containsKey('encryptionKeyRevocationAction')
-                  ? json_['encryptionKeyRevocationAction'] as core.String
-                  : null,
+              json_['encryptionKeyRevocationAction'] as core.String?,
           encryptionKeyShutdownDuration:
-              json_.containsKey('encryptionKeyShutdownDuration')
-                  ? json_['encryptionKeyShutdownDuration'] as core.String
-                  : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          executionEnvironment: json_.containsKey('executionEnvironment')
-              ? json_['executionEnvironment'] as core.String
-              : null,
-          expireTime: json_.containsKey('expireTime')
-              ? json_['expireTime'] as core.String
-              : null,
-          generation: json_.containsKey('generation')
-              ? json_['generation'] as core.String
-              : null,
+              json_['encryptionKeyShutdownDuration'] as core.String?,
+          etag: json_['etag'] as core.String?,
+          executionEnvironment: json_['executionEnvironment'] as core.String?,
+          expireTime: json_['expireTime'] as core.String?,
+          generation: json_['generation'] as core.String?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -4489,30 +4306,18 @@ class GoogleCloudRunV2Revision {
                   ),
                 )
               : null,
-          launchStage: json_.containsKey('launchStage')
-              ? json_['launchStage'] as core.String
-              : null,
-          logUri: json_.containsKey('logUri')
-              ? json_['logUri'] as core.String
-              : null,
+          launchStage: json_['launchStage'] as core.String?,
+          logUri: json_['logUri'] as core.String?,
           maxInstanceRequestConcurrency:
-              json_.containsKey('maxInstanceRequestConcurrency')
-                  ? json_['maxInstanceRequestConcurrency'] as core.int
-                  : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+              json_['maxInstanceRequestConcurrency'] as core.int?,
+          name: json_['name'] as core.String?,
           nodeSelector: json_.containsKey('nodeSelector')
               ? GoogleCloudRunV2NodeSelector.fromJson(
                   json_['nodeSelector'] as core.Map<core.String, core.dynamic>)
               : null,
-          observedGeneration: json_.containsKey('observedGeneration')
-              ? json_['observedGeneration'] as core.String
-              : null,
-          reconciling: json_.containsKey('reconciling')
-              ? json_['reconciling'] as core.bool
-              : null,
-          satisfiesPzs: json_.containsKey('satisfiesPzs')
-              ? json_['satisfiesPzs'] as core.bool
-              : null,
+          observedGeneration: json_['observedGeneration'] as core.String?,
+          reconciling: json_['reconciling'] as core.bool?,
+          satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
           scaling: json_.containsKey('scaling')
               ? GoogleCloudRunV2RevisionScaling.fromJson(
                   json_['scaling'] as core.Map<core.String, core.dynamic>)
@@ -4521,22 +4326,12 @@ class GoogleCloudRunV2Revision {
               ? GoogleCloudRunV2RevisionScalingStatus.fromJson(
                   json_['scalingStatus'] as core.Map<core.String, core.dynamic>)
               : null,
-          service: json_.containsKey('service')
-              ? json_['service'] as core.String
-              : null,
-          serviceAccount: json_.containsKey('serviceAccount')
-              ? json_['serviceAccount'] as core.String
-              : null,
-          sessionAffinity: json_.containsKey('sessionAffinity')
-              ? json_['sessionAffinity'] as core.bool
-              : null,
-          timeout: json_.containsKey('timeout')
-              ? json_['timeout'] as core.String
-              : null,
-          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          service: json_['service'] as core.String?,
+          serviceAccount: json_['serviceAccount'] as core.String?,
+          sessionAffinity: json_['sessionAffinity'] as core.bool?,
+          timeout: json_['timeout'] as core.String?,
+          uid: json_['uid'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
           volumes: json_.containsKey('volumes')
               ? (json_['volumes'] as core.List)
                   .map((value) => GoogleCloudRunV2Volume.fromJson(
@@ -4608,12 +4403,8 @@ class GoogleCloudRunV2RevisionScaling {
 
   GoogleCloudRunV2RevisionScaling.fromJson(core.Map json_)
       : this(
-          maxInstanceCount: json_.containsKey('maxInstanceCount')
-              ? json_['maxInstanceCount'] as core.int
-              : null,
-          minInstanceCount: json_.containsKey('minInstanceCount')
-              ? json_['minInstanceCount'] as core.int
-              : null,
+          maxInstanceCount: json_['maxInstanceCount'] as core.int?,
+          minInstanceCount: json_['minInstanceCount'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4633,9 +4424,8 @@ class GoogleCloudRunV2RevisionScalingStatus {
 
   GoogleCloudRunV2RevisionScalingStatus.fromJson(core.Map json_)
       : this(
-          desiredMinInstanceCount: json_.containsKey('desiredMinInstanceCount')
-              ? json_['desiredMinInstanceCount'] as core.int
-              : null,
+          desiredMinInstanceCount:
+              json_['desiredMinInstanceCount'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4794,15 +4584,9 @@ class GoogleCloudRunV2RevisionTemplate {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          encryptionKey: json_.containsKey('encryptionKey')
-              ? json_['encryptionKey'] as core.String
-              : null,
-          executionEnvironment: json_.containsKey('executionEnvironment')
-              ? json_['executionEnvironment'] as core.String
-              : null,
-          healthCheckDisabled: json_.containsKey('healthCheckDisabled')
-              ? json_['healthCheckDisabled'] as core.bool
-              : null,
+          encryptionKey: json_['encryptionKey'] as core.String?,
+          executionEnvironment: json_['executionEnvironment'] as core.String?,
+          healthCheckDisabled: json_['healthCheckDisabled'] as core.bool?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -4812,29 +4596,19 @@ class GoogleCloudRunV2RevisionTemplate {
                 )
               : null,
           maxInstanceRequestConcurrency:
-              json_.containsKey('maxInstanceRequestConcurrency')
-                  ? json_['maxInstanceRequestConcurrency'] as core.int
-                  : null,
+              json_['maxInstanceRequestConcurrency'] as core.int?,
           nodeSelector: json_.containsKey('nodeSelector')
               ? GoogleCloudRunV2NodeSelector.fromJson(
                   json_['nodeSelector'] as core.Map<core.String, core.dynamic>)
               : null,
-          revision: json_.containsKey('revision')
-              ? json_['revision'] as core.String
-              : null,
+          revision: json_['revision'] as core.String?,
           scaling: json_.containsKey('scaling')
               ? GoogleCloudRunV2RevisionScaling.fromJson(
                   json_['scaling'] as core.Map<core.String, core.dynamic>)
               : null,
-          serviceAccount: json_.containsKey('serviceAccount')
-              ? json_['serviceAccount'] as core.String
-              : null,
-          sessionAffinity: json_.containsKey('sessionAffinity')
-              ? json_['sessionAffinity'] as core.bool
-              : null,
-          timeout: json_.containsKey('timeout')
-              ? json_['timeout'] as core.String
-              : null,
+          serviceAccount: json_['serviceAccount'] as core.String?,
+          sessionAffinity: json_['sessionAffinity'] as core.bool?,
+          timeout: json_['timeout'] as core.String?,
           volumes: json_.containsKey('volumes')
               ? (json_['volumes'] as core.List)
                   .map((value) => GoogleCloudRunV2Volume.fromJson(
@@ -4894,14 +4668,12 @@ class GoogleCloudRunV2RunJobRequest {
 
   GoogleCloudRunV2RunJobRequest.fromJson(core.Map json_)
       : this(
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          etag: json_['etag'] as core.String?,
           overrides: json_.containsKey('overrides')
               ? GoogleCloudRunV2Overrides.fromJson(
                   json_['overrides'] as core.Map<core.String, core.dynamic>)
               : null,
-          validateOnly: json_.containsKey('validateOnly')
-              ? json_['validateOnly'] as core.bool
-              : null,
+          validateOnly: json_['validateOnly'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4935,12 +4707,8 @@ class GoogleCloudRunV2SecretKeySelector {
 
   GoogleCloudRunV2SecretKeySelector.fromJson(core.Map json_)
       : this(
-          secret: json_.containsKey('secret')
-              ? json_['secret'] as core.String
-              : null,
-          version: json_.containsKey('version')
-              ? json_['version'] as core.String
-              : null,
+          secret: json_['secret'] as core.String?,
+          version: json_['version'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4995,18 +4763,14 @@ class GoogleCloudRunV2SecretVolumeSource {
 
   GoogleCloudRunV2SecretVolumeSource.fromJson(core.Map json_)
       : this(
-          defaultMode: json_.containsKey('defaultMode')
-              ? json_['defaultMode'] as core.int
-              : null,
+          defaultMode: json_['defaultMode'] as core.int?,
           items: json_.containsKey('items')
               ? (json_['items'] as core.List)
                   .map((value) => GoogleCloudRunV2VersionToPath.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          secret: json_.containsKey('secret')
-              ? json_['secret'] as core.String
-              : null,
+          secret: json_['secret'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5359,48 +5123,28 @@ class GoogleCloudRunV2Service {
                   json_['binaryAuthorization']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          client: json_.containsKey('client')
-              ? json_['client'] as core.String
-              : null,
-          clientVersion: json_.containsKey('clientVersion')
-              ? json_['clientVersion'] as core.String
-              : null,
+          client: json_['client'] as core.String?,
+          clientVersion: json_['clientVersion'] as core.String?,
           conditions: json_.containsKey('conditions')
               ? (json_['conditions'] as core.List)
                   .map((value) => GoogleCloudRunV2Condition.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          creator: json_.containsKey('creator')
-              ? json_['creator'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          creator: json_['creator'] as core.String?,
           customAudiences: json_.containsKey('customAudiences')
               ? (json_['customAudiences'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          defaultUriDisabled: json_.containsKey('defaultUriDisabled')
-              ? json_['defaultUriDisabled'] as core.bool
-              : null,
-          deleteTime: json_.containsKey('deleteTime')
-              ? json_['deleteTime'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          expireTime: json_.containsKey('expireTime')
-              ? json_['expireTime'] as core.String
-              : null,
-          generation: json_.containsKey('generation')
-              ? json_['generation'] as core.String
-              : null,
-          ingress: json_.containsKey('ingress')
-              ? json_['ingress'] as core.String
-              : null,
+          defaultUriDisabled: json_['defaultUriDisabled'] as core.bool?,
+          deleteTime: json_['deleteTime'] as core.String?,
+          description: json_['description'] as core.String?,
+          etag: json_['etag'] as core.String?,
+          expireTime: json_['expireTime'] as core.String?,
+          generation: json_['generation'] as core.String?,
+          ingress: json_['ingress'] as core.String?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -5409,28 +5153,14 @@ class GoogleCloudRunV2Service {
                   ),
                 )
               : null,
-          lastModifier: json_.containsKey('lastModifier')
-              ? json_['lastModifier'] as core.String
-              : null,
-          latestCreatedRevision: json_.containsKey('latestCreatedRevision')
-              ? json_['latestCreatedRevision'] as core.String
-              : null,
-          latestReadyRevision: json_.containsKey('latestReadyRevision')
-              ? json_['latestReadyRevision'] as core.String
-              : null,
-          launchStage: json_.containsKey('launchStage')
-              ? json_['launchStage'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          observedGeneration: json_.containsKey('observedGeneration')
-              ? json_['observedGeneration'] as core.String
-              : null,
-          reconciling: json_.containsKey('reconciling')
-              ? json_['reconciling'] as core.bool
-              : null,
-          satisfiesPzs: json_.containsKey('satisfiesPzs')
-              ? json_['satisfiesPzs'] as core.bool
-              : null,
+          lastModifier: json_['lastModifier'] as core.String?,
+          latestCreatedRevision: json_['latestCreatedRevision'] as core.String?,
+          latestReadyRevision: json_['latestReadyRevision'] as core.String?,
+          launchStage: json_['launchStage'] as core.String?,
+          name: json_['name'] as core.String?,
+          observedGeneration: json_['observedGeneration'] as core.String?,
+          reconciling: json_['reconciling'] as core.bool?,
+          satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
           scaling: json_.containsKey('scaling')
               ? GoogleCloudRunV2ServiceScaling.fromJson(
                   json_['scaling'] as core.Map<core.String, core.dynamic>)
@@ -5455,11 +5185,9 @@ class GoogleCloudRunV2Service {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
-          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+          uid: json_['uid'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
+          uri: json_['uri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5520,9 +5248,7 @@ class GoogleCloudRunV2ServiceScaling {
 
   GoogleCloudRunV2ServiceScaling.fromJson(core.Map json_)
       : this(
-          minInstanceCount: json_.containsKey('minInstanceCount')
-              ? json_['minInstanceCount'] as core.int
-              : null,
+          minInstanceCount: json_['minInstanceCount'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5547,7 +5273,7 @@ class GoogleCloudRunV2TCPSocketAction {
 
   GoogleCloudRunV2TCPSocketAction.fromJson(core.Map json_)
       : this(
-          port: json_.containsKey('port') ? json_['port'] as core.int : null,
+          port: json_['port'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5808,9 +5534,7 @@ class GoogleCloudRunV2Task {
                   ),
                 )
               : null,
-          completionTime: json_.containsKey('completionTime')
-              ? json_['completionTime'] as core.String
-              : null,
+          completionTime: json_['completionTime'] as core.String?,
           conditions: json_.containsKey('conditions')
               ? (json_['conditions'] as core.List)
                   .map((value) => GoogleCloudRunV2Condition.fromJson(
@@ -5823,30 +5547,16 @@ class GoogleCloudRunV2Task {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          deleteTime: json_.containsKey('deleteTime')
-              ? json_['deleteTime'] as core.String
-              : null,
-          encryptionKey: json_.containsKey('encryptionKey')
-              ? json_['encryptionKey'] as core.String
-              : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          execution: json_.containsKey('execution')
-              ? json_['execution'] as core.String
-              : null,
-          executionEnvironment: json_.containsKey('executionEnvironment')
-              ? json_['executionEnvironment'] as core.String
-              : null,
-          expireTime: json_.containsKey('expireTime')
-              ? json_['expireTime'] as core.String
-              : null,
-          generation: json_.containsKey('generation')
-              ? json_['generation'] as core.String
-              : null,
-          index: json_.containsKey('index') ? json_['index'] as core.int : null,
-          job: json_.containsKey('job') ? json_['job'] as core.String : null,
+          createTime: json_['createTime'] as core.String?,
+          deleteTime: json_['deleteTime'] as core.String?,
+          encryptionKey: json_['encryptionKey'] as core.String?,
+          etag: json_['etag'] as core.String?,
+          execution: json_['execution'] as core.String?,
+          executionEnvironment: json_['executionEnvironment'] as core.String?,
+          expireTime: json_['expireTime'] as core.String?,
+          generation: json_['generation'] as core.String?,
+          index: json_['index'] as core.int?,
+          job: json_['job'] as core.String?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -5860,41 +5570,19 @@ class GoogleCloudRunV2Task {
                   json_['lastAttemptResult']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          logUri: json_.containsKey('logUri')
-              ? json_['logUri'] as core.String
-              : null,
-          maxRetries: json_.containsKey('maxRetries')
-              ? json_['maxRetries'] as core.int
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          observedGeneration: json_.containsKey('observedGeneration')
-              ? json_['observedGeneration'] as core.String
-              : null,
-          reconciling: json_.containsKey('reconciling')
-              ? json_['reconciling'] as core.bool
-              : null,
-          retried: json_.containsKey('retried')
-              ? json_['retried'] as core.int
-              : null,
-          satisfiesPzs: json_.containsKey('satisfiesPzs')
-              ? json_['satisfiesPzs'] as core.bool
-              : null,
-          scheduledTime: json_.containsKey('scheduledTime')
-              ? json_['scheduledTime'] as core.String
-              : null,
-          serviceAccount: json_.containsKey('serviceAccount')
-              ? json_['serviceAccount'] as core.String
-              : null,
-          startTime: json_.containsKey('startTime')
-              ? json_['startTime'] as core.String
-              : null,
-          timeout: json_.containsKey('timeout')
-              ? json_['timeout'] as core.String
-              : null,
-          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          logUri: json_['logUri'] as core.String?,
+          maxRetries: json_['maxRetries'] as core.int?,
+          name: json_['name'] as core.String?,
+          observedGeneration: json_['observedGeneration'] as core.String?,
+          reconciling: json_['reconciling'] as core.bool?,
+          retried: json_['retried'] as core.int?,
+          satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
+          scheduledTime: json_['scheduledTime'] as core.String?,
+          serviceAccount: json_['serviceAccount'] as core.String?,
+          startTime: json_['startTime'] as core.String?,
+          timeout: json_['timeout'] as core.String?,
+          uid: json_['uid'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
           volumes: json_.containsKey('volumes')
               ? (json_['volumes'] as core.List)
                   .map((value) => GoogleCloudRunV2Volume.fromJson(
@@ -5968,9 +5656,7 @@ class GoogleCloudRunV2TaskAttemptResult {
 
   GoogleCloudRunV2TaskAttemptResult.fromJson(core.Map json_)
       : this(
-          exitCode: json_.containsKey('exitCode')
-              ? json_['exitCode'] as core.int
-              : null,
+          exitCode: json_['exitCode'] as core.int?,
           status: json_.containsKey('status')
               ? GoogleRpcStatus.fromJson(
                   json_['status'] as core.Map<core.String, core.dynamic>)
@@ -6062,21 +5748,11 @@ class GoogleCloudRunV2TaskTemplate {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          encryptionKey: json_.containsKey('encryptionKey')
-              ? json_['encryptionKey'] as core.String
-              : null,
-          executionEnvironment: json_.containsKey('executionEnvironment')
-              ? json_['executionEnvironment'] as core.String
-              : null,
-          maxRetries: json_.containsKey('maxRetries')
-              ? json_['maxRetries'] as core.int
-              : null,
-          serviceAccount: json_.containsKey('serviceAccount')
-              ? json_['serviceAccount'] as core.String
-              : null,
-          timeout: json_.containsKey('timeout')
-              ? json_['timeout'] as core.String
-              : null,
+          encryptionKey: json_['encryptionKey'] as core.String?,
+          executionEnvironment: json_['executionEnvironment'] as core.String?,
+          maxRetries: json_['maxRetries'] as core.int?,
+          serviceAccount: json_['serviceAccount'] as core.String?,
+          timeout: json_['timeout'] as core.String?,
           volumes: json_.containsKey('volumes')
               ? (json_['volumes'] as core.List)
                   .map((value) => GoogleCloudRunV2Volume.fromJson(
@@ -6139,14 +5815,10 @@ class GoogleCloudRunV2TrafficTarget {
 
   GoogleCloudRunV2TrafficTarget.fromJson(core.Map json_)
       : this(
-          percent: json_.containsKey('percent')
-              ? json_['percent'] as core.int
-              : null,
-          revision: json_.containsKey('revision')
-              ? json_['revision'] as core.String
-              : null,
-          tag: json_.containsKey('tag') ? json_['tag'] as core.String : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          percent: json_['percent'] as core.int?,
+          revision: json_['revision'] as core.String?,
+          tag: json_['tag'] as core.String?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6191,15 +5863,11 @@ class GoogleCloudRunV2TrafficTargetStatus {
 
   GoogleCloudRunV2TrafficTargetStatus.fromJson(core.Map json_)
       : this(
-          percent: json_.containsKey('percent')
-              ? json_['percent'] as core.int
-              : null,
-          revision: json_.containsKey('revision')
-              ? json_['revision'] as core.String
-              : null,
-          tag: json_.containsKey('tag') ? json_['tag'] as core.String : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
-          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+          percent: json_['percent'] as core.int?,
+          revision: json_['revision'] as core.String?,
+          tag: json_['tag'] as core.String?,
+          type: json_['type'] as core.String?,
+          uri: json_['uri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6247,11 +5915,9 @@ class GoogleCloudRunV2VersionToPath {
 
   GoogleCloudRunV2VersionToPath.fromJson(core.Map json_)
       : this(
-          mode: json_.containsKey('mode') ? json_['mode'] as core.int : null,
-          path: json_.containsKey('path') ? json_['path'] as core.String : null,
-          version: json_.containsKey('version')
-              ? json_['version'] as core.String
-              : null,
+          mode: json_['mode'] as core.int?,
+          path: json_['path'] as core.String?,
+          version: json_['version'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6311,7 +5977,7 @@ class GoogleCloudRunV2Volume {
               ? GoogleCloudRunV2GCSVolumeSource.fromJson(
                   json_['gcs'] as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           nfs: json_.containsKey('nfs')
               ? GoogleCloudRunV2NFSVolumeSource.fromJson(
                   json_['nfs'] as core.Map<core.String, core.dynamic>)
@@ -6356,10 +6022,8 @@ class GoogleCloudRunV2VolumeMount {
 
   GoogleCloudRunV2VolumeMount.fromJson(core.Map json_)
       : this(
-          mountPath: json_.containsKey('mountPath')
-              ? json_['mountPath'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          mountPath: json_['mountPath'] as core.String?,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6409,12 +6073,8 @@ class GoogleCloudRunV2VpcAccess {
 
   GoogleCloudRunV2VpcAccess.fromJson(core.Map json_)
       : this(
-          connector: json_.containsKey('connector')
-              ? json_['connector'] as core.String
-              : null,
-          egress: json_.containsKey('egress')
-              ? json_['egress'] as core.String
-              : null,
+          connector: json_['connector'] as core.String?,
+          egress: json_['egress'] as core.String?,
           networkInterfaces: json_.containsKey('networkInterfaces')
               ? (json_['networkInterfaces'] as core.List)
                   .map((value) => GoogleCloudRunV2NetworkInterface.fromJson(
@@ -6470,9 +6130,7 @@ class GoogleIamV1AuditConfig {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          service: json_.containsKey('service')
-              ? json_['service'] as core.String
-              : null,
+          service: json_['service'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6586,7 +6244,7 @@ class GoogleIamV1Binding {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          role: json_.containsKey('role') ? json_['role'] as core.String : null,
+          role: json_['role'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6703,10 +6361,8 @@ class GoogleIamV1Policy {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          version: json_.containsKey('version')
-              ? json_['version'] as core.int
-              : null,
+          etag: json_['etag'] as core.String?,
+          version: json_['version'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6743,9 +6399,7 @@ class GoogleIamV1SetIamPolicyRequest {
               ? GoogleIamV1Policy.fromJson(
                   json_['policy'] as core.Map<core.String, core.dynamic>)
               : null,
-          updateMask: json_.containsKey('updateMask')
-              ? json_['updateMask'] as core.String
-              : null,
+          updateMask: json_['updateMask'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6775,9 +6429,7 @@ class GoogleLongrunningListOperationsResponse {
 
   GoogleLongrunningListOperationsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           operations: json_.containsKey('operations')
               ? (json_['operations'] as core.List)
                   .map((value) => GoogleLongrunningOperation.fromJson(
@@ -6845,7 +6497,7 @@ class GoogleLongrunningOperation {
 
   GoogleLongrunningOperation.fromJson(core.Map json_)
       : this(
-          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? GoogleRpcStatus.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
@@ -6853,7 +6505,7 @@ class GoogleLongrunningOperation {
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           response: json_.containsKey('response')
               ? json_['response'] as core.Map<core.String, core.dynamic>
               : null,
@@ -6946,19 +6598,14 @@ class UtilStatusProto {
 
   UtilStatusProto.fromJson(core.Map json_)
       : this(
-          canonicalCode: json_.containsKey('canonicalCode')
-              ? json_['canonicalCode'] as core.int
-              : null,
-          code: json_.containsKey('code') ? json_['code'] as core.int : null,
-          message: json_.containsKey('message')
-              ? json_['message'] as core.String
-              : null,
+          canonicalCode: json_['canonicalCode'] as core.int?,
+          code: json_['code'] as core.int?,
+          message: json_['message'] as core.String?,
           messageSet: json_.containsKey('messageSet')
               ? Proto2BridgeMessageSet.fromJson(
                   json_['messageSet'] as core.Map<core.String, core.dynamic>)
               : null,
-          space:
-              json_.containsKey('space') ? json_['space'] as core.String : null,
+          space: json_['space'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

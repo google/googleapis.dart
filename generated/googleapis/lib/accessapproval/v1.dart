@@ -1356,10 +1356,8 @@ class AccessApprovalServiceAccount {
 
   AccessApprovalServiceAccount.fromJson(core.Map json_)
       : this(
-          accountEmail: json_.containsKey('accountEmail')
-              ? json_['accountEmail'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          accountEmail: json_['accountEmail'] as core.String?,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1493,50 +1491,33 @@ class AccessApprovalSettings {
 
   AccessApprovalSettings.fromJson(core.Map json_)
       : this(
-          activeKeyVersion: json_.containsKey('activeKeyVersion')
-              ? json_['activeKeyVersion'] as core.String
-              : null,
+          activeKeyVersion: json_['activeKeyVersion'] as core.String?,
           ancestorHasActiveKeyVersion:
-              json_.containsKey('ancestorHasActiveKeyVersion')
-                  ? json_['ancestorHasActiveKeyVersion'] as core.bool
-                  : null,
-          enrolledAncestor: json_.containsKey('enrolledAncestor')
-              ? json_['enrolledAncestor'] as core.bool
-              : null,
+              json_['ancestorHasActiveKeyVersion'] as core.bool?,
+          enrolledAncestor: json_['enrolledAncestor'] as core.bool?,
           enrolledServices: json_.containsKey('enrolledServices')
               ? (json_['enrolledServices'] as core.List)
                   .map((value) => EnrolledService.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          invalidKeyVersion: json_.containsKey('invalidKeyVersion')
-              ? json_['invalidKeyVersion'] as core.bool
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          invalidKeyVersion: json_['invalidKeyVersion'] as core.bool?,
+          name: json_['name'] as core.String?,
           notificationEmails: json_.containsKey('notificationEmails')
               ? (json_['notificationEmails'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          notificationPubsubTopic: json_.containsKey('notificationPubsubTopic')
-              ? json_['notificationPubsubTopic'] as core.String
-              : null,
+          notificationPubsubTopic:
+              json_['notificationPubsubTopic'] as core.String?,
           preferNoBroadApprovalRequests:
-              json_.containsKey('preferNoBroadApprovalRequests')
-                  ? json_['preferNoBroadApprovalRequests'] as core.bool
-                  : null,
+              json_['preferNoBroadApprovalRequests'] as core.bool?,
           preferredRequestExpirationDays:
-              json_.containsKey('preferredRequestExpirationDays')
-                  ? json_['preferredRequestExpirationDays'] as core.int
-                  : null,
+              json_['preferredRequestExpirationDays'] as core.int?,
           requestScopeMaxWidthPreference:
-              json_.containsKey('requestScopeMaxWidthPreference')
-                  ? json_['requestScopeMaxWidthPreference'] as core.String
-                  : null,
+              json_['requestScopeMaxWidthPreference'] as core.String?,
           requireCustomerVisibleJustification:
-              json_.containsKey('requireCustomerVisibleJustification')
-                  ? json_['requireCustomerVisibleJustification'] as core.bool
-                  : null,
+              json_['requireCustomerVisibleJustification'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1590,13 +1571,10 @@ class AccessLocations {
 
   AccessLocations.fromJson(core.Map json_)
       : this(
-          principalOfficeCountry: json_.containsKey('principalOfficeCountry')
-              ? json_['principalOfficeCountry'] as core.String
-              : null,
+          principalOfficeCountry:
+              json_['principalOfficeCountry'] as core.String?,
           principalPhysicalLocationCountry:
-              json_.containsKey('principalPhysicalLocationCountry')
-                  ? json_['principalPhysicalLocationCountry'] as core.String
-                  : null,
+              json_['principalPhysicalLocationCountry'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1647,10 +1625,8 @@ class AccessReason {
 
   AccessReason.fromJson(core.Map json_)
       : this(
-          detail: json_.containsKey('detail')
-              ? json_['detail'] as core.String
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          detail: json_['detail'] as core.String?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1726,16 +1702,10 @@ class ApprovalRequest {
               ? DismissDecision.fromJson(
                   json_['dismiss'] as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          requestTime: json_.containsKey('requestTime')
-              ? json_['requestTime'] as core.String
-              : null,
-          requestedDuration: json_.containsKey('requestedDuration')
-              ? json_['requestedDuration'] as core.String
-              : null,
-          requestedExpiration: json_.containsKey('requestedExpiration')
-              ? json_['requestedExpiration'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          requestTime: json_['requestTime'] as core.String?,
+          requestedDuration: json_['requestedDuration'] as core.String?,
+          requestedExpiration: json_['requestedExpiration'] as core.String?,
           requestedLocations: json_.containsKey('requestedLocations')
               ? AccessLocations.fromJson(json_['requestedLocations']
                   as core.Map<core.String, core.dynamic>)
@@ -1744,9 +1714,7 @@ class ApprovalRequest {
               ? AccessReason.fromJson(json_['requestedReason']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          requestedResourceName: json_.containsKey('requestedResourceName')
-              ? json_['requestedResourceName'] as core.String
-              : null,
+          requestedResourceName: json_['requestedResourceName'] as core.String?,
           requestedResourceProperties: json_
                   .containsKey('requestedResourceProperties')
               ? ResourceProperties.fromJson(json_['requestedResourceProperties']
@@ -1783,9 +1751,7 @@ class ApproveApprovalRequestMessage {
 
   ApproveApprovalRequestMessage.fromJson(core.Map json_)
       : this(
-          expireTime: json_.containsKey('expireTime')
-              ? json_['expireTime'] as core.String
-              : null,
+          expireTime: json_['expireTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1820,18 +1786,10 @@ class ApproveDecision {
 
   ApproveDecision.fromJson(core.Map json_)
       : this(
-          approveTime: json_.containsKey('approveTime')
-              ? json_['approveTime'] as core.String
-              : null,
-          autoApproved: json_.containsKey('autoApproved')
-              ? json_['autoApproved'] as core.bool
-              : null,
-          expireTime: json_.containsKey('expireTime')
-              ? json_['expireTime'] as core.String
-              : null,
-          invalidateTime: json_.containsKey('invalidateTime')
-              ? json_['invalidateTime'] as core.String
-              : null,
+          approveTime: json_['approveTime'] as core.String?,
+          autoApproved: json_['autoApproved'] as core.bool?,
+          expireTime: json_['expireTime'] as core.String?,
+          invalidateTime: json_['invalidateTime'] as core.String?,
           signatureInfo: json_.containsKey('signatureInfo')
               ? SignatureInfo.fromJson(
                   json_['signatureInfo'] as core.Map<core.String, core.dynamic>)
@@ -1867,12 +1825,8 @@ class DismissDecision {
 
   DismissDecision.fromJson(core.Map json_)
       : this(
-          dismissTime: json_.containsKey('dismissTime')
-              ? json_['dismissTime'] as core.String
-              : null,
-          implicit: json_.containsKey('implicit')
-              ? json_['implicit'] as core.bool
-              : null,
+          dismissTime: json_['dismissTime'] as core.String?,
+          implicit: json_['implicit'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1933,12 +1887,8 @@ class EnrolledService {
 
   EnrolledService.fromJson(core.Map json_)
       : this(
-          cloudProduct: json_.containsKey('cloudProduct')
-              ? json_['cloudProduct'] as core.String
-              : null,
-          enrollmentLevel: json_.containsKey('enrollmentLevel')
-              ? json_['enrollmentLevel'] as core.String
-              : null,
+          cloudProduct: json_['cloudProduct'] as core.String?,
+          enrollmentLevel: json_['enrollmentLevel'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1971,9 +1921,7 @@ class ListApprovalRequestsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1994,9 +1942,7 @@ class ResourceProperties {
 
   ResourceProperties.fromJson(core.Map json_)
       : this(
-          excludesDescendants: json_.containsKey('excludesDescendants')
-              ? json_['excludesDescendants'] as core.bool
-              : null,
+          excludesDescendants: json_['excludesDescendants'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2118,22 +2064,12 @@ class SignatureInfo {
 
   SignatureInfo.fromJson(core.Map json_)
       : this(
-          customerKmsKeyVersion: json_.containsKey('customerKmsKeyVersion')
-              ? json_['customerKmsKeyVersion'] as core.String
-              : null,
-          googleKeyAlgorithm: json_.containsKey('googleKeyAlgorithm')
-              ? json_['googleKeyAlgorithm'] as core.String
-              : null,
-          googlePublicKeyPem: json_.containsKey('googlePublicKeyPem')
-              ? json_['googlePublicKeyPem'] as core.String
-              : null,
+          customerKmsKeyVersion: json_['customerKmsKeyVersion'] as core.String?,
+          googleKeyAlgorithm: json_['googleKeyAlgorithm'] as core.String?,
+          googlePublicKeyPem: json_['googlePublicKeyPem'] as core.String?,
           serializedApprovalRequest:
-              json_.containsKey('serializedApprovalRequest')
-                  ? json_['serializedApprovalRequest'] as core.String
-                  : null,
-          signature: json_.containsKey('signature')
-              ? json_['signature'] as core.String
-              : null,
+              json_['serializedApprovalRequest'] as core.String?,
+          signature: json_['signature'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

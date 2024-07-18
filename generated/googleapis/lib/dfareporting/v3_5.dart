@@ -164,10 +164,8 @@ class ClickTag {
               ? CreativeClickThroughUrl.fromJson(json_['clickThroughUrl']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          eventName: json_.containsKey('eventName')
-              ? json_['eventName'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          eventName: json_['eventName'] as core.String?,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -304,12 +302,12 @@ class CreativeAssetMetadata {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          id: json_['id'] as core.String?,
           idDimensionValue: json_.containsKey('idDimensionValue')
               ? DimensionValue.fromJson(json_['idDimensionValue']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          kind: json_['kind'] as core.String?,
           mediaRequestInfo: json_.containsKey('mediaRequestInfo')
               ? MediaRequestInfo.fromJson(json_['mediaRequestInfo']
                   as core.Map<core.String, core.dynamic>)
@@ -318,9 +316,7 @@ class CreativeAssetMetadata {
               ? MediaResponseInfo.fromJson(json_['mediaResponseInfo']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          richMedia: json_.containsKey('richMedia')
-              ? json_['richMedia'] as core.bool
-              : null,
+          richMedia: json_['richMedia'] as core.bool?,
           timerCustomEvents: json_.containsKey('timerCustomEvents')
               ? (json_['timerCustomEvents'] as core.List)
                   .map((value) => CreativeCustomEvent.fromJson(
@@ -434,38 +430,25 @@ class CreativeCustomEvent {
 
   CreativeCustomEvent.fromJson(core.Map json_)
       : this(
-          advertiserCustomEventId: json_.containsKey('advertiserCustomEventId')
-              ? json_['advertiserCustomEventId'] as core.String
-              : null,
+          advertiserCustomEventId:
+              json_['advertiserCustomEventId'] as core.String?,
           advertiserCustomEventName:
-              json_.containsKey('advertiserCustomEventName')
-                  ? json_['advertiserCustomEventName'] as core.String
-                  : null,
+              json_['advertiserCustomEventName'] as core.String?,
           advertiserCustomEventType:
-              json_.containsKey('advertiserCustomEventType')
-                  ? json_['advertiserCustomEventType'] as core.String
-                  : null,
-          artworkLabel: json_.containsKey('artworkLabel')
-              ? json_['artworkLabel'] as core.String
-              : null,
-          artworkType: json_.containsKey('artworkType')
-              ? json_['artworkType'] as core.String
-              : null,
+              json_['advertiserCustomEventType'] as core.String?,
+          artworkLabel: json_['artworkLabel'] as core.String?,
+          artworkType: json_['artworkType'] as core.String?,
           exitClickThroughUrl: json_.containsKey('exitClickThroughUrl')
               ? CreativeClickThroughUrl.fromJson(json_['exitClickThroughUrl']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          id: json_['id'] as core.String?,
           popupWindowProperties: json_.containsKey('popupWindowProperties')
               ? PopupWindowProperties.fromJson(json_['popupWindowProperties']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          targetType: json_.containsKey('targetType')
-              ? json_['targetType'] as core.String
-              : null,
-          videoReportingId: json_.containsKey('videoReportingId')
-              ? json_['videoReportingId'] as core.String
-              : null,
+          targetType: json_['targetType'] as core.String?,
+          videoReportingId: json_['videoReportingId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -612,33 +595,15 @@ class MediaResponseInfo {
 
   MediaResponseInfo.fromJson(core.Map json_)
       : this(
-          customData: json_.containsKey('customData')
-              ? json_['customData'] as core.String
-              : null,
-          dataStorageTransform: json_.containsKey('dataStorageTransform')
-              ? json_['dataStorageTransform'] as core.String
-              : null,
-          dynamicDropTarget: json_.containsKey('dynamicDropTarget')
-              ? json_['dynamicDropTarget'] as core.String
-              : null,
-          dynamicDropzone: json_.containsKey('dynamicDropzone')
-              ? json_['dynamicDropzone'] as core.String
-              : null,
-          requestClass: json_.containsKey('requestClass')
-              ? json_['requestClass'] as core.String
-              : null,
-          scottyAgentUserId: json_.containsKey('scottyAgentUserId')
-              ? json_['scottyAgentUserId'] as core.String
-              : null,
-          scottyCustomerLog: json_.containsKey('scottyCustomerLog')
-              ? json_['scottyCustomerLog'] as core.String
-              : null,
-          trafficClassField: json_.containsKey('trafficClassField')
-              ? json_['trafficClassField'] as core.String
-              : null,
-          verifyHashFromHeader: json_.containsKey('verifyHashFromHeader')
-              ? json_['verifyHashFromHeader'] as core.bool
-              : null,
+          customData: json_['customData'] as core.String?,
+          dataStorageTransform: json_['dataStorageTransform'] as core.String?,
+          dynamicDropTarget: json_['dynamicDropTarget'] as core.String?,
+          dynamicDropzone: json_['dynamicDropzone'] as core.String?,
+          requestClass: json_['requestClass'] as core.String?,
+          scottyAgentUserId: json_['scottyAgentUserId'] as core.String?,
+          scottyCustomerLog: json_['scottyCustomerLog'] as core.String?,
+          trafficClassField: json_['trafficClassField'] as core.String?,
+          verifyHashFromHeader: json_['verifyHashFromHeader'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -718,26 +683,13 @@ class PopupWindowProperties {
               ? OffsetPosition.fromJson(
                   json_['offset'] as core.Map<core.String, core.dynamic>)
               : null,
-          positionType: json_.containsKey('positionType')
-              ? json_['positionType'] as core.String
-              : null,
-          showAddressBar: json_.containsKey('showAddressBar')
-              ? json_['showAddressBar'] as core.bool
-              : null,
-          showMenuBar: json_.containsKey('showMenuBar')
-              ? json_['showMenuBar'] as core.bool
-              : null,
-          showScrollBar: json_.containsKey('showScrollBar')
-              ? json_['showScrollBar'] as core.bool
-              : null,
-          showStatusBar: json_.containsKey('showStatusBar')
-              ? json_['showStatusBar'] as core.bool
-              : null,
-          showToolBar: json_.containsKey('showToolBar')
-              ? json_['showToolBar'] as core.bool
-              : null,
-          title:
-              json_.containsKey('title') ? json_['title'] as core.String : null,
+          positionType: json_['positionType'] as core.String?,
+          showAddressBar: json_['showAddressBar'] as core.bool?,
+          showMenuBar: json_['showMenuBar'] as core.bool?,
+          showScrollBar: json_['showScrollBar'] as core.bool?,
+          showStatusBar: json_['showStatusBar'] as core.bool?,
+          showToolBar: json_['showToolBar'] as core.bool?,
+          title: json_['title'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

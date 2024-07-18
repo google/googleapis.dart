@@ -1270,15 +1270,10 @@ class Assignment {
 
   Assignment.fromJson(core.Map json_)
       : this(
-          assignee: json_.containsKey('assignee')
-              ? json_['assignee'] as core.String
-              : null,
-          jobType: json_.containsKey('jobType')
-              ? json_['jobType'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
+          assignee: json_['assignee'] as core.String?,
+          jobType: json_['jobType'] as core.String?,
+          name: json_['name'] as core.String?,
+          state: json_['state'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1308,12 +1303,8 @@ class Autoscale {
 
   Autoscale.fromJson(core.Map json_)
       : this(
-          currentSlots: json_.containsKey('currentSlots')
-              ? json_['currentSlots'] as core.String
-              : null,
-          maxSlots: json_.containsKey('maxSlots')
-              ? json_['maxSlots'] as core.String
-              : null,
+          currentSlots: json_['currentSlots'] as core.String?,
+          maxSlots: json_['maxSlots'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1350,17 +1341,15 @@ class BiReservation {
 
   BiReservation.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           preferredTables: json_.containsKey('preferredTables')
               ? (json_['preferredTables'] as core.List)
                   .map((value) => TableReference.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          size: json_.containsKey('size') ? json_['size'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          size: json_['size'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1536,35 +1525,20 @@ class CapacityCommitment {
 
   CapacityCommitment.fromJson(core.Map json_)
       : this(
-          commitmentEndTime: json_.containsKey('commitmentEndTime')
-              ? json_['commitmentEndTime'] as core.String
-              : null,
-          commitmentStartTime: json_.containsKey('commitmentStartTime')
-              ? json_['commitmentStartTime'] as core.String
-              : null,
-          edition: json_.containsKey('edition')
-              ? json_['edition'] as core.String
-              : null,
+          commitmentEndTime: json_['commitmentEndTime'] as core.String?,
+          commitmentStartTime: json_['commitmentStartTime'] as core.String?,
+          edition: json_['edition'] as core.String?,
           failureStatus: json_.containsKey('failureStatus')
               ? Status.fromJson(
                   json_['failureStatus'] as core.Map<core.String, core.dynamic>)
               : null,
-          isFlatRate: json_.containsKey('isFlatRate')
-              ? json_['isFlatRate'] as core.bool
-              : null,
-          multiRegionAuxiliary: json_.containsKey('multiRegionAuxiliary')
-              ? json_['multiRegionAuxiliary'] as core.bool
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          plan: json_.containsKey('plan') ? json_['plan'] as core.String : null,
-          renewalPlan: json_.containsKey('renewalPlan')
-              ? json_['renewalPlan'] as core.String
-              : null,
-          slotCount: json_.containsKey('slotCount')
-              ? json_['slotCount'] as core.String
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
+          isFlatRate: json_['isFlatRate'] as core.bool?,
+          multiRegionAuxiliary: json_['multiRegionAuxiliary'] as core.bool?,
+          name: json_['name'] as core.String?,
+          plan: json_['plan'] as core.String?,
+          renewalPlan: json_['renewalPlan'] as core.String?,
+          slotCount: json_['slotCount'] as core.String?,
+          state: json_['state'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1617,9 +1591,7 @@ class ListAssignmentsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1650,9 +1622,7 @@ class ListCapacityCommitmentsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1678,9 +1648,7 @@ class ListReservationsResponse {
 
   ListReservationsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           reservations: json_.containsKey('reservations')
               ? (json_['reservations'] as core.List)
                   .map((value) => Reservation.fromJson(
@@ -1749,12 +1717,8 @@ class MoveAssignmentRequest {
 
   MoveAssignmentRequest.fromJson(core.Map json_)
       : this(
-          assignmentId: json_.containsKey('assignmentId')
-              ? json_['assignmentId'] as core.String
-              : null,
-          destinationId: json_.containsKey('destinationId')
-              ? json_['destinationId'] as core.String
-              : null,
+          assignmentId: json_['assignmentId'] as core.String?,
+          destinationId: json_['destinationId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1896,37 +1860,18 @@ class Reservation {
               ? Autoscale.fromJson(
                   json_['autoscale'] as core.Map<core.String, core.dynamic>)
               : null,
-          concurrency: json_.containsKey('concurrency')
-              ? json_['concurrency'] as core.String
-              : null,
-          creationTime: json_.containsKey('creationTime')
-              ? json_['creationTime'] as core.String
-              : null,
-          edition: json_.containsKey('edition')
-              ? json_['edition'] as core.String
-              : null,
-          ignoreIdleSlots: json_.containsKey('ignoreIdleSlots')
-              ? json_['ignoreIdleSlots'] as core.bool
-              : null,
-          multiRegionAuxiliary: json_.containsKey('multiRegionAuxiliary')
-              ? json_['multiRegionAuxiliary'] as core.bool
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          originalPrimaryLocation: json_.containsKey('originalPrimaryLocation')
-              ? json_['originalPrimaryLocation'] as core.String
-              : null,
-          primaryLocation: json_.containsKey('primaryLocation')
-              ? json_['primaryLocation'] as core.String
-              : null,
-          secondaryLocation: json_.containsKey('secondaryLocation')
-              ? json_['secondaryLocation'] as core.String
-              : null,
-          slotCapacity: json_.containsKey('slotCapacity')
-              ? json_['slotCapacity'] as core.String
-              : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          concurrency: json_['concurrency'] as core.String?,
+          creationTime: json_['creationTime'] as core.String?,
+          edition: json_['edition'] as core.String?,
+          ignoreIdleSlots: json_['ignoreIdleSlots'] as core.bool?,
+          multiRegionAuxiliary: json_['multiRegionAuxiliary'] as core.bool?,
+          name: json_['name'] as core.String?,
+          originalPrimaryLocation:
+              json_['originalPrimaryLocation'] as core.String?,
+          primaryLocation: json_['primaryLocation'] as core.String?,
+          secondaryLocation: json_['secondaryLocation'] as core.String?,
+          slotCapacity: json_['slotCapacity'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1969,9 +1914,7 @@ class SearchAllAssignmentsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2002,9 +1945,7 @@ class SearchAssignmentsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2024,9 +1965,7 @@ class SplitCapacityCommitmentRequest {
 
   SplitCapacityCommitmentRequest.fromJson(core.Map json_)
       : this(
-          slotCount: json_.containsKey('slotCount')
-              ? json_['slotCount'] as core.String
-              : null,
+          slotCount: json_['slotCount'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2095,15 +2034,9 @@ class TableReference {
 
   TableReference.fromJson(core.Map json_)
       : this(
-          datasetId: json_.containsKey('datasetId')
-              ? json_['datasetId'] as core.String
-              : null,
-          projectId: json_.containsKey('projectId')
-              ? json_['projectId'] as core.String
-              : null,
-          tableId: json_.containsKey('tableId')
-              ? json_['tableId'] as core.String
-              : null,
+          datasetId: json_['datasetId'] as core.String?,
+          projectId: json_['projectId'] as core.String?,
+          tableId: json_['tableId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

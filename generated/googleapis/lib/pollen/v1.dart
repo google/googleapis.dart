@@ -391,21 +391,15 @@ class IndexInfo {
 
   IndexInfo.fromJson(core.Map json_)
       : this(
-          category: json_.containsKey('category')
-              ? json_['category'] as core.String
-              : null,
-          code: json_.containsKey('code') ? json_['code'] as core.String : null,
+          category: json_['category'] as core.String?,
+          code: json_['code'] as core.String?,
           color: json_.containsKey('color')
               ? Color.fromJson(
                   json_['color'] as core.Map<core.String, core.dynamic>)
               : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          indexDescription: json_.containsKey('indexDescription')
-              ? json_['indexDescription'] as core.String
-              : null,
-          value: json_.containsKey('value') ? json_['value'] as core.int : null,
+          displayName: json_['displayName'] as core.String?,
+          indexDescription: json_['indexDescription'] as core.String?,
+          value: json_['value'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -451,12 +445,8 @@ class LookupForecastResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
-          regionCode: json_.containsKey('regionCode')
-              ? json_['regionCode'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          regionCode: json_['regionCode'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -522,28 +512,14 @@ class PlantDescription {
 
   PlantDescription.fromJson(core.Map json_)
       : this(
-          crossReaction: json_.containsKey('crossReaction')
-              ? json_['crossReaction'] as core.String
-              : null,
-          family: json_.containsKey('family')
-              ? json_['family'] as core.String
-              : null,
-          picture: json_.containsKey('picture')
-              ? json_['picture'] as core.String
-              : null,
-          pictureCloseup: json_.containsKey('pictureCloseup')
-              ? json_['pictureCloseup'] as core.String
-              : null,
-          season: json_.containsKey('season')
-              ? json_['season'] as core.String
-              : null,
-          specialColors: json_.containsKey('specialColors')
-              ? json_['specialColors'] as core.String
-              : null,
-          specialShapes: json_.containsKey('specialShapes')
-              ? json_['specialShapes'] as core.String
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          crossReaction: json_['crossReaction'] as core.String?,
+          family: json_['family'] as core.String?,
+          picture: json_['picture'] as core.String?,
+          pictureCloseup: json_['pictureCloseup'] as core.String?,
+          season: json_['season'] as core.String?,
+          specialColors: json_['specialColors'] as core.String?,
+          specialShapes: json_['specialShapes'] as core.String?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -610,13 +586,9 @@ class PlantInfo {
 
   PlantInfo.fromJson(core.Map json_)
       : this(
-          code: json_.containsKey('code') ? json_['code'] as core.String : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          inSeason: json_.containsKey('inSeason')
-              ? json_['inSeason'] as core.bool
-              : null,
+          code: json_['code'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          inSeason: json_['inSeason'] as core.bool?,
           indexInfo: json_.containsKey('indexInfo')
               ? IndexInfo.fromJson(
                   json_['indexInfo'] as core.Map<core.String, core.dynamic>)
@@ -674,18 +646,14 @@ class PollenTypeInfo {
 
   PollenTypeInfo.fromJson(core.Map json_)
       : this(
-          code: json_.containsKey('code') ? json_['code'] as core.String : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+          code: json_['code'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
           healthRecommendations: json_.containsKey('healthRecommendations')
               ? (json_['healthRecommendations'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          inSeason: json_.containsKey('inSeason')
-              ? json_['inSeason'] as core.bool
-              : null,
+          inSeason: json_['inSeason'] as core.bool?,
           indexInfo: json_.containsKey('indexInfo')
               ? IndexInfo.fromJson(
                   json_['indexInfo'] as core.Map<core.String, core.dynamic>)

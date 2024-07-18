@@ -523,9 +523,7 @@ class Answer {
               ? Grade.fromJson(
                   json_['grade'] as core.Map<core.String, core.dynamic>)
               : null,
-          questionId: json_.containsKey('questionId')
-              ? json_['questionId'] as core.String
-              : null,
+          questionId: json_['questionId'] as core.String?,
           textAnswers: json_.containsKey('textAnswers')
               ? TextAnswers.fromJson(
                   json_['textAnswers'] as core.Map<core.String, core.dynamic>)
@@ -563,9 +561,7 @@ class BatchUpdateFormRequest {
 
   BatchUpdateFormRequest.fromJson(core.Map json_)
       : this(
-          includeFormInResponse: json_.containsKey('includeFormInResponse')
-              ? json_['includeFormInResponse'] as core.bool
-              : null,
+          includeFormInResponse: json_['includeFormInResponse'] as core.bool?,
           requests: json_.containsKey('requests')
               ? (json_['requests'] as core.List)
                   .map((value) => Request.fromJson(
@@ -677,10 +673,8 @@ class ChoiceQuestion {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          shuffle: json_.containsKey('shuffle')
-              ? json_['shuffle'] as core.bool
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          shuffle: json_['shuffle'] as core.bool?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -706,9 +700,7 @@ class CloudPubsubTopic {
 
   CloudPubsubTopic.fromJson(core.Map json_)
       : this(
-          topicName: json_.containsKey('topicName')
-              ? json_['topicName'] as core.String
-              : null,
+          topicName: json_['topicName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -735,8 +727,7 @@ class CorrectAnswer {
 
   CorrectAnswer.fromJson(core.Map json_)
       : this(
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
+          value: json_['value'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -825,9 +816,7 @@ class CreateItemResponse {
 
   CreateItemResponse.fromJson(core.Map json_)
       : this(
-          itemId: json_.containsKey('itemId')
-              ? json_['itemId'] as core.String
-              : null,
+          itemId: json_['itemId'] as core.String?,
           questionId: json_.containsKey('questionId')
               ? (json_['questionId'] as core.List)
                   .map((value) => value as core.String)
@@ -868,9 +857,7 @@ class CreateWatchRequest {
               ? Watch.fromJson(
                   json_['watch'] as core.Map<core.String, core.dynamic>)
               : null,
-          watchId: json_.containsKey('watchId')
-              ? json_['watchId'] as core.String
-              : null,
+          watchId: json_['watchId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -896,12 +883,8 @@ class DateQuestion {
 
   DateQuestion.fromJson(core.Map json_)
       : this(
-          includeTime: json_.containsKey('includeTime')
-              ? json_['includeTime'] as core.bool
-              : null,
-          includeYear: json_.containsKey('includeYear')
-              ? json_['includeYear'] as core.bool
-              : null,
+          includeTime: json_['includeTime'] as core.bool?,
+          includeYear: json_['includeYear'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -997,7 +980,7 @@ class Feedback {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          text: json_.containsKey('text') ? json_['text'] as core.String : null,
+          text: json_['text'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1031,15 +1014,9 @@ class FileUploadAnswer {
 
   FileUploadAnswer.fromJson(core.Map json_)
       : this(
-          fileId: json_.containsKey('fileId')
-              ? json_['fileId'] as core.String
-              : null,
-          fileName: json_.containsKey('fileName')
-              ? json_['fileName'] as core.String
-              : null,
-          mimeType: json_.containsKey('mimeType')
-              ? json_['mimeType'] as core.String
-              : null,
+          fileId: json_['fileId'] as core.String?,
+          fileName: json_['fileName'] as core.String?,
+          mimeType: json_['mimeType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1104,15 +1081,9 @@ class FileUploadQuestion {
 
   FileUploadQuestion.fromJson(core.Map json_)
       : this(
-          folderId: json_.containsKey('folderId')
-              ? json_['folderId'] as core.String
-              : null,
-          maxFileSize: json_.containsKey('maxFileSize')
-              ? json_['maxFileSize'] as core.String
-              : null,
-          maxFiles: json_.containsKey('maxFiles')
-              ? json_['maxFiles'] as core.int
-              : null,
+          folderId: json_['folderId'] as core.String?,
+          maxFileSize: json_['maxFileSize'] as core.String?,
+          maxFiles: json_['maxFiles'] as core.int?,
           types: json_.containsKey('types')
               ? (json_['types'] as core.List)
                   .map((value) => value as core.String)
@@ -1196,9 +1167,7 @@ class Form {
 
   Form.fromJson(core.Map json_)
       : this(
-          formId: json_.containsKey('formId')
-              ? json_['formId'] as core.String
-              : null,
+          formId: json_['formId'] as core.String?,
           info: json_.containsKey('info')
               ? Info.fromJson(
                   json_['info'] as core.Map<core.String, core.dynamic>)
@@ -1209,15 +1178,9 @@ class Form {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          linkedSheetId: json_.containsKey('linkedSheetId')
-              ? json_['linkedSheetId'] as core.String
-              : null,
-          responderUri: json_.containsKey('responderUri')
-              ? json_['responderUri'] as core.String
-              : null,
-          revisionId: json_.containsKey('revisionId')
-              ? json_['revisionId'] as core.String
-              : null,
+          linkedSheetId: json_['linkedSheetId'] as core.String?,
+          responderUri: json_['responderUri'] as core.String?,
+          revisionId: json_['revisionId'] as core.String?,
           settings: json_.containsKey('settings')
               ? FormSettings.fromJson(
                   json_['settings'] as core.Map<core.String, core.dynamic>)
@@ -1299,24 +1262,12 @@ class FormResponse {
                   ),
                 )
               : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          formId: json_.containsKey('formId')
-              ? json_['formId'] as core.String
-              : null,
-          lastSubmittedTime: json_.containsKey('lastSubmittedTime')
-              ? json_['lastSubmittedTime'] as core.String
-              : null,
-          respondentEmail: json_.containsKey('respondentEmail')
-              ? json_['respondentEmail'] as core.String
-              : null,
-          responseId: json_.containsKey('responseId')
-              ? json_['responseId'] as core.String
-              : null,
-          totalScore: json_.containsKey('totalScore')
-              ? (json_['totalScore'] as core.num).toDouble()
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          formId: json_['formId'] as core.String?,
+          lastSubmittedTime: json_['lastSubmittedTime'] as core.String?,
+          respondentEmail: json_['respondentEmail'] as core.String?,
+          responseId: json_['responseId'] as core.String?,
+          totalScore: (json_['totalScore'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1380,16 +1331,12 @@ class Grade {
 
   Grade.fromJson(core.Map json_)
       : this(
-          correct: json_.containsKey('correct')
-              ? json_['correct'] as core.bool
-              : null,
+          correct: json_['correct'] as core.bool?,
           feedback: json_.containsKey('feedback')
               ? Feedback.fromJson(
                   json_['feedback'] as core.Map<core.String, core.dynamic>)
               : null,
-          score: json_.containsKey('score')
-              ? (json_['score'] as core.num).toDouble()
-              : null,
+          score: (json_['score'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1455,9 +1402,7 @@ class Grading {
               ? Feedback.fromJson(json_['generalFeedback']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          pointValue: json_.containsKey('pointValue')
-              ? json_['pointValue'] as core.int
-              : null,
+          pointValue: json_['pointValue'] as core.int?,
           whenRight: json_.containsKey('whenRight')
               ? Feedback.fromJson(
                   json_['whenRight'] as core.Map<core.String, core.dynamic>)
@@ -1506,9 +1451,7 @@ class Grid {
               ? ChoiceQuestion.fromJson(
                   json_['columns'] as core.Map<core.String, core.dynamic>)
               : null,
-          shuffleQuestions: json_.containsKey('shuffleQuestions')
-              ? json_['shuffleQuestions'] as core.bool
-              : null,
+          shuffleQuestions: json_['shuffleQuestions'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1547,19 +1490,13 @@ class Image {
 
   Image.fromJson(core.Map json_)
       : this(
-          altText: json_.containsKey('altText')
-              ? json_['altText'] as core.String
-              : null,
-          contentUri: json_.containsKey('contentUri')
-              ? json_['contentUri'] as core.String
-              : null,
+          altText: json_['altText'] as core.String?,
+          contentUri: json_['contentUri'] as core.String?,
           properties: json_.containsKey('properties')
               ? MediaProperties.fromJson(
                   json_['properties'] as core.Map<core.String, core.dynamic>)
               : null,
-          sourceUri: json_.containsKey('sourceUri')
-              ? json_['sourceUri'] as core.String
-              : null,
+          sourceUri: json_['sourceUri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1623,14 +1560,9 @@ class Info {
 
   Info.fromJson(core.Map json_)
       : this(
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          documentTitle: json_.containsKey('documentTitle')
-              ? json_['documentTitle'] as core.String
-              : null,
-          title:
-              json_.containsKey('title') ? json_['title'] as core.String : null,
+          description: json_['description'] as core.String?,
+          documentTitle: json_['documentTitle'] as core.String?,
+          title: json_['title'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1688,16 +1620,12 @@ class Item {
 
   Item.fromJson(core.Map json_)
       : this(
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
+          description: json_['description'] as core.String?,
           imageItem: json_.containsKey('imageItem')
               ? ImageItem.fromJson(
                   json_['imageItem'] as core.Map<core.String, core.dynamic>)
               : null,
-          itemId: json_.containsKey('itemId')
-              ? json_['itemId'] as core.String
-              : null,
+          itemId: json_['itemId'] as core.String?,
           pageBreakItem: json_.containsKey('pageBreakItem')
               ? PageBreakItem.fromJson(
                   json_['pageBreakItem'] as core.Map<core.String, core.dynamic>)
@@ -1714,8 +1642,7 @@ class Item {
               ? TextItem.fromJson(
                   json_['textItem'] as core.Map<core.String, core.dynamic>)
               : null,
-          title:
-              json_.containsKey('title') ? json_['title'] as core.String : null,
+          title: json_['title'] as core.String?,
           videoItem: json_.containsKey('videoItem')
               ? VideoItem.fromJson(
                   json_['videoItem'] as core.Map<core.String, core.dynamic>)
@@ -1756,9 +1683,7 @@ class ListFormResponsesResponse {
 
   ListFormResponsesResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           responses: json_.containsKey('responses')
               ? (json_['responses'] as core.List)
                   .map((value) => FormResponse.fromJson(
@@ -1811,7 +1736,7 @@ class Location {
 
   Location.fromJson(core.Map json_)
       : this(
-          index: json_.containsKey('index') ? json_['index'] as core.int : null,
+          index: json_['index'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1846,10 +1771,8 @@ class MediaProperties {
 
   MediaProperties.fromJson(core.Map json_)
       : this(
-          alignment: json_.containsKey('alignment')
-              ? json_['alignment'] as core.String
-              : null,
-          width: json_.containsKey('width') ? json_['width'] as core.int : null,
+          alignment: json_['alignment'] as core.String?,
+          width: json_['width'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1930,21 +1853,14 @@ class Option {
 
   Option.fromJson(core.Map json_)
       : this(
-          goToAction: json_.containsKey('goToAction')
-              ? json_['goToAction'] as core.String
-              : null,
-          goToSectionId: json_.containsKey('goToSectionId')
-              ? json_['goToSectionId'] as core.String
-              : null,
+          goToAction: json_['goToAction'] as core.String?,
+          goToSectionId: json_['goToSectionId'] as core.String?,
           image: json_.containsKey('image')
               ? Image.fromJson(
                   json_['image'] as core.Map<core.String, core.dynamic>)
               : null,
-          isOther: json_.containsKey('isOther')
-              ? json_['isOther'] as core.bool
-              : null,
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
+          isOther: json_['isOther'] as core.bool?,
+          value: json_['value'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2030,12 +1946,8 @@ class Question {
               ? Grading.fromJson(
                   json_['grading'] as core.Map<core.String, core.dynamic>)
               : null,
-          questionId: json_.containsKey('questionId')
-              ? json_['questionId'] as core.String
-              : null,
-          required: json_.containsKey('required')
-              ? json_['required'] as core.bool
-              : null,
+          questionId: json_['questionId'] as core.String?,
+          required: json_['required'] as core.bool?,
           rowQuestion: json_.containsKey('rowQuestion')
               ? RowQuestion.fromJson(
                   json_['rowQuestion'] as core.Map<core.String, core.dynamic>)
@@ -2169,8 +2081,7 @@ class QuizSettings {
 
   QuizSettings.fromJson(core.Map json_)
       : this(
-          isQuiz:
-              json_.containsKey('isQuiz') ? json_['isQuiz'] as core.bool : null,
+          isQuiz: json_['isQuiz'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2283,8 +2194,7 @@ class RowQuestion {
 
   RowQuestion.fromJson(core.Map json_)
       : this(
-          title:
-              json_.containsKey('title') ? json_['title'] as core.String : null,
+          title: json_['title'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2321,14 +2231,10 @@ class ScaleQuestion {
 
   ScaleQuestion.fromJson(core.Map json_)
       : this(
-          high: json_.containsKey('high') ? json_['high'] as core.int : null,
-          highLabel: json_.containsKey('highLabel')
-              ? json_['highLabel'] as core.String
-              : null,
-          low: json_.containsKey('low') ? json_['low'] as core.int : null,
-          lowLabel: json_.containsKey('lowLabel')
-              ? json_['lowLabel'] as core.String
-              : null,
+          high: json_['high'] as core.int?,
+          highLabel: json_['highLabel'] as core.String?,
+          low: json_['low'] as core.int?,
+          lowLabel: json_['lowLabel'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2366,8 +2272,7 @@ class TextAnswer {
 
   TextAnswer.fromJson(core.Map json_)
       : this(
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
+          value: json_['value'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2425,10 +2330,8 @@ class TextLink {
 
   TextLink.fromJson(core.Map json_)
       : this(
-          displayText: json_.containsKey('displayText')
-              ? json_['displayText'] as core.String
-              : null,
-          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+          displayText: json_['displayText'] as core.String?,
+          uri: json_['uri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2450,9 +2353,7 @@ class TextQuestion {
 
   TextQuestion.fromJson(core.Map json_)
       : this(
-          paragraph: json_.containsKey('paragraph')
-              ? json_['paragraph'] as core.bool
-              : null,
+          paragraph: json_['paragraph'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2473,9 +2374,7 @@ class TimeQuestion {
 
   TimeQuestion.fromJson(core.Map json_)
       : this(
-          duration: json_.containsKey('duration')
-              ? json_['duration'] as core.bool
-              : null,
+          duration: json_['duration'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2508,9 +2407,7 @@ class UpdateFormInfoRequest {
               ? Info.fromJson(
                   json_['info'] as core.Map<core.String, core.dynamic>)
               : null,
-          updateMask: json_.containsKey('updateMask')
-              ? json_['updateMask'] as core.String
-              : null,
+          updateMask: json_['updateMask'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2559,9 +2456,7 @@ class UpdateItemRequest {
               ? Location.fromJson(
                   json_['location'] as core.Map<core.String, core.dynamic>)
               : null,
-          updateMask: json_.containsKey('updateMask')
-              ? json_['updateMask'] as core.String
-              : null,
+          updateMask: json_['updateMask'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2598,9 +2493,7 @@ class UpdateSettingsRequest {
               ? FormSettings.fromJson(
                   json_['settings'] as core.Map<core.String, core.dynamic>)
               : null,
-          updateMask: json_.containsKey('updateMask')
-              ? json_['updateMask'] as core.String
-              : null,
+          updateMask: json_['updateMask'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2630,9 +2523,7 @@ class Video {
               ? MediaProperties.fromJson(
                   json_['properties'] as core.Map<core.String, core.dynamic>)
               : null,
-          youtubeUri: json_.containsKey('youtubeUri')
-              ? json_['youtubeUri'] as core.String
-              : null,
+          youtubeUri: json_['youtubeUri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2658,9 +2549,7 @@ class VideoItem {
 
   VideoItem.fromJson(core.Map json_)
       : this(
-          caption: json_.containsKey('caption')
-              ? json_['caption'] as core.String
-              : null,
+          caption: json_['caption'] as core.String?,
           video: json_.containsKey('video')
               ? Video.fromJson(
                   json_['video'] as core.Map<core.String, core.dynamic>)
@@ -2690,12 +2579,8 @@ class VideoLink {
 
   VideoLink.fromJson(core.Map json_)
       : this(
-          displayText: json_.containsKey('displayText')
-              ? json_['displayText'] as core.String
-              : null,
-          youtubeUri: json_.containsKey('youtubeUri')
-              ? json_['youtubeUri'] as core.String
-              : null,
+          displayText: json_['displayText'] as core.String?,
+          youtubeUri: json_['youtubeUri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2798,21 +2683,12 @@ class Watch {
 
   Watch.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          errorType: json_.containsKey('errorType')
-              ? json_['errorType'] as core.String
-              : null,
-          eventType: json_.containsKey('eventType')
-              ? json_['eventType'] as core.String
-              : null,
-          expireTime: json_.containsKey('expireTime')
-              ? json_['expireTime'] as core.String
-              : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
+          createTime: json_['createTime'] as core.String?,
+          errorType: json_['errorType'] as core.String?,
+          eventType: json_['eventType'] as core.String?,
+          expireTime: json_['expireTime'] as core.String?,
+          id: json_['id'] as core.String?,
+          state: json_['state'] as core.String?,
           target: json_.containsKey('target')
               ? WatchTarget.fromJson(
                   json_['target'] as core.Map<core.String, core.dynamic>)
@@ -2887,12 +2763,8 @@ class WriteControl {
 
   WriteControl.fromJson(core.Map json_)
       : this(
-          requiredRevisionId: json_.containsKey('requiredRevisionId')
-              ? json_['requiredRevisionId'] as core.String
-              : null,
-          targetRevisionId: json_.containsKey('targetRevisionId')
-              ? json_['targetRevisionId'] as core.String
-              : null,
+          requiredRevisionId: json_['requiredRevisionId'] as core.String?,
+          targetRevisionId: json_['targetRevisionId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

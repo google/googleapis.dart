@@ -2453,9 +2453,8 @@ class AccessUrls {
 
   AccessUrls.fromJson(core.Map json_)
       : this(
-          caCertificateAccessUrl: json_.containsKey('caCertificateAccessUrl')
-              ? json_['caCertificateAccessUrl'] as core.String
-              : null,
+          caCertificateAccessUrl:
+              json_['caCertificateAccessUrl'] as core.String?,
           crlAccessUrls: json_.containsKey('crlAccessUrls')
               ? (json_['crlAccessUrls'] as core.List)
                   .map((value) => value as core.String)
@@ -2509,12 +2508,8 @@ class ActivateCertificateAuthorityRequest {
 
   ActivateCertificateAuthorityRequest.fromJson(core.Map json_)
       : this(
-          pemCaCertificate: json_.containsKey('pemCaCertificate')
-              ? json_['pemCaCertificate'] as core.String
-              : null,
-          requestId: json_.containsKey('requestId')
-              ? json_['requestId'] as core.String
-              : null,
+          pemCaCertificate: json_['pemCaCertificate'] as core.String?,
+          requestId: json_['requestId'] as core.String?,
           subordinateConfig: json_.containsKey('subordinateConfig')
               ? SubordinateConfig.fromJson(json_['subordinateConfig']
                   as core.Map<core.String, core.dynamic>)
@@ -2604,9 +2599,7 @@ class AuditConfig {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          service: json_.containsKey('service')
-              ? json_['service'] as core.String
-              : null,
+          service: json_['service'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2720,7 +2713,7 @@ class Binding {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          role: json_.containsKey('role') ? json_['role'] as core.String : null,
+          role: json_['role'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2758,10 +2751,8 @@ class CaOptions {
 
   CaOptions.fromJson(core.Map json_)
       : this(
-          isCa: json_.containsKey('isCa') ? json_['isCa'] as core.bool : null,
-          maxIssuerPathLength: json_.containsKey('maxIssuerPathLength')
-              ? json_['maxIssuerPathLength'] as core.int
-              : null,
+          isCa: json_['isCa'] as core.bool?,
+          maxIssuerPathLength: json_['maxIssuerPathLength'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2832,12 +2823,12 @@ class CaPool {
                   ),
                 )
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           publishingOptions: json_.containsKey('publishingOptions')
               ? PublishingOptions.fromJson(json_['publishingOptions']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          tier: json_.containsKey('tier') ? json_['tier'] as core.String : null,
+          tier: json_['tier'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2981,20 +2972,14 @@ class Certificate {
               ? CertificateDescription.fromJson(json_['certificateDescription']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          certificateTemplate: json_.containsKey('certificateTemplate')
-              ? json_['certificateTemplate'] as core.String
-              : null,
+          certificateTemplate: json_['certificateTemplate'] as core.String?,
           config: json_.containsKey('config')
               ? CertificateConfig.fromJson(
                   json_['config'] as core.Map<core.String, core.dynamic>)
               : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
           issuerCertificateAuthority:
-              json_.containsKey('issuerCertificateAuthority')
-                  ? json_['issuerCertificateAuthority'] as core.String
-                  : null,
+              json_['issuerCertificateAuthority'] as core.String?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -3003,31 +2988,21 @@ class Certificate {
                   ),
                 )
               : null,
-          lifetime: json_.containsKey('lifetime')
-              ? json_['lifetime'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          pemCertificate: json_.containsKey('pemCertificate')
-              ? json_['pemCertificate'] as core.String
-              : null,
+          lifetime: json_['lifetime'] as core.String?,
+          name: json_['name'] as core.String?,
+          pemCertificate: json_['pemCertificate'] as core.String?,
           pemCertificateChain: json_.containsKey('pemCertificateChain')
               ? (json_['pemCertificateChain'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          pemCsr: json_.containsKey('pemCsr')
-              ? json_['pemCsr'] as core.String
-              : null,
+          pemCsr: json_['pemCsr'] as core.String?,
           revocationDetails: json_.containsKey('revocationDetails')
               ? RevocationDetails.fromJson(json_['revocationDetails']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          subjectMode: json_.containsKey('subjectMode')
-              ? json_['subjectMode'] as core.String
-              : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          subjectMode: json_['subjectMode'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3247,18 +3222,10 @@ class CertificateAuthority {
               ? CertificateConfig.fromJson(
                   json_['config'] as core.Map<core.String, core.dynamic>)
               : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          deleteTime: json_.containsKey('deleteTime')
-              ? json_['deleteTime'] as core.String
-              : null,
-          expireTime: json_.containsKey('expireTime')
-              ? json_['expireTime'] as core.String
-              : null,
-          gcsBucket: json_.containsKey('gcsBucket')
-              ? json_['gcsBucket'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          deleteTime: json_['deleteTime'] as core.String?,
+          expireTime: json_['expireTime'] as core.String?,
+          gcsBucket: json_['gcsBucket'] as core.String?,
           keySpec: json_.containsKey('keySpec')
               ? KeyVersionSpec.fromJson(
                   json_['keySpec'] as core.Map<core.String, core.dynamic>)
@@ -3271,32 +3238,23 @@ class CertificateAuthority {
                   ),
                 )
               : null,
-          lifetime: json_.containsKey('lifetime')
-              ? json_['lifetime'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          lifetime: json_['lifetime'] as core.String?,
+          name: json_['name'] as core.String?,
           pemCaCertificates: json_.containsKey('pemCaCertificates')
               ? (json_['pemCaCertificates'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          satisfiesPzi: json_.containsKey('satisfiesPzi')
-              ? json_['satisfiesPzi'] as core.bool
-              : null,
-          satisfiesPzs: json_.containsKey('satisfiesPzs')
-              ? json_['satisfiesPzs'] as core.bool
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
+          satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
+          satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
+          state: json_['state'] as core.String?,
           subordinateConfig: json_.containsKey('subordinateConfig')
               ? SubordinateConfig.fromJson(json_['subordinateConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          tier: json_.containsKey('tier') ? json_['tier'] as core.String : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          tier: json_['tier'] as core.String?,
+          type: json_['type'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3405,8 +3363,7 @@ class CertificateConfigKeyId {
 
   CertificateConfigKeyId.fromJson(core.Map json_)
       : this(
-          keyId:
-              json_.containsKey('keyId') ? json_['keyId'] as core.String : null,
+          keyId: json_['keyId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3569,9 +3526,7 @@ class CertificateFingerprint {
 
   CertificateFingerprint.fromJson(core.Map json_)
       : this(
-          sha256Hash: json_.containsKey('sha256Hash')
-              ? json_['sha256Hash'] as core.String
-              : null,
+          sha256Hash: json_['sha256Hash'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3615,12 +3570,9 @@ class CertificateIdentityConstraints {
   CertificateIdentityConstraints.fromJson(core.Map json_)
       : this(
           allowSubjectAltNamesPassthrough:
-              json_.containsKey('allowSubjectAltNamesPassthrough')
-                  ? json_['allowSubjectAltNamesPassthrough'] as core.bool
-                  : null,
-          allowSubjectPassthrough: json_.containsKey('allowSubjectPassthrough')
-              ? json_['allowSubjectPassthrough'] as core.bool
-              : null,
+              json_['allowSubjectAltNamesPassthrough'] as core.bool?,
+          allowSubjectPassthrough:
+              json_['allowSubjectPassthrough'] as core.bool?,
           celExpression: json_.containsKey('celExpression')
               ? Expr.fromJson(
                   json_['celExpression'] as core.Map<core.String, core.dynamic>)
@@ -3716,12 +3668,8 @@ class CertificateRevocationList {
 
   CertificateRevocationList.fromJson(core.Map json_)
       : this(
-          accessUrl: json_.containsKey('accessUrl')
-              ? json_['accessUrl'] as core.String
-              : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
+          accessUrl: json_['accessUrl'] as core.String?,
+          createTime: json_['createTime'] as core.String?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -3730,27 +3678,18 @@ class CertificateRevocationList {
                   ),
                 )
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          pemCrl: json_.containsKey('pemCrl')
-              ? json_['pemCrl'] as core.String
-              : null,
-          revisionId: json_.containsKey('revisionId')
-              ? json_['revisionId'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          pemCrl: json_['pemCrl'] as core.String?,
+          revisionId: json_['revisionId'] as core.String?,
           revokedCertificates: json_.containsKey('revokedCertificates')
               ? (json_['revokedCertificates'] as core.List)
                   .map((value) => RevokedCertificate.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          sequenceNumber: json_.containsKey('sequenceNumber')
-              ? json_['sequenceNumber'] as core.String
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          sequenceNumber: json_['sequenceNumber'] as core.String?,
+          state: json_['state'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3857,12 +3796,8 @@ class CertificateTemplate {
 
   CertificateTemplate.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          description: json_['description'] as core.String?,
           identityConstraints: json_.containsKey('identityConstraints')
               ? CertificateIdentityConstraints.fromJson(
                   json_['identityConstraints']
@@ -3876,10 +3811,8 @@ class CertificateTemplate {
                   ),
                 )
               : null,
-          maximumLifetime: json_.containsKey('maximumLifetime')
-              ? json_['maximumLifetime'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          maximumLifetime: json_['maximumLifetime'] as core.String?,
+          name: json_['name'] as core.String?,
           passthroughExtensions: json_.containsKey('passthroughExtensions')
               ? CertificateExtensionConstraints.fromJson(
                   json_['passthroughExtensions']
@@ -3889,9 +3822,7 @@ class CertificateTemplate {
               ? X509Parameters.fromJson(json_['predefinedValues']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3945,12 +3876,8 @@ class DisableCertificateAuthorityRequest {
   DisableCertificateAuthorityRequest.fromJson(core.Map json_)
       : this(
           ignoreDependentResources:
-              json_.containsKey('ignoreDependentResources')
-                  ? json_['ignoreDependentResources'] as core.bool
-                  : null,
-          requestId: json_.containsKey('requestId')
-              ? json_['requestId'] as core.String
-              : null,
+              json_['ignoreDependentResources'] as core.bool?,
+          requestId: json_['requestId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3985,9 +3912,7 @@ class EcKeyType {
 
   EcKeyType.fromJson(core.Map json_)
       : this(
-          signatureAlgorithm: json_.containsKey('signatureAlgorithm')
-              ? json_['signatureAlgorithm'] as core.String
-              : null,
+          signatureAlgorithm: json_['signatureAlgorithm'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4074,24 +3999,12 @@ class ExtendedKeyUsageOptions {
 
   ExtendedKeyUsageOptions.fromJson(core.Map json_)
       : this(
-          clientAuth: json_.containsKey('clientAuth')
-              ? json_['clientAuth'] as core.bool
-              : null,
-          codeSigning: json_.containsKey('codeSigning')
-              ? json_['codeSigning'] as core.bool
-              : null,
-          emailProtection: json_.containsKey('emailProtection')
-              ? json_['emailProtection'] as core.bool
-              : null,
-          ocspSigning: json_.containsKey('ocspSigning')
-              ? json_['ocspSigning'] as core.bool
-              : null,
-          serverAuth: json_.containsKey('serverAuth')
-              ? json_['serverAuth'] as core.bool
-              : null,
-          timeStamping: json_.containsKey('timeStamping')
-              ? json_['timeStamping'] as core.bool
-              : null,
+          clientAuth: json_['clientAuth'] as core.bool?,
+          codeSigning: json_['codeSigning'] as core.bool?,
+          emailProtection: json_['emailProtection'] as core.bool?,
+          ocspSigning: json_['ocspSigning'] as core.bool?,
+          serverAuth: json_['serverAuth'] as core.bool?,
+          timeStamping: json_['timeStamping'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4146,9 +4059,7 @@ class FetchCertificateAuthorityCsrResponse {
 
   FetchCertificateAuthorityCsrResponse.fromJson(core.Map json_)
       : this(
-          pemCsr: json_.containsKey('pemCsr')
-              ? json_['pemCsr'] as core.String
-              : null,
+          pemCsr: json_['pemCsr'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4178,12 +4089,8 @@ class IssuanceModes {
   IssuanceModes.fromJson(core.Map json_)
       : this(
           allowConfigBasedIssuance:
-              json_.containsKey('allowConfigBasedIssuance')
-                  ? json_['allowConfigBasedIssuance'] as core.bool
-                  : null,
-          allowCsrBasedIssuance: json_.containsKey('allowCsrBasedIssuance')
-              ? json_['allowCsrBasedIssuance'] as core.bool
-              : null,
+              json_['allowConfigBasedIssuance'] as core.bool?,
+          allowCsrBasedIssuance: json_['allowCsrBasedIssuance'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4284,9 +4191,7 @@ class IssuancePolicy {
                   json_['identityConstraints']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          maximumLifetime: json_.containsKey('maximumLifetime')
-              ? json_['maximumLifetime'] as core.String
-              : null,
+          maximumLifetime: json_['maximumLifetime'] as core.String?,
           passthroughExtensions: json_.containsKey('passthroughExtensions')
               ? CertificateExtensionConstraints.fromJson(
                   json_['passthroughExtensions']
@@ -4322,8 +4227,7 @@ class KeyId {
 
   KeyId.fromJson(core.Map json_)
       : this(
-          keyId:
-              json_.containsKey('keyId') ? json_['keyId'] as core.String : null,
+          keyId: json_['keyId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4423,33 +4327,15 @@ class KeyUsageOptions {
 
   KeyUsageOptions.fromJson(core.Map json_)
       : this(
-          certSign: json_.containsKey('certSign')
-              ? json_['certSign'] as core.bool
-              : null,
-          contentCommitment: json_.containsKey('contentCommitment')
-              ? json_['contentCommitment'] as core.bool
-              : null,
-          crlSign: json_.containsKey('crlSign')
-              ? json_['crlSign'] as core.bool
-              : null,
-          dataEncipherment: json_.containsKey('dataEncipherment')
-              ? json_['dataEncipherment'] as core.bool
-              : null,
-          decipherOnly: json_.containsKey('decipherOnly')
-              ? json_['decipherOnly'] as core.bool
-              : null,
-          digitalSignature: json_.containsKey('digitalSignature')
-              ? json_['digitalSignature'] as core.bool
-              : null,
-          encipherOnly: json_.containsKey('encipherOnly')
-              ? json_['encipherOnly'] as core.bool
-              : null,
-          keyAgreement: json_.containsKey('keyAgreement')
-              ? json_['keyAgreement'] as core.bool
-              : null,
-          keyEncipherment: json_.containsKey('keyEncipherment')
-              ? json_['keyEncipherment'] as core.bool
-              : null,
+          certSign: json_['certSign'] as core.bool?,
+          contentCommitment: json_['contentCommitment'] as core.bool?,
+          crlSign: json_['crlSign'] as core.bool?,
+          dataEncipherment: json_['dataEncipherment'] as core.bool?,
+          decipherOnly: json_['decipherOnly'] as core.bool?,
+          digitalSignature: json_['digitalSignature'] as core.bool?,
+          encipherOnly: json_['encipherOnly'] as core.bool?,
+          keyAgreement: json_['keyAgreement'] as core.bool?,
+          keyEncipherment: json_['keyEncipherment'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4504,12 +4390,8 @@ class KeyVersionSpec {
 
   KeyVersionSpec.fromJson(core.Map json_)
       : this(
-          algorithm: json_.containsKey('algorithm')
-              ? json_['algorithm'] as core.String
-              : null,
-          cloudKmsKeyVersion: json_.containsKey('cloudKmsKeyVersion')
-              ? json_['cloudKmsKeyVersion'] as core.String
-              : null,
+          algorithm: json_['algorithm'] as core.String?,
+          cloudKmsKeyVersion: json_['cloudKmsKeyVersion'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4547,9 +4429,7 @@ class ListCaPoolsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: json_.containsKey('unreachable')
               ? (json_['unreachable'] as core.List)
                   .map((value) => value as core.String)
@@ -4592,9 +4472,7 @@ class ListCertificateAuthoritiesResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: json_.containsKey('unreachable')
               ? (json_['unreachable'] as core.List)
                   .map((value) => value as core.String)
@@ -4640,9 +4518,7 @@ class ListCertificateRevocationListsResponse {
                           value as core.Map<core.String, core.dynamic>))
                       .toList()
                   : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: json_.containsKey('unreachable')
               ? (json_['unreachable'] as core.List)
                   .map((value) => value as core.String)
@@ -4686,9 +4562,7 @@ class ListCertificateTemplatesResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: json_.containsKey('unreachable')
               ? (json_['unreachable'] as core.List)
                   .map((value) => value as core.String)
@@ -4732,9 +4606,7 @@ class ListCertificatesResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: json_.containsKey('unreachable')
               ? (json_['unreachable'] as core.List)
                   .map((value) => value as core.String)
@@ -4770,9 +4642,7 @@ class ListLocationsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4796,9 +4666,7 @@ class ListOperationsResponse {
 
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           operations: json_.containsKey('operations')
               ? (json_['operations'] as core.List)
                   .map((value) => Operation.fromJson(
@@ -4892,9 +4760,7 @@ class NameConstraints {
 
   NameConstraints.fromJson(core.Map json_)
       : this(
-          critical: json_.containsKey('critical')
-              ? json_['critical'] as core.bool
-              : null,
+          critical: json_['critical'] as core.bool?,
           excludedDnsNames: json_.containsKey('excludedDnsNames')
               ? (json_['excludedDnsNames'] as core.List)
                   .map((value) => value as core.String)
@@ -5034,7 +4900,7 @@ class Operation {
 
   Operation.fromJson(core.Map json_)
       : this(
-          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
@@ -5042,7 +4908,7 @@ class Operation {
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           response: json_.containsKey('response')
               ? json_['response'] as core.Map<core.String, core.dynamic>
               : null,
@@ -5164,10 +5030,8 @@ class Policy {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          version: json_.containsKey('version')
-              ? json_['version'] as core.int
-              : null,
+          etag: json_['etag'] as core.String?,
+          version: json_['version'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5221,10 +5085,8 @@ class PublicKey {
 
   PublicKey.fromJson(core.Map json_)
       : this(
-          format: json_.containsKey('format')
-              ? json_['format'] as core.String
-              : null,
-          key: json_.containsKey('key') ? json_['key'] as core.String : null,
+          format: json_['format'] as core.String?,
+          key: json_['key'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5285,15 +5147,9 @@ class PublishingOptions {
 
   PublishingOptions.fromJson(core.Map json_)
       : this(
-          encodingFormat: json_.containsKey('encodingFormat')
-              ? json_['encodingFormat'] as core.String
-              : null,
-          publishCaCert: json_.containsKey('publishCaCert')
-              ? json_['publishCaCert'] as core.bool
-              : null,
-          publishCrl: json_.containsKey('publishCrl')
-              ? json_['publishCrl'] as core.bool
-              : null,
+          encodingFormat: json_['encodingFormat'] as core.String?,
+          publishCaCert: json_['publishCaCert'] as core.bool?,
+          publishCrl: json_['publishCrl'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5336,12 +5192,8 @@ class RevocationDetails {
 
   RevocationDetails.fromJson(core.Map json_)
       : this(
-          revocationState: json_.containsKey('revocationState')
-              ? json_['revocationState'] as core.String
-              : null,
-          revocationTime: json_.containsKey('revocationTime')
-              ? json_['revocationTime'] as core.String
-              : null,
+          revocationState: json_['revocationState'] as core.String?,
+          revocationTime: json_['revocationTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5398,12 +5250,8 @@ class RevokeCertificateRequest {
 
   RevokeCertificateRequest.fromJson(core.Map json_)
       : this(
-          reason: json_.containsKey('reason')
-              ? json_['reason'] as core.String
-              : null,
-          requestId: json_.containsKey('requestId')
-              ? json_['requestId'] as core.String
-              : null,
+          reason: json_['reason'] as core.String?,
+          requestId: json_['requestId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5450,15 +5298,9 @@ class RevokedCertificate {
 
   RevokedCertificate.fromJson(core.Map json_)
       : this(
-          certificate: json_.containsKey('certificate')
-              ? json_['certificate'] as core.String
-              : null,
-          hexSerialNumber: json_.containsKey('hexSerialNumber')
-              ? json_['hexSerialNumber'] as core.String
-              : null,
-          revocationReason: json_.containsKey('revocationReason')
-              ? json_['revocationReason'] as core.String
-              : null,
+          certificate: json_['certificate'] as core.String?,
+          hexSerialNumber: json_['hexSerialNumber'] as core.String?,
+          revocationReason: json_['revocationReason'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5493,12 +5335,8 @@ class RsaKeyType {
 
   RsaKeyType.fromJson(core.Map json_)
       : this(
-          maxModulusSize: json_.containsKey('maxModulusSize')
-              ? json_['maxModulusSize'] as core.String
-              : null,
-          minModulusSize: json_.containsKey('minModulusSize')
-              ? json_['minModulusSize'] as core.String
-              : null,
+          maxModulusSize: json_['maxModulusSize'] as core.String?,
+          minModulusSize: json_['minModulusSize'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5533,9 +5371,7 @@ class SetIamPolicyRequest {
               ? Policy.fromJson(
                   json_['policy'] as core.Map<core.String, core.dynamic>)
               : null,
-          updateMask: json_.containsKey('updateMask')
-              ? json_['updateMask'] as core.String
-              : null,
+          updateMask: json_['updateMask'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5593,30 +5429,14 @@ class Subject {
 
   Subject.fromJson(core.Map json_)
       : this(
-          commonName: json_.containsKey('commonName')
-              ? json_['commonName'] as core.String
-              : null,
-          countryCode: json_.containsKey('countryCode')
-              ? json_['countryCode'] as core.String
-              : null,
-          locality: json_.containsKey('locality')
-              ? json_['locality'] as core.String
-              : null,
-          organization: json_.containsKey('organization')
-              ? json_['organization'] as core.String
-              : null,
-          organizationalUnit: json_.containsKey('organizationalUnit')
-              ? json_['organizationalUnit'] as core.String
-              : null,
-          postalCode: json_.containsKey('postalCode')
-              ? json_['postalCode'] as core.String
-              : null,
-          province: json_.containsKey('province')
-              ? json_['province'] as core.String
-              : null,
-          streetAddress: json_.containsKey('streetAddress')
-              ? json_['streetAddress'] as core.String
-              : null,
+          commonName: json_['commonName'] as core.String?,
+          countryCode: json_['countryCode'] as core.String?,
+          locality: json_['locality'] as core.String?,
+          organization: json_['organization'] as core.String?,
+          organizationalUnit: json_['organizationalUnit'] as core.String?,
+          postalCode: json_['postalCode'] as core.String?,
+          province: json_['province'] as core.String?,
+          streetAddress: json_['streetAddress'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5775,18 +5595,10 @@ class SubjectDescription {
 
   SubjectDescription.fromJson(core.Map json_)
       : this(
-          hexSerialNumber: json_.containsKey('hexSerialNumber')
-              ? json_['hexSerialNumber'] as core.String
-              : null,
-          lifetime: json_.containsKey('lifetime')
-              ? json_['lifetime'] as core.String
-              : null,
-          notAfterTime: json_.containsKey('notAfterTime')
-              ? json_['notAfterTime'] as core.String
-              : null,
-          notBeforeTime: json_.containsKey('notBeforeTime')
-              ? json_['notBeforeTime'] as core.String
-              : null,
+          hexSerialNumber: json_['hexSerialNumber'] as core.String?,
+          lifetime: json_['lifetime'] as core.String?,
+          notAfterTime: json_['notAfterTime'] as core.String?,
+          notBeforeTime: json_['notBeforeTime'] as core.String?,
           subject: json_.containsKey('subject')
               ? Subject.fromJson(
                   json_['subject'] as core.Map<core.String, core.dynamic>)
@@ -5835,9 +5647,7 @@ class SubordinateConfig {
 
   SubordinateConfig.fromJson(core.Map json_)
       : this(
-          certificateAuthority: json_.containsKey('certificateAuthority')
-              ? json_['certificateAuthority'] as core.String
-              : null,
+          certificateAuthority: json_['certificateAuthority'] as core.String?,
           pemIssuerChain: json_.containsKey('pemIssuerChain')
               ? SubordinateConfigChain.fromJson(json_['pemIssuerChain']
                   as core.Map<core.String, core.dynamic>)
@@ -5922,15 +5732,12 @@ class X509Extension {
 
   X509Extension.fromJson(core.Map json_)
       : this(
-          critical: json_.containsKey('critical')
-              ? json_['critical'] as core.bool
-              : null,
+          critical: json_['critical'] as core.bool?,
           objectId: json_.containsKey('objectId')
               ? ObjectId.fromJson(
                   json_['objectId'] as core.Map<core.String, core.dynamic>)
               : null,
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
+          value: json_['value'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

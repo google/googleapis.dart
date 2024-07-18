@@ -1446,9 +1446,7 @@ class AuditConfig {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          service: json_.containsKey('service')
-              ? json_['service'] as core.String
-              : null,
+          service: json_['service'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1500,9 +1498,7 @@ class BigQueryDatasetSource {
 
   BigQueryDatasetSource.fromJson(core.Map json_)
       : this(
-          dataset: json_.containsKey('dataset')
-              ? json_['dataset'] as core.String
-              : null,
+          dataset: json_['dataset'] as core.String?,
           restrictedExportPolicy: json_.containsKey('restrictedExportPolicy')
               ? RestrictedExportPolicy.fromJson(json_['restrictedExportPolicy']
                   as core.Map<core.String, core.dynamic>)
@@ -1620,7 +1616,7 @@ class Binding {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          role: json_.containsKey('role') ? json_['role'] as core.String : null,
+          role: json_['role'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1713,23 +1709,13 @@ class DataExchange {
 
   DataExchange.fromJson(core.Map json_)
       : this(
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          documentation: json_.containsKey('documentation')
-              ? json_['documentation'] as core.String
-              : null,
-          icon: json_.containsKey('icon') ? json_['icon'] as core.String : null,
-          listingCount: json_.containsKey('listingCount')
-              ? json_['listingCount'] as core.int
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          primaryContact: json_.containsKey('primaryContact')
-              ? json_['primaryContact'] as core.String
-              : null,
+          description: json_['description'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          documentation: json_['documentation'] as core.String?,
+          icon: json_['icon'] as core.String?,
+          listingCount: json_['listingCount'] as core.int?,
+          name: json_['name'] as core.String?,
+          primaryContact: json_['primaryContact'] as core.String?,
           sharingEnvironmentConfig:
               json_.containsKey('sharingEnvironmentConfig')
                   ? SharingEnvironmentConfig.fromJson(
@@ -1772,10 +1758,8 @@ class DataProvider {
 
   DataProvider.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          primaryContact: json_.containsKey('primaryContact')
-              ? json_['primaryContact'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          primaryContact: json_['primaryContact'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1816,13 +1800,9 @@ class DcrExchangeConfig {
   DcrExchangeConfig.fromJson(core.Map json_)
       : this(
           singleLinkedDatasetPerCleanroom:
-              json_.containsKey('singleLinkedDatasetPerCleanroom')
-                  ? json_['singleLinkedDatasetPerCleanroom'] as core.bool
-                  : null,
-          singleSelectedResourceSharingRestriction: json_
-                  .containsKey('singleSelectedResourceSharingRestriction')
-              ? json_['singleSelectedResourceSharingRestriction'] as core.bool
-              : null,
+              json_['singleLinkedDatasetPerCleanroom'] as core.bool?,
+          singleSelectedResourceSharingRestriction:
+              json_['singleSelectedResourceSharingRestriction'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1886,12 +1866,8 @@ class DestinationDataset {
               ? DestinationDatasetReference.fromJson(json_['datasetReference']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          friendlyName: json_.containsKey('friendlyName')
-              ? json_['friendlyName'] as core.String
-              : null,
+          description: json_['description'] as core.String?,
+          friendlyName: json_['friendlyName'] as core.String?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -1900,9 +1876,7 @@ class DestinationDataset {
                   ),
                 )
               : null,
-          location: json_.containsKey('location')
-              ? json_['location'] as core.String
-              : null,
+          location: json_['location'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1936,12 +1910,8 @@ class DestinationDatasetReference {
 
   DestinationDatasetReference.fromJson(core.Map json_)
       : this(
-          datasetId: json_.containsKey('datasetId')
-              ? json_['datasetId'] as core.String
-              : null,
-          projectId: json_.containsKey('projectId')
-              ? json_['projectId'] as core.String
-              : null,
+          datasetId: json_['datasetId'] as core.String?,
+          projectId: json_['projectId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2018,9 +1988,7 @@ class LinkedResource {
 
   LinkedResource.fromJson(core.Map json_)
       : this(
-          linkedDataset: json_.containsKey('linkedDataset')
-              ? json_['linkedDataset'] as core.String
-              : null,
+          linkedDataset: json_['linkedDataset'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2049,9 +2017,7 @@ class ListDataExchangesResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2081,9 +2047,7 @@ class ListListingsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2114,9 +2078,7 @@ class ListOrgDataExchangesResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2140,9 +2102,7 @@ class ListSharedResourceSubscriptionsResponse {
 
   ListSharedResourceSubscriptionsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           sharedResourceSubscriptions:
               json_.containsKey('sharedResourceSubscriptions')
                   ? (json_['sharedResourceSubscriptions'] as core.List)
@@ -2174,9 +2134,7 @@ class ListSubscriptionsResponse {
 
   ListSubscriptionsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           subscriptions: json_.containsKey('subscriptions')
               ? (json_['subscriptions'] as core.List)
                   .map((value) => Subscription.fromJson(
@@ -2328,33 +2286,22 @@ class Listing {
               ? DataProvider.fromJson(
                   json_['dataProvider'] as core.Map<core.String, core.dynamic>)
               : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          documentation: json_.containsKey('documentation')
-              ? json_['documentation'] as core.String
-              : null,
-          icon: json_.containsKey('icon') ? json_['icon'] as core.String : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          primaryContact: json_.containsKey('primaryContact')
-              ? json_['primaryContact'] as core.String
-              : null,
+          description: json_['description'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          documentation: json_['documentation'] as core.String?,
+          icon: json_['icon'] as core.String?,
+          name: json_['name'] as core.String?,
+          primaryContact: json_['primaryContact'] as core.String?,
           publisher: json_.containsKey('publisher')
               ? Publisher.fromJson(
                   json_['publisher'] as core.Map<core.String, core.dynamic>)
               : null,
-          requestAccess: json_.containsKey('requestAccess')
-              ? json_['requestAccess'] as core.String
-              : null,
+          requestAccess: json_['requestAccess'] as core.String?,
           restrictedExportConfig: json_.containsKey('restrictedExportConfig')
               ? RestrictedExportConfig.fromJson(json_['restrictedExportConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
+          state: json_['state'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2428,7 +2375,7 @@ class Operation {
 
   Operation.fromJson(core.Map json_)
       : this(
-          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
@@ -2436,7 +2383,7 @@ class Operation {
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           response: json_.containsKey('response')
               ? json_['response'] as core.Map<core.String, core.dynamic>
               : null,
@@ -2558,10 +2505,8 @@ class Policy {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          version: json_.containsKey('version')
-              ? json_['version'] as core.int
-              : null,
+          etag: json_['etag'] as core.String?,
+          version: json_['version'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2593,10 +2538,8 @@ class Publisher {
 
   Publisher.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          primaryContact: json_.containsKey('primaryContact')
-              ? json_['primaryContact'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          primaryContact: json_['primaryContact'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2636,16 +2579,10 @@ class RestrictedExportConfig {
 
   RestrictedExportConfig.fromJson(core.Map json_)
       : this(
-          enabled: json_.containsKey('enabled')
-              ? json_['enabled'] as core.bool
-              : null,
+          enabled: json_['enabled'] as core.bool?,
           restrictDirectTableAccess:
-              json_.containsKey('restrictDirectTableAccess')
-                  ? json_['restrictDirectTableAccess'] as core.bool
-                  : null,
-          restrictQueryResult: json_.containsKey('restrictQueryResult')
-              ? json_['restrictQueryResult'] as core.bool
-              : null,
+              json_['restrictDirectTableAccess'] as core.bool?,
+          restrictQueryResult: json_['restrictQueryResult'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2685,16 +2622,10 @@ class RestrictedExportPolicy {
 
   RestrictedExportPolicy.fromJson(core.Map json_)
       : this(
-          enabled: json_.containsKey('enabled')
-              ? json_['enabled'] as core.bool
-              : null,
+          enabled: json_['enabled'] as core.bool?,
           restrictDirectTableAccess:
-              json_.containsKey('restrictDirectTableAccess')
-                  ? json_['restrictDirectTableAccess'] as core.bool
-                  : null,
-          restrictQueryResult: json_.containsKey('restrictQueryResult')
-              ? json_['restrictQueryResult'] as core.bool
-              : null,
+              json_['restrictDirectTableAccess'] as core.bool?,
+          restrictQueryResult: json_['restrictQueryResult'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2727,8 +2658,7 @@ class SelectedResource {
 
   SelectedResource.fromJson(core.Map json_)
       : this(
-          table:
-              json_.containsKey('table') ? json_['table'] as core.String : null,
+          table: json_['table'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2762,9 +2692,7 @@ class SetIamPolicyRequest {
               ? Policy.fromJson(
                   json_['policy'] as core.Map<core.String, core.dynamic>)
               : null,
-          updateMask: json_.containsKey('updateMask')
-              ? json_['updateMask'] as core.String
-              : null,
+          updateMask: json_['updateMask'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2844,15 +2772,9 @@ class SubscribeDataExchangeRequest {
 
   SubscribeDataExchangeRequest.fromJson(core.Map json_)
       : this(
-          destination: json_.containsKey('destination')
-              ? json_['destination'] as core.String
-              : null,
-          subscriberContact: json_.containsKey('subscriberContact')
-              ? json_['subscriberContact'] as core.String
-              : null,
-          subscription: json_.containsKey('subscription')
-              ? json_['subscription'] as core.String
-              : null,
+          destination: json_['destination'] as core.String?,
+          subscriberContact: json_['subscriberContact'] as core.String?,
+          subscription: json_['subscription'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2999,15 +2921,9 @@ class Subscription {
 
   Subscription.fromJson(core.Map json_)
       : this(
-          creationTime: json_.containsKey('creationTime')
-              ? json_['creationTime'] as core.String
-              : null,
-          dataExchange: json_.containsKey('dataExchange')
-              ? json_['dataExchange'] as core.String
-              : null,
-          lastModifyTime: json_.containsKey('lastModifyTime')
-              ? json_['lastModifyTime'] as core.String
-              : null,
+          creationTime: json_['creationTime'] as core.String?,
+          dataExchange: json_['dataExchange'] as core.String?,
+          lastModifyTime: json_['lastModifyTime'] as core.String?,
           linkedDatasetMap: json_.containsKey('linkedDatasetMap')
               ? (json_['linkedDatasetMap']
                       as core.Map<core.String, core.dynamic>)
@@ -3019,21 +2935,13 @@ class Subscription {
                   ),
                 )
               : null,
-          listing: json_.containsKey('listing')
-              ? json_['listing'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          organizationDisplayName: json_.containsKey('organizationDisplayName')
-              ? json_['organizationDisplayName'] as core.String
-              : null,
-          organizationId: json_.containsKey('organizationId')
-              ? json_['organizationId'] as core.String
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
-          subscriberContact: json_.containsKey('subscriberContact')
-              ? json_['subscriberContact'] as core.String
-              : null,
+          listing: json_['listing'] as core.String?,
+          name: json_['name'] as core.String?,
+          organizationDisplayName:
+              json_['organizationDisplayName'] as core.String?,
+          organizationId: json_['organizationId'] as core.String?,
+          state: json_['state'] as core.String?,
+          subscriberContact: json_['subscriberContact'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

@@ -2021,9 +2021,7 @@ class AddProductToProductSetRequest {
 
   AddProductToProductSetRequest.fromJson(core.Map json_)
       : this(
-          product: json_.containsKey('product')
-              ? json_['product'] as core.String
-              : null,
+          product: json_['product'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2139,9 +2137,7 @@ class AnnotateFileResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          totalPages: json_.containsKey('totalPages')
-              ? json_['totalPages'] as core.int
-              : null,
+          totalPages: json_['totalPages'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2466,9 +2462,7 @@ class AsyncBatchAnnotateFilesRequest {
                   ),
                 )
               : null,
-          parent: json_.containsKey('parent')
-              ? json_['parent'] as core.String
-              : null,
+          parent: json_['parent'] as core.String?,
           requests: json_.containsKey('requests')
               ? (json_['requests'] as core.List)
                   .map((value) => AsyncAnnotateFileRequest.fromJson(
@@ -2537,9 +2531,7 @@ class AsyncBatchAnnotateImagesRequest {
               ? OutputConfig.fromJson(
                   json_['outputConfig'] as core.Map<core.String, core.dynamic>)
               : null,
-          parent: json_.containsKey('parent')
-              ? json_['parent'] as core.String
-              : null,
+          parent: json_['parent'] as core.String?,
           requests: json_.containsKey('requests')
               ? (json_['requests'] as core.List)
                   .map((value) => AnnotateImageRequest.fromJson(
@@ -2602,9 +2594,7 @@ class BatchAnnotateFilesRequest {
                   ),
                 )
               : null,
-          parent: json_.containsKey('parent')
-              ? json_['parent'] as core.String
-              : null,
+          parent: json_['parent'] as core.String?,
           requests: json_.containsKey('requests')
               ? (json_['requests'] as core.List)
                   .map((value) => AnnotateFileRequest.fromJson(
@@ -2688,9 +2678,7 @@ class BatchAnnotateImagesRequest {
                   ),
                 )
               : null,
-          parent: json_.containsKey('parent')
-              ? json_['parent'] as core.String
-              : null,
+          parent: json_['parent'] as core.String?,
           requests: json_.containsKey('requests')
               ? (json_['requests'] as core.List)
                   .map((value) => AnnotateImageRequest.fromJson(
@@ -2774,16 +2762,12 @@ class Block {
 
   Block.fromJson(core.Map json_)
       : this(
-          blockType: json_.containsKey('blockType')
-              ? json_['blockType'] as core.String
-              : null,
+          blockType: json_['blockType'] as core.String?,
           boundingBox: json_.containsKey('boundingBox')
               ? BoundingPoly.fromJson(
                   json_['boundingBox'] as core.Map<core.String, core.dynamic>)
               : null,
-          confidence: json_.containsKey('confidence')
-              ? (json_['confidence'] as core.num).toDouble()
-              : null,
+          confidence: (json_['confidence'] as core.num?)?.toDouble(),
           paragraphs: json_.containsKey('paragraphs')
               ? (json_['paragraphs'] as core.List)
                   .map((value) => Paragraph.fromJson(
@@ -2923,12 +2907,8 @@ class ColorInfo {
               ? Color.fromJson(
                   json_['color'] as core.Map<core.String, core.dynamic>)
               : null,
-          pixelFraction: json_.containsKey('pixelFraction')
-              ? (json_['pixelFraction'] as core.num).toDouble()
-              : null,
-          score: json_.containsKey('score')
-              ? (json_['score'] as core.num).toDouble()
-              : null,
+          pixelFraction: (json_['pixelFraction'] as core.num?)?.toDouble(),
+          score: (json_['score'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2966,12 +2946,9 @@ class CropHint {
               ? BoundingPoly.fromJson(
                   json_['boundingPoly'] as core.Map<core.String, core.dynamic>)
               : null,
-          confidence: json_.containsKey('confidence')
-              ? (json_['confidence'] as core.num).toDouble()
-              : null,
-          importanceFraction: json_.containsKey('importanceFraction')
-              ? (json_['importanceFraction'] as core.num).toDouble()
-              : null,
+          confidence: (json_['confidence'] as core.num?)?.toDouble(),
+          importanceFraction:
+              (json_['importanceFraction'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3058,10 +3035,8 @@ class DetectedBreak {
 
   DetectedBreak.fromJson(core.Map json_)
       : this(
-          isPrefix: json_.containsKey('isPrefix')
-              ? json_['isPrefix'] as core.bool
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          isPrefix: json_['isPrefix'] as core.bool?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3090,12 +3065,8 @@ class DetectedLanguage {
 
   DetectedLanguage.fromJson(core.Map json_)
       : this(
-          confidence: json_.containsKey('confidence')
-              ? (json_['confidence'] as core.num).toDouble()
-              : null,
-          languageCode: json_.containsKey('languageCode')
-              ? json_['languageCode'] as core.String
-              : null,
+          confidence: (json_['confidence'] as core.num?)?.toDouble(),
+          languageCode: json_['languageCode'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3210,34 +3181,24 @@ class EntityAnnotation {
               ? BoundingPoly.fromJson(
                   json_['boundingPoly'] as core.Map<core.String, core.dynamic>)
               : null,
-          confidence: json_.containsKey('confidence')
-              ? (json_['confidence'] as core.num).toDouble()
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          locale: json_.containsKey('locale')
-              ? json_['locale'] as core.String
-              : null,
+          confidence: (json_['confidence'] as core.num?)?.toDouble(),
+          description: json_['description'] as core.String?,
+          locale: json_['locale'] as core.String?,
           locations: json_.containsKey('locations')
               ? (json_['locations'] as core.List)
                   .map((value) => LocationInfo.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          mid: json_.containsKey('mid') ? json_['mid'] as core.String : null,
+          mid: json_['mid'] as core.String?,
           properties: json_.containsKey('properties')
               ? (json_['properties'] as core.List)
                   .map((value) => Property.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          score: json_.containsKey('score')
-              ? (json_['score'] as core.num).toDouble()
-              : null,
-          topicality: json_.containsKey('topicality')
-              ? (json_['topicality'] as core.num).toDouble()
-              : null,
+          score: (json_['score'] as core.num?)?.toDouble(),
+          topicality: (json_['topicality'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3396,56 +3357,35 @@ class FaceAnnotation {
 
   FaceAnnotation.fromJson(core.Map json_)
       : this(
-          angerLikelihood: json_.containsKey('angerLikelihood')
-              ? json_['angerLikelihood'] as core.String
-              : null,
-          blurredLikelihood: json_.containsKey('blurredLikelihood')
-              ? json_['blurredLikelihood'] as core.String
-              : null,
+          angerLikelihood: json_['angerLikelihood'] as core.String?,
+          blurredLikelihood: json_['blurredLikelihood'] as core.String?,
           boundingPoly: json_.containsKey('boundingPoly')
               ? BoundingPoly.fromJson(
                   json_['boundingPoly'] as core.Map<core.String, core.dynamic>)
               : null,
-          detectionConfidence: json_.containsKey('detectionConfidence')
-              ? (json_['detectionConfidence'] as core.num).toDouble()
-              : null,
+          detectionConfidence:
+              (json_['detectionConfidence'] as core.num?)?.toDouble(),
           fdBoundingPoly: json_.containsKey('fdBoundingPoly')
               ? BoundingPoly.fromJson(json_['fdBoundingPoly']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          headwearLikelihood: json_.containsKey('headwearLikelihood')
-              ? json_['headwearLikelihood'] as core.String
-              : null,
-          joyLikelihood: json_.containsKey('joyLikelihood')
-              ? json_['joyLikelihood'] as core.String
-              : null,
-          landmarkingConfidence: json_.containsKey('landmarkingConfidence')
-              ? (json_['landmarkingConfidence'] as core.num).toDouble()
-              : null,
+          headwearLikelihood: json_['headwearLikelihood'] as core.String?,
+          joyLikelihood: json_['joyLikelihood'] as core.String?,
+          landmarkingConfidence:
+              (json_['landmarkingConfidence'] as core.num?)?.toDouble(),
           landmarks: json_.containsKey('landmarks')
               ? (json_['landmarks'] as core.List)
                   .map((value) => Landmark.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          panAngle: json_.containsKey('panAngle')
-              ? (json_['panAngle'] as core.num).toDouble()
-              : null,
-          rollAngle: json_.containsKey('rollAngle')
-              ? (json_['rollAngle'] as core.num).toDouble()
-              : null,
-          sorrowLikelihood: json_.containsKey('sorrowLikelihood')
-              ? json_['sorrowLikelihood'] as core.String
-              : null,
-          surpriseLikelihood: json_.containsKey('surpriseLikelihood')
-              ? json_['surpriseLikelihood'] as core.String
-              : null,
-          tiltAngle: json_.containsKey('tiltAngle')
-              ? (json_['tiltAngle'] as core.num).toDouble()
-              : null,
-          underExposedLikelihood: json_.containsKey('underExposedLikelihood')
-              ? json_['underExposedLikelihood'] as core.String
-              : null,
+          panAngle: (json_['panAngle'] as core.num?)?.toDouble(),
+          rollAngle: (json_['rollAngle'] as core.num?)?.toDouble(),
+          sorrowLikelihood: json_['sorrowLikelihood'] as core.String?,
+          surpriseLikelihood: json_['surpriseLikelihood'] as core.String?,
+          tiltAngle: (json_['tiltAngle'] as core.num?)?.toDouble(),
+          underExposedLikelihood:
+              json_['underExposedLikelihood'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3521,12 +3461,9 @@ class Feature {
 
   Feature.fromJson(core.Map json_)
       : this(
-          maxResults: json_.containsKey('maxResults')
-              ? json_['maxResults'] as core.int
-              : null,
-          model:
-              json_.containsKey('model') ? json_['model'] as core.String : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          maxResults: json_['maxResults'] as core.int?,
+          model: json_['model'] as core.String?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3562,7 +3499,7 @@ class GcsDestination {
 
   GcsDestination.fromJson(core.Map json_)
       : this(
-          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+          uri: json_['uri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3584,7 +3521,7 @@ class GcsSource {
 
   GcsSource.fromJson(core.Map json_)
       : this(
-          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+          uri: json_['uri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3665,9 +3602,7 @@ class Image {
 
   Image.fromJson(core.Map json_)
       : this(
-          content: json_.containsKey('content')
-              ? json_['content'] as core.String
-              : null,
+          content: json_['content'] as core.String?,
           source: json_.containsKey('source')
               ? ImageSource.fromJson(
                   json_['source'] as core.Map<core.String, core.dynamic>)
@@ -3697,10 +3632,8 @@ class ImageAnnotationContext {
 
   ImageAnnotationContext.fromJson(core.Map json_)
       : this(
-          pageNumber: json_.containsKey('pageNumber')
-              ? json_['pageNumber'] as core.int
-              : null,
-          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+          pageNumber: json_['pageNumber'] as core.int?,
+          uri: json_['uri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3843,12 +3776,8 @@ class ImageSource {
 
   ImageSource.fromJson(core.Map json_)
       : this(
-          gcsImageUri: json_.containsKey('gcsImageUri')
-              ? json_['gcsImageUri'] as core.String
-              : null,
-          imageUri: json_.containsKey('imageUri')
-              ? json_['imageUri'] as core.String
-              : null,
+          gcsImageUri: json_['gcsImageUri'] as core.String?,
+          imageUri: json_['imageUri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3902,9 +3831,7 @@ class ImportProductSetsGcsSource {
 
   ImportProductSetsGcsSource.fromJson(core.Map json_)
       : this(
-          csvFileUri: json_.containsKey('csvFileUri')
-              ? json_['csvFileUri'] as core.String
-              : null,
+          csvFileUri: json_['csvFileUri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3992,16 +3919,12 @@ class InputConfig {
 
   InputConfig.fromJson(core.Map json_)
       : this(
-          content: json_.containsKey('content')
-              ? json_['content'] as core.String
-              : null,
+          content: json_['content'] as core.String?,
           gcsSource: json_.containsKey('gcsSource')
               ? GcsSource.fromJson(
                   json_['gcsSource'] as core.Map<core.String, core.dynamic>)
               : null,
-          mimeType: json_.containsKey('mimeType')
-              ? json_['mimeType'] as core.String
-              : null,
+          mimeType: json_['mimeType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4030,9 +3953,8 @@ class KeyValue {
 
   KeyValue.fromJson(core.Map json_)
       : this(
-          key: json_.containsKey('key') ? json_['key'] as core.String : null,
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
+          key: json_['key'] as core.String?,
+          value: json_['value'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4099,7 +4021,7 @@ class Landmark {
               ? Position.fromJson(
                   json_['position'] as core.Map<core.String, core.dynamic>)
               : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4161,9 +4083,7 @@ class ListOperationsResponse {
 
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           operations: json_.containsKey('operations')
               ? (json_['operations'] as core.List)
                   .map((value) => Operation.fromJson(
@@ -4194,9 +4114,7 @@ class ListProductSetsResponse {
 
   ListProductSetsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           productSets: json_.containsKey('productSets')
               ? (json_['productSets'] as core.List)
                   .map((value) => ProductSet.fromJson(
@@ -4227,9 +4145,7 @@ class ListProductsInProductSetResponse {
 
   ListProductsInProductSetResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           products: json_.containsKey('products')
               ? (json_['products'] as core.List)
                   .map((value) => Product.fromJson(
@@ -4260,9 +4176,7 @@ class ListProductsResponse {
 
   ListProductsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           products: json_.containsKey('products')
               ? (json_['products'] as core.List)
                   .map((value) => Product.fromJson(
@@ -4298,12 +4212,8 @@ class ListReferenceImagesResponse {
 
   ListReferenceImagesResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
-          pageSize: json_.containsKey('pageSize')
-              ? json_['pageSize'] as core.int
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          pageSize: json_['pageSize'] as core.int?,
           referenceImages: json_.containsKey('referenceImages')
               ? (json_['referenceImages'] as core.List)
                   .map((value) => ReferenceImage.fromJson(
@@ -4357,14 +4267,10 @@ class LocalizedObjectAnnotation {
               ? BoundingPoly.fromJson(
                   json_['boundingPoly'] as core.Map<core.String, core.dynamic>)
               : null,
-          languageCode: json_.containsKey('languageCode')
-              ? json_['languageCode'] as core.String
-              : null,
-          mid: json_.containsKey('mid') ? json_['mid'] as core.String : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          score: json_.containsKey('score')
-              ? (json_['score'] as core.num).toDouble()
-              : null,
+          languageCode: json_['languageCode'] as core.String?,
+          mid: json_['mid'] as core.String?,
+          name: json_['name'] as core.String?,
+          score: (json_['score'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4416,12 +4322,8 @@ class NormalizedVertex {
 
   NormalizedVertex.fromJson(core.Map json_)
       : this(
-          x: json_.containsKey('x')
-              ? (json_['x'] as core.num).toDouble()
-              : null,
-          y: json_.containsKey('y')
-              ? (json_['y'] as core.num).toDouble()
-              : null,
+          x: (json_['x'] as core.num?)?.toDouble(),
+          y: (json_['y'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4458,14 +4360,10 @@ class ObjectAnnotation {
 
   ObjectAnnotation.fromJson(core.Map json_)
       : this(
-          languageCode: json_.containsKey('languageCode')
-              ? json_['languageCode'] as core.String
-              : null,
-          mid: json_.containsKey('mid') ? json_['mid'] as core.String : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          score: json_.containsKey('score')
-              ? (json_['score'] as core.num).toDouble()
-              : null,
+          languageCode: json_['languageCode'] as core.String?,
+          mid: json_['mid'] as core.String?,
+          name: json_['name'] as core.String?,
+          score: (json_['score'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4529,7 +4427,7 @@ class Operation {
 
   Operation.fromJson(core.Map json_)
       : this(
-          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
@@ -4537,7 +4435,7 @@ class Operation {
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           response: json_.containsKey('response')
               ? json_['response'] as core.Map<core.String, core.dynamic>
               : null,
@@ -4575,9 +4473,7 @@ class OutputConfig {
 
   OutputConfig.fromJson(core.Map json_)
       : this(
-          batchSize: json_.containsKey('batchSize')
-              ? json_['batchSize'] as core.int
-              : null,
+          batchSize: json_['batchSize'] as core.int?,
           gcsDestination: json_.containsKey('gcsDestination')
               ? GcsDestination.fromJson(json_['gcsDestination']
                   as core.Map<core.String, core.dynamic>)
@@ -4631,16 +4527,13 @@ class Page {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          confidence: json_.containsKey('confidence')
-              ? (json_['confidence'] as core.num).toDouble()
-              : null,
-          height:
-              json_.containsKey('height') ? json_['height'] as core.int : null,
+          confidence: (json_['confidence'] as core.num?)?.toDouble(),
+          height: json_['height'] as core.int?,
           property: json_.containsKey('property')
               ? TextProperty.fromJson(
                   json_['property'] as core.Map<core.String, core.dynamic>)
               : null,
-          width: json_.containsKey('width') ? json_['width'] as core.int : null,
+          width: json_['width'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4689,9 +4582,7 @@ class Paragraph {
               ? BoundingPoly.fromJson(
                   json_['boundingBox'] as core.Map<core.String, core.dynamic>)
               : null,
-          confidence: json_.containsKey('confidence')
-              ? (json_['confidence'] as core.num).toDouble()
-              : null,
+          confidence: (json_['confidence'] as core.num?)?.toDouble(),
           property: json_.containsKey('property')
               ? TextProperty.fromJson(
                   json_['property'] as core.Map<core.String, core.dynamic>)
@@ -4734,15 +4625,9 @@ class Position {
 
   Position.fromJson(core.Map json_)
       : this(
-          x: json_.containsKey('x')
-              ? (json_['x'] as core.num).toDouble()
-              : null,
-          y: json_.containsKey('y')
-              ? (json_['y'] as core.num).toDouble()
-              : null,
-          z: json_.containsKey('z')
-              ? (json_['z'] as core.num).toDouble()
-              : null,
+          x: (json_['x'] as core.num?)?.toDouble(),
+          y: (json_['y'] as core.num?)?.toDouble(),
+          z: (json_['z'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4802,16 +4687,10 @@ class Product {
 
   Product.fromJson(core.Map json_)
       : this(
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          productCategory: json_.containsKey('productCategory')
-              ? json_['productCategory'] as core.String
-              : null,
+          description: json_['description'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          name: json_['name'] as core.String?,
+          productCategory: json_['productCategory'] as core.String?,
           productLabels: json_.containsKey('productLabels')
               ? (json_['productLabels'] as core.List)
                   .map((value) => KeyValue.fromJson(
@@ -4877,17 +4756,13 @@ class ProductSearchParams {
               ? BoundingPoly.fromJson(
                   json_['boundingPoly'] as core.Map<core.String, core.dynamic>)
               : null,
-          filter: json_.containsKey('filter')
-              ? json_['filter'] as core.String
-              : null,
+          filter: json_['filter'] as core.String?,
           productCategories: json_.containsKey('productCategories')
               ? (json_['productCategories'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          productSet: json_.containsKey('productSet')
-              ? json_['productSet'] as core.String
-              : null,
+          productSet: json_['productSet'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4924,9 +4799,7 @@ class ProductSearchResults {
 
   ProductSearchResults.fromJson(core.Map json_)
       : this(
-          indexTime: json_.containsKey('indexTime')
-              ? json_['indexTime'] as core.String
-              : null,
+          indexTime: json_['indexTime'] as core.String?,
           productGroupedResults: json_.containsKey('productGroupedResults')
               ? (json_['productGroupedResults'] as core.List)
                   .map((value) => GroupedResult.fromJson(
@@ -4992,17 +4865,13 @@ class ProductSet {
 
   ProductSet.fromJson(core.Map json_)
       : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+          displayName: json_['displayName'] as core.String?,
           indexError: json_.containsKey('indexError')
               ? Status.fromJson(
                   json_['indexError'] as core.Map<core.String, core.dynamic>)
               : null,
-          indexTime: json_.containsKey('indexTime')
-              ? json_['indexTime'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          indexTime: json_['indexTime'] as core.String?,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5027,9 +4896,7 @@ class ProductSetPurgeConfig {
 
   ProductSetPurgeConfig.fromJson(core.Map json_)
       : this(
-          productSetId: json_.containsKey('productSetId')
-              ? json_['productSetId'] as core.String
-              : null,
+          productSetId: json_['productSetId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5056,12 +4923,9 @@ class Property {
 
   Property.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          uint64Value: json_.containsKey('uint64Value')
-              ? json_['uint64Value'] as core.String
-              : null,
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
+          name: json_['name'] as core.String?,
+          uint64Value: json_['uint64Value'] as core.String?,
+          value: json_['value'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5093,11 +4957,8 @@ class PurgeProductsRequest {
 
   PurgeProductsRequest.fromJson(core.Map json_)
       : this(
-          deleteOrphanProducts: json_.containsKey('deleteOrphanProducts')
-              ? json_['deleteOrphanProducts'] as core.bool
-              : null,
-          force:
-              json_.containsKey('force') ? json_['force'] as core.bool : null,
+          deleteOrphanProducts: json_['deleteOrphanProducts'] as core.bool?,
+          force: json_['force'] as core.bool?,
           productSetPurgeConfig: json_.containsKey('productSetPurgeConfig')
               ? ProductSetPurgeConfig.fromJson(json_['productSetPurgeConfig']
                   as core.Map<core.String, core.dynamic>)
@@ -5155,8 +5016,8 @@ class ReferenceImage {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+          name: json_['name'] as core.String?,
+          uri: json_['uri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5181,9 +5042,7 @@ class RemoveProductFromProductSetRequest {
 
   RemoveProductFromProductSetRequest.fromJson(core.Map json_)
       : this(
-          product: json_.containsKey('product')
-              ? json_['product'] as core.String
-              : null,
+          product: json_['product'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5212,15 +5071,12 @@ class Result {
 
   Result.fromJson(core.Map json_)
       : this(
-          image:
-              json_.containsKey('image') ? json_['image'] as core.String : null,
+          image: json_['image'] as core.String?,
           product: json_.containsKey('product')
               ? Product.fromJson(
                   json_['product'] as core.Map<core.String, core.dynamic>)
               : null,
-          score: json_.containsKey('score')
-              ? (json_['score'] as core.num).toDouble()
-              : null,
+          score: (json_['score'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5306,17 +5162,11 @@ class SafeSearchAnnotation {
 
   SafeSearchAnnotation.fromJson(core.Map json_)
       : this(
-          adult:
-              json_.containsKey('adult') ? json_['adult'] as core.String : null,
-          medical: json_.containsKey('medical')
-              ? json_['medical'] as core.String
-              : null,
-          racy: json_.containsKey('racy') ? json_['racy'] as core.String : null,
-          spoof:
-              json_.containsKey('spoof') ? json_['spoof'] as core.String : null,
-          violence: json_.containsKey('violence')
-              ? json_['violence'] as core.String
-              : null,
+          adult: json_['adult'] as core.String?,
+          medical: json_['medical'] as core.String?,
+          racy: json_['racy'] as core.String?,
+          spoof: json_['spoof'] as core.String?,
+          violence: json_['violence'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5374,14 +5224,12 @@ class Symbol {
               ? BoundingPoly.fromJson(
                   json_['boundingBox'] as core.Map<core.String, core.dynamic>)
               : null,
-          confidence: json_.containsKey('confidence')
-              ? (json_['confidence'] as core.num).toDouble()
-              : null,
+          confidence: (json_['confidence'] as core.num?)?.toDouble(),
           property: json_.containsKey('property')
               ? TextProperty.fromJson(
                   json_['property'] as core.Map<core.String, core.dynamic>)
               : null,
-          text: json_.containsKey('text') ? json_['text'] as core.String : null,
+          text: json_['text'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5420,7 +5268,7 @@ class TextAnnotation {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          text: json_.containsKey('text') ? json_['text'] as core.String : null,
+          text: json_['text'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5461,9 +5309,7 @@ class TextDetectionParams {
                   .toList()
               : null,
           enableTextDetectionConfidenceScore:
-              json_.containsKey('enableTextDetectionConfidenceScore')
-                  ? json_['enableTextDetectionConfidenceScore'] as core.bool
-                  : null,
+              json_['enableTextDetectionConfidenceScore'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5525,8 +5371,8 @@ class Vertex {
 
   Vertex.fromJson(core.Map json_)
       : this(
-          x: json_.containsKey('x') ? json_['x'] as core.int : null,
-          y: json_.containsKey('y') ? json_['y'] as core.int : null,
+          x: json_['x'] as core.int?,
+          y: json_['y'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5639,9 +5485,7 @@ class WebDetectionParams {
 
   WebDetectionParams.fromJson(core.Map json_)
       : this(
-          includeGeoResults: json_.containsKey('includeGeoResults')
-              ? json_['includeGeoResults'] as core.bool
-              : null,
+          includeGeoResults: json_['includeGeoResults'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5670,15 +5514,9 @@ class WebEntity {
 
   WebEntity.fromJson(core.Map json_)
       : this(
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          entityId: json_.containsKey('entityId')
-              ? json_['entityId'] as core.String
-              : null,
-          score: json_.containsKey('score')
-              ? (json_['score'] as core.num).toDouble()
-              : null,
+          description: json_['description'] as core.String?,
+          entityId: json_['entityId'] as core.String?,
+          score: (json_['score'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5703,10 +5541,8 @@ class WebImage {
 
   WebImage.fromJson(core.Map json_)
       : this(
-          score: json_.containsKey('score')
-              ? (json_['score'] as core.num).toDouble()
-              : null,
-          url: json_.containsKey('url') ? json_['url'] as core.String : null,
+          score: (json_['score'] as core.num?)?.toDouble(),
+          url: json_['url'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5733,11 +5569,8 @@ class WebLabel {
 
   WebLabel.fromJson(core.Map json_)
       : this(
-          label:
-              json_.containsKey('label') ? json_['label'] as core.String : null,
-          languageCode: json_.containsKey('languageCode')
-              ? json_['languageCode'] as core.String
-              : null,
+          label: json_['label'] as core.String?,
+          languageCode: json_['languageCode'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5784,19 +5617,15 @@ class WebPage {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          pageTitle: json_.containsKey('pageTitle')
-              ? json_['pageTitle'] as core.String
-              : null,
+          pageTitle: json_['pageTitle'] as core.String?,
           partialMatchingImages: json_.containsKey('partialMatchingImages')
               ? (json_['partialMatchingImages'] as core.List)
                   .map((value) => WebImage.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          score: json_.containsKey('score')
-              ? (json_['score'] as core.num).toDouble()
-              : null,
-          url: json_.containsKey('url') ? json_['url'] as core.String : null,
+          score: (json_['score'] as core.num?)?.toDouble(),
+          url: json_['url'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5849,9 +5678,7 @@ class Word {
               ? BoundingPoly.fromJson(
                   json_['boundingBox'] as core.Map<core.String, core.dynamic>)
               : null,
-          confidence: json_.containsKey('confidence')
-              ? (json_['confidence'] as core.num).toDouble()
-              : null,
+          confidence: (json_['confidence'] as core.num?)?.toDouble(),
           property: json_.containsKey('property')
               ? TextProperty.fromJson(
                   json_['property'] as core.Map<core.String, core.dynamic>)

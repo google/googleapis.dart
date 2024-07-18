@@ -197,9 +197,7 @@ class GoogleCloudPolicytroubleshooterV1BindingExplanation {
 
   GoogleCloudPolicytroubleshooterV1BindingExplanation.fromJson(core.Map json_)
       : this(
-          access: json_.containsKey('access')
-              ? json_['access'] as core.String
-              : null,
+          access: json_['access'] as core.String?,
           condition: json_.containsKey('condition')
               ? GoogleTypeExpr.fromJson(
                   json_['condition'] as core.Map<core.String, core.dynamic>)
@@ -214,16 +212,11 @@ class GoogleCloudPolicytroubleshooterV1BindingExplanation {
                   ),
                 )
               : null,
-          relevance: json_.containsKey('relevance')
-              ? json_['relevance'] as core.String
-              : null,
-          role: json_.containsKey('role') ? json_['role'] as core.String : null,
-          rolePermission: json_.containsKey('rolePermission')
-              ? json_['rolePermission'] as core.String
-              : null,
-          rolePermissionRelevance: json_.containsKey('rolePermissionRelevance')
-              ? json_['rolePermissionRelevance'] as core.String
-              : null,
+          relevance: json_['relevance'] as core.String?,
+          role: json_['role'] as core.String?,
+          rolePermission: json_['rolePermission'] as core.String?,
+          rolePermissionRelevance:
+              json_['rolePermissionRelevance'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -273,12 +266,8 @@ class GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership {
   GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership.fromJson(
       core.Map json_)
       : this(
-          membership: json_.containsKey('membership')
-              ? json_['membership'] as core.String
-              : null,
-          relevance: json_.containsKey('relevance')
-              ? json_['relevance'] as core.String
-              : null,
+          membership: json_['membership'] as core.String?,
+          relevance: json_['relevance'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -353,9 +342,7 @@ class GoogleCloudPolicytroubleshooterV1ExplainedPolicy {
 
   GoogleCloudPolicytroubleshooterV1ExplainedPolicy.fromJson(core.Map json_)
       : this(
-          access: json_.containsKey('access')
-              ? json_['access'] as core.String
-              : null,
+          access: json_['access'] as core.String?,
           bindingExplanations: json_.containsKey('bindingExplanations')
               ? (json_['bindingExplanations'] as core.List)
                   .map((value) =>
@@ -364,16 +351,12 @@ class GoogleCloudPolicytroubleshooterV1ExplainedPolicy {
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          fullResourceName: json_.containsKey('fullResourceName')
-              ? json_['fullResourceName'] as core.String
-              : null,
+          fullResourceName: json_['fullResourceName'] as core.String?,
           policy: json_.containsKey('policy')
               ? GoogleIamV1Policy.fromJson(
                   json_['policy'] as core.Map<core.String, core.dynamic>)
               : null,
-          relevance: json_.containsKey('relevance')
-              ? json_['relevance'] as core.String
-              : null,
+          relevance: json_['relevance'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -449,9 +432,7 @@ class GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse {
   GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse.fromJson(
       core.Map json_)
       : this(
-          access: json_.containsKey('access')
-              ? json_['access'] as core.String
-              : null,
+          access: json_['access'] as core.String?,
           errors: json_.containsKey('errors')
               ? (json_['errors'] as core.List)
                   .map((value) => GoogleRpcStatus.fromJson(
@@ -514,9 +495,7 @@ class GoogleIamV1AuditConfig {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          service: json_.containsKey('service')
-              ? json_['service'] as core.String
-              : null,
+          service: json_['service'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -630,7 +609,7 @@ class GoogleIamV1Binding {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          role: json_.containsKey('role') ? json_['role'] as core.String : null,
+          role: json_['role'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -747,10 +726,8 @@ class GoogleIamV1Policy {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          version: json_.containsKey('version')
-              ? json_['version'] as core.int
-              : null,
+          etag: json_['etag'] as core.String?,
+          version: json_['version'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

@@ -481,9 +481,7 @@ class ListSubscriptionsResponse {
 
   ListSubscriptionsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           subscriptions: json_.containsKey('subscriptions')
               ? (json_['subscriptions'] as core.List)
                   .map((value) => Subscription.fromJson(
@@ -517,9 +515,7 @@ class NotificationEndpoint {
 
   NotificationEndpoint.fromJson(core.Map json_)
       : this(
-          pubsubTopic: json_.containsKey('pubsubTopic')
-              ? json_['pubsubTopic'] as core.String
-              : null,
+          pubsubTopic: json_['pubsubTopic'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -580,7 +576,7 @@ class Operation {
 
   Operation.fromJson(core.Map json_)
       : this(
-          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
@@ -588,7 +584,7 @@ class Operation {
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           response: json_.containsKey('response')
               ? json_['response'] as core.Map<core.String, core.dynamic>
               : null,
@@ -637,12 +633,8 @@ class PayloadOptions {
 
   PayloadOptions.fromJson(core.Map json_)
       : this(
-          fieldMask: json_.containsKey('fieldMask')
-              ? json_['fieldMask'] as core.String
-              : null,
-          includeResource: json_.containsKey('includeResource')
-              ? json_['includeResource'] as core.bool
-              : null,
+          fieldMask: json_['fieldMask'] as core.String?,
+          includeResource: json_['includeResource'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -830,22 +822,16 @@ class Subscription {
 
   Subscription.fromJson(core.Map json_)
       : this(
-          authority: json_.containsKey('authority')
-              ? json_['authority'] as core.String
-              : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          authority: json_['authority'] as core.String?,
+          createTime: json_['createTime'] as core.String?,
+          etag: json_['etag'] as core.String?,
           eventTypes: json_.containsKey('eventTypes')
               ? (json_['eventTypes'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          expireTime: json_.containsKey('expireTime')
-              ? json_['expireTime'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          expireTime: json_['expireTime'] as core.String?,
+          name: json_['name'] as core.String?,
           notificationEndpoint: json_.containsKey('notificationEndpoint')
               ? NotificationEndpoint.fromJson(json_['notificationEndpoint']
                   as core.Map<core.String, core.dynamic>)
@@ -854,22 +840,13 @@ class Subscription {
               ? PayloadOptions.fromJson(json_['payloadOptions']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          reconciling: json_.containsKey('reconciling')
-              ? json_['reconciling'] as core.bool
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
-          suspensionReason: json_.containsKey('suspensionReason')
-              ? json_['suspensionReason'] as core.String
-              : null,
-          targetResource: json_.containsKey('targetResource')
-              ? json_['targetResource'] as core.String
-              : null,
-          ttl: json_.containsKey('ttl') ? json_['ttl'] as core.String : null,
-          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          reconciling: json_['reconciling'] as core.bool?,
+          state: json_['state'] as core.String?,
+          suspensionReason: json_['suspensionReason'] as core.String?,
+          targetResource: json_['targetResource'] as core.String?,
+          ttl: json_['ttl'] as core.String?,
+          uid: json_['uid'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

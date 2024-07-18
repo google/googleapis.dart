@@ -803,9 +803,7 @@ class AuditConfig {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          service: json_.containsKey('service')
-              ? json_['service'] as core.String
-              : null,
+          service: json_['service'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -923,7 +921,7 @@ class Binding {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          role: json_.containsKey('role') ? json_['role'] as core.String : null,
+          role: json_['role'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -946,7 +944,7 @@ class CallFunctionRequest {
 
   CallFunctionRequest.fromJson(core.Map json_)
       : this(
-          data: json_.containsKey('data') ? json_['data'] as core.String : null,
+          data: json_['data'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -978,14 +976,9 @@ class CallFunctionResponse {
 
   CallFunctionResponse.fromJson(core.Map json_)
       : this(
-          error:
-              json_.containsKey('error') ? json_['error'] as core.String : null,
-          executionId: json_.containsKey('executionId')
-              ? json_['executionId'] as core.String
-              : null,
-          result: json_.containsKey('result')
-              ? json_['result'] as core.String
-              : null,
+          error: json_['error'] as core.String?,
+          executionId: json_['executionId'] as core.String?,
+          result: json_['result'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1293,9 +1286,7 @@ class CloudFunction {
               ? AutomaticUpdatePolicy.fromJson(json_['automaticUpdatePolicy']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          availableMemoryMb: json_.containsKey('availableMemoryMb')
-              ? json_['availableMemoryMb'] as core.int
-              : null,
+          availableMemoryMb: json_['availableMemoryMb'] as core.int?,
           buildEnvironmentVariables:
               json_.containsKey('buildEnvironmentVariables')
                   ? (json_['buildEnvironmentVariables']
@@ -1307,30 +1298,14 @@ class CloudFunction {
                       ),
                     )
                   : null,
-          buildId: json_.containsKey('buildId')
-              ? json_['buildId'] as core.String
-              : null,
-          buildName: json_.containsKey('buildName')
-              ? json_['buildName'] as core.String
-              : null,
-          buildServiceAccount: json_.containsKey('buildServiceAccount')
-              ? json_['buildServiceAccount'] as core.String
-              : null,
-          buildWorkerPool: json_.containsKey('buildWorkerPool')
-              ? json_['buildWorkerPool'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          dockerRegistry: json_.containsKey('dockerRegistry')
-              ? json_['dockerRegistry'] as core.String
-              : null,
-          dockerRepository: json_.containsKey('dockerRepository')
-              ? json_['dockerRepository'] as core.String
-              : null,
-          entryPoint: json_.containsKey('entryPoint')
-              ? json_['entryPoint'] as core.String
-              : null,
+          buildId: json_['buildId'] as core.String?,
+          buildName: json_['buildName'] as core.String?,
+          buildServiceAccount: json_['buildServiceAccount'] as core.String?,
+          buildWorkerPool: json_['buildWorkerPool'] as core.String?,
+          description: json_['description'] as core.String?,
+          dockerRegistry: json_['dockerRegistry'] as core.String?,
+          dockerRepository: json_['dockerRepository'] as core.String?,
+          entryPoint: json_['entryPoint'] as core.String?,
           environmentVariables: json_.containsKey('environmentVariables')
               ? (json_['environmentVariables']
                       as core.Map<core.String, core.dynamic>)
@@ -1349,12 +1324,8 @@ class CloudFunction {
               ? HttpsTrigger.fromJson(
                   json_['httpsTrigger'] as core.Map<core.String, core.dynamic>)
               : null,
-          ingressSettings: json_.containsKey('ingressSettings')
-              ? json_['ingressSettings'] as core.String
-              : null,
-          kmsKeyName: json_.containsKey('kmsKeyName')
-              ? json_['kmsKeyName'] as core.String
-              : null,
+          ingressSettings: json_['ingressSettings'] as core.String?,
+          kmsKeyName: json_['kmsKeyName'] as core.String?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -1363,23 +1334,15 @@ class CloudFunction {
                   ),
                 )
               : null,
-          maxInstances: json_.containsKey('maxInstances')
-              ? json_['maxInstances'] as core.int
-              : null,
-          minInstances: json_.containsKey('minInstances')
-              ? json_['minInstances'] as core.int
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          network: json_.containsKey('network')
-              ? json_['network'] as core.String
-              : null,
+          maxInstances: json_['maxInstances'] as core.int?,
+          minInstances: json_['minInstances'] as core.int?,
+          name: json_['name'] as core.String?,
+          network: json_['network'] as core.String?,
           onDeployUpdatePolicy: json_.containsKey('onDeployUpdatePolicy')
               ? OnDeployUpdatePolicy.fromJson(json_['onDeployUpdatePolicy']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          runtime: json_.containsKey('runtime')
-              ? json_['runtime'] as core.String
-              : null,
+          runtime: json_['runtime'] as core.String?,
           secretEnvironmentVariables:
               json_.containsKey('secretEnvironmentVariables')
                   ? (json_['secretEnvironmentVariables'] as core.List)
@@ -1393,41 +1356,21 @@ class CloudFunction {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          serviceAccountEmail: json_.containsKey('serviceAccountEmail')
-              ? json_['serviceAccountEmail'] as core.String
-              : null,
-          sourceArchiveUrl: json_.containsKey('sourceArchiveUrl')
-              ? json_['sourceArchiveUrl'] as core.String
-              : null,
+          serviceAccountEmail: json_['serviceAccountEmail'] as core.String?,
+          sourceArchiveUrl: json_['sourceArchiveUrl'] as core.String?,
           sourceRepository: json_.containsKey('sourceRepository')
               ? SourceRepository.fromJson(json_['sourceRepository']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          sourceToken: json_.containsKey('sourceToken')
-              ? json_['sourceToken'] as core.String
-              : null,
-          sourceUploadUrl: json_.containsKey('sourceUploadUrl')
-              ? json_['sourceUploadUrl'] as core.String
-              : null,
-          status: json_.containsKey('status')
-              ? json_['status'] as core.String
-              : null,
-          timeout: json_.containsKey('timeout')
-              ? json_['timeout'] as core.String
-              : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
-          versionId: json_.containsKey('versionId')
-              ? json_['versionId'] as core.String
-              : null,
-          vpcConnector: json_.containsKey('vpcConnector')
-              ? json_['vpcConnector'] as core.String
-              : null,
+          sourceToken: json_['sourceToken'] as core.String?,
+          sourceUploadUrl: json_['sourceUploadUrl'] as core.String?,
+          status: json_['status'] as core.String?,
+          timeout: json_['timeout'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
+          versionId: json_['versionId'] as core.String?,
+          vpcConnector: json_['vpcConnector'] as core.String?,
           vpcConnectorEgressSettings:
-              json_.containsKey('vpcConnectorEgressSettings')
-                  ? json_['vpcConnectorEgressSettings'] as core.String
-                  : null,
+              json_['vpcConnectorEgressSettings'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1530,19 +1473,13 @@ class EventTrigger {
 
   EventTrigger.fromJson(core.Map json_)
       : this(
-          eventType: json_.containsKey('eventType')
-              ? json_['eventType'] as core.String
-              : null,
+          eventType: json_['eventType'] as core.String?,
           failurePolicy: json_.containsKey('failurePolicy')
               ? FailurePolicy.fromJson(
                   json_['failurePolicy'] as core.Map<core.String, core.dynamic>)
               : null,
-          resource: json_.containsKey('resource')
-              ? json_['resource'] as core.String
-              : null,
-          service: json_.containsKey('service')
-              ? json_['service'] as core.String
-              : null,
+          resource: json_['resource'] as core.String?,
+          service: json_['service'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1610,9 +1547,7 @@ class GenerateDownloadUrlRequest {
 
   GenerateDownloadUrlRequest.fromJson(core.Map json_)
       : this(
-          versionId: json_.containsKey('versionId')
-              ? json_['versionId'] as core.String
-              : null,
+          versionId: json_['versionId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1649,9 +1584,7 @@ class GenerateUploadUrlRequest {
 
   GenerateUploadUrlRequest.fromJson(core.Map json_)
       : this(
-          kmsKeyName: json_.containsKey('kmsKeyName')
-              ? json_['kmsKeyName'] as core.String
-              : null,
+          kmsKeyName: json_['kmsKeyName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1673,9 +1606,7 @@ class GenerateUploadUrlResponse {
 
   GenerateUploadUrlResponse.fromJson(core.Map json_)
       : this(
-          uploadUrl: json_.containsKey('uploadUrl')
-              ? json_['uploadUrl'] as core.String
-              : null,
+          uploadUrl: json_['uploadUrl'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1708,10 +1639,8 @@ class HttpsTrigger {
 
   HttpsTrigger.fromJson(core.Map json_)
       : this(
-          securityLevel: json_.containsKey('securityLevel')
-              ? json_['securityLevel'] as core.String
-              : null,
-          url: json_.containsKey('url') ? json_['url'] as core.String : null,
+          securityLevel: json_['securityLevel'] as core.String?,
+          url: json_['url'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1749,9 +1678,7 @@ class ListFunctionsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: json_.containsKey('unreachable')
               ? (json_['unreachable'] as core.List)
                   .map((value) => value as core.String)
@@ -1787,9 +1714,7 @@ class ListLocationsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1813,9 +1738,7 @@ class ListOperationsResponse {
 
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           operations: json_.containsKey('operations')
               ? (json_['operations'] as core.List)
                   .map((value) => Operation.fromJson(
@@ -1847,9 +1770,7 @@ class OnDeployUpdatePolicy {
 
   OnDeployUpdatePolicy.fromJson(core.Map json_)
       : this(
-          runtimeVersion: json_.containsKey('runtimeVersion')
-              ? json_['runtimeVersion'] as core.String
-              : null,
+          runtimeVersion: json_['runtimeVersion'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1910,7 +1831,7 @@ class Operation {
 
   Operation.fromJson(core.Map json_)
       : this(
-          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
@@ -1918,7 +1839,7 @@ class Operation {
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           response: json_.containsKey('response')
               ? json_['response'] as core.Map<core.String, core.dynamic>
               : null,
@@ -2040,10 +1961,8 @@ class Policy {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          version: json_.containsKey('version')
-              ? json_['version'] as core.int
-              : null,
+          etag: json_['etag'] as core.String?,
+          version: json_['version'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2095,16 +2014,10 @@ class SecretEnvVar {
 
   SecretEnvVar.fromJson(core.Map json_)
       : this(
-          key: json_.containsKey('key') ? json_['key'] as core.String : null,
-          projectId: json_.containsKey('projectId')
-              ? json_['projectId'] as core.String
-              : null,
-          secret: json_.containsKey('secret')
-              ? json_['secret'] as core.String
-              : null,
-          version: json_.containsKey('version')
-              ? json_['version'] as core.String
-              : null,
+          key: json_['key'] as core.String?,
+          projectId: json_['projectId'] as core.String?,
+          secret: json_['secret'] as core.String?,
+          version: json_['version'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2138,10 +2051,8 @@ class SecretVersion {
 
   SecretVersion.fromJson(core.Map json_)
       : this(
-          path: json_.containsKey('path') ? json_['path'] as core.String : null,
-          version: json_.containsKey('version')
-              ? json_['version'] as core.String
-              : null,
+          path: json_['path'] as core.String?,
+          version: json_['version'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2192,15 +2103,9 @@ class SecretVolume {
 
   SecretVolume.fromJson(core.Map json_)
       : this(
-          mountPath: json_.containsKey('mountPath')
-              ? json_['mountPath'] as core.String
-              : null,
-          projectId: json_.containsKey('projectId')
-              ? json_['projectId'] as core.String
-              : null,
-          secret: json_.containsKey('secret')
-              ? json_['secret'] as core.String
-              : null,
+          mountPath: json_['mountPath'] as core.String?,
+          projectId: json_['projectId'] as core.String?,
+          secret: json_['secret'] as core.String?,
           versions: json_.containsKey('versions')
               ? (json_['versions'] as core.List)
                   .map((value) => SecretVersion.fromJson(
@@ -2243,9 +2148,7 @@ class SetIamPolicyRequest {
               ? Policy.fromJson(
                   json_['policy'] as core.Map<core.String, core.dynamic>)
               : null,
-          updateMask: json_.containsKey('updateMask')
-              ? json_['updateMask'] as core.String
-              : null,
+          updateMask: json_['updateMask'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2286,10 +2189,8 @@ class SourceRepository {
 
   SourceRepository.fromJson(core.Map json_)
       : this(
-          deployedUrl: json_.containsKey('deployedUrl')
-              ? json_['deployedUrl'] as core.String
-              : null,
-          url: json_.containsKey('url') ? json_['url'] as core.String : null,
+          deployedUrl: json_['deployedUrl'] as core.String?,
+          url: json_['url'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

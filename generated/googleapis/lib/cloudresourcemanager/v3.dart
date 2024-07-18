@@ -2976,9 +2976,7 @@ class AuditConfig {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          service: json_.containsKey('service')
-              ? json_['service'] as core.String
-              : null,
+          service: json_['service'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3092,7 +3090,7 @@ class Binding {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          role: json_.containsKey('role') ? json_['role'] as core.String : null,
+          role: json_['role'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3157,24 +3155,12 @@ class EffectiveTag {
 
   EffectiveTag.fromJson(core.Map json_)
       : this(
-          inherited: json_.containsKey('inherited')
-              ? json_['inherited'] as core.bool
-              : null,
-          namespacedTagKey: json_.containsKey('namespacedTagKey')
-              ? json_['namespacedTagKey'] as core.String
-              : null,
-          namespacedTagValue: json_.containsKey('namespacedTagValue')
-              ? json_['namespacedTagValue'] as core.String
-              : null,
-          tagKey: json_.containsKey('tagKey')
-              ? json_['tagKey'] as core.String
-              : null,
-          tagKeyParentName: json_.containsKey('tagKeyParentName')
-              ? json_['tagKeyParentName'] as core.String
-              : null,
-          tagValue: json_.containsKey('tagValue')
-              ? json_['tagValue'] as core.String
-              : null,
+          inherited: json_['inherited'] as core.bool?,
+          namespacedTagKey: json_['namespacedTagKey'] as core.String?,
+          namespacedTagValue: json_['namespacedTagValue'] as core.String?,
+          tagKey: json_['tagKey'] as core.String?,
+          tagKeyParentName: json_['tagKeyParentName'] as core.String?,
+          tagValue: json_['tagValue'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3304,22 +3290,13 @@ class Folder {
 
   Folder.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          deleteTime: json_.containsKey('deleteTime')
-              ? json_['deleteTime'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          parent: json_.containsKey('parent')
-              ? json_['parent'] as core.String
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
+          createTime: json_['createTime'] as core.String?,
+          deleteTime: json_['deleteTime'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          etag: json_['etag'] as core.String?,
+          name: json_['name'] as core.String?,
+          parent: json_['parent'] as core.String?,
+          state: json_['state'] as core.String?,
           tags: json_.containsKey('tags')
               ? (json_['tags'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -3328,9 +3305,7 @@ class Folder {
                   ),
                 )
               : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3404,9 +3379,7 @@ class ListEffectiveTagsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3438,9 +3411,7 @@ class ListFoldersResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3471,9 +3442,7 @@ class ListLiensResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3511,9 +3480,7 @@ class ListProjectsResponse {
 
   ListProjectsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           projects: json_.containsKey('projects')
               ? (json_['projects'] as core.List)
                   .map((value) => Project.fromJson(
@@ -3550,9 +3517,7 @@ class ListTagBindingsResponse {
 
   ListTagBindingsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           tagBindings: json_.containsKey('tagBindings')
               ? (json_['tagBindings'] as core.List)
                   .map((value) => TagBinding.fromJson(
@@ -3589,9 +3554,7 @@ class ListTagHoldsResponse {
 
   ListTagHoldsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           tagHolds: json_.containsKey('tagHolds')
               ? (json_['tagHolds'] as core.List)
                   .map((value) => TagHold.fromJson(
@@ -3622,9 +3585,7 @@ class ListTagKeysResponse {
 
   ListTagKeysResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           tagKeys: json_.containsKey('tagKeys')
               ? (json_['tagKeys'] as core.List)
                   .map((value) => TagKey.fromJson(
@@ -3659,9 +3620,7 @@ class ListTagValuesResponse {
 
   ListTagValuesResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           tagValues: json_.containsKey('tagValues')
               ? (json_['tagValues'] as core.List)
                   .map((value) => TagValue.fromJson(
@@ -3692,9 +3651,7 @@ class MoveFolderRequest {
 
   MoveFolderRequest.fromJson(core.Map json_)
       : this(
-          destinationParent: json_.containsKey('destinationParent')
-              ? json_['destinationParent'] as core.String
-              : null,
+          destinationParent: json_['destinationParent'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3715,9 +3672,7 @@ class MoveProjectRequest {
 
   MoveProjectRequest.fromJson(core.Map json_)
       : this(
-          destinationParent: json_.containsKey('destinationParent')
-              ? json_['destinationParent'] as core.String
-              : null,
+          destinationParent: json_['destinationParent'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3778,7 +3733,7 @@ class Operation {
 
   Operation.fromJson(core.Map json_)
       : this(
-          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
@@ -3786,7 +3741,7 @@ class Operation {
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           response: json_.containsKey('response')
               ? json_['response'] as core.Map<core.String, core.dynamic>
               : null,
@@ -3875,25 +3830,14 @@ class Organization {
 
   Organization.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          deleteTime: json_.containsKey('deleteTime')
-              ? json_['deleteTime'] as core.String
-              : null,
-          directoryCustomerId: json_.containsKey('directoryCustomerId')
-              ? json_['directoryCustomerId'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          deleteTime: json_['deleteTime'] as core.String?,
+          directoryCustomerId: json_['directoryCustomerId'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          etag: json_['etag'] as core.String?,
+          name: json_['name'] as core.String?,
+          state: json_['state'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4016,10 +3960,8 @@ class Policy {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          version: json_.containsKey('version')
-              ? json_['version'] as core.int
-              : null,
+          etag: json_['etag'] as core.String?,
+          version: json_['version'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4144,16 +4086,10 @@ class Project {
 
   Project.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          deleteTime: json_.containsKey('deleteTime')
-              ? json_['deleteTime'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          createTime: json_['createTime'] as core.String?,
+          deleteTime: json_['deleteTime'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          etag: json_['etag'] as core.String?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -4162,15 +4098,10 @@ class Project {
                   ),
                 )
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          parent: json_.containsKey('parent')
-              ? json_['parent'] as core.String
-              : null,
-          projectId: json_.containsKey('projectId')
-              ? json_['projectId'] as core.String
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
+          name: json_['name'] as core.String?,
+          parent: json_['parent'] as core.String?,
+          projectId: json_['projectId'] as core.String?,
+          state: json_['state'] as core.String?,
           tags: json_.containsKey('tags')
               ? (json_['tags'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -4179,9 +4110,7 @@ class Project {
                   ),
                 )
               : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4223,9 +4152,7 @@ class SearchFoldersResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4255,9 +4182,7 @@ class SearchOrganizationsResponse {
 
   SearchOrganizationsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           organizations: json_.containsKey('organizations')
               ? (json_['organizations'] as core.List)
                   .map((value) => Organization.fromJson(
@@ -4300,9 +4225,7 @@ class SearchProjectsResponse {
 
   SearchProjectsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           projects: json_.containsKey('projects')
               ? (json_['projects'] as core.List)
                   .map((value) => Project.fromJson(
@@ -4343,9 +4266,7 @@ class SetIamPolicyRequest {
               ? Policy.fromJson(
                   json_['policy'] as core.Map<core.String, core.dynamic>)
               : null,
-          updateMask: json_.containsKey('updateMask')
-              ? json_['updateMask'] as core.String
-              : null,
+          updateMask: json_['updateMask'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4403,16 +4324,11 @@ class TagBinding {
 
   TagBinding.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          parent: json_.containsKey('parent')
-              ? json_['parent'] as core.String
-              : null,
-          tagValue: json_.containsKey('tagValue')
-              ? json_['tagValue'] as core.String
-              : null,
-          tagValueNamespacedName: json_.containsKey('tagValueNamespacedName')
-              ? json_['tagValueNamespacedName'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          parent: json_['parent'] as core.String?,
+          tagValue: json_['tagValue'] as core.String?,
+          tagValueNamespacedName:
+              json_['tagValueNamespacedName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4480,19 +4396,11 @@ class TagHold {
 
   TagHold.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          helpLink: json_.containsKey('helpLink')
-              ? json_['helpLink'] as core.String
-              : null,
-          holder: json_.containsKey('holder')
-              ? json_['holder'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          origin: json_.containsKey('origin')
-              ? json_['origin'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          helpLink: json_['helpLink'] as core.String?,
+          holder: json_['holder'] as core.String?,
+          name: json_['name'] as core.String?,
+          origin: json_['origin'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4612,23 +4520,13 @@ class TagKey {
 
   TagKey.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          namespacedName: json_.containsKey('namespacedName')
-              ? json_['namespacedName'] as core.String
-              : null,
-          parent: json_.containsKey('parent')
-              ? json_['parent'] as core.String
-              : null,
-          purpose: json_.containsKey('purpose')
-              ? json_['purpose'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          description: json_['description'] as core.String?,
+          etag: json_['etag'] as core.String?,
+          name: json_['name'] as core.String?,
+          namespacedName: json_['namespacedName'] as core.String?,
+          parent: json_['parent'] as core.String?,
+          purpose: json_['purpose'] as core.String?,
           purposeData: json_.containsKey('purposeData')
               ? (json_['purposeData'] as core.Map<core.String, core.dynamic>)
                   .map(
@@ -4638,12 +4536,8 @@ class TagKey {
                   ),
                 )
               : null,
-          shortName: json_.containsKey('shortName')
-              ? json_['shortName'] as core.String
-              : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          shortName: json_['shortName'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4735,26 +4629,14 @@ class TagValue {
 
   TagValue.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          namespacedName: json_.containsKey('namespacedName')
-              ? json_['namespacedName'] as core.String
-              : null,
-          parent: json_.containsKey('parent')
-              ? json_['parent'] as core.String
-              : null,
-          shortName: json_.containsKey('shortName')
-              ? json_['shortName'] as core.String
-              : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          description: json_['description'] as core.String?,
+          etag: json_['etag'] as core.String?,
+          name: json_['name'] as core.String?,
+          namespacedName: json_['namespacedName'] as core.String?,
+          parent: json_['parent'] as core.String?,
+          shortName: json_['shortName'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

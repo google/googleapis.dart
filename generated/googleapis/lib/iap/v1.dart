@@ -1005,17 +1005,11 @@ class AccessDeniedPageSettings {
 
   AccessDeniedPageSettings.fromJson(core.Map json_)
       : this(
-          accessDeniedPageUri: json_.containsKey('accessDeniedPageUri')
-              ? json_['accessDeniedPageUri'] as core.String
-              : null,
+          accessDeniedPageUri: json_['accessDeniedPageUri'] as core.String?,
           generateTroubleshootingUri:
-              json_.containsKey('generateTroubleshootingUri')
-                  ? json_['generateTroubleshootingUri'] as core.bool
-                  : null,
+              json_['generateTroubleshootingUri'] as core.bool?,
           remediationTokenGenerationEnabled:
-              json_.containsKey('remediationTokenGenerationEnabled')
-                  ? json_['remediationTokenGenerationEnabled'] as core.bool
-                  : null,
+              json_['remediationTokenGenerationEnabled'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1171,8 +1165,7 @@ class AllowedDomainsSettings {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          enable:
-              json_.containsKey('enable') ? json_['enable'] as core.bool : null,
+          enable: json_['enable'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1225,9 +1218,7 @@ class ApplicationSettings {
                       json_['attributePropagationSettings']
                           as core.Map<core.String, core.dynamic>)
                   : null,
-          cookieDomain: json_.containsKey('cookieDomain')
-              ? json_['cookieDomain'] as core.String
-              : null,
+          cookieDomain: json_['cookieDomain'] as core.String?,
           csmSettings: json_.containsKey('csmSettings')
               ? CsmSettings.fromJson(
                   json_['csmSettings'] as core.Map<core.String, core.dynamic>)
@@ -1292,11 +1283,8 @@ class AttributePropagationSettings {
 
   AttributePropagationSettings.fromJson(core.Map json_)
       : this(
-          enable:
-              json_.containsKey('enable') ? json_['enable'] as core.bool : null,
-          expression: json_.containsKey('expression')
-              ? json_['expression'] as core.String
-              : null,
+          enable: json_['enable'] as core.bool?,
+          expression: json_['expression'] as core.String?,
           outputCredentials: json_.containsKey('outputCredentials')
               ? (json_['outputCredentials'] as core.List)
                   .map((value) => value as core.String)
@@ -1408,7 +1396,7 @@ class Binding {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          role: json_.containsKey('role') ? json_['role'] as core.String : null,
+          role: json_['role'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1451,16 +1439,10 @@ class Brand {
 
   Brand.fromJson(core.Map json_)
       : this(
-          applicationTitle: json_.containsKey('applicationTitle')
-              ? json_['applicationTitle'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          orgInternalOnly: json_.containsKey('orgInternalOnly')
-              ? json_['orgInternalOnly'] as core.bool
-              : null,
-          supportEmail: json_.containsKey('supportEmail')
-              ? json_['supportEmail'] as core.String
-              : null,
+          applicationTitle: json_['applicationTitle'] as core.String?,
+          name: json_['name'] as core.String?,
+          orgInternalOnly: json_['orgInternalOnly'] as core.bool?,
+          supportEmail: json_['supportEmail'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1485,9 +1467,7 @@ class CorsSettings {
 
   CorsSettings.fromJson(core.Map json_)
       : this(
-          allowHttpOptions: json_.containsKey('allowHttpOptions')
-              ? json_['allowHttpOptions'] as core.bool
-              : null,
+          allowHttpOptions: json_['allowHttpOptions'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1513,9 +1493,7 @@ class CsmSettings {
 
   CsmSettings.fromJson(core.Map json_)
       : this(
-          rctokenAud: json_.containsKey('rctokenAud')
-              ? json_['rctokenAud'] as core.String
-              : null,
+          rctokenAud: json_['rctokenAud'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1577,9 +1555,7 @@ class GcipSettings {
 
   GcipSettings.fromJson(core.Map json_)
       : this(
-          loginPageUri: json_.containsKey('loginPageUri')
-              ? json_['loginPageUri'] as core.String
-              : null,
+          loginPageUri: json_['loginPageUri'] as core.String?,
           tenantIds: json_.containsKey('tenantIds')
               ? (json_['tenantIds'] as core.List)
                   .map((value) => value as core.String)
@@ -1652,7 +1628,7 @@ class IapSettings {
               ? ApplicationSettings.fromJson(json_['applicationSettings']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1686,13 +1662,9 @@ class IdentityAwareProxyClient {
 
   IdentityAwareProxyClient.fromJson(core.Map json_)
       : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          secret: json_.containsKey('secret')
-              ? json_['secret'] as core.String
-              : null,
+          displayName: json_['displayName'] as core.String?,
+          name: json_['name'] as core.String?,
+          secret: json_['secret'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1750,9 +1722,7 @@ class ListIdentityAwareProxyClientsResponse {
                           value as core.Map<core.String, core.dynamic>))
                       .toList()
                   : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1779,9 +1749,7 @@ class ListTunnelDestGroupsResponse {
 
   ListTunnelDestGroupsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           tunnelDestGroups: json_.containsKey('tunnelDestGroups')
               ? (json_['tunnelDestGroups'] as core.List)
                   .map((value) => TunnelDestGroup.fromJson(
@@ -1822,15 +1790,9 @@ class OAuth2 {
 
   OAuth2.fromJson(core.Map json_)
       : this(
-          clientId: json_.containsKey('clientId')
-              ? json_['clientId'] as core.String
-              : null,
-          clientSecret: json_.containsKey('clientSecret')
-              ? json_['clientSecret'] as core.String
-              : null,
-          clientSecretSha256: json_.containsKey('clientSecretSha256')
-              ? json_['clientSecretSha256'] as core.String
-              : null,
+          clientId: json_['clientId'] as core.String?,
+          clientSecret: json_['clientSecret'] as core.String?,
+          clientSecretSha256: json_['clientSecretSha256'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1864,9 +1826,7 @@ class OAuthSettings {
 
   OAuthSettings.fromJson(core.Map json_)
       : this(
-          loginHint: json_.containsKey('loginHint')
-              ? json_['loginHint'] as core.String
-              : null,
+          loginHint: json_['loginHint'] as core.String?,
           programmaticClients: json_.containsKey('programmaticClients')
               ? (json_['programmaticClients'] as core.List)
                   .map((value) => value as core.String)
@@ -1978,10 +1938,8 @@ class Policy {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          version: json_.containsKey('version')
-              ? json_['version'] as core.int
-              : null,
+          etag: json_['etag'] as core.String?,
+          version: json_['version'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2023,12 +1981,8 @@ class PolicyDelegationSettings {
 
   PolicyDelegationSettings.fromJson(core.Map json_)
       : this(
-          iamPermission: json_.containsKey('iamPermission')
-              ? json_['iamPermission'] as core.String
-              : null,
-          iamServiceName: json_.containsKey('iamServiceName')
-              ? json_['iamServiceName'] as core.String
-              : null,
+          iamPermission: json_['iamPermission'] as core.String?,
+          iamServiceName: json_['iamServiceName'] as core.String?,
           policyName: json_.containsKey('policyName')
               ? PolicyName.fromJson(
                   json_['policyName'] as core.Map<core.String, core.dynamic>)
@@ -2082,11 +2036,9 @@ class PolicyName {
 
   PolicyName.fromJson(core.Map json_)
       : this(
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          region: json_.containsKey('region')
-              ? json_['region'] as core.String
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          id: json_['id'] as core.String?,
+          region: json_['region'] as core.String?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2135,15 +2087,9 @@ class ReauthSettings {
 
   ReauthSettings.fromJson(core.Map json_)
       : this(
-          maxAge: json_.containsKey('maxAge')
-              ? json_['maxAge'] as core.String
-              : null,
-          method: json_.containsKey('method')
-              ? json_['method'] as core.String
-              : null,
-          policyType: json_.containsKey('policyType')
-              ? json_['policyType'] as core.String
-              : null,
+          maxAge: json_['maxAge'] as core.String?,
+          method: json_['method'] as core.String?,
+          policyType: json_['policyType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2258,11 +2204,9 @@ class Resource {
                   ),
                 )
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          service: json_.containsKey('service')
-              ? json_['service'] as core.String
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          name: json_['name'] as core.String?,
+          service: json_['service'] as core.String?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2346,7 +2290,7 @@ class TunnelDestGroup {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

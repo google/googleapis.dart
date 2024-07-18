@@ -170,12 +170,9 @@ class ExternalAccountKey {
 
   ExternalAccountKey.fromJson(core.Map json_)
       : this(
-          b64MacKey: json_.containsKey('b64MacKey')
-              ? json_['b64MacKey'] as core.String
-              : null,
-          keyId:
-              json_.containsKey('keyId') ? json_['keyId'] as core.String : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          b64MacKey: json_['b64MacKey'] as core.String?,
+          keyId: json_['keyId'] as core.String?,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

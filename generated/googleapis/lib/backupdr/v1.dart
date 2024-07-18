@@ -758,9 +758,7 @@ class AuditConfig {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          service: json_.containsKey('service')
-              ? json_['service'] as core.String
-              : null,
+          service: json_['service'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -874,7 +872,7 @@ class Binding {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          role: json_.containsKey('role') ? json_['role'] as core.String : null,
+          role: json_['role'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -936,9 +934,7 @@ class ListLocationsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -979,9 +975,7 @@ class ListManagementServersResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: json_.containsKey('unreachable')
               ? (json_['unreachable'] as core.List)
                   .map((value) => value as core.String)
@@ -1011,9 +1005,7 @@ class ListOperationsResponse {
 
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           operations: json_.containsKey('operations')
               ? (json_['operations'] as core.List)
                   .map((value) => Operation.fromJson(
@@ -1173,13 +1165,9 @@ class ManagementServer {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          createTime: json_['createTime'] as core.String?,
+          description: json_['description'] as core.String?,
+          etag: json_['etag'] as core.String?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -1192,28 +1180,19 @@ class ManagementServer {
               ? ManagementURI.fromJson(
                   json_['managementUri'] as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           networks: json_.containsKey('networks')
               ? (json_['networks'] as core.List)
                   .map((value) => NetworkConfig.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          oauth2ClientId: json_.containsKey('oauth2ClientId')
-              ? json_['oauth2ClientId'] as core.String
-              : null,
-          satisfiesPzi: json_.containsKey('satisfiesPzi')
-              ? json_['satisfiesPzi'] as core.bool
-              : null,
-          satisfiesPzs: json_.containsKey('satisfiesPzs')
-              ? json_['satisfiesPzs'] as core.bool
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          oauth2ClientId: json_['oauth2ClientId'] as core.String?,
+          satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
+          satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
+          state: json_['state'] as core.String?,
+          type: json_['type'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
           workforceIdentityBasedManagementUri:
               json_.containsKey('workforceIdentityBasedManagementUri')
                   ? WorkforceIdentityBasedManagementURI.fromJson(
@@ -1271,9 +1250,8 @@ class ManagementURI {
 
   ManagementURI.fromJson(core.Map json_)
       : this(
-          api: json_.containsKey('api') ? json_['api'] as core.String : null,
-          webUi:
-              json_.containsKey('webUi') ? json_['webUi'] as core.String : null,
+          api: json_['api'] as core.String?,
+          webUi: json_['webUi'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1309,12 +1287,8 @@ class NetworkConfig {
 
   NetworkConfig.fromJson(core.Map json_)
       : this(
-          network: json_.containsKey('network')
-              ? json_['network'] as core.String
-              : null,
-          peeringMode: json_.containsKey('peeringMode')
-              ? json_['peeringMode'] as core.String
-              : null,
+          network: json_['network'] as core.String?,
+          peeringMode: json_['peeringMode'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1376,7 +1350,7 @@ class Operation {
 
   Operation.fromJson(core.Map json_)
       : this(
-          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
@@ -1384,7 +1358,7 @@ class Operation {
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           response: json_.containsKey('response')
               ? json_['response'] as core.Map<core.String, core.dynamic>
               : null,
@@ -1506,10 +1480,8 @@ class Policy {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          version: json_.containsKey('version')
-              ? json_['version'] as core.int
-              : null,
+          etag: json_['etag'] as core.String?,
+          version: json_['version'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1546,9 +1518,7 @@ class SetIamPolicyRequest {
               ? Policy.fromJson(
                   json_['policy'] as core.Map<core.String, core.dynamic>)
               : null,
-          updateMask: json_.containsKey('updateMask')
-              ? json_['updateMask'] as core.String
-              : null,
+          updateMask: json_['updateMask'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1591,12 +1561,10 @@ class WorkforceIdentityBasedManagementURI {
 
   WorkforceIdentityBasedManagementURI.fromJson(core.Map json_)
       : this(
-          firstPartyManagementUri: json_.containsKey('firstPartyManagementUri')
-              ? json_['firstPartyManagementUri'] as core.String
-              : null,
-          thirdPartyManagementUri: json_.containsKey('thirdPartyManagementUri')
-              ? json_['thirdPartyManagementUri'] as core.String
-              : null,
+          firstPartyManagementUri:
+              json_['firstPartyManagementUri'] as core.String?,
+          thirdPartyManagementUri:
+              json_['thirdPartyManagementUri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1627,13 +1595,9 @@ class WorkforceIdentityBasedOAuth2ClientID {
   WorkforceIdentityBasedOAuth2ClientID.fromJson(core.Map json_)
       : this(
           firstPartyOauth2ClientId:
-              json_.containsKey('firstPartyOauth2ClientId')
-                  ? json_['firstPartyOauth2ClientId'] as core.String
-                  : null,
+              json_['firstPartyOauth2ClientId'] as core.String?,
           thirdPartyOauth2ClientId:
-              json_.containsKey('thirdPartyOauth2ClientId')
-                  ? json_['thirdPartyOauth2ClientId'] as core.String
-                  : null,
+              json_['thirdPartyOauth2ClientId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

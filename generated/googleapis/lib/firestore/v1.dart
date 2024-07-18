@@ -2375,8 +2375,7 @@ class Aggregation {
 
   Aggregation.fromJson(core.Map json_)
       : this(
-          alias:
-              json_.containsKey('alias') ? json_['alias'] as core.String : null,
+          alias: json_['alias'] as core.String?,
           avg: json_.containsKey('avg')
               ? Avg.fromJson(
                   json_['avg'] as core.Map<core.String, core.dynamic>)
@@ -2548,12 +2547,8 @@ class BatchGetDocumentsRequest {
               ? TransactionOptions.fromJson(json_['newTransaction']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          readTime: json_.containsKey('readTime')
-              ? json_['readTime'] as core.String
-              : null,
-          transaction: json_.containsKey('transaction')
-              ? json_['transaction'] as core.String
-              : null,
+          readTime: json_['readTime'] as core.String?,
+          transaction: json_['transaction'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2608,15 +2603,9 @@ class BatchGetDocumentsResponseElement {
               ? Document.fromJson(
                   json_['found'] as core.Map<core.String, core.dynamic>)
               : null,
-          missing: json_.containsKey('missing')
-              ? json_['missing'] as core.String
-              : null,
-          readTime: json_.containsKey('readTime')
-              ? json_['readTime'] as core.String
-              : null,
-          transaction: json_.containsKey('transaction')
-              ? json_['transaction'] as core.String
-              : null,
+          missing: json_['missing'] as core.String?,
+          readTime: json_['readTime'] as core.String?,
+          transaction: json_['transaction'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2752,9 +2741,7 @@ class BeginTransactionResponse {
 
   BeginTransactionResponse.fromJson(core.Map json_)
       : this(
-          transaction: json_.containsKey('transaction')
-              ? json_['transaction'] as core.String
-              : null,
+          transaction: json_['transaction'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2782,12 +2769,8 @@ class CollectionSelector {
 
   CollectionSelector.fromJson(core.Map json_)
       : this(
-          allDescendants: json_.containsKey('allDescendants')
-              ? json_['allDescendants'] as core.bool
-              : null,
-          collectionId: json_.containsKey('collectionId')
-              ? json_['collectionId'] as core.String
-              : null,
+          allDescendants: json_['allDescendants'] as core.bool?,
+          collectionId: json_['collectionId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2820,9 +2803,7 @@ class CommitRequest {
 
   CommitRequest.fromJson(core.Map json_)
       : this(
-          transaction: json_.containsKey('transaction')
-              ? json_['transaction'] as core.String
-              : null,
+          transaction: json_['transaction'] as core.String?,
           writes: json_.containsKey('writes')
               ? (json_['writes'] as core.List)
                   .map((value) => Write.fromJson(
@@ -2857,9 +2838,7 @@ class CommitResponse {
 
   CommitResponse.fromJson(core.Map json_)
       : this(
-          commitTime: json_.containsKey('commitTime')
-              ? json_['commitTime'] as core.String
-              : null,
+          commitTime: json_['commitTime'] as core.String?,
           writeResults: json_.containsKey('writeResults')
               ? (json_['writeResults'] as core.List)
                   .map((value) => WriteResult.fromJson(
@@ -2902,7 +2881,7 @@ class CompositeFilter {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          op: json_.containsKey('op') ? json_['op'] as core.String : null,
+          op: json_['op'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2932,7 +2911,7 @@ class Count {
 
   Count.fromJson(core.Map json_)
       : this(
-          upTo: json_.containsKey('upTo') ? json_['upTo'] as core.String : null,
+          upTo: json_['upTo'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2959,8 +2938,7 @@ class Cursor {
 
   Cursor.fromJson(core.Map json_)
       : this(
-          before:
-              json_.containsKey('before') ? json_['before'] as core.bool : null,
+          before: json_['before'] as core.bool?,
           values: json_.containsKey('values')
               ? (json_['values'] as core.List)
                   .map((value) => Value.fromJson(
@@ -3029,9 +3007,7 @@ class Document {
 
   Document.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
           fields: json_.containsKey('fields')
               ? (json_['fields'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -3041,10 +3017,8 @@ class Document {
                   ),
                 )
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3102,9 +3076,7 @@ class DocumentTransform {
 
   DocumentTransform.fromJson(core.Map json_)
       : this(
-          document: json_.containsKey('document')
-              ? json_['document'] as core.String
-              : null,
+          document: json_['document'] as core.String?,
           fieldTransforms: json_.containsKey('fieldTransforms')
               ? (json_['fieldTransforms'] as core.List)
                   .map((value) => FieldTransform.fromJson(
@@ -3218,7 +3190,7 @@ class FieldFilter {
               ? FieldReference.fromJson(
                   json_['field'] as core.Map<core.String, core.dynamic>)
               : null,
-          op: json_.containsKey('op') ? json_['op'] as core.String : null,
+          op: json_['op'] as core.String?,
           value: json_.containsKey('value')
               ? Value.fromJson(
                   json_['value'] as core.Map<core.String, core.dynamic>)
@@ -3246,9 +3218,7 @@ class FieldReference {
 
   FieldReference.fromJson(core.Map json_)
       : this(
-          fieldPath: json_.containsKey('fieldPath')
-              ? json_['fieldPath'] as core.String
-              : null,
+          fieldPath: json_['fieldPath'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3346,9 +3316,7 @@ class FieldTransform {
               ? ArrayValue.fromJson(json_['appendMissingElements']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          fieldPath: json_.containsKey('fieldPath')
-              ? json_['fieldPath'] as core.String
-              : null,
+          fieldPath: json_['fieldPath'] as core.String?,
           increment: json_.containsKey('increment')
               ? Value.fromJson(
                   json_['increment'] as core.Map<core.String, core.dynamic>)
@@ -3365,9 +3333,7 @@ class FieldTransform {
               ? ArrayValue.fromJson(json_['removeAllFromArray']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          setToServerValue: json_.containsKey('setToServerValue')
-              ? json_['setToServerValue'] as core.String
-              : null,
+          setToServerValue: json_['setToServerValue'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3476,10 +3442,8 @@ class FindNearest {
 
   FindNearest.fromJson(core.Map json_)
       : this(
-          distanceMeasure: json_.containsKey('distanceMeasure')
-              ? json_['distanceMeasure'] as core.String
-              : null,
-          limit: json_.containsKey('limit') ? json_['limit'] as core.int : null,
+          distanceMeasure: json_['distanceMeasure'] as core.String?,
+          limit: json_['limit'] as core.int?,
           queryVector: json_.containsKey('queryVector')
               ? Value.fromJson(
                   json_['queryVector'] as core.Map<core.String, core.dynamic>)
@@ -3565,21 +3529,12 @@ class GoogleFirestoreAdminV1Backup {
 
   GoogleFirestoreAdminV1Backup.fromJson(core.Map json_)
       : this(
-          database: json_.containsKey('database')
-              ? json_['database'] as core.String
-              : null,
-          databaseUid: json_.containsKey('databaseUid')
-              ? json_['databaseUid'] as core.String
-              : null,
-          expireTime: json_.containsKey('expireTime')
-              ? json_['expireTime'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          snapshotTime: json_.containsKey('snapshotTime')
-              ? json_['snapshotTime'] as core.String
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
+          database: json_['database'] as core.String?,
+          databaseUid: json_['databaseUid'] as core.String?,
+          expireTime: json_['expireTime'] as core.String?,
+          name: json_['name'] as core.String?,
+          snapshotTime: json_['snapshotTime'] as core.String?,
+          state: json_['state'] as core.String?,
           stats: json_.containsKey('stats')
               ? GoogleFirestoreAdminV1Stats.fromJson(
                   json_['stats'] as core.Map<core.String, core.dynamic>)
@@ -3647,21 +3602,15 @@ class GoogleFirestoreAdminV1BackupSchedule {
 
   GoogleFirestoreAdminV1BackupSchedule.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
           dailyRecurrence: json_.containsKey('dailyRecurrence')
               ? GoogleFirestoreAdminV1DailyRecurrence.fromJson(
                   json_['dailyRecurrence']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          retention: json_.containsKey('retention')
-              ? json_['retention'] as core.String
-              : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          retention: json_['retention'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
           weeklyRecurrence: json_.containsKey('weeklyRecurrence')
               ? GoogleFirestoreAdminV1WeeklyRecurrence.fromJson(
                   json_['weeklyRecurrence']
@@ -3719,9 +3668,7 @@ class GoogleFirestoreAdminV1CmekConfig {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          kmsKeyName: json_.containsKey('kmsKeyName')
-              ? json_['kmsKeyName'] as core.String
-              : null,
+          kmsKeyName: json_['kmsKeyName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3928,51 +3875,28 @@ class GoogleFirestoreAdminV1Database {
   GoogleFirestoreAdminV1Database.fromJson(core.Map json_)
       : this(
           appEngineIntegrationMode:
-              json_.containsKey('appEngineIntegrationMode')
-                  ? json_['appEngineIntegrationMode'] as core.String
-                  : null,
+              json_['appEngineIntegrationMode'] as core.String?,
           cmekConfig: json_.containsKey('cmekConfig')
               ? GoogleFirestoreAdminV1CmekConfig.fromJson(
                   json_['cmekConfig'] as core.Map<core.String, core.dynamic>)
               : null,
-          concurrencyMode: json_.containsKey('concurrencyMode')
-              ? json_['concurrencyMode'] as core.String
-              : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          deleteProtectionState: json_.containsKey('deleteProtectionState')
-              ? json_['deleteProtectionState'] as core.String
-              : null,
-          deleteTime: json_.containsKey('deleteTime')
-              ? json_['deleteTime'] as core.String
-              : null,
-          earliestVersionTime: json_.containsKey('earliestVersionTime')
-              ? json_['earliestVersionTime'] as core.String
-              : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          keyPrefix: json_.containsKey('keyPrefix')
-              ? json_['keyPrefix'] as core.String
-              : null,
-          locationId: json_.containsKey('locationId')
-              ? json_['locationId'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          concurrencyMode: json_['concurrencyMode'] as core.String?,
+          createTime: json_['createTime'] as core.String?,
+          deleteProtectionState: json_['deleteProtectionState'] as core.String?,
+          deleteTime: json_['deleteTime'] as core.String?,
+          earliestVersionTime: json_['earliestVersionTime'] as core.String?,
+          etag: json_['etag'] as core.String?,
+          keyPrefix: json_['keyPrefix'] as core.String?,
+          locationId: json_['locationId'] as core.String?,
+          name: json_['name'] as core.String?,
           pointInTimeRecoveryEnablement:
-              json_.containsKey('pointInTimeRecoveryEnablement')
-                  ? json_['pointInTimeRecoveryEnablement'] as core.String
-                  : null,
-          previousId: json_.containsKey('previousId')
-              ? json_['previousId'] as core.String
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
-          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
-          versionRetentionPeriod: json_.containsKey('versionRetentionPeriod')
-              ? json_['versionRetentionPeriod'] as core.String
-              : null,
+              json_['pointInTimeRecoveryEnablement'] as core.String?,
+          previousId: json_['previousId'] as core.String?,
+          type: json_['type'] as core.String?,
+          uid: json_['uid'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
+          versionRetentionPeriod:
+              json_['versionRetentionPeriod'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4022,12 +3946,8 @@ class GoogleFirestoreAdminV1DatabaseSnapshot {
 
   GoogleFirestoreAdminV1DatabaseSnapshot.fromJson(core.Map json_)
       : this(
-          database: json_.containsKey('database')
-              ? json_['database'] as core.String
-              : null,
-          snapshotTime: json_.containsKey('snapshotTime')
-              ? json_['snapshotTime'] as core.String
-              : null,
+          database: json_['database'] as core.String?,
+          snapshotTime: json_['snapshotTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4093,12 +4013,8 @@ class GoogleFirestoreAdminV1ExportDocumentsRequest {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          outputUriPrefix: json_.containsKey('outputUriPrefix')
-              ? json_['outputUriPrefix'] as core.String
-              : null,
-          snapshotTime: json_.containsKey('snapshotTime')
-              ? json_['snapshotTime'] as core.String
-              : null,
+          outputUriPrefix: json_['outputUriPrefix'] as core.String?,
+          snapshotTime: json_['snapshotTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4162,7 +4078,7 @@ class GoogleFirestoreAdminV1Field {
               ? GoogleFirestoreAdminV1IndexConfig.fromJson(
                   json_['indexConfig'] as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           ttlConfig: json_.containsKey('ttlConfig')
               ? GoogleFirestoreAdminV1TtlConfig.fromJson(
                   json_['ttlConfig'] as core.Map<core.String, core.dynamic>)
@@ -4216,9 +4132,7 @@ class GoogleFirestoreAdminV1ImportDocumentsRequest {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          inputUriPrefix: json_.containsKey('inputUriPrefix')
-              ? json_['inputUriPrefix'] as core.String
-              : null,
+          inputUriPrefix: json_['inputUriPrefix'] as core.String?,
           namespaceIds: json_.containsKey('namespaceIds')
               ? (json_['namespaceIds'] as core.List)
                   .map((value) => value as core.String)
@@ -4315,21 +4229,16 @@ class GoogleFirestoreAdminV1Index {
 
   GoogleFirestoreAdminV1Index.fromJson(core.Map json_)
       : this(
-          apiScope: json_.containsKey('apiScope')
-              ? json_['apiScope'] as core.String
-              : null,
+          apiScope: json_['apiScope'] as core.String?,
           fields: json_.containsKey('fields')
               ? (json_['fields'] as core.List)
                   .map((value) => GoogleFirestoreAdminV1IndexField.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          queryScope: json_.containsKey('queryScope')
-              ? json_['queryScope'] as core.String
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
+          name: json_['name'] as core.String?,
+          queryScope: json_['queryScope'] as core.String?,
+          state: json_['state'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4379,21 +4288,15 @@ class GoogleFirestoreAdminV1IndexConfig {
 
   GoogleFirestoreAdminV1IndexConfig.fromJson(core.Map json_)
       : this(
-          ancestorField: json_.containsKey('ancestorField')
-              ? json_['ancestorField'] as core.String
-              : null,
+          ancestorField: json_['ancestorField'] as core.String?,
           indexes: json_.containsKey('indexes')
               ? (json_['indexes'] as core.List)
                   .map((value) => GoogleFirestoreAdminV1Index.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          reverting: json_.containsKey('reverting')
-              ? json_['reverting'] as core.bool
-              : null,
-          usesAncestorConfig: json_.containsKey('usesAncestorConfig')
-              ? json_['usesAncestorConfig'] as core.bool
-              : null,
+          reverting: json_['reverting'] as core.bool?,
+          usesAncestorConfig: json_['usesAncestorConfig'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4444,14 +4347,9 @@ class GoogleFirestoreAdminV1IndexField {
 
   GoogleFirestoreAdminV1IndexField.fromJson(core.Map json_)
       : this(
-          arrayConfig: json_.containsKey('arrayConfig')
-              ? json_['arrayConfig'] as core.String
-              : null,
-          fieldPath: json_.containsKey('fieldPath')
-              ? json_['fieldPath'] as core.String
-              : null,
-          order:
-              json_.containsKey('order') ? json_['order'] as core.String : null,
+          arrayConfig: json_['arrayConfig'] as core.String?,
+          fieldPath: json_['fieldPath'] as core.String?,
+          order: json_['order'] as core.String?,
           vectorConfig: json_.containsKey('vectorConfig')
               ? GoogleFirestoreAdminV1VectorConfig.fromJson(
                   json_['vectorConfig'] as core.Map<core.String, core.dynamic>)
@@ -4594,9 +4492,7 @@ class GoogleFirestoreAdminV1ListFieldsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4628,9 +4524,7 @@ class GoogleFirestoreAdminV1ListIndexesResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4673,12 +4567,8 @@ class GoogleFirestoreAdminV1RestoreDatabaseRequest {
 
   GoogleFirestoreAdminV1RestoreDatabaseRequest.fromJson(core.Map json_)
       : this(
-          backup: json_.containsKey('backup')
-              ? json_['backup'] as core.String
-              : null,
-          databaseId: json_.containsKey('databaseId')
-              ? json_['databaseId'] as core.String
-              : null,
+          backup: json_['backup'] as core.String?,
+          databaseId: json_['databaseId'] as core.String?,
           databaseSnapshot: json_.containsKey('databaseSnapshot')
               ? GoogleFirestoreAdminV1DatabaseSnapshot.fromJson(
                   json_['databaseSnapshot']
@@ -4719,15 +4609,9 @@ class GoogleFirestoreAdminV1Stats {
 
   GoogleFirestoreAdminV1Stats.fromJson(core.Map json_)
       : this(
-          documentCount: json_.containsKey('documentCount')
-              ? json_['documentCount'] as core.String
-              : null,
-          indexCount: json_.containsKey('indexCount')
-              ? json_['indexCount'] as core.String
-              : null,
-          sizeBytes: json_.containsKey('sizeBytes')
-              ? json_['sizeBytes'] as core.String
-              : null,
+          documentCount: json_['documentCount'] as core.String?,
+          indexCount: json_['indexCount'] as core.String?,
+          sizeBytes: json_['sizeBytes'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4769,8 +4653,7 @@ class GoogleFirestoreAdminV1TtlConfig {
 
   GoogleFirestoreAdminV1TtlConfig.fromJson(core.Map json_)
       : this(
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
+          state: json_['state'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4798,9 +4681,7 @@ class GoogleFirestoreAdminV1VectorConfig {
 
   GoogleFirestoreAdminV1VectorConfig.fromJson(core.Map json_)
       : this(
-          dimension: json_.containsKey('dimension')
-              ? json_['dimension'] as core.int
-              : null,
+          dimension: json_['dimension'] as core.int?,
           flat: json_.containsKey('flat')
               ? GoogleFirestoreAdminV1FlatIndex.fromJson(
                   json_['flat'] as core.Map<core.String, core.dynamic>)
@@ -4844,7 +4725,7 @@ class GoogleFirestoreAdminV1WeeklyRecurrence {
 
   GoogleFirestoreAdminV1WeeklyRecurrence.fromJson(core.Map json_)
       : this(
-          day: json_.containsKey('day') ? json_['day'] as core.String : null,
+          day: json_['day'] as core.String?,
           time: json_.containsKey('time')
               ? TimeOfDay.fromJson(
                   json_['time'] as core.Map<core.String, core.dynamic>)
@@ -4875,9 +4756,7 @@ class GoogleLongrunningListOperationsResponse {
 
   GoogleLongrunningListOperationsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           operations: json_.containsKey('operations')
               ? (json_['operations'] as core.List)
                   .map((value) => GoogleLongrunningOperation.fromJson(
@@ -4945,7 +4824,7 @@ class GoogleLongrunningOperation {
 
   GoogleLongrunningOperation.fromJson(core.Map json_)
       : this(
-          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
@@ -4953,7 +4832,7 @@ class GoogleLongrunningOperation {
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           response: json_.containsKey('response')
               ? json_['response'] as core.Map<core.String, core.dynamic>
               : null,
@@ -5000,15 +4879,9 @@ class ListCollectionIdsRequest {
 
   ListCollectionIdsRequest.fromJson(core.Map json_)
       : this(
-          pageSize: json_.containsKey('pageSize')
-              ? json_['pageSize'] as core.int
-              : null,
-          pageToken: json_.containsKey('pageToken')
-              ? json_['pageToken'] as core.String
-              : null,
-          readTime: json_.containsKey('readTime')
-              ? json_['readTime'] as core.String
-              : null,
+          pageSize: json_['pageSize'] as core.int?,
+          pageToken: json_['pageToken'] as core.String?,
+          readTime: json_['readTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5038,9 +4911,7 @@ class ListCollectionIdsResponse {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5072,9 +4943,7 @@ class ListDocumentsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5104,9 +4973,7 @@ class ListLocationsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5171,9 +5038,7 @@ class Order {
 
   Order.fromJson(core.Map json_)
       : this(
-          direction: json_.containsKey('direction')
-              ? json_['direction'] as core.String
-              : null,
+          direction: json_['direction'] as core.String?,
           field: json_.containsKey('field')
               ? FieldReference.fromJson(
                   json_['field'] as core.Map<core.String, core.dynamic>)
@@ -5242,18 +5107,10 @@ class PartitionQueryRequest {
 
   PartitionQueryRequest.fromJson(core.Map json_)
       : this(
-          pageSize: json_.containsKey('pageSize')
-              ? json_['pageSize'] as core.int
-              : null,
-          pageToken: json_.containsKey('pageToken')
-              ? json_['pageToken'] as core.String
-              : null,
-          partitionCount: json_.containsKey('partitionCount')
-              ? json_['partitionCount'] as core.String
-              : null,
-          readTime: json_.containsKey('readTime')
-              ? json_['readTime'] as core.String
-              : null,
+          pageSize: json_['pageSize'] as core.int?,
+          pageToken: json_['pageToken'] as core.String?,
+          partitionCount: json_['partitionCount'] as core.String?,
+          readTime: json_['readTime'] as core.String?,
           structuredQuery: json_.containsKey('structuredQuery')
               ? StructuredQuery.fromJson(json_['structuredQuery']
                   as core.Map<core.String, core.dynamic>)
@@ -5299,9 +5156,7 @@ class PartitionQueryResponse {
 
   PartitionQueryResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           partitions: json_.containsKey('partitions')
               ? (json_['partitions'] as core.List)
                   .map((value) => Cursor.fromJson(
@@ -5339,11 +5194,8 @@ class Precondition {
 
   Precondition.fromJson(core.Map json_)
       : this(
-          exists:
-              json_.containsKey('exists') ? json_['exists'] as core.bool : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          exists: json_['exists'] as core.bool?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5394,9 +5246,7 @@ class ReadOnly {
 
   ReadOnly.fromJson(core.Map json_)
       : this(
-          readTime: json_.containsKey('readTime')
-              ? json_['readTime'] as core.String
-              : null,
+          readTime: json_['readTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5425,9 +5275,7 @@ class ReadWrite {
 
   ReadWrite.fromJson(core.Map json_)
       : this(
-          retryTransaction: json_.containsKey('retryTransaction')
-              ? json_['retryTransaction'] as core.String
-              : null,
+          retryTransaction: json_['retryTransaction'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5455,9 +5303,7 @@ class RollbackRequest {
 
   RollbackRequest.fromJson(core.Map json_)
       : this(
-          transaction: json_.containsKey('transaction')
-              ? json_['transaction'] as core.String
-              : null,
+          transaction: json_['transaction'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5521,18 +5367,14 @@ class RunAggregationQueryRequest {
               ? TransactionOptions.fromJson(json_['newTransaction']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          readTime: json_.containsKey('readTime')
-              ? json_['readTime'] as core.String
-              : null,
+          readTime: json_['readTime'] as core.String?,
           structuredAggregationQuery:
               json_.containsKey('structuredAggregationQuery')
                   ? StructuredAggregationQuery.fromJson(
                       json_['structuredAggregationQuery']
                           as core.Map<core.String, core.dynamic>)
                   : null,
-          transaction: json_.containsKey('transaction')
-              ? json_['transaction'] as core.String
-              : null,
+          transaction: json_['transaction'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5593,16 +5435,12 @@ class RunAggregationQueryResponseElement {
               ? ExplainMetrics.fromJson(json_['explainMetrics']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          readTime: json_.containsKey('readTime')
-              ? json_['readTime'] as core.String
-              : null,
+          readTime: json_['readTime'] as core.String?,
           result: json_.containsKey('result')
               ? AggregationResult.fromJson(
                   json_['result'] as core.Map<core.String, core.dynamic>)
               : null,
-          transaction: json_.containsKey('transaction')
-              ? json_['transaction'] as core.String
-              : null,
+          transaction: json_['transaction'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5673,16 +5511,12 @@ class RunQueryRequest {
               ? TransactionOptions.fromJson(json_['newTransaction']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          readTime: json_.containsKey('readTime')
-              ? json_['readTime'] as core.String
-              : null,
+          readTime: json_['readTime'] as core.String?,
           structuredQuery: json_.containsKey('structuredQuery')
               ? StructuredQuery.fromJson(json_['structuredQuery']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          transaction: json_.containsKey('transaction')
-              ? json_['transaction'] as core.String
-              : null,
+          transaction: json_['transaction'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5750,20 +5584,14 @@ class RunQueryResponseElement {
               ? Document.fromJson(
                   json_['document'] as core.Map<core.String, core.dynamic>)
               : null,
-          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          done: json_['done'] as core.bool?,
           explainMetrics: json_.containsKey('explainMetrics')
               ? ExplainMetrics.fromJson(json_['explainMetrics']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          readTime: json_.containsKey('readTime')
-              ? json_['readTime'] as core.String
-              : null,
-          skippedResults: json_.containsKey('skippedResults')
-              ? json_['skippedResults'] as core.int
-              : null,
-          transaction: json_.containsKey('transaction')
-              ? json_['transaction'] as core.String
-              : null,
+          readTime: json_['readTime'] as core.String?,
+          skippedResults: json_['skippedResults'] as core.int?,
+          transaction: json_['transaction'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5935,9 +5763,8 @@ class StructuredQuery {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          limit: json_.containsKey('limit') ? json_['limit'] as core.int : null,
-          offset:
-              json_.containsKey('offset') ? json_['offset'] as core.int : null,
+          limit: json_['limit'] as core.int?,
+          offset: json_['offset'] as core.int?,
           orderBy: json_.containsKey('orderBy')
               ? (json_['orderBy'] as core.List)
                   .map((value) => Order.fromJson(
@@ -6074,7 +5901,7 @@ class UnaryFilter {
               ? FieldReference.fromJson(
                   json_['field'] as core.Map<core.String, core.dynamic>)
               : null,
-          op: json_.containsKey('op') ? json_['op'] as core.String : null,
+          op: json_['op'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6163,36 +5990,22 @@ class Value {
               ? ArrayValue.fromJson(
                   json_['arrayValue'] as core.Map<core.String, core.dynamic>)
               : null,
-          booleanValue: json_.containsKey('booleanValue')
-              ? json_['booleanValue'] as core.bool
-              : null,
-          bytesValue: json_.containsKey('bytesValue')
-              ? json_['bytesValue'] as core.String
-              : null,
-          doubleValue: json_.containsKey('doubleValue')
-              ? (json_['doubleValue'] as core.num).toDouble()
-              : null,
+          booleanValue: json_['booleanValue'] as core.bool?,
+          bytesValue: json_['bytesValue'] as core.String?,
+          doubleValue: (json_['doubleValue'] as core.num?)?.toDouble(),
           geoPointValue: json_.containsKey('geoPointValue')
               ? LatLng.fromJson(
                   json_['geoPointValue'] as core.Map<core.String, core.dynamic>)
               : null,
-          integerValue: json_.containsKey('integerValue')
-              ? json_['integerValue'] as core.String
-              : null,
+          integerValue: json_['integerValue'] as core.String?,
           mapValue: json_.containsKey('mapValue')
               ? MapValue.fromJson(
                   json_['mapValue'] as core.Map<core.String, core.dynamic>)
               : null,
           nullValue: json_.containsKey('nullValue') ? 'NULL_VALUE' : null,
-          referenceValue: json_.containsKey('referenceValue')
-              ? json_['referenceValue'] as core.String
-              : null,
-          stringValue: json_.containsKey('stringValue')
-              ? json_['stringValue'] as core.String
-              : null,
-          timestampValue: json_.containsKey('timestampValue')
-              ? json_['timestampValue'] as core.String
-              : null,
+          referenceValue: json_['referenceValue'] as core.String?,
+          stringValue: json_['stringValue'] as core.String?,
+          timestampValue: json_['timestampValue'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6262,9 +6075,7 @@ class Write {
               ? Precondition.fromJson(json_['currentDocument']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          delete: json_.containsKey('delete')
-              ? json_['delete'] as core.String
-              : null,
+          delete: json_['delete'] as core.String?,
           transform: json_.containsKey('transform')
               ? DocumentTransform.fromJson(
                   json_['transform'] as core.Map<core.String, core.dynamic>)
@@ -6355,12 +6166,8 @@ class WriteRequest {
                   ),
                 )
               : null,
-          streamId: json_.containsKey('streamId')
-              ? json_['streamId'] as core.String
-              : null,
-          streamToken: json_.containsKey('streamToken')
-              ? json_['streamToken'] as core.String
-              : null,
+          streamId: json_['streamId'] as core.String?,
+          streamToken: json_['streamToken'] as core.String?,
           writes: json_.containsKey('writes')
               ? (json_['writes'] as core.List)
                   .map((value) => Write.fromJson(
@@ -6417,15 +6224,9 @@ class WriteResponse {
 
   WriteResponse.fromJson(core.Map json_)
       : this(
-          commitTime: json_.containsKey('commitTime')
-              ? json_['commitTime'] as core.String
-              : null,
-          streamId: json_.containsKey('streamId')
-              ? json_['streamId'] as core.String
-              : null,
-          streamToken: json_.containsKey('streamToken')
-              ? json_['streamToken'] as core.String
-              : null,
+          commitTime: json_['commitTime'] as core.String?,
+          streamId: json_['streamId'] as core.String?,
+          streamToken: json_['streamToken'] as core.String?,
           writeResults: json_.containsKey('writeResults')
               ? (json_['writeResults'] as core.List)
                   .map((value) => WriteResult.fromJson(
@@ -6467,9 +6268,7 @@ class WriteResult {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

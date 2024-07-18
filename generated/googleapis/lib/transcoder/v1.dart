@@ -469,9 +469,7 @@ class AdBreak {
 
   AdBreak.fromJson(core.Map json_)
       : this(
-          startTimeOffset: json_.containsKey('startTimeOffset')
-              ? json_['startTimeOffset'] as core.String
-              : null,
+          startTimeOffset: json_['startTimeOffset'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -538,9 +536,7 @@ class AnimationEnd {
 
   AnimationEnd.fromJson(core.Map json_)
       : this(
-          startTimeOffset: json_.containsKey('startTimeOffset')
-              ? json_['startTimeOffset'] as core.String
-              : null,
+          startTimeOffset: json_['startTimeOffset'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -586,15 +582,9 @@ class AnimationFade {
 
   AnimationFade.fromJson(core.Map json_)
       : this(
-          endTimeOffset: json_.containsKey('endTimeOffset')
-              ? json_['endTimeOffset'] as core.String
-              : null,
-          fadeType: json_.containsKey('fadeType')
-              ? json_['fadeType'] as core.String
-              : null,
-          startTimeOffset: json_.containsKey('startTimeOffset')
-              ? json_['startTimeOffset'] as core.String
-              : null,
+          endTimeOffset: json_['endTimeOffset'] as core.String?,
+          fadeType: json_['fadeType'] as core.String?,
+          startTimeOffset: json_['startTimeOffset'] as core.String?,
           xy: json_.containsKey('xy')
               ? NormalizedCoordinate.fromJson(
                   json_['xy'] as core.Map<core.String, core.dynamic>)
@@ -631,9 +621,7 @@ class AnimationStatic {
 
   AnimationStatic.fromJson(core.Map json_)
       : this(
-          startTimeOffset: json_.containsKey('startTimeOffset')
-              ? json_['startTimeOffset'] as core.String
-              : null,
+          startTimeOffset: json_['startTimeOffset'] as core.String?,
           xy: json_.containsKey('xy')
               ? NormalizedCoordinate.fromJson(
                   json_['xy'] as core.Map<core.String, core.dynamic>)
@@ -677,15 +665,9 @@ class Audio {
 
   Audio.fromJson(core.Map json_)
       : this(
-          highBoost: json_.containsKey('highBoost')
-              ? json_['highBoost'] as core.bool
-              : null,
-          lowBoost: json_.containsKey('lowBoost')
-              ? json_['lowBoost'] as core.bool
-              : null,
-          lufs: json_.containsKey('lufs')
-              ? (json_['lufs'] as core.num).toDouble()
-              : null,
+          highBoost: json_['highBoost'] as core.bool?,
+          lowBoost: json_['lowBoost'] as core.bool?,
+          lufs: (json_['lufs'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -740,24 +722,12 @@ class AudioMapping {
 
   AudioMapping.fromJson(core.Map json_)
       : this(
-          atomKey: json_.containsKey('atomKey')
-              ? json_['atomKey'] as core.String
-              : null,
-          gainDb: json_.containsKey('gainDb')
-              ? (json_['gainDb'] as core.num).toDouble()
-              : null,
-          inputChannel: json_.containsKey('inputChannel')
-              ? json_['inputChannel'] as core.int
-              : null,
-          inputKey: json_.containsKey('inputKey')
-              ? json_['inputKey'] as core.String
-              : null,
-          inputTrack: json_.containsKey('inputTrack')
-              ? json_['inputTrack'] as core.int
-              : null,
-          outputChannel: json_.containsKey('outputChannel')
-              ? json_['outputChannel'] as core.int
-              : null,
+          atomKey: json_['atomKey'] as core.String?,
+          gainDb: (json_['gainDb'] as core.num?)?.toDouble(),
+          inputChannel: json_['inputChannel'] as core.int?,
+          inputKey: json_['inputKey'] as core.String?,
+          inputTrack: json_['inputTrack'] as core.int?,
+          outputChannel: json_['outputChannel'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -833,34 +803,23 @@ class AudioStream {
 
   AudioStream.fromJson(core.Map json_)
       : this(
-          bitrateBps: json_.containsKey('bitrateBps')
-              ? json_['bitrateBps'] as core.int
-              : null,
-          channelCount: json_.containsKey('channelCount')
-              ? json_['channelCount'] as core.int
-              : null,
+          bitrateBps: json_['bitrateBps'] as core.int?,
+          channelCount: json_['channelCount'] as core.int?,
           channelLayout: json_.containsKey('channelLayout')
               ? (json_['channelLayout'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          codec:
-              json_.containsKey('codec') ? json_['codec'] as core.String : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          languageCode: json_.containsKey('languageCode')
-              ? json_['languageCode'] as core.String
-              : null,
+          codec: json_['codec'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          languageCode: json_['languageCode'] as core.String?,
           mapping: json_.containsKey('mapping')
               ? (json_['mapping'] as core.List)
                   .map((value) => AudioMapping.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          sampleRateHertz: json_.containsKey('sampleRateHertz')
-              ? json_['sampleRateHertz'] as core.int
-              : null,
+          sampleRateHertz: json_['sampleRateHertz'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -904,13 +863,9 @@ class BwdifConfig {
 
   BwdifConfig.fromJson(core.Map json_)
       : this(
-          deinterlaceAllFrames: json_.containsKey('deinterlaceAllFrames')
-              ? json_['deinterlaceAllFrames'] as core.bool
-              : null,
-          mode: json_.containsKey('mode') ? json_['mode'] as core.String : null,
-          parity: json_.containsKey('parity')
-              ? json_['parity'] as core.String
-              : null,
+          deinterlaceAllFrames: json_['deinterlaceAllFrames'] as core.bool?,
+          mode: json_['mode'] as core.String?,
+          parity: json_['parity'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -954,15 +909,9 @@ class Color {
 
   Color.fromJson(core.Map json_)
       : this(
-          brightness: json_.containsKey('brightness')
-              ? (json_['brightness'] as core.num).toDouble()
-              : null,
-          contrast: json_.containsKey('contrast')
-              ? (json_['contrast'] as core.num).toDouble()
-              : null,
-          saturation: json_.containsKey('saturation')
-              ? (json_['saturation'] as core.num).toDouble()
-              : null,
+          brightness: (json_['brightness'] as core.num?)?.toDouble(),
+          contrast: (json_['contrast'] as core.num?)?.toDouble(),
+          saturation: (json_['saturation'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1005,18 +954,10 @@ class Crop {
 
   Crop.fromJson(core.Map json_)
       : this(
-          bottomPixels: json_.containsKey('bottomPixels')
-              ? json_['bottomPixels'] as core.int
-              : null,
-          leftPixels: json_.containsKey('leftPixels')
-              ? json_['leftPixels'] as core.int
-              : null,
-          rightPixels: json_.containsKey('rightPixels')
-              ? json_['rightPixels'] as core.int
-              : null,
-          topPixels: json_.containsKey('topPixels')
-              ? json_['topPixels'] as core.int
-              : null,
+          bottomPixels: json_['bottomPixels'] as core.int?,
+          leftPixels: json_['leftPixels'] as core.int?,
+          rightPixels: json_['rightPixels'] as core.int?,
+          topPixels: json_['topPixels'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1050,9 +991,8 @@ class DashConfig {
 
   DashConfig.fromJson(core.Map json_)
       : this(
-          segmentReferenceScheme: json_.containsKey('segmentReferenceScheme')
-              ? json_['segmentReferenceScheme'] as core.String
-              : null,
+          segmentReferenceScheme:
+              json_['segmentReferenceScheme'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1083,12 +1023,8 @@ class Deblock {
 
   Deblock.fromJson(core.Map json_)
       : this(
-          enabled: json_.containsKey('enabled')
-              ? json_['enabled'] as core.bool
-              : null,
-          strength: json_.containsKey('strength')
-              ? (json_['strength'] as core.num).toDouble()
-              : null,
+          enabled: json_['enabled'] as core.bool?,
+          strength: (json_['strength'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1151,10 +1087,8 @@ class Denoise {
 
   Denoise.fromJson(core.Map json_)
       : this(
-          strength: json_.containsKey('strength')
-              ? (json_['strength'] as core.num).toDouble()
-              : null,
-          tune: json_.containsKey('tune') ? json_['tune'] as core.String : null,
+          strength: (json_['strength'] as core.num?)?.toDouble(),
+          tune: json_['tune'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1245,18 +1179,14 @@ class EditAtom {
 
   EditAtom.fromJson(core.Map json_)
       : this(
-          endTimeOffset: json_.containsKey('endTimeOffset')
-              ? json_['endTimeOffset'] as core.String
-              : null,
+          endTimeOffset: json_['endTimeOffset'] as core.String?,
           inputs: json_.containsKey('inputs')
               ? (json_['inputs'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          key: json_.containsKey('key') ? json_['key'] as core.String : null,
-          startTimeOffset: json_.containsKey('startTimeOffset')
-              ? json_['startTimeOffset'] as core.String
-              : null,
+          key: json_['key'] as core.String?,
+          startTimeOffset: json_['startTimeOffset'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1299,7 +1229,7 @@ class ElementaryStream {
               ? AudioStream.fromJson(
                   json_['audioStream'] as core.Map<core.String, core.dynamic>)
               : null,
-          key: json_.containsKey('key') ? json_['key'] as core.String : null,
+          key: json_['key'] as core.String?,
           textStream: json_.containsKey('textStream')
               ? TextStream.fromJson(
                   json_['textStream'] as core.Map<core.String, core.dynamic>)
@@ -1371,7 +1301,7 @@ class Encryption {
               ? DrmSystems.fromJson(
                   json_['drmSystems'] as core.Map<core.String, core.dynamic>)
               : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          id: json_['id'] as core.String?,
           mpegCenc: json_.containsKey('mpegCenc')
               ? MpegCommonEncryption.fromJson(
                   json_['mpegCenc'] as core.Map<core.String, core.dynamic>)
@@ -1416,9 +1346,7 @@ class Fmp4Config {
 
   Fmp4Config.fromJson(core.Map json_)
       : this(
-          codecTag: json_.containsKey('codecTag')
-              ? json_['codecTag'] as core.String
-              : null,
+          codecTag: json_['codecTag'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1626,76 +1554,36 @@ class H264CodecSettings {
 
   H264CodecSettings.fromJson(core.Map json_)
       : this(
-          allowOpenGop: json_.containsKey('allowOpenGop')
-              ? json_['allowOpenGop'] as core.bool
-              : null,
-          aqStrength: json_.containsKey('aqStrength')
-              ? (json_['aqStrength'] as core.num).toDouble()
-              : null,
-          bFrameCount: json_.containsKey('bFrameCount')
-              ? json_['bFrameCount'] as core.int
-              : null,
-          bPyramid: json_.containsKey('bPyramid')
-              ? json_['bPyramid'] as core.bool
-              : null,
-          bitrateBps: json_.containsKey('bitrateBps')
-              ? json_['bitrateBps'] as core.int
-              : null,
-          crfLevel: json_.containsKey('crfLevel')
-              ? json_['crfLevel'] as core.int
-              : null,
-          enableTwoPass: json_.containsKey('enableTwoPass')
-              ? json_['enableTwoPass'] as core.bool
-              : null,
-          entropyCoder: json_.containsKey('entropyCoder')
-              ? json_['entropyCoder'] as core.String
-              : null,
-          frameRate: json_.containsKey('frameRate')
-              ? (json_['frameRate'] as core.num).toDouble()
-              : null,
+          allowOpenGop: json_['allowOpenGop'] as core.bool?,
+          aqStrength: (json_['aqStrength'] as core.num?)?.toDouble(),
+          bFrameCount: json_['bFrameCount'] as core.int?,
+          bPyramid: json_['bPyramid'] as core.bool?,
+          bitrateBps: json_['bitrateBps'] as core.int?,
+          crfLevel: json_['crfLevel'] as core.int?,
+          enableTwoPass: json_['enableTwoPass'] as core.bool?,
+          entropyCoder: json_['entropyCoder'] as core.String?,
+          frameRate: (json_['frameRate'] as core.num?)?.toDouble(),
           frameRateConversionStrategy:
-              json_.containsKey('frameRateConversionStrategy')
-                  ? json_['frameRateConversionStrategy'] as core.String
-                  : null,
-          gopDuration: json_.containsKey('gopDuration')
-              ? json_['gopDuration'] as core.String
-              : null,
-          gopFrameCount: json_.containsKey('gopFrameCount')
-              ? json_['gopFrameCount'] as core.int
-              : null,
-          heightPixels: json_.containsKey('heightPixels')
-              ? json_['heightPixels'] as core.int
-              : null,
+              json_['frameRateConversionStrategy'] as core.String?,
+          gopDuration: json_['gopDuration'] as core.String?,
+          gopFrameCount: json_['gopFrameCount'] as core.int?,
+          heightPixels: json_['heightPixels'] as core.int?,
           hlg: json_.containsKey('hlg')
               ? H264ColorFormatHLG.fromJson(
                   json_['hlg'] as core.Map<core.String, core.dynamic>)
               : null,
-          pixelFormat: json_.containsKey('pixelFormat')
-              ? json_['pixelFormat'] as core.String
-              : null,
-          preset: json_.containsKey('preset')
-              ? json_['preset'] as core.String
-              : null,
-          profile: json_.containsKey('profile')
-              ? json_['profile'] as core.String
-              : null,
-          rateControlMode: json_.containsKey('rateControlMode')
-              ? json_['rateControlMode'] as core.String
-              : null,
+          pixelFormat: json_['pixelFormat'] as core.String?,
+          preset: json_['preset'] as core.String?,
+          profile: json_['profile'] as core.String?,
+          rateControlMode: json_['rateControlMode'] as core.String?,
           sdr: json_.containsKey('sdr')
               ? H264ColorFormatSDR.fromJson(
                   json_['sdr'] as core.Map<core.String, core.dynamic>)
               : null,
-          tune: json_.containsKey('tune') ? json_['tune'] as core.String : null,
-          vbvFullnessBits: json_.containsKey('vbvFullnessBits')
-              ? json_['vbvFullnessBits'] as core.int
-              : null,
-          vbvSizeBits: json_.containsKey('vbvSizeBits')
-              ? json_['vbvSizeBits'] as core.int
-              : null,
-          widthPixels: json_.containsKey('widthPixels')
-              ? json_['widthPixels'] as core.int
-              : null,
+          tune: json_['tune'] as core.String?,
+          vbvFullnessBits: json_['vbvFullnessBits'] as core.int?,
+          vbvSizeBits: json_['vbvSizeBits'] as core.int?,
+          widthPixels: json_['widthPixels'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1936,77 +1824,39 @@ class H265CodecSettings {
 
   H265CodecSettings.fromJson(core.Map json_)
       : this(
-          allowOpenGop: json_.containsKey('allowOpenGop')
-              ? json_['allowOpenGop'] as core.bool
-              : null,
-          aqStrength: json_.containsKey('aqStrength')
-              ? (json_['aqStrength'] as core.num).toDouble()
-              : null,
-          bFrameCount: json_.containsKey('bFrameCount')
-              ? json_['bFrameCount'] as core.int
-              : null,
-          bPyramid: json_.containsKey('bPyramid')
-              ? json_['bPyramid'] as core.bool
-              : null,
-          bitrateBps: json_.containsKey('bitrateBps')
-              ? json_['bitrateBps'] as core.int
-              : null,
-          crfLevel: json_.containsKey('crfLevel')
-              ? json_['crfLevel'] as core.int
-              : null,
-          enableTwoPass: json_.containsKey('enableTwoPass')
-              ? json_['enableTwoPass'] as core.bool
-              : null,
-          frameRate: json_.containsKey('frameRate')
-              ? (json_['frameRate'] as core.num).toDouble()
-              : null,
+          allowOpenGop: json_['allowOpenGop'] as core.bool?,
+          aqStrength: (json_['aqStrength'] as core.num?)?.toDouble(),
+          bFrameCount: json_['bFrameCount'] as core.int?,
+          bPyramid: json_['bPyramid'] as core.bool?,
+          bitrateBps: json_['bitrateBps'] as core.int?,
+          crfLevel: json_['crfLevel'] as core.int?,
+          enableTwoPass: json_['enableTwoPass'] as core.bool?,
+          frameRate: (json_['frameRate'] as core.num?)?.toDouble(),
           frameRateConversionStrategy:
-              json_.containsKey('frameRateConversionStrategy')
-                  ? json_['frameRateConversionStrategy'] as core.String
-                  : null,
-          gopDuration: json_.containsKey('gopDuration')
-              ? json_['gopDuration'] as core.String
-              : null,
-          gopFrameCount: json_.containsKey('gopFrameCount')
-              ? json_['gopFrameCount'] as core.int
-              : null,
+              json_['frameRateConversionStrategy'] as core.String?,
+          gopDuration: json_['gopDuration'] as core.String?,
+          gopFrameCount: json_['gopFrameCount'] as core.int?,
           hdr10: json_.containsKey('hdr10')
               ? H265ColorFormatHDR10.fromJson(
                   json_['hdr10'] as core.Map<core.String, core.dynamic>)
               : null,
-          heightPixels: json_.containsKey('heightPixels')
-              ? json_['heightPixels'] as core.int
-              : null,
+          heightPixels: json_['heightPixels'] as core.int?,
           hlg: json_.containsKey('hlg')
               ? H265ColorFormatHLG.fromJson(
                   json_['hlg'] as core.Map<core.String, core.dynamic>)
               : null,
-          pixelFormat: json_.containsKey('pixelFormat')
-              ? json_['pixelFormat'] as core.String
-              : null,
-          preset: json_.containsKey('preset')
-              ? json_['preset'] as core.String
-              : null,
-          profile: json_.containsKey('profile')
-              ? json_['profile'] as core.String
-              : null,
-          rateControlMode: json_.containsKey('rateControlMode')
-              ? json_['rateControlMode'] as core.String
-              : null,
+          pixelFormat: json_['pixelFormat'] as core.String?,
+          preset: json_['preset'] as core.String?,
+          profile: json_['profile'] as core.String?,
+          rateControlMode: json_['rateControlMode'] as core.String?,
           sdr: json_.containsKey('sdr')
               ? H265ColorFormatSDR.fromJson(
                   json_['sdr'] as core.Map<core.String, core.dynamic>)
               : null,
-          tune: json_.containsKey('tune') ? json_['tune'] as core.String : null,
-          vbvFullnessBits: json_.containsKey('vbvFullnessBits')
-              ? json_['vbvFullnessBits'] as core.int
-              : null,
-          vbvSizeBits: json_.containsKey('vbvSizeBits')
-              ? json_['vbvSizeBits'] as core.int
-              : null,
-          widthPixels: json_.containsKey('widthPixels')
-              ? json_['widthPixels'] as core.int
-              : null,
+          tune: json_['tune'] as core.String?,
+          vbvFullnessBits: json_['vbvFullnessBits'] as core.int?,
+          vbvSizeBits: json_['vbvSizeBits'] as core.int?,
+          widthPixels: json_['widthPixels'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2077,14 +1927,12 @@ class Image {
 
   Image.fromJson(core.Map json_)
       : this(
-          alpha: json_.containsKey('alpha')
-              ? (json_['alpha'] as core.num).toDouble()
-              : null,
+          alpha: (json_['alpha'] as core.num?)?.toDouble(),
           resolution: json_.containsKey('resolution')
               ? NormalizedCoordinate.fromJson(
                   json_['resolution'] as core.Map<core.String, core.dynamic>)
               : null,
-          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+          uri: json_['uri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2120,12 +1968,12 @@ class Input {
 
   Input.fromJson(core.Map json_)
       : this(
-          key: json_.containsKey('key') ? json_['key'] as core.String : null,
+          key: json_['key'] as core.String?,
           preprocessingConfig: json_.containsKey('preprocessingConfig')
               ? PreprocessingConfig.fromJson(json_['preprocessingConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+          uri: json_['uri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2269,26 +2117,18 @@ class Job {
 
   Job.fromJson(core.Map json_)
       : this(
-          batchModePriority: json_.containsKey('batchModePriority')
-              ? json_['batchModePriority'] as core.int
-              : null,
+          batchModePriority: json_['batchModePriority'] as core.int?,
           config: json_.containsKey('config')
               ? JobConfig.fromJson(
                   json_['config'] as core.Map<core.String, core.dynamic>)
               : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          endTime: json_.containsKey('endTime')
-              ? json_['endTime'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          endTime: json_['endTime'] as core.String?,
           error: json_.containsKey('error')
               ? Status.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
               : null,
-          inputUri: json_.containsKey('inputUri')
-              ? json_['inputUri'] as core.String
-              : null,
+          inputUri: json_['inputUri'] as core.String?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -2297,25 +2137,14 @@ class Job {
                   ),
                 )
               : null,
-          mode: json_.containsKey('mode') ? json_['mode'] as core.String : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          optimization: json_.containsKey('optimization')
-              ? json_['optimization'] as core.String
-              : null,
-          outputUri: json_.containsKey('outputUri')
-              ? json_['outputUri'] as core.String
-              : null,
-          startTime: json_.containsKey('startTime')
-              ? json_['startTime'] as core.String
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
-          templateId: json_.containsKey('templateId')
-              ? json_['templateId'] as core.String
-              : null,
-          ttlAfterCompletionDays: json_.containsKey('ttlAfterCompletionDays')
-              ? json_['ttlAfterCompletionDays'] as core.int
-              : null,
+          mode: json_['mode'] as core.String?,
+          name: json_['name'] as core.String?,
+          optimization: json_['optimization'] as core.String?,
+          outputUri: json_['outputUri'] as core.String?,
+          startTime: json_['startTime'] as core.String?,
+          state: json_['state'] as core.String?,
+          templateId: json_['templateId'] as core.String?,
+          ttlAfterCompletionDays: json_['ttlAfterCompletionDays'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2514,7 +2343,7 @@ class JobTemplate {
                   ),
                 )
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2549,9 +2378,7 @@ class ListJobTemplatesResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: json_.containsKey('unreachable')
               ? (json_['unreachable'] as core.List)
                   .map((value) => value as core.String)
@@ -2591,9 +2418,7 @@ class ListJobsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           unreachable: json_.containsKey('unreachable')
               ? (json_['unreachable'] as core.List)
                   .map((value) => value as core.String)
@@ -2652,15 +2477,13 @@ class Manifest {
               ? DashConfig.fromJson(
                   json_['dash'] as core.Map<core.String, core.dynamic>)
               : null,
-          fileName: json_.containsKey('fileName')
-              ? json_['fileName'] as core.String
-              : null,
+          fileName: json_['fileName'] as core.String?,
           muxStreams: json_.containsKey('muxStreams')
               ? (json_['muxStreams'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2686,9 +2509,7 @@ class MpegCommonEncryption {
 
   MpegCommonEncryption.fromJson(core.Map json_)
       : this(
-          scheme: json_.containsKey('scheme')
-              ? json_['scheme'] as core.String
-              : null,
+          scheme: json_['scheme'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2744,25 +2565,19 @@ class MuxStream {
 
   MuxStream.fromJson(core.Map json_)
       : this(
-          container: json_.containsKey('container')
-              ? json_['container'] as core.String
-              : null,
+          container: json_['container'] as core.String?,
           elementaryStreams: json_.containsKey('elementaryStreams')
               ? (json_['elementaryStreams'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          encryptionId: json_.containsKey('encryptionId')
-              ? json_['encryptionId'] as core.String
-              : null,
-          fileName: json_.containsKey('fileName')
-              ? json_['fileName'] as core.String
-              : null,
+          encryptionId: json_['encryptionId'] as core.String?,
+          fileName: json_['fileName'] as core.String?,
           fmp4: json_.containsKey('fmp4')
               ? Fmp4Config.fromJson(
                   json_['fmp4'] as core.Map<core.String, core.dynamic>)
               : null,
-          key: json_.containsKey('key') ? json_['key'] as core.String : null,
+          key: json_['key'] as core.String?,
           segmentSettings: json_.containsKey('segmentSettings')
               ? SegmentSettings.fromJson(json_['segmentSettings']
                   as core.Map<core.String, core.dynamic>)
@@ -2797,12 +2612,8 @@ class NormalizedCoordinate {
 
   NormalizedCoordinate.fromJson(core.Map json_)
       : this(
-          x: json_.containsKey('x')
-              ? (json_['x'] as core.num).toDouble()
-              : null,
-          y: json_.containsKey('y')
-              ? (json_['y'] as core.num).toDouble()
-              : null,
+          x: (json_['x'] as core.num?)?.toDouble(),
+          y: (json_['y'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2826,7 +2637,7 @@ class Output {
 
   Output.fromJson(core.Map json_)
       : this(
-          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+          uri: json_['uri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2903,18 +2714,10 @@ class Pad {
 
   Pad.fromJson(core.Map json_)
       : this(
-          bottomPixels: json_.containsKey('bottomPixels')
-              ? json_['bottomPixels'] as core.int
-              : null,
-          leftPixels: json_.containsKey('leftPixels')
-              ? json_['leftPixels'] as core.int
-              : null,
-          rightPixels: json_.containsKey('rightPixels')
-              ? json_['rightPixels'] as core.int
-              : null,
-          topPixels: json_.containsKey('topPixels')
-              ? json_['topPixels'] as core.int
-              : null,
+          bottomPixels: json_['bottomPixels'] as core.int?,
+          leftPixels: json_['leftPixels'] as core.int?,
+          rightPixels: json_['rightPixels'] as core.int?,
+          topPixels: json_['topPixels'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3017,8 +2820,7 @@ class PubsubDestination {
 
   PubsubDestination.fromJson(core.Map json_)
       : this(
-          topic:
-              json_.containsKey('topic') ? json_['topic'] as core.String : null,
+          topic: json_['topic'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3047,9 +2849,7 @@ class SecretManagerSource {
 
   SecretManagerSource.fromJson(core.Map json_)
       : this(
-          secretVersion: json_.containsKey('secretVersion')
-              ? json_['secretVersion'] as core.String
-              : null,
+          secretVersion: json_['secretVersion'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3080,12 +2880,8 @@ class SegmentSettings {
 
   SegmentSettings.fromJson(core.Map json_)
       : this(
-          individualSegments: json_.containsKey('individualSegments')
-              ? json_['individualSegments'] as core.bool
-              : null,
-          segmentDuration: json_.containsKey('segmentDuration')
-              ? json_['segmentDuration'] as core.String
-              : null,
+          individualSegments: json_['individualSegments'] as core.bool?,
+          segmentDuration: json_['segmentDuration'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3194,39 +2990,17 @@ class SpriteSheet {
 
   SpriteSheet.fromJson(core.Map json_)
       : this(
-          columnCount: json_.containsKey('columnCount')
-              ? json_['columnCount'] as core.int
-              : null,
-          endTimeOffset: json_.containsKey('endTimeOffset')
-              ? json_['endTimeOffset'] as core.String
-              : null,
-          filePrefix: json_.containsKey('filePrefix')
-              ? json_['filePrefix'] as core.String
-              : null,
-          format: json_.containsKey('format')
-              ? json_['format'] as core.String
-              : null,
-          interval: json_.containsKey('interval')
-              ? json_['interval'] as core.String
-              : null,
-          quality: json_.containsKey('quality')
-              ? json_['quality'] as core.int
-              : null,
-          rowCount: json_.containsKey('rowCount')
-              ? json_['rowCount'] as core.int
-              : null,
-          spriteHeightPixels: json_.containsKey('spriteHeightPixels')
-              ? json_['spriteHeightPixels'] as core.int
-              : null,
-          spriteWidthPixels: json_.containsKey('spriteWidthPixels')
-              ? json_['spriteWidthPixels'] as core.int
-              : null,
-          startTimeOffset: json_.containsKey('startTimeOffset')
-              ? json_['startTimeOffset'] as core.String
-              : null,
-          totalCount: json_.containsKey('totalCount')
-              ? json_['totalCount'] as core.int
-              : null,
+          columnCount: json_['columnCount'] as core.int?,
+          endTimeOffset: json_['endTimeOffset'] as core.String?,
+          filePrefix: json_['filePrefix'] as core.String?,
+          format: json_['format'] as core.String?,
+          interval: json_['interval'] as core.String?,
+          quality: json_['quality'] as core.int?,
+          rowCount: json_['rowCount'] as core.int?,
+          spriteHeightPixels: json_['spriteHeightPixels'] as core.int?,
+          spriteWidthPixels: json_['spriteWidthPixels'] as core.int?,
+          startTimeOffset: json_['startTimeOffset'] as core.String?,
+          totalCount: json_['totalCount'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3280,15 +3054,9 @@ class TextMapping {
 
   TextMapping.fromJson(core.Map json_)
       : this(
-          atomKey: json_.containsKey('atomKey')
-              ? json_['atomKey'] as core.String
-              : null,
-          inputKey: json_.containsKey('inputKey')
-              ? json_['inputKey'] as core.String
-              : null,
-          inputTrack: json_.containsKey('inputTrack')
-              ? json_['inputTrack'] as core.int
-              : null,
+          atomKey: json_['atomKey'] as core.String?,
+          inputKey: json_['inputKey'] as core.String?,
+          inputTrack: json_['inputTrack'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3333,14 +3101,9 @@ class TextStream {
 
   TextStream.fromJson(core.Map json_)
       : this(
-          codec:
-              json_.containsKey('codec') ? json_['codec'] as core.String : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          languageCode: json_.containsKey('languageCode')
-              ? json_['languageCode'] as core.String
-              : null,
+          codec: json_['codec'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          languageCode: json_['languageCode'] as core.String?,
           mapping: json_.containsKey('mapping')
               ? (json_['mapping'] as core.List)
                   .map((value) => TextMapping.fromJson(
@@ -3526,48 +3289,26 @@ class Vp9CodecSettings {
 
   Vp9CodecSettings.fromJson(core.Map json_)
       : this(
-          bitrateBps: json_.containsKey('bitrateBps')
-              ? json_['bitrateBps'] as core.int
-              : null,
-          crfLevel: json_.containsKey('crfLevel')
-              ? json_['crfLevel'] as core.int
-              : null,
-          frameRate: json_.containsKey('frameRate')
-              ? (json_['frameRate'] as core.num).toDouble()
-              : null,
+          bitrateBps: json_['bitrateBps'] as core.int?,
+          crfLevel: json_['crfLevel'] as core.int?,
+          frameRate: (json_['frameRate'] as core.num?)?.toDouble(),
           frameRateConversionStrategy:
-              json_.containsKey('frameRateConversionStrategy')
-                  ? json_['frameRateConversionStrategy'] as core.String
-                  : null,
-          gopDuration: json_.containsKey('gopDuration')
-              ? json_['gopDuration'] as core.String
-              : null,
-          gopFrameCount: json_.containsKey('gopFrameCount')
-              ? json_['gopFrameCount'] as core.int
-              : null,
-          heightPixels: json_.containsKey('heightPixels')
-              ? json_['heightPixels'] as core.int
-              : null,
+              json_['frameRateConversionStrategy'] as core.String?,
+          gopDuration: json_['gopDuration'] as core.String?,
+          gopFrameCount: json_['gopFrameCount'] as core.int?,
+          heightPixels: json_['heightPixels'] as core.int?,
           hlg: json_.containsKey('hlg')
               ? Vp9ColorFormatHLG.fromJson(
                   json_['hlg'] as core.Map<core.String, core.dynamic>)
               : null,
-          pixelFormat: json_.containsKey('pixelFormat')
-              ? json_['pixelFormat'] as core.String
-              : null,
-          profile: json_.containsKey('profile')
-              ? json_['profile'] as core.String
-              : null,
-          rateControlMode: json_.containsKey('rateControlMode')
-              ? json_['rateControlMode'] as core.String
-              : null,
+          pixelFormat: json_['pixelFormat'] as core.String?,
+          profile: json_['profile'] as core.String?,
+          rateControlMode: json_['rateControlMode'] as core.String?,
           sdr: json_.containsKey('sdr')
               ? Vp9ColorFormatSDR.fromJson(
                   json_['sdr'] as core.Map<core.String, core.dynamic>)
               : null,
-          widthPixels: json_.containsKey('widthPixels')
-              ? json_['widthPixels'] as core.int
-              : null,
+          widthPixels: json_['widthPixels'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3632,17 +3373,11 @@ class YadifConfig {
 
   YadifConfig.fromJson(core.Map json_)
       : this(
-          deinterlaceAllFrames: json_.containsKey('deinterlaceAllFrames')
-              ? json_['deinterlaceAllFrames'] as core.bool
-              : null,
+          deinterlaceAllFrames: json_['deinterlaceAllFrames'] as core.bool?,
           disableSpatialInterlacing:
-              json_.containsKey('disableSpatialInterlacing')
-                  ? json_['disableSpatialInterlacing'] as core.bool
-                  : null,
-          mode: json_.containsKey('mode') ? json_['mode'] as core.String : null,
-          parity: json_.containsKey('parity')
-              ? json_['parity'] as core.String
-              : null,
+              json_['disableSpatialInterlacing'] as core.bool?,
+          mode: json_['mode'] as core.String?,
+          parity: json_['parity'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

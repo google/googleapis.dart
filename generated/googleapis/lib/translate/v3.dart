@@ -2516,25 +2516,13 @@ class AdaptiveMtDataset {
 
   AdaptiveMtDataset.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          exampleCount: json_.containsKey('exampleCount')
-              ? json_['exampleCount'] as core.int
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          sourceLanguageCode: json_.containsKey('sourceLanguageCode')
-              ? json_['sourceLanguageCode'] as core.String
-              : null,
-          targetLanguageCode: json_.containsKey('targetLanguageCode')
-              ? json_['targetLanguageCode'] as core.String
-              : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          exampleCount: json_['exampleCount'] as core.int?,
+          name: json_['name'] as core.String?,
+          sourceLanguageCode: json_['sourceLanguageCode'] as core.String?,
+          targetLanguageCode: json_['targetLanguageCode'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2584,19 +2572,11 @@ class AdaptiveMtFile {
 
   AdaptiveMtFile.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          entryCount: json_.containsKey('entryCount')
-              ? json_['entryCount'] as core.int
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          entryCount: json_['entryCount'] as core.int?,
+          name: json_['name'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2646,19 +2626,11 @@ class AdaptiveMtSentence {
 
   AdaptiveMtSentence.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          sourceSentence: json_.containsKey('sourceSentence')
-              ? json_['sourceSentence'] as core.String
-              : null,
-          targetSentence: json_.containsKey('targetSentence')
-              ? json_['targetSentence'] as core.String
-              : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          name: json_['name'] as core.String?,
+          sourceSentence: json_['sourceSentence'] as core.String?,
+          targetSentence: json_['targetSentence'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2698,9 +2670,7 @@ class AdaptiveMtTranslateRequest {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          dataset: json_.containsKey('dataset')
-              ? json_['dataset'] as core.String
-              : null,
+          dataset: json_['dataset'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2728,9 +2698,7 @@ class AdaptiveMtTranslateResponse {
 
   AdaptiveMtTranslateResponse.fromJson(core.Map json_)
       : this(
-          languageCode: json_.containsKey('languageCode')
-              ? json_['languageCode'] as core.String
-              : null,
+          languageCode: json_['languageCode'] as core.String?,
           translations: json_.containsKey('translations')
               ? (json_['translations'] as core.List)
                   .map((value) => AdaptiveMtTranslation.fromJson(
@@ -2758,9 +2726,7 @@ class AdaptiveMtTranslation {
 
   AdaptiveMtTranslation.fromJson(core.Map json_)
       : this(
-          translatedText: json_.containsKey('translatedText')
-              ? json_['translatedText'] as core.String
-              : null,
+          translatedText: json_['translatedText'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2967,17 +2933,11 @@ class BatchTranslateDocumentRequest {
 
   BatchTranslateDocumentRequest.fromJson(core.Map json_)
       : this(
-          customizedAttribution: json_.containsKey('customizedAttribution')
-              ? json_['customizedAttribution'] as core.String
-              : null,
+          customizedAttribution: json_['customizedAttribution'] as core.String?,
           enableRotationCorrection:
-              json_.containsKey('enableRotationCorrection')
-                  ? json_['enableRotationCorrection'] as core.bool
-                  : null,
+              json_['enableRotationCorrection'] as core.bool?,
           enableShadowRemovalNativePdf:
-              json_.containsKey('enableShadowRemovalNativePdf')
-                  ? json_['enableShadowRemovalNativePdf'] as core.bool
-                  : null,
+              json_['enableShadowRemovalNativePdf'] as core.bool?,
           formatConversions: json_.containsKey('formatConversions')
               ? (json_['formatConversions']
                       as core.Map<core.String, core.dynamic>)
@@ -3016,9 +2976,7 @@ class BatchTranslateDocumentRequest {
               ? BatchDocumentOutputConfig.fromJson(
                   json_['outputConfig'] as core.Map<core.String, core.dynamic>)
               : null,
-          sourceLanguageCode: json_.containsKey('sourceLanguageCode')
-              ? json_['sourceLanguageCode'] as core.String
-              : null,
+          sourceLanguageCode: json_['sourceLanguageCode'] as core.String?,
           targetLanguageCodes: json_.containsKey('targetLanguageCodes')
               ? (json_['targetLanguageCodes'] as core.List)
                   .map((value) => value as core.String)
@@ -3155,9 +3113,7 @@ class BatchTranslateTextRequest {
               ? OutputConfig.fromJson(
                   json_['outputConfig'] as core.Map<core.String, core.dynamic>)
               : null,
-          sourceLanguageCode: json_.containsKey('sourceLanguageCode')
-              ? json_['sourceLanguageCode'] as core.String
-              : null,
+          sourceLanguageCode: json_['sourceLanguageCode'] as core.String?,
           targetLanguageCodes: json_.containsKey('targetLanguageCodes')
               ? (json_['targetLanguageCodes'] as core.List)
                   .map((value) => value as core.String)
@@ -3245,34 +3201,16 @@ class Dataset {
 
   Dataset.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          exampleCount: json_.containsKey('exampleCount')
-              ? json_['exampleCount'] as core.int
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          sourceLanguageCode: json_.containsKey('sourceLanguageCode')
-              ? json_['sourceLanguageCode'] as core.String
-              : null,
-          targetLanguageCode: json_.containsKey('targetLanguageCode')
-              ? json_['targetLanguageCode'] as core.String
-              : null,
-          testExampleCount: json_.containsKey('testExampleCount')
-              ? json_['testExampleCount'] as core.int
-              : null,
-          trainExampleCount: json_.containsKey('trainExampleCount')
-              ? json_['trainExampleCount'] as core.int
-              : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
-          validateExampleCount: json_.containsKey('validateExampleCount')
-              ? json_['validateExampleCount'] as core.int
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          exampleCount: json_['exampleCount'] as core.int?,
+          name: json_['name'] as core.String?,
+          sourceLanguageCode: json_['sourceLanguageCode'] as core.String?,
+          targetLanguageCode: json_['targetLanguageCode'] as core.String?,
+          testExampleCount: json_['testExampleCount'] as core.int?,
+          trainExampleCount: json_['trainExampleCount'] as core.int?,
+          updateTime: json_['updateTime'] as core.String?,
+          validateExampleCount: json_['validateExampleCount'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3382,9 +3320,7 @@ class DetectLanguageRequest {
 
   DetectLanguageRequest.fromJson(core.Map json_)
       : this(
-          content: json_.containsKey('content')
-              ? json_['content'] as core.String
-              : null,
+          content: json_['content'] as core.String?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -3393,11 +3329,8 @@ class DetectLanguageRequest {
                   ),
                 )
               : null,
-          mimeType: json_.containsKey('mimeType')
-              ? json_['mimeType'] as core.String
-              : null,
-          model:
-              json_.containsKey('model') ? json_['model'] as core.String : null,
+          mimeType: json_['mimeType'] as core.String?,
+          model: json_['model'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3450,12 +3383,8 @@ class DetectedLanguage {
 
   DetectedLanguage.fromJson(core.Map json_)
       : this(
-          confidence: json_.containsKey('confidence')
-              ? (json_['confidence'] as core.num).toDouble()
-              : null,
-          languageCode: json_.containsKey('languageCode')
-              ? json_['languageCode'] as core.String
-              : null,
+          confidence: (json_['confidence'] as core.num?)?.toDouble(),
+          languageCode: json_['languageCode'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3500,16 +3429,12 @@ class DocumentInputConfig {
 
   DocumentInputConfig.fromJson(core.Map json_)
       : this(
-          content: json_.containsKey('content')
-              ? json_['content'] as core.String
-              : null,
+          content: json_['content'] as core.String?,
           gcsSource: json_.containsKey('gcsSource')
               ? GcsSource.fromJson(
                   json_['gcsSource'] as core.Map<core.String, core.dynamic>)
               : null,
-          mimeType: json_.containsKey('mimeType')
-              ? json_['mimeType'] as core.String
-              : null,
+          mimeType: json_['mimeType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3579,9 +3504,7 @@ class DocumentOutputConfig {
               ? GcsDestination.fromJson(json_['gcsDestination']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          mimeType: json_.containsKey('mimeType')
-              ? json_['mimeType'] as core.String
-              : null,
+          mimeType: json_['mimeType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3622,12 +3545,8 @@ class DocumentTranslation {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          detectedLanguageCode: json_.containsKey('detectedLanguageCode')
-              ? json_['detectedLanguageCode'] as core.String
-              : null,
-          mimeType: json_.containsKey('mimeType')
-              ? json_['mimeType'] as core.String
-              : null,
+          detectedLanguageCode: json_['detectedLanguageCode'] as core.String?,
+          mimeType: json_['mimeType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3676,15 +3595,10 @@ class Example {
 
   Example.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          sourceText: json_.containsKey('sourceText')
-              ? json_['sourceText'] as core.String
-              : null,
-          targetText: json_.containsKey('targetText')
-              ? json_['targetText'] as core.String
-              : null,
-          usage:
-              json_.containsKey('usage') ? json_['usage'] as core.String : null,
+          name: json_['name'] as core.String?,
+          sourceText: json_['sourceText'] as core.String?,
+          targetText: json_['targetText'] as core.String?,
+          usage: json_['usage'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3750,15 +3664,9 @@ class FileInputSource {
 
   FileInputSource.fromJson(core.Map json_)
       : this(
-          content: json_.containsKey('content')
-              ? json_['content'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          mimeType: json_.containsKey('mimeType')
-              ? json_['mimeType'] as core.String
-              : null,
+          content: json_['content'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          mimeType: json_['mimeType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3786,9 +3694,7 @@ class GcsDestination {
 
   GcsDestination.fromJson(core.Map json_)
       : this(
-          outputUriPrefix: json_.containsKey('outputUriPrefix')
-              ? json_['outputUriPrefix'] as core.String
-              : null,
+          outputUriPrefix: json_['outputUriPrefix'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3816,9 +3722,7 @@ class GcsOutputDestination {
 
   GcsOutputDestination.fromJson(core.Map json_)
       : this(
-          outputUriPrefix: json_.containsKey('outputUriPrefix')
-              ? json_['outputUriPrefix'] as core.String
-              : null,
+          outputUriPrefix: json_['outputUriPrefix'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3885,15 +3789,9 @@ class Glossary {
 
   Glossary.fromJson(core.Map json_)
       : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          endTime: json_.containsKey('endTime')
-              ? json_['endTime'] as core.String
-              : null,
-          entryCount: json_.containsKey('entryCount')
-              ? json_['entryCount'] as core.int
-              : null,
+          displayName: json_['displayName'] as core.String?,
+          endTime: json_['endTime'] as core.String?,
+          entryCount: json_['entryCount'] as core.int?,
           inputConfig: json_.containsKey('inputConfig')
               ? GlossaryInputConfig.fromJson(
                   json_['inputConfig'] as core.Map<core.String, core.dynamic>)
@@ -3906,10 +3804,8 @@ class Glossary {
               ? LanguageCodePair.fromJson(
                   json_['languagePair'] as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          submitTime: json_.containsKey('submitTime')
-              ? json_['submitTime'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          submitTime: json_['submitTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3952,10 +3848,8 @@ class GlossaryEntry {
 
   GlossaryEntry.fromJson(core.Map json_)
       : this(
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          description: json_['description'] as core.String?,
+          name: json_['name'] as core.String?,
           termsPair: json_.containsKey('termsPair')
               ? GlossaryTermsPair.fromJson(
                   json_['termsPair'] as core.Map<core.String, core.dynamic>)
@@ -4026,10 +3920,8 @@ class GlossaryTerm {
 
   GlossaryTerm.fromJson(core.Map json_)
       : this(
-          languageCode: json_.containsKey('languageCode')
-              ? json_['languageCode'] as core.String
-              : null,
-          text: json_.containsKey('text') ? json_['text'] as core.String : null,
+          languageCode: json_['languageCode'] as core.String?,
+          text: json_['text'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4216,9 +4108,7 @@ class InputConfig {
               ? GcsSource.fromJson(
                   json_['gcsSource'] as core.Map<core.String, core.dynamic>)
               : null,
-          mimeType: json_.containsKey('mimeType')
-              ? json_['mimeType'] as core.String
-              : null,
+          mimeType: json_['mimeType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4251,8 +4141,7 @@ class InputFile {
               ? GcsInputSource.fromJson(
                   json_['gcsSource'] as core.Map<core.String, core.dynamic>)
               : null,
-          usage:
-              json_.containsKey('usage') ? json_['usage'] as core.String : null,
+          usage: json_['usage'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4284,12 +4173,8 @@ class LanguageCodePair {
 
   LanguageCodePair.fromJson(core.Map json_)
       : this(
-          sourceLanguageCode: json_.containsKey('sourceLanguageCode')
-              ? json_['sourceLanguageCode'] as core.String
-              : null,
-          targetLanguageCode: json_.containsKey('targetLanguageCode')
-              ? json_['targetLanguageCode'] as core.String
-              : null,
+          sourceLanguageCode: json_['sourceLanguageCode'] as core.String?,
+          targetLanguageCode: json_['targetLanguageCode'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4355,9 +4240,7 @@ class ListAdaptiveMtDatasetsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4396,9 +4279,7 @@ class ListAdaptiveMtFilesResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4432,9 +4313,7 @@ class ListAdaptiveMtSentencesResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4468,9 +4347,7 @@ class ListDatasetsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4503,9 +4380,7 @@ class ListExamplesResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4539,9 +4414,7 @@ class ListGlossariesResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4578,9 +4451,7 @@ class ListGlossaryEntriesResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4610,9 +4481,7 @@ class ListLocationsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4645,9 +4514,7 @@ class ListModelsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4671,9 +4538,7 @@ class ListOperationsResponse {
 
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           operations: json_.containsKey('operations')
               ? (json_['operations'] as core.List)
                   .map((value) => Operation.fromJson(
@@ -4758,34 +4623,16 @@ class Model {
 
   Model.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          dataset: json_.containsKey('dataset')
-              ? json_['dataset'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          sourceLanguageCode: json_.containsKey('sourceLanguageCode')
-              ? json_['sourceLanguageCode'] as core.String
-              : null,
-          targetLanguageCode: json_.containsKey('targetLanguageCode')
-              ? json_['targetLanguageCode'] as core.String
-              : null,
-          testExampleCount: json_.containsKey('testExampleCount')
-              ? json_['testExampleCount'] as core.int
-              : null,
-          trainExampleCount: json_.containsKey('trainExampleCount')
-              ? json_['trainExampleCount'] as core.int
-              : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
-          validateExampleCount: json_.containsKey('validateExampleCount')
-              ? json_['validateExampleCount'] as core.int
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          dataset: json_['dataset'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          name: json_['name'] as core.String?,
+          sourceLanguageCode: json_['sourceLanguageCode'] as core.String?,
+          targetLanguageCode: json_['targetLanguageCode'] as core.String?,
+          testExampleCount: json_['testExampleCount'] as core.int?,
+          trainExampleCount: json_['trainExampleCount'] as core.int?,
+          updateTime: json_['updateTime'] as core.String?,
+          validateExampleCount: json_['validateExampleCount'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4858,7 +4705,7 @@ class Operation {
 
   Operation.fromJson(core.Map json_)
       : this(
-          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
@@ -4866,7 +4713,7 @@ class Operation {
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           response: json_.containsKey('response')
               ? json_['response'] as core.Map<core.String, core.dynamic>
               : null,
@@ -4974,12 +4821,8 @@ class Romanization {
 
   Romanization.fromJson(core.Map json_)
       : this(
-          detectedLanguageCode: json_.containsKey('detectedLanguageCode')
-              ? json_['detectedLanguageCode'] as core.String
-              : null,
-          romanizedText: json_.containsKey('romanizedText')
-              ? json_['romanizedText'] as core.String
-              : null,
+          detectedLanguageCode: json_['detectedLanguageCode'] as core.String?,
+          romanizedText: json_['romanizedText'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5018,9 +4861,7 @@ class RomanizeTextRequest {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          sourceLanguageCode: json_.containsKey('sourceLanguageCode')
-              ? json_['sourceLanguageCode'] as core.String
-              : null,
+          sourceLanguageCode: json_['sourceLanguageCode'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5094,18 +4935,10 @@ class SupportedLanguage {
 
   SupportedLanguage.fromJson(core.Map json_)
       : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          languageCode: json_.containsKey('languageCode')
-              ? json_['languageCode'] as core.String
-              : null,
-          supportSource: json_.containsKey('supportSource')
-              ? json_['supportSource'] as core.bool
-              : null,
-          supportTarget: json_.containsKey('supportTarget')
-              ? json_['supportTarget'] as core.bool
-              : null,
+          displayName: json_['displayName'] as core.String?,
+          languageCode: json_['languageCode'] as core.String?,
+          supportSource: json_['supportSource'] as core.bool?,
+          supportTarget: json_['supportTarget'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5257,9 +5090,7 @@ class TranslateDocumentRequest {
 
   TranslateDocumentRequest.fromJson(core.Map json_)
       : this(
-          customizedAttribution: json_.containsKey('customizedAttribution')
-              ? json_['customizedAttribution'] as core.String
-              : null,
+          customizedAttribution: json_['customizedAttribution'] as core.String?,
           documentInputConfig: json_.containsKey('documentInputConfig')
               ? DocumentInputConfig.fromJson(json_['documentInputConfig']
                   as core.Map<core.String, core.dynamic>)
@@ -5269,21 +5100,15 @@ class TranslateDocumentRequest {
                   as core.Map<core.String, core.dynamic>)
               : null,
           enableRotationCorrection:
-              json_.containsKey('enableRotationCorrection')
-                  ? json_['enableRotationCorrection'] as core.bool
-                  : null,
+              json_['enableRotationCorrection'] as core.bool?,
           enableShadowRemovalNativePdf:
-              json_.containsKey('enableShadowRemovalNativePdf')
-                  ? json_['enableShadowRemovalNativePdf'] as core.bool
-                  : null,
+              json_['enableShadowRemovalNativePdf'] as core.bool?,
           glossaryConfig: json_.containsKey('glossaryConfig')
               ? TranslateTextGlossaryConfig.fromJson(json_['glossaryConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
           isTranslateNativePdfOnly:
-              json_.containsKey('isTranslateNativePdfOnly')
-                  ? json_['isTranslateNativePdfOnly'] as core.bool
-                  : null,
+              json_['isTranslateNativePdfOnly'] as core.bool?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -5292,14 +5117,9 @@ class TranslateDocumentRequest {
                   ),
                 )
               : null,
-          model:
-              json_.containsKey('model') ? json_['model'] as core.String : null,
-          sourceLanguageCode: json_.containsKey('sourceLanguageCode')
-              ? json_['sourceLanguageCode'] as core.String
-              : null,
-          targetLanguageCode: json_.containsKey('targetLanguageCode')
-              ? json_['targetLanguageCode'] as core.String
-              : null,
+          model: json_['model'] as core.String?,
+          sourceLanguageCode: json_['sourceLanguageCode'] as core.String?,
+          targetLanguageCode: json_['targetLanguageCode'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5372,8 +5192,7 @@ class TranslateDocumentResponse {
                       json_['glossaryDocumentTranslation']
                           as core.Map<core.String, core.dynamic>)
                   : null,
-          model:
-              json_.containsKey('model') ? json_['model'] as core.String : null,
+          model: json_['model'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5411,12 +5230,8 @@ class TranslateTextGlossaryConfig {
 
   TranslateTextGlossaryConfig.fromJson(core.Map json_)
       : this(
-          glossary: json_.containsKey('glossary')
-              ? json_['glossary'] as core.String
-              : null,
-          ignoreCase: json_.containsKey('ignoreCase')
-              ? json_['ignoreCase'] as core.bool
-              : null,
+          glossary: json_['glossary'] as core.String?,
+          ignoreCase: json_['ignoreCase'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5527,17 +5342,10 @@ class TranslateTextRequest {
                   ),
                 )
               : null,
-          mimeType: json_.containsKey('mimeType')
-              ? json_['mimeType'] as core.String
-              : null,
-          model:
-              json_.containsKey('model') ? json_['model'] as core.String : null,
-          sourceLanguageCode: json_.containsKey('sourceLanguageCode')
-              ? json_['sourceLanguageCode'] as core.String
-              : null,
-          targetLanguageCode: json_.containsKey('targetLanguageCode')
-              ? json_['targetLanguageCode'] as core.String
-              : null,
+          mimeType: json_['mimeType'] as core.String?,
+          model: json_['model'] as core.String?,
+          sourceLanguageCode: json_['sourceLanguageCode'] as core.String?,
+          targetLanguageCode: json_['targetLanguageCode'] as core.String?,
           transliterationConfig: json_.containsKey('transliterationConfig')
               ? TransliterationConfig.fromJson(json_['transliterationConfig']
                   as core.Map<core.String, core.dynamic>)
@@ -5636,18 +5444,13 @@ class Translation {
 
   Translation.fromJson(core.Map json_)
       : this(
-          detectedLanguageCode: json_.containsKey('detectedLanguageCode')
-              ? json_['detectedLanguageCode'] as core.String
-              : null,
+          detectedLanguageCode: json_['detectedLanguageCode'] as core.String?,
           glossaryConfig: json_.containsKey('glossaryConfig')
               ? TranslateTextGlossaryConfig.fromJson(json_['glossaryConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          model:
-              json_.containsKey('model') ? json_['model'] as core.String : null,
-          translatedText: json_.containsKey('translatedText')
-              ? json_['translatedText'] as core.String
-              : null,
+          model: json_['model'] as core.String?,
+          translatedText: json_['translatedText'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5671,9 +5474,7 @@ class TransliterationConfig {
 
   TransliterationConfig.fromJson(core.Map json_)
       : this(
-          enableTransliteration: json_.containsKey('enableTransliteration')
-              ? json_['enableTransliteration'] as core.bool
-              : null,
+          enableTransliteration: json_['enableTransliteration'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

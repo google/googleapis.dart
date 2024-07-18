@@ -295,7 +295,7 @@ class AgentDeviceId {
 
   AgentDeviceId.fromJson(core.Map json_)
       : this(
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          id: json_['id'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -318,12 +318,8 @@ class AgentOtherDeviceId {
 
   AgentOtherDeviceId.fromJson(core.Map json_)
       : this(
-          agentId: json_.containsKey('agentId')
-              ? json_['agentId'] as core.String
-              : null,
-          deviceId: json_.containsKey('deviceId')
-              ? json_['deviceId'] as core.String
-              : null,
+          agentId: json_['agentId'] as core.String?,
+          deviceId: json_['deviceId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -429,36 +425,28 @@ class Device {
               ? DeviceInfo.fromJson(
                   json_['deviceInfo'] as core.Map<core.String, core.dynamic>)
               : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          id: json_['id'] as core.String?,
           name: json_.containsKey('name')
               ? DeviceNames.fromJson(
                   json_['name'] as core.Map<core.String, core.dynamic>)
               : null,
           notificationSupportedByAgent:
-              json_.containsKey('notificationSupportedByAgent')
-                  ? json_['notificationSupportedByAgent'] as core.bool
-                  : null,
+              json_['notificationSupportedByAgent'] as core.bool?,
           otherDeviceIds: json_.containsKey('otherDeviceIds')
               ? (json_['otherDeviceIds'] as core.List)
                   .map((value) => AgentOtherDeviceId.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          roomHint: json_.containsKey('roomHint')
-              ? json_['roomHint'] as core.String
-              : null,
-          structureHint: json_.containsKey('structureHint')
-              ? json_['structureHint'] as core.String
-              : null,
+          roomHint: json_['roomHint'] as core.String?,
+          structureHint: json_['structureHint'] as core.String?,
           traits: json_.containsKey('traits')
               ? (json_['traits'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
-          willReportState: json_.containsKey('willReportState')
-              ? json_['willReportState'] as core.bool
-              : null,
+          type: json_['type'] as core.String?,
+          willReportState: json_['willReportState'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -501,17 +489,10 @@ class DeviceInfo {
 
   DeviceInfo.fromJson(core.Map json_)
       : this(
-          hwVersion: json_.containsKey('hwVersion')
-              ? json_['hwVersion'] as core.String
-              : null,
-          manufacturer: json_.containsKey('manufacturer')
-              ? json_['manufacturer'] as core.String
-              : null,
-          model:
-              json_.containsKey('model') ? json_['model'] as core.String : null,
-          swVersion: json_.containsKey('swVersion')
-              ? json_['swVersion'] as core.String
-              : null,
+          hwVersion: json_['hwVersion'] as core.String?,
+          manufacturer: json_['manufacturer'] as core.String?,
+          model: json_['model'] as core.String?,
+          swVersion: json_['swVersion'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -547,7 +528,7 @@ class DeviceNames {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           nicknames: json_.containsKey('nicknames')
               ? (json_['nicknames'] as core.List)
                   .map((value) => value as core.String)
@@ -595,18 +576,14 @@ class QueryRequest {
 
   QueryRequest.fromJson(core.Map json_)
       : this(
-          agentUserId: json_.containsKey('agentUserId')
-              ? json_['agentUserId'] as core.String
-              : null,
+          agentUserId: json_['agentUserId'] as core.String?,
           inputs: json_.containsKey('inputs')
               ? (json_['inputs'] as core.List)
                   .map((value) => QueryRequestInput.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          requestId: json_.containsKey('requestId')
-              ? json_['requestId'] as core.String
-              : null,
+          requestId: json_['requestId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -692,9 +669,7 @@ class QueryResponse {
               ? QueryResponsePayload.fromJson(
                   json_['payload'] as core.Map<core.String, core.dynamic>)
               : null,
-          requestId: json_.containsKey('requestId')
-              ? json_['requestId'] as core.String
-              : null,
+          requestId: json_['requestId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -818,22 +793,14 @@ class ReportStateAndNotificationRequest {
 
   ReportStateAndNotificationRequest.fromJson(core.Map json_)
       : this(
-          agentUserId: json_.containsKey('agentUserId')
-              ? json_['agentUserId'] as core.String
-              : null,
-          eventId: json_.containsKey('eventId')
-              ? json_['eventId'] as core.String
-              : null,
-          followUpToken: json_.containsKey('followUpToken')
-              ? json_['followUpToken'] as core.String
-              : null,
+          agentUserId: json_['agentUserId'] as core.String?,
+          eventId: json_['eventId'] as core.String?,
+          followUpToken: json_['followUpToken'] as core.String?,
           payload: json_.containsKey('payload')
               ? StateAndNotificationPayload.fromJson(
                   json_['payload'] as core.Map<core.String, core.dynamic>)
               : null,
-          requestId: json_.containsKey('requestId')
-              ? json_['requestId'] as core.String
-              : null,
+          requestId: json_['requestId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -858,9 +825,7 @@ class ReportStateAndNotificationResponse {
 
   ReportStateAndNotificationResponse.fromJson(core.Map json_)
       : this(
-          requestId: json_.containsKey('requestId')
-              ? json_['requestId'] as core.String
-              : null,
+          requestId: json_['requestId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -893,11 +858,8 @@ class RequestSyncDevicesRequest {
 
   RequestSyncDevicesRequest.fromJson(core.Map json_)
       : this(
-          agentUserId: json_.containsKey('agentUserId')
-              ? json_['agentUserId'] as core.String
-              : null,
-          async:
-              json_.containsKey('async') ? json_['async'] as core.bool : null,
+          agentUserId: json_['agentUserId'] as core.String?,
+          async: json_['async'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -954,12 +916,8 @@ class SyncRequest {
 
   SyncRequest.fromJson(core.Map json_)
       : this(
-          agentUserId: json_.containsKey('agentUserId')
-              ? json_['agentUserId'] as core.String
-              : null,
-          requestId: json_.containsKey('requestId')
-              ? json_['requestId'] as core.String
-              : null,
+          agentUserId: json_['agentUserId'] as core.String?,
+          requestId: json_['requestId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1002,9 +960,7 @@ class SyncResponse {
               ? SyncResponsePayload.fromJson(
                   json_['payload'] as core.Map<core.String, core.dynamic>)
               : null,
-          requestId: json_.containsKey('requestId')
-              ? json_['requestId'] as core.String
-              : null,
+          requestId: json_['requestId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1028,9 +984,7 @@ class SyncResponsePayload {
 
   SyncResponsePayload.fromJson(core.Map json_)
       : this(
-          agentUserId: json_.containsKey('agentUserId')
-              ? json_['agentUserId'] as core.String
-              : null,
+          agentUserId: json_['agentUserId'] as core.String?,
           devices: json_.containsKey('devices')
               ? (json_['devices'] as core.List)
                   .map((value) => Device.fromJson(

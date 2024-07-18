@@ -114,15 +114,9 @@ class AmpUrl {
 
   AmpUrl.fromJson(core.Map json_)
       : this(
-          ampUrl: json_.containsKey('ampUrl')
-              ? json_['ampUrl'] as core.String
-              : null,
-          cdnAmpUrl: json_.containsKey('cdnAmpUrl')
-              ? json_['cdnAmpUrl'] as core.String
-              : null,
-          originalUrl: json_.containsKey('originalUrl')
-              ? json_['originalUrl'] as core.String
-              : null,
+          ampUrl: json_['ampUrl'] as core.String?,
+          cdnAmpUrl: json_['cdnAmpUrl'] as core.String?,
+          originalUrl: json_['originalUrl'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -165,15 +159,9 @@ class AmpUrlError {
 
   AmpUrlError.fromJson(core.Map json_)
       : this(
-          errorCode: json_.containsKey('errorCode')
-              ? json_['errorCode'] as core.String
-              : null,
-          errorMessage: json_.containsKey('errorMessage')
-              ? json_['errorMessage'] as core.String
-              : null,
-          originalUrl: json_.containsKey('originalUrl')
-              ? json_['originalUrl'] as core.String
-              : null,
+          errorCode: json_['errorCode'] as core.String?,
+          errorMessage: json_['errorMessage'] as core.String?,
+          originalUrl: json_['originalUrl'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -211,9 +199,7 @@ class BatchGetAmpUrlsRequest {
 
   BatchGetAmpUrlsRequest.fromJson(core.Map json_)
       : this(
-          lookupStrategy: json_.containsKey('lookupStrategy')
-              ? json_['lookupStrategy'] as core.String
-              : null,
+          lookupStrategy: json_['lookupStrategy'] as core.String?,
           urls: json_.containsKey('urls')
               ? (json_['urls'] as core.List)
                   .map((value) => value as core.String)

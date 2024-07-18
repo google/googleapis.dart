@@ -525,27 +525,20 @@ class AchievementConfiguration {
 
   AchievementConfiguration.fromJson(core.Map json_)
       : this(
-          achievementType: json_.containsKey('achievementType')
-              ? json_['achievementType'] as core.String
-              : null,
+          achievementType: json_['achievementType'] as core.String?,
           draft: json_.containsKey('draft')
               ? AchievementConfigurationDetail.fromJson(
                   json_['draft'] as core.Map<core.String, core.dynamic>)
               : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          initialState: json_.containsKey('initialState')
-              ? json_['initialState'] as core.String
-              : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          id: json_['id'] as core.String?,
+          initialState: json_['initialState'] as core.String?,
+          kind: json_['kind'] as core.String?,
           published: json_.containsKey('published')
               ? AchievementConfigurationDetail.fromJson(
                   json_['published'] as core.Map<core.String, core.dynamic>)
               : null,
-          stepsToUnlock: json_.containsKey('stepsToUnlock')
-              ? json_['stepsToUnlock'] as core.int
-              : null,
-          token:
-              json_.containsKey('token') ? json_['token'] as core.String : null,
+          stepsToUnlock: json_['stepsToUnlock'] as core.int?,
+          token: json_['token'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -602,20 +595,14 @@ class AchievementConfigurationDetail {
               ? LocalizedStringBundle.fromJson(
                   json_['description'] as core.Map<core.String, core.dynamic>)
               : null,
-          iconUrl: json_.containsKey('iconUrl')
-              ? json_['iconUrl'] as core.String
-              : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          iconUrl: json_['iconUrl'] as core.String?,
+          kind: json_['kind'] as core.String?,
           name: json_.containsKey('name')
               ? LocalizedStringBundle.fromJson(
                   json_['name'] as core.Map<core.String, core.dynamic>)
               : null,
-          pointValue: json_.containsKey('pointValue')
-              ? json_['pointValue'] as core.int
-              : null,
-          sortRank: json_.containsKey('sortRank')
-              ? json_['sortRank'] as core.int
-              : null,
+          pointValue: json_['pointValue'] as core.int?,
+          sortRank: json_['sortRank'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -656,10 +643,8 @@ class AchievementConfigurationListResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          kind: json_['kind'] as core.String?,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -781,15 +766,9 @@ class GamesNumberFormatConfiguration {
 
   GamesNumberFormatConfiguration.fromJson(core.Map json_)
       : this(
-          currencyCode: json_.containsKey('currencyCode')
-              ? json_['currencyCode'] as core.String
-              : null,
-          numDecimalPlaces: json_.containsKey('numDecimalPlaces')
-              ? json_['numDecimalPlaces'] as core.int
-              : null,
-          numberFormatType: json_.containsKey('numberFormatType')
-              ? json_['numberFormatType'] as core.String
-              : null,
+          currencyCode: json_['currencyCode'] as core.String?,
+          numDecimalPlaces: json_['numDecimalPlaces'] as core.int?,
+          numberFormatType: json_['numberFormatType'] as core.String?,
           suffix: json_.containsKey('suffix')
               ? GamesNumberAffixConfiguration.fromJson(
                   json_['suffix'] as core.Map<core.String, core.dynamic>)
@@ -854,23 +833,16 @@ class LeaderboardConfiguration {
               ? LeaderboardConfigurationDetail.fromJson(
                   json_['draft'] as core.Map<core.String, core.dynamic>)
               : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          id: json_['id'] as core.String?,
+          kind: json_['kind'] as core.String?,
           published: json_.containsKey('published')
               ? LeaderboardConfigurationDetail.fromJson(
                   json_['published'] as core.Map<core.String, core.dynamic>)
               : null,
-          scoreMax: json_.containsKey('scoreMax')
-              ? json_['scoreMax'] as core.String
-              : null,
-          scoreMin: json_.containsKey('scoreMin')
-              ? json_['scoreMin'] as core.String
-              : null,
-          scoreOrder: json_.containsKey('scoreOrder')
-              ? json_['scoreOrder'] as core.String
-              : null,
-          token:
-              json_.containsKey('token') ? json_['token'] as core.String : null,
+          scoreMax: json_['scoreMax'] as core.String?,
+          scoreMin: json_['scoreMin'] as core.String?,
+          scoreOrder: json_['scoreOrder'] as core.String?,
+          token: json_['token'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -919,10 +891,8 @@ class LeaderboardConfigurationDetail {
 
   LeaderboardConfigurationDetail.fromJson(core.Map json_)
       : this(
-          iconUrl: json_.containsKey('iconUrl')
-              ? json_['iconUrl'] as core.String
-              : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          iconUrl: json_['iconUrl'] as core.String?,
+          kind: json_['kind'] as core.String?,
           name: json_.containsKey('name')
               ? LocalizedStringBundle.fromJson(
                   json_['name'] as core.Map<core.String, core.dynamic>)
@@ -931,9 +901,7 @@ class LeaderboardConfigurationDetail {
               ? GamesNumberFormatConfiguration.fromJson(
                   json_['scoreFormat'] as core.Map<core.String, core.dynamic>)
               : null,
-          sortRank: json_.containsKey('sortRank')
-              ? json_['sortRank'] as core.int
-              : null,
+          sortRank: json_['sortRank'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -973,10 +941,8 @@ class LeaderboardConfigurationListResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          kind: json_['kind'] as core.String?,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1007,12 +973,9 @@ class LocalizedString {
 
   LocalizedString.fromJson(core.Map json_)
       : this(
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          locale: json_.containsKey('locale')
-              ? json_['locale'] as core.String
-              : null,
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
+          kind: json_['kind'] as core.String?,
+          locale: json_['locale'] as core.String?,
+          value: json_['value'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1040,7 +1003,7 @@ class LocalizedStringBundle {
 
   LocalizedStringBundle.fromJson(core.Map json_)
       : this(
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          kind: json_['kind'] as core.String?,
           translations: json_.containsKey('translations')
               ? (json_['translations'] as core.List)
                   .map((value) => LocalizedString.fromJson(

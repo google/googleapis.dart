@@ -405,9 +405,8 @@ class Accelerator {
 
   Accelerator.fromJson(core.Map json_)
       : this(
-          count:
-              json_.containsKey('count') ? json_['count'] as core.String : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          count: json_['count'] as core.String?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -607,41 +606,27 @@ class Action {
 
   Action.fromJson(core.Map json_)
       : this(
-          alwaysRun: json_.containsKey('alwaysRun')
-              ? json_['alwaysRun'] as core.bool
-              : null,
-          blockExternalNetwork: json_.containsKey('blockExternalNetwork')
-              ? json_['blockExternalNetwork'] as core.bool
-              : null,
+          alwaysRun: json_['alwaysRun'] as core.bool?,
+          blockExternalNetwork: json_['blockExternalNetwork'] as core.bool?,
           commands: json_.containsKey('commands')
               ? (json_['commands'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          containerName: json_.containsKey('containerName')
-              ? json_['containerName'] as core.String
-              : null,
+          containerName: json_['containerName'] as core.String?,
           credentials: json_.containsKey('credentials')
               ? Secret.fromJson(
                   json_['credentials'] as core.Map<core.String, core.dynamic>)
               : null,
-          disableImagePrefetch: json_.containsKey('disableImagePrefetch')
-              ? json_['disableImagePrefetch'] as core.bool
-              : null,
+          disableImagePrefetch: json_['disableImagePrefetch'] as core.bool?,
           disableStandardErrorCapture:
-              json_.containsKey('disableStandardErrorCapture')
-                  ? json_['disableStandardErrorCapture'] as core.bool
-                  : null,
-          enableFuse: json_.containsKey('enableFuse')
-              ? json_['enableFuse'] as core.bool
-              : null,
+              json_['disableStandardErrorCapture'] as core.bool?,
+          enableFuse: json_['enableFuse'] as core.bool?,
           encryptedEnvironment: json_.containsKey('encryptedEnvironment')
               ? Secret.fromJson(json_['encryptedEnvironment']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          entrypoint: json_.containsKey('entrypoint')
-              ? json_['entrypoint'] as core.String
-              : null,
+          entrypoint: json_['entrypoint'] as core.String?,
           environment: json_.containsKey('environment')
               ? (json_['environment'] as core.Map<core.String, core.dynamic>)
                   .map(
@@ -651,12 +636,8 @@ class Action {
                   ),
                 )
               : null,
-          ignoreExitStatus: json_.containsKey('ignoreExitStatus')
-              ? json_['ignoreExitStatus'] as core.bool
-              : null,
-          imageUri: json_.containsKey('imageUri')
-              ? json_['imageUri'] as core.String
-              : null,
+          ignoreExitStatus: json_['ignoreExitStatus'] as core.bool?,
+          imageUri: json_['imageUri'] as core.String?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -671,9 +652,7 @@ class Action {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          pidNamespace: json_.containsKey('pidNamespace')
-              ? json_['pidNamespace'] as core.String
-              : null,
+          pidNamespace: json_['pidNamespace'] as core.String?,
           portMappings: json_.containsKey('portMappings')
               ? (json_['portMappings'] as core.Map<core.String, core.dynamic>)
                   .map(
@@ -683,15 +662,9 @@ class Action {
                   ),
                 )
               : null,
-          publishExposedPorts: json_.containsKey('publishExposedPorts')
-              ? json_['publishExposedPorts'] as core.bool
-              : null,
-          runInBackground: json_.containsKey('runInBackground')
-              ? json_['runInBackground'] as core.bool
-              : null,
-          timeout: json_.containsKey('timeout')
-              ? json_['timeout'] as core.String
-              : null,
+          publishExposedPorts: json_['publishExposedPorts'] as core.bool?,
+          runInBackground: json_['runInBackground'] as core.bool?,
+          timeout: json_['timeout'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -765,13 +738,10 @@ class Disk {
 
   Disk.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          sizeGb:
-              json_.containsKey('sizeGb') ? json_['sizeGb'] as core.int : null,
-          sourceImage: json_.containsKey('sourceImage')
-              ? json_['sourceImage'] as core.String
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          name: json_['name'] as core.String?,
+          sizeGb: json_['sizeGb'] as core.int?,
+          sourceImage: json_['sourceImage'] as core.String?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -810,7 +780,7 @@ class ExistingDisk {
 
   ExistingDisk.fromJson(core.Map json_)
       : this(
-          disk: json_.containsKey('disk') ? json_['disk'] as core.String : null,
+          disk: json_['disk'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -839,9 +809,7 @@ class ListLocationsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -865,9 +833,7 @@ class ListOperationsResponse {
 
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           operations: json_.containsKey('operations')
               ? (json_['operations'] as core.List)
                   .map((value) => Operation.fromJson(
@@ -904,11 +870,9 @@ class Mount {
 
   Mount.fromJson(core.Map json_)
       : this(
-          disk: json_.containsKey('disk') ? json_['disk'] as core.String : null,
-          path: json_.containsKey('path') ? json_['path'] as core.String : null,
-          readOnly: json_.containsKey('readOnly')
-              ? json_['readOnly'] as core.bool
-              : null,
+          disk: json_['disk'] as core.String?,
+          path: json_['path'] as core.String?,
+          readOnly: json_['readOnly'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -931,9 +895,7 @@ class NFSMount {
 
   NFSMount.fromJson(core.Map json_)
       : this(
-          target: json_.containsKey('target')
-              ? json_['target'] as core.String
-              : null,
+          target: json_['target'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -975,15 +937,9 @@ class Network {
 
   Network.fromJson(core.Map json_)
       : this(
-          network: json_.containsKey('network')
-              ? json_['network'] as core.String
-              : null,
-          subnetwork: json_.containsKey('subnetwork')
-              ? json_['subnetwork'] as core.String
-              : null,
-          usePrivateAddress: json_.containsKey('usePrivateAddress')
-              ? json_['usePrivateAddress'] as core.bool
-              : null,
+          network: json_['network'] as core.String?,
+          subnetwork: json_['subnetwork'] as core.String?,
+          usePrivateAddress: json_['usePrivateAddress'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1035,7 +991,7 @@ class Operation {
 
   Operation.fromJson(core.Map json_)
       : this(
-          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
@@ -1043,7 +999,7 @@ class Operation {
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           response: json_.containsKey('response')
               ? json_['response'] as core.Map<core.String, core.dynamic>
               : null,
@@ -1088,12 +1044,9 @@ class PersistentDisk {
 
   PersistentDisk.fromJson(core.Map json_)
       : this(
-          sizeGb:
-              json_.containsKey('sizeGb') ? json_['sizeGb'] as core.int : null,
-          sourceImage: json_.containsKey('sourceImage')
-              ? json_['sourceImage'] as core.String
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          sizeGb: json_['sizeGb'] as core.int?,
+          sourceImage: json_['sourceImage'] as core.String?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1167,9 +1120,7 @@ class Pipeline {
               ? Resources.fromJson(
                   json_['resources'] as core.Map<core.String, core.dynamic>)
               : null,
-          timeout: json_.containsKey('timeout')
-              ? json_['timeout'] as core.String
-              : null,
+          timeout: json_['timeout'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1276,9 +1227,7 @@ class RunPipelineRequest {
               ? Pipeline.fromJson(
                   json_['pipeline'] as core.Map<core.String, core.dynamic>)
               : null,
-          pubSubTopic: json_.containsKey('pubSubTopic')
-              ? json_['pubSubTopic'] as core.String
-              : null,
+          pubSubTopic: json_['pubSubTopic'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1310,12 +1259,8 @@ class Secret {
 
   Secret.fromJson(core.Map json_)
       : this(
-          cipherText: json_.containsKey('cipherText')
-              ? json_['cipherText'] as core.String
-              : null,
-          keyName: json_.containsKey('keyName')
-              ? json_['keyName'] as core.String
-              : null,
+          cipherText: json_['cipherText'] as core.String?,
+          keyName: json_['keyName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1343,8 +1288,7 @@ class ServiceAccount {
 
   ServiceAccount.fromJson(core.Map json_)
       : this(
-          email:
-              json_.containsKey('email') ? json_['email'] as core.String : null,
+          email: json_['email'] as core.String?,
           scopes: json_.containsKey('scopes')
               ? (json_['scopes'] as core.List)
                   .map((value) => value as core.String)
@@ -1503,15 +1447,9 @@ class VirtualMachine {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          bootDiskSizeGb: json_.containsKey('bootDiskSizeGb')
-              ? json_['bootDiskSizeGb'] as core.int
-              : null,
-          bootImage: json_.containsKey('bootImage')
-              ? json_['bootImage'] as core.String
-              : null,
-          cpuPlatform: json_.containsKey('cpuPlatform')
-              ? json_['cpuPlatform'] as core.String
-              : null,
+          bootDiskSizeGb: json_['bootDiskSizeGb'] as core.int?,
+          bootImage: json_['bootImage'] as core.String?,
+          cpuPlatform: json_['cpuPlatform'] as core.String?,
           disks: json_.containsKey('disks')
               ? (json_['disks'] as core.List)
                   .map((value) => Disk.fromJson(
@@ -1524,9 +1462,7 @@ class VirtualMachine {
                   .toList()
               : null,
           enableStackdriverMonitoring:
-              json_.containsKey('enableStackdriverMonitoring')
-                  ? json_['enableStackdriverMonitoring'] as core.bool
-                  : null,
+              json_['enableStackdriverMonitoring'] as core.bool?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -1535,22 +1471,14 @@ class VirtualMachine {
                   ),
                 )
               : null,
-          machineType: json_.containsKey('machineType')
-              ? json_['machineType'] as core.String
-              : null,
+          machineType: json_['machineType'] as core.String?,
           network: json_.containsKey('network')
               ? Network.fromJson(
                   json_['network'] as core.Map<core.String, core.dynamic>)
               : null,
-          nvidiaDriverVersion: json_.containsKey('nvidiaDriverVersion')
-              ? json_['nvidiaDriverVersion'] as core.String
-              : null,
-          preemptible: json_.containsKey('preemptible')
-              ? json_['preemptible'] as core.bool
-              : null,
-          reservation: json_.containsKey('reservation')
-              ? json_['reservation'] as core.String
-              : null,
+          nvidiaDriverVersion: json_['nvidiaDriverVersion'] as core.String?,
+          preemptible: json_['preemptible'] as core.bool?,
+          reservation: json_['reservation'] as core.String?,
           serviceAccount: json_.containsKey('serviceAccount')
               ? ServiceAccount.fromJson(json_['serviceAccount']
                   as core.Map<core.String, core.dynamic>)
@@ -1625,9 +1553,7 @@ class Volume {
               ? PersistentDisk.fromJson(json_['persistentDisk']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          volume: json_.containsKey('volume')
-              ? json_['volume'] as core.String
-              : null,
+          volume: json_['volume'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

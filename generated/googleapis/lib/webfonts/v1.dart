@@ -133,13 +133,9 @@ class Axis {
 
   Axis.fromJson(core.Map json_)
       : this(
-          end: json_.containsKey('end')
-              ? (json_['end'] as core.num).toDouble()
-              : null,
-          start: json_.containsKey('start')
-              ? (json_['start'] as core.num).toDouble()
-              : null,
-          tag: json_.containsKey('tag') ? json_['tag'] as core.String : null,
+          end: (json_['end'] as core.num?)?.toDouble(),
+          start: (json_['start'] as core.num?)?.toDouble(),
+          tag: json_['tag'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -208,17 +204,13 @@ class Webfont {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          category: json_.containsKey('category')
-              ? json_['category'] as core.String
-              : null,
+          category: json_['category'] as core.String?,
           colorCapabilities: json_.containsKey('colorCapabilities')
               ? (json_['colorCapabilities'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          family: json_.containsKey('family')
-              ? json_['family'] as core.String
-              : null,
+          family: json_['family'] as core.String?,
           files: json_.containsKey('files')
               ? (json_['files'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -227,11 +219,9 @@ class Webfont {
                   ),
                 )
               : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          lastModified: json_.containsKey('lastModified')
-              ? json_['lastModified'] as core.String
-              : null,
-          menu: json_.containsKey('menu') ? json_['menu'] as core.String : null,
+          kind: json_['kind'] as core.String?,
+          lastModified: json_['lastModified'] as core.String?,
+          menu: json_['menu'] as core.String?,
           subsets: json_.containsKey('subsets')
               ? (json_['subsets'] as core.List)
                   .map((value) => value as core.String)
@@ -242,9 +232,7 @@ class Webfont {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          version: json_.containsKey('version')
-              ? json_['version'] as core.String
-              : null,
+          version: json_['version'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -284,7 +272,7 @@ class WebfontList {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          kind: json_['kind'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

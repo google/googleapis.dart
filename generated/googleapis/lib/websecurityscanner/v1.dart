@@ -764,11 +764,9 @@ class CrawledUrl {
 
   CrawledUrl.fromJson(core.Map json_)
       : this(
-          body: json_.containsKey('body') ? json_['body'] as core.String : null,
-          httpMethod: json_.containsKey('httpMethod')
-              ? json_['httpMethod'] as core.String
-              : null,
-          url: json_.containsKey('url') ? json_['url'] as core.String : null,
+          body: json_['body'] as core.String?,
+          httpMethod: json_['httpMethod'] as core.String?,
+          url: json_['url'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -806,15 +804,9 @@ class CustomAccount {
 
   CustomAccount.fromJson(core.Map json_)
       : this(
-          loginUrl: json_.containsKey('loginUrl')
-              ? json_['loginUrl'] as core.String
-              : null,
-          password: json_.containsKey('password')
-              ? json_['password'] as core.String
-              : null,
-          username: json_.containsKey('username')
-              ? json_['username'] as core.String
-              : null,
+          loginUrl: json_['loginUrl'] as core.String?,
+          password: json_['password'] as core.String?,
+          username: json_['username'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -969,43 +961,25 @@ class Finding {
 
   Finding.fromJson(core.Map json_)
       : this(
-          body: json_.containsKey('body') ? json_['body'] as core.String : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          finalUrl: json_.containsKey('finalUrl')
-              ? json_['finalUrl'] as core.String
-              : null,
-          findingType: json_.containsKey('findingType')
-              ? json_['findingType'] as core.String
-              : null,
+          body: json_['body'] as core.String?,
+          description: json_['description'] as core.String?,
+          finalUrl: json_['finalUrl'] as core.String?,
+          findingType: json_['findingType'] as core.String?,
           form: json_.containsKey('form')
               ? Form.fromJson(
                   json_['form'] as core.Map<core.String, core.dynamic>)
               : null,
-          frameUrl: json_.containsKey('frameUrl')
-              ? json_['frameUrl'] as core.String
-              : null,
-          fuzzedUrl: json_.containsKey('fuzzedUrl')
-              ? json_['fuzzedUrl'] as core.String
-              : null,
-          httpMethod: json_.containsKey('httpMethod')
-              ? json_['httpMethod'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          frameUrl: json_['frameUrl'] as core.String?,
+          fuzzedUrl: json_['fuzzedUrl'] as core.String?,
+          httpMethod: json_['httpMethod'] as core.String?,
+          name: json_['name'] as core.String?,
           outdatedLibrary: json_.containsKey('outdatedLibrary')
               ? OutdatedLibrary.fromJson(json_['outdatedLibrary']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          reproductionUrl: json_.containsKey('reproductionUrl')
-              ? json_['reproductionUrl'] as core.String
-              : null,
-          severity: json_.containsKey('severity')
-              ? json_['severity'] as core.String
-              : null,
-          trackingId: json_.containsKey('trackingId')
-              ? json_['trackingId'] as core.String
-              : null,
+          reproductionUrl: json_['reproductionUrl'] as core.String?,
+          severity: json_['severity'] as core.String?,
+          trackingId: json_['trackingId'] as core.String?,
           violatingResource: json_.containsKey('violatingResource')
               ? ViolatingResource.fromJson(json_['violatingResource']
                   as core.Map<core.String, core.dynamic>)
@@ -1071,12 +1045,8 @@ class FindingTypeStats {
 
   FindingTypeStats.fromJson(core.Map json_)
       : this(
-          findingCount: json_.containsKey('findingCount')
-              ? json_['findingCount'] as core.int
-              : null,
-          findingType: json_.containsKey('findingType')
-              ? json_['findingType'] as core.String
-              : null,
+          findingCount: json_['findingCount'] as core.int?,
+          findingType: json_['findingType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1100,9 +1070,7 @@ class Form {
 
   Form.fromJson(core.Map json_)
       : this(
-          actionUri: json_.containsKey('actionUri')
-              ? json_['actionUri'] as core.String
-              : null,
+          actionUri: json_['actionUri'] as core.String?,
           fields: json_.containsKey('fields')
               ? (json_['fields'] as core.List)
                   .map((value) => value as core.String)
@@ -1138,12 +1106,8 @@ class GoogleAccount {
 
   GoogleAccount.fromJson(core.Map json_)
       : this(
-          password: json_.containsKey('password')
-              ? json_['password'] as core.String
-              : null,
-          username: json_.containsKey('username')
-              ? json_['username'] as core.String
-              : null,
+          password: json_['password'] as core.String?,
+          username: json_['username'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1196,9 +1160,8 @@ class IapTestServiceAccountInfo {
 
   IapTestServiceAccountInfo.fromJson(core.Map json_)
       : this(
-          targetAudienceClientId: json_.containsKey('targetAudienceClientId')
-              ? json_['targetAudienceClientId'] as core.String
-              : null,
+          targetAudienceClientId:
+              json_['targetAudienceClientId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1229,9 +1192,7 @@ class ListCrawledUrlsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1286,9 +1247,7 @@ class ListFindingsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1313,9 +1272,7 @@ class ListScanConfigsResponse {
 
   ListScanConfigsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           scanConfigs: json_.containsKey('scanConfigs')
               ? (json_['scanConfigs'] as core.List)
                   .map((value) => ScanConfig.fromJson(
@@ -1346,9 +1303,7 @@ class ListScanRunsResponse {
 
   ListScanRunsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           scanRuns: json_.containsKey('scanRuns')
               ? (json_['scanRuns'] as core.List)
                   .map((value) => ScanRun.fromJson(
@@ -1387,12 +1342,8 @@ class OutdatedLibrary {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          libraryName: json_.containsKey('libraryName')
-              ? json_['libraryName'] as core.String
-              : null,
-          version: json_.containsKey('version')
-              ? json_['version'] as core.String
-              : null,
+          libraryName: json_['libraryName'] as core.String?,
+          version: json_['version'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1506,25 +1457,14 @@ class ScanConfig {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+          displayName: json_['displayName'] as core.String?,
           exportToSecurityCommandCenter:
-              json_.containsKey('exportToSecurityCommandCenter')
-                  ? json_['exportToSecurityCommandCenter'] as core.String
-                  : null,
-          ignoreHttpStatusErrors: json_.containsKey('ignoreHttpStatusErrors')
-              ? json_['ignoreHttpStatusErrors'] as core.bool
-              : null,
-          managedScan: json_.containsKey('managedScan')
-              ? json_['managedScan'] as core.bool
-              : null,
-          maxQps:
-              json_.containsKey('maxQps') ? json_['maxQps'] as core.int : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          riskLevel: json_.containsKey('riskLevel')
-              ? json_['riskLevel'] as core.String
-              : null,
+              json_['exportToSecurityCommandCenter'] as core.String?,
+          ignoreHttpStatusErrors: json_['ignoreHttpStatusErrors'] as core.bool?,
+          managedScan: json_['managedScan'] as core.bool?,
+          maxQps: json_['maxQps'] as core.int?,
+          name: json_['name'] as core.String?,
+          riskLevel: json_['riskLevel'] as core.String?,
           schedule: json_.containsKey('schedule')
               ? Schedule.fromJson(
                   json_['schedule'] as core.Map<core.String, core.dynamic>)
@@ -1534,12 +1474,8 @@ class ScanConfig {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          staticIpScan: json_.containsKey('staticIpScan')
-              ? json_['staticIpScan'] as core.bool
-              : null,
-          userAgent: json_.containsKey('userAgent')
-              ? json_['userAgent'] as core.String
-              : null,
+          staticIpScan: json_['staticIpScan'] as core.bool?,
+          userAgent: json_['userAgent'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1670,10 +1606,8 @@ class ScanConfigError {
 
   ScanConfigError.fromJson(core.Map json_)
       : this(
-          code: json_.containsKey('code') ? json_['code'] as core.String : null,
-          fieldName: json_.containsKey('fieldName')
-              ? json_['fieldName'] as core.String
-              : null,
+          code: json_['code'] as core.String?,
+          fieldName: json_['fieldName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1788,35 +1722,19 @@ class ScanRun {
 
   ScanRun.fromJson(core.Map json_)
       : this(
-          endTime: json_.containsKey('endTime')
-              ? json_['endTime'] as core.String
-              : null,
+          endTime: json_['endTime'] as core.String?,
           errorTrace: json_.containsKey('errorTrace')
               ? ScanRunErrorTrace.fromJson(
                   json_['errorTrace'] as core.Map<core.String, core.dynamic>)
               : null,
-          executionState: json_.containsKey('executionState')
-              ? json_['executionState'] as core.String
-              : null,
-          hasVulnerabilities: json_.containsKey('hasVulnerabilities')
-              ? json_['hasVulnerabilities'] as core.bool
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          progressPercent: json_.containsKey('progressPercent')
-              ? json_['progressPercent'] as core.int
-              : null,
-          resultState: json_.containsKey('resultState')
-              ? json_['resultState'] as core.String
-              : null,
-          startTime: json_.containsKey('startTime')
-              ? json_['startTime'] as core.String
-              : null,
-          urlsCrawledCount: json_.containsKey('urlsCrawledCount')
-              ? json_['urlsCrawledCount'] as core.String
-              : null,
-          urlsTestedCount: json_.containsKey('urlsTestedCount')
-              ? json_['urlsTestedCount'] as core.String
-              : null,
+          executionState: json_['executionState'] as core.String?,
+          hasVulnerabilities: json_['hasVulnerabilities'] as core.bool?,
+          name: json_['name'] as core.String?,
+          progressPercent: json_['progressPercent'] as core.int?,
+          resultState: json_['resultState'] as core.String?,
+          startTime: json_['startTime'] as core.String?,
+          urlsCrawledCount: json_['urlsCrawledCount'] as core.String?,
+          urlsTestedCount: json_['urlsTestedCount'] as core.String?,
           warningTraces: json_.containsKey('warningTraces')
               ? (json_['warningTraces'] as core.List)
                   .map((value) => ScanRunWarningTrace.fromJson(
@@ -1894,10 +1812,9 @@ class ScanRunErrorTrace {
 
   ScanRunErrorTrace.fromJson(core.Map json_)
       : this(
-          code: json_.containsKey('code') ? json_['code'] as core.String : null,
-          mostCommonHttpErrorCode: json_.containsKey('mostCommonHttpErrorCode')
-              ? json_['mostCommonHttpErrorCode'] as core.int
-              : null,
+          code: json_['code'] as core.String?,
+          mostCommonHttpErrorCode:
+              json_['mostCommonHttpErrorCode'] as core.int?,
           scanConfigError: json_.containsKey('scanConfigError')
               ? ScanConfigError.fromJson(json_['scanConfigError']
                   as core.Map<core.String, core.dynamic>)
@@ -1944,7 +1861,7 @@ class ScanRunWarningTrace {
 
   ScanRunWarningTrace.fromJson(core.Map json_)
       : this(
-          code: json_.containsKey('code') ? json_['code'] as core.String : null,
+          code: json_['code'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1973,12 +1890,8 @@ class Schedule {
 
   Schedule.fromJson(core.Map json_)
       : this(
-          intervalDurationDays: json_.containsKey('intervalDurationDays')
-              ? json_['intervalDurationDays'] as core.int
-              : null,
-          scheduleTime: json_.containsKey('scheduleTime')
-              ? json_['scheduleTime'] as core.String
-              : null,
+          intervalDurationDays: json_['intervalDurationDays'] as core.int?,
+          scheduleTime: json_['scheduleTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2010,12 +1923,8 @@ class ViolatingResource {
 
   ViolatingResource.fromJson(core.Map json_)
       : this(
-          contentType: json_.containsKey('contentType')
-              ? json_['contentType'] as core.String
-              : null,
-          resourceUrl: json_.containsKey('resourceUrl')
-              ? json_['resourceUrl'] as core.String
-              : null,
+          contentType: json_['contentType'] as core.String?,
+          resourceUrl: json_['resourceUrl'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2128,20 +2037,14 @@ class Xss {
 
   Xss.fromJson(core.Map json_)
       : this(
-          attackVector: json_.containsKey('attackVector')
-              ? json_['attackVector'] as core.String
-              : null,
-          errorMessage: json_.containsKey('errorMessage')
-              ? json_['errorMessage'] as core.String
-              : null,
+          attackVector: json_['attackVector'] as core.String?,
+          errorMessage: json_['errorMessage'] as core.String?,
           stackTraces: json_.containsKey('stackTraces')
               ? (json_['stackTraces'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          storedXssSeedingUrl: json_.containsKey('storedXssSeedingUrl')
-              ? json_['storedXssSeedingUrl'] as core.String
-              : null,
+          storedXssSeedingUrl: json_['storedXssSeedingUrl'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2174,12 +2077,8 @@ class Xxe {
 
   Xxe.fromJson(core.Map json_)
       : this(
-          payloadLocation: json_.containsKey('payloadLocation')
-              ? json_['payloadLocation'] as core.String
-              : null,
-          payloadValue: json_.containsKey('payloadValue')
-              ? json_['payloadValue'] as core.String
-              : null,
+          payloadLocation: json_['payloadLocation'] as core.String?,
+          payloadValue: json_['payloadValue'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

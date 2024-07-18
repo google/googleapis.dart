@@ -403,7 +403,7 @@ class GoogleHomeEnterpriseSdmV1Device {
 
   GoogleHomeEnterpriseSdmV1Device.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           parentRelations: json_.containsKey('parentRelations')
               ? (json_['parentRelations'] as core.List)
                   .map((value) =>
@@ -414,7 +414,7 @@ class GoogleHomeEnterpriseSdmV1Device {
           traits: json_.containsKey('traits')
               ? json_['traits'] as core.Map<core.String, core.dynamic>
               : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -444,9 +444,7 @@ class GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest {
 
   GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest.fromJson(core.Map json_)
       : this(
-          command: json_.containsKey('command')
-              ? json_['command'] as core.String
-              : null,
+          command: json_['command'] as core.String?,
           params: json_.containsKey('params')
               ? json_['params'] as core.Map<core.String, core.dynamic>
               : null,
@@ -579,12 +577,8 @@ class GoogleHomeEnterpriseSdmV1ParentRelation {
 
   GoogleHomeEnterpriseSdmV1ParentRelation.fromJson(core.Map json_)
       : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          parent: json_.containsKey('parent')
-              ? json_['parent'] as core.String
-              : null,
+          displayName: json_['displayName'] as core.String?,
+          parent: json_['parent'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -616,7 +610,7 @@ class GoogleHomeEnterpriseSdmV1Room {
 
   GoogleHomeEnterpriseSdmV1Room.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           traits: json_.containsKey('traits')
               ? json_['traits'] as core.Map<core.String, core.dynamic>
               : null,
@@ -651,7 +645,7 @@ class GoogleHomeEnterpriseSdmV1Structure {
 
   GoogleHomeEnterpriseSdmV1Structure.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           traits: json_.containsKey('traits')
               ? json_['traits'] as core.Map<core.String, core.dynamic>
               : null,

@@ -489,9 +489,7 @@ class DailyMetricTimeSeries {
 
   DailyMetricTimeSeries.fromJson(core.Map json_)
       : this(
-          dailyMetric: json_.containsKey('dailyMetric')
-              ? json_['dailyMetric'] as core.String
-              : null,
+          dailyMetric: json_['dailyMetric'] as core.String?,
           dailySubEntityType: json_.containsKey('dailySubEntityType')
               ? DailySubEntityType.fromJson(json_['dailySubEntityType']
                   as core.Map<core.String, core.dynamic>)
@@ -539,9 +537,7 @@ class DailySubEntityType {
 
   DailySubEntityType.fromJson(core.Map json_)
       : this(
-          dayOfWeek: json_.containsKey('dayOfWeek')
-              ? json_['dayOfWeek'] as core.String
-              : null,
+          dayOfWeek: json_['dayOfWeek'] as core.String?,
           timeOfDay: json_.containsKey('timeOfDay')
               ? TimeOfDay.fromJson(
                   json_['timeOfDay'] as core.Map<core.String, core.dynamic>)
@@ -590,8 +586,7 @@ class DatedValue {
               ? Date.fromJson(
                   json_['date'] as core.Map<core.String, core.dynamic>)
               : null,
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
+          value: json_['value'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -663,11 +658,8 @@ class InsightsValue {
 
   InsightsValue.fromJson(core.Map json_)
       : this(
-          threshold: json_.containsKey('threshold')
-              ? json_['threshold'] as core.String
-              : null,
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
+          threshold: json_['threshold'] as core.String?,
+          value: json_['value'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -702,9 +694,7 @@ class ListSearchKeywordImpressionsMonthlyResponse {
 
   ListSearchKeywordImpressionsMonthlyResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           searchKeywordsCounts: json_.containsKey('searchKeywordsCounts')
               ? (json_['searchKeywordsCounts'] as core.List)
                   .map((value) => SearchKeywordCount.fromJson(
@@ -768,9 +758,7 @@ class SearchKeywordCount {
               ? InsightsValue.fromJson(
                   json_['insightsValue'] as core.Map<core.String, core.dynamic>)
               : null,
-          searchKeyword: json_.containsKey('searchKeyword')
-              ? json_['searchKeyword'] as core.String
-              : null,
+          searchKeyword: json_['searchKeyword'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

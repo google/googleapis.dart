@@ -401,12 +401,8 @@ class GoogleCloudPolicyanalyzerV1Activity {
           activity: json_.containsKey('activity')
               ? json_['activity'] as core.Map<core.String, core.dynamic>
               : null,
-          activityType: json_.containsKey('activityType')
-              ? json_['activityType'] as core.String
-              : null,
-          fullResourceName: json_.containsKey('fullResourceName')
-              ? json_['fullResourceName'] as core.String
-              : null,
+          activityType: json_['activityType'] as core.String?,
+          fullResourceName: json_['fullResourceName'] as core.String?,
           observationPeriod: json_.containsKey('observationPeriod')
               ? GoogleCloudPolicyanalyzerV1ObservationPeriod.fromJson(
                   json_['observationPeriod']
@@ -441,12 +437,8 @@ class GoogleCloudPolicyanalyzerV1ObservationPeriod {
 
   GoogleCloudPolicyanalyzerV1ObservationPeriod.fromJson(core.Map json_)
       : this(
-          endTime: json_.containsKey('endTime')
-              ? json_['endTime'] as core.String
-              : null,
-          startTime: json_.containsKey('startTime')
-              ? json_['startTime'] as core.String
-              : null,
+          endTime: json_['endTime'] as core.String?,
+          startTime: json_['startTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -480,9 +472,7 @@ class GoogleCloudPolicyanalyzerV1QueryActivityResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

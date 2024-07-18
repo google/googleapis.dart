@@ -885,9 +885,7 @@ class AdWordsLocationExtensions {
 
   AdWordsLocationExtensions.fromJson(core.Map json_)
       : this(
-          adPhone: json_.containsKey('adPhone')
-              ? json_['adPhone'] as core.String
-              : null,
+          adPhone: json_['adPhone'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -950,7 +948,7 @@ class Attribute {
 
   Attribute.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           repeatedEnumValue: json_.containsKey('repeatedEnumValue')
               ? RepeatedEnumAttributeValue.fromJson(json_['repeatedEnumValue']
                   as core.Map<core.String, core.dynamic>)
@@ -961,9 +959,7 @@ class Attribute {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          valueType: json_.containsKey('valueType')
-              ? json_['valueType'] as core.String
-              : null,
+          valueType: json_['valueType'] as core.String?,
           values:
               json_.containsKey('values') ? json_['values'] as core.List : null,
         );
@@ -1037,30 +1033,18 @@ class AttributeMetadata {
 
   AttributeMetadata.fromJson(core.Map json_)
       : this(
-          deprecated: json_.containsKey('deprecated')
-              ? json_['deprecated'] as core.bool
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          groupDisplayName: json_.containsKey('groupDisplayName')
-              ? json_['groupDisplayName'] as core.String
-              : null,
-          parent: json_.containsKey('parent')
-              ? json_['parent'] as core.String
-              : null,
-          repeatable: json_.containsKey('repeatable')
-              ? json_['repeatable'] as core.bool
-              : null,
+          deprecated: json_['deprecated'] as core.bool?,
+          displayName: json_['displayName'] as core.String?,
+          groupDisplayName: json_['groupDisplayName'] as core.String?,
+          parent: json_['parent'] as core.String?,
+          repeatable: json_['repeatable'] as core.bool?,
           valueMetadata: json_.containsKey('valueMetadata')
               ? (json_['valueMetadata'] as core.List)
                   .map((value) => AttributeValueMetadata.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          valueType: json_.containsKey('valueType')
-              ? json_['valueType'] as core.String
-              : null,
+          valueType: json_['valueType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1097,10 +1081,8 @@ class AttributeValueMetadata {
 
   AttributeValueMetadata.fromJson(core.Map json_)
       : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          value: json_.containsKey('value') ? json_['value'] : null,
+          displayName: json_['displayName'] as core.String?,
+          value: json_['value'],
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1133,7 +1115,7 @@ class Attributes {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1288,16 +1270,14 @@ class Category {
 
   Category.fromJson(core.Map json_)
       : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+          displayName: json_['displayName'] as core.String?,
           moreHoursTypes: json_.containsKey('moreHoursTypes')
               ? (json_['moreHoursTypes'] as core.List)
                   .map((value) => MoreHoursType.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           serviceTypes: json_.containsKey('serviceTypes')
               ? (json_['serviceTypes'] as core.List)
                   .map((value) => ServiceType.fromJson(
@@ -1345,10 +1325,8 @@ class Chain {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          locationCount: json_.containsKey('locationCount')
-              ? json_['locationCount'] as core.int
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          locationCount: json_['locationCount'] as core.int?,
+          name: json_['name'] as core.String?,
           websites: json_.containsKey('websites')
               ? (json_['websites'] as core.List)
                   .map((value) => ChainUri.fromJson(
@@ -1380,12 +1358,8 @@ class ChainName {
 
   ChainName.fromJson(core.Map json_)
       : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          languageCode: json_.containsKey('languageCode')
-              ? json_['languageCode'] as core.String
-              : null,
+          displayName: json_['displayName'] as core.String?,
+          languageCode: json_['languageCode'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1405,7 +1379,7 @@ class ChainUri {
 
   ChainUri.fromJson(core.Map json_)
       : this(
-          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+          uri: json_['uri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1464,9 +1438,7 @@ class FreeFormServiceItem {
 
   FreeFormServiceItem.fromJson(core.Map json_)
       : this(
-          category: json_.containsKey('category')
-              ? json_['category'] as core.String
-              : null,
+          category: json_['category'] as core.String?,
           label: json_.containsKey('label')
               ? Label.fromJson(
                   json_['label'] as core.Map<core.String, core.dynamic>)
@@ -1512,10 +1484,8 @@ class GoogleLocation {
               ? Location.fromJson(
                   json_['location'] as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          requestAdminRightsUri: json_.containsKey('requestAdminRightsUri')
-              ? json_['requestAdminRightsUri'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          requestAdminRightsUri: json_['requestAdminRightsUri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1546,16 +1516,12 @@ class GoogleUpdatedLocation {
 
   GoogleUpdatedLocation.fromJson(core.Map json_)
       : this(
-          diffMask: json_.containsKey('diffMask')
-              ? json_['diffMask'] as core.String
-              : null,
+          diffMask: json_['diffMask'] as core.String?,
           location: json_.containsKey('location')
               ? Location.fromJson(
                   json_['location'] as core.Map<core.String, core.dynamic>)
               : null,
-          pendingMask: json_.containsKey('pendingMask')
-              ? json_['pendingMask'] as core.String
-              : null,
+          pendingMask: json_['pendingMask'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1592,15 +1558,9 @@ class Label {
 
   Label.fromJson(core.Map json_)
       : this(
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          languageCode: json_.containsKey('languageCode')
-              ? json_['languageCode'] as core.String
-              : null,
+          description: json_['description'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          languageCode: json_['languageCode'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1643,9 +1603,7 @@ class ListAttributeMetadataResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1677,9 +1635,7 @@ class ListCategoriesResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1720,12 +1676,8 @@ class ListLocationsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
-          totalSize: json_.containsKey('totalSize')
-              ? json_['totalSize'] as core.int
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          totalSize: json_['totalSize'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1932,9 +1884,7 @@ class Location {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          languageCode: json_.containsKey('languageCode')
-              ? json_['languageCode'] as core.String
-              : null,
+          languageCode: json_['languageCode'] as core.String?,
           latlng: json_.containsKey('latlng')
               ? LatLng.fromJson(
                   json_['latlng'] as core.Map<core.String, core.dynamic>)
@@ -1949,7 +1899,7 @@ class Location {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           openInfo: json_.containsKey('openInfo')
               ? OpenInfo.fromJson(
                   json_['openInfo'] as core.Map<core.String, core.dynamic>)
@@ -1984,18 +1934,13 @@ class Location {
               ? SpecialHours.fromJson(
                   json_['specialHours'] as core.Map<core.String, core.dynamic>)
               : null,
-          storeCode: json_.containsKey('storeCode')
-              ? json_['storeCode'] as core.String
-              : null,
+          storeCode: json_['storeCode'] as core.String?,
           storefrontAddress: json_.containsKey('storefrontAddress')
               ? PostalAddress.fromJson(json_['storefrontAddress']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          title:
-              json_.containsKey('title') ? json_['title'] as core.String : null,
-          websiteUri: json_.containsKey('websiteUri')
-              ? json_['websiteUri'] as core.String
-              : null,
+          title: json_['title'] as core.String?,
+          websiteUri: json_['websiteUri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2128,48 +2073,20 @@ class Metadata {
 
   Metadata.fromJson(core.Map json_)
       : this(
-          canDelete: json_.containsKey('canDelete')
-              ? json_['canDelete'] as core.bool
-              : null,
-          canHaveBusinessCalls: json_.containsKey('canHaveBusinessCalls')
-              ? json_['canHaveBusinessCalls'] as core.bool
-              : null,
-          canHaveFoodMenus: json_.containsKey('canHaveFoodMenus')
-              ? json_['canHaveFoodMenus'] as core.bool
-              : null,
-          canModifyServiceList: json_.containsKey('canModifyServiceList')
-              ? json_['canModifyServiceList'] as core.bool
-              : null,
-          canOperateHealthData: json_.containsKey('canOperateHealthData')
-              ? json_['canOperateHealthData'] as core.bool
-              : null,
-          canOperateLocalPost: json_.containsKey('canOperateLocalPost')
-              ? json_['canOperateLocalPost'] as core.bool
-              : null,
-          canOperateLodgingData: json_.containsKey('canOperateLodgingData')
-              ? json_['canOperateLodgingData'] as core.bool
-              : null,
-          duplicateLocation: json_.containsKey('duplicateLocation')
-              ? json_['duplicateLocation'] as core.String
-              : null,
-          hasGoogleUpdated: json_.containsKey('hasGoogleUpdated')
-              ? json_['hasGoogleUpdated'] as core.bool
-              : null,
-          hasPendingEdits: json_.containsKey('hasPendingEdits')
-              ? json_['hasPendingEdits'] as core.bool
-              : null,
-          hasVoiceOfMerchant: json_.containsKey('hasVoiceOfMerchant')
-              ? json_['hasVoiceOfMerchant'] as core.bool
-              : null,
-          mapsUri: json_.containsKey('mapsUri')
-              ? json_['mapsUri'] as core.String
-              : null,
-          newReviewUri: json_.containsKey('newReviewUri')
-              ? json_['newReviewUri'] as core.String
-              : null,
-          placeId: json_.containsKey('placeId')
-              ? json_['placeId'] as core.String
-              : null,
+          canDelete: json_['canDelete'] as core.bool?,
+          canHaveBusinessCalls: json_['canHaveBusinessCalls'] as core.bool?,
+          canHaveFoodMenus: json_['canHaveFoodMenus'] as core.bool?,
+          canModifyServiceList: json_['canModifyServiceList'] as core.bool?,
+          canOperateHealthData: json_['canOperateHealthData'] as core.bool?,
+          canOperateLocalPost: json_['canOperateLocalPost'] as core.bool?,
+          canOperateLodgingData: json_['canOperateLodgingData'] as core.bool?,
+          duplicateLocation: json_['duplicateLocation'] as core.String?,
+          hasGoogleUpdated: json_['hasGoogleUpdated'] as core.bool?,
+          hasPendingEdits: json_['hasPendingEdits'] as core.bool?,
+          hasVoiceOfMerchant: json_['hasVoiceOfMerchant'] as core.bool?,
+          mapsUri: json_['mapsUri'] as core.String?,
+          newReviewUri: json_['newReviewUri'] as core.String?,
+          placeId: json_['placeId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2225,9 +2142,7 @@ class MoreHours {
 
   MoreHours.fromJson(core.Map json_)
       : this(
-          hoursTypeId: json_.containsKey('hoursTypeId')
-              ? json_['hoursTypeId'] as core.String
-              : null,
+          hoursTypeId: json_['hoursTypeId'] as core.String?,
           periods: json_.containsKey('periods')
               ? (json_['periods'] as core.List)
                   .map((value) => TimePeriod.fromJson(
@@ -2268,15 +2183,9 @@ class MoreHoursType {
 
   MoreHoursType.fromJson(core.Map json_)
       : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          hoursTypeId: json_.containsKey('hoursTypeId')
-              ? json_['hoursTypeId'] as core.String
-              : null,
-          localizedDisplayName: json_.containsKey('localizedDisplayName')
-              ? json_['localizedDisplayName'] as core.String
-              : null,
+          displayName: json_['displayName'] as core.String?,
+          hoursTypeId: json_['hoursTypeId'] as core.String?,
+          localizedDisplayName: json_['localizedDisplayName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2324,16 +2233,12 @@ class OpenInfo {
 
   OpenInfo.fromJson(core.Map json_)
       : this(
-          canReopen: json_.containsKey('canReopen')
-              ? json_['canReopen'] as core.bool
-              : null,
+          canReopen: json_['canReopen'] as core.bool?,
           openingDate: json_.containsKey('openingDate')
               ? Date.fromJson(
                   json_['openingDate'] as core.Map<core.String, core.dynamic>)
               : null,
-          status: json_.containsKey('status')
-              ? json_['status'] as core.String
-              : null,
+          status: json_['status'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2377,9 +2282,7 @@ class PhoneNumbers {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          primaryPhone: json_.containsKey('primaryPhone')
-              ? json_['primaryPhone'] as core.String
-              : null,
+          primaryPhone: json_['primaryPhone'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2412,12 +2315,8 @@ class PlaceInfo {
 
   PlaceInfo.fromJson(core.Map json_)
       : this(
-          placeId: json_.containsKey('placeId')
-              ? json_['placeId'] as core.String
-              : null,
-          placeName: json_.containsKey('placeName')
-              ? json_['placeName'] as core.String
-              : null,
+          placeId: json_['placeId'] as core.String?,
+          placeName: json_['placeName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2480,9 +2379,7 @@ class Profile {
 
   Profile.fromJson(core.Map json_)
       : this(
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
+          description: json_['description'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2517,9 +2414,7 @@ class RelationshipData {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          parentChain: json_.containsKey('parentChain')
-              ? json_['parentChain'] as core.String
-              : null,
+          parentChain: json_['parentChain'] as core.String?,
           parentLocation: json_.containsKey('parentLocation')
               ? RelevantLocation.fromJson(json_['parentLocation']
                   as core.Map<core.String, core.dynamic>)
@@ -2566,12 +2461,8 @@ class RelevantLocation {
 
   RelevantLocation.fromJson(core.Map json_)
       : this(
-          placeId: json_.containsKey('placeId')
-              ? json_['placeId'] as core.String
-              : null,
-          relationType: json_.containsKey('relationType')
-              ? json_['relationType'] as core.String
-              : null,
+          placeId: json_['placeId'] as core.String?,
+          relationType: json_['relationType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2676,11 +2567,8 @@ class SearchGoogleLocationsRequest {
               ? Location.fromJson(
                   json_['location'] as core.Map<core.String, core.dynamic>)
               : null,
-          pageSize: json_.containsKey('pageSize')
-              ? json_['pageSize'] as core.int
-              : null,
-          query:
-              json_.containsKey('query') ? json_['query'] as core.String : null,
+          pageSize: json_['pageSize'] as core.int?,
+          query: json_['query'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2761,16 +2649,12 @@ class ServiceAreaBusiness {
 
   ServiceAreaBusiness.fromJson(core.Map json_)
       : this(
-          businessType: json_.containsKey('businessType')
-              ? json_['businessType'] as core.String
-              : null,
+          businessType: json_['businessType'] as core.String?,
           places: json_.containsKey('places')
               ? Places.fromJson(
                   json_['places'] as core.Map<core.String, core.dynamic>)
               : null,
-          regionCode: json_.containsKey('regionCode')
-              ? json_['regionCode'] as core.String
-              : null,
+          regionCode: json_['regionCode'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2853,12 +2737,8 @@ class ServiceType {
 
   ServiceType.fromJson(core.Map json_)
       : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          serviceTypeId: json_.containsKey('serviceTypeId')
-              ? json_['serviceTypeId'] as core.String
-              : null,
+          displayName: json_['displayName'] as core.String?,
+          serviceTypeId: json_['serviceTypeId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2934,8 +2814,7 @@ class SpecialHourPeriod {
               ? TimeOfDay.fromJson(
                   json_['closeTime'] as core.Map<core.String, core.dynamic>)
               : null,
-          closed:
-              json_.containsKey('closed') ? json_['closed'] as core.bool : null,
+          closed: json_['closed'] as core.bool?,
           endDate: json_.containsKey('endDate')
               ? Date.fromJson(
                   json_['endDate'] as core.Map<core.String, core.dynamic>)
@@ -3013,12 +2892,8 @@ class StructuredServiceItem {
 
   StructuredServiceItem.fromJson(core.Map json_)
       : this(
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          serviceTypeId: json_.containsKey('serviceTypeId')
-              ? json_['serviceTypeId'] as core.String
-              : null,
+          description: json_['description'] as core.String?,
+          serviceTypeId: json_['serviceTypeId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3089,16 +2964,12 @@ class TimePeriod {
 
   TimePeriod.fromJson(core.Map json_)
       : this(
-          closeDay: json_.containsKey('closeDay')
-              ? json_['closeDay'] as core.String
-              : null,
+          closeDay: json_['closeDay'] as core.String?,
           closeTime: json_.containsKey('closeTime')
               ? TimeOfDay.fromJson(
                   json_['closeTime'] as core.Map<core.String, core.dynamic>)
               : null,
-          openDay: json_.containsKey('openDay')
-              ? json_['openDay'] as core.String
-              : null,
+          openDay: json_['openDay'] as core.String?,
           openTime: json_.containsKey('openTime')
               ? TimeOfDay.fromJson(
                   json_['openTime'] as core.Map<core.String, core.dynamic>)
@@ -3126,7 +2997,7 @@ class UriAttributeValue {
 
   UriAttributeValue.fromJson(core.Map json_)
       : this(
-          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+          uri: json_['uri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

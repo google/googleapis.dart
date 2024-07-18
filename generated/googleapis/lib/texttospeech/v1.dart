@@ -493,26 +493,16 @@ class AudioConfig {
 
   AudioConfig.fromJson(core.Map json_)
       : this(
-          audioEncoding: json_.containsKey('audioEncoding')
-              ? json_['audioEncoding'] as core.String
-              : null,
+          audioEncoding: json_['audioEncoding'] as core.String?,
           effectsProfileId: json_.containsKey('effectsProfileId')
               ? (json_['effectsProfileId'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          pitch: json_.containsKey('pitch')
-              ? (json_['pitch'] as core.num).toDouble()
-              : null,
-          sampleRateHertz: json_.containsKey('sampleRateHertz')
-              ? json_['sampleRateHertz'] as core.int
-              : null,
-          speakingRate: json_.containsKey('speakingRate')
-              ? (json_['speakingRate'] as core.num).toDouble()
-              : null,
-          volumeGainDb: json_.containsKey('volumeGainDb')
-              ? (json_['volumeGainDb'] as core.num).toDouble()
-              : null,
+          pitch: (json_['pitch'] as core.num?)?.toDouble(),
+          sampleRateHertz: json_['sampleRateHertz'] as core.int?,
+          speakingRate: (json_['speakingRate'] as core.num?)?.toDouble(),
+          volumeGainDb: (json_['volumeGainDb'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -559,11 +549,8 @@ class CustomVoiceParams {
 
   CustomVoiceParams.fromJson(core.Map json_)
       : this(
-          model:
-              json_.containsKey('model') ? json_['model'] as core.String : null,
-          reportedUsage: json_.containsKey('reportedUsage')
-              ? json_['reportedUsage'] as core.String
-              : null,
+          model: json_['model'] as core.String?,
+          reportedUsage: json_['reportedUsage'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -595,9 +582,7 @@ class ListOperationsResponse {
 
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           operations: json_.containsKey('operations')
               ? (json_['operations'] as core.List)
                   .map((value) => Operation.fromJson(
@@ -689,7 +674,7 @@ class Operation {
 
   Operation.fromJson(core.Map json_)
       : this(
-          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
@@ -697,7 +682,7 @@ class Operation {
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           response: json_.containsKey('response')
               ? json_['response'] as core.Map<core.String, core.dynamic>
               : null,
@@ -743,8 +728,8 @@ class SynthesisInput {
 
   SynthesisInput.fromJson(core.Map json_)
       : this(
-          ssml: json_.containsKey('ssml') ? json_['ssml'] as core.String : null,
-          text: json_.containsKey('text') ? json_['text'] as core.String : null,
+          ssml: json_['ssml'] as core.String?,
+          text: json_['text'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -798,9 +783,7 @@ class SynthesizeLongAudioRequest {
               ? SynthesisInput.fromJson(
                   json_['input'] as core.Map<core.String, core.dynamic>)
               : null,
-          outputGcsUri: json_.containsKey('outputGcsUri')
-              ? json_['outputGcsUri'] as core.String
-              : null,
+          outputGcsUri: json_['outputGcsUri'] as core.String?,
           voice: json_.containsKey('voice')
               ? VoiceSelectionParams.fromJson(
                   json_['voice'] as core.Map<core.String, core.dynamic>)
@@ -884,9 +867,7 @@ class SynthesizeSpeechResponse {
 
   SynthesizeSpeechResponse.fromJson(core.Map json_)
       : this(
-          audioContent: json_.containsKey('audioContent')
-              ? json_['audioContent'] as core.String
-              : null,
+          audioContent: json_['audioContent'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -935,13 +916,9 @@ class Voice {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          naturalSampleRateHertz: json_.containsKey('naturalSampleRateHertz')
-              ? json_['naturalSampleRateHertz'] as core.int
-              : null,
-          ssmlGender: json_.containsKey('ssmlGender')
-              ? json_['ssmlGender'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          naturalSampleRateHertz: json_['naturalSampleRateHertz'] as core.int?,
+          ssmlGender: json_['ssmlGender'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1014,13 +991,9 @@ class VoiceSelectionParams {
               ? CustomVoiceParams.fromJson(
                   json_['customVoice'] as core.Map<core.String, core.dynamic>)
               : null,
-          languageCode: json_.containsKey('languageCode')
-              ? json_['languageCode'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          ssmlGender: json_.containsKey('ssmlGender')
-              ? json_['ssmlGender'] as core.String
-              : null,
+          languageCode: json_['languageCode'] as core.String?,
+          name: json_['name'] as core.String?,
+          ssmlGender: json_['ssmlGender'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

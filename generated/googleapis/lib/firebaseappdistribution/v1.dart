@@ -1462,39 +1462,23 @@ class GdataCompositeMedia {
 
   GdataCompositeMedia.fromJson(core.Map json_)
       : this(
-          blobRef: json_.containsKey('blobRef')
-              ? json_['blobRef'] as core.String
-              : null,
+          blobRef: json_['blobRef'] as core.String?,
           blobstore2Info: json_.containsKey('blobstore2Info')
               ? GdataBlobstore2Info.fromJson(json_['blobstore2Info']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          cosmoBinaryReference: json_.containsKey('cosmoBinaryReference')
-              ? json_['cosmoBinaryReference'] as core.String
-              : null,
-          crc32cHash: json_.containsKey('crc32cHash')
-              ? json_['crc32cHash'] as core.int
-              : null,
-          inline: json_.containsKey('inline')
-              ? json_['inline'] as core.String
-              : null,
-          length: json_.containsKey('length')
-              ? json_['length'] as core.String
-              : null,
-          md5Hash: json_.containsKey('md5Hash')
-              ? json_['md5Hash'] as core.String
-              : null,
+          cosmoBinaryReference: json_['cosmoBinaryReference'] as core.String?,
+          crc32cHash: json_['crc32cHash'] as core.int?,
+          inline: json_['inline'] as core.String?,
+          length: json_['length'] as core.String?,
+          md5Hash: json_['md5Hash'] as core.String?,
           objectId: json_.containsKey('objectId')
               ? GdataObjectId.fromJson(
                   json_['objectId'] as core.Map<core.String, core.dynamic>)
               : null,
-          path: json_.containsKey('path') ? json_['path'] as core.String : null,
-          referenceType: json_.containsKey('referenceType')
-              ? json_['referenceType'] as core.String
-              : null,
-          sha1Hash: json_.containsKey('sha1Hash')
-              ? json_['sha1Hash'] as core.String
-              : null,
+          path: json_['path'] as core.String?,
+          referenceType: json_['referenceType'] as core.String?,
+          sha1Hash: json_['sha1Hash'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1564,19 +1548,13 @@ class GdataDiffChecksumsResponse {
               ? GdataCompositeMedia.fromJson(json_['checksumsLocation']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          chunkSizeBytes: json_.containsKey('chunkSizeBytes')
-              ? json_['chunkSizeBytes'] as core.String
-              : null,
+          chunkSizeBytes: json_['chunkSizeBytes'] as core.String?,
           objectLocation: json_.containsKey('objectLocation')
               ? GdataCompositeMedia.fromJson(json_['objectLocation']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          objectSizeBytes: json_.containsKey('objectSizeBytes')
-              ? json_['objectSizeBytes'] as core.String
-              : null,
-          objectVersion: json_.containsKey('objectVersion')
-              ? json_['objectVersion'] as core.String
-              : null,
+          objectSizeBytes: json_['objectSizeBytes'] as core.String?,
+          objectVersion: json_['objectVersion'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1653,9 +1631,7 @@ class GdataDiffUploadRequest {
               ? GdataCompositeMedia.fromJson(
                   json_['objectInfo'] as core.Map<core.String, core.dynamic>)
               : null,
-          objectVersion: json_.containsKey('objectVersion')
-              ? json_['objectVersion'] as core.String
-              : null,
+          objectVersion: json_['objectVersion'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1689,9 +1665,7 @@ class GdataDiffUploadResponse {
 
   GdataDiffUploadResponse.fromJson(core.Map json_)
       : this(
-          objectVersion: json_.containsKey('objectVersion')
-              ? json_['objectVersion'] as core.String
-              : null,
+          objectVersion: json_['objectVersion'] as core.String?,
           originalObject: json_.containsKey('originalObject')
               ? GdataCompositeMedia.fromJson(json_['originalObject']
                   as core.Map<core.String, core.dynamic>)
@@ -1975,15 +1949,9 @@ class GdataMedia {
 
   GdataMedia.fromJson(core.Map json_)
       : this(
-          algorithm: json_.containsKey('algorithm')
-              ? json_['algorithm'] as core.String
-              : null,
-          bigstoreObjectRef: json_.containsKey('bigstoreObjectRef')
-              ? json_['bigstoreObjectRef'] as core.String
-              : null,
-          blobRef: json_.containsKey('blobRef')
-              ? json_['blobRef'] as core.String
-              : null,
+          algorithm: json_['algorithm'] as core.String?,
+          bigstoreObjectRef: json_['bigstoreObjectRef'] as core.String?,
+          blobRef: json_['blobRef'] as core.String?,
           blobstore2Info: json_.containsKey('blobstore2Info')
               ? GdataBlobstore2Info.fromJson(json_['blobstore2Info']
                   as core.Map<core.String, core.dynamic>)
@@ -1994,19 +1962,13 @@ class GdataMedia {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          contentType: json_.containsKey('contentType')
-              ? json_['contentType'] as core.String
-              : null,
+          contentType: json_['contentType'] as core.String?,
           contentTypeInfo: json_.containsKey('contentTypeInfo')
               ? GdataContentTypeInfo.fromJson(json_['contentTypeInfo']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          cosmoBinaryReference: json_.containsKey('cosmoBinaryReference')
-              ? json_['cosmoBinaryReference'] as core.String
-              : null,
-          crc32cHash: json_.containsKey('crc32cHash')
-              ? json_['crc32cHash'] as core.int
-              : null,
+          cosmoBinaryReference: json_['cosmoBinaryReference'] as core.String?,
+          crc32cHash: json_['crc32cHash'] as core.int?,
           diffChecksumsResponse: json_.containsKey('diffChecksumsResponse')
               ? GdataDiffChecksumsResponse.fromJson(
                   json_['diffChecksumsResponse']
@@ -2032,47 +1994,24 @@ class GdataMedia {
               ? GdataDownloadParameters.fromJson(json_['downloadParameters']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          filename: json_.containsKey('filename')
-              ? json_['filename'] as core.String
-              : null,
-          hash: json_.containsKey('hash') ? json_['hash'] as core.String : null,
-          hashVerified: json_.containsKey('hashVerified')
-              ? json_['hashVerified'] as core.bool
-              : null,
-          inline: json_.containsKey('inline')
-              ? json_['inline'] as core.String
-              : null,
-          isPotentialRetry: json_.containsKey('isPotentialRetry')
-              ? json_['isPotentialRetry'] as core.bool
-              : null,
-          length: json_.containsKey('length')
-              ? json_['length'] as core.String
-              : null,
-          md5Hash: json_.containsKey('md5Hash')
-              ? json_['md5Hash'] as core.String
-              : null,
-          mediaId: json_.containsKey('mediaId')
-              ? json_['mediaId'] as core.String
-              : null,
+          filename: json_['filename'] as core.String?,
+          hash: json_['hash'] as core.String?,
+          hashVerified: json_['hashVerified'] as core.bool?,
+          inline: json_['inline'] as core.String?,
+          isPotentialRetry: json_['isPotentialRetry'] as core.bool?,
+          length: json_['length'] as core.String?,
+          md5Hash: json_['md5Hash'] as core.String?,
+          mediaId: json_['mediaId'] as core.String?,
           objectId: json_.containsKey('objectId')
               ? GdataObjectId.fromJson(
                   json_['objectId'] as core.Map<core.String, core.dynamic>)
               : null,
-          path: json_.containsKey('path') ? json_['path'] as core.String : null,
-          referenceType: json_.containsKey('referenceType')
-              ? json_['referenceType'] as core.String
-              : null,
-          sha1Hash: json_.containsKey('sha1Hash')
-              ? json_['sha1Hash'] as core.String
-              : null,
-          sha256Hash: json_.containsKey('sha256Hash')
-              ? json_['sha256Hash'] as core.String
-              : null,
-          timestamp: json_.containsKey('timestamp')
-              ? json_['timestamp'] as core.String
-              : null,
-          token:
-              json_.containsKey('token') ? json_['token'] as core.String : null,
+          path: json_['path'] as core.String?,
+          referenceType: json_['referenceType'] as core.String?,
+          sha1Hash: json_['sha1Hash'] as core.String?,
+          sha256Hash: json_['sha256Hash'] as core.String?,
+          timestamp: json_['timestamp'] as core.String?,
+          token: json_['token'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2156,10 +2095,8 @@ class GoogleFirebaseAppdistroV1AabInfo {
 
   GoogleFirebaseAppdistroV1AabInfo.fromJson(core.Map json_)
       : this(
-          integrationState: json_.containsKey('integrationState')
-              ? json_['integrationState'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          integrationState: json_['integrationState'] as core.String?,
+          name: json_['name'] as core.String?,
           testCertificate: json_.containsKey('testCertificate')
               ? GoogleFirebaseAppdistroV1TestCertificate.fromJson(
                   json_['testCertificate']
@@ -2273,9 +2210,7 @@ class GoogleFirebaseAppdistroV1BatchJoinGroupRequest {
 
   GoogleFirebaseAppdistroV1BatchJoinGroupRequest.fromJson(core.Map json_)
       : this(
-          createMissingTesters: json_.containsKey('createMissingTesters')
-              ? json_['createMissingTesters'] as core.bool
-              : null,
+          createMissingTesters: json_['createMissingTesters'] as core.bool?,
           emails: json_.containsKey('emails')
               ? (json_['emails'] as core.List)
                   .map((value) => value as core.String)
@@ -2454,20 +2389,12 @@ class GoogleFirebaseAppdistroV1FeedbackReport {
 
   GoogleFirebaseAppdistroV1FeedbackReport.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          firebaseConsoleUri: json_.containsKey('firebaseConsoleUri')
-              ? json_['firebaseConsoleUri'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          screenshotUri: json_.containsKey('screenshotUri')
-              ? json_['screenshotUri'] as core.String
-              : null,
-          tester: json_.containsKey('tester')
-              ? json_['tester'] as core.String
-              : null,
-          text: json_.containsKey('text') ? json_['text'] as core.String : null,
+          createTime: json_['createTime'] as core.String?,
+          firebaseConsoleUri: json_['firebaseConsoleUri'] as core.String?,
+          name: json_['name'] as core.String?,
+          screenshotUri: json_['screenshotUri'] as core.String?,
+          tester: json_['tester'] as core.String?,
+          text: json_['text'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2520,19 +2447,11 @@ class GoogleFirebaseAppdistroV1Group {
 
   GoogleFirebaseAppdistroV1Group.fromJson(core.Map json_)
       : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          inviteLinkCount: json_.containsKey('inviteLinkCount')
-              ? json_['inviteLinkCount'] as core.int
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          releaseCount: json_.containsKey('releaseCount')
-              ? json_['releaseCount'] as core.int
-              : null,
-          testerCount: json_.containsKey('testerCount')
-              ? json_['testerCount'] as core.int
-              : null,
+          displayName: json_['displayName'] as core.String?,
+          inviteLinkCount: json_['inviteLinkCount'] as core.int?,
+          name: json_['name'] as core.String?,
+          releaseCount: json_['releaseCount'] as core.int?,
+          testerCount: json_['testerCount'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2569,9 +2488,7 @@ class GoogleFirebaseAppdistroV1ListFeedbackReportsResponse {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2604,9 +2521,7 @@ class GoogleFirebaseAppdistroV1ListGroupsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2633,9 +2548,7 @@ class GoogleFirebaseAppdistroV1ListReleasesResponse {
 
   GoogleFirebaseAppdistroV1ListReleasesResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           releases: json_.containsKey('releases')
               ? (json_['releases'] as core.List)
                   .map((value) => GoogleFirebaseAppdistroV1Release.fromJson(
@@ -2668,9 +2581,7 @@ class GoogleFirebaseAppdistroV1ListTestersResponse {
 
   GoogleFirebaseAppdistroV1ListTestersResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           testers: json_.containsKey('testers')
               ? (json_['testers'] as core.List)
                   .map((value) => GoogleFirebaseAppdistroV1Tester.fromJson(
@@ -2747,29 +2658,17 @@ class GoogleFirebaseAppdistroV1Release {
 
   GoogleFirebaseAppdistroV1Release.fromJson(core.Map json_)
       : this(
-          binaryDownloadUri: json_.containsKey('binaryDownloadUri')
-              ? json_['binaryDownloadUri'] as core.String
-              : null,
-          buildVersion: json_.containsKey('buildVersion')
-              ? json_['buildVersion'] as core.String
-              : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          displayVersion: json_.containsKey('displayVersion')
-              ? json_['displayVersion'] as core.String
-              : null,
-          firebaseConsoleUri: json_.containsKey('firebaseConsoleUri')
-              ? json_['firebaseConsoleUri'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          binaryDownloadUri: json_['binaryDownloadUri'] as core.String?,
+          buildVersion: json_['buildVersion'] as core.String?,
+          createTime: json_['createTime'] as core.String?,
+          displayVersion: json_['displayVersion'] as core.String?,
+          firebaseConsoleUri: json_['firebaseConsoleUri'] as core.String?,
+          name: json_['name'] as core.String?,
           releaseNotes: json_.containsKey('releaseNotes')
               ? GoogleFirebaseAppdistroV1ReleaseNotes.fromJson(
                   json_['releaseNotes'] as core.Map<core.String, core.dynamic>)
               : null,
-          testingUri: json_.containsKey('testingUri')
-              ? json_['testingUri'] as core.String
-              : null,
+          testingUri: json_['testingUri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2796,7 +2695,7 @@ class GoogleFirebaseAppdistroV1ReleaseNotes {
 
   GoogleFirebaseAppdistroV1ReleaseNotes.fromJson(core.Map json_)
       : this(
-          text: json_.containsKey('text') ? json_['text'] as core.String : null,
+          text: json_['text'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2823,15 +2722,9 @@ class GoogleFirebaseAppdistroV1TestCertificate {
 
   GoogleFirebaseAppdistroV1TestCertificate.fromJson(core.Map json_)
       : this(
-          hashMd5: json_.containsKey('hashMd5')
-              ? json_['hashMd5'] as core.String
-              : null,
-          hashSha1: json_.containsKey('hashSha1')
-              ? json_['hashSha1'] as core.String
-              : null,
-          hashSha256: json_.containsKey('hashSha256')
-              ? json_['hashSha256'] as core.String
-              : null,
+          hashMd5: json_['hashMd5'] as core.String?,
+          hashSha1: json_['hashSha1'] as core.String?,
+          hashSha256: json_['hashSha256'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2873,18 +2766,14 @@ class GoogleFirebaseAppdistroV1Tester {
 
   GoogleFirebaseAppdistroV1Tester.fromJson(core.Map json_)
       : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+          displayName: json_['displayName'] as core.String?,
           groups: json_.containsKey('groups')
               ? (json_['groups'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          lastActivityTime: json_.containsKey('lastActivityTime')
-              ? json_['lastActivityTime'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          lastActivityTime: json_['lastActivityTime'] as core.String?,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2935,9 +2824,7 @@ class GoogleLongrunningListOperationsResponse {
 
   GoogleLongrunningListOperationsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           operations: json_.containsKey('operations')
               ? (json_['operations'] as core.List)
                   .map((value) => GoogleLongrunningOperation.fromJson(
@@ -3005,7 +2892,7 @@ class GoogleLongrunningOperation {
 
   GoogleLongrunningOperation.fromJson(core.Map json_)
       : this(
-          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? GoogleRpcStatus.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
@@ -3013,7 +2900,7 @@ class GoogleLongrunningOperation {
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           response: json_.containsKey('response')
               ? json_['response'] as core.Map<core.String, core.dynamic>
               : null,

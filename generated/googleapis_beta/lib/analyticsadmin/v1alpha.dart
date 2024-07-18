@@ -7284,13 +7284,13 @@ class GoogleAnalyticsAdminV1alphaAccessBinding {
 
   GoogleAnalyticsAdminV1alphaAccessBinding.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           roles: json_.containsKey('roles')
               ? (json_['roles'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          user: json_.containsKey('user') ? json_['user'] as core.String : null,
+          user: json_['user'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7352,9 +7352,7 @@ class GoogleAnalyticsAdminV1alphaAccessFilter {
               ? GoogleAnalyticsAdminV1alphaAccessBetweenFilter.fromJson(
                   json_['betweenFilter'] as core.Map<core.String, core.dynamic>)
               : null,
-          fieldName: json_.containsKey('fieldName')
-              ? json_['fieldName'] as core.String
-              : null,
+          fieldName: json_['fieldName'] as core.String?,
           inListFilter: json_.containsKey('inListFilter')
               ? GoogleAnalyticsAdminV1alphaAccessInListFilter.fromJson(
                   json_['inListFilter'] as core.Map<core.String, core.dynamic>)
@@ -7501,9 +7499,7 @@ class GoogleAnalyticsAdminV1alphaAccessNumericFilter {
 
   GoogleAnalyticsAdminV1alphaAccessNumericFilter.fromJson(core.Map json_)
       : this(
-          operation: json_.containsKey('operation')
-              ? json_['operation'] as core.String
-              : null,
+          operation: json_['operation'] as core.String?,
           value: json_.containsKey('value')
               ? GoogleAnalyticsAdminV1alphaNumericValue.fromJson(
                   json_['value'] as core.Map<core.String, core.dynamic>)
@@ -7540,7 +7536,7 @@ class GoogleAnalyticsAdminV1alphaAccessOrderBy {
 
   GoogleAnalyticsAdminV1alphaAccessOrderBy.fromJson(core.Map json_)
       : this(
-          desc: json_.containsKey('desc') ? json_['desc'] as core.bool : null,
+          desc: json_['desc'] as core.bool?,
           dimension: json_.containsKey('dimension')
               ? GoogleAnalyticsAdminV1alphaAccessOrderByDimensionOrderBy
                   .fromJson(
@@ -7722,13 +7718,9 @@ class GoogleAnalyticsAdminV1alphaAccountSummary {
 
   GoogleAnalyticsAdminV1alphaAccountSummary.fromJson(core.Map json_)
       : this(
-          account: json_.containsKey('account')
-              ? json_['account'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          account: json_['account'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          name: json_['name'] as core.String?,
           propertySummaries: json_.containsKey('propertySummaries')
               ? (json_['propertySummaries'] as core.List)
                   .map((value) =>
@@ -7778,10 +7770,8 @@ class GoogleAnalyticsAdminV1alphaAdSenseLink {
 
   GoogleAnalyticsAdminV1alphaAdSenseLink.fromJson(core.Map json_)
       : this(
-          adClientCode: json_.containsKey('adClientCode')
-              ? json_['adClientCode'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          adClientCode: json_['adClientCode'] as core.String?,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7924,23 +7914,15 @@ class GoogleAnalyticsAdminV1alphaAttributionSettings {
 
   GoogleAnalyticsAdminV1alphaAttributionSettings.fromJson(core.Map json_)
       : this(
-          acquisitionConversionEventLookbackWindow: json_
-                  .containsKey('acquisitionConversionEventLookbackWindow')
-              ? json_['acquisitionConversionEventLookbackWindow'] as core.String
-              : null,
+          acquisitionConversionEventLookbackWindow:
+              json_['acquisitionConversionEventLookbackWindow'] as core.String?,
           adsWebConversionDataExportScope:
-              json_.containsKey('adsWebConversionDataExportScope')
-                  ? json_['adsWebConversionDataExportScope'] as core.String
-                  : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+              json_['adsWebConversionDataExportScope'] as core.String?,
+          name: json_['name'] as core.String?,
           otherConversionEventLookbackWindow:
-              json_.containsKey('otherConversionEventLookbackWindow')
-                  ? json_['otherConversionEventLookbackWindow'] as core.String
-                  : null,
+              json_['otherConversionEventLookbackWindow'] as core.String?,
           reportingAttributionModel:
-              json_.containsKey('reportingAttributionModel')
-                  ? json_['reportingAttributionModel'] as core.String
-                  : null,
+              json_['reportingAttributionModel'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8040,25 +8022,15 @@ class GoogleAnalyticsAdminV1alphaAudience {
   GoogleAnalyticsAdminV1alphaAudience.fromJson(core.Map json_)
       : this(
           adsPersonalizationEnabled:
-              json_.containsKey('adsPersonalizationEnabled')
-                  ? json_['adsPersonalizationEnabled'] as core.bool
-                  : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+              json_['adsPersonalizationEnabled'] as core.bool?,
+          createTime: json_['createTime'] as core.String?,
+          description: json_['description'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
           eventTrigger: json_.containsKey('eventTrigger')
               ? GoogleAnalyticsAdminV1alphaAudienceEventTrigger.fromJson(
                   json_['eventTrigger'] as core.Map<core.String, core.dynamic>)
               : null,
-          exclusionDurationMode: json_.containsKey('exclusionDurationMode')
-              ? json_['exclusionDurationMode'] as core.String
-              : null,
+          exclusionDurationMode: json_['exclusionDurationMode'] as core.String?,
           filterClauses: json_.containsKey('filterClauses')
               ? (json_['filterClauses'] as core.List)
                   .map((value) =>
@@ -8066,10 +8038,8 @@ class GoogleAnalyticsAdminV1alphaAudience {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          membershipDurationDays: json_.containsKey('membershipDurationDays')
-              ? json_['membershipDurationDays'] as core.int
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          membershipDurationDays: json_['membershipDurationDays'] as core.int?,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8153,20 +8123,14 @@ class GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilter {
   GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilter.fromJson(
       core.Map json_)
       : this(
-          atAnyPointInTime: json_.containsKey('atAnyPointInTime')
-              ? json_['atAnyPointInTime'] as core.bool
-              : null,
+          atAnyPointInTime: json_['atAnyPointInTime'] as core.bool?,
           betweenFilter: json_.containsKey('betweenFilter')
               ? GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterBetweenFilter
                   .fromJson(json_['betweenFilter']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          fieldName: json_.containsKey('fieldName')
-              ? json_['fieldName'] as core.String
-              : null,
-          inAnyNDayPeriod: json_.containsKey('inAnyNDayPeriod')
-              ? json_['inAnyNDayPeriod'] as core.int
-              : null,
+          fieldName: json_['fieldName'] as core.String?,
+          inAnyNDayPeriod: json_['inAnyNDayPeriod'] as core.int?,
           inListFilter: json_.containsKey('inListFilter')
               ? GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterInListFilter
                   .fromJson(json_['inListFilter']
@@ -8260,9 +8224,7 @@ class GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterInListFilter {
   GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterInListFilter.fromJson(
       core.Map json_)
       : this(
-          caseSensitive: json_.containsKey('caseSensitive')
-              ? json_['caseSensitive'] as core.bool
-              : null,
+          caseSensitive: json_['caseSensitive'] as core.bool?,
           values: json_.containsKey('values')
               ? (json_['values'] as core.List)
                   .map((value) => value as core.String)
@@ -8301,9 +8263,7 @@ class GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericFilter {
   GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericFilter.fromJson(
       core.Map json_)
       : this(
-          operation: json_.containsKey('operation')
-              ? json_['operation'] as core.String
-              : null,
+          operation: json_['operation'] as core.String?,
           value: json_.containsKey('value')
               ? GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericValue
                   .fromJson(
@@ -8333,12 +8293,8 @@ class GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericValue {
   GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericValue.fromJson(
       core.Map json_)
       : this(
-          doubleValue: json_.containsKey('doubleValue')
-              ? (json_['doubleValue'] as core.num).toDouble()
-              : null,
-          int64Value: json_.containsKey('int64Value')
-              ? json_['int64Value'] as core.String
-              : null,
+          doubleValue: (json_['doubleValue'] as core.num?)?.toDouble(),
+          int64Value: json_['int64Value'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8382,14 +8338,9 @@ class GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterStringFilter {
   GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterStringFilter.fromJson(
       core.Map json_)
       : this(
-          caseSensitive: json_.containsKey('caseSensitive')
-              ? json_['caseSensitive'] as core.bool
-              : null,
-          matchType: json_.containsKey('matchType')
-              ? json_['matchType'] as core.String
-              : null,
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
+          caseSensitive: json_['caseSensitive'] as core.bool?,
+          matchType: json_['matchType'] as core.String?,
+          value: json_['value'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8430,9 +8381,7 @@ class GoogleAnalyticsAdminV1alphaAudienceEventFilter {
 
   GoogleAnalyticsAdminV1alphaAudienceEventFilter.fromJson(core.Map json_)
       : this(
-          eventName: json_.containsKey('eventName')
-              ? json_['eventName'] as core.String
-              : null,
+          eventName: json_['eventName'] as core.String?,
           eventParameterFilterExpression: json_
                   .containsKey('eventParameterFilterExpression')
               ? GoogleAnalyticsAdminV1alphaAudienceFilterExpression.fromJson(
@@ -8474,12 +8423,8 @@ class GoogleAnalyticsAdminV1alphaAudienceEventTrigger {
 
   GoogleAnalyticsAdminV1alphaAudienceEventTrigger.fromJson(core.Map json_)
       : this(
-          eventName: json_.containsKey('eventName')
-              ? json_['eventName'] as core.String
-              : null,
-          logCondition: json_.containsKey('logCondition')
-              ? json_['logCondition'] as core.String
-              : null,
+          eventName: json_['eventName'] as core.String?,
+          logCondition: json_['logCondition'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8520,9 +8465,7 @@ class GoogleAnalyticsAdminV1alphaAudienceFilterClause {
 
   GoogleAnalyticsAdminV1alphaAudienceFilterClause.fromJson(core.Map json_)
       : this(
-          clauseType: json_.containsKey('clauseType')
-              ? json_['clauseType'] as core.String
-              : null,
+          clauseType: json_['clauseType'] as core.String?,
           sequenceFilter: json_.containsKey('sequenceFilter')
               ? GoogleAnalyticsAdminV1alphaAudienceSequenceFilter.fromJson(
                   json_['sequenceFilter']
@@ -8682,11 +8625,9 @@ class GoogleAnalyticsAdminV1alphaAudienceSequenceFilter {
 
   GoogleAnalyticsAdminV1alphaAudienceSequenceFilter.fromJson(core.Map json_)
       : this(
-          scope:
-              json_.containsKey('scope') ? json_['scope'] as core.String : null,
-          sequenceMaximumDuration: json_.containsKey('sequenceMaximumDuration')
-              ? json_['sequenceMaximumDuration'] as core.String
-              : null,
+          scope: json_['scope'] as core.String?,
+          sequenceMaximumDuration:
+              json_['sequenceMaximumDuration'] as core.String?,
           sequenceSteps: json_.containsKey('sequenceSteps')
               ? (json_['sequenceSteps'] as core.List)
                   .map((value) =>
@@ -8757,19 +8698,14 @@ class GoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequenceStep {
   GoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequenceStep.fromJson(
       core.Map json_)
       : this(
-          constraintDuration: json_.containsKey('constraintDuration')
-              ? json_['constraintDuration'] as core.String
-              : null,
+          constraintDuration: json_['constraintDuration'] as core.String?,
           filterExpression: json_.containsKey('filterExpression')
               ? GoogleAnalyticsAdminV1alphaAudienceFilterExpression.fromJson(
                   json_['filterExpression']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          immediatelyFollows: json_.containsKey('immediatelyFollows')
-              ? json_['immediatelyFollows'] as core.bool
-              : null,
-          scope:
-              json_.containsKey('scope') ? json_['scope'] as core.String : null,
+          immediatelyFollows: json_['immediatelyFollows'] as core.bool?,
+          scope: json_['scope'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8815,8 +8751,7 @@ class GoogleAnalyticsAdminV1alphaAudienceSimpleFilter {
                   json_['filterExpression']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          scope:
-              json_.containsKey('scope') ? json_['scope'] as core.String : null,
+          scope: json_['scope'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9060,12 +8995,8 @@ class GoogleAnalyticsAdminV1alphaBigQueryLink {
 
   GoogleAnalyticsAdminV1alphaBigQueryLink.fromJson(core.Map json_)
       : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          dailyExportEnabled: json_.containsKey('dailyExportEnabled')
-              ? json_['dailyExportEnabled'] as core.bool
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          dailyExportEnabled: json_['dailyExportEnabled'] as core.bool?,
           excludedEvents: json_.containsKey('excludedEvents')
               ? (json_['excludedEvents'] as core.List)
                   .map((value) => value as core.String)
@@ -9076,19 +9007,12 @@ class GoogleAnalyticsAdminV1alphaBigQueryLink {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          freshDailyExportEnabled: json_.containsKey('freshDailyExportEnabled')
-              ? json_['freshDailyExportEnabled'] as core.bool
-              : null,
-          includeAdvertisingId: json_.containsKey('includeAdvertisingId')
-              ? json_['includeAdvertisingId'] as core.bool
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          project: json_.containsKey('project')
-              ? json_['project'] as core.String
-              : null,
-          streamingExportEnabled: json_.containsKey('streamingExportEnabled')
-              ? json_['streamingExportEnabled'] as core.bool
-              : null,
+          freshDailyExportEnabled:
+              json_['freshDailyExportEnabled'] as core.bool?,
+          includeAdvertisingId: json_['includeAdvertisingId'] as core.bool?,
+          name: json_['name'] as core.String?,
+          project: json_['project'] as core.String?,
+          streamingExportEnabled: json_['streamingExportEnabled'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9197,25 +9121,13 @@ class GoogleAnalyticsAdminV1alphaCalculatedMetric {
 
   GoogleAnalyticsAdminV1alphaCalculatedMetric.fromJson(core.Map json_)
       : this(
-          calculatedMetricId: json_.containsKey('calculatedMetricId')
-              ? json_['calculatedMetricId'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          formula: json_.containsKey('formula')
-              ? json_['formula'] as core.String
-              : null,
-          invalidMetricReference: json_.containsKey('invalidMetricReference')
-              ? json_['invalidMetricReference'] as core.bool
-              : null,
-          metricUnit: json_.containsKey('metricUnit')
-              ? json_['metricUnit'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          calculatedMetricId: json_['calculatedMetricId'] as core.String?,
+          description: json_['description'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          formula: json_['formula'] as core.String?,
+          invalidMetricReference: json_['invalidMetricReference'] as core.bool?,
+          metricUnit: json_['metricUnit'] as core.String?,
+          name: json_['name'] as core.String?,
           restrictedMetricType: json_.containsKey('restrictedMetricType')
               ? (json_['restrictedMetricType'] as core.List)
                   .map((value) => value as core.String)
@@ -9276,12 +9188,8 @@ class GoogleAnalyticsAdminV1alphaChangeHistoryChange {
 
   GoogleAnalyticsAdminV1alphaChangeHistoryChange.fromJson(core.Map json_)
       : this(
-          action: json_.containsKey('action')
-              ? json_['action'] as core.String
-              : null,
-          resource: json_.containsKey('resource')
-              ? json_['resource'] as core.String
-              : null,
+          action: json_['action'] as core.String?,
+          resource: json_['resource'] as core.String?,
           resourceAfterChange: json_.containsKey('resourceAfterChange')
               ? GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource
                   .fromJson(json_['resourceAfterChange']
@@ -9628,12 +9536,8 @@ class GoogleAnalyticsAdminV1alphaChangeHistoryEvent {
 
   GoogleAnalyticsAdminV1alphaChangeHistoryEvent.fromJson(core.Map json_)
       : this(
-          actorType: json_.containsKey('actorType')
-              ? json_['actorType'] as core.String
-              : null,
-          changeTime: json_.containsKey('changeTime')
-              ? json_['changeTime'] as core.String
-              : null,
+          actorType: json_['actorType'] as core.String?,
+          changeTime: json_['changeTime'] as core.String?,
           changes: json_.containsKey('changes')
               ? (json_['changes'] as core.List)
                   .map((value) =>
@@ -9641,13 +9545,9 @@ class GoogleAnalyticsAdminV1alphaChangeHistoryEvent {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          changesFiltered: json_.containsKey('changesFiltered')
-              ? json_['changesFiltered'] as core.bool
-              : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          userActorEmail: json_.containsKey('userActorEmail')
-              ? json_['userActorEmail'] as core.String
-              : null,
+          changesFiltered: json_['changesFiltered'] as core.bool?,
+          id: json_['id'] as core.String?,
+          userActorEmail: json_['userActorEmail'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9718,12 +9618,8 @@ class GoogleAnalyticsAdminV1alphaChannelGroup {
 
   GoogleAnalyticsAdminV1alphaChannelGroup.fromJson(core.Map json_)
       : this(
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+          description: json_['description'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
           groupingRule: json_.containsKey('groupingRule')
               ? (json_['groupingRule'] as core.List)
                   .map((value) =>
@@ -9731,13 +9627,9 @@ class GoogleAnalyticsAdminV1alphaChannelGroup {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          primary: json_.containsKey('primary')
-              ? json_['primary'] as core.bool
-              : null,
-          systemDefined: json_.containsKey('systemDefined')
-              ? json_['systemDefined'] as core.bool
-              : null,
+          name: json_['name'] as core.String?,
+          primary: json_['primary'] as core.bool?,
+          systemDefined: json_['systemDefined'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9771,9 +9663,7 @@ class GoogleAnalyticsAdminV1alphaChannelGroupFilter {
 
   GoogleAnalyticsAdminV1alphaChannelGroupFilter.fromJson(core.Map json_)
       : this(
-          fieldName: json_.containsKey('fieldName')
-              ? json_['fieldName'] as core.String
-              : null,
+          fieldName: json_['fieldName'] as core.String?,
           inListFilter: json_.containsKey('inListFilter')
               ? GoogleAnalyticsAdminV1alphaChannelGroupFilterInListFilter
                   .fromJson(json_['inListFilter']
@@ -9946,11 +9836,8 @@ class GoogleAnalyticsAdminV1alphaChannelGroupFilterStringFilter {
   GoogleAnalyticsAdminV1alphaChannelGroupFilterStringFilter.fromJson(
       core.Map json_)
       : this(
-          matchType: json_.containsKey('matchType')
-              ? json_['matchType'] as core.String
-              : null,
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
+          matchType: json_['matchType'] as core.String?,
+          value: json_['value'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9982,11 +9869,8 @@ class GoogleAnalyticsAdminV1alphaConnectedSiteTag {
 
   GoogleAnalyticsAdminV1alphaConnectedSiteTag.fromJson(core.Map json_)
       : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          tagId:
-              json_.containsKey('tagId') ? json_['tagId'] as core.String : null,
+          displayName: json_['displayName'] as core.String?,
+          tagId: json_['tagId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10064,26 +9948,17 @@ class GoogleAnalyticsAdminV1alphaConversionEvent {
 
   GoogleAnalyticsAdminV1alphaConversionEvent.fromJson(core.Map json_)
       : this(
-          countingMethod: json_.containsKey('countingMethod')
-              ? json_['countingMethod'] as core.String
-              : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          custom:
-              json_.containsKey('custom') ? json_['custom'] as core.bool : null,
+          countingMethod: json_['countingMethod'] as core.String?,
+          createTime: json_['createTime'] as core.String?,
+          custom: json_['custom'] as core.bool?,
           defaultConversionValue: json_.containsKey('defaultConversionValue')
               ? GoogleAnalyticsAdminV1alphaConversionEventDefaultConversionValue
                   .fromJson(json_['defaultConversionValue']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          deletable: json_.containsKey('deletable')
-              ? json_['deletable'] as core.bool
-              : null,
-          eventName: json_.containsKey('eventName')
-              ? json_['eventName'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          deletable: json_['deletable'] as core.bool?,
+          eventName: json_['eventName'] as core.String?,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10154,12 +10029,8 @@ class GoogleAnalyticsAdminV1alphaConversionValues {
 
   GoogleAnalyticsAdminV1alphaConversionValues.fromJson(core.Map json_)
       : this(
-          coarseValue: json_.containsKey('coarseValue')
-              ? json_['coarseValue'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+          coarseValue: json_['coarseValue'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
           eventMappings: json_.containsKey('eventMappings')
               ? (json_['eventMappings'] as core.List)
                   .map((value) =>
@@ -10167,12 +10038,8 @@ class GoogleAnalyticsAdminV1alphaConversionValues {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          fineValue: json_.containsKey('fineValue')
-              ? json_['fineValue'] as core.int
-              : null,
-          lockEnabled: json_.containsKey('lockEnabled')
-              ? json_['lockEnabled'] as core.bool
-              : null,
+          fineValue: json_['fineValue'] as core.int?,
+          lockEnabled: json_['lockEnabled'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10207,9 +10074,7 @@ class GoogleAnalyticsAdminV1alphaCreateAccessBindingRequest {
               ? GoogleAnalyticsAdminV1alphaAccessBinding.fromJson(
                   json_['accessBinding'] as core.Map<core.String, core.dynamic>)
               : null,
-          parent: json_.containsKey('parent')
-              ? json_['parent'] as core.String
-              : null,
+          parent: json_['parent'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10244,9 +10109,7 @@ class GoogleAnalyticsAdminV1alphaCreateConnectedSiteTagRequest {
                   json_['connectedSiteTag']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          property: json_.containsKey('property')
-              ? json_['property'] as core.String
-              : null,
+          property: json_['property'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10454,19 +10317,15 @@ class GoogleAnalyticsAdminV1alphaDataRedactionSettings {
 
   GoogleAnalyticsAdminV1alphaDataRedactionSettings.fromJson(core.Map json_)
       : this(
-          emailRedactionEnabled: json_.containsKey('emailRedactionEnabled')
-              ? json_['emailRedactionEnabled'] as core.bool
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          emailRedactionEnabled: json_['emailRedactionEnabled'] as core.bool?,
+          name: json_['name'] as core.String?,
           queryParameterKeys: json_.containsKey('queryParameterKeys')
               ? (json_['queryParameterKeys'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
           queryParameterRedactionEnabled:
-              json_.containsKey('queryParameterRedactionEnabled')
-                  ? json_['queryParameterRedactionEnabled'] as core.bool
-                  : null,
+              json_['queryParameterRedactionEnabled'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10560,22 +10419,16 @@ class GoogleAnalyticsAdminV1alphaDataStream {
                   .fromJson(json_['androidAppStreamData']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
           iosAppStreamData: json_.containsKey('iosAppStreamData')
               ? GoogleAnalyticsAdminV1alphaDataStreamIosAppStreamData.fromJson(
                   json_['iosAppStreamData']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          type: json_['type'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
           webStreamData: json_.containsKey('webStreamData')
               ? GoogleAnalyticsAdminV1alphaDataStreamWebStreamData.fromJson(
                   json_['webStreamData'] as core.Map<core.String, core.dynamic>)
@@ -10621,7 +10474,7 @@ class GoogleAnalyticsAdminV1alphaDeleteAccessBindingRequest {
 
   GoogleAnalyticsAdminV1alphaDeleteAccessBindingRequest.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10650,11 +10503,8 @@ class GoogleAnalyticsAdminV1alphaDeleteConnectedSiteTagRequest {
   GoogleAnalyticsAdminV1alphaDeleteConnectedSiteTagRequest.fromJson(
       core.Map json_)
       : this(
-          property: json_.containsKey('property')
-              ? json_['property'] as core.String
-              : null,
-          tagId:
-              json_.containsKey('tagId') ? json_['tagId'] as core.String : null,
+          property: json_['property'] as core.String?,
+          tagId: json_['tagId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10720,23 +10570,13 @@ class GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink {
       core.Map json_)
       : this(
           adsPersonalizationEnabled:
-              json_.containsKey('adsPersonalizationEnabled')
-                  ? json_['adsPersonalizationEnabled'] as core.bool
-                  : null,
-          advertiserDisplayName: json_.containsKey('advertiserDisplayName')
-              ? json_['advertiserDisplayName'] as core.String
-              : null,
-          advertiserId: json_.containsKey('advertiserId')
-              ? json_['advertiserId'] as core.String
-              : null,
+              json_['adsPersonalizationEnabled'] as core.bool?,
+          advertiserDisplayName: json_['advertiserDisplayName'] as core.String?,
+          advertiserId: json_['advertiserId'] as core.String?,
           campaignDataSharingEnabled:
-              json_.containsKey('campaignDataSharingEnabled')
-                  ? json_['campaignDataSharingEnabled'] as core.bool
-                  : null,
-          costDataSharingEnabled: json_.containsKey('costDataSharingEnabled')
-              ? json_['costDataSharingEnabled'] as core.bool
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+              json_['campaignDataSharingEnabled'] as core.bool?,
+          costDataSharingEnabled: json_['costDataSharingEnabled'] as core.bool?,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10834,32 +10674,20 @@ class GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal {
       core.Map json_)
       : this(
           adsPersonalizationEnabled:
-              json_.containsKey('adsPersonalizationEnabled')
-                  ? json_['adsPersonalizationEnabled'] as core.bool
-                  : null,
-          advertiserDisplayName: json_.containsKey('advertiserDisplayName')
-              ? json_['advertiserDisplayName'] as core.String
-              : null,
-          advertiserId: json_.containsKey('advertiserId')
-              ? json_['advertiserId'] as core.String
-              : null,
+              json_['adsPersonalizationEnabled'] as core.bool?,
+          advertiserDisplayName: json_['advertiserDisplayName'] as core.String?,
+          advertiserId: json_['advertiserId'] as core.String?,
           campaignDataSharingEnabled:
-              json_.containsKey('campaignDataSharingEnabled')
-                  ? json_['campaignDataSharingEnabled'] as core.bool
-                  : null,
-          costDataSharingEnabled: json_.containsKey('costDataSharingEnabled')
-              ? json_['costDataSharingEnabled'] as core.bool
-              : null,
+              json_['campaignDataSharingEnabled'] as core.bool?,
+          costDataSharingEnabled: json_['costDataSharingEnabled'] as core.bool?,
           linkProposalStatusDetails: json_
                   .containsKey('linkProposalStatusDetails')
               ? GoogleAnalyticsAdminV1alphaLinkProposalStatusDetails.fromJson(
                   json_['linkProposalStatusDetails']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          validationEmail: json_.containsKey('validationEmail')
-              ? json_['validationEmail'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          validationEmail: json_['validationEmail'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10958,37 +10786,18 @@ class GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings {
   GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings.fromJson(
       core.Map json_)
       : this(
-          fileDownloadsEnabled: json_.containsKey('fileDownloadsEnabled')
-              ? json_['fileDownloadsEnabled'] as core.bool
-              : null,
-          formInteractionsEnabled: json_.containsKey('formInteractionsEnabled')
-              ? json_['formInteractionsEnabled'] as core.bool
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          outboundClicksEnabled: json_.containsKey('outboundClicksEnabled')
-              ? json_['outboundClicksEnabled'] as core.bool
-              : null,
-          pageChangesEnabled: json_.containsKey('pageChangesEnabled')
-              ? json_['pageChangesEnabled'] as core.bool
-              : null,
-          scrollsEnabled: json_.containsKey('scrollsEnabled')
-              ? json_['scrollsEnabled'] as core.bool
-              : null,
-          searchQueryParameter: json_.containsKey('searchQueryParameter')
-              ? json_['searchQueryParameter'] as core.String
-              : null,
-          siteSearchEnabled: json_.containsKey('siteSearchEnabled')
-              ? json_['siteSearchEnabled'] as core.bool
-              : null,
-          streamEnabled: json_.containsKey('streamEnabled')
-              ? json_['streamEnabled'] as core.bool
-              : null,
-          uriQueryParameter: json_.containsKey('uriQueryParameter')
-              ? json_['uriQueryParameter'] as core.String
-              : null,
-          videoEngagementEnabled: json_.containsKey('videoEngagementEnabled')
-              ? json_['videoEngagementEnabled'] as core.bool
-              : null,
+          fileDownloadsEnabled: json_['fileDownloadsEnabled'] as core.bool?,
+          formInteractionsEnabled:
+              json_['formInteractionsEnabled'] as core.bool?,
+          name: json_['name'] as core.String?,
+          outboundClicksEnabled: json_['outboundClicksEnabled'] as core.bool?,
+          pageChangesEnabled: json_['pageChangesEnabled'] as core.bool?,
+          scrollsEnabled: json_['scrollsEnabled'] as core.bool?,
+          searchQueryParameter: json_['searchQueryParameter'] as core.String?,
+          siteSearchEnabled: json_['siteSearchEnabled'] as core.bool?,
+          streamEnabled: json_['streamEnabled'] as core.bool?,
+          uriQueryParameter: json_['uriQueryParameter'] as core.String?,
+          videoEngagementEnabled: json_['videoEngagementEnabled'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -11066,9 +10875,7 @@ class GoogleAnalyticsAdminV1alphaEventCreateRule {
 
   GoogleAnalyticsAdminV1alphaEventCreateRule.fromJson(core.Map json_)
       : this(
-          destinationEvent: json_.containsKey('destinationEvent')
-              ? json_['destinationEvent'] as core.String
-              : null,
+          destinationEvent: json_['destinationEvent'] as core.String?,
           eventConditions: json_.containsKey('eventConditions')
               ? (json_['eventConditions'] as core.List)
                   .map((value) =>
@@ -11076,7 +10883,7 @@ class GoogleAnalyticsAdminV1alphaEventCreateRule {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           parameterMutations: json_.containsKey('parameterMutations')
               ? (json_['parameterMutations'] as core.List)
                   .map((value) =>
@@ -11084,9 +10891,7 @@ class GoogleAnalyticsAdminV1alphaEventCreateRule {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          sourceCopyParameters: json_.containsKey('sourceCopyParameters')
-              ? json_['sourceCopyParameters'] as core.bool
-              : null,
+          sourceCopyParameters: json_['sourceCopyParameters'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -11144,21 +10949,11 @@ class GoogleAnalyticsAdminV1alphaEventMapping {
 
   GoogleAnalyticsAdminV1alphaEventMapping.fromJson(core.Map json_)
       : this(
-          eventName: json_.containsKey('eventName')
-              ? json_['eventName'] as core.String
-              : null,
-          maxEventCount: json_.containsKey('maxEventCount')
-              ? json_['maxEventCount'] as core.String
-              : null,
-          maxEventValue: json_.containsKey('maxEventValue')
-              ? (json_['maxEventValue'] as core.num).toDouble()
-              : null,
-          minEventCount: json_.containsKey('minEventCount')
-              ? json_['minEventCount'] as core.String
-              : null,
-          minEventValue: json_.containsKey('minEventValue')
-              ? (json_['minEventValue'] as core.num).toDouble()
-              : null,
+          eventName: json_['eventName'] as core.String?,
+          maxEventCount: json_['maxEventCount'] as core.String?,
+          maxEventValue: (json_['maxEventValue'] as core.num?)?.toDouble(),
+          minEventCount: json_['minEventCount'] as core.String?,
+          minEventValue: (json_['minEventValue'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -11238,12 +11033,9 @@ class GoogleAnalyticsAdminV1alphaExpandedDataSet {
 
   GoogleAnalyticsAdminV1alphaExpandedDataSet.fromJson(core.Map json_)
       : this(
-          dataCollectionStartTime: json_.containsKey('dataCollectionStartTime')
-              ? json_['dataCollectionStartTime'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
+          dataCollectionStartTime:
+              json_['dataCollectionStartTime'] as core.String?,
+          description: json_['description'] as core.String?,
           dimensionFilterExpression:
               json_.containsKey('dimensionFilterExpression')
                   ? GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpression
@@ -11255,15 +11047,13 @@ class GoogleAnalyticsAdminV1alphaExpandedDataSet {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+          displayName: json_['displayName'] as core.String?,
           metricNames: json_.containsKey('metricNames')
               ? (json_['metricNames'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -11300,9 +11090,7 @@ class GoogleAnalyticsAdminV1alphaExpandedDataSetFilter {
 
   GoogleAnalyticsAdminV1alphaExpandedDataSetFilter.fromJson(core.Map json_)
       : this(
-          fieldName: json_.containsKey('fieldName')
-              ? json_['fieldName'] as core.String
-              : null,
+          fieldName: json_['fieldName'] as core.String?,
           inListFilter: json_.containsKey('inListFilter')
               ? GoogleAnalyticsAdminV1alphaExpandedDataSetFilterInListFilter
                   .fromJson(json_['inListFilter']
@@ -11426,9 +11214,7 @@ class GoogleAnalyticsAdminV1alphaExpandedDataSetFilterInListFilter {
   GoogleAnalyticsAdminV1alphaExpandedDataSetFilterInListFilter.fromJson(
       core.Map json_)
       : this(
-          caseSensitive: json_.containsKey('caseSensitive')
-              ? json_['caseSensitive'] as core.bool
-              : null,
+          caseSensitive: json_['caseSensitive'] as core.bool?,
           values: json_.containsKey('values')
               ? (json_['values'] as core.List)
                   .map((value) => value as core.String)
@@ -11475,14 +11261,9 @@ class GoogleAnalyticsAdminV1alphaExpandedDataSetFilterStringFilter {
   GoogleAnalyticsAdminV1alphaExpandedDataSetFilterStringFilter.fromJson(
       core.Map json_)
       : this(
-          caseSensitive: json_.containsKey('caseSensitive')
-              ? json_['caseSensitive'] as core.bool
-              : null,
-          matchType: json_.containsKey('matchType')
-              ? json_['matchType'] as core.String
-              : null,
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
+          caseSensitive: json_['caseSensitive'] as core.bool?,
+          matchType: json_['matchType'] as core.String?,
+          value: json_['value'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -11510,9 +11291,7 @@ class GoogleAnalyticsAdminV1alphaFetchAutomatedGa4ConfigurationOptOutRequest {
   GoogleAnalyticsAdminV1alphaFetchAutomatedGa4ConfigurationOptOutRequest.fromJson(
       core.Map json_)
       : this(
-          property: json_.containsKey('property')
-              ? json_['property'] as core.String
-              : null,
+          property: json_['property'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -11533,8 +11312,7 @@ class GoogleAnalyticsAdminV1alphaFetchAutomatedGa4ConfigurationOptOutResponse {
   GoogleAnalyticsAdminV1alphaFetchAutomatedGa4ConfigurationOptOutResponse.fromJson(
       core.Map json_)
       : this(
-          optOut:
-              json_.containsKey('optOut') ? json_['optOut'] as core.bool : null,
+          optOut: json_['optOut'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -11557,9 +11335,7 @@ class GoogleAnalyticsAdminV1alphaFetchConnectedGa4PropertyResponse {
   GoogleAnalyticsAdminV1alphaFetchConnectedGa4PropertyResponse.fromJson(
       core.Map json_)
       : this(
-          property: json_.containsKey('property')
-              ? json_['property'] as core.String
-              : null,
+          property: json_['property'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -11596,10 +11372,8 @@ class GoogleAnalyticsAdminV1alphaGlobalSiteTag {
 
   GoogleAnalyticsAdminV1alphaGlobalSiteTag.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          snippet: json_.containsKey('snippet')
-              ? json_['snippet'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          snippet: json_['snippet'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -11652,12 +11426,9 @@ class GoogleAnalyticsAdminV1alphaGoogleSignalsSettings {
 
   GoogleAnalyticsAdminV1alphaGoogleSignalsSettings.fromJson(core.Map json_)
       : this(
-          consent: json_.containsKey('consent')
-              ? json_['consent'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
+          consent: json_['consent'] as core.String?,
+          name: json_['name'] as core.String?,
+          state: json_['state'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -11686,9 +11457,7 @@ class GoogleAnalyticsAdminV1alphaGroupingRule {
 
   GoogleAnalyticsAdminV1alphaGroupingRule.fromJson(core.Map json_)
       : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
+          displayName: json_['displayName'] as core.String?,
           expression: json_.containsKey('expression')
               ? GoogleAnalyticsAdminV1alphaChannelGroupFilterExpression
                   .fromJson(json_['expression']
@@ -11767,25 +11536,16 @@ class GoogleAnalyticsAdminV1alphaKeyEvent {
 
   GoogleAnalyticsAdminV1alphaKeyEvent.fromJson(core.Map json_)
       : this(
-          countingMethod: json_.containsKey('countingMethod')
-              ? json_['countingMethod'] as core.String
-              : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          custom:
-              json_.containsKey('custom') ? json_['custom'] as core.bool : null,
+          countingMethod: json_['countingMethod'] as core.String?,
+          createTime: json_['createTime'] as core.String?,
+          custom: json_['custom'] as core.bool?,
           defaultValue: json_.containsKey('defaultValue')
               ? GoogleAnalyticsAdminV1alphaKeyEventDefaultValue.fromJson(
                   json_['defaultValue'] as core.Map<core.String, core.dynamic>)
               : null,
-          deletable: json_.containsKey('deletable')
-              ? json_['deletable'] as core.bool
-              : null,
-          eventName: json_.containsKey('eventName')
-              ? json_['eventName'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          deletable: json_['deletable'] as core.bool?,
+          eventName: json_['eventName'] as core.String?,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -11854,15 +11614,9 @@ class GoogleAnalyticsAdminV1alphaLinkProposalStatusDetails {
   GoogleAnalyticsAdminV1alphaLinkProposalStatusDetails.fromJson(core.Map json_)
       : this(
           linkProposalInitiatingProduct:
-              json_.containsKey('linkProposalInitiatingProduct')
-                  ? json_['linkProposalInitiatingProduct'] as core.String
-                  : null,
-          linkProposalState: json_.containsKey('linkProposalState')
-              ? json_['linkProposalState'] as core.String
-              : null,
-          requestorEmail: json_.containsKey('requestorEmail')
-              ? json_['requestorEmail'] as core.String
-              : null,
+              json_['linkProposalInitiatingProduct'] as core.String?,
+          linkProposalState: json_['linkProposalState'] as core.String?,
+          requestorEmail: json_['requestorEmail'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -11899,9 +11653,7 @@ class GoogleAnalyticsAdminV1alphaListAccessBindingsResponse {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -11935,9 +11687,7 @@ class GoogleAnalyticsAdminV1alphaListAccountSummariesResponse {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -11969,9 +11719,7 @@ class GoogleAnalyticsAdminV1alphaListAccountsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12004,9 +11752,7 @@ class GoogleAnalyticsAdminV1alphaListAdSenseLinksResponse {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12038,9 +11784,7 @@ class GoogleAnalyticsAdminV1alphaListAudiencesResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12073,9 +11817,7 @@ class GoogleAnalyticsAdminV1alphaListBigQueryLinksResponse {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12109,9 +11851,7 @@ class GoogleAnalyticsAdminV1alphaListCalculatedMetricsResponse {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12146,9 +11886,7 @@ class GoogleAnalyticsAdminV1alphaListChannelGroupsResponse {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12172,9 +11910,7 @@ class GoogleAnalyticsAdminV1alphaListConnectedSiteTagsRequest {
   GoogleAnalyticsAdminV1alphaListConnectedSiteTagsRequest.fromJson(
       core.Map json_)
       : this(
-          property: json_.containsKey('property')
-              ? json_['property'] as core.String
-              : null,
+          property: json_['property'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12235,9 +11971,7 @@ class GoogleAnalyticsAdminV1alphaListConversionEventsResponse {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12271,9 +12005,7 @@ class GoogleAnalyticsAdminV1alphaListCustomDimensionsResponse {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12306,9 +12038,7 @@ class GoogleAnalyticsAdminV1alphaListCustomMetricsResponse {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12341,9 +12071,7 @@ class GoogleAnalyticsAdminV1alphaListDataStreamsResponse {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12380,9 +12108,7 @@ class GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinkProposalsRespo
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12421,9 +12147,7 @@ class GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinksResponse {
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12460,9 +12184,7 @@ class GoogleAnalyticsAdminV1alphaListEventCreateRulesResponse {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12498,9 +12220,7 @@ class GoogleAnalyticsAdminV1alphaListExpandedDataSetsResponse {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12537,9 +12257,7 @@ class GoogleAnalyticsAdminV1alphaListFirebaseLinksResponse {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12572,9 +12290,7 @@ class GoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12606,9 +12322,7 @@ class GoogleAnalyticsAdminV1alphaListKeyEventsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12645,9 +12359,7 @@ class GoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse {
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12675,9 +12387,7 @@ class GoogleAnalyticsAdminV1alphaListPropertiesResponse {
 
   GoogleAnalyticsAdminV1alphaListPropertiesResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           properties: json_.containsKey('properties')
               ? (json_['properties'] as core.List)
                   .map((value) => GoogleAnalyticsAdminV1alphaProperty.fromJson(
@@ -12711,9 +12421,7 @@ class GoogleAnalyticsAdminV1alphaListRollupPropertySourceLinksResponse {
   GoogleAnalyticsAdminV1alphaListRollupPropertySourceLinksResponse.fromJson(
       core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           rollupPropertySourceLinks:
               json_.containsKey('rollupPropertySourceLinks')
                   ? (json_['rollupPropertySourceLinks'] as core.List)
@@ -12755,9 +12463,7 @@ class GoogleAnalyticsAdminV1alphaListSKAdNetworkConversionValueSchemasResponse {
   GoogleAnalyticsAdminV1alphaListSKAdNetworkConversionValueSchemasResponse.fromJson(
       core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           skadnetworkConversionValueSchemas: json_
                   .containsKey('skadnetworkConversionValueSchemas')
               ? (json_['skadnetworkConversionValueSchemas'] as core.List)
@@ -12795,9 +12501,7 @@ class GoogleAnalyticsAdminV1alphaListSearchAds360LinksResponse {
   GoogleAnalyticsAdminV1alphaListSearchAds360LinksResponse.fromJson(
       core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           searchAds360Links: json_.containsKey('searchAds360Links')
               ? (json_['searchAds360Links'] as core.List)
                   .map((value) =>
@@ -12832,9 +12536,7 @@ class GoogleAnalyticsAdminV1alphaListSubpropertyEventFiltersResponse {
   GoogleAnalyticsAdminV1alphaListSubpropertyEventFiltersResponse.fromJson(
       core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           subpropertyEventFilters: json_.containsKey('subpropertyEventFilters')
               ? (json_['subpropertyEventFilters'] as core.List)
                   .map((value) =>
@@ -12910,16 +12612,10 @@ class GoogleAnalyticsAdminV1alphaMatchingCondition {
 
   GoogleAnalyticsAdminV1alphaMatchingCondition.fromJson(core.Map json_)
       : this(
-          comparisonType: json_.containsKey('comparisonType')
-              ? json_['comparisonType'] as core.String
-              : null,
-          field:
-              json_.containsKey('field') ? json_['field'] as core.String : null,
-          negated: json_.containsKey('negated')
-              ? json_['negated'] as core.bool
-              : null,
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
+          comparisonType: json_['comparisonType'] as core.String?,
+          field: json_['field'] as core.String?,
+          negated: json_['negated'] as core.bool?,
+          value: json_['value'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12966,12 +12662,8 @@ class GoogleAnalyticsAdminV1alphaParameterMutation {
 
   GoogleAnalyticsAdminV1alphaParameterMutation.fromJson(core.Map json_)
       : this(
-          parameter: json_.containsKey('parameter')
-              ? json_['parameter'] as core.String
-              : null,
-          parameterValue: json_.containsKey('parameterValue')
-              ? json_['parameterValue'] as core.String
-              : null,
+          parameter: json_['parameter'] as core.String?,
+          parameterValue: json_['parameterValue'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -13015,9 +12707,7 @@ class GoogleAnalyticsAdminV1alphaPostbackWindow {
                   .toList()
               : null,
           postbackWindowSettingsEnabled:
-              json_.containsKey('postbackWindowSettingsEnabled')
-                  ? json_['postbackWindowSettingsEnabled'] as core.bool
-                  : null,
+              json_['postbackWindowSettingsEnabled'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -13055,9 +12745,7 @@ class GoogleAnalyticsAdminV1alphaProvisionAccountTicketRequest {
               ? GoogleAnalyticsAdminV1alphaAccount.fromJson(
                   json_['account'] as core.Map<core.String, core.dynamic>)
               : null,
-          redirectUri: json_.containsKey('redirectUri')
-              ? json_['redirectUri'] as core.String
-              : null,
+          redirectUri: json_['redirectUri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -13099,10 +12787,8 @@ class GoogleAnalyticsAdminV1alphaRollupPropertySourceLink {
 
   GoogleAnalyticsAdminV1alphaRollupPropertySourceLink.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          sourceProperty: json_.containsKey('sourceProperty')
-              ? json_['sourceProperty'] as core.String
-              : null,
+          name: json_['name'] as core.String?,
+          sourceProperty: json_['sourceProperty'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -13244,14 +12930,9 @@ class GoogleAnalyticsAdminV1alphaRunAccessReportRequest {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          expandGroups: json_.containsKey('expandGroups')
-              ? json_['expandGroups'] as core.bool
-              : null,
-          includeAllUsers: json_.containsKey('includeAllUsers')
-              ? json_['includeAllUsers'] as core.bool
-              : null,
-          limit:
-              json_.containsKey('limit') ? json_['limit'] as core.String : null,
+          expandGroups: json_['expandGroups'] as core.bool?,
+          includeAllUsers: json_['includeAllUsers'] as core.bool?,
+          limit: json_['limit'] as core.String?,
           metricFilter: json_.containsKey('metricFilter')
               ? GoogleAnalyticsAdminV1alphaAccessFilterExpression.fromJson(
                   json_['metricFilter'] as core.Map<core.String, core.dynamic>)
@@ -13263,9 +12944,7 @@ class GoogleAnalyticsAdminV1alphaRunAccessReportRequest {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          offset: json_.containsKey('offset')
-              ? json_['offset'] as core.String
-              : null,
+          offset: json_['offset'] as core.String?,
           orderBys: json_.containsKey('orderBys')
               ? (json_['orderBys'] as core.List)
                   .map((value) =>
@@ -13273,12 +12952,8 @@ class GoogleAnalyticsAdminV1alphaRunAccessReportRequest {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          returnEntityQuota: json_.containsKey('returnEntityQuota')
-              ? json_['returnEntityQuota'] as core.bool
-              : null,
-          timeZone: json_.containsKey('timeZone')
-              ? json_['timeZone'] as core.String
-              : null,
+          returnEntityQuota: json_['returnEntityQuota'] as core.bool?,
+          timeZone: json_['timeZone'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -13359,9 +13034,7 @@ class GoogleAnalyticsAdminV1alphaRunAccessReportResponse {
               ? GoogleAnalyticsAdminV1alphaAccessQuota.fromJson(
                   json_['quota'] as core.Map<core.String, core.dynamic>)
               : null,
-          rowCount: json_.containsKey('rowCount')
-              ? json_['rowCount'] as core.int
-              : null,
+          rowCount: json_['rowCount'] as core.int?,
           rows: json_.containsKey('rows')
               ? (json_['rows'] as core.List)
                   .map((value) => GoogleAnalyticsAdminV1alphaAccessRow.fromJson(
@@ -13436,10 +13109,8 @@ class GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema {
   GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema.fromJson(
       core.Map json_)
       : this(
-          applyConversionValues: json_.containsKey('applyConversionValues')
-              ? json_['applyConversionValues'] as core.bool
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          applyConversionValues: json_['applyConversionValues'] as core.bool?,
+          name: json_['name'] as core.String?,
           postbackWindowOne: json_.containsKey('postbackWindowOne')
               ? GoogleAnalyticsAdminV1alphaPostbackWindow.fromJson(
                   json_['postbackWindowOne']
@@ -13533,26 +13204,15 @@ class GoogleAnalyticsAdminV1alphaSearchAds360Link {
   GoogleAnalyticsAdminV1alphaSearchAds360Link.fromJson(core.Map json_)
       : this(
           adsPersonalizationEnabled:
-              json_.containsKey('adsPersonalizationEnabled')
-                  ? json_['adsPersonalizationEnabled'] as core.bool
-                  : null,
-          advertiserDisplayName: json_.containsKey('advertiserDisplayName')
-              ? json_['advertiserDisplayName'] as core.String
-              : null,
-          advertiserId: json_.containsKey('advertiserId')
-              ? json_['advertiserId'] as core.String
-              : null,
+              json_['adsPersonalizationEnabled'] as core.bool?,
+          advertiserDisplayName: json_['advertiserDisplayName'] as core.String?,
+          advertiserId: json_['advertiserId'] as core.String?,
           campaignDataSharingEnabled:
-              json_.containsKey('campaignDataSharingEnabled')
-                  ? json_['campaignDataSharingEnabled'] as core.bool
-                  : null,
-          costDataSharingEnabled: json_.containsKey('costDataSharingEnabled')
-              ? json_['costDataSharingEnabled'] as core.bool
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          siteStatsSharingEnabled: json_.containsKey('siteStatsSharingEnabled')
-              ? json_['siteStatsSharingEnabled'] as core.bool
-              : null,
+              json_['campaignDataSharingEnabled'] as core.bool?,
+          costDataSharingEnabled: json_['costDataSharingEnabled'] as core.bool?,
+          name: json_['name'] as core.String?,
+          siteStatsSharingEnabled:
+              json_['siteStatsSharingEnabled'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -13650,21 +13310,11 @@ class GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          earliestChangeTime: json_.containsKey('earliestChangeTime')
-              ? json_['earliestChangeTime'] as core.String
-              : null,
-          latestChangeTime: json_.containsKey('latestChangeTime')
-              ? json_['latestChangeTime'] as core.String
-              : null,
-          pageSize: json_.containsKey('pageSize')
-              ? json_['pageSize'] as core.int
-              : null,
-          pageToken: json_.containsKey('pageToken')
-              ? json_['pageToken'] as core.String
-              : null,
-          property: json_.containsKey('property')
-              ? json_['property'] as core.String
-              : null,
+          earliestChangeTime: json_['earliestChangeTime'] as core.String?,
+          latestChangeTime: json_['latestChangeTime'] as core.String?,
+          pageSize: json_['pageSize'] as core.int?,
+          pageToken: json_['pageToken'] as core.String?,
+          property: json_['property'] as core.String?,
           resourceType: json_.containsKey('resourceType')
               ? (json_['resourceType'] as core.List)
                   .map((value) => value as core.String)
@@ -13710,9 +13360,7 @@ class GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsResponse {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -13744,11 +13392,8 @@ class GoogleAnalyticsAdminV1alphaSetAutomatedGa4ConfigurationOptOutRequest {
   GoogleAnalyticsAdminV1alphaSetAutomatedGa4ConfigurationOptOutRequest.fromJson(
       core.Map json_)
       : this(
-          optOut:
-              json_.containsKey('optOut') ? json_['optOut'] as core.bool : null,
-          property: json_.containsKey('property')
-              ? json_['property'] as core.String
-              : null,
+          optOut: json_['optOut'] as core.bool?,
+          property: json_['property'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -13793,9 +13438,7 @@ class GoogleAnalyticsAdminV1alphaSubpropertyEventFilter {
 
   GoogleAnalyticsAdminV1alphaSubpropertyEventFilter.fromJson(core.Map json_)
       : this(
-          applyToProperty: json_.containsKey('applyToProperty')
-              ? json_['applyToProperty'] as core.String
-              : null,
+          applyToProperty: json_['applyToProperty'] as core.String?,
           filterClauses: json_.containsKey('filterClauses')
               ? (json_['filterClauses'] as core.List)
                   .map((value) =>
@@ -13804,7 +13447,7 @@ class GoogleAnalyticsAdminV1alphaSubpropertyEventFilter {
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -13845,9 +13488,7 @@ class GoogleAnalyticsAdminV1alphaSubpropertyEventFilterClause {
   GoogleAnalyticsAdminV1alphaSubpropertyEventFilterClause.fromJson(
       core.Map json_)
       : this(
-          filterClauseType: json_.containsKey('filterClauseType')
-              ? json_['filterClauseType'] as core.String
-              : null,
+          filterClauseType: json_['filterClauseType'] as core.String?,
           filterExpression: json_.containsKey('filterExpression')
               ? GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpression
                   .fromJson(json_['filterExpression']
@@ -13884,12 +13525,8 @@ class GoogleAnalyticsAdminV1alphaSubpropertyEventFilterCondition {
   GoogleAnalyticsAdminV1alphaSubpropertyEventFilterCondition.fromJson(
       core.Map json_)
       : this(
-          fieldName: json_.containsKey('fieldName')
-              ? json_['fieldName'] as core.String
-              : null,
-          nullFilter: json_.containsKey('nullFilter')
-              ? json_['nullFilter'] as core.bool
-              : null,
+          fieldName: json_['fieldName'] as core.String?,
+          nullFilter: json_['nullFilter'] as core.bool?,
           stringFilter: json_.containsKey('stringFilter')
               ? GoogleAnalyticsAdminV1alphaSubpropertyEventFilterConditionStringFilter
                   .fromJson(json_['stringFilter']
@@ -13941,14 +13578,9 @@ class GoogleAnalyticsAdminV1alphaSubpropertyEventFilterConditionStringFilter {
   GoogleAnalyticsAdminV1alphaSubpropertyEventFilterConditionStringFilter.fromJson(
       core.Map json_)
       : this(
-          caseSensitive: json_.containsKey('caseSensitive')
-              ? json_['caseSensitive'] as core.bool
-              : null,
-          matchType: json_.containsKey('matchType')
-              ? json_['matchType'] as core.String
-              : null,
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
+          caseSensitive: json_['caseSensitive'] as core.bool?,
+          matchType: json_['matchType'] as core.String?,
+          value: json_['value'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

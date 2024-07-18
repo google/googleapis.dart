@@ -932,26 +932,20 @@ class AggregateBucket {
 
   AggregateBucket.fromJson(core.Map json_)
       : this(
-          activity: json_.containsKey('activity')
-              ? json_['activity'] as core.int
-              : null,
+          activity: json_['activity'] as core.int?,
           dataset: json_.containsKey('dataset')
               ? (json_['dataset'] as core.List)
                   .map((value) => Dataset.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          endTimeMillis: json_.containsKey('endTimeMillis')
-              ? json_['endTimeMillis'] as core.String
-              : null,
+          endTimeMillis: json_['endTimeMillis'] as core.String?,
           session: json_.containsKey('session')
               ? Session.fromJson(
                   json_['session'] as core.Map<core.String, core.dynamic>)
               : null,
-          startTimeMillis: json_.containsKey('startTimeMillis')
-              ? json_['startTimeMillis'] as core.String
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          startTimeMillis: json_['startTimeMillis'] as core.String?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -992,12 +986,8 @@ class AggregateBy {
 
   AggregateBy.fromJson(core.Map json_)
       : this(
-          dataSourceId: json_.containsKey('dataSourceId')
-              ? json_['dataSourceId'] as core.String
-              : null,
-          dataTypeName: json_.containsKey('dataTypeName')
-              ? json_['dataTypeName'] as core.String
-              : null,
+          dataSourceId: json_['dataSourceId'] as core.String?,
+          dataTypeName: json_['dataTypeName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1101,18 +1091,14 @@ class AggregateRequest {
               ? BucketByTime.fromJson(
                   json_['bucketByTime'] as core.Map<core.String, core.dynamic>)
               : null,
-          endTimeMillis: json_.containsKey('endTimeMillis')
-              ? json_['endTimeMillis'] as core.String
-              : null,
+          endTimeMillis: json_['endTimeMillis'] as core.String?,
           filteredDataQualityStandard:
               json_.containsKey('filteredDataQualityStandard')
                   ? (json_['filteredDataQualityStandard'] as core.List)
                       .map((value) => value as core.String)
                       .toList()
                   : null,
-          startTimeMillis: json_.containsKey('startTimeMillis')
-              ? json_['startTimeMillis'] as core.String
-              : null,
+          startTimeMillis: json_['startTimeMillis'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1188,16 +1174,10 @@ class Application {
 
   Application.fromJson(core.Map json_)
       : this(
-          detailsUrl: json_.containsKey('detailsUrl')
-              ? json_['detailsUrl'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          packageName: json_.containsKey('packageName')
-              ? json_['packageName'] as core.String
-              : null,
-          version: json_.containsKey('version')
-              ? json_['version'] as core.String
-              : null,
+          detailsUrl: json_['detailsUrl'] as core.String?,
+          name: json_['name'] as core.String?,
+          packageName: json_['packageName'] as core.String?,
+          version: json_['version'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1225,12 +1205,8 @@ class BucketByActivity {
 
   BucketByActivity.fromJson(core.Map json_)
       : this(
-          activityDataSourceId: json_.containsKey('activityDataSourceId')
-              ? json_['activityDataSourceId'] as core.String
-              : null,
-          minDurationMillis: json_.containsKey('minDurationMillis')
-              ? json_['minDurationMillis'] as core.String
-              : null,
+          activityDataSourceId: json_['activityDataSourceId'] as core.String?,
+          minDurationMillis: json_['minDurationMillis'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1251,9 +1227,7 @@ class BucketBySession {
 
   BucketBySession.fromJson(core.Map json_)
       : this(
-          minDurationMillis: json_.containsKey('minDurationMillis')
-              ? json_['minDurationMillis'] as core.String
-              : null,
+          minDurationMillis: json_['minDurationMillis'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1277,9 +1251,7 @@ class BucketByTime {
 
   BucketByTime.fromJson(core.Map json_)
       : this(
-          durationMillis: json_.containsKey('durationMillis')
-              ? json_['durationMillis'] as core.String
-              : null,
+          durationMillis: json_['durationMillis'] as core.String?,
           period: json_.containsKey('period')
               ? BucketByTimePeriod.fromJson(
                   json_['period'] as core.Map<core.String, core.dynamic>)
@@ -1312,11 +1284,9 @@ class BucketByTimePeriod {
 
   BucketByTimePeriod.fromJson(core.Map json_)
       : this(
-          timeZoneId: json_.containsKey('timeZoneId')
-              ? json_['timeZoneId'] as core.String
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
-          value: json_.containsKey('value') ? json_['value'] as core.int : null,
+          timeZoneId: json_['timeZoneId'] as core.String?,
+          type: json_['type'] as core.String?,
+          value: json_['value'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1395,27 +1365,13 @@ class DataPoint {
 
   DataPoint.fromJson(core.Map json_)
       : this(
-          computationTimeMillis: json_.containsKey('computationTimeMillis')
-              ? json_['computationTimeMillis'] as core.String
-              : null,
-          dataTypeName: json_.containsKey('dataTypeName')
-              ? json_['dataTypeName'] as core.String
-              : null,
-          endTimeNanos: json_.containsKey('endTimeNanos')
-              ? json_['endTimeNanos'] as core.String
-              : null,
-          modifiedTimeMillis: json_.containsKey('modifiedTimeMillis')
-              ? json_['modifiedTimeMillis'] as core.String
-              : null,
-          originDataSourceId: json_.containsKey('originDataSourceId')
-              ? json_['originDataSourceId'] as core.String
-              : null,
-          rawTimestampNanos: json_.containsKey('rawTimestampNanos')
-              ? json_['rawTimestampNanos'] as core.String
-              : null,
-          startTimeNanos: json_.containsKey('startTimeNanos')
-              ? json_['startTimeNanos'] as core.String
-              : null,
+          computationTimeMillis: json_['computationTimeMillis'] as core.String?,
+          dataTypeName: json_['dataTypeName'] as core.String?,
+          endTimeNanos: json_['endTimeNanos'] as core.String?,
+          modifiedTimeMillis: json_['modifiedTimeMillis'] as core.String?,
+          originDataSourceId: json_['originDataSourceId'] as core.String?,
+          rawTimestampNanos: json_['rawTimestampNanos'] as core.String?,
+          startTimeNanos: json_['startTimeNanos'] as core.String?,
           value: json_.containsKey('value')
               ? (json_['value'] as core.List)
                   .map((value) => Value.fromJson(
@@ -1547,12 +1503,8 @@ class DataSource {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          dataStreamId: json_.containsKey('dataStreamId')
-              ? json_['dataStreamId'] as core.String
-              : null,
-          dataStreamName: json_.containsKey('dataStreamName')
-              ? json_['dataStreamName'] as core.String
-              : null,
+          dataStreamId: json_['dataStreamId'] as core.String?,
+          dataStreamName: json_['dataStreamName'] as core.String?,
           dataType: json_.containsKey('dataType')
               ? DataType.fromJson(
                   json_['dataType'] as core.Map<core.String, core.dynamic>)
@@ -1561,8 +1513,8 @@ class DataSource {
               ? Device.fromJson(
                   json_['device'] as core.Map<core.String, core.dynamic>)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          name: json_['name'] as core.String?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1601,7 +1553,7 @@ class DataType {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1643,13 +1595,9 @@ class DataTypeField {
 
   DataTypeField.fromJson(core.Map json_)
       : this(
-          format: json_.containsKey('format')
-              ? json_['format'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          optional: json_.containsKey('optional')
-              ? json_['optional'] as core.bool
-              : null,
+          format: json_['format'] as core.String?,
+          name: json_['name'] as core.String?,
+          optional: json_['optional'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1708,18 +1656,10 @@ class Dataset {
 
   Dataset.fromJson(core.Map json_)
       : this(
-          dataSourceId: json_.containsKey('dataSourceId')
-              ? json_['dataSourceId'] as core.String
-              : null,
-          maxEndTimeNs: json_.containsKey('maxEndTimeNs')
-              ? json_['maxEndTimeNs'] as core.String
-              : null,
-          minStartTimeNs: json_.containsKey('minStartTimeNs')
-              ? json_['minStartTimeNs'] as core.String
-              : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          dataSourceId: json_['dataSourceId'] as core.String?,
+          maxEndTimeNs: json_['maxEndTimeNs'] as core.String?,
+          minStartTimeNs: json_['minStartTimeNs'] as core.String?,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           point: json_.containsKey('point')
               ? (json_['point'] as core.List)
                   .map((value) => DataPoint.fromJson(
@@ -1788,16 +1728,11 @@ class Device {
 
   Device.fromJson(core.Map json_)
       : this(
-          manufacturer: json_.containsKey('manufacturer')
-              ? json_['manufacturer'] as core.String
-              : null,
-          model:
-              json_.containsKey('model') ? json_['model'] as core.String : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
-          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
-          version: json_.containsKey('version')
-              ? json_['version'] as core.String
-              : null,
+          manufacturer: json_['manufacturer'] as core.String?,
+          model: json_['model'] as core.String?,
+          type: json_['type'] as core.String?,
+          uid: json_['uid'] as core.String?,
+          version: json_['version'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1836,9 +1771,7 @@ class ListDataPointChangesResponse {
 
   ListDataPointChangesResponse.fromJson(core.Map json_)
       : this(
-          dataSourceId: json_.containsKey('dataSourceId')
-              ? json_['dataSourceId'] as core.String
-              : null,
+          dataSourceId: json_['dataSourceId'] as core.String?,
           deletedDataPoint: json_.containsKey('deletedDataPoint')
               ? (json_['deletedDataPoint'] as core.List)
                   .map((value) => DataPoint.fromJson(
@@ -1851,9 +1784,7 @@ class ListDataPointChangesResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1926,12 +1857,8 @@ class ListSessionsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          hasMoreData: json_.containsKey('hasMoreData')
-              ? json_['hasMoreData'] as core.bool
-              : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          hasMoreData: json_['hasMoreData'] as core.bool?,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           session: json_.containsKey('session')
               ? (json_['session'] as core.List)
                   .map((value) => Session.fromJson(
@@ -1962,9 +1889,7 @@ class MapValue {
 
   MapValue.fromJson(core.Map json_)
       : this(
-          fpVal: json_.containsKey('fpVal')
-              ? (json_['fpVal'] as core.num).toDouble()
-              : null,
+          fpVal: (json_['fpVal'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2022,30 +1947,18 @@ class Session {
 
   Session.fromJson(core.Map json_)
       : this(
-          activeTimeMillis: json_.containsKey('activeTimeMillis')
-              ? json_['activeTimeMillis'] as core.String
-              : null,
-          activityType: json_.containsKey('activityType')
-              ? json_['activityType'] as core.int
-              : null,
+          activeTimeMillis: json_['activeTimeMillis'] as core.String?,
+          activityType: json_['activityType'] as core.int?,
           application: json_.containsKey('application')
               ? Application.fromJson(
                   json_['application'] as core.Map<core.String, core.dynamic>)
               : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          endTimeMillis: json_.containsKey('endTimeMillis')
-              ? json_['endTimeMillis'] as core.String
-              : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          modifiedTimeMillis: json_.containsKey('modifiedTimeMillis')
-              ? json_['modifiedTimeMillis'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          startTimeMillis: json_.containsKey('startTimeMillis')
-              ? json_['startTimeMillis'] as core.String
-              : null,
+          description: json_['description'] as core.String?,
+          endTimeMillis: json_['endTimeMillis'] as core.String?,
+          id: json_['id'] as core.String?,
+          modifiedTimeMillis: json_['modifiedTimeMillis'] as core.String?,
+          name: json_['name'] as core.String?,
+          startTimeMillis: json_['startTimeMillis'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2101,20 +2014,15 @@ class Value {
 
   Value.fromJson(core.Map json_)
       : this(
-          fpVal: json_.containsKey('fpVal')
-              ? (json_['fpVal'] as core.num).toDouble()
-              : null,
-          intVal:
-              json_.containsKey('intVal') ? json_['intVal'] as core.int : null,
+          fpVal: (json_['fpVal'] as core.num?)?.toDouble(),
+          intVal: json_['intVal'] as core.int?,
           mapVal: json_.containsKey('mapVal')
               ? (json_['mapVal'] as core.List)
                   .map((value) => ValueMapValEntry.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          stringVal: json_.containsKey('stringVal')
-              ? json_['stringVal'] as core.String
-              : null,
+          stringVal: json_['stringVal'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2136,7 +2044,7 @@ class ValueMapValEntry {
 
   ValueMapValEntry.fromJson(core.Map json_)
       : this(
-          key: json_.containsKey('key') ? json_['key'] as core.String : null,
+          key: json_['key'] as core.String?,
           value: json_.containsKey('value')
               ? MapValue.fromJson(
                   json_['value'] as core.Map<core.String, core.dynamic>)

@@ -3089,13 +3089,9 @@ class AboutDriveThemes {
 
   AboutDriveThemes.fromJson(core.Map json_)
       : this(
-          backgroundImageLink: json_.containsKey('backgroundImageLink')
-              ? json_['backgroundImageLink'] as core.String
-              : null,
-          colorRgb: json_.containsKey('colorRgb')
-              ? json_['colorRgb'] as core.String
-              : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          backgroundImageLink: json_['backgroundImageLink'] as core.String?,
+          colorRgb: json_['colorRgb'] as core.String?,
+          id: json_['id'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3141,16 +3137,10 @@ class AboutStorageQuota {
 
   AboutStorageQuota.fromJson(core.Map json_)
       : this(
-          limit:
-              json_.containsKey('limit') ? json_['limit'] as core.String : null,
-          usage:
-              json_.containsKey('usage') ? json_['usage'] as core.String : null,
-          usageInDrive: json_.containsKey('usageInDrive')
-              ? json_['usageInDrive'] as core.String
-              : null,
-          usageInDriveTrash: json_.containsKey('usageInDriveTrash')
-              ? json_['usageInDriveTrash'] as core.String
-              : null,
+          limit: json_['limit'] as core.String?,
+          usage: json_['usage'] as core.String?,
+          usageInDrive: json_['usageInDrive'] as core.String?,
+          usageInDriveTrash: json_['usageInDriveTrash'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3188,13 +3178,9 @@ class AboutTeamDriveThemes {
 
   AboutTeamDriveThemes.fromJson(core.Map json_)
       : this(
-          backgroundImageLink: json_.containsKey('backgroundImageLink')
-              ? json_['backgroundImageLink'] as core.String
-              : null,
-          colorRgb: json_.containsKey('colorRgb')
-              ? json_['colorRgb'] as core.String
-              : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          backgroundImageLink: json_['backgroundImageLink'] as core.String?,
+          colorRgb: json_['colorRgb'] as core.String?,
+          id: json_['id'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3277,15 +3263,9 @@ class About {
 
   About.fromJson(core.Map json_)
       : this(
-          appInstalled: json_.containsKey('appInstalled')
-              ? json_['appInstalled'] as core.bool
-              : null,
-          canCreateDrives: json_.containsKey('canCreateDrives')
-              ? json_['canCreateDrives'] as core.bool
-              : null,
-          canCreateTeamDrives: json_.containsKey('canCreateTeamDrives')
-              ? json_['canCreateTeamDrives'] as core.bool
-              : null,
+          appInstalled: json_['appInstalled'] as core.bool?,
+          canCreateDrives: json_['canCreateDrives'] as core.bool?,
+          canCreateTeamDrives: json_['canCreateTeamDrives'] as core.bool?,
           driveThemes: json_.containsKey('driveThemes')
               ? (json_['driveThemes'] as core.List)
                   .map((value) => AboutDriveThemes.fromJson(
@@ -3319,7 +3299,7 @@ class About {
                   ),
                 )
               : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          kind: json_['kind'] as core.String?,
           maxImportSizes: json_.containsKey('maxImportSizes')
               ? (json_['maxImportSizes'] as core.Map<core.String, core.dynamic>)
                   .map(
@@ -3329,9 +3309,7 @@ class About {
                   ),
                 )
               : null,
-          maxUploadSize: json_.containsKey('maxUploadSize')
-              ? json_['maxUploadSize'] as core.String
-              : null,
+          maxUploadSize: json_['maxUploadSize'] as core.String?,
           storageQuota: json_.containsKey('storageQuota')
               ? AboutStorageQuota.fromJson(
                   json_['storageQuota'] as core.Map<core.String, core.dynamic>)
@@ -3490,39 +3468,24 @@ class App {
 
   App.fromJson(core.Map json_)
       : this(
-          authorized: json_.containsKey('authorized')
-              ? json_['authorized'] as core.bool
-              : null,
-          createInFolderTemplate: json_.containsKey('createInFolderTemplate')
-              ? json_['createInFolderTemplate'] as core.String
-              : null,
-          createUrl: json_.containsKey('createUrl')
-              ? json_['createUrl'] as core.String
-              : null,
-          hasDriveWideScope: json_.containsKey('hasDriveWideScope')
-              ? json_['hasDriveWideScope'] as core.bool
-              : null,
+          authorized: json_['authorized'] as core.bool?,
+          createInFolderTemplate:
+              json_['createInFolderTemplate'] as core.String?,
+          createUrl: json_['createUrl'] as core.String?,
+          hasDriveWideScope: json_['hasDriveWideScope'] as core.bool?,
           icons: json_.containsKey('icons')
               ? (json_['icons'] as core.List)
                   .map((value) => AppIcons.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          installed: json_.containsKey('installed')
-              ? json_['installed'] as core.bool
-              : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          longDescription: json_.containsKey('longDescription')
-              ? json_['longDescription'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          objectType: json_.containsKey('objectType')
-              ? json_['objectType'] as core.String
-              : null,
-          openUrlTemplate: json_.containsKey('openUrlTemplate')
-              ? json_['openUrlTemplate'] as core.String
-              : null,
+          id: json_['id'] as core.String?,
+          installed: json_['installed'] as core.bool?,
+          kind: json_['kind'] as core.String?,
+          longDescription: json_['longDescription'] as core.String?,
+          name: json_['name'] as core.String?,
+          objectType: json_['objectType'] as core.String?,
+          openUrlTemplate: json_['openUrlTemplate'] as core.String?,
           primaryFileExtensions: json_.containsKey('primaryFileExtensions')
               ? (json_['primaryFileExtensions'] as core.List)
                   .map((value) => value as core.String)
@@ -3533,12 +3496,8 @@ class App {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          productId: json_.containsKey('productId')
-              ? json_['productId'] as core.String
-              : null,
-          productUrl: json_.containsKey('productUrl')
-              ? json_['productUrl'] as core.String
-              : null,
+          productId: json_['productId'] as core.String?,
+          productUrl: json_['productUrl'] as core.String?,
           secondaryFileExtensions: json_.containsKey('secondaryFileExtensions')
               ? (json_['secondaryFileExtensions'] as core.List)
                   .map((value) => value as core.String)
@@ -3549,24 +3508,12 @@ class App {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          shortDescription: json_.containsKey('shortDescription')
-              ? json_['shortDescription'] as core.String
-              : null,
-          supportsCreate: json_.containsKey('supportsCreate')
-              ? json_['supportsCreate'] as core.bool
-              : null,
-          supportsImport: json_.containsKey('supportsImport')
-              ? json_['supportsImport'] as core.bool
-              : null,
-          supportsMultiOpen: json_.containsKey('supportsMultiOpen')
-              ? json_['supportsMultiOpen'] as core.bool
-              : null,
-          supportsOfflineCreate: json_.containsKey('supportsOfflineCreate')
-              ? json_['supportsOfflineCreate'] as core.bool
-              : null,
-          useByDefault: json_.containsKey('useByDefault')
-              ? json_['useByDefault'] as core.bool
-              : null,
+          shortDescription: json_['shortDescription'] as core.String?,
+          supportsCreate: json_['supportsCreate'] as core.bool?,
+          supportsImport: json_['supportsImport'] as core.bool?,
+          supportsMultiOpen: json_['supportsMultiOpen'] as core.bool?,
+          supportsOfflineCreate: json_['supportsOfflineCreate'] as core.bool?,
+          useByDefault: json_['useByDefault'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3626,13 +3573,9 @@ class AppIcons {
 
   AppIcons.fromJson(core.Map json_)
       : this(
-          category: json_.containsKey('category')
-              ? json_['category'] as core.String
-              : null,
-          iconUrl: json_.containsKey('iconUrl')
-              ? json_['iconUrl'] as core.String
-              : null,
-          size: json_.containsKey('size') ? json_['size'] as core.int : null,
+          category: json_['category'] as core.String?,
+          iconUrl: json_['iconUrl'] as core.String?,
+          size: json_['size'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3683,10 +3626,8 @@ class AppList {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          selfLink: json_.containsKey('selfLink')
-              ? json_['selfLink'] as core.String
-              : null,
+          kind: json_['kind'] as core.String?,
+          selfLink: json_['selfLink'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3768,38 +3709,28 @@ class Change {
 
   Change.fromJson(core.Map json_)
       : this(
-          changeType: json_.containsKey('changeType')
-              ? json_['changeType'] as core.String
-              : null,
+          changeType: json_['changeType'] as core.String?,
           drive: json_.containsKey('drive')
               ? Drive.fromJson(
                   json_['drive'] as core.Map<core.String, core.dynamic>)
               : null,
-          driveId: json_.containsKey('driveId')
-              ? json_['driveId'] as core.String
-              : null,
+          driveId: json_['driveId'] as core.String?,
           file: json_.containsKey('file')
               ? File.fromJson(
                   json_['file'] as core.Map<core.String, core.dynamic>)
               : null,
-          fileId: json_.containsKey('fileId')
-              ? json_['fileId'] as core.String
-              : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          removed: json_.containsKey('removed')
-              ? json_['removed'] as core.bool
-              : null,
+          fileId: json_['fileId'] as core.String?,
+          kind: json_['kind'] as core.String?,
+          removed: json_['removed'] as core.bool?,
           teamDrive: json_.containsKey('teamDrive')
               ? TeamDrive.fromJson(
                   json_['teamDrive'] as core.Map<core.String, core.dynamic>)
               : null,
-          teamDriveId: json_.containsKey('teamDriveId')
-              ? json_['teamDriveId'] as core.String
-              : null,
+          teamDriveId: json_['teamDriveId'] as core.String?,
           time: json_.containsKey('time')
               ? core.DateTime.parse(json_['time'] as core.String)
               : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3857,13 +3788,9 @@ class ChangeList {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          newStartPageToken: json_.containsKey('newStartPageToken')
-              ? json_['newStartPageToken'] as core.String
-              : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          kind: json_['kind'] as core.String?,
+          newStartPageToken: json_['newStartPageToken'] as core.String?,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3898,11 +3825,8 @@ class CommentQuotedFileContent {
 
   CommentQuotedFileContent.fromJson(core.Map json_)
       : this(
-          mimeType: json_.containsKey('mimeType')
-              ? json_['mimeType'] as core.String
-              : null,
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
+          mimeType: json_['mimeType'] as core.String?,
+          value: json_['value'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4000,27 +3924,19 @@ class Comment {
 
   Comment.fromJson(core.Map json_)
       : this(
-          anchor: json_.containsKey('anchor')
-              ? json_['anchor'] as core.String
-              : null,
+          anchor: json_['anchor'] as core.String?,
           author: json_.containsKey('author')
               ? User.fromJson(
                   json_['author'] as core.Map<core.String, core.dynamic>)
               : null,
-          content: json_.containsKey('content')
-              ? json_['content'] as core.String
-              : null,
+          content: json_['content'] as core.String?,
           createdTime: json_.containsKey('createdTime')
               ? core.DateTime.parse(json_['createdTime'] as core.String)
               : null,
-          deleted: json_.containsKey('deleted')
-              ? json_['deleted'] as core.bool
-              : null,
-          htmlContent: json_.containsKey('htmlContent')
-              ? json_['htmlContent'] as core.String
-              : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          deleted: json_['deleted'] as core.bool?,
+          htmlContent: json_['htmlContent'] as core.String?,
+          id: json_['id'] as core.String?,
+          kind: json_['kind'] as core.String?,
           modifiedTime: json_.containsKey('modifiedTime')
               ? core.DateTime.parse(json_['modifiedTime'] as core.String)
               : null,
@@ -4034,9 +3950,7 @@ class Comment {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          resolved: json_.containsKey('resolved')
-              ? json_['resolved'] as core.bool
-              : null,
+          resolved: json_['resolved'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4093,10 +4007,8 @@ class CommentList {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          kind: json_['kind'] as core.String?,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4167,15 +4079,9 @@ class ContentRestriction {
 
   ContentRestriction.fromJson(core.Map json_)
       : this(
-          ownerRestricted: json_.containsKey('ownerRestricted')
-              ? json_['ownerRestricted'] as core.bool
-              : null,
-          readOnly: json_.containsKey('readOnly')
-              ? json_['readOnly'] as core.bool
-              : null,
-          reason: json_.containsKey('reason')
-              ? json_['reason'] as core.String
-              : null,
+          ownerRestricted: json_['ownerRestricted'] as core.bool?,
+          readOnly: json_['readOnly'] as core.bool?,
+          reason: json_['reason'] as core.String?,
           restrictingUser: json_.containsKey('restrictingUser')
               ? User.fromJson(json_['restrictingUser']
                   as core.Map<core.String, core.dynamic>)
@@ -4183,10 +4089,8 @@ class ContentRestriction {
           restrictionTime: json_.containsKey('restrictionTime')
               ? core.DateTime.parse(json_['restrictionTime'] as core.String)
               : null,
-          systemRestricted: json_.containsKey('systemRestricted')
-              ? json_['systemRestricted'] as core.bool
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          systemRestricted: json_['systemRestricted'] as core.bool?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4244,16 +4148,10 @@ class DriveBackgroundImageFile {
 
   DriveBackgroundImageFile.fromJson(core.Map json_)
       : this(
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          width: json_.containsKey('width')
-              ? (json_['width'] as core.num).toDouble()
-              : null,
-          xCoordinate: json_.containsKey('xCoordinate')
-              ? (json_['xCoordinate'] as core.num).toDouble()
-              : null,
-          yCoordinate: json_.containsKey('yCoordinate')
-              ? (json_['yCoordinate'] as core.num).toDouble()
-              : null,
+          id: json_['id'] as core.String?,
+          width: (json_['width'] as core.num?)?.toDouble(),
+          xCoordinate: (json_['xCoordinate'] as core.num?)?.toDouble(),
+          yCoordinate: (json_['yCoordinate'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4407,75 +4305,34 @@ class DriveCapabilities {
 
   DriveCapabilities.fromJson(core.Map json_)
       : this(
-          canAddChildren: json_.containsKey('canAddChildren')
-              ? json_['canAddChildren'] as core.bool
-              : null,
-          canChangeCopyRequiresWriterPermissionRestriction: json_.containsKey(
-                  'canChangeCopyRequiresWriterPermissionRestriction')
-              ? json_['canChangeCopyRequiresWriterPermissionRestriction']
-                  as core.bool
-              : null,
+          canAddChildren: json_['canAddChildren'] as core.bool?,
+          canChangeCopyRequiresWriterPermissionRestriction:
+              json_['canChangeCopyRequiresWriterPermissionRestriction']
+                  as core.bool?,
           canChangeDomainUsersOnlyRestriction:
-              json_.containsKey('canChangeDomainUsersOnlyRestriction')
-                  ? json_['canChangeDomainUsersOnlyRestriction'] as core.bool
-                  : null,
+              json_['canChangeDomainUsersOnlyRestriction'] as core.bool?,
           canChangeDriveBackground:
-              json_.containsKey('canChangeDriveBackground')
-                  ? json_['canChangeDriveBackground'] as core.bool
-                  : null,
+              json_['canChangeDriveBackground'] as core.bool?,
           canChangeDriveMembersOnlyRestriction:
-              json_.containsKey('canChangeDriveMembersOnlyRestriction')
-                  ? json_['canChangeDriveMembersOnlyRestriction'] as core.bool
-                  : null,
-          canChangeSharingFoldersRequiresOrganizerPermissionRestriction: json_
-                  .containsKey(
-                      'canChangeSharingFoldersRequiresOrganizerPermissionRestriction')
-              ? json_['canChangeSharingFoldersRequiresOrganizerPermissionRestriction']
-                  as core.bool
-              : null,
-          canComment: json_.containsKey('canComment')
-              ? json_['canComment'] as core.bool
-              : null,
-          canCopy: json_.containsKey('canCopy')
-              ? json_['canCopy'] as core.bool
-              : null,
-          canDeleteChildren: json_.containsKey('canDeleteChildren')
-              ? json_['canDeleteChildren'] as core.bool
-              : null,
-          canDeleteDrive: json_.containsKey('canDeleteDrive')
-              ? json_['canDeleteDrive'] as core.bool
-              : null,
-          canDownload: json_.containsKey('canDownload')
-              ? json_['canDownload'] as core.bool
-              : null,
-          canEdit: json_.containsKey('canEdit')
-              ? json_['canEdit'] as core.bool
-              : null,
-          canListChildren: json_.containsKey('canListChildren')
-              ? json_['canListChildren'] as core.bool
-              : null,
-          canManageMembers: json_.containsKey('canManageMembers')
-              ? json_['canManageMembers'] as core.bool
-              : null,
-          canReadRevisions: json_.containsKey('canReadRevisions')
-              ? json_['canReadRevisions'] as core.bool
-              : null,
-          canRename: json_.containsKey('canRename')
-              ? json_['canRename'] as core.bool
-              : null,
-          canRenameDrive: json_.containsKey('canRenameDrive')
-              ? json_['canRenameDrive'] as core.bool
-              : null,
+              json_['canChangeDriveMembersOnlyRestriction'] as core.bool?,
+          canChangeSharingFoldersRequiresOrganizerPermissionRestriction: json_[
+                  'canChangeSharingFoldersRequiresOrganizerPermissionRestriction']
+              as core.bool?,
+          canComment: json_['canComment'] as core.bool?,
+          canCopy: json_['canCopy'] as core.bool?,
+          canDeleteChildren: json_['canDeleteChildren'] as core.bool?,
+          canDeleteDrive: json_['canDeleteDrive'] as core.bool?,
+          canDownload: json_['canDownload'] as core.bool?,
+          canEdit: json_['canEdit'] as core.bool?,
+          canListChildren: json_['canListChildren'] as core.bool?,
+          canManageMembers: json_['canManageMembers'] as core.bool?,
+          canReadRevisions: json_['canReadRevisions'] as core.bool?,
+          canRename: json_['canRename'] as core.bool?,
+          canRenameDrive: json_['canRenameDrive'] as core.bool?,
           canResetDriveRestrictions:
-              json_.containsKey('canResetDriveRestrictions')
-                  ? json_['canResetDriveRestrictions'] as core.bool
-                  : null,
-          canShare: json_.containsKey('canShare')
-              ? json_['canShare'] as core.bool
-              : null,
-          canTrashChildren: json_.containsKey('canTrashChildren')
-              ? json_['canTrashChildren'] as core.bool
-              : null,
+              json_['canResetDriveRestrictions'] as core.bool?,
+          canShare: json_['canShare'] as core.bool?,
+          canTrashChildren: json_['canTrashChildren'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4559,23 +4416,13 @@ class DriveRestrictions {
   DriveRestrictions.fromJson(core.Map json_)
       : this(
           adminManagedRestrictions:
-              json_.containsKey('adminManagedRestrictions')
-                  ? json_['adminManagedRestrictions'] as core.bool
-                  : null,
+              json_['adminManagedRestrictions'] as core.bool?,
           copyRequiresWriterPermission:
-              json_.containsKey('copyRequiresWriterPermission')
-                  ? json_['copyRequiresWriterPermission'] as core.bool
-                  : null,
-          domainUsersOnly: json_.containsKey('domainUsersOnly')
-              ? json_['domainUsersOnly'] as core.bool
-              : null,
-          driveMembersOnly: json_.containsKey('driveMembersOnly')
-              ? json_['driveMembersOnly'] as core.bool
-              : null,
-          sharingFoldersRequiresOrganizerPermission: json_
-                  .containsKey('sharingFoldersRequiresOrganizerPermission')
-              ? json_['sharingFoldersRequiresOrganizerPermission'] as core.bool
-              : null,
+              json_['copyRequiresWriterPermission'] as core.bool?,
+          domainUsersOnly: json_['domainUsersOnly'] as core.bool?,
+          driveMembersOnly: json_['driveMembersOnly'] as core.bool?,
+          sharingFoldersRequiresOrganizerPermission:
+              json_['sharingFoldersRequiresOrganizerPermission'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4688,34 +4535,25 @@ class Drive {
               ? DriveBackgroundImageFile.fromJson(json_['backgroundImageFile']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          backgroundImageLink: json_.containsKey('backgroundImageLink')
-              ? json_['backgroundImageLink'] as core.String
-              : null,
+          backgroundImageLink: json_['backgroundImageLink'] as core.String?,
           capabilities: json_.containsKey('capabilities')
               ? DriveCapabilities.fromJson(
                   json_['capabilities'] as core.Map<core.String, core.dynamic>)
               : null,
-          colorRgb: json_.containsKey('colorRgb')
-              ? json_['colorRgb'] as core.String
-              : null,
+          colorRgb: json_['colorRgb'] as core.String?,
           createdTime: json_.containsKey('createdTime')
               ? core.DateTime.parse(json_['createdTime'] as core.String)
               : null,
-          hidden:
-              json_.containsKey('hidden') ? json_['hidden'] as core.bool : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          orgUnitId: json_.containsKey('orgUnitId')
-              ? json_['orgUnitId'] as core.String
-              : null,
+          hidden: json_['hidden'] as core.bool?,
+          id: json_['id'] as core.String?,
+          kind: json_['kind'] as core.String?,
+          name: json_['name'] as core.String?,
+          orgUnitId: json_['orgUnitId'] as core.String?,
           restrictions: json_.containsKey('restrictions')
               ? DriveRestrictions.fromJson(
                   json_['restrictions'] as core.Map<core.String, core.dynamic>)
               : null,
-          themeId: json_.containsKey('themeId')
-              ? json_['themeId'] as core.String
-              : null,
+          themeId: json_['themeId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4773,10 +4611,8 @@ class DriveList {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          kind: json_['kind'] as core.String?,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5130,144 +4966,62 @@ class FileCapabilities {
 
   FileCapabilities.fromJson(core.Map json_)
       : this(
-          canAcceptOwnership: json_.containsKey('canAcceptOwnership')
-              ? json_['canAcceptOwnership'] as core.bool
-              : null,
-          canAddChildren: json_.containsKey('canAddChildren')
-              ? json_['canAddChildren'] as core.bool
-              : null,
+          canAcceptOwnership: json_['canAcceptOwnership'] as core.bool?,
+          canAddChildren: json_['canAddChildren'] as core.bool?,
           canAddFolderFromAnotherDrive:
-              json_.containsKey('canAddFolderFromAnotherDrive')
-                  ? json_['canAddFolderFromAnotherDrive'] as core.bool
-                  : null,
-          canAddMyDriveParent: json_.containsKey('canAddMyDriveParent')
-              ? json_['canAddMyDriveParent'] as core.bool
-              : null,
+              json_['canAddFolderFromAnotherDrive'] as core.bool?,
+          canAddMyDriveParent: json_['canAddMyDriveParent'] as core.bool?,
           canChangeCopyRequiresWriterPermission:
-              json_.containsKey('canChangeCopyRequiresWriterPermission')
-                  ? json_['canChangeCopyRequiresWriterPermission'] as core.bool
-                  : null,
+              json_['canChangeCopyRequiresWriterPermission'] as core.bool?,
           canChangeSecurityUpdateEnabled:
-              json_.containsKey('canChangeSecurityUpdateEnabled')
-                  ? json_['canChangeSecurityUpdateEnabled'] as core.bool
-                  : null,
+              json_['canChangeSecurityUpdateEnabled'] as core.bool?,
           canChangeViewersCanCopyContent:
-              json_.containsKey('canChangeViewersCanCopyContent')
-                  ? json_['canChangeViewersCanCopyContent'] as core.bool
-                  : null,
-          canComment: json_.containsKey('canComment')
-              ? json_['canComment'] as core.bool
-              : null,
-          canCopy: json_.containsKey('canCopy')
-              ? json_['canCopy'] as core.bool
-              : null,
-          canDelete: json_.containsKey('canDelete')
-              ? json_['canDelete'] as core.bool
-              : null,
-          canDeleteChildren: json_.containsKey('canDeleteChildren')
-              ? json_['canDeleteChildren'] as core.bool
-              : null,
-          canDownload: json_.containsKey('canDownload')
-              ? json_['canDownload'] as core.bool
-              : null,
-          canEdit: json_.containsKey('canEdit')
-              ? json_['canEdit'] as core.bool
-              : null,
-          canListChildren: json_.containsKey('canListChildren')
-              ? json_['canListChildren'] as core.bool
-              : null,
-          canModifyContent: json_.containsKey('canModifyContent')
-              ? json_['canModifyContent'] as core.bool
-              : null,
+              json_['canChangeViewersCanCopyContent'] as core.bool?,
+          canComment: json_['canComment'] as core.bool?,
+          canCopy: json_['canCopy'] as core.bool?,
+          canDelete: json_['canDelete'] as core.bool?,
+          canDeleteChildren: json_['canDeleteChildren'] as core.bool?,
+          canDownload: json_['canDownload'] as core.bool?,
+          canEdit: json_['canEdit'] as core.bool?,
+          canListChildren: json_['canListChildren'] as core.bool?,
+          canModifyContent: json_['canModifyContent'] as core.bool?,
           canModifyContentRestriction:
-              json_.containsKey('canModifyContentRestriction')
-                  ? json_['canModifyContentRestriction'] as core.bool
-                  : null,
+              json_['canModifyContentRestriction'] as core.bool?,
           canModifyEditorContentRestriction:
-              json_.containsKey('canModifyEditorContentRestriction')
-                  ? json_['canModifyEditorContentRestriction'] as core.bool
-                  : null,
-          canModifyLabels: json_.containsKey('canModifyLabels')
-              ? json_['canModifyLabels'] as core.bool
-              : null,
+              json_['canModifyEditorContentRestriction'] as core.bool?,
+          canModifyLabels: json_['canModifyLabels'] as core.bool?,
           canModifyOwnerContentRestriction:
-              json_.containsKey('canModifyOwnerContentRestriction')
-                  ? json_['canModifyOwnerContentRestriction'] as core.bool
-                  : null,
+              json_['canModifyOwnerContentRestriction'] as core.bool?,
           canMoveChildrenOutOfDrive:
-              json_.containsKey('canMoveChildrenOutOfDrive')
-                  ? json_['canMoveChildrenOutOfDrive'] as core.bool
-                  : null,
+              json_['canMoveChildrenOutOfDrive'] as core.bool?,
           canMoveChildrenOutOfTeamDrive:
-              json_.containsKey('canMoveChildrenOutOfTeamDrive')
-                  ? json_['canMoveChildrenOutOfTeamDrive'] as core.bool
-                  : null,
+              json_['canMoveChildrenOutOfTeamDrive'] as core.bool?,
           canMoveChildrenWithinDrive:
-              json_.containsKey('canMoveChildrenWithinDrive')
-                  ? json_['canMoveChildrenWithinDrive'] as core.bool
-                  : null,
+              json_['canMoveChildrenWithinDrive'] as core.bool?,
           canMoveChildrenWithinTeamDrive:
-              json_.containsKey('canMoveChildrenWithinTeamDrive')
-                  ? json_['canMoveChildrenWithinTeamDrive'] as core.bool
-                  : null,
+              json_['canMoveChildrenWithinTeamDrive'] as core.bool?,
           canMoveItemIntoTeamDrive:
-              json_.containsKey('canMoveItemIntoTeamDrive')
-                  ? json_['canMoveItemIntoTeamDrive'] as core.bool
-                  : null,
-          canMoveItemOutOfDrive: json_.containsKey('canMoveItemOutOfDrive')
-              ? json_['canMoveItemOutOfDrive'] as core.bool
-              : null,
+              json_['canMoveItemIntoTeamDrive'] as core.bool?,
+          canMoveItemOutOfDrive: json_['canMoveItemOutOfDrive'] as core.bool?,
           canMoveItemOutOfTeamDrive:
-              json_.containsKey('canMoveItemOutOfTeamDrive')
-                  ? json_['canMoveItemOutOfTeamDrive'] as core.bool
-                  : null,
-          canMoveItemWithinDrive: json_.containsKey('canMoveItemWithinDrive')
-              ? json_['canMoveItemWithinDrive'] as core.bool
-              : null,
+              json_['canMoveItemOutOfTeamDrive'] as core.bool?,
+          canMoveItemWithinDrive: json_['canMoveItemWithinDrive'] as core.bool?,
           canMoveItemWithinTeamDrive:
-              json_.containsKey('canMoveItemWithinTeamDrive')
-                  ? json_['canMoveItemWithinTeamDrive'] as core.bool
-                  : null,
-          canMoveTeamDriveItem: json_.containsKey('canMoveTeamDriveItem')
-              ? json_['canMoveTeamDriveItem'] as core.bool
-              : null,
-          canReadDrive: json_.containsKey('canReadDrive')
-              ? json_['canReadDrive'] as core.bool
-              : null,
-          canReadLabels: json_.containsKey('canReadLabels')
-              ? json_['canReadLabels'] as core.bool
-              : null,
-          canReadRevisions: json_.containsKey('canReadRevisions')
-              ? json_['canReadRevisions'] as core.bool
-              : null,
-          canReadTeamDrive: json_.containsKey('canReadTeamDrive')
-              ? json_['canReadTeamDrive'] as core.bool
-              : null,
-          canRemoveChildren: json_.containsKey('canRemoveChildren')
-              ? json_['canRemoveChildren'] as core.bool
-              : null,
+              json_['canMoveItemWithinTeamDrive'] as core.bool?,
+          canMoveTeamDriveItem: json_['canMoveTeamDriveItem'] as core.bool?,
+          canReadDrive: json_['canReadDrive'] as core.bool?,
+          canReadLabels: json_['canReadLabels'] as core.bool?,
+          canReadRevisions: json_['canReadRevisions'] as core.bool?,
+          canReadTeamDrive: json_['canReadTeamDrive'] as core.bool?,
+          canRemoveChildren: json_['canRemoveChildren'] as core.bool?,
           canRemoveContentRestriction:
-              json_.containsKey('canRemoveContentRestriction')
-                  ? json_['canRemoveContentRestriction'] as core.bool
-                  : null,
-          canRemoveMyDriveParent: json_.containsKey('canRemoveMyDriveParent')
-              ? json_['canRemoveMyDriveParent'] as core.bool
-              : null,
-          canRename: json_.containsKey('canRename')
-              ? json_['canRename'] as core.bool
-              : null,
-          canShare: json_.containsKey('canShare')
-              ? json_['canShare'] as core.bool
-              : null,
-          canTrash: json_.containsKey('canTrash')
-              ? json_['canTrash'] as core.bool
-              : null,
-          canTrashChildren: json_.containsKey('canTrashChildren')
-              ? json_['canTrashChildren'] as core.bool
-              : null,
-          canUntrash: json_.containsKey('canUntrash')
-              ? json_['canUntrash'] as core.bool
-              : null,
+              json_['canRemoveContentRestriction'] as core.bool?,
+          canRemoveMyDriveParent: json_['canRemoveMyDriveParent'] as core.bool?,
+          canRename: json_['canRename'] as core.bool?,
+          canShare: json_['canShare'] as core.bool?,
+          canTrash: json_['canTrash'] as core.bool?,
+          canTrashChildren: json_['canTrashChildren'] as core.bool?,
+          canUntrash: json_['canUntrash'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5361,11 +5115,8 @@ class FileContentHintsThumbnail {
 
   FileContentHintsThumbnail.fromJson(core.Map json_)
       : this(
-          image:
-              json_.containsKey('image') ? json_['image'] as core.String : null,
-          mimeType: json_.containsKey('mimeType')
-              ? json_['mimeType'] as core.String
-              : null,
+          image: json_['image'] as core.String?,
+          mimeType: json_['mimeType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5396,9 +5147,7 @@ class FileContentHints {
 
   FileContentHints.fromJson(core.Map json_)
       : this(
-          indexableText: json_.containsKey('indexableText')
-              ? json_['indexableText'] as core.String
-              : null,
+          indexableText: json_['indexableText'] as core.String?,
           thumbnail: json_.containsKey('thumbnail')
               ? FileContentHintsThumbnail.fromJson(
                   json_['thumbnail'] as core.Map<core.String, core.dynamic>)
@@ -5438,15 +5187,9 @@ class FileImageMediaMetadataLocation {
 
   FileImageMediaMetadataLocation.fromJson(core.Map json_)
       : this(
-          altitude: json_.containsKey('altitude')
-              ? (json_['altitude'] as core.num).toDouble()
-              : null,
-          latitude: json_.containsKey('latitude')
-              ? (json_['latitude'] as core.num).toDouble()
-              : null,
-          longitude: json_.containsKey('longitude')
-              ? (json_['longitude'] as core.num).toDouble()
-              : null,
+          altitude: (json_['altitude'] as core.num?)?.toDouble(),
+          latitude: (json_['latitude'] as core.num?)?.toDouble(),
+          longitude: (json_['longitude'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5593,63 +5336,31 @@ class FileImageMediaMetadata {
 
   FileImageMediaMetadata.fromJson(core.Map json_)
       : this(
-          aperture: json_.containsKey('aperture')
-              ? (json_['aperture'] as core.num).toDouble()
-              : null,
-          cameraMake: json_.containsKey('cameraMake')
-              ? json_['cameraMake'] as core.String
-              : null,
-          cameraModel: json_.containsKey('cameraModel')
-              ? json_['cameraModel'] as core.String
-              : null,
-          colorSpace: json_.containsKey('colorSpace')
-              ? json_['colorSpace'] as core.String
-              : null,
-          exposureBias: json_.containsKey('exposureBias')
-              ? (json_['exposureBias'] as core.num).toDouble()
-              : null,
-          exposureMode: json_.containsKey('exposureMode')
-              ? json_['exposureMode'] as core.String
-              : null,
-          exposureTime: json_.containsKey('exposureTime')
-              ? (json_['exposureTime'] as core.num).toDouble()
-              : null,
-          flashUsed: json_.containsKey('flashUsed')
-              ? json_['flashUsed'] as core.bool
-              : null,
-          focalLength: json_.containsKey('focalLength')
-              ? (json_['focalLength'] as core.num).toDouble()
-              : null,
-          height:
-              json_.containsKey('height') ? json_['height'] as core.int : null,
-          isoSpeed: json_.containsKey('isoSpeed')
-              ? json_['isoSpeed'] as core.int
-              : null,
-          lens: json_.containsKey('lens') ? json_['lens'] as core.String : null,
+          aperture: (json_['aperture'] as core.num?)?.toDouble(),
+          cameraMake: json_['cameraMake'] as core.String?,
+          cameraModel: json_['cameraModel'] as core.String?,
+          colorSpace: json_['colorSpace'] as core.String?,
+          exposureBias: (json_['exposureBias'] as core.num?)?.toDouble(),
+          exposureMode: json_['exposureMode'] as core.String?,
+          exposureTime: (json_['exposureTime'] as core.num?)?.toDouble(),
+          flashUsed: json_['flashUsed'] as core.bool?,
+          focalLength: (json_['focalLength'] as core.num?)?.toDouble(),
+          height: json_['height'] as core.int?,
+          isoSpeed: json_['isoSpeed'] as core.int?,
+          lens: json_['lens'] as core.String?,
           location: json_.containsKey('location')
               ? FileImageMediaMetadataLocation.fromJson(
                   json_['location'] as core.Map<core.String, core.dynamic>)
               : null,
-          maxApertureValue: json_.containsKey('maxApertureValue')
-              ? (json_['maxApertureValue'] as core.num).toDouble()
-              : null,
-          meteringMode: json_.containsKey('meteringMode')
-              ? json_['meteringMode'] as core.String
-              : null,
-          rotation: json_.containsKey('rotation')
-              ? json_['rotation'] as core.int
-              : null,
-          sensor: json_.containsKey('sensor')
-              ? json_['sensor'] as core.String
-              : null,
-          subjectDistance: json_.containsKey('subjectDistance')
-              ? json_['subjectDistance'] as core.int
-              : null,
-          time: json_.containsKey('time') ? json_['time'] as core.String : null,
-          whiteBalance: json_.containsKey('whiteBalance')
-              ? json_['whiteBalance'] as core.String
-              : null,
-          width: json_.containsKey('width') ? json_['width'] as core.int : null,
+          maxApertureValue:
+              (json_['maxApertureValue'] as core.num?)?.toDouble(),
+          meteringMode: json_['meteringMode'] as core.String?,
+          rotation: json_['rotation'] as core.int?,
+          sensor: json_['sensor'] as core.String?,
+          subjectDistance: json_['subjectDistance'] as core.int?,
+          time: json_['time'] as core.String?,
+          whiteBalance: json_['whiteBalance'] as core.String?,
+          width: json_['width'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5728,12 +5439,8 @@ class FileLinkShareMetadata {
 
   FileLinkShareMetadata.fromJson(core.Map json_)
       : this(
-          securityUpdateEligible: json_.containsKey('securityUpdateEligible')
-              ? json_['securityUpdateEligible'] as core.bool
-              : null,
-          securityUpdateEnabled: json_.containsKey('securityUpdateEnabled')
-              ? json_['securityUpdateEnabled'] as core.bool
-              : null,
+          securityUpdateEligible: json_['securityUpdateEligible'] as core.bool?,
+          securityUpdateEnabled: json_['securityUpdateEnabled'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5773,15 +5480,9 @@ class FileShortcutDetails {
 
   FileShortcutDetails.fromJson(core.Map json_)
       : this(
-          targetId: json_.containsKey('targetId')
-              ? json_['targetId'] as core.String
-              : null,
-          targetMimeType: json_.containsKey('targetMimeType')
-              ? json_['targetMimeType'] as core.String
-              : null,
-          targetResourceKey: json_.containsKey('targetResourceKey')
-              ? json_['targetResourceKey'] as core.String
-              : null,
+          targetId: json_['targetId'] as core.String?,
+          targetMimeType: json_['targetMimeType'] as core.String?,
+          targetResourceKey: json_['targetResourceKey'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5820,12 +5521,9 @@ class FileVideoMediaMetadata {
 
   FileVideoMediaMetadata.fromJson(core.Map json_)
       : this(
-          durationMillis: json_.containsKey('durationMillis')
-              ? json_['durationMillis'] as core.String
-              : null,
-          height:
-              json_.containsKey('height') ? json_['height'] as core.int : null,
-          width: json_.containsKey('width') ? json_['width'] as core.int : null,
+          durationMillis: json_['durationMillis'] as core.String?,
+          height: json_['height'] as core.int?,
+          width: json_['width'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6315,21 +6013,13 @@ class File {
                   .toList()
               : null,
           copyRequiresWriterPermission:
-              json_.containsKey('copyRequiresWriterPermission')
-                  ? json_['copyRequiresWriterPermission'] as core.bool
-                  : null,
+              json_['copyRequiresWriterPermission'] as core.bool?,
           createdTime: json_.containsKey('createdTime')
               ? core.DateTime.parse(json_['createdTime'] as core.String)
               : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          driveId: json_.containsKey('driveId')
-              ? json_['driveId'] as core.String
-              : null,
-          explicitlyTrashed: json_.containsKey('explicitlyTrashed')
-              ? json_['explicitlyTrashed'] as core.bool
-              : null,
+          description: json_['description'] as core.String?,
+          driveId: json_['driveId'] as core.String?,
+          explicitlyTrashed: json_['explicitlyTrashed'] as core.bool?,
           exportLinks: json_.containsKey('exportLinks')
               ? (json_['exportLinks'] as core.Map<core.String, core.dynamic>)
                   .map(
@@ -6339,36 +6029,21 @@ class File {
                   ),
                 )
               : null,
-          fileExtension: json_.containsKey('fileExtension')
-              ? json_['fileExtension'] as core.String
-              : null,
-          folderColorRgb: json_.containsKey('folderColorRgb')
-              ? json_['folderColorRgb'] as core.String
-              : null,
-          fullFileExtension: json_.containsKey('fullFileExtension')
-              ? json_['fullFileExtension'] as core.String
-              : null,
-          hasAugmentedPermissions: json_.containsKey('hasAugmentedPermissions')
-              ? json_['hasAugmentedPermissions'] as core.bool
-              : null,
-          hasThumbnail: json_.containsKey('hasThumbnail')
-              ? json_['hasThumbnail'] as core.bool
-              : null,
-          headRevisionId: json_.containsKey('headRevisionId')
-              ? json_['headRevisionId'] as core.String
-              : null,
-          iconLink: json_.containsKey('iconLink')
-              ? json_['iconLink'] as core.String
-              : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          fileExtension: json_['fileExtension'] as core.String?,
+          folderColorRgb: json_['folderColorRgb'] as core.String?,
+          fullFileExtension: json_['fullFileExtension'] as core.String?,
+          hasAugmentedPermissions:
+              json_['hasAugmentedPermissions'] as core.bool?,
+          hasThumbnail: json_['hasThumbnail'] as core.bool?,
+          headRevisionId: json_['headRevisionId'] as core.String?,
+          iconLink: json_['iconLink'] as core.String?,
+          id: json_['id'] as core.String?,
           imageMediaMetadata: json_.containsKey('imageMediaMetadata')
               ? FileImageMediaMetadata.fromJson(json_['imageMediaMetadata']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          isAppAuthorized: json_.containsKey('isAppAuthorized')
-              ? json_['isAppAuthorized'] as core.bool
-              : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          isAppAuthorized: json_['isAppAuthorized'] as core.bool?,
+          kind: json_['kind'] as core.String?,
           labelInfo: json_.containsKey('labelInfo')
               ? FileLabelInfo.fromJson(
                   json_['labelInfo'] as core.Map<core.String, core.dynamic>)
@@ -6381,28 +6056,18 @@ class File {
               ? FileLinkShareMetadata.fromJson(json_['linkShareMetadata']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          md5Checksum: json_.containsKey('md5Checksum')
-              ? json_['md5Checksum'] as core.String
-              : null,
-          mimeType: json_.containsKey('mimeType')
-              ? json_['mimeType'] as core.String
-              : null,
-          modifiedByMe: json_.containsKey('modifiedByMe')
-              ? json_['modifiedByMe'] as core.bool
-              : null,
+          md5Checksum: json_['md5Checksum'] as core.String?,
+          mimeType: json_['mimeType'] as core.String?,
+          modifiedByMe: json_['modifiedByMe'] as core.bool?,
           modifiedByMeTime: json_.containsKey('modifiedByMeTime')
               ? core.DateTime.parse(json_['modifiedByMeTime'] as core.String)
               : null,
           modifiedTime: json_.containsKey('modifiedTime')
               ? core.DateTime.parse(json_['modifiedTime'] as core.String)
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          originalFilename: json_.containsKey('originalFilename')
-              ? json_['originalFilename'] as core.String
-              : null,
-          ownedByMe: json_.containsKey('ownedByMe')
-              ? json_['ownedByMe'] as core.bool
-              : null,
+          name: json_['name'] as core.String?,
+          originalFilename: json_['originalFilename'] as core.String?,
+          ownedByMe: json_['ownedByMe'] as core.bool?,
           owners: json_.containsKey('owners')
               ? (json_['owners'] as core.List)
                   .map((value) => User.fromJson(
@@ -6434,20 +6099,11 @@ class File {
                   ),
                 )
               : null,
-          quotaBytesUsed: json_.containsKey('quotaBytesUsed')
-              ? json_['quotaBytesUsed'] as core.String
-              : null,
-          resourceKey: json_.containsKey('resourceKey')
-              ? json_['resourceKey'] as core.String
-              : null,
-          sha1Checksum: json_.containsKey('sha1Checksum')
-              ? json_['sha1Checksum'] as core.String
-              : null,
-          sha256Checksum: json_.containsKey('sha256Checksum')
-              ? json_['sha256Checksum'] as core.String
-              : null,
-          shared:
-              json_.containsKey('shared') ? json_['shared'] as core.bool : null,
+          quotaBytesUsed: json_['quotaBytesUsed'] as core.String?,
+          resourceKey: json_['resourceKey'] as core.String?,
+          sha1Checksum: json_['sha1Checksum'] as core.String?,
+          sha256Checksum: json_['sha256Checksum'] as core.String?,
+          shared: json_['shared'] as core.bool?,
           sharedWithMeTime: json_.containsKey('sharedWithMeTime')
               ? core.DateTime.parse(json_['sharedWithMeTime'] as core.String)
               : null,
@@ -6459,27 +6115,17 @@ class File {
               ? FileShortcutDetails.fromJson(json_['shortcutDetails']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          size: json_.containsKey('size') ? json_['size'] as core.String : null,
+          size: json_['size'] as core.String?,
           spaces: json_.containsKey('spaces')
               ? (json_['spaces'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          starred: json_.containsKey('starred')
-              ? json_['starred'] as core.bool
-              : null,
-          teamDriveId: json_.containsKey('teamDriveId')
-              ? json_['teamDriveId'] as core.String
-              : null,
-          thumbnailLink: json_.containsKey('thumbnailLink')
-              ? json_['thumbnailLink'] as core.String
-              : null,
-          thumbnailVersion: json_.containsKey('thumbnailVersion')
-              ? json_['thumbnailVersion'] as core.String
-              : null,
-          trashed: json_.containsKey('trashed')
-              ? json_['trashed'] as core.bool
-              : null,
+          starred: json_['starred'] as core.bool?,
+          teamDriveId: json_['teamDriveId'] as core.String?,
+          thumbnailLink: json_['thumbnailLink'] as core.String?,
+          thumbnailVersion: json_['thumbnailVersion'] as core.String?,
+          trashed: json_['trashed'] as core.bool?,
           trashedTime: json_.containsKey('trashedTime')
               ? core.DateTime.parse(json_['trashedTime'] as core.String)
               : null,
@@ -6487,31 +6133,19 @@ class File {
               ? User.fromJson(
                   json_['trashingUser'] as core.Map<core.String, core.dynamic>)
               : null,
-          version: json_.containsKey('version')
-              ? json_['version'] as core.String
-              : null,
+          version: json_['version'] as core.String?,
           videoMediaMetadata: json_.containsKey('videoMediaMetadata')
               ? FileVideoMediaMetadata.fromJson(json_['videoMediaMetadata']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          viewedByMe: json_.containsKey('viewedByMe')
-              ? json_['viewedByMe'] as core.bool
-              : null,
+          viewedByMe: json_['viewedByMe'] as core.bool?,
           viewedByMeTime: json_.containsKey('viewedByMeTime')
               ? core.DateTime.parse(json_['viewedByMeTime'] as core.String)
               : null,
-          viewersCanCopyContent: json_.containsKey('viewersCanCopyContent')
-              ? json_['viewersCanCopyContent'] as core.bool
-              : null,
-          webContentLink: json_.containsKey('webContentLink')
-              ? json_['webContentLink'] as core.String
-              : null,
-          webViewLink: json_.containsKey('webViewLink')
-              ? json_['webViewLink'] as core.String
-              : null,
-          writersCanShare: json_.containsKey('writersCanShare')
-              ? json_['writersCanShare'] as core.bool
-              : null,
+          viewersCanCopyContent: json_['viewersCanCopyContent'] as core.bool?,
+          webContentLink: json_['webContentLink'] as core.String?,
+          webViewLink: json_['webViewLink'] as core.String?,
+          writersCanShare: json_['writersCanShare'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6638,13 +6272,9 @@ class FileList {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          incompleteSearch: json_.containsKey('incompleteSearch')
-              ? json_['incompleteSearch'] as core.bool
-              : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          incompleteSearch: json_['incompleteSearch'] as core.bool?,
+          kind: json_['kind'] as core.String?,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6681,9 +6311,8 @@ class GeneratedIds {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          space:
-              json_.containsKey('space') ? json_['space'] as core.String : null,
+          kind: json_['kind'] as core.String?,
+          space: json_['space'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6725,11 +6354,9 @@ class Label {
                   ),
                 )
               : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          revisionId: json_.containsKey('revisionId')
-              ? json_['revisionId'] as core.String
-              : null,
+          id: json_['id'] as core.String?,
+          kind: json_['kind'] as core.String?,
+          revisionId: json_['revisionId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6790,13 +6417,13 @@ class LabelField {
                   .map((value) => core.DateTime.parse(value as core.String))
                   .toList()
               : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          id: json_['id'] as core.String?,
           integer: json_.containsKey('integer')
               ? (json_['integer'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          kind: json_['kind'] as core.String?,
           selection: json_.containsKey('selection')
               ? (json_['selection'] as core.List)
                   .map((value) => value as core.String)
@@ -6813,9 +6440,7 @@ class LabelField {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          valueType: json_.containsKey('valueType')
-              ? json_['valueType'] as core.String
-              : null,
+          valueType: json_['valueType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6877,10 +6502,8 @@ class LabelFieldModification {
 
   LabelFieldModification.fromJson(core.Map json_)
       : this(
-          fieldId: json_.containsKey('fieldId')
-              ? json_['fieldId'] as core.String
-              : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          fieldId: json_['fieldId'] as core.String?,
+          kind: json_['kind'] as core.String?,
           setDateValues: json_.containsKey('setDateValues')
               ? (json_['setDateValues'] as core.List)
                   .map((value) => core.DateTime.parse(value as core.String))
@@ -6906,9 +6529,7 @@ class LabelFieldModification {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          unsetValues: json_.containsKey('unsetValues')
-              ? json_['unsetValues'] as core.bool
-              : null,
+          unsetValues: json_['unsetValues'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6953,16 +6574,14 @@ class LabelList {
 
   LabelList.fromJson(core.Map json_)
       : this(
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          kind: json_['kind'] as core.String?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.List)
                   .map((value) => Label.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7004,13 +6623,9 @@ class LabelModification {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          labelId: json_.containsKey('labelId')
-              ? json_['labelId'] as core.String
-              : null,
-          removeLabel: json_.containsKey('removeLabel')
-              ? json_['removeLabel'] as core.bool
-              : null,
+          kind: json_['kind'] as core.String?,
+          labelId: json_['labelId'] as core.String?,
+          removeLabel: json_['removeLabel'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7040,7 +6655,7 @@ class ModifyLabelsRequest {
 
   ModifyLabelsRequest.fromJson(core.Map json_)
       : this(
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          kind: json_['kind'] as core.String?,
           labelModifications: json_.containsKey('labelModifications')
               ? (json_['labelModifications'] as core.List)
                   .map((value) => LabelModification.fromJson(
@@ -7073,7 +6688,7 @@ class ModifyLabelsResponse {
 
   ModifyLabelsResponse.fromJson(core.Map json_)
       : this(
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          kind: json_['kind'] as core.String?,
           modifiedLabels: json_.containsKey('modifiedLabels')
               ? (json_['modifiedLabels'] as core.List)
                   .map((value) => Label.fromJson(
@@ -7129,16 +6744,10 @@ class PermissionPermissionDetails {
 
   PermissionPermissionDetails.fromJson(core.Map json_)
       : this(
-          inherited: json_.containsKey('inherited')
-              ? json_['inherited'] as core.bool
-              : null,
-          inheritedFrom: json_.containsKey('inheritedFrom')
-              ? json_['inheritedFrom'] as core.String
-              : null,
-          permissionType: json_.containsKey('permissionType')
-              ? json_['permissionType'] as core.String
-              : null,
-          role: json_.containsKey('role') ? json_['role'] as core.String : null,
+          inherited: json_['inherited'] as core.bool?,
+          inheritedFrom: json_['inheritedFrom'] as core.String?,
+          permissionType: json_['permissionType'] as core.String?,
+          role: json_['role'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7191,16 +6800,11 @@ class PermissionTeamDrivePermissionDetails {
 
   PermissionTeamDrivePermissionDetails.fromJson(core.Map json_)
       : this(
-          inherited: json_.containsKey('inherited')
-              ? json_['inherited'] as core.bool
-              : null,
-          inheritedFrom: json_.containsKey('inheritedFrom')
-              ? json_['inheritedFrom'] as core.String
-              : null,
-          role: json_.containsKey('role') ? json_['role'] as core.String : null,
-          teamDrivePermissionType: json_.containsKey('teamDrivePermissionType')
-              ? json_['teamDrivePermissionType'] as core.String
-              : null,
+          inherited: json_['inherited'] as core.bool?,
+          inheritedFrom: json_['inheritedFrom'] as core.String?,
+          role: json_['role'] as core.String?,
+          teamDrivePermissionType:
+              json_['teamDrivePermissionType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7341,39 +6945,25 @@ class Permission {
 
   Permission.fromJson(core.Map json_)
       : this(
-          allowFileDiscovery: json_.containsKey('allowFileDiscovery')
-              ? json_['allowFileDiscovery'] as core.bool
-              : null,
-          deleted: json_.containsKey('deleted')
-              ? json_['deleted'] as core.bool
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          domain: json_.containsKey('domain')
-              ? json_['domain'] as core.String
-              : null,
-          emailAddress: json_.containsKey('emailAddress')
-              ? json_['emailAddress'] as core.String
-              : null,
+          allowFileDiscovery: json_['allowFileDiscovery'] as core.bool?,
+          deleted: json_['deleted'] as core.bool?,
+          displayName: json_['displayName'] as core.String?,
+          domain: json_['domain'] as core.String?,
+          emailAddress: json_['emailAddress'] as core.String?,
           expirationTime: json_.containsKey('expirationTime')
               ? core.DateTime.parse(json_['expirationTime'] as core.String)
               : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          pendingOwner: json_.containsKey('pendingOwner')
-              ? json_['pendingOwner'] as core.bool
-              : null,
+          id: json_['id'] as core.String?,
+          kind: json_['kind'] as core.String?,
+          pendingOwner: json_['pendingOwner'] as core.bool?,
           permissionDetails: json_.containsKey('permissionDetails')
               ? (json_['permissionDetails'] as core.List)
                   .map((value) => PermissionPermissionDetails.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          photoLink: json_.containsKey('photoLink')
-              ? json_['photoLink'] as core.String
-              : null,
-          role: json_.containsKey('role') ? json_['role'] as core.String : null,
+          photoLink: json_['photoLink'] as core.String?,
+          role: json_['role'] as core.String?,
           teamDrivePermissionDetails: json_
                   .containsKey('teamDrivePermissionDetails')
               ? (json_['teamDrivePermissionDetails'] as core.List)
@@ -7381,8 +6971,8 @@ class Permission {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
-          view: json_.containsKey('view') ? json_['view'] as core.String : null,
+          type: json_['type'] as core.String?,
+          view: json_['view'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7437,10 +7027,8 @@ class PermissionList {
 
   PermissionList.fromJson(core.Map json_)
       : this(
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          kind: json_['kind'] as core.String?,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           permissions: json_.containsKey('permissions')
               ? (json_['permissions'] as core.List)
                   .map((value) => Permission.fromJson(
@@ -7523,27 +7111,19 @@ class Reply {
 
   Reply.fromJson(core.Map json_)
       : this(
-          action: json_.containsKey('action')
-              ? json_['action'] as core.String
-              : null,
+          action: json_['action'] as core.String?,
           author: json_.containsKey('author')
               ? User.fromJson(
                   json_['author'] as core.Map<core.String, core.dynamic>)
               : null,
-          content: json_.containsKey('content')
-              ? json_['content'] as core.String
-              : null,
+          content: json_['content'] as core.String?,
           createdTime: json_.containsKey('createdTime')
               ? core.DateTime.parse(json_['createdTime'] as core.String)
               : null,
-          deleted: json_.containsKey('deleted')
-              ? json_['deleted'] as core.bool
-              : null,
-          htmlContent: json_.containsKey('htmlContent')
-              ? json_['htmlContent'] as core.String
-              : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          deleted: json_['deleted'] as core.bool?,
+          htmlContent: json_['htmlContent'] as core.String?,
+          id: json_['id'] as core.String?,
+          kind: json_['kind'] as core.String?,
           modifiedTime: json_.containsKey('modifiedTime')
               ? core.DateTime.parse(json_['modifiedTime'] as core.String)
               : null,
@@ -7594,10 +7174,8 @@ class ReplyList {
 
   ReplyList.fromJson(core.Map json_)
       : this(
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          kind: json_['kind'] as core.String?,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           replies: json_.containsKey('replies')
               ? (json_['replies'] as core.List)
                   .map((value) => Reply.fromJson(
@@ -7727,40 +7305,24 @@ class Revision {
                   ),
                 )
               : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          keepForever: json_.containsKey('keepForever')
-              ? json_['keepForever'] as core.bool
-              : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          id: json_['id'] as core.String?,
+          keepForever: json_['keepForever'] as core.bool?,
+          kind: json_['kind'] as core.String?,
           lastModifyingUser: json_.containsKey('lastModifyingUser')
               ? User.fromJson(json_['lastModifyingUser']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          md5Checksum: json_.containsKey('md5Checksum')
-              ? json_['md5Checksum'] as core.String
-              : null,
-          mimeType: json_.containsKey('mimeType')
-              ? json_['mimeType'] as core.String
-              : null,
+          md5Checksum: json_['md5Checksum'] as core.String?,
+          mimeType: json_['mimeType'] as core.String?,
           modifiedTime: json_.containsKey('modifiedTime')
               ? core.DateTime.parse(json_['modifiedTime'] as core.String)
               : null,
-          originalFilename: json_.containsKey('originalFilename')
-              ? json_['originalFilename'] as core.String
-              : null,
-          publishAuto: json_.containsKey('publishAuto')
-              ? json_['publishAuto'] as core.bool
-              : null,
-          published: json_.containsKey('published')
-              ? json_['published'] as core.bool
-              : null,
-          publishedLink: json_.containsKey('publishedLink')
-              ? json_['publishedLink'] as core.String
-              : null,
-          publishedOutsideDomain: json_.containsKey('publishedOutsideDomain')
-              ? json_['publishedOutsideDomain'] as core.bool
-              : null,
-          size: json_.containsKey('size') ? json_['size'] as core.String : null,
+          originalFilename: json_['originalFilename'] as core.String?,
+          publishAuto: json_['publishAuto'] as core.bool?,
+          published: json_['published'] as core.bool?,
+          publishedLink: json_['publishedLink'] as core.String?,
+          publishedOutsideDomain: json_['publishedOutsideDomain'] as core.bool?,
+          size: json_['size'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7813,10 +7375,8 @@ class RevisionList {
 
   RevisionList.fromJson(core.Map json_)
       : this(
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          kind: json_['kind'] as core.String?,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           revisions: json_.containsKey('revisions')
               ? (json_['revisions'] as core.List)
                   .map((value) => Revision.fromJson(
@@ -7850,10 +7410,8 @@ class StartPageToken {
 
   StartPageToken.fromJson(core.Map json_)
       : this(
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          startPageToken: json_.containsKey('startPageToken')
-              ? json_['startPageToken'] as core.String
-              : null,
+          kind: json_['kind'] as core.String?,
+          startPageToken: json_['startPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7905,16 +7463,10 @@ class TeamDriveBackgroundImageFile {
 
   TeamDriveBackgroundImageFile.fromJson(core.Map json_)
       : this(
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          width: json_.containsKey('width')
-              ? (json_['width'] as core.num).toDouble()
-              : null,
-          xCoordinate: json_.containsKey('xCoordinate')
-              ? (json_['xCoordinate'] as core.num).toDouble()
-              : null,
-          yCoordinate: json_.containsKey('yCoordinate')
-              ? (json_['yCoordinate'] as core.num).toDouble()
-              : null,
+          id: json_['id'] as core.String?,
+          width: (json_['width'] as core.num?)?.toDouble(),
+          xCoordinate: (json_['xCoordinate'] as core.num?)?.toDouble(),
+          yCoordinate: (json_['yCoordinate'] as core.num?)?.toDouble(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8033,78 +7585,35 @@ class TeamDriveCapabilities {
 
   TeamDriveCapabilities.fromJson(core.Map json_)
       : this(
-          canAddChildren: json_.containsKey('canAddChildren')
-              ? json_['canAddChildren'] as core.bool
-              : null,
-          canChangeCopyRequiresWriterPermissionRestriction: json_.containsKey(
-                  'canChangeCopyRequiresWriterPermissionRestriction')
-              ? json_['canChangeCopyRequiresWriterPermissionRestriction']
-                  as core.bool
-              : null,
+          canAddChildren: json_['canAddChildren'] as core.bool?,
+          canChangeCopyRequiresWriterPermissionRestriction:
+              json_['canChangeCopyRequiresWriterPermissionRestriction']
+                  as core.bool?,
           canChangeDomainUsersOnlyRestriction:
-              json_.containsKey('canChangeDomainUsersOnlyRestriction')
-                  ? json_['canChangeDomainUsersOnlyRestriction'] as core.bool
-                  : null,
-          canChangeSharingFoldersRequiresOrganizerPermissionRestriction: json_
-                  .containsKey(
-                      'canChangeSharingFoldersRequiresOrganizerPermissionRestriction')
-              ? json_['canChangeSharingFoldersRequiresOrganizerPermissionRestriction']
-                  as core.bool
-              : null,
+              json_['canChangeDomainUsersOnlyRestriction'] as core.bool?,
+          canChangeSharingFoldersRequiresOrganizerPermissionRestriction: json_[
+                  'canChangeSharingFoldersRequiresOrganizerPermissionRestriction']
+              as core.bool?,
           canChangeTeamDriveBackground:
-              json_.containsKey('canChangeTeamDriveBackground')
-                  ? json_['canChangeTeamDriveBackground'] as core.bool
-                  : null,
+              json_['canChangeTeamDriveBackground'] as core.bool?,
           canChangeTeamMembersOnlyRestriction:
-              json_.containsKey('canChangeTeamMembersOnlyRestriction')
-                  ? json_['canChangeTeamMembersOnlyRestriction'] as core.bool
-                  : null,
-          canComment: json_.containsKey('canComment')
-              ? json_['canComment'] as core.bool
-              : null,
-          canCopy: json_.containsKey('canCopy')
-              ? json_['canCopy'] as core.bool
-              : null,
-          canDeleteChildren: json_.containsKey('canDeleteChildren')
-              ? json_['canDeleteChildren'] as core.bool
-              : null,
-          canDeleteTeamDrive: json_.containsKey('canDeleteTeamDrive')
-              ? json_['canDeleteTeamDrive'] as core.bool
-              : null,
-          canDownload: json_.containsKey('canDownload')
-              ? json_['canDownload'] as core.bool
-              : null,
-          canEdit: json_.containsKey('canEdit')
-              ? json_['canEdit'] as core.bool
-              : null,
-          canListChildren: json_.containsKey('canListChildren')
-              ? json_['canListChildren'] as core.bool
-              : null,
-          canManageMembers: json_.containsKey('canManageMembers')
-              ? json_['canManageMembers'] as core.bool
-              : null,
-          canReadRevisions: json_.containsKey('canReadRevisions')
-              ? json_['canReadRevisions'] as core.bool
-              : null,
-          canRemoveChildren: json_.containsKey('canRemoveChildren')
-              ? json_['canRemoveChildren'] as core.bool
-              : null,
-          canRename: json_.containsKey('canRename')
-              ? json_['canRename'] as core.bool
-              : null,
-          canRenameTeamDrive: json_.containsKey('canRenameTeamDrive')
-              ? json_['canRenameTeamDrive'] as core.bool
-              : null,
+              json_['canChangeTeamMembersOnlyRestriction'] as core.bool?,
+          canComment: json_['canComment'] as core.bool?,
+          canCopy: json_['canCopy'] as core.bool?,
+          canDeleteChildren: json_['canDeleteChildren'] as core.bool?,
+          canDeleteTeamDrive: json_['canDeleteTeamDrive'] as core.bool?,
+          canDownload: json_['canDownload'] as core.bool?,
+          canEdit: json_['canEdit'] as core.bool?,
+          canListChildren: json_['canListChildren'] as core.bool?,
+          canManageMembers: json_['canManageMembers'] as core.bool?,
+          canReadRevisions: json_['canReadRevisions'] as core.bool?,
+          canRemoveChildren: json_['canRemoveChildren'] as core.bool?,
+          canRename: json_['canRename'] as core.bool?,
+          canRenameTeamDrive: json_['canRenameTeamDrive'] as core.bool?,
           canResetTeamDriveRestrictions:
-              json_.containsKey('canResetTeamDriveRestrictions')
-                  ? json_['canResetTeamDriveRestrictions'] as core.bool
-                  : null,
-          canShare: json_.containsKey('canShare')
-              ? json_['canShare'] as core.bool
-              : null,
-          canTrashChildren: json_.containsKey('canTrashChildren')
-              ? json_['canTrashChildren'] as core.bool
-              : null,
+              json_['canResetTeamDriveRestrictions'] as core.bool?,
+          canShare: json_['canShare'] as core.bool?,
+          canTrashChildren: json_['canTrashChildren'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8187,23 +7696,13 @@ class TeamDriveRestrictions {
   TeamDriveRestrictions.fromJson(core.Map json_)
       : this(
           adminManagedRestrictions:
-              json_.containsKey('adminManagedRestrictions')
-                  ? json_['adminManagedRestrictions'] as core.bool
-                  : null,
+              json_['adminManagedRestrictions'] as core.bool?,
           copyRequiresWriterPermission:
-              json_.containsKey('copyRequiresWriterPermission')
-                  ? json_['copyRequiresWriterPermission'] as core.bool
-                  : null,
-          domainUsersOnly: json_.containsKey('domainUsersOnly')
-              ? json_['domainUsersOnly'] as core.bool
-              : null,
-          sharingFoldersRequiresOrganizerPermission: json_
-                  .containsKey('sharingFoldersRequiresOrganizerPermission')
-              ? json_['sharingFoldersRequiresOrganizerPermission'] as core.bool
-              : null,
-          teamMembersOnly: json_.containsKey('teamMembersOnly')
-              ? json_['teamMembersOnly'] as core.bool
-              : null,
+              json_['copyRequiresWriterPermission'] as core.bool?,
+          domainUsersOnly: json_['domainUsersOnly'] as core.bool?,
+          sharingFoldersRequiresOrganizerPermission:
+              json_['sharingFoldersRequiresOrganizerPermission'] as core.bool?,
+          teamMembersOnly: json_['teamMembersOnly'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8297,32 +7796,24 @@ class TeamDrive {
                   json_['backgroundImageFile']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          backgroundImageLink: json_.containsKey('backgroundImageLink')
-              ? json_['backgroundImageLink'] as core.String
-              : null,
+          backgroundImageLink: json_['backgroundImageLink'] as core.String?,
           capabilities: json_.containsKey('capabilities')
               ? TeamDriveCapabilities.fromJson(
                   json_['capabilities'] as core.Map<core.String, core.dynamic>)
               : null,
-          colorRgb: json_.containsKey('colorRgb')
-              ? json_['colorRgb'] as core.String
-              : null,
+          colorRgb: json_['colorRgb'] as core.String?,
           createdTime: json_.containsKey('createdTime')
               ? core.DateTime.parse(json_['createdTime'] as core.String)
               : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          orgUnitId: json_.containsKey('orgUnitId')
-              ? json_['orgUnitId'] as core.String
-              : null,
+          id: json_['id'] as core.String?,
+          kind: json_['kind'] as core.String?,
+          name: json_['name'] as core.String?,
+          orgUnitId: json_['orgUnitId'] as core.String?,
           restrictions: json_.containsKey('restrictions')
               ? TeamDriveRestrictions.fromJson(
                   json_['restrictions'] as core.Map<core.String, core.dynamic>)
               : null,
-          themeId: json_.containsKey('themeId')
-              ? json_['themeId'] as core.String
-              : null,
+          themeId: json_['themeId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8373,10 +7864,8 @@ class TeamDriveList {
 
   TeamDriveList.fromJson(core.Map json_)
       : this(
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          kind: json_['kind'] as core.String?,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           teamDrives: json_.containsKey('teamDrives')
               ? (json_['teamDrives'] as core.List)
                   .map((value) => TeamDrive.fromJson(
@@ -8440,20 +7929,12 @@ class User {
 
   User.fromJson(core.Map json_)
       : this(
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          emailAddress: json_.containsKey('emailAddress')
-              ? json_['emailAddress'] as core.String
-              : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          me: json_.containsKey('me') ? json_['me'] as core.bool : null,
-          permissionId: json_.containsKey('permissionId')
-              ? json_['permissionId'] as core.String
-              : null,
-          photoLink: json_.containsKey('photoLink')
-              ? json_['photoLink'] as core.String
-              : null,
+          displayName: json_['displayName'] as core.String?,
+          emailAddress: json_['emailAddress'] as core.String?,
+          kind: json_['kind'] as core.String?,
+          me: json_['me'] as core.bool?,
+          permissionId: json_['permissionId'] as core.String?,
+          photoLink: json_['photoLink'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

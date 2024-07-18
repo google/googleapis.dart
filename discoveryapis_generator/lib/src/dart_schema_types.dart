@@ -357,6 +357,10 @@ class BooleanType extends PrimitiveDartSchemaType {
 
   @override
   String get declaration => '${imports.core.ref()}bool';
+
+  @override
+  String decodeFromMap(String jsonName) =>
+      "json_['${escapeString(jsonName)}'] as $declaration?";
 }
 
 class IntegerType extends PrimitiveDartSchemaType {
@@ -367,6 +371,10 @@ class IntegerType extends PrimitiveDartSchemaType {
 
   @override
   String get declaration => '${imports.core.ref()}int';
+
+  @override
+  String decodeFromMap(String jsonName) =>
+      "json_['${escapeString(jsonName)}'] as $declaration?";
 }
 
 class StringIntegerType extends PrimitiveDartSchemaType {
@@ -398,6 +406,11 @@ class DoubleType extends PrimitiveDartSchemaType {
   @override
   String jsonDecode(String json, {String? importName}) =>
       '($json as ${imports.core.ref()}num).toDouble()';
+
+  @override
+  String decodeFromMap(String jsonName) =>
+      "(json_['${escapeString(jsonName)}'] as ${imports.core.ref()}num?)"
+      '?.toDouble()';
 }
 
 class StringType extends PrimitiveDartSchemaType {
@@ -411,6 +424,14 @@ class StringType extends PrimitiveDartSchemaType {
 
   @override
   String get declaration => '${imports.core.ref()}String';
+
+  @override
+  String decodeFromMap(String jsonName) {
+    if (runtimeType == StringType) {
+      return "json_['${escapeString(jsonName)}'] as $declaration?";
+    }
+    return super.decodeFromMap(jsonName);
+  }
 }
 
 /// Here to support the fix for https://github.com/google/googleapis.dart/issues/211
@@ -456,7 +477,7 @@ class EnumType extends StringType {
           "'NULL_VALUE' : null";
     }
 
-    return super.decodeFromMap(jsonName);
+    return "json_['${escapeString(jsonName)}'] as $declaration?";
   }
 }
 
@@ -514,6 +535,9 @@ class AnyType extends PrimitiveDartSchemaType {
 
   @override
   String jsonDecode(String json, {String? importName}) => json;
+
+  @override
+  String decodeFromMap(String jsonName) => "json_['${escapeString(jsonName)}']";
 }
 
 /// Represents an unnamed List<T> type with a given `T`.

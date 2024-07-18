@@ -196,29 +196,17 @@ class PlatformSummary {
 
   PlatformSummary.fromJson(core.Map json_)
       : this(
-          betterAdsStatus: json_.containsKey('betterAdsStatus')
-              ? json_['betterAdsStatus'] as core.String
-              : null,
-          enforcementTime: json_.containsKey('enforcementTime')
-              ? json_['enforcementTime'] as core.String
-              : null,
-          filterStatus: json_.containsKey('filterStatus')
-              ? json_['filterStatus'] as core.String
-              : null,
-          lastChangeTime: json_.containsKey('lastChangeTime')
-              ? json_['lastChangeTime'] as core.String
-              : null,
+          betterAdsStatus: json_['betterAdsStatus'] as core.String?,
+          enforcementTime: json_['enforcementTime'] as core.String?,
+          filterStatus: json_['filterStatus'] as core.String?,
+          lastChangeTime: json_['lastChangeTime'] as core.String?,
           region: json_.containsKey('region')
               ? (json_['region'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          reportUrl: json_.containsKey('reportUrl')
-              ? json_['reportUrl'] as core.String
-              : null,
-          underReview: json_.containsKey('underReview')
-              ? json_['underReview'] as core.bool
-              : null,
+          reportUrl: json_['reportUrl'] as core.String?,
+          underReview: json_['underReview'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -259,9 +247,7 @@ class SiteSummaryResponse {
               ? PlatformSummary.fromJson(
                   json_['mobileSummary'] as core.Map<core.String, core.dynamic>)
               : null,
-          reviewedSite: json_.containsKey('reviewedSite')
-              ? json_['reviewedSite'] as core.String
-              : null,
+          reviewedSite: json_['reviewedSite'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

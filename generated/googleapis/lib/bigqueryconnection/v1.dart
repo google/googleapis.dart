@@ -489,9 +489,7 @@ class AuditConfig {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          service: json_.containsKey('service')
-              ? json_['service'] as core.String
-              : null,
+          service: json_['service'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -527,12 +525,8 @@ class AwsAccessRole {
 
   AwsAccessRole.fromJson(core.Map json_)
       : this(
-          iamRoleId: json_.containsKey('iamRoleId')
-              ? json_['iamRoleId'] as core.String
-              : null,
-          identity: json_.containsKey('identity')
-              ? json_['identity'] as core.String
-              : null,
+          iamRoleId: json_['iamRoleId'] as core.String?,
+          identity: json_['identity'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -612,28 +606,14 @@ class AzureProperties {
 
   AzureProperties.fromJson(core.Map json_)
       : this(
-          application: json_.containsKey('application')
-              ? json_['application'] as core.String
-              : null,
-          clientId: json_.containsKey('clientId')
-              ? json_['clientId'] as core.String
-              : null,
-          customerTenantId: json_.containsKey('customerTenantId')
-              ? json_['customerTenantId'] as core.String
-              : null,
+          application: json_['application'] as core.String?,
+          clientId: json_['clientId'] as core.String?,
+          customerTenantId: json_['customerTenantId'] as core.String?,
           federatedApplicationClientId:
-              json_.containsKey('federatedApplicationClientId')
-                  ? json_['federatedApplicationClientId'] as core.String
-                  : null,
-          identity: json_.containsKey('identity')
-              ? json_['identity'] as core.String
-              : null,
-          objectId: json_.containsKey('objectId')
-              ? json_['objectId'] as core.String
-              : null,
-          redirectUri: json_.containsKey('redirectUri')
-              ? json_['redirectUri'] as core.String
-              : null,
+              json_['federatedApplicationClientId'] as core.String?,
+          identity: json_['identity'] as core.String?,
+          objectId: json_['objectId'] as core.String?,
+          redirectUri: json_['redirectUri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -745,7 +725,7 @@ class Binding {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          role: json_.containsKey('role') ? json_['role'] as core.String : null,
+          role: json_['role'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -776,9 +756,7 @@ class CloudResourceProperties {
 
   CloudResourceProperties.fromJson(core.Map json_)
       : this(
-          serviceAccountId: json_.containsKey('serviceAccountId')
-              ? json_['serviceAccountId'] as core.String
-              : null,
+          serviceAccountId: json_['serviceAccountId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -842,24 +820,12 @@ class CloudSpannerProperties {
 
   CloudSpannerProperties.fromJson(core.Map json_)
       : this(
-          database: json_.containsKey('database')
-              ? json_['database'] as core.String
-              : null,
-          databaseRole: json_.containsKey('databaseRole')
-              ? json_['databaseRole'] as core.String
-              : null,
-          maxParallelism: json_.containsKey('maxParallelism')
-              ? json_['maxParallelism'] as core.int
-              : null,
-          useDataBoost: json_.containsKey('useDataBoost')
-              ? json_['useDataBoost'] as core.bool
-              : null,
-          useParallelism: json_.containsKey('useParallelism')
-              ? json_['useParallelism'] as core.bool
-              : null,
-          useServerlessAnalytics: json_.containsKey('useServerlessAnalytics')
-              ? json_['useServerlessAnalytics'] as core.bool
-              : null,
+          database: json_['database'] as core.String?,
+          databaseRole: json_['databaseRole'] as core.String?,
+          maxParallelism: json_['maxParallelism'] as core.int?,
+          useDataBoost: json_['useDataBoost'] as core.bool?,
+          useParallelism: json_['useParallelism'] as core.bool?,
+          useServerlessAnalytics: json_['useServerlessAnalytics'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -888,12 +854,8 @@ class CloudSqlCredential {
 
   CloudSqlCredential.fromJson(core.Map json_)
       : this(
-          password: json_.containsKey('password')
-              ? json_['password'] as core.String
-              : null,
-          username: json_.containsKey('username')
-              ? json_['username'] as core.String
-              : null,
+          password: json_['password'] as core.String?,
+          username: json_['username'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -945,16 +907,10 @@ class CloudSqlProperties {
               ? CloudSqlCredential.fromJson(
                   json_['credential'] as core.Map<core.String, core.dynamic>)
               : null,
-          database: json_.containsKey('database')
-              ? json_['database'] as core.String
-              : null,
-          instanceId: json_.containsKey('instanceId')
-              ? json_['instanceId'] as core.String
-              : null,
-          serviceAccountId: json_.containsKey('serviceAccountId')
-              ? json_['serviceAccountId'] as core.String
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          database: json_['database'] as core.String?,
+          instanceId: json_['instanceId'] as core.String?,
+          serviceAccountId: json_['serviceAccountId'] as core.String?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1079,25 +1035,13 @@ class Connection {
               ? ConnectorConfiguration.fromJson(
                   json_['configuration'] as core.Map<core.String, core.dynamic>)
               : null,
-          creationTime: json_.containsKey('creationTime')
-              ? json_['creationTime'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          friendlyName: json_.containsKey('friendlyName')
-              ? json_['friendlyName'] as core.String
-              : null,
-          hasCredential: json_.containsKey('hasCredential')
-              ? json_['hasCredential'] as core.bool
-              : null,
-          kmsKeyName: json_.containsKey('kmsKeyName')
-              ? json_['kmsKeyName'] as core.String
-              : null,
-          lastModifiedTime: json_.containsKey('lastModifiedTime')
-              ? json_['lastModifiedTime'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          creationTime: json_['creationTime'] as core.String?,
+          description: json_['description'] as core.String?,
+          friendlyName: json_['friendlyName'] as core.String?,
+          hasCredential: json_['hasCredential'] as core.bool?,
+          kmsKeyName: json_['kmsKeyName'] as core.String?,
+          lastModifiedTime: json_['lastModifiedTime'] as core.String?,
+          name: json_['name'] as core.String?,
           salesforceDataCloud: json_.containsKey('salesforceDataCloud')
               ? SalesforceDataCloudProperties.fromJson(
                   json_['salesforceDataCloud']
@@ -1167,9 +1111,7 @@ class ConnectorConfiguration {
                   json_['authentication']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          connectorId: json_.containsKey('connectorId')
-              ? json_['connectorId'] as core.String
-              : null,
+          connectorId: json_['connectorId'] as core.String?,
           endpoint: json_.containsKey('endpoint')
               ? ConnectorConfigurationEndpoint.fromJson(
                   json_['endpoint'] as core.Map<core.String, core.dynamic>)
@@ -1210,12 +1152,8 @@ class ConnectorConfigurationAsset {
 
   ConnectorConfigurationAsset.fromJson(core.Map json_)
       : this(
-          database: json_.containsKey('database')
-              ? json_['database'] as core.String
-              : null,
-          googleCloudResource: json_.containsKey('googleCloudResource')
-              ? json_['googleCloudResource'] as core.String
-              : null,
+          database: json_['database'] as core.String?,
+          googleCloudResource: json_['googleCloudResource'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1246,9 +1184,7 @@ class ConnectorConfigurationAuthentication {
 
   ConnectorConfigurationAuthentication.fromJson(core.Map json_)
       : this(
-          serviceAccount: json_.containsKey('serviceAccount')
-              ? json_['serviceAccount'] as core.String
-              : null,
+          serviceAccount: json_['serviceAccount'] as core.String?,
           usernamePassword: json_.containsKey('usernamePassword')
               ? ConnectorConfigurationUsernamePassword.fromJson(
                   json_['usernamePassword']
@@ -1275,9 +1211,7 @@ class ConnectorConfigurationEndpoint {
 
   ConnectorConfigurationEndpoint.fromJson(core.Map json_)
       : this(
-          hostPort: json_.containsKey('hostPort')
-              ? json_['hostPort'] as core.String
-              : null,
+          hostPort: json_['hostPort'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1323,9 +1257,7 @@ class ConnectorConfigurationPrivateServiceConnect {
 
   ConnectorConfigurationPrivateServiceConnect.fromJson(core.Map json_)
       : this(
-          networkAttachment: json_.containsKey('networkAttachment')
-              ? json_['networkAttachment'] as core.String
-              : null,
+          networkAttachment: json_['networkAttachment'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1358,12 +1290,8 @@ class ConnectorConfigurationSecret {
 
   ConnectorConfigurationSecret.fromJson(core.Map json_)
       : this(
-          plaintext: json_.containsKey('plaintext')
-              ? json_['plaintext'] as core.String
-              : null,
-          secretType: json_.containsKey('secretType')
-              ? json_['secretType'] as core.String
-              : null,
+          plaintext: json_['plaintext'] as core.String?,
+          secretType: json_['secretType'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1395,9 +1323,7 @@ class ConnectorConfigurationUsernamePassword {
               ? ConnectorConfigurationSecret.fromJson(
                   json_['password'] as core.Map<core.String, core.dynamic>)
               : null,
-          username: json_.containsKey('username')
-              ? json_['username'] as core.String
-              : null,
+          username: json_['username'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1481,9 +1407,7 @@ class ListConnectionsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1508,9 +1432,7 @@ class MetastoreServiceConfig {
 
   MetastoreServiceConfig.fromJson(core.Map json_)
       : this(
-          metastoreService: json_.containsKey('metastoreService')
-              ? json_['metastoreService'] as core.String
-              : null,
+          metastoreService: json_['metastoreService'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1625,10 +1547,8 @@ class Policy {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          version: json_.containsKey('version')
-              ? json_['version'] as core.int
-              : null,
+          etag: json_['etag'] as core.String?,
+          version: json_['version'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1663,15 +1583,9 @@ class SalesforceDataCloudProperties {
 
   SalesforceDataCloudProperties.fromJson(core.Map json_)
       : this(
-          identity: json_.containsKey('identity')
-              ? json_['identity'] as core.String
-              : null,
-          instanceUri: json_.containsKey('instanceUri')
-              ? json_['instanceUri'] as core.String
-              : null,
-          tenantId: json_.containsKey('tenantId')
-              ? json_['tenantId'] as core.String
-              : null,
+          identity: json_['identity'] as core.String?,
+          instanceUri: json_['instanceUri'] as core.String?,
+          tenantId: json_['tenantId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1707,9 +1621,7 @@ class SetIamPolicyRequest {
               ? Policy.fromJson(
                   json_['policy'] as core.Map<core.String, core.dynamic>)
               : null,
-          updateMask: json_.containsKey('updateMask')
-              ? json_['updateMask'] as core.String
-              : null,
+          updateMask: json_['updateMask'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1735,9 +1647,7 @@ class SparkHistoryServerConfig {
 
   SparkHistoryServerConfig.fromJson(core.Map json_)
       : this(
-          dataprocCluster: json_.containsKey('dataprocCluster')
-              ? json_['dataprocCluster'] as core.String
-              : null,
+          dataprocCluster: json_['dataprocCluster'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1782,9 +1692,7 @@ class SparkProperties {
               ? MetastoreServiceConfig.fromJson(json_['metastoreServiceConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          serviceAccountId: json_.containsKey('serviceAccountId')
-              ? json_['serviceAccountId'] as core.String
-              : null,
+          serviceAccountId: json_['serviceAccountId'] as core.String?,
           sparkHistoryServerConfig:
               json_.containsKey('sparkHistoryServerConfig')
                   ? SparkHistoryServerConfig.fromJson(

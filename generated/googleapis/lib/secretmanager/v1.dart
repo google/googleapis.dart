@@ -1645,7 +1645,7 @@ class AccessSecretVersionResponse {
 
   AccessSecretVersionResponse.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           payload: json_.containsKey('payload')
               ? SecretPayload.fromJson(
                   json_['payload'] as core.Map<core.String, core.dynamic>)
@@ -1722,9 +1722,7 @@ class AuditConfig {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          service: json_.containsKey('service')
-              ? json_['service'] as core.String
-              : null,
+          service: json_['service'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1902,7 +1900,7 @@ class Binding {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          role: json_.containsKey('role') ? json_['role'] as core.String : null,
+          role: json_['role'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1933,9 +1931,7 @@ class CustomerManagedEncryption {
 
   CustomerManagedEncryption.fromJson(core.Map json_)
       : this(
-          kmsKeyName: json_.containsKey('kmsKeyName')
-              ? json_['kmsKeyName'] as core.String
-              : null,
+          kmsKeyName: json_['kmsKeyName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1958,9 +1954,7 @@ class CustomerManagedEncryptionStatus {
 
   CustomerManagedEncryptionStatus.fromJson(core.Map json_)
       : this(
-          kmsKeyVersionName: json_.containsKey('kmsKeyVersionName')
-              ? json_['kmsKeyVersionName'] as core.String
-              : null,
+          kmsKeyVersionName: json_['kmsKeyVersionName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2026,9 +2020,7 @@ class ListLocationsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2061,12 +2053,8 @@ class ListSecretVersionsResponse {
 
   ListSecretVersionsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
-          totalSize: json_.containsKey('totalSize')
-              ? json_['totalSize'] as core.int
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          totalSize: json_['totalSize'] as core.int?,
           versions: json_.containsKey('versions')
               ? (json_['versions'] as core.List)
                   .map((value) => SecretVersion.fromJson(
@@ -2105,18 +2093,14 @@ class ListSecretsResponse {
 
   ListSecretsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           secrets: json_.containsKey('secrets')
               ? (json_['secrets'] as core.List)
                   .map((value) => Secret.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          totalSize: json_.containsKey('totalSize')
-              ? json_['totalSize'] as core.int
-              : null,
+          totalSize: json_['totalSize'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2236,10 +2220,8 @@ class Policy {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          version: json_.containsKey('version')
-              ? json_['version'] as core.int
-              : null,
+          etag: json_['etag'] as core.String?,
+          version: json_['version'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2280,9 +2262,7 @@ class Replica {
                       json_['customerManagedEncryption']
                           as core.Map<core.String, core.dynamic>)
                   : null,
-          location: json_.containsKey('location')
-              ? json_['location'] as core.String
-              : null,
+          location: json_['location'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2321,9 +2301,7 @@ class ReplicaStatus {
                       json_['customerManagedEncryption']
                           as core.Map<core.String, core.dynamic>)
                   : null,
-          location: json_.containsKey('location')
-              ? json_['location'] as core.String
-              : null,
+          location: json_['location'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2432,12 +2410,8 @@ class Rotation {
 
   Rotation.fromJson(core.Map json_)
       : this(
-          nextRotationTime: json_.containsKey('nextRotationTime')
-              ? json_['nextRotationTime'] as core.String
-              : null,
-          rotationPeriod: json_.containsKey('rotationPeriod')
-              ? json_['rotationPeriod'] as core.String
-              : null,
+          nextRotationTime: json_['nextRotationTime'] as core.String?,
+          rotationPeriod: json_['rotationPeriod'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2584,19 +2558,15 @@ class Secret {
                   ),
                 )
               : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
+          createTime: json_['createTime'] as core.String?,
           customerManagedEncryption:
               json_.containsKey('customerManagedEncryption')
                   ? CustomerManagedEncryption.fromJson(
                       json_['customerManagedEncryption']
                           as core.Map<core.String, core.dynamic>)
                   : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          expireTime: json_.containsKey('expireTime')
-              ? json_['expireTime'] as core.String
-              : null,
+          etag: json_['etag'] as core.String?,
+          expireTime: json_['expireTime'] as core.String?,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -2605,7 +2575,7 @@ class Secret {
                   ),
                 )
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           replication: json_.containsKey('replication')
               ? Replication.fromJson(
                   json_['replication'] as core.Map<core.String, core.dynamic>)
@@ -2620,7 +2590,7 @@ class Secret {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          ttl: json_.containsKey('ttl') ? json_['ttl'] as core.String : null,
+          ttl: json_['ttl'] as core.String?,
           versionAliases: json_.containsKey('versionAliases')
               ? (json_['versionAliases'] as core.Map<core.String, core.dynamic>)
                   .map(
@@ -2630,9 +2600,7 @@ class Secret {
                   ),
                 )
               : null,
-          versionDestroyTtl: json_.containsKey('versionDestroyTtl')
-              ? json_['versionDestroyTtl'] as core.String
-              : null,
+          versionDestroyTtl: json_['versionDestroyTtl'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2690,10 +2658,8 @@ class SecretPayload {
 
   SecretPayload.fromJson(core.Map json_)
       : this(
-          data: json_.containsKey('data') ? json_['data'] as core.String : null,
-          dataCrc32c: json_.containsKey('dataCrc32c')
-              ? json_['dataCrc32c'] as core.String
-              : null,
+          data: json_['data'] as core.String?,
+          dataCrc32c: json_['dataCrc32c'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2784,32 +2750,23 @@ class SecretVersion {
   SecretVersion.fromJson(core.Map json_)
       : this(
           clientSpecifiedPayloadChecksum:
-              json_.containsKey('clientSpecifiedPayloadChecksum')
-                  ? json_['clientSpecifiedPayloadChecksum'] as core.bool
-                  : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
+              json_['clientSpecifiedPayloadChecksum'] as core.bool?,
+          createTime: json_['createTime'] as core.String?,
           customerManagedEncryption:
               json_.containsKey('customerManagedEncryption')
                   ? CustomerManagedEncryptionStatus.fromJson(
                       json_['customerManagedEncryption']
                           as core.Map<core.String, core.dynamic>)
                   : null,
-          destroyTime: json_.containsKey('destroyTime')
-              ? json_['destroyTime'] as core.String
-              : null,
-          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          destroyTime: json_['destroyTime'] as core.String?,
+          etag: json_['etag'] as core.String?,
+          name: json_['name'] as core.String?,
           replicationStatus: json_.containsKey('replicationStatus')
               ? ReplicationStatus.fromJson(json_['replicationStatus']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          scheduledDestroyTime: json_.containsKey('scheduledDestroyTime')
-              ? json_['scheduledDestroyTime'] as core.String
-              : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
+          scheduledDestroyTime: json_['scheduledDestroyTime'] as core.String?,
+          state: json_['state'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2854,9 +2811,7 @@ class SetIamPolicyRequest {
               ? Policy.fromJson(
                   json_['policy'] as core.Map<core.String, core.dynamic>)
               : null,
-          updateMask: json_.containsKey('updateMask')
-              ? json_['updateMask'] as core.String
-              : null,
+          updateMask: json_['updateMask'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2890,7 +2845,7 @@ class Topic {
 
   Topic.fromJson(core.Map json_)
       : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

@@ -1565,14 +1565,12 @@ class AddDnsRecordSetRequest {
 
   AddDnsRecordSetRequest.fromJson(core.Map json_)
       : this(
-          consumerNetwork: json_.containsKey('consumerNetwork')
-              ? json_['consumerNetwork'] as core.String
-              : null,
+          consumerNetwork: json_['consumerNetwork'] as core.String?,
           dnsRecordSet: json_.containsKey('dnsRecordSet')
               ? DnsRecordSet.fromJson(
                   json_['dnsRecordSet'] as core.Map<core.String, core.dynamic>)
               : null,
-          zone: json_.containsKey('zone') ? json_['zone'] as core.String : null,
+          zone: json_['zone'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1619,13 +1617,9 @@ class AddDnsZoneRequest {
 
   AddDnsZoneRequest.fromJson(core.Map json_)
       : this(
-          consumerNetwork: json_.containsKey('consumerNetwork')
-              ? json_['consumerNetwork'] as core.String
-              : null,
-          dnsSuffix: json_.containsKey('dnsSuffix')
-              ? json_['dnsSuffix'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          consumerNetwork: json_['consumerNetwork'] as core.String?,
+          dnsSuffix: json_['dnsSuffix'] as core.String?,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1658,9 +1652,7 @@ class AddRolesRequest {
 
   AddRolesRequest.fromJson(core.Map json_)
       : this(
-          consumerNetwork: json_.containsKey('consumerNetwork')
-              ? json_['consumerNetwork'] as core.String
-              : null,
+          consumerNetwork: json_['consumerNetwork'] as core.String?,
           policyBinding: json_.containsKey('policyBinding')
               ? (json_['policyBinding'] as core.List)
                   .map((value) => PolicyBinding.fromJson(
@@ -1868,72 +1860,43 @@ class AddSubnetworkRequest {
   AddSubnetworkRequest.fromJson(core.Map json_)
       : this(
           allowSubnetCidrRoutesOverlap:
-              json_.containsKey('allowSubnetCidrRoutesOverlap')
-                  ? json_['allowSubnetCidrRoutesOverlap'] as core.bool
-                  : null,
+              json_['allowSubnetCidrRoutesOverlap'] as core.bool?,
           checkServiceNetworkingUsePermission:
-              json_.containsKey('checkServiceNetworkingUsePermission')
-                  ? json_['checkServiceNetworkingUsePermission'] as core.bool
-                  : null,
+              json_['checkServiceNetworkingUsePermission'] as core.bool?,
           computeIdempotencyWindow:
-              json_.containsKey('computeIdempotencyWindow')
-                  ? json_['computeIdempotencyWindow'] as core.String
-                  : null,
-          consumer: json_.containsKey('consumer')
-              ? json_['consumer'] as core.String
-              : null,
-          consumerNetwork: json_.containsKey('consumerNetwork')
-              ? json_['consumerNetwork'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          internalRange: json_.containsKey('internalRange')
-              ? json_['internalRange'] as core.String
-              : null,
-          ipPrefixLength: json_.containsKey('ipPrefixLength')
-              ? json_['ipPrefixLength'] as core.int
-              : null,
+              json_['computeIdempotencyWindow'] as core.String?,
+          consumer: json_['consumer'] as core.String?,
+          consumerNetwork: json_['consumerNetwork'] as core.String?,
+          description: json_['description'] as core.String?,
+          internalRange: json_['internalRange'] as core.String?,
+          ipPrefixLength: json_['ipPrefixLength'] as core.int?,
           outsideAllocationPublicIpRange:
-              json_.containsKey('outsideAllocationPublicIpRange')
-                  ? json_['outsideAllocationPublicIpRange'] as core.String
-                  : null,
-          privateIpv6GoogleAccess: json_.containsKey('privateIpv6GoogleAccess')
-              ? json_['privateIpv6GoogleAccess'] as core.String
-              : null,
-          purpose: json_.containsKey('purpose')
-              ? json_['purpose'] as core.String
-              : null,
-          region: json_.containsKey('region')
-              ? json_['region'] as core.String
-              : null,
-          requestedAddress: json_.containsKey('requestedAddress')
-              ? json_['requestedAddress'] as core.String
-              : null,
+              json_['outsideAllocationPublicIpRange'] as core.String?,
+          privateIpv6GoogleAccess:
+              json_['privateIpv6GoogleAccess'] as core.String?,
+          purpose: json_['purpose'] as core.String?,
+          region: json_['region'] as core.String?,
+          requestedAddress: json_['requestedAddress'] as core.String?,
           requestedRanges: json_.containsKey('requestedRanges')
               ? (json_['requestedRanges'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          role: json_.containsKey('role') ? json_['role'] as core.String : null,
+          role: json_['role'] as core.String?,
           secondaryIpRangeSpecs: json_.containsKey('secondaryIpRangeSpecs')
               ? (json_['secondaryIpRangeSpecs'] as core.List)
                   .map((value) => SecondaryIpRangeSpec.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          subnetwork: json_.containsKey('subnetwork')
-              ? json_['subnetwork'] as core.String
-              : null,
+          subnetwork: json_['subnetwork'] as core.String?,
           subnetworkUsers: json_.containsKey('subnetworkUsers')
               ? (json_['subnetworkUsers'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
           useCustomComputeIdempotencyWindow:
-              json_.containsKey('useCustomComputeIdempotencyWindow')
-                  ? json_['useCustomComputeIdempotencyWindow'] as core.bool
-                  : null,
+              json_['useCustomComputeIdempotencyWindow'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1990,15 +1953,9 @@ class CloudSQLConfig {
 
   CloudSQLConfig.fromJson(core.Map json_)
       : this(
-          service: json_.containsKey('service')
-              ? json_['service'] as core.String
-              : null,
-          umbrellaNetwork: json_.containsKey('umbrellaNetwork')
-              ? json_['umbrellaNetwork'] as core.String
-              : null,
-          umbrellaProject: json_.containsKey('umbrellaProject')
-              ? json_['umbrellaProject'] as core.String
-              : null,
+          service: json_['service'] as core.String?,
+          umbrellaNetwork: json_['umbrellaNetwork'] as core.String?,
+          umbrellaProject: json_['umbrellaProject'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2055,20 +2012,14 @@ class Connection {
 
   Connection.fromJson(core.Map json_)
       : this(
-          network: json_.containsKey('network')
-              ? json_['network'] as core.String
-              : null,
-          peering: json_.containsKey('peering')
-              ? json_['peering'] as core.String
-              : null,
+          network: json_['network'] as core.String?,
+          peering: json_['peering'] as core.String?,
           reservedPeeringRanges: json_.containsKey('reservedPeeringRanges')
               ? (json_['reservedPeeringRanges'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          service: json_.containsKey('service')
-              ? json_['service'] as core.String
-              : null,
+          service: json_['service'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2165,40 +2116,22 @@ class ConsumerConfig {
                   .toList()
               : null,
           consumerExportCustomRoutes:
-              json_.containsKey('consumerExportCustomRoutes')
-                  ? json_['consumerExportCustomRoutes'] as core.bool
-                  : null,
+              json_['consumerExportCustomRoutes'] as core.bool?,
           consumerExportSubnetRoutesWithPublicIp:
-              json_.containsKey('consumerExportSubnetRoutesWithPublicIp')
-                  ? json_['consumerExportSubnetRoutesWithPublicIp'] as core.bool
-                  : null,
+              json_['consumerExportSubnetRoutesWithPublicIp'] as core.bool?,
           consumerImportCustomRoutes:
-              json_.containsKey('consumerImportCustomRoutes')
-                  ? json_['consumerImportCustomRoutes'] as core.bool
-                  : null,
+              json_['consumerImportCustomRoutes'] as core.bool?,
           consumerImportSubnetRoutesWithPublicIp:
-              json_.containsKey('consumerImportSubnetRoutesWithPublicIp')
-                  ? json_['consumerImportSubnetRoutesWithPublicIp'] as core.bool
-                  : null,
+              json_['consumerImportSubnetRoutesWithPublicIp'] as core.bool?,
           producerExportCustomRoutes:
-              json_.containsKey('producerExportCustomRoutes')
-                  ? json_['producerExportCustomRoutes'] as core.bool
-                  : null,
+              json_['producerExportCustomRoutes'] as core.bool?,
           producerExportSubnetRoutesWithPublicIp:
-              json_.containsKey('producerExportSubnetRoutesWithPublicIp')
-                  ? json_['producerExportSubnetRoutesWithPublicIp'] as core.bool
-                  : null,
+              json_['producerExportSubnetRoutesWithPublicIp'] as core.bool?,
           producerImportCustomRoutes:
-              json_.containsKey('producerImportCustomRoutes')
-                  ? json_['producerImportCustomRoutes'] as core.bool
-                  : null,
+              json_['producerImportCustomRoutes'] as core.bool?,
           producerImportSubnetRoutesWithPublicIp:
-              json_.containsKey('producerImportSubnetRoutesWithPublicIp')
-                  ? json_['producerImportSubnetRoutesWithPublicIp'] as core.bool
-                  : null,
-          producerNetwork: json_.containsKey('producerNetwork')
-              ? json_['producerNetwork'] as core.String
-              : null,
+              json_['producerImportSubnetRoutesWithPublicIp'] as core.bool?,
+          producerNetwork: json_['producerNetwork'] as core.String?,
           reservedRanges: json_.containsKey('reservedRanges')
               ? (json_['reservedRanges'] as core.List)
                   .map((value) =>
@@ -2213,9 +2146,7 @@ class ConsumerConfig {
                   .toList()
               : null,
           vpcScReferenceArchitectureEnabled:
-              json_.containsKey('vpcScReferenceArchitectureEnabled')
-                  ? json_['vpcScReferenceArchitectureEnabled'] as core.bool
-                  : null,
+              json_['vpcScReferenceArchitectureEnabled'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2265,9 +2196,7 @@ class ConsumerProject {
 
   ConsumerProject.fromJson(core.Map json_)
       : this(
-          projectNum: json_.containsKey('projectNum')
-              ? json_['projectNum'] as core.String
-              : null,
+          projectNum: json_['projectNum'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2294,9 +2223,7 @@ class DeleteConnectionRequest {
 
   DeleteConnectionRequest.fromJson(core.Map json_)
       : this(
-          consumerNetwork: json_.containsKey('consumerNetwork')
-              ? json_['consumerNetwork'] as core.String
-              : null,
+          consumerNetwork: json_['consumerNetwork'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2346,11 +2273,9 @@ class DnsRecordSet {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          domain: json_.containsKey('domain')
-              ? json_['domain'] as core.String
-              : null,
-          ttl: json_.containsKey('ttl') ? json_['ttl'] as core.String : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          domain: json_['domain'] as core.String?,
+          ttl: json_['ttl'] as core.String?,
+          type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2382,10 +2307,8 @@ class DnsZone {
 
   DnsZone.fromJson(core.Map json_)
       : this(
-          dnsSuffix: json_.containsKey('dnsSuffix')
-              ? json_['dnsSuffix'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          dnsSuffix: json_['dnsSuffix'] as core.String?,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2498,13 +2421,9 @@ class GoogleCloudServicenetworkingV1ConsumerConfigReservedRange {
   GoogleCloudServicenetworkingV1ConsumerConfigReservedRange.fromJson(
       core.Map json_)
       : this(
-          address: json_.containsKey('address')
-              ? json_['address'] as core.String
-              : null,
-          ipPrefixLength: json_.containsKey('ipPrefixLength')
-              ? json_['ipPrefixLength'] as core.int
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          address: json_['address'] as core.String?,
+          ipPrefixLength: json_['ipPrefixLength'] as core.int?,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2604,9 +2523,7 @@ class ListOperationsResponse {
 
   ListOperationsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
+          nextPageToken: json_['nextPageToken'] as core.String?,
           operations: json_.containsKey('operations')
               ? (json_['operations'] as core.List)
                   .map((value) => Operation.fromJson(
@@ -2698,7 +2615,7 @@ class Operation {
 
   Operation.fromJson(core.Map json_)
       : this(
-          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          done: json_['done'] as core.bool?,
           error: json_.containsKey('error')
               ? Status.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
@@ -2706,7 +2623,7 @@ class Operation {
           metadata: json_.containsKey('metadata')
               ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          name: json_['name'] as core.String?,
           response: json_.containsKey('response')
               ? json_['response'] as core.Map<core.String, core.dynamic>
               : null,
@@ -2743,10 +2660,8 @@ class PeeredDnsDomain {
 
   PeeredDnsDomain.fromJson(core.Map json_)
       : this(
-          dnsSuffix: json_.containsKey('dnsSuffix')
-              ? json_['dnsSuffix'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          dnsSuffix: json_['dnsSuffix'] as core.String?,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2787,10 +2702,8 @@ class PolicyBinding {
 
   PolicyBinding.fromJson(core.Map json_)
       : this(
-          member: json_.containsKey('member')
-              ? json_['member'] as core.String
-              : null,
-          role: json_.containsKey('role') ? json_['role'] as core.String : null,
+          member: json_['member'] as core.String?,
+          role: json_['role'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2850,9 +2763,7 @@ class RangeReservation {
 
   RangeReservation.fromJson(core.Map json_)
       : this(
-          ipPrefixLength: json_.containsKey('ipPrefixLength')
-              ? json_['ipPrefixLength'] as core.int
-              : null,
+          ipPrefixLength: json_['ipPrefixLength'] as core.int?,
           requestedRanges: json_.containsKey('requestedRanges')
               ? (json_['requestedRanges'] as core.List)
                   .map((value) => value as core.String)
@@ -2916,14 +2827,12 @@ class RemoveDnsRecordSetRequest {
 
   RemoveDnsRecordSetRequest.fromJson(core.Map json_)
       : this(
-          consumerNetwork: json_.containsKey('consumerNetwork')
-              ? json_['consumerNetwork'] as core.String
-              : null,
+          consumerNetwork: json_['consumerNetwork'] as core.String?,
           dnsRecordSet: json_.containsKey('dnsRecordSet')
               ? DnsRecordSet.fromJson(
                   json_['dnsRecordSet'] as core.Map<core.String, core.dynamic>)
               : null,
-          zone: json_.containsKey('zone') ? json_['zone'] as core.String : null,
+          zone: json_['zone'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2958,10 +2867,8 @@ class RemoveDnsZoneRequest {
 
   RemoveDnsZoneRequest.fromJson(core.Map json_)
       : this(
-          consumerNetwork: json_.containsKey('consumerNetwork')
-              ? json_['consumerNetwork'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          consumerNetwork: json_['consumerNetwork'] as core.String?,
+          name: json_['name'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2996,12 +2903,8 @@ class SearchRangeRequest {
 
   SearchRangeRequest.fromJson(core.Map json_)
       : this(
-          ipPrefixLength: json_.containsKey('ipPrefixLength')
-              ? json_['ipPrefixLength'] as core.int
-              : null,
-          network: json_.containsKey('network')
-              ? json_['network'] as core.String
-              : null,
+          ipPrefixLength: json_['ipPrefixLength'] as core.int?,
+          network: json_['network'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3024,12 +2927,8 @@ class SecondaryIpRange {
 
   SecondaryIpRange.fromJson(core.Map json_)
       : this(
-          ipCidrRange: json_.containsKey('ipCidrRange')
-              ? json_['ipCidrRange'] as core.String
-              : null,
-          rangeName: json_.containsKey('rangeName')
-              ? json_['rangeName'] as core.String
-              : null,
+          ipCidrRange: json_['ipCidrRange'] as core.String?,
+          rangeName: json_['rangeName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3083,19 +2982,11 @@ class SecondaryIpRangeSpec {
 
   SecondaryIpRangeSpec.fromJson(core.Map json_)
       : this(
-          ipPrefixLength: json_.containsKey('ipPrefixLength')
-              ? json_['ipPrefixLength'] as core.int
-              : null,
+          ipPrefixLength: json_['ipPrefixLength'] as core.int?,
           outsideAllocationPublicIpRange:
-              json_.containsKey('outsideAllocationPublicIpRange')
-                  ? json_['outsideAllocationPublicIpRange'] as core.String
-                  : null,
-          rangeName: json_.containsKey('rangeName')
-              ? json_['rangeName'] as core.String
-              : null,
-          requestedAddress: json_.containsKey('requestedAddress')
-              ? json_['requestedAddress'] as core.String
-              : null,
+              json_['outsideAllocationPublicIpRange'] as core.String?,
+          rangeName: json_['rangeName'] as core.String?,
+          requestedAddress: json_['requestedAddress'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3154,19 +3045,11 @@ class Subnetwork {
 
   Subnetwork.fromJson(core.Map json_)
       : this(
-          ipCidrRange: json_.containsKey('ipCidrRange')
-              ? json_['ipCidrRange'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          network: json_.containsKey('network')
-              ? json_['network'] as core.String
-              : null,
-          outsideAllocation: json_.containsKey('outsideAllocation')
-              ? json_['outsideAllocation'] as core.bool
-              : null,
-          region: json_.containsKey('region')
-              ? json_['region'] as core.String
-              : null,
+          ipCidrRange: json_['ipCidrRange'] as core.String?,
+          name: json_['name'] as core.String?,
+          network: json_['network'] as core.String?,
+          outsideAllocation: json_['outsideAllocation'] as core.bool?,
+          region: json_['region'] as core.String?,
           secondaryIpRanges: json_.containsKey('secondaryIpRanges')
               ? (json_['secondaryIpRanges'] as core.List)
                   .map((value) => SecondaryIpRange.fromJson(
@@ -3251,9 +3134,7 @@ class UpdateDnsRecordSetRequest {
 
   UpdateDnsRecordSetRequest.fromJson(core.Map json_)
       : this(
-          consumerNetwork: json_.containsKey('consumerNetwork')
-              ? json_['consumerNetwork'] as core.String
-              : null,
+          consumerNetwork: json_['consumerNetwork'] as core.String?,
           existingDnsRecordSet: json_.containsKey('existingDnsRecordSet')
               ? DnsRecordSet.fromJson(json_['existingDnsRecordSet']
                   as core.Map<core.String, core.dynamic>)
@@ -3262,7 +3143,7 @@ class UpdateDnsRecordSetRequest {
               ? DnsRecordSet.fromJson(json_['newDnsRecordSet']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          zone: json_.containsKey('zone') ? json_['zone'] as core.String : null,
+          zone: json_['zone'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3318,12 +3199,8 @@ class ValidateConsumerConfigRequest {
   ValidateConsumerConfigRequest.fromJson(core.Map json_)
       : this(
           checkServiceNetworkingUsePermission:
-              json_.containsKey('checkServiceNetworkingUsePermission')
-                  ? json_['checkServiceNetworkingUsePermission'] as core.bool
-                  : null,
-          consumerNetwork: json_.containsKey('consumerNetwork')
-              ? json_['consumerNetwork'] as core.String
-              : null,
+              json_['checkServiceNetworkingUsePermission'] as core.bool?,
+          consumerNetwork: json_['consumerNetwork'] as core.String?,
           consumerProject: json_.containsKey('consumerProject')
               ? ConsumerProject.fromJson(json_['consumerProject']
                   as core.Map<core.String, core.dynamic>)
@@ -3332,9 +3209,7 @@ class ValidateConsumerConfigRequest {
               ? RangeReservation.fromJson(json_['rangeReservation']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          validateNetwork: json_.containsKey('validateNetwork')
-              ? json_['validateNetwork'] as core.bool
-              : null,
+          validateNetwork: json_['validateNetwork'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3402,12 +3277,8 @@ class ValidateConsumerConfigResponse {
                           value as core.Map<core.String, core.dynamic>))
                       .toList()
                   : null,
-          isValid: json_.containsKey('isValid')
-              ? json_['isValid'] as core.bool
-              : null,
-          validationError: json_.containsKey('validationError')
-              ? json_['validationError'] as core.String
-              : null,
+          isValid: json_['isValid'] as core.bool?,
+          validationError: json_['validationError'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3436,9 +3307,7 @@ class VpcServiceControls {
 
   VpcServiceControls.fromJson(core.Map json_)
       : this(
-          enabled: json_.containsKey('enabled')
-              ? json_['enabled'] as core.bool
-              : null,
+          enabled: json_['enabled'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
